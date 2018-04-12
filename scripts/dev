@@ -1,0 +1,67 @@
+#!/bin/bash
+
+PORT=9000
+THEME=
+
+# cd to app root
+CWD=$(dirname $0)
+if [[ `basename $(pwd)` = 'scripts' ]]; then
+  cd ../
+else
+  cd `dirname $CWD`
+fi
+
+print_help()
+{
+  cat 1>&2 <<EOF
+Usage:
+
+[-p PORT] [-t]
+
+-p PORT - Port to listen on
+-t DIR  - Use DIR to for the theme, to devlop the theme at the same time
+
+EOF
+}
+
+echoerr()
+{
+  printf "%s\n" "$*" >&2;
+}
+
+absolute() {
+# $1 : relative filename
+  echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+}
+
+
+while getopts ":p:t:" opt;do
+  case $opt in
+  p)
+    PORT="${OPTARG}"
+    ;;
+  t)
+    THEME="${OPTARG}"
+    ;;
+  \?)
+    echoerr "Invalid arguemnts"
+    print_help
+    exit 1
+    ;;
+  :)
+    echoerr "Option -${OPTARG} requires an argument."
+    print_help
+    exit 1
+    ;;
+  esac
+done
+
+THEMEVOLUME=""
+echo "Starting server on http://localhost:${PORT}"
+if [[ "$THEME" ]]; then
+  echo "Using theme from ${THEME}"
+  ABSOLUTE=$(absolute $THEME)
+  THEMEVOLUME="-v ${ABSOLUTE}:/run/node_modules/rancher-website-theme"
+fi
+
+docker run --rm -p ${PORT}:${PORT} -it -v $(pwd):/site ${THEMEVOLUME} rancherlabs/website:dev dev --port=${PORT}

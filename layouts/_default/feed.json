@@ -1,0 +1,13 @@
+{
+  "events": [
+    {{ range $i, $event := (where (where .Site.RegularPages "Section" "events") ".Params.type" "event") }}
+      {{ if $i }}, {{ end }}
+      {
+        "title": "{{ $event.Params.title }}",
+        "location": "{{$event.Params.location}}",
+        "eventDate": "{{$event.Params.eventdate}}",
+        "permalink": "{{.Permalink}}"
+      }
+    {{ end }}
+  ]
+}

@@ -1,0 +1,7 @@
+<nav>
+  <ul class="tabs">
+    {{ range .Sections }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+</nav>

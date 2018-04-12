@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Host OS</th>
+      <th>Kubernetes*</th>
+      <th>Docker</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .Site.Data.compatibility.version }}
+      <tr>
+        <td>{{.number}}</td>
+        <td>{{.os}}</td>
+        <td>{{.kubernetes}}</td>
+        <td>{{.docker}}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>
+

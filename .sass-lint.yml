@@ -1,0 +1,23 @@
+options:
+  formatter: stylish
+  merge-default-rules: true
+files:
+  include: 'src/sass/**/*.scss'
+rules:
+  bem-depth: 1
+  brace-style: 0
+  class-name-format:
+    - 1
+    - convention: 'hyphenatedbem'
+    - allow-single-line: false
+  empty-args: 0
+  indentation:
+    - 1
+    - size: 4
+  mixin-name-format:
+    - 1
+    - convention: 'hyphenatedbem'
+  no-color-keywords: 0
+  no-color-literals: 0
+  property-sort-order: 0
+  one-declaration-per-line: 1

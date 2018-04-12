@@ -1,0 +1,12 @@
+---
+pipeline:
+  docker-publish-master:
+    image: plugins/docker
+    dockerfile: Dockerfile
+    repo: rancherlabs/website
+    context: .
+    tag: latest
+    secrets: [docker_username, docker_password]
+    when:
+      branch: master
+      event: push

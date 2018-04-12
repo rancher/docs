@@ -1,0 +1,91 @@
+{{ define "title" }}
+  {{ .Title }} – {{ .Site.Title }}
+{{ end }}
+
+{{ define "hero" }}
+<!-- theme/layouts/_default/list.html-->
+<section class="hero">
+    {{ with .Params.Title }}
+      <h1>{{ . }}</h1>
+    {{end}}
+
+    {{ with .Params.Author }}
+      <span class="byline bg-link">{{ . }}</span>
+    {{end}}
+</section>
+
+{{ end }}
+
+{{ define "main" }}
+  <div class="wrapper">
+    {{ partial "breadcrumbs.html" . }}
+
+    {{ partial "docs-nav.html" . }}
+
+    <div class="row m-t-sm">
+      <aside class="col-sm-4 col-xs-12">
+       <div class="bg-default p-a-sm">
+        {{ partial "docs-side-nav.html" . }}
+       </div>
+      </aside>
+      <article class="col-sm-8 col-xs-12 p-r-lg">
+        <div class="main-content ">
+
+      {{ .Content }}
+        {{ range (.Paginator 5).Pages }}
+          <div class="box m-b-md">
+              <div class="p-a-sm">
+                <h3><a href="{{.URL}}">{{.Title}}</a></h3>
+
+                {{ if .Params.Image }}
+                  <div class="thumbnail"><img src="{{ .Params.Image }}" alt="{{ .Params.Title }}"></div>
+                {{end}}
+
+                <p>{{ .Summary | safeHTML }}</p>
+                {{ if .Truncated }}
+                <div>
+                  <a href="{{ .RelPermalink }}">Read More…</a>
+                </div>
+                {{ end }}
+              </div>
+              <div class="bg-default">
+                <div class="row">
+
+                  {{ with .Params.Author }}
+                    <div class="p-h-sm p-v-xs"><i class="material-icons">person_outline</i> By: {{ . }}</div>
+                  {{end}}
+
+                  {{ if eq .Section "events" }}
+                    {{ with .Params.EventDate }}
+                      <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ . }}</div>
+                    {{end}}
+
+                  {{ else }}
+
+                    {{ with .Params.Date }}
+                      <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ .Format "January 2, 2006" }}</div>
+                    {{end}}
+                  {{end}}
+
+<!--                   {{ with .Params.Date }}
+                    <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> By: {{ .Format "January 2, 2006" }}</div>
+                  {{end}} -->
+
+                  {{ if eq .Section "blog" }}
+                    <div class="p-h-sm p-v-xs"><i class="material-icons">timer</i> Read Time: {{.ReadingTime}} minutes</div>
+                  {{end}}
+
+                  {{ with .Params.Location }}
+                    <div class="p-h-sm p-v-xs"><i class="material-icons">location_on</i> {{ . }}</div>
+                  {{end}}
+
+                </div>
+              </div>
+          </div>
+        {{ end }}
+      </div>
+        {{ template "_internal/pagination.html" . }}
+      </article>
+    </div>
+  </div>
+{{ end }}

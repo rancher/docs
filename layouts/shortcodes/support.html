@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Rancher Version</th>
+      <th>Release Date</th>
+      <th>End full support</th>
+      <th>Dend maintainance support</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .Site.Data.support.table }}
+      <tr>
+        <td>{{.rancher}}</td>
+        <td>{{.release}}</td>
+        <td>{{.full}}</td>
+        <td>{{.maintain}}</td>
+      </tr>
+    {{ end }}
+  </tbody>
+</table>
