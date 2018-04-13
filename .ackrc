@@ -1,1 +1,3 @@
 --ignore-dir=public
+--ignore-dir=static
+--ignore-dir=src/img

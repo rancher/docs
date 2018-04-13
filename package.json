@@ -1,5 +1,5 @@
 {
-  "name": "RancherLabs - Docs",
+  "name": "rancher-docs",
   "private": true,
   "scripts": {
     "build": "gulp build",

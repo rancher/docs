@@ -39,7 +39,7 @@ RUN  ln -s /site/config.toml /run \
 COPY gulpfile.babel.js /run/
 
 # Expose default hugo port
-EXPOSE 9000
+EXPOSE 9001
 
 ENTRYPOINT ["gulp"]
 CMD ["dev"]
