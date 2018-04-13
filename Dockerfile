@@ -1,4 +1,4 @@
-FROM rancherlabs/website:build as build
+FROM rancher/docs:build as build
 
 WORKDIR /run
 

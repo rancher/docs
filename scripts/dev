@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PORT=9000
+PORT=9001
 THEME=
 
 # cd to app root
@@ -64,4 +64,4 @@ if [[ "$THEME" ]]; then
   THEMEVOLUME="-v ${ABSOLUTE}:/run/node_modules/rancher-website-theme"
 fi
 
-docker run --rm -p ${PORT}:${PORT} -it -v $(pwd):/site ${THEMEVOLUME} rancherlabs/website:dev dev --port=${PORT}
+docker run --rm -p ${PORT}:${PORT} -it -v $(pwd):/site ${THEMEVOLUME} rancher/docs:dev dev --port=${PORT}
