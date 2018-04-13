@@ -46,7 +46,7 @@ gulp.task('init-watch', () => {
     server: {
       baseDir: 'public'
     },
-    port: 9020,
+    port: 9001,
     open: false
   });
   $.watch('src/sass/**/*.scss', () => gulp.start('sass'));
@@ -82,7 +82,7 @@ gulp.task('hugo-preview', (cb) => {
 });
 
 gulp.task('hugo-dev', (cb) => {
-  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=http://localhost:9020/'], { stdio: 'inherit' }).on('close', (/* code */) => {
+  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=http://localhost:9001/'], { stdio: 'inherit' }).on('close', (/* code */) => {
     browserSync.reload();
     cb();
   });
