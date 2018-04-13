@@ -11,7 +11,7 @@ fi
 echo "Pulling Theme..." && \
 docker pull rancherlabs/website-theme:latest && \
 echo "Building Image..." && \
-docker build -t rancherlabs/website:latest . && \
+docker build -t rancher/docs:latest . && \
 echo "Pushing Image..." && \
-docker push rancherlabs/website:latest && \
+docker push rancher/docs:latest && \
 echo "OK"
