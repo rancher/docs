@@ -14,6 +14,10 @@
 
 -	Software: Docker
 
+## Software Requirements
+
+-	Docker
+
 	<a name="node-requirements"></a>**Supported Versions:**
 
 	-	`1.12.6`
@@ -53,3 +57,11 @@ TCP | Inbound | 443  | Canal
 TCP | Inbound | 10250  |  kubelet API
 TCP | Inbound | 10256  |  kubeproxy
 TCP | Inbound | 30000-32767  |  NodePort Services
+
+## Additional Requirements
+
+### Non High Availability
+
+### High Availability
+
+### Optional: etcd

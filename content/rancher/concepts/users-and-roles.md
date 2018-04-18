@@ -1,6 +1,10 @@
 # Users and Roles
 
+<<<<<<< .merge_file_LZETWi
 Every user in {{< product >}} is assigned a _role_, which is a set of permissions that determine what Kubernetes API endpoints that the user can access. Let's use this metaphor: a user account is like getting access to an entire office building; however, the user's role determine what rooms the user can access within the building.
+=======
+Every user in {{< product >}} is assigned a _role_, which is a set of permissions that determine what Kubenetes API endpoints that the user can access. Let's use this metaphor: a user account is like getting access to an entire office building; however, the user's role determine what rooms the user can access within the building.
+>>>>>>> .merge_file_JkrEtE
 
 Within {{< product >}} there are two types of user roles:
 
