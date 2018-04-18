@@ -65,11 +65,11 @@ Valid cloud-init datasources for RancherOS.
 | gce |  |  |
 | packet | DefaultAddress |  |
 | url | url |  |
-| vmware** |  | set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{page.osbaseurl}}/cloud/vmware-esxi) |
+| vmware** |  | set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{< baseurl >}}/os/installation/running-rancheros/cloud/vmware-esxi) |
 | * | This will add ["configdrive", "vmware", "ec2", "digitalocean", "packet", "gce"] into the list of datasources to try |  |
 
 ** vmware was added as of v1.1.
 
 ### Cloud-Config
 
-When booting via iPXE, RancherOS can be configured using a [cloud-config file]({{page.osbaseurl}}/configuration/#cloud-config).
+When booting via iPXE, RancherOS can be configured using a [cloud-config file]({{< baseurl >}}/os/installation/configuration/#cloud-config).

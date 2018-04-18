@@ -32,27 +32,27 @@ Let’s walk through how to import and create a RancherOS on EC2 machine using t
 
 1. First login to your AWS console, and go to the EC2 dashboard, click on **Launch Instance**:
 
-    ![RancherOS on AWS 1]({{site.baseurl}}/img/os/Rancher_aws1.png)
+    ![RancherOS on AWS 1]({{< baseurl >}}/img/os/Rancher_aws1.png)
 
 2. Select the **Community AMIs** on the sidebar and search for **RancherOS**. Pick the latest version and click **Select**.
 
-    ![RancherOS on AWS 2]({{site.baseurl}}/img/os/Rancher_aws2.png)
+    ![RancherOS on AWS 2]({{< baseurl >}}/img/os/Rancher_aws2.png)
 
-3. Go through the steps of creating the instance type through the AWS console. If you want to pass in a [cloud-config]({{page.osbaseurl}}/configuration/#cloud-config) file during boot of RancherOS, you'd pass in the file as **User data** by expanding the **Advanced Details** in **Step 3: Configure Instance Details**. You can pass in the data as text or as a file.
+3. Go through the steps of creating the instance type through the AWS console. If you want to pass in a [cloud-config]({{< baseurl >}}/os/installation/configuration/#cloud-config) file during boot of RancherOS, you'd pass in the file as **User data** by expanding the **Advanced Details** in **Step 3: Configure Instance Details**. You can pass in the data as text or as a file.
 
-    ![RancherOS on AWS 6]({{site.baseurl}}/img/os/Rancher_aws6.png)
+    ![RancherOS on AWS 6]({{< baseurl >}}/img/os/Rancher_aws6.png)
 
      After going through all the steps, you finally click on **Launch**, and either create a new key pair or choose an existing key pair to be used with the EC2 instance. If you have created a new key pair, download the key pair. If you have chosen an existing key pair, make sure you have the key pair accessible. Click on **Launch Instances**.
 
-    ![RancherOS on AWS 3]({{site.baseurl}}/img/os/Rancher_aws3.png)
+    ![RancherOS on AWS 3]({{< baseurl >}}/img/os/Rancher_aws3.png)
 
 4. Your instance will be launching and you can click on **View Instances** to see it's status.
 
-    ![RancherOS on AWS 4]({{site.baseurl}}/img/os/Rancher_aws4.png)
+    ![RancherOS on AWS 4]({{< baseurl >}}/img/os/Rancher_aws4.png)
 
     Your instance is now running!
 
-    ![RancherOS on AWS 5]({{site.baseurl}}/img/os/Rancher_aws5.png)
+    ![RancherOS on AWS 5]({{< baseurl >}}/img/os/Rancher_aws5.png)
 
 ## Logging into RancherOS
 

@@ -15,7 +15,7 @@ Since RancherOS is a kernel and initrd, the upgrade process is downloading a new
 
 To see all of our releases, please visit our [releases page](https://github.com/rancher/os/releases) in GitHub.
 
-> **Note:** If you are using [`docker-machine`]({{page.osbaseurl}}/running-rancheros/workstation/docker-machine/) then you will not be able to upgrade your RancherOS version. You need to delete and re-create the machine.
+> **Note:** If you are using [`docker-machine`]({{< baseurl >}}/os/installation/running-rancheros/workstation/docker-machine/) then you will not be able to upgrade your RancherOS version. You need to delete and re-create the machine.
 
 
 ### Version Control
@@ -70,7 +70,7 @@ $ sudo ros -v
 ros version v0.5.0
 ```
 
-> **Note:** If you are booting from ISO and have not installed to disk, your upgrade will not be saved. You can view our guide to [installing to disk]({{page.osbaseurl}}/running-rancheros/server/install-to-disk/).
+> **Note:** If you are booting from ISO and have not installed to disk, your upgrade will not be saved. You can view our guide to [installing to disk]({{< baseurl >}}/os/installation/running-rancheros/server/install-to-disk/).
 
 #### Upgrading to a Specific Version
 
@@ -120,7 +120,7 @@ ros version 0.4.4
 
 <br>
 
-> **Note:** If you are using a [persistent console]({{page.osbaseurl}}/configuration/custom-console/#console-persistence) and in the current version's console, rolling back is not supported. For example, rolling back to v0.4.5 when using a v0.5.0 persistent console is not supported.
+> **Note:** If you are using a [persistent console]({{< baseurl >}}/os/installation/custom-builds/custom-console/#console-persistence) and in the current version's console, rolling back is not supported. For example, rolling back to v0.4.5 when using a v0.5.0 persistent console is not supported.
 
 ### Staging an Upgrade
 

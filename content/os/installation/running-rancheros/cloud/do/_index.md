@@ -4,6 +4,7 @@ category: "os"
 layout: list-docs
 title: Digital Ocean
 weight: 107
+---
 
 ## Running RancherOS in DigitalOcean
 ---

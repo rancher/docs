@@ -65,7 +65,7 @@ All of repositories are located within our main GitHub [page](https://github.com
 
 [RancherOS Repo](https://github.com/rancher/os): This repo contains the bulk of the RancherOS code.
 
-[RancherOS Services Repo](https://github.com/rancher/os-services): This repo is where any [system-services]({{page.osbaseurl}}/system-services/) can be contributed.
+[RancherOS Services Repo](https://github.com/rancher/os-services): This repo is where any [system-services]({{< baseurl >}}/os/installation/system-services/adding-system-services/) can be contributed.
 
 [RancherOS Images Repo](https://github.com/rancher/os-images): This repo is for the corresponding service images.
 
@@ -74,7 +74,7 @@ All of repositories are located within our main GitHub [page](https://github.com
 
 If you find any bugs or are having any trouble, please contact us by filing an [issue](https://github.com/rancher/os/issues/new).
 
-If you have any updates to our documentation, please make any PRs to our [docs repo](https://github.com/rancher/rancher.github.io).
+If you have any updates to our documentation, please make any PRs to our [docs repo](https://github.com/rancher/docs).
 
 <br>
 <br>
