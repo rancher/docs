@@ -8,7 +8,7 @@ weight: 111
 
 ## Installing RancherOS to Disk
 ---
-RancherOS comes with a simple installer that will install RancherOS on a given target disk. To install RancherOS on a new disk, you can use the `ros install` command. Before installing, you'll need to have already [booted RancherOS from ISO]({{page.osbaseurl}}/running-rancheros/workstation/boot-from-iso). Please be sure to pick the `rancheros.iso` from our release [page](https://github.com/rancher/os/releases).
+RancherOS comes with a simple installer that will install RancherOS on a given target disk. To install RancherOS on a new disk, you can use the `ros install` command. Before installing, you'll need to have already [booted RancherOS from ISO]({{< baseurl >}}/os/installation/running-rancheros/workstation/boot-from-iso). Please be sure to pick the `rancheros.iso` from our release [page](https://github.com/rancher/os/releases).
 
 ### Using `ros install` to Install RancherOS
 
@@ -16,7 +16,7 @@ The `ros install` command orchestrates the installation from the `rancher/os` co
 
 #### Cloud-Config
 
-The easiest way to log in is to pass a `cloud-config.yml` file containing your public SSH keys. To learn more about what's supported in our cloud-config, please read our [documentation]({{page.osbaseurl}}/configuration/#cloud-config).
+The easiest way to log in is to pass a `cloud-config.yml` file containing your public SSH keys. To learn more about what's supported in our cloud-config, please read our [documentation]({{< baseurl >}}/os/installation/configuration/#cloud-config).
 
 The `ros install` command will process your `cloud-config.yml` file specified with the `-c` flag. This file will also be placed onto the disk and installed to `/var/lib/rancher/conf/`. It will be evaluated on every boot.
 
@@ -66,7 +66,7 @@ Status: Downloaded newer image for rancher/os:v0.5.0
 Continue with reboot [y/N]:
 ```
 
-After installing RancherOS to disk, you will no longer be automatically logged in as the `rancher` user. You'll need to have added in SSH keys within your [cloud-config file]({{page.osbaseurl}}/configuration/#cloud-config).
+After installing RancherOS to disk, you will no longer be automatically logged in as the `rancher` user. You'll need to have added in SSH keys within your [cloud-config file]({{< baseurl >}}/os/installation/configuration/#cloud-config).
 
 #### Installing a Different Version
 

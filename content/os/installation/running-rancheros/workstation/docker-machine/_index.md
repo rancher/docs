@@ -2,7 +2,7 @@
 tag: ["rancheros", "os", "docker machine"]
 category: "os"
 layout: list-docs
-title: Using Docker Machine 
+title: Using Docker Machine
 weight: 101
 ---
 
@@ -57,7 +57,7 @@ Logging into RancherOS follows the standard Docker Machine commands. To login in
 $ docker-machine ssh <MACHINE-NAME>
 ```
 
-You'll be logged into RancherOS and can start exploring the OS, This will log you into the RancherOS VM. You'll then be able to explore the OS by [adding system services]({{page.osbaseurl}}/system-services/adding-system-services/), [customizing the configuration]({{page.osbaseurl}}/configuration/), and launching containers.
+You'll be logged into RancherOS and can start exploring the OS, This will log you into the RancherOS VM. You'll then be able to explore the OS by [adding system services]({{< baseurl >}}/os/installation/system-services/adding-system-services/), [customizing the configuration]({{< baseurl >}}/os/installation/configuration/), and launching containers.
 
 If you want to exit out of RancherOS, you can exit by pressing `Ctrl+D`.
 
