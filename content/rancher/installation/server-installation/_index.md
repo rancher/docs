@@ -1,9 +1,9 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
+title: "Rancher Server Installation"
 date: {{ .Date }}
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
+tags: [ "install" ]
+layout: list
 categories:
   - "rancher"
 ---

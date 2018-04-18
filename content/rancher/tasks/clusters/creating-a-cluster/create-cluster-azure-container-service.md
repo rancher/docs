@@ -1,7 +1,7 @@
 ---
 tag: ["rancher", "cluster"]
 category: "rancher"
-layout: list-docs
+layout: single
 title: Azure Container Service
 weight: 30
 ---
@@ -9,6 +9,8 @@ weight: 30
 # Creating an Azure Container Service Cluster
 
 You can use Rancher to create a cluster using Microsoft Azure Container Service.
+
+{{< beta-note_azure >}}
 
 1. From the **Clusters** page, click **Add Cluster**.
 
