@@ -1,12 +1,12 @@
 # Configuring User Authentication
 
-You have three options for user authentication in {{< product >}}:
+You have three options for user authentication in {{< product >}}. We recommend using an external authentication method (i.e. Active Directory or GitHub) rather than local authentication. External authentication reduces upkeep of your users.
 
 -	**Active Directory**: Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
 
 -	**GitHub**: Open source projects or organizations that use GitHub for source control may prefer that users sign in using their GitHub accounts.
 
--	**Basic Authentication**: If you don't want to use external authentication, you can always add users directly to {{< product >}}. We recommend using external authentication over basic authentication.
+-	**Local Authentication**: If you don't want to use external authentication, you can always add users directly to {{< product >}}. We recommend using external authentication over local authentication.
 
 ## Configure an Authentication Method
 
@@ -80,7 +80,7 @@ You have three options for user authentication in {{< product >}}:
 - You are signed into Rancher with your GitHub account.
 - Your GitHub account is added to Rancher as an administrator.
 
-### To Configure Basic Authentication
+### To Configure Local Authentication
 
 1.	From the **Global** view, select **Users** from the main menu.
 

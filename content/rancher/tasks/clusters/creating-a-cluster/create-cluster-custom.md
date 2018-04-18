@@ -56,7 +56,9 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 	>
 	If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	**Optional**: Use **Labels** to add metadata so that you can find them later.
+8.	**Optional**: Add **Labels** to your cluster nodes to help schedule workloads later.
+
+	[Kubernetes Documentation: Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
 9. Copy the command displayed on screen to your clipboard.
 

@@ -2,15 +2,18 @@
 
 ## Operating System Requirements
 
--	Operating System: Ubuntu 16.04 (64-bit)
+-	Ubuntu 16.04 (64-bit)
+-	Red Hat Enterprise Linux 7.5 (64-bit)
+-	RancherOS
 
 ## Hardware Requirements
 
 -	Memory: 4GB
 
-## Software Requirements
 
--	Docker
+## Software requirements
+
+-	Software: Docker
 
 	<a name="node-requirements"></a>**Supported Versions:**
 
