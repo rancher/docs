@@ -1,0 +1,10 @@
+<p>Add one or more <strong>Node Pools</strong> to your cluster. A <em>node pool</em> is a set of virtual machines configured identically to your Linux host. However, each node in the pool also has additional Kubernetes master and worker components installed.<p>
+
+<blockquote>
+	<p><strong>Notes:</strong></p>
+	<ul>
+		<li>After you create each node template, you can use it to create additional node pools.</li>
+		<li>Each Kubernetes role (i.e. <code>etcd</code>, <code>Control</code>, and <code>Worker</code>) must be filled. You can either apply all three roles to one pool or spread them around.</li>
+		<li>Ideally, you should have at least three <code>etcd</code> nodes so that your cluster can fail over to another if a etcd node goes down.</li>
+	</ul>
+</blockquote>
