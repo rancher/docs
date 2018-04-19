@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "faqs"]
-category: "os"
 layout: list-docs
 title: About
 weight: 300

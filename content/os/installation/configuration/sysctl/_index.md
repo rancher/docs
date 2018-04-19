@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 layout: list-docs
 title: sysctl Settings
 weight: 132

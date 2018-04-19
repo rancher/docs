@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "digitalocean"]
-category: "os"
 layout: list-docs
 title: Digital Ocean
 weight: 107

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "installation"]
-category: "os"
 layout: list-docs
 title: Running RancherOS
 weight: 100

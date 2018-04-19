@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "custom", "console"]
-category: "os"
 layout: list-docs
 title: Amazon ECS (EC2 Container Service)
 weight: 190

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "faqs"]
-category: "os"
 layout: list-docs
 title: FAQs
 weight: 301

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "networking", "dns"]
-category: "os"
 layout: list-docs
 title: Configuring DNS
 weight: 171

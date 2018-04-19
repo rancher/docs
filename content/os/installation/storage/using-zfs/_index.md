@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "zfs"]
-category: "os"
 layout: list-docs
 title: Using ZFS
 weight: 162

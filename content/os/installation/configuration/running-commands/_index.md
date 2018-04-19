@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "commands"]
-category: "os"
 layout: list-docs
 title: Running Commands
 weight: 123

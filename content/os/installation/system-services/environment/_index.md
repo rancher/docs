@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "system services",  "environment"]
-category: "os"
 layout: list-docs
 title: Environment
 weight: 143

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "custom", "iso"]
-category: "os"
 layout: list-docs
 title: Custom RancherOS ISO
 weight: 182
