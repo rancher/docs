@@ -1,0 +1,97 @@
+<div>
+	<h3>Master Nodes (etcd and controlplane nodes)</h3>
+	<br/>
+	<table>
+	    <tr>
+	        <th>protocol</th>
+	        <th>direction</th>
+	        <th>port range</th>
+	        <th>purpose</th>
+	    </tr>
+	    <tr>
+	        <td rowspan="9">tcp</td>
+	        <td rowspan="10">inbound</td>
+	        <td>22</td>
+	        <td>ssh server</td>
+	    </tr>
+	    <tr>
+	        <td>80</td>
+	        <td>?</td>
+	    </tr>
+	    <tr>
+	        <td>443</td>
+	        <td>?</td>
+	    </tr>
+	    <tr>
+	        <td>6443</td>
+	        <td>kubernetes api server</td>
+	    </tr>
+	    <tr>
+	        <td>2379-2380</td>
+	        <td>etcd server client api</td>
+	    </tr>
+	    <tr>
+	        <td>10250</td>
+	        <td>kubelet api</td>
+	    </tr>
+	    <tr>
+	        <td>10251</td>
+	        <td>scheduler</td>
+	    </tr>
+	    <tr>
+	        <td>10252</td>
+	        <td>controller</td>
+	    </tr>
+	    <tr>
+	        <td>10256</td>
+	        <td>kubeproxy</td>
+	    </tr>
+	    <tr>
+	        <td>udp</td>
+	        <td>8472</td>
+	        <td>canal</td>
+	    </tr>
+	</table>
+	<h3>Worker Nodes</h3>
+	<br/>
+	<table>
+	    <tr>
+	        <td>protocol</td>
+	        <td>direction</td>
+	        <td>port range</td>
+	        <td>purpose</td>
+	    </tr>
+	    <tr>
+	        <td rowspan="6">tcp</td>
+	        <td rowspan="7">inbound</td>
+	        <td>22</td>
+	        <td>ssh server</td>
+	    </tr>
+	    <tr>
+	        <td>80</td>
+	        <td>?</td>
+	    </tr>
+	    <tr>
+	        <td>443</td>
+	        <td>?</td>
+	    </tr>
+	    <tr>
+	        <td>10250</td>
+	        <td>kubelet api</td>
+	    </tr>
+	    <tr>
+	        <td>10256</td>
+	        <td>kubeproxy</td>
+	    </tr>
+	    <tr>
+	        <td>30000-32767</td>
+	        <td>nodeport services</td>
+	    </tr>
+	    <tr>
+	        <td>udp</td>
+	        <td>8472</td>
+	        <td>canal</td>
+	    </tr>
+</table>
+<br/>
+</div>

@@ -1,12 +1,16 @@
 # Authentication
 
-One of the key features that {{< product >}} adds to Kubernetes is enhanced user authentication.
+One of the key features that {{< product >}} adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
 
-By default, Kubernetes has some authentication shortcomings. Namely, users and groups are tied to the two scopes that Kubernetes uses to group resources: global and namespace. These scopes make it difficult to manage users and groups across different clusters and namespaces. Kubenetes allows integration with other authentication providers that work around these issues using plugins. However, this integration is not available to those leveraging cloud-based Kubenetes offerings such as Google Container Engine (GKE).
+This centralized user authentication is accomplished using the {{< product >}} authentication proxy, which is installed with the rest of {{< product >}}. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
 
-Rancher improves on Kubernetes authentication by integrating external authentication. Out-of-the-box, Rancher provides integration with the following authentication services:
+## External vs. Local Authentication
+
+The {{< product >}} authentication proxy integrates with the following external authentication services.
 
 	-	Microsoft Active Directory
 	-	GitHub
 
-## External vs. Local Authentication
+However, {{< product >}} also provides local authentication.
+
+In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication accounts for managing {{< product >}} under rare circumstances, such as if Active Directory is down.
