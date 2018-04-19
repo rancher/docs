@@ -1,6 +1,5 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
+title: Load Balancing Configuration
 draft: true
 tags: [ "tag", "tag", "tag", "tag" ]
 layout: single-left

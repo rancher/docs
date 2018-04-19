@@ -1,6 +1,5 @@
 ---
-title: "Rancher Server Installation"
-date: {{ .Date }}
+title: Rancher Server Installation
 draft: true
 tags: [ "install" ]
 layout: list
