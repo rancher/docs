@@ -1,6 +1,5 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
+title: Multi-Node Installation
 draft: true
 tags: [ "tag", "tag", "tag", "tag" ]
 layout: single-left

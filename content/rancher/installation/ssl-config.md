@@ -1,6 +1,5 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
+title: SSL Configuration
 draft: true
 tags: [ "tag", "tag", "tag", "tag" ]
 layout: single-left

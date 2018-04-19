@@ -1,4 +1,16 @@
+---
+title: Rancher Requirements
+draft: true
+tags: [ "tag", "tag", "tag", "tag" ]
+layout: single-left
+categories:
+  - ""
+  - ""
+---
+
 # Rancher Requirements
+
+Before you install {{< product >}}, wrangle up these requirements. Yip! Yip! Yah!
 
 ## Operating System Requirements
 
@@ -9,10 +21,6 @@
 ## Hardware Requirements
 
 -	Memory: 4GB
-
-## Software requirements
-
--	Software: Docker
 
 ## Software Requirements
 
@@ -38,25 +46,27 @@ When provisioning your Linux host, open the ports listed below so that your mast
 Protocol  | Direction  | Port Range  | Purpose  
 --|---|---|--
 TCP | Inbound | 22  |  SSH server
-TCP | Inbound | 80  | Canal
-TCP | Inbound | 443  | Canal
+TCP | Inbound | 80  | ?
+TCP | Inbound | 443  | ?
 TCP | Inbound | 6443  | Kubernetes API server
 TCP | Inbound | 2379-2380  | etcd server client API
 TCP | Inbound | 10250  | kubelet API
 TCP | Inbound | 10251  | scheduler
 TCP | Inbound | 10252  | controller
 TCP | Inbound | 10256  | kubeproxy
+UDP | Inbound | 8472   | Canal
 
 ### Worker Nodes
 
 Protocol  | Direction  | Port Range  | Purpose  
 --|---|---|--
 TCP | Inbound | 22  |  SSH Server
-TCP | Inbound | 80  | Canal
-TCP | Inbound | 443  | Canal
+TCP | Inbound | 80  | ?
+TCP | Inbound | 443  | ?
 TCP | Inbound | 10250  |  kubelet API
 TCP | Inbound | 10256  |  kubeproxy
 TCP | Inbound | 30000-32767  |  NodePort Services
+UDP | Inbound | 8472   | Canal
 
 ## Additional Requirements
 
