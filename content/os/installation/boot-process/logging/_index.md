@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "logging"]
-category: "os"
 layout: list-docs
 title: System Logging
 weight: 153

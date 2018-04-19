@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "azure"]
-category: "os"
 layout: list-docs
 title: Azure
 weight: 110

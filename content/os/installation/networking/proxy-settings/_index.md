@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "proxy"]
-category: "os"
 layout: list-docs
 title: Configuring Proxy Settings
 weight: 172

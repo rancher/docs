@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "system services"]
-category: "os"
 layout: list-docs
 title: Custom System Services
 weight: 141

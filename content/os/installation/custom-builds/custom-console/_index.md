@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "custom", "console"]
-category: "os"
 layout: list-docs
 title: Custom Console
 weight: 180

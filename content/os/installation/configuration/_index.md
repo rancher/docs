@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "configuration", "custom"]
-category: "os"
 layout: list-docs
 title: Configuration
 weight: 120
