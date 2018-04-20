@@ -1,7 +1,5 @@
 ---
-  tag: ["rancher", "installation"]
-  category: "rancher"
-  layout: list-docs
+  layout: list
   title: Installation
   weight: 100
 ---

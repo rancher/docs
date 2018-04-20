@@ -1,11 +1,7 @@
 ---
 title: "Rancher Server Requirements: Existing Cluster Installs"
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
-categories:
-  - ""
-  - ""
+layout: single
 ---
 
 # Rancher Server Requirements: Existing Cluster Installs

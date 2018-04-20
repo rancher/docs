@@ -1,7 +1,5 @@
 ---
-tag: ["rancher", "pod security policies","security policies", "settings" ]
-category: "rancher"
-layout: list-docs
+layout: list
 title: Creating a Cluster
 weight: 90
 ---
