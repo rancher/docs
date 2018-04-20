@@ -1,11 +1,7 @@
 ---
 title: Node Requirements
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
-categories:
-  - ""
-  - ""
+layout: single
 ---
 # Node Requirements
 

@@ -1,11 +1,7 @@
 ---
 title: SSL Configuration
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
-categories:
-  - ""
-  - ""
+layout: single
 ---
 
 # SSL Configuration

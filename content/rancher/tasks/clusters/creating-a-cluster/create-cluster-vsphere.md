@@ -1,7 +1,5 @@
 ---
-tag: ["rancher", "cluster"]
-category: "rancher"
-layout: list-docs
+layout: single
 title: vSphere
 weight: 80
 ---

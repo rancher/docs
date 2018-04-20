@@ -1,3 +1,9 @@
+---
+  layout: single
+  title: Users and Roles
+  weight: 300
+---
+
 # Users and Roles
 
 Every user in {{< product >}} is assigned a _role_, which is a set of permissions that determine what Kubernetes API endpoints that the user can access. Let's use this metaphor: a user account is like getting access to an entire office building; however, the user's role determine what rooms the user can access within the building.

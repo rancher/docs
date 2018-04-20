@@ -1,6 +1,4 @@
 ---
-tag: ["rancher", "pod security policies","security policies", "settings" ]
-category: "rancher"
 layout: single
 title: Adding Pod Security Policies
 weight: 90

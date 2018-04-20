@@ -1,11 +1,6 @@
 ---
 title: Load Balancing Configuration
-draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
-categories:
-  - ""
-  - ""
+layout: single
 ---
 
 # Load Balancing Configuration

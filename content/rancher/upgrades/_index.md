@@ -1,7 +1,5 @@
 ---
-  tag: ["rancher", "upgrades"]
-  category: "rancher"
-  layout: list-docs
+  layout: list
   title: Upgrade Scenarios
   weight: 200
 ---

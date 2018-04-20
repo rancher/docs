@@ -1,10 +1,7 @@
 ---
 title: Rancher Architecture
 draft: true
-tags: [ "install" ]
 layout: list
-categories:
-  - "rancher"
 ---
 
 # Rancher Architecture

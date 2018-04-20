@@ -1,11 +1,7 @@
 ---
 title: Rancher Server Tags
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
 layout: single-left
-categories:
-  - ""
-  - ""
 ---
 
 # Rancher Server Tags

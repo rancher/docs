@@ -1,7 +1,5 @@
 ---
-  tag: ["rancher", "concepts"]
-  category: "rancher"
-  layout: list-docs
+  layout: list
   title: Rancher Overview
   weight: 300
 ---
