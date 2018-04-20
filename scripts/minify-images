@@ -13,4 +13,4 @@ if [ ! -z "$1" ]; then
   PORT=$1
 fi
 
-docker run --rm -it -v $(pwd):/site rancherlabs/website:dev minify-images
+docker run --rm -it -v $(pwd):/site rancher/docs:dev minify-images

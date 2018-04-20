@@ -16,6 +16,8 @@ const $ = gulpLoadPlugins();
 const browserSync = require('browser-sync').create();
 const isProduction = process.env.NODE_ENV === 'production';
 
+require('hugo-search-index/gulp')(gulp);
+
 const onError = (err) => {
   console.log(err);
 }
@@ -28,17 +30,39 @@ process.on('SIGINT', () => {
 // --
 gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
-  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
-gulp.task('server', ['build'], () => {
-  gulp.start('init-watch');
-  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'config.toml'], () => gulp.start('hugo'));
+gulp.task('build', () => {
+  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo' /*, 'hugo-search-index'*/);
 });
 
-gulp.task('server:with-drafts', ['build-preview'], () => {
-  gulp.start('init-watch');
-  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'config.toml'], () => gulp.start('hugo-preview'));
+gulp.task('build-staging', () => {
+  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo-staging' /*, 'hugo-search-index'*/);
+});
+
+gulp.task('build-dev', () => {
+  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo-dev' /*, 'hugo-search-index'*/);
+});
+
+gulp.task('hugo', (cb) => {
+  return spawn('hugo', ['--buildFuture'], { stdio: 'inherit' }).on('close', (/* code */) => {
+    browserSync.reload();
+    cb();
+  });
+});
+
+gulp.task('hugo-staging', (cb) => {
+  return spawn('hugo', ['--buildDrafts', '--buildFuture'], { stdio: 'inherit' }).on('close', (/* code */) => {
+    browserSync.reload();
+    cb();
+  });
+});
+
+gulp.task('hugo-dev', (cb) => {
+  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=http://localhost:9001'], { stdio: 'inherit' }).on('close', (/* code */) => {
+    browserSync.reload();
+    cb();
+  });
 });
 
 gulp.task('init-watch', () => {
@@ -53,40 +77,9 @@ gulp.task('init-watch', () => {
   $.watch('node_modules/rancher-website-theme/**/*.scss', () => gulp.start('sass'));
   $.watch('src/js/**/*.js', () => gulp.start('js-watch'));
   $.watch('src/img/**/*', () => gulp.start('img'));
+  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
-gulp.task('build', () => {
-  runSequence(['sass', 'build:vendor', 'build:app', 'fonts', 'img', 'pub-delete'], 'hugo');
-});
-
-gulp.task('build-dev', () => {
-  runSequence(['sass', 'build:vendor', 'build:app', 'fonts', 'img', 'pub-delete'], 'hugo-dev');
-});
-
-gulp.task('build-preview', () => {
-  runSequence(['sass', 'build:vendor', 'build:app', 'fonts', 'img', 'pub-delete'], 'hugo-preview');
-});
-
-gulp.task('hugo', (cb) => {
-  return spawn('hugo', { stdio: 'inherit' }).on('close', (/* code */) => {
-    browserSync.reload();
-    cb();
-  });
-});
-
-gulp.task('hugo-preview', (cb) => {
-  return spawn('hugo', ['--buildDrafts', '--buildFuture'], { stdio: 'inherit' }).on('close', (/* code */) => {
-    browserSync.reload();
-    cb();
-  });
-});
-
-gulp.task('hugo-dev', (cb) => {
-  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=http://localhost:9001/'], { stdio: 'inherit' }).on('close', (/* code */) => {
-    browserSync.reload();
-    cb();
-  });
-});
 
 // --
 
@@ -174,11 +167,12 @@ gulp.task('cms-delete', () => {
   return del(['static/admin'], { dot: true });
 });
 
-gulp.task('pub-delete', () => {
-  return del(['public/**', '!public'], {
+gulp.task('pub-delete', (cb) => {
+  del(['public/**', '!public'], {
     // dryRun: true,
     dot: true
   }).then(paths => {
-    console.log('Files and folders deleted:\n', paths.join('\n'), '\nTotal Files Deleted: ' + paths.length + '\n');
+    console.log('Total Files Deleted: ' + paths.length + '\n');
+    cb();
   });
 });
