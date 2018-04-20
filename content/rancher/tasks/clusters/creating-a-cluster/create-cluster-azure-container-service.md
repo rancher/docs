@@ -1,6 +1,4 @@
 ---
-tag: ["rancher", "cluster"]
-category: "rancher"
 layout: single
 title: Azure Container Service
 weight: 30

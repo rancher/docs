@@ -1,7 +1,5 @@
 ---
-  tag: ["rancher", "tasks"]
-  category: "rancher"
-  layout: list-docs
+  layout: list
   title: Tasks
   weight: 400
 ---

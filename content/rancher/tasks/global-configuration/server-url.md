@@ -1,7 +1,5 @@
 ---
-tag: ["rancher", "server url", "settings" ]
-category: "rancher"
-layout: list-docs
+layout: single
 title: Updating the Server URL
 weight: 90
 ---
