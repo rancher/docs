@@ -8,8 +8,6 @@ else
   cd `dirname $CWD`
 fi
 
-echo "Pulling Theme..." && \
-docker pull rancherlabs/website-theme:latest && \
 echo "Building Image..." && \
 docker build -t rancher/docs:latest . && \
 echo "Pushing Image..." && \

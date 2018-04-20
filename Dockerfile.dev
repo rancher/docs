@@ -1,30 +1,8 @@
-FROM debian:jessie
+FROM rancher/docs:build
 
 VOLUME ["/site"]
-
-RUN apt-get -qq update \
-  && apt-get install -y curl apt-transport-https \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-  && DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends \
-  python-pygments git ca-certificates asciidoc nodejs yarn \
-  && rm -rf /var/lib/apt/lists/*
-
-# Download and install hugo
-ENV HUGO_VERSION 0.37.1
-ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
-
-ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.deb
-RUN dpkg -i /tmp/hugo.deb \
-    && rm /tmp/hugo.deb
-
-# Create working directory
-RUN mkdir -p /run
-COPY package.json /run/
 WORKDIR /run
-
-RUN npm install -g gulp && yarn
+COPY package.json /run/
 
 RUN  ln -s /site/config.toml /run \
   && ln -s /site/.eslintrc.js /run \
@@ -34,9 +12,13 @@ RUN  ln -s /site/config.toml /run \
   && ln -s /site/data /run \
   && ln -s /site/layouts /run \
   && ln -s /site/src /run \
-  && ln -s /site/themes /run
+  && ln -s /site/themes /run \
+  && ln -s /site/scripts /run
 
 COPY gulpfile.babel.js /run/
+
+ADD https://github.com/rancherlabs/website-theme/archive/master.tar.gz master.tar.gz
+RUN mkdir -p /run/node_modules/rancher-website-theme && tar -xzf master.tar.gz --strip 1 -C /run/node_modules/rancher-website-theme && rm master.tar.gz
 
 # Expose default hugo port
 EXPOSE 9001

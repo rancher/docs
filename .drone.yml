@@ -1,9 +1,34 @@
 ---
 pipeline:
-  docker-publish-master:
+  docker-publish-dev:
+    group: publish
     image: plugins/docker
-    dockerfile: Dockerfile
-    repo: rancherlabs/website
+    dockerfile: Dockerfile.dev
+    repo: rancher/docs
+    context: .
+    tag: dev
+    secrets: [docker_username, docker_password]
+    when:
+      branch: master
+      event: push
+
+  docker-publish-staging:
+    group: publish
+    image: plugins/docker
+    dockerfile: Dockerfile.staging
+    repo: rancher/docs
+    context: .
+    tag: staging
+    secrets: [docker_username, docker_password]
+    when:
+      branch: master
+      event: push
+
+  docker-publish-latest:
+    group: publish
+    image: plugins/docker
+    dockerfile: Dockerfile.prod
+    repo: rancher/docs
     context: .
     tag: latest
     secrets: [docker_username, docker_password]
