@@ -1,10 +1,7 @@
 ---
 title: Single Node Installation
 draft: true
-tags: [ "install" ]
 layout: list
-categories:
-  - "rancher"
 ---
 
 # Single-Node Installation
