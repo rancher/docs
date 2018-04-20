@@ -1,7 +1,5 @@
 ---
-tag: ["rancher", "cluster"]
-category: "rancher"
-layout: list-docs
+layout: single
 title: Amazon EC2
 weight: 20
 ---

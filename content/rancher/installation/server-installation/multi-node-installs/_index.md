@@ -1,11 +1,7 @@
 ---
 title: Multi-Node Installation
 draft: true
-tags: [ "tag", "tag", "tag", "tag" ]
-layout: single-left
-categories:
-  - ""
-  - ""
+layout: single
 ---
 
 # Multi-Node Installation

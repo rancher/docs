@@ -1,7 +1,5 @@
 ---
-tag: ["rancher", "quick start"]
-category: "rancher"
-layout: list-docs
+layout: list
 title: Quick Start Guide
 weight: 2
 ---

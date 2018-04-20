@@ -1,3 +1,9 @@
+---
+layout: single
+title: Roles
+weight: 20
+---
+
 # Roles
 
 While _users_ determine who can log into Rancher, _roles_ determine which Kubernetes API endpoints and Rancher roles that a user can access after login. In other words, roles determine the user's _permissions_ when using Rancher.
