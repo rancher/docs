@@ -1,5 +1,6 @@
 ---
-  layout: single-docs
+  tag: ["rancher", "concepts"]
+
   title: Rancher Overview
   weight: 2000
 ---

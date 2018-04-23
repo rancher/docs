@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os"]
+category: "os"
 title: Installing Kernel Modules with Kernel Headers
 weight: 135
 ---

@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "openstack"]
+category: "os"
 title: OpenStack
 weight: 109
 

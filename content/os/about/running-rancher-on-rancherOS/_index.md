@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "rancher"]
+category: "os"
 title: Running Rancher on RancherOS
 weight: 302
 ---

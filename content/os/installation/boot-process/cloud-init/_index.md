@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "cloud-init"]
+category: "os"
 title: Cloud-Init
 weight: 151
 ---

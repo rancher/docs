@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "docker", "system docker"]
+category: "os"
 title: Configuring Docker or System Docker
 weight: 126
 ---

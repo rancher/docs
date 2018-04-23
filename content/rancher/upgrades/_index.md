@@ -1,5 +1,6 @@
 ---
-  layout: single-docs
+  tag: ["rancher", "upgrades"]
+
   title: Upgrade Scenarios
 weight: 1000
 ---

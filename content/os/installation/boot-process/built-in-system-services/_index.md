@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "system services"]
+category: "os"
 title: Built-in System Services
 weight: 150
 ---

@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "consoles"]
+category: "os"
 title: Switching Consoles
 weight: 125
 ---

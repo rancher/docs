@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os"]
+category: "os"
 title: Writing Files
 weight: 122
 ---

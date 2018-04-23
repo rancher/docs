@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "networking", "interfaces"]
+category: "os"
 title: Configuring Network Interfaces
 weight: 170
 ---

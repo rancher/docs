@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "raspberry pi"]
+category: "os"
 title: Raspberry Pi
 weight: 113
 ---

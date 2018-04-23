@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "docker"]
+category: "os"
 title: Switching Docker Versions
 weight: 129
 ---

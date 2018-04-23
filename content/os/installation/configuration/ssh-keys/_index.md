@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "ssh"]
+category: "os"
 title: SSH Keys
 weight: 121
 ---

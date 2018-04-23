@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "docker machine"]
+category: "os"
 title: Using Docker Machine
 weight: 101
 ---

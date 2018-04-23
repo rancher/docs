@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "amazon", "ec2"]
+category: "os"
 title: Amazon EC2
 weight: 105
 ---

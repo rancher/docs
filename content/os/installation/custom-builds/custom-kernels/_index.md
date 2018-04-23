@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "custom", "kernels"]
+category: "os"
 title: Custom Kernels
 weight: 181
 ---

@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "upgrade"]
+category: "os"
 title: Upgrading RancherOS
 weight: 200
 ---

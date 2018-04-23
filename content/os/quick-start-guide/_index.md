@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "quick-start-guide"]
+category: "os"
 title: Quick Start Guide
 weight: 2
 ---

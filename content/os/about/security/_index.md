@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "security"]
+category: "os"
 title: RancherOS Security
 weight: 303
 ---

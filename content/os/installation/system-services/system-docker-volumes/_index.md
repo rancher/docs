@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "system services"]
+category: "os"
 title: System Docker Volumes
 weight: 142
 ---

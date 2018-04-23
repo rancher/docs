@@ -1,5 +1,6 @@
 ---
-layout: list-docs
+tag: ["rancheros", "os", "mounts"]
+category: "os"
 title: Additional Mounts
 weight: 161
 ---
