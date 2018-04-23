@@ -1,7 +1,7 @@
 ---
 title: Resources
-draft: true
-layout: list
+weight: 2275
+layout: single-docs
 ---
 
 # Resources

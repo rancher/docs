@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Roles
-weight: 20
+weight: 3100
 ---
 
 # Roles

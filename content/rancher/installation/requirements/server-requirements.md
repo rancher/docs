@@ -1,7 +1,8 @@
 ---
 title: Rancher Server Requirements
 draft: true
-layout: single
+layout: single-docs
+weight: 150
 ---
 
 # Rancher Server Requirements

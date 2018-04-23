@@ -1,7 +1,7 @@
 ---
 title: Projects
-draft: true
-layout: list
+weight: 2150
+layout: single-docs
 ---
 
 # Projects

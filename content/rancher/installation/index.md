@@ -1,5 +1,7 @@
 ---
 title: Installation
-layout: single
-weight:
+layout: single-docs
+weight: 50
+chapter: true
 ---
+# Installation

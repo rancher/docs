@@ -1,7 +1,7 @@
 ---
 title: Projects
-layout: single
-weight:
+layout: single-docs
+weight: 3650
 ---
 # Projects
 

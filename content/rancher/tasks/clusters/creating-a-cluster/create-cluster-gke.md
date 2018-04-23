@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Google Container Engine
-weight: 70
+weight: 3325
 ---
 
 # Creating a Google Container Engine Cluster

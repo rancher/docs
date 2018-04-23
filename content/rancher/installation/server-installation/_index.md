@@ -1,7 +1,7 @@
 ---
 title: Rancher Server Installation
-draft: true
-layout: list
+layout: single-docs
+weight: 225
 ---
 
 # {{< product >}} Server Installation

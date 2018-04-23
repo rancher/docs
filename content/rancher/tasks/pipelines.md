@@ -1,7 +1,7 @@
 ---
 title:  Pipelines
-layout: single
-weight:
+layout: single-docs
+weight: 3700
 ---
 # Pipelines
 

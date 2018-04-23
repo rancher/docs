@@ -1,7 +1,8 @@
 ---
 title: "Rancher Server Requirements: Existing Cluster Installs"
 draft: true
-layout: single
+layout: single-docs
+weight: 175
 ---
 
 # Rancher Server Requirements: Existing Cluster Installs

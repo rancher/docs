@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: vSphere
-weight: 80
+weight: 3375
 ---
 
 # Creating a vSphere Cluster

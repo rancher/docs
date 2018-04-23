@@ -1,7 +1,7 @@
 ---
 title: Miscellaneous
-layout: single
-weight:
+layout: single-docs
+weight: 3725
 ---
 
 # Miscellaneous

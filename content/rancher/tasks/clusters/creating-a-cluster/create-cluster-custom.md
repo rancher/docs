@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Custom Cluster
-weight: 10
+weight: 3225
 ---
 
 # Creating a Custom Cluster

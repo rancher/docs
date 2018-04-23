@@ -1,7 +1,8 @@
 ---
 title: Rancher Overview
 draft: true
-layout: single
+layout: single-docs
+weight: 2025
 ---
 
 # Rancher Overview

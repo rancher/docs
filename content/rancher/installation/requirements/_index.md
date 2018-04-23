@@ -1,7 +1,8 @@
 ---
 title: Requirements
 draft: true
-layout: list
+layout: single-docs
+weight: 125
 ---
 
 # Requirements

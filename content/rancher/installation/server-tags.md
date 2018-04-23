@@ -1,7 +1,8 @@
 ---
 title: Rancher Server Tags
 draft: true
-layout: single-left
+layout: single-docs-left
+weight: 200
 ---
 
 # Rancher Server Tags

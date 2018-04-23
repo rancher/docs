@@ -1,7 +1,7 @@
 ---
 title: Global Configuration
-draft: true
-layout: list
+layout: single-docs
+weight: 2075
 ---
 
 # Global Configuration

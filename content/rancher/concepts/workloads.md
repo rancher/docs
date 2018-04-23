@@ -1,7 +1,7 @@
 ---
 title: Workloads
-draft: true
-layout: list
+weight: 2175
+layout: single-docs
 ---
 
 # Workloads

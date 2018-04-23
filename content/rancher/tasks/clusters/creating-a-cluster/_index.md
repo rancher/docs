@@ -1,7 +1,7 @@
 ---
-layout: list
+layout: single-docs
 title: Creating a Cluster
-weight: 90
+weight: 3200
 ---
 # Creating a Cluster
 

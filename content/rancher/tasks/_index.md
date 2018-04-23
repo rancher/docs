@@ -1,5 +1,6 @@
 ---
-  layout: list
+  layout: single-docs
   title: Tasks
-  weight: 400
+  weight: 3000
 ---
+# Tasks
