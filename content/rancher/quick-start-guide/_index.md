@@ -1,7 +1,8 @@
 ---
-layout: list
+layout: single-docs
 title: Quick Start Guide
-weight: 2
+weight: 25
+chapter: true
 ---
 
 # Quick Start Guide

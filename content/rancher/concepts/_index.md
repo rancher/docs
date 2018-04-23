@@ -1,5 +1,6 @@
 ---
-  layout: list
+  layout: single-docs
   title: Rancher Overview
-  weight: 300
+  weight: 2000
 ---
+# Rancher Overview

@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Azure
-weight: 50
+weight: 3300
 ---
 
 # Creating an Azure Cluster

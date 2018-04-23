@@ -1,7 +1,8 @@
 ---
 title: SSL Configuration
 draft: true
-layout: single
+layout: single-docs
+weight: 325
 ---
 
 # SSL Configuration

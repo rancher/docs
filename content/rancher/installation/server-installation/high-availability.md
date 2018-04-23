@@ -1,7 +1,8 @@
 ---
 title: High-Availability Installation
-draft: true
-layout: list
+layout: single-docs
+weight: 275
+
 ---
 
 # High-Availability Installation (a.k.a. Multi-Node Installation)

@@ -1,7 +1,7 @@
 ---
 title: Storage
-draft: true
-layout: list
+weight: 2125
+layout: single-docs
 ---
 
 # Storage

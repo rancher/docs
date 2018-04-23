@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Importing a Cluster
-weight: 90
+weight: 3400
 ---
 
 # Importing a Cluster

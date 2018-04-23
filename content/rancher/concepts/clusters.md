@@ -1,7 +1,7 @@
 ---
 title: Clusters
-draft: true
-layout: list
+layout: single-docs
+weight: 2100
 ---
 
 # Clusters

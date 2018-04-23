@@ -1,6 +1,7 @@
 ---
 title: Adding Notifiers
-layout: single
+layout: single-docs
+weight: 3550
 ---
 # Adding Notifiers
 

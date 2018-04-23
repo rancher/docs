@@ -1,6 +1,7 @@
 ---
 title: Load Balancing Configuration
-layout: single
+layout: single-docs
+weight: 300
 ---
 
 # Load Balancing Configuration

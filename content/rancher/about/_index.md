@@ -1,5 +1,13 @@
 ---
-  layout: list
+  layout: single-docs
   title: About
-  weight: 300
+  weight: 5000
 ---
+
+# About
+
+## Update Our docs
+
+## Contributing to Rancher
+
+## FAQs

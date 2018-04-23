@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Azure Container Service
-weight: 30
+weight: 3350
 ---
 
 # Creating an Azure Container Service Cluster

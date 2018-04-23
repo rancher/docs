@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: DigitalOcean
-weight: 60
+weight: 3275
 ---
 
 # Creating a DigitalOcean Cluster

@@ -1,7 +1,7 @@
 ---
-  layout: list
+  layout: single-docs
   title: Upgrade Scenarios
-  weight: 200
+weight: 1000
 ---
 
 Notes:	1.	Upgrade Scenarios

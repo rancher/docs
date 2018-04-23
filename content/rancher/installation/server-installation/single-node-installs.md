@@ -1,7 +1,7 @@
 ---
 title: Single Node Installation
-draft: true
-layout: list
+layout: single-docs
+weight: 250
 ---
 
 # Single-Node Installation

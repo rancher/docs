@@ -1,7 +1,7 @@
 ---
-layout: single
+layout: single-docs
 title: Amazon EC2
-weight: 20
+weight: 3250
 ---
 
 # Creating an Amazon EC2 Cluster

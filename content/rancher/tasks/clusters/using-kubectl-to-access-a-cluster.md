@@ -1,6 +1,7 @@
 ---
 title: Using kubectl to Access a Cluster
-layout: single
+layout: single-docs
+weight: 3450
 ---
 # Using kubectl to Access a Cluster
 

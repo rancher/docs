@@ -1,7 +1,8 @@
 ---
 title: Node Requirements
 draft: true
-layout: single
+layout: single-docs
+weight: 200
 ---
 # Node Requirements
 

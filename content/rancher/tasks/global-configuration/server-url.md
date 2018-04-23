@@ -1,7 +1,7 @@
 ---
-layout: single
-title: Updating the Server URL
-weight: 90
+layout: single-docs
+title: Rancher Server URL
+weight: 3125
 ---
 # Rancher Server URL
 

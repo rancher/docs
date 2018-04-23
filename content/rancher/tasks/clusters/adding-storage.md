@@ -1,6 +1,7 @@
 ---
 title: Adding Storage
-layout: single
+layout: single-docs
+weight: 3500
 ---
 
 # Adding Storage
