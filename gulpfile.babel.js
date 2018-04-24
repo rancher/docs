@@ -75,7 +75,7 @@ gulp.task('init-watch', () => {
   });
   $.watch('src/sass/**/*.scss', () => gulp.start('sass'));
   $.watch('node_modules/rancher-website-theme/**/*.scss', () => gulp.start('sass'));
-  $.watch('src/js/**/*.js', () => gulp.start('js-watch'));
+  $.watch('src/js/**/*.js', () => gulp.start('js'));
   $.watch('src/img/**/*', () => gulp.start('img'));
   $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
@@ -96,11 +96,6 @@ gulp.task('sass', () => {
     .pipe($.size({ gzip: true, showFiles: true }))
     .pipe(gulp.dest('static/css'))
     .pipe(browserSync.stream());
-});
-
-gulp.task('js-watch', ['js'], (cb) => {
-  browserSync.reload();
-  cb();
 });
 
 const vendors = ['ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];

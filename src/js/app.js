@@ -189,14 +189,18 @@ const bootstrapNav = function () {
     let target = e.target;
 
     if (!target.href) {
+      let sub = $(e.currentTarget).find('>ul.tree-nav-sublist');
+
       // stop it from affecting other nodes
       e.preventDefault();
       e.stopPropagation();
 
-      // parent li rather then actual el clicked
-      $(e.currentTarget).toggleClass('open');
+      if (sub.length > 0) {
+        sub.toggleClass('hide');
 
-      $(e.target).find('>ul.tree-nav-sublist').toggleClass('hide');
+        // parent li rather then actual el clicked
+        $(e.currentTarget).toggleClass('open');
+      }
     }
 
   });
