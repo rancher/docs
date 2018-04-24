@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Running RancherOS
 weight: 100
 ---

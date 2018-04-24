@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Configuring Network Interfaces
 weight: 170
 ---

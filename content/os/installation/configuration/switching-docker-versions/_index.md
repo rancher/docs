@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Switching Docker Versions
 weight: 129
 ---

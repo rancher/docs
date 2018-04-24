@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Booting from ISO
 weight: 102
 ---

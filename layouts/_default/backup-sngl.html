@@ -1,0 +1,37 @@
+{{ define "hero" }}
+  <section class="hero">
+    <div class="wrapper p-h-lg row center-xs">
+      <div class="col-md-8">
+        {{ with .Params.Title }}
+        <h1>{{ . }}</h1>
+      {{end}}
+
+      {{ with .Params.Author }}
+        <span class="byline bg-link">{{ . }}</span>
+      {{end}}
+    </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "main" }}
+  <div class="wrapper">
+    <h1>default single template</h1>
+    {{ partial "breadcrumbs.html" . }}
+    <div class="row">
+      <article class="main-content col-sm-8 col-xs-12 p-r-lg">
+
+        {{ if .Params.Image }}
+          <img class="feat-img" src="{{ .Params.Image }}" alt="{{ .Params.Title }}">
+        {{end}}
+
+        {{ .Content }}
+
+      </article>
+
+      <aside class="col-sm-4 col-xs-12">
+        {{ partial "sidebar.html" . }}
+      </aside>
+    </div>
+  </div>
+{{ end }}

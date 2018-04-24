@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: SSH Keys
 weight: 121
 ---

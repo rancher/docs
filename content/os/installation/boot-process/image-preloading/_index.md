@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Image Preloading
 weight: 152
 ---

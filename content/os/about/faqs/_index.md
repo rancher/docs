@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: FAQs
 weight: 301
 ---

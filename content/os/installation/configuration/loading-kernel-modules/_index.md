@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Loading Extra Kernel Modules
 weight: 134
 ---

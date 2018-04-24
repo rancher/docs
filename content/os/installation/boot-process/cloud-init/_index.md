@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Cloud-Init
 weight: 151
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Running Rancher on RancherOS
 weight: 302
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Built-in System Services
 weight: 150
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Quick Start Guide
 weight: 2
 ---

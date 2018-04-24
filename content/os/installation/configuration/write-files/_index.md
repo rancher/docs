@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Writing Files
 weight: 122
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Digital Ocean
 weight: 107
 ---

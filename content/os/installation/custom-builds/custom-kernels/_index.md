@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Custom Kernels
 weight: 181
 ---

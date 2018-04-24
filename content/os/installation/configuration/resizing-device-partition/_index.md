@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Resizing a Device Partition
 weight: 131
 ---

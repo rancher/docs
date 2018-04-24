@@ -3,7 +3,6 @@
 {{ end }}
 
 {{ define "hero" }}
-<!-- theme/layouts/_default/list.html-->
 <section class="hero">
     {{ with .Params.Title }}
       <h1>{{ . }}</h1>
@@ -28,7 +27,7 @@
         {{ partial "docs-side-nav.html" . }}
        </div>
       </aside>
-      <article class="col-sm-8 col-xs-12 p-r-lg">
+      <article class="col-sm-8 col-xs-12 p-l-lg">
         <div class="main-content ">
 
       {{ .Content }}
@@ -66,10 +65,6 @@
                       <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ .Format "January 2, 2006" }}</div>
                     {{end}}
                   {{end}}
-
-<!--                   {{ with .Params.Date }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> By: {{ .Format "January 2, 2006" }}</div>
-                  {{end}} -->
 
                   {{ if eq .Section "blog" }}
                     <div class="p-h-sm p-v-xs"><i class="material-icons">timer</i> Read Time: {{.ReadingTime}} minutes</div>

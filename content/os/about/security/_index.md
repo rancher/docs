@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: RancherOS Security
 weight: 303
 ---

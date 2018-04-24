@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Environment
 weight: 143
 ---

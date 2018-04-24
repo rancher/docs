@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Configuration
 weight: 120
 ---

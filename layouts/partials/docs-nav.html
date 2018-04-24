@@ -1,7 +1,41 @@
+{{ $.Scratch.Set "topLevel" . }}
+{{ $.Scratch.Set "secondLevel" . }}
+
 <nav>
-  <ul class="tabs">
-    {{ range .Sections }}
-      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+  <!-- tabs -->
+  <ul class="tabs row middle-xs">
+    <div class="pull-left m-v-sm">
+      <ul class="dropdown sub-menu unstyled">
+        <li>
+          <a href="{{ .URL }}" class="btn bg-link p-a-0">
+            <span class="p-h-xs">
+            {{ range .Site.Sections }}
+              {{ if .IsAncestor $.CurrentSection }}
+                {{ $.Scratch.Set "topLevel" . }}
+                {{ .Title }}
+              {{end}}
+            {{end}}
+            </span>
+            <i class="material-icons darken p-a-xs">keyboard_arrow_down</i>
+          </a>
+
+          <ul class="sub dropdown-menu bg-white unstyled">
+          {{ range .Site.Sections }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{ end }}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    {{ $topLevel := .Scratch.Get "topLevel"}}
+    {{ if $topLevel }}
+      {{ range $topLevel.Sections }}
+        {{ if .IsAncestor $.CurrentSection }}
+          {{ $.Scratch.Set "secondLevel" . }}
+        {{ end }}
+
+        <li><a href="{{ .Permalink }}" class="">{{ .Title }}</a></li>
+      {{ end }}
     {{ end }}
   </ul>
 </nav>

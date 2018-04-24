@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Using ZFS
 weight: 162
 ---

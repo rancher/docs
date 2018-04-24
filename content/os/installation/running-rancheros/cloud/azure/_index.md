@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Azure
 weight: 110
 ---

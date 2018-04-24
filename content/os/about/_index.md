@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: About
 weight: 300
 ---

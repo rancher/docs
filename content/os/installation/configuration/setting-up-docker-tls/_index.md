@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Setting up Docker TLS
 weight: 127
 ---

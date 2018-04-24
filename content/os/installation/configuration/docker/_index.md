@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Configuring Docker or System Docker
 weight: 126
 ---

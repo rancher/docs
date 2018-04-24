@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Amazon EC2
 weight: 105
 ---

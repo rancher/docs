@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Using Docker Machine
 weight: 101
 ---
