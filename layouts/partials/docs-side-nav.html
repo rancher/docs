@@ -1,70 +1,24 @@
-<!-- {{ range .Data.Pages.GroupBy "Section" }}
-  <h3>{{ .Key }}</h3>
-  <ul class="unstyled">
-      {{ range .Pages }}
-      <li>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-      </li>
-      {{ end }}
-  </ul>
-{{ end }}
- -->
 <h3>{{ .Title }}</h3>
 
-  <div class="tree-nav">
-    <ul>
-      <!-- <li><a href="{{ .RelPermalink}}">Home</a></li> -->
-      <ul>
-        {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }}
- }}
-      </ul>
-    </ul>
-  </div>
-  {{ define "section-tree-nav" }}
+<div class="tree-nav">
+  <ul>
+    {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }}
+  </ul>
+</div>
+{{ define "section-tree-nav" }}
   {{ range .Sections}}
-<!--   <li> -->
-    <li class="bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}<i class="material-icons pull-right">keyboard_arrow_down</i></a>
-      <ul>
-        {{ range .Pages }}
-        <li class="bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
-        {{ end }}
-        <ul>
-        {{ template "section-tree-nav" . }}
+    <li class="tree-nav-item bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}</a>
+      {{if gt (len .Sections) 0}}
+        <i class="material-icons pull-right expand-more">expand_more</i>
+        <ul class="tree-nav-sublist hide">
+          {{ range .Pages }}
+          <li class="tree-nav-item-child bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
+          {{ end }}
+          <ul>
+            {{ template "section-tree-nav" . }}
+          </ul>
         </ul>
-      </ul>
+      {{end}}
     </li>
-<!--   </li> -->
   {{ end }}
 {{ end }}
-
-
-<!--old sidebar-->
-<!-- <div class="bg-default p-a-md">
-  <h4>{{ .Section }}</h4>
-  {{ $page := . }}
-  <ul>
-  {{ range where .Site.Pages "Section" .Section }}
-    {{ $child := . }}
-    {{ if .IsDescendant $page }}
-      <li class="row aside-item">
-        <div class="bg-accent col-md row middle-md center-md"><i class="material-icons">folder</i></div>
-        <div class="col-md aside-info">
-          <a href="{{ .URL }}">{{ .Title }}
-          {{ if .IsAncestor $child }}
-              <i class="material-icons pull-right">keyboard_arrow_down</i>
-          {{ end }}
-          </a>
-        </div>
-        <ul>
-        {{ range where .Site.Pages "Section" .Section }}
-          {{ if .IsDescendant $child }}
-            <li><a href="{{ .URL }}">{{.Title}}</a></li>
-          {{ end }}
-        {{ end }}
-        </ul>
-
-      </li>
-    {{ end }}
-  {{ end }}
-</div>
- -->
