@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: System Docker Volumes
 weight: 142
 ---

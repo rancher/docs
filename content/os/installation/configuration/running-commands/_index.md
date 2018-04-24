@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Running Commands
 weight: 123
 ---

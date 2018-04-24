@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Installing to Disk
 weight: 111
 ---

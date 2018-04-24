@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Users
 weight: 130
 ---

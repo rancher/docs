@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Installing Kernel Modules with Kernel Headers
 weight: 135
 ---

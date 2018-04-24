@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Private Registries
 weight: 128
 ---

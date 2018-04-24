@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: iPXE
 weight: 112
 ---

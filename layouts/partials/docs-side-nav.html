@@ -10,19 +10,20 @@
 {{ end }}
  -->
 <h3>{{ .Title }}</h3>
-{{ $home := .Site.Home }}
+
   <div class="tree-nav">
     <ul>
       <!-- <li><a href="{{ .RelPermalink}}">Home</a></li> -->
       <ul>
-      {{ template "section-tree-nav" $home }}
+        {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }}
+ }}
       </ul>
     </ul>
   </div>
   {{ define "section-tree-nav" }}
   {{ range .Sections}}
 <!--   <li> -->
-    <li class="bg-white"><a href="{{ .RelPermalink}}"><i class="material-icons bg-accent p-a-xs">folder</i>{{ .Title }}<i class="material-icons pull-right">keyboard_arrow_down</i></a>
+    <li class="bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}<i class="material-icons pull-right">keyboard_arrow_down</i></a>
       <ul>
         {{ range .Pages }}
         <li class="bg-white"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>

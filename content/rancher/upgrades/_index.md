@@ -1,6 +1,5 @@
 ---
-  layout: single-docs
-  title: Upgrade Scenarios
+title: Upgrade Scenarios
 weight: 1000
 ---
 

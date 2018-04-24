@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Switching Consoles
 weight: 125
 ---

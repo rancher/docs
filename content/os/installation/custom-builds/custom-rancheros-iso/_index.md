@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Custom RancherOS ISO
 weight: 182
 ---

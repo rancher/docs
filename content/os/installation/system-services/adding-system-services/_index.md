@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: System Services
 weight: 140
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Adding Kernel Parameters
 weight: 133
 ---

@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: Configuring DNS
 weight: 171
 ---

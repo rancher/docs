@@ -1,5 +1,4 @@
 ---
-layout: list-docs
 title: System Logging
 weight: 153
 ---
