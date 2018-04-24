@@ -193,10 +193,14 @@ const bootstrapNav = function () {
       e.preventDefault();
       e.stopPropagation();
 
-      // parent li rather then actual el clicked
-      $(e.currentTarget).toggleClass('open');
 
-      $(e.target).find('>ul.tree-nav-sublist').toggleClass('hide');
+      let sub = $(e.currentTarget).find('>ul.tree-nav-sublist')// || $(e.target).next('ul.tree-nav-sublist');
+      if (sub.length > 0) {
+        sub.toggleClass('hide');
+
+        // parent li rather then actual el clicked
+        $(e.currentTarget).toggleClass('open');
+      }
     }
 
   });
