@@ -1,7 +1,7 @@
 ---
-  title: Installation
-  weight: 100
+title: Installation
+layout: single-docs
+weight: 50
+chapter: true
 ---
-
-Notes:	Installation Scenarios
-A directory of install scenarios. Each scenario offers a synopsis.
+# Installation
