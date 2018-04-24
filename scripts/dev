@@ -64,4 +64,5 @@ if [[ "$THEME" ]]; then
   THEMEVOLUME="-v ${ABSOLUTE}:/run/node_modules/rancher-website-theme"
 fi
 
+docker pull rancher/docs:dev
 docker run --rm -p ${PORT}:${PORT} -it -v $(pwd):/site ${THEMEVOLUME} rancher/docs:dev dev --port=${PORT}
