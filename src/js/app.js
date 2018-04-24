@@ -189,12 +189,12 @@ const bootstrapNav = function () {
     let target = e.target;
 
     if (!target.href) {
+      let sub = $(e.currentTarget).find('>ul.tree-nav-sublist');
+
       // stop it from affecting other nodes
       e.preventDefault();
       e.stopPropagation();
 
-
-      let sub = $(e.currentTarget).find('>ul.tree-nav-sublist')// || $(e.target).next('ul.tree-nav-sublist');
       if (sub.length > 0) {
         sub.toggleClass('hide');
 
