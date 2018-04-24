@@ -1,6 +1,4 @@
 ---
-  tag: ["rancher", "tasks"]
-
   title: Tasks
   weight: 3000
 ---

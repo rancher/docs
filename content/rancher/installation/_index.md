@@ -1,6 +1,4 @@
 ---
-  tag: ["rancher", "installation"]
-
   title: Installation
   weight: 100
 ---
