@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Setting the Hostname
 weight: 124
 ---

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Image Preloading
 weight: 152
 ---

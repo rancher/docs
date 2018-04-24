@@ -1,6 +1,4 @@
 ---
-tag: ["rancher", "quick start"]
-category: "rancher"
 title: Quick Start Guide
 weight: 25
 chapter: true

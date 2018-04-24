@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Persistent State Partition
 weight: 160
 ---

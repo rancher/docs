@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "system services"]
-category: "os"
 title: System Services
 weight: 140
 ---

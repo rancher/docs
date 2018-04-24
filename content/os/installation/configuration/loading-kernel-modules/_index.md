@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Loading Extra Kernel Modules
 weight: 134
 ---

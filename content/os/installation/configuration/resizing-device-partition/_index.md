@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Resizing a Device Partition
 weight: 131
 ---

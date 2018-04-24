@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "iso"]
-category: "os"
 title: Booting from ISO
 weight: 102
 ---

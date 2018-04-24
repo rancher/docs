@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "docker", "tls"]
-category: "os"
 title: Setting up Docker TLS
 weight: 127
 ---

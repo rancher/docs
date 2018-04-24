@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os"]
-category: "os"
 title: Adding Kernel Parameters
 weight: 133
 ---

@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "vmware", "esxi"]
-category: "os"
 title: VMware ESXi
 weight: 108
 ---

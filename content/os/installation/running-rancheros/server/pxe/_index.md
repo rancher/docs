@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "pxe", "ipxe"]
-category: "os"
 title: iPXE
 weight: 112
 ---

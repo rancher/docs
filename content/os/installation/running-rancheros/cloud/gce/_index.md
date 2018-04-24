@@ -1,6 +1,4 @@
 ---
-tag: ["rancheros", "os", "gce"]
-category: "os"
 title: Google Cloud Engine (GCE)
 weight: 106
 ---
