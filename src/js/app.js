@@ -177,12 +177,32 @@ const bootstrapSorts = function() {
 }
 
 const bootstrapNav = function () {
-  // debugger;
+  // mobile nav
   // init-attaches to js object
   mlStackNav();
   // consume
   $(".js-ml-stack-nav").mlStackNav();
+
+  // sidenav
+  $('.tree-nav .tree-nav-item').on('click', function(e) {
+    // actual clicked element
+    let target = e.target;
+
+    if (!target.href) {
+      // stop it from affecting other nodes
+      e.preventDefault();
+      e.stopPropagation();
+
+      // parent li rather then actual el clicked
+      $(e.currentTarget).toggleClass('open');
+
+      $(e.target).find('>ul.tree-nav-sublist').toggleClass('hide');
+    }
+
+  });
 }
+
+
 bootstrapNav();
 bootstrapDropdowns();
 bootstrapModals();
