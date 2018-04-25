@@ -32,16 +32,22 @@ gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
 });
 
-gulp.task('build', () => {
-  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo' /*, 'hugo-search-index'*/);
+gulp.task('build', (cb) => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo' /*, 'hugo-search-index'*/, () => {
+    cb();
+  });
 });
 
-gulp.task('build-staging', () => {
-  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo-staging' /*, 'hugo-search-index'*/);
+gulp.task('build-staging', (cb) => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging' /*, 'hugo-search-index'*/, () => {
+    cb();
+  });
 });
 
-gulp.task('build-dev', () => {
-  runSequence('pub-delete', ['sass', 'build:vendor', 'build:app', 'fonts', 'img'], 'hugo-dev' /*, 'hugo-search-index'*/);
+gulp.task('build-dev', (cb) => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev' /*, 'hugo-search-index'*/, () => {
+    cb();
+  });
 });
 
 gulp.task('hugo', (cb) => {
@@ -73,11 +79,10 @@ gulp.task('init-watch', () => {
     port: 9001,
     open: false
   });
-  $.watch('src/sass/**/*.scss', () => gulp.start('sass'));
-  $.watch('node_modules/rancher-website-theme/**/*.scss', () => gulp.start('sass'));
-  $.watch('src/js/**/*.js', () => gulp.start('build:app'));
-  $.watch('src/img/**/*', () => gulp.start('img'));
-  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  gulp.watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => gulp.start('sass'));
+  gulp.watch('src/js/**/*.js', () => gulp.start('build:app'));
+  gulp.watch('src/img/**/*', () => gulp.start('img'));
+  gulp.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
@@ -94,8 +99,7 @@ gulp.task('sass', () => {
     .pipe($.autoprefixer(['ie >= 10', 'last 2 versions']))
     .pipe($.if(isProduction, $.cssnano({ discardUnused: false, minifyFontValues: false })))
     .pipe($.size({ gzip: true, showFiles: true }))
-    .pipe(gulp.dest('static/css'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('static/css'));
 });
 
 const vendors = ['ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
@@ -108,14 +112,14 @@ gulp.task('build:vendor', () => {
     b.require(lib);
   });
 
-  b.bundle()
+  return b.bundle()
     .pipe(source('vendor.js'))
     .pipe(buffer())
     .pipe(gulp.dest('static/js'));
 });
 
 gulp.task('build:app', () => {
-  browserify({
+  return browserify({
     entries: ['./src/js/app.js'],
     extensions: ['.js',],
     debug: true,
@@ -151,11 +155,5 @@ gulp.task('cms-delete', () => {
 });
 
 gulp.task('pub-delete', (cb) => {
-  del(['public/**', '!public'], {
-    // dryRun: true,
-    dot: true
-  }).then(paths => {
-    console.log('Total Files Deleted: ' + paths.length + '\n');
-    cb();
-  });
+  return del(['public/**', '!public']);
 });
