@@ -1,5 +1,5 @@
-{{ .Scratch.Set "topLevel" . }}
-{{ .Scratch.Set "secondLevel" . }}
+{{ $.Scratch.Set "topLevel" . }}
+{{ $.Scratch.Set "secondLevel" . }}
 
 <nav>
   <!-- tabs -->
@@ -10,9 +10,11 @@
           <a href="{{ .URL }}" class="btn bg-link p-a-0">
             <span class="p-h-xs">
             {{ range .Site.Sections }}
-              {{ if .IsAncestor .CurrentSection }}
-                {{ .Scratch.Set "topLevel" . }}
-                {{ .Title }}
+              {{if $.CurrentSection}}
+                {{ if .IsAncestor $.CurrentSection }}
+                  {{ $.Scratch.Set "topLevel" . }}
+                  {{ .Title }}
+                {{end}}
               {{end}}
             {{end}}
             </span>
