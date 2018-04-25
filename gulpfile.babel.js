@@ -75,9 +75,9 @@ gulp.task('init-watch', () => {
   });
   $.watch('src/sass/**/*.scss', () => gulp.start('sass'));
   $.watch('node_modules/rancher-website-theme/**/*.scss', () => gulp.start('sass'));
-  $.watch('src/js/**/*.js', () => gulp.start('js'));
+  $.watch('src/js/**/*.js', () => gulp.start('build:app'));
   $.watch('src/img/**/*', () => gulp.start('img'));
-  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  $.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
@@ -126,18 +126,6 @@ gulp.task('build:app', () => {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(gulp.dest('static/js'));
-});
-
-gulp.task('js', () => {
-  return gulp.src([
-    'src/js/**/*.js'
-  ])
-    .pipe($.plumber({ errorHandler: onError }))
-    .pipe($.babel())
-    .pipe($.concat('app.js'))
-    .pipe($.if(isProduction, $.uglify()))
-    .pipe($.size({ gzip: true, showFiles: true }))
     .pipe(gulp.dest('static/js'));
 });
 

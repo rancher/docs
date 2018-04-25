@@ -12,6 +12,7 @@ RUN  ln -s /site/config.toml /run \
   && ln -s /site/data /run \
   && ln -s /site/layouts /run \
   && ln -s /site/src /run \
+  && ln -s /site/static /run \
   && ln -s /site/themes /run \
   && ln -s /site/scripts /run
 
