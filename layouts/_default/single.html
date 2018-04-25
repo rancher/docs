@@ -17,16 +17,13 @@
 
 {{ define "main" }}
   <div class="wrapper">
-    {{ partial "breadcrumbs.html" . }}
     {{ partial "docs-nav.html" . }}
 
     <div class="row m-t-sm">
-      <aside class="col-sm-4 col-xs-12">
-       <div class="bg-default p-a-sm">
+      <aside class="col-sm-3 col-xs-12">
         {{ partial "docs-side-nav.html" . }}
-       </div>
       </aside>
-      <article class="col-sm-8 col-xs-12 p-l-lg">
+      <article class="col-sm-8 col-xs-12 p-h-lg">
         <div class="main-content ">
 
       {{ .Content }}
@@ -81,5 +78,6 @@
         {{ template "_internal/pagination.html" . }}
       </article>
     </div>
+    {{ partial "breadcrumbs.html" . }}
   </div>
 {{ end }}
