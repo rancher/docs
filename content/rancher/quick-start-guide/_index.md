@@ -18,41 +18,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
 1.	[Provision a Linux Host](#provision-a-linux-host)
 
-<<<<<<< HEAD
-	Begin by provisioning a Linux host.
 
-2.	[Install Rancher](#install-rancher)
-
-	From your Linux host, run the Docker command for installing Rancher.
-
-3.	[Log In](#log-in)
-
-	Browse to your Linux host to access the Rancher UI.
-
-4.	[Create the Cluster](#create-the-cluster)
-
-	Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
-
-5.	[Deploy a Workload](#deploy-a-workload)
-
-	Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.
-
-6.	[View Your Application](#view-your-application)
-
-	When your workload finishes deployment, browse to your node IP to make sure NGINX is running.
-
-7.	[What's Next?](#whats-next)
-
-	Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.
-
-## Provision a Linux Host
-
-Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
-
-- A cloud-host virtual machine (VM)
-- An on-premise VM
-- A bare-metal server
-=======
 1.  [Review Requirements](#host-and-node-requirements)
 
     Before you do anything, review the requirements.
@@ -84,7 +50,7 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 8.  [What's Next?](#whats-next)
 
     Now that you've created a cluster and deployed a workload, find out what else you can do with Rancher v2.0.
->>>>>>> more menu setup
+
 
 Provision the host according to the requirements below.
 
@@ -108,8 +74,6 @@ Provision the host according to the requirements below.
     > * For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
     > * Docker requirements apply to both your Linux host and your cluster nodes.
 
-<<<<<<< HEAD
-=======
 #### Port Requirements
 
 When provisioning your Linux host, open the ports listed below so that your master and worker nodes can communicate.
@@ -149,7 +113,6 @@ Begin by provisioning a Linux host to be your Rancher server and a template for 
 
 Provision the server according to the [requirements above](#host-and-node-requirements).
 
->>>>>>> more menu setup
 ### Install Rancher
 
 To install Rancher on your host, connect to it and then use a shell to install.
@@ -158,12 +121,6 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 2.  From your shell, enter the following command:
 
-<<<<<<< HEAD
-	```
-	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/server
-	```
-
-=======
     ```
     $ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/server:preview
     ```
@@ -171,7 +128,6 @@ To install Rancher on your host, connect to it and then use a shell to install.
     >**Note:**
     > Although Rancher v2.0 is in beta, the `preview` tag is still used for installation.
 
->>>>>>> more menu setup
 **Result:** Rancher is installed.
 
 ### Log In
@@ -184,52 +140,21 @@ Log in to Rancher to begin using the application. After you log in, you'll make 
 
     Replace `<SERVER_IP>` with your host IP address.
 
-<<<<<<< HEAD
-2.	When prompted, create a password for the default `admin` account there cowpoke!
-=======
     > **Note:** Rancher v2.0 beta:
     >
     > - Supports only the HTTPS protocol.
     > - Uses a self-signed certificate. Due to this signature, the browser prompts you to trust the certificate before login. Following GA, you'll be able to use your own certificate.
 
 2.  When prompted, create a password for the default `admin` account there cowpoke!
->>>>>>> more menu setup
 
 3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node in your cluster must be able to resolve to the URL.
 
-<<<<<<< HEAD
-## Create the Cluster
-=======
     ![login](../../../../img/rancher/server-url.png)
->>>>>>> more menu setup
 
 Welcome to {{< product >}}! Use our application to clone your Linux host and configure them as a Kubernetes cluster.
 
 In this task, use the versatile **Custom** option. This option lets you convert _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) into a cluster.
 
-<<<<<<< HEAD
-1. From the **Clusters** page, click **Add Cluster**.
-
-2. Choose **Custom**.
-
-3. Enter a **Cluster Name**.
-
-4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
-
-5. Click **Next**.
-
-6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
-
-7. Skip the **Labels** stuff. It's not important for now.
-
-8. Copy the command displayed on screen to your clipboard.
-
-9. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
-
-10. When you finish running the command on your Linux host, click **Done**.
-
-{{< result_create-cluster >}}
-=======
 1.  Click **+ Add Cluster**.
 
     ![add cluster](../../../../img/rancher/click-add-cluster.png)
@@ -309,7 +234,6 @@ In this task, use the versatile **Custom** option. This option lets you convert 
 -   Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 -   You can access your cluster after its state is updated to **Active**.
 -   **Active** clusters are assigned a **Project** and **Namespace**, both of which are named `Default`.
->>>>>>> more menu setup
 
 ### Deploy a Workload
 
@@ -333,19 +257,11 @@ For this workload, you'll be deploying the application NGINX.
 
 7.	From **Port Mapping**, click **Add Port**.
 
-<<<<<<< HEAD
-8.	From the **Publish on** drop-down, make sure that **Every node** is selected.
-=======
     ![enter-docker-image](../../../../img/rancher/enter-docker-image.png)
->>>>>>> more menu setup
 
 8.	From the **Source Port** field, leave the **Random** value in place.
 
-<<<<<<< HEAD
-7. From the **Container Port** field, enter port `80`.
-=======
     >**Note:** During Rancher v2.0 beta, only port 80 is supported. Other ports will be supported at GA.
->>>>>>> more menu setup
 
 8. Leave the remaining options on their default setting. We'll tell you about them later.
 
@@ -366,10 +282,6 @@ From the **Workloads** page, click the link underneath your workload. If your de
 
 Congratulations! You have:
 
-<<<<<<< HEAD
--	Created your first cluster.
--	Deployed NGINX to your cluster using a workload.
-=======
 -   Created your first cluster.
 -   Deployed an application to your cluster using a workload.
 
@@ -483,4 +395,3 @@ You can generate a Kubernetes configuration file to use `kubectl` on your deskto
 ### Deploying on Ubuntu
 
 It is possible to use Rancher to control Canonical Kubernetes (cdk) clusters running on Ubuntu. A full set of instructions has been provided by Canonical for doing this here: [https://kubernetes.io/docs/getting-started-guides/ubuntu/rancher/](https://kubernetes.io/docs/getting-started-guides/ubuntu/rancher/).-->
->>>>>>> more menu setup
