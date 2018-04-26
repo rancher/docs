@@ -15,6 +15,7 @@ RUN  ln -s /site/config.toml /run \
   && ln -s /site/themes /run \
   && ln -s /site/scripts /run
 
+# gulp doesn't like symlinks
 COPY gulpfile.babel.js /run/
 
 ADD https://github.com/rancherlabs/website-theme/archive/master.tar.gz master.tar.gz
