@@ -31,6 +31,5 @@ RancherOS does not currently expand the root partition to fill the remainder of 
 11. `sudo system-docker restart docker` to restart Docker using the new root
 
 If this is not a new installation, you'll have to copy over your existing Docker root (`/var/lib/docker`) to the new root (`/mnt/docker`).
-
 1. `sudo cp -R /var/lib/docker/* /mnt/docker` to recursively copy all files
 2. `sudo system-docker restart docker` to restart Docker using the new root

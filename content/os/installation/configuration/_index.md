@@ -8,7 +8,6 @@ weight: 120
 There are two ways that RancherOS can be configured.
 
 1. A cloud-config file can be used to provide configuration when first booting RancherOS.
-
 2. Manually changing configuration with the `ros config` command.
 
 Typically, when you first boot the server, you pass in a cloud-config file to configure the initialization of the server. After the first boot, if you have any changes for the configuration, it's recommended that you use `ros config` to set the necessary configuration properties. Any changes will be saved on disk and a reboot will be required for changes to be applied.
