@@ -28,7 +28,8 @@
       <article class="{{ if (gt (len .Sections) 0) }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
         <div class="main-content ">
 
-      {{ .Content }}
+        {{ .Content }}
+
         {{ range (.Paginator 5).Pages }}
           <div class="box m-b-md">
               <div class="p-a-sm">
