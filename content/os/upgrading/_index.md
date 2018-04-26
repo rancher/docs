@@ -1,6 +1,6 @@
 ---
 title: Upgrading RancherOS
-weight: 200
+weight: 3
 ---
 
 ## Upgrading

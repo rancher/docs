@@ -76,8 +76,8 @@
         {{ end }}
       </div>
         {{ template "_internal/pagination.html" . }}
+        {{ partial "breadcrumbs.html" . }}
       </article>
     </div>
-    {{ partial "breadcrumbs.html" . }}
   </div>
 {{ end }}
