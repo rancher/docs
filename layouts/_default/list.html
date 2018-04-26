@@ -18,14 +18,15 @@
 {{ define "main" }}
   <div class="wrapper">
     {{ partial "docs-nav.html" . }}
+    {{ $showSidebar := (gt (len ($.Scratch.Get "secondLevel").Sections) 0) }}
 
     <div class="row m-t-sm">
-      {{ if (gt (len .Sections) 0) }}
-      <aside class="col-sm-3 col-xs-12">
+      {{ if $showSidebar }}
+        <aside class="col-sm-3 col-xs-12">
           {{ partial "docs-side-nav.html" . }}
-      </aside>
+        </aside>
       {{end}}
-      <article class="{{ if (gt (len .Sections) 0) }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+      <article class="{{ if $showSidebar }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
         <div class="main-content ">
 
         {{ .Content }}
