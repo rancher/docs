@@ -1,6 +1,5 @@
 ---
 title: SSL Configuration
-layout: single-docs
 weight: 325
 ---
 
@@ -12,7 +11,7 @@ Rancher is secure by default. This means that SSL is required when interacting w
 
 There are two places where you certificates can be stored and used:
 
-- Inside the `rancher/server` container 
+- Inside the `rancher/server` container
 - Using an external loadbalancer or proxy
 
 ## Options for inside the `rancher/server` container
@@ -111,7 +110,7 @@ When using a loadbalancer or proxy in front of the `rancher/server` container, t
 
 The loadbalancer or proxy has to be configured to support the following:
 
-* Passing/setting the following headers 
+* Passing/setting the following headers
 
 | Header               | Value                                     | Description                                                  |
 | -------------------- | ----------------------------------------- | :----------------------------------------------------------- |

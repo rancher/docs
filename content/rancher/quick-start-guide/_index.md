@@ -1,7 +1,6 @@
 ---
 title: Quick Start Guide
 weight: 25
-chapter: true
 ---
 
 # Quick Start Guide
@@ -80,7 +79,7 @@ When provisioning your Linux host, open the ports listed below so that your mast
 
 ##### Master Nodes (etcd and controlplane nodes)
 
-Protocol  | Direction  | Port Range  | Purpose  
+Protocol  | Direction  | Port Range  | Purpose
 --|---|---|--
 TCP | Inbound | 22  |  SSH server
 TCP | Inbound | 80  | Canal
@@ -94,7 +93,7 @@ TCP | Inbound | 10256  | kubeproxy
 
 ##### Worker Nodes
 
-Protocol  | Direction  | Port Range  | Purpose  
+Protocol  | Direction  | Port Range  | Purpose
 --|---|---|--
 TCP | Inbound | 22  |  SSH Server
 TCP | Inbound | 80  | Canal
@@ -387,7 +386,7 @@ Out of the box, Rancher is bundled with a catalog of applications (i.e. a [Helm 
 
 ### Using Kubeconfig File
 
-You can generate a Kubernetes configuration file to use `kubectl` on your desktop. A Kubernetes configuration file, i.e. *kubeconfig*, lets you configure access to one or more clusters from your desktop.  
+You can generate a Kubernetes configuration file to use `kubectl` on your desktop. A Kubernetes configuration file, i.e. *kubeconfig*, lets you configure access to one or more clusters from your desktop.
 
 1. On the Rancher UI menu, select the cluster.
 2. In the **Dashboard**, click on the **Kubeconfig File** button. A *kubeconfig* file will be generated so you can use `kubectl` on your desktop. Copy and paste the code that displays into your `~/.kube/config` file, and then start using `kubectl`. Click **Close** to return to the Rancher UI.
