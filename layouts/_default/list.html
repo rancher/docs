@@ -20,17 +20,12 @@
     {{ partial "docs-nav.html" . }}
 
     <div class="row m-t-sm">
+      {{ if (gt (len .Sections) 0) }}
       <aside class="col-sm-3 col-xs-12">
-        {{ if .Parent }}
           {{ partial "docs-side-nav.html" . }}
-
-          {{ else }}
-
-          {{ .TableOfContents }}
-        {{end}}
-
       </aside>
-      <article class="col-sm-8 col-xs-12 p-l-lg">
+      {{end}}
+      <article class="{{ if (gt (len .Sections) 0) }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
         <div class="main-content ">
 
       {{ .Content }}
@@ -85,6 +80,10 @@
         {{ template "_internal/pagination.html" . }}
         {{ partial "breadcrumbs.html" . }}
       </article>
+      <aside class="col-sm-3 col-xs-12">
+        <h4>On this page</h4>
+        {{ .TableOfContents }}
+      </aside>
     </div>
   </div>
 {{ end }}
