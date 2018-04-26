@@ -1,6 +1,6 @@
 ---
 title: Quick Start Guide
-weight: 2
+weight: 1
 ---
 
 

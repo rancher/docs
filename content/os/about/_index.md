@@ -1,6 +1,6 @@
 ---
 title: About
-weight: 300
+weight: 4
 ---
 
 ## Contributing to RancherOS

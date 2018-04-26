@@ -4,7 +4,7 @@
 <nav>
   <!-- tabs -->
   <ul class="tabs row middle-xs">
-    <div class="pull-left m-v-sm">
+    <div class="pull-left p-v-xs">
       <ul class="dropdown sub-menu unstyled">
         <li>
           <a href="{{ .URL }}" class="btn bg-link p-a-0">
@@ -13,7 +13,7 @@
               {{if $.CurrentSection}}
                 {{ if .IsAncestor $.CurrentSection }}
                   {{ $.Scratch.Set "topLevel" . }}
-                  {{ .Title }}
+                  {{ .Params.shortTitle }}
                 {{end}}
               {{end}}
             {{end}}
@@ -23,8 +23,9 @@
 
           <ul class="sub dropdown-menu bg-white unstyled">
           {{ range .Site.Sections }}
-            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            <li><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
           {{ end }}
+          <li><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
           </ul>
         </li>
       </ul>

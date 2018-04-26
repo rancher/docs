@@ -44,6 +44,7 @@
 '../../node_modules/rancher-website-theme/static/scss/components/button',
 '../../node_modules/rancher-website-theme/static/scss/components/dropdown',
 '../../node_modules/rancher-website-theme/static/scss/components/forms',
+'../../node_modules/rancher-website-theme/static/scss/components/tree',
 '../../node_modules/rancher-website-theme/static/scss/components/tabs';
 
 // 6. Page-specific styles
@@ -57,23 +58,4 @@
 .modal-content {
   visibility: hidden;
   display: none;
-}
-
-.tree-nav {
-  .tree-nav-item {
-    .tree-nav-sublist {
-      &.hide {
-        display: none;
-      }
-    }
-    &.open {
-      >.expand-more {
-        -webkit-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        -o-transform: rotate(180deg);
-        transform: rotate(180deg);
-      }
-    }
-  }
 }
