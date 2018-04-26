@@ -28,7 +28,6 @@ This service provides the RancherOS user interface by running `sshd` and `getty`
 1. If the `rancher.password=<password>` kernel parameter exists, it sets `<password>` as the password for the `rancher` user.
 2. If there are no host SSH keys, it generates host SSH keys and saves them under `rancher.ssh.keys` in [cloud-config]({{< baseurl >}}/os/installation/configuration/#cloud-config).
 3. Runs `cloud-init -execute`, which does the following:
-
    * Updates `.ssh/authorized_keys` in `/home/rancher` and `/home/docker` from [cloud-config]({{< baseurl >}}/os/installation/configuration/ssh-keys/) and metadata.
    * Writes files specified by the `write_files` [cloud-config]({{< baseurl >}}/os/installation/configuration/write-files/) setting.
    * Resizes the device specified by the `rancher.resize_device` [cloud-config]({{< baseurl >}}/os/installation/configuration/resizing-device-partition/) setting.
