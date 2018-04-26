@@ -14,11 +14,8 @@ weight: 106
 RancherOS is available as an image in GCE, and can be easily run in Google Compute Engine (GCE).  Let’s walk through how to upload GCE image.
 
 1. Download the most recent RancherOS image. The image can be found in the [release artifacts](https://github.com/rancher/os/releases). It is a `.tar.gz` file.
-
 2. Follow Google's instructions on how to [upload the image](https://cloud.google.com/compute/docs/tutorials/building-images#publishingimage). The image must be uploaded into a Google Cloud Storage bucket before it can be added to a project.
-
 3. Follow Google's instructions on how to [import a RAW image](https://cloud.google.com/compute/docs/images/import-existing-image#use_saved_image).
-
 4. Once the image is added to your Google Compute Engine, we can start creating new instances!
 
 ### Launching RancherOS using `gcloud compute`
@@ -81,17 +78,11 @@ Updated [https://www.googleapis.com/compute/v1/projects/PROJECT_ID/zones/ZONE_OF
 After the image is uploaded, it's easy to use the console to create new instances. You will **not** be able to upload your own cloud config file when creating instances through the console. You can add it after the instance is created using `gcloud compute` commands and resetting the instance.
 
 1. Make sure you are in the project that the image was created in.
-
     ![RancherOS on GCE 4]({{< baseurl >}}/img/os/Rancher_gce4.png)
-
 2. In the navigation bar, click on the **VM instances**, which is located at Compute -> Compute Engine -> Metadata.  Click on **Create instance**.
-
     ![RancherOS on GCE 5]({{< baseurl >}}/img/os/Rancher_gce5.png)
-
 2.  Fill out the information for your instance. In the **Image** dropdown, your private image will be listed among the public images provided by Google. Select the private image for RancherOS. Click **Create**.
-
     ![RancherOS on GCE 6]({{< baseurl >}}/img/os/Rancher_gce6.png)
-
 3. Your instance is being created and will be up and running shortly!
 
 #### Adding SSH keys

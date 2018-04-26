@@ -21,7 +21,13 @@
 
     <div class="row m-t-sm">
       <aside class="col-sm-3 col-xs-12">
-        {{ partial "docs-side-nav.html" . }}
+        {{ if .Parent }}
+          {{ partial "docs-side-nav.html" . }}
+
+          {{ else }}
+
+          {{ .TableOfContents }}
+        {{end}}
       </aside>
       <article class="col-sm-8 col-xs-12 p-h-lg">
         <div class="main-content ">
