@@ -110,32 +110,6 @@ const bootstrapSlider = function() {
 
 }
 
-const getEvents = function() {
-  return $.get('/events/feed/index.json', (resp)=> {
-    buildEventsList(resp.events);
-  });
-}
-
-const buildEventsList = function(events) {
-  let htmlOut = '';
-  events.sort((a,b) => {
-    return moment(a.eventDate).isBefore(b.eventDate);
-  });
-  events.forEach((el) => {
-    if (moment(el.eventDate).isAfter()) {
-      htmlOut += `<div class="row aside-item">
-            <div class="bg-accent col-md row middle-md center-md"><i class="material-icons">event_available</i></div>
-            <div class="col-md aside-info">
-              <a href="${el.permalink}">${el.title}</a>
-              ${el.eventDate}
-            </div>
-          </div>`;
-    }
-  });
-
-  $('#events-list-injected').html(htmlOut);
-}
-
 const bootstrapSorts = function() {
   if (window.location.pathname.includes('events')) {
     $('.sort-button').on('click', (el)=> {
@@ -176,6 +150,35 @@ const bootstrapSorts = function() {
   }
 }
 
+const toggleNav = function(input, mode="toggle"/*show, hide*/) {
+  let $target = $(input);
+  let children = $target.find('>UL');
+  let icon = $target.find('>.expand-toggle');
+
+  let show = ((mode === 'toggle' && children.hasClass('hide')) || mode === 'show' );
+
+  if (children.length > 0) {
+    if ( show ) {
+      children.removeClass('hide');
+      icon.html('indeterminate_check_box');
+    } else {
+      children.addClass('hide');
+      icon.html('add_box');
+    }
+  }
+
+  if ( show ) {
+    let parent = $target.parent().parent();
+    if ( parent && parent.length ) {
+      toggleNav(parent, 'show');
+    }
+
+    $target.addClass('open');
+  } else {
+    $target.removeClass('open');
+  }
+}
+
 const bootstrapNav = function () {
   // mobile nav
   // init-attaches to js object
@@ -184,35 +187,33 @@ const bootstrapNav = function () {
   $(".js-ml-stack-nav").mlStackNav();
 
   // sidenav
-  $('.tree-nav .tree-nav-item').on('click', function(e) {
+  $('.tree-nav').on('click', '.tree-nav-item', function(e) {
     // actual clicked element
     let target = e.target;
 
-    if (!target.href) {
-      let sub = $(e.currentTarget).find('>ul.tree-nav-sublist');
-
-      // stop it from affecting other nodes
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (sub.length > 0) {
-        sub.toggleClass('hide');
-
-        // parent li rather then actual el clicked
-        $(e.currentTarget).toggleClass('open');
-      }
+    if (target.href) {
+      return;
     }
 
+    // stop it from affecting other nodes
+    e.preventDefault();
+    e.stopPropagation();
+
+    toggleNav(e.currentTarget);
   });
+
+  // epand the current page
+  let cur = $('.tree-nav A[href="'+window.location.pathname+'"]').closest('LI');
+  cur.addClass('active');
+  toggleNav(cur, 'show');
+  $('.tree-nav').removeClass('invisible');
 }
 
 
-bootstrapNav();
-bootstrapDropdowns();
-bootstrapModals();
-bootstrapSorts();
-bootstrapSlider();
-
-if ($('#events-list-injected').length > 0) {
-  getEvents();
-}
+$(document).ready(() => {
+  bootstrapNav();
+  bootstrapDropdowns();
+  bootstrapModals();
+  bootstrapSorts();
+  bootstrapSlider();
+});

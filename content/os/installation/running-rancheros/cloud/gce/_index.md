@@ -1,5 +1,5 @@
 ---
-title: Google Cloud Engine (GCE)
+title: Google Compute Engine (GCE)
 weight: 106
 ---
 
