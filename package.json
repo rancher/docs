@@ -32,6 +32,7 @@
     "jquery": "^3.3.1",
     "moment": "^2.20.1",
     "node-sass-tilde-importer": "^1.0.0",
+    "rancher-website-theme": "https://github.com/rancherlabs/website-theme.git",
     "run-sequence": "^2.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
@@ -46,7 +47,6 @@
     "hugo-search-index": "^0.4.1",
     "lory.js": "^2.4.1",
     "ml-stack-nav": "^1.1.2",
-    "rancher-website-theme": "https://github.com/rancherlabs/website-theme.git",
     "tingle.js": "^0.13.2"
   }
 }

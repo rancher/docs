@@ -11,6 +11,7 @@ import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
+import watch from 'gulp-watch';
 
 const $ = gulpLoadPlugins();
 const browserSync = require('browser-sync').create();
@@ -79,10 +80,10 @@ gulp.task('init-watch', () => {
     port: 9001,
     open: false
   });
-  gulp.watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => gulp.start('sass'));
-  gulp.watch('src/js/**/*.js', () => gulp.start('build:app'));
-  gulp.watch('src/img/**/*', () => gulp.start('img'));
-  gulp.watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => gulp.start('sass'));
+  watch('src/js/**/*.js', () => gulp.start('build:app'));
+  watch('src/img/**/*', () => gulp.start('img'));
+  watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
