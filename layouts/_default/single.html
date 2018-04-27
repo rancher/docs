@@ -33,55 +33,7 @@
 
         {{ .Content }}
 
-        {{ range (.Paginator 5).Pages }}
-          <div class="box m-b-md">
-              <div class="p-a-sm">
-                <h3><a href="{{.URL}}">{{.Title}}</a></h3>
-
-                {{ if .Params.Image }}
-                  <div class="thumbnail"><img src="{{ .Params.Image }}" alt="{{ .Params.Title }}"></div>
-                {{end}}
-
-                <p>{{ .Summary | safeHTML }}</p>
-                {{ if .Truncated }}
-                <div>
-                  <a href="{{ .RelPermalink }}">Read More…</a>
-                </div>
-                {{ end }}
-              </div>
-              <div class="bg-default">
-                <div class="row">
-
-                  {{ with .Params.Author }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">person_outline</i> By: {{ . }}</div>
-                  {{end}}
-
-                  {{ if eq .Section "events" }}
-                    {{ with .Params.EventDate }}
-                      <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ . }}</div>
-                    {{end}}
-
-                  {{ else }}
-
-                    {{ with .Params.Date }}
-                      <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ .Format "January 2, 2006" }}</div>
-                    {{end}}
-                  {{end}}
-
-                  {{ if eq .Section "blog" }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">timer</i> Read Time: {{.ReadingTime}} minutes</div>
-                  {{end}}
-
-                  {{ with .Params.Location }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">location_on</i> {{ . }}</div>
-                  {{end}}
-
-                </div>
-              </div>
-          </div>
-        {{ end }}
       </div>
-        {{ template "_internal/pagination.html" . }}
         {{ partial "breadcrumbs.html" . }}
       </article>
       <aside class="col-sm-3 col-xs-12 unstyled">
