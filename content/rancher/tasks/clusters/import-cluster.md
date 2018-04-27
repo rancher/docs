@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Importing a Cluster
 weight: 3400
 ---

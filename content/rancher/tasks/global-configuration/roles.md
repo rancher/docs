@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Roles
 weight: 3100
 ---

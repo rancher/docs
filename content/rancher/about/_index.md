@@ -1,5 +1,4 @@
 ---
-  layout: single-docs
   title: About
   weight: 5000
 ---

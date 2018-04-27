@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Amazon EC2
 weight: 3250
 ---

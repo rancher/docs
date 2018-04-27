@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Custom Cluster
 weight: 3225
 ---

@@ -1,6 +1,5 @@
 ---
 title: Global Configuration
-layout: single-docs
 weight: 2075
 ---
 

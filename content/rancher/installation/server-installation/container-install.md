@@ -1,6 +1,5 @@
 ---
 title: Single Node Installation
-layout: single-docs
 weight: 250
 ---
 

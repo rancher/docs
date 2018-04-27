@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: DigitalOcean
 weight: 3275
 ---
