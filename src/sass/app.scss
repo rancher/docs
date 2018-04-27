@@ -56,8 +56,8 @@
 
 
 .modal-content {
-  visibility: hidden;
   display: none;
+  visibility: hidden;
 }
 
 .sticky {
@@ -67,6 +67,6 @@
 
 #TableOfContents {
   .active {
-    background-color: $accent-two;
+    font-weight: bold;
   }
 }
