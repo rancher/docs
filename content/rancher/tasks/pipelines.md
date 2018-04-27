@@ -1,6 +1,5 @@
 ---
 title:  Pipelines
-layout: single-docs
 weight: 3700
 ---
 # Pipelines

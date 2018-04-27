@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Rancher Server URL
 weight: 3125
 ---

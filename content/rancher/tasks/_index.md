@@ -1,5 +1,5 @@
 ---
-  title: Tasks
-  weight: 3000
+title: Tasks
+weight: 3000
 ---
 # Tasks

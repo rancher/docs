@@ -1,7 +1,6 @@
 ---
 title: Resources
 weight: 2275
-layout: single-docs
 ---
 
 # Resources

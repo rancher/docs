@@ -1,6 +1,5 @@
 ---
 title: Installing Rancher in a Kubernetes Cluster
-layout: single-docs
 weight: 275
 ---
 

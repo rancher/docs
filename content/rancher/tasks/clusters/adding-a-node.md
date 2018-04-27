@@ -1,7 +1,6 @@
 ---
 title: Adding a Node
-layout: single-docs
-weight: 3475 
+weight: 3475
 ---
 
 # Adding a Node

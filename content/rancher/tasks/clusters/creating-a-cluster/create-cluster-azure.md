@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Azure
 weight: 3300
 ---

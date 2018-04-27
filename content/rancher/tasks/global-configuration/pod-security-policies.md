@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Adding Pod Security Policies
 weight: 3150
 ---

@@ -1,7 +1,6 @@
 ---
 title: Workloads
 weight: 2175
-layout: single-docs
 ---
 
 # Workloads

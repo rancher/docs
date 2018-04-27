@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Azure Container Service
 weight: 3350
 ---

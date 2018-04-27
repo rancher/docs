@@ -1,7 +1,6 @@
 ---
-  layout: single-docs
   title: Authentication
-  weight: 
+  weight:
 ---
 
 # Authentication

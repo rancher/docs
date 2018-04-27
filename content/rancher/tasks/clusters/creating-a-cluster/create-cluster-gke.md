@@ -1,5 +1,4 @@
 ---
-layout: single-docs
 title: Google Container Engine
 weight: 3325
 ---

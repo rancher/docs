@@ -1,7 +1,6 @@
 ---
 title: Storage
 weight: 2125
-layout: single-docs
 ---
 
 # Storage
