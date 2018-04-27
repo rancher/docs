@@ -21,12 +21,14 @@
     {{ $showSidebar := (gt (len ($.Scratch.Get "secondLevel").Sections) 0) }}
 
     <div class="row m-t-sm">
+
       {{ if $showSidebar }}
         <aside class="col-sm-3 col-xs-12">
           {{ partial "docs-side-nav.html" . }}
         </aside>
       {{end}}
       <article class="{{ if $showSidebar }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+
         <div class="main-content ">
 
         {{ .Content }}
@@ -82,8 +84,8 @@
         {{ template "_internal/pagination.html" . }}
         {{ partial "breadcrumbs.html" . }}
       </article>
-      <aside class="col-sm-3 col-xs-12">
-        <h4>On this page</h4>
+      <aside class="col-sm-3 col-xs-12 unstyled">
+        <h4 class="m-b-0">On this page</h4>
         {{ .TableOfContents }}
       </aside>
     </div>
