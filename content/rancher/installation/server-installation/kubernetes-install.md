@@ -1,21 +1,32 @@
 ---
-title: High-Availability Installation
+title: Installing Rancher in a Kubernetes Cluster
 layout: single-docs
 weight: 275
 ---
 
-# High-Availability Installation <br/>(i.e. Multi-Node Installation)
+# Installing Rancher in a Kubernetes Cluster
 
 In high-availability installations, Rancher is installed on multiple nodes of a Kubernetes cluster. This multi-node configuration ensures that Rancher server is always available, even if your primary Rancher server goes down.
 
 ## Provision Linux Hosts
 
-1. Provision a minimum of three Linux hosts according to our {{ ref "server-requirements.md" }}
-2. Add the hosts to your Domain Name System (DNS)—each host requires a fully qualified domain name (FQDN) for something you'll be doing later.
+Provision a minimum of three Linux hosts. Use the requirements below.
+
+### Requirements
+
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
+
+{{< requirements_ports >}}
+
+{{< requirements_ha >}}
 
 ## Get RKE
 
-Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installe you can use to install Kubernetes on your Linux hosts. You can download RKE from GitHub.
+Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer you can use to install Kubernetes on your Linux hosts. You can download RKE from GitHub.
 
 1. From your workstation, open a web browser and navigate to [https://github.com/rancher/rke/releases](https://github.com/rancher/rke/releases). Download the latest RKE installer.
 
@@ -60,21 +71,21 @@ Once you have a template, customize it to suit your needs.
 
     ```
     nodes:
-      - address: 159.65.99.240
+      - address: <HOSTIP>
         user: root
         role:
         - controlplane
         - etcd
         - worker
         ssh_key_path: /home/user/.ssh/id_rsa  #PATH TO PUBLIC KEY, I.E. PEM FILE
-      - address: 206.189.168.116
+      - address: <HOSTIP>
         user: root
         role:
         - controlplane
         - etcd
         - worker
         ssh_key_path: /home/user/.ssh/id_rsa  #PATH TO PUBLIC KEY, I.E. PEM FILE
-      - address: 206.189.168.31
+      - address: <HOSTIP>
         user: root
         role:
         - controlplane
@@ -137,6 +148,7 @@ Once you have a template, customize it to suit your needs.
     - `<BASE64_CRT>`
     - `<BASE64_KEY>`
     - `<BASE64_CA>`
+
 
     **Example:**
 
