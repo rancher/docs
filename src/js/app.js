@@ -8,41 +8,45 @@ const defaults = {
   sortOrder: 'desc'
 };
 
-const hoverHandler = function(e) {
-  $(e.currentTarget).find('.dropdown-menu').toggleClass('dropdown-show');
+const hoverIn = function(e) {
+  $(e.currentTarget).find('.dropdown-menu').addClass('dropdown-show');
+};
+
+const hoverOut = function(e) {
+  $(e.currentTarget).find('.dropdown-menu').removeClass('dropdown-show');
 };
 
 const bootstrapDropdowns = function() {
   let $toggles = $('.dropdown');
   $toggles.each((idx, el) => {
-    $(el).hover(hoverHandler, hoverHandler);
+    $(el).hover(hoverIn, hoverOut);
   });
 }
 
 const bootstrapModals = function() {
   // instanciate new modal
   $(document).on('click', '.modal-open', (e) => {
-    let modalContentId = $(e.currentTarget).data('launch-id');
-    let modalContent = $(`#${modalContentId}`);
-    debugger;
+    let wrapperId = $(e.currentTarget).data('launch-id');
+    let wrapper = $(`#${wrapperId}`);
+
+    let content = wrapper.find('div.content');
 
     var modal = new tingle.modal({
-      footer: modalContent.find('#include-footer').data('include-footer'),
-      stickyFooter: modalContent.find('#include-footer').data('sticky-footer'),
+      footer: wrapper.find('.include-footer').data('include-footer'),
+      stickyFooter: wrapper.find('.include-footer').data('sticky-footer'),
       closeMethods: ['overlay', 'button', 'escape'],
-      closeLabel: modalContent.find('#include-footer').data('close-label'),
-      cssClass: modalContent.find('#css-classes').data('css-classes').split(','),
+      closeLabel: wrapper.find('.include-footer').data('close-label'),
+      cssClass: wrapper.find('.css-classes').data('css-classes').split(','),
       onOpen: () => {
-        console.log('modal open');
+        console.log('Modal opened');
       },
       onClose: () => {
-        console.log('modal closed');
+        console.log('Modal closed');
       },
       beforeClose: () => {
-        // here's goes some logic
-        // e.g. save content before closing the modal
-        return true; // close the modal
-        // return false; // nothing happens
+        content.detach()
+        wrapper.append(content);
+        return true;
       }
     });
 
@@ -202,7 +206,7 @@ const bootstrapNav = function () {
     toggleNav(e.currentTarget);
   });
 
-  // epand the current page
+  // expand the current page
   let cur = $('.tree-nav A[href="'+window.location.pathname+'"]').closest('LI');
   cur.addClass('active');
   toggleNav(cur, 'show');
