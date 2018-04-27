@@ -1,8 +1,8 @@
 ---
-title: Configuring Amazon ALB
-weight:
+title: Option 1—Amazon ALB
+weight: 305
 ---
-# Configuring Amazon ALB
+# Option 1-Amazon ALB
 
 ## Objectives
 
@@ -123,7 +123,7 @@ The load balancer is created, but you still need to add your second target group
 
 2. From the grid of load balancers, select your load balancer.
 
-3. Select the **Listeners** tab. Select the `HTTPS: 43` **Listener ID**. Then click **Edit**.
+3. Select the **Listeners** tab. Select the `HTTPS: 443` **Listener ID**. Then click **Edit**.
 
 4. From the **Default target group** drop-down, select `rancher-https-443`. Click **Save**.
 
