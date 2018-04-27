@@ -220,7 +220,7 @@ const bootstrapScrollSpy = function () {
     let scrollTop          = $(window).scrollTop();
     let elementOffset      = $watch.offset().top;
     let distance           = (elementOffset - scrollTop);
-    let mainContentHeaders = $('.main-content').find(':header:visible');
+    let $mainContentHeaders = $('.main-content').find(':header:visible');
     let opts               = {
       height: $el.outerHeight(),
       width:  $el.outerWidth(),
@@ -228,15 +228,19 @@ const bootstrapScrollSpy = function () {
     };
 
     console.log(scrollTop, $(window).height())
-    for (var i = 0; i <= mainContentHeaders.length - 1; i++) {
-      var $mainContentHeadersEl = $(`#${mainContentHeaders[i].id}`);
-      var hTop = $mainContentHeadersEl.offset().top;
+    for (var i = 0; i <= $mainContentHeaders.length - 1; i++) {
+
+      var $mainContentHeadersEl = $(`#${$mainContentHeaders[i].id}`);
+      var hTop                  = $mainContentHeadersEl.offset().top;
 
       if (hTop - scrollTop >= 0) {
-        mainContentHeaders.each( ( i, a ) => {
+
+        $mainContentHeaders.each( ( i, a ) => {
           $('#TableOfContents').find(`a[href$=${a.id}]`).removeClass('active');
         });
-        $('#TableOfContents').find(`a[href$=${mainContentHeaders[i].id}]`).addClass('active');
+
+        $('#TableOfContents').find(`a[href$=${$mainContentHeaders[i].id}]`).addClass('active');
+
         break;
       }
     }
@@ -254,6 +258,8 @@ const bootstrapScrollSpy = function () {
     }
 
   }
+
+  //init position
   scrollHandler();
 }
 
