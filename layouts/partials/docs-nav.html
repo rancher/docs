@@ -33,11 +33,12 @@
     {{ $topLevel := .Scratch.Get "topLevel"}}
     {{ if $topLevel }}
       {{ range $topLevel.Sections }}
-        {{ if .IsAncestor $.CurrentSection }}
+        {{ $isCurrent := .IsAncestor $.CurrentSection }}
+        {{ if $isCurrent }}
           {{ $.Scratch.Set "secondLevel" . }}
         {{ end }}
 
-        <li><a href="{{ .Permalink }}" class="">{{ .Title }}</a></li>
+        <li class="{{if $isCurrent}}active{{end}}"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
       {{ end }}
     {{ end }}
   </ul>
