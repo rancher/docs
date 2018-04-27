@@ -59,3 +59,14 @@
   visibility: hidden;
   display: none;
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+#TableOfContents {
+  .active {
+    background-color: $accent-two;
+  }
+}

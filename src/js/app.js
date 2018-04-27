@@ -209,6 +209,53 @@ const bootstrapNav = function () {
   $('.tree-nav').removeClass('invisible');
 }
 
+const bootstrapScrollSpy = function () {
+
+  $(window).scroll(scrollHandler)
+
+  function scrollHandler() {
+    let $class             = 'sticky';
+    let $el                = $('.toc-container');
+    let $watch             = $('.offset-watch');
+    let scrollTop          = $(window).scrollTop();
+    let elementOffset      = $watch.offset().top;
+    let distance           = (elementOffset - scrollTop);
+    let mainContentHeaders = $('.main-content').find(':header:visible');
+    let opts               = {
+      height: $el.outerHeight(),
+      width:  $el.outerWidth(),
+      left:   $el.offset().left,
+    };
+
+    console.log(scrollTop, $(window).height())
+    for (var i = 0; i <= mainContentHeaders.length - 1; i++) {
+      var $mainContentHeadersEl = $(`#${mainContentHeaders[i].id}`);
+      var hTop = $mainContentHeadersEl.offset().top;
+
+      if (hTop - scrollTop >= 0) {
+        mainContentHeaders.each( ( i, a ) => {
+          $('#TableOfContents').find(`a[href$=${a.id}]`).removeClass('active');
+        });
+        $('#TableOfContents').find(`a[href$=${mainContentHeaders[i].id}]`).addClass('active');
+        break;
+      }
+    }
+
+
+    if (distance <= 0) {
+
+      $el.css(opts);
+      $el.addClass($class)
+
+    } else if (distance >= 0){
+
+      $el.removeClass($class)
+
+    }
+
+  }
+  scrollHandler();
+}
 
 $(document).ready(() => {
   bootstrapNav();
@@ -216,4 +263,5 @@ $(document).ready(() => {
   bootstrapModals();
   bootstrapSorts();
   bootstrapSlider();
+  bootstrapScrollSpy();
 });
