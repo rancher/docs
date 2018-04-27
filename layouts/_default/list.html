@@ -64,17 +64,18 @@
 
                   {{ with .Params.Location }}
                     <div class="p-h-sm p-v-xs"><i class="material-icons">location_on</i> {{ . }}</div>
-                  {{end}}
+                    {{end}}
 
                 </div>
               </div>
           </div>
-        {{ end }}
-      </div>
+          {{ end }}
+        </div>
         {{ template "_internal/pagination.html" . }}
         {{ partial "breadcrumbs.html" . }}
       </article>
-      <aside class="col-sm-3 col-xs-12 unstyled">
+      <div class="offset-watch invisible"></div>
+      <aside class="col-sm-3 col-xs-12 unstyled toc-container">
         <h4 class="m-b-0">On this page</h4>
         {{ .TableOfContents }}
       </aside>
