@@ -4,4 +4,4 @@ weight: 3200
 ---
 # Creating a Cluster
 
-let's create clusters!
+Rancher includes a variety of options for getting a Kubernetes cluster up and running using a single Linux node as a temple. Choose from one of the options below to get started!

@@ -1,5 +1,5 @@
 ---
-title: Rancher Server Installation
+title: Deploy Rancher
 weight: 225
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Rancher Server Tags
+title: Server Tags
 weight: 200
 ---
 
