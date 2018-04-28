@@ -227,20 +227,25 @@ const bootstrapScrollSpy = function () {
       left:   $el.offset().left,
     };
 
-    console.log(scrollTop, $(window).height())
     for (var i = 0; i <= $mainContentHeaders.length - 1; i++) {
 
-      var $mainContentHeadersEl = $(`#${$mainContentHeaders[i].id}`);
-      var hTop                  = $mainContentHeadersEl.offset().top;
+      if ($($mainContentHeaders[i]).attr('id')) {
+        var $mainContentHeadersEl = $(`#${$mainContentHeaders[i].id}`);
+        var hTop                  = $mainContentHeadersEl.offset().top;
 
-      if (hTop - scrollTop >= 0) {
+        if (hTop - scrollTop >= 0) {
 
-        $mainContentHeaders.each( ( i, a ) => {
-          $('#TableOfContents').find(`a[href$=${a.id}]`).removeClass('active');
-        });
+          $mainContentHeaders.each( ( i, a ) => {
+            if ($(a).attr('id')) {
+              $('#TableOfContents').find(`a[href$=${a.id}]`).removeClass('active');
+            }
+          });
 
-        $('#TableOfContents').find(`a[href$=${$mainContentHeaders[i].id}]`).addClass('active');
+          $('#TableOfContents').find(`a[href$=${$mainContentHeaders[i].id}]`).addClass('active');
 
+          break;
+        }
+      } else {
         break;
       }
     }
