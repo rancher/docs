@@ -1,11 +1,11 @@
 ---
-title: Installing Rancher in a Kubernetes Cluster
+title: Option 2—Install by K8s Cluster Addon
 weight: 275
 ---
 
-# Installing Rancher in a Kubernetes Cluster
+# Install by Kubernetes Cluster Addon
 
-In high-availability installations, Rancher is installed on multiple nodes of a Kubernetes cluster. This multi-node configuration ensures that Rancher server is always available, even if your primary Rancher server goes down.
+For environments already running a Kubernettes cluster, you can deploy Rancher using the Rancher Kubernetes Engine (RKE). RKE is our light-weight, lightening-fast installer. During install, you can point RKE toward a config file that installs Rancher as an Addon.
 
 ## Provision Linux Hosts
 
