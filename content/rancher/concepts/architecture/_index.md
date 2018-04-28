@@ -1,5 +1,5 @@
 ---
-title: Rancher Architecture
+title: Architecture
 weight: 2050
 ---
 

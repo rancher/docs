@@ -1,7 +1,6 @@
 ---
-  layout: single-docs
   title: Users and Roles
-  weight: 
+  weight:
 ---
 
 # Users and Roles

@@ -1,5 +1,5 @@
 ---
-title: Rancher Overview
+title: Overview
 weight: 2025
 ---
 ## What's Rancher?
