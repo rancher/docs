@@ -4,6 +4,8 @@ weight: 305
 ---
 # Option 1-Amazon ALB
 
+Amazon Elastic Load Balancing offers a couple of different load balancers that we're tested. This procedure provides step-by-step instruction for configuring Amazon Application Load Balancer (ALB) with your Rancher Server.
+
 ## Objectives
 
 Configuring an Amazon ALB is a multistage process. We've broken it down into multiple tasks so that it's easy to follow.
@@ -25,7 +27,7 @@ Configuring an Amazon ALB is a multistage process. We've broken it down into mul
 	The Wizard in **3. Create Your ALB** only allows you to add a single target group. Go back into Amazon's console and add the second target group manually.
 
 
-## Create Target Groups
+### Create Target Groups
 
 Your first ALB configuration step is to create two target groups: one for HTTP, the other for HTTPS.
 
@@ -35,7 +37,7 @@ The document below will guide you through this process. Use the data in the tabl
 
 [Amazon Documentation: Create a Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-target-group.html)
 
-### Target Group 1 (HTTP)
+#### Target Group 1 (HTTP)
 
 Option                      | Setting
 ----------------------------|------------------------------------
@@ -47,7 +49,7 @@ VPC                         | Choose your VPC
 Protocol<br/>(Health Check) | `HTTP`
 
 
-### Target Group 2 (HTTPS)
+#### Target Group 2 (HTTPS)
 
 Option                      | Setting
 ----------------------------|------------------------------------
@@ -58,7 +60,7 @@ Target type                 | `instance`
 VPC                         | Choose your VPC
 Protocol<br/>(Health Check) | `HTTPS`
 
-## Register Targets
+### Register Targets
 
 Next, add your Kubernetes nodes assigned either the `controlplane` or `worker` role to _both_ of your target groups.
 
