@@ -16,39 +16,22 @@ Howdy Partner! This tutorial walks you through:
 This Quick Start Guide is divided into different tasks for easier consumption.
 
 1.	[Provision a Linux Host](#provision-a-linux-host)
-
-
 1.  [Review Requirements](#host-and-node-requirements)
-
-    Before you do anything, review the requirements.
-
-2.  [Prepare a Linux Host](#prepare-a-linux-host)
-
-    First, you need to provision a Linux host.
-
-3.  [Install Rancher](#install-rancher)
-
-    Run the Docker command for installing Rancher.
-
-4.  [Log In](#log-in)
-
-    Browse to your Linux host to access the Rancher UI.
-
-5.  [Create a Cluster](#create-a-cluster)
-
-    Use Rancher to create your first cluster.
-
-6.  [Deploy a Workload](#deploy-a-workload)
-
-    Create a workload so that Kubernetes can distribute an application and its dependencies among your nodes.
-
-7.  [View Your Application](#view-your-application)
-
-    When your workload finishes deployment, browse to your application to make sure it works.
-
-8.  [What's Next?](#whats-next)
-
-    Now that you've created a cluster and deployed a workload, find out what else you can do with Rancher v2.0.
+    <br/>Before you do anything, review the requirements.
+1.  [Prepare a Linux Host](#prepare-a-linux-host)
+    <br/>First, you need to provision a Linux host.
+1.  [Install Rancher](#install-rancher)
+    <br/>Run the Docker command for installing Rancher.
+1.  [Log In](#log-in)
+    <br/>Browse to your Linux host to access the Rancher UI.
+1.  [Create a Cluster](#create-a-cluster)
+    <br/>Use Rancher to create your first cluster.
+1.  [Deploy a Workload](#deploy-a-workload)
+    <br/>Create a workload so that Kubernetes can distribute an application and its dependencies among your nodes.
+1.  [View Your Application](#view-your-application)
+    <br/>When your workload finishes deployment, browse to your application to make sure it works.
+1.  [What's Next?](#whats-next)
+    <br/>Now that you've created a cluster and deployed a workload, find out what else you can do with Rancher v2.0.
 
 
 Provision the host according to the requirements below.
