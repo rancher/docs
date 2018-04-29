@@ -2,18 +2,15 @@
 title: Clusters
 weight: 2100
 ---
-
 # Clusters
-
-Coming Soon
 
 ## What's a Cluster?
 
-Coming Soon
+A cluster is a group of computing resources that work as a team to accomplish a goal. Each individual computer in a cluster is called a _node_.
 
 ## Cluster Creation
 
-Coming Soon
+Rancher simplifies creation of Kubernetes clusters by allowing you to create them with the Rancher UI rather than a config file.
 
 ### Node Components
 
@@ -36,6 +33,14 @@ Worker nodes are used to run the kubelet and the workload. It also runs the stor
 #### Rancher Kubernetes Engine (RKE)
 
 RKE is Rancher’s own lightweight Kubernetes installer. It works with any cloud providers, virtualization platforms, or bare metal servers. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
+
+#### Cloud-Managed Kubernetes Clusters
+
+Rancher integrates with cloud APIs so users can provision GKE, EKS, and AKS clusters directly from Rancher. New cloud managed Kubernetes clusters will be added as they become available.
+
+#### Imported Clusters
+
+Users can existing Kubernetes cluster into Rancher. Rancher does not automate the provisioning, scaling, and upgrade of imported Kubernetes clusters. All other cluster management, policy management, and workload management capabilities of Rancher apply to imported clustered.
 
 ##### RKE and Amazon AWS EC2: Adding Hosts
 
@@ -87,14 +92,6 @@ In order to use Amazon Elastic Load Balancers (ELBs) and EBS with Kubernetes, th
   ]
 }
 ```
-
-#### Cloud-Managed Kubernetes Clusters
-
-Rancher integrates with cloud APIs so users can provision GKE, EKS, and AKS clusters directly from Rancher. New cloud managed Kubernetes clusters will be added as they become available.
-
-#### Imported Clusters
-
-Users can existing Kubernetes cluster into Rancher. Rancher does not automate the provisioning, scaling, and upgrade of imported Kubernetes clusters. All other cluster management, policy management, and workload management capabilities of Rancher apply to imported clustered.
 
 ### Kubeconfig File
 
