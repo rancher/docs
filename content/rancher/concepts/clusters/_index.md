@@ -98,4 +98,4 @@ Users can existing Kubernetes cluster into Rancher. Rancher does not automate th
 
 ### Kubeconfig File
 
-Coming Soon
+Coming Soon!
