@@ -59,14 +59,3 @@
   display: none;
   visibility: hidden;
 }
-
-.sticky {
-  position: fixed;
-  top: 0;
-}
-
-#TableOfContents {
-  .active {
-    font-weight: bold;
-  }
-}
