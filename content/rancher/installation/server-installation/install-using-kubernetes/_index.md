@@ -78,7 +78,7 @@ During installation, RKE uses a `.yml` config file to install and configure your
 - If you want to use Auto-Generated Self-Signed Certifcates (i.e. SSL passthrough), use one of the `passthough` templates.
 - If you want to use your own certificate (either CA- or Self-Signed), use one of the `certificate` templates.
 
-![Download YAML Config Templates](https://gist.github.com/MBishop17/ca4691a1b126a93bf8f21bc15d44ce02)
+[Download YAML Config Templates](https://gist.github.com/MBishop17/ca4691a1b126a93bf8f21bc15d44ce02)
 
 ### Edit YAML Template
 
