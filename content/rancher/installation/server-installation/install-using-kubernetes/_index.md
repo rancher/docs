@@ -73,20 +73,12 @@ rke version v<N.N.N>
 
 ### Get YAML Template
 
-During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of the `.yml` templates that we provide to get you started. Choose a template based on how many nodes are in your cluster and the type of certificate you plan on using:
+During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `.zip` file of `.yml` templates linked below to get you started. Choose a template based on how many nodes are in your cluster and the type of certificate you plan on using:
 
-- Auto-Generated Self-Signed Certifcates (i.e. SSL passthrough):
+- If you want to use Auto-Generated Self-Signed Certifcates (i.e. SSL passthrough), use one of the `passthough` templates.
+- If you want to use your own certificate (either CA- or Self-Signed), use one of the `certificate` templates.
 
-	- [3-node-passthrough.yml]({{< ref "3-node-passthrough.yml".}})
-	- [5-node-passthrough.yml]({{< baseurl >}}/rke-yml/5-node-passthrough.yml)
-	- [7-node-passthrough.yml]({{< baseurl >}}/rke-yml/7-node-passthrough.yml)
-<br/>
-<br/>
-- Bring Your Own Certificate (either CA- or Self-Signed):
-
-	- [3-node-certificate.yml]({{< baseurl >}}/rke-yml/3-node-certificate.yml)
-	- [5-node-certificate.yml]({{< baseurl >}}/rke-yml/5-node-certificate.yml)
-	- [7-node-certificate.yml]({{< baseurl >}}/rke-yml/7-node-certificate.yml)
+![Download YAML Config Templates](https://gist.github.com/MBishop17/ca4691a1b126a93bf8f21bc15d44ce02)
 
 ### Edit YAML Template
 
