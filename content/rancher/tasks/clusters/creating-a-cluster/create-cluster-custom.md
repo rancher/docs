@@ -27,9 +27,13 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 
 Provision the host according to our [requirements](../setup/requirements.md).
 
+
+
 >**Bare-Metal Server Note:**
 >
 While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
+>
+>**Amazon EC2 Note:** If you're using an Amazon EC2 instance as your Linux host, you must also create a cluster ID. After you complete [Create the Custom Cluster](#create-the-custom-cluster), complete [Amazon EC2 Additional Step: Create a Cluster ID](#amazon-ec2-additional-step-br-create-a-cluster-id).
 
 ## Create the Custom Cluster
 
@@ -66,3 +70,7 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 11. When you finish running the command(s) on your Linux host(s), click **Done**.
 
 {{< result_create-cluster >}}
+
+### Amazon EC2 Additional Step:<br/> Create a Cluster ID
+
+Write content here Sebastiaan ☺️
