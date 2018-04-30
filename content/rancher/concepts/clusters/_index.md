@@ -92,7 +92,7 @@ In order to use Amazon Elastic Load Balancers (ELBs) and EBS with Kubernetes, th
   ]
 }
 ```
-
+<!--
 ### Kubeconfig File
 
-Coming Soon!
+Coming Soon!-->

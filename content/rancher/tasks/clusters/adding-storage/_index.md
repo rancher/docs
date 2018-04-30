@@ -1,6 +1,7 @@
 ---
 title: Adding Storage
 weight: 3500
+draft: true
 ---
 
 # Adding Storage
@@ -11,6 +12,6 @@ Coming Soon
 
 Coming Soon
 
-##Adding Storage Classes
+## Adding Storage Classes
 
 Coming Soon
