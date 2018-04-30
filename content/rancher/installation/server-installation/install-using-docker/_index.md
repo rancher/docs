@@ -16,6 +16,8 @@ Provision a single Linux host to use as a template to launch your {{< product >}
 
 {{< requirements_os >}}
 
+{{< requirements_os >}}
+
 {{< requirements_hardware >}}
 
 {{< requirements_software >}}

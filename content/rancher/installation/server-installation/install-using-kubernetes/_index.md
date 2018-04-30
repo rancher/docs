@@ -4,20 +4,15 @@ weight: 275
 ---
 # Install Using Kubernetes
 
-You can deploy Rancher using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Rancher installation using RKE is the best install option for two different use cases:
-
-- When installing Rancher on a Kubernettes cluster that is already running.
-
-- When you want to set up a new production Kubernettes cluster running in a high-availablity configuration.
-
+You can deploy Rancher in a high-availability (HA) configuration using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Use RKE to set up a new cluster that deploys Rancher as an addon.
 
 ## Objectives
 
-We've broken installation of Rancher by RKE into a series of smaller tasks. Here's what you'll do during your RKE install.
+We've broken installation of Rancher by Kubernetes into a series of smaller tasks. Here's what you'll do during your RKE install.
 
 1. [Provision Linux Hosts](#provision-linux-hosts)
 
-	Begin by provisioning Linux hosts or an existing Kubernettes cluster. Make sure your hosts meet Rancher requirements.
+	Begin by provisioning Linux hosts or an existing Kubernetes cluster. Make sure your hosts meet Rancher requirements.
 
 2. [Get RKE](#get-rke)
 
@@ -25,7 +20,7 @@ We've broken installation of Rancher by RKE into a series of smaller tasks. Here
 
 3. [Get YAML Template](#get-yaml-template)
 
-	During installation, the RKE uploads a `.yml` config file containing specifications for your cluster. You'll have to configure this file. We have a variety of config file templates available for download.
+	During installation, the RKE uses a `.yml` config file containing specifications for your cluster. You'll have to configure this file. We have a variety of config file templates available for download.
 
 4. [Edit YAML Template](#edit-yaml-template)
 
@@ -37,11 +32,7 @@ We've broken installation of Rancher by RKE into a series of smaller tasks. Here
 
 ### Provision Linux Hosts
 
-Before you install Rancher, confirm you meet the requirements.
-
-- If you want to install Rancher on a Kubernettes cluster that's already running, make sure its nodes meet the requirements below.
-
-- If you want to install Rancher on a new Kubernettes cluster in a high-availabilty configuration, provision three new Linux hosts using the requirements below.
+Before you install Rancher, confirm you meet the requirements. Provision a minimum of three new Linux hosts using the requirements below.
 
 #### Requirements
 
@@ -82,11 +73,11 @@ rke version v<N.N.N>
 
 ### Get YAML Template
 
-During installation, RKE uploads a `.yml` config file to install and configure your Kubernetes cluster. Download one of the `.yml` templates that we provide to get you started. Choose a template based on how many nodes are in your cluster and the type of certificate you plan on using:
+During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of the `.yml` templates that we provide to get you started. Choose a template based on how many nodes are in your cluster and the type of certificate you plan on using:
 
 - Auto-Generated Self-Signed Certifcates (i.e. SSL passthrough):
 
-	- [3-node-passthrough.yml]({{< baseurl >}}/rke-yml/3-node-passthrough.yml)
+	- [3-node-passthrough.yml]({{< ref "3-node-passthrough.yml".}})
 	- [5-node-passthrough.yml]({{< baseurl >}}/rke-yml/5-node-passthrough.yml)
 	- [7-node-passthrough.yml]({{< baseurl >}}/rke-yml/7-node-passthrough.yml)
 <br/>
