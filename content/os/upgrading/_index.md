@@ -1,5 +1,5 @@
 ---
-title: Upgrading RancherOS
+title: Upgrading
 weight: 3
 ---
 
