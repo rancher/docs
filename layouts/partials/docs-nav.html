@@ -1,10 +1,8 @@
 {{ $.Scratch.Set "topLevel" . }}
 {{ $.Scratch.Set "secondLevel" . }}
 
-<nav>
-  <!-- tabs -->
-  <ul class="tabs row middle-xs">
-    <div class="pull-left p-v-xs">
+<nav class="row middle-xs between-xs">
+  <div class="pull-left p-v-xs col-md-2s">
       <ul class="dropdown sub-menu unstyled">
         <li>
           <a href="{{ .URL }}" class="btn bg-link p-a-0">
@@ -29,7 +27,10 @@
           </ul>
         </li>
       </ul>
-    </div>
+  </div>
+
+  <!-- tabs -->
+  <ul class="tabs col-md-10">
     {{ $topLevel := .Scratch.Get "topLevel"}}
     {{ if $topLevel }}
       {{ range $topLevel.Sections }}
