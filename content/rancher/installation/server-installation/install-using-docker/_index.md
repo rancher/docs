@@ -1,10 +1,10 @@
 ---
-title: Option 1—Install by Docker Container
+title: Install Using Docker
 weight: 250
 description: For development environments, we recommend installing Rancher by deploying a single Docker container.
 ---
 
-# Install by Docker Container
+# Install by Docker
 
 For development environments, we recommend installing Rancher by deploying a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 

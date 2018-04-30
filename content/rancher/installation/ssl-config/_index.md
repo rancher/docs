@@ -11,19 +11,19 @@ Rancher is secure by default. This means that SSL is required when interacting w
 
 There are two places where you certificates can be stored and used:
 
-- Inside the `rancher/server` container
+- Inside the `rancher/rancher` container
 - Using an external loadbalancer or proxy
 
-## Options for inside the `rancher/server` container
+## Options for inside the `rancher/rancher` container
 
 ### Automatically generated default self signed certificate
 
-By running the `rancher/server` container without any additional parameters or configuration, a self-signed certificate will automatically be created on startup.
+By running the `rancher/rancher` container without any additional parameters or configuration, a self-signed certificate will automatically be created on startup.
 
 <u>Example command:</u>
 
 ```
-docker run -d -p 80:80 -p 443:443 rancher/server:v2.0.0
+docker run -d -p 80:80 -p 443:443 rancher/rancher:v2.0.0
 ```
 
 ### Providing your own self-signed certificates to the container
@@ -43,7 +43,7 @@ docker run -d -p 80:80 -p 443:443 \
   -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
   -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
   -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
-  rancher/server:v2.0.0
+  rancher/rancher:v2.0.0
 ```
 
 ### Providing your own certificates from a recognized Certificate Authority to the container
@@ -61,19 +61,19 @@ If the certificates you want to use are signed by a recognized Certificate Autho
 docker run -d -p 80:80 -p 443:443 \
   -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
   -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
-  rancher/server:v2.0.0
+  rancher/rancher:v2.0.0
 ```
 
 ### Using automatically requested Let's Encrypt certificates
 
 Rancher supports requesting Let's Encrypt certificates out-of-the-box. This is done using the **http-01 challenge**, this means that the hostname you want to use for accessing Rancher (for example, `rancher.mydomain.com`) will have to point to the IP of the machine it is running on. This can be done by creating an A record in DNS.
 
-As the Let's Encrypt challenge can come from any source IP address, port **TCP/80** needs to be open for every source IP address. You enable the Let's Encrypt functionality by passing the parameter `--acme-domain rancher.mydomain.com` when running the `rancher/server` container.
+As the Let's Encrypt challenge can come from any source IP address, port **TCP/80** needs to be open for every source IP address. You enable the Let's Encrypt functionality by passing the parameter `--acme-domain rancher.mydomain.com` when running the `rancher/rancher` container.
 
 <u>Example command:</u>
 
 ```
-docker run -d -p 80:80 -p 443:443 rancher/server:v2.0.0 --acme-domain rancher.mydomain.com
+docker run -d -p 80:80 -p 443:443 rancher/rancher:v2.0.0 --acme-domain rancher.mydomain.com
 ```
 
 *Note: Let's Encrypt provides rate limits for requesting new certificates, keep this in mind when creating and destroying the container multiple times. Read more on this in the [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).*
@@ -82,11 +82,11 @@ docker run -d -p 80:80 -p 443:443 rancher/server:v2.0.0 --acme-domain rancher.my
 
 ### Terminating SSL at loadbalancer or proxy
 
-#### Instructions for the `rancher/server` container
+#### Instructions for the `rancher/rancher` container
 
 **Self signed certificates**
 
-When using self signed certificates, you still need to supply the CA certificate to the `rancher/server` container. This will be used to validate connections to Rancher.
+When using self signed certificates, you still need to supply the CA certificate to the `rancher/rancher` container. This will be used to validate connections to Rancher.
 
 | Type                         |        Location in container |
 | ---------------------------- | ---------------------------: |
@@ -97,7 +97,7 @@ When using self signed certificates, you still need to supply the CA certificate
 ```
 docker run -d -p 80:80 -p 443:443 \
   -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
-  rancher/server:v2.0.0
+  rancher/rancher:v2.0.0
 ```
 
 **Certificates by a well known Certificate Authority**
@@ -106,7 +106,7 @@ If the certificates you want to use are signed by a recognized Certificate Autho
 
 #### Instructions for the loadbalancer or proxy
 
-When using a loadbalancer or proxy in front of the `rancher/server` container, there is no need for the `rancher/server` container to redirect port **TCP/80** (HTTP) to port **TCP/443** (HTTPS). By passing the header `X-Forwarded-Proto: https` header, this redirect will be disabled.
+When using a loadbalancer or proxy in front of the `rancher/rancher` container, there is no need for the `rancher/rancher` container to redirect port **TCP/80** (HTTP) to port **TCP/443** (HTTPS). By passing the header `X-Forwarded-Proto: https` header, this redirect will be disabled.
 
 The loadbalancer or proxy has to be configured to support the following:
 
@@ -115,7 +115,7 @@ The loadbalancer or proxy has to be configured to support the following:
 | Header               | Value                                     | Description                                                  |
 | -------------------- | ----------------------------------------- | :----------------------------------------------------------- |
 | `Host`               | Domain name that is used to reach Rancher | To identify the server requested by the client               |
-| `X-Forwarded-Proto`  | `https`                                   | To identify the protocol that a client used to connect to the loadbalancer or proxy<br />*If this Header is present, `rancher/server` will not redirect HTTP to HTTPS* |
+| `X-Forwarded-Proto`  | `https`                                   | To identify the protocol that a client used to connect to the loadbalancer or proxy<br />*If this Header is present, `rancher/rancher` will not redirect HTTP to HTTPS* |
 | `X-Forwarded-Port`   | Port used to reach Rancher                | To identify the protocol that client used to connect to the loadbalancer or proxy |
 | `X-Forwarded-For`    | IP of the client connection               | To identify the originating IP address of a client           |
 
@@ -168,7 +168,7 @@ server {
 
 - How do I validate my certificate chain?
 
-You can validate the certificate chain by using the `openssl` binary. If the output ends with `Verify return code: 0 (ok)`, your certificate chain is valid. The `ca.pem` file should be the same as you supplied to the `rancher/server` container. When using a certificate signed by a well known Certificate Authority, you can omit the `-CAfile` parameter.
+You can validate the certificate chain by using the `openssl` binary. If the output ends with `Verify return code: 0 (ok)`, your certificate chain is valid. The `ca.pem` file should be the same as you supplied to the `rancher/rancher` container. When using a certificate signed by a well known Certificate Authority, you can omit the `-CAfile` parameter.
 
 <u>Example command:</u>
 ```

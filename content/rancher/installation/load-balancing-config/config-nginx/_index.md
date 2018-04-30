@@ -1,8 +1,8 @@
 ---
-title: Option 3—NGINX
+title: Configure NGINX
 weight: 315
 ---
-# Option 3-NGINX
+# Configure NGINX
 
 NGINX is a popular application platform that can be used as a load balancer. Rancher supports use of NGINX with ngx_http_v2_module enabled, which isn't enabled by default. Use the following parameter when setting up NGINX to enable the module: `--with-http_v2_module`.
 
