@@ -7,97 +7,84 @@ weight: 25
 
 Howdy Partner! This tutorial walks you through:
 
--	Installation of {{< product >}} {{< version >}}
--	Creation of your first cluster
--	Deployment of an application, NGINX
+- Installation of {{< product >}} {{< version >}}
+- Creation of your first cluster
+- Deployment of an application, NGINX
 
 ## Objectives
 
 This Quick Start Guide is divided into different tasks for easier consumption.
 
-1.	[Provision a Linux Host](#provision-a-linux-host)
+1.  Begin by provisioning a Linux host.
+2.  [Provision a Linux Host](#provision-a-linux-host)
 
-	Begin by provisioning a Linux host.
+2.  From your Linux host, run the Docker command for installing Rancher.[Install Rancher](#install-rancher)
 
-2.	[Install Rancher](#install-rancher)
+3.  Browse to your Linux host to access the Rancher UI.[Log In](#log-in)
 
-	From your Linux host, run the Docker command for installing Rancher.
+4.  Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.[Create the Cluster](#create-the-cluster)
 
-3.	[Log In](#log-in)
+5.  Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.[Deploy a Workload](#deploy-a-workload)
 
-	Browse to your Linux host to access the Rancher UI.
+6.  When your workload finishes deployment, browse to your node IP to make sure NGINX is running.[View Your Application](#view-your-application)
 
-4.	[Create the Cluster](#create-the-cluster)
-
-	Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
-
-5.	[Deploy a Workload](#deploy-a-workload)
-
-	Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.
-
-6.	[View Your Application](#view-your-application)
-
-	When your workload finishes deployment, browse to your node IP to make sure NGINX is running.
-
-7.	[What's Next?](#whats-next)
-
-	Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.
+7.  Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.[What's Next?](#whats-next)
 
 ## Provision a Linux Host
 
-Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
+### Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
 - A cloud-host virtual machine (VM)
 - An on-premise VM
 - A bare-metal server
 
-Provision the host according to the requirements below.
+### Provision the host according to the requirements below.
 
 #### Hardware Requirements
 
--	Memory: 4GB
+- Memory: 4GB
 
 #### Software requirements
 
--	Operating System: Ubuntu 16.04 (64-bit)
--	Software: Docker
+- Operating System: Ubuntu 16.04 (64-bit)
+- Software: Docker
 
-	<a name="node-requirements"></a>**Supported Versions:**
+  <a name="node-requirements"></a>**Supported Versions:**
 
-	-	`1.12.6`
-	-	`1.13.1`
-	-	`17.03.2`
+  - `1.12.6`
+  - `1.13.1`
+  - `17.03.2`
 
-	>**Notes:**
-	>
-	> * For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
-	> * Docker requirements apply to both your Linux host and your cluster nodes.
+  >**Notes:**
+  >
+  > * For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
+  > * Docker requirements apply to both your Linux host and your cluster nodes.
 
 ### Install Rancher
 
 To install Rancher on your host, connect to it and then use a shell to install.
 
-1.	Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
+1.  Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
 
-2.	From your shell, enter the following command:
+2.  From your shell, enter the following command:
 
 	```
 	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 	```
 
-**Result:** Rancher is installed.
+#### Result: Rancher is installed.
 
 ### Log In
 
 Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
 
-1.	Open a web browser and enter the IP address of your host:
+1.  Open a web browser and enter the IP address of your host:
 
-	`https://<SERVER_IP>`
+  `https://<SERVER_IP>`
 
-	Replace `<SERVER_IP>` with your host IP address.
+  Replace `<SERVER_IP>` with your host IP address.
 
-2.	When prompted, create a password for the default `admin` account there cowpoke!
+2.  When prompted, create a password for the default `admin` account there cowpoke!
 
 3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node in your cluster must be able to resolve to the URL.
 
@@ -135,25 +122,25 @@ You're ready to create your first _workload_. A workload is an object that inclu
 
 For this workload, you'll be deploying the application NGINX.
 
-1.	From the **Clusters** page, open the cluster that you just created.
+1.  From the **Clusters** page, open the cluster that you just created.
 
-2.	From the main menu of the **Dashboard**, select **Projects**.
+2.  From the main menu of the **Dashboard**, select **Projects**.
 
-3.	Open the **Default** project.
+3.  Open the **Default** project.
 
-4.	Click **+ Deploy**.
+4.  Click **+ Deploy**.
 
-	**Step Result:** The **Deploy Workload** page opens.
+  **Step Result:** The **Deploy Workload** page opens.
 
-5.	Enter a **Name** for your workload.
+5.  Enter a **Name** for your workload.
 
-6.	From the **Docker Image** field, enter `nginx`.
+6.  From the **Docker Image** field, enter `nginx`.
 
-7.	From **Port Mapping**, click **Add Port**.
+7.  From **Port Mapping**, click **Add Port**.
 
-8.	From the **Publish on** drop-down, make sure that **Every node** is selected.
+8.  From the **Publish on** drop-down, make sure that **Every node** is selected.
 
-8.	From the **Source Port** field, leave the **Random** value in place.
+8.  From the **Source Port** field, leave the **Random** value in place.
 
 7. From the **Container Port** field, enter port `80`.
 
@@ -161,8 +148,7 @@ For this workload, you'll be deploying the application NGINX.
 
 9. Click **Launch**.
 
-**Result:**
-
+#### Result:
 * Your workload is deployed. This process might take a few minutes to complete.
 * When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
 
@@ -176,5 +162,5 @@ From the **Workloads** page, click the link underneath your workload. If your de
 
 Congratulations! You have:
 
--	Created your first cluster.
--	Deployed NGINX to your cluster using a workload.
+- Created your first cluster.
+- Deployed NGINX to your cluster using a workload.
