@@ -1,5 +1,5 @@
 ---
-title: Load Balancer Configuration
+title: Load Balancing
 weight: 300
 ---
 

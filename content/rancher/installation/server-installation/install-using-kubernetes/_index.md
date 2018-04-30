@@ -1,8 +1,8 @@
 ---
-title: Option 2—Install by RKE
+title: Install Using Kubernetes
 weight: 275
 ---
-# Install by RKE
+# Install Using Kubernetes
 
 You can deploy Rancher using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Rancher installation using RKE is the best install option for two different use cases:
 
