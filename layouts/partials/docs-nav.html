@@ -1,16 +1,21 @@
 {{ $.Scratch.Set "topLevel" . }}
-{{ $.Scratch.Set "secondLevel" . }}
+{{ range .Site.Sections }}
+  {{if $.CurrentSection}}
+    {{ if .IsAncestor $.CurrentSection }}
+      {{ $.Scratch.Set "topLevel" . }}
+    {{end}}
+  {{end}}
+{{end}}
 
 <nav class="row middle-xs between-xs">
   <div class="pull-left p-v-xs col-md-2s">
       <ul class="dropdown sub-menu unstyled">
         <li>
-          <a href="{{ .URL }}" class="btn bg-link p-a-0">
+          <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="btn bg-link p-a-0">
             <span class="p-h-xs">
             {{ range .Site.Sections }}
               {{if $.CurrentSection}}
                 {{ if .IsAncestor $.CurrentSection }}
-                  {{ $.Scratch.Set "topLevel" . }}
                   {{ .Params.shortTitle }}
                 {{end}}
               {{end}}
@@ -32,6 +37,7 @@
   <!-- tabs -->
   <ul class="tabs col-md-10">
     {{ $topLevel := .Scratch.Get "topLevel"}}
+    <li class="{{if (eq .Permalink $topLevel.Permalink)}}active{{end}}"><a href="{{$topLevel.Permalink}}"><i class="material-icons" style="position: relative; top: -2px;">home</i></a></li>
     {{ if $topLevel }}
       {{ range $topLevel.Sections }}
         {{ $isCurrent := .IsAncestor $.CurrentSection }}

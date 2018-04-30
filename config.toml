@@ -15,7 +15,7 @@ enableRobotsTXT = true
 identifier = "what-is-rancher"
 name       = "What is Rancher"
 weight     = "1"
-pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
+pre        = "<i class=\"material-icons\">keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Overview"
@@ -77,7 +77,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 identifier = "products"
 name       = "Products"
 weight     = "2"
-pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
+pre        = "<i class=\"material-icons\">keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Rancher"
@@ -100,7 +100,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 identifier = "learn"
 name       = "Learn"
 weight     = "4"
-pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
+pre        = "<i class=\"material-icons\">keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Blog"
@@ -127,7 +127,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
   name       = "Forums"
   url        = "https://forums.rancher.com/"
   parent     = "learn"
-  pre        = "<i class='material-icons'>launch</i>"
+  pre        = "<i class=\"material-icons\">launch</i>"
 
   [[menu.main]]
   #name       = "Learning Resources"
@@ -141,7 +141,7 @@ identifier = "about"
 name       = "About"
 url        = "/about/"
 weight     = "5"
-pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
+pre        = "<i class=\"material-icons\">keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "About Us"
@@ -175,24 +175,24 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 #footer menu#
 [[menu.footer]]
 identifier = "about"
-pre = "<i class='material-icons'>info_outline</i>"
+pre = "<i class=\"material-icons\">info_outline</i>"
 name       = "About"
 url        = "/about/"
 
 [[menu.footer]]
 identifier = "contact"
-pre = "<i class='material-icons'>chat_bubble_outline</i>"
+pre = "<i class=\"material-icons\">chat_bubble_outline</i>"
 name       = "Contact"
 url        = "/contact/"
 
 [[menu.footer]]
 identifier = "privacy"
-pre = "<i class='material-icons'>fingerprint</i>"
+pre = "<i class=\"material-icons\">fingerprint</i>"
 name       = "Privacy"
 url        = "/privacy/"
 
 [[menu.footer]]
 identifier = "careers"
-pre = "<i class='material-icons'>people_outline</i>"
+pre = "<i class=\"material-icons\">people_outline</i>"
 name       = "Careers"
 url        = "/careers/"
