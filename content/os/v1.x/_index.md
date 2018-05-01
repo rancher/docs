@@ -1,5 +1,4 @@
 ---
-title: RancherOS
-weight: 1
+title: v1.x
 showBreadcrumb: false
 ---

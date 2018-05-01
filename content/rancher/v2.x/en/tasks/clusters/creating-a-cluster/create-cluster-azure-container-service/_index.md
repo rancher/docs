@@ -7,7 +7,7 @@ weight: 3350
 
 You can use Rancher to create a cluster using Microsoft Azure Container Service.
 
-{{< beta-note_azure >}
+<!-- VJF... Broken tag for: beta-note_azure -->
 
 1. From the **Clusters** page, click **Add Cluster**.
 

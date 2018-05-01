@@ -1,8 +1,12 @@
 {{ $.Scratch.Set "topLevel" . }}
-{{ range .Site.Sections }}
-  {{if $.CurrentSection}}
-    {{ if .IsAncestor $.CurrentSection }}
-      {{ $.Scratch.Set "topLevel" . }}
+{{ range $product := $.Site.Sections }}
+  {{ range $version := .Sections }}
+    {{ range $language := .Sections }}
+      {{if $.CurrentSection}}
+        {{ if .IsAncestor $.CurrentSection }}
+          {{ $.Scratch.Set "topLevel" . }}
+        {{end}}
+      {{end}}
     {{end}}
   {{end}}
 {{end}}
@@ -13,22 +17,33 @@
         <li>
           <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="btn bg-link p-a-0">
             <span class="p-h-xs">
-            {{ range .Site.Sections }}
-              {{if $.CurrentSection}}
-                {{ if .IsAncestor $.CurrentSection }}
-                  {{ .Params.shortTitle }}
+              {{ range $product := $.Site.Sections }}
+                {{ range $version := .Sections }}
+                  {{ range $language := .Sections }}
+                    {{if $.CurrentSection}}
+                      {{ if .IsAncestor $.CurrentSection }}
+                        {{ .Params.shortTitle }}
+                      {{end}}
+                    {{end}}
+                  {{end}}
                 {{end}}
               {{end}}
-            {{end}}
             </span>
             <i class="material-icons darken p-a-xs">keyboard_arrow_down</i>
           </a>
 
           <ul class="sub dropdown-menu bg-white unstyled">
-          {{ range .Site.Sections }}
-            <li><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
-          {{ end }}
-          <li><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
+            {{ range $product := $.Site.Sections }}
+              {{ range $version := .Sections }}
+                {{ range $language := .Sections }}
+                  <li><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
+                  {{ if .Params.insertonesix }}
+                    <li><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
+                  {{end}}
+                {{end}}
+              {{end}}
+            {{end}}
+
           </ul>
         </li>
       </ul>

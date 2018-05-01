@@ -222,6 +222,11 @@ const bootstrapScrollSpy = function () {
     let $class             = 'sticky';
     let $el                = $('.toc-container');
     let $watch             = $('.offset-watch');
+
+    if ( !$watch.length ) {
+      return;
+    }
+
     let scrollTop          = $(window).scrollTop();
     let elementOffset      = $watch.offset().top;
     let distance           = (elementOffset - scrollTop);
