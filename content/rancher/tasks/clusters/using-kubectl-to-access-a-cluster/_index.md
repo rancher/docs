@@ -1,6 +1,7 @@
 ---
 title: Using kubectl to Access a Cluster
 weight: 3450
+draft: true
 ---
 # Using kubectl to Access a Cluster
 
