@@ -7,8 +7,6 @@ weight: 3225
 
 ## Objectives
 
-{{< prereq_cluster >}}
-
 1.	[Create a Linux Host](#create-a-linux-host)
 
 	Begin by provisioning a Linux host.
@@ -25,7 +23,7 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-premise VM
 - A bare-metal server
 
-Provision the host according to our [requirements](../setup/requirements.md).
+Provision the host according to the requirements below
 
 
 
