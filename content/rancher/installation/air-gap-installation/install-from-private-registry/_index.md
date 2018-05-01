@@ -10,7 +10,7 @@ If you have a private registry, you can move Rancher into that registry and inst
 >**Prerequisite:** It is assumed you either have your own private registry or other means of distributing docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation for private registries](https://docs.docker.com/registry/).
 
 
-1. Browse to https://github.com/rancher/rancher/releases/tag/v2.0.0-beta4-rc2 and download all files in the release.
+1. Browse to https://github.com/rancher/rancher/releases/tag/v2.0.0 and download all files in the release.
 
 2. Run rancher-save-images.sh in an environment that has access to dockerhub. This script will download all images into a file rancher-images.tar.gz.
 

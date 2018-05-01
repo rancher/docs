@@ -28,7 +28,7 @@ Rancher provides an intuitive user interface for DevOps engineers to manage thei
 
 The following figure illustrates the role Rancher plays in IT and DevOps organizations. Each team deploys their applications on the public or private clouds they choose. IT administrators gain visibility and enforce policies across all users, clusters, and clouds.
 
-![placeholder]({{< baseurl >}}/img/rancher/platform.png)
+![Platform]({{< baseurl >}}/img/rancher/platform.png)
 
 
 ## What's New?
@@ -73,7 +73,7 @@ Majority of Rancher 2.0 software runs on the Rancher server.  Rancher server inc
 
 The figure below illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher server installation that manages two Kubernetes clusters: one Kubernetes cluster created by RKE and another Kubernetes cluster created by GKE.
 
-![placeholder]({{< baseurl >}}/img/rancher/rancher-architecture.png)
+![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.png)
 
 In this section we describe the functionalities of each Rancher server components.
 
