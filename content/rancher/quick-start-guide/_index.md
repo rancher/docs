@@ -15,20 +15,26 @@ Howdy Partner! This tutorial walks you through:
 
 This Quick Start Guide is divided into different tasks for easier consumption.
 
-1.  Begin by provisioning a Linux host.
-2.  [Provision a Linux Host](#provision-a-linux-host)
+1.  [Provision a Linux Host](#provision-a-linux-host) <br/>
+        Begin by provisioning a Linux host.
 
-2.  From your Linux host, run the Docker command for installing Rancher.[Install Rancher](#install-rancher)
+2.  [Install Rancher](#install-rancher) <br/>
+        From your Linux host, run the Docker command for installing Rancher.
 
-3.  Browse to your Linux host to access the Rancher UI.[Log In](#log-in)
+3.  [Log In](#log-in)  <br/>
+        Browse to your Linux host to access the Rancher UI.
 
-4.  Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.[Create the Cluster](#create-the-cluster)
+4.  [Create the Cluster](#create-the-cluster)  <br/>
+        Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
 
-5.  Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.[Deploy a Workload](#deploy-a-workload)
+5.  [Deploy a Workload](#deploy-a-workload)  <br/>
+        Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.
 
-6.  When your workload finishes deployment, browse to your node IP to make sure NGINX is running.[View Your Application](#view-your-application)
+6.  [View Your Application](#view-your-application) <br/> 
+        When your workload finishes deployment, browse to your node IP to make sure NGINX is running.
 
-7.  Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.[What's Next?](#whats-next)
+7.  [What's Next?](#whats-next) <br/> 
+        Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.
 
 ## Provision a Linux Host
 
@@ -72,7 +78,7 @@ To install Rancher on your host, connect to it and then use a shell to install.
 	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 	```
 
-#### Result: Rancher is installed.
+**Result: Rancher is installed.**
 
 ### Log In
 

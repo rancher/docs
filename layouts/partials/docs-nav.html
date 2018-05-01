@@ -37,7 +37,6 @@
   <!-- tabs -->
   <ul class="tabs col-md-10">
     {{ $topLevel := .Scratch.Get "topLevel"}}
-    <li class="{{if (eq .Permalink $topLevel.Permalink)}}active{{end}}"><a href="{{$topLevel.Permalink}}"><i class="material-icons" style="position: relative; top: -2px;">home</i></a></li>
     {{ if $topLevel }}
       {{ range $topLevel.Sections }}
         {{ $isCurrent := .IsAncestor $.CurrentSection }}

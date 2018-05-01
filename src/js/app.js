@@ -214,6 +214,7 @@ const bootstrapNav = function () {
 }
 
 const bootstrapScrollSpy = function () {
+  $(window).resize(scrollHandler)
 
   $(window).scroll(scrollHandler)
 
@@ -226,7 +227,7 @@ const bootstrapScrollSpy = function () {
     let distance           = (elementOffset - scrollTop);
     let $mainContentHeaders = $('.main-content').find(':header:visible');
     let opts               = {
-      height: $el.outerHeight(),
+      height: "100vh",
       width:  $el.outerWidth(),
       left:   $el.offset().left,
     };
