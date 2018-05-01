@@ -33,7 +33,7 @@ Provision the host according to our [requirements](../setup/requirements.md).
 >
 While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 >
->**Amazon EC2 Note:** If you're using an Amazon EC2 instance as your Linux host, you must also create a cluster ID. After you complete [Create the Custom Cluster](#create-the-custom-cluster), complete [Amazon EC2 Additional Step: Create a Cluster ID](#amazon-ec2-additional-step-br-create-a-cluster-id).
+>**Amazon Cloud Provider Note:** If you are going to configure your cluster to use `Amazon` cloud provider, you must tag your Amazon EC2 resources with a `ClusterID`. After you complete [Create the Custom Cluster](#create-the-custom-cluster), complete [Configuring the Kubernetes Cloud Provider to Amazon: Tag resources with ClusterID](#configuring-the-kubernetes-cloud-provider-to-amazon-br-tag-resources-with-clusterid).<br/><br/>You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes, you only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. Read more on [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
 
 ## Create the Custom Cluster
 
@@ -71,6 +71,22 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
 {{< result_create-cluster >}}
 
-### Amazon EC2 Additional Step:<br/> Create a Cluster ID
+### Configuring the Kubernetes Cloud Provider to Amazon:<br/> Tag resources with ClusterID
 
-Write content here Sebastiaan ☺️
+When you have configured your cluster to use `Amazon` as **Cloud Provider**, you will need to tag AWS resources. The following resources need to tagged with a `ClusterID`:
+
+* **Nodes**: All hosts added in Rancher.
+* **Subnet**: The subnet used for your cluster
+* **Security Group**: The security group used for your cluster.
+
+>**Note:** Do not tag multiple security groups, as this will generate an error when creating Elastic Load Balancer (ELB).
+
+The tag that should be used is:
+
+**Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `owned`
+
+where `CLUSTERID` can be chosen as you like, as long as it is equal across all tags set.
+
+Setting the value of the tag to owned, tells the cluster that all resources with this tag are owned and managed by this cluster. If you share resources between clusters, you can change the tag to:
+
+**Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `shared`.
