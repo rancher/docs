@@ -1,8 +1,8 @@
 ---
-title: Install Using Kubernetes
+title: HA Server Install
 weight: 275
 ---
-# Install Using Kubernetes
+# High Availability Rancher Server Install
 
 You can deploy Rancher in a high-availability (HA) configuration using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Use RKE to set up a new cluster that deploys Rancher as an addon.
 

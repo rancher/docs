@@ -28,7 +28,8 @@ Rancher provides an intuitive user interface for DevOps engineers to manage thei
 
 The following figure illustrates the role Rancher plays in IT and DevOps organizations. Each team deploys their applications on the public or private clouds they choose. IT administrators gain visibility and enforce policies across all users, clusters, and clouds.
 
-{{< figure src="assets/platform.png" title="Rancher Platform">}}
+![placeholder]({{< baseurl >}}/img/rancher/platform.png)
+
 
 ## What's New?
 
@@ -70,9 +71,9 @@ We now cover high-level Rancher architecture.
 
 Majority of Rancher 2.0 software runs on the Rancher server.  Rancher server includes all the software components used to manage the entire Rancher deployment.
 
-Figure 2 illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher server installation that manages two Kubernetes clusters: one Kubernetes cluster created by RKE and another Kubernetes cluster created by GKE.
+The figure below illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher server installation that manages two Kubernetes clusters: one Kubernetes cluster created by RKE and another Kubernetes cluster created by GKE.
 
-{{< figure src="assets/rancher-architecture.png" title="Rancher Architecture">}}
+![placeholder]({{< baseurl >}}/img/rancher/rancher-architecture.png)
 
 In this section we describe the functionalities of each Rancher server components.
 
@@ -94,17 +95,17 @@ The cluster controller and cluster agents implement the business logic required 
 
 Cluster agents perform the following activities:
 
-1.  Manage workload. This includes, for example, creating pods and deployments in each cluster.
+-  Manage workload. This includes, for example, creating pods and deployments in each cluster.
 
-2.  Applying roles and bindings that are defined in global policies into every cluster.
+-  Applying roles and bindings that are defined in global policies into every cluster.
 
-3.  Propagate information from cluster to rancher server: events, stats, node info, and health.
+-  Propagate information from cluster to rancher server: events, stats, node info, and health.
 
 The cluster controller performs the following activities:
 
-1.  Configures access control policies to clusters and projects.
+-  Configures access control policies to clusters and projects.
 
-2.  Provisions clusters by invoking the necessary Docker machine drivers and invoking Kubernetes engines like RKE and GKE.
+-  Provisions clusters by invoking the necessary Docker machine drivers and invoking Kubernetes engines like RKE and GKE.
 
 #### Authentication Proxy
 

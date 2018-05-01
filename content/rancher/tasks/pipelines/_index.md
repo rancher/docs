@@ -27,11 +27,23 @@ weight: 3700
 
 6. Select Branch options.
 
--	Only the branch {BRANCH NAME}: Only events triggered by changes to this branch will be built.
--	Evertyhing but {BRANCH NAME}: Build any branch that triggered an event EXCEPT events from this branch.
--	All branches: Regardless of the branch that triggered the event always build.
+	-	Only the branch {BRANCH NAME}: Only events triggered by changes to this branch will be built.
 
-7. Click Add button.
+	-	Evertyhing but {BRANCH NAME}: Build any branch that triggered an event EXCEPT events from this branch.
+
+	-	All branches: Regardless of the branch that triggered the event always build.
+
+	>**Note:** If you want one path for master, but another for PRs or development/test/feature branches, create two separate pipelines.
+
+7. Select the build trigger events. By default, builds will only happen by manually clicking build now in Rancher UI.
+
+	- Automatically build this pipeline whenever there is a git commit. (This respects the branch selection above)
+
+	- Automatically build this pipeline whenever there is a new PR.
+
+	- Automatically build the pipeline. (Allows you to configure scheduled builds similar to Cron)
+
+8. Click Add button.
 
 	By default, Rancher provides a three stage pipeline for you. It consists of a build stage where you would compile, unit test, and scan code. The publish stage has a single step to publish a docker image.
 
@@ -46,18 +58,18 @@ weight: 3700
 
 11. Click Save to persist the changes.
 
-Click the “publish an image’ box under the “Publish” stage.
+12. Click the “publish an image’ box under the “Publish” stage.
 
+13. Set the location of the Dockerfile. By default it looks in the root of the workspace. Instead, set the build context for building the image relative to the root of the workspace.
 
-Set the location of the Dockerfile, by default it looks in the root of the workspace.
-Set the build context for building the image relative to the root of the workspace.
+14. Set the image information.
 
-Set the image information:
-The registry is the remote registry URL. It is defaulted to Docker hub.
-Repository is the <org>/<repo> in the repository.
-Finally select the Tag. You can hard code a tag like ‘latest’ or select from a list of available variables.
+	The registry is the remote registry URL. It is defaulted to Docker hub.
+	Repository is the `<org>/<repo>` in the repository.
 
-Finally, if this is the first time using this registry, you can add the username/password for pushing the image. You must click save for the registry credentials AND also save for the modal.
+15. Select the Tag. You can hard code a tag like ‘latest’ or select from a list of available variables.
+
+16. If this is the first time using this registry, you can add the username/password for pushing the image. You must click save for the registry credentials AND also save for the modal.
 
 
 
@@ -68,7 +80,7 @@ Finally, if this is the first time using this registry, you can add the username
 
 2. Provide a name for the stage.
 
-3. Click save
+3. Click save.
 
 
 ## Creating a New Step
@@ -80,13 +92,28 @@ Finally, if this is the first time using this registry, you can add the username
 3. Fill out the form as detailed above
 
 
-### Adding a Build Script
+## Environment Variables
+
+For your convenience the following environment variables are available in your build steps:
+
+Variable Name           | Description
+------------------------|------------------------------------------------------------
+CICD_GIT_REPO_NAME      | Repository Name (Stripped of Github Organization)
+CICD_PIPELINE_NAME      | Name of the pipeline
+CICD_GIT_BRANCH         | Git branch of this event
+CICD_TRIGGER_TYPE       | Event that triggered the build
+CICD_PIPELINE_ID        | Rancher ID for the pipeline
+CICD_GIT_URL            | URL of the Git repository
+CICD_EXECUTION_SEQUENCE | Build number of the pipeline
+CICD_EXECUTION_ID       | Combination of {CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}
+CICD_GIT_COMMIT         | Git commit ID being executed.
+<!--### Adding a Build Script
 
 Coming Soon
 
 ### Publishing an Image
 
-Coming Soon
+Coming Soon-->
 
 ## Importing a Pipeline From YAML
 
