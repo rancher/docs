@@ -7,8 +7,6 @@ weight: 3300
 
 ## Objectives
 
-{{< prereq_cluster >}}
-
 1.	[Create a Linux Virtual Machine](#create-a-linux-virtual-machine)
 
 	Begin by logging into Azure and provisioning a Linux virtual machine (VM).
@@ -21,7 +19,15 @@ weight: 3300
 
 Create a Linux VM using the [Microsoft Azure Portal](https://portal.azure.com) ([Azure Instructions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/)).
 
-Provision the droplet according to our [requirements](../setup/requirements.md).
+Provision the instance according to the requirements below.
+
+### Requirements
+
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
 
 ## Create the Azure Cluster
 

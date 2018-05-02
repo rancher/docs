@@ -7,8 +7,6 @@ weight: 3250
 
 ## Objectives
 
-{{< prereq_cluster >}}
-
 1.	[Create an Instance](#create-an-instance)
 
 	Begin by logging into Amazon EC2 website and provisioning a new instance.
@@ -21,9 +19,17 @@ weight: 3250
 
 Create an _instance_, Amazon's version of a virtual machine in EC2, using the [Amazon EC2 Management Console](https://aws.amazon.com/ec2/).
 
-Provision the instance according to our [requirements](../setup/requirements.md).
-
 [Amazon Instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
+
+Provision the instance according to the requirements below.
+
+### Requirements
+
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
 
 ## Create the Amazon EC2 Cluster
 

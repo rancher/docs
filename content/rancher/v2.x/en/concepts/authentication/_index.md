@@ -13,8 +13,8 @@ This centralized user authentication is accomplished using the {{< product >}} a
 
 The {{< product >}} authentication proxy integrates with the following external authentication services.
 
-	-	Microsoft Active Directory
-	-	GitHub
+-	Microsoft Active Directory
+-	GitHub
 
 However, {{< product >}} also provides local authentication.
 

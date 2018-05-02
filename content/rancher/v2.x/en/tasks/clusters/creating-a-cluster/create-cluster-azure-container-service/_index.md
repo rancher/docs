@@ -26,9 +26,15 @@ You can use Rancher to create a cluster using Microsoft Azure Container Service.
 <br/>
 7. Use **Nodes** to provision each node in your cluster and choose a geographical region.
 
-	Provision the nodes according to our [requirements](../setup/requirements.md).
-
 	[Microsoft Documentation: How to create and use an SSH public and private key pair](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)
+
+	Provision the nodes according to the requirements below:
+
+	{{< requirements_os >}}
+
+	{{< requirements_hardware >}}
+
+	{{< requirements_software >}}
 <br/>
 8. Click **Create**.
 <br/>

@@ -33,7 +33,7 @@ Installing Rancher on a Linux host using a single Docker container is simple. Si
 	```
 
 	>**Note:**
-	>- `rancher/rancher` is hosted on DockerHub. If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to {{< ref "private-registries" >}}.
-	>- For a list of other Rancher server tags available, refer to {{< ref "server-tags" >}}.
+	>- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry](/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/><br/>
+	>- For a list of other Rancher Server tags available, refer to [Rancher Server Tags](/rancher/v2.x/en/installation/server-tags/).
 
 **Result:** Rancher is installed.

@@ -23,9 +23,17 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-premise VM
 - A bare-metal server
 
-Provision the host according to the requirements below
+Provision the host according to the requirements below.
 
+### Requirements
 
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
+
+{{< requirements_ports >}}
 
 >**Bare-Metal Server Note:**
 >
