@@ -5,7 +5,7 @@ weight: 141
 
 ## Custom System Services
 
-You can also create your own system service in [Docker Compose](https://docs.docker.com/compose/) format. After creating your own custom service, you can launch it in RancherOS in a couple of methods. The service could be directly added to the [cloud-config]({{< baseurl >}}/os/installation/configuration/#cloud-config), or a `docker-compose.yml` file could be saved at a http(s) url location or in a specific directory of RancherOS.
+You can also create your own system service in [Docker Compose](https://docs.docker.com/compose/) format. After creating your own custom service, you can launch it in RancherOS in a couple of methods. The service could be directly added to the [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config), or a `docker-compose.yml` file could be saved at a http(s) url location or in a specific directory of RancherOS.
 
 ### Launching Services through Cloud-Config
 

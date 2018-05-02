@@ -7,7 +7,7 @@ weight: 1
 ## Quick Start Guide
 ---
 
-If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{< baseurl >}}/os/installation/running-rancheros/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{< baseurl >}}/os/installation/running-rancheros/workstation/docker-machine/) and show you some of what RancherOS can do.
+If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine/) and show you some of what RancherOS can do.
 
 ### Launching RancherOS using Docker Machine
 
@@ -121,7 +121,7 @@ $ sudo ros config get rancher.network.dns.nameservers
 ```
 
 
-When using the native Busybox console, any changes to the console will be lost after reboots, only changes to `/home` or `/opt` will be persistent. You can use the `ros console switch` command to switch to a [persistent console]({{< baseurl >}}/os/installation/custom-builds/custom-console/#console-persistence) and replace the native Busybox console. For example, to switch to the Ubuntu console:
+When using the native Busybox console, any changes to the console will be lost after reboots, only changes to `/home` or `/opt` will be persistent. You can use the `ros console switch` command to switch to a [persistent console]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-console/#console-persistence) and replace the native Busybox console. For example, to switch to the Ubuntu console:
 
 ```
 $ sudo ros console switch ubuntu

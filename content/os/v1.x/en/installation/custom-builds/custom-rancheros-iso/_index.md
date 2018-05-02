@@ -11,7 +11,7 @@ It's easy to build your own RancherOS ISO.
    ```
    $ git clone https://github.com/rancher/os.git
    ```
-2. In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{< baseurl >}}/os/installation/custom-builds/custom-kernels).
+2. In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-kernels).
 3. After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files.
      Build Requirements: `bash`, `make`, `docker` (Docker version >= 1.10.3)
    ```
@@ -22,7 +22,7 @@ It's easy to build your own RancherOS ISO.
    iso-checksums.txt	vmlinuz
    ```
 
-The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/installation/running-rancheros/workstation/docker-machine).
+The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine).
 
 
 ### Creating a GCE Image Archive

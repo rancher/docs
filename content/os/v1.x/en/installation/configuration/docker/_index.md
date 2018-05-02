@@ -6,7 +6,7 @@ weight: 126
 ## Configuring Docker or System Docker
 ---
 
-In RancherOS, you can configure System Docker and Docker daemons by using [cloud-config]({{< baseurl >}}/os/installation/configuration/#cloud-config).
+In RancherOS, you can configure System Docker and Docker daemons by using [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config).
 
 ### Configuring Docker
 
@@ -58,7 +58,7 @@ Key | Value | Default | Description
 ---|---|---| ---
 `extra_args` | List of Strings | `[]` | Arbitrary daemon arguments, appended to the generated command
 `environment` | List of Strings | `[]` |
-`tls` | Boolean | `false` | When [setting up TLS]({{< baseurl >}}/os/installation/configuration/setting-up-docker-tls/), this key needs to be set to true.
+`tls` | Boolean | `false` | When [setting up TLS]({{< baseurl >}}/os/v1.x/en/installation/configuration/setting-up-docker-tls/), this key needs to be set to true.
 `tls_args` | List of Strings (used only if `tls: true`) | `[]` |
 `server_key` | String (used only if `tls: true`)| `""` | PEM encoded server TLS key.
 `server_cert` | String (used only if `tls: true`) | `""` | PEM encoded server TLS certificate.
