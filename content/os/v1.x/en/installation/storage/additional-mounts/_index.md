@@ -6,7 +6,7 @@ weight: 161
 ## Additional Mounts
 ---
 
-Additional mounts can be specified as part of your [cloud-config]({{< baseurl >}}/os/installation/configuration/#cloud-config). These mounts are applied within the console container. Here's a simple example that mounts `/dev/vdb` to `/mnt/s`.
+Additional mounts can be specified as part of your [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config). These mounts are applied within the console container. Here's a simple example that mounts `/dev/vdb` to `/mnt/s`.
 
 ```yaml
 #cloud-config
