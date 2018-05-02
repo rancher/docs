@@ -46,6 +46,9 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 - An on-premise VM
 - A bare-metal server
 
+  >**Note**
+  > When using a cloud-host virtual machine you may need to configure inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
+
 ### Provision the host according to the requirements below.
 
 {{< requirements_os >}}
@@ -147,15 +150,18 @@ For this workload, you'll be deploying the application NGINX.
 
 7.  From **Port Mapping**, click **Add Port**.
 
-8.  From the **Publish on** drop-down, make sure that **Every node** is selected.
+8.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
+![As a dropdown, NodePort (On every node selected)](images/as_a_nodeport.png)
 
-8.  From the **Source Port** field, leave the **Random** value in place.
+9.  From the **On Listening Port** field, leave the **Random** value in place.
+![On Listening Port, Random selected](images/on_listening_port_random.png)
 
-7. From the **Container Port** field, enter port `80`.
+10. From the **Publish the container port** field, enter port `80`.
+![Publish the container port, 80 entered](images/publish_the_container_port_80.png)
 
-8. Leave the remaining options on their default setting. We'll tell you about them later.
+11. Leave the remaining options on their default setting. We'll tell you about them later.
 
-9. Click **Launch**.
+12. Click **Launch**.
 
 #### Result:
 * Your workload is deployed. This process might take a few minutes to complete.
@@ -166,6 +172,41 @@ For this workload, you'll be deploying the application NGINX.
 When your workload completes deployment, browse to its IP to confirm your application is working.
 
 From the **Workloads** page, click the link underneath your workload. If your deployment succeeded, your application opens.
+
+>**Note**
+> When using a cloud-host virtual machine you may not have access to the port running the container. It can be tested in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is 31568 in this example. 
+
+```sh
+
+gettingstarted@rancher:~$ curl http://localhost:31568
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+gettingstarted@rancher:~$
+
+```
 
 ### What's Next?
 
