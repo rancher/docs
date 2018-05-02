@@ -1,7 +1,6 @@
 ---
 title: Quick Start
 weight: 25
-aliases: [/docs/rancher/v2.0/en/quick-start-guide]
 ---
 
 # Quick Start Guide
