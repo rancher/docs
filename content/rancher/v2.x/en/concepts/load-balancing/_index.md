@@ -19,7 +19,7 @@ Cluster Deployment                            | Layer-4 Load Balancer Support
 ----------------------------------------------|--------------------------------
 Amazon EKS                                    | Supported by AWS cloud provider
 Google GKE                                    | Supported by GCE cloud provider
-Azure AKS                                     | TODO: check with Nathan
+Azure AKS                                     | Supported by Azure cloud provider
 RKE on EC2                                    | Supported by AWS cloud provider
 RKE on DigitalOcean                           | Not Supported
 RKE on vSphere                                | Not Supported
@@ -37,7 +37,7 @@ Cluster Deployment                            | Layer-7 Load Balancer Support
 ----------------------------------------------|--------------------------------
 Amazon EKS                                    | Supported by AWS cloud provider
 Google GKE                                    | Supported by GKE cloud provider
-Azure AKS                                     | TODO: check with Nathan
+Azure AKS                                     | Not Supported
 RKE on EC2                                    | Nginx Ingress Controller
 RKE on DigitalOcean                           | Nginx Ingress Controller
 RKE on vSphere                                | Nginx Ingress Controller

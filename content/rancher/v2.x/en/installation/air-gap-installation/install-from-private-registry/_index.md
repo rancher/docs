@@ -1,7 +1,6 @@
 ---
 title: Installing From a Private Registry
 weight: 350
-draft: true
 ---
 # Installing From a Private Registry
 

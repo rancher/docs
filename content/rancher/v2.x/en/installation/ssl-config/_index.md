@@ -5,39 +5,43 @@ weight: 325
 
 # SSL Configuration
 
-Rancher is secure by default. This means that SSL is required when interacting with Rancher. Using SSL ensures communication from and to Rancher is encrypted, like logging in to the Rancher UI or when using tools to interact with your Kubernetes clusters (like `kubectl`). By default, Rancher will generate a self-signed certificate that will be used when contacting Rancher on port **TCP/443** (HTTPS). All traffic going to port **TCP/80** (HTTP) will be automatically redirected to port **TCP/443** (HTTPS). There are other options which are described below, first you will need to decide where your certificates will be stored.
+For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL encrypts all Rancher communications: login, cluster interaction, and so on.
+
+By default, Rancher generates a self-signed certificate that's used to encrypt communication over port 443 (HTTPS). Any traffic directed to port 80 (HTTP) is automatically forwarded to 443. If you're content with using this certificate, there's no further action required on your part.
+
+If you want to use your own certificate that's self-signed or signed by a certificate authority, refer to the documentation below.
 
 ## Before You Start: Choose a Certificate Host
 
-There are two places where you certificates can be stored and used:
+There are two locations that can host your own certificates. Choose one.
 
-- Inside the `rancher/rancher` container
+- Inside the Rancher container
 - Using an external loadbalancer or proxy
 
-## Options for inside the `rancher/rancher` container
+## Certificate Host: Inside the Rancher Container
 
-### Automatically generated default self signed certificate
+<!-- ### Automatically generated default self signed certificate
 
 By running the `rancher/rancher` container without any additional parameters or configuration, a self-signed certificate will automatically be created on startup.
 
-<u>Example command:</u>
+**Example**
 
 ```
 docker run -d -p 80:80 -p 443:443 rancher/rancher:v2.0.0
-```
+``` -->
 
-### Providing your own self-signed certificates to the container
+### Self-Signed Certificate
 
-You can use your own certificates and let Rancher use them to provide SSL. You can provide them by mounting the certificate files when running the container. The certificate files should be in **PEM** format. Make sure that your certificate file includes all the intermediate certificates in the chain.
+You can use your own certificates and let Rancher use them to provide SSL. You can provide them by mounting the certificate files when running the container. The certificate files should be in `.pem` format. Make sure that your certificate file includes all the intermediate certificates in the chain.
 
 | Type                         |        Location in container |
 | ---------------------------- | ---------------------------: |
 | Certificate file             |    /etc/rancher/ssl/cert.pem |
 | Certificate key file         |     /etc/rancher/ssl/key.pem |
 | CA certificates file         | /etc/rancher/ssl/cacerts.pem |
+<br/>
 
-<u>Example command:</u>
-
+**Example**
 ```
 docker run -d -p 80:80 -p 443:443 \
   -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
