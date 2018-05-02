@@ -1,0 +1,186 @@
+[[testimonial]]
+quote = "Using Rancher 2.0 increases our efficiency and provides our engineering teams with more time to focus on creating the next great innovations that will help Sling TV build upon its leadership position"
+logo = "octoperf.png"
+source = "name"
+position = "Founder"
+company = "Sling TV"
+
+[[testimonial]]
+quote = "Using Rancher 2.0 increases our efficiency and provides our engineering teams with more time to focus on creating the next great innovations that will help Sling TV build upon its leadership position"
+logo = "octoperf.png"
+source = "name"
+position = "Founder"
+company = "Sling TV"
+
+[[testimonial]]
+quote = "Rancher improved our scalability by providing an amazing all-in-one Docker cluster orchestration tool."
+logo = "octoperf.png"
+source = "Quentin Hamard"
+position = "Founder"
+company = "Octoperf"
+
+[[testimonial]]
+quote = "Rancher is the most advanced product that we have been testing during our Docker evaluation. The user-friendy UI, the way you can manage containers, the services, the easy installation, are the points which are making the difference. The Rancher team was there when we needed it, for example to help us on load-balancing issues. We believe in the product, and have planned to use it with Jenkins and Docker to make a continuous deployment solution for our application."
+logo = "orange-logo.png"
+source = "Florian Le Galudec"
+position = "Ops Engineer"
+company = "Orange France"
+
+[[testimonial]]
+quote = "After trying many solutions and finding faults with them, we settled on Rancher.  Rancher removes a massive amount of the manual effort needed to build a stable Docker Infrastructure and CI/CD pipeline.  Its batteries-included-but-removable nature means you never have to bend it to your needs. Every “edge case” in our company infrastructure happens naturally in Rancher, and as a result, runs without hiccups."
+logo = "HigherEducation.png"
+source = "Will Stern"
+position = "Software Architect"
+company = "HigherEducation"
+
+[[testimonial]]
+quote = "We rely on Rancher to manage our various microservices and core API in both our lab and multiple production environments. Having a global footprint with multiple facilities is tricky to begin with, and Rancher makes it that much easier. Knowing we have a reliable container management solution in Rancher is one less thing our operators have to lie awake at night thinking about!"
+logo = "packet.png"
+source = "Aaron Welch"
+position = "SVP Product"
+company = "Packet"
+
+[[testimonial]]
+quote = "Rancher is just awesome! It gives us the best of Docker and cloud philosophy in an out-of-the box, multi-tenant Container-as-a-Service solution. Our dev team gets a real self-service PaaS, and our ops team can easily manage multiple environments."
+logo = "makazi.png"
+source = "Alexis Ducastel"
+position = "Tech Ops Director"
+company = "Makazi"
+
+[[testimonial]]
+quote = "After trying a number of tools and approaches, we found that Rancher hits that sweet spot of providing powerful container orchestration capabilities without adding too many layers of complexity and additional concepts on top of Docker itself. This has helped prevent the learning curve from getting too steep and made the introduction of new development and deployment workflows much easier."
+logo = "BravissimoLtd.png"
+source = "Luke Bennett"
+position = "Customer Systems Development Manager"
+company = "Bravissimo Ltd"
+
+[[testimonial]]
+quote = "Last year I was playing around with Docker and SpringCloud to determine the feasibility of converting one of my client's monolithic applications to a microservice based architecture. Docker is great, but my client as clamoring for a more elegant user experience that is backed up by a robust and yet easy to use orchestration solution. My attention turned to Rancher and I have not looked back since. Rancher's UI and feature set is top-notch. Better yet, the team behind it is amazing! They're experts in all areas of operations, incredibly responsive and truly focused on making their product the best in its class"
+logo = "nuarch.png"
+source = "Dan MacDonald"
+position = "Consultant"
+company = "Nuarch.com"
+
+[[testimonial]]
+quote = "For enterprises that support diverse DevOps groups, it is imperative to provide visibility and manageability into the ecosystem. Rancher embraces this by following the Docker principal \"batteries included but removable.\" Use any scheduler, overlay network or storage solution across multiple environments and disperse teams, and Rancher will provide the insight and control needed to wrangle cattle wherever they may roam."
+logo = "sungard.png"
+source = "Kevin McGrath"
+position = "CTO Architect"
+company = "Sungard Availability Services "
+
+[[testimonial]]
+quote = "By migrating from a physical box to a Rancher controlled Docker infrastructure, we have been able to lower the amount of time our teams spend working with builds, and it allows us to quickly scale up or down seamlessly. Rancher has becoming a powerful tool in our DevOps arsenal and I would highly recommend it to anyone."
+logo = "sugarcrm.png"
+source = "Jon Whitcraft"
+position = "Sr. Devops Engineer"
+company = "SugarCRM"
+
+[[testimonial]]
+quote = "We have been using Docker for a long time to support our need for both shared and consistent application deployments across a hybrid cloud+bare metal infrastructure. The key piece that was consistently missing (despite a lot of searching) was the marriage of infrastructure and application orchestration. We immediately saw the promise of Rancher after testing it early in their beta phase. We are now running 2 distributed production applications, along with several internal apps, fully managed through Rancher. The Rancher teamвЂ™s professionalism and responsiveness to requests/inquiries/bug reports/etc has been outstanding and the product they have built has quickly become a cornerstone of our tech stack"
+logo = "pitrho.png"
+source = "Gilman Callsen"
+position = "co-Founder and CTO"
+company = "of Pit Rho"
+
+[[testimonial]]
+quote = "Rancher provides container orchestration for the masses. Object Partners consistently recommends Rancher to many of our clients due to its intuitive user experience, simplistic installation process, and minimal infrastructure requirements. The Rancher team has delivers a great product, provides fantastic support, and continuously engages with their community of users. We love Rancher and believe you will too."
+logo = "objectpartners.png"
+source = "John Engelman"
+position = "Chief Technologist"
+company = "Object Partners"
+
+[[testimonial]]
+quote = "Rancher is the only tool on the market that provides the full spectrum of orchestration, ACL and UI while still being easy to install and simple to understand. The developers of Rancher come from thoughtful distributed systems companies and it shows in their product."
+logo = "VitalsLogo.png"
+source = "Topper Bowers"
+position = "Director of Engineering"
+company = "Vitals"
+
+[[testimonial]]
+quote = "After trying several other orchestration solutions we found Rancher to be the most feature rich, stable and well-designed system out there. Not only does it provide powerful console integrations for our developers, they tie it together with a super easy to use interface that makes it a joy to work with!"
+logo = "spyjack.png"
+source = "Rik Nauta<z>CEO "
+company = "Spyjack.io"
+
+[[testimonial]]
+quote = "Rancher has made running and migrating to Docker \"Simpler, Better, faster\" right from inception all the way to Production. The entire Rancher Suite is reliable with rapid time to deliver for services. I have not found a better collection of services and support from any other provider. It is an awesome product and suite."
+logo = "dstv.png"
+source = "Greg Van Wyngaard"
+position = "Systems Architect"
+company = "DStv"
+
+[[testimonial]]
+quote = "Rancher saved us a ton of time while bringing Docker into production. Rancher's core concepts are intuitive enough that we could get up and running in less than a day. As a result, we now can introduce new services with little to no operational overhead."
+logo = "bloom-logo.png"
+source = "Michael Wasser"
+position = "CEO"
+company = "BloomAPI"
+
+[[testimonial]]
+quote = "Rancher solves all of the critical issues for running containers in production, including host management, container networking, managing load balancers, resource tagging, scheduling, and scaling workloads. The UI is beautiful, and makes it so easy to get running with Docker."
+logo = "bitspace.png"
+source = "Alex Trauzzi"
+position = "CTO"
+company = "Bit Space Development"
+
+[[testimonial]]
+quote = "We considered a number of container management platforms before deciding to deploy Rancher. It is a simple, practical and fully functional container provisioning platform. RancherвЂ™s UI makes managing containers appear simple, but the software is actually incredibly powerful. With Rancher we can achieve enterprise-scale container deployments instantly. Rancher is a fantastic product, with a bright future."
+logo = "unitedelectronics.png"
+source = "Bingli Shi"
+position = "R&D Center, VP"
+company = "United Electronics"
+
+[[testimonial]]
+quote = "Rancher is a powerful and easy-to-use container deployment and management platform. Rancher is a great choice for companies looking to quickly deploy and use containers in the cloud. RancherOS is a complete OS for supporting containers. The design philosophy of Rancher and RancherOS is excellent."
+logo = "cloudsoar.png"
+source = "James Dai"
+position = "CTO"
+company = "Cloudsoar "
+
+[[testimonial]]
+quote = "Rancher is a user friendly container management platform with broad functionality. It is easy to deploy, supports container ecosystems such as Kubernetes and Mesos, and also provides an excellent container data persistence solution. The architecture of Rancher is light weight which is in line with how we are deploying containers. Rancher makes container management easy and convenient."
+logo = "cntv.png"
+source = "Qin He"
+position = "System Engineer"
+company = "CNTV"
+
+[[testimonial]]
+quote = "Before we started using Rancher, I needed a few days to install and deploy a new software package. Now, leveraging the Rancher Catalog, I can deploy an application in minutes. It is very fast and incredibly easy."
+logo = "Tianhe2.png"
+source = "Tony Huo"
+position = "Senior Engineer, Tianhe2 (www.nscc-gz.cn)"
+
+[[testimonial]]
+quote = "Linksame develops software for large enterprises. Introducing Rancher has dramatically reduced the difficulty of our product development and management processes. WeвЂ™re using Rancher and Docker to improve all aspects of developing and maintaining our software platform."
+logo = "linksame.png"
+source = "Nengwei Yao"
+position = "General Manager & Founder"
+company = "Linksame Inc."
+
+[[testimonial]]
+quote = "Since we started using Docker, we have tried a number of tools to simplify the orchestration of containers so that our developers get the greatest level of flexibility. We chose Rancher, because it exposes the native Docker tool set while adding a powerful set of tools around it. We have used Rancher to isolate and manage all of our games running in AWS."
+logo = "cerebralfix.png"
+source = "Alister Galpin"
+position = "Server Engineer,"
+company = "Cerebralfix, Ltd"
+
+[[testimonial]]
+quote = "After trying several approaches, getting to know Rancher has dramatically improved the way we work. Rancher is an open-source project that makes it possible to deploy our complex solution across multiple computing clusters for various clients without adding a big learning layer on top of Docker concepts... what more can you ask for?"
+logo = "instore.png"
+source = "Romain Di Giorgio"
+position = "DevOps"
+company = "instore.digital"
+
+[[testimonial]]
+quote = "When building the Nuxeo cloud infrastructure, we tried several approaches for managing Docker based deployment; we even started building our own container orchestration system. Rancher provides a simple abstraction with a good API and administration UI to manage Containers as a service while allowing us the freedom to use Docker Swarm or Kubernetes if needed."
+logo = "nuxeo.png"
+source = "Thierry Delprat"
+position = "CTO,"
+company = "Nuxeo"
+
+[[testimonial]]
+quote = "Rancher is not only a turnkey solution for containers; it's a total shift in the way the new cloud is approached. We have had great success where continuous delivery is key and the platform is utilised by all users types from developer to product owner."
+logo = "industrieit.png"
+source = "Chris Fordham"
+position = "Cloud Platform Architect"
+company = "Industrie IT"
