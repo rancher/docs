@@ -9,5 +9,5 @@ This section contains instructions for setting up Rancher Server in development 
 
 Choose from the options below:
 
-- [Single Node Install](/rancher/v2.x/en/installation/server-installation/single-node-install/)
-- [High-Availability Server Install](/rancher/v2.x/en/installation/server-installation/ha-server-install/)
+- [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install/)
+- [High-Availability Server Install]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/)
