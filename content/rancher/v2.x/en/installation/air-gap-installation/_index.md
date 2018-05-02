@@ -1,7 +1,6 @@
 ---
 title: Air Gap Installation
 weight: 345
-draft: true
 ---
 
 # Air Gap Installation
