@@ -3,8 +3,6 @@ title: Rancher 2.0 Documentation
 shortTitle: Rancher 2.0
 insertOneSix: true
 weight: 1
-aliases:
-  - /docs/rancher/v2.0/en/quick-start-guide/
 ---
 
 # Rancher 2.0 Documentation
