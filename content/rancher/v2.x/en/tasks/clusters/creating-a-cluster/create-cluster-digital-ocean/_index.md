@@ -7,8 +7,6 @@ weight: 3275
 
 ## Objectives
 
-{{< prereq_cluster >}}
-
 1.	[Create a Droplet](#create-a-droplet)
 
 	Begin by logging into DigitalOcean and provisioning a new droplet.
@@ -21,9 +19,17 @@ weight: 3275
 
 Create a _droplet_, DigitalOcean's name for a virtual machine, using the DigitalOcean website.
 
-Provision the droplet according to our [requirements](../setup/requirements.md).
-
 [DigitalOcean Instructions](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet)
+
+Provision the droplet according to the requirements below.
+
+### Requirements
+
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
 
 ## Create the DigitalOcean Cluster
 

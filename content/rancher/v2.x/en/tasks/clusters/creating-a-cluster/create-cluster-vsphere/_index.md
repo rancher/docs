@@ -7,8 +7,6 @@ weight: 3375
 
 ## Objectives
 
-{{< prereq_cluster >}}
-
 1.	[Create a Linux Virtual Machine](#create-a-linux-virtual-machine)
 
 	Begin by logging into vSphere and provisioning a Linux virtual machine (VM).
@@ -21,9 +19,17 @@ weight: 3375
 
 Create a Linux VM using vSphere.
 
-Provision the droplet according to our [requirements](../setup/requirements.md).
-
 [VMware Instructions](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-39D19B2B-A11C-42AE-AC80-DDA8682AB42C.html)
+
+Provision the nodes according to the requirements below.
+
+### Requirements
+
+{{< requirements_os >}}
+
+{{< requirements_hardware >}}
+
+{{< requirements_software >}}
 
 ## Create the vSphere Cluster
 
