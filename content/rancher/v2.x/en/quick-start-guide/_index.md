@@ -6,6 +6,8 @@ aliases: [/docs/rancher/v2.0/en/quick-start-guide]
 
 # Quick Start Guide
 
+>**Note:** This Quick Start Guide will get you up and running in a sandbox environment. It is not intended for a production environment. For more comprehensive instructions, see [Installation]({{< baseurl >}}/rancher/v2.x/en/installation/).
+
 Howdy Partner! This tutorial walks you through:
 
 - Installation of {{< product >}} {{< version >}}
@@ -31,10 +33,10 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 5.  [Deploy a Workload](#deploy-a-workload)  <br/>
         Create a workload so that Kubernetes can distribute NGINX among your cluster nodes.
 
-6.  [View Your Application](#view-your-application) <br/> 
+6.  [View Your Application](#view-your-application) <br/>
         When your workload finishes deployment, browse to your node IP to make sure NGINX is running.
 
-7.  [What's Next?](#whats-next) <br/> 
+7.  [What's Next?](#whats-next) <br/>
         Now that you've created a cluster and deployed NGINX, find out what else you can do with Rancher v2.0.
 
 ## Provision a Linux Host
@@ -47,13 +49,14 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
 ### Provision the host according to the requirements below.
 
+{{< requirements_os >}}
+
 #### Hardware Requirements
 
 - Memory: 4GB
 
 #### Software requirements
 
-- Operating System: Ubuntu 16.04 (64-bit)
 - Software: Docker
 
   <a name="node-requirements"></a>**Supported Versions:**
