@@ -13,7 +13,7 @@ Rancher is a container management platform built for organizations that deploy c
 
 ### Run Kubernetes Everywhere
 
-Kubernetes has become the container orchestration standard. Most cloud and virtualization vendors now offer it as standard infrastructure. Rancher users have the choice of creating Kubernetes clusters with Rancher Kubernetes Engine (RKE) or cloud Kubernetes services, such as GKE, AKS, and EKS. Rancher users can also import and manage their existing Kubernetes clusters created using any Kubernetes distribution or installer.
+Kubernetes is the container orchestration standard. Most cloud and virtualization vendors now offer it as standard infrastructure. Rancher users have the choice of creating Kubernetes clusters with Rancher Kubernetes Engine (RKE) or cloud Kubernetes services, such as Google Kubernetes Engine (GKE), Azure Container Service (AKS), and Amazon Elastic Container Service for Kubernetes (EKS). Rancher users can also import and manage their existing Kubernetes clusters that were created using any Kubernetes distribution or installer.
 
 ### Meet IT requirements
 
@@ -25,18 +25,18 @@ Rancher supports centralized authentication for all Kubernetes clusters under it
 
 ### Empower DevOps Teams
 
-Rancher provides an intuitive user interface for DevOps engineers to manage their application workload. The user does not need to have in-depth knowledge of Kubernetes concepts to start using Rancher. Rancher catalog contains a set of useful DevOps tools. Rancher is certified with a wide selection of cloud native ecosystem products, including, for example, security tools, monitoring systems, container registries, and storage and networking drivers.
+Rancher provides an intuitive user interface for DevOps engineers to manage their application workload. The user doesn't need in-depth knowledge of Kubernetes to start using Rancher. Rancher catalog contains a set of useful DevOps tools. Rancher is certified with a wide selection of cloud native ecosystem products, including security tools, monitoring systems, container registries, and storage and networking drivers.
 
-The following figure illustrates the role Rancher plays in IT and DevOps organizations. Each team deploys their applications on the public or private clouds they choose. IT administrators gain visibility and enforce policies across all users, clusters, and clouds.
+The following figure illustrates Rancher's role in IT and DevOps organizations. Each team deploys their applications on the public or private clouds they choose. IT administrators gain visibility and enforce policies across all users, clusters, and clouds.
 
 ![Platform]({{< baseurl >}}/img/rancher/platform.png)
 
 
 ## What's New?
 
-The previous version of Rancher, version 1.6, was a container management platform built on Docker. Rancher 2.0 builds on the success and experience of Rancher 1.6.
+The previous version of Rancher, version 1.6, was a container management platform built on Docker. Rancher 2.0 builds on the success and experience of 1.6.
 
-However, for version 2.0, most of Rancher has been redesigned to work on Kubernetes. Rancher 2.0 retains the user-friendly features of version 1.6, such as the UI and catalog. However, 2.0 now includes many new features such as:
+However, for version 2.0, most of Rancher is redesigned to work on Kubernetes. 2.0 retains the user-friendly features of 1.6, such as the UI and catalog. However, 2.0 includes many new features such as:
 
 - Built-in CI pipeline
 - Alerts and log aggregation
@@ -46,33 +46,37 @@ However, for version 2.0, most of Rancher has been redesigned to work on Kuberne
 
 # Rancher Architecture
 
-Before explaining Rancher architecture, it is useful to present some background information on two fundamental technologies Rancher build on: Docker and Kubernetes.
+This section explains how Rancher interacts with the two fundamental technologies Rancher is built on: Docker and Kubernetes.
 
 ## Docker
 
-Docker is the de-facto container packaging and runtime standard. Developers build container images from Dockerfiles and distribute container images from Docker registries. Docker Hub (hub.docker.com) is the most popular public registry. Many organizations also setup private Docker registries.
+Docker is the container packaging and runtime standard. Developers build container images from Dockerfiles and distribute container images from Docker registries. [Docker Hub](http://hub.docker.com) is the most popular public registry. Many organizations also setup private Docker registries. Docker is primarily used to manage containers on individual nodes.
 
-Docker is primarily used to manage containers on individual nodes. The Docker Swarm clustering technology are not as widely used as Kubernetes. Rancher 1.6 supported Docker Swarm. Rancher 2.0 no longer does.
+>**Note:** Although Rancher 1.6 supported Docker Swarm clustering technology, it is no longer supported in Rancher 2.0 due to the success of Kubernetes.
 
 ## Kubernetes
 
-Kubernetes is the de-facto container cluster management standard. YAML files specify containers and other resources that form an application. Kubernetes performs functions such as scheduling, scaling, service discovery, health check, secret and configuration management.
+Kubernetes is the container cluster management standard. YAML files specify containers and other resources that form an application. Kubernetes performs functions such as scheduling, scaling, service discovery, health check, secret management, and configuration management.
 
 A Kubernetes cluster consists of multiple nodes.
 
--   The etcd database. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration.
+-   **etcd database**
 
--   Master nodes. Master nodes are stateless and are used to run the API server, scheduler, and controllers.
+ 	Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration.
 
--   Worker nodes. Application workload runs on worker nodes.
+-   **Master nodes**
+
+ 	Master nodes are stateless and are used to run the API server, scheduler, and controllers.
+
+-   **Worker nodes**
+
+ 	The application workload runs on worker nodes.
 
 ## Rancher
 
-We now cover high-level Rancher architecture.
+The majority of Rancher 2.0 software runs on the Rancher Server.  Rancher Server includes all the software components used to manage the entire Rancher deployment.
 
-Majority of Rancher 2.0 software runs on the Rancher server.  Rancher server includes all the software components used to manage the entire Rancher deployment.
-
-The figure below illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher server installation that manages two Kubernetes clusters: one Kubernetes cluster created by RKE and another Kubernetes cluster created by GKE.
+The figure below illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by GKE.
 
 ![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.png)
 
@@ -82,32 +86,44 @@ In this section we describe the functionalities of each Rancher server component
 
 Rancher API server is built on top of an embedded Kubernetes API server and etcd database. It implements the following functionalities:
 
-1.  User management. Rancher API server manages user identities that correspond to external authentication providers like Active Directory or GitHub.
+-  **User Management**
 
-2.  Authorization. Rancher API server manages access control and security policies.
+	Rancher API server manages user identities that correspond to external authentication providers like Active Directory or GitHub.
 
-3.  Projects. A project is a grouping of multiple namespaces and access control policies within a cluster.
+-	**Authorization**
 
-4.  Nodes. Rancher API server tracks identities of all the nodes in all clusters.
+ 	Rancher API server manages access control and security policies.
+
+-	**Projects**
+
+ 	A _project_ is a group of multiple namespaces and access control policies within a cluster.
+
+-  **Nodes**
+
+	Rancher API server tracks identities of all the nodes in all clusters.
 
 #### Cluster Controller and Agents
 
-The cluster controller and cluster agents implement the business logic required to manage Kubernetes clusters. All the logic that is global to the entire Rancher install is implemented by the cluster controller. A separate cluster agent instance implements the logic required for the corresponding cluster.
+The cluster controller and cluster agents implement the business logic required to manage Kubernetes clusters.
 
-Cluster agents perform the following activities:
+- The _cluster controller_ implements the logic required for the global Rancher install. It performs the following actions:
 
--  Manage workload. This includes, for example, creating pods and deployments in each cluster.
+	-  Configuration of access control policies to clusters and projects.
 
--  Applying roles and bindings that are defined in global policies into every cluster.
+	-  Provisioning of clusters by calling:
 
--  Propagate information from cluster to rancher server: events, stats, node info, and health.
+		- The required Docker machine drivers.
+		- Kubernetes engines like RKE and GKE.
 
-The cluster controller performs the following activities:
 
--  Configures access control policies to clusters and projects.
+- A separate _cluster agent_ instance implements the logic required for the corresponding cluster. It performs the following activities:
 
--  Provisions clusters by invoking the necessary Docker machine drivers and invoking Kubernetes engines like RKE and GKE.
+	-  Workload Management, such as pod creation and deployment within each cluster.
+
+	-  Application of the roles and bindings defined in each cluster's global policies.
+
+	-  Communication between clusters and Rancher Server: events, stats, node info, and health.
 
 #### Authentication Proxy
 
-The authentication proxy proxies all Kubernetes API calls. It integrates with authentication services like local authentication, Active Directory, and GitHub. On every Kubernetes API call, the authentication proxy authenticates the caller and sets the proper Kubernetes impersonation headers before forwarding the call to Kubernetes masters. Rancher communicates with Kubernetes clusters using a service account.
+The _authentication proxy_ forwards all Kubernetes API calls. It integrates with authentication services like local authentication, Active Directory, and GitHub. On every Kubernetes API call, the authentication proxy authenticates the caller and sets the proper Kubernetes impersonation headers before forwarding the call to Kubernetes masters. Rancher communicates with Kubernetes clusters using a service account.
