@@ -1,11 +1,11 @@
 <div>
 	<h5>Port Requirements</h5>
-	<h6>Master Nodes (etcd and controlplane nodes)</h6>
+	<p>Open the following ports on your Linux hosts.</p>
 	<table>
 	    <tr>
-	        <th>protocol</th>
-	        <th>port range</th>
-	        <th>purpose</th>
+	        <th>Protocol</th>
+	        <th>Port range</th>
+	        <th>Purpose</th>
 	    </tr>
 	    <tr>
 	        <td>tcp</td>
@@ -15,12 +15,12 @@
 		<tr>
 			<td>tcp</td>
 	        <td>80</td>
-	        <td>Rancher Server</td>
+	        <td>Rancher Server/ingress</td>
 	    </tr>
 	    <tr>
 			<td>tcp</td>
 	        <td>443</td>
-	        <td>Rancher Server</td>
+	        <td>Rancher Server/ingress</td>
 	    </tr>
 	    <tr>
 			<td>tcp</td>
@@ -34,112 +34,19 @@
 	    </tr>
 		<tr>
 			<td>tcp</td>
-	        <td>10250</td>
-	        <td>kubelet api</td>
+	        <td>10250-10256</td>
+	        <td>kubernetes components</td>
 	    </tr>
 		<tr>
-			<td>tcp</td>
-	        <td>10251</td>
-	        <td>scheduler</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10252</td>
-	        <td>kube-controller-manager</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10253</td>
-	        <td>federation</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10254</td>
-	        <td>ingress</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10255</td>
-	        <td>read-only kubelet api</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>10256</td>
-	        <td>kubeproxy</td>
-	    </tr>
+		   <td>tcp</td>
+		   <td>30000-32767</td>
+		   <td>nodeport services</td>
+	   </tr>
 	    <tr>
 	        <td>udp</td>
 	        <td>8472</td>
 	        <td>canal</td>
 	    </tr>
 	</table>
-	<h6>Worker Nodes</h6>
-	<table>
-	    <tr>
-	        <th>protocol</th>
-	        <th>port range</th>
-	        <th>purpose</th>
-	    </tr>
-	    <tr>
-	        <td>tcp</td>
-	        <td>22</td>
-	        <td>ssh server</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>80</td>
-	        <td>ingress</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>443</td>
-	        <td>ingress</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>10250</td>
-	        <td>kubelet api</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10251</td>
-	        <td>scheduler</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10252</td>
-	        <td>kube-controller-manager</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10253</td>
-	        <td>federation</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10254</td>
-	        <td>ingress</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10255</td>
-	        <td>read-only kubelet api</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>10256</td>
-	        <td>kubeproxy</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>30000-32767</td>
-	        <td>nodeport services</td>
-	    </tr>
-	    <tr>
-	        <td>udp</td>
-	        <td>8472</td>
-	        <td>canal</td>
-	    </tr>
-</table>
 <br/>
 </div>
