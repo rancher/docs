@@ -86,15 +86,15 @@ rke version v<N.N.N>
 
 ### Get YAML Template
 
-During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `.yml` config file linked below to get you started.
+During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `3-node-certificate.yml` config file linked below to get you started.
 
-[Download SSL Termination YAML Config Template](placeholder)
+[Download 3-node-certificate.yml](https://github.com/rancher/rancher/tree/master/rke-templates)
 
 ### Edit YAML Template
 
 Once you have the `.yml` config file template, edit the nodes section to point toward your Linux hosts.
 
-1. Open the `.yml` file that you just downloaded.
+1. Open `3-node-certificate.yml`, which you just downloaded.
 
 2. Update the `nodes` section with your [Linux hosts](#provision-linux-hosts).
 
@@ -186,16 +186,16 @@ Once you have the `.yml` config file template, edit the nodes section to point t
 
 ### Run RKE
 
-Enter the command to run RKE while pointing to your `.yml` config file. RKE installs Kubernetes and Rancher using your parameters.
+Enter the command to run RKE while pointing to `3-node-certificate.yml`. RKE installs Kubernetes and Rancher using your parameters.
 
-1. From your workstation, make sure your `.yml` config file and RKE are in the same directory.
+1. From your workstation, make sure `3-node-certificate.yml` and RKE are in the same directory.
 
-2. Open a Terminal instance. Change to the directory that contains your config file and RKE.
+2. Open a Terminal instance. Change to the directory that contains `3-node-certificate.yml` and RKE.
 
-3. Enter the following command, replacing the placeholder name with the name of the `.yml` config template that you used.
+3. Enter the following command.
 
 	```
-	rke up --config <YAML_CONFIG_FILE>
+	rke up --config 3-node-certificate.yml
 	```
 
 ### What's Next?
