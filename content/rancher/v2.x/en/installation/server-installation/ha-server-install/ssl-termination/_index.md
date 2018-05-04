@@ -1,6 +1,7 @@
 ---
 title: SSL Termination
 weight: 275
+draft: true
 ---
 # High Availability Install with SSL Temination
 
