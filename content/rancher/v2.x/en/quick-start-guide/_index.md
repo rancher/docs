@@ -47,7 +47,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 - A bare-metal server
 
   >**Note**
-  > When using a cloud-host virtual machine you may need to configure inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
+  > When using a cloud-host virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
 
 ### Provision the host according to the requirements below.
 
@@ -61,7 +61,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
 - Software: Docker
 
-  <a name="node-requirements"></a>**Supported Versions:**
+  <a name="node-requirements"></a>**Supported Docker versions:**
 
   - `1.12.6`
   - `1.13.1`
@@ -90,41 +90,40 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
 
-1.  Open a web browser and enter the IP address of your host:
-
-  `https://<SERVER_IP>`
-
-  Replace `<SERVER_IP>` with your host IP address.
+1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`<br/><br/>
+    Replace `<SERVER_IP>` with your host IP address.
 
 2.  When prompted, create a password for the default `admin` account there cowpoke!
 
-3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node in your cluster must be able to resolve to the URL.
+3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster
 
 ## Create the Cluster
 
-Welcome to {{< product >}}! Use our application to clone your Linux host and configure them as a Kubernetes cluster.
+Welcome to {{< product >}}! You are now able to create your first Kubernetes cluster.
 
-In this task, use the versatile **Custom** option. This option lets you convert _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) into a cluster.
+In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) to be used in a cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Custom**.
+1. Choose **Custom**.
 
-3. Enter a **Cluster Name**.
+1. Enter a **Cluster Name**.
 
-4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
+1. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
 
-5. Click **Next**.
+1. Click **Next**.
 
-6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
+1. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
 
-7. Skip the **Labels** stuff. It's not important for now.
+1. Rancher will auto-detect the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
 
-8. Copy the command displayed on screen to your clipboard.
+1. Skip the **Labels** stuff. It's not important for now.
 
-9. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+1. Copy the command displayed on screen to your clipboard.
 
-10. When you finish running the command on your Linux host, click **Done**.
+1. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+
+1. When you finish running the command on your Linux host, click **Done**.
 
 {{< result_create-cluster >}}
 
@@ -208,7 +207,7 @@ gettingstarted@rancher:~$
 
 ```
 
-### What's Next?
+### Finished
 
 Congratulations! You have:
 
