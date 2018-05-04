@@ -6,6 +6,10 @@ weight: 275
 
 In this scenario, your Load Balancer handles all SSL decryption, and then forwards the decrypted communications to your cluster.
 
+## Before You Start
+
+Complete [SSL Config: External Load Balancer or Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#instructions-for-the-loadbalancer-or-proxy)
+
 ## Objectives
 
 We've broken installation of Rancher with SSL termination into a series of smaller tasks. Here's what you'll do during your install.
