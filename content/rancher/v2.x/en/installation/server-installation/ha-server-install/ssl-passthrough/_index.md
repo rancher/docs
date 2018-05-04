@@ -6,6 +6,10 @@ weight: 275
 
 In this scenario, your High-Availability Rancher Servers handle SSL decryption rather than a Load Balancer.
 
+## Before you Start:
+
+Complete [SSL Config: In the Rancher Container]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#certificate-host-inside-the-rancher-container).
+
 ## Objectives
 
 We've broken installation of Rancher with SSL passthrough into a series of smaller tasks. Here's what you'll do during install.
