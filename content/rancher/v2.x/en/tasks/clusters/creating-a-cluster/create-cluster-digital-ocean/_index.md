@@ -5,35 +5,7 @@ weight: 3275
 
 # Creating a DigitalOcean Cluster
 
-## Objectives
-
-1.	[Create a Droplet](#create-a-droplet)
-
-	Begin by logging into DigitalOcean and provisioning a new droplet.
-
-2. [Create the Cluster](#create-the-digital-ocean-cluster)
-
-	Use your new droplet as a template for your new Kubernetes cluster.
-
-## Create a Droplet
-
-Create a _droplet_, DigitalOcean's name for a virtual machine, using the DigitalOcean website.
-
-[DigitalOcean Instructions](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet)
-
-Provision the droplet according to the requirements below.
-
-### Requirements
-
-{{< requirements_os >}}
-
-{{< requirements_hardware >}}
-
-{{< requirements_software >}}
-
-## Create the DigitalOcean Cluster
-
-Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
+Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 1. From the **Clusters** page, click **Add Cluster**.
 

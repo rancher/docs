@@ -5,35 +5,7 @@ weight: 3375
 
 # Creating a vSphere Cluster
 
-## Objectives
-
-1.	[Create a Linux Virtual Machine](#create-a-linux-virtual-machine)
-
-	Begin by logging into vSphere and provisioning a Linux virtual machine (VM).
-
-2. [Create the Cluster](#create-the-vsphere-cluster)
-
-	Use your new VM as a template for your new Kubernetes cluster.
-
-## Create a Linux Virtual Machine
-
-Create a Linux VM using vSphere.
-
-[VMware Instructions](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-39D19B2B-A11C-42AE-AC80-DDA8682AB42C.html)
-
-Provision the nodes according to the requirements below.
-
-### Requirements
-
-{{< requirements_os >}}
-
-{{< requirements_hardware >}}
-
-{{< requirements_software >}}
-
-## Create the vSphere Cluster
-
-Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
+Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
