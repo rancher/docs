@@ -8,18 +8,21 @@ You have the option of installing Rancher Server in a High-Availability (HA) con
 
 Install Rancher in an HA configuration using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Use RKE to set up a new cluster that deploys Rancher as an addon.
 
+SSL is required to secure Rancher communications. Before completing one of the procedures below, complete the procedure in its companion note.
+
 Complete one of the following procedures to install Rancher in an HA configuration.
+
 
 - [SSL Passthrough]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/ssl-passthrough/)
 
 	In this scenario, your High-Availability Rancher Servers handle SSL decryption rather than a Load Balancer.
 
-	>**STOP**
+	>**Note:**
 	> Before you begin this procedure, you must complete [SSL Config: In the Rancher Container]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#certificate-host-inside-the-rancher-container).
 
 - [SSL Termination]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/ssl-termination/)
 
 	In this scenario, your Load Balancer handles all SSL encryption, and then forwards on the communication within your Kubernetes cluster unencrypted.
 
-	>**STOP**
+	>**Note:**
 	> Before you begin this procedure, you must complete [SSL Config: External Load Balancer or Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#instructions-for-the-loadbalancer-or-proxy).

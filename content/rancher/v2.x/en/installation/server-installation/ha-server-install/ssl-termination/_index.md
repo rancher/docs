@@ -92,7 +92,7 @@ rke version v<N.N.N>
 
 During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `3-node-certificate.yml` config file linked below to get you started.
 
-[Download 3-node-certificate.yml](https://github.com/rancher/rancher/tree/master/rke-templates)
+[Download 3-node-certificate.yml](https://github.com/rancher/rancher/blob/master/rke-templates/3-node-certificate.yml)
 
 ### Edit YAML Template
 
