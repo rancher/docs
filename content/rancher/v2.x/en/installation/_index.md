@@ -12,7 +12,7 @@ This section contains instructions for installing Rancher in development and pro
 
 	a.  [Single-Node Rancher Server Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install): In this simple install scenario, you install Rancher on a single Linux host.
 
-	b.  [High-Availablity Rancher Server Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/): In this scenario, you install multiple Rancher Servers so that Rancher is always available, even when one of your Rancher Servers is down.
+	b.  [High-Availablity Rancher Server Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/): This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration.
 
 	c.  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/): We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
 
