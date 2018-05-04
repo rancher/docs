@@ -4,9 +4,7 @@ weight: 275
 ---
 # High Availability Rancher Server Install
 
-You have the option of installing Rancher Server in a High-Availability (HA) configuration. This configuration sets up 3-node Kubernetes cluster with Rancher Server instances.
-
-Install Rancher in an HA configuration using the Rancher Kubernetes Engine (RKE). RKE is Rancher's own fast and light-weight Kubernetes installer. Use RKE to set up a new cluster that deploys Rancher as an addon.
+This set of instructions creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher Server.
 
 ## Objectives
 
