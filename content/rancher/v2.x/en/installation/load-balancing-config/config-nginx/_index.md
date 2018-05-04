@@ -1,16 +1,16 @@
 ---
-title: Configure NGINX
+title: Configure Nginx
 weight: 315
 ---
-# Configure NGINX
+# Configure Nginx
 
-NGINX is a popular application platform that can be used as a load balancer. Rancher supports use of NGINX with ngx_http_v2_module enabled, which isn't enabled by default. Use the following parameter when setting up NGINX to enable the module: `--with-http_v2_module`.
+Nginx is a popular application platform that can be used as a load balancer. Rancher supports use of Nginx with ngx_http_v2_module enabled, which isn't enabled by default. Use the following parameter when setting up Nginx to enable the module: `--with-http_v2_module`.
 
 >**Note:**
->- NGINX is not supported if you are using SSL passthrough.
+>- Nginx is not supported if you are using SSL passthrough.
 >- If you are using self-signed certificates, the certificate and key must be signed by same certificate authority as `cattle-keys-server`.
 
-After the server is running, use the code sample below as a template when setting up your NGINX config file. Replace the variables with host names or IP addresses from your environment.
+After the server is running, use the code sample below as a template when setting up your Nginx config file. Replace the variables with host names or IP addresses from your environment.
 
 ```
 upstream rancher {
@@ -45,7 +45,7 @@ server {
         proxy_set_header Connection $connection_upgrade;
 
         # mitigate HTTPoxy Vulnerability
-        # https://www.nginx.com/blog/mitigating-the-httpoxy-vulnerability-with-nginx/
+        # https://www.nginx.com/blog/mitigating-the-httpoxy-vulnerability-with-Nginx/
         proxy_set_header Proxy "";
 
         proxy_http_version 1.1;

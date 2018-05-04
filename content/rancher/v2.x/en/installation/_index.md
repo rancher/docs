@@ -22,6 +22,6 @@ This section contains instructions for installing Rancher in development and pro
 
 	b. [Amazon Network Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/load-balancing-config/config-amazon-nlb/)
 
-	c. [Nginx]({{< baseurl >}}/rancher/v2.x/en/installation/load-balancing-config/config-nginx/)
+	c. [Nginx]({{< baseurl >}}/rancher/v2.x/en/installation/load-balancing-config/config-Nginx/)
 
 3. Configure SSL communication. Set up SSL by installing certificates on your Kubernetes nodes. You have a variety of options for [SSL Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/).

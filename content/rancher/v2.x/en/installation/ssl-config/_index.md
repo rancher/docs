@@ -129,7 +129,7 @@ The loadbalancer or proxy has to be configured to support the following:
 
 <u>Example configs:</u>
 
-- nginx 1.12 / 1.13
+- Nginx 1.12 / 1.13
 
 ```
 upstream rancher {
