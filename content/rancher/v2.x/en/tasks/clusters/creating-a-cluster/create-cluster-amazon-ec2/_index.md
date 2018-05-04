@@ -5,35 +5,7 @@ weight: 3250
 
 # Creating an Amazon EC2 Cluster
 
-## Objectives
-
-1.	[Create an Instance](#create-an-instance)
-
-	Begin by logging into Amazon EC2 website and provisioning a new instance.
-
-2. [Create the Cluster](#create-the-amazon-ec2-cluster)
-
-	Use your new instance as a template for your new Kubernetes cluster.
-
-## Create an Instance
-
-Create an _instance_, Amazon's version of a virtual machine in EC2, using the [Amazon EC2 Management Console](https://aws.amazon.com/ec2/).
-
-[Amazon Instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
-
-Provision the instance according to the requirements below.
-
-### Requirements
-
-{{< requirements_os >}}
-
-{{< requirements_hardware >}}
-
-{{< requirements_software >}}
-
-## Create the Amazon EC2 Cluster
-
-Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
+Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.
