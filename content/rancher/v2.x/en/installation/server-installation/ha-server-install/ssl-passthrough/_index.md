@@ -77,7 +77,7 @@ rke version v<N.N.N>
 
 During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `3-node-passthrough.yml` config file linked below to get you started.
 
-[Download SSL Passthrough YAML Config Template](https://github.com/rancher/rancher/tree/master/rke-templates)
+[Download SSL Passthrough YAML Config Template](https://github.com/rancher/rancher/blob/master/rke-templates/3-node-passthrough.yml)
 
 ### Edit YAML Template
 
