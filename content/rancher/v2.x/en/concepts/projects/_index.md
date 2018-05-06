@@ -18,7 +18,7 @@ Non-administrative users are only authorized for project access after an adminis
 
 ### Pod Security Policies
 
-Rancher extends Kubernetes to allow the application of [Pod Sercurity Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) at the project level in additiona to the cluster level. However, as a best practice, we recommend applying Pod Security Policies at the cluster level.
+Rancher extends Kubernetes to allow the application of [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) at the project level in additiona to the cluster level. However, as a best practice, we recommend applying Pod Security Policies at the cluster level.
 
 ## Namespaces
 
