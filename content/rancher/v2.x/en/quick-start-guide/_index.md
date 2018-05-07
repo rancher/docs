@@ -151,13 +151,13 @@ For this workload, you'll be deploying the application Nginx.
 7.  From **Port Mapping**, click **Add Port**.
 
 8.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
-![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/src/img/nodeport-dropdown.png)
+![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
 
 9.  From the **On Listening Port** field, leave the **Random** value in place.
-![On Listening Port, Random selected](images/on_listening_port_random.png)
+![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
 
 10. From the **Publish the container port** field, enter port `80`.
-![Publish the container port, 80 entered](images/publish_the_container_port_80.png)
+![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
 
 11. Leave the remaining options on their default setting. We'll tell you about them later.
 
