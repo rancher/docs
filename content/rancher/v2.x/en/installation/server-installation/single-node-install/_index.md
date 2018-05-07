@@ -3,14 +3,13 @@ title: Single Node Install
 weight: 250
 description: For development environments, we recommend installing Rancher by deploying a single Docker container.
 ---
-
 # Single Node Rancher Server Install
 
 For development environments, we recommend installing Rancher by deploying a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 
 ## Provision Linux Host
 
-Provision a single Linux host to use as a template to launch your {{< product >}} Server.
+Provision a single Linux host before launching your {{< product >}} Server.
 
 ### Requirements
 
@@ -29,11 +28,11 @@ Installing Rancher on a Linux host using a single Docker container is simple. Si
 2.	From your shell, enter the following command:
 
 	```
-	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher: latest
 	```
 
 	>**Note:**
-	>- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/><br/>
+	>- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/><br/>
 	>- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
 **Result:** Rancher is installed.
