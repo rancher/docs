@@ -34,19 +34,19 @@ gulp.task('dev', ['build-dev'], () => {
 });
 
 gulp.task('build', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo' /*, 'hugo-search-index'*/, () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo' , 'hugo-search-index', () => {
     cb();
   });
 });
 
 gulp.task('build-staging', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging' /*, 'hugo-search-index'*/, () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging' , 'hugo-search-index', () => {
     cb();
   });
 });
 
 gulp.task('build-dev', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev' /*, 'hugo-search-index'*/, () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev' , 'hugo-search-index', () => {
     cb();
   });
 });
