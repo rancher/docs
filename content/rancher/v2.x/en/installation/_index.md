@@ -8,15 +8,17 @@ This section contains instructions for installing Rancher in development and pro
 
 ## Objectives
 
-1. Install Rancher Server. We have instructions for three use cases. Pick the right one for you:
+1. Install Rancher Server. We have instructions for these use cases. Pick the right one for you:
 
-	a.  [Single-Node Rancher Server Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install): In this simple install scenario, you install Rancher on a single Linux host.
+	-  [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install): In this simple install scenario, you install Rancher on a single Linux host.
 
-	b.  [High-Availablity Rancher Server Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/): This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration.
+	-  [Single Node Install With External Loadbalancer]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install-external-lb): In this scenario, you install Rancher on a single Linux host and access it using an external loadbalancer/proxy.
 
-	c.  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/): We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
+	-  [High Availablity Installation]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/): This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration.
 
-2. **Optional:** Configure an external Load Balancer. A load balancer acts like a traffic cop for connections incoming to your Kubernetes cluster. You options are:
+	-  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/): We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
+
+<!-- 2. **Optional:** Configure an external Load Balancer. A load balancer acts like a traffic cop for connections incoming to your Kubernetes cluster. You options are:
 
 	a. [Amazon Application Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/load-balancing-config/config-amazon-alb/)
 
@@ -24,4 +26,4 @@ This section contains instructions for installing Rancher in development and pro
 
 	c. [Nginx]({{< baseurl >}}/rancher/v2.x/en/installation/load-balancing-config/config-Nginx/)
 
-3. Configure SSL communication. Set up SSL by installing certificates on your Kubernetes nodes. You have a variety of options for [SSL Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/).
+3. Configure SSL communication. Set up SSL by installing certificates on your Kubernetes nodes. You have a variety of options for [SSL Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/). -->
