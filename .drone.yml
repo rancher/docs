@@ -1,5 +1,16 @@
 ---
 pipeline:
+  build:
+    # Do things
+    privileged: true
+    image: docker:stable-dind
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -f Dockerfile.prod .
+    when:
+      event: [pull_request]
+
   docker-publish-dev:
     group: publish
     image: plugins/docker

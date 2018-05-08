@@ -7,6 +7,8 @@ pluralizeListTitles = false
 
 # disableKinds = ["RSS"]
 enableRobotsTXT = true
+pygmentsCodeFences=true
+pygmentsCodeFencesGuessSyntax=true
 
 [permalinks]
   inside-pages = "/:filename/"
