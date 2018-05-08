@@ -83,7 +83,7 @@ rke version v<N.N.N>
 RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
 - [Template for using Self Signed Certificate (3-node-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate.yml)
-- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate.yml)
+- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate-recognizedca.yml)
 
 ## Configure nodes section
 
@@ -137,7 +137,7 @@ In the `kind: Secret` with `name: cattle-keys-ingress`:
 * Replace `<BASE64_CRT>` with the base64 encoded string of the Certificate file (usually called `cert.pem` or `domain.crt`)
 * Replace `<BASE64_KEY>` with the base64 encoded string of the Certificate Key file (usually called `key.pem` or `domain.key`)
 
-See the example below:
+After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
 
 ```
 ---
@@ -156,7 +156,7 @@ In the `kind: Secret` with `name: cattle-keys-server`:
 
 * Replace `<BASE64_CA>` with the base64 encoded string of the CA Certificate file (usually called `ca.pem` or `ca.crt`)
 
-See the example below:
+After replacing the value, the file should look like the example below (the base64 encoded string should be different):
 
 ```
 ---
@@ -179,7 +179,7 @@ In the `kind: Secret` with `name: cattle-keys-ingress`:
 * Replace `<BASE64_CRT>` with the base64 encoded string of the Certificate file (usually called `cert.pem` or `domain.crt`)
 * Replace `<BASE64_KEY>` with the base64 encoded string of the Certificate Key file (usually called `key.pem` or `domain.key`)
 
-See the example below:
+After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
 
 ```
 ---
@@ -203,7 +203,7 @@ In the `kind: Ingress` with `name: cattle-ingress-http`:
 
 * Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#configure-dns).
 
-See the example below:
+After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
 
 ```
  ---
@@ -273,4 +273,5 @@ INFO[0101] Finished building Kubernetes cluster successfully
 
 Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
 
-If you are using a [Certificate Signed By A Recognized Certificate Authority](#certificate-signed-by-a-recognized-certificate-authority), you will need to clear the `cacerts` value from the CA (until [GitHub #11388](https://github.com/rancher/rancher/issues/11388) is resolved). This can be done under `Settings` -> `cacerts`, choose `Edit` and remove the contents and click `Save`.
+>**Note:**
+> If you are using a [Certificate Signed By A Recognized Certificate Authority](#certificate-signed-by-a-recognized-certificate-authority), you will need to clear the `cacerts` value from the CA (until [GitHub #11388](https://github.com/rancher/rancher/issues/11388) is resolved). This can be done under `Settings` -> `cacerts`, choose `Edit` and remove the contents and click `Save`.
