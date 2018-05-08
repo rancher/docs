@@ -1,6 +1,7 @@
 ---
 pipeline:
   build:
+    # Do things
     privileged: true
     image: docker:stable-dind
     volumes:
