@@ -1,5 +1,11 @@
 ---
 pipeline:
+  test:
+    image: plugins/docker
+    dockerfile: Dockerfile.prod
+    repo: rancherlabs/website
+    context: .
+
   docker-publish-dev:
     group: publish
     image: plugins/docker
