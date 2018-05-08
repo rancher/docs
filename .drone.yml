@@ -3,7 +3,7 @@ pipeline:
   test:
     image: plugins/docker
     dockerfile: Dockerfile.prod
-    repo: rancherlabs/website
+    repo: rancher/docs
     context: .
 
   docker-publish-dev:
