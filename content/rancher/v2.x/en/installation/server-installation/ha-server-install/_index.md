@@ -1,40 +1,21 @@
 ---
-title: HA Server Install
+title: High Availability Install
 weight: 275
 ---
-# High Availability Rancher Server Install
+# High Availability Install
 
-This set of instructions creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher Server.
+This set of instructions creates a new Kubernetes cluster dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
-## Objectives
+* Round Robin DNS
+* NGINX Ingress controller
 
-We've broken installation of Rancher in an HA configuration into a series of smaller tasks. Here's what you'll do during your install.
+![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
-1. [Provision Linux Hosts](#provision-linux-hosts)
+## Provision Linux Hosts
 
-	Begin by provisioning Linux hosts. Make sure your hosts meet Rancher requirements.
+Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
 
-2. [Get RKE](#get-rke)
-
-	Download the Rancher Kubernetes Engine (RKE) installer from GitHub.
-
-3. [Get YAML Template](#get-yaml-template)
-
-	During installation, RKE uses a `.yml` config file containing specifications for your cluster. Download our template from GitHub.
-
-4. [Edit YAML Template](#edit-yaml-template)
-
-	Edit the `.yml` config file so that it's pointing toward your Linux hosts.
-
-5. [Run RKE](#run-rke)
-
-	Finally, run the RKE installer with it pointing toward your `.yml` config file.
-
-### Provision Linux Hosts
-
-Before you install Rancher, confirm you meet the requirements. Provision three new Linux hosts using the requirements below.
-
-#### Requirements
+### Host requirements
 
 {{< requirements_os >}}
 
@@ -44,180 +25,252 @@ Before you install Rancher, confirm you meet the requirements. Provision three n
 
 {{< requirements_ports >}}
 
-<!--##### Certificate Requirements
+## Configure DNS
 
-Before starting this procedure, you should generate or obtain your own certificate.
-
-The certificate can either be:
-
-- Self-signed
-- Signed by a certificate authority (CA)
+Choose a fully qualified domain name (FQDN) you want to use to access Rancher (this is usually something like `rancher.yourdomain.com`).<br/><br/>You need to create a DNS A record, pointing to the IP addresses of your [Linux hosts](#provision-linux-hosts). If the DNS A record is created, you can validate if it's setup correctly by running `nslookup rancher.yourdomain.com`. It should return the 3 IP addresses of your [Linux hosts](#provision-linux-hosts) like in the example below.
 
 >**Note:**
->-If you use a self-signed certificate, all certificates and keys must be signed by the same CA.<br/>
->-Each `.pem` must be in base-64: `cat <PEM_FILE> | base64`.-->
+> Because it is round robin DNS, the order of the returned IPs can be different.
 
+```
+$ nslookup rancher.yourdomain.com
+Server:         your_nameserver_ip
+Address:        your_nameserver_ip#53
 
+Non-authoritative answer:
+Name:   rancher.yourdomain.com
+Address: ip_of_node1
+Name:   rancher.yourdomain.com
+Address: ip_of_node2
+Name:   rancher.yourdomain.com
+Address: ip_of_node3
+```
 
-### Get RKE
+## Download RKE
 
-Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can download RKE from GitHub.
+Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will be using RKE to setup our cluster and run Rancher.
 
-1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases) page. Download the latest RKE installer.
+From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System:
 
-2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run the following command:
+* **MacOS**: `rke_darwin-amd64`
+* **Linux**: `rke_linux-amd64`
 
-    ```
-    $ chmod +x rke
-    ```
+Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run the following command:
 
-    >**Note:** Adjust the command for the version of RKE that you downloaded (e.g., `rke_darwin-amd64`)
+``` bash
+# MacOS
+$ chmod +x rke_darwin-amd64
+# Linux
+$ chmod +x rke_linux-amd64
+```
 
-3.  Confirm that RKE is now executable by running the following command:
+Confirm that RKE is now executable by running the following command:
 
-    ```
-    $ ./rke -version
-    ```
+```
+# MacOS
+$ ./rke_darwin-amd64 -version
+# Linux
+$ ./rke_linux-amd64 -version
+```
 
 **Result:** You receive output similar to what follows:
 ```
 rke version v<N.N.N>
 ```
 
-### Get YAML Template
+## Download Config Template based on SSL certificate
 
-During installation, RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download the `3-node-certificate.yml` config file linked below to get you started.
+RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
-[Download 3-node-certificate.yml](https://github.com/rancher/rancher/blob/master/rke-templates/3-node-certificate.yml)
+- [Template for using Self Signed Certificate (3-node-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate.yml)
+- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate.yml)
 
-### Edit YAML Template
+## Configure nodes section
 
 Once you have the `.yml` config file template, edit the nodes section to point toward your Linux hosts.
 
-1. Open `3-node-certificate.yml`, which you just downloaded.
+Open `3-node-certificate.yml` or `3-node-certificate-recognizedca.yml` in your favorite text editor.
 
-2. Update the `nodes` section with your [Linux hosts](#provision-linux-hosts).
+Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts)
 
-	For each node in your cluster, update the following placeholders:
+For each node in your cluster, update the following placeholders:
 
-	- `<IP>`: The IP address or hostname of the node.
-	- `<USER>`: The node root user (usually `root`).
-	- `<PEM_FILE>`: The path of the `.pem` file used to authenticate.
+- `<IP>`: The IP address or hostname of the node.
+- `<USER>`: The username to use to setup a SSH connection to the node. If the user is not the `root` user, make sure the user has access to the Docker socket. This can be tested by logging in on the node as the configured user and run `docker ps`.
+- `<SSHKEY_FILE>`: The path of the SSH private key file used to authenticate to the node.
 
-    **Example YAML**
+**Example nodes section YAML**
 
-		nodes:
-		  - address: <IP> # IP to access nodes
-			user: <USER> # root user (usually 'root')
-			role: [controlplane,etcd,worker] # K8s roles for node
-			ssh_key_path: <PEM_FILE> # path to PEM file
-		  - address: <IP>
-			user: <USER>
-			role: [controlplane,etcd,worker]
-			ssh_key_path: <PEM_FILE>
-		  - address: <IP>
-			user: <USER>
-			role: [controlplane,etcd,worker]
-			ssh_key_path: <PEM_FILE>
+```
+nodes:
+  - address: 1.1.1.1
+	user: root
+	role: [controlplane,etcd,worker]
+	ssh_key_path: ~/.ssh/id_rsa
+  - address: 2.2.2.2
+	user: root
+	role: [controlplane,etcd,worker]
+	ssh_key_path: ~/.ssh/id_rsa
+  - address: 3.3.3.3
+	user: root
+	role: [controlplane,etcd,worker]
+	ssh_key_path: ~/.ssh/id_rsa
+```
 
-3. Scroll to `kind: Ingress`. Replace the two `<FQDN>` placeholders with the FQDN mapped to each of your nodes. On your DNS Server, each node should be added to the DNS entry for the FQDN.
+## Configure certificates
 
-	**Example YAML**
+Certificates can be configured by using base64 encoded strings in the config file. The base64 encoded string can be generated using the following command:
 
-		spec:
-		  rules:
-		  - host: <FQDN>  # FQDN to access cattle server
-			http:
-			  paths:
-			  - backend:
-				  serviceName: cattle-service
-				  servicePort: 80
-		  tls:
-		  - secretName: cattle-keys-ingress
-			hosts:
-			- <FQDN>      # FQDN to access cattle server
+  - **MacOS**: `cat FILENAME| base64`
+  - **Linux**: `cat FILENAME | base64 -w0`
+  - **Windows**: `certutil -encode FILENAME FILENAME.base64`
 
-4. Scroll to the codeblock that follows.
+### Self Signed Certificate
 
-    ```
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: cattle-keys-server
-      namespace: cattle-system
-    type: Opaque
-    data:
-      cert.pem: <BASE64_CRT>    # ssl cert for cattle server.
-      key.pem: <BASE64_KEY>     # ssl key for cattle server.
-      cacerts.pem: <BASE64_CA>  # CA cert used to sign cattle server cert and key
-    ```
+>**Note:**
+> If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#certificate-signed-by-a-recognized-certificate-authority) to proceed.
 
-    Replace each placeholder with the applicable certificate `.pem`.
+If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file).
 
-    - `<BASE64_CRT>`
-    - `<BASE64_KEY>`
-    - `<BASE64_CA>`
+In the `kind: Secret` with `name: cattle-keys-ingress`:
 
-    >**Reminder:** Each `.pem` must be in base-64: `cat <PEM_FILE> | base64`.
+* Replace `<BASE64_CRT>` with the base64 encoded string of the Certificate file (usually called `cert.pem` or `domain.crt`)
+* Replace `<BASE64_KEY>` with the base64 encoded string of the Certificate Key file (usually called `key.pem` or `domain.key`)
 
-5. Scroll to the codeblock that follows.
+See the example below:
 
-    ```
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: cattle-keys-ingress
-      namespace: cattle-system
-    type: Opaque
-    data:
-      tls.crt: <BASE64_CRT>  # ssl cert for ingress. If self-signed, must be signed by same CA as cattle server
-      tls.key: <BASE64_KEY>  # ssl key for ingress. If self-signed, must be signed by same CA as cattle server
-    ```
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cattle-keys-ingress
+  namespace: cattle-system
+type: Opaque
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1RENDQWN5Z0F3SUJBZ0lKQUlHc25NeG1LeGxLTUEwR0NTcUdTSWIzRFFFQkN3VUFNQkl4RURBT0JnTlYKQkFNTUIzUmxjM1F0WTJFd0hoY05NVGd3TlRBMk1qRXdOREE1V2hjTk1UZ3dOekExTWpFd05EQTVXakFXTVJRdwpFZ1lEVlFRRERBdG9ZUzV5Ym1Ob2NpNXViRENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DCmdnRUJBTFJlMXdzekZSb2Rib2pZV05DSHA3UkdJaUVIMENDZ1F2MmdMRXNkUUNKZlcrUFEvVjM0NnQ3bSs3TFEKZXJaV3ZZMWpuY2VuWU5JSGRBU0VnU0ducWExYnhUSU9FaE0zQXpib3B0WDhjSW1OSGZoQlZETGdiTEYzUk0xaQpPM1JLTGdIS2tYSTMxZndjbU9zWGUwaElYQnpUbmxnM20vUzlXL3NTc0l1dDVwNENDUWV3TWlpWFhuUElKb21lCmpkS3VjSHFnMTlzd0YvcGVUalZrcVpuMkJHazZRaWFpMU41bldRV0pjcThTenZxTTViZElDaWlwYU9hWWQ3RFEKYWRTejV5dlF0YkxQNW4wTXpnOU43S3pGcEpvUys5QWdkWDI5cmZqV2JSekp3RzM5R3dRemN6VWtLcnZEb05JaQo0UFJHc01yclFNVXFSYjRSajNQOEJodEMxWXNDQXdFQUFhTTVNRGN3Q1FZRFZSMFRCQUl3QURBTEJnTlZIUThFCkJBTUNCZUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdJR0NDc0dBUVVGQndNQk1BMEdDU3FHU0liM0RRRUIKQ3dVQUE0SUJBUUNKZm5PWlFLWkowTFliOGNWUW5Vdi9NZkRZVEJIQ0pZcGM4MmgzUGlXWElMQk1jWDhQRC93MgpoOUExNkE4NGNxODJuQXEvaFZYYy9JNG9yaFY5WW9jSEg5UlcvbGthTUQ2VEJVR0Q1U1k4S292MHpHQ1ROaDZ6Ci9wZTNqTC9uU0pYSjRtQm51czJheHFtWnIvM3hhaWpYZG9kMmd3eGVhTklvRjNLbHB2aGU3ZjRBNmpsQTM0MmkKVVlCZ09iN1F5KytRZWd4U1diSmdoSzg1MmUvUUhnU2FVSkN6NW1sNGc1WndnNnBTUXhySUhCNkcvREc4dElSYwprZDMxSk1qY25Fb1Rhc1Jyc1NwVmNGdXZyQXlXN2liakZyYzhienBNcE1obDVwYUZRcEZzMnIwaXpZekhwakFsCk5ZR2I2OHJHcjBwQkp3YU5DS2ErbCtLRTk4M3A3NDYwCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBdEY3WEN6TVZHaDF1aU5oWTBJZW50RVlpSVFmUUlLQkMvYUFzU3gxQUlsOWI0OUQ5ClhmanEzdWI3c3RCNnRsYTlqV09keDZkZzBnZDBCSVNCSWFlcHJWdkZNZzRTRXpjRE51aW0xZnh3aVkwZCtFRlUKTXVCc3NYZEV6V0k3ZEVvdUFjcVJjamZWL0J5WTZ4ZDdTRWhjSE5PZVdEZWI5TDFiK3hLd2k2M21uZ0lKQjdBeQpLSmRlYzhnbWlaNk4wcTV3ZXFEWDJ6QVgrbDVPTldTcG1mWUVhVHBDSnFMVTNtZFpCWWx5cnhMTytvemx0MGdLCktLbG81cGgzc05CcDFMUG5LOUMxc3MvbWZRek9EMDNzck1Xa21oTDcwQ0IxZmIydCtOWnRITW5BYmYwYkJETnoKTlNRcXU4T2cwaUxnOUVhd3l1dEF4U3BGdmhHUGMvd0dHMExWaXdJREFRQUJBb0lCQUJKYUErOHp4MVhjNEw0egpwUFd5bDdHVDRTMFRLbTNuWUdtRnZudjJBZXg5WDFBU2wzVFVPckZyTnZpK2xYMnYzYUZoSFZDUEN4N1RlMDVxClhPa2JzZnZkZG5iZFQ2RjgyMnJleVByRXNINk9TUnBWSzBmeDVaMDQwVnRFUDJCWm04eTYyNG1QZk1vbDdya2MKcm9Kd09rOEVpUHZZekpsZUd0bTAwUm1sRysyL2c0aWJsOTVmQXpyc1MvcGUyS3ZoN2NBVEtIcVh6MjlpUmZpbApiTGhBamQwcEVSMjNYU0hHR1ZqRmF3amNJK1c2L2RtbDZURDhrSzFGaUtldmJKTlREeVNXQnpPbXRTYUp1K01JCm9iUnVWWG4yZVNoamVGM1BYcHZRMWRhNXdBa0dJQWxOWjRHTG5QU2ZwVmJyU0plU3RrTGNzdEJheVlJS3BWZVgKSVVTTHM0RUNnWUVBMmNnZUE2WHh0TXdFNU5QWlNWdGhzbXRiYi9YYmtsSTdrWHlsdk5zZjFPdXRYVzkybVJneQpHcEhUQ0VubDB0Z1p3T081T1FLNjdFT3JUdDBRWStxMDJzZndwcmgwNFZEVGZhcW5QNTBxa3BmZEJLQWpmanEyCjFoZDZMd2hLeDRxSm9aelp2VkowV0lvR1ZLcjhJSjJOWGRTUVlUanZUZHhGczRTamdqNFFiaEVDZ1lFQTFBWUUKSEo3eVlza2EvS2V2OVVYbmVrSTRvMm5aYjJ1UVZXazRXSHlaY2NRN3VMQVhGY3lJcW5SZnoxczVzN3RMTzJCagozTFZNUVBzazFNY25oTTl4WE4vQ3ZDTys5b2t0RnNaMGJqWFh6NEJ5V2lFNHJPS1lhVEFwcDVsWlpUT3ZVMWNyCm05R3NwMWJoVDVZb2RaZ3IwUHQyYzR4U2krUVlEWnNFb2lFdzNkc0NnWUVBcVJLYWNweWZKSXlMZEJjZ0JycGkKQTRFalVLMWZsSjR3enNjbGFKUDVoM1NjZUFCejQzRU1YT0kvSXAwMFJsY3N6em83N3cyMmpud09mOEJSM0RBMwp6ZTRSWDIydWw4b0hGdldvdUZOTTNOZjNaNExuYXpVc0F0UGhNS2hRWGMrcEFBWGthUDJkZzZ0TU5PazFxaUNHCndvU212a1BVVE84b1ViRTB1NFZ4ZmZFQ2dZQUpPdDNROVNadUlIMFpSSitIV095enlOQTRaUEkvUkhwN0RXS1QKajVFS2Y5VnR1OVMxY1RyOTJLVVhITXlOUTNrSjg2OUZPMnMvWk85OGg5THptQ2hDTjhkOWN6enI5SnJPNUFMTApqWEtBcVFIUlpLTFgrK0ZRcXZVVlE3cTlpaHQyMEZPb3E5OE5SZDMzSGYxUzZUWDNHZ3RWQ21YSml6dDAxQ3ZHCmR4VnVnd0tCZ0M2Mlp0b0RLb3JyT2hvdTBPelprK2YwQS9rNDJBOENiL29VMGpwSzZtdmxEWmNYdUF1QVZTVXIKNXJCZjRVYmdVYndqa1ZWSFR6LzdDb1BWSjUvVUxJWk1Db1RUNFprNTZXWDk4ZE93Q3VTVFpZYnlBbDZNS1BBZApTZEpuVVIraEpnSVFDVGJ4K1dzYnh2d0FkbWErWUhtaVlPRzZhSklXMXdSd1VGOURLUEhHCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+```
 
-    Replace each placeholder with the applicable `.pem`.
+In the `kind: Secret` with `name: cattle-keys-server`:
 
-    - `<BASE64_CRT>`
-    - `<BASE64_KEY>`
+* Replace `<BASE64_CA>` with the base64 encoded string of the CA Certificate file (usually called `ca.pem` or `ca.crt`)
 
+See the example below:
 
-    >**Reminder:** Each `.pem` must be in base-64: `cat <PEM_FILE> | base64`.
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cattle-keys-server
+  namespace: cattle-system
+type: Opaque
+data:
+  cacerts.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNvRENDQVlnQ0NRRHVVWjZuMEZWeU16QU5CZ2txaGtpRzl3MEJBUXNGQURBU01SQXdEZ1lEVlFRRERBZDAKWlhOMExXTmhNQjRYRFRFNE1EVXdOakl4TURRd09Wb1hEVEU0TURjd05USXhNRFF3T1Zvd0VqRVFNQTRHQTFVRQpBd3dIZEdWemRDMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNQmpBS3dQCndhRUhwQTdaRW1iWWczaTNYNlppVmtGZFJGckJlTmFYTHFPL2R0RUdmWktqYUF0Wm45R1VsckQxZUlUS3UzVHgKOWlGVlV4Mmo1Z0tyWmpwWitCUnFiZ1BNbk5hS1hocmRTdDRtUUN0VFFZdGRYMVFZS0pUbWF5NU45N3FoNTZtWQprMllKRkpOWVhHWlJabkdMUXJQNk04VHZramF0ZnZOdmJ0WmtkY2orYlY3aWhXanp2d2theHRUVjZlUGxuM2p5CnJUeXBBTDliYnlVcHlad3E2MWQvb0Q4VUtwZ2lZM1dOWmN1YnNvSjhxWlRsTnN6UjVadEFJV0tjSE5ZbE93d2oKaG41RE1tSFpwZ0ZGNW14TU52akxPRUc0S0ZRU3laYlV2QzlZRUhLZTUxbGVxa1lmQmtBZWpPY002TnlWQUh1dApuay9DMHpXcGdENkIwbkVDQXdFQUFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFHTCtaNkRzK2R4WTZsU2VBClZHSkMvdzE1bHJ2ZXdia1YxN3hvcmlyNEMxVURJSXB6YXdCdFJRSGdSWXVtblVqOGo4T0hFWUFDUEthR3BTVUsKRDVuVWdzV0pMUUV0TDA2eTh6M3A0MDBrSlZFZW9xZlVnYjQrK1JLRVJrWmowWXR3NEN0WHhwOVMzVkd4NmNOQQozZVlqRnRQd2hoYWVEQmdma1hXQWtISXFDcEsrN3RYem9pRGpXbi8walI2VDcrSGlaNEZjZ1AzYnd3K3NjUDIyCjlDQVZ1ZFg4TWpEQ1hTcll0Y0ZINllBanlCSTJjbDhoSkJqa2E3aERpVC9DaFlEZlFFVFZDM3crQjBDYjF1NWcKdE03Z2NGcUw4OVdhMnp5UzdNdXk5bEthUDBvTXl1Ty82Tm1wNjNsVnRHeEZKSFh4WTN6M0lycGxlbTNZQThpTwpmbmlYZXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+```
 
-6. Save the `.yml` file and close it.
+### Certificate Signed By A Recognized Certificate Authority
 
-### Run RKE
+If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file.
 
-Enter the command to run RKE while pointing to `3-node-certificate.yml`. RKE installs Kubernetes and Rancher using your parameters.
+In the `kind: Secret` with `name: cattle-keys-ingress`:
 
-1. From your workstation, make sure `3-node-certificate.yml` and RKE are in the same directory.
+* Replace `<BASE64_CRT>` with the base64 encoded string of the Certificate file (usually called `cert.pem` or `domain.crt`)
+* Replace `<BASE64_KEY>` with the base64 encoded string of the Certificate Key file (usually called `key.pem` or `domain.key`)
 
-2. Open a Terminal instance. Change to the directory that contains `3-node-certificate.yml` and RKE.
+See the example below:
 
-3. Enter the following command.
-
-	```
-	rke up --config 3-node-certificate.yml
-	```
-
-### What's Next?
-
-Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN used earlier in this procedure.
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cattle-keys-ingress
+  namespace: cattle-system
+type: Opaque
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1RENDQWN5Z0F3SUJBZ0lKQUlHc25NeG1LeGxLTUEwR0NTcUdTSWIzRFFFQkN3VUFNQkl4RURBT0JnTlYKQkFNTUIzUmxjM1F0WTJFd0hoY05NVGd3TlRBMk1qRXdOREE1V2hjTk1UZ3dOekExTWpFd05EQTVXakFXTVJRdwpFZ1lEVlFRRERBdG9ZUzV5Ym1Ob2NpNXViRENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DCmdnRUJBTFJlMXdzekZSb2Rib2pZV05DSHA3UkdJaUVIMENDZ1F2MmdMRXNkUUNKZlcrUFEvVjM0NnQ3bSs3TFEKZXJaV3ZZMWpuY2VuWU5JSGRBU0VnU0ducWExYnhUSU9FaE0zQXpib3B0WDhjSW1OSGZoQlZETGdiTEYzUk0xaQpPM1JLTGdIS2tYSTMxZndjbU9zWGUwaElYQnpUbmxnM20vUzlXL3NTc0l1dDVwNENDUWV3TWlpWFhuUElKb21lCmpkS3VjSHFnMTlzd0YvcGVUalZrcVpuMkJHazZRaWFpMU41bldRV0pjcThTenZxTTViZElDaWlwYU9hWWQ3RFEKYWRTejV5dlF0YkxQNW4wTXpnOU43S3pGcEpvUys5QWdkWDI5cmZqV2JSekp3RzM5R3dRemN6VWtLcnZEb05JaQo0UFJHc01yclFNVXFSYjRSajNQOEJodEMxWXNDQXdFQUFhTTVNRGN3Q1FZRFZSMFRCQUl3QURBTEJnTlZIUThFCkJBTUNCZUF3SFFZRFZSMGxCQll3RkFZSUt3WUJCUVVIQXdJR0NDc0dBUVVGQndNQk1BMEdDU3FHU0liM0RRRUIKQ3dVQUE0SUJBUUNKZm5PWlFLWkowTFliOGNWUW5Vdi9NZkRZVEJIQ0pZcGM4MmgzUGlXWElMQk1jWDhQRC93MgpoOUExNkE4NGNxODJuQXEvaFZYYy9JNG9yaFY5WW9jSEg5UlcvbGthTUQ2VEJVR0Q1U1k4S292MHpHQ1ROaDZ6Ci9wZTNqTC9uU0pYSjRtQm51czJheHFtWnIvM3hhaWpYZG9kMmd3eGVhTklvRjNLbHB2aGU3ZjRBNmpsQTM0MmkKVVlCZ09iN1F5KytRZWd4U1diSmdoSzg1MmUvUUhnU2FVSkN6NW1sNGc1WndnNnBTUXhySUhCNkcvREc4dElSYwprZDMxSk1qY25Fb1Rhc1Jyc1NwVmNGdXZyQXlXN2liakZyYzhienBNcE1obDVwYUZRcEZzMnIwaXpZekhwakFsCk5ZR2I2OHJHcjBwQkp3YU5DS2ErbCtLRTk4M3A3NDYwCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBdEY3WEN6TVZHaDF1aU5oWTBJZW50RVlpSVFmUUlLQkMvYUFzU3gxQUlsOWI0OUQ5ClhmanEzdWI3c3RCNnRsYTlqV09keDZkZzBnZDBCSVNCSWFlcHJWdkZNZzRTRXpjRE51aW0xZnh3aVkwZCtFRlUKTXVCc3NYZEV6V0k3ZEVvdUFjcVJjamZWL0J5WTZ4ZDdTRWhjSE5PZVdEZWI5TDFiK3hLd2k2M21uZ0lKQjdBeQpLSmRlYzhnbWlaNk4wcTV3ZXFEWDJ6QVgrbDVPTldTcG1mWUVhVHBDSnFMVTNtZFpCWWx5cnhMTytvemx0MGdLCktLbG81cGgzc05CcDFMUG5LOUMxc3MvbWZRek9EMDNzck1Xa21oTDcwQ0IxZmIydCtOWnRITW5BYmYwYkJETnoKTlNRcXU4T2cwaUxnOUVhd3l1dEF4U3BGdmhHUGMvd0dHMExWaXdJREFRQUJBb0lCQUJKYUErOHp4MVhjNEw0egpwUFd5bDdHVDRTMFRLbTNuWUdtRnZudjJBZXg5WDFBU2wzVFVPckZyTnZpK2xYMnYzYUZoSFZDUEN4N1RlMDVxClhPa2JzZnZkZG5iZFQ2RjgyMnJleVByRXNINk9TUnBWSzBmeDVaMDQwVnRFUDJCWm04eTYyNG1QZk1vbDdya2MKcm9Kd09rOEVpUHZZekpsZUd0bTAwUm1sRysyL2c0aWJsOTVmQXpyc1MvcGUyS3ZoN2NBVEtIcVh6MjlpUmZpbApiTGhBamQwcEVSMjNYU0hHR1ZqRmF3amNJK1c2L2RtbDZURDhrSzFGaUtldmJKTlREeVNXQnpPbXRTYUp1K01JCm9iUnVWWG4yZVNoamVGM1BYcHZRMWRhNXdBa0dJQWxOWjRHTG5QU2ZwVmJyU0plU3RrTGNzdEJheVlJS3BWZVgKSVVTTHM0RUNnWUVBMmNnZUE2WHh0TXdFNU5QWlNWdGhzbXRiYi9YYmtsSTdrWHlsdk5zZjFPdXRYVzkybVJneQpHcEhUQ0VubDB0Z1p3T081T1FLNjdFT3JUdDBRWStxMDJzZndwcmgwNFZEVGZhcW5QNTBxa3BmZEJLQWpmanEyCjFoZDZMd2hLeDRxSm9aelp2VkowV0lvR1ZLcjhJSjJOWGRTUVlUanZUZHhGczRTamdqNFFiaEVDZ1lFQTFBWUUKSEo3eVlza2EvS2V2OVVYbmVrSTRvMm5aYjJ1UVZXazRXSHlaY2NRN3VMQVhGY3lJcW5SZnoxczVzN3RMTzJCagozTFZNUVBzazFNY25oTTl4WE4vQ3ZDTys5b2t0RnNaMGJqWFh6NEJ5V2lFNHJPS1lhVEFwcDVsWlpUT3ZVMWNyCm05R3NwMWJoVDVZb2RaZ3IwUHQyYzR4U2krUVlEWnNFb2lFdzNkc0NnWUVBcVJLYWNweWZKSXlMZEJjZ0JycGkKQTRFalVLMWZsSjR3enNjbGFKUDVoM1NjZUFCejQzRU1YT0kvSXAwMFJsY3N6em83N3cyMmpud09mOEJSM0RBMwp6ZTRSWDIydWw4b0hGdldvdUZOTTNOZjNaNExuYXpVc0F0UGhNS2hRWGMrcEFBWGthUDJkZzZ0TU5PazFxaUNHCndvU212a1BVVE84b1ViRTB1NFZ4ZmZFQ2dZQUpPdDNROVNadUlIMFpSSitIV095enlOQTRaUEkvUkhwN0RXS1QKajVFS2Y5VnR1OVMxY1RyOTJLVVhITXlOUTNrSjg2OUZPMnMvWk85OGg5THptQ2hDTjhkOWN6enI5SnJPNUFMTApqWEtBcVFIUlpLTFgrK0ZRcXZVVlE3cTlpaHQyMEZPb3E5OE5SZDMzSGYxUzZUWDNHZ3RWQ21YSml6dDAxQ3ZHCmR4VnVnd0tCZ0M2Mlp0b0RLb3JyT2hvdTBPelprK2YwQS9rNDJBOENiL29VMGpwSzZtdmxEWmNYdUF1QVZTVXIKNXJCZjRVYmdVYndqa1ZWSFR6LzdDb1BWSjUvVUxJWk1Db1RUNFprNTZXWDk4ZE93Q3VTVFpZYnlBbDZNS1BBZApTZEpuVVIraEpnSVFDVGJ4K1dzYnh2d0FkbWErWUhtaVlPRzZhSklXMXdSd1VGOURLUEhHCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+```
 
 
-<!--SSL is required to secure Rancher communications. Before completing one of the procedures below, complete the procedure in its companion note.
+## Configure FQDN
 
-Complete one of the following procedures to install Rancher in an HA configuration.
+There are 2 references to `<FQDN>` in the config file. Both need to be replaced with the FQDN chosen in [Configure DNS](#configure-dns).
 
+In the `kind: Ingress` with `name: cattle-ingress-http`:
 
-- [SSL Passthrough]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/ssl-passthrough/)
+* Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#configure-dns).
 
-	In this scenario, your High-Availability Rancher Servers handle SSL decryption rather than a Load Balancer.
+See the example below:
 
-	>**Note:**
-	> Before you begin this procedure, you must complete [SSL Config: In the Rancher Container]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#certificate-host-inside-the-rancher-container).
+```
+ ---
+  apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    namespace: cattle-system
+    name: cattle-ingress-http
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"   # Max time in seconds for ws to remain shell window open
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"   # Max time in seconds for ws to remain shell window open
+  spec:
+    rules:
+    - host: rancher.yourdomain.com
+      http:
+        paths:
+        - backend:
+            serviceName: cattle-service
+            servicePort: 80
+    tls:
+    - secretName: cattle-keys-ingress
+      hosts:
+      - rancher.yourdomain.com
+```
 
-- [SSL Termination]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/ha-server-install/ssl-termination/)
+Save the `.yml` file and close it.
 
-	In this scenario, your Load Balancer handles all SSL encryption, and then forwards on the communication within your Kubernetes cluster unencrypted.
+## Run RKE
 
-	>**Note:**
-	> Before you begin this procedure, you must complete [SSL Config: External Load Balancer or Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ssl-config/#instructions-for-the-loadbalancer-or-proxy).-->
+All configuration is in place to run RKE. You can do this by running the `rke up` command and using the `--config` parameter to point to your config file.
+
+From your workstation, make sure your config file (`3-node-certificate.yml` or `3-node-certificate-recognizedca.yml`) and the downloaded `rke` binary are in the same directory.
+
+Open a Terminal instance. Change to the directory that contains your config file and `rke`.
+
+* Using `3-node-certificate.yml`:
+
+```
+# MacOS
+./rke_darwin-amd64 up --config 3-node-certificate.yml
+# Linux
+./rke_linux-amd64 up --config 3-node-certificate.yml
+```
+
+* Using `3-node-certificate-recognizedca.yml`:
+
+```
+# MacOS
+./rke_darwin-amd64 up --config 3-node-certificate-recognizedca.yml
+# Linux
+./rke_linux-amd64 up --config 3-node-certificate-recognizedca.yml
+```
+
+The output should be similar to the snippet below:
+
+```
+INFO[0000] Building Kubernetes cluster
+INFO[0000] [dialer] Setup tunnel for host [1.1.1.1]
+INFO[0000] [network] Deploying port listener containers
+INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
+...
+INFO[0101] Finished building Kubernetes cluster successfully
+```
+
+## What's Next?
+
+Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
+
+If you are using a [Certificate Signed By A Recognized Certificate Authority](#certificate-signed-by-a-recognized-certificate-authority), you will need to clear the `cacerts` value from the CA (until [GitHub #11388](https://github.com/rancher/rancher/issues/11388) is resolved). This can be done under `Settings` -> `cacerts`, choose `Edit` and remove the contents and click `Save`.
