@@ -28,7 +28,7 @@ Installing Rancher on a Linux host using a single Docker container is simple. Si
 2.	From your shell, enter the following command:
 
 	```
-	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher: latest
+	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
 	```
 
 	>**Note:**
