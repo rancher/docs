@@ -5,33 +5,7 @@ weight: 3300
 
 # Creating an Azure Cluster
 
-## Objectives
-
-1.	[Create a Linux Virtual Machine](#create-a-linux-virtual-machine)
-
-	Begin by logging into Azure and provisioning a Linux virtual machine (VM).
-
-2.	[Create the Cluster](#create-the-azure-cluster)
-
-	Use your Linux VM as a template for your new Kubernetes cluster.
-
-## Create a Linux Virtual Machine
-
-Create a Linux VM using the [Microsoft Azure Portal](https://portal.azure.com) ([Azure Instructions](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/)).
-
-Provision the instance according to the requirements below.
-
-### Requirements
-
-{{< requirements_os >}}
-
-{{< requirements_hardware >}}
-
-{{< requirements_software >}}
-
-## Create the Azure Cluster
-
-Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
+Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 1. From the **Clusters** page, click **Add Cluster**.
 

@@ -16,7 +16,7 @@ Configuring an Amazon ALB is a multistage process. We've broken it down into mul
 
 2. [Register Targets](#register-targets)
 
-	Add your Kubernettes nodes to the groups.
+	Add your server nodes to the groups.
 
 3. [Create Your ALB](#create-your-alb)
 
@@ -62,7 +62,7 @@ Protocol<br/>(Health Check) | `HTTPS`
 
 ### Register Targets
 
-Next, add your Kubernetes nodes assigned either the `controlplane` or `worker` role to _both_ of your target groups.
+Next, add your nodes assigned either the `controlplane` or `worker` role to _both_ of your target groups.
 
 [Amazon Documentation: Register Targets with Your Target Group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-register-targets.html)
 

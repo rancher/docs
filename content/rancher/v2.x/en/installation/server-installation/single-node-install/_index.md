@@ -4,6 +4,7 @@ weight: 250
 description: For development environments, we recommend installing Rancher by deploying a single Docker container.
 ---
 
+
 # Single Node Install
 
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
@@ -100,10 +101,12 @@ As the Let's Encrypt challenge can come from any source IP address, port **TCP/8
 docker run -d -p 80:80 -p 443:443 rancher/rancher --acme-domain rancher.mydomain.com
 ```
 
+
 *Note: Let's Encrypt provides rate limits for requesting new certificates, keep this in mind when creating and destroying the container multiple times. Read more on this in the [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).*
 
 ## SSL FAQ / Troubleshooting
 {{< readfile file="rancher/v2.x/en/data/files/ssl_faq.md" markdown="true" >}}
+
 
 ## Persisent data
 {{< readfile file="rancher/v2.x/en/data/files/persistentdata.md" markdown="true" >}}

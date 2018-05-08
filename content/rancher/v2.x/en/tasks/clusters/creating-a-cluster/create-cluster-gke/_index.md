@@ -47,14 +47,6 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 
 7. Use **Nodes** to provision each node in your cluster and choose a geographical region.
 
-	Provision the nodes according to our requirements below.
-
-	{{< requirements_os >}}
-
-	{{< requirements_hardware >}}
-
-	{{< requirements_software >}}
-
 8. Review your options to confirm they're correct. Then click **Create**.
 
 {{< result_create-cluster >}}

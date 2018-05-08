@@ -7,13 +7,17 @@ weight: 3225
 
 ## Objectives
 
-1.	[Create a Linux Host](#create-a-linux-host)
+1.	[Provision a Linux Host](#provision-a-linux-host)
 
 	Begin by provisioning a Linux host.
 
 2. [Create the Cluster](#create-the-custom-cluster)
 
 	Use your new Linux host as a template for your new Kubernetes cluster.
+
+2. **Amazon Only:** [Tag Resources](#amazon-only-br-tag-resources)
+
+	If you're using Amazon to create your custom cluster, log into AWS and tag your resources with a cluster ID.
 
 ## Provision a Linux Host
 
@@ -38,8 +42,7 @@ Provision the host according to the requirements below.
 >**Bare-Metal Server Note:**
 >
 While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
->
->**Amazon Cloud Provider Note:** If you are going to configure your cluster to use `Amazon` cloud provider, you must tag your Amazon EC2 resources with a `ClusterID`. After you complete [Create the Custom Cluster](#create-the-custom-cluster), complete [Configuring the Kubernetes Cloud Provider to Amazon: Tag resources with ClusterID](#configuring-the-kubernetes-cloud-provider-to-amazon-br-tag-resources-with-clusterid).<br/><br/>You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes, you only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. Read more on [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+
 
 ## Create the Custom Cluster
 
@@ -77,22 +80,33 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
 {{< result_create-cluster >}}
 
-### Configuring the Kubernetes Cloud Provider to Amazon:<br/> Tag resources with ClusterID
+## Amazon Only:<br/>Tag Resources
 
-When you have configured your cluster to use `Amazon` as **Cloud Provider**, you will need to tag AWS resources. The following resources need to tagged with a `ClusterID`:
+If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
 
-* **Nodes**: All hosts added in Rancher.
-* **Subnet**: The subnet used for your cluster
-* **Security Group**: The security group used for your cluster.
+[Amazon Documentation: Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 
->**Note:** Do not tag multiple security groups, as this will generate an error when creating Elastic Load Balancer (ELB).
+>**Note:** You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes. You only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. For more information, see [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)	
+
+
+The following resources need to tagged with a `ClusterID`:
+
+- **Nodes**: All hosts added in Rancher.
+- **Subnet**: The subnet used for your cluster
+- **Security Group**: The security group used for your cluster.
+
+	>**Note:** Do not tag multiple security groups. Tagging multiple groups generates an error when creating Elastic Load Balancer.
 
 The tag that should be used is:
 
-**Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `owned`
+```
+Key=kubernetes.io/cluster/<CLUSTERID>, Value=owned
+```
 
-where `CLUSTERID` can be chosen as you like, as long as it is equal across all tags set.
+`<CLUSTERID>` can be any string you choose. However, the same string must be used on every resource you tag. Setting the tag value to `owned` informs the cluster that all resources tagged with the `<CLUSTERID>` are owned and managed by this cluster.
 
-Setting the value of the tag to owned, tells the cluster that all resources with this tag are owned and managed by this cluster. If you share resources between clusters, you can change the tag to:
+If you share resources between clusters, you can change the tag to:
 
-**Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `shared`.
+```
+Key=kubernetes.io/cluster/CLUSTERID, Value=shared
+```
