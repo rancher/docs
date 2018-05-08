@@ -104,8 +104,13 @@ docker run -d -p 80:80 -p 443:443 rancher/rancher --acme-domain rancher.mydomain
 
 *Note: Let's Encrypt provides rate limits for requesting new certificates, keep this in mind when creating and destroying the container multiple times. Read more on this in the [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).*
 
+```
+$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
+```
+
 ## SSL FAQ / Troubleshooting
 {{< readfile file="rancher/v2.x/en/data/files/ssl_faq.md" markdown="true" >}}
+
 
 
 ## Persisent data
