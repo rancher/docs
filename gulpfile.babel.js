@@ -81,7 +81,7 @@ gulp.task('init-watch', () => {
     open: false
   });
   watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => gulp.start('sass'));
-  watch('src/js/**/*.js', () => gulp.start('build:app'));
+  watch([ 'src/js/**/*.js', 'node_modules/rancher-website-theme/static/js/base.js' ], () => gulp.start('build:app'));
   watch('src/img/**/*', () => gulp.start('img'));
   watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
@@ -121,7 +121,7 @@ gulp.task('build:vendor', () => {
 
 gulp.task('build:app', () => {
   return browserify({
-    entries: ['./src/js/app.js'],
+    entries: ['./node_modules/rancher-website-theme/static/js/base.js', './src/js/app.js'],
     extensions: ['.js',],
     debug: true,
     insertGlobals: true
