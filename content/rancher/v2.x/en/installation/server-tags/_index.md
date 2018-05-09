@@ -11,6 +11,6 @@ The images can be found on [DockerHub](https://hub.docker.com/r/rancher/rancher/
 
 -	`rancher/rancher:latest`: Our latest development release. These builds are validated through our CI automation framework. These releases are not recommended for production environments.
 
-<!-- -	`rancher/rancher:stable`: Our newest stable release. This tag is recommended for production. -->
+-	`rancher/rancher:stable`: Our newest stable release. This tag is recommended for production.
 
 Any tag with a `-rc` or other suffix is meant for the {{< product >}} testing team to validate.  You should not use these tags, and upgrading from or to a `rc` build is not supported.
