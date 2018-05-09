@@ -1,7 +1,6 @@
 ---
-title: Rancher 2.0 Documentation
-shortTitle: Rancher 2.0
-insertOneSix: true
+title: Docs
+aliases: [/rancher/v2.x/en/]
 weight: 1
 ---
 # Rancher 2.0 Documentation
