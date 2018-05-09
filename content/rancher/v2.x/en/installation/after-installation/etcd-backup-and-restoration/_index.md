@@ -76,6 +76,8 @@ INFO[0011] Finished backup on all etcd hosts
 
 `etcd restore` is a command used to recover from an etcd cluster disaster. The command reverts to any snapshot stored in `/opt/rke/etcdbackup` that you explicitly define. When you run `etcd restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
 
+>**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, or the disaster recovery will not work.
+
 >**Warning:** Restoring an etcd backup deletes your current etcd cluster and replaces it with a new one. Before you run the `etcd restore` command, backup any important data in your current cluster.
 
 ```
