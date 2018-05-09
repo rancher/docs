@@ -120,7 +120,9 @@ server {
 #### Example Amazon ELB configuration
 
 ## SSL FAQ / Troubleshooting
-{{< readfile file="rancher/v2.x/en/data/files/ssl_faq.md" markdown="true" >}}
 
-## Persistent data
-{{< readfile file="rancher/v2.x/en/data/files/persistentdata.md" markdown="true" >}}
+{{< ssl_faq >}}
+
+## Persisent data
+
+{{< persistentdata >}}
