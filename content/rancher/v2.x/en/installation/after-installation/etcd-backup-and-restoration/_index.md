@@ -72,7 +72,7 @@ INFO[0010] [etcd] Starting backup on host [z.z.z.z]
 INFO[0011] [etcd] Successfully started [etcd-backup-once] container on host [z.z.z.z]
 INFO[0011] Finished backup on all etcd hosts
 ```
-## Etcd Restore
+## Etcd Disaster Recovery
 
 `etcd restore` reverts to any snapshot stored in `/opt/rke/etcdbackup` that you explicitly define. When you run `etcd restire`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
 
