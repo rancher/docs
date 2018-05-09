@@ -31,6 +31,6 @@ Coming Soon
 
 Coming Soon
 
-## Adding a Persisten Volume Claim
+## Adding a Persistent Volume Claim
 
 Coming Soon
