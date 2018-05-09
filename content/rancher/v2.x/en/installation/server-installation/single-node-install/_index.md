@@ -109,9 +109,9 @@ $ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/ranche
 ```
 
 ## SSL FAQ / Troubleshooting
-{{< readfile file="rancher/v2.x/en/data/files/ssl_faq.md" markdown="true" >}}
+{{% ssl_faq %}}
 
 
 
 ## Persisent data
-{{< readfile file="rancher/v2.x/en/data/files/persistentdata.md" markdown="true" >}}
+{{% persistentdata markdown="true" %}}
