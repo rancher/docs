@@ -17,26 +17,33 @@ Howdy Partner! This tutorial walks you through:
 
 This Quick Start Guide is divided into different tasks for easier consumption.
 
-1.  [Provision a Linux Host](#provision-a-linux-host) <br/>
-        Begin by provisioning a Linux host.
+1.  [Provision a Linux Host](#provision-a-linux-host)
 
-2.  [Install Rancher](#install-rancher) <br/>
-        From your Linux host, run the Docker command for installing Rancher.
+    Begin by provisioning a Linux host.
 
-3.  [Log In](#log-in)  <br/>
-        Browse to your Linux host to access the Rancher UI.
+2.  [Install Rancher](#install-rancher)
 
-4.  [Create the Cluster](#create-the-cluster)  <br/>
-        Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
+    From your Linux host, run the Docker command for installing Rancher.
 
-5.  [Deploy a Workload](#deploy-a-workload)  <br/>
-        Create a workload so that Kubernetes can distribute Nginx among your cluster nodes.
+3.  [Log In](#log-in)
 
-6.  [View Your Application](#view-your-application) <br/>
-        When your workload finishes deployment, browse to your node IP to make sure Nginx is running.
+    Browse to your Linux host to access the Rancher UI.
 
-7.  [What's Next?](#whats-next) <br/>
-        Now that you've created a cluster and deployed Nginx, find out what else you can do with Rancher v2.0.
+4.  [Create the Cluster](#create-the-cluster)
+
+    Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
+
+5.  [Deploy a Workload](#deploy-a-workload)
+
+    Create a workload so that Kubernetes can distribute Nginx among your cluster nodes.
+
+6.  [View Your Application](#view-your-application)
+
+    When your workload finishes deployment, browse to your node IP to make sure Nginx is running.
+
+7.  [What's Next?](#whats-next)
+
+    Now that you've created a cluster and deployed Nginx, find out what else you can do with Rancher v2.0.
 
 ## Provision a Linux Host
 
@@ -46,7 +53,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 - An on-premise VM
 - A bare-metal server
 
-  >**Note**
+  >**Note:**
   > When using a cloud-host virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
 
 ### Provision the host according to the requirements below.
@@ -69,8 +76,8 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
   >**Notes:**
   >
-  > * For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
-  > * Docker requirements apply to both your Linux host and your cluster nodes.
+  > - For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
+  > - Docker requirements apply to both your Linux host and your cluster nodes.
 
 ### Install Rancher
 
@@ -84,7 +91,7 @@ To install Rancher on your host, connect to it and then use a shell to install.
 	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 	```
 
-**Result: Rancher is installed.**
+**Result:** Rancher is installed.
 
 ### Log In
 
@@ -105,25 +112,25 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-1. Choose **Custom**.
+2. Choose **Custom**.
 
-1. Enter a **Cluster Name**.
+3. Enter a **Cluster Name**.
 
-1. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
+4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
 
-1. Click **Next**.
+5. Click **Next**.
 
-1. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
+6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
 
-1. Rancher will auto-detect the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
+7. Rancher will auto-detect the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
 
-1. Skip the **Labels** stuff. It's not important for now.
+8. Skip the **Labels** stuff. It's not important for now.
 
-1. Copy the command displayed on screen to your clipboard.
+9. Copy the command displayed on screen to your clipboard.
 
-1. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+10. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
 
-1. When you finish running the command on your Linux host, click **Done**.
+11. When you finish running the command on your Linux host, click **Done**.
 
 {{< result_create-cluster >}}
 
@@ -141,7 +148,7 @@ For this workload, you'll be deploying the application Nginx.
 
 4.  Click **+ Deploy**.
 
-  **Step Result:** The **Deploy Workload** page opens.
+	**Step Result:** The **Deploy Workload** page opens.
 
 5.  Enter a **Name** for your workload.
 
@@ -150,13 +157,16 @@ For this workload, you'll be deploying the application Nginx.
 7.  From **Port Mapping**, click **Add Port**.
 
 8.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
-![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
+
+	![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
 
 9.  From the **On Listening Port** field, leave the **Random** value in place.
-![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
+
+	![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
 
 10. From the **Publish the container port** field, enter port `80`.
-![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
+
+	![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
 
 11. Leave the remaining options on their default setting. We'll tell you about them later.
 
