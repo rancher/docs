@@ -1,14 +1,14 @@
 ---
-title: Single Node Install with External Load Balancer
+title: Single Node Installation with External Load Balancer
 weight: 260
 ---
 
-# Single Node Install with External Load Balancer
+# Single Node Installation with External Load Balancer
 
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 
 >**Note:**
-> If you want don't want to use an external load balancer, please see [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/server-installation/single-node-install/).
+> If you want don't want to use an external load balancer, please see [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
 
 ## Provision Linux Host
 
@@ -23,7 +23,7 @@ Provision a single Linux host to launch your {{< product >}} Server.
 {{< requirements_software >}}
 
 >**Note:**
->- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/><br/>
+>- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/>
 >- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
 ## Configuration
