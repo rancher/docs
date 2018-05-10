@@ -1,8 +1,8 @@
 ---
-title: High Availability Install
+title: High Availability Installation
 weight: 275
 ---
-# High Availability Install
+# High Availability Installation
 
 This set of instructions creates a new Kubernetes cluster dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
@@ -130,7 +130,7 @@ Certificates can be configured by using base64 encoded strings in the config fil
 >**Note:**
 > If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#certificate-signed-by-a-recognized-certificate-authority) to proceed.
 
-If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file).
+If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file). Make sure that your certificate file includes all the intermediate certificates in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates.
 
 In the `kind: Secret` with `name: cattle-keys-ingress`:
 
