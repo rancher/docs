@@ -80,10 +80,10 @@ gulp.task('init-watch', () => {
     port: 9001,
     open: false
   });
-  watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => gulp.start('sass'));
-  watch([ 'src/js/**/*.js', 'node_modules/rancher-website-theme/static/js/base.js' ], () => gulp.start('build:app'));
-  watch('src/img/**/*', () => gulp.start('img'));
-  watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'static/**/*.{js,css}', 'themes/**/*', 'node_modules/rancher-website-theme/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => runSequence('sass', 'hugo-dev'));
+  watch([ 'src/js/**/*.js', 'node_modules/rancher-website-theme/static/js/base.js' ], () => runSequence('build:app', 'hugo-dev'));
+  watch('src/img/**/*', () => runSequence('img', 'hugo-dev'));
+  watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'themes/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
