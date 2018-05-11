@@ -1,7 +1,6 @@
 ---
   title: About
   weight: 5000
-  draft: true
 ---
 
 # About
