@@ -40,10 +40,10 @@ Choose from the following options:
 
 - [Option 1—Default Self-Signed Certificate](#option-1-default-self-signed-certificate)
 - [Option 2—Bring Your Own Certificate: Self-Signed](#option-2-bring-your-own-certificate-self-signed)
-- [Option 3—Bring Your Own Certificate: Recognized CA](#option-3-bring-your-own-certificate-recognized-certificate-authority)
+- [Option 3—Bring Your Own Certificate: Signed by Recognized CA](#option-3-bring-your-own-certificate-recognized-certificate-authority)
 - [Option 4—Let's Encrypt Certificates](#option-4-lets-encrypt-certificates)
 
-### Option 1—Default Self-Signed Certificate
+### Option A—Default Self-Signed Certificate
 
 If you install Rancher without specifying your own certificate, Rancher generates a self-signed certificate that's used for encryption. If you're satisfied with this certificate, there's no need to obtain your own.
 
@@ -55,7 +55,7 @@ If you install Rancher without specifying your own certificate, Rancher generate
 	docker run -d -p 80:80 -p 443:443 rancher/rancher
 	```
 
-### Option 2—Bring Your Own Certificate: Self-Signed
+### Option B—Bring Your Own Certificate: Self-Signed
 
 Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
 
@@ -90,7 +90,7 @@ docker run -d -p 80:80 -p 443:443 \
   rancher/rancher
 	```
 
-### Option 3—Bring Your Own Certificate: Recognized CA
+### Option C—Bring Your Own Certificate: Signed by Recognized CA
 
 If you're publishing your app publically, you should ideally be using a certificate signed by a recognized CA.
 
@@ -112,7 +112,7 @@ Obtain a certificate signed by a recognized CA, like GoDaddy or DigiCert.
 	| Certificate key file         |     /etc/rancher/ssl/key.pem |
 
 
-**To Install Rancher Using a Cert Signed by a Recognized CA:**
+**To Install Rancher Using a Certificate Signed by a Recognized CA:**
 
 After obtaining your certificate, run the Docker command to deploy Rancher, pointing toward your certificate files.
 
@@ -123,7 +123,7 @@ After obtaining your certificate, run the Docker command to deploy Rancher, poin
 	  rancher/rancher
 	```
 
-### Option 4—Let's Encrypt Certificate
+### Option D—Let's Encrypt Certificate
 
 Rancher supports Let's Encrypt certificates. Let's Encrypt uses an **http-01 challenge** to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
