@@ -12,7 +12,7 @@ You can build any complex workload in Kubernetes using two basic constructs: pod
 
 ### Pods
 
-A [_pod_](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is one or more containers that share network namespaces and storage volumes. Most pods have just one container. For all practical purposes, therefore, you can think of a pod as a container. You scale pods the same way you scale containers, by having multiple instances of the same pod that implement a service.
+A [_pod_](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) is one or more containers that share network namespaces and storage volumes. Most pods have only one container. Therefore when we discuss _pods_, the term is often synonymous with _containers_. You scale pods the same way you scale containers, by having multiple instances of the same pod that implement a service.
 
 ### Controllers
 
@@ -26,7 +26,7 @@ Kubernetes provide a number of built-in controllers such as:
 - [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 - [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
 
-You can also define your own controllers. Controllers query the Kubernetes API and perform the necessary actions to make the actual state of the workload conform to the desired state of the workload specified in the Kubernetes database.
+You can also define your own controllers. Controllers have the job of taking a workload that you create and recreatinging on each of your cluster nodes. Controllers query the Kubernetes API for the state of the workload within the Kubernetes database. Then the controllers reproduce that workload state on each cluster node.
 
 
 <!--## Service Types
