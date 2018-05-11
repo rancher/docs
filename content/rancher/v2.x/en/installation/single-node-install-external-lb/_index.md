@@ -2,13 +2,20 @@
 title: Single Node Installation with External Load Balancer
 weight: 260
 ---
-
 # Single Node Installation with External Load Balancer
 
-For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
+For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
 
 >**Note:**
 > If you want don't want to use an external load balancer, please see [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
+
+## Overview
+
+Installation of Rancher on a single node with an external load balancer involves multiple procedures. Review this overview to learn about each procedure you need to complete.
+
+1. [Provision Linux Host](#provision-linux-host)
+2. [Choose an SSL Option and Install Rancher](#choose-an-ssl-option-and-install-rancher)
+3. [Configure Your Load Balancer](#configure-your-load-balancer)
 
 ## Provision Linux Host
 
@@ -26,24 +33,35 @@ Provision a single Linux host to launch your {{< product >}} Server.
 >- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/>
 >- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
-## Configuration
+## Choose an SSL Option and Install Rancher
 
-For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication which happens when you login or interact with a cluster for example.
+For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 You can choose from the following scenarios:
 
-* [Self-Signed Certificate](#self-signed-certificate)
-* [Certificate signed by a well known Certificate Authority](#certificate-signed-by-a-recognized-certificate-authority)
+- [Option 1—Bring Your Own Certificate: Self-Signed](#option-1-bring-your-own-certificate-self-signed)
+- [Option 2—Bring Your Own Certificate: Recognized CA](#certificate-signed-by-a-recognized-certificate-authority)
 
-### Self signed certificate
+### Option 1—Self-Signed Certificate
 
-When using self signed certificates on the load balancer/proxy, you still need to supply the CA certificate to the `rancher/rancher` container. This will be used to validate connections to Rancher.
+If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
+
+**Before you Start:**
+
+Create a Self-Signed Certificate.
+
+- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+
+- The certificate files must be in base64.
 
 | Type                         |        Location in container |
 | ---------------------------- | ---------------------------: |
 | CA certificates file         | /etc/rancher/ssl/cacerts.pem |
 
-<u>Command to use:</u>
+
+**To Install Rancher Using a Self-Signed Cert:**
+
+While running the Docker command to deploy Rancher, point Docker toward your CA certificate file.
 
 ```
 docker run -d -p 80:80 -p 443:443 \
