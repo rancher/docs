@@ -16,8 +16,13 @@ Installation of Rancher on a single node with an external load balancer involves
 1. [Provision Linux Host](#provision-linux-host)
 2. [Choose an SSL Option and Install Rancher](#choose-an-ssl-option-and-install-rancher)
 3. [Configure Your Load Balancer](#configure-your-load-balancer)
+4. **For those using a certificate using a certificate signed by a rcognized CA:**
 
-## Provision Linux Host
+	[Remove Default Certificates](#placeholder)
+
+
+
+## Part 1: Provision Linux Host
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
@@ -33,22 +38,22 @@ Provision a single Linux host to launch your {{< product >}} Server.
 >- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/>
 >- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
-## Choose an SSL Option and Install Rancher
+## Part 2: Choose an SSL Option and Install Rancher
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 You can choose from the following scenarios:
 
 - [Option 1—Bring Your Own Certificate: Self-Signed](#option-1-bring-your-own-certificate-self-signed)
-- [Option 2—Bring Your Own Certificate: Recognized CA](#certificate-signed-by-a-recognized-certificate-authority)
+- [Option 2—Bring Your Own Certificate: Signed by Recognized CA](#certificate-signed-by-a-recognized-certificate-authority)
 
-### Option 1—Self-Signed Certificate
+### Option A—Bring Your Own Certificate: Self-Signed
 
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
 
 **Before you Start:**
 
-Create a Self-Signed Certificate.
+Create a self-signed certificate.
 
 - The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
 
@@ -69,28 +74,43 @@ docker run -d -p 80:80 -p 443:443 \
   rancher/rancher
 ```
 
-### Certificate signed by a recognized Certificate Authority
+### Option B—Bring Your Own Certificate: Signed by Recognized CA
 
-If the certificate you want to use on the load balancer/proxy is signed by a recognized Certificate Authority, you will have to remove the default generated CA certificate information in Rancher. This can be done under `Settings` -> `cacerts`, choose `Edit` and remove the contents and click `Save`.
+If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
-### Instructions for the load balancer or proxy
+**Before you Start:**
 
-When using a load balancer or proxy in front of the `rancher/rancher` container, there is no need for the `rancher/rancher` container to redirect port **TCP/80** (HTTP) to port **TCP/443** (HTTPS). By passing the header `X-Forwarded-Proto:
- https` header, this redirect will be disabled.
+Obtain a certificate signed by a recognized CA, like GoDaddy or DigiCert.
+
+- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+
+- The certificate files must be in base64.
+
+**To Install Rancher Using a Cert Signed by a Recognized CA:**
+
+If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. Just run the basic install command below.
+
+```
+docker run -d -p 80:80 -p 443:443 rancher/rancher
+```
+
+### Part 3: Configure Load Balancer
+
+When using a load balancer in front of your Rancher container, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto:
+ https` header, this redirect is disabled.
 
 The load balancer or proxy has to be configured to support the following:
 
-* Support **WebSocket** connections
-* **SPDY** / **HTTP/2** support
-* Passing/setting the following headers
+* **WebSocket** connections
+* **SPDY** / **HTTP/2** protocols
+* Passing / setting the following headers
 
-| Header               | Value                                     | Description                                                  |
-| -------------------- | ----------------------------------------- | :----------------------------------------------------------- |
-| `Host`               | Hostname that is used to reach Rancher | To identify the server requested by the client               |
-| `X-Forwarded-Proto`  | `https`                                   | To identify the protocol that a client used to connect to the load balancer or proxy<br />*If this Header is present, `rancher/rancher` will not redirect HTTP to HTTPS* |
-| `X-Forwarded-Port`   | Port used to reach Rancher                | To identify the protocol that client used to connect to the load balancer or proxy |
-| `X-Forwarded-For`    | IP of the client connection               | To identify the originating IP address of a client           |
-
+| Header              | Value                                  | Description                                                                                                                                                              |
+|---------------------|----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Host`              | Hostname that is used to reach Rancher | To identify the server requested by the client                                                                                                                           |
+| `X-Forwarded-Proto` | `https`                                | To identify the protocol that a client used to connect to the load balancer or proxy<br />*If this Header is present, `rancher/rancher` will not redirect HTTP to HTTPS* |
+| `X-Forwarded-Port`  | Port used to reach Rancher             | To identify the protocol that client used to connect to the load balancer or proxy                                                                                       |
+| `X-Forwarded-For`   | IP of the client connection            | To identify the originating IP address of a client                                                                                                                       |
 
 #### Example NGINX configuration
 
@@ -133,9 +153,19 @@ server {
 }
 ```
 
-#### Example HAProxy configuration
+<!-- #### Example HAProxy configuration
 
-#### Example Amazon ELB configuration
+#### Example Amazon ELB configuration -->
+
+## Part 4: Remove Default Certificates
+
+By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
+
+**To Remove the Default Certificates:**
+
+1. Log into Rancher.
+2. Select  **Settings** > **cacerts**.
+3. Choose `Edit` and remove the contents. Then click `Save`.
 
 ## SSL FAQ / Troubleshooting
 
