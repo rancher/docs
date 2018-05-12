@@ -13,10 +13,10 @@ For development environments, we recommend installing Rancher by running a singl
 
 Installation of Rancher on a single node involves multiple procedures. Review this overview to learn about each procedure you need to complete.
 
-1. [Provision Linux Host](#provision-linux-host)
-2. [Choose an SSL Option and Install Rancher](#choose-an-ssl-option-and-install-rancher)
+1. [Provision Linux Host](#part-1-provision-linux-host)
+2. [Choose an SSL Option and Install Rancher](#part-2-choose-an-ssl-option-and-install-rancher)
 
-## Provision Linux Host
+## Part 1—Provision Linux Host
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
@@ -28,20 +28,18 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 {{< requirements_software >}}
 
->**Note:**
->- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/>
->- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
+{{< note_server-tags >}}
 
-## Choose an SSL Option and Install Rancher
+## Part 2—Choose an SSL Option and Install Rancher
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 Choose from the following options:
 
-- [Option 1—Default Self-Signed Certificate](#option-1-default-self-signed-certificate)
-- [Option 2—Bring Your Own Certificate: Self-Signed](#option-2-bring-your-own-certificate-self-signed)
-- [Option 3—Bring Your Own Certificate: Signed by Recognized CA](#option-3-bring-your-own-certificate-recognized-certificate-authority)
-- [Option 4—Let's Encrypt Certificates](#option-4-lets-encrypt-certificates)
+- [Option A—Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
+- [Option B—Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
+- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-c-bring-your-own-certificate-signed-by-recognized-ca)
+- [Option D—Let's Encrypt Certificates](#option-d-lets-encrypt-certificates)
 
 ### Option A—Default Self-Signed Certificate
 
