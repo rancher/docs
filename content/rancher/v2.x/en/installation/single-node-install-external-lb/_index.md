@@ -7,22 +7,22 @@ weight: 260
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
 
 >**Note:**
-> If you want don't want to use an external load balancer, please see [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
+> If you want don't want to use an external load balancer, see [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
 
 ## Overview
 
 Installation of Rancher on a single node with an external load balancer involves multiple procedures. Review this overview to learn about each procedure you need to complete.
 
-1. [Provision Linux Host](#provision-linux-host)
-2. [Choose an SSL Option and Install Rancher](#choose-an-ssl-option-and-install-rancher)
-3. [Configure Your Load Balancer](#configure-your-load-balancer)
-4. **For those using a certificate using a certificate signed by a rcognized CA:**
+1. [Provision Linux Host](#part-1-provision-linux-host)
+2. [Choose an SSL Option and Install Rancher](#part-2-choose-an-ssl-option-and-install-rancher)
+3. [Configure Load Balancer](#part-3-configure-load-balancer)
+4. **For those using a certificate signed by a recognized CA:**
 
-	[Remove Default Certificates](#placeholder)
+	[Remove Default Certificates](#part-4-remove-default-certificates)
 
 
 
-## Part 1: Provision Linux Host
+## Part 1—Provision Linux Host
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
@@ -34,18 +34,16 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 {{< requirements_software >}}
 
->**Note:**
->- `rancher/rancher` is hosted on [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). If you don't have access to DockerHub, or you are installing Rancher without an internet connection, refer to [Installing From a Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-from-private-registry/).<br/>
->- For a list of other Rancher Server tags available, refer to [Rancher Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
+{{< note_server-tags >}}
 
-## Part 2: Choose an SSL Option and Install Rancher
+## Part 2—Choose an SSL Option and Install Rancher
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 You can choose from the following scenarios:
 
-- [Option 1—Bring Your Own Certificate: Self-Signed](#option-1-bring-your-own-certificate-self-signed)
-- [Option 2—Bring Your Own Certificate: Signed by Recognized CA](#certificate-signed-by-a-recognized-certificate-authority)
+- [Option A—Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
+- [Option B—Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
 
 ### Option A—Bring Your Own Certificate: Self-Signed
 
@@ -94,7 +92,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
 docker run -d -p 80:80 -p 443:443 rancher/rancher
 ```
 
-### Part 3: Configure Load Balancer
+## Part 3—Configure Load Balancer
 
 When using a load balancer in front of your Rancher container, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto:
  https` header, this redirect is disabled.
@@ -103,18 +101,18 @@ The load balancer or proxy has to be configured to support the following:
 
 * **WebSocket** connections
 * **SPDY** / **HTTP/2** protocols
-* Passing / setting the following headers
+* Passing / setting the following headers:
 
-| Header              | Value                                  | Description                                                                                                                                                              |
-|---------------------|----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Host`              | Hostname that is used to reach Rancher | To identify the server requested by the client                                                                                                                           |
-| `X-Forwarded-Proto` | `https`                                | To identify the protocol that a client used to connect to the load balancer or proxy<br />*If this Header is present, `rancher/rancher` will not redirect HTTP to HTTPS* |
-| `X-Forwarded-Port`  | Port used to reach Rancher             | To identify the protocol that client used to connect to the load balancer or proxy                                                                                       |
-| `X-Forwarded-For`   | IP of the client connection            | To identify the originating IP address of a client                                                                                                                       |
+	| Header              | Value                                  | Description                                                                                                                                                              |
+	|---------------------|----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+	| `Host`              | Hostname used to reach Rancher. | To identify the server requested by the client.                                                                                                                           |
+	| `X-Forwarded-Proto` | `https`                                | To identify the protocol that a client used to connect to the load balancer or proxy.<br /><br/>**Note:** If this header is present, `rancher/rancher` does not redirect HTTP to HTTPS. |
+	| `X-Forwarded-Port`  | Port used to reach Rancher.             | To identify the protocol that client used to connect to the load balancer or proxy.                                                                                       |
+	| `X-Forwarded-For`   | IP of the client connection.            | To identify the originating IP address of a client.                                                                                                                       |
 
-#### Example NGINX configuration
+### Example Nginx configuration
 
-This NGINX configuration is tested on NGINX 1.13 (mainline) and 1.14 (stable)
+This Nginx configuration is tested on Nginx 1.13 (mainline) and 1.14 (stable).
 
 ```
 upstream rancher {
@@ -157,7 +155,7 @@ server {
 
 #### Example Amazon ELB configuration -->
 
-## Part 4: Remove Default Certificates
+## Part 4—Remove Default Certificates
 
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 
