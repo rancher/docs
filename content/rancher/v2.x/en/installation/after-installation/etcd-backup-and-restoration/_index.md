@@ -1,6 +1,7 @@
 ---
 title: Etcd Backup and Restoration
 weight: 370
+draft: true
 ---
 
 # Etcd Backup and Restoration
