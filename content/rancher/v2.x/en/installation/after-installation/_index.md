@@ -1,6 +1,7 @@
 ---
 title: After Installation
 weight: 360
+draft: true
 ---
 
 # After Installation
