@@ -3,9 +3,6 @@ title: Storage
 weight: 2125
 draft: true
 ---
-
-# Storage
-
 Coming Soon
 
 ## Persistent Volumes

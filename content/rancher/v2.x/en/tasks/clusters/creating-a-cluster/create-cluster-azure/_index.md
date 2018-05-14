@@ -1,5 +1,6 @@
 ---
-shortTitle: Creating an Azure Cluster
+title: Creating an Azure Cluster
+shortTitle: Azure
 weight: 3300
 ---
 

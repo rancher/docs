@@ -3,9 +3,6 @@ title: Resources
 weight: 2275
 draft: true
 ---
-
-# Resources
-
 Coming Soon
 
 ## Certificates
