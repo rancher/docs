@@ -1,9 +1,6 @@
 ---
-title: About
+title: Contributing to RancherOS
 weight: 4
----
-
-## Contributing to RancherOS
 ---
 
 ## Developing

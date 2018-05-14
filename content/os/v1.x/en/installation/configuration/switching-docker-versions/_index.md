@@ -3,8 +3,6 @@ title: Switching Docker Versions
 weight: 129
 ---
 
-## Changing Docker Versions
-
 The version of User Docker used in RancherOS can be configured using a [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config) file or by using the `ros engine` command.
 
 > **Note:** There are known issues in Docker when switching between versions. For production systems, we recommend setting the Docker engine only once [using a cloud-config](#setting-the-docker-engine-using-cloud-config).

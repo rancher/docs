@@ -3,9 +3,6 @@ title: iPXE
 weight: 112
 ---
 
-## Booting RancherOS via iPXE
-----
-
 ```
 #!ipxe
 # Boot a persistent RancherOS to RAM

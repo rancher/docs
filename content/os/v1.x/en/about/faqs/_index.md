@@ -1,9 +1,6 @@
 ---
-title: FAQs
+title: Frequently Asked Questions
 weight: 301
----
-
-## Frequently Asked Questions
 ---
 
 ### What is required to run RancherOS?

@@ -3,9 +3,6 @@ title: Writing Files
 weight: 122
 ---
 
-## Writing Files
----
-
 You can automate writing files to disk using the `write_files` cloud-config directive.
 
 ```yaml

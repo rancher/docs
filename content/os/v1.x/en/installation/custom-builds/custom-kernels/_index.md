@@ -3,8 +3,6 @@ title: Custom Kernels
 weight: 181
 ---
 
-## Custom Kernels
-
 ### Building and Packaging a Kernel to be used in RancherOS
 
 We build the kernel for RancherOS at the [os-kernel repository](https://github.com/rancher/os-kernel). You can use this repository to help package your own custom kernel to be used in RancherOS.

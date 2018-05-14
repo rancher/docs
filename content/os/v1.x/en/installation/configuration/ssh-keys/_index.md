@@ -3,9 +3,6 @@ title: SSH Keys
 weight: 121
 ---
 
-## SSH Keys
----
-
 RancherOS supports adding SSH keys through the [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config) file. Within the cloud-config file, you simply add the ssh keys within the `ssh_authorized_keys` key.
 
 ```yaml

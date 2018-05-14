@@ -3,9 +3,6 @@ title: Upgrading
 weight: 3
 ---
 
-## Upgrading
----
-
 If RancherOS has released a new version and you want to learn how to upgrade your OS, we make it easy using the `ros os` command.
 
 Since RancherOS is a kernel and initrd, the upgrade process is downloading a new kernel and initrd, and updating the boot loader to point to it. The old kernel and initrd are not removed. If there is a problem with your upgrade, you can select the old kernel from the Syslinux bootloader.

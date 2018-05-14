@@ -3,8 +3,6 @@ title: System Logging
 weight: 153
 ---
 
-## RancherOS System Logging
-
 ### System services
 
 RancherOS uses containers for its system services. This means the logs for `syslog`, `acipd`, `system-cron`, `udev`, `network`, `ntp`, `console` and the user Docker are available using `sudo ros service logs <service-name>`.

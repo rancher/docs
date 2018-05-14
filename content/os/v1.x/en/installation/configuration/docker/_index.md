@@ -3,9 +3,6 @@ title: Configuring Docker or System Docker
 weight: 126
 ---
 
-## Configuring Docker or System Docker
----
-
 In RancherOS, you can configure System Docker and Docker daemons by using [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config).
 
 ### Configuring Docker
