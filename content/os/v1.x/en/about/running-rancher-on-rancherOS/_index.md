@@ -1,10 +1,6 @@
 ---
-title: Running Rancher on RancherOS
+title: Tips on using Rancher v1.x with RancherOS
 weight: 302
----
-
-
-## Tips on using Rancher v1.x with RancherOS
 ---
 
 RancherOS can be used to launch [Rancher](/rancher/) and be used as the OS to add nodes to Rancher.

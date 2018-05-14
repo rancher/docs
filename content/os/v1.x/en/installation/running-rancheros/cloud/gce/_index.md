@@ -3,9 +3,6 @@ title: Google Compute Engine (GCE)
 weight: 106
 ---
 
-## Running RancherOS on Google Compute Engine (GCE)
-----
-
 > **Note:** Due to the maximum transmission unit (MTU) of [1460 bytes on GCE](https://cloud.google.com/compute/docs/troubleshooting#packetfragmentation), you will need to configure your [network interfaces]({{< baseurl >}}/os/v1.x/en/installation/networking/interfaces/) and both the [Docker and System Docker]({{< baseurl >}}/os/v1.x/en/installation/configuration/docker/) to use a MTU of 1460 bytes or you will encounter weird networking related errors.
 
 ### Adding the RancherOS Image into GCE

@@ -3,8 +3,6 @@ title: Setting up Docker TLS
 weight: 127
 ---
 
-## Setting up Docker TLS
-
 `ros tls generate` is used to generate both the client and server TLS certificates for Docker.
 
 Remember, all `ros` commands need to be used with `sudo` or as a `root` user.

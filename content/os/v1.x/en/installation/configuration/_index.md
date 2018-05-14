@@ -3,8 +3,6 @@ title: Configuration
 weight: 120
 ---
 
-## Configuring RancherOS
----
 There are two ways that RancherOS can be configured.
 
 1. A cloud-config file can be used to provide configuration when first booting RancherOS.

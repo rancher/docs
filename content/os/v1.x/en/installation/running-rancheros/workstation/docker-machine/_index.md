@@ -3,9 +3,6 @@ title: Using Docker Machine
 weight: 101
 ---
 
-## Docker Machine
----
-
 Before we get started, you'll need to make sure that you have docker machine installed. Download it directly from the docker machine [releases](https://github.com/docker/machine/releases).
 
 > **Note:** If you create a RancherOS instance using Docker Machine, you will not be able to upgrade your version of RancherOS.

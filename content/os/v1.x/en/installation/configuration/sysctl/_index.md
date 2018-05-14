@@ -3,9 +3,6 @@ title: sysctl Settings
 weight: 132
 ---
 
-## sysctl Settings
----
-
 The `rancher.sysctl` cloud-config key can be used to control sysctl parameters. This works in a manner similar to `/etc/sysctl.conf` for other Linux distros.
 
 ```

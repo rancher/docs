@@ -3,9 +3,6 @@ title: Image Preloading
 weight: 152
 ---
 
-## Image Preloading
----
-
 On boot, RancherOS scans `/var/lib/rancher/preload/docker` and `/var/lib/rancher/preload/system-docker` directories and tries to load container image archives it finds there, with `docker load` and `system-docker load`.
 
 The archives are `.tar` files, optionally compressed with `xz` or `gzip`. These can be produced by `docker save` command, e.g.:

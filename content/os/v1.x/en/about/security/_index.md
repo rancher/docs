@@ -3,10 +3,6 @@ title: RancherOS Security
 weight: 303
 ---
 
-## RancherOS Security
----
-
-
 <table width="100%">
 <tr style="vertical-align: top;">
 <td width="30%" style="border: none;">

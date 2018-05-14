@@ -3,8 +3,6 @@ title: Loading Extra Kernel Modules
 weight: 134
 ---
 
-## Loading Extra Kernel Modules
-
 Since RancherOS v0.8, we build our own kernels using an unmodified kernel.org LTS kernel.
 We also build almost all optional extras as modules - so most in-tree modules are available
 in the `kernel-extras` service.

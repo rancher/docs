@@ -3,9 +3,6 @@ title: Using ZFS
 weight: 162
 ---
 
-## Using ZFS
----
-
 #### Installing the ZFS service
 
 The `zfs` service will install the kernel-headers for your kernel (if you build your own kernel, you'll need to replicate this service), and then download the [ZFS on Linux]() source, and build and install it. Then it will build a `zfs-tools` image that will be used to give you access to the zfs tools.

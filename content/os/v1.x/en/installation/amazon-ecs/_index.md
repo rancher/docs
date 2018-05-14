@@ -3,9 +3,6 @@ title: Amazon ECS (EC2 Container Service)
 weight: 190
 ---
 
-## Amazon ECS (EC2 Container Service)
----
-
 [Amazon ECS](https://aws.amazon.com/ecs/) is supported, which allows RancherOS EC2 instances to join your cluster.
 
 ### Pre-Requisites

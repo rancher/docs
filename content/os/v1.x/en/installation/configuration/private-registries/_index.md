@@ -3,9 +3,6 @@ title: Private Registries
 weight: 128
 ---
 
-## Private Registries
----
-
 When launching services through a [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config), it is sometimes necessary to pull a private image from DockerHub or from a private registry. Authentication for these can be embedded in your cloud-config.
 
 For example, to add authentication for DockerHub:

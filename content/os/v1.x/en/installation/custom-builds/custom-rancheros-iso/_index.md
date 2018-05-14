@@ -3,8 +3,6 @@ title: Custom RancherOS ISO
 weight: 182
 ---
 
-## Custom RancherOS ISO
-
 It's easy to build your own RancherOS ISO.
 
 1. Create a clone of the main [RancherOS repository](https://github.com/rancher/os) to your local machine with a `git clone`.
