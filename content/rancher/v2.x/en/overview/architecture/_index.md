@@ -3,8 +3,6 @@ title: Architecture
 weight: 1
 ---
 
-## Rancher Architecture
-
 This section explains how Rancher interacts with the two fundamental technologies Rancher is built on: Docker and Kubernetes.
 
 ## Docker
