@@ -1,5 +1,4 @@
 ---
-title: Rancher 2.0 Documentation
 shortTitle: Rancher 2.0
 insertOneSix: true
 weight: 1
