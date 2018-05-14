@@ -4,9 +4,7 @@
 
 {{ define "hero" }}
 <section class="hero">
-    {{ with .Params.Title }}
-      <h1>{{ . }}</h1>
-    {{end}}
+    <h1>Rancher 2.0 Docs</h1>
 
     {{ with .Params.Author }}
       <span class="byline bg-link">{{ . }}</span>
@@ -35,7 +33,9 @@
       <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
 
         <div class="main-content ">
-
+        {{ with .Params.Title }}
+          <h2 class="m-t-0">{{ . }}</h2>
+        {{end}}
         {{ .Content }}
 
       </div>
