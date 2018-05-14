@@ -14,7 +14,12 @@ For development environments, we recommend installing Rancher by running a singl
 Installation of Rancher on a single node involves multiple procedures. Review this overview to learn about each procedure you need to complete.
 
 1. [Provision Linux Host](#part-1-provision-linux-host)
+
+	Provision a single Linux host to launch your {{< product >}} Server.
+
 2. [Choose an SSL Option and Install Rancher](#part-2-choose-an-ssl-option-and-install-rancher)
+
+	Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
 
 ## Part 1—Provision Linux Host
 
@@ -57,22 +62,13 @@ If you install Rancher without specifying your own certificate, Rancher generate
 
 Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
 
-**Before You Start:**
+>**Prerequisites:**
+>Create a self-signed certificate.
+>
+>- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+>- The certificate files must be in base64.
+>- Make sure that your certificate file includes all the intermediate certificates in the chain. The order of certificates in this case is your own certificate first, followed by the intermediates. For an example, refer to the [SSL FAQ / Troubleshooting](#ssl-faq-troubleshooting).
 
-Create a self-signed Certificate.
-
-- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
-
-- The certificate files must be in base64.
-
-- Make sure that your certificate file includes all the intermediate certificates in the chain. The order of certificates in this case is your own certificate first, followed by the intermediates. For an example, refer to the [SSL FAQ / Troubleshooting](#ssl-faq-troubleshooting).
-
-	| Type                         |        Location in container |
-	| ---------------------------- | ---------------------------: |
-	| Certificate file             |    /etc/rancher/ssl/cert.pem |
-	| Certificate key file         |     /etc/rancher/ssl/key.pem |
-	| CA certificates file         | /etc/rancher/ssl/cacerts.pem |
-<br/>
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -94,21 +90,12 @@ If you're publishing your app publically, you should ideally be using a certific
 
 **Before You Start:**
 
-Obtain a certificate signed by a recognized CA, like GoDaddy or DigiCert.
-
-- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
-
-- The certificate files must be in base64.
-
-- Make sure that the container includes your certificate file and the key file.
-
-	In this case, mounting an additional CA certificate file is unnecessary because the cert is signed by a recognized CA.
-
-	| Type                         |        Location in container |
-	| ---------------------------- | ---------------------------: |
-	| Certificate file             |    /etc/rancher/ssl/cert.pem |
-	| Certificate key file         |     /etc/rancher/ssl/key.pem |
-
+>**Prerequisites:**
+>Create a self-signed certificate.
+>
+>- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+>- The certificate files must be in base64.
+>- Make sure that the container includes your certificate file and the key file. In this case, mounting an additional CA certificate file is unnecessary because the cert is signed by a recognized CA.
 
 **To Install Rancher Using a Certificate Signed by a Recognized CA:**
 
@@ -123,12 +110,12 @@ After obtaining your certificate, run the Docker command to deploy Rancher, poin
 
 ### Option D—Let's Encrypt Certificate
 
-Rancher supports Let's Encrypt certificates. Let's Encrypt uses an **http-01 challenge** to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
+Rancher supports Let's Encrypt certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
-**Before You Start:**
-
-- Create a record in your DNS that binds your Linux host IP address to the hostname that you want to use for Rancher access (`rancher.mydomain.com` for example).
-- Open port `TCP/80` on your Linux host. The Let's Encrypt **http-01 challenge** can come from any source IP address, so port `TCP/80` needs to be open to all IP addresses.
+>**Prerequisites:**
+>
+>- Create a record in your DNS that binds your Linux host IP address to the hostname that you want to use for Rancher access (`rancher.mydomain.com` for example).
+>- Open port `TCP/80` on your Linux host. The Let's Encrypt http-01 challenge can come from any source IP address, so port `TCP/80` must be open to all IP addresses.
 
 
 **To Install Rancher Using a Let's Encrypt Certificate:**
@@ -141,7 +128,7 @@ Run the following commands from your Linux host.
 docker run -d -p 80:80 -p 443:443 rancher/rancher --acme-domain rancher.mydomain.com
 	```
 
-	>**Remember:** Let's Encrypt provides rate limits for requesting new certificates, so limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
+	>**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 
 2. Install Rancher
 

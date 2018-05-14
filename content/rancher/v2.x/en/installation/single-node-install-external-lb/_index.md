@@ -14,11 +14,22 @@ For development environments, we recommend installing Rancher by running a singl
 Installation of Rancher on a single node with an external load balancer involves multiple procedures. Review this overview to learn about each procedure you need to complete.
 
 1. [Provision Linux Host](#part-1-provision-linux-host)
+
+	Provision a single Linux host to launch your {{< product >}} Server.
+
 2. [Choose an SSL Option and Install Rancher](#part-2-choose-an-ssl-option-and-install-rancher)
+
+	Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
+
 3. [Configure Load Balancer](#part-3-configure-load-balancer)
+
+	Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
+
 4. **For those using a certificate signed by a recognized CA:**
 
 	[Remove Default Certificates](#part-4-remove-default-certificates)
+
+	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
 
 
@@ -49,18 +60,11 @@ You can choose from the following scenarios:
 
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
 
-**Before you Start:**
-
-Create a self-signed certificate.
-
-- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
-
-- The certificate files must be in base64.
-
-| Type                         |        Location in container |
-| ---------------------------- | ---------------------------: |
-| CA certificates file         | /etc/rancher/ssl/cacerts.pem |
-
+>**Prerequisites:**
+>Create a self-signed certificate.
+>
+>- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+>- The certificate files must be in base64.
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -76,13 +80,11 @@ docker run -d -p 80:80 -p 443:443 \
 
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
-**Before you Start:**
-
-Obtain a certificate signed by a recognized CA, like GoDaddy or DigiCert.
-
-- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
-
-- The certificate files must be in base64.
+>**Prerequisites:**
+>Create a self-signed certificate.
+>
+>- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+>- The certificate files must be in base64.
 
 **To Install Rancher Using a Cert Signed by a Recognized CA:**
 

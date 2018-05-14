@@ -1,5 +1,5 @@
 ---
-title: Docs
+title: Home
 aliases: [/rancher/v2.x/en/]
 weight: 1
 ---
