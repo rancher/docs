@@ -1,10 +1,8 @@
 ---
-title: Google Container Engine
+title: Creating a GKE Cluster
+shortTitle: Google Container Engine
 weight: 3325
 ---
-
-# Creating a Google Container Engine Cluster
-
 ## Objectives
 
 1.	[Create a Service Account](#create-a-gke-service-account)

@@ -2,9 +2,6 @@
 title: Node Drivers
 weight: 3050
 ---
-
-# Node Drivers
-
 ## Adding Custom Node Drivers
 
 If you create a cluster using a cloud provider that {{< product >}} doesn't support out-of-the-box, you may need to add the provider's drivers (or create them yourself) so that your nodes function properly.

@@ -1,10 +1,8 @@
 ---
-title: DigitalOcean
+title: Creating a DigitalOcean Clusters
+shortTitle: DigitalOcean
 weight: 3275
 ---
-
-# Creating a DigitalOcean Cluster
-
 Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 1. From the **Clusters** page, click **Add Cluster**.

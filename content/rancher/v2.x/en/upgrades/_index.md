@@ -3,9 +3,6 @@ title: Upgrades
 weight: 1000
 draft: true
 ---
-
-# Upgrades
-
 - Upgrading from Rancher 2.x.x
 
 	All Rancher 2.x.x will support upgrades from a previous version.  This section will be updated as soon as the first release post 2.0 is available.

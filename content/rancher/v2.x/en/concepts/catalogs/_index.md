@@ -2,7 +2,6 @@
 title: Catalogs
 weight: 2250
 ---
-# Catalogs
 
 Rancher catalog builds on an enhanced version of Helm. All upstream Helm charts can work on Rancher, but Rancher adds several enhancements to make the user experience better.
 
