@@ -3,9 +3,6 @@ title: Workloads
 weight: 2175
 draft: true
 ---
-
-# Workloads
-
 You can build any complex workload in Kubernetes using two basic constructs: pods and controllers.
 
 ## Workload Types
