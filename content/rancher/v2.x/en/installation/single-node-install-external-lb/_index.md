@@ -2,8 +2,6 @@
 title: Single Node Installation with External Load Balancer
 weight: 260
 ---
-# Single Node Installation with External Load Balancer
-
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
 
 >**Note:**

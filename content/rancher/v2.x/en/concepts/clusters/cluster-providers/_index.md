@@ -3,8 +3,6 @@ title: Cluster Providers
 weight: 2105
 ---
 
-# Cluster Providers
-
 ## Rancher Kubernetes Engine (RKE)
 
 RKE is Rancher’s own lightweight Kubernetes installer. It works with any cloud providers, virtualization platforms, or bare metal servers. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.

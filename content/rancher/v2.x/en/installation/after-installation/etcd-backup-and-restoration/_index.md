@@ -3,9 +3,6 @@ title: Etcd Backup and Restoration
 weight: 370
 draft: true
 ---
-
-# Etcd Backup and Restoration
-
 You can configure a Rancher Kubenettes Engine (RKE) cluster to automatically create backups of etcd. In a disaster scenario, you can restore these backups, which are stored on other cluster nodes.
 
 ## Etcd Regular Backup

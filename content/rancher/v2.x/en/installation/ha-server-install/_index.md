@@ -2,8 +2,6 @@
 title: High Availability Installation
 weight: 275
 ---
-# High Availability Installation
-
 This set of instructions creates a new Kubernetes cluster dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 * Round Robin DNS

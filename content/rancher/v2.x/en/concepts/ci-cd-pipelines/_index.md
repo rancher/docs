@@ -3,8 +3,6 @@ title: Pipelines
 weight: 2350
 ---
 
-# Pipelines
-
 Pipelines help you automate the software delivery process. You can integrate Rancher with GitHub to create a pipeline.
 
 You can set up your pipeline to run a series of stages and steps to test your code and deploy it.

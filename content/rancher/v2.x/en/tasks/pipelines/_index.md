@@ -2,8 +2,6 @@
 title:  Pipelines
 weight: 3700
 ---
-# Pipelines
-
 ## Enabling CI Pipelines
 
 1. Select cluster from drop down.

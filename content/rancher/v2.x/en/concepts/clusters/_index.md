@@ -2,7 +2,6 @@
 title: Clusters
 weight: 2100
 ---
-# Clusters
 
 ## What's a Cluster?
 

@@ -3,9 +3,6 @@ title: Miscellaneous
 weight: 3725
 draft: true
 ---
-
-# Miscellaneous
-
 Coming Soon
 
 ## Deleting a Node Template

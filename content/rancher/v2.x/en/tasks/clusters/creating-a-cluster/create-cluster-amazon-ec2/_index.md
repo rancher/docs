@@ -1,10 +1,8 @@
 ---
-title: Amazon EC2
+title: Creating an Amazon EC2 Cluster
+shortTitle: Amazon EC2
 weight: 3250
 ---
-
-# Creating an Amazon EC2 Cluster
-
 Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
 1. From the **Clusters** page, click **Add Cluster**.

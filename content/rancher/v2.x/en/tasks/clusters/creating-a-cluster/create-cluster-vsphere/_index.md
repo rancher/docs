@@ -1,10 +1,8 @@
 ---
-title: vSphere
+title: Creatomg a vSphere Cluster
+shortTitle: vSphere
 weight: 3375
 ---
-
-# Creating a vSphere Cluster
-
 Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
 1. From the **Clusters** page, click **Add Cluster**.

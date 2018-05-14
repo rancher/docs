@@ -2,9 +2,6 @@
 title: Authentication
 weight: 3075
 ---
-
-# Configuring User Authentication
-
 You have three options for user authentication in {{< product >}}:
 
 -	**Active Directory**: Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
