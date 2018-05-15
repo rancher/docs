@@ -24,4 +24,5 @@ You can import an existing Kubernetes cluster and then manage it using Rancher.
 
 {{< result_create-cluster >}}
 
-> *Note:* You can not re-import a cluster that is currently active in a Rancher setup. 
+> **Note:**
+> You can not re-import a cluster that is currently active in a Rancher setup. 
