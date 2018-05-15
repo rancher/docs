@@ -29,7 +29,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
 4.  [Create the Cluster](#create-the-cluster)
 
-    Use the versatile **Custom** option to clone your Linux host into a new Kubernetes cluster.
+    Use the versatile **Custom** option to add your Linux host into a new Kubernetes cluster.
 
 5.  [Deploy a Workload](#deploy-a-workload)
 
