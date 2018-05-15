@@ -70,7 +70,7 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 >**Note:**
 > The Load Balancer is in front of your Linux hosts. This can be any other host you have available, capable of running NGINX. Do not use one of your Rancher nodes to install the Load Balancer.
 
-We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. 
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes.
 
 ### Install NGINX
 
