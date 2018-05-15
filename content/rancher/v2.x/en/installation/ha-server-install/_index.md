@@ -4,21 +4,48 @@ weight: 275
 ---
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
-* Round Robin DNS
-* NGINX Ingress controller
+- Round Robin DNS
+- NGINX Ingress controller
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
 ## Overview
 
-1. Provision Linux Hosts
-2. Configure DNS
-3. Download RKE
-4. Download Config File Template
-5. Configure Nodes
-6. Configure Certificates
-7. Configure FQDN
-8. Run RKE
+1. [Provision Linux Hosts](#part-1-provision-linux-hosts)
+
+	Provision three Linux hosts to serve as your Kubernetes cluster.
+
+2. [Configure DNS](#part-2-configure-dns)
+
+	In a high-availablility setup, your Rancher Servers must be bound to a fully qualified domain name. Bind the IP addresses of your three Linux hosts to a fully qualified domain name.
+
+3. [Download RKE](#part-3-download-rke)
+
+	Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
+
+4. [Download Config File Template](#part-4-download-config-file-template)
+
+	RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of our config file templates to get started.
+
+5. [Configure Nodes](#part-5-configure-nodes)
+
+	Configure the **Nodes** section of the template.
+
+6. [Configure Certificates](#part-6-configure-certificates)
+
+	Configure the **Certificates** part of the template too.
+
+7. [Configure FQDN](#part-7-configure-fqdn)
+
+	You guessed it. Configure the **FQDN** part of the template.
+
+8. [Backup Your YAML File](#part-8-backup-your-yaml-file)
+
+	After you've completed configuration of the config file template, back the config file up in a safe place. You can reuse this file for upgrades later.
+
+9. [Run RKE](#part-9-run-rke)
+
+	Finally, run RKE to deploy Rancher to your cluster.
 
 ## Part 1—Provision Linux Hosts
 
@@ -36,7 +63,7 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 ## Part 2—Configure DNS
 
-Choose a fully qualified domain name (FQDN) you want to use to access Rancher (this is usually something like `rancher.yourdomain.com`).<br/><br/>You need to create a DNS A record, pointing to the IP addresses of your [Linux hosts](#provision-linux-hosts). If the DNS A record is created, you can validate if it's setup correctly by running `nslookup rancher.yourdomain.com`. It should return the 3 IP addresses of your [Linux hosts](#provision-linux-hosts) like in the example below.
+Choose a fully qualified domain name (FQDN) you want to use to access Rancher (something like `rancher.yourdomain.com`).<br/><br/>You need to create a DNS A record, pointing to the IP addresses of your [Linux hosts](#provision-linux-hosts). If the DNS A record is created, you can validate if it's setup correctly by running `nslookup rancher.yourdomain.com`. It should return the 3 IP addresses of your [Linux hosts](#provision-linux-hosts) like in the example below.
 
 >**Note:**
 > Because it is round robin DNS, the order of the returned IPs can be different.
@@ -87,18 +114,21 @@ $ ./rke_linux-amd64 -version
 rke version v<N.N.N>
 ```
 
-## Part 4—Download Config Template based on SSL certificate
+## Part 4—Download Config File Template
 
 RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
-- [Template for using Self Signed Certificate (3-node-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
-- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
+1. Download one of following templates, depending on the SSL certificate you're using.
 
-## Part 5—Configure nodes section
+	- [Template for using Self Signed Certificate (3-node-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
+	- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
+2. Rename the file `rancher-cluster.yml`.
+
+## Part 5—Configure Nodes
 
 Once you have the `.yml` config file template, edit the nodes section to point toward your Linux hosts.
 
-Open `3-node-certificate.yml` or `3-node-certificate-recognizedca.yml` in your favorite text editor.
+Open `rancher-cluster.yml` in your favorite text editor.
 
 Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts)
 
@@ -241,30 +271,25 @@ After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#configure-dns),
 
 Save the `.yml` file and close it.
 
-## Part 8—Run RKE
+## Part 8—Backup Your YAML File
+
+After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
+
+## Part 9—Run RKE
 
 All configuration is in place to run RKE. You can do this by running the `rke up` command and using the `--config` parameter to point to your config file.
 
-From your workstation, make sure your config file (`3-node-certificate.yml` or `3-node-certificate-recognizedca.yml`) and the downloaded `rke` binary are in the same directory.
+From your workstation, make sure `rancher-cluster.yml` and the downloaded `rke` binary are in the same directory.
 
 Open a Terminal instance. Change to the directory that contains your config file and `rke`.
 
-* Using `3-node-certificate.yml`:
+**Example:**
 
 ```
 # MacOS
-./rke_darwin-amd64 up --config 3-node-certificate.yml
+./rke_darwin-amd64 up --config rancher-cluster.yml
 # Linux
-./rke_linux-amd64 up --config 3-node-certificate.yml
-```
-
-* Using `3-node-certificate-recognizedca.yml`:
-
-```
-# MacOS
-./rke_darwin-amd64 up --config 3-node-certificate-recognizedca.yml
-# Linux
-./rke_linux-amd64 up --config 3-node-certificate-recognizedca.yml
+./rke_linux-amd64 up --config rancher-cluster.yml
 ```
 
 The output should be similar to the snippet below:
@@ -283,4 +308,4 @@ INFO[0101] Finished building Kubernetes cluster successfully
 Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
 
 >**Note:**
-> If you are using a [Certificate Signed By A Recognized Certificate Authority](#certificate-signed-by-a-recognized-certificate-authority), you will need to clear the `cacerts` value from the CA (until [GitHub #11388](https://github.com/rancher/rancher/issues/11388) is resolved). This can be done under `Settings` -> `cacerts`, choose `Edit` and remove the contents and click `Save`.
+> If you are using certificate signed by a recognized CA (Option B from earlier), you must clear the `cacerts` value from the CA due to [GitHub Issue #11388](https://github.com/rancher/rancher/issues/11388). To complete this action, choose Settings > cacerts, choose Edit, remove the contents, and then click Save.
