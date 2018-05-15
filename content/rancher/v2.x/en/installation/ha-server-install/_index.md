@@ -4,8 +4,8 @@ weight: 275
 ---
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
-- Round Robin DNS
-- NGINX Ingress controller
+- Layer 4 Loadbalancer (TCP)
+- NGINX Ingress controller with SSL termination (HTTPS)
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
@@ -15,39 +15,43 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 	Provision three Linux hosts to serve as your Kubernetes cluster.
 
-2. [Configure DNS](#part-2-configure-dns)
+2. [Configure Load Balancer](#part-2-configure-load-balancer)
 
-	In a high-availablility setup, your Rancher Servers must be bound to a fully qualified domain name. Bind the IP addresses of your three Linux hosts to a fully qualified domain name.
+	Configure your load balancer to have a highly available single point of entry to your Rancher cluster.
 
-3. [Download RKE](#part-3-download-rke)
+3. [Configure DNS](#part-3-configure-dns)
+
+	Make your setup accessible using a DNS name by configuring the DNS to point to your loadbalancer.
+
+4. [Download RKE](#part-4-download-rke)
 
 	Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
 
-4. [Download Config File Template](#part-4-download-config-file-template)
+5. [Download Config File Template](#part-5-download-config-file-template)
 
 	RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of our config file templates to get started.
 
-5. [Configure Nodes](#part-5-configure-nodes)
+6. [Configure Nodes](#part-6-configure-nodes)
 
 	Configure the **Nodes** section of the template.
 
-6. [Configure Certificates](#part-6-configure-certificates)
+7. [Configure Certificates](#part-7-configure-certificates)
 
 	Configure the **Certificates** part of the template too.
 
-7. [Configure FQDN](#part-7-configure-fqdn)
+8. [Configure FQDN](#part-8-configure-fqdn)
 
 	You guessed it. Configure the **FQDN** part of the template.
 
-8. [Backup Your YAML File](#part-8-backup-your-yaml-file)
+9. [Backup Your YAML File](#part-9-backup-your-yaml-file)
 
 	After you've completed configuration of the config file template, back the config file up in a safe place. You can reuse this file for upgrades later.
 
-9. [Run RKE](#part-9-run-rke)
+10. [Run RKE](#part-10-run-rke)
 
-	Finally, run RKE to deploy Rancher to your cluster.
+	Run RKE to deploy Rancher to your cluster.
 
-## Part 1—Provision Linux Hosts
+## Part 1-Provision Linux Hosts
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
 
@@ -61,12 +65,63 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 {{< requirements_ports >}}
 
-## Part 2—Configure DNS
-
-Choose a fully qualified domain name (FQDN) you want to use to access Rancher (something like `rancher.yourdomain.com`).<br/><br/>You need to create a DNS A record, pointing to the IP addresses of your [Linux hosts](#provision-linux-hosts). If the DNS A record is created, you can validate if it's setup correctly by running `nslookup rancher.yourdomain.com`. It should return the 3 IP addresses of your [Linux hosts](#provision-linux-hosts) like in the example below.
+## Part 2-Configure Load Balancer
 
 >**Note:**
-> Because it is round robin DNS, the order of the returned IPs can be different.
+> The Load Balancer is in front of your Linux hosts. This can be any other host you have available, capable of running NGINX. Do not use one of your Rancher nodes to install the Load Balancer.
+
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. 
+
+### Install NGINX
+
+NGINX has packages available for all the known operating systems. You can check out the [NGINX install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/) to see how to install it for your operating system.
+
+### Create NGINX configuration
+
+Below you can find an example configuration for NGINX. You will need to replace `ip_of_node1`, `ip_of_node2` and `ip_of_node3` with the IPs of your [Linux hosts](#part-1-provision-linux-hosts)
+
+
+**Example NGINX config:**
+```
+worker_processes 4;
+worker_rlimit_nofile 40000;
+
+events {
+    worker_connections 8192;
+}
+
+http {
+    server {
+        listen         80;
+        return 301 https://$host$request_uri;
+    }
+}
+
+stream {
+    upstream rancher_servers {
+        least_conn;
+        server ip_of_node1:443 max_fails=3 fail_timeout=5s;
+        server ip_of_node2:443 max_fails=3 fail_timeout=5s;
+        server ip_of_node3:443 max_fails=3 fail_timeout=5s;
+    }
+    server {
+        listen     443;
+        proxy_pass rancher_servers;
+    }
+}
+```
+
+### Run NGINX as Docker container
+
+Besides installing NGINX as a package on the operating system, you can also run it as a Docker container. Save the edited **Example NGINX config** as `/etc/nginx.conf` and run the following command to launch the NGINX container:
+
+```
+docker run -p 80:80 -p 443:443 -v /etc/nginx.conf:/etc/nginx/nginx.conf -d nginx:1.14
+```
+
+## Part 3-Configure DNS
+
+Choose a fully qualified domain name (FQDN) you want to use to access Rancher (something like `rancher.yourdomain.com`).<br/><br/>You need to create a DNS A record, pointing to the IP address of your [Load Balancer](#part-2-configure-load-balancer). If the DNS A record is created, you can validate if it's setup correctly by running `nslookup rancher.yourdomain.com`. It should return the IP address of your [Load Balancer](#part-2-configure-load-balancer) like in the example below.
 
 ```
 $ nslookup rancher.yourdomain.com
@@ -75,14 +130,10 @@ Address:        your_nameserver_ip#53
 
 Non-authoritative answer:
 Name:   rancher.yourdomain.com
-Address: ip_of_node1
-Name:   rancher.yourdomain.com
-Address: ip_of_node2
-Name:   rancher.yourdomain.com
-Address: ip_of_node3
+Address: ip_of_loadbalancer
 ```
 
-## Part 3—Download RKE
+## Part 4-Download RKE
 
 Rancher Kubernetes Engine (RKE) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will be using RKE to setup our cluster and run Rancher.
 
@@ -114,7 +165,7 @@ $ ./rke_linux-amd64 -version
 rke version v<N.N.N>
 ```
 
-## Part 4—Download Config File Template
+## Part 5-Download Config File Template
 
 RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
@@ -124,7 +175,7 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 	- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
 2. Rename the file `rancher-cluster.yml`.
 
-## Part 5—Configure Nodes
+## Part 6-Configure Nodes
 
 Once you have the `.yml` config file template, edit the nodes section to point toward your Linux hosts.
 
@@ -156,7 +207,7 @@ nodes:
 	ssh_key_path: ~/.ssh/id_rsa
 ```
 
-## Part 6—Configure certificates
+## Part 7-Configure certificates
 
 Certificates can be configured by using base64 encoded strings in the config file. The base64 encoded string can be generated using the following command:
 
@@ -164,7 +215,7 @@ Certificates can be configured by using base64 encoded strings in the config fil
   - **Linux**: `cat FILENAME | base64 -w0`
   - **Windows**: `certutil -encode FILENAME FILENAME.base64`
 
-### Option A—Self Signed Certificate
+### Option A-Self Signed Certificate
 
 >**Note:**
 > If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#certificate-signed-by-a-recognized-certificate-authority) to proceed.
@@ -209,7 +260,7 @@ data:
   cacerts.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNvRENDQVlnQ0NRRHVVWjZuMEZWeU16QU5CZ2txaGtpRzl3MEJBUXNGQURBU01SQXdEZ1lEVlFRRERBZDAKWlhOMExXTmhNQjRYRFRFNE1EVXdOakl4TURRd09Wb1hEVEU0TURjd05USXhNRFF3T1Zvd0VqRVFNQTRHQTFVRQpBd3dIZEdWemRDMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNQmpBS3dQCndhRUhwQTdaRW1iWWczaTNYNlppVmtGZFJGckJlTmFYTHFPL2R0RUdmWktqYUF0Wm45R1VsckQxZUlUS3UzVHgKOWlGVlV4Mmo1Z0tyWmpwWitCUnFiZ1BNbk5hS1hocmRTdDRtUUN0VFFZdGRYMVFZS0pUbWF5NU45N3FoNTZtWQprMllKRkpOWVhHWlJabkdMUXJQNk04VHZramF0ZnZOdmJ0WmtkY2orYlY3aWhXanp2d2theHRUVjZlUGxuM2p5CnJUeXBBTDliYnlVcHlad3E2MWQvb0Q4VUtwZ2lZM1dOWmN1YnNvSjhxWlRsTnN6UjVadEFJV0tjSE5ZbE93d2oKaG41RE1tSFpwZ0ZGNW14TU52akxPRUc0S0ZRU3laYlV2QzlZRUhLZTUxbGVxa1lmQmtBZWpPY002TnlWQUh1dApuay9DMHpXcGdENkIwbkVDQXdFQUFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFHTCtaNkRzK2R4WTZsU2VBClZHSkMvdzE1bHJ2ZXdia1YxN3hvcmlyNEMxVURJSXB6YXdCdFJRSGdSWXVtblVqOGo4T0hFWUFDUEthR3BTVUsKRDVuVWdzV0pMUUV0TDA2eTh6M3A0MDBrSlZFZW9xZlVnYjQrK1JLRVJrWmowWXR3NEN0WHhwOVMzVkd4NmNOQQozZVlqRnRQd2hoYWVEQmdma1hXQWtISXFDcEsrN3RYem9pRGpXbi8walI2VDcrSGlaNEZjZ1AzYnd3K3NjUDIyCjlDQVZ1ZFg4TWpEQ1hTcll0Y0ZINllBanlCSTJjbDhoSkJqa2E3aERpVC9DaFlEZlFFVFZDM3crQjBDYjF1NWcKdE03Z2NGcUw4OVdhMnp5UzdNdXk5bEthUDBvTXl1Ty82Tm1wNjNsVnRHeEZKSFh4WTN6M0lycGxlbTNZQThpTwpmbmlYZXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
 ```
 
-### Option B—Certificate Signed By A Recognized Certificate Authority
+### Option B-Certificate Signed By A Recognized Certificate Authority
 
 If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file.
 
@@ -233,8 +284,7 @@ data:
   tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBdEY3WEN6TVZHaDF1aU5oWTBJZW50RVlpSVFmUUlLQkMvYUFzU3gxQUlsOWI0OUQ5ClhmanEzdWI3c3RCNnRsYTlqV09keDZkZzBnZDBCSVNCSWFlcHJWdkZNZzRTRXpjRE51aW0xZnh3aVkwZCtFRlUKTXVCc3NYZEV6V0k3ZEVvdUFjcVJjamZWL0J5WTZ4ZDdTRWhjSE5PZVdEZWI5TDFiK3hLd2k2M21uZ0lKQjdBeQpLSmRlYzhnbWlaNk4wcTV3ZXFEWDJ6QVgrbDVPTldTcG1mWUVhVHBDSnFMVTNtZFpCWWx5cnhMTytvemx0MGdLCktLbG81cGgzc05CcDFMUG5LOUMxc3MvbWZRek9EMDNzck1Xa21oTDcwQ0IxZmIydCtOWnRITW5BYmYwYkJETnoKTlNRcXU4T2cwaUxnOUVhd3l1dEF4U3BGdmhHUGMvd0dHMExWaXdJREFRQUJBb0lCQUJKYUErOHp4MVhjNEw0egpwUFd5bDdHVDRTMFRLbTNuWUdtRnZudjJBZXg5WDFBU2wzVFVPckZyTnZpK2xYMnYzYUZoSFZDUEN4N1RlMDVxClhPa2JzZnZkZG5iZFQ2RjgyMnJleVByRXNINk9TUnBWSzBmeDVaMDQwVnRFUDJCWm04eTYyNG1QZk1vbDdya2MKcm9Kd09rOEVpUHZZekpsZUd0bTAwUm1sRysyL2c0aWJsOTVmQXpyc1MvcGUyS3ZoN2NBVEtIcVh6MjlpUmZpbApiTGhBamQwcEVSMjNYU0hHR1ZqRmF3amNJK1c2L2RtbDZURDhrSzFGaUtldmJKTlREeVNXQnpPbXRTYUp1K01JCm9iUnVWWG4yZVNoamVGM1BYcHZRMWRhNXdBa0dJQWxOWjRHTG5QU2ZwVmJyU0plU3RrTGNzdEJheVlJS3BWZVgKSVVTTHM0RUNnWUVBMmNnZUE2WHh0TXdFNU5QWlNWdGhzbXRiYi9YYmtsSTdrWHlsdk5zZjFPdXRYVzkybVJneQpHcEhUQ0VubDB0Z1p3T081T1FLNjdFT3JUdDBRWStxMDJzZndwcmgwNFZEVGZhcW5QNTBxa3BmZEJLQWpmanEyCjFoZDZMd2hLeDRxSm9aelp2VkowV0lvR1ZLcjhJSjJOWGRTUVlUanZUZHhGczRTamdqNFFiaEVDZ1lFQTFBWUUKSEo3eVlza2EvS2V2OVVYbmVrSTRvMm5aYjJ1UVZXazRXSHlaY2NRN3VMQVhGY3lJcW5SZnoxczVzN3RMTzJCagozTFZNUVBzazFNY25oTTl4WE4vQ3ZDTys5b2t0RnNaMGJqWFh6NEJ5V2lFNHJPS1lhVEFwcDVsWlpUT3ZVMWNyCm05R3NwMWJoVDVZb2RaZ3IwUHQyYzR4U2krUVlEWnNFb2lFdzNkc0NnWUVBcVJLYWNweWZKSXlMZEJjZ0JycGkKQTRFalVLMWZsSjR3enNjbGFKUDVoM1NjZUFCejQzRU1YT0kvSXAwMFJsY3N6em83N3cyMmpud09mOEJSM0RBMwp6ZTRSWDIydWw4b0hGdldvdUZOTTNOZjNaNExuYXpVc0F0UGhNS2hRWGMrcEFBWGthUDJkZzZ0TU5PazFxaUNHCndvU212a1BVVE84b1ViRTB1NFZ4ZmZFQ2dZQUpPdDNROVNadUlIMFpSSitIV095enlOQTRaUEkvUkhwN0RXS1QKajVFS2Y5VnR1OVMxY1RyOTJLVVhITXlOUTNrSjg2OUZPMnMvWk85OGg5THptQ2hDTjhkOWN6enI5SnJPNUFMTApqWEtBcVFIUlpLTFgrK0ZRcXZVVlE3cTlpaHQyMEZPb3E5OE5SZDMzSGYxUzZUWDNHZ3RWQ21YSml6dDAxQ3ZHCmR4VnVnd0tCZ0M2Mlp0b0RLb3JyT2hvdTBPelprK2YwQS9rNDJBOENiL29VMGpwSzZtdmxEWmNYdUF1QVZTVXIKNXJCZjRVYmdVYndqa1ZWSFR6LzdDb1BWSjUvVUxJWk1Db1RUNFprNTZXWDk4ZE93Q3VTVFpZYnlBbDZNS1BBZApTZEpuVVIraEpnSVFDVGJ4K1dzYnh2d0FkbWErWUhtaVlPRzZhSklXMXdSd1VGOURLUEhHCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
 ```
 
-
-## Part 7—Configure FQDN
+## Part 8-Configure FQDN
 
 There are 2 references to `<FQDN>` in the config file. Both need to be replaced with the FQDN chosen in [Configure DNS](#configure-dns).
 
@@ -271,11 +321,11 @@ After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#configure-dns),
 
 Save the `.yml` file and close it.
 
-## Part 8—Backup Your YAML File
+## Part 9-Backup Your YAML File
 
 After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
 
-## Part 9—Run RKE
+## Part 10-Run RKE
 
 All configuration is in place to run RKE. You can do this by running the `rke up` command and using the `--config` parameter to point to your config file.
 
@@ -302,6 +352,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 ...
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
+
 
 ## What's Next?
 
