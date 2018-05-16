@@ -4,8 +4,6 @@ shortTitle: Azure
 weight: 3300
 ---
 
-# Creating an Azure Cluster
-
 Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 1. From the **Clusters** page, click **Add Cluster**.

@@ -4,14 +4,11 @@ weight: 2075
 ---
 After installing Rancher 2.0, you should configure it to support your users and environment. This section describes the global configurations you should make after installation.
 
-# Authentication
-
+## Authentication
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
 
 This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
-
-## External vs. Local Authentication
-
+### External vs. Local Authentication
 The Rancher authentication proxy integrates with the following external authentication services.
 
 -	Microsoft Active Directory
