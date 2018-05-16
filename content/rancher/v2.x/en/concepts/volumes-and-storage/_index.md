@@ -1,5 +1,5 @@
 ---
-title: Volumes
+title: Volumes and Storage
 weight: 2225
 ---
 There are two ways to create volumes on Kubernetes: Persistent Volumes (PVs) and Storage Classes.
