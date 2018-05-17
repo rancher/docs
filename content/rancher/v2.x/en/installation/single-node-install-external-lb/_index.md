@@ -169,6 +169,6 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 {{< ssl_faq >}}
 
-## Persisent data
+## Persistent data
 
 {{< persistentdata >}}
