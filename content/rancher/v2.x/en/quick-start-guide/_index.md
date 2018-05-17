@@ -150,7 +150,7 @@ For this workload, you'll be deploying the application Nginx.
 
 5.  Enter a **Name** for your workload.
 
-6.  From the **Docker Image** field, enter `Nginx`.
+6.  From the **Docker Image** field, enter `nginx`. This field is case-sensitive.
 
 7.  From **Port Mapping**, click **Add Port**.
 

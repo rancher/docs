@@ -24,7 +24,7 @@ To upgrade Rancher 2.x running in a high availablity configuration, download you
 7. From the kubectl **Shell**, enter the following command:
 
  	```
-kubectl set image deployment/cattle cattle-server=rancher/rancher:latest -n cattle-system
+kubectl set image deployment/cattle cattle-server=rancher/rancher:{{< tag_latest >}} -n cattle-system
 	```
 8. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
 
