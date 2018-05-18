@@ -1,7 +1,6 @@
 ---
 title: Upgrades
 weight: 1000
-draft: true
 ---
 
 This section includes instructions for upgrading Rancher from previous versions.
