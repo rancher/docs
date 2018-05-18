@@ -37,62 +37,62 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Overview"
-  url        = "/what-is-rancher/overview/"
+  url        = "https://rancher.com/what-is-rancher/overview/"
   parent     = "what-is-rancher"
   weight     = "1"
 
   [[menu.main]]
   name       = "What Rancher Adds to Kubernetes"
-  url        = "/what-is-rancher/what-rancher-adds-to-kubernetes/"
+  url        = "https://rancher.com/what-is-rancher/what-rancher-adds-to-kubernetes/"
   parent     = "what-is-rancher"
   weight     = "2"
 
   [[menu.main]]
   name       = "How is Rancher Different"
-  url        = "/what-is-rancher/how-is-rancher-different/"
+  url        = "https://rancher.com/what-is-rancher/how-is-rancher-different/"
   parent     = "what-is-rancher"
   weight     = "3"
 
 
   [[menu.main]]
   name       = "Run Kubernetes Anywhere"
-  url        = "/kubernetes/"
+  url        = "https://rancher.com//kubernetes/"
   parent     = "what-is-rancher"
   weight     = "4"
 
   [[menu.main]]
   # name       = "Cluster Operations"
-  # url        = "/what-is-rancher/cluster-operations/"
+  # url        = "https://rancher.com/what-is-rancher/cluster-operations/"
   # parent     = "what-is-rancher"
   # weight     = "5"
 
   [[menu.main]]
   # name       = "Hybrid cloud & multi-cloud"
-  # url        = "/what-is-rancher/hybrid-multi-cloud/"
+  # url        = "https://rancher.com/what-is-rancher/hybrid-multi-cloud/"
   # parent     = "what-is-rancher"
   # weight     = "6"
 
   [[menu.main]]
   # name       = "Security & compliance"
-  # url        = "/what-is-rancher/security-and-compliance/"
+  # url        = "https://rancher.com/what-is-rancher/security-and-compliance/"
   # parent     = "what-is-rancher"
   # weight     = "7"
 
   [[menu.main]]
   # name       = "Workload Management"
-  # url        = "/what-is-rancher/workload-management/"
+  # url        = "https://rancher.com/what-is-rancher/workload-management/"
   # parent     = "what-is-rancher"
   # weight     = "8"
 
   [[menu.main]]
   # name       = "100% Open Source"
-  # url        = "/what-is-rancher/open-source/"
+  # url        = "https://rancher.com/what-is-rancher/open-source/"
   # parent     = "what-is-rancher"
   # weight     = "9"
 
   [[menu.main]]
   # name       = "How is Rancher Built"
-  # url        = "/what-is-rancher/how-is-rancher-built/"
+  # url        = "https://rancher.com/what-is-rancher/how-is-rancher-built/"
   # parent     = "what-is-rancher"
   # weight     = "10"
 
@@ -105,19 +105,19 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Rancher"
-  url        = "/what-is-rancher/overview/"
+  url        = "https://rancher.com/what-is-rancher/overview/"
   parent     = "products"
 
   [[menu.main]]
   name       = "RancherOS"
-  url        = "/rancher-os/"
+  url        = "https://rancher.com/rancher-os/"
   parent     = "products"
 
 
 [[menu.main]]
 #identifier = "customers"
 #name       = "Customers"
-#url        = "/customers/"
+#url        = "https://rancher.com//customers/"
 #weight     = "3"
 
 [[menu.main]]
@@ -128,7 +128,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Blog"
-  url        = "/blog/"
+  url        = "https://rancher.com/blog/"
   parent     = "learn"
 
   [[menu.main]]
@@ -138,8 +138,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Training"
-  #url       = "/categories/training/"
-  url        = "/training/"
+  url        = "https://rancher.com/training/"
   parent     = "learn"
 
   [[menu.main]]
@@ -151,43 +150,43 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   #name       = "Learning Resources"
-  #url        = "/learning-resources/"
+  #url        = "https://rancher.com/learning-resources/"
   #parent     = "learn"
 
   [[menu.main]]
   name       = "Events"
-  url        = "/events/"
+  url        = "https://rancher.com/events/"
   parent     = "learn"
 
 
 [[menu.main]]
 identifier = "about"
 name       = "About"
-url        = "/about/"
+url        = "https://rancher.com/about/"
 weight     = "5"
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "News"
-  url        = "/news/"
+  url        = "https://rancher.com/news/"
   parent     = "about"
 
   [[menu.main]]
   name       = "About Us"
-  url        = "/about/"
+  url        = "https://rancher.com/about/"
   parent     = "about"
 
   [[menu.main]]
   name       = "Careers"
-  url        = "/careers/"
+  url        = "https://rancher.com/careers/"
   parent     = "about"
 
   [[menu.main]]
   name       = "Contact Us"
-  url        = "/contact/"
+  url        = "https://rancher.com/contact/"
   parent     = "about"
 
   [[menu.main]]
   name       = "Partners"
-  url        = "/partners/"
+  url        = "https://rancher.com/partners/"
   parent     = "about"
