@@ -16,10 +16,12 @@ To upgrade Rancher 2.x running in a high availablity configuration, run an upgra
 2. Enter the following command:
 
 	```
-kubectl --kubeconfig=kube_config-rancher-cluster.yml set image deployment/cattle cattle-server=rancher/rancher:{{< tag_latest >}} -n cattle-system
+kubectl --kubeconfig=kube_config-rancher-cluster.yml set image deployment/cattle cattle-server=rancher/rancher:<VERSION_TAG> -n cattle-system
 	```
-**Step Result:** The upgrade begins. Rancher Server may be unavailable for a few minutes.
+	Replace `<VERSION_TAG>` with the version that you want to upgrade to. For a list of tags available, see [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/).
+
+	**Step Result:** The upgrade begins. Rancher Server may be unavailable for a few minutes.
 
 3. Log into Rancher. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
 
-**Result:** Your Rancher Servers are upgraded to {{< tag_latest >}}.
+**Result:** Your Rancher Servers are upgraded.

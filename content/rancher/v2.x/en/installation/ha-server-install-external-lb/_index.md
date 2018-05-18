@@ -295,6 +295,10 @@ During installation, RKE generates a config file named `kube_config_rancher-clus
 
 ## Part 12-Remove Default Certificates
 
+**For those using a certificate signed by a recognized CA:**
+
+>**Note:** If you're using a self-signed certificate, you don't have to complete this part. Continue to [What's Next?](#whats-next).
+
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 
 **To Remove the Default Certificates:**
