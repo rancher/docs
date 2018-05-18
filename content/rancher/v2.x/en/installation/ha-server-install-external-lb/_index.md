@@ -51,9 +51,13 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 	Run RKE to deploy Rancher to your cluster.
 
-11. **For those using a certificate signed by a recognized CA:**
+11. [Backup kube_config_rancher-cluster.yml](part-11-backup-kube-config-rancher-cluster-yml)
 
-	[Remove Default Certificates](#part-11-remove-default-certificates)
+	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
+
+12. **For those using a certificate signed by a recognized CA:**
+
+	[Remove Default Certificates](#part-12-remove-default-certificates)
 
 	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
@@ -284,8 +288,11 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 ...
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
+## Part 11—Backup kube_config_rancher-cluster.yml
 
-## Part 11-Remove Default Certificates
+During installation, RKE generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
+
+## Part 12-Remove Default Certificates
 
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 

@@ -51,6 +51,17 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 	Run RKE to deploy Rancher to your cluster.
 
+11. [Backup kube_config_rancher-cluster.yml](part-11-backup-kube-config-rancher-cluster-yml)
+
+	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
+
+12. **For those using a certificate signed by a recognized CA:**
+
+	[Remove Default Certificates](#part-12-remove-default-certificates)
+
+	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
+
+
 ## Part 1-Provision Linux Hosts
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
@@ -353,10 +364,20 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
 
+## Part 11—Backup kube_config_rancher-cluster.yml
+
+During installation, RKE generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
+
+## Part 12-Remove Default Certificates
+
+By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
+
+**To Remove the Default Certificates:**
+
+1. Log into Rancher.
+2. Select  **Settings** > **cacerts**.
+3. Choose `Edit` and remove the contents. Then click `Save`.
 
 ## What's Next?
 
 Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
-
->**Note:**
-> If you are using certificate signed by a recognized CA (Option B from earlier), you must clear the `cacerts` value from the CA due to [GitHub Issue #11388](https://github.com/rancher/rancher/issues/11388). To complete this action, choose Settings > cacerts, choose Edit, remove the contents, and then click Save.

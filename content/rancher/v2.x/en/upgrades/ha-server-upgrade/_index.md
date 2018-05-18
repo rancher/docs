@@ -3,29 +3,23 @@ title: High Availability Upgrade
 weight: 1020
 draft: true
 ---
-To upgrade Rancher 2.x running in a high availablity configuration, download your cluster's Kubeconfig file and run an upgrade command.
+To upgrade Rancher 2.x running in a high availablity configuration, move run an upgrade command that points to your upgrade config file.
 
-1. Log into Rancher and browse to the cluster that your're using to run Rancher.
+>**Prerequisites:**
+>
+>- Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your workstation.
+>- Confirm that the following path exists on your workstation: `~/.kube/`. If it doesn't, create it yourself.
+>- Copy `kube_config_rancher-cluster.yml`, which is automatically generated after [Rancher Server installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install#part-11-backup-kube-config-rancher-cluster-yml), to the `~/.kube/` directory.
 
-2. From the cluster dashboard, click **Kubeconfig File**.
+1. From your workstation, open **Terminal**.
 
-	**Step Result:** The Kubeconfig file opens in a new window.
+2. Enter the following command:
 
-3. Copy the YAML that's displayed to your clipboard. Then close the window.
-
-4. From your workstation, create a new path of `~/.kube/config`. Open your home directory, create a directory named `.kube`, and then create a file named `config`.
-
-5. Paste the contents of your clipboard in the empty `config` file and save.
-
-6. From the cluster dashboard, click **Launch kubectl**.
-
-	>**Tip:** If you don't have kubectl, you can get it by clicking the Kubeconfig File button and selecting the Download link at the bottom of the window.
-
-7. From the kubectl **Shell**, enter the following command:
-
- 	```
-kubectl set image deployment/cattle cattle-server=rancher/rancher:{{< tag_latest >}} -n cattle-system
 	```
-8. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
+kubectl --kubeconfig=kube_config-rancher-cluster.yml set image deployment/cattle cattle-server=rancher/rancher:{{< tag_latest >}} -n cattle-system
+	```
+**Step Result:** The upgrade begins. Rancher Server may be unavailable for a few minutes.
 
-**Result:** Your Rancher Servers are upgraded to the latest version.
+3. Log into Rancher. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
+
+**Result:** Your Rancher Servers are upgraded to {{< tag_latest >}}.
