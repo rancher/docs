@@ -1,7 +1,6 @@
 ---
 title: High Availability Upgrade
 weight: 1020
-draft: true
 ---
 To upgrade Rancher 2.x running in a high availablity configuration, run an upgrade command that points to your upgrade config file.
 
@@ -13,12 +12,12 @@ To upgrade Rancher 2.x running in a high availablity configuration, run an upgra
 
 1. From your workstation, open **Terminal**.
 
-2. Enter the following command:
+2. Enter the ng command:
 
 	```
 kubectl --kubeconfig=kube_config-rancher-cluster.yml set image deployment/cattle cattle-server=rancher/rancher:<VERSION_TAG> -n cattle-system
 	```
-	Replace `<VERSION_TAG>` with the version that you want to upgrade to. For a list of tags available, see [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/).
+	Replace `<VERSION_TAG>` with the version that you want to upgrade to. For a list of tags available, see [DockerHub](https://hub.docker.com/r/rancher/rancher/tags/). However, don't use any tag suffixed with `-rc`, as they are used for testing and are not officially supported.
 
 	**Step Result:** The upgrade begins. Rancher Server may be unavailable for a few minutes.
 

@@ -1,7 +1,6 @@
 ---
 title: Etcd Snapshots
 weight: 370
-draft: true
 ---
 You can configure a Rancher Kubernetes Engine (RKE) cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
 
@@ -9,10 +8,10 @@ You can configure a Rancher Kubernetes Engine (RKE) cluster to automatically tak
 
 RKE introduce a new command that can take a snapshot of a running etcd node in rke cluster, the snapshot will be automatically saved in `/opt/rke/etcd-snapshots`, the commands works as following:
 ```
-./rke etcd snapshot-save --config cluster.yml     
+./rke etcd snapshot-save --config cluster.yml
 
 WARN[0000] Name of the snapshot is not specified using [rke_etcd_snapshot_2018-05-17T23:32:08+02:00]
-INFO[0000] Starting saving snapshot on etcd hosts       
+INFO[0000] Starting saving snapshot on etcd hosts
 INFO[0000] [dialer] Setup tunnel for host [x.x.x.x]
 INFO[0001] [dialer] Setup tunnel for host [y.y.y.y]
 INFO[0002] [dialer] Setup tunnel for host [z.z.z.z]
@@ -203,7 +202,7 @@ rke up --config cluster.yml
 ```
 You can make sure that operations have been restored by checking the nginx deployment we created earlier:
 ```
-> kubectl get pods                                                    
+> kubectl get pods
 NAME                     READY     STATUS    RESTARTS   AGE
 nginx-65899c769f-kcdpr   1/1       Running   0          17s
 nginx-65899c769f-pc45c   1/1       Running   0          17s
