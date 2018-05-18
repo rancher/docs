@@ -1,6 +1,7 @@
 ---
 title: Amazon ALB configuration
 weight: 277
+draft: true
 ---
 ## Objectives
 
