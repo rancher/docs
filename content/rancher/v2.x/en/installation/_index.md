@@ -10,13 +10,17 @@ Choose from the following installation options:
 
 	In this simple install scenario, you install Rancher on a single Linux host.
 
-- [Single Node Installation with External Loadbalancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+- [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
-	In this scenario, you install Rancher on a single Linux host and access it using an external loadbalancer/proxy.
+	In this scenario, you install Rancher on a single Linux host and access it using an external load balancer/proxy.
 
 -  [High Availablity Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/)
 
  	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration.
+
+-  [High Availablity Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+
+ 	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration. A load balancer is placed in front of the HA configuration.
 
 -  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/)
 
