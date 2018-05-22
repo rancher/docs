@@ -153,7 +153,7 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 
 	- [Template for using Self Signed Certificate (3-node-externalssl-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/58e695b51096b1f404188379cea6f6a35aea9e4c/rke-templates/3-node-externalssl-certificate.yml)
 	- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-externalssl-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/58e695b51096b1f404188379cea6f6a35aea9e4c/rke-templates/3-node-externalssl-recognizedca.yml)
-2. Rename the file `rancher-cluster.yml`.
+2. Rename the file to `rancher-cluster.yml`.
 
 ## Part 6-Configure Nodes
 
@@ -208,6 +208,9 @@ In the `kind: Secret` with `name: cattle-keys-server`:
 
 After replacing the value, the file should look like the example below (the base64 encoded string should be different):
 
+>**Note:**
+> The base64 encoded string should be on the same line as `cacerts.pem`, without any newline at the beginning, in between or at the end.
+
 ```
 ---
 apiVersion: v1
@@ -226,13 +229,13 @@ If you are using a Certificate Signed By A Recognized Certificate Authority, you
 
 ## Part 8-Configure FQDN
 
-There is 1 reference to `<FQDN>` in the config file. This needs to be replaced with the FQDN chosen in [Configure DNS](#configure-dns).
+There is 1 reference to `<FQDN>` in the config file. This needs to be replaced with the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 
 In the `kind: Ingress` with `name: cattle-ingress-http`:
 
-* Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#configure-dns).
+* Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 
-After replacing `<FQDN>` with the FQDN chosen in [Configure DNS](#configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
+After replacing `<FQDN>` with the FQDN chosen in [Configure DNS](#part-3-configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
 
 ```
  ---
@@ -288,7 +291,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 ...
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
-## Part 11—Backup kube_config_rancher-cluster.yml
+## Part 11-Backup kube_config_rancher-cluster.yml
 
 During installation, RKE generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
@@ -296,7 +299,7 @@ During installation, RKE generates a config file named `kube_config_rancher-clus
 
 **For those using a certificate signed by a recognized CA:**
 
->**Note:** If you're using a self-signed certificate, you don't have to complete this part. Continue to [What's Next?](#whats-next).
+>**Note:** If you're using a self-signed certificate, you don't have to complete this part. Continue to [What's Next?](#what-s-next).
 
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 
@@ -308,4 +311,4 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 ## What's Next?
 
-Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
+Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).

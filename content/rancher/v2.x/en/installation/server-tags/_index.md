@@ -10,4 +10,4 @@ You can find Rancher images at [DockerHub](https://hub.docker.com/r/rancher/ranc
 
 -	`rancher/rancher:stable`: Our newest stable release. This tag is recommended for production.
 
-Any tag with a `-rc` or another suffix is meant for the {{< product >}} testing team to validate.  You should not use these tags, as these builds are not officially supported.
+The `master` tag or any tag with a `-rc` or another suffix is meant for the {{< product >}} testing team to validate.  You should not use these tags, as these builds are not officially supported.
