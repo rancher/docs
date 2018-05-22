@@ -34,7 +34,7 @@ Using {{< product >}}, you can create a Pod Security Policy using our GUI rather
 Now that you've created a Pod Security Policy, you can apply it to:
 
 - An existing cluster
-- A brand new cluster. For more details, see [Creating a Cluster](../../clusters/creating-a-cluster/_index)
+- A brand new cluster. For more details, see [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/)
 
 
 <!-- links -->
