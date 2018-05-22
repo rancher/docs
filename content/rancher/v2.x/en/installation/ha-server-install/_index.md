@@ -127,7 +127,10 @@ stream {
 Besides installing NGINX as a package on the operating system, you can also run it as a Docker container. Save the edited **Example NGINX config** as `/etc/nginx.conf` and run the following command to launch the NGINX container:
 
 ```
-docker run -p 80:80 -p 443:443 -v /etc/nginx.conf:/etc/nginx/nginx.conf -d nginx:1.14
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /etc/nginx.conf:/etc/nginx/nginx.conf \
+  nginx:1.14
 ```
 
 ## Part 3-Configure DNS
@@ -155,7 +158,7 @@ From your workstation, open a web browser and navigate to our [RKE Releases](htt
 
 Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run the following command:
 
-``` bash
+```
 # MacOS
 $ chmod +x rke_darwin-amd64
 # Linux
@@ -184,7 +187,7 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 
 	- [Template for using Self Signed Certificate (3-node-certificate.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
 	- [Template for using Certificate Signed By A Recognized Certificate Authority (3-node-certificate-recognizedca.yml)](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
-2. Rename the file `rancher-cluster.yml`.
+2. Rename the file to `rancher-cluster.yml`.
 
 ## Part 6-Configure Nodes
 
@@ -229,7 +232,7 @@ Certificates can be configured by using base64 encoded strings in the config fil
 ### Option A-Self Signed Certificate
 
 >**Note:**
-> If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#certificate-signed-by-a-recognized-certificate-authority) to proceed.
+> If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#option-b-certificate-signed-by-a-recognized-certificate-authority) to proceed.
 
 If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file). Make sure that your certificate file includes all the intermediate certificates in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates.
 
@@ -239,6 +242,9 @@ In the `kind: Secret` with `name: cattle-keys-ingress`:
 * Replace `<BASE64_KEY>` with the base64 encoded string of the Certificate Key file (usually called `key.pem` or `domain.key`)
 
 After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
+
+>**Note:**
+> The base64 encoded string should be on the same line as `tls.crt` or `tls.key`, without any newline at the beginning, in between or at the end.
 
 ```
 ---
@@ -258,6 +264,9 @@ In the `kind: Secret` with `name: cattle-keys-server`:
 * Replace `<BASE64_CA>` with the base64 encoded string of the CA Certificate file (usually called `ca.pem` or `ca.crt`)
 
 After replacing the value, the file should look like the example below (the base64 encoded string should be different):
+
+>**Note:**
+> The base64 encoded string should be on the same line as `cacerts.pem`, without any newline at the beginning, in between or at the end.
 
 ```
 ---
@@ -282,6 +291,9 @@ In the `kind: Secret` with `name: cattle-keys-ingress`:
 
 After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
 
+>**Note:**
+> The base64 encoded string should be on the same line as `tls.crt` or `tls.key`, without any newline at the beginning, in between or at the end.
+
 ```
 ---
 apiVersion: v1
@@ -297,13 +309,13 @@ data:
 
 ## Part 8-Configure FQDN
 
-There are 2 references to `<FQDN>` in the config file. Both need to be replaced with the FQDN chosen in [Configure DNS](#configure-dns).
+There are 2 references to `<FQDN>` in the config file. Both need to be replaced with the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 
 In the `kind: Ingress` with `name: cattle-ingress-http`:
 
-* Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#configure-dns).
+* Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 
-After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
+After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#part-3-configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
 
 ```
  ---
@@ -364,7 +376,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
 
-## Part 11—Backup kube_config_rancher-cluster.yml
+## Part 11-Backup kube_config_rancher-cluster.yml
 
 During installation, RKE generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
@@ -372,7 +384,7 @@ During installation, RKE generates a config file named `kube_config_rancher-clus
 
 **For those using a certificate signed by a recognized CA:**
 
->**Note:** If you're using a self-signed certificate, you don't have to complete this part. Continue to [What's Next?](#whats-next).
+>**Note:** If you're using a self-signed certificate, you don't have to complete this part. Continue to [What's Next?](#what-s-next).
 
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 
@@ -384,4 +396,4 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 ## What's Next?
 
-Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#configure-dns).
+Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).

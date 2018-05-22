@@ -30,8 +30,7 @@ Installation of Rancher on a single node with an external load balancer involves
 	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
 
-
-## Part 1—Provision Linux Host
+## Part 1-Provision Linux Host
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
@@ -45,16 +44,16 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 {{< note_server-tags >}}
 
-## Part 2—Choose an SSL Option and Install Rancher
+## Part 2-Choose an SSL Option and Install Rancher
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 You can choose from the following scenarios:
 
-- [Option A—Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
-- [Option B—Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
+- [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
+- [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
 
-### Option A—Bring Your Own Certificate: Self-Signed
+### Option A-Bring Your Own Certificate: Self-Signed
 
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
 
@@ -69,12 +68,13 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 While running the Docker command to deploy Rancher, point Docker toward your CA certificate file.
 
 ```
-docker run -d -p 80:80 -p 443:443 \
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
   -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
-  rancher/rancher
+  rancher/rancher:latest
 ```
 
-### Option B—Bring Your Own Certificate: Signed by Recognized CA
+### Option B-Bring Your Own Certificate: Signed by Recognized CA
 
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
@@ -89,10 +89,12 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. Just run the basic install command below.
 
 ```
-docker run -d -p 80:80 -p 443:443 rancher/rancher
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  rancher/rancher:latest
 ```
 
-## Part 3—Configure Load Balancer
+## Part 3-Configure Load Balancer
 
 When using a load balancer in front of your Rancher container, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto:
  https` header, this redirect is disabled.
@@ -151,11 +153,11 @@ server {
 }
 ```
 
-<!-- #### Example HAProxy configuration
+## Part 4-Remove Default Certificates
 
-#### Example Amazon ELB configuration -->
+**For those using a certificate signed by a recognized CA:**
 
-## Part 4—Remove Default Certificates
+>**Note:** If you're using a self-signed certificate, you don't have to complete this part.
 
 By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
 
