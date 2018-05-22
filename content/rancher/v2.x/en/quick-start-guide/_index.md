@@ -39,10 +39,6 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
     When your workload finishes deployment, browse to your node IP to make sure Nginx is running.
 
-7.  [What's Next?](#whats-next)
-
-    Now that you've created a cluster and deployed Nginx, find out what else you can do with Rancher v2.0.
-
 ## Provision a Linux Host
 
 ### Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
