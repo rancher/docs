@@ -13,7 +13,7 @@ To upgrade Rancher 2.x running in a high availablity configuration, run an upgra
 
 1. From your workstation, open **Terminal**.
 
-2. Enter the ng command:
+2. Enter the following command:
 
 	```
 kubectl --kubeconfig=kube_config-rancher-cluster.yml set image deployment/cattle cattle-server=rancher/rancher:<VERSION_TAG> -n cattle-system

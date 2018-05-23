@@ -136,6 +136,10 @@ docker run -d --restart=unless-stopped \
 
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 
+## What's Next?
+
+Create a backup of your Rancher Server in case of a disaster scenario. For more information, see [Backing Up Your Rancher Server]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/#backing-up-your-rancher-server).
+
 ## SSL FAQ / Troubleshooting
 
 {{< ssl_faq >}}

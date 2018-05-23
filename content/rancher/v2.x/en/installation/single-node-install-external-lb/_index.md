@@ -167,6 +167,10 @@ By default, Rancher automatically generates self-signed certificates for itself 
 2. Select  **Settings** > **cacerts**.
 3. Choose `Edit` and remove the contents. Then click `Save`.
 
+## What's Next?
+
+Create a backup of your Rancher Server in case of a disaster scenario. For more information, see [Backing Up Your Rancher Server]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/#backing-up-your-rancher-server).
+
 ## SSL FAQ / Troubleshooting
 
 {{< ssl_faq >}}

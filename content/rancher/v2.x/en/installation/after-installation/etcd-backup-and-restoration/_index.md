@@ -6,7 +6,7 @@ You can configure a Rancher Kubernetes Engine (RKE) cluster to automatically tak
 
 ## One-Time Snapshots
 
-RKE introduce a new command that can take a snapshot of a running etcd node in rke cluster, the snapshot will be automatically saved in `/opt/rke/etcd-snapshots`, the commands works as following:
+RKE v0.1.7 and includes a command that takes a snapshot of a etcd node running in your RKE cluster, which is automatically saved to `/opt/rke/etcd-snapshots`. The commands works as follows:
 ```
 ./rke etcd snapshot-save --config cluster.yml
 
