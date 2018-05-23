@@ -15,9 +15,9 @@ To upgrade Rancher Server 2.x to the latest version, you need to enter only a fe
 docker stop <RANCHER_CONTAINER_ID>
 	```
 
-	>**Tip:** You can obtain the ID for your Rancher container by entering the following command: `docker container ls`
+	>**Tip:** You can obtain the ID for your Rancher container by entering the following command: `docker ps`.
 
-2. Create a `rancher-data` container. This container backs up the data from your current Rancher Server, which you'll restore in step 4.
+2. Create a `rancher-data` container. This container backs up the data from your current Rancher Server, which you'll use to start the upgraded version of Rancher Server in step 4.
 
 	- Replace `<RANCHER_CONTAINER_ID>` with the same ID from the previous step.
 	- Replace `<RANCHER_CONTAINER_TAG>` with the version of Rancher that you are currently running, as mentioned in the  **Prerequisite** above.
@@ -42,7 +42,7 @@ docker run -d --volumes-from rancher-data --restart=unless-stopped \
 	>**Note:** _Do not_ stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
 	><br/>
 	><br/>
-	>**Note:** After upgrading Rancher Server, data from your upgraded server is also saved to the `rancher-data` container for use in future upgrades.
+	>**Note:** After upgrading Rancher Server, data from your upgraded server is now saved to the `rancher-data` container for use in future upgrades.
 
 5. Remove the previous Rancher Server container.
 
