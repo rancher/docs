@@ -51,7 +51,7 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 	Run RKE to deploy Rancher to your cluster.
 
-11. [Backup kube_config_rancher-cluster.yml](part-11-backup-kube-config-rancher-cluster-yml)
+11. [Backup Config File](#part-11-backup-config-file)
 
 	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
 
@@ -376,7 +376,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
 
-## Part 11-Backup kube_config_rancher-cluster.yml
+## Part 11-Backup Config File
 
 During installation, RKE generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
