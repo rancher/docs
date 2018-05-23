@@ -58,7 +58,7 @@ Snapshots are saved to the following directory: `/opt/rke/etcd-snapshots/`. snap
 
 `etcd snapshot-restore` is used for etcd Disaster recovery, it reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
 
->**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, or the disaster recovery will not work.
+>**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, this means the exact same copy, so to restore you have to copy the snapshot from one of the nodes to the others before doing the `etcd snapshot-restore`
 
 >**Warning:** Restoring an etcd snapshot deletes your current etcd cluster and replaces it with a new one. Before you run the `etcd snapshot-restore` command, backup any important data in your current cluster.
 
@@ -103,6 +103,12 @@ INFO[0027] [etcd] Successfully started etcd plane..
 INFO[0027] Finished restoring on all etcd hosts
 ```
 
+After restoring the cluster you have to restart the kubernetes components on all nodes, otherwise there will be some conflicts with resource versions of objects stored in etcd, this will include restart to kubernetes components and the network components, for more information please refer to [kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#etcd-upgrade-requirements), to do that you can run the following on each node:
+```
+docker restart kube-apiserver kubelet kube-controller-manager kube-scheduler kube-proxy
+docker ps | grep flannel | cut -f 1 -d " " | xargs docker restart
+docker ps | grep calico | cut -f 1 -d " " | xargs docker restart
+```
 ## Example
 
 In this example we will assume that you started RKE on two nodes:
