@@ -3,7 +3,7 @@ title: Single Node Backup and Restoration
 weight: 365
 ---
 
-After completing your single node installation of Rancher, or before your upgrade to a newer version of Rancher, create a backup of your current installation. Use this backup as a restoration point your Rancher install or upgrade encounters issues.
+After completing your single node installation of Rancher, or before your upgrade to a newer version of Rancher, create a backup of your current installation. Use this backup as a restoration point for your Rancher install if you encounter issues when upgrading.
 
 ## Backing Up Your Rancher Server
 
@@ -15,7 +15,7 @@ After completing your single node installation of Rancher, or before your upgrad
 docker stop <RANCHER_CONTAINER_ID>
 	```
 
-	>**Tip:** You can obtain the ID for your Rancher container by entering the following command: `docker container ls`
+	>**Tip:** You can obtain the ID for your Rancher container by entering the following command: `docker ps`.
 
 2. Create a backup container. This container backs up the data from your current Rancher Server, which you can use as a recovery point.
 
