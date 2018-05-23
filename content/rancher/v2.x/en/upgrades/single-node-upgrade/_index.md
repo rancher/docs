@@ -4,7 +4,10 @@ weight: 1010
 ---
 To upgrade Rancher Server 2.x to the latest version, you need to enter only a few commands.
 
->**Prerequisite:** Open Rancher and write down the version number displayed in the lower-left of the browser (example: `v2.0.0`). You'll need this number during the upgrade process.
+>**Prerequisites:**
+>
+> - Create a backup of your current Rancher installation. For more information, see [Backing Up Your Rancher Server]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/#backing-up-your-rancher-server).
+> - Open Rancher and write down the version number displayed in the lower-left of the browser (example: `v2.0.0`). You'll need this number during the upgrade process.
 
 1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_ID>` with the ID of your Rancher container.
 
