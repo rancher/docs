@@ -47,3 +47,4 @@ docker stop <RANCHER_CONTAINER_ID>
 	```
 docker run -d --volumes-from rancher-backup-<RANCHER_VERSION> --restart=unless-stopped \
 -p 80:80 -p 443:443 rancher/rancher:<CURRENT_RANCHER_VERSION>
+	```
