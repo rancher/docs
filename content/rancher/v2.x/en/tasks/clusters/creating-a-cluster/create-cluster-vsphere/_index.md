@@ -1,5 +1,5 @@
 ---
-title: Creatomg a vSphere Cluster
+title: Creating a vSphere Cluster
 shortTitle: vSphere
 weight: 3375
 ---
