@@ -12,8 +12,8 @@ Each new version of Rancher 2.x.x supports upgrades from previous versions of Ra
 Complete one of the upgrade procedures below based on your Rancher installation:
 
 - [Single Node Upgrade](./single-node-upgrade/)
-- [High Availability Upgrade](./ha-server-upgrade)
-<!--- [Air Gap Upgrade](./air-gap-upgrade)-->
+- [High Availability Upgrade](./ha-server-upgrade/)
+- [Air Gap Upgrade](./air-gap-upgrade/)
 
 ### Migrating from Rancher 1.6.x
 

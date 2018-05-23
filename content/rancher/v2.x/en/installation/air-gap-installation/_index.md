@@ -2,12 +2,12 @@
 title: Air Gap Installation
 weight: 345
 ---
-Rancher supports installing from a private registry. In every [release](https://github.com/rancher/rancher/releases), we provide you with the needed system-images and scripts to mirror those images to your own registry. The system-images are used when nodes are added to a cluster, or when you enable features like pipelines or logging.
+Rancher supports installing from a private registry. In every [release](https://github.com/rancher/rancher/releases), we provide you with the needed Docker images and scripts to mirror those images to your own registry. The Docker images are used when nodes are added to a cluster, or when you enable features like pipelines or logging.
 
 >**Prerequisite:** It is assumed you either have your own private registry or other means of distributing docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation for private registries](https://docs.docker.com/registry/).
 
 
->**Note:** In Rancher v2.0.0, registries with authentication are not supported for installing from a private registry. The system-images can only be pulled from a registry without authentication enabled. This limitation only applies to system-images.
+>**Note:** In Rancher v2.0.0, registries with authentication are not supported for installing from a private registry. The Docker images can only be pulled from a registry without authentication enabled. This limitation only applies to Docker images.
 
 ## Release files
 
