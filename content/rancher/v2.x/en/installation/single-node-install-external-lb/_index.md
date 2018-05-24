@@ -42,6 +42,8 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 {{< requirements_software >}}
 
+{{< requirements_ports >}}
+
 {{< note_server-tags >}}
 
 ## Part 2-Choose an SSL Option and Install Rancher
