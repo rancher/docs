@@ -33,6 +33,12 @@ docker create --volumes-from <RANCHER_CONTAINER_ID> \
 docker pull rancher/rancher:latest
 	```
 
+	>**Attention Air Gap Users:**
+	> If you are visiting this page to complete [Air Gap Upgrade]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-upgrade/), you must prepend your private registry URL to the server tag when running the upgrade command.
+	>
+	> Example: `<registry.yourdomain.com:port>/rancher/rancher:latest`
+	>
+
 4. Launch a new Rancher Server container using the `rancher-data` container.
 
 	```

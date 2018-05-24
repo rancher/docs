@@ -36,6 +36,16 @@ We will cover two scenarios:
 
 5. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
 
+	>**Note:**
+	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), you must prepend your private registry URL to the server tag that you use for installation.
+	>
+	> Example:
+	> ```
+	docker run -d --restart=unless-stopped \
+	  -p 80:80 -p 443:443 \
+	  <registry.yourdomain.com:port>rancher/rancher:latest
+	```
+
 #### Scenario 2: You have one host that can access both DockerHub and your private registry.
 
 ![Scenario2]({{< baseurl >}}/img/rancher/airgap/privateregistrypushpull.svg)
@@ -55,7 +65,17 @@ for IMAGE in $IMAGES; do
     docker push registry.yourdomain.com:5000/$IMAGE
 done
 ```
-3. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/). 
+3. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
+
+	>**Note:**
+	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), you must prepend your private registry URL to the server tag that you use for installation.
+	>
+	> Example:
+	> ```
+	docker run -d --restart=unless-stopped \
+	  -p 80:80 -p 443:443 \
+	  <registry.yourdomain.com:port>rancher/rancher:latest
+	```
 
 
 ### Configuring Rancher to use the private registry

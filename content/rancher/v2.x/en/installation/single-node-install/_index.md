@@ -4,8 +4,11 @@ weight: 250
 ---
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 
+
 >**Note:**
-> If you want to use an external load balancer, see [Single Node Installation with an External Loadbalancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb/).
+> If you want to use an external load balancer, see [Single Node Installation with an External Loadbalancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+>
+
 
 ## Overview
 
@@ -42,6 +45,12 @@ Provision a single Linux host to launch your {{< product >}} Server.
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 Choose from the following options:
+
+>**Attention Air Gap Users:**
+> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose.
+>
+> Example: `<registry.yourdomain.com:port>/rancher/rancher:latest`
+> 
 
 - [Option A-Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
 - [Option B-Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
