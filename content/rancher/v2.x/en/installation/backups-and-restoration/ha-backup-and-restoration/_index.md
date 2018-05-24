@@ -1,8 +1,8 @@
 ---
-title: Etcd Snapshots
+title: High Availability Backup and Restoration
 weight: 370
 ---
-You can configure a Rancher Kubernetes Engine (RKE) cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
+In a high availability Rancher configuration, you can configure Rancher Kubernetes Engine (RKE) to automatically take backup snapshots of the cluster's etcd database. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
 
 >**Note:** Commands for one-time snapshots and recurring snapshots are available only in RKE v0.1.7 and later.
 
@@ -28,7 +28,7 @@ INFO[0006] Finished saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00
 
 The command will save a snapshot of etcd from each etcd node in the cluster config file and will save it in `/opt/rke/etcd-snapshots`. This command also creates a container for taking the snapshot. When the process completes, the container is automatically removed.
 
-## Etcd Recurring Snapshots
+## Recurring Snapshots
 
 To schedule a recurring automatic etcd snapshot save, enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. `etcd-snapshot` automatically takes a snapshot of etcd and stores them to its local disk in `/opt/rke/etcd-snapshots`.
 
@@ -56,9 +56,9 @@ services:
 Snapshots are saved to the following directory: `/opt/rke/etcd-snapshots/`. snapshots are created on each node that runs etcd.
 
 
-## Etcd Disaster Recovery
+## High Availablity Restoration
 
-`etcd snapshot-restore` is used for etcd Disaster recovery, it reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
+`etcd snapshot-restore` is used for etcd disaster recovery. This command reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
 
 >**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, this means the exact same copy, so to restore you have to copy the snapshot from one of the nodes to the others before doing the `etcd snapshot-restore`
 
