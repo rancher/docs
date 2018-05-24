@@ -34,7 +34,7 @@ docker pull rancher/rancher:latest
 	```
 
 	>**Attention Air Gap Users:**
-	> If you are visiting this page to complete [Air Gap Upgrade]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-upgrade/), you must prepend your private registry URL to the server tag when running the upgrade command.
+	> If you are visiting this page to complete [Air Gap Upgrade]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-upgrade/), prepend your private registry URL to the image when running the `docker run` command.
 	>
 	> Example: `<registry.yourdomain.com:port>/rancher/rancher:latest`
 	>

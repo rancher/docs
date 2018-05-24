@@ -37,13 +37,13 @@ We will cover two scenarios:
 5. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
 
 	>**Note:**
-	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), you must prepend your private registry URL to the server tag that you use for installation.
+	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), prepend your private registry URL to the image when running the `docker run` command.
 	>
 	> Example:
 	> ```
 	docker run -d --restart=unless-stopped \
 	  -p 80:80 -p 443:443 \
-	  <registry.yourdomain.com:port>rancher/rancher:latest
+	  <registry.yourdomain.com:port>/rancher/rancher:latest
 	```
 
 #### Scenario 2: You have one host that can access both DockerHub and your private registry.
@@ -54,27 +54,28 @@ We will cover two scenarios:
 
 2. Pull all the images present in `rancher-images.txt`, re-tag each image with the location of your registry, and push the image to the registry. This will require at least 20GB of disk space. See an example script below:
 
-```
+	```
 #!/bin/sh
 IMAGES=`curl -s -L https://github.com/rancher/rancher/releases/download/v2.0.0/rancher-images.txt`
 for IMAGE in $IMAGES; do
     until docker inspect $IMAGE > /dev/null 2>&1; do
         docker pull $IMAGE
     done
-    docker tag $IMAGE registry.yourdomain.com:5000/$IMAGE
-    docker push registry.yourdomain.com:5000/$IMAGE
+    docker tag $IMAGE <registry.yourdomain.com:port>/$IMAGE
+    docker push <registry.yourdomain.com:port>/$IMAGE
 done
-```
+	```
+
 3. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
 
 	>**Note:**
-	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), you must prepend your private registry URL to the server tag that you use for installation.
+	> When completing [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/), prepend your private registry URL to the image when running the `docker run` command.
 	>
 	> Example:
 	> ```
 	docker run -d --restart=unless-stopped \
 	  -p 80:80 -p 443:443 \
-	  <registry.yourdomain.com:port>rancher/rancher:latest
+	  <registry.yourdomain.com:port>/rancher/rancher:latest
 	```
 
 
@@ -86,12 +87,12 @@ Rancher needs to be configured to use the private registry as source for the nee
   ![Settings]({{< baseurl >}}/img/rancher/airgap/settings.png)
 2. Look for the setting called `system-default-registry` and choose **Edit**.
   ![Edit]({{< baseurl >}}/img/rancher/airgap/edit-system-default-registry.png)
-3. Change the value to your registry, i.e. `registry.yourdomain.com:5000`. Do not prefix the registry with `http://` or `https://`
+3. Change the value to your registry, e.g. `registry.yourdomain.com:port`. Do not prefix the registry with `http://` or `https://`
   ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 
 
 >**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`. Example:
 ```
 #!/bin/sh
-docker run -d -p 80:80 -p 443:443 -e CATTLE_SYSTEM_DEFAULT_REGISTRY=registry.yourdomain.com:5000 registry.yourdomain.com:5000/rancher/rancher:v2.0.0
+docker run -d -p 80:80 -p 443:443 -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<registry.yourdomain.com:port> <registry.yourdomain.com:port>/rancher/rancher:v2.0.0
 ```
