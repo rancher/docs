@@ -34,6 +34,8 @@ We will cover two scenarios:
 
 4. Transfer and run `rancher-load-images.sh` on the host that can access the private registry. It should be run in the same directory as `rancher-images.tar.gz`.
 
+5. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/).
+
 #### Scenario 2: You have one host that can access both DockerHub and your private registry.
 
 ![Scenario2]({{< baseurl >}}/img/rancher/airgap/privateregistrypushpull.svg)
@@ -53,6 +55,8 @@ for IMAGE in $IMAGES; do
     docker push registry.yourdomain.com:5000/$IMAGE
 done
 ```
+3. Complete installation of Rancher using the instructions in [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/). 
+
 
 ### Configuring Rancher to use the private registry
 
