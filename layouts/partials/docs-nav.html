@@ -11,10 +11,11 @@
   {{end}}
 {{end}}
 
-<nav class="row middle-xs between-xs">
-  <div class="pull-left p-v-xs col-md-2s">
+<nav class="bg-default">
+  <div class="wrapper row middle-xs">
+  <div class="p-v-xs">
       <ul class="dropdown sub-menu unstyled">
-        <li>
+        <li class="m-b-0">
           <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="btn bg-link p-a-0">
             <span class="p-h-xs">
               {{ range $product := $.Site.Sections }}
@@ -36,9 +37,9 @@
             {{ range $product := $.Site.Sections }}
               {{ range $version := .Sections }}
                 {{ range $language := .Sections }}
-                  <li><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
+                  <li class="m-b-0"><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
                   {{ if .Params.insertonesix }}
-                    <li><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
+                    <li class="m-b-0"><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
                   {{end}}
                 {{end}}
               {{end}}
@@ -49,18 +50,22 @@
       </ul>
   </div>
 
-  <!-- tabs -->
-  <ul class="tabs col-md-10">
-    {{ $topLevel := .Scratch.Get "topLevel"}}
-    {{ if $topLevel }}
-      {{ range $topLevel.Sections }}
-        {{ $isCurrent := .IsAncestor $.CurrentSection }}
-        {{ if $isCurrent }}
-          {{ $.Scratch.Set "secondLevel" . }}
-        {{ end }}
+  <!-- top level nav -->
+    <nav>
+      <ul class="row unstyled">
+      {{ $topLevel := .Scratch.Get "topLevel"}}
+      {{ if $topLevel }}
+        {{ range $topLevel.Sections }}
+          {{ $isCurrent := .IsAncestor $.CurrentSection }}
+          {{ if $isCurrent }}
+            {{ $.Scratch.Set "secondLevel" . }}
+          {{ end }}
 
-        <li class="{{if $isCurrent}}active{{end}}"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          <li class="{{if $isCurrent}}active{{end}} p-a-xs m-b-0"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </ul>
+    </ul>
+  </nav>
+</div>
 </nav>
+
