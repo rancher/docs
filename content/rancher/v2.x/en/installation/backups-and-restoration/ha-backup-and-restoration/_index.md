@@ -1,6 +1,8 @@
 ---
 title: High Availability Backup and Restoration
 weight: 370
+aliases:
+  - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
 ---
 In a high availability Rancher configuration, you can configure Rancher Kubernetes Engine (RKE) to automatically take backup snapshots of the cluster's etcd database. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
 

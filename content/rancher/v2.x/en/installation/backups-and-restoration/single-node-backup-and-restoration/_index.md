@@ -1,6 +1,8 @@
 ---
 title: Single Node Backup and Restoration
 weight: 365
+aliases:
+  - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
 ---
 
 After completing your single node installation of Rancher, or before your upgrade to a newer version of Rancher, create a backup of your current installation. Use this backup as a restoration point for your Rancher install if you encounter issues when upgrading.
