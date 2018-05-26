@@ -4,108 +4,168 @@ weight: 370
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
 ---
-In a high availability Rancher configuration, you can configure Rancher Kubernetes Engine (RKE) to automatically take backup snapshots of the cluster's etcd database. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
+This section describes how to:
 
->**Note:** Commands for one-time snapshots and recurring snapshots are available only in RKE v0.1.7 and later.
+- Create backups of your high-availability Rancher install.
+- Restore the backups in a disaster scenario.
 
-## One-Time Snapshots
+## Backup Workflow
 
-RKE includes a command that takes a snapshot of a etcd node running in your RKE cluster, which is automatically saved to `/opt/rke/etcd-snapshots`. The commands works as follows:
+Backing up your high-availability Rancher cluster is process that invovles completing multiple tasks.
+
+1.  [Meet Backup Prerequisites](#1-meet-backup-prerequisites)
+
+	Before starting, make sure you have the files needed to create backups.
+
+2.  [Take Snapshots](#2-take-snapshots)
+
+	Take snapshots of your current etcd database using Rancher Kubernetes Engine (RKE).
+
+3.  [Store Snapshot(s) Externally](#3-store-snapshots-externally)
+
+	After taking your snapshots, move them to a safe location that won't be affected if your cluster encounters issues.
+
+<br/>
+### 1. Meet Backup Prerequisites
+
+Begin by gathering the files that you need to create backups of your Rancher install.
+
+#### Prerequisites
+
+- Rancher Kubernetes Engine v0.1.7 or later
+
+	The commands for taking etcd snapshots are only available in RKE v0.1.7 and later.
+
+- rancher-cluster.yml
+
+	You'll need the RKE config file you used for Rancher install, `rancher-cluster.yml`. You created this file during your chosen installation scenario:
+<br/>
+<br/>
+	- [High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
+	- [High Availability Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+
+<br/>
+### 2. Take Snapshots
+
+Take snapshots of your `etcd` database. You can use these snapshots later to recover from a disaster scenario. There are two ways to take snapshots: recurringly, or as a one-off.  Each option is better suited to a specific use case. Read the short description below each link to know when to use each option.
+
+- [Option A: Recurring Snapshots](#option-a-recurring-snapshots)
+
+	After you stand up a high-availability Rancher install, we recommend configuring RKE to automatically take recurring snapshots so that you always have a safe restoration point available.
+
+- [Option B: One-Time Snapshots](#option-b-one-time-snapshots)
+
+	We advise taking one-time snapshots before events like upgrades or restoration of another snapshot.
+
+#### Option A: Recurring Snapshots
+
+For all high-availability Rancher installs, we recommend taking recurring snapshots so that you always have a safe restoration point available.
+
+To take recurring snapshots, enable the `etcd-snapshot` service, which is a service that's included with RKE. This service runs in a service container alongside the `etcd` container. You can enable this service by adding some code to `rancher-cluster.yml`.
+
+**To Enable Recuring Snapshots:**
+
+1. Open `rancher-cluster.yml` with your favorite text editor.
+
+2. Add the following code block to the bottom of the file:
+
+	```
+	services:
+	  etcd:
+	    snapshot: true # enables recurring etcd snapshots
+	    creation: 5m0s # time increment between shapshots
+	    retention: 24h # time increment before snapshot purge
+	```
+
+3. Edit the code according to your requirements.
+
+4. Save and close `rancher-cluster.yml`.
+
+5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
+
+6. Run one of the following commands:
+
+	```
+	# MacOS
+	./rke_darwin-amd64 up --config rancher-cluster.yml
+	# Linux
+	./rke_linux-amd64 up --config rancher-cluster.yml
+	```
+
+
+**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the etcd role. Snapshots are saved to the following directory: `/opt/rke/etcd-snapshots/`.
+
+#### Option B: One-Time Snapshots
+
+When you're about to upgrade Rancher or restore it to a previous snapshot, you should snapshot your live image so that you have a backup of `etcd` in its last known state.
+
+**To Take a One-Time Snapshot:**
+
+1. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
+
+2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
+
+	```
+	# MacOS
+	./rke_darwin-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
+	# Linux
+	./rke_linux-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
+	```
+
+**Result:** RKE takes a snapshot of `etcd` running on each etcd node. The file is saved to `/opt/rke/etcd-snapshots`.
+
+### 3. Backup Snapshots to a Safe Location
+
+After taking the etcd snapshots, save them to a safe location so that they're unaffected if your cluster experiences a disaster scenrio. This location should be persistent.
+
+In this documentation, as an example, we're using Amazon S3 as our safe location, and [S3cmd](http://s3tools.org/s3cmd) as our tool to create the backups. The backup location and tool that you use are ultimately your decision.
+
+**Example:**
+
 ```
-./rke etcd snapshot-save --config cluster.yml
-
-WARN[0000] Name of the snapshot is not specified using [rke_etcd_snapshot_2018-05-17T23:32:08+02:00]
-INFO[0000] Starting saving snapshot on etcd hosts
-INFO[0000] [dialer] Setup tunnel for host [x.x.x.x]
-INFO[0001] [dialer] Setup tunnel for host [y.y.y.y]
-INFO[0002] [dialer] Setup tunnel for host [z.z.z.z]
-INFO[0003] [etcd] Saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00] on host [x.x.x.x]
-INFO[0004] [etcd] Successfully started [etcd-snapshot-once] container on host [x.x.x.x]
-INFO[0004] [etcd] Saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00] on host [y.y.y.y]
-INFO[0005] [etcd] Successfully started [etcd-snapshot-once] container on host [y.y.y.y]
-INFO[0005] [etcd] Saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00] on host [z.z.z.z]
-INFO[0006] [etcd] Successfully started [etcd-snapshot-once] container on host [z.z.z.z]
-INFO[0006] Finished saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00] on all etcd hosts
+root@node:~# s3cmd mb s3://rke-etcd-snapshots
+root@node:~# s3cmd /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
 ```
 
-The command will save a snapshot of etcd from each etcd node in the cluster config file and will save it in `/opt/rke/etcd-snapshots`. This command also creates a container for taking the snapshot. When the process completes, the container is automatically removed.
 
-## Recurring Snapshots
+## Restoration Workflow
 
-To schedule a recurring automatic etcd snapshot save, enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. `etcd-snapshot` automatically takes a snapshot of etcd and stores them to its local disk in `/opt/rke/etcd-snapshots`.
+Following a disaster scenario, restoration of your HA Rancher installation requires you to pull your snapshot from your chosen external location and then restore it.
 
-To enable `etcd-snapshot` in RKE CLI, configure the following three variables:
+1. [Create New Node and Pull Snapshot](#1-create-new-node-and-pull-snapshot)
 
-```
-services:
-  etcd:
-    snapshot: true
-    creation: 5m0s
-    retention: 24h
-```
+	If one of your `etcd` nodes goes down, create a new node, and then pull the most recent `etcd` snapshot to that node.
 
-- `snapshot`: Enables/disables etcd snapshot recurring service in the RKE cluster.
+2. [Restore ETCD Database](#2-restore-etcd-database)
 
-	Default value: `false`.
-- `creation`: Time period in which `etcd-sanpshot` take snapshots.
+	After you pull the snapshot, run the RKE command to restore the `etcd` database.
 
-	Default value: `5m0s`
+<br/>
+### 1. Create New Node and Pull Snapshot
 
-- `retention`: Time period before before an etcd snapshot expires. Expired snapshots are purged.
+If one of your etcd nodes go down, you need to replace it with a new node, and then pull the most recent working to that node.
 
-	Default value: `24h`
+**To Create a New Node and Pull the Latest Snapshot:**
 
-Snapshots are saved to the following directory: `/opt/rke/etcd-snapshots/`. snapshots are created on each node that runs etcd.
+1. Create a new node of your choice—baremetal, on-prem virtual machine, cloud-based virtual machine, and so on. Provision it according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/# host-requirements).
+
+2.  Log in to your new node using your preferred shell, such as PuTTy or a remote Terminal connection.
 
 
-## High Availablity Restoration
+3.  Create a directory that mirrors your other nodes' snapshot directories:
 
-`etcd snapshot-restore` is used for etcd disaster recovery. This command reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
+	```
+	root@newnode:~# mkdir -p /opt/rke/etcd-snapshots
+	```
 
->**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, this means the exact same copy, so to restore you have to copy the snapshot from one of the nodes to the others before doing the `etcd snapshot-restore`
+4. Pull your most recent snapshot onto the node. Replace `<SNAPSHOT.db>` with the name of the snapshot you're restoring to.
 
->**Warning:** Restoring an etcd snapshot deletes your current etcd cluster and replaces it with a new one. Before you run the `etcd snapshot-restore` command, backup any important data in your current cluster.
+	```
+	root@newnode:~# s3cmd get s3://rke-etcd-snapshots/<SNAPSHOT.db> /opt/rke/etcd-snapshots/<SNAPSHOT.db>
+	```
 
-```
-./rke etcd snapshot-restore --name snapshot --config cluster.yml
-INFO[0000] Starting restore on etcd hosts
-INFO[0000] [dialer] Setup tunnel for host [x.x.x.x]
-INFO[0002] [dialer] Setup tunnel for host [y.y.y.y]
-INFO[0005] [dialer] Setup tunnel for host [z.z.z.z]
-INFO[0007] [hosts] Cleaning up host [x.x.x.x]
-INFO[0007] [hosts] Running cleaner container on host [x.x.x.x]
-INFO[0008] [kube-cleaner] Successfully started [kube-cleaner] container on host [x.x.x.x]
-INFO[0008] [hosts] Removing cleaner container on host [x.x.x.x]
-INFO[0008] [hosts] Successfully cleaned up host [x.x.x.x]
-INFO[0009] [hosts] Cleaning up host [y.y.y.y]
-INFO[0009] [hosts] Running cleaner container on host [y.y.y.y]
-INFO[0010] [kube-cleaner] Successfully started [kube-cleaner] container on host [y.y.y.y]
-INFO[0010] [hosts] Removing cleaner container on host [y.y.y.y]
-INFO[0010] [hosts] Successfully cleaned up host [y.y.y.y]
-INFO[0011] [hosts] Cleaning up host [z.z.z.z]
-INFO[0011] [hosts] Running cleaner container on host [z.z.z.z]
-INFO[0012] [kube-cleaner] Successfully started [kube-cleaner] container on host [z.z.z.z]
-INFO[0012] [hosts] Removing cleaner container on host [z.z.z.z]
-INFO[0012] [hosts] Successfully cleaned up host [z.z.z.z]
-INFO[0012] [etcd] Restoring [snapshot] snapshot on etcd host [x.x.x.x]
-INFO[0013] [etcd] Successfully started [etcd-restore] container on host [x.x.x.x]
-INFO[0014] [etcd] Restoring [snapshot] snapshot on etcd host [y.y.y.y]
-INFO[0015] [etcd] Successfully started [etcd-restore] container on host [y.y.y.y]
-INFO[0015] [etcd] Restoring [snapshot] snapshot on etcd host [z.z.z.z]
-INFO[0016] [etcd] Successfully started [etcd-restore] container on host [z.z.z.z]
-INFO[0017] [etcd] Building up etcd plane..
-INFO[0018] [etcd] Successfully started [etcd] container on host [x.x.x.x]
-INFO[0020] [etcd] Successfully started [rke-log-linker] container on host [x.x.x.x]
-INFO[0021] [remove/rke-log-linker] Successfully removed container on host [x.x.x.x]
-INFO[0022] [etcd] Successfully started [etcd] container on host [y.y.y.y]
-INFO[0023] [etcd] Successfully started [rke-log-linker] container on host [y.y.y.y]
-INFO[0025] [remove/rke-log-linker] Successfully removed container on host [y.y.y.y]
-INFO[0025] [etcd] Successfully started [etcd] container on host [z.z.z.z]
-INFO[0027] [etcd] Successfully started [rke-log-linker] container on host [z.z.z.z]
-INFO[0027] [remove/rke-log-linker] Successfully removed container on host [z.z.z.z]
-INFO[0027] [etcd] Successfully started etcd plane..
-INFO[0027] Finished restoring on all etcd hosts
-```
+	>**Remember:** Our use of Amazon S3 is an example used for this documentation. The command for pulling your snapshot may vary.
+
 
 After restoring the cluster you have to restart the kubernetes components on all nodes, otherwise there will be some conflicts with resource versions of objects stored in etcd, this will include restart to kubernetes components and the network components, for more information please refer to [kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#etcd-upgrade-requirements), to do that you can run the following on each node:
 ```
@@ -113,108 +173,65 @@ docker restart kube-apiserver kubelet kube-controller-manager kube-scheduler kub
 docker ps | grep flannel | cut -f 1 -d " " | xargs docker restart
 docker ps | grep calico | cut -f 1 -d " " | xargs docker restart
 ```
-## Example
 
-In this example we will assume that you started RKE on two nodes:
+### 2. Restore ETCD Database
 
-|  Name |    IP    |          Role          |
-|:-----:|:--------:|:----------------------:|
-| node1 | 10.0.0.1 | [controlplane, worker] |
-| node2 | 10.0.0.2 | [etcd]                 |
+To restore the most recent `etcd` snapshot on your new node, run RKE's `etcd snapshot-restore` command. This command reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
 
-### 1. Setting up rke cluster
-A minimal cluster configuration file for running k8s on these nodes should look something like the following:
+>**Important:** When restoring the etcd database, you must restore each etcd to the _same_ snapshot, this means the exact same copy, so to restore you have to copy the snapshot from one of the nodes to the others before doing the `etcd snapshot-restore`
 
-```
-nodes:
-  - address: 10.0.0.1
-    hostname_override: node1
-    user: ubuntu
-    role: [controlplane,worker]
-  - address: 10.0.0.2
-    hostname_override: node2
-    user: ubuntu
-    role: [etcd]
-```
+>**Warning:** Restoring an etcd snapshot deletes your current etcd cluster and replaces it with a new one. Before you run the `etcd snapshot-restore` command, backup any important data in your current cluster.
 
-After running `rke up` you should be able to have a two node cluster, the next step is to run few pods on node1:
 
-```
-kubectl --kubeconfig=kube_config_cluster.yml run nginx --image=nginx --replicas=3
-```
+1. From your workstation, open `rancher-cluster.yml` in your favorite text editor.
 
-### 2. Take an etcd snapshot
+2. Replace the unresponsive node (`3.3.3.3` in this example) with your new one (`4.4.4.4`). You IP addresses will be different obviously:
 
-Now lets take a snapshot using RKE:
+		nodes:
+			- address: 1.1.1.1
+			  user: root
+			  role: [controlplane,etcd,worker]
+			  ssh_key_path: ~/.ssh/id_rsa
+			- address: 2.2.2.2
+			  user: root
+			  role: [controlplane,etcd,worker]
+			  ssh_key_path: ~/.ssh/id_rsa
+		#	- address: 3.3.3.3  # UNRESPONSIVE NODE
+		#	  user: root
+		#	  role: [controlplane,etcd,worker]
+		#	  ssh_key_path: ~/.ssh/id_rsa
+			- address: 4.4.4.4  # NEW NODE
+			  user: root
+			  role: [controlplane,etcd,worker]
+			  ssh_key_path: ~/.ssh/id_rsa
 
-```
-rke etcd snapshot-save --name snapshot.db --config cluster.yml
-```
+3. Save and close `rancher-cluster.yml`.
 
-![etcd backup]({{< baseurl >}}/img/rancher/rke-etcd-backup.png)
+4. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
-### 3. Store snapshot externally
+5. Run one of the following commands to restore the `etcd` database:
 
-After taking the etcd snapshot on node2 we should be able to save this snapshot in a persistence place, one of the options to do that is to save the snapshot taken on a s3 bucket or tape snapshot, for example:
+	```
+	# MacOS
+	./rke_darwin-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
+	# Linux
+	./rke_linux-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
+	```
 
-```
-root@node2:~# s3cmd mb s3://rke-etcd-snapshots
-root@node2:~# s3cmd /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
-```
 
-### 4. Pull the snapshot on a new node
+6. Run one of the following commands to bring your cluster back up:
 
-To simulate the failure lets powerdown node2 completely:
+	```
+	# MacOS
+	./rke_darwin-amd64 up --config rancher-cluster.yml
+	# Linux
+	./rke_linux-amd64 up --config rancher-cluster.yml
+	```
 
-```
-root@node2:~# poweroff
-```
+7. Lastly, restart the Kubernetes components on all cluster nodes to prevent potential `etcd` conflicts. Run this command on each of your nodes.
 
-Now its time to pull the snapshot saved on s3 on a new node:
-
-|  Name |    IP    |          Role          |
-|:-----:|:--------:|:----------------------:|
-| node1 | 10.0.0.1 | [controlplane, worker] |
-| ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~     |
-| node3 | 10.0.0.3 | [etcd]                 |
-
-```
-root@node3:~# mkdir -p /opt/rke/etcd-snapshots
-root@node3:~# s3cmd get s3://rke-etcd-snapshots/snapshot.db /opt/rke/etcd-snapshots/snapshot.db
-```
-
-### 5. Restore etcd on the new node
-
-Now lets do a restore to restore and run etcd on the third node, in order to do that you have first to add the third node to the cluster configuration file:
-```
-nodes:
-  - address: 10.0.0.1
-    hostname_override: node1
-    user: ubuntu
-    role: [controlplane,worker]
-#  - address: 10.0.0.2
-#    hostname_override: node2
-#    user: ubuntu
-#    role: [etcd]
-  - address: 10.0.0.3
-    hostname_override: node3
-    user: ubuntu
-    role: [etcd]
-```
-and then run `rke etcd restore`:
-```
-rke etcd snapshot-restore --name snapshot.db --config cluster.yml
-```
-
-The previous command will restore the etcd data dir from the snapshot and run etcd container on this node, the final step is to restore the operations on the cluster by making the k8s api to point to the new etcd, to do that we run `rke up` again on the new cluster.yml file:
-```
-rke up --config cluster.yml
-```
-You can make sure that operations have been restored by checking the nginx deployment we created earlier:
-```
-> kubectl get pods
-NAME                     READY     STATUS    RESTARTS   AGE
-nginx-65899c769f-kcdpr   1/1       Running   0          17s
-nginx-65899c769f-pc45c   1/1       Running   0          17s
-nginx-65899c769f-qkhml   1/1       Running   0          17s
-```
+	```
+	docker restart kube-apiserver kubelet kube-controller-manager kube-scheduler kube-proxy
+	docker ps | grep flannel | cut -f 1 -d " " | xargs docker restart
+	docker ps | grep calico | cut -f 1 -d " " | xargs docker restart
+  	```
