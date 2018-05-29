@@ -45,7 +45,7 @@ Begin by gathering the files that you need to create backups of your Rancher ins
 	- [High Availability Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
 
 <br/>
-### 2. Take Snapshots
+### 2. Take Snapshots of the `etcd` Database
 
 Take snapshots of your `etcd` database. You can use these snapshots later to recover from a disaster scenario. There are two ways to take snapshots: recurringly, or as a one-off.  Each option is better suited to a specific use case. Read the short description below each link to know when to use each option.
 
