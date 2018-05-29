@@ -314,3 +314,7 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 - Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 - Configure RKE to take snapshots of etcd that you can use as a backup in a disaster scenario. For more information, see [etcd recurring snapshots]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/#etcd-recurring-snapshots).
+
+## SSL FAQ / Troubleshooting
+
+{{< ssl_faq >}}

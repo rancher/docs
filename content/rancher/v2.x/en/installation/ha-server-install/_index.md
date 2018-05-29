@@ -234,7 +234,7 @@ Certificates can be configured by using base64 encoded strings in the config fil
 >**Note:**
 > If you are using Certificate Signed By A Recognized Certificate Authority, [click here](#option-b-certificate-signed-by-a-recognized-certificate-authority) to proceed.
 
-If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file). Make sure that your certificate file includes all the intermediate certificates in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates.
+If you are using a Self Signed Certificate, you will need to generate base64 encoded strings for each of your files (Certificate file, Certificate Key file, and CA certificate file). Make sure that your certificate file includes all the [intermediate certificates](#ssl-faq-troubleshooting) in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates.
 
 In the `kind: Secret` with `name: cattle-keys-ingress`:
 
@@ -282,7 +282,10 @@ data:
 
 ### Option B-Certificate Signed By A Recognized Certificate Authority
 
-If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file.
+>**Note:**
+> If you are using Self Signed Certificate, [click here](#option-a-self-signed-certificate) to proceed.
+
+If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the [intermediate certificates](#ssl-faq-troubleshooting) in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
 
 In the `kind: Secret` with `name: cattle-keys-ingress`:
 
@@ -398,3 +401,7 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 - Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 - Configure RKE to take snapshots of etcd that you can use as a backup in a disaster scenario. For more information, see [etcd recurring snapshots]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/#etcd-recurring-snapshots).
+
+## SSL FAQ / Troubleshooting
+
+{{< ssl_faq >}}
