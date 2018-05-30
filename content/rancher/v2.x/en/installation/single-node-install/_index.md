@@ -105,7 +105,6 @@ If you're publishing your app publically, you should ideally be using a certific
 **Before You Start:**
 
 >**Prerequisites:**
->Create a self-signed certificate.
 >
 >- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
 >- The certificate files must be in base64.
@@ -122,6 +121,14 @@ docker run -d --restart=unless-stopped \
   -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
   rancher/rancher:latest
 ```
+
+By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
+
+**To Remove the Default Certificates:**
+
+1. Log into Rancher.
+2. Select  **Settings** > **cacerts**.
+3. Choose `Edit` and remove the contents. Then click `Save`.
 
 ### Option D-Let's Encrypt Certificate
 
