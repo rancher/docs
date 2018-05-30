@@ -81,7 +81,6 @@ docker run -d --restart=unless-stopped \
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
 >**Prerequisites:**
->Create a self-signed certificate.
 >
 >- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
 >- The certificate files must be in base64.
