@@ -158,7 +158,7 @@ Choose a fully qualified domain name (FQDN) that you want to use access Rancher 
 
 1. Log into your DNS server a create a `DNS A` record that points to the IP address of your [load balancer](#2-configure-load-balancer).
 
-2. Validate that the `DNS A` si working correctly. Run the following command from any terminal, replacing `HOSTNAME.DOMAIN.COM` with your chosen FQDN:
+2. Validate that the `DNS A` is working correctly. Run the following command from any terminal, replacing `HOSTNAME.DOMAIN.COM` with your chosen FQDN:
 
     `nslookup HOSTNAME.DOMAIN.COM`
 
@@ -212,19 +212,20 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
     rke version v<N.N.N>
     ```
 
-## 5. Download Config File Template
+## 5. Download RKE Config File Template
 
 RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certifcate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
+	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
 	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
+
 2. Rename the file to `rancher-cluster.yml`.
 
 ## 6. Configure Nodes
 
-Once you have the `.yml` config file template, edit the nodes section to point toward your Linux hosts.
+Once you have the `rancher-cluster.yml` config file template, edit the nodes section to point toward your Linux hosts.
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
@@ -344,13 +345,13 @@ data:
 
 ## 8. Configure FQDN
 
-There are 2 references to `<FQDN>` in the config file. Both need to be replaced with the FQDN chosen in [Configure DNS](#3-configure-dns).
+There are two references to `<FQDN>` in the config file (one in this step and one in the next). Both need to be replaced with the FQDN chosen in [Configure DNS](#3-configure-dns).
 
 In the `kind: Ingress` with `name: cattle-ingress-http`:
 
 * Replace `<FQDN>` with the FQDN chosen in [Configure DNS](#3-configure-dns).
 
-After replacing `<FQDN>` wit the FQDN chosen in [Configure DNS](#3-configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
+After replacing `<FQDN>` with the FQDN chosen in [Configure DNS](#3-configure-dns), the file should look like the example below (`rancher.yourdomain.com` is the FQDN used in this example):
 
 ```
  ---
@@ -381,7 +382,7 @@ Save the `.yml` file and close it.
 
 ## 9. Backup Your YAML File
 
-After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
+After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher. 
 
 ## 10. Run RKE
 
