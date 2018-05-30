@@ -312,9 +312,20 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 ## What's Next?
 
+<<<<<<< HEAD
 - Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).
 - Configure RKE to take snapshots of etcd that you can use as a backup in a disaster scenario. For more information, see [etcd recurring snapshots]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/#etcd-recurring-snapshots).
 
 ## SSL FAQ / Troubleshooting
+=======
+You have a couple of options:
+
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a Kubernettes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+
+<br/>
+
+## FAQ and Troubleshooting
+>>>>>>> major edits to ha install topic
 
 {{< ssl_faq >}}
