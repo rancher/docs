@@ -1,4 +1,4 @@
-<h3>How do I know if my certificates are in PEM format?</h3>
+<h3 id="pem">How Do I Know if My Certificates are in PEM Format?</h3>
 
 <p>You can recognize the PEM format by the following traits:</p>
 <ul>
@@ -17,7 +17,25 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 -----END CERTIFICATE-----
 </pre>
 
-<h3>What is the order of certificates if I want to add my intermediate(s)?</h3>
+<h3 id="base64">How Can I Encode My PEM Files in base64?</h3>
+
+<p>To encode your certificates in base64:</p>
+
+<ol>
+	<li>Change directory to where the PEM file resides.</li>
+	<li>Run one of the following commands. Replace <code>FILENAME</code> with the name of your certificate.
+		<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+# MacOS
+cat FILENAME | base64
+# Linux
+cat FILENAME | base64 -w0
+# Windows
+certutil -encode FILENAME FILENAME.base64
+</pre>
+	</li>
+</ol>
+
+<h3 id="cert-order">What is the Order of Certificates if I Want to Add My Intermediate(s)?</h3>
 
 <p>The order of adding certificates is as follows:</p>
 
@@ -30,7 +48,7 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 -----END CERTIFICATE-----
 </pre>
 
-<h3>How do I validate my certificate chain?</h3>
+<h3 id="validate-cert-chain">How Do I Validate My Vertificate Chain?</h3>
 
 <p>You can validate the certificate chain by using the <code>openssl</code> binary. If the output of the command (see the command example below) ends with <code>Verify return code: 0 (ok)</code>, your certificate chain is valid. The <code>ca.pem</code> file must be the same as you added to the <code>rancher/rancher</code> container. When using a certificate signed by a recognized Certificate Authority, you can omit the <code>-CAfile</code> parameter.</p>
 
