@@ -22,9 +22,19 @@ However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication accounts for managing Rancher under rare circumstances, such as if Active Directory is down.
 
+<<<<<<< HEAD
 ## Users, Global Permissions, and Roles
 
 Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned previously, users can either be local or external.
+=======
+You should know a few things about external authentication:
+
+- When you configure AD or GitHub authentication, Rancher binds your current user account to the AD or GitHub account you're using to authenticate with Rancher. In other words, if you want to log into Rancher using the AD or GitHub account that you used to configure external authentication, you must use the local user account that's bound to your AD/GitHub account.
+
+- If you are signed into Rancher with a local user account, AD/GitHub accounts are not listed on the **Users** page. You must be assigned with an AD/GitHub account to view AD/GitHub users in Rancher. Additionally, The AD/GitHub account
+
+## Users and Roles
+>>>>>>> documenting user account behavior during external auth setup
 
 Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.  
 
