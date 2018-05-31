@@ -53,3 +53,7 @@ The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, thi
 
 - Single node install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
 - High Availability install: in the etcd of the RKE cluster created to run Rancher.
+
+#### How are the supported Docker versions determined?
+
+We follow the validated Docker versions for upstream Kubernetes releases. The validated versions can be found under [External Dependencies](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md#external-dependencies) in the Kubernetes release CHANGELOG.md.
