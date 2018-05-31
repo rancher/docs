@@ -15,10 +15,15 @@ Docker is an open-source platform designed for developers, system admins, and De
 
 ### Hardware Requirements
 
-* x86_64 server with at least 512MB of RAM.
+* Memory Requirements
 
-> **Note:** If you are planning on [installing to disk](installation/running-rancheros/server/install-to-disk/), you will need at least 1024MB of RAM.
-
+Platform | RAM requirement
+---- | ----
+Baremetal | 1280MB
+VirtubalBox | 1280MB
+VMWare | 1280MB (rancheros.iso) <br> 2048MB (rancheros-vmware.iso)
+GCE |  1280MB
+AWS |  1.7GB
 
 ### How this works
 
