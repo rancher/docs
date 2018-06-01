@@ -1,8 +1,6 @@
 ---
 title: High Availability Installation
 weight: 275
-aliases:
-  - /rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/
 ---
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
@@ -47,7 +45,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	And the **FQDN** part.
 
-9. [Backup Your RKE Config File](#9-backup-your-yaml-file)
+9. [Back Up Your RKE Config File](#9-back-up-your-rke-config-file)
 
 	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
 
@@ -55,7 +53,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	Run RKE to deploy Rancher to your cluster.
 
-11. [Backup Config File](#11-backup-config-file)
+11. [Back Up Auto-Generated Config File](#11-back-up-auto-generated-config-file)
 
 	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
 
@@ -202,9 +200,9 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
     ```
     # MacOS
-    $ ./rke_darwin-amd64 -version
+    $ ./rke_darwin-amd64 ---version
     # Linux
-    $ ./rke_linux-amd64 -version
+    $ ./rke_linux-amd64 --version
     ```
 
     **Step Result:** You receive output similar to what follows:
@@ -380,19 +378,19 @@ After replacing `<FQDN>` with the FQDN chosen in [Configure DNS](#3-configure-dn
 
 Save the `.yml` file and close it.
 
-## 9. Backup Your YAML File
+## 9. Back Up Your RKE Config File
 
 After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher. 
 
 ## 10. Run RKE
 
-All configuration is in place to run RKE. You can do this by running the `rke up` command and using the `--config` parameter to point to your config file.
+With all configuration in place, use RKE to launch Rancher. You can complete this action by running the `rke up` command and using the `--config` parameter to point toward your config file.
 
-From your workstation, make sure `rancher-cluster.yml` and the downloaded `rke` binary are in the same directory.
+1. From your workstation, make sure `rancher-cluster.yml` and the downloaded `rke` binary are in the same directory.
 
-Open a Terminal instance. Change to the directory that contains your config file and `rke`.
+2. Open a Terminal instance. Change to the directory that contains your config file and `rke`.
 
-**Example:**
+3. Enter one of the `rke up` commands listen below.
 
 ```
 # MacOS
@@ -401,7 +399,7 @@ Open a Terminal instance. Change to the directory that contains your config file
 ./rke_linux-amd64 up --config rancher-cluster.yml
 ```
 
-The output should be similar to the snippet below:
+**Step Result:** The output should be similar to the snippet below:
 
 ```
 INFO[0000] Building Kubernetes cluster
@@ -412,7 +410,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [1.1.1.1]
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
 
-## 11. Backup Auto-Generated Config File
+## 11. Back Up Auto-Generated Config File
 
 During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
@@ -436,7 +434,7 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
 - Create a Kubernettes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
