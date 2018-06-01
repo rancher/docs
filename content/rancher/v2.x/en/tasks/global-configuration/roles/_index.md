@@ -6,11 +6,17 @@ While _users_ determine who can log into Rancher, _roles_ determine which Kubern
 
 ## Adding A Custom Role
 
+<!-- >**Prerequisites:** 
+
+Nathan! List app roles/permissions required to make a custom role here! 
+
+-->
+
 While Rancher comes out-of-the-box with a set of default user roles, you can also create custom roles to provide users with very specific permissions within Rancher.
 
-1.	From the **Global** view, select **Security** > **Roles** from the main menu.
+1.    From the **Global** view, select **Security** > **Roles** from the main menu.
 
-2.	Click **Add Role**.
+2.    Click **Add Role**.
 
 3.	**Name** the role.
 
@@ -34,4 +40,11 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 6.	Use the **Inherit from a Role** options to assign individual Rancher roles to your custom roles.
 
-7.	Click **Create**.
+7.    Click **Create**.
+
+
+<!-- ## Enabling/Disabling Roles 
+
+Nathan! Fill me in!
+
+-->
