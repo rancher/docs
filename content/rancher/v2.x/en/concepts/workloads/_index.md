@@ -23,7 +23,7 @@ Kubernetes provide a number of built-in controllers such as:
 - [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 - [CronJobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
 
-You can also define your own controllers. Controllers have the job of taking a workload that you create and recreatinging on each of your cluster nodes. Controllers query the Kubernetes API for the state of the workload within the Kubernetes database. Then the controllers reproduce that workload state on each cluster node.
+You can also define your own controllers. Controllers have the job of taking a workload that you create and recreating on each of your cluster nodes. Controllers query the Kubernetes API for the state of the workload within the Kubernetes database. Then the controllers reproduce that workload state on each cluster node.
 
 
 <!--## Service Types

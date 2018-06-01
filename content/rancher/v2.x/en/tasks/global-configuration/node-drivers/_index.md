@@ -4,6 +4,8 @@ weight: 3050
 ---
 ## Adding Custom Node Drivers
 
+<!-- >**Prerequisite:** Nathan! Add role prereq here -->
+
 If you create a cluster using a cloud provider that {{< product >}} doesn't support out-of-the-box, you may need to add the provider's drivers (or create them yourself) so that your nodes function properly.
 
 1.	From the **Global** view, select **Node Drivers** from the main menu.
