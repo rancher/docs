@@ -1,52 +1,254 @@
 <div>
 	<h5>Port Requirements</h5>
-	<p>Open the following ports on your Linux hosts.</p>
+	<p><strong>rancher nodes:</strong><br/>Nodes running the <code>rancher/rancher</code> container</p>
+	<h6>rancher nodes - Inbound rules</h6>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
-	        <th>Port range</th>
-	        <th>Purpose</th>
+	        <th>Port</th>
+	        <th align="left">Source</th>
+	        <th align="left">Description</th>
 	    </tr>
 	    <tr>
-	        <td>tcp</td>
-	        <td>22</td>
-	        <td>ssh server</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
+	        <td>TCP</td>
 	        <td>80</td>
-	        <td>Rancher Server/ingress</td>
+	        <td><ul><li>Load balancer/proxy that does external SSL termination</li></ul></td>
+	        <td>Rancher UI/API when external SSL termination is used</td>
 	    </tr>
 	    <tr>
-			<td>tcp</td>
+	        <td>TCP</td>
 	        <td>443</td>
-	        <td>Rancher Server/ingress</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>6443</td>
-	        <td>kubernetes api server</td>
-	    </tr>
-	    <tr>
-			<td>tcp</td>
-	        <td>2379-2380</td>
-	        <td>etcd server client api</td>
-	    </tr>
-		<tr>
-			<td>tcp</td>
-	        <td>10250-10256</td>
-	        <td>kubernetes components</td>
-	    </tr>
-		<tr>
-		   <td>tcp</td>
-		   <td>30000-32767</td>
-		   <td>nodeport services</td>
-	   </tr>
-	    <tr>
-	        <td>udp</td>
-	        <td>8472</td>
-	        <td>canal</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>Hosted/Imported Kubernetes</li><li>any that needs to be able to use UI/API</li></ul></td>
+	        <td>rancher agent, Rancher UI/API, kubectl</td>
 	    </tr>
 	</table>
-<br/>
+	<h6>rancher nodes - Outbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Destination</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>22</td>
+	        <td><ul><li>Any node IP from a node created using Node Driver</li></td>
+	        <td>SSH provisioning of nodes using Node Driver</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>35.160.43.145/32</li><li>35.167.242.46/32</li><li>52.33.59.17/32</li></td>
+	        <td>git.rancher.io (catalogs)</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>6443</td>
+	        <td><ul><li>Hosted/Imported Kubernetes API</li></td>
+	        <td>Kubernetes apiserver</td>
+	    </tr>
+	</table>
+	<p><strong>etcd nodes:</strong><br/>Nodes with the role <strong>etcd</strong></p>
+	<h6>etcd nodes - Inbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Source</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2379</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
+	        <td>etcd client requests</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2380</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
+	        <td>etcd peer communication</td>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10250</td>
+	        <td><ul><li>controlplane nodes</li></ul></td>
+	        <td>kubelet</td>
+	    </tr>
+	</table>
+	<h6>etcd nodes - Outbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Destination</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>rancher nodes</li></ul></td>
+	        <td>rancher agent</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2379</td>
+	        <td><ul><li>etcd nodes</li></ul></td>
+	        <td>etcd client requests</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2380</td>
+	        <td><ul><li>etcd nodes</li></ul></td>
+	        <td>etcd peer communication</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>6443</td>
+	        <td><ul><li>controlplane nodes</li></ul></td>
+	        <td>Kubernetes apiserver</td>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	</table>
+	<p><strong>controlplane nodes:</strong><br/>Nodes with the role <strong>controlplane</strong></p>
+	<h6>controlplane nodes - Inbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Source</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>6443</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Kubernetes apiserver</td>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10250</td>
+	        <td><ul><li>controlplane nodes</li></ul></td>
+	        <td>kubelet</td>
+	    </tr>
+	    <tr>
+	        <td>TCP/UDP</td>
+	        <td>30000-32767</td>
+	        <td><ul><li>Any that consumes NodePort services</li></ul></td>
+	        <td>NodePort port range</td>
+	    </tr>
+	</table>
+	<h6>controlplane nodes - Outbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Destination</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>rancher nodes</li></ul></td>
+	        <td>rancher agent</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2379</td>
+	        <td><ul><li>etcd nodes</li></ul></td>
+	        <td>etcd client requests</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>2380</td>
+	        <td><ul><li>etcd nodes</li></ul></td>
+	        <td>etcd peer communication</td>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10250</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>kubelet</td>
+	    </tr>
+	</table>
+	<p><strong>worker nodes:</strong><br/>Nodes with the role <strong>worker</strong></p>
+	<h6>worker nodes - Inbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Source</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10250</td>
+	        <td><ul><li>controlplane nodes</li></ul></td>
+	        <td>kubelet</td>
+	    </tr>
+	    <tr>
+	        <td>TCP/UDP</td>
+	        <td>30000-32767</td>
+	        <td><ul><li>Any that consumes NodePort services</li></ul></td>
+	        <td>NodePort port range</td>
+	    </tr>
+	</table>
+	<h6>worker nodes - Outbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Destination</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>rancher nodes</li></ul></td>
+	        <td>rancher agent</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>6443</td>
+	        <td><ul><li>controlplane nodes</li></ul></td>
+	        <td>Kubernetes apiserver</td>
+	    </tr>
+	    <tr>
+		<td>UDP</td>
+	        <td>8472</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	</table>
+
 </div>
