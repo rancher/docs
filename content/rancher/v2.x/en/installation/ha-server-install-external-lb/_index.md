@@ -2,7 +2,7 @@
 title: High Availability Installation with External Load Balancer
 weight: 276
 ---
-This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setup of a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
+This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 7 Loadbalancer with SSL termination (HTTPS)
 - NGINX Ingress controller (HTTP)
@@ -27,11 +27,11 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 4. [Download RKE](#4-download-rke)
 
-	RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
+	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
 
 5. [Download RKE Config File Template](#5-download-config-file-template)
 
-	RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
+	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
 
 6. [Configure Nodes](#6-configure-nodes)
 
@@ -47,7 +47,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 9. [Backup Your RKE Config File](#9-backup-your-rke-config-file)
 
-	After you've completed configuration of the RKE config file: 1. it's no longer a template, since you'll be using it, and 2. you should backup the RKE config file to a safe place. You can reuse this file for upgrades later.
+	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
 
 10. [Run RKE](#10-run-rke)
 
@@ -103,7 +103,7 @@ We have example configurations for the following load balancers:
 
 ## 3. Configure DNS
 
-Choose a fully qualified domain name (FQDN) that you want to use access Rancher (something like `rancher.yourdomain.com`).<br/><br/>
+Choose a fully qualified domain name (FQDN) that you want to use to access Rancher (e.g., `rancher.yourdomain.com`).<br/><br/>
 
 1. Log into your DNS server a create a `DNS A` record that points to the IP address of your [load balancer](#2-configure-load-balancer).
 
@@ -163,7 +163,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
 ## 5. Download RKE Config File Template
 
-RKE uses a `.yml` config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
+RKE uses a YAML config file to install and configure your Kubernetes cluster. There are 2 templates to choose from, depending on the SSL certificate you want to use.
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
@@ -334,12 +334,6 @@ By default, Rancher automatically generates self-signed certificates for itself 
 
 ## What's Next?
 
-<<<<<<< HEAD
-- Log in to Rancher to make sure it deployed successfully. Open a web browser and navigate to the FQDN chosen in [Configure DNS](#part-3-configure-dns).
-- Configure RKE to take snapshots of etcd that you can use as a backup in a disaster scenario. For more information, see [etcd recurring snapshots]({{< baseurl >}}/rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/#etcd-recurring-snapshots).
-
-## SSL FAQ / Troubleshooting
-=======
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
@@ -348,6 +342,5 @@ You have a couple of options:
 <br/>
 
 ## FAQ and Troubleshooting
->>>>>>> major edits to ha install topic
 
 {{< ssl_faq >}}

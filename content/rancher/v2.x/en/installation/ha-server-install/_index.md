@@ -4,7 +4,7 @@ weight: 275
 aliases:
   - /rancher/v2.x/en/installation/after-installation/etcd-backup-and-restoration/
 ---
-This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setup of a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
+This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 4 load balancer (TCP)
 - Nginx ingress controller with SSL termination (HTTPS)
@@ -29,11 +29,11 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 4. [Download RKE](#4-download-rke)
 
-	RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
+	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
 
 5. [Download RKE Config File Template](#5-download-config-file-template)
 
-	RKE uses a `.yml` config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
+	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
 
 6. [Configure Nodes](#6-configure-nodes)
 
@@ -49,7 +49,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 9. [Backup Your RKE Config File](#9-backup-your-yaml-file)
 
-	After you've completed configuration of the RKE config file: 1. it's no longer a template, since you'll be using it, and 2. you should backup the RKE config file to a safe place. You can reuse this file for upgrades later.
+	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
 
 10. [Run RKE](#10-run-rke)
 
@@ -154,7 +154,7 @@ docker run -d --restart=unless-stopped \
 
 ## 3. Configure DNS
 
-Choose a fully qualified domain name (FQDN) that you want to use access Rancher (something like `rancher.yourdomain.com`).<br/><br/>
+Choose a fully qualified domain name (FQDN) that you want to use to access Rancher (e.g., `rancher.yourdomain.com`).<br/><br/>
 
 1. Log into your DNS server a create a `DNS A` record that points to the IP address of your [load balancer](#2-configure-load-balancer).
 

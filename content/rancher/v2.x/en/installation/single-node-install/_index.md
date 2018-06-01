@@ -6,7 +6,7 @@ For development environments, we recommend installing Rancher by running a singl
 
 
 >**Want to use an external load balancer?**
-> See [Single Node Installation with an External Loadbalancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb) instead.
+> See [Single Node Installation with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb) instead.
 
 
 
@@ -54,10 +54,17 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-- [Option A—Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
-- [Option B—Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
-- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-c-bring-your-own-certificate-signed-by-recognized-ca)
-- [Option D—Let's Encrypt Certificates](#option-d-let-s-encrypt-certificate)
+- [Installation Outline](#installation-outline)
+- [1. Provision Linux Host](#1-provision-linux-host)
+	- [Requirements](#requirements)
+- [2. Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
+	- [Option A—Default Self-Signed Certificate](#option-adefault-self-signed-certificate)
+	- [Option B—Bring Your Own Certificate: Self-Signed](#option-bbring-your-own-certificate--self-signed)
+	- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-cbring-your-own-certificate--signed-by-recognized-ca)
+	- [Option D-Let's Encrypt Certificate](#option-d-lets-encrypt-certificate)
+- [What's Next?](#whats-next)
+- [FAQ and Troubleshooting](#faq-and-troubleshooting)
+- [Persistent Data](#persistent-data)
 
 ### Option A—Default Self-Signed Certificate
 
@@ -105,7 +112,7 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 
 ### Option C—Bring Your Own Certificate: Signed by Recognized CA
 
-If you're publishing your app publically, you should ideally be using a certificate signed by a recognized CA.
+If you're publishing your app publicly, you should ideally be using a certificate signed by a recognized CA.
 
 >**Prerequisites:**
 >
@@ -166,7 +173,7 @@ Run the following commands from your Linux host.
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/).
-- Create a Kubernettes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+- Create a Kubernetes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
 
