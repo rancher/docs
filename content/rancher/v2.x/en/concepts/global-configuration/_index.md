@@ -5,6 +5,7 @@ weight: 2075
 After installing Rancher 2.0, you should configure it to support your users and environment. This section describes the global configurations you should make after installation.
 
 ## Authentication
+
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
 
 This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed along with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
@@ -20,21 +21,50 @@ The Rancher authentication proxy integrates with the following external authenti
 
 However, Rancher also provides local authentication.
 
-In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication accounts for managing Rancher under rare circumstances, such as if Active Directory is down.
+In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
 
-<<<<<<< HEAD
+#### External Authentication Configuration and Principal Users
+
+Configuration of external authentication requires:
+
+- A local user assigned the administrator role, called hereafter the _local principal_.
+- An external user that can authentication with your external authentication service, called hereafter the _external principal_.
+
+Configuration of external authentication affects how principal users are managed within Rancher. Follow the list below to better understand these effects.
+
+1. Sign into Rancher as the local principal and complete configuration of external authentication.
+
+	![Sign In]({{< baseurl >}}/img/rancher/sign-in.png)
+
+2. Rancher associates the external principal with the local principal. These two users share the local principal's user ID.
+
+	![Principal ID Sharing]({{< baseurl >}}/img/rancher/principal-ID.png)
+
+3. After you complete configuration, Rancher automatically signs out the local principal.
+
+	![Sign Out Local Principal]({{< baseurl >}}/img/rancher/sign-out-local.png)
+
+4. Then, Rancher automatically signs you back in as the external principal.
+
+	![Sign In External Principal]({{< baseurl >}}/img/rancher/sign-in-external.png)
+
+5. Because the external principal and the local principal share an ID, no unique object for the external principal displays on the Users page. 
+
+	![Sign In External Principal]({{< baseurl >}}/img/rancher/users-page.png)
+
+6. The external principal and the local principal share the same access rights.
+
 ## Users, Global Permissions, and Roles
 
 Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned previously, users can either be local or external.
-=======
-You should know a few things about external authentication:
 
-- When you configure AD or GitHub authentication, Rancher binds your current user account to the AD or GitHub account you're using to authenticate with Rancher. In other words, if you want to log into Rancher using the AD or GitHub account that you used to configure external authentication, you must use the local user account that's bound to your AD/GitHub account.
+After you configure external authentication, the users that display on Users page changes.
 
-- If you are signed into Rancher with a local user account, AD/GitHub accounts are not listed on the **Users** page. You must be assigned with an AD/GitHub account to view AD/GitHub users in Rancher. Additionally, The AD/GitHub account
+- If you are logged in as a local user, only local users display.
+
+- If you are logged in an an external user, both external and local users display.
 
 ## Users and Roles
->>>>>>> documenting user account behavior during external auth setup
 
 Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.  
 
