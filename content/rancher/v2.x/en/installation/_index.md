@@ -25,3 +25,7 @@ Choose from the following installation options:
 -  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/)
 
  	We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
+
+-  [Operation behind a corporate proxy]({{< baseurl >}}/rancher/v2.x/en/installation/behind-corporate-proxy/)
+
+    If your rancher installation runs behind a corporate proxy, this page will provide you with information how to do that.
