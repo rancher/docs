@@ -133,6 +133,18 @@
 	    </tr>
 	    <tr>
 	        <td>TCP</td>
+	        <td>80</td>
+	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
+	        <td>Ingress controller (HTTP)</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
+	        <td>Ingress controller (HTTPS)</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
 	        <td>6443</td>
 	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
 	        <td>Kubernetes apiserver</td>
@@ -203,6 +215,18 @@
 	        <th>Port</th>
 	        <th align="left">Source</th>
 	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>80</td>
+	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
+	        <td>Ingress controller (HTTP)</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
+	        <td>Ingress controller (HTTPS)</td>
 	    </tr>
 	    <tr>
 		<td>UDP</td>
