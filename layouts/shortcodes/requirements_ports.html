@@ -1,7 +1,7 @@
 <div>
 	<h5>Port Requirements</h5>
-	<p><strong>rancher nodes:</strong><br/>Nodes running the <code>rancher/rancher</code> container</p>
-	<h6>rancher nodes - Inbound rules</h6>
+	<p><strong>Rancher nodes:</strong><br/>Nodes running the <code>rancher/rancher</code> container</p>
+	<h6>Rancher nodes - Inbound rules</h6>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -19,10 +19,10 @@
 	        <td>TCP</td>
 	        <td>443</td>
 	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>Hosted/Imported Kubernetes</li><li>any that needs to be able to use UI/API</li></ul></td>
-	        <td>rancher agent, Rancher UI/API, kubectl</td>
+	        <td>Rancher agent, Rancher UI/API, kubectl</td>
 	    </tr>
 	</table>
-	<h6>rancher nodes - Outbound rules</h6>
+	<h6>Rancher nodes - Outbound rules</h6>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -94,8 +94,8 @@
 	    <tr>
 	        <td>TCP</td>
 	        <td>443</td>
-	        <td><ul><li>rancher nodes</li></ul></td>
-	        <td>rancher agent</td>
+	        <td><ul><li>Rancher nodes</li></ul></td>
+	        <td>Rancher agent</td>
 	    </tr>
 	    <tr>
 	        <td>TCP</td>
@@ -164,7 +164,7 @@
 	    <tr>
 	        <td>TCP/UDP</td>
 	        <td>30000-32767</td>
-	        <td><ul><li>Any that consumes NodePort services</li></ul></td>
+	        <td><ul><li>Any source that consumes NodePort services</li></ul></td>
 	        <td>NodePort port range</td>
 	    </tr>
 	</table>
@@ -179,8 +179,8 @@
 	    <tr>
 	        <td>TCP</td>
 	        <td>443</td>
-	        <td><ul><li>rancher nodes</li></ul></td>
-	        <td>rancher agent</td>
+	        <td><ul><li>Rancher nodes</li></ul></td>
+	        <td>Rancher agent</td>
 	    </tr>
 	    <tr>
 	        <td>TCP</td>
@@ -243,7 +243,7 @@
 	    <tr>
 	        <td>TCP/UDP</td>
 	        <td>30000-32767</td>
-	        <td><ul><li>Any that consumes NodePort services</li></ul></td>
+	        <td><ul><li>Any source that consumes NodePort services</li></ul></td>
 	        <td>NodePort port range</td>
 	    </tr>
 	</table>
@@ -258,8 +258,8 @@
 	    <tr>
 	        <td>TCP</td>
 	        <td>443</td>
-	        <td><ul><li>rancher nodes</li></ul></td>
-	        <td>rancher agent</td>
+	        <td><ul><li>Rancher nodes</li></ul></td>
+	        <td>Rancher agent</td>
 	    </tr>
 	    <tr>
 	        <td>TCP</td>
