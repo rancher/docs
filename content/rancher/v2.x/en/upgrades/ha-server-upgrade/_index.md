@@ -2,7 +2,7 @@
 title: High Availability Upgrade
 weight: 1020
 ---
-To upgrade Rancher 2.x running in a high Availability configuration, run an upgrade command that points to your upgrade config file.
+To upgrade Rancher 2.x running in a high availability configuration, run an upgrade command that points to your upgrade config file.
 
 >**Prerequisites:**
 >
