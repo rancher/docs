@@ -28,4 +28,4 @@ Choose from the following installation options:
 
 -  [Operation behind a corporate proxy]({{< baseurl >}}/rancher/v2.x/en/installation/behind-corporate-proxy/)
 
-    If your rancher installation runs behind a corporate proxy, this page will provide you with information how to do that.
+  If your Rancher installation runs behind a corporate proxy, this page provides information on how to configure your proxy.
