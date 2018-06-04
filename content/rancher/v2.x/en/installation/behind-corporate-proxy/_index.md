@@ -1,27 +1,25 @@
 ---
-title: Operating Rancher behind a corporate proxy
+title: Operating Rancher Behind an HTTP Proxy
 weight: 275
 ---
-If you operate Rancher behind a corporate proxy, and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy.
+If you operate Rancher behind a proxy and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy.
 
-## Set http_proxy environment variable ##
+## Setting the `http_proxy` Environment Variable ##
 
 ### Ubuntu ###
 
-1. Check if *http_proxy* is still defined:
+1. Check if `http_proxy` is still defined:
 
   ```bash
   echo $http_proxy
   ```
 
-  If it is empty, you should set and store it in your account's environment like this:
-
+  If it is empty, set the variable and store it in your account's environment using the following command:
 
   ```bash
   echo "export http_proxy=http://<username>:<password>@<proxy url>:<proxy port>/" >> .profile
   ```
-
-2. Logout and relogin to make this change effective.
+2. Logout and then log back in to activate your changes.
 
 ## Start Rancher Container with Proxy Information ##
 
