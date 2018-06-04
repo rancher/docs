@@ -24,9 +24,9 @@ In most cases, you should use an external authentication service over local, as 
 
 Within Rancher, each user authenticates as a _user_, which is an object that grants you access within the Rancher system. As mentioned in the previous sections, users can either be local or external.
 
-Once the user logs in to Rancher, their _authorization_, or their access rights within the system, are determined by _roles_.  Roles are sets of permissions that the user can perform in Rancher
+Once the user logs in to Rancher, their _authorization_, or their access rights within the system, are determined by _permissions_.  Permissions are sets of access rights that you can perform in Rancher.
 
-There are two types of roles in Rancher: default roles and custom roles.
+There are two types of roles in Rancher: default permissions and custom permissions.
 
 <!-- ### Rancher Role Implementation
 
@@ -34,9 +34,9 @@ There are two types of roles in Rancher: default roles and custom roles.
 
 -->
 
-### Default Roles
+### Global Permissions
 
-Out-of-the-box, Rancher comes with two default roles:
+_Global Permissions_ define what actions a user can complete outside the scope of any particular cluster. There are two primary global permissions: `Administrator` and `Standard User`.
 
 - **Administrator:**
 
@@ -44,17 +44,19 @@ Out-of-the-box, Rancher comes with two default roles:
 
 - **Standard User:**
 
-    These users can create new clusters or manage clusters and projects that an administrator has given them access to.
+    These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
 
-<!-- ### Protected Roles
+>**Note:** You cannot create, update, or delete Global Permissions.
 
-Nathan! Fill me in! If 'default roles' and 'protected roles' are synonymous, just add the info to 'default roles'.
+#### Global Permission Assignment
 
--->
+- **External Authentication**
 
-### Custom Roles
+    When a user logs in using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission.
 
-Rancher lets you create _custom roles_ that let you assign individual permissions to a user. These roles are convenient for defining narrow or specialized permissions to a user within Rancher.
+- **Local Authentication**
+
+    When you create a new local user, you assign them one or more global permission(s) as you create complete the **Add User** form.
 
 <!-- ### Projects and Clusters: Automatic Role Assignment 
 
@@ -62,11 +64,35 @@ Fill me in Craig!
 
 -->
 
-<!-- ### Role Aggregation 
+<!-- ### Protected Roles
 
-Fill me in Craig!
+Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous, just add the info to 'global permissions'.
 
 -->
+
+### Custom Permissions
+
+Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
+
+#### Permissions Reference
+
+The following table lists each role available in Rancher and whether it's assigned to Rancher's two global permissions, `Administrator` and `Standard User`.
+
+| Role                               | Administrator | Standard User |
+| ---------------------------------- | ------------- | ------------- |
+| Manage Authentication              | ✓             |               |
+| Manage Catalogs                    | ✓             |               |
+| Manage Node Drivers                | ✓             |               |
+| Manage PodSecurityPolicy Templates | ✓             |               |
+| Manage Roles                       | ✓             |               |
+| Manage Users                       | ✓             |               |
+| Create Clusters                    | ✓             | ✓             |
+| User Catalog Templates             | ✓             | ✓             |
+| Login Access                       | ✓             | ✓             |
+
+### Role Aggregation
+
+Each Rancher permission listed above is comprised of multiple, smaller roles not available in the Rancher UI. For a full list of roles, access through the API at `/v3/globalroles`.
 
 ### Membership
 
@@ -94,7 +120,7 @@ Read more about Pod Security Policies in the [Kubernetes Documentation](https://
 
 ## Node Drivers
 
-- Out-of-the-box, Rancher provides support for creating clusters using many popular cloud providers: Amazon EC2, Azure, DigitalOcean, and so on. However, you may want to create a cluster using another cloud provider. In these scenarios, you can create a custom node driver for the cloud provider and point Rancher toward it.
+Out-of-the-box, Rancher provides support for creating clusters using many popular cloud providers: Amazon EC2, Azure, DigitalOcean, and so on. However, you may want to create a cluster using another cloud provider. In these scenarios, you can create a custom node driver for the cloud provider and point Rancher toward it.
 
 For more information on creating node drivers, see [https://github.com/rancher/ui-driver-skel](https://github.com/rancher/ui-driver-skel).
 
