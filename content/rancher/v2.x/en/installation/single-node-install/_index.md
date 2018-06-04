@@ -54,17 +54,10 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-- [Installation Outline](#installation-outline)
-- [1. Provision Linux Host](#1-provision-linux-host)
-	- [Requirements](#requirements)
-- [2. Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
-	- [Option A—Default Self-Signed Certificate](#option-adefault-self-signed-certificate)
-	- [Option B—Bring Your Own Certificate: Self-Signed](#option-bbring-your-own-certificate--self-signed)
-	- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-cbring-your-own-certificate--signed-by-recognized-ca)
-	- [Option D-Let's Encrypt Certificate](#option-d-lets-encrypt-certificate)
-- [What's Next?](#whats-next)
-- [FAQ and Troubleshooting](#faq-and-troubleshooting)
-- [Persistent Data](#persistent-data)
+- [Option A—Default Self-Signed Certificate](#option-adefault-self-signed-certificate)
+- [Option B—Bring Your Own Certificate: Self-Signed](#option-bbring-your-own-certificate--self-signed)
+- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-cbring-your-own-certificate--signed-by-recognized-ca)
+- [Option D-Let's Encrypt Certificate](#option-d-lets-encrypt-certificate)
 
 ### Option A—Default Self-Signed Certificate
 
