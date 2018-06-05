@@ -78,6 +78,8 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 {{< requirements_ports >}}
 
+![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+
 ## 2. Configure Load Balancer
 
 We will be using Nginx as our Layer 4 Load Balancer (TCP). Nginx will forward all connections to one of your Rancher nodes.

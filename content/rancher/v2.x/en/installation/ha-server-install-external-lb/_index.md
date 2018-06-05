@@ -78,6 +78,8 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 {{< requirements_ports >}}
 
+![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+
 ## 2. Configure Load Balancer
 
 When using a load balancer in front of Rancher, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto: https`, this redirect is disabled. This is the expected configuration when terminating SSL externally.
