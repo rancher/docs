@@ -58,7 +58,7 @@ _Global Permissions_ define what actions a user can complete outside the scope o
 
     When you create a new local user, you assign them one or more global permission(s) as you create complete the **Add User** form.
 
-<!-- ### Projects and Clusters: Automatic Role Assignment 
+<!-- ### Projects and Clusters: Automatic Role Assignment
 
 Fill me in Craig!
 
@@ -132,12 +132,29 @@ You can create new clusters within Rancher using _node templates_. A node templa
 
 After you add a node template to Rancher, its stored by the system so that you can use it when creating another cluster later. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
-<!-- ## Rancher CLI Configuration
+## Rancher CLI Configuration
 
-Dan! Fill me in!
+The CLI needs an API token and the URL of your server in order to start using it. Instructions for creating the API token and getting your server URL can be found at TODOMARK: Add a link to the docs on how to create an API key for the user to use in the CLI login
 
--How to configure
--Common commands
--Command to view help
- 
- -->
+Begin using the CLI by running
+
+```bash
+$ rancher login -t <token> <server_URL>
+```
+
+If the rancher server is using a self signed cert the CLI will ask for confirmation to continue connecting to the server.
+
+Once logged in run `rancher --help` for a list of commands
+
+All commands accept the `--help` flag to further describe the usage
+
+The CLI uses a context to determine what resources to fetch when running commands. A context is a cluster/project currently focused on.
+
+`rancher context switch` displays a list of available contexts and allows user selection to change to context
+
+Common Commands:
+
+* `rancher ps` to show workloads in the current Context
+* `rancher clusters` to view all clusters
+* `rancher kubectl` runs kubectl commands against the cluster
+(requires kubectl to be installed but CLI will pull the kubeconfig)
