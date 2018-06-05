@@ -34,13 +34,15 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 {{< requirements_software >}}
 
+{{< note_server-tags >}}
+
 <a id="port-requirements"></a>
 
-{{< requirements_ports >}}
+#### Port Requirements
+
+The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/_index.md)
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
-
-{{< note_server-tags >}}
 
 ## 2. Choose an SSL Option and Install Rancher
 

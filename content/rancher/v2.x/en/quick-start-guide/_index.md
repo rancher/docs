@@ -3,15 +3,15 @@ title: Quick Start Guide
 short title: Quick Start
 weight: 25
 ---
->**Note:** This Quick Start Guide will get you up and running in a sandbox environment. It is not intended for a production environment. For more comprehensive instructions, see [Installation]({{< baseurl >}}/rancher/v2.x/en/installation/).
+>**Note:** This Quick Start Guide's intent is to get you up and running in a sandbox environment. It is not intended for a production environment. For more comprehensive instructions, see [Installation]({{< baseurl >}}/rancher/v2.x/en/installation/).
 
 Howdy Partner! This tutorial walks you through:
-
+    
 - Installation of {{< product >}} {{< version >}}
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
-## Objectives
+## Quick Start Outline
 
 This Quick Start Guide is divided into different tasks for easier consumption.
 
@@ -39,28 +39,28 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
     When your workload finishes deployment, browse to your node IP to make sure Nginx is running.
 
-## Provision a Linux Host
+### Provision a Linux Host
 
-### Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
+ Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
 - A cloud-host virtual machine (VM)
 - An on-premise VM
 - A bare-metal server
 
   >**Note:**
-  > When using a cloud-host virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
+  > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
   >
   > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/#port-requirements).
 
-### Provision the host according to the requirements below.
+ Provision the host according to the requirements below.
 
 {{< requirements_os >}}
 
-#### Hardware Requirements
+**Hardware Requirements**
 
 - Memory: 4GB
 
-#### Software requirements
+**Software Requirements**
 
 - Software: Docker
 
@@ -93,16 +93,16 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
 
-1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`<br/><br/>
+1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.<br/><br/>
     Replace `<SERVER_IP>` with your host IP address.
 
 2.  When prompted, create a password for the default `admin` account there cowpoke!
 
-3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster
+3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
 
-## Create the Cluster
+### Create the Cluster
 
-Welcome to {{< product >}}! You are now able to create your first Kubernetes cluster.
+Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) to be used in a cluster.
 
@@ -118,7 +118,7 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
 
-7. Rancher will auto-detect the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
+7. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
 
 8. Skip the **Labels** stuff. It's not important for now.
 
@@ -168,20 +168,21 @@ For this workload, you'll be deploying the application Nginx.
 
 12. Click **Launch**.
 
-#### Result:
+**Result:**
+
 * Your workload is deployed. This process might take a few minutes to complete.
 * When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
 
 ### View Your Application
 
-When your workload completes deployment, browse to its IP to confirm your application is working.
+When your workload completes deployment, browse to its IP to confirm that your application is working.
 
 From the **Workloads** page, click the link underneath your workload. If your deployment succeeded, your application opens.
 
 >**Note**
-> When using a cloud-host virtual machine you may not have access to the port running the container. It can be tested in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is 31568 in this example.
-
-```sh
+> When using a cloud-hosted virtual machine, you may not have access to the port running the container. In this event, you can test Nginx in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is 31568 in this example.
+>
+>```sh
 
 gettingstarted@rancher:~$ curl http://localhost:31568
 <!DOCTYPE html>
@@ -213,7 +214,7 @@ gettingstarted@rancher:~$
 
 ```
 
-### Finished
+## Finished
 
 Congratulations! You have:
 
