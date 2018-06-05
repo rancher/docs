@@ -48,7 +48,7 @@ _Global Permissions_ define what actions a user can complete outside the scope o
 
 >**Note:** You cannot create, update, or delete Global Permissions.
 
-#### Global Permission Assignment
+### Global Permission Assignment
 
 - **External Authentication**
 
@@ -74,7 +74,9 @@ Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous
 
 Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
 
-#### Permissions Reference
+![Custom Permissions]({{< baseurl >}}/img/rancher/permissions.png)
+
+### Permissions Reference
 
 The following table lists each role available in Rancher and whether it's assigned to Rancher's two global permissions, `Administrator` and `Standard User`.
 
