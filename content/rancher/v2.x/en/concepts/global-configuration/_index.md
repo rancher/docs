@@ -64,11 +64,11 @@ Fill me in Craig!
 
 -->
 
-<!-- ### Protected Roles
+### Locked Roles
 
-Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous, just add the info to 'global permissions'.
+Roles can be set to a __Locked__ status by users with the __Administrator__ or __Manage Roles__ permission. When a role is set to __Locked__ that role cannot be assigned to any user (although existing assignments are unaffected). Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a cluster or project.  This is useful when you want to prevent a role from being assigned to all users.
 
--->
+For instance, if your organization had a policy that users assigned to a cluster could not create new projects, then the standard __Cluster Member__ role would be inappropriate. A custom role could be created that mirrored the __Cluster Member__ role, but lacked the ability to create projects. The __Cluster Member__ role could then be marked as __Locked__ so that it could not be assigned to users, and the custom role could be used instead.
 
 ### Custom Permissions
 
