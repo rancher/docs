@@ -57,6 +57,8 @@ Global Permissions define what actions a user can complete outside the scope of 
 
 #### Custom Global Permissions
 
+Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
+
 Rancher lets you assign _custom permissions_ to a user instead of the typical `Administrator` or `Standard User` permissions. These permissions are convenient for defining narrow or specialized access for a user within Rancher. See the table below for a list of custom global permission available.
 
 #### Global Permissions Reference
@@ -104,6 +106,12 @@ _Cluster roles_ are roles that can be used to grant users access to a cluster. T
 
     These users can view most cluster level resources and create new projects.
 
+
+### Locked Roles
+
+Roles can be set to a __Locked__ status by users with the __Administrator__ or __Manage Roles__ permission. When a role is set to __Locked__ that role cannot be assigned to any user (although existing assignments are unaffected). Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a cluster or project.  This is useful when you want to prevent a role from being assigned to all users.
+
+For instance, if your organization had a policy that users assigned to a cluster could not create new projects, then the standard __Cluster Member__ role would be inappropriate. A custom role could be created that mirrored the __Cluster Member__ role, but lacked the ability to create projects. The __Cluster Member__ role could then be marked as __Locked__ so that it could not be assigned to users, and the custom role could be used instead.
 
 ##### Custom Cluster Roles
 
