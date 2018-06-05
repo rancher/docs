@@ -27,6 +27,19 @@ The control plane nodes are used to run the Kubernetes API server, scheduler, an
 
 Worker nodes are used to run the kubelet and the workload. It also runs the storage and networking drivers and ingress controllers when required. You create as many worker nodes as needed for your workload needs.
 
-<!--### Kubeconfig File
+### Kubeconfig File
 
-Craig! Fill me in! -->
+A kubeconfig file is used to configure access to kubernetes when using the kubectl commandline tool and other clients. For more details on how kubeconfig and kubectl work together, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
+
+Rancher handles the creation of kubeconfig files for you. You can 
+
+1. Navigate to the cluster dashboard page for the desired cluster cluster
+1. Click the Kubeconfig File button
+1. Copy the contents of the generated file using the Copy to Clipboard link
+1. Paste the contents into a file on your local computer.
+
+> **Note:** The default location that kubectl uses for the kubeconfig file is ~/.kube/config, but you can use any condition and specify it using the --kubeconfig flag like this:
+
+> `kubectl --kubeconfig /custom/path/kube.config get pods`
+
+This kubeconfig file will be specific to the cluster you were on when you copied the kubeconfig file contents. You will need a separate kubeconfig file for each cluster that you have access to in Rancher.
