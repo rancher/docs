@@ -8,11 +8,15 @@ You have three options for user authentication in {{< product >}}:
 
 -	**GitHub**: Open source projects or organizations that use GitHub for source control may prefer that users sign in using their GitHub accounts.
 
+<!-- - **SAML**:
+
+- **OpenLDAP**:
+
+- **Azure AD**: -->
+
 -	**Basic Authentication**: If you don't want to use external authentication, you can always add users directly to {{< product >}}. We recommend using external authentication over basic authentication.
 
-## Configure an Authentication Method
-
-### To Configure Active Directory
+### Configuring Active Directory
 
 >**Prerequisites:** Create a service account in Active Directory with **read-only** access. {{< product >}} uses this account to verify group membership when a user makes a request using an API key.
 
@@ -38,7 +42,7 @@ You have three options for user authentication in {{< product >}}:
 
 5.	Enter your AD username and password in **Test and enable authentication** to confirm that Rancher is configured to use AD authentication.
 
-### To Configure GitHub
+### Configuring GitHub
 
 1.	From the **Global** view, select **Security > Authentication** from the main menu.
 
@@ -82,7 +86,19 @@ You have three options for user authentication in {{< product >}}:
 - You are signed into Rancher with your GitHub account.
 - Your GitHub account is added to Rancher as an administrator.
 
-### To Configure Local Authentication
+<!-- ### Configuring SAML
+
+Rajashree! Content here. -->
+
+<!-- ### Configuring OpenLDAP
+
+Carolyn! Content here -->
+
+<!-- ### Configuring Azure AD
+
+Dan! Content here -->
+
+### Configuring Local Authentication
 
 1.	From the **Global** view, select **Users** from the main menu.
 
