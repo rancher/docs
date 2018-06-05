@@ -26,6 +26,8 @@ Choose from the following installation options:
 
  	We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
 
+This section also includes help content for Rancher configuration and maintenance.
+
 -  [Backups and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/)
 
  	This page lists the ports you must open to operate Rancher.
