@@ -86,9 +86,28 @@ You have three options for user authentication in {{< product >}}:
 - You are signed into Rancher with your GitHub account.
 - Your GitHub account is added to Rancher as an administrator.
 
-<!-- ### Configuring SAML
+### Configuring PingFederate (SAML)
 
-Rajashree! Content here. -->
+1.	From the **Global** view, select **Security > Authentication** from the main menu.
+
+2.	Select **PingFederate**.
+
+3.	Provide all details required for configuring SAML. Rancher's ping provider can work with Ping IdP that has Active Directory to manage the users and groups.
+	You will need to input 8 fields, lets see these fields in detail
+
+	>**Display Name Field, User Name Field, UID field, Groups Field**
+	> These four attributes need to be mapped to four Active Directory attributes in the following way:
+	1. Display Name Field: Provide AD attribute that contains the display name of users, (example: displayName)
+	2. User Name Field: Provide AD attribute that contains the user name/given name, (example: givenName)
+	3. UID Field: Provide an AD attribute that is unique to every user, (example: sAMAccountName, distinguishedName)
+	4. Groups Field: This field is responsible to manage group memberships. (example: memberOf)
+	5. Rancher API host: Rancher server's URL
+	6. IDP-metadata: Your Ping IdP's metadata
+	7. Private Key and Certificate: This is a key-cert pair, that you can generate simply using an openssl command, for example:
+	```
+	openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+	```
+
 
 <!-- ### Configuring OpenLDAP
 
