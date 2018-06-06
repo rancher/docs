@@ -13,9 +13,12 @@ Coming Soon
 
 Coming Soon
 
-## Adding / Managing Project Members
+## Adding Project Members
 
 Coming Soon
+
+## Managing Project Members
+
 
 ## Adding SSL Certificates
 
@@ -29,9 +32,13 @@ Coming Soon
 
 Coming Soon
 
+## Managing Project Logging
+
 ## Adding Project Alerts
 
 Coming Soon
+
+## Managing Project Alerts
 
 ## Using Private Registries
 
@@ -45,7 +52,9 @@ Coming Soon
 
 Coming Soon
 
-## Creating a Pod Security Policy
+## Creating Pod Security Policies
 
 Coming Soon
+
+## Managing Pod Security Policies
 

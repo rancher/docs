@@ -1,6 +1,9 @@
 ---
-title: Enabling Cluster Logging
+title: Enabling and Managing Cluster Logging
 weight: 3600
 draft: true
 ---
-Coming Soon
+
+## Enabling Cluster Logging
+
+## Managing Cluster Logging

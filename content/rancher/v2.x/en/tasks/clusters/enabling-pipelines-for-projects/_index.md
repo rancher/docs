@@ -1,6 +1,9 @@
 ---
-title: Enabling Pipelines for Projects
+title: Enabling and Managing Pipelines for Projects
 weight: 3625
 draft: true
 ---
-Coming Soon
+
+## Enabling Pipelines for Projects
+
+## Managing Pipelines for Projects
