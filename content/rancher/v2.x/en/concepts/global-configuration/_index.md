@@ -55,6 +55,14 @@ Global Permissions define what actions a user can complete outside the scope of 
 
     When you create a new local user, you assign them one or more global permission(s) as you create complete the **Add User** form.
 
+### Locked Roles
+
+Roles can be set to a __locked__ status by users with the __Administrators__ global permission or  __Standard Users__ with the __Manage Roles__ role. When a role is set to __locked__ that role cannot be assigned to any user. Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a [cluster](todomark) or [project](todomark). The ability to lock roles is useful in preventing a role from being assigned to any user.
+
+> **Note:** Updating a role to a new status will not change any of the permissions if someone is already assigned that role. By locking a role, the user will still have access to the permissions associated with that role, but no new users will be able to be assigned that particular role.
+
+For example, if your organization had a policy that users assigned to a cluster are not allowed to create new projects, then the __Cluster Owner__, __Cluster Member__ and __Create Projects__ role would need to be __locked__ to prevent anyone being assigned the permissions associated with creating a new project. Only administrators would be able to create new projects in clusters. To assign users to the cluster, the administrator would need to create a custom role that could have the same permissions as a __Cluster Member__ except for the ability to create projects. Then, the new custom role could be used when adding users to a cluster.
+
 #### Custom Global Permissions
 
 Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
