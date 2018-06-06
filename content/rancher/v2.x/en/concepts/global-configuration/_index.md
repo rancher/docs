@@ -106,11 +106,11 @@ Assignment of global permissions to a user depends on their authentication sourc
 
 #### Custom Global Permissions
 
-Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them _custom permissions_. Custom permissions are sets of global permissions composed of individual _permissions_ that you select.
+Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a custom set of permissions.
 
-_Permissions_ are individual access rights that you can assign to a custom global permissions.
+_Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
-Custom permissions are convenient for providing users with narrow or specialized access to Rancher. See the [table](#global-permissions-reference) below for a list of individual permissions available.
+Using custom permissions is convenient for providing users with narrow or specialized access to Rancher. See the [table below](#global-permissions-reference) for a list of individual permissions available.
 
 #### Global Permissions Reference
 
@@ -134,14 +134,9 @@ The following table lists each custom global permission available and whether it
 
 Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page. From this page you can:
 
-<<<<<<< HEAD
-- Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce).
-- Create and manage new roles for use across all clusters and projects.
-=======
 - Create and manage new roles for use across all clusters and projects
 - [Lock/unlock roles](#locked-roles) so that they may not be used in any new role assignments (existing assignments will still be enforce)
 
->>>>>>> psp updates
 
 #### Membership and Role Assignment
 
