@@ -134,8 +134,14 @@ The following table lists each custom global permission available and whether it
 
 Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page. From this page you can:
 
+<<<<<<< HEAD
 - Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce).
 - Create and manage new roles for use across all clusters and projects.
+=======
+- Create and manage new roles for use across all clusters and projects
+- [Lock/unlock roles](#locked-roles) so that they may not be used in any new role assignments (existing assignments will still be enforce)
+
+>>>>>>> psp updates
 
 #### Membership and Role Assignment
 
@@ -251,7 +257,14 @@ This is the URL of your Rancher Server. All nodes in your cluster must resolve t
 
 ## Pod Security Policies
 
-_Pod Security Policies_ are objects that control security-sensitive aspects of pod specification. Pods only run within Kubernetes if they meet the conditions specified in their assigned Pod Security Policy.
+_Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like secrets). Pods only run within Kubernetes if they meet their assigned PSP.
+
+- You can apply PSPs at the cluster or project level.
+- PSPs work through inheritance.
+
+    - By default, PSPs applied to a cluster are inherited by its projects, as well as any namespaces applied to those projects.
+    - **Exception:** Namespaces un-applied to projects do not inherit PSPs. Because these namespaces have no PSPs, workload deployments to these namespaces will fail, which is the default Kubernetes behavior.
+    - You can override the PSPs that a project inherits by applying a different PSP directly to the project.
 
 Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
