@@ -20,7 +20,7 @@ Docker is an open-source platform designed for developers, system admins, and De
 Platform | RAM requirement
 ---- | ----
 Baremetal | 1280MB
-VirtubalBox | 1280MB
+VirtualBox | 1280MB
 VMWare | 1280MB (rancheros.iso) <br> 2048MB (rancheros-vmware.iso)
 GCE |  1280MB
 AWS |  1.7GB
