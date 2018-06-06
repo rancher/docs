@@ -109,9 +109,11 @@ _Cluster roles_ are roles that can be used to grant users access to a cluster. T
 
 ### Locked Roles
 
-Roles can be set to a __Locked__ status by users with the __Administrator__ or __Manage Roles__ permission. When a role is set to __Locked__ that role cannot be assigned to any user (although existing assignments are unaffected). Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a cluster or project.  This is useful when you want to prevent a role from being assigned to all users.
+Roles can be set to a __Locked__ status by __Administrators__ or users with the __Manage Roles__ role. When a role is set to __Locked__ that role cannot be assigned to any user. Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a [cluster](todomark) or [project](todomark). The ability to lock roles is useful in preventing a role from being assigned to any user.
 
-For instance, if your organization had a policy that users assigned to a cluster could not create new projects, then the standard __Cluster Member__ role would be inappropriate. A custom role could be created that mirrored the __Cluster Member__ role, but lacked the ability to create projects. The __Cluster Member__ role could then be marked as __Locked__ so that it could not be assigned to users, and the custom role could be used instead.
+> **Note:** Updating a role to a new status will not change any of the permissions if someone is already assigned that role. By locking a role, the user will still have access to the permissions associated with that role, but no new users will be able to be assigned that particular role.
+
+For example, if your organization had a policy that users assigned to a cluster are not allowed to create new projects, then the __Cluster Owner__, __Cluster Member__ and __Create Projects__ role would need to be __locked__ to prevent anyone being assigned the permissions associated with creating a new project. Only administrators would be able to create new projects in clusters. To assign users to the cluster, the administrator would need to create a custom role that could have the same permissions as a __Cluster Member__ except for the ability to create projects. Then, the new custom role could be used when adding users to a cluster.
 
 ##### Custom Cluster Roles
 
