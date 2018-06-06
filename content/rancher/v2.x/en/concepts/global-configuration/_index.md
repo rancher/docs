@@ -181,13 +181,6 @@ The following table lists each built-in custom project role available in Rancher
 
 > **Note:** Each project role listed above, including Owner, Member, and Read Only, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
-
-<!-- ### Protected Roles
-
-Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous, just add the info to 'global permissions'.
-
--->
-
 ## Rancher Server URL
 
 This is the URL of your Rancher Server. All nodes in your cluster must resolve to this URL.
