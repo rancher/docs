@@ -3,7 +3,7 @@ title: Node Drivers
 weight: 3050
 ---
 
-**Prerequisites:** In order to create, edit, or delete _Node Drivers_ you will need to have the _Administrator_ or _Manage Node Drivers_ permission.
+**Prerequisites:** In order to create, edit, or delete _Node Drivers_, the user needs to be the [_Administrator_ global permission](todomark - link to concept of admin permission) or a [_Standard User_](todomark - link to concept of standard user permission) with the [_Manage Node Drivers_ role](todomark - link to concept of custom roles).
 
 ## Adding Custom Node Drivers
 
