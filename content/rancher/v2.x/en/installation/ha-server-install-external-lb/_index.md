@@ -68,15 +68,25 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
 
-### Host requirements
+### Requirements
+
+#### Operating System 
 
 {{< requirements_os >}}
 
+#### Hardware 
+
 {{< requirements_hardware >}}
+
+#### Software 
 
 {{< requirements_software >}}
 
-{{< requirements_ports >}}
+{{< note_server-tags >}}
+
+#### Ports
+
+The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
 

@@ -64,19 +64,30 @@ Installation of Rancher in a high-availability configuration involves multiple p
 	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
 <br/>
+
 ## 1. Provision Linux Hosts
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
 
-### Host requirements
+### Host Requirements
+
+#### Operating System
 
 {{< requirements_os >}}
 
+#### Hardware
+
 {{< requirements_hardware >}}
+
+#### Software
 
 {{< requirements_software >}}
 
-{{< requirements_ports >}}
+{{< note_server-tags >}}
+
+#### Ports
+
+The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
 
