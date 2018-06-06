@@ -64,6 +64,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
 <br/>
+
 ## 1. Provision Linux Hosts
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
