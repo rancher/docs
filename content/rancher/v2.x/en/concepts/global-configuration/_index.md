@@ -200,7 +200,7 @@ Locked roles:
 Roles can be locked by the following users:
 
 - Any user assigned the `Administrator` global permission.
-- Any user assigned the `Standard Users` or `Custom Users` permission, along with the `Manage Roles` role.
+- Any user assigned the `Custom Users` permission, along with the `Manage Roles` role.
 
 ## Rancher Server URL
 
