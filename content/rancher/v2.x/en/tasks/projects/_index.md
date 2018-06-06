@@ -43,7 +43,7 @@ Logging for individual projects can be configured separately from logging at the
 
 4. Click **Save**.
 
-5. After a brief period of time, logs originating from the project are forwarded to the configured target.
+**Result:** After a brief period of time, logs originating from the project are forwarded to the configured target.
 
 ## Adding Project Alerts
 
