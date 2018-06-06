@@ -28,19 +28,23 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 ### Requirements
 
+#### Operating System 
+
 {{< requirements_os >}}
 
+#### Hardware 
+
 {{< requirements_hardware >}}
+
+#### Software 
 
 {{< requirements_software >}}
 
 {{< note_server-tags >}}
 
-<a id="port-requirements"></a>
+#### Ports
 
-#### Port Requirements
-
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/_index.md)
+The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
 
@@ -49,7 +53,7 @@ The following diagram depicts the basic port requirements for Rancher. For a com
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 >**Attention Air Gap Users:**
-> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
+> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
 >
 > Example:
 ```
