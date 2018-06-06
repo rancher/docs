@@ -66,7 +66,7 @@ Fill me in Craig!
 
 ### Locked Roles
 
-Roles can be set to a __Locked__ status by __Administrators__ or users with the __Manage Roles__ role. When a role is set to __Locked__ that role cannot be assigned to any user. Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a [cluster](todomark) or [project](todomark). The ability to lock roles is useful in preventing a role from being assigned to any user.
+Roles can be set to a __locked__ status by users with the __Administrators__ global permission or  __Standard Users__ with the __Manage Roles__ role. When a role is set to __locked__ that role cannot be assigned to any user. Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a [cluster](todomark) or [project](todomark). The ability to lock roles is useful in preventing a role from being assigned to any user.
 
 > **Note:** Updating a role to a new status will not change any of the permissions if someone is already assigned that role. By locking a role, the user will still have access to the permissions associated with that role, but no new users will be able to be assigned that particular role.
 
