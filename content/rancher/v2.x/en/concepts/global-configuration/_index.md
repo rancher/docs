@@ -20,23 +20,20 @@ However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication accounts for managing Rancher under rare circumstances, such as if Active Directory is down.
 
-## Users and Roles
+## Users, Global Permissions, and Roles
 
 Within Rancher, each user authenticates as a _user_, which is an object that grants you access within the Rancher system. As mentioned in the previous sections, users can either be local or external.
 
-Once the user logs in to Rancher, their _authorization_, or their access rights within the system, are determined by _permissions_.  Permissions are sets of access rights that you can perform in Rancher.
+Once the user logs in to Rancher, their _authorization_, or their access rights within the system, are determined by _global permissions_ and _cluster and project roles_.  
 
-There are two types of roles in Rancher: default permissions and custom permissions.
+- _Global Permissions_ define what actions a user can complete outside the scope of any particular cluster.
+- _Cluster and Project Roles_ define what actions a user can complete inside the specific cluster or project where they have been granted the role.
 
-<!-- ### Rancher Role Implementation
-
-	Fill me in Craig!
-
--->
+Both global permissions and cluster and project roles are implemented on top of [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). So, all enforcement of these permissions and roles is performed by Kubernetes.
 
 ### Global Permissions
 
-_Global Permissions_ define what actions a user can complete outside the scope of any particular cluster. There are two primary global permissions: `Administrator` and `Standard User`.
+Global Permissions define what actions a user can complete outside the scope of any particular cluster. There are two primary global permissions: `Administrator` and `Standard User`.
 
 - **Administrator:**
 
@@ -48,7 +45,7 @@ _Global Permissions_ define what actions a user can complete outside the scope o
 
 >**Note:** You cannot create, update, or delete Global Permissions.
 
-### Global Permission Assignment
+#### Global Permission Assignment
 
 - **External Authentication**
 
@@ -58,29 +55,15 @@ _Global Permissions_ define what actions a user can complete outside the scope o
 
     When you create a new local user, you assign them one or more global permission(s) as you create complete the **Add User** form.
 
-<!-- ### Projects and Clusters: Automatic Role Assignment 
+#### Custom Global Permissions
 
-Fill me in Craig!
+Rancher lets you assign _custom permissions_ to a user instead of the typical `Administrator` or `Standard User` permissions. These permissions are convenient for defining narrow or specialized access for a user within Rancher. See the table below for a list of custom global permission available.
 
--->
+#### Global Permissions Reference
 
-<!-- ### Protected Roles
+The following table lists each custom global permission available in Rancher and whether it is also granted by Rancher's two global permissions, `Administrator` and `Standard User`.
 
-Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous, just add the info to 'global permissions'.
-
--->
-
-### Custom Permissions
-
-Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
-
-![Custom Permissions]({{< baseurl >}}/img/rancher/permissions.png)
-
-### Permissions Reference
-
-The following table lists each role available in Rancher and whether it's assigned to Rancher's two global permissions, `Administrator` and `Standard User`.
-
-| Role                               | Administrator | Standard User |
+| Custom Global Permission           | Administrator | Standard User |
 | ---------------------------------- | ------------- | ------------- |
 | Manage Authentication              | ✓             |               |
 | Manage Catalogs                    | ✓             |               |
@@ -92,17 +75,110 @@ The following table lists each role available in Rancher and whether it's assign
 | User Catalog Templates             | ✓             | ✓             |
 | Login Access                       | ✓             | ✓             |
 
-### Role Aggregation
+> **Note:** Each Rancher permission listed above is comprised of multiple access rules not available in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalroles`.
 
-Each Rancher permission listed above is comprised of multiple, smaller roles not available in the Rancher UI. For a full list of roles, access through the API at `/v3/globalroles`.
+### Cluster and Project Roles
 
-### Membership
+Cluster and project roles define what actions a user can complete inside a cluster or project. These roles can be managed by administrators on the Global > Security > Roles page. From this page an adminisrator can:
 
-The projects and clusters accessible to a standard or custom users is determined by _membership_. Membership is a list of users who have access to a specific project or cluster. Each project and cluster includes a tab that Rancher administrators can use to assign membership.
+- Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce)
+- Create and manage new roles for use across all clusters and projects
 
-Non-administrative users do not have access to any existing projects/clusters by default. An administrator must explicitly assign membership to the user.
+#### Membership and Role Assignment
 
-<!-- Craig! Add supplemental information about Role Context here is necessary (Different Roles for Cluster, Project) -->
+The projects and clusters accessible to non-administrative user is determined by _membership_. Membership is a list of users who have access to a specific cluster or project based on the roles they were assigned in that cluster or project. Each cluster and project includes a tab that a user with the appropriate permissions can use to manage membership.
+
+When a user creates a cluster or project, Rancher automatically assigns them the Owner role in it. The owner can assign other users roles in the cluster or project while creating it or afterwards.
+
+> **Note:** Non-administrative users do not have access to any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign membership to the user.
+
+#### Cluster Roles
+
+_Cluster roles_ are roles that can be used to grant users access to a cluster. There are two primary cluster roles: `Owner` and `Member`.
+
+- **Owner:**
+
+    These users have full control over the cluster and all resources in it.
+
+- **Member:**
+
+    These users can view most cluster level resources and create new projects.
+
+
+##### Custom Cluster Roles
+
+Rancher lets you assign _custom cluster roles_ to a user instead of the typical `Owner` or `Member` roles. These roles can be either a built-in custom cluster role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a user within a cluster. See the table below for a list of built-in custom cluster roles.
+
+##### Cluster Role Reference
+
+The following table lists each built-in custom cluster role available in Rancher and whether it is also granted by the `Owner` or `Member` role.
+
+| Custom Cluster Role                | Owner         | Member        |
+| ---------------------------------- | ------------- | ------------- |
+| Manage Cluster Members             | ✓             |               |
+| Manage Nodes                       | ✓             |               |
+| Manage Storage                     | ✓             |               |
+| View All Projects                  | ✓             |               |
+| Create Project                     | ✓             | ✓             |
+| View Cluster Members               | ✓             | ✓             |
+| View Nodes                         | ✓             | ✓             |
+
+> **Note:** Each cluster role listed above, including Owner and Member, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
+
+
+#### Project Roles
+
+_Project roles_ are roles that can be used to grant users access to a project. There are three primary project roles: `Owner`, `Member`, and `Read Only`.
+
+- **Owner:**
+
+    These users have full control over the projet and all resources in it.
+
+- **Member:**
+
+    These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
+
+- **Read Only:**
+
+    These users can view everything in the project but cannot create, update, or delete anything.
+
+
+##### Custom Project Roles
+
+Rancher lets you assign _custom project roles_ to a user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project roles or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a user within a project. See the table below for a list of built-in custom project roles.
+
+##### Project Role Reference
+
+The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
+
+| Custom Cluster Role                | Owner         | Member        | Read Only     |
+| ---------------------------------- | ------------- | ------------- | ------------- | 
+| Manage Project Members             | ✓             |               |               |
+| Create Namespaces                  | ✓             | ✓             |               |
+| Manage Config Maps                 | ✓             | ✓             |               |
+| Manage Ingress                     | ✓             | ✓             |               |
+| Manage Secrets                     | ✓             | ✓             |               |
+| Manage Service Accounts            | ✓             | ✓             |               |
+| Manage Services                    | ✓             | ✓             |               |
+| Manage Volumes                     | ✓             | ✓             |               |
+| Manage Workloads                   | ✓             | ✓             |               |
+| View Config Maps                   | ✓             | ✓             | ✓             |
+| View Ingress                       | ✓             | ✓             | ✓             |
+| View Project Members               | ✓             | ✓             | ✓             |
+| View Secrets                       | ✓             | ✓             | ✓             |
+| View Service Accounts              | ✓             | ✓             | ✓             |
+| View Services                      | ✓             | ✓             | ✓             |
+| View Volumes                       | ✓             | ✓             | ✓             |
+| View Workloads                     | ✓             | ✓             | ✓             |
+
+> **Note:** Each project role listed above, including Owner, Member, and Read Only, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
+
+
+<!-- ### Protected Roles
+
+Nathan! Fill me in! If 'global permissions' and 'protected roles' are synonymous, just add the info to 'global permissions'.
+
+-->
 
 ## Rancher Server URL
 
