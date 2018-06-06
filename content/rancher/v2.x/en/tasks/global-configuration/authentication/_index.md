@@ -108,6 +108,7 @@ You have three options for user authentication in {{< product >}}:
 	openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
 	```
 
+4. After configuring this, Rancher redirects you to the IDP's login form. Enter your AD user creds here (AD that's added to Ping IDP). This will log you in and return back to the Rancher UI.
 
 <!-- ### Configuring OpenLDAP
 
