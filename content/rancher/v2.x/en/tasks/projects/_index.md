@@ -29,18 +29,21 @@ Coming Soon
 
 Logging for individual projects can be configured separately from logging at the cluster level. 
 
-### To enable project logging within Rancher:
+1. Select the project that you want to enable logging for.
 
-* Navigate to the desired project
-* Select `Resources > Logging` from the navigation bar
-* Select and configure the desired logging target from the options presented at the top of the page
-* Click `Save`, located below the configuration fields
-* After a brief period of time, logs originating from the project will be forwarded to the configured target.
+2. From the navigation menu, select **Resources > Logging**.
 
-### Configuration Notes:
+3. Choose the service that you want to use to log your project. Then complete the form.
 
-* The configured logging target must be available and ready to access through its endpoint
-* Custom log fields (key/value pairs) can be included in the forwarded logs to assist in filtering. These are available to all logging targets.
+  >**Notes:**
+  >
+  >* The configured logging service must be available and ready to access through its endpoint.
+  >* Custom log fields (key/value pairs) can be included in the forwarded logs to assist in filtering. These are available    to all logging targets.
+
+
+4. Click **Save**.
+
+5. After a brief period of time, logs originating from the project are forwarded to the configured target.
 
 ## Adding Project Alerts
 
