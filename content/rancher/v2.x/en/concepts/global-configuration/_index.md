@@ -7,7 +7,9 @@ After installing Rancher 2.0, you should configure it to support your users and 
 ## Authentication
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
 
-This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
+This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed along with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
+
+<!-- todomark add diagram -->
 
 ### External vs. Local Authentication
 
@@ -22,18 +24,23 @@ In most cases, you should use an external authentication service over local, as 
 
 ## Users, Global Permissions, and Roles
 
-Within Rancher, each user authenticates as a _user_, which is an object that grants you access within the Rancher system. As mentioned in the previous sections, users can either be local or external.
+Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned previously, users can either be local or external.
 
-Once the user logs in to Rancher, their _authorization_, or their access rights within the system, are determined by _global permissions_ and _cluster and project roles_.  
+Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.  
 
-- _Global Permissions_ define what actions a user can complete outside the scope of any particular cluster.
-- _Cluster and Project Roles_ define what actions a user can complete inside the specific cluster or project where they have been granted the role.
+- **Global Permissions:**
 
-Both global permissions and cluster and project roles are implemented on top of [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). So, all enforcement of these permissions and roles is performed by Kubernetes.
+    Define user authorization outside the scope of any particular cluster.
+
+- **Cluster and Project Roles:**
+
+    Define user authorization inside the specific cluster or project where they are assigned the role.
+
+Both global permissions and cluster and project roles are implemented on top of [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). Therefore, enforcement of permissions and roles is performed by Kubernetes.
 
 ### Global Permissions
 
-Global Permissions define what actions a user can complete outside the scope of any particular cluster. There are two primary global permissions: `Administrator` and `Standard User`.
+Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `Standard User`.
 
 - **Administrator:**
 
@@ -47,23 +54,27 @@ Global Permissions define what actions a user can complete outside the scope of 
 
 #### Global Permission Assignment
 
+Assignment of global permissions to a user depends on their authentication source: external or local.
+
 - **External Authentication**
 
-    When a user logs in using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission.
+    When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission.
 
 - **Local Authentication**
 
-    When you create a new local user, you assign them one or more global permission(s) as you create complete the **Add User** form.
+    When you create a new local user, you assign them a global permission as you create complete the **Add User** form.
 
 #### Custom Global Permissions
 
-Rancher lets you create _custom permissions_, which are sets of permissions where you can assign individual roles to users. _Roles_ are individual access rights that you can assign to a set of custom permissions. These permissions are convenient for defining narrow or specialized access to a user within Rancher. See the table below for a list of custom roles permission available.
+Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them _custom permissions_. Custom permissions are sets of global permissions composed of individual _permissions_ that you select.
 
-Rancher lets you assign _custom permissions_ to a user instead of the typical `Administrator` or `Standard User` permissions. These permissions are convenient for defining narrow or specialized access for a user within Rancher. See the table below for a list of custom global permission available.
+_Permissions_ are individual access rights that you can assign to a custom global permissions.
+
+Custom permissions are convenient for providing users with narrow or specialized access to Rancher. See the [table](#global-permissions-reference) below for a list of individual permissions available.
 
 #### Global Permissions Reference
 
-The following table lists each custom global permission available in Rancher and whether it is also granted by Rancher's two global permissions, `Administrator` and `Standard User`.
+The following table lists each custom global permission available and whether it is assigned to the default global permissions, `Administrator` and `Standard User`.
 
 | Custom Global Permission           | Administrator | Standard User |
 | ---------------------------------- | ------------- | ------------- |
@@ -77,26 +88,26 @@ The following table lists each custom global permission available in Rancher and
 | User Catalog Templates             | ✓             | ✓             |
 | Login Access                       | ✓             | ✓             |
 
-> **Note:** Each Rancher permission listed above is comprised of multiple access rules not available in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalroles`.
+> **Note:** Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalroles`.
 
 ### Cluster and Project Roles
 
-Cluster and project roles define what actions a user can complete inside a cluster or project. These roles can be managed by administrators on the Global > Security > Roles page. From this page an adminisrator can:
+Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page. From this page you can:
 
-- Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce)
-- Create and manage new roles for use across all clusters and projects
+- Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce).
+- Create and manage new roles for use across all clusters and projects.
 
 #### Membership and Role Assignment
 
 The projects and clusters accessible to non-administrative user is determined by _membership_. Membership is a list of users who have access to a specific cluster or project based on the roles they were assigned in that cluster or project. Each cluster and project includes a tab that a user with the appropriate permissions can use to manage membership.
 
-When a user creates a cluster or project, Rancher automatically assigns them the Owner role in it. The owner can assign other users roles in the cluster or project while creating it or afterwards.
+When you create a cluster or project, Rancher automatically assigns you the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
-> **Note:** Non-administrative users do not have access to any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign membership to the user.
+> **Note:** Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the user membership.
 
 #### Cluster Roles
 
-_Cluster roles_ are roles that can be used to grant users access to a cluster. There are two primary cluster roles: `Owner` and `Member`.
+_Cluster roles_ are roles that you can assign to users, granting them access to a cluster. There are two primary cluster roles: `Owner` and `Member`.
 
 - **Owner:**
 
@@ -105,15 +116,6 @@ _Cluster roles_ are roles that can be used to grant users access to a cluster. T
 - **Member:**
 
     These users can view most cluster level resources and create new projects.
-
-
-### Locked Roles
-
-Roles can be set to a __locked__ status by users with the __Administrators__ global permission or  __Standard Users__ with the __Manage Roles__ role. When a role is set to __locked__ that role cannot be assigned to any user. Locked roles will not appear in the __Member Roles__ dropdown when adding a user to a [cluster](todomark) or [project](todomark). The ability to lock roles is useful in preventing a role from being assigned to any user.
-
-> **Note:** Updating a role to a new status will not change any of the permissions if someone is already assigned that role. By locking a role, the user will still have access to the permissions associated with that role, but no new users will be able to be assigned that particular role.
-
-For example, if your organization had a policy that users assigned to a cluster are not allowed to create new projects, then the __Cluster Owner__, __Cluster Member__ and __Create Projects__ role would need to be __locked__ to prevent anyone being assigned the permissions associated with creating a new project. Only administrators would be able to create new projects in clusters. To assign users to the cluster, the administrator would need to create a custom role that could have the same permissions as a __Cluster Member__ except for the ability to create projects. Then, the new custom role could be used when adding users to a cluster.
 
 ##### Custom Cluster Roles
 
@@ -135,7 +137,6 @@ The following table lists each built-in custom cluster role available in Rancher
 
 > **Note:** Each cluster role listed above, including Owner and Member, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
-
 #### Project Roles
 
 _Project roles_ are roles that can be used to grant users access to a project. There are three primary project roles: `Owner`, `Member`, and `Read Only`.
@@ -152,7 +153,6 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
     These users can view everything in the project but cannot create, update, or delete anything.
 
-
 ##### Custom Project Roles
 
 Rancher lets you assign _custom project roles_ to a user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project roles or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a user within a project. See the table below for a list of built-in custom project roles.
@@ -162,7 +162,7 @@ Rancher lets you assign _custom project roles_ to a user instead of the typical 
 The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
 | Custom Cluster Role                | Owner         | Member        | Read Only     |
-| ---------------------------------- | ------------- | ------------- | ------------- | 
+| ---------------------------------- | ------------- | ------------- | ------------- |
 | Manage Project Members             | ✓             |               |               |
 | Create Namespaces                  | ✓             | ✓             |               |
 | Manage Config Maps                 | ✓             | ✓             |               |
@@ -182,6 +182,25 @@ The following table lists each built-in custom project role available in Rancher
 | View Workloads                     | ✓             | ✓             | ✓             |
 
 > **Note:** Each project role listed above, including Owner, Member, and Read Only, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
+
+#### Locked Roles
+
+You can set roles to a status of `locked`. Locking roles prevent them from being assigned users in the future.
+
+Locked roles:
+
+- Cannot be assigned to users that don't already have it assigned.
+- Are not listed in the **Member Roles** drop-down when you are adding a user to a cluster or project.
+- Do not affect users assigned the role before you lock the role. These users retain access that the role provides.
+
+    **Example:** let's say your organization creates an internal policy that users assigned to a cluster are prohibited from creating new projects. It's your job to enforce this policy.
+
+    To enforce it, before you add new users to the cluster, you should lock the following roles: `Cluster Owner`, `Cluster Member`, and `Create Projects`. Then you could create a new custom role that includes the same permissions as a __Cluster Member__, except the ability to create projects. Then, you use this new custom role when adding users to a cluster.
+
+Roles can be locked by the following users:
+
+- Any user assigned the `Administrator` global permission.
+- Any user assigned the `Standard Users` or `Custom Users` permission, along with the `Manage Roles` role.
 
 ## Rancher Server URL
 
