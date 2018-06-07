@@ -2,7 +2,7 @@
 title: Authentication
 weight: 3075
 ---
-You have three options for user authentication in {{< product >}}:
+You have six options for user authentication in {{< product >}}:
 
 -	**Active Directory**: Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
 
@@ -10,9 +10,11 @@ You have three options for user authentication in {{< product >}}:
 
 <!-- - **SAML**:
 
-- **OpenLDAP**:
+
 
 - **Azure AD**: -->
+
+- **OpenLDAP**: Enterprises can use open source implementation of Light Directory Access Protocol (LDAP) for managing their users' access privileges.
 
 -	**Basic Authentication**: If you don't want to use external authentication, you can always add users directly to {{< product >}}. We recommend using external authentication over basic authentication.
 
@@ -90,9 +92,20 @@ You have three options for user authentication in {{< product >}}:
 
 Rajashree! Content here. -->
 
-<!-- ### Configuring OpenLDAP
+### Configuring OpenLDAP
+Please refer to **Configuring Active Directory** part on this page for creating service account as prerequisites, TLS and concepts about User Search Base vs. Group Search Base.
 
-Carolyn! Content here -->
+1.	From the **Global** view, select **Security > Authentication** from the main menu.
+
+2.	Select **OpenLDAP** icon.
+
+3.	Complete the **Configure an OpenLDAP server** form.
+
+	You may need to log in to your domain controller to find the information requested in the form.
+
+4.	If your OpenLDAP deviates from the standard OpenLDAP schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
+
+5.	Enter your OpenLDAP username and password in **Test and enable authentication** to confirm that Rancher is configured to use OpenLDAP authentication.
 
 <!-- ### Configuring Azure AD
 
