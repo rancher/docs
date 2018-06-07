@@ -14,6 +14,8 @@ pygmentsCodeFencesGuessSyntax=true
 
 [params]
   addThis = "ra-5af1cc6793d86bfb"
+  ### Edit content repo (set to automatically enter "edit" mode; this is good for "improve this page" links)
+  ghdocsrepo = "https://github.com/rancher/docs"
 
 [outputFormats.Search]
 baseName = "search"
