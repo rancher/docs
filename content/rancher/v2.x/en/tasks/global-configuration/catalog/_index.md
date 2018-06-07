@@ -8,13 +8,13 @@ draft: true
 
 Creating a custom catalog for Rancher is very straight forward. The catalogs are hosted in Git repositories and cloned into Rancher on a periodic basis.
 
-The charts themselves are standard Helm templates, with a few differences outlined below.
+The charts themselves are standard [Helm templates](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md), with a few differences outlined below.
 
 ### Rancher Chart Structure
 
 A Rancher chart repository differs slightly in directory structure from upstream repos in that it includes an `app version` directory. Though Rancher can use native Helm repositories as well.
 
-A Rancher chart also has two additional files an `app-readme.md` file that provides a high level overview display in the Rancher 2.0 UI and a `questions.yml` file defining questions to prompt the user with. 
+A Rancher chart also has two additional files an `app-readme.md` file that provides a high level overview display in the Rancher 2.x UI and a `questions.yml` file defining questions to prompt the user with. 
 
 ```
 
@@ -95,7 +95,9 @@ The above file also provides a list of categories that this chart fits into. Thi
 
 **subquestions**: `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported. 
 
-## Adding to Rancher
+## Adding Catalog of Helm Charts to Rancher
+
+Currently, catalogs can only be ad added to Rancher at a global level, which means any catalog added will be shared with all clusters and projects. 
 
 At the global level in Rancher UI
 
@@ -107,3 +109,5 @@ At the global level in Rancher UI
 * Click `Create`
 
 In a few moments, the new catalog will refresh and be availble to launch applications from in projects.
+
+> **Note:** Currently, only unauthenticated catalogs are supported in Rancher.
