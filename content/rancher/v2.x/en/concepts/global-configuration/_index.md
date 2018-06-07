@@ -184,7 +184,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
 - **Owner:**
 
-    These users have full control over the projet and all resources in it.
+    These users have full control over the project and all resources in it.
 
 - **Member:**
 
@@ -252,7 +252,7 @@ This is the URL of your Rancher Server. All nodes in your cluster must resolve t
 
 ## Pod Security Policies
 
-_Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like secrets). Pods only run within Kubernetes if they meet their assigned PSP.
+_Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges). Pods only run within Kubernetes if they meet their assigned PSP.
 
 - You can apply PSPs at the cluster or project level.
 - PSPs work through inheritance.
