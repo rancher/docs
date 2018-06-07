@@ -3,7 +3,10 @@ title: Node Drivers
 weight: 3050
 ---
 
-**Prerequisites:** In order to create, edit, or delete _Node Drivers_, the user needs to be the [_Administrator_ global permission](todomark - link to concept of admin permission) or a [_Standard User_](todomark - link to concept of standard user permission) with the [_Manage Node Drivers_ role](todomark - link to concept of custom roles).
+>**Prerequisites:** To create, edit, or delete drivers, you need _one_ of the following permissions:
+>
+>- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions)
+>- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#custom-global-permissions) with the [Manage Node Drivers]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions-reference) role assigned.
 
 ## Adding Custom Node Drivers
 
