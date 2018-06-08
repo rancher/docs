@@ -2,7 +2,7 @@
 title: Authentication
 weight: 3075
 ---
-You have three options for user authentication in {{< product >}}:
+You have three options for user authentication in Rancher:
 
 -	**Active Directory**: Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
 
@@ -12,7 +12,7 @@ You have three options for user authentication in {{< product >}}:
 
 - **OpenLDAP**:
 
-<<<<<<< HEAD
+
 - **Azure AD**: -->
 
 -	**Basic Authentication**: If you don't want to use external authentication, you can always add users directly to {{< product >}}. We recommend using external authentication over basic authentication.
@@ -20,14 +20,13 @@ You have three options for user authentication in {{< product >}}:
 ### Configuring Active Directory Authentication
 
 In environments using Microsoft Active Directory (AD), you can configure Rancher to allow sign on using AD credentials.
->>>>>>> documenting user account behavior during external auth setup
 
->**Prerequisites:** 
+>**Prerequisites:**
 >
 >- Create a service account in Active Directory with `read-only` access. {{< product >}} uses this account to verify group membership when a user makes a request using an API key.
 >- Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#external-authentication-configuration-and-principal-users).
 
-1.  Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
+1.  Sign into Rancher using a local user assigned `administrator` global permissions (i.e., the _local principal_).
 
 2.	From the **Global** view, select **Security > Authentication** from the main menu.
 
@@ -35,42 +34,33 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 
 4.	Complete the **Configure an Active Directory server** form.
 
-<<<<<<< HEAD
 	You may need to log in to your domain controller to find the information requested in the form.
-=======
+	
 	>**Using TLS?**
- 	>
-	Make sure you have an LDAP certificate installed.
->>>>>>> Update _index.md
-
+ 	>Make sure you have an LDAP certificate installed.
+	<br/>
+	<br/>
 	>**User Search Base vs. Group Search Base**
 	>
-	>When configuring AD authentication, you must enter a search base for your users. This search base allows Rancher to search for users that are in your Active Directory. 
-  
-  > **Note:** This field is only for search bases and not for search filters. 
-  
-		- If your users and groups are in the search base, complete only the User Search Base.
-<<<<<<< HEAD
-		- If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
+	>When configuring AD authentication, you must enter a search base for your users. This search base allows Rancher to search for users that are in your Active Directory.
+    <br/>
+	<br/>
+  	> **Note:** This field is only for search bases and not for search filters.
+	>
+	>- If your users and groups are in the search base, complete only the User Search Base.
+	>- If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
 
-5. Customize Schema section contains some AD specific attributes for users and groups.	
-If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
-From 2.0.1 onwards while setting up AD, under Customize Schema, the Search Attribute for User has three fields `sAMAccountName|sn|givenName`. This means once AD is configured, when the user enters anything in the text box for searching, Rancher queries the AD server and finds that user by sAMAccountName, or last name, or first name. While searching, Rancher performs a begins with search match. This is the default value, but it is configurable.
-Rancher creates search filters for users and groups based on the values of `Search Attribute` for Users and Groups. (Please note, this field does not accept search filters)
+5.	If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
 
-=======
-		- If you want to search for groups in a different search base, you can _optionally_ complete the Group Search Base. This field is dedicated to searching groups, and is **not** required.
-
-4.	If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step. 
-  >**Search Attribute** As of v2.0.1, the search attribute is defaulted with three specific search fields `sAMAccountName|sn|givenName`. After AD is configured, whenver a user enters text to add users or groups, Rancher automatically queries the AD server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text inputted in the search field. 
-  >
-  > The default field is `sAMAccountName|sn|givenName`, but this field can be configured to a subset of these fields. The pipe (`|`) between the fields separates these fields. 
-  > * `sAMAccountName`: Username
-  > * `sn`: Last Name
-  > * `givenName`: First Name
-  >
-  > With this search attribute, Rancher creates search filters for users and groups, but you *cannot* add your own search filters in this field. 
->>>>>>> Update _index.md
+	>**Search Attribute** By default, the Search Attribute field defaults with three specific values: `sAMAccountName|sn|givenName`. After AD is configured, when a user enters text to add users or groups, Rancher automatically queries the AD server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+	>
+	>The default field value `sAMAccountName|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
+	>
+	> * `sAMAccountName`: Username
+	> * `sn`: Last Name
+	> * `givenName`: First Name
+	>
+	> With this search attribute, Rancher creates search filters for users and groups, but you *cannot* add your own search filters in this field.
 
 6.	Enter your AD username and password in **Test and enable authentication** to confirm that Rancher is configured to use AD authentication.
 
@@ -83,7 +73,7 @@ Rancher creates search filters for users and groups based on the values of `Sear
 
 In environments using GitHub, you can configure Rancher to allow sign on using GitHub credentials.
 
-- Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#external-authentication-configuration-and-principal-users)
+>**Prerequisties:** Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#external-authentication-configuration-and-principal-users).
 
 1.  Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
 
@@ -145,4 +135,3 @@ Dan! Content here -->
 1.	From the **Global** view, select **Users** from the main menu.
 
 2.	Click **Add User**. Then complete the **Add User** form. Click **Create** when you're done.
-
