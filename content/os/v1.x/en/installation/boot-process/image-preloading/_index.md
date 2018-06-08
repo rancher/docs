@@ -15,4 +15,20 @@ The resulting files should be placed into `/var/lib/rancher/preload/docker` or `
 
 Pre-loading process only reads each new archive once, so it won't take time on subsequent boots (`<archive>.done` files are created to mark the read archives). If you update the archive (place a newer archive with the same name) it'll get read on the next boot as well.
 
+Pre-loading process is `asynchronous` by default, optionally this can be set to `synchronous` through the cloud-config file or `ros config set` command. In the following example, we’ll use the cloud-config file and `ros config set` command to set RancherOS pre-loading process to `synchronous`.
+
+_Available as of v1.4_
+
+cloud-config file, e.g.:
+```
+#cloud-config
+rancher:
+  preload_wait: true
+```
+
+`ros config set` command, e.g.:
+```
+$ ros config set rancher.preload_wait true
+```
+
 Pre-packing docker images is handy when you're customizing your RancherOS distribution (perhaps, building cloud VM images for your infrastructure).
