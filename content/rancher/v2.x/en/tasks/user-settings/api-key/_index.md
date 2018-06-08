@@ -2,14 +2,7 @@
 title: Creating an API Key
 weight: 3725
 draft: true
-alias:
-  -/rancher/v2.x/en/tasks/miscellaneous
 ---
-<!-- Coming Soon
-
-## Deleting a Node Template
-
-Coming Soon -->
 
 Create a Rancher API key so that other applications can make requests to the Rancher API. You can create API keys using the Rancher UI.
 
