@@ -2,15 +2,20 @@
 title: Roles
 weight: 3100
 ---
-While _users_ determine who can log into Rancher, _roles_ determine which Kubernetes API endpoints and Rancher roles that a user can access after login. In other words, roles determine the user's _permissions_ when using Rancher.
+Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
+
+Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
+
+>**Prerequisites:**
+>
+>To complete the tasks on this page, the following permissions are required:
+>
+>- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions).
+>- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions-reference) role assigned.
 
 ## Adding A Custom Role
 
-**Prerequisites:** 
-
-Admin users have the ability to create custom roles. Standard Users do not have the ability to create custom roles. 
-Users need to be created with global permission "Manage Roles" enabled to have the ability to create custom roles.
-
+While Rancher comes out-of-the-box with a set of default user roles, you can also create custom roles to provide users with very specific permissions within Rancher.
 
 1.    From the **Global** view, select **Security** > **Roles** from the main menu.
 
