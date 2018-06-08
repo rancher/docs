@@ -4,22 +4,12 @@ weight: 2400
 draft: true
 ---
 
-## API Keys
+Some users may want to access their Rancher clusters and projects through the Rancher API. Before you can access Rancher through the API, you must generate API keys so that you can authenticate with Rancher externally.
 
-Access to the Rancher API requires API keys. You need to first obtain API keys before you can use the Rancher CLI or write a program to call the Rancher API.
+Before you can use the Rancher CLI or write a program that calls the Rancher API, you must obtain API keys using the Rancher UI.
 
 ### API Keys and User Authentication
 
-After loggin in, authenticated user can generate API keys for accessing Rancher later on. API keys are typically assigned to an application or a project. It is safer to distribute API keys than passwords. The user can revoke access by deleting the API key.
+After logging into Rancher, you can generate API keys for accessing Rancher externally using your user settings. If you need to revoke access to the Rancher API, you can delete the API key.
 
-### API Key Creation
-
-You can create an API key from the UI by clicking the user icon on the top right corner and selecting the "API & Keys" menu item.
-
-1. Click the "Add Key" button on the top of the page.
-2. Provide a description of the API key and select an expiration period. For maximum security select as short an expiration period as possible.
-3. Click "Create" and you will see the API endpoint, access key, secret key, and the bearer token printed on the screen. Bearer token is simply a concatenation of access key and secret key. You need to take note of the information on this screen. Once the screen is dismissed, you will not be able to recover the tokens and keys.
-
-### Delete API Keys
-
-A good practice is to set expiration period as short as possible. You can always delete API keys you no longer need or have been compromised.
+For instructions on how to create an API key, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/tasks/miscellaneous/).
