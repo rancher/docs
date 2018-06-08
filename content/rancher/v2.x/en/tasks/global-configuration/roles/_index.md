@@ -23,35 +23,46 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 3.	**Name** the role.
 
-4.	Assign the role a **Context**. Context determines the scope of permissions assigned to the user. The contexts are:
+4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#locked-roles).
+
+	Locked roles cannot be assigned to users.
+
+	For example, if you want to test a role before widespread implementation, you should lock the role.
+
+5.	Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
 
 	- **All**
 
-		The user can use their assigned permissions regardless of context. The user's permissions are valid in all clusters and projects.
+		The user can use their assigned role regardless of context. The user's role are valid in all clusters and projects.
 
 	- **Cluster**
 
-		The user can use their assigned permissions within a selected cluster.
+		The user can use their assigned role within a selected cluster.
 
 	- **Project**
 
-		The user can use their assigned permissions within a selected project.
+		The user can use their assigned role within a selected project.
 
-5.	Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
+6.	Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
 	You can also choose the individual cURL methods (`Create`, `Delete`, `Get`, etc.) available for use with each endpoint you assign.
 
-6.	Use the **Inherit from a Role** options to assign individual Rancher roles to your custom roles.
+7.	Use the **Inherit from a Role** options to assign individual Rancher roles to your custom roles.
 
-7.    Click **Create**.
+8.    Click **Create**.
+
+## Locking/Unlocking Roles
+
+If you want to prevent a role from being assigned to users, you can set it to a status of `locked`. For more information about what this status means, see [Locked Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#locked-roles).
+
+You can lock roles in two contexts:
+
+- When you're [adding a custom role](#adding-a-custom-role).
+- When you editing an existing role (see below).
 
 
-Locking/Unlocking Roles 
+1. From the **Global** view, select **Security** > **Roles**.
 
-When creating a role , "Locked" field is preselected to "No" which means the role is unlocked and is available to be assigned to users.
+2. From the role that you want to lock (or unlock), select **Vertical Ellipsis (...)** > **Edit**.
 
-Users can choose to lock roles by choosing "Yes" for "Locked" field when creating Roles. When roles are locked , they will be not be available in the 
-set of roles that can be assigned to users. 
-
-Existing roles can also be locked/unlocked by editing the role and setting the locked field to "Yes/No".
-
+3. From the **Locked** option, choose the **Yes** or **No** radio button. Then click **Save**.
