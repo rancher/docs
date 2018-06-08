@@ -103,7 +103,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('static/css'));
 });
 
-const vendors = ['ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
+const vendors = ['zoom.ts', 'ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
 
 gulp.task('build:vendor', () => {
   const b = browserify();
