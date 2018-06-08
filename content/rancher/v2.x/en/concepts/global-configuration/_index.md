@@ -106,11 +106,11 @@ Assignment of global permissions to a user depends on their authentication sourc
 
 #### Custom Global Permissions
 
-Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them _custom permissions_. Custom permissions are sets of global permissions composed of individual _permissions_ that you select.
+Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a custom set of permissions.
 
-_Permissions_ are individual access rights that you can assign to a custom global permissions.
+_Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
-Custom permissions are convenient for providing users with narrow or specialized access to Rancher. See the [table](#global-permissions-reference) below for a list of individual permissions available.
+Using custom permissions is convenient for providing users with narrow or specialized access to Rancher. See the [table below](#global-permissions-reference) for a list of individual permissions available.
 
 #### Global Permissions Reference
 
@@ -134,8 +134,9 @@ The following table lists each custom global permission available and whether it
 
 Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page. From this page you can:
 
-- Lock/unlock roles so that they may not be used in any new role assignments (existing assignments will still be enforce).
-- Create and manage new roles for use across all clusters and projects.
+- Create and manage new roles for use across all clusters and projects
+- [Lock/unlock roles](#locked-roles) so that they may not be used in any new role assignments (existing assignments will still be enforce)
+
 
 #### Membership and Role Assignment
 
@@ -183,7 +184,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
 - **Owner:**
 
-    These users have full control over the projet and all resources in it.
+    These users have full control over the project and all resources in it.
 
 - **Member:**
 
@@ -251,7 +252,15 @@ This is the URL of your Rancher Server. All nodes in your cluster must resolve t
 
 ## Pod Security Policies
 
-_Pod Security Policies_ are objects that control security-sensitive aspects of pod specification. Pods only run within Kubernetes if they meet the conditions specified in their assigned Pod Security Policy.
+_Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges). If a pod does not meet the conditions specified in the PSP, Kubernetes will not allow it to start, and Rancher will display an error message of `Pod <NAME> is forbidden: unable to validate...`.
+
+- You can assign PSPs at the cluster or project level.
+- PSPs work through inheritance.
+
+    - By default, PSPs assigned to a cluster are inherited by its projects, as well as any namespaces added to those projects.
+    - **Exception:** Namespaces that are not assigned to projects do not inherit PSPs, regardless of whether the PSP is assigned to a cluster or project. Because these namespaces have no PSPs, workload deployments to these namespaces will fail, which is the default Kubernetes behavior.
+    - You can override the default PSP by assigning a different PSP directly to the project.
+- Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
 
 Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
