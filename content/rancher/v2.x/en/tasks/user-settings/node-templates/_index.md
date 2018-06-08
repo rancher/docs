@@ -1,6 +1,5 @@
 ---
 title: Managing Node Templates
-weight: 3725
+weight: 3727
 draft: true
 ---
-
