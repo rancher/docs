@@ -260,6 +260,7 @@ _Pod Security Policies_ (or PSPs) are objects that control security-sensitive as
     - By default, PSPs assigned to a cluster are inherited by its projects, as well as any namespaces added to those projects.
     - **Exception:** Namespaces that are not assigned to projects do not inherit PSPs, regardless of whether the PSP is assigned to a cluster or project. Because these namespaces have no PSPs, workload deployments to these namespaces will fail, which is the default Kubernetes behavior.
     - You can override the default PSP by assigning a different PSP directly to the project.
+- Any workloads that are already running in a cluster or project are exempt from PSPs assigned afterwards. If you want to apply the PSP to workloads that are already running, we recommend cloning them (or upgrading them, if an upgrade is available). Delete any stale workloads that remain.
 
 Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
