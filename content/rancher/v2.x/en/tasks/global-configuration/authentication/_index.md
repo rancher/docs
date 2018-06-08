@@ -39,11 +39,15 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 
 	>**User Search Base vs. Group Search Base**
 	>
-	>When configuring AD authentication, you must enter a search base for your users. This base allows Rancher to search for users that are in your Active Directory.
+	>When configuring AD authentication, you must enter a search base for your users. This base allows Rancher to search for users that are in your Active Directory. (Please note, this field is only for seach bases and not for search filters)
 		- If your users and groups are in the search base, complete only the User Search Base.
 		- If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
 
-5.	If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
+5. Customize Schema section contains some AD specific attributes for users and groups.	
+If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
+From 2.0.1 onwards while setting up AD, under Customize Schema, the Search Attribute for User has three fields `sAMAccountName|sn|givenName`. This means once AD is configured, when the user enters anything in the text box for searching, Rancher queries the AD server and finds that user by sAMAccountName, or last name, or first name. While searching, Rancher performs a begins with search match. This is the default value, but it is configurable.
+Rancher creates search filters for users and groups based on the values of `Search Attribute` for Users and Groups. (Please note, this field does not accept search filters)
+
 
 6.	Enter your AD username and password in **Test and enable authentication** to confirm that Rancher is configured to use AD authentication.
 
@@ -57,7 +61,6 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 In environments using GitHub, you can configure Rancher to allow sign on using GitHub credentials.
 
 - Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#external-authentication-configuration-and-principal-users)
-
 
 1.  Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
 
@@ -120,9 +123,3 @@ Dan! Content here -->
 
 2.	Click **Add User**. Then complete the **Add User** form. Click **Create** when you're done.
 
-
-<!-- ## Finding User Accounts 
-
-Rajashree! Content here.
-
--->
