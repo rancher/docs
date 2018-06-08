@@ -1,6 +1,6 @@
 ---
 title: Roles
-weight: 3100
+weight: 100
 ---
 Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
 
@@ -10,8 +10,8 @@ Note that _roles_ are different from _permissions_, which determine what cluster
 >
 >To complete the tasks on this page, the following permissions are required:
 >
->- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions).
->- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#global-permissions-reference) role assigned.
+>- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#global-permissions).
+>- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#global-permissions-reference) role assigned.
 
 ## Adding A Custom Role
 
@@ -23,7 +23,7 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 3.	**Name** the role.
 
-4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#locked-roles).
+4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#locked-roles).
 
 	Locked roles cannot be assigned to users.
 

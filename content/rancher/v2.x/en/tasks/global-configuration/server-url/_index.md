@@ -1,6 +1,6 @@
 ---
 title: Rancher Server URL
-weight: 3125
+weight: 25
 ---
 ## Updating the {{< product >}} Server URL
 

@@ -1,6 +1,6 @@
 ---
 title: Password Reset
-weight: 3175
+weight: 75
 draft: true
 ---
 

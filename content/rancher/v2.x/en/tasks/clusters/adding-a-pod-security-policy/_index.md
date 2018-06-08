@@ -15,7 +15,7 @@ You can add a Pod Security Policy (PSPs hereafter) in the following contexts:
 
 > **Note:** We recommend adding PSPs during cluster and project creation instead of adding it to an existing one. 
 
-For more information about PSPs, refer to [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#pod-security-policies).
+For more information about PSPs, refer to [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/pod-security-policies).
 
 ## Cluster Creation: Adding a Default Pod Security Policy
 
