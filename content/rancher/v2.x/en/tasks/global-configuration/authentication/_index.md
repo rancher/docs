@@ -1,6 +1,6 @@
 ---
 title: Authentication
-weight: 3075
+weight: 50
 ---
 You have three options for user authentication in Rancher:
 

@@ -1,6 +1,6 @@
 ---
 title: Pod Security Policies
-weight: 3150
+weight: 125
 ---
 
 ## Creating Pod Security Policies
