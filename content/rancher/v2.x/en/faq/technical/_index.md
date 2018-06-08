@@ -22,20 +22,37 @@ New password for default admin user (user-xxxxx):
 
 #### How can I enable debug logging?
 
-Single node install:
+* Single node install
+ * Enable
 ```
 $ docker exec -ti <container_id> loglevel --set debug
 OK
 $ docker logs -f <container_id>
 ```
 
-High Availability install:
+ * Disable
+```
+$ docker exec -ti <container_id> loglevel --set info
+OK
+```
+
+
+* High Availability install
+ * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set debug
 OK
 $ kubectl --kubeconfig $KUBECONFIG logs -n cattle-system -f $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name="cattle-server") | .metadata.name')
 ```
+
+ * Disable
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set info
+OK
+```
+
 
 #### My ClusterIP does not respond to ping
 
