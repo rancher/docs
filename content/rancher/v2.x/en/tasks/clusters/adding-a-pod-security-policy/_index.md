@@ -13,16 +13,18 @@ You can add a Pod Security Policy (PSPs hereafter) in the following contexts:
 - [When creating a project](#project-creation--adding-a-pod-security-policy)
 - [When editing an existing project](#existing-project--adding-a-pod-security-policy)
 
+> **Note:** We recommend adding PSPs during cluster and project creation instead of adding it to an existing one. 
+
 For more information about PSPs, refer to [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#pod-security-policies).
 
 ## Cluster Creation: Adding a Default Pod Security Policy
 
-When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP.
+When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. The PSP assigned to the cluster will be the default PSP for projects within the cluster.
 
 >**Prerequisite:**
 >Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
 >**Note:** 
->For security purposes, we recommend assiging a PSP as you create your clusters. However, this best practice is secondary to creating the cluster.
+>For security purposes, we recommend assiging a PSP as you create your clusters. 
 
 To enable a default Pod Security Policy, set the **Pod Security Policy Support** option to  **Enabled**, and then make a selection from the **Default Pod Security Policy** drop-down.
 
@@ -43,7 +45,7 @@ If you don't apply a PSP as you create your cluster, you can always add one late
 
 3. From **Pod Security Policy Support**, select **Enabled**.
 
-    >**Note:** Not all cloud providers support PSPs, so this option may not be available.
+    >**Note:** Not all cluster providers support PSPs, so this option may not be available.
 
     **Step Result:** The **Default Pod Security Policy** drop-down activates.
 
@@ -53,15 +55,15 @@ If you don't apply a PSP as you create your cluster, you can always add one late
 
 **Result:** The PSP is applied to the cluster and any projects within the cluster.
 
->**Note:** Any workloads that are already running in a cluster are exempt from PSPs assigned afterwards. If you want to apply the PSP to workloads that are already running, we recommend cloning the workloads (or upgrading them, if an upgrade is available). Delete any stale workloads that remain.
+>**Note:** Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
 
 ## Project Creation: Adding a Pod Security Policy
 
 When you create a new project, you can assign a PSP directly to the project. Assigning a PSP to a project will:
 
+- Override the cluster's default PSP.
 - Apply the PSP to project.
 - Apply the PSP to any namespaces you add to the project later.
-- Override the cluster's default PSP.
 
 >**Prerequisites:**
 >- Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new project, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
@@ -91,4 +93,4 @@ You can always assign a PSP to an existing project if you didn't assign one duri
 
 **Result:** The PSP is applied to the project and any namespaces added to the project. 
 
->**Note:** Any workloads that are already running in a project are exempt from PSPs assigned afterwards. If you want to apply the PSP to workloads that are already running, we recommend cloning the workloads (or upgrading them, if an upgrade is available). Delete any stale workloads that remain.
+>**Note:** Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
