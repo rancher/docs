@@ -10,6 +10,6 @@ Before you can use the Rancher CLI or write a program that calls the Rancher API
 
 ### API Keys and User Authentication
 
-After logging into Rancher, you can generate API keys for accessing Rancher externally using your user settings. Typically, you should assign API keys to an application or a project. Using API keys for authentication is more secure than using passwords. If you need to revoke access to the Rancher API, you can delete the API key.
+After logging into Rancher, you can generate API keys for accessing Rancher externally using your user settings. If you need to revoke access to the Rancher API, you can delete the API key.
 
 For instructions on how to create an API key, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/tasks/miscellaneous/).
