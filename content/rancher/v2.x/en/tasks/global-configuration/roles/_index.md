@@ -27,21 +27,19 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 	Locked roles cannot be assigned to users.
 
-	For example, if you want to test a role before widespread implementation, you should lock the role.
-
 5.	Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
 
 	- **All**
 
-		The user can use their assigned role regardless of context. The user's role are valid in all clusters and projects.
+		The user can use their assigned role regardless of context. This role is valid for assignment when adding/managing members to clusters or projects.
 
 	- **Cluster**
 
-		The user can use their assigned role within a selected cluster.
+		This role is valid for assignment when adding/managing members to _only_ clusters.
 
 	- **Project**
 
-		The user can use their assigned role within a selected project.
+		This role is valid for assignment when adding/managing members to _only_ projects.
 
 6.	Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
