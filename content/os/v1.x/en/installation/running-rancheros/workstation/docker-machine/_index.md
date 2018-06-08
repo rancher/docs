@@ -13,7 +13,7 @@ Get the latest `rancheros.iso` artifact from the RancherOS [releases](https://gi
 
 ### Using Docker Machine
 
-You can use Docker Machine to launch VMs for various providers. Currently only VirtualBox and AWS are supported.
+You can use Docker Machine to launch VMs for various providers. Currently VirtualBox and VMWare(VMWare VSphere, VMWare Fusion) and AWS are supported.
 
 #### Using Docker Machine with VirtualBox
 
@@ -42,6 +42,47 @@ $ VBoxManage list runningvms | grep <MACHINE-NAME>
 ```
 
 This command will print out the newly created machine. If not, something went wrong with the provisioning step.
+
+#### Using Docker Machine with VMWare VSphere
+
+_Available as of v1.4_
+
+Before moving forward, you’ll need to have VMWare VSphere installed. Once you have VMWare VSphere and Docker Machine installed, it’s just one command to get RancherOS running.
+
+```
+$ docker-machine create --driver vmwarevsphere --vmwarevsphere-username=<USERNAME> --vmwarevsphere-password=<PASSWORD> --vmwarevsphere-memory-size=<MEMORY-SIZE> --vmwarevsphere-boot2docker-url=<LOCATION-OF-RANCHEROS-VMWARE-ISO> --vmwarevsphere-vcenter=<IP-ADDRESS> --vmwarevsphere-vcenter-port=<PORT> --vmwarevsphere-disk-size=<DISK-SIZE> <MACHINE-NAME>
+```
+
+> **Note:** Instead of downloading the RancherOS VMWare ISO, you can directly use the URL for the rancheros-vmware.iso.
+
+Example using the RancherOS VMWare latest link:
+
+```
+$ docker-machine create --driver vmwarevsphere --vmwarevsphere-username <USERNAME> --vmwarevsphere-password <PASSWORD> --vmwarevsphere-memory-size <MEMORY-SIZE> --vmwarevsphere-boot2docker-url https://releases.rancher.com/os/latest/rancheros-vmware.iso --vmwarevsphere-vcenter <IP-ADDRESS> --vmwarevsphere-vcenter-port <PORT> --vmwarevsphere-disk-size <DISK-SIZE> <MACHINE-NAME>
+```
+
+That’s it! You should now have a RancherOS host running on VMWare VSphere. You can verify that you have a VMWare(ESXi) VM running on your host.
+
+#### Using Docker Machine with VMWare Fusion
+
+_Available as of v1.4_
+
+Before moving forward, you’ll need to have VMWare Fusion installed. Once you have VMWare Fusion and Docker Machine installed, it’s just one command to get RancherOS running.
+
+```
+$ docker-machine --driver vmwarefusion --vmwarefusion-memory-size <MEMORY> --vmwarefusion-boot2docker-url <LOCATION-OF-RANCHEROS-VMWARE-ISO> <MACHINE_NAME>
+```
+
+> **Note:** Instead of downloading the RancherOS VMWare ISO, you can directly use the URL for the rancheros-vmware.iso.
+
+Example using the RancherOS VMWare latest link:
+
+```
+$ docker-machine --driver vmwarefusion --vmwarefusion-memory-size <MEMORY> --vmwarefusion-boot2docker-url https://releases.rancher.com/os/latest/rancheros-vmware.iso <MACHINE_NAME>
+```
+
+That’s it! You should now have a RancherOS host running on VMWare Fusion. You can verify that you have a VMWare Fusion VM running on your host.
+
 
 ### Logging into RancherOS
 
