@@ -1,7 +1,6 @@
 ---
 title: Workloads
 weight: 2175
-draft: true
 ---
 You can build any complex containerized application in Kubernetes using two basic constructs: pods and workloads. Once you build an application, you can expose it for access either within the same cluster or on the Internet using a third construct: services.
 
