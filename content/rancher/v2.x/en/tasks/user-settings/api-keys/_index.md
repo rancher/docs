@@ -1,7 +1,6 @@
 ---
 title: Creating an API Key
-weight: 3725
-draft: true
+weight: 3726
 ---
 
 Create a Rancher API key so that other applications can make requests to the Rancher API. You can create API keys using the Rancher UI.

@@ -51,7 +51,7 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 ## Locking/Unlocking Roles
 
-If you want to prevent a role from being assigned to users, you can set it to a status of `locked`. For more information about what this status means, see [Locked Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/#locked-roles).
+If you want to prevent a role from being assigned to users, you can set it to a status of `locked`. For more information about what this status means, see [Locked Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#locked-roles).
 
 You can lock roles in two contexts:
 

@@ -1,7 +1,6 @@
 ---
 title: API Keys
 weight: 2400
-draft: true
 ---
 
 Some users may want to access their Rancher clusters and projects through the Rancher API. Before you can access Rancher through the API, you must generate API keys so that you can authenticate with Rancher externally.
