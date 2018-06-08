@@ -17,21 +17,28 @@ For more information about PSPs, refer to [Pod Security Policy]({{< baseurl >}}/
 
 ## Cluster Creation: Adding a Default Pod Security Policy
 
-When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. We recommend applying a PSP to your cluster as soon as possible for security purposes.
+When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. 
 
->**Note:** To add a default PSP to a new cluster, you must already have a PSP created. For more information, see [Adding Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>**Prerequisite:**
+>Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>**Note:** 
+>For security purposes, we recommend assiging a PSP as you create your clusters. However, this best practice is secondary to creating the cluster.
+
 
 To enable a default Pod Security Policy, set the **Pod Security Policy Support** option to  **Enabled**, and then make a selection from the **Default Pod Security Policy** drop-down.
 
-When the cluster finishes provisioning, the PSP you selected is applied to all projects within the cluster. For more information, see [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+When the cluster finishes provisioning, the PSP you selected is applied to all projects within the cluster.
+
+For detailed instruction about assigning a PSP to a new cluster, see [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 ## Existing Cluster: Adding a Pod Security Policy
 
 If you don't apply a PSP as you create your cluster, you can always add one later.
 
->**Prerequisite:** Create a PSP. For more information, see [Adding Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>**Prerequisite:**
+>Create a Pod Security Policy within Rancher. Before you can assign a default PSP to an existing cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
 
-1. From the from the **Global** view, find the cluster that you want apply your PSP to. Select **Vertical Ellipsis (...) > Edit**. Edit next to the _Cluster_ you want to enable PSPs for.
+1. From the from the **Global** view, find the cluster that you want apply your PSP to. Select **Vertical Ellipsis (...) > Edit** for the cluster you want to enable PSPs for.
 
 2. Expand the **Cluster Options** accordion.
 
@@ -47,6 +54,8 @@ If you don't apply a PSP as you create your cluster, you can always add one late
 
 **Result:** The PSP is applied to the cluster and any projects within the cluster.
 
+>**Note:** After you assign a PSP to a cluster, it is not applied to any workloads already running in the cluster. To apply your PSP to existing workloads, clone the workloads.
+
 ## Project Creation: Adding a Pod Security Policy
 
 When you create a new project, you can assign a PSP directly to the project. Assigning a PSP to a project will:
@@ -55,17 +64,21 @@ When you create a new project, you can assign a PSP directly to the project. Ass
 - Apply the PSP to any namespaces you add to the project later.
 - Override the cluster's default PSP.
 
+>**Prerequisites:**
+>- Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new project, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>- Assign a default Pod Security Policy to the project's cluster. You can't assign a PSP to a project until one is already applied to the cluster. For more information, see [Existing Cluster: Adding a Pod Security Policy](#existing-cluster--adding-a-pod-security-policy).
+
 As you create the project, make a selection from the **Pod Security Policy** drop-down to apply a PSP.
 
->**Note:** To add a PSP to a new project, you must already have a PSP created. For more information, see [Adding Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
-
-After you create the project, the PSP you selected is applied to the project and any namespaces added to the project. <!--For more information, see [Creating a Project]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/#creating-a-project/-->
+ <!--For more information, see [Creating a Project]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/#creating-a-project/-->
 
 ## Existing Project: Adding a Pod Security Policy
 
 You can always assign a PSP to an existing project if you didn't assign one during creation.
 
->**Prerequisite:** Create a PSP. For more information, see [Adding Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>**Prerequisite:**
+>Create a Pod Security Policy within Rancher. Before you can assign a default PSP to an existing project, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/).
+>- Assign a default Pod Security Policy to the project's cluster. You can't assign a PSP to a project until one is already applied to the cluster. For more information, see [Existing Cluster: Adding a Pod Security Policy](#existing-cluster--adding-a-pod-security-policy).
 
 1. From the navigation menu, browse to the cluster containing the project you want to apply a PSP to.
 
@@ -77,4 +90,6 @@ You can always assign a PSP to an existing project if you didn't assign one duri
 
 5. Click **Save**.
 
-**Result:** The PSP is applied to the project and any namespaces added to the project.
+**Result:** The PSP is applied to the project and any namespaces added to the project. 
+
+>**Note:** After you assign a PSP to a project, it is not applied to any workloads already running in the project. To apply your PSP to existing workloads, clone the workloads.
