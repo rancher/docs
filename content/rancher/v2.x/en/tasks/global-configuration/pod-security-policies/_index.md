@@ -2,10 +2,9 @@
 title: Pod Security Policies
 weight: 125
 ---
+Using Rancher, you can create a Pod Security Policy using our GUI rather than creating a YAML file.
 
 ## Creating Pod Security Policies
-
-Using {{< product >}}, you can create a Pod Security Policy using our GUI rather than creating a YAML file.
 
 1.	From the **Global** view, select **Security** > **Pod Security Policies** from the main menu. Then click **Add Policy**.
 

@@ -17,11 +17,11 @@ In environments using GitHub, you can configure Rancher to allow sign on using G
 
 	>**What's an Authorization Callback URL?**
 	>
-	>The Authorization Callback URL is the URL where users to begin using your application (i.e. the splash screen).
+	>The Authorization Callback URL is the URL where users go to begin using your application (i.e. the splash screen).
 
-	>When you use external authentication, sign on authentication does not actually take place in your application. Instead, authentication takes place externally (in this case, GitHub). After this external authorization completes successfully, the Authorization Callback URL is the location that the user reenters your application.
+	>When you use external authentication, authentication does not actually take place in your application. Instead, authentication takes place externally (in this case, GitHub). After this external authentication completes successfully, the Authorization Callback URL is the location where the user re-enters your application.
 
-5. From GitHub, copy the **Client ID** and **Client Secret**. Paste them into {{< product >}}.
+5. From GitHub, copy the **Client ID** and **Client Secret**. Paste them into Rancher.
 
 	>**Where do I find the Client ID and Client Secret?**
 	>
