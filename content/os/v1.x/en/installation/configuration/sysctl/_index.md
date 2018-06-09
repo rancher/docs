@@ -1,5 +1,5 @@
 ---
-title: sysctl Settings
+title: Sysctl Settings
 weight: 132
 ---
 

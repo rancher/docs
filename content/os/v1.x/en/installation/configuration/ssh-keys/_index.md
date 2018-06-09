@@ -1,5 +1,5 @@
 ---
-title: SSH Keys
+title: SSH Settings
 weight: 121
 ---
 
@@ -19,3 +19,21 @@ $ ssh -i /path/to/private/key rancher@<ip-address>
 ```
 
 Please note that OpenSSH 7.0 and greater similarly disable the ssh-dss (DSA) public key algorithm. It too is weak and we recommend against its use.
+
+### SSHD Port and IP
+
+_Available as of v1.3_
+
+RancherOS supports changing the sshd port and IP, you can use these in the cloud-config file:
+
+```
+rancher:
+  ssh:
+    port: 10022
+    listen_address: 172.22.100.100
+```
+
+These settings are only designed for default console.
+Because if you change sshd-config, restart the host will restore the default, the new configuration will not take effect.
+
+For other consoles, all files are persistent, you can modify sshd-config by yourself.
