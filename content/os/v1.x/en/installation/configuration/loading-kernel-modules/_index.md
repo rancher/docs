@@ -1,9 +1,38 @@
 ---
-title: Loading Extra Kernel Modules
+title: Loading Kernel Modules
 weight: 134
 ---
 
 Since RancherOS v0.8, we build our own kernels using an unmodified kernel.org LTS kernel.
+We provide both loading kernel modules with parameters and loading extra kernel modules for you.
+
+## Loading Kernel Modules with parameters
+
+`rancher.modules` can help you to set kernel modules or module parameters.
+
+As an example, I'm going to set a parameter for kernel module `ndb`
+
+```
+sudo ros config set rancher.modules "['nbd nbds_max=1024', 'nfs']"
+```
+
+Or
+
+```
+#cloud-config
+rancher:
+  modules: [nbd nbds_max=1024, nfs]
+```
+
+After rebooting, you can check that `ndbs_max` parameter has been updated.
+
+```
+# cat /sys/module/nbd/parameters/nbds_max
+1024
+```
+
+## Loading Extra Kernel Modules
+
 We also build almost all optional extras as modules - so most in-tree modules are available
 in the `kernel-extras` service.
 
