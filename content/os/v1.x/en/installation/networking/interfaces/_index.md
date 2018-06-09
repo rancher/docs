@@ -109,7 +109,7 @@ rancher:
 
 ### Run custom network configuration commands
 
-_As of v1.1_
+_Available as of v1.1_
 
 You can configure `pre` and `post` network configuration commands to run in the `network` service container by adding `pre_cmds` and `post_cmds` array keys to `rancher.network`, or `pre_up` and`post_up` keys for specific `rancher.network.interfaces`.
 

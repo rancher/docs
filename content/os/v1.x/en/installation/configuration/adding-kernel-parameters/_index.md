@@ -9,7 +9,8 @@ There are two ways to set or modify persistent kernel parameters, in-place (edit
 
 ### In-place editing
 
-_As of v1.1+_
+_Available as of v1.1_
+
 To edit the kernel boot parameters of an already installed RancherOS system, use the new `sudo ros config syslinux` editing command (uses `vi`).
 
 > To activate this setting, you will need to reboot.
@@ -32,9 +33,9 @@ If you want to set the extra kernel parameters when you are [Installing RancherO
 $ sudo ros install -d /dev/sda --append "rancheros.autologin=tty1"
 ```
 
-_As of v1.1_
-
 ### Graphical boot screen
+
+_Available as of v1.1_
 
 RancherOS v1.1.0 added a Syslinux boot menu, which allows you to temporarily edit the boot paramters, or to select "Debug logging", "Autologin", both "Debug logging & Autologin" and "Recovery Console".
 
@@ -61,3 +62,9 @@ On desktop systems the Syslinux boot menu can be switched to graphical mode by a
 #### Enable/Disable hypervisor service auto-enable
 
 RancherOS v1.1.0 added detection of Hypervisor, and then will try to download the a service called `<hypervisor>-vm-tools`. This may cause boot speed issues, and so can be disabled by setting `rancher.hypervisor_service=false`.
+
+#### Auto reboot after a kernel panic
+
+_Available as of v1.3_
+
+`panic=10` will automatically reboot after a kernel panic, 10 means wait 10 seconds before reboot. This is a common kernel parameter, pointing out that it is because we set this parameter by default.
