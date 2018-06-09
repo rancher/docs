@@ -24,7 +24,7 @@ In most cases, you should use an external authentication service over local, as 
 Configuration of external authentication requires:
 
 - A local user assigned the administrator role, called hereafter the _local principal_.
-- An external user that can authentication with your external authentication service, called hereafter the _external principal_.
+- An external user that can authenticate with your external authentication service, called hereafter the _external principal_.
 
 Configuration of external authentication affects how principal users are managed within Rancher. Follow the list below to better understand these effects.
 

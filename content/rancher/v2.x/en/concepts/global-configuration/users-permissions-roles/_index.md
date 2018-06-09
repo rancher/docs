@@ -1,11 +1,11 @@
 ---
-title: Users, Global Persmissions, and Roles
+title: Users, Global Permissions, and Roles
 weight: 15
 ---
 
-Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned previously, users can either be local or external.
+Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authenitcation]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication), users can either be local or external.
 
-After you configure external authentication, the users that display on Users page changes.
+After you configure external authentication, the users that display on the **Users** page changes.
 
 - If you are logged in as a local user, only local users display.
 
@@ -49,7 +49,7 @@ Assignment of global permissions to a user depends on their authentication sourc
 
 - **Local Authentication**
 
-    When you create a new local user, you assign them a global permission as you create complete the **Add User** form.
+    When you create a new local user, you assign them a global permission as you complete the **Add User** form.
 
 #### Custom Global Permissions
 
@@ -82,14 +82,14 @@ The following table lists each custom global permission available and whether it
 Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page. From this page you can:
 
 - Create and manage new roles for use across all clusters and projects
-- [Lock/unlock roles](#locked-roles) so that they may not be used in any new role assignments (existing assignments will still be enforce)
+- [Lock/unlock roles](#locked-roles) so that they may not be used in any new role assignments (existing assignments will still be enforced).
 
 
 #### Membership and Role Assignment
 
-The projects and clusters accessible to non-administrative user is determined by _membership_. Membership is a list of users who have access to a specific cluster or project based on the roles they were assigned in that cluster or project. Each cluster and project includes a tab that a user with the appropriate permissions can use to manage membership.
+The projects and clusters accessible to non-administrative users is determined by _membership_. Membership is a list of users who have access to a specific cluster or project based on the roles they were assigned in that cluster or project. Each cluster and project includes a tab that a user with the appropriate permissions can use to manage membership.
 
-When you create a cluster or project, Rancher automatically assigns you the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
+When you create a cluster or project, Rancher automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
 > **Note:** Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the user membership.
 
@@ -123,7 +123,7 @@ The following table lists each built-in custom cluster role available in Rancher
 | View Cluster Members               | ✓             | ✓             |
 | View Nodes                         | ✓             | ✓             |
 
-> **Note:** Each cluster role listed above, including Owner and Member, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
+> **Note:** Each cluster role listed above, including `Owner` and `Member`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
 #### Project Roles
 
