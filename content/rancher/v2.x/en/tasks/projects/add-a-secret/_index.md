@@ -1,6 +1,6 @@
 ---
-title: Projects
-weight: 3650
+title: Adding a Secret
+weight: 
 draft: true
 ---
 Coming Soon

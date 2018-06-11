@@ -1,6 +1,6 @@
 ---
-title: Projects
-weight: 3650
+title: Adding Ingress
+weight: 
 draft: true
 ---
 Coming Soon
