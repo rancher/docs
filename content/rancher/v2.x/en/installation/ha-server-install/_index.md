@@ -448,7 +448,7 @@ By default, Rancher automatically generates self-signed certificates for itself 
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
-- Create a Kubernettes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+- Create a Kubernetes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
 
