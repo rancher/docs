@@ -1,11 +1,11 @@
 ---
-title: High Availability Installation
+title: High Availability Installation with External Load Balancer (TCP/Layer 4)
 weight: 275
 ---
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 4 load balancer (TCP)
-- Nginx ingress controller with SSL termination (HTTPS)
+- NGINX ingress controller with SSL termination (HTTPS)
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
@@ -93,28 +93,28 @@ The following diagram depicts the basic port requirements for Rancher. For a com
 
 ## 2. Configure Load Balancer
 
-We will be using Nginx as our Layer 4 Load Balancer (TCP). Nginx will forward all connections to one of your Rancher nodes.
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/nlb/)
 
 >**Note:**
-> In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running Nginx.
+> In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running NGINX.
 >
 >One caveat: do not use one of your Rancher nodes as the load balancer.
 
-### A. Install Nginx
+### A. Install NGINX
 
-Start by installing Nginx on your load balancer host. Nginx has packages available for all known operating systems.
+Start by installing NGINX on your load balancer host. NGINX has packages available for all known operating systems.
 
-For help installing Nginx, refer to their [install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
+For help installing NGINX, refer to their [install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
 
-### B. Create Nginx Configuration
+### B. Create NGINX Configuration
 
-After installing Nginx, you need to update the Nginx config file, `nginx.conf`, with the IP addresses for your nodes.
+After installing NGINX, you need to update the NGINX config file, `nginx.conf`, with the IP addresses for your nodes.
 
 1. Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
 
 2. From `nginx.conf`, replace `IP_NODE_1`, `IP_NODE_2`, and `IP_NODE_3` with the IPs of your [Linux hosts](#1-provision-linux-hosts).
 
-    **Example Nginx config:**
+    **Example NGINX config:**
     ```
     worker_processes 4;
     worker_rlimit_nofile 40000;
@@ -146,15 +146,15 @@ After installing Nginx, you need to update the Nginx config file, `nginx.conf`, 
 
 3. Save `nginx.conf` to your load balancer at the following path: `/etc/nginx/nginx.conf`.
 
-4. Load the updates to your Nginx configuration by running the following command:
+4. Load the updates to your NGINX configuration by running the following command:
 
     ```
     # nginx -s reload
     ```
 
-### Option—Run Nginx as Docker container
+### Option - Run NGINX as Docker container
 
-Instead of installing Nginx as a package on the operating system, you can rather run it as a Docker container. Save the edited **Example Nginx config** as `/etc/nginx.conf` and run the following command to launch the Nginx container:
+Instead of installing NGINX as a package on the operating system, you can rather run it as a Docker container. Save the edited **Example NGINX config** as `/etc/nginx.conf` and run the following command to launch the NGINX container:
 
 ```
 docker run -d --restart=unless-stopped \
