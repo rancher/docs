@@ -29,11 +29,11 @@ No.  Unfortunately, the differences were enough such that we cannot support Ranc
 
 ### How does Rancher v2.0 affect Cattle?
 
-Cattle will not supported in v2.0 as Rancher has been re-architected to be based on Kubernetes. You can, however, expect majority of Cattle features you use will exist and function similarly on Kubernetes. We will develop migration tools in Rancher v2.1 to help you transform your existing Rancher Compose files into Kubernetes yaml files.
+Cattle will not supported in v2.0 as Rancher has been re-architected to be based on Kubernetes. You can, however, expect majority of Cattle features you use will exist and function similarly on Kubernetes. We will develop migration tools in Rancher v2.1 to help you transform your existing Rancher Compose files into Kubernetes YAML files.
 
 #### Can I migrate existing Cattle workloads into Kubernetes?
 
-Yes. In the upcoming Rancher v2.1 release we will provide a tool to help translate existing Cattle workloads in Compose format to kubernetes yaml format.  You will then be able to deploy those workloads on the v2.0 platform.
+Yes. In the upcoming Rancher v2.1 release we will provide a tool to help translate existing Cattle workloads in Compose format to Kubernetes YAML format.  You will then be able to deploy those workloads on the v2.0 platform.
 
 ### Environments & Clusters
 
@@ -49,7 +49,7 @@ Yes. We still provide you with the same way of executing our Rancher agents dire
 
 #### How would the migration from v1.x to v2.0 work?
 
-Due to the technical difficulty in transforming a Docker container into a pod running Kubernetes, upgrading will require users to “replay” those workloads from v1.x into new v2.0 environments. We plan to ship with a tool in v2.1 to translate existing Rancher Compose files into Kubernetes yaml files.  You will then be able to deploy those workloads on the v2.0 platform.
+Due to the technical difficulty in transforming a Docker container into a pod running Kubernetes, upgrading will require users to "replay" those workloads from v1.x into new v2.0 environments. We plan to ship with a tool in v2.1 to translate existing Rancher Compose files into Kubernetes YAML files.  You will then be able to deploy those workloads on the v2.0 platform.
 
 #### Is it possible to upgrade from Rancher v1.0 to v2.0 without any disruption to Cattle and Kubernetes clusters?
 
@@ -108,9 +108,9 @@ Yes. Longhorn was on a bit of a hiatus while we were working on v2.0. We plan to
 
 #### Are there changes to default roles available now or going forward? Will the Kubernetes alignment impact plans for roles/RBAC?
 
-The default roles will be expanded to accomodate the new Rancher 2.0 features, and will also take advantage of the Kubernetes RBAC (Role-Based Access Control) capabilities to give you more flexibility.
+The default roles will be expanded to accommodate the new Rancher 2.0 features, and will also take advantage of the Kubernetes RBAC (Role-Based Access Control) capabilities to give you more flexibility.
 
-#### Will there be any functions like network policies to separate a front-end contrainer from a back-end container through some kind of firewall in v2.0?
+#### Will there be any functions like network policies to separate a front-end container from a back-end container through some kind of firewall in v2.0?
 
 Yes. You can do so by leveraging Kubernetes' network policies.
 

@@ -22,7 +22,7 @@ If you find any bugs or are having any trouble, please contact us by filing an i
 
 ### Docs
 
-If you have any updates to our documentation, please make any PRs to our docs repo.
+If you have any updates to our documentation, please make any pull request to our docs repo.
 
 - [Rancher 2.x Docs Repo](https://github.com/rancher/docs): This repo is where all the docs for Rancher 2.x are located. They are located in the `content` folder in the repo.
 
