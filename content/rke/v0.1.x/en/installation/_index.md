@@ -93,7 +93,34 @@ firewall-cmd --permanent --zone=public --add-rich-rule='
 firewall-cmd --reload
 ```
 
-### Creating `cluster.yml` and Kubernetes cluster
+## Creating your cluster configuration
+
+### Using RKE to generate a cluster.yml
+
+RKE provides the command `rke config` to generate a cluster configuration template or to interactivity generate a working cluster configuration file.
+
+Start by running the following command:
+
+```bash
+rke config --name cluster.yml
+```
+
+RKE will interactivity prompt the user for cluster configuration such as number of the hosts, IP addresses or hostnames, ssh users..etc.
+
+You can also use the `--empty` flag, which will generate an empty cluster.yml template:
+```bash
+rke config --empty --name cluster.yml
+```
+
+Additionally, it's possible to print the generated configuration to stdout and skip creating a file using the `--print` flag:
+
+```bash
+rke config --print
+```
+
+
+
+### Creating your first Kubernetes cluster
 
 For this quick start, we will be configuring one machine. There are 3 roles you can define on a machine:
 
@@ -159,7 +186,7 @@ There should be a `cluster.yml` created in the directory where you launched the 
 
 If you are satisfied with the configuration, you can start building your cluster by using `./rke_darwin-amd64 up` or `./rke_linux-amd64 up`.
 
-### Using RKE
+### Running RKE
 
 
 

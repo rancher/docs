@@ -4,52 +4,75 @@ weight: 3000
 draft: true
 ---
 
-When setting up your cluster.yml for RKE, there are a lot of different options that can be configured.
+When setting up your cluster.yml for RKE, there are a lot of different options that can be configured to control RKE behavior.
 
+## Cluster options
 
-## Using RKE to generate a cluster.ml
+#### Cluster Name
 
-RKE supports command `rke config` which generates a cluster config template for the user, to start using this command just write:
+`cluster_name` is an optional value that you can set to identify your cluster. The name will be set in your cluster's generated kubeconfig file.
 
-```bash
-rke config --name mycluster.yml
-```
+The default value for this option is `local`.
 
-RKE will ask some questions around the cluster file like number of the hosts, ips, ssh users, etc, `--empty` option will generate an empty cluster.yml file, also if you just want to print on the screen and not save it in a file you can use `--print`.
-
-## Cluster Yaml Links
-
-## Naming your Cluster
-
-```
-# If set, this is the cluster name that will be used in the kube config file
-# Default value is "local"
+```yaml
 cluster_name: mycluster
 
 ```
 
-## Docker Version check
+#### Supported Docker Versions
+By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. To override this behavior, set this option to `true`.
 
-```
-# If set to true, rke won't fail when unsupported Docker version is found
-ignore_docker_version: false
-```
+The default value is `false`.
 
-## Kubernetes authorization (RBAC)
-
-```
-# Kubernetes authorization mode
-# Use `mode: rbac` to enable RBAC
-# Use `mode: none` to disable authorization
-authorization:
-  mode: rbac
+```yaml
+ignore_docker_version: true
 ```
 
-## SSH Key path
+#### SSH Key Path
+RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`) in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level.
 
-```
+If both cluster-level and node-level ssh keys are defined, the node-level key will take precedence.
+```yaml
 ssh_key_path: ~/.ssh/test
 ```
 
+#### SSH Agent
 
+RKE supports using ssh connection configuration from a local ssh agent. The default value for this option is `false`.
+
+```yaml
+ssh_agent_auth: true
+```
+
+#### Kubernetes Version
+
+Use this option to choose Kubernetes version to install. Since this option was added mainly to be used by Rancher v2.0, it has a limited number of supported tags:
+
+ |Kubernetes version|
+ |-----------------|
+ |v1.10.3-rancher2-1|
+ |v1.10.1-rancher2-1|
+ |v1.10.0-rancher1-1|
+ |v1.9.7-rancher2-1|
+ |v1.9.5-rancher1-1|
+ |v1.8.11-rancher2-1|
+ |v1.8.10-rancher1-1|
+
+The current default Kubernetes version used by RKE is `v1.10.3-rancher2-1`. If a version is defined in `kubernetes_version` and is not found in this list, the default is used.
+
+There are two ways to select a Kubernetes version:
+
+- Using the kubernetes image defined in [System Images](#rke-system-images)
+- Using the configuration option `kubernetes_version`
+
+In case both are defined, the system images configuration will take precedence over `kubernetes_version`.
+
+
+#### Addons Job Timeout
+
+RKE kubernetes add-ons are deployed using kubernetes jobs. RKE will give up on trying to get the job status after this timeout in seconds. The default timeout value is `30` seconds.
+
+```yaml
+addon_job_timeout: 30
+```
 <!--add in sections for each option with high level description and link-->

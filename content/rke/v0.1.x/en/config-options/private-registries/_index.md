@@ -3,12 +3,13 @@ title: Private Registries
 weight: 3000
 draft: true
 ---
-
-```
-# List of registry credentials, if you are using a Docker Hub registry,
-# you can omit the `url` or set it to `docker.io`
+RKE supports configuring multiple private/authenticated Docker registries. This is useful if you have private images to use or are deploying your cluster in an air-gapped environment.
+```yaml
 private_registries:
   - url: registry.com
     user: Username
     password: password
+  - url: myregistry.com
+    user: myuser
+    password: mypassword
 ```

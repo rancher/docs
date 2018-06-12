@@ -3,10 +3,8 @@ title: Bastion/Jump Host Configuration
 weight: 3000
 draft: true
 ---
-
-```
-
-# Bastion/Jump host configuration
+Since RKE uses `ssh` to connect to hosts, you may have to use RKE with a bastion host.
+```yaml
 bastion_host:
   address: x.x.x.x
   user: ubuntu

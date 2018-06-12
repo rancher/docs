@@ -177,7 +177,7 @@ ignore_docker_version: false
 # The kubernetes version used. For now, this should match the version defined in rancher/types defaults map: https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go#L14
 kubernetes_version: v1.10.1-rancher1
 
-# addons are deployed using kubernetes jobs. RKE will give up on trying to get the job status after this timeout in seconds..
+# add-ons are deployed using kubernetes jobs. RKE will give up on trying to get the job status after this timeout in seconds..
 addon_job_timeout: 30
 # If set, this is the cluster name that will be used in the kube config file
 # Default value is "local"
