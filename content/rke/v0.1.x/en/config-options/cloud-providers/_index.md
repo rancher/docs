@@ -4,34 +4,80 @@ weight: 3000
 draft: true
 ---
 
-RKE supports the following cloud providers to be used with Kubernetes:
+RKE supports the ability to set your specific [cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/) for your Kubernetes cluster. There are specific cloud configurations  for these cloud providers:
 
+* [AWS](#aws)
+* [Azure](#azure)
+* [OpenStack](#openstack)
+* [vSphere](#vsphere)
 
-| Cloud Providers 	|  YAML  	|
-|:--------------------:	|:------:	|
-|       AWS       	| awsCloudProvider 	|
-|       Azure       	| azureCloudProvider 	|
-|       Openstack       	| openstackCloudProvider 	|
-|       VSphere      	| vsphereCloudProvider 	|
-| Custom   |  customCloudProvider |
+Outside of this list, RKE also supports the ability to handle any [custom cloud provider](#custom-cloud-provider).
 
+The `cloud_provider` directive must be filled out with minimally a name. For each cloud provider, there are different configuration options to enable the cloud provider in Kubernetes.
 
-Also a custom cloud configuration file can be added to be used with any other cloud provider.
+### AWS
 
-### AWS Cloud Provider
+To enable the AWS cloud provider, there are no configuration options. You only need to set the name as `aws`. In order to use the AWS cloud provider, all cluster nodes must have already been configured with an appropriate IAM role.
 
-To enable AWS cloud provider, you can set the following in the cluster configuration file:
-```
+```yaml
 cloud_provider:
   name: aws
 ```
 
-When using AWS cloud provider, all cluster nodes have to be assigned a proper IAM role.
+#### IAM Requirements
 
-### Azure Cloud provider
+The nodes used in RKE that will be running the AWS cloud provider must have at least the following IAM policy.
 
-Azure cloud provider can be enabled by passing `azure` as the cloud provider name and set of options to the configuration file:
+```json
+{
+  "Effect": "Allow",
+  "Action": "ec2:Describe*",
+  "Resource": "*"
+}
 ```
+
+In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(s) will need to have the an IAM role with appropriate access.
+
+##### Example Policy for IAM Role:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:AttachVolume",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "ec2:DetachVolume",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["ec2:*"],
+      "Resource": ["*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["elasticloadbalancing:*"],
+      "Resource": ["*"]
+    }
+  ]
+}
+```
+
+### Azure
+
+To enable the Azure cloud provider, besides setting the name as `azure`, there are specific configuration options that must be set. Additionally, the Azure node name must also match the Kubernetes node name.
+
+```yaml
 cloud_provider:
   name: azure
   azureCloudProvider:
@@ -46,8 +92,11 @@ cloud_provider:
     securityGroupName: xxxxxxxxx
 ```
 
-You also have to make sure that the Azure node name must match the kubernetes node name, you can do that by changing the value of hostname_override in the config file:
-```
+#### Overriding the hostname
+
+Since the Azure node name must match the Kubernetes node name, you override the Kubernetes name on the node by setting the `hostname_override` for each node. If you do not set the `hostname_override`, the Kubernetes node name will be set as the `address`, which will cause the Azure cloud provider to fail.
+
+```yaml
 nodes:
   - address: x.x.x.x
     hostname_override: azure-rke1
@@ -58,9 +107,11 @@ nodes:
     - worker
 ```
 
-The full cloud configuration for Azure are:
+#### Azure Configuration Options
 
-|     Configuration Option     	|  Type  	|
+Besides the minimum set of options, there are many other options that are supported in RKE:
+
+|   Azure Configuration Options    	|  Type  	|
 |:----------------------------:	|:------:	|
 |             cloud            	| string 	|
 |           tenantId           	| string 	|
@@ -91,12 +142,11 @@ The full cloud configuration for Azure are:
 |  useManagedIdentityExtension 	|  bool  	|
 | maximumLoadBalancerRuleCount 	|   int  	|
 
+### Openstack
 
-### Openstack Cloud provider
+To enable the Openstack cloud provider, besides setting the name as `openstack`, there are specific configuration options that must be set. The Openstack configuration options are grouped into different sections.
 
-For Openstack cloud provider user can pass `openstack` to the cloud provider name and add the configuration options for the openstack cloud provider:
-
-```
+```yaml
 cloud_provider:
   name: openstack
   openstackCloudProvider:
@@ -108,13 +158,29 @@ cloud_provider:
       domain-id: xxxxxxxxxxxxxx
     load_balancer:
       subnet-id: xxxxxxxxxxxxxx
+    block_storage:
+      ignore-volume-az: true
+    router:
+      router-id: xxxxxxxxxxxxxx
+    metadata:
+      search-order: xxxxxxxxxxxxxx
 ```
 
-Openstack configuration options are divided into 5 sections:
+#### Openstack Configuration Options
 
-- **global**:
+The Openstack configuration options are divided into 5 groups.
 
-| Configuration Option 	|  Type  	|
+* Global
+* Load Balancer
+* Block Storage
+* Router
+* Metadata
+
+##### Global
+
+These are the options that are available under the `global` directive.
+
+| OpenStack's Global Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |       auth_url       	| string 	|
 |       username       	| string 	|
@@ -128,9 +194,11 @@ Openstack configuration options are divided into 5 sections:
 |        region        	| string 	|
 |        ca-file       	| string 	|
 
-- **load_balancer**:
+##### Load Balancer
 
-|  Configuration Option  	|  Type  	|
+These are the options that are available under the `load_balancer` directive.
+
+|  OpenStack's Load Balancer Configuration Options  	|  Type  	|
 |:----------------------:	|:------:	|
 |       lb-version       	| string 	|
 |       use-octavia      	|  bool  	|
@@ -144,32 +212,38 @@ Openstack configuration options are divided into 5 sections:
 |   monitor-max-retries  	|   int  	|
 | manage-security-groups 	|  bool  	|
 
-- **block_storage**:
+##### Block Storage
 
-| Configuration Option 	|  Type  	|
+These are the options that are available under the `block_storage` directive.
+
+| OpenStack's Block Storage Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |      bs-version      	| string 	|
 |   trust-device-path  	|  bool  	|
 |   ignore-volume-az   	|  bool  	|
 
-- **router**:
+##### Router
 
-| Configuration Option 	|  Type  	|
+This is the option that is available under the `router` directive.
+
+| OpenStack's Router Configuration Option 	|  Type  	|
 |:--------------------:	|:------:	|
 |       router-id      	| string 	|
 
-- **metadata**:
+##### Metadata
 
-| Configuration Option 	|  Type  	|
+These are the options that are available under the `metadata` directive.
+
+| OpenStack's Metadata Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |     search-order     	| string 	|
 |    request-timeout   	|   int  	|
 
+### vSphere
 
-### VSphere Cloud Provider
+To enable the vSphere cloud provider, besides setting the name as `vsphere`, there are specific configuration options that must be set. The vSphere configuration options are grouped into different sections.
 
-For VSphere cloud provider user can pass `vsphere` to the cloud provider name and add the configuration options for the VSphere cloud provider:
-```
+```yaml
 cloud_provider:
   name: vsphere
   vsphereCloudProvider:
@@ -178,12 +252,6 @@ cloud_provider:
       password: pass
       server: 1.2.3.4
       port: 22
-    workspace:
-      server: test.test.com
-      datacenter: test
-      folder: test
-      default-datastore: test
-      resourcepool-path: test
     virtual_center:
       1.2.3.4:
         user: test
@@ -193,12 +261,33 @@ cloud_provider:
         user: test
         password: test
         port: test
+    workspace:
+      server: test.test.com
+      datacenter: test
+      folder: test
+      default-datastore: test
+      resourcepool-path: test
+    network:
+      public-network: xxxxxxxxxxxxxx
+    disk:
+      scsicontrollertype: xxxxxxxxxxxxxx
 ```
-VSphere configuration options are divided into 5 sections:
 
-- **global**:
+#### vSphere Configuration Options
 
-| Configuration Option 	|  Type  	|
+The vSphere configuration options are divided into 5 groups.
+
+* Global
+* Virtual Center
+* Workspace
+* Network
+* Disk
+
+##### Global
+
+These are the options that are available under the `global` directive.
+
+| vSphere's Global Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |       user       	| string 	|
 |       password       	| string 	|
@@ -213,10 +302,12 @@ VSphere configuration options are divided into 5 sections:
 |        vm-uuid       	| string 	|
 |vm-name   |string   |
 
-- **virtual_center**:
 
-The virtual center configuration is dictionary of vcenters, it can be defined like that:
-```
+##### Virtual Center
+
+These are the options that are available under `virtual_center`, which is a dictionary of vCenters. Each vCenter is defined individually.
+
+```yaml
 virtual_center:
   <vcenter1-ip>:
     user: test
@@ -227,9 +318,10 @@ virtual_center:
     password: test
     port: test
 ```
-The full configuration options for each vcenter are:
 
-| Configuration Option 	|  Type  	|
+For each `virtual_center`, these are the available configuration options to be used under the each virtual center. The virtual center's are separated from each other based on their IP.
+
+| vSphere's Virtual Center Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |       user       	| string 	|
 |       password       	| string 	|
@@ -237,21 +329,11 @@ The full configuration options for each vcenter are:
 |       datacenters       	| string 	|
 |        soap-roundtrip-count        	| int 	|
 
-- **network**:
+##### Workspace
 
-| Configuration Option 	|  Type  	|
-|:--------------------:	|:------:	|
-|      public-network     	| string 	|
+These are the options that are available under the `workspace` directive.
 
-- **disk**:
-
-| Configuration Option 	|  Type  	|
-|:--------------------:	|:------:	|
-|       scsicontrollertype      	| string 	|
-
-- **workspace**:
-
-| Configuration Option 	|  Type  	|
+| vSphere's Workspace Configuration Options 	|  Type  	|
 |:--------------------:	|:------:	|
 |     server    	| string 	|
 |    datacenter  	|   string  	|
@@ -259,23 +341,41 @@ The full configuration options for each vcenter are:
 | default-datastore | string  |
 |  resourcepool-path | string  |
 
+##### Network
+
+This is the option that is available under the `network` directive.
+
+| vSphere's Network Configuration Option	|  Type  	|
+|:--------------------:	|:------:	|
+|      public-network     	| string 	|
+
+##### Disk
+
+This is the option that is available under the `disk` directive.
+
+| vSphere's Disk Configuration Option 	|  Type  	|
+|:--------------------:	|:------:	|
+|       scsicontrollertype      	| string 	|
 
 ### Custom Cloud Provider
 
-For any other cloud provider that is not listed above, user can just provide the name of the cloud provider and paste the cloud config file to `customCloudProvider` field, for example to use oVirt cloud provider with kubernetes the user will have to use the following cloud config file:
+If you want to enable a different cloud provider, RKE allows for custom cloud provider options. A name must be provided and the custom Cloud Provider options can be passed in as a multiline string in `customCloudProvider`.
 
-```
+For example, in order to use the oVirt cloud provider with Kubernetes, here's the following cloud provider information:
+
+```bash
 [connection]
 uri = https://localhost:8443/ovirt-engine/api
 username = admin@internal
 password = admin
 ```
 
-To add this cloud config file to rke, use the following:
+To add this cloud config file to RKE, the `cloud_provider` would be need to be set.
 
-```
+```yaml
 cloud_provider:
   name: ovirt
+  # Note the pipe as this is what indicates a multiline string
   customCloudProvider: |-
     [connection]
     uri = https://localhost:8443/ovirt-engine/api
