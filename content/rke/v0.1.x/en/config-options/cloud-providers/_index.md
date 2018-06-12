@@ -61,11 +61,6 @@ In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(
     },
     {
       "Effect": "Allow",
-      "Action": ["ec2:*"],
-      "Resource": ["*"]
-    },
-    {
-      "Effect": "Allow",
       "Action": ["elasticloadbalancing:*"],
       "Resource": ["*"]
     }
@@ -111,36 +106,36 @@ nodes:
 
 Besides the minimum set of options, there are many other options that are supported in RKE:
 
-|   Azure Configuration Options    	|  Type  	|
-|:----------------------------:	|:------:	|
-|             cloud            	| string 	|
-|           tenantId           	| string 	|
-|        subscriptionId        	| string 	|
-|         resourceGroup        	| string 	|
-|           location           	| string 	|
-|           vnetName           	| string 	|
-|       vnetResourceGroup      	| string 	|
-|          subnetName          	| string 	|
-|       securityGroupName      	| string 	|
-|        routeTableName        	| string 	|
-|  primaryAvailabilitySetName  	| string 	|
-|            vmType            	| string 	|
-|      primaryScaleSetName     	| string 	|
-|          aadClientId         	| string 	|
-|        aadClientSecret       	| string 	|
-|       aadClientCertPath      	| string 	|
-|     aadClientCertPassword    	| string 	|
-|     cloudProviderBackoff     	|  bool  	|
-|  cloudProviderBackoffRetries 	|   int  	|
-| cloudProviderBackoffExponent 	|   int  	|
-| cloudProviderBackoffDuration 	|   int  	|
-|  cloudProviderBackoffJitter  	|   int  	|
-|    cloudProviderRateLimit    	|  bool  	|
-|   cloudProviderRateLimitQPS  	|   int  	|
-| cloudProviderRateLimitBucket 	|   int  	|
-|      useInstanceMetadata     	|  bool  	|
-|  useManagedIdentityExtension 	|  bool  	|
-| maximumLoadBalancerRuleCount 	|   int  	|
+|   Azure Configuration Options |  Type  	| Required  |
+|:----------------------------:	|:------:	|:---------:|
+|             cloud            	| string 	|      |
+|           tenantId           	| string 	|   *    |
+|        subscriptionId        	| string 	|   *    |
+|         resourceGroup        	| string 	|      |
+|           location           	| string 	|      |
+|           vnetName           	| string 	|      |
+|       vnetResourceGroup      	| string 	|      |
+|          subnetName          	| string 	|      |
+|       securityGroupName      	| string 	|      |
+|        routeTableName        	| string 	|      |
+|  primaryAvailabilitySetName  	| string 	|      |
+|            vmType            	| string 	|      |
+|      primaryScaleSetName     	| string 	|      |
+|          aadClientId         	| string 	|   *    |
+|        aadClientSecret       	| string 	|   *    |
+|       aadClientCertPath      	| string 	|      |
+|     aadClientCertPassword    	| string 	|      |
+|     cloudProviderBackoff     	|  bool  	|      |
+|  cloudProviderBackoffRetries 	|   int  	|      |
+| cloudProviderBackoffExponent 	|   int  	|      |
+| cloudProviderBackoffDuration 	|   int  	|      |
+|  cloudProviderBackoffJitter  	|   int  	|      |
+|    cloudProviderRateLimit    	|  bool  	|      |
+|   cloudProviderRateLimitQPS  	|   int  	|      |
+| cloudProviderRateLimitBucket 	|   int  	|      |
+|      useInstanceMetadata     	|  bool  	|      |
+|  useManagedIdentityExtension 	|  bool  	|      |
+| maximumLoadBalancerRuleCount 	|   int  	|      |
 
 ### Openstack
 
@@ -166,6 +161,10 @@ cloud_provider:
       search-order: xxxxxxxxxxxxxx
 ```
 
+#### Overriding the hostname
+
+The OpenStack cloud provider uses the instance name (as determined from OpenStack metadata) as the name of the Kubernetes Node object, you must override the Kubernetes name on the node by setting the `hostname_override` for each node. If you do not set the `hostname_override`, the Kubernetes node name will be set as the `address`, which will cause the Openstack cloud provider to fail.
+
 #### Openstack Configuration Options
 
 The Openstack configuration options are divided into 5 groups.
@@ -180,64 +179,66 @@ The Openstack configuration options are divided into 5 groups.
 
 These are the options that are available under the `global` directive.
 
-| OpenStack's Global Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|       auth_url       	| string 	|
-|       username       	| string 	|
-|        user-id       	| string 	|
-|       password       	| string 	|
-|       tenant-id      	| string 	|
-|      tenant-name     	| string 	|
-|       trust-id       	| string 	|
-|       domain-id      	| string 	|
-|      domain-name     	| string 	|
-|        region        	| string 	|
-|        ca-file       	| string 	|
+| OpenStack's Global Configuration Options 	|  Type  	| Required  |
+|:--------------------:	|:------:	|:---------:|
+|       auth_url       	| string 	|   *   |
+|       username       	| string 	|   *   |
+|        user-id       	| string 	|   *   |
+|       password       	| string 	|   *   |
+|       tenant-id      	| string 	|   *   |
+|      tenant-name     	| string 	|      |
+|       trust-id       	| string 	|      |
+|       domain-id      	| string 	|      |
+|      domain-name     	| string 	|      |
+|        region        	| string 	|      |
+|        ca-file       	| string 	|      |
 
 ##### Load Balancer
 
 These are the options that are available under the `load_balancer` directive.
 
-|  OpenStack's Load Balancer Configuration Options  	|  Type  	|
-|:----------------------:	|:------:	|
-|       lb-version       	| string 	|
-|       use-octavia      	|  bool  	|
-|        subnet-id       	| string 	|
-|   floating-network-id  	| string 	|
-|        lb-method       	| string 	|
-|       lb-provider      	| string 	|
-|     create-monitor     	|  bool  	|
-|      monitor-delay     	|   int  	|
-|     monitor-timeout    	|   int  	|
-|   monitor-max-retries  	|   int  	|
-| manage-security-groups 	|  bool  	|
+|  OpenStack's Load Balancer Configuration Options  	|  Type  	| Required |
+|:----------------------:	|:------:	|:---------:|
+|       lb-version       	| string 	|      |
+|       use-octavia      	|  bool  	|      |
+|        subnet-id       	| string 	|      |
+|   floating-network-id  	| string 	|      |
+|        lb-method       	| string 	|      |
+|       lb-provider      	| string 	|      |
+|     create-monitor     	|  bool  	|      |
+|      monitor-delay     	|   int  	|   * if `create-monitor` is true   |
+|     monitor-timeout    	|   int  	|   * if `create-monitor` is true    |
+|   monitor-max-retries  	|   int  	|   * if `create-monitor` is true   |
+| manage-security-groups 	|  bool  	|      |
 
 ##### Block Storage
 
 These are the options that are available under the `block_storage` directive.
 
-| OpenStack's Block Storage Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|      bs-version      	| string 	|
-|   trust-device-path  	|  bool  	|
-|   ignore-volume-az   	|  bool  	|
+| OpenStack's Block Storage Configuration Options 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|      bs-version      	| string 	|      |
+|   trust-device-path  	|  bool  	|      |
+|   ignore-volume-az   	|  bool  	|      |
 
 ##### Router
 
 This is the option that is available under the `router` directive.
 
-| OpenStack's Router Configuration Option 	|  Type  	|
-|:--------------------:	|:------:	|
-|       router-id      	| string 	|
+| OpenStack's Router Configuration Option 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|       router-id      	| string 	|      |
 
 ##### Metadata
 
 These are the options that are available under the `metadata` directive.
 
-| OpenStack's Metadata Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|     search-order     	| string 	|
-|    request-timeout   	|   int  	|
+| OpenStack's Metadata Configuration Options 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|     search-order     	| string 	|      |
+|    request-timeout   	|   int  	|      |
+
+For more information of Openstack configurations options please refer to the official Kubernetes [documentation](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#openstack).
 
 ### vSphere
 
@@ -287,20 +288,20 @@ The vSphere configuration options are divided into 5 groups.
 
 These are the options that are available under the `global` directive.
 
-| vSphere's Global Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|       user       	| string 	|
-|       password       	| string 	|
-|        server       	| string 	|
-|       port       	| string 	|
-|       insecure-flag      	| bool 	|
-|      datacenter     	| string 	|
-|       datacenters       	| string 	|
-|       datastore      	| string 	|
-|      working-dir    	| string 	|
-|        soap-roundtrip-count        	| int 	|
-|        vm-uuid       	| string 	|
-|vm-name   |string   |
+| vSphere's Global Configuration Options 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|       user       	| string 	|      |
+|       password       	| string 	|      |
+|        server       	| string 	|      |
+|       port       	| string 	|      |
+|       insecure-flag      	| bool 	|      |
+|      datacenter     	| string 	|      |
+|       datacenters       	| string 	|      |
+|       datastore      	| string 	|      |
+|      working-dir    	| string 	|      |
+|        soap-roundtrip-count        	| int 	|      |
+|        vm-uuid       	| string 	|      |
+|vm-name   |string   |      |
 
 
 ##### Virtual Center
@@ -321,41 +322,41 @@ virtual_center:
 
 For each `virtual_center`, these are the available configuration options to be used under the each virtual center. The virtual center's are separated from each other based on their IP.
 
-| vSphere's Virtual Center Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|       user       	| string 	|
-|       password       	| string 	|
-|       port       	| string 	|
-|       datacenters       	| string 	|
-|        soap-roundtrip-count        	| int 	|
+| vSphere's Virtual Center Configuration Options 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|       user       	| string 	|   * if `global` `user` is not set   |
+|       password       	| string 	| * if `global` `password` is not set  |
+|       port       	| string 	|      |
+|       datacenters       	| string 	|      |
+|        soap-roundtrip-count        	| int 	|      |
 
 ##### Workspace
 
 These are the options that are available under the `workspace` directive.
 
-| vSphere's Workspace Configuration Options 	|  Type  	|
-|:--------------------:	|:------:	|
-|     server    	| string 	|
-|    datacenter  	|   string  	|
-| folder  | string  |
-| default-datastore | string  |
-|  resourcepool-path | string  |
+| vSphere's Workspace Configuration Options 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|     server    	| string 	|   *   |
+|    datacenter  	|   string  	|   *   |
+| folder  | string  |   *   |
+| default-datastore | string  |   *   |
+|  resourcepool-path | string  |   *   |
 
 ##### Network
 
 This is the option that is available under the `network` directive.
 
-| vSphere's Network Configuration Option	|  Type  	|
-|:--------------------:	|:------:	|
-|      public-network     	| string 	|
+| vSphere's Network Configuration Option	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|      public-network     	| string 	|      |
 
 ##### Disk
 
 This is the option that is available under the `disk` directive.
 
-| vSphere's Disk Configuration Option 	|  Type  	|
-|:--------------------:	|:------:	|
-|       scsicontrollertype      	| string 	|
+| vSphere's Disk Configuration Option 	|  Type  	| Required |
+|:--------------------:	|:------:	|:---------:|
+|       scsicontrollertype      	| string 	|      |
 
 ### Custom Cloud Provider
 
