@@ -54,7 +54,7 @@ The following table lists each file and sub-directory found in a Rancher chart d
 		</tr>
 		<tr>
 			<td> </td>
-			<td> <code>add-readme</code></td>
+			<td> <code>app-readme</code></td>
 			<td> Rancher Specific: Text displayed within Rancher.</td>
 		</tr>
 		<tr>
@@ -103,7 +103,7 @@ This reference contains variables that you can use in `questions.yml`.
 
 | Variable  | Type | Required | Description |
 | ------------- | ------------- | --- |------------- |
-| 	variable          | string  | true    |  define the variable name specified in the `values.yml`file, using `foo.bar` for nested object. |
+| 	variable          | string  | true    |  define the variable name specified in the `values.yml` file, using `foo.bar` for nested object. |
 | 	label             | string  | true      |  define the UI label. |
 | 	description       | string  | false      |  specify the description of the variable.|
 | 	type              | string  | false      |  default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
@@ -121,4 +121,4 @@ This reference contains variables that you can use in `questions.yml`.
 | 	show_if           | string      | false  | show current variable if conditional variable is true, for example `show_if: "serviceType=Nodeport"` |
 | 	show\_subquestion_if |  string  | false     | show subquestions if is true or equal to one of the options. for example `show_subquestion_if: "true"`|
 
-**subquestions**: `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported. 
+>**Note:** `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
