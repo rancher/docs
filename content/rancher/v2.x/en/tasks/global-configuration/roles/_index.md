@@ -17,7 +17,7 @@ Note that _roles_ are different from _permissions_, which determine what cluster
 
 While Rancher comes out-of-the-box with a set of default user roles, you can also create custom roles to provide users with very specific permissions within Rancher.
 
-1.    From the **Global** view, select **Security** > **Roles** from the main menu.
+1.    From the **Global** view, select **Security > Roles** from the main menu.
 
 2.    Click **Add Role**.
 
