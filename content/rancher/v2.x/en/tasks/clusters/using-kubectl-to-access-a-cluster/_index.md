@@ -1,7 +1,6 @@
 ---
 title: Using kubectl to Access a Cluster
 weight: 3450
-draft: true
 ---
 You can access and manage your Kubernetes clusters using the kubectl shell, all within the Rancher GUI.
 
