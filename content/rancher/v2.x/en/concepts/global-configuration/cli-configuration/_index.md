@@ -1,5 +1,5 @@
 ---
-title: Rancher CLI Configuration
+title: Rancher CLI 
 weight: 1
 ---
 
@@ -16,7 +16,7 @@ You can download Rancher CLI from [GitHub](https://github.com/rancher/cli/releas
 After you download Rancher CLI, you need to make a few configurations. Rancher CLI requires:
 
 - Your [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/server-url), which is used to connect to Rancher Server.
-- An [API token]({{< baseurl >}}/rancher/v2.x/en/tasks/user-settings/api-keys), which is used to authenticate with Rancher.
+- An API [Bearer Token]({{< baseurl >}}/rancher/v2.x/en/tasks/user-settings/api-keys), which is used to authenticate with Rancher.
 
 ### Common Usage
 
@@ -28,7 +28,9 @@ $ ./rancher login https://<SERVER_URL> -t <BEARER_TOKEN>
 
 If Rancher Server uses a self-signed certificate, Rancher CLI prompts you to continue with the connection.
 
-Rancher CLI uses a _context_ to determine what resources to fetch when running commands. Context is another name for the cluster/project that's currently in focus.
+Rancher CLI uses a _context_ to determine what resources to fetch when running commands. Context is another name for the [cluster]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters/)/[project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) that's currently in focus. It's the command line equivalent of making a selection from the **Global** menu in the Rancher UI.
+
+![Global Menu]({{< baseurl >}}/img/rancher/global-menu.png)
 
 The `./rancher context switch` command displays a list of contexts available and allows the user to change contexts.
 
