@@ -30,9 +30,18 @@ If Rancher Server uses a self-signed certificate, Rancher CLI prompts you to con
 
 Rancher CLI uses a _context_ to determine what resources to fetch when running commands. Context is another name for the [cluster]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters/)/[project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) that's currently in focus. It's the command line equivalent of making a selection from the **Global** menu in the Rancher UI.
 
-![Global Menu]({{< baseurl >}}/img/rancher/global-menu.png)
-
 The `./rancher context switch` command displays a list of contexts available and allows the user to change contexts.
+
+**Example: `./rancher context switch` Output**
+```
+User:rancher-cli-directory user$ ./rancher context switch
+NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME   
+1         cluster-2      c-7q96s:p-h4tmb         project-2      
+2         cluster-2      c-7q96s:project-j6z6d   Default        
+3         cluster-1      c-lchzv:p-xbpdt         project-1      
+4         cluster-1      c-lchzv:project-s2mch   Default       
+Select a Project:
+```
 
 **Other Common Commands:**
 
