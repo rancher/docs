@@ -11,16 +11,16 @@ You can download Rancher CLI from [GitHub](https://github.com/rancher/cli/releas
 
 >**Note:** Rancher CLI only works with its corresponding Rancher Server release. Rancher Server and Rancher CLI installations that don't share the same version are incompatible.
 
-### Configuration Requirements
+### Requirements
 
 After you download Rancher CLI, you need to make a few configurations. Rancher CLI requires:
 
 - Your [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/server-url), which is used to connect to Rancher Server.
-- An API [Bearer Token]({{< baseurl >}}/rancher/v2.x/en/tasks/user-settings/api-keys), which is used to authenticate with Rancher.
+- An API Bearer Token, which is used to authenticate with Rancher. For more information about obtaining a Bearer Token, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/tasks/user-settings/api-keys/_index.md).
 
-### Common Usage
+### CLI Authentication
 
-Begin using Rancher CLI by logging into your Rancher Server. Log in using the following command (replace `<BEARER_TOKEN>` and `<SERVER_URL>` with your information):
+Before you can use Rancher CLI to control your Rancher Server, you must authenticate using an API Bearer Token. Log in using the following command (replace `<BEARER_TOKEN>` and `<SERVER_URL>` with your information):
 
 ```bash
 $ ./rancher login https://<SERVER_URL> -t <BEARER_TOKEN>
@@ -28,9 +28,9 @@ $ ./rancher login https://<SERVER_URL> -t <BEARER_TOKEN>
 
 If Rancher Server uses a self-signed certificate, Rancher CLI prompts you to continue with the connection.
 
-Rancher CLI uses a _context_ to determine what resources to fetch when running commands. Context is another name for the [cluster]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters/)/[project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) that's currently in focus. It's the command line equivalent of making a selection from the **Global** menu in the Rancher UI.
+### Project Selection
 
-The `./rancher context switch` command displays a list of contexts available and allows the user to change contexts.
+To select a [cluster]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters/) or [project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) to work on, use the command `./rancher context switch`. When you enter this command, a list of available projects displays. Enter a number to choose your project.
 
 **Example: `./rancher context switch` Output**
 ```
@@ -43,19 +43,72 @@ NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME
 Select a Project:
 ```
 
-**Other Common Commands:**
+After you enter a number, the console displays a message that you've changed projects.
 
-* `rancher ps`
-   
-    Lists workloads in the current context.
+```
+INFO[0005] Setting new context to project project-1     
+INFO[0005] Saving config to /Users/markbishop/.rancher/cli2.json 
+```
 
-* `rancher clusters`
-   
-    Lists all clusters in the current context.
+### Commands
 
-* `rancher kubectl` 
+The following commands are available for use in Rancher CLI.
 
-    Runs `kubectl` commands against the cluster. This command requires `kubectl` to be installed. However Rancher, CLI will pull the kubeconfig.
+- `apps, [app]`
+              
+    Operations with apps.
+  
+- `catalog`
+
+    Operations with catalogs.
+
+- `clusters, [cluster]`
+
+    Operations on clusters.
+
+- `context`
+
+    Operations for the context.
+
+- `inspect`
+
+    View details of resources.
+
+- `kubectl`
+  
+    Run kubectl commands.
+
+- `login, [l]`
+
+    Login to a Rancher Server.
+
+- `namespaces, [namespace]`
+
+    Operations on namespaces.
+
+- `nodes, [node]`
+
+    Operations on nodes.
+
+- `projects, [project]`
+
+    Operations on projects.
+
+- `ps`
+
+    Show workloads in a project.
+
+- `settings, [setting]`
+
+    Show settings for the current server.
+
+- `ssh` 
+
+    SSH into a node.
+
+- `help, [h]`
+
+    Shows a list of commands or help for one command.
 
 ### Rancher CLI Help
 
