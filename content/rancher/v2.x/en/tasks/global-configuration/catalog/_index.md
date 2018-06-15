@@ -1,7 +1,6 @@
 ---
-title: Catalogs
-weight: 1000
-draft: true
+title: Catalog
+weight: 3026
 ---
 
 Within Rancher, you can use Helm Charts for quick deployment of applications from a central repository.
