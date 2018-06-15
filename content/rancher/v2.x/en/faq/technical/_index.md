@@ -74,3 +74,15 @@ The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, thi
 #### How are the supported Docker versions determined?
 
 We follow the validated Docker versions for upstream Kubernetes releases. The validated versions can be found under [External Dependencies](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md#external-dependencies) in the Kubernetes release CHANGELOG.md.
+
+#### How can I access nodes created by Rancher?
+
+SSH keys to access the nodes created by Rancher can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical ellipsis button at the end of the row, and choose **Download Keys** as shown in the picture below.
+
+![Download Keys]({{< baseurl >}}/img/rancher/downloadsshkeys.png)
+
+Unzip the downloaded zip file, and use the file `id_rsa` to connect to you host. Be sure to use the correct username (`rancher` for RancherOS, `ubuntu` for Ubuntu, `ec2-user` for Amazon Linux)
+
+```
+$ ssh -i id_rsa user@ip_of_node
+```
