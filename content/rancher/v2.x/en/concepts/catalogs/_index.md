@@ -5,29 +5,29 @@ weight: 2250
 
 Rancher catalog builds on an enhanced version of Helm. All upstream Helm charts can work within Rancher, but Rancher adds several enhancements to improve the user experience.
 
-## Catalog Git Repositories
+### Catalog Git Repositories
 
 Rancher stores Helm charts in git repositories to expedite the fetch and update of charts. In Rancher 2.0, only global catalogs are supported. Support for cluster-level and project-level charts will be added in the future.
 
-## Enhanced Revision Tracking
+### Enhanced Revision Tracking
 
 While Helm supports versioned deployments, Rancher added capabilities to track and display what exactly changed between different revisions.
 
-## Streamlined Application Launch
+### Streamlined Application Launch
 
 Rancher supports simplified README files and questions files to streamline the application launch process. Users need not read through the entire list of Helm variables to understand how to launch an application.
 
-## Application Resource Management
+### Application Resource Management
 
 Rancher tracks all the resources created by a specific application. Users can easily navigate to and troubleshoot on a page listing all the workload objects used to power an application.
 
-## Custom Catalogs
+### Custom Catalogs
 
 Creating a custom catalog for Rancher is straightforward. The catalogs are hosted in Git repositories and cloned into Rancher periodically.
 
 The charts themselves are standard [Helm templates](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md), with a few differences outlined below.
 
-## Rancher Chart Structure
+##### Rancher Chart Structure
 
 Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a standard chart.
 
@@ -36,10 +36,18 @@ Rancher charts differ slightly from native Helm charts in their directory struct
 - `app-readme.md`
       
     A file that provides a high level overview, which displays within Rancher.
+
+	**Example: `app-readme.md` Rancher Output**
+
+	![app-readme.md]({{< baseurl >}}/img/rancher/app-readme.png)
       
 - `questions.yml`
     
     A file containing questions to prompt the user with.
+
+	**Example: `questions.yml` Rancher Output**
+
+	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
 >**Tip:**  Though we recommend using Rancher charts, you can use native Helm repositories as well.
 
@@ -97,7 +105,7 @@ The following table lists each file and sub-directory found in a Rancher chart d
 >**Note:** For a complete walk through of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
 
 
-## Question Variable Reference
+#### Question Variable Reference
 
 This reference contains variables that you can use in `questions.yml`.
 
