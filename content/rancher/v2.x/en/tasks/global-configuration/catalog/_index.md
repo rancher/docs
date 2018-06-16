@@ -1,5 +1,5 @@
 ---
-title: Catalog
+title: Catalogs and Charts
 weight: 3026
 ---
 
@@ -81,3 +81,29 @@ You can create custom catalogs of Helm charts for use in Rancher. Custom catalog
 3. Complete the form and click **Create**.
 
 **Result**: Your catalog is added to Rancher. The catalog is available for deployment of your applications.
+
+#### Question Variable Reference
+
+This reference contains variables that you can use in `questions.yml`.
+
+| Variable  | Type | Required | Description |
+| ------------- | ------------- | --- |------------- |
+| 	variable          | string  | true    |  define the variable name specified in the `values.yml` file, using `foo.bar` for nested object. |
+| 	label             | string  | true      |  define the UI label. |
+| 	description       | string  | false      |  specify the description of the variable.|
+| 	type              | string  | false      |  default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
+| 	required          | bool    | false      |  define if the variable is required or not (true \| false)|
+| 	default           | string  | false      |  specify the default value. |
+| 	group             | string  | false      |  group questions by input value. |
+| 	min_length        | int     | false      | min character length.|
+| 	max_length        | int     | false      | max character length.|
+| 	min               | int     | false      |  min integer length. |
+| 	max               | int     | false      |  max integer length. |
+| 	options           | []string | false     |  specify the options when the vriable type is `enum`, for example: options:<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
+| 	valid_chars       | string   | false     |  regular expression for input chars validation. |
+| 	invalid_chars     | string   | false     |  regular expression for invalid input chars validation.|
+| 	subquestions      | []subquestion | false|  add an array of subquestions.|
+| 	show_if           | string      | false  | show current variable if conditional variable is true, for example `show_if: "serviceType=Nodeport"` |
+| 	show\_subquestion_if |  string  | false     | show subquestions if is true or equal to one of the options. for example `show_subquestion_if: "true"`|
+
+>**Note:** `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
