@@ -3,9 +3,9 @@ title: Catalogs and Charts
 weight: 2250
 ---
 
-_Catalogs_ are GitHub repositories filled with applications that are ready-made for deployment.
+_Catalogs_ are GitHub repositories filled with applications that are ready-made for deployment. Applications are bundled in objects called _charts_.
 
-Applications are bundled in objects called _charts_, which are a packaging format popularized by [Helm](https://docs.helm.sh/). Think of them as templates for deployments. Per Helm, charts are:
+_Charts_ are a packaging format popularized by [Helm](https://docs.helm.sh/). Think of them as templates for deployments. Per Helm, charts are:
 
 >A collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
 
@@ -17,13 +17,13 @@ Within Rancher, you can access several different catalogs either by default or t
 
 - **Library**
 
-	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a git repository to expedite the fetch and update of charts. In Rancher 2.0, only global catalogs are supported. Support for cluster-level and project-level charts will be added in the future.
+	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. In Rancher 2.0, only global catalogs are supported. Support for cluster-level and project-level charts will be added in the future.
 	
 	This catalog features Rancher Charts, which include some [notable advantages](#chart-types) over native Helm charts.
 
 - **Helm Stable**
 
-	This catalog includes native [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md), both of which are maintained by the Kubernetes community. This catalog features the largest pool of apps, but is also the most complex way to deploy charts within Rancher.
+	This catalog, , which is maintained by the Kubernetes community, includes native [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md). This catalog features the largest pool of apps, but is also the most complex way to deploy charts within Rancher.
 
 - **Helm Incubator**
 
@@ -42,9 +42,9 @@ Custom catalog requirements include:
 - A unique name.
 - A URL that `git clone` can handle.
 
-For step-by-step directions, see [Adding Custom Catalogs]({{< baseurl >}}rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs).
+For step-by-step directions, see [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs).
 
-When you're done creating the catalog, populate it charts. Custom catalogs can support native Helm charts or Rancher charts. See [Custom Chart Creation](#custom-chart-creation).
+When you're done creating the catalog, populate it with charts. Custom catalogs can support both native Helm charts and Rancher charts. See [Custom Chart Creation](#custom-chart-creation).
 
 ## Chart Types
 
@@ -88,7 +88,7 @@ The following table demonstrates the directory structure for a chart, which can 
 		<tr>
 			<td> </td>
 			<td> <code>app-readme.md</code></td>
-			<td> Rancher Specific: Text displayed within Rancher.</td>
+			<td> <strong>Rancher Specific:</strong> Text displayed in the charts header within the Rancher UI.</td>
 		</tr>
 		<tr>
 			<td><code>charts/</code></td>
@@ -103,12 +103,12 @@ The following table demonstrates the directory structure for a chart, which can 
 		<tr>
 			<td> </td>
 			<td><code>questions.yml</code></td>
-			<td><strong>Rancher Specific:</strong> File containing questions displayed within Rancher.</td>
+			<td><strong>Rancher Specific:</strong> File containing form questions displayed within the Rancher UI. Questions display in <strong>Configuration Options</strong>.</td>
 		</tr>
 		<tr>
 			<td> </td>
 			<td><code>README.md</code></td>
-			<td>Optional: Helm Readme file displayed within Rancher.</td>
+			<td>Optional: Helm Readme file displayed within Rancher UI. This test displays in <strong>Detailed Descriptions</strong>.</td>
 		</tr>
 			<td></td>
 			<td><code>requirements.yml</code></td>
@@ -129,7 +129,7 @@ The following table demonstrates the directory structure for a chart, which can 
 
 ### Rancher Chart Additional Files
 
-Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a native Helm chart. Rancher charts differ slightly from native Helm charts in their directory structures. Rancher charts include two files that native Helm charts do not.
+Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a native Helm chart. Rancher charts differ slightly from Helm charts in their directory structures. Rancher charts include two files that Helm charts do not.
 
 - `app-readme.md`
       
@@ -141,7 +141,7 @@ Before you create your own custom catalog, you should have a basic understanding
       
 - `questions.yml`
     
-    A file that containing questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
+    A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
 
 	<small>Rancher Chart with <code>question.yml</code> (left) vs. Helm Chart without (right)</small>
@@ -155,4 +155,4 @@ Before you create your own custom catalog, you should have a basic understanding
 
  For information on how to add and customize charts for a custom catalog, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts).
 
->**Note:** For a complete walk through of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
+>**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).

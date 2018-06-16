@@ -11,7 +11,7 @@ The custom catalog can contain native Helm charts, Rancher charts, or a combinat
 
 >- Recommended: Read [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs).
 >- Create a GitHub repository to serve as your custom catalog.
->- Complete [Adding Custom Catalogs]({{< baseurl >}}/Users/markbishop/Documents/GitHub/docs/content/rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs).
+>- Complete [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs).
 
 >**Note:** Customization of Helm charts takes place outside of the Rancher UI.
 
@@ -39,7 +39,7 @@ The custom catalog can contain native Helm charts, Rancher charts, or a combinat
 
 3. **Recommended:** Create a `questions.yml` file.
 
-    This file creates a form for users to specify deployment parameters when they deploy the custom chart. Without this file, users will have to specify the parameters manually using key value pairs, which isn't user-friendly.
+    This file creates a form for users to specify deployment parameters when they deploy the custom chart. Without this file, users **must** specify the parameters manually using key value pairs, which isn't user-friendly.
     <br/>
     <br/>
     The example below creates a form that prompts users for persistent volume size and a storage class.
@@ -73,7 +73,7 @@ The custom catalog can contain native Helm charts, Rancher charts, or a combinat
             label: Default StorageClass for WordPress
     </pre>
 
-    4. Check the customized chart into your GitHub repo.
+4. Check the customized chart into your GitHub repo.
 
 **Result:** Your custom chart is added to the repo. Your Rancher Server will replicate the chart within a few minutes.
 
@@ -87,22 +87,22 @@ This reference contains variables that you can use in `questions.yml`.
 
 | Variable  | Type | Required | Description |
 | ------------- | ------------- | --- |------------- |
-| 	variable          | string  | true    |  define the variable name specified in the `values.yml` file, using `foo.bar` for nested object. |
-| 	label             | string  | true      |  define the UI label. |
-| 	description       | string  | false      |  specify the description of the variable.|
-| 	type              | string  | false      |  default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
-| 	required          | bool    | false      |  define if the variable is required or not (true \| false)|
-| 	default           | string  | false      |  specify the default value. |
-| 	group             | string  | false      |  group questions by input value. |
-| 	min_length        | int     | false      | min character length.|
-| 	max_length        | int     | false      | max character length.|
-| 	min               | int     | false      |  min integer length. |
-| 	max               | int     | false      |  max integer length. |
-| 	options           | []string | false     |  specify the options when the vriable type is `enum`, for example: options:<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
-| 	valid_chars       | string   | false     |  regular expression for input chars validation. |
-| 	invalid_chars     | string   | false     |  regular expression for invalid input chars validation.|
-| 	subquestions      | []subquestion | false|  add an array of subquestions.|
-| 	show_if           | string      | false  | show current variable if conditional variable is true, for example `show_if: "serviceType=Nodeport"` |
-| 	show\_subquestion_if |  string  | false     | show subquestions if is true or equal to one of the options. for example `show_subquestion_if: "true"`|
+| 	variable          | string  | true    |  Define the variable name specified in the `values.yml` file, using `foo.bar` for nested objects. |
+| 	label             | string  | true      |  Define the UI label. |
+| 	description       | string  | false      |  Specify the description of the variable.|
+| 	type              | string  | false      |  Default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
+| 	required          | bool    | false      |  Define if the variable is required or not (true \| false)|
+| 	default           | string  | false      |  Specify the default value. |
+| 	group             | string  | false      |  Group questions by input value. |
+| 	min_length        | int     | false      | Min character length.|
+| 	max_length        | int     | false      | Max character length.|
+| 	min               | int     | false      |  Min integer length. |
+| 	max               | int     | false      |  Max integer length. |
+| 	options           | []string | false     |  Specify the options when the variable type is `enum`, for example: options:<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
+| 	valid_chars       | string   | false     |  Regular expression for input chars validation. |
+| 	invalid_chars     | string   | false     |  Regular expression for invalid input chars validation.|
+| 	subquestions      | []subquestion | false|  Add an array of subquestions.|
+| 	show_if           | string      | false  | Show current variable if conditional variable is true. For example `show_if: "serviceType=Nodeport"` |
+| 	show\_subquestion_if |  string  | false     | Show subquestions if is true or equal to one of the options. for example `show_subquestion_if: "true"`|
 
 >**Note:** `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
