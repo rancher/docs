@@ -30,7 +30,7 @@ If Rancher Server uses a self-signed certificate, Rancher CLI prompts you to con
 
 ### Project Selection
 
-To select a [cluster]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters/) or [project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) to work on, use the command `./rancher context switch`. When you enter this command, a list of available projects displays. Enter a number to choose your project.
+Before you can perform any commands using Rancher CLI, you must select a Rancher project to perform those commands against. To select a [project]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/) to work on, use the command `./rancher context switch`. When you enter this command, a list of available projects displays. Enter a number to choose your project.
 
 **Example: `./rancher context switch` Output**
 ```
@@ -46,7 +46,7 @@ Select a Project:
 After you enter a number, the console displays a message that you've changed projects.
 
 ```
-INFO[0005] Setting new context to project project-1     
+INFO[0005] Setting new context to project project-1
 INFO[0005] Saving config to /Users/markbishop/.rancher/cli2.json 
 ```
 
@@ -56,55 +56,55 @@ The following commands are available for use in Rancher CLI.
 
 - `apps, [app]`
               
-    Operations with apps.
+    Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs/#rancher-chart-structure).
   
 - `catalog`
 
-    Operations with catalogs.
+    Performs operations on [catalogs]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs).
 
 - `clusters, [cluster]`
 
-    Operations on clusters.
+    Performs operations on your [clusters]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters).
 
 - `context`
 
-    Operations for the context.
+    Switches between Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects).
 
-- `inspect`
+- `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`
 
-    View details of resources.
+    Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects) and [workloads]({{< baseurl >}}/rancher/v2.x/en/concepts/workloads)). Specify resources by name or ID.
 
 - `kubectl`
   
-    Run kubectl commands.
+    Runs [kubectl commands](https://kubernetes.io/docs/reference/kubectl/overview/#operations).
 
 - `login, [l]`
 
-    Login to a Rancher Server.
+    Logs into a Rancher Server. For an example, see [CLI Authentication](#cli-authentication).
 
 - `namespaces, [namespace]`
 
-    Operations on namespaces.
+    Performs operations on [namespaces]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/#namespaces).
 
 - `nodes, [node]`
 
-    Operations on nodes.
+    Performs operations on [nodes]({{< baseurl >}}/rancher/v2.x/en/overview/architecture/#kubernetes).
 
 - `projects, [project]`
 
-    Operations on projects.
+    Performs operations on [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects).
 
 - `ps`
 
-    Show workloads in a project.
+    Displays [workloads]({{< baseurl >}}/rancher/v2.x/en/concepts/workloads) in a project.
 
 - `settings, [setting]`
 
-    Show settings for the current server.
+    Shows the current settings for your Rancher Server.
 
-- `ssh` 
+- `ssh`
 
-    SSH into a node.
+    Connects to one of your cluster nodes using the SSH protocol.
 
 - `help, [h]`
 
