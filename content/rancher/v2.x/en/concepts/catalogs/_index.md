@@ -23,7 +23,7 @@ Within Rancher, you can access several different catalogs either by default or t
 
 - **Helm Stable**
 
-	This catalog, , which is maintained by the Kubernetes community, includes native [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md). This catalog features the largest pool of apps, but is also the most complex way to deploy charts within Rancher.
+	This catalog, , which is maintained by the Kubernetes community, includes native [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md). This catalog features the largest pool of apps.
 
 - **Helm Incubator**
 
