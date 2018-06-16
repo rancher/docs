@@ -5,7 +5,7 @@ draft: true
 ---
 After you've enabled default catalogs or setup a custom catalog, you can launch apps using a catalog instead of a standard deployment. 
 
->**Prerequiste:** Enable a catalog. For more information, see [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs)
+>**Prerequisite:** Enable a catalog. For more information, see [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs).
 
 1. From the **Global** view, open the project that you want to deploy to.
 
@@ -15,7 +15,7 @@ After you've enabled default catalogs or setup a custom catalog, you can launch 
 
 4. Under **Configuration Options** enter a **Name**. By default, this name is also used to create a Kubernetes namespace for the application.
  
-    * If you would like to change the **Namespace**, click **Customize** and enter a new name
+    * If you would like to change the **Namespace**, click **Customize** and enter a new name.
     * If you want to use a different namespace that already exists, click **Customize**, and then click **Use an existing namespace**. Choose a namespace from the list.
 
 5. Select a **Template Version**.
