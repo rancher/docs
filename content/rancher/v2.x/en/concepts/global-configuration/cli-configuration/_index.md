@@ -56,7 +56,7 @@ The following commands are available for use in Rancher CLI.
 
 - `apps, [app]`
               
-    Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs/#rancher-chart-structure).
+    Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs/#rancher-chart-structure)).
   
 - `catalog`
 
@@ -68,7 +68,7 @@ The following commands are available for use in Rancher CLI.
 
 - `context`
 
-    Switches between Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects).
+    Switches between Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects). For an example, see [Project Selection](#project-selection).
 
 - `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`
 
