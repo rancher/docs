@@ -35,11 +35,16 @@ Within Rancher, you can access several different catalogs either by default or t
  
 ### Custom Catalog Creation
 	
-Creating a custom catalog for Rancher is straightforward. Create a Git Repo and then direct Rancher toward the repo. 
+Creating a custom catalog for Rancher is straightforward. Create a Git repo and then direct Rancher toward the repo.
 
-For step-by-step directions, see [placeholder](placeholder).
+Custom catalog requirements include:
 
-When you're done creating the catalog, populate it charts. See [Custom Chart Creation](#custom-chart-creation).
+- A unique name.
+- A URL that `git clone` can handle.
+
+For step-by-step directions, see [Adding Custom Catalogs]({{< baseurl >}}rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs).
+
+When you're done creating the catalog, populate it charts. Custom catalogs can support native Helm charts or Rancher charts. See [Custom Chart Creation](#custom-chart-creation).
 
 ## Chart Types
 
@@ -53,7 +58,7 @@ Rancher supports two different types of charts:
 
 - **Rancher Charts**
 
-	Rancher charts mirror native helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Rancher Chart Additional Files](#rancher-chart-additional-files)
+	Rancher charts mirror native helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Rancher Chart Additional Files](#rancher-chart-additional-files).
 
 	Advantages of Rancher charts include:
 
@@ -130,7 +135,7 @@ Before you create your own custom catalog, you should have a basic understanding
       
     A file that provides descriptive text in the chart's UI header. The following image displays the difference between a Rancher chart (which includes `app-readme.md`) and a native Helm chart (which does not).
 
-	**Example: `app-readme.md` Rancher Output**
+	<small>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</small>
 
 	![app-readme.md]({{< baseurl >}}/img/rancher/app-readme.png)
       
@@ -139,13 +144,15 @@ Before you create your own custom catalog, you should have a basic understanding
     A file that containing questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
 
-	**Example: `questions.yml` Rancher Output**
+	<small>Rancher Chart with <code>question.yml</code> (left) vs. Helm Chart without (right)</small>
 
 	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
 
 ### Custom Chart Creation
 
- You can fill your custom catalog with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
+ You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
+
+ For information on how to add and customize charts for a custom catalog, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts).
 
 >**Note:** For a complete walk through of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
