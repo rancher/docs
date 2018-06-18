@@ -34,6 +34,8 @@ Before setting up a cluster in vSphere, you must ensure that you have a user in 
 
 Now you have a user that is able to successfully create and manager Rancher clusters in vSphere.
 
+### Creating vSphere Clusters
+
 To create the cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
