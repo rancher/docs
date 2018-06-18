@@ -1,13 +1,12 @@
 ---
 title: Nodes
-weight: 3000
+weight: 3005
 draft: true
 ---
-The `nodes` section is the only required section in the `cluster.yml` file. It's used by RKE to specify cluster node, ssh credentials used to access them and their roles in the RKE cluster.
 
-The `nodes` section is a yaml list of node definitions:
+The `nodes` directive is the only required section in the `cluster.yml` file. It's used by RKE to specify cluster node(s), ssh credentials used to access the node(s) and which roles these nodes will be in the Kubernetes cluster.
 
-``` yaml
+```yaml
 nodes:
   nodes:
   - address: 1.1.1.1
@@ -35,41 +34,68 @@ nodes:
       app: ingress
 ```
 
-The node definition supports the following options:
-###### address
-This is the hostname or the IP address of the node. RKE should be able to connect to this address.
+### Node Options
 
-###### internal_address
-This option allows the user to use nodes with multiple addresses to keep inter-host communication on a private network. If this is not set, `address` is used instead.
+Within each node, there are multiple directives that can be used.
 
-###### hostname_override
-This is a friendly name that RKE use to register the node with in Kubernetes. This doesn't need to be a routable address. If the `hostname_override` is not used, the `address` field is used instead.
+#### Address
 
-> Note that this option is ignored by Kubernetes when Cloud Providers configuration is used. In that case, Kubernetes uses the hostname provided by the cloud provider.
+The `address` directive will be used to set the hostname or IP address of the node. RKE must be able to connect to this address.
 
-###### port
-SSH port to be used when connecting to this node. Default port is `22`
+#### Internal Address
 
-###### user
-SSH user to be used when connecting to this node. Note that this user must be a member of the `docker` group or allowed to write to the node Docker socket.
+The `internal_address` provides the ability to have nodes with multiple addresses set a specific address to use for inter-host communication on a private network. If the `internal_address` is not set, the `address` is used for inter-host communication.
 
-###### ssh_key_path
-Path for the ssh private key used to connect to this node.
+#### Overriding the Hostname
 
-###### ssh_key
-An in-line option to set the private key used to connect to this node inside the cluster.yml file.
+The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address. If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
 
-###### role
-A yaml list of roles to specify the node role(s) in the Kubernetes cluster. Three roles are supported: `controlplane`, `etcd` and `worker`. Node roles are not mutually exclusive. It's possible to assign any combination of roles to any node. It's also possible to change a node's role using the upgrade process.
+> **Note:** When [cloud providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) are configured, Kubernetes will use the hostname provided by the cloud provider.
 
-A working cluster has to have at least 1 node with the `controlplane` and `etcd` roles.
+#### SSH Port
 
-###### docker_socket
-An option to specify a different Docker socket location for the node. The default is `/var/run/docker.sock`
+In each node, you specify which `port` to be used when connecting to this node. The default port is `22`.
+
+#### SSH Users
+
+For each node, you specify the `user` to be used when connecting to this node. This user must be a member of the Docker group or allowed to write to the node's Docker socket.
+
+#### SSH Key Path
+
+For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to this node.
+
+> **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{< baseurl >}}/rke/v0.1.x/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
+
+#### SSH Key
+
+Instead of setting the path to the SSH key, you can alternatively specify the actual key, i.e. `ssh_key`, to be used to connect to the node.
+
+#### Kubernetes Roles
+
+You can specify the list of roles that you want the node to be as part of the Kubernetes cluster. Three roles are supported: `controlplane`, `etcd` and `worker`. Node roles are not mutually exclusive. It's possible to assign any combination of roles to any node. It's also possible to change a node's role using the upgrade process.
+
+* **etcd**
+
+With this role, the `etcd` container will be run on these nodes. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state.
+
+* **controlplane**
+
+With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers.
 
 
-###### labels
-An option to set an arbitrary map labels for nodes. It's also handy when used with the ingress controller `node_selector` option.
+* **worker**
+
+With this role, any workloads or pods that are deployed will land on these nodes.
+
+> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes. 
+
+#### Docker Socket
+
+If the Docker socket is different than the default, you can set the `docker_socket`. The default is `/var/run/docker.sock`
+
+#### Labels
+
+You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controller/) `node_selector` option.
 
 
 
