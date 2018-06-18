@@ -3,7 +3,9 @@ title: Adding Cluster Members
 weight: 3525
 ---
 
-Before a user can access a cluster and its resources, the cluster owner must explicitly assign that user a cluster _membership_, which provides the user with access and roles within the cluster.
+Before a user can access a cluster and its resources, the cluster owner must explicitly assign that user a cluster _membership_ (or a project membership, which is out of scope for this topic). Assigning a user membership to a cluster provides them with access to and roles within the cluster.
+
+<!-- TODO: add link to project membership after the topic is created-->
 
 There are two contexts where you can add cluster members:
 
@@ -13,7 +15,7 @@ There are two contexts where you can add cluster members:
 
 - [Adding Members to an Existing Cluster](#adding-members-to-an-existing-cluster)
 
-	You can always add members to a cluster later. See below.
+    You can always add members to a cluster later. See below.
 
 ### Adding Members to an Existing Cluster
 
@@ -23,15 +25,18 @@ Following cluster creation, you can add users as cluster members so that they ca
 
 2. From the main menu, select **Members**. Then click **Add Member**.
 
-3. Search for the user or group that you want to add to the project.
+3. Search for the user or group that you want to add to the cluster.
 
  	If external authentication is configured:
 	
-	-  Rancher returns users from your external authentication source as you type.  
-	
-	- A drop-down allows you to add groups instead of individual users. The dropdown only lists groups that you, the logged in user, are included in.
+	-  Rancher returns users from your [external authentication]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication/) source as you type.
 
-	>**Note:** If you are logged in as a local user, external users do not display in your search results.
+		>**Using AD but can't find your users?**
+		>There may be an issue with your search attribute configuration. See [Configuring Active Directory Authentication: Step 5]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/).
+	
+	- A drop-down allows you to add groups instead of individual users. The drop-down only lists groups that you, the logged in user, are part of.
+
+		>**Note:** If you are logged in as a local user, external users do not display in your search results. For more information, see [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication/#external-authentication-configuration-and-principal-users).
 
 4. Assign the user or group **Cluster** roles.  
 
