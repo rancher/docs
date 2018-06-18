@@ -9,7 +9,15 @@ When you have made changes to `rancher-cluster.yml`, you will have to run `rke r
 
 ### Possible causes
 
-The nginx ingress controller is not able to serve the configured host in `rancher-cluster.yml`. This should be the FQDN you configured to access Rancher. The logging of the nginx ingress controller will show why it cannot serve the requested host. To view the logs, you can run the following command
+The nginx ingress controller is not able to serve the configured host in `rancher-cluster.yml`. This should be the FQDN you configured to access Rancher. You can check if it is properly configured by viewing the ingress that is created by running the following command:
+
+```
+kubectl get ingress -n cattle-system -o wide
+```
+
+Check if the `HOSTS` column is displaying the FQDN you configured in the template, and that the used nodes are listed in the `ADDRESS` column. If that is configured correctly, we can check the logging of the nginx ingress controller.
+
+The logging of the nginx ingress controller will show why it cannot serve the requested host. To view the logs, you can run the following command
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=ingress-nginx -n ingress-nginx
@@ -26,3 +34,7 @@ The used certificates do not contain the correct hostname. Generate new certific
 There is a process on the node occupying port 80, this port is needed for the nginx ingress controller to route requests to Rancher. You can find the process by running the command: `netstat -plant | grep \:80`.
 
 Stop/kill the process and redeploy.
+
+* `unexpected error creating pem file: no valid PEM formatted block found`
+
+The base64 encoded string configured in the template is not valid. Please check if you can decode the configured string using `base64 -D STRING`, this should return the same output as the content of the file you used to generate the string. If this is correct, please check if the base64 encoded string is placed directly after the key, without any newlines before, in between or after. (For example: `tls.crt: LS01..`)
