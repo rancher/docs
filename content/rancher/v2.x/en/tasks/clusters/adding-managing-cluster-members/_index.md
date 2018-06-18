@@ -3,9 +3,9 @@ title: Adding Cluster Members
 weight: 3525
 ---
 
-Before a user can access a cluster and its resources, the cluster owner must explicitly assign that user a cluster _membership_ (or a project membership, which is out of scope for this topic). Assigning a user membership to a cluster provides them with access to and roles within the cluster.
+If you want to provide a user with access and permissions to _all_ projects within a cluster, assign the user a cluster membership.
 
-<!-- TODO: add link to project membership after the topic is created-->
+>**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-project-members/) instead.
 
 There are two contexts where you can add cluster members:
 
