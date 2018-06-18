@@ -213,7 +213,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
     ```
     # MacOS
-    $ ./rke_darwin-amd64 ---version
+    $ ./rke_darwin-amd64 --version
     # Linux
     $ ./rke_linux-amd64 --version
     ```
