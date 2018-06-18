@@ -50,7 +50,7 @@ The `internal_address` provides the ability to have nodes with multiple addresse
 
 The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address. If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
 
-> **Note:** When [cloud providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) are configured, Kubernetes will use the hostname provided by the cloud provider.
+> **Note:** When [cloud providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. 
 
 #### SSH Port
 
@@ -87,7 +87,7 @@ With this role, the stateless components that are used to deploy Kubernetes will
 
 With this role, any workloads or pods that are deployed will land on these nodes.
 
-> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes. 
+> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes.
 
 #### Docker Socket
 
