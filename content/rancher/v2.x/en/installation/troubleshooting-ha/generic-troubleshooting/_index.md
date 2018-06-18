@@ -31,7 +31,7 @@ If a pod is not in **Running** state, you can dig into the root cause by running
 kubectl --kubeconfig kube_config_rancher-cluster.yml describe pod POD_NAME -n NAMESPACE
 ```
 
-<h5>Pod logs</h5>
+<h5>Pod container logs</h5>
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs POD_NAME -n NAMESPACE
@@ -45,7 +45,7 @@ If a job is not in **Completed** state, you can dig into the root cause by runni
 kubectl --kubeconfig kube_config_rancher-cluster.yml describe job JOB_NAME -n NAMESPACE
 ```
 
-<h5>Logs from the pods of the job</h5>
+<h5>Logs from the containers of pods of the job</h5>
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l job-name=JOB_NAME -n NAMESPACE
@@ -57,4 +57,10 @@ Kubernetes cluster events are stored, and can be retrieved by running:
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml get events --all-namespaces
+```
+
+* Check Rancher container logging
+
+```
+kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=cattle -n cattle-system
 ```
