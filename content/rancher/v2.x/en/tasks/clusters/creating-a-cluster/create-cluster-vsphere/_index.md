@@ -5,9 +5,11 @@ weight: 3375
 ---
 Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
-Before setting up a Cluster in vSphere, you must ensure that you have a user with sufficient permissions to create a Rancher cluster.
+### Prerequisites
 
-1. From the **vSphere** console go to **Administration** Page.
+Before setting up a cluster in vSphere, you must ensure that you have a user in vSphere with sufficient permissions to create a Rancher cluster.
+
+1. From the **vSphere** console, go to the **Administration** page.
 
 2. Go to the **Roles** tab.
 
