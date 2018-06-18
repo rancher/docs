@@ -4,7 +4,9 @@ weight:
 draft: true
 ---
 
-Before a user can access a project and its resources, the project owner must explicitly assign that user a project _membership_, which provides the user with access and roles within the project.
+If you want to provide a user with access and permissions to _specific_ projects within a cluster, assign the user a project membership.
+
+>**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/adding-managing-cluster-members) instead.
 
 There are two contexts where you can add project members:
 
