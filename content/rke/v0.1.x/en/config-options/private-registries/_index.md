@@ -1,9 +1,11 @@
 ---
 title: Private Registries
-weight: 3000
+weight: 3010
 draft: true
 ---
-RKE supports configuring multiple private/authenticated Docker registries. This is useful if you have private images to use or are deploying your cluster in an air-gapped environment.
+
+RKE supports the ability to configure multiple private Docker registries. By passing in your registry and credentials, it allows the nodes to pull images from these private registries.  
+
 ```yaml
 private_registries:
   - url: registry.com
@@ -13,3 +15,7 @@ private_registries:
     user: myuser
     password: mypassword
 ```
+
+### Air-gapped Setups
+
+If you are in an air-gapped setup, you will need to not only configure your private registry credentials, but you will need to also update all your [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) so they are going to pull from the private registry. By default, these system images are pulling from `docker.io`.
