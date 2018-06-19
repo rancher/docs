@@ -1,7 +1,6 @@
 ---
 title: Upgrading Workloads
 weight: 
-draft: true
 ---
 When a new version of an application image is released on Docker Hub, you can upgrade any workloads running a previous version of the application to the new one.
 
