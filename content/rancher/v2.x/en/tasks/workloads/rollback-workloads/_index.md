@@ -1,7 +1,6 @@
 ---
 title: Rolling Back Workloads
 weight: 
-draft: true
 ---
 
 Sometimes there is a need to rollback to the previous version of the application, either for debugging purposes or because an upgrade did not go as planned.
