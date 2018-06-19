@@ -3,7 +3,7 @@ title: Adding Cluster Members
 weight: 3525
 ---
 
-If you want to provide a user with access and permissions to _all_ projects within a cluster, assign the user a cluster membership.
+If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.
 
 >**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-project-members/) instead.
 
