@@ -1,7 +1,6 @@
 ---
 title: Creating Projects
 weight: 
-draft: true
 ---
 
 1. From the **Global** view, choose **Clusters** from the main menu. From the **Clusters** page, open the cluster from which you want to create a project.
