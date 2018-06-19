@@ -7,8 +7,8 @@ You can import an existing Kubernetes cluster and then manage it using Rancher.
 
 >**Prerequisites:**
 >
->- If your existing Kubernetes cluster already has a `cluster-admin` role, you must the `cluster-admin` privilege to import this cluster into Rancher. In order to apply the privilege, you need to run `kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user [USER_ACCOUNT]` before running the `kubectl` command to import the cluster.
->- By default, GKE users are not provided this privilege.  To learn more about GKE RBAC, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
+>- If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to import the cluster into Rancher. In order to apply the privilege, you need to run `kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user [USER_ACCOUNT]` before running the `kubectl` command to import the cluster.
+>- By default, GKE users are not given this privilege, so you will need to run the command before importing GKE clusters. To learn more about GKE RBAC, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
 1. From the **Clusters** page, click **Add Cluster**.
 
