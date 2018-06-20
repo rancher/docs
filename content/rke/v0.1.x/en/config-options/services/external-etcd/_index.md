@@ -1,6 +1,6 @@
 ---
 title: External etcd
-weight: 3000
+weight: 3027
 draft: true
 ---
 
@@ -28,7 +28,7 @@ services:
       -----END PRIVATE KEY-----
 ```
 
-## External etcd options
+## External etcd Options
 
 ### Path
 
