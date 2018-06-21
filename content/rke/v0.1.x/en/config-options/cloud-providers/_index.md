@@ -108,9 +108,11 @@ Besides the minimum set of options, there are many other options that are suppor
 
 |   Azure Configuration Options |  Type  	| Required  |
 |:----------------------------:	|:------:	|:---------:|
-|             cloud            	| string 	|      |
 |           tenantId           	| string 	|   *    |
 |        subscriptionId        	| string 	|   *    |
+|          aadClientId         	| string 	|   *    |
+|        aadClientSecret       	| string 	|   *    |
+|             cloud            	| string 	|      |
 |         resourceGroup        	| string 	|      |
 |           location           	| string 	|      |
 |           vnetName           	| string 	|      |
@@ -121,8 +123,6 @@ Besides the minimum set of options, there are many other options that are suppor
 |  primaryAvailabilitySetName  	| string 	|      |
 |            vmType            	| string 	|      |
 |      primaryScaleSetName     	| string 	|      |
-|          aadClientId         	| string 	|   *    |
-|        aadClientSecret       	| string 	|   *    |
 |       aadClientCertPath      	| string 	|      |
 |     aadClientCertPassword    	| string 	|      |
 |     cloudProviderBackoff     	|  bool  	|      |
@@ -155,7 +155,7 @@ cloud_provider:
       subnet-id: xxxxxxxxxxxxxx
     block_storage:
       ignore-volume-az: true
-    router:
+    route:
       router-id: xxxxxxxxxxxxxx
     metadata:
       search-order: xxxxxxxxxxxxxx
@@ -172,7 +172,7 @@ The Openstack configuration options are divided into 5 groups.
 * Global
 * Load Balancer
 * Block Storage
-* Router
+* Route
 * Metadata
 
 ##### Global
@@ -205,11 +205,12 @@ These are the options that are available under the `load_balancer` directive.
 |   floating-network-id  	| string 	|      |
 |        lb-method       	| string 	|      |
 |       lb-provider      	| string 	|      |
+| manage-security-groups 	|  bool  	|      |
 |     create-monitor     	|  bool  	|      |
 |      monitor-delay     	|   int  	|   * if `create-monitor` is true   |
 |     monitor-timeout    	|   int  	|   * if `create-monitor` is true    |
 |   monitor-max-retries  	|   int  	|   * if `create-monitor` is true   |
-| manage-security-groups 	|  bool  	|      |
+
 
 ##### Block Storage
 
@@ -221,11 +222,11 @@ These are the options that are available under the `block_storage` directive.
 |   trust-device-path  	|  bool  	|      |
 |   ignore-volume-az   	|  bool  	|      |
 
-##### Router
+##### Route
 
-This is the option that is available under the `router` directive.
+This is the option that is available under the `route` directive.
 
-| OpenStack's Router Configuration Option 	|  Type  	| Required |
+| OpenStack's Route Configuration Option 	|  Type  	| Required |
 |:--------------------:	|:------:	|:---------:|
 |       router-id      	| string 	|      |
 

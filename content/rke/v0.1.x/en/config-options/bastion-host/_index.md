@@ -19,24 +19,24 @@ bastion_host:
   #   -----END RSA PRIVATE KEY-----
 ```
 
-### Bastion Host Options
+## Bastion Host Options
 
-#### Address
+### Address
 
 The `address` directive will be used to set the hostname or IP address of the bastion host. RKE must be able to connect to this address.
 
-#### SSH Port
+### SSH Port
 
 You specify which `port` to be used when connecting to the bastion host. The default port is `22`.
 
-#### SSH Users
+### SSH Users
 
 You specify the `user` to be used when connecting to this node.
 
-#### SSH Key Path
+### SSH Key Path
 
 You specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to the bastion host.
 
-#### SSH Key
+### SSH Key
 
 Instead of setting the path to the SSH key, you can specify the actual key, i.e. `ssh_key`, to be used to connect to the bastion host.

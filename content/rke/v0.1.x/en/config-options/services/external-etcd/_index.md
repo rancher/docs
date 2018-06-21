@@ -1,11 +1,12 @@
 ---
 title: External etcd
-weight: 3000
+weight: 3027
 draft: true
 ---
 
+By default, RKE will launch etcd servers, but RKE also supports being able to use an external etcd. RKE only supports connecting to a TLS enabled etcd setup.
 
-RKE supports using external etcd instead of deploying etcd servers, to enable external etcd the following parameters should be populated:
+> **Note:** RKE will not accept having external etcd servers in conjunction with [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/) with the `etcd` role.
 
 ```
 services:
@@ -27,4 +28,16 @@ services:
       -----END PRIVATE KEY-----
 ```
 
-Note that RKE only supports connecting to TLS enabled etcd setup, user can enable multiple endpoints in the `external_urls` field. RKE will not accept having external urls and nodes with `etcd` role at the same time, user should only specify either etcd role for servers or external etcd but not both.
+## External etcd Options
+
+### Path
+
+The `path` defines the location of where the etcd cluster is on the endpoints.
+
+### External URLs
+
+The `external_urls` are the endpoints of where the etcd cluster is hosted. There can be multiple endpoints for the etcd cluster.
+
+### CA Cert/Cert/KEY
+
+The certificates and private keys used to authenticate and access the etcd service.
