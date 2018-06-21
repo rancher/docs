@@ -34,7 +34,7 @@ Configuring Rancher to allow your users to authenticate with their Azure AD acco
 
 1. [Configure Azure AD in Rancher](#5-configure-azure-ad-in-rancher)
 
-    From the Rancher UI, enter information about your AD instace hosted in Azure to complete configuration.
+    From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
 
 ### 1. Register Rancher with Azure
 
