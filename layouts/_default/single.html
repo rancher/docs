@@ -30,7 +30,7 @@
           {{ partial "docs-side-nav.html" . }}
         </aside>
       {{end}}
-      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-7 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
 
         <div class="main-content ">
         {{ with .Params.Title }}
@@ -39,12 +39,11 @@
         {{ .Content }}
 
       </div>
-        {{ partial "breadcrumbs.html" . }}
 
          <div class="p-v-sm">{{ partial "page-edit.html" . }}</div>
       </article>
       <div class="offset-watch invisible"></div>
-      <aside class="col-sm-3 col-xs-12 unstyled toc-container">
+      <aside class="col-sm-2 col-xs-12 unstyled toc-container">
         <h4 class="m-b-0">On this page</h4>
         {{ .TableOfContents }}
       </aside>
