@@ -8,7 +8,7 @@ RKE supports the ability to configure your Kubernetes components by adding in ex
 
 ## Extra Args
 
-For the `kube-controller`, you can update the `extra_args` to change the existing defaults.
+For any of the Kubernetes services, you can update the `extra_args` to change the existing defaults.
 
 As of `v0.1.3`, using `extra_args` will add new arguments and **override** any existing defaults. For example, if you need to modify the default admission controllers list, you need to include the default list and edit it with your changes so all changes are included.
 

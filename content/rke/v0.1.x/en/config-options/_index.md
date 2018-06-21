@@ -10,7 +10,7 @@ There are several options that can be configured in cluster configuration option
 
 ### Configuring Nodes
 * [Nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/)
-* [Ignoring supported Docker versions](#supported-docker-versions)
+* [Ignoring unsupported Docker versions](#supported-docker-versions)
 * [Private Registries]({{< baseurl >}}/rke/v0.1.x/en/config-options/private-registries/)
 * [Cluster Level SSH Key Path](#cluster-level-ssh-key-path)
 * [SSH Agent](#ssh-agent)
