@@ -454,4 +454,4 @@ You have a couple of options:
 
 ## FAQ and Troubleshooting
 
-{{< ssl_faq >}}
+{{< ssl_faq_ha >}}

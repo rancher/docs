@@ -91,7 +91,6 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 >Create a self-signed certificate.
 >
 >- The certificate files must be in [PEM format](#pem).
->- The certificate files must be encoded in [base64](#base64).
 >- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 
@@ -118,7 +117,6 @@ If you're publishing your app publicly, you should ideally be using a certificat
 >**Prerequisites:**
 >
 >- The certificate files must be in [PEM format](#pem).
->- The certificate files must be encoded in [base64](#base64).
 >- Make sure that the container includes your certificate file and the key file. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 
 **To Install Rancher Using a Certificate Signed by a Recognized CA:**
@@ -180,7 +178,7 @@ You have a couple of options:
 
 ## FAQ and Troubleshooting
 
-{{< ssl_faq >}}
+{{< ssl_faq_single >}}
 
 ## Persistent Data
 
