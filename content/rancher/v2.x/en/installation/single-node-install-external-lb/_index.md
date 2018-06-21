@@ -82,7 +82,6 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 >Create a self-signed certificate.
 >
 >- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
->- The certificate files must be in base64.
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -102,7 +101,6 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 >**Prerequisites:**
 >
 >- The certificate files must be in [PEM format](#pem).
->- The certificate files must be encoded in [base64](#base64).
 
 **To Install Rancher Using a Cert Signed by a Recognized CA:**
 
@@ -204,7 +202,7 @@ You have a couple of options:
 
 ## FAQ and Troubleshooting
 
-{{< ssl_faq >}}
+{{< ssl_faq_single >}}
 
 ## Persistent Data
 
