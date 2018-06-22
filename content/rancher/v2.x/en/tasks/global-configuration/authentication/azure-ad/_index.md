@@ -109,9 +109,10 @@ Next, set API permissions for Rancher within Azure.
 
 1. Click **Save**.
 
+1. From **Required permissions**, click **Grant permissions**. Then click **Yes**.
+
     >**Note:** You must be signed in as an Azure administrator to successfully save your permission settings.
 
-1. From **Required permissions**, click **Grant permissions**. Then click **Yes**.
 
 ### 4. Copy Azure Application Data
 
@@ -153,7 +154,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
 ### 5. Configure Azure AD in Rancher
 
-From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration. 
+From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
 
 Enter the values that you copied to your [text file](#tip).
 
@@ -161,12 +162,13 @@ Enter the values that you copied to your [text file](#tip).
 
 1. Select **Azure AD**.
 
-1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#copy-azure-application-data).
+1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#4-copy-azure-application-data).
 
-    >**Note:** When entering your Graph Endpoint, remove the tenant ID from the URL.
+    >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
+    >
+    >https://graph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del>
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher.
-
+    The following table maps the values you copied in the Azure portal to the fields in Rancher. ~~~~
 
     Rancher Field | Azure Value
     ---------|----------
