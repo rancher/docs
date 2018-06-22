@@ -1,6 +1,6 @@
 ---
 title: Bastion/Jump Host Configuration
-weight: 3015
+weight: 220
 draft: true
 ---
 
@@ -8,15 +8,15 @@ Since RKE uses `ssh` to connect to [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-
 
 ```yaml
 bastion_host:
-  address: x.x.x.x
-  user: ubuntu
-  port: 22
-  ssh_key_path: /home/user/.ssh/bastion_rsa
-  # or
-  # ssh_key: |-
-  #   -----BEGIN RSA PRIVATE KEY-----
-  #
-  #   -----END RSA PRIVATE KEY-----
+    address: x.x.x.x
+    user: ubuntu
+    port: 22
+    ssh_key_path: /home/user/.ssh/bastion_rsa
+    # or
+    # ssh_key: |-
+    #   -----BEGIN RSA PRIVATE KEY-----
+    #
+    #   -----END RSA PRIVATE KEY-----
 ```
 
 ## Bastion Host Options

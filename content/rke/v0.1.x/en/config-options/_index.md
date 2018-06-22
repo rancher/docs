@@ -1,6 +1,6 @@
 ---
 title: Config Options
-weight: 3000
+weight: 200
 draft: true
 ---
 
@@ -23,13 +23,14 @@ There are several options that can be configured in cluster configuration option
 * [Services]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/)
 * [External Etcd]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/external-etcd/)
 * [Extra Args and Binds]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/extra-args-and-binds/)
-* [Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/)
-* [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
 * [Authentication]({{< baseurl >}}/rke/v0.1.x/en/config-options/authentication/)
 * [Authorization]({{< baseurl >}}/rke/v0.1.x/en/config-options/authorization/)
 * [Cloud Providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/)
-* [Network Plugins]({{< baseurl >}}/rke/v0.1.x/en/config-options/network-plugins/)
-* [Ingress Controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controller/)
+* Add-ons
+  * [Network Plugins]({{< baseurl >}}/rke/v0.1.x/en/config-options/network-plugins/)
+  * [Ingress Controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/)
+  * [User-Defined-Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/user-defined-add-ons/)
+  * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
 
 ## Cluster Level Options
 

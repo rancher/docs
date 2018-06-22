@@ -1,16 +1,17 @@
 ---
 title: Backups and Disaster Recovery
-weight: 3000
+weight: 65
 draft: true
 ---
 
-You can configure a Rancher Kubernetes Engine (RKE) cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other cluster nodes.
+You can configure a RKE cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other nodes in the cluster.
 
-### One-Time Snapshots
+## One-Time Snapshots
 
-RKE introduce a new command that can take a snapshot of a running etcd node in rke cluster, the snapshot will be automatically saved in `/opt/rke/etcd-snapshots`, the commands works as following:
-```
-./rke etcd snapshot-save --config cluster.yml     
+RKE can take a one-time snapshot of a running etcd node in a RKE cluster. The snapshot is automatically saved in `/opt/rke/etcd-snapshots`.
+
+```bash
+$ rke etcd snapshot-save --config cluster.yml     
 
 WARN[0000] Name of the snapshot is not specified using [rke_etcd_snapshot_2018-05-17T23:32:08+02:00]
 INFO[0000] Starting saving snapshot on etcd hosts       
@@ -26,15 +27,16 @@ INFO[0006] [etcd] Successfully started [etcd-snapshot-once] container on host [z
 INFO[0006] Finished saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00] on all etcd hosts
 ```
 
-The command will save a snapshot of etcd from each etcd node in the cluster config file and will save it in `/opt/rke/etcd-snapshots`. This command also creates a container for taking the snapshot. When the process completes, the container is automatically removed.
+The command will save a snapshot of etcd from each etcd node in the cluster config file and will save it in `/opt/rke/etcd-snapshots`. When running the command, an additional container is created to take the snapshot. When the snapshot is completed, the container is automatically removed.
 
-### Etcd Recurring Snapshots
+## Etcd Recurring Snapshots
 
-To schedule a recurring automatic etcd snapshot save, enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. `etcd-snapshot` automatically takes a snapshot of etcd and stores them to its local disk in `/opt/rke/etcd-snapshots`.
+To schedule a recurring automatic etcd snapshot save, you can enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. `etcd-snapshot` automatically takes a snapshot of etcd and stores them to its local disk in `/opt/rke/etcd-snapshots`.
 
-To enable `etcd-snapshot` in RKE CLI, configure the following three variables:
 
-```
+In the `cluster.yml`, you need to turn enable `snapshot` as part of the `etcd service`. Additionally, you want to specify `creation` and `retention` for the snapshot service.
+
+```yaml
 services:
   etcd:
     snapshot: true
@@ -42,20 +44,11 @@ services:
     retention: 24h
 ```
 
-- `snapshot`: Enables/disables etcd snapshot recurring service in the RKE cluster.
 
-	Default value: `false`.
-- `creation`: Time period in which `etcd-sanpshot` take snapshots.
+When a cluster is launched with the etcd snapshot service enabled, you can view the `etcd-snapshot` logs to confirm backups are being created automatically.
 
-	Default value: `5m0s`
-
-- `retention`: Time period before before an etcd snapshot expires. Expired snapshots are purged.
-
-	Default value: `24h`
-
-After RKE runs, view the `etcd-snapshot` logs to confirm backups are being created automatically:
 ```
-# docker logs etcd-snapshot
+$ docker logs etcd-snapshot
 
 time="2018-05-04T18:39:16Z" level=info msg="Initializing Rolling Backups" creation=1m0s retention=24h0m0s
 time="2018-05-04T18:40:16Z" level=info msg="Created backup" name="2018-05-04T18:40:16Z_etcd" runtime=108.332814ms
@@ -63,17 +56,31 @@ time="2018-05-04T18:41:16Z" level=info msg="Created backup" name="2018-05-04T18:
 time="2018-05-04T18:42:16Z" level=info msg="Created backup" name="2018-05-04T18:42:16Z_etcd" runtime=83.67642ms
 time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:43:16Z_etcd" runtime=86.298499ms
 ```
-Backups are saved to the following directory: `/opt/rke/etcd-snapshots/`. Backups are created on each node that runs etcd.
 
+For every node that has the `etcd` role, these `backups` are saved to `/opt/rke/etcd-snapshots/`.
 
-### Etcd Disaster recovery
+### Snapshot Options
 
-`etcd snapshot-restore` is used for etcd Disaster recovery, it reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `etcd snapshot-restore`, RKE removes the old etcd container if it still exists. To restore operations, RKE creates a new etcd cluster using the snapshot you choose.
+**Snapshot**
 
->**Warning:** Restoring an etcd snapshot deletes your current etcd cluster and replaces it with a new one. Before you run the `etcd snapshot-restore` command, backup any important data in your current cluster.
+By default, the recurring snapshot service is disabled. To enable the service, you need to define it as part of `etcd` and set it to `true`.
 
-```
-./rke etcd snapshot-restore --name snapshot --config cluster.yml
+**Creation**
+
+By default, the snapshot service will take snapshots every 5 minutes (`5m0s`). You can change the time between snapshots as part of the `creation` directive for the `etcd` service.
+
+**Retention**
+
+By default, all snapshots are saved for 24 hours (`24h`) before being deleted and purged. You can change how long to store a snapshot as part of the `retention` directive for the `etcd` service.
+
+## Etcd Disaster recovery
+
+If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command will revert to a specific snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. During the restore process, RKE also removes the old `etcd` container before creating a new `etcd` cluster using the snapshot that you have chosen.
+
+>**Warning:** Restoring an etcd snapshot deletes your current etcd cluster and replaces it with a new one. Before you run the `rke etcd snapshot-restore` command, you should back up any important data in your cluster.
+
+```bash
+$ rke etcd snapshot-restore --name mysnapshot --config cluster.yml
 INFO[0000] Starting restore on etcd hosts
 INFO[0000] [dialer] Setup tunnel for host [x.x.x.x]
 INFO[0002] [dialer] Setup tunnel for host [y.y.y.y]
@@ -115,62 +122,43 @@ INFO[0027] Finished restoring on all etcd hosts
 
 ## Example
 
-In this example we will assume that you started RKE on two nodes:
+In this example, the Kubernetes cluster was deployed on two AWS nodes.
 
 |  Name |    IP    |          Role          |
 |:-----:|:--------:|:----------------------:|
 | node1 | 10.0.0.1 | [controlplane, worker] |
 | node2 | 10.0.0.2 | [etcd]                 |
 
-### 1. Setting up rke cluster
-A minimal cluster configuration file for running k8s on these nodes should look something like the following:
+### Back up the `etcd` cluster
 
-```
-nodes:
-  - address: 10.0.0.1
-    hostname_override: node1
-    user: ubuntu
-    role: [controlplane,worker]
-  - address: 10.0.0.2
-    hostname_override: node2
-    user: ubuntu
-    role: [etcd]
-```
+Take a snapshot of the Kubernetes cluster.
 
-After running `rke up` you should be able to have a two node cluster, the next step is to run few pods on node1:
-
-```
-kubectl --kubeconfig=kube_config_cluster.yml run nginx --image=nginx --replicas=3
-```
-
-### 2. Backup etcd cluster
-
-Now lets take a snapshot using RKE:
-
-```
-rke etcd snapshot-save --name snapshot.db --config cluster.yml
+```bash
+$ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 ```
 
 ![etcd snapshot](img/rke-etcd-backup.png)
 
-### 3. Store snapshot externally
+### Store the snapshot externally
 
-After taking the etcd backup on node2 we should be able to save this backup in a persistence place, one of the options to do that is to save the backup taken on a s3 bucket or tape backup, for example:
+After taking the etcd snapshot on `node2`, we recommend saving this backup in a persistence place. One of the options is to save the backup on a S3 bucket or tape backup.
 
-```
+```bash
+# If you're using an AWS host and have the ability to connect to S3
 root@node2:~# s3cmd mb s3://rke-etcd-backup
 root@node2:~# s3cmd /opt/rke/etcdbackup/snapshot.db s3://rke-etcd-backup/
 ```
 
-### 4. Pull the backup on a new node
+### Place the backup on a new node
 
-To simulate the failure lets powerdown node2 completely:
+To simulate the failure, let's power down `node2`.
 
-```
+```bash
 root@node2:~# poweroff
 ```
 
-Now its time to pull the backup saved on s3 on a new node:
+Before restoring etcd and running `rancher up`, we need to retrieve the backup saved on S3 to a new node, e.g. `node3`.
+
 
 |  Name |    IP    |          Role          |
 |:-----:|:--------:|:----------------------:|
@@ -178,14 +166,18 @@ Now its time to pull the backup saved on s3 on a new node:
 | ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~                 |
 | node3 | 10.0.0.3 | [etcd]                 |
 |   |   |   |
-```
+
+```bash
+# Make a Directory
 root@node3:~# mkdir -p /opt/rke/etcdbackup
+$ Get the Backup from S3
 root@node3:~# s3cmd get s3://rke-etcd-backup/snapshot.db /opt/rke/etcdbackup/snapshot.db
 ```
 
-### 5. Restore etcd on the new node
+###  Restore `etcd` on the new node from the backup
 
-Now lets do a restore to restore and run etcd on the third node, in order to do that you have first to add the third node to the cluster configuration file:
+Before updating and restoring etcd, you will need to add the new node into the Kubernetes cluster with the `etcd` role. In the `cluster.yml`, comment out the old node and add in the new node. `
+
 ```
 nodes:
   - address: 10.0.0.1
@@ -201,17 +193,22 @@ nodes:
     user: ubuntu
     role: [etcd]
 ```
-and then run `rke etcd restore`:
-```
-rke etcd snapshot-restore --name snapshot.db --config cluster.yml
+
+After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup.  ]
+
+```bash
+$ rke etcd snapshot-restore --name snapshot.db --config cluster.yml
 ```
 
-The previous command will restore the etcd data dir from the snapshot and run etcd container on this node, the final step is to restore the operations on the cluster by making the k8s api to point to the new etcd, to do that we run `rke up` again on the new cluster.yml file:
+Finally, we need to restore the operations on the cluster by making the Kubernetes API point to the new `etcd`  by running `rke up` again using the new `cluster.yml`.
+
+```bash
+$ rke up --config cluster.yml
 ```
-rke up --config cluster.yml
-```
-You can make sure that operations have been restored by checking the nginx deployment we created earlier:
-```
+
+Confirm that your Kubernetes cluster is functional by checking the pods on your cluster.
+
+```bash
 > kubectl get pods                                                    
 NAME                     READY     STATUS    RESTARTS   AGE
 nginx-65899c769f-kcdpr   1/1       Running   0          17s

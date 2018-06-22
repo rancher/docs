@@ -4,25 +4,7 @@ weight: 50
 draft: true
 ---
 
-## Requirements
 
-- Docker versions `1.11.2` up to `1.13.1` and `17.03.x` are validated for Kubernetes versions 1.8, 1.9 and 1.10
-- OpenSSH 7.0+ must be installed on each node for stream local forwarding to work.
-- The SSH user used for node access must be a member of the `docker` group:
-
-```bash
-usermod -aG docker <user_name>
-```
-
-- Ports 6443, 2379, and 2380 should be opened between cluster nodes.
-- Swap disabled on worker nodes.
-
----
-title: Quick Start Guide
-short title: Quick Start
-weight: 25
-draft: true
----
 
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
 
@@ -31,6 +13,19 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 3. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
 4. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
 5. [Interacting with your Kubernetes Cluster](#interacting-with-your-kubernetes-cluster)
+
+## Requirements
+
+- For  Kubernetes versions 1.8, 1.9 and 1.10, Docker versions `1.11.2` up to `1.13.1` and `17.03.x` are validated
+- OpenSSH 7.0+ must be installed on each node for stream local forwarding to work
+- The SSH user used for node access must be a member of the `docker` group on the node:
+
+   ```bash
+   usermod -aG docker <user_name>
+   ```
+
+- Ports 6443, 2379, and 2380 should be opened between cluster nodes.
+- Swap should be disabled on any worker nodes
 
 ## Download the RKE binary
 

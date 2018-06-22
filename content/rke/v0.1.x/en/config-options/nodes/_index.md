@@ -1,6 +1,6 @@
 ---
 title: Nodes
-weight: 3005
+weight: 210
 draft: true
 ---
 
@@ -8,30 +8,30 @@ The `nodes` directive is the only required section in the `cluster.yml` file. It
 
 ```yaml
 nodes:
-  nodes:
-  - address: 1.1.1.1
-    user: ubuntu
-    role:
-    - controlplane
-    - etcd
-    ssh_key_path: /home/user/.ssh/id_rsa
-    port: 2222
-  - address: 2.2.2.2
-    user: ubuntu
-    role:
-    - worker
-    ssh_key: |-
-      -----BEGIN RSA PRIVATE KEY-----
+    nodes:
+    - address: 1.1.1.1
+      user: ubuntu
+      role:
+      - controlplane
+      - etcd
+      ssh_key_path: /home/user/.ssh/id_rsa
+      port: 2222
+    - address: 2.2.2.2
+      user: ubuntu
+      role:
+      - worker
+      ssh_key: |-
+        -----BEGIN RSA PRIVATE KEY-----
 
-      -----END RSA PRIVATE KEY-----
-  - address: example.com
-    user: ubuntu
-    role:
-    - role
-    hostname_override: node3
-    internal_address: 192.168.1.6
-    labels:
-      app: ingress
+        -----END RSA PRIVATE KEY-----
+    - address: example.com
+      user: ubuntu
+      role:
+      - worker
+      hostname_override: node3
+      internal_address: 192.168.1.6
+      labels:
+        app: ingress
 ```
 
 ## Node Options
@@ -94,7 +94,7 @@ If the Docker socket is different than the default, you can set the `docker_sock
 
 ### Labels
 
-You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controller/) `node_selector` option.
+You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/) `node_selector` option.
 
 
 

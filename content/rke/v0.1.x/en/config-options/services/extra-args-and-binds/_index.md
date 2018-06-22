@@ -1,6 +1,6 @@
 ---
 title: Extra Args and Binds
-weight: 3026
+weight: 231
 draft: true
 ---
 
@@ -16,10 +16,9 @@ Prior to `v0.1.3`, using `extra_args` would only add new arguments to the list a
 
 ```yaml
 services:
-  # ...
-  kube-controller:
-    extra_args:
-      cluster-name: "mycluster"
+    kube-controller:
+      extra_args:
+        cluster-name: "mycluster"
 ```
 
 ## Extra Binds
@@ -28,9 +27,8 @@ Additional volume binds can be made to services using the `extra_binds` argument
 
 ```yaml
 services:
-  # ...
-  kubelet:
-    extra_binds:
-      - "/host/dev:/dev"
-      - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins:z"
+    kubelet:
+      extra_binds:
+        - "/host/dev:/dev"
+        - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins:z"
 ```

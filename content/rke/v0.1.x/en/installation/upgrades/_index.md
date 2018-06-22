@@ -1,37 +1,49 @@
 ---
 title: Upgrades
-weight: 1000
+weight: 70
 draft: true
 ---
 
-You can upgrade your Kubernetes cluster or upgrade any of the service arguments.
+After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, [definition of the Kubernetes services]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/).
 
-## Cluster Upgrade
+## Version Upgrades
 
-RKE supports kubernetes cluster upgrade through changing the image version of services, in order to do that change the image option for each services, for example:
+RKE supports version upgrades by changing the image tags of the [system-images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/).
 
-```yaml
-image: rancher/hyperkube:v1.9.7
-```
+For example, to change the deployed Kubernetes version, you update the `rancher/hyperkube` tag from `v1.9.7` to `v1.10.3` in the `cluster.yml` that was originally used to deploy your Kubernetes cluster.
 
-TO
+Original YAML
 
 ```yaml
-image: rancher/hyperkube:v1.10.1
+system-images:
+  kubernetes: rancher/hyperkube:v1.9.7
 ```
 
-And then run:
+Updated YAML
+
+```yaml
+system-images:
+  kubernetes: rancherhyperkube:v1.10.3
+```
+
+After updating your `cluster.yml` with the required changes, all you need to do is run `rke up` to upgrade Kubernetes.
 
 ```bash
-rke up --config cluster.yml
+$ rke up --config cluster.yml
 ```
 
-RKE will first look for the local `kube_config_cluster.yml` and then tries to upgrade each service to the latest image.
+First, RKE will use the local `kube_config_cluster.yml` to confirm the versions of the existing components in the Kubernetes cluster before upgrading to the latest image.
 
-> Note that rollback isn't supported in RKE and may lead to unxpected results
+> **Note:** RKE does not support rollback to previous versions.
 
-## Service Upgrade
+## Service Upgrades
 
-Service can also be upgraded by changing any of the services arguments or extra args and run `rke up` again with the updated configuration file.
+[Services]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/) can be upgraded by changing any of the services arguments or `extra_args` and running `rke up` again with the updated configuration file.
 
-> Please note that changing the following arguments: `service_cluster_ip_range` or `cluster_cidr` will result in a broken cluster, because currently the network pods will not be automatically upgraded.
+> **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods will not be automatically upgraded.
+
+## Add-Ons Upgrades
+
+As of v0.1.8, upgrades to add-ons are supported.
+
+[Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
