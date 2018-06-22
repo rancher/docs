@@ -11,6 +11,10 @@ RKE supports adding/removing [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-option
 In order to add additional nodes, you update the original `cluster.yml` file with any additional nodes and specify their role in the Kubernetes cluster.
 
 In order to remove nodes, remove the node information from the nodes list in the original `cluster.yml`.
+### Adding/Removing Worker Node
+When you add/remove worker nodes only, it's possible to use the command `rke up --update-only`.
+
+## Cluster Remove
 
 After you've made changes to add/remove nodes, run `rke up` with the updated `cluster.yml`.
 
