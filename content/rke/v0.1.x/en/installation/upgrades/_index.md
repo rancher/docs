@@ -28,7 +28,7 @@ system-images:
 
 After updating your `cluster.yml` with the required changes, all you need to do is run `rke up` to upgrade Kubernetes.
 
-```bash
+```
 $ rke up --config cluster.yml
 ```
 

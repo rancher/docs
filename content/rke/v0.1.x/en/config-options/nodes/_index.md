@@ -62,7 +62,7 @@ For each node, you specify the `user` to be used when connecting to this node. T
 
 ### SSH Key Path
 
-For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to this node.
+For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to this node. The default key path for each node is `~/.ssh/id_rsa`.
 
 > **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{< baseurl >}}/rke/v0.1.x/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
 

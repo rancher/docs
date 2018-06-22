@@ -59,7 +59,7 @@ Docker Version   | Install Script |
 
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running  `docker version`.
 
-```bash
+``` 
 $ docker version
 Client:
  Version:      17.03.2-ce
@@ -81,32 +81,11 @@ Server:
 
 ### Port Requirements
 
-In order for the Kubernetes cluster to be deployed, port `TCP/6443` needs to be opened to the machine. If you are using an external firewall, make sure you have this port opened between the machine you are using to run `rke` and the machine you are going to use in the cluster.
+In order for the Kubernetes cluster to be deployed, the follow ports need to be opened to allow the cluster nodes communicate with each other:
 
-#### Opening port TCP/6443 using `iptables``
+- Ports 6443, 2379, and 2380
 
-```bash
-# Open TCP/6443 for all
-iptables -A INPUT -p tcp --dport 6443 -j ACCEPT
-
-# Open TCP/6443 for one specific IP
-iptables -A INPUT -p tcp -s your_ip_here --dport 6443 -j ACCEPT
-```
-
-#### Opening port TCP/6443 using `firewalld`
-
-```bash
-# Open TCP/6443 for all
-firewall-cmd --zone=public --add-port=6443/tcp --permanent
-firewall-cmd --reload
-
-# Open TCP/6443 for one specific IP
-firewall-cmd --permanent --zone=public --add-rich-rule='
-  rule family="ipv4"
-  source address="your_ip_here/32"
-  port protocol="tcp" port="6443" accept'
-firewall-cmd --reload
-```
+If you are using an external firewall, make sure you have this port opened between the machine you are using to run `rke` and the machine you are going to use in the cluster.
 
 ## Creating the Cluster Configuration File
 
@@ -123,7 +102,7 @@ To create a new `cluster.yml`, you can run `rke config` and this command will qu
 
 > **Note:** As features are added into RKE, the list and order of questions may change.
 
-```bash
+```
 ./rke_darwin-amd64 config
 
 # This example is using one host
@@ -157,7 +136,7 @@ $ ./rke_linux-amd64 up
 
 There will be log statements as the Kubernetes cluster is created.
 
-```bash
+```
 $ ./rke_darwin-amd64 up
 INFO[0000] Building Kubernetes cluster
 INFO[0000] [dialer] Setup tunnel for host [10.0.0.1]
@@ -173,7 +152,7 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 In order to start interacting with your Kubernetes cluster, you will use a different binary called `kubectl`. You will need to [install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine. You can connect to the RKE created cluster by using the `kube_config_cluster.yml` that was generated when you deployed Kubernetes.
 
-```bash
+```
 # Confirm that kubectl is working by checking the version of your Kubernetes cluster
 $ kubectl --kubeconfig kube_config_cluster.yml version
 Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCommit:"fc32d2f3698e36b93322a3465f63a14e9f0eaead", GitTreeState:"clean", BuildDate:"2018-03-27T00:13:02Z", GoVersion:"go1.9.4", Compiler:"gc", Platform:"darwin/amd64"}
@@ -182,7 +161,7 @@ Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1"
 
 The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue any command to your cluster, like requesting the nodes that are in the cluster.
 
-```bash
+```
 $ kubectl --kubeconfig kube_config_cluster.yml get nodes
 NAME            STATUS    ROLES                      AGE       VERSION
 10.0.0.1         Ready     controlplane,etcd,worker   35m       v1.10.3-rancher1
