@@ -66,7 +66,7 @@ gulp.task('hugo-staging', (cb) => {
 });
 
 gulp.task('hugo-dev', (cb) => {
-  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=http://localhost:9001'], { stdio: 'inherit' }).on('close', (/* code */) => {
+  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL='], { stdio: 'inherit' }).on('close', (/* code */) => {
     browserSync.reload();
     cb();
   });
