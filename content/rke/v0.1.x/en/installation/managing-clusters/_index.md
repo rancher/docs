@@ -14,6 +14,10 @@ In order to remove nodes, remove the node information from the nodes list in the
 
 After you've made changes to add/remove nodes, run `rke up` with the updated `cluster.yml`.
 
+### Adding/Removing Worker Nodes
+
+You can add/remove only worker nodes, by running `rke up --update-only`. This will ignore everything else in the `cluster.yml` except for any worker nodes.
+
 ### Removing Kubernetes Clusters from Nodes
 
 In order to remove the Kubernetes components from nodes, you use the `rke remove` command.

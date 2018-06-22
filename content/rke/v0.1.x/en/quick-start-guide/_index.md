@@ -44,11 +44,13 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
 ## Prepare the Nodes for the Kubernetes cluster
 
-The Kubernetes cluster components are launched using Docker on a Linux machine. You can use any Linux you want, as long as you can install Docker on it. The most commonly used OS is the current Ubuntu LTS release, 16.04. Kubernetes runs integration tests on the following Docker versions: `1.11.2` to `1.13.1`, and `17.03.x`. We follow these tested Docker versions by marking them as supported.
+The Kubernetes cluster components are launched using Docker on a Linux distro. You can use any Linux you want, as long as you can install Docker on it.
+
+As Kubernetes only supports  Docker `1.11.2` to `1.13.1`, and `17.03.x`, RKE also supports the same Docker versions.
 
 ### Install Docker
 
-You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or you can use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker.
+You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker.
 
 Docker Version   | Install Script |
 ----------|------------------
@@ -59,7 +61,7 @@ Docker Version   | Install Script |
 
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running  `docker version`.
 
-``` 
+```
 $ docker version
 Client:
  Version:      17.03.2-ce
@@ -98,7 +100,7 @@ There are two easy ways to create a `cluster.yml`:
 
 ### Using `rke config`
 
-To create a new `cluster.yml`, you can run `rke config` and this command will query for all the information needed to build your cluster. Review [our cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to understand what each question means. The ones that are required for this quick start guide are in the example below.
+To create a new `cluster.yml`, you can run `rke config` and this command prompts you for all the information needed to build your cluster. Review [our cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to understand what each question means. The ones that are required for this quick start guide are in the example below.
 
 > **Note:** As features are added into RKE, the list and order of questions may change.
 
@@ -159,7 +161,7 @@ Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCom
 Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1", GitCommit:"68595e18f25e24125244e9966b1e5468a98c1cd4", GitTreeState:"clean", BuildDate:"2018-03-13T04:37:53Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue any command to your cluster, like requesting the nodes that are in the cluster.
+The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue [any kubectl command](https://kubernetes.io/docs/reference/kubectl/kubectl/) to your cluster, like requesting the nodes that are in the cluster.
 
 ```
 $ kubectl --kubeconfig kube_config_cluster.yml get nodes
