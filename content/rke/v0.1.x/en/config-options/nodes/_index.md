@@ -76,12 +76,11 @@ You can specify the list of roles that you want the node to be as part of the Ku
 
 * **etcd**
 
-With this role, the `etcd` container will be run on these nodes. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state.
+With this role, the `etcd` container will be run on these nodes.  Etcd keeps the state of your cluster and is the most important component in your cluster, single source of truth of your cluster. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state.
 
 * **controlplane**
 
 With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers.
-
 
 * **worker**
 
