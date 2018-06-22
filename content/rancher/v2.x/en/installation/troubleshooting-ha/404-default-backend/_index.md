@@ -12,7 +12,7 @@ When you have made changes to `rancher-cluster.yml`, you will have to run `rke r
 The nginx ingress controller is not able to serve the configured host in `rancher-cluster.yml`. This should be the FQDN you configured to access Rancher. You can check if it is properly configured by viewing the ingress that is created by running the following command:
 
 ```
-kubectl get ingress -n cattle-system -o wide
+kubectl --kubeconfig kube_config_rancher-cluster.yml get ingress -n cattle-system -o wide
 ```
 
 Check if the `HOSTS` column is displaying the FQDN you configured in the template, and that the used nodes are listed in the `ADDRESS` column. If that is configured correctly, we can check the logging of the nginx ingress controller.
