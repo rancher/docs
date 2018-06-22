@@ -158,6 +158,12 @@ Instead of creating a file, you can print the generated configuration to stdout 
 $ rke config --print
 ```
 
+### High Availability
+
+RKE is HA ready, you can specify more than one `controlplane` node in the `cluster.yml` file. RKE will deploy master components on all of these nodes and the kubelets are configured to connect to `127.0.0.1:6443` by default which is the address of `nginx-proxy` service that proxy requests to all master nodes.
+
+To create an HA cluster, specify more than one host with role `controlplane`. 
+
 ## Deploying Kubernetes with RKE
 
 After you've created your `cluster.yml`, you can deploy your cluster with a simple command. This command assumes the `cluster.yml` file is in the same directory as where you are running the command.

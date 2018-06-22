@@ -1,12 +1,12 @@
 ---
-title: Extra Args and Binds
+title: Extra Args, Extra Binds, and Extra Environment Variables
 weight: 231
 draft: true
 ---
 
-RKE supports the ability to configure your Kubernetes components by adding in extra service arguments to these components.
+RKE supports additional service arguments, volume binds and environment variables.
 
-## Extra Args
+### Extra Args
 
 For any of the Kubernetes services, you can update the `extra_args` to change the existing defaults.
 
@@ -21,9 +21,9 @@ services:
         cluster-name: "mycluster"
 ```
 
-## Extra Binds
+### Extra Binds
 
-Additional volume binds can be made to services using the `extra_binds` arguments.
+Additional volume binds can be added to services using the `extra_binds` arguments.
 
 ```yaml
 services:
@@ -31,4 +31,15 @@ services:
       extra_binds:
         - "/host/dev:/dev"
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins:z"
+```
+
+### Extra Environment Variables
+
+Additional environment variables can be added to services by using the `extra_env` arguments.
+
+```yaml
+services:
+    kubelet:
+      extra_env:
+        - "HTTP_PROXY=http://your_proxy"
 ```

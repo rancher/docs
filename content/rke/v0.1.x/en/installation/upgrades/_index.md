@@ -40,7 +40,7 @@ First, RKE will use the local `kube_config_cluster.yml` to confirm the versions 
 
 [Services]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/) can be upgraded by changing any of the services arguments or `extra_args` and running `rke up` again with the updated configuration file.
 
-> **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods will not be automatically upgraded.
+> **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods are not automatically upgraded.
 
 ## Add-Ons Upgrades
 
