@@ -1,6 +1,6 @@
 ---
 title: External etcd
-weight: 3027
+weight: 232
 draft: true
 ---
 
@@ -8,24 +8,24 @@ By default, RKE will launch etcd servers, but RKE also supports being able to us
 
 > **Note:** RKE will not accept having external etcd servers in conjunction with [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/) with the `etcd` role.
 
-```
+```yaml
 services:
-  etcd:
-    path: /etcdcluster
-    external_urls:
-      - https://etcd-example.com:2379
-    ca_cert: |-
-      -----BEGIN CERTIFICATE-----
-      xxxxxxxxxx
-      -----END CERTIFICATE-----
-    cert: |-
-      -----BEGIN CERTIFICATE-----
-      xxxxxxxxxx
-      -----END CERTIFICATE-----
-    key: |-
-      -----BEGIN PRIVATE KEY-----
-      xxxxxxxxxx
-      -----END PRIVATE KEY-----
+    etcd:
+      path: /etcdcluster
+      external_urls:
+        - https://etcd-example.com:2379
+      ca_cert: |-
+        -----BEGIN CERTIFICATE-----
+        xxxxxxxxxx
+        -----END CERTIFICATE-----
+      cert: |-
+        -----BEGIN CERTIFICATE-----
+        xxxxxxxxxx
+        -----END CERTIFICATE-----
+      key: |-
+        -----BEGIN PRIVATE KEY-----
+        xxxxxxxxxx
+        -----END PRIVATE KEY-----
 ```
 
 ## External etcd Options

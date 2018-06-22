@@ -1,16 +1,15 @@
 ---
 title: Authorization
-weight: 3000
+weight: 240
 draft: true
 ---
 
-Kubernetes supports multiple [Authorization Modules](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#authorization-modules). Currently, RKE provides support for the [RBAC module](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) only.
+Kubernetes supports multiple [Authorization Modules](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#authorization-modules). Currently, RKE only supports the [RBAC module](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
-RBAC is enabled by default in RKE. It's possible to disable authorization support by seeting the authorization mode to `none`
+By default, RBAC is already enabled. If you wanted to turn off RBAC support, **which isn't recommended**, you set the authorization mode to `none`.
 
 ```yaml
-# Use `mode: none` to disable authorization
 authorization:
-  mode: rbac
+    # Use `mode: none` to disable authorization
+    mode: rbac
 ```
-<!-- explain cluster authorization configuration-->

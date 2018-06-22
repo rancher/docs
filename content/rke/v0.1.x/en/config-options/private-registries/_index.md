@@ -1,6 +1,6 @@
 ---
 title: Private Registries
-weight: 3010
+weight: 215
 draft: true
 ---
 
@@ -8,12 +8,12 @@ RKE supports the ability to configure multiple private Docker registries. By pas
 
 ```yaml
 private_registries:
-  - url: registry.com
-    user: Username
-    password: password
-  - url: myregistry.com
-    user: myuser
-    password: mypassword
+    - url: registry.com
+      user: Username
+      password: password
+    - url: myregistry.com
+      user: myuser
+      password: mypassword
 ```
 
 ### Air-gapped Setups
