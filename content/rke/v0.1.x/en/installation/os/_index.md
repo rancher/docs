@@ -4,8 +4,7 @@ weight: 55
 draft: true
 ---
 
-<!-- Add some information about requirements on most operating systems
-Add in notes of which OS are currently used-->
+RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
 ### OS Requirements
 
@@ -45,6 +44,6 @@ By default, Atomic hosts ship with OpenSSH 6.4, which doesn't support SSH tunnel
 
 By default, Atomic hosts do not come with a Docker group. You can update the ownership of the Docker socket by enabling the specific user in order to launch RKE.
 
-``` 
+```
 # chown <user> /var/run/docker.sock
 ```
