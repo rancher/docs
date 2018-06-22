@@ -1,99 +1,97 @@
 ---
-title: Kubernetes Services
+title: Kubernetes Default Services
 weight: 230
 draft: true
 ---
 
-## Default services
+To deploy Kubernetes, RKE deploys several core components or services in Docker containers on the nodes. Based on the roles of the node, the containers deployed may be different.
 
-<!--Talk about the default services launched and options around them-->
+**All services support additional [custom arguments, Docker mount binds and extra environment variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services-extra).**
 
-To deploy Kubernetes, RKE deploys several core components or services in Docker containers on the cluster nodes. The deployed containers depend on the role(s) assigned to each node.
+## etcd
 
-All RKE services support additional [custom arguments and Docker mount binds]({{< baseurl >}}/rke/v0.1.x/en/config-options/extra-args-and-binds).
+Kubernetes uses [etcd](https://github.com/coreos/etcd/blob/master/Documentation/docs.md) as a store for cluster state and data. Etcd is a reliable, consistent and distributed key-value store.
 
-Various examples and configurations can be found in the [example YMALs]({{< baseurl >}}/rke/v0.1.x/en/config-options/example-yamls/)
+RKE supports running etcd in a single node mode or in HA cluster mode. It also supports adding and removing etcd nodes to the cluster.
 
-### etcd
+By default, RKE will deploy a new etcd service, but you can also run Kubernetes with an [external etcd service]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/external-etcd/).
 
-Kubernetes uses [Etcd](https://github.com/coreos/etcd/blob/master/Documentation/docs.md) as a store for cluster state and data. Etcd is a reliable, consistent and distributed key-value store.
-
-RKE supports running Etcd in a single node mode or in HA cluster mode. It also supports adding and removing Etcd nodes to the cluster.
-
-RKE also supports running Kubernetes with an [external Etcd service]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/external-etcd/).
-
-
-### kube-api
+## Kubernetes API Server
 
 The [Kubernetes API](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) REST service, which handles requests and data for all Kubernetes objects and provide shared state for all the other Kubernetes components.
 
-In addition to extra arguments and binds, RKE supports the following options for kube-api:
+```yaml
+services:
+  kube-api:
+    # IP range for any services created on Kubernetes
+    service_cluster_ip_range: 10.43.0.0/16
+    # Expose a different port range for NodePort services
+    service_node_port_range: 30000-32767    
+    pod_security_policy: false
+```
 
-##### `service_cluster_ip_range`
+### Kubernetes API Server Options
 
-This is the virtual IP address that will be assigned to services created on Kubernetes. The default value for this option is `10.43.0.0/16`.
+RKE supports the following options for the `kube-api` service :
 
+- **Service Cluster IP Range** (`service_cluster_ip_range`) - This is the virtual IP address that will be assigned to services created on Kubernetes. By default, the service cluster IP range is `10.43.0.0/16`. If you change this value, then it must also be set with the same value on the Kubernetes Controller Manager (`kube-controller`).
+- **Node Port Range** (`service_node_port_range`) - The port range to be used for Kubernetes services created with the [type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) `NodePort`. By default, the port range is `30000-32767`.
+- **Pod Security Policy** (`pod_security_policy`) - An option to enable the [Kubernetes Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). By default, we do not enable pod security policies as it is set to `false`.
 
-##### `service_node_port_range`
-The port range to be used for Kubernetes services created with the [type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) `NodePort`.
+    > **Note:** If you set `pod_security_policy` value to `true`, RKE will configure an  open policy to allow any pods to work on the cluster. You will need to configure your own policies to fully utilize PSP.
 
-The default value for this option is `30000-32767`.
+## Kubernetes Controller Manager
 
-##### `pod_security_policy`
+ kube-controller
 
-An option to enable the [Kubernetes Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
+The [Kubernetes Controller Manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) service is the component responsible for running Kubernetes main control loops. The controller manager monitors the cluster desired state through the Kubernetes API server and makes the necessary changes to the current state to reach the desired state.
 
-The default value for this option is `false`, which disables PSP.
+```yaml
+services:
+    kube-controller:
+      # CIDR pool used to assign IP addresses to pods in the cluster
+      cluster_cidr: 10.42.0.0/16
+      #
+      service_cluster_ip_range: 10.43.0.0/16
+```
 
-> **Note**: RKE will configure an initially open policy to allow pods to work on the cluster. You will need to configure your own policies to fully utilize PSP.
+### Kubernetes Controller Manager Options
 
+RKE support the following options for the `kube-controller` service:
 
-### `kube-controller`
+- **Cluster CIDR** (`cluster_cidr`) - The CIDR pool used to assign IP addresses to pods in the cluster. By default, each node in the cluster is assigned a `/24` network from this pool for pod IP assignments. The default value for this option is `10.42.0.0/16`.
+- **Service Cluster IP Range** (`service_cluster_ip_range`) - This is the virtual IP address that will be assigned to services created on Kubernetes. By default, the service cluster IP range is `10.43.0.0/16`. If you change this value, then it must also be set with the same value on the Kubernetes API server (`kube-api`).
 
-The [Kubernetes Controller Manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) service. This is the component responsible for running Kubernetes main control loops. The controller manager monitors the cluster desired state through the kube-apiserver and make the necessary changes to the current state to reach the desired state.
+## Kubelet
 
-RKE support the following options for the controller service:
+The [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) services acts as a "node agent" for Kubernetes. It runs on all nodes deployed by RKE, and gives Kubernetes the ability to manage the container runtime on the node.
 
-##### `cluster_cidr`
-The CIDR pool used to assign IP addresses to Pods in the cluster. By default, each node in the cluster is assigned a /24 network from this pool for Pod IP assignment on this node.
+```yaml
+services:
+    kubelet:
+     # Base domain for the cluster
+     cluster_domain: cluster.local
+     # IP address for the DNS service endpoint
+     cluster_dns_server: 10.43.0.10
+     # Fail if swap is on
+     fail_swap_on: false
+```
 
-The default value for this option is `10.42.0.0/16`.
-
-##### `service_cluster_ip_range`
-
-This is the virtual IP address that will be assigned to services created on Kubernetes. The default value for this option is `10.43.0.0/16`.
-
-
-### `scheduler`
-
-The [Kubernetes Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/) service. The Kubernetes Scheduler is responsible for scheduling cluster workloads based on various configurations, metrics, resource requirements and workload-specific requirements.
-
-RKE doesn't support any specific options for the scheduler service at this time.
-
-
-### `kubelet`
-
-The [Kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) services acts as a "node agent" for Kubernetes. It runs on all nodes deployed by RKE, and gives Kubernetes the ability to manage the container runime one the node.
+### Kubelet Options
 
 RKE supports the following options for the `kubelet` service:
 
-##### cluster_domain
+- **Cluster Domain** (`cluster_domain`) - The [base domain](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for the cluster. All services and DNS records created on the cluster. By default, the domain is set to `cluster.local`.
+- **Cluster DNS Server** (`cluster_dns_server`) - The IP address assigned to the DNS service endpoint within the cluster. DNS queries will be sent to this IP address which is used by KubeDNS. The default value for this option is `10.43.0.10`
+- **Fail if Swap is On** (`fail_swap_on`) - In Kubernetes, the default behavior for the kubelet is to **fail** if swap is enabled on the node. RKE does **not** follow this default and allows deployments on nodes with swap enabled. By default, the value is `false`. If you'd like to revert to the default kubelet behavior, set this option to `true`.  
 
-The [base domain](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for the cluster. All services and DNS records created on the cluster. The default value for this option is `cluster.local`
+## Kubernetes Scheduler
 
-##### `cluster_dns_server`
+The [Kubernetes Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/) service is responsible for scheduling cluster workloads based on various configurations, metrics, resource requirements and workload-specific requirements.
 
-The IP address assigned to the DNS service endpoint within the cluster. DNS queries will be sent to this IP address which is used by KubeDNS. The default value for this option is `10.43.0.10`
+Currently, RKE doesn't support any specific options for the `scheduler` service.
 
+## Kubernetes Network Proxy
+The [Kubernetes network proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) service runs on all nodes and manages endpoints created by Kubernetes for TCP/UDP ports.
 
-##### `fail_swap_on`
-
-The default behavior for Kubelet is to _fail_ if swap is enabled on the node. However, RKE doesn't follow this default, and allows deployments on nodes with swap enabled. If you like to revert to the default Kubelet behavior, set this option to `true`.
-
-The defualt for this option is `false`.
-
-
-### `kube-proxy`
-The [Kubernetes Network Proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) service runs on all nodes and manages endpoints created by Kubernetes for TCP/UDP ports.
-
-RKE doesn't support any specific options for the `kube-proxy` service at this time.
+Currently, RKE doesn't support any specific options for the `kube-proxy` service.

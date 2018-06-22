@@ -6,9 +6,11 @@ draft: true
 
 RKE supports pluggable add-ons. Add-ons are used to deploy several cluster components including:
 
-* [Network plugin]({{< baseurl >}}/rke/v0.1.x/en/config-options/network-plugins/)
-* [Ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/)
+* [Network plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/)
+* [Ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/)
 * KubeDNS
+
+The images used for these add-ons under the [`system_images` directive]({< baseurl >}}/rke/v0.1.x/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each add-on, but these can be overridden by changing the image tag in `system_images`.
 
 In addition to these pluggable add-ons, you can specify an add-on that you want deployed after the cluster deployment is complete.
 
@@ -17,6 +19,7 @@ RKE only adds additional add-ons when using `rke up` multiple times. RKE does **
 As of v0.1.8, RKE will update an add-on if it is the same name.
 
 Prior to v0.1.8, update any add-ons by by using `kubectl edit`.
+
 
 ## Critical and Non-Critical Add-ons
 

@@ -4,7 +4,7 @@ weight: 65
 draft: true
 ---
 
-You can configure a RKE cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other nodes in the cluster.
+As of v0.1.7, you can configure a RKE cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other nodes in the cluster.
 
 ## One-Time Snapshots
 

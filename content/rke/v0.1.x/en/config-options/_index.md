@@ -26,10 +26,10 @@ There are several options that can be configured in cluster configuration option
 * [Authentication]({{< baseurl >}}/rke/v0.1.x/en/config-options/authentication/)
 * [Authorization]({{< baseurl >}}/rke/v0.1.x/en/config-options/authorization/)
 * [Cloud Providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/)
-* Add-ons
-  * [Network Plugins]({{< baseurl >}}/rke/v0.1.x/en/config-options/network-plugins/)
-  * [Ingress Controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/)
-  * [User-Defined-Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/user-defined-add-ons/)
+* [Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/)
+  * [Network Plugins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/)
+  * [Ingress Controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/)
+  * [User-Defined-Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/user-defined-add-ons/)
   * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
 
 ## Cluster Level Options

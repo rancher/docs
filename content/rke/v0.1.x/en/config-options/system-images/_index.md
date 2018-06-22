@@ -7,6 +7,8 @@ When RKE is deploying Kubernetes, there are several images that are pulled. Thes
 
 As of `v0.1.6`, the functionality of a couple of the system images were consolidated into a single `rancher/rke-tools` image to simplify and speed the deployment process.
 
+You can configure the [network plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/) and [ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/) as well as the options for these add-ons separately.
+
 This is the example of the full list of system images used to deploy Kubernetes through RKE. The image tags are dependent on the [Kubernetes image/version used](https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go).
 
 > **Note:** As versions of RKE are released, the tags on these images will no longer be up to date. This list is specific for `v1.10.3-rancher2`.
@@ -25,15 +27,21 @@ system_images:
     kubedns_autoscaler: rancher/cluster-proportional-autoscaler-amd64:1.0.0
     pod_infra_container: rancher/pause-amd64:3.1
 
-    # Networking Options
+    # Flannel Networking Options
     flannel: rancher/coreos-flannel:v0.9.1
     flannel_cni: rancher/coreos-flannel-cni:v0.2.0
+
+    # Calico Networking Options
     calico_node: rancher/calico-node:v3.1.1
     calico_cni: rancher/calico-cni:v3.1.1
     calico_ctl: rancher/calico-ctl:v2.0.0
+
+    # Canal Networking Options
     canal_node: rancher/calico-node:v3.1.1
     canal_cni: rancher/calico-cni:v3.1.1
     canal_flannel: rancher/coreos-flannel:v0.9.1
+
+    # Weave Networking Options
     weave_node: weaveworks/weave-kube:2.1.2
     weave_cni: weaveworks/weave-npc:2.1.2
 
