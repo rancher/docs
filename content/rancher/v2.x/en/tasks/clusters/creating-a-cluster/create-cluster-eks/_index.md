@@ -1,5 +1,5 @@
 ---
-title: Creating a EKS Cluster
+title: Creating an EKS Cluster
 shortTitle: Amazon EKS
 weight: 3325
 draft: true
