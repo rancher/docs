@@ -13,8 +13,8 @@
 {{ end }}
 
 {{ define "main" }}
-{{ partial "docs-nav.html" . }}
   <div class="wrapper">
+    {{ partial "docs-nav.html" . }}
     {{ $secondLevel := ($.Scratch.Get "secondLevel") }}
     {{ $.Scratch.Set "showSidebar" false }}
     {{ with $secondLevel }}
