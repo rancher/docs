@@ -92,11 +92,13 @@
         <div class="p-v-xs">{{ partial "page-edit.html" . }}</div>
 
       </article>
-      <div class="offset-watch invisible"></div>
-      <aside class="col-sm-2 col-xs-12 unstyled toc-container hidden-md">
-        <h4 class="m-b-0">On this page</h4>
-        {{ .TableOfContents }}
-      </aside>
+      {{ with .TableOfContents }}
+        <div class="offset-watch invisible"></div>
+        <aside class="col-sm-2 col-xs-12 unstyled toc-container hidden-md">
+          <h4 class="m-b-0">On this page</h4>
+          {{ . }}
+        </aside>
+      {{ end }}
     </div>
   </div>
 {{ end }}
