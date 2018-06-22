@@ -95,6 +95,19 @@ RKE supports using ssh connection configuration from a local ssh agent. The defa
 ssh_agent_auth: true
 ```
 
+If you want to use an SSH private key with a passphrase, you will need to add your key to `ssh-agent` and have the environment variable `SSH_AUTH_SOCK` configured.
+
+```bash
+$ eval "$(ssh-agent -s)"
+Agent pid 3975
+$ ssh-add /home/user/.ssh/id_rsa
+Enter passphrase for /home/user/.ssh/id_rsa:
+Identity added: /home/user/.ssh/id_rsa (/home/user/.ssh/id_rsa)
+$ echo $SSH_AUTH_SOCK
+/tmp/ssh-118TMqxrXsEx/agent.3974
+```
+
+
 ### Add-ons Job Timeout
 
 You can define [add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.

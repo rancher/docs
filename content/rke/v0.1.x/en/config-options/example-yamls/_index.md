@@ -68,6 +68,7 @@ services:
       #   xxxxxxxxxx
       #   -----END PRIVATE KEY-----
     kube-api:
+      # This must match the service_cluster_ip_range in kube-controller
       service_cluster_ip_range: 10.43.0.0/16
       pod_security_policy: false
       # add additional arguments to the kubernetes component
@@ -81,43 +82,15 @@ services:
         v: 4
     kube-controller:
       cluster_cidr: 10.42.0.0/16
+      # This must match the service_cluster_ip_range in kube-api
       service_cluster_ip_range: 10.43.0.0/16
     scheduler:
     kubelet:
       cluster_domain: cluster.local
       cluster_dns_server: 10.43.0.10
-      infra_container_image: gcr.io/google_containers/pause-amd64:3.0
       # Optionally define additional volume binds to a service
       extra_binds:
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins"
-    kubeproxy:
-
-# supported plugins are:
-# flannel
-# calico
-# canal
-# weave
-#
-# If you are using calico on AWS or GCE, use the network plugin config option:
-# 'calico_cloud_provider: aws'
-# or
-# 'calico_cloud_provider: gce'
-# network:
-#   plugin: calico
-#   options:
-#     calico_cloud_provider: aws
-#
-# To specify flannel interface, you can use the 'flannel_iface' option:
-# network:
-#   plugin: flannel
-#   options:
-#     flannel_iface: eth1
-# To specify flannel interface for canal plugin, you can use the 'canal_iface' option:
-# network:
-#   plugin: canal
-#   options:
-#     canal_iface: eth1
-
 
 network:
     plugin: flannel
@@ -133,7 +106,7 @@ authentication:
       - "10.18.160.10"
       - "my-loadbalancer-1234567890.us-west-2.elb.amazonaws.com"
 
-# all addon manifests MUST specify a namespace
+# All addon manifests MUST specify a namespace
 addons: |-
     ---
     apiVersion: v1
@@ -167,8 +140,12 @@ system_images:
     flannel: rancher/coreos-flannel:v0.9.1
     flannel_cni: rancher/coreos-flannel-cni:v0.2.0
 
-
+# Global SSH private key
 ssh_key_path: ~/.ssh/test
+
+# Enable use of SSH agent to use SSH private keys with passphrase
+# This requires the environment `SSH_AUTH_SOCK` configured pointing to your SSH agent which has the private key added
+ssh_agent_auth: true
 
 # Kubernetes authorization mode
 # Use `mode: rbac` to enable RBAC
