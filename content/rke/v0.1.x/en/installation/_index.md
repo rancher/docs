@@ -20,7 +20,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 - OpenSSH 7.0+ must be installed on each node for stream local forwarding to work
 - The SSH user used for node access must be a member of the `docker` group on the node:
 
-   ```bash
+   ```
    usermod -aG docker <user_name>
    ```
 
@@ -73,7 +73,7 @@ Docker Version   | Install Script |
 
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running  `docker version`.
 
-```bash
+``` 
 $ docker version
 Client:
  Version:      17.03.2-ce
@@ -97,9 +97,12 @@ Server:
 
 In order for the Kubernetes cluster to be deployed, port `TCP/6443` needs to be opened to the machine. If you are using an external firewall, make sure you have this port opened between the machine you are using to run `rke` and the machine you are going to use in the cluster.
 
+
+If you are using an external firewall, make sure you have this port opened between the machine you are using to run `rke` and the machine you are going to use in the cluster.
+
 #### Opening port TCP/6443 using `iptables``
 
-```bash
+```
 # Open TCP/6443 for all
 iptables -A INPUT -p tcp --dport 6443 -j ACCEPT
 
@@ -109,7 +112,7 @@ iptables -A INPUT -p tcp -s your_ip_here --dport 6443 -j ACCEPT
 
 #### Opening port TCP/6443 using `firewalld`
 
-```bash
+```
 # Open TCP/6443 for all
 firewall-cmd --zone=public --add-port=6443/tcp --permanent
 firewall-cmd --reload
@@ -136,7 +139,7 @@ There are two easy ways to create a `cluster.yml`:
 RKE provides the command `rke config` to generate a cluster configuration template or to interactivity generate a working cluster configuration file. Review [our cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to understand what each question means.
 
 #### Creating a Basic `cluster.yml`
-```bash
+```
 $ rke config --name cluster.yml
 ```
 
@@ -146,7 +149,7 @@ After answering the list of questions, there is a `cluster.yml` created in the d
 
 If you want an empty `cluster.yml` template, you can use the `--empty` flag so that a template is produced, but there are no values in the template.
 
-```bash
+```
 $ rke config --empty --name cluster.yml
 ```
 
@@ -154,7 +157,7 @@ $ rke config --empty --name cluster.yml
 
 Instead of creating a file, you can print the generated configuration to stdout using the `--print` flag.
 
-```bash
+```
 $ rke config --print
 ```
 
@@ -162,7 +165,7 @@ $ rke config --print
 
 RKE is HA ready, you can specify more than one `controlplane` node in the `cluster.yml` file. RKE will deploy master components on all of these nodes and the kubelets are configured to connect to `127.0.0.1:6443` by default which is the address of `nginx-proxy` service that proxy requests to all master nodes.
 
-To create an HA cluster, specify more than one host with role `controlplane`. 
+To create an HA cluster, specify more than one host with role `controlplane`.
 
 ## Deploying Kubernetes with RKE
 
@@ -177,7 +180,7 @@ $ ./rke_linux-amd64 up
 
 There will be log statements as the Kubernetes cluster is created.
 
-```bash
+```
 $ ./rke_darwin-amd64 up
 INFO[0000] Building Kubernetes cluster
 INFO[0000] [dialer] Setup tunnel for host [10.0.0.1]
@@ -193,7 +196,7 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 In order to start interacting with your Kubernetes cluster, you will use a different binary called `kubectl`. You will need to [install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine. You can connect to the RKE created cluster by using the `kube_config_cluster.yml` that was generated when you deployed Kubernetes.
 
-```bash
+```
 # Confirm that kubectl is working by checking the version of your Kubernetes cluster
 $ kubectl --kubeconfig kube_config_cluster.yml version
 Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCommit:"fc32d2f3698e36b93322a3465f63a14e9f0eaead", GitTreeState:"clean", BuildDate:"2018-03-27T00:13:02Z", GoVersion:"go1.9.4", Compiler:"gc", Platform:"darwin/amd64"}
@@ -202,7 +205,7 @@ Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1"
 
 The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue any command to your cluster, like requesting the nodes that are in the cluster.
 
-```bash
+```
 $ kubectl --kubeconfig kube_config_cluster.yml get nodes
 NAME            STATUS    ROLES                      AGE       VERSION
 10.0.0.1         Ready     controlplane,etcd,worker   35m       v1.10.3-rancher1

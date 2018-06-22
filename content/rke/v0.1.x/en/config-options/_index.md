@@ -27,10 +27,11 @@ There are several options that can be configured in cluster configuration option
 * [Authorization]({{< baseurl >}}/rke/v0.1.x/en/config-options/authorization/)
 * [Cloud Providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/)
 * [Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/)
+  * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
   * [Network Plugins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/)
   * [Ingress Controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/)
   * [User-Defined-Add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/user-defined-add-ons/)
-  * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
+
 
 ## Cluster Level Options
 
@@ -97,7 +98,7 @@ ssh_agent_auth: true
 
 If you want to use an SSH private key with a passphrase, you will need to add your key to `ssh-agent` and have the environment variable `SSH_AUTH_SOCK` configured.
 
-```bash
+```
 $ eval "$(ssh-agent -s)"
 Agent pid 3975
 $ ssh-add /home/user/.ssh/id_rsa
@@ -106,7 +107,6 @@ Identity added: /home/user/.ssh/id_rsa (/home/user/.ssh/id_rsa)
 $ echo $SSH_AUTH_SOCK
 /tmp/ssh-118TMqxrXsEx/agent.3974
 ```
-
 
 ### Add-ons Job Timeout
 

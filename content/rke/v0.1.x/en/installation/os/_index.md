@@ -13,7 +13,7 @@ Add in notes of which OS are currently used-->
 - OpenSSH 7.0+ must be installed on each node for stream local forwarding to work
 - The SSH user used for node access must be a member of the `docker` group on the node:
 
-   ```bash
+   ```
    usermod -aG docker <user_name>
    ```
 
@@ -31,7 +31,7 @@ In RKE, most of the volumes are mounted with option `z`, but there are some cont
 
 Before running RKE, users will need to run the following commands to make some additional directories:
 
-```bash
+```
 # mkdir /opt/cni /etc/cni
 # chcon -Rt svirt_sandbox_file_t /etc/cni
 # chcon -Rt svirt_sandbox_file_t /opt/cni
@@ -45,6 +45,6 @@ By default, Atomic hosts ship with OpenSSH 6.4, which doesn't support SSH tunnel
 
 By default, Atomic hosts do not come with a Docker group. You can update the ownership of the Docker socket by enabling the specific user in order to launch RKE.
 
-```bash
+``` 
 # chown <user> /var/run/docker.sock
 ```

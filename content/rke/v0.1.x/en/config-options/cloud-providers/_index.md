@@ -365,7 +365,7 @@ If you want to enable a different cloud provider, RKE allows for custom cloud pr
 
 For example, in order to use the oVirt cloud provider with Kubernetes, here's the following cloud provider information:
 
-```bash
+```
 [connection]
 uri = https://localhost:8443/ovirt-engine/api
 username = admin@internal

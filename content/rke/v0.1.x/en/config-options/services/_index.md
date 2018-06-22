@@ -24,6 +24,7 @@ The [Kubernetes API](https://kubernetes.io/docs/reference/command-line-tools-ref
 services:
   kube-api:
     # IP range for any services created on Kubernetes
+    # This must match the service_cluster_ip_range in kube-controller
     service_cluster_ip_range: 10.43.0.0/16
     # Expose a different port range for NodePort services
     service_node_port_range: 30000-32767    
@@ -51,7 +52,8 @@ services:
     kube-controller:
       # CIDR pool used to assign IP addresses to pods in the cluster
       cluster_cidr: 10.42.0.0/16
-      #
+      # IP range for any services created on Kubernetes
+      # This must match the service_cluster_ip_range in kube-api
       service_cluster_ip_range: 10.43.0.0/16
 ```
 
