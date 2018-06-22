@@ -1,7 +1,6 @@
 ---
 title: Kubernetes Default Services
 weight: 230
-draft: true
 ---
 
 To deploy Kubernetes, RKE deploys several core components or services in Docker containers on the nodes. Based on the roles of the node, the containers deployed may be different.

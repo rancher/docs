@@ -1,7 +1,6 @@
 ---
 title: Ingress Controllers
 weight: 252
-draft: true
 ---
 
 By default, RKE deploys the nginx ingress controller on all schedulable nodes.

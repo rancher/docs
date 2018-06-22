@@ -1,7 +1,6 @@
 ---
 title: Example Cluster.ymls
 weight: 205
-draft: true
 ---
 
 There are lots of different config options that can be set in the cluster configuration file for RKE. Here are some examples of files:

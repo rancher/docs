@@ -1,7 +1,6 @@
 ---
 title: Managing RKE Clusters
 weight: 60
-draft: true
 ---
 
 ### Adding/Removing Nodes

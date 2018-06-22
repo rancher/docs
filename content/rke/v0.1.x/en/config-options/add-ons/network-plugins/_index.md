@@ -1,7 +1,6 @@
 ---
 title: Network Plug-ins
 weight: 251
-draft: true
 ---
 
 RKE supports the following network plug-ins that are deployed as add-ons:

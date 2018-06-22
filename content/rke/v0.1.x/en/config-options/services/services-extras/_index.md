@@ -1,7 +1,6 @@
 ---
 title: Extra Args, Extra Binds, and Extra Environment Variables
 weight: 231
-draft: true
 ---
 
 RKE supports additional service arguments, volume binds and environment variables.

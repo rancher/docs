@@ -1,7 +1,6 @@
 ---
 title: Private Registries
 weight: 215
-draft: true
 ---
 
 RKE supports the ability to configure multiple private Docker registries. By passing in your registry and credentials, it allows the nodes to pull images from these private registries.  

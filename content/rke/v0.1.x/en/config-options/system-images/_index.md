@@ -1,7 +1,6 @@
 ---
 title: System Images
 weight: 225
-draft: true
 ---
 When RKE is deploying Kubernetes, there are several images that are pulled. These images are used as Kubernetes system components as well as helping to deploy these system components.  
 

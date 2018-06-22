@@ -1,7 +1,6 @@
 ---
 title: Operating System Requirements
 weight: 55
-draft: true
 ---
 
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
