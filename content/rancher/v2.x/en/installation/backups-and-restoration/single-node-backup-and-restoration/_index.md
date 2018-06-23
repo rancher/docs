@@ -25,7 +25,7 @@ docker stop <RANCHER_CONTAINER_ID>
 	- Replace `<RANCHER_CONTAINER_TAG>` and `<RANCHER_VERSION>` with the version of Rancher that you are currently running, as mentioned in the  **Prerequisite** above.
 
 	```
-docker create --volumes-from <RANCHER_CONTAINER_ID>
+docker create --volumes-from <RANCHER_CONTAINER_ID> \
 --name rancher-backup-<RANCHER_VERSION> rancher/rancher:<RANCHER_CONTAINER_TAG>
 	```
 
