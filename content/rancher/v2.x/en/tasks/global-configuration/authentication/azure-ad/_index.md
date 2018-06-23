@@ -1,7 +1,6 @@
 ---
 title: Configuring Azure Active Directory
 weight: 3075
-draft: true
 ---
 
 If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
