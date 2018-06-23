@@ -36,7 +36,9 @@ Provision the host according to the requirements below.
 
 {{< requirements_software >}}
 
-{{< requirements_ports >}}
+{{< requirements_ports_rancher >}}
+
+{{< requirements_ports_rke >}}
 
 >**Bare-Metal Server Note:**
 >

@@ -11,4 +11,5 @@ The following diagram displays the basic port requirements for Rancher. If you n
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
 
-{{< requirements_ports >}}
+{{< requirements_ports_rancher >}}
+{{< requirements_ports_rke >}}

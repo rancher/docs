@@ -1,6 +1,6 @@
 ---
 title: Upgrades
-weight: 70
+weight: 100
 draft: true
 ---
 
