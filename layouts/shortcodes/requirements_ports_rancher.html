@@ -1,0 +1,53 @@
+<div>
+	<p><strong>Rancher nodes:</strong><br/>Nodes running the <code>rancher/rancher</code> container</p>
+	<h6>Rancher nodes - Inbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Source</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>80</td>
+	        <td><ul><li>Load balancer/proxy that does external SSL termination</li></ul></td>
+	        <td>Rancher UI/API when external SSL termination is used</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>Hosted/Imported Kubernetes</li><li>any that needs to be able to use UI/API</li></ul></td>
+	        <td>Rancher agent, Rancher UI/API, kubectl</td>
+	    </tr>
+	</table>
+	<h6>Rancher nodes - Outbound rules</h6>
+	<table>
+	    <tr>
+	        <th>Protocol</th>
+	        <th>Port</th>
+	        <th align="left">Destination</th>
+	        <th align="left">Description</th>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>22</td>
+	        <td><ul><li>Any node IP from a node created using Node Driver</li></td>
+	        <td>SSH provisioning of nodes using Node Driver</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>443</td>
+	        <td><ul><li>35.160.43.145/32</li><li>35.167.242.46/32</li><li>52.33.59.17/32</li></td>
+	        <td>git.rancher.io (catalogs)</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>6443</td>
+	        <td><ul><li>Hosted/Imported Kubernetes API</li></td>
+	        <td>Kubernetes apiserver</td>
+	    </tr>
+	</table>
+	
+    <br/>
+</div>
