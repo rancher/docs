@@ -57,21 +57,22 @@ ignore_docker_version: true
 
 You can select which version of Kubernetes to install for your cluster. These options are the Kubernetes versions made available in Rancher v2.x. The current default Kubernetes version used by RKE is `v1.10.3-rancher2-1`. If a version is defined in `kubernetes_version` and is not found in this list, the default is used.
 
- |Kubernetes version|
- |-----------------|
- |v1.10.3-rancher2-1|
- |v1.10.1-rancher2-1|
- |v1.10.0-rancher1-1|
- |v1.9.7-rancher2-1|
- |v1.9.5-rancher1-1|
- |v1.8.11-rancher2-1|
- |v1.8.10-rancher1-1|
+ Kubernetes version|
+ -----------------|
+ v1.10.3-rancher2-1|
+ v1.10.1-rancher2-1|
+ v1.10.0-rancher1-1|
+ v1.9.7-rancher2-1|
+ v1.9.5-rancher1-1|
+ v1.8.11-rancher2-1|
+ v1.8.10-rancher1-1|
 
+<br>
 
 There are two ways to select a Kubernetes version:
 
 - Using the Kubernetes image defined in [system images](#rke-system-images)
-- Using the configuration option `kubernetes_version` in
+- Using the configuration option `kubernetes_version` 
 
 ```yaml
 kubernetes_version: "v1.10.3-rancher2-1"
