@@ -1,7 +1,6 @@
 ---
 title: Authentication
 weight: 235
-draft: true
 ---
 
 RKE supports x509 authentication strategy. You can additionally define a list of SANs (Subject Alternative Names) to add to the Kubernetes API Server PKI certificates. As an example, this allows you to connect to your Kubernetes cluster API Server through a load balancer instead of a single node.

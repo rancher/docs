@@ -1,7 +1,6 @@
 ---
 title: Nodes
 weight: 210
-draft: true
 ---
 
 The `nodes` directive is the only required section in the `cluster.yml` file. It's used by RKE to specify cluster node(s), ssh credentials used to access the node(s) and which roles these nodes will be in the Kubernetes cluster.

@@ -1,7 +1,6 @@
 ---
 title: Bastion/Jump Host Configuration
 weight: 220
-draft: true
 ---
 
 Since RKE uses `ssh` to connect to [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/), you can configure to use a bastion host.

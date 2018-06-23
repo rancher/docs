@@ -1,7 +1,6 @@
 ---
 title: Config Options
 weight: 200
-draft: true
 ---
 
 When setting up your `cluster.yml` for RKE, there are a lot of different options that can be configured to control the behavior of how RKE launches Kubernetes.

@@ -1,7 +1,6 @@
 ---
 title: Installation
 weight: 50
-draft: true
 ---
 
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
