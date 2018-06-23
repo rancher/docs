@@ -6,7 +6,7 @@ draft: true
 
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
-### OS Requirements
+RKE runs on almost any Linux OS with docker installed. Most of the development and testing of RKE were done on Ubuntu 16.04. Our testing also include CentOS,  RHEL and RancherOS. However, some OS's have restrictions and have specific requirements. 
 
 - For  Kubernetes versions 1.8, 1.9 and 1.10, Docker versions `1.11.2` up to `1.13.1` and `17.03.x` are validated
 - OpenSSH 7.0+ must be installed on each node for stream local forwarding to work
