@@ -1,11 +1,7 @@
 ---
 title: Upgrades
-<<<<<<< HEAD:content/rke/v0.1.x/en/upgrades/_index.md
 weight: 100
 draft: true
-=======
-weight: 70
->>>>>>> undraft all RKE:content/rke/v0.1.x/en/installation/upgrades/_index.md
 ---
 
 After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, [definition of the Kubernetes services]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/).
