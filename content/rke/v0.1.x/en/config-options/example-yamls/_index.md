@@ -20,7 +20,6 @@ nodes:
 ## Full `cluster.yml` example
 
 ```yaml
----
 nodes:
     - address: 1.1.1.1
       user: ubuntu
@@ -202,3 +201,4 @@ addons_include:
     - https://raw.githubusercontent.com/rook/rook/master/cluster/examples/kubernetes/rook-operator.yaml
     - https://raw.githubusercontent.com/rook/rook/master/cluster/examples/kubernetes/rook-cluster.yaml
     - /path/to/manifest
+```
