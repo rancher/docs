@@ -37,10 +37,10 @@ In the `cluster.yml`, you need to turn enable `snapshot` as part of the `etcd se
 
 ```yaml
 services:
-  etcd:
-    snapshot: true
-    creation: 5m0s
-    retention: 24h
+    etcd:
+      snapshot: true
+      creation: 5m0s
+      retention: 24h
 ```
 
 
