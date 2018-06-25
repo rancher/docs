@@ -15,14 +15,14 @@ Original YAML
 
 ```yaml
 system-images:
-  kubernetes: rancher/hyperkube:v1.9.7
+    kubernetes: rancher/hyperkube:v1.9.7
 ```
 
 Updated YAML
 
 ```yaml
 system-images:
-  kubernetes: rancherhyperkube:v1.10.3
+    kubernetes: rancherhyperkube:v1.10.3
 ```
 
 After updating your `cluster.yml` with the required changes, all you need to do is run `rke up` to upgrade Kubernetes.
