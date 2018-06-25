@@ -27,6 +27,16 @@ docker create --volumes-from <RANCHER_CONTAINER_ID> \
 --name rancher-data rancher/rancher:<RANCHER_CONTAINER_TAG>
 	```
 
+1. Create a different `rancher-data-snapshot` container. This container also backs up the data from your current Rancher Server, but you are creating this container to serve as a restoration point in case something goes wrong with your server upgrade.
+
+	- Replace `<RANCHER_CONTAINER_ID>` with the same ID from the previous step.
+	- Replace `<RANCHER_CONTAINER_TAG>` with the version of Rancher that you are currently running, as mentioned in the  **Prerequisite** above.
+
+	```
+docker create --volumes-from <RANCHER_CONTAINER_ID> \
+--name rancher-data rancher/rancher:<RANCHER_CONTAINER_TAG>
+	```
+
 3. Pull the most recent image of Rancher.
 
 	```
