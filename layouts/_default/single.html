@@ -4,7 +4,10 @@
 
 {{ define "hero" }}
 <section class="hero">
-    <h1>Rancher Docs</h1>
+    <h5 class="text-white">Rancher 2.0 Docs</h5>
+    {{ with .Params.Title }}
+      <h1 class="m-t-0">{{ . }}</h1>
+    {{end}}
 
     {{ with .Params.Author }}
       <span class="byline bg-link">{{ . }}</span>
@@ -13,40 +16,29 @@
 {{ end }}
 
 {{ define "main" }}
-  <div class="wrapper">
-    {{ partial "docs-nav.html" . }}
-    {{ $secondLevel := ($.Scratch.Get "secondLevel") }}
-    {{ $.Scratch.Set "showSidebar" false }}
-    {{ with $secondLevel }}
-      {{ if (gt (len .Sections) 0) }}
-        {{ $.Scratch.Set "showSidebar" true }}
-      {{end}}
-    {{end}}
 
+<div class="wrapper">
     <div class="row m-t-sm">
 
-      {{ if ($.Scratch.Get "showSidebar") }}
-        <aside class="col-sm-3 col-xs-12 p-l-0">
-          {{ partial "docs-side-nav.html" . }}
-        </aside>
-      {{end}}
-      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-7 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+      <aside class="col-sm-3 col-xs-12 p-l-0">
+        {{ partial "docs-side-nav.html" . }}
+      </aside>
+
+      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
 
         <div class="main-content ">
-        {{ with .Params.Title }}
-          <h2 class="m-t-0">{{ . }}</h2>
-        {{end}}
+
         {{ .Content }}
 
       </div>
 
          <div class="p-v-sm">{{ partial "page-edit.html" . }}</div>
       </article>
-      <div class="offset-watch invisible"></div>
-      <aside class="col-sm-2 col-xs-12 unstyled toc-container">
+     <!--  <div class="offset-watch invisible"></div>
+      <aside class="col-sm-3 col-xs-12 unstyled toc-container">
         <h4 class="m-b-0">On this page</h4>
         {{ .TableOfContents }}
-      </aside>
+      </aside> -->
     </div>
 
   </div>
