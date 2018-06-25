@@ -1,13 +1,63 @@
+{{ $.Scratch.Set "topLevel" . }}
+{{ range $product := $.Site.Sections }}
+  {{ range $version := .Sections }}
+    {{ range $language := .Sections }}
+      {{if $.CurrentSection}}
+        {{ if .IsAncestor $.CurrentSection }}
+          {{ $.Scratch.Set "topLevel" . }}
+        {{end}}
+      {{end}}
+    {{end}}
+  {{end}}
+{{end}}
+
+<!-- product dropdown -->
+<ul class="dropdown sub-menu unstyled">
+  <li class="m-b-0">
+    <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="btn bg-link p-a-0">
+      <span class="p-h-xs">
+        {{ range $product := $.Site.Sections }}
+          {{ range $version := .Sections }}
+            {{ range $language := .Sections }}
+              {{if $.CurrentSection}}
+                {{ if .IsAncestor $.CurrentSection }}
+                  {{ .Params.shortTitle }}
+                {{end}}
+              {{end}}
+            {{end}}
+          {{end}}
+        {{end}}
+      </span>
+      <i class="material-icons darken p-a-xs">keyboard_arrow_down</i>
+    </a>
+
+    <ul class="sub dropdown-menu bg-white unstyled">
+      {{ range $product := $.Site.Sections }}
+        {{ range $version := .Sections }}
+          {{ range $language := .Sections }}
+            <li class="m-b-0"><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
+            {{ if .Params.insertonesix }}
+              <li class="m-b-0"><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
+            {{end}}
+          {{end}}
+        {{end}}
+      {{end}}
+
+    </ul>
+  </li>
+</ul>
+
 <div class="tree-nav invisible">
   <ul>
-    {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }}
+    <!-- {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }} -->
+    {{ template "section-tree-nav" ($.Scratch.Get "topLevel") }}
   </ul>
 </div>
 {{ define "section-tree-nav" }}
   {{ range .Sections}}
     <li class="tree-nav-item"><a href="{{ .RelPermalink}}">{{ .Title }}</a>
       {{if gt (len .Sections) 0}}
-        <i class="material-icons pull-right expand-toggle">add_box</i>
+        <i class="material-icons expand-toggle">add_box</i>
         <ul class="tree-nav-sublist hide">
           {{ range .Pages }}
             <li class="tree-nav-item-child"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
