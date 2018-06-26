@@ -3,22 +3,20 @@ title: Upgrades
 weight: 1000
 ---
 
-This section includes instructions for upgrading Rancher from previous versions.
+This section is devoted to upgrading your Rancher Server, as well as other procedures related to upgrades and system maintenance.
 
-### Upgrading from Rancher 2.x.x
+- [Upgrade Scenarios](./upgrade-scenarios/)
 
-Each new version of Rancher 2.x.x supports upgrades from previous versions of Rancher 2.x.x.  This section will be updated as soon as the first release post 2.0 is available.
+    When a new version of Rancher is released, follow these instructions to upgrade to the latest version.
 
-Complete one of the upgrade procedures below based on your Rancher installation:
+- [Backups](./backups/)
 
-- [Single Node Upgrade](./single-node-upgrade/)
-- [High Availability Upgrade](./ha-server-upgrade/)
-- [Air Gap Upgrade](./air-gap-upgrade/)
+    To protect yourself from a disaster scenario, you should create Rancher backups on a regular basis.
 
-### Migrating from Rancher 1.6.x
+- [Restorations](./restorations/)
 
-Until Rancher 2.1 is released, migrating to from Rancher 1.6.x to 2.x.x is not supported due to major code rewrites.
+    In a disaster scenario, you can restore your `etcd` database by restoring a backup.
 
-For the 2.1 release, we plan to release a tool that converts Rancher Compose to Kubernetes YAML.  This tool will help our Cattle users migrate from Rancher 1.6.x to 2.x.x.  However, we understand that there is a learning curve switching from Cattle to Kubernetes as you deploy new workloads. Therefore, this release will include a cheatsheet for those that enjoy Cattle's simplicity but want to quickly create those workloads in Kubernetes.
+- [Rollbacks](./rollbacks/)
 
-We will continue support for Rancher 1.6.x for a minimum of one year after the 2.1 release so that 1.6.x users can plan and complete migration.
+    If an upgrade does not complete successfully, you can revert you Rancher Server to its previous version along with its data prior to upgrade.
