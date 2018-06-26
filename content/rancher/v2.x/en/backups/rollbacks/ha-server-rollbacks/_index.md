@@ -8,7 +8,11 @@ If you upgrade Rancher, but the upgrade does not complete successfully, you may 
 - Restore the `etcd` snapshot taken before upgrade.
 - Run the command to revert to your prior version of Rancher.
 
->**Warning!** Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+>**Warning!**
+>
+> Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+>
+>**Prerequisites:** {{< requirements_rollback >}}
 
 1. Open **Terminal** and change directory to the location of the RKE binary that you used during upgrade.
 

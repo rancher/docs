@@ -6,43 +6,23 @@ aliases:
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
+>**Prerequisites:** {{< requirements_rollback >}}
+
 ## Backup Outline
 
 Backing up your high-availability Rancher cluster is process that involves completing multiple tasks.
 
-1.  [Meet Backup Prerequisites](#1-meet-backup-prerequisites)
-
-	Before starting, make sure you have the files needed to create backups.
-
-1.  [Take Snapshots of the `etcd` Database](#2-take-snapshots-of-the-etcd-database)
+1.  [Take Snapshots of the `etcd` Database](#1-take-snapshots-of-the-etcd-database)
 
 	Take snapshots of your current `etcd` database using Rancher Kubernetes Engine (RKE).
 
-1.  [Store Snapshot(s) Externally](#3-backup-snapshots-to-a-safe-location)
+1.  [Store Snapshot(s) Externally](#2-backup-snapshots-to-a-safe-location)
 
 	After taking your snapshots, export them to a safe location that won't be affected if your cluster encounters issues.
 
 <br/>
-### 1. Meet Backup Prerequisites
 
-Begin by gathering the files that you need to create backups of your Rancher install.
-
-#### Prerequisites
-
-- Rancher Kubernetes Engine v0.1.7 or later
-
-	The commands for taking `etcd` snapshots are only available in RKE v0.1.7 and later.
-
-- rancher-cluster.yml
-
-	You'll need the RKE config file you used for Rancher install, `rancher-cluster.yml`. You created this file during your chosen high-availability installation scenario:
-<br/>
-<br/>
-	- [High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
-	- [High Availability Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
-
-<br/>
-### 2. Take Snapshots of the `etcd` Database
+### 1. Take Snapshots of the `etcd` Database
 
 Take snapshots of your `etcd` database. You can use these snapshots later to recover from a disaster scenario. There are two ways to take snapshots: recurringly, or as a one-off.  Each option is better suited to a specific use case. Read the short description below each link to know when to use each option.
 
@@ -111,7 +91,7 @@ When you're about to upgrade Rancher or restore it to a previous snapshot, you s
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.
 
-### 3. Backup Snapshots to a Safe Location
+### 2. Backup Snapshots to a Safe Location
 
 After taking the `etcd` snapshots, save them to a safe location so that they're unaffected if your cluster experiences a disaster scenario. This location should be persistent.
 

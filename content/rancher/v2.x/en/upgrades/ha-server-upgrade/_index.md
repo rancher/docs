@@ -5,14 +5,15 @@ weight: 1020
 To upgrade Rancher 2.x running in a high availability configuration, run an upgrade command that points to your upgrade config file.
 
 >**Prerequisites:**
->
+{{< requirements_rollback >}}
+
 >- Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your workstation.
 >- Confirm that the following path exists on your workstation: `~/.kube/`. If it doesn't, create it yourself.
 >- Copy `kube_config_rancher-cluster.yml`, which is automatically generated after [Rancher Server installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install#part-11-backup-kube-config-rancher-cluster-yml), to the `~/.kube/` directory.
 
 1. From your workstation, open **Terminal**.
 
-1. Change directory to the location of the RKE binary. Your `kube_config_rancher-cluster.yml` file must reside in the same directory.
+1. Change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
 1. <a id="snapshot"></a> Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
