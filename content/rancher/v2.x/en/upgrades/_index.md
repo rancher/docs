@@ -1,6 +1,6 @@
 ---
-title: Upgrade Scenarios
-weight: 25
+title: Upgrades
+weight: 150
 ---
 
 ### Upgrading from Rancher 2.x.x
