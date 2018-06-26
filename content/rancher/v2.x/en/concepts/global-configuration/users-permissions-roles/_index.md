@@ -171,6 +171,11 @@ The following table lists each built-in custom project role available in Rancher
 
 > **Note:** Each project role listed above, including Owner, Member, and Read Only, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
+### Defining Custom Roles
+As previously mentioned, custom roles can be defined for use at the cluster or project level. The context field defines whether the role will appear on the cluster member page, project member page, or both.
+
+When defining a custom role, you can grant access to specific resources or specify roles from which the custom role should inherit. A custom role can be made up of a combination of specific grants and inherited roles. All grants are additive. This means that defining a narrower grant for a specific resource **will not** override a broader grant defined in a role that the custom role is inheriting from.
+
 #### Locked Roles
 
 You can set roles to a status of `locked`. Locking roles prevent them from being assigned users in the future.
