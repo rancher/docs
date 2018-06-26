@@ -5,7 +5,7 @@ weight: 200
 
 When setting up your `cluster.yml` for RKE, there are a lot of different options that can be configured to control the behavior of how RKE launches Kubernetes.
 
-There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/v0.1.x/en/config-options/example-yamls/) that contain all the options.
+There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/) that contain all the options.
 
 ### Configuring Nodes
 * [Nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/)
@@ -71,7 +71,7 @@ You can select which version of Kubernetes to install for your cluster. These op
 There are two ways to select a Kubernetes version:
 
 - Using the Kubernetes image defined in [system images](#rke-system-images)
-- Using the configuration option `kubernetes_version` 
+- Using the configuration option `kubernetes_version`
 
 ```yaml
 kubernetes_version: "v1.10.3-rancher2-1"

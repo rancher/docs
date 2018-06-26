@@ -52,7 +52,7 @@ RKE uses a cluster configuration file, referred to as `cluster.yml` to determine
 
 There are two easy ways to create a `cluster.yml`:
 
-- Using our [minimal `cluster.yml`]({{< baseurl >}}/rke/v0.1.x/en/config-options/example-yamls/#minimal-cluster-yml-example) and updating it based on the node that you will be using.
+- Using our [minimal `cluster.yml`]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/#minimal-cluster-yml-example) and updating it based on the node that you will be using.
 - Using `rke config` to query for all the information needed.
 
 ### Using `rke config`
