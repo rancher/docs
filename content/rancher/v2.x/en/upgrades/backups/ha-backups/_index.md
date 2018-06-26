@@ -70,7 +70,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 	services:
 	  etcd:
 	    snapshot: true # enables recurring etcd snapshots
-	    creation: 5m0s # time increment between snapshots
+	    creation: 6h0s # time increment between snapshots
 	    retention: 24h # time increment before snapshot purge
 	```
 
