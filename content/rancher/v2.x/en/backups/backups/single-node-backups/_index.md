@@ -3,6 +3,7 @@ title: Creating Backups—Single Node Installs
 weight: 25
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/ 
 ---
 
 After completing your single node installation of Rancher create a backup of your current installation. Use this backup as a restoration point in disaster scenarios.

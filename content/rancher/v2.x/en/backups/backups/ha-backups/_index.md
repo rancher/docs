@@ -3,6 +3,7 @@ title: Creating Backups—High Availability Installs
 weight: 50
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
+  - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/ 
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
