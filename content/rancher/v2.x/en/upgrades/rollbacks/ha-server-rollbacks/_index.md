@@ -16,18 +16,18 @@ If you upgrade Rancher, but the upgrade does not complete successfully, you may 
 
 	```
 	# MacOS
-	./rke_darwin-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config kube_config_rancher-cluster.yml
+	./rke_darwin-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
 	# Linux
-	./rke_linux-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config kube_config_rancher-cluster.yml
+	./rke_linux-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
 	```
 
 1. Run one of the following commands to bring your cluster back up:
 
 	```
 	# MacOS
-	./rke_darwin-amd64 up --config kube_config_rancher-cluster.yml
+	./rke_darwin-amd64 up --config rancher-cluster.yml
 	# Linux
-	./rke_linux-amd64 up --config kube_config_rancher-cluster.yml
+	./rke_linux-amd64 up --config rancher-cluster.yml
 	```
 
 1. Lastly, restart the Kubernetes components on all cluster nodes to prevent potential `etcd` conflicts. Run this command on each of your nodes.
