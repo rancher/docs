@@ -326,7 +326,7 @@ With all configuration in place, use RKE to launch Rancher. You can complete thi
 
 ## 11. Back Up Auto-Generated Config File
 
-During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
+During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the `rancher-cluster.yml` file. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
 ## 12. Remove Default Certificates
 
