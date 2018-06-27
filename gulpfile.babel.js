@@ -13,13 +13,10 @@ import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import watch from 'gulp-watch';
 
-const $ = gulpLoadPlugins();
-const browserSync = require('browser-sync').create();
+const $            = gulpLoadPlugins();
+const browserSync  = require('browser-sync').create();
 const isProduction = process.env.NODE_ENV === 'production';
-
-require('hugo-search-index/gulp')(gulp);
-
-const onError = (err) => {
+const onError      = (err) => {
   console.log(err);
 }
 
@@ -33,20 +30,30 @@ gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
 });
 
+gulp.task('dev:search', ['build-dev:search'], () => {
+  gulp.start('init-watch');
+});
+
 gulp.task('build', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo' , 'hugo-search-index', () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo',  () => {
     cb();
   });
 });
 
 gulp.task('build-staging', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging' , 'hugo-search-index', () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging', () => {
     cb();
   });
 });
 
 gulp.task('build-dev', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev' , /* 'hugo-search-index', */ () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev', () => {
+    cb();
+  });
+});
+
+gulp.task('build-dev:search', (cb) => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev',  () => {
     cb();
   });
 });
@@ -83,7 +90,17 @@ gulp.task('init-watch', () => {
   watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => runSequence('sass', 'hugo-dev'));
   watch([ 'src/js/**/*.js', 'node_modules/rancher-website-theme/static/js/base.js' ], () => runSequence('build:app', 'hugo-dev'));
   watch('src/img/**/*', () => runSequence('img', 'hugo-dev'));
-  watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'node_modules/rancher-website-theme/layouts/**/*', 'node_modules/rancher-website-theme/archetypes/**/*', 'node_modules/rancher-website-theme/data/**/*', 'node_modules/rancher-website-theme/content/**/*', 'themes/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  watch([
+    'archetypes/**/*',
+    'data/**/*',
+    'content/**/*',
+    'layouts/**/*',
+    'node_modules/rancher-website-theme/layouts/**/*',
+    'node_modules/rancher-website-theme/archetypes/**/*',
+    'node_modules/rancher-website-theme/data/**/*',
+    'node_modules/rancher-website-theme/content/**/*',
+    'themes/**/*',
+    'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
@@ -103,7 +120,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('static/css'));
 });
 
-const vendors = [/* 'zoom.ts',  */'ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
+const vendors = [/* 'zoom.ts', */'instantsearch.js', 'ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
 
 gulp.task('build:vendor', () => {
   const b = browserify();
