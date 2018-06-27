@@ -43,7 +43,7 @@ generate the token that will be used by Rancher to send HTTP Event data.
 
 Congratulations you now are ready to feed Splunk with HTTP Event data. You
 should see a page like the one below with your generated token. This is the
-token that will be used in rancher to communicate with Splunk.
+token that will be used in Rancher to communicate with Splunk.
 
 ![Token Created]({{< baseurl >}}/img/rancher/splunk/splunk2.jpg)
 
@@ -62,7 +62,7 @@ In this section we will configure and enable Splunk cluster logging in Rancher.
 
 ![Configure Rancher Cluster Logging]({{< baseurl >}}/img/rancher/splunk/splunk3.jpg)
 
-Repeate the same step for Project Logging, if desired. This is not required and is optional.
+Repeat the same step for Project Logging, if desired. This is not required and is optional.
 
 ## View Logs
 
@@ -81,7 +81,7 @@ To view the actual logs click on the source that you declared earlier
 
 ## Troubleshooting
 
-You can use curl to see if **HEC** is listening for HTTP Event Data.
+You can use curl to see if **HEC** is listening for HTTP event data.
 
 ```bash
 $ curl http://splunk-server:8088/services/collector/event \
@@ -89,6 +89,12 @@ $ curl http://splunk-server:8088/services/collector/event \
     -d '{"event": "hello world"}'
 ```
 
-You should see **json** data returnining Success code 0. You should be able
+You should see **json** data returning Success code 0. You should be able
 to send logging data to HEC. If you received an error, check your configuration
 in Splunk & Rancher Cluster Logging.
+
+## Reference
+
+For more information on Splunk, you can check out the following reference
+
+http://docs.splunk.com/Documentation/Splunk/7.0.0/Data/UsetheHTTPEventCollector
