@@ -3,28 +3,6 @@
 {{ end }}
 
 {{ define "hero" }}
-<section class="hero">
-    <h5 class="text-white">
-      {{ range $product := $.Site.Sections }}
-        {{ range $version := .Sections }}
-          {{ range $language := .Sections }}
-            {{if $.CurrentSection}}
-              {{ if .IsAncestor $.CurrentSection }}
-                {{ .Params.shortTitle }}
-              {{end}}
-            {{end}}
-          {{end}}
-        {{end}}
-      {{end}}
-    </h5>
-    {{ with .Params.Title }}
-      <h1 class="m-t-0">{{ . }}</h1>
-    {{end}}
-
-    {{ with .Params.Author }}
-      <span class="byline bg-link">{{ . }}</span>
-    {{end}}
-</section>
 {{ end }}
 
 {{ define "main" }}
@@ -36,9 +14,14 @@
         {{ partial "docs-side-nav.html" . }}
       </aside>
 
-      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-l-lg {{end}} col-xs-12">
 
-        <div class="main-content ">
+      {{ with .Params.Title }}
+        <h1 class="m-t-0">{{ . }}</h1>
+        <hr/>
+      {{end}}
+
+      <div class="main-content">
 
         {{ .Content }}
 
