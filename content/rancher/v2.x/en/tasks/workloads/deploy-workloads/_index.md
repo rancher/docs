@@ -33,7 +33,16 @@ Deploy a workload to run an application in one or more containers.
 
     - **Scaling/Upgrade Policy**
 
+        >**Amazon Note for Volumes:**
+        >
+        > To mount an Amazon EBS volume:
+        >
+        >- In [Amazon AWS](https://aws.amazon.com/), the nodes must be in the same Availability Zone and possess IAM permissions to attach/unattach volumes.
+        >- The cluster must be using AWS cloud provider.
+
+
 1. Click **Show Advanced Options** and configure:
+
     - **Command**
     - **Networking**
     - **Labels & Annotations**
