@@ -1,7 +1,7 @@
 <div>
 	<p>Rancher uses <code>etcd</code> as datastore. When using the Single Node Install, the embedded <code>etcd</code> is being used. The persistent data is at the following path in the container:  <code>/var/lib/rancher</code>. You can bind mount a host volume to this location to preserve data on the host it is running on.</p>
 
-	<p><b>Command</b></p>
+	<h5>Command:</h5>
 
 	<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 docker run -d --restart=unless-stopped \
