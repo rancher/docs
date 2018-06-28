@@ -127,7 +127,7 @@ In This Document:
 
 <!-- /TOC -->
 
->**Prerequisite:** Completion of all tasks on this page require the `Manage Volumes` [role](../../../concepts/global-configuration/users-permissions-roles/#project-role-reference):
+>**Prerequisite:** Completion of all tasks on this page require the `Manage Volumes` [role](../../../concepts/global-configuration/users-permissions-roles/#project-role-reference).
 
 ## Adding a Persistent Volume
 
@@ -154,7 +154,7 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 1. Enter the **Capacity** of your volume in gigabytes.
 
-1. Complete the **Plugin Configuration** form. Each plugin type requires information specific to the vendor of disk type. For more information about each plugin's form, refer to the reference table below.
+1. Complete the **Plugin Configuration** form. Each plugin type requires information specific to the vendor of disk type. For help regarding each plugin's form and the information that's required, refer to the plug-in's vendor documentation.
 
 1. **Optional:** Complete the **Customize** form. This form features:
 
@@ -177,30 +177,6 @@ Persistent volumes can either be a disk or file system that you host on premise,
 **Result:** Your new persistent volume is created.
 
 For example, this volume is a _hostPath_ volume in Kubernetes:
-
-```
-> kubectl get pv
-
-NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
-test      10Gi       RWO            Retain           Available                                      23m
-
-> kubectl get pv/test -o yaml
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  ...
-spec:
-  accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 10Gi
-  hostPath:
-    path: /tmp/test
-    type: ""
-  persistentVolumeReclaimPolicy: Retain
-status:
-  phase: Available
-```
 
 ## Adding Storage Classes
 
