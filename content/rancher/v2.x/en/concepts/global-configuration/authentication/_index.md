@@ -13,11 +13,16 @@ This centralized user authentication is accomplished using the Rancher authentic
 The Rancher authentication proxy integrates with the following external authentication services.
 
 - Microsoft Active Directory
+- Microsoft Azure AD
 - GitHub
+- FreeIPA
+- OpenLDAP
 
 However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
+
+For more information on how to configure external authentication or local authentication, see [Authentication](../../../tasks/global-configuration/authentication/). 
 
 ### External Authentication Configuration and Principal Users
 
