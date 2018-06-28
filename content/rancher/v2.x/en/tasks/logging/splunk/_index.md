@@ -95,6 +95,6 @@ in Splunk & Rancher Cluster Logging.
 
 ## Reference
 
-For more information on Splunk, you can check out the following reference
+For more information on Splunk, you can check out the following reference:
 
-http://docs.splunk.com/Documentation/Splunk/7.0.0/Data/UsetheHTTPEventCollector
+[Splunk -> HTTP Event Collector](http://docs.splunk.com/Documentation/Splunk/7.0.0/Data/UsetheHTTPEventCollector)
