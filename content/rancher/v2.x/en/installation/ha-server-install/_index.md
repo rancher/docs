@@ -57,12 +57,6 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
 
-12. **For those using a certificate signed by a recognized CA:**
-
-	[Remove Default Certificates](#12-remove-default-certificates)
-
-	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
-
 <br/>
 
 ## 1. Provision Linux Hosts
@@ -230,7 +224,7 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
 	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
-	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
+	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/d8ca0805a3958552e84fdf5d743859097ae81e0b/rke-templates/3-node-certificate-recognizedca.yml)
 
 2. Rename the file to `rancher-cluster.yml`.
 
@@ -426,22 +420,6 @@ INFO[0101] Finished building Kubernetes cluster successfully
 ## 11. Back Up Auto-Generated Config File
 
 During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
-
-## 12. Remove Default Certificates
-
-**For those using a certificate signed by a recognized CA:**
-
->**Note:** If you're using a self-signed certificate, you don't have to complete this procedure. Continue to [What's Next?](#what-s-next)
-
-By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
-
-**To Remove the Default Certificates:**
-
-1. Log into Rancher.
-
-2. Select  **Settings** > **cacerts**.
-
-3. Choose `Edit` and remove the contents. Then click `Save`.
 
 ## What's Next?
 

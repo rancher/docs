@@ -26,12 +26,6 @@ Installation of Rancher on a single node with an external load balancer involves
 
 	Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
 
-4. **For those using a certificate signed by a recognized CA:**
-
-	[Remove Default Certificates](#4-remove-default-certificates)
-
-	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
-
 
 ## 1. Provision Linux Host
 
@@ -104,14 +98,14 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 
 **To Install Rancher Using a Cert Signed by a Recognized CA:**
 
-If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. Just run the basic install command below.
+If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container.
 
 1. Enter the following command.
 
     ```
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
-    rancher/rancher:latest
+    rancher/rancher:latest --no-cacerts
     ```
 
 ## 3. Configure Load Balancer
@@ -173,22 +167,6 @@ server {
     return 301 https://$server_name$request_uri;
 }
 ```
-
-## 4. Remove Default Certificates
-
-**For those using a certificate signed by a recognized CA:**
-
->**Note:** If you're using a self-signed certificate, don't complete this procedure. Continue to [What's Next?](#what-s-next)
-
-By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
-
-**To Remove the Default Certificates:**
-
-1. Log into Rancher.
-
-2. Select  **Settings** > **cacerts**.
-
-3. Choose `Edit` and remove the contents. Then click `Save`.
 
 <br/>
 
