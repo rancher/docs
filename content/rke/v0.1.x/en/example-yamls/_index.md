@@ -174,9 +174,9 @@ cloud_provider:
 # Add-ons are deployed using kubernetes jobs. RKE will give up on trying to get the job status after this timeout in seconds..
 addon_job_timeout: 30
 
-# There are several network plug-ins that work, but we default to flannel      
+# There are several network plug-ins that work, but we default to canal      
 network:
-    plugin: flannel
+    plugin: canal
 
 # Currently only nginx ingress provider is supported.
 # To disable ingress controller, set `provider: none`
