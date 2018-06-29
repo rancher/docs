@@ -25,27 +25,11 @@ const bootstrapDocsSearch = function() {
       container: '#hits',
       templates: {
         empty: '<h3>No results</h3>',
-        item: `<h3><a href="{{permalink}}">{{{_highlightResult.title.value}}}</a></h3><div class="body">{{{_highlightResult.summary.value}}}</div>`
+        item: `<h3><a href="{{permalink}}">{{{_highlightResult.title.value}}}</a></h3><div class="body">{{{_snippetResult.content.value}}}</div>`
       },
       escapeHits: true,
     })
   );
-
-  // search.addWidget(
-  //   instantsearch.widgets.hits({
-  //     container: '#hits',
-  //     templates: {
-  //       empty: '<h3>No results</h3>',
-  //       allItems: `<table class="search-results">
-  //                   <tbody>
-  //                     {{#hits}}
-  //                       <tr><td><h3><a href="{{permalink}}">{{title}}</a></h3><div>{{summary}}</div></td></tr>
-  //                     {{/hits}}
-  //                   </tbody>
-  //                  </table>`,
-  //     }
-  //   })
-  // );
 
   search.start();
 
@@ -56,11 +40,10 @@ const bootstrapDocsSearch = function() {
     }
   });
 
-  $('header').on('click', '#button-search', e => {
+  $('header').on('click', '#button-search', () => {
 
     let container = $('.container-search');
     let overlay   = $('.overlay-search');
-    // let header    = $(e.currentTarget).closest('header');
 
     container.toggleClass('open');
     overlay.toggleClass('open');
