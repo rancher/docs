@@ -2,32 +2,39 @@
 title: Resources
 weight: 2275
 ---
-## Introduction
 
-Kubernetes resources listed below belong to specific namespaces. Except Configuration Maps, Rancher 2.0 extends Kubernetes to allow their application at two levels - project and namespace. A project level resource is available for all its namespaces. Thus their names need to be unique within a namespace. 
-Also Certificates, Secrets and Registries in rancher are all Kubernetes secrets, so their names need to be unique.
+Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within this scope, resources include:
+
+- [Certificates](#certificates)
+- [ConfigMaps](#configmaps)
+- [Secrets](#secrets)
+- [Registries](#registries)
+
+Rancher extends the application of the Kubernetes namespace resources listed above to [projects](../projects), which are Rancher-specific constructs. In the hierarchy of Rancher objects, projects contain namespaces. Therefore, any resources available within a project are available for all namespaces within that project.
+
+Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well. Read on below.
 
 ## Certificates
 
-In Kubernetes, you can secure ingress by specifying a secret that contains TLS private key and cert. In rancher 2.0, you can add add private key and cert under Certificates and it creates a secret of type TLS for users. Users can then make reference to this certificate while creating an ingress. 
+When you create an ingress within Rancher/Kubernetes, you must provide it with a secret that includes a TLS private key and certificate, which are used to encrypt and decrypt communications that come through the ingress. You can make certificates available for ingress use by navigating to its project or namespace, and then uploading the certificate. You can then add the certificate to the ingress deployment.
 
-## Configuration Maps
+## ConfigMaps
 
-While secrets are used for using sensitive information, [config maps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) are useful to store general configuration information, for example storing config files for your tools. Also, while secrets don't get updated with an update in secret (pod restart is required), config maps get updated automatically - so use config maps when information needs to reflect without restarting the containers. 
+While most types of Kubernetes secrets store sensitive information, [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) store general configuration information, such as a group of config files. Because ConfigMaps don't store sensitive information, they can be updated automatically, and therefore don't require their containers to be restarted following update (unlike most secret types, which require manual updates and a container restart to take effect).
 
-Config maps take values in key-value pairs, values can be any string format like config files or JSON blobs. Any workload can then reference to config maps either as environment variable or volume mount. 
+ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. After you upload a config map, any workload can reference it as either an environment variable or a volume mount.
+
+>**Note:** ConfigMaps are only available within namespaces and not projects.
 
 ## Secrets
 
-Similar to Kubernetes [secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets), secrets are helpful to store sensitive data. A secret may have multiple key-value pairs. 
-User thus has ability to decide if workload will use all or few keys of this secret. Just like config maps, Any workload can then reference to secrets either as environment variable or volume mount. 
-Any update to secrets won't reflect automatically inside pods, until the pods are restarted. 
+[Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.
+When configuring a workload, you'll be able to choose which secrets to include. Like config maps, secrets can be referenced by workloads as either an environment variable or a volume mount.
+
+>**Note:** Any update to secrets won't reflect automatically inside pods, until the pods are restarted.
 
 ## Registries
 
-Registries are secrets too, but you'd want to use registries when you want rancher 2.0 to automatically set it under imagePullSecrets. 
+Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
 
-To pull the image from [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/), Kubernetes needs credentials. The imagePullSecrets field in the pod spec tells Kubernetes to pull these credentials from a secret. 
-
-Rancher 2.0 makes this process easy by automatically setting imagePullSecrets if you have added credentials as Registries before creating workload. Currently, credentials will be pulled automatically only if the workload is created via UI, not via kubectl. ([known enhancement](https://github.com/rancher/rancher/issues/13332#issuecomment-387163843))
-
+>**Note:** Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not kubectl.
