@@ -28,10 +28,8 @@ This command does the following to each node in the `cluster.yml`:
 
 - Remove the Kubernetes services deployed on it
 - Clean each host from the directories left by the services:
-  ```
   - /etc/kubernetes/ssl
   - /var/lib/etcd
   - /etc/cni
   - /opt/cni
   - /var/run/calico
-  ```
