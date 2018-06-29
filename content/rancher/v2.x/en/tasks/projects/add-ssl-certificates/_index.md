@@ -5,7 +5,7 @@ draft: true
 ---
 When you create an ingress within Rancher/Kubernetes, you must provide it with a TLS private key and certificate, which are used to encrypt and decrypt communications that come through the ingress. You can make certificates available for ingress use by navigating to its project or namespace, and then uploading the certificate.
 
-SSL certificates to either projects, namespaces, or both. A project scoped certificate will be available in all its namespaces.
+Add SSL certificates to either projects, namespaces, or both. A project scoped certificate will be available in all its namespaces.
 
 >**Prerequisites:** You must have a TLS private key and certificate available to upload.
 
@@ -19,9 +19,9 @@ SSL certificates to either projects, namespaces, or both. A project scoped certi
 
 1. Select the **Scope** of the certificate.
 
-    - **Available to all namespaces in this project:** The certificate is available for deployments to all namespaces in the project.
+    - **Available to all namespaces in this project:** The certificate is available for any deployment in any namespaces in the project.
 
-    - **Available to a single namespace:** The certificate is only available for deployments to one namespace. If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
+    - **Available to a single namespace:** The certificate is only available for the deployments in one namespace. If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
 
 1. From **Private Key**, either copy and paste your certificate's private key into the text box (include the header and footer), or click **Read from a file** to browse to the private key on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
