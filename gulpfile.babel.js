@@ -30,10 +30,6 @@ gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
 });
 
-gulp.task('dev:search', ['build-dev:search'], () => {
-  gulp.start('init-watch');
-});
-
 gulp.task('build', (cb) => {
   runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo',  () => {
     cb();
@@ -48,12 +44,6 @@ gulp.task('build-staging', (cb) => {
 
 gulp.task('build-dev', (cb) => {
   runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev', () => {
-    cb();
-  });
-});
-
-gulp.task('build-dev:search', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev',  () => {
     cb();
   });
 });

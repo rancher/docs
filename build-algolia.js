@@ -1,22 +1,26 @@
 #! /usr/bin/env node
 'use strict';
-const jsdom = require("jsdom");
+const jsdom         = require("jsdom");
 const {
   JSDOM
-} = jsdom;
-const md5 = require('md5');
-const atomicalgolia = require("atomic-algolia")
-const fs = require('fs');
-const indexName = "dev_docs"
+}                   = jsdom;
+const md5           = require('md5');
+const atomicalgolia = require("atomic-algolia");
+const fs            = require('fs');
+const indexName     = "dev_docs"
+const nue           = [];
+const { spawnSync } = require('child_process');
+
+spawnSync('gulp', ['build'], { stdio: 'inherit' });
+
 const rawdata = fs.readFileSync('public/algolia.json');
-const nodes = JSON.parse(rawdata);
-const nue = [];
+const nodes   = JSON.parse(rawdata);
 
 nodes.forEach(node => {
-  const dom = new JSDOM(node.content);
-  const content = dom.window.document.body; //post content wrapped in a body tag
+  const dom             = new JSDOM(node.content);
+  const content         = dom.window.document.body; //post content wrapped in a body tag
   const contentChildren = content.children; // all the children of the body tag
-  const paragraphOut = {
+  const paragraphOut    = {
     anchor: '#',
     title: '',
     content: '',
@@ -34,7 +38,7 @@ nodes.forEach(node => {
     if (child.tagName === "H2") {
       //this is our header
       paragraphOut.anchor = `#${child.id}`;
-      paragraphOut.title = child.textContent;
+      paragraphOut.title  = child.textContent;
 
       let next = child.nextElementSibling;
 
@@ -53,14 +57,14 @@ nodes.forEach(node => {
   // a post without headers
   if (paragraphOut.title === '') {
     // Set the title to the page title
-    paragraphOut.title = node.title;
+    paragraphOut.title   = node.title;
 
     // pass along the content
     paragraphOut.content = content.textContent;
   }
 
   // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
-  paragraphOut.content = paragraphOut.content.substr(0, 8000);
+  paragraphOut.content  = paragraphOut.content.substr(0, 8000);
 
   // objectID is not quite unique yet so hash the entire object
   paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
@@ -81,7 +85,7 @@ const merged = [...nodes, ...nue];
 // fs.writeFileSync('public/combined.algolia.json', JSON.stringify(merged));
 // process.exit(0);
 atomicalgolia(indexName, merged, (err, result) => {
-  if (err) throw err
+  if (err) throw err;
   console.log(result);
   process.exit(0);
 });
