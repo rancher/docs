@@ -111,7 +111,8 @@ Health checks can be executed on the `/healthz` endpoint of the node, this will 
 
 We have example configurations for the following load balancers:
 
-* [Amazon ALB]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/alb)
+* [Amazon ALB configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/alb)
+* [NGINX configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/nginx)
 
 ## 3. Configure DNS
 
