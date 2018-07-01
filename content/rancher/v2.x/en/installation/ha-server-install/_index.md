@@ -120,7 +120,7 @@ After installing NGINX, you need to update the NGINX config file, `nginx.conf`, 
     worker_rlimit_nofile 40000;
     
     # uncomment depending on your distribution:
-    #load_module /usr/lib/nginx/modules/ngx_stream_module.so;
+    #load_module /usr/lib64/nginx/modules/ngx_stream_module.so;
     #load_module /usr/lib/nginx/modules/ngx_stream_module.so;
 
     events {
