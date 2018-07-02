@@ -31,13 +31,13 @@ gulp.task('dev', ['build-dev'], () => {
 });
 
 gulp.task('build', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo',  () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo', 'build:search-index',  () => {
     cb();
   });
 });
 
 gulp.task('build-staging', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging', () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging', 'build:search-index', () => {
     cb();
   });
 });
@@ -164,4 +164,21 @@ gulp.task('cms-delete', () => {
 
 gulp.task('pub-delete', () => {
   return del(['public/**', '!public']);
+});
+
+
+gulp.task('build:search-index', (cb) => {
+  const env = process.env;
+
+  env.ALGOLIA_APP_ID = '30NEY6C9UY';
+  env.ALGOLIA_INDEX_NAME = isProduction ? 'prod_docs' : 'dev_docs';
+  env.ALGOLIA_INDEX_FILE = 'public/algolia.json';
+
+  const opts = {
+    stdio: 'inherit',
+    env: env
+  };
+  return spawn(process.cwd()+'/scripts/build-algolia.js', opts).on('close', (/* code */) => {
+    cb();
+  });
 });

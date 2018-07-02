@@ -9,23 +9,19 @@ const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
 const indexName     = "dev_docs"
 const nue           = [];
-const { spawnSync } = require('child_process');
-
-spawnSync('gulp', ['build'], { stdio: 'inherit' });
-
-const rawdata = fs.readFileSync('public/algolia.json');
-const nodes   = JSON.parse(rawdata);
+const rawdata       = fs.readFileSync('public/algolia.json');
+const nodes         = JSON.parse(rawdata);
 
 nodes.forEach(node => {
   const dom             = new JSDOM(node.content);
   const content         = dom.window.document.body; //post content wrapped in a body tag
   const contentChildren = content.children; // all the children of the body tag
   const paragraphOut    = {
-    anchor: '#',
-    title: '',
-    content: '',
-    postref: node.objectID,
-    objectID: md5(node.permalink),
+    anchor:    '#',
+    title:     '',
+    content:   '',
+    postref:   node.objectID,
+    objectID:  md5(node.permalink),
     permalink: node.permalink
   };
 
