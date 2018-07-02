@@ -1,41 +1,8 @@
 ---
-title: Projects
-weight: 3650
+title: Using Registries
+weight: 
 draft: true
 ---
-<<<<<<< HEAD
-_Projects_ are a new feature in Rancher that allows you to group namespaces. Users can be added as members to the project, and the project owner can assign roles to each member to control their project access.
-=======
-Coming Soon
-
-## Creating a Project
-
-Coming Soon
-
-## Switching Projects
-
-Coming Soon
-
-## Adding / Managing Project Members
-
-Coming Soon
-
-## Adding SSL Certificates
-
-Coming Soon
-
-## Adding Configuration Maps
-
-Coming Soon
-
-## Enabling Project Logging
-
-Coming Soon
-
-## Adding Project Alerts
-
-Coming Soon
-
 ## Using Private Registries
 Private registries allow us to have repositories to hold containers that need to be private.
 Private registries can be added in the UI and images in the registry can be used
@@ -107,14 +74,3 @@ c. Click on 'Environment variables' and 'add from source'
 d. Choose the type secret, source and keys. All keys or specific keys can be chosen   
 e. Prefix or alias can also be provided   
 g. Launch the workload   
-
-
-## Launching a Catalog App
-
-Coming Soon
-
-## Creating a Pod Security Policy
-
-Coming Soon
-
->>>>>>> 9b373cd6be3f10cc20618d77e14258158203f9fc
