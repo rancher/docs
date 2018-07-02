@@ -4,7 +4,7 @@ weight:
 draft: true
 ---
 
-ConfigMaps store general configuration information for an application, such as a group of config files. ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. Add ConfigMaps to your Rancher workspaces so that you can add them to your workloads later. For more information on ConfigMaps, see the official [Kubernetes Documentation: Using ConfigMap](https://kubernetes-v1-4.github.io/docs/user-guide/configmap/).
+ConfigMaps store general configuration information for an application, such as configuration files, command-line arguments, environment variables, etc. ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. Add ConfigMaps to your Rancher workspaces so that you can add them to your workloads later. For more information on ConfigMaps, see the official [Kubernetes Documentation: Using ConfigMap](https://kubernetes-v1-4.github.io/docs/user-guide/configmap/).
 
 >**Note:** ConfigMaps can only be applied to namespaces and not projects.
 
@@ -22,9 +22,13 @@ ConfigMaps store general configuration information for an application, such as a
 
 1. From **Config Map Values**, click **Add Config Map Value** to add a key value pair to your ConfigMap. Add as many values as you need.
 
+	
+	>**Note:** Don't use ConfigMaps to store sensitive data.
+	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
 	> ![Bulk Key Value Pair Copy/Paste]({{< baseurl >}}/img/rancher/bulk-key-values.gif)
+	
 
 **Result:** Your ConfigMap is added to the namespace. You can view it in the Rancher UI from the **Resources > Config Maps** view.
 
