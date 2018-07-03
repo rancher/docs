@@ -19,6 +19,9 @@ const isProduction = process.env.NODE_ENV === 'production';
 const onError      = (err) => {
   console.log(err);
 }
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+console.log(process.env)
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 
 process.on('SIGINT', () => {
   console.log('Caught SIGINT, exiting');
