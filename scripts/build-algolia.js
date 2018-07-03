@@ -7,7 +7,8 @@ const {
 const md5           = require('md5');
 const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
-const indexName     = "dev_docs"
+const isProduction = process.env.NODE_ENV === 'production';
+const indexName     = isProduction ? "prod_docs" : "dev_docs";
 const nue           = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
