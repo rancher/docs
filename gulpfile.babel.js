@@ -168,7 +168,12 @@ gulp.task('pub-delete', () => {
 
 
 gulp.task('build:search-index', (cb) => {
-  const opts = {stdio: 'inherit'};
+  const env = process.env;
+
+  const opts = {
+    stdio: 'inherit',
+    env: env
+  };
   return spawn(process.cwd()+'/scripts/build-algolia.js', opts).on('close', (/* code */) => {
     cb();
   });
