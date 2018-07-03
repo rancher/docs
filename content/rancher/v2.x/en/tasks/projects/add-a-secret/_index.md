@@ -7,9 +7,9 @@ draft: true
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.
 When creating a secret, you can make it available for any deployment within a project, or you can limit it to a single namespace.
 
-1. From the **Global** view, select the project or project containing the namespace that you want to add a secret to.
+1. From the **Global** view, select the project containing the namespace(s) where you want to add a secret.
 
-1. From the main menu, select **Resources > Secret**. Click **Add Secret**.
+1. From the main menu, select **Resources > Secrets**. Click **Add Secret**.
 
 1. Enter a **Name** for the secret.
 
