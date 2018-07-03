@@ -13,6 +13,7 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
 >- This procedure demonstrates how to setup an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
 
 1. Using a remote Terminal connection, log into the Ubuntu server that you intend to use for NFS storage.
@@ -74,57 +75,61 @@ Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persist
 >- If using a firewall and NFSv4, open port 2049.
 >
 >- 
+=======
+>**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
+>>>>>>> incorporating content about standing up an NFS server
 
-3 node cluster call
+1. Using a remote Terminal connection, log into the Ubuntu server that you intend to use for NFS storage.
 
-To simplify the process of managing firewall rules, you should use **NFSv4**.
+1. Enter the following command:
 
-**Note:** if using a firewall, make sure to allow port **2049** for NFSv4.
+    ```
+    sudo apt-get install nfs-kernel-server
+    ```
 
-For other versions of NFS, you will most likely need to allow 111, 2049, and
-other ports.
+1. Enter the command below, which sets the directory used for storage, along with user access rights. Modify the command if you'd like to keep storage at a different directory.
 
-To examine the ports beings used by NFS, execute the following command:
+    ```
+    mkdir -p /nfs && chown nobody:nogroup /nfs
+    ```
+    - The `-p /nfs` parameter creates a directory named `nfs` at root.
+    - The `chown nobody:nogroup /nfs` parameter allows allcess to the storage directory.
 
-```
-rpcinfo -p | grep nfs
-```
+1. Create an NFS exports table. This table sets the directory paths on your NFS server that are exposed to the nodes that will use the server for storage.
 
-To install NFS server, execute the following command:
+    1. Open `/etc/exports`.
+    1. Add the path of the `/nfs` folder that you created in step 3, along with the IP addresses of your cluster nodes. An an entry for each IP address in your cluster. Follow each address and its accompanying parameters with a single space that is a delimiter.
 
-```
-sudo apt-get install nfs-kernel-server
-```
+        ```
+        /nfs <IP_ADDRESS1>(rw,sync,no_subtree_check) <IP_ADDRESS2>(rw,sync,no_subtree_check) <IP_ADDRESS3>(rw,sync,no_subtree_check)
+        ```
 
-As a simple example, a **/nfs** directory will be created in the **root** of
-the host. To permit access to the directory, the **nobody:nogroup** owner and
-group will be used.
+        **Tip:**  You can replace the IP Addresses with a subnet. For example: `10.212.50.12&#47;24`
 
-```
-mkdir -p /nfs && chown nobody:nogroup /nfs
-```
+    1. Update the NFS table by entering the following command:
 
-The final step is to create the NFS exports table. This is where you specify the
-paths on the host that you would like to expose to NFS clients.
+        ```
+        exportfs -ra
+        ```
 
-Edit the **/etc/exports** file and add the the **/nfs** directory. In this
-specific example I have allowed all 3 nodes to connect to the share.
+1. Open the ports used by NFS.
 
-**Note:**  You can replace the 3 nodes with a subnet such as **10.212.50.12&#47;24**
+    1. To find out what ports NFS is using, enter the following command:
 
-```
-/nfs 159.89.139.111(rw,sync,no_subtree_check) \
-  159.65.102.218(rw,sync,no_subtree_check) \
-  159.65.102.232(rw,sync,no_subtree_check)
-```
+        ```
+        rpcinfo -p | grep nfs
+        ```
+    2. Open the ports that the previous command outputs.
 
-Make sure that all entries are in one line followed by a space as the delimiter.
-To make my example more readable, I seperated into multiple lines. In the actual
-**/etc/exports** file this will not work.
+**Result:** Your NFS server is configured to be used for storage with your Rancher nodes.
 
-Update the NFS table by issuing the following commad:
+## What's Next?
 
+<<<<<<< HEAD
 ```
 exportfs -ra
 ```
 >>>>>>> updating storage docs
+=======
+Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persistent-volume) and/or [storage class](../../#adding-storage-classes). After adding the server, you can use it for storage for your deployments.
+>>>>>>> incorporating content about standing up an NFS server
