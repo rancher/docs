@@ -87,7 +87,7 @@ if [ -z "$BUILD_BUILD" ]; then
   docker pull ${IMAGE}:build
 else
   echo "Building ${IMAGE}:build"
-  docker build -f Dockerfile.build -t ${IMAGE}:build .
+  docker build --no-cache -f Dockerfile.build -t ${IMAGE}:build .
   if [[ "$UPLOAD" ]]; then
   docker push ${IMAGE}:build
   fi
