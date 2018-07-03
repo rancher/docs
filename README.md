@@ -14,7 +14,3 @@ and then navigate to http://localhost:9001/.  You can customize the port by pass
 ```bash
   ./scripts/dev 8080
 ```
-
-## Building distribution image
-
-
