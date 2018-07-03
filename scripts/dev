@@ -83,6 +83,7 @@ if [[ "$THEME" ]]; then
 fi
 
 if [ -z "$BUILD_BUILD" ]; then
+  echo "Pulling ${IMAGE}:build"
   docker pull ${IMAGE}:build
 else
   echo "Building ${IMAGE}:build"
@@ -93,6 +94,7 @@ else
 fi
 
 if [ -z "$BUILD_DEV" ]; then
+  echo "Pulling ${IMAGE}:${TAG}"
   docker pull ${IMAGE}:${TAG}
 else
   TAG=local
