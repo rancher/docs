@@ -56,7 +56,7 @@ pipeline:
     tag: latest
     secrets: [docker_username, docker_password, algolia_app_id, algolia_admin_key]
     environment:
-      - ALGOLIA_INDEX_NAME="dev_docs"
+      - ALGOLIA_INDEX_NAME="prod_docs"
       - ALGOLIA_INDEX_FILE="public/algolia.json"
     build_args_from_env:
       - ALGOLIA_APP_ID
