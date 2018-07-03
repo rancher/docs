@@ -18,7 +18,13 @@ pipeline:
     repo: rancher/docs
     context: .
     tag: dev
-    secrets: [docker_username, docker_password]
+    secrets: [docker_username, docker_password, algolia_app_id, algolia_admin_key]
+    environment:
+      - ALGOLIA_INDEX_NAME="dev_docs"
+      - ALGOLIA_INDEX_FILE="public/algolia.json"
+    build_args_from_env:
+      - ALGOLIA_APP_ID
+      - ALGOLIA_ADMIN_KEY
     when:
       branch: master
       event: push
@@ -30,7 +36,13 @@ pipeline:
     repo: rancher/docs
     context: .
     tag: staging
-    secrets: [docker_username, docker_password]
+    secrets: [docker_username, docker_password, algolia_app_id, algolia_admin_key]
+    environment:
+      - ALGOLIA_INDEX_NAME="dev_docs"
+      - ALGOLIA_INDEX_FILE="public/algolia.json"
+    build_args_from_env:
+      - ALGOLIA_APP_ID
+      - ALGOLIA_ADMIN_KEY
     when:
       branch: master
       event: push
@@ -42,7 +54,13 @@ pipeline:
     repo: rancher/docs
     context: .
     tag: latest
-    secrets: [docker_username, docker_password]
+    secrets: [docker_username, docker_password, algolia_app_id, algolia_admin_key]
+    environment:
+      - ALGOLIA_INDEX_NAME="dev_docs"
+      - ALGOLIA_INDEX_FILE="public/algolia.json"
+    build_args_from_env:
+      - ALGOLIA_APP_ID
+      - ALGOLIA_ADMIN_KEY
     when:
       branch: master
       event: push
