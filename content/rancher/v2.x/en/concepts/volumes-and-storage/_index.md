@@ -15,10 +15,14 @@ Rancher allows you to create PVs at cluster level and bind them to PVCs later. V
 ## Storage Classes
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
 =======
 Storage classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage class will dynamically create EBS volumes and bind them to PVCs. A storage class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
 >>>>>>> minor changes
+=======
+Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
+>>>>>>> adding docs on how to provision nfs storage
 
 ![Storage Classes]({{< baseurl >}}/img/rancher/storage-classes.png)
 

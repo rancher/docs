@@ -31,6 +31,7 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
     ```
     - The `-p /nfs` parameter creates a directory named `nfs` at root.
     - The `chown nobody:nogroup /nfs` parameter allows all access to the storage directory.
+<<<<<<< HEAD
 
 1. Create an NFS exports table. This table sets the directory paths on your NFS server that are exposed to the nodes that will use the server for storage.
 
@@ -94,17 +95,19 @@ Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persist
     ```
     - The `-p /nfs` parameter creates a directory named `nfs` at root.
     - The `chown nobody:nogroup /nfs` parameter allows allcess to the storage directory.
+=======
+>>>>>>> adding docs on how to provision nfs storage
 
 1. Create an NFS exports table. This table sets the directory paths on your NFS server that are exposed to the nodes that will use the server for storage.
 
-    1. Open `/etc/exports`.
-    1. Add the path of the `/nfs` folder that you created in step 3, along with the IP addresses of your cluster nodes. An an entry for each IP address in your cluster. Follow each address and its accompanying parameters with a single space that is a delimiter.
+    1. Open `/etc/exports` using your text editor of choice.
+    1. Add the path of the `/nfs` folder that you created in step 3, along with the IP addresses of your cluster nodes. Add an entry for each IP address in your cluster. Follow each address and its accompanying parameters with a single space that is a delimiter.
 
         ```
         /nfs <IP_ADDRESS1>(rw,sync,no_subtree_check) <IP_ADDRESS2>(rw,sync,no_subtree_check) <IP_ADDRESS3>(rw,sync,no_subtree_check)
         ```
 
-        **Tip:**  You can replace the IP Addresses with a subnet. For example: `10.212.50.12&#47;24`
+        **Tip:**  You can replace the IP addresses with a subnet. For example: `10.212.50.12&#47;24`
 
     1. Update the NFS table by entering the following command:
 
@@ -119,7 +122,11 @@ Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persist
         ```
         rpcinfo -p | grep nfs
         ```
-    2. Open the ports that the previous command outputs.
+    2. [Open the ports](https://help.ubuntu.com/lts/serverguide/firewall.html.en) that the previous command outputs. For example, the following command opens port 2049:
+
+        ```
+        sudo ufw allow 2049
+        ```
 
 **Result:** Your NFS server is configured to be used for storage with your Rancher nodes.
 

@@ -9,13 +9,17 @@ draft: true
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Rancher allows the user to create Persistent volumes at the cluster level as well as Storage Classes for different cloud provisioners including Amazon EBS and Azure Disks.
 >>>>>>> Adding storage task
 
+=======
+>>>>>>> adding docs on how to provision nfs storage
 >**Prerequisites:** 
 >
 >- Working with storage requires the `Manage Volumes` [role](../../../concepts/global-configuration/users-permissions-roles/#project-role-reference).
 >- You must have a storage medium provisioned. For more information, see [Provisioning Storage](provisioning-storage).
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 ## Adding a Persistent Volume
@@ -128,6 +132,8 @@ In This Document:
 <!-- /TOC -->
 
 >**Prerequisite:** Completion of all tasks on this page require the `Manage Volumes` [role](../../../concepts/global-configuration/users-permissions-roles/#project-role-reference).
+=======
+>>>>>>> adding docs on how to provision nfs storage
 
 ## Adding a Persistent Volume
 
@@ -150,7 +156,10 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 1. Select the **Volume Plugin** for the disk type or service that you're using.
 
-  >**Note:** You can only use the `Amazon EBS Disk` volume plugin in an Amazon EKS or Amazon EC2 cluster.
+  >**Note:** If the cluster you are adding storage for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+  
+      1. You must enable the `cloud provider` option for the EC2 cluster.
+      2. You must use the `Amazon EBS Disk` volume plugin.
 
 1. Enter the **Capacity** of your volume in gigabytes.
 
@@ -168,15 +177,13 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
     - **Assign to Storage Class:**
 
-         If you later want to automatically provision persistent volumes identical to the volume that you've specified here, assign it a storage class. Later, when you create a workload that includes persistent volume claims, Rancher automatically provisions a persistent volume for each container with a claim.
+         If you later want to automatically provision persistent volumes identical to the volume that you've specified here, assign it a storage class. Later, when you create a workload, you can assign it a persistent volume claim that references the storage class, which will provision a persistent volume identical to the volume you've specified here.
 
          >**Note:** You must [add a storage class](#adding-storage-classes) before you can assign it to a persistent volume.
 
 1. Click **Save**.
 
 **Result:** Your new persistent volume is created.
-
-For example, this volume is a _hostPath_ volume in Kubernetes:
 
 ## Adding Storage Classes
 
@@ -189,6 +196,12 @@ _Storage Classes_ allow you to dynamically provision persistent volumes on deman
 1. Enter a `Name` for your storage class.
 
 1. From the `Provisioner` drop-down, select the service that you want to use to dynamically provision storage volumes.
+
+  >**Note:** If the cluster you are adding a storage class for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+  
+      1. You must enable the `cloud provider` option for the EC2 cluster.
+      2. You must use the `Amazon EBS Disk` provisioner.
+
 
 1. From the `Parameters` section, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
 

@@ -2,6 +2,7 @@
 title: Users, Global Permissions, and Roles
 weight: 15
 ---
+<<<<<<< HEAD
 In This Document:
 
 <!-- TOC -->
@@ -24,6 +25,8 @@ In This Document:
 
 <!-- /TOC -->
 
+=======
+>>>>>>> adding docs on how to provision nfs storage
 
 Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication), users can either be local or external.
 
