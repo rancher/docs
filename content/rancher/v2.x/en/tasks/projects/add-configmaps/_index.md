@@ -10,13 +10,11 @@ ConfigMaps store general configuration information for an application, such as c
 
 1. From the **Global** view, select the project containing the namespace that you want to add a ConfigMap to.
 
-1. From the main menu, select **Resources > Certificates**. Click **Add Certificate**.
+1. From the main menu, select **Resources > Config Maps**. Click **Add Config Map**.
 
-1. Enter a **Name** for the certificate.
+1. Enter a **Name** for the Config Map.
 
     >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, ConfigMaps, registries, and secrets within your workspace.
-
-1. Click on **Add Config Map** option and give it a name.
 
 1. Select the **Namespace** you want to add Config Map to. You can also add a new namespace on the fly by clicking **Add to a new namespace**.
 
