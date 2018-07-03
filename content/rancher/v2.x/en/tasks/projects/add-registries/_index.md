@@ -10,9 +10,9 @@ Registries are secrets containing credentials used to authenticate with [private
 
 >**Note:** Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not kubectl.
 
-1. From the **Global** view, select the project or project containing the namespace that you want to add a secret to.
+1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
 
-1. From the main menu, select **Resources > Registry**. Click **Add Registry**.
+1. From the main menu, select **Resources > Registries**. Click **Add Registry**.
 
 1. Enter a **Name** for the registry.
 
@@ -24,8 +24,7 @@ Registries are secrets containing credentials used to authenticate with [private
 
 1. Click **Save**.
 	
-
-**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Registry** view.
+**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Registries** view.
 
 ## What's Next?
 
