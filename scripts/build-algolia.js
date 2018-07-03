@@ -11,6 +11,9 @@ const nue           = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
 
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+console.log(process.env)
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 nodes.forEach(node => {
   const dom             = new JSDOM(node.content);
   const content         = dom.window.document.body; //post content wrapped in a body tag
