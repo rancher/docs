@@ -23,7 +23,7 @@ ConfigMaps store general configuration information for an application, such as c
 1. From **Config Map Values**, click **Add Config Map Value** to add a key value pair to your ConfigMap. Add as many values as you need.
 
 	
-	>**Note:** Don't use ConfigMaps to store sensitive data.
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret](../add-a-secret).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
