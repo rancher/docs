@@ -20,13 +20,13 @@ ConfigMaps store general configuration information for an application, such as c
 
 1. From **Config Map Values**, click **Add Config Map Value** to add a key value pair to your ConfigMap. Add as many values as you need.
 
-	
+1. Click **Save**.
+
 	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret](../add-a-secret).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
 	> ![Bulk Key Value Pair Copy/Paste]({{< baseurl >}}/img/rancher/bulk-key-values.gif)
-	
 
 **Result:** Your ConfigMap is added to the namespace. You can view it in the Rancher UI from the **Resources > Config Maps** view.
 
