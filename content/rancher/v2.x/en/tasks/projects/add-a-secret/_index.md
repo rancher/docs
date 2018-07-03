@@ -15,7 +15,7 @@ When creating a secret, you can make it available for any deployment within a pr
 
     >**Note:** Kubernetes classifies secrets, certificates, ConfigMaps, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your secret must have a unique name among all secrets within your workspace.
 
-1. Select a **Scope** for the secret. 
+1. Select a **Scope** for the secret.
 
 1. From **Secret Values**, click **Add Secret Value** to add a key value pair. Add as many values as you need.
 
