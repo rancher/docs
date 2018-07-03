@@ -22,9 +22,15 @@ Deploy a workload to run an application in one or more containers.
 1. Configure the remaining options:
 
     - **Environment Variables**
+
+        Use this section to either specify environment variables for your workload to consume on the fly, or to pull them from another source, such as a secret or [ConfigMap](../../projects/add-configmaps).
+
     - **Node Scheduling**
     - **Health Check** 
-    - **Volumes** 
+    - **Volumes**
+
+        Use this section to add storage for your workload. You can manually specify the volume that you want to add, use a persistent volume claim to dynamically create a volume for the workload, or read data for a volume to use from a file such as a [ConfigMap](../../projects/add-configmaps).
+
     - **Scaling/Upgrade Policy**
 
 1. Click **Show Advanced Options** and configure:

@@ -24,6 +24,7 @@ The structure of the addons definition in `rancher-cluster.yml` is wrong. In the
 <ul>
 <li>Is each of the base64 encoded certificate string placed directly after the key, for example: `tls.crt: LS01...`, there should be no newline/space before, in between or after.</li>
 <li>Is the YAML properly formatted, each indentation should be 2 spaces as shown in the template files.</li>
+<li>Verify the integrity of your certificate by running this command `cat MyCertificate | base64 -d` on Linux, `cat MyCertificate | base64 -D` on Mac OS . If any error exists, the command output will tell you.
 </ul>
 </ul>
 

@@ -17,6 +17,42 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 -----END CERTIFICATE-----
 </pre>
 
+<p><strong>PEM Certificate Key Example:</strong></p>
+
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+-----BEGIN RSA PRIVATE KEY-----
+MIIGVDCCBDygAwIBAgIJAMiIrEm29kRLMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV
+... more lines
+VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
+-----END RSA PRIVATE KEY-----
+</pre>
+
+<p>If your key looks like the example below, see <a href="#convert-pkcs8">How Can I Convert My Certificate Key From PKCS8 to PKCS1?</a><p>
+
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+-----BEGIN PRIVATE KEY-----
+MIIGVDCCBDygAwIBAgIJAMiIrEm29kRLMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV
+... more lines
+VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
+-----END PRIVATE KEY-----
+</pre>
+
+<h3 id="convert-pkcs8">How Can I Convert My Certificate Key From PKCS8 to PKCS1?</h3>
+
+<p>If you are using a PKCS8 certificate key file, Rancher will log the following line:</p>
+
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+ListenConfigController cli-config [listener] failed with : failed to read private key: asn1: structure error: tags don't match (2 vs {class:0 tag:16 length:13 isCompound:true})
+</pre>
+
+<p>To make this work, you will need to convert the key from PKCS8 to PKCS1 using the command below:</p>
+
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+openssl rsa -in key.pem -out convertedkey.pem
+</pre>
+
+<p>You can now use <code>convertedkey.pem</code> as certificate key file for Rancher.</p>
+
 <h3 id="cert-order">What is the Order of Certificates if I Want to Add My Intermediate(s)?</h3>
 
 <p>The order of adding certificates is as follows:</p>

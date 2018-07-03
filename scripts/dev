@@ -5,7 +5,9 @@ PORT=9001
 IMAGE=rancher/docs
 TAG=dev
 THEME=
-BUILD=
+BUILD_BUILD=
+BUILD_DEV=
+UPLOAD=
 
 # cd to app root
 CWD=$(dirname $0)
@@ -20,11 +22,13 @@ print_help()
   cat 1>&2 <<EOF
 Usage:
 
-[-n] [-p PORT] [-t]
+[-b [-u]] [-d] [-p PORT] [-t]
 
--b      - Build the image instead of pulling from the registry
+-b      - Build the build & dev images instead of pulling from the registry
+-d      - Build the dev image instead of pulling from the registry
 -p PORT - Port to listen on
 -t DIR  - Use DIR to for the theme, to devlop the theme at the same time
+-u      - Upload tbe build image after building
 
 EOF
 }
@@ -40,16 +44,23 @@ absolute() {
 }
 
 
-while getopts ":bp:t:" opt;do
+while getopts ":bdp:t:u" opt;do
   case $opt in
   b)
-    BUILD="true"
+    BUILD_BUILD="true"
+    BUILD_DEV="true"
+    ;;
+  d)
+    BUILD_DEV="true"
     ;;
   p)
     PORT="${OPTARG}"
     ;;
   t)
     THEME="${OPTARG}"
+    ;;
+  u)
+    UPLOAD="true"
     ;;
   \?)
     echoerr "Invalid arguemnts"
@@ -71,11 +82,21 @@ if [[ "$THEME" ]]; then
   THEMEVOLUME="-v ${ABSOLUTE}:/run/node_modules/rancher-website-theme"
 fi
 
-if [ -z "$BUILD" ]; then
+if [ -z "$BUILD_BUILD" ]; then
+  docker pull ${IMAGE}:build
+else
+  echo "Building ${IMAGE}:build"
+  docker build -f Dockerfile.build -t ${IMAGE}:build .
+  if [[ "$UPLOAD" ]]; then
+  docker push ${IMAGE}:build
+  fi
+fi
+
+if [ -z "$BUILD_DEV" ]; then
   docker pull ${IMAGE}:${TAG}
 else
-  echo "Building ${IMAGE}:${TAG}"
   TAG=local
+  echo "Building ${IMAGE}:${TAG}"
   docker build -f Dockerfile.dev -t ${IMAGE}:${TAG} .
 fi
 
