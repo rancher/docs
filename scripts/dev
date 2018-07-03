@@ -83,16 +83,18 @@ if [[ "$THEME" ]]; then
 fi
 
 if [ -z "$BUILD_BUILD" ]; then
+  echo "Pulling ${IMAGE}:build"
   docker pull ${IMAGE}:build
 else
   echo "Building ${IMAGE}:build"
-  docker build -f Dockerfile.build -t ${IMAGE}:build .
+  docker build --no-cache -f Dockerfile.build -t ${IMAGE}:build .
   if [[ "$UPLOAD" ]]; then
   docker push ${IMAGE}:build
   fi
 fi
 
 if [ -z "$BUILD_DEV" ]; then
+  echo "Pulling ${IMAGE}:${TAG}"
   docker pull ${IMAGE}:${TAG}
 else
   TAG=local
