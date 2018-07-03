@@ -168,16 +168,7 @@ gulp.task('pub-delete', () => {
 
 
 gulp.task('build:search-index', (cb) => {
-  const env = process.env;
-
-  env.ALGOLIA_APP_ID = '30NEY6C9UY';
-  env.ALGOLIA_INDEX_NAME = isProduction ? 'prod_docs' : 'dev_docs';
-  env.ALGOLIA_INDEX_FILE = 'public/algolia.json';
-
-  const opts = {
-    stdio: 'inherit',
-    env: env
-  };
+  const opts = {stdio: 'inherit'};
   return spawn(process.cwd()+'/scripts/build-algolia.js', opts).on('close', (/* code */) => {
     cb();
   });

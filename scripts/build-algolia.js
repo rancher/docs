@@ -7,8 +7,6 @@ const {
 const md5           = require('md5');
 const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
-const isProduction = process.env.NODE_ENV === 'production';
-const indexName     = isProduction ? "prod_docs" : "dev_docs";
 const nue           = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
@@ -84,7 +82,7 @@ const merged = [...nodes, ...nue];
 
 // fs.writeFileSync('public/combined.algolia.json', JSON.stringify(merged));
 // process.exit(0);
-atomicalgolia(indexName, merged, (err, result) => {
+atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
   if (err) throw err;
   console.log(result);
   process.exit(0);
