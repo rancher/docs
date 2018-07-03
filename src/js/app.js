@@ -9,6 +9,12 @@ const bootstrapDocsSearch = function() {
     apiKey: 'b7f43c16886fec97b87981e9e62ef1a5',
     indexName: window.location.host === 'rancher.com' ? 'prod_docs' : 'dev_docs',
     routing: true,
+    searchFunction: function(helper) {
+      if (helper.state.query === "") {
+        return;
+      }
+      helper.search();
+    }
   });
 
   search.addWidget(

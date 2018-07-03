@@ -7,8 +7,6 @@ const {
 const md5           = require('md5');
 const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
-const isProduction = process.env.NODE_ENV === 'production';
-const indexName     = isProduction ? "prod_docs" : "dev_docs";
 const nue           = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
@@ -22,7 +20,7 @@ nodes.forEach(node => {
     title:     '',
     content:   '',
     postref:   node.objectID,
-    objectID:  md5(node.permalink),
+    objectID: null,
     permalink: node.permalink
   };
 
@@ -60,14 +58,17 @@ nodes.forEach(node => {
     paragraphOut.content = content.textContent;
   }
 
-  // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
-  paragraphOut.content  = paragraphOut.content.substr(0, 8000);
+  if (paragraphOut.content) {
+    // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
+    paragraphOut.content  = paragraphOut.content.substr(0, 18000);
 
-  // objectID is not quite unique yet so hash the entire object
-  paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
+    // objectID is not quite unique yet so hash the entire object
+    paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
 
 
-  nue.push(paragraphOut);
+    nue.push(paragraphOut);
+  }
+
 
   // remove potentially large content (see size limits) and replace with teh summary so that we don't get results with zero highlightable results
   node.content = node.summary;
@@ -81,7 +82,7 @@ const merged = [...nodes, ...nue];
 
 // fs.writeFileSync('public/combined.algolia.json', JSON.stringify(merged));
 // process.exit(0);
-atomicalgolia(indexName, merged, (err, result) => {
+atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
   if (err) throw err;
   console.log(result);
   process.exit(0);
