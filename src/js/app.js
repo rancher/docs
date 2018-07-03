@@ -7,7 +7,7 @@ const bootstrapDocsSearch = function() {
   const search = instantsearch({
     appId: '30NEY6C9UY',
     apiKey: 'b7f43c16886fec97b87981e9e62ef1a5',
-    indexName: 'dev_docs',
+    indexName: window.location.host === 'rancher.com' ? 'prod_docs' : 'dev_docs',
     routing: true,
   });
 
