@@ -22,7 +22,7 @@ nodes.forEach(node => {
     title:     '',
     content:   '',
     postref:   node.objectID,
-    objectID:  md5(node.permalink),
+    objectID: null,
     permalink: node.permalink
   };
 
@@ -60,14 +60,17 @@ nodes.forEach(node => {
     paragraphOut.content = content.textContent;
   }
 
-  // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
-  paragraphOut.content  = paragraphOut.content.substr(0, 8000);
+  if (paragraphOut.content) {
+    // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
+    paragraphOut.content  = paragraphOut.content.substr(0, 18000);
 
-  // objectID is not quite unique yet so hash the entire object
-  paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
+    // objectID is not quite unique yet so hash the entire object
+    paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
 
 
-  nue.push(paragraphOut);
+    nue.push(paragraphOut);
+  }
+
 
   // remove potentially large content (see size limits) and replace with teh summary so that we don't get results with zero highlightable results
   node.content = node.summary;
