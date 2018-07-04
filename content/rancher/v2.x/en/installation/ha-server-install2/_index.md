@@ -1,13 +1,12 @@
 ---
-title: High Availability Installation 2
+title: High Availability Installation
 weight: 275
 draft: true
 ---
-This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
-- Layer 4 load balancer (TCP)
-- NGINX ingress controller with SSL termination (HTTPS)
+When installed as a Deployment in a Kubernetes cluster, Rancher will take integrate with the cluster's etcd database and Kubernetes scheduling for High-Availability.
 
+<<<<<<< HEAD
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
 ## Installation Outline
@@ -187,13 +186,20 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
     ```
 
 <br/>
+=======
+This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart the Helm package manager.
+>>>>>>> helm install draft
 
-## 4. Download RKE
+> NOTE: For the best performance, we recommend this Kubernetes cluster be dedicated only the Rancher workload.
 
-RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will be using RKE to setup our cluster and run Rancher.
+## Recommended Architecture
 
-1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System:
+* DNS for Rancher should resolve to a Layer 4 Load Balancer
+* The Load Balancer should forward ports 80 and 443 TCP to all 3 nodes in the Kubernetes cluster.
+* The ingress controller will redirect http port 80 to https and terminate SSL/TLS on port 443.
+* The ingress controller will forward traffic to port 80 on the Pod in the Rancher Deployment.
 
+<<<<<<< HEAD
     - **MacOS**: `rke_darwin-amd64`
     - **Linux**: `rke_linux-amd64`
     - **Windows**: `rke_windows-amd64.exe`
@@ -445,14 +451,27 @@ By default, Rancher automatically generates self-signed certificates for itself 
 3. Choose `Edit` and remove the contents. Then click `Save`.
 
 ## What's Next?
+=======
+![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
+>>>>>>> helm install draft
 
-You have a couple of options:
+## Required Tools
 
+<<<<<<< HEAD
 - Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+=======
+The following CLI tools are required for this install. Please make sure these tools installed and available in your `$PATH`
+>>>>>>> helm install draft
 
-<br/>
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+* [rke]({{< baseurl >}}docs/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
 
-## FAQ and Troubleshooting
+## Installation Outline
 
-{{< ssl_faq_ha >}}
+1. [Provision Nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/nodes/)
+1. [Configure Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/loadbalancer/)
+1. [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rke/)
+1. [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/helm/)
+1. [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/)
