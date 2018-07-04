@@ -5,7 +5,7 @@ weight: 276
 
 `helm` is the package management tool of choice for Kubernetes. `helm` `charts` provide templating syntax for Kubernetes YAML manifest documents. With `helm` we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/)
 
-## Initialize Helm on your Cluster
+### Initialize Helm on your Cluster
 
 `helm` installs the `tiller` service on your cluster to manage `chart` deployments. Since `rke` has RBAC enabled by default we will need to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so `tiller` can deploy to our cluster for us.
 
