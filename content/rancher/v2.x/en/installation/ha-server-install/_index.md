@@ -236,18 +236,22 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 2. Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts).
 
-    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`.
+    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
+
+    >**Note:**
+    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+
 
 ```
 nodes:
+    # The IP address or hostname of the node
   - address: IP_ADDRESS_1
-    # THE IP ADDRESS OR HOSTNAME OF THE NODE
+    # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
+    # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
 	user: USER
-    # USER WITH ADMIN ACCESS. USUALLY `root`
 	role: [controlplane,etcd,worker]
+    # Path the SSH key that can be used to access to node with the specified user
 	ssh_key_path: ~/.ssh/id_rsa
-    # PATH TO SSH KEY THAT AUTHENTICATES ON YOUR WORKSTATION
-    # USUALLY THE VALUE ABOVE
   - address: IP_ADDRESS_2
 	user: USER
 	role: [controlplane,etcd,worker]
@@ -426,7 +430,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
-- Create a Kubernetes cluster: [Creating a Cluster]({{ < baseurl > }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+- Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
 
