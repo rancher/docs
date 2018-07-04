@@ -141,7 +141,7 @@ You can repeat for each pod to see that the files are being updated
 ## Reference
 
 For more information on persistent volumes and NFS you can checkout the following
-references listed bellow.
+references listed below.
 
 - [Kubernetes -> Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 - [man -> exports(5)](http://man7.org/linux/man-pages/man5/exports.5.html)
