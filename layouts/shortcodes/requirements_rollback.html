@@ -8,5 +8,8 @@
             <p><code>rancher-cluster.yml</code></p>
             <p>You'll need the RKE config file that you used for Rancher install, <code>rancher-cluster.yml</code>. You created this file during your initial install. Place this file in same directory as the RKE binary.</p>
         </li>
+        <li>
+            You must restore each of your <code>etcd</code> nodes to the <i>same</i> snapshot. Copy the snapshot you're using from one of your nodes to the others before running the <code>etcd snapshot-restore</code> command.
+        </li>
     </ul>
 </div>
