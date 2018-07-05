@@ -20,4 +20,29 @@ Storage Classes allow you to create PVCs dynamically without having to create PV
 
 ### Storage and Cloud Providers
 
-Kubernetes (and therefore, Rancher) supports a wide variety of storage volume plugins, both on premise and in the cloud.
+Each storage class contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a persistent volume that belongs to the class needs to be dynamically provisioned.
+
+The `provisioner` determines which volume plugin is used to provision the persistent volumes. You can define storage classes for the following provisioners:
+
+- Amazon EBS Disk
+- AzureFile
+- AzureDisk
+- Ceph RBD
+- Gluster Volume
+- Google Persistent Disk
+- Longhorn
+- Openstack Cinder Volume
+- Portworx Volume
+- Quobyte Volume
+- ScaleIO Volume
+- StorageOS
+- Vmware vSphere Volume
+
+In addition to customizing each provisioner's options for the storage class, you can also define the volume `reclaimPolicy`. There are two options available:
+
+- Delete volumes and underlying device when released by workloads.
+- Retain the volume for manual cleanup.
+
+Finally, you can define custom `MountOptions` for the persistent volume created.
+
+`parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
