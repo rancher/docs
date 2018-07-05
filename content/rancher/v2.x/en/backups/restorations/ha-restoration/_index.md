@@ -1,10 +1,10 @@
 ---
-title: Restoring Backups—High Availablity Installs
+title: Restoring Backups—High Availability Installs
 weight: 370
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
 ---
-This procedure describes how to restore your a snapshot of  `etcd` if you lose your Rancher data in a disaster scenario.
+This procedure describes how to restore your a snapshot of `etcd` if you lose your Rancher data in a disaster scenario.
 
 ## Restoration Outline
 
@@ -56,9 +56,9 @@ docker ps | grep calico | cut -f 1 -d " " | xargs docker restart
 
 To restore the most recent `etcd` snapshot on your new node, run RKE the command `rke etcd snapshot-restore`. This command reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `rke etcd snapshot-restore`, RKE removes the old `etcd` container if it still exists. To restore operations, RKE creates a new `etcd` cluster using the snapshot you choose.
 
->**Important:** When restoring the etcd database, you must restore each `etcd` to the _same_ snapshot, this means the exact same copy, so to restore you have to copy the snapshot from one of the nodes to the others before doing the `etcd snapshot-restore`.
-
 >**Warning:** Restoring an `etcd` snapshot deletes your current `etcd` cluster and replaces it with a new one. Before you run the `rke etcd snapshot-restore` command, backup any important data in your current cluster.
+>
+>**Prerequisites:** {{< requirements_rollback >}}
 
 
 1. From your workstation, open `rancher-cluster.yml` in your favorite text editor.

@@ -11,6 +11,7 @@ If you upgrade Rancher, but the upgrade does not complete successfully, you may 
 >**Warning!**
 >
 > Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+
 >
 >**Prerequisites:** {{< requirements_rollback >}}
 
