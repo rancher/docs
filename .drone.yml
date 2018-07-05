@@ -7,7 +7,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker build -f Dockerfile.prod .
+      - docker build --pull -f Dockerfile.prod .
     when:
       event: [pull_request]
 
