@@ -28,11 +28,11 @@ nodes:
 
 | Option | Description |
 | --- | --- |
-| `address` | The public DNS or IP address |
-| `internal_address` | The private DNS or IP address for inter-cluster traffic |
-| `role` | List of Kubernetes roles assigned to the node |
-| `ssh_key_path` | Path to SSH private key used to authenticate to the node |
-| `user` | A user that can run docker commands |
+| `address` | (required) The public DNS or IP address |
+| `internal_address` | (optional) The private DNS or IP address for internal cluster traffic |
+| `role` | (required) List of Kubernetes roles assigned to the node |
+| `ssh_key_path` | (optional) Path to SSH private key used to authenticate to the node |
+| `user` | (required) A user that can run docker commands |
 
 <br/>
 
@@ -40,10 +40,11 @@ nodes:
 
 RKE has many configuration options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-* Air Gap Network
-* Private Docker Registry
+* [SSH Bastion/Jump Server]({{< baseurl >}}/rke/v0.1.x/en/config-options/bastion-host/)
+* [System Images for Air Gap Network]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/)
+* [Private Docker Image Registry]({{< baseurl >}}/rke/v0.1.x/en/config-options/private-registries/)
 
-Please see the [RKE Documentation]({{< baseurl >}}docs/rke/v0.1.x/en/) for the full list of options and capabilities.
+Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full list of options and capabilities.
 
 ### Run RKE
 
