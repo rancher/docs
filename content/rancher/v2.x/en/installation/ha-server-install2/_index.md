@@ -24,7 +24,7 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 The following CLI tools are required for this install. Please make sure these tools installed and available in your `$PATH`
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-* [rke]({{< baseurl >}}docs/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+* [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
 * [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
 
 ## Installation Outline

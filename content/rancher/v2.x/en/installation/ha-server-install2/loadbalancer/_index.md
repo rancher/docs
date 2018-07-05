@@ -3,7 +3,7 @@ title: 2 - Configure Load Balancer
 weight: 276
 ---
 
-Choose a hostname that you will use to access Rancher and 
+Choose a hostname that you will use to access Rancher and Create a DNS record to point at your load balancer endpoint.
 
 ### Load Balancer
 
