@@ -1,9 +1,11 @@
 ---
-title: 1 - Provision Nodes
+title: 1 - Create Nodes and Load Balancer
 weight: 276
 ---
 
-Use your provider of choice to provision 3 nodes for RKE. You will need to provide SSH credentials and DNS/IP address for your nodes to RKE.
+Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.
+
+You will need to provide SSH credentials and DNS/IP address for your nodes to RKE.
 
 ### Host Requirements
 
@@ -11,7 +13,7 @@ Use your provider of choice to provision 3 nodes for RKE. You will need to provi
 
 {{< requirements_os >}}<br/>
 
-#### Hardware
+#### Nodes
 
 {{< requirements_hardware >}}<br/>
 
@@ -46,3 +48,18 @@ In addition to the ports listed above these ports must be open between nodes.
 | tcp | 2379-2380 | etcd |
 | udp | 8472 | overlay networking |
 | tcp | 10250 | kubelet |
+<br/>
+
+### Load Balancer
+
+RKE will configure an Ingress-Controller pod, on each of your nodes. The ingress controller pods are bound to ports 80 and 443 tcp on the host network and are the entry point for https traffic to the Rancher server.
+
+Configure a load balancer as a basic Layer 4 tcp forwarder. The exact configuration will vary depending on your environment.
+
+#### Examples
+
+* [Amazon NLB]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/create-nodes-and-load-balancer/nlb)
+
+<br/>
+
+### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rke/)

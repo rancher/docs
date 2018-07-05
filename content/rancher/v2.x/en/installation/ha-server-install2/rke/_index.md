@@ -1,5 +1,5 @@
 ---
-title: 3 - Install Kubernetes with RKE
+title: 2 - Install Kubernetes with RKE
 weight: 276
 ---
 
@@ -72,3 +72,5 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.116.167               Ready     controlplane,etcd,worker   11m       v1.10.1
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
 ```
+
+### [Next: Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/helm/)
