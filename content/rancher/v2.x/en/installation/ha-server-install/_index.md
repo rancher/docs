@@ -112,6 +112,10 @@ After installing NGINX, you need to update the NGINX config file, `nginx.conf`, 
     ```
     worker_processes 4;
     worker_rlimit_nofile 40000;
+    
+    # uncomment depending on your distribution:
+    #load_module /usr/lib64/nginx/modules/ngx_stream_module.so;
+    #load_module /usr/lib/nginx/modules/ngx_stream_module.so;
 
     events {
         worker_connections 8192;
@@ -145,6 +149,13 @@ After installing NGINX, you need to update the NGINX config file, `nginx.conf`, 
     ```
     # nginx -s reload
     ```
+
+>**Note:**
+> On Fedora, and maybe other distro, you may encounter this error : `nginx: [emerg] unknown directive "stream" in /etc/nginx/nginx.conf`. This tells you nginx can't load the needed stream module `ngx_stream_module.so`. To solve this issue:
+
+1- verify the `/usr/lib(64)/nginx/modules` directory is not empty. If it is empty, you need to install the Fedora package `nginx-all-modules`.
+
+2- Uncomment the line at the top of `ngnix.conf` to let Nginx load the module.
 
 ### Option - Run NGINX as Docker container
 
