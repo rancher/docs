@@ -96,9 +96,9 @@ We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward al
 
 ### A. Install NGINX
 
-Start by installing NGINX on your load balancer host. NGINX has packages available for all known operating systems.
+Start by installing NGINX on your load balancer host. NGINX has packages available for all known operating systems. For help installing NGINX, refer to their [install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
 
-For help installing NGINX, refer to their [install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
+The `stream` module is required, which is present when using the official NGINX packages. Please refer to your OS documentation how to install and enable the NGINX `stream` module on your operating system.
 
 ### B. Create NGINX Configuration
 
