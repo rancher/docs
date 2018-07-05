@@ -1,5 +1,5 @@
 ---
-title: 4 - Initialize Helm (Install tiller)
+title: 3 - Initialize Helm (Install tiller)
 weight: 276
 ---
 
@@ -40,17 +40,24 @@ kubectl -n kube-system create secret docker-registry regcred \
 Update the ServiceAccount to include the imagePullSecret. Pods created with this ServiceAccount will automatically have the imagePullSecret added to their manifest.
 
 ```
-kubectl -n kube-system patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"regcred\"}]}'
+kubectl -n kube-system patch serviceaccount tiller -p \
+'{"imagePullSecrets": [{"name\": "regcred"}]}'
 ```
 
-##### Helm Init with `--tiller-image` option
+##### `--tiller-image` option
+
+Add the --tiller-image option to the `helm init` command.
 
 ```
-helm init --service-account tiller --tiller-image registry.example.com/kubernetes-helm/tiller:v2.9.1
+--tiller-image reg.example.com/kubernetes-helm/tiller:v2.9.1
 ```
 
 </p>
 </details>
+
+##### Helm init
+
+`helm init` installs the `tiller` service in the `kube-system` namespace on your cluster.
 
 ```
 helm init --service-account tiller
@@ -58,5 +65,4 @@ helm init --service-account tiller
 
 > NOTE: This `tiller` install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.
 
-
-[Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/)
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/)
