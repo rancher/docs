@@ -14,7 +14,7 @@ Use `helm repo add` to add the Rancher chart repository.
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 ```
 
-### Install `cert-manager`
+### Install cert-manager
 
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm "stable" catalog to issue self-signed or LetsEncrypt certificates.
 
