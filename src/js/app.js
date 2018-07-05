@@ -4,21 +4,31 @@ import instantsearch from 'instantsearch.js';
 // This is for any custom JS that may need to be added to individual apps.
 // Main JS is located in Rancher Website Theme
 const bootstrapDocsSearch = function() {
+
+  var firstSearchRender = true;
+
   const search = instantsearch({
     appId: '30NEY6C9UY',
     apiKey: 'b7f43c16886fec97b87981e9e62ef1a5',
     indexName: window.location.host === 'rancher.com' ? 'prod_docs' : 'dev_docs',
     routing: true,
-    searchFunction: function(helper) {
-      if (helper.state.query === "") {
+    searchFunction: (helper) => {
+
+      if (helper.state.query === "" && firstSearchRender) {
+
+        firstSearchRender = false;
+
         return;
       }
+
       helper.search();
     }
   });
 
   search.addWidget(
     instantsearch.widgets.searchBox({
+      autofocus: true,
+      loadingIndicator: true,
       container: '#search-box',
       placeholder: 'Search Docs...',
       magnifier: false,
