@@ -5,7 +5,9 @@ weight: 276
 
 Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.
 
-You will need to provide SSH credentials and DNS/IP address for your nodes to RKE.
+> Note: These nodes must be in the same region/datacenter.  You may place these servers in separate availability zones.
+
+Collect the SSH credentials and DNS or IP addresses for your nodes to provide to RKE in the next step.
 
 ### Host Requirements
 
@@ -58,8 +60,8 @@ Configure a load balancer as a basic Layer 4 tcp forwarder. The exact configurat
 
 #### Examples
 
-* [Amazon NLB]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/create-nodes-and-load-balancer/nlb)
+* [Amazon NLB](nlb/)
 
 <br/>
 
-### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rke/)
+### [Next: Install Kubernetes with RKE](../rke/)

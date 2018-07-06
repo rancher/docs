@@ -4,38 +4,34 @@ weight: 50
 ---
 This section contains instructions for installing Rancher in development and production environments.
 
-Choose from the following installation options:
+### Installation Options
 
-- [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install)
+- [Single Node Installation](single-node-install/)
 
-	In this simple install scenario, you install Rancher on a single Linux host.
+	Install Rancher on a single Linux host.
 
-- [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+- [Single Node Installation with External Load Balancer](single-node-install-external-lb/)
 
 	In this scenario, you install Rancher on a single Linux host and access it using an external load balancer/proxy.
 
--  [High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/)
+-  [High Availability Installation](ha-server-install/)
 
- 	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration.
+ 	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availability (HA) configuration.
 
--  [High Availability Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+### Advanced Install Scenarios
 
- 	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availabilty (HA) configuration. A load balancer is placed in front of the HA configuration.
+-  [Air Gap Installation](air-gap-installation/)
 
--  [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/)
+	Required images and configuration to install Rancher Server in an environment without direct Internet access.
 
- 	We also have instructions for a more specialized use case where you install Rancher Server in an environment without an Internet connection.
+-  [Rancher HTTP Proxy Configuration](proxy-configuration/)
 
-This section also includes help content for Rancher configuration and maintenance.
+	Rancher configuration to run behind a proxy.
 
--  [Backups and Rollbacks]({{< baseurl >}}/rancher/v2.x/en/backups/)
 
- 	This page lists the ports you must open to operate Rancher.
+### Reference
 
--  [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/)
+-  [Port Requirements](references/)
 
- 	This page lists the ports you must open to operate Rancher.
+ 	List of required ports you must open to operate Rancher.
 
--  [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/proxy-configuration/)
-
-	If your Rancher installation runs behind a proxy, this page provides information on how to configure Rancher for your proxy.

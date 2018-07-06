@@ -73,4 +73,4 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
 ```
 
-### [Next: Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/helm/)
+### [Next: Initialize Helm](../helm/)

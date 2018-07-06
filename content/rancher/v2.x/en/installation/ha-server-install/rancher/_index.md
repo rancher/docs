@@ -78,18 +78,18 @@ helm install rancher-stable/rancher --name rancher --namespace cattle-system \
 --set ingress.tls.source=secret
 ```
 
-Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/tls-secrets) to publish the certificate files so Rancher and the Ingress Controller can use them.
+Now that Rancher is running, see [Adding TLS Secrets](tls-secrets/) to publish the certificate files so Rancher and the Ingress Controller can use them.
 
 ### Advanced Configurations
 
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-* [Private Docker Image Registry/Air Gap Network]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/chart-options/#Private-or-Air-Gap-Registry)
+* [Private Docker Image Registry/Air Gap Network](chart-options/#private-or-air-gap-registry)
 
-See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/chart-options) for the full list of options.
+See the [Chart Options](chart-options/) for the full list of options.
 
 ### Finishing Up
 
 That's it you should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
 
-Doesn't Work? Take a look at the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/troubleshooting) Page
+Doesn't Work? Take a look at the [Troubleshooting](troubleshooting/) Page
