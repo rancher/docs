@@ -39,4 +39,4 @@ kubectl --kubeconfig=kube_config_rancher-cluster.yml set image deployment/cattle
 
 **Result:** Your Rancher Servers are upgraded.
 
->**Upgrade Issues?** You can restore your Rancher Server and data that was running prior to upgrade. For more information, see [Restoring Backups—High Availablity Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/ha-restoration/).
+>**Upgrade Issues?** You can restore your Rancher Server and data that was running prior to upgrade. For more information, see [Rolling Back—High Availability Installs]({{< baseurl >}}/rancher/v2.x/en/backups/rollbacks/ha-server-rollbacks).
