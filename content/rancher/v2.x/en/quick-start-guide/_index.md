@@ -7,11 +7,11 @@ weight: 25
 
 We are going to continue to grow the content of these quick starts to give you a jump start in deploying and testing Rancher 2.0!
 
-This index will be updated to allow you to quickly find the Quick Start instructions that cover your scenario
+The current areas covered by Quick Starts are:
 
-1. [Deploying Rancher Server](./deployment) - This gives Quick Start Guides to get you running via different methods
+- [Deploying Rancher Server](./deployment) - This gives Quick Start Guides to get you running via different methods.
 
-2. [Deploying a Workload](./workload) - This gives Quick Start Guide for deploying a workload and exposing it
+- [Deploying a Workload](./workload) - This gives Quick Start Guide for deploying a workload and exposing it.
 
 
 

@@ -28,14 +28,6 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
     Use the versatile **Custom** option to add your Linux host into a new Kubernetes cluster.
 
-5.  [Deploy a Workload](#deploy-a-workload)
-
-    Create a workload so that Kubernetes can distribute Nginx among your cluster nodes.
-
-6.  [View Your Application](#view-your-application)
-
-    When your workload finishes deployment, browse to your node IP to make sure Nginx is running.
-
 ### Provision a Linux Host
 
  Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
@@ -47,7 +39,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >**Note:**
   > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
   >
-  > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/#port-requirements).
+  > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/references).
 
  Provision the host according to the requirements below.
 
@@ -127,93 +119,6 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 {{< result_create-cluster >}}
 
-### Deploy a Workload
-
-You're ready to create your first _workload_. A workload is an object that includes pods along with other files and info needed to deploy your application.
-
-For this workload, you'll be deploying the application Nginx.
-
-1.  From the **Clusters** page, open the cluster that you just created.
-
-2.  From the main menu of the **Dashboard**, select **Projects**.
-
-3.  Open the **Default** project.
-
-4.  Click **+ Deploy**.
-
-	**Step Result:** The **Deploy Workload** page opens.
-
-5.  Enter a **Name** for your workload.
-
-6.  From the **Docker Image** field, enter `nginx`. This field is case-sensitive.
-
-7.  From **Port Mapping**, click **Add Port**.
-
-8.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
-
-	![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
-
-9.  From the **On Listening Port** field, leave the **Random** value in place.
-
-	![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
-
-10. From the **Publish the container port** field, enter port `80`.
-
-	![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
-
-11. Leave the remaining options on their default setting. We'll tell you about them later.
-
-12. Click **Launch**.
-
-**Result:**
-
-* Your workload is deployed. This process might take a few minutes to complete.
-* When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
-
-### View Your Application
-
-When your workload completes deployment, browse to its IP to confirm that your application is working.
-
-From the **Workloads** page, click the link underneath your workload. If your deployment succeeded, your application opens.
-
->**Note**
-> When using a cloud-hosted virtual machine, you may not have access to the port running the container. In this event, you can test Nginx in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is 31568 in this example.
->
->```sh
-
-gettingstarted@rancher:~$ curl http://localhost:31568
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to Nginx!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-</head>
-<body>
-<h1>Welcome to Nginx!</h1>
-<p>If you see this page, the Nginx web server is successfully installed and
-working. Further configuration is required.</p>
-
-<p>For online documentation and support please refer to
-<a href="http://Nginx.org/">Nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using Nginx.</em></p>
-</body>
-</html>
-gettingstarted@rancher:~$
-
-```
-
 ## Finished
 
-Congratulations! You have:
-
-- Created your first cluster.
-- Deployed Nginx to your cluster using a workload.
+Congratulations! You have created your first cluster.
