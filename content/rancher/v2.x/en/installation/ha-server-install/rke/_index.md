@@ -73,4 +73,6 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
 ```
 
+Issues or errors?  See the [Troubleshooting](troubleshooting/) page.
+
 ### [Next: Initialize Helm](../helm/)
