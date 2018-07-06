@@ -17,7 +17,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 2.  From the main menu of the **Dashboard**, select **Projects**.
 
-3.  Open the **Default** project.
+3.  Open the **Project: Default** project.
 
 4.  Click **Deploy**.
 
@@ -58,6 +58,7 @@ Now that the application is up and running you want to expose it so that browser
 
 9.  Leave everything else as default and click **Save**
 
+10. This will create a `xip.io` address that may take a minute or two to populate
 
 ### View Your Application
 

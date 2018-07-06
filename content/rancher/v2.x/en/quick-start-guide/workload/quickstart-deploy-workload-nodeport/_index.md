@@ -1,5 +1,5 @@
 ---
-title: Workload with Nodeport Quick Start
+title: Workload with NodePort Quick Start
 weight: 200
 ---
 
@@ -17,7 +17,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 2.  From the main menu of the **Dashboard**, select **Projects**.
 
-3.  Open the **Default** project.
+3.  Open the **Project: Default** project.
 
 4.  Click **Deploy**.
 
@@ -141,4 +141,4 @@ gettingstarted@rancher:~$
 
 ## Finished
 
-Congratulations! You have successfully deployed a workload exposed via a nodeport.
+Congratulations! You have successfully deployed a workload exposed via a NodePort.
