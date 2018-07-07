@@ -1,6 +1,6 @@
 <div>	
 	<p><strong>etcd nodes:</strong><br/>Nodes with the role <strong>etcd</strong></p>
-	<h6>etcd nodes - Inbound rules</h6>
+	<h3>etcd nodes - Inbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -27,13 +27,19 @@
 	        <td>Canal/Flannel VXLAN overlay networking</td>
 	    </tr>
 	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
+	    </tr>
+	    <tr>
 	        <td>TCP</td>
 	        <td>10250</td>
 	        <td><ul><li>controlplane nodes</li></ul></td>
 	        <td>kubelet</td>
 	    </tr>
 	</table>
-	<h6>etcd nodes - Outbound rules</h6>
+	<h3>etcd nodes - Outbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -70,10 +76,16 @@
 	        <td>8472</td>
 	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
 	        <td>Canal/Flannel VXLAN overlay networking</td>
+	    </tr>
+	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
 	    </tr>
 	</table>
 	<p><strong>controlplane nodes:</strong><br/>Nodes with the role <strong>controlplane</strong></p>
-	<h6>controlplane nodes - Inbound rules</h6>
+	<h3>controlplane nodes - Inbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -106,10 +118,22 @@
 	        <td>Canal/Flannel VXLAN overlay networking</td>
 	    </tr>
 	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
+	    </tr>
+	    <tr>
 	        <td>TCP</td>
 	        <td>10250</td>
 	        <td><ul><li>controlplane nodes</li></ul></td>
 	        <td>kubelet</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10254</td>
+	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Ingress controller livenessProbe/readinessProbe</td>
 	    </tr>
 	    <tr>
 	        <td>TCP/UDP</td>
@@ -118,7 +142,7 @@
 	        <td>NodePort port range</td>
 	    </tr>
 	</table>
-	<h6>controlplane nodes - Outbound rules</h6>
+	<h3>controlplane nodes - Outbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -151,14 +175,26 @@
 	        <td>Canal/Flannel VXLAN overlay networking</td>
 	    </tr>
 	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
+	    </tr>
+	    <tr>
 	        <td>TCP</td>
 	        <td>10250</td>
 	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
 	        <td>kubelet</td>
 	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10254</td>
+	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Ingress controller livenessProbe/readinessProbe</td>
+	    </tr>
 	</table>
 	<p><strong>worker nodes:</strong><br/>Nodes with the role <strong>worker</strong></p>
-	<h6>worker nodes - Inbound rules</h6>
+	<h3>worker nodes - Inbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -185,10 +221,22 @@
 	        <td>Canal/Flannel VXLAN overlay networking</td>
 	    </tr>
 	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
+	    </tr>
+	    <tr>
 	        <td>TCP</td>
 	        <td>10250</td>
 	        <td><ul><li>controlplane nodes</li></ul></td>
 	        <td>kubelet</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10254</td>
+	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Ingress controller livenessProbe/readinessProbe</td>
 	    </tr>
 	    <tr>
 	        <td>TCP/UDP</td>
@@ -197,7 +245,7 @@
 	        <td>NodePort port range</td>
 	    </tr>
 	</table>
-	<h6>worker nodes - Outbound rules</h6>
+	<h3>worker nodes - Outbound rules</h3>
 	<table>
 	    <tr>
 	        <th>Protocol</th>
@@ -223,6 +271,21 @@
 	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
 	        <td>Canal/Flannel VXLAN overlay networking</td>
 	    </tr>
+	    <tr>
+		<td>TCP</td>
+	        <td>9099</td>
+	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
+	    </tr>
+	    <tr>
+	        <td>TCP</td>
+	        <td>10254</td>
+	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+	        <td>Ingress controller livenessProbe/readinessProbe</td>
+	    </tr>
 	</table>
     <br/>
+    <h3 id="local-node-traffic">Information on local node traffic</h3>
+    <p>Kubernetes healthchecks (<code>livenessProbe</code> and <code>readinessProbe</code>) are executed on the host itself. On most nodes, this is allowed by default. When you have applied strict host firewall (i.e. <code>iptables</code>) policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic gets blocked. In this case, you have to explicitely allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
+    </p>	
 </div>
