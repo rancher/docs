@@ -194,7 +194,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
 
     >**Using Windows?**
-    >The file is already an executable. Skip to [Download Config File Template](#5-download-config-file-template).
+    >The file is already an executable. Skip to [Download Config File Template](#5-download-rke-config-file-template).
 
     ```
     # MacOS
