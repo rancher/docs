@@ -12,6 +12,8 @@ For help installing NGINX, refer to their [install documentation](https://www.ng
 
 After installing NGINX, you need to create the NGINX config file, `/etc/nginx/conf.d/rancher.conf`, with the IP addresses for your Linux nodes, chosen FQDN and location of the certificate file and certificate key file.
 
+>**Note:** The example configuration below does not include all available Nginx options and may not be suitable for your production environment. For full configuration documentation, see [NGINX Load Balancing - HTTP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/). 
+
 1. Copy and paste the code sample below into your favorite text editor. Save it as `/etc/nginx/conf.d/rancher.conf`.
 
     **Example NGINX config:**
