@@ -8,11 +8,11 @@ For every workload created, a complementing Service Discovery entry is created. 
 
 However, you also have the option of creating additional Service Discovery records. You can use these additional records so that a given namespace resolves with one or more external IP addresses, an external hostname, an alias to another DNS record, other workloads, or a set of pods that match a selector that you create.
 
-1. From the **Global** view, open the project running ingress.
+1. From the **Global** view, open the project that you want to add a DNS record to.
 
 1. Select the **Service Discovery** tab. Then click **Add Record**.
 
-1. Enter a **Name** for the DNS record.
+1. Enter a **Name** for the DNS record. This name is used for DNS resolution.
 
 1. Select a **Namespace** from the drop-down list. Alternatively, you can create a new namespace on the fly by clicking **Add to a new namespace**.
 

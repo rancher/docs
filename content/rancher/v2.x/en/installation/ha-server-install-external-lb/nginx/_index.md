@@ -12,6 +12,9 @@ For help installing NGINX, refer to their [install documentation](https://www.ng
 
 After installing NGINX, you need to create the NGINX config file, `/etc/nginx/conf.d/rancher.conf`, with the IP addresses for your Linux nodes, chosen FQDN and location of the certificate file and certificate key file.
 
+>**Note:** The configuration example in this procedure includes the minimum configurations needed to use
+to use Nginx as a Layer 7 load balancer with Rancher. For full documentation on all Nginx Layer 7 configuration options available, see the [Nginx HTTP Load Balancer Documentation](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+
 1. Copy and paste the code sample below into your favorite text editor. Save it as `/etc/nginx/conf.d/rancher.conf`.
 
     **Example NGINX config:**
@@ -58,6 +61,8 @@ After installing NGINX, you need to create the NGINX config file, `/etc/nginx/co
 3. In `/etc/nginx/conf.d/rancher.conf`, replace `FQDN` with the FQDN you chose for your Rancher installation.
 4. In `/etc/nginx/conf.d/rancher.conf`, replace `/certs/fullchain.pem` with the path to your certificate. If there are intermediates required for you certificate, they should be included in this file.
 5. In `/etc/nginx/conf.d/rancher.conf`, replace `/certs/privkey.pem` with the path to your certificate key.
+
+
 
 ## Run NGINX
 

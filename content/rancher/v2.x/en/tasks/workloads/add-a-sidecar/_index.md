@@ -3,7 +3,7 @@ title: Adding a Sidecar
 weight: 
 draft: true
 ---
-A _sidecar_ is a container that extends or enhances the main container in a pod. You can add sidecars to existing workloads by using the **Add a Sidecar** option.
+A _sidecar_ is a container that extends or enhances the main container in a pod. The main container and the sidecar share a pod, and therefore share the same network space and storage. You can add sidecars to existing workloads by using the **Add a Sidecar** option.
 
 1. From the **Global** view, open the project running the workload you want to add a sidecar to.
 
@@ -21,7 +21,9 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 
     - **Init Container:**
         
-        The sidecar container is deployed before the mainer container.
+        The sidecar container is deployed before the main container.
+
+1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy in support of the main container. During deployment, Rancher pulls this image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears on Docker Hub.
 
 1. Set the remaining options. You can read about them in [Deploying Workloads](../deploy-workloads).
 
