@@ -7,6 +7,8 @@ aliases:
 
 This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.0.
 
+See [Technical FAQ]({{< baseurl >}}/rancher/v2.x/en/faq/technical/), for frequently asked technical questions.
+
 ### Kubernetes
 
 #### What does it mean when you say Rancher v2.0 is built on Kubernetes?
