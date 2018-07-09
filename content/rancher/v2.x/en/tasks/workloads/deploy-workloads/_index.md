@@ -38,17 +38,8 @@ Deploy a workload to run an application in one or more containers.
         > To mount an Amazon EBS volume:
         >
         >- In [Amazon AWS](https://aws.amazon.com/), the nodes must be in the same Availability Zone and possess IAM permissions to attach/unattach volumes.
-<<<<<<< HEAD
-<<<<<<< HEAD
         >
         >- The cluster must be using the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws) option. For more information on enabling this option see [Creating an Amazon EC2 Cluster](../../clusters/creating-a-cluster/create-cluster-amazon-ec2/) or [Creating a Custom Cluster](../../clusters/creating-a-cluster/create-cluster-custom/).
-=======
-        >- The cluster must be using AWS cloud provider.
->>>>>>> updating storage docs
-=======
-        >
-        >- The cluster must be using the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws) option. For more information on enabling this option see [Creating an Amazon EC2 Cluster](../../clusters/creating-a-cluster/create-cluster-amazon-ec2/) or [Creating a Custom Cluster](../../clusters/creating-a-cluster/create-cluster-custom/).
->>>>>>> adding docs on how to provision nfs storage
 
 
 1. Click **Show Advanced Options** and configure:

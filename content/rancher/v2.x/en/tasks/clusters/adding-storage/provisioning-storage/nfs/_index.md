@@ -12,8 +12,6 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
 >
 >- This procedure demonstrates how to setup an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 >**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
 
 1. Using a remote Terminal connection, log into the Ubuntu server that you intend to use for NFS storage.
@@ -31,7 +29,6 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
     ```
     - The `-p /nfs` parameter creates a directory named `nfs` at root.
     - The `chown nobody:nogroup /nfs` parameter allows all access to the storage directory.
-<<<<<<< HEAD
 
 1. Create an NFS exports table. This table sets the directory paths on your NFS server that are exposed to the nodes that will use the server for storage.
 
@@ -68,17 +65,6 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
 ## What's Next?
 
 Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persistent-volume) and/or [storage class](../../#adding-storage-classes). After adding the server, you can use it for storage for your deployments.
-=======
->**Prerequisites:**
->
->- To simplify the process of managing firewall rules, use NFSv4.
->
->- If using a firewall and NFSv4, open port 2049.
->
->- 
-=======
->**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
->>>>>>> incorporating content about standing up an NFS server
 
 1. Using a remote Terminal connection, log into the Ubuntu server that you intend to use for NFS storage.
 
@@ -95,8 +81,6 @@ Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persist
     ```
     - The `-p /nfs` parameter creates a directory named `nfs` at root.
     - The `chown nobody:nogroup /nfs` parameter allows allcess to the storage directory.
-=======
->>>>>>> adding docs on how to provision nfs storage
 
 1. Create an NFS exports table. This table sets the directory paths on your NFS server that are exposed to the nodes that will use the server for storage.
 
@@ -132,11 +116,5 @@ Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persist
 
 ## What's Next?
 
-<<<<<<< HEAD
-```
-exportfs -ra
-```
->>>>>>> updating storage docs
-=======
 Within Rancher, add the NFS server as a [storage volume](../../#adding-a-persistent-volume) and/or [storage class](../../#adding-storage-classes). After adding the server, you can use it for storage for your deployments.
->>>>>>> incorporating content about standing up an NFS server
+

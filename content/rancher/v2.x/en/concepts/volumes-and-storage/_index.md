@@ -14,21 +14,12 @@ Rancher allows you to create PVs at cluster level and bind them to PVCs later. V
 
 ## Storage Classes
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
-=======
-Storage classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage class will dynamically create EBS volumes and bind them to PVCs. A storage class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
->>>>>>> minor changes
-=======
-Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
->>>>>>> adding docs on how to provision nfs storage
 
 ![Storage Classes]({{< baseurl >}}/img/rancher/storage-classes.png)
 
 ### Storage and Cloud Providers
 
-<<<<<<< HEAD
 Each storage class contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a persistent volume that belongs to the class needs to be dynamically provisioned.
 
 The `provisioner` determines which volume plugin is used to provision the persistent volumes. You can define storage classes for the following provisioners:
@@ -55,6 +46,3 @@ In addition to customizing each provisioner's options for the storage class, you
 Finally, you can define custom `MountOptions` for the persistent volume created.
 
 `parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
-=======
-Kubernetes (and therefore, Rancher) supports a wide variety of storage volume plugins, both on premise and in the cloud.
->>>>>>> minor changes
