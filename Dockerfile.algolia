@@ -1,0 +1,9 @@
+FROM rancher/docs:build
+
+VOLUME /usr/share/nginx/html/docs
+WORKDIR /run
+
+COPY gulpfile.babel.js /run/
+
+ENTRYPOINT ["gulp"]
+CMD ["publish:seach-index"]
