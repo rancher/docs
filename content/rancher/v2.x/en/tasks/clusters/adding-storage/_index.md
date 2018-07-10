@@ -4,7 +4,9 @@ weight: 3500
 draft: true
 ---
 
->**Prerequisites:** 
+Rancher allows the user to create Persistent volumes at the cluster level as well as Storage Classes for different cloud provisioners including Amazon EBS and Azure Disks.
+
+>**Prerequisites:**
 >
 >- Working with storage requires the `Manage Volumes` [role](../../../concepts/global-configuration/users-permissions-roles/#project-role-reference).
 >- You must have a storage medium provisioned. For more information, see [Provisioning Storage](provisioning-storage).
@@ -30,10 +32,10 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 1. Select the **Volume Plugin** for the disk type or service that you're using.
 
-  >**Note:** If the cluster you are adding storage for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
-  
-      1. You must enable the `cloud provider` option for the EC2 cluster.
-      2. You must use the `Amazon EBS Disk` volume plugin.
+      >**Note:** If the cluster you are adding storage for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+      >
+      >1. You must enable the `cloud provider` option for the EC2 cluster.
+      >2. You must use the `Amazon EBS Disk` volume plugin.
 
 1. Enter the **Capacity** of your volume in gigabytes.
 
@@ -71,10 +73,10 @@ _Storage Classes_ allow you to dynamically provision persistent volumes on deman
 
 1. From the `Provisioner` drop-down, select the service that you want to use to dynamically provision storage volumes.
 
-  >**Note:** If the cluster you are adding a storage class for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
-  
-      1. You must enable the `cloud provider` option for the EC2 cluster.
-      2. You must use the `Amazon EBS Disk` provisioner.
+    >**Note:** If the cluster you are adding a storage class for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+    >
+    >1. You must enable the `cloud provider` option for the EC2 cluster.
+    >2. You must use the `Amazon EBS Disk` provisioner.
 
 
 1. From the `Parameters` section, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
