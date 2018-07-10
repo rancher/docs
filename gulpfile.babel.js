@@ -194,18 +194,22 @@ gulp.task('publish:search-index', (cb) => {
     env: env
   };
 
-  return exec('giddyup leader check', opts).on('close', code => {
-
+  return exec('giddyup leader check', opts, function(err, stdout, stderr) {
+    console.log('Error:', err);
+    console.log('Stdout:', stdout);
+    console.log('Stderr:', stderr);
+  }).on('close', code => {
     if (code === 0) {
-
+      console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
       const rawdata       = fs.readFileSync('public/final.algolia.json');
       const merged         = JSON.parse(rawdata);
       atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
         console.log(result);
         cb(err);
       });
-
+    } else {
+      console.log('I am not the leader (' + code + ')');
+      cb(new Error('Not the leader'));
     }
-
   });
 });
