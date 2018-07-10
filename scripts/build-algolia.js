@@ -65,6 +65,10 @@ nodes.forEach(node => {
     // objectID is not quite unique yet so hash the entire object
     paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
 
+    if (paragraphOut.objectID === "d41d8cd98f00b204e9800998ecf8427e") {
+      console.log(paragraphOut)
+      console.log(JSON.stringify(paragraphOut))
+    }
 
     nue.push(paragraphOut);
   }
