@@ -1,8 +1,4 @@
 FROM rancher/docs:build
-ARG ALGOLIA_APP_ID
-ARG ALGOLIA_INDEX_NAME
-ARG ALGOLIA_INDEX_FILE
-ARG ALGOLIA_ADMIN_KEY
 
 VOLUME ["/site"]
 WORKDIR /run
@@ -24,11 +20,6 @@ COPY gulpfile.babel.js /run/
 
 ADD https://github.com/rancherlabs/website-theme/archive/master.tar.gz master.tar.gz
 RUN mkdir -p /run/node_modules/rancher-website-theme && tar -xzf master.tar.gz --strip 1 -C /run/node_modules/rancher-website-theme && rm master.tar.gz
-
-ENV ALGOLIA_APP_ID=$ALGOLIA_APP_ID
-ENV ALGOLIA_INDEX_NAME=$ALGOLIA_INDEX_NAME
-ENV ALGOLIA_INDEX_FILE=$ALGOLIA_INDEX_FILE
-ENV ALGOLIA_ADMIN_KEY=$ALGOLIA_ADMIN_KEY
 
 # Expose default hugo port
 EXPOSE 9001
