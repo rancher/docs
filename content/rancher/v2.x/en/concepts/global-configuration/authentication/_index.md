@@ -22,9 +22,13 @@ However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
 
+<<<<<<< HEAD
 For more information on how to configure external authentication or local authentication, see [Authentication](../../../tasks/global-configuration/authentication/). 
 
 ### External Authentication Configuration and Principal Users
+=======
+## External Authentication Configuration and Principal Users
+>>>>>>> adding links
 
 Configuration of external authentication requires:
 
@@ -55,3 +59,10 @@ Configuration of external authentication affects how principal users are managed
 
 6. The external principal and the local principal share the same access rights.
 
+<<<<<<< HEAD
+=======
+
+## Related Links
+
+- [Configuring Authentication]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication)
+>>>>>>> adding links
