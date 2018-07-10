@@ -1,7 +1,6 @@
 ---
 title: Adding Ingress
-weight: 
-draft: true
+weight: 50
 ---
 
 Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing.

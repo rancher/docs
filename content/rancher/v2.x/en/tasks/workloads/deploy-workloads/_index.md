@@ -1,6 +1,6 @@
 ---
 title: Deploying Workloads
-weight: 
+weight: 25
 ---
 
 Deploy a workload to run an application in one or more containers.
