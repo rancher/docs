@@ -28,6 +28,11 @@ process.on('uncaughtException', (err) => {
   console.log('Uncaught Exception, exiting', '\r\n', err);
   process.exit(1);
 });
+
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+console.log(process.env)
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+
 // --
 gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
