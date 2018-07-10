@@ -17,7 +17,7 @@ pipeline:
     dockerfile: Dockerfile.algolia
     repo: rancher/docs
     context: .
-    tag: dev
+    tag: algolia
     secrets: [docker_username, docker_password]
     when:
       branch: master

@@ -6,4 +6,4 @@ WORKDIR /run
 COPY gulpfile.babel.js /run/
 
 ENTRYPOINT ["gulp"]
-CMD ["publish:seach-index"]
+CMD ["publish:search-index"]
