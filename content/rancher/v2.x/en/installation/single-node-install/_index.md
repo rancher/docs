@@ -62,10 +62,10 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-- [Option A—Default Self-Signed Certificate](#option-adefault-self-signed-certificate)
-- [Option B—Bring Your Own Certificate: Self-Signed](#option-bbring-your-own-certificate--self-signed)
-- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-cbring-your-own-certificate--signed-by-recognized-ca)
-- [Option D-Let's Encrypt Certificate](#option-d-lets-encrypt-certificate)
+- [Option A—Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
+- [Option B—Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
+- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-c-bring-your-own-certificate-signed-by-recognized-ca)
+- [Option D—Let's Encrypt Certificate](#option-d-let-s-encrypt-certificate)
 
 ### Option A—Default Self-Signed Certificate
 
@@ -139,7 +139,7 @@ By default, Rancher automatically generates self-signed certificates for itself 
 2. Select  **Settings** > **cacerts**.
 3. Choose `Edit` and remove the contents. Then click `Save`.
 
-### Option D-Let's Encrypt Certificate
+### Option D—Let's Encrypt Certificate
 
 Rancher supports Let's Encrypt certificates. Let's Encrypt uses an `http-01 challenge` to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
