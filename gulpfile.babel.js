@@ -201,9 +201,7 @@ gulp.task('publish:search-index', (cb) => {
   }).on('close', code => {
     if (code === 0) {
       console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
-      const rawdata       = fs.readFileSync('public/final.algolia.json');
-      const merged         = JSON.parse(rawdata);
-      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
+      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, (err, result) => {
         console.log(result);
         cb(err);
       });
