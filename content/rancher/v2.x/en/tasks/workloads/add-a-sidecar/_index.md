@@ -1,6 +1,6 @@
 ---
 title: Adding a Sidecar
-weight: 
+weight: 200
 ---
 A _sidecar_ is a container that extends or enhances the main container in a pod. The main container and the sidecar share a pod, and therefore share the same network space and storage. You can add sidecars to existing workloads by using the **Add a Sidecar** option.
 
@@ -29,3 +29,7 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 1. Click **Launch**.
 
 **Result:** The sidecar is deployed according to your parameters. Following its deployment, you can view the sidecar by selecting **Ellipsis icon (...) > Edit** for the main deployment.
+
+## Related Links
+
+- [The Distributed System ToolKit: Patterns for Composite Containers](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/)
