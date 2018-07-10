@@ -44,7 +44,6 @@ Persistent volumes can either be a disk or file system that you host on premise,
     - [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes):
 
          This options sets how many nodes can access the volume, along with the node read/write permissions. The [Kubernetes Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) includes a table that lists which access modes are supported by the plugins available.
-
     - [Mount Options](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options):
 
          Each volume plugin allows you to specify additional command line options during the mounting process. You can enter these options in the **Mount Option** fields. Consult each plugin's vendor documentation for the mount options available.
@@ -52,7 +51,6 @@ Persistent volumes can either be a disk or file system that you host on premise,
     - **Assign to Storage Class:**
 
          If you later want to automatically provision persistent volumes identical to the volume that you've specified here, assign it a storage class. Later, when you create a workload, you can assign it a persistent volume claim that references the storage class, which will provision a persistent volume identical to the volume you've specified here.
-
          >**Note:** You must [add a storage class](#adding-storage-classes) before you can assign it to a persistent volume.
 
 1. Click **Save**.

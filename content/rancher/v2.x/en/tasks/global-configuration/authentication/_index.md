@@ -2,25 +2,29 @@
 title: Authentication
 weight: 50
 ---
-You have three options for user authentication in Rancher:
 
--	[Active Directory]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/)
-	
-	Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
+You have multiple options for user authentication in Rancher:
 
--	[GitHub]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication/github/)
+-   [Active Directory](./active-directory/)
 
-	Open source projects or organizations that use GitHub for source control may prefer that users sign in using their GitHub accounts.
+    Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
 
-<!-- - **SAML**:
+-   [Azure AD](./azure-ad/)
 
-- **OpenLDAP**:-->
+   	If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
 
+-   [GitHub](./github/)
 
-- [Azure AD]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication/azure-ad/)
+    Open source projects or organizations that use GitHub for source control may prefer that users sign in using their GitHub accounts.
 
-	If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
+-	[FreeIPA](./freeipa/)
 
--	[Local Authentication]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/authentication/local-authentication/)
+    Organizations can use FreeIPA for authentication, allowing users to sign in using their corporate credentials.
 
-	If you don't want to use external authentication, you can always add users directly to Rancher. We recommend using external authentication over local authentication.
+-   [OpenLDAP](./openlap/)
+
+	Organizations can use OpenLDAP for authentication, allowing users to sign in using their corporate credentials.
+
+-   [Local Authentication](./local-authentication/)
+
+    If you don't want to use external authentication, you can always add users directly to Rancher. We recommend using external authentication over local authentication.
