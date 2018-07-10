@@ -2,28 +2,6 @@
 title: Users, Global Permissions, and Roles
 weight: 15
 ---
-In This Document:
-
-<!-- TOC -->
-
-- [Users and Roles](#users-and-roles)
-    - [Global Permissions](#global-permissions)
-        - [Global Permission Assignment](#global-permission-assignment)
-        - [Custom Global Permissions](#custom-global-permissions)
-        - [Global Permissions Reference](#global-permissions-reference)
-    - [Cluster and Project Roles](#cluster-and-project-roles)
-        - [Membership and Role Assignment](#membership-and-role-assignment)
-        - [Cluster Roles](#cluster-roles)
-            - [Custom Cluster Roles](#custom-cluster-roles)
-            - [Cluster Role Reference](#cluster-role-reference)
-        - [Project Roles](#project-roles)
-            - [Custom Project Roles](#custom-project-roles)
-            - [Project Role Reference](#project-role-reference)
-    - [Defining Custom Roles](#defining-custom-roles)
-        - [Locked Roles](#locked-roles)
-
-<!-- /TOC -->
-
 
 Within Rancher, each user authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication), users can either be local or external.
 
