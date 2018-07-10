@@ -3,6 +3,8 @@ title: Configuring OpenLDAP
 weight: 54
 ---
 
+_Available as of v2.0.5_
+
 If your organization uses OpenLDAP for user authentication, you can configure Rancher to allow your users to login using their OpenLDAP credentials.
 
 >**Prerequisites:**
@@ -37,7 +39,7 @@ If your organization uses OpenLDAP for user authentication, you can configure Ra
 
 5.	If your OpenLDAP deviates from the standard OpenLDAP schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
 
-	>**Search Attribute** As of Rancher v2.0.1, the Search Attribute field defaults with three specific values by default: `sAMAccountName|sn|givenName`. After OpenLDAP is configured, when a user enters text to add users or groups, Rancher automatically queries the OpenLDAP server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+	>**Search Attribute** The Search Attribute field defaults with three specific values by default: `sAMAccountName|sn|givenName`. After OpenLDAP is configured, when a user enters text to add users or groups, Rancher automatically queries the OpenLDAP server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
 	>
 	>The default field value `sAMAccountName|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
 	>
