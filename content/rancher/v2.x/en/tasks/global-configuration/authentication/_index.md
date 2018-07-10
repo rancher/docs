@@ -19,7 +19,7 @@ You have multiple options for user authentication in Rancher:
 
 -   [OpenLDAP](./openlap/)
 
-    	Organizations can use OpenLDAP for authentication, allowing users to sign in using their corporate credentials.
+    Organizations can use OpenLDAP for authentication, allowing users to sign in using their corporate credentials.
 
 -	  [FreeIPA](./freeipa/)
 
