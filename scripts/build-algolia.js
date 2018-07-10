@@ -11,9 +11,6 @@ const nue           = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
 
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-console.log(process.env)
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 nodes.forEach(node => {
   const dom             = new JSDOM(node.content);
   const content         = dom.window.document.body; //post content wrapped in a body tag
@@ -83,10 +80,5 @@ nodes.forEach(node => {
 
 const merged = [...nodes, ...nue];
 
-// fs.writeFileSync('public/combined.algolia.json', JSON.stringify(merged));
-// process.exit(0);
-atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
-  if (err) throw err;
-  console.log(result);
-  process.exit(0);
-});
+fs.writeFileSync('public/final.algolia.json', JSON.stringify(merged));
+process.exit(0);

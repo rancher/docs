@@ -5,28 +5,33 @@ import gulp from 'gulp';
 import del from 'del';
 import runSequence from 'run-sequence';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import { spawn } from "child_process";
+import { spawn, exec } from "child_process";
 import tildeImporter from 'node-sass-tilde-importer';
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import watch from 'gulp-watch';
+const atomicalgolia = require("atomic-algolia");
+const fs            = require('fs');
 
 const $            = gulpLoadPlugins();
 const browserSync  = require('browser-sync').create();
 const isProduction = process.env.NODE_ENV === 'production';
-const onError      = (err) => {
-  console.log(err);
-}
+
+process.on('SIGINT', (err) => {
+  console.log('Caught SIGINT, exiting', '\r\n', err);
+  process.exit(0);
+});
+
+process.on('uncaughtException', (err) => {
+  console.log('Uncaught Exception, exiting', '\r\n', err);
+  process.exit(1);
+});
+
 console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 console.log(process.env)
 console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-
-process.on('SIGINT', () => {
-  console.log('Caught SIGINT, exiting');
-  process.exit(0);
-});
 
 // --
 gulp.task('dev', ['build-dev'], () => {
@@ -103,7 +108,6 @@ gulp.task('sass', () => {
   return gulp.src([
     'src/sass/**/*.scss'
   ])
-    .pipe($.plumber({ errorHandler: onError }))
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sass({ precision: 5, importer: tildeImporter }))
@@ -169,7 +173,6 @@ gulp.task('pub-delete', () => {
   return del(['public/**', '!public']);
 });
 
-
 gulp.task('build:search-index', (cb) => {
   const env = process.env;
 
@@ -179,5 +182,30 @@ gulp.task('build:search-index', (cb) => {
   };
   return spawn(process.cwd()+'/scripts/build-algolia.js', opts).on('close', (/* code */) => {
     cb();
+  });
+});
+
+
+gulp.task('publish:search-index', (cb) => {
+  const env = process.env;
+
+  const opts = {
+    stdio: 'inherit',
+    env: env
+  };
+
+  return exec('giddyup leader check', opts).on('close', code => {
+
+    if (code === 0) {
+
+      const rawdata       = fs.readFileSync('public/final.algolia.json');
+      const merged         = JSON.parse(rawdata);
+      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
+        console.log(result);
+        cb(err);
+      });
+
+    }
+
   });
 });
