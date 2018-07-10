@@ -1,7 +1,6 @@
 ---
 title: Adding a Secret
 weight: 
-draft: true
 ---
 
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.

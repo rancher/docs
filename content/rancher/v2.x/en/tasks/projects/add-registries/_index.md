@@ -1,7 +1,6 @@
 ---
 title: Adding Registries
 weight: 
-draft: true
 ---
 
 Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
