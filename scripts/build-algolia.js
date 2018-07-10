@@ -89,5 +89,5 @@ nodes.forEach(node => {
 
 const merged = [...newParagraphs, ...newNodes];
 
-fs.writeFileSync('public/final.algoia.json', JSON.stringify(merged));
+fs.writeFileSync('public/final.algolia.json', JSON.stringify(merged));
 process.exit(0);
