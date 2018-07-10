@@ -7,7 +7,8 @@ const {
 const md5           = require('md5');
 const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
-const nue           = [];
+const newNodes           = [];
+const newParagraphs = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
 
@@ -73,7 +74,8 @@ nodes.forEach(node => {
       console.log('====================================');
     }
 
-    nue.push(node);
+    newParagraphs.push(paragraphOut);
+    newNodes.push(node);
   }
 
 
@@ -85,6 +87,7 @@ nodes.forEach(node => {
 
 });
 
+const merged = [...newParagraphs, ...newNodes];
 
-fs.writeFileSync('public/final.algoia.json', JSON.stringify(nue));
+fs.writeFileSync('public/final.algoia.json', JSON.stringify(merged));
 process.exit(0);
