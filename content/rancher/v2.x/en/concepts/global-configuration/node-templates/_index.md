@@ -7,3 +7,6 @@ You can create new clusters within Rancher using _node templates_. A node templa
 
 After you add a node template to Rancher, its stored by the system so that you can use it when creating another cluster later. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
+## Related Links
+
+- [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster)

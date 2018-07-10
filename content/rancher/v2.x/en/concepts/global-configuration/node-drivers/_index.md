@@ -8,3 +8,6 @@ Out-of-the-box, Rancher provides support for creating clusters using many popula
 For more information on creating node drivers, see [https://github.com/rancher/ui-driver-skel](https://github.com/rancher/ui-driver-skel).
 
 
+## Related Links
+
+- [Configuring Node Drivers]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/node-drivers)

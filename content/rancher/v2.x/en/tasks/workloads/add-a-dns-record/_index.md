@@ -43,3 +43,10 @@ However, you also have the option of creating additional Service Discovery recor
 
 - You can view the record by from the project's **Service Discovery** tab.
 - When you visit the new DNS name for the new record that you created (`<recordname>.<namespace>.svc.cluster.local`), it resolves the chosen namespace.
+### Tutorials
+
+- [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/concepts/service-discovery)
+
+### External Links
+
+- [Adding entries to Pod /etc/hosts with HostAliases](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)

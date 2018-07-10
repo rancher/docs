@@ -10,7 +10,7 @@ Within the context of a Rancher project or namespace, _resources_ are files and 
 - [Secrets](#secrets)
 - [Registries](#registries)
 
-Rancher extends the application of the Kubernetes namespace resources listed above to [projects](../projects), which are Rancher-specific constructs. In the hierarchy of Rancher objects, projects contain namespaces. Therefore, any resources available within a project are available for all namespaces within that project.
+Rancher extends the application of the Kubernetes namespace resources listed above to [projects]({{< baseurl >}}/rancher/v2.x/en/projects), which are Rancher-specific constructs. In the hierarchy of Rancher objects, projects contain namespaces. Therefore, any resources available within a project are available for all namespaces within that project.
 
 Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well. Read on below.
 
@@ -38,3 +38,10 @@ When configuring a workload, you'll be able to choose which secrets to include. 
 Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
 
 >**Note:** Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not kubectl.
+
+## Related Links
+
+- [Adding SSL Certificates]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-ssl-certificates)
+- [Adding ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-configmaps)
+- [Adding Secrets]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-a-secret)
+- [Adding Registries]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-registries)
