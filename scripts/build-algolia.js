@@ -38,7 +38,7 @@ nodes.forEach(node => {
       let next = child.nextElementSibling;
 
       while(next && next.tagName !== 'H2') {
-        if (next) {
+        if (next && next.textContent) {
           paragraphOut.content += next.textContent;
         }
         next = next.nextElementSibling;
@@ -73,7 +73,7 @@ nodes.forEach(node => {
       console.log('====================================');
     }
 
-    nue.push(paragraphOut);
+    nue.push(node);
   }
 
 
@@ -85,7 +85,6 @@ nodes.forEach(node => {
 
 });
 
-const merged = [...nodes, ...nue];
 
-fs.writeFileSync('public/final.algolia.json', JSON.stringify(merged));
+fs.writeFileSync('public/final.algoia.json', JSON.stringify(nue));
 process.exit(0);
