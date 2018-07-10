@@ -1,6 +1,6 @@
 ---
 title: Configuring FreeIPA
-weight: 5000
+weight: 55
 ---
 
 If your organization uses FreeIPA for user authentication, you can configure Rancher to allow your users to login using their FreeIPA credentials.
@@ -20,7 +20,7 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 4.	Complete the **Configure an FreeIPA server** form.
 
 	You may need to log in to your domain controller to find the information requested in the form.
-	
+
 	>**Using TLS?**
  	>Make sure you have an LDAP certificate installed.
 	<br/>

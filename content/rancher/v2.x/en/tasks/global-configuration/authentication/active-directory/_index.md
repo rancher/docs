@@ -1,6 +1,6 @@
 ---
-title: Configuring Active Directory Authentication
-weight: 3075
+title: Configuring Active Directory (AD)
+weight: 51
 ---
 
 In environments using Microsoft Active Directory (AD), you can configure Rancher to allow sign on using AD credentials.
@@ -20,7 +20,7 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 4.	Complete the **Configure an Active Directory server** form.
 
 	You may need to log in to your domain controller to find the information requested in the form.
-	
+
 	>**Using TLS?**
  	>Make sure you have an LDAP certificate installed.
 	<br/>

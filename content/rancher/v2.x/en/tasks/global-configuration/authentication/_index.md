@@ -17,13 +17,14 @@ You have multiple options for user authentication in Rancher:
 
     Open source projects or organizations that use GitHub for source control may prefer that users sign in using their GitHub accounts.
 
--	[FreeIPA](./freeipa/)
+-   [OpenLDAP](./openlap/)
+
+    	Organizations can use OpenLDAP for authentication, allowing users to sign in using their corporate credentials.
+
+-	  [FreeIPA](./freeipa/)
 
     Organizations can use FreeIPA for authentication, allowing users to sign in using their corporate credentials.
 
--   [OpenLDAP](./openlap/)
-
-	Organizations can use OpenLDAP for authentication, allowing users to sign in using their corporate credentials.
 
 -   [Local Authentication](./local-authentication/)
 

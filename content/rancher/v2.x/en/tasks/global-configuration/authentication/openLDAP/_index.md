@@ -1,6 +1,6 @@
 ---
 title: Configuring OpenLDAP
-weight: 5000
+weight: 54
 ---
 
 If your organization uses OpenLDAP for user authentication, you can configure Rancher to allow your users to login using their OpenLDAP credentials.
@@ -20,7 +20,7 @@ If your organization uses OpenLDAP for user authentication, you can configure Ra
 4.	Complete the **Configure an OpenLDAP server** form.
 
 	You may need to log in to your domain controller to find the information requested in the form.
-	
+
 	>**Using TLS?**
  	>Make sure you have an LDAP certificate installed.
 	<br/>
@@ -52,4 +52,4 @@ If your organization uses OpenLDAP for user authentication, you can configure Ra
 **Result:**
 
 - OpenLDAP authentication is configured.
-- You are signed into Rancher with your OpenLDAP account (i.e., the _external principal_). 
+- You are signed into Rancher with your OpenLDAP account (i.e., the _external principal_).
