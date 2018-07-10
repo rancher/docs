@@ -16,18 +16,16 @@ import watch from 'gulp-watch';
 const $            = gulpLoadPlugins();
 const browserSync  = require('browser-sync').create();
 const isProduction = process.env.NODE_ENV === 'production';
-const onError      = (err) => {
-  console.log(err);
-}
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-console.log(process.env)
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 
-process.on('SIGINT', () => {
-  console.log('Caught SIGINT, exiting');
+process.on('SIGINT', (err) => {
+  console.log('Caught SIGINT, exiting', '\r\n', err);
   process.exit(0);
 });
 
+process.on('uncaughtException', (err) => {
+  console.log('Uncaught Exception, exiting', '\r\n', err);
+  process.exit(1);
+});
 // --
 gulp.task('dev', ['build-dev'], () => {
   gulp.start('init-watch');
@@ -103,7 +101,6 @@ gulp.task('sass', () => {
   return gulp.src([
     'src/sass/**/*.scss'
   ])
-    .pipe($.plumber({ errorHandler: onError }))
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sass({ precision: 5, importer: tildeImporter }))
