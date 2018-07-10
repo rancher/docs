@@ -65,7 +65,9 @@ const bootstrapDocsSearch = function() {
     overlay.toggleClass('open');
 
     if (container.hasClass('open')) {
-      $('input#search').focus();
+    console.log('hi');
+      $('input#search-box').focus();
+    console.log('hi2');
     }
 
     overlay.css({top: 120});
