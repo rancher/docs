@@ -3,6 +3,9 @@ FROM rancher/docs:build
 VOLUME /usr/share/nginx/html/docs
 WORKDIR /run
 
+ADD https://github.com/rancher/giddyup/releases/download/v0.19.0/giddyup /usr/bin/giddyup
+RUN chmod +x /usr/bin/giddyup
+
 COPY gulpfile.babel.js /run/
 
 ENTRYPOINT ["gulp"]
