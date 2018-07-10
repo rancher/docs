@@ -194,20 +194,26 @@ gulp.task('publish:search-index', (cb) => {
     env: env
   };
 
-  return exec('giddyup leader check', opts, function(err, stdout, stderr) {
-    console.log('Error:', err);
-    console.log('Stdout:', stdout);
-    console.log('Stderr:', stderr);
-  }).on('close', code => {
-    if (code === 0) {
-      console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
-      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, (err, result) => {
-        console.log(result);
-        cb(err);
-      });
-    } else {
-      console.log('I am not the leader (' + code + ')');
-      cb(new Error('Not the leader'));
-    }
-  });
+
+  console.log('Waiting');
+  setTimeout(() => {
+    console.log('Done');
+    exec('giddyup leader check', opts, function(err, stdout, stderr) {
+      console.log('Error:', err);
+      console.log('Stdout:', stdout);
+      console.log('Stderr:', stderr);
+    }).on('close', code => {
+      if (code === 0) {
+        console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
+        atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, (err, result) => {
+          console.log(result);
+          cb(err);
+        });
+      } else {
+        console.log('I am not the leader (' + code + ')');
+        cb(new Error('Not the leader'));
+      }
+    });
+  }, 10000);
+
 });
