@@ -34,5 +34,6 @@ RUN gulp build
 RUN stat /run/public/index.html
 
 FROM nginx
+VOLUME /usr/share/nginx/html/docs
 COPY --from=build /run/public /usr/share/nginx/html/docs/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
