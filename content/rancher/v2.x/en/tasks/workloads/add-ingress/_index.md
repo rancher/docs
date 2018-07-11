@@ -52,7 +52,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
         
         Use this option to set an ingress rule for handling requests that don't match any other ingress rules. For example, use this option to route requests that can't be found to a `404` page.
 
-        >**Note:** If you deployed Rancher using RKE, a default backend is already configured. However, you can use this option to customize your backend.
+        >**Note:** If you deployed Rancher using RKE, a default backend for 404s and 202s is already configured.
         
         1. Add a **Target Backend**. Click either **Service** or **Workload** to add the target.
         
