@@ -5,7 +5,7 @@ weight: 100
 
 ### Assumptions
 
-- You have a running cluster with at least 1 node
+- You have a running cluster with at least 1 node.
 
 ### Deploy a Workload
 
@@ -36,9 +36,9 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 * Your workload is deployed. This process might take a few minutes to complete.
 * When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
 
-### Expose the workload via an ingress
+### Expose The Application Via An Ingress
 
-Now that the application is up and running you want to expose it so that browsers and other services can hit it
+Now that the application is up and running it needs to be exposed so that otther services can connect.
 
 1.  From the **Clusters** page, open the cluster that you just created.
 
@@ -50,19 +50,19 @@ Now that the application is up and running you want to expose it so that browser
 
 5.  Click **Add Ingress**.
 
-6.  Enter a name i.e. **hello**
+6.  Enter a name i.e. **hello**.
 
-7.  In the **Target* field, drop down the list and choose the name that you set for your service.
+7.  In the **Target** field, drop down the list and choose the name that you set for your service.
 
 8.  Enter `80` in the **Port** field.
 
-9.  Leave everything else as default and click **Save**
+9.  Leave everything else as default and click **Save**.
 
-10. This will create a `xip.io` address that may take a minute or two to populate
+10. This will create a `xip.io` address that may take a minute or two to populate.
 
 ### View Your Application
 
-From the **Load Balancing** page, click the target link which will look something like **hello.default.xxx.xxx.xxx.xxx.xip.io > hello-world**
+From the **Load Balancing** page, click the target link which will look something like **hello.default.xxx.xxx.xxx.xxx.xip.io > hello-world**.
 
 Your application will open in a seperate window.
 
