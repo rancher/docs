@@ -27,17 +27,14 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 	<br/>
 	>**User Search Base vs. Group Search Base**
 	>
-	>When configuring AD authentication, you must enter a search base for your users. This search base allows Rancher to search for users that are in your Active Directory.
-    <br/>
-	<br/>
-  	> **Note:** This field is only for search bases and not for search filters.
+	>Search base allows Rancher to search for users and groups that are in your FreeIPA.  These fields are only for search bases and not for search filters.
 	>
-	>- If your users and groups are in the search base, complete only the User Search Base.
-	>- If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
+	>* If your users and groups are in the same search base, complete only the User Search Base.
+	>* If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
 
 5.	If your Active Directory deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
 
-	>**Search Attribute** As of Rancher v2.0.1, the Search Attribute field defaults with three specific values by default: `sAMAccountName|sn|givenName`. After AD is configured, when a user enters text to add users or groups, Rancher automatically queries the AD server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+	>**Search Attribute** The Search Attribute field defaults with three specific values: `sAMAccountName|sn|givenName`. After AD is configured, when a user enters text to add users or groups, Rancher automatically queries the AD server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
 	>
 	>The default field value `sAMAccountName|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
 	>
@@ -47,7 +44,7 @@ In environments using Microsoft Active Directory (AD), you can configure Rancher
 	>
 	> With this search attribute, Rancher creates search filters for users and groups, but you *cannot* add your own search filters in this field.
 
-6.	Enter your AD username and password in **Test and enable authentication** to confirm that Rancher is configured to use AD authentication.
+6.	Enter your AD username and password in **Authenticate with Active Directory** to confirm that Rancher is configured to use AD authentication.
 
 **Result:**
 

@@ -29,27 +29,24 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 	<br/>
 	>**User Search Base vs. Group Search Base**
 	>
-	>When configuring FreeIPA authentication, you must enter a search base for your users. This search base allows Rancher to search for users that are in your FreeIPA.
-    <br/>
-	<br/>
-  	> **Note:** This field is only for search bases and not for search filters.
+	>Search base allows Rancher to search for users and groups that are in your FreeIPA.  These fields are only for search bases and not for search filters.
 	>
-	>- If your users and groups are in the search base, complete only the User Search Base.
-	>- If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
+	>* If your users and groups are in the same search base, complete only the User Search Base.
+	>* If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
 
 5.	If your FreeIPA deviates from the standard AD schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
 
-	>**Search Attribute** The Search Attribute field defaults with three specific values by default: `sAMAccountName|sn|givenName`. After FreeIPA is configured, when a user enters text to add users or groups, Rancher automatically queries the FreeIPA server and attempts to match fields by sAMAccountName, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+	>**Search Attribute** The Search Attribute field defaults with three specific values: `uid|sn|givenName`. After FreeIPA is configured, when a user enters text to add users or groups, Rancher automatically queries the FreeIPA server and attempts to match fields by user id, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
 	>
-	>The default field value `sAMAccountName|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
+	>The default field value `uid|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
 	>
-	> * `sAMAccountName`: Username
+	> * `uid`: User ID
 	> * `sn`: Last Name
 	> * `givenName`: First Name
 	>
 	> With this search attribute, Rancher creates search filters for users and groups, but you *cannot* add your own search filters in this field.
 
-6.	Enter your FreeIPA username and password in **Test and enable authentication** to confirm that Rancher is configured to use FreeIPA authentication.
+6.	Enter your FreeIPA username and password in **Authenticate with FreeIPA** to confirm that Rancher is configured to use FreeIPA authentication.
 
 **Result:**
 
