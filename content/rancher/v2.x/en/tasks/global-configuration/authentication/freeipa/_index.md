@@ -24,7 +24,7 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 	You may need to log in to your domain controller to find the information requested in the form.
 
 	>**Using TLS?**
- 	>Make sure you have an LDAP certificate installed.
+ 	>If the certificate is self-signed or not from a recognized certificate authority, make sure you provide the complete chain. That chain is needed to verify the server's certificate.
 	<br/>
 	<br/>
 	>**User Search Base vs. Group Search Base**
