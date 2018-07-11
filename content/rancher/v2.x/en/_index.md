@@ -16,8 +16,8 @@ However, for version 2.0, most of Rancher is redesigned to work on Kubernetes. R
 - Rancher Kubernetes Engine (RKE)
 - Integration with cloud Kubernetes services, such as GKE, EKS, and AKS.
 
-{{% accordion id="accid" label="label" %}}
-  ## Asopida paratur mulces mentis
+<!-- {{% accordion id="accid" label="label" %}}
+## Asopida paratur mulces mentis
 
   Neque nati paucis, aut virgo iuppiter in solet iussaque refert ne osse, accepta
   variari infracto? Relevare *altis*: cum forumque melior: cum viae questus
@@ -34,7 +34,7 @@ However, for version 2.0, most of Rancher is redesigned to work on Kubernetes. R
   5. Patietur post
 {{% /accordion %}}
 {{% accordion id="accid2" label="label2" %}}
-  ## Asopida paratur mulces mentis
+## Asopida paratur mulces mentis
 
   Neque nati paucis, aut virgo iuppiter in solet iussaque refert ne osse, accepta
   variari infracto? Relevare *altis*: cum forumque melior: cum viae questus
@@ -50,4 +50,4 @@ However, for version 2.0, most of Rancher is redesigned to work on Kubernetes. R
   4. Timor miraris vitam inconcessaeque profers porrigis
   5. Patietur post
 {{% /accordion %}}
-
+ -->
