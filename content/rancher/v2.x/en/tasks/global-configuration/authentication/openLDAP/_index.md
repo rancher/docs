@@ -24,12 +24,12 @@ If your organization uses OpenLDAP for user authentication, you can configure Ra
 	You may need to log in to your domain controller to find the information requested in the form.
 
 	>**Using TLS?**
- 	>Make sure you have an LDAP certificate installed.
+ 	>If the certificate is self-signed or not from a recognized certificate authority, make sure you provide the complete chain. That chain is needed to verify the server's certificate.
 	<br/>
 	<br/>
 	>**User Search Base vs. Group Search Base**
 	>
-	>Search base allows Rancher to search for users and groups that are in your FreeIPA.  These fields are only for search bases and not for search filters.
+	>Search base allows Rancher to search for users and groups that are in your openLDAP.  These fields are only for search bases and not for search filters.
 	>
 	>* If your users and groups are in the same search base, complete only the User Search Base.
 	>* If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
@@ -37,7 +37,7 @@ If your organization uses OpenLDAP for user authentication, you can configure Ra
 
 5.	If your OpenLDAP deviates from the standard OpenLDAP schema, complete the **Customize Schema** form to match it. Otherwise, skip this step.
 
-	>**Search Attribute** The Search Attribute field defaults with three specific values: `uid|sn|givenName`. After FreeIPA is configured, when a user enters text to add users or groups, Rancher automatically queries the FreeIPA server and attempts to match fields by user id, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+	>**Search Attribute** The Search Attribute field defaults with three specific values: `uid|sn|givenName`. After openLDAP is configured, when a user enters text to add users or groups, Rancher automatically queries the openLDAP server and attempts to match fields by user id, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
 	>
 	>The default field value `uid|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
 	>
