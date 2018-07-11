@@ -73,7 +73,7 @@ certutil -decode FILENAME.base64 FILENAME.verify
 
 <h5>Command:</h5>
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-openssl s_client -CAfile ca.pem -connect rancher.yourdomain.com:443
+openssl s_client -CAfile ca.pem -connect rancher.yourdomain.com:443 -servername rancher.yourdomain.com
 ...
     Verify return code: 0 (ok)
 </pre>
