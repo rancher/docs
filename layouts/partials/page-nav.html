@@ -1,0 +1,20 @@
+<div class="page-nav">
+  <ul>
+    {{ template "page-nav" . }}
+  </ul>
+</div>
+{{ define "page-nav" }}
+  {{ range .Sections}}
+    <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a>
+      {{if gt (len .Sections) 0}}
+        <!-- <i class="material-icons expand-toggle">add_box</i> -->
+        <ul class="hide">
+          {{ range .Pages }}
+            <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
+          {{ end }}
+          {{ template "page-nav" . }}
+        </ul>
+      {{end}}
+    </li>
+  {{ end }}
+{{ end }}

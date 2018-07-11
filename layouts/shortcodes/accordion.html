@@ -1,0 +1,7 @@
+<div class="tab">
+  <input id="{{ .Get "id" }}" type="checkbox" name="tabs">
+  <label for="{{ .Get "id" }}">{{ .Get "label" }}</label>
+  <div class="tab-content">
+    {{ .Inner }}
+  </div>
+</div>
