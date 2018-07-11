@@ -5,7 +5,7 @@ weight: 276
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 7 Loadbalancer with SSL termination (HTTPS)
-- NGINX Ingress controller (HTTP)
+- [NGINX Ingress controller (HTTP)](https://kubernetes.github.io/ingress-nginx/)
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha-l7.svg)
 
@@ -64,15 +64,15 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 ### Requirements
 
-#### Operating System 
+#### Operating System
 
 {{< requirements_os >}}
 
-#### Hardware 
+#### Hardware
 
 {{< requirements_hardware >}}
 
-#### Software 
+#### Software
 
 {{< requirements_software >}}
 
