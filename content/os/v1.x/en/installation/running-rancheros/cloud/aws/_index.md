@@ -14,7 +14,7 @@ Once you've installed your AWS CLI, use this command to launch an EC2 instance w
 > **Note:** Check the RancherOS [README](https://github.com/rancher/os/blob/master/README.md) for AMI names for each region. We support PV and HVM types of AMIs.
 
 ```
-$ aws ec2 run-instances --image-id ami-ID# --count 1 --instance-type t2.micro --key-name MySSHKeyName --security-groups sg-name
+$ aws ec2 run-instances --image-id ami-ID# --count 1 --instance-type t2.small --key-name MySSHKeyName --security-groups sg-name
 ```
 
 Your EC2 instance is now running RancherOS!

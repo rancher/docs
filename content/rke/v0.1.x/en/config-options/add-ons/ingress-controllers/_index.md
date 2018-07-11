@@ -37,9 +37,9 @@ You can disable the default controller by specifying `none` to  the ingress `pro
 ingress:
     provider: none
 ```
-## Nginx Ingress Controller
+## Configuring NGINX Ingress Controller
 
-For the configuration of nginx, there are some configuration options. There are a [list of options](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/configmap.md) for the nginx config map and [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md).
+For the configuration of nginx, there are configuration options available in Kubernetes. There are a [list of options for the NGINX config map](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/configmap.md) , [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md) and [annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/).
 
 ```yaml
 ingress:

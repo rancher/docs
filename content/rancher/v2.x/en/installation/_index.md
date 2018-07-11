@@ -28,7 +28,7 @@ Choose from the following installation options:
 
 This section also includes help content for Rancher configuration and maintenance.
 
--  [Backups and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/)
+-  [Backups and Rollbacks]({{< baseurl >}}/rancher/v2.x/en/backups/)
 
  	This page lists the ports you must open to operate Rancher.
 

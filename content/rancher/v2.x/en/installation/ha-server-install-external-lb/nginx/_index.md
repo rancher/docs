@@ -24,18 +24,18 @@ to use Nginx as a Layer 7 load balancer with Rancher. For full documentation on 
         server IP_NODE_2:80;
         server IP_NODE_3:80;
     }
-    
+
     map $http_upgrade $connection_upgrade {
         default Upgrade;
         ''      close;
     }
-    
+
     server {
         listen 443 ssl http2;
         server_name FQDN;
         ssl_certificate /certs/fullchain.pem;
         ssl_certificate_key /certs/privkey.pem;
-    
+
         location / {
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-Proto $scheme;
@@ -49,7 +49,7 @@ to use Nginx as a Layer 7 load balancer with Rancher. For full documentation on 
             proxy_read_timeout 900s;
         }
     }
-    
+
     server {
         listen 80;
         server_name FQDN;

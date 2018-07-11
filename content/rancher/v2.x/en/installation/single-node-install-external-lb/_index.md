@@ -131,6 +131,8 @@ The load balancer or proxy has to be configured to support the following:
 
 This Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
 
+ >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+ 
 ```
 upstream rancher {
     server rancher-server:80;

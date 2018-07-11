@@ -4,21 +4,31 @@ import instantsearch from 'instantsearch.js';
 // This is for any custom JS that may need to be added to individual apps.
 // Main JS is located in Rancher Website Theme
 const bootstrapDocsSearch = function() {
+
+  var firstSearchRender = true;
+
   const search = instantsearch({
     appId: '30NEY6C9UY',
     apiKey: 'b7f43c16886fec97b87981e9e62ef1a5',
     indexName: window.location.host === 'rancher.com' ? 'prod_docs' : 'dev_docs',
     routing: true,
-    searchFunction: function(helper) {
-      if (helper.state.query === "") {
+    searchFunction: (helper) => {
+
+      if (helper.state.query === "" && firstSearchRender) {
+
+        firstSearchRender = false;
+
         return;
       }
+
       helper.search();
     }
   });
 
   search.addWidget(
     instantsearch.widgets.searchBox({
+      autofocus: true,
+      loadingIndicator: true,
       container: '#search-box',
       placeholder: 'Search Docs...',
       magnifier: false,
@@ -55,18 +65,26 @@ const bootstrapDocsSearch = function() {
     overlay.toggleClass('open');
 
     if (container.hasClass('open')) {
-      $('input#search').focus();
+      $('input#search-box').focus();
     }
 
     overlay.css({top: 120});
   });
-
 }
 
-const bootstrapDocsJS = function() {
-  bootstrapDocsSearch();
+const bootstrapIdLinks = function() {
+  const container = '.wrapper ARTICLE';
+  const selector = 'h2[id], h3[id], h4[id], h5[id], h6[id]';
+  $(container).on('mouseenter', selector, function(e) {
+    $(e.target).append($('<a />').addClass('header-anchor').attr('href', '#' + e.target.id).html('<i class="material-icons p-l-xs" aria-hidden="true">link</i>'));
+  });
+
+  $(container).on('mouseleave', selector, function(e) {
+    $(e.target).parent().find('.header-anchor').remove();
+  });
 }
 
 $(document).ready(() => {
-  bootstrapDocsJS();
+  bootstrapDocsSearch();
+  bootstrapIdLinks();
 });

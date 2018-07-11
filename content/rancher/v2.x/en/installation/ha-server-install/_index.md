@@ -5,7 +5,7 @@ weight: 275
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 4 load balancer (TCP)
-- NGINX ingress controller with SSL termination (HTTPS)
+- [NGINX ingress controller with SSL termination (HTTPS)](https://kubernetes.github.io/ingress-nginx/)
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
@@ -108,6 +108,8 @@ After installing NGINX, you need to update the NGINX config file, `nginx.conf`, 
 
 2. From `nginx.conf`, replace `IP_NODE_1`, `IP_NODE_2`, and `IP_NODE_3` with the IPs of your [Linux hosts](#1-provision-linux-hosts).
 
+    >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+		
     **Example NGINX config:**
     ```
     worker_processes 4;
@@ -194,7 +196,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
 
     >**Using Windows?**
-    >The file is already an executable. Skip to [Download Config File Template](#5-download-config-file-template).
+    >The file is already an executable. Skip to [Download Config File Template](#5-download-rke-config-file-template).
 
     ```
     # MacOS
@@ -391,7 +393,7 @@ Save the `.yml` file and close it.
 
 ## 9. Back Up Your RKE Config File
 
-After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher. 
+After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
 
 ## 10. Run RKE
 

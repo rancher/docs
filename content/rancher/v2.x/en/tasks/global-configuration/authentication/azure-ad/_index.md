@@ -1,9 +1,13 @@
 ---
-title: Configuring Azure Active Directory
-weight: 3075
+title: Configuring Azure Active Directory (Azure AD)
+weight: 52
 ---
 
+_Available as of v2.0.3_
+
 If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
+
+>**Prerequisite:** Have an instance of Azure AD configured.
 
 >**Note:** Most of this procedure, with the exception of [Configure Azure AD in Rancher](#configure-azure-ad-in-rancher), takes place from the [Microsoft Azure Portal](https://portal.azure.com/).
 
@@ -13,7 +17,7 @@ Configuring Rancher to allow your users to authenticate with their Azure AD acco
 
 <a id="tip"></a>
 
->**Tip:** Before you start, we recommend creating an empty text file. You can use this file to copy values from Azure that you'll paste into Rancher later. 
+>**Tip:** Before you start, we recommend creating an empty text file. You can use this file to copy values from Azure that you'll paste into Rancher later.
 
 1. [Register Rancher with Azure](#1-register-rancher-with-azure)
 
@@ -54,7 +58,7 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
     1. From **Application type**, make sure that **Web app / API** is selected.
 
     1. In the **Sign-on URL** field, enter the URL of your Rancher Server.
-    
+
     1. Click **Create**.
 
 ### 2. Create an Azure API Key
@@ -122,29 +126,29 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
     1. Use search to open the **Azure Active Directory** service.
 
          ![Open Azure Active Directory]({{< baseurl >}}/img/rancher/search-azure-ad.png)
-    
+
     1. From the **Azure Active Directory** menu, open **Properties**.
-    
+
     2. Copy the **Directory ID** and paste it into your [text file](#tip).
-    
+
         You'll paste this value into Rancher as your **Tenant ID**.
 
 1. Obtain your Rancher **Application ID**.
-    
+
     1. Use search to open **App registrations**.
 
          ![Open App Registrations]({{< baseurl >}}/img/rancher/search-app-registrations.png)
-    
+
     1. Find the entry you created for Rancher.
-    
+
     1. Copy the **Application ID** and paste it to your [text file](#tip).
 
 1. Obtain your Rancher **Graph Endpoint**, **Token Endpoint**, and **Auth Endpoint**.
-    
+
     1. From **App registrations**, click **Endpoints**.
 
         ![Click Endpoints]({{< baseurl >}}/img/rancher/click-endpoints.png)
-    
+
     2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
 
         - **Microsoft Azure AD Graph API Endpoint** (Graph Endpoint)

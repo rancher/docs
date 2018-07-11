@@ -7,13 +7,11 @@ const {
 const md5           = require('md5');
 const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
-const nue           = [];
+const newNodes           = [];
+const newParagraphs = [];
 const rawdata       = fs.readFileSync('public/algolia.json');
 const nodes         = JSON.parse(rawdata);
 
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-console.log(process.env)
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 nodes.forEach(node => {
   const dom             = new JSDOM(node.content);
   const content         = dom.window.document.body; //post content wrapped in a body tag
@@ -41,7 +39,7 @@ nodes.forEach(node => {
       let next = child.nextElementSibling;
 
       while(next && next.tagName !== 'H2') {
-        if (next) {
+        if (next && next.textContent) {
           paragraphOut.content += next.textContent;
         }
         next = next.nextElementSibling;
@@ -68,8 +66,16 @@ nodes.forEach(node => {
     // objectID is not quite unique yet so hash the entire object
     paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
 
+    if (true || paragraphOut.objectID === "d41d8cd98f00b204e9800998ecf8427e") {
+      console.log('====================================');
+      console.log('ID:',paragraphOut.objectID);
+      console.log('Paragraph:',paragraphOut)
+      console.log('JSON:',JSON.stringify(paragraphOut))
+      console.log('====================================');
+    }
 
-    nue.push(paragraphOut);
+    newParagraphs.push(paragraphOut);
+    newNodes.push(node);
   }
 
 
@@ -81,12 +87,7 @@ nodes.forEach(node => {
 
 });
 
-const merged = [...nodes, ...nue];
+const merged = [...newParagraphs, ...newNodes];
 
-// fs.writeFileSync('public/combined.algolia.json', JSON.stringify(merged));
-// process.exit(0);
-atomicalgolia(process.env.ALGOLIA_INDEX_NAME, merged, (err, result) => {
-  if (err) throw err;
-  console.log(result);
-  process.exit(0);
-});
+fs.writeFileSync('public/final.algolia.json', JSON.stringify(merged));
+process.exit(0);
