@@ -32,4 +32,4 @@ When creating a secret, you can make it available for any deployment within a pr
 
 Now that you have a secret added to the project or namespace, you can add it to a workload that you deploy.
 
-For more information on adding secret to a workload, see [Deploying Workloads](../../workloads/deploy-workloads).
+For more information on adding secret to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/deploy-workloads/).

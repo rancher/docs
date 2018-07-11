@@ -37,4 +37,4 @@ Now that you have a ConfigMap added to a namespace, you can add it to a workload
 - Application environment variables.
 - Specifying parameters for a Volume mounted to the workload.
 
-For more information on adding ConfigMaps to a workload, see [Deploying Workloads](../../workloads/deploy-workloads).
+For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/deploy-workloads/).
