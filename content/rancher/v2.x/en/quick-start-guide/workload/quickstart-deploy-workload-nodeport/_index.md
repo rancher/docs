@@ -5,7 +5,7 @@ weight: 200
 
 ### Assumptions
 
-- You have a running cluster with at least 1 node
+- You have a running cluster with at least 1 node.
 
 ### Deploy a Workload
 
