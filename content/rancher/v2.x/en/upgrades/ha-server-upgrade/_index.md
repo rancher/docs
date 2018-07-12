@@ -19,9 +19,9 @@ To upgrade Rancher 2.x running in a high availability configuration, run an upgr
 
     ```
 	# MacOS
-	./rke_darwin-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config kube_config_rancher-cluster.yml
+	./rke_darwin-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
 	# Linux
-    ./rke_linux-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config kube_config_rancher-cluster.yml
+    ./rke_linux-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
     ```
 
     **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.
