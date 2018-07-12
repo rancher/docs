@@ -1,10 +1,6 @@
 ---
 title: Adding a Sidecar
-<<<<<<< HEAD
 weight: 200
-=======
-weight: 
->>>>>>> undrafting, adding weight
 ---
 A _sidecar_ is a container that extends or enhances the main container in a pod. The main container and the sidecar share a pod, and therefore share the same network space and storage. You can add sidecars to existing workloads by using the **Add a Sidecar** option.
 
