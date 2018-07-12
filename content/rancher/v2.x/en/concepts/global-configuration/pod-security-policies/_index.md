@@ -17,3 +17,13 @@ Read more about Pod Security Policies in the [Kubernetes Documentation](https://
 
 >**Best Practice:**
 >Set Pod Security at the cluster level.
+
+## Related Links
+
+### External Links
+
+- [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+
+### Tutorials
+
+- [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/adding-a-pod-security-policy)

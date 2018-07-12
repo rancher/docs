@@ -156,3 +156,13 @@ Last thing you will need to do, is assign the appropriate permissions to your Ap
 Custom Azure Network Security Group needed to allow Azure Load Balancers to work. If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group. You should already assign custom hosts to this Network Security Group during provisioning.
 
 Only hosts expected to be Load Balancer backends need to be in this group.
+
+## Related Links
+
+### External Links
+
+- [Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+
+### Tutorials
+
+- [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/)

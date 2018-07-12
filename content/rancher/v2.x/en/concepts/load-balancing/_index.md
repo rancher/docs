@@ -50,3 +50,22 @@ Other layer-7 load balancers, such as the Google Load Balancer or Nginx Ingress 
 2.	Ask Rancher to generate an xip.io host name for your ingress rule. Rancher will take one of your exposed IPs, say a.b.c.d, and generate a host name <ingressname>.<namespace>.a.b.c.d.xip.io.
 
 The benefit of using xip.io is that you obtain a working entrypoint URL immediately after you create the ingress rule. Setting up your own domain name, on the other hand, requires you to configure DNS servers and wait for DNS to propagate.
+
+## Related Links
+
+### External Load Balancers
+
+#### External Links
+
+- [Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+
+#### Tutorials
+
+- [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+- [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
+- [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+
+### Ingress Controller
+
+- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
+<!--  [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/add-ingress) -->

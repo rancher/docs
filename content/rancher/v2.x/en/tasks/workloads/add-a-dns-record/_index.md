@@ -2,6 +2,7 @@
 title: Adding a DNS Record
 weight: 75
 ---
+
 For every workload created, a complementing Service Discovery entry is created. This Service Discovery entry enables DNS resolution for the workload's pods using the following naming convention:
 `<workload>.<namespace>.svc.cluster.local`.
 
@@ -43,3 +44,13 @@ However, you also have the option of creating additional Service Discovery recor
 
 - You can view the record by from the project's **Service Discovery** tab.
 - When you visit the new DNS name for the new record that you created (`<recordname>.<namespace>.svc.cluster.local`), it resolves the chosen namespace.
+
+## Related Links
+
+### Tutorials
+
+- [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/concepts/service-discovery)
+
+### External Links
+
+- [Adding entries to Pod /etc/hosts with HostAliases](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)

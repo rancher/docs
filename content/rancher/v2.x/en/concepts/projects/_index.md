@@ -21,3 +21,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 Kubernetes resources belong to specific namespaces. Rancher 2.0 relies on namespaces to isolate resources among users and apps. When the user deploys an app from the catalog, for example, he can choose to deploy that app into its own namespace, so that resource names in one app will not conflict with resource names in another. Namespaces must be globally unique. It is often difficult for users to pick unique namespace names. Rancher therefore encourages the pattern where users work with projects, and the system generates unique namespace names automatically.
 
 For more information, see the [Kubernetes Namespaces Documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
+
+## Related Links
+
+- [Project Tutorials]({{< baseurl >}}/rancher/v2.x/en/tasks/projects)

@@ -46,3 +46,14 @@ In addition to customizing each provisioner's options for the storage class, you
 Finally, you can define custom `MountOptions` for the persistent volume created.
 
 `parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
+
+## Related Links
+
+### External Docs
+
+- [Storage](https://kubernetes.io/docs/concepts/storage/)
+
+### Tutorials
+
+- [Adding Storage]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/adding-storage/provisioning-storage)
+- [Adding Persistent Volume Claims]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/add-persistent-volume-claim)
