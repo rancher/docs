@@ -1,4 +1,4 @@
 ---
 title: Admin Settings
-weight: 25
+weight: 1100
 ---
