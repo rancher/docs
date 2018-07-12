@@ -1,7 +1,6 @@
 ---
 title: Provisioning NFS Storage
 weight: 3500
-draft: true
 ---
 
 Before you can use the NFS storage volume plug-in with Rancher deployments, you need to provision an NFS server.
