@@ -27,7 +27,7 @@ Kubernetes divides workloads into different types. The most popular types suppor
 
 - [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
-    _Daemonsets_ ensures that every node in the cluster runs a copy of pod. For use cases where where you're collecting logs or monitoring node performance, this daemon-like workload works best.
+    _Daemonsets_ ensures that every node in the cluster runs a copy of pod. For use cases where you're collecting logs or monitoring node performance, this daemon-like workload works best.
 
 - [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
 
