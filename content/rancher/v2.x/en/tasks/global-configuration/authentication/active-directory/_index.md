@@ -1,5 +1,6 @@
 ---
 title: Configuring Active Directory (AD)
+description: Enterprises can use Active Directory (AD) for authentication, allowing users to sign in using their corporate credentials.
 weight: 51
 ---
 
