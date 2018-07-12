@@ -127,6 +127,10 @@
 }
 
 .page-nav {
+  > ol {
+    column-count: 4;
+    column-gap: $spacer-xs;
+  }
   ol {
     padding: 0;
     list-style: none;
@@ -135,11 +139,11 @@
   }
   ol li {
       display: block;
-      padding-left: 2em;
+      padding-left: $spacer-xs;
   }
   ol li:before {
       display: inline-block;
-      margin-left: -2em;
+      margin-left: -$spacer-xs;
       margin-right: .5em;
       text-align: center;
       content: counters(item, ".") ".";
