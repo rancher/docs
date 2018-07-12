@@ -1,10 +1,10 @@
 ---
 title: Adding a Secret
 weight: 
-draft: true
 ---
 
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.
+
 When creating a secret, you can make it available for any deployment within a project, or you can limit it to a single namespace.
 
 1. From the **Global** view, select the project containing the namespace(s) where you want to add a secret.
@@ -25,7 +25,6 @@ When creating a secret, you can make it available for any deployment within a pr
 
 1. Click **Save**.
 	
-
 **Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Secrets** view.
 
 ## What's Next?
