@@ -17,6 +17,7 @@ const fs            = require('fs');
 
 const $            = gulpLoadPlugins();
 const browserSync  = require('browser-sync').create();
+const request = require('request');
 const isProduction = process.env.NODE_ENV === 'production';
 
 process.on('SIGINT', (err) => {
@@ -28,10 +29,6 @@ process.on('uncaughtException', (err) => {
   console.log('Uncaught Exception, exiting', '\r\n', err);
   process.exit(1);
 });
-
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-console.log(process.env)
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
 
 // --
 gulp.task('dev', ['build-dev'], () => {
@@ -194,26 +191,33 @@ gulp.task('publish:search-index', (cb) => {
     env: env
   };
 
+  request.get({url: 'http://rancher-metadata/2015-07-25/self/service/containers/0', timeout: 2000}, function(err, res, first) {
+    if ( err ) {
+      return cb(err);
+    }
 
-  console.log('Waiting');
-  setTimeout(() => {
-    console.log('Done');
-    exec('giddyup leader check', opts, function(err, stdout, stderr) {
-      console.log('Error:', err);
-      console.log('Stdout:', stdout);
-      console.log('Stderr:', stderr);
-    }).on('close', code => {
-      if (code === 0) {
-        console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
-        atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, {verbose: true},  (err, result) => {
-          console.log(result);
-          cb(err);
-        });
-      } else {
-        console.log('I am not the leader (' + code + ')');
-        cb(new Error('Not the leader'));
+    request.get({url: 'http://rancher-metadata/2015-07-25/self/container/name', timeout: 2000}, function(err, res, me) {
+      if ( err ) {
+        return cb(err);
       }
-    });
-  }, 10000);
 
+      console.log('First:', first);
+      console.log('Me:', me);
+
+      if ( !first || !me ) {
+        return cb(new Error('Unable to determine who is the leader (' + first + ', ' + me+ ')'));
+      }
+
+      if ( first !== me ) {
+        console.log('I am not the leader');
+        return cb();
+      }
+
+      console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
+      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, {verbose: true},  (err, result) => {
+        console.log(result);
+        cb(err);
+      });
+    });
+  });
 });
