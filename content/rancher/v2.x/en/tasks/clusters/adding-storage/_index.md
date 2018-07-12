@@ -1,7 +1,6 @@
 ---
 title: Adding Storage
 weight: 3500
-draft: true
 ---
 
 >**Prerequisites:** 
