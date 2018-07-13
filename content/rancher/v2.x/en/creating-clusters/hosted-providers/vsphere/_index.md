@@ -1,7 +1,7 @@
 ---
 title: Creating a vSphere Cluster
-shortTitle: vSphere
-weight: 3375
+aliases:
+	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-vsphere
 ---
 Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
