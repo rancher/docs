@@ -1,7 +1,7 @@
 ---
 title: Creating an Azure Cluster
 aliases:
-	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure
+  -/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure
 ---
 
 Use {{< product >}} to create a Kubernetes cluster in Azure.

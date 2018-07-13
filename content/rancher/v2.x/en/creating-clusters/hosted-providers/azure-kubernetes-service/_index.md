@@ -1,7 +1,7 @@
 ---
 title: Creating an AKS Cluster
 aliases:
-	-content/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service
+  -content/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service
 ---
 
 You can use Rancher to create a cluster using Microsoft Azure Container Service.

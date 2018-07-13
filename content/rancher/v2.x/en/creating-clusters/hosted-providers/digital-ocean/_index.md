@@ -1,7 +1,7 @@
 ---
 title: Creating a DigitalOcean Clusters
 aliases:
-	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-digital-ocean
+  -/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-digital-ocean
 ---
 Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 

@@ -1,7 +1,7 @@
 ---
 title: Creating a vSphere Cluster
 aliases:
-	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-vsphere
+  -/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-vsphere
 ---
 Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
@@ -15,7 +15,7 @@ Before setting up a cluster in vSphere, you must ensure that you have a user in 
 
 3. Create a new *Role*.  Give it a name and select the **Datastore**, **Network**, **Resource**, and **Virtual machine** *privileges*.
 
-![image](./rancherroles1.png)
+![image](./rancherroles1.png)!
 ![image](./rancherroles2.png)
 
 4. Go to the **Users and Groups** tab.

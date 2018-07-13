@@ -1,7 +1,7 @@
 ---
 title: Creating an EKS Cluster
 aliases:
-	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-eks
+  -/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-eks
 ---
 ## Objectives
 

@@ -2,7 +2,7 @@
 title: Creating an Amazon EC2 Cluster
 weight:
 aliases:
-	-/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-amazon-ec2
+  -/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-amazon-ec2
 ---
 Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
