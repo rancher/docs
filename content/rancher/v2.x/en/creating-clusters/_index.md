@@ -2,6 +2,7 @@
 title: Creating Kubernetes Clusters
 weight: 1200
 aliases:
+    -/rancher/v2.x/en/concepts/clusters/cluster-providers
 ---
 
 Using Rancher, you can create Kubernetes clusters using a variety of options. Use the option that best fits your use case.
