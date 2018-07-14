@@ -20,9 +20,23 @@ When setting up management of your hosted Kubernetes cluster in the Rancher UI, 
 
 ## Google GKE (Google Container Engine)
 
+Before Rancher can manage a Google GKE cluster, you must create a service account with Google. This account also requires you to assign it the appropriate roles.
+
+Create a service account using [Google Cloud Platform](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts). GKE uses this account to operate your cluster. Creating this account also generates a private key used for authentication.
+
+The service account requires the following roles:
+
+-	`project/viewer`
+-	`kubernetes-engine/admin`
+-	`service-account/user`
+
+For full instructions on how to complete these actions, see [Creating and Enabling Service Accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances).
+
+After you create a service account, enter your service account private key into Rancher.
+
 ## Amazon EKS (Elastic Container Service)
 
-Before Rancher can manage an amazon EKS cluster, you must provide it with an Amazon access key that has the appropriate permissions assigned to it.
+Before Rancher can manage an Amazon EKS cluster, you must provide it with an Amazon access key that has the appropriate permissions assigned to it.
 
 Log into the [Amazon AWS Management Console](https://aws.amazon.com/console/) to assign yourself the appropriate IAM permissions and create an access key. Complete the actions below.
 
