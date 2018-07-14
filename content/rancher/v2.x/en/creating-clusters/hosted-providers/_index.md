@@ -47,3 +47,9 @@ Log into the [Amazon AWS Management Console](https://aws.amazon.com/console/) to
 After you complete the two actions above, enter your access key and secret key in Rancher.
 
 ## Microsoft AKS (Azure Container Service)
+
+Before Rancher can manage a Microsoft AKS cluster, you must provide it with information from your Azure Active Directory Service Principal (here after, _service principal_). Rancher uses this service principal to interact with the Azure API.
+
+For instruction on how to create a service principal, see [Service Principals with Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/kubernetes-service-principal).
+
+After you complete the action above, enter the information from your service principal in Rancher.
