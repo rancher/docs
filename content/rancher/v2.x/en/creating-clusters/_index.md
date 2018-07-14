@@ -7,15 +7,15 @@ aliases:
 
 Using Rancher, you can create Kubernetes clusters using a variety of options. Use the option that best fits your use case.
 
-## In A Hosted Kubernetes Provider
+## Hosted Kubernetes Providers
 
 If you already have a cluster hosted by a Kubernetes provider such as Google GKE, Rancher can integrate with its cloud APIs, allowing you to manage your hosted cluster from the Rancher UI.
 
-## From Nodes in an Infrastructure Provider
+## Infrastructure Providers
 
 Using Rancher, you can leverage APIs from major IaaS providers to create nodes and provision a new Kubernetes cluster.
 
-## From Your Own Existing Nodes
+## From Existing Nodes
 
 Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using RKE, which is Rancher's own lightweight Kubernetes installer.
 
