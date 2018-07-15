@@ -104,7 +104,7 @@ $ sudo chmod 755 /opt/rancher/bin/start.sh
 Another useful command that can be used with RancherOS is `ros` which can be used to control and configure the system.
 
 ```
-$ ros -v
+$ sudo ros -v
 ros version 0.0.1
 ```
 
