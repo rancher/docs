@@ -11,7 +11,7 @@ You can build any complex containerized application in Kubernetes using two basi
 ### Workloads
 
 _Workloads_ are objects that set deployment rules for pods. Based on these rules, Kubernetes performs the deployment and updates the workload with the current state of the application.
-Workloads lets you define the rules for application scheduling, scaling, and upgrade.
+Workloads let you define the rules for application scheduling, scaling, and upgrade.
 
 #### Workload Types
 
