@@ -1,6 +1,6 @@
 ---
 title: RBAC
-weight: 25
+weight: 75
 aliases:
     -/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/
 ---
