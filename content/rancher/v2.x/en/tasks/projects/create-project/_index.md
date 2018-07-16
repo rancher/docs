@@ -11,9 +11,9 @@ weight:
 
 1. **Optional:** Select a **Pod Security Policy**.
 
-    [What are Pod Security Policies?]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/pod-security-policies)
+    [What are Pod Security Policies?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies)
 
-    >**Note:** This option is only available if you've already created a Pod Security Policy. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/pod-security-policies/#creating-pod-security-policies).
+    >**Note:** This option is only available if you've already created a Pod Security Policy. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/#creating-pod-security-policies).
 
 1. **Recommended:** Add project members.
 
@@ -29,9 +29,9 @@ weight:
 
     1. From the **Role** drop-down, choose a role.
 
-        [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#cluster-and-project-roles)
+        [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#cluster-and-project-roles)
 
-        >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#custom-project-roles).
+        >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#custom-project-roles).
 
     1. To add more members, repeat substeps a—c.
   
