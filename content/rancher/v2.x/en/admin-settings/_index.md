@@ -5,11 +5,10 @@ aliases:
   - /rancher/v2.x/en/concepts/global-configuration
 ---
 
-After installing Rancher 2.0, you should configure it to support your users and environment. This section describes the global configurations you should make after installation.
+After installing Rancher 2.0, you should
 
-- [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/server-url)
-- [Authentication]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication/)
-- [Users, Roles, and Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-roles-permissions)
-- [Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/pod-security-policies)
-- [Node Drivers]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/node-drivers)
-- [Node Templates]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/node-templates)
+1. Set a Rancher Server URL, which your cluster nodes will use to resolve with Rancher. You'll be prompted to set this URL upon your first log in.
+
+2. Set up external user authentication and permissions so that your organization can log into Rancher.
+
+After making these initial configurations, you might also want to configure one or more _pod security policies_, which are sets of conditions that your pods must meet for Kubernetes to allow them to run.
