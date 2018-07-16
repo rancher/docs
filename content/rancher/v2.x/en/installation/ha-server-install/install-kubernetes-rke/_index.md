@@ -1,13 +1,13 @@
 ---
 title: 2 - Install Kubernetes with RKE
-weight: 276
+weight: 190
 ---
 
-Configure the RKE `cluster.yml` and run `rke` to install Kubernetes with a HA `etcd` install.
+Configure the RKE `rancher-cluster.yml` and run `rke` to install Kubernetes with a HA `etcd` install.
 
-### Create a `cluster.yml` File
+### Create a `rancher-cluster.yml` File
 
-Using the sample below create a `cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
+Using the sample below create a `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
 
 ```yaml
 nodes:
@@ -49,17 +49,17 @@ Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full 
 ### Run RKE
 
 ```
-rke up --config ./cluster.yaml
+rke up --config ./rancher-cluster.yaml
 ```
 
 ### Testing your cluster
 
-`rke` should have created a file `kube_config_cluster.yml`. This file has the credentials for `kubectl` and `helm`.
+`rke` should have created a file `kube_config_rancher-cluster.yml`. This file has the credentials for `kubectl` and `helm`.
 
-You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set`KUBECONFIG` environmental variable to the path of `kube_config_cluster.yml`.
+You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set`KUBECONFIG` environmental variable to the path of `kube_config_rancher-cluster.yml`.
 
 ```
-export KUBECONFIG=$(pwd)/kube_config_cluster.yml
+export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
 ```
 
 Test you connectivity with `kubectl` and see if you can get the list of nodes back.
@@ -73,6 +73,12 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
 ```
 
-Issues or errors?  See the [Troubleshooting](troubleshooting/) page.
+### Save your files
 
-### [Next: Initialize Helm](../helm/)
+You will need to save a copy of the `kube_config_rancher-cluster.yml` and `rancher-cluster.yml` files. You will need these files to maintain and upgrade your Rancher instance.
+
+### Issues or errors?
+
+See the [Troubleshooting](troubleshooting/) page.
+
+### [Next: Initialize Helm](../helm-install/)

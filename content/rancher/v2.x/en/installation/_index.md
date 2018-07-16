@@ -10,28 +10,16 @@ This section contains instructions for installing Rancher in development and pro
 
 	Install Rancher on a single Linux host.
 
-- [Single Node Installation with External Load Balancer](single-node-install-external-lb/)
-
-	In this scenario, you install Rancher on a single Linux host and access it using an external load balancer/proxy.
-
 -  [High Availability Installation](ha-server-install/)
 
  	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availability (HA) configuration.
 
-### Advanced Install Scenarios
+### Reference
 
--  [Air Gap Installation](air-gap-installation/)
+-  [Images required for Air Gap Installation](air-gap-images/)
 
 	Required images and configuration to install Rancher Server in an environment without direct Internet access.
-
--  [Rancher HTTP Proxy Configuration](proxy-configuration/)
-
-	Rancher configuration to run behind a proxy.
-
-
-### Reference
 
 -  [Port Requirements](references/)
 
  	List of required ports you must open to operate Rancher.
-
