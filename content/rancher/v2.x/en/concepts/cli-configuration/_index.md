@@ -62,7 +62,7 @@ The following commands are available for use in Rancher CLI.
 
 - `clusters, [cluster]`
 
-    Performs operations on your [clusters]({{< baseurl >}}/rancher/v2.x/en/concepts/clusters).
+    Performs operations on your [clusters]({{< baseurl >}}/rancher/v2.x/en/clusters/).
 
 - `context`
 
