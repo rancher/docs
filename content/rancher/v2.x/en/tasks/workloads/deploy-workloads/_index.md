@@ -26,7 +26,7 @@ Deploy a workload to run an application in one or more containers.
         Use this section to either specify environment variables for your workload to consume on the fly, or to pull them from another source, such as a secret or [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-configmaps/).
 
     - **Node Scheduling**
-    - **Health Check** 
+    - **Health Check**
     - **Volumes**
 
         Use this section to add storage for your workload. You can manually specify the volume that you want to add, use a persistent volume claim to dynamically create a volume for the workload, or read data for a volume to use from a file such as a [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-configmaps/).
@@ -39,7 +39,7 @@ Deploy a workload to run an application in one or more containers.
         >
         >- In [Amazon AWS](https://aws.amazon.com/), the nodes must be in the same Availability Zone and possess IAM permissions to attach/unattach volumes.
         >
-        >- The cluster must be using the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws) option. For more information on enabling this option see [Creating an Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-amazon-ec2/) or [Creating a Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/custom-clusters/).
+        >- The cluster must be using the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws) option. For more information on enabling this option see [Creating an Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters/node-pools/node-drivers/ec2/) or [Creating a Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/custom-clusters/).
 
 
 1. Click **Show Advanced Options** and configure:
