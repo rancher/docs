@@ -3,15 +3,6 @@ title: Hosted Kubernetes Providers
 weight: 2100
 ---
 
----
-title: Hosted Kubernetes Providers
-weight: 25
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-eks
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-gke
----
-
 If you already have a cluster hosted by a Kubernetes provider, Rancher can integrate with its cloud APIs, allowing you to manage your hosted cluster from the Rancher UI.
 
 Rancher supports the following Kubernetes providers:
