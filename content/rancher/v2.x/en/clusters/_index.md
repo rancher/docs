@@ -32,20 +32,20 @@ The control plane nodes are used to run the Kubernetes API server, scheduler, an
 
 Worker nodes are used to run the kubelet and the workload. It also runs the storage and networking drivers and ingress controllers when required. You create as many worker nodes as needed for your workload needs.
 
-## Rancher Kubernetes Engine (RKE)
 
-RKE is Rancher’s own lightweight Kubernetes installer. It works with any cloud providers, virtualization platforms, or bare metal servers. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
+Using Rancher, you can create Kubernetes clusters using a variety of options. Use the option that best fits your use case.
 
-<!-- ### RKE Clusters and Kubeconfig Files
+## Hosted Kubernetes Providers
 
-Craig! Fill me in!
+By integrating with cloud APIs, Rancher lets you create new Kubernetes clusters through hosted providers, all within the Rancher UI. You can create clusters using either:
 
--->
+- A hosted Kubernetes provider, such as Google GKE, Amazon EKS, or Microsoft AKS.
+- An IaaS provider, using nodes provided from Amazon EC2, Microsoft Azure, or DigitalOcean.
 
-## Cloud-Managed Kubernetes Clusters
+## Rancher-Launched Kubernetes
 
-Rancher integrates with cloud APIs so users can provision GKE, EKS, and AKS clusters directly from Rancher. New cloud managed Kubernetes clusters will be added as they become available.
+Alternatively, you can use Rancher to create a cluster from your own existing nodes, using RKE. RKE is Rancher’s own lightweight Kubernetes installer. It works with any bare metal server, cloud provider, or virtualization platform. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
 
-## Imported Clusters
+## Kubernetes Importation
 
-Users can import an existing Kubernetes cluster into Rancher. Rancher does not automate the provisioning, scaling, and upgrade of imported Kubernetes clusters. All other cluster management, policy management, and workload management capabilities of Rancher apply to imported clustered.
+Finally, you also have the option of importing an existing Kubernetes cluster that you're already using into Rancher.
