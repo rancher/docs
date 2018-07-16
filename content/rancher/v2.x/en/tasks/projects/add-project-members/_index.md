@@ -37,12 +37,12 @@ Following project creation, you can add users as project members so that they ca
 
 1. Assign the user or group **Project** roles.  
 
-	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#cluster-roles)
+	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#cluster-roles)
 
 	>**Tip:** For Custom Roles, you can modify the list of individual roles available for assignment.
 	>
-	> - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/roles/#adding-a-custom-role).
-	> - To remove roles from the list, [Lock/Unlock Roles]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/roles/#locking-unlocking-roles).
+	> - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/creating-roles/#adding-a-custom-role).
+	> - To remove roles from the list, [Lock/Unlock Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/creating-roles/#locking-unlocking-roles).
 
 **Result:** The chosen users are added to the project.
 

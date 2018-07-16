@@ -1,6 +1,8 @@
 ---
 title: Configuring FreeIPA
-weight: 55
+weight: 150
+aliases:
+    -/rancher/v2.x/en/tasks/global-configuration/authentication/freeipa/
 ---
 
 _Available as of v2.0.5_
@@ -11,7 +13,7 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 >
 >- You must have a [FreeIPA Server](https://www.freeipa.org/) configured.
 >- Create a service account in FreeIPA with `read-only` access. Rancher uses this account to verify group membership when a user makes a request using an API key.
->- Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication/#external-authentication-configuration-and-principal-users).
+>- Read [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 1.  Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
 

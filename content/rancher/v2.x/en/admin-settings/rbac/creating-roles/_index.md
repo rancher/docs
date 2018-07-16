@@ -1,7 +1,10 @@
 ---
-title: Roles
-weight: 100
+title: Creating Roles
+weight: 25
+aliases:
+    -/rancher/v2.x/en/tasks/global-configuration/roles/
 ---
+
 Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
 
 Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
@@ -10,8 +13,8 @@ Note that _roles_ are different from _permissions_, which determine what cluster
 >
 >To complete the tasks on this page, the following permissions are required:
 >
->- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#global-permissions).
->- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#global-permissions-reference) role assigned.
+>- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#global-permissions).
+>- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#global-permissions-reference) role assigned.
 
 ## Adding A Custom Role
 
@@ -23,7 +26,7 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 3.	**Name** the role.
 
-4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#locked-roles).
+4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#locked-roles).
 
 	Locked roles cannot be assigned to users.
 
@@ -51,7 +54,7 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 ## Locking/Unlocking Roles
 
-If you want to prevent a role from being assigned to users, you can set it to a status of `locked`. For more information about what this status means, see [Locked Roles]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/#locked-roles).
+If you want to prevent a role from being assigned to users, you can set it to a status of `locked`. For more information about what this status means, see [Locked Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#locked-roles).
 
 You can lock roles in two contexts:
 
