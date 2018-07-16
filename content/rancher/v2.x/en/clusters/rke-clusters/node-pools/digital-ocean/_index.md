@@ -1,5 +1,5 @@
 ---
-title: Creating a DigitalOcean Clusters
+title: Creating a DigitalOcean Cluster
 shortTitle: DigitalOcean
 weight: 2215
 aliases:
