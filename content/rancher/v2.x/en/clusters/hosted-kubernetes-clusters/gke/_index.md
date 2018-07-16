@@ -1,7 +1,9 @@
 ---
 title: Creating a GKE Cluster
 shortTitle: Google Container Engine
-weight: 3325
+weight: 2105
+aliases:
+  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-gke/_index.md
 ---
 ## Objectives
 

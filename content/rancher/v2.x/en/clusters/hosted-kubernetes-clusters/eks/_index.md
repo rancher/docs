@@ -1,7 +1,9 @@
 ---
 title: Creating an EKS Cluster
 shortTitle: Amazon EKS
-weight: 3325
+weight: 2110
+aliases:
+	- /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-eks/_index.md
 ---
 ## Objectives
 
