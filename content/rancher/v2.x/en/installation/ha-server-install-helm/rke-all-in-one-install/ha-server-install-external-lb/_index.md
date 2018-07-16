@@ -1,6 +1,8 @@
 ---
 title: High Availability Installation with External Load Balancer (HTTPS/Layer 7)
 weight: 276
+aliases:
+- /rancher/v2.x/en/installation/ha-server-install-external-lb/
 ---
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
@@ -105,8 +107,8 @@ Health checks can be executed on the `/healthz` endpoint of the node, this will 
 
 We have example configurations for the following load balancers:
 
-* [Amazon ALB configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/alb)
-* [NGINX configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/nginx)
+* [Amazon ALB configuration](alb/)
+* [NGINX configuration](nginx/)
 
 ## 3. Configure DNS
 
@@ -327,7 +329,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/ha-backups/).
 - Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>

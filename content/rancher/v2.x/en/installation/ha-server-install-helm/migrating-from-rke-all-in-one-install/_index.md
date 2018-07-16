@@ -31,14 +31,14 @@ kubectl -n cattle-system get secret cattle-keys-ingress -o jsonpath --template='
 If you specified a private CA root cert
 
 ```
-kubectl -n cattle-system get secret cattle-keys-server -o jsonpath --template='{ .data.cacerts\.pem }' | base64 -d > tls.crt
+kubectl -n cattle-system get secret cattle-keys-server -o jsonpath --template='{ .data.cacerts\.pem }' | base64 -d > cacerts.pem
 ```
 
 ### Remove previous Kubernetes objects
 
 Remove the kubernetes objects created by the RKE install.
 
-> NOTE: Removing these Kubernetes components will not affect the Rancher configuration or database, but with any maintenance it is a good idea to create a backup of the data before hand. See [Creating Backups-HA Install]({{< baseurl >}}/rancher/v2.x/en/backups/ha-backups) for details.
+> NOTE: Removing these Kubernetes components will not affect the Rancher configuration or database, but with any maintenance it is a good idea to create a backup of the data before hand. See [Creating Backups-HA Install]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups) for details.
 
 ```
 kubectl -n cattle-system delete ingress cattle-ingress-http

@@ -10,7 +10,7 @@ This section contains instructions for installing Rancher in development and pro
 
 	Install Rancher on a single Linux host.
 
--  [High Availability Installation](ha-server-install/)
+-  [High Availability Installation](ha-server-install-helm/)
 
  	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availability (HA) configuration.
 

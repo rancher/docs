@@ -1,6 +1,8 @@
 ---
 title: Single Node Installation with External Load Balancer
 weight: 260
+aliases:
+- /rancher/v2.x/en/installation/single-node-install-external-lb/
 ---
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
 
@@ -58,7 +60,7 @@ The following diagram depicts the basic port requirements for Rancher. For a com
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 >**Attention Air Gap Users:**
-> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
+> If you are visiting this page to complete [Air Gap Installation](../air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
 >
 > Example:
 ```
@@ -175,8 +177,8 @@ server {
 ## What's Next?
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/).
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+- Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/single-node-backups/).
+- Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
 

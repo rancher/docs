@@ -1,6 +1,8 @@
 ---
 title: Failed to set up SSH tunneling for host
 weight: 10
+aliases:
+- /rancher/v2.x/en/installation/troubleshooting-ha/ssh-tunneling/
 ---
 
 ### Failed to set up SSH tunneling for host [xxx.xxx.xxx.xxx]: Can't retrieve Docker Info
