@@ -1,6 +1,6 @@
 ---
 title: 1 - Create Nodes and Load Balancer
-weight: 276
+weight: 185
 ---
 
 Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.
@@ -54,7 +54,7 @@ In addition to the ports listed above these ports must be open between nodes.
 
 ### Load Balancer
 
-RKE will configure an Ingress-Controller pod, on each of your nodes. The ingress controller pods are bound to ports 80 and 443 tcp on the host network and are the entry point for https traffic to the Rancher server.
+RKE will configure an ingress-controller pod, on each of your nodes. The ingress-controller pods are bound to ports 80 and 443 tcp on the host network and are the entry point for https traffic to the Rancher server.
 
 Configure a load balancer as a basic Layer 4 tcp forwarder. The exact configuration will vary depending on your environment.
 
@@ -64,4 +64,4 @@ Configure a load balancer as a basic Layer 4 tcp forwarder. The exact configurat
 
 <br/>
 
-### [Next: Install Kubernetes with RKE](../rke/)
+### [Next: Install Kubernetes with RKE](../install-kubernetes-rke/)

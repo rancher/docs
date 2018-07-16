@@ -1,10 +1,9 @@
 ---
 title: 4 - Install Rancher
-weight: 276
+weight: 200
 ---
 
 Rancher installation is now managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and Rancher charts.
-
 
 ### Add the Chart Repo
 
