@@ -1,6 +1,8 @@
 ---
 title: Amazon NLB configuration
 weight: 277
+aliases:
+- /rancher/v2.x/en/installation/ha-server-install/nlb/
 ---
 ## Objectives
 

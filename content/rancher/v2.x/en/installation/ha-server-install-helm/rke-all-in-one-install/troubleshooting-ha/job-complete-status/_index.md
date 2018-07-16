@@ -1,6 +1,8 @@
 ---
 title: Failed to get job complete status
 weight: 20
+aliases:
+- /rancher/v2.x/en/installation/troubleshooting-ha/job-complete-status/
 ---
 
 To debug issues around this error, you will need to download the command-line tool `kubectl`. See [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) how to download `kubectl` for your platform.

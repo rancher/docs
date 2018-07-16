@@ -4,11 +4,8 @@ weight: 250
 ---
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 
-
 >**Want to use an external load balancer?**
-> See [Single Node Installation with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb) instead.
-
-
+> See [Single Node Installation with an External Load Balancer](advanced-install-options/single-node-install-external-lb) instead.
 
 ## Installation Outline
 
@@ -28,15 +25,15 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 ### Requirements
 
-#### Operating System 
+#### Operating System
 
 {{< requirements_os >}}
 
-#### Hardware 
+#### Hardware
 
 {{< requirements_hardware >}}
 
-#### Software 
+#### Software
 
 {{< requirements_software >}}
 
@@ -81,8 +78,6 @@ If you install Rancher without using your own certificate, Rancher generates a s
 	  rancher/rancher:latest
 	```
 
-
-
 ### Option B—Bring Your Own Certificate: Self-Signed
 
 Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
@@ -92,7 +87,6 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 >
 >- The certificate files must be in [PEM format](#pem).
 >- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
-
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -163,7 +157,6 @@ Run the following commands from your Linux host.
 	  --acme-domain rancher.mydomain.com
 	```
 
-
 >
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 
@@ -199,4 +192,3 @@ docker run -d --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
   rancher/rancher:latest
 ```
-

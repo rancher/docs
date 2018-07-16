@@ -1,6 +1,8 @@
 ---
 title: 404 - default backend
 weight: 30
+aliases:
+- /rancher/v2.x/en/installation/troubleshooting-ha/404-default-backend/
 ---
 
 To debug issues around this error, you will need to download the command-line tool `kubectl`. See [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) how to download `kubectl` for your platform.

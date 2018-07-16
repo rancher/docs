@@ -1,6 +1,8 @@
 ---
 title: Generic troubleshooting
-weight: 5 
+weight: 5
+aliases:
+- /rancher/v2.x/en/installation/troubleshooting-ha/generic-troubleshooting/
 ---
 
 Below are steps that you can follow to determine what is wrong in your cluster.

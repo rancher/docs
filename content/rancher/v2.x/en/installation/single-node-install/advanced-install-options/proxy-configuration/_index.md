@@ -1,6 +1,8 @@
 ---
 title: Rancher HTTP Proxy Configuration
 weight: 360
+aliases:
+- /rancher/v2.x/en/installation/proxy-configuration/
 ---
 If you operate Rancher behind a proxy and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy.
 

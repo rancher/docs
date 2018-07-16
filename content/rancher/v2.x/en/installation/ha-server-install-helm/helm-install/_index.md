@@ -21,7 +21,7 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 <details><summary>Additional steps for Air Gap/Private Registry</summary>
 <p>
 
-If you have an Air Gapped network extra configuration will be required.
+If you have an Air Gapped network you will need the tiller image available in your private registry.
 
 ##### Create registry secret
 
