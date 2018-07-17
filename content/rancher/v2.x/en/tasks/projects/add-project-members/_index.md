@@ -1,11 +1,11 @@
 ---
 title: Adding Project Members
-weight: 
+weight:
 ---
 
 If you want to provide a user with access and permissions to _specific_ projects and resources within a cluster, assign the user a project membership.
 
->**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/adding-managing-cluster-members) instead.
+>**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{< baseurl >}}/rancher/v2.x/en/clusters/adding-users) instead.
 
 There are two contexts where you can add project members:
 
@@ -28,9 +28,9 @@ Following project creation, you can add users as project members so that they ca
 3. Search for the user or group that you want to add to the project.
 
  	If external authentication is configured:
-	
+
 	-  Rancher returns users from your external authentication source as you type.  
-	
+
 	- A drop-down allows you to add groups instead of individual users. The dropdown only lists groups that you, the logged in user, are included in.
 
 	>**Note:** If you are logged in as a local user, external users do not display in your search results.
