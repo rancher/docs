@@ -8,7 +8,7 @@ aliases:
 Out-of-the-box, you can enable several different catalog repositories to simplify deployment of applications.
 
 1. From the **Global** view, choose **Catalogs** from the main menu.
-2. Toggle the default catalogs that you want use to a setting of **Enabled**. The [default catalogs]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs/#catalog-types) are:
+2. Toggle the default catalogs that you want use to a setting of **Enabled**. The [default catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/#catalog-types) are:
 
     - **Library**
     - **Helm Stable**

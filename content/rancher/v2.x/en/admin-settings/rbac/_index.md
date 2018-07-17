@@ -5,7 +5,7 @@ aliases:
     -/rancher/v2.x/en/admin-settings/rbac/
 ---
 
-Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{< baseurl >}}/rancher/v2.x/en/concepts/global-configuration/authentication), users can either be local or external.
+Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/), users can either be local or external.
 
 After you configure external authentication, the users that display on the **Users** page changes.
 
@@ -196,4 +196,3 @@ Roles can be locked by the following users:
 
 - Any user assigned the `Administrator` global permission.
 - Any user assigned the `Custom Users` permission, along with the `Manage Roles` role.
-

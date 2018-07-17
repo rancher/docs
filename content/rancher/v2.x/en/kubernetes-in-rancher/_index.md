@@ -16,6 +16,6 @@ Within the context of a Rancher project or namespace, _resources_ are files and 
 - [Secrets](#secrets)
 - [Registries](#registries)
 
-Rancher extends the application of the Kubernetes namespace resources listed above to [projects]({{< baseurl >}}/rancher/v2.x/en/concepts/projects/), which are Rancher-specific constructs. In the hierarchy of Rancher objects, projects contain namespaces. Therefore, any resources available within a project are available for all namespaces within that project.
+Rancher extends the application of the Kubernetes namespace resources listed above to [projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-namespaces/), which are Rancher-specific constructs. In the hierarchy of Rancher objects, projects contain namespaces. Therefore, any resources available within a project are available for all namespaces within that project.
 
-Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well. 
+Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well.

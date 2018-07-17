@@ -11,13 +11,13 @@ The custom catalog can contain native Helm charts, Rancher charts, or a combinat
 
 >**Prerequisites:**
 
->- Recommended: Read [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs).
+>- Recommended: Read [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts).
 >- Create a GitHub repository to serve as your custom catalog.
 >- Complete [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/adding-custom-catalogs).
 
 >**Note:** Customization of Helm charts takes place outside of the Rancher UI.
 
-1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs/#chart-directory-structure).
+1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/#chart-directory-structure).
 
     Rancher requires this directory structure, although `app-readme.md` and `questions.yml` are optional.
 

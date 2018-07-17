@@ -5,7 +5,7 @@ weight: 4010
 
 After you've enabled default catalogs or setup a custom catalog, you can launch apps using a catalog instead of a standard deployment.
 
->**Prerequisite:** Enable a catalog. For more information, see [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/concepts/catalogs).
+>**Prerequisite:** Enable a catalog. For more information, see [Catalogs and Charts]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/catalogs).
 
 1. From the **Global** view, open the project that you want to deploy to.
 

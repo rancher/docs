@@ -13,13 +13,13 @@ Deploy a workload to run an application in one or more containers.
 
 1. Enter a **Name** for the workload.
 
-1. Select a [workload type]({{< baseurl >}}/rancher/v2.x/en/concepts/workloads/). The workload defaults to a scalable deployment, by can change the workload type by clicking **More options.**
+1. Select a [workload type]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/). The workload defaults to a scalable deployment, by can change the workload type by clicking **More options.**
 
 1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy to the project. During deployment, Rancher pulls this image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears on Docker Hub.
 
 1. Either select an existing [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), or click **Add to a new namespace** and enter a new namespace.
 
-1. Click **Add Port** to enter a port mapping, which enables access to the application inside and outside of the cluster . For more information, see [Services]({{< baseurl >}}/rancher/v2.x/en/concepts/workloads/#services).
+1. Click **Add Port** to enter a port mapping, which enables access to the application inside and outside of the cluster . For more information, see [Services]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/#services).
 
 1. Configure the remaining options:
 
