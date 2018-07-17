@@ -14,6 +14,8 @@ For help installing NGINX, refer to their [install documentation](https://www.ng
 
 After installing NGINX, you need to create the NGINX config file, `/etc/nginx/conf.d/rancher.conf`, with the IP addresses for your Linux nodes, chosen FQDN and location of the certificate file and certificate key file.
 
+>**Note:** The example configuration below does not include all available Nginx options and may not be suitable for your production environment. For full configuration documentation, see [NGINX Load Balancing - HTTP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+
 1. Copy and paste the code sample below into your favorite text editor. Save it as `/etc/nginx/conf.d/rancher.conf`.
 
     **Example NGINX config:**
@@ -23,18 +25,18 @@ After installing NGINX, you need to create the NGINX config file, `/etc/nginx/co
         server IP_NODE_2:80;
         server IP_NODE_3:80;
     }
-    
+
     map $http_upgrade $connection_upgrade {
         default Upgrade;
         ''      close;
     }
-    
+
     server {
         listen 443 ssl http2;
         server_name FQDN;
         ssl_certificate /certs/fullchain.pem;
         ssl_certificate_key /certs/privkey.pem;
-    
+
         location / {
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-Proto $scheme;
@@ -48,7 +50,7 @@ After installing NGINX, you need to create the NGINX config file, `/etc/nginx/co
             proxy_read_timeout 900s;
         }
     }
-    
+
     server {
         listen 80;
         server_name FQDN;
@@ -60,6 +62,8 @@ After installing NGINX, you need to create the NGINX config file, `/etc/nginx/co
 3. In `/etc/nginx/conf.d/rancher.conf`, replace `FQDN` with the FQDN you chose for your Rancher installation.
 4. In `/etc/nginx/conf.d/rancher.conf`, replace `/certs/fullchain.pem` with the path to your certificate. If there are intermediates required for you certificate, they should be included in this file.
 5. In `/etc/nginx/conf.d/rancher.conf`, replace `/certs/privkey.pem` with the path to your certificate key.
+
+
 
 ## Run NGINX
 

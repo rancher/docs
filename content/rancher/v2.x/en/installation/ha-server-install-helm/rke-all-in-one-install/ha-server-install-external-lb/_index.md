@@ -7,7 +7,7 @@ aliases:
 This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 7 Loadbalancer with SSL termination (HTTPS)
-- NGINX Ingress controller (HTTP)
+- [NGINX Ingress controller (HTTP)](https://kubernetes.github.io/ingress-nginx/)
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha-l7.svg)
 
@@ -66,15 +66,15 @@ Before you install Rancher, confirm you meet the host requirements. Provision 3 
 
 ### Requirements
 
-#### Operating System 
+#### Operating System
 
 {{< requirements_os >}}
 
-#### Hardware 
+#### Hardware
 
 {{< requirements_hardware >}}
 
-#### Software 
+#### Software
 
 {{< requirements_software >}}
 
@@ -189,18 +189,22 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 2. Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts).
 
-    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`.
+    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
+
+    >**Note:**
+    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+
 
 ```
 nodes:
+    # The IP address or hostname of the node
   - address: IP_ADDRESS_1
-    # THE IP ADDRESS OR HOSTNAME OF THE NODE
+    # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
+    # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
 	user: USER
-    # USER WITH ADMIN ACCESS. USUALLY `root`
 	role: [controlplane,etcd,worker]
+    # Path the SSH key that can be used to access to node with the specified user
 	ssh_key_path: ~/.ssh/id_rsa
-    # PATH TO SSH KEY THAT AUTHENTICATES ON YOUR WORKSTATION
-    # USUALLY THE VALUE ABOVE
   - address: IP_ADDRESS_2
 	user: USER
 	role: [controlplane,etcd,worker]

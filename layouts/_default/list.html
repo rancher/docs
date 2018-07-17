@@ -6,8 +6,8 @@
 {{ end }}
 
 {{ define "main" }}
-
   <div class="wrapper">
+
     <div class="row m-t-sm">
 
       <aside class="col-sm-3 col-xs-12 p-l-0">
@@ -22,6 +22,10 @@
       {{end}}
 
       <div class="main-content">
+        <!-- this is a test -->
+        <!-- {{ partial "page-nav.html" . }} -->
+        <!-- end test -->
+
         {{ .Content }}
 
         {{ range (.Paginator 5).Pages }}

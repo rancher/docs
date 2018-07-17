@@ -11,7 +11,7 @@ You can build any complex containerized application in Kubernetes using two basi
 ### Workloads
 
 _Workloads_ are objects that set deployment rules for pods. Based on these rules, Kubernetes performs the deployment and updates the workload with the current state of the application.
-Workloads lets you define the rules for application scheduling, scaling, and upgrade.
+Workloads let you define the rules for application scheduling, scaling, and upgrade.
 
 #### Workload Types
 
@@ -27,7 +27,7 @@ Kubernetes divides workloads into different types. The most popular types suppor
 
 - [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 
-    _Daemonsets_ ensures that every node in the cluster runs a copy of pod. For use cases where where you're collecting logs or monitoring node performance, this daemon-like workload works best.
+    _Daemonsets_ ensures that every node in the cluster runs a copy of pod. For use cases where you're collecting logs or monitoring node performance, this daemon-like workload works best.
 
 - [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
 
@@ -61,3 +61,13 @@ There are several types of services available in Rancher. The descriptions below
 - **LoadBalancer**
 
     >Exposes the service externally using a cloud provider’s load balancer. `NodePort` and `ClusterIP` services, to which the external load balancer will route, are automatically created.
+
+## Related Links
+
+### External Links
+
+- [Services](https://kubernetes.io/docs/concepts/services-networking/service/)
+
+### Tutorials
+
+- [Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/)

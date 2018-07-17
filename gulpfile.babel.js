@@ -5,27 +5,29 @@ import gulp from 'gulp';
 import del from 'del';
 import runSequence from 'run-sequence';
 import gulpLoadPlugins from 'gulp-load-plugins';
-import { spawn } from "child_process";
+import { spawn, exec } from "child_process";
 import tildeImporter from 'node-sass-tilde-importer';
 import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import watch from 'gulp-watch';
+const atomicalgolia = require("atomic-algolia");
+const fs            = require('fs');
 
-const $ = gulpLoadPlugins();
-const browserSync = require('browser-sync').create();
+const $            = gulpLoadPlugins();
+const browserSync  = require('browser-sync').create();
+const request = require('request');
 const isProduction = process.env.NODE_ENV === 'production';
 
-require('hugo-search-index/gulp')(gulp);
-
-const onError = (err) => {
-  console.log(err);
-}
-
-process.on('SIGINT', () => {
-  console.log('Caught SIGINT, exiting');
+process.on('SIGINT', (err) => {
+  console.log('Caught SIGINT, exiting', '\r\n', err);
   process.exit(0);
+});
+
+process.on('uncaughtException', (err) => {
+  console.log('Uncaught Exception, exiting', '\r\n', err);
+  process.exit(1);
 });
 
 // --
@@ -34,19 +36,19 @@ gulp.task('dev', ['build-dev'], () => {
 });
 
 gulp.task('build', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo' , 'hugo-search-index', () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo', 'build:search-index',  () => {
     cb();
   });
 });
 
 gulp.task('build-staging', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging' , 'hugo-search-index', () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-staging', 'build:search-index', () => {
     cb();
   });
 });
 
 gulp.task('build-dev', (cb) => {
-  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev' , /* 'hugo-search-index', */ () => {
+  runSequence('pub-delete', 'sass', 'build:vendor', 'build:app', 'fonts', 'img', 'hugo-dev', () => {
     cb();
   });
 });
@@ -83,7 +85,17 @@ gulp.task('init-watch', () => {
   watch([ 'src/sass/**/*.scss', 'node_modules/rancher-website-theme/**/*.scss' ], () => runSequence('sass', 'hugo-dev'));
   watch([ 'src/js/**/*.js', 'node_modules/rancher-website-theme/static/js/base.js' ], () => runSequence('build:app', 'hugo-dev'));
   watch('src/img/**/*', () => runSequence('img', 'hugo-dev'));
-  watch(['archetypes/**/*', 'data/**/*', 'content/**/*', 'layouts/**/*', 'node_modules/rancher-website-theme/layouts/**/*', 'node_modules/rancher-website-theme/archetypes/**/*', 'node_modules/rancher-website-theme/data/**/*', 'node_modules/rancher-website-theme/content/**/*', 'themes/**/*', 'config.toml'], () => gulp.start('hugo-dev'));
+  watch([
+    'archetypes/**/*',
+    'data/**/*',
+    'content/**/*',
+    'layouts/**/*',
+    'node_modules/rancher-website-theme/layouts/**/*',
+    'node_modules/rancher-website-theme/archetypes/**/*',
+    'node_modules/rancher-website-theme/data/**/*',
+    'node_modules/rancher-website-theme/content/**/*',
+    'themes/**/*',
+    'config.toml'], () => gulp.start('hugo-dev'));
 });
 
 
@@ -93,7 +105,6 @@ gulp.task('sass', () => {
   return gulp.src([
     'src/sass/**/*.scss'
   ])
-    .pipe($.plumber({ errorHandler: onError }))
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sass({ precision: 5, importer: tildeImporter }))
@@ -103,7 +114,7 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('static/css'));
 });
 
-const vendors = [/* 'zoom.ts',  */'ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
+const vendors = [/* 'zoom.ts', */'instantsearch.js', 'ml-stack-nav', 'lory.js', 'tingle.js', 'moment', 'jquery'];
 
 gulp.task('build:vendor', () => {
   const b = browserify();
@@ -157,4 +168,56 @@ gulp.task('cms-delete', () => {
 
 gulp.task('pub-delete', () => {
   return del(['public/**', '!public']);
+});
+
+gulp.task('build:search-index', (cb) => {
+  const env = process.env;
+
+  const opts = {
+    stdio: 'inherit',
+    env: env
+  };
+  return spawn(process.cwd()+'/scripts/build-algolia.js', opts).on('close', (/* code */) => {
+    cb();
+  });
+});
+
+
+gulp.task('publish:search-index', (cb) => {
+  const env = process.env;
+
+  const opts = {
+    stdio: 'inherit',
+    env: env
+  };
+
+  request.get({url: 'http://rancher-metadata/2015-07-25/self/service/containers/0', timeout: 2000}, function(err, res, first) {
+    if ( err ) {
+      return cb(err);
+    }
+
+    request.get({url: 'http://rancher-metadata/2015-07-25/self/container/name', timeout: 2000}, function(err, res, me) {
+      if ( err ) {
+        return cb(err);
+      }
+
+      console.log('First:', first);
+      console.log('Me:', me);
+
+      if ( !first || !me ) {
+        return cb(new Error('Unable to determine who is the leader (' + first + ', ' + me+ ')'));
+      }
+
+      if ( first !== me ) {
+        console.log('I am not the leader');
+        return cb();
+      }
+
+      console.log('Publishing to algolia', process.env.ALGOLIA_INDEX_NAME);
+      atomicalgolia(process.env.ALGOLIA_INDEX_NAME, process.env.ALGOLIA_INDEX_FILE, {verbose: true},  (err, result) => {
+        console.log(result);
+        cb(err);
+      });
+    });
+  });
 });

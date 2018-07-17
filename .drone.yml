@@ -7,9 +7,21 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker build -f Dockerfile.prod .
+      - docker build --pull -f Dockerfile.prod .
     when:
       event: [pull_request]
+
+  docker-publish-algolia:
+    group: publish
+    image: plugins/docker
+    dockerfile: Dockerfile.algolia
+    repo: rancher/docs
+    context: .
+    tag: algolia
+    secrets: [docker_username, docker_password]
+    when:
+      branch: master
+      event: push
 
   docker-publish-dev:
     group: publish

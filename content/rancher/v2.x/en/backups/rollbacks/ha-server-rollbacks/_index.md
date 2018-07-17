@@ -1,6 +1,8 @@
 ---
 title: Rolling Back—High Availability Installs
 weight: 50
+aliases:
+  - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/
 ---
 
 If you upgrade Rancher, but the upgrade does not complete successfully, you may need to roll back your Rancher Server to its last healthy state before upgrade. To restore Rancher:
@@ -11,6 +13,7 @@ If you upgrade Rancher, but the upgrade does not complete successfully, you may 
 >**Warning!**
 >
 > Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+
 >
 >**Prerequisites:** {{< requirements_rollback >}}
 

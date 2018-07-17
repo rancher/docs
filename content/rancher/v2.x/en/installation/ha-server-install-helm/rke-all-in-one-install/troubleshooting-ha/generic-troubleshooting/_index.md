@@ -7,11 +7,11 @@ aliases:
 
 Below are steps that you can follow to determine what is wrong in your cluster.
 
-* Double check if all the required ports are opened in your (host) firewall
+### Double check if all the required ports are opened in your (host) firewall
 
 Double check if all the [required ports]({{< baseurl >}}/rancher/v2.x/en/installation/references/) are opened in your (host) firewall.
 
-* All nodes should be present and in **Ready** state
+### All nodes should be present and in **Ready** state
 
 To check, run the command:
 
@@ -21,7 +21,7 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml get nodes
 
 If a node is not shown in this output or a node is not in **Ready** state, you can check the logging of the `kubelet` container. Login to the node and run `docker logs kubelet`.
 
-* All pods/jobs should be in **Running**/**Completed** state
+### All pods/jobs should be in **Running**/**Completed** state
 
 To check, run the command:
 
@@ -31,13 +31,13 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml get pods --all-namespaces
 
 If a pod is not in **Running** state, you can dig into the root cause by running:
 
-<h3>Describe pod</h3>
+#### Describe pod
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml describe pod POD_NAME -n NAMESPACE
 ```
 
-<h3>Pod container logs</h3>
+#### Pod container logs</h3>
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs POD_NAME -n NAMESPACE
@@ -45,19 +45,27 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml logs POD_NAME -n NAMESPACE
 
 If a job is not in **Completed** state, you can dig into the root cause by running:
 
-<h3>Describe job</h3>
+#### Describe job
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml describe job JOB_NAME -n NAMESPACE
 ```
 
-<h3>Logs from the containers of pods of the job</h3>
+#### Logs from the containers of pods of the job
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l job-name=JOB_NAME -n NAMESPACE
 ```
 
-* List all Kubernetes cluster events
+### Check ingress
+
+Ingress should have the correct `HOSTS` (showing the configured FQDN) and `ADDRESS` (address(es) it will be routed to).
+
+```
+kubectl --kubeconfig kube_config_rancher-cluster.yml get ingress --all-namespaces
+```
+
+### List all Kubernetes cluster events
 
 Kubernetes cluster events are stored, and can be retrieved by running:
 
@@ -65,19 +73,19 @@ Kubernetes cluster events are stored, and can be retrieved by running:
 kubectl --kubeconfig kube_config_rancher-cluster.yml get events --all-namespaces
 ```
 
-* Check Rancher container logging
+### Check Rancher container logging
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=cattle -n cattle-system
 ```
 
-* Check NGINX ingress controller logging
+### Check NGINX ingress controller logging
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=ingress-nginx -n ingress-nginx
 ```
 
-* Check if overlay network is functioning correctly
+### Check if overlay network is functioning correctly
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
