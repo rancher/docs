@@ -1,5 +1,5 @@
 ---
-title: Creating Kubernetes Clusters
+title: Provisioning Kubernetes Clusters
 weight: 2000
 aliases:
   - /rancher/v2.x/en/concepts/clusters/

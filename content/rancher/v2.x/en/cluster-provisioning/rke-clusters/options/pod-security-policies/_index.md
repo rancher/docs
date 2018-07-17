@@ -1,5 +1,5 @@
 ---
-title: Pod Security Policies
+title: Assigning Pod Security Policies
 weight: 2260
 ---
 

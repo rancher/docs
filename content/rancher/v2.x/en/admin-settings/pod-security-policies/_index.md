@@ -1,5 +1,5 @@
 ---
-title: Pod Security Policies
+title: Managing Pod Security Policies
 weight: 1135
 aliases:
     -/rancher/v2.x/en/concepts/global-configuration/pod-security-policies
@@ -53,10 +53,10 @@ Using Rancher, you can create a Pod Security Policy using our GUI rather than cr
 
 You can add a Pod Security Policy (PSPs hereafter) in the following contexts:
 
-- [When creating a cluster]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/#adding-a-default-pod-security-policy)
-- [When editing an existing cluster]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/#adding-a-pod-security-policy)
-- [When creating a project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/creating-and-managing-projects/)
-- [When editing an existing project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/creating-and-managing-projects/#editing-the-pod-security-policy)
+- [When creating a cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/pod-security-policies/)
+- [When editing an existing cluster]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/)
+- [When creating a project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/#creating-a-project/)
+- [When editing an existing project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/editing-projects/)
 
 > **Note:** We recommend adding PSPs during cluster and project creation instead of adding it to an existing one.
 
