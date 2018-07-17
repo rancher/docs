@@ -8,9 +8,9 @@ aliases:
 
 This section includes step-by-step instruction on how to configure default and custom catalogs.
 
-- [Enabling Default Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/enabling-default-catalogs)
-- [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/adding-custom-catalogs)
-- [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/customizing-charts)
+- [Enabling Default Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/enabling-default-catalog/)
+- [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-catalogs/)
+- [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-charts/)
 
 
 _Catalogs_ are GitHub repositories filled with applications that are ready-made for deployment. Applications are bundled in objects called _charts_.
@@ -52,7 +52,7 @@ Custom catalog requirements include:
 - A unique name.
 - A URL that `git clone` can handle.
 
-For step-by-step directions, see [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/adding-custom-catalogs).
+For step-by-step directions, see [Adding Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-catalogs/).
 
 When you're done creating the catalog, populate it with charts. Custom catalogs can support both native Helm charts and Rancher charts. See [Custom Chart Creation](#custom-chart-creation).
 
@@ -163,6 +163,6 @@ Before you create your own custom catalog, you should have a basic understanding
 
  You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
 
- For information on how to add and customize charts for a custom catalog, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/customizing-charts).
+ For information on how to add and customize charts for a custom catalog, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-charts/).
 
 >**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).

@@ -7,7 +7,7 @@ aliases:
 
 If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.
 
->**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-namespaces/project-members/) instead.
+>**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/project-members/) instead.
 
 There are two contexts where you can add cluster members:
 
@@ -34,7 +34,7 @@ Following cluster creation, you can add users as cluster members so that they ca
 	-  Rancher returns users from your [external authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) source as you type.
 
 		>**Using AD but can't find your users?**
-		>There may be an issue with your search attribute configuration. See [Configuring Active Directory Authentication: Step 5]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/configuring-ad/).
+		>There may be an issue with your search attribute configuration. See [Configuring Active Directory Authentication: Step 5]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/ad/).
 
 	- A drop-down allows you to add groups instead of individual users. The drop-down only lists groups that you, the logged in user, are part of.
 

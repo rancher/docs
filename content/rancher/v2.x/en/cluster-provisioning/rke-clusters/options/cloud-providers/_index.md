@@ -27,7 +27,7 @@ When using the `Amazon` cloud provider, you can leverage the following capabilit
 - Create/configure an IAM role
 - Configuring the ClusterID
 
-> **Note:** When you create an [Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured.
+> **Note:** When you create an [Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured.
 
 #### Create/Configure an IAM Role
 
@@ -35,8 +35,8 @@ All nodes added to the cluster must be able to interact with EC2 so that they ca
 
 [EC2 documentation: Creating an IAM Role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#create-iam-role)
 
-- While creating an [Amazon EC2 cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must insert the name of the IAM role when creating the **Node Template**.
-- While creating a [Custom cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/custom-clusters/), you must  manually attach the IAM role to the instance(s).
+- While creating an [Amazon EC2 cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must insert the name of the IAM role when creating the **Node Template**.
+- While creating a [Custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must  manually attach the IAM role to the instance(s).
 
 The following IAM role can be created:
 
