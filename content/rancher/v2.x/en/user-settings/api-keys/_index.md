@@ -1,5 +1,5 @@
 ---
-title: Creating an API Key
+title: API Keys
 weight: 7005
 aliases:
   - /rancher/v2.x/en/concepts/api-keys/
