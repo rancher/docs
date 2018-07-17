@@ -1,6 +1,6 @@
 ---
 title: Configuring Active Directory (AD)
-weight: 50
+weight: 1112
 aliases:
     -/rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/
 ---

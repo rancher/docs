@@ -7,7 +7,7 @@ aliases:
 
 >**Prerequisites:**
 >
->- Working with storage requires the `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#project-role-reference).
+>- Working with storage requires the `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference).
 >- You must have a storage medium provisioned. For more information, see [Provisioning Storage](provisioning-storage).
 
 ## Adding a Persistent Volume

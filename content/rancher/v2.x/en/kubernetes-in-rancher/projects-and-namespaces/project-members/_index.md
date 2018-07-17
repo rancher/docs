@@ -39,7 +39,7 @@ Following project creation, you can add users as project members so that they ca
 
 1. Assign the user or group **Project** roles.  
 
-	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#cluster-roles)
+	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
 	>**Tip:** For Custom Roles, you can modify the list of individual roles available for assignment.
 	>

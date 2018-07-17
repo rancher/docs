@@ -42,7 +42,7 @@ Following cluster creation, you can add users as cluster members so that they ca
 
 4. Assign the user or group **Cluster** roles.  
 
-	[What are Cluster Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#cluster-roles)
+	[What are Cluster Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
 	>**Tip:** For Custom Roles, you can modify the list of individual roles available for assignment.
 	>

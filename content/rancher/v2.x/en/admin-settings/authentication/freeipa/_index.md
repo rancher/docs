@@ -1,6 +1,6 @@
 ---
 title: Configuring FreeIPA
-weight: 150
+weight: 1114
 aliases:
     -/rancher/v2.x/en/tasks/global-configuration/authentication/freeipa/
 ---

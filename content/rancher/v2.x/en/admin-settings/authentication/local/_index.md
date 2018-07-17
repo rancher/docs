@@ -1,6 +1,6 @@
 ---
 title: Configuring Local Authentication
-weight: 25
+weight: 1111
 aliases:
     -/rancher/v2.x/en/tasks/global-configuration/authentication/local-authentication/
 ---

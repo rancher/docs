@@ -12,9 +12,14 @@ aliases:
 
 1. Enter a **Project Name**.
 
-1. **Optional:** Select a **Pod Security Policy**.
+1. **Optional:** Select a **Pod Security Policy**. Assigning a PSP to a project will:
+
+  - Override the cluster's default PSP.
+  - Apply the PSP to the project.
+  - Apply the PSP to any namespaces you add to the project later.
 
     [What are Pod Security Policies?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies)
+
 
     >**Note:** This option is only available if you've already created a Pod Security Policy. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/#creating-pod-security-policies).
 
@@ -32,9 +37,9 @@ aliases:
 
     1. From the **Role** drop-down, choose a role.
 
-        [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#cluster-and-project-roles)
+        [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
-        >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/#custom-project-roles).
+        >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
 
     1. To add more members, repeat substeps a—c.
 

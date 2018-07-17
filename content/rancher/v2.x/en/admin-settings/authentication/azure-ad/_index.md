@@ -1,6 +1,6 @@
 ---
 title: Configuring Azure AD
-weight: 75
+weight: 1115
 aliases:
     -/rancher/v2.x/en/tasks/global-configuration/authentication/azure-ad/
 ---
