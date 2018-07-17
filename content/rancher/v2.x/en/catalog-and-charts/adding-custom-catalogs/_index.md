@@ -1,6 +1,8 @@
 ---
 title: Adding Custom Catalogs
-weight: 50
+weight: 4015
+aliases:
+  - /rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs/
 ---
 
 You can create custom catalogs of charts for use in Rancher. Custom catalogs are helpful for fast deployment of applications unique to your environment.
@@ -23,8 +25,8 @@ You can create custom catalogs of charts for use in Rancher. Custom catalogs are
 2. Click **Add Catalog**.
 3. Complete the form and click **Create**.
 
-**Result**: Your catalog is added to Rancher. 
+**Result**: Your catalog is added to Rancher.
 
 ## What's Next?
 
-Add native Helm charts, Rancher charts, or both to your repository. For more information, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/).
+Add native Helm charts, Rancher charts, or both to your repository. For more information, see [Customizing Charts]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/customizing-charts/).
