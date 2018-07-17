@@ -1,4 +1,5 @@
 FROM rancher/docs:build
+ENV HUGO_ENV dev
 
 VOLUME ["/site"]
 WORKDIR /run
@@ -6,7 +7,6 @@ COPY package.json /run/
 
 RUN  ln -s /site/config.toml /run \
   && ln -s /site/.eslintrc.js /run \
-  && ln -s /site/netlify.toml /run \
   && ln -s /site/archetypes /run \
   && ln -s /site/content /run \
   && ln -s /site/data /run \
