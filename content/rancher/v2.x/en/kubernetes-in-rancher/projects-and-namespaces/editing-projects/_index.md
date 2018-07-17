@@ -1,5 +1,5 @@
 ---
-title: Creating and Managing Projects
+title: Editing Projects
 weight: 3021
 aliases:
   - /rancher/v2.x/en/tasks/projects/create-project/

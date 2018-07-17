@@ -1,7 +1,6 @@
 ---
 title: Editing Clusters
 weight: 3015
-draft: true
 ---
 
 ## Editing the Cluster Membership

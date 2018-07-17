@@ -1,5 +1,5 @@
 ---
-title: Adding and Managing Project Members
+title: Adding Users to Projects
 weight: 3022
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-project-members/
