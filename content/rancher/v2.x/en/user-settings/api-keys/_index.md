@@ -1,8 +1,20 @@
 ---
 title: Creating an API Key
-weight: 3726
+weight: 7005
+aliases:
+  - /rancher/v2.x/en/concepts/api-keys/
+  - /rancher/v2.x/en/tasks/user-settings/api-keys/
 ---
 
+Some users may want to access their Rancher clusters and projects through the Rancher API. Before you can access Rancher through the API, you must generate API keys so that you can authenticate with Rancher externally.
+
+Before you can use the Rancher CLI or write a program that calls the Rancher API, you must obtain API keys using the Rancher UI.
+
+### API Keys and User Authentication
+
+After logging into Rancher, you can generate API keys for accessing Rancher externally using your user settings. If you need to revoke access to the Rancher API, you can delete the API key.
+
+### Creating an API Key
 Create a Rancher API key so that other applications can make requests to the Rancher API. You can create API keys using the Rancher UI.
 
 1. From any Rancher view, select **User Avatar** > **API & Keys** from the menu on the upper-right.

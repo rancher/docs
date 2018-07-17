@@ -1,6 +1,8 @@
 ---
 title: Rancher CLI
-weight: 1
+weight: 6000
+aliases:
+  - /rancher/v2.x/en/concepts/cli-configuration/
 ---
 
 Rancher CLI (Command Line Interface) is a unified tool that you can use to interact with Rancher. With this tool, you can operate Rancher using a command line rather than the GUI.
@@ -14,7 +16,7 @@ The binary can be downloaded directly from the UI. The link can be found in the 
 After you download the Rancher CLI, you need to make a few configurations. Rancher CLI requires:
 
 - Your [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/server-url), which is used to connect to Rancher Server.
-- An API Bearer Token, which is used to authenticate with Rancher. For more information about obtaining a Bearer Token, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/tasks/user-settings/api-keys/).
+- An API Bearer Token, which is used to authenticate with Rancher. For more information about obtaining a Bearer Token, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/).
 
 ### CLI Authentication
 

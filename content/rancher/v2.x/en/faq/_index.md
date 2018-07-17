@@ -1,6 +1,6 @@
 ---
 title: FAQ
-weight: 5000
+weight: 8000
 aliases:
   - /rancher/v2.x/en/about/
 ---
@@ -17,7 +17,7 @@ Rancher v2.0 is a complete container management platform built on 100% on Kubern
 
 #### Do you plan to implement upstream Kubernetes, or continue to work on your own fork?
 
-We're still going to provide our distribution when you select the default option of having us create your Kubernetes cluster, but it will be very close to upstream. 
+We're still going to provide our distribution when you select the default option of having us create your Kubernetes cluster, but it will be very close to upstream.
 
 #### Does this release mean that we need to re-train our support staff in Kubernetes?
 

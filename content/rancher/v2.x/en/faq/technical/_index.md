@@ -1,6 +1,6 @@
 ---
   title: Technical
-  weight: 5000
+  weight: 8005
 ---
 
 ### How can I reset the admin password?

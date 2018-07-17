@@ -1,6 +1,8 @@
 ---
-  title: Contributing to Rancher
-  weight: 5001
+title: Contributing to Rancher
+weight: 9000
+aliases:
+  - /rancher/v2.x/en/faq/contributing/
 ---
 
 ### Repositories
