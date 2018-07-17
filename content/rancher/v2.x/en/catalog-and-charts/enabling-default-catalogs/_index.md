@@ -20,4 +20,4 @@ Out-of-the-box, you can enable several different catalog repositories to simplif
 
 ## What's Next?
 
-Deploy catalog applications to your cluster nodes. For more information, see [Launching a Catalog App]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/launch-a-catalog-app).
+Deploy catalog applications to your cluster nodes. For more information, see [Launching a Catalog App]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/launching-catalog-apps).

@@ -81,7 +81,7 @@ The custom catalog can contain native Helm charts, Rancher charts, or a combinat
 
 ## What's Next?
 
-Launch your custom catalog app. For more information, see [Launching a Catalog App]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/launch-a-catalog-app).
+Launch your custom catalog app. For more information, see [Launching a Catalog App]({{< baseurl >}}/rancher/v2.x/en/catalog-and-charts/launching-catalog-apps/).
 
 ## Question Variable Reference
 

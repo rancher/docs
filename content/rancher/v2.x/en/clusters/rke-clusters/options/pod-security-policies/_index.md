@@ -3,21 +3,9 @@ title: Pod Security Policies
 weight: 2260
 ---
 
-
 _Pod Security Policies_ are objects that control security-sensitive aspects of pod specification (like root privileges).
 
-You can add a Pod Security Policy (PSPs hereafter) in the following contexts:
-
-- [When creating a cluster](#cluster-creation--adding-a-default-pod-security-policy)
-- [When editing an existing cluster]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/#adding-a-pod-security-policy)
-- [When creating a project](#project-creation--adding-a-pod-security-policy)
-- [When editing an existing project](#existing-project--adding-a-pod-security-policy)
-
-> **Note:** We recommend adding PSPs during cluster and project creation instead of adding it to an existing one.
-
-For more information about PSPs, refer to [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies).
-
-## Cluster Creation: Adding a Default Pod Security Policy
+## Adding a Default Pod Security Policy
 
 When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. The PSP assigned to the cluster will be the default PSP for projects within the cluster.
 

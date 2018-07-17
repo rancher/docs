@@ -70,9 +70,9 @@ There are several types of services available in Rancher. The descriptions below
 
 This section of the documentation contains instructions for deploying workloads and using workload options.
 
-    - [Deploy Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/deploy-workloads/)
-    - [Upgrade Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/upgrade-workloads/)
-    - [Rollback Workloads]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/rollback-workloads/)
+    - [Deploy Workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/deploy-workloads/)
+    - [Upgrade Workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/upgrade-workloads/)
+    - [Rollback Workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/rollback-workloads/)
 
 ## Related Links
 

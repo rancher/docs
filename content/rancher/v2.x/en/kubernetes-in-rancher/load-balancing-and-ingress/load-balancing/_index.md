@@ -70,4 +70,3 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 ### Ingress Controller
 
 - [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
-<!--  [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/add-ingress) -->

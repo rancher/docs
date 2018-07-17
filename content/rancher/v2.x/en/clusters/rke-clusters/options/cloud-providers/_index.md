@@ -164,7 +164,3 @@ Only hosts expected to be Load Balancer backends need to be in this group.
 ### External Links
 
 - [Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
-
-### Tutorials
-
-- [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/)

@@ -15,7 +15,7 @@ The binary can be downloaded directly from the UI. The link can be found in the 
 
 After you download the Rancher CLI, you need to make a few configurations. Rancher CLI requires:
 
-- Your [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/tasks/global-configuration/server-url), which is used to connect to Rancher Server.
+- Your [Rancher Server URL]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rancher-server-url), which is used to connect to Rancher Server.
 - An API Bearer Token, which is used to authenticate with Rancher. For more information about obtaining a Bearer Token, see [Creating an API Key]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/).
 
 ### CLI Authentication

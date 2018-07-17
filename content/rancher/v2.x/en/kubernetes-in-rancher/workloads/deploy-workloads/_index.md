@@ -25,13 +25,13 @@ Deploy a workload to run an application in one or more containers.
 
     - **Environment Variables**
 
-        Use this section to either specify environment variables for your workload to consume on the fly, or to pull them from another source, such as a secret or [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-configmaps/).
+        Use this section to either specify environment variables for your workload to consume on the fly, or to pull them from another source, such as a secret or [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/configmaps/).
 
     - **Node Scheduling**
     - **Health Check**
     - **Volumes**
 
-        Use this section to add storage for your workload. You can manually specify the volume that you want to add, use a persistent volume claim to dynamically create a volume for the workload, or read data for a volume to use from a file such as a [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/tasks/projects/add-configmaps/).
+        Use this section to add storage for your workload. You can manually specify the volume that you want to add, use a persistent volume claim to dynamically create a volume for the workload, or read data for a volume to use from a file such as a [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/configmaps/).
 
     - **Scaling/Upgrade Policy**
 

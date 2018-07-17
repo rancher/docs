@@ -57,5 +57,5 @@ Finally, you can define custom `MountOptions` for the persistent volume created.
 
 ### Tutorials
 
-- [Adding Storage]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/adding-storage/provisioning-storage)
-- [Adding Persistent Volume Claims]({{< baseurl >}}/rancher/v2.x/en/tasks/workloads/add-persistent-volume-claim)
+- [Adding Storage]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/persistent-volumes-and-storage-classes/)
+- [Adding Persistent Volume Claims]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/persistent-volume-claim)
