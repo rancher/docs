@@ -1,6 +1,8 @@
 ---
 title: Logging
-weight: 3725
+weight: 5015
+aliases:
+  - /rancher/v2.x/en/tasks/logging/
 ---
 
 Rancher has the capability to push out cluster and project logs to an external

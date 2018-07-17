@@ -1,6 +1,8 @@
 ---
 title: Splunk
 weight: 3725
+aliases:
+  - /rancher/v2.x/en/tasks/logging/splunk/
 ---
 
 The following guide will demonstrate how to monitor your container

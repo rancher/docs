@@ -1,7 +1,6 @@
 ---
-title: Alerts and Notifiers
-weight: 2300
-draft: true
+title:  Notifiers and Alerts
+weight: 5010
 ---
 
 Alerts and notifications are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher is able to provide the first step in notifications for events operators and application owners need to know about.
