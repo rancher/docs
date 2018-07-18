@@ -71,7 +71,7 @@ That is definitely the focus of the v1.6 stream. We're continuing to improve tha
 
 When creating an environment in Rancher v2.0, Swarm and Mesos will no longer be standard options you can select. However, both Swarm and Mesos will continue to be available as Catalog applications you can deploy. It was a tough decision to make but, in the end, it came down to adoption. For example, out of more than 15,000 clusters, only about 200 or so are running Swarm.
 
-#### Is it possible to manage Azure Container Services with Rancher v2.0?
+#### Is it possible to manage Azure Kubernetes Services with Rancher v2.0?
 Yes.
 
 #### What about Windows support?
