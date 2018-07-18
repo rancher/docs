@@ -27,30 +27,11 @@ Collect the SSH credentials and DNS or IP addresses for your nodes to provide to
 
 #### Ports
 
-##### Cluster External Ports
-
-These are ports that should be open between nodes and the external network for communication and management of Rancher.
-
-| Protocol | Ports | Description |
-| --- | --- | --- |
-| tcp | 22 | SSH for RKE install |
-| tcp | 80 | ingress controller - redirect to https |
-| tcp | 443 | ingress controller - https traffic to Rancher |
-| tcp | 6443 | https to kube-api, used by kubectl and helm |
-| tcp | 30000 - 32767 | Kubernetes NodePorts for k8s workloads |
+{{< requirements_ports_rancher_rke >}}
 
 <br/>
 
-##### Additional Ports Required Between Rancher Cluster Nodes
-
-In addition to the ports listed above these ports must be open between nodes.
-
-| Protocol | Ports | Description |
-| --- | --- | --- |
-| tcp | 2379-2380 | etcd |
-| udp | 8472 | overlay networking |
-| tcp | 10250 | kubelet |
-<br/>
+If you block ports internally on the nodes see the full [ports list]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for all the communication details.
 
 ### Load Balancer
 

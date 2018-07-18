@@ -21,6 +21,8 @@ weight: 276
 | --- | --- | --- |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
+| `proxy` | "" | `string` - string - HTTP[S] proxy server for Rancher |
+| `noProxy` | "localhost,127.0.0.1" | `string` - comma seperated list of hostnames or ip address not to use the proxy | 
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |

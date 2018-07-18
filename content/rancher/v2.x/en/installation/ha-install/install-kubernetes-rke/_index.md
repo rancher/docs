@@ -81,4 +81,4 @@ You will need to save a copy of the `kube_config_rancher-cluster.yml` and `ranch
 
 See the [Troubleshooting](troubleshooting/) page.
 
-### [Next: Initialize Helm](../helm-install/)
+### [Next: Initialize Helm](../helm-init/)
