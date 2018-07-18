@@ -3,19 +3,23 @@ title: Hosted Kubernetes Providers
 weight: 2100
 ---
 
-If you already have a cluster hosted by a Kubernetes provider, Rancher can integrate with its cloud APIs, allowing you to manage your hosted cluster from the Rancher UI.
+You can use Rancher to create clusters in a hosted Kubernetes provider, such as Google GKE.
+
+In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-premise or in an IaaS, all from the same UI.
 
 Rancher supports the following Kubernetes providers:
 
-<!-- TOC -->
+- Google GKE (Google Container Engine)
+- Amazon EKS (Elastic Container Service)
+- Microsoft AKS (Azure Container Service)
 
-- [Google GKE (Google Container Engine)](#google-gke-google-container-engine)
-- [Amazon EKS (Elastic Container Service)](#amazon-eks-elastic-container-service)
-- [Microsoft AKS (Azure Container Service)](#microsoft-aks-azure-container-service)
+## Hosted Kubernetes Provider Authentication
 
-<!-- /TOC -->
+When using Rancher to create a cluster hosted by a provider, you are prompted for authentication information. This information is required to access the provider's API. For more information on how to obtain this information, see the **Prerequistes** section in each of the following procedures:
 
-When setting up management of your hosted Kubernetes cluster in the Rancher UI, you are prompted for parameters required in all cluster creation scenarios: cluster name, user membership, how many nodes to create, and so on. However, each provider also requires information unique to the vendor. See more information about the information required for each provider below.
+- [Creating a GKE Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke)
+- [Creating an EKS Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks)
+- [Creating an AKS Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/aks)
 
 ## Google GKE (Google Container Engine)
 
