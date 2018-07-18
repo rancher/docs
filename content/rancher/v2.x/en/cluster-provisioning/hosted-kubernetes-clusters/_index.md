@@ -11,7 +11,7 @@ Rancher supports the following Kubernetes providers:
 
 - Google GKE (Google Container Engine)
 - Amazon EKS (Elastic Container Service)
-- Microsoft AKS (Azure Container Service)
+- Microsoft AKS (Azure Kubernetes Service)
 
 ## Hosted Kubernetes Provider Authentication
 
