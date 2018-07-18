@@ -1,0 +1,57 @@
+<div>
+    <h5>Cluster External Ports</h5>
+    <p>These ports should be open between nodes and the external network for communication and management of Rancher.</p>
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>22</td>
+            <td>SSH for RKE</td>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>80</td>
+            <td>Ingress controller - redirect to HTTPS</td>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>443</td>
+            <td>Ingress controller - HTTPS traffic to Rancher</td>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>6443</td>
+            <td>HTTPS to kube-api, used by kubectl and helm</td>
+        </tr>
+        </tr>
+    </table>
+    <br/><br/>
+    <h5>Additional Ports Required Between Rancher Cluster Nodes</h5>
+    <p>In addition to the ports listed above these ports must be open between nodes.</p>
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>2379-2380</td>
+            <td>etcd</td>
+        </tr>
+        <tr>
+            <td>udp</td>
+            <td>8472</td>
+            <td>Overlay networking</td>
+        </tr>
+        <tr>
+            <td>TCP</td>
+            <td>10250</td>
+            <td>kubelet</td>
+        </tr>
+    </table>
+</div>
