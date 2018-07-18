@@ -83,6 +83,7 @@ Now that Rancher is running, see [Adding TLS Secrets](tls-secrets/) to publish t
 
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
+* [HTTP Proxy](chart-options/#http-proxy)
 * [Private Docker Image Registry/Air Gap Network](chart-options/#private-or-air-gap-registry)
 * [TLS Termination on an External Load Balancer](chart-options/#external-tls-termination)
 
