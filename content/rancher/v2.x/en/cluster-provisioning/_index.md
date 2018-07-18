@@ -32,8 +32,8 @@ Each computing resource in a Kubernetes Cluster is called a _node_. Node can be 
 
 [Worker nodes](https://kubernetes.io/docs/concepts/architecture/nodes/) run:
 
--_kubelets_, which is an agent that monitors the state of the node, ensuring your containers are healthy.
-- _workloads_, which are the containers and pods that hold your apps, as well as other types of deployments.
+- _Kubelets_: An agent that monitors the state of the node, ensuring your containers are healthy.
+- _Workloads_: The containers and pods that hold your apps, as well as other types of deployments.
 
 Worker nodes also run storage and networking drivers, and ingress controllers when required. You create as many worker nodes as needed for your workload needs.
 
@@ -50,11 +50,10 @@ Options include:
 <!-- TOC -->
 
 - [Hosted Kubernetes Cluster](#hosted-kubernetes-cluster)
-- [RKE Clusters](#rke-clusters)
+- [Rancher Launched Kubernetes](#rancher-launched-kubernetes)
 
-    - [Node Pools (i.e., Infrastructure Provider)](#node-pools-ie-infrastructure-provider)
-    - [Custom Nodes (i.e. Existing Nodes)](#custom-nodes-ie-existing-nodes)
-    
+    - [Node Pools](#node-pools)
+    - [Custom Nodes](#custom-nodes)
 - [Import Existing Cluster](#import-existing-cluster)
 
 <!-- /TOC -->
@@ -71,13 +70,13 @@ Alternatively, you can use Rancher to create a cluster from your own existing no
 
 [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/)
 
-#### Node Pools (i.e., Infrastructure Provider)
+#### Node Pools
 
-Using Rancher, you can leverage APIs from major IaaS providers in combination with RKE to create nodes and provision a new K8s cluster.
+Using Rancher, you can leverage <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> in combination with RKE to create nodes and provision a new K8s cluster.
 
 [Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#node-pools)
 
-#### Custom Nodes (i.e. Existing Nodes)
+#### Custom Nodes
 
 Use Rancher to create a K8s cluster on your on-premise bare metal servers. This option creates a cluster using RKE, which is Rancher's own lightweight K8s installer.
 
