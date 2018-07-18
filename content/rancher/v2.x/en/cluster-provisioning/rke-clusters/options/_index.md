@@ -3,7 +3,7 @@ title: Cluster Options
 weight: 2250
 ---
 
-As you configure a new cluster that's provisioned using RKE, you can can choose custom Kubernetes (K8s) options.
+As you configure a new cluster that's provisioned using RKE, you can choose custom Kubernetes (K8s) options.
 
 You can configure K8s options one of two ways:
 
@@ -12,9 +12,9 @@ You can configure K8s options one of two ways:
 
 ## Rancher UI
 
-When creating a cluster using one of the options described in [Rancher Launched Kubenernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic K8s options using the **Cluster Options** section.
+When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic K8s options using the **Cluster Options** section.
 
-From this section allows you choose:
+From this section you can choose:
 
 - The version of Kubernetes installed on your cluster nodes. Rancher uses its own version of Kubernetes based on [hyperkube](https://hub.docker.com/r/kubernetesonarm/hyperkube/), but packaged with more utilities.
 
