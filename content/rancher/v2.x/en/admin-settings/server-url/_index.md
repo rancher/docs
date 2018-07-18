@@ -2,8 +2,8 @@
 title: Rancher Server URL
 weight: 1105
 aliases:
-    -/rancher/v2.x/en/concepts/global-configuration/server-url
-    -/rancher/v2.x/en/tasks/global-configuration/server-url
+    - /rancher/v2.x/en/concepts/global-configuration/server-url/
+    - /rancher/v2.x/en/tasks/global-configuration/server-url/
 ---
 
 This is the URL of your Rancher Server. All nodes in your cluster must resolve to this URL.
