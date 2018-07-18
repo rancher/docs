@@ -63,19 +63,19 @@ Options include:
 
 If you already use a K8s provider such as Google GKE, Rancher can integrate with its cloud APIs, allowing you to create and manage your hosted cluster from the Rancher UI.
 
-[Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/hosted-kubernetes-clusters)
+[Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/hosted-kubernetes-clusters)
 
 ### RKE Clusters
 
 Alternatively, you can use Rancher to create a cluster from your own existing nodes, using RKE. RKE is Rancher’s own lightweight K8s installer. It works with any bare metal server, cloud provider, or virtualization platform. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
 
-[RKE Clusters]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters)
+[RKE Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters)
 
 #### Node Pools (i.e., Infrastructure Provider)
 
 Using Rancher, you can leverage APIs from major IaaS providers in combination with RKE to create nodes and provision a new K8s cluster.
 
-[Node Pools]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters/#node-pools)
+[Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#node-pools)
 
 #### Custom Nodes (i.e. Existing Nodes)
 
@@ -83,10 +83,10 @@ Use Rancher to create a K8s cluster on your on-premise bare metal servers. This 
 
 In addition to bare metal servers, RKE can also create clusters on less popular IaaS providers by integrating with node drivers.
 
-[Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/clusters/rke-clusters/#custom-nodes)
+[Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#custom-nodes)
 
 ### Import Existing Cluster
 
 Users can import an existing K8s cluster into Rancher. Rancher does not automate the provisioning, scaling, and upgrade of imported K8s clusters. All other cluster management, policy management, and workload management capabilities of Rancher apply to imported clusters.
 
-[Importing Existing Cluster]({{< baseurl >}}/rancher/v2.x/en/clusters/imported-clusters/)
+[Importing Existing Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/imported-clusters/)
