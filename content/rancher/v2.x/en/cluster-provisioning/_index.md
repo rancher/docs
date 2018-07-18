@@ -65,11 +65,11 @@ If you already use a K8s provider such as Google GKE, Rancher can integrate with
 
 [Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/hosted-kubernetes-clusters)
 
-### RKE Clusters
+### Rancher Launched Kubernetes
 
 Alternatively, you can use Rancher to create a cluster from your own existing nodes, using RKE. RKE is Rancher’s own lightweight K8s installer. It works with any bare metal server, cloud provider, or virtualization platform. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
 
-[RKE Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters)
+[Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/)
 
 #### Node Pools (i.e., Infrastructure Provider)
 
