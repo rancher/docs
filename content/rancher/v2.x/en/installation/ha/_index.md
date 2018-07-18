@@ -30,9 +30,9 @@ The following CLI tools are required for this install. Please make sure these to
 ## Installation Outline
 
 1. [Create Nodes and Load Balancer](create-nodes-lb/)
-1. [Install Kubernetes with RKE](install-kubernetes-rke/)
+1. [Install Kubernetes with RKE](kubernetes-rke/)
 1. [Initialize Helm (tiller)](helm-init/)
-1. [Install Rancher](helm-rancher-install/)
+1. [Install Rancher](helm-rancher/)
 
 ## Additional Install Options
 
