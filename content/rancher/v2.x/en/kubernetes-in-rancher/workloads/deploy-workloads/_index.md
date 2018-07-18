@@ -2,7 +2,7 @@
 title: Deploying Workloads
 weight: 3026
 aliases:
-  - /rancher/v2.x/en/concepts/workloads/deploy-workloads/
+  - /rancher/v2.x/en/tasks/workloads/deploy-workloads/
 ---
 
 Deploy a workload to run an application in one or more containers.
