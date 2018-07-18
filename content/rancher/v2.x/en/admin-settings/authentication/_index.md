@@ -2,8 +2,8 @@
 title: Authentication
 weight: 1110
 aliases:
-    -/rancher/v2.x/en/concepts/global-configuration/authentication/
-    -/rancher/v2.x/en/tasks/global-configuration/authentication/
+    - /rancher/v2.x/en/concepts/global-configuration/authentication/
+    - /rancher/v2.x/en/tasks/global-configuration/authentication/
 ---
 
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.

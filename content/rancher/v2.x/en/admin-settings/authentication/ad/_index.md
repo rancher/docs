@@ -2,7 +2,7 @@
 title: Configuring Active Directory (AD)
 weight: 1112
 aliases:
-    -/rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/
+    - /rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/
 ---
 
 In environments using Microsoft AD, you can configure Rancher to allow sign on using AD credentials.

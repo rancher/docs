@@ -2,7 +2,7 @@
 title: Custom Roles
 weight: 1128
 aliases:
-    -/rancher/v2.x/en/tasks/global-configuration/roles/
+    - /rancher/v2.x/en/tasks/global-configuration/roles/
 ---
 
 Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
