@@ -1,13 +1,18 @@
-	<p>Complete the <strong>Rancher Template</strong> form to add metadata so that you can find your template in Rancher later.</p>
+	<p>Complete the <strong>Rancher Template</strong> form to configure the Docker daemon on the instances that will be created.</p>
 	<ul>
 		<li>
-			<p><strong>Labels</strong> apply metadata to your Docker objects.</p>
+			<p><strong>Labels</strong> can be configured on the Docker daemon.</p>
 
 			<p><a href="https://docs.docker.com/config/labels-custom-metadata/">Docker object label documentation</a></p>
 		</li>
 		<li>
 			<!-- TODO: Improve the engine options -->
-			<p><strong>Engine Options</strong> customize the configuration of the <a href="https://docs.docker.com/engine/docker-overview/#the-docker-daemon">Docker daemon</a>.</p>
+			<p><strong>Engine Options</strong> customize the configuration of the <a href="https://docs.docker.com/engine/docker-overview/#the-docker-daemon">Docker daemon</a>. Important configuration options might include:
+			<ul>
+			<li><strong>Docker Engine Install URL:</strong> Determines what Docker version will be installed on the instance.</li>
+			<li><strong>Registry mirrors:</strong> Docker Registry mirror to be used by the Docker daemon</li>
+			</ul>
+			</p>
 
 			<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/">daemon option reference</a></p>
 		</li>
