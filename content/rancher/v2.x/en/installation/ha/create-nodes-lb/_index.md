@@ -45,4 +45,4 @@ Configure a load balancer as a basic Layer 4 tcp forwarder. The exact configurat
 
 <br/>
 
-### [Next: Install Kubernetes with RKE](../install-kubernetes-rke/)
+### [Next: Install Kubernetes with RKE](../kubernetes-rke/)

@@ -53,4 +53,4 @@ kubectl -n cattle-system delete serviceaccount cattle-admin
 From here follow the standard install steps.
 
 * [3 - Initialize Helm (Install tiller)](../helm-init/)
-* [4 - Install Rancher](../helm-rancher-install/)
+* [4 - Install Rancher](../helm-rancher/)
