@@ -32,7 +32,7 @@ weight: 276
 
 ### HTTP Proxy
 
-Rancher requires internet access for some functionality (helm charts). Set proxy to your proxy server. Add your domain name or ip exceptions to the noProxy list. Make sure any worker cluster `controlplane` nodes are included in this list.
+Rancher requires internet access for some functionality (helm charts). Set proxy to your proxy server. Add your domain name or ip exceptions to the noProxy list. Make sure your worker cluster `controlplane` nodes are included in this list.
 
 ```
 --set proxy="http://<username>:<password>@<proxy_url>:<proxy_port>/"
