@@ -56,4 +56,4 @@ You can create new clusters within Rancher using _node templates_. A node templa
 
 After you add a node template to Rancher, its stored by the system so that you can use it when creating another cluster later. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
-You can create provider-hosted nodes from the Rancher UI by creating a node template. After providing Rancher with an access token from the vendor you're using, Rancher prompts you for specifications that it will send to your provider by API. The provider than provisions your nodes based on the template.
+You can create provider-hosted nodes from the Rancher UI by creating a node template. After providing Rancher with an access token from the vendor you're using, Rancher prompts you for specifications that it will send to your provider. The provider than provisions your nodes based on the template.
