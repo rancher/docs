@@ -1,6 +1,8 @@
 ---
 title: Ingress
 weight: 3042
+aliases:
+  - /rancher/v2.x/en/tasks/workloads/add-ingress/
 ---
 
 Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing.

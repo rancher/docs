@@ -2,7 +2,7 @@
 title: Rolling Back Workloads
 weight: 3027
 aliases:
-  - /rancher/v2.x/en/concepts/workloads/rollback-workloads/
+  - /rancher/v2.x/en/tasks/workloads/rollback-workloads/
 ---
 
 Sometimes there is a need to rollback to the previous version of the application, either for debugging purposes or because an upgrade did not go as planned.

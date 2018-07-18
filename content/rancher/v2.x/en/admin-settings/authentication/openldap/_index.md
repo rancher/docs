@@ -2,7 +2,7 @@
 title: Configuring OpenLDAP
 weight: 1113
 aliases:
-    - /rancher/v2.x/en/tasks/global-configuration/authentication/openLDAP/
+    - /rancher/v2.x/en/tasks/global-configuration/authentication/openldap/
 ---
 
 _Available as of v2.0.5_
