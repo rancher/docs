@@ -15,7 +15,7 @@ RKE cluster provisioning is separated into two categories:
 
 - [Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/):
 
-    In this use case, Rancher uses a combination of cloud host APIs and RKE to provision a Kubernetes cluster using a major cloud provider.
+    In this use case, Rancher uses a <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> and RKE to provision a Kubernetes cluster using a major cloud provider.
 
 - [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
@@ -23,9 +23,9 @@ RKE cluster provisioning is separated into two categories:
 
 ## Node Pools
 
-Using Rancher, you can use APIs from major IaaS providers in combination with Rancher RKE to provision a new Kubernetes cluster quickly and easily, all from the Rancher UI. There's no need to log directly into your infrastructure provider's portal.
+Rancher calls <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> to provision nodes from major IaaS providers in combination with Rancher RKE to provision a new Kubernetes cluster quickly and easily, all from the Rancher UI. There's no need to log directly into your infrastructure provider's portal.
 
-Out-of-the-box, Rancher supports the following infrastructure providers:
+Out-of-the-box, Rancher includes node pool options for the infrastructure providers that follow, although you can add options by adding or creating [Node Drivers](#node-drivers).
 
 - Amazon EC2
 - Microsoft Azure
