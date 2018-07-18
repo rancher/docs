@@ -7,9 +7,11 @@ aliases:
   - /rancher/v2.x/en/concepts/global-configuration/node-templates/
 ---
 
-Using Rancher, you can use APIs from major IaaS providers in combination with Rancher RKE to provision a new Kubernetes cluster quickly and easily, all from the Rancher UI. There's no need to log directly into your infrastructure provider's portal.
+## Node Pools
 
-Out-of-the-box, Rancher supports the following infrastructure providers:
+Rancher calls <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> to provision nodes from major IaaS providers in combination with Rancher RKE to provision a new Kubernetes cluster quickly and easily, all from the Rancher UI. There's no need to log directly into your infrastructure provider's portal.
+
+Out-of-the-box, Rancher includes node pool options for the infrastructure providers that follow, although you can add options by adding or creating [Node Drivers](#node-drivers).
 
 - Amazon EC2
 - Microsoft Azure
