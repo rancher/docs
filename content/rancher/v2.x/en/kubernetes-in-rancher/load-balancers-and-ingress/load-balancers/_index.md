@@ -1,5 +1,5 @@
 ---
-title: Load Balancing and Ingresses
+title: Load Balancers
 weight: 3041
 aliases:
   - /rancher/v2.x/en/concepts/load-balancing/

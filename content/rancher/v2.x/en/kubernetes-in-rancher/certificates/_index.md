@@ -41,4 +41,4 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 ## What's Next?
 
-Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancing-and-ingress/ingress/).
+Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/ingress/).
