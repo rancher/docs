@@ -2,7 +2,7 @@
 title: Roles in Rancher
 weight: 1125
 aliases:
-    - /rancher/v2.x/en/admin-settings/rbac/
+    - /rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/
 ---
 
 Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/), users can either be local or external.

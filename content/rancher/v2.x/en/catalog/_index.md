@@ -3,6 +3,7 @@ title: Catalogs and Charts
 weight: 4000
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/catalog/
+  - /rancher/v2.x/en/concepts/catalogs/
   - /rancher/v2.x/en/tasks/global-configuration/catalog/
   - /rancher/v2.x/en/tasks/global-configuration/catalog/enabling-default-catalogs/
   - /rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs/
