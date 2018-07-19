@@ -62,28 +62,28 @@ Options include:
 
 If you already use a Kubernetes provider such as Google GKE, Rancher can integrate with its cloud APIs, allowing you to create and manage your hosted cluster from the Rancher UI.
 
-[Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/hosted-kubernetes-clusters)
+[Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters)
 
 ### Rancher Launched Kubernetes
 
 Alternatively, you can use Rancher to create the Kubernetes cluster on your own nodes, using [Rancher Kubernetes Engine (RKE)]({{< baseurl >}}/rke/v0.1.x/en/). RKE is Rancher’s own lightweight Kubernetes installer. With these clusters, Rancher manages the deployment of Kubernetes. These Kubernetes clusters can be deployed on any bare metal server, cloud provider, or virtualization platform. These nodes can either be provisioned through Rancher's UI, which calls [Docker Machine](https://docs.docker.com/machine/) to launch nodes on various cloud providers or they can be existing nodes that users bring and run a Rancher agent container onto.
 
-[Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/)
+[Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
 
 #### Node Pools
 
-Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-drivers). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
+Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-[Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#node-pools)
+[Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/)
 
 #### Custom Nodes
 
-You can bring any nodes you want to Rancher and have Rancher create the Kubernetes cluster. These nodes can include on-premise bare metal servers, nodes existing in a cloud provider or virtual machines. 
+You can bring any nodes you want to Rancher and have Rancher create the Kubernetes cluster. These nodes can include on-premise bare metal servers, nodes existing in a cloud provider or virtual machines.
 
-[Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#custom-nodes)
+[Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/)
 
 ### Import Existing Cluster
 
 Users can import an existing Kubernetes cluster into Rancher. Rancher does not automate the provisioning, scaling, and upgrade of imported Kubernetes clusters. All other cluster management, policy management, and workload management capabilities of Rancher apply to imported clusters.
 
-[Importing Existing Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/imported-clusters/)
+[Importing Existing Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)
