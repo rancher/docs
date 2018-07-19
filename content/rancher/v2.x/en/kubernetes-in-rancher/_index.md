@@ -87,7 +87,22 @@ In use cases where many users share use of a cluster, you can divide it into dif
 
     You can also assign the workloads and resources mentioned above to a project. Therefore, any resources available within a project are available for all namespaces within that project.
 
+For more information on creating project and attaching objects and membership to them, see:
+
+- [Projects and Namespaces]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/)
+- [Project Members]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/project-members/)
+
 ## Workloads
+
+Deploy applications to your cluster nodes using [workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/), which are objects that contain pods that run your apps, along with metadata that set rules for the deployment's behavior. Workloads can deployed within the scope of the entire clusters, or within a namespace.
+
+When deploying a workload, you can deploy any application hosted on [Docker Hub](https://hub.docker.com/). There are variety of [workload types]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/#workload-types) to choose from.
+
+Following a workload deployment, you can continue working with it. You can:
+
+    - [Upgrade]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/upgrade-workloads) the workload to a newer version of the application it's running.
+    - [Roll back]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/rollback-workloads) a workload, if an issue occurs during upgrade.
+    - [Add a sidecar]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/add-a-sidecar), which is a workload that supports a primary workload.
 
 ## Load Balancing and Ingress
 
