@@ -15,9 +15,51 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
 
 - Swap should be disabled on any worker nodes
 
-### RedHat Enterprise Linux (RHEL) / CentOS
+- Following kernel modules should be present
 
-If using RedHat Enterprise Linux or CentOS, you cannot use the `root` user as [SSH user]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
+Module name |
+------------|
+br_netfilter |
+ip6_udp_tunnel |
+ip_set |
+ip_set_hash_ip |
+ip_set_hash_net |
+iptable_filter |
+iptable_nat |
+iptable_mangle |
+iptable_raw |
+nf_conntrack_netlink |
+nf_conntrack |
+nf_conntrack_ipv4 |
+nf_defrag_ipv4 |
+nf_nat |
+nf_nat_ipv4 |
+nf_nat_masquerade_ipv4 |
+nfnetlink |
+udp_tunnel |
+veth |
+vxlan |
+x_tables |
+xt_addrtype |
+xt_conntrack |
+xt_comment |
+xt_mark |
+xt_multiport |
+xt_nat |
+xt_recent |
+xt_set |
+xt_statistic |
+xt_tcpudp |
+
+- Following sysctl settings must be applied
+
+```
+net.bridge.bridge-nf-call-iptables=1
+```
+
+### RedHat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS
+
+If using RedHat Enterprise Linux, Oracle Enterprise Linux or CentOS, you cannot use the `root` user as [SSH user]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
 
 #### Using upstream Docker
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
