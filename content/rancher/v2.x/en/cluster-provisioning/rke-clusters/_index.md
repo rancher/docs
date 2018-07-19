@@ -3,23 +3,18 @@ title: Rancher Launched Kubernetes
 weight: 2200
 ---
 
-## Infrastructure Providers
+If you don't want to use a hosted Kubernetes provider, you can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, it uses Rancher Kubernetes Engine]({{< baseurl >}}/rke/v0.1.x/en/) (RKE), which is Rancher's own lightweight Kubernetes installer. It can launch Kubernetes on any computers, including:
 
-Using Rancher, you can leverage APIs from major IaaS providers to create nodes and provision a new Kubernetes cluster, all from the Rancher UI. There's no need to log directly into your infrastructure providers's portal.
+- Bare-metal servers
+- On-premise virtual machines
+- IaaS-hosted virtual machines
 
-You can create provider-hosted nodes from the Rancher UI by creating a node template. After providing Rancher with an access token from the vendor you're using, Rancher prompts you for specifications that it will send to your provider by API. The provider than provisions your nodes based on the template.
+RKE launched clusters are separated into two categories:
 
-Out-of-the-box, Rancher supports the following infrastructure providers:
+- [Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/):
 
-- Amazon EC2
-- Microsoft Azure
-- DigitalOcean
-- VMWare Vsphere
+    Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-drivers). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-Each vendor requires specific information that's used to authenticate with the provider API. Read more below to learn about the information required for each provider.
+- [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
-## From Existing Nodes
-
-Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ IaaS providers by integrating with node drivers.
-
-To use this option you'll need access to servers you intend to use as your Kubernetes cluster. Provision each server according to Rancher requirements, which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node. 
+    For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that are already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine. 

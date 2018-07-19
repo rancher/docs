@@ -1,18 +1,28 @@
 ---
 title: Creating an AKS Cluster
-shortTitle: Azure Container Service
+shortTitle: Azure Kubernetes Service
 weight: 2115
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service/
 ---
 
-You can use Rancher to create a cluster using Microsoft Azure Container Service.
+You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
 
-<!-- VJF... Broken tag for: beta-note_azure -->
+## Prerequisites
+
+Obtain the following information from the <a href='https://portal.azure.com' target='_blank'>Microsoft Azure Portal</a>:
+
+- Your Subscription ID.
+- Your Tenant ID.
+- A Client ID and Client Secret.
+
+	Complete <a href='https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad' target='_blank'>Create Service Principal for Azure AD</a> to obtain this information.
+
+## To Create an AKS Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Azure Container Service**.
+2. Choose **Azure Kubernetes Service**.
 
 3. Enter a **Cluster Name**.
 
@@ -20,11 +30,8 @@ You can use Rancher to create a cluster using Microsoft Azure Container Service.
 
 5. {{< step_create-cluster_cluster-options >}}
 
-6.	Complete the **Account Access** form. This information is used to authenticate with Azure.
+6. Complete the **Account Access** form using the output from your Service Principal. This information is used to authenticate with Azure.
 
-	-	You can find your **Subscription ID** and **Tenant ID** on the [Microsoft Azure Portal](https://portal.azure.com/).
-	-	To obtain a **Client ID** and **Client Secret**, follow the instructions in [this document](https://www.packer.io/docs/builders/azure-setup.html).
-<br/>
 7. Use **Nodes** to provision each node in your cluster and choose a geographical region.
 
 	[Microsoft Documentation: How to create and use an SSH public and private key pair](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)

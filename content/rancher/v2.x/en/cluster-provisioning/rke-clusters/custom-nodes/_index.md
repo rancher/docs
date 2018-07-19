@@ -6,7 +6,13 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
 ---
 
-## Objectives
+## Custom Nodes
+
+Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using a combination of <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> and RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ IaaS providers by integrating with node drivers.
+
+To use this option you'll need access to servers you intend to use as your Kubernetes cluster. Provision each server according to Rancher [requirements](#requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
+
+## Objectives for Creating Cluster with Custom Nodes
 
 1.	[Provision a Linux Host](#provision-a-linux-host)
 
@@ -28,23 +34,29 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-premise VM
 - A bare-metal server
 
+>**Bare-Metal Server Note:**
+>
+While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
+
 Provision the host according to the requirements below.
 
 ### Requirements
 
-{{< requirements_os >}}
-
-{{< requirements_hardware >}}
-
-{{< requirements_software >}}
-
-{{< requirements_ports_rancher >}}
-
-{{< requirements_ports_rke >}}
-
->**Bare-Metal Server Note:**
->
-While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
+{{< accordion id="os" label="Operating System" >}}
+	{{< requirements_os >}}
+{{< /accordion >}}
+{{< accordion id="hardware" label="Hardware" >}}
+	{{< requirements_hardware >}}
+{{< /accordion >}}
+{{< accordion id="software" label="Software" >}}
+	{{< requirements_software >}}
+{{< /accordion >}}
+{{< accordion id="ports-rancher" label="Ports for Rancher" >}}
+	{{< requirements_ports_rancher >}}
+{{< /accordion >}}
+{{< accordion id="ports-rke" label="Ports for RKE" >}}
+	{{< requirements_ports_rke >}}
+{{< /accordion >}}
 
 
 ## Create the Custom Cluster
