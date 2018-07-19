@@ -11,7 +11,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 1. Choose **Amazon EC2**.
 1. Enter a **Cluster Name**.
 1. {{< step_create-cluster_member-roles >}}
-1. {{< step_create-cluster_cluster-options >}}Refer to <a href="/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/" target="_blank">Selecting Cloud Providers</a> to configure the Kubernetes Cloud Provider.</p></div>
+1. {{< step_create-cluster_cluster-options >}}Refer to [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) to configure the Kubernetes Cloud Provider.</p></div>
 1. {{< step_create-cluster_node-pools >}}
 1. Click **Add Node Template**.
 

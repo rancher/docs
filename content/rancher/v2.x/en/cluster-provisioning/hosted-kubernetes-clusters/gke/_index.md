@@ -7,7 +7,7 @@ aliases:
 ---
 ## Objectives
 
-1.	[Create a Service Account](#create-a-gke-service-account)
+1.	[Create a Service Account](#create-a-service-account)
 
 	Begin by logging into Google Cloud Platform and creating a service account to operate your cluster.
 

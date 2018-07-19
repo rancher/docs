@@ -20,7 +20,7 @@ Rancher allows you to create PVs at cluster level and bind them to PVCs later. V
 >**Prerequisites:**
 >
 >- Working with storage requires the `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference).
->- You must have a storage medium provisioned. For more information, see [Provisioning Storage](provisioning-storage).
+>- You must have a storage medium provisioned. For more information, see [Provisioning Storage]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/examples/).
 
 Your containers can store data on themselves, but if a container fails, that data is lost. To solve this issue, Kubernetes offers _persistent volumes_, which are external storage disks or file systems that your containers can access. If a container crashes, its replacement container can access the data in a persistent volume without any data loss.
 
