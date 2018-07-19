@@ -9,12 +9,12 @@ If you don't want to use a hosted Kubernetes provider, you can have Rancher laun
 - On-premise virtual machines
 - IaaS-hosted virtual machines
 
-RKE cluster provisioning is separated into two categories:
+RKE launched clusters are separated into two categories:
 
 - [Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/):
 
-    In this use case, Rancher uses [Docker Machine](https://docs.docker.com/machine/) to provision nodes in IaaS-hosted virtual machines. After the nodes are provisioned, RKE is used deploy Kubernetes. 
+    Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-drivers). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
 - [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
-    For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that are already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine. Then, RKE is used to deploy Kubernetes. 
+    For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that are already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine. 
