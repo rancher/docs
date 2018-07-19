@@ -3,12 +3,12 @@ title: Cluster Options
 weight: 2250
 ---
 
-As you configure a new cluster that's provisioned using RKE, you can choose custom Kubernetes options.
+As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rke/v0.1.x/en/), you can choose custom Kubernetes options.
 
 You can configure Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Config File](#config-file): Alternatively, you can create a RKE config file to customize any option offered by Kubernetes.
+- [Config File](#config-file): Alternatively, you can create a [RKE config file]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to customize any option offered by Kubernetes.
 
 ## Rancher UI
 
@@ -20,23 +20,24 @@ From this section you can choose:
 
 - Whether your nodes allow installation of an unsupported version of Docker (i.e., a version not listed in the Rancher requirements).
 
-- The <a href='https://kubernetes.io/docs/concepts/cluster-administration/networking/' target='_blank'>Network Provider</a> that the cluster uses. Out of the box, Rancher supports:
+- The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. Out of the box, Rancher supports:
     
-    - <a href='https://github.com/coreos/flannel#flannel' target='_blank'>Flannel</a>
+    - [Flannel](https://github.com/coreos/flannel#flannel)
     
-    - <a href='https://docs.projectcalico.org/v3.1/introduction/' target='_blank'>Calico</a>
+    - [Calico](https://docs.projectcalico.org/v3.1/introduction/)
     
-    - <a href='https://github.com/projectcalico/canal' target='_blank'>Canal</a> (default)
+    - [Canal] (https://github.com/projectcalico/canal) (default)
     
-- Whether or not to use a <a href='{{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers'>cloud provider</a>.
+    
+- Whether or not to use a [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers).
 
-- Whether or not to use a <a href='{{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies'>pod security policy</a>. You must have an existing pod security policy configured before you can use this option.
+- Whether or not to use a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing pod security policy configured before you can use this option.
 
 ## Config File
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the <a href='/rke/v0.1.x/en/config-options/' >options available</a> in an RKE installation.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
 
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from File**.
 
-For an example of RKE config file syntax, see the <a href='{{< baseurl >}}/rke/v0.1.x/en/example-yamls/'>RKE documentation</a>.  
+For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
