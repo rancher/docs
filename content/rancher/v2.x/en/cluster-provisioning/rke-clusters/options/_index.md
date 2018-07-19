@@ -3,16 +3,16 @@ title: Cluster Options
 weight: 2250
 ---
 
-As you configure a new cluster that's provisioned using RKE, you can choose custom Kubernetes (K8s) options.
+As you configure a new cluster that's provisioned using RKE, you can choose custom Kubernetes options.
 
-You can configure K8s options one of two ways:
+You can configure Kubernetes options one of two ways:
 
-- [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a K8s cluster.
-- [Config File](#config-file): Alternatively, you can create a RKE config file to customize any option offered by K8s.
+- [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Config File](#config-file): Alternatively, you can create a RKE config file to customize any option offered by Kubernetes.
 
 ## Rancher UI
 
-When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic K8s options using the **Cluster Options** section.
+When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic Kubernetes options using the **Cluster Options** section.
 
 From this section you can choose:
 
@@ -34,7 +34,7 @@ From this section you can choose:
 
 ## Config File
 
-Instead of using the Rancher UI to choose K8s options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the <a href='/rke/v0.1.x/en/config-options/' >options available</a> in an RKE installation.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the <a href='/rke/v0.1.x/en/config-options/' >options available</a> in an RKE installation.
 
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from File**.
