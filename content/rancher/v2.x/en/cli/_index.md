@@ -56,11 +56,11 @@ The following commands are available for use in Rancher CLI.
 
 - `apps, [app]`
 
-    Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{< baseurl >}}/rancher/v2.x/en/catalogs-and-charts/#rancher-chart-structure)).
+    Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#chart-directory-structure)).
 
 - `catalog`
 
-    Performs operations on [catalogs]({{< baseurl >}}/rancher/v2.x/en/catalogs-and-charts/catalogs).
+    Performs operations on [catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/).
 
 - `clusters, [cluster]`
 

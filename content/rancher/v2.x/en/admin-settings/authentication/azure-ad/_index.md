@@ -11,7 +11,7 @@ If you have an instance of Active Directory (AD) hosted in Azure, you can config
 
 >**Prerequisite:** Have an instance of Azure AD configured.
 
->**Note:** Most of this procedure, with the exception of [Configure Azure AD in Rancher](#configure-azure-ad-in-rancher), takes place from the [Microsoft Azure Portal](https://portal.azure.com/).
+>**Note:** Most of this procedure takes place from the [Microsoft Azure Portal](https://portal.azure.com/).
 
 ## Azure Active Directory Configuration Outline
 

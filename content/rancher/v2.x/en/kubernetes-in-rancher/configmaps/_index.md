@@ -30,7 +30,7 @@ ConfigMaps store general configuration information for an application, such as c
 
 1. Click **Save**.
 
-	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret](../add-a-secret).
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>

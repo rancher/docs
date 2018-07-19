@@ -30,7 +30,7 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
     	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. In Rancher 2.0, only global catalogs are supported. Support for cluster-level and project-level charts will be added in the future.
 
-    	This catalog features Rancher Charts, which include some [notable advantages](#chart-types) over native Helm charts.
+    	This catalog features Rancher Charts, which include some [notable advantages]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
 
     - **Helm Stable**
 

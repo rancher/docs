@@ -15,6 +15,6 @@ There are two contexts where you can add cluster members:
 
     You can add members to a cluster as you create it (recommended if possible).
 
-- [Adding Members to an Existing Cluster](/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/)
+- [Adding Members to an Existing Cluster]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/editing-clusters/)
 
     You can always add members to a cluster after a cluster is provisioned.
