@@ -66,21 +66,19 @@ If you already use a Kubernetes provider such as Google GKE, Rancher can integra
 
 ### Rancher Launched Kubernetes
 
-Alternatively, you can use Rancher to create a cluster from your own existing nodes, using RKE. RKE is Rancher’s own lightweight Kubernetes installer. It works with any bare metal server, cloud provider, or virtualization platform. It integrates with node drivers to automatically provision nodes on AWS, Azure, DigitalOcean, vSphere, OpenStack, etc. Users can add custom nodes to the cluster by running the Rancher agent on these nodes.
+Alternatively, you can use Rancher to create the Kubernetes cluster on your own nodes, using [Rancher Kubernetes Engine (RKE)]({{< baseurl >}}/rke/v0.1.x/en/). RKE is Rancher’s own lightweight Kubernetes installer. With these clusters, Rancher manages the deployment of Kubernetes. These Kubernetes clusters can be deployed on any bare metal server, cloud provider, or virtualization platform. These nodes can either be provisioned through Rancher's UI, which calls [Docker Machine](https://docs.docker.com/machine/) to launch nodes on various cloud providers or they can be existing nodes that users bring and run a Rancher agent container onto.
 
 [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/)
 
 #### Node Pools
 
-Using Rancher, you can leverage <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> in combination with RKE to create nodes and provision a new Kubernetes cluster.
+Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/node-pools/#node-drivers). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
 [Node Pools]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#node-pools)
 
 #### Custom Nodes
 
-Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using RKE, which is Rancher's own lightweight Kubernetes installer.
-
-In addition to bare metal servers, RKE can also create clusters on less popular IaaS providers by integrating with node drivers.
+You can bring any nodes you want to Rancher and have Rancher create the Kubernetes cluster. These nodes can include on-premise bare metal servers, nodes existing in a cloud provider or virtual machines. 
 
 [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-providers/rke-clusters/#custom-nodes)
 
