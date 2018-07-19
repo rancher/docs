@@ -18,7 +18,7 @@ From this section you can choose:
 
 - The version of Kubernetes installed on your cluster nodes. Rancher uses its own version of Kubernetes based on [hyperkube](https://hub.docker.com/r/kubernetesonarm/hyperkube/), but packaged with more utilities.
 
-- Whether your nodes allow installation of an unsupported version of Docker (i.e., a version not listed in the Rancher requirements).
+- Whether Rancher should check if the nodes are running a supported or unsupported version of Docker. If you only allow supported versions, the cluster automatically fails to launch.
 
 - The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. Out of the box, Rancher supports:
     
