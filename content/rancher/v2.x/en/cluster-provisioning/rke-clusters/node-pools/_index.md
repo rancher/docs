@@ -9,20 +9,25 @@ aliases:
 
 ## Node Pools
 
-Rancher calls [Docker Machine](https://docs.docker.com/machine/) to provision nodes from major IaaS providers in combination with Rancher RKE to provision a new Kubernetes cluster quickly and easily, all from the Rancher UI. There's no need to log directly into your infrastructure provider's portal.
+Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-Out-of-the-box, Rancher includes node pool options for the infrastructure providers that follow, although you can add options by adding or creating [Node Drivers](#node-drivers).
+Each node pool is assigned with a [node component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#node-components) to specify how these nodes should be configured for the Kubernetes cluster. 
 
-- Amazon EC2
-- Microsoft Azure
-- DigitalOcean
-- VMWare Vsphere
+<-- Needs steps on how to add/create node pools -->
 
-### Node Drivers
+## Node templates
 
-Out-of-the-box, Rancher provides support for creating clusters using many popular cloud providers: Amazon EC2, Azure, DigitalOcean, and so on. However, you may want to create a cluster using another cloud provider. In these scenarios, you can create a custom node driver for the cloud provider and point Rancher toward it.
+A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. Rancher provides a nice UI to be able to launch these nodes and uses [Docker Machine]((https://docs.docker.com/machine/) to provision these nodes. The available cloud providers to create node templates are based on the active [node drivers](#node drivers) in Rancher.
 
-For more information on creating node drivers, see [https://github.com/rancher/ui-driver-skel](https://github.com/rancher/ui-driver-skel).
+After you create a node template in Rancher, it's saved so that you can use this template again to create other node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
+
+<-- need steps on how to add/create node templates-->
+
+## Node Drivers
+
+A node driver is the same as a [Docker Machine driver](https://docs.docker.com/machine/drivers/). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, Rancher is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to Rancher. 
+
+If there are specific node drivers that you don't want to show to your users, you would need to de-activate these node drivers. 
 
 #### Managing Node Drivers
 
@@ -33,7 +38,7 @@ For more information on creating node drivers, see [https://github.com/rancher/u
 
 ## Adding Custom Node Drivers
 
-If you create a cluster using a cloud provider that {{< product >}} doesn't support out-of-the-box, you may need to add the provider's drivers (or create them yourself) so that your nodes function properly.
+If you want to use a node driver that Rancher doesn't support out-of-the-box, you can add the provider's drivers in order to start using them to create node templates and eventually node pools. 
 
 1.	From the **Global** view, select **Node Drivers** from the main menu.
 
@@ -41,19 +46,12 @@ If you create a cluster using a cloud provider that {{< product >}} doesn't supp
 
 3.	Complete the **Add Node Driver** form. Then click **Create**.
 
-## Activating Node Drivers
+## Activating/Deactivating Node Drivers
 
-Using the **Custom** option, you can create a cluster using virtually any cloud provider. However, by default, {{< product >}} only activates drivers for the most popular cloud providers. If you want to use another provider, you'll have to activate their drivers.
+By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, Digital Ocean and vSphere. If you want to show or hide any node driver, you can change it's status. 
 
 1.	From the **Global** view, select **Node Drivers** from the main menu.
 
-2.	Select the inactive drivers that you want to use. Then click **Add Node Driver**.
+2.	Find the driver that you want to activate or deactivate and select **Vertical Elipsis (... ) > Edit**. Choose either **Activate** or **Deactivate**.
 
 
-### Node templates
-
-You can create new clusters within Rancher using _node templates_. A node template is a virtual machine image used to create a Kubernetes cluster. While creating a cluster, Rancher will prompt you for an image to use as a template. Follow the directions on screen to create the template. During cluster creation, Rancher clones the template and installs different Kubernetes components.
-
-After you add a node template to Rancher, its stored by the system so that you can use it when creating another cluster later. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
-
-You can create provider-hosted nodes from the Rancher UI by creating a node template. After providing Rancher with an access token from the vendor you're using, Rancher prompts you for specifications that it will send to your provider. The provider than provisions your nodes based on the template.
