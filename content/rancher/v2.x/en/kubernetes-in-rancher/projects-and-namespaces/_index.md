@@ -7,6 +7,8 @@ aliases:
   - /rancher/v2.x/en/tasks/projects/create-project/
 ---
 
+## Projects
+
 _Projects_ are a new concept introduced by Rancher. They are not a native Kubernetes construct. A project captures a set of policies for a set of namespaces. A user can be assigned a specific role in a project. A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/). Policies include Kubernetes Role-Based Access Control (RBAC) policies and pod security policies. Rancher 2.0 also implements a canned network policy that isolates containers in different projects. Future versions of Rancher will implement more flexible network policies.
 
 ## Authorization
