@@ -110,16 +110,30 @@ Following a workload deployment, you can continue working with it. You can:
 
 ## Volumes and Storage
 
+For workloads that need to retain their state, you must add storage to the workload. Storage volumes are locations outside your of your pods where applications can store their data. Because the storage is external to the workload, if a container fails, the container that replaces it can restore the external data, making recovery appear seamless. 
+
+Within Rancher, you can create persistent storage using one of two methods:
+
+- [Persistent Volumes]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/#persistent-volumes)
+
+    Persistent volumes are pre-provisioned storage volumes that you can bind to pods later using Persistent Volume Claims.
+
+- [Storage Classes]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/#storage-classes)
+
+    Storage classes are objects that provision storage volumes upon request. When a pod submits a Persistent Volume Claim to the storage class, the class creates a storage volume for the pod.
+
+After you deploy a workload, they request storage using a [Persistent Volume Claim]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/persistent-volume-claims), which is like a voucher used to claim storage space available within the cluster.
+
 ## Kubernetes Resources
 
 Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well.
 
 Resources include:
 
-- [Certificates]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/certificates/): files used to encrypt/decrypt data entering or leaving the cluster.
-- [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/configmaps/): files that store general configuration information, such as a group of config files.
-- [Secrets]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/): files that store sensitive data like passwords, tokens, or keys
-- [Registries]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/registries/): files that carry credentials used to authenticate with private registries.
+- [Certificates]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/certificates/): Files used to encrypt/decrypt data entering or leaving the cluster.
+- [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/configmaps/): Files that store general configuration information, such as a group of config files.
+- [Secrets]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/): Files that store sensitive data like passwords, tokens, or keys
+- [Registries]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/registries/): Files that carry credentials used to authenticate with private registries.
 
 
 ## Cluster Resources
