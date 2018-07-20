@@ -123,6 +123,10 @@ For more information, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-i
 
 ## Service Discovery
 
+After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a Service Record, which is record that maps a IP address, external hostname, DNS record alias, workloads, or labled pods to a specific hostname.
+
+For more information, see [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/service-discovery).
+
 ## Volumes and Storage
 
 For workloads that need to retain their state, you must add external storage for the workload. Storage volumes are locations outside your of your pods where applications can store their data. Because the storage is external to the workload, if a container fails, the container that replaces it can restore the external data, making recovery appear seamless.
