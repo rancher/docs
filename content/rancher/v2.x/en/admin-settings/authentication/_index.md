@@ -1,9 +1,9 @@
 ---
 title: Authentication
-weight: 50
+weight: 1110
 aliases:
-    -/rancher/v2.x/en/concepts/global-configuration/authentication/
-    -/rancher/v2.x/en/tasks/global-configuration/authentication/
+    - /rancher/v2.x/en/concepts/global-configuration/authentication/
+    - /rancher/v2.x/en/tasks/global-configuration/authentication/
 ---
 
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
@@ -25,8 +25,6 @@ The Rancher authentication proxy integrates with the following external authenti
 However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
-
-For more information on how to configure external authentication or local authentication, see [Authentication](../../../tasks/global-configuration/authentication/). 
 
 ### External Authentication Configuration and Principal Users
 
@@ -53,9 +51,8 @@ Configuration of external authentication affects how principal users are managed
 
 	![Sign In External Principal]({{< baseurl >}}/img/rancher/sign-in-external.png)
 
-5. Because the external principal and the local principal share an ID, no unique object for the external principal displays on the Users page. 
+5. Because the external principal and the local principal share an ID, no unique object for the external principal displays on the Users page.
 
 	![Sign In External Principal]({{< baseurl >}}/img/rancher/users-page.png)
 
 6. The external principal and the local principal share the same access rights.
-
