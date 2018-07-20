@@ -55,8 +55,6 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 ## Related Links
 
-### External Load Balancers
-
 #### External Links
 
 - [Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
@@ -67,6 +65,4 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 - [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
 - [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
-### Ingress Controller
 
-- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
