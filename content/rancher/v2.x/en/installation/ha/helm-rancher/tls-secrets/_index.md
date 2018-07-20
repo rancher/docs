@@ -7,7 +7,7 @@ Kubernetes will create all the objects and services for Rancher, but it will not
 
 Combine the server certificate followed by the intermediate cert chain your CA provided into a file named `tls.crt`. Copy your key into a file name `tls.key`.
 
-Use `kubectl` with the `tls` type to create the secrets.
+Use `kubectl` with the `tls` secret type to create the secrets.
 
 ```
 kubectl -n cattle-system create secret tls tls-rancher-ingress \

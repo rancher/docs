@@ -3,11 +3,11 @@ title: 3 - Initialize Helm (Install tiller)
 weight: 195
 ---
 
-`helm` is the package management tool of choice for Kubernetes. `helm` `charts` provide templating syntax for Kubernetes YAML manifest documents. With `helm` we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/)
+Helm is the package management tool of choice for Kubernetes. Helm "charts" provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/).
 
-### Initialize Helm on your Cluster
+### Initialize Helm on the cluster
 
-`helm` installs the `tiller` service on your cluster to manage `chart` deployments. Since `rke` has RBAC enabled by default we will need to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so `tiller` can deploy to our cluster for us.
+Helm installs the `tiller` service on your cluster to manage charts. Since RKE enables RBAC by default we will need to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so `tiller` has permission to deploy to the cluster.
 
 * Create the `ServiceAccount` in the `kube-system` namespace.
 * Create the `ClusterRoleBinding` to give the `tiller` account access to the cluster.
@@ -21,7 +21,7 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 <details><summary>Additional steps for Air Gap/Private Registry</summary>
 <p>
 
-If you have an Air Gapped network you will need the tiller image available in your private registry.
+If you have an Air Gapped network you will need the `tiller` image available in your private registry.
 
 ##### Create registry secret
 

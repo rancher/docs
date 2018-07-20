@@ -32,16 +32,24 @@ weight: 276
 
 ### HTTP Proxy
 
-Rancher requires internet access for some functionality (helm charts). Set proxy to your proxy server. Add your domain name or ip exceptions to the noProxy list. Make sure your worker cluster `controlplane` nodes are included in this list.
+Rancher requires internet access for some functionality (helm charts). Use `proxy` to set your proxy server.
+
+Add your IP exceptions to the `noProxy` list. Make sure you add the Service cluster IP range (default: 10.43.0.1/16) and any worker cluster `controlplane` nodes. Rancher supports CIDR notation ranges in this list.
 
 ```
 --set proxy="http://<username>:<password>@<proxy_url>:<proxy_port>/"
---set noProxy="127.0.0.1,localhost,myinternaldomain.example.com"
+--set noProxy="127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 ```
 
 ### Private or Air Gap Registry
 
 You can point to a private registry for an "Air Gap" install.
+
+#### Images
+
+Populate your private registry with Rancher images.
+
+You can get the list of images required for rancher and worker cluster installs from the [Releases](https://github.com/rancher/rancher/releases/latest) page.
 
 #### Create Registry Secret
 
@@ -66,7 +74,7 @@ Add the `rancherImage` to point to your private registry image and `imagePullSec
 
 ### External TLS Termination
 
-If you wish to terminate the SSL/TLS on a load-balancer external to the Rancher cluster (ingress), use the `--tls=external` option and point your load balancer at port http 80.
+If you wish to terminate the SSL/TLS on a load-balancer external to the Rancher cluster (ingress), use the `--tls=external` option and point your load balancer at port http 80 on all of the rancher cluster nodes.
 
 > NOTE: If you are using a Private CA signed cert, add `--set privateCA=true` and see [Adding TLS Secrets - Private CA Signed - Additional Steps](../tls-secrets/#private-ca-signed---additional-steps) to add the CA cert for Rancher.
 

@@ -5,7 +5,7 @@ weight: 276
 
 ### Where is everything
 
-Most of the troubleshooting will be done on Objects in these 3 namespaces.
+Most of the troubleshooting will be done on objects in these 3 namespaces.
 
 * `cattle-system` - `rancher` deployment and pods.
 * `ingress-nginx` - Ingress controller pods and services.

@@ -4,11 +4,11 @@ weight: 275
 draft: true
 ---
 
-When installed as a Deployment in a Kubernetes cluster, Rancher will take integrate with the cluster's etcd database and Kubernetes scheduling for High-Availability.
+When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for High-Availability.
 
 This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
 
-> NOTE: For the best performance, we recommend this Kubernetes cluster is dedicated to only the Rancher workload.
+> **Note:** For the best performance, we recommend this Kubernetes cluster be dedicated only to the Rancher workload.
 
 ## Recommended Architecture
 
@@ -21,7 +21,7 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 
 ## Required Tools
 
-The following CLI tools are required for this install. Please make sure these tools installed and available in your `$PATH`
+The following CLI tools are required for this install. Please make sure these tools are installed and available in your `$PATH`
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
 * [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
