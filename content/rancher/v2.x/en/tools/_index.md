@@ -44,3 +44,23 @@ _Notifiers_ are services that inform you of alert events. You can configure noti
 
 Alerts and notifiers are powered by [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/).
 
+## Logging
+
+Rancher can integrate with popular external services used for event streams, telemetry, or search. Rancher can integrate with the following services:
+
+- Embedded Elasticsearch (experimental)
+    >**Note:** This option is available only at the cluster level.
+- Elasticsearch
+- splunk
+- kafka
+- syslog
+
+These services collect container log events, which are saved to the `/var/log/containers` directory on each of your nodes. The service collects both standard and error events. You can then log into your services to review the events collected, leveraging each service's unique features.
+
+When configuring Rancher to integrate with these services, you'll have to point Rancher toward the service's endpoint and provide authentication information. Additionally, you'll have the opportunity to enter key value pairs to filter the log events collected. The service will only collect events for containers marked with your configured key value pairs.
+
+You can configure these services to collect logs at either the cluster or project level.
+
+## Pipelines
+
+Rancher 
