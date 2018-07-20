@@ -115,9 +115,9 @@ For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/kuber
 
 #### Ingress
 
-Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive.
+Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive. You can get around this issue using an ingress.
 
-To address this issue, you can set up an ingress. Ingress is a controller that sits behind a load balancer. When the load balancer receives a request for one of the services running in your cluster, the load balancer passes it to your Ingress. Ingress then routes the request to the correct service based on service subdomains or path rules that you've configured.
+Ingress is a set or rules that act as a load balancer. Ingress works in conjunction with one or more ingress controllers to dynamically route service requests. When the ingress receives a request, the ingress controller(s) in your cluster program the ingress to direct the request to the correct service based on service subdomains or path rules that you've configured.
 
 For more information, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/ingress).
 
