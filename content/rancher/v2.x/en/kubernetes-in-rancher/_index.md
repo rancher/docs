@@ -7,11 +7,11 @@ aliases:
   - /rancher/v2.x/en/concepts/resources/
 ---
 
-After you provision a Kubernetes (K8s) cluster in Rancher, you can begin using powerful K8s features from the Rancher UI to manage the cluster, allowing you to deploy and scale your containerized applications in development, testing, or production environments.
+After you provision a Kubernetes cluster in Rancher, you can begin using powerful Kubernetes features from the Rancher UI to manage the cluster, allowing you to deploy and scale your containerized applications in development, testing, or production environments.
 
 ## Advanced Cluster Interaction
 
-Although the primary method of interacting with your Kubernetes clusters created using Rancher is the Rancher UI, you have additional options for controlling your clusters:
+Although the primary method of interacting with your Kubernetes clusters is the Rancher UI, you have additional options for controlling your clusters:
 
 - **kubectl**
 
@@ -23,7 +23,7 @@ Although the primary method of interacting with your Kubernetes clusters created
         
         For more information, see [Accessing Clusters with kubectl Shell]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/kubectl/#accessing-clusters-with-kubectl-shell).
     
-    - **Terminal remote connection**:
+    - **Terminal remote connection**
     
         You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) and then copying your cluster's kubeconfig file from the Rancher UI to your local `~/.kube/config` directory.
         
@@ -39,9 +39,9 @@ Although the primary method of interacting with your Kubernetes clusters created
 
 ## Node Management
 
-After you launch a Rancher cluster, you can edit many of the settings you configured during its initial launch, including:
+After you launch a cluster, you can edit many of the settings you configured during its initial launch, including:
 
-- The cluster's [members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#membership-and-role-assignment) and [roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles).
+- The users that can access the cluster, using [members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#membership-and-role-assignment) and [roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles).
 - Its [Kubernetes options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/), including:
 
     - The version of Kubernetes installed.
@@ -49,7 +49,7 @@ After you launch a Rancher cluster, you can edit many of the settings you config
     - Whether the cluster uses a cloud provider.
     - Whether the cluster applies a pod security policy.
 
-    >**Note:** You cannot edit the clusters Network Provider after its initial launch.
+    >**Note:** You cannot edit the cluster's Network Provider after its initial launch.
 
 - The [node pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) configured for the cluster.
 
@@ -77,11 +77,11 @@ In use cases where many users share use of a cluster, you can divide it into dif
 
 - [Projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/)
 
-    Projects are a feature available in Rancher, but not the base version of Kubernetes. Projects allows you to group different namespaces a single object. You can then use your project to set user access and pod security policies using a single object (the project) rather than many (namespaces).
+    Projects are a feature available in Rancher, but not the base version of Kubernetes. Projects allows you to group different namespaces into a single object. You can then use your project to set user access and pod security policies using a single object (the project) rather than many (namespaces).
 
     You can also assign the workloads and resources mentioned above to a project. Therefore, any resources available within a project are available for all namespaces within that project.
 
-For more information on creating project and attaching objects and membership to them, see:
+For more information on creating projects and attaching objects and membership to them, see:
 
 - [Projects and Namespaces]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/)
 - [Project Members]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/project-members/)
@@ -95,7 +95,7 @@ When deploying a workload, you can deploy any application hosted on [Docker Hub]
 Following a workload deployment, you can continue working with it. You can:
 
 - [Upgrade]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/upgrade-workloads) the workload to a newer version of the application it's running.
-- [Roll back]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/rollback-workloads) a workload, if an issue occurs during upgrade.
+- [Roll back]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/rollback-workloads) a workload to a previous version, if an issue occurs during upgrade.
 - [Add a sidecar]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/add-a-sidecar), which is a workload that supports a primary workload.
 
 ## Load Balancing and Ingress
@@ -117,13 +117,13 @@ For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/kuber
 
 Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive.
 
-To address this issue, you can set up an Ingress. Ingress is a controller that sits behind a load balancer. When the load balancer receives a request for one of the services running in your cluster, the load balancer passes it to your Ingress. Ingress then routes the request to the correct service based on service subdomains or path rules that you've configured.
+To address this issue, you can set up an ingress. Ingress is a controller that sits behind a load balancer. When the load balancer receives a request for one of the services running in your cluster, the load balancer passes it to your Ingress. Ingress then routes the request to the correct service based on service subdomains or path rules that you've configured.
 
 For more information, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/ingress).
 
 ## Service Discovery
 
-After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a Service Record, which is record that maps a IP address, external hostname, DNS record alias, workloads, or labled pods to a specific hostname.
+After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a service record, which is a record that maps an IP address, external hostname, DNS record alias, workload(s), or labled pods to a specific hostname.
 
 For more information, see [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/service-discovery).
 
@@ -145,22 +145,11 @@ After you deploy a workload, they request storage using a [Persistent Volume Cla
 
 ## Kubernetes Resources
 
-Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Kubernetes, certificates, registries, and secrets are all considered [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, these resources must have unique names to avoid conflicts. Although secrets are primarily used to carry sensitive information, they have other uses as well.
+Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Rancher, certificates, registries, and secrets are all considered resources. However Kubernetes considers resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.
 
 Resources include:
 
 - [Certificates]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/certificates/): Files used to encrypt/decrypt data entering or leaving the cluster.
 - [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/configmaps/): Files that store general configuration information, such as a group of config files.
-- [Secrets]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/): Files that store sensitive data like passwords, tokens, or keys
+- [Secrets]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/): Files that store sensitive data like passwords, tokens, or keys.
 - [Registries]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/registries/): Files that carry credentials used to authenticate with private registries.
-
-
-## Cluster Resources
-
-  - node management
-  - storage
-  - load balancing
-  - service discovery
-  - volumes
-
-
