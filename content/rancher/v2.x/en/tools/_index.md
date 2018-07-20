@@ -3,7 +3,7 @@ title: Rancher Tools
 weight: 5000
 ---
 
-At the cluster level, Rancher can integrate with a variety of external tools that help your clusters run more efficiently. Rancher tools are divided into four categories:
+Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external service to help your clusters run more efficiently. Tools are divided into four categories:
 
 <!-- TOC -->
 
@@ -49,7 +49,9 @@ Alerts and notifiers are powered by [Prometheus Alertmanager](https://prometheus
 Rancher can integrate with popular external services used for event streams, telemetry, or search. Rancher can integrate with the following services:
 
 - Embedded Elasticsearch (experimental)
+    
     >**Note:** This option is available only at the cluster level.
+
 - Elasticsearch
 - splunk
 - kafka
@@ -63,4 +65,14 @@ You can configure these services to collect logs at either the cluster or projec
 
 ## Pipelines
 
-Rancher 
+Using Rancher, you can integrate with a GitHub repository to setup a continuous integration (CI) pipeline.
+
+To set up a pipeline, you'll first need to authorize Rancher using your GitHub settings. Directions are provided in the Rancher UI. After authorizing Rancher in GitHub, provide Rancher with a client ID and secret to authenticate.
+
+After configuring Rancher and GitHub, you can deploy containers running Jenkins to automate a pipeline execution:
+
+- Build your application from code to image.
+- Validate your builds.
+- Deploy your build images to your cluster.
+- Run unit tests.  
+- Run regression tests.
