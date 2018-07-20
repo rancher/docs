@@ -15,6 +15,8 @@ helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 
 ### Install cert-manager
 
+> **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates and using the `ingress.tls.source=secret` option.
+
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm "stable" catalog to issue self-signed or LetsEncrypt certificates.
 
 Install `cert-manager` from the Helm stable catalog.
@@ -37,7 +39,7 @@ There are three options for the source of the certificate.
 
 #### (Default) Rancher Generated Certificates
 
-The default is to use the Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
+The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
 
 The only requirement is to set the `hostname` to the DNS name you pointed at your Load Balancer.
 
@@ -88,6 +90,10 @@ The Rancher chart configuration has many options for customizing the install to 
 * [TLS Termination on an External Load Balancer](chart-options/#external-tls-termination)
 
 See the [Chart Options](chart-options/) for the full list of options.
+
+### Save your options
+
+Make sure you save the `--set` options you used. You will need to use the same options when you upgrade Rancher to new versions with Helm.
 
 ### Finishing Up
 
