@@ -10,7 +10,7 @@ Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer
 
 Layer-4 load balancer (or the external load balancer) forwards traffic to Nodeports. Layer-4 load balancer allows you to forward both HTTP and TCP traffic. Layer-4 load balancer is supported by the underlying cloud provider. As a result, when you deploy RKE clusters on bare metal servers and vSphere clusters, layer-4 load balancer is not supported.
 
-### Cloud Support for Layer-4 Load Balancing
+### Support for Layer-4 Load Balancing
 
 Support for layer-4 load balancer varies based on the underlying cloud provider.
 
@@ -28,7 +28,7 @@ RKE on Custom Hosts<br/>(e.g. bare-metal servers) | Not Supported
 
 Layer-7 load balancer (or the ingress controller) supports host and path-based load balancing and SSL termination. Layer-7 load balancer only forwards HTTP and HTTPS traffic and therefore they listen on ports 80 and 443 only. Cloud providers such as Amazon and Google support layer-7 load balancer. In addition, RKE clusters deploys the Nginx Ingress Controller.
 
-### Cloud Support for Layer-7 Load Balancing
+### Support for Layer-7 Load Balancing
 
 Support for layer-7 load balancer varies based on the underlying cloud provider.
 
@@ -55,8 +55,6 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 ## Related Links
 
-### External Load Balancers
-
 #### External Links
 
 - [Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
@@ -67,6 +65,4 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 - [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
 - [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
-### Ingress Controller
 
-- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
