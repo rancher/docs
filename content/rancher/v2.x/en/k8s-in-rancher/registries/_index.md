@@ -35,4 +35,4 @@ Registries are secrets containing credentials used to authenticate with [private
 
 Now that you have a registry added to the project or namespace, you can add it to a workload that's deploying an image from your private registry.
 
-For more information on adding a registry to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/deploy-workloads/).
+For more information on adding a registry to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).

@@ -30,7 +30,7 @@ If Rancher Server uses a self-signed certificate, Rancher CLI prompts you to con
 
 ### Project Selection
 
-Before you can perform any commands, you must select a Rancher project to perform those commands against. To select a [project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/) to work on, use the command `./rancher context switch`. When you enter this command, a list of available projects displays. Enter a number to choose your project.
+Before you can perform any commands, you must select a Rancher project to perform those commands against. To select a [project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/) to work on, use the command `./rancher context switch`. When you enter this command, a list of available projects displays. Enter a number to choose your project.
 
 **Example: `./rancher context switch` Output**
 ```
@@ -68,11 +68,11 @@ The following commands are available for use in Rancher CLI.
 
 - `context`
 
-    Switches between Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).
+    Switches between Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).
 
 - `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`
 
-    Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/) and [workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/)). Specify resources by name or ID.
+    Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/) and [workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/)). Specify resources by name or ID.
 
 - `kubectl`
 
@@ -84,7 +84,7 @@ The following commands are available for use in Rancher CLI.
 
 - `namespaces, [namespace]`
 
-    Performs operations on [namespaces]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/#namespaces).
+    Performs operations on [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces).
 
 - `nodes, [node]`
 
@@ -92,11 +92,11 @@ The following commands are available for use in Rancher CLI.
 
 - `projects, [project]`
 
-    Performs operations on [projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/).
+    Performs operations on [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
 - `ps`
 
-    Displays [workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads) in a project.
+    Displays [workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads) in a project.
 
 - `settings, [setting]`
 
