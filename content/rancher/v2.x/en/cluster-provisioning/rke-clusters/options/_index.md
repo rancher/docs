@@ -22,7 +22,7 @@ From this section you can choose:
 
 - The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. Out of the box, Rancher supports:
 
-    - **[Canal](https://github.com/projectcalico/canal)**: In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/).
+    - **[Canal](https://github.com/projectcalico/canal)**: In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
     - **[Flannel](https://github.com/coreos/flannel#flannel)**: In v2.0.5, this was the default option, which did not prevent any network isolation between projects.
 
@@ -30,7 +30,7 @@ From this section you can choose:
 
     > **Note:** Please carefully select which network provider you want to use as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, you would need to tear down the entire cluster and all applications to be able to switch to a different one.
 
-- Whether or not to use a [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+- Whether or not to use a [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
    > **Note:** If your cloud provider is not listed as an option, you will need to use the [config file option](#config-file) to use that cloud provider. Please reference the [RKE's cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure these other cloud providers.
 

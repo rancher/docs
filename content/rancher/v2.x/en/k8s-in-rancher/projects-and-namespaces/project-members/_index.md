@@ -11,10 +11,10 @@ If you want to provide a user with access and permissions to _specific_ projects
 
 There are two contexts where you can add project members:
 
-- [Adding Members when Creating New Projects]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/)
+- [Adding Members when Creating New Projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/)
 
     You can add members to a project as you create it (recommended if possible).
 
-- [Adding Members to an Existing Project]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/projects-and-namespaces/editing-projects/)
+- [Adding Members to an Existing Project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/)
 
 	You can always add members to a project later.

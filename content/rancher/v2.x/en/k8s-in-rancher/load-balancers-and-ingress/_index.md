@@ -13,10 +13,10 @@ If you want your applications to be externally accessible, you must add a load b
 
 Rancher supports two types of load balancers:
 
-- [Layer-4 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/load-balancers/#layer-4-load-balancer)
-- [Layer-7 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/load-balancers/#layer-7-load-balancer)
+- [Layer-4 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-4-load-balancer)
+- [Layer-7 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-7-load-balancer)
 
-For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/load-balancers).
+For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers).
 
 ### Load Balancer Limitations
 
@@ -27,9 +27,9 @@ Load Balancers have a couple of limitations you should be aware of:
 - If you want to use a load balancer with a Hosted Kubernetes cluster (i.e., clusters hosted in GKE, EKS, or AKS), you must host your load balancer with the same cloud provider. Please review the compatibility tables regarding support for load balancers based on how you've provisioned your clusters:
 
 
-    - [Support for Layer-4 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-4-load-balancing)
+    - [Support for Layer-4 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-4-load-balancing)
 
-    - [Support for Layer-7 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-7-load-balancing)
+    - [Support for Layer-7 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-7-load-balancing)
 
 ## Ingress
 
@@ -41,6 +41,5 @@ Your load balancer can either reside within your cluster or externally. Ingress 
 
 Ingress can provide other functionality as well, such as SSL termination, name-based virtual hosting, and more.
 
-- For more information on how to setup ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/load-balancers-and-ingress/ingress).
+- For more information on how to setup ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-

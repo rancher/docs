@@ -30,7 +30,7 @@ ConfigMaps store general configuration information for an application, such as c
 
 1. Click **Save**.
 
-	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/secrets/).
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
@@ -45,4 +45,4 @@ Now that you have a ConfigMap added to a namespace, you can add it to a workload
 - Application environment variables.
 - Specifying parameters for a Volume mounted to the workload.
 
-For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/workloads/deploy-workloads/).
+For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).

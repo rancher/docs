@@ -64,7 +64,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 1. If any of your ingress rules handle requests for encrypted ports, add a certificate to encrpyt/decrypt communications.
 
-    >**Note:** You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see [Adding SSL Certificates]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/certificates/).
+    >**Note:** You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see [Adding SSL Certificates]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/).
 
     1. Click **Add Certificate**.
 

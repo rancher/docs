@@ -7,7 +7,7 @@ aliases:
 You can access and manage your Kubernetes clusters using kubectl in two ways:
 
 - [Accessing Clusters with kubectl Shell](#accessing-clusters-with-kubectl-shell)
-- [Accessing Clusters with kubectl CLI and a kubeconfig File]({{< baseurl >}}/rancher/v2.x/en/kubernetes-in-rancher/kubeconfig/)
+- [Accessing Clusters with kubectl CLI and a kubeconfig File]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/)
 
 ## Accessing Clusters with kubectl Shell
 
