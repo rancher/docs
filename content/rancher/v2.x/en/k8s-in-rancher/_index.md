@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/concepts/resources/
 ---
 
-After you provision a cluster, you can begin using powerful Kubernetes features from the Rancher UI to manage it, allowing you to deploy and scale your containerized applications in development, testing, or production environments.
+After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
 
 ## Interacting with Clusters
 

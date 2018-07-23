@@ -20,13 +20,13 @@ Each computing resource in a Kubernetes Cluster is called a _node_. Nodes can be
 
 #### etcd Nodes
 
-[etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd) nodes run the `etcd` database. The `etcd` database component is a key value store used as Kubernetes storage for all cluster data, such as cluster coordination and state management.
+[etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd) nodes run the etcd database. The etcd database component is a key value store used as Kubernetes storage for all cluster data, such as cluster coordination and state management.
 
-`etcd` is a distributed key value store, meaning it runs on multiple nodes so that there's always a backup available for fail over. Even though you can run `etcd` on a single node, you should run it on multiple nodes. We recommend 3, 5, or 7 for redundancy.
+etcd is a distributed key value store, meaning it runs on multiple nodes so that there's always a backup available for fail over. Even though you can run etcd on a single node, you should run it on multiple nodes. We recommend 3, 5, or 7 etcd nodes for redundancy.
 
 #### Control Plane Nodes
 
-[Control plane](https://kubernetes.io/docs/concepts/#kubernetes-control-plane) nodes run the Kubernetes API server, scheduler, and controller manager. These nodes take care of routine tasks to ensure that your cluster maintains your configuration. Because all cluster data is stored on your `etcd` nodes, control plane nodes are stateless. You can run control plane on a single node, although two or more nodes are recommended for redundancy. Additionally, a single node can share the control plane and `etcd` roles.
+[Control plane](https://kubernetes.io/docs/concepts/#kubernetes-control-plane) nodes run the Kubernetes API server, scheduler, and controller manager. These nodes take care of routine tasks to ensure that your cluster maintains your configuration. Because all cluster data is stored on your etcd nodes, control plane nodes are stateless. You can run control plane on a single node, although two or more nodes are recommended for redundancy. Additionally, a single node can share the control plane and etcd roles.
 
 #### Worker Nodes
 
@@ -60,7 +60,7 @@ Options include:
 
 ### Hosted Kubernetes Cluster
 
-If you use a Kubernetes provider such as Google GKE, Rancher can integrate with its cloud APIs, allowing you to create and manage a hosted cluster from the Rancher UI.
+If you use a Kubernetes provider such as Google GKE, Rancher integrates with its cloud APIs, allowing you to create and manage a hosted cluster from the Rancher UI.
 
 [Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters)
 
