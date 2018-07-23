@@ -22,8 +22,8 @@ _Alerts_ are sets of rules, chosen by you, to monitor for specific events. The s
 
 Some examples of alert events are:
 
-- A Kubernetes master component entering an unhealthy state.
-- A node or workload error occurring.
+- A Kubernetes [master component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) entering an unhealthy state.
+- A node or [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/) error occurring.
 - A scheduled deployment taking place as planned.
 - A node's hardware resources becoming overstressed.
 
@@ -33,11 +33,11 @@ Additionally, you can set an urgency level for each alert. This urgency appears 
 
 ## Notifiers
 
-Before you can receive alerts, you must configure one or more Notifier in Rancher.
+Before you can receive alerts, you must configure one or more notifier in Rancher.
 
 _Notifiers_ are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Rancher integrates with a variety of popular IT services, including:
 
-- Slack: send alert notifications to your Slack channels.
+- Slack: Send alert notifications to your Slack channels.
 - Email: Choose email recipients for alert notifications.
 - PagerDuty: Route notifications to staff by phone, SMS, or personal email.
 - Webhooks: Update a webpage with alert notifications.
