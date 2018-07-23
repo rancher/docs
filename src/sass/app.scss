@@ -125,39 +125,3 @@
     transform: rotateX(180deg);
   }
 }
-
-.page-nav {
-  > ol {
-    column-count: 4;
-    column-gap: $spacer-xs;
-  }
-  ol {
-    padding: 0;
-    list-style: none;
-    counter-reset: item;
-    font-size: 1rem;
-  }
-  ol li {
-      display: block;
-      padding-left: $spacer-xs;
-  }
-  ol li:before {
-      display: inline-block;
-      margin-left: -$spacer-xs;
-      margin-right: .5em;
-      text-align: center;
-      content: counters(item, ".") ".";
-      counter-increment: item;
-  }
-  ol ol {
-      width: auto;
-      margin: 0;
-      padding: .5em 0;
-  }
-  ol li li:before {
-      content: counters(item, ".") " ";
-  }
-  ol ol ol {
-      padding: .5em 0 0;
-  }
-}
