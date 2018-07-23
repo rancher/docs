@@ -3,7 +3,7 @@ title: Rancher Tools
 weight: 5000
 ---
 
-Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external service to help your clusters run more efficiently. Tools are divided into four categories:
+Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into four categories:
 
 <!-- TOC -->
 
@@ -16,7 +16,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 
 ## Alerts
 
-To keep your clusters and applications healthy and driving your organizational productivity forward, you need stay informed of events occurring in your clusters, both planned and unplanned. To help you stay informed of these events, Rancher allows you configure alerts.
+To keep your clusters and applications healthy and driving your organizational productivity forward, you need stay informed of events occurring in your clusters, both planned and unplanned. To help you stay informed of these events, Rancher allows you to configure alerts.
 
 _Alerts_ are sets of rules, chosen by you, to monitor for specific events. The scope for alerts can be set at either the cluster or project level.
 
