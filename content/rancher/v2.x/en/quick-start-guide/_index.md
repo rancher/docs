@@ -11,7 +11,7 @@ The current areas covered by quick starts are:
 
 - **[Deploying Rancher Server]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/)**: Guides to get you running Rancher via different methods.
 
-- **[Deploying a Workload]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide//workload/)**: A guide for deploying a workload and exposing it to be accessed externally.
+- **[Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide//workload/)**: Guides for deploying workloads and exposing it to be accessed externally.
 
 
 
