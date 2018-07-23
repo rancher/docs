@@ -7,13 +7,13 @@ aliases:
   - /rancher/v2.x/en/concepts/resources/
 ---
 
-After you provision a Kubernetes cluster in Rancher, you can begin using powerful Kubernetes features from the Rancher to manage the cluster, allowing you to deploy and scale your containerized applications in development, testing, or production environments.
+After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
 
 ## Interacting with Clusters
 
 - **Rancher UI**
 
-Rancher provides an intuitive user interface to allow you to interact with your Kubernetes clusters. All options that are provided in the UI are using the Rancher API, so anything that can be done in the UI is possible to do using the Rancher CLI or Rancher API.
+    Rancher provides an intuitive user interface for interacting with your clusters. All options available in the UI use the Rancher API. Therefore any action possible in the UI is also possible in the Rancher CLI or Rancher API.
 
 - **kubectl**
 
@@ -21,33 +21,33 @@ Rancher provides an intuitive user interface to allow you to interact with your 
 
     - **Rancher kubectl shell**
 
-        You can interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part.
+        Interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part.
 
         For more information, see [Accessing Clusters with kubectl Shell]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-shell).
 
     - **Terminal remote connection**
 
-        You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on to your local desktop and then copying the cluster's kubeconfig file to your local `~/.kube/config` directory.
+        You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local desktop and then copying the cluster's kubeconfig file to your local `~/.kube/config` directory.
 
         For more information, see [Accessing Clusters with kubectl and a kubeconfig File]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file).
 
 - **Rancher CLI**
 
-    You can interact with your clusters by downloading Rancher's own command-line interface, [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli/). Rancher's CLI tool has the ability to interact directly with different clusters and projects as well as run `kubectl` commands on these clusters.
+    You can control your clusters by downloading Rancher's own command-line interface, [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli/). This CLI tool can interact directly with different clusters and projects or pass them `kubectl` commands.
 
 - **Rancher API**
 
-    Finally, you can interact with your clusters over the Rancher API. However, before you use the API, you must obtain an [API key]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/) using the Rancher UI. In order to view the different resource fields and actions of an API object, you can find these parameters in the API UI, which can be found by clicking on **View in API** on any object within Rancher's UI.
+    Finally, you can interact with your clusters over the Rancher API. Before you use the API, you must obtain an [API key]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/). To view the different resource fields and actions for an API object, open the API UI, which can be accessed by clicking on **View in API** for any Rancher UI object.
 
 ## Editing Clusters
 
-After you launch a cluster, you can edit many of the settings you configured during its initial launch. For any type of cluster, you can edit the cluster membership. The cluster membership includes the users that can access the cluster as well as their roles within the cluster, using [members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#membership-and-role-assignment) and [roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles).
+After you launch a cluster, you can edit many of its settings configured during its initial launch. All clusters allow you to edit the cluster membership, which is a pool of users that can access the cluster, along with their roles within the cluster. For more information, see [members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#membership-and-role-assignment) and [roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles).
 
-Depending on how you provisioned your clusters, you have different options available for editing your cluster size and options of your cluster.
+Depending on how you provisioned your clusters, different settings are available for editing their size and options.
 
-- For clusters provisioned in a [hosted kubernetes provider]({{< baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/), you can edit the options that were made available during cluster provisioning. These options are dependent on your hosted kubernetes provider.
+- For clusters provisioned in a [hosted kubernetes provider]({{< baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/), you can edit the options chosen during cluster provisioning. These options are dependent on your hosted Kubernetes provider.
 
-- For any clusters where [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/),there are many options that you can edit.
+- For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters, you can edit the following options.
 
     - [Kubernetes options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/), including:
 
@@ -58,16 +58,16 @@ Depending on how you provisioned your clusters, you have different options avail
 
        >**Note:** You cannot edit the cluster's network provider after its initial launch.
 
-   - The scale and [roles of your nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) can be updated based on if you launched [node pools]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) or have [custom nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
+   - **[Node pool]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) or [custom node]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) clusters only:** the scale and [roles of your nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components).
 
-       - For node pools, you can add/remove/edit node pools to the cluster. Remember that node pools are set to a specific scale, so removing nodes individually will not cause any changes to the size of the cluster unless you actually change the scale of the node pool.
-       - For custom nodes, you are provided the Docker command to add nodes or it can be used to edit the roles of existing nodes. If you want to remove nodes, you would need to go to the **Nodes** page of the cluster and delete the nodes you want to remove.
+       - For node pools, you can add/remove/edit cluster node pools. Node pools are set to a specific scale, so removing nodes individually does not change the size of the cluster unless you change the scale of the pool.
+       - For custom nodes, you are provided the Docker command to add nodes, but the command can also be used to edit the roles of existing nodes. To remove nodes, browse to the cluster's **Nodes** page and delete the unnecessary nodes.
 
-To see what is available to edit your cluster's settings, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
+To view the settings available for your cluster, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
 ## Projects and Namespaces
 
-In order to support multi-tenancy on a cluster, Rancher [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/) can be created, which allow you to group several [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) into a single object. You can set user access and pod security policies to each project, which allows groups of users to access different sets of namespaces while using the same cluster. Projects are a feature available in Rancher, but not the base version of Kubernetes.
+To support multi-tenancy on a cluster, create different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/). Projects allow you to group several [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) into a single object. You can set user access and pod security policies for each project, which allows groups of users to access different sets of namespaces while using the same cluster. Projects are a feature available in Rancher, but not the base version of Kubernetes.
 
 For more information on how to manage projects, see:
 
@@ -76,9 +76,9 @@ For more information on how to manage projects, see:
 
 ## Workloads
 
-Deploy applications to your cluster nodes using [workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), which are objects that contain pods that run your apps, along with metadata that set rules for the deployment's behavior. Workloads can deployed within the scope of the entire clusters, or within a namespace.
+Deploy applications to your cluster nodes using [workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), which are objects that contain pods that run your apps, along with metadata that set rules for the deployment's behavior. Workloads can be deployed within the scope of the entire clusters or within a namespace.
 
-When deploying a workload, you can deploy from any image. There are variety of [workload types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/#workload-types) to choose from to determine how your application should run.
+When deploying a workload, you can deploy from any image. There are a variety of [workload types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/#workload-types) to choose from which determine how your application should run.
 
 Following a workload deployment, you can continue working with it. You can:
 
@@ -90,7 +90,7 @@ Following a workload deployment, you can continue working with it. You can:
 
 ### Load Balancers
 
-After you launch an application, the app is only available within the cluster. It can't be reached from outside the cluster.
+After you launch an application, it's only available within the cluster. It can't be reached externally.
 
 If you want your applications to be externally accessible, you must add a load balancer to your cluster. Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
 
@@ -103,7 +103,7 @@ For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-i
 
 #### Ingress
 
-Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive. You can get around this issue using an ingress.
+Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive. You can get around this issue by using an ingress.
 
 Ingress is a set or rules that act as a load balancer. Ingress works in conjunction with one or more ingress controllers to dynamically route service requests. When the ingress receives a request, the ingress controller(s) in your cluster program the load balancer to direct the request to the correct service based on service subdomains or path rules that you've configured.
 
@@ -129,11 +129,11 @@ Within Rancher, you can create persistent storage using one of two methods:
 
     Storage classes are objects that provision storage volumes upon request. When a pod submits a persistent volume claim to the storage class, the class creates a storage volume for the pod.
 
-After you deploy a workload, they request storage using a [persistent volume claim]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims), which is like a voucher used to claim storage space available within the cluster.
+After you deploy a workload, it requests storage using a [persistent volume claim]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims), which is like a voucher used to claim storage space available within the cluster.
 
 ## Kubernetes Resources
 
-Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Rancher, certificates, registries, and secrets are all considered resources. However Kubernetes considers resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.
+Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Rancher, certificates, registries, and secrets are all considered resources. However, Kubernetes classifies resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.
 
 Resources include:
 
