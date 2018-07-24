@@ -29,7 +29,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
 
-5. [Download RKE Config File Template](#5-download-config-file-template)
+5. [Download RKE Config File Template](#5-download-rke-config-file-template)
 
 	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
 
@@ -145,7 +145,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
 
     >**Using Windows?**
-    >The file is already an executable. Skip to [Download Config File Template](#5-download-config-file-template).
+    >The file is already an executable. Skip to [Download RKE Config File Template](#5-download-rke-config-file-template).
 
     ```
     # MacOS
@@ -185,7 +185,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
-2. Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts).
+2. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
 
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
@@ -258,7 +258,7 @@ If you are using a Certificate Signed By A Recognized Certificate Authority, you
 
 ## 8. Configure FQDN
 
-There is one reference to `<FQDN>` in the RKE config file. Replace this reference with the FQDN you chose in in [3. Configure DNS](#part-3-configure-dns).
+There is one reference to `<FQDN>` in the RKE config file. Replace this reference with the FQDN you chose in in [3. Configure DNS](#3-configure-dns).
 
 1. Open `rancher-cluster.yml`.
 

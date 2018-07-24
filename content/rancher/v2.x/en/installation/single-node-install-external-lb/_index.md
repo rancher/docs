@@ -75,7 +75,7 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 >**Prerequisites:**
 >Create a self-signed certificate.
 >
->- The certificate files must be in [PEM format](#ssl-faq-troubleshooting).
+>- The certificate files must be in [PEM format](#pem).
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -176,7 +176,7 @@ server {
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/).
-- Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
+- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>
 
