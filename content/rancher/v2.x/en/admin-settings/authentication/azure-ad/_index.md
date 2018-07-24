@@ -171,9 +171,9 @@ Enter the values that you copied to your [text file](#tip).
 
     >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
     >
-    >https://graph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del>
+    ><code>http<span>s://g</span>raph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher. ~~~~
+    The following table maps the values you copied in the Azure portal to the fields in Rancher. 
 
     Rancher Field | Azure Value
     ---------|----------
