@@ -2,29 +2,25 @@
 title: Rancher HTTP Proxy Configuration
 weight: 360
 ---
-If you operate Rancher behind a proxy and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy.
+If you operate Rancher behind a proxy and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
 
-### Setting the `http_proxy` Environment Variable 
+* Make sure `NO_PROXY` contains the network ranges that should be accessed without the proxy configuration. This should include `localhost`, `127.0.0.1`, `0.0.0.0`, all your local network ranges that are accessible without a proxy.
 
-#### Ubuntu
+Environment variable | Example value
+---------------------|----------------
+HTTP_PROXY           | `http://10.0.0.1:3128`
+HTTPS_PROXY          | `http://10.0.0.1:3128`
+NO_PROXY             | `localhost,127.0.0.1,0.0.0.0,<your_network_range(s)>`
 
-1. Check if `http_proxy` is still defined:
+## Start Rancher Container with Proxy Information 
 
-    ```
-echo $http_proxy
-    ```
-
-    If it is empty, set the variable and store it in your account's environment using the following command:
-
-    ```
-echo "export http_proxy=http://<username>:<password>@<proxy url>:<proxy port>/" >> .profile
-    ```
-2. Logout and then log back in to activate your changes.
-
-### Start Rancher Container with Proxy Information 
-
-Ensure that your `http_proxy` environment variable is visible inside of Rancher's Docker container:
+Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. The example below is based on a local network range of `10.0.0.0/8`.
 
 ```
-sudo docker run -d --restart=unless-stopped --volumes-from rancher-data -p 80:80 -p 443:443 -e HTTP_PROXY=$http_proxy -e HTTPS_PROXY=$http_proxy -e http_proxy=$http_proxy -e https_proxy=$http_proxy -e NO_PROXY="localhost,127.0.0.1" -e no_proxy="localhost,127.0.0.1" rancher/rancher
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -e HTTP_PROXY="http://10.0.0.1:3128" \
+  -e HTTPS_PROXY="http://10.0.0.1:3128" \
+  -e NO_PROXY="localhost,127.0.0.1,0.0.0.0,10.0.0.0/8" \
+  rancher/rancher:latest
 ```
