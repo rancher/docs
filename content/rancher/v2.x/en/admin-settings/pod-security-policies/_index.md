@@ -44,7 +44,6 @@ Using Rancher, you can create a Pod Security Policy using our GUI rather than cr
 	- [Volume Policy][1]
 	- [Allowed Host Paths Policy][1]
 	- [FS Group Policy][1]
-	- [Run As User Policy][1]
 	- [Host Ports Policy][2]
 	- [Run As User Policy][3]
 	- [SELinux Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#selinux)
