@@ -7,6 +7,8 @@ aliases:
 
 There are lots of different [configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) that can be set in the cluster configuration file for RKE. Here are some examples of files:
 
+> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) when creating [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_api` and `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
+
 ## Minimal `cluster.yml` example
 
 ```yaml
@@ -118,6 +120,7 @@ services:
       #   -----BEGIN PRIVATE KEY-----
       #   xxxxxxxxxx
       #   -----END PRIVATE KEY-----
+    # Note for Rancher 2 users: If you are configuring Cluster Options using a Config File when creating Rancher Launched Kubernetes, the names of services should contain underscores only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
     kube-api:
       # IP range for any services created on Kubernetes
       # This must match the service_cluster_ip_range in kube-controller
@@ -134,6 +137,7 @@ services:
         delete-collection-workers: 3
         # Set the level of log output to debug-level
         v: 4
+    # Note for Rancher 2 users: If you are configuring Cluster Options using a Config File when creating Rancher Launched Kubernetes, the names of services should contain underscores only: `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
     kube-controller:
       # CIDR pool used to assign IP addresses to pods in the cluster
       cluster_cidr: 10.42.0.0/16
