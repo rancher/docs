@@ -93,6 +93,14 @@ Key | Value | Default | Description
 `extra_args` | List of Strings | `[]` | Arbitrary daemon arguments, appended to the generated command
 `environment` | List of Strings (optional) | `[]` |
 
+_Available as of v1.4_
+
+The docker-sys bridge can be configured with system-docker args, it will take effect after reboot.
+
+```
+$ ros config set rancher.system_docker.bip 172.18.43.1/16
+```
+
 ### Using a pull through registry mirror
 
 There are 3 Docker engines that can be configured to use the pull-through Docker Hub registry mirror cache:
