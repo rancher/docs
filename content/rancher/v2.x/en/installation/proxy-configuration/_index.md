@@ -1,5 +1,5 @@
 ---
-title: Rancher HTTP Proxy Configuration
+title: HTTP Proxy Configuration
 weight: 360
 ---
 If you operate Rancher behind a proxy and you need to reach the Internet to perform tasks (such as using Helm catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
