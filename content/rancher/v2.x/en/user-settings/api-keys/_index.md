@@ -41,6 +41,7 @@ API Keys are composed of four components:
 
 - Enter your API key information into the application that will send requests to the Rancher API.
 - Learn more about the Rancher endpoints and parameters by selecting **View in API** for an object in the Rancher UI.
+- API keys are used for API calls and [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli).
 
 ## Deleting API Keys
 
