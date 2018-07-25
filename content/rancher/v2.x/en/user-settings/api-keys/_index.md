@@ -6,18 +6,22 @@ aliases:
   - /rancher/v2.x/en/tasks/user-settings/api-keys/
 ---
 
-Some users may want to access their Rancher clusters and projects through the Rancher API. Before you can access Rancher through the API, you must generate API keys so that you can authenticate with Rancher externally.
+## API Keys and User Authentication
 
-Before you can use the Rancher CLI or write a program that calls the Rancher API, you must obtain API keys using the Rancher UI.
+If you want to access your Rancher clusters, projects, or other objects using external applications, you can do so using the Rancher API. However, before your application can access the API, you must provide the app with a key used to authenticate with Rancher. You can obtain a key using the Rancher UI.
 
-### API Keys and User Authentication
+An API key is also required for using Rancher CLI.
 
-After logging into Rancher, you can generate API keys for accessing Rancher externally using your user settings. If you need to revoke access to the Rancher API, you can delete the API key.
+API Keys are composed of four components:
 
-### Creating an API Key
-Create a Rancher API key so that other applications can make requests to the Rancher API. You can create API keys using the Rancher UI.
+- **Endpoint:** This is the IP address and path that other applications use to send requests to the Rancher API.
+- **Access Key:** The token's username.
+- **Secret Key:** The token's password. For applications that prompt you for two different strings for API authentication, you usually enter the two keys together.
+- **Bearer Token:** The token username and password concatenated together. Use this string for applications that prompt you for one authentication string.
 
-1. From any Rancher view, select **User Avatar** > **API & Keys** from the menu on the upper-right.
+## Creating an API Key
+
+1. Select **User Avatar** > **API & Keys** from the **User Settings** menu in the upper-right.
 
 2. Click **Add Key**.
 
@@ -27,15 +31,21 @@ Create a Rancher API key so that other applications can make requests to the Ran
 
 4. Click **Create**.
 
-    **Step Result:** Your API Key is created. Your API **Endpoint**, **Access Key**, **Secret Key**, and **Bearer Token** are displayed. The **Bearer Token** is your **Access Key** and **Secret Key** concatenated together.
+    **Step Result:** Your API Key is created. Your API **Endpoint**, **Access Key**, **Secret Key**, and **Bearer Token** are displayed.
 
     Use the **Bearer Token** to authenticate with Rancher CLI.
 
 5. Copy the information displayed to a secure location. This information is only displayed once, so if you lose your key, you'll have to make a new one.
 
-### Deleting API Keys
+## What's Next?
 
-You should delete API keys:
+- Enter your API key information into the application that will send requests to the Rancher API.
+- Learn more about the Rancher endpoints and parameters by selecting **View in API** for an object in the Rancher UI.
+- API keys are used for API calls and [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli).
+
+## Deleting API Keys
+
+If you need to revoke an API key, delete it. You should delete API keys:
 
 - That may have been compromised.
 - That have expired.
