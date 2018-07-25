@@ -36,6 +36,6 @@ This section also includes help content for Rancher configuration and maintenanc
 
  	This page lists the ports you must open to operate Rancher.
 
--  [Rancher HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/proxy-configuration/)
+-  [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/proxy-configuration/)
 
 	If your Rancher installation runs behind a proxy, this page provides information on how to configure Rancher for your proxy.
