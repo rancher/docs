@@ -1,0 +1,103 @@
+    <h3 id="amazonec2-securitygroup-nodedriver">Amazon EC2 security group when using Node Driver</h3>
+    <p>If you are <a href="/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/">Creating an Amazon EC2 Cluster</a>, you can choose to let Rancher create a Security Group called <code>rancher-nodes</code>. The following rules are automatically added to this Security Group.
+    </p>
+<div>	
+	<p><strong>Security group: rancher-nodes</strong></p>
+	<h4>Inbound rules</h4>
+	<table>
+	    <tr>
+	        <th>Type</th>
+	        <th>Protocol</th>
+	        <th align="left">Port Range</th>
+	        <th align="left">Source</th>
+	    </tr>
+            <tr>
+                <td>SSH</td>
+                <td>TCP</td>
+                <td>22</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>HTTP</td>
+                <td>TCP</td>
+                <td>80</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>443</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>2376</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>2379-2380</td>
+                <td>sg-xxx (rancher-nodes)</td>
+            </tr>
+            <tr>
+                <td>Custom UDP Rule</td>
+                <td>UDP</td>
+                <td>4789</td>
+                <td>sg-xxx (rancher-nodes)</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>6443</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>Custom UDP Rule</td>
+                <td>UDP</td>
+                <td>8472</td>
+                <td>sg-xxx (rancher-nodes)</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>10250-10252</td>
+                <td>sg-xxx (rancher-nodes)</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>10256</td>
+                <td>sg-xxx (rancher-nodes)</td>
+            </tr>
+            <tr>
+                <td>Custom TCP Rule</td>
+                <td>TCP</td>
+                <td>30000-32767</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+            <tr>
+                <td>Custom UDP Rule</td>
+                <td>UDP</td>
+                <td>30000-32767</td>
+                <td>0.0.0.0/0</td>
+            </tr>
+	</table>
+	<h4>Outbound rules</h4>
+	<table>
+	    <tr>
+	        <th>Type</th>
+	        <th>Protocol</th>
+	        <th align="left">Port Range</th>
+	        <th align="left">Destination</th>
+	    </tr>
+	    <tr>
+		<td>All traffic</td>
+	        <td>All</td>
+	        <td>All</td>
+	        <td>0.0.0.0/0</td>
+	    </tr>
+	</table>
+    <br/>
+</div>
