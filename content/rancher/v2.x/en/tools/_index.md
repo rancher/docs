@@ -31,6 +31,8 @@ When an event occurs, your alert is triggered, and you are sent a notification. 
 
 Additionally, you can set an urgency level for each alert. This urgency appears in the notification you receive, helping you to prioritize your response actions. For example, if you have an alert configured to inform you of a routine deployment, no action is required. These alerts can be assigned a low priority level. However, if a deployment fails, it can critically impact your organization, and you need to react quickly. Assign these alerts a high priority level.
 
+For more information, see [Alerts]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#alerts).
+
 ## Notifiers
 
 Before you can receive alerts, you must configure one or more notifier in Rancher.
@@ -42,7 +44,7 @@ _Notifiers_ are services that inform you of alert events. You can configure noti
 - PagerDuty: Route notifications to staff by phone, SMS, or personal email.
 - Webhooks: Update a webpage with alert notifications.
 
-Alerts and notifiers are powered by [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/).
+For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers).
 
 ## Logging
 
