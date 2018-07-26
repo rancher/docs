@@ -5,7 +5,7 @@ weight: 5010
 
 Notifiers and Alerts are two features that work together to inform you of events in the Rancher system. Notifiers are objects that you configure to leverage popular IT services, which send you notification of Rancher Events. Alerts are rule sets that trigger when those notifications are sent.
 
-Notifiers and Alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify cluster administrators and application owners of events they need to address.
+Notifiers and Alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
 
 ## Notifiers
 
@@ -13,7 +13,7 @@ Before you can receive [alerts](#alerts), you must configure one or more notifie
 
 _Notifiers_ are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.
 
-Notifiers are configured at the cluster level. This model ensures that only cluster administrators need to configure notifiers, leaving project owners to simply configure alerts in the scope of their projects. You don't need to dispense privileges like SMTP server access or cloud account access.
+Notifiers are configured at the cluster level. This model ensures that only cluster owners need to configure notifiers, leaving project owners to simply configure alerts in the scope of their projects. You don't need to dispense privileges like SMTP server access or cloud account access.
 
 Rancher integrates with a variety of popular IT services, including:
 
@@ -71,8 +71,8 @@ Set up a notifier so that you can begin configuring and sending alerts.
 
 After creating a notifier, set up alerts to receive notifications of Rancher system events.
 
-- Cluster administrators can set up alerts at the [cluster level](#cluster-alerts).
-- Project owners can set up alerts at the [project level](#project-alerts).
+- [Cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level](#cluster-alerts).
+- [Project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level](#project-alerts).
 <br/>
 <br/>
 
@@ -90,17 +90,25 @@ To keep your clusters and applications healthy and driving your organizational p
 
 _Alerts_ are sets of rules, chosen by you, to monitor for specific events. The scope for alerts can be set at either the cluster or project level.
 
-### Cluster Alerts
+### Cluster Alerts vs. Project Alerts
 
-At the cluster level, Rancher monitors components in your Kubernetes cluster, and sends you alerts related to:
+At the [cluster level](#adding-cluster-alerts), Rancher monitors components in your Kubernetes cluster, and sends you alerts related to:
 
 - The state of your nodes.
 - The system services that manage your Kubernetes cluster.
 - The resource events from specific system services.
 
+At the [project level](#adding-project-alerts), Rancher monitors specific deployments and sends alerts for:
+
+* Deployment availability
+* Workloads status
+* Pod status
+<br/>
+<br/>
+
 #### Adding Cluster Alerts
 
-As a cluster admin, you can configure Rancher to send you alerts for cluster events.
+As a cluster owner, you can configure Rancher to send you alerts for cluster events.
 
 >**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier](#adding-notifiers).
 
@@ -213,14 +221,6 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 - Deactivate/Reactive alerts
 - Edit alert settings
 - Delete unnecessary alerts
-
-### Project Alerts
-
-At the project level, Rancher monitors specific deployments and sends alerts for:
-
-* Deployment availability
-* Workloads status
-* Pod status
 
 #### Adding Project Alerts
 
