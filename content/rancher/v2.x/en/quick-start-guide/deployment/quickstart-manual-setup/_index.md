@@ -12,23 +12,20 @@ Howdy Partner! This tutorial walks you through:
 
 This Quick Start Guide is divided into different tasks for easier consumption.
 
-1.  [Provision a Linux Host](#provision-a-linux-host)
+<!-- TOC -->
 
-    Begin by provisioning a Linux host.
 
-2.  [Install Rancher](#install-rancher)
+1. [Provision a Linux Host](#1-provision-a-linux-host)
 
-    From your Linux host, run the Docker command for installing Rancher.
+1. [Install Rancher](#2-install-rancher)
 
-3.  [Log In](#log-in)
+1. [Log In](#3-log-in)
 
-    Browse to your Linux host to access the Rancher UI.
+1. [Create the Cluster](#4-create-the-cluster)
 
-4.  [Create the Cluster](#create-the-cluster)
-
-    Use the versatile **Custom** option to add your Linux host into a new Kubernetes cluster.
-
-### Provision a Linux Host
+<!-- /TOC -->
+<br/>
+### 1. Provision a Linux Host
 
  Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
@@ -43,15 +40,14 @@ This Quick Start Guide is divided into different tasks for easier consumption.
 
  Provision the host according to the requirements below.
 
+{{% accordion id="os" label="Operating System" %}}
 {{< requirements_os >}}
-
-**Hardware Requirements**
-
-- Memory: 4GB
-
-**Software Requirements**
-
-- Software: Docker
+{{% /accordion %}}
+{{% accordion id="hardware" label="Hardware" %}}
+Memory: 4GB 
+{{% /accordion %}}
+{{% accordion id="software" label="Software" %}}
+Docker
 
   <a name="node-requirements"></a>**Supported Docker versions:**
 
@@ -62,9 +58,10 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >**Notes:**
   >
   > - For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
-  > - Docker requirements apply to both your Linux host and your cluster nodes.
-
-### Install Rancher
+  > - Docker requirements apply to both your Linux host and your cluster nodes. 
+{{% /accordion %}}
+<br/>
+### 2. Install Rancher
 
 To install Rancher on your host, connect to it and then use a shell to install.
 
@@ -78,18 +75,21 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 **Result:** Rancher is installed.
 
-### Log In
+### 3. Log In
 
 Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
 
-1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.<br/><br/>
+1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.
+
     Replace `<SERVER_IP>` with your host IP address.
 
 2.  When prompted, create a password for the default `admin` account there cowpoke!
 
 3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
 
-### Create the Cluster
+<br/>
+
+### 4. Create the Cluster
 
 Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
@@ -118,7 +118,12 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 11. When you finish running the command on your Linux host, click **Done**.
 
 {{< result_create-cluster >}}
-
-## Finished
+<br/>
+<br/>
+#### Finished
 
 Congratulations! You have created your first cluster.
+
+#### What's Next?
+
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload).
