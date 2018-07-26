@@ -3,11 +3,11 @@ title: Workload with Ingress Quick Start
 weight: 100
 ---
 
-### Assumptions
+### Prerequisite
 
-- You have a running cluster with at least 1 node.
+You have a running cluster with at least 1 node.
 
-### Deploy a Workload
+### 1. Deploying a Workload
 
 You're ready to create your first _workload_. A workload is an object that includes pods along with other files and info needed to deploy your application.
 
@@ -36,9 +36,10 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 * Your workload is deployed. This process might take a few minutes to complete.
 * When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
 
-### Expose The Application Via An Ingress
+<br/>
+### 2. Expose The Application Via An Ingress
 
-Now that the application is up and running it needs to be exposed so that otther services can connect.
+Now that the application is up and running it needs to be exposed so that other services can connect.
 
 1.  From the **Clusters** page, open the cluster that you just created.
 
@@ -58,14 +59,21 @@ Now that the application is up and running it needs to be exposed so that otther
 
 9.  Leave everything else as default and click **Save**.
 
-10. This will create a `xip.io` address that may take a minute or two to populate.
+**Result:**  The application is assigned a `xip.io` address and exposed. It may take a minute or two to populate.
 
 ### View Your Application
 
-From the **Load Balancing** page, click the target link which will look something like **hello.default.xxx.xxx.xxx.xxx.xip.io > hello-world**.
+From the **Load Balancing** page, click the target link, which will look something like `hello.default.xxx.xxx.xxx.xxx.xip.io > hello-world`.
 
-Your application will open in a seperate window.
+Your application will open in a separate window.
 
-## Finished
+#### Finished
 
 Congratulations! You have successfully deployed a workload exposed via an ingress.
+
+#### What's Next?
+
+When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
+
+- [DigitalOcean: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/#destroying-the-environment)
+- [Vagrant: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/#destroying-the-environment)
