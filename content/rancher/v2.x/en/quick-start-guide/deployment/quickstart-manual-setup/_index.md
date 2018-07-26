@@ -1,0 +1,124 @@
+---
+title: Manual Quick Start
+weight: 300
+---
+Howdy Partner! This tutorial walks you through:
+    
+- Installation of {{< product >}} {{< version >}}
+- Creation of your first cluster
+- Deployment of an application, Nginx
+
+## Quick Start Outline
+
+This Quick Start Guide is divided into different tasks for easier consumption.
+
+1.  [Provision a Linux Host](#provision-a-linux-host)
+
+    Begin by provisioning a Linux host.
+
+2.  [Install Rancher](#install-rancher)
+
+    From your Linux host, run the Docker command for installing Rancher.
+
+3.  [Log In](#log-in)
+
+    Browse to your Linux host to access the Rancher UI.
+
+4.  [Create the Cluster](#create-the-cluster)
+
+    Use the versatile **Custom** option to add your Linux host into a new Kubernetes cluster.
+
+### Provision a Linux Host
+
+ Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
+
+- A cloud-host virtual machine (VM)
+- An on-premise VM
+- A bare-metal server
+
+  >**Note:**
+  > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
+  >
+  > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/references).
+
+ Provision the host according to the requirements below.
+
+{{< requirements_os >}}
+
+**Hardware Requirements**
+
+- Memory: 4GB
+
+**Software Requirements**
+
+- Software: Docker
+
+  <a name="node-requirements"></a>**Supported Docker versions:**
+
+  - `1.12.6`
+  - `1.13.1`
+  - `17.03.2`
+
+  >**Notes:**
+  >
+  > - For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
+  > - Docker requirements apply to both your Linux host and your cluster nodes.
+
+### Install Rancher
+
+To install Rancher on your host, connect to it and then use a shell to install.
+
+1.  Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
+
+2.  From your shell, enter the following command:
+
+	```
+	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+	```
+
+**Result:** Rancher is installed.
+
+### Log In
+
+Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
+
+1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.<br/><br/>
+    Replace `<SERVER_IP>` with your host IP address.
+
+2.  When prompted, create a password for the default `admin` account there cowpoke!
+
+3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
+
+### Create the Cluster
+
+Welcome to Rancher! You are now able to create your first Kubernetes cluster.
+
+In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) to be used in a cluster.
+
+1. From the **Clusters** page, click **Add Cluster**.
+
+2. Choose **Custom**.
+
+3. Enter a **Cluster Name**.
+
+4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
+
+5. Click **Next**.
+
+6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
+
+7. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
+
+8. Skip the **Labels** stuff. It's not important for now.
+
+9. Copy the command displayed on screen to your clipboard.
+
+10. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+
+11. When you finish running the command on your Linux host, click **Done**.
+
+{{< result_create-cluster >}}
+
+## Finished
+
+Congratulations! You have created your first cluster.
