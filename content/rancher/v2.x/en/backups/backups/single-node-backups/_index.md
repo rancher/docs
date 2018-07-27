@@ -28,7 +28,7 @@ docker create --volumes-from <RANCHER_CONTAINER_ID> \
 --name rancher-data-<RANCHER_VERSION> rancher/rancher:<RANCHER_CONTAINER_TAG>
     ```
 
-3. During upgrade, you point to a Rancher server to the same Rancher data container and the Rancher data in the data container will continue to be updated/changed. Therefore, you need to get a snapshot of the data to be used for disaster recovery or in case you need to rollback the upgrade.
+3. During upgrade, you point toward a Rancher server to the same Rancher data container and the Rancher data in the data container will continue to be updated/changed. Therefore, you need to get a snapshot of the data to be used for disaster recovery or in case you need to rollback the upgrade.
 
     ```
 docker run  --volumes-from rancher-data-<RANCHER_VERSION> \
