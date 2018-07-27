@@ -120,7 +120,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 [[menu.main]]
 #identifier = "customers"
 #name       = "Customers"
-#url        = "https://rancher.com//customers/"
+#url        = "https://rancher.com/customers/"
 #weight     = "3"
 
 [[menu.main]]
