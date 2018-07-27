@@ -9,9 +9,6 @@ enableRobotsTXT = true
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 
-[blackfriday]
-hrefTargetBlank = true
-
 [permalinks]
   inside-pages = "/:filename/"
 
