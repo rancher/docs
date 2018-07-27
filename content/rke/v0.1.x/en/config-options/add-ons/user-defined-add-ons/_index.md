@@ -1,6 +1,6 @@
 ---
 title: User-Defined Add-Ons
-weight: 253
+weight: 263
 ---
 
 Besides the [network plug-in]({{< baseurl >}}/rke/v0.1.x/en/config-options/network-plugins/) and [ingress controllers]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/), you can define any add-on that you want deployed after the Kubernetes cluster is deployed.
