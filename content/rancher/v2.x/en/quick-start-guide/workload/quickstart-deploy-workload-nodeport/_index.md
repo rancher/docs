@@ -3,11 +3,19 @@ title: Workload with NodePort Quick Start
 weight: 200
 ---
 
+<<<<<<< HEAD
 ### Assumptions
 
 - You have a running cluster with at least 1 node.
 
 ### Deploy a Workload
+=======
+### Prerequisite
+
+You have a running cluster with at least 1 node.
+
+### 1. Deploying a Workload
+>>>>>>> qs-tmp
 
 You're ready to create your first _workload_. A workload is an object that includes pods along with other files and info needed to deploy your application.
 
@@ -50,6 +58,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 * Your workload is deployed. This process might take a few minutes to complete.
 * When your workload completes deployment, it's assigned a state of **Active**. You can view this status from the project's **Workloads** page.
 
+<<<<<<< HEAD
 ### View Your Application
 
 From the **Workloads** page, click the link underneath your workload. If your deployment succeeded, your application opens.
@@ -59,6 +68,19 @@ From the **Workloads** page, click the link underneath your workload. If your de
 >
 >```sh
 
+=======
+<br/>
+
+### 2. Viewing Your Application
+
+From the **Workloads** page, click the link underneath your workload. If your deployment succeeded, your application opens.
+
+### Attention: Cloud-Hosted Sandboxes
+
+When using a cloud-hosted virtual machine, you may not have access to the port running the container. In this event, you can test Nginx in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is `31568` in this example.
+
+```sh
+>>>>>>> qs-tmp
 gettingstarted@rancher:~$ curl http://localhost:31568
 <!DOCTYPE html>
 <html>
@@ -139,6 +161,19 @@ gettingstarted@rancher:~$
 
 ```
 
+<<<<<<< HEAD
 ## Finished
 
 Congratulations! You have successfully deployed a workload exposed via a NodePort.
+=======
+### Finished
+
+Congratulations! You have successfully deployed a workload exposed via a NodePort.
+
+#### What's Next?
+
+When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
+
+- [DigitalOcean: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/#destroying-the-environment)
+- [Vagrant: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/#destroying-the-environment)
+>>>>>>> qs-tmp
