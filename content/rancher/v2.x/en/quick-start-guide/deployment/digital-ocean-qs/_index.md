@@ -5,12 +5,12 @@ weight: 100
 The following steps will quickly deploy a Rancher Server with a 3-node cluster attached.
 
 >**Note**
->Deploying to Digital Ocean will incur charges.
+>Deploying to DigitalOcean will incur charges.
 
 ## Prerequisites
 
-- [Digital Ocean Account](https://www.digitalocean.com): You will require an account on DigitalOcean as this is where the server and cluster will run.
-- [Digital Ocean Access Key](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key): Use this link to create a DigitalOcean Access Key if you don't have one.
+- [DigitalOcean Account](https://www.digitalocean.com): You will require an account on DigitalOcean as this is where the server and cluster will run.
+- [DigitalOcean Access Key](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key): Use this link to create a DigitalOcean Access Key if you don't have one.
 - [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster to DigitalOcean.
 
 
@@ -22,7 +22,7 @@ The following steps will quickly deploy a Rancher Server with a 3-node cluster a
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. Edit `terraform.tfvars` to include your Digital Ocean Access Key.
+4. Edit `terraform.tfvars` to include your DigitalOcean Access Key.
 
 5. Run `terraform init`.
 
