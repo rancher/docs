@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/
 ---
 
-After completing your single node installation of Rancher, you can create a backup of your current installation at any time. We recommend making a backup before [upgrading]({{< baseurl>>}}/rancher/v2.x/en/upgrades/single-node-upgrade/). Use this backup as a restoration point in disaster scenarios or when you need to [rollback]({{< baseurl>>}}/rancher/v2.x/en/backups/rollbacks/single-node-rollbacks/) to an older version.
+After completing your single node installation of Rancher, you can create a backup of your current installation at any time. We recommend making a backup before [upgrading]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-upgrade/). Use this backup as a restoration point in disaster scenarios or when you need to [rollback]({{< baseurl >}}/rancher/v2.x/en/backups/rollbacks/single-node-rollbacks/) to an older version.
 
 >**Prerequisite:** Open Rancher and write down the version number displayed in the lower-left of the browser (example: `v2.0.0`). You'll need this number during the backup process.
 
@@ -36,7 +36,7 @@ docker run  --volumes-from rancher-data-<RANCHER_VERSION> \
 /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
     ```
 
-3. After you've created your backup, you can either restart Rancher server or [upgrade]({{< baseurl>>}}/rancher/v2.x/en/upgrades/single-node-upgrade/). Replace `<RANCHER_CONTAINER_ID>` with the ID of your Rancher container.
+3. After you've created your backup, you can either restart Rancher server or [upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-upgrade/). Replace `<RANCHER_CONTAINER_ID>` with the ID of your Rancher container.
 
     ```
 # Restart Rancher server
