@@ -66,4 +66,4 @@ docker run -d --volumes-from rancher-data --restart=unless-stopped \
 
 **Result:** Rancher Server is upgraded to the latest version.
 
->**Note:** If your upgrade does not complete successfully, you can roll Rancher Server and its data back to its last healthy state. For more information, see [Restoring Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration/).
+>**Note:** If your upgrade does not complete successfully, you can roll Rancher Server and its data back to its last healthy state. For more information, see [Restoring Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/rollbacks/single-node-rollbacks).

@@ -3,6 +3,7 @@ title: Roll Backs—High Availability Installs
 weight: 50
 aliases:
   - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/
+  - /rancher/v2.x/en/backups/restorations/ha-restoration
 ---
 
 There are two scenarios where you'll need to rollback to prior image of Rancher. The instructions change slightly for each scenario.
