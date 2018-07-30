@@ -4,7 +4,7 @@ shortTitle: Rollbacks
 weight: 1010
 ---
 
-If you upgrade your Rancher Server and the upgrade is unsuccessful, you can use the backup you created during the upgrade process to restore the previous version of Rancher, along with its data.
+If you encounter a disaster scenario where you lose Rancher or its data, you can recover by restoring to your most recent backup. This process will return your cluster to a healthy state, with minimal data loss.
 
 - [Rolling Back—Single Node Installs](./single-node-rollbacks/)
-- [Rolling Back—High Availablity Installs](./ha-server-rollbacks/)
+- [Rolling Back—High Availability Installs](./ha-server-rollbacks/)
