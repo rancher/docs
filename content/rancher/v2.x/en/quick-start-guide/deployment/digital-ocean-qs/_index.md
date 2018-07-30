@@ -22,7 +22,7 @@ The following steps will quickly deploy a Rancher Server with a 3-node cluster a
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. Edit `terraform.tfvars` to include your Digital Ocean Access Key.
+4. Edit `terraform.tfvars` to include your DigitalOcean Access Key.
 
 5. Run `terraform init`.
 
