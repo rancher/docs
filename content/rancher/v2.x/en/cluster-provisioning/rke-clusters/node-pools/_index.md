@@ -44,8 +44,8 @@ If you want to use a node driver that Rancher doesn't support out-of-the-box, yo
 
 ## Activating/Deactivating Node Drivers
 
-By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, Digital Ocean and vSphere. If you want to show or hide any node driver, you can change it's status.
+By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, DigitalOcean and vSphere. If you want to show or hide any node driver, you can change it's status.
 
 1.	From the **Global** view, select **Node Drivers** from the main menu.
 
-2.	Find the driver that you want to activate or deactivate and select **Vertical Elipsis (... ) > Edit**. Choose either **Activate** or **Deactivate**.
+2.	Find the driver that you want to activate or deactivate and select **Vertical Elipsis (...) > Edit**. Choose either **Activate** or **Deactivate**.
