@@ -9,7 +9,7 @@ Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Digital Ocean**.
+2. Choose **DigitalOcean**.
 
 3. Enter a **Cluster Name**.
 
