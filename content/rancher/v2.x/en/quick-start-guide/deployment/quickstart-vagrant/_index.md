@@ -23,7 +23,7 @@ The following steps quickly deploy a Rancher Server with a 3-node cluster attach
 
 4. To initiate the creation of the environment run, `vagrant up`.
 
-5. Once provisioning finishes, go to `https://172.22.101.100` in the browser. The default user/password is `admin/password1`.
+5. Once provisioning finishes, go to `https://172.22.101.101` in the browser. The default user/password is `admin/admin`.
 
 **Result:** Rancher Server and your Kubernetes cluster is installed on VirtualBox.
 
