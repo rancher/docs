@@ -59,7 +59,7 @@ For nodes provisioned using the [custom nodes option]({{< baseurl >}}/rancher/v2
  
 ## Nodes Provisioned by Hosted Kubernetes Providers
 
-Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. To make edits such as scaling the number of nodes up or down, use the hosted provider's Web console rather than Rancher UI.
+Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
 
 From the Rancher UI, you can:
 

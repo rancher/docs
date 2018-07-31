@@ -3,7 +3,7 @@ title: Managing Node Templates
 weight: 7010
 ---
 
-[Node templates]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are operating system images and settings used to create nodes when you provision a [node pool]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) cluster. You can create node templates in two contexts:
+when you provision a [node pool]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) cluster, [node templates]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used to provision the cluster nodes. These templates use Docker Machine commands to configure an operating system image and setting/parameters for the node. You can create node templates in two contexts:
 
 - While [provisioning a node pool cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools).
 - At any time, from your [user settings](#creating-a-node-template-from-user-settings).
@@ -20,7 +20,7 @@ When you create a node template, it is bound to your user profile. Node template
 
 ## Cloning Node Templates
 
-When creating new node templates from your user settings, you can clone an existing template and quickly update its settings rather than creating a new one from scratch.
+When creating new node templates from your user settings, you can clone an existing template and quickly update its settings rather than creating a new one from scratch. Cloning templates saves you the hassle of re-entering access keys for the cloud provider.
 
 1. From your user settings, select **User Avatar > Node Templates**.
 1. Find the template you want to clone. Then select **Ellipsis > Clone**.
