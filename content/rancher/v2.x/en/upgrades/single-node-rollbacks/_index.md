@@ -1,6 +1,6 @@
 ---
-title: Rolling Back—Single Node Installs
-weight: 25
+title: Single Node Rollback
+weight: 1015
 aliases:
   - /rancher/v2.x/en/backups/rollbacks/single-node-rollbacks
 ---

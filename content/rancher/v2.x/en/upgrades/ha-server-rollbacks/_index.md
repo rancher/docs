@@ -1,6 +1,6 @@
 ---
-title: Rolling Back—High Availability Installs
-weight: 50
+title: High Availability Rollback
+weight: 1025
 aliases:
   - /rancher/v2.x/en/backups/rollbacks/ha-server-rollbacks
 ---
