@@ -57,9 +57,7 @@ kubectl --kubeconfig=kube_config_rancher-cluster.yml set image deployment/cattle
 
 ## Troubleshooting
 
-There is an issue with **rke v0.1.8** and below were the **rke-bundle-cert** container
-is left over from a failed etcd restore. If you are having an issue with restoring an
-**etcd snapshot** then you can do the following on each etcd nodes before attempting to
+With _v0.1.8_ and below, the **rke-bundle-cert** container is left over from a failed etcd restore. If you are having an issue with restoring an **etcd snapshot** then you can do the following on each etcd nodes before attempting to
 do another restore:
 
 ```
@@ -77,5 +75,5 @@ docker container inspect rke-bundle-cert
 
 The important thing to note is the mounts of the container and location of the **pki.bundle.tar.gz**.
 
-As of **rke v0.1.9** and above, the **rke-bundle-cert** container is removed on both success and
+As of _v0.1.9_, the **rke-bundle-cert** container is removed on both success and
 failure of a restore. To debug any issues, you will need to look at the **logs** generated from rke. 
