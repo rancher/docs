@@ -15,9 +15,10 @@ Complete one of the upgrade procedures below based on your Rancher installation:
 
 ### Rolling Back Unsuccessful Upgrades
 
-In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade: 
+In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade:
 
-- [Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks)
+- [Single-Node Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-rollbacks)
+- [High-Availability Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-rollbacks)
 
 ### Migrating from Rancher 1.6.x
 
