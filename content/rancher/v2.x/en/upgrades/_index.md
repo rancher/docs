@@ -1,6 +1,8 @@
 ---
-title: Upgrades
+title: Upgrades and Rollbacks
 weight: 150
+aliases:
+  - /rancher/v2.x/en/backups/rollbacks/
 ---
 
 ### Upgrading from Rancher 2.x.x
