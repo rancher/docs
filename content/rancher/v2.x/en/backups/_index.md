@@ -1,5 +1,5 @@
 ---
-title: Backups and Rollbacks
+title: Backups and Restores
 weight: 1000
 ---
 
@@ -12,7 +12,3 @@ This section is devoted to protecting your Rancher Server data in a disaster sce
 - [Restorations](./restorations/)
 
     In a disaster scenario, you can restore your `etcd` database by restoring a backup.
-
-- [Rollbacks](./rollbacks/)
-
-    If an upgrade does not complete successfully, you can revert you Rancher Server to its previous version along with its data prior to upgrade.

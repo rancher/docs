@@ -1,6 +1,8 @@
 ---
 title: Rolling Back—Single Node Installs
 weight: 25
+aliases:
+  - /rancher/v2.x/en/backups/rollbacks/single-node-rollbacks/
 ---
 
 Rolling back an unsuccessful Rancher upgrade requires you to
