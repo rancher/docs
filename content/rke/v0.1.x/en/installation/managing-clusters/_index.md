@@ -25,8 +25,16 @@ In order to remove the Kubernetes components from nodes, you use the `rke remove
 
 This command does the following to each node in the `cluster.yml`:
 
+- Remove the Kubernetes component deployed on it
+  - `etcd`
+  - `kube-apiserver`
+  - `kube-controller-manager`
+  - `kubelet`
+  - `kube-proxy`
+  - `nginx-proxy`
 
-- Remove the Kubernetes services deployed on it
+> **Note:** Pods are not removed from the nodes. If the node is re-used, the pods will automatically be removed when the new Kubernetes cluster is created.
+
 - Clean each host from the directories left by the services:
   - /etc/kubernetes/ssl
   - /var/lib/etcd
