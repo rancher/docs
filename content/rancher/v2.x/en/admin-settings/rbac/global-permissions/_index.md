@@ -3,13 +3,13 @@ title: Global Permissions
 weight: 1126
 ---
 
-Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `Standard User`.
+Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `User`.
 
 - **Administrator:**
 
     These users have full control over the entire Rancher system and all clusters within it.
 
-- **Standard User:**
+- <a id="user"></a>**User:**
 
     These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
 
@@ -52,3 +52,25 @@ The following table lists each custom global permission available and whether it
 | Login Access                       | ✓             | ✓             |
 
 > **Note:** Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalroles`.
+
+### Default Global Permissions for New Users
+
+When a user from an [external authentication source]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, new users are assigned the [user](#user) permissions. However, in some organizations, these permissions may extend too much access. In this use case, you can change the default permissions to something more restrictive, such as a set of individual permissions.
+
+You can assign one or more default permissions. For example, the `user` permission assigns new users a [set of individual global permissions](#global-permissions-reference). If you want to restrict the default permissions for new users, you can remove the `user` permission as default role and then assign multiple individual permissions as default instead. Conversely, you can also add administrative permissions on top of a set of other standard permissions.
+
+>**Note:** Default roles are only assigned to external users. For local users, you must explicitly assign global permissions.
+
+### Configuring Default Global Permissions
+
+You can change the default global permissions that are assigned to external users upon their first log in.
+
+1. From the **Global** view, select **Security > Roles** from the main menu. Make sure the **Global** tab is selected.
+
+1. Find the permissions set that you want to use as default. Then edit the permission by selecting **Ellipsis > Edit**.
+
+1. Select **Yes: Default role for new users** and then click **Save**.
+
+1. If you want to remove a default permission, edit the permission and select **No** from **New User Default**.
+
+**Result:** The default global permissions are configured based on your changes. Permissions assigned to new users display a check in the **New User Default** column.
