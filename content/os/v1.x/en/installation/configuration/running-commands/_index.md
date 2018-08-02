@@ -32,16 +32,3 @@ write_files:
 ```
 
 Running Docker commands in this manner is useful when pieces of the `docker run` command are dynamically generated. For services whose configuration is static, [adding a system service]({{< baseurl >}}/os/v1.x/en/installation/system-services/adding-system-services/) is recommended.
-
-## Running Commands Early in the Boot Process
----
-
-The `bootcmd` parameter can be used to run commands earlier in the boot process. In particular, `bootcmd` will be executed while RancherOS is still running from memory and before System Docker and any system services are started.
-
-The syntax for bootcmd is the same as `runcmd`.
-
-```yaml
-#cloud-config
-bootcmd:
-- [ mdadm, --assemble, --scan ]
-```
