@@ -17,11 +17,11 @@ When you create a cluster or project, Rancher automatically assigns you as the `
 
 _Cluster roles_ are roles that you can assign to users, granting them access to a cluster. There are two primary cluster roles: `Owner` and `Member`.
 
-- **Owner:**
+- **Cluster Owner:**
 
     These users have full control over the cluster and all resources in it.
 
-- **Member:**
+- **Cluster Member:**
 
     These users can view most cluster level resources and create new projects.
 
@@ -49,11 +49,11 @@ The following table lists each built-in custom cluster role available in Rancher
 
 _Project roles_ are roles that can be used to grant users access to a project. There are three primary project roles: `Owner`, `Member`, and `Read Only`.
 
-- **Owner:**
+- **Project Owner:**
 
     These users have full control over the project and all resources in it.
 
-- **Member:**
+- **Project Member:**
 
     These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
 
@@ -95,3 +95,42 @@ The following table lists each built-in custom project role available in Rancher
 As previously mentioned, custom roles can be defined for use at the cluster or project level. The context field defines whether the role will appear on the cluster member page, project member page, or both.
 
 When defining a custom role, you can grant access to specific resources or specify roles from which the custom role should inherit. A custom role can be made up of a combination of specific grants and inherited roles. All grants are additive. This means that defining a narrower grant for a specific resource **will not** override a broader grant defined in a role that the custom role is inheriting from.
+
+### Default Cluster and Project Roles
+
+By default, when a user creates a new cluster or project, they are automatically assigned an ownership role: either [cluster owner](#cluster-roles) or [project owner](#project-roles). However, in some organizations, these roles may overextend administrative access. In this use case, you can change the default role to something more restrictive, such as a set of individual roles or a custom role.
+
+There are two methods for changing default cluster/project roles:
+
+- **Assign Custom Roles**: Create a [custom role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles) for either your [cluster](#custom-cluster-roles) or [project](#custom-project-roles), and then set the custom role as default.
+
+- **Assign Individual Roles**: Configure multiple [cluster](#cluster-role-reference)/[project](#project-role-reference) roles as default for assignment to the creating user.
+
+    For example, instead of assigning a role that inherits other roles (such as `cluster owner`), you can choose a mix of individual roles (such as `manage nodes` and `manage storage`).
+
+>**Note:** 
+>
+>- Although you can [lock]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/) a default role, the system still assigns the role to users who create a cluster/project.
+>- Only users that create clusters/projects inherit their roles. Users added to the cluster/project membership afterward must be explicitly assigned their roles.
+
+### Configuring Default Roles
+
+You can change the cluster or project role(s) that are automatically assigned to the creating user.
+
+1. From the **Global** view, select **Security > Roles** from the main menu. Select either the **Cluster** or **Project** tab.
+
+1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **Ellipsis > Edit**.
+
+1. Enable the role as default.
+{{% accordion id="cluster" label="For Clusters" %}}
+1. From **Clustor Creator Default**, choose **Yes: Default role for new cluster creation**.
+1. Click **Save**. 
+{{% /accordion %}}
+{{% accordion id="project" label="For Projects" %}}
+1. From **Project Creator Default**, choose **Yes: Default role for new project creation**.
+1. Click **Save**.  
+{{% /accordion %}}
+
+1. If you want to remove a default role, edit the permission and select **No** from the default roles option.
+
+**Result:** The default roles are configured based on your changes. Roles assigned to cluster/project creators display a check in the **Cluster/Project Creator Default** column.
