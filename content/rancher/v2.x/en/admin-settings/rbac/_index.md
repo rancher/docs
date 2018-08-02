@@ -17,11 +17,11 @@ After you configure external authentication, the users that display on the **Use
 
 Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.  
 
-- **[Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/):**
+- [Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/):
 
     Define user authorization outside the scope of any particular cluster.
 
-- **[Cluster and Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/):**
+- [Cluster and Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/):
 
     Define user authorization inside the specific cluster or project where they are assigned the role.
 
