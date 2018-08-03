@@ -19,6 +19,7 @@ The Rancher authentication proxy integrates with the following external authenti
 - Microsoft Active Directory
 - Microsoft Azure AD
 - GitHub
+- PingIdentity
 - FreeIPA
 - OpenLDAP
 
