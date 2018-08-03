@@ -44,3 +44,8 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
     >**Note:** You may have to disable your popup blocker to see the IdP login page.
 
 **Result:** Rancher is configured to work with PingIdentity. Your users can now sign into Rancher using their PingIdentity logins.
+
+>**Ping Identity Provider Caveats:** 
+>
+>- IdP does not support search or lookup. When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), the exact IDs must be entered correctly.
+>- When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), group IDs are not supported unless the admin who turned on access control is a member of the group.
