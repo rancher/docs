@@ -2,13 +2,13 @@
 title: Vagrant Quick Start
 weight: 200
 ---
-The following steps quickly deploy a Rancher Server with a 3-node cluster attached.
+The following steps quickly deploy a Rancher Server with a single node cluster attached.
 
 ## Prerequisites
 
 - [Vagrant](https://www.vagrantup.com): Vagrant is required as this is used to provision the machine based on the Vagrantfile.
 - [Virtualbox](https://www.virtualbox.org): The virtual machines that Vagrant provisions need to be provisioned to VirtualBox.
-- At least 6GB of free RAM.
+- At least 4GB of free RAM.
 
 ## Getting Started
 
@@ -18,8 +18,8 @@ The following steps quickly deploy a Rancher Server with a 3-node cluster attach
 
 3. **Optional:** Edit `config.yaml` to:
 
-    - Change the number of nodes and the memory allocations, if required.
-    - Change the default user and password for logging into Rancher.
+    - Change the number of nodes and the memory allocations, if required. (`node.count`, `node.cpus`, `node.memory`)
+    - Change the password of the `admin` user for logging into Rancher. (`default_password`)
 
 4. To initiate the creation of the environment run, `vagrant up`.
 
