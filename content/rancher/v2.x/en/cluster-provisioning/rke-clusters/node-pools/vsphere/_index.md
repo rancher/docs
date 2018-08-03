@@ -129,7 +129,7 @@ ___
 | Host                     |          | Name/path of the host system to schedule VMs in. If specified, the host system's pool will be used and the *Pool* parameter will be ignored. |
 | Network                  |   *      | Name of the VM network to attach VMs to. |
 | Data Store               |   *      | Datastore to store the VM disks. |
-| Folder                   |          | Folder to create the VMs in. |
+| Folder                   |          | Name/path of folder in the datastore to create the VMs in. Must already exist. |
 
 ___
 
