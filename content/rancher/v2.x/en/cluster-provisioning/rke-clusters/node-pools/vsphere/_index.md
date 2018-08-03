@@ -11,13 +11,13 @@ Use {{< product >}} to create a Kubernetes cluster in vSphere.
 
 When creating a vSphere cluster Rancher first provisions the specified amount of virtual machines by communicating with the vCenter API. Then it installs Kubernetes on top of them. A vSphere cluster may consist of multiple groups of VMs with distinct properties, such as the amount of memory or the number of vCPUs. This allows for fine-grained controll over the sizing of nodes for the data, control and worker plane respectively.
 
+> *Note:*
+> The vSphere node driver included in Rancher currently only supports the provisioning of VMs with [RancherOS]({{< baseurl >}}/os/v1.x/en/) as the guest operating system.
+
 ## Prerequisites
 
-> *Note:*
-> 
-> If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/vsphere/) that must be met.
-
-Before processing to create a cluster you must ensure that you have a vSphere user with sufficient permissions. Let's walk through the steps of creating the user in the vSphere console:
+Before proceeding to create a cluster you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/vsphere/) that must be met.
+Let's walk through the steps of creating a role with the required privileges and assign it to a new user in the vSphere console:
 
 1. From the **vSphere** console, go to the **Administration** page.
 
@@ -139,9 +139,7 @@ The following table lists the permissions required for the vSphere user account 
 
 | Privilege Group       | Operations  |
 |:----------------------|:-----------------------------------------------------------------------|
-| Datastore             | AllocateSpace </br> Browse </br> DeleteFile </br> FileManagement </br>UpdateVirtualMachineFiles </br> UpdateVirtualMachineMetadata |
-| Folder                | Create </br> Delete |
-| Network               | AssignNetwork |
+| Datastore             | AllocateSpace </br> Browse </br> FileManagement </br> UpdateVirtualMachineFiles </br> UpdateVirtualMachineMetadata |
+| Network               | Assign |
 | Resource              | AssignVMToPool |
-| System ?              | Anonymous </br> Read </br> View |
 | Virtual Machine       | Config (All) </br> GuestOperations (All) </br> Interact (All) </br> Inventory (All) </br> Provisioning (All) |
