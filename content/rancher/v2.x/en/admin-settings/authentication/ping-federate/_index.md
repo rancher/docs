@@ -15,7 +15,7 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
 
 1.	Select **PingIdentity**.
 
-1.	Complete the **Configure Ping Account** form. Rancher can work with your Ping IdP that has Active Directory to manage the users and groups.
+1.	Complete the **Configure Ping Account** form. Ping IdP lets you specify what data store you want to use. You can either add a database or use an existing ldap server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
 	
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
 
@@ -39,7 +39,7 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
  
 1. After you complete the **Configure Ping Account** form, click **Authenticate with Ping**, which is at the bottom of the page. 
 
-    Rancher redirects you to the IdP login page. Enter your AD credentials that are added to Ping IdP to validate your Rancher PingIdentity configuration.
+    Rancher redirects you to the IdP login page. Enter credentials that authenticate with Ping IdP to validate your Rancher PingIdentity configuration.
 
     >**Note:** You may have to disable your popup blocker to see the IdP login page.
 
