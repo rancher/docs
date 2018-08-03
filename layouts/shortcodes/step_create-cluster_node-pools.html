@@ -1,10 +1,9 @@
-<p>Add one or more <strong>Node Pools</strong> to your cluster.<br/><br/>A <strong>Node Pool</strong> is a collection of nodes based on a Node Template. A Node Template defines the configuration of a Node, like what Operating System image, number of CPUs and amount of RAM. Each Node Pool can have one or more Nodes Roles associated with it.</p>
+<p>Add one or more <strong>node pools</strong> to your cluster.<br/><br/>A <strong>node pool</strong> is a collection of nodes based on a node template. A node Template defines the configuration of a node, like what Operating System to use, number of CPUs and amount of memory. Each node pool must have one or more nodes roles assigned.</p>
 
 <blockquote>
 	<p><strong>Notes:</strong></p>
 	<ul>
-		<li>After you create a Node Template, it will be saved and you will be able to re-use it in additional Node Pools.</li>
-		<li>Each Node Role (i.e. <code>etcd</code>, <code>Control Plane</code>, and <code>Worker</code>) must be fulfilled. Although it is possible to apply multiple Node Roles to a Node Pool, this is not recommended.</li>
-		<li>The recommended setup is to have a Node Pool with the <code>etcd</code> Node Role and a count of three, a Node Pool with the <code>Control Plane</code> Node Role and a count of at least two, and a Node Pool with the <code>Worker</code> Node Role and a count of at least two. Regarding the <code>etcd</code> Node Role, refer to the <a href="https://coreos.com/etcd/docs/latest/v2/admin_guide.html#optimal-cluster-size" target="_blank">etcd Admin Guide</a>.</li>
+		<li>Each node role (i.e. <code>etcd</code>, <code>Control Plane</code>, and <code>Worker</code>) should be assigned to a distinct node pool. Although it is possible to assign multiple node roles to a node pool, this should not be done for production clusters. </li>
+		<li>The recommended setup is to have a node pool with the <code>etcd</code> node role and a count of three, a node pool with the <code>Control Plane</code> node role and a count of at least two, and a node pool with the <code>Worker</code> node role and a count of at least two. Regarding the <code>etcd</code> node role, refer to the <a href="https://coreos.com/etcd/docs/latest/v2/admin_guide.html#optimal-cluster-size" target="_blank">etcd Admin Guide</a>.</li>
 	</ul>
 </blockquote>
