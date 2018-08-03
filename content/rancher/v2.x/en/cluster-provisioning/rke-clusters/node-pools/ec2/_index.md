@@ -7,6 +7,16 @@ aliases:
 ---
 Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
+## Prerequisites
+
+- AWS EC2 Access Key and Secret key that will be used to create the instances. See [Amazon Documentation: Creating Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) how to create an Access Key and Secret Key.
+- IAM Policy created to add to the user of the Access Key And Secret Key. See [Amazon Documentation: Creating IAM Policies (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start) how to create an IAM policy. See our two example JSON policies below:
+  - [Example IAM Policy](#example-iam-policy)
+  - [Example IAM Policy with PassRole](#example-iam-policy-with-passrole) (needed if you want to use [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) or want to pass an IAM Profile to an instance)
+- IAM Policy added as Permission to the user. See [Amazon Documentation: Adding Permissions to a User (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) how to attach it to an user.
+
+## Create the cluster
+
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.
 1. Enter a **Cluster Name**.
@@ -18,16 +28,13 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
       Complete each of the following forms using information available from the [EC2 Management Console](https://aws.amazon.com/ec2).
 
-      * **Account Access** is there you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine.
+      * **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisistes](#prerequisistes) how to create the Access Key and Secret Key and the needed permissions.
 
-        [Amazon Documentation: Creating Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
-
-        See [Example Node Pool IAM policy](#example-node-pool-iam-policy) for an example policy that can be applied to these credentials.
 	- **Zone and Network** configures the availability zone and network settings for your cluster.
     - **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{< baseurl >}}/rancher/v2.x/en/installation/references/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
     - **Instance** configures the instances that will be created. Make sure you configure the correct **SSH User** for the configured AMI.
 
-    If you need to pass an **IAM Instance Profile Name** (not ARN), for example, when you want to use a [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers), you will need an additional permission in your policy. See [Example Node Pool IAM policy with PassRole](#example-node-pool-iam-policy-with-passrole) for an example policy.
+    If you need to pass an **IAM Instance Profile Name** (not ARN), for example, when you want to use a [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers), you will need an additional permission in your policy. See [Example IAM policy with PassRole](#example-iam-policy-with-passrole) for an example policy.
 
 	1. {{< step_rancher-template >}}
 	1. Click **Create**.
@@ -36,7 +43,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
 {{< result_create-cluster >}}
 
-### Example Node Pool IAM Policy
+### Example IAM Policy
 
 ```json
 {
@@ -88,7 +95,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 }
 ```
 
-### Example Node Pool IAM Policy with PassRole
+### Example IAM Policy with PassRole
 
 ```json
 {
