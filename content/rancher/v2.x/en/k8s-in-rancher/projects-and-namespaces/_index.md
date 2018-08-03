@@ -9,7 +9,44 @@ aliases:
 
 ## Projects
 
-_Projects_ are a new concept introduced by Rancher. They are not a native Kubernetes construct. A project captures a set of policies for a set of namespaces. A user can be assigned a specific role in a project. A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/). Policies include Kubernetes Role-Based Access Control (RBAC) policies and pod security policies. Rancher 2.0 also implements a canned network policy that isolates containers in different projects. Future versions of Rancher will implement more flexible network policies.
+_Projects_ are objects that captures a set of policies for a set of namespaces. They are a new concept introduced by Rancher, and they are not a native Kubernetes construct.
+
+You can use projects to perform actions like:
+
+- Assigning users to access to a group of namespaces (i.e., [project membership]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/project-members))
+- Assigning users specific roles in a project. A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/). Policies include Kubernetes Role-Based Access Control (RBAC) policies.
+- Assigning Pod Security Policies.
+
+When you create a cluster, two project are automatically created within it:
+
+- [Default Project](#default-project)
+- [System Project](#system-project)
+
+### Default Project
+
+When you provision a cluster, it automatically creates a `default` project for the cluster. This is a project you can use to get started with your cluster, but you can always delete it and replace it with projects that have more descriptive names.
+
+### System Project
+
+_available as of v2.0.7_
+
+When troubleshooting, you can view the `system` project to check if important namespaces in the Kubernetes system are working properly. This easily accessible project saves you from troubleshooting individual system namespace containers.
+
+To open it, open the **Global** menu, and then select the `system` project for your cluster. 
+
+The `system` project:
+
+- Is automatically created when you provision a cluster.
+- Lists all namespaces that exist in `v3/settings/system-namespaces`.
+- Allows you to add more namespaces or move its namespaces to other projects.
+- Cannot be deleted because it's required for cluster operations.
+
+>**Note:** In clusters where both:
+>
+> - The [Canal network plug-in]({{< baseurl >}}\rancher\v2.x\en\cluster-provisioning\rke-clusters\options\#canal) is in use.
+> - The Project Network Isolation option is enabled.
+>
+>The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health.
 
 ## Authorization
 
