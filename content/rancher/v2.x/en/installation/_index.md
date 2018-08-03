@@ -30,7 +30,7 @@ This section also includes help content for Rancher configuration and maintenanc
 
 -  [Backups and Rollbacks]({{< baseurl >}}/rancher/v2.x/en/backups/)
 
- 	This page lists the ports you must open to operate Rancher.
+ 	This page describes how to protect your Rancher install.
 
 -  [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/)
 
