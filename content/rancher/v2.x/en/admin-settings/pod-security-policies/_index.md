@@ -35,11 +35,11 @@ Rancher ships with two default Pod Security Policies (PSPs): the `restricted` an
 
 - `unrestricted`
 
-	This policy is based on the Kubernetes [example restricted policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies). This policy:
+	This policy is based on the Kubernetes [example restricted policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies). It significantly restricts what types of pods can be deployed to a cluster or project. This policy:
 	
-	- Prevents pods from running as an unprivileged user or from root.
+	- Prevent pods from running as a privileged user and prevents escalation of privileges.
 	- Validates that server-required security mechanisms are in place (such as restricting what volumes can be mounted to only the core volume types and preventing root supplemental groups from being added). 
-	- Significantly restricts what types of pods can be deployed to a cluster or project.
+
 
 
 ## Creating Pod Security Policies
