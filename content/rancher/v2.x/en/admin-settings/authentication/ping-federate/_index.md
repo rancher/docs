@@ -49,3 +49,4 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
 >
 >- IdP does not support search or lookup. When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), the exact IDs must be entered correctly.
 >- When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), group IDs are not supported unless the admin who turned on access control is a member of the group.
+>- When adding a group that includes an admin to clusters or projects, add it from the drop-down rather than the search bar. If you add the group using the search bar, the group will not get added.
