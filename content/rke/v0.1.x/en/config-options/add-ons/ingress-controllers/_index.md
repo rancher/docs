@@ -50,3 +50,50 @@ ingress:
     extra_args:
       enable-ssl-passthrough: ""
 ```
+
+## Configuring an NGINX Default Certificate
+
+It is possible to configure nginx to use a custom, default certificate that is used for ingress objects if no certificate is specified for them. This can be useful for wildcard certificates.
+
+### Requirements
+
+- Access to the `cluster.yml` used to create the cluster
+- The PEM encoded certificate you will use as the default certificate
+
+### Steps
+1. Obtain or generate your certificate key pair in a PEM encoded form
+2. Generate a Kubernetes secret object from your PEM encoded certificate with the following command, substituting your certificate for `mycert.cert` and `mycert.key`
+
+    ```
+    kubectl create secret tls ingress-default-cert --cert=mycert.cert --key=mycert.key -o yaml --dry-run=true > ingress-default-cert.yaml
+    ```
+3. Include the contents of `ingress-default-cert.yml` inline with your RKE `cluster.yml`, for example
+
+    ```yaml
+    addons: |-
+      ---
+      apiVersion: v1
+      data:
+        tls.crt: [ENCODED CERT]
+        tls.key: [ENCODED KEY]
+      kind: Secret
+      metadata:
+        creationTimestamp: null
+        name: ingress-default-cert
+        namespace: ingress-nginx
+      type: kubernetes.io/tls
+    ```
+4. Define your ingress resource with the following `default-ssl-certificate` argument that references the secret we created above under `extra_args` in your `cluster.yml` like such:
+
+    ```yaml
+    ingress: 
+      provider: "nginx"
+      extra_args:
+        default-ssl-certificate: "ingress-nginx/ingress-default-cert"
+    ```
+
+5. *optional* If you are applying this to a cluster that was already created, you must restart the nginx ingress controller pods in order to have them apply the latest `extra_args` 
+
+    ```
+    kubectl delete po -l app=ingress-nginx -n ingress-nginx
+    ```
