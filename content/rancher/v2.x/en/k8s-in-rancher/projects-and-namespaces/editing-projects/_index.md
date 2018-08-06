@@ -11,10 +11,11 @@ After projects are created, there are certain aspects that can be changed later.
 
 Following project creation, you can add users as project members so that they can access its resources.
 
->**Ping Identity Provider Caveats:**
+>**Ping and MS FS Caveats:**
 >
 >- IdP does not support search or lookup. When adding users to projects, the exact IDs must be entered correctly.
 >- When adding users to a project, group IDs are not supported unless the admin who turned on access control is a member of the group.
+>- When adding a group that includes an admin to projects, add it from the drop-down rather than the search bar. If you add the group using the search bar, the group will not get added.
 
 1. From the **Global** view, open the project that you want to add members to.
 
