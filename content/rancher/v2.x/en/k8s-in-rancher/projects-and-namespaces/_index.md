@@ -37,7 +37,7 @@ To open it, open the **Global** menu, and then select the `system` project for y
 The `system` project:
 
 - Is automatically created when you provision a cluster.
-- Lists all namespaces that exist in `v3/settings/system-namespaces`.
+- Lists all namespaces that exist in `v3/settings/system-namespaces`, if they exist.
 - Allows you to add more namespaces or move its namespaces to other projects.
 - Cannot be deleted because it's required for cluster operations.
 
