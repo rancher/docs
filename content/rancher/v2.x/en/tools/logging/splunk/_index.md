@@ -5,81 +5,54 @@ aliases:
   - /rancher/v2.x/en/tasks/logging/splunk/
 ---
 
-The following guide will demonstrate how to monitor your container
-infrastructure using Splunk.
+If your organization uses Splunk, you can configure it to log events from your cluster. Afterwards, you can use Splunk to view data from cluster and containers.
 
-## Configure HTTP Event Collector
+## Configuring Cluster Logging
 
-The first step is to identify what port Splunk is using for the HTTP Event
-collector. Usually the port is either **8088** or **8089**. HEC is used to
-send log data from Rancher to Splunk using HTTP or HTTPS.
+>**Prerequisites:** Configure HTTP event collection for your type of Splunk server (Splunk Enterprise, Splunk Cloud, etc.). Enable all tokens, and then create a new token. For more information, see [Splunk Documentation](http://docs.splunk.com/Documentation/Splunk/7.1.2/Data/UsetheHTTPEventCollector#About_Event_Collector_tokens).
 
-Login to Splunk and go to:
+1. From the **Global** view, open the cluster that you want to configure logging for.
 
-Settings > Data inputs > HTTP Event Collector > **Global Settings**
+1. From the main menu, select **Tools > Logging**.
 
-![Configure Splunk]({{< baseurl >}}/img/rancher/splunk/splunk1.jpg)
+1. Select **Splunk**.
 
-Make sure to click on **Enabled** for all tokens. By default it is set to
-disabled. This will allow Splunk to collect HTTP Event data sent from Rancher.
+1. Complete the **Splunk HTTP Event Collector Configuration** form.
 
-Click on **Save** to update the HEC settings.
+    1. From the **Endpoint** field, enter the IP address and port for you syslog server (i.e. `http://splunk-server:8088`)
+    
+      If you're using Splunk Cloud, you'll need to work with [Splunk support](https://www.splunk.com/en_us/support-and-services.html) to get an endpoint URL.
 
-## Generate Token
+    1. Enter the **Token** you obtained while completing the prerequisites.
 
-This step might not be applicable, if you already have a token. Now we will
-generate the token that will be used by Rancher to send HTTP Event data.
+    1. From the **Source** field, enter the name of the token as entered in Splunk.
 
-- Click Settings > Data inputs > HTTP Event Collector > **New Token**
-- Click monitor
-- Select HTTP Event Collector
-- In the Name field, enter a name for the token (ex. **rancher**)
-- Click Next
-- Select the indexe(s) desired  (history, main, and summary)
-- You can also create a new index and add it to the step above
-- Click Review
-- Confirm that all settings for the token are what you want
-- Click Submit to generate the token
+    1. **Optional:** Enter an index that's within the scope of your token.
 
-&nbsp;
+1. Complete the **Additional Logging Configuration** form.
 
-Congratulations you now are ready to feed Splunk with HTTP Event data. You
-should see a page like the one below with your generated token. This is the
-token that will be used in Rancher to communicate with Splunk.
+    1. Use the **Add Field** button to add key value pairs used to filter log events.
 
-![Token Created]({{< baseurl >}}/img/rancher/splunk/splunk2.jpg)
+    1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
 
-## Configure Cluster Logging
+1. Click **Save**.
 
-In this section we will configure and enable Splunk cluster logging in Rancher.
 
-- Head on over to local > Tools > **Logging**
-- Select Splunk
-- Enter the Splunk endpoint using the port specified for **HEC** (ex. http://splunk-server:8088)
-- Enter the token generated above (ex. 8da70994-b1b0-4a79-b154-bfaae8f93432)
-- Enter the Source, name of the token created earlier (ex. **rancher**)
-- You can also enter an index, this is optional (ex. **main**)
+**Result:** Rancher is now configured to send cluster and container events to Splunk for logging.
 
-&nbsp;
+## Viewing Logs
 
-![Configure Rancher Cluster Logging]({{< baseurl >}}/img/rancher/splunk/splunk3.jpg)
+1. Log into your Splunk server.
 
-Repeat the same step for Project Logging, if desired. This is not required and is optional.
+1. Click on **Search & Reporting**. The number of **Indexed Events** listed should be increasing.
 
-## View Logs
+1. Click on Data Summary and select the Sources tab.
 
-You should now be receiving logging data from your cluster. Head on over to
-Splunk to view your logs.
+  ![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk4.jpg)
 
-Click on **Search & Reporting**, you should see **Indexed Events** increasing.
-Click on Data Summary and select the Sources tab.
+1. To view the actual logs, click on the source that you declared earlier.
 
-![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk4.jpg)
-
-To view the actual logs click on the source that you declared earlier
-(ex. rancher -> http:**rancher**)
-
-![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk5.jpg)
+  ![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk5.jpg)
 
 ## Troubleshooting
 
@@ -91,12 +64,7 @@ $ curl http://splunk-server:8088/services/collector/event \
     -d '{"event": "hello world"}'
 ```
 
-You should see **json** data returning Success code 0. You should be able
-to send logging data to HEC. If you received an error, check your configuration
-in Splunk & Rancher Cluster Logging.
+If Splunk is configured corretcly, you should **json** data returning `success code 0`. You should be able
+to send logging data to HEC.
 
-## Reference
-
-For more information on Splunk, you can check out the following reference:
-
-[Splunk -> HTTP Event Collector](http://docs.splunk.com/Documentation/Splunk/7.0.0/Data/UsetheHTTPEventCollector)
+If you received an error, check your configuration in Splunk & Rancher Cluster Logging.
