@@ -138,10 +138,20 @@ url        = "/customers/"
 weight     = "4"
 
 [[menu.main]]
+identifier = "customers"
+name       = "Customers"
+url        = "/customers/"
+weight     = "4"
+
+[[menu.main]]
 identifier = "learn"
 name       = "Learn"
+<<<<<<< HEAD
 url        = "https://rancher.com/learn/"
 weight     = "4"
+=======
+weight     = "5"
+>>>>>>> add customers to main nav
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
