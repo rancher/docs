@@ -37,7 +37,6 @@ If your organization uses Splunk, you can configure it to log events from your c
 
 1. Click **Save**.
 
-
 **Result:** Rancher is now configured to send cluster and container events to Splunk for logging.
 
 ## Viewing Logs
