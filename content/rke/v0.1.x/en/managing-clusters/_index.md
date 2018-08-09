@@ -1,6 +1,8 @@
 ---
 title: Managing RKE Clusters
-weight: 60
+weight: 175
+aliases:
+  - /rke/v0.1.x/en/installation/managing-clusters/
 ---
 
 ### Adding/Removing Nodes
