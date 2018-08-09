@@ -5,11 +5,11 @@ aliases:
   - /rancher/v2.x/en/tasks/logging/splunk/
 ---
 
-If your organization uses [Splunk](https://www.splunk.com/), you can configure it to log events from a cluster or project in Rancher. Afterwards events are logged, you can use Splunk to view data from cluster and containers.
+If your organization uses [Splunk](https://www.splunk.com/), you can configure it to log events from a cluster or project in Rancher. Afterwards events are logged, you can use Splunk to view log events about your cluster and containers.
 
 ## Configuring Splunk Logging
 
-You can configure Splunk to log events at both the cluster level and the project level.
+You can configure Splunk to log events at both the cluster and project level.
 
 >**Prerequisites:** 
 >
@@ -34,25 +34,25 @@ You can configure Splunk to log events at both the cluster level and the project
 
 1. Complete the **Splunk HTTP Event Collector Configuration** form.
 
-    1. From the **Endpoint** field, enter the IP address and port for you syslog server (i.e. `http://splunk-server:8088`)
+    1. From the **Endpoint** field, enter the IP address and port for you Splunk instance (i.e. `http://splunk-server:8088`)
     
-        If you're using Splunk Cloud, you'll need to work with [Splunk support](https://www.splunk.com/en_us/support-and-services.html) to get an endpoint URL.
+        Splunk usually uses port `8088`. If you're using Splunk Cloud, you'll need to work with [Splunk support](https://www.splunk.com/en_us/support-and-services.html) to get an endpoint URL.
 
-    1. Enter the **Token** you obtained while completing the prerequisites.
+    1. Enter the **Token** you obtained while completing the prerequisites(i.e., when you created a token in Splunk).
 
     1. From the **Source** field, enter the name of the token as entered in Splunk.
 
-    1. **Optional:** Enter an index that's within the scope of your token.
+    1. **Optional:** Enter one or more [index](http://docs.splunk.com/Documentation/Splunk/7.1.2/Indexer/Aboutindexesandindexers) that's allowed for your token.
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1.   1. Use the **Add Field** button to add key value pairs that represent [custom log fields](http://docs.splunk.com/Documentation/Splunk/7.1.2/Data/Configureindex-timefieldextraction) used to filter log events.
+    1. Use the **Add Field** button to add key value pairs that represent custom log fields used to filter log events.
 
     1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send cluster and container events to Splunk for logging.
+**Result:** Rancher is now configured to send events to Splunk for logging. Log into your Spunk instance to view events for your cluster and containers.
 
 ## Viewing Logs
 

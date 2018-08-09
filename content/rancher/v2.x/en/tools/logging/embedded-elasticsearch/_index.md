@@ -3,7 +3,7 @@ title: Embedded Elasticsearch
 weight: 100
 ---
 
-If your organization doesn't have any logging solutions, you can use Rancher's Embedded Elasticsearch option to log record from your cluster. This option sets up an instance of [Elasticsearch](https://www.elastic.co/) within your cluster, and then uses cluster resources to run it.
+If your organization doesn't have any logging solutions, you can use Rancher's Embedded Elasticsearch option to log records from your cluster. This option sets up an instance of [Elasticsearch](https://www.elastic.co/) within your cluster, and then uses cluster resources to run it.
 
 >**Notes:**
 >
@@ -26,7 +26,7 @@ If your organization doesn't have any logging solutions, you can use Rancher's E
 
 1. Complete the **Embedded Elasticsearch Configuration** form.
 
-    1. From **CPUs and Memory**, set the CPU and memory that elasticsearch can access within your cluster for logging.
+    1. From **CPUs and Memory**, set the CPU and memory that Elasticsearch can access within your cluster for logging. CPU and memory must meet the prerequisites above.
     
     1. Enter an [Index Pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html).
 
@@ -40,4 +40,4 @@ If your organization doesn't have any logging solutions, you can use Rancher's E
 
 **Result:** Rancher is now configured to send cluster and container events to Embedded Elasticsearch for logging.
 
-You can view your logs by clicking the **Elasticsearch Endpoint** and **Kibana Endpoint** links available on the **Cluster Logging** page.
+You can view your logs by clicking the **Elasticsearch Endpoint** and **Kibana Endpoint** links available on the **Cluster Logging** page, which should be the page you're viewing now.

@@ -3,11 +3,11 @@ title: Elasticsearch
 weight: 200
 ---
 
-If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure it to log events from your cluster. Afterwards, you can log into your Elasticsearch deployment to view logs for cluster or containers.
+If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure it to log events from your cluster. Afterwards, you can log into your Elasticsearch deployment to view logs for cluster or container events.
 
 ## Configuring Elasticsearch Logging
 
-You can configure Elasticsearch to log events at both the cluster level and the project level.
+You can configure Elasticsearch to log events at both the cluster and project level.
 
 >**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
 
@@ -27,7 +27,7 @@ You can configure Elasticsearch to log events at both the cluster level and the 
 
 1. Complete the **Elasticsearch Configuration** form.
 
-    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch. You can copy this information from your the dashboard of your Elasticsearch deployment.
+    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch instance. You can copy this information from the dashboard of your Elasticsearch deployment. Elasticsearch usually uses port `9243`.
 
     1. If you are using [X-Pack Security](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html), enter your Elasticsearch **Username** and **Password** for authentication.
 
@@ -37,13 +37,19 @@ You can configure Elasticsearch to log events at both the cluster level and the 
 
     1. Enter a private key and client certificate. Either copy and paste them or browse to them using **Read from a file**.
 
+        You can generate a key and certificate one using an openssl command. For example:
+        
+            
+            openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+       
+
     1. Enter your private key password.
 
-    1. If you want to verify connections to Elasticsearch, select the **Enabled - Input trusted server certificate** option and then enter your trusted server certificate.
+    1. If you want to verify connections to Elasticsearch, select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate**.
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1. Use the **Add Field** button to add key value pairs that represent [custom log fields](http://docs.splunk.com/Documentation/AddOns/released/CiscoWSA/Configurew3clogfieldextractions) used to filter log events.
+    1. Use the **Add Field** button to add key value pairs that represent custom log fields to filter log events.
 
     1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
 
