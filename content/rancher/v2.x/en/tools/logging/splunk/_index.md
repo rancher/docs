@@ -38,7 +38,7 @@ You can configure Splunk to log events at both the cluster and project level.
     
         Splunk usually uses port `8088`. If you're using Splunk Cloud, you'll need to work with [Splunk support](https://www.splunk.com/en_us/support-and-services.html) to get an endpoint URL.
 
-    1. Enter the **Token** you obtained while completing the prerequisites(i.e., when you created a token in Splunk).
+    1. Enter the **Token** you obtained while completing the prerequisites (i.e., when you created a token in Splunk).
 
     1. From the **Source** field, enter the name of the token as entered in Splunk.
 
@@ -46,9 +46,9 @@ You can configure Splunk to log events at both the cluster and project level.
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1. Use the **Add Field** button to add key value pairs that represent custom log fields used to filter log events.
+    1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
-    1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
+    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
 
 1. Click **Save**.
 

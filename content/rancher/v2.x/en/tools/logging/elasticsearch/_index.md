@@ -33,25 +33,26 @@ You can configure Elasticsearch to log events at both the cluster and project le
 
     1. Enter an [Index Pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html).
 
-1. If your instance of Elasticsearch uses SSL, complete the **SSL Configuration** form.
+1. If your instance of Elasticsearch uses SSL, complete the **SSL Configuration** form. 
 
-    1. Enter a private key and client certificate. Either copy and paste them or browse to them using **Read from a file**.
+    1. Enter a private key and client certificate. Either copy and paste them or browse to them using **Read from a file**. This certificate will be installed on your logging server.
 
-        You can generate a key and certificate one using an openssl command. For example:
-        
+        You can use either a self-signed certificate or one provided by a certificate authority.
+
+        You can generate a self-signed certificate using an openssl command. For example:
             
             openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
        
 
     1. Enter your private key password.
 
-    1. If you want to verify connections to Elasticsearch, select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate**.
+    1. If you are using a certificate from a certificate authority (and not a self-signed certificate), select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate**.
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1. Use the **Add Field** button to add key value pairs that represent custom log fields to filter log events.
+    1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
-    1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
+    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
 
 1. Click **Save**.
 
