@@ -3,11 +3,11 @@ title: Kafka
 weight: 400
 ---
 
-You can configure a Kafka server to log events that occur in your Kubernetes cluster.
+You can configure a [Kafka](https://kafka.apache.org/) to log events that occur in your Kubernetes cluster.
 
 ## Configuring Kafka Logging
 
-You can configure Kafka to log events at both the cluster level and the project level.
+You can configure Kafka to log events at both the cluster and project level.
 
 >**Prerequisite:** You must have a Kafka server configured.
 
@@ -37,8 +37,10 @@ You can configure Kafka to log events at both the cluster level and the project 
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1. Use the **Add Field** button to add key value pairs that represent [custom log fields](https://httpd.apache.org/docs/2.4/mod/mod_log_config.html) used to filter log events.
+    1. **Optional**: Use the **Add Field** button to add key value pairs that represent custom log fields used to filter log events.
 
     1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
 
 1. Click **Save**.
+
+**Result:** Rancher is now configured to send events to Kafka for logging. View your Kafka stream to view events for your cluster and containers.
