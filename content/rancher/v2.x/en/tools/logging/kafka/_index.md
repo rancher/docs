@@ -37,9 +37,9 @@ You can configure Kafka to log events at both the cluster and project level.
 
 1. Complete the **Additional Logging Configuration** form.
 
-    1. **Optional**: Use the **Add Field** button to add key value pairs that represent custom log fields used to filter log events.
-
-    1. Enter a **Flush Interval**. This value determines how often the buffered logs are flushed.
+    1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
+    
+    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
 
 1. Click **Save**.
 
