@@ -35,7 +35,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. From the **Endpoint** field, enter the IP address and port for your Syslog server. Additionally, select the protocol that your Syslog server uses from the drop-down.
 
-    1. From the **Program** field, enter the name of the application logging events to your Syslog server (i.e., Rancher).
+    1. From the **Program** field, enter the name of the application sending logs to your Syslog server (i.e., Rancher).
 
     1. If you are using a cloud logging service (i.e., [Sumologic](https://www.sumologic.com/)), enter a **Token** that authenticates with your Syslog server. Use the cloud logging service to create this token.
 
@@ -58,7 +58,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
     
-     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
+     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes data to the logging server. Intervals are measured in seconds.
 
 1. Click **Save**.
 
