@@ -41,7 +41,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
     
-    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
+    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes logs to the logging server. Intervals are measured in seconds.
 
 1. Click **Save**.
 
