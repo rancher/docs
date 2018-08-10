@@ -17,16 +17,17 @@ You can use projects to perform actions like:
 - Assigning users specific roles in a project. A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/). Policies include Kubernetes Role-Based Access Control (RBAC) policies.
 - Assigning Pod Security Policies.
 
+<!-- 
 When you create a cluster, two project are automatically created within it:
 
 - [Default Project](#default-project)
-- [System Project](#system-project)
+- [System Project](#system-project) -->
 
 ### Default Project
 
 When you provision a cluster, it automatically creates a `default` project for the cluster. This is a project you can use to get started with your cluster, but you can always delete it and replace it with projects that have more descriptive names.
 
-### System Project
+<!-- ### System Project
 
 _available as of v2.0.7_
 
@@ -46,7 +47,7 @@ The `system` project:
 > - The [Canal network plug-in]({{< baseurl >}}\rancher\v2.x\en\cluster-provisioning\rke-clusters\options\#canal) is in use.
 > - The Project Network Isolation option is enabled.
 >
->The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health.
+>The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health. -->
 
 ## Authorization
 
