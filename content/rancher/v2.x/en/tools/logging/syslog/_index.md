@@ -13,12 +13,15 @@ You can configure Syslog to log events at both the cluster level and the project
 
 1. Browse to the cluster or project that you want to log.
 {{% accordion id="cluster" label="To Configure Cluster Logging:" %}}
+If you're a [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) who works in operations or security, configure cluster logging.
+
 1. From the **Global** view, open the cluster that you want to configure logging for.
 
 1. From the main menu, select **Tools > Logging**.
 
 {{% /accordion %}}
 {{% accordion id="project" label="To Configure Project Logging:" %}}
+If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
 
 1. From the **Global** view, open the project that you want to configure logging for.
 
