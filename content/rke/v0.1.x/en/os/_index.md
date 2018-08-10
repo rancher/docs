@@ -2,7 +2,7 @@
 title: Requirements
 weight: 5
 aliases:
-  - /rke/v0.1.x/en/etcd-snapshots/os
+  - /rke/v0.1.x/en/installation/os
 ---
 **In this section:** 
 
