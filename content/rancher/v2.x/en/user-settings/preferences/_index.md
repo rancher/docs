@@ -11,7 +11,7 @@ Choose your background color for the Rancher UI. If you choose **Auto**, the bac
 
 ## My Account
 
-This section displays the **Name** and **Username** used for your session. To change your login's current password, click the **Change Password** button.
+This section displays the **Name** (your display name) and **Username** (your login) used for your session. To change your login's current password, click the **Change Password** button.
 
 ## Table Row per Page
 
