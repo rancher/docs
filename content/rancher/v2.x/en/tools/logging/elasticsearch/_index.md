@@ -3,11 +3,11 @@ title: Elasticsearch
 weight: 200
 ---
 
-If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure it to log Kubernetes events. Afterwards, you can log into your Elasticsearch deployment to view logs for cluster or container events.
+If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs for cluster or container events.
 
 ## Configuring Elasticsearch Logging
 
-You can configure Elasticsearch to log events at both the cluster and project level.
+You can configure Rancher to send logs from your cluster or project to your instance of Elasticsearch.
 
 >**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
 

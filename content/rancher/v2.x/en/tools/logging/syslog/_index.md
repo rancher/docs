@@ -3,11 +3,11 @@ title: Syslog
 weight: 500
 ---
 
-You can configure a [Syslog](https://tools.ietf.org/html/rfc5424) server to log events that occur in your Kubernetes cluster.
+You can configure Rancher to send Kubernetes logs to a [Syslog](https://tools.ietf.org/html/rfc5424) server.
 
 ## Configuring Syslog
 
-You can configure Syslog to log events at both the cluster level and the project level.
+You can configure Rancher to send cluster or project logs to Syslog.
 
 >**Prerequisite:** You must have a Syslog server configured.
 
@@ -62,4 +62,4 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send events to Syslog for logging. View your Syslog stream to view events for your cluster and containers.
+**Result:** Rancher is now configured to send logs to your Syslog server. View your Syslog stream to view logs for your cluster and containers.

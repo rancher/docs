@@ -3,7 +3,7 @@ title: Kafka
 weight: 400
 ---
 
-You can configure a [Kafka](https://kafka.apache.org/) to log events that occur in your Kubernetes cluster at both the cluster and project level.
+You can configure Rancher to send cluster or project logs to a [Kafka](https://kafka.apache.org/) server.
 
 ## Configuring Kafka Logging
 
@@ -45,4 +45,4 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send events to Kafka for logging. View your Kafka stream to view events for your cluster and containers.
+**Result:** Rancher is now configured to send logs to Kafka. View your Kafka stream to view logs for your cluster and containers.

@@ -5,11 +5,11 @@ aliases:
   - /rancher/v2.x/en/tasks/logging/splunk/
 ---
 
-If your organization uses [Splunk](https://www.splunk.com/), you can configure it to log events from a cluster or project in Rancher. Afterwards events are logged, you can use Splunk to view log events about your cluster and containers.
+If your organization uses [Splunk](https://www.splunk.com/), you can configure Rancher to send it cluster or project logs. Afterwards logs are sent, you can use Splunk to view them.
 
 ## Configuring Splunk Logging
 
-You can configure Splunk to log events at both the cluster and project level.
+You can configure Rancher to send Kubernetes logs to your instance of Splunk.
 
 >**Prerequisites:** 
 >
@@ -56,7 +56,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send events to Splunk for logging. Log into your Spunk instance to view events for your cluster and containers.
+**Result:** Rancher is now configured to send logs to Splunk. Log into your Spunk instance to view events for your cluster and containers.
 
 ## Viewing Logs
 
