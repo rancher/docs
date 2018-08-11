@@ -23,7 +23,7 @@ Read more about Pod Security Policies in the [Kubernetes Documentation](https://
 
 Using Rancher, you can create a Pod Security Policy using our GUI rather than creating a YAML file.
 
-<!-- ## Default Pod Security Policies
+## Default Pod Security Policies
 
 _Available as of v2.0.7_
 
@@ -37,10 +37,8 @@ Rancher ships with two default Pod Security Policies (PSPs): the `restricted` an
 
 	This policy is based on the Kubernetes [example restricted policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies). It significantly restricts what types of pods can be deployed to a cluster or project. This policy:
 	
-	- Prevent pods from running as a privileged user and prevents escalation of privileges.
+	- Prevents pods from running as a privileged user and prevents escalation of privileges.
 	- Validates that server-required security mechanisms are in place (such as restricting what volumes can be mounted to only the core volume types and preventing root supplemental groups from being added). 
-
--->
 
 ## Creating Pod Security Policies
 
