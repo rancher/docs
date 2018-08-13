@@ -3,13 +3,13 @@ title: API Auditing
 weight: 10000
 ---
 
-Rancher ships with API Auditing to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. API auditing records all requests to and responses from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
+Rancher ships with API Auditing to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. API auditing records all requests and responses to and from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
 
 ## Enabling API Auditing
 
 To enable API auditing, stop the Docker container that's running Rancher, and then restart it using the following command. This command includes parameters that turns on API auditing. For more information about usage for each switch related to API auditing, see [API Auditing Usage](#api-auditing-usage).
 
-    
+
 ```
   docker run -d --restart=unless-stopped \
    -p 80:80 -p 443:443 \
@@ -27,20 +27,34 @@ To enable API auditing, stop the Docker container that's running Rancher, and th
 Each API request creates two entries for it in the audit log, one for reception and one for fulfillment: `RequestReceived` and `ResponseComplete`. Each status for a single request use the same `auditID` value.
 The usage below defines rules about what the audit log should record and what data it should include:
 
-    * AUDIT_LEVEL - 0 - disable audit log, 1 - log event metadata, 2 - log event metadata and request body, 3 - log event metadata, request body and response body
-    * AUDIT_LOG_PATH - Log path for Rancher Server API. Default path is /var/log/auditlog/rancher-api-audit.log, you can mount the log directory to host
-    * AUDIT_LOG_MAXAGE - Defined the maximum number of days to retain old audit log files, default is 10 days.
-    * AUDIT_LOG_MAXBACKUP - Defines the maximum number of audit log files to retain, default is 10
-    * AUDIT_LOG_MAXSIZE - Defines the maximum size in megabytes of the audit log file before it gets rotated, default size is 100M
-                   
+
+Parameter | Description |
+---------|----------|
+ `AUDIT_LEVEL` | `0` - Disable audit log.<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. | 
+ `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. | 
+ `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
+ `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
+ `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
 
 
+## Viewing API Audit Logs
+
+By default, you can view your audit logs on any of your cluster nodes at `root/var/log/auditlog/rancher-api-audit.log` using your favorite text editor. For example:
+
+```
+less /var/log/auditlog/rancher-api-audit.log
+```
+
+If you changed the `AUDIT_LOG_PATH` parameter, look in that location for `rancher-api-audit.log` instead.
 
 ## Audit Log Samples
 
-By default, you can view the audit log at `/var/log/auditlog/rancher-api-audit.log` (although this path will change if you modify it).
+After you enable auditing, each API request or response is logged by Rancher in the form of JSON. Each of the following code samples provide examples of how to identify each API transaction.
 
 ### Metadata Level
+
+If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every API request and response, but not the body. The header provides basic information about the API transaction, such as the transaction's ID, who initiated the transaction, the time it occurred, etc.
+
 ```
 {
     "auditID": "30022177-9e2e-43d1-b0d0-06ef9d3db183",
@@ -59,7 +73,9 @@ By default, you can view the audit log at `/var/log/auditlog/rancher-api-audit.l
     "stageTimestamp": "2018-07-20 10:22:43 +0800"
 }
 ```
+
 ### Metadata and Request Body Level
+
 ```
 {
     "auditID": "ef1d249e-bfac-4fd0-a61f-cbdcad53b9bb",
@@ -218,7 +234,7 @@ By default, you can view the audit log at `/var/log/auditlog/rancher-api-audit.l
     }
 }
 ```
-### Metadata, Request Body and Response Body Level
+### Metadata, Request Body, and Response Body Level
 
 #### Request
 ```
