@@ -1,5 +1,5 @@
 ---
-title: Adding custom CA root certificates
+title: Using a Private CA Root Certificate
 weight: 365
 ---
 Services that Rancher needs to access are sometimes configured with a certificate from an custom/internal Certificate Authority (CA) root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error will appear: `x509: certificate signed by unknown authority`.
