@@ -1,6 +1,7 @@
 baseURL = ""
 languageCode = "en-us"
 title = "Rancher Labs"
+
 theme = "rancher-website-theme"
 themesDir = "node_modules"
 pluralizeListTitles = false
