@@ -27,17 +27,20 @@ Setting up a logging service to collect logs from your cluster/project is helpfu
 
 You can configure logging at either cluster or project level.
 
-- If you're a [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) who works in operations or security, configure cluster logging.
-- If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
-
 >**Note:** You can only configure one logging service per cluster or project.
 
-## Collected Logs
+- If you're a [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) who works in operations or security, configure cluster logging.
 
-After you configure a logging service for a cluster or project, it collects logs from the following locations of your nodes:
+    Cluster logging writes logs for every pod in the cluster and, in [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), Kubernetes system components. Logs from the following locations are sent to your logging service: 
 
-- The `/var/log/containers` path for application-level logging.
-- The `/var/lib/rancher/rke/logs/` path for Kubernetes system components.
+
+  - The `/var/log/containers` path for pod logging.
+  
+  - The `/var/lib/rancher/rke/logs/` path for Kubernetes system components.
+
+- If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
+
+    Project logging writes logs for every pod in the project (`/var/log/containers`).
 
 After collection, all logs are stored by your logging service. Log into your service to view them.
 
