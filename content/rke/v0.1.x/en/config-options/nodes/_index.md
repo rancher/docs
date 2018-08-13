@@ -73,19 +73,27 @@ Instead of setting the path to the SSH key, you can alternatively specify the ac
 
 You can specify the list of roles that you want the node to be as part of the Kubernetes cluster. Three roles are supported: `controlplane`, `etcd` and `worker`. Node roles are not mutually exclusive. It's possible to assign any combination of roles to any node. It's also possible to change a node's role using the upgrade process.
 
+> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes.
+
 * **etcd**
 
-With this role, the `etcd` container will be run on these nodes.  Etcd keeps the state of your cluster and is the most important component in your cluster, single source of truth of your cluster. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state.
+With this role, the `etcd` container will be run on these nodes.  Etcd keeps the state of your cluster and is the most important component in your cluster, single source of truth of your cluster. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **etcd** role is shown below:
+
+Taint Key                              | Taint Value  | Taint Effect
+---------------------------------------|--------------|--------------
+`node-role.kubernetes.io/etcd`         | `true`       | `NoExecute`
 
 * **controlplane**
 
-With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers.
+With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **controlplane** role is shown below:
+
+Taint Key                              | Taint Value  | Taint Effect
+---------------------------------------|--------------|--------------
+`node-role.kubernetes.io/controlplane` | `true`       | `NoSchedule`
 
 * **worker**
 
 With this role, any workloads or pods that are deployed will land on these nodes.
-
-> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes.
 
 ### Docker Socket
 

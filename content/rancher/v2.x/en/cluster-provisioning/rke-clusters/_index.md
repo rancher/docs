@@ -3,7 +3,7 @@ title: Rancher Launched Kubernetes
 weight: 2200
 ---
 
-If you don't want to use a hosted Kubernetes provider, you can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, it uses Rancher Kubernetes Engine]({{< baseurl >}}/rke/v0.1.x/en/) (RKE), which is Rancher's own lightweight Kubernetes installer. It can launch Kubernetes on any computers, including:
+If you don't want to use a hosted Kubernetes provider, you can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, it uses [Rancher Kubernetes Engine]({{< baseurl >}}/rke/v0.1.x/en/) (RKE), which is Rancher's own lightweight Kubernetes installer. It can launch Kubernetes on any computers, including:
 
 - Bare-metal servers
 - On-premise virtual machines
@@ -18,3 +18,25 @@ RKE launched clusters are separated into two categories:
 - [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
     For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that are already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
+    
+<br/>
+
+### Requirements
+
+If you use RKE to set up a cluster, your cluster nodes must meet the following requirements.
+
+{{< accordion id="os" label="Operating System" >}}
+	{{< requirements_os >}}
+{{< /accordion >}}
+{{< accordion id="hardware" label="Hardware" >}}
+	{{< requirements_hardware >}}
+{{< /accordion >}}
+{{< accordion id="software" label="Software" >}}
+	{{< requirements_software >}}
+{{< /accordion >}}
+{{< accordion id="ports-rancher" label="Ports for Rancher" >}}
+	{{< requirements_ports_rancher >}}
+{{< /accordion >}}
+{{< accordion id="ports-rke" label="Ports for RKE" >}}
+	{{< requirements_ports_rke >}}
+{{< /accordion >}}

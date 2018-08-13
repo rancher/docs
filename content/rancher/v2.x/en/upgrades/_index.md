@@ -1,6 +1,8 @@
 ---
-title: Upgrades
+title: Upgrades and Rollbacks
 weight: 150
+aliases:
+  - /rancher/v2.x/en/backups/rollbacks/
 ---
 
 ### Upgrading from Rancher 2.x.x
@@ -9,9 +11,16 @@ Each new version of Rancher 2.x.x supports upgrades from previous versions of Ra
 
 Complete one of the upgrade procedures below based on your Rancher installation:
 
-- [Single Node Upgrade](./single-node-upgrade/)
-- [High Availability Upgrade](./ha-server-upgrade/)
-- [Air Gap Upgrade](./air-gap-upgrade/)
+- [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-upgrade)
+- [High Availability Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-upgrade)
+- [Air Gap Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/air-gap-upgrade)
+
+### Rolling Back Unsuccessful Upgrades
+
+In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade:
+
+- [Single-Node Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-rollbacks)
+- [High-Availability Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-rollbacks)
 
 ### Migrating from Rancher 1.6.x
 

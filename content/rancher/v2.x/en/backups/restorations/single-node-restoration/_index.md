@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
 ---
 
-Backup to a restoration point for your Rancher install if you encounter issues when upgrading.
+Restoring to a backup for your Rancher install if you encounter issues in your Rancher setup.
 
 1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_ID>` with the ID of your Rancher container.
 
@@ -14,11 +14,18 @@ Backup to a restoration point for your Rancher install if you encounter issues w
 docker stop <RANCHER_CONTAINER_ID>
     ```
 
-1. Launch a new Rancher Server container using the most recent `rancher-backup-<RANCHER_VERSION>` container that you backed up.
- 
-    For more information on obtaining this container name, see [Creating Backups—Single Node Installs](/Users/markbishop/Documents/GitHub/docs/content/rancher/v2.x/en/upgrades/backups/single-node-backups/#backup).
+2. Go to the location where you saved your [backup tar balls]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/#backup). Run the following command to delete your current state data and start your backup data:
 
-	```
-docker run -d --volumes-from rancher-backup-<RANCHER_VERSION> --restart=unless-stopped \
--p 80:80 -p 443:443 rancher/rancher:<CURRENT_RANCHER_VERSION>
+    ```
+docker run  --volumes-from <RANCHER_CONTAINER_ID> -v $PWD:/backup \
+alpine sh -c "rm /var/lib/rancher/* -rf  && \
+tar zxvf /backup/<BACKUP_FILENAME>.tar.gz"
+    ```
+
+    >**Warning!** Running this command will delete ALL current state data from your Rancher Server container. Any changes that happened after the backup point you are restoring will be lost.
+
+3. Start you rancher server container back. The container will start with the data from the restored backup.
+
+    ```
+docker start <RANCHER_CONTAINER_ID>
     ```

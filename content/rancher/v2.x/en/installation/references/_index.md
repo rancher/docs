@@ -13,3 +13,4 @@ The following diagram displays the basic port requirements for Rancher. If you n
 
 {{< requirements_ports_rancher >}}
 {{< requirements_ports_rke >}}
+{{< ports_aws_securitygroup_nodedriver >}}

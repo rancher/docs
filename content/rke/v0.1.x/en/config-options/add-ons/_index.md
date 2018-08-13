@@ -1,6 +1,6 @@
 ---
 title: Add-Ons
-weight: 250
+weight: 260
 ---
 
 RKE supports pluggable add-ons. Add-ons are used to deploy several cluster components including:
