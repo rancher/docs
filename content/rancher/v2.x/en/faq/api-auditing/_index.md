@@ -24,7 +24,8 @@ To enable API auditing, stop the Docker container that's running Rancher, and th
 
 ## API Auditing Usage
 
-Each API request creates two entries for it in the audit log, one for reception and one for fulfillment: `RequestReceived` and `ResponseComplete`. Each status for a single request use the same `auditID` value.
+Each API transaction creates two entries for it in the audit log, one for requests and one for response: `RequestReceived` and `ResponseComplete`. Each log transaction for a request/response pair uses the same `auditID` value.
+
 The usage below defines rules about what the audit log should record and what data it should include:
 
 
@@ -53,9 +54,9 @@ After you enable auditing, each API request or response is logged by Rancher in 
 
 ### Metadata Level
 
-If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every API request and response, but not the body. The header provides basic information about the API transaction, such as the transaction's ID, who initiated the transaction, the time it occurred, etc.
+If you set your `AUDIT_LEVEL` to `1` or higher, Rancher logs the metadata header for every API request and response, but not the body. The header provides basic information about the API transaction, such as the transaction's ID, who initiated the transaction, the time it occurred, etc.
 
-```
+```json
 {
     "auditID": "30022177-9e2e-43d1-b0d0-06ef9d3db183",
     "requestURI": "/v3/schemas",
@@ -76,7 +77,14 @@ If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every
 
 ### Metadata and Request Body Level
 
-```
+If you set your `AUDIT_LEVEL` to `2` or higher, Rancher logs:
+
+- The metadata header and body for every API request.
+- The metadata header only for every API response.
+
+The code sample below depicts an API request, with both its metadata header and body.
+
+```json
 {
     "auditID": "ef1d249e-bfac-4fd0-a61f-cbdcad53b9bb",
     "requestURI": "/v3/project/c-bcz5t:p-fdr4s/workloads/deployment:default:nginx",
@@ -236,8 +244,16 @@ If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every
 ```
 ### Metadata, Request Body, and Response Body Level
 
+If you set your `AUDIT_LEVEL` to `3` or higher, Rancher logs:
+
+- The metadata header and body for every API request.
+- The metadata header and body for every API response.
+
 #### Request
-```
+
+The code sample below depicts an API request, with both its metadata header and body.
+
+```json
 {
     "auditID": "a886fd9f-5d6b-4ae3-9a10-5bff8f3d68af",
     "requestURI": "/v3/project/c-bcz5t:p-fdr4s/workloads/deployment:default:nginx",
@@ -397,7 +413,11 @@ If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every
 ```
 
 #### Response
-```
+
+The code sample below depicts an API response, with both its metadata header and body.
+
+
+```json
 {
     "auditID": "a886fd9f-5d6b-4ae3-9a10-5bff8f3d68af",
     "responseStatus": "200",
