@@ -7,16 +7,32 @@ aliases:
 
 ### Repositories
 
-All of repositories are located within our main GitHub organization. There are many repositories used for Rancher, but we’ll provide descriptions of some of the main ones used in Rancher.
+All of repositories are located within our main GitHub organization. There are many repositories used for Rancher, but we'll provide descriptions of some of the main ones used in Rancher.
 
-- [Rancher Repo](https://github.com/rancher/rancher): This repository is the main source code for Rancher 2.x.
+Repository | URL | Description
+-----------|-----|-------------
+Rancher | https://github.com/rancher/rancher | This repository is the main source code for Rancher 2.x.
+Types | https://github.com/rancher/types | This repository is the repository that has all the API types for Rancher 2.x.
+API Framework | https://github.com/rancher/norman | This repository is an API framework for building Rancher style APIs backed by Kubernetes Custom Resources.
+User Interface | https://github.com/rancher/ui | This repository is the source of the UI.
+(Rancher) Docker Machine | https://github.com/rancher/machine | This repository is the source of the Docker Machine binary used when using Node Drivers. This is a fork of the `docker/machine` repository.
+machine-package | https://github.com/rancher/machine-package | This repository is used to build the Rancher Docker Machine binary.
+kontainer-engine | https://github.com/rancher/kontainer-engine | This repository is the source of kontainer-engine, the tool to provision hosted Kubernetes clusters.
+RKE repository | https://github.com/rancher/rke | This repository is the source of Rancher Kubernetes Engine, the tool to provision Kubernetes clusters on any machine.
+CLI | https://github.com/rancher/cli | This repository is the source code for the Rancher CLI used in Rancher 2.x.
+(Rancher) Helm repository | https://github.com/rancher/helm | This repository is the source of the packaged Helm binary. This is a fork of the `helm/helm` repository.
+Telemetry repository | https://github.com/rancher/telemetry | This repository is the source for the Telemetry binary.
+loglevel repository | https://github.com/rancher/loglevel | This repository is the source of the loglevel binary, used to dynamically change log levels.
 
-- [Rancher Types Repo](https://github.com/rancher/types): This repository is the repo that has all the API types for Rancher 2.x.
+To see all libraries/projects used in Rancher, see the `vendor.conf` in the `rancher/rancher repository.
 
-- [Rancher API Framework Repo](https://github.com/rancher/norman): This repository is an API framework for building Rancher style APIs backed by Kubernetes Custom Resources.
+### Building
 
-- [Rancher CLI Repo](https://github.com/rancher/cli): This repository is the source code for the Rancher CLI used in Rancher 2.x.
+Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository (plus additional `trash` commands, please see below for more information about using `trash`), and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.
 
+The default target is `ci`, and will run `./scripts/validate`, `./scripts/build`, `./scripts/test` and `./scripts/package`. The resulting binaries of the build will be in `./build/bin` and are usually also packaged in a Docker image.
+
+Dependencies on other libraries/projects are managed using [Trash](https://github.com/rancher/trash). See the [Trash README](https://github.com/rancher/trash/blob/master/README.md) to discover how it can be used. In short, it uses a `vendor.conf` file to specify the source repository and revision to fetch, checkout and copy to the `./vendor` directory. After updating `vendor.conf`, you can run `make trash` to update dependencies for your change. When the dependencies are updated, you can build the project again using `make` so that it will be built using the updated dependencies.
 
 ### Bugs, Issues or Questions
 
@@ -70,6 +86,6 @@ If you are experiencing performance issues, please provide as much of data (file
 
 If you have any updates to our documentation, please make any pull request to our docs repo.
 
-- [Rancher 2.x Docs Repo](https://github.com/rancher/docs): This repo is where all the docs for Rancher 2.x are located. They are located in the `content` folder in the repo.
+- [Rancher 2.x Docs repository](https://github.com/rancher/docs): This repo is where all the docs for Rancher 2.x are located. They are located in the `content` folder in the repo.
 
-- [Rancher 1.x Docs Repo](https://github.com/rancher/rancher.github.io): This repo is where all the docs for Rancher 1.x are located. They are located in the `rancher` folder in the repo.
+- [Rancher 1.x Docs repository](https://github.com/rancher/rancher.github.io): This repo is where all the docs for Rancher 1.x are located. They are located in the `rancher` folder in the repo.
