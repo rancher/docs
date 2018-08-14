@@ -46,7 +46,7 @@ Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full 
 ### Run RKE
 
 ```
-rke up --config ./rancher-cluster.yaml
+rke up --config ./rancher-cluster.yml
 ```
 
 ### Testing your cluster
