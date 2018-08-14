@@ -115,7 +115,7 @@ Alternatively, you can switch between projects and clusters using the main menu.
 
 Kubernetes resources belong to specific [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters backed by a physical cluster. Rancher 2.0 uses namespaces as objects that:
 
-- Isolate users and apps within a cluster that is shared among other teams and apps. When a user deploys an app from the catalog, for example, they can deploy that app into its own namespace, so that resource names in one app will not conflict with resource names in another. 
+- Isolate users and apps within a cluster that is shared among other teams and apps. When a user deploys an app from the catalog, for example, they can deploy that app into its own namespace, so that resource names in one app will not conflict with resource names in another.
 
 - Provide a unique name for an application. Namespaces must be globally unique. It is often difficult for users to pick unique namespace names. Rancher therefore encourages the pattern where users work with projects, and the system generates unique namespace names automatically.
 
@@ -131,6 +131,8 @@ Depending on your role within Rancher and your organization, the context in whic
 
 - If you're a cluster owner/member, you'll create namespaces in context of your cluster. Follow For **Cluster Owners/Members**.
 - If you're a project owner/member, you'll create namespaces in the context of your project. Follow **For Project Owners/Members**.
+
+>**Tip:** When working with project resources that you can assign to a namespace (i.e., [workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/), [certificates]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/), [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps), etc.) you can create a namespace on the fly.
 
 {{% accordion id="cluster" label="For Cluster Owners/Members" %}}
 1. From the **Global** view, open the cluster that you want to add a namespace to.
@@ -155,7 +157,7 @@ Depending on your role within Rancher and your organization, the context in whic
 
 ### Moving Namespaces to Another Project
 
-Cluster admins and members may occasionally need to move a namespace to another project.
+Cluster admins and members may occasionally need to move a namespace to another project, such as when a project runs out of hardware resources to support all of its existing namespaces.
 
 1. From the **Global** view, open the cluster that contains the namespace you want to move.
 
