@@ -47,7 +47,7 @@ The `internal_address` provides the ability to have nodes with multiple addresse
 
 ### Overriding the Hostname
 
-The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address. If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
+The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address, but it must be a valid [Kubernetes resource name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names). If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
 
 > **Note:** When [cloud providers]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. There is an exception for the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws), where the `hostname_override` field will be explicitly ignored.
 
