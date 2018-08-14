@@ -76,6 +76,6 @@ Save a copy of the `kube_config_rancher-cluster.yml` and `rancher-cluster.yml` f
 
 ### Issues or errors?
 
-See the [Troubleshooting](troubleshooting/) page.
+See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/troubleshooting/) page.
 
-### [Next: Initialize Helm](../helm-init/)
+### [Next: Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)

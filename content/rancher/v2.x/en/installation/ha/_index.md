@@ -29,12 +29,12 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Installation Outline
 
-1. [Create Nodes and Load Balancer](create-nodes-lb/)
-1. [Install Kubernetes with RKE](kubernetes-rke/)
-1. [Initialize Helm (tiller)](helm-init/)
-1. [Install Rancher](helm-rancher/)
+1. [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
+1. [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
+1. [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
+1. [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
 
 ## Additional Install Options
 
-* [Migrating from RKE all-in-one install](migrating-from-rke-all-in-one/)
-* [RKE all-in-one install](rke-all-in-one/)
+* [Migrating from RKE all-in-one install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/migrating-from-rke-all-in-one/)
+* [RKE all-in-one install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-all-in-one/)

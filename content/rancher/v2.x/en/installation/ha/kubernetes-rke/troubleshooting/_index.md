@@ -31,7 +31,7 @@ SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.10
 
 ##### Failed to dial ssh using address [xxx.xxx.xxx.xxx:xx]: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
 
-* The key file specified as `ssh_key_path` is not correct for accesing the node. Double-check if you specified the correct `ssh_key_path` for the node and if you specified the correct user to connect with.
+* The key file specified as `ssh_key_path` is not correct for accessing the node. Double-check if you specified the correct `ssh_key_path` for the node and if you specified the correct user to connect with.
 
 ##### Failed to dial ssh using address [xxx.xxx.xxx.xxx:xx]: Error configuring SSH: ssh: cannot decode encrypted private keys
 

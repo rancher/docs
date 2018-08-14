@@ -8,7 +8,7 @@ For development environments, we recommend installing Rancher by running a singl
 
 
 >**Want to skip the external load balancer?**
-> See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install) instead.
+> See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.
 
 
 

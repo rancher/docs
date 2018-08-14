@@ -76,7 +76,7 @@ Add the `rancherImage` to point to your private registry image and `imagePullSec
 
 If you wish to terminate the SSL/TLS on a load-balancer external to the Rancher cluster (ingress), use the `--tls=external` option and point your load balancer at port http 80 on all of the rancher cluster nodes.
 
-> NOTE: If you are using a Private CA signed cert, add `--set privateCA=true` and see [Adding TLS Secrets - Private CA Signed - Additional Steps](../tls-secrets/#private-ca-signed---additional-steps) to add the CA cert for Rancher.
+> NOTE: If you are using a Private CA signed cert, add `--set privateCA=true` and see [Adding TLS Secrets - Private CA Signed - Additional Steps]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/#private-ca-signed---additional-steps) to add the CA cert for Rancher.
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
