@@ -1,12 +1,14 @@
 ---
-title: High Availability Installation
+title: High Availability Installation with External Load Balancer (TCP/Layer 4)
 weight: 275
-draft: true
+aliases:
+- /rancher/v2.x/en/installation/ha-server-install/
 ---
+This set of instructions creates a new Kubernetes cluster that's dedicated to running Rancher in a high-availability (HA) configuration. This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
-When installed as a Deployment in a Kubernetes cluster, Rancher will take integrate with the cluster's etcd database and Kubernetes scheduling for High-Availability.
+- Layer 4 load balancer (TCP)
+- NGINX ingress controller with SSL termination (HTTPS)
 
-<<<<<<< HEAD
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
 ## Installation Outline
@@ -29,7 +31,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
 
-5. [Download RKE Config File Template](#5-download-rke-config-file-template)
+5. [Download RKE Config File Template](#5-download-config-file-template)
 
 	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
 
@@ -56,12 +58,6 @@ Installation of Rancher in a high-availability configuration involves multiple p
 11. [Back Up Auto-Generated Config File](#11-back-up-auto-generated-config-file)
 
 	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
-
-12. **For those using a certificate signed by a recognized CA:**
-
-	[Remove Default Certificates](#12-remove-default-certificates)
-
-	If you chose [Option B](#option-b-bring-your-own-certificate-signed-by-recognized-ca) as your SSL option, log into the Rancher UI and remove the certificates that Rancher automatically generates.
 
 <br/>
 
@@ -186,20 +182,13 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
     ```
 
 <br/>
-=======
-This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart the Helm package manager.
->>>>>>> helm install draft
 
-> NOTE: For the best performance, we recommend this Kubernetes cluster be dedicated only the Rancher workload.
+## 4. Download RKE
 
-## Recommended Architecture
+RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will be using RKE to setup our cluster and run Rancher.
 
-* DNS for Rancher should resolve to a Layer 4 Load Balancer
-* The Load Balancer should forward ports 80 and 443 TCP to all 3 nodes in the Kubernetes cluster.
-* The ingress controller will redirect http port 80 to https and terminate SSL/TLS on port 443.
-* The ingress controller will forward traffic to port 80 on the Pod in the Rancher Deployment.
+1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System:
 
-<<<<<<< HEAD
     - **MacOS**: `rke_darwin-amd64`
     - **Linux**: `rke_linux-amd64`
     - **Windows**: `rke_windows-amd64.exe`
@@ -207,7 +196,7 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
 
     >**Using Windows?**
-    >The file is already an executable. Skip to [Download RKE Config File Template](#5-download-rke-config-file-template).
+    >The file is already an executable. Skip to [Download Config File Template](#5-download-config-file-template).
 
     ```
     # MacOS
@@ -237,7 +226,7 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
 	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
-	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate-recognizedca.yml)
+	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/d8ca0805a3958552e84fdf5d743859097ae81e0b/rke-templates/3-node-certificate-recognizedca.yml)
 
 2. Rename the file to `rancher-cluster.yml`.
 
@@ -247,7 +236,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
-2. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
+2. Update the `nodes` section with the information of your [Linux hosts](#provision-linux-hosts).
 
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`.
 
@@ -334,9 +323,9 @@ Choose from the following options:
 ### Option B—Bring Your Own Certificate: Signed by Recognized CA
 
 >**Note:**
-> If you are using Self Signed Certificate, [click here](#option-a-bring-your-own-certificate-self-signed) to proceed.
+> If you are using Self Signed Certificate, [click here](#option-a-self-signed-certificate) to proceed.
 
-If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the [intermediate certificates](#cert-order) in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
+If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the [intermediate certificates](#ssl-faq-troubleshooting) in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
 
 In the `kind: Secret` with `name: cattle-keys-ingress`:
 
@@ -400,7 +389,7 @@ Save the `.yml` file and close it.
 
 ## 9. Back Up Your RKE Config File
 
-After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
+After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher. 
 
 ## 10. Run RKE
 
@@ -434,43 +423,15 @@ INFO[0101] Finished building Kubernetes cluster successfully
 
 During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
-## 12. Remove Default Certificates
-
-**For those using a certificate signed by a recognized CA:**
-
->**Note:** If you're using a self-signed certificate, you don't have to complete this procedure. Continue to [What's Next?](#what-s-next)
-
-By default, Rancher automatically generates self-signed certificates for itself after installation. However, since you've provided your own certificates, you must disable the certificates that Rancher generated for itself.
-
-**To Remove the Default Certificates:**
-
-1. Log into Rancher.
-
-2. Select  **Settings** > **cacerts**.
-
-3. Choose `Edit` and remove the contents. Then click `Save`.
-
 ## What's Next?
-=======
-![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
->>>>>>> helm install draft
 
-## Required Tools
+You have a couple of options:
 
-<<<<<<< HEAD
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
-=======
-The following CLI tools are required for this install. Please make sure these tools installed and available in your `$PATH`
->>>>>>> helm install draft
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups/restorations/ha-restoration).
+- Create a Kubernetes cluster: [Creating a Cluster]({{ <baseurl> }}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-* [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
-* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
+<br/>
 
-## Installation Outline
+## FAQ and Troubleshooting
 
-1. [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/create-nodes-and-load-balancer/)
-1. [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rke/)
-1. [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/helm/)
-1. [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install2/rancher/)
+{{< ssl_faq_ha >}}
