@@ -4,53 +4,77 @@ weight: 2300
 draft: true
 ---
 
----
+Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) feature (HPA), you can configure your cluster to automatically scale its running services up or down.
 
-### Introduction
+### Why Use Horizontal Pod Autoscaler?
 
-Some of the nicer features on k8s is the ability to code and configure autoscale on your running services. This feature is called Horitzontal Pod Autoscaler (hpa) on k8s clusters. 
+Using HPA, in real time, you can automatically scale deployments up or down based on:
 
-### Why use HPA
+- The cluster hardware resources in use.
+- Custom metrics.
 
-Using hpa, you can achieve up/down autoscale in your deployments, based on resources use and/or custom metrics, to accomodate deployments scale to real time load of your services. 
+HPA improves to your services by:
 
-HPA produce 2 direct improvements to your services, 
-1. Use compute and memory resources when are needed, releasing them if not required. 
-2. Increase/decrease performance as needed to accomplish SLA.
+- Releasing hardware resources that would otherwise be wasted by an excessive number of pods. 
+- Increase/decrease performance as needed to accomplish SLA.
 
-### How HPA works
+### How HPA Works
 
-HPA automatically scales the number of pods (defined minimum and maximum number of pods) in a replication controller, deployment or replica set, based on observed CPU/memory utilization (resource metrics) or based on custom metrics provided by third party metrics application like prometheus, datadog, etc...(custom metrics). 
+Within a replication controller, deployment, or replica set, HPA automatically scales the number of pods that are running for maximum efficiency. Factors that affect the number of pods include:
 
-HPA is implemented as a control loop, with a periods controlled by the k8s controller manager flags:
-- `--horizontal-pod-autoscaler-sync-period`: how often hpa check for metrics (default value 30s).
-- `--horizontal-pod-autoscaler-downscale-delay`: how long hpa has to wait before another downscale operation can be performed after the current one has completed (default value 5m0s).
-- `--horizontal-pod-autoscaler-upscale-delay`: how long hpa has to wait before another upscale operation can be performed after the current one has completed (default value 3m0s).
+- A minimum and maximum number of pods allowed to run, as defined by the user.
+
+- Observed CPU/memory use, as reported in resource metrics.
+
+- Custom metrics provided by third-party metrics application like Prometheus, Datadog, etc.
+
+HPA is implemented as a control loop, with a period controlled by the Kubnernetes controller manager flags. Flags includes:
+
+- `--horizontal-pod-autoscaler-sync-period`
+
+    How often HPA audits resource/custom metrics in a deployment (default value: 30s).
+
+- `--horizontal-pod-autoscaler-downscale-delay`
+
+    Following completion of a downscale operation, how long HPA must wait before launching another downscale operations (default value 5m0s).
+
+- `--horizontal-pod-autoscaler-upscale-delay`
+
+    Following completion of an upscale operation, how long HPA must wait before launching another upscale operation (default value 3m0s).
 
 <img src="img/horizontal-pod-autoscaler.svg" width="800" alt="HPA schema">
 
-More info at [horizontal-pod-autoscale](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+For full documentation on HPA, refer to the [Kubernetes Documentation](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
 
-### HPA definition
+### Horizontal Pod Autoscaler Definition
 
-HPA is an API resource in the Kubernetes `autoscaling` API group. Current stable version is `autoscaling/v1`, which only includes support for CPU autoscaling. To get additional support for scaling on memory and custom metrics, beta vesion should be used `autoscaling/v2beta1`. 
+HPA is an API resource in the Kubernetes `autoscaling` API group. The current stable version is `autoscaling/v1`, which only includes support for CPU autoscaling. To get additional support for scaling based on memory and custom metrics, use the beta version instead: `autoscaling/v2beta1`. 
 
-[More info about hpa API object](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#horizontalpodautoscaler-object)
+For more information about the HPA API object, see the [HPA GitHub Readme](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#horizontalpodautoscaler-object).
 
-HPA is supported in a standard way by kubectl. It can be created, managed and deleted using kubectl: 
+You can create, manage, and delete HPAs using kubectl: 
 
-- Creating hpa
+- Creating HPA
+
   - With manifest: `kubectl create -f <HPA_MANIFEST>`
+
   - Without manifest (Just support CPU): `kubectl autoscale deployment hello-world --min=2 --max=5 --cpu-percent=50`
-- Getting hpa info
+
+- Getting HPA info
+
   - Basic: `kubectl get hpa hello-world`
+
   - Detailed description: `kubectl describe hpa hello-world` 
-- Deleting hpa 
+
+- Deleting HPA
+
   - `kubectl delete hpa hello-world`
 
-HPA manifest definition example
+### HPA Manifest Definition Example
 
-```
+The following snippet demonstrates use of different directives in an HPA manifest. See the list below the sample to understand the purpose of each directive.
+
+```yml
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
@@ -73,21 +97,24 @@ spec:
       targetAverageValue: 100Mi
 ```
 
-- Using `autoscaling/v2beta1` version to use cpu and memory metrics
-- Controlling autoscale of `hello-world` deployment
-- Defined minimum number of replicas of 1
-- Defined maximum number of replicas of 10
-- Scaling up when:
-  - cpu use is more that 50%
-  - Memory use more than 100Mi 
+
+Directive | Description  
+---------|----------|
+ `apiVersion: autoscaling/v2beta1` | The version of the Kubernetes `autoscaling` API group in use. This example manifest uses the beta version, so scaling by CPU and memory is enabled. | 
+ `name: hello-world` | Indicates that HPA is performing autoscaling for the `hello-word` deployment. |
+ `minReplicas: 1` | Indicates that the minimum number of replicas running can't go below 1. |
+ `maxReplicas: 10`  | Indicates the maximum number of replicas in the deployment can't go above 10.
+ `targetAverageUtilization: 50` |  Indicates the deployment will scale pods up when the average running pod uses more than 50% of its requested CPU.
+ `targetAverageValue: 100Mi`  |  Indicates the deployment will scale pods up when the average running pod uses more that 100Mi of memory.
+<br/>
 
 ### Installation
 
-Before hpa could be used at your k8s cluster, some elements have to be installed and configured in your system. 
+Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
 
 #### Requirements 
 
-Be sure that your k8s cluster services are running at least with these flags: 
+Be sure that your Kubernetes cluster services are running with these flags at minimum:
 
 - kube-api: `requestheader-client-ca-file` 
 - kubelet: `read-only-port` at 10255
@@ -96,7 +123,7 @@ Be sure that your k8s cluster services are running at least with these flags:
   - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
   - `horizontal-pod-autoscaler-sync-period: "30s"`
 
-For RKE k8s cluster definition, be sure you add these lines at services section. To do it at Rancher v2.0.X ui, open "Cluster options" - "Edit as YAML" and add these definition:
+For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **Ellipsis (...) > Edit**. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
 
 ```
 services:
@@ -114,27 +141,29 @@ services:
       read-only-port: 10255
 ```
 
-Once k8s cluster is configured and deployed properly, is needed to deploy metrics service.
+Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
 
-Note: For deploy and test examples, Rancher v2.0.6 and k8s v1.10.1 cluster are being used.
+>**Note:** Code samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
 
-#### Resource metrics 
+#### Resource Metrics
 
-In order to create horizontal pod autoscaler resources based on resource metrics (e.g. pod CPU/memory usage), you will need to deploy the `metrics-server` package in the `kube-system` namespace of k8s cluster, which will enable HPA to consume the `metrics.k8s.io` API. 
-To do it, follow these steps:
+To create HPA resources based on resource metrics such as CPU and memory use, you need to deploy the `metrics-server` package in the `kube-system` namespace of your Kubernetes cluster. This deployment allows HPA to consume the `metrics.k8s.io` API. 
 
-- Configure kubectl to connect proper k8s cluster.
-- Clone github `metrics-server` repo:
+>**Prerequisite:** You must be running kubectl 1.8 or later.
+
+1. Connect to your Kubernetes cluster using kubectl.
+
+1. Clone the GitHub `metrics-server` repo:
   ```
   # git clone https://github.com/kubernetes-incubator/metrics-server
   ```
 
-- Install `metrics-server` package (supossed that k8s is up to version 1.8):
+1. Install the `metrics-server` package.
   ```
   # kubectl create -f metrics-server/deploy/1.8+/
   ```
 
-- Check that `metrics-server` is running properly. Check service pod and logs at namespace `kube-system`
+1. Check that `metrics-server` is running properly. Check the service pod and logs at namespace `kube-system` by running the command below.
   ```
   # kubectl get pods -n kube-system
   NAME                                  READY     STATUS    RESTARTS   AGE
@@ -142,6 +171,7 @@ To do it, follow these steps:
   metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
   ...
   ```
+  If metric-server is running properly, you'll receive output similar to the output below.
   ```
   # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
   I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
@@ -156,50 +186,52 @@ To do it, follow these steps:
   I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
   ```
 
-- Check that metrics api is accesible from kubectl
+1. Check that the metrics api is accessible from kubectl.
 
-  - If you are accessing directly to k8s cluster, server url at kubectl config like 'https://<K8s_URL>:6443'
+  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<Kubernetes_URL>:6443`.
   ```
   # kubectl get --raw /apis/metrics.k8s.io/v1beta1
   {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
   ```
 
-  - If you are accessing to k8s cluster throught rancher, server url at kubectl config like `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>` You need to add prefix `/k8s/clusters/<CLUSTER_ID>` to api path
+  - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
   ```
   # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
   {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
   ```
 
-#### Custom metrics (prometheus)
+#### Custom Metrics (Prometheus)
 
-Besides acting on resource metrics, HPA can be configured to autoscale based on custom metrics provided by a third party. The most important use case is to be able to autoscale based on application-level metrics (e.g. HTTP requests per second). HPA uses the `custom.metrics.k8s.io` API to consume these metrics. This API is enabled by deploying a custom metrics adapter corresponding to the metrics collection solution.
+You can configure HPA to autoscale based on custom metrics provided by third-party software. The most common use case for autoscaling using third-party software is based on application-level metrics (e.g. HTTP requests per second). HPA uses the `custom.metrics.k8s.io` API to consume these metrics. This API is enabled by deploying a custom metrics adapter corresponding to the metrics collection solution.
 
-We are gonna use [prometheus](https://prometheus.io/) for the example. We are assuming that prometheus is deployed at k8s cluster, getting proper metrics from pods, nodes, namespaces,.... We'll use prometehus url, http://prometheus.mycompany.io exposed at port 80
+For this example, we are going to use [Prometheus](https://prometheus.io/). We are beggining with the following assumptions:
 
-Prometheus is available for deploy in rancher v2.0 on catalog. Deploy it from rancher catalog if it isn't alrady running on your k8s cluster.
+- Prometheus is deployed in the cluster.
+- Prometheus is configured correctly and collecting proper metrics from pods, nodes, namespaces, etc.
+- Prometheus is exposed at the following URL and port: `http://prometheus.mycompany.io:80`
 
-If hpa wants to use custom metrics from Prometheus, package [k8s-prometheus-adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) is needed at `kube-system` namespace on k8s cluster. Just to facilitate `k8s-prometheus-adapter` installation, we are gonna to use helm chart available at [banzai-charts](https://github.com/banzaicloud/banzai-charts)
+Prometheus is available for deployment in the Rancher v2.0 catalog. Deploy it from Rancher catalog if it isn't already running in your cluster.
 
-To do it, follow these steps:
+If HPA wants to use custom metrics from Prometheus, package [k8s-prometheus-adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) is needed at `kube-system` namespace on k8s cluster. Just to facilitate `k8s-prometheus-adapter` installation, we are going to use Helm chart available at [banzai-charts](https://github.com/banzaicloud/banzai-charts).
 
-- Init helm at k8s cluster
+1. Initialize Helm in your cluster
   ```
   # kubectl -n kube-system create serviceaccount tiller
   kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
   helm init --service-account tiller
   ```
 
-- Clone github `banzai-charts` repo:
+1. Clone the `banzai-charts` Helm chart from GitHub:
   ```
   # git clone https://github.com/banzaicloud/banzai-charts
   ```
 
-- Install `prometheus-adapter` char specifying prometheus url and port
+1. Install `prometheus-adapter` char specifying prometheus url and port.
   ```
   # helm install --name prometheus-adapter banzai-charts/prometheus-adapter --set prometheus.url="http://prometheus.mycompany.io",prometheus.port="80" --namespace kube-system
   ```
 
-- Check that `prometheus-adapter` is running properly. Check service pod and logs at namespace `kube-system`
+1. Check that `prometheus-adapter` is running properly. Check the service pod and logs in the `kube-system` namespace.
   ```
   # kubectl get pods -n kube-system
   NAME                                  READY     STATUS    RESTARTS   AGE
@@ -223,15 +255,15 @@ To do it, follow these steps:
   ...
   ```
 
-- Check that metrics api is accesible from kubectl
+1. Check that the metrics api is accessible from kubectl.
 
-  - Accessing directly to k8s cluster, server url at kubectl config like 'https://<K8s_URL>:6443'
+  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<Kubernetes_URL>:6443`.
   ```
   # kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1
   {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
   ```
 
-  - Accessing to k8s cluster throught rancher, server url at kubectl config like `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>` You need to add prefix `/k8s/clusters/<CLUSTER_ID>`
+  - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
   ```
   # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/custom.metrics.k8s.io/v1beta1
   {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
@@ -240,14 +272,15 @@ To do it, follow these steps:
 
 #### ClusterRole and ClusterRoleBinding
 
-By default, hpa will try to read metrics (resource and custom) with user `system:anonymous`. It's needed to define `view-resource-metrics` and `view-custom-metrics` ClusterRole and ClusterRoleBindings assigning them to `system:anonymous` to open read access to metrics. 
+By default, HPA reads resource and custom metrics with user `system:anonymous`. It's needed to define `view-resource-metrics` and `view-custom-metrics` ClusterRole and ClusterRoleBindings assigning them to `system:anonymous` to open read access to metrics. 
 
 To do it, follow these steps:
 
-- Configure kubectl to connect proper k8s cluster.
-- Copy ClusterRole and ClusterRoleBinding manifest for: 
-  - resource metrics: ApiGroups `metrics.k8s.io`
-  ```
+1. Configure kubectl to connect proper k8s cluster.
+
+1. Copy ClusterRole and ClusterRoleBinding manifest for.
+{{% accordion id="resource-metrics" label="Resource Metrics: ApiGroups `metrics.k8s.io`" %}}
+```
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
@@ -275,9 +308,10 @@ To do it, follow these steps:
     - apiGroup: rbac.authorization.k8s.io
       kind: User
       name: system:anonymous
-  ```
-
-  - custom metrics: ApiGroups `custom.metrics.k8s.io`
+```
+{{% /accordion %}} 
+{{% accordion id="custom-resources" label="custom metrics: ApiGroups `custom.metrics.k8s.io`" %}}
+ 
   ```
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
@@ -306,185 +340,184 @@ To do it, follow these steps:
       kind: User
       name: system:anonymous
   ```
-
-- Create them at your k8s cluster (if want to use custom metrics)
-  ```
+{{% /accordion %}}
+{{% accordion id="k8s-cluster" label="Create them at your k8s cluster (if want to use custom metrics)" %}}
+ ```
   # kubectl create -f <RESOURCE_METRICS_MANIFEST>
   # kubectl create -f <CUSTOM_METRICS_MANIFEST>
   ```
+{{% /accordion %}}
 
-### Service deployment
+### Service Deployment
 
-To hpa works properly, service deployments should have resources request definition for containers. 
-Lets see a hello-world example for testing if hpa is working fine. To do it, follow these steps: 
+For HPA to work properly, service deployments should have resources request definitions for containers. 
 
-- Configure kubectl to connect proper k8s cluster.
-- Copy `hello-world` deployment manifest.
-```
-apiVersion: apps/v1beta2
-kind: Deployment
-metadata:
-  labels:
-    app: hello-world
-  name: hello-world
-  namespace: default
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hello-world
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: hello-world
-    spec:
-      containers:
-      - image: rancher/hello-world
-        imagePullPolicy: Always
+Follow this hello-world example for testing if HPA is working. 
+
+1. Configure kubectl to connect to your Kubernetes cluster.
+
+2. Copy the `hello-world` deployment manifest below.
+  
+        apiVersion: apps/v1beta2
+        kind: Deployment
+        metadata:
+          labels:
+            app: hello-world
+          name: hello-world
+          namespace: default
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: hello-world
+          strategy:
+            rollingUpdate:
+              maxSurge: 1
+              maxUnavailable: 0
+            type: RollingUpdate
+          template:
+            metadata:
+              labels:
+                app: hello-world
+            spec:
+              containers:
+              - image: rancher/hello-world
+                imagePullPolicy: Always
+                name: hello-world
+                resources:
+                  requests:
+                    cpu: 500m
+                    memory: 64Mi
+                ports:
+                - containerPort: 80
+                  protocol: TCP
+              restartPolicy: Always
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: hello-world
+          namespace: default
+        spec:
+          ports:
+          - port: 80
+            protocol: TCP
+            targetPort: 80
+          selector:
+            app: hello-world
+  
+
+1. Deploy it at k8s cluster
+
+    ```
+    # kubectl create -f <HELLO_WORLD_MANIFEST>
+    ```
+
+1. Copy hpa for resource or custom metrics: 
+    {{% accordion id="resource metrics" label="resource metrics" %}}
+     apiVersion: autoscaling/v2beta1
+            kind: HorizontalPodAutoscaler
+            metadata:
+              name: hello-world
+              namespace: default
+            spec:
+              scaleTargetRef:
+                apiVersion: extensions/v1beta1
+                kind: Deployment
+                name: hello-world
+              minReplicas: 1
+              maxReplicas: 10
+              metrics:
+              - type: Resource
+                resource:
+                  name: cpu
+                  targetAverageUtilization: 50
+              - type: Resource
+                resource:
+                  name: memory
+                  targetAverageValue: 1000Mi
+    {{% /accordion %}}
+    {{% accordion id="custom-metrics" label="custom metrics (same as resource but adding custom cpu_system metric)" %}}
+    apiVersion: autoscaling/v2beta1
+      kind: HorizontalPodAutoscaler
+      metadata:
         name: hello-world
-        resources:
-          requests:
-            cpu: 500m
-            memory: 64Mi
-        ports:
-        - containerPort: 80
-          protocol: TCP
-      restartPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-world
-  namespace: default
-spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-  selector:
-    app: hello-world
-```
+        namespace: default
+      spec:
+        scaleTargetRef:
+          apiVersion: extensions/v1beta1
+          kind: Deployment
+          name: hello-world
+        minReplicas: 1
+        maxReplicas: 10
+        metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            targetAverageUtilization: 50
+        - type: Resource
+          resource:
+            name: memory
+            targetAverageValue: 100Mi
+        - type: Pods
+          pods:
+            metricName: cpu_system
+            targetAverageValue: 20m
+    {{% /accordion %}}
+  
+1. Getting hpa info and description and check that resource metrics data are shown. 
+    {{% accordion id="resource-metrics" label="Resource Metrics" %}}
+    # kubectl get hpa
+    NAME          REFERENCE                TARGETS                     MINPODS   MAXPODS   REPLICAS   AGE
+    hello-world   Deployment/hello-world   1253376 / 100Mi, 0% / 50%   1         10        1          6m
+        # kubectl describe hpa
+    Name:                                                  hello-world
+    Namespace:                                             default
+    Labels:                                                <none>
+    Annotations:                                           <none>
+    CreationTimestamp:                                     Mon, 23 Jul 2018 20:21:16 +0200
+    Reference:                                             Deployment/hello-world
+    Metrics:                                               ( current / target )
+      resource memory on pods:                             1253376 / 100Mi
+      resource cpu on pods  (as a percentage of request):  0% (0) / 50%
+    Min replicas:                                          1
+    Max replicas:                                          10
+    Conditions:
+      Type            Status  Reason              Message
+      ----            ------  ------              -------
+      AbleToScale     True    ReadyForNewScale    the last scale time was sufficiently old as to warrant a new scale
+      ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
+      ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+    Events:           <none>
+    {{% /accordion %}}
+    {{% accordion id="custom metrics" label="Custom Metrics" %}}
+    # kubectl describe hpa
+    Name:                                                  hello-world
+    Namespace:                                             default
+    Labels:                                                <none>
+    Annotations:                                           <none>
+    CreationTimestamp:                                     Tue, 24 Jul 2018 18:36:28 +0200
+    Reference:                                             Deployment/hello-world
+    Metrics:                                               ( current / target )
+      resource memory on pods:                             3514368 / 100Mi
+      "cpu_system" on pods:                                0 / 20m
+      resource cpu on pods  (as a percentage of request):  0% (0) / 50%
+    Min replicas:                                          1
+    Max replicas:                                          10
+    Conditions:
+      Type            Status  Reason              Message
+      ----            ------  ------              -------
+      AbleToScale     True    ReadyForNewScale    the last scale time was sufficiently old as to warrant a new scale
+      ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
+      ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+    Events:           <none>
+    {{% /accordion %}}
 
-- Deploy it at k8s cluster
-```
-# kubectl create -f <HELLO_WORLD_MANIFEST>
-```
+  
 
-- Copy hpa for resource or custom metrics: 
+1. Generating load for the service to test up and down autoscalation. Any tool could be used at this point, but we've used `https://github.com/rakyll/hey` to generate http requests to our `hello-world` service, and observe if autoscaling is working propwrly.
 
-  - resource metrics
-  ```
-  apiVersion: autoscaling/v2beta1
-  kind: HorizontalPodAutoscaler
-  metadata:
-    name: hello-world
-    namespace: default
-  spec:
-    scaleTargetRef:
-      apiVersion: extensions/v1beta1
-      kind: Deployment
-      name: hello-world
-    minReplicas: 1
-    maxReplicas: 10
-    metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 50
-    - type: Resource
-      resource:
-        name: memory
-        targetAverageValue: 1000Mi
-  ```
-
-  - custom metrics (same as resource but adding custom cpu_system metric)
-  ```
-  apiVersion: autoscaling/v2beta1
-  kind: HorizontalPodAutoscaler
-  metadata:
-    name: hello-world
-    namespace: default
-  spec:
-    scaleTargetRef:
-      apiVersion: extensions/v1beta1
-      kind: Deployment
-      name: hello-world
-    minReplicas: 1
-    maxReplicas: 10
-    metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 50
-    - type: Resource
-      resource:
-        name: memory
-        targetAverageValue: 100Mi
-    - type: Pods
-      pods:
-        metricName: cpu_system
-        targetAverageValue: 20m
-  ```
-
-- Getting hpa info and description and check that resource metrics data are shown
-  - resource metrics
-  ```
-  # kubectl get hpa
-  NAME          REFERENCE                TARGETS                     MINPODS   MAXPODS   REPLICAS   AGE
-  hello-world   Deployment/hello-world   1253376 / 100Mi, 0% / 50%   1         10        1          6m
-  # kubectl describe hpa
-  Name:                                                  hello-world
-  Namespace:                                             default
-  Labels:                                                <none>
-  Annotations:                                           <none>
-  CreationTimestamp:                                     Mon, 23 Jul 2018 20:21:16 +0200
-  Reference:                                             Deployment/hello-world
-  Metrics:                                               ( current / target )
-    resource memory on pods:                             1253376 / 100Mi
-    resource cpu on pods  (as a percentage of request):  0% (0) / 50%
-  Min replicas:                                          1
-  Max replicas:                                          10
-  Conditions:
-    Type            Status  Reason              Message
-    ----            ------  ------              -------
-    AbleToScale     True    ReadyForNewScale    the last scale time was sufficiently old as to warrant a new scale
-    ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
-    ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
-  Events:           <none>
-  ```
-
-  - custom metrics
-  ```
-  # kubectl describe hpa
-  Name:                                                  hello-world
-  Namespace:                                             default
-  Labels:                                                <none>
-  Annotations:                                           <none>
-  CreationTimestamp:                                     Tue, 24 Jul 2018 18:36:28 +0200
-  Reference:                                             Deployment/hello-world
-  Metrics:                                               ( current / target )
-    resource memory on pods:                             3514368 / 100Mi
-    "cpu_system" on pods:                                0 / 20m
-    resource cpu on pods  (as a percentage of request):  0% (0) / 50%
-  Min replicas:                                          1
-  Max replicas:                                          10
-  Conditions:
-    Type            Status  Reason              Message
-    ----            ------  ------              -------
-    AbleToScale     True    ReadyForNewScale    the last scale time was sufficiently old as to warrant a new scale
-    ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
-    ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
-  Events:           <none>
-  ```
-
-- Generating load for the service to test up and down autoscalation. Any tool could be used at this point, but we've used `https://github.com/rakyll/hey` to generate http requests to our `hello-world` service, and observe if autoscaling is working propwrly.
-
-- Observing autoscale up and down
+1. Observing autoscale up and down
   - Resource metrics
 
     Autoscale up to 2 pods when cpu usage is up to target
