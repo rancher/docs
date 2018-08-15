@@ -1,6 +1,8 @@
 ---
-title: Managing RKE Clusters
-weight: 60
+title: Adding and Removing Nodes in RKE Clusters
+weight: 175
+aliases:
+  - /rke/v0.1.x/en/installation/managing-clusters/
 ---
 
 ### Adding/Removing Nodes
@@ -17,7 +19,7 @@ After you've made changes to add/remove nodes, run `rke up` with the updated `cl
 
 You can add/remove only worker nodes, by running `rke up --update-only`. This will ignore everything else in the `cluster.yml` except for any worker nodes.
 
-### Removing Kubernetes Clusters from Nodes
+### Removing Kubernetes Components from Nodes
 
 In order to remove the Kubernetes components from nodes, you use the `rke remove` command.
 

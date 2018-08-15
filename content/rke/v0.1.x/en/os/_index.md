@@ -1,7 +1,32 @@
 ---
-title: Operating System Requirements
-weight: 55
+title: Requirements
+weight: 5
+aliases:
+  - /rke/v0.1.x/en/installation/os
 ---
+**In this section:** 
+
+<!-- TOC -->
+
+- [Operating System](#operating-system)
+
+    - [RedHat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS](#redhat-enterprise-linux-rhel--oracle-enterprise-linux-oel--centos)
+    
+        - [Using upstream Docker](#using-upstream-docker)
+        - [Using RHEL/CentOS packaged Docker](#using-rhelcentos-packaged-docker)
+- [Software](#software)
+- [Ports](#ports)
+    - [Opening port TCP/6443 using `iptables``](#opening-port-tcp6443-using-iptables)
+    - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp6443-using-firewalld)
+- [Notes about Atomic Nodes](#notes-about-atomic-nodes)
+
+    - [Container Volumes](#container-volumes)
+    - [OpenSSH version](#openssh-version)
+    - [Creating a Docker Group](#creating-a-docker-group)
+
+<!-- /TOC -->
+
+## Operating System
 
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
@@ -105,7 +130,7 @@ $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 ```
 
-### Software
+## Software
 
 - Docker - Each Kubernetes version supports different Docker versions.
 
@@ -147,14 +172,14 @@ Server:
 
 - OpenSSH 7.0+ - In order to SSH into each node, OpenSSH must be installed on each node.
 
-### Ports
+## Ports
 
 {{< requirements_ports_rke >}}
 
 If you are using an external firewall, make sure you have this port opened between the machine you are using to run `rke` and the nodes that you are going to use in the cluster.
 
 
-#### Opening port TCP/6443 using `iptables``
+### Opening port TCP/6443 using `iptables``
 
 ```
 # Open TCP/6443 for all
@@ -164,7 +189,7 @@ iptables -A INPUT -p tcp --dport 6443 -j ACCEPT
 iptables -A INPUT -p tcp -s your_ip_here --dport 6443 -j ACCEPT
 ```
 
-#### Opening port TCP/6443 using `firewalld`
+### Opening port TCP/6443 using `firewalld`
 
 ```
 # Open TCP/6443 for all
