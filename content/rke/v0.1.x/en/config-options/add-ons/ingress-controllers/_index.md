@@ -39,7 +39,7 @@ ingress:
 ```
 ## Configuring NGINX Ingress Controller
 
-For the configuration of nginx, there are configuration options available in Kubernetes. There are a [list of options for the NGINX config map](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/configmap.md) , [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md) and [annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/).
+For the configuration of nginx, there are configuration options available in Kubernetes. There are a [list of options for the NGINX config map](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/configmap.md) , [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md) and [annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/).
 
 ```yaml
 ingress:

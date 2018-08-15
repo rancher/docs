@@ -3,7 +3,7 @@ title: Managing Node Templates
 weight: 7010
 ---
 
-when you provision a [node pool]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) cluster, [node templates]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used to provision the cluster nodes. These templates use Docker Machine commands to configure an operating system image and setting/parameters for the node. You can create node templates in two contexts:
+When you provision a [node pool]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) cluster, [node templates]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) are used to provision the cluster nodes. These templates use Docker Machine configuration options to define an operating system image and settings/parameters for the node. You can create node templates in two contexts:
 
 - While [provisioning a node pool cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools).
 - At any time, from your [user settings](#creating-a-node-template-from-user-settings).

@@ -58,11 +58,11 @@ docker run -d --volumes-from rancher-data --restart=unless-stopped \
     ><br/>
     >**Note:** After upgrading Rancher Server, data from your upgraded server is now saved to the `rancher-data` container for use in future upgrades.
 
+1. Log into Rancher. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
+
 1. Remove the previous Rancher Server container.
 
     If you only stop the previous Rancher Server container (and don't remove it), the container may restart after the next server reboot.
-
-1. Log into Rancher. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
 
 **Result:** Rancher Server is upgraded to the latest version.
 
