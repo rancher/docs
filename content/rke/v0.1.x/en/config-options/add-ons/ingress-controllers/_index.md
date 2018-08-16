@@ -50,3 +50,52 @@ ingress:
     extra_args:
       enable-ssl-passthrough: ""
 ```
+
+## Configuring an NGINX Default Certificate
+
+When configuring an ingress object with TLS termination, you must provide it with a certificate used for encryption/decryption. Instead of explicitly defining a certificate each time you configure an ingress, you can set up a custom certificate that's used by default.
+
+Setting up a default certificate is especially helpful in environments where a wildcard certificate is used, as the certificate can be applied in multiple subdomains.
+
+>**Prerequisites:**
+>
+>- Access to the `cluster.yml` used to create the cluster.
+>- The PEM encoded certificate you will use as the default certificate.
+
+1. Obtain or generate your certificate key pair in a PEM encoded form.
+
+2. Generate a Kubernetes secret from your PEM encoded certificate with the following command, substituting your certificate for `mycert.cert` and `mycert.key`.
+
+    ```
+    kubectl create secret tls ingress-default-cert --cert=mycert.cert --key=mycert.key -o yaml --dry-run=true > ingress-default-cert.yaml
+    ```
+3. Include the contents of `ingress-default-cert.yml` inline with your RKE `cluster.yml` file. For example:
+
+    ```yaml
+    addons: |-
+      ---
+      apiVersion: v1
+      data:
+        tls.crt: [ENCODED CERT]
+        tls.key: [ENCODED KEY]
+      kind: Secret
+      metadata:
+        creationTimestamp: null
+        name: ingress-default-cert
+        namespace: ingress-nginx
+      type: kubernetes.io/tls
+    ```
+4. Define your ingress resource with the following `default-ssl-certificate` argument, which references the secret we created earlier under `extra_args` in your `cluster.yml`:
+
+    ```yaml
+    ingress: 
+      provider: "nginx"
+      extra_args:
+        default-ssl-certificate: "ingress-nginx/ingress-default-cert"
+    ```
+
+5. **Optional:** If you want to apply the default certificate to ingress in a cluster that already exists, you must restart the Nginx ingress controller pods to apply the latest `extra_args`.
+
+    ```
+    kubectl delete pod -l app=ingress-nginx -n ingress-nginx
+    ```
