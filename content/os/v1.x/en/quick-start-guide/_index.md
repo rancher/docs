@@ -10,7 +10,9 @@ If you have a specific RanchersOS machine requirements, please check out our [gu
 Before moving forward, you'll need to have [Docker Machine](https://docs.docker.com/machine/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) installed. Once you have VirtualBox and Docker Machine installed, it's just one command to get RancherOS running.
 
 ```
-$ docker-machine create -d virtualbox --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso <MACHINE-NAME>
+$ docker-machine create -d virtualbox \
+        --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso \
+        <MACHINE-NAME>
 ```
 
 That's it! You're up and running a RancherOS instance.
