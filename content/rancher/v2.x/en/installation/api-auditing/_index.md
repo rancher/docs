@@ -5,6 +5,8 @@ weight: 10000
 
 Rancher ships with API Auditing to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. API auditing records all requests and responses to and from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
 
+You can enable API Auditing during Rancher installation or upgrade.
+
 ## API Auditing Usage
 
 Each API transaction creates two entries for it in the audit log, one for requests and one for response: `RequestReceived` and `ResponseComplete`. Each log transaction for a request/response pair uses the same `auditID` value.
