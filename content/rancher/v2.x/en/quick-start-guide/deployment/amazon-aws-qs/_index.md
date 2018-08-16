@@ -2,14 +2,14 @@
 title: Amazon AWS Quick Start
 weight: 100
 ---
-The following steps will quickly deploy a Rancher Server with a single node cluster attached
+The following steps will quickly deploy a Rancher Server with a single node cluster attached.
 
 ## Prerequisites
 
 >**Note**
 >Deploying to Amazon AWS will incur charges.
 
-- [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes
+- [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
 - [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
 
@@ -22,14 +22,14 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. Edit `terraform.tfvars` and customize the following variables at minimum. To change node counts and sizes, see node sizes
+4. Edit `terraform.tfvars` and customize the following variables at minimum. To change node counts and sizes, see `node sizes`.
 
   - `aws_access_key` - Amazon AWS Access Key 
   - `aws_secret_key` - Amazon AWS Secret Key
   - `ssh_key_name` - Amazon AWS Key Pair Name
   - `prefix` - Resource Prefix
   
-5. *Optional* Modify the count of the various node types within `terraform.tfvars`. See the [Quickstart Readme](https://github.com/rancher/quickstart) for more information on the variables.
+5. **Optional:** Modify the count of the various node types within `terraform.tfvars`. See the [Quickstart Readme](https://github.com/rancher/quickstart) for more information on the variables.
 
 6. Run `terraform init`.
 
