@@ -5,6 +5,22 @@ weight: 10000
 
 Rancher ships with API Auditing to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. API auditing records all requests and responses to and from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
 
+## API Auditing Usage
+
+Each API transaction creates two entries for it in the audit log, one for requests and one for response: `RequestReceived` and `ResponseComplete`. Each log transaction for a request/response pair uses the same `auditID` value.
+
+The usage below defines rules about what the audit log should record and what data it should include:
+
+
+Parameter | Description |
+---------|----------|
+ `AUDIT_LEVEL` | `0` - Disable audit log.<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. | 
+ `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. | 
+ `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
+ `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
+ `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
+
+
 ## Enabling API Auditing
 
 To enable API auditing, stop the Docker container that's running Rancher, and then restart it using the following command. This command includes parameters that turns on API auditing. For more information about usage for each switch related to API auditing, see [API Auditing Usage](#api-auditing-usage).
@@ -21,22 +37,6 @@ To enable API auditing, stop the Docker container that's running Rancher, and th
    -e AUDIT_LOG_MAXSIZE=100 \
    rancher/rancher:latest
 ```
-
-## API Auditing Usage
-
-Each API transaction creates two entries for it in the audit log, one for requests and one for response: `RequestReceived` and `ResponseComplete`. Each log transaction for a request/response pair uses the same `auditID` value.
-
-The usage below defines rules about what the audit log should record and what data it should include:
-
-
-Parameter | Description |
----------|----------|
- `AUDIT_LEVEL` | `0` - Disable audit log.<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. | 
- `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. | 
- `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
- `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
- `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
-
 
 ## Viewing API Audit Logs
 
