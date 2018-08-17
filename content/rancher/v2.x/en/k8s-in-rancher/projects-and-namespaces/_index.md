@@ -113,13 +113,7 @@ Alternatively, you can switch between projects and clusters using the main menu.
 
 ## Namespaces
 
-Kubernetes resources belong to specific [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters backed by a physical cluster. Rancher 2.0 uses namespaces as objects that:
-
-- Isolate users and apps within a cluster that is shared among other teams and apps. When a user deploys an app from the catalog, for example, they can deploy that app into its own namespace, so that resource names in one app will not conflict with resource names in another.
-
-- Provide a unique name for an application. Namespaces must be globally unique. It is often difficult for users to pick unique namespace names. Rancher therefore encourages the pattern where users work with projects, and the system generates unique namespace names automatically.
-
-- Divide hardware resources between multiple resources. Using [resource quotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/), you can limit the vCPU and memory that each namespace can access so that performance is evenly distributed among the cluster.
+Within Rancher, you can further divide projects into different Kubernetes [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters backed by a physical cluster. You can then assign resources within a project to individual namespaces.
 
 For more information, see the [Kubernetes Namespaces Documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 
@@ -157,7 +151,7 @@ Depending on your role within Rancher and your organization, the context in whic
 
 ### Moving Namespaces to Another Project
 
-Cluster admins and members may occasionally need to move a namespace to another project, such as when a project runs out of hardware resources to support all of its existing namespaces.
+Cluster admins and members may occasionally need to move a namespace to another project, such as when you want a different team to start using the application.
 
 1. From the **Global** view, open the cluster that contains the namespace you want to move.
 
