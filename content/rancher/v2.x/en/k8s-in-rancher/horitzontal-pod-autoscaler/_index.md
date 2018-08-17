@@ -55,7 +55,7 @@ You can create, manage, and delete HPAs using kubectl:
 
   - Basic: `kubectl get hpa hello-world`
 
-  - Detailed description: `kubectl describe hpa hello-world` 
+  - Detailed description: `kubectl describe hpa hello-world`
 
 - Deleting HPA
 
@@ -135,9 +135,9 @@ services:
 
 Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
 
->**Note:** Code samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
+>**Note:** kubectl command samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
 
-#### Resource Metrics
+#### Configuring HPA to Scale Using Resource Metrics
 
 To create HPA resources based on resource metrics such as CPU and memory use, you need to deploy the `metrics-server` package in the `kube-system` namespace of your Kubernetes cluster. This deployment allows HPA to consume the `metrics.k8s.io` API. 
 
@@ -157,44 +157,56 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
 
 1. Check that `metrics-server` is running properly. Check the service pod and logs in the `kube-system` namespace.
 
-  1. Check the service pod for a status of `running`.
-  ```
-  # kubectl get pods -n kube-system
-  NAME                                  READY     STATUS    RESTARTS   AGE
-  ...
-  metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
-  ...
-  ```
-  1. Check the service logs for service availability.
-  ```
-  # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
-  I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
-  I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
-  I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
-  I0723 08:09:56.194501       1 configs.go:62] Using kubelet port 10255
-  I0723 08:09:56.198612       1 heapster.go:128] Starting with Metric Sink
-  I0723 08:09:56.780114       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
-  I0723 08:09:57.391518       1 heapster.go:101] Starting Heapster API server...
-  [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
-  [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
-  I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
-  ```
+  1. Check the service pod for a status of `running`. Enter the following command:
+    ```
+    # kubectl get pods -n kube-system
+    ```
+    Then check for the status of `running`.
+    ``` 
+    NAME                                  READY     STATUS    RESTARTS   AGE
+    ...
+    metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
+    ...
+    ```
+  1. Check the service logs for service availability. Enter the following command:
+    ```
+    # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
+    ```
+    Then review the log to confirm that that the `metrics-server` package is running.
+    ```  
+    I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
+    I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
+    I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
+    I0723 08:09:56.194501       1 configs.go:62] Using kubelet port 10255
+    I0723 08:09:56.198612       1 heapster.go:128] Starting with Metric Sink
+    I0723 08:09:56.780114       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
+    I0723 08:09:57.391518       1 heapster.go:101] Starting Heapster API server...
+    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
+    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
+    I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
+    ```
 
 1. Check that the metrics api is accessible from kubectl.
 
-  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<K8s_URL>:6443`.
-  ```
-  # kubectl get --raw /apis/metrics.k8s.io/v1beta1
-  {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-  ```
+  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<K8s_URL>:6443`. 
+    ```
+    # kubectl get --raw /apis/metrics.k8s.io/v1beta1
+    ```
+    If the the API is working correctly, you should receive output similar to the output below.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
+    ```
 
   - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
-  ```
-  # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
-  {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-  ```
+    ```
+    # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
+    ```
+    If the the API is working correctly, you should receive output similar to the output below.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
+    ```
 
-#### Custom Metrics (Prometheus)
+#### Configuring HPA to Scale Using Custom Metrics (Prometheus)
 
 You can also configure HPA to autoscale based on custom metrics provided by third-party software. The most common use case for autoscaling using third-party software is based on application-level metrics (i.e., HTTP requests per second). HPA uses the `custom.metrics.k8s.io` API to consume these metrics. This API is enabled by deploying a custom metrics adapter for the metrics collection solution.
 
@@ -227,49 +239,61 @@ For HPA to use custom metrics from Prometheus, package [k8s-prometheus-adapter](
 
 1. Check that `prometheus-adapter` is running properly. Check the service pod and logs in the `kube-system` namespace.
   
-  1. Check that the service pod is `Running`.
-  ```
-  # kubectl get pods -n kube-system
-  NAME                                  READY     STATUS    RESTARTS   AGE
-  ...
-  prometheus-adapter-prometheus-adapter-568674d97f-hbzfx   1/1       Running   0          7h
-  ...
-  ```
-  1. Check the service logs to make sure the service is running correctly.
-  ```
-  # kubectl logs prometheus-adapter-prometheus-adapter-568674d97f-hbzfx -n kube-system
-  ...
-  I0724 10:18:45.696679       1 round_trippers.go:436] GET https://10.43.0.1:443/api/v1/namespaces/default/pods?labelSelector=app%3Dhello-world 200 OK in 2 milliseconds
-  I0724 10:18:45.696695       1 round_trippers.go:442] Response Headers:
-  I0724 10:18:45.696699       1 round_trippers.go:445]     Date: Tue, 24 Jul 2018 10:18:45 GMT
-  I0724 10:18:45.696703       1 round_trippers.go:445]     Content-Type: application/json
-  I0724 10:18:45.696706       1 round_trippers.go:445]     Content-Length: 2581
-  I0724 10:18:45.696766       1 request.go:836] Response Body: {"kind":"PodList","apiVersion":"v1","metadata":{"selfLink":"/api/v1/namespaces/default/pods","resourceVersion":"6237"},"items":[{"metadata":{"name":"hello-world-54764dfbf8-q6l82","generateName":"hello-world-54764dfbf8-","namespace":"default","selfLink":"/api/v1/namespaces/default/pods/hello-world-54764dfbf8-q6l82","uid":"484cb929-8f29-11e8-99d2-067cac34e79c","resourceVersion":"4066","creationTimestamp":"2018-07-24T10:06:50Z","labels":{"app":"hello-world","pod-template-hash":"1032089694"},"annotations":{"cni.projectcalico.org/podIP":"10.42.0.7/32"},"ownerReferences":[{"apiVersion":"extensions/v1beta1","kind":"ReplicaSet","name":"hello-world-54764dfbf8","uid":"4849b9b1-8f29-11e8-99d2-067cac34e79c","controller":true,"blockOwnerDeletion":true}]},"spec":{"volumes":[{"name":"default-token-ncvts","secret":{"secretName":"default-token-ncvts","defaultMode":420}}],"containers":[{"name":"hello-world","image":"rancher/hello-world","ports":[{"containerPort":80,"protocol":"TCP"}],"resources":{"requests":{"cpu":"500m","memory":"64Mi"}},"volumeMounts":[{"name":"default-token-ncvts","readOnly":true,"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"default","serviceAccount":"default","nodeName":"34.220.18.140","securityContext":{},"schedulerName":"default-scheduler","tolerations":[{"key":"node.kubernetes.io/not-ready","operator":"Exists","effect":"NoExecute","tolerationSeconds":300},{"key":"node.kubernetes.io/unreachable","operator":"Exists","effect":"NoExecute","tolerationSeconds":300}]},"status":{"phase":"Running","conditions":[{"type":"Initialized","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:50Z"},{"type":"Ready","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:54Z"},{"type":"PodScheduled","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:50Z"}],"hostIP":"34.220.18.140","podIP":"10.42.0.7","startTime":"2018-07-24T10:06:50Z","containerStatuses":[{"name":"hello-world","state":{"running":{"startedAt":"2018-07-24T10:06:54Z"}},"lastState":{},"ready":true,"restartCount":0,"image":"rancher/hello-world:latest","imageID":"docker-pullable://rancher/hello-world@sha256:4b1559cb4b57ca36fa2b313a3c7dde774801aa3a2047930d94e11a45168bc053","containerID":"docker://cce4df5fc0408f03d4adf82c90de222f64c302bf7a04be1c82d584ec31530773"}],"qosClass":"Burstable"}}]}
-  I0724 10:18:45.699525       1 api.go:74] GET http://prometheus-server.prometheus.34.220.18.140.xip.io/api/v1/query?query=sum%28rate%28container_fs_read_seconds_total%7Bpod_name%3D%22hello-world-54764dfbf8-q6l82%22%2Ccontainer_name%21%3D%22POD%22%2Cnamespace%3D%22default%22%7D%5B5m%5D%29%29+by+%28pod_name%29&time=1532427525.697 200 OK
-  I0724 10:18:45.699620       1 api.go:93] Response Body: {"status":"success","data":{"resultType":"vector","result":[{"metric":{"pod_name":"hello-world-54764dfbf8-q6l82"},"value":[1532427525.697,"0"]}]}}
-  I0724 10:18:45.699939       1 wrap.go:42] GET /apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/%2A/fs_read?labelSelector=app%3Dhello-world: (12.431262ms) 200 [[kube-controller-manager/v1.10.1 (linux/amd64) kubernetes/d4ab475/system:serviceaccount:kube-system:horizontal-pod-autoscaler] 10.42.0.0:24268]
-  I0724 10:18:51.727845       1 request.go:836] Request Body: {"kind":"SubjectAccessReview","apiVersion":"authorization.k8s.io/v1beta1","metadata":{"creationTimestamp":null},"spec":{"nonResourceAttributes":{"path":"/","verb":"get"},"user":"system:anonymous","group":["system:unauthenticated"]},"status":{"allowed":false}}
-  ...
-  ```
+  1. Check that the service pod is `Running`. Enter the following command.
+    ```
+    # kubectl get pods -n kube-system
+    ```
+    From the resulting output, look for a status of `Running`.
+    ```
+    NAME                                  READY     STATUS    RESTARTS   AGE
+    ...
+    prometheus-adapter-prometheus-adapter-568674d97f-hbzfx   1/1       Running   0          7h
+    ...
+    ```
+  1. Check the service logs to make sure the service is running correctly by entering the command that follows.
+    ```
+    # kubectl logs prometheus-adapter-prometheus-adapter-568674d97f-hbzfx -n kube-system
+    ```
+    Then review the log output to confirm the service is running.
+    ```
+    ...
+    I0724 10:18:45.696679       1 round_trippers.go:436] GET https://10.43.0.1:443/api/v1/namespaces/default/pods?labelSelector=app%3Dhello-world 200 OK in 2 milliseconds
+    I0724 10:18:45.696695       1 round_trippers.go:442] Response Headers:
+    I0724 10:18:45.696699       1 round_trippers.go:445]     Date: Tue, 24 Jul 2018 10:18:45 GMT
+    I0724 10:18:45.696703       1 round_trippers.go:445]     Content-Type: application/json
+    I0724 10:18:45.696706       1 round_trippers.go:445]     Content-Length: 2581
+    I0724 10:18:45.696766       1 request.go:836] Response Body: {"kind":"PodList","apiVersion":"v1","metadata":{"selfLink":"/api/v1/namespaces/default/pods","resourceVersion":"6237"},"items":[{"metadata":{"name":"hello-world-54764dfbf8-q6l82","generateName":"hello-world-54764dfbf8-","namespace":"default","selfLink":"/api/v1/namespaces/default/pods/hello-world-54764dfbf8-q6l82","uid":"484cb929-8f29-11e8-99d2-067cac34e79c","resourceVersion":"4066","creationTimestamp":"2018-07-24T10:06:50Z","labels":{"app":"hello-world","pod-template-hash":"1032089694"},"annotations":{"cni.projectcalico.org/podIP":"10.42.0.7/32"},"ownerReferences":[{"apiVersion":"extensions/v1beta1","kind":"ReplicaSet","name":"hello-world-54764dfbf8","uid":"4849b9b1-8f29-11e8-99d2-067cac34e79c","controller":true,"blockOwnerDeletion":true}]},"spec":{"volumes":[{"name":"default-token-ncvts","secret":{"secretName":"default-token-ncvts","defaultMode":420}}],"containers":[{"name":"hello-world","image":"rancher/hello-world","ports":[{"containerPort":80,"protocol":"TCP"}],"resources":{"requests":{"cpu":"500m","memory":"64Mi"}},"volumeMounts":[{"name":"default-token-ncvts","readOnly":true,"mountPath":"/var/run/secrets/kubernetes.io/serviceaccount"}],"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","serviceAccountName":"default","serviceAccount":"default","nodeName":"34.220.18.140","securityContext":{},"schedulerName":"default-scheduler","tolerations":[{"key":"node.kubernetes.io/not-ready","operator":"Exists","effect":"NoExecute","tolerationSeconds":300},{"key":"node.kubernetes.io/unreachable","operator":"Exists","effect":"NoExecute","tolerationSeconds":300}]},"status":{"phase":"Running","conditions":[{"type":"Initialized","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:50Z"},{"type":"Ready","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:54Z"},{"type":"PodScheduled","status":"True","lastProbeTime":null,"lastTransitionTime":"2018-07-24T10:06:50Z"}],"hostIP":"34.220.18.140","podIP":"10.42.0.7","startTime":"2018-07-24T10:06:50Z","containerStatuses":[{"name":"hello-world","state":{"running":{"startedAt":"2018-07-24T10:06:54Z"}},"lastState":{},"ready":true,"restartCount":0,"image":"rancher/hello-world:latest","imageID":"docker-pullable://rancher/hello-world@sha256:4b1559cb4b57ca36fa2b313a3c7dde774801aa3a2047930d94e11a45168bc053","containerID":"docker://cce4df5fc0408f03d4adf82c90de222f64c302bf7a04be1c82d584ec31530773"}],"qosClass":"Burstable"}}]}
+    I0724 10:18:45.699525       1 api.go:74] GET http://prometheus-server.prometheus.34.220.18.140.xip.io/api/v1/query?query=sum%28rate%28container_fs_read_seconds_total%7Bpod_name%3D%22hello-world-54764dfbf8-q6l82%22%2Ccontainer_name%21%3D%22POD%22%2Cnamespace%3D%22default%22%7D%5B5m%5D%29%29+by+%28pod_name%29&time=1532427525.697 200 OK
+    I0724 10:18:45.699620       1 api.go:93] Response Body: {"status":"success","data":{"resultType":"vector","result":[{"metric":{"pod_name":"hello-world-54764dfbf8-q6l82"},"value":[1532427525.697,"0"]}]}}
+    I0724 10:18:45.699939       1 wrap.go:42] GET /apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/%2A/fs_read?labelSelector=app%3Dhello-world: (12.431262ms) 200 [[kube-controller-manager/v1.10.1 (linux/amd64) kubernetes/d4ab475/system:serviceaccount:kube-system:horizontal-pod-autoscaler] 10.42.0.0:24268]
+    I0724 10:18:51.727845       1 request.go:836] Request Body: {"kind":"SubjectAccessReview","apiVersion":"authorization.k8s.io/v1beta1","metadata":{"creationTimestamp":null},"spec":{"nonResourceAttributes":{"path":"/","verb":"get"},"user":"system:anonymous","group":["system:unauthenticated"]},"status":{"allowed":false}}
+    ...
+    ```
 
 1. Check that the metrics API is accessible from kubectl.
 
   - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<Kubernetes_URL>:6443`.
-  ```
-  # kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1
-  {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
-  ```
+    ```
+    # kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1
+    ```
+    If the API is accessible, you should receive output that's similar to what follows.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
+    ```
 
   - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
-  ```
-  # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/custom.metrics.k8s.io/v1beta1
-  {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
-  ```
+    ```
+    # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/custom.metrics.k8s.io/v1beta1
+    ```
+    If the API is accessible, you should receive output that's similar to what follows.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
+    ```
 
 
 #### ClusterRole and ClusterRoleBinding
 
-By default, HPA reads resource and custom metrics with the user `system:anonymous`. It's needed to define `view-resource-metrics` and `view-custom-metrics` ClusterRole and ClusterRoleBindings assigning them to `system:anonymous` to open read access to metrics. 
+By default, HPA reads resource and custom metrics with the user `system:anonymous`. `system:anonymous` has the `view-resource-metrics` and `view-custom-metrics` ClusterRole and ClusterRoleBindings assigned to it, which are used to access metrics. 
 
 To do it, follow these steps:
 
@@ -336,18 +360,16 @@ To do it, follow these steps:
       name: system:anonymous
   ```
 {{% /accordion %}}
-1. Create them in your cluster using the following commands (if want to use custom metrics).
+1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
  ```
   # kubectl create -f <RESOURCE_METRICS_MANIFEST>
   # kubectl create -f <CUSTOM_METRICS_MANIFEST>
   ```
 
 
-### Service Deployment
+### Testing HPAs with a Service Deployment
 
-For HPA to work correctly, service deployments should have resources request definitions for containers.
-
-Follow this hello-world example to test if HPA is working correctly. 
+For HPA to work correctly, service deployments should have resources request definitions for containers. Follow this hello-world example to test if HPA is working correctly. 
 
 1. Configure kubectl to connect to your Kubernetes cluster.
 
@@ -410,7 +432,7 @@ Follow this hello-world example to test if HPA is working correctly.
     # kubectl create -f <HELLO_WORLD_MANIFEST>
     ```
 
-1. Copy the one of the HPAs below based on the metric type you're using: 
+1. Copy one of the HPAs below based on the metric type you're using: 
     {{% accordion id="service-deployment-resource-metrics" label="Hello World HPA: Resource Metrics" %}}
      apiVersion: autoscaling/v2beta1
             kind: HorizontalPodAutoscaler
@@ -464,7 +486,12 @@ Follow this hello-world example to test if HPA is working correctly.
   
 1. View the HPA info and description. Confirm that metric data is shown.
     {{% accordion id="hpa-info-resource-metrics" label="Resource Metrics" %}}
+1. Enter the following command.
+    ```
     # kubectl get hpa
+    ```
+    You should receive the output that follows:
+    ```
     NAME          REFERENCE                TARGETS                     MINPODS   MAXPODS   REPLICAS   AGE
     hello-world   Deployment/hello-world   1253376 / 100Mi, 0% / 50%   1         10        1          6m
         # kubectl describe hpa
@@ -486,9 +513,15 @@ Follow this hello-world example to test if HPA is working correctly.
       ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
       ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
     Events:           <none>
+    ```
     {{% /accordion %}}
     {{% accordion id="hpa-info-custom-metrics" label="Custom Metrics" %}}
+1. Enter the following command.
+    ```
     # kubectl describe hpa
+    ```
+    You should receive the output that follows.
+    ```
     Name:                                                  hello-world
     Namespace:                                             default
     Labels:                                                <none>
@@ -508,18 +541,21 @@ Follow this hello-world example to test if HPA is working correctly.
       ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from memory resource
       ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
     Events:           <none>
+    ```
     {{% /accordion %}}
 
   
 1. Generate a load for the service to test that your pods autoscale as intended. You can use any tool for this testing, but we're using [Hey](https://github.com/rakyll/hey).
 
-1. Test pod autoscaling.
-
-  - **To Test Autoscaling Using Resource Metrics:**
+1. Test that pod autoscaling works as intended.<br/></br>
+  **To Test Autoscaling Using Resource Metrics:**
   {{% accordion id="observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
-`kubectl describe hpa` output.
-
+1. Enter the following command.
+    ```
     # kubectl describe hpa
+    ```
+    You should receive output similar to what follows.
+    ```
     Name:                                                  hello-world
     Namespace:                                             default
     Labels:                                                <none>
@@ -541,20 +577,27 @@ Follow this hello-world example to test if HPA is working correctly.
       Type    Reason             Age   From                       Message
       ----    ------             ----  ----                       -------
       Normal  SuccessfulRescale  13s   horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
-
-`kubectl get pods` output.
-   
+      ```
+1. Enter the following command.
+   ```
       # kubectl get pods
+   ```
+   You should receive output similar to what follows:
+   ```  
       NAME                                                     READY     STATUS    RESTARTS   AGE
       hello-world-54764dfbf8-k8ph2                             1/1       Running   0          1m
       hello-world-54764dfbf8-q6l4v                             1/1       Running   0          3h
+   ```
   {{% /accordion %}}
   {{% accordion id="observe-upscale-3-pods-cpu-cooldown" label="Upscale to 3 pods: CPU Usage Up to Target" %}}
 Autoscale up to 3 pods when cpu usage limit is up to target for every `horizontal-pod-autoscaler-upscale-delay` 3 minutes by default.
 
-`kubectl describe hpa` output
-
-      # kubectl describe hpa
+1. Enter the following command.
+   ```
+   # kubectl describe hpa
+   ```
+   You should receive output similar to what follows
+   ```
       Name:                                                  hello-world
       Namespace:                                             default
       Labels:                                                <none>
@@ -577,21 +620,28 @@ Autoscale up to 3 pods when cpu usage limit is up to target for every `horizonta
         ----    ------             ----  ----                       -------
         Normal  SuccessfulRescale  4m    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  16s   horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
-
-`kubectl get pods` output
-
-      # kubectl get pods
+    ```
+2. Enter the following command.
+   ```
+   # kubectl get pods
+   ```
+    You should receive output similar to what follows.
+     ```
       NAME                                                     READY     STATUS    RESTARTS   AGE
       hello-world-54764dfbf8-f46kh                             0/1       Running   0          1m
       hello-world-54764dfbf8-k8ph2                             1/1       Running   0          5m
       hello-world-54764dfbf8-q6l4v                             1/1       Running   0          3h
+      ```
   {{% /accordion %}}
   {{% accordion id="observe-downscale-1-pod" label="Downscale to 1 Pod: All Metrics Below Target" %}}
 Autoscale down to 1 pod when all metrics below target for `horizontal-pod-autoscaler-downscale-delay` 5 minutes by default.
 
-`kubectl describe hpa` output
-
-    # kubectl describe hpa
+1. Enter the following command.
+  ```
+  # kubectl describe hpa
+  ```
+  You should receive output similar to what follows.
+  ```
       Name:                                                  hello-world
       Namespace:                                             default
       Labels:                                                <none>
@@ -615,50 +665,62 @@ Autoscale down to 1 pod when all metrics below target for `horizontal-pod-autosc
         Normal  SuccessfulRescale  10m   horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  6m    horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  1s    horizontal-pod-autoscaler  New size: 1; reason: All metrics below target
-
+  ```
   {{% /accordion %}}
-  - **To Test Autoscaling Using Custom Metrics:**
+<br/>  
+**To Test Autoscaling Using Custom Metrics:**
   {{% accordion id="custom-observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
 Autoscale up to 2 pods when CPU usage is up to target.
 
-`kubectl describe hpa` output
-
+1. Enter the following command.
+  ```  
     # kubectl describe hpa
-      Name:                                                  hello-world
-      Namespace:                                             default
-      Labels:                                                <none>
-      Annotations:                                           <none>
-      CreationTimestamp:                                     Tue, 24 Jul 2018 18:01:11 +0200
-      Reference:                                             Deployment/hello-world
-      Metrics:                                               ( current / target )
-        resource memory on pods:                             8159232 / 100Mi
-        "cpu_system" on pods:                                7m / 20m
-        resource cpu on pods  (as a percentage of request):  64% (321m) / 50%
-      Min replicas:                                          1
-      Max replicas:                                          10
-      Conditions:
-        Type            Status  Reason              Message
-        ----            ------  ------              -------
-        AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 2
-        ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
-        ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
-      Events:
-        Type    Reason             Age   From                       Message
-        ----    ------             ----  ----                       -------
-        Normal  SuccessfulRescale  16s   horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
-`kubectl get pods` output
-
-      # kubectl get pods
+  ```
+  You should receive output similar to what follows.
+  ```
+    Name:                                                  hello-world
+    Namespace:                                             default
+    Labels:                                                <none>
+    Annotations:                                           <none>
+    CreationTimestamp:                                     Tue, 24 Jul 2018 18:01:11 +0200
+    Reference:                                             Deployment/hello-world
+    Metrics:                                               ( current / target )
+      resource memory on pods:                             8159232 / 100Mi
+      "cpu_system" on pods:                                7m / 20m
+      resource cpu on pods  (as a percentage of request):  64% (321m) / 50%
+    Min replicas:                                          1
+    Max replicas:                                          10
+    Conditions:
+      Type            Status  Reason              Message
+      ----            ------  ------              -------
+      AbleToScale     True    SucceededRescale    the HPA controller was able to update the target scale to 2
+      ScalingActive   True    ValidMetricFound    the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)
+      ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
+    Events:
+      Type    Reason             Age   From                       Message
+      ----    ------             ----  ----                       -------
+      Normal  SuccessfulRescale  16s   horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
+  ```
+1. Enter the following command.
+  ```
+    # kubectl get pods
+  ```
+  You should receive output similar to what follows.
+  ```  
         NAME                           READY     STATUS    RESTARTS   AGE
         hello-world-54764dfbf8-5pfdr   1/1       Running   0          3s
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
+  ```
   {{% /accordion %}}
-{{% accordion id="observe-upscale-3-pods-cpu-cooldown" label="Upscale to 3 pods: CPU Usage Up to Target" %}}
+{{% accordion id="observe-upscale-3-pods-cpu-cooldown-2" label="Upscale to 3 Pods: CPU Usage Up to Target" %}}
 Autoscale up to 3 pods when cpu_system usage limit is up to target.
 
-`kubectl describe hpa` output
-
-    # kubectl describe hpa
+1. Enter the following command.
+   ```
+   # kubectl describe hpa
+   ```
+   You should receive output similar to what follows:
+   ```
       Name:                                                  hello-world
       Namespace:                                             default
       Labels:                                                <none>
@@ -682,20 +744,29 @@ Autoscale up to 3 pods when cpu_system usage limit is up to target.
         ----    ------             ----  ----                       -------
         Normal  SuccessfulRescale  3m    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  3s    horizontal-pod-autoscaler  New size: 3; reason: pods metric cpu_system above target
-`kubectl get pods` output
-
+    ```
+1. Enter the following command.
+   ```
+   # kubectl get pods
+   ```    
+   You should receive output similar to what follows:
+   ```
       # kubectl get pods
       NAME                           READY     STATUS    RESTARTS   AGE
       hello-world-54764dfbf8-5pfdr   1/1       Running   0          3m
       hello-world-54764dfbf8-m2hrl   1/1       Running   0          1s
       hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
+   ``` 
 {{% /accordion %}}
 {{% accordion id="observe-upscale-4-pods" label="Upscale to 4 Pods: CPU Usage Up to Target" %}}
 Autoscale up to 4 pods when cpu usage limit is up to target for every `horizontal-pod-autoscaler-upscale-delay` 3 minutes by default.
 
-`kubectl describe hpa` output
-
-      # kubectl describe hpa
+1. Enter the following command.
+  ```
+  # kubectl describe hpa
+  ```
+  You should receive output similar to what follows.
+  ```
       Name:                                                  hello-world
       Namespace:                                             default
       Labels:                                                <none>
@@ -720,19 +791,29 @@ Autoscale up to 4 pods when cpu usage limit is up to target for every `horizonta
         Normal  SuccessfulRescale  5m    horizontal-pod-autoscaler  New size: 2; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  3m    horizontal-pod-autoscaler  New size: 3; reason: pods metric cpu_system above target
         Normal  SuccessfulRescale  4s    horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
-`kubectl get pods` output
-      # kubectl get pods
+    ```
+1.  Enter the following command.
+    ```
+    # kubectl get pods
+    ```
+    You should receive output similar to what follows.
+    ```
       NAME                           READY     STATUS    RESTARTS   AGE
       hello-world-54764dfbf8-2p9xb   1/1       Running   0          5m
       hello-world-54764dfbf8-5pfdr   1/1       Running   0          2m
       hello-world-54764dfbf8-m2hrl   1/1       Running   0          1s
       hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
+    ```
 {{% /accordion %}}  
 {{% accordion id="custom-metrics-observe-downscale-1-pod" label="Downscale to 1 Pod: All Metrics Below Target" %}}
-Autoscale down to 1 pods when all metrics below target for `horizontal-pod-autoscaler-downscale-delay` 5 minutes by default
-`kubectl describe hpa` output 
+Autoscale down to 1 pods when all metrics below target for `horizontal-pod-autoscaler-downscale-delay` 5 minutes by default.
 
-      # kubectl describe hpa
+1. Enter the following command.
+    ```
+    # kubectl describe hpa
+    ```
+    You should receive similar output to what follows.
+    ```
         Name:                                                  hello-world
         Namespace:                                             default
         Labels:                                                <none>
@@ -758,13 +839,16 @@ Autoscale down to 1 pods when all metrics below target for `horizontal-pod-autos
           Normal  SuccessfulRescale  8m    horizontal-pod-autoscaler  New size: 3; reason: pods metric cpu_system above target
           Normal  SuccessfulRescale  5m    horizontal-pod-autoscaler  New size: 4; reason: cpu resource utilization (percentage of request) above target
           Normal   SuccessfulRescale             13s               horizontal-pod-autoscaler  New size: 1; reason: All metrics below target
-
-`kubectl get pods` output
-
+    ```
+1. Enter the following command.
+    ```
         # kubectl get pods
+    ```
+    You should receive output similar to what follows.
+    ```        
         NAME                           READY     STATUS    RESTARTS   AGE
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
-        
+    ```    
 {{% /accordion %}}
 
 ### Conclusion
@@ -775,4 +859,4 @@ By adjusting the `horizontal-pod-autoscaler-downscale-delay` and `horizontal-pod
 
 We've demonstrated how to setup an HPA based on custom metrics provided by Prometheus. We used the `cpu_system` metric as an example, but you can use other metrics that monitor service performance, like `http_request_number`, `http_response_time`, etc.
 
->**Note:**To facilitate HPA use, we are working to integrate metric-server as an addon on RKE cluster deployments. This feature is included in RKE v0.1.9-rc2 for testing, but is not officially supported as of yet. It would be supported at rke v0.1.9 
+>**Note:**To facilitate HPA use, we are working to integrate metric-server as an addon on RKE cluster deployments. This feature is included in RKE v0.1.9-rc2 for testing, but is not officially supported as of yet. It would be supported at rke v0.1.9. 
