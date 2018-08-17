@@ -1,9 +1,9 @@
 ---
-title: Network
+title: Networking
 weight: 8005
 ---
 
-Network FAQ's
+Networking FAQ's
 
-- [CNI provider]({{< baseurl >}}/rancher/v2.x/en/faq/network/cni-providers/)
+- [CNI Providers]({{< baseurl >}}/rancher/v2.x/en/faq/network/cni-providers/)
 
