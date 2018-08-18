@@ -68,8 +68,9 @@ Choose from the following options:
 - [Option D—Bring Your Own Certificate: Private CA Root Certificate CA](#option-d-bring-your-own-certificate-private-ca-root-certificate)
 - [Option E—Let's Encrypt Certificate](#option-e-let-s-encrypt-certificate)
 
->**Note:** When entering the command to install Rancher using any of the options below, you can declare additional flags to enable [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing), which records all interactions with the Rancher API. If you want to enable API Auditing, append the following flags to your install command:
+>**Want records of all transactions with the Rancher API?:** 
 >
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
 >```
 -e AUDIT_LEVEL=1 \
 -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
