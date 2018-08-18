@@ -179,7 +179,7 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/58e695b51096b1f404188379cea6f6a35aea9e4c/rke-templates/3-node-externalssl-certificate.yml)
 	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/7f60dc3afe1b45287ac36ba6bde6f7c6e35c11fe/rke-templates/3-node-externalssl-recognizedca.yml)
 
-    >**Want records of all transactions with the Rancher API?:** 
+    >**Want records of all transactions with the Rancher API?** 
     >
     >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
 
