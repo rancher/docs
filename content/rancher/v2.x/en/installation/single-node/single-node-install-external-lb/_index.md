@@ -70,8 +70,9 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 - [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
 - [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
 
->**Note:** When entering the command to install Rancher using any of the options below, you can declare additional flags to enable [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing), which records all interactions with the Rancher API. If you want to enable API Auditing, append the following flags to your install command:
+>**Want records of all transactions with the Rancher API?:** 
 >
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
 >```
 -e AUDIT_LEVEL=1 \
 -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
