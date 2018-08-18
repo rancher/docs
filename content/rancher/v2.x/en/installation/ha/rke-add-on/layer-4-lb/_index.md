@@ -230,6 +230,8 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
 	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/d8ca0805a3958552e84fdf5d743859097ae81e0b/rke-templates/3-node-certificate-recognizedca.yml)
 
+    >**Note:** When setting up your RKE config file, you can declare additional flags to enable API Auditing, which records all interactions with the Rancher API. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
+
 2. Rename the file to `rancher-cluster.yml`.
 
 ## 6. Configure Nodes
