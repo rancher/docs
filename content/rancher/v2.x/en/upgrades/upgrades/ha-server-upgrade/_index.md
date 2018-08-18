@@ -17,7 +17,9 @@ To upgrade Rancher 2.x running in a high availability configuration, run an upgr
 
 1. Change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
-     >**Note:** Before upgrade, you can configure `rancher-cluster.yml` to enable API Auditing, which records all interactions with the Rancher API. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
+    >**Want records of all transactions with the Rancher API?** 
+    >
+    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file (`rancher-cluster.yml`). For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
 
 1. <a id="snapshot"></a> Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
