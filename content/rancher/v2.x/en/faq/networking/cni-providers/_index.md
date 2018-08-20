@@ -10,7 +10,7 @@ CNI (Container Network Interface), a [Cloud Native Computing Foundation project]
 
 Kubernetes uses CNI as an interface between network providers and Kubernetes pod networking.
 
-<img src="img/cni-logo.png" alt="CNI logo">
+![CNI Logo]({{< baseurl >}}/img/rancher/cni-logo.png)
 
 For more information visit [CNI GitHub project](https://github.com/containernetworking/cni). 
 
@@ -28,7 +28,7 @@ This network model is used when an extended L2 bridge is preferred. This network
 
 CNI providers using this network model include Flannel, Canal, and Weave.
 
-<img src="img/encapsulated-network.svg" alt="Encapsulated network">
+![Encapsulated Network]({{< baseurl >}}/img/rancher/encapsulated-network.svg)
 
 #### What is an Unencapsulated Network? 
 
@@ -40,7 +40,7 @@ This network model is used when a routed L3 network is preferred. This mode dyna
 
 CNI providers using this network model include Calico and Romana.
 
-<img src="img/unencapsulated-network.svg" alt="Unencapsulated network">
+![Unencapsulated Network]({{< baseurl >}}/img/rancher/unencapsulated-network.svg)
 
 ### What CNI Providers are Supported by Rancher?
 
@@ -48,7 +48,7 @@ Out-of-the-box, Rancher supports three different CNI providers for Kubernetes cl
 
 #### Canal
 
-<img src="img/canal-logo.png" alt="Canal logo">
+![Canal Logo]({{< baseurl >}}/img/rancher/canal-logo.png)
 
 Canal is a CNI provider that gives you the best of Flannel and Calico. It allows users to easily deploy Calico and Flannel networking together as a unified networking solution, combining Calico’s network policy enforcement with the rich superset of Calico (unencapsulated) and/or Flannel (encapsulated) network connectivity options.
 
@@ -56,13 +56,13 @@ In Rancher, Canal is the default CNI provider combined with Flannel and VXLAN en
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and `9099` (healthcheck).
 
-<img src="img/canal-diagram.png" alt="Canal diagram">
+![Canal Diagram]({{< baseurl >}}/img/rancher/canal-diagram.png)
 
 For more information, see the [Canal GitHub Page](https://github.com/projectcalico/canal).
 
 #### Flannel
 
-<img src="img/flannel-logo.png" alt="Flannel logo">
+![Flannel Logo]({{< baseurl >}}/img/rancher/flannel-logo.png)
 
 Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan).
 
@@ -70,13 +70,13 @@ Encapsulated traffic is unencrypted by default. Threfore, flannel provides an ex
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and `9099` (healthcheck).
 
-<img src="img/flannel-diagram.png" alt="Flannel Diagram">
+![Flannel Diagram]({{< baseurl >}}/img/rancher/flannel-diagram.png)
 
 For more information, see the [Flannel GitHub Page](https://github.com/coreos/flannel).
 
 #### Calico
 
-<img src="img/calico-logo.png" alt="Calico Logo">
+![Calico Logo]({{< baseurl >}}/img/rancher/calico-logo.png)
 
 Calico enables networking and network policy in Kubernetes clusters across the cloud. Calico uses a pure, unencapsulated IP network fabric and policy engine to provide networking for your Kubernetes workloads. Workloads are able to communicate over both cloud infrastructure and on-premise using BGP.
 
@@ -84,7 +84,7 @@ Calico also provides a stateless IP-in-IP encapsulation mode that can be used, i
 
 Kubernetes workers should open TCP port `179` (BGP).
 
-<img src="img/calico-diagram.svg" alt="Calico Diagram">
+![Calico Diagram]({{< baseurl >}}/img/rancher/calico-diagram.svg)
 
 For more information, see the following pages:
 
