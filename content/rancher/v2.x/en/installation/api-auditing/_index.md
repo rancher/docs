@@ -9,15 +9,13 @@ You can enable API Auditing during Rancher installation or upgrade.
 
 ## API Auditing Usage
 
-Each API transaction creates two entries for it in the audit log, one for requests and one for response: `RequestReceived` and `ResponseComplete`. Each log transaction for a request/response pair uses the same `auditID` value.
-
 The usage below defines rules about what the audit log should record and what data it should include:
 
 
 Parameter | Description |
 ---------|----------|
- `AUDIT_LEVEL` | `0` - Disable audit log.<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. | 
- `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. | 
+ `AUDIT_LEVEL` | `0` - Disable audit log (default setting).<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. Each log transaction for a request/response pair uses the same `auditID` value. | 
+ `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/> | 
  `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
  `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
  `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
@@ -56,7 +54,7 @@ After you enable auditing, each API request or response is logged by Rancher in 
 
 ### Metadata Level
 
-If you set your `AUDIT_LEVEL` to `1` or higher, Rancher logs the metadata header for every API request and response, but not the body. The header provides basic information about the API transaction, such as the transaction's ID, who initiated the transaction, the time it occurred, etc.
+If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata header for every API request and response, but not the body. The header provides basic information about the API transaction, such as the transaction's ID, who initiated the transaction, the time it occurred, etc.
 
 ```json
 {
@@ -79,10 +77,10 @@ If you set your `AUDIT_LEVEL` to `1` or higher, Rancher logs the metadata header
 
 ### Metadata and Request Body Level
 
-If you set your `AUDIT_LEVEL` to `2` or higher, Rancher logs:
+If you set your `AUDIT_LEVEL` to `2`, Rancher logs:
 
 - The metadata header and body for every API request.
-- The metadata header only for every API response.
+- Only the metadata header for every API response.
 
 The code sample below depicts an API request, with both its metadata header and body.
 
@@ -246,7 +244,7 @@ The code sample below depicts an API request, with both its metadata header and 
 ```
 ### Metadata, Request Body, and Response Body Level
 
-If you set your `AUDIT_LEVEL` to `3` or higher, Rancher logs:
+If you set your `AUDIT_LEVEL` to `3`, Rancher logs:
 
 - The metadata header and body for every API request.
 - The metadata header and body for every API response.
