@@ -21,7 +21,7 @@ HPA improves your services by:
 
 ### How HPA Works
 
-![HPA Schema]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/img/horizontal-pod-autoscaler.svg)
+![HPA Schema]({{< baseurl >}}/img/rancher/horizontal-pod-autoscaler.svg)
 
 HPA is implemented as a control loop, with a period controlled by the `kube-controller-manager` flags below:
 
@@ -548,7 +548,7 @@ For HPA to work correctly, service deployments should have resources request def
     {{% /accordion %}}
 
   
-1. Generate a load for the service to test that your pods autoscale as intended. You can use any load-testing tool (Hey, Gaztling, etc.), but we're using [Hey](https://github.com/rakyll/hey).
+1. Generate a load for the service to test that your pods autoscale as intended. You can use any load-testing tool (Hey, Gatling, etc.), but we're using [Hey](https://github.com/rakyll/hey).
 
 1. Test that pod autoscaling works as intended.<br/></br>
   **To Test Autoscaling Using Resource Metrics:**
