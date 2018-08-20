@@ -25,6 +25,8 @@ VMWare | 1280MB (rancheros.iso) <br> 2048MB (rancheros-vmware.iso)
 GCE |  1280MB
 AWS |  1.7GB
 
+You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
+
 ### How this works
 
 Everything in RancherOS is a Docker container. We accomplish this by launching two instances of Docker. One is what we call **System Docker**, the first process on the system. All other system services, like `ntpd`, `syslog`, and `console`, are running in Docker containers. System Docker replaces traditional init systems like `systemd`, and can be used to launch [additional system services](installation/system-services/adding-system-services/).
