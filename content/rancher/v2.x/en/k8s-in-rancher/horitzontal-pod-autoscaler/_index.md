@@ -1,7 +1,6 @@
 ---
-title: Horitzontal Pod Autoscaler
+title: Horizontal Pod Autoscaler
 weight: 2300
-draft: true
 ---
 
 Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) feature (HPA), you can configure your cluster to automatically scale the services it's running up or down.
