@@ -23,7 +23,7 @@ Registries are secrets containing credentials used to authenticate with [private
 
     >**Note:** Kubernetes classifies secrets, certificates, ConfigMaps, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
 
-1. Select a **Scope** for the registry.
+1. Select a **Scope** for the registry. You can either make the registry available for the entire project or a single [namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces).
 
 1. Select the website that hosts your private registry. Then enter credentials that authenticate with the registry.
 

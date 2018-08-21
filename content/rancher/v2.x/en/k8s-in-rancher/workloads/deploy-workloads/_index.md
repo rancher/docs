@@ -17,7 +17,7 @@ Deploy a workload to run an application in one or more containers.
 
 1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy to the project. During deployment, Rancher pulls this image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears on Docker Hub.
 
-1. Either select an existing [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), or click **Add to a new namespace** and enter a new namespace.
+1. Either select an existing [namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces), or click **Add to a new namespace** and enter a new namespace.
 
 1. Click **Add Port** to enter a port mapping, which enables access to the application inside and outside of the cluster . For more information, see [Services]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/#services).
 

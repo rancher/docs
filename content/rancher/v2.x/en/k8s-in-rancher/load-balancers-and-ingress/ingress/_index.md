@@ -13,7 +13,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 1. Enter a **Name** for the ingress.
 
-1. Select an existing **Namespace** from the drop-down list. Alternatively, you can create a new namespace on the fly by clicking **Add to a new namespace**.
+1. Select an existing **Namespace** from the drop-down list. Alternatively, you can create a new [namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) on the fly by clicking **Add to a new namespace**.
 
 1. Create ingress forwarding **Rules**.
 
