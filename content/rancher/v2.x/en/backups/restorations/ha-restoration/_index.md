@@ -1,135 +1,161 @@
 ---
-title: Restoring Backups—High Availability Installs
+title: Restoring Backups — High Availability Installs
 weight: 370
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
 ---
-This procedure describes how to restore your a snapshot of `etcd` if you lose your Rancher data in a disaster scenario.
 
-## Restoration Outline
+This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. The cluster snapshot will include Kubernetes configuration and the Rancher database and state.
 
-Following a disaster scenario, restoration of your HA Rancher installation requires you to pull your snapshot from your chosen external location and then restore it.
+## Restore Outline
 
-1. [Create New Nodes and Pull Snapshot and Certificates Bundle](#1-create-new-nodes-and-pull-snapshot-and-certificate-bundle)
+1. [Preparation](#1-preparation)
 
-  If `etcd` nodes failed or quorum lost for any reason, you can create new nodes and restore the etcd snapshot and certificate bundle to it, first create the new nodes and then pull the most recent `etcd` snapshot to that node, and the most recent certificates pki bundle `pki.bundle.tar.gz`
+	Install utilities and create new or clean existing nodes to prepare for restore.
 
-2. [Restore etcd Database](#2-restore-etcd-database)
+2. [Place Snapshot and PKI Bundle](#2-place-snapshot-and-pki-bundle)
 
-	After you pull the snapshot and the certificates bundle, run the RKE command to restore the `etcd` database.
+	Pick a node and place snapshot `.db` and `pki.bundle.tar.gz` files.
+
+3. [Configure RKE](#3-configure-rke)
+
+	Configure RKE `cluster.yml`. Remove `addons:` section and point configuration to the clean nodes.
+
+4. [Restore Database](#4-restore-database)
+
+	Run RKE command to restore the `etcd` database to a single node.
+
+5. [Bring Up the Cluster](#5-bring-up-the-cluster)
+
+	Run RKE commands to bring up cluster one a single node. Clean up old nodes. Verify and add additional nodes.
 
 <br/>
-### 1. Pull Snapshot and Certificates Bundle On New Nodes
 
-If `etcd` nodes failed, you can either:
+### 1. Preparation
 
-- Create a new nodes of your choice—baremetal, on-prem virtual machine, cloud-based virtual machine, and so on. Provision it according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/#host-requirements).
+You will need [RKE]({{< baseurl >}}/rke/v0.1.x/en/installation/) and [kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
 
-- Use the existing nodes, but you should be make sure to clean each node using the following commands:
+Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See the [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install) page for node requirements.
+
+We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{< baseurl >}}/rancher/v2.x/en/faq/node-cleanup/) for the procedure.
+
+### 2. Place Snapshot and PKI Bundle
+
+Pick a one of the clean nodes. That node will be the "target node" for the initial restore.  Place the snapshot and PKI certificate bundle files in the `/opt/rke/etcd-snapshots` directory on the "target node".
+
+* Snapshot - `<snapshot>.db`
+* PKI Bundle - `pki.bundle.tar.gz`
+
+### 3. Configure RKE
+
+Make a copy of your original `rancher-cluster.yml` file.
+
+Modify the copy and make the following changes.
+
+* Remove or comment out entire the `addons:` section. The Rancher deployment and supporting configuration is already in the `etcd` database.
+* Change your `nodes:` section to point to the restore nodes.
+* Comment out the nodes that are not your "target node". We want the cluster to only start on that one node.
+
+*Example* `rancher-cluster-restore.yml`
+
+```yaml
+nodes:
+- address: 52.15.238.179     # New Target Node
+  user: ubuntu
+  role: [ etcd, controlplane, worker ]
+# - address: 52.15.23.24
+#   user: ubuntu
+#   role: [ etcd, controlplane, worker ]
+# - address: 52.15.238.133
+#   user: ubuntu
+#   role: [ etcd, controlplane, worker ]
+
+# addons: |-
+#   ---
+#   kind: Namespace
+#   apiVersion: v1
+#   metadata:
+#     name: cattle-system
+#   ---
+...
 
 ```
-docker rm -fv $(docker ps -qa)
-docker volume ls -q | xargs docker volume rm
-rm -rf /etc/kubernetes/ssl
-rm -rf /etc/kubernetes/.tmp
-rm -rf /var/lib/etcd
-rm -rf /etc/cni
-rm -rf /etc/kube-flannel/
+
+### 4. Restore Database
+
+Use RKE with the new `rancher-cluster-restore.yml` configuration and restore the database to the single "target node".
+
+```
+rke etcd snapshot-restore --name <snapshot>.db --config ./rancher-cluster-restore.yml
 ```
 
-in both cases you will need to pull the most recent working `etcd` snapshot and the certificates bundle to these nodes.
+> **NOTE:** RKE will create an `etcd` container with the restored database on the "target node". This container will not complete the `etcd` initialization and stay in a running state until the cluster brought up in the next step.
 
-**To Pull the Latest Snapshot and Certificates Bundle:**
+### 5. Bring Up the Cluster
 
-1.  Log in to each new node using a remote Terminal connection.
+Use RKE and bring up the cluster on the single "target node".
 
-2.  Create a directory that mirrors your other nodes' snapshot directories:
-
-	```
-	root@newnode:~# mkdir -p /opt/rke/etcd-snapshots
-	```
-
-3. On each node, pull your most recent snapshot onto the node. Replace `<SNAPSHOT.db>` with the name of the snapshot you're restoring to.
-
-	```
-	root@newnode:~# s3cmd get s3://rke-etcd-snapshots/<SNAPSHOT.db> /opt/rke/etcd-snapshots/<SNAPSHOT.db>
-	```
-
-	>**Remember:** Our use of Amazon S3 is an example used for this documentation. The command for pulling your snapshot may vary.
-
-4. On each node, pull the most recent certificates pki bundle to the `/opt/rke/etcd-snapshots`:
-
-  ```
-  root@newnode:~# s3cmd get s3://rke-etcd-snapshots/pki.bundle.tar.gz /opt/rke/etcd-snapshots/pki.bundle.tar.gz
-  ```
-
-### 2. Restore `etcd` Database
-
-To restore the most recent `etcd` snapshot on your new nodes, run RKE the command `rke etcd snapshot-restore`. This command reverts to any snapshot stored in `/opt/rke/etcd-snapshots` that you explicitly define. When you run `rke etcd snapshot-restore`, RKE removes the old `etcd` container if it still exists. To restore operations, RKE creates a new `etcd` cluster using the snapshot you choose, and extracts the certificate bundle to be used on the next `rke up` run.
-
->**Warning:** Restoring an `etcd` snapshot deletes your current `etcd` cluster and replaces it with a new one. Before you run the `rke etcd snapshot-restore` command, backup any important data in your current cluster.
->
->**Prerequisites:** {{< requirements_rollback >}}
-
-
-1. From your workstation, open `rancher-cluster.yml` in your favorite text editor.
-
-2. Replace the unresponsive nodes (`1.1.1.1`, `2.2.2.2`, `3.3.3.3` in this example) with your new one (`4.4.4.4`, `5.5.5.5`, and `6.6.6.6`). You IP addresses will be different obviously:
 ```
-		nodes:
-		#	- address: 1.1.1.1  # UNRESPONSIVE NODE
-		#	  user: root
-		#	  role: [controlplane,etcd,worker]
-		#	  ssh_key_path: ~/.ssh/id_rsa
-		#	- address: 2.2.2.2  # UNRESPONSIVE NODE
-		#	  user: root
-		#	  role: [controlplane,etcd,worker]
-		#	  ssh_key_path: ~/.ssh/id_rsa
-		#	- address: 3.3.3.3  # UNRESPONSIVE NODE
-		#	  user: root
-		#	  role: [controlplane,etcd,worker]
-		#	  ssh_key_path: ~/.ssh/id_rsa
-			- address: 4.4.4.4  # NEW NODE
-			  user: root
-			  role: [controlplane,etcd,worker]
-			  ssh_key_path: ~/.ssh/id_rsa
-      - address: 5.5.5.5  # NEW NODE
-			  user: root
-			  role: [controlplane,etcd,worker]
-			  ssh_key_path: ~/.ssh/id_rsa
-      - address: 6.6.6.6  # NEW NODE
-			  user: root
-			  role: [controlplane,etcd,worker]
-			  ssh_key_path: ~/.ssh/id_rsa  
+rke up --config ./rancher-cluster-restore.yml
 ```
 
-3. Save and close `rancher-cluster.yml`.
+#### Testing the Cluster
 
-4. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
+Once RKE completes, the cluster should now be up and Rancher should be running. RKE will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster-restore.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
 
-5. Run one of the following commands to restore the `etcd` database:
+You should see your new "target node" in `Ready` and three old nodes in `NotReady`.
 
-	```
-	# MacOS
-	./rke_darwin-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
-	# Linux
-	./rke_linux-amd64 etcd snapshot-restore --name <SNAPSHOT.db> --config rancher-cluster.yml
-	```
+```
+kubectl get nodes
 
+NAME            STATUS    ROLES                      AGE       VERSION
+52.15.238.179   Ready     controlplane,etcd,worker    1m       v1.10.5
+18.217.82.189   NotReady  controlplane,etcd,worker   16d       v1.10.5
+18.222.22.56    NotReady  controlplane,etcd,worker   16d       v1.10.5
+18.191.222.99   NotReady  controlplane,etcd,worker   16d       v1.10.5
+```
 
-6. Run one of the following commands to bring your cluster back up:
+#### Cleaning up Old Nodes
 
-	```
-	# MacOS
-	./rke_darwin-amd64 up --config rancher-cluster.yml
-	# Linux
-	./rke_linux-amd64 up --config rancher-cluster.yml
-	```
+Use `kubectl` to delete the old nodes from the cluster. Repeat for each old node.
 
-7. After restoring the cluster you have to restart the kubernetes components on all nodes, otherwise there will be some conflicts with resource versions of objects stored in `etcd`, this will include restart to kubernetes components and the network components, for more information please refer to [kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#etcd-upgrade-requirements), to do that you can run the following on each node:
+```
+kubectl delete node 18.217.82.189
+```
 
-    ```
-    docker restart kube-apiserver kubelet kube-controller-manager kube-scheduler kube-proxy
-    docker ps | grep flannel | cut -f 1 -d " " | xargs docker restart
-    docker ps | grep calico | cut -f 1 -d " " | xargs docker restart
-    ```
+#### Adding in Additional Nodes
+
+Edit the `rancher-cluster-restore.yml` RKE config file and uncomment the additional nodes.
+
+*Example* `rancher-cluster-restore.yml`
+
+```yaml
+nodes:
+- address: 52.15.238.179     # New Target Node
+  user: ubuntu
+  role: [ etcd, controlplane, worker ]
+- address: 52.15.23.24
+  user: ubuntu
+  role: [ etcd, controlplane, worker ]
+- address: 52.15.238.133
+  user: ubuntu
+  role: [ etcd, controlplane, worker ]
+
+# addons: |-
+#   ---
+#   kind: Namespace
+...
+
+```
+
+Run RKE and add the nodes to the new cluster.
+
+```
+rke up --config ./rancher-cluster-restore.yml
+```
+
+#### Finishing Up
+
+Rancher should now be running and available to manage your Kubernetes clusters.  Swap your Rancher DNS or Load Balancer endpoints to target the new cluster.  Once this is done the agents on your managed clusters should automatically reconnect.  This may take 10-15 minutes due to reconnect back off timeouts.
+
+> **IMPORTANT:** Remember to save your new RKE config (`rancher-cluster-restore.yml`) and `kubectl` credentials (`kube_config_rancher-cluster-restore.yml`) files in a safe place for future maintenance.

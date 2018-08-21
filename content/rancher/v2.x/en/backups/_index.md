@@ -1,5 +1,5 @@
 ---
-title: Backups and Disaster Recovery
+title: Backups and Restores
 weight: 1000
 ---
 
