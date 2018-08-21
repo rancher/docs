@@ -26,11 +26,12 @@ Storage Classes allow you to create PVCs dynamically without having to create PV
 
 ### Storage and Cloud Providers
 
-When you provision persistent storage for a cluster hosted in the cloud, you must host your storage with the same vendor that hosts the cluster. For example, if you're hosting you cluster on Amazon EC2, you must host your storage on Amazon EBS. To setup storage for your cloud-hosted cluster, you must complete two tasks: enabling the Cloud Provider option for your cluster, and adding a persistent volume using the correct plugin.
+When you provision persistent storage for a cluster hosted in the cloud, you must host your storage with the same provider that hosts the cluster. For example, if you're hosting your cluster on Amazon EC2, you must host your storage on Amazon EBS. To setup storage for your cloud-hosted cluster, you must complete two tasks: enabling the **Cloud Provider** option for your cluster, and adding storage using the same provider.
 
+<sup>Enabling Cloud Provider Option/Choosing Storage Provider</sup>
 ![Cloud Provider]({{< baseurl >}}/img/rancher/cloud-provider.png)
 
-Before you set up persistent volumes for your cloud-hosted cluster, make sure that the **Cloud Provider** option for the cluster is enabled. [Cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) are modules that allow you to use the provider's features in Rancher (like provisioning persistent storage).
+Before you set up storage for your cloud-hosted cluster, make sure that the **Cloud Provider** option for the cluster is enabled. [Cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) are modules that allow you to use the provider's features in Rancher (like provisioning persistent storage).
 
 You can turn on the **Cloud Provider** option in one of two contexts:
 
