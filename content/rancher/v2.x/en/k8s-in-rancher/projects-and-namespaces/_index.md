@@ -16,9 +16,9 @@ Projects provide an extra level of organization in your Kubernetes clusters beyo
 - Clusters contain projects.
 - Projects contain namespaces.
 
-Within Rancher, projects allow you manage multiple namespaces as a single object. In the base version of Kubernetes, which does not include projects, features like role-based access rights or cluster resources are assigned to individual namespaces. In clusters with multiple namespaces, assigning access rights or cluster resources to each individual namespace can become tedious.
+Within Rancher, projects allow you manage multiple namespaces as a single entity. In the base version of Kubernetes, which does not include projects, features like role-based access rights or cluster resources are assigned to individual namespaces. In clusters where multiple namespaces require the same set of access rights, assigning these rights to each individual namespace can become tedious. Even though all namespaces require the same rights, there's no way to apply those rights to all of your namespaces in a single action. You'd have to repetitively assign these rights to each namespace!
 
-Projects resolve this issue by allowing you to apply resources and membership at the project level. Each namespace in the project then inherits these resources and policies.
+Rancher projects resolve this issue by allowing you to apply resources and access rights at the project level. Each namespace in the project then inherits these resources and policies, so you only have to assign them to the project once, rather than assigning them to each namespace.
 
 You can use projects to perform actions like:
 
@@ -126,7 +126,18 @@ Alternatively, you can switch between projects and clusters using the main menu.
 
 Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
 
-Although we recommend assigning resources at the project level so that each namespace can inherit them, you can override this inheritance by assigning resources explicitly to a namespace.
+Although you assign resources at the project level so that each namespace can in the project can use them, you can override this inheritance by assigning resources explicitly to a namespace.
+
+Resources that you can assign directly to namespaces include:
+
+- [Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/)
+- [Load Balancers/Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/)
+- [Service Discovery Records]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/service-discovery/)
+- [Persistent Volume Claims]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/)
+- [Certificates]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/)
+- [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps/)
+- [Registries]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/registries/)
+- [Secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/)
 
 >**Note:** Although you can assign role-based access to namespaces in the base version of Kubernetes, you cannot assign roles to namespaces in Rancher. Instead, assign role-based access at the project level.
 
@@ -155,6 +166,8 @@ Cluster admins and members may occasionally need to move a namespace to another 
 1. From the main menu, select **Projects/Namespaces**.
 
 1. Select the namespace(s) that you want to move to a different project. Then click **Move**. You can move multiple namespaces at one.
+
+    >**Note:** Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
 
