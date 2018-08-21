@@ -17,16 +17,63 @@ _Persistent Volumes_ are pre-provisioned storage volumes that you can bind to po
 
 Rancher allows you to create PVs at the cluster level and bind them to PVCs later. Volumes are managed on a per-project basis.
 
->**Note:** When adding storage to a cluster that's hosted by a cloud provider, you must use the cloud provider option available for both the cluster and the storage.
->
->For example, if you want to add storage to an Amazon EC2 cluster:
->
->- You must enable the [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option for the cluster. For more information, see [Editing Clusters]({{< baseurl >}}{{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters)
->   ![Cloud Provider]({{< baseurl >}}/img/rancher/cloud-provider.png).
->- You must use the cloud provider's plug-in for cloud storage. The volume plugin for Amazon is EBS Disk. For more information, see [Adding a Persistent Volume](#adding-a-persistent-volume).
->   ![Amazon EBS Disk Plugin]({{< baseurl >}}/img/rancher/add-persistent-volume.png)
-  
-### Adding a Persistent Volume
+## Storage Classes
+
+Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
+
+![Storage Classes]({{< baseurl >}}/img/rancher/storage-classes.png)
+
+
+### Storage and Cloud Providers
+
+When you provision persistent storage for a cluster hosted in the cloud, you must host your storage with the same vendor that hosts the cluster. For example, if you're hosting you cluster on Amazon EC2, you must host your storage on Amazon EBS. To setup storage for your cloud-hosted cluster, you must complete two tasks: enabling the Cloud Provider option for your cluster, and adding a persistent volume using the correct plugin.
+
+![Cloud Provider]({{< baseurl >}}/img/rancher/cloud-provider.png)
+
+Before you set up persistent volumes for your cloud-hosted cluster, make sure that the **Cloud Provider** option for the cluster is enabled. [Cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) are modules that allow you to use the provider's features in Rancher (like provisioning persistent storage).
+
+You can turn on the **Cloud Provider** option in one of two contexts:
+
+- [When provisioning your cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning)
+- [When editing your cluster]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters)
+
+When you begin setting up a [persistent volume](#adding-persistent-volumes) or [storage class](#adding-storage-classes), you can choose the storage plugin or provisioner for your cloud provider.
+
+#### Storage Classes and Cloud Providers
+
+Additionally, storage classes feature a few extra settings for cloud providers.
+
+Each storage class contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a persistent volume that belongs to the class needs to be dynamically provisioned.
+
+The `provisioner` determines which volume plugin is used to provision the persistent volumes.
+
+{{% accordion id="provisioners" label="Supported Storage Class Provisioners" %}}
+- Amazon EBS Disk
+- AzureFile
+- AzureDisk
+- Ceph RBD
+- Gluster Volume
+- Google Persistent Disk
+- Longhorn
+- Openstack Cinder Volume
+- Portworx Volume
+- Quobyte Volume
+- ScaleIO Volume
+- StorageOS
+- Vmware vSphere Volume
+{{% /accordion %}}
+<br/>
+
+In addition to customizing each provisioner's options for the storage class, you can also define the volume `reclaimPolicy`. There are two options available:
+
+- Delete volumes and underlying device when released by workloads.
+- Retain the volume for manual cleanup.
+
+Finally, you can define custom `MountOptions` for the persistent volume created.
+
+`parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
+
+### Adding Persistent Volumes
 
 Your containers can store data on themselves, but if a container fails, that data is lost. To solve this issue, Kubernetes offers _persistent volumes_, which are external storage disks or file systems that your containers can access. If a container crashes, its replacement container can access the data in a persistent volume without any data loss.
 
@@ -34,10 +81,13 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 >**Prerequisites:**
 >
->- Working with storage requires the `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference).
->- You must have a storage medium provisioned. For more information, see [Provisioning Storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
->- Create a storage volume either on premise or in the cloud, using one of the vendor services listed in [Types of Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes).
->- Gather metadata about your storage volume after you create it. You'll need to enter this information into Rancher.
+>- Permissions: `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+>- You must have [storage provisioned]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
+>- If provisioning storage for a cluster hosted in the cloud:
+>
+>   - The storage and cluster hosts must be the [same provider](#storage-and-cloud-providers).
+>   - The [cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option must be enabled.
+
 
 1. From the **Global** view, open the cluster running the containers that you want to add persistent volume storage to.
 
@@ -81,47 +131,19 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 **Result:** Your new persistent volume is created.
 
-## Storage Classes
-
-Storage Classes allow you to create PVCs dynamically without having to create PVs first. For example, an Amazon EBS Storage Class will dynamically create EBS volumes and bind them to PVCs. A Storage Class is similar to the notion of a _storage driver_. The following figure illustrates how a PVC creation triggers the dynamic provisioning of an underlying EBS volume.
-
-![Storage Classes]({{< baseurl >}}/img/rancher/storage-classes.png)
-
-### Storage and Cloud Providers
-
-Each storage class contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a persistent volume that belongs to the class needs to be dynamically provisioned.
-
-The `provisioner` determines which volume plugin is used to provision the persistent volumes.
-
-{{% accordion id="provisioners" label="Supported Storage Class Provisioners" %}}
-- Amazon EBS Disk
-- AzureFile
-- AzureDisk
-- Ceph RBD
-- Gluster Volume
-- Google Persistent Disk
-- Longhorn
-- Openstack Cinder Volume
-- Portworx Volume
-- Quobyte Volume
-- ScaleIO Volume
-- StorageOS
-- Vmware vSphere Volume
-{{% /accordion %}}
-<br/>
-
-In addition to customizing each provisioner's options for the storage class, you can also define the volume `reclaimPolicy`. There are two options available:
-
-- Delete volumes and underlying device when released by workloads.
-- Retain the volume for manual cleanup.
-
-Finally, you can define custom `MountOptions` for the persistent volume created.
-
-`parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
 
 ### Adding Storage Classes
 
 _Storage Classes_ allow you to dynamically provision persistent volumes on demand. Think of storage classes as storage profiles that are created automatically upon a request (which is known as a _persistent volume claim_).
+
+>**Prerequisites:**
+>
+>- Permissions: `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+>- You must have [storage provisioned]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
+>- If provisioning storage for a cluster hosted in the cloud:
+>
+>   - The storage and cluster hosts must be the [same provider](#storage-and-cloud-providers).
+>   - The [cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option must be enabled.
 
 1. From the **Global** view, open the cluster for which you want to dynamically provision persistent storage volumes.
 
