@@ -11,12 +11,21 @@ There are two ways to create persistent storage in Kubernetes: Persistent Volume
 
 ## Persistent Volumes
 
-_Persistent Volumes_ are pre-provisioned storage volumes that you can bind to pods later. For example, in Amazon EC2, you might want to create a number of Elastic Block Store (EBS) volumes before you start running your application. Each pre-provisioned EBS volume corresponds to a Kubernetes persistent volume. When the application starts, it creates Persistent Volume Claims (PVCs) that bind to persistent volumes. A PVC corresponds to a Docker volume. Each PVC binds to one PV that includes the minimum resources that the PVC requires. The following figure illustrates the relationship between pods, PVCs, PVs, and the underlying cloud storage.
+_Persistent Volumes_ are pre-provisioned storage volumes that you can bind to pods later. Each pre-provisioned volume corresponds to a Kubernetes persistent volume. When you start your application, it creates Persistent Volume Claims (PVCs) that bind to persistent volumes. A PVC corresponds to a Docker volume. Each PVC binds to one PV that includes the minimum resources that the PVC requires. The following figure illustrates the relationship between pods, PVCs, PVs, and the underlying cloud storage.
 
 ![Persistent Volumes]({{< baseurl >}}/img/rancher/persistent-volume.png)
 
 Rancher allows you to create PVs at the cluster level and bind them to PVCs later. Volumes are managed on a per-project basis.
 
+>**Note:** When adding storage to a cluster that's hosted by a cloud provider, you must use the cloud provider option available for both the cluster and the storage.
+>
+>For example, if you want to add storage to an Amazon EC2 cluster:
+>
+>- You must enable the [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option for the cluster. For more information, see [Editing Clusters]({{< baseurl >}}{{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters)
+>   ![Cloud Provider]({{< baseurl >}}/img/rancher/cloud-provider.png).
+>- You must use the cloud provider's plug-in for cloud storage. The volume plugin for Amazon is EBS Disk. For more information, see [Adding a Persistent Volume](#adding-a-persistent-volume).
+>   ![Amazon EBS Disk Plugin]({{< baseurl >}}/img/rancher/add-persistent-volume.png)
+  
 ### Adding a Persistent Volume
 
 Your containers can store data on themselves, but if a container fails, that data is lost. To solve this issue, Kubernetes offers _persistent volumes_, which are external storage disks or file systems that your containers can access. If a container crashes, its replacement container can access the data in a persistent volume without any data loss.
@@ -40,7 +49,10 @@ Persistent volumes can either be a disk or file system that you host on premise,
 
 1. Select the **Volume Plugin** for the disk type or service that you're using.
 
-    >**Note:** If the cluster you are adding storage for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+    >**Note:** When adding storage to a cluster that's hosted by a cloud provider:
+    >
+    >- You must enable the [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option for the cluster.
+    >- You must use the cloud provider's plug-in for cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
     >
     >   - You must enable the `cloud provider` option for the EC2 cluster.
     >   - You must use the `Amazon EBS Disk` volume plugin.
