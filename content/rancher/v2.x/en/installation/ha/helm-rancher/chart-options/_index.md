@@ -58,8 +58,6 @@ Use `kubectl` to create a docker-registry secret in the `cattle-system` namespac
 ```
 kubectl -n cattle-system create secret docker-registry regcred \
 --docker-server="reg.example.com:5000" \
---docker-username=<user> \
---docker-password=<password> \
 --docker-email=<email>
 ```
 
