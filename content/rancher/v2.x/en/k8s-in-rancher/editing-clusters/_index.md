@@ -129,6 +129,19 @@ Option | Description |
  Default Pod Security Policy | If you enable **Pod Security Policy Support**, use this drop-down to choose the pod security policy that's applied to the cluster. |
  Cloud Provider | If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.  |
 <br/>
+##### Editing Cluster as YAML
+
+>**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
+
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
+
+- To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
+- To read from an existing RKE file, click **Read from File**.
+
+![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
+
+For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
+
 ### Managing Node Pools
 
 In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
@@ -145,15 +158,3 @@ In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioni
 
 >**Note:** The Node Pools section is not available for imported clusters or clusters hosted by a Kubernetes provider.
 
-### Editing Cluster as YAML
-
->**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
-
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
-
-- To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
-- To read from an existing RKE file, click **Read from File**.
-
-![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
-
-For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
