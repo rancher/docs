@@ -60,7 +60,7 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 - To revoke cluster membership, select the user and click **Delete**. This action deletes membership, not the user.
 - To modify a user's roles in the cluster, delete them from the cluster, and then re-add them with modified roles.
 
-## Options for RKE Clusters
+## Cluster Options
 
 When editing clusters, clusters that are [launched using RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) feature more options than clusters that are imported or hosted by a Kubernetes provider. The headings that follow document options available only for RKE clusters.
 
@@ -129,7 +129,7 @@ Option | Description |
  Default Pod Security Policy | If you enable **Pod Security Policy Support**, use this drop-down to choose the pod security policy that's applied to the cluster. |
  Cloud Provider | If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.  |
 <br/>
-##### Editing Cluster as YAML
+#### Editing Cluster as YAML
 
 >**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
 
@@ -142,7 +142,7 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
 
-### Managing Node Pools
+## Managing Node Pools
 
 In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
 
