@@ -60,7 +60,11 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 - To revoke cluster membership, select the user and click **Delete**. This action deletes membership, not the user.
 - To modify a user's roles in the cluster, delete them from the cluster, and then re-add them with modified roles.
 
-## Upgrading Kubernetes
+## Options for RKE Clusters
+
+When editing clusters, clusters that are [launched using RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) feature more options than clusters that are imported or hosted by a Kubernetes provider. The headings that follow document options available only for RKE clusters.
+
+### Upgrading Kubernetes
 
 Following an upgrade to the latest version of Rancher, you can update your existing clusters to use the latest supported version of Kubernetes. Before a new version of Rancher is released, it's tested with the latest versions of Kubernetes to ensure compatibility. 
 
@@ -76,7 +80,7 @@ Following an upgrade to the latest version of Rancher, you can update your exist
 
 **Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable. 
 
-## Adding a Pod Security Policy
+### Adding a Pod Security Policy
 
 When your cluster is running pods with security-sensitive configurations, assign it a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/), which is a set of rules that monitors the conditions and settings in your pods. If a pod doesn't meet the rules specified in your policy, the policy stops it from running.
 
@@ -102,7 +106,7 @@ You can assign a pod security policy when you provision a cluster. However, if y
 >
 >To check if a running workload passes your pod security policy, clone or upgrade it.
 
-## Editing Other Cluster Options
+### Editing Other Cluster Options
 
 In [clusters launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can edit any of the remaining options that follow.
 
@@ -124,8 +128,8 @@ Option | Description |
  Docker Root Directory | The directory on your cluster nodes where you've installed Docker. If you install Docker on your nodes to a non-default directory, update this path. |
  Default Pod Security Policy | If you enable **Pod Security Policy Support**, use this drop-down to choose the pod security policy that's applied to the cluster. |
  Cloud Provider | If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.  |
-
-## Managing Node Pools
+<br/>
+### Managing Node Pools
 
 In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
 
@@ -141,7 +145,7 @@ In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioni
 
 >**Note:** The Node Pools section is not available for imported clusters or clusters hosted by a Kubernetes provider.
 
-## Editing Cluster as YAML
+### Editing Cluster as YAML
 
 >**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
 
