@@ -47,15 +47,19 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 	And the **FQDN** part.
 
-9. [Back Up Your RKE Config File](#9-back-up-your-rke-config-file)
+9. [Configure Rancher version](#9-configure-rancher-version)
+
+        Configure the **Rancher version** to use.
+
+10. [Back Up Your RKE Config File](#10-back-up-your-rke-config-file)
 
 	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
 
-10. [Run RKE](#10-run-rke)
+11. [Run RKE](#11-run-rke)
 
 	Run RKE to deploy Rancher to your cluster.
 
-11. [Back Up Auto-Generated Config File](#11-back-up-auto-generated-config-file)
+12. [Back Up Auto-Generated Config File](#12-back-up-auto-generated-config-file)
 
 	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
 
@@ -298,11 +302,23 @@ There is one reference to `<FQDN>` in the RKE config file. Replace this referenc
 
 3. Save the file and close it.
 
-## 9. Back Up Your RKE Config File
+## 9. Configure Rancher version
+
+The last reference that needs to be replaced is `<RANCHER_VERSION>`. This needs to be replaced with a Rancher version which is marked as stable. The latest stable release of Rancher can be found in the [GitHub README](https://github.com/rancher/rancher/blob/master/README.md). Make sure the version is an actual version number, and not a named tag like `stable` or `latest`. The example below shows the version configured to `v2.0.6`.
+
+```
+      spec:
+        serviceAccountName: cattle-admin
+        containers:
+        - image: rancher/rancher:v2.0.6
+          imagePullPolicy: Always
+```
+
+## 10. Back Up Your RKE Config File
 
 After you close your RKE config file, `rancher-cluster.yml`, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
 
-## 10. Run RKE
+## 11. Run RKE
 
 With all configuration in place, use RKE to launch Rancher. You can complete this action by running the `rke up` command and using the `--config` parameter to point toward your config file.
 
@@ -330,7 +346,7 @@ With all configuration in place, use RKE to launch Rancher. You can complete thi
     INFO[0101] Finished building Kubernetes cluster successfully
     ```
 
-## 11. Back Up Auto-Generated Config File
+## 12. Back Up Auto-Generated Config File
 
 During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the `rancher-cluster.yml` file. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
