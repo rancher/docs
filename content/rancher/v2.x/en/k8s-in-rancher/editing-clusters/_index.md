@@ -3,12 +3,12 @@ title: Editing Clusters
 weight: 3015
 ---
 
-After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster. To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis > Edit** for the cluster that you want to edit.
+After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster. To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis (...) > Edit** for the cluster that you want to edit.
 
 <sup>To Edit an Existing Cluster</sup>
 ![Edit Cluster]({{< baseurl >}}/img/rancher/edit-cluster.png)
 
-The options and settings available for an existing cluster change based on the method that you used to provision the cluster. For example, only clusters provisioned by RKE have **Cluster Options** available for editing.
+The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
 
 The following table lists the options and settings available for each cluster type:
 
@@ -62,7 +62,7 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 
 ## Upgrading Kubernetes
 
-Following an upgrade to the latest version of Rancher, you can update your existing clusters to use latest version of Kubernetes supported by Rancher. Prior to release, we test Rancher with the latest versions of to ensure compatibility. Any version of Kubernetes listed in the Rancher UI is fully supported.
+Following an upgrade to the latest version of Rancher, you can update your existing clusters to use the latest supported version of Kubernetes. Before a new version of Rancher is released, it's tested with the latest versions of Kubernetes to ensure compatibility. 
 
 >**Recommended:** Before upgrading Kubernetes, [backup your cluster]({{< baseurl >}}/rancher/v2.x/en/backups).
 
@@ -74,7 +74,7 @@ Following an upgrade to the latest version of Rancher, you can update your exist
 
 1. Click **Save**.
 
-**Result:** Kubernetes is upgraded for the cluster.
+**Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable. 
 
 ## Adding a Pod Security Policy
 
@@ -88,9 +88,9 @@ You can assign a pod security policy when you provision a cluster. However, if y
 
 3. From **Pod Security Policy Support**, select **Enabled**.
 
-    >**Note:** This option is only available for clusters provisioned by RKE.
+    >**Note:** This option is only available for clusters [provisioned by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/).
 
-4. From **Default Pod Security Policy** drop-down, select the policy you want to apply to the cluster.
+4. From the **Default Pod Security Policy** drop-down, select the policy you want to apply to the cluster.
 
 	Rancher ships with [policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/#default-pod-security-policies) of `restricted` and `unrestricted`, although you can [create custom policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/#default-pod-security-policies) as well.	
 
@@ -116,9 +116,9 @@ Option | Description |
 ---------|----------|
  Kubernetes Version | The version of Kubernetes installed on each cluster node. For more detail, see [Upgrading Kubernetes](#upgrading-kubernetes). |
  Network Provider | The [container networking interface]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/) that powers networking for your cluster.<br/><br/>**Note:** You can only choose this option while provisioning your cluster. It cannot be edited later. |
- Project Network Isolation | If you're using the Canal network provider, you can choose whether to enable or disable inter-project communication. |
+ Project Network Isolation | As of Rancher v2.0.7, if you're using the Canal network provider, you can choose whether to enable or disable inter-project communication. |
  Nginx Ingress | If you want to publish your applications in a high-availability configuration, and you're hosting your nodes with a cloud-provider that doesn't have a native load-balancing feature, enable this option to use Nginx ingress within the cluster. |
- Metrics Server Monitoring | Each cloud provider capable of launching a cluster using RKE can collect metrics and monitoring for your cluster nodes. Enable this option to view your node metrics from your cloud provider's portal. |
+ Metrics Server Monitoring | Each cloud provider capable of launching a cluster using RKE can collect metrics and monitor for your cluster nodes. Enable this option to view your node metrics from your cloud provider's portal. |
  Pod Security Policy Support | Enables [pod security policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/) for the cluster. After enabling this option, choose a policy using the **Default Pod Security Policy** drop-down. |
  Docker version on nodes | Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support. If you choose to require a [supported Docker version]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/#software), Rancher will stop pods from running on nodes that don't have a supported Docker version installed. |
  Docker Root Directory | The directory on your cluster nodes where you've installed Docker. If you install Docker on your nodes to a non-default directory, update this path. |
@@ -135,11 +135,11 @@ In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioni
 	
 	- You can also reuse existing templates by selecting one from the **Template** drop-down.
 
-- Redistribute Kubernetes nodes amongst your node pools by making different checkbox selections  
+- Redistribute Kubernetes roles amongst your node pools by making different checkbox selections  
 
 - Scale the number of nodes in a pool up or down (although, if you simply want to maintain your node scale, we recommend using the cluster's [Nodes tab]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/nodes/#nodes-provisioned-by-node-pool) instead.)
 
->**Note:** The Node Pools section is not available for imported clusters or clusters hosted by a Kubnernetes provider.
+>**Note:** The Node Pools section is not available for imported clusters or clusters hosted by a Kubernetes provider.
 
 ## Editing Cluster as YAML
 
