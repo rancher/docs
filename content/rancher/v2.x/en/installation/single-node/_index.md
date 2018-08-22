@@ -1,11 +1,13 @@
 ---
-title: Single Node Installation
+title: Single Node Install
 weight: 250
+aliases:
+  - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
 
 >**Want to use an external load balancer?**
-> See [Single Node Installation with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/advanced-options/single-node-install-external-lb) instead.
+> See [Single Node Install with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/single-node-install-external-lb) instead.
 
 ## Installation Outline
 
@@ -50,7 +52,7 @@ The following diagram depicts the basic port requirements for Rancher. For a com
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 >**Attention Air Gap Users:**
-> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
+> If you are visiting this page to complete an [Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/) Installation, you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 >
 > Example:
 ```
@@ -62,7 +64,8 @@ Choose from the following options:
 - [Option A—Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
 - [Option B—Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
 - [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-c-bring-your-own-certificate-signed-by-recognized-ca)
-- [Option D—Let's Encrypt Certificate](#option-d-let-s-encrypt-certificate)
+- [Option D—Bring Your Own Certificate: Private CA Root Certificate CA](#option-d-bring-your-own-certificate-private-ca-root-certificate)
+- [Option E—Let's Encrypt Certificate](#option-e-let-s-encrypt-certificate)
 
 ### Option A—Default Self-Signed Certificate
 
@@ -103,7 +106,6 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 	  rancher/rancher:latest
 	```
 
-
 ### Option C—Bring Your Own Certificate: Signed by Recognized CA
 
 If you're publishing your app publicly, you should ideally be using a certificate signed by a recognized CA.
@@ -126,7 +128,38 @@ If you're publishing your app publicly, you should ideally be using a certificat
 	  rancher/rancher:latest --no-cacerts
 	```
 
-### Option D—Let's Encrypt Certificate
+### Option D—Bring Your Own Certificate: Private CA Root Certificate
+
+Services that Rancher needs to access are sometimes configured with a certificate from an custom/internal Certificate Authority (CA) root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error will appear: `x509: certificate signed by unknown authority`.
+
+To validate the certificate, the CA root certificates need to be added to Rancher. As Rancher is written in Go, we can use the environment variable `SSL_CERT_DIR` to point to the directory where the CA root certificates are located in the container. The CA root certificates directory can be mounted using the Docker volume option (`-v host-source-directory:container-destination-directory`) when starting the Rancher container.
+
+Examples of services that Rancher can access:
+
+* Catalogs
+* Authentication providers
+* Accessing hosting/cloud API when using Node Drivers
+
+#### Start Rancher Container with custom CA root certificates
+
+The requirements are:
+
+* Mount the host directory containing the CA root certificates in the container using the volume option.
+* Add the environment variable `SSL_CERT_DIR` with as value the mounted CA root certificates directory location inside the container.
+
+Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`, mounting a host directory inside the container can be done using `-v host-source-directory:container-destination-directory` or `--volume host-source-directory:container-destination-directory`.
+
+The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /host/certs:/container/certs \
+  -e SSL_CERT_DIR="/container/certs" \
+  rancher/rancher:latest
+```
+
+### Option E—Let's Encrypt Certificate
 
 Rancher supports Let's Encrypt certificates. Let's Encrypt uses an `http-01 challenge` to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
@@ -174,7 +207,7 @@ You have a couple of options:
 
 In the situation where you want to use a single node to run Rancher and to be able to add the same node to a cluster, you have to adjust the host ports mapped for the `rancher/rancher` container.
 
-If a node is added to a cluster, it deploys the nginx ingress controller which will use port 80 and 443. This will conflict with the default ports we advice to expose for the `rancher/rancher` container. 
+If a node is added to a cluster, it deploys the nginx ingress controller which will use port 80 and 443. This will conflict with the default ports we advice to expose for the `rancher/rancher` container.
 
 Please note that this setup is not recommended for production use, but can be convenient for development/demo purposes.
 

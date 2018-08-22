@@ -1,5 +1,5 @@
 ---
-title: High Availability Installation
+title: High Availability (HA) Install
 weight: 275
 draft: true
 ---
@@ -36,5 +36,5 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Additional Install Options
 
-* [Migrating from RKE all-in-one install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/migrating-from-rke-all-in-one/)
-* [RKE all-in-one install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-all-in-one/)
+* [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
+* [RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)
