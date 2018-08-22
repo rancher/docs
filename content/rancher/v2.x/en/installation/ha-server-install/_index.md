@@ -120,9 +120,24 @@ After installing NGINX, you need to update the NGINX config file, `nginx.conf`, 
     }
 
     http {
+        upstream rancher_servers {
+            least_conn;
+            server IP_NODE_1:80 max_fails=3 fail_timeout=5s;
+            server IP_NODE_2:80 max_fails=3 fail_timeout=5s;
+            server IP_NODE_3:80 max_fails=3 fail_timeout=5s;
+        }
+    
         server {
             listen         80;
-            return 301 https://$host$request_uri;
+        
+            location ~ /\.well-known/acme-challenge {
+                proxy_set_header Host $host;
+                proxy_pass http://rancher_servers;
+            }
+        
+            location / {
+                return 301 https://$host$request_uri;
+            }
         }
     }
 
