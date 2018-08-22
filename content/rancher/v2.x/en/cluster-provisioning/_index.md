@@ -18,7 +18,7 @@ A _Kubernetes Cluster_ is a cluster that uses the [Kubernetes container-orchestr
 
 Each computing resource in a Kubernetes Cluster is called a _node_. Nodes can be either bare-metal servers or virtual machines. Kubernetes classifies nodes into three types: _etcd_ nodes, _control plane_ nodes, and _worker_ nodes.
 
-#### etcd Nodes
+#### etcd Nodes 
 
 [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd) nodes run the etcd database. The etcd database component is a key value store used as Kubernetes storage for all cluster data, such as cluster coordination and state management.
 
