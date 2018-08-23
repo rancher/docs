@@ -60,7 +60,7 @@ The following diagram depicts the basic port requirements for Rancher. For a com
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 >**Attention Air Gap Users:**
-> If you are visiting this page to complete [Air Gap Installation](../air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
+> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
 >
 > Example:
 ```
@@ -69,6 +69,17 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 - [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
 - [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
+
+>**Want records of all transactions with the Rancher API?** 
+>
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+>```
+-e AUDIT_LEVEL=1 \
+-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+-e AUDIT_LOG_MAXAGE=20 \
+-e AUDIT_LOG_MAXBACKUP=20 \
+-e AUDIT_LOG_MAXSIZE=100 \
+```
 
 ### Option A-Bring Your Own Certificate: Self-Signed
 

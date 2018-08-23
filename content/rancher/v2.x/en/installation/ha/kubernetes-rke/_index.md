@@ -56,7 +56,7 @@ You can copy this file to `$HOME/.kube/config` or if you are working with multip
 export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
 ```
 
-Test you connectivity with `kubectl` and see if you can get the list of nodes back.
+Test your connectivity with `kubectl` and see if you can get the list of nodes back.
 
 ```
 kubectl get nodes
@@ -65,6 +65,33 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.114.63                Ready     controlplane,etcd,worker   11m       v1.10.1
 165.227.116.167               Ready     controlplane,etcd,worker   11m       v1.10.1
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
+```
+
+### Check the health of your cluster pods
+
+Check that all the required pods and containers are healthy are ready to continue.
+
+* Pods are in `Running` or `Completed` state.
+* `READY` column shows all the containers are running (i.e. `3/3`) for pods with `STATUS` `Running`
+* Pods with `STATUS` `Completed` are run-one Jobs. For these pods `READY` should be `0/1`.
+
+```
+kubectl get pods --all-namespaces
+
+NAMESPACE       NAME                                      READY     STATUS      RESTARTS   AGE
+ingress-nginx   nginx-ingress-controller-tnsn4            1/1       Running     0          30s
+ingress-nginx   nginx-ingress-controller-tw2ht            1/1       Running     0          30s
+ingress-nginx   nginx-ingress-controller-v874b            1/1       Running     0          30s
+kube-system     canal-jp4hz                               3/3       Running     0          30s
+kube-system     canal-z2hg8                               3/3       Running     0          30s
+kube-system     canal-z6kpw                               3/3       Running     0          30s
+kube-system     kube-dns-7588d5b5f5-sf4vh                 3/3       Running     0          30s
+kube-system     kube-dns-autoscaler-5db9bbb766-jz2k6      1/1       Running     0          30s
+kube-system     metrics-server-97bc649d5-4rl2q            1/1       Running     0          30s
+kube-system     rke-ingress-controller-deploy-job-bhzgm   0/1       Completed   0          30s
+kube-system     rke-kubedns-addon-deploy-job-gl7t4        0/1       Completed   0          30s
+kube-system     rke-metrics-addon-deploy-job-7ljkc        0/1       Completed   0          30s
+kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   0          30s
 ```
 
 ### Save your files
