@@ -1,6 +1,9 @@
 ---
 title: Cleaning cluster nodes
 weight: 375
+aliases:
+  - /rancher/v2.x/en/installation/removing-rancher/cleaning-cluster-nodes/
+  - /rancher/v2.x/en/installation/removing-rancher/
 ---
 When adding a node to a cluster, resources (containers/(virtual) network interfaces) and configuration items (certificates/configuration files) are created. When removing a node from a cluster (if it is in `Active` state), those resources will be automatically cleaned and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
 
