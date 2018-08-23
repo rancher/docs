@@ -71,10 +71,6 @@ Complete installation of Rancher using the instructions in [Single Node Install]
 	  <registry.yourdomain.com:port>/rancher/rancher:latest
 ```
 
-### High Availability Install
-
-Complete the installation of Rancher following the [High Availability instructions]({{< baseurl >}}/rancher/v2.x/en/installation/ha/).
-
 ## Configuring Rancher to use the private registry
 
 Rancher needs to be configured to use the private registry as source for the needed images.

@@ -36,10 +36,7 @@ nodes:
 
 #### Advanced configurations
 
-RKE has many configuration options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
-
-* [System Images for Air Gap Network]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/)
-* [Private Docker Image Registry]({{< baseurl >}}/rke/v0.1.x/en/config-options/private-registries/)
+RKE has many configuration options for customizing the install to suit your specific environment.
 
 Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full list of options and capabilities.
 
