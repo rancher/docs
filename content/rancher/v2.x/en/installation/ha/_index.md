@@ -1,7 +1,6 @@
 ---
 title: High Availability (HA) Install
 weight: 275
-draft: true
 ---
 
 When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for High-Availability.
