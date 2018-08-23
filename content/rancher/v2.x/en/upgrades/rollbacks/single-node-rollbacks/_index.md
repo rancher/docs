@@ -31,9 +31,9 @@ docker run  --volumes-from rancher-data \
    && tar zxvf /backup/<BACKUP_FILENAME>.tar.gz"
      ```
 
-4. Start a new Rancher Server container that uses the `<RANCHER_VERSION>` data container that you created in [Step 3]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/#backup) of [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade).
+4. Start a new Rancher Server container with the `<PRIOR_VERSION>` tag pointing to the data container.
     ```
 docker run -d --volumes-from rancher-data \
-  --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:<RANCHER_VERSION>
+  --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:<PRIOR_VERSION>
     ```
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
