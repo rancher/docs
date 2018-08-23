@@ -102,5 +102,5 @@ In this documentation, as an example, we're using Amazon S3 as our safe location
 
 ```
 root@node:~# s3cmd mb s3://rke-etcd-snapshots
-root@node:~# s3cmd /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
+root@node:~# s3cmd put /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
 ```
