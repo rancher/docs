@@ -50,7 +50,7 @@ helm install rancher-stable/rancher --name rancher --namespace cattle-system \
 
 #### LetsEncrypt
 
-Use LetsEncrypt's free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
+Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
 
 Set `hostname`, `ingress.tls.source=letEncrypt` and LetsEncrypt options.
 
@@ -60,8 +60,6 @@ helm install rancher-stable/rancher --name rancher --namespace cattle-system \
 --set ingress.tls.source=letsEncrypt \
 --set letsEncrypt.email=me@example.org
 ```
-
-> LetsEncrypt ProTip: The default `production` environment only allows you to register a name 5 times in a week. If you're rebuilding a bunch of times, use `--set letsEncrypt.environment=staging` until you have you're confident your config is right.
 
 #### Certificates from Files (Kubernetes Secret)
 
