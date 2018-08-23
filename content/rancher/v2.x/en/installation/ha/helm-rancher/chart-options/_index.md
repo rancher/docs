@@ -41,9 +41,9 @@ Add your IP exceptions to the `noProxy` list. Make sure you add the Service clus
 --set noProxy="127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 ```
 
-### Private or Air Gap Registry
+### Private Registry
 
-You can point to a private registry for an "Air Gap" install.
+You can point to a private registry for the rancher image.
 
 #### Images
 

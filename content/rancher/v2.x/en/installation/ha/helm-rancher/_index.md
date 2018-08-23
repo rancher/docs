@@ -86,7 +86,7 @@ Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
 * [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
-* [Private Docker Image Registry/Air Gap Network]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-or-air-gap-registry)
+* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry)
 * [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination)
 
 See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/) for the full list of options.
