@@ -2,6 +2,7 @@
 title: Single Node Install
 weight: 250
 aliases:
+  - /rancher/v2.x/en/installation/single-node-install/
   - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
 For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
