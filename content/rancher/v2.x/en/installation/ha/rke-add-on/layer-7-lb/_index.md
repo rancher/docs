@@ -333,7 +333,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/ha-backups/).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/).
 - Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
