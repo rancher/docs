@@ -26,14 +26,14 @@ docker stop <RANCHER_CONTAINER_ID>
 3. Go to the location where you saved your [backup tar balls]({{< baseurl>}}/rancher/v2.x/en/upgrades/single-node-upgrade/#backup). Run the following command to create a data container from the backup tar ball.
 
      ```
-docker run  --volumes-from rancher-data-<PRIOR_VERSION> \
+docker run  --volumes-from rancher-data \
    -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf  \
    && tar zxvf /backup/<BACKUP_FILENAME>.tar.gz"
      ```
 
 4. Start a new Rancher Server container with the `<PRIOR_VERSION>` tag pointing to the data container.
     ```
-docker run -d --volumes-from rancher-data-<PRIOR_VERSION> \
+docker run -d --volumes-from rancher-data \
   --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:<PRIOR_VERSION>
     ```
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
