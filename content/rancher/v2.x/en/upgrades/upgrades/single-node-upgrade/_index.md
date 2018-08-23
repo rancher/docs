@@ -55,6 +55,18 @@ docker pull rancher/rancher:latest
 docker run -d --volumes-from rancher-data --restart=unless-stopped \
 -p 80:80 -p 443:443 rancher/rancher:latest
     ```
+
+    >**Want records of all transactions with the Rancher API?** 
+    >
+    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your upgrade command.
+    >```
+    -e AUDIT_LEVEL=1 \
+    -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+    -e AUDIT_LOG_MAXAGE=20 \
+    -e AUDIT_LOG_MAXBACKUP=20 \
+    -e AUDIT_LOG_MAXSIZE=100 \
+    ```
+    
     >**Note:** _Do not_ stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
     ><br/>
     ><br/>

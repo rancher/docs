@@ -70,6 +70,17 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 - [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
 - [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
 
+>**Want records of all transactions with the Rancher API?** 
+>
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+>```
+-e AUDIT_LEVEL=1 \
+-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+-e AUDIT_LOG_MAXAGE=20 \
+-e AUDIT_LOG_MAXBACKUP=20 \
+-e AUDIT_LOG_MAXSIZE=100 \
+```
+
 ### Option A-Bring Your Own Certificate: Self-Signed
 
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
