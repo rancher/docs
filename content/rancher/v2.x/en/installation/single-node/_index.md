@@ -10,43 +10,31 @@ For development environments, we recommend installing Rancher by running a singl
 >**Want to use an external load balancer?**
 > See [Single Node Install with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/single-node-install-external-lb) instead.
 
-## Installation Outline
-
-Installation of Rancher on a single node involves multiple procedures. Review this outline to learn about each procedure you need to complete.
-
-1. [Provision Linux Host](#1-provision-linux-host)
-
-    Provision a single Linux host to launch your {{< product >}} Server.
-
-2. [Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
-
-    Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
 
 ## 1. Provision Linux Host
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
+
+
 ### Requirements
 
-#### Operating System
 
+{{% accordion id="os" label="Operating Systems" %}}
 {{< requirements_os >}}
-
-#### Hardware
-
+{{% /accordion %}}
+{{% accordion id="hardware" label="Hardware" %}}
 {{< requirements_hardware >}}
-
-#### Software
-
+{{% /accordion %}}
+{{% accordion id="software" label="Software" %}}
 {{< requirements_software >}}
-
 {{< note_server-tags >}}
-
-#### Ports
-
+{{% /accordion %}}
+{{% accordion id="ports" label="Ports" %}}
 The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+{{% /accordion %}}
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -62,39 +50,20 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-- [Option A—Default Self-Signed Certificate](#option-a-default-self-signed-certificate)
-- [Option B—Bring Your Own Certificate: Self-Signed](#option-b-bring-your-own-certificate-self-signed)
-- [Option C—Bring Your Own Certificate: Signed by Recognized CA](#option-c-bring-your-own-certificate-signed-by-recognized-ca)
-- [Option D—Bring Your Own Certificate: Private CA Root Certificate CA](#option-d-bring-your-own-certificate-private-ca-root-certificate)
-- [Option E—Let's Encrypt Certificate](#option-e-let-s-encrypt-certificate)
-
->**Want records of all transactions with the Rancher API?** 
->
->Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
->```
--e AUDIT_LEVEL=1 \
--e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
--e AUDIT_LOG_MAXAGE=20 \
--e AUDIT_LOG_MAXBACKUP=20 \
--e AUDIT_LOG_MAXSIZE=100 \
-```
-
-### Option A—Default Self-Signed Certificate
-
+{{% accordion id="option-a" label="Option A—Default Self-Signed Certificate" %}}
 If you install Rancher without using your own certificate, Rancher generates a self-signed certificate that's used for encryption. If you're satisfied with this certificate, there's no need to obtain your own.
 
 **To Install Rancher Using the Default Certificate:**
 
 1. From your Linux host, run the Docker command to install Rancher without any additional parameters:
 
-    ```
-    docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      rancher/rancher:latest
-    ```
-
-### Option B—Bring Your Own Certificate: Self-Signed
-
+	```
+	docker run -d --restart=unless-stopped \
+	  -p 80:80 -p 443:443 \
+	  rancher/rancher:latest
+	```
+{{% /accordion %}}
+{{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Self-Signed" %}}
 Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
 
 >**Prerequisites:**
@@ -109,16 +78,16 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 
 1. After creating your certificate, run the Docker command to install Rancher, pointing toward your certificate files.
 
-    ```
-    docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      -v /etc/<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
-      -v /etc/<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-      -v /etc/<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-      rancher/rancher:latest
-    ```
-
-### Option C—Bring Your Own Certificate: Signed by Recognized CA
+	```
+	docker run -d --restart=unless-stopped \
+	  -p 80:80 -p 443:443 \
+	  -v /etc/<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+	  -v /etc/<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+	  -v /etc/<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+	  rancher/rancher:latest
+	```
+{{% /accordion %}}
+{{% accordion id="option-c" label="Option C—Bring Your Own Certificate: Signed by Recognized CA" %}}
 
 If you're publishing your app publicly, you should ideally be using a certificate signed by a recognized CA.
 
@@ -132,15 +101,15 @@ If you're publishing your app publicly, you should ideally be using a certificat
 
 1. After obtaining your certificate, run the Docker command to deploy Rancher while pointing toward your certificate files.
 
-    ```
-    docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
-      -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
-      rancher/rancher:latest --no-cacerts
-    ```
-
-### Option D—Bring Your Own Certificate: Private CA Root Certificate
+	```
+	docker run -d --restart=unless-stopped \
+	  -p 80:80 -p 443:443 \
+	  -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
+	  -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
+	  rancher/rancher:latest --no-cacerts
+	```
+{{% /accordion %}}
+{{% accordion id="option-d" label="Option D—Bring Your Own Certificate: Private CA Root Certificate" %}}
 
 Services that Rancher needs to access are sometimes configured with a certificate from an custom/internal Certificate Authority (CA) root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error will appear: `x509: certificate signed by unknown authority`.
 
@@ -170,8 +139,8 @@ docker run -d --restart=unless-stopped \
   -e SSL_CERT_DIR="/container/certs" \
   rancher/rancher:latest
 ```
-
-### Option E—Let's Encrypt Certificate
+{{% /accordion %}}
+{{% accordion id="option-e" label="Option E—Let's Encrypt Certificate" %}}
 
 Rancher supports Let's Encrypt certificates. Let's Encrypt uses an `http-01 challenge` to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
@@ -197,6 +166,19 @@ Run the following commands from your Linux host.
 
 >
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
+{{% /accordion %}}
+
+
+>**Want records of all transactions with the Rancher API?** 
+>
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+>```
+-e AUDIT_LEVEL=1 \
+-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+-e AUDIT_LOG_MAXAGE=20 \
+-e AUDIT_LOG_MAXBACKUP=20 \
+-e AUDIT_LOG_MAXSIZE=100 \
+```
 
 ## What's Next?
 
