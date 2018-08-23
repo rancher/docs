@@ -10,12 +10,12 @@ This section contains instructions for installing Rancher in development and pro
 
 	Install Rancher on a single Linux host.
 
--  [High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/ha/)
+-  [High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
 
  	This install scenario creates a new Kubernetes cluster dedicated to running Rancher Server in a high-availability (HA) configuration.
 
 ### Reference
 
--  [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/references/)
+-  [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/)
 
  	List of required ports you must open to operate Rancher.
