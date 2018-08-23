@@ -23,12 +23,14 @@ docker pull rancher/rancher:<PRIOR_VERSION>
 docker stop <RANCHER_CONTAINER_ID>
     ```
 
-3. Go to the location where you saved your [backup tar balls]({{< baseurl>}}/rancher/v2.x/en/upgrades/single-node-upgrade/#backup). Run the following command to create a data container from the backup tar ball.
+3. Go to the location where you saved your [backup tar balls]({{< baseurl>}}/rancher/v2.x/en/upgrades/single-node-upgrade/#backup). 
+
+    Run the following command to create a data container from the backup tar ball. Replace `<RANCHER_VERSION>` with the tag you used during [Step 3]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/#backup) of [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/).
 
      ```
 docker run  --volumes-from rancher-data-<PRIOR_VERSION> \
    -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf  \
-   && tar zxvf /backup/<BACKUP_FILENAME>.tar.gz"
+   && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz
      ```
 
 4. Start a new Rancher Server container with the `<PRIOR_VERSION>` tag pointing to the data container.
