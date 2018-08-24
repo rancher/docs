@@ -11,8 +11,8 @@ Use `kubectl` with the `tls` secret type to create the secrets.
 
 ```
 kubectl -n cattle-system create secret tls tls-rancher-ingress \
---cert=./tls.crt \
---key=./tls.key
+  --cert=./tls.crt \
+  --key=./tls.key
 ```
 
 ### Private CA Signed - Additional Steps
@@ -22,5 +22,6 @@ If you are using a private CA, Rancher will need to have a copy of the CA cert t
 Copy the CA cert into a file named `cacerts.pem` and use `kubectl` to create the `tls-ca` secret in the `cattle-system` namespace.
 
 ```
-kubectl -n cattle-system create secret generic tls-ca --from-file=cacerts.pem
+kubectl -n cattle-system create secret generic tls-ca \
+  --from-file=cacerts.pem
 ```
