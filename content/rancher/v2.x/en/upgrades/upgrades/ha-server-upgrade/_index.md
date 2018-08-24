@@ -4,7 +4,11 @@ weight: 1040
 aliases:
   - /rancher/v2.x/en/upgrades/ha-server-upgrade/
 ---
-To upgrade Rancher 2.x running in a high availability configuration, run an upgrade command that points to your upgrade config file.
+
+This document is for upgrading Rancher HA installed with the RKE Add-On yaml. See these docs to migrate to or upgrade Rancher installed with the Helm chart.
+
+* [Migrating from a High Availability RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
+* [High Availability (HA) Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/)
 
 >**Prerequisites:**
 {{< requirements_rollback >}}
