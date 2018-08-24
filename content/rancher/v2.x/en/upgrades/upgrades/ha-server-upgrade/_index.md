@@ -1,6 +1,6 @@
 ---
-title: High Availability (HA) Upgrade
-weight: 1020
+title: High Availability (HA) Upgrade - RKE Add-on
+weight: 1040
 aliases:
   - /rancher/v2.x/en/upgrades/ha-server-upgrade/
 ---
