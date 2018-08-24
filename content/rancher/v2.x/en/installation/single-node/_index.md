@@ -15,8 +15,6 @@ For development environments, we recommend installing Rancher by running a singl
 
 Provision a single Linux host to launch your {{< product >}} Server.
 
-
-
 ### Requirements
 
 
@@ -63,20 +61,18 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 Choose from the following options:
 
 {{% accordion id="option-a" label="Option A—Default Self-Signed Certificate" %}}
-If you install Rancher without using your own certificate, Rancher generates a self-signed certificate that's used for encryption. If you're satisfied with this certificate, there's no need to obtain your own.
 
-**To Install Rancher Using the Default Certificate:**
+If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
-1. From your Linux host, run the Docker command to install Rancher without any additional parameters:
+Log into your Linux host, and then run the minimum installation command below.
 
-	```
 	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  rancher/rancher:latest
-	```
+	-p 80:80 -p 443:443 \
+	rancher/rancher:latest
+
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Self-Signed" %}}
-Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
+In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
 >**Prerequisites:**
 >Create a self-signed certificate.
@@ -84,20 +80,15 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 >- The certificate files must be in [PEM format](#pem).
 >- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
-**To Install Rancher Using a Self-Signed Cert:**
+After creating your certificate, run the Docker command to install Rancher. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
-Your Rancher install can use a self-signed certificate that you provide to encrypt communications.
-
-1. After creating your certificate, run the Docker command to install Rancher, pointing toward your certificate files.
-
-	```
 	docker run -d --restart=unless-stopped \
 	  -p 80:80 -p 443:443 \
 	  -v /etc/<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
 	  -v /etc/<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
 	  -v /etc/<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
 	  rancher/rancher:latest
-	```
+
 {{% /accordion %}}
 {{% accordion id="option-c" label="Option C—Bring Your Own Certificate: Signed by Recognized CA" %}}
 
