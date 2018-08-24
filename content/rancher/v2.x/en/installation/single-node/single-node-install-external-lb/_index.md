@@ -10,24 +10,14 @@ For development environments, we recommend installing Rancher by running a singl
 >**Want to skip the external load balancer?**
 > See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.
 
-
-
 ## Installation Outline
+<!-- TOC -->
 
-Installation of Rancher on a single node with an external load balancer involves multiple procedures. Review this outline to learn about each procedure you need to complete.
+- [1. Provision Linux Host](#1-provision-linux-host)
+- [2. Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
+- [3. Configure Load Balancer](#3-configure-load-balancer)
 
-1. [Provision Linux Host](#1-provision-linux-host)
-
-    Provision a single Linux host to launch your {{< product >}} Server.
-
-2. [Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
-
-    Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
-
-3. [Configure Load Balancer](#3-configure-load-balancer)
-
-    Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
-
+<!-- /TOC -->
 
 ## 1. Provision Linux Host
 
@@ -35,25 +25,23 @@ Provision a single Linux host to launch your {{< product >}} Server.
 
 ### Host Requirements
 
-#### Operating System
-
+{{% tabs %}}
+{{% tab "Operating System" %}}
 {{< requirements_os >}}
-
-#### Hardware
-
+{{% /tab %}}
+{{% tab "Hardware" %}}
 {{< requirements_hardware >}}
-
-#### Software
-
+{{% /tab %}}
+{{% tab "Software" %}}
 {{< requirements_software >}}
-
 {{< note_server-tags >}}
-
-#### Ports
-
+{{% /tab %}}
+{{% tab "Ports" %}}
 The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
 
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+{{% /tab %}}
+{{% /tabs %}}
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -67,22 +55,17 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
 ```
 
-- [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
-- [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
-
 >**Want records of all transactions with the Rancher API?** 
 >
 >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
->```
--e AUDIT_LEVEL=1 \
--e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
--e AUDIT_LOG_MAXAGE=20 \
--e AUDIT_LOG_MAXBACKUP=20 \
--e AUDIT_LOG_MAXSIZE=100 \
-```
+>
+    >-e AUDIT_LEVEL=1 \
+    >-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+    >-e AUDIT_LOG_MAXAGE=20 \
+    >-e AUDIT_LOG_MAXBACKUP=20 \
+    >-e AUDIT_LOG_MAXSIZE=100 \
 
-### Option A-Bring Your Own Certificate: Self-Signed
-
+{{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
 
 >**Prerequisites:**
@@ -100,9 +83,9 @@ If you elect to use a self-signed certificate to encrypt communication, you must
       -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
       rancher/rancher:latest
     ```
-
-### Option B-Bring Your Own Certificate: Signed by Recognized CA
-
+ 
+{{% /accordion %}}
+{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
 >**Prerequisites:**
@@ -117,9 +100,10 @@ If you use a certificate signed by a recognized CA, installing your certificate 
 
     ```
     docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      rancher/rancher:latest --no-cacerts
-    ```
+    -p 80:80 -p 443:443 \
+    rancher/rancher:latest --no-cacerts
+    ``` 
+{{% /accordion %}}
 
 ## 3. Configure Load Balancer
 
@@ -186,6 +170,7 @@ server {
 <br/>
 
 ## What's Next?
+
 You have a couple of options:
 
 - Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/).

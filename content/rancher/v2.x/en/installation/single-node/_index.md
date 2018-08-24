@@ -48,6 +48,18 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
 ```
 
+
+>**Want records of all transactions with the Rancher API?** 
+>
+>Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+>```
+-e AUDIT_LEVEL=1 \
+-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+-e AUDIT_LOG_MAXAGE=20 \
+-e AUDIT_LOG_MAXBACKUP=20 \
+-e AUDIT_LOG_MAXSIZE=100 \
+```
+
 Choose from the following options:
 
 {{% accordion id="option-a" label="Option A—Default Self-Signed Certificate" %}}
@@ -168,17 +180,6 @@ Run the following commands from your Linux host.
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 {{% /accordion %}}
 
-
->**Want records of all transactions with the Rancher API?** 
->
->Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
->```
--e AUDIT_LEVEL=1 \
--e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
--e AUDIT_LOG_MAXAGE=20 \
--e AUDIT_LOG_MAXBACKUP=20 \
--e AUDIT_LOG_MAXSIZE=100 \
-```
 
 ## What's Next?
 
