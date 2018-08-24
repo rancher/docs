@@ -29,13 +29,14 @@ docker create --volumes-from <RANCHER_CONTAINER_ID> \
 
 1. <a id="backup"></a>Create a backup tar ball of your current Rancher data. If you need to rollback, use this backup tar ball.
 
-    - Replace `<RANCHER_VERSION>` with the tag for the version of Rancher currently installed.
+    Replace `<RANCHER_VERSION>` with the tag for the version of Rancher currently installed.
 
     ```
 docker run  --volumes-from rancher-data -v $PWD:/backup \
 alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz \
 /var/lib/rancher
     ```
+    >**Note:** Copy the `<RANCHER_VERSION>` tag and keep it in a safe place. You'll need this tag if you need to [rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/) later.
 
 1. Pull the most recent image of Rancher.
 
