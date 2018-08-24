@@ -40,18 +40,17 @@ We will cover two scenarios:
 1. Browse to the release page of your version (i.e. `https://github.com/rancher/rancher/releases/tag/v2.0.0`) and download `rancher-images.txt`
 
 2. Pull all the images present in `rancher-images.txt`, re-tag each image with the location of your registry, and push the image to the registry. This will require at least 20GB of disk space. See an example script below:
-
-	```
-#!/bin/sh
-IMAGES=`curl -s -L https://github.com/rancher/rancher/releases/download/v2.0.0/rancher-images.txt`
-for IMAGE in $IMAGES; do
-    until docker inspect $IMAGE > /dev/null 2>&1; do
+    ```
+    #!/bin/sh
+    IMAGES=`curl -s -L https://github.com/rancher/rancher/releases/download/v2.0.0/rancher-images.txt`
+    for IMAGE in $IMAGES; do
+      until docker inspect $IMAGE > /dev/null 2>&1; do
         docker pull $IMAGE
+      done
+      docker tag $IMAGE <registry.yourdomain.com:port>/$IMAGE
+      docker push <registry.yourdomain.com:port>/$IMAGE
     done
-    docker tag $IMAGE <registry.yourdomain.com:port>/$IMAGE
-    docker push <registry.yourdomain.com:port>/$IMAGE
-done
-	```
+    ```
 
 ## Completing the Rancher installation
 
@@ -66,9 +65,9 @@ Complete installation of Rancher using the instructions in [Single Node Install]
 >
 > Example:
 > ```
-	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  <registry.yourdomain.com:port>/rancher/rancher:latest
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  <registry.yourdomain.com:port>/rancher/rancher:latest
 ```
 
 ## Configuring Rancher to use the private registry
@@ -83,8 +82,12 @@ Rancher needs to be configured to use the private registry as source for the nee
   ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 
 
->**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`. Example:
-```
-#!/bin/sh
-docker run -d -p 80:80 -p 443:443 -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<registry.yourdomain.com:port> <registry.yourdomain.com:port>/rancher/rancher:v2.0.0
+>**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+>
+> Example:
+> ```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<registry.yourdomain.com:port> \
+  <registry.yourdomain.com:port>/rancher/rancher:v2.0.0
 ```

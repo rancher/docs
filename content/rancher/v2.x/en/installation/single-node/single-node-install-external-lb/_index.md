@@ -18,15 +18,15 @@ Installation of Rancher on a single node with an external load balancer involves
 
 1. [Provision Linux Host](#1-provision-linux-host)
 
-	Provision a single Linux host to launch your {{< product >}} Server.
+    Provision a single Linux host to launch your {{< product >}} Server.
 
 2. [Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
 
-	Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
+    Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
 
 3. [Configure Load Balancer](#3-configure-load-balancer)
 
-	Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
+    Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
 
 
 ## 1. Provision Linux Host
@@ -96,9 +96,9 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 
     ```
     docker run -d --restart=unless-stopped \
-    -p 80:80 -p 443:443 \
-    -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
-    rancher/rancher:latest
+      -p 80:80 -p 443:443 \
+      -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
+      rancher/rancher:latest
     ```
 
 ### Option B-Bring Your Own Certificate: Signed by Recognized CA
@@ -117,8 +117,8 @@ If you use a certificate signed by a recognized CA, installing your certificate 
 
     ```
     docker run -d --restart=unless-stopped \
-    -p 80:80 -p 443:443 \
-    rancher/rancher:latest --no-cacerts
+      -p 80:80 -p 443:443 \
+      rancher/rancher:latest --no-cacerts
     ```
 
 ## 3. Configure Load Balancer
