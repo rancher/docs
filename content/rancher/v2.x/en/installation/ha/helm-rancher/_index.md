@@ -22,7 +22,9 @@ Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/maste
 Install `cert-manager` from the Helm stable catalog.
 
 ```
-helm install stable/cert-manager --name cert-manager --namespace kube-system
+helm install stable/cert-manager \
+  --name cert-manager \
+  --namespace kube-system
 ```
 
 ### Choose your SSL Configuration
@@ -44,8 +46,10 @@ The default is for Rancher to generate a CA and use the `cert-manager` to issue 
 The only requirement is to set the `hostname` to the DNS name you pointed at your Load Balancer.
 
 ```
-helm install rancher-stable/rancher --name rancher --namespace cattle-system \
---set hostname=rancher.my.org
+helm install rancher-stable/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org
 ```
 
 #### LetsEncrypt
@@ -55,10 +59,12 @@ Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL 
 Set `hostname`, `ingress.tls.source=letEncrypt` and LetsEncrypt options.
 
 ```
-helm install rancher-stable/rancher --name rancher --namespace cattle-system \
---set hostname=rancher.my.org \
---set ingress.tls.source=letsEncrypt \
---set letsEncrypt.email=me@example.org
+helm install rancher-stable/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=letsEncrypt \
+  --set letsEncrypt.email=me@example.org
 ```
 
 #### Certificates from Files (Kubernetes Secret)
@@ -72,9 +78,11 @@ Set `hostname` and `ingress.tls.source=secret`
 > NOTE: If you are using a Private CA signed cert, add `--set privateCA=true`
 
 ```
-helm install rancher-stable/rancher --name rancher --namespace cattle-system \
---set hostname=rancher.my.org \
---set ingress.tls.source=secret
+helm install rancher-stable/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=secret
 ```
 
 Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the Ingress Controller can use them.

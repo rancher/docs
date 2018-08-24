@@ -38,15 +38,15 @@ To enable API auditing, stop the Docker container that's running Rancher, and th
 
 
 ```
-  docker run -d --restart=unless-stopped \
-   -p 80:80 -p 443:443 \
-   -v /root/var/log/auditlog:/var/log/auditlog \
-   -e AUDIT_LEVEL=1 \
-   -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
-   -e AUDIT_LOG_MAXAGE=20 \
-   -e AUDIT_LOG_MAXBACKUP=20 \
-   -e AUDIT_LOG_MAXSIZE=100 \
-   rancher/rancher:latest
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /root/var/log/auditlog:/var/log/auditlog \
+  -e AUDIT_LEVEL=1 \
+  -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+  -e AUDIT_LOG_MAXAGE=20 \
+  -e AUDIT_LOG_MAXBACKUP=20 \
+  -e AUDIT_LOG_MAXSIZE=100 \
+  rancher/rancher:latest
 ```
 
 ## Viewing API Audit Logs

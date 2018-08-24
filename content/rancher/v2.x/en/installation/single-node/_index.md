@@ -16,11 +16,11 @@ Installation of Rancher on a single node involves multiple procedures. Review th
 
 1. [Provision Linux Host](#1-provision-linux-host)
 
-	Provision a single Linux host to launch your {{< product >}} Server.
+    Provision a single Linux host to launch your {{< product >}} Server.
 
 2. [Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
 
-	Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
+    Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
 
 ## 1. Provision Linux Host
 
@@ -87,11 +87,11 @@ If you install Rancher without using your own certificate, Rancher generates a s
 
 1. From your Linux host, run the Docker command to install Rancher without any additional parameters:
 
-	```
-	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  rancher/rancher:latest
-	```
+    ```
+    docker run -d --restart=unless-stopped \
+      -p 80:80 -p 443:443 \
+      rancher/rancher:latest
+    ```
 
 ### Option B—Bring Your Own Certificate: Self-Signed
 
@@ -109,14 +109,14 @@ Your Rancher install can use a self-signed certificate that you provide to encry
 
 1. After creating your certificate, run the Docker command to install Rancher, pointing toward your certificate files.
 
-	```
-	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  -v /etc/<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
-	  -v /etc/<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-	  -v /etc/<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-	  rancher/rancher:latest
-	```
+    ```
+    docker run -d --restart=unless-stopped \
+      -p 80:80 -p 443:443 \
+      -v /etc/<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+      -v /etc/<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+      -v /etc/<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+      rancher/rancher:latest
+    ```
 
 ### Option C—Bring Your Own Certificate: Signed by Recognized CA
 
@@ -132,13 +132,13 @@ If you're publishing your app publicly, you should ideally be using a certificat
 
 1. After obtaining your certificate, run the Docker command to deploy Rancher while pointing toward your certificate files.
 
-	```
-	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
-	  -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
-	  rancher/rancher:latest --no-cacerts
-	```
+    ```
+    docker run -d --restart=unless-stopped \
+      -p 80:80 -p 443:443 \
+      -v /etc/your_certificate_directory/fullchain.pem:/etc/rancher/ssl/cert.pem \
+      -v /etc/your_certificate_directory/privkey.pem:/etc/rancher/ssl/key.pem \
+      rancher/rancher:latest --no-cacerts
+    ```
 
 ### Option D—Bring Your Own Certificate: Private CA Root Certificate
 
@@ -188,12 +188,12 @@ Run the following commands from your Linux host.
 
 1. Run the Docker command.
 
-	```
-	docker run -d --restart=unless-stopped \
-	  -p 80:80 -p 443:443 \
-	  rancher/rancher:latest \
-	  --acme-domain rancher.mydomain.com
-	```
+    ```
+    docker run -d --restart=unless-stopped \
+      -p 80:80 -p 443:443 \
+      rancher/rancher:latest \
+      --acme-domain rancher.mydomain.com
+    ```
 
 >
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
