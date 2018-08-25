@@ -3,7 +3,8 @@ title: Using Docker Machine
 weight: 101
 ---
 
-Before we get started, you'll need to make sure that you have docker machine installed. Download it directly from the docker machine [releases](https://github.com/docker/machine/releases).
+Before we get started, you'll need to make sure that you have docker machine installed. Download it directly from the docker machine [releases](https://github.com/docker/machine/releases). 
+You also need to know the [memory requirements]({{< baseurl >}}/os/v1.x/en/#hardware-requirements).
 
 > **Note:** If you create a RancherOS instance using Docker Machine, you will not be able to upgrade your version of RancherOS.
 
@@ -30,6 +31,7 @@ Here is an example about using the RancherOS latest link:
 ```
 $ docker-machine create -d virtualbox \
         --virtualbox-boot2docker-url https://releases.rancher.com/os/latest/rancheros.iso \
+        --virtualbox-memory <MEMORY-SIZE> \
         <MACHINE-NAME>
 ```
 
