@@ -32,7 +32,7 @@ If you encounter a disaster scenario, you can restore your Rancher Server to you
 
     >**Warning!** This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 
-1. Restart your Rancher Server container. It will restart using your backup tarball.
+1. Restart your Rancher Server container. It will restart using your backup data.
 
     ```
     docker start <RANCHER_CONTAINER_NAME>
