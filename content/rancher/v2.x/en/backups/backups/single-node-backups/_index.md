@@ -40,6 +40,9 @@ After completing your single node installation of Rancher, we recommend creating
     docker run  --volumes-from rancher-data-<RANCHER_VERSION> -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
     ```
 
+1. Enter the `dir` command to confirm that the backup tarball was created.
+
+
 1. Restart Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
 
     ```
