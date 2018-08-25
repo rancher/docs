@@ -21,29 +21,40 @@ After completing your single node installation of Rancher, we recommend creating
     ```
     docker stop <RANCHER_CONTAINER_NAME>
     ```
-    You can obtain the name for your Rancher container by entering `docker ps`.
+    <a id="placeholders"></a>You can obtain the name for your Rancher container by entering `docker ps`.
     ![Stop Rancher Container]({{< baseurl >}}/img/rancher/docker-container-ps-output.png)
 
 1. <a id="backup"></a>Using the command below, create a data container from the Rancher container you just stopped.
 
-    - Replace `<RANCHER_CONTAINER_NAME>` with the name from the previous step (our example uses `festive_mestorf`).
-    - Replace `<RANCHER_VERSION>` with the version of Rancher that you are currently running, as mentioned in the [Prerequisite](#prereq) (`v2.0.5` in our example). 
-    - Replace `<RANCHER_CONTAINER_TAG>` with tag of your Rancher image (`v2.0.5` in our example).
-
-     ```
+    ```
     docker create --volumes-from <RANCHER_CONTAINER_NAME> --name rancher-data-<RANCHER_VERSION> rancher/rancher:<RANCHER_CONTAINER_TAG>
     ```
 
-1. <a id="tarball"></a>From the data container that you just created (`rancher-data-<RANCHER_VERSION>`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>.tar.gz`).
+    Replace each of the command placeholders using help from the table below.
+
+    <a id="ref-table"></a>
+
+    Placeholder | Example | Description
+    ---------|----------|---------
+    `<RANCHER_CONTAINER_NAME>` | `festive_mestorf` | The name of your [Rancher container](#placeholders).
+    `<RANCHER_VERSION>` | `v2.0.5` | The [version](#prereq) of Rancher run in your container.
+    `<RANCHER_CONTAINER_TAG>` | `v2.0.5` | The [rancher/rancher image](#placeholders) you pulled for install.
+    <br/>
+    ![Backup Data Container]({{< baseurl >}}/img/rancher/backup-container.png)
+
+1. <a id="tarball"></a>From the data container that you just created (`rancher-data-<RANCHER_VERSION>`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>.tar.gz`). Use the following command, replacing each [placeholder](#ref-table).
 
     ```
     docker run  --volumes-from rancher-data-<RANCHER_VERSION> -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
     ```
 
-1. Enter the `dir` command to confirm that the backup tarball was created.
+    **Step Result:** A stream of commands runs on screen.
 
+1. Enter the `dir` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>`.
 
-1. Restart Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
+    ![Backup Backup Tarball]({{< baseurl >}}/img/rancher/dir-backup-tarball.png)
+
+1. Restart Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your [Rancher container](#placeholders).
 
     ```
     docker start <RANCHER_CONTAINER_NAME>
