@@ -158,7 +158,7 @@ To simulate the failure, let's power down `node2`.
 root@node2:~# poweroff
 ```
 
-Before restoring etcd and running `rancher up`, we need to retrieve the backup saved on S3 to a new node, e.g. `node3`.
+Before restoring etcd and running `rke up`, we need to retrieve the backup saved on S3 to a new node, e.g. `node3`.
 
 
 |  Name |    IP    |          Role          |
@@ -205,7 +205,7 @@ After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore
 $ rke etcd snapshot-restore --name snapshot.db --config cluster.yml
 ```
 
-Finally, we need to restore the operations on the cluster by making the Kubernetes API point to the new `etcd`  by running `rke up` again using the new `cluster.yml`.
+Finally, we need to restore the operations on the cluster by making the Kubernetes API point to the new `etcd` by running `rke up` again using the new `cluster.yml`.
 
 ```
 $ rke up --config cluster.yml
