@@ -4,43 +4,47 @@ weight: 1010
 aliases:
   - /rancher/v2.x/en/upgrades/single-node-upgrade/
 ---
-To upgrade Rancher Server 2.x after a new version is released, create a backup of your server and then run the upgrade command.
+To upgrade Rancher Server 2.x when a new version is released, create a data backup for your current Rancher deployment, pull the latest image of Rancher, and then start a new Rancher container using your data backup.
+
 <a id="prereq"></a>
 
->**Prerequisites:** Open Rancher and write down the version number displayed in the lower-left of the browser (example: `v2.0.0`). You'll need this number during the upgrade process.
+>**Prerequisite:** Open Rancher and write down the version number displayed in the lower-left of the browser (example: `v2.0.5`). You'll need this number during the backup process.
+>
+>![Version Number]({{< baseurl >}}/img/rancher/rancher-version.png)
 
-1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_ID>` with the ID of your Rancher container.
+1. Using a remote Terminal connection, log into your Rancher Server.
 
-    ```
-docker stop <RANCHER_CONTAINER_ID>
-    ```
-
-    >**Tip:** You can obtain the ID for your Rancher container by entering the following command: `docker ps`.
-
-1. Create a container of your current Rancher data for use in your upgraded Rancher Server. Name the container `rancher-data`.
-
-    - Replace `<RANCHER_CONTAINER_ID>` with the same ID from the previous step.
-    - Replace `<RANCHER_CONTAINER_TAG>` with the version of Rancher that you are currently running, as mentioned in the  **Prerequisite** above.
+1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
 
     ```
-docker create --volumes-from <RANCHER_CONTAINER_ID> \
---name rancher-data rancher/rancher:<RANCHER_CONTAINER_TAG>
+    docker stop <RANCHER_CONTAINER_NAME>
+    ```
+    You can obtain the name for your Rancher container by entering `docker ps`.
+    ![Stop Rancher Container]({{< baseurl >}}/img/rancher/docker-container-ps-output.png)
+
+1. <a id="backup"></a>Using the command below, create a data container from the Rancher container you just stopped.
+
+    - Replace `<RANCHER_CONTAINER_NAME>` with the name from the previous step (our example uses `festive_mestorf`).
+    - Replace `<RANCHER_CONTAINER_TAG>` with tag of your Rancher image (`v2.0.5` in our example).
+
+     ```
+    docker create --volumes-from <RANCHER_CONTAINER_NAME> --name rancher-data rancher/rancher:<RANCHER_CONTAINER_TAG>
     ```
 
-1. <a id="backup"></a>Create a backup tar ball of your current Rancher data. If you need to rollback, use this backup tar ball.
+1. <a id="tarball"></a>From the data container that you just created (`rancher-data`), create an upgrade tarball (`rancher-data-backup-<RANCHER_VERSION>.tar.gz`).
 
-    - Replace `<RANCHER_VERSION>` with the tag for the version of Rancher currently installed.
+    This tarball will serve as a rollback point if something goes wrong during upgrade.
 
     ```
-docker run  --volumes-from rancher-data -v $PWD:/backup \
-alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz \
-/var/lib/rancher
+    docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
     ```
+
+1. Enter the `dir` command to confirm that the backup tarball was created.
 
 1. Pull the most recent image of Rancher.
 
     ```
-docker pull rancher/rancher:latest
+    docker pull rancher/rancher:latest
     ```
 
     >**Attention Air Gap Users:**
@@ -52,8 +56,7 @@ docker pull rancher/rancher:latest
 1. Launch a new Rancher Server container using the `rancher-data` container.
 
     ```
-docker run -d --volumes-from rancher-data --restart=unless-stopped \
--p 80:80 -p 443:443 rancher/rancher:latest
+    docker run -d --volumes-from rancher-data --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
     ```
 
     >**Want records of all transactions with the Rancher API?** 
