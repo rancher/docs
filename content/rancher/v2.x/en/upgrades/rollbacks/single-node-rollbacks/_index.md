@@ -6,18 +6,26 @@ aliases:
   - /rancher/v2.x/en/upgrades/single-node-rollbacks
 ---
 
-Rolling back an unsuccessful Rancher upgrade requires you to restore the backup you created while completing [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrade-scenarios/single-node-upgrade/).
+If a Rancher upgrade does not complete successfully, you'll have to roll back to the backup you created during [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrade-scenarios/single-node-upgrade/). This rollback restores both your previous version of Rancher and your data.
 
 ## Before You Start
 
-During backup creation, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets (`<example>`). Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+During rollback to a prior version of Rancher, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
-<sup>Terminal `docker ps` Command and Rancher UI</sup>
+```
+docker pull rancher/rancher:<PRIOR_RANCHER_VERSION>
+```
+
+In this command, `<PRIOR_RANCHER_VERSION>` is the version of Rancher you were running before your unsuccessful upgrade. `v2.0.5` for example.
+
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+
+<sup>Terminal `docker ps` Command and Rancher UI, Displaying Where to Find Placeholders</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
 | Legend | Placeholder                | Example                    | Description |
 | ------ | -------------------------- | -------------------------- | ----------------- | 
-| A      | `<PRIOR_RANCHER_VERSION>`  | `v2.0.5`                   | The rancher/rancher image you pulled for install.|
+| A      | `<PRIOR_RANCHER_VERSION>`  | `v2.0.5`                   | The rancher/rancher image you used before upgrade.|
 | B      | `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.|
 | C      | `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher run in your container. |
 <br/>
@@ -51,14 +59,14 @@ If you have issues upgrading Rancher, roll it back to its laster known healthy s
 
 1. Make sure you're in your home directory (`cd ~`). Enter `dir` to make sure the tarball you created during [Step 4](({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/#tarball)) while following [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/) is available.
 
-    It will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>`).
+    It will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>.tar.gz`).
 
 1. Run the following command to create a data container from the backup tarball, replacing the [placeholder](#before-you-start) Don't forget to close the quotes.
 
     ```
     docker run  --volumes-from rancher-data
     -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf
-    && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>"
+    && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz"
     ```
 
 1. Start a new Rancher Server container with the `<PRIOR_RANCHER_VERSION>` tag [placeholder](#before-you-start) pointing to the data container.

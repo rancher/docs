@@ -10,9 +10,19 @@ If you encounter a disaster scenario, you can restore your Rancher Server to you
 
 ## Before You Start
 
-During backup restoration, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets (`<example>`). Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#restoring-backups).
+During restoration of your backup, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
-<sup>Terminal `docker ps` Command and Rancher UI</sup>
+```
+docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
+alpine sh -c "rm /var/lib/rancher/* -rf  && 
+tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>"
+```
+
+In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>` are environment variables for your Rancher deployment.
+
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#restoring-backups).
+
+<sup>Terminal `docker ps` Command and Rancher UI, Displaying Where to Find Placeholders</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
 | Legend | Placeholder                | Example                    | Description |
@@ -51,7 +61,7 @@ Using a backup that you created earlier, restore Rancher to its last known healt
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
     alpine sh -c "rm /var/lib/rancher/* -rf  && 
-    tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>"
+    tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz"
     ```
 
     **Step Result:** A series of commands should run.
