@@ -10,14 +10,22 @@ After completing your single node installation of Rancher, we recommend creating
 
 ## Before You Start
 
-During backup creation, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets (`<example>`). Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+During creation of your backup, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
-<sup>Terminal `docker ps` Command and Rancher UI</sup>
+```
+docker run  --volumes-from rancher-data-<RANCHER_VERSION> -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
+```
+
+In this command, `<RANCHER_VERSION>` is a placeholder for the version of Rancher running in your environment. `v2.0.5` for example.
+
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+
+<sup>Terminal `docker ps` Command and Rancher UI, Displaying Where to Find Placeholders</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
 | Legend | Placeholder                | Example                    | Description |
 | ------ | -------------------------- | -------------------------- | ----------------- | 
-| A      | `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for install.|
+| A      | `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install.|
 | B      | `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.|
 | C      | `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher run in your container. |
 <br/>
@@ -37,7 +45,7 @@ This procedure creates a backup that you can restore to in case Rancher encounte
 1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the [name of your Rancher container](#before-you-start).
 
     ```
-    docker stop <RANCHER_CONTAINER_NAME>
+    docker stop <RANCHER_CONTAINER_NAME>x
     ```
 1. <a id="backup"></a>Use the command below, replacing each [placeholder](#before-you-start), to create a data container from the Rancher container that you just stopped.
 

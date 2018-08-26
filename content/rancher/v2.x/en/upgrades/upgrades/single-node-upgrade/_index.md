@@ -8,9 +8,18 @@ To upgrade Rancher Server 2.x when a new version is released, create a data back
 
 ## Before You Start
 
-During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets (`<example>`). Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#completing-the-upgrade).
+During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
-<sup>Terminal `docker ps` Command and Rancher UI</sup>
+
+```
+docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
+```
+
+In this command, `<RANCHER_VERSION>` is the version of Rancher running in your Rancher deployment before upgrade.
+
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#completing-the-upgrade).
+
+<<sup>Terminal `docker ps` Command and Rancher UI, Displaying Where to Find Placeholders</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
 | Legend | Placeholder                | Example                    | Description |
@@ -25,6 +34,8 @@ During upgrade, you'll enter a series of commands, filling placeholders with dat
 - Obtain `<RANCHER_VERSION>` by logging into Rancher and viewing the bottom left of the browser window.
 
 ## Completing the Upgrade
+
+During upgrade, you create a copy of the data from your current Rancher container and a backup in case something goes wrong. Then you deploy the new version of Rancher in a new container using your existing data.
 
 1. Using a remote Terminal connection, log into your Rancher Server.
 
@@ -49,6 +60,8 @@ During upgrade, you'll enter a series of commands, filling placeholders with dat
     ```
     docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz /var/lib/rancher
     ```
+
+    When you enter this command, a series of commands should run.
 
 1. Enter the `dir` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>`.
 
