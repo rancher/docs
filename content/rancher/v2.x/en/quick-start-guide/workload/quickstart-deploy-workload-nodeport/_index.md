@@ -149,5 +149,6 @@ Congratulations! You have successfully deployed a workload exposed via a NodePor
 
 When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
 
+- [Amazon AWS: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/amazon-aws-qs/#destroying-the-environment)
 - [DigitalOcean: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/#destroying-the-environment)
 - [Vagrant: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/#destroying-the-environment)
