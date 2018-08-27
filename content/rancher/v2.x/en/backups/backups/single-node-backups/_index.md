@@ -43,4 +43,4 @@ docker run  --volumes-from rancher-data-<RANCHER_VERSION> \
 docker start <RANCHER_CONTAINER_ID>
     ```
 
-**Result:** A backup of your Rancher Server is created. If you ever need to restore your backup, see [Restoring Backups: Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/upgrades/restorations/single-node-restoration).
+**Result:** A backup of your Rancher Server is created. If you ever need to restore your backup, see [Restoring Backups: Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration).
