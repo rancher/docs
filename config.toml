@@ -59,7 +59,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Run Kubernetes Anywhere"
-  url        = "https://rancher.com//kubernetes/"
+  url        = "https://rancher.com/kubernetes/"
   parent     = "what-is-rancher"
   weight     = "4"
 
