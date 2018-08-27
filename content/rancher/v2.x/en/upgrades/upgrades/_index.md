@@ -9,10 +9,12 @@ This section contains information about how to upgrade your Rancher server to a 
 - [Upgrading a Single Node Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/)
 - [Upgrading an Air Gapped Single Node Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-air-gap-upgrade/)
 
-### HA Install with Helm Chart
-- [Upgrading a High Availability Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/)
+### Upgrading to an HA Helm Chart
 
-### HA Install with RKE Add-On yaml
+- [Upgrading from an HA Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/)
+- [Migrating from a RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
 
-- [Migrating from a High Availability RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
+### Upgrading an RKE Add-on Install
+
 - [Upgrading a High Availability Install - RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade/)
+
