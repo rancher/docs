@@ -59,3 +59,7 @@ Take the values above and use `helm` with `--set` options to upgrade Rancher to 
 ```
 helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
 ```
+
+## Rolling Back
+
+Should something go wrong, follow the [HA Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade. 
