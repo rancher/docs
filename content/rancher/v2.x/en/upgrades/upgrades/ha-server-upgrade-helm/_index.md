@@ -8,7 +8,12 @@ The following instructions will guide you through upgrading a high-availability 
 >**Note:** If you installed Rancher using the RKE Add-on yaml, see the following documents to migrate or upgrade.
 >
 >* [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/migrating-from-rke-add-on)
+
+    As of release v2.0.8, Rancher supports installation and upgrade by Helm chart, although RKE installs/upgrades are still supported as well. If you want to change upgrade method from RKE Add-on to Helm chart, follow this procedure.
+
 >* [High Availability (HA) Upgrade - RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-upgrade)
+
+    If you want to continue using RKE for upgrades, follow this procedure.
 
 ## Prerequisites
 
