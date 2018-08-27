@@ -8,7 +8,7 @@ aliases:
 
 If you upgrade Rancher and the upgrade does not complete successfully, you may need to rollback your Rancher Server to its last healthy state.
 
-To restore Rancher follow the procedure detailed here: [Restoring Backups — High Availability Installs](/rancher/v2.x/en/backups/restorations/ha-restoration)
+To restore Rancher follow the procedure detailed here: [Restoring Backups — High Availability Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/ha-restoration)
 
 Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 
