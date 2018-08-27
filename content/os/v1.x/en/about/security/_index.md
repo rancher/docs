@@ -11,7 +11,7 @@ weight: 303
 </td>
 <td width="30%" style="border: none;">
 <h4>Reporting process</h4>
-<p style="padding: 8px">Please submit possible security issues by emailing <a href="security@rancher.com">security@rancher.com</a></p>
+<p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security@rancher.com">security@rancher.com</a></p>
 </td>
 <td width="30%" style="border: none;">
 <h4>Announcments</h4>
