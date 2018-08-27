@@ -3,63 +3,58 @@ title: High Availability (HA) Upgrade
 weight: 1020
 ---
 
-The following instructions will help guide you through upgrading Rancher server [HA installed with the Helm package manager]({{< baseurl >}}/rancher/v2.x/en/installation/ha/).
+The following instructions will guide you through upgrading a high-availability Rancher Server that was [installed using Helm package manager]({{< baseurl >}}/rancher/v2.x/en/installation/ha/).
 
-If you installed Rancher using the RKE Add-On yaml, see these docs to migrate or upgrade.
-
-* [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/migrating-from-rke-add-on)
-* [High Availability (HA) Upgrade - RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-upgrade)
+>**Note:** If you installed Rancher using the RKE Add-on yaml, see the following documents to migrate or upgrade.
+>
+>* [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/migrating-from-rke-add-on)
+>* [High Availability (HA) Upgrade - RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-upgrade)
 
 ## Prerequisites
 
-### kubectl
+- **Backup your Rancher cluster**
 
-Follow the `kubectl` configuration instructions and confirm that you can connect to the Kubernetes cluster running Rancher server.
+    [Take a one-time snapshot]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
+    of your Rancher Server cluster. You'll use the snapshot as a restoration point if something goes wrong during upgrade.
 
-* [kubectl Installation and Config]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl)
+- **kubectl**
 
-### helm
+    Follow the kubectl [configuration instructions]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl) and confirm that you can connect to the Kubernetes cluster running Rancher server.
 
-Install or update `helm` to the latest version.
+- **Helm** 
 
-* [Installing helm](https://docs.helm.sh/using_helm/#installing-helm)
+    [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
-### tiller
+- **Tiller**
 
-Update the helm agent, `tiller` on your cluster.
+    Update the helm agent, Tiller, on your cluster.
 
-```
-helm init --upgrade --service-account tiller
-```
-
-## Backup Your Rancher Cluster
-
-Follow the instructions to take a one-time snapshot of your Rancher server cluster.
-
-* [HA Backups: Take a One-Time Snapshot]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
+    ```
+    helm init --upgrade --service-account tiller
+    ```
 
 ## Upgrade Rancher
 
-Update your local helm repo cache.
+1. Update your local helm repo cache.
 
-```
-helm repo update
-```
+    ```
+    helm repo update
+    ```
 
-Get the set values from current Rancher release.
+2. Get the set values from current Rancher release.
 
-```
-helm get values rancher
+    ```
+    helm get values rancher
 
-hostname: rancher.my.org
-```
+    hostname: rancher.my.org
+    ```
 
-Take the values above and use `helm` with `--set` options to upgrade Rancher to the latest version.
+3. Take the values above and use `helm` with `--set` options to upgrade Rancher to the latest version.
 
-```
-helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
-```
+    ```
+    helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
+    ```
 
 ## Rolling Back
 
-Should something go wrong, follow the [HA Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade. 
+Should something go wrong, follow the [HA Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade.
