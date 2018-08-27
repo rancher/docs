@@ -15,53 +15,22 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 Installation of Rancher in a high-availability configuration involves multiple procedures. Review this outline to learn about each procedure you need to complete.
 
-1. [Provision Linux Hosts](#1-provision-linux-hosts)
+<!-- TOC -->
 
-	Provision three Linux hosts to serve as your Kubernetes cluster.
+- [1. Provision Linux Hosts](#1-provision-linux-hosts)
+- [2. Configure Load Balancer](#2-configure-load-balancer)
+- [3. Configure DNS](#3-configure-dns)
+- [4. Download RKE](#4-download-rke)
+- [5. Download RKE Config File Template](#5-download-rke-config-file-template)
+- [6. Configure Nodes](#6-configure-nodes)
+- [7. Configure Certificates](#7-configure-certificates)
+- [8. Configure FQDN](#8-configure-fqdn)
+- [9. Configure Rancher version](#9-configure-rancher-version)
+- [10. Back Up Your RKE Config File](#10-back-up-your-rke-config-file)
+- [11. Run RKE](#11-run-rke)
+- [12. Back Up Auto-Generated Config File](#12-back-up-auto-generated-config-file)
 
-2. [Configure Load Balancer](#2-configure-load-balancer)
-
-	Configure your load balancer to have a highly available single point of entry to your Rancher cluster.
-
-3. [Configure DNS](#3-configure-dns)
-
-	Make your setup accessible using a DNS name by configuring the DNS to point to your loadbalancer.
-
-4. [Download RKE](#4-download-rke)
-
-	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
-
-5. [Download RKE Config File Template](#5-download-rke-config-file-template)
-
-	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
-
-6. [Configure Nodes](#6-configure-nodes)
-
-	Configure the **Nodes** section of the RKE config template.
-
-7. [Configure Certificates](#7-configure-certificates)
-
-	Configure the **Certificates** part of the template too.
-
-8. [Configure FQDN](#8-configure-fqdn)
-
-	And the **FQDN** part.
-
-9. [Configure Rancher version](#9-configure-rancher-version)
-
-	Configure the **Rancher version** to use.
-
-10. [Back Up Your RKE Config File](#10-back-up-your-rke-config-file)
-
-	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
-
-11. [Run RKE](#11-run-rke)
-
-	Run RKE to deploy Rancher to your cluster.
-
-12. [Back Up Auto-Generated Config File](#12-back-up-auto-generated-config-file)
-
-	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
+<!-- /TOC -->
 
 <br/>
 
@@ -235,8 +204,8 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/d8ca0805a3958552e84fdf5d743859097ae81e0b/rke-templates/3-node-certificate-recognizedca.yml)
 
     >**Want records of all transactions with the Rancher API?** 
-    >
-    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
+    >                                         
+    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing/) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing/).
 
 2. Rename the file to `rancher-cluster.yml`.
 

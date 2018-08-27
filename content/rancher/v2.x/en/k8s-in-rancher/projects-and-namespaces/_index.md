@@ -55,7 +55,7 @@ The `system` project:
 
 >**Note:** In clusters where both:
 >
-> - The [Canal network plug-in]({{< baseurl >}}\rancher\v2.x\en\cluster-provisioning\rke-clusters\options\#canal) is in use.
+> - The [Canal network plug-in]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#canal) is in use.
 > - The Project Network Isolation option is enabled.
 >
 >The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health. 
