@@ -1,8 +1,8 @@
 [[table]]
 rancher = "1.6.X"
 release = "June 8, 2017"
-full = "December 31, 2018"
-maintain = "June 1, 2019"
+full = "September 31, 2019"
+maintain = "March 1, 2020"
 [[table]]
 rancher = "1.5.10"
 release = "March 21, 2017"
