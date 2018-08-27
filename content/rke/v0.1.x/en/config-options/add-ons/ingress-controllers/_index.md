@@ -9,7 +9,7 @@ By default, RKE deploys the nginx ingress controller on all schedulable nodes.
 
 RKE will deploy the ingress controller as a DaemonSet with `hostnetwork: true`, so ports `80`, and `443` will be opened on each node where the controller is deployed.
 
-The images used for ingress controller is under the [`system_images` directive]({< baseurl >}}/rke/v0.1.x/en/config-options/system-images/). For each Kubernetes version, there are default images associated with the ingress controller, but these can be overridden by changing the image tag in `system_images`.
+The images used for ingress controller is under the [`system_images` directive]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/). For each Kubernetes version, there are default images associated with the ingress controller, but these can be overridden by changing the image tag in `system_images`.
 
 ## Scheduling Ingress Controllers
 
