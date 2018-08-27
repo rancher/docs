@@ -10,7 +10,7 @@ aliases:
 
 ## What's a Kubernetes Cluster?
 
-In the IT world, a cluster is a group of computing resources that work as a team to accomplish a goal.
+A cluster is a group of computers that work together as a single system.
 
 A _Kubernetes Cluster_ is a cluster that uses the [Kubernetes container-orchestration system](https://kubernetes.io/) to deploy, maintain, and scale Docker containers, allowing your organization to automate application operations.
 
