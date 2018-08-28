@@ -13,7 +13,8 @@ import buffer from 'vinyl-buffer';
 import babelify from 'babelify';
 import watch from 'gulp-watch';
 const atomicalgolia = require("atomic-algolia");
-const fs            = require('fs');
+// const fs            = require('fs');
+import uglify from 'gulp-uglify';
 
 const $            = gulpLoadPlugins();
 const browserSync  = require('browser-sync').create();
@@ -127,14 +128,17 @@ gulp.task('build:vendor', () => {
   return b.bundle()
     .pipe(source('vendor.js'))
     .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('static/js'));
 });
 
 gulp.task('build:app', () => {
+  const debug = isProduction ? false : true;
+
   return browserify({
     entries: ['./node_modules/rancher-website-theme/static/js/base.js', './src/js/app.js'],
     extensions: ['.js',],
-    debug: true,
+    debug: debug,
     insertGlobals: true
   })
     .external(vendors) // Specify all vendors as external source
@@ -142,6 +146,7 @@ gulp.task('build:app', () => {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('static/js'));
 });
 
