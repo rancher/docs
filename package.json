@@ -6,8 +6,6 @@
     "build": "gulp build",
     "build:preview": "gulp build-preview",
     "dev": "gulp dev",
-    "server": "gulp server",
-    "server:with-drafts": "gulp server:with-drafts",
     "cms:delete": "gulp cms-delete",
     "algolia": "node build-algolia.js"
   },
