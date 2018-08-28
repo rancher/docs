@@ -162,19 +162,10 @@ For production environments, you also have the options of using [Let's Encrypt](
 After you fulfill the prerequisites, you can install Rancher using a Let's Encrypt certificate by running the following command. Replace `<YOUR.DNS.NAME>` with your your domain.
 
 
-<<<<<<< HEAD
-    ```
-    docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      rancher/rancher:latest \
-      --acme-domain rancher.mydomain.com
-    ```
-=======
 	docker run -d --restart=unless-stopped \
 	  -p 80:80 -p 443:443 \
 	  rancher/rancher:latest \
 	  --acme-domain <YOUR.DNS.NAME>
->>>>>>> clarifying command line for single-node install
 
 >**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 {{% /accordion %}}

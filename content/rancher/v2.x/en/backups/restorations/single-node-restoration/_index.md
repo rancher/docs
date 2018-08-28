@@ -15,30 +15,28 @@ During restoration of your backup, you'll enter a series of commands, filling pl
 ```
 docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
 alpine sh -c "rm /var/lib/rancher/* -rf  && 
-tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>"
+tar zxvf /backup/rancher-data-backup-<DATE>"
 ```
 
-In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>` are environment variables for your Rancher deployment.
+In this command, `<RANCHER_CONTAINER_NAME>` and `<DATE>` are environment variables for your Rancher deployment.
 
-Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#restoring-backups).
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
 
-<sup>Terminal `docker ps` Command and Rancher UI, Displaying Where to Find Placeholders</sup>
+<sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
-| Legend | Placeholder                | Example                    | Description |
-| ------ | -------------------------- | -------------------------- | ----------------- | 
-| A      | `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for install.|
-| B      | `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.|
-| C      | `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher run in your container. |
+| Placeholder                | Example                    | Description |
+| -------------------------- | -------------------------- | ----------------- | 
+| `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install.|
+| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.|
+| `<DATE>`        | `9-27-18`                   | The date that the data container or backup was created. |
 <br/>
 
-- Obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering `docker ps`.
-
-- Obtain `<RANCHER_VERSION>` by logging into Rancher and viewing the bottom left of the browser window.
+You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
 
 ## Restoring Backups
 
-Using a backup that you created earlier, restore Rancher to its last known healthy state.
+Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/) that you created earlier, restore Rancher to its last known healthy state.
 
 1. Using a remote Terminal connection, log into your Rancher Server.
 
@@ -47,21 +45,18 @@ Using a backup that you created earlier, restore Rancher to its last known healt
     ```
     docker stop <RANCHER_CONTAINER_NAME>
     ```
-1. Make sure you're in your home directory (`cd ~`). Enter `dir` to make sure the tarball you created during [Step 4]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/#tarball) while following [Creating Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/) is available.
+1. Move the backup tarball that you created during completion of [Creating Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    It will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>`.
+    If you followed the naming convention we suggested in [Creating Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<DATE>.tar.gz`.
 
-    ![Backup Backup Tarball]({{< baseurl >}}/img/rancher/dir-backup-tarball-clear.png)
-
-
-1. Enter the following command to delete your current state data and start your backup data, replacing the [placeholders](#before-you-start). Don't forget to close the quotes.
+1. Enter the following command to delete your current state data and replace it with your backup data, replacing the [placeholders](#before-you-start). Don't forget to close the quotes.
 
     >**Warning!** This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
     alpine sh -c "rm /var/lib/rancher/* -rf  && 
-    tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>.tar.gz"
+    tar zxvf /backup/rancher-data-backup-<DATE>.tar.gz"
     ```
 
     **Step Result:** A series of commands should run.
@@ -72,4 +67,4 @@ Using a backup that you created earlier, restore Rancher to its last known healt
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-1.  Wait a few moments and then open Rancher in a web browser. Confirm that the rollback succeeded and that your data is restored.
+1.  Wait a few moments and then open Rancher in a web browser. Confirm that the restoration succeeded and that your data is restored.
