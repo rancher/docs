@@ -12,21 +12,22 @@ During upgrade, you'll enter a series of commands, filling placeholders with dat
 
 
 ```
-docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<DATE>.tar.gz /var/lib/rancher
+docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
 ```
 
-In this command, `<DATE>` is the date of backup creation.
+In this command, `<RANCHER_VERSION>-<DATE>` is the the version number and date of creation for a backup of Rancher.
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#completing-the-upgrade).
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
 ![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
 
-| Placeholder                | Example                    | Description |
-| -------------------------- | -------------------------- | ----------------- | 
-| `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install.|
-| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.|
-| `<DATE>`        | `9-27-18`                   | The date that the data container or backup was created. |
+| Placeholder                | Example                    | Description                                               |
+| -------------------------- | -------------------------- | --------------------------------------------------------- |
+| `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install. |
+| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.                       |
+| `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher that you're creating a backup for. |
+| `<DATE>`                   | `9-27-18`                  | The date that the data container or backup was created.   | 
 <br/>
 
 You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
@@ -35,7 +36,7 @@ You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 During upgrade, you create a copy of the data from your current Rancher container and a backup in case something goes wrong. Then you deploy the new version of Rancher in a new container using your existing data.
 
-1. Using a remote Terminal connection, log into your Rancher Server.
+1. Using a remote Terminal connection, log into the node running your Rancher Server.
 
 
 1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the [name of your Rancher container](#before-you-start).
@@ -50,18 +51,18 @@ During upgrade, you create a copy of the data from your current Rancher containe
     docker create --volumes-from <RANCHER_CONTAINER_NAME> --name rancher-data rancher/rancher:<RANCHER_CONTAINER_TAG>
     ```
 
-1. <a id="tarball"></a>From the data container that you just created (`rancher-data`), create a backup tarball (`rancher-data-backup-<DATE>.tar.gz`).
+1. <a id="tarball"></a>From the data container that you just created (`rancher-data`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
 
     This tarball will serve as a rollback point if something goes wrong during upgrade. Use the following command, replacing each [placeholder](#before-you-start).
 
 
     ```
-    docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<DATE>.tar.gz /var/lib/rancher
+    docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** When you enter this command, a series of commands should run.
 
-1. Enter the `dir` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<DATE>`.
+1. Enter the `dir` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>-<DATE>`.
 
     ![Backup Backup Tarball]({{< baseurl >}}/img/rancher/dir-backup-tarball.png)
 
