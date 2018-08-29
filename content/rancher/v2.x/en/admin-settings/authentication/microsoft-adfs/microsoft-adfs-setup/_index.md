@@ -9,56 +9,57 @@ Before configuring Rancher to support AD FS users, you must add Rancher as a [re
 
 1. Open the **AD FS Management** console. Select **Add Relying Party Trust...** from the **Actions** menu and click **Start**.
   
-    {{< figure src="/img/rancher/adfs/adfs-overview.png" width="800" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-overview.png" style="width:800px;"/>
 
 1. Select **Enter data about the relying party manually** as the option for obtaining data about the relying party.
-    
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-2.png" width="600" >}}
 
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-2.png" style="width:600px;"/>
+    
 1. Enter your desired **Display name** for your Relying Party Trust. For example, `Rancher`.
 
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-3.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-3.png" style="width:600px;"/>
   
 1. Select **AD FS profile** as the configuration profile for your relying party trust.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-4.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-4.png" style="width:600px;"/>
   
 1. Leave the **optional token encryption certificate** empty, as Rancher AD FS will not be using one.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-5.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-5.png" style="width:600px;"/>
   
 1. Select **Enable support for the SAML 2.0 WebSSO protocol**
   and enter `https://<rancher-server>/v1-saml/adfs/saml/acs` for the service URL.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-6.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-6.png" style="width:600px;"/>
   
 1. Add `https://<rancher-server>/v1-saml/adfs/saml/metadata` as the **Relying party trust identifier**.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-7.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-7.png"  style="width:600px;"/>
   
 1. This tutorial will not cover multi-factor authentication; please refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs) if you would like to configure multi-factor authentication.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-8.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-8.png" style="width:600px;"/>
   
 1. From **Choose Issuance Authorization RUles**, you may select either of the options available according to use case. However, for the purposes of this guide, select **Permit all users to access this relying party**.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-9.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-9.png" style="width:600px;"/>
 
 1. After reviewing your settings, select **Next** to add the relying party trust.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-10.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-10.png" style="width:600px;"/>
+
   
 1. Select **Open the Edit Claim Rules...** and click **Close**.
   
-    {{< figure src="/img/rancher/adfs/adfs-add-rpt-11.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-rpt-11.png" style="width:600px;"/>
   
 1. On the **Issuance Transform Rules** tab, click **Add Rule...**.
   
-    {{< figure src="/img/rancher/adfs/adfs-edit-cr.png" width="400" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-edit-cr.png" style="width:450px;"/>
   
 1. Select **Send LDAP Attributes as Claims** as the **Claim rule template**.
 
-    {{< figure src="/img/rancher/adfs/adfs-add-tcr-1.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-tcr-1.png" style="width:600px;"/>
   
 1. Set the **Claim rule name** to your desired name (for example, `Rancher Attributes`) and select **Active Directory** as the **Attribute store**. Create the following mapping to reflect the table below:
 
@@ -69,7 +70,7 @@ Before configuring Rancher to support AD FS users, you must add Rancher as a [re
     | Token-Groups - Qualified by Long Domain Name | Group               |
     | SAM-Account-Name                             | Name                |
     <br/>
-    {{< figure src="/img/rancher/adfs/adfs-add-tcr-2.png" width="600" >}}
+    <img src="{{< baseurl >}}/img/rancher/adfs/adfs-add-tcr-2.png" style="width:600px;"/>
 
 1. Download the `federationmetadata.xml` from your AD server at: 
 ```
