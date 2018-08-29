@@ -118,6 +118,13 @@ Next, set API permissions for Rancher within Azure.
 
     >**Note:** You must be signed in as an Azure administrator to successfully save your permission settings.
 
+<!-- Add a section on adding the reply url. 
+Settings > reply URLs
+Add a new url (or update the existing one) which is your rancher server url + /verify-auth-azure. https://my-rancher.com/verify-auth-azure
+Click save.
+Note: This can take up to 5 min to propagate so attempting to Authenticate with Azure could fail.
+The user will also be able to copy this from the UI when they go to enable azure if they are unsure of what to put here.
+-->
 
 ### 4. Copy Azure Application Data
 
