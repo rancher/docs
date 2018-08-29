@@ -22,27 +22,15 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 1.    From the **Global** view, select **Security > Roles** from the main menu.
 
-2.    Click **Add Role**.
+2.    Select either **Cluster** or **Project**  then click **Add Role**.
 
 3.	**Name** the role.
 
 4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
 	Locked roles cannot be assigned to users.
-
-5.	Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
-
-	- **All**
-
-		The user can use their assigned role regardless of context. This role is valid for assignment when adding/managing members to clusters or projects.
-
-	- **Cluster**
-
-		This role is valid for assignment when adding/managing members to _only_ clusters.
-
-	- **Project**
-
-		This role is valid for assignment when adding/managing members to _only_ projects.
+  
+5. Choose whether to set the role as the default for the creator.
 
 6.	Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
