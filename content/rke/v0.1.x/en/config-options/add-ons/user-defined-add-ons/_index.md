@@ -7,7 +7,7 @@ Besides the [network plug-in]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-o
 
 There are two ways that you can specify an add-on.
 
-- [In-line Add-ons](#inline-add-ons)
+- [In-line Add-ons](#in-line-add-ons)
 - [Referencing YAML Files for Add-ons](#referencing-yaml-files-for-add-ons)
 
 > **Note:** When using user-defined add-ons, you *must* define a namespace for *all* your resources, otherwise they will end up in the `kube-system` namespace.
@@ -20,7 +20,8 @@ As of v0.1.8, RKE will update an add-on if it is the same name.
 
 Prior to v0.1.8, update any add-ons by by using `kubectl edit`.
 
-## In-line Addons
+## In-line Add-ons
+
 To define an add-on directly in the YAML file, make sure to use the YAML's block indicator `|-` as the `addons` directive is a multi-line string option. It's possible to specify multiple YAML resource definitions by separating them using the `---` directive.
 
 ```yaml
