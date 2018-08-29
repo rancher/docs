@@ -200,12 +200,14 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/e9d29b3f3b9673421961c68adf0516807d1317eb/rke-templates/3-node-certificate.yml)
-	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/d8ca0805a3958552e84fdf5d743859097ae81e0b/rke-templates/3-node-certificate-recognizedca.yml)
+	- [Template for self-signed certificate<br/> `3-node-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate.yml)
+	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-certificate-recognizedca.yml)
 
-    >**Want records of all transactions with the Rancher API?** 
-    >                                         
-    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing/) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing/).
+    >**Advanced Config Options:** 
+    >
+    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
+    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/).
+
 
 2. Rename the file to `rancher-cluster.yml`.
 
@@ -220,28 +222,26 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
-    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) >for RHEL/CentOS specific requirements.
 
+        nodes:
+            # The IP address or hostname of the node
+        - address: IP_ADDRESS_1
+            # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
+            # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
+            user: USER
+            role: [controlplane,etcd,worker]
+            # Path the SSH key that can be used to access to node with the specified user
+            ssh_key_path: ~/.ssh/id_rsa
+        - address: IP_ADDRESS_2
+            user: USER
+            role: [controlplane,etcd,worker]
+            ssh_key_path: ~/.ssh/id_rsa
+        - address: IP_ADDRESS_3
+            user: USER
+            role: [controlplane,etcd,worker]
+            ssh_key_path: ~/.ssh/id_rsa
 
-```
-nodes:
-    # The IP address or hostname of the node
-  - address: IP_ADDRESS_1
-    # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
-    # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
-	user: USER
-	role: [controlplane,etcd,worker]
-    # Path the SSH key that can be used to access to node with the specified user
-	ssh_key_path: ~/.ssh/id_rsa
-  - address: IP_ADDRESS_2
-	user: USER
-	role: [controlplane,etcd,worker]
-	ssh_key_path: ~/.ssh/id_rsa
-  - address: IP_ADDRESS_3
-	user: USER
-	role: [controlplane,etcd,worker]
-	ssh_key_path: ~/.ssh/id_rsa
-```
 
 ## 7. Configure Certificates
 
