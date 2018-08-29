@@ -185,7 +185,7 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 
     >**Want records of all transactions with the Rancher API?** 
     >
-    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}\rke\v0.1.x\en\config-options\add-ons\api-auditing).
+    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
 
 
 2. Rename the file to `rancher-cluster.yml`.

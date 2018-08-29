@@ -119,7 +119,7 @@ In [clusters launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioni
 Option | Description |
 ---------|----------|
  Kubernetes Version | The version of Kubernetes installed on each cluster node. For more detail, see [Upgrading Kubernetes](#upgrading-kubernetes). |
- Network Provider | The [container networking interface]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/) that powers networking for your cluster.<br/><br/>**Note:** You can only choose this option while provisioning your cluster. It cannot be edited later. |
+ Network Provider | The [container networking interface]({{< baseurl >}}/rancher/v2.x/en/faq/networking/#cni-providers) that powers networking for your cluster.<br/><br/>**Note:** You can only choose this option while provisioning your cluster. It cannot be edited later. |
  Project Network Isolation | As of Rancher v2.0.7, if you're using the Canal network provider, you can choose whether to enable or disable inter-project communication. |
  Nginx Ingress | If you want to publish your applications in a high-availability configuration, and you're hosting your nodes with a cloud-provider that doesn't have a native load-balancing feature, enable this option to use Nginx ingress within the cluster. |
  Metrics Server Monitoring | Each cloud provider capable of launching a cluster using RKE can collect metrics and monitor for your cluster nodes. Enable this option to view your node metrics from your cloud provider's portal. |
