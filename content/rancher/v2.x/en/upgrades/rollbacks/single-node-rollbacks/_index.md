@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/single-node-rollbacks
 ---
 
-If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrade-scenarios/single-node-upgrade/). Rolling back restores:
+If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade). Rolling back restores:
 
 - Your previous version of Rancher.
 - Your data backup created before upgrade.

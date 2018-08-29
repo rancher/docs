@@ -1,6 +1,6 @@
 ---
 title: Migrating from Rancher v1.6 to v2.x
-weight: 10000
+weight: 8500
 draft: true
 ---
 
