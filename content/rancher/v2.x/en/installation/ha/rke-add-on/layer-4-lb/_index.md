@@ -195,7 +195,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
-2. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
+1. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
 
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
@@ -219,6 +219,12 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
             user: USER
             role: [controlplane,etcd,worker]
             ssh_key_path: ~/.ssh/id_rsa
+
+1. **Optional:** By default, `rancher-cluster.yml` is configured to take backup snapshots of your data. To disable these snapshots, change the `backup` directive setting to `false`, as depicted below.
+   
+        services:
+                etcd:
+                    backup: false   
 
 
 ## 7. Configure Certificates
