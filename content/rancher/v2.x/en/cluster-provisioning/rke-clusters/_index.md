@@ -23,20 +23,4 @@ RKE launched clusters are separated into two categories:
 
 ### Requirements
 
-If you use RKE to set up a cluster, your cluster nodes must meet the following requirements.
-
-{{< accordion id="os" label="Operating System" >}}
-	{{< requirements_os >}}
-{{< /accordion >}}
-{{< accordion id="hardware" label="Hardware" >}}
-	{{< requirements_hardware >}}
-{{< /accordion >}}
-{{< accordion id="software" label="Software" >}}
-	{{< requirements_software >}}
-{{< /accordion >}}
-{{< accordion id="ports-rancher" label="Ports for Rancher" >}}
-	{{< requirements_ports_rancher >}}
-{{< /accordion >}}
-{{< accordion id="ports-rke" label="Ports for RKE" >}}
-	{{< requirements_ports_rke >}}
-{{< /accordion >}}
+If you use RKE to set up a cluster, your cluster nodes must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).

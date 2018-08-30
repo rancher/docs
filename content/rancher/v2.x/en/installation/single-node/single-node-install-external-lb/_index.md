@@ -21,27 +21,7 @@ For development environments, we recommend installing Rancher by running a singl
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host to launch your {{< product >}} Server.
-
-### Host Requirements
-
-{{% tabs %}}
-{{% tab "Operating System" %}}
-{{< requirements_os >}}
-{{% /tab %}}
-{{% tab "Hardware" %}}
-{{< requirements_hardware >}}
-{{% /tab %}}
-{{% tab "Software" %}}
-{{< requirements_software >}}
-{{< note_server-tags >}}
-{{% /tab %}}
-{{% tab "Ports" %}}
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
-
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
-{{% /tab %}}
-{{% /tabs %}}
+Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
