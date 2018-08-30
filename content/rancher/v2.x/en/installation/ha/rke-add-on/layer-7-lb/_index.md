@@ -204,8 +204,8 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 1. **Optional:** By default, `rancher-cluster.yml` is configured to take backup snapshots of your data. To disable these snapshots, change the `backup` directive setting to `false`, as depicted below.
    
         services:
-                etcd:
-                    backup: false   
+          etcd:
+            backup: false   
 
 ## 7. Configure Certificates
 
