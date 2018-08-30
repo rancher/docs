@@ -15,55 +15,23 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 
 Installation of Rancher in a high-availability configuration involves multiple procedures. Review this outline to learn about each procedure you need to complete.
 
-1. [Provision Linux Hosts](#1-provision-linux-hosts)
+<!-- TOC -->
 
-	Provision three Linux hosts to serve as your Kubernetes cluster.
+- [1. Provision Linux Hosts](#1-provision-linux-hosts)
+- [2. Configure Load Balancer](#2-configure-load-balancer)
+- [3. Configure DNS](#3-configure-dns)
+- [4. Download RKE](#4-download-rke)
+- [5. Download RKE Config File Template](#5-download-rke-config-file-template)
+- [6. Configure Nodes](#6-configure-nodes)
+- [7. Configure Certificates](#7-configure-certificates)
+- [8. Configure FQDN](#8-configure-fqdn)
+- [9. Configure Rancher version](#9-configure-rancher-version)
+- [10. Back Up Your RKE Config File](#10-back-up-your-rke-config-file)
+- [11. Run RKE](#11-run-rke)
+- [12. Back Up Auto-Generated Config File](#12-back-up-auto-generated-config-file)
 
-2. [Configure Load Balancer](#2-configure-load-balancer)
 
-	Configure your load balancer to have a highly available single point of entry to your Rancher cluster.
-
-3. [Configure DNS](#3-configure-dns)
-
-	Make your setup accessible using a DNS name by configuring the DNS to point to your loadbalancer.
-
-4. [Download RKE](#4-download-rke)
-
-	[RKE](https://github.com/rancher/rke/releases) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts.
-
-5. [Download RKE Config File Template](#5-download-rke-config-file-template)
-
-	RKE uses a YAML config file to install and configure your Kubernetes cluster. Download one of our RKE config file templates to get started.
-
-6. [Configure Nodes](#6-configure-nodes)
-
-	Configure the **Nodes** section of the RKE config template.
-
-7. [Configure Certificates](#7-configure-certificates)
-
-	Configure the **Certificates** part of the template too.
-
-8. [Configure FQDN](#8-configure-fqdn)
-
-	And the **FQDN** part.
-
-9. [Configure Rancher version](#9-configure-rancher-version)
-
-        Configure the **Rancher version** to use.
-
-10. [Back Up Your RKE Config File](#10-back-up-your-rke-config-file)
-
-	After you've completed configuration of the RKE config file: 1. it's no longer a template since you'll be using it, and 2. you should back up the RKE config file to a safe place. You will reuse this file for upgrades later.
-
-11. [Run RKE](#11-run-rke)
-
-	Run RKE to deploy Rancher to your cluster.
-
-12. [Back Up Auto-Generated Config File](#12-back-up-auto-generated-config-file)
-
-	During installation, RKE generates a config file that you'll use later for upgrades. Back it up to a safe location.
-
-<br/>
+<!-- /TOC -->
 ## 1. Provision Linux Hosts
 
 Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
@@ -230,11 +198,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-- [Option A—Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
-- [Option B—Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
-
-### Option A—Bring Your Own Certificate: Self-Signed
-
+{{% accordion id="option-a" label="Option A—Bring Your Own Certificate: Self-Signed" %}}
 >**Prerequisites:**
 >Create a self-signed certificate.
 >
@@ -242,30 +206,26 @@ Choose from the following options:
 >- The certificate files must be encoded in [base64](#base64).
 >- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
-1. In `kind: Secret` with `name: cattle-keys-ingress`:
+In `kind: Secret` with `name: cattle-keys-ingress`, replace `<BASE64_CA>` with the base64 encoded string of the CA Certificate file (usually called `ca.pem` or `ca.crt`)
 
-    * Replace `<BASE64_CA>` with the base64 encoded string of the CA Certificate file (usually called `ca.pem` or `ca.crt`)
+>**Note:** The base64 encoded string should be on the same line as `cacerts.pem`, without any newline at the beginning, in between or at the end.
 
-    >**Note:**
-    > The base64 encoded string should be on the same line as `cacerts.pem`, without any newline at the beginning, in between or at the end.
+After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
 
-    **Result:** After replacing the values, the file should look like the example below (the base64 encoded strings should be different):
+        ---
+        apiVersion: v1
+        kind: Secret
+        metadata:
+            name: cattle-keys-server
+            namespace: cattle-system
+        type: Opaque
+        data:
+            cacerts.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNvRENDQVlnQ0NRRHVVWjZuMEZWeU16QU5CZ2txaGtpRzl3MEJBUXNGQURBU01SQXdEZ1lEVlFRRERBZDAKWlhOMExXTmhNQjRYRFRFNE1EVXdOakl4TURRd09Wb1hEVEU0TURjd05USXhNRFF3T1Zvd0VqRVFNQTRHQTFVRQpBd3dIZEdWemRDMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNQmpBS3dQCndhRUhwQTdaRW1iWWczaTNYNlppVmtGZFJGckJlTmFYTHFPL2R0RUdmWktqYUF0Wm45R1VsckQxZUlUS3UzVHgKOWlGVlV4Mmo1Z0tyWmpwWitCUnFiZ1BNbk5hS1hocmRTdDRtUUN0VFFZdGRYMVFZS0pUbWF5NU45N3FoNTZtWQprMllKRkpOWVhHWlJabkdMUXJQNk04VHZramF0ZnZOdmJ0WmtkY2orYlY3aWhXanp2d2theHRUVjZlUGxuM2p5CnJUeXBBTDliYnlVcHlad3E2MWQvb0Q4VUtwZ2lZM1dOWmN1YnNvSjhxWlRsTnN6UjVadEFJV0tjSE5ZbE93d2oKaG41RE1tSFpwZ0ZGNW14TU52akxPRUc0S0ZRU3laYlV2QzlZRUhLZTUxbGVxa1lmQmtBZWpPY002TnlWQUh1dApuay9DMHpXcGdENkIwbkVDQXdFQUFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFHTCtaNkRzK2R4WTZsU2VBClZHSkMvdzE1bHJ2ZXdia1YxN3hvcmlyNEMxVURJSXB6YXdCdFJRSGdSWXVtblVqOGo4T0hFWUFDUEthR3BTVUsKRDVuVWdzV0pMUUV0TDA2eTh6M3A0MDBrSlZFZW9xZlVnYjQrK1JLRVJrWmowWXR3NEN0WHhwOVMzVkd4NmNOQQozZVlqRnRQd2hoYWVEQmdma1hXQWtISXFDcEsrN3RYem9pRGpXbi8walI2VDcrSGlaNEZjZ1AzYnd3K3NjUDIyCjlDQVZ1ZFg4TWpEQ1hTcll0Y0ZINllBanlCSTJjbDhoSkJqa2E3aERpVC9DaFlEZlFFVFZDM3crQjBDYjF1NWcKdE03Z2NGcUw4OVdhMnp5UzdNdXk5bEthUDBvTXl1Ty82Tm1wNjNsVnRHeEZKSFh4WTN6M0lycGxlbTNZQThpTwpmbmlYZXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
 
-    ```
-    ---
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: cattle-keys-server
-      namespace: cattle-system
-    type: Opaque
-    data:
-      cacerts.pem: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNvRENDQVlnQ0NRRHVVWjZuMEZWeU16QU5CZ2txaGtpRzl3MEJBUXNGQURBU01SQXdEZ1lEVlFRRERBZDAKWlhOMExXTmhNQjRYRFRFNE1EVXdOakl4TURRd09Wb1hEVEU0TURjd05USXhNRFF3T1Zvd0VqRVFNQTRHQTFVRQpBd3dIZEdWemRDMWpZVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFNQmpBS3dQCndhRUhwQTdaRW1iWWczaTNYNlppVmtGZFJGckJlTmFYTHFPL2R0RUdmWktqYUF0Wm45R1VsckQxZUlUS3UzVHgKOWlGVlV4Mmo1Z0tyWmpwWitCUnFiZ1BNbk5hS1hocmRTdDRtUUN0VFFZdGRYMVFZS0pUbWF5NU45N3FoNTZtWQprMllKRkpOWVhHWlJabkdMUXJQNk04VHZramF0ZnZOdmJ0WmtkY2orYlY3aWhXanp2d2theHRUVjZlUGxuM2p5CnJUeXBBTDliYnlVcHlad3E2MWQvb0Q4VUtwZ2lZM1dOWmN1YnNvSjhxWlRsTnN6UjVadEFJV0tjSE5ZbE93d2oKaG41RE1tSFpwZ0ZGNW14TU52akxPRUc0S0ZRU3laYlV2QzlZRUhLZTUxbGVxa1lmQmtBZWpPY002TnlWQUh1dApuay9DMHpXcGdENkIwbkVDQXdFQUFUQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFHTCtaNkRzK2R4WTZsU2VBClZHSkMvdzE1bHJ2ZXdia1YxN3hvcmlyNEMxVURJSXB6YXdCdFJRSGdSWXVtblVqOGo4T0hFWUFDUEthR3BTVUsKRDVuVWdzV0pMUUV0TDA2eTh6M3A0MDBrSlZFZW9xZlVnYjQrK1JLRVJrWmowWXR3NEN0WHhwOVMzVkd4NmNOQQozZVlqRnRQd2hoYWVEQmdma1hXQWtISXFDcEsrN3RYem9pRGpXbi8walI2VDcrSGlaNEZjZ1AzYnd3K3NjUDIyCjlDQVZ1ZFg4TWpEQ1hTcll0Y0ZINllBanlCSTJjbDhoSkJqa2E3aERpVC9DaFlEZlFFVFZDM3crQjBDYjF1NWcKdE03Z2NGcUw4OVdhMnp5UzdNdXk5bEthUDBvTXl1Ty82Tm1wNjNsVnRHeEZKSFh4WTN6M0lycGxlbTNZQThpTwpmbmlYZXc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
-    ```
-
-### Option B—Bring Your Own Certificate: Signed by Recognized CA
-
-If you are using a Certificate Signed By A Recognized Certificate Authority, you don't need to perform any step in this part.
+{{% /accordion %}}
+{{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Signed by Recognized CA" %}}
+If you are using a Certificate Signed By A Recognized Certificate Authority, you don't need to perform any step in this part. 
+{{% /accordion %}}
 
 ## 8. Configure FQDN
 
@@ -352,9 +312,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 ## What's Next?
 
-You have a couple of options:
-
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/).
+- **Recommended:** Review [Creating Backups—High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/) to learn how to backup your Rancher Server in case of a disaster scenario.
 - Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>
