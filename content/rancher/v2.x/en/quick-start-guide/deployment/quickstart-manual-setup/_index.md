@@ -38,29 +38,8 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >
   > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/references).
 
- Provision the host according to the requirements below.
+  Provision the host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 
-{{% accordion id="os" label="Operating System" %}}
-{{< requirements_os >}}
-{{% /accordion %}}
-{{% accordion id="hardware" label="Hardware" %}}
-Memory: 4GB 
-{{% /accordion %}}
-{{% accordion id="software" label="Software" %}}
-Docker
-
-  <a name="node-requirements"></a>**Supported Docker versions:**
-
-  - `1.12.6`
-  - `1.13.1`
-  - `17.03.2`
-
-  >**Notes:**
-  >
-  > - For Docker installation instructions, visit their [documentation](https://docs.docker.com/install/).
-  > - Docker requirements apply to both your Linux host and your cluster nodes. 
-{{% /accordion %}}
-<br/>
 ### 2. Install Rancher
 
 To install Rancher on your host, connect to it and then use a shell to install.

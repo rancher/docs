@@ -11,27 +11,7 @@ Use your provider of choice to provision 3 nodes and a Load Balancer endpoint fo
 
 ### Host Requirements
 
-#### Operating System
-
-{{< requirements_os >}}<br/>
-
-#### Nodes
-
-{{< requirements_hardware >}}<br/>
-
-#### Software
-
-{{< requirements_software >}}
-
-{{< note_server-tags >}}
-
-#### Ports
-
-{{< requirements_ports_rancher_rke >}}
-
-<br/>
-
-If you block ports internally on the nodes see the full [ports list]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for all the communication details.
+View the requirements for nodes hosting Rancher at [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
 ### Load Balancer
 
