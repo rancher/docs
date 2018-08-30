@@ -175,12 +175,13 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
-2. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
+1. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
 
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
-    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+    >  
+    >When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
 
         nodes:
             # The IP address or hostname of the node
@@ -200,6 +201,11 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
             role: [controlplane,etcd,worker]
             ssh_key_path: ~/.ssh/id_rsa
 
+1. **Optional:** By default, `rancher-cluster.yml` is configured to take backup snapshots of your data. To disable these snapshots, change the `backup` directive setting to `false`, as depicted below.
+   
+        services:
+                etcd:
+                    backup: false   
 
 ## 7. Configure Certificates
 
