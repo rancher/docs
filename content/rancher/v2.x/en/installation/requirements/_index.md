@@ -1,5 +1,5 @@
 ---
-title: Requirements
+title: Node Requirements
 weight: 1
 aliases:
 ---
