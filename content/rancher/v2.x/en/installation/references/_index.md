@@ -9,7 +9,7 @@ To operate properly, Rancher requires the following ports to be open on your nod
 
 The following diagram displays the basic port requirements for Rancher. If you need more detail, refer to the tables below.
 
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.svg)
 
 {{< requirements_ports_rancher >}}
 {{< requirements_ports_rke >}}
