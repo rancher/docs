@@ -54,14 +54,14 @@ gulp.task('build-dev', (cb) => {
 });
 
 gulp.task('hugo', (cb) => {
-  return spawn('hugo', ['--buildFuture', '--baseURL=/docs'], { stdio: 'inherit' }).on('close', (/* code */) => {
+  return spawn('hugo', ['--buildFuture', '--baseURL=https://rancher.com/docs'], { stdio: 'inherit' }).on('close', (/* code */) => {
     browserSync.reload();
     cb();
   });
 });
 
 gulp.task('hugo-staging', (cb) => {
-  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=/docs'], { stdio: 'inherit' }).on('close', (/* code */) => {
+  return spawn('hugo', ['--buildDrafts', '--buildFuture', '--baseURL=https://staging.rancher.com/docs'], { stdio: 'inherit' }).on('close', (/* code */) => {
     browserSync.reload();
     cb();
   });
