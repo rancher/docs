@@ -42,22 +42,7 @@ Provision the host according to the requirements below.
 
 ### Requirements
 
-{{< accordion id="os" label="Operating System" >}}
-	{{< requirements_os >}}
-{{< /accordion >}}
-{{< accordion id="hardware" label="Hardware" >}}
-	{{< requirements_hardware >}}
-{{< /accordion >}}
-{{< accordion id="software" label="Software" >}}
-	{{< requirements_software >}}
-{{< /accordion >}}
-{{< accordion id="ports-rancher" label="Ports for Rancher" >}}
-	{{< requirements_ports_rancher >}}
-{{< /accordion >}}
-{{< accordion id="ports-rke" label="Ports for RKE" >}}
-	{{< requirements_ports_rke >}}
-{{< /accordion >}}
-
+Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
 ## Create the Custom Cluster
 

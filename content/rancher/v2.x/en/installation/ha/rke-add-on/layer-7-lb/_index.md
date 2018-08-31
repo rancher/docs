@@ -9,6 +9,7 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 - Layer 7 Loadbalancer with SSL termination (HTTPS)
 - [NGINX Ingress controller (HTTP)](https://kubernetes.github.io/ingress-nginx/)
 
+<sup>HA Rancher install with layer 7 load balancer, depicting SSL termination at load balancer</sup>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha-l7.svg)
 
 ## Installation Outline
@@ -66,29 +67,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 <br/>
 ## 1. Provision Linux Hosts
 
-Before you install Rancher, confirm you meet the host requirements. Provision 3 new Linux hosts using the requirements below.
-
-### Requirements
-
-#### Operating System
-
-{{< requirements_os >}}
-
-#### Hardware
-
-{{< requirements_hardware >}}
-
-#### Software
-
-{{< requirements_software >}}
-
-{{< note_server-tags >}}
-
-#### Ports
-
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
-
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+Provision three Linux hosts according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
 ## 2. Configure Load Balancer
 
@@ -180,12 +159,13 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/58e695b51096b1f404188379cea6f6a35aea9e4c/rke-templates/3-node-externalssl-certificate.yml)
-	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/7f60dc3afe1b45287ac36ba6bde6f7c6e35c11fe/rke-templates/3-node-externalssl-recognizedca.yml)
+	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-certificate.yml)
+	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-recognizedca.yml)
 
-    >**Want records of all transactions with the Rancher API?** 
+    >**Advanced Config Options:** 
     >
-    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
+    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
+    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/).
 
 
 2. Rename the file to `rancher-cluster.yml`.
@@ -196,33 +176,37 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Open `rancher-cluster.yml` in your favorite text editor.
 
-2. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
+1. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
 
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
-    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+    >  
+    >When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
 
+        nodes:
+            # The IP address or hostname of the node
+        - address: IP_ADDRESS_1
+            # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
+            # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
+            user: USER
+            role: [controlplane,etcd,worker]
+            # Path the SSH key that can be used to access to node with the specified user
+            ssh_key_path: ~/.ssh/id_rsa
+        - address: IP_ADDRESS_2
+            user: USER
+            role: [controlplane,etcd,worker]
+            ssh_key_path: ~/.ssh/id_rsa
+        - address: IP_ADDRESS_3
+            user: USER
+            role: [controlplane,etcd,worker]
+            ssh_key_path: ~/.ssh/id_rsa
 
-```
-nodes:
-    # The IP address or hostname of the node
-  - address: IP_ADDRESS_1
-    # User that can login to the node and has access to the Docker socket (i.e. can execute `docker ps` on the node)
-    # When using RHEL/CentOS, this can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565
-	user: USER
-	role: [controlplane,etcd,worker]
-    # Path the SSH key that can be used to access to node with the specified user
-	ssh_key_path: ~/.ssh/id_rsa
-  - address: IP_ADDRESS_2
-	user: USER
-	role: [controlplane,etcd,worker]
-	ssh_key_path: ~/.ssh/id_rsa
-  - address: IP_ADDRESS_3
-	user: USER
-	role: [controlplane,etcd,worker]
-	ssh_key_path: ~/.ssh/id_rsa
-```
+1. **Optional:** By default, `rancher-cluster.yml` is configured to take backup snapshots of your data. To disable these snapshots, change the `backup` directive setting to `false`, as depicted below.
+   
+        services:
+                etcd:
+                    backup: false   
 
 ## 7. Configure Certificates
 
