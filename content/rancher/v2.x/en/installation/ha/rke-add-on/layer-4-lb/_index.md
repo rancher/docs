@@ -9,6 +9,7 @@ This set of instructions creates a new Kubernetes cluster that's dedicated to ru
 - Layer 4 load balancer (TCP)
 - [NGINX ingress controller with SSL termination (HTTPS)](https://kubernetes.github.io/ingress-nginx/)
 
+<sup>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
 ## Installation Outline

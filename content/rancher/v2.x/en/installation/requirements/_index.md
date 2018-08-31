@@ -61,9 +61,12 @@ Supported Versions:
 [Docker Documentation: Installation Instructions](https://docs.docker.com/)
 {{% /tab %}}
 {{% tab  "Ports" %}}
-The following diagram depicts the basic port requirements for Rancher.
 
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+When deploying Rancher in an HA cluster, certain ports on your nodes must be open to allow communication with Rancher. The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if your are deploying Rancher on nodes hosted by an IaaS, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning).
+
+<sup>Cluster Type Port Requirements</sup>
+![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.svg)
+
 
 {{< requirements_ports_rancher >}}
 {{< requirements_ports_rke >}}
