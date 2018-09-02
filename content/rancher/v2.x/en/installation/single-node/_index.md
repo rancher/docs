@@ -5,35 +5,14 @@ aliases:
   - /rancher/v2.x/en/installation/single-node-install/
   - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
-For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then install Rancher on your host using a single Docker container.
+For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 >**Want to use an external load balancer?**
 > See [Single Node Install with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/single-node-install-external-lb) instead.
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host to launch your Rancher Server.
-
-### Requirements
-
-{{% tabs %}}
-{{% tab "Operating Systems" %}}
-{{< requirements_os >}}
-{{% /tab %}}
-{{% tab "Hardware" %}}
-{{< requirements_hardware >}}
-{{% /tab %}}
-{{% tab "Software" %}}
-{{< requirements_software >}}
-{{< note_server-tags >}}
-{{% /tab %}}
-{{% tab "Ports" %}}
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
-
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
-{{% /tab %}}
-{{% /tabs %}}
-
+Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 

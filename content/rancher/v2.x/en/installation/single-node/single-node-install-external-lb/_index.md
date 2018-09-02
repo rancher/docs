@@ -4,8 +4,7 @@ weight: 252
 aliases:
 - /rancher/v2.x/en/installation/single-node-install-external-lb/
 ---
-For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
-
+For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
 
 >**Want to skip the external load balancer?**
 > See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.
@@ -21,27 +20,7 @@ For development environments, we recommend installing Rancher by running a singl
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host to launch your {{< product >}} Server.
-
-### Host Requirements
-
-{{% tabs %}}
-{{% tab "Operating System" %}}
-{{< requirements_os >}}
-{{% /tab %}}
-{{% tab "Hardware" %}}
-{{< requirements_hardware >}}
-{{% /tab %}}
-{{% tab "Software" %}}
-{{< requirements_software >}}
-{{< note_server-tags >}}
-{{% /tab %}}
-{{% tab "Ports" %}}
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
-
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
-{{% /tab %}}
-{{% /tabs %}}
+Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -57,7 +36,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 Choose from the following options:
 
 {{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
-If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
+If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
 
 >**Prerequisites:**
 >Create a self-signed certificate.
@@ -117,7 +96,7 @@ The load balancer or proxy has to be configured to support the following:
 
 ### Example Nginx configuration
 
-This Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
+This layer 7 Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
 
  >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 

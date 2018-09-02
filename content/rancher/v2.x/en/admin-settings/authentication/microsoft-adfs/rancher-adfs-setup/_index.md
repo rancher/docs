@@ -18,33 +18,22 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{< baseurl >}}/ran
 1.	Select **Microsoft Active Directory Federation Services**.
 
 1.	Complete the **Configure AD FS Account** form. Microsoft AD FS lets you specify an existing Active Directory (AD) server. The examples below describe how you can map AD attributes to fields within Rancher.
-	
-    1. **Display Name Field**: Enter the AD attribute that contains the display name of users. 
-    
-        Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-	1. **User Name Field**: Enter the AD attribute that contains the user name/given name. 
-    
-        Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
-	
-    1. **UID Field**: Enter an AD attribute that is unique to every user.
-    
-        Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`
-	
-    1. **Groups Field**: Make entries for managing group memberships. 
-    
-        Example: `http://schemas.xmlsoap.org/claims/Group`
-	
-    1. **Rancher API Host**: Enter the URL for your Rancher Server.
+    | Field                     | Description                                                                                                                                                                                                    |
+    | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Display Name Field        | The AD attribute that contains the display name of users. <br/><br/>Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`                                                                 |
+    | User Name Field           | The AD attribute that contains the user name/given name. <br/><br/>Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`                                                                       |
+    | UID Field                 | An AD attribute that is unique to every user. <br/><br/>Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`                                                                                   |
+    | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `http://schemas.xmlsoap.org/claims/Group`                                                                                                      |
+    | Rancher API Host          | The URL for your Rancher Server.                                                                                                                                                                               |
+    | Private Key / Certificate | This is a key-certificate pair to create a secure shell between Rancher and your AD FS. Ensure you set the Common Name (CN) to your Rancher Server URL.<br/><br/>[Certificate creation command](#cert-command) |
+    | Metadata XML              | The `federationmetadata.xml` file exported from your AD FS server. <br/><br/>You can find this file at `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`.                                |
+    <a id="cert-command"></a>    
 
-	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your AD FS. Ensure you set the Common Name (CN) to your Rancher Server URL.
-    
-        You can generate one using an openssl command. For example:
-    
-        ```
-        openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
-        ```
-    1. **Metadata XML**: The `federationmetadata.xml` file exported from your AD FS server. You can find this file at `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`.
+    >**Tip:** You can generate a certificate using an openssl command. For example:
+    >
+    >        openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+
 
  
 1. After you complete the **Configure AD FS Account** form, click **Authenticate with AD FS**, which is at the bottom of the page.
