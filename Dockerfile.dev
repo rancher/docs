@@ -9,7 +9,6 @@ RUN  ln -s /site/config.toml /run \
   && ln -s /site/.eslintrc.js /run \
   && ln -s /site/archetypes /run \
   && ln -s /site/content /run \
-  && ln -s /site/data /run \
   && ln -s /site/layouts /run \
   && ln -s /site/src /run \
   && ln -s /site/themes /run \

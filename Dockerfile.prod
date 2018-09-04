@@ -6,7 +6,6 @@ COPY gulpfile.babel.js /run/
 COPY .eslintrc.js /run/
 COPY config.toml /run/
 COPY archetypes archetypes
-COPY data data
 COPY layouts layouts
 COPY scripts scripts
 COPY content content
