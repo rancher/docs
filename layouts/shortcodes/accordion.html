@@ -1,7 +1,7 @@
-<div class="tab">
-  <input id="{{ .Get "id" }}" type="checkbox" name="tabs">
+<div class="accordion">
+  <input id="{{ .Get "id" }}" type="checkbox" name="accordion">
   <label for="{{ .Get "id" }}">{{ .Get "label" }}</label>
-  <div class="tab-content">
+  <div class="accordion-content">
     {{ .Inner }}
   </div>
 </div>
