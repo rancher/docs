@@ -13,18 +13,15 @@ Using the sample below create the `rancher-cluster.yml` file. Replace the IP Add
 
 ```yaml
 nodes:
-- address: 165.227.114.63
-  internal_address: 172.16.22.12
-  user: ubuntu
-  role: [controlplane,worker,etcd]
-- address: 165.227.116.167
-  internal_address: 172.16.32.37
-  user: ubuntu
-  role: [controlplane,worker,etcd]
-- address: 165.227.127.226
-  internal_address: 172.16.42.73
-  user: ubuntu
-  role: [controlplane,worker,etcd]
+    - address: 165.227.114.63
+      user: ubuntu
+      role: [controlplane,worker,etcd]
+    - address: 165.227.116.167
+      user: ubuntu
+      role: [controlplane,worker,etcd]
+    - address: 165.227.127.226
+      user: ubuntu
+      role: [controlplane,worker,etcd]
 ```
 
 #### Common RKE nodes: options
