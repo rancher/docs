@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: {{ if ne (getenv "HUGO_ENV") "production" }}/{{ end }}
+
+Sitemap: https://rancher.com/sitemap.xml
