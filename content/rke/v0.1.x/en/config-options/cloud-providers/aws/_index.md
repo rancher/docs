@@ -53,3 +53,34 @@ In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(
   ]
 }
 ```
+
+## Tagging Amazon Resources
+
+If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
+
+[Amazon Documentation: Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
+
+>**Note:** You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes. You only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. For more information, see [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+
+
+The following resources need to tagged with a `ClusterID`:
+
+- **Nodes**: All hosts added in Rancher.
+- **Subnet**: The subnet used for your cluster
+- **Security Group**: The security group used for your cluster.
+
+	>**Note:** Do not tag multiple security groups. Tagging multiple groups generates an error when creating Elastic Load Balancer.
+
+The tag that should be used is:
+
+```
+Key=kubernetes.io/cluster/<CLUSTERID>, Value=owned
+```
+
+`<CLUSTERID>` can be any string you choose. However, the same string must be used on every resource you tag. Setting the tag value to `owned` informs the cluster that all resources tagged with the `<CLUSTERID>` are owned and managed by this cluster.
+
+If you share resources between clusters, you can change the tag to:
+
+```
+Key=kubernetes.io/cluster/CLUSTERID, Value=shared
+```
