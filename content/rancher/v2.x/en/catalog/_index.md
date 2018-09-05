@@ -95,3 +95,15 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
 - **Workloads** view
 - **Catalog Apps** view
+
+## Deleting Catalog Application Deployments
+
+As a safeguard to prevent you from unintentionally deleting other catalog applications that share a namespace, deleting catalog applications themselves does not delete the namespace they're assigned to. Therefore, when you want to delete a deployed catalog application, assuming that it's the only app in its namespace, delete the namespace rather than the catalog app itself. Deleting the namespace deletes both the namespace and the catalog app, whereas deleting the catalog app only deletes the app but not the namespace.
+
+1. From the **Global** view, open the project that contains the catalog application that you want to delete.
+
+1. From the main menu, choose **Namespaces**.
+
+1. Find the namespace running your catalog app. Select it and click **Delete**.
+
+**Result:** The catalog application deployment and its namespace are deleted.
