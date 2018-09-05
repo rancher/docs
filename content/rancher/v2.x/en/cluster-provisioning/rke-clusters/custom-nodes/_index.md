@@ -4,6 +4,7 @@ shortTitle: Custom Nodes
 weight: 2225
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
+  - /rancher/v2.x/en/cluster-provisioning/custom-clusters
 ---
 
 ## Custom Nodes
@@ -12,21 +13,17 @@ Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers
 
 To use this option you'll need access to servers you intend to use as your Kubernetes cluster. Provision each server according to Rancher [requirements](#requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
 
-## Objectives for Creating Cluster with Custom Nodes
+## Creating a Cluster with Custom Nodes Outline
 
-1.	[Provision a Linux Host](#provision-a-linux-host)
+<!-- TOC -->
 
-	Begin by provisioning a Linux host.
+- [1. Provision a Linux Host](#1-provision-a-linux-host)
+- [2. Create the Custom Cluster](#2-create-the-custom-cluster)
+- [3. Amazon Only: Tag Resources](#3-amazon-onlybrtag-resources)
 
-2. [Create the Cluster](#create-the-custom-cluster)
+<!-- /TOC -->
 
-	Use your new Linux host as a template for your new Kubernetes cluster.
-
-2. **Amazon Only:** [Tag Resources](#amazon-only-br-tag-resources)
-
-	If you're using Amazon to create your custom cluster, log into AWS and tag your resources with a cluster ID.
-
-## Provision a Linux Host
+## 1. Provision a Linux Host
 
 Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
@@ -44,7 +41,7 @@ Provision the host according to the requirements below.
 
 Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
-## Create the Custom Cluster
+## 2. Create the Custom Cluster
 
 Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
 
@@ -80,7 +77,7 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
 {{< result_create-cluster >}}
 
-## Amazon Only:<br/>Tag Resources
+## 3. Amazon Only:<br/>Tag Resources
 
 If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
 
