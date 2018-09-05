@@ -3,13 +3,13 @@ title: Global Permissions
 weight: 1126
 ---
 
-Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `User`.
+Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `Standard User`.
 
 - **Administrator:**
 
     These users have full control over the entire Rancher system and all clusters within it.
 
-- <a id="user"></a>**User:**
+- <a id="user"></a>**Standard User:**
 
     These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
 
