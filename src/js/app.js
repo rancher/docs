@@ -30,7 +30,19 @@ const bootstrapDocsSearch = function() {
       autofocus: true,
       loadingIndicator: true,
       container: '#search-box',
-      placeholder: 'Search Docs...',
+      placeholder: 'Search Blog, Events, etc...',
+      magnifier: false,
+      reset: true,
+    })
+  );
+
+
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      autofocus: true,
+      loadingIndicator: true,
+      container: '#search-box-mobile',
+      placeholder: 'Search Blog, Events, etc...',
       magnifier: false,
       reset: true,
     })
