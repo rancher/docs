@@ -13,7 +13,7 @@ Use `helm repo add` to add the Rancher chart repository.
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 ```
 
-For additional chart details and source see the [server-chart](https://github.com/rancher/server-chart) repo on GitHub.
+For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
 
 ### Install cert-manager
 
