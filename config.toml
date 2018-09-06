@@ -1,6 +1,7 @@
 baseURL = ""
 languageCode = "en-us"
 title = "Rancher Labs"
+
 theme = "rancher-website-theme"
 themesDir = "node_modules"
 pluralizeListTitles = false
@@ -16,6 +17,8 @@ pygmentsCodeFencesGuessSyntax = true
   addThis = "ra-5af1cc6793d86bfb"
   ### Edit content repo (set to automatically enter "edit" mode; this is good for "improve this page" links)
   ghdocsrepo = "https://github.com/rancher/docs"
+  pageBy = "title"
+  pageLimit = 5
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -58,7 +61,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Run Kubernetes Anywhere"
-  url        = "https://rancher.com//kubernetes/"
+  url        = "https://rancher.com/kubernetes/"
   parent     = "what-is-rancher"
   weight     = "4"
 
@@ -119,13 +122,13 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 [[menu.main]]
 #identifier = "customers"
 #name       = "Customers"
-#url        = "https://rancher.com//customers/"
+#url        = "https://rancher.com/customers/"
 #weight     = "3"
 
 [[menu.main]]
 identifier = "customers"
 name       = "Customers"
-url        = "/customers/"
+url        = "https://rancher.com/customers/"
 weight     = "4"
 
 [[menu.main]]

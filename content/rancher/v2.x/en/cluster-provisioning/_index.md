@@ -10,7 +10,7 @@ aliases:
 
 ## What's a Kubernetes Cluster?
 
-In the IT world, a cluster is a group of computing resources that work as a team to accomplish a goal.
+A cluster is a group of computers that work together as a single system.
 
 A _Kubernetes Cluster_ is a cluster that uses the [Kubernetes container-orchestration system](https://kubernetes.io/) to deploy, maintain, and scale Docker containers, allowing your organization to automate application operations.
 
@@ -18,7 +18,7 @@ A _Kubernetes Cluster_ is a cluster that uses the [Kubernetes container-orchestr
 
 Each computing resource in a Kubernetes Cluster is called a _node_. Nodes can be either bare-metal servers or virtual machines. Kubernetes classifies nodes into three types: _etcd_ nodes, _control plane_ nodes, and _worker_ nodes.
 
-#### etcd Nodes
+#### etcd Nodes 
 
 [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd) nodes run the etcd database. The etcd database component is a key value store used as Kubernetes storage for all cluster data, such as cluster coordination and state management.
 

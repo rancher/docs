@@ -10,13 +10,13 @@ Kubernetes has become the container orchestration standard. Most cloud and virtu
 
 ## Meet IT requirements
 
-Rancher supports centralized authentication for all Kubernetes clusters under its control. For example, you can:
+Rancher supports centralized authentication, access control, and monitoring for all Kubernetes clusters under its control. For example, you can:
 
 - Use your Active Directory credentials to access Kubernetes clusters hosted by cloud vendors, such as GKE.
 - Setup and enforce access control and security policies across all users, groups, projects, clusters, and clouds.
 - View the health and capacity of your Kubernetes clusters from a single-pane-of-glass.
 
-### Empower DevOps Teams
+## Empower DevOps Teams
 
 Rancher provides an intuitive user interface for DevOps engineers to manage their application workload. The user does not need to have in-depth knowledge of Kubernetes concepts to start using Rancher. Rancher catalog contains a set of useful DevOps tools. Rancher is certified with a wide selection of cloud native ecosystem products, including, for example, security tools, monitoring systems, container registries, and storage and networking drivers.
 

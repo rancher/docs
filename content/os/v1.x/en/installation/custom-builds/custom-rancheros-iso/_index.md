@@ -5,79 +5,70 @@ weight: 182
 
 It's easy to build your own RancherOS ISO.
 
-1. Create a clone of the main [RancherOS repository](https://github.com/rancher/os) to your local machine with a `git clone`.
-   ```
-   $ git clone https://github.com/rancher/os.git
-   ```
-2. In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-kernels).
-3. After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files.
-     Build Requirements: `bash`, `make`, `docker` (Docker version >= 1.10.3)
-   ```
-   $ make
-   $ cd dist/artifacts
-   $ ls
-   initrd             rancheros.iso
-   iso-checksums.txt	vmlinuz
-   ```
+Create a clone of the main [RancherOS repository](https://github.com/rancher/os) to your local machine with a `git clone`.
+
+```
+$ git clone https://github.com/rancher/os.git
+```
+
+In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-kernels). 
+After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files. 
+Build Requirements: `bash`, `make`, `docker` (Docker version >= 1.10.3)
+
+```
+$ make
+$ cd dist/artifacts
+$ ls
+initrd             rancheros.iso
+iso-checksums.txt  vmlinuz
+```
+
+If you need a compressed ISO, you can run this command:
+
+```
+$ INTEGRATION_TESTS=0 make release
+```
 
 The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine).
 
-
 ### Creating a GCE Image Archive
 
-You can build the [GCE image archive](https://cloud.google.com/compute/docs/tutorials/building-images) using [Packer](https://www.packer.io/). You will need Packer, QEMU and GNU tar installed.
-
-First, create `gce-qemu.json`:
-
-```json
-{
- "builders":
- [
-   {
-     "type": "qemu",
-     "name": "qemu-googlecompute",
-     "iso_url": "https://github.com/rancherio/os/releases/download/<RancherOS-Version>/rancheros.iso",
-     "iso_checksum": "<rancheros.iso-MD5-hash>",
-     "iso_checksum_type": "md5",
-     "ssh_wait_timeout": "360s",
-     "disk_size": 10000,
-     "format": "raw",
-     "headless": true,
-     "accelerator": "none",
-     "ssh_host_port_min": 2225,
-     "ssh_host_port_max": 2229,
-     "ssh_username": "rancher",
-     "ssh_password": "rancher",
-     "ssh_port": 22,
-     "net_device": "virtio-net",
-     "disk_interface": "scsi",
-     "qemuargs": [
-       ["-m", "1024M"], ["-nographic"], ["-display", "none"]
-     ]
-   }
- ],
- "provisioners": [
-   {
-     "type":"shell",
-     "script": "../scripts/install2disk"
-   }
- ]
-}
-```
-
-NOTE: For faster builds You can use `"kvm"` as the `accelerator` field value if you have KVM, but that's optional.
-
-Run:
+Create a clone of the main [RancherOS repository](https://github.com/rancher/os) to your local machine with a `git clone`.
 
 ```
-$ packer build gce-qemu.json
+$ git clone https://github.com/rancher/os-packer.git
 ```
 
-Packer places its output into `output-qemu-googlecompute/packer-qemu-googlecompute` - it's a raw VM disk image. Now you just need to name it `disk.raw` and package it as sparse .tar.gz:
+GCE supports KVM virtualization, and we use `packer` to build KVM images. Before building, you need to verify that the host can support KVM. 
+If you want to build GCE image based on RancherOS v1.4.0, you can run this command:
 
 ```
-$ mv output-qemu-googlecompute/packer-qemu-googlecompute disk.raw
-$ tar -czSf rancheros-<RancherOS-Version>.tar.gz disk.raw
+RANCHEROS_VERSION=v1.4.0 make build-gce
 ```
 
-NOTE: the last command should be using GNU tar. It might be named `gtar` on your system.
+### Custom build cases
+
+#### Reduce memory requirements
+
+With the changes of the kernel and built docker, RancherOS booting requires more memory, please refer to [Memory Requirements]({{< baseurl >}}/os/v1.x/en/#hardware-requirements).
+
+By customizing the ISO, you can reduce the memory usage on boot. The easiest way is to downgrade the built-in docker version, because docker takes up a lot of space. 
+This can effectively reduce the memory required to decompress the initrd on boot, using docker 17.03 is a good choice:
+
+```
+# update os-config.tpl.yml in rancher/os
+     hostname: {{.HOSTNAME_DEFAULT}}
+     {{if eq "amd64" .ARCH -}}
+     docker:
+-      engine: docker-18.03.1-ce
++      engine: docker-17.03.2-ce
+     {{else -}}
+     docker:
+-      engine: docker-18.03.1-ce
++      engine: docker-17.03.2-ce
+     {{end -}}
+...
+
+# run make
+$ INTEGRATION_TESTS=0 make release
+```

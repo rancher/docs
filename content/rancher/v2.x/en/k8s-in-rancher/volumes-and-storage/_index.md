@@ -11,63 +11,11 @@ There are two ways to create persistent storage in Kubernetes: Persistent Volume
 
 ## Persistent Volumes
 
-_Persistent Volumes_ are pre-provisioned storage volumes that you can bind to pods later. For example, in Amazon EC2, you might want to create a number of Elastic Block Store (EBS) volumes before you start running your application. Each pre-provisioned EBS volume corresponds to a Kubernetes persistent volume. When the application starts, it creates Persistent Volume Claims (PVCs) that bind to persistent volumes. A PVC corresponds to a Docker volume. Each PVC binds to one PV that includes the minimum resources that the PVC requires. The following figure illustrates the relationship between pods, PVCs, PVs, and the underlying cloud storage.
+_Persistent Volumes_ are pre-provisioned storage volumes that you can bind to pods later. Each pre-provisioned volume corresponds to a Kubernetes persistent volume. When you start your application, it creates Persistent Volume Claims (PVCs) that bind to persistent volumes. A PVC corresponds to a Docker volume. Each PVC binds to one PV that includes the minimum resources that the PVC requires. The following figure illustrates the relationship between pods, PVCs, PVs, and the underlying cloud storage.
 
 ![Persistent Volumes]({{< baseurl >}}/img/rancher/persistent-volume.png)
 
 Rancher allows you to create PVs at the cluster level and bind them to PVCs later. Volumes are managed on a per-project basis.
-
-### Adding a Persistent Volume
-
-Your containers can store data on themselves, but if a container fails, that data is lost. To solve this issue, Kubernetes offers _persistent volumes_, which are external storage disks or file systems that your containers can access. If a container crashes, its replacement container can access the data in a persistent volume without any data loss.
-
-Persistent volumes can either be a disk or file system that you host on premise, or they can be hosted by a vendor, such as Amazon EBS or Azure Disk.
-
->**Prerequisites:**
->
->- Working with storage requires the `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference).
->- You must have a storage medium provisioned. For more information, see [Provisioning Storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
->- Create a storage volume either on premise or in the cloud, using one of the vendor services listed in [Types of Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes).
->- Gather metadata about your storage volume after you create it. You'll need to enter this information into Rancher.
-
-1. From the **Global** view, open the cluster running the containers that you want to add persistent volume storage to.
-
-1. From the main menu, select **Storage > Persistent Volumes**.
-
-1. Click **Add Volume**.
-
-1. Enter a **Name** for the persistent volume.
-
-1. Select the **Volume Plugin** for the disk type or service that you're using.
-
-    >**Note:** If the cluster you are adding storage for is a cloud service that also offers cloud storage, you must enable the `cloud provider` option for the cluster, and you must use the service's plug-in to use cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
-    >
-    >   - You must enable the `cloud provider` option for the EC2 cluster.
-    >   - You must use the `Amazon EBS Disk` volume plugin.
-
-1. Enter the **Capacity** of your volume in gigabytes.
-
-1. Complete the **Plugin Configuration** form. Each plugin type requires information specific to the vendor of disk type. For help regarding each plugin's form and the information that's required, refer to the plug-in's vendor documentation.
-
-1. **Optional:** Complete the **Customize** form. This form features:
-
-    - [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes):
-
-         This options sets how many nodes can access the volume, along with the node read/write permissions. The [Kubernetes Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) includes a table that lists which access modes are supported by the plugins available.
-
-    - [Mount Options](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options):
-
-         Each volume plugin allows you to specify additional command line options during the mounting process. You can enter these options in the **Mount Option** fields. Consult each plugin's vendor documentation for the mount options available.
-
-    - **Assign to Storage Class:**
-
-         If you later want to automatically provision persistent volumes identical to the volume that you've specified here, assign it a storage class. Later, when you create a workload, you can assign it a persistent volume claim that references the storage class, which will provision a persistent volume identical to the volume you've specified here.
-
-         >**Note:** You must [add a storage class](#adding-storage-classes) before you can assign it to a persistent volume.
-
-1. Click **Save**.
-
-**Result:** Your new persistent volume is created.
 
 ## Storage Classes
 
@@ -75,7 +23,26 @@ Storage Classes allow you to create PVCs dynamically without having to create PV
 
 ![Storage Classes]({{< baseurl >}}/img/rancher/storage-classes.png)
 
+
 ### Storage and Cloud Providers
+
+When you provision persistent storage for a cluster [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you must host your storage with the same provider that hosts the cluster. For example, if you're hosting your cluster on Amazon EC2, you must host your storage on Amazon EBS. To setup storage for your RKE-launched cluster, you must complete two tasks: enabling the **Cloud Provider** option for your cluster, and adding storage using the same provider.
+
+<sup>Enabling Cloud Provider Option/Choosing Storage Provider</sup>
+![Cloud Provider]({{< baseurl >}}/img/rancher/cloud-provider.png)
+
+Before you set up storage for a cluster launched by RKE, make sure that the **Cloud Provider** option for the cluster is enabled. [Cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) are modules that allow you to use the provider's features in Rancher (like provisioning persistent storage).
+
+You can turn on the **Cloud Provider** option in one of two contexts:
+
+- [When provisioning your cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning)
+- [When editing your cluster]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters)
+
+When you begin setting up a [persistent volume](#adding-persistent-volumes) or [storage class](#adding-storage-classes), you can choose the storage plugin or provisioner for your cloud provider.
+
+#### Storage Classes and Cloud Providers
+
+Additionally, storage classes feature a few extra settings for cloud providers.
 
 Each storage class contains the fields `provisioner`, `parameters`, and `reclaimPolicy`, which are used when a persistent volume that belongs to the class needs to be dynamically provisioned.
 
@@ -107,9 +74,77 @@ Finally, you can define custom `MountOptions` for the persistent volume created.
 
 `parameters` are specific to each cloud storage provisioner. For full information about the storage classes provisioner parameters, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
 
+### Adding Persistent Volumes
+
+Your containers can store data on themselves, but if a container fails, that data is lost. To solve this issue, Kubernetes offers _persistent volumes_, which are external storage disks or file systems that your containers can access. If a container crashes, its replacement container can access the data in a persistent volume without any data loss.
+
+Persistent volumes can either be a disk or file system that you host on premise, or they can be hosted by a vendor, such as Amazon EBS or Azure Disk.
+
+>**Prerequisites:**
+>
+>- Permissions: `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+>- You must have [storage provisioned]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
+>- If provisioning storage for a cluster hosted in the cloud:
+>
+>   - The storage and cluster hosts must be the [same provider](#storage-and-cloud-providers).
+>   - The [cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option must be enabled.
+
+
+1. From the **Global** view, open the cluster running the containers that you want to add persistent volume storage to.
+
+1. From the main menu, select **Storage > Persistent Volumes**.
+
+1. Click **Add Volume**.
+
+1. Enter a **Name** for the persistent volume.
+
+1. Select the **Volume Plugin** for the disk type or service that you're using.
+
+    >**Note:** When adding storage to a cluster that's hosted by a cloud provider:
+    >
+    >- You must enable the [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option for the cluster.
+    >- You must use the cloud provider's plug-in for cloud storage. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it:
+    >
+    >   - You must enable the `cloud provider` option for the EC2 cluster.
+    >   - You must use the `Amazon EBS Disk` volume plugin.
+
+1. Enter the **Capacity** of your volume in gigabytes.
+
+1. Complete the **Plugin Configuration** form. Each plugin type requires information specific to the vendor of disk type. For help regarding each plugin's form and the information that's required, refer to the plug-in's vendor documentation.
+
+1. **Optional:** Complete the **Customize** form. This form features:
+
+    - [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes):
+
+         This options sets how many nodes can access the volume, along with the node read/write permissions. The [Kubernetes Documentation](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) includes a table that lists which access modes are supported by the plugins available.
+
+    - [Mount Options](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options):
+
+         Each volume plugin allows you to specify additional command line options during the mounting process. You can enter these options in the **Mount Option** fields. Consult each plugin's vendor documentation for the mount options available.
+
+    - **Assign to Storage Class:**
+
+         If you later want to automatically provision persistent volumes identical to the volume that you've specified here, assign it a storage class. Later, when you create a workload, you can assign it a persistent volume claim that references the storage class, which will provision a persistent volume identical to the volume you've specified here.
+
+         >**Note:** You must [add a storage class](#adding-storage-classes) before you can assign it to a persistent volume.
+
+1. Click **Save**.
+
+**Result:** Your new persistent volume is created.
+
+
 ### Adding Storage Classes
 
 _Storage Classes_ allow you to dynamically provision persistent volumes on demand. Think of storage classes as storage profiles that are created automatically upon a request (which is known as a _persistent volume claim_).
+
+>**Prerequisites:**
+>
+>- Permissions: `Manage Volumes` [role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+>- You must have [storage provisioned]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/).
+>- If provisioning storage for a cluster hosted in the cloud:
+>
+>   - The storage and cluster hosts must be the [same provider](#storage-and-cloud-providers).
+>   - The [cloud providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) option must be enabled.
 
 1. From the **Global** view, open the cluster for which you want to dynamically provision persistent storage volumes.
 

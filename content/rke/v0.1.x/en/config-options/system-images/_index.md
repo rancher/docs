@@ -46,7 +46,7 @@ system_images:
 
     # Ingress Options
     ingress: rancher/nginx-ingress-controller:0.10.2-rancher3
-    ingressBackend: rancher/nginx-ingress-controller-defaultbackend:1.4
+    ingress_backend: rancher/nginx-ingress-controller-defaultbackend:1.4
 ```
 
 Prior to `v0.1.6`, instead of using the `rancher/rke-tools` image, we used the following images:
