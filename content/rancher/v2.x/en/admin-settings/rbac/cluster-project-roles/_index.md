@@ -137,4 +137,9 @@ You can change the cluster or project role(s) that are automatically assigned to
 
 ### Cluster Membership Revocation Behavior
 
-When you revoke the cluster membership for a user assigned the **Member** permission, that user [loses their cluster roles](#clus-roles) for the cluster but [retains their project roles](#proj-roles), which the user inherited through their now-revoked cluster membership. In other words, although you have revoked the user's permissions to access the cluster and its nodes, the user can still access and manage the projects and namespaces they've created previously. This functionality is intended to prevent project and namespace owners from being locked out of their own projects and namespaces.
+When you revoke the cluster membership for a user that's explicitly assigned membership to both the cluster _and_ a project within the cluster, that user [loses their cluster roles](#clus-roles) but [retains their project roles](#proj-roles). In other words, although you have revoked the user's permissions to access the cluster and its nodes, the user can still access and manage:
+
+- The projects they hold membership in.
+- The namespaces that they've created.
+
+This functionality is intended to prevent project and namespace owners from being locked out of their own projects and namespaces. If you want to completely revoke a user's access within a cluster, revoke both their cluster and project memberships.
