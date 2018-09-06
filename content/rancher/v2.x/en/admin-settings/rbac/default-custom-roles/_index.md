@@ -22,6 +22,8 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 1.    From the **Global** view, select **Security > Roles** from the main menu.
 
+<!-- 2.0.7 only Click Cluster or Project at the top first-->
+
 2.    Click **Add Role**.
 
 3.	**Name** the role.
@@ -29,7 +31,10 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
 	Locked roles cannot be assigned to users.
-
+<!-- 2.0.7 only
+Step 5 no longer applies. We default to Project or Cluster depending on the selection above.
+There is a new option for Creator Default to be selected
+ -->
 5.	Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
 
 	- **All**
