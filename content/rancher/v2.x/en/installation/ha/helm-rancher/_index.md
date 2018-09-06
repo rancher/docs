@@ -13,6 +13,8 @@ Use `helm repo add` to add the Rancher chart repository.
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 ```
 
+For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
+
 ### Install cert-manager
 
 > **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates and using the `ingress.tls.source=secret` option.
