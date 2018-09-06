@@ -56,12 +56,9 @@ In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(
 
 ## Tagging Amazon Resources
 
-If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
+Any resources used in a Kubernetes cluster with the Amazon cloud provider must be tagged with a cluster ID.
 
 [Amazon Documentation: Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
-
->**Note:** You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes. You only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. For more information, see [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
-
 
 The following resources need to tagged with a `ClusterID`:
 
