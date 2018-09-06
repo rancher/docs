@@ -22,20 +22,31 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 1.    From the **Global** view, select **Security > Roles** from the main menu.
 
-<!-- 2.0.7 only Click Cluster or Project at the top first-->
+1.	**v2.0.7 and later only:** Select a tab to determine the scope of the roles you're adding. The tabs are:
 
-2.    Click **Add Role**.
+	- **Cluster**
 
-3.	**Name** the role.
+		The role is valid for assignment when adding/managing members to _only_ clusters.
 
-4.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
+	- **Project**
+
+		The role is valid for assignment when adding/managing members to _only_ projects.
+
+        >**Note:** You cannot edit the Global tab.
+
+1.    Click **Add Cluster/Project Role**.
+
+1.	**Name** the role.
+
+1.	Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
 	Locked roles cannot be assigned to users.
-<!-- 2.0.7 only
-Step 5 no longer applies. We default to Project or Cluster depending on the selection above.
-There is a new option for Creator Default to be selected
- -->
-5.	Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
+
+1.  **v2.0.7 and later only:** Choose a **Cluster/Project Creator Default** option setting. Use this option to set if the role is assigned to a user when they create a new cluster or project. Using this feature, you can expand or restrict the default roles for cluster/project creators.
+
+    >**Note:** Out of the box, the Cluster Creator Default and the Project Creator Default roles are `Cluster Owner` and `Project Owner` respectively.
+
+1.	**v2.0.6 and earlier only:** Assign the role a **Context**. Context determines the scope of role assigned to the user. The contexts are:
 
 	- **All**
 
