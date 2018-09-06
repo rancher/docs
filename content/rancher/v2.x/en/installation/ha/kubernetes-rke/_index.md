@@ -9,7 +9,7 @@ Use RKE to install Kubernetes with a high-availability etcd configuration.
 
 Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
 
-> **Note:** If you node has public and internal addresses, its recommended to set `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting `internal_address:` if you want to use self-referencing security groups or firewalls.
+> **Note:** If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 ```yaml
 nodes:
