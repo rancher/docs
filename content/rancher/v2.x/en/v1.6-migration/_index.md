@@ -59,8 +59,6 @@ More detailed information on Kubernetes concepts can be found in the
 
 ## 1. Get Started
 
-Rancher 2.0 differs from Rancher 1.6 because it brings in a new orchestration technology, Kubernetes. Currently, there is no straightforward upgrade path available between Rancher 1.6 and Rancher 2.0.
-
 As a Rancher 1.6 user who's interested in moving to 2.0, how should you get started with migration? The following blog provides a short checklist to help with this transition.
 
 Blog Post: [Migrating from Rancher 1.6 to Rancher 2.0—A Short Checklist](https://rancher.com/blog/2018/2018-08-09-migrate-1dot6-setup-to-2dot0/)
