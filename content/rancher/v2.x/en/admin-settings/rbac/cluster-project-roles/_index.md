@@ -142,4 +142,4 @@ When you revoke the cluster membership for a user that's explicitly assigned mem
 - Access the projects they hold membership in.
 - Exercise any [individual project roles](#project-role-reference) they are assigned.
 
-This functionality is intended to prevent project owners from being locked out of their own projects. If you want to completely revoke a user's access within a cluster, revoke both their cluster and project memberships.
+If you want to completely revoke a user's access within a cluster, revoke both their cluster and project memberships.
