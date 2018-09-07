@@ -64,6 +64,7 @@ You can select which version of Kubernetes to install for your cluster. These op
  v1.10.1-rancher2-1|
  v1.10.0-rancher1-1|
  v1.9.7-rancher2-2|
+ v1.9.7-rancher2-1|
  v1.9.5-rancher1-1|
  v1.8.11-rancher2-1|
  v1.8.10-rancher1-1|
