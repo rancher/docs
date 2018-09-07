@@ -46,10 +46,10 @@ services:
 ```
 
 
-When a cluster is launched with the etcd snapshot service enabled, you can view the `etcd-snapshot` logs to confirm backups are being created automatically.
+When a cluster is launched with the etcd snapshot service enabled, you can view the `etcd-rolling-snapshots` logs to confirm backups are being created automatically.
 
 ```
-$ docker logs etcd-snapshot
+$ docker logs etcd-rolling-snapshots
 
 time="2018-05-04T18:39:16Z" level=info msg="Initializing Rolling Backups" creation=1m0s retention=24h0m0s
 time="2018-05-04T18:40:16Z" level=info msg="Created backup" name="2018-05-04T18:40:16Z_etcd" runtime=108.332814ms
