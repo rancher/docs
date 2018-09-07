@@ -19,7 +19,7 @@ If your organization uses KeyCloak Identity Provider (IdP) for user authenticati
 1.	Complete the **Configure KeyCloak Account** form. KeyCloak IdP lets you specify what data store you want to use. You can either add a database or use an existing LDAP server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
 
 
-    | Column A                  | Column B                                                                      |
+    | Field                     | Description                                                                   |
     | ------------------------- | ----------------------------------------------------------------------------- |
     | Display Name Field        | The AD attribute that contains the display name of users.                     |
     | User Name Field           | The AD attribute that contains the user name/given name.                      |
