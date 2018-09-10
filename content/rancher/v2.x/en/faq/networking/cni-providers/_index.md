@@ -53,7 +53,7 @@ Canal is a CNI provider that gives you the best of Flannel and Calico. It allows
 
 In Rancher, Canal is the default CNI provider combined with Flannel and VXLAN encapsulation.
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and `9099` (healthcheck).
+Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
 ![Canal Diagram]({{< baseurl >}}/img/rancher/canal-diagram.png)
 
@@ -67,7 +67,7 @@ Flannel is a simple and easy way to configure L3 network fabric designed for Kub
 
 Encapsulated traffic is unencrypted by default. Threfore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers. 
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and `9099` (healthcheck).
+Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
 ![Flannel Diagram]({{< baseurl >}}/img/rancher/flannel-diagram.png)
 
