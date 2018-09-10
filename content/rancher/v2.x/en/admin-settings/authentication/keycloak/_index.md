@@ -26,10 +26,10 @@ If your organization uses KeyCloak Identity Provider (IdP) for user authenticati
     | UID Field                 | An AD attribute that is unique to every user.                                 |
     | Groups Field              | Make entries for managing group memberships.                                  |
     | Rancher API Host          | The URL for your Rancher Server.                                              |
-    | Private Key / Certificate | A key-certificate pair to create a secure shell between Rancher and your IdP. |
+    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. |
     | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.               |
     
-    >**Tip:** You can generate one using an openssl command. For example:
+    >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
     >    
     >        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
 
