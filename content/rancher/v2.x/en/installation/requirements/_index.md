@@ -13,6 +13,10 @@ Rancher is supported on the following operating systems and their subsequent rel
 *   Ubuntu 16.04 (64-bit)
 *   Red Hat Enterprise Linux 7.5 (64-bit)
 *   RancherOS 1.4 (64-bit)
+
+If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
+`sudo ros engine switch docker-17.03.2-ce`
+
 {{% /tab %}}
 {{% tab "Hardware" %}}
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements.
@@ -58,7 +62,11 @@ Supported Versions:
 *   `1.13.1`
 *   `17.03.2`
 
+If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
+`sudo ros engine switch docker-17.03.2-ce`
+
 [Docker Documentation: Installation Instructions](https://docs.docker.com/)
+
 {{% /tab %}}
 {{% tab  "Ports" %}}
 
