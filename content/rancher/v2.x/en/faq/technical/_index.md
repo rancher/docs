@@ -20,6 +20,24 @@ New password for default admin user (user-xxxxx):
 <new_password>
 ```
 
+### I deleted/deactivated the last admin, how can I fix it?
+Single node install:
+```
+$ docker exec -ti <container_id> ensure-default-admin
+New default admin user (user-xxxxx)
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+High Availability install:
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- ensure-default-admin
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+
 ### How can I enable debug logging?
 
 * Single node install
