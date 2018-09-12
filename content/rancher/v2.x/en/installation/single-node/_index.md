@@ -3,7 +3,6 @@ title: Single Node Install
 weight: 250
 aliases:
   - /rancher/v2.x/en/installation/single-node-install/
-  - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
 For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
@@ -21,7 +20,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >**Do you want to...**
 >
 >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/proxy/)
->- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/custom-ca-root-certificate/)
+>- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
 >- Complete an Air Gap Installation? See [Air Gap](#air-gap)
 >- Record all transactions with the Rancher API? See [API Auditing](#api-auditing)
 >
@@ -53,7 +52,7 @@ After creating your certificate, run the Docker command below to install Rancher
 - Replace `<CERT_DIRECTORY>` with the directory path to your certificate file.
 - Replace `<FULL_CHAIN.pem>`,`<PRIVATE_KEY.pem>`, and `<CA_CERTS>` with your certificate names.
 
-```	
+```
 docker run -d --restart=unless-stopped \
 	-p 80:80 -p 443:443 \
 	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
@@ -83,7 +82,7 @@ docker run -d --restart=unless-stopped \
 	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
 	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
 	rancher/rancher:latest --no-cacerts
-```	
+```
 {{% /accordion %}}
 {{% accordion id="option-d" label="Option D-Let's Encrypt Certificate" %}}
 
@@ -135,7 +134,7 @@ If you want to record all transations with the Rancher API, enable the [API Audi
 If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
- 	
+
 	 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
 
 ### Persistent Data

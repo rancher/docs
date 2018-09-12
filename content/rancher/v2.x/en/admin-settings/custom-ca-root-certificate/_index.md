@@ -4,7 +4,7 @@ weight: 252
 aliases:
   - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
-If you're using Rancher in a internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA). 
+If you're using Rancher in a internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).
 
 Services that Rancher needs to access are sometimes configured with a certificate from an custom/internal CA root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error displays: `x509: certificate signed by unknown authority`.
 
