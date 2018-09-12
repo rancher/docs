@@ -28,10 +28,7 @@ This document is for upgrading Rancher HA installed with the RKE Add-On yaml. Se
 1. <a id="snapshot"></a> Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
     ```
-	# MacOS
-	./rke_darwin-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
-	# Linux
-    ./rke_linux-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
+    rke etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
     ```
 
     **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.

@@ -19,25 +19,30 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
     - **Linux**: `rke_linux-amd64`
     - **Windows**: `rke_windows-amd64.exe`
 
-2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
+2. Copy the RKE binary to a folder in your `$PATH` and rename it `rke` (or `rke.exe` for Windows)
+
+    ```
+    # MacOS
+    $ mv rke_darwin-amd64 rke
+    # Linux
+    $ mv rke_linux-amd64 rke
+    # Windows PowerShell
+    > mv rke_windows-amd64.exe rke.exe
+    ```
+
+3. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
 
     >**Using Windows?**
     >The file is already an executable. Skip to [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster).
 
     ```
-    # MacOS
-    $ chmod +x rke_darwin-amd64
-    # Linux
-    $ chmod +x rke_linux-amd64
+    $ chmod +x rke
     ```
 
-3.  Confirm that RKE is now executable by running the following command:
+4.  Confirm that RKE is now executable by running the following command:
 
     ```
-    # MacOS
-    $ ./rke_darwin-amd64 --version
-    # Linux
-    $ ./rke_linux-amd64 --version
+    $ rke --version
     ```
 
 ## Prepare the Nodes for the Kubernetes cluster
@@ -60,14 +65,15 @@ There are two easy ways to create a `cluster.yml`:
 To create a new `cluster.yml`, run `rke config` and this command prompts you for all the information needed to build your cluster. Review [our cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to understand what each question means.
 
 ```
-./rke_darwin-amd64 config
+rke config
 ```
 
 After answering the list of questions, there is a `cluster.yml` created in the directory where you launched the `rke config` command. After the `cluster.yml` is created, you can edit the file to make any changes.
 
 #### Creating a Basic `cluster.yml`
+
 ```
-$ rke config --name cluster.yml
+rke config --name cluster.yml
 ```
 
 After answering the list of questions, there is a `cluster.yml` created in the directory where you launched the `rke config` command.
@@ -77,7 +83,7 @@ After answering the list of questions, there is a `cluster.yml` created in the d
 If you want an empty `cluster.yml` template, you can use the `--empty` flag so that a template is produced, but there are no values in the template.
 
 ```
-$ rke config --empty --name cluster.yml
+rke config --empty --name cluster.yml
 ```
 
 #### Printing the `cluster.yml`
@@ -85,7 +91,7 @@ $ rke config --empty --name cluster.yml
 Instead of creating a file, you can print the generated configuration to stdout using the `--print` flag.
 
 ```
-$ rke config --print
+rke config --print
 ```
 
 ### High Availability
@@ -99,16 +105,8 @@ To create an HA cluster, specify more than one host with role `controlplane`.
 After you've created your `cluster.yml`, you can deploy your cluster with a simple command. This command assumes the `cluster.yml` file is in the same directory as where you are running the command.
 
 ```
-# MacOS
-$ ./rke_darwin-amd64 up
-# Linux
-$ ./rke_linux-amd64 up
-```
+rke up
 
-There will be log statements as the Kubernetes cluster is created.
-
-```
-$ ./rke_darwin-amd64 up
 INFO[0000] Building Kubernetes cluster
 INFO[0000] [dialer] Setup tunnel for host [10.0.0.1]
 INFO[0000] [network] Deploying port listener containers
@@ -123,9 +121,11 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 In order to start interacting with your Kubernetes cluster, you will use a different binary called `kubectl`. You will need to [install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine. You can connect to the RKE created cluster by using the `kube_config_cluster.yml` that was generated when you deployed Kubernetes.
 
+Confirm that kubectl is working by checking the version of your Kubernetes cluster
+
 ```
-# Confirm that kubectl is working by checking the version of your Kubernetes cluster
-$ kubectl --kubeconfig kube_config_cluster.yml version
+kubectl --kubeconfig kube_config_cluster.yml version
+
 Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCommit:"fc32d2f3698e36b93322a3465f63a14e9f0eaead", GitTreeState:"clean", BuildDate:"2018-03-27T00:13:02Z", GoVersion:"go1.9.4", Compiler:"gc", Platform:"darwin/amd64"}
 Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1", GitCommit:"68595e18f25e24125244e9966b1e5468a98c1cd4", GitTreeState:"clean", BuildDate:"2018-03-13T04:37:53Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
 ```
@@ -133,7 +133,7 @@ Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1"
 The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue [any kubectl command](https://kubernetes.io/docs/reference/kubectl/kubectl/) to your cluster, like requesting the nodes that are in the cluster.
 
 ```
-$ kubectl --kubeconfig kube_config_cluster.yml get nodes
+kubectl --kubeconfig kube_config_cluster.yml get nodes
 NAME            STATUS    ROLES                      AGE       VERSION
 10.0.0.1         Ready     controlplane,etcd,worker   35m       v1.10.3-rancher1
 ```
