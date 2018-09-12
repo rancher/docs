@@ -61,7 +61,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
-6. Run one of the following commands:
+6. Run the following command:
 
 	```
 	rke up --config rancher-cluster.yml
