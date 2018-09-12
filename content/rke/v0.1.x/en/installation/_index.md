@@ -62,25 +62,15 @@ There are two easy ways to create a `cluster.yml`:
 
 ### Using `rke config`
 
-To create a new `cluster.yml`, run `rke config` and this command prompts you for all the information needed to build your cluster. Review [our cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to understand what each question means.
-
-```
-rke config
-```
-
-After answering the list of questions, there is a `cluster.yml` created in the directory where you launched the `rke config` command. After the `cluster.yml` is created, you can edit the file to make any changes.
-
-#### Creating a Basic `cluster.yml`
+Run `rke config` to create a new `cluster.yml` in the current directory. This command will prompt you for all the information needed to build a cluster. See [cluster configuration options]({{< baseurl >}}/rke/v0.1.x/en/config-options/) for details on the various options.
 
 ```
 rke config --name cluster.yml
 ```
 
-After answering the list of questions, there is a `cluster.yml` created in the directory where you launched the `rke config` command.
-
 #### Creating an Empty `cluster.yml`
 
-If you want an empty `cluster.yml` template, you can use the `--empty` flag so that a template is produced, but there are no values in the template.
+You can create an empty template `cluster.yml` file by specifying the `--empty` flag.
 
 ```
 rke config --empty --name cluster.yml
