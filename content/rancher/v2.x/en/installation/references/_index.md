@@ -9,13 +9,13 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 ## Rancher Nodes
 
-The following table lists the ports that need to be open to/from nodes that are running the `rancher/rancher` container ([Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/)) or `cattle` deployment pods ([High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/)).
+The following table lists the ports that need to be open to and from nodes that are running the `rancher/rancher` container ([Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/)) or `cattle` deployment pods ([High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/)).
 
 {{< ports-rancher-nodes >}}
 
 ## Kubernetes Cluster Nodes
 
-The required ports for cluster nodes vary across different methods for creating clusters.
+The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
 >**Tip:** 
 >
@@ -23,7 +23,7 @@ The required ports for cluster nodes vary across different methods for creating 
 
 {{% tabs %}}
 
-{{% tab "IaaS Clusters" %}}
+{{% tab "Node Pools" %}}
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
 
@@ -34,7 +34,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{% /tab %}}
 
-{{% tab "Custom Cluster" %}}
+{{% tab "Custom Nodes" %}}
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
@@ -83,7 +83,7 @@ These ports are typically opened on your Kubernetes nodes, regardless of what ty
 
 ### Local Node Traffic
 
-Ports marked as `local traffic` in the above requirements (e.g. `9099/tcp`) are used for Kubernetes healthchecks (`livenessProbe` and`readinessProbe`).
+Ports marked as `local traffic` (i.e., `9099 TCP`) in the above requirements are used for Kubernetes healthchecks (`livenessProbe` and`readinessProbe`).
 These healthchecks are executed on the node itself. In most cloud environments, this local traffic is allowed by default. 
 
 However, this traffic may be blocked when:
@@ -91,12 +91,11 @@ However, this traffic may be blocked when:
 - You have applied strict host firewall policies on the node.
 - You are using nodes that have multiple interfaces (multihomed).
  
-In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes/instances.
+In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes / instances.
 
 ### Rancher AWS EC2 security group
 
-When using the [AWS EC2 node driver]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher
-you can choose to let Rancher create a Security Group called `rancher-nodes`. The following rules are automatically added to this Security Group.
+When using the [AWS EC2 node driver]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
 
 |       Type      | Protocol |  Port Range | Source/Destination     | Rule Type |
 |-----------------|:--------:|:-----------:|------------------------|:---------:|
@@ -113,5 +112,3 @@ you can choose to let Rancher create a Security Group called `rancher-nodes`. Th
 | Custom TCP Rule |    TCP   | 30000-32767 | 30000-32767            | Inbound   |
 | Custom UDP Rule |    UDP   | 30000-32767 | 30000-32767            | Inbound   |
 | All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
-
-----
