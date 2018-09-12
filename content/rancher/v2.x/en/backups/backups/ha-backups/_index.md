@@ -64,10 +64,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 6. Run one of the following commands:
 
 	```
-	# MacOS
-	./rke_darwin-amd64 up --config rancher-cluster.yml
-	# Linux
-	./rke_linux-amd64 up --config rancher-cluster.yml
+	rke up --config rancher-cluster.yml
 	```
 
 
@@ -84,10 +81,7 @@ When you're about to upgrade Rancher or restore it to a previous snapshot, you s
 2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
 	```
-	# MacOS
-	./rke_darwin-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
-	# Linux
-	./rke_linux-amd64 etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
+	rke etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
 	```
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.
