@@ -3,7 +3,6 @@ title: Single Node Install
 weight: 250
 aliases:
   - /rancher/v2.x/en/installation/single-node-install/
-  - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---
 For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
@@ -20,14 +19,15 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 >**Do you want to...**
 >
->- Complete an Air Gap Installation?
->- Record all transactions with the Rancher API?
+>- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/proxy/)
+>- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
+>- Complete an Air Gap Installation? See [Air Gap](#air-gap)
+>- Record all transactions with the Rancher API? See [API Auditing](#api-auditing)
 >
->See [Advanced Options](#advanced-options) below before continuing.
 
 Choose from the following options:
 
-{{% accordion id="option-a" label="Option A—Default Self-Signed Certificate" %}}
+{{% accordion id="option-a" label="Option A-Default Self-Signed Certificate" %}}
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
@@ -38,7 +38,7 @@ Log into your Linux host, and then run the minimum installation command below.
 	rancher/rancher:latest
 
 {{% /accordion %}}
-{{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Self-Signed" %}}
+{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
 >**Prerequisites:**
@@ -52,7 +52,7 @@ After creating your certificate, run the Docker command below to install Rancher
 - Replace `<CERT_DIRECTORY>` with the directory path to your certificate file.
 - Replace `<FULL_CHAIN.pem>`,`<PRIVATE_KEY.pem>`, and `<CA_CERTS>` with your certificate names.
 
-```	
+```
 docker run -d --restart=unless-stopped \
 	-p 80:80 -p 443:443 \
 	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
@@ -61,7 +61,7 @@ docker run -d --restart=unless-stopped \
 	rancher/rancher:latest
 ```
 {{% /accordion %}}
-{{% accordion id="option-c" label="Option C—Bring Your Own Certificate: Signed by Recognized CA" %}}
+{{% accordion id="option-c" label="Option C-Bring Your Own Certificate: Signed by Recognized CA" %}}
 
 In production environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
@@ -82,40 +82,9 @@ docker run -d --restart=unless-stopped \
 	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
 	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
 	rancher/rancher:latest --no-cacerts
-```	
-{{% /accordion %}}
-{{% accordion id="option-d" label="Option D—Bring Your Own Certificate: Private CA Root Certificate" %}}
-
-If you're using Rancher in a internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA). 
-
-Services that Rancher needs to access are sometimes configured with a certificate from an custom/internal CA root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error displays: `x509: certificate signed by unknown authority`.
-
-To validate the certificate, the CA root certificates need to be added to Rancher. As Rancher is written in Go, we can use the environment variable `SSL_CERT_DIR` to point to the directory where the CA root certificates are located in the container. The CA root certificates directory can be mounted using the Docker volume option (`-v host-source-directory:container-destination-directory`) when starting the Rancher container.
-
-Examples of services that Rancher can access:
-
-* Catalogs
-* Authentication providers
-* Accessing hosting/cloud API when using Node Drivers
-
-Use the the command example to start a Rancher container with you private CA certificates mounted.
-
-- The volume option (`-v`) should specify the host directory containing the CA root certificates.
-- The `e` flag in combination with `SSL_CERT_DIR` declares an environment variable that specifies the mounted CA root certificates directory location inside the container.
-	- Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`.
-	- Mounting a host directory inside the container can be done using `-v host-source-directory:container-destination-directory` or `--volume host-source-directory:container-destination-directory`.
-
-The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
-
-```
-docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
-  -v /host/certs:/container/certs \
-  -e SSL_CERT_DIR="/container/certs" \
-  rancher/rancher:latest
 ```
 {{% /accordion %}}
-{{% accordion id="option-e" label="Option E—Let's Encrypt Certificate" %}}
+{{% accordion id="option-d" label="Option D-Let's Encrypt Certificate" %}}
 
 For production environments, you also have the options of using [Let's Encrypt](https://letsencrypt.org/) certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
@@ -165,7 +134,7 @@ If you want to record all transations with the Rancher API, enable the [API Audi
 If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
- 	
+
 	 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
 
 ### Persistent Data

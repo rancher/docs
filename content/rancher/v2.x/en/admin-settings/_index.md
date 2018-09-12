@@ -1,5 +1,5 @@
 ---
-title: Admin Settings
+title: Administration
 weight: 1100
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/
