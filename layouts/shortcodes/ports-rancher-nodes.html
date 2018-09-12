@@ -1,0 +1,56 @@
+<table>
+    <caption>Port Requirements for Hosted / Imported Clusters</caption>
+    <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>Port</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>TCP</td>
+          <td>80</td>
+          <td>Load Balancer / Reverse Proxy</td>
+          <td></td>
+          <td>HTTP traffic to Rancher UI / API.</td>
+        </tr>
+        <tr>
+          <td>TCP</td>  
+          <td>443</td>
+          <td>Load Balancer / Reverse Proxy<br><br>Otherwise IPs of all cluster nodes and other Rancher API / UI clients.</td>
+          <td></td>
+          <td>HTTPS traffic to Rancher UI / API.</td>
+        </tr>
+        <tr>
+                <td>TCP</td>    
+          <td>443</td>
+          <td></td>
+          <td>35.160.43.145<br>35.167.242.46<br>52.33.59.17</td>
+          <td>Rancher catalog (git.rancher.io).</td>
+        </tr>
+        <tr>
+                <td>TCP</td>
+          <td>22</td>
+          <td></td>
+          <td>Any node created using node driver.</td>
+          <td>SSH provisioning of node by node driver.</td>
+        </tr>
+        <tr>
+                <td>TCP</td>
+          <td>2376</td>
+          <td></td>
+          <td>Any node created using node driver.</td>
+          <td>Docker daemon TLS port used by node driver.</td>
+        </tr>
+        <tr>
+                <td>TCP</td>
+          <td>Provider Dependent</td>
+          <td></td>
+          <td>Port of the Kubernetes API endpoint in hosted clusters.</td>
+          <td>Kubernetes API.</td>
+        </tr>
+    </tbody>
+</table>

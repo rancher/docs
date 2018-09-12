@@ -11,47 +11,61 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 The following table lists the ports that need to be open to/from nodes that are running the `rancher/rancher` container ([Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/)) or `cattle` deployment pods ([High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/)).
 
-| Protocol |        Port       | Source                                                                                                   | Destination                                              | Description                                |
-|:--------:|:-----------------:|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------|--------------------------------------------|
-|    TCP   |         80        | Load balancer/reverse proxy                                                                              | -                                                        | HTTP traffic to Rancher UI/API             |
-|    TCP   |        443        | Load balancer/reverse proxy </br> Otherwise IPs of all cluster nodes and other Rancher API/UI clients.  | -                                                         | HTTPS traffic to Rancher UI/API            |
-|    TCP   |        443        | -                                                                                                        | 35.160.43.145</br>35.167.242.46</br>52.33.59.17          | Rancher catalog (git.rancher.io)           |
-|    TCP   |         22        | -                                                                                                        | Any node created using Node Driver                       | SSH provisioning of node by Node Driver    |
-|    TCP   |        2376       | -                                                                                                        | Any node created using Node Driver                       | Docker daemon TLS port used by Node Driver |
-|    TCP   | Provider dependent| -                                                                                                        | Port of the Kubernetes API Endpoint in Hosted Clusters   | Kubernetes API                             |
-
-----
+{{< ports-rancher-nodes >}}
 
 ## Kubernetes Cluster Nodes
 
 The required ports for cluster nodes vary across different methods for creating clusters.
 
-### Hosted/Imported Kubernetes Clusters
+>**Tip:** 
+>
+>If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports](#commonly-used-ports) as your port reference instead of the comprehensive tables below.
 
-The following table depicts the port requirements for [Hosted]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters) and [Imported]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) clusters.
+{{% tabs %}}
 
-![Hosted/Imported Port Requirements]({{< baseurl >}}/img/rancher/port-table-hosted-imported.png)
-
-### Rancher Launched Kubernetes Cluster (Instrastructure Nodes)
+{{% tab "IaaS Clusters" %}}
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
 
 >**Note:**
 >The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
 
-![RKE Infrastructure Port Requirements]({{< baseurl >}}/img/rancher/port-table-infrastructure-nodes.png)
+{{< ports-iaas-nodes >}}
 
-### Rancher Launched Kubernetes Cluster (Custom Nodes)
+{{% /tab %}}
+
+{{% tab "Custom Cluster" %}}
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
-![RKE Custom Port Requirements]({{< baseurl >}}/img/rancher/port-table-custom-nodes.png)
+{{< ports-custom-nodes >}}
 
-## Annex
+{{% /tab %}}
 
-### Port Descriptions
+{{% tab "Hosted Clusters" %}}
 
-Description of common ports referenced in the above requirements.
+The following table depicts the port requirements for [hosted clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters). 
+
+{{< ports-imported-hosted >}}
+
+{{% /tab %}}
+
+{{% tab "Imported Clusters" %}}
+
+The following table depicts the port requirements for [imported clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/).
+
+{{< ports-imported-hosted >}}
+
+{{% /tab %}}
+
+{{% /tabs %}}
+
+
+## Other Port Considerations
+
+### Commonly Used Ports
+
+These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
 | Protocol 	|       Port       	| Description                                     	|
 |:--------:	|:----------------:	|-------------------------------------------------	|
@@ -70,7 +84,14 @@ Description of common ports referenced in the above requirements.
 ### Local Node Traffic
 
 Ports marked as `local traffic` in the above requirements (e.g. `9099/tcp`) are used for Kubernetes healthchecks (`livenessProbe` and`readinessProbe`).
-These healthchecks are executed on the node itself. In most cloud environments, this local traffic is allowed by default. When you have applied strict host firewall policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic may get blocked. In this case, you have to explicitely allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
+These healthchecks are executed on the node itself. In most cloud environments, this local traffic is allowed by default. 
+
+However, this traffic may be blocked when:
+
+- You have applied strict host firewall policies on the node.
+- You are using nodes that have multiple interfaces (multihomed).
+ 
+In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes/instances.
 
 ### Rancher AWS EC2 security group
 

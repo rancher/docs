@@ -98,7 +98,7 @@ Next, set API permissions for Rancher within Azure.
     <br/>
     - **Access the directory as the signed-in user**
     - **Read directory data**
-    - **Read all groups**
+    - **Read all groups**π
     - **Read all users' full profiles**
     - **Read all users' basic profiles**
     - **Sign in and read user profile**
