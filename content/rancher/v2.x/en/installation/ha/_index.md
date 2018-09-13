@@ -3,7 +3,7 @@ title: High Availability (HA) Install
 weight: 275
 ---
 
-When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for High-Availability.
+For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.
 
 This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
 
@@ -11,11 +11,12 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 
 ## Recommended Architecture
 
-* DNS for Rancher should resolve to a Layer 4 Load Balancer
+* DNS for Rancher should resolve to a layer 4 load balancer
 * The Load Balancer should forward ports 80 and 443 TCP to all 3 nodes in the Kubernetes cluster.
 * The Ingress controller will redirect http port 80 to https and terminate SSL/TLS on port 443.
-* The Ingress controller will forward traffic to port 80 on the Pod in the Rancher Deployment.
+* The Ingress controller will forward traffic to port 80 on the pod in the Rancher deployment.
 
+<sup>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
 ## Required Tools

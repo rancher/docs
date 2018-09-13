@@ -39,6 +39,8 @@ Prepare by creating 3 new nodes to be the target for the restored Rancher instan
 
 We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
 
+> **IMPORTANT:** Before starting the restore make sure all the kubernetes services on the old cluster nodes are stopped. We recommend powering off the nodes to be sure.
+
 ### 2. Place Snapshot and PKI Bundle
 
 Pick a one of the clean nodes. That node will be the "target node" for the initial restore.  Place the snapshot and PKI certificate bundle files in the `/opt/rke/etcd-snapshots` directory on the "target node".
@@ -105,9 +107,9 @@ rke up --config ./rancher-cluster-restore.yml
 
 #### Testing the Cluster
 
-Once RKE completes, the cluster should now be up and Rancher should be running. RKE will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster-restore.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
+Once RKE completes it will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster-restore.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
 
-You should see your new "target node" in `Ready` and three old nodes in `NotReady`.
+Your new cluster will take a few minutes to stabilize. Once you see the new "target node" transition to `Ready` and three old nodes in `NotReady` you are ready to continue.
 
 ```
 kubectl get nodes
@@ -121,10 +123,37 @@ NAME            STATUS    ROLES                      AGE       VERSION
 
 #### Cleaning up Old Nodes
 
-Use `kubectl` to delete the old nodes from the cluster. Repeat for each old node.
+Use `kubectl` to delete the old nodes from the cluster.
 
 ```
-kubectl delete node 18.217.82.189
+kubectl delete node 18.217.82.189 18.222.22.56 18.191.222.99
+```
+
+#### Reboot the Target Node
+
+Reboot the target node to ensure the cluster networking and services are in a clean state before continuing.
+
+#### Check Kubernetes Pods
+
+Wait for the pods running in `kube-system`, `ingress-nginx` and the `rancher` pod in `cattle-system` to return to the `Running` state.
+
+> **Note:** `cattle-cluster-agent` and `cattle-node-agent` pods will be in an `Error` or `CrashLoopBackOff` state until Rancher server is up and the DNS/Load Balancer have been pointed at the new cluster.
+
+```
+kubectl get pods --all-namespaces
+
+NAMESPACE       NAME                                    READY     STATUS    RESTARTS   AGE
+cattle-system   cattle-cluster-agent-766585f6b-kj88m    0/1       Error     6          4m
+cattle-system   cattle-node-agent-wvhqm                 0/1       Error     8          8m
+cattle-system   rancher-78947c8548-jzlsr                0/1       Running   1          4m
+ingress-nginx   default-http-backend-797c5bc547-f5ztd   1/1       Running   1          4m
+ingress-nginx   nginx-ingress-controller-ljvkf          1/1       Running   1          8m
+kube-system     canal-4pf9v                             3/3       Running   3          8m
+kube-system     cert-manager-6b47fc5fc-jnrl5            1/1       Running   1          4m
+kube-system     kube-dns-7588d5b5f5-kgskt               3/3       Running   3          4m
+kube-system     kube-dns-autoscaler-5db9bbb766-s698d    1/1       Running   1          4m
+kube-system     metrics-server-97bc649d5-6w7zc          1/1       Running   1          4m
+kube-system     tiller-deploy-56c4cf647b-j4whh          1/1       Running   1          4m
 ```
 
 #### Adding in Additional Nodes

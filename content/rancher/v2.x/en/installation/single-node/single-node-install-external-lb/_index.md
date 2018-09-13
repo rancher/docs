@@ -4,86 +4,39 @@ weight: 252
 aliases:
 - /rancher/v2.x/en/installation/single-node-install-external-lb/
 ---
-For development environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to a Linux host using a single Docker container. Then you will configure an external load balancer to work with Rancher.
-
+For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
 
 >**Want to skip the external load balancer?**
 > See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.
 
-
-
 ## Installation Outline
+<!-- TOC -->
 
-Installation of Rancher on a single node with an external load balancer involves multiple procedures. Review this outline to learn about each procedure you need to complete.
+- [1. Provision Linux Host](#1-provision-linux-host)
+- [2. Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
+- [3. Configure Load Balancer](#3-configure-load-balancer)
 
-1. [Provision Linux Host](#1-provision-linux-host)
-
-    Provision a single Linux host to launch your {{< product >}} Server.
-
-2. [Choose an SSL Option and Install Rancher](#2-choose-an-ssl-option-and-install-rancher)
-
-    Choose an SSL option for Rancher communication encryption. After choosing an option, run the command that accompanies it to deploy Rancher.
-
-3. [Configure Load Balancer](#3-configure-load-balancer)
-
-    Setup a load balancer to direct communications with Rancher and your Kubernetes cluster.
-
+<!-- /TOC -->
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host to launch your {{< product >}} Server.
-
-### Host Requirements
-
-#### Operating System
-
-{{< requirements_os >}}
-
-#### Hardware
-
-{{< requirements_hardware >}}
-
-#### Software
-
-{{< requirements_software >}}
-
-{{< note_server-tags >}}
-
-#### Ports
-
-The following diagram depicts the basic port requirements for Rancher. For a comprehensive list, see [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/).
-
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.png)
+Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
->**Attention Air Gap Users:**
-> If you are visiting this page to complete [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must prepend your private registry URL to the server tag when running the installation command in the option that you choose. Replace `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL.
+>**Do you want to...**
 >
-> Example:
-```
-<REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
-```
-
-- [Option A-Bring Your Own Certificate: Self-Signed](#option-a-bring-your-own-certificate-self-signed)
-- [Option B-Bring Your Own Certificate: Signed by Recognized CA](#option-b-bring-your-own-certificate-signed-by-recognized-ca)
-
->**Want records of all transactions with the Rancher API?** 
+>- Complete an Air Gap Installation?
+>- Record all transactions with the Rancher API?
 >
->Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
->```
--e AUDIT_LEVEL=1 \
--e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
--e AUDIT_LOG_MAXAGE=20 \
--e AUDIT_LOG_MAXBACKUP=20 \
--e AUDIT_LOG_MAXSIZE=100 \
-```
+>See [Advanced Options](#advanced-options) below before continuing.
 
-### Option A-Bring Your Own Certificate: Self-Signed
+Choose from the following options:
 
-If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the docker command to deploy Rancher, pointing it toward your certificate.
+{{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
+If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
 
 >**Prerequisites:**
 >Create a self-signed certificate.
@@ -100,9 +53,9 @@ If you elect to use a self-signed certificate to encrypt communication, you must
       -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
       rancher/rancher:latest
     ```
-
-### Option B-Bring Your Own Certificate: Signed by Recognized CA
-
+ 
+{{% /accordion %}}
+{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
 >**Prerequisites:**
@@ -117,9 +70,10 @@ If you use a certificate signed by a recognized CA, installing your certificate 
 
     ```
     docker run -d --restart=unless-stopped \
-      -p 80:80 -p 443:443 \
-      rancher/rancher:latest --no-cacerts
-    ```
+    -p 80:80 -p 443:443 \
+    rancher/rancher:latest --no-cacerts
+    ``` 
+{{% /accordion %}}
 
 ## 3. Configure Load Balancer
 
@@ -142,7 +96,7 @@ The load balancer or proxy has to be configured to support the following:
 
 ### Example Nginx configuration
 
-This Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
+This layer 7 Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
 
  >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 
@@ -186,9 +140,8 @@ server {
 <br/>
 
 ## What's Next?
-You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/).
+- **Recommended:** Review [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>
@@ -197,6 +150,26 @@ You have a couple of options:
 
 {{< ssl_faq_single >}}
 
-## Persistent Data
+## Advanced Options
+
+### API Auditing
+
+If you want to record all transations with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+
+	-e AUDIT_LEVEL=1 \
+	-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+	-e AUDIT_LOG_MAXAGE=20 \
+	-e AUDIT_LOG_MAXBACKUP=20 \
+	-e AUDIT_LOG_MAXSIZE=100 \
+
+### Air Gap
+
+If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
+
+**Example:**
+ 	
+	 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
+
+### Persistent Data
 
 {{< persistentdata >}}

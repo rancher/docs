@@ -28,7 +28,7 @@ Usage:
 -d      - Build the dev image instead of pulling from the registry
 -p PORT - Port to listen on
 -t DIR  - Use DIR to for the theme, to devlop the theme at the same time
--u      - Upload tbe build image after building
+-u      - Upload the build image after building
 
 EOF
 }

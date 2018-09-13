@@ -101,4 +101,4 @@ If the Docker socket is different than the default, you can set the `docker_sock
 
 ### Labels
 
-You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/v0.1.x/en/config-options/ingress-controllers/) `node_selector` option.
+You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/) `node_selector` option.

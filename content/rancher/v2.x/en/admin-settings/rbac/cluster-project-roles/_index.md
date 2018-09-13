@@ -33,15 +33,15 @@ Rancher lets you assign _custom cluster roles_ to a user instead of the typical 
 
 The following table lists each built-in custom cluster role available in Rancher and whether it is also granted by the `Owner` or `Member` role.
 
-| Custom Cluster Role                | Owner         | Member        |
-| ---------------------------------- | ------------- | ------------- |
-| Manage Cluster Members             | ✓             |               |
-| Manage Nodes                       | ✓             |               |
-| Manage Storage                     | ✓             |               |
-| View All Projects                  | ✓             |               |
-| Create Project                     | ✓             | ✓             |
-| View Cluster Members               | ✓             | ✓             |
-| View Nodes                         | ✓             | ✓             |
+| Custom Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
+| ---------------------------------- | ------------- | --------------------------------- |
+| Manage Cluster Members             | ✓             |                                   |
+| Manage Nodes                       | ✓             |                                   |
+| Manage Storage                     | ✓             |                                   |
+| View All Projects                  | ✓             |                                   |
+| Create Project                     | ✓             | ✓                                 |
+| View Cluster Members               | ✓             | ✓                                 |
+| View Nodes                         | ✓             | ✓                                 |
 
 > **Note:** Each cluster role listed above, including `Owner` and `Member`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
@@ -69,25 +69,25 @@ Rancher lets you assign _custom project roles_ to a user instead of the typical 
 
 The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
-| Custom Cluster Role                | Owner         | Member        | Read Only     |
-| ---------------------------------- | ------------- | ------------- | ------------- |
-| Manage Project Members             | ✓             |               |               |
-| Create Namespaces                  | ✓             | ✓             |               |
-| Manage Config Maps                 | ✓             | ✓             |               |
-| Manage Ingress                     | ✓             | ✓             |               |
-| Manage Secrets                     | ✓             | ✓             |               |
-| Manage Service Accounts            | ✓             | ✓             |               |
-| Manage Services                    | ✓             | ✓             |               |
-| Manage Volumes                     | ✓             | ✓             |               |
-| Manage Workloads                   | ✓             | ✓             |               |
-| View Config Maps                   | ✓             | ✓             | ✓             |
-| View Ingress                       | ✓             | ✓             | ✓             |
-| View Project Members               | ✓             | ✓             | ✓             |
-| View Secrets                       | ✓             | ✓             | ✓             |
-| View Service Accounts              | ✓             | ✓             | ✓             |
-| View Services                      | ✓             | ✓             | ✓             |
-| View Volumes                       | ✓             | ✓             | ✓             |
-| View Workloads                     | ✓             | ✓             | ✓             |
+| Custom Cluster Role                | Owner         | Member<a id="proj-roles"><a/> | Read Only     |
+| ---------------------------------- | ------------- | ----------------------------- | ------------- |
+| Manage Project Members             | ✓             |                               |               |
+| Create Namespaces                  | ✓             | ✓                             |               |
+| Manage Config Maps                 | ✓             | ✓                             |               |
+| Manage Ingress                     | ✓             | ✓                             |               |
+| Manage Secrets                     | ✓             | ✓                             |               |
+| Manage Service Accounts            | ✓             | ✓                             |               |
+| Manage Services                    | ✓             | ✓                             |               |
+| Manage Volumes                     | ✓             | ✓                             |               |
+| Manage Workloads                   | ✓             | ✓                             |               |
+| View Config Maps                   | ✓             | ✓                             | ✓             |
+| View Ingress                       | ✓             | ✓                             | ✓             |
+| View Project Members               | ✓             | ✓                             | ✓             |
+| View Secrets                       | ✓             | ✓                             | ✓             |
+| View Service Accounts              | ✓             | ✓                             | ✓             |
+| View Services                      | ✓             | ✓                             | ✓             |
+| View Volumes                       | ✓             | ✓                             | ✓             |
+| View Workloads                     | ✓             | ✓                             | ✓             |
 
 > **Note:** Each project role listed above, including Owner, Member, and Read Only, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 
@@ -134,3 +134,12 @@ You can change the cluster or project role(s) that are automatically assigned to
 1. If you want to remove a default role, edit the permission and select **No** from the default roles option.
 
 **Result:** The default roles are configured based on your changes. Roles assigned to cluster/project creators display a check in the **Cluster/Project Creator Default** column.
+
+### Cluster Membership Revocation Behavior
+
+When you revoke the cluster membership for a user that's explicitly assigned membership to both the cluster _and_ a project within the cluster, that user [loses their cluster roles](#clus-roles) but [retains their project roles](#proj-roles). In other words, although you have revoked the user's permissions to access the cluster and its nodes, the user can still:
+
+- Access the projects they hold membership in.
+- Exercise any [individual project roles](#project-role-reference) they are assigned.
+
+If you want to completely revoke a user's access within a cluster, revoke both their cluster and project memberships.

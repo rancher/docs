@@ -21,6 +21,8 @@ PygmentsStyle = "native"
   addThis = "ra-5af1cc6793d86bfb"
   ### Edit content repo (set to automatically enter "edit" mode; this is good for "improve this page" links)
   ghdocsrepo = "https://github.com/rancher/docs"
+  pageBy = "title"
+  pageLimit = 5
 
 [outputFormats.Algolia]
 baseName = "algolia"
@@ -39,6 +41,7 @@ params = ["categories", "tags"]
 [[menu.main]]
 identifier = "what-is-rancher"
 name       = "What is Rancher"
+url        = "https://rancher.com/what-is-rancher/overview/"
 weight     = "1"
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
@@ -107,6 +110,7 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 [[menu.main]]
 identifier = "products"
 name       = "Products"
+url        = "https://rancher.com/products/"
 weight     = "2"
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
@@ -122,37 +126,42 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
 
 [[menu.main]]
-#identifier = "customers"
-#name       = "Customers"
-#url        = "https://rancher.com/customers/"
-#weight     = "3"
-
-[[menu.main]]
 identifier = "customers"
 name       = "Customers"
 url        = "https://rancher.com/customers/"
-weight     = "4"
+weight     = "3"
 
 [[menu.main]]
 identifier = "learn"
 name       = "Learn"
-weight     = "5"
+url        = "https://rancher.com/learn/"
+weight     = "4"
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
   name       = "Blog"
   url        = "https://rancher.com/blog/"
   parent     = "learn"
+  weight     = "1"
 
   [[menu.main]]
-  name       = "Rancher Docs"
-  url        = "https://rancher.com/docs/"
+  name       = "Events"
+  url        = "https://rancher.com/events/"
   parent     = "learn"
+  weight     = "2"
 
   [[menu.main]]
   name       = "Training"
   url        = "https://rancher.com/training/"
   parent     = "learn"
+  weight     = "3"
+
+  [[menu.main]]
+  name       = "Online Meetups"
+  url        = "https://rancher.com/online-meetups/"
+  parent     = "learn"
+  weight     = "4"
+
 
   [[menu.main]]
   name       = "Forums"
@@ -160,16 +169,13 @@ pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
   target = "_blank"
   pre        = "<i class='material-icons text-sm'>launch</i>"
   parent     = "learn"
+  weight     = "5"
 
   [[menu.main]]
-  #name       = "Learning Resources"
-  #url        = "https://rancher.com/learning-resources/"
-  #parent     = "learn"
-
-  [[menu.main]]
-  name       = "Events"
-  url        = "https://rancher.com/events/"
+  name       = "Rancher Docs"
+  url        = "https://rancher.com/docs/"
   parent     = "learn"
+  weight     = "6"
 
 
 [[menu.main]]
@@ -180,8 +186,8 @@ weight     = "5"
 pre        = "<i class='material-icons'>keyboard_arrow_down</i>"
 
   [[menu.main]]
-  name       = "News"
-  url        = "https://rancher.com/news/"
+  name       = "Press"
+  url        = "https://rancher.com/press/"
   parent     = "about"
 
   [[menu.main]]
