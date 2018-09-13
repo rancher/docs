@@ -10,7 +10,7 @@ When you are creating or editing a project, you can configure a _resource quotas
 
 In situations where several teams share a cluster, one team may overconsume the resources available. To prevent this overconsumption, you can apply a _project quota_, which creates a pool of resources that the project's namespaces can use, resources being things like data or processing power.
 
-## Project Quotas vs. Resource Quotas
+## Rancher Resource Quotas vs. Native Kubernetes Resource Quotas
 
 Resource quotas in Rancher work similarly to how they do in the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, Rancher's version of resource quotas have a few key differences from the Kubernetes version. 
 
@@ -51,11 +51,18 @@ Rancher Resource Quotas | Native Kubernetes Resource Quotas
  Applies resource limits to the project and all its namespaces. | Applies resource limits to individual namespaces. 
  Applies resource quotas to namespaces through inheritance. | Apply only to the assigned namespace.
 
+<<<<<<< HEAD
 ## Project Quota Resource Pool
 
 When you create a resource quota, you are configuring the pool of resources available to the project. You can set limits for a variety of different resources, for both your project and your namespaces.
 
 
+=======
+## Resource Quota Types
+
+When you create a resource quota, you are configuring the pool of resources available to the project. You can set limits for a variety of different resources, for both your project and your namespaces.
+
+>>>>>>> change per denise
 ### Namespace Default Limit Overrides
 
 Although each namespace in a project inherits the **Namespace Default Limit**, you can also override this setting for specific namespaces that require additional (or fewer) resources.
