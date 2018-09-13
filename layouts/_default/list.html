@@ -10,18 +10,22 @@
 
     <div class="row m-t-sm">
 
-      <aside class="col-sm-3 col-xs-12 p-l-0">
+      <aside class="col-md-3 col-xs-12 p-l-0">
         {{ partial "docs-side-nav.html" . }}
       </aside>
 
-      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-l-lg {{end}} col-xs-12">
+      <article class="{{ if ($.Scratch.Get "showSidebar") }}col-sm-6{{else}}col-md-9 p-l-lg {{end}}col-xs-12">
 
       {{ with .Params.Title }}
         <h1 class="m-t-0">{{ . }}</h1>
         <hr/>
       {{end}}
 
-      <div class="main-content">
+      <div class="main-content docs-body">
+        <!-- this is a test -->
+        <!-- {{ partial "page-nav.html" . }} -->
+        <!-- end test -->
+
         {{ .Content }}
 
         {{ $paginator := .Scratch.Get "paginator" }}

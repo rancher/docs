@@ -69,7 +69,7 @@ kubectl -n cattle-namespace logs -f rancher-784d94f59b-vgqzh
 
 Use your browser to check the certificate details. If it says the Common Name is "Kubernetes Ingress Controller Fake Certificate", something may have gone wrong with reading or issuing your SSL cert.
 
-> Note: if you are using LetsEncrypt to issue certs it can sometimes take a few minuets to issue the cert.
+> **Note:** if you are using LetsEncrypt to issue certs it can sometimes take a few minuets to issue the cert.
 
 #### cert-manager issued certs (Rancher Generated or LetsEncrypt)
 
