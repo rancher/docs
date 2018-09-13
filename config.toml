@@ -8,7 +8,11 @@ pluralizeListTitles = false
 
 enableRobotsTXT = true
 pygmentsCodeFences = true
-pygmentsCodeFencesGuessSyntax = true
+
+PygmentsStyle = "native"
+
+#pygmentsCodeFencesGuessSyntax = true
+
 
 [permalinks]
   inside-pages = "/:filename/"

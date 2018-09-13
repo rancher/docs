@@ -38,17 +38,6 @@ const bootstrapDocsSearch = function() {
 
 
   search.addWidget(
-    instantsearch.widgets.searchBox({
-      autofocus: true,
-      loadingIndicator: true,
-      container: '#search-box-mobile',
-      placeholder: 'Search Blog, Events, etc...',
-      magnifier: false,
-      reset: true,
-    })
-  );
-
-  search.addWidget(
     instantsearch.widgets.infiniteHits({
       container: '#hits',
       templates: {
@@ -61,26 +50,61 @@ const bootstrapDocsSearch = function() {
 
   search.start();
 
-  $(window).on('keyup', e => {
-    if (e.which === 27 && $('.container-search').hasClass('open')) {
-      $('.container-search').toggleClass('open');
-      $('.overlay-search').toggleClass('open');
+  $(document).on('click', '.search-open', (e) => {
+    let wrapperId = $(e.currentTarget).data('launch-id');
+    let wrapper = $(`#${wrapperId}`);
+
+    let content = wrapper.find('div.content');
+
+    const modal = new tingle.modal({
+      closeMethods: ['overlay', 'button', 'escape'],
+      closeLabel: "Close",
+
+      onOpen: () => {
+        console.log('Search opened');
+      },
+
+      onClose: () => {
+        console.log('Search closed');
+      },
+
+      beforeClose: () => {
+        content.detach()
+        wrapper.append(content);
+        return true;
+      }
+    });
+
+    // set content
+    content.detach();
+    modal.setContent(content[0]);
+
+    // add a button
+    let label = wrapper.find('.footer-button-label').data('footer-label');
+    if ( label ) {
+      modal.addFooterBtn(label, 'tingle-btn tingle-btn--primary', function() {
+        // here goes some logic
+        modal.close();
+      });
     }
+
+    modal.open();
+    setTimeout(function() {
+      $('#search-box').focus();
+    }, 50);
   });
 
-  $('header').on('click', '#button-search', () => {
+  //mobile nav toggle
+  $(document).ready(function() {
+    $("body").addClass("js");
+    var $menu = $("#menu"),
+        $menulink = $(".menu-link");
 
-    let container = $('.container-search');
-    let overlay   = $('.overlay-search');
-
-    container.toggleClass('open');
-    overlay.toggleClass('open');
-
-    if (container.hasClass('open')) {
-      $('input#search-box').focus();
-    }
-
-    overlay.css({top: 120});
+    $menulink.click(function() {
+      $menulink.toggleClass("active");
+      $menu.toggleClass("active");
+      return false;
+    });
   });
 }
 
@@ -100,3 +124,5 @@ $(document).ready(() => {
   bootstrapDocsSearch();
   bootstrapIdLinks();
 });
+
+
