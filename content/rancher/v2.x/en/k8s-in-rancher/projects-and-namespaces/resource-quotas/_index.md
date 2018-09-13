@@ -6,57 +6,73 @@ draft: true
 
 _Available as of v2.1.0_
 
-When you are creating or editing a project, you can configure a _resource quotas_, which is a Rancher feature that limits the resources available to a project and the namespaces within it.
+In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a Rancher feature that limits the resources available to a project or namespace.
 
-In situations where several teams share a cluster, one team may overconsume the resources available. To prevent this overconsumption, you can apply a _project quota_, which creates a pool of resources that the project's namespaces can use, resources being things like data or processing power.
+## Resource Quotas in Rancher
 
-## Rancher Resource Quotas vs. Native Kubernetes Resource Quotas
+Resource quotas in Rancher work similarly to how they do in the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, in Rancher, there are a few key differences. 
 
-Resource quotas in Rancher work similarly to how they do in the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, Rancher's version of resource quotas have a few key differences from the Kubernetes version. 
+In a standard Kubernetes deployment, resource quotas are applied to individual namespaces. However, you cannot apply the quota to your namespaces simultaneously with a single action. Instead, the resource quota must be applied multiple times. 
 
-In a standard Kubernetes deployment, resource quotas are applied to individual namespaces. However, you cannot apply the quota to multiple namespaces with a single action. Instead, the resource quota must be applied each namespace, which can be tedious. The following diagram depict resource quotas in a native Kubernetes deployment. Notice that:
+In the following diagram, a Kubernetes admin is trying to enforce a resource quota without Rancher. The admin wants to apply a resource quota that sets the same CPU and memory limit to every namespace in his cluster (`Namespace 1-4`) . However, in the base version of Kubernetes, each namespace requires a unique resource quota. The admin has to create four different resource quotas that have the same specs configured (`Resource Quota 1-4`) and apply them individually.
 
-- Resource quotas apply only to namespaces they are directly assigned to.
-- Quotas are applied to individual namespaces, rather than collectively. Even though each quota sets the same limits, a unique quota is applied to each namespace.
-
+<sup>Base Kubernetes: Unique Resource Quotas Being Applied to Each Namespace</sup>
 ![Native Kubernetes Resource Quota Implementation]({{< baseurl >}}/img/rancher/kubernetes-resource-quota.svg)
-<sup>Native Kubernetes Resource Quota Implementation Example</sup>
 
+Resource quotas are a little different in Rancher. In Rancher, you apply a resource quota to the [project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects), and then the quota propagates to each namespace using the native Kubernetes resource quota feature. If you want to change the quota for a specific namespace,  you can [override it](#namespace-default-limit-overrides).
 
-In Rancher's implementation of resource quotas, the quota is applied to a [project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects) instead. The resource quota includes two limits:
+The resource quota includes two limits, which you set while creating or editing a project:
 
 - **Project Limits:**
 
-    This set of values is the overall limit for the project. When the overall limit for the project is exceeded, Kubernetes uses logic to determine which namespaces to stop to get back under the quota.
+    This set of values configures an overall resource limit for the project. If you try to add a new namespace to the project, Rancher uses the limits you've set to validate that the project has enough resources to accommodate the namespace.  In other words, if you try to add a namespace to a project near its resource quota, Rancher blocks you from adding the namespace.
 
 - **Namespace Default Limits:**
 
-    This value is the default resource limit that an individual namespace inherits from the project. If an individual namespace exceeds its namespace limit, Kubernetes stops anything objects in the namespace from operating.
+    This value is the default resource limit that the project propagates to each namespace. Each namespace is bound to this default limit unless you [override it](#namespace-default-limit-overrides).
 
-    Each namespace inherits this default limit unless you [override it](#namespace-default-limit-overrides).
 
-The following diagram depict resource quotas in a native Kubernetes deployment. Notice that:
+In the following diagram, a Rancher admin wants to apply a resource quota that sets the same CPU and memory limit for every namespace in their project (`Namespace 1-4`). However, in Rancher, the admin can set a resource quota for the project (`Project Resource Quota`) rather than individual namespaces. This quota includes resource limits for both the entire project (`Project Limit`) and individual namespaces (`Namespace Default Limit`). Rancher then propagates this quota to each namespace (`Namespace Resource Quota`).
 
-- The resource quota is applied to the entire project.
-- The project limit sets what resources are available for the entire project.
-- Each namespace in the project inherits the namespace default limit, which sets the cap for resources available for each individual namespace. The same namespace default limit is automatically applied to each namespace.
-
+<sup>Rancher: Resource Quotas Propagating to Each Namespace</sup>
 ![Rancher Resource Quota Implementation]({{< baseurl >}}/img/rancher/rancher-resource-quota.svg)
-<sup>Rancher Resource Quota Implementation Example</sup>
 
-    
 The following table explains the key differences between the two quota types.
 
-Rancher Resource Quotas | Native Kubernetes Resource Quotas 
----------|----------
- Applied to projects. | Applied to namespaces. 
- Applies resource limits to the project and all its namespaces. | Applies resource limits to individual namespaces. 
- Applies resource quotas to namespaces through inheritance. | Apply only to the assigned namespace.
+| Rancher Resource Quotas                                    | Kubernetes Resource Quotas                               |
+| ---------------------------------------------------------- | -------------------------------------------------------- |
+| Applies to projects and namespace.                         | Applies to namespaces only.                              |
+| Creates resource pool for all namespaces in project.       | Applies static resource limits to individual namespaces. |
+| Applies resource quotas to namespaces through inheritance. | Applies only to the assigned namespace.
 
 ## Resource Quota Types
 
-When you create a resource quota, you are configuring the pool of resources available to the project. You can set limits for a variety of different resources, for both your project and your namespaces.
+When you create a resource quota, you are configuring the pool of resources available to the project. You can set the following resource limits for each project. 
 
+| Resource Type            | Description                                                                                                                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU Limit                | The maximum amount of CPU (in [millicores](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)) allocated to the project/namespace.<sup>1</sup> |
+| CPU Reservation          | The minimum amount of CPU (in millicores) guaranteed to the project/namespace.<sup>1</sup>                                                                                                        |
+| Memory Limit             | The maximum amount of memory (in bytes) allocated to the project/namespace.<sup>1</sup>                                                                                                           |
+| Memory Reservation       | The minimum amount of memory (in bytes) guaranteed to the project/namespace.<sup>1</sup>                                                                                                          |
+| Storage Reservation      | The minimum amount of storage (in gigabytes) guaranteed to the project/namespace.                                                                                                                 |
+| Services Load Balancers  | The maximum number of load balancers services that can exist in the project/namespace.                                                                                                            |
+| Services Node Ports      | The maximum number of node port services that can exist in the project/namespace.                                                                                                                 |
+| Pods                     | The maximum number of pods that can exist in the project/namespace in a non-terminal state (i.e., pods with a state of `.status.phase in (Failed, Succeeded)` equal to true).                     |
+| Services                 | The maximum number of services that can exist in the project/namespace.                                                                                                                           |
+| ConfigMaps               | The maximum number of ConfigMaps that can exist in the project/namespace.                                                                                                                         |
+| Persistent Volume Claims | The maximum number of persistent volume claims that can exist in the project/namespace.                                                                                                           |
+| Replications Controllers | The maximum number of replication controllers that can exist in the project/namespace.                                                                                                            |
+| Secrets                  | The maximum number of secrets that can exist in the project/namespace.                                                                                                                            |
+
+>**<sup>1</sup>** In the quota, if you set CPU or Memory limits, all containers you create in the project / namespace must explicitly satisfy the quota. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details.
+
+ 
 ### Namespace Default Limit Overrides
 
-Although each namespace in a project inherits the **Namespace Default Limit**, you can also override this setting for specific namespaces that require additional (or fewer) resources.
+Although the **Namespace Default Limit** propagates from the project to each namespace, in some cases, you may need to increase (or decrease) the performance for a specific namespace. In this situation, you can override the namespace with a different set of limits by editing the namespace. 
+
+In the diagram below, the Rancher admin has a resource quota in effect for their project. However, the admin wants to override the namespace limits for `Namespace 3` so that it performs better. Therefore, the admin raises the **Namespace Default Limits** for `Namespace 3` so that the namespace can access more resources.
+
+<sup>Namespace Default Limit Override</sup>
+![Namespace Default Limit Override]({{< baseurl >}}/img/rancher/rancher-resource-quota-override.svg)
