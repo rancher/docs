@@ -17,10 +17,11 @@ Resource quotas in Rancher work similarly to how they do in the [native version 
 In a standard Kubernetes deployment, resource quotas are applied to individual namespaces. However, you cannot apply the quota to multiple namespaces with a single action. Instead, the resource quota must be applied each namespace, which can be tedious. The following diagram depict resource quotas in a native Kubernetes deployment. Notice that:
 
 - Resource quotas apply only to namespaces they are directly assigned to.
-- Quotas are applied to individual namespaces, rather than collectively.
+- Quotas are applied to individual namespaces, rather than collectively. Even though each quota sets the same limits, a unique quota is applied to each namespace.
 
-<sup>Native Kubernetes Resource Quota Implementation Example</sup>
 ![Native Kubernetes Resource Quota Implementation]({{< baseurl >}}/img/rancher/kubernetes-resource-quota.svg)
+<sup>Native Kubernetes Resource Quota Implementation Example</sup>
+
 
 In Rancher's implementation of resource quotas, the quota is applied to a [project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects) instead. The resource quota includes two limits:
 
@@ -38,10 +39,11 @@ The following diagram depict resource quotas in a native Kubernetes deployment. 
 
 - The resource quota is applied to the entire project.
 - The project limit sets what resources are available for the entire project.
-- Each namespace in the project inherits namespace default limit, which sets the cap for resources available for each individual namespace. You don't have to apply it to each namespace.
+- Each namespace in the project inherits the namespace default limit, which sets the cap for resources available for each individual namespace. The same namespace default limit is automatically applied to each namespace.
 
-<sup>Rancher Resource Quota Implementation Example</sup>
 ![Rancher Resource Quota Implementation]({{< baseurl >}}/img/rancher/rancher-resource-quota.svg)
+<sup>Rancher Resource Quota Implementation Example</sup>
+
     
 The following table explains the key differences between the two quota types.
 
@@ -51,18 +53,10 @@ Rancher Resource Quotas | Native Kubernetes Resource Quotas
  Applies resource limits to the project and all its namespaces. | Applies resource limits to individual namespaces. 
  Applies resource quotas to namespaces through inheritance. | Apply only to the assigned namespace.
 
-<<<<<<< HEAD
-## Project Quota Resource Pool
-
-When you create a resource quota, you are configuring the pool of resources available to the project. You can set limits for a variety of different resources, for both your project and your namespaces.
-
-
-=======
 ## Resource Quota Types
 
 When you create a resource quota, you are configuring the pool of resources available to the project. You can set limits for a variety of different resources, for both your project and your namespaces.
 
->>>>>>> change per denise
 ### Namespace Default Limit Overrides
 
 Although each namespace in a project inherits the **Namespace Default Limit**, you can also override this setting for specific namespaces that require additional (or fewer) resources.
