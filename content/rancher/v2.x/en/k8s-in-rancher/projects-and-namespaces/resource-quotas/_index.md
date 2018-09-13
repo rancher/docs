@@ -1,5 +1,5 @@
 ---
-title: Project Quotas
+title: Resource Quotas
 weight: 5000
 draft: true
 ---
