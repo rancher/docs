@@ -60,6 +60,9 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 - **Read Only:**
 
     These users can view everything in the project but cannot create, update, or delete anything.
+    
+    > **Note:** If a user is added to a project as an owner or a member they will have permission to create namespaces in all projects they are a member of, even as a Read Only member. 
+    
 
 #### Custom Project Roles
 
