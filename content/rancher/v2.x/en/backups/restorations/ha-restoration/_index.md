@@ -95,7 +95,7 @@ Use RKE with the new `rancher-cluster-restore.yml` configuration and restore the
 rke etcd snapshot-restore --name <snapshot>.db --config ./rancher-cluster-restore.yml
 ```
 
-> **NOTE:** RKE will create an `etcd` container with the restored database on the "target node". This container will not complete the `etcd` initialization and stay in a running state until the cluster brought up in the next step.
+> **Note:** RKE will create an `etcd` container with the restored database on the "target node". This container will not complete the `etcd` initialization and stay in a running state until the cluster brought up in the next step.
 
 ### 5. Bring Up the Cluster
 

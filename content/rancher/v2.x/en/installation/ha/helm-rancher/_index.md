@@ -73,11 +73,11 @@ helm install rancher-stable/rancher \
 
 Create Kubernetes Secrets from your own certificates for Rancher to use.
 
-> **NOTE:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
+> **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
 Set `hostname` and `ingress.tls.source=secret`
 
-> **NOTE:** If you are using a Private CA signed cert, add `--set privateCA=true`
+> **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
 
 ```
 helm install rancher-stable/rancher \
