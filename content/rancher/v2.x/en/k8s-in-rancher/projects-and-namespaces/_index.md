@@ -89,7 +89,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
 1. **Recommended:** Add project members.
 
-    Use the **Members** accordion to provide other users with project access and roles.
+    Use the **Members** section to provide other users with project access and roles.
 
     By default, your user is added as the project `Owner`.
 
@@ -106,6 +106,22 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
         >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
 
     1. To add more members, repeat substeps a—c.
+    
+1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas). 
+
+    1. Click **Add Quota**.
+    
+    1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+     
+    1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
+        
+        | Field                   | Description                                                                                              |
+        | ----------------------- | -------------------------------------------------------------------------------------------------------- |
+        | Project Limit           | The overall resource limit for the project.                                                              |
+        | Namespace Default Limit | The default resource limit available for each namespace. The project propagates limit to each namespace. | 
+    
+    1. **Optional:** Repeat these substeps to add more quotas.
+ 
 
 1. Click **Create**.
 
