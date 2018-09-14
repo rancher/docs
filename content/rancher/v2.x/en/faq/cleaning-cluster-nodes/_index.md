@@ -75,7 +75,7 @@ Directories |
 `/var/lib/etcd` |
 `/var/lib/cni` |
 `/var/lib/kubelet` |
-`/var/lib/rancher` |
+`/var/lib/rancher/rke/log` |
 `/var/log/containers` |
 `/var/log/pods` |
 `/var/run/calico` |
@@ -95,7 +95,7 @@ rm -rf /etc/ceph \
        /var/lib/etcd \
        /var/lib/cni \
        /var/lib/kubelet \
-       /var/lib/rancher \
+       /var/lib/rancher/rke/log \
        /var/log/containers \
        /var/log/pods \
        /var/run/calico
