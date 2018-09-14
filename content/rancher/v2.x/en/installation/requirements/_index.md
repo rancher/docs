@@ -68,7 +68,13 @@ If you are using RancherOS, make sure you switch the Docker engine to a supporte
 [Docker Documentation: Installation Instructions](https://docs.docker.com/)
 
 {{% /tab %}}
-{{% tab  "Ports" %}}
+{{% tab  "Networking" %}}
+
+<h2>Node IP address</h2>
+
+Each node used (either for the Single Node Install, High Availability (HA) Install or nodes that are used in clusters) should have a static IP configured. In case of DHCP, the nodes should have a DHCP reservation to make sure the node gets the same IP allocated.
+
+<h2>Port requirements</h2>
 
 When deploying Rancher in an HA cluster, certain ports on your nodes must be open to allow communication with Rancher. The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if your are deploying Rancher on nodes hosted by an IaaS, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning).
 

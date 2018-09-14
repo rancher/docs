@@ -93,3 +93,11 @@ The UI consists of static files, and works based on responses of the API. That m
 
 * Visit `https://your_rancher_ip/v3` and browse the API options.
 * Capture the API calls when using the UI (Most commonly used for this is [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools/#network) but you can use anything you like)
+
+### The IP address of a node changed, how can I recover?
+
+A node is required to have a static IP configured (or a reserved IP via DHCP). If the IP of a node has changed, you will have to remove it from the cluster and readd it. After it is removed, Rancher will update the cluster to the correct state. If the cluster is no longer in `Provisioning` state, the node is removed from the cluster.
+
+When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) to clean the node.
+
+When the node is removed from the cluster, and the node is cleaned, you can readd the node to the cluster.
