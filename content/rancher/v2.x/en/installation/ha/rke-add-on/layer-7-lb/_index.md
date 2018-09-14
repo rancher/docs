@@ -23,7 +23,7 @@ Installation of Rancher in a high-availability configuration involves multiple p
 - [1. Provision Linux Hosts](#1-provision-linux-hosts)
 - [2. Configure Load Balancer](#2-configure-load-balancer)
 - [3. Configure DNS](#3-configure-dns)
-- [4. Download RKE](#4-download-rke)
+- [4. Install RKE](#4-install-rke)
 - [5. Download RKE Config File Template](#5-download-rke-config-file-template)
 - [6. Configure Nodes](#6-configure-nodes)
 - [7. Configure Certificates](#7-configure-certificates)
@@ -87,40 +87,16 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
 
 <br/>
 
-## 4. Download RKE
+## 4. Install RKE
 
-RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will be using RKE to setup our cluster and run Rancher.
+RKE (Rancher Kubernetes Engine) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will use RKE to setup our cluster and run Rancher.
 
-1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System:
+1. Follow the [RKE Install]({{< baseurl >}}/rke/v0.1.x/en/installation) instructions.
 
-    - **MacOS**: `rke_darwin-amd64`
-    - **Linux**: `rke_linux-amd64`
-    - **Windows**: `rke_windows-amd64.exe`
-
-2. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
-
-    >**Using Windows?**
-    >The file is already an executable. Skip to [Download RKE Config File Template](#5-download-rke-config-file-template).
+2. Confirm that RKE is now executable by running the following command:
 
     ```
-    # MacOS
-    $ chmod +x rke_darwin-amd64
-    # Linux
-    $ chmod +x rke_linux-amd64
-    ```
-
-3.  Confirm that RKE is now executable by running the following command:
-
-    ```
-    # MacOS
-    $ ./rke_darwin-amd64 --version
-    # Linux
-    $ ./rke_linux-amd64 --version
-    ```
-
-    **Step Result:** You receive output similar to what follows:
-    ```
-    rke version v<N.N.N>
+    rke --version
     ```
 
 ## 5. Download RKE Config File Template
@@ -275,10 +251,7 @@ With all configuration in place, use RKE to launch Rancher. You can complete thi
 3. Enter one of the `rke up` commands listen below.
 
     ```
-    # MacOS
-    ./rke_darwin-amd64 up --config rancher-cluster.yml
-    # Linux
-    ./rke_linux-amd64 up --config rancher-cluster.yml
+    rke up --config rancher-cluster.yml
     ```
 
     **Step Result:** The output should be similar to the snippet below:
