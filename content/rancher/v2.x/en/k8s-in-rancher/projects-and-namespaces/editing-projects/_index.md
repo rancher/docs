@@ -69,13 +69,40 @@ You can always assign a PSP to an existing project if you didn't assign one duri
   - Apply the PSP to the project.
   - Apply the PSP to any namespaces you add to the project later.
 
-  >**Prerequisites:**
-  >
-  > - Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new project, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/).
-  > - Assign a default Pod Security Policy to the project's cluster. You can't assign a PSP to a project until one is already applied to the cluster.
-
 5. Click **Save**.
 
 **Result:** The PSP is applied to the project and any namespaces added to the project.
 
 >**Note:** Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
+
+## Editing Resource Quotas
+
+_Available as of v2.0.1_
+
+Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) when:
+
+- You want to limit the resources that a project and its namespaces can use.
+- You want to scale the resources available to a project up or down when a research quota is already in effect.
+
+1. From the **Global** view, open the cluster containing the project to which you want to apply a resource quota.
+
+1. From the main menu, select **Projects/Namespaces**.
+
+1. Find the project that you want to add a resource quota to. From that project, select **Ellipsis (...) > Edit**.
+    
+1. Expand **Resource Quotas** and click **Add Quota**. Alternatively, you can edit existing quotas.
+    
+1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+     
+1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
+        
+    | Field                   | Description                                                                                              |
+    | ----------------------- | -------------------------------------------------------------------------------------------------------- |
+    | Project Limit           | The overall resource limit for the project.                                                              |
+    | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. | 
+    
+1. **Optional:** Add more quotas.
+
+1. Click **Create**.
+ 
+**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, Rancher won't let you save your changes.

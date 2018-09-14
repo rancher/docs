@@ -118,7 +118,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
         | Field                   | Description                                                                                              |
         | ----------------------- | -------------------------------------------------------------------------------------------------------- |
         | Project Limit           | The overall resource limit for the project.                                                              |
-        | Namespace Default Limit | The default resource limit available for each namespace. The project propagates limit to each namespace. | 
+        | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project.  | 
     
     1. **Optional:** Repeat these substeps to add more quotas.
  
@@ -169,6 +169,8 @@ Create a new namespace to isolate apps and resources in a project.
 
 1. From the main menu, select **Namespace**. The click **Add Namespace**.
 
+1. **Optional:** If your project has [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
+
 1. Enter a **Name** and then click **Create**.
 
 **Result:** Your namespace is added to the project. You can begin assigning cluster resources to the namespace.
@@ -187,4 +189,23 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
 
-**Result:** Your namespace is moved to a different project (or is unattached from all projects). If any project resources are attached to the namespace, the namespace releases them and then attached resources from the new project. 
+**Result:** Your namespace is moved to a different project (or is unattached from all projects). If any project resources are attached to the namespace, the namespace releases them and then attached resources from the new project.
+
+### Editing Namespace Resource Quotas 
+
+If there is a [resource quota]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) configured for a project, you can override the namespace default limit to provide a specific namespace with access to more (or less) project resources. 
+
+1. From the **Global** view, open the cluster that contains the namespace for which you want to edit the resource quota.
+
+1. From the main menu, select **Projects/Namespaces**.
+
+1. Find the namespace for which you want to edit the resource quota. Select **Ellipsis (...) > Edit**. 
+
+1. Edit the Resource Quota **Limits**. These limits determine the resource available to the namespace. For more information about each **Resource Type**, see [Resource Quota Types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+
+    >**Note:**
+    > 
+    >- If a resource quota is not configured for the project, these options will not be available.
+    >- When you enter new limits, Rancher validates that the project has enough resources for the namespaces. If there aren't enough resources, Rancher will not let you save.
+
+**Result:** The namespace's default resource quota is overwritten with your override.
