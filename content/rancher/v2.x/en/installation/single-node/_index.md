@@ -119,15 +119,22 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 
 ## Advanced Options
 
-### API Auditing
+### Enable API Audit Log
 
-If you want to record all transations with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+The API Audit Log records all the user and system transactions made through Rancher server.
 
-	-e AUDIT_LEVEL=1 \
-	-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
-	-e AUDIT_LOG_MAXAGE=20 \
-	-e AUDIT_LOG_MAXBACKUP=20 \
-	-e AUDIT_LOG_MAXSIZE=100 \
+The API Audit Log writes to `/var/log/auditlog` inside the rancher container by default. Share that directory as a volume and set your `AUDIT_LEVEL` to enable the log.
+
+See [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) for more information and options.
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /var/log/rancher/auditlog:/var/log/auditlog \
+  -e AUDIT_LEVEL=1 \
+  rancher/rancher:latest
+```
+
 
 ### Air Gap
 

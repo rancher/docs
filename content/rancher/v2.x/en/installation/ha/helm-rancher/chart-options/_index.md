@@ -19,16 +19,27 @@ weight: 276
 
 | Option | Default Value | Description |
 | --- | --- | --- |
+| `auditLog.level` | 0 | `int` - set the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3] |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `proxy` | "" | `string` - string - HTTP[S] proxy server for Rancher |
-| `noProxy` | "localhost,127.0.0.1" | `string` - comma seperated list of hostnames or ip address not to use the proxy | 
+| `noProxy` | "localhost,127.0.0.1" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |
-| `tls` | "ingress" | `string` - Where to terminate SSL. - "ingress, external"
+| `tls` | "ingress" | `string` - Where to terminate SSL. - "ingress, external" |
 
 <br/>
+
+### API Audit Log
+
+Enabling the [API Audit Log](https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing/) will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.
+
+You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
+
+```
+--set auditLog.level=1
+```
 
 ### HTTP Proxy
 
