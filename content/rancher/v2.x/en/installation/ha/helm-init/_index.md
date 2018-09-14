@@ -30,4 +30,8 @@ helm init --service-account tiller
 
 > NOTE: This `tiller` install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.
 
-### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha//helm-rancher/)
+### Issues or errors?
+
+See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/troubleshooting/) page.
+
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
