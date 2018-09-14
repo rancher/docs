@@ -24,7 +24,7 @@ CLI | https://github.com/rancher/cli | This repository is the source code for th
 Telemetry repository | https://github.com/rancher/telemetry | This repository is the source for the Telemetry binary.
 loglevel repository | https://github.com/rancher/loglevel | This repository is the source of the loglevel binary, used to dynamically change log levels.
 
-To see all libraries/projects used in Rancher, see the `vendor.conf` in the `rancher/rancher repository.
+To see all libraries/projects used in Rancher, see the `vendor.conf` in the `rancher/rancher` repository.
 
 ### Building
 
@@ -46,7 +46,7 @@ Please follow this checklist when filing an issue which will helps us investigat
 >**Important:** Please remove any sensitive data as it will be publicly viewable.
 
 - Provide as much as detail as possible on the used resources. As the source of the issue can be many things, including as much of detail as possible helps to determine the root cause. See some examples below:
-  - Hosts (what cloud does it happen on, what Amazon Machine Image are you using, what DigitalOcean droplet are you using, what image are you provisioning that we can rebuild or use when we try to reproduce)
+  - Hosts (What specifications does the host have, like CPU/memory/disk, what cloud does it happen on, what Amazon Machine Image are you using, what DigitalOcean droplet are you using, what image are you provisioning that we can rebuild or use when we try to reproduce)
   - Operating System (What operating system are you using. Providing specifics helps here like the output of `cat /etc/os-release` for exact OS release and `uname -r` for exact kernel used)
   - Docker (What Docker version are you using, how did you install it? Most of the details of Docker can be found by supplying output of `docker version` and `docker info`)
   - Environment (Are you in a proxy environment, are you using recognized CA/self signed certificates, are you using an external loadbalancer)
