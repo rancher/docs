@@ -22,6 +22,7 @@ In the following diagram, a Kubernetes admin is trying to enforce a resource quo
 Resource quotas are a little different in Rancher. In Rancher, you apply a resource quota to the [project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects), and then the quota propagates to each namespace, whereafter Kubernetes enforces you limits using the native version of resource quotas. If you want to change the quota for a specific namespace,  you can [override it](#namespace-default-limit-overrides).
 
 The resource quota includes two limits, which you set while creating or editing a project:
+<a id="project-limits"></a>
 
 - **Project Limits:**
 

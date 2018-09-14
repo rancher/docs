@@ -99,7 +99,7 @@ Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-a
     | Field                   | Description                                                                                              |
     | ----------------------- | -------------------------------------------------------------------------------------------------------- |
     | Project Limit           | The overall resource limit for the project.                                                              |
-    | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. | 
+    | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. The combined limit of all project namespaces shouldn't exceed the project limit. | 
     
 1. **Optional:** Add more quotas.
 

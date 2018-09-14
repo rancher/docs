@@ -118,7 +118,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
         | Field                   | Description                                                                                              |
         | ----------------------- | -------------------------------------------------------------------------------------------------------- |
         | Project Limit           | The overall resource limit for the project.                                                              |
-        | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project.  | 
+        | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. The combined limit of all project namespaces shouldn't exceed the project limit.  | 
     
     1. **Optional:** Repeat these substeps to add more quotas.
  
@@ -185,7 +185,10 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 1. Select the namespace(s) that you want to move to a different project. Then click **Move**. You can move multiple namespaces at one.
 
-    >**Note:** Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
+    >**Notes:** 
+    >
+    >- Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
+    >- You cannot move a namespace into a project that already has a [resource quota]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/) configured.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
 
@@ -201,11 +204,13 @@ If there is a [resource quota]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pr
 
 1. Find the namespace for which you want to edit the resource quota. Select **Ellipsis (...) > Edit**. 
 
-1. Edit the Resource Quota **Limits**. These limits determine the resource available to the namespace. For more information about each **Resource Type**, see [Resource Quota Types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+1. Edit the Resource Quota **Limits**.  These limits determine the resources available to the namespace. The limits must be set within the configured [project limits]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#project-limits). 
+
+    For more information about each **Resource Type**, see [Resource Quota Types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
 
     >**Note:**
     > 
     >- If a resource quota is not configured for the project, these options will not be available.
-    >- When you enter new limits, Rancher validates that the project has enough resources for the namespaces. If there aren't enough resources, Rancher will not let you save.
+    >- If you enter limits that exceed the configured project limits, Rancher will not let you save your edits.
 
 **Result:** The namespace's default resource quota is overwritten with your override.
