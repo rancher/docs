@@ -88,6 +88,7 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
     * For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs), answers are provided as key value pairs in the **Answers** section.
     * Keys and values are available within **Detailed Descriptions**.
+    * Answers in rancher are ultimately passed as `--set` flags in helm. To see the format of the answer, check [here](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set)
 
 7. Review the files in **Preview**. When you're satisfied, click **Launch**.
 
