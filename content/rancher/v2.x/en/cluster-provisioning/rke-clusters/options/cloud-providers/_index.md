@@ -8,10 +8,15 @@ A _cloud provider_ is a module in Kubernetes that provides an interface for mana
 
 By default, the **Cloud Provider** option is set to `None`. Supported cloud providers are:
 
-* `Amazon`
-* `Azure`
+* [Amazon](#amazon)
+* [Azure](#azure)
 
-The `Custom` cloud provider is available if you want to configure your own cloud provider name and configuration in your cluster.
+The `Custom` cloud provider is available if you want to configure any [Kubernetes cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/).
+
+For the custom cloud provider option, you can refer to the [RKE docs]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
+
+* [vSphere]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/vsphere/)
+* [Openstack]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/openstack/)
 
 > **Warning:** Your cluster will not provision correctly if you configure a cloud provider cluster of nodes that do not meet the prerequisites. Prerequisites for supported cloud providers are listed below.
 
