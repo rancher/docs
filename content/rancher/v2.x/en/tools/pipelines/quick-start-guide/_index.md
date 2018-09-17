@@ -27,3 +27,5 @@ weight: 1000
     
     >**Note:** When you are running a pipeline the first time, it will take a few minutes to pull relevant images and provision necessary pipeline components.
     To understand what the example pipeline is doing, you can check the `.rancher-pipeline.yml` file in the example repositories, or click `Edit Config` action of the enabled repository to see it via UI wizard.
+
+For detail guides for pipeline configurations, please refer to the [configuration page](/rancher/v2.x/en/tools/pipelines/quick-start-guide/)

@@ -3,6 +3,57 @@ title: Configurations
 weight: 3725
 ---
 
+## Data Persistency for Pipeline Components
+
+The internal docker registry and the Minio store use ephemeral volumes by default. Therefore, it can be easily setup for testing and works out of the box, but it does not help for disaster recovery. We recommend users to configure these two deployments to persist their data.
+
+### Docker registry
+
+Prerequisites: 
+
+ - Pipeline components are deployed in the project; 
+ - Persistent Volumes are available in the cluster.
+
+1. Go to the workload tab of the project.
+
+2. Find the registry workload with the name `docker-registry` under dedicated `xxx-pipeline` namespace.
+
+3. Edit `docker-registry` workload.
+
+4. Expand `Volumes` bar in workload configuration page.
+
+5. Click `Add Mount`
+
+6. Click `Add a new persistent volume(claim)` or `Use an existing persistent volume(claim)`, depending on the the PV management way you are using.
+
+7. After the new volume calim is defined, or an existing PVC is chosen, input `/var/lib/registry` in `Mount Point` field, which is the data storage path inside docker registry container.
+
+8. Click `Upgrade`
+
+### Minio
+
+Prerequisites:
+
+ - Pipeline components are deployed in the project;
+ - Persistent Volumes are available in the cluster.
+
+1. Go to the workload tab of the project.
+
+2. Find the Minio workload with the name `minio` under dedicated `xxx-pipeline` namespace.
+
+3. Edit `minio` workload.
+
+4. Expand `Volumes` bar in workload configuration page.
+
+5. Click `Add Mount`
+
+6. Click `Add a new persistent volume(claim)` or `Use an existing persistent volume(claim)`, depending on the the PV management way you are using.
+
+7. After the new volume calim is defined, or an existing PVC is chosen, input `/data` in `Mount Point` field, which is the data storage path inside Minio container.
+
+8. Click `Upgrade`
+
+
 ## Version Control Providers
 
 
@@ -75,11 +126,11 @@ For convenience, there are multiple built-in step types for dedicated tasks.
 
 ### Clone step
 
-The first step is preserved to be a cloning step to check out the source code.
+The first step is preserved to be a cloning step to check out the source code. Rancher handles the cloning of the git repository. It is the equivalent of a `git clone <repository_link> <workspace_dir>`.
 
 ### Run Script step
 
-`Run Script` step is to execute arbitrary commands inside a specified container. You can use it to build, test and do more, given whatever utilities the base image provides.
+`Run Script` step is to execute arbitrary commands in the workspace inside a specified container. You can use it to build, test and do more, given whatever utilities the base image provides. For your convenience you can use variables to refer to metadata of a pipeline execution. Please go to [reference page](/rancher/v2.x/en/tools/pipelines/reference/#variable-substitution) for the list of available vairables.
 
 To add a `Run Script` step,
 
@@ -136,7 +187,20 @@ stages:
       tag: repo/app:v1
       pushRemote: true
       registry: example.com
+    # additional docker daemon options and build args
+    env:
+      PLUGIN_INSECURE: "true"
+      PLUGIN_BUILD_ARGS: "myVar=value"
 ```
+You can use specific arguments for docker daemon and the build. They are not exposed in the UI but are available in pipeline yaml format, as indicated in the above example. Available variables includes:
+
+Variable Name           | Description
+------------------------|------------------------------------------------------------
+PLUGIN_DRY_RUN          | Disable docker push
+PLUGIN_MIRROR           | Docker daemon registry mirror
+PLUGIN_INSECURE         | Docker daemon allows insecure registries
+PLUGIN_BUILD_ARGS       | Docker build args
+
 
 ### Deploy YAML step
 
@@ -272,7 +336,7 @@ You can use Kubernetes secrets from the project in your pipeline steps.
 
 2. Under Resources menu, click Secrets.
 
-3. Add a secret available to all namespaces in this project.
+3. Add a secret available to the dedicated `xxx-pipeline` namespace in this project.
 
 4. Go to `Edit Config` view of the pipeline, create or edit a Run Script step.
 

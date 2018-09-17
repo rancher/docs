@@ -14,3 +14,7 @@ A pipeline stage consists of multiple steps. Stages are executed in the order de
 ## Steps
 
 A pipeline step is executed inside a specified container. A step fails when its commands get non-zero exit code, and it will cause the stage and the entire pipeline to fail and terminate. 
+
+## Workspace
+
+The workspace is the working directory shared by all pipeline steps. In the begining of a pipeline, source code is checked out to the workspace. The commands of every step bootstraps in the workspace. During a pipeline execution, the artifacts from a previous step will be available in future steps. The working directory is an ephemeral volume and will be cleaned out with the executor pod when a pipeline execution is finished.
