@@ -14,17 +14,21 @@ This centralized user authentication is accomplished using the Rancher authentic
 
 ### External vs. Local Authentication
 
-The Rancher authentication proxy integrates with the following external authentication services.
+The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted. 
 
-- Microsoft Active Directory
-- Microsoft Azure AD
-- GitHub
-- PingIdentity
-<!-- - Keycloak -->
-- Microsoft AD FS
-- FreeIPA
-- OpenLDAP
+| Auth Service                                                                                    | First Appearance |
+| ----------------------------------------------------------------------------------------------- | ---------------- |
+| [Microsoft Active Directory]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/ad/) | v2.0.0           |
+| [GitHub]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/github/)                 | v2.0.0           |
+| [Microsoft Azure AD]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/azure-ad/)   | v2.0.3           |
+| [FreeIPA]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/freeipa/)               | v2.0.5           |
+| [OpenLDAP]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/openldap/)             | v2.0.5           |
+| [Microsoft AD FS]({{< baseurl >}}rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/) | v2.0.7           |
+| [PingIdentity]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/ping-federate/)    | v2.0.7           |  
 
+<!-- | [Keycloak]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/keycloak/)                   | v2.1.0 -->     
+
+<br/>
 However, Rancher also provides local authentication.
 
 In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.

@@ -132,6 +132,18 @@ url        = "https://rancher.com/customers/"
 weight     = "3"
 
 [[menu.main]]
+identifier = "customers"
+name       = "Customers"
+url        = "/customers/"
+weight     = "4"
+
+[[menu.main]]
+identifier = "customers"
+name       = "Customers"
+url        = "/customers/"
+weight     = "4"
+
+[[menu.main]]
 identifier = "learn"
 name       = "Learn"
 url        = "https://rancher.com/learn/"
