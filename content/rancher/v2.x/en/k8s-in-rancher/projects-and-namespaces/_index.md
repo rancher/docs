@@ -107,7 +107,9 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
     1. To add more members, repeat substeps a—c.
     
-1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas). 
+1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas).
+
+    >**Note:** This option is only available in v2.1.0 and later.
 
     1. Click **Add Quota**.
     
@@ -189,6 +191,7 @@ Cluster admins and members may occasionally need to move a namespace to another 
     >
     >- Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
     >- You cannot move a namespace into a project that already has a [resource quota]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/) configured.
+    >- If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
 

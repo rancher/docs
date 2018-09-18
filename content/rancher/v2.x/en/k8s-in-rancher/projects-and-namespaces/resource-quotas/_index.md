@@ -77,7 +77,7 @@ When you create a resource quota, you are configuring the pool of resources avai
 >**<sup>1</sup>** In the quota, if you set CPU or Memory limits, all containers you create in the project / namespace must explicitly satisfy the quota. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details.
 
  
-### Namespace Default Limit Overrides
+### Overriding the Default Limit for a Namespace
 
 Although the **Namespace Default Limit** propagates from the project to each namespace, in some cases, you may need to increase (or decrease) the performance for a specific namespace. In this situation, you can override the default limits by editing the namespace. 
 
