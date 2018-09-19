@@ -1,15 +1,19 @@
 ---
-title: 2 - Install Kubernetes with RKE
+title: 2—Install Kubernetes with RKE
 weight: 190
 ---
 
-Use RKE to install Kubernetes with a high-availability etcd configuration.
+Use RKE to install Kubernetes with a high availability etcd configuration.
 
-### Create the rancher-cluster.yml file
+### Create the `rancher-cluster.yml` File
 
 Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
 
-> **Note:** If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
+> **Notes:** 
+>
+>- Air Gap User? [Add a private registry section]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-to-rke-yaml) to the sample below.
+>- If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
+
 
 ```yaml
 nodes:
@@ -24,7 +28,7 @@ nodes:
     role: [controlplane,worker,etcd]
 ```
 
-#### Common RKE nodes: options
+#### Common RKE Nodes: Options
 
 | Option | Description |
 | --- | --- |
@@ -34,9 +38,7 @@ nodes:
 | `ssh_key_path` | (optional) Path to SSH private key used to authenticate to the node |
 | `user` | (required) A user that can run docker commands |
 
-<br/>
-
-#### Advanced configurations
+#### Advanced Configurations
 
 RKE has many configuration options for customizing the install to suit your specific environment.
 
@@ -48,7 +50,7 @@ Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full 
 rke up --config ./rancher-cluster.yml
 ```
 
-### Testing your cluster
+### Testing Your Cluster
 
 RKE should have created a file `kube_config_rancher-cluster.yml`. This file has the credentials for `kubectl` and `helm`.
 
@@ -69,7 +71,7 @@ NAME                          STATUS    ROLES                      AGE       VER
 165.227.127.226               Ready     controlplane,etcd,worker   11m       v1.10.1
 ```
 
-### Check the health of your cluster pods
+### Check the Health of Your Cluster Pods
 
 Check that all the required pods and containers are healthy are ready to continue.
 
@@ -96,7 +98,7 @@ kube-system     rke-metrics-addon-deploy-job-7ljkc        0/1       Completed   
 kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   0          30s
 ```
 
-### Save your files
+### Save Your Files
 
 Save a copy of the `kube_config_rancher-cluster.yml` and `rancher-cluster.yml` files. You will need these files to maintain and upgrade your Rancher instance.
 

@@ -23,6 +23,9 @@ Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/maste
 
 Install `cert-manager` from the Helm stable catalog.
 
+>**Using Air Gap?** [Add the private registry's FQDN]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-cert-manager-using-private-registry) to the command.
+
+
 ```
 helm install stable/cert-manager \
   --name cert-manager \
@@ -47,6 +50,8 @@ The default is for Rancher to generate a CA and use the `cert-manager` to issue 
 
 The only requirement is to set the `hostname` to the DNS name you pointed at your Load Balancer.
 
+>**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
+
 ```
 helm install rancher-stable/rancher \
   --name rancher \
@@ -59,6 +64,8 @@ helm install rancher-stable/rancher \
 Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
 
 Set `hostname`, `ingress.tls.source=letEncrypt` and LetsEncrypt options.
+
+>**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
 helm install rancher-stable/rancher \

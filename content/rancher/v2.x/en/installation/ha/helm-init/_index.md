@@ -13,6 +13,8 @@ Helm installs the `tiller` service on your cluster to manage charts. Since RKE e
 * Create the `ClusterRoleBinding` to give the `tiller` account access to the cluster.
 * Finally use `helm` to initialize the `tiller` service
 
+>**Using Air Gap?** [Add the private registry's FQDN]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#initialize-helm-using-private-registry) to the command.
+
 ```
 kubectl -n kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller \

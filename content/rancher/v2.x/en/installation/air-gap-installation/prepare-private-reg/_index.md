@@ -5,14 +5,20 @@ aliases:
 ---
 
 For the first part of your air gap install, you'll prepare your private registry for Rancher installation by downloading the Rancher release files, and then pushing them to your private registry.
+<a id="step-1"></a>
 
-1. Browse to the [Rancher releases page](https://github.com/rancher/rancher/releases) and download the following files from the build with the `Latest release` tag. 
+1. Browse to the [Rancher releases page](https://github.com/rancher/rancher/releases) and download the following files from the version of Rancher tagged with `Latest release`. 
 
     | Release File                       | Description                                                                                                                                                                                                                                         |
     | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `rancher-images.txt`               | Contains all images needed to deploy the release.                                                                                                                                                                                                        |
-    | `rancher-load-images.sh`           | This script loads images from `rancher-images.tar.gz` and pushes them to your private registry. You have to supply the hostname of your private registry as first argument to the script.<br/>`rancher-load-images.sh registry.yourdomain.com:5000` |
+    | `rancher-images.txt`               | This file contains all images needed to deploy the release.                                                                                                                                                                                                        |
+    | `rancher-load-images.sh`           | This script loads images from `rancher-images.tar.gz` and pushes them to your private registry. You must supply the hostname of your private registry as first argument to the script.<br/>`rancher-load-images.sh registry.yourdomain.com:5000` |
     | `rancher-save-images.sh`           | This script pulls all needed images from DockerHub and saves all of the images as a compressed file called `rancher-images.tar.gz`. This file can be transferred to your on-premise host that can access your private registry.                 |
+
+    >**Installing on a single node?**
+    >
+    >The next two steps don't apply to you. Skip to [step 4](#pop-reg).
+            
 
 
 1. **High Availablity Installs Only:** You need some additional software to complete installation in an air gap environment. Download the software in the table below.
@@ -22,8 +28,9 @@ For the first part of your air gap install, you'll prepare your private registry
     | RKE | Rancher Kubernetes Engine (RKE) is Rancher's fast, light-weight Kubernetes installer. |
     | Helm Image (tiller) | You can discover the tiller image compatible with your installed version of Helm.
     | cert-manager | Rancher uses the [cert-manager](https://github.com/jetstack/cert-manager) project to issue self-singed certificates for Rancher GUI/Agent access.
-        
-1. From a system with internet access, use the shell script below to compile the images required by the latest Rancher release and write them to `images.txt` in the local directory.
+
+
+1. **High Availablity Installs Only:** From a system with internet access, paste the sample below into an empty file and save it as a shell script. Run the script to compile the images required by the latest Rancher release and write them to `images.txt` in the local directory.
 
     ```bash
     #!/bin/bash
@@ -57,32 +64,48 @@ For the first part of your air gap install, you'll prepare your private registry
     # cleanup tmp file
     rm tmp-images.txt
     ```    
-    <br/>
-1. Use the Rancher release that you just downloaded to populate your private registry with Rancher images. Use the scenario that best matches your use case.
+    <a id="pop-reg"></a>
+1. Use the Rancher release files that you downloaded in [step 1](#step-1) to populate your private registry with Rancher images. Use the scenario that best matches your use case.
      <br/>
 {{% tabs %}}
 {{% tab "Scenario 1" %}}
 <br/>
-You have a node that can access DockerHub to pull and save the images, and a separate node(s) that access your private registry to push the images.
+The architecture for this scenario is:
+
+- A host that can access DockerHub, which pulls and saves Rancher images from the Internet.
+
+- An on-premise host that acts as an intermediary between:
+
+    - The host that can access DockerHub.
+
+    - Your private registry.
+
+- An on-premise private registry, which you'll use to deploy Rancher in your air gap environment.
+<br/>
+<br/>
 
 ![Scenario1]({{< baseurl >}}/img/rancher/airgap/privateregistry.svg)
 
-1. Browse to the release page of your version of Rancher (e.g. `https://github.com/rancher/rancher/releases/tag/v2.0.0`) and download `rancher-save-images.sh` and `rancher-load-images.sh`.
+1. From the host that can access DockerHub, run `rancher-save-images.sh`. This will require at least 20GB of disk space.
 
-2. Transfer and run `rancher-save-images.sh` on the host the can access DockerHub. This will require at least 20GB of disk space.
+1. Transfer the output file from the previous step (`rancher-images.tar.gz`) to the on-premise host that can access the private registry.
 
-3. Transfer the output file from step 2 (`rancher-images.tar.gz`) to the host that can access the private registry.
-
-4. Transfer and run `rancher-load-images.sh` on the host that can access the private registry. It should be run in the same directory as `rancher-images.tar.gz`. 
+1. Transfer and run `rancher-load-images.sh` on the host that can access the private registry. It should be run in the same directory as `rancher-images.tar.gz`. 
 {{% /tab %}}
 {{% tab "Scenario 2" %}}
 <br/>
-You have node(s) that can access both DockerHub and your private registry.
+The architecture for this scenario is:
+
+- A host that can access both DockerHub and your private registry
+
+- An on-premise private registry, which you'll use to deploy Rancher in your air gap environment.
+<br/>
+<br/>
 ![Scenario2]({{< baseurl >}}/img/rancher/airgap/privateregistrypushpull.svg)
 
-1. Browse to the release page of your version of Rancher (e.g. `https://github.com/rancher/rancher/releases/tag/v2.0.0`) and download `rancher-images.txt`.
 
 2. Pull all the images present in `rancher-images.txt`, re-tag each image with the location of your registry, and push the image to the registry. This will require at least 20GB of disk space. See an example script below:
+        
     ```
     #!/bin/sh
     IMAGES=`curl -s -L https://github.com/rancher/rancher/releases/download/v2.0.0/rancher-images.txt`
