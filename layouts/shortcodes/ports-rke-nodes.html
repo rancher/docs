@@ -1,0 +1,31 @@
+<div>
+        <p><strong>RKE node:</strong><br/>Node that runs the <code>rke</code> commands</p>
+        <h3>RKE node - Outbound rules</h3>
+<table>
+    <thead>
+        <tr>
+          <th>Protocol</th>
+          <th>Port</th>
+          <th>Source</th>
+          <th>Destination</th>
+          <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>TCP</td>
+          <td>22</td>
+          <td>RKE node</td>
+          <td><ul><li>Any node configured in Cluster Configuration File</li></ul></td>
+          <td>SSH provisioning of node by RKE</td>
+        </tr>
+        <tr>
+          <td>TCP</td>
+          <td>6443</td>
+          <td>RKE node</td>
+          <td><ul><li>controlplane nodes</li></ul></td>
+          <td>Kubernetes apiserver</td>
+        </tr>
+    </tbody>
+</table>
+</div>
