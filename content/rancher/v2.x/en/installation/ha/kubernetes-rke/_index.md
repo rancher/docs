@@ -58,7 +58,7 @@ RKE should have created a file `kube_config_rancher_cluster.yml`. This file has 
 You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_rancher-cluster.yml`.
 
 ```
-export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
+export KUBECONFIG=$(pwd)/kube_config_rancher_cluster.yml
 ```
 
 Test your connectivity with `kubectl` and see if you can get the list of nodes back.
