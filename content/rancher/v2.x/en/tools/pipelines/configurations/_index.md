@@ -154,11 +154,11 @@ stages:
       shellScript: go build
 ```
 
-### Publish Image step
+### Build and Publish Image step
 
-`Publish Image` step is to build and publish a docker image. To do that a Dockerfile is required to be present in the source code repository.
+`Build and Publish Image` step is to build and publish a docker image. To do that a Dockerfile is required to be present in the source code repository.
 
-To add a `Publish Image` step,
+To add a `Build and Publish Image` step,
 
 1. Go to EditConfig view.
 
@@ -190,21 +190,22 @@ stages:
     # additional docker daemon options and build args
     env:
       PLUGIN_INSECURE: "true"
-      PLUGIN_BUILD_ARGS: "myVar=value"
+      PLUGIN_BUILD_ARGS: "myVar=value,myVar2=value2"
 ```
 You can use specific arguments for docker daemon and the build. They are not exposed in the UI but are available in pipeline yaml format, as indicated in the above example. Available variables includes:
 
 Variable Name           | Description
 ------------------------|------------------------------------------------------------
 PLUGIN_DRY_RUN          | Disable docker push
+PLUGIN_DEBUG            | Docker daemon executes in debug mode
 PLUGIN_MIRROR           | Docker daemon registry mirror
 PLUGIN_INSECURE         | Docker daemon allows insecure registries
-PLUGIN_BUILD_ARGS       | Docker build args
+PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
 
 ### Deploy YAML step
 
-`Deploy YAML` step is to deploy arbitrary Kubernetes resources inside the project. To do that a Kubernetes manifest file is required to be present in the source code repository. Pipeline variable substitution is supported in the manifest file. For available variables please refer to [variable reference](https://TODO).
+`Deploy YAML` step is to deploy arbitrary Kubernetes resources inside the project. To do that a Kubernetes manifest file is required to be present in the source code repository. Pipeline variable substitution is supported in the manifest file. Here's an [example file](https://github.com/rancher/pipeline-example-go/blob/master/deployment.yaml). For available variables please refer to [variable reference](https://TODO).
 
 To add a `Deploy YAML` step,
 
