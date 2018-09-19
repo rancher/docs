@@ -11,7 +11,7 @@ Using the sample below create the `rancher-cluster.yml` file. Replace the IP Add
 
 > **Notes:** 
 >
->- Air Gap User? [Add a private registry section]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-to-rke-yaml) to the sample below.
+>- Air Gap User? [Add a private registry section]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-to-rke-yaml) to the sample below. Optionally, if you want to run RKE through a bastion host you have set up, you can [add one]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#optional-run-rke-through-bastion-host) to `rancher-cluster.yml`.
 >- If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 

@@ -42,7 +42,7 @@ There are three options for the source of the certificate.
 2. `letsEncrypt` - Use [LetsEncrypt](https://letsencrypt.org/) to issue a cert.
 3. `secret` - Configure a Kubernetes Secret with your certificate files.
 
-<br\>
+<br/>
 
 #### (Default) Rancher Generated Certificates
 
