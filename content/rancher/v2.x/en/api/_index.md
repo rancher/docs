@@ -1,18 +1,17 @@
 ---
 title: API
 weight: 7500
-draft: true
 ---
 
 ## How to use the API
 
 The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it, click on your user avatar in the upper right corner. Under **API & Keys**, you can find the URL endpoint as well as create [API keys]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/).
 
-### Authentication
+## Authentication
 
 API requests must include authentication information.  Authentication is done with HTTP basic authentication using [API Keys]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/). API keys can create new clusters and have access to multiple clusters via `/v3/clusters/`. [Cluster and project roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/) apply to these keys and restrict what clusters and projects the account can see and what actions they can take.
 
-### Making requests
+## Making requests
 
 The API is generally RESTful but has several features to make the definition of everything discoverable by a client so that generic clients can be written instead of having to write specific code for every type of resource.  For detailed info about the generic API spec, [see here](https://github.com/rancher/api-spec/blob/master/specification.md).
 
@@ -38,14 +37,14 @@ The API is generally RESTful but has several features to make the definition of 
 
 - To create a new resource, HTTP `POST` to the collection URL in the schema (which is `/v3/<type>`).
 
-### Filtering
+## Filtering
 
 Most collections can be filtered on the server-side by common fields using HTTP query parameters.  The `filters` map shows you what fields can be filtered on and what the filtered values were for the request you made.  The API UI has controls to setup filtering and show you the appropriate request.  For simple "equals" matches it's just `field=value`.  Modifiers can be added to the field name, e.g. `field_gt=42` for "field is greater than 42".  See the [API spec](https://github.com/rancher/api-spec/blob/master/specification.md#filtering) for full details.
 
-### Sorting
+## Sorting
 
 Most collections can be sorted on the server-side by common fields using HTTP query parameters.  The `sortLinks` map shows you what sorts are available, along with the URL to get the collection sorted by that.  It also includes info about what the current response was sorted by, if specified.
 
-### Pagination
+## Pagination
 
 API responses are paginated with a limit of 100 resources per page by default.  This can be changed with the `limit` query parameter, up to a maximum of 1000, e.g. `/v3/pods?limit=1000`.  The `pagination` map in collection responses tells you whether or not you have the full result set and has a link to the next page if you do not.
