@@ -4,9 +4,11 @@ weight: 375
 aliases:
   - /rancher/v2.x/en/installation/removing-rancher/cleaning-cluster-nodes/
   - /rancher/v2.x/en/installation/removing-rancher/
-  - /rancher/v2.x/en/faq/cleaning-cluster-nodes
+  - /rancher/v2.x/en/faq/cleaning-cluster-nodes/
 ---
-When adding a node to a cluster, resources (containers/(virtual) network interfaces) and configuration items (certificates/configuration files) are created. When removing a node from a cluster (if it is in `Active` state), those resources will be automatically cleaned and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
+When you deploy Rancher to the Kubernetes nodes that host your [Rancher installation]({{< baseurl >}}/rancher/v2.x/en/installation/), resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created. 
+
+When removing nodes from your installation cluster (provided that they are in `Active` state), those resources automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
 
 ## Removing A Node from a Cluster by Rancher UI
 
@@ -142,7 +144,7 @@ ip address show
 ifconfig -a
 ```
 
-*To remove an interface:*
+**To remove an interface:**
 
 ```
 ip link delete interface_name
