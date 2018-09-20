@@ -8,30 +8,66 @@ After you launch a Kubernetes cluster in Rancher, you can manage individual node
 
 >**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
-To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. The following sections list what node management options are available for each cluster type.
+To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. 
 
-<!-- TOC -->
+The following table lists what node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
-- [Nodes Provisioned by Node Pool](#nodes-provisioned-by-node-pool)
-- [Nodes Provisioned with the Custom Nodes Option](#nodes-provisioned-with-the-custom-nodes-option)
-- [Nodes Provisioned by Hosted Kubernetes Providers](#nodes-provisioned-by-hosted-kubernetes-providers)
-- [Imported Nodes](#imported-nodes)
+| Option | [Node Pool][1] | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description
+|--------|-----------|-------------|----------------|----------------|---------------
+| [Cordon](#cordoning-a-node) | ✓         | ✓           | ✓              |                | Marks the node as unschedulable.
+| [Drain](#draining-a-node)  | ✓         | ✓           | ✓              |                | Marks the node as unschedulable _and_ terminates all pods.
+| [Edit](#editing-a-node)   | ✓         | ✓           | ✓              |                | Enter a **Custom Name**, **Description**, or **Label** for a node.
+| [View API](#viewing-a-node-api) | ✓       | ✓           | ✓              |                | View API data.
+| [Delete](#deleting-a-node) | ✓         | ✓           |                 |                | Deletes defective nodes from the cluster.
+| [Download Keys](#remoting-into-a-node-pool-node) | ✓  | ✓           |                |                | Download SSH key pair to remote into the node.
+| [Node Scaling](#scaling-nodes)| ✓    |              |                |                | Scale the number of nodes in the cluster up or down.
 
-<!-- /TOC -->
+[1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
+
+## Cordoning a Node
+
+_Cordoning_ is the process of marking the node as unschedulable without affecting its pods. This feature is useful for performing short tasks during small maintenance windows. 
 
 
-## Nodes Provisioned by Node Pool
+## Draining a Node
+
+_Drainging_ is the process of gracefully terminate all pods on the node while marking the node as unschedulable.
+This feature is useful for preventing new pods from landing on the node while you are trying to get them off for longer maintenance tasks.
+
+For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
+
+For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
+
+After you've drained a node an performed maintenance, make it scheduleable against by uncordoning it.
+
+## Editing a Node
+
+Editing a node lets you change its name, add a description of the node, or add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+
+## Viewing a Node API
+
+## Deleting a Node
+
+Use **Delete** to remove defective nodes from the cloud provider. When you the delete a defective node, Rancher automatically replaces it with an identically provisioned node.
+
+## Scaling Nodes
+
+## Notes for Node Pool Nodes
  
 Clusters provisioned using [one of the node pool options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) automatically maintain the node scale that's set during the initial cluster provisioning. This scale determines the number of active nodes that Rancher maintains for the cluster. 
 
-- Mark nodes as unschedulable (i.e., **Cordon**). When a node is cordoned, no new pods are scheduled for the node, but the existing pods continue to run.
-- Delete defective nodes from the cloud provider. When you the delete a defective node, Rancher automatically replaces it with an identically provisioned node.
-    
-    >**Note:** If you want to scale down the number of nodes, use the scaling controls rather than deleting the node.
-- Scale the number of nodes in the cluster up or down.
-- Enter a **Custom Name**, **Description**, or **Label** for a node.
-- Download the SSH key pair for a node. You can use this key pair to remote into the node using an SSH connection from your workstation. For more instructions on how to remote into the node, see [Remoting into a Node Pool Node](#remoting-into-a-node-pool-node).
-- View API Data.
+ 
+## Notes for Nodes Provisioned by Hosted Kubernetes Providers
+
+Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
+
+
+## Notes for Imported Nodes
+
+Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
 
 ### Remoting into a Node Pool Node
 
@@ -47,26 +83,3 @@ Clusters provisioned using [one of the node pool options]({{< baseurl >}}/ranche
     ```
     ssh -i id_rsa root@<IP_OF_HOST>
     ```
-
-## Nodes Provisioned with the Custom Nodes Option
-
-For nodes provisioned using the [custom nodes option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#custom-nodes), you can use the following options from the Rancher UI:
-
-- Mark nodes as unschedulable (i.e., **Cordon**). When a node is cordoned, no new pods are scheduled for the node, but the existing pods continue to run.
-- Delete node objects from the **Nodes** ist. When you the delete a custom node, you still have to delete it from the node itself.
-- Enter a **Custom Name**, **Description**, or **Label** for a node.
-- View API Data.
- 
-## Nodes Provisioned by Hosted Kubernetes Providers
-
-Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
-
-From the Rancher UI, you can:
-
-- Mark nodes as unschedulable (i.e., **Cordon**). When a node is cordoned, no new pods are scheduled for the node, but the existing pods continue to run.
-- Enter a **Custom Name**, **Description**, or **Label** for a node.
-- View node API Data.
-
-## Imported Nodes
-
-Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
