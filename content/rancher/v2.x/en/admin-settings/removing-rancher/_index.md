@@ -1,22 +1,61 @@
 ---
-title: Removing Rancher
+title: Removing Rancher from Nodes
 weight: 2000
 draft: true
 ---
 
-## Removing Rancher From  Nodes
 
-### Hosted Kubernetes Providers
+When you no longer have use for Rancher within a cluster and want to remove the Rancher management plane from your nodes, follow one of the sets of instructions below based on your [cluster type]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options). The method you'll use to remove Rancher changes based on the type of cluster.
 
-### Nodes Hosted by IaaS
+## Hosted Kubernetes Providers
 
-### Custom Nodes
+To remove Rancher from [nodes hosted on a Kubernetes Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#hosted-kubernetes-cluster), simply delete them from Rancher. The cluster will remove Rancher components through the Norman API (Rancher's API framework).
 
-### Imported Cluster
+<!-- MB 9/19: I know this is probably BS, but I need to confirm with a dev on how to remove Rancher from a hosted cluster -->
+
+## Nodes Launched by RKE
+
+For cluster nodes launched by RKE (i.e. nodes [hosted by an IaaS]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#node-pools) or [custom nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#custom-nodes)), you can remove the Rancher management plane by downloading and running the [system-tools](https://github.com/rancher/system-tools/releases) for Rancher.
+
+Running system-tools removes the following Rancher components from your nodes:
+
+- The Rancher deployment.
+- ClusterRoles and ClusterRoleBindings labeled by Rancher.
+- Labels, annotations and finalizers from all resources on the management plane cluster.
+- Machines, clusters, projects, and user custom resource definitions (CRDs) and corresponding namespaces.
+- All resources created under the `management.cattle.io` API group.
+- All CRDs created by Rancher 2.x.
+- The Rancher deployment namespace, (i.e `cattle-system`).
+
+### Using the System-Tool
+
+System-tool is a utility that cleans up rancher projects. In this use case, it will help you remove the Rancher management plane from one of your cluster nodes. 
+
+#### Usage
+
+>**Warning:** This command will remove data from your nodes. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
+
+```
+system-tools remove [command options] [arguments...]
+```
+
+
+
+##### Options
+
+| Option                                         | Description                                                                                                            |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `--kubeconfig <$KUBECONFIG>, -c <$KUBECONFIG>` | The cluster's kubeconfig file absolute path (`<$KUBECONFIG>`).                                                         |
+| `--namespace <NAMESPACE>, -n cattle-system`    | Rancher 2.x deployment namespace (`<NAMESPACE>`). If no namespace is defined, the options defaults to `cattle-system`. |
+| `--force`                                      | Skips the the interactive removal confirmation and removes the Rancher deployment without prompt.                      |
+
+## Imported Cluster
 
 {{% tabs %}}
 {{% tab "By UI / API" %}}
-After you initiate the removal of an imported cluster using the Rancher UI (or API), the following events occur.
+After you initiate the removal of an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#import-existing-cluster) using the Rancher UI (or API), the following events occur.
+
+>**Warning:** This process will remove data from your nodes. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
 1. Rancher creates a `serviceAccount` that it uses to remove the cluster. This account is assigned the [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) permissions, which are required to remove the cluster. 
 
@@ -71,4 +110,3 @@ Rather than cleaning
 
 
 
-### 
