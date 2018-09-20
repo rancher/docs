@@ -1,7 +1,7 @@
 ---
 title: 3—Configuring Rancher for the Private Registry
 weight: 75
-aliases:
+draft: true
 ---
 
 Rancher needs to be configured to use the private registry as source for the needed images.
