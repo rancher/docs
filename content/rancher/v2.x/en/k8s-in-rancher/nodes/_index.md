@@ -12,15 +12,15 @@ To manage individual nodes, browse to the cluster that you want to manage and th
 
 The following table lists what node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
-| Option | [Node Pool][1] | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description
-|--------|-----------|-------------|----------------|----------------|---------------
-| [Cordon](#cordoning-a-node) | ✓         | ✓           | ✓              |                | Marks the node as unschedulable.
-| [Drain](#draining-a-node)  | ✓         | ✓           | ✓              |                | Marks the node as unschedulable _and_ terminates all pods.
-| [Edit](#editing-a-node)   | ✓         | ✓           | ✓              |                | Enter a **Custom Name**, **Description**, or **Label** for a node.
-| [View API](#viewing-a-node-api) | ✓       | ✓           | ✓              |                | View API data.
-| [Delete](#deleting-a-node) | ✓         | ✓           |                 |                | Deletes defective nodes from the cluster.
-| [Download Keys](#remoting-into-a-node-pool-node) | ✓  | ✓           |                |                | Download SSH key pair to remote into the node.
-| [Node Scaling](#scaling-nodes)| ✓    |              |                |                | Scale the number of nodes in the cluster up or down.
+| Option                                           | [Node Pool][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
+| ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
+| [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
+| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ terminates all pods.         |
+| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a **Custom Name**, **Description**, or **Label** for a node. |
+| [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
+| [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
+| [Download Keys](#remoting-into-a-node-pool-node) | ✓                                                | ✓                |                     |                     | Download SSH key pair to remote into the node.                     |
+| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the cluster up or down.               |
 
 [1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
 [2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
@@ -34,7 +34,7 @@ _Cordoning_ is the process of marking the node as unschedulable without affectin
 
 ## Draining a Node
 
-_Drainging_ is the process of gracefully terminate all pods on the node while marking the node as unschedulable.
+_Draining_ is the process of gracefully terminate all pods on the node while marking the node as unschedulable.
 This feature is useful for preventing new pods from landing on the node while you are trying to get them off for longer maintenance tasks.
 
 For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
@@ -73,6 +73,7 @@ Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/ranch
 
 1. From the Node Pool cluster, select **Nodes** from the main menu.
 1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
+    ![Download Keys]({{< baseurl >}}/)img/rancher/download-keys.png
 
     **Step Result:** A ZIP file containing files used for SSH is downloaded.
 
