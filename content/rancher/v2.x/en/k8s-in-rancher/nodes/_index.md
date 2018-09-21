@@ -69,7 +69,9 @@ The following list describes each drain option:
 
 - **Timeout**  
 
-    The amount of time drain should continue to wait before giving up. 
+    The amount of time drain should continue to wait before giving up.
+
+    >**Kubernetes Known Issue:** Currently, the [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) is not enforced while draining a node. This issue will be corrected as of Kubernetes 1.12.
 
 If there's any error related to user input, the node enters a `cordoned` state because the drain failed. You can either correct the input and attempt to drain the node again, or you can abort by uncordoning the node.
 
