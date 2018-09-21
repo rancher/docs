@@ -14,6 +14,15 @@ Rancher supports the following services:
 - [Kafka]({{< baseurl >}}/rancher/v2.x/en/tools/logging/kafka)
 - [Syslog]({{< baseurl >}}/rancher/v2.x/en/tools/logging/syslog) 
 
+## Requirements
+
+Docker daemon should be [configured](https://docs.docker.com/config/containers/logging/configure/) with the (default) log-driver: `json-file`. You can check the log-driver by running the following command:
+
+```
+$ docker info | grep 'Logging Driver'
+Logging Driver: json-file
+```
+
 ## Advantages
 
 Setting up a logging service to collect logs from your cluster/project is helpful several ways:
