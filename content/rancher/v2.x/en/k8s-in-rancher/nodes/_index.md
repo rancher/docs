@@ -3,9 +3,6 @@ title: Nodes
 weight:
 aliases:
 ---
->**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
-
-
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.
 
@@ -14,17 +11,19 @@ To manage individual nodes, browse to the cluster that you want to manage and th
 
 ![Node Options]({{< baseurl >}}/img/rancher/node-edit.png)
 
-The following table lists what node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+>**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
+
+The following table lists which node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
 | Option                                           | [Node Pool][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
-| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ terminates all pods.         |
-| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a **Custom Name**, **Description**, or **Label** for a node. |
+| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
+| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, or label for a node. |
 | [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
-| [Download Keys](#remoting-into-a-node-pool-node) | ✓                                                | ✓                |                     |                     | Download SSH key pair to remote into the node.                     |
-| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the cluster up or down.               |
+| [Download Keys](#remoting-into-a-node-pool-node) | ✓                                                |                  |                     |                     | Download SSH key for remoting into the node.                     |
+| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
 
 [1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
 [2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
@@ -33,18 +32,49 @@ The following table lists what node options are available for each [type of clus
 
 ## Cordoning a Node
 
-_Cordoning_ is the process of marking the node as unschedulable without affecting its pods. This feature is useful for performing short tasks during small maintenance windows. 
+_Cordoning_ a node marks it as unschedulable without affecting its pods. This feature is useful for performing short tasks on the node during small maintenance windows, like reboots, upgrades, or decommisions.  When you're done, power back on and make the node scheduleable again by uncordoning it.
 
 ## Draining a Node
 
-_Draining_ is the process of gracefully terminate all pods on the node while marking the node as unschedulable.
-This feature is useful for preventing new pods from landing on the node while you are trying to get them off for longer maintenance tasks.
+_Draining_ is the process of first cordoning the node, and then evicting all its pods. This feature is useful for performing node maintenance (like kernel upgrades or hardware maintenance). It prevents new pods from deploying to the node while redistributing existing pods so that users don't experience service interruption.
 
-For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
+- For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
 
-For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
+- For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
+ 
+You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, it must meet the conditions of Kubernetes before the node cordons and evicts the pods. However, Rancher let's you override these conditions when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
 
-After you've drained a node an performed maintenance, make it scheduleable against by uncordoning it.
+![Drain]({{< baseurl >}}/img/rancher/node-drain.png)
+
+The following list describes each drain option:
+
+- **Even if there are pods not managed by a ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet**
+ 
+    These types of pods won't get rescheduled to a new node, since they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods. Kubernetes forces you to choose this option (which will delete/evict these pods) or drain won't proceed.
+
+- **Even if there are DaemonSet-managed pods**
+
+    Similar to above, if you have any daemonsets, drain would proceed only if this option is selected. Even when this option is on, pods won't be deleted since they'll immediately be replaced. On startup, Rancher currently has a few daemonsets running by default in the system, so this option is turned on by default.
+
+- **Even if there are pods using emptyDir**
+ 
+    If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods. 
+
+- **Grace Period**
+
+    The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used. 
+
+- **Timeout**  
+
+    The amount of time drain should continue to wait before giving up. 
+
+If there's any error related to user input, the node enters a `cordoned` state because the drain failed. You can either correct the input and attempt to drain the node again, or you can abort by uncordoning the node.
+
+If the drain continues without error, the node enters a `draining` state. You'll have the option to stop the drain when the node is in this state, which will stop the drain process and change the node's state to `cordoned`.
+
+Once drain successfully completes, the node will be in a state of `drained`. You can then power off or delete the node.
+
+>**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
 
 
 ## Editing a Node
@@ -66,23 +96,26 @@ Use **Delete** to remove defective nodes from the cloud provider. When you the d
 
 ## Scaling Nodes
 
-For nodes hosted by an IaaS, you can scale the number of nodes in each node pool by using the scale controls (this option isn't available for other cluster types).
+For nodes hosted by an IaaS, you can scale the number of nodes in each node pool by using the scale controls. This option isn't available for other cluster types.
 
 ![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
 
 
 ## Remoting into a Node Pool Node
 
-For nodes launched by RKE, you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
+For [nodes hosted by an IaaS]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
 
 1. From the Node Pool cluster, select **Nodes** from the main menu.
+
 1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
 
     **Step Result:** A ZIP file containing files used for SSH is downloaded.
 
 1. Extract the ZIP file to any location.
+
 1. Open Terminal. Change your location to the extracted ZIP file.
+
 1. Enter the following command:
 
     ```
