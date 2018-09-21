@@ -3,12 +3,16 @@ title: Nodes
 weight:
 aliases:
 ---
+>**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
+
+
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.
 
->**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
-To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. 
+To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
+
+![Node Options]({{< baseurl >}}/img/rancher/node-edit.png)
 
 The following table lists what node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
@@ -31,7 +35,6 @@ The following table lists what node options are available for each [type of clus
 
 _Cordoning_ is the process of marking the node as unschedulable without affecting its pods. This feature is useful for performing short tasks during small maintenance windows. 
 
-
 ## Draining a Node
 
 _Draining_ is the process of gracefully terminate all pods on the node while marking the node as unschedulable.
@@ -43,17 +46,48 @@ For pods with no replica set, you need to bring up a new copy of the pod, and as
 
 After you've drained a node an performed maintenance, make it scheduleable against by uncordoning it.
 
+
 ## Editing a Node
 
 Editing a node lets you change its name, add a description of the node, or add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 
+
 ## Viewing a Node API
+
+Select this option to view the node's [API endpoints]({{< baseurl >}}/rancher/v2.x/en/api/).
+
 
 ## Deleting a Node
 
 Use **Delete** to remove defective nodes from the cloud provider. When you the delete a defective node, Rancher automatically replaces it with an identically provisioned node.
 
+>**Tip:** If your cluster is hosted on IaaS nodes, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
+
+
 ## Scaling Nodes
+
+For nodes hosted by an IaaS, you can scale the number of nodes in each node pool by using the scale controls (this option isn't available for other cluster types).
+
+![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
+
+
+## Remoting into a Node Pool Node
+
+For nodes launched by RKE, you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
+
+
+1. From the Node Pool cluster, select **Nodes** from the main menu.
+1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
+
+    **Step Result:** A ZIP file containing files used for SSH is downloaded.
+
+1. Extract the ZIP file to any location.
+1. Open Terminal. Change your location to the extracted ZIP file.
+1. Enter the following command:
+
+    ```
+    ssh -i id_rsa root@<IP_OF_HOST>
+    ```
 
 ## Notes for Node Pool Nodes
  
@@ -69,18 +103,3 @@ Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/ran
 
 Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
 
-### Remoting into a Node Pool Node
-
-1. From the Node Pool cluster, select **Nodes** from the main menu.
-1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
-    ![Download Keys]({{< baseurl >}}/)img/rancher/download-keys.png
-
-    **Step Result:** A ZIP file containing files used for SSH is downloaded.
-
-1. Extract the ZIP file to any location.
-1. Open Terminal. Change your location to the extracted ZIP file.
-1. Enter the following command:
-
-    ```
-    ssh -i id_rsa root@<IP_OF_HOST>
-    ```
