@@ -55,6 +55,8 @@ rke up --config ./rancher-cluster.yml
 
 RKE should have created a file `kube_config_rancher-cluster.yml`. This file has the credentials for `kubectl` and `helm`.
 
+> **Note:** If you have used a different file name from `rancher-cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
+
 You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_rancher-cluster.yml`.
 
 ```
