@@ -6,15 +6,17 @@ draft: true
 
 Rancher needs to be configured to use the private registry as source for the needed images.
 
+1. Log into Rancher and configure the default admin password.
+
 1. Go into the **Settings** view.
     
     ![Settings]({{< baseurl >}}/img/rancher/airgap/settings.png)
 
-2. Look for the setting called `system-default-registry` and choose **Edit**.
+1. Look for the setting called `system-default-registry` and choose **Edit**.
   
     ![Edit]({{< baseurl >}}/img/rancher/airgap/edit-system-default-registry.png)
 
-3. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
+1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
   
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 

@@ -88,7 +88,7 @@ The architecture for this scenario is:
 
 1. From the host that can access DockerHub, run `rancher-save-images.sh`. This will require at least 20GB of disk space.
 
-1. Transfer the output file from the previous step (`rancher-images.tar.gz`) to the on-premise host that can access the private registry.
+1. Transfer the output file from the previous step (`rancher-images.tar.gz`) to the host that can access the private registry.
 
 1. Transfer and run `rancher-load-images.sh` on the host that can access the private registry. It should be run in the same directory as `rancher-images.tar.gz`. 
 {{% /tab %}}
@@ -96,7 +96,7 @@ The architecture for this scenario is:
 <br/>
 The architecture for this scenario is:
 
-- A host that can access both DockerHub and your private registry
+- A host that can access both DockerHub and your private registry.
 
 - An on-premise private registry, which you'll use to deploy Rancher in your air gap environment.
 <br/>
@@ -104,7 +104,7 @@ The architecture for this scenario is:
 ![Scenario2]({{< baseurl >}}/img/rancher/airgap/privateregistrypushpull.svg)
 
 
-2. Pull all the images present in `rancher-images.txt`, re-tag each image with the location of your registry, and push the image to the registry. This will require at least 20GB of disk space. See an example script below:
+2. Pull all the images present in `rancher-images.txt`, re-tag each image with the location of your registry, and push the image to the registry. This action requires at least 20GB of disk space. See an example script below:
         
     ```
     #!/bin/sh
