@@ -32,7 +32,7 @@ The following table lists which node options are available for each [type of clu
 
 ## Cordoning a Node
 
-_Cordoning_ a node marks it as unschedulable without affecting its pods. This feature is useful for performing short tasks on the node during small maintenance windows, like reboots, upgrades, or decommisions.  When you're done, power back on and make the node scheduleable again by uncordoning it.
+_Cordoning_ a node marks it as unschedulable. This feature is useful for performing short tasks on the node during small maintenance windows, like reboots, upgrades, or decommissions.  When you're done, power back on and make the node schedulable again by uncordoning it.
 
 ## Draining a Node
 
@@ -42,10 +42,13 @@ _Draining_ is the process of first cordoning the node, and then evicting all its
 
 - For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
  
-You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, it must meet the conditions of Kubernetes before the node cordons and evicts the pods. However, Rancher let's you override these conditions when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
+You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, the node is cordoned, the nodes are evaluated for conditions they must meet to be drained, and then (if it meets the conditions) the node evicts its pods. 
+
+However, you can override the conditions draining when you initiate the drain (see [below](#below)). You're also given an opportunity to set a grace period and timeout value.
 
 ![Drain]({{< baseurl >}}/img/rancher/node-drain.png)
 
+<a id="below"></a>
 The following list describes each drain option:
 
 - **Even if there are pods not managed by a ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet**
