@@ -62,19 +62,13 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
 After you configure a pipeline, you can trigger it using different methods:
 
-<<<<<<< HEAD
-Pipeline deploys multiple components on demand, i.e. when the first pipeline execution is triggered. It consists of a managed Jenkins engine, docker registry, and minio log storage. Built images are pushed to the internal registry by default but users can choose to push to their remote registry. For every build, it dynamically provisions a Kubernetes pod to run your CI tasks, and remove it when it is finished.
 
-Webhooks are automatically added to the version control system when a repository is enabled. When users push the code, open a pull request or create a tag, the version control system can send a webhook to Rancher server and trigger a pipeline execution. This requires webhook management permission of the repo, therefore when users auth and fetch their repositories only those on which they have admin permission will be shown.
-
->**Note:** There are refactoring changes in Pipeline in v2.1. Therefore users who upgrade from v2.0.x to v2.1 need to reconfigure the pipelines. For documentation of previous version, please refer to [docs for v2.0.x](http://TODO)
-=======
 - **Manually:**
 
     After you configure a pipeline, you can trigger a build using the latest CI definition from either Rancher UI or Git CLI.  When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
 
-- **Automatically:** When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo—push code, open pull requests, or create a tag—the version control system sends a webhook to Rancher Server and triggers a pipeline execution. 
+- **Automatically:** 
 
-    To use this automation, webhook management permission is required for repo. Therefore, when users authenticate and fetch their repositories, only those on which they have admin permission will be shown.
+    When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo—push code, open pull requests, or create a tag—the version control system sends a webhook to Rancher Server, triggering a pipeline execution. 
 
->>>>>>> 592e04f3... edit on pipelines intro page
+    To use this automation, webhook management permission is required for the repo. Therefore, when users authenticate and fetch their repositories, only those on which they have admin permission will be shown.

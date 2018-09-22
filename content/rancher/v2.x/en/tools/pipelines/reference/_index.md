@@ -1,5 +1,5 @@
 ---
-title: Reference
+title: Pipeline Variable Reference
 weight: 8000
 ---
 

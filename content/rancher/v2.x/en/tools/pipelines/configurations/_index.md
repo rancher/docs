@@ -1,5 +1,5 @@
 ---
-title: Configurations
+title: Configuring Pipelines
 weight: 3725
 ---
 

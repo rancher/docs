@@ -1,6 +1,6 @@
 ---
-title: Quick Start Guide
-weight: 1000
+title: Pipelines Quick Start Guide
+weight: 500
 ---
 
 ## Configure Repositories

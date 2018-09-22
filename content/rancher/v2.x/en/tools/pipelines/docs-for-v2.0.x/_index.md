@@ -1,5 +1,5 @@
 ---
-title: Docs for v2.0.x
+title: v2.0.x Pipeline Documentation
 weight: 9000
 ---
 
