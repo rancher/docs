@@ -9,7 +9,7 @@ Rancher ships with several example repositories that help you setup a pipeline q
 - Maven
 - php
 
-## Configure Repositories
+## 1. Configure Repositories
 
 By default, the example pipeline repositories are disabled. Go enable one (or) more to test out the pipeline feature.
 
@@ -25,21 +25,36 @@ By default, the example pipeline repositories are disabled. Go enable one (or) m
 
 1. Click **Enable** for one of the example repos (e.g., `https://github.com/rancher/pipeline-example-go.git`). Then click **Done**.
 
-**Result:** A pipeline is configured for the example repository, and it's added to the **Pipeline** tab.
+**Results:** 
 
-## Run Example Pipelines
+- A pipeline is configured for the example repository, and it's added to the **Pipeline** tab.
+- The following workloads are deployed to a new namespace:
 
-1. Assuming you've enabled an example repository, go to pipelines Nav bar of the project.
+    - `docker-registry`
+    - `jenkins`
+    - `minio`
 
-1. Expand the action button of the enabled repository.
+## 2. Run Example Pipelines
 
+<<<<<<< HEAD
 1. Click Run.
     
     >**Note:** When you are running a pipeline the first time, it will take a few minutes to pull relevant images and provision necessary pipeline components.
     To understand what the example pipeline is doing, you can check the `.rancher-pipeline.yml` file in the example repositories, or click `Edit Config` action of the enabled repository to see it via UI wizard.
 <<<<<<< HEAD
 =======
+=======
+After configuring an example repository, run the pipeline to see how it works.
 
-For detail guides for pipeline configurations, please refer to the [configuration page](/rancher/v2.x/en/tools/pipelines/quick-start-guide/)
+1. From the **Pipelines** tab, select **Ellipsis (...) > Run**. Then click **Run** to confirm the pipeline run.
 
->>>>>>> ab68fa0e... updating configure repos
+    >**Note:** When you run a pipeline the first time, it takes a few minutes to pull relevant images and provision necessary pipeline components.
+    To understand what the example pipeline is doing,  select **Ellipsis (...) >  Edit Config** for your  repository. Alternatively, view the `.rancher-pipeline.yml` file in the example repositories.
+
+**Result:** The pipeline runs.
+
+## What's Next?
+
+For detailed information about setting up a pipeline configuration in production, see the [Configuration page]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/quick-start-guide/).
+
+
