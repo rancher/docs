@@ -15,13 +15,13 @@ You can configure a pipeline to automate building, testing, and publishing for e
 
 ## Overview
 
-Rancher Pipeline provides a simple CI/CD experience—use it to automatically checkout code, run builds, perform tests, publish docker images, and deploy Kubernetes resources to your clusters.
+Rancher Pipeline provides a simple CI/CD experience-use it to automatically checkout code, run builds, perform tests, publish docker images, and deploy Kubernetes resources to your clusters.
 
 You can configure a pipeline for each project in Rancher. Every project can have individual configurations and setup.
 
 Pipelines are represented as pipeline files that are checked into source code repositories. Users can read and edit the pipeline configuration by either:
 
-- Using the Rancher UI
+- Using the Rancher UI.
 - Updating the configuration in the repository, using tools like Git CLI to trigger a build with the latest CI definition.
 
 >**Note:** Rancher Pipeline is not meant to replace enterprise-grade Jenkins or any other CI tool your team uses.
@@ -51,7 +51,7 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
   - **Docker Registry:** 
 
-    Out-of-the-box, the default target for your builds in an internal Docker Registry. However, you can make configurations to push to a remote registry instead. Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users.
+    Out-of-the-box, the default target for your builds is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users.
 
     <a id="minio"></a>
 
