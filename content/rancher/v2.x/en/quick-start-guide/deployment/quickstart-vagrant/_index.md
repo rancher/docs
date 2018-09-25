@@ -14,7 +14,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the folder containing the terraform file by executing `cd quickstart/vagrant`.
+2. Go into the folder containing the Vagrantfile by executing `cd quickstart/vagrant`.
 
 3. **Optional:** Edit `config.yaml` to:
 
