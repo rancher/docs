@@ -46,10 +46,14 @@ When you configure a pipeline in one of your projects, a namespace specifically 
     The pipeline's build engine. Because project users likely won't interact with Jenkins, it's managed and locked.
 
     >**Note:**  There is no option to reuse existing Jenkins deployments as the pipeline engine.
+    
+    <a id="reg"></a>
 
   - **Docker Registry:** 
 
     Out-of-the-box, the default target for your builds in an internal Docker Registry. However, you can make configurations to push to a remote registry instead. Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users.
+
+    <a id="minio"></a>
 
   - **Minio:** 
 
