@@ -5,26 +5,40 @@ aliases:
   - /rancher/v2.x/en/concepts/ci-cd-pipelines/
   - /rancher/v2.x/en/tasks/pipelines/
 ---
-
-You can configure a pipeline to automate building, testing, and publishing for each of your Rancher projects.
-
 >**Notes:** 
 >
 >- Pipelines are new and improved for Rancher v2.1! Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
 >- Still using v2.0.x? See the pipeline documentation for [previous versions](/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
+A _pipeline_ is a software delivery process that is broken into different stages, allowing developers to deliver new software as quickly and efficiently as possible. Within Rancher, you can configure a pipeline for each of your Rancher projects.
+
+The pipeline stages are:
+
+- **Build:** 
+
+    Each time code is checked into your repository, the pipeline automatically clones the repo and builds a new iteration of your software. Throughout this process, the software is typically reviewed by automated tests.
+
+- **Publish:**
+
+    After each build is completed, it's automatically published to a Docker registry, where it can be pulled for manual testing. 
+
+- **Deploy:**
+
+    A natural extension of the publish stage, the deploy stage lets you release your software to customers with the click of a button.
+
+
 ## Overview
 
-Rancher Pipeline provides a simple CI/CD experience-use it to automatically checkout code, run builds, perform tests, publish docker images, and deploy Kubernetes resources to your clusters.
+Rancher Pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds, perform tests, publish docker images, and deploy Kubernetes resources to your clusters.
 
-You can configure a pipeline for each project in Rancher. Every project can have individual configurations and setup.
+You can configure a pipeline for each project in Rancher. Every project can have individual configurations and setups.
 
 Pipelines are represented as pipeline files that are checked into source code repositories. Users can read and edit the pipeline configuration by either:
 
 - Using the Rancher UI.
 - Updating the configuration in the repository, using tools like Git CLI to trigger a build with the latest CI definition.
 
->**Note:** Rancher Pipeline is not meant to replace enterprise-grade Jenkins or any other CI tool your team uses.
+>**Note:** Rancher Pipeline not a replacement for enterprise-grade Jenkins or any other CI tool your team uses.
 
 ## Supported Version Control Platforms
 
@@ -71,7 +85,7 @@ After you configure a pipeline, you can trigger it using different methods:
 
     After you configure a pipeline, you can trigger a build using the latest CI definition from either Rancher UI or Git CLI.  When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
 
-- **Automatically:** 
+- **Automatically:**
 
     When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo—push code, open pull requests, or create a tag—the version control system sends a webhook to Rancher Server, triggering a pipeline execution. 
 
