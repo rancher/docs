@@ -5,131 +5,88 @@ aliases:
   - /rancher/v2.x/en/concepts/ci-cd-pipelines/
   - /rancher/v2.x/en/tasks/pipelines/
 ---
+>**Notes:** 
+>
+>- Pipelines are new and improved for Rancher v2.1! Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
+>- Still using v2.0.x? See the pipeline documentation for [previous versions](/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
-Pipelines help you automate the software delivery process. You can integrate Rancher with GitHub to create a pipeline.
+A _pipeline_ is a software delivery process that is broken into different stages, allowing developers to deliver new software as quickly and efficiently as possible. Within Rancher, you can configure a pipeline for each of your Rancher projects.
 
-You can set up your pipeline to run a series of stages and steps to test your code and deploy it.
+The pipeline stages are:
 
-<dl>
-	<dt>Pipelines</dt>
-	<dd>Contain a series of stages and steps. Out-of-the-box, the pipelines feature supports fan out and in capabilities.</dd>
-	<dt>Stages</dt>
-	<dd>Executed sequentially. The next stage will not execute until all of the steps within the stage execute.</dd>
-	<dt>Steps</dt>
-	<dd>Are executed in parallel within a stage. </dd>
-</dl>
+- **Build:** 
 
-## Enabling CI Pipelines
+    Each time code is checked into your repository, the pipeline automatically clones the repo and builds a new iteration of your software. Throughout this process, the software is typically reviewed by automated tests.
 
-1. Select cluster from drop down.
+- **Publish:**
 
-2. Under tools menu select pipelines.
+    After each build is completed, it's automatically published to a Docker registry, where it can be pulled for manual testing. 
 
-3. Follow instructions for setting up github auth on page.
+- **Deploy:**
 
-
-## Creating CI Pipelines
-
-1. Go to the project you want this pipeline to run in.
-
-2. Select workloads from the top level Nav bar
-
-3. Select pipelines from from the secondary Nav bar
-
-4. Click Add pipeline button.
-
-5. Enter in your repository name (Autocomplete should help zero in on it quickly).
-
-6. Select Branch options.
-
-	-	Only the branch {BRANCH NAME}: Only events triggered by changes to this branch will be built.
-
-	-	Evertyhing but {BRANCH NAME}: Build any branch that triggered an event EXCEPT events from this branch.
-
-	-	All branches: Regardless of the branch that triggered the event always build.
-
-	>**Note:** If you want one path for master, but another for PRs or development/test/feature branches, create two separate pipelines.
-
-7. Select the build trigger events. By default, builds will only happen by manually clicking build now in Rancher UI.
-
-	- Automatically build this pipeline whenever there is a git commit. (This respects the branch selection above)
-
-	- Automatically build this pipeline whenever there is a new PR.
-
-	- Automatically build the pipeline. (Allows you to configure scheduled builds similar to Cron)
-
-8. Click Add button.
-
-	By default, Rancher provides a three stage pipeline for you. It consists of a build stage where you would compile, unit test, and scan code. The publish stage has a single step to publish a docker image.
+    A natural extension of the publish stage, the deploy stage lets you release your software to customers with the click of a button.
 
 
-8. Add a name to the pipeline in order to complete adding a pipeline.
+## Overview
 
-9. Click on the ‘run a script’ box under the ‘Build’ stage.
+Rancher Pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds, perform tests, publish docker images, and deploy Kubernetes resources to your clusters.
 
-	Here you can set the image, or select from pre-packaged envs.
+You can configure a pipeline for each project in Rancher. Every project can have individual configurations and setups.
 
-10. Configure a shell script to run inside the container when building.
+Pipelines are represented as pipeline files that are checked into source code repositories. Users can read and edit the pipeline configuration by either:
 
-11. Click Save to persist the changes.
+- Using the Rancher UI.
+- Updating the configuration in the repository, using tools like Git CLI to trigger a build with the latest CI definition.
 
-12. Click the “publish an image’ box under the “Publish” stage.
+>**Note:** Rancher Pipeline not a replacement for enterprise-grade Jenkins or any other CI tool your team uses.
 
-13. Set the location of the Dockerfile. By default it looks in the root of the workspace. Instead, set the build context for building the image relative to the root of the workspace.
+## Supported Version Control Platforms
 
-14. Set the image information.
+Rancher pipelines currently supports GitHub and GitLab (available as of Rancher v2.0.1).
 
-	The registry is the remote registry URL. It is defaulted to Docker hub.
-	Repository is the `<org>/<repo>` in the repository.
+>**Note:** Additions to pipelines are scoped for future releases of Rancher, such as:
+>
+>- Additional version control systems
+>- Deployment of Kubernetes YAML
+>- Catalog deployment
+  
 
-15. Select the Tag. You can hard code a tag like ‘latest’ or select from a list of available variables.
+## How Pipelines Work
 
-16. If this is the first time using this registry, you can add the username/password for pushing the image. You must click save for the registry credentials AND also save for the modal.
+When you configure a pipeline in one of your projects, a namespace specifically for the pipeline is automatically created. The following components are deployed to it: 
+
+  - **Jenkins:** 
+
+    The pipeline's build engine. Because project users likely won't interact with Jenkins, it's managed and locked.
+
+    >**Note:**  There is no option to reuse existing Jenkins deployments as the pipeline engine.
+    
+    <a id="reg"></a>
+
+  - **Docker Registry:** 
+
+    Out-of-the-box, the default target for your builds is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users.
+
+    <a id="minio"></a>
+
+  - **Minio:** 
+
+    Minio storage is used to store the logs for pipeline executions.
+
+  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, but we recommend that you configure persistent volumes for them, as described in [data persistency for pipeline components](/rancher/v2.x/en/tools/pipelines/configurations/#data-persistency-for-pipeline-components).
 
 
+## Pipeline Triggers
+
+After you configure a pipeline, you can trigger it using different methods:
 
 
-## Creating a New Stage
+- **Manually:**
 
-1. To add a new stage the user must click the ‘add a new stage’ link in either create or edit mode of the pipeline view.
+    After you configure a pipeline, you can trigger a build using the latest CI definition from either Rancher UI or Git CLI.  When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
 
-2. Provide a name for the stage.
+- **Automatically:**
 
-3. Click save.
+    When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo—push code, open pull requests, or create a tag—the version control system sends a webhook to Rancher Server, triggering a pipeline execution. 
 
-
-## Creating a New Step
-
-1. Go to create / edit mode of the pipeline.
-
-2. Click “Add Step” button in the stage that you would like to add a step in.
-
-3. Fill out the form as detailed above
-
-
-## Environment Variables
-
-For your convenience the following environment variables are available in your build steps:
-
-Variable Name           | Description
-------------------------|------------------------------------------------------------
-CICD_GIT_REPO_NAME      | Repository Name (Stripped of Github Organization)
-CICD_PIPELINE_NAME      | Name of the pipeline
-CICD_GIT_BRANCH         | Git branch of this event
-CICD_TRIGGER_TYPE       | Event that triggered the build
-CICD_PIPELINE_ID        | Rancher ID for the pipeline
-CICD_GIT_URL            | URL of the Git repository
-CICD_EXECUTION_SEQUENCE | Build number of the pipeline
-CICD_EXECUTION_ID       | Combination of {CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}
-CICD_GIT_COMMIT         | Git commit ID being executed.
-<!--### Adding a Build Script
-
-Coming Soon
-
-### Publishing an Image
-
-Coming Soon-->
-
-## Importing a Pipeline From YAML
-
-If there is a ##YAML FILE### already checked into the github repository click import.
+    To use this automation, webhook management permission is required for the repo. Therefore, when users authenticate and fetch their repositories, only those on which they have admin permission will be shown.
