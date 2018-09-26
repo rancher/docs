@@ -21,9 +21,7 @@ Initial configuration of a pipeline in a production environment involves complet
 >**Note:** Before setting up a pipeline for a production environment, we recommend trying the [Pipeline Quick Start Guide]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/quick-start-guide).
 
 
-
-
-### 1—Configuring Version Control Providers
+### 1. Configuring Version Control Providers
 
 Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub and GitLab. 
 
@@ -77,7 +75,7 @@ Select your provider's tab below and follow the directions.
 
 
 
-### 2—Configuring Pipeline Stages and Steps
+### 2. Configuring Pipeline Stages and Steps
 
 Now that the pipeline is added to your project, you need to configure its automated stages and steps. For your convenience, there are multiple built-in step types for dedicated tasks.
 
@@ -215,7 +213,7 @@ stages:
 
 1. When you're finished adding stages and steps, click **Done.** 
 
-### 3—Run Pipeline
+### 3. Running the Pipeline
 
 Run your pipeline for the first time. From the **Pipeline** tab, find your pipeline and select **Ellipsis (...) > Run**.
 
@@ -227,7 +225,7 @@ During this initial run, your pipeline is tested, and the following [pipeline co
 
 This process takes several minutes. When it completes, you can view each pipeline component from the project **Workloads** tab.
 
-### 4—Configuring Persistent Data for Pipeline Components
+### 4. Configuring Persistent Data for Pipeline Components
 
 The internal [Docker registry]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#reg) and the [Minio]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#minio) wokrloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but it does not help in cases of disaster recovery. We recommend that you to configure these two deployments to persist their data.
 
@@ -237,7 +235,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 >
 >[Persistent volumes]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#persistent-volumes) must be available for the cluster.
 
-#### A—Configuring Persistent Data for Docker Registry
+#### A. Configuring Persistent Data for Docker Registry
 
 
 1. From the project that you're configuring a pipeline for, select the **Workloads** tab.
@@ -285,7 +283,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 
 1. Click **Upgrade**.
 
-#### B—Configuring Persistent Data for Minio
+#### B. Configuring Persistent Data for Minio
 
 
 1. From the **Workloads** tab, find the `minio` workload and select **Ellipsis (...) > Edit**.
@@ -339,15 +337,6 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 During the process of configuring a pipeline, you can configure advanced options for triggering the pipeline or configuring environment variables.
 
 
-### Configuring the Executor Quota
-
-The executor quota decides how many builds can run simultaneously in the project. If the number of triggered builds exceeds the quota, subsequent builds will queue until a vacancy opens. By default, the quota is `2`, but you can change it.
-
-1. From the context menu, open the project for which you've configured a pipeline.
-
-1. From the main menu, select **Resources > Pipelines**.
-
-1. From `The maximum number of pipeline executors` increment the **Scale** up or down to change the quota. A value of `0` or less removes the quota limit.
 
 
 ### Configuring Pipeline Trigger Rules
@@ -362,22 +351,45 @@ Trigger rules come in two types:
 
 - **Do Not Run this when:**
  
-    If all conditions evaluate to true the pipeline/stage/step is executed, otherwise it is skipped. When a stage/step is skipped, it is considered as SUCCESS and follow-up stages/steps continue to run. Wildcard character(`*`) expansion is supported in conditions.
+    If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 
 {{% tabs %}}
 {{% tab "Pipeline Trigger" %}}
+
+You can configure trigger rules for the entire pipeline in two different contexts:
+
+{{% accordion id="pipeline-creation" label="During Initial Pipeline Configuration" %}}
+
+
 1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
 1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
 
 1. Click **Show advanced options**.
 
-1. From **Trigger Rules**, configure rules to run or skip the pipeline, stage, or step.
+1. From **Trigger Rules**, configure rules to run or skip the pipeline.
 
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
-    1. **Optional:** Add more branches that trigger a build. 
+    1. **Optional:** Add more branches that trigger a build.  
+{{% /accordion %}}
+
+{{% accordion id="pipeline-settings" label="While Editing Pipeline Settings" %}}
+ 
+After you've configured a pipeline, you can go back and choose the events that trigger a pipeline execution.
+
+>**Note:** This option is not available for example repositories.
+
+1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
+
+1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Setting**.
+
+1. Select (or clear) the events that you want to trigger a pipeline execution.
+
+1. Click **Save**.   
+{{% /accordion %}}
+
 {{% /tab %}}
 {{% tab "Stage Trigger" %}}
 1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
@@ -451,15 +463,17 @@ branch:
 
 ### Configuring Timeouts
 
-By default, A pipeline execution has 60 minutes timeout. 
+Each pipeline execution has a default timeout of 60 second. If the pipeline execution cannot complete within its timeout period, the pipeline is aborted. If a pipeline has more executions than can be completed in 60 minutes, 
 
 {{% tabs %}}
 {{% tab "By UI" %}}
-1. Go to EditConfig view.
+1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
-2. Click Show advanced options.
+1. From the pipeline for which you want to edit the timeout, select **Ellipsis (...) > Edit Config**.
 
-3. Input timeout value in minutes.
+1. Click **Show advanced options**.  
+
+1. Enter a new value in the **Timeout** field.
  
 {{% /tab %}}
 {{% tab "By YAML" %}}
@@ -479,20 +493,26 @@ timeout: 30
 
 ### Configuring Environment Variables
 
-You can set environment variables to individual steps.
+When configuring a pipeline, you can use environment variables to configure the step's script.
 
 {{% tabs %}}
 {{% tab "By UI" %}}
-1. Go to a step's configuration page.
+1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
-2. Click `Show advanced options`.
+1. From the pipeline in which you want to use environment variables, select **Ellipsis (...) > Edit Config**.
 
-3. Under `Environment Variables` click `Add Variable` button.
+1. Click the  **Edit** icon for the step in which you want to use environment variables.
 
-4. Fill in the name/value of the variable.
+1. Click **Show advanced options**.  
 
-5. Click `Save` 
+1. Click **Add Variable**, and then enter a key and value in the fields that appear. Add more variables if needed.
+
+1. Edit the script, adding your environment variable(s).
+
+1. Click **Save**. 
+
 {{% /tab %}}
+
 {{% tab "By YAML" %}}
 ```yaml
 # example
@@ -507,33 +527,31 @@ stages:
         SECOND_KEY: VALUE2
 ``` 
 {{% /tab %}}
+
 {{% /tabs %}}
-
-
 
 ### Configuring Pipeline Secrets
 
-You can use Kubernetes secrets from the project in your pipeline steps.
+If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using [secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
+
+>**Prerequisite:** Create a secret for your project for use in pipelines.
 
 >**Note:** Secret injection is disabled on pull request events.
 
 {{% tabs %}}
 {{% tab "By UI" %}}
-1. Go to the project page.
+1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
-2. Under Resources menu, click Secrets.
+1. From the pipeline in which you want to use environment variables, select **Ellipsis (...) > Edit Config**.
 
-3. Add a secret available to all namespaces in this project.
+1. Click the  **Edit** icon for the step in which you want to use environment variables.
 
-4. Go to `Edit Config` view of the pipeline, create or edit a Run Script step.
+1. Click **Show advanced options**.  
 
-5. Click Show advanced options.
+1. Click **Add From Secret**. Select the secret file that you want to use. Then choose a key. Optionally, you can enter an alias for the key.
 
-6. Click Add From Secret.
+1. Click **Save**. 
 
-7. Choose the secret created above and choose the key. You can optionally input an alias.
-
-8. Now the secret is injected as environment variables for this step. 
 {{% /tab %}}
 {{% tab "By YAML" %}}
 ```yaml
@@ -552,3 +570,13 @@ stages:
 ``` 
 {{% /tab %}}
 {{% /tabs %}}
+
+### Configuring the Executor Quota
+
+The _executor quota_ decides how many builds can run simultaneously in the project. If the number of triggered builds exceeds the quota, subsequent builds will queue until a vacancy opens. By default, the quota is `2`, but you can change it.
+
+1. From the context menu, open the project for which you've configured a pipeline.
+
+1. From the main menu, select **Resources > Pipelines**.
+
+1. From `The maximum number of pipeline executors` increment the **Scale** up or down to change the quota. A value of `0` or less removes the quota limit.
