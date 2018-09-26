@@ -97,4 +97,4 @@ Currently, RKE doesn't support any specific options for the `scheduler` service.
 ## Kubernetes Network Proxy
 The [Kubernetes network proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) service runs on all nodes and manages endpoints created by Kubernetes for TCP/UDP ports.
 
-Currently, RKE doesn't support any specific options for the `kube-proxy` service.
+Currently, RKE doesn't support any specific options for the `kubeproxy` service.
