@@ -9,7 +9,7 @@ Rancher ships with several example repositories that you can use to familiarize 
 - Maven
 - php
 
-## 1—Configure Repositories
+## 1. Configure Repositories
 
 By default, the example pipeline repositories are disabled. Go enable one (or more) to test out the pipeline feature.
 
@@ -34,7 +34,7 @@ By default, the example pipeline repositories are disabled. Go enable one (or mo
     - `jenkins`
     - `minio`
 
-## 2—Run Example Pipelines
+## 2. Run Example Pipeline
 
 <<<<<<< HEAD
 1. Click Run.
@@ -55,6 +55,6 @@ After configuring an example repository, run the pipeline to see how it works.
 
 ## What's Next?
 
-For detailed information about setting up a pipeline configuration in production, see the [Configuring Pipelines]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/configurations/).
+For detailed information about setting up a pipeline in production, see the [Configuring Pipelines]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/configurations/).
 
 

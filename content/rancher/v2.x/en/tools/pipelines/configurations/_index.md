@@ -2,9 +2,7 @@
 title: Configuring Pipelines
 weight: 3725
 ---
-<!-- TODO: 
 
--[] Add steps for configuring repo -->
 Configuring a pipeline automates the process of triggering and publishing builds. This section describes how to set up a pipeline in a production environment. 
 
 - The [Basic Configuration](#basic-configuration) section provides sequential instruction on how to configure a functional pipeline.
@@ -20,6 +18,16 @@ Initial configuration of a pipeline in a production environment involves complet
 
 >**Note:** Before setting up a pipeline for a production environment, we recommend trying the [Pipeline Quick Start Guide]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/quick-start-guide).
 
+<!-- TOC -->
+
+- [1. Configuring Version Control Providers](#1-configuring-version-control-providers)
+- [2. Configuring Pipeline Stages and Steps](#2-configuring-pipeline-stages-and-steps)
+- [3. Running the Pipeline](#3-running-the-pipeline)
+- [4. Configuring Persistent Data for Pipeline Components](#4-configuring-persistent-data-for-pipeline-components)
+- [Advanced Configuration](#advanced-configuration)
+ 
+
+<!-- /TOC -->
 
 ### 1. Configuring Version Control Providers
 
@@ -336,8 +344,11 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 
 During the process of configuring a pipeline, you can configure advanced options for triggering the pipeline or configuring environment variables.
 
-
-
+- [Configuring Pipeline Trigger Rules](#configuring-pipeline-trigger-rules)
+- [Configuring Timeouts](#configuring-timeouts)
+- [Configuring Environment Variables](#configuring-environment-variables)
+- [Configuring Pipeline Secrets](#configuring-pipeline-secrets)
+- [Configuring the Executor Quota](#configuring-the-executor-quota)
 
 ### Configuring Pipeline Trigger Rules
 
