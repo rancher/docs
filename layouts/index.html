@@ -2,11 +2,13 @@
 <section class="hero">
   <div class="wrapper">
     <div class="row center-xs">
-      <div class="col-md-8 p-a-lg">
+      <div class="col-md-8 p-b-lg">
       {{ with .Params.pageHeader }}
         <h1>{{ . }}</h1>
       {{end}}
-
+      {{ with .Params.description }}
+        <p class="p-t-sm">{{ . }}</p>
+      {{end}}
       </div>
     </div>
   </div>
