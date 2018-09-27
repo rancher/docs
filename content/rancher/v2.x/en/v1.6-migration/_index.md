@@ -1,5 +1,5 @@
 ---
-title: Migrating from Rancher v1.6 to v2.x
+title: Migrating from Rancher v1.6 Cattle to v2.x
 weight: 10000
 ---
 
