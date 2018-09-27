@@ -3,89 +3,85 @@ title: Using Windows Container
 weight: 2600
 ---
 
-Since the release of [Windows Server version 1803](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1803), you can be able to try Windows containers more efficiently and more stable on deploying Kubernetes v1.9 and later.
+Using Rancher, you can provision Windows Server hosts as nodes in a custom Kubernetes cluster.
 
-On the article [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features), you can find out which Kubernetes features are supporting on Windows now.
+>**Notes:**
+>
+>- Windows nodes are experimental and not yet officially supported. Therefore, we do not recommend using Windows and in a production environment.
+>- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 
-It is relatively simple to use Windows server containers on Kubernetes cluster via {{< product >}}, but you still have some attention:
+## Before You Start
 
-- The host must be able to run [microsoft/nanoserver:1803
-](https://hub.docker.com/r/microsoft/nanoserver/tags/) as Windows server container not [Hyper-V container](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)
-- The Docker v17.06 or later is installed, if not, you can follow the article about how to [Install Docker Enterprise Edition for Windows Server](https://docs.docker.com/install/windows/docker-ee/)
-- Networking bases on Flannel [host-gw](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) mode, it means you need to do some networking configuration on cloud environments
-- Windows support is an **Experimental** feature on {{< product >}}
+- Your host must be running [Windows Server version 1803](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1803).
+- Your host must be able to run [microsoft/nanoserver:1803
+](https://hub.docker.com/r/microsoft/nanoserver/tags/) as a Windows Server container (_not_ a [Hyper-V container](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)).
+- [Docker v17.06](https://docs.docker.com/install/windows/docker-ee/) or later must be installed.
+- Flannel is the only network plug-in supported for Windows [host-gw](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw), which means you need to make some manual network configuration if you host your Windows node using a cloud service.
 
 ## Objectives for Creating Cluster with Windows support
 
-1. [Provision a Linux Host]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes#provision-a-linux-host)
-    
-    Begin by provisioning a Linux host. 
+<!-- TOC -->
 
-    + **Cloud-Host Virtual Machine Only:** [Host Networking Configuration](#cloud-host-vm-networking-configuration)
+- [1. Provision Hosts](#1-provision-hosts)
+- [2. Create the Custom Cluster](#2-create-the-custom-cluster)
+- [3. Cloud-host VM Networking Configuration](#3-cloud-host-vm-networking-configuration)
+- [4. Adding Windows Workers](#4-adding-windows-workers)
+- [5. Cloud-host VM Routes Configuration](#5-cloud-host-vm-routes-configuration)
+- [Troubleshooting](#troubleshooting)
 
-2. [Create the Cluster](#create-the-custom-cluster)
+<!-- /TOC -->
 
-    Use your new Linux host as Control Plan and etcd for your new Kubernetes cluster.
+## 1. Provision Hosts
 
-3. [Provision a Windows Host](#provision-a-windows-host)
+The first thing you should do when provisioning a cluster with Windows workers is to provision your cluster nodes. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. The table below lists the [role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster.
 
-    Prepare a Windows host for Kubernetes Node.
+Node    | Operating System | Role
+--------|------------------|------
+Node 1  | Linux            | [All]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes)
+Node 2  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 3 (Optional)  | Linux            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (for Ingress Support)
 
-    + **Cloud-Host Virtual Machine Only:** [Host Networking Configuration](#cloud-host-vm-networking-configuration)
-
-4. [Add the Windows Worker](#add-the-windows-worker)
-
-    Use the new Windows host as Worker for your above created Kubernetes cluster.
-
-5. **Cloud-Host Virtual Machine Only:** [Routes Configuration](#cloud-host-vm-routes-configuration)
-
-## Create the Custom Cluster
-
-Starting to create a custom cluster is almost the same as on [Linux]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes#create-the-custom-cluster), except that you need to enable _"Windows Support (Experimental)"_ in **Cluster Options**.
-
->**Windows Support Note:**
-> 
-While enabling Windows support on your cluster, the "Network Provider" will be frozen with _"Flannel"_.
-
-If you want some automation supporting by cloud environment, such as load balancers or persistent storage devices, please follow [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) to configure.
-
-## Provision a Windows Host
-
-Supporting Windows on a custom cluster by provisioning a Windows host. Your host can be:
-
-- A cloud-host virtual machine (VM)
-- An on-premise VM
-- A bare-metal server
 
 >**Bare-Metal Server Note:**
 >
 While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-Provision the host according to the requirements below.
 
-### Requirements
+**Cloud-Host Virtual Machine Only:** [Host Networking Configuration](#cloud-host-vm-networking-configuration)
 
-Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
-## Add the Windows Worker
+## 2. Create the Custom Cluster
 
-After the creation of a custom cluster, you can add the new Window worker into the cluster.
+Follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster). 
 
-1. Enter the above created cluster.
+These instructions flag each step that requires special actions for Windows nodes, which are listed below.
 
-2. From the **Nodes** page, click **Edit Cluster**.
+### Enable the Windows Support Option
 
-3. Use **Node Operating System** to choose _"Windows"_.
+While choosing **Cluster Options**, set **Windows Support (Experimental)** to **Enabled**.
 
-4. Copy the command displayed on screen to your clipboard.
+![Enable Windows Support]({{< baseurl >}}/img/rancher/enable-windows-support.png)
 
-5. Log in to your Windows host using your preferred tool, such as [Microsoft Remote Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Run the command copied to your clipboard on **Command Prompt (CMD)**.
+### Networking Option
 
-    >**Note:** Repeat steps 4-5 if you want to dedicate specific hosts to specific node roles. Repeat the steps as many times as needed.
+When choosing a network provider for a cluster that supports Windows, the only option available is Flannel.
 
-6.  When you finish running the command(s) on your Windows host(s), click **Cancel** to quit.
+![Flannel]({{< baseurl >}}/img/rancher/flannel.png)
 
-## Cloud-host VM Networking Configuration
+If you want some automation supporting by cloud environment, such as load balancers or persistent storage devices, please follow [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) to configure.
+
+### Node Configuration
+
+The first node in your cluster should be a Linux host that fills the Control Plane role. At minimum, the node must have this role enabled, but we recommend enabling all three. The following table lists our recommended settings (we'll provide the recommended settings for nodes 2 and 3 later).
+
+Option | Setting
+-------|--------
+Node Operating System | Linux
+Node Roles | etcd <br/> Control Plane <br/> Worker
+
+![Recommended Linux Control Plane Configuration]({{< baseurl >}}/img/rancher/linux-control-plane.png)
+
+## 3. Cloud-host VM Networking Configuration
 
 You need to disable the private IP addresses checking on either Linux or Windows host when startup, if you're using the following cloud-host virtual machines:
 
@@ -93,7 +89,30 @@ You need to disable the private IP addresses checking on either Linux or Windows
 - `Google GCE`: [enabling "IP forwarding"](https://cloud.google.com/vpc/docs/using-routes#canipforward) for each instance
 - `Azure VM`: [enabling "IP forwarding"](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding) for each instance
 
-## Cloud-host VM Routes Configuration
+## 4. Adding Windows Workers
+
+After the initial provisioning of your custom cluster, add your Windows workers to it. Add nodes using the instructions below.
+
+1. From the main menu, select **Nodes**. 
+
+1. Click **Edit Cluster**.
+
+1. Scroll down to **Node Operating System**. Choose **Windows**.
+
+1. Select the **Worker** role.
+
+1. Copy the command displayed on screen to your clipboard.
+
+1. Log in to your Windows host using your preferred tool, such as [Microsoft Remote Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Run the command copied to your clipboard in the **Command Prompt (CMD)**.
+
+1. Repeat these instruction for each Windows host you want to use as a worker node.
+
+**Result:** The worker role is installed on your Windows host, and the node registers with Rancher.
+
+>**Tip:** If you want the cluster that uses Windows workers to include Ingress support, add one more Linux node to the cluster, enabling the worker role on it.
+
+
+## 5. Cloud-host VM Routes Configuration
 
 You need to configure some routes after both Linux and Windows worker node are ready, if you’re using the following cloud-host virtual machines:
 
