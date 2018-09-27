@@ -2,7 +2,6 @@
 title: Using Windows Container
 weight: 2600
 ---
-
 Using Rancher, you can provision Windows Server hosts as nodes in a custom Kubernetes cluster.
 
 >**Notes:**
@@ -33,22 +32,18 @@ Using Rancher, you can provision Windows Server hosts as nodes in a custom Kuber
 
 ## 1. Provision Hosts
 
-The first thing you should do when provisioning a cluster with Windows workers is to provision your cluster nodes. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. The table below lists the [role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster.
+The first thing you should do when provisioning a cluster with Windows workers is to prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. The table below lists the [role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster.
 
 Node    | Operating System | Role
 --------|------------------|------
 Node 1  | Linux            | [All]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes)
 Node 2  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 3 (Optional)  | Linux            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (for Ingress Support)
+Node 3 (Optional) | Linux  | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (for Ingress Support)
 
 
 >**Bare-Metal Server Note:**
 >
 While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
-
-
-**Cloud-Host Virtual Machine Only:** [Host Networking Configuration](#cloud-host-vm-networking-configuration)
-
 
 ## 2. Create the Custom Cluster
 
@@ -83,11 +78,15 @@ Node Roles | etcd <br/> Control Plane <br/> Worker
 
 ## 3. Cloud-host VM Networking Configuration
 
-You need to disable the private IP addresses checking on either Linux or Windows host when startup, if you're using the following cloud-host virtual machines:
+>**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or baremetal servers, skip ahead to [4. Adding Windows Workers](#4-adding-windows-workers).
 
-- `Amazon EC2`: [disbaling the "Source/Destination Checks"](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck) for each instance
-- `Google GCE`: [enabling "IP forwarding"](https://cloud.google.com/vpc/docs/using-routes#canipforward) for each instance
-- `Azure VM`: [enabling "IP forwarding"](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding) for each instance
+If you're hosting your nodes on any of the cloud services listed below, you must disable the private IP address checks for both your Linux or Windows hosts on startup. To disable this check for each node, follow the directions provided by each service below.
+
+Service | Directions to disable private IP address checks
+--------|------------------------------------------------
+Amazon EC2 | [Disabling Source/Destination Checks](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck)
+Google GCE | [Enabling IP Forwarding for Instances](https://cloud.google.com/vpc/docs/using-routes#canipforward)
+Azure VM | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding)
 
 ## 4. Adding Windows Workers
 
@@ -114,13 +113,18 @@ After the initial provisioning of your custom cluster, add your Windows workers 
 
 ## 5. Cloud-host VM Routes Configuration
 
-You need to configure some routes after both Linux and Windows worker node are ready, if you’re using the following cloud-host virtual machines:
+>**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or baremetal servers, you're done!
 
-- `Google GCE`: [adding a static route](https://cloud.google.com/vpc/docs/using-routes#addingroute) on each instance
-- `Azure VM`: [adding some "User-defined" routes](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined) on route table
+If you're hosting your nodes using a service listed in the table below, you must make additional node configurations to account for routing. Follow the vendor instructions provided.
 
-In order to confirm the destination address of each route, you can run this scripts via [kubectl]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl): `kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR` 
+Service | Instructions
+--------|-------------
+Google GCE | For GCE, add a static route for each node: [Adding a Static Route](https://cloud.google.com/vpc/docs/using-routes#addingroute).
+Azure VM | For Azure, create a routing table: [Custom Routes: User-defined](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined).
 
-## Troubleshooting
+To confirm the destination address of each route, you can run this script using [kubectl]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl): `kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR` 
+
+
+### Troubleshooting
 
 If the Windows worker is already starting (console prints "Starting plan monitor"), but it's still _Unavailable_ on {{< product >}} UI, you can try to restart the Nginx proxy on Windows host via `docker restart nginx-proxy`.
