@@ -1,23 +1,18 @@
 ---
-title: Using Windows Container
+title: Configuring Custom Clusters for Windows 
 weight: 2600
 ---
-Using Rancher, you can provision Windows Server hosts as nodes in a custom Kubernetes cluster.
+When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you have the option of configuring it to support Windows Server hosts as Kubernetes workers. Using this feature, you can provision a custom Kubernetes cluster with a mix of Linux and Windows nodes.
 
 >**Notes:**
 >
->- Windows nodes are experimental and not yet officially supported. Therefore, we do not recommend using Windows and in a production environment.
+>- Windows nodes are experimental and not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 
-## Before You Start
 
-- Your host must be running [Windows Server version 1803](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1803).
-- Your host must be able to run [microsoft/nanoserver:1803
-](https://hub.docker.com/r/microsoft/nanoserver/tags/) as a Windows Server container (_not_ a [Hyper-V container](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)).
-- [Docker v17.06](https://docs.docker.com/install/windows/docker-ee/) or later must be installed.
-- Flannel is the only network plug-in supported for Windows [host-gw](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw), which means you need to make some manual network configuration if you host your Windows node using a cloud service.
+## Objectives for Creating Cluster with Windows Support
 
-## Objectives for Creating Cluster with Windows support
+When setting up a custom cluster with support for Windows nodes and containers, complete the series of tasks below.
 
 <!-- TOC -->
 
@@ -32,13 +27,19 @@ Using Rancher, you can provision Windows Server hosts as nodes in a custom Kuber
 
 ## 1. Provision Hosts
 
-The first thing you should do when provisioning a cluster with Windows workers is to prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. The table below lists the [role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster.
+The first thing you should do when provisioning a custom cluster that includes Windows nodes is to prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. Your hosts can be:
 
-Node    | Operating System | Role
+- A cloud-hosted virtual machine (VM)
+- An on-premise VM
+- A bare-metal server 
+
+The table below lists the [Kubernetes role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose.
+
+Node    | Operating System | Future Cluster Role
 --------|------------------|------
 Node 1  | Linux            | [All]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes)
 Node 2  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 3 (Optional) | Linux  | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (for Ingress Support)
+Node 3 (Optional) | Linux  | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
 
 
 >**Bare-Metal Server Note:**
@@ -47,9 +48,8 @@ While creating your cluster, you must assign Kubernetes roles to your cluster no
 
 ## 2. Create the Custom Cluster
 
-Follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster). 
+To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster), starting from [2. Create the Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster). While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed in the headings below. 
 
-These instructions flag each step that requires special actions for Windows nodes, which are listed below.
 
 ### Enable the Windows Support Option
 
@@ -57,13 +57,15 @@ While choosing **Cluster Options**, set **Windows Support (Experimental)** to **
 
 ![Enable Windows Support]({{< baseurl >}}/img/rancher/enable-windows-support.png)
 
+After you select this option, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 6]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-6).
+
 ### Networking Option
 
-When choosing a network provider for a cluster that supports Windows, the only option available is Flannel.
+When choosing a network provider for a cluster that supports Windows, the only option available is Flannel, as [host-gw](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) is needed for IP routing.
 
 ![Flannel]({{< baseurl >}}/img/rancher/flannel.png)
 
-If you want some automation supporting by cloud environment, such as load balancers or persistent storage devices, please follow [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) to configure.
+If your nodes are hosted by a cloud provider and you want automation support such as load balancers or persistent storage devices, see [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) for configuration info.
 
 ### Node Configuration
 
@@ -75,6 +77,9 @@ Node Operating System | Linux
 Node Roles | etcd <br/> Control Plane <br/> Worker
 
 ![Recommended Linux Control Plane Configuration]({{< baseurl >}}/img/rancher/linux-control-plane.png)
+
+When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
+
 
 ## 3. Cloud-host VM Networking Configuration
 
@@ -90,7 +95,7 @@ Azure VM | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/az
 
 ## 4. Adding Windows Workers
 
-After the initial provisioning of your custom cluster, add your Windows workers to it. Add nodes using the instructions below.
+After the initial provisioning of your custom cluster, you cluster only has a single Linux host. You still have to Windows workers to it. Add nodes using the instructions below.
 
 1. From the main menu, select **Nodes**. 
 
@@ -127,4 +132,8 @@ To confirm the destination address of each route, you can run this script using 
 
 ### Troubleshooting
 
-If the Windows worker is already starting (console prints "Starting plan monitor"), but it's still _Unavailable_ on {{< product >}} UI, you can try to restart the Nginx proxy on Windows host via `docker restart nginx-proxy`.
+If the Windows worker is already starting (i.e., Terminal outputs `Starting plan monitor`), yet it displays a status of `Unavailable` in the Rancher UI, try to restarting the Nginx proxy on the Windows host using the following Docker command:
+
+```
+docker restart nginx-proxy
+```
