@@ -5,7 +5,7 @@ aliases:
 - /rancher/v2.x/en/installation/api-auditing
 ---
 
-You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. Then API audit log records all requests and responses to and from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
+You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.
 
 You can enable API Auditing during Rancher installation or upgrade.
 
@@ -34,7 +34,7 @@ Parameter | Description |
 
 The following table displays what parts of API transactions are logged for each [`AUDIT_LEVEL`](#audit-level) setting.
 
-| `AUDIT_LEVEL` Setting | Request Header     | Request Body | Response Header     | Response Body       |
+| `AUDIT_LEVEL` Setting | Request Metadata   | Request Body | Response Metadata   | Response Body       |
 | --------------------- | ------------------ | ------------ | ------------------- | ------------------- |
 | `0`                   |                    |              |                     |                     |
 | `1`                   | ✓                  |              |                     |                     |
@@ -45,7 +45,7 @@ The following table displays what parts of API transactions are logged for each 
 
 ### Single Node Install
 
-Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the host system. The log can be parsed by standard CLI tools or forwarded on to a log collection system.
+Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the host system. The log can be parsed by standard CLI tools or forwarded on to a log collection tool like Fluentd, Filebeat, Logstash, etc.
 
 ### HA Install
 
