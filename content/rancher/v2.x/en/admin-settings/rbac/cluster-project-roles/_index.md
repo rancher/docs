@@ -61,7 +61,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
     These users can view everything in the project but cannot create, update, or delete anything.
     
-    > **Note:** If a user is added to a project as an owner or a member they will have permission to create namespaces in all projects they are a member of, even as a Read Only member. 
+    > **Note:** Because of how Kubernetes handles permissions, if you add a user to a project and assign them the `Owner` or `Member` role within its scope, that user can create namespaces in _any_ project they hold membership in, even as a `Read Only` member. 
     
 
 #### Custom Project Roles

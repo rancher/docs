@@ -102,8 +102,11 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
     1. From the **Role** drop-down, choose a role.
 
         [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
-
-        >**Tip:** Choose Custom to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
+        
+        > **Notes:**
+        >
+        >- Because of how Kubernetes handles permissions, if you add a user to a project and assign them the `Owner` or `Member` role within its scope, that user can create namespaces in _any_ project they hold membership in, even as a `Read Only` member. 
+        >- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
 
     1. To add more members, repeat substeps a—c.
     
