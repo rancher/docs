@@ -1,7 +1,6 @@
 ---
 title: Removing Rancher from User Cluster Nodes
 weight: 2000
-draft: true
 ---
 
 
@@ -10,7 +9,29 @@ When you no longer have use for Rancher in a cluster that you've [provisioned us
 
 ## Nodes Launched by RKE / Nodes Hosted by a Provider
 
-For clusters nodes provisioned using [RKE](({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)) or a [hosted Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#hosted-kubernetes-cluster), you can remove Rancher by downloading and running the Rancher [system-tools](https://github.com/rancher/system-tools/releases):
+For clusters nodes provisioned using [RKE](({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)) or a [hosted Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#hosted-kubernetes-cluster), you can remove Rancher by downloading and running the Rancher system-tools.
+
+### Download and Configuration
+
+You can download the latest version of Rancher system-tools from its GitHub [releases page](https://github.com/rancher/system-tools/releases). Download the version of system-tools for the OS that you're removing Rancher from.
+
+Operating System | File
+-----------------|-----
+MacOS            | `system-tools_darwin-amd64`
+Linux            | `system-tools_linux-amd64`
+Windows          | `system-tools_windows-amd64.exe`
+
+<br>
+
+After you download the tools, move it onto the node you're removing Rancher from, and then complete the following actions:
+
+1. Rename the file to `system-tools`.
+
+1. Give the file executable permissions by running the following command:
+
+    ```
+    chmod +x system-tools
+    ```
 
 ### Using the System-Tool
 
@@ -18,10 +39,12 @@ System-tools is a utility that cleans up Rancher. In this use case, it will help
 
 #### Usage
 
+After you move the `system-tools` file to your Rancher node, you can run it by changing to the file's directory and running the following command.
+
 >**Warning:** This command will remove data from your nodes. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
 ```
-system-tools remove [command options] [arguments...]
+./system-tools remove --kubeconfig <$KUBECONFIG> --namespace <NAMESPACE>
 ```
 
 <br/>
