@@ -1,7 +1,6 @@
 ---
 title: Resource Quotas
 weight: 5000
-draft: true
 ---
 
 _Available as of v2.1.0_
