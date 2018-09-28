@@ -37,7 +37,7 @@ Following project creation, you can add users as project members so that they ca
 
     > **Notes:**
     >
-    >- Because of how Kubernetes handles permissions, if you add a user to a project and assign them the `Owner` or `Member` role within its scope, that user can create namespaces in _any_ project they hold membership in, even as a `Read Only` member. 
+    >- Because the `namespace creation` role is a Kubernetes cluster-level permission, it cannot be controlled per project. Therefore, if you add a user to a project and assign them the `Owner` or `Member` role within its scope, that user can create namespaces in _any_ project they hold membership in, even as a `Read Only` member.  
     >- For `Custom` roles, you can modify the list of individual roles available for assignment.
     >
     >    - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles).
