@@ -28,12 +28,13 @@ Parameter | Description |
  `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
  `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
  `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
+<br/>
 
 ### Audit Log Levels
 
 The following table displays what parts of API transactions are logged for each [`AUDIT_LEVEL`](#audit-level) setting.
 
-| `AUDIT_LEVEL` Setting | Request Header     | Request Body | Response Header     | Response Header     |
+| `AUDIT_LEVEL` Setting | Request Header     | Request Body | Response Header     | Response Body       |
 | --------------------- | ------------------ | ------------ | ------------------- | ------------------- |
 | `0`                   |                    |              |                     |                     |
 | `1`                   | ✓                  |              |                     |                     |
@@ -48,33 +49,33 @@ Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the hos
 
 ### HA Install
 
-Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the Rancher pod. This container will stream the log to stdout. You can view the log as you would any container log.
+Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the Rancher pod. This container will stream the log to standard output (stdout). You can view the log as you would any container log.
 
 The `rancher-audit-log` container is part of the `rancher` pod in the `cattle-system` namespace.
 
 #### CLI
 
-```
+```bash
 kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 ```
 
 #### Rancher Web GUI
 
-* From the context menu navigate to your `System` project in the "local" cluster.
+1. From the context menu, select **Cluster: local > System**.
 
-![System_local_cluster]({{< baseurl >}}/img/rancher/audit_logs_gui/context_local_system.png)
+    ![Local Cluster: System Project]({{< baseurl >}}/img/rancher/audit_logs_gui/context_local_system.png)
 
-* From the Workloads tab find the `cattle-system` namespace. Click on the `rancher` workload.
+1. From the **Workloads** tab, find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
 
-![rancher_workload]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_workload.png)
+    ![Rancher Workload]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_workload.png)
 
-* Pick one of the `rancher` pods and select "View Logs" from the ellipsis menu.
+1. Pick one of the `rancher` pods and select **Ellipsis (...) > View Logs**.
 
-![view_logs]({{< baseurl >}}/img/rancher/audit_logs_gui/view_logs.png)
+    ![View Logs]({{< baseurl >}}/img/rancher/audit_logs_gui/view_logs.png)
 
-* From the logs interface select `rancher-audit-log` from the dropdown.
+1. From the **Logs** drop-down, select `rancher-audit-log`.
 
-![container_select]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_audit_log_container.png)
+    ![Select Audit Log]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_audit_log_container.png)
 
 #### Shipping the Audit Log
 
