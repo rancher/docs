@@ -7,20 +7,6 @@ For your convenience, the following variables are available for your pipeline co
 
 Variable Name           | Description
 ------------------------|------------------------------------------------------------
-<<<<<<< HEAD
-CICD_GIT_REPO_NAME      | Repository Name (Stripped of Github Organization)
-CICD_GIT_URL            | URL of the Git repository
-CICD_GIT_COMMIT         | Git commit ID being executed.
-CICD_GIT_BRANCH         | Git branch of this event
-CICD_GIT_REF            | Git reference specification of this event
-CICD_GIT_TAG            | Git tag name, set on tag event
-CICD_EVENT              | Event that triggered the build, can be "push", "pull_request" or "tag"
-CICD_PIPELINE_ID        | Rancher ID for the pipeline
-CICD_EXECUTION_SEQUENCE | Build number of the pipeline
-CICD_EXECUTION_ID       | Combination of {CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}
-CICD_REGISTRY           | Address for the docker registry of previous publish image step, available in the kubernetes manifest file of a `Deploy YAML` step.
-CICD_IMAGE              | Name of the built image of previous publish image step, available in the kubernetes manifest file of a `Deploy YAML` step. It does not contain the image tag.
-=======
 `CICD_GIT_REPO_NAME`      | Repository name (Github organization omitted).
 `CICD_GIT_URL`            | URL of the Git repository.
 `CICD_GIT_COMMIT`         | Git commit ID being executed.
@@ -33,7 +19,6 @@ CICD_IMAGE              | Name of the built image of previous publish image step
 `CICD_EXECUTION_ID`       | Combination of `{CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}`.
 `CICD_REGISTRY`           | Address for the Docker registry for the previous publish image step, available in the Kubernetes manifest file of a `Deploy YAML` step.
 `CICD_IMAGE`              | Name of the image built from the previous publish image step, available in the Kubernetes manifest file of a `Deploy YAML` step. It does not contain the image tag.<br/><br/> [Example](https://github.com/rancher/pipeline-example-go/blob/master/deployment.yaml)
->>>>>>> 893010ad... completing draft of pipelines
 
 ## Full `.rancher-pipeline.yml` Example
 
