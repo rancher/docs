@@ -13,6 +13,8 @@ rancher:
     dev: LABEL=RANCHER_STATE
 ```
 
+For other labels such as `RANCHER_BOOT` and `RANCHER_OEM` and `RANCHER_SWAP`, please refer to [Custom partition layout]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/).
+
 ### Autoformat
 
 You can specify a list of devices to check to format on boot. If the state partition is already found, RancherOS will not try to auto format a partition. By default, auto-formatting is off.
