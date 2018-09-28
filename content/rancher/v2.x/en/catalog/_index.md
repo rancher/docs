@@ -88,7 +88,9 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
     * For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs), answers are provided as key value pairs in the **Answers** section.
     * Keys and values are available within **Detailed Descriptions**.
-    * Answers in rancher are ultimately passed as `--set` flags in helm. To see the format of the answer, check [here](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set)
+    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.  
+
+        For example, when entering an answer that includes two values separated by a comma (i.e., `abc, bcd`), wrap the values with double quotes (i.e., `"abc, bcd"`).
 
 7. Review the files in **Preview**. When you're satisfied, click **Launch**.
 
