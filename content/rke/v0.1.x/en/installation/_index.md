@@ -5,11 +5,16 @@ weight: 50
 
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
 
-1. [Download the RKE Binary](#download-the-rke-binary)
-2. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
-3. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
-4. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
-5. [Interacting with your Kubernetes Cluster](#interacting-with-your-kubernetes-cluster)
+- [Download the RKE binary](#download-the-rke-binary)
+- [Prepare the Nodes for the Kubernetes cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
+- [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
+    - [Using `rke config`](#using-rke-config)
+    - [Using node-provider to populate nodes](#using-node-provider-to-populate-nodes)
+        - [Creating an Empty `cluster.yml`](#creating-an-empty-clusteryml)
+        - [Printing the `cluster.yml`](#printing-the-clusteryml)
+    - [High Availability](#high-availability)
+- [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
+    - [Interacting with your Kubernetes cluster](#interacting-with-your-kubernetes-cluster)
 
 ## Download the RKE binary
 
@@ -67,6 +72,19 @@ Run `rke config` to create a new `cluster.yml` in the current directory. This co
 ```
 rke config --name cluster.yml
 ```
+
+### Using node-provider to populate nodes
+
+The `--node-provider` option allows the `node` section of the rke config to be pre-poplated from different providers, ie. docker-machine. It is important to note that the user used to provision the host with a provider must have permissions to run docker commands.
+
+```
+rke config --node-provider docker-machine
+```
+
+Supported node-providers:
+
+- docker-machine
+
 
 #### Creating an Empty `cluster.yml`
 
