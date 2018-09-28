@@ -42,13 +42,13 @@ Pipelines are represented as pipeline files that are checked into source code re
 
 ## Supported Version Control Platforms
 
-Rancher pipelines currently supports GitHub and GitLab (available as of Rancher v2.0.1).
+Rancher pipelines currently supports GitHub and GitLab (available as of Rancher v2.1.0).
 
 >**Note:** Additions to pipelines are scoped for future releases of Rancher, such as:
 >
 >- Additional version control systems
->- Deployment of Kubernetes YAML
->- Catalog deployment
+>- Deployment via Helm charts
+>- Rancher catalog deployments
   
 
 ## How Pipelines Work
@@ -57,15 +57,15 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
   - **Jenkins:** 
 
-    The pipeline's build engine. Because project users likely won't interact with Jenkins, it's managed and locked.
+    The pipeline's build engine. Because project users do not directly interact with Jenkins, it's managed and locked.
 
-    >**Note:**  There is no option to reuse existing Jenkins deployments as the pipeline engine.
+    >**Note:**  There is no option to use existing Jenkins deployments as the pipeline engine.
     
     <a id="reg"></a>
 
   - **Docker Registry:** 
 
-    Out-of-the-box, the default target for your builds is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users.
+    Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. This Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted longer then the pipelines current run. If you need to access your images outside of a single pipeline run, please push to an external registry.
 
     <a id="minio"></a>
 
