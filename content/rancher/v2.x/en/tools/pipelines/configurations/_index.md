@@ -235,7 +235,7 @@ This process takes several minutes. When it completes, you can view each pipelin
 
 ### 4. Configuring Persistent Data for Pipeline Components
 
-The internal [Docker registry]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#reg) and the [Minio]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#minio) wokrloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but it does not help in cases of disaster recovery. We recommend that you to configure these two deployments to persist their data.
+The internal [Docker registry]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#reg) and the [Minio]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#minio) wokrloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
 Complete both [A—Configuring Persistent Data for Docker Registry](#a—configuring-persistent-data-for-docker-registry) _and_ [B—Configuring Persistent Data for Minio](#b—configuring-persistent-data-for-minio).
 
@@ -474,7 +474,7 @@ branch:
 
 ### Configuring Timeouts
 
-Each pipeline execution has a default timeout of 60 second. If the pipeline execution cannot complete within its timeout period, the pipeline is aborted. If a pipeline has more executions than can be completed in 60 minutes, 
+Each pipeline execution has a default timeout of 60 minutes. If the pipeline execution cannot complete within its timeout period, the pipeline is aborted. If a pipeline has more executions than can be completed in 60 minutes, 
 
 {{% tabs %}}
 {{% tab "By UI" %}}
@@ -543,7 +543,7 @@ stages:
 
 ### Configuring Pipeline Secrets
 
-If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using [secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
+If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using Kubernetes [secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 
 >**Prerequisite:** Create a secret for your project for use in pipelines.
 

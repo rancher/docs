@@ -38,7 +38,7 @@ Pipelines are represented as pipeline files that are checked into source code re
 - Using the Rancher UI.
 - Updating the configuration in the repository, using tools like Git CLI to trigger a build with the latest CI definition.
 
->**Note:** Rancher Pipeline not a replacement for enterprise-grade Jenkins or any other CI tool your team uses.
+>**Note:** Rancher Pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
 
 ## Supported Version Control Platforms
 
@@ -46,9 +46,9 @@ Rancher pipelines currently supports GitHub and GitLab (available as of Rancher 
 
 >**Note:** Additions to pipelines are scoped for future releases of Rancher, such as:
 >
->- Additional version control systems
+>- Additional version control systems such as BitBucket
 >- Deployment via Helm charts
->- Rancher catalog deployments
+>- Deployment via Rancher catalog
   
 
 ## How Pipelines Work
@@ -65,7 +65,7 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
   - **Docker Registry:** 
 
-    Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. This Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted longer then the pipelines current run. If you need to access your images outside of a single pipeline run, please push to an external registry.
+    Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. The internal Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted across multiple pipeline runs. If you need to access your images outside of a single pipeline run, please push to an external registry.
 
     <a id="minio"></a>
 
@@ -73,7 +73,7 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
     Minio storage is used to store the logs for pipeline executions.
 
-  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, but we recommend that you configure persistent volumes for them, as described in [data persistency for pipeline components](/rancher/v2.x/en/tools/pipelines/configurations/#data-persistency-for-pipeline-components).
+  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components](/rancher/v2.x/en/tools/pipelines/configurations/#data-persistency-for-pipeline-components).
 
 
 ## Pipeline Triggers

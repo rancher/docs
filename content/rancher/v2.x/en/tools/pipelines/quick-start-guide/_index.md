@@ -11,7 +11,7 @@ Rancher ships with several example repositories that you can use to familiarize 
 
 ## 1. Configure Repositories
 
-By default, the example pipeline repositories are disabled. Enable one (or more) to test out the pipeline feature and see how to leverage it.
+By default, the example pipeline repositories are disabled. Enable one (or more) to test out the pipeline feature and see how it works.
 
 1. From the context menu, open the project for which you want to run a pipeline.
 
@@ -43,7 +43,7 @@ After configuring an example repository, run the pipeline to see how it works.
     >**Note:** When you run a pipeline the first time, it takes a few minutes to pull relevant images and provision necessary pipeline components.
     To understand what the example pipeline is doing,  select `Ellipsis (...) >  Edit Config` for your repo. Alternatively, view the `.rancher-pipeline.yml` file in the example repositories.
 
-**Result:** The pipeline runs.
+**Result:** The pipeline runs. You can see the results in the logs.
 
 ## What's Next?
 
