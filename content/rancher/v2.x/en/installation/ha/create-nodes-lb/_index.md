@@ -1,5 +1,5 @@
 ---
-title: 1 - Create Nodes and Load Balancer
+title: 1—Create Nodes and Load Balancer
 weight: 185
 ---
 

@@ -8,25 +8,25 @@ aliases:
 
 ## Custom Nodes
 
-Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using a combination of <a href='https://docs.docker.com/machine/' target='_blank'>Docker Machine</a> and RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ IaaS providers by integrating with node drivers.
+Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using a combination of [Docker Machine](https://docs.docker.com/machine/) and RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ IaaS providers by integrating with node drivers.
 
 To use this option you'll need access to servers you intend to use as your Kubernetes cluster. Provision each server according to Rancher [requirements](#requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
 
 ## Objectives for Creating Cluster with Custom Nodes
 
-1.	[Provision a Linux Host](#provision-a-linux-host)
+>**Want to use Windows hosts as Kubernetes workers?**
+>
+>See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/) before you start.
 
-	Begin by provisioning a Linux host.
+<!-- TOC -->
 
-2. [Create the Cluster](#create-the-custom-cluster)
+- [1. Provision a Linux Host](#1-provision-a-linux-host)
+- [2. Create the Custom Cluster](#2-create-the-custom-cluster)
+- [3. Amazon Only: Tag Resources](#3-amazon-only-tag-resources)
 
-	Use your new Linux host as a template for your new Kubernetes cluster.
+<!-- /TOC -->
 
-2. **Amazon Only:** [Tag Resources](#amazon-only-br-tag-resources)
-
-	If you're using Amazon to create your custom cluster, log into AWS and tag your resources with a cluster ID.
-
-## Provision a Linux Host
+## 1. Provision a Linux Host
 
 Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
@@ -44,7 +44,7 @@ Provision the host according to the requirements below.
 
 Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
-## Create the Custom Cluster
+## 2. Create the Custom Cluster
 
 Use {{< product >}} to clone your Linux host and configure them as Kubernetes nodes.
 
@@ -58,15 +58,20 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
 5. {{< step_create-cluster_cluster-options >}}
 
-6.	Click **Next**.
+    >**Using Windows nodes as Kubernetes workers?** 
+    >
+    >- See [Enable the Windows Support Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#enable-the-windows-support-option).
+    >- The only Network Provider available for clusters with Windows support is Flannel. See [Networking Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#networking-option).
+6.	<a id="step-6"></a>Click **Next**.
 
 7.	From **Node Role**, choose the roles that you want filled by a cluster node.
 
-	>**Bare-Metal Server Reminder:**
+	>**Notes:**
 	>
-	If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
+    >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#node-configuration).
+	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	**Optional**: Add **Labels** to your cluster nodes to help schedule workloads later.
+8.	<a id="step-8"></a>**Optional**: Add **Labels** to your cluster nodes to help schedule workloads later.
 
 	[Kubernetes Documentation: Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
@@ -80,7 +85,7 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
 {{< result_create-cluster >}}
 
-## Amazon Only:<br/>Tag Resources
+## 3. Amazon Only: Tag Resources
 
 If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
 

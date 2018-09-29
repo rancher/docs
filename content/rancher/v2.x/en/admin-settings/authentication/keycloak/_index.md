@@ -1,9 +1,8 @@
 ---
 title: Configuring KeyCloak (SAML)
 weight: 1200
-draft: true
 ---
-_Available as of v2.0.1_
+_Available as of v2.1.0_
 
 If your organization uses KeyCloak Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 
