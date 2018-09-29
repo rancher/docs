@@ -1,7 +1,10 @@
 ---
 title: 2—Installing Rancher
 weight: 50
+<<<<<<< HEAD
 draft: true
+=======
+>>>>>>> removing draft flag for air gap
 ---
 
 After your private registry is setup for your Rancher installation, complete that installation. Follow one of the procedures below based on the configuration in which you want to run Rancher.
