@@ -47,22 +47,22 @@ When this service is run, the `EXTRA_CMDLINE` will be set.
 
 Valid cloud-init datasources for RancherOS.
 
-| type | default |  |
-|---|---|--|
-| ec2 | ec2's DefaultAddress |  |
-| file | path |  |
-| cmdline | /media/config-2 |  |
-| configdrive |  |  |
-| digitalocean | DefaultAddress |  |
-| ec2 | DefaultAddress |  |
-| file | path |  |
-| gce |  |  |
-| packet | DefaultAddress |  |
-| url | url |  |
-| vmware** |  | set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/vmware-esxi) |
-| * | This will add ["configdrive", "vmware", "ec2", "digitalocean", "packet", "gce"] into the list of datasources to try |  |
+| type | default |
+|---|---|
+| ec2 | Default metadata address |
+| digitalocean | Default metadata address |
+| packet | Default metadata address |
+| cloudstack | Default metadata address |
+| aliyun | Default metadata address |
+| gce | Default metadata address |
+| file | Path |
+| cmdline | Kernel command line: `cloud-config-url=http://link/user_data` |
+| configdrive | /media/config-2 |
+| url | URL address |
+| vmware| Set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/vmware-esxi) |
+| * | This will add ["configdrive", "vmware", "ec2", "digitalocean", "packet", "gce"] into the list of datasources to try |
 
-** vmware was added as of v1.1.
+The vmware datasource was added as of v1.1.
 
 ### Cloud-Config
 
