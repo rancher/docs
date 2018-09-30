@@ -65,7 +65,7 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
   - **Docker Registry:** 
 
-    Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. The internal Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted across multiple pipeline runs. If you need to access your images outside of a single pipeline run, please push to an external registry.
+    Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. The internal Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted beyond the lifetime of the pipeline and should only be used in pipeline runs. If you need to access your images outside of pipeline runs, please push to an external registry.
 
     <a id="minio"></a>
 
