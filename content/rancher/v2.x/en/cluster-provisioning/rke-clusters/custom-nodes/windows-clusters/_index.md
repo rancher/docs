@@ -2,7 +2,13 @@
 title: Configuring Custom Clusters for Windows 
 weight: 2600
 ---
-When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you have the option of configuring it to support Windows Server hosts as Kubernetes workers. Using this feature, you can provision a custom Kubernetes cluster with a mix of Linux and Windows nodes.
+
+_Available as of v2.1.0_
+
+
+When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
+
+This guide walks you through create of a custom cluster that includes 3 nodes: a Linux node, which serves as a Kubernetes control plane node; another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster; and a Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
 
 >**Notes:**
 >
@@ -17,38 +23,56 @@ When setting up a custom cluster with support for Windows nodes and containers, 
 <!-- TOC -->
 
 - [1. Provision Hosts](#1-provision-hosts)
-- [2. Create the Custom Cluster](#2-create-the-custom-cluster)
-- [3. Cloud-host VM Networking Configuration](#3-cloud-host-vm-networking-configuration)
-- [4. Adding Windows Workers](#4-adding-windows-workers)
-- [5. Cloud-host VM Routes Configuration](#5-cloud-host-vm-routes-configuration)
+- [2. Cloud-host VM Networking Configuration](#2-cloud-host-vm-networking-configuration)
+- [3. Create the Custom Cluster](#3-create-the-custom-cluster)
+- [4. Add Linux Host for Ingress Support](#4-add-linux-host-for-ingress-support)
+- [5. Adding Windows Workers](#5-adding-windows-workers)
+- [6. Cloud-host VM Routes Configuration](#6-cloud-host-vm-routes-configuration)
 - [Troubleshooting](#troubleshooting)
 
 <!-- /TOC -->
 
 ## 1. Provision Hosts
 
-The first thing you should do when provisioning a custom cluster that includes Windows nodes is to prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. Your hosts can be:
+To begin provisioning a custom cluster with Windows support, prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. Your hosts can be:
 
-- A cloud-hosted virtual machine (VM)
-- An on-premise VM
-- A bare-metal server 
+- Cloud-hosted virtual machines (VM)
+- On-premise VMs
+- Bare-metal servers 
 
-The table below lists the [Kubernetes role]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) that each node will fill in your cluster, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose.
+The table below lists the [Kubernetes roles]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
 
-Node    | Operating System | Future Cluster Role
+Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
-Node 1  | Linux            | [All]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes)
-Node 2  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 3 (Optional) | Linux  | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
+Node 1  | Linux            | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 2  | Linux            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
+Node 3  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
-
->**Bare-Metal Server Note:**
+>**Notes:**
 >
-While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
+>- To support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), your cluster must include at least one Linux node dedicated to the worker role.
+>- Although we recommend the three node architecture listed in the table above, you add additional Linux and Windows workers to scale up your cluster for redundancy.
 
-## 2. Create the Custom Cluster
+### Requirements
 
-To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster), starting from [2. Create the Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster). While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed in the headings below. 
+- You can view node requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
+- All nodes in a custom cluster that supports Windows must have connectivity over OSI layer 2.
+
+## 2. Cloud-host VM Networking Configuration
+
+>**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or bare-metal servers, skip ahead to [Create the Custom Cluster](#3-create-the-custom-cluster).
+
+If you're hosting your nodes on any of the cloud services listed below, you must disable the private IP address checks for both your Linux or Windows hosts on startup. To disable this check for each node, follow the directions provided by each service below.
+
+Service | Directions to disable private IP address checks
+--------|------------------------------------------------
+Amazon EC2 | [Disabling Source/Destination Checks](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck)
+Google GCE | [Enabling IP Forwarding for Instances](https://cloud.google.com/vpc/docs/using-routes#canipforward)
+Azure VM | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding)
+
+## 3. Create the Custom Cluster
+
+To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster), starting from [2. Create the Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster). While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed in the subheadings below.
 
 
 ### Enable the Windows Support Option
@@ -69,7 +93,7 @@ If your nodes are hosted by a cloud provider and you want automation support suc
 
 ### Node Configuration
 
-The first node in your cluster should be a Linux host that fills the Control Plane role. At minimum, the node must have this role enabled, but we recommend enabling all three. The following table lists our recommended settings (we'll provide the recommended settings for nodes 2 and 3 later).
+The first node in your cluster should be a Linux host that fills the Control Plane role. This role must be fulfilled before you can add Windows hosts to your cluster. At minimum, the node must have this role enabled, but we recommend enabling all three. The following table lists our recommended settings (we'll provide the recommended settings for nodes 2 and 3 later).
 
 Option | Setting
 -------|--------
@@ -81,21 +105,32 @@ Node Roles | etcd <br/> Control Plane <br/> Worker
 When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
 
 
-## 3. Cloud-host VM Networking Configuration
 
->**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or baremetal servers, skip ahead to [4. Adding Windows Workers](#4-adding-windows-workers).
+## 4. Add Linux Host for Ingress Support
 
-If you're hosting your nodes on any of the cloud services listed below, you must disable the private IP address checks for both your Linux or Windows hosts on startup. To disable this check for each node, follow the directions provided by each service below.
+After the initial provisioning of your custom cluster, your cluster only has a single Linux host. Add another Linux host, which will be used to support Ingress for your cluster.
 
-Service | Directions to disable private IP address checks
---------|------------------------------------------------
-Amazon EC2 | [Disabling Source/Destination Checks](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck)
-Google GCE | [Enabling IP Forwarding for Instances](https://cloud.google.com/vpc/docs/using-routes#canipforward)
-Azure VM | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding)
+1. Using the content menu, open the custom cluster your created in [2. Create the Custom Cluster](#2-create-the-custom-cluster).
 
-## 4. Adding Windows Workers
+1. From the main menu, select **Nodes**. 
 
-After the initial provisioning of your custom cluster, you cluster only has a single Linux host. You still have to Windows workers to it. Add nodes using the instructions below.
+1. Click **Edit Cluster**.
+
+1. Scroll down to **Node Operating System**. Choose **Linux**.
+
+1. Select the **Worker** role.
+
+1. Copy the command displayed on screen to your clipboard.
+
+1. Log in to your Linux host using a remote Terminal connection. Run the command copied to your clipboard.
+
+1. From **Rancher**, click **Save**. 
+
+**Result:** The worker role is installed on your Linux host, and the node registers with Rancher.
+
+## 5. Adding Windows Workers
+
+You can add Windows hosts to a custom cluster by editing the cluster and choosing the **Windows** option.
 
 1. From the main menu, select **Nodes**. 
 
@@ -109,16 +144,15 @@ After the initial provisioning of your custom cluster, you cluster only has a si
 
 1. Log in to your Windows host using your preferred tool, such as [Microsoft Remote Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Run the command copied to your clipboard in the **Command Prompt (CMD)**.
 
-1. Repeat these instruction for each Windows host you want to use as a worker node.
+1. From Rancher, click **Save**. 
+
+1. **Optional:** Repeat these instruction if you want to add more Windows nodes to your cluster.
 
 **Result:** The worker role is installed on your Windows host, and the node registers with Rancher.
 
->**Tip:** If you want the cluster that uses Windows workers to include Ingress support, add one more Linux node to the cluster, enabling the worker role on it.
+## 6. Cloud-host VM Routes Configuration
 
-
-## 5. Cloud-host VM Routes Configuration
-
->**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or baremetal servers, you're done!
+>**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or bare-metal servers, you're done!
 
 If you're hosting your nodes using a service listed in the table below, you must make additional node configurations to account for routing. Follow the vendor instructions provided.
 
