@@ -1,7 +1,6 @@
 ---
 title: 2—Installing Rancher
 weight: 50
-draft: true
 ---
 
 After your private registry is set up for your Rancher installation, complete your installation. Follow one of the procedures below based on the configuration in which you want to run Rancher.

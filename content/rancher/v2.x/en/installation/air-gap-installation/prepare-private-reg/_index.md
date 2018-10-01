@@ -1,7 +1,6 @@
 ---
 title: 1—Preparing the Private Registry
 weight: 25
-draft: true
 ---
 
 For the first part of your air gap install, you'll prepare your private registry in order to be able to install and start using Rancher.
