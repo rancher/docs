@@ -1,63 +1,85 @@
 ---
-title: API Auditing
+title: API Audit Log
 weight: 10000
+aliases:
+- /rancher/v2.x/en/installation/api-auditing
 ---
 
-Rancher ships with API Auditing to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. API auditing records all requests and responses to and from the Rancher API, which includes use of the Rancher UI and any other use of the Rancher API through programmatic use.
+You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.
 
 You can enable API Auditing during Rancher installation or upgrade.
 
-## API Auditing Usage
+## Enabling API Audit Log
+
+The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
+
+- [Single Node Install - Enable API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#enable-api-audit-log)
+
+- [HA Install - Enable API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#enable-api-audit-log)
+
+## API Audit Log Options
 
 The usage below defines rules about what the audit log should record and what data it should include:
-
 
 Parameter | Description |
 ---------|----------|
  <a id="audit-level"></a>`AUDIT_LEVEL` | `0` - Disable audit log (default setting).<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. Each log transaction for a request/response pair uses the same `auditID` value.<br/><br/>See [Audit Level Logging](#audit-level-logging) for a table that displays what each setting logs. | 
- `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/> | 
+ `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/> |
  `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
  `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
  `AUDIT_LOG_MAXSIZE` | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.
-
 <br/>
-#### Audit Level Logging
+
+### Audit Log Levels
 
 The following table displays what parts of API transactions are logged for each [`AUDIT_LEVEL`](#audit-level) setting.
 
-| `AUDIT_LEVEL` Setting | Request Header     | Request Body | Response Header     | Response Header     |
+| `AUDIT_LEVEL` Setting | Request Metadata   | Request Body | Response Metadata   | Response Body       |
 | --------------------- | ------------------ | ------------ | ------------------- | ------------------- |
 | `0`                   |                    |              |                     |                     |
 | `1`                   | ✓                  |              |                     |                     |
 | `2`                   | ✓                  | ✓            |                     |                     |
 | `3`                   | ✓                  | ✓            | ✓                   | ✓                   |
 
-## Enabling API Auditing
-
-To enable API auditing, stop the Docker container that's running Rancher, and then restart it using the following command. This command includes parameters that turns on API auditing. For more information about usage for each switch related to API auditing, see [API Auditing Usage](#api-auditing-usage).
-
-
-```
-docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
-  -v /root/var/log/auditlog:/var/log/auditlog \
-  -e AUDIT_LEVEL=1 \
-  -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
-  -e AUDIT_LOG_MAXAGE=20 \
-  -e AUDIT_LOG_MAXBACKUP=20 \
-  -e AUDIT_LOG_MAXSIZE=100 \
-  rancher/rancher:latest
-```
-
 ## Viewing API Audit Logs
 
-By default, you can view your audit logs on any of your cluster nodes at `root/var/log/auditlog/rancher-api-audit.log` using your favorite text editor. For example:
+### Single Node Install
 
-```
-less /var/log/auditlog/rancher-api-audit.log
+Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the host system. The log can be parsed by standard CLI tools or forwarded on to a log collection tool like Fluentd, Filebeat, Logstash, etc.
+
+### HA Install
+
+Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the Rancher pod. This container will stream the log to standard output (stdout). You can view the log as you would any container log.
+
+The `rancher-audit-log` container is part of the `rancher` pod in the `cattle-system` namespace.
+
+#### CLI
+
+```bash
+kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 ```
 
-If you changed the `AUDIT_LOG_PATH` parameter, look in that location for `rancher-api-audit.log` instead.
+#### Rancher Web GUI
+
+1. From the context menu, select **Cluster: local > System**.
+
+    ![Local Cluster: System Project]({{< baseurl >}}/img/rancher/audit_logs_gui/context_local_system.png)
+
+1. From the **Workloads** tab, find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
+
+    ![Rancher Workload]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_workload.png)
+
+1. Pick one of the `rancher` pods and select **Ellipsis (...) > View Logs**.
+
+    ![View Logs]({{< baseurl >}}/img/rancher/audit_logs_gui/view_logs.png)
+
+1. From the **Logs** drop-down, select `rancher-audit-log`.
+
+    ![Select Audit Log]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_audit_log_container.png)
+
+#### Shipping the Audit Log
+
+You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging]({{< baseurl >}}/rancher/v2.x/en/tools/logging) for details.
 
 ## Audit Log Samples
 
