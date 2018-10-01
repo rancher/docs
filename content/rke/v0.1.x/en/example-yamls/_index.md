@@ -151,6 +151,9 @@ services:
       cluster_dns_server: 10.43.0.10
       # Fail if swap is on
       fail_swap_on: false
+      # Set max pods to 250 instead of default 110
+      extra_args:
+        max-pods: 250
       # Optionally define additional volume binds to a service
       extra_binds:
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins"
