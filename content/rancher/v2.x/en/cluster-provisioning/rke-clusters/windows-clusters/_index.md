@@ -1,6 +1,6 @@
 ---
 title: Configuring Custom Clusters for Windows 
-weight: 2600
+weight: 2240
 ---
 
 _Available as of v2.1.0_
