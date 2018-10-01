@@ -35,11 +35,15 @@ Following project creation, you can add users as project members so that they ca
 
 	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
-	>**Tip:** For Custom Roles, you can modify the list of individual roles available for assignment.
-	>
-	> - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles).
-	> - To remove roles from the list, [Lock/Unlock Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
-
+    >**Notes:**
+    >
+    >- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
+    >
+    >- For `Custom` roles, you can modify the list of individual roles available for assignment.
+    >
+    >    - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles).
+    >    - To remove roles from the list, [Lock/Unlock Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
+    
 **Result:** The chosen users are added to the project.
 
 - To revoke project membership, select the user and click **Delete**. This action deletes membership, not the user.
