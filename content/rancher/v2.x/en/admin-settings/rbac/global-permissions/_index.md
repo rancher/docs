@@ -59,7 +59,7 @@ When a user from an [external authentication source]({{< baseurl >}}/rancher/v2.
 
 You can assign one or more default permissions. For example, the `user` permission assigns new users a [set of individual global permissions](#global-permissions-reference). If you want to restrict the default permissions for new users, you can remove the `user` permission as default role and then assign multiple individual permissions as default instead. Conversely, you can also add administrative permissions on top of a set of other standard permissions.
 
->**Note:** Default roles are only assigned to external users. For local users, you must explicitly assign global permissions.
+>**Note:** Default roles are only assigned to users added from an external authentication provider. For local users, you must explicitly assign global permissions when adding a user to Rancher. You can customize these global permissions when adding the user.
 
 ### Configuring Default Global Permissions
 
