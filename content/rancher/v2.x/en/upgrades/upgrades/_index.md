@@ -11,7 +11,8 @@ This section contains information about how to upgrade your Rancher server to a 
 
 ### Upgrading to an HA Helm Chart
 
-- [Upgrading from an HA Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/)
+- [Upgrade an HA Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/)
+- [Upgrade a Air Gap HA Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm-airgap/)
 - [Migrating from a RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
 
 ### Upgrading an RKE Add-on Install

@@ -137,35 +137,6 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 Make sure you follow any additional instructions required by SSL install options. See [Choose your SSL Configuration]({{< baseurl >}}rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) for details.
 
-## Upgrading Rancher
-
-Update the Rancher chart repo.
-
-```plain
-helm repo update
-```
-
-Fetch the latest `rancher-stable/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
-
-```plain
-helm fetch rancher-stable/rancher
-```
-
-Render the upgrade template using the same `--set` values you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
-
-```plain
-helm template ./rancher-<version>.tgz --output-dir . --is-upgrade \
---name rancher --namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-```
-
-Copy the rendered manifests to a server with access to the Rancher server cluster and apply the rendered templates.
-
-```plain
-kubectl -n cattle-system apply -R -f ./rancher
-```
-
 {{% /tab %}}
 {{% tab "Single Node" %}}
 To deploy Rancher on a single node in an air gap environment, follow the instructions in the standard [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/). Parts of the install where you must complete a special action for air gap are flagged with a substitute step, which is listed in the subheading below.
