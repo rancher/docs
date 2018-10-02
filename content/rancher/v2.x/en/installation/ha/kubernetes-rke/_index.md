@@ -5,14 +5,13 @@ weight: 190
 
 Use RKE to install Kubernetes with a high availability etcd configuration.
 
+> **Note:** For systems without direct internet access see [RKE - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#rke) for install details.
+
 ### Create the `rancher-cluster.yml` File
 
 Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
 
-> **Notes:** 
->
->- Air Gap User? [Add a private registry section]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-to-rke-yaml) to the sample below.
->- If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
+> **Note:**  If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 
 ```yaml

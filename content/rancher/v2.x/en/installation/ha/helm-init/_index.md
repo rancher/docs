@@ -5,7 +5,9 @@ weight: 195
 
 Helm is the package management tool of choice for Kubernetes. Helm "charts" provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/).
 
-### Initialize Helm on the cluster
+> **Note:** For systems without direct internet access see [Helm - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#helm) for install details.
+
+### Initialize Helm on the Cluster
 
 Helm installs the `tiller` service on your cluster to manage charts. Since RKE enables RBAC by default we will need to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so `tiller` has permission to deploy to the cluster.
 
@@ -13,20 +15,13 @@ Helm installs the `tiller` service on your cluster to manage charts. Since RKE e
 * Create the `ClusterRoleBinding` to give the `tiller` account access to the cluster.
 * Finally use `helm` to initialize the `tiller` service
 
->**Using Air Gap?** [Add the private registry's FQDN]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#initialize-helm-using-private-registry) to the command.
-
-```
+```plain
 kubectl -n kube-system create serviceaccount tiller
+
 kubectl create clusterrolebinding tiller \
   --clusterrole cluster-admin \
   --serviceaccount=kube-system:tiller
-```
 
-##### Helm init
-
-`helm init` installs the `tiller` service in the `kube-system` namespace on your cluster.
-
-```
 helm init --service-account tiller
 ```
 
