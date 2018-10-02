@@ -92,7 +92,7 @@ helm fetch stable/cert-manager
 Render the template with the option you would use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
 
 ```plain
-helm template ./cert-manager-<version>.tgz --output-dir ./ \
+helm template ./cert-manager-<version>.tgz --output-dir . \
 --name cert-manager --namespace kube-system \
 --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
 ```
@@ -114,7 +114,7 @@ helm fetch rancher-stable/rancher
 Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.
 
 ```plain
-helm template ./rancher-<version>.tgz --output-dir ./ \
+helm template ./rancher-<version>.tgz --output-dir . \
 --name rancher --namespace cattle-system \
 --set hostname=<RANCHER.YOURDOMAIN.COM> \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
@@ -136,6 +136,35 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 
 Make sure you follow any additional instructions required by SSL install options. See [Choose your SSL Configuration]({{< baseurl >}}rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) for details.
+
+## Upgrading Rancher
+
+Update the Rancher chart repo.
+
+```plain
+helm repo update
+```
+
+Fetch the latest `rancher-stable/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
+
+```plain
+helm fetch rancher-stable/rancher
+```
+
+Render the upgrade template using the same `--set` values you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
+
+```plain
+helm template ./rancher-<version>.tgz --output-dir . --is-upgrade \
+--name rancher --namespace cattle-system \
+--set hostname=<RANCHER.YOURDOMAIN.COM> \
+--set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
+```
+
+Copy the rendered manifests to a server with access to the Rancher server cluster and apply the rendered templates.
+
+```plain
+kubectl -n cattle-system apply -R -f ./rancher
+```
 
 {{% /tab %}}
 {{% tab "Single Node" %}}
