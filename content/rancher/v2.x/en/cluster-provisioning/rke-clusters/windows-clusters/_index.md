@@ -1,10 +1,13 @@
 ---
-title: Configuring Custom Clusters for Windows 
+title: Configuring Custom Clusters for Windows (Experimental)
 weight: 2240
 ---
 
 _Available as of v2.1.0_
 
+>**Important:**
+>
+>Support for Windows nodes is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
 
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
 
@@ -12,10 +15,10 @@ This guide walks you through create of a custom cluster that includes 3 nodes: a
 
 >**Notes:**
 >
->- Windows nodes are experimental and not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 >- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
 >- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
+
 
 
 ## Objectives for Creating Cluster with Windows Support
