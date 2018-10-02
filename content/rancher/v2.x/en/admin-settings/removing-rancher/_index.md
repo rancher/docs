@@ -3,7 +3,7 @@ title: Removing Rancher
 weight: 5000
 ---
 
-When you deploy Rancher and use it to provision clusters, Rancher installs its components on the nodes you use. This section features instructions on how to clean Rancher's components from your nodes that you no longer want to use with Rancher. 
+When you deploy Rancher and use it to provision clusters, Rancher installs its components on the nodes you use. This section features instructions on how to remove Rancher's components from your nodes that you no longer want to use with Rancher. 
 
 There are two contexts in which you'd remove Rancher from a Kubernetes cluster node.
 

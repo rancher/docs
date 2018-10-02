@@ -12,7 +12,7 @@ For clusters nodes provisioned using [RKE](({{< baseurl >}}/rancher/v2.x/en/clus
 
 ### Download and Configuration
 
-You can download the latest version of Rancher system-tools from its GitHub [releases page](https://github.com/rancher/system-tools/releases). Download the version of system-tools for the OS that you're removing Rancher from.
+You can download the latest version of Rancher system-tools from its GitHub [releases page](https://github.com/rancher/system-tools/releases). Download the version of system-tools for the OS that you're running the tool from.
 
 Operating System | File
 -----------------|-----
@@ -22,7 +22,7 @@ Windows          | `system-tools_windows-amd64.exe`
 
 <br>
 
-After you download the tools, move it onto the node you're removing Rancher from, and then complete the following actions:
+After you download the tools, complete the following actions:
 
 1. Rename the file to `system-tools`.
 
@@ -31,16 +31,21 @@ After you download the tools, move it onto the node you're removing Rancher from
     ```
     chmod +x system-tools
     ```
+1. Download the Kubeconfig File for your Rancher installation cluster and place it in the `/.kube/config` on your workstation. System-tools uses this file to access your installation cluster.
 
+    For instructions on how to download the Kubeconfig file, see [Accessing Clusters with kubectl and a kubeconfig File]({{< baseurl >}}rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file).
+
+1. Move `system-tools` to the same directory as the kubeconfig file: `/.kube/config`.
+ 
 ### Using the System-Tool
 
-System-tools is a utility that cleans up Rancher. In this use case, it will help you remove the Rancher from your cluster nodes. 
+System-tools is a utility for running operational tasks on Rancher clusters. In this use case, it will help you remove the Rancher from your installation nodes.
 
 #### Usage
 
-After you move the `system-tools` file to your Rancher node, you can run it by changing to the file's directory and running the following command.
+After you move the `system-tools` and kubeconfig file to your workstation's `/.kube/config` directory, you can run system-tools by changing to the `/.kube/config`  directory and entering the following command.
 
->**Warning:** This command will remove data from your nodes. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
+>**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{< baseurl >}}/rancher/v2.x/en/backups/backups) before executing the command.
 
 ```
 ./system-tools remove --kubeconfig <$KUBECONFIG> --namespace <NAMESPACE>
@@ -86,9 +91,7 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
 
 1. Open a web browser, navigate to [GitHub](https://github.com/rancher/rancher/blob/master/cleanup/user-cluster.sh), and download `user-cluster.sh`.
 
-1. Open kubectl. 
-
-1. Using kubectl, make the script executable by running the following command from the same directory as `user-cluster.sh`:
+1. Make the script executable by running the following command from the same directory as `user-cluster.sh`:
 
     ```
     chmod +x user-cluster.sh
@@ -132,6 +135,6 @@ When cleaning nodes provisioned using Rancher, the following components are dele
 [3]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
 [4]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
 
->**Using 2.0.7 or Earlier?**
+>**Using 2.0.8 or Earlier?**
 >
->These versions of Rancher do not automatically delete the `serviceAccount`, `clusterRole`, and `clusterRole` resources after the job runs. You'll have to delete them yourself.
+>These versions of Rancher do not automatically delete the `serviceAccount`, `clusterRole`, and `clusterRoleBindings` resources after the job runs. You'll have to delete them yourself.
