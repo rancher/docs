@@ -24,7 +24,7 @@ The Rancher HA install uses images from 3 sources. Combine the 3 sources into a 
     ```
 * **Cert-Manager** - (Optional) If you choose to install with Rancher Self-Signed TLS certificates, you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
     
-    Fetch and the latest `cert-manager` Helm chart and parse the template for image details.
+    Fetch the latest `cert-manager` Helm chart and parse the template for image details.
     
     ```plain
     helm fetch stable/cert-manager
