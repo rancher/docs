@@ -35,7 +35,7 @@ After you download the tools, complete the following actions:
 
     For instructions on how to download the Kubeconfig file, see [Accessing Clusters with kubectl and a kubeconfig File]({{< baseurl >}}rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file).
 
-1. Move `system-tools` to the same directory as the kubeconfig file: `/.kube/config`.
+1. Move `system-tools` to the same directory as the kubeconfig file: `~/.kube/config`.
  
 ### Using the System-Tool
 
@@ -43,7 +43,7 @@ System-tools is a utility for running operational tasks on Rancher clusters. In 
 
 #### Usage
 
-After you move the `system-tools` and kubeconfig file to your workstation's `/.kube/config` directory, you can run system-tools by changing to the `/.kube/config`  directory and entering the following command.
+After you move the `system-tools` and kubeconfig file to your workstation's `~/.kube/config` directory, you can run system-tools by changing to the `~/.kube/config`  directory and entering the following command.
 
 >**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{< baseurl >}}/rancher/v2.x/en/backups/backups) before executing the command.
 
