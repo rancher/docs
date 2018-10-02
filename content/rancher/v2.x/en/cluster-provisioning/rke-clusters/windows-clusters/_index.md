@@ -14,6 +14,8 @@ This guide walks you through create of a custom cluster that includes 3 nodes: a
 >
 >- Windows nodes are experimental and not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
+>- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
+>- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 in order to run these containers on Windows Server 1803.
 
 
 ## Objectives for Creating Cluster with Windows Support
@@ -36,31 +38,29 @@ When setting up a custom cluster with support for Windows nodes and containers, 
 
 To begin provisioning a custom cluster with Windows support, prepare your host servers. Provision three nodes according to our [requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/)—two Linux, one Windows. Your hosts can be:
 
-- Cloud-hosted virtual machines (VM)
-- On-premise VMs
+- Cloud-hosted VMs
+- VMs from virtualization clusters
 - Bare-metal servers 
 
 The table below lists the [Kubernetes roles]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
-Node 1  | Linux            | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 2  | Linux            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
-Node 3  | Windows          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-
->**Notes:**
->
->- To support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), your cluster must include at least one Linux node dedicated to the worker role.
->- Although we recommend the three node architecture listed in the table above, you add additional Linux and Windows workers to scale up your cluster for redundancy.
+Node 1  | Linux (Ubuntu Server 16.04 recommanded)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 2  | Linux (Ubuntu Server 16.04 recommanded)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
+Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
 ### Requirements
 
 - You can view node requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
-- All nodes in a custom cluster that supports Windows must have connectivity over OSI layer 2.
+- All nodes in a virtualization cluster or a bare metal cluster must be connected using a layer 2 network.
+- To support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), your cluster must include at least one Linux node dedicated to the worker role.
+- Although we recommend the three node architecture listed in the table above, you add additional Linux and Windows workers to scale up your cluster for redundancy.
 
-## 2. Cloud-host VM Networking Configuration
 
->**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or bare-metal servers, skip ahead to [Create the Custom Cluster](#3-create-the-custom-cluster).
+## 2. Cloud-hosted VM Networking Configuration
+
+>**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using virtualization clusters or bare-metal servers, skip ahead to [Create the Custom Cluster](#3-create-the-custom-cluster).
 
 If you're hosting your nodes on any of the cloud services listed below, you must disable the private IP address checks for both your Linux or Windows hosts on startup. To disable this check for each node, follow the directions provided by each service below.
 
@@ -150,24 +150,26 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 **Result:** The worker role is installed on your Windows host, and the node registers with Rancher.
 
-## 6. Cloud-host VM Routes Configuration
+## 6. Cloud-hosted VM Routes Configuration
 
->**Note:** This step only applies to nodes hosted on cloud-hosted virtual machines. If you're using on-premise virtual machines or bare-metal servers, you're done!
+In Windows clusters, containers communicate with each other using the `host-gw` mode of Flannel. In `host-gw` mode, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
 
-If you're hosting your nodes using a service listed in the table below, you must make additional node configurations to account for routing. Follow the vendor instructions provided.
+1. When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work. Please contact Rancher support if somehow your worker nodes on AWS, virtualization clusters, or bare metal servers don't belong to the same layer 2 network.
+
+2. When worker nodes are provisioned on GCE and Azure, they are not on the same layer 2 subnet. Nodes on GCE and Azure belong to a routable layer 3 network. We need to therefore follow the instructions below to configure GCE and Azure so that the cloud network knows how to route the host subnets on each node.
+
+To configure host subnet routing on GCE or Azure, first run the following command to find out the host subnets on each worker node: 
+```
+kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR
+```
+
+Then follow the instructions for each cloud provider to configure routing rules for each node:
 
 Service | Instructions
 --------|-------------
 Google GCE | For GCE, add a static route for each node: [Adding a Static Route](https://cloud.google.com/vpc/docs/using-routes#addingroute).
 Azure VM | For Azure, create a routing table: [Custom Routes: User-defined](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined).
 
-To confirm the destination address of each route, you can run this script using [kubectl]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl): `kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR` 
 
+` `
 
-### Troubleshooting
-
-If the Windows worker is already starting (i.e., Terminal outputs `Starting plan monitor`), yet it displays a status of `Unavailable` in the Rancher UI, try to restarting the Nginx proxy on the Windows host using the following Docker command:
-
-```
-docker restart nginx-proxy
-```
