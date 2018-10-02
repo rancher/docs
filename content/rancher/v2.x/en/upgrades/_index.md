@@ -20,7 +20,7 @@ In the event that your Rancher Server does not upgrade successfully, you can rol
 
 Since the underlying orchestration engine in Rancher is now Kubernetes, moving from 1.6 to 2.x is a migration process.
 
-In general, we recommend creating a 2.x instance in parallel with your 1.6 instance. Launch new Kubernetes clusters for your workloads and migrate your workloads when they are ready. When all workloads are migrated retire the 1.6 instance and clusters.
+In general, we recommend creating a 2.x instance in parallel with your 1.6 instance. Launch new Kubernetes clusters for your workloads and migrate your workloads when they are ready. When all workloads are migrated, retire the 1.6 instance and clusters.
 
 See our [From Cattle to K8s](https://rancher.com/tags/cattle-to-k8s/) series of articles for tools and information to help you update your workloads to run on Rancher 2.x and Kubernetes.
 
