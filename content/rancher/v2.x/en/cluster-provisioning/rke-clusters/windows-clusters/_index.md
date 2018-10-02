@@ -15,7 +15,7 @@ This guide walks you through create of a custom cluster that includes 3 nodes: a
 >- Windows nodes are experimental and not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 >- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
->- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 in order to run these containers on Windows Server 1803.
+>- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
 
 
 ## Objectives for Creating Cluster with Windows Support
@@ -55,7 +55,7 @@ Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseu
 - You can view node requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 - All nodes in a virtualization cluster or a bare metal cluster must be connected using a layer 2 network.
 - To support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), your cluster must include at least one Linux node dedicated to the worker role.
-- Although we recommend the three node architecture listed in the table above, you add additional Linux and Windows workers to scale up your cluster for redundancy.
+- Although we recommend the three node architecture listed in the table above, you can add additional Linux and Windows workers to scale up your cluster for redundancy.
 
 
 ## 2. Cloud-hosted VM Networking Configuration
@@ -154,12 +154,13 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 In Windows clusters, containers communicate with each other using the `host-gw` mode of Flannel. In `host-gw` mode, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
 
-1. When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work. Please contact Rancher support if somehow your worker nodes on AWS, virtualization clusters, or bare metal servers don't belong to the same layer 2 network.
+- When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work. Please contact [Rancher support](https://rancher.com/support/) if your worker nodes on AWS, virtualization clusters, or bare metal servers don't belong to the same layer 2 network.
 
-2. When worker nodes are provisioned on GCE and Azure, they are not on the same layer 2 subnet. Nodes on GCE and Azure belong to a routable layer 3 network. We need to therefore follow the instructions below to configure GCE and Azure so that the cloud network knows how to route the host subnets on each node.
+- When worker nodes are provisioned on GCE or Azure, they are not on the same layer 2 subnet. Nodes on GCE and Azure belong to a routable layer 3 network. Follow the instructions below to configure GCE and Azure so that the cloud network knows how to route the host subnets on each node.
 
 To configure host subnet routing on GCE or Azure, first run the following command to find out the host subnets on each worker node: 
-```
+
+```bash
 kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR
 ```
 
