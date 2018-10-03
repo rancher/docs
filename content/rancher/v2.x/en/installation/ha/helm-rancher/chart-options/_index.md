@@ -52,34 +52,9 @@ Add your IP exceptions to the `noProxy` list. Make sure you add the Service clus
 --set noProxy="127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 ```
 
-### Private Registry
+### Private Registry and Air Gap Installs
 
-You can point to a private registry for the rancher image.
-
-#### Images
-
-Populate your private registry with Rancher images.
-
-You can get the list of images required for rancher and worker cluster installs from the [Releases](https://github.com/rancher/rancher/releases/latest) page.
-
-#### Create Registry Secret
-
-Use `kubectl` to create a docker-registry secret in the `cattle-system` namespace.
-
-```
-kubectl -n cattle-system create secret docker-registry regcred \
-  --docker-server="reg.example.com:5000" \
-  --docker-email=<email>
-```
-
-#### Registry Options
-
-Add the `rancherImage` to point to your private registry image and `imagePullSecrets` to your install command.
-
-```
---set rancherImage=reg.example.com:5000/rancher/rancher \
---set imagePullSecrets[0].name=regcred
-```
+See [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for details on installing Rancher with a private registry.
 
 ### External TLS Termination
 

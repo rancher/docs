@@ -5,6 +5,8 @@ weight: 200
 
 Rancher installation is now managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and Rancher charts.
 
+> **Note:** For systems without direct internet access see [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for install details.
+
 ### Add the Chart Repo
 
 Use `helm repo add` to add the Rancher chart repository.
@@ -22,9 +24,6 @@ For additional chart details, view the [source of these Rancher server charts](h
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm "stable" catalog to issue self-signed or LetsEncrypt certificates.
 
 Install `cert-manager` from the Helm stable catalog.
-
->**Using Air Gap?** [Add the private registry's FQDN]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-cert-manager-using-private-registry) to the command.
-
 
 ```
 helm install stable/cert-manager \
@@ -101,7 +100,7 @@ Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
 * [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
-* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry)
+* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry-and-air-gap-installs)
 * [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination)
 
 See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/) for the full list of options.

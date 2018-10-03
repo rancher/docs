@@ -19,13 +19,4 @@ Rancher needs to be configured to use the private registry in order to provision
 
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 
-
 >**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
->
-> Example:
-> ```
-docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
-  -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<REGISTRY.YOURDOMAIN.COM:PORT> \
-  <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
-```

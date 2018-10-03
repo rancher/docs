@@ -1,5 +1,5 @@
 ---
-title: Single Node Air Gap Upgrade
+title: Single Node Upgrade - Air Gap
 weight: 1011
 aliases:
   - /rancher/v2.x/en/upgrades/air-gap-upgrade/
