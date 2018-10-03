@@ -51,7 +51,11 @@ The following table lists each custom global permission available and whether it
 | User Catalog Templates             | ✓             | ✓             |
 | Login Access                       | ✓             | ✓             |
 
-> **Note:** Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalroles`.
+> **Note:** 
+>
+>- Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
+>- Resources denoted with `(Custom)` are resources defined by the Rancher API—_not_ Kubernetes.
+
 
 ### Default Global Permissions for New Users
 
