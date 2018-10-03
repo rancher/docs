@@ -19,3 +19,5 @@ Rancher needs to be configured to use the private registry in order to provision
 1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
 
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
+
+>**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
