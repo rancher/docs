@@ -1,5 +1,5 @@
 ---
-title: Removing Rancher from Rancher Server Nodes
+title: Removing Rancher from Your Rancher Server Nodes 
 weight: 2000
 ---
 
@@ -64,12 +64,12 @@ export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
 
 ## What Gets Removed?
 
-When removing Rancher from server nodes provisioned using RKE, the following components are deleted.
+When removing Rancher from server nodes launched using RKE, the following components are deleted.
 
 
 - The Rancher deployment namespace (`cattle-system` by default).
 - Any `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` that Rancher applied the `cattle.io/creator:norman` label to. Rancher applies this label to any resource that it creates as of v2.1.0.  
-- Labels, Annotations, and Finalizers.
+- Labels, annotations, and finalizers.
 - Rancher Deployment.
 - Machines, clusters, projects, and user custom resource deployments (CRDs).
 - All resources create under the `management.cattle.io` API Group.
