@@ -1,5 +1,5 @@
 ---
-title: Removing Rancher from Your Rancher Server Nodes 
+title: Removing Rancher from Your Rancher Server Nodes
 weight: 2000
 ---
 
@@ -26,7 +26,7 @@ After you download the tools, complete the following actions:
     ```
     chmod +x system-tools
     ```
-1. Find the kubeconfig file that was generated during your Rancher installation, `kube_config_rancher-cluster.yml`. Move it to the `/.kube` on your workstation, if it isn't already there. Create this directory if it doesn't exist. 
+1. Find the kubeconfig file that was generated during your Rancher installation, `kube_config_rancher-cluster.yml`. Move it to the `~/.kube` on your workstation, if it isn't already there. Create this directory if it doesn't exist.
 
     System-tools uses this file to access your installation cluster.
 
@@ -58,9 +58,9 @@ When you run this command, the components listed in [What Gets Removed?](#what-g
 | `--force`                                      | Skips the the interactive removal confirmation and removes the Rancher deployment without prompt.                      |
 
 > <sup>1</sup> If you are working with multiple Kubernetes clusters, you can place  `kube_config_rancher-cluster.yml` in another directory path and then set the `KUBECONFIG` environment variable to its path.
->``` 
-export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
-```
+>```
+>export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
+>```
 
 ## What Gets Removed?
 
