@@ -5,6 +5,8 @@ weight: 200
 
 Rancher installation is now managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and Rancher charts.
 
+> **Note:** For systems without direct internet access see [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for install details.
+
 ### Add the Chart Repo
 
 Use `helm repo add` to add the Rancher chart repository.
@@ -39,13 +41,15 @@ There are three options for the source of the certificate.
 2. `letsEncrypt` - Use [LetsEncrypt](https://letsencrypt.org/) to issue a cert.
 3. `secret` - Configure a Kubernetes Secret with your certificate files.
 
-<br\>
+<br/>
 
 #### (Default) Rancher Generated Certificates
 
 The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
 
 The only requirement is to set the `hostname` to the DNS name you pointed at your Load Balancer.
+
+>**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
 helm install rancher-stable/rancher \
@@ -59,6 +63,8 @@ helm install rancher-stable/rancher \
 Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
 
 Set `hostname`, `ingress.tls.source=letEncrypt` and LetsEncrypt options.
+
+>**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
 helm install rancher-stable/rancher \
@@ -94,7 +100,7 @@ Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
 * [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
-* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry)
+* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry-and-air-gap-installs)
 * [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination)
 
 See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/) for the full list of options.

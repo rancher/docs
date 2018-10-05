@@ -40,6 +40,8 @@ The following instructions will guide you through upgrading a high-availability 
 
 ## Upgrade Rancher
 
+> **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#upgrading-rancher)
+
 1. Update your local helm repo cache.
 
     ```

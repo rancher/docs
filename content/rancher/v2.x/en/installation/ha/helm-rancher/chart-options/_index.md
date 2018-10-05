@@ -19,16 +19,27 @@ weight: 276
 
 | Option | Default Value | Description |
 | --- | --- | --- |
+| `auditLog.level` | 0 | `int` - set the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3] |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `proxy` | "" | `string` - string - HTTP[S] proxy server for Rancher |
-| `noProxy` | "localhost,127.0.0.1" | `string` - comma seperated list of hostnames or ip address not to use the proxy | 
+| `noProxy` | "localhost,127.0.0.1" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |
-| `tls` | "ingress" | `string` - Where to terminate SSL. - "ingress, external"
+| `tls` | "ingress" | `string` - Where to terminate SSL. - "ingress, external" |
 
 <br/>
+
+### API Audit Log
+
+Enabling the [API Audit Log](https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing/) will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.
+
+You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
+
+```
+--set auditLog.level=1
+```
 
 ### HTTP Proxy
 
@@ -41,34 +52,9 @@ Add your IP exceptions to the `noProxy` list. Make sure you add the Service clus
 --set noProxy="127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
 ```
 
-### Private Registry
+### Private Registry and Air Gap Installs
 
-You can point to a private registry for the rancher image.
-
-#### Images
-
-Populate your private registry with Rancher images.
-
-You can get the list of images required for rancher and worker cluster installs from the [Releases](https://github.com/rancher/rancher/releases/latest) page.
-
-#### Create Registry Secret
-
-Use `kubectl` to create a docker-registry secret in the `cattle-system` namespace.
-
-```
-kubectl -n cattle-system create secret docker-registry regcred \
-  --docker-server="reg.example.com:5000" \
-  --docker-email=<email>
-```
-
-#### Registry Options
-
-Add the `rancherImage` to point to your private registry image and `imagePullSecrets` to your install command.
-
-```
---set rancherImage=reg.example.com:5000/rancher/rancher \
---set imagePullSecrets[0].name=regcred
-```
+See [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for details on installing Rancher with a private registry.
 
 ### External TLS Termination
 
