@@ -32,8 +32,10 @@ Setting up Microsoft AD FS with Rancher Server requires configuring AD FS on you
 
 >**Active Directory Federation Service Caveats:**
 >
->- AD FS does not support search or lookup. When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), the exact IDs must be entered correctly.
->- When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), group IDs are not supported unless the admin who turned on access control is a member of the group.
->- When adding a group that includes an admin to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), add it from the drop-down rather than the search bar. If you add the group using the search bar, the group will not get added.
+>- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
+>- When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
+>- When adding groups, you *must* select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+>   - The group drop-down shows *only* the groups that you are a member of. You will not be able to add groups that you are not a member of.
+
 
 ### [Next: Configuring Microsoft AD FS for Rancher]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup)

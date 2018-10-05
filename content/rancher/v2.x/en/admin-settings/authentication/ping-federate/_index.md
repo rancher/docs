@@ -16,28 +16,28 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
 1.	Select **PingIdentity**.
 
 1.	Complete the **Configure Ping Account** form. Ping IdP lets you specify what data store you want to use. You can either add a database or use an existing ldap server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
-	
+
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
 
 	1. **User Name Field**: Enter the AD attribute that contains the user name/given name (example: `givenName`).
-	
+
     1. **UID Field**: Enter an AD attribute that is unique to every user (example: `sAMAccountName`, `distinguishedName`).
-	
+
     1. **Groups Field**: Make entries for managing group memberships (example: `memberOf`).
-	
+
     1. **Rancher API Host**: Enter the URL for your Rancher Server.
 
-	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP. 
-    
+	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.
+
         You can generate one using an openssl command. For example:
-    
+
         ```
         openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
         ```
     1. **IDP-metadata**: The `metadata.xml` file that you [exported from your IdP server](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html).
 
- 
-1. After you complete the **Configure Ping Account** form, click **Authenticate with Ping**, which is at the bottom of the page. 
+
+1. After you complete the **Configure Ping Account** form, click **Authenticate with Ping**, which is at the bottom of the page.
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Ping IdP to validate your Rancher PingIdentity configuration.
 
@@ -45,8 +45,9 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
 
 **Result:** Rancher is configured to work with PingIdentity. Your users can now sign into Rancher using their PingIdentity logins.
 
->**Ping Identity Provider Caveats:** 
+>**Ping Identity Provider Caveats:**
 >
->- IdP does not support search or lookup. When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), the exact IDs must be entered correctly.
->- When adding users to [clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/) or [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/), group IDs are not supported unless the admin who turned on access control is a member of the group.
->- When adding a group that includes an admin to clusters or projects, add it from the drop-down rather than the search bar. If you add the group using the search bar, the group will not get added.
+>- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
+>- When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
+>- When adding groups, you *must* select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+>   - The group drop-down shows *only* the groups that you are a member of. You will not be able to add groups that you are not a member of.
