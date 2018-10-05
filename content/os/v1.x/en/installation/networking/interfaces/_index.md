@@ -78,6 +78,8 @@ rancher:
 
 In this example two physical NICs (with MACs `0c:c4:d7:b2:14:d2` and `0c:c4:d7:b2:14:d3`) are aggregated into a virtual one `bond0`.
 
+During the bootup process, RancherOS runs cloud-init. It automatically detects the data sources of cloud-init, but sometimes a data source requires a network connection. By default, in cloud-init, we open `rancher.network.interfaces.eth*.dhcp=true`, which may affect the bonding NIC. If you do not require the network connection for your data-source, use `rancher.network.interfaces.eth*.dhcp=false` in the kernel cmdline to disable DHCP for all NICs.
+
 ### VLANS
 
 In this example, you can create an interface `eth0.100` which is tied to VLAN 100 and an interface `foobar` that will be tied to VLAN 200.
