@@ -18,7 +18,8 @@ RKE launched clusters are separated into two categories:
 - [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
     For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that are already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
-    
+  >**Note:** If you have already deploy Kubernetes on a node, and for any reason you wish to reused this node in an another cluster dont forget to clean it by hand after removed it from the previous cluster  `sudo rm -rf /var/lib/etcd /etc/kubernetes/ssl /etc/cni /opt/cni /var/lib/cni /var/run/calico /etc/kubernetes/.tmp/`
+  
 <br/>
 
 ### Requirements
