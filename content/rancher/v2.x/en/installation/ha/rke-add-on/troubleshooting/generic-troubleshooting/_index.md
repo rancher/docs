@@ -5,6 +5,12 @@ aliases:
 - /rancher/v2.x/en/installation/troubleshooting-ha/generic-troubleshooting/
 ---
 
+> ### 🛑 IMPORTANT: RKE Add-On install is Deprecated as of the 2.1.0 release.
+>
+>Please use the official Helm Chart to install HA Rancher. For details see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>
+>If you are currently using the RKE Add-On install method see [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on moving to the Helm Chart.
+
 Below are steps that you can follow to determine what is wrong in your cluster.
 
 ### Double check if all the required ports are opened in your (host) firewall
