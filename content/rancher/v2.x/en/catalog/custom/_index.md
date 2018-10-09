@@ -69,7 +69,7 @@ The following table demonstrates the directory structure for a chart, which can 
 		<tr>
 			<td> </td>
 			<td><code>README.md</code></td>
-			<td>Optional: Helm Readme file displayed within Rancher UI. This test displays in <strong>Detailed Descriptions</strong>.</td>
+			<td>Optional: Helm Readme file displayed within Rancher UI. This text displays in <strong>Detailed Descriptions</strong>.</td>
 		</tr>
 			<td></td>
 			<td><code>requirements.yml</code></td>
@@ -105,7 +105,7 @@ Before you create your own custom catalog, you should have a basic understanding
     A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
 
-	<small>Rancher Chart with <code>question.yml</code> (left) vs. Helm Chart without (right)</small>
+	<small>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</small>
 
 	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
