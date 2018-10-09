@@ -16,7 +16,7 @@ To use this option you'll need access to servers you intend to use as your Kuber
 
 >**Want to use Windows hosts as Kubernetes workers?**
 >
->See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/) before you start.
+>See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/) before you start.
 
 <!-- TOC -->
 
@@ -60,15 +60,15 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
 
     >**Using Windows nodes as Kubernetes workers?** 
     >
-    >- See [Enable the Windows Support Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#enable-the-windows-support-option).
-    >- The only Network Provider available for clusters with Windows support is Flannel. See [Networking Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#networking-option).
+    >- See [Enable the Windows Support Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#enable-the-windows-support-option).
+    >- The only Network Provider available for clusters with Windows support is Flannel. See [Networking Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#networking-option).
 6.	<a id="step-6"></a>Click **Next**.
 
 7.	From **Node Role**, choose the roles that you want filled by a cluster node.
 
 	>**Notes:**
 	>
-    >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/windows-clusters/#node-configuration).
+    >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#node-configuration).
 	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
 8.	<a id="step-8"></a>**Optional**: Add **Labels** to your cluster nodes to help schedule workloads later.
