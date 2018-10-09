@@ -4,6 +4,13 @@ weight: 277
 aliases:
 - /rancher/v2.x/en/installation/ha-server-install-external-lb/alb/
 ---
+
+> ### 🛑 IMPORTANT: RKE Add-On install is Deprecated as of the 2.1.0 release.
+>
+>Please use the official Helm Chart to install HA Rancher. For details see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>
+>If you are currently using the RKE Add-On install method see [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on moving to the Helm Chart.
+
 ## Objectives
 
 Configuring an Amazon ALB is a multistage process. We've broken it down into multiple tasks so that it's easy to follow.

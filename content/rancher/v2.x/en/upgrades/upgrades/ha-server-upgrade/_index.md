@@ -5,6 +5,13 @@ aliases:
   - /rancher/v2.x/en/upgrades/ha-server-upgrade/
 ---
 
+> ### 🛑 IMPORTANT: RKE Add-On install is Deprecated as of the 2.1.0 release.
+>
+>Please use the official Helm Chart to install HA Rancher. For details see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>
+>If you are currently using the RKE Add-On install method see [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on moving to the Helm Chart.
+
+
 This document is for upgrading Rancher HA installed with the RKE Add-On yaml. See these docs to migrate to or upgrade Rancher installed with the Helm chart.
 
 * [Migrating from a High Availability RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
