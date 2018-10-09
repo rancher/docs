@@ -188,7 +188,7 @@ PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 {{% /accordion %}}
 {{% accordion id="deploy-yaml" label="Deploy YAML" %}}
 
-This step deploys arbitrary Kubernetes resources to the project. This deployment requires a Kubernetes manifest file to be present in the source code repository. Pipeline variable substitution is supported in the manifest file. You can view an example file at [GitHub](https://github.com/rancher/pipeline-example-go/blob/master/deployment.yaml). For available variables, refer to [Pipeline Variable Reference]({{< baseurl >}}rancher/v2.x/en/tools/pipelines/reference/).
+This step deploys arbitrary Kubernetes resources to the project. This deployment requires a Kubernetes manifest file to be present in the source code repository. Pipeline variable substitution is supported in the manifest file. You can view an example file at [GitHub](https://github.com/rancher/pipeline-example-go/blob/master/deployment.yaml). For available variables, refer to [Pipeline Variable Reference]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/).
 
 {{% tabs %}}
 

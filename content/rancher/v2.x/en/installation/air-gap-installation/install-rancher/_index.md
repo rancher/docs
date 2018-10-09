@@ -134,7 +134,7 @@ kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
 
-Make sure you follow any additional instructions required by SSL install options. See [Choose your SSL Configuration]({{< baseurl >}}rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) for details.
+Make sure you follow any additional instructions required by SSL install options. See [Choose your SSL Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) for details.
 
 {{% /tab %}}
 {{% tab "Single Node" %}}
