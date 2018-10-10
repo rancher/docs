@@ -1,9 +1,9 @@
 ---
-title: Upgrading to v2.0.7—Namespace Migration
+title: Upgrading to v2.0.7+ — Namespace Migration
 weight:
 aliases:
 ---
->This section applies on to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
+>This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
 In Rancher v2.0.6 and prior, system namespaces crucial for Rancher and Kubernetes operations were not assigned to any Rancher project by default. Instead, these namespaces existed independently from all Rancher projects, but you could move these namespaces into any project without affecting cluster operations.
 
@@ -19,13 +19,45 @@ These namespaces include:
 
 ><sup>1</sup> Only displays if this feature is enabled for the cluster.
 
-However, with the release of Rancher v2.0.7, the `System` project was introduced. This project, which is automatically created during the upgrade, is assigned the system namespaces above to hold these crucial namespaces for safe keeping.
+However, with the release of Rancher v2.0.7, the `System` project was introduced. This project, which is automatically created during the upgrade, is assigned the system namespaces above to hold these crucial components for safe keeping.
 
-During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces are moved from their default location outside of all projects into the newly created `System` project.  
+During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces are moved from their default location outside of all projects into the newly created `System` project. However, if you assigned any of your system namespaces to a project before upgrading, your cluster networking may encounter issues afterwards. This issue occurs because the system namespaces are not where the upgrade expects them to be during the upgrade, so it cannot move them to the `System` project.
 
-However, if you assigned any of your system namespaces to a project before upgrading, your cluster networking may encounter issues afterwards.
+- To prevent this issue from occurring before the upgrade, see [Preventing Cluster Networking Issues](#preventing-cluster-networking-issues).
+- To fix this issue following upgrade, see [Restoring Cluster Networking](#restoring-cluster-networking).
 
-## Solution
+## Preventing Cluster Networking Issues
+
+You can prevent cluster networking issues from occurring during your upgrade to v2.0.7+ by unassigning system namespaces from all of your Rancher projects. Complete this task if you've assigned any of a cluster's system namespaces into a Rancher project. 
+
+1. Log into the Rancher UI prior to upgrade.
+
+1. From the context menu, open the **local** cluster (or any of your other clusters).
+
+1. From the main menu, select **Project/Namespaces**.
+
+1. Find and select the following namespaces. Click **Move** and then choose **None** to move them out of your projects. Click **Move** again.
+
+    >**Note:** Some or all of these namespaces may already be unassigned from all projects.
+
+    - `kube-system`
+    - `kube-public`
+    - `cattle-system`
+    - `cattle-alerting`<sup>1</sup>
+    - `cattle-logging`<sup>1</sup>
+    - `cattle-pipeline`<sup>1</sup>
+    - `ingress-nginx`
+
+    ><sup>1</sup> Only displays if this feature is enabled for the cluster.
+
+    <sup>Moving Namespaces Out of Projects</sup>
+    ![Moving Namespaces]({{< baseurl >}}/src/img/rancher/move-namespaces.png)
+
+1. Repeat these steps for each cluster where you've assigned system namespaces to projects.
+
+**Result:** All system namespaces are moved out of Rancher projects. You can now safely begin the [upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades).
+
+## Restoring Cluster Networking 
 
 Reset the cluster nodes' network policies to restore connectivity.
 
@@ -34,7 +66,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 >Download and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 {{% tabs %}}
-{{% tab "Rancher Server Nodes" %}}
+{{% tab "Local Cluster Nodes" %}}
 1. From **Terminal**, change directories to your kubectl file that's generated during Rancher install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during Rancher installation.
 
 1. Before repairing networking, run the following two commands to make sure that your nodes are `Ready` and `Healthy`.
