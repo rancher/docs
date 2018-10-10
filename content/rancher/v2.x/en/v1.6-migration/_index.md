@@ -106,3 +106,36 @@ Blog Post: [From Cattle to Kubernetes-How to Load Balance Your Services in Ranch
 
 In Rancher 1.6, a Load Balancer was used to expose your applications from within the Rancher environment for external access. In Rancher 2.0, the concept is the same. There is a Load Balancer option to expose your services. In the language of Kubernetes, this function is more often referred to as an **Ingress**. In short, Load Balancer and Ingress play the same role.
 
+
+## Migration Helper Tool
+
+Rancher has developed a tool to help with the Rancher 1.6 to Rancher 2.0 migration. Users can download the tool binary from here https://github.com/rancher/migration-tools/releases
+
+This tool will:
+
+- Accept the Rancher 1.6 Docker Compose config files [docker-compose.yml and rancher-compose.yml] that users can export from Rancher 1.6 Stacks
+
+- Output of the tool is a list of constructs present in the compose files that cannot be supported onto Rancher 2.0 Kubernetes platform without special handling or some parameters that cannot be converted to Kubernetes YAML using tools like Kompose.
+
+This should help users to run a quick check to see if their application running on Rancher 1.6 can be migrated to 2.0 and what is lacking to do the migration.
+
+**Usage**:
+
+```migration-tools --docker-file <path to docker-compose.yml> --rancher-file <path to rancher-compose.yml if available>```
+
+**Options**:
+
+-   `--docker-file value`   An absolute path to an alternate Docker compose file (default: "docker-compose.yml")
+-   `--rancher-file value`  An absolute path to an alternate Rancher compose file (default: "rancher-compose.yml")
+-   `--help, -h`           show help
+-   `--version, -v`        print the version
+
+**Output**
+
+- output.txt
+		This tool will generate `output.txt` file to list all constructs for each service in your docker-compose.yml file that will need to be handled specially to sucessfully migrate them to Rancher 2.0. Under the construct, a link to the relevant blog is placed where users can find help on how to implement it on Rancher 2.0.
+- Kubernetes YAML specs
+		This tool also invokes the [Kompose tool](https://github.com/kubernetes/kompose) internally, and using Kompose it generates some Kubernetes YAML specs for the services to get started with migration.
+
+
+
