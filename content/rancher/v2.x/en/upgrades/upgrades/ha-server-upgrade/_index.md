@@ -1,16 +1,15 @@
 ---
-title: High Availability (HA) Upgrade - RKE Add-on
+title: Deprecated - HA Upgrade - RKE Add-on
 weight: 1040
 aliases:
   - /rancher/v2.x/en/upgrades/ha-server-upgrade/
 ---
 
-> ### 🛑 IMPORTANT: RKE Add-On install is Deprecated as of the 2.1.0 release.
+> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8.**
 >
->Please use the official Helm Chart to install HA Rancher. For details see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
 >
->If you are currently using the RKE Add-On install method see [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on moving to the Helm Chart.
-
+>If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move using a helm chart.
 
 This document is for upgrading Rancher HA installed with the RKE Add-On yaml. See these docs to migrate to or upgrade Rancher installed with the Helm chart.
 
@@ -28,9 +27,9 @@ This document is for upgrading Rancher HA installed with the RKE Add-On yaml. Se
 
 1. Change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
-    >**Want records of all transactions with the Rancher API?** 
+    >**Want records of all transactions with the Rancher API?**
     >
-    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file (`rancher-cluster.yml`). For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
+    >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file (`rancher-cluster.yml`). For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/api-auditing/).
 
 1. <a id="snapshot"></a> Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
