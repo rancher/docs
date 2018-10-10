@@ -4,6 +4,13 @@ weight: 276
 aliases:
 - /rancher/v2.x/en/installation/ha-server-install-external-lb/
 ---
+
+> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+>
+>Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>
+>If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+
 This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 7 Loadbalancer with SSL termination (HTTPS)
@@ -108,9 +115,9 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-certificate.yml)
 	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-recognizedca.yml)
 
-    >**Advanced Config Options:** 
+    >**Advanced Config Options:**
     >
-    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see [RKE Documentation: API Auditing]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/api-auditing).
+    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/api-auditing/).
     >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/).
 
 
@@ -149,7 +156,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
             ssh_key_path: ~/.ssh/id_rsa
 
 1. **Optional:** By default, `rancher-cluster.yml` is configured to take backup snapshots of your data. To disable these snapshots, change the `backup` directive setting to `false`, as depicted below.
-   
+
         services:
           etcd:
             backup: false   
@@ -186,7 +193,7 @@ After replacing the values, the file should look like the example below (the bas
 
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Signed by Recognized CA" %}}
-If you are using a Certificate Signed By A Recognized Certificate Authority, you don't need to perform any step in this part. 
+If you are using a Certificate Signed By A Recognized Certificate Authority, you don't need to perform any step in this part.
 {{% /accordion %}}
 
 ## 8. Configure FQDN

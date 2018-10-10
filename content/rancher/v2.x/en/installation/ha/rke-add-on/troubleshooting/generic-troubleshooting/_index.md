@@ -5,6 +5,12 @@ aliases:
 - /rancher/v2.x/en/installation/troubleshooting-ha/generic-troubleshooting/
 ---
 
+> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+>
+>Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>
+>If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+
 Below are steps that you can follow to determine what is wrong in your cluster.
 
 ### Double check if all the required ports are opened in your (host) firewall
