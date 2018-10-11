@@ -19,22 +19,20 @@ helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 
 Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
 
-Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yy.mm.dd` helm chart version.
+Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
 
 Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
 
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
-
-For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
 
 ### Install cert-manager
 
 > **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates and using the `ingress.tls.source=secret` option.
 
-Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the [Kubernetes Helm stable catalog](https://github.com/helm/charts/tree/master/stable/cert-manager) to issue self-signed or LetsEncrypt certificates.
+Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm stable catalog to issue self-signed or LetsEncrypt certificates.
 
 Install `cert-manager` from the Helm stable catalog.
 
