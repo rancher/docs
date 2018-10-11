@@ -62,7 +62,7 @@ helm install rancher-stable/rancher \
 
 Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
 
-Set `hostname`, `ingress.tls.source=letEncrypt` and LetsEncrypt options.
+Set `hostname`, `ingress.tls.source=letsEncrypt` and LetsEncrypt options.
 
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
