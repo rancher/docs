@@ -21,7 +21,7 @@ For additional chart details, view the [source of these Rancher server charts](h
 
 > **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates and using the `ingress.tls.source=secret` option.
 
-Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm "stable" catalog to issue self-signed or LetsEncrypt certificates.
+Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the [Kubernetes Helm stable catalog](https://github.com/helm/charts/tree/master/stable/cert-manager) to issue self-signed or LetsEncrypt certificates.
 
 Install `cert-manager` from the Helm stable catalog.
 
@@ -33,7 +33,7 @@ helm install stable/cert-manager \
 
 ### Choose your SSL Configuration
 
-Rancher server is designed to be "secure by default" and requires SSL/TLS configuration.
+Rancher server is designed to be secure by default and requires SSL/TLS configuration.
 
 There are three options for the source of the certificate.
 
@@ -47,7 +47,7 @@ There are three options for the source of the certificate.
 
 The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
 
-The only requirement is to set the `hostname` to the DNS name you pointed at your Load Balancer.
+The only requirement is to set the `hostname` to the DNS name you pointed at your load balancer.
 
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
@@ -77,11 +77,11 @@ helm install rancher-stable/rancher \
 
 #### Certificates from Files (Kubernetes Secret)
 
-Create Kubernetes Secrets from your own certificates for Rancher to use.
+Create Kubernetes secrets from your own certificates for Rancher to use.
 
 > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
-Set `hostname` and `ingress.tls.source=secret`
+Set `hostname` and `ingress.tls.source=secret`.
 
 > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
 
@@ -93,7 +93,7 @@ helm install rancher-stable/rancher \
   --set ingress.tls.source=secret
 ```
 
-Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the Ingress Controller can use them.
+Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 ### Advanced Configurations
 
