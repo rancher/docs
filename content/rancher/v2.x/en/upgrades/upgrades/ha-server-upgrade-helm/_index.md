@@ -26,7 +26,7 @@ The following instructions will guide you through upgrading a high-availability 
 
     Follow the kubectl [configuration instructions]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl) and confirm that you can connect to the Kubernetes cluster running Rancher server.
 
-- **Helm** 
+- **Helm**
 
     [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
@@ -37,6 +37,19 @@ The following instructions will guide you through upgrading a high-availability 
     ```
     helm init --upgrade --service-account tiller
     ```
+
+## Chart Versioning Notes
+
+Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
+
+Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
+
+Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
+
+```
+NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
+rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+```
 
 ## Upgrade Rancher
 
@@ -56,11 +69,15 @@ The following instructions will guide you through upgrading a high-availability 
     hostname: rancher.my.org
     ```
 
-3. Take the values above and use `helm` with `--set` options to upgrade Rancher to the latest version.
+    > **Note:** There may be more values that are listed with this command depending on which [SSL configuration option you selected]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) when installing Rancher.
+
+3. Take all values from the previous command and use `helm` with `--set` options to upgrade Rancher to the latest version.
 
     ```
     helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
     ```
+
+    > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
 
 ## Rolling Back
 
