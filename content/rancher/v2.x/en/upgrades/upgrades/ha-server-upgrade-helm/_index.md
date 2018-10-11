@@ -38,6 +38,21 @@ The following instructions will guide you through upgrading a high-availability 
     helm init --upgrade --service-account tiller
     ```
 
+## Chart Versioning Notes
+
+Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
+
+Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yy.mm.dd` helm chart version.
+
+Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
+
+```
+NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
+rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+```
+
+For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
+
 ## Upgrade Rancher
 
 > **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#upgrading-rancher)
