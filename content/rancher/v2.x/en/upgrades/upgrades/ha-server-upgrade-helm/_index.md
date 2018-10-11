@@ -56,15 +56,15 @@ The following instructions will guide you through upgrading a high-availability 
     hostname: rancher.my.org
     ```
 
-> **Note:** There may be more values that are listed with this command depending on which [SSL configuration option you selected]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) when installing Rancher.
+    > **Note:** There may be more values that are listed with this command depending on which [SSL configuration option you selected]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) when installing Rancher.
 
 3. Take all values from the previous command and use `helm` with `--set` options to upgrade Rancher to the latest version.
 
     ```
     helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
     ```
-    
-> **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
+
+    > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
 
 ## Rolling Back
 
