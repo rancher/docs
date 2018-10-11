@@ -28,6 +28,20 @@ The following instructions will guide you through upgrading a high-availability 
 
     Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
+## Chart Versioning Notes
+
+Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
+
+Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yy.mm.dd` helm chart version.
+
+Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
+
+```
+NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
+rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+```
+
+For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
 
 ## Upgrade Rancher
 
