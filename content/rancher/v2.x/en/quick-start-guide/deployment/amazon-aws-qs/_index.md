@@ -11,6 +11,7 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 - [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
+- [Amazon AWS Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) Use this link and follow instructions to create a Key Pair.
 - [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
 
 
