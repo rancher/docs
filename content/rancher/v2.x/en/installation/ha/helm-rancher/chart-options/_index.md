@@ -33,7 +33,7 @@ weight: 276
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |
-| `tls` | "ingress" | `string` - **DEPRECATED**: Changing this option is not recommended. See [External TLS Termination](#external-tls-termination) for details. - "ingress, external" |
+| `tls` | "ingress" | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external" |
 
 <br/>
 
@@ -82,56 +82,27 @@ See [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/
 
 ### External TLS Termination
 
-Due to security concerns and configuration variability, terminating TLS exclusively on an external load balancer is being deprecated. This option will be removed in future versions of the Helm chart.
-
 We recommend configuring your load balancer as a Layer 4 balancer, forwarding plain 80/tcp and 443/tcp to the Rancher Management cluster nodes. The Ingress Controller on the cluster will redirect http traffic on port 80 to https on port 443.
 
-You may configure your load balancer as a Layer 7 balancer with a SSL/TLS certificate, but you will need to configure the load balancer to forward to the https endpoints on the Rancher Management Cluster nodes.
+You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-#### Conversion
+> **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` and see [Adding TLS Secrets - Private CA Signed - Additional Steps]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/#private-ca-signed---additional-steps) to add the CA cert for Rancher.
 
-##### Certificates
+Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
-Make sure you have a copy of the following:
+#### Required Headers
 
-* Server Certificate
-* Server Certificate Private Key
-* Any Chain Certificates
-* Private CA Root Certificate (if Private CA)
+* `Host`
+* `X-Forwarded-Proto`
+* `X-Forwarded-Port`
+* `X-Forwarded-For`
 
-The certificate doesn't need to be the same one used by the external load balancer, but it can be.  If you creating a new certificate and used a Private CA to sign the certificate installed on the external load balancer, use the same CA to sign the new certificate.
+#### Recommended Timeouts
 
-##### Gather Chart Options
+* Read Timeout: `1800 seconds`
+* Write Timeout: `1800 seconds`
+* Connect Timeout: `30 seconds`
 
-The Helm chart options for setting up TLS with provided certificates can be found in the [Install Rancher - Certificates from Files (Kubernetes Secrets)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#certificates-from-files-kubernetes-secret) section.
+#### Health Checks
 
-In general you will need to swap out:
-
-```plain
---set tls=external
-```
-
-With:
-
-```plain
-  --set ingress.tls.source=secret
-```
-
-> **Note:** if your certificates are signed by a private CA don't forget to add the `--set privateCA=true` option.
-
-##### Upgrade
-
-Once you have selected the `helm --set` options for your SSL configuration, follow the [Rancher Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm) instructions replacing the deprecated chart options with the new configuration.
-
-Example with privateCA option:
-
-```plain
-helm upgrade rancher rancher-stable/rancher \
-  --set hostname=rancher.my.org \
-  --set ingress.tls.source=secret \
-  --set privateCA=true
-```
-
-##### Populate Certificate Secrets
-
-The Ingress controller will wait until you have populated the certificate secrets before serving the Rancher application. See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) for details.
+Rancher will respond `200` to health checks on the `/healthz` endpoint.
