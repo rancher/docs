@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/concepts/volumes-and-storage/
   - /rancher/v2.x/en/tasks/clusters/adding-storage/
 ---
-When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails. 
+When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails.
 
 There are two ways to create persistent storage in Kubernetes: Persistent Volumes (PVs) and Storage Classes.
 
@@ -162,6 +162,21 @@ _Storage Classes_ allow you to dynamically provision persistent volumes on deman
 1. From the `Parameters` section, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
 
 1. Click `Save`.
+
+## Notes About iSCSI Volumes
+
+iSCSI initiator tool is embedded into the kubelet docker image `rancher/hyperkube` so that it can be used to discover and initiate a session with iSCSI target, however sometimes kubelet fails to automatically login and connect with iSCSI volumes, the main problem is that initiator version may not match the same version as the target which will cause the failure, due to this incompatibility the user may workaround this problem by installing the initator tool on the kubernetes nodes manually, and then edit the kubelet configuration to mount the iscsi binary and configuration on the node:
+```
+services:
+  kubelet:
+    extra_binds:
+      - "/etc/iscsi:/etc/iscsi"
+      - "/sbin/iscsiadm:/sbin/iscsiadm"
+```
+
+Note:
+
+If the open-iscsi (deb) or iscsi-initiator-utils (yum) package isn't installed before the bind mounts are made, docker kindly creates files/directories for you on the host and messes up the package install.
 
 ## What's Next?
 
