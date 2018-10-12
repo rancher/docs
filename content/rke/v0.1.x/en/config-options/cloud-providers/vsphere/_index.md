@@ -58,7 +58,7 @@ The vSphere configuration options are divided into 5 groups:
 
 ### global
 
-The main purpose of global options is to be able to define a common set of configuration parameters that will be inherited by all vCenters defined under the `virtual_center` directive unless explicitely defined there.
+The main purpose of global options is to be able to define a common set of configuration parameters that will be inherited by all vCenters defined under the `virtual_center` directive unless explicitly defined there.
 
 Accordingly, the `global` directive accepts the same configuration options that are available under the `virtual_center` directive. Additionally it accepts a single parameter that can only be specified here:
 

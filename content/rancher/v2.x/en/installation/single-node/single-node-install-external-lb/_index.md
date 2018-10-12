@@ -159,7 +159,7 @@ server {
 
 ### API Auditing
 
-If you want to record all transations with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+If you want to record all transitions with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
 
 	-e AUDIT_LEVEL=1 \
 	-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \

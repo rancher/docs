@@ -37,7 +37,7 @@ $ sudo ros install -d /dev/sda --append "rancheros.autologin=tty1"
 
 _Available as of v1.1_
 
-RancherOS v1.1.0 added a Syslinux boot menu, which allows you to temporarily edit the boot paramters, or to select "Debug logging", "Autologin", both "Debug logging & Autologin" and "Recovery Console".
+RancherOS v1.1.0 added a Syslinux boot menu, which allows you to temporarily edit the boot parameters, or to select "Debug logging", "Autologin", both "Debug logging & Autologin" and "Recovery Console".
 
 On desktop systems the Syslinux boot menu can be switched to graphical mode by adding `UI vesamenu.c32` to a new line in `global.cfg` (use `sudo ros config syslinux` to edit the file).
 

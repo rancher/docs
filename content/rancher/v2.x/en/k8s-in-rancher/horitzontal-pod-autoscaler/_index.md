@@ -857,7 +857,7 @@ Use your load testing tool to scale down to one pod when all metrics below targe
 
 ### Conclusion
 
-Horizontal Pod Autoscaling is a great way to automate the number of pod you have deployed for maximum efficency. You can use it to accomodate deployment scale to real service load and to meet service level agreements.
+Horizontal Pod Autoscaling is a great way to automate the number of pod you have deployed for maximum efficiency. You can use it to accommodate deployment scale to real service load and to meet service level agreements.
 
 By adjusting the `horizontal-pod-autoscaler-downscale-delay` and `horizontal-pod-autoscaler-upscale-delay` flag values, you can adjust the time needed before kube-controller scales your pods up or down.
 
