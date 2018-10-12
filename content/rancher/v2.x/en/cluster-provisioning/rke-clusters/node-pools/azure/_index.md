@@ -8,6 +8,8 @@ aliases:
 
 Use {{< product >}} to create a Kubernetes cluster in Azure.
 
+>**Note:** If you want to reuse a node from a previous Rancher Launched Kubernetes cluster, [clean the node]({{< baseurl >}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+
 1. From the **Clusters** page, click **Add Cluster**.
 
 2. Choose **Azure**.
