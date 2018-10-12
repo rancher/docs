@@ -69,7 +69,7 @@ To help with migration from 1.6 to 2.0, Rancher has developed a migration tool. 
 This tool will:
 
 - Accept Docker Compose config files (i.e., `docker-compose.yml` and `rancher-compose.yml`) that you've exported from your Rancher 1.6 Stacks.
-- Output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or parameters that cannot be converted to Kubernetes YAML, even using tools like Kompose.
+- Output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML, even using tools like Kompose.
 
 ### A. Download the Migration Tool
 
@@ -117,10 +117,12 @@ When using the Migration Tool, you can specify the paths to your Docker and Ranc
 
 | Option                 | Description                                                                            |
 | ---------------------- | -------------------------------------------------------------------------------------- |
-| `--docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH>`  | The absolute path to an exported Docker compose file (default value: `docker-compose.yml`)   |
-| `--rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>` | The absolute path to an alternate Rancher compose file (default value: `rancher-compose.yml`) |
+| `--docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH>`  | The absolute path to an exported Docker compose file (default value: `docker-compose.yml`)<sup>1</sup>.   |
+| `--rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>` | The absolute path to an alternate Rancher compose file (default value: `rancher-compose.yml`)<sup>1</sup>. |
 | `--help, -h`           | Lists usage for the Migration Tool.                                                                                |
 | `--version, -v`        | Lists the version of the Migration Tool in use.                                                         |
+
+><sup>1</sup> If you omit the `--docker-file` and `--rancher-file` options from your command, the migration tool will check its home directory for compose files.
 
 #### Output
 
