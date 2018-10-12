@@ -28,6 +28,12 @@ nodes:
     internal_address: 172.16.42.73
     user: ubuntu
     role: [controlplane,worker,etcd]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
 ```
 
 #### Common RKE Nodes: Options
