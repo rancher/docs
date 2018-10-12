@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/concepts/volumes-and-storage/
   - /rancher/v2.x/en/tasks/clusters/adding-storage/
 ---
-When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails. 
+When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails.
 
 There are two ways to create persistent storage in Kubernetes: Persistent Volumes (PVs) and Storage Classes.
 
@@ -162,6 +162,24 @@ _Storage Classes_ allow you to dynamically provision persistent volumes on deman
 1. From the `Parameters` section, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
 
 1. Click `Save`.
+
+## Notes About Using iSCSI Volumes With [Rancher Launched Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
+
+iSCSI initiator tool is embedded into the kubelet Docker image `rancher/hyperkube` so that it can be used to discover and initiate a session with iSCSI target. However, sometimes the kubelet fails to automatically login and connect with iSCSI volumes. The problem is that the initiator version may not match the same version as the target. When there is a mis-match in versions, it will cause a failure. Due to this incompatibility, the user may workaround this version mis-match by installing the initiator tool on all the nodes in the Kubernetes cluster. After installing the initiator tool onto all the Kubernetes nodes, edit the kubelet configuration to mount the iscsi binary and configuration on the node
+
+These changes to the kubelet would need to be done by editing the yaml of Kubernetes cluster. 
+
+```
+services:
+  kubelet:
+    extra_binds:
+      - "/etc/iscsi:/etc/iscsi"
+      - "/sbin/iscsiadm:/sbin/iscsiadm"
+```
+
+> **Note:**
+>
+> If the open-iscsi (deb) or iscsi-initiator-utils (yum) package isn't installed **before** the bind mounts are made, Docker will have automatically created the directories and files on the host and will not allow the package install to be succeed.
 
 ## What's Next?
 
