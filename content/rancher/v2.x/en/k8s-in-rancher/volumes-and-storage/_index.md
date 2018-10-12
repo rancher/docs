@@ -163,9 +163,12 @@ _Storage Classes_ allow you to dynamically provision persistent volumes on deman
 
 1. Click `Save`.
 
-## Notes About iSCSI Volumes
+## Notes About Using iSCSI Volumes With [Rancher Launched Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
 
-iSCSI initiator tool is embedded into the kubelet docker image `rancher/hyperkube` so that it can be used to discover and initiate a session with iSCSI target, however sometimes kubelet fails to automatically login and connect with iSCSI volumes, the main problem is that initiator version may not match the same version as the target which will cause the failure, due to this incompatibility the user may workaround this problem by installing the initator tool on the kubernetes nodes manually, and then edit the kubelet configuration to mount the iscsi binary and configuration on the node:
+iSCSI initiator tool is embedded into the kubelet Docker image `rancher/hyperkube` so that it can be used to discover and initiate a session with iSCSI target. However, sometimes the kubelet fails to automatically login and connect with iSCSI volumes. The problem is that the initiator version may not match the same version as the target. When there is a mis-match in versions, it will cause a failure. Due to this incompatibility, the user may workaround this version mis-match by installing the initiator tool on all the nodes in the Kubernetes cluster. After installing the initiator tool onto all the Kubernetes nodes, edit the kubelet configuration to mount the iscsi binary and configuration on the node
+
+These changes to the kubelet would need to be done by editing the yaml of Kubernetes cluster. 
+
 ```
 services:
   kubelet:
@@ -174,9 +177,9 @@ services:
       - "/sbin/iscsiadm:/sbin/iscsiadm"
 ```
 
-Note:
-
-If the open-iscsi (deb) or iscsi-initiator-utils (yum) package isn't installed before the bind mounts are made, docker kindly creates files/directories for you on the host and messes up the package install.
+> **Note:**
+>
+> If the open-iscsi (deb) or iscsi-initiator-utils (yum) package isn't installed **before** the bind mounts are made, Docker will have automatically created the directories and files on the host and will not allow the package install to be succeed.
 
 ## What's Next?
 
