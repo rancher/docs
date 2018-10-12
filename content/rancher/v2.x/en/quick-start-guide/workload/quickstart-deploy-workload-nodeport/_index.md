@@ -15,7 +15,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 1.  From the **Clusters** page, open the cluster that you just created.
 
-2.  From the main menu of the **Dashboard**, select **Projects**.
+2.  From the main menu of the **Dashboard**, select **Projects/Namespaces**.
 
 3.  Open the **Project: Default** project.
 
