@@ -48,6 +48,40 @@ kubectl -n cattle-system delete clusterrolebinding cattle-crb
 kubectl -n cattle-system delete serviceaccount cattle-admin
 ```
 
+### Remove addons section from `rancher-cluster.yml`
+
+The addons section from `rancher-cluster.yml` contains all the resources needed to deploy Rancher using RKE. By switching to Helm, this part of the cluster configuration file is no longer needed. Open `rancher-cluster.yml` in your favorite text editor and remove the addons section:
+
+>**Important:** Make sure you only remove the addons section from the cluster configuration file.
+
+```
+nodes:
+  - address: <IP> # hostname or IP to access nodes
+    user: <USER> # root user (usually 'root')
+    role: [controlplane,etcd,worker] # K8s roles for node
+    ssh_key_path: <PEM_FILE> # path to PEM file
+  - address: <IP>
+    user: <USER>
+    role: [controlplane,etcd,worker]
+    ssh_key_path: <PEM_FILE>
+  - address: <IP>
+    user: <USER>
+    role: [controlplane,etcd,worker]
+    ssh_key_path: <PEM_FILE>
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+# Remove addons section from here til end of file
+addons: |-
+  ---
+  ...
+# End of file
+```
+
 ### Follow Helm and Rancher install steps
 
 From here follow the standard install steps.
