@@ -11,7 +11,7 @@ mounts:
 - ["/dev/vdb", "/mnt/s", "ext4", ""]
 ```
 
-**Important**: Be aware, the 4th parameter is mandatory and cannot be ommited (server crashes). It also yet cannot be `defaults`
+**Important**: Be aware, the 4th parameter is mandatory and cannot be omitted (server crashes). It also yet cannot be `defaults`
 
 As you will use the `ros` cli most probably, it would look like this:
 

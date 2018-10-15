@@ -62,7 +62,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 1. Enter a **Name** for the notifier.
 1. Using the app of your choice, create a webhook URL.
 1. Enter your webhook **URL**.
-1. Click **Test**. If the test is successfull, the URL you're configuring as a notifier outputs `Webhook setting validated`.
+1. Click **Test**. If the test is successful, the URL you're configuring as a notifier outputs `Webhook setting validated`.
 {{% /accordion %}}
 
 1. Click **Add** to complete adding the notifier.

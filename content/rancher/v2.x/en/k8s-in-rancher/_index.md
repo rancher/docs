@@ -111,7 +111,7 @@ For more information, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-ranch
 
 ## Service Discovery
 
-After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a service record, which is a record that maps an IP address, external hostname, DNS record alias, workload(s), or labled pods to a specific hostname.
+After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a service record, which is a record that maps an IP address, external hostname, DNS record alias, workload(s), or labelled pods to a specific hostname.
 
 For more information, see [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/service-discovery).
 

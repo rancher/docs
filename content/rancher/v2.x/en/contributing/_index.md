@@ -79,7 +79,7 @@ Please follow this checklist when filing an issue which will helps us investigat
   - Docker daemon logging (these might not all exist, depending on operating system)
       - `/var/log/docker.log`
 
-If you are experiencing performance issues, please provide as much of data (files or screenshots) of metrics which can help determing what is going on. If you have an issue related to a machine, it helps to supply output of `top`, `free -m`, `df` which shows processes/memory/disk usage.
+If you are experiencing performance issues, please provide as much of data (files or screenshots) of metrics which can help determining what is going on. If you have an issue related to a machine, it helps to supply output of `top`, `free -m`, `df` which shows processes/memory/disk usage.
 
 
 ### Docs
