@@ -39,3 +39,5 @@ write_files:
       restrict 127.0.0.1
       restrict [::1]
 ```
+
+> **Note:** Currently, writing files to a specific system service is only supported for RancherOS's built-in services. You are unable to write files to any custom system services. 
