@@ -84,7 +84,7 @@ See [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/
 
 We recommend configuring your load balancer as a Layer 4 balancer, forwarding plain 80/tcp and 443/tcp to the Rancher Management cluster nodes. The Ingress Controller on the cluster will redirect http traffic on port 80 to https on port 443.
 
-You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
+You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
 > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` and see [Adding TLS Secrets - Private CA Signed - Additional Steps]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/#private-ca-signed---additional-steps) to add the CA cert for Rancher.
 
