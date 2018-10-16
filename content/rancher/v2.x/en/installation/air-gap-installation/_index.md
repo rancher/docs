@@ -8,7 +8,7 @@ In environments where security is high priority, you can set up Rancher in an ai
 
 - Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
-    For each Rancher [release](https://github.com/rancher/rancher/releases), we provide the Docker images and scripts needed to mirror these images to your own registry. The Docker images are used when installing Rancher in a HA setup, when provisioning a cluster where Rancher is launching Kubernetes, or when you enable features like pipelines or logging.
+    For each Rancher [release](https://github.com/rancher/rancher/releases), we provide the Docker images and scripts needed to mirror these images to your own registry. The Docker images are used when installing Rancher in an HA setup, when provisioning a cluster where Rancher is launching Kubernetes, or when you enable features like pipelines or logging.
 
 - **Installation Option:** Before beginning your air gap installation, choose whether you want ~~a~~ [single-node install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) or a [high availability install]({{< baseurl >}}/rancher/v2.x/en/installation/ha). View your chosen configuration's introduction notes along with Rancher's [node requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
