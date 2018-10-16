@@ -9,7 +9,7 @@ Use RKE to install Kubernetes with a high availability etcd configuration.
 
 ### Create the `rancher-cluster.yml` File
 
-Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 Nodes you created.
+Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
 
 > **Note:**  If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
@@ -30,27 +30,29 @@ nodes:
     role: [controlplane,worker,etcd]
 ```
 
-#### Common RKE Nodes: Options
+#### Common RKE Nodes Options
 
-| Option | Description |
-| --- | --- |
-| `address` | (required) The public DNS or IP address |
-| `internal_address` | (optional) The private DNS or IP address for internal cluster traffic |
-| `role` | (required) List of Kubernetes roles assigned to the node |
-| `ssh_key_path` | (optional) Path to SSH private key used to authenticate to the node |
-| `user` | (required) A user that can run docker commands |
+| Option | Required | Description |
+| --- | --- | --- |
+| `address` | yes | The public DNS or IP address |
+| `user` | yes | A user that can run docker commands |
+| `role` | yes | List of Kubernetes roles assigned to the node |
+| `internal_address` | no | The private DNS or IP address for internal cluster traffic |
+| `ssh_key_path` | no | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`) |
 
 #### Advanced Configurations
 
 RKE has many configuration options for customizing the install to suit your specific environment.
 
-Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/) for the full list of options and capabilities.
+Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/) for the full list of options and capabilities.
 
 ### Run RKE
 
 ```
 rke up --config ./rancher-cluster.yml
 ```
+
+When finished, it should end with the line: `Finished building Kubernetes cluster successfully`.
 
 ### Testing Your Cluster
 
@@ -64,7 +66,7 @@ You can copy this file to `$HOME/.kube/config` or if you are working with multip
 export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
 ```
 
-Test your connectivity with `kubectl` and see if you can get the list of nodes back.
+Test your connectivity with `kubectl` and see if all your nodes are in `Ready` state.
 
 ```
 kubectl get nodes

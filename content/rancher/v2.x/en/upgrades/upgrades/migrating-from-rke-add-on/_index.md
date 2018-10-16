@@ -1,5 +1,5 @@
 ---
-title: Migrating from a HA RKE Add-on Install
+title: Migrating from an HA RKE Add-on Install
 weight: 1030
 ---
 
