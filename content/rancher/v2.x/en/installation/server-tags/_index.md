@@ -9,7 +9,8 @@ When performing [single-node installs]({{< baseurl >}}/rancher/v2.x/en/installat
 
 ### Server Tags
 
-Rancher Server is distributed as a Docker image, which have tags attached to them. You can specify this tag when entering the command to deploy Rancher. Remember that if you use a tag without an explicit version (like `latest` or `stable`), you must explicitly pull a new version of that image tag. Otherwise, any image cached on the host will be used.
+
+Rancher Server is distributed as a Docker image, which have tags attached to them. You can specify this tag when entering the command to deploy Rancher. Remember that if you use a tag without an explicit version (like `latest` or `stable`), you must explicitly pull a new version of that image tag. Otherwise any image cached on the host will be used.
 
 | Tag                        | Description                                                                                                                                                     |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,6 +29,7 @@ When installing, upgrading, or rolling back Rancher Server in a [high availabili
 ### Helm Chart Repositories
 
 Rancher provides two different Helm chart repositories to choose from. We align our latest and stable Helm chart repositories with the Docker tags that are used for a single node installation. Therefore, the `rancher-latest` repository will contain charts for all the Rancher versions that have been tagged as `rancher/rancher:latest`. When a Rancher version has been promoted to the `rancher/rancher:stable`, it will get added to the `rancher-stable` repository.
+
 
 
 Type | Command to Add the Repo | Description of the Repo
