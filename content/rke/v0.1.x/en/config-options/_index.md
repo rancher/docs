@@ -44,7 +44,7 @@ cluster_name: mycluster
 
 ### Supported Docker Versions
 
-By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. The list of [supported Docker versions](https://github.com/rancher/rke/blob/master/docker/docker.go#L29) are set specifically for each Kubernetes version. To override this behavior, set this option to `true`.
+By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. The list of [supported Docker versions](https://github.com/rancher/rke/blob/master/docker/docker.go#L37-L41) are set specifically for each Kubernetes version. To override this behavior, set this option to `true`.
 
 The default value is `false`.
 

@@ -3,7 +3,7 @@ title: v2.0.x Pipeline Documentation
 weight: 9000
 ---
 
->**Note:** This section describes the pipeline feature as implemented in Rancher v2.0.x. If you are using Rancher v2.1 or later, where pipelines have been significantly improved, please refer to the new documentation for [v2.1 or later](/rancher/v2.x/en/tools/pipelines).
+>**Note:** This section describes the pipeline feature as implemented in Rancher v2.0.x. If you are using Rancher v2.1 or later, where pipelines have been significantly improved, please refer to the new documentation for [v2.1 or later]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines).
 
 
 

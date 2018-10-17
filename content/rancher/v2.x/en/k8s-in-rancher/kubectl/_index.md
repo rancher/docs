@@ -9,6 +9,10 @@ You can access and manage your Kubernetes clusters using kubectl in two ways:
 - [Accessing Clusters with kubectl Shell](#accessing-clusters-with-kubectl-shell)
 - [Accessing Clusters with kubectl CLI and a kubeconfig File]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/)
 
+## Resources created using kubectl
+
+Rancher will discover and show resources created by `kubectl`. However, these resources might not have all the necessary annotations on discovery. If an operation (for instance, scaling the workload) is done to the resource using the Rancher UI/API, this may trigger recreation of the resources due to the missing annotations. This should only happen the first time an operation is done to the discovered resource.
+
 ## Accessing Clusters with kubectl Shell
 
 You can access and manage your clusters by logging into Rancher and opening the kubectl shell. No further configuration necessary.

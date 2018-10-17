@@ -29,7 +29,7 @@ weight: 276
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `proxy` | "" | `string` - string - HTTP[S] proxy server for Rancher |
-| `noProxy` | "localhost,127.0.0.1" | `string` - comma separated list of hostnames or ip address not to use the proxy |
+| `noProxy` | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |
@@ -59,7 +59,7 @@ Add your IP exceptions to the `noProxy` list. Make sure you add the Service clus
 
 ```plain
 --set proxy="http://<username>:<password>@<proxy_url>:<proxy_port>/"
---set noProxy="127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+--set noProxy="127.0.0.0/8\,10.0.0.0/8\,172.16.0.0/12\,192.168.0.0/16"
 ```
 
 ### Additional Trusted CAs

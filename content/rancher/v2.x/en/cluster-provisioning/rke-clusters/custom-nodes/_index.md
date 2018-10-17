@@ -8,7 +8,7 @@ aliases:
 
 ## Custom Nodes
 
-Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using a combination of [Docker Machine](https://docs.docker.com/machine/) and RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ IaaS providers by integrating with node drivers.
+Use Rancher to create a Kubernetes cluster on your on-premise bare metal servers. This option creates a cluster using a combination of [Docker Machine](https://docs.docker.com/machine/) and RKE, which is Rancher's own lightweight Kubernetes installer. In addition to bare metal servers, RKE can also create clusters on _any_ infrastructure provider by integrating with node drivers.
 
 To use this option you'll need access to servers you intend to use as your Kubernetes cluster. Provision each server according to Rancher [requirements](#requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
 
@@ -72,8 +72,9 @@ Use {{< product >}} to clone your Linux host and configure them as Kubernetes no
     >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#node-configuration).
 	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	<a id="step-8"></a>**Optional**: Add **Labels** to your cluster nodes to help schedule workloads later.
+8.	<a id="step-8"></a>**Optional**: Click **Show advanced options** to specify IP address(es) to use when registering the node, override the hostname of the node or to add labels to the node.
 
+	[Rancher Agent Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/agent-options/)<br/>
 	[Kubernetes Documentation: Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
 9. Copy the command displayed on screen to your clipboard.

@@ -24,18 +24,8 @@ The following instructions will guide you through upgrading a high-availability 
 
     [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
-## Chart Versioning Notes
-
-Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
-
-Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
-
-Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
-
-```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
-```
+- **Upgrades to v2.0.7+ only: check system namespace locations**
+     Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
 ## Upgrade Rancher
 
@@ -45,17 +35,31 @@ rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     helm repo update
     ```
 
-1. Fetch the latest `rancher-stable/rancher` chart.
+2. Get the [repository name that you installed Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) with.
 
-    This will pull down the chart and save it in the current directory as a `.tgz` file.
+    ```
+    helm repo list
 
-    ```plain
-    helm fetch rancher-stable/rancher
+    NAME          	      URL
+    stable        	      https://kubernetes-charts.storage.googleapis.com
+    rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-1. Render the upgrade template.
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
-    Use the same `--set` values you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
+
+3. Fetch the latest chart to install Rancher from the Helm chart repository.
+
+    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name that was listed (i.e. `latest` or `stable`).
+
+
+    ```plain
+    helm fetch rancher-<CHART_REPO>/rancher
+    ```
+
+3. Render the upgrade template.
+
+    Use the same `--set` values that you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
 
     ```plain
     helm template ./rancher-<version>.tgz --output-dir . --is-upgrade \
@@ -64,13 +68,19 @@ rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
     ```
 
-1. Copy and apply the rendered manifests.
+4. Copy and apply the rendered manifests.
 
     Copy the files to a server with access to the Rancher server cluster and apply the rendered templates.
 
     ```plain
     kubectl -n cattle-system apply -R -f ./rancher
     ```
+
+**Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
+
+>**Having Network Issues Following Upgrade?**
+>
+> See  [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 ## Rolling Back
 

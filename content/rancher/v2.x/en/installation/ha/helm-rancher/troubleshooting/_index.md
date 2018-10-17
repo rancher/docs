@@ -62,7 +62,7 @@ pod/rancher-784d94f59b-vgqzh   1/1       Running   0          10m
 Use `kubectl` and the pod name to list the logs from the pod.
 
 ```
-kubectl -n cattle-namespace logs -f rancher-784d94f59b-vgqzh
+kubectl -n cattle-system logs -f rancher-784d94f59b-vgqzh
 ```
 
 ### Cert CN is "Kubernetes Ingress Controller Fake Certificate"
