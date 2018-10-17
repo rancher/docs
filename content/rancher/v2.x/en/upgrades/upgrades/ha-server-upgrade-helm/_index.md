@@ -46,6 +46,8 @@ Since there are times where the helm chart will require changes without any chan
 
 Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
 
+
+
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
 rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
@@ -78,8 +80,9 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     ```
 
     > **Important:**
+    >
     >- For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
-    >- During upgrade, you must use the Rancher chart repository that you used during initial install (the `latest` repository by default). For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/)
+    >- During upgrade, you must use the Rancher chart repository that you used during initial install (the `latest` repository by default). For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
 ## Rolling Back
 

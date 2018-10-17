@@ -45,13 +45,17 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     helm repo update
     ```
 
-1. Fetch the latest `rancher-latest/rancher` chart.
+1. Fetch the latest Rancher Server chart from the helm repository that you used during installation.
 
     This will pull down the chart and save it in the current directory as a `.tgz` file.
+
+    >**Note:** This command assumes you have the `latest` Rancher helm repo configured. If you initially installed Rancher using the `stable` helm repo, replace `rancher-latest` with `rancher-stable`. For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
     ```plain
     helm fetch rancher-latest/rancher
     ```
+
+    
 
 1. Render the upgrade template.
 
