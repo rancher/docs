@@ -80,12 +80,12 @@ Fetch and render the `helm` charts on a system that has internet access.
 
 #### Cert-Manager
 
-If you are installing Rancher with Rancher Self-Signed certificates you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
+If you are installing Rancher with Rancher self-signed certificates you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
 
-Fetch the latest `stable/cert-manager` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
+Fetch the latest `cert-manager` chart from your configured repo, replacing `<CHART_REPO>` with the repo you're using (`latest` or `stable`). For more information on chart repo configuration, see [Choosing a Version of Rancher: Rancher Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#rancher-chart-repositories).
 
 ```plain
-helm fetch stable/cert-manager
+helm fetch <CHART_REPO>/cert-manager
 ```
 
 Render the template with the option you would use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
@@ -98,16 +98,16 @@ helm template ./cert-manager-<version>.tgz --output-dir . \
 
 #### Rancher
 
-Install the Rancher chart repo.
+Install the Rancher chart repo. Replace `<CHART_REPO>` with the repository that you're using ('latest' or 'stable').
 
 ```plain
-helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
 ```
 
-Fetch the latest `rancher-latest/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
+Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the repo you're using (`latest` or `stable`).
 
 ```plain
-helm fetch rancher-latest/rancher
+helm fetch rancher-<CHART_REPO>/rancher
 ```
 
 Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.
