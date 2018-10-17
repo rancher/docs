@@ -5,7 +5,7 @@ weight: 230
 
 ## Single Node Installs
 
-When performing single-node installs, upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher. 
+When performing single-node installs, upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
 ### Server Tags
 
@@ -17,18 +17,18 @@ You can find Rancher images at [DockerHub](https://hub.docker.com/r/rancher/ranc
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `rancher/rancher:latest`   | Our latest development release. These builds are validated through our CI automation framework. These releases are not recommended for production environments. |
 | `rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.                                                                                              |
-| `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release.                                                                          |
+| `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.                                                                          |
 
 <br/>
-The `master` tag or any tag with a `-rc` or another suffix is meant for the {{< product >}} testing team to validate.  You should not use these tags, as these builds are not officially supported.
+>**Note:** The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate.  You should not use these tags, as these builds are not officially supported.
 
 ## High Availability Installs
 
-When installing, upgrading, or rolling back Rancher Server in a high availability configuration, you can choose what version of Rancher you want to use.
+When installing, upgrading, or rolling back Rancher Server in a [high availability configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha), you can choose what version of Rancher you want to use.
 
 The images available for installation are controlled by two factors:
 
-- The Rancher Helm repository that you configured (or will configure) during initial installation of Rancher Server.
+- The repository of Helm charts that you will configur (or have configured) during initial installation of Rancher Server.
 - The `rancherImageTag` option, which you can set from the command line.
 
 ### Rancher Chart Repositories
@@ -37,8 +37,8 @@ In high availability Rancher configurations, Rancher Server is distributed by He
 
 Repository | Repo Configuration Command | Description
 -----------|-----|-------------
-`latest`   | `helm repo add rancher-latest https://releases.rancher.com/server-charts/latest` | Adds a repository of Helm charts for the latest versions of Rancher. We recommend using this repo. 
-`stable`   | `helm repo add rancher-stable https://releases.rancher.com/server-charts/stable` | Adds a repository of Helm charts for older, stable versions of Rancher.
+`latest`   | `helm repo add rancher-latest https://releases.rancher.com/server-charts/latest` | Adds a repository of Helm charts for the latest versions of Rancher. We recommend using this repo for testing out new Rancher builds.
+`stable`   | `helm repo add rancher-stable https://releases.rancher.com/server-charts/stable` | Adds a repository of Helm charts for older, stable versions of Rancher. We recommend using this repo for production environments.
 
 >**Important!**
 >
