@@ -104,10 +104,10 @@ Install the Rancher chart repo.
 helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
 ```
 
-Fetch the latest `rancher-stable/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
+Fetch the latest `rancher-latest/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
 
 ```plain
-helm fetch rancher-stable/rancher
+helm fetch rancher-latest/rancher
 ```
 
 Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.

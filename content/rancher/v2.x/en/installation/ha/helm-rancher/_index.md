@@ -11,9 +11,12 @@ Rancher installation is now managed using the Helm package manager for Kubernete
 
 Use `helm repo add` to add the Rancher chart repository.
 
+>**Note:** We recommend adding the `latest` Rancher chart repository used in the command below, but you also have the option of using our `stable` repository. For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
+
 ```
-helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 ```
+
 
 ## Chart Versioning Notes
 
@@ -25,7 +28,7 @@ Run `helm search rancher` to view which Rancher version will be launched for the
 
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
 
 ### Install cert-manager
@@ -63,7 +66,7 @@ The only requirement is to set the `hostname` to the DNS name you pointed at you
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
-helm install rancher-stable/rancher \
+helm install rancher-latest/rancher \
   --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
@@ -78,7 +81,7 @@ Set `hostname`, `ingress.tls.source=letsEncrypt` and LetsEncrypt options.
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
-helm install rancher-stable/rancher \
+helm install rancher-latest/rancher \
   --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
@@ -97,7 +100,7 @@ Set `hostname` and `ingress.tls.source=secret`.
 > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
 
 ```
-helm install rancher-stable/rancher \
+helm install rancher-latest/rancher \
   --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
