@@ -38,7 +38,9 @@ Run `helm search rancher` to view which Rancher version will be launched for the
 
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+
+rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+
 ```
 
 For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
@@ -67,7 +69,6 @@ For additional chart details, view the [source of these Rancher server charts](h
 3. Fetch the latest chart to install Rancher from the Helm chart repository.
 
     This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name that was listed (i.e. `latest` or `stable`).
-
 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher

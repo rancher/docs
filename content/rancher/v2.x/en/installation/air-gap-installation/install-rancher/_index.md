@@ -104,10 +104,17 @@ Add the Helm chart repository that contains charts to install Rancher. Replace `
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
 ```
 
+<<<<<<< HEAD
 Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the repo you're using (`latest` or `stable`).
 
 ```plain
 helm fetch rancher-<CHART_REPO>/rancher
+=======
+Fetch the latest `rancher-latest/rancher` chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
+
+```plain
+helm fetch rancher-latest/rancher
+>>>>>>> updating ha install/upgrade command
 ```
 
 Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.

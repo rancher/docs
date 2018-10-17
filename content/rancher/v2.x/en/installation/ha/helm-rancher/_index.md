@@ -13,9 +13,12 @@ Use `helm repo add` command to add the Helm chart repository that contains chart
 
 Replace `<CHART_REPO>` with the Helm chart repository that you want to use (i.e. `latest` or `stable`).
 
+>**Note:** We recommend adding the `latest` Rancher chart repository used in the command below, but you also have the option of using our `stable` repository. For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
+
 ```
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
 ```
+
 ## Chart Versioning Notes
 
 Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
@@ -26,7 +29,7 @@ Run `helm search rancher` to view which Rancher version will be launched for the
 
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
 
 For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
