@@ -64,7 +64,7 @@ Instead of installing the `tiller` agent on the cluster, render the installs on 
 
 ### Initialize Helm Locally
 
-Skip the [Initialize Helm (Install Tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/#helm-init) and initialize `helm` locally on a system that has internet access.
+Skip the [Initialize Helm (Install Tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/) and initialize `helm` locally on a system that has internet access.
 
 ```plain
 helm init -c
