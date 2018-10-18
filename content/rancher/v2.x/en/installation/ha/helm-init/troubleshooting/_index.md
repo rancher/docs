@@ -20,4 +20,4 @@ helm version --server
 Error: could not find tiller
 ```
 
-When you have confirmed that `tiller` has been removed, please follow the steps provided in [Initialize Helm on the cluster]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/#initialize-helm-on-the-cluster) to install `tiller` with the correct `ServiceAccount`.
+When you have confirmed that `tiller` has been removed, please follow the steps provided in [Initialize Helm (Install tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/) to install `tiller` with the correct `ServiceAccount`.

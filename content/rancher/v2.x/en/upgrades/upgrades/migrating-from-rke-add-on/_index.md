@@ -1,7 +1,15 @@
 ---
-title: Migrating from a HA RKE Add-on Install
+title: Migrating from an HA RKE Add-on Install
 weight: 1030
+aliases:
+  - /rancher/v2.x/en/upgrades/ha-server-upgrade/
+  - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade/
 ---
+
+> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+>
+>If you are currently using the RKE add-on install method, please follow these directions to migrate to the Helm install. 
+
 
 The following instructions will help guide you through migrating from the RKE Add-on install to managing Rancher with the Helm package manager.
 
@@ -46,6 +54,40 @@ kubectl -n cattle-system delete service cattle-service
 kubectl -n cattle-system delete deployment cattle
 kubectl -n cattle-system delete clusterrolebinding cattle-crb
 kubectl -n cattle-system delete serviceaccount cattle-admin
+```
+
+### Remove addons section from `rancher-cluster.yml`
+
+The addons section from `rancher-cluster.yml` contains all the resources needed to deploy Rancher using RKE. By switching to Helm, this part of the cluster configuration file is no longer needed. Open `rancher-cluster.yml` in your favorite text editor and remove the addons section:
+
+>**Important:** Make sure you only remove the addons section from the cluster configuration file.
+
+```
+nodes:
+  - address: <IP> # hostname or IP to access nodes
+    user: <USER> # root user (usually 'root')
+    role: [controlplane,etcd,worker] # K8s roles for node
+    ssh_key_path: <PEM_FILE> # path to PEM file
+  - address: <IP>
+    user: <USER>
+    role: [controlplane,etcd,worker]
+    ssh_key_path: <PEM_FILE>
+  - address: <IP>
+    user: <USER>
+    role: [controlplane,etcd,worker]
+    ssh_key_path: <PEM_FILE>
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+# Remove addons section from here til end of file
+addons: |-
+  ---
+  ...
+# End of file
 ```
 
 ### Follow Helm and Rancher install steps

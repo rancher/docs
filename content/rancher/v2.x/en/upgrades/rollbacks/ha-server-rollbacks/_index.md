@@ -12,4 +12,4 @@ To restore Rancher follow the procedure detailed here: [Restoring Backups — Hi
 
 Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 
-> **Note:** Managed cluster are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
+>**Note:** Managed cluster are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.

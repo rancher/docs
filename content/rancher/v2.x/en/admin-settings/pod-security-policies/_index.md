@@ -38,7 +38,7 @@ Rancher ships with two default Pod Security Policies (PSPs): the `restricted` an
 
 - `unrestricted`
 
-	This policy is equivilent to running Kubernetes with the PSP controller disabled. It has no restrictions on what pods can be deployed into a cluster or project.
+	This policy is equivalent to running Kubernetes with the PSP controller disabled. It has no restrictions on what pods can be deployed into a cluster or project.
 
 ## Creating Pod Security Policies
 

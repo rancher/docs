@@ -5,6 +5,8 @@ weight: 2300
 
 Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) feature (HPA), you can configure your cluster to automatically scale the services it's running up or down.
 
+>**Note:** Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler.
+
 ### Why Use Horizontal Pod Autoscaler?
 
 Using HPA, you can automatically scale the number of pods within a replication controller, deployment, or replica set up or down. HPA automatically scales the number of pods that are running for maximum efficiency. Factors that affect the number of pods include:
@@ -20,10 +22,9 @@ HPA improves your services by:
 
 ### How HPA Works
 
-![HPA Schema]({{< baseurl >}}/img/rancher/horizontal-pod-autoscaler.svg)
+![HPA Schema]({{< baseurl >}}/img/rancher/horizontal-pod-autoscaler.jpg)
 
 HPA is implemented as a control loop, with a period controlled by the `kube-controller-manager` flags below:
-
 
 Flag | Default | Description |
 ---------|----------|----------|
@@ -36,13 +37,13 @@ For full documentation on HPA, refer to the [Kubernetes Documentation](https://k
 
 ### Horizontal Pod Autoscaler API Objects
 
-HPA is an API resource in the Kubernetes `autoscaling` API group. The current stable version is `autoscaling/v1`, which only includes support for CPU autoscaling. To get additional support for scaling based on memory and custom metrics, use the beta version instead: `autoscaling/v2beta1`. 
+HPA is an API resource in the Kubernetes `autoscaling` API group. The current stable version is `autoscaling/v1`, which only includes support for CPU autoscaling. To get additional support for scaling based on memory and custom metrics, use the beta version instead: `autoscaling/v2beta1`.
 
 For more information about the HPA API object, see the [HPA GitHub Readme](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#horizontalpodautoscaler-object).
 
 ### kubectl Commands
 
-You can create, manage, and delete HPAs using kubectl: 
+You can create, manage, and delete HPAs using kubectl:
 
 - Creating HPA
 
@@ -98,113 +99,39 @@ Directive | Description
  `targetAverageValue: 100Mi`  |  Indicates the deployment will scale pods up when the average running pod uses more that 100Mi of memory.
 <br/>
 
-### Installation
-
-Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
-
-#### Requirements 
-
-Be sure that your Kubernetes cluster services are running with these flags at minimum:
-
-- kube-api: `requestheader-client-ca-file` 
-- kubelet: `read-only-port` at 10255
-- kube-controller: Optional, just needed if distinct values than default are required.
-
-  - `horizontal-pod-autoscaler-downscale-delay: "5m0s"`
-  - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
-  - `horizontal-pod-autoscaler-sync-period: "30s"`
-
-For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **Ellipsis (...) > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
-
-```
-services:
-...
-  kube-api: 
-    extra_args: 
-      requestheader-client-ca-file: "/etc/kubernetes/ssl/kube-ca.pem"
-  kube-controller:
-    extra_args: 
-      horizontal-pod-autoscaler-downscale-delay: "5m0s"
-      horizontal-pod-autoscaler-upscale-delay: "1m0s"
-      horizontal-pod-autoscaler-sync-period: "30s"
-  kubelet:
-    extra_args:
-      read-only-port: 10255
-```
-
-Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
-
->**Note:** kubectl command samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
-
 #### Configuring HPA to Scale Using Resource Metrics
 
-To create HPA resources based on resource metrics such as CPU and memory use, you need to deploy the `metrics-server` package in the `kube-system` namespace of your Kubernetes cluster. This deployment allows HPA to consume the `metrics.k8s.io` API. 
+Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler. Run the following commands to check if metrics are available in your installation:
 
->**Prerequisite:** You must be running kubectl 1.8 or later.
+```
+$ kubectl top nodes
+NAME                              CPU(cores)   CPU%      MEMORY(bytes)   MEMORY%
+node-controlplane   196m         9%        1623Mi          42%
+node-etcd           80m          4%        1090Mi          28%
+node-worker         64m          3%        1146Mi          29%
+$ kubectl -n kube-system top pods
+NAME                                   CPU(cores)   MEMORY(bytes)
+canal-pgldr                            18m          46Mi
+canal-vhkgr                            20m          45Mi
+canal-x5q5v                            17m          37Mi
+canal-xknnz                            20m          37Mi
+kube-dns-7588d5b5f5-298j2              0m           22Mi
+kube-dns-autoscaler-5db9bbb766-t24hw   0m           5Mi
+metrics-server-97bc649d5-jxrlt         0m           12Mi
+$ kubectl -n kube-system logs -l k8s-app=metrics-server
+I1002 12:55:32.172841       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:https://kubernetes.default.svc?kubeletHttps=true&kubeletPort=10250&useServiceAccount=true&insecure=true
+I1002 12:55:32.172994       1 heapster.go:72] Metrics Server version v0.2.1
+I1002 12:55:32.173378       1 configs.go:61] Using Kubernetes client with master "https://kubernetes.default.svc" and version
+I1002 12:55:32.173401       1 configs.go:62] Using kubelet port 10250
+I1002 12:55:32.173946       1 heapster.go:128] Starting with Metric Sink
+I1002 12:55:32.592703       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
+I1002 12:55:32.925630       1 heapster.go:101] Starting Heapster API server...
+[restful] 2018/10/02 12:55:32 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
+[restful] 2018/10/02 12:55:32 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
+I1002 12:55:32.928597       1 serve.go:85] Serving securely on 0.0.0.0:443
+```
 
-1. Connect to your Kubernetes cluster using kubectl.
-
-1. Clone the GitHub `metrics-server` repo:
-  ```
-  # git clone https://github.com/kubernetes-incubator/metrics-server
-  ```
-
-1. Install the `metrics-server` package.
-  ```
-  # kubectl create -f metrics-server/deploy/1.8+/
-  ```
-
-1. Check that `metrics-server` is running properly. Check the service pod and logs in the `kube-system` namespace.
-
-  1. Check the service pod for a status of `running`. Enter the following command:
-    ```
-    # kubectl get pods -n kube-system
-    ```
-    Then check for the status of `running`.
-    ``` 
-    NAME                                  READY     STATUS    RESTARTS   AGE
-    ...
-    metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
-    ...
-    ```
-  1. Check the service logs for service availability. Enter the following command:
-    ```
-    # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
-    ```
-    Then review the log to confirm that that the `metrics-server` package is running.
-    {{% accordion id="metrics-server-run-check" label="Metrics Server Log Output" %}}  
-    I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
-    I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
-    I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
-    I0723 08:09:56.194501       1 configs.go:62] Using kubelet port 10255
-    I0723 08:09:56.198612       1 heapster.go:128] Starting with Metric Sink
-    I0723 08:09:56.780114       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
-    I0723 08:09:57.391518       1 heapster.go:101] Starting Heapster API server...
-    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
-    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
-    I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
-    {{% /accordion %}}
-   
-
-1. Check that the metrics api is accessible from kubectl.
-
-  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<K8s_URL>:6443`. 
-    ```
-    # kubectl get --raw /apis/metrics.k8s.io/v1beta1
-    ```
-    If the the API is working correctly, you should receive output similar to the output below.
-    ```
-    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-    ```
-
-  - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
-    ```
-    # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
-    ```
-    If the the API is working correctly, you should receive output similar to the output below.
-    ```
-    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-    ```
+If you have created your cluster in Rancher v2.0.6 or before, please refer to [Manual installation](#manual-installation)
 
 #### Configuring HPA to Scale Using Custom Metrics (Prometheus)
 
@@ -293,210 +220,136 @@ For HPA to use custom metrics from Prometheus, package [k8s-prometheus-adapter](
     {{% /accordion %}}
    
 
-#### Assigning Additional Required Roles to Your HPA
-
-By default, HPA reads resource and custom metrics with the user `system:anonymous`. Assign `system:anonymous` the the `view-resource-metrics` and `view-custom-metrics` in the ClusterRole and ClusterRoleBindings manifests. These roles are used to access metrics. 
-
-To do it, follow these steps:
-
-1. Configure kubectl to connect to your cluster.
-
-1. Copy the ClusterRole and ClusterRoleBinding manifest for the type of metrics you're using for your HPA.
-  {{% accordion id="cluster-role-resource-metrics" label="Resource Metrics: ApiGroups resource.metrics.k8s.io" %}}
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRole
-        metadata:
-          name: view-resource-metrics
-        rules:
-        - apiGroups:
-            - metrics.k8s.io
-          resources:
-            - pods
-            - nodes
-          verbs:
-            - get
-            - list
-            - watch
-        ---
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRoleBinding
-        metadata:
-          name: view-resource-metrics
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: ClusterRole
-          name: view-resource-metrics
-        subjects:
-          - apiGroup: rbac.authorization.k8s.io
-            kind: User
-            name: system:anonymous
-    {{% /accordion %}}
-{{% accordion id="cluster-role-custom-resources" label="Custom Metrics: ApiGroups custom.metrics.k8s.io" %}}
- 
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    name: view-custom-metrics
-  rules:
-  - apiGroups:
-      - custom.metrics.k8s.io
-    resources:
-      - "*"
-    verbs:
-      - get
-      - list
-      - watch
-  ---
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: view-custom-metrics
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: view-custom-metrics
-  subjects:
-    - apiGroup: rbac.authorization.k8s.io
-      kind: User
-      name: system:anonymous
-  ```
-{{% /accordion %}}
-1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
- ```
-  # kubectl create -f <RESOURCE_METRICS_MANIFEST>
-  # kubectl create -f <CUSTOM_METRICS_MANIFEST>
-  ```
-
 
 ### Testing HPAs with a Service Deployment
 
-For HPA to work correctly, service deployments should have resources request definitions for containers. Follow this hello-world example to test if HPA is working correctly. 
+For HPA to work correctly, service deployments should have resources request definitions for containers. Follow this hello-world example to test if HPA is working correctly.
 
 1. Configure kubectl to connect to your Kubernetes cluster.
 
 2. Copy the `hello-world` deployment manifest below.
 {{% accordion id="hello-world" label="Hello World Manifest" %}}
-      apiVersion: apps/v1beta2
-              kind: Deployment
-              metadata:
-                labels:
-                  app: hello-world
-                name: hello-world
-                namespace: default
-              spec:
-                replicas: 1
-                selector:
-                  matchLabels:
-                    app: hello-world
-                strategy:
-                  rollingUpdate:
-                    maxSurge: 1
-                    maxUnavailable: 0
-                  type: RollingUpdate
-                template:
-                  metadata:
-                    labels:
-                      app: hello-world
-                  spec:
-                    containers:
-                    - image: rancher/hello-world
-                      imagePullPolicy: Always
-                      name: hello-world
-                      resources:
-                        requests:
-                          cpu: 500m
-                          memory: 64Mi
-                      ports:
-                      - containerPort: 80
-                        protocol: TCP
-                    restartPolicy: Always
-              ---
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: hello-world
-                namespace: default
-              spec:
-                ports:
-                - port: 80
-                  protocol: TCP
-                  targetPort: 80
-                selector:
-                  app: hello-world
+```
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    app: hello-world
+  name: hello-world
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - image: rancher/hello-world
+        imagePullPolicy: Always
+        name: hello-world
+        resources:
+          requests:
+            cpu: 500m
+            memory: 64Mi
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: hello-world
+```
 {{% /accordion %}}  
-        
   
-
 1. Deploy it to your cluster.
 
     ```
     # kubectl create -f <HELLO_WORLD_MANIFEST>
     ```
 
-1. Copy one of the HPAs below based on the metric type you're using: 
-    {{% accordion id="service-deployment-resource-metrics" label="Hello World HPA: Resource Metrics" %}}
-     apiVersion: autoscaling/v2beta1
-            kind: HorizontalPodAutoscaler
-            metadata:
-              name: hello-world
-              namespace: default
-            spec:
-              scaleTargetRef:
-                apiVersion: extensions/v1beta1
-                kind: Deployment
-                name: hello-world
-              minReplicas: 1
-              maxReplicas: 10
-              metrics:
-              - type: Resource
-                resource:
-                  name: cpu
-                  targetAverageUtilization: 50
-              - type: Resource
-                resource:
-                  name: memory
-                  targetAverageValue: 1000Mi
-    {{% /accordion %}}
-    {{% accordion id="service-deployment-custom-metrics" label="Hello World HPA: Custom Metrics" %}}
-    apiVersion: autoscaling/v2beta1
-      kind: HorizontalPodAutoscaler
-      metadata:
-        name: hello-world
-        namespace: default
-      spec:
-        scaleTargetRef:
-          apiVersion: extensions/v1beta1
-          kind: Deployment
-          name: hello-world
-        minReplicas: 1
-        maxReplicas: 10
-        metrics:
-        - type: Resource
-          resource:
-            name: cpu
-            targetAverageUtilization: 50
-        - type: Resource
-          resource:
-            name: memory
-            targetAverageValue: 100Mi
-        - type: Pods
-          pods:
-            metricName: cpu_system
-            targetAverageValue: 20m
-    {{% /accordion %}}
+1. Copy one of the HPAs below based on the metric type you're using:
+{{% accordion id="service-deployment-resource-metrics" label="Hello World HPA: Resource Metrics" %}}
+```
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: hello-world
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageValue: 1000Mi
+```
+{{% /accordion %}}
+{{% accordion id="service-deployment-custom-metrics" label="Hello World HPA: Custom Metrics" %}}
+```
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hello-world
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: hello-world
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageValue: 100Mi
+  - type: Pods
+    pods:
+      metricName: cpu_system
+      targetAverageValue: 20m
+```
+{{% /accordion %}}
   
 1. View the HPA info and description. Confirm that metric data is shown.
     {{% accordion id="hpa-info-resource-metrics" label="Resource Metrics" %}}
-1. Enter the following command.
+1. Enter the following commands.
     ```
     # kubectl get hpa
-    ```
-    You should receive the output that follows:
-    ```
     NAME          REFERENCE                TARGETS                     MINPODS   MAXPODS   REPLICAS   AGE
     hello-world   Deployment/hello-world   1253376 / 100Mi, 0% / 50%   1         10        1          6m
-        # kubectl describe hpa
+    # kubectl describe hpa
     Name:                                                  hello-world
     Namespace:                                             default
     Labels:                                                <none>
@@ -552,7 +405,7 @@ For HPA to work correctly, service deployments should have resources request def
 1. Test that pod autoscaling works as intended.<br/></br>
   **To Test Autoscaling Using Resource Metrics:**
   {{% accordion id="observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
-Use your load testing tool to to scale up to two pods based on CPU Usage.  
+Use your load testing tool to to scale up to two pods based on CPU Usage.
   
 1. View your HPA.
     ```
@@ -671,7 +524,7 @@ Use your load testing to to scale down to 1 pod when all metrics are below targe
         Normal  SuccessfulRescale  1s    horizontal-pod-autoscaler  New size: 1; reason: All metrics below target
   ```
   {{% /accordion %}}
-<br/>  
+<br/>
 **To Test Autoscaling Using Custom Metrics:**
   {{% accordion id="custom-observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
 Use your load testing tool to upscale two pods based on CPU usage.
@@ -855,12 +708,200 @@ Use your load testing tool to scale down to one pod when all metrics below targe
     ```    
 {{% /accordion %}}
 
+
+
 ### Conclusion
 
-Horizontal Pod Autoscaling is a great way to automate the number of pod you have deployed for maximum efficency. You can use it to accomodate deployment scale to real service load and to meet service level agreements.
+Horizontal Pod Autoscaling is a great way to automate the number of pod you have deployed for maximum efficiency. You can use it to accommodate deployment scale to real service load and to meet service level agreements.
 
 By adjusting the `horizontal-pod-autoscaler-downscale-delay` and `horizontal-pod-autoscaler-upscale-delay` flag values, you can adjust the time needed before kube-controller scales your pods up or down.
 
 We've demonstrated how to setup an HPA based on custom metrics provided by Prometheus. We used the `cpu_system` metric as an example, but you can use other metrics that monitor service performance, like `http_request_number`, `http_response_time`, etc.
 
->**Note:**To facilitate HPA use, we are working to integrate metric-server as an addon on RKE cluster deployments. This feature is included in RKE v0.1.9-rc2 for testing, but is not officially supported as of yet. It would be supported at rke v0.1.9. 
+
+### Manual Installation
+
+>**Note:** This is only applicable to clusters created in versions before Rancher v2.0.7.
+
+Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
+
+#### Requirements
+
+Be sure that your Kubernetes cluster services are running with these flags at minimum:
+
+- kube-api: `requestheader-client-ca-file`
+- kubelet: `read-only-port` at 10255
+- kube-controller: Optional, just needed if distinct values than default are required.
+
+  - `horizontal-pod-autoscaler-downscale-delay: "5m0s"`
+  - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
+  - `horizontal-pod-autoscaler-sync-period: "30s"`
+
+For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **Ellipsis (...) > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
+
+```
+services:
+...
+  kube-api:
+    extra_args:
+      requestheader-client-ca-file: "/etc/kubernetes/ssl/kube-ca.pem"
+  kube-controller:
+    extra_args:
+      horizontal-pod-autoscaler-downscale-delay: "5m0s"
+      horizontal-pod-autoscaler-upscale-delay: "1m0s"
+      horizontal-pod-autoscaler-sync-period: "30s"
+  kubelet:
+    extra_args:
+      read-only-port: 10255
+```
+
+Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
+
+>**Note:** kubectl command samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
+
+#### Configuring HPA to Scale Using Resource Metrics
+
+To create HPA resources based on resource metrics such as CPU and memory use, you need to deploy the `metrics-server` package in the `kube-system` namespace of your Kubernetes cluster. This deployment allows HPA to consume the `metrics.k8s.io` API.
+
+>**Prerequisite:** You must be running kubectl 1.8 or later.
+
+1. Connect to your Kubernetes cluster using kubectl.
+
+1. Clone the GitHub `metrics-server` repo:
+  ```
+  # git clone https://github.com/kubernetes-incubator/metrics-server
+  ```
+
+1. Install the `metrics-server` package.
+  ```
+  # kubectl create -f metrics-server/deploy/1.8+/
+  ```
+
+1. Check that `metrics-server` is running properly. Check the service pod and logs in the `kube-system` namespace.
+
+  1. Check the service pod for a status of `running`. Enter the following command:
+    ```
+    # kubectl get pods -n kube-system
+    ```
+    Then check for the status of `running`.
+    ```
+    NAME                                  READY     STATUS    RESTARTS   AGE
+    ...
+    metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
+    ...
+    ```
+  1. Check the service logs for service availability. Enter the following command:
+    ```
+    # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
+    ```
+    Then review the log to confirm that that the `metrics-server` package is running.
+    {{% accordion id="metrics-server-run-check" label="Metrics Server Log Output" %}}
+    I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
+    I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
+    I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
+    I0723 08:09:56.194501       1 configs.go:62] Using kubelet port 10255
+    I0723 08:09:56.198612       1 heapster.go:128] Starting with Metric Sink
+    I0723 08:09:56.780114       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
+    I0723 08:09:57.391518       1 heapster.go:101] Starting Heapster API server...
+    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
+    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
+    I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
+    {{% /accordion %}}
+
+
+1. Check that the metrics api is accessible from kubectl.
+
+
+  - If you are accessing the cluster through Rancher, enter your Server URL in the kubectl config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
+    ```
+    # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
+    ```
+    If the the API is working correctly, you should receive output similar to the output below.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
+    ```
+
+  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<K8s_URL>:6443`.
+    ```
+    # kubectl get --raw /apis/metrics.k8s.io/v1beta1
+    ```
+    If the the API is working correctly, you should receive output similar to the output below.
+    ```
+    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
+    ```
+
+#### Assigning Additional Required Roles to Your HPA
+
+By default, HPA reads resource and custom metrics with the user `system:anonymous`. Assign `system:anonymous` to `view-resource-metrics` and `view-custom-metrics` in the ClusterRole and ClusterRoleBindings manifests. These roles are used to access metrics.
+
+To do it, follow these steps:
+
+1. Configure kubectl to connect to your cluster.
+
+1. Copy the ClusterRole and ClusterRoleBinding manifest for the type of metrics you're using for your HPA.
+  {{% accordion id="cluster-role-resource-metrics" label="Resource Metrics: ApiGroups resource.metrics.k8s.io" %}}
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRole
+        metadata:
+          name: view-resource-metrics
+        rules:
+        - apiGroups:
+            - metrics.k8s.io
+          resources:
+            - pods
+            - nodes
+          verbs:
+            - get
+            - list
+            - watch
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: view-resource-metrics
+        roleRef:
+          apiGroup: rbac.authorization.k8s.io
+          kind: ClusterRole
+          name: view-resource-metrics
+        subjects:
+          - apiGroup: rbac.authorization.k8s.io
+            kind: User
+            name: system:anonymous
+    {{% /accordion %}}
+{{% accordion id="cluster-role-custom-resources" label="Custom Metrics: ApiGroups custom.metrics.k8s.io" %}}
+ 
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: view-custom-metrics
+  rules:
+  - apiGroups:
+      - custom.metrics.k8s.io
+    resources:
+      - "*"
+    verbs:
+      - get
+      - list
+      - watch
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: view-custom-metrics
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: view-custom-metrics
+  subjects:
+    - apiGroup: rbac.authorization.k8s.io
+      kind: User
+      name: system:anonymous
+  ```
+{{% /accordion %}}
+1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
+ ```
+  # kubectl create -f <RESOURCE_METRICS_MANIFEST>
+  # kubectl create -f <CUSTOM_METRICS_MANIFEST>
+  ```
+

@@ -62,7 +62,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 1. **Optional:** click **Add Rule** to create additional ingress rules. For example, after you create ingress rules to direct requests for your hostname, you'll likely want to create a default backend to handle 404s.
 
-1. If any of your ingress rules handle requests for encrypted ports, add a certificate to encrpyt/decrypt communications.
+1. If any of your ingress rules handle requests for encrypted ports, add a certificate to encrypt/decrypt communications.
 
     >**Note:** You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see [Adding SSL Certificates]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/).
 

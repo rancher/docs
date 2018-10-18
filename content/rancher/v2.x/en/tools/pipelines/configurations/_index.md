@@ -108,7 +108,7 @@ The first stage is preserved to be a cloning step that checks out source code fr
     {{% /accordion %}}
     {{% accordion id="run-script" label="Run Script" %}}
 
-The **Run Script** step executes arbitrary commands in the workspace inside a specified container. You can use it to build, test and do more, given whatever utilities the base image provides. For your convenience you can use variables to refer to metadata of a pipeline execution. Please go to [reference page](/rancher/v2.x/en/tools/pipelines/reference/#variable-substitution) for the list of available vairables.
+The **Run Script** step executes arbitrary commands in the workspace inside a specified container. You can use it to build, test and do more, given whatever utilities the base image provides. For your convenience you can use variables to refer to metadata of a pipeline execution. Please go to [reference page](/rancher/v2.x/en/tools/pipelines/reference/#variable-substitution) for the list of available variables.
 
 {{% tabs %}}
 

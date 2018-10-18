@@ -15,6 +15,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
   - [Example IAM Policy with PassRole](#example-iam-policy-with-passrole) (needed if you want to use [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) or want to pass an IAM Profile to an instance)
 - IAM Policy added as Permission to the user. See [Amazon Documentation: Adding Permissions to a User (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) how to attach it to an user.
 
+
 ## Create the cluster
 
 1. From the **Clusters** page, click **Add Cluster**.

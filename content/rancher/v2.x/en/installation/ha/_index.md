@@ -7,14 +7,14 @@ For production environments, we recommend installing Rancher in a high-availabil
 
 This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
 
-> **Note:** For the best performance, we recommend this Kubernetes cluster be dedicated only to the Rancher workload.
+> **Important:** For the best performance, we recommend this Kubernetes cluster to be dedicated only to run Rancher.
 
 ## Recommended Architecture
 
 * DNS for Rancher should resolve to a layer 4 load balancer
-* The Load Balancer should forward ports 80 and 443 TCP to all 3 nodes in the Kubernetes cluster.
-* The Ingress controller will redirect http port 80 to https and terminate SSL/TLS on port 443.
-* The Ingress controller will forward traffic to port 80 on the pod in the Rancher deployment.
+* The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
+* The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
+* The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
 <sup>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
@@ -36,7 +36,7 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Additional Install Options
 
-* [Migrating from RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
+* [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
 
 ## Previous Methods
 
@@ -44,6 +44,6 @@ The following CLI tools are required for this install. Please make sure these to
 >
 >Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
 * [RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)

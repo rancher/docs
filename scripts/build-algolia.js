@@ -79,7 +79,7 @@ nodes.forEach(node => {
   }
 
 
-  // remove potentially large content (see size limits) and replace with teh summary so that we don't get results with zero highlightable results
+  // remove potentially large content (see size limits) and replace with the summary so that we don't get results with zero highlightable results
   node.content = node.summary;
 
   // remove summary for dedup

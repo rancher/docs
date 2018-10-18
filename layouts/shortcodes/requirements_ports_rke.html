@@ -304,6 +304,6 @@
 	</table>
     <br/>
     <h3 id="local-node-traffic">Information on local node traffic</h3>
-    <p>Kubernetes healthchecks (<code>livenessProbe</code> and <code>readinessProbe</code>) are executed on the host itself. On most nodes, this is allowed by default. When you have applied strict host firewall (i.e. <code>iptables</code>) policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic gets blocked. In this case, you have to explicitely allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
+    <p>Kubernetes healthchecks (<code>livenessProbe</code> and <code>readinessProbe</code>) are executed on the host itself. On most nodes, this is allowed by default. When you have applied strict host firewall (i.e. <code>iptables</code>) policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic gets blocked. In this case, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
     </p>	
 </div>

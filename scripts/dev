@@ -63,7 +63,7 @@ while getopts ":bdp:t:u" opt;do
     UPLOAD="true"
     ;;
   \?)
-    echoerr "Invalid arguemnts"
+    echoerr "Invalid arguments"
     print_help
     exit 1
     ;;
