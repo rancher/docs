@@ -9,26 +9,16 @@ This procedure describes how to use RKE to restore a snapshot of the Rancher Kub
 
 ## Restore Outline
 
-1. [Preparation](#1-preparation)
+<!-- TOC -->
 
-	Install utilities and create new or clean existing nodes to prepare for restore.
 
-2. [Place Snapshot and PKI Bundle](#2-place-snapshot-and-pki-bundle)
+- [1. Preparation](#1-preparation)
+- [2. Place Snapshot and PKI Bundle](#2-place-snapshot-and-pki-bundle)
+- [3. Configure RKE](#3-configure-rke)
+- [4. Restore Database](#4-restore-database)
+- [5. Bring Up the Cluster](#5-bring-up-the-cluster)
 
-	Pick a node and place snapshot `.db` and `pki.bundle.tar.gz` files.
-
-3. [Configure RKE](#3-configure-rke)
-
-	Configure RKE `cluster.yml`. Remove `addons:` section and point configuration to the clean nodes.
-
-4. [Restore Database](#4-restore-database)
-
-	Run RKE command to restore the `etcd` database to a single node.
-
-5. [Bring Up the Cluster](#5-bring-up-the-cluster)
-
-	Run RKE commands to bring up cluster one a single node. Clean up old nodes. Verify and add additional nodes.
-
+<!-- /TOC -->
 <br/>
 
 ### 1. Preparation

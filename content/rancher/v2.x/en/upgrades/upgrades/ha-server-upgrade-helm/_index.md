@@ -46,9 +46,11 @@ Since there are times where the helm chart will require changes without any chan
 
 Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
 
+
+
 ```
 NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
+rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
 
 ## Upgrade Rancher
@@ -73,8 +75,10 @@ rancher-stable/rancher    2018.10.1            v2.1.0      Install Rancher Serve
 
 3. Take all values from the previous command and use `helm` with `--set` options to upgrade Rancher to the latest version.
 
+    Replace `<CHART_REPO>` with the name of the repository that you used during installation (either `stable` or `latest`).
+
     ```
-    helm upgrade rancher rancher-stable/rancher --set hostname=rancher.my.org
+    helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
 
     > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
