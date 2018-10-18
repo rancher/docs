@@ -1,7 +1,15 @@
 ---
 title: Migrating from a HA RKE Add-on Install
 weight: 1030
+aliases:
+  - /rancher/v2.x/en/upgrades/ha-server-upgrade/
+  - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade/
 ---
+
+> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+>
+>If you are currently using the RKE add-on install method, please follow these directions to migrate to the Helm install. 
+
 
 The following instructions will help guide you through migrating from the RKE Add-on install to managing Rancher with the Helm package manager.
 
