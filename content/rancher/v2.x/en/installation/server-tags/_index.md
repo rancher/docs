@@ -80,4 +80,5 @@ After installing Rancher, if you want to change which Helm chart repository to i
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
+
 4. Continue to follow the steps to [upgrade Rancher]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/) from the new Helm chart repository.
