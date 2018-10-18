@@ -59,4 +59,9 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 
 8. Specify any additional options (such as instance type or minimum and maximum number of nodes). Then click **Create**.
 
+# Note on Public IP for Worker Notes
+If you are specifying `Public IP for Worker Nodes` as `false`, be aware that you must specify a properly configured VPC and subnets (instances in the subnets must have a route to the internet in order to connect to the control plane).
+
+For example, a VPC could be constructed with 2 pairs of subnets, a private set and a public set.  The private set would have their route tables set up to point to a NAT set up in their public counterpart.  For more information on routing traffic from private subnets, please see the [official AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html).
+
 {{< result_create-cluster >}}
