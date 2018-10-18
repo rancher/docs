@@ -49,4 +49,4 @@ Instructions on when to make these configurations are available in [High Availab
 
 When installing Rancher in a high availability configuration, the latest version is used by default. However, if you want to install specific version of Rancher, you can set the `rancherImageTag` [option]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#advanced-options). This option sets the version of Rancher that's deployed when you install by Helm chart.
 
->**Note:** The versions of Rancher available in [chart repository](#rancher-chart-repositories) are different.
+>**Note:** When using this option, you should avoid installing older versions of Rancher using newer Helm charts.

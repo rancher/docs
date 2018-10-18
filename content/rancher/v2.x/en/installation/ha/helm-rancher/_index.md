@@ -39,7 +39,7 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
 
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm stable catalog to issue self-signed or LetsEncrypt certificates.
 
-Install `cert-manager` from your Helm catalog.
+Install `cert-manager` from the [official Helm catalog](https://github.com/helm/charts/tree/master/stable).
 
 
 ```

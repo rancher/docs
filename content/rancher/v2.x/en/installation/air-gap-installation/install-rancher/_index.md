@@ -82,7 +82,7 @@ Fetch and render the `helm` charts on a system that has internet access.
 
 If you are installing Rancher with Rancher self-signed certificates you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
 
-Fetch the latest `cert-manager` chart from your Helm catalog.
+Fetch the latest `cert-manager` chart from the [official Helm catalog](https://github.com/helm/charts/tree/master/stable).
 
 ```plain
 helm fetch stable/cert-manager
@@ -98,7 +98,7 @@ helm template ./cert-manager-<version>.tgz --output-dir . \
 
 #### Rancher
 
-Install the Rancher chart repo. Replace `<CHART_REPO>` with the repository that you're using ('latest' or 'stable').
+Install the Rancher chart repo. Replace `<CHART_REPO>` with the [repository that you're using]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#rancher-chart-repositories) ('latest' or 'stable').
 
 ```plain
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>

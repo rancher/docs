@@ -81,10 +81,7 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
 
-    > **Important:**
-    >
-    >- For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
-    >- During upgrade, you must use the Rancher chart repository that you used during initial install (either the `stable` or `latest` repository). For more information, see [Choosing a Version of Rancher: Rancher Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#rancher-chart-repositories).
+    > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
 
 ## Rolling Back
 
