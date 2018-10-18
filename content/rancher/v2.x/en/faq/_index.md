@@ -13,7 +13,7 @@ See [Technical FAQ]({{< baseurl >}}/rancher/v2.x/en/faq/technical/), for frequen
 
 #### What does it mean when you say Rancher v2.0 is built on Kubernetes?
 
-Rancher v2.0 is a complete container management platform built on 100% on Kubernetes leveraging its Custom Resource and Controller framework.  All features are written as a CustomResourceDefinition (CRD) which extends the existing Kubernetes API and can leverage native features such as RBAC.
+Rancher v2.0 is a complete container management platform built 100% on Kubernetes leveraging its Custom Resource and Controller framework.  All features are written as a CustomResourceDefinition (CRD) which extends the existing Kubernetes API and can leverage native features such as RBAC.
 
 #### Do you plan to implement upstream Kubernetes, or continue to work on your own fork?
 
