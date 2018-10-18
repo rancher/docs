@@ -23,12 +23,7 @@ Rancher Server is distributed as a Docker image, which have tags attached to the
 
 ## High Availability Installs
 
-When installing, upgrading, or rolling back Rancher Server in a [high availability configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha), you can choose what version of Rancher you want to use.
-
-The images available for installation are controlled by two factors:
-
-- The repository of Helm charts that you will configure (or have configured) during initial installation of Rancher Server. 
-- The `rancherImageTag` option, which you can set from the command line.
+When installing, upgrading, or rolling back Rancher Server in a [high availability configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha), you can choose what repository from which to pull your Rancher images.
 
 ### Rancher Chart Repositories
 
@@ -44,9 +39,3 @@ Instructions on when to make these configurations are available in [High Availab
 >**Important!**
 >
 >When _upgrading_ or _rolling back_ Rancher in a high availability configuration, you must use the same repository that you used during installation.
-
-### Chart Option: `rancherImageTag`
-
-When installing Rancher in a high availability configuration, the latest version is used by default. However, if you want to install specific version of Rancher, you can set the `rancherImageTag` [option]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#advanced-options). This option sets the version of Rancher that's deployed when you install by Helm chart.
-
->**Note:** When using this option, you should avoid installing older versions of Rancher using newer Helm charts.

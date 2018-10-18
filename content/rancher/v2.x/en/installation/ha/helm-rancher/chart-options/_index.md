@@ -37,6 +37,17 @@ weight: 276
 
 <br/>
 
+### Available Chart Repositories
+
+When installing or upgrading Rancher, you can pull one of two repositories: the `latest` Rancher chart repo or the `stable` chart repo. You can switch between these two repos by entering one of the following commands in the table below. Enter the command for the repository that you want to use _before_ installation or upgrade.
+
+
+Repository | Repo Configuration Command | Description
+-----------|-----|-------------
+`latest`   | `helm repo add rancher-latest https://releases.rancher.com/server-charts/latest` | Adds a repository of Helm charts for the latest versions of Rancher. We recommend using this repo for testing out new Rancher builds.
+`stable`   | `helm repo add rancher-stable https://releases.rancher.com/server-charts/stable` | Adds a repository of Helm charts for older, stable versions of Rancher. We recommend using this repo for production environments.
+
+
 ### API Audit Log
 
 Enabling the [API Audit Log](https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing/).
