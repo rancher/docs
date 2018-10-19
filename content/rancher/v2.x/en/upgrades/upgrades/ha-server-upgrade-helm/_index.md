@@ -68,8 +68,8 @@ The following instructions will guide you through upgrading a high-availability 
 
 4. Upgrade Rancher to the latest version based on values from the previous steps.
 
-    - Replace `<CHART_REPO>` with the repository that you listed in Step 2 (i.e. `latest` or `stable`).
-    - Take all the values from Step 3 and append them to the command using `--set key=value`.
+    - Replace `<CHART_REPO>` with the repository that was listed (i.e. `latest` or `stable`).
+    - Take all the values from the previous step and append them to the command using `--set key=value`.
 
     ```
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org

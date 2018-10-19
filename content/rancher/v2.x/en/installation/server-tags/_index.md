@@ -66,7 +66,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
     rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-2. Remove the existing Helm Chart repository that contains your charts to install Rancher. This could either be `rancher-stable` or `rancher-latest` depending on what you had initially added.
+2. Remove the existing Helm Chart repository that contains your charts to install Rancher, which will either be `rancher-stable` or `rancher-latest` depending on what you had initially added.
 
     ```
     helm repo remove rancher-<CHART_REPO>
