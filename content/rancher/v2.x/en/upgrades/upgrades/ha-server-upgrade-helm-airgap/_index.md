@@ -24,19 +24,6 @@ The following instructions will guide you through upgrading a high-availability 
 
     [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
-## Chart Versioning Notes
-
-Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
-
-Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
-
-Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
-
-```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
-```
-
 ## Upgrade Rancher
 
 1. Update your local helm repo cache.
@@ -45,21 +32,31 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     helm repo update
     ```
 
-1. Fetch the latest Rancher Server chart from the helm repository that you used during installation.
+2. Get the [repository name that you installed Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) with.
 
-    This command will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository that you used during installation (either `stable` or `latest`).
+    ```
+    helm repo list
 
-    >**Note:** During upgrades, you must fetch from the chart repo that you configured initial installation (either the `stable` or `latest` repository). For more information, see [Choosing a Version of Rancher: Rancher Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#rancher-chart-repositories).
+    NAME          	      URL                                              
+    stable        	      https://kubernetes-charts.storage.googleapis.com
+    rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
+    ```
+
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+
+
+3. Fetch the latest chart to install Rancher from the Helm chart repository.
+
+    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name found in Step 2.
+
 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
     ```
 
-    
+3. Render the upgrade template.
 
-1. Render the upgrade template.
-
-    Use the same `--set` values you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
+    Use the same `--set` values that you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
 
     ```plain
     helm template ./rancher-<version>.tgz --output-dir . --is-upgrade \
@@ -68,7 +65,7 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
     ```
 
-1. Copy and apply the rendered manifests.
+4. Copy and apply the rendered manifests.
 
     Copy the files to a server with access to the Rancher server cluster and apply the rendered templates.
 

@@ -3,7 +3,7 @@ title: 3 - Initialize Helm (Install tiller)
 weight: 195
 ---
 
-Helm is the package management tool of choice for Kubernetes. Helm "charts" provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/). To be able to use Helm, the server-side component `tiller` needs to be installed on your cluster.
+Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm, we can create configurable deployments instead of just using static files. For more information about creating your own repository of deployments, check out the docs at [https://helm.sh/](https://helm.sh/). To be able to use Helm, the server-side component `tiller` needs to be installed on your cluster.
 
 > **Note:** For systems without direct internet access see [Helm - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#helm) for install details.
 

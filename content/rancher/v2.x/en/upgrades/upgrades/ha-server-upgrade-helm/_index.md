@@ -10,10 +10,7 @@ The following instructions will guide you through upgrading a high-availability 
 >* [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on)
 >
 >       As of release v2.0.8, Rancher supports installation and upgrade by Helm chart, although RKE installs/upgrades are still supported as well. If you want to change upgrade method from RKE Add-on to Helm chart, follow this procedure.
->
->* [High Availability (HA) Upgrade - RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-upgrade)
->
->       If you want to continue using RKE for upgrades, follow this procedure.
+
 
 ## Prerequisites
 
@@ -37,22 +34,6 @@ The following instructions will guide you through upgrading a high-availability 
     ```
     helm init --upgrade --service-account tiller
     ```
-
-## Chart Versioning Notes
-
-Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
-
-Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
-
-Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
-
-
-
-```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
-```
-
 ## Upgrade Rancher
 
 > **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#upgrading-rancher)
@@ -63,7 +44,19 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
     helm repo update
     ```
 
-2. Get the set values from current Rancher release.
+2. Get the [repository name that you installed Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) with.
+
+    ```
+    helm repo list
+
+    NAME          	      URL                                              
+    stable        	      https://kubernetes-charts.storage.googleapis.com
+    rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
+    ```
+
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+
+3. Get the set values from the current Rancher install.
 
     ```
     helm get values rancher
@@ -73,15 +66,14 @@ rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Serve
 
     > **Note:** There may be more values that are listed with this command depending on which [SSL configuration option you selected]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) when installing Rancher.
 
-3. Take all values from the previous command and use `helm` with `--set` options to upgrade Rancher to the latest version.
+4. Upgrade Rancher to the latest version based on values from the previous steps.
 
-    Replace `<CHART_REPO>` with the name of the repository that you used during installation (either `stable` or `latest`).
+    - Replace `<CHART_REPO>` with the repository that you listed in Step 2 (i.e. `latest` or `stable`).
+    - Take all the values from Step 3 and append them to the command using `--set key=value`.
 
     ```
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
-
-    > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
 
 ## Rolling Back
 
