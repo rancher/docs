@@ -85,7 +85,7 @@ For additional chart details, view the [source of these Rancher server charts](h
 
 3. Fetch the latest chart to install Rancher from the Helm chart repository.
 
-    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name found in Step 2.
+    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name that was listed (i.e. `latest` or `stable`).
 
 
 
