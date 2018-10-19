@@ -3,44 +3,27 @@ title: 4 - Install Rancher
 weight: 200
 ---
 
-Rancher installation is now managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and Rancher charts.
+Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
 
 > **Note:** For systems without direct internet access see [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for install details.
 
-### Add the Chart Repo
+### Add the Helm Chart Repository
 
-Use `helm repo add` command to add the Rancher chart repository.
+Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
-Replace `<CHART_REPO>` with the chart repository that you want to use (either `latest` or `stable`).
-
->**Note:** For more information about each repository and which is best for your use case, see [Choosing a Version of Rancher: Rancher Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#rancher-chart-repositories).
+Replace `<CHART_REPO>` with the Helm chart repository that you want to use (i.e. `latest` or `stable`).
 
 ```
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
 ```
 
-
-## Chart Versioning Notes
-
-Up until the initial helm chart release for v2.1.0, the helm chart version matched the Rancher version (i.e `appVersion`).
-
-Since there are times where the helm chart will require changes without any changes to the Rancher version, we have moved to a `yyyy.mm.<build-number>` helm chart version.
-
-Run `helm search rancher` to view which Rancher version will be launched for the specific helm chart version.  
-
-```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
-rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
-```
-
 ### Install cert-manager
 
-> **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates and using the `ingress.tls.source=secret` option.
+> **Note:** cert-manager is only required for Rancher generated and LetsEncrypt issued certificates.  You may skip this step if you are bringing your own certificates or using the `ingress.tls.source=secret` option.
 
-Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the Kubernetes Helm stable catalog to issue self-signed or LetsEncrypt certificates.
+Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the official Kubernetes Helm chart repository to issue self-signed or LetsEncrypt certificates.
 
-Install `cert-manager` from the [official Helm catalog](https://github.com/helm/charts/tree/master/stable).
-
+Install `cert-manager` from Kubernetes Helm chart repository.
 
 ```
 helm install stable/cert-manager \
@@ -64,7 +47,8 @@ There are three options for the source of the certificate.
 
 The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
 
-The only requirement is to set the `hostname` to the DNS name you pointed at your load balancer. Replace `<CHART_REPO>` with the repository that you configured in [Add the Chart Repo](#add-the-chart-repo) (`latest` or `stable`).
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set the `hostname` to the DNS name you pointed at your load balancer.
 
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
@@ -79,7 +63,8 @@ helm install rancher-<CHART_REPO>/rancher \
 
 Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
 
-Set `hostname`, `ingress.tls.source=letsEncrypt` and LetsEncrypt options. Replace `<CHART_REPO>` with the repository that you configured in [Add the Chart Repo](#add-the-chart-repo) (`latest` or `stable`).
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set `hostname`, `ingress.tls.source=letsEncrypt` and LetsEncrypt options.
 
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
@@ -98,7 +83,8 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 
 > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
-Set `hostname` and `ingress.tls.source=secret`. Replace `<CHART_REPO>` with the repository that you configured in [Add the Chart Repo](#add-the-chart-repo) (`latest` or `stable`).
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set `hostname` and `ingress.tls.source=secret`.
 
 > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
 
