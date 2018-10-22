@@ -7,56 +7,119 @@ aliases:
 ---
 ## Objectives
 
-1.	[Create an account with appropriate permissions](#give-appropriate-permissions)
+<!-- TOC -->
 
-	Create (or give an existing) user appropriate permissions to create an EKS cluster.
+- [1. Give Appropriate Permissions](#1-give-appropriate-permissions)
+- [2. Create Access Key and Secret Key](#2-create-access-key-and-secret-key)
+- [3. Create the EKS Cluster](#3-create-the-eks-cluster)
 
-2.	[Create an access key and secret key](#create-access-key-and-secret-key)
 
-	Create an access key and secret key to access Amazon Web Services (AWS) resources from Rancher.
+<!-- /TOC -->
 
-3. [Create the EKS Cluster](#create-the-eks-cluster)
-
-	Using the AWS account, create your Amazon Elastic Container Service for Kubernetes (EKS) cluster in Rancher.
-
-## Give Appropriate Permissions
+## 1. Give Appropriate Permissions
 
 Make sure that the account you will be using to create the EKS cluster has the appropriate permissions. Referring to the official [EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html) for details.
 
-## Create Access Key and Secret Key
+## 2. Create Access Key and Secret Key
 
-Use AWS to create an access key and client secret.
+Use AWS to create an access key and client secret for the IAM account used in [1. Give Appropriate Permissions](#1-give-appropriate-permissions).
 
-1. In the AWS Console, go to the **IAM** service.
+For instructions on how to create these keys, see the AWS documentation [Managing Access Keys: To create, modify, or delete a user's access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
 
-2. Select **Users**.
+## 3. Create the EKS Cluster
 
-3. Find the user you wish to create the EKS cluster with. Select the user.
-
-4. Click **Security Credentials**.
-
-5. Click **Create access key**.
-
-6. Record the **Access key ID** and **Secret access key**. You will need to use these in Rancher to create your EKS cluster.
-
-## Create the EKS Cluster
-
-Use {{< product >}} to set up and configure your Kubernetes cluster.
+Use Rancher to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Amazon EKS**.
+1. Choose **Amazon EKS**.
 
-3. Enter a **Cluster Name**.
+1. Enter a **Cluster Name**.
 
-4. {{< step_create-cluster_member-roles >}}
+1. {{< step_create-cluster_member-roles >}}
 
-5. Enter your **Access Key**.
+1. Configure **Account Access** for the EKS cluster. Complete each drop-down and field using the information obtained in [2. Create Access Key and Secret Key](#2-create-access-key-and-secret-key).
 
-6. Enter your **Secret Key**
+    | Setting    | Description                                                                                                          |
+    | ---------- | -------------------------------------------------------------------------------------------------------------------- |
+    | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
+    | Access Key | Enter the access key that you created in [2. Create Access Key and Secret Key](#2-create-access-key-and-secret-key). |
+    | Secret Key | Enter the secret key that you created in [2. Create Access Key and Secret Key](#2-create-access-key-and-secret-key). |
+        
+1. Click **Next: Select Service Role**. Then choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
 
-7. Click **Next: Authenticate & configure nodes**.
+    Service Role | Description 
+    -------------|---------------------------
+    Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
+    Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
 
-8. Specify any additional options (such as instance type or minimum and maximum number of nodes). Then click **Create**.
+1. Click **Next: Select VPC and Subnet**.
+
+1. Choose an option for **Public IP for Worker Nodes**. Your selection for this option determines what options are available for **VPC & Subnet**.
+
+    Option | Description
+    -------|------------
+    Yes | When your cluster nodes are provisioned, they're assigned a both a private and public IP address.
+    No: Private IPs only | When your cluster nodes are provisioned, they're assigned only a private IP address.<br/><br/>If you choose this option, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane. 
+
+1. Now choose a **VPC & Subnet**. Follow one of the sets of instructions below based on your selection from the previous step.
+
+    Amazon Documentation: 
+
+	- [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+	- [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
+
+    {{% accordion id="yes" label="Public IP for Worker Nodes—Yes" %}}
+If you choose to assign a public IP address to your cluster's worker nodes, you have the option of choosing between a VPC that's automatically generated by Rancher (i.e., **Standard: Rancher generated VPC and Subnet**), or a VPC that you're already created with AWS (i.e., **Custom: Choose from your existing VPC and Subnets**). Choose the option that best fits your use case.
+
+1. Choose a **VPC and Subnet** option.
+
+    Option | Description 
+    -------|------------
+    Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC and Subnet.
+    Custom: Choose from your exiting VPC and Subnets | While provisioning your cluster, Rancher configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html). If you choose this option, complete the remaining steps below.
+
+1.  If you're using **Custom: Choose from your existing VPC and Subnets**:
+
+    (If you're using **Standard**, skip to [step 11](#select-instance-options))
+    
+	1. Make sure **Custom: Choose from your existing VPC and Subnets** is selected.
+	
+	1. From the drop-down that displays, choose a VPC.
+	
+	1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
+
+    1. Click **Next: Select Security Group**.
+    {{% /accordion %}}
+    {{% accordion id="no" label="Public IP for Worker Nodes—No: Private IPs only" %}}
+If you chose this option, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane. Follow the steps below.
+
+>**Tip:** When using only private IP addresses, you can provide your nodes internet access by creating a VPC constructed with two subnets, a private set and a public set.  The private set should have its route tables configured to point toward a NAT in the public set.  For more information on routing traffic from private subnets, please see the [official AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html).
+    
+    1. From the drop-down that displays, choose a VPC.
+	
+	1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
+
+    1. Click **Next: Select Security Group**.
+    {{% /accordion %}}
+
+1. <a id="security-group"></a>Choose a **Security Group**. See the documentation below on how to create one.
+
+    Amazon Documentation:
+
+    - [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+    - [Create a Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html#getting-started-create-security-group)
+
+1. <a id="select-instance-options"></a>Click **Select Instance Options**, and then edit the node options available.
+
+    Option | Description
+    -------|------------
+    Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-types/) for the instance you're provisioning.
+    Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here.
+    Minimum ASG Size | The minimum number of instances that your cluster will scale to during low traffic, as controlled by [Amazon Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
+    Maximum ASG Size | The maximum number of instances that your cluster will scale to during high traffic, as controlled by [Amazon Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
+
+1. Click **Create**.
 
 {{< result_create-cluster >}}
+
