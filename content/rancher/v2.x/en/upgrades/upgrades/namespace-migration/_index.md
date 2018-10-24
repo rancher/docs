@@ -50,8 +50,8 @@ You can prevent cluster networking issues from occurring during your upgrade to 
 
     ><sup>1</sup> Only displays if this feature is enabled for the cluster.
 
-    <sup>Moving Namespaces Out of Projects</sup>
-    ![Moving Namespaces]({{< baseurl >}}/src/img/rancher/move-namespaces.png)
+    <figcaption>Moving namespaces out of projects</figcaption>
+    ![Moving Namespaces]({{< baseurl >}}/img/rancher/move-namespaces.png)
 
 1. Repeat these steps for each cluster where you've assigned system namespaces to projects.
 
