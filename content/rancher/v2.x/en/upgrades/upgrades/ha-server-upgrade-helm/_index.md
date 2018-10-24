@@ -34,7 +34,6 @@ The following instructions will guide you through upgrading a high-availability 
     ```
     helm init --upgrade --service-account tiller
     ```
-
 - **Upgrades to v2.0.7+ only: check system namespace locations**
 
     Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
@@ -56,7 +55,6 @@ rancher-stable/rancher    18.10.11            v2.1.0      Install Rancher Server
 ```
 
 For additional chart details, view the [source of these Rancher server charts](https://github.com/rancher/server-chart).
-
 
 ## Upgrade Rancher
 
@@ -95,9 +93,11 @@ For additional chart details, view the [source of these Rancher server charts](h
     - Replace `<CHART_REPO>` with the repository that was listed (i.e. `latest` or `stable`).
     - Take all the values from the previous step and append them to the command using `--set key=value`.
 
+
     ```
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
+
 
     > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
 
@@ -107,6 +107,7 @@ For additional chart details, view the [source of these Rancher server charts](h
 >**Having Network Issues Following Upgrade?**
 >
 > See  [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+
 
 ## Rolling Back
 

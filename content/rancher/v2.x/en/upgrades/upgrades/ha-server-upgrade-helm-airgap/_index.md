@@ -53,7 +53,6 @@ For additional chart details, view the [source of these Rancher server charts](h
     helm repo update
     ```
 
-
 1. Get the [repository name that you installed Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) with.
 
     ```
@@ -73,11 +72,29 @@ For additional chart details, view the [source of these Rancher server charts](h
 
     >**Note:** This command assumes you have the `latest` Rancher helm repo configured. If you initially installed Rancher using the `stable` helm repo, replace `rancher-latest` with `rancher-stable`. For more information, see [Server Tags]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/).
 
+    ```
+    helm repo list
+
+    NAME          	      URL                                              
+    stable        	      https://kubernetes-charts.storage.googleapis.com
+    rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
+    ```
+
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+
+
+3. Fetch the latest chart to install Rancher from the Helm chart repository.
+
+    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name found in Step 2.
+
+
+
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
     ```
 
 1. Render the upgrade template.
+
 
     Use the same `--set` values that you used for the install. Remember to set the `--is-upgrade` flag for `helm`. This will create a `rancher` directory with the Kubernetes manifest files.
 
@@ -88,7 +105,7 @@ For additional chart details, view the [source of these Rancher server charts](h
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
     ```
 
-1. Copy and apply the rendered manifests.
+4. Copy and apply the rendered manifests.
 
     Copy the files to a server with access to the Rancher server cluster and apply the rendered templates.
 

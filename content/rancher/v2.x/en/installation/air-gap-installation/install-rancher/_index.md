@@ -99,7 +99,10 @@ helm template ./cert-manager-<version>.tgz --output-dir . \
 #### Rancher
 
 Add the Helm chart repository that contains charts to install Rancher. Replace `<CHART_REPO>` with the [repository that you're using]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) (i.e. `latest` or `stable`).
+<<<<<<< HEAD
 
+=======
+>>>>>>> helm fixes for latest/stable repos
 
 ```plain
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
