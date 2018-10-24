@@ -24,7 +24,7 @@ The following instructions will guide you through upgrading a high-availability 
 
     [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
-- **v2.0.7+ upgrades only: check system namespace locations**
+- **Upgrades to v2.0.7+ only: check system namespace locations**
 
     Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
@@ -77,6 +77,11 @@ The following instructions will guide you through upgrading a high-availability 
     ```plain
     kubectl -n cattle-system apply -R -f ./rancher
     ```
+**Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
+
+>**Having Network Issues Following Upgrade?**
+>
+> See  [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 ## Rolling Back
 
