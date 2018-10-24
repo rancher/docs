@@ -117,6 +117,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
 1. Remove the previous Rancher Server container.
 
     If you only stop the previous Rancher Server container (and don't remove it), the container may restart after the next server reboot.
+
 **Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
 
 >**Having Network Issues Following Upgrade?**

@@ -98,9 +98,7 @@ For additional chart details, view the [source of these Rancher server charts](h
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
 
-
     > **Important:** For any values listed from Step 2, you must use `--set key=value` to apply the same values to the helm chart.
-
 
 **Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
 
