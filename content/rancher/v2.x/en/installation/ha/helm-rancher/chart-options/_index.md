@@ -8,7 +8,8 @@ weight: 276
 | Option | Default Value | Description |
 | --- | --- | --- |
 | `hostname` | " " | `string` - the Fully Qualified Domain Name for your Rancher Server |
-| `ingress.tls.source` | "rancher" | `string` - Where to get the cert for the ingress. - "rancher, letsEncrypt, secret" |
+| `ingress.tls.source` | "rancher" | `string` - Where to get the cert for the ingress. - "rancher, letsEncrypt, secret, issuer, clusterIssuer" |
+| `ingress.tls.issuerName` | "" | `string` - Must be set if `ingress.tls.source` is `issuer` or `clusterIssuer`  |
 | `letsEncrypt.email` | " " | `string` - Your email address |
 | `letsEncrypt.environment` | "production" | `string` - Valid options: "staging, production" |
 | `privateCA` | false | `bool` - Set to true if your cert is signed by a private CA |
