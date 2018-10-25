@@ -27,10 +27,13 @@ Cross reference the image and reference table below to learn how to obtain this 
 | `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install. |
 | `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.                       |
 | `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher that you're creating a backup for. |
-| `<DATE>`                   | `9-27-18`                  | The date that the data container or backup was created.   | 
+| `<DATE>`                   | `9-27-18`                  | The date that the data container or backup was created.   |
 <br/>
 
 You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
+
+## Prerequisites
+**Upgrades to v2.0.7+ only:** Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
 ## Completing the Upgrade
 
@@ -88,7 +91,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
     docker run -d --volumes-from rancher-data --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest
     ```
 
-    >**Want records of all transactions with the Rancher API?** 
+    >**Want records of all transactions with the Rancher API?**
     >
     >Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your upgrade command.
     >```
@@ -98,7 +101,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
     -e AUDIT_LOG_MAXBACKUP=20 \
     -e AUDIT_LOG_MAXSIZE=100 \
     ```
-    
+
     >**Note:** _Do not_ stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
     ><br/>
     ><br/>
@@ -112,6 +115,12 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
     If you only stop the previous Rancher Server container (and don't remove it), the container may restart after the next server reboot.
 
-**Result:** Rancher Server is upgraded to the latest version.
+**Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
 
->**Note:** If your upgrade does not complete successfully, you can roll Rancher Server and its data back to its last healthy state. For more information, see [Single Node Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/).
+>**Having Network Issues Following Upgrade?**
+>
+> See  [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+
+## Rolling Back
+
+If your upgrade does not complete successfully, you can roll Rancher Server and its data back to its last healthy state. For more information, see [Single Node Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/).
