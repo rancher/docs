@@ -35,7 +35,7 @@ The following instructions will guide you through upgrading a high-availability 
     helm init --upgrade --service-account tiller
     ```
 - **Upgrades to v2.0.7+ only: check system namespace locations**
-     Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
+     Starting in v2.0.7, Rancher introduced the `System` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
 ## Upgrade Rancher
 
@@ -78,11 +78,11 @@ The following instructions will guide you through upgrading a high-availability 
     helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
     ```
 
-**Result:** Rancher is upgraded. Log back into Rancher to confirm that the  upgrade succeeded.
+**Result:** Rancher is upgraded. Log back into Rancher to confirm that the upgrade succeeded.
 
 >**Having Network Issues Following Upgrade?**
 >
-> See  [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 ## Rolling Back
 
