@@ -123,3 +123,16 @@ When the node is removed from the cluster, and the node is cleaned, you can read
 ### How can I add additional arguments/binds/environment variables to Kubernetes components in a Rancher Launched Kubernetes cluster?
 
 You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).
+
+### Why does it take 5+ minutes for a pod to be rescheduled when a node has failed?
+
+This is due to a combination of the following default Kubernetes settings:
+
+* kubelet
+  * `node-status-update-frequency`: Specifies how often kubelet posts node status to master (default 10s)
+* kube-controller-manager
+  * `node-monitor-period`: The period for syncing NodeStatus in NodeController (default 5s)
+  * `node-monitor-grace-period`: Amount of time which we allow running Node to be unresponsive before marking it unhealthy (default 40s)
+  * `pod-eviction-timeout`: The grace period for deleting pods on failed nodes (default 5m0s)
+
+See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.
