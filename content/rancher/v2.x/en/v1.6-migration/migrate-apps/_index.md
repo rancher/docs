@@ -7,8 +7,8 @@ weight: 200
 
 Rancher 1.6 | Rancher 2.0 | Description | Key Differences
 ------------|-------------|-------------|-----------------
-Container   | Pod         | placeholder | placeholder
-Service     | Workload    | placeholder | placeholder
+Container   | Pod         | A standard unit of software that packages an application along with its dependencies. | Although these terms are often used synonymously, they are technically slightly different. Containers are a single unit. Pods are a group of containers. These terms are used synonymously because pods usually only include a single container. Pods are Kubernetes object, while containers are a Docker object.
+Service     | Workload    | A set of one or more containers created from the same Docker image.  | Service is a term that encompasses one or more containers using the same image, while Workload expands that definition to include the deployment rules for those containers.
 Stack       | Project + Namespace | placeholder | placeholder
 Compose config file | Kubernetes YAML | placeholder | placeholder
 
