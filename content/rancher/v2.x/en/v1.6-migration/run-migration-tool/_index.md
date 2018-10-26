@@ -3,9 +3,18 @@ title: 2—Run the Migration Tool
 weight: 100
 ---
 
-To use the Migration Tool, run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
+To help with migration from 1.6 to 2.0, Rancher has developed a Migration Tool. Running this tool will help you check if your Rancher 1.6 applications can be migrated to 2.0. If an application can't be migrated, the tool will help you identify what's lacking.
 
-#### Usage
+This tool will:
+
+- Accept Docker Compose config files (i.e., `docker-compose.yml` and `rancher-compose.yml`) that you've exported from your Rancher 1.6 Stacks.
+- Output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML, even using tools like Kompose.
+
+To use the Migration Tool, follow the directions below.run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
+
+## A. Download Compose Files
+
+## Usage
 
 You can run the Migration Tool by entering the following command, replacing each placeholder with the absolute path to your Stack's compose files.
 
@@ -13,7 +22,7 @@ You can run the Migration Tool by entering the following command, replacing each
 migration-tools --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>
 ```
 
-#### Options
+## Options
 
 When using the Migration Tool, you can specify the paths to your Docker and Rancher compose files, regardless of where they are on your file system.
 
@@ -26,7 +35,7 @@ When using the Migration Tool, you can specify the paths to your Docker and Ranc
 
 ><sup>1</sup> If you omit the `--docker-file` and `--rancher-file` options from your command, the migration tool will check its home directory for compose files.
 
-#### Output
+## Output
 
 After you run the migration tool, the following files output to the same directory that you ran the tool from.
 
