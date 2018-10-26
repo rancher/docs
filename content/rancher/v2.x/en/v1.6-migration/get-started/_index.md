@@ -106,4 +106,4 @@ Just like 1.6, Rancher 2.0 supports service discovery within and across namespac
 | namespace    | stack          |
 
 
-### [Next: Migrate Applications]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/migrate-apps/)
+### [Next: Run the Migration Tool]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool)

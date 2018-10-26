@@ -12,9 +12,49 @@ This tool will:
 
 To use the Migration Tool, follow the directions below.run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
 
-## A. Download Compose Files
+## Outline
 
-## Usage
+<!-- TOC -->
+
+- [A. Download the Migration Tool](#a-download-the-migration-tool)
+- [B. Configure the Migration Tool](#b-configure-the-migration-tool)
+- [C. Run the Migration Tool](#c-run-the-migration-tool)
+
+<!-- /TOC -->
+
+## A. Download the Migration Tool
+
+The Migration Tool for your platform can be downloaded from its [GitHub releases page](https://github.com/rancher/migration-tools/releases). The tool is available for Linux, Mac, and Windows platforms.
+
+## B. Configure the Migration Tool
+
+After the tool is downloaded, you need to make some configurations to run it.
+
+1. Modify the Migration Tool file to make it an executable.
+
+    1. Open Terminal and change to the directory that contains the Migration Tool file.
+
+    1. Rename the Migration Tool file to `migration-tools` so that it no longer includes the platform name.
+
+    1. Enter the following command to make `migration-tools` an executable:
+
+        ```
+        chmod +x migration-tools
+        ```
+1. Export the configuration for each Rancher 1.6 Stack that you want to migrate to 2.0.
+
+    1. Log into Rancher 1.6 and select **Stacks > All**.
+
+    1. From the **All Stacks** page, select  **Ellipsis (...) > Export Config** for each Stack that you want to migrate.
+
+    1. Extract the downloaded `compose.zip`. Move the folder contents (`docker-compose.yml` and `rancher-compose.yml`) into the same directory as `migration-tools`.
+
+## C. Run the Migration Tool
+
+To use the Migration Tool, run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
+
+
+### Usage
 
 You can run the Migration Tool by entering the following command, replacing each placeholder with the absolute path to your Stack's compose files.
 
@@ -22,7 +62,7 @@ You can run the Migration Tool by entering the following command, replacing each
 migration-tools --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>
 ```
 
-## Options
+### Options
 
 When using the Migration Tool, you can specify the paths to your Docker and Rancher compose files, regardless of where they are on your file system.
 
@@ -35,7 +75,7 @@ When using the Migration Tool, you can specify the paths to your Docker and Ranc
 
 ><sup>1</sup> If you omit the `--docker-file` and `--rancher-file` options from your command, the migration tool will check its home directory for compose files.
 
-## Output
+### Output
 
 After you run the migration tool, the following files output to the same directory that you ran the tool from.
 
