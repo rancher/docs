@@ -89,6 +89,8 @@ However, for production environments, we recommend [creating your own project]({
 
 After provisioning a new cluster and project, you can authorize your users to access and use project resources. Similarly to Rancher 1.6 environments, Rancher 2.0 allows you to [assign users to projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/). By assigning users to projects, you can limit what resources a user can access.
 
+>**Note:** We'll provide detailed explanation for  migrating your 1.6 environments and applications to 2.0 in the next section. 
+
 ## D. Create Namespaces
 
 After adding a cluster and a project, the next step is to define any [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) you'll use to group your application workloads.

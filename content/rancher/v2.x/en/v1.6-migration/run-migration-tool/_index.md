@@ -3,14 +3,10 @@ title: 2—Run the Migration Tool
 weight: 100
 ---
 
-To help with migration from 1.6 to 2.0, Rancher has developed a Migration Tool. Running this tool will help you check if your Rancher 1.6 applications can be migrated to 2.0. If an application can't be migrated, the tool will help you identify what's lacking.
+To help with migration from 1.6 to 2.0, Rancher has developed a Migration Tool. This tool checks if your Rancher 1.6 applications can be migrated to 2.0. If an application can't be migrated, the tool will help you identify what's lacking.
 
-This tool will:
-
-- Accept Docker Compose config files (i.e., `docker-compose.yml` and `rancher-compose.yml`) that you've exported from your Rancher 1.6 Stacks.
-- Output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML, even using tools like Kompose.
-
-To use the Migration Tool, follow the directions below.run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
+The Migration Tool analyzes Docker Compose config files (i.e., `docker-compose.yml` and `rancher-compose.yml`) that you've exported from your Rancher 1.6 Stacks.
+It then outputs a list of constructs present in the Compose files that are unsupported in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML.
 
 ## Outline
 
@@ -77,10 +73,19 @@ When using the Migration Tool, you can specify the paths to your Docker and Ranc
 
 ### Output
 
-After you run the migration tool, the following files output to the same directory that you ran the tool from.
+After you run the Migration Tool, the following files output to the same directory that you ran the tool from.
 
 
 | Output                | Description                                                                                                                                                                                                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `output.txt`          | This file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to Rancher 2.0. Each construct links to the relevant blog articles on how to implement it in Rancher 2.0 (these articles are also listed below). |
 | Kubernetes YAML specs | The Migration Tool internally invokes [Kompose](https://github.com/kubernetes/kompose) to generate Kubernetes YAML specs for each service you're migrating to 2.0. Each YAML spec file is named for the service you're migrating.
+
+
+### What Do I Do with `output.txt`?
+
+View the output in your favorite text editor. This file lists each construct you need to migrate manually. Instructions for helping migrate these constructs are available in future sections.
+
+>**Note:** Some constructs cannot be migrated without assistance from Rancher support. If `output.txt` includes a section about obtaining help from Rancher support, browse to [our website](https://rancher.com/contact/) and click the Support button. Complete the form. A support representative will contact you shortly.
+
+### [Next: Migrate 1.6 Apps to 2.0]({{< baseurl >}} /rancher/v2.x/en/v1.6-migration/migrate-apps)
