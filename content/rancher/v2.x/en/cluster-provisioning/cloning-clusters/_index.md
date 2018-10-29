@@ -3,7 +3,7 @@ title: Duplicating Clusters
 weight: 2400
 ---
 
-If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI and RKE to export the cluster configuration, modify it to your liking, and then quickly launch the duplicate clusters using RKE.
+If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to duplicate the cluster's Compose file, edit it, and then use it to quickly launch the duplicate cluster.
 
 ## Caveats
 
@@ -45,10 +45,24 @@ Cluster Type | Cloneable?
 1. Enter the following command to export the configuration for your cluster.
 
     ```
-    ./rancher inspect --format yaml existing <RESOURCE_ID>
+    ./rancher inspect --format yaml <RESOURCE_ID>
     ```
 
+    **Step Result:** The Docker Compose YAML for your cluster prints to Terminal.
+
+1. Copy the YAML to your clipboard and paste it in a new file. Save the file as `cluster-template.yaml` (or any other name, as long as it has a `.yaml` extension).
 
 ## B. Modify Cluster Config
 
+Use your favorite text editor to modify the configuration in `cluster-template.yaml` for your duplicate cluster. Save the configuration changes when you're done.
+
+For information on how to make these edits, see the [Docker Compose](https://docs.docker.com/compose/) documentation.
+
 ## C. Launch Duplicate Cluster
+
+Move `cluster-template.yaml` into the same directory as the Rancher CLI binary. Then run this command:
+
+
+```
+./rancher up --file rancher-cluster.yaml
+```
