@@ -3,7 +3,20 @@ title: "Air Gap: Single Node Install"
 weight:
 ---
 
+## Outline
+
+<!-- TOC -->
+
+- [1. Collect Image Sources](#1-collect-image-sources)
+- [2. Publish Images](#2-publish-images)
+- [3. Install Rancher](#3-install-rancher)
+- [4. Configure Rancher for the Private Registry](#4-configure-rancher-for-the-private-registry)
+
+<!-- /TOC -->
+
 ## 1. Collect Image Sources
+
+Collect the list of images required for Rancher. These steps will require internet access.
 
 All the required images for a Single Node install can be found in the `rancher-images.txt` included with the release of Rancher you are installing.
 
