@@ -20,13 +20,13 @@ Collect the list of images required for Rancher. These steps will require intern
 
 The Rancher HA install uses images from 3 sources. Combine the 3 sources into a file named `rancher-images.txt`.
 
-* **Rancher** - Images required by Rancher. Download the `rancher-images.txt` file from [Rancher releases](https://github.com/rancher/rancher/releases) page for the version of Rancher you are installing.
-* **RKE** - Images required by `rke` to install Kubernetes. Run `rke` and add the images to the end of `rancher-images.txt`.
+- **Rancher** - Images required by Rancher. Download the `rancher-images.txt` file from [Rancher releases](https://github.com/rancher/rancher/releases) page for the version of Rancher you are installing.
+- **RKE** - Images required by `rke` to install Kubernetes. Run `rke` and add the images to the end of `rancher-images.txt`.
 
     ```plain
     rke config --system-images >> ./rancher-images.txt
     ```
-* **Cert-Manager** - (Optional) If you choose to install with Rancher Self-Signed TLS certificates, you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
+- **Cert-Manager** - (Optional) If you choose to install with Rancher Self-Signed TLS certificates, you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
 
     Fetch the latest `cert-manager` Helm chart and parse the template for image details.
 
