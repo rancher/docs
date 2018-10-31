@@ -7,9 +7,21 @@ weight:
 
 <!-- TOC -->
 
-- [1. Collect Image Sources](#1-collect-image-sources)
-- [2. Publish Images](#2-publish-images)
-- [3. Install Rancher](#3-install-rancher)
+- [Outline](#outline)
+- [Prerequisites](#prerequisites)
+- [Caveats](#caveats)
+- [1. Provision Three Linux Hosts and Load Balancer](#1-provision-three-linux-hosts-and-load-balancer)
+- [2. Collect Image Sources](#2-collect-image-sources)
+- [3. Publish Images](#3-publish-images)
+- [4. Install Rancher](#4-install-rancher)
+    - [4A. Create an RKE Config File](#4a-create-an-rke-config-file)
+        - [Common RKE Nodes Options](#common-rke-nodes-options)
+    - [4B. Run RKE](#4b-run-rke)
+    - [4C. Initialize Helm](#4c-initialize-helm)
+    - [4D. Render Templates](#4d-render-templates)
+    - [4E. Install Cert-Manager](#4e-install-cert-manager)
+    - [4F. Install Rancher](#4f-install-rancher)
+    - [4G. Copy and Apply Manifests](#4g-copy-and-apply-manifests)
 - [4. Configure Rancher for the Private Registry](#4-configure-rancher-for-the-private-registry)
 
 <!-- /TOC -->
@@ -102,15 +114,17 @@ After downloading the release files, publish the images from `rancher-images.txt
 
 
 
-## 3. Install Rancher
+## 4. Install Rancher
 
 This guide will take you through the basic process of installing Rancher Server HA in a Air Gap environment. Please see the [High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha) guide for additional options and troubleshooting.
 
-## RKE
 
-On a system that has access (22/tcp and 6443/tcp) to the nodes you have built to host the Rancher server cluster, use the sample below create the `rancher-cluster.yml` file. Define your nodes and fill out the details for the private registry.
+### 4A. Create an RKE Config File 
 
-See [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/) for more details on the options available.
+
+On a system that has access (22/tcp and 6443/tcp) to the nodes you have built to host the Rancher server cluster, use the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
+
+>**Tip:** See [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/) for more details on the options available.
 
 Replace values in the code sample according to the table below.
 
@@ -119,6 +133,8 @@ Replace values in the code sample according to the table below.
 | `address`               | The IP address for each of your air gap nodes outside of the cluster. |
 | `internal_address`      | The IP address for each of your air gap nodes within the cluster.     |
 | `url`                   | The URL for your private registry.                                    |
+
+> **Note:**  If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 ```yaml
 nodes:
@@ -145,39 +161,44 @@ private_registries:
   is_default: true
 ```
 
-### Run RKE
+#### Common RKE Nodes Options
 
-```plain
+| Option | Required | Description |
+| --- | --- | --- |
+| `address` | yes | The public DNS or IP address |
+| `user` | yes | A user that can run docker commands |
+| `role` | yes | List of Kubernetes roles assigned to the node |
+| `internal_address` | no | The private DNS or IP address for internal cluster traffic |
+| `ssh_key_path` | no | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`) |
+
+<!-- TODO: add troubleshooting and other links -->
+
+### 4B. Run RKE
+
+After configuring `rancher-cluster.yml`, open Terminal and change directories to the RKE binary. Then enter the command below to stand up your high availability cluster.
+
+```
 rke up --config ./rancher-cluster.yml
 ```
 
-### Testing the Cluster
+### 4C. Initialize Helm 
 
-Follow the rest of the [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/) guide to test your cluster and verify the health of your pods before continuing.
-
-## Helm
 
 Instead of installing the `tiller` agent on the cluster, render the installs on a system that has access to the internet and copy resulting manifests to a system that has access to the Rancher server cluster.
-
-### Initialize Helm Locally
 
 Skip the [Initialize Helm (Install Tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/) and initialize `helm` locally on a system that has internet access.
 
 ```plain
 helm init -c
-```
+``` 
 
-## Installing Rancher
-
-If you set up a default private registry with credentials in RKE, the Kubernetes `kubelet` will have the credentials for your private registry configured.
-
-### Render Templates
+### 4D. Render Templates
 
 Fetch and render the `helm` charts on a system that has internet access.
 
-#### Cert-Manager
+### 4E. Install Cert-Manager
 
-If you are installing Rancher with Rancher self-signed certificates you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
+If you are installing Rancher with its self-signed certificates, you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
 
 Fetch the latest `cert-manager` chart from the [official Helm chart repository](https://github.com/helm/charts/tree/master/stable).
 
@@ -193,7 +214,7 @@ helm template ./cert-manager-<version>.tgz --output-dir . \
 --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
 ```
 
-#### Rancher
+### 4F. Install Rancher
 
 Add the Helm chart repository that contains charts to install Rancher. Replace `<CHART_REPO>` with the [repository that you're using]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) (i.e. `latest` or `stable`).
 
@@ -216,11 +237,9 @@ helm template ./rancher-<version>.tgz --output-dir . \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
 ```
 
-### Copy Manifests
+### 4G. Copy and Apply Manifests
 
 Copy the rendered manifest directories to a system that has access to the Rancher server cluster.
-
-### Apply the Manifests
 
 Use `kubectl` to create namespaces and apply the rendered manifests.
 
