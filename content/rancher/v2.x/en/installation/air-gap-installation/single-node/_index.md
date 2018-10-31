@@ -2,38 +2,55 @@
 title: "Air Gap: Single Node Install"
 weight:
 ---
-
 ## Outline
 
 <!-- TOC -->
 
-- [1. Collect Image Sources](#1-collect-image-sources)
-- [2. Publish Images](#2-publish-images)
-- [3. Install Rancher](#3-install-rancher)
-- [4. Configure Rancher for the Private Registry](#4-configure-rancher-for-the-private-registry)
+- [Prerequisites](#prerequisites)
+- [Caveats](#caveats)
+- [1. Provision Linux Host](#1-provision-linux-host)
+- [2. Collect Image Sources](#2-collect-image-sources)
+- [3. Publish Images](#3-publish-images)
+- [4. Choose an SSL Option and Install Rancher](#4-choose-an-ssl-option-and-install-rancher)
+- [5. Configure Rancher for the Private Registry](#5-configure-rancher-for-the-private-registry)
 
 <!-- /TOC -->
 
-## 1. Collect Image Sources
+## Prerequisites
 
-Collect the list of images required for Rancher. These steps will require internet access.
+Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
-All the required images for a Single Node install can be found in the `rancher-images.txt` included with the release of Rancher you are installing.
 
-Download the `rancher-images.txt` from the [Rancher releases](https://github.com/rancher/rancher/releases) page.
+## Caveats
 
-## 2. Publish Images
+In versions of Rancher prior to v2.1.0, registries with authentication are not supported when installing Rancher in HA or provisioning clusters, but after clusters are provisioned, registries with authentication can be used in the Kubernetes clusters.
 
-Once you have the `rancher-images.txt` file populated, publish the images from the list to your private registry.
+As of v2.1.0, registries with authentication work for installing Rancher as well as provisioning clusters.
 
->**Note:** This may require up to 20GB of disk space.
 
-1. Browse to the [Rancher releases page](https://github.com/rancher/rancher/releases) and download the following tools for saving and publishing the images.
+## 1. Provision Linux Host
 
-    | Release File | Description |
-    | --- | --- |
-    | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
-    | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
+Provision a single, air gapped Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
+
+This host should be disconnected from the internet, but should have connectivity with your private registry.
+
+## 2. Collect Image Sources
+
+Using a computer with internet access, browse to our Rancher [releases page](https://github.com/rancher/rancher/releases) and find the version that you want to install. Download the following three files, which are required to install Rancher in an air gap environment:
+
+
+| Release File | Description |
+| --- | --- |
+| `rancher-images.txt` | This file contains a list of all files needed to install Rancher.
+| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
+
+
+## 3. Publish Images
+
+After downloading the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
+
+>**Note:** Image publication may require up to 20GB of empty disk space.
 
 1. From a system with internet access, use the `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images.
 
@@ -41,133 +58,106 @@ Once you have the `rancher-images.txt` file populated, publish the images from t
     ./rancher-save-images.sh --image-list ./rancher-images.txt
     ```
 
-1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to a system that can reach your private registry.
+1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to the [Linux host](#1-provision-linux-host) that you've provisioned.
 
-    Log into your registry if required.
+    1. Log into your registry if required.
 
-    ```plain
-    docker login <REGISTRY.YOURDOMAIN.COM:PORT>
-    ```
+        ```plain
+        docker login <REGISTRY.YOURDOMAIN.COM:PORT>
+        ```
 
-    Use `rancher-load-images.sh` to extract, tag and push the images to your private registry.
+    1. Use `rancher-load-images.sh` to extract, tag and push the images to your private registry.
 
-    ```plain
-    ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
-    ```
+        ```plain
+        ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
+        ```
 
-## 3. Provision Linux Host
-
-Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 4. Choose an SSL Option and Install Rancher
 
-To deploy Rancher on a single node in an air gap environment, follow the instructions in the standard [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/). Parts of the install where you must complete a special action for air gap are flagged with a substitute step, which is listed in the subheading below.
-
-For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
+For development and testing in air gap environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to your air gap host using an image pulled from your private registry.
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
 >**Do you want to...**
 >
->- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/proxy/)
->- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
->- Complete an Air Gap Installation? See [Air Gap](#air-gap)
->- Record all transactions with the Rancher API? See [API Auditing](#api-auditing)
->
+>- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
+>- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#enable-api-audit-log).
 
-Choose from the following options. Regardless of which install option you choose, prepend your Rancher image tag with your private registry URL (`<REGISTRY.YOURDOMAIN.COM:PORT>`).
+
+Choose from the following options:
 
 
 {{% accordion id="option-a" label="Option A-Default Self-Signed Certificate" %}}
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
-Log into your Linux host, and then run the minimum installation command below.
-
->**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image.
+Log into your Linux host, and then run the installation command below. Replace `<REGISTRY.YOURDOMAIN.COM:PORT>` with your private registry URL and port.
 
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
-
 
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
 >**Prerequisites:**
->Create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
+>From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
 >
->- The certificate files must be in [PEM format](#pem).
->- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
+>- The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem).
+>- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#cert-order).
 
 After creating your certificate, run the Docker command below to install Rancher. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
-- Replace `<CERT_DIRECTORY>` with the directory path to your certificate file.
-- Replace `<FULL_CHAIN.pem>`,`<PRIVATE_KEY.pem>`, and `<CA_CERTS>` with your certificate names.
+When entering the command, use the table below to replace each placeholder.
 
->**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image.
+Placeholder | Description
+------------|-------------
+`<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
+`<FULL_CHAIN.pem>` | The path to your full certificate chain.
+`<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
+`<CA_CERTS>` | The path to the certificate authority's private key.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
 
+```
+docker run -d --restart=unless-stopped \
+-p 80:80 -p 443:443 \
+-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+-v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
+```
 
-    docker run -d --restart=unless-stopped \
-    -p 80:80 -p 443:443 \
-    -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
-    -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-    -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
-    
 
 {{% /accordion %}}
 {{% accordion id="option-c" label="Option C-Bring Your Own Certificate: Signed by Recognized CA" %}}
 
 In production environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
->**Prerequisite:** The certificate files must be in [PEM format](#pem).
+>**Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem).
 
-After obtaining your certificate, run the Docker command below.
+After obtaining your certificate, run the Docker command below, replacing each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 
-- Use the `-v` flag and provide the path to your certificates to mount them in your container. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
+When entering the command, use the table below to replace each placeholder.
 
-	- Replace `<CERT_DIRECTORY>` with the directory path to your certificate file.
-	- Replace `<FULL_CHAIN.pem>` and `<PRIVATE_KEY.pem>` with your certificate names.
+Placeholder | Description
+------------|-------------
+`<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
+`<FULL_CHAIN.pem>` | The path to your full certificate chain.
+`<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port. Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
 
-- Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
-
->**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image.
-
-
+    ```
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
     -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
 	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> --no-cacerts
+    ```
 
 {{% /accordion %}}
-{{% accordion id="option-d" label="Option D-Let's Encrypt Certificate" %}}
-
-For production environments, you also have the options of using [Let's Encrypt](https://letsencrypt.org/) certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
-
->**Prerequisites:**
->
->- Let's Encrypt is an Internet service. Therefore, this option cannot be used in an internal/air gapped network.
->- Create a record in your DNS that binds your Linux host IP address to the hostname that you want to use for Rancher access (`rancher.mydomain.com` for example).
->- Open port `TCP/80` on your Linux host. The Let's Encrypt http-01 challenge can come from any source IP address, so port `TCP/80` must be open to all IP addresses.
-
-
-After you fulfill the prerequisites, you can install Rancher using a Let's Encrypt certificate by running the following command. Replace `<YOUR.DNS.NAME>` with your your domain.
-
->**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image.
-
-
-    docker run -d --restart=unless-stopped \
-    -p 80:80 -p 443:443 \
-    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
-    --acme-domain <YOUR.DNS.NAME>
-    
->**Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
-{{% /accordion %}}
-
-## 4. Configure Rancher for the Private Registry
+## 5. Configure Rancher for the Private Registry
 
 Rancher needs to be configured to use the private registry in order to provision any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or [Rancher tools]({{< baseurl >}}/rancher/v2.x/en/tools/) .
 

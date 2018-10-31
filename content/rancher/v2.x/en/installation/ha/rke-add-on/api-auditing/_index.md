@@ -5,7 +5,7 @@ aliases:
   - /rke/v0.1.x/en/config-options/add-ons/api-auditing/
 ---
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+>**Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
 >Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
 >
