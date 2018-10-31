@@ -136,3 +136,20 @@ This is due to a combination of the following default Kubernetes settings:
   * `pod-eviction-timeout`: The grace period for deleting pods on failed nodes (default 5m0s)
 
 See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.
+### How do I check `Common Name` and `Subject Alternative Names` in my server certificate?
+
+Although technically an entry in `Subject Alternative Names` is required, having the hostname in both `Common Name` and as entry in `Subject Alternative Names` gives you maximum compatibility with older browser/applications.
+
+Check `Common Name`:
+
+```
+openssl x509 -noout -subject -in cert.pem
+subject= /CN=rancher.my.org
+```
+
+Check `Subject Alternative Names`:
+
+```
+openssl x509 -noout -in cert.pem -text | grep DNS
+                DNS:rancher.my.org
+```

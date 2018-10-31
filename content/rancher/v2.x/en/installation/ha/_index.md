@@ -11,13 +11,13 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 
 ## Recommended Architecture
 
-* DNS for Rancher should resolve to a layer 4 load balancer
+* DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
 * The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
-<sup>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
+<sup>HA Rancher install with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
 
 ## Required Tools
 
