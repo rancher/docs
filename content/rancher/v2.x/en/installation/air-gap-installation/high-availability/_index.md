@@ -14,45 +14,70 @@ weight:
 
 <!-- /TOC -->
 
-## 1. Collect Image Sources
+## Prerequisites
 
-Collect the list of images required for Rancher. These steps will require internet access.
+Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
-The Rancher HA install uses images from 3 sources. Combine the 3 sources into a file named `rancher-images.txt`.
 
-- **Rancher** - Images required by Rancher. Download the `rancher-images.txt` file from [Rancher releases](https://github.com/rancher/rancher/releases) page for the version of Rancher you are installing.
-- **RKE** - Images required by `rke` to install Kubernetes. Run `rke` and add the images to the end of `rancher-images.txt`.
+## Caveats
 
-    ```plain
-    rke config --system-images >> ./rancher-images.txt
-    ```
-- **Cert-Manager** - (Optional) If you choose to install with Rancher Self-Signed TLS certificates, you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
+In versions of Rancher prior to v2.1.0, registries with authentication are not supported when installing Rancher in HA or provisioning clusters, but after clusters are provisioned, registries with authentication can be used in the Kubernetes clusters.
 
-    Fetch the latest `cert-manager` Helm chart and parse the template for image details.
+As of v2.1.0, registries with authentication work for installing Rancher as well as provisioning clusters.
 
-    ```plain
-    helm fetch stable/cert-manager
-    helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
-    ```
 
-Sort and unique the images list to remove any overlap between the sources.
+## 1. Provision Three Linux Hosts and Load Balancer
 
-```plain
-sort -u rancher-images.txt -o rancher-images.txt
-```
+Provision three air gapped Linux hosts according to our requirements below to launch Rancher in an HA configuration.
 
-## 2. Publish Images
+These hosts should be disconnected from the internet, but should have connectivity with your private registry.
 
-Once you have the `rancher-images.txt` file populated, publish the images from the list to your private registry.
+{{% tabs %}}
+{{% tab "Host Requirements" %}}
+View hardware and software requirements for each of your cluster nodes in [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
+{{% /tab %}}
+{{% tab "Recommended Architecture" %}}
 
->**Note:** This may require up to 20GB of disk space.
+- DNS for Rancher should resolve to a layer 4 load balancer
+- The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
+- The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
+- The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
-1. Browse to the [Rancher releases page](https://github.com/rancher/rancher/releases) and download the following tools for saving and publishing the images.
+<figcaption>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
+![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg) 
+{{% /tab %}}
+{{% tab "Required Tools" %}}
+The following CLI tools are required for this install. Please make sure these tools are installed and available in your `$PATH`
 
-    | Release File | Description |
-    | --- | --- |
-    | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
-    | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+* [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. 
+{{% /tab %}}
+
+{{% tab "Load Balancer"%}}
+RKE, the installer that provisions your air gapped cluster, will configure an Ingress controller pod on each of your nodes. The Ingress controller pods are bound to ports TCP/80 and TCP/443 on the host network and are the entry point for HTTPS traffic to the Rancher server.
+
+Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configuration will vary depending on your environment.
+{{% /tab %}}
+{{% /tabs %}}
+
+## 2. Collect Image Sources
+
+Using a computer with internet access, browse to our Rancher [releases page](https://github.com/rancher/rancher/releases) and find the version that you want to install. Download the following three files, which are required to install Rancher in an air gap environment:
+
+
+| Release File | Description |
+| --- | --- |
+| `rancher-images.txt` | This file contains a list of all files needed to install Rancher.
+| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
+
+
+## 3. Publish Images
+
+After downloading the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
+
+>**Note:** Image publication may require up to 20GB of empty disk space.
 
 1. From a system with internet access, use the `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images.
 
@@ -60,18 +85,21 @@ Once you have the `rancher-images.txt` file populated, publish the images from t
     ./rancher-save-images.sh --image-list ./rancher-images.txt
     ```
 
-1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to a system that can reach your private registry.
+1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to the [Linux host](#1-provision-linux-host) that you've provisioned.
 
-    Log into your registry if required.
+    1. Log into your registry if required.
 
-    ```plain
-    docker login <REGISTRY.YOURDOMAIN.COM:PORT>
-    ```
+        ```plain
+        docker login <REGISTRY.YOURDOMAIN.COM:PORT>
+        ```
 
-    Use `rancher-load-images.sh` to extract, tag and push the images to your private registry.
+    1. Use `rancher-load-images.sh` to extract, tag and push the images to your private registry.
 
-    ```plain
-    ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
+        ```plain
+        ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
+        ```
+
+
 
 
 ## 3. Install Rancher
