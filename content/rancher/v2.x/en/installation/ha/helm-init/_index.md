@@ -24,7 +24,7 @@ kubectl create clusterrolebinding tiller \
 
 helm init --service-account tiller
 
-# Note: If you are in China, you'll need to specify a specific tiller-image in order to initialize tiller. 
+# Users in China: You will need to specify a specific tiller-image in order to initialize tiller. 
 # The list of tiller image tags are available here: https://dev.aliyun.com/detail.html?spm=5176.1972343.2.18.ErFNgC&repoId=62085. 
 # When initializing tiller, you'll need to pass in --tiller-image
 
