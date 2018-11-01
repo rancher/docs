@@ -29,7 +29,7 @@ Only [cluster types]({{< baseurl >}}/content/rancher/v2.x/en/cluster-provisionin
 Download and install [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli). Remember to [create an API bearer token]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys) if necessary.
 
 
-## A. Export Cluster Config
+## 1. Export Cluster Config
 
 1. Open Terminal and change your directory to the location of the Rancher CLI binary, `rancher`.
 
@@ -47,11 +47,11 @@ Download and install [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli). Remembe
         ./rancher clusters export <RESOURCE_ID>
 
 
-    **Step Result:** The Kubeconfig YAML for a duplicate cluster prints to Terminal.
+    **Step Result:** The YAML for a duplicate cluster prints to Terminal.
 
 1. Copy the YAML to your clipboard and paste it in a new file. Save the file as `cluster-template.yml` (or any other name, as long as it has a `.yml` extension).
 
-## B. Modify Cluster Config
+## 2. Modify Cluster Config
 
 Use your favorite text editor to modify the cluster configuration in `cluster-template.yml` for your duplicate cluster.
 
@@ -59,28 +59,30 @@ Use your favorite text editor to modify the cluster configuration in `cluster-te
 
 1. Change the name of your cluster (`<CLUSTER_NAME>`). If your cloned configuration has the same cluster name as its source, the cluster will not provision.
 
-        Version: v3
-        clusters:
-          <CLUSTER_NAME>: # CHANGE THIS NAME
-            amazonElasticContainerServiceConfig:
-              accessKey: 00000000000000000000
-              associateWorkerNodePublicIp: true
-              instanceType: t2.medium
-              maximumNodes: 3
-              minimumNodes: 1
-              region: us-west-2
-              secretKey: 0000000000000000000000000000000000000000
-            dockerRootDir: /var/lib/docker
-            enableNetworkPolicy: false
+    ```yml    
+    Version: v3
+    clusters:
+        <CLUSTER_NAME>: # CHANGE THIS NAME
+        amazonElasticContainerServiceConfig:
+            accessKey: 00000000000000000000
+            associateWorkerNodePublicIp: true
+            instanceType: t2.medium
+            maximumNodes: 3
+            minimumNodes: 1
+            region: us-west-2
+            secretKey: 0000000000000000000000000000000000000000
+        dockerRootDir: /var/lib/docker
+        enableNetworkPolicy: false
+    ```
 
 1. Edit any other configuration values to customize the cloned cluster. Save the configuration when you're done.
 
-    For information on how to make these edits, see the official Kubernetes [Kubeconfig documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
+    For information on how to make these edits, see the official [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
 
-## C. Launch Duplicate Cluster
+## 3. Launch Duplicate Cluster
 
 Move `cluster-template.yml` into the same directory as the Rancher CLI binary. Then run this command:
 
-    ./rancher up --file rancher-cluster.yml
+    ./rancher up --file cluster-template.yml
 
-**Result:** Your duplicate cluster begins provisioning. Enter `./rancher cluster ls` to confirm. Log into the Rancher UI and open the **Global** view to watch your provisioning cluster's progress.
+**Result:** Your duplicate cluster begins provisioning. Enter `./rancher cluster ls` to confirm. You can also log into the Rancher UI and open the **Global** view to watch your provisioning cluster's progress.
