@@ -1,5 +1,5 @@
 ---
-title: Nodes hosted in an Infrastructure Provider
+title: Nodes Hosted in an Infrastructure Provider
 weight: 2205
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/node-drivers/

@@ -14,7 +14,7 @@ When removing nodes from your Rancher-launched cluster (provided that they are i
 
 When cleaning nodes provisioned using Rancher, the following components are deleted based on the type of cluster node you're removing.
 
-| Removed Component                                                              | [IaaS Nodes][1] | [Custom Nodes][2] | [Hosted Cluster][3] | [Imported Nodes][4] |
+| Removed Component                                                              | [Nodes Hosted by Infrastructure Provider][1] | [Custom Nodes][2] | [Hosted Cluster][3] | [Imported Nodes][4] |
 | ------------------------------------------------------------------------------ | --------------- | ----------------- | ------------------- | ------------------- |
 | The Rancher deployment namespace (`cattle-system` by default)                  | ✓               | ✓                 | ✓                   | ✓                   |
 | `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` labeled by Rancher | ✓               | ✓                 | ✓                   | ✓                   |
