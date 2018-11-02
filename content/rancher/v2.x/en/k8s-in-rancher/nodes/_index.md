@@ -15,7 +15,7 @@ To manage individual nodes, browse to the cluster that you want to manage and th
 
 The following table lists which node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
-| Option                                           | [Node Pool][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
+| Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
 | [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
@@ -106,12 +106,12 @@ For nodes hosted by an infrastructure provider, you can scale the number of node
 ![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
 
 
-## Remoting into a Node Pool Node
+## Remoting into a Node Hosted by an Infrastructure Provider
 
 For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
 
-1. From the Node Pool cluster, select **Nodes** from the main menu.
+1. From the cluster hosted by an infrastructure provider, select **Nodes** from the main menu.
 
 1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
 
