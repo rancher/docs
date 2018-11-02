@@ -9,14 +9,12 @@ If you have a cluster in Rancher that you want to use as a template for creating
 
 - Only [cluster types]({{< baseurl >}}/content/rancher/v2.x/en/cluster-provisioning) that interact with cloud hosts over API can be duplicated. Duplication of imported clusters and custom clusters provisioned using Docker machine is not supported.
 
-    
     | Cluster Type                     | Cloneable?    |
     | -------------------------------- | ------------- |
     | [Hosted Kubernetes Providers][1] | ✓             |
     | [Nodes Hosted by IaaS][2]        | ✓             |
     | [Custom Cluster][3]              |               |
     | [Imported Cluster][4]            |               |
-    
 - During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
 
 [1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
@@ -57,12 +55,12 @@ Use your favorite text editor to modify the cluster configuration in `cluster-te
 
 1. Open `cluster-template.yml` (or whatever you named your config) in your favorite test editor.
 
-    >**Warning:** Only edit the cluster config values explicitly called out below. Many of the values listed in this file are used to provision your duplicate cluster, and editing their values may break the provisioning process. 
+    >**Warning:** Only edit the cluster config values explicitly called out below. Many of the values listed in this file are used to provision your duplicate cluster, and editing their values may break the provisioning process.
 
 
 1. As depicted in one of the examples below, at the `<CLUSTER_NAME>` placeholder, replace your original cluster's name with a unique name (`<CLUSTER_NAME>`). If your cloned cluster has a duplicate name, the cluster will not provision successfully.
 {{% accordion id="gke" label="GKE" %}}
-```
+```yml
 Version: v3
 clusters:
     <CLUSTER_NAME>: # ENTER UNIQUE NAME
