@@ -96,19 +96,19 @@ Select this option to view the node's [API endpoints]({{< baseurl >}}/rancher/v2
 
 Use **Delete** to remove defective nodes from the cloud provider. When you the delete a defective node, Rancher automatically replaces it with an identically provisioned node.
 
->**Tip:** If your cluster is hosted on IaaS nodes, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
+>**Tip:** If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
 
 
 ## Scaling Nodes
 
-For nodes hosted by an IaaS, you can scale the number of nodes in each node pool by using the scale controls. This option isn't available for other cluster types.
+For nodes hosted by an infrastructure provider, you can scale the number of nodes in each node pool by using the scale controls. This option isn't available for other cluster types.
 
 ![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
 
 
 ## Remoting into a Node Pool Node
 
-For [nodes hosted by an IaaS]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
+For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
 
 1. From the Node Pool cluster, select **Nodes** from the main menu.

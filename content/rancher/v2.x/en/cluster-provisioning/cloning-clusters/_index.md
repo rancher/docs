@@ -12,7 +12,7 @@ If you have a cluster in Rancher that you want to use as a template for creating
     | Cluster Type                     | Cloneable?    |
     | -------------------------------- | ------------- |
     | [Hosted Kubernetes Providers][1] | ✓             |
-    | [Nodes Hosted by IaaS][2]        | ✓             |
+    | [Nodes Hosted by Infrastructure Provider][2]        | ✓             |
     | [Custom Cluster][3]              |               |
     | [Imported Cluster][4]            |               |
 - During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
@@ -110,7 +110,7 @@ clusters:
       sshPublicKeyContents: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJc2kDExgRaDLD
 ```
 {{% /accordion %}}
-{{% accordion id="ec2" label="IaaS Clusters (EC2, Azure, or DigitalOcean )" %}}
+{{% accordion id="ec2" label="Nodes Hosted by Infrastructure Provider (EC2, Azure, or DigitalOcean )" %}}
 ```yml
 Version: v3
 clusters:
@@ -128,7 +128,7 @@ clusters:
 ```
 {{% /accordion %}}
 
-1. **IaaS Clusters Only:** For each `nodePools` section, replace the original nodepool name with a unique name at the `<NODEPOOL_NAME>` placeholder.  If your cloned cluster has a duplicate nodepool name, the cluster will not provision successfully.
+1. **Nodes Hosted by Infrastructure Provider Only:** For each `nodePools` section, replace the original nodepool name with a unique name at the `<NODEPOOL_NAME>` placeholder.  If your cloned cluster has a duplicate nodepool name, the cluster will not provision successfully.
 
     ```yml
     nodePools:

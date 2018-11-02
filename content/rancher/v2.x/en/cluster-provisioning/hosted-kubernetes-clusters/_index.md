@@ -5,7 +5,7 @@ weight: 2100
 
 You can use Rancher to create clusters in a hosted Kubernetes provider, such as Google GKE.
 
-In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-premise or in an IaaS, all from the same UI.
+In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-premise or in an infrastructure provider, all from the same UI.
 
 Rancher supports the following Kubernetes providers:
 

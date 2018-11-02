@@ -7,7 +7,7 @@ If you don't want to use a hosted Kubernetes provider, you can have Rancher laun
 
 - Bare-metal servers
 - On-premise virtual machines
-- IaaS-hosted virtual machines
+- Virtual machines hosted by an infrastructure provider
 
 RKE launched clusters are separated into two categories:
 
