@@ -28,7 +28,7 @@ When provisioning clusters in Rancher using the [vSphere node driver]({{< baseur
 5. Assign **Member Roles** as required.
 6. Expand **Cluster Options** and configure as required.
 7. Set **Cloud Provider** option to `Custom`.
-    
+
     ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
 
 8. Click on **Edit as YAML**
@@ -149,7 +149,7 @@ The following configuration options are available under the disk directive:
 
 ___
 
-### network 
+### network
 
 The following configuration options are available under the network directive:
 
@@ -184,7 +184,7 @@ cloud_provider:
       folder: k8s-dummy
       default-datastore: ds-1
       datacenter: eu-west-1
-    
+
 ```
 
 ## Annex
@@ -245,7 +245,7 @@ $ rancher ssh <nodeName>
     ```
 
 3. Inspect the logs of the controller-manager and kubelet containers looking for errors related to the vSphere cloud provider:
-    
+
     ```sh
     $ docker logs --since 15m kube-controller-manager
     $ docker logs --since 15m kubelet

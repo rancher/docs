@@ -78,7 +78,7 @@ Each node used (either for the Single Node Install, High Availability (HA) Insta
 
 <h2>Port requirements</h2>
 
-When deploying Rancher in an HA cluster, certain ports on your nodes must be open to allow communication with Rancher. The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if your are deploying Rancher on nodes hosted by an IaaS, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning).
+When deploying Rancher in an HA cluster, certain ports on your nodes must be open to allow communication with Rancher. The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if your are deploying Rancher on nodes hosted by an infrastructure, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning).
 
 <sup>Cluster Type Port Requirements</sup>
 ![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.svg)
