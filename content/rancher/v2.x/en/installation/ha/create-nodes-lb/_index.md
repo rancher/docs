@@ -21,6 +21,7 @@ Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configurat
 
 #### Examples
 
+* [NGINX]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx/)
 * [Amazon NLB]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nlb/)
 
 ### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
