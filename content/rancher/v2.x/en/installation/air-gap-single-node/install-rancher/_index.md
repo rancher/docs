@@ -1,79 +1,8 @@
 ---
-title: "Air Gap: Single Node Install"
-weight:
+title: "3. Choose an SSL Option and Install Rancher"
+weight: 300
+aliases:
 ---
-## Outline
-
-<!-- TOC -->
-
-- [Prerequisites](#prerequisites)
-- [Caveats](#caveats)
-- [1. Provision Linux Host](#1-provision-linux-host)
-- [2. Collect Image Sources](#2-collect-image-sources)
-- [3. Publish Images](#3-publish-images)
-- [4. Choose an SSL Option and Install Rancher](#4-choose-an-ssl-option-and-install-rancher)
-- [5. Configure Rancher for the Private Registry](#5-configure-rancher-for-the-private-registry)
-
-<!-- /TOC -->
-
-## Prerequisites
-
-Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
-
-
-## Caveats
-
-In versions of Rancher prior to v2.1.0, registries with authentication are not supported when installing Rancher in HA or provisioning clusters, but after clusters are provisioned, registries with authentication can be used in the Kubernetes clusters.
-
-As of v2.1.0, registries with authentication work for installing Rancher as well as provisioning clusters.
-
-
-## 1. Provision Linux Host
-
-Provision a single, air gapped Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
-
-This host should be disconnected from the internet, but should have connectivity with your private registry.
-
-## 2. Collect Image Sources
-
-Using a computer with internet access, browse to our Rancher [releases page](https://github.com/rancher/rancher/releases) and find the version that you want to install. Download the following three files, which are required to install Rancher in an air gap environment:
-
-
-| Release File | Description |
-| --- | --- |
-| `rancher-images.txt` | This file contains a list of all files needed to install Rancher.
-| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
-| `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
-
-
-## 3. Publish Images
-
-After downloading the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
-
->**Note:** Image publication may require up to 20GB of empty disk space.
-
-1. From a system with internet access, use the `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images.
-
-    ```plain
-    ./rancher-save-images.sh --image-list ./rancher-images.txt
-    ```
-
-1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to the [Linux host](#1-provision-linux-host) that you've provisioned.
-
-    1. Log into your registry if required.
-
-        ```plain
-        docker login <REGISTRY.YOURDOMAIN.COM:PORT>
-        ```
-
-    1. Use `rancher-load-images.sh` to extract, tag and push the images to your private registry.
-
-        ```plain
-        ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
-        ```
-
-
-## 4. Choose an SSL Option and Install Rancher
 
 For development and testing in air gap environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to your air gap host using an image pulled from your private registry.
 
@@ -157,22 +86,5 @@ Placeholder | Description
     ```
 
 {{% /accordion %}}
-## 5. Configure Rancher for the Private Registry
 
-Rancher needs to be configured to use the private registry in order to provision any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or [Rancher tools]({{< baseurl >}}/rancher/v2.x/en/tools/) .
-
-1. Log into Rancher and configure the default admin password.
-
-1. Go into the **Settings** view.
-
-    ![Settings]({{< baseurl >}}/img/rancher/airgap/settings.png)
-
-1. Look for the setting called `system-default-registry` and choose **Edit**.
-
-    ![Edit]({{< baseurl >}}/img/rancher/airgap/edit-system-default-registry.png)
-
-1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
-
-    ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
-
->**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/config-rancher-for-private-reg/)
