@@ -8,4 +8,4 @@ Provision a single, air gapped Linux host according to our [Requirements]({{< ba
 
 This host should be disconnected from the internet, but should have connectivity with your private registry.
 
-### [Next: Prepare Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/prepare-private-registry/)
+### [Next: Prepare Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/prepare-private-registry/)

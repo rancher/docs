@@ -27,6 +27,61 @@ helm template ./rancher-<version>.tgz --output-dir . \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
 ```
 
+Rancher server is designed to be secure by default and requires SSL/TLS configuration. There are three options for the source of the certificate:
+
+{{% accordion id="self-signed" label="Rancher-Generated Certificates (Default)" %}}
+The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
+
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set the `hostname` to the DNS name you pointed at your load balancer.
+
+```plain
+helm template ./rancher-<version>.tgz --output-dir . \
+ --name rancher \
+ --namespace cattle-system \
+ --set hostname=<RANCHER.YOURDOMAIN.COM> \
+ --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
+```
+
+{{% /accordion %}}
+{{% accordion id="lets-encrypt" label="Let's Encrypt" %}}
+Use [LetsEncrypt](https://letsencrypt.org/)'s free service to issue trusted SSL certs. This configuration uses http validation so the Load Balancer must have a Public DNS record and be accessible from the internet.
+
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set `hostname`, `ingress.tls.source=letsEncrypt` and LetsEncrypt options.
+
+```
+helm template ./rancher-<version>.tgz --output-dir . \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=<RANCHER.YOURDOMAIN.COM> \
+  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
+  --set ingress.tls.source=letsEncrypt \
+  --set letsEncrypt.email=me@example.org
+``` 
+{{% /accordion %}}
+{{% accordion id="secret" label="Certificates for Files (Kubernetes Secret)" %}}
+Create Kubernetes secrets from your own certificates for Rancher to use.
+
+> **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
+
+- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+- Set `hostname` and `ingress.tls.source=secret`.
+
+> **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
+
+```
+helm install rancher-<CHART_REPO>/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=<RANCHER.YOURDOMAIN.COM> \
+  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
+  --set ingress.tls.source=letsEncrypt \
+```
+
+Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
+{{% /accordion %}}
+
 ## B. Copy and Apply Manifests
 
 Copy the rendered manifest directories to a system that has access to the Rancher server cluster.
@@ -39,5 +94,3 @@ kubectl -n kube-system apply -R -f ./cert-manager
 kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
-
-Make sure you follow any additional instructions required by SSL install options. See [Choose your SSL Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) for details.

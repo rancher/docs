@@ -87,4 +87,4 @@ Placeholder | Description
 
 {{% /accordion %}}
 
-### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/config-rancher-for-private-reg/)
+### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-for-private-reg/)

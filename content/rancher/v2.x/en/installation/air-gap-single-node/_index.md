@@ -16,11 +16,11 @@ As of v2.1.0, registries with authentication work for installing Rancher as well
 
 ## Installation Outline
 
-- [1. Provision Linux Host]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/provision-host/)
-- [2. Prepare Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/prepare-private-registry/)
-- [3. Choose an SSL Option and Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/install-rancher/)
-- [4. Configure Rancher for Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/config-rancher-for-private-reg/)
+- [1. Provision Linux Host]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/provision-host/)
+- [2. Prepare Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/prepare-private-registry/)
+- [3. Choose an SSL Option and Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/install-rancher/)
+- [4. Configure Rancher for Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-for-private-reg/)
 
 
 
-### [Next: Provision Linux Host]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-install/air-gap-single-node/provision-host/)
+### [Next: Provision Linux Host]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/provision-host/)
