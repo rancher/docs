@@ -1,5 +1,5 @@
 ---
-title: "5. Install Rancher"
+title: "5. Choose an SSL Option and Install Rancher"
 weight: 500
 aliases:
 ---
@@ -26,18 +26,23 @@ helm template ./rancher-<version>.tgz --output-dir . \
 --set hostname=<RANCHER.YOURDOMAIN.COM> \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
 ```
-> Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
 
-Rancher server is designed to be secure by default and requires SSL/TLS configuration. There are two options for the source of the certificate:
+>Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
 
-{{% accordion id="self-signed" label="Rancher-Generated Certificates (Default)" %}}
-The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface.
+Rancher server is designed to be secure by default and requires SSL/TLS configuration. There are two options for the source of the certificate in an HA air gap setup:
 
-- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
-- Set the `hostname` to the DNS name you pointed at your load balancer.
+{{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
+The default is for Rancher to generate a CA and use the `cert-manager` to issue the certificate for access to the Rancher server interface. Use the reference table below to replace each placeholder.
+
+Placeholder | Description
+------------|-------------
+`<VERSION>` | The version number of the output tarball.
+`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.).
+
 
 ```plain
-helm template ./rancher-<version>.tgz --output-dir . \
+helm template ./rancher-<VERSION>.tgz --output-dir . \
  --name rancher \
  --namespace cattle-system \
  --set hostname=<RANCHER.YOURDOMAIN.COM> \
@@ -46,23 +51,27 @@ helm template ./rancher-<version>.tgz --output-dir . \
 
 {{% /accordion %}}
 
-{{% accordion id="secret" label="Certificates for Files (Kubernetes Secret)" %}}
+{{% accordion id="secret" label="Option B: Certificates for Files (Kubernetes Secret)" %}}
 Create Kubernetes secrets from your own certificates for Rancher to use.
 
 > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
-- Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
-- Set `hostname` and `ingress.tls.source=secret`.
+Placeholder | Description
+------------|-------------
+`<VERSION>` | The version number of the output tarball.
+`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
+
 
 > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true`
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
+helm template ./rancher-<VERSION>.tgz --output-dir . \
   --name rancher \
   --namespace cattle-system \
   --set hostname=<RANCHER.YOURDOMAIN.COM> \
   --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-  --set ingress.tls.source=letsEncrypt \
+  --set ingress.tls.source=secret \
 ```
 
 Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 

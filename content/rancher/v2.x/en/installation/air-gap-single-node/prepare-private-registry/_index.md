@@ -12,13 +12,13 @@ Using a computer with internet access, browse to our Rancher [releases page](htt
 | Release File | Description |
 | --- | --- |
 | `rancher-images.txt` | This file contains a list of all files needed to install Rancher.
-| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from various public registries and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
 | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
 
 
 ## B. Publish Images
 
-After downloading the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
+After collecting the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
 
 >**Note:** Image publication may require up to 20GB of empty disk space.
 
