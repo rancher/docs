@@ -1,6 +1,6 @@
 ---
 title: "Air Gap: Single Node Install"
-weight: 270
+weight: 280
 ---
 
 ## Prerequisites

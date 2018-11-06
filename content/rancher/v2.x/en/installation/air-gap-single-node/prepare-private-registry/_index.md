@@ -28,7 +28,7 @@ After downloading the release files, publish the images from `rancher-images.txt
     ./rancher-save-images.sh --image-list ./rancher-images.txt
     ```
 
-1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to the [Linux host](#1-provision-linux-host) that you've provisioned.
+1. Copy `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` files to the [Linux host]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/provision-host) that you've provisioned by completing the substeps below.
 
     1. Log into your registry if required.
 

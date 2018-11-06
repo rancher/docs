@@ -7,14 +7,12 @@ aliases:
 
 ## A. Create an RKE Config File
 
+From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create a new file named `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying Rancher to.
 
-From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying Rancher to.  Replace the IP addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
+Replace values in the code sample according to the table below with the IP address or DNS names of the 3 nodes you created.
 
->**Tip:** See [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/) for more details on the options available.
 
-Replace values in the code sample according to the table below.
-
-| Directive Replacement   | Description                                                           |
+| Placeholder   | Description                                                           |
 | ----------------------- | --------------------------------------------------------------------- |
 | `address`               | The IP address for each of your air gap nodes outside of the cluster. |
 | `internal_address`      | The IP address for each of your air gap nodes within the cluster.     |
@@ -57,7 +55,8 @@ private_registries:
 | `internal_address` | no       | The private DNS or IP address for internal cluster traffic                             |
 | `ssh_key_path`     | no       | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`) |
 
-<!-- TODO: add troubleshooting and other links -->
+>**Tip:** For more details on the options available, see the RKE [Config Options](http://localhost:9001/rke/v0.1.x/en/config-options/).
+
 
 ## B. Run RKE
 
@@ -66,3 +65,5 @@ After configuring `rancher-cluster.yml`, open Terminal and change directories to
 ```
 rke up --config ./rancher-cluster.yml
 ```
+
+### [Next: Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/helm-init/)

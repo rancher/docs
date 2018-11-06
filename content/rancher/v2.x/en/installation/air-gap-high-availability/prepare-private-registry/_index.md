@@ -73,3 +73,5 @@ After downloading the release files, publish the images from `rancher-images.txt
         ```plain
         ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
         ```
+
+### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)

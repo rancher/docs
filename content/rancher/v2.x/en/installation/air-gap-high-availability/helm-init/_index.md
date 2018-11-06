@@ -34,3 +34,5 @@ helm template ./cert-manager-<version>.tgz --output-dir . \
 --name cert-manager --namespace kube-system \
 --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
 ```
+
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)

@@ -1,6 +1,8 @@
 ---
 title: "Air Gap: High Availability Install"
-weight: 280
+weight: 290
+aliases:
+  - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
 ---
 
 ## Prerequisites
@@ -22,9 +24,12 @@ As of v2.1.0, registries with authentication work for installing Rancher as well
 
 ## Installation Outline
 
-- [1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/provision-hosts/)
-- [2. Collect and Publish Image Sources]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/prepare-private-registry/)
-- [3. Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/install-kube/)
-- [4. Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/helm-init/)
-- [5. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/install-rancher/)
-- [6. Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/wip-air-gap-installation/air-gap-high-availability/config-rancher-for-private-reg/)
+- [1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/)
+- [2. Collect and Publish Image Sources]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)
+- [3. Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
+- [4. Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/helm-init/)
+- [5. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
+- [6. Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)
+
+
+### [Next: Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/) 
