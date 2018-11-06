@@ -4,7 +4,7 @@ weight: 500
 aliases:
 ---
 
-## A. Install Rancher
+## A. Render Templates and Install Rancher
 
 Add the Helm chart repository that contains charts to install Rancher. Replace `<CHART_REPO>` with the [repository that you're using]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) (i.e. `latest` or `stable`). 
 
@@ -28,6 +28,9 @@ helm template ./rancher-<version>.tgz --output-dir . \
 ```
 
 >Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
+
+## A. Choose an SSL Option and Install Rancher
+
 
 Rancher server is designed to be secure by default and requires SSL/TLS configuration. There are two options for the source of the certificate in an HA air gap setup:
 
