@@ -101,6 +101,18 @@ The docker-sys bridge can be configured with system-docker args, it will take ef
 $ ros config set rancher.system_docker.bip 172.18.43.1/16
 ```
 
+_Available as of v1.4_
+
+The default path of system-docker logs is `/var/log/system-docker.log`. If you want to write system-docker logs to a separate partition, 
+such as [RANCHE_OEM partition]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/#use-rancher-oem-partition), you can try `rancher.defaults.system_docker_logs`:
+
+```
+#cloud-config
+rancher:
+  defaults:
+    system_docker_logs: /usr/share/ros/oem/system-docker.log
+```
+
 ### Using a pull through registry mirror
 
 There are 3 Docker engines that can be configured to use the pull-through Docker Hub registry mirror cache:
