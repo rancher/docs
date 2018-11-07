@@ -2,10 +2,10 @@
 title: NGINX
 weight: 270
 ---
-NGINX  will be configured as Layer 4 Load Balancer (TCP). NGINX will forward connections to one of your Rancher nodes.
+NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.
 
 >**Note:**
-> In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host that you have available that's capable of running NGINX.
+> In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host capable of running NGINX.
 >
 > One caveat: do not use one of your Rancher nodes as the load balancer.
 
@@ -13,7 +13,7 @@ NGINX  will be configured as Layer 4 Load Balancer (TCP). NGINX will forward con
 
 Start by installing NGINX on the node you want to use as a load balancer. NGINX has packages available for all known operating systems. The versions tested are `1.14` and `1.15`. For help installing NGINX, refer to their [install documentation](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
 
-The `stream` module is required, which is present when using the official NGINX packages. Please refer to your OS documentation how to install and enable the NGINX `stream` module on your operating system.
+The `stream` module is required, which is present when using the official NGINX packages. Please refer to your OS documentation on how to install and enable the NGINX `stream` module on your operating system.
 
 ## Create NGINX Configuration
 
@@ -21,11 +21,11 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
 
 1. Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
 
-2. From `nginx.conf`, replace `IP_NODE_1`, `IP_NODE_2`, and `IP_NODE_3` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
+2. From `nginx.conf`, replace `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
 
-    >**Note:** See [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
+    >**Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
 
-    **Example NGINX config:**
+    <figcaption>Example NGINX config</figcaption>
     ```
     worker_processes 4;
     worker_rlimit_nofile 40000;
@@ -44,9 +44,9 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
     stream {
         upstream rancher_servers {
             least_conn;
-            server IP_NODE_1:443 max_fails=3 fail_timeout=5s;
-            server IP_NODE_2:443 max_fails=3 fail_timeout=5s;
-            server IP_NODE_3:443 max_fails=3 fail_timeout=5s;
+            server <IP_NODE_1>:443 max_fails=3 fail_timeout=5s;
+            server <IP_NODE_2>:443 max_fails=3 fail_timeout=5s;
+            server <IP_NODE_3>:443 max_fails=3 fail_timeout=5s;
         }
         server {
             listen     443;
