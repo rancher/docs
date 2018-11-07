@@ -12,13 +12,22 @@ New password for default admin user (user-xxxxx):
 <new_password>
 ```
 
-High Availability install:
+High Availability install (Helm):
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+High Availability install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- reset-password
 New password for default admin user (user-xxxxx):
 <new_password>
 ```
+
 
 ### I deleted/deactivated the last admin, how can I fix it?
 Single node install:
@@ -29,14 +38,21 @@ New password for default admin user (user-xxxxx):
 <new_password>
 ```
 
-High Availability install:
+High Availability install (Helm):
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+High Availability install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- ensure-default-admin
 New password for default admin user (user-xxxxx):
 <new_password>
 ```
-
 
 ### How can I enable debug logging?
 
@@ -54,8 +70,27 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
+* High Availability install (Helm)
+ * Enable
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set debug
+OK
+OK
+OK
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system logs -l app=rancher
+```
 
-* High Availability install
+ * Disable
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set info
+OK
+OK
+OK
+```
+
+* High Availability install (RKE add-on)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -70,7 +105,6 @@ $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set info
 OK
 ```
-
 
 ### My ClusterIP does not respond to ping
 
