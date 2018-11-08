@@ -124,6 +124,24 @@ When the node is removed from the cluster, and the node is cleaned, you can read
 
 You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).
 
+### How do I check `Common Name` and `Subject Alternative Names` in my server certificate?
+
+Although technically an entry in `Subject Alternative Names` is required, having the hostname in both `Common Name` and as entry in `Subject Alternative Names` gives you maximum compatibility with older browser/applications.
+
+Check `Common Name`:
+
+```
+openssl x509 -noout -subject -in cert.pem
+subject= /CN=rancher.my.org
+```
+
+Check `Subject Alternative Names`:
+
+```
+openssl x509 -noout -in cert.pem -text | grep DNS
+                DNS:rancher.my.org
+```
+
 ### Why does it take 5+ minutes for a pod to be rescheduled when a node has failed?
 
 This is due to a combination of the following default Kubernetes settings:
