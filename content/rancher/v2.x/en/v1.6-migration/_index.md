@@ -64,75 +64,72 @@ Blog Post: [Migrating from Rancher 1.6 to Rancher 2.0—A Short Checklist](https
 
 ## 2. Run Migration Tools
 
-To help with migration from 1.6 to 2.0, Rancher has developed a migration tool. Running this tool will help you check if your Rancher 1.6 applications can be migrated to 2.0. If an application can't be migrated, the tool will help you identify what's lacking. 
+To help with migration from 1.6 to 2.0, Rancher has developed migration-tools. Running these tools helps you export Docker Compose files and check if your Rancher 1.6 applications can be migrated to 2.0. If an application can't be migrated, the tools help you identify what's lacking.
 
-This tool will:
+These tools:
 
-- Accept Docker Compose config files (i.e., `docker-compose.yml` and `rancher-compose.yml`) that you've exported from your Rancher 1.6 Stacks.
-- Output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML, even using tools like Kompose.
+- `export` Docker Compose files (i.e., `docker-compose.yml` and `rancher-compose.yml`) from your stacks running on `cattle` environments in your Rancher 1.6 system. For every stack, files are exported to the `<EXPORT_DIR>/<ENV_NAME>/<STACK_NAME>` folder. To export all environments, you'll need an admin [API key]({{< baseurl >}}/rancherv2.x/en/user-settings/api-keys).
 
-### A. Download the Migration Tool
+- `parse` Docker Compose files that you've exported from your Rancher 1.6 Stacks and output a list of constructs present in the Compose files that cannot be supported by Kubernetes in Rancher 2.0. These constructs require special handling or are parameters that cannot be converted to Kubernetes YAML.
 
-The Migration Tool for your platform can be downloaded from its [GitHub releases page](https://github.com/rancher/migration-tools/releases). The tool is available for Linux, Mac, and Windows platforms.
+### A. Download Migration-Tools
+
+Migration-tools for your platform can be downloaded from our [GitHub releases page](https://github.com/rancher/migration-tools/releases). The tools are  available for Linux, Mac, and Windows platforms.
 
 
-### B. Configure the Migration Tool
+### B. Configure Migration-Tools
 
-After the tool is downloaded, you need to make some configurations to run it.
+After the tools are downloaded, you need to make some configurations to run them.
 
-1. Modify the Migration Tool file to make it an executable.
+1. Modify the migration-tools file to make it an executable.
 
-    1. Open Terminal and change to the directory that contains the Migration Tool file.
+    1. Open Terminal and change to the directory that contains the migration-tool file.
 
-    1. Rename the Migration Tool file to `migration-tools` so that it no longer includes the platform name.
+    1. Rename the file to `migration-tools` so that it no longer includes the platform name.
 
     1. Enter the following command to make `migration-tools` an executable:
-    
+
         ```
         chmod +x migration-tools
-        ``` 
-1. Export the configuration for each Rancher 1.6 Stack that you want to migrate to 2.0.
+        ```
 
-    1. Log into Rancher 1.6 and select **Stacks > All**.
-    
-    1. From the **All Stacks** page, select  **Ellipsis (...) > Export Config** for each Stack that you want to migrate.
-    
-    1. Extract the downloaded `compose.zip`. Move the folder contents (`docker-compose.yml` and `rancher-compose.yml`) into the same directory as `migration-tools`.
+### C. Run Migration-Tools
 
-### C. Run the Migration Tool
+Next, use migration-tools to export your Cattle environments from Rancher 1.6 as Docker Compose files. Then, for environments that you want to migrate to Rancher 2.0, convert its Compose file into Kubernetes YAML.
 
-To use the Migration Tool, run the command below while pointing to the compose files exported from each stack that you want to migrate. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of compose files that you exported.
+>**Want full usage and options for migration-tools?** See the [Migration Tools Reference](#migration-tools-reference) below.
 
-#### Usage
+1. Export the Docker Compose files for your Cattle environments from Rancher 1.6.
 
-You can run the Migration Tool by entering the following command, replacing each placeholder with the absolute path to your Stack's compose files.
+    From Terminal, execute the following command, replacing each placeholder with your values.
 
-```
-migration-tools --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>
-```
+    ```
+    migration-tools export --url <RANCHER_URL> --access-key <RANCHER_ACCESS_KEY> --secret-key <RANCHER_SECRET_KEY> --export-dir <EXPORT_DIR>
+    ```
 
-#### Options
+    **Step Result:** migration-tools exports Compose files for each of your Cattle environments in the `--export-dir` directory. If you omitted this option, Compose files are output to your current directory.
 
-When using the Migration Tool, you can specify the paths to your Docker and Rancher compose files, regardless of where they are on your file system.
 
-| Option                 | Description                                                                            |
-| ---------------------- | -------------------------------------------------------------------------------------- |
-| `--docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH>`  | The absolute path to an exported Docker compose file (default value: `docker-compose.yml`)<sup>1</sup>.   |
-| `--rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>` | The absolute path to an alternate Rancher compose file (default value: `rancher-compose.yml`)<sup>1</sup>. |
-| `--help, -h`           | Lists usage for the Migration Tool.                                                                                |
-| `--version, -v`        | Lists the version of the Migration Tool in use.                                                         |
+1. Convert the exported Compose files to Kubernetes YAML. 
 
-><sup>1</sup> If you omit the `--docker-file` and `--rancher-file` options from your command, the migration tool will check its home directory for compose files.
+    Execute the following command, replacing each placeholder with the absolute path to your Stack's Compose files. If you want to migrate multiple stacks, you'll have to re-run the command for each pair of Compose files that you exported.
+
+    ```
+    migration-tools parse --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>
+    ```
+
+    >**Note:** If you omit the `--docker-file` and `--rancher-file` options from your command, migration-tools checks its home directory for Compose files.
+
 
 #### Output
 
-After you run the migration tool, the following files output to the same directory that you ran the tool from.
-
+After you run the migration tools parse command, the following files are output to your target directory.
 
 | Output                | Description                                                                                                                                                                                                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `output.txt`          | This file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to Rancher 2.0. Each construct links to the relevant blog articles on how to implement it in Rancher 2.0 (these articles are also listed below). |
-| Kubernetes YAML specs | The Migration Tool internally invokes [Kompose](https://github.com/kubernetes/kompose) to generate Kubernetes YAML specs for each service you're migrating to 2.0. Each YAML spec file is named for the service you're migrating.
+| Kubernetes YAML specs | Migration-tools internally invokes [Kompose](https://github.com/kubernetes/kompose) to generate Kubernetes YAML specs for each service you're migrating to 2.0. Each YAML spec file is named for the service you're migrating.
+
 
 ## 3. Migrate Applications
 
@@ -178,3 +175,42 @@ Blog Post: [From Cattle to Kubernetes-How to Load Balance Your Services in Ranch
 In Rancher 1.6, a Load Balancer was used to expose your applications from within the Rancher environment for external access. In Rancher 2.0, the concept is the same. There is a Load Balancer option to expose your services. In the language of Kubernetes, this function is more often referred to as an **Ingress**. In short, Load Balancer and Ingress play the same role.
 
 
+### Migration-Tools Reference
+
+Review this reference to find out what commands and options are available when using migration-tools.
+
+#### Usage
+
+```
+migration-tools [global options] command [command options] [arguments...]
+```
+
+#### Global Options
+
+Migration-tools includes a handful of options that can be used regardless of which commands you are using. These options are not required to run the tool. Rather, they're useful for troubleshooting.
+
+| Global Option     | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `--debug`         | Enables debug logging.                       |
+| `--log <VALUE>`   | Outputs logs to the path you enter.          |
+| `--help`, `-h`    | Displays a list of all commands available.   |
+| `--version`, `-v` | Prints the version of migration-tools in use.|
+
+
+#### Commands and Command Options
+This section contains reference material for commands and options available for the migration-tools used in [step 2](#2-run-migration-tools).
+
+Command | Options | Required? | Description
+--------|---------|-------------|-----
+`export`|         | N/A | Exports Compose files for every Stack running in a Cattle environment in Rancher v1.6.
+        |`--url <VALUE>` | ✓ | Rancher API endpoint URL (`<RANCHER_URL>`).
+        |`--access-key <VALUE>` | ✓ | Rancher API access key. Using an admin [API key]({{< baseurl >}}/rancherv2.x/en/user-settings/api-keys) exports stacks from all cattle environments (`<RANCHER_ACCESS_KEY>`).
+        |`--secret-key <VALUE>` | ✓ | Rancher [API secret key]({{< baseurl >}}/rancherv2.x/en/user-settings/api-keys) (`<RANCHER_SECRET_KEY>`).
+        |`--export-dir <VALUE>` |   | Base directory that Compose files export to under sub-directories created for each environment/stack (default: `Export`).
+        |`--all`, `--a`          |   | Export all stacks. Using this flag exports any stack in a state of inactive, stopped, or removing.
+        |`--system`, `--s`       |   | Export system and infrastructure stacks.
+`parse` |         | N/A | Parse Docker Compose and Rancher Compose files to get Kubernetes manifests.
+        |`--docker-file <VALUE>` |  | Parses Docker Compose file to output Kubernetes manifest (default: `docker-compose.yml`)
+        |`--output-file <VALUE>` |  | Name of file that outputs listing checks and advice for conversion (default: `output.txt`).
+        |`--rancher-file <VALUE>` |  | Parses Rancher Compose file to output Kubernetes manifest (default: `rancher-compose.yml`)
+`help`, `h` |     | N/A | Shows a list of options available for use with preceding command.

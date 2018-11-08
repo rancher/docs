@@ -7,7 +7,7 @@ For production environments, we recommend installing Rancher in a high-availabil
 
 This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
 
-> **Important:** For the best performance, we recommend this Kubernetes cluster to be dedicated only to run Rancher.
+> **Important:** For the best performance, we recommend this Kubernetes cluster to be dedicated only to run Rancher. After the Kubernetes cluster to run Rancher is setup, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 ## Recommended Architecture
 
