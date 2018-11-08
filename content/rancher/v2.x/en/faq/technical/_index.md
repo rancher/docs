@@ -119,3 +119,39 @@ A node is required to have a static IP configured (or a reserved IP via DHCP). I
 When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) to clean the node.
 
 When the node is removed from the cluster, and the node is cleaned, you can readd the node to the cluster.
+
+### How can I add additional arguments/binds/environment variables to Kubernetes components in a Rancher Launched Kubernetes cluster?
+
+You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).
+
+
+### Why does it take 5+ minutes for a pod to be rescheduled when a node has failed?
+
+This is due to a combination of the following default Kubernetes settings:
+
+* kubelet
+  * `node-status-update-frequency`: Specifies how often kubelet posts node status to master (default 10s)
+* kube-controller-manager
+  * `node-monitor-period`: The period for syncing NodeStatus in NodeController (default 5s)
+  * `node-monitor-grace-period`: Amount of time which we allow running Node to be unresponsive before marking it unhealthy (default 40s)
+  * `pod-eviction-timeout`: The grace period for deleting pods on failed nodes (default 5m0s)
+
+See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.
+
+### How do I check `Common Name` and `Subject Alternative Names` in my server certificate?
+
+Although technically an entry in `Subject Alternative Names` is required, having the hostname in both `Common Name` and as entry in `Subject Alternative Names` gives you maximum compatibility with older browser/applications.
+
+Check `Common Name`:
+
+```
+openssl x509 -noout -subject -in cert.pem
+subject= /CN=rancher.my.org
+```
+
+Check `Subject Alternative Names`:
+
+```
+openssl x509 -noout -in cert.pem -text | grep DNS
+                DNS:rancher.my.org
+```
