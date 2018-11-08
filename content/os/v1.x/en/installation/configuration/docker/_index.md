@@ -93,7 +93,7 @@ Key | Value | Default | Description
 `extra_args` | List of Strings | `[]` | Arbitrary daemon arguments, appended to the generated command
 `environment` | List of Strings (optional) | `[]` |
 
-_Available as of v1.4_
+_Available as of v1.4.x_
 
 The docker-sys bridge can be configured with system-docker args, it will take effect after reboot.
 
@@ -101,10 +101,10 @@ The docker-sys bridge can be configured with system-docker args, it will take ef
 $ ros config set rancher.system_docker.bip 172.18.43.1/16
 ```
 
-_Available as of v1.4_
+_Available as of v1.4.x_
 
-The default path of system-docker logs is `/var/log/system-docker.log`. If you want to write system-docker logs to a separate partition, 
-such as [RANCHE_OEM partition]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/#use-rancher-oem-partition), you can try `rancher.defaults.system_docker_logs`:
+The default path of system-docker logs is `/var/log/system-docker.log`. If you want to write the system-docker logs to a separate partition, 
+e.g. [RANCHE_OEM partition]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/#use-rancher-oem-partition), you can try `rancher.defaults.system_docker_logs`:
 
 ```
 #cloud-config
