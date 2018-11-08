@@ -175,3 +175,16 @@ Check `Subject Alternative Names`:
 openssl x509 -noout -in cert.pem -text | grep DNS
                 DNS:rancher.my.org
 ```
+
+### Why does it take 5+ minutes for a pod to be rescheduled when a node has failed?
+
+This is due to a combination of the following default Kubernetes settings:
+
+* kubelet
+  * `node-status-update-frequency`: Specifies how often kubelet posts node status to master (default 10s)
+* kube-controller-manager
+  * `node-monitor-period`: The period for syncing NodeStatus in NodeController (default 5s)
+  * `node-monitor-grace-period`: Amount of time which we allow running Node to be unresponsive before marking it unhealthy (default 40s)
+  * `pod-eviction-timeout`: The grace period for deleting pods on failed nodes (default 5m0s)
+
+See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.

@@ -24,9 +24,17 @@ kubectl create clusterrolebinding tiller \
   --serviceaccount=kube-system:tiller
 
 helm init --service-account tiller
+
+# For chinese users
+# The latest version of tiller images queries addresses:
+# https://dev.aliyun.com/detail.html?spm=5176.1972343.2.18.ErFNgC&repoId=62085
+
+helm init --service-account tiller  \
+  --tiller-image registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:<tag>
+
 ```
 
-> **Note:** This `tiller` install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.
+> **Note:** This`tiller`install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.
 
 ### Test your Tiller installation
 
