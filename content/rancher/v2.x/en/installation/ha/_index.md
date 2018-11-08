@@ -16,10 +16,7 @@ This procedure walks you through setting up a 3-node cluster with RKE and instal
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
-<<<<<<< HEAD
-=======
 <figcaption>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
->>>>>>> adding WIP ha content
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 <sup>HA Rancher install with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
 
