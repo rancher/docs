@@ -23,7 +23,8 @@ The Rancher HA install uses images from 3 sources. Combine the 3 sources into a 
     ```plain
     rke config --system-images >> ./rancher-images.txt
     ```
-* **Cert-Manager** - (Optional) If you choose to install with Rancher Self-Signed TLS certificates, you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
+* **Cert-Manager** - (Conditional) Rancher requires a TLS certificate. During installation, if you elect to use the default Rancher self-signed TLS certificates 
+[Option A: Default Self-Signed Certificates]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/#a-choose-an-ssl-option-and-install-rancher) in [Choose an SSL Option and Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/), you will need the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image. You may skip this image if you are using you using your own certificates.
     
     Fetch the latest `cert-manager` Helm chart and parse the template for image details.
     
@@ -39,11 +40,9 @@ sort -u rancher-images.txt -o rancher-images.txt
 ```
 
 
-After downloading the release files, publish the images from `rancher-images.txt` to your private registry using the image scripts.
+Using a computer with access to the internet, move the images from `rancher-images.txt` to your private registry using the image scripts.
 
 >**Note:** Image publication may require up to 20GB of empty disk space.
-
-1. From Terminal, change directories to the path containing the files listed above.
 
 1. Make `rancher-save-images.sh` an executable.
 
