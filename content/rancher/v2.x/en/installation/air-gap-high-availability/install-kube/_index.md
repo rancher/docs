@@ -17,28 +17,28 @@ Replace values in the code sample below with help of the _RKE Options_ table. Us
 
 | Option             | Required | Description                                                                            |
 | ------------------ | -------- | -------------------------------------------------------------------------------------- |
-| `address`          | ✓        | The DNS or IP address for the node within the air gap network (don't use a public address).                                                           |
+| `address`          | ✓        | The DNS or IP address for the node within the air gap network.                                                           |
 | `user`             | ✓        | A user that can run docker commands.                                                    |
 | `role`             | ✓       | List of Kubernetes roles assigned to the node.                                          |
-| `internal_address` |       | The private DNS or IP address used for internal cluster traffic.                             |
+| `internal_address` | optional<sup>1</sup>      | The DNS or IP address used for internal cluster traffic.                             |
 | `ssh_key_path`     |        | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`). |
 
 
-> **Note:**  Although this is an air gap configuration, we still recommend setting values for both `address` and `external address`. In this context, `address` refers to the IP address of the node within the air gap network, not a public address. `internal_address` is the IP address that your nodes use for intra-cluster communication. Some services like AWS EC2 require setting the `internal_address` if you want to use self-referencing security groups or firewalls.
+> <sup>1</sup> Some services like AWS EC2 require setting the `internal_address` if you want to use self-referencing security groups or firewalls.
 
 ```yaml
 nodes:
-- address: 10.10.3.187           # node air gap network IP
+- address: 10.10.3.187            # node air gap network IP
   internal_address: 172.31.7.22   # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]
   ssh_key_file: /home/user/.ssh/id_rsa
-- address: 10.10.3.254           # node air gap network IP
+- address: 10.10.3.254            # node air gap network IP
   internal_address: 172.31.13.132 # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]
   ssh_key_file: /home/user/.ssh/id_rsa
-- address: 10.10.3.89              # node air gap network IP
+- address: 10.10.3.89             # node air gap network IP
   internal_address: 172.31.3.216  # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]

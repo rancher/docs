@@ -4,12 +4,12 @@ weight: 400
 aliases:
 ---
 
-## A. Add the Helm Chart Repository and Render Templates
+## A. Add the Helm Chart Repository
 
 
 From a system that has access to the internet, render the installs and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-1. Initialize `helm` locally on a system that has internet access.
+1. If you haven't already, initialize `helm` locally on a system that has internet access.
 
     ```plain
     helm init -c
@@ -26,15 +26,6 @@ From a system that has access to the internet, render the installs and copy the 
 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
-    ```
-
-4. Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.
-
-    ```plain
-    helm template ./rancher-<version>.tgz --output-dir . \
-    --name rancher --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
     ```
 
 >Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
@@ -66,8 +57,6 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
     helm fetch stable/cert-manager
     ```
 
-    ```
-
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
 
     ```plain
@@ -76,7 +65,7 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
     ```
 
-1. Render the Rancher template with the options you would like to use to install the chart. Use the reference table below to replace each placeholder.
+1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder.
 
     Placeholder | Description
     ------------|-------------
@@ -101,7 +90,7 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
 
     > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
-1. Render the Rancher template with the options you would like to use to install the chart. Use the reference table below to replace each placeholder.
+1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder.
 
     Placeholder | Description
     ------------|-------------
@@ -121,12 +110,12 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
       --set ingress.tls.source=secret \
 ```
 
-1.    Now that Rancher is running, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
+1.    See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
 {{% /accordion %}}
 
-## D. Copy and Apply Manifests
+## D. Install Rancher
 
-Copy the rendered manifest directories to a system that has access to the Rancher server cluster.
+Copy the rendered manifest directories to a system that has access to the Rancher server cluster to complete installation.
 
 Use `kubectl` to create namespaces and apply the rendered manifests.
 

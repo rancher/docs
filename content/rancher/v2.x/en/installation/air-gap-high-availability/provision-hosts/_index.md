@@ -28,4 +28,9 @@ RKE, the installer that provisions your air gapped cluster, will configure an In
 
 Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configuration will vary depending on your environment.
 
+**Load Balancer Configuration Samples:**
+
+- [NGINX]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx)
+- [Amazon NLB]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nlb)
+
 ### [Next: Collect and Publish Image Sources]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)

@@ -90,12 +90,6 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
 
-<<<<<<< HEAD
-
->**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
-
-=======
->>>>>>> removing air gap notes
 ```
 helm install rancher-<CHART_REPO>/rancher \
   --name rancher \
