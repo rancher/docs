@@ -6,7 +6,11 @@ aliases:
 
 ## A. Collect Image Sources
 
-Using a computer with internet access, browse to our Rancher [releases page](https://github.com/rancher/rancher/releases) and find the version that you want to install. Download the following three files, which are required to install Rancher in an air gap environment:
+Using a computer with internet access, browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher 2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+
+![Choose Release Version]({{< baseurl >}}/img/rancher/choose-release-version.png)
+
+From the release's **Assets** section, download the following three files, which are required to install Rancher in an air gap environment:
 
 
 | Release File | Description |
