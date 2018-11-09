@@ -13,7 +13,7 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 
     ![Choose Release Version]({{< baseurl >}}/img/rancher/choose-release-version.png)
 
-2. From the release's **Assets** section (in the picture above), download the following three files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section (pictured above), download the following three files, which are required to install Rancher in an air gap environment:
 
 
     | Release File | Description |
@@ -22,7 +22,7 @@ Start by collecting all the images needed to install Rancher in an air gap envir
     | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
     | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
 
-3. Combine the 3 three files above into a file named `rancher-images.txt`.
+3. Use the three files above to populate `rancher-images.txt` with the images needed for installation.
 
     1. Make `rancher-save-images.sh` an executable.
     
@@ -36,14 +36,14 @@ Start by collecting all the images needed to install Rancher in an air gap envir
         ./rancher-save-images.sh --image-list ./rancher-images.txt
         ```
     
-        **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`.
+    **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`.
 
-1. From the directory that contains the RKE binary, use RKE to `rancher-images.txt` as well. 
+1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`. 
      
     ```
     rke config --system-images >> ./rancher-images.txt
     ```
-1. **Self-Signed Certificate Users Only:** If you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image to `rancher-images.txt` as well. You may skip this image if you are using you using your own certificates.
+1. **Self-Signed Certificate Users Only:** If you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image to `rancher-images.txt` as well. You may skip to [B. Publish Images](#b-publish-images  ) if you are using you using your own certificates.
     
     1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
     
@@ -64,7 +64,6 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 Using a computer with access to the internet and your private registry, move the images from `rancher-images.txt` to your private registry using the image scripts.
 
 >**Note:** Image publication may require up to 20GB of empty disk space.
-
 
 
 1. Push `rancher-load-images.sh`, `rancher-images.txt` and `rancher-images.tar.gz` to your private registry.

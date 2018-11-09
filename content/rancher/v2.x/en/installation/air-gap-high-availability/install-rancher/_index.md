@@ -1,35 +1,64 @@
 ---
-title: "5. Choose an SSL Option and Install Rancher"
-weight: 500
+title: 4. Install Rancher
+weight: 400
 aliases:
 ---
 
-## A. Render Templates and Install Rancher
+## A. Add the Helm Chart Repository and Render Templates
 
-Add the Helm chart repository that contains charts to install Rancher. Replace `<CHART_REPO>` with the [repository that you're using]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) (i.e. `latest` or `stable`). 
 
-```plain
-helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
-```
+From a system that has access to the internet, render the installs and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the repo you're using (`latest` or `stable`).
+1. Initialize `helm` locally on a system that has internet access.
 
-```plain
-helm fetch rancher-<CHART_REPO>/rancher
-```
+    ```plain
+    helm init -c
+    ```
 
-Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.
+2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
-```plain
-helm template ./rancher-<version>.tgz --output-dir . \
---name rancher --namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-```
+    Replace both occurences of `<CHART_REPO>` with the Helm chart repository that you want to use (i.e. `latest` or `stable`).
+    
+    ```
+    helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
+    ```
+3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the repo you're using (`latest` or `stable`).
+
+    ```plain
+    helm fetch rancher-<CHART_REPO>/rancher
+    ```
+
+4. Render the template with the options you would use to install the chart. See [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/) for details on the various options. Remember to set the `rancherImage` option to pull the image from your private registry. This will create a `rancher` directory with the Kubernetes manifest files.
+
+    ```plain
+    helm template ./rancher-<version>.tgz --output-dir . \
+    --name rancher --namespace cattle-system \
+    --set hostname=<RANCHER.YOURDOMAIN.COM> \
+    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
+    ```
 
 >Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
 
-## A. Choose an SSL Option and Install Rancher
+## B. Optional: Install Cert-Manager
+
+If you are installing Rancher with its self-signed certificates, you will need to install 'cert-manager' on your cluster. If you are installing your own certificates you may skip this section.
+
+From a system connected to the internet, fetch the latest `cert-manager` chart available from thea [official Helm chart repository](https://github.com/helm/charts/tree/master/stable).
+
+```plain
+helm fetch stable/cert-manager
+```
+
+Render the template with the option you would use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
+
+```plain
+helm template ./cert-manager-<version>.tgz --output-dir . \
+--name cert-manager --namespace kube-system \
+--set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
+```
+
+
+## D. Choose an SSL Option and Install Rancher
 
 
 Rancher server is designed to be secure by default and requires SSL/TLS configuration. There are two options for the source of the certificate in an HA air gap setup:
