@@ -53,9 +53,9 @@ By default enabling Audit Logging will create a sidecar container in the Rancher
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
-### Import "local" Cluster
+### Import `local` Cluster
 
-By default Rancher server will detect and import the "local" cluster its running on.  User with access to the "local" cluster will essentially have "root" access to all the clusters managed by Rancher server.
+By default Rancher server will detect and import the `local` cluster it's running on.  User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
 
 If this is a concern in your environment you can set this option to "false" on your initial install.
 
