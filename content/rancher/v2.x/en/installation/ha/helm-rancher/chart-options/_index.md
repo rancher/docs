@@ -20,6 +20,7 @@ weight: 276
 | Option | Default Value | Description |
 | --- | --- | --- |
 | `additionalTrustedCAs` | false | `bool` - See [Additional Trusted CAs](#additional-trusted-cas) |
+| `addLocal` | "auto" | `string` - Have Rancher detect and import the "local" Rancher server cluster [Import "local Cluster](#import-local-cluster) |
 | `auditLog.destination` | "sidecar" | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath" |
 | `auditLog.hostPath` | "/var/log/rancher/audit" | `string` - log file destination on host |
 | `auditLog.level` | 0 | `int` - set the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3] |
@@ -28,7 +29,8 @@ weight: 276
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
-| `proxy` | "" | `string` - string - HTTP[S] proxy server for Rancher |
+| `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
+| `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
 | `noProxy` | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
@@ -50,6 +52,28 @@ You can collect this log as you would any container log. Enable the [Logging ser
 By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
+
+### Import "local" Cluster
+
+By default Rancher server will detect and import the "local" cluster its running on.  User with access to the "local" cluster will essentially have "root" access to all the clusters managed by Rancher server.
+
+If this is a concern in your environment you can set this option to "false" on your initial install.
+
+> Note: This option is only effective on the initial Rancher install. See [Issue 16522](https://github.com/rancher/rancher/issues/16522) for more information.
+
+```plain
+--set addLocal="false"
+```
+
+### Customizing your Ingress
+
+To customize or use a different ingress with Rancher server you can set your own Ingress annotations.
+
+Example on setting a custom certificate issuer:
+
+```plain
+ --set ingress.extraAnnotations.'certmanager\.k8s\.io/cluster-issuer'=ca-key-pair
+```
 
 ### HTTP Proxy
 
