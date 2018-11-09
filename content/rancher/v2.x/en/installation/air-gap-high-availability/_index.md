@@ -15,14 +15,15 @@ The following CLI tools are required for this install. Make sure these tools are
 * [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
 * [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
 
+>**Note:** If you install Rancher in an HA configuration in an air gap environment, you cannot transition to a single-node setup during future upgrades.
+
 ## Installation Outline
 
 - [1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/)
 - [2. Collect and Publish Image Sources]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)
 - [3. Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
-- [4. Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/helm-init/)
-- [5. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
-- [6. Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)
+- [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
+- [5. Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)
 
 
 ### [Next: Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/) 

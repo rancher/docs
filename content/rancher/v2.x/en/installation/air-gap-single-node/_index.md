@@ -7,6 +7,7 @@ weight: 280
 
 Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machine. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
+>**Note:** If you install Rancher on a single node in an air gap environment, you cannot transition to a HA configuration during future upgrades.
 
 ## Installation Outline
 

@@ -61,4 +61,4 @@ After configuring `rancher-cluster.yml`, open Terminal and change directories to
 rke up --config ./rancher-cluster.yml
 ```
 
-### [Next: Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/helm-init/)
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher)
