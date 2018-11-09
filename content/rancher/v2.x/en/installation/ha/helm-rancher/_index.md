@@ -37,6 +37,7 @@ There are three recommended options for the source of the certificate.
 
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the official Kubernetes Helm chart repository to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
+
 Install `cert-manager` from Kubernetes Helm chart repository.
 
 ```
@@ -88,7 +89,9 @@ deployment "rancher" successfully rolled out
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA. This configuration uses HTTP validation (`HTTP-01`) so the load balancer must have a public DNS record and be accessible from the internet.
 
 - Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
+
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
+
 
 >**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
@@ -112,6 +115,7 @@ deployment "rancher" successfully rolled out
 #### Certificates from Files
 
 Create Kubernetes secrets from your own certificates for Rancher to use.
+
 
 > **Note:** The `Common Name` or a `Subject Alternative Names` entry in the server certificate must match the `hostname` option, or the ingress controller will fail to configure correctly. Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers/applications. If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{< baseurl >}}/rancher/v2.x/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
 

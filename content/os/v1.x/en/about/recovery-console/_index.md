@@ -72,6 +72,9 @@ You need add `rancher.autologin=tty1` to the end, then press `<Enter>`. If all g
 We need to mount the root disk in the recovery console and delete some data:
 
 ```
+# If you couldn't see any disk devices created under `/dev/`, please try this command:
+$ ros udev-settle
+
 $ mkdir /mnt/root-disk
 $ mount /dev/sda1 /mnt/root-disk
 

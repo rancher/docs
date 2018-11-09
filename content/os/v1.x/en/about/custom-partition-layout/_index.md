@@ -49,7 +49,7 @@ $ reboot
 
 ### Use RANCHER_BOOT partition
 
-When you only use the RRACHER_STATE partition, the bootloader will be installed in the `/boot` directory.
+When you only use the RANCHER_STATE partition, the bootloader will be installed in the `/boot` directory.
 
 ```
 $ system-docker run -it --rm -v /:/host alpine
