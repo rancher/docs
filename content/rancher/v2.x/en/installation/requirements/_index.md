@@ -7,16 +7,24 @@ aliases:
 Whether you're configuring Rancher to run in a single-node or high-availability setup, each node running Rancher Server must meet the following requirements.
 
 {{% tabs %}}
-{{% tab "Operating Systems" %}}
-Rancher is supported on the following operating systems and their subsequent releases.
+{{% tab "Operating Systems and Docker" %}}
+Rancher is supported on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
+
 
 *   Ubuntu 16.04 (64-bit)
-*   Red Hat Enterprise Linux 7.5 (64-bit)
+  * Docker 17.03.2
+*   Red Hat Enterprise Linux (RHEL)/CentOS 7.5 (64-bit)
+  * RHEL Docker 1.13
+  * Docker 17.03.2
 *   RancherOS 1.4 (64-bit)
+  * Docker 17.03.2
 *   Windows Server version 1803 (64-bit)
+  * Docker 18.06
 
 If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
 `sudo ros engine switch docker-17.03.2-ce`
+
+[Docker Documentation: Installation Instructions](https://docs.docker.com/)
 
 {{% /tab %}}
 {{% tab "Hardware" %}}
@@ -52,22 +60,6 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
     </tr>
 </table>
 <br/>
-
-{{% /tab %}}
-{{% tab "Software" %}}
-A supported version of [Docker](https://www.docker.com/) is required.
-
-Supported Versions:
-
-*   `1.12.6`
-*   `1.13.1`
-*   `17.03.2`
-*   `17.06` (for Windows)
-
-If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
-`sudo ros engine switch docker-17.03.2-ce`
-
-[Docker Documentation: Installation Instructions](https://docs.docker.com/)
 
 {{% /tab %}}
 {{% tab  "Networking" %}}
