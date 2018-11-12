@@ -8,7 +8,7 @@ Whether you're configuring Rancher to run in a single-node or high-availability 
 
 {{% tabs %}}
 {{% tab "Operating Systems" %}}
-Rancher is supported on the following operating systems and their subsequent releases.
+Rancher is supported on the following operating systems and their subsequent non-major releases.
 
 *   Ubuntu 16.04 (64-bit)
 *   Red Hat Enterprise Linux 7.5 (64-bit)
