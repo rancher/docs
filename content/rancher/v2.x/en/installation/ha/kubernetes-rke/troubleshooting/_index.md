@@ -50,3 +50,7 @@ SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.10
 #### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 
 * The node is not reachable on the configured `address` and `port`.
+
+#### Failed to apply the ServiceAccount needed for job execution:  net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+
+* Answer currently unknown
