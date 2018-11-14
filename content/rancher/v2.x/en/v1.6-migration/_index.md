@@ -70,7 +70,7 @@ This command line interface tool:
 
 - Exports Compose files (i.e., `docker-compose.yml` and `rancher-compose.yml`) for all your stacks that are Cattle environments in your Rancher 1.6 server. For every stack, files are exported to a `<EXPORT_DIR>/<ENV_NAME>/<STACK_NAME>` folder.
 
-- Parses Compose files that you've exported from your Rancher 1.6 stack and converts them to a Kubernetes manifest that Rancher v2.x can consume. The tool also outputs a list of constructs present in the Compose files that cannot be converted automatically to Rancher 2.x. These are files that you'll have to manually configure in the Kubernetes YAML.
+- Parses Compose files that you've exported from your Rancher 1.6 stack and converts them to a Kubernetes manifest that Rancher v2.x can consume. The tool also outputs a list of constructs present in the Compose files that cannot be converted automatically to Rancher 2.x. These are directives that you'll have to manually configure in the Kubernetes YAML.
 
 ### A. Download Migration-Tools CLI
 
