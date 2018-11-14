@@ -1,0 +1,94 @@
+---
+title: "3. Choose an SSL Option and Install Rancher"
+weight: 300
+aliases:
+---
+
+For development and testing in air gap environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to your air gap host using an image pulled from your private registry.
+
+For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+
+>**Do you want to...**
+>
+>- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
+>- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#enable-api-audit-log).
+
+
+Choose from the following options:
+
+
+{{% accordion id="option-a" label="Option A-Default Self-Signed Certificate" %}}
+
+If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
+
+Log into your Linux host, and then run the installation command below. Replace `<REGISTRY.YOURDOMAIN.COM:PORT>` with your private registry URL and port. Replace `<RANCHER_VERSION_TAG>` with release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
+
+
+    docker run -d --restart=unless-stopped \
+    -p 80:80 -p 443:443 \
+    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
+
+{{% /accordion %}}
+{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
+In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
+
+>**Prerequisites:**
+>From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
+>
+>- The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem).
+>- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#cert-order).
+
+After creating your certificate, run the Docker command below to install Rancher. Use the `-v` flag and provide the path to your certificates to mount them in your container.
+
+When entering the command, use the table below to replace each placeholder.
+
+Placeholder | Description
+------------|-------------
+`<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
+`<FULL_CHAIN.pem>` | The path to your full certificate chain.
+`<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
+`<CA_CERTS>` | The path to the certificate authority's private key.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
+
+```
+docker run -d --restart=unless-stopped \
+ -p 80:80 -p 443:443 \
+ -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+ -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+ -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+ <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
+```
+
+
+{{% /accordion %}}
+{{% accordion id="option-c" label="Option C-Bring Your Own Certificate: Signed by Recognized CA" %}}
+
+In production environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
+
+>**Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem).
+
+After obtaining your certificate, run the Docker command below, replacing each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
+
+When entering the command, use the table below to replace each placeholder.
+
+Placeholder | Description
+------------|-------------
+`<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
+`<FULL_CHAIN.pem>` | The path to your full certificate chain.
+`<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port. Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
+
+
+```
+docker run -d --restart=unless-stopped \
+ -p 80:80 -p 443:443 \
+ -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+ -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+ <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> --no-cacerts
+```
+
+{{% /accordion %}}
+
+### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-for-private-reg/)

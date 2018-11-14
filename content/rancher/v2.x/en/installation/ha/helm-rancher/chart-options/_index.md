@@ -78,7 +78,11 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 ### Private Registry and Air Gap Installs
 
-See [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for details on installing Rancher with a private registry.
+For details on installing Rancher with a private registry, see:
+
+- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/) 
+- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/) 
+
 
 ### External TLS Termination
 

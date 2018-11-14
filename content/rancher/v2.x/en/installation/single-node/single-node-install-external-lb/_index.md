@@ -47,9 +47,6 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 
 1. While running the Docker command to deploy Rancher, point Docker toward your CA certificate file.
 
-    >**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image tag.
-
-
     ```
     docker run -d --restart=unless-stopped \
       -p 80:80 -p 443:443 \
@@ -70,8 +67,6 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container.
 
 1. Enter the following command.
-
-    >**Air Gap User?** [Add your private registry URL]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#add-private-registry-url-to-run-command) before the `rancher/rancher` image tag.
 
     ```
     docker run -d --restart=unless-stopped \
