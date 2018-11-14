@@ -12,13 +12,22 @@ New password for default admin user (user-xxxxx):
 <new_password>
 ```
 
-High Availability install:
+High Availability install (Helm):
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+High Availability install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- reset-password
 New password for default admin user (user-xxxxx):
 <new_password>
 ```
+
 
 ### I deleted/deactivated the last admin, how can I fix it?
 Single node install:
@@ -29,14 +38,21 @@ New password for default admin user (user-xxxxx):
 <new_password>
 ```
 
-High Availability install:
+High Availability install (Helm):
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
+New password for default admin user (user-xxxxx):
+<new_password>
+```
+
+High Availability install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- ensure-default-admin
 New password for default admin user (user-xxxxx):
 <new_password>
 ```
-
 
 ### How can I enable debug logging?
 
@@ -54,8 +70,27 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
+* High Availability install (Helm)
+ * Enable
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set debug
+OK
+OK
+OK
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system logs -l app=rancher
+```
 
-* High Availability install
+ * Disable
+```
+$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set info
+OK
+OK
+OK
+```
+
+* High Availability install (RKE add-on)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -70,7 +105,6 @@ $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set info
 OK
 ```
-
 
 ### My ClusterIP does not respond to ping
 
@@ -123,6 +157,24 @@ When the node is removed from the cluster, and the node is cleaned, you can read
 ### How can I add additional arguments/binds/environment variables to Kubernetes components in a Rancher Launched Kubernetes cluster?
 
 You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).
+
+### How do I check `Common Name` and `Subject Alternative Names` in my server certificate?
+
+Although technically an entry in `Subject Alternative Names` is required, having the hostname in both `Common Name` and as entry in `Subject Alternative Names` gives you maximum compatibility with older browser/applications.
+
+Check `Common Name`:
+
+```
+openssl x509 -noout -subject -in cert.pem
+subject= /CN=rancher.my.org
+```
+
+Check `Subject Alternative Names`:
+
+```
+openssl x509 -noout -in cert.pem -text | grep DNS
+                DNS:rancher.my.org
+```
 
 ### Why does it take 5+ minutes for a pod to be rescheduled when a node has failed?
 
