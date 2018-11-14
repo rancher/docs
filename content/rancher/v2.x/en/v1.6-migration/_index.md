@@ -70,7 +70,7 @@ This command line interface tool:
 
 - Exports Compose files (i.e., `docker-compose.yml` and `rancher-compose.yml`) for all your stacks that are Cattle environments in your Rancher 1.6 server. For every stack, files are exported to a `<EXPORT_DIR>/<ENV_NAME>/<STACK_NAME>` folder.
 
-- Parses Compose files that you've exported from your Rancher 1.6 stack and converts them to a Kubernetes manifest that Rancher v2.x can consume. The tool also outputs a list of constructs present in the Compose files that cannot be converted automatically to Rancher 2.x. These are fields that you'll have to manually configure in the Kubernetes YAML.
+- Parses Compose files that you've exported from your Rancher 1.6 stack and converts them to a Kubernetes manifest that Rancher v2.x can consume. The tool also outputs a list of constructs present in the Compose files that cannot be converted automatically to Rancher 2.x. These are directives that you'll have to manually configure in the Kubernetes YAML.
 
 ### A. Download Migration-Tools CLI
 
@@ -79,19 +79,18 @@ The migration-tools CLI for your platform can be downloaded from our [GitHub rel
 
 ### B. Configure Migration-Tools CLI
 
-After the tools are downloaded, you need to make some configurations to run them.
+After you download migration-tools CLI, rename it and make it executable.
 
-1. Modify the migration-tools CLI file to make it an executable.
 
-    1. Open Terminal and change to the directory that contains the migration-tools file.
+1. Open Terminal and change to the directory that contains the migration-tools file.
 
-    1. Rename the file to `migration-tools` so that it no longer includes the platform name.
+1. Rename the file to `migration-tools` so that it no longer includes the platform name.
 
-    1. Enter the following command to make `migration-tools` an executable:
+1. Enter the following command to make `migration-tools` an executable:
 
-        ```
-        chmod +x migration-tools
-        ```
+    ```
+    chmod +x migration-tools
+    ```
 
 ### C. Run Migration-Tools CLI
 
@@ -112,7 +111,7 @@ Next, use the migration-tools CLI to export all stacks in all of the Cattle envi
 
 1. Convert the exported Compose files for a stack to Kubernetes YAML.
 
-    Execute the following command, replacing each placeholder with the absolute path to your Stack's Compose files. For each stack, you'll have to re-run the command for each pair of Compose files that was exported.
+    Execute the following command, replacing each placeholder with the absolute path to your stack's Compose files. For each stack, you'll have to re-run the command for each pair of Compose files that was exported.
 
     ```
     migration-tools parse --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-file <RANCHER_COMPOSE_ABSOLUTE_PATH>
@@ -124,7 +123,7 @@ Next, use the migration-tools CLI to export all stacks in all of the Cattle envi
 
 ## 3. Migrate Applications
 
-In Rancher 1.6, you launch applications as _services_ and organize them under _stacks_ in an _environment_, which represents a compute and administrative boundary. Rancher 1.6 supports the Docker compose standard and provides import/export for application configurations using the following files: `docker-compose.yml` and `rancher-compose.yml`. In 2.x the environment concept doesn't exist. Instead it's replaced by:
+In Rancher 1.6, you launch applications as _services_ and organize them under _stacks_ in an _environment_, which represents a compute and administrative boundary. Rancher 1.6 supports the Compose standard and provides import/export for application configurations using the following files: `docker-compose.yml` and `rancher-compose.yml`. In 2.x the environment concept doesn't exist. Instead it's replaced by:
 
 - **Cluster:** The compute boundary.
 - **Project:** An administrative boundary.
@@ -163,4 +162,4 @@ How to achieve TCP/HTTP load balancing and configure hostname/path-based routing
 
 Blog Post: [From Cattle to Kubernetes-How to Load Balance Your Services in Rancher 2.x](https://rancher.com/blog/2018/2018-09-13-load-balancing-options-2dot0/)
 
-In Rancher 1.6, a Load Balancer was used to expose your applications from within the Rancher environment for external access. In Rancher 2.x, the concept is the same. There is a Load Balancer option to expose your services. In the language of Kubernetes, this function is more often referred to as an **Ingress**. In short, Load Balancer and Ingress play the same role.
+In Rancher 1.6, a load balancer was used to expose your applications from within the Rancher environment for external access. In Rancher 2.x, the concept is the same. There is a Load Balancer option to expose your services. In the language of Kubernetes, this function is more often referred to as an _Ingress_. In short, load balancer and Ingress play the same role.
