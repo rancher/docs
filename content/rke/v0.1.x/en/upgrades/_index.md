@@ -14,14 +14,14 @@ For example, to change the deployed Kubernetes version, you update the `rancher/
 Original YAML
 
 ```yaml
-system-images:
+system_images:
     kubernetes: rancher/hyperkube:v1.9.7
 ```
 
 Updated YAML
 
 ```yaml
-system-images:
+system_images:
     kubernetes: rancher/hyperkube:v1.10.3
 ```
 
