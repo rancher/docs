@@ -9,7 +9,7 @@ This section explains how Rancher interacts with the two fundamental technologie
 
 Docker is the container packaging and runtime standard. Developers build container images from Dockerfiles and distribute container images from Docker registries. [Docker Hub](https://hub.docker.com) is the most popular public registry. Many organizations also setup private Docker registries. Docker is primarily used to manage containers on individual nodes.
 
->**Note:** Although Rancher 1.6 supported Docker Swarm clustering technology, it is no longer supported in Rancher 2.0 due to the success of Kubernetes.
+>**Note:** Although Rancher 1.6 supported Docker Swarm clustering technology, it is no longer supported in Rancher 2.x due to the success of Kubernetes.
 
 ## Kubernetes
 
@@ -31,9 +31,9 @@ A Kubernetes cluster consists of multiple nodes.
 
 ## Rancher
 
-The majority of Rancher 2.0 software runs on the Rancher Server.  Rancher Server includes all the software components used to manage the entire Rancher deployment.
+The majority of Rancher 2.x software runs on the Rancher Server.  Rancher Server includes all the software components used to manage the entire Rancher deployment.
 
-The figure below illustrates the high-level architecture of Rancher 2.0. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by GKE.
+The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by GKE.
 
 ![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.png)
 

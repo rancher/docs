@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/tasks/global-configuration/
 ---
 
-After installing Rancher 2.0, you should
+After installing Rancher 2.x, you should
 
 1. Set a Rancher Server URL, which your cluster nodes will use to resolve with Rancher. You'll be prompted to set this URL upon your first log in.
 
