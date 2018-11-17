@@ -31,7 +31,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. Complete the **Elasticsearch Configuration** form.
 
-    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch instance. You can copy this information from the dashboard of your Elasticsearch deployment. Elasticsearch usually uses port `9243`.
+    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch instance. You can copy this information from the dashboard of your Elasticsearch deployment. Elasticsearch usually uses port `9200` for HTTP and `9243` for HTTPS.
 
     1. If you are using [X-Pack Security](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html), enter your Elasticsearch **Username** and **Password** for authentication.
 
