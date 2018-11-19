@@ -158,6 +158,43 @@ When the node is removed from the cluster, and the node is cleaned, you can read
 
 You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).
 
+### How do I check if my certificate chain is valid?
+
+Use the `openssl verify` command to validate your certificate chain:
+
+>**Note:** Configure `SSL_CERT_DIR` and `SSL_CERT_FILE` to a dummy location to make sure the OS installed certificates are not used when verifying manually.
+
+```
+SSL_CERT_DIR=/dummy SSL_CERT_FILE=/dummy openssl verify -CAfile ca.pem rancher.yourdomain.com.pem
+rancher.yourdomain.com.pem: OK
+```
+
+If you receive the error `unable to get local issuer certificate`, the chain is incomplete. This usually means that there is an intermediate CA certificate that issued your server certificate. If you already have this certificate, you can use it in the verification of the certificate like shown below:
+
+```
+SSL_CERT_DIR=/dummy SSL_CERT_FILE=/dummy openssl verify -CAfile ca.pem -untrusted intermediate.pem rancher.yourdomain.com.pem
+rancher.yourdomain.com.pem: OK
+```
+
+If you have successfully verified your certificate chain, you should include needed intermediate CA certificates in the server certificate to complete the certificate chain for any connection made to Rancher (for example, by the Rancher agent). The order of the certificates in the server certificate file should be first the server certificate itself (contents of `rancher.yourdomain.com.pem`), followed by intermediate CA certificate(s) (contents of `intermediate.pem`).
+
+```
+-----BEGIN CERTIFICATE-----
+%YOUR_CERTIFICATE%
+-----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+%YOUR_INTERMEDIATE_CERTIFICATE%
+-----END CERTIFICATE-----
+```
+
+If you still get errors during verification, you can retrieve the subject and the issuer of the server certificate using the following command:
+
+```
+openssl x509 -noout -subject -issuer -in rancher.yourdomain.com.pem
+subject= /C=GB/ST=England/O=Alice Ltd/CN=rancher.yourdomain.com
+issuer= /C=GB/ST=England/O=Alice Ltd/CN=Alice Intermediate CA
+```
+
 ### How do I check `Common Name` and `Subject Alternative Names` in my server certificate?
 
 Although technically an entry in `Subject Alternative Names` is required, having the hostname in both `Common Name` and as entry in `Subject Alternative Names` gives you maximum compatibility with older browser/applications.
