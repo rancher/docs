@@ -19,7 +19,7 @@ Rancher is supported on the following operating systems and their subsequent non
 *   RancherOS 1.4 (64-bit)
   * Docker 17.03.2
 *   Windows Server version 1803 (64-bit)
-  * Docker 18.06
+  * Docker 17.06
 
 If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
 `sudo ros engine switch docker-17.03.2-ce`
