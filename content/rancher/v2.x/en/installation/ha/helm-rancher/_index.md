@@ -5,7 +5,7 @@ weight: 200
 
 Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
 
-> **Note:** For systems without direct internet access see [Installing Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/) for install details.
+> **Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
 
 ### Add the Helm Chart Repository
 
@@ -65,8 +65,6 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 - Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 
->**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
-
 ```
 helm install rancher-<CHART_REPO>/rancher \
   --name rancher \
@@ -91,9 +89,6 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 - Replace `<CHART_REPO>` with the repository that you configured in [Add the Helm Chart Repository](#add-the-helm-chart-repository) (i.e. `latest` or `stable`).
 
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
-
-
->**Using Air Gap?** [Set the `rancherImage` option]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#install-rancher-using-private-registry) in your command, pointing toward your private registry.
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
