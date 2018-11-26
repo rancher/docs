@@ -2,12 +2,12 @@
 title: "2. Prepare Private Registry"
 weight: 200
 aliases:
-
+  - /rancher/v2.x/en/installation/air-gap-installation/prepare-private-reg/
 ---
 
 ## A. Collect Images
 
-Start by collecting all the images needed to install Rancher in an air gap environment. You'll collect images from your chosen Rancher release, RKE, and (if you're using a self-signed TLS certificate) Cert-Manager. 
+Start by collecting all the images needed to install Rancher in an air gap environment. You'll collect images from your chosen Rancher release, RKE, and (if you're using a self-signed TLS certificate) Cert-Manager.
 
 1. Using a computer with internet access, browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.1.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
@@ -24,28 +24,28 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 
 
 1. Make `rancher-save-images.sh` an executable.
-    
+
     ```
     chmod +x rancher-save-images.sh
     ```
-    
 
-1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`, which is a list of all the files needed to install Rancher. 
-     
+
+1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`, which is a list of all the files needed to install Rancher.
+
     ```
     rke config --system-images >> ./rancher-images.txt
     ```
 1. **Default Rancher Generated Self-Signed Certificate Users Only:** If you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image to `rancher-images.txt` as well. You may skip to [B. Publish Images](#b-publish-images  ) if you are using you using your own certificates.
-    
+
     1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
-    
+
         ```plain
         helm fetch stable/cert-manager
         helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
         ```
-    
+
     2. Sort and unique the images list to remove any overlap between the sources.
-        
+
         ```plain
         sort -u rancher-images.txt -o rancher-images.txt
         ```
@@ -54,8 +54,8 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 
     ```plain
     ./rancher-save-images.sh --image-list ./rancher-images.txt
-        ```
-    
+    ```
+
     **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
 
 ## B. Publish Images
