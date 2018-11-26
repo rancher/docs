@@ -2,7 +2,7 @@
 title: "Air Gap: High Availability Install"
 weight: 290
 aliases:
-  - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
+  - /rancher/v2.x/en/installation/air-gap-installation/
 ---
 
 ## Prerequisites

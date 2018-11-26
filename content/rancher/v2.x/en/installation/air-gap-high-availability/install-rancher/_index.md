@@ -2,6 +2,7 @@
 title: 4. Install Rancher
 weight: 400
 aliases:
+  - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
 ---
 
 ## A. Add the Helm Chart Repository
