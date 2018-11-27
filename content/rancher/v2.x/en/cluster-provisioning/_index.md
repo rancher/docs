@@ -43,6 +43,10 @@ Now that you know what a Kubernetes Cluster is, how does Rancher fit in?
 
 Rancher simplifies creation of clusters by allowing you to create them through the Rancher UI rather than more complex alternatives. Rancher provides multiple options for launching a cluster. Use the option that best fits your use case.
 
+![Rancher diagram]({{< baseurl >}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
+<sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
+
+
 ## Cluster Creation Options
 
 Options include:
