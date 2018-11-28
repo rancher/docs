@@ -133,7 +133,7 @@ SSH keys to access the nodes created by Rancher can be downloaded via the **Node
 
 ![Download Keys]({{< baseurl >}}/img/rancher/downloadsshkeys.png)
 
-Unzip the downloaded zip file, and use the file `id_rsa` to connect to you host. Be sure to use the correct username (`rancher` for RancherOS, `ubuntu` for Ubuntu, `ec2-user` for Amazon Linux)
+Unzip the downloaded zip file, and use the file `id_rsa` to connect to you host. Be sure to use the correct username (`rancher` or `docker` for RancherOS, `ubuntu` for Ubuntu, `ec2-user` for Amazon Linux)
 
 ```
 $ ssh -i id_rsa user@ip_of_node
