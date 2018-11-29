@@ -1,5 +1,5 @@
 ---
-title: 4 - Install Rancher
+title: "4.  Install Rancher"
 weight: 200
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 3 - Initialize Helm (Install tiller)
+title: "3. Initialize Helm (Install Tiller)"
 weight: 195
 ---
 
@@ -29,7 +29,7 @@ helm init --service-account tiller
 # The list of tiller image tags are available here: https://dev.aliyun.com/detail.html?spm=5176.1972343.2.18.ErFNgC&repoId=62085. 
 # When initializing tiller, you'll need to pass in --tiller-image
 
-helm init --service-account tiller |
+helm init --service-account tiller \
 --tiller-image registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:<tag>
 ```
 

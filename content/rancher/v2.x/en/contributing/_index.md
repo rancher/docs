@@ -26,6 +26,9 @@ loglevel repository | https://github.com/rancher/loglevel | This repository is t
 
 To see all libraries/projects used in Rancher, see the `vendor.conf` in the `rancher/rancher` repository.
 
+![Rancher diagram]({{< baseurl >}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
+<sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
+
 ### Building
 
 Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository (plus additional `trash` commands, please see below for more information about using `trash`), and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.

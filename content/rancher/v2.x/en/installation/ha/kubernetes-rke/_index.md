@@ -1,5 +1,5 @@
 ---
-title: 2—Install Kubernetes with RKE
+title: "2. Install Kubernetes with RKE"
 weight: 190
 ---
 

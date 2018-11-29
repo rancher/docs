@@ -56,15 +56,15 @@ migration-tools export --url <RANCHER_URL> --access-key <RANCHER_ACCESS_KEY> --s
 
 ### Migration-Tools Parse Reference
 
-The `migration-tools parse` command parses the Compose files for a stack and uses [Kompose](https://github.com/kubernetes/kompose) to generate an equivalent Kubernetes YAML. It also outputs an `output.txt` file, which lists all the constructs that will need manual intervention in order to be converted to Kubernetes.
+The `migration-tools parse` command parses the Compose files for a stack and uses [Kompose](https://github.com/kubernetes/kompose) to generate an equivalent Kubernetes manifest. It also outputs an `output.txt` file, which lists all the constructs that will need manual intervention in order to be converted to Kubernetes.
 
 #### Options
 
 | Option | Required? | Description
 | ---|---|---
-|`--docker-file <VALUE>` |  | Parses Docker Compose file to output Kubernetes manifest (default: `docker-compose.yml`)
+|`--docker-file <VALUE>` |  | Parses Docker Compose file to output Kubernetes manifest(default: `docker-compose.yml`)
 |`--output-file <VALUE>` |  | Name of file that outputs listing checks and advice for conversion (default: `output.txt`).
-|`--rancher-file <VALUE>` |  | Parses Rancher Compose file to output Kubernetes manifest (default: `rancher-compose.yml`)
+|`--rancher-file <VALUE>` |  | Parses Rancher Compose file to output Kubernetes manifest(default: `rancher-compose.yml`)
 
 #### Subcommands
 
@@ -82,4 +82,4 @@ migration-tools parse --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-fil
 
 >**Note:** If you omit the `--docker-file` and `--rancher-file` options from your command, the migration-tools CLI checks its home directory for these Compose files.
 
-**Result:** The migration-tools CLI parses your Compose files and outputs Kubernetes YAML specs as well as an `output.txt` file. For each service in the stack, a YAML spec file is created and named the same as your service. The `output.txt` file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to Rancher 2.x. Each construct links to the relevant blog articles on how to implement it in Rancher 2.x. 
+**Result:** The migration-tools CLI parses your Compose files and outputs Kubernetes manifest specs as well as an `output.txt` file. For each service in the stack, a Kubernetes manifest is created and named the same as your service. The `output.txt` file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to Rancher v2.x. Each construct links to the relevant blog articles on how to implement it in Rancher v2.x. 
