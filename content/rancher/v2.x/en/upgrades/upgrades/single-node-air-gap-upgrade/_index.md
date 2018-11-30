@@ -9,6 +9,10 @@ To upgrade an air gapped Rancher Server, update your private registry with the l
 ## Prerequisites
 **Upgrades to v2.0.7+ only:** Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
+## Caveats
+
+Upgrading a Rancher Server running the `rancher/rancher:alpha` tag to a general release (i.e., `rancher/rancher:latest`) is not supported.
+
 ## Upgrading An Air Gapped Rancher Server
 
 1. Follow the directions in Air Gap Installation to [pull the Docker images]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/#release-files) required for the new version of Rancher.

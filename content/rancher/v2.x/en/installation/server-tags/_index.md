@@ -11,15 +11,17 @@ When performing [single-node installs]({{< baseurl >}}/rancher/v2.x/en/installat
 
 Rancher Server is distributed as a Docker image, which have tags attached to them. You can specify this tag when entering the command to deploy Rancher. Remember that if you use a tag without an explicit version (like `latest` or `stable`), you must explicitly pull a new version of that image tag. Otherwise, any image cached on the host will be used.
 
-| Tag                        | Description                                                                                                                                                     |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rancher/rancher:latest`   | Our latest development release. These builds are validated through our CI automation framework. These releases are not recommended for production environments. |
-| `rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.                                                                                              |
-| `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.                                                                          |
+Tag                        | Description
+-------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+`rancher/rancher:latest`   | Our latest development release. These builds are validated through our CI automation framework. These releases are not recommended for production environments.
+`rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.
+`rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.
+`rancher/rancher:alpha`    | An alpha release for previewing upcoming releases. These releases are discouraged in production environments.
 
-<br/>
-
->**Note:** The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate.  You should not use these tags, as these builds are not officially supported.
+>**Notes:**
+>
+>- Upgrading `rancher/rancher:alpha` installs to a general release tag is not supported. Additionally, alpha releases are only available in the `stable` [repository](#helm-chart-repositories), not `latest`.
+>- The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate.  You should not use these tags, as these builds are not officially supported.
 
 ## High Availability Installs
 
@@ -51,10 +53,10 @@ Up until the initial release of the Helm chart for Rancher v2.1.0, the version o
 
 Since there are times where the Helm chart will require changes without any changes to the Rancher version, we have moved to a versioning scheme using `yyyy.mm.<build-number>` for the Helm charts.
 
-Run `helm search rancher` to view which Rancher version will be launched for the your Helm chart.  
+Run `helm search rancher` to view which Rancher version will be launched for the your Helm chart.
 
 ```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION                                                 
+NAME                      CHART VERSION    APP VERSION    DESCRIPTION
 rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
 
@@ -67,7 +69,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
     ```
     helm repo list
 
-    NAME          	      URL                                              
+    NAME          	      URL
     stable        	      https://kubernetes-charts.storage.googleapis.com
     rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
