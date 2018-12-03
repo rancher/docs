@@ -20,7 +20,7 @@ Tag                        | Description
 
 >**Notes:**
 >
->- Upgrading `rancher/rancher:alpha` installs to a general release tag is not supported. Additionally, alpha releases are only available in the `stable` [repository](#helm-chart-repositories), not `latest`.
+>- Upgrading `rancher/rancher:alpha` installs to a general release tag or another alpha build is not supported. Additionally, alpha releases are only available in the `latest` [repository](#helm-chart-repositories), not `stable`.
 >- The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate.  You should not use these tags, as these builds are not officially supported.
 
 ## High Availability Installs
