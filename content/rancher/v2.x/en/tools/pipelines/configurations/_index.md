@@ -347,6 +347,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 During the process of configuring a pipeline, you can configure advanced options for triggering the pipeline or configuring environment variables.
 
 - [Configuring Pipeline Trigger Rules](#configuring-pipeline-trigger-rules)
+- [Configuring Notifications](#configuring-notifications)
 - [Configuring Timeouts](#configuring-timeouts)
 - [Configuring Environment Variables](#configuring-environment-variables)
 - [Configuring Pipeline Secrets](#configuring-pipeline-secrets)
@@ -471,6 +472,48 @@ branch:
   include: [ master, feature/*]
   exlclude: [ dev ]
 ```
+{{% /tab %}}
+{{% /tabs %}}
+
+### Configuring Notifications
+
+You can configure pipelines to send notifications to [notifiers](https://rancher.com/docs/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers) when an execution is finished. 
+
+{{% tabs %}}
+{{% tab "By UI" %}}
+1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
+
+1. From the pipeline for which you want to edit the timeout, select **Ellipsis (...) > Edit Config**.
+
+1. Enable the **Notification** option.
+
+1. Select conditions for notifications. For example if you want to receive notifications when on execution failure, select **Failed**  
+
+1. If you don't have any existing notifier, click **create one** and you will be directed to the notifiers page. Follow the [instruction](https://rancher.com/docs/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you have already configured notifiers, click **Add Recipient** button.
+
+1. Select a notifier from the dropdown, then input recipient or use the default one. By clicking **Add Recipient** button, you can configure to send notifications to different notifiers or multiple recipients.
+ 
+{{% /tab %}}
+{{% tab "By YAML" %}}
+```yaml
+# example
+stages:
+  - name: Build something
+    steps:
+    - runScriptConfig:
+        image: busybox
+        shellScript: ls
+notification:
+  recipients:
+  - recipient: "#mychannel"
+    # notifier name or id
+    notifier: "my-slack-notifier"
+  - recipient: "test@example.com"
+    notifier: "my-email-notifier"
+  condition: ["Failed"]
+  # optional message that overrides the default message
+  message: "my-message"
+``` 
 {{% /tab %}}
 {{% /tabs %}}
 
