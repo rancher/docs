@@ -14,7 +14,12 @@ In your cloud-config, Docker configuration is located under the `rancher.docker`
 rancher:
   docker:
     tls: true
-    tls_args: [--tlsverify, --tlscacert=ca.pem, --tlscert=server-cert.pem, --tlskey=server-key.pem, '-H=0.0.0.0:2376']
+    tls_args:
+      - "--tlsverify"
+      - "--tlscacert=/etc/docker/tls/ca.pem"
+      - "--tlscert=/etc/docker/tls/server-cert.pem"
+      - "--tlskey=/etc/docker/tls/server-key.pem"
+      - "-H=0.0.0.0:2376"
     storage_driver: overlay
 ```
 
