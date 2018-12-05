@@ -1,5 +1,5 @@
 ---
-title: 3 - Initialize Helm (Install tiller)
+title: "3. Initialize Helm (Install Tiller)"
 weight: 195
 ---
 
