@@ -16,7 +16,7 @@ Tag                        | Description
 `rancher/rancher:latest`   | Our latest development release. These builds are validated through our CI automation framework. These releases are not recommended for production environments.
 `rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.
 `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.
-`rancher/rancher:alpha`    | An alpha release for previewing upcoming releases. These releases are discouraged in production environments.
+
 
 >**Notes:**
 >
@@ -42,6 +42,7 @@ Type | Command to Add the Repo | Description of the Repo
 -----------|-----|-------------
 rancher-latest   | `helm repo add rancher-latest https://releases.rancher.com/server-charts/latest` | Adds a repository of Helm charts for the latest versions of Rancher. We recommend using this repo for testing out new Rancher builds.
 rancher-stable  | `helm repo add rancher-stable https://releases.rancher.com/server-charts/stable` | Adds a repository of Helm charts for older, stable versions of Rancher. We recommend using this repo for production environments.
+rancher-alpha    | `helm repo add rancher-alpha https://releases.rancher.com/server-charts/alpha` | Adds a repository of Helm charts for alpha versions of Rancher for previewing upcoming releases. These releases are discouraged in production environments.
 <br/>
 Instructions on when to select these repos are available below in [Switching to a Different Helm Chart Repository](#switching-to-a-different-helm-chart-repository).
 
