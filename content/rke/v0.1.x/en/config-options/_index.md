@@ -54,39 +54,28 @@ ignore_docker_version: true
 
 ### Kubernetes Version
 
-You can select which version of Kubernetes to install for your cluster. These options are the Kubernetes versions made available in Rancher v2.x. The current default Kubernetes version used by RKE is `v1.11.3-rancher1-1`. If a version is defined in `kubernetes_version` and is not found in this list, the default is used.
+You can select which version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions. If a version is defined in `kubernetes_version` and is not found in this list, the default version is used. If you want to use a different version than listed below, please use the [system images](#rke-system-images) option. 
+
+The supported Kubernetes versions for RKE v0.1.13 are:
 
  Kubernetes version|
  -----------------|
- v1.12.1-rancher1-1|
- v1.12.0-rancher1-1|
- v1.11.3-rancher1-1|
- v1.11.2-rancher1-2|
- v1.11.1-rancher1-1|
- v1.10.5-rancher1-2|
- v1.10.3-rancher2-1|
- v1.10.1-rancher2-1|
- v1.10.0-rancher1-1|
- v1.9.7-rancher2-2|
- v1.9.7-rancher2-1|
- v1.9.5-rancher1-1|
- v1.8.11-rancher2-1|
- v1.8.10-rancher1-1|
+ `v1.12.3-rancher1-1`|
+ `v1.11.5-rancher1-1` (default)|
+ `v1.10.11-rancher1-1`|
 
 <br>
 
-There are two ways to select a Kubernetes version:
-
-- Using the Kubernetes image defined in [system images](#rke-system-images)
-- Using the configuration option `kubernetes_version`
+You can define the Kubernetes version as follows:
 
 ```yaml
-kubernetes_version: "v1.11.1-rancher1-1"
+kubernetes_version: "v1.11.5-rancher1-1"
 ```
 
-In case both are defined, the system images configuration will take precedence over `kubernetes_version`.
+In case both `kubernetes_version` and [system images](#rke-system-images) are defined, the system images configuration will take precedence over `kubernetes_version`.
 
 ### Cluster Level SSH Key Path
+
 RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/).
 
 If ssh key paths are defined at the cluster level and at the node level, the node-level key will take precedence.
