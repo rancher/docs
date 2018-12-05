@@ -37,7 +37,7 @@ You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 ## Caveats
 
-Upgrading a Rancher Server running the `rancher/rancher:alpha` tag to a general release (i.e., `rancher/rancher:latest`) is not supported.
+Running a build from the [rancher-alpha repository]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories/)? Sorry, but upgrading from an alpha build isn't supported 😞.
 
 ## Completing the Upgrade
 
