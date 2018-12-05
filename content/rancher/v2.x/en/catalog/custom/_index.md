@@ -37,56 +37,19 @@ Rancher supports two different types of charts:
 
 ## Chart Directory Structure
 
-The following table demonstrates the directory structure for a chart, which can be found in a chart directory: `charts/%application%/%app version%/`. This information is helpful when customizing charts for a custom catalog. Files denoted with **Rancher Specific** are specific to Rancher charts, but are optional for chart customization.
+The following table demonstrates the directory structure for a chart, which can be found in a chart directory: `charts/<APPLICATION>/<APP_VERSION>/`. This information is helpful when customizing charts for a custom catalog. Files denoted with **Rancher Specific** are specific to Rancher charts, but are optional for chart customization.
 
-<table>
-	<tbody>
-		<tr>
-			<td>Sub-Directory </td>
-			<td>File</td>
-			<td>Description</td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td> <code>app-readme.md</code></td>
-			<td> <strong>Rancher Specific:</strong> Text displayed in the charts header within the Rancher UI.</td>
-		</tr>
-		<tr>
-			<td><code>charts/</code></td>
-            <td></td>
-			<td>Directory containing dependency charts.</td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td><code>Chart.yml</code></td>
-			<td>Required Helm chart information file.</td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td><code>questions.yml</code></td>
-			<td><strong>Rancher Specific:</strong> File containing form questions displayed within the Rancher UI. Questions display in <strong>Configuration Options</strong>.</td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td><code>README.md</code></td>
-			<td>Optional: Helm Readme file displayed within Rancher UI. This text displays in <strong>Detailed Descriptions</strong>.</td>
-		</tr>
-			<td></td>
-			<td><code>requirements.yml</code></td>
-			<td>Optional YAML file listing dependencies for the chart.</td>
-		</tr>
-		<tr>
-			<td><code>templates/</code></td>
-            <td></td>
-			<td>A directory of templates that, when combined with <code>values.yml</code>, generates Kubernetes YAML.</td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td><code>values.yml</code></td>
-			<td>The default configuration values for the chart.</td>
-		</tr>
-	</tbody>
-</table>
+```
+charts/<APPLICATION>/<APP_VERSION>/
+|--charts/           # Directory containing dependency charts.
+|--templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML.
+|--app-readme.md     # Text displayed in the charts header within the Rancher UI.*
+|--Chart.yml         # Required Helm chart information file.
+|--questions.yml     # Form questions displayed within the Rancher UI. Questions display in Configuration Options.*
+|--README.md         # Optional: Helm Readme file displayed within Rancher UI. This text displays in Detailed Descriptions.
+|--requirements.yml  # Optional: YAML file listing dependencies for the chart.
+|--values.yml        # Default configuration values for the chart.
+```
 
 ## Rancher Chart Additional Files
 
@@ -96,7 +59,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
     A file that provides descriptive text in the chart's UI header. The following image displays the difference between a Rancher chart (which includes `app-readme.md`) and a native Helm chart (which does not).
 
-	<small>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</small>
+	<figcaption>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</figcaption>
 
 	![app-readme.md]({{< baseurl >}}/img/rancher/app-readme.png)
 
@@ -105,7 +68,7 @@ Before you create your own custom catalog, you should have a basic understanding
     A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
 
-	<small>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</small>
+	<figcaption>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</figcaption>
 
 	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
