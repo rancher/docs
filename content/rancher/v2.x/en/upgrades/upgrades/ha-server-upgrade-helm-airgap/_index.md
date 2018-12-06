@@ -35,7 +35,10 @@ The following instructions will guide you through upgrading a high-availability 
     helm repo update
     ```
 
-2. Get the [repository name that you installed Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories) with.
+
+2. Get the repository name that you used to install Rancher.
+
+    For information about the repos and their differences, see [Helm Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
     ```
     helm repo list

@@ -30,10 +30,10 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Installation Outline
 
-1. [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
-1. [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
-1. [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
-1. [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
+- [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
+- [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
+- [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
+- [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
 
 ## Additional Install Options
 
@@ -41,10 +41,11 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Previous Methods
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+[RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)
+
+> ##### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
 >Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
-* [RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)
