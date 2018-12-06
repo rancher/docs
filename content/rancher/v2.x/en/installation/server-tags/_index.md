@@ -20,7 +20,13 @@ Tag                        | Description
 
 
 
->**Note:** The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate.  You should not use these tags, as these builds are not officially supported.
+>**Notes:** 
+>
+>- The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
+>- Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`).
+>
+>        _Caveat:_ Alpha releases cannot be upgraded to or from any other release.
+
 
 ## High Availability Installs
 
@@ -28,18 +34,7 @@ When installing, upgrading, or rolling back Rancher Server in a [high availabili
 
 ### Helm Chart Repositories
 
-<<<<<<< HEAD
-Rancher provides two different Helm chart repositories to choose from.
-
-We align our latest and stable Helm chart repositories with the Docker tags that are used for a single node installation. 
-Therefore, the `rancher-latest` repository will contain charts for all the Rancher versions that have been tagged as `rancher/rancher:latest`. 
-When a Rancher version has been promoted to the `rancher/rancher:stable`, it will get added to the `rancher-stable` repository.
-
-Each Helm chart repository is named for the labels attached to each Rancher image. In other words, the `rancher-latest` repository contains charts labeled as `rancher/rancher:latest`, the `rancher-stable` repository
-contains charts labeled `rancher/rancher:stable`, etc.)
-=======
 Rancher provides several different Helm chart repositories to choose from. We align our latest and stable Helm chart repositories with the Docker tags that are used for a single node installation. Therefore, the `rancher-latest` repository will contain charts for all the Rancher versions that have been tagged as `rancher/rancher:latest`. When a Rancher version has been promoted to the `rancher/rancher:stable`, it will get added to the `rancher-stable` repository.
->>>>>>> adding content about how switching between repos isn't supported
 
 Type | Command to Add the Repo | Description of the Repo
 -----------|-----|-------------
