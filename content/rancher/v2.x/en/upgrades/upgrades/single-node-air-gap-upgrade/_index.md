@@ -11,7 +11,7 @@ To upgrade an air gapped Rancher Server, update your private registry with the l
 
 
 ## Caveats
-Upgrades _to_ or _from_ any build with the [alpha tag]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#server-tags) aren't supported.
+Upgrades _to_ or _from_ any tag containing [alpha]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#server-tags) aren't supported.
 
 ## Upgrading An Air Gapped Rancher Server
 
