@@ -9,9 +9,9 @@ To upgrade an air gapped Rancher Server, update your private registry with the l
 ## Prerequisites
 **Upgrades to v2.0.7+ only:** Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
-## Caveats
 
-Running a build from the [rancher-alpha repository]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories/)? Sorry, but upgrading from an alpha build isn't supported 😞.
+## Caveats
+Upgrades _to_ or _from_ any build with the [alpha tag]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#server-tags) aren't supported.
 
 ## Upgrading An Air Gapped Rancher Server
 
