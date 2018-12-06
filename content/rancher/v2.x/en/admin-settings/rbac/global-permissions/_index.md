@@ -51,10 +51,10 @@ The following table lists each custom global permission available and whether it
 | User Catalog Templates             | ✓             | ✓             |
 | Login Access                       | ✓             | ✓             |
 
-> **Note:** 
+> **Notes:** 
 >
 >- Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
->- In Rancher v2.1.1 and earlier, default resources denoted with `(Custom)` are two Kubernetes API resources that Rancher flags as `(Custom)` due to an escape issue. This issue is resolved as of v2.1.2.
+>- Default resources denoted with `(Custom)` are two Kubernetes API resources that Rancher flags as `(Custom)` due to an escape issue.
 
 
 When a user from an [external authentication source]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, new users are assigned the [user](#user) permissions. However, in some organizations, these permissions may extend too much access. In this use case, you can change the default permissions to something more restrictive, such as a set of individual permissions.

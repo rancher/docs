@@ -62,7 +62,7 @@ While Rancher comes out-of-the-box with a set of default user roles, you can als
 
 6.	Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
-    >**Note:** - In Rancher v2.1.1 and earlier, default resources denoted with `(Custom)` are two Kubernetes API resources that Rancher flags as `(Custom)` due to an escape issue. This issue is resolved as of v2.1.2.
+    >**Note:** Default resources denoted with `(Custom)` are two Kubernetes API resources that Rancher flags as `(Custom)` due to an escape issue.
 
 	You can also choose the individual cURL methods (`Create`, `Delete`, `Get`, etc.) available for use with each endpoint you assign.
 
