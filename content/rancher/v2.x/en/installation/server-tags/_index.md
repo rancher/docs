@@ -27,15 +27,21 @@ When installing, upgrading, or rolling back Rancher Server in a [high availabili
 
 ### Helm Chart Repositories
 
-Rancher provides two different Helm chart repositories to choose from. We align our latest and stable Helm chart repositories with the Docker tags that are used for a single node installation. Therefore, the `rancher-latest` repository will contain charts for all the Rancher versions that have been tagged as `rancher/rancher:latest`. When a Rancher version has been promoted to the `rancher/rancher:stable`, it will get added to the `rancher-stable` repository.
+Rancher provides two different Helm chart repositories to choose from.
 
+We align our latest and stable Helm chart repositories with the Docker tags that are used for a single node installation. 
+Therefore, the `rancher-latest` repository will contain charts for all the Rancher versions that have been tagged as `rancher/rancher:latest`. 
+When a Rancher version has been promoted to the `rancher/rancher:stable`, it will get added to the `rancher-stable` repository.
+
+Each Helm chart repository is named for the labels attached to each Rancher image. In other words, the `rancher-latest` repository contains charts labeled as `rancher/rancher:latest`, the `rancher-stable` repository
+contains charts labeled `rancher/rancher:stable`, etc.)
 
 Type | Command to Add the Repo | Description of the Repo
 -----------|-----|-------------
 rancher-latest   | `helm repo add rancher-latest https://releases.rancher.com/server-charts/latest` | Adds a repository of Helm charts for the latest versions of Rancher. We recommend using this repo for testing out new Rancher builds.
 rancher-stable  | `helm repo add rancher-stable https://releases.rancher.com/server-charts/stable` | Adds a repository of Helm charts for older, stable versions of Rancher. We recommend using this repo for production environments.
 <br/>
-Instructions on when to select these repos are available in [High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha).
+Instructions on when to select these repos are available below in [Switching to a Different Helm Chart Repository](#switching-to-a-different-helm-chart-repository).
 
 > **Note:** The introduction of the `rancher-latest` and `rancher-stable` Helm Chart repositories was introduced after Rancher v2.1.0, so the `rancher-stable` repository contains some Rancher versions that were never marked as `rancher/rancher:stable`. The versions of Rancher that were tagged as `rancher/rancher:stable` prior to v2.1.0 are v2.0.4, v2.0.6, v2.0.8. Post v2.1.0, all charts in the `rancher-stable` repository will correspond with any Rancher version tagged as `stable`.
 
@@ -52,7 +58,7 @@ NAME                      CHART VERSION    APP VERSION    DESCRIPTION
 rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
 ```
 
-### Switching to a different Helm Chart Repository
+### Switching to a Different Helm Chart Repository
 
 After installing Rancher, if you want to change which Helm chart repository to install Rancher from, you will need to follow these steps.
 
