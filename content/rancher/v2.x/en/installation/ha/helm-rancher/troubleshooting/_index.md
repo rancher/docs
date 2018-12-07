@@ -121,3 +121,13 @@ kubectl -n ingress-nginx logs -f nginx-ingress-controller-rfjrq nginx-ingress-co
 ...
 W0705 23:04:58.240571       7 backend_ssl.go:49] error obtaining PEM from secret cattle-system/tls-rancher-ingress: error retrieving secret cattle-system/tls-rancher-ingress: secret cattle-system/tls-rancher-ingress was not found
 ```
+
+### no matches for kind "Issuer"
+
+The [SSL configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#choose-your-ssl-configuration) option you have chosen requires [cert-manager]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#optional-install-cert-manager) to be installed before installing Rancher or else the following error is shown:
+
+```
+Error: validation failed: unable to recognize "": no matches for kind "Issuer" in version "certmanager.k8s.io/v1alpha1"
+```
+
+Install [cert-manager]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#optional-install-cert-manager) and try installing Rancher again.
