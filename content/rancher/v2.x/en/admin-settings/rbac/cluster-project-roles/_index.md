@@ -46,7 +46,7 @@ The following table lists each built-in custom cluster role available in Rancher
 > **Notes:** 
 >
 >- Each cluster role listed above, including `Owner` and `Member`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.   
->- Default resources denoted with `(Custom)` are two Kubernetes API resources that Rancher flags as `(Custom)` due to an escape issue.
+>- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
 ### Project Roles
 
@@ -100,7 +100,7 @@ The following table lists each built-in custom project role available in Rancher
 > **Notes:** 
 >
 >- Each project role listed above, including `Owner`, `Member`, and `Read Only`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
->- In Rancher v2.1.1 and earlier, default resources denoted with `(Custom)` are a UI bug. These resources are two or more Rancher API resources that Rancher flags as `(Custom)` due to an escape issue. This issue is resolved as of v2.1.2.
+>- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
 ### Defining Custom Roles
 As previously mentioned, custom roles can be defined for use at the cluster or project level. The context field defines whether the role will appear on the cluster member page, project member page, or both.
