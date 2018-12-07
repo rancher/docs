@@ -3,12 +3,12 @@ title: Deploying Rancher Server
 weight: 100
 ---
 
-The following are the current guides for provisioning Rancher Server and a cluster:
+Use one of the following guides to deploy and provision Rancher and a Kubernetes cluster in the provider of your choice.
 
-- [DigitalOcean Quick Start](./digital-ocean-qs) - We provide you with a Terraform configuration file that completely automates the set up of the Rancher Server and registers a cluster for you to get started with.
+- [DigitalOcean](./digital-ocean-qs) (uses Terraform)
+- [AWS](./amazon-aws-qs) (uses Terraform)
+- [Vagrant](./quickstart-vagrant)
 
-- [Amazon AWS Quick Start](./amazon-aws-qs) - We provide you with an Amazon-specific Terraform configuration file that completely automates the set up of the Rancher Server and registers a cluster for you to get started with.
+If you prefer, the following guide will take you through the same process in individual steps. Use this if you want to run Rancher in a different provider, on prem, or if you would just like to see how easy it is.
 
-- [Vagrant Quick Start](./quickstart-vagrant) - We provide you with a Vagrant configuration that again completely automates the set up of the Rancher Server and registers a cluster for you to get started with.
-
-- [Manual Quick Start](./quickstart-manual-setup) - This will guide you through the process and requirements of manually setting up Rancher in any environment.
+- [Manual Install](./quickstart-manual-setup)
