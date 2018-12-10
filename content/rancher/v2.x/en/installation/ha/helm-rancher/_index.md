@@ -35,6 +35,8 @@ There are three recommended options for the source of the certificate.
 
 > **Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
 
+> **Important:** Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.11.0.
+
 Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the official Kubernetes Helm chart repository to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
 
