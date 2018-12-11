@@ -26,11 +26,11 @@ kubectl create clusterrolebinding tiller \
 helm init --service-account tiller
 
 # Users in China: You will need to specify a specific tiller-image in order to initialize tiller. 
-# The list of tiller image tags are available here: https://dev.aliyun.com/detail.html?spm=5176.1972343.2.18.ErFNgC&repoId=62085. 
-# When initializing tiller, you'll need to pass in --tiller-image
+# The list of tiller image tags are available here: https://hub.docker.com/r/hongxiaolu/tiller/tags/. 
+# When initializing tiller, you'll need to pass in --tiller-image.
 
 helm init --service-account tiller \
---tiller-image registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:<tag>
+--tiller-image hongxiaolu/tiller:<tag>
 ```
 
 > **Note:** This`tiller`install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.
@@ -39,7 +39,7 @@ helm init --service-account tiller \
 
 Run the following command to verify the installation of `tiller` on your cluster:
 
-```
+```bash
 kubectl -n kube-system  rollout status deploy/tiller-deploy
 Waiting for deployment "tiller-deploy" rollout to finish: 0 of 1 updated replicas are available...
 deployment "tiller-deploy" successfully rolled out
@@ -47,7 +47,7 @@ deployment "tiller-deploy" successfully rolled out
 
 And run the following command to validate Helm can talk to the `tiller` service:
 
-```
+```bash
 helm version
 Client: &version.Version{SemVer:"v2.11.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
 Server: &version.Version{SemVer:"v2.11.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
