@@ -31,11 +31,13 @@ network:
     plugin: canal
     options:
         canal_iface: eth1
+        canal_flannel_backend_type: vxlan
 ```
 
 #### Canal Interface
 
 By setting the `canal_iface`, you can configure the interface to use for inter-host communication.
+The `canal_flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
 ### Flannel Network Plug-in Options
 
@@ -44,12 +46,13 @@ network:
     plugin: flannel
     options:
       flannel_iface: eth1
+      flannel_backend_type: vxlan
 ```
 
 #### Flannel Interface
 
 By setting the `flannel_iface`, you can configure the interface to use for inter-host communication.
-
+The `flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
 ### Calico Network Plug-in Options
 
