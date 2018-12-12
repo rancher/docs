@@ -63,15 +63,33 @@ Please follow this checklist when filing an issue which will helps us investigat
 
         ```
         docker logs \
-        --tail=all \
         --timestamps \
-        $(docker ps  -q -f  label=org.label-schema.vcs-url=https://github.com/rancher/rancher.git)
+        $(docker ps | grep -E "rancher/rancher:|rancher/rancher " | awk '{ print $1 }')
         ```
-      - High Availability
+      - High Availability (HA) install using `kubectl`
+
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
         ```
-        kubectl --kubeconfig $KUBECONFIG logs \
-        -n cattle-system \
+        kubectl -n cattle-system \
+        logs \
+        -l app=rancher \
+        --timestamps=true
+        ```
+      - High Availability (HA) install using `docker` on each of the nodes in the RKE cluster
+
+        ```
+        docker logs \
+        --timestamps \
+        $(docker ps | grep -E "rancher/rancher@|rancher_rancher" | awk '{ print $1 }')
+        ```
+      - High Availability (HA) RKE Add-On Install
+
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+
+        ```
+        kubectl -n cattle-system \
+        logs \
         --timestamps=true \
         -f $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name="cattle-server") | .metadata.name')
         ```
@@ -83,7 +101,6 @@ Please follow this checklist when filing an issue which will helps us investigat
       - `/var/log/docker.log`
 
 If you are experiencing performance issues, please provide as much of data (files or screenshots) of metrics which can help determining what is going on. If you have an issue related to a machine, it helps to supply output of `top`, `free -m`, `df` which shows processes/memory/disk usage.
-
 
 ### Docs
 
