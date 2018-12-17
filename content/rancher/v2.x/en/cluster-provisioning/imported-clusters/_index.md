@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/import-cluster/
 ---
 
-You can import an existing Kubernetes cluster and then manage it using Rancher.
+You can import an existing Kubernetes cluster and then manage it using Rancher. Keep in mind that editing your Kubernetes cluster (for example: adding/removing nodes, upgrading Kubernetes cluster version and changing Kubernetes component parameters) still has to be done outside of Rancher.
 
 >**Prerequisites:**
 >
@@ -20,17 +20,17 @@ You can import an existing Kubernetes cluster and then manage it using Rancher.
 
 4. {{< step_create-cluster_member-roles >}}
 
-5.	Click **Create**.
+5. Click **Create**.
 
-6.	Copy the first command displayed to your clipboard.
+6. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
 
-7. Log into one of your cluster nodes using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+7. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in {{< product >}}.
 
-8.	If you receive a message of `certificate signed by unknown authority`, copy the second command displayed in {{< product >}} to your clipboard. Then run the command on your cluster node.
+8. If you are using self signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in {{< product >}} to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
 
-9. When you finish running the command(s) on your Linux host(s), click **Done**.
+9. When you finish running the command(s) on your node, click **Done**.
 
-{{< result_create-cluster >}}
+{{< result_import-cluster >}}
 
 > **Note:**
 > You can not re-import a cluster that is currently active in a Rancher setup.
