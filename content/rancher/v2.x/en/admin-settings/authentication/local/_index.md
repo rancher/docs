@@ -5,7 +5,7 @@ aliases:
     - /rancher/v2.x/en/tasks/global-configuration/authentication/local-authentication/
 ---
 
-Regardless of whether you use external authentication, you should create a few local authentication users so that you can continue using Rancher if you your external authentication service encounters issues.
+Regardless of whether you use external authentication, you should create a few local authentication users so that you can continue using Rancher if your external authentication service encounters issues.
 
 1.	From the **Global** view, select **Users** from the main menu.
 
