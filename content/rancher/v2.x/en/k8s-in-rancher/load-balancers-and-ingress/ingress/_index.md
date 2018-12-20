@@ -7,6 +7,15 @@ aliases:
 
 Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing.
 
+>**Using Rancher in a High Availability Configuration?**
+>
+>Refrain from adding an Ingress to the `local` cluster. The Nginx Ingress Controller that Rancher uses acts as a global load balancer for _all_ clusters managed by Rancher, including the `local` cluster.  Therefore, when users try to access an application, your Rancher connection may drop due to the Nginx configuration being reloaded. We recommend working around this issue by deploying applications only in clusters that you launch using Rancher.
+><figcaption>Don't add an Ingress to the <code>local</code> cluster.</figcaption>
+>![Don't Add Ingress]({{< baseurl >}}/img/rancher/no-ingress.png)
+
+
+
+
 1. From the **Global** view, open the project that you want to add ingress to.
 
 1. Select the **Load Balancing** tab. Then click **Add Ingress**.

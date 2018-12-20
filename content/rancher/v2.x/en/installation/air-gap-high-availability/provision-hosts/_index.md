@@ -26,7 +26,7 @@ View hardware and software requirements for each of your cluster nodes in [Requi
 
 RKE, the installer that provisions your air gapped cluster, will configure an Ingress controller pod on each of your nodes. The Ingress controller pods are bound to ports TCP/80 and TCP/443 on the host network and are the entry point for HTTPS traffic to the Rancher server.
 
-Configure a load balancer as a basic Layer 4 TCP forwarder. This load balancer should be dedicated strictly to Rancher traffic and no other applications (if you need load balancing for another application, provision a new cluster and load balancer for the app). The exact configuration will vary depending on your environment. 
+Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configuration will vary depending on your environment. 
 
 **Load Balancer Configuration Samples:**
 
