@@ -24,10 +24,10 @@ Cross reference the image and reference table below to learn how to obtain this 
 
 | Placeholder                | Example                    | Description                                               |
 | -------------------------- | -------------------------- | --------------------------------------------------------- |
-| `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install. |
+| `<RANCHER_CONTAINER_TAG>`  | `v2.1.3`                   | The rancher/rancher image you pulled for initial install. |
 | `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.                       |
-| `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher that you're creating a backup for. |
-| `<DATE>`                   | `9-27-18`                  | The date that the data container or backup was created.   |
+| `<RANCHER_VERSION>`        | `v2.1.3`                   | The version of Rancher that you're creating a backup for. |
+| `<DATE>`                   | `2018-12-19`               | The date that the data container or backup was created.   |
 <br/>
 
 You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
@@ -63,15 +63,17 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
 
     ```
-    docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** When you enter this command, a series of commands should run.
 
-1. Enter the `dir` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>-<DATE>`.
+1. Enter the `ls` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
 
-    ![Backup Backup Tarball]({{< baseurl >}}/img/rancher/dir-backup-tarball.png)
-
+    ```
+   [rancher@ip-10-0-0-50 ~]$ ls
+   rancher-data-backup-v2.1.3-20181219.tar.gz
+    ```
 
 1. Move your backup tarball to a safe location external from your Rancher Server.
 
