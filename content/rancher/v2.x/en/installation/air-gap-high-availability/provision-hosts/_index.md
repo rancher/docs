@@ -29,7 +29,7 @@ RKE, the installer that provisions your air gapped cluster, will configure an In
 Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configuration will vary depending on your environment.
 
 >**Important:**
->Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend 1) dedicating the `local` cluster to Rancher and no other apps and 2) deploying applications only in clusters that you launch using Rancher. 
+>Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
 
 **Load Balancer Configuration Samples:**
 
