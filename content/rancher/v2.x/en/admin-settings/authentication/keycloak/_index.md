@@ -6,19 +6,26 @@ _Available as of v2.1.0_
 
 If your organization uses Keycloak Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 
->**Prerequisites:**
->
->- You must have a [Keycloak IdP Server](https://www.keycloak.org/docs/latest/server_installation/) configured.
->- In Keycloak, create a new SAML client, with the following parameters:
->   * Make sure either "Sign Documents" or "Sign assertions" is set to ON. Both can be turned ON too.
->   * All other options set to OFF
->   * Client ID: https://yourRancherHostURL/v1-saml/keycloak/saml/metadata
->   * Client Name: yourClientName (e.g. "rancher")
->   * Client Protocol: saml
->   * Valid Redirect URI: https://yourRancherHostURL/v1-saml/keycloak/saml/acs
->- Export a `metadata.xml` file from your Keycloak client. Under Installation tab, select "SAML Metadata IDPSSODescriptor" as "Format Option" and download your file
->
-> For more information, see the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#saml-clients) to create a SAML Client.
+## Prerequisites
+
+- You must have a [Keycloak IdP Server](https://www.keycloak.org/docs/latest/server_installation/) configured.
+- In Keycloak, create a [new SAML client](https://www.keycloak.org/docs/latest/server_admin/#saml-clients), with the settings below. See the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#saml-clients) for help.
+
+     Setting | Value    
+     ------------|------------
+      `Sign Documents` | `ON` <sup>1</sup>
+      `Sign Assertions` | `ON` <sup>1</sup>
+      All other `ON/OFF` Settings | `OFF`
+      `Client ID` | `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata`
+      `Client Name` | <CLIENT_NAME> (e.g. `rancher`)
+      `Client Protocol` | `SAML`
+      `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
+
+      ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
+- Export a `metadata.xml` file from your Keycloak client. From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
+
+
+## Configuring Keycloak in Rancher
 
 
 1.	From the **Global** view, select **Security > Authentication** from the main menu.
@@ -56,6 +63,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 >- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
 >- When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
 >- When adding groups, you *must* select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+>
 >   - The group drop-down shows *only* the groups that you are a member of. You will not be able to add groups that you are not a member of.
 
 ## Annex: Troubleshooting
@@ -64,25 +72,25 @@ If you are experiencing issues while testing the connection to the Keycloak serv
 
 ### You are not redirected to Keycloak
 
-When you click on "Authenticate with Keycloak", your are not redirected to your IdP.
+When you click on **Authenticate with Keycloak**, your are not redirected to your IdP.
 
-  * Verify your Keycloak client configuration
-  * Make sure "Force Post Binding" set to OFF
+  * Verify your Keycloak client configuration.
+  * Make sure `Force Post Binding` set to `OFF`.
 
 
 ### Forbidden message displayed after IdP login
 
-You are correctly redirected to your IdP login page and you are able to enter your credentials, however you get a "Forbidden" message afterwards.
+You are correctly redirected to your IdP login page and you are able to enter your credentials, however you get a `Forbidden` message afterwards.
 
-  * Check Rancher debug log.
-  * If "ERROR: either the Response or Assertion must be signed" pops up, make sure either "Sign Documents" or "Sign assertions" is set to ON in your Keycloak client
+  * Check the Rancher debug log.
+  * If the log displays `ERROR: either the Response or Assertion must be signed`, make sure either `Sign Documents` or `Sign assertions` is set to `ON` in your Keycloak client.
 
-### Keycloak error "We're sorry, failed to process response"
+### Keycloak Error: "We're sorry, failed to process response"
 
-  * Check your Keycloak log
-  * If "failed: org.keycloak.common.VerificationException: Client does not have a public key." in the log, you probably turned ON "Encrypt Assertions" in your Keycloak client. Make sure to turn it OFF.
+  * Check your Keycloak log.
+  * If the log displays `failed: org.keycloak.common.VerificationException: Client does not have a public key`, set `Encrypt Assertions` to `OFF` in your Keycloak client.
 
-### Keycloak error "We're sorry, invalid requester"
+### Keycloak Error: "We're sorry, invalid requester"
 
-  * Check your Keycloak log
-  * If "request validation failed: org.keycloak.common.VerificationException: SigAlg was null." in the log, you probably turned ON "Client Signature Required" in your Keycloak client. Make sure to turn it OFF.
+  * Check your Keycloak log.
+  * If the log displays `request validation failed: org.keycloak.common.VerificationException: SigAlg was null`, set `Client Signature Required` to `OFF` in your Keycloak client.
