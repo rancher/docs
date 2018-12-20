@@ -55,8 +55,6 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 ## Related Links
 
-#### External Links
-
 - [Create an External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
 #### Tutorials

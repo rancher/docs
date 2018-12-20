@@ -41,5 +41,9 @@ Your load balancer can either reside within your cluster or externally. Ingress 
 
 Ingress can provide other functionality as well, such as SSL termination, name-based virtual hosting, and more.
 
+>**Using Rancher in a High Availability Configuration?**
+>
+>Refrain from adding an Ingress to the `local` cluster. The Nginx Ingress Controller that Rancher uses acts as a global load balancer for _all_ clusters managed by Rancher, including the `local` cluster.  Therefore, when users try to access an application, your Rancher connection may drop due to the Nginx configuration being reloaded. We recommend working around this issue by deploying applications only in clusters that you launch using Rancher.
+
 - For more information on how to setup ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
