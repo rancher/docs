@@ -487,7 +487,7 @@ You can configure pipelines to send notifications to [notifiers](https://rancher
 
 1. Enable the **Notification** option.
 
-1. Select conditions for notifications. For example if you want to receive notifications when on execution failure, select **Failed**  
+1. Select conditions for notifications. For example, if you want to receive notifications when on execution failure, select **Failed**. 
 
 1. If you don't have any existing notifier, click **create one** and you will be directed to the notifiers page. Follow the [instruction](https://rancher.com/docs/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you have already configured notifiers, click **Add Recipient** button.
 
