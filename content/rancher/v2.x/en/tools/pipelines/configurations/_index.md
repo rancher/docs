@@ -491,7 +491,7 @@ You can configure pipelines to send notifications to [notifiers](https://rancher
 
 1. If you don't have any existing notifier, click **create one** and you will be directed to the notifiers page. Follow the [instruction](https://rancher.com/docs/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you have already configured notifiers, click **Add Recipient** button.
 
-1. Select a notifier from the dropdown, then input recipient or use the default one. By clicking **Add Recipient** button, you can configure to send notifications to different notifiers or multiple recipients.
+1. Select a notifier from the dropdown, then input recipient or use the default one. By clicking the **Add Recipient** button, you can send notifications to different notifiers or multiple recipients.
  
 {{% /tab %}}
 {{% tab "By YAML" %}}
