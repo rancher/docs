@@ -64,7 +64,7 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
     > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
-3. Get the set values from the current Rancher install.
+3. Review the previously set values from the current Rancher install.
 
     ```
     helm get values rancher
@@ -77,10 +77,10 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 4. Upgrade Rancher to the latest version based on values from the previous steps.
 
     - Replace `<CHART_REPO>` with the repository that was listed (i.e. `latest` or `stable`).
-    - Take all the values from the previous step and append them to the command using `--set key=value`.
+    - The `--reuse-values` option maintains the current values. Values can be changed using `--set` and `-f`.
 
     ```
-    helm upgrade rancher rancher-<CHART_REPO>/rancher --set hostname=rancher.my.org
+    helm upgrade rancher rancher-<CHART_REPO>/rancher --reuse-values
     ```
 
 **Result:** Rancher is upgraded. Log back into Rancher to confirm that the upgrade succeeded.
