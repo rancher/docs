@@ -112,7 +112,7 @@ kubectl -n ingress-nginx get events
 
 ### Rancher agents
 
-Communication to the cluster (Kubernetes API via cattle-cluster-agent) and communication to the nodes (cluster provisioning via cattle-node-agent) is done through Rancher agents.
+Communication to the cluster (Kubernetes API via `cattle-cluster-agent`) and communication to the nodes (cluster provisioning via `cattle-node-agent`) is done through Rancher agents.
 
 #### cattle-node-agent
 
@@ -198,4 +198,26 @@ kubectl describe job JOB_NAME -n NAMESPACE
 
 ```
 kubectl logs -l job-name=JOB_NAME -n NAMESPACE
+```
+
+#### Evicted pods
+
+Pods can be evicted based on [eviction signals](https://kubernetes.io/docs/tasks/administer-cluster/out-of-resource/#eviction-policy).
+
+Retrieve a list of evicted pods (podname and namespace):
+
+```
+kubectl get pods --all-namespaces -o go-template='{{range .items}}{{if eq .status.phase "Failed"}}{{if eq .status.reason "Evicted"}}{{.metadata.name}}{{" "}}{{.metadata.namespace}}{{"\n"}}{{end}}{{end}}{{end}}'
+```
+
+To delete all evicted pods:
+
+```
+kubectl get pods --all-namespaces -o go-template='{{range .items}}{{if eq .status.phase "Failed"}}{{if eq .status.reason "Evicted"}}{{.metadata.name}}{{" "}}{{.metadata.namespace}}{{"\n"}}{{end}}{{end}}{{end}}' | while read epod enamespace; do kubectl -n $enamespace delete pod $epod; done
+```
+
+Retrieve a list of evicted pods, scheduled node and the reason:
+
+```
+kubectl get pods --all-namespaces -o go-template='{{range .items}}{{if eq .status.phase "Failed"}}{{if eq .status.reason "Evicted"}}{{.metadata.name}}{{" "}}{{.metadata.namespace}}{{"\n"}}{{end}}{{end}}{{end}}' | while read epod enamespace; do kubectl -n $enamespace get pod $epod -o=custom-columns=NAME:.metadata.name,NODE:.spec.nodeName,MSG:.status.message; done
 ```
