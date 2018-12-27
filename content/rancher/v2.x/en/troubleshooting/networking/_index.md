@@ -99,7 +99,7 @@ If there is no output, the cluster is not affected.
 
 #### System namespace pods network connectivity broken
 
-> Note: This applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
+> **Note:** This applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
 | | |
 |------------|------------|
