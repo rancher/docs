@@ -9,8 +9,9 @@ Using Rancher, you can monitor the state and processes of your cluster nodes, Ku
 
 >A stream of timestamped values belonging to the same metric and the same set of labeled dimensions, along with comprehensive statistics and metrics of the monitored cluster.
 
-In other words, Prometheus let's you view metrics from your different Rancher and Kubernetes objects. Using timestamps, Prometheus let's you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is deployed along with Prometheus. By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.  Multi-tenancy support in terms of cluster and project-only Prometheus instances are also be supported.
+In other words, Prometheus let's you view metrics from your different Rancher and Kubernetes objects. Using timestamps, Prometheus let's you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus. By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.  Multi-tenancy support in terms of cluster and project-only Prometheus instances are also supported.
 
+<figcaption>Rancher Online Meetup Prometheus Support Demo</figcaption>
 
 {{< youtube VS4ZRYAAPFQ >}}
 
@@ -18,7 +19,6 @@ In other words, Prometheus let's you view metrics from your different Rancher an
 
 <!-- TOC -->
 
-- [In This Document](#in-this-document)
 - [Monitoring Scope](#monitoring-scope)
 - [Cluster Monitoring](#cluster-monitoring)
 - [Project Monitoring](#project-monitoring)
@@ -27,8 +27,13 @@ In other words, Prometheus let's you view metrics from your different Rancher an
 - [Prometheus Configuration Options](#prometheus-configuration-options)
 - [Persistent Storage](#persistent-storage)
 - [Viewing Metrics](#viewing-metrics)
+- [Cluster Dashboard](#cluster-dashboard)
+- [Cluster Dashboard Use](#cluster-dashboard-use)
+- [Available Dashboard Metrics](#available-dashboard-metrics)
 - [Grafana](#grafana)
+- [Workload Metrics](#workload-metrics)
 - [Updating Prometheus and Grafana](#updating-prometheus-and-grafana)
+
 
 <!-- /TOC -->
 
@@ -36,9 +41,9 @@ In other words, Prometheus let's you view metrics from your different Rancher an
 
 Using Prometheus, you can monitor Rancher at both the cluster and project level. Rancher deploys an individual Prometheus server per cluster, and an additional Prometheus server per Rancher project for multi-tenancy.
 
-[Cluster monitoring](#cluster-monitoring) allows you to view the health of a cluster's Kubernetes control plane and individual nodes managed by Rancher. System administrators will likely be more interested in cluster monitoring, as administrators are more invested in the health of the Rancher control plane and cluster nodes.
+[Cluster monitoring](#cluster-monitoring) allows you to view the health of a cluster's Kubernetes control plane and individual nodes. System administrators will likely be more interested in cluster monitoring, as administrators are more invested in the health of the Rancher control plane and cluster nodes.
 
-[Project monitoring](#project-monitoring) lets you view the health of pods running in a given project. Users responsible for maintaining a project will be most interested in project monitoring, as it helps them keep their applications up and serving.
+[Project monitoring](#project-monitoring) lets you view the state of pods running in a given project. Users responsible for maintaining a project will be most interested in project monitoring, as it helps them keep their applications up and running for their users.
 
 ## Cluster Monitoring
 
@@ -50,17 +55,17 @@ When you enable monitoring for one of your Rancher clusters, Prometheus collects
 
 ## Project Monitoring
 
-When you enable monitoring for a Rancher project, Prometheus collects metrics from your HTTP and TCP/UDP workloads. We'll have more about the specific metrics collected [later in this document](#workload-metrics).
+When you enable monitoring for a Rancher project, Prometheus collects metrics from its deployed HTTP and TCP/UDP workloads. We'll have more about the specific metrics collected [later in this document](#workload-metrics).
 
 ## Configuring Cluster Monitoring
 
-You can deploy Prometheus monitoring for a cluster by opening it and selecting **Tools > Monitoring**.
+You can deploy Prometheus monitoring for a cluster by opening it and selecting **Tools > Monitoring** as depicted in the GIF below, which displays a user enabling cluster monitoring for a cluster named `digitalocean`. The only required action for deployment is to select the **Prometheus** tile and click **Save**, but you might want to [customize configuration options](#prometheus-configuration-options) for your environment.
 
 <figcaption>Enabling Cluster Monitoring</figcaption>
 
 ![Enabling Cluster Monitoring]({{< baseurl >}}/img/rancher/enable-cluster-monitoring.gif)
 
-Following deployment, two applications are added to the cluster's `system` project's **Catalog Apps** page: `cluster-monitoring` and `system-monitoring`. You can use these catalog apps to [upgrade Prometheus](#updating-prometheus) when new versions are released.
+Following Prometheus deployment, two monitoring applications are added to the cluster's `system` project's **Catalog Apps** page: `cluster-monitoring` and `system-monitoring`. You can use these catalog apps to [upgrade Prometheus](#updating-prometheus) when new versions are released or [log into the Grafana instance](#grafana-logging-in-for-clusters) for the cluster.
 
 <figcaption>Cluster Monitoring: Deployed <code>cluster-monitoring</code> and <code>system-monitoring</code> Catalog Apps in <code>system</code> Project</figcaption>
 
@@ -68,7 +73,7 @@ Following deployment, two applications are added to the cluster's `system` proje
 
 ## Configuring Project Monitoring
 
->**Prerequisite:** Complete [Configuring Cluster Monitoring](#configuring-cluster-monitoring). You can't enable project-level monitoring until you enable cluster-level monitoring.
+>**Prerequisite:** Complete [Configuring Cluster Monitoring](#configuring-cluster-monitoring). You can't enable project-level monitoring until you enable it for the cluster.
 
 After enabling cluster monitoring, you can enable project monitoring by opening the project and then selecting **Tools > Monitoring**. This menu option won't be available until cluster monitoring is enabled.
 
@@ -78,7 +83,7 @@ The GIF below displays a user enabling project monitoring for the `Default` proj
 
 ![Enabling Project Monitoring]({{< baseurl >}}/img/rancher/enable-project-monitoring.gif)
 
-After you enable project monitoring, a single application is added to the project's **Catalog Apps** page: `cluster-monitoring`. Use this catalog app to [upgrade Prometheus](#updating-prometheus) when a new version is released.
+After you enable project monitoring, a single application is added to the project's **Catalog Apps** page: `cluster-monitoring`. Use this catalog app to [upgrade Prometheus](#updating-prometheus) when a new version is released or [log into the Grafana instance](#grafana-logging-in-for-projects) for the project.
 
 <figcaption>Project Monitoring: Deployed <code>project-monitoring</code> Catalog App</figcaption>
 
@@ -96,16 +101,16 @@ While configuring monitoring at either the cluster or project level, you can cho
 Option | Description
 -------|-------------
 Data Retention | Configures how long your Prometheus instance retains monitoring data scraped from Rancher objects before it's purged.
-Node Exporter Host Port | Configures the port [node exporter](https://github.com/prometheus/node_exporter/blob/master/README.md) data (i.e., data that Prometheus collects from your node hardware ) is exposed on.
-Enable Persistent Storage for Prometheus | Let's you configure storage for Prometheus so that you retain your Prometheus data if you lost the pod that runs Prometheus. See [Persistent Storage](#persistent-storage).
-Enable Persistent Storage for Grafana | Let's you configure storage for Grafana so that you retain your Grafana data if you lost the pod that runs Grafana. See [Persistent Storage](#persistent-storage).
-Add Selector | If you want to deploy the Prometheus/Grafana pods to a specific node when enable monitoring, add selectors to the pods so that they're deployed to your selected node(s). To use this option, you need to have labels pre-applied to your nodes.
+Node Exporter Host Port | Configures the port on which [node exporter](https://github.com/prometheus/node_exporter/blob/master/README.md) data is exposed (i.e., data that Prometheus collects from your node hardware).
+Enable Persistent Storage for Prometheus | Let's you configure storage for Prometheus so that you can retain your analytics if your Prometheus pod fails. See [Persistent Storage](#persistent-storage).
+Enable Persistent Storage for Grafana | Let's you configure storage so that you can retain your analytics if your Grafana pod fails. Because you can configure persistent storage for Prometheus (which Grafana draws from), configuring persistent storage for Grafana isn't as important as Prometheus. For more information, see [Persistent Storage](#persistent-storage).
+Add Selector | If you want to deploy the Prometheus/Grafana pods to a specific node when enable monitoring, add selectors to the pods so that they're deployed to your selected node(s). To use this option, you must first apply labels to your nodes.
 
 ## Persistent Storage
 
 >**Prerequisite:** Configure one or more [storage class]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-storage-classes) to use as [persistent storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) for your Prometheus/Grafana instance.
 
-By default, when you enable Prometheus for either a cluster or project, all monitoring events that Prometheus collects are stored locally in its own pod. This local storage means that if your Prometheus/Grafana pods fail, you'll lose all your monitoring data. Therefore, we recommend configuring persistent storage external to your cluster. This way, if your Prometheus/Grafana pods fail, the new pods that Kubernetes replaces them with can recover using your persistent storage.
+By default, when you enable Prometheus for either a cluster or project, all monitoring data that Prometheus collects is stored on its own pod. This local storage means that if your Prometheus/Grafana pods fail, you'll lose all your monitoring data. Therefore, we recommend configuring persistent storage external to your cluster. This way, if your Prometheus/Grafana pods fail, the new pods that replace them can recover using your persistent storage.
 
 <figcaption>Enabling Persistent Storage for Cluster Monitoring</figcaption>
 
@@ -115,14 +120,16 @@ You can configure persistent storage for Prometheus and/or Grafana by using the 
 
 ## Viewing Metrics
 
-After you've deployed Prometheus to a cluster or project, and that Prometheus instance has a baseline of data, you can view that data in one of two places:
+After you've deployed Prometheus to a cluster or project, you can view that data in one of two places:
 
 - [The Rancher Cluster Dashboard](#cluster-dashboard)
 - [Grafana](#grafana)
 
 ### Cluster Dashboard
 
-After deploying Prometheus to one of your clusters, you can view the data that it collects about your cluster from its dashboard.
+After deploying Prometheus to one of your clusters, you can view the data it collects from the cluster's Dashboard.
+
+>**Note:** The cluster Dashboard only displays Prometheus analytics for the cluster, not individual projects. If you want to view analytics for a project, you must [log into the project's Grafana instance](#grafana-logging-in-for-projects).
 
 <figcaption>Prometheus Metrics Displayed on Cluster Dashboard</figcaption>
 
@@ -136,9 +143,9 @@ Prometheus metrics are displayed below the main dashboard display, and are denot
 
 ![Grafana Icon]({{< baseurl >}}/img/rancher/grafana-icon.png)
 
->**Tip:** Click the icon to open the metrics in the [Grafana UI](#grafana).
+>**Tip:** Click the icon to open the metrics in [Grafana](#grafana).
 
-In each Prometheus metrics section, you can toggle between a **Detail** view, which displays graphs and charts that let you view each event in a Prometheus time series, or a **Summary** view, which only lists events in a Prometheus time series out of the norm.
+In each Prometheus metrics widget, you can toggle between a **Detail** view, which displays graphs and charts that let you view each event in a Prometheus time series, or a **Summary** view, which only lists events in a Prometheus time series out of the norm.
 
 <figcaption>Toggle Between Detail and Summary View</figcaption>
 
@@ -162,7 +169,7 @@ Finally, you can customize the data sample to display data between chosen dates 
 
 After deploying Prometheus/Grafana to a cluster, you can view the metrics from its Dashboard.
 
-When analyzing metrics, don't be concerned about any single standalone metric in the charts and graphs that display. Rather, you should establish a baseline for your metrics over the course of time (i.e., the range of values that your components usually operate within and are considered normal). After you establish this baseline, be on the lookout for large deltas in the charts and graphs, as these big changes usually indicate a problem that you need to investigate.
+When analyzing metrics, don't be concerned about any single standalone metric in the charts and graphs. Rather, you should establish a baseline for your metrics over the course of time (i.e., the range of values that your components usually operate within and are considered normal). After you establish this baseline, be on the lookout for large deltas in the charts and graphs, as these big changes usually indicate a problem that you need to investigate.
 
 ##### Cluster Metrics
 
@@ -186,9 +193,9 @@ These metrics display the hardware utilization for all nodes in your cluster, re
 
 ##### Etcd Metrics
 
-These metrics display the operations of the etcd database for your cluster. After establishing a baseline of etcd operations for the cluster, observe these metrics for any abnormal deltas between metrics refreshes, as a delta indicates there could be a problem with etcd, which should always be addressed immediately!
+These metrics display the operations of the etcd database on each of your cluster nodes. After establishing a baseline of normal etcd operational metrics, observe them for abnormal deltas between metric refreshes, which indicate potential issues with etcd. Always address etcd issues immediately!
 
-You should also pay attention to the text at the top of the etcd metrics, which displays etcd leadership statistics. This text indicates if etcd currently has a leader, which is etcd instance that coordinates the other etcd instances in your cluster. A large increase in leader changes implies etcd is unstable. If you notice a change in etcd leadership statistics, you should investigate them for issues.
+You should also pay attention to the text at the top of the etcd metrics, which displays leadership statistics. This text indicates if etcd currently has a leader, which is the etcd instance that coordinates the other etcd instances in your cluster. A large increase in leader changes implies etcd is unstable. If you notice a change in  leadership statistics, you should investigate them for issues.
 
 <figcaption>etcd Leadership Statistics</figcaption>
 
@@ -202,19 +209,19 @@ Some of the biggest metrics to look out for:
 
 - **Number of leader changes**
 
-    If this statistically suddenly grows, it usually indicates network communication issues that constantly force the cluster to elect a new leader.
+    If this statistic suddenly grows, it usually indicates network communication issues that constantly force the cluster to elect a new leader.
 
 ##### Kubernetes Components Metrics
 
-These metrics display charts about the cluster's individual Kubernetes control plane components. Primarily, it displays information about connections and latency for each component: the API server, controller manager, scheduler, and ingress controller.
+These metrics display data about the cluster's individual Kubernetes components. Primarily, it displays information about connections and latency for each component: the API server, controller manager, scheduler, and ingress controller.
 
-When analyzing Kubernetes component metrics, don't be concerned about any single standalone metric in the charts and graphs that display. Rather, you should establish a baseline for your metrics over the course of time (i.e., the range of values that your components usually operate within and are considered normal). After you establish this baseline, be on the lookout for large deltas in the charts and graphs, as these big changes usually indicate a problem that you need to investigate. 
+When analyzing Kubernetes component metrics, don't be concerned about any single standalone metric in the charts and graphs that display. Rather, you should establish a baseline for metrics considered normal following a period of observation (i.e., the range of values that your components usually operate within and are considered normal). After you establish this baseline, be on the lookout for large deltas in the charts and graphs, as these big changes usually indicate a problem that you need to investigate. 
 
 Some of the more important component metrics to monitor are:
 
 - **API Response Time**
 
-    Increasing API response times indicate there's generalized problem that requires investigation.
+    Increasing API response times indicate there's a generalized problem that requires investigation.
 
 - **API Request Rate**
 
@@ -226,7 +233,7 @@ Some of the more important component metrics to monitor are:
 
 - **Scheduler Failed Pods**
     
-    Failed pods can have a variety of causes, such as unbound persistent volume claims, exhausted hardware resources, non-responsive nodes, and so on.
+    Failed pods can have a variety of causes, such as unbound persistent volume claims, exhausted hardware resources, non-responsive nodes, etc.
 
 
 Also note that at the bottom of the widget, **Ingress Upstream Response Times** are listed. This section gives you an idea of how fast ingress is routing connections to your cluster services.
@@ -240,23 +247,23 @@ For more information about enabling logging for a cluster, see [logging]({{< bas
 
 ## Grafana
 
-You other option for viewing cluster data is Grafana, which is a leading open source platform for analytics and monitoring. When you deploy Prometheus for a cluster or project, Grafana is deployed along with it.
+Your other option for viewing cluster data is Grafana, which is a leading open source platform for analytics and monitoring. When you deploy Prometheus for a cluster or project, Grafana is deployed along with it.
 
-Using Grafana, you have access to its powerful feature set, which allows you to query, visualize, alert, and ultimately, understand your Rancher cluster and workload data.
+Using Grafana, you have access to its powerful feature set, which allows you to query, visualize, alert, and ultimately, understand your cluster and workload data.
 
 For more information on Grafana and its capabilities, visit the [Grafana website](https://grafana.com/grafana).
 
 ### Logging into Grafana
 
-To view your Rancher data in Grafana, you must log into your Grafana instance. When you configure monitoring for either a cluster or project, Rancher automatically creates a link to the Grafana instance on the project. Use this link to view monitoring data for the cluster or project.
+To view your cluster or project analytics in Grafana, you must log into the Grafana instance that Rancher creates for the object. When you configure monitoring for either a cluster or project, Rancher automatically creates a link to access its newly deployed Grafana instance. Use this link to view monitoring data for the cluster or project.
 
 #### Grafana and Authentication
 
-When you deploy Prometheus to a cluster or project, Rancher automatically creates a Grafana instance for the object. Rancher determines which users can access the new Grafana instance by validating them against cluster or project membership. Users that hold membership for the object will be able to access its Grafana instance.
+When you deploy Prometheus to a cluster or project, Rancher automatically creates a Grafana instance for the object. Rancher determines which users can access the new Grafana instance, as well as the objects they can view within it, by validating them against cluster or project membership. Users that hold membership for the object will be able to access its Grafana instance. In other words, users' access in Grafana mirrors their access in Rancher.
 
 #### Grafana: Logging in for Clusters
 
-To log into an instance of Grafana that's monitoring a cluster, browse to the `system` project for the cluster and open **Catalog Apps**. From the `cluster-monitoring` catalog app, click the `/index.html` link. Remember, you view data for your cluster by navigating to the cluster's `system` _project_, which is a little un-intuitive, considering you want to view cluster data.
+To log into an instance of Grafana displays monitoring analytics for a cluster, browse to the cluster's `system` project and open **Catalog Apps**. From the `cluster-monitoring` catalog app, click the `/index.html` link. Remember, you view data for your cluster by navigating to the cluster's `system` _project_, which is a little un-intuitive, considering you want to view cluster data.
 
 <figcaption>Logging into Grafana: Cluster Monitoring Link</figcaption>
 
@@ -264,7 +271,7 @@ To log into an instance of Grafana that's monitoring a cluster, browse to the `s
 
 #### Grafana: Logging in for Projects
 
-To log into an instance of Grafana that's monitoring a project, browse to the applicable project and open **Catalog Apps**. From the `project-monitoring` catalog app, click the `/index.html` link.
+To log into an instance of Grafana that's monitoring a project, browse to the applicable cluster and project. Then open **Catalog Apps**. From the `project-monitoring` catalog app, click the `/index.html` link.
 
 <figcaption>Logging into Grafana: Project Monitoring Link</figcaption>
 
@@ -276,7 +283,7 @@ After logging into the Grafana instance for a project, you can view the metrics 
 
 - **HTTP Workloads**
 
-    When viewing metrics for HTTP workloads, be on the lookout for `500` errors (server errors) or any other non `200` code. In particular, look for spikes in `403` codes, which may indicate an unauthorized user is trying to access the cluster.
+    When viewing metrics for HTTP workloads, be on the lookout for `500` errors (server errors) or any other non `200` code. In particular, look for spikes in `403` codes, which may indicate that an unauthorized user is trying to access the cluster.
 
 - **TCP/UDP Workloads** 
 
