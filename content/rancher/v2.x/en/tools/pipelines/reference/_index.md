@@ -67,6 +67,6 @@ stages:
 # branch conditions for the pipeline
 branch:
   include: [ master, feature/*]
-  exlclude: [ dev ]
+  exclude: [ dev ]
 
 ```
