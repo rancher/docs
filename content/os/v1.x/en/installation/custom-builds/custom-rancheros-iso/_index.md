@@ -26,7 +26,7 @@ iso-checksums.txt  vmlinuz
 If you need a compressed ISO, you can run this command:
 
 ```
-$ INTEGRATION_TESTS=0 make release
+$ make release
 ```
 
 The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine).
@@ -56,21 +56,8 @@ By customizing the ISO, you can reduce the memory usage on boot. The easiest way
 This can effectively reduce the memory required to decompress the initrd on boot, using docker 17.03 is a good choice:
 
 ```
-# update os-config.tpl.yml in rancher/os
-     hostname: {{.HOSTNAME_DEFAULT}}
-     {{if eq "amd64" .ARCH -}}
-     docker:
--      engine: docker-18.03.1-ce
-+      engine: docker-17.03.2-ce
-     {{else -}}
-     docker:
--      engine: docker-18.03.1-ce
-+      engine: docker-17.03.2-ce
-     {{end -}}
-...
-
 # run make
-$ INTEGRATION_TESTS=0 make release
+$ USER_DOCKER_VERSION=17.03.2 make release
 ```
 
 #### Building with a different  console
