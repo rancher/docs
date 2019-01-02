@@ -9,7 +9,7 @@ RancherOS is the smallest, easiest way to run Docker in production.  Every proce
 
 Another way in which RancherOS is designed specifically for running Docker is that it always runs the latest version of Docker. This allows users to take advantage of the latest Docker capabilities and bug fixes.
 
-Like other minimalist Linux distributions, RancherOS boots incredibly quickly, generally in 5-10 seconds.  Starting Docker containers is nearly instant, similar to starting any other process. This speed is ideal for organizations adopting microservices and autoscaling.
+Like other minimalist Linux distributions, RancherOS boots incredibly quickly. Starting Docker containers is nearly instant, similar to starting any other process. This speed is ideal for organizations adopting microservices and autoscaling.
 
 Docker is an open-source platform designed for developers, system admins, and DevOps. It is used to build, ship, and run containers, using a simple and powerful command line interface (CLI). To get started with Docker, please visit the [Docker user guide](https://docs.docker.com/engine/userguide/).
 
@@ -17,13 +17,13 @@ Docker is an open-source platform designed for developers, system admins, and De
 
 * Memory Requirements
 
-Platform | RAM requirement
----- | ----
-Baremetal | 1280MB
-VirtualBox | 1280MB
-VMWare | 1280MB (rancheros.iso) <br> 2048MB (rancheros-vmware.iso)
-GCE |  1280MB
-AWS |  1.7GB
+Platform   | RAM requirement(>=v1.5.x) | RAM requirement(v1.4.x)
+--------   | ------------------------  | ---------------------------
+Baremetal  | 1GB                       | 1280MB
+VirtualBox | 1GB                       | 1280MB
+VMWare     | 1GB                       | 1280MB (rancheros.iso) <br> 2048MB (rancheros-vmware.iso)
+GCE        | 1GB                       | 1280MB
+AWS        | 1GB                       | 1.7GB
 
 You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
 
