@@ -154,3 +154,112 @@ DEBU[0204] Applied tar sha256:3fb66f713c9fa9debcdaa58bb9858bd04c17350d9614b7a250
 Digest: sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c
 Status: Downloaded newer image for alpine:latest
 ```
+
+### Using multiple user Docker daemons
+
+_Available as of v1.5_
+
+#### Terminology
+
+| Term                  | Definition                                       |
+|-----------------------|--------------------------------------------------|
+| Dind                  |  Docker in docker, this is the key to our realization of this feature.  |
+| User docker, UD       |  The user-docker on RancherOS |
+| Other user docker, OUD|  The other user-docker daemons you create, these user-docker daemons are Dind mode  |
+
+#### Prepare
+
+You must switch user-docker to 17.12.1 or earlier version. Otherwise, it may get these error when creating an user-defined network on system-docker.
+
+```
+$ ros engine switch docker-17.12.1-ce
+```
+
+Create an user-define network, need to use this network when creating an OUD:
+
+```
+$ system-docker network create --subnet=172.20.0.0/16 dind
+```
+
+#### Create OUD
+
+Just use `ros engine create`. For the OUD image, currently only support docker `17.12.1` and `18.03.1`.
+
+```
+$ ros engine create dind1 --network=dind --fixed-ip=172.20.0.2
+```
+
+After the OUD service is created, users can query the OUD service as usual.
+
+```
+$ ros service list
+...
+...
+disabled volume-efs
+disabled volume-nfs
+enabled  dind1
+```
+
+To make the dind1 service running, can use:
+
+```
+$ ros service up dind1
+```
+
+After the OUD service is started, you can interact with it as if they were using the docker command.
+
+```
+$ docker-dind1 ps -a
+```
+
+#### SSH into OUD container
+
+You can specify an external ssh port with `--ssh-port`, and ssh keys with `--authorized-keys`. Both of them are optional.
+
+```
+$ ros engine create  -h
+...
+...
+OPTIONS:
+    --ssh-port value
+    --authorized-keys value
+```
+
+For `--authorized-keys`, user needs to put the key file in one of the following directories:
+```
+/var/lib/rancher/
+/opt/
+/home/
+```
+
+RancherOS will generate a random password for each OUD container, which you can see in the container logs. This password is useful if you do not set the keys.
+
+```
+$ system-docker logs dind1
+
+======================================
+chpasswd: password for 'root' changed
+password: xCrw6fEG
+======================================
+```
+
+You can ssh into any OUD container like this:
+
+```
+$ system-docker ps
+CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                             NAMES
+2ca07a25799b        rancher/os-dind:17.12.1          "docker-entrypoint..."   5 seconds ago       Up 3 seconds        2375/tcp, 0.0.0.0:34791->22/tcp   dind1
+
+$ ssh -p 34791 root@<host-external-ip>
+
+$ ssh root@<OUD-container-ip>
+
+```
+
+#### Remove OUD
+
+Just use `ros engine rm`:
+
+```
+$ ros engine rm dind1
+```
