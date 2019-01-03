@@ -61,31 +61,6 @@ Kubernetes divides workloads into different types. The most popular types suppor
 
     _CronJobs_ are similar to jobs. CronJobs, however, runs to completion on a cron-based schedule.
 
-### Multi-Cluster Applications
-
-_Available as of v2.2.0_
-
-In use cases where you need to deploy a common workload to multiple clusters or projects, deploy it using a multi-cluster application. A multi-cluster application is a Helm chart template that stores a unique workload configuration. When you deploy a multi-cluster application, this template replicates a unique workload for each deployment target (i.e., clusters or projects) that you choose.
-
-Multi-cluster applications are beneficial because they reduce the repetition of deploying individual workloads to each target. They also reduce the likelihood of user error during workload configuration, as you only have to configure a single object rather than a unique object for each target. Additionally, because multi-cluster workloads are a single object, they simplify routine maintenance. For example, rather than upgrading several unique workloads, you can upgrade the multi-cluster application, which then replicates to each target. 
-
-You can deploy a multi-cluster application using either a regular deployment or a catalog deployment. Multi-cluster workloads deployed by Helm chart can be upgraded or reconfigured by editing its catalog application object. 
-
-
-#### Multi-Cluster Application Notes
-
-- When deploying a multi-cluster application, you can schedule it to either individual clusters/projects or _all_ of your clusters/projects.
-
-- Before you can connect to a multi-cluster workload using a hostname or alias, you must first configure global DNS, which enables service discovery across clusters, allowing services from different clusters to be mapped.
-
-- Using RBAC, you can configure multi-cluster apps to share them among users holding membership in different clusters or projects. 
-
-#### Multi-Cluster Application Upgrades
-
-When upgrading a multi-cluster application, you can configure an upgrade strategy to optimize network speed and upgrade reliability for your environment. 
-
-The batch size option lets you choose how many target-side workloads can upgraded simultaneously during rolling waves, optimizing network speed and upgrade reliability for your environment, just as you can with any other workload.
-
 ## Workload Step-by-Step
 
 Follow the links below for step-by-step instructions on deploying workloads and using workload options.
