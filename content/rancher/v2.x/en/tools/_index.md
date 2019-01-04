@@ -11,6 +11,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Notifiers](#notifiers)
 - [Logging](#logging)
 - [Pipelines](#pipelines)
+- [Monitoring](#monitoring)
 
 <!-- /TOC -->
 
@@ -78,3 +79,15 @@ After configuring Rancher and GitHub, you can deploy containers running Jenkins 
 - Deploy your build images to your cluster.
 - Run unit tests.  
 - Run regression tests.
+
+
+## Monitoring
+
+
+_Available as of v2.2.0_
+
+Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution. Prometheus provides a _time series_ of your data, which is a stream of timestamped values belonging to the same metric and the same set of labeled dimensions, along with comprehensive statistics and metrics of the monitored cluster.
+
+In other words, Prometheus let's you view metrics from your different Rancher and Kubernetes objects. Using timestamps, you can query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus. By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.  Multi-tenancy support in terms of cluster and project-only Prometheus instances are also supported.
+
+For more information, see the [Monitoring Documentation]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring).
