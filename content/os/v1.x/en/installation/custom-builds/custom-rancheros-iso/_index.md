@@ -72,3 +72,15 @@ This can effectively reduce the memory required to decompress the initrd on boot
 # run make
 $ INTEGRATION_TESTS=0 make release
 ```
+
+#### Building with a different  console
+
+_Available as of v1.5.0_
+
+When building RancherOS, you have the ability to automatically start in a supported [console]({{< baseurl >}}/os/v1.x/en/installation/switching-consoles/) instead of booting into the default console and switching to your desired one. 
+
+Here is an example of building RanchreOS and having the alpine console enabled: 
+
+```
+$ OS_CONSOLE=alpine make release
+```
