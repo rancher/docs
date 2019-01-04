@@ -53,9 +53,17 @@ When you enable monitoring for one of your Rancher clusters, Prometheus collects
 - [etcd database](#etcd-metrics)
 - [All nodes (including workers)](#cluster-metrics)
 
+<figcaption>Cluster Monitoring: Monitored Components</figcaption>
+
+![Cluster Monitoring: Monitored Components]({{< baseurl >}}/img/rancher/cluster-monitoring.svg)
+
 ## Project Monitoring
 
 When you enable monitoring for a Rancher project, Prometheus collects metrics from its deployed HTTP and TCP/UDP workloads. We'll have more about the specific metrics collected [later in this document](#workload-metrics).
+
+<figcaption>Project Monitoring: Monitored Workloads</figcaption>
+
+![Project Monitoring: Monitored Workloads]({{< baseurl >}}/img/rancher/project-monitoring.svg)
 
 ## Configuring Cluster Monitoring
 
