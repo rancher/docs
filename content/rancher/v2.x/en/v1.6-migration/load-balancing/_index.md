@@ -22,7 +22,7 @@ If you encounter the `output.txt` text below after parsing your v1.6 Compose fil
 - [Load Balancing Architecture](#load-balancing-architecture)
 - [Ingress Caveats](#ingress-caveats)
 - [Deploying Ingress](#deploying-ingress)
-- [Rancher v2.x Load Balancing Limitations](#rancher-v2x-load-balancing-limitations)
+- [Rancher v2.x Load Balancing Limitations](#rancher-v2-x-load-balancing-limitations)
 
 
 <!-- /TOC -->

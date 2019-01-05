@@ -16,7 +16,7 @@ Use this document to correct workloads that list `ports` in `output.txt`. You ca
 
 <!-- TOC -->
 
-- [What's Different About Exposing Services in Rancher v2.x?](#whats-different-about-exposing-services-in-rancher-v2x)
+- [What's Different About Exposing Services in Rancher v2.x?](#what-s-different-about-exposing-services-in-rancher-v2-x)
 - [HostPorts](#hostports)
 - [Setting HostPorts](#setting-hostports)
 - [NodePorts](#nodeports)

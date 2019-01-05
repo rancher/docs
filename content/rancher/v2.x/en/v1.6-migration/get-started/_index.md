@@ -18,9 +18,9 @@ Get started with your migration to Rancher v2.x by installing Rancher and config
 
 ## A. Install Rancher v2.x
 
-The first step in migrating from v1.6 to v2.x is to install the Rancher v2.x Server side-by-side with your v1.6 Server, which you'll need during the migration process. Due the architecture changes between v1.6 and v2.x, there is no direct path for upgrade. You'll have to install v2.x independently and then migrate your v1.6 services to v2.x.
+The first step in migrating from v1.6 to v2.x is to install the Rancher v2.x Server side-by-side with your v1.6 Server, as you'll need your old install during the migration process. Due to the architecture changes between v1.6 and v2.x, there is no direct path for upgrade. You'll have to install v2.x independently and then migrate your v1.6 services to v2.x.
 
-New for v2.x, all communication to Rancher Server is encrypted. The procedures below instructs you on how to create and install these certificates.
+New for v2.x, all communication to Rancher Server is encrypted. The procedures below instruct you not only on installation of Rancher, but also creation and installation of these certificates.
 
 Before installing v2.x, provision one host or more to function as your Rancher Server(s). You can find the requirements for these hosts in [Server Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 
@@ -38,7 +38,7 @@ After provisioning your node(s), install Rancher:
 
 ## B. Configure Authentication
 
-After Rancher Server is installed, we recommend configuring external authentication (like Active Directory or GitHub) so that users can log into Rancher using their single sign-on. For a full list of supported authentication providers and instructions on how to configure them, see [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication).
+After your Rancher v2.x Server is installed, we recommend configuring external authentication (like Active Directory or GitHub) so that users can log into Rancher using their single sign-on. For a full list of supported authentication providers and instructions on how to configure them, see [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication).
 
 <figcaption>Rancher v2.x Authentication</figcaption>
 
@@ -57,9 +57,11 @@ In Rancher v1.6, we encouraged our SAML users to use Shibboleth, as it was the o
 
 ## C. Provision a Cluster and Project
 
-Begin work in Rancher by provisioning a new Kubernetes cluster, which is similar to an environment in v1.6. This cluster will host your application deployments.
+Begin work in Rancher v2.x by using it to provision a new Kubernetes cluster, which is similar to an environment in v1.6. This cluster will host your application deployments.
 
 A cluster and project in combined together in Rancher v2.x equivalent to a v1.6 environment. A _cluster_ is the compute boundary (i.e., your hosts) and a _project_ is an administrative boundary (i.e., a grouping of namespaces used to assign access rights to users).
+
+There's more basic info on provisioning clusters in the headings below, but for full information, see [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
 
 ### Clusters
 
@@ -72,7 +74,8 @@ Rancher v2.x lets you launch a Kubernetes cluster anywhere. Host your cluster us
 - Any [custom node(s)]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/). Rancher can launch Kubernetes on the nodes, be they bare metal servers, virtual machines, or cloud hosts on a less popular infrastructure provider.
 
 ### Projects
-Additionally, Rancher v2.x introduces [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/), which are objects that divide clusters into different application groups that are useful for applying user permissions. This model of clusters and projects allow for multi-tenancy because hosts are owned by the cluster, and the cluster can be further divided into multiple projects where users can manage their apps.
+
+Additionally, Rancher v2.x introduces [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/), which are objects that divide clusters into different application groups that are useful for applying user permissions. This model of clusters and projects allow for multi-tenancy because hosts are owned by the cluster, and the cluster can be further divided into multiple projects where users can manage their apps, but not those of others.
 
 When you create a cluster, two projects are automatically created:
 
