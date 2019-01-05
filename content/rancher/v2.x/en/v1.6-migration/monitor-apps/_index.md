@@ -208,4 +208,4 @@ Rancher v1.6 Compose Parameter | Rancher v2.x Kubernetes Parameter
 `initializing_timeout`         | `initialDelaySeconds`
 `strategy`                     | `restartPolicy`
 
-### [Next: Schedule Workloads]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)
+### [Next: Schedule Your Services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)

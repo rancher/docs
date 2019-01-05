@@ -16,8 +16,8 @@ This document will also show you how to link the workloads and services that you
 <!-- TOC -->
 
 
-- [Service Discovery: Rancher v1.6 vs. v2.x](#service-discovery-rancher-v16-vs-v2x)
-- [Service Discovery Within and Across Stacks](#service-discovery-within-and-across-stacks)
+- [Service Discovery: Rancher v1.6 vs. v2.x](#service-discovery-rancher-v1-6-vs-v2-x)
+- [Service Discovery Within and Across Namespaces](#service-discovery-within-and-across-namespaces)
 - [Container Discovery](#container-discovery)
 - [Service Name Alias Creation](#service-name-alias-creation)
 

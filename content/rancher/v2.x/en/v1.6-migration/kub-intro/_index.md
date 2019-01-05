@@ -11,10 +11,10 @@ The following table introduces and defines some key Kubernetes concepts.
 | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cluster     | A collection of machines that run containerized applications managed by Kubernetes.                                                                                                             |
 | Namespace   | A virtual cluster, multiple of which can be supported by a single physical cluster.                                                                                                           |
-| Node        | One of the physical (or virtual) machines that make up a cluster.                                                                                                                                |
+| Node        | One of the physical or virtual machines that make up a cluster.                                                                                                                                |
 | Pod         | The smallest and simplest Kubernetes object. A pod represents a set of running [containers](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-containers) on your cluster. |
 | Deployment  | An API object that manages a replicated application.                                                                                                                                          |
-| Workload    | Units of work that are running on the cluster, these can be pods or deployments.                                                                                                             |
+| Workload    | Units of work that are running on the cluster. These can be pods or deployments.                                                                                                             |
 
 
 ## Migration Cheatsheet
@@ -35,3 +35,5 @@ Because Rancher v1.6 defaulted to our Cattle container orchestrator, it primaril
 <br/>
 More detailed information on Kubernetes concepts can be found in the
 [Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/).
+
+### [Next: Get Started]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/get-started/)
