@@ -3,7 +3,7 @@ title: Migrating from Rancher v1.6 to v2.x
 weight: 10000
 ---
 
-Rancher v2.x has been rearchitected and rewritten with the goal of providing a complete management solution for Kubernetes and Docker.  Due to these extensive changes, there is no direct upgrade path from v1.6.x to v2.x, but rather a migration of your v1.6 services into v2.x as Kubernetes workloads.  In v1.6, the most common orchestration used was Rancher's own engine called Cattle. The following guide explains and educates our Cattle users on running workloads in a Kubernetes environment.
+Rancher v2.x has been rearchitected and rewritten with the goal of providing a complete management solution for Kubernetes and Docker.  Due to these extensive changes, there is no direct upgrade path from v1.6 to v2.x, but rather a migration of your v1.6 services into v2.x as Kubernetes workloads.  In v1.6, the most common orchestration used was Rancher's own engine called Cattle. The following guide explains and educates our Cattle users on running workloads in a Kubernetes environment.
 
 ## Video
 
@@ -21,10 +21,10 @@ This video demonstrates a complete walk through of migration from Rancher v1.6 t
     >**Already a Kubernetes user in v1.6?**
     >
     > _Get Started_ is the only section you need to review for migration to v2.x. You can skip everything else.
-- [2. Migrate Your Apps]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/)
+- [2. Migrate Your Services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/)
 - [3. Expose Your Services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/expose-services/)
-- [4. Monitor Your Apps]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/monitor-apps)
-- [5. Schedule Workloads]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)
+- [4. Configure Health Checks]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/monitor-apps)
+- [5. Schedule Your Services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)
 - [6. Service Discovery]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/discover-services/)
 - [7. Load Balancing]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/load-balancing/)
 
