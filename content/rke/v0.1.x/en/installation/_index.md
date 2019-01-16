@@ -105,7 +105,7 @@ INFO[0000] [network] Pulling image [alpine:latest] on host [10.0.0.1]
 INFO[0101] Finished building Kubernetes cluster successfully
 ```
 
-The last line should read `Finished building Kubernetes cluster successfully` to indicate that your cluster is ready to use. As part of the Kubernetes creation process, a `kubeconfig` file has been created and written at `kube_config_cluster.yml`, which can be used to start interacting your Kubernetes cluster.
+The last line should read `Finished building Kubernetes cluster successfully` to indicate that your cluster is ready to use. As part of the Kubernetes creation process, a `kubeconfig` file has been created and written at `kube_config_cluster.yml`, which can be used to start interacting with your Kubernetes cluster.
 
 > **Note:** If you have used a different file name from `cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
 
