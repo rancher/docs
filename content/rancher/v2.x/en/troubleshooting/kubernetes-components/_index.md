@@ -107,7 +107,7 @@ https://IP:2379 is healthy: successfully committed proposal: took = 2.649963ms
 https://IP:2379 is healthy: successfully committed proposal: took = 2.451201ms
 ```
 
-* Check connectivty on port TCP/2379
+* Check connectivity on port TCP/2379
 
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5"); do
@@ -135,7 +135,7 @@ Validating connection to https://IP:2379/health
 {"health": "true"}
 ```
 
-* Check connectivty on port TCP/2380
+* Check connectivity on port TCP/2380
 
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f4"); do
