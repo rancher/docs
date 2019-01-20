@@ -26,6 +26,8 @@ rancher:
         dhcp: false
 ```
 
+> **Note:** The `address` item should be the CIDR format.
+
 ### Multiple NICs
 
 If you want to configure one of multiple network interfaces, you can specify the MAC address of the interface you want to configure.
