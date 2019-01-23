@@ -225,3 +225,8 @@ This is due to a combination of the following default Kubernetes settings:
   * `pod-eviction-timeout`: The grace period for deleting pods on failed nodes (default 5m0s)
 
 See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.
+
+
+### Can I use keyboard shortcuts in the UI?
+
+Yes, most parts of the UI can be reached using keyboard shortcuts. For an overview of the available shortcuts, press `?` anywhere in the UI.
