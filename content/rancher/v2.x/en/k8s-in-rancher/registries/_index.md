@@ -7,13 +7,9 @@ aliases:
 
 Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
 
->**Note:** Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not kubectl.
+Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not when it is created via kubectl.
 
-Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
-
->**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) configured.
-
->**Note:** Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not kubectl.
+>**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
 1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
 
