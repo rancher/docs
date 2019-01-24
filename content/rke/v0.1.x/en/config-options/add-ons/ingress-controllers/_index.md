@@ -3,7 +3,7 @@ title: Ingress Controllers
 weight: 262
 ---
 
-By default, RKE deploys the nginx ingress controller on all schedulable nodes.
+By default, RKE deploys the NGINX ingress controller on all schedulable nodes.
 
 > **Note:** As of v0.1.8, only workers are considered schedulable nodes, but prior to v0.1.8, worker and controlplane nodes were considered schedulable nodes.  
 
@@ -39,7 +39,7 @@ ingress:
 ```
 ## Configuring NGINX Ingress Controller
 
-For the configuration of nginx, there are configuration options available in Kubernetes. There are a [list of options for the NGINX config map](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/configmap.md) , [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md) and [annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/).
+For the configuration of NGINX, there are configuration options available in Kubernetes. There are a [list of options for the NGINX config map](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/configmap.md) , [command line extra_args](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/cli-arguments.md) and [annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/).
 
 ```yaml
 ingress:
@@ -94,7 +94,7 @@ Setting up a default certificate is especially helpful in environments where a w
         default-ssl-certificate: "ingress-nginx/ingress-default-cert"
     ```
 
-5. **Optional:** If you want to apply the default certificate to ingress in a cluster that already exists, you must restart the Nginx ingress controller pods to apply the latest `extra_args`.
+5. **Optional:** If you want to apply the default certificate to ingresses in a cluster that already exists, you must delete the NGINX ingress controller pods to have Kubernetes schedule new pods with the newly configured `extra_args`.
 
     ```
     kubectl delete pod -l app=ingress-nginx -n ingress-nginx
