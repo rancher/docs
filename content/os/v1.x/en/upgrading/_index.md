@@ -136,7 +136,9 @@ rancher:
     image: rancher/os
 ```
 
-### Upgrading to 1.4.0+ Notes
+### Upgrade Notes for v1.4.0+
+
+If you are upgrading to v1.4.0+, please review these notes that could alter your RancherOS settings.
 
 Due to changes in the location of user-docker's data-root, after upgrading to v1.4.0+, you must move or copy the files of user-docker's data-root. If you do not do this, your data will *NOT* be available. 
 
