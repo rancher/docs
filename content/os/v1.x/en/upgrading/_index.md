@@ -7,7 +7,7 @@ If RancherOS has released a new version and you want to learn how to upgrade you
 
 Since RancherOS is a kernel and initrd, the upgrade process is downloading a new kernel and initrd, and updating the boot loader to point to it. The old kernel and initrd are not removed. If there is a problem with your upgrade, you can select the old kernel from the Syslinux bootloader.
 
-To see all of our releases, please visit our [releases page](https://github.com/rancher/os/releases) in GitHub.
+Before upgrading to any version, please review the release notes on our [releases page](https://github.com/rancher/os/releases) in GitHub to review any updates in the release.
 
 > **Note:** If you are using [`docker-machine`]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine/) then you will not be able to upgrade your RancherOS version. You need to delete and re-create the machine.
 
@@ -136,9 +136,9 @@ rancher:
     image: rancher/os
 ```
 
-### Upgrading Notes
+### Upgrading to 1.4.0+ Notes
 
-Upgrading to 1.4.0 and greater you must move or copy the files of user-docker's data-root otherwise your data will not be available:
+Due to changes in the location of user-docker's data-root, after upgrading to v1.4.0+, you must move or copy the files of user-docker's data-root. If you do not do this, your data will *NOT* be available. 
 
 ```
 #!/bin/bash
@@ -151,8 +151,12 @@ cp -a $old_docker_root/* $new_docker_root
 system-docker start docker
 ```
 
-Upgrading to 1.4.0 and greater you must set `rancher.system_docker.bip` if you want to have another bridge IP of docker-sys:
+If you had another bridge IP set for system-docker, you may need to explicitly set it again depending on your upgrade path. Before re-setting it, you can confirm if it's set. 
 
 ```
+# Check to see if docker bridge IP is set
+$ sudo ros config get rancher.system_docker.bip
+
+# If it is no longer set, re-set the setting
 $ sudo ros config set rancher.system_docker.bip 10.0.0.1/16
 ```
