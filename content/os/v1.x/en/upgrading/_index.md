@@ -135,3 +135,24 @@ rancher:
     url: https://releases.rancher.com/os/releases.yml
     image: rancher/os
 ```
+
+### Upgrading Notes
+
+Upgrading to 1.4.0 and greater you must move or copy the files of user-docker's data-root otherwise your data will not be available:
+
+```
+#!/bin/bash
+
+old_docker_root="/proc/1/root/var/lib/docker"
+new_docker_root="/proc/1/root/var/lib/user-docker"
+
+system-docker stop docker
+cp -a $old_docker_root/* $new_docker_root
+system-docker start docker
+```
+
+Upgrading to 1.4.0 and greater you must set `rancher.system_docker.bip` if you want to have another bridge IP of docker-sys:
+
+```
+$ sudo ros config set rancher.system_docker.bip 10.0.0.1/16
+```
