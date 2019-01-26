@@ -109,6 +109,6 @@ When using the [AWS EC2 node driver]({{< baseurl >}}/rancher/v2.x/en/cluster-pro
 | Custom UDP Rule |    UDP   | 8472        | sg-xxx (rancher-nodes) | Inbound   |
 | Custom TCP Rule |    TCP   | 10250-10252 | sg-xxx (rancher-nodes) | Inbound   |
 | Custom TCP Rule |    TCP   | 10256       | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 30000-32767 | 30000-32767            | Inbound   |
-| Custom UDP Rule |    UDP   | 30000-32767 | 30000-32767            | Inbound   |
+| Custom TCP Rule |    TCP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
+| Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
 | All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
