@@ -81,9 +81,24 @@ Select your provider's tab below and follow the directions.
 
 <!-- What happens if you change this value while builds are running? -->
 
+#### Integrate with self-signed-certificate version control providers
+
+If you configure your version control providers with a certificate from a custom/internal CA root, the CA root certificates need to be added to Rancher and pipeline build pods.
 
 
+1. Follow instructions to [use custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate) to set up Rancher.
 
+1. Follow instructions to [configure your version control providers](#1-configuring-version-control-providers).
+
+1. From the context menu, open the project for which you're configuring a pipeline.
+
+1. From the main menu, select **Tools > Pipelines**.
+
+1. Click **Edit cacerts**.
+
+1. Paste in the CA root certificates and click **Save cacerts**.
+
+1. Start using pipelines.
 
 ### 2. Configuring Pipeline Stages and Steps
 
