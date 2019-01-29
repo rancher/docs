@@ -37,7 +37,7 @@ There are three recommended options for the source of the certificate.
 
 > **Important:** Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
 
-Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) from the official Kubernetes Helm chart repository to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
+Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) version v0.5.2 from the official Kubernetes Helm chart repository to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
 
 Install `cert-manager` from Kubernetes Helm chart repository.
@@ -45,7 +45,8 @@ Install `cert-manager` from Kubernetes Helm chart repository.
 ```
 helm install stable/cert-manager \
   --name cert-manager \
-  --namespace kube-system
+  --namespace kube-system \
+  --version v0.5.2
 ```
 
 Wait for `cert-manager` to be rolled out:
