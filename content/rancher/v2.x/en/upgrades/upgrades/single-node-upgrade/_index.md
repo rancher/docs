@@ -98,7 +98,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
     >**Attention Let’s Encrypt Users:**
     >
-    >Remeber to append `--acme-domain <YOUR.DNS.NAME>` to the run command, otherwise rancher will fall back to self signed certificates.
+    >Remember to append `--acme-domain <YOUR.DNS.NAME>` to the run command, otherwise Rancher will fall back to using self signed certificates.
     >```
     >docker run -d --volumes-from rancher-data --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:latest --acme-domain <YOUR.DNS.NAME>
     >```
