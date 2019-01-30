@@ -155,17 +155,17 @@ Digest: sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c
 Status: Downloaded newer image for alpine:latest
 ```
 
-### Using multiple user Docker daemons
+### Using Multiple User-Docker Daemons
 
 _Available as of v1.5_
 
 #### Terminology
 
-| Term                  | Definition                                       |
+| Terminology                  | Definition                                       |
 |-----------------------|--------------------------------------------------|
-| Dind                  |  Docker in docker, this is the key to our realization of this feature.  |
+| Dind                  |  Docker in docker  |
 | User docker, UD       |  The user-docker on RancherOS |
-| Other user docker, OUD|  The other user-docker daemons you create, these user-docker daemons are Dind mode  |
+| Other user docker, OUD|  The other user-docker daemons you create, these user-docker daemons are Dind mode.  |
 
 #### Prepare
 
