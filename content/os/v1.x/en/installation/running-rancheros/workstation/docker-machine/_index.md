@@ -10,13 +10,14 @@ You also need to know the [memory requirements]({{< baseurl >}}/os/v1.x/en/#hard
 
 ### Downloading RancherOS
 
-Get the latest ISO artifact from the RancherOS [releases](https://github.com/rancher/os/releases).
+Get the latest ISO artifact from the RancherOS [releases](https://github.com/rancher/os).
 
-Machine Driver | ISO Name
--------------- | --------------------
-VirtualBox     | rancheros.iso
-VMWare VSphere | rancheros-vmware.iso
-VMWare Fusion  | rancheros-vmware.iso
+Machine Driver | Recommended RancherOS version | ISO File
+-------------- | ----------------------------- | -------------------------------------------------------------
+VirtualBox     | >=v1.0.0 | [rancheros.iso](https://releases.rancher.com/os/latest/rancheros.iso)
+VMWare VSphere | >=v1.4.0 | [rancheros-vmware.iso](https://releases.rancher.com/os/latest/rancheros-vmware.iso)
+VMWare Fusion  | >=v1.4.0 | [rancheros-vmware.iso](https://releases.rancher.com/os/latest/rancheros-vmware.iso)
+Hyper-V        | >=v1.5.0 | [rancheros.iso](https://releases.rancher.com/os/latest/hyperv/rancheros.iso)
 
 ### Using Docker Machine
 
@@ -86,6 +87,20 @@ $ docker-machine create -d vmwarefusion \
 ```
 
 That’s it! You should now have a RancherOS host running on VMWare Fusion. You can verify that you have a VMWare Fusion VM running on your host.
+
+#### Using Docker Machine with Hyper-V
+
+_Available as of v1.5_
+
+You should refer to the documentation of [Hyper-V driver](https://docs.docker.com/machine/drivers/hyper-v/), here is an example of using the latest RancherOS URL. We recommend using a specific version so you know which version of RancherOS that you are installing. 
+
+```
+$ docker-machine.exe create -d hyperv \
+        --hyperv-memory 2048 \
+        --hyperv-boot2docker-url https://releases.rancher.com/os/latest/hyperv/rancheros.iso
+        --hyperv-virtual-switch <SWITCH_NAME> \
+        <MACHINE_NAME>
+```
 
 ### Logging into RancherOS
 
