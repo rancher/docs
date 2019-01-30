@@ -92,7 +92,7 @@ That’s it! You should now have a RancherOS host running on VMWare Fusion. You 
 
 _Available as of v1.5_
 
-You should refer to the documentation of [Hyper-V driver](https://docs.docker.com/machine/drivers/hyper-v/), here is an example of using the RancherOS latest link:
+You should refer to the documentation of [Hyper-V driver](https://docs.docker.com/machine/drivers/hyper-v/), here is an example of using the latest RancherOS URL. We recommend using a specific version so you know which version of RancherOS that you are installing. 
 
 ```
 $ docker-machine.exe create -d hyperv \
