@@ -5,7 +5,7 @@ weight: 136
 
 _Available as of v1.5_
 
-In RancherOS, you can set `rancher.password` as a kernel parameter and `auto-login`, but there may be some cases where we want to disable both of these options. Both of these options can be disabled in the cloud-config or as part of a `ros` command. 
+In RancherOS, you can set `rancher.password` as a kernel parameter and `auto-login` to be enabled, but there may be some cases where we want to disable both of these options. Both of these options can be disabled in the cloud-config or as part of a `ros` command. 
 
 ### How to Disabling Options
 
