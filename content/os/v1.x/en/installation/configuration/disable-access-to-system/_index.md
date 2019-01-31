@@ -1,43 +1,31 @@
 ---
-title: Disabling access to system
+title: Disabling Access to RancherOS
 weight: 136
 ---
+
 _Available as of v1.5_
 
-At the moment, you can set `rancher.password` and `auto-login` to the system.
-In some environments it is required to disable these methods.
-This can be achieved by:
+In RancherOS, you can set `rancher.password` as a kernel parameter and `auto-login`, but there may be some cases where we want to disable both of these options. Both of these options can be disabled in the cloud-config or as part of a `ros` command. 
 
-- Option to ignore rancher.password kernel param.
+### How to Disabling Options
 
-- Option to disable auto-login.
+If RancherOS has already been started, you can use `ros config set` to update that you want to disable 
 
-### Ignoring `rancher.password` kernel param
+```
+# Disabling the `rancher.password` kernel parameter
+$ sudo ros config set rancher.disable ["password"]
 
-You can use `ros` command or `cloud-config` file to ignore `rancher.passowrd` kernel param. 
+# Disablimg the `autologin` ability
+$ sudo ros config set rancher.disable ["autologin"]
+```
 
-ros command: `sudo ros config set rancher.disable ["password"]`
+Alternatively, you can set it up in your cloud-config so it's automatically disabled when you boot RancherOS.
 
-cloud-config file:
 
 ```yaml
 # cloud-config
 rancher:
   disable:
   - password
-```
-
-### Disabling `autologin`
-
-You can use `ros` command or `cloud-config` file to disable auto-login.
-
-ros command: `sudo ros config set rancher.disable ["autologin"]`
-
-cloud-config file:
-
-```yaml
-# cloud-config
-rancher:
-  disable:
   - autologin
 ```
