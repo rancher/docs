@@ -14,7 +14,7 @@ The following table introduces and defines some key Kubernetes concepts.
 | Node        | One of the physical or virtual machines that make up a cluster.                                                                                                                                |
 | Pod         | The smallest and simplest Kubernetes object. A pod represents a set of running [containers](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/#why-containers) on your cluster. |
 | Deployment  | An API object that manages a replicated application.                                                                                                                                          |
-| Workload    | Units of work that are running on the cluster. These can be pods or deployments.                                                                                                             |
+| Workload    | Workloads are objects that set deployment rules for pods.                                                                                                                                     |
 
 
 ## Migration Cheatsheet
