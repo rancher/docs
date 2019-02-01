@@ -15,7 +15,7 @@ If RancherOS has already been started, you can use `ros config set` to update th
 # Disabling the `rancher.password` kernel parameter
 $ sudo ros config set rancher.disable ["password"]
 
-# Disablimg the `autologin` ability
+# Disabling the `autologin` ability
 $ sudo ros config set rancher.disable ["autologin"]
 ```
 
