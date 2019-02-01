@@ -15,7 +15,7 @@ Rancher is supported on the following operating systems and their subsequent non
   * Docker 17.03.2
 *   Red Hat Enterprise Linux (RHEL)/CentOS 7.5 (64-bit)
   * RHEL Docker 1.13
-  * Docker 17.03.2
+  * Docker 17.03.3
 *   RancherOS 1.4 (64-bit)
   * Docker 17.03.2
 *   Windows Server version 1803 (64-bit)
