@@ -30,11 +30,11 @@ After provisioning your node(s), install Rancher:
 
     For development environments, we recommend a single node install. This installation procedure deploys a single Rancher container to your host.
 
-- [High Availability Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
+- [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
 
     For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability (HA) configuration. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
 
-    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [High Availability Install](https://rancher.com/docs/rancher/v2.x/en/installation/ha/) for full requirements.
+    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [High Availability (HA) Install](https://rancher.com/docs/rancher/v2.x/en/installation/ha/) for full requirements.
 
 ## B. Configure Authentication
 
@@ -59,7 +59,7 @@ In Rancher v1.6, we encouraged our SAML users to use Shibboleth, as it was the o
 
 Begin work in Rancher v2.x by using it to provision a new Kubernetes cluster, which is similar to an environment in v1.6. This cluster will host your application deployments.
 
-A cluster and project in combined together in Rancher v2.x equivalent to a v1.6 environment. A _cluster_ is the compute boundary (i.e., your hosts) and a _project_ is an administrative boundary (i.e., a grouping of namespaces used to assign access rights to users).
+A cluster and project in combined together in Rancher v2.x is equivalent to a v1.6 environment. A _cluster_ is the compute boundary (i.e., your hosts) and a _project_ is an administrative boundary (i.e., a grouping of namespaces used to assign access rights to users).
 
 There's more basic info on provisioning clusters in the headings below, but for full information, see [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
 
@@ -79,8 +79,8 @@ Additionally, Rancher v2.x introduces [projects]({{< baseurl >}}/rancher/v2.x/en
 
 When you create a cluster, two projects are automatically created:
 
-- The `system` project, which includes namespaces for each of your Kubernetes components.
-- The `default` project, which is a "hello-world" project for your cluster.
+- The `System` project, which includes system namespaces where important Kubernetes resources are running (like ingress controllers and cluster dns services)
+- The `Default` project.
 
 However, for production environments, we recommend [creating your own project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-projects) and giving it a descriptive name.
 
