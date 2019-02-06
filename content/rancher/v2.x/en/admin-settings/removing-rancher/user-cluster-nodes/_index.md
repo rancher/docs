@@ -69,7 +69,7 @@ After you initiate the removal of an [imported cluster]({{< baseurl >}}/rancher/
 
 {{% /tab %}}
 {{% tab "By Script" %}}
-Rather than cleaning imported cluster nodes using the Rancher UI, you can run a script instead. 
+Rather than cleaning imported cluster nodes using the Rancher UI, you can run a script instead. This functionality is available since `v2.1.0`.
 
 >**Prerequisite:**
 >
@@ -87,14 +87,13 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
 
     If you aren't an air gap user, skip this step.
 
-1. From the same directory, run the script:
+1. From the same directory, run the script and provide the `rancher/rancher-agent` image version which should be equal to the version of Rancher used to manage the cluster. (`<RANCHER_VERSION>`):
 
     >**Tip:** 
     >
     >Add the `-dry-run` flag to preview the script's outcome without making changes.
-
     ```
-    ./user-cluster.sh rancher/agent:latest
+    ./user-cluster.sh rancher/rancher-agent:<RANCHER_VERSION>
     ```
 
 **Result:** The script runs. All components listed for imported clusters in [What Gets Removed?](#what-gets-removed) are deleted.
