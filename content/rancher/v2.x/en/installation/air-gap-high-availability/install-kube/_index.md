@@ -32,17 +32,17 @@ nodes:
   internal_address: 172.31.7.22   # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]
-  ssh_key_file: /home/user/.ssh/id_rsa
+  ssh_key_path: /home/user/.ssh/id_rsa
 - address: 10.10.3.254            # node air gap network IP
   internal_address: 172.31.13.132 # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]
-  ssh_key_file: /home/user/.ssh/id_rsa
+  ssh_key_path: /home/user/.ssh/id_rsa
 - address: 10.10.3.89             # node air gap network IP
   internal_address: 172.31.3.216  # node intra-cluster IP
   user: rancher
   role: [ "controlplane", "etcd", "worker" ]
-  ssh_key_file: /home/user/.ssh/id_rsa
+  ssh_key_path: /home/user/.ssh/id_rsa
 
 private_registries:
 - url: <REGISTRY.YOURDOMAIN.COM:PORT> # private registry url
