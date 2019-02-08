@@ -133,7 +133,9 @@ Use Amazon's Wizard to create an Network Load Balancer. As part of this process,
 	- **Basic Configuration**
 
 	   - Name: `rancher`
-	   - Scheme: `internet-facing`
+	   - Scheme: `internal` or `internet-facing`
+	   
+	     The Scheme that you choose for your NLB is dependent on the configuration of your instances/VPC. If your instances do not have public IPs associated with them, or you will only be accessing Rancher internally, you should set your NLB Scheme to `internal` rather than `internet-facing`. 
 	- **Listeners**
 
 		Add the **Load Balancer Protocols** and **Load Balancer Ports** below.
