@@ -13,8 +13,8 @@ If you encounter a disaster scenario, you can restore your Rancher Server to you
 During restoration of your backup, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
 ```
-docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
-alpine sh -c "rm /var/lib/rancher/* -rf  && 
+docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
+alpine sh -c "rm /var/lib/rancher/* -rf  && \
 tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
 ```
 
@@ -55,8 +55,8 @@ Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-bac
     >**Warning!** This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 
     ```
-    docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup 
-    alpine sh -c "rm /var/lib/rancher/* -rf  && 
+    docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
+    alpine sh -c "rm /var/lib/rancher/* -rf  && \
     tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
