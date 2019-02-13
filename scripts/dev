@@ -7,6 +7,7 @@ TAG=dev
 THEME=
 BUILD_BUILD=
 BUILD_DEV=
+SKIP_PULL=
 UPLOAD=
 
 # cd to app root
@@ -22,13 +23,14 @@ print_help()
   cat 1>&2 <<EOF
 Usage:
 
-[-b [-u]] [-d] [-p PORT] [-t]
+[-b | -d] [-p PORT] [-s] [-t DIR] [-u]
 
 -b      - Build the build & dev images instead of pulling from the registry
 -d      - Build the dev image instead of pulling from the registry
 -p PORT - Port to listen on
+-s      - Skip pulling build/dev images
 -t DIR  - Use DIR to for the theme, to devlop the theme at the same time
--u      - Upload the build image after building
+-u      - Upload/push the build image after building
 
 EOF
 }
@@ -44,7 +46,7 @@ absolute() {
 }
 
 
-while getopts ":bdp:t:u" opt;do
+while getopts ":bdp:st:u" opt;do
   case $opt in
   b)
     BUILD_BUILD="true"
@@ -55,6 +57,9 @@ while getopts ":bdp:t:u" opt;do
     ;;
   p)
     PORT="${OPTARG}"
+    ;;
+  s)
+    SKIP_PULL="true"
     ;;
   t)
     THEME="${OPTARG}"
@@ -82,25 +87,39 @@ if [[ "$THEME" ]]; then
   THEMEVOLUME="-v ${ABSOLUTE}:/run/node_modules/rancher-website-theme"
 fi
 
-if [ -z "$BUILD_BUILD" ]; then
-  echo "Pulling ${IMAGE}:build"
-  docker pull ${IMAGE}:build
-else
+if [[ "$BUILD_BUILD" ]]; then
   echo "Building ${IMAGE}:build"
-  docker build --no-cache -f Dockerfile.build -t ${IMAGE}:build .
+  docker build --no-cache -f Dockerfile.build --build-arg TWITTER_CONSUMER=${TWITTER_CONSUMER} --build-arg TWITTER_SECRET=${TWITTER_SECRET} -t ${IMAGE}:build .
   if [[ "$UPLOAD" ]]; then
   docker push ${IMAGE}:build
   fi
+elif [[ "$SKIP_PULL" ]]; then
+  echo "Skipping pull of ${IMAGE}:build"
+else
+  echo "Pulling ${IMAGE}:build"
+  docker pull ${IMAGE}:build
 fi
 
-if [ -z "$BUILD_DEV" ]; then
-  echo "Pulling ${IMAGE}:${TAG}"
-  docker pull ${IMAGE}:${TAG}
-else
+if [[ "$BUILD_DEV" ]]; then
   TAG=local
   echo "Building ${IMAGE}:${TAG}"
   docker build -f Dockerfile.dev -t ${IMAGE}:${TAG} .
+elif [[ "$SKIP_PULL" ]]; then
+  echo "Skipping pull of ${IMAGE}:${TAG}"
+else
+  echo "Pulling ${IMAGE}:${TAG}"
+  docker pull ${IMAGE}:${TAG}
 fi
 
 echo "Starting server on http://localhost:${PORT}"
-docker run --rm -p ${PORT}:${PORT} -it -v $(pwd):/site ${THEMEVOLUME} ${IMAGE}:${TAG} dev --port=${PORT}
+docker run --rm -p ${PORT}:${PORT} -it \
+  -v $(pwd)/archetypes:/run/archetypes \
+  -v $(pwd)/assets:/run/assets \
+  -v $(pwd)/content:/run/content \
+  -v $(pwd)/data:/run/data \
+  -v $(pwd)/layouts:/run/layouts \
+  -v $(pwd)/scripts:/run/scripts \
+  -v $(pwd)/static:/run/static \
+  -v $(pwd)/.git:/run/.git \
+  -v $(pwd)/config.toml:/run/config.toml \
+  ${THEMEVOLUME} ${IMAGE}:${TAG} --port=${PORT}

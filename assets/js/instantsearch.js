@@ -1,0 +1,1 @@
+../../node_modules/instantsearch.js/dist/instantsearch.js

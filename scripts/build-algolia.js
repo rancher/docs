@@ -1,15 +1,15 @@
 #! /usr/bin/env node
+
 'use strict';
 const jsdom         = require("jsdom");
 const {
   JSDOM
 }                   = jsdom;
 const md5           = require('md5');
-const atomicalgolia = require("atomic-algolia");
 const fs            = require('fs');
 const newNodes           = [];
 const newParagraphs = [];
-const rawdata       = fs.readFileSync('public/algolia.json');
+const rawdata       = fs.readFileSync('/output/algolia.json');
 const nodes         = JSON.parse(rawdata);
 
 nodes.forEach(node => {
@@ -61,18 +61,10 @@ nodes.forEach(node => {
 
   if (paragraphOut.content) {
     // limit the content to 10k so we dont blow up just incase someone decides to make a 40k blog post in one paragraph ¯\_(ツ)_/¯
-    paragraphOut.content  = paragraphOut.content.substr(0, 18000);
+    paragraphOut.content  = paragraphOut.content.substr(0, 9000);
 
     // objectID is not quite unique yet so hash the entire object
     paragraphOut.objectID = md5(JSON.stringify(paragraphOut));
-
-    if (true || paragraphOut.objectID === "d41d8cd98f00b204e9800998ecf8427e") {
-      console.log('====================================');
-      console.log('ID:',paragraphOut.objectID);
-      console.log('Paragraph:',paragraphOut)
-      console.log('JSON:',JSON.stringify(paragraphOut))
-      console.log('====================================');
-    }
 
     newParagraphs.push(paragraphOut);
     newNodes.push(node);
@@ -89,5 +81,6 @@ nodes.forEach(node => {
 
 const merged = [...newParagraphs, ...newNodes];
 
-fs.writeFileSync('public/final.algolia.json', JSON.stringify(merged));
+fs.writeFileSync('/output/final.algolia.json', JSON.stringify(merged));
+
 process.exit(0);

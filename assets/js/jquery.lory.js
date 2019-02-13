@@ -1,0 +1,1 @@
+../../node_modules/lory.js/dist/jquery.lory.js
