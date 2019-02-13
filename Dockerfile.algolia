@@ -1,9 +1,10 @@
+FROM rancher/docs:latest as prod
+
 FROM rancher/docs:build
 
-VOLUME /usr/share/nginx/html/docs
+COPY --from=prod /usr/share/nginx/html/final.algolia.json /run
 WORKDIR /run
+COPY package.json package.json
+COPY scripts scripts
 
-COPY gulpfile.babel.js /run/
-
-ENTRYPOINT ["gulp"]
-CMD ["publish:search-index"]
+ENTRYPOINT ["yarn","run","publish-algolia"]

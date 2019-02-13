@@ -1,0 +1,16 @@
+@charset 'UTF-8';
+
+// 1. node
+@import
+// These are copied because  go sass won't import plain .css files
+'tingle',
+'instantsearch',
+'instantsearch-theme-algolia',
+'izimodal',
+'../../node_modules/ml-stack-nav/src/ml-stack-nav',
+'../../node_modules/rancher-website-theme/assets/sass/theme';
+
+.modal-content {
+  display: none;
+  visibility: hidden;
+}

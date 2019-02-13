@@ -1,27 +1,13 @@
 FROM rancher/docs:build
 ENV HUGO_ENV dev
 
-VOLUME ["/site"]
+VOLUME ["/run/archetypes", "/run/assets", "/run/content", "/run/data", "/run/layouts", "/run/scripts", "/run/static", "/run/.git"]
 WORKDIR /run
-COPY package.json /run/
 
-RUN  ln -s /site/config.toml /run \
-  && ln -s /site/.eslintrc.js /run \
-  && ln -s /site/archetypes /run \
-  && ln -s /site/content /run \
-  && ln -s /site/layouts /run \
-  && ln -s /site/src /run \
-  && ln -s /site/themes /run \
-  && ln -s /site/scripts /run
-
-# gulp doesn't like symlinks
-COPY gulpfile.babel.js /run/
-
-ADD https://github.com/rancherlabs/website-theme/archive/master.tar.gz master.tar.gz
-RUN mkdir -p /run/node_modules/rancher-website-theme && tar -xzf master.tar.gz --strip 1 -C /run/node_modules/rancher-website-theme && rm master.tar.gz
+ADD https://github.com/rancherlabs/website-theme/archive/pipes.tar.gz /run/pipes.tar.gz
+RUN mkdir -p /output /theme/rancher-website-theme && tar -xzf /run/pipes.tar.gz -C /run/node_modules/rancher-website-theme --strip=1 && rm /run/pipes.tar.gz
 
 # Expose default hugo port
 EXPOSE 9001
 
-ENTRYPOINT ["gulp"]
-CMD ["dev"]
+ENTRYPOINT ["hugo", "serve", "--bind=0.0.0.0", "--buildDrafts", "--buildFuture", "--baseURL=" ]

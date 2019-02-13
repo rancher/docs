@@ -1,25 +1,19 @@
-FROM debian:jessie
+FROM node:8-alpine
 
-RUN apt-get -qq update \
-  && apt-get install -y curl apt-transport-https \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-  && DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends \
-  python-pygments git ca-certificates asciidoc nodejs yarn jq \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add py-pygments bash git asciidoc gcompat && rm -rf /var/cache/apk/*
 
 # Download and install hugo
-ENV HUGO_VERSION 0.38.2
-ENV HUGO_BINARY hugo_${HUGO_VERSION}_Linux-64bit.deb
+ENV HUGO_VERSION 0.54.0
+ENV HUGO_BINARY hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
 
-ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.deb
-RUN dpkg -i /tmp/hugo.deb \
-    && rm /tmp/hugo.deb
-
-# Create working directory
-RUN mkdir -p /run
-COPY package.json /run/
+ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY} /tmp/hugo.tar.gz
+RUN tar xzf /tmp/hugo.tar.gz -C /tmp \
+  && mv /tmp/hugo /usr/local/bin/ \
+  && rm /tmp/hugo.tar.gz \
+  && mkdir -p /run
 
 WORKDIR /run
-RUN npm install -g gulp && yarn
+COPY package.json /run/
+COPY yarn.lock /run/
+
+RUN yarn
