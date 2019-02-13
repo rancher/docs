@@ -25,11 +25,11 @@ VMWare     | 1GB                       | 1280MB (rancheros.iso) <br> 2048MB (ran
 GCE        | 1GB                       | 1280MB
 AWS        | 1GB                       | 1.7GB
 
-You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements](https://rancher.com/docs/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
+You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
 
 ### How RancherOS Works
 
-Everything in RancherOS is a Docker container. We accomplish this by launching two instances of Docker. One is what we call **System Docker** and is the first process on the system. All other system services, like `ntpd`, `syslog`, and `console`, are running in Docker containers. System Docker replaces traditional init systems like `systemd` and is used to launch [additional system services](https://rancher.com/docs/os/v1.x/en/installation/system-services/adding-system-services/).
+Everything in RancherOS is a Docker container. We accomplish this by launching two instances of Docker. One is what we call **System Docker** and is the first process on the system. All other system services, like `ntpd`, `syslog`, and `console`, are running in Docker containers. System Docker replaces traditional init systems like `systemd` and is used to launch [additional system services]({{< baseurl >}}/os/v1.x/en/installation/system-services/adding-system-services/).
 
 System Docker runs a special container called **Docker**, which is another Docker daemon responsible for managing all of the user’s containers. Any containers that you launch as a user from the console will run inside this Docker. This creates isolation from the System Docker containers and ensures that normal user commands don’t impact system services.
 
@@ -39,7 +39,7 @@ System Docker runs a special container called **Docker**, which is another Docke
 
 ### Running RancherOS
 
-To get started with RancherOS, head over to our [Quick Start Guide](https://rancher.com/docs/os/v1.x/en/quick-start-guide/).
+To get started with RancherOS, head over to our [Quick Start Guide]({{< baseurl >}}/os/v1.x/en/quick-start-guide/).
 
 ### Latest Release
 
