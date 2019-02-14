@@ -22,5 +22,5 @@ RUN ["hugo", "--buildDrafts", "--buildFuture", "--baseURL=https://staging.ranche
 RUN stat /output/index.html
 
 FROM nginx:alpine
-COPY --from=build /output /usr/share/nginx/html/
+COPY --from=build /output /usr/share/nginx/html/docs/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
