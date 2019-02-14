@@ -32,7 +32,7 @@ pipeline:
     tag: staging
     secrets: [docker_username, docker_password]
     when:
-      branch: staging
+      branch: master
       event: push
 
   publish-latest:
