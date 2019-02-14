@@ -2,7 +2,7 @@ FROM rancher/docs:latest as prod
 
 FROM rancher/docs:build
 
-COPY --from=prod /usr/share/nginx/html/final.algolia.json /run
+COPY --from=prod /usr/share/nginx/html/docs/final.algolia.json /run
 WORKDIR /run
 COPY package.json package.json
 COPY scripts scripts
