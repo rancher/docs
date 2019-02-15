@@ -22,7 +22,7 @@ Helm installs the `tiller` service on your cluster to manage charts. Since RKE e
 kubectl -n kube-system create serviceaccount tiller
 
 kubectl create clusterrolebinding tiller \
-  --clusterrole cluster-admin \
+  --clusterrole=cluster-admin \
   --serviceaccount=kube-system:tiller
 
 helm init --service-account tiller
