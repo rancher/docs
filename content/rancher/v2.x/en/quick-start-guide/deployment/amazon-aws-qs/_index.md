@@ -44,7 +44,7 @@ The following steps will quickly deploy a Rancher Server with a single node clus
       ]
 	```
 
-8. Paste the `rancher-url` from the output above into the browser. Log in when prompted (default username is 'admin', and default password is `admin`).
+8. Paste the `rancher-url` from the output above into the browser. Log in when prompted (default username is `admin`, and default password is `admin`).
 
 **Result:** Rancher Server and your Kubernetes cluster is installed in Amazon AWS.
 
