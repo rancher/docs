@@ -54,6 +54,8 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
     For information about the repos and their differences, see [Helm Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
+    {{< release-channel >}}
+
     ```
     helm repo list
 
@@ -76,7 +78,6 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
 4. Upgrade Rancher to the latest version based on values from the previous steps.
 
-    - Replace `<CHART_REPO>` with the repository that was listed (i.e. `latest` or `stable`).
     - Take all the values from the previous step and append them to the command using `--set key=value`.
 
     ```

@@ -18,12 +18,12 @@ From a system that has access to the internet, render the installs and copy the 
 
 2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
-    Replace both occurences of `<CHART_REPO>` with the Helm chart repository that you want to use (i.e. `latest` or `stable`).
-    
+    {{< release-channel >}}
+
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
-3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the repo you're using (`latest` or `stable`).
+3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
