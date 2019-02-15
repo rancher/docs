@@ -66,6 +66,8 @@ After installing Rancher, if you want to change which Helm chart repository to i
 
 >**Note:** Because the rancher-alpha repository contains only alpha charts, switching between the rancher-alpha repository and the rancher-stable or rancher-latest repository for upgrades is not supported.
 
+{{< release-channel >}}
+
 1. List the current Helm chart repositories.
 
     ```
@@ -73,7 +75,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
 
     NAME          	      URL
     stable        	      https://kubernetes-charts.storage.googleapis.com
-    rancher-<CHART_REPO>	https://releases.rancher.com/server-charts/<CHART_REPO>
+    rancher-<CHART_REPO>		https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
 2. Remove the existing Helm Chart repository that contains your charts to install Rancher, which will either be `rancher-stable` or `rancher-latest` depending on what you had initially added.
@@ -82,7 +84,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
     helm repo remove rancher-<CHART_REPO>
     ```
 
-3. Add the Helm chart repository that you want to start installing Rancher from. Replace `<CHART_REPO>` with the chart repository that you want to use (i.e. `latest` or `stable`).
+3. Add the Helm chart repository that you want to start installing Rancher from.
 
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>

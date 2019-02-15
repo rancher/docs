@@ -43,6 +43,8 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
     For information about the repos and their differences, see [Helm Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories).
 
+    {{< release-channel >}}
+
     ```
     helm repo list
 
@@ -56,8 +58,7 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
 3. Fetch the latest chart to install Rancher from the Helm chart repository.
 
-    This command will pull down the latest chart and save it in the current directory as a `.tgz` file. Replace `<CHART_REPO>` with the name of the repository name that was listed (i.e. `latest` or `stable`).
-
+    This command will pull down the latest chart and save it in the current directory as a `.tgz` file.
 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher

@@ -117,9 +117,27 @@ const bootstrapIdLinks = function() {
   });
 }
 
+const replaceReleaseChannel = function() {
+  const form = $('#release-channel')[0];
+  if ( form ) {
+    const val = form.channel.value;
+
+    $('CODE').each((idx, code) => {
+      const $code = $(code);
+      const text = $code.data('original') || code.innerHTML;
+
+      if ( text.includes('&lt;CHART_REPO&gt;') ) {
+        $code.data('original', text);
+        code.innerHTML = text.replace(/&lt;CHART_REPO&gt;/g, val);
+      }
+    });
+  }
+};
+
 $(document).ready(() => {
   bootstrapDocsSearch();
   bootstrapIdLinks();
+  replaceReleaseChannel();
 });
 
 

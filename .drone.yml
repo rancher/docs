@@ -47,7 +47,7 @@ pipeline:
       branch: master
       event: push
 
-  publish-algolia:
+  publish-latest-algolia:
     image: plugins/docker
     dockerfile: Dockerfile.algolia
     repo: rancher/docs

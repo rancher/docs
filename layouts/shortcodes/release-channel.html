@@ -1,0 +1,22 @@
+<form id="release-channel">
+  <p>
+    <label>
+      <input type="radio" name="channel" value="latest" checked onchange="replaceReleaseChannel()">
+      Latest: Recommended for trying out the newest features
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="radio" name="channel" value="stable" onchange="replaceReleaseChannel()">
+      Stable: Recommended for production environments
+    </label>
+  </p>
+  <p>
+    <label>
+      <input type="radio" name="channel" value="alpha" onchange="replaceReleaseChannel()">
+      Alpha: Experimental preview of upcoming releases.
+      <br/>
+      <span class="text-sm">Note: Upgrades are not supported to, from, or between Alphas.</span>
+    </label>
+  </p>
+</form>
