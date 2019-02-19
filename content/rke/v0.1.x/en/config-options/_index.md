@@ -60,9 +60,9 @@ The supported Kubernetes versions for RKE v0.1.15 are:
 
  Kubernetes version|
  -----------------|
- `v1.12.4-rancher1-1`|
- `v1.11.6-rancher1-1` (default)|
- `v1.10.12-rancher1-1`|
+ `v1.13.1-rancher1-1` (default)|
+ `v1.12.5-rancher1-1`|
+ `v1.11.6-rancher1-1`|
 
 <br>
 
