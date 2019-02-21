@@ -47,7 +47,7 @@ For HA air gap configurations, there are two recommended options for the source 
 
 ## C. Install Rancher
 
-Based on the choice your made in [B. Choose your SSL Coniguration](#b-optional-install-cert-manager), complete one of the procedures below.
+Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-install-cert-manager), complete one of the procedures below.
 
 {{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
 By default, Rancher generates a CA and uses cert manger to issue the certificate for access to the Rancher server interface. 
