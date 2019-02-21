@@ -15,8 +15,8 @@ Get the latest ISO artifact from the RancherOS [releases](https://github.com/ran
 Machine Driver | Recommended RancherOS version | ISO File
 -------------- | ----------------------------- | -------------------------------------------------------------
 VirtualBox     | >=v1.0.0 | [rancheros.iso](https://releases.rancher.com/os/latest/rancheros.iso)
-VMWare VSphere | >=v1.4.0 | [rancheros-vmware.iso](https://releases.rancher.com/os/latest/rancheros-vmware.iso)
-VMWare Fusion  | >=v1.4.0 | [rancheros-vmware.iso](https://releases.rancher.com/os/latest/rancheros-vmware.iso)
+VMWare VSphere | >=v1.4.0 | [rancheros-autoformat.iso](https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso)
+VMWare Fusion  | >=v1.4.0 | [rancheros-autoformat.iso](https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso)
 Hyper-V        | >=v1.5.0 | [rancheros.iso](https://releases.rancher.com/os/latest/hyperv/rancheros.iso)
 
 ### Using Docker Machine
@@ -61,7 +61,7 @@ $ docker-machine create -d vmwarevsphere \
         --vmwarevsphere-username <USERNAME> \
         --vmwarevsphere-password <PASSWORD> \
         --vmwarevsphere-memory-size <MEMORY-SIZE> \
-        --vmwarevsphere-boot2docker-url https://releases.rancher.com/os/latest/rancheros-vmware.iso \
+        --vmwarevsphere-boot2docker-url https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso \
         --vmwarevsphere-vcenter <IP-ADDRESS> \
         --vmwarevsphere-vcenter-port <PORT> \
         --vmwarevsphere-disk-size <DISK-SIZE> \
@@ -82,7 +82,7 @@ Here is an example about using the RancherOS latest link:
 $ docker-machine create -d vmwarefusion \
         --vmwarefusion-no-share \
         --vmwarefusion-memory-size <MEMORY> \
-        --vmwarefusion-boot2docker-url https://releases.rancher.com/os/latest/rancheros-vmware.iso \
+        --vmwarefusion-boot2docker-url https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso \
         <MACHINE_NAME>
 ```
 
