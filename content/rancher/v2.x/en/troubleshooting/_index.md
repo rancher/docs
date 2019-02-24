@@ -24,6 +24,10 @@ This section contains information to help you troubleshoot issues when using Ran
 
     Steps to troubleshoot networking issues can be found here.
 
+- [DNS]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/dns/)
+
+    When you experience name resolution issues in your cluster.
+
 - [Rancher HA]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/rancherha/)
 
     If you experience issues issues with your [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
