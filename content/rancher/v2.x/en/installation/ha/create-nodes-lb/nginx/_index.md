@@ -21,7 +21,7 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
 
 1. Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
 
-2. From `nginx.conf`, replace `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
+2. From `nginx.conf`, replace both occurences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
 
     >**Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
 
@@ -34,15 +34,19 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
         worker_connections 8192;
     }
 
-    http {
-        server {
-            listen         80;
-            return 301 https://$host$request_uri;
-        }
-    }
-
     stream {
-        upstream rancher_servers {
+        upstream rancher_servers_http {
+            least_conn;
+            server <IP_NODE_1>:80 max_fails=3 fail_timeout=5s;
+            server <IP_NODE_2>:80 max_fails=3 fail_timeout=5s;
+            server <IP_NODE_3>:80 max_fails=3 fail_timeout=5s;
+        }
+        server {
+            listen     80;
+            proxy_pass rancher_servers_http;
+        }
+
+        upstream rancher_servers_https {
             least_conn;
             server <IP_NODE_1>:443 max_fails=3 fail_timeout=5s;
             server <IP_NODE_2>:443 max_fails=3 fail_timeout=5s;
@@ -50,7 +54,7 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
         }
         server {
             listen     443;
-            proxy_pass rancher_servers;
+            proxy_pass rancher_servers_https;
         }
     }
     ```
