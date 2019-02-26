@@ -1,31 +1,40 @@
 ---
 kind: pipeline
-name: default
+name: pull-request
 
 platform:
   os: linux
   arch: amd64
 
 steps:
-- name: build
-  pull: always
+- name: test
+  pull: default
   image: plugins/docker
   settings:
     context: .
     dockerfile: Dockerfile.prod
     dry_run: true
     repo: rancher/docs
-    tag: dev
   when:
     event:
     - pull_request
 
+---
+kind: pipeline
+name: dev
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
 - name: publish-dev
-  pull: always
+  pull: default
   image: plugins/docker
   settings:
     context: .
     dockerfile: Dockerfile.dev
+    group: publish
     repo: rancher/docs
     tag: dev
     password:
@@ -38,12 +47,22 @@ steps:
     event:
     - push
 
+---
+kind: pipeline
+name: staging
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
 - name: publish-staging
-  pull: always
+  pull: default
   image: plugins/docker
   settings:
     context: .
     dockerfile: Dockerfile.staging
+    group: publish
     repo: rancher/docs
     tag: staging
     password:
@@ -56,8 +75,17 @@ steps:
     event:
     - push
 
+---
+kind: pipeline
+name: production
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
 - name: publish-latest
-  pull: always
+  pull: default
   image: plugins/docker
   settings:
     context: .
@@ -75,8 +103,8 @@ steps:
     event:
     - push
 
-- name: publish-latest-algolia
-  pull: always
+- name: publish-algolia
+  pull: default
   image: plugins/docker
   settings:
     context: .
