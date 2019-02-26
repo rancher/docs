@@ -1,60 +1,94 @@
 ---
-pipeline:
-  build:
-    # Do things
-    privileged: true
-    image: docker:stable-dind
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    commands:
-      - docker build --pull -f Dockerfile.prod .
-    when:
-      event: [pull_request]
+kind: pipeline
+name: default
 
-  publish-dev:
-    group: publish
-    image: plugins/docker
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  pull: always
+  image: plugins/docker
+  settings:
+    context: .
+    dockerfile: Dockerfile.prod
+    dry_run: true
+    repo: rancher/docs
+    tag: dev
+  when:
+    event:
+    - pull_request
+
+- name: publish-dev
+  pull: always
+  image: plugins/docker
+  settings:
+    context: .
     dockerfile: Dockerfile.dev
     repo: rancher/docs
-    context: .
     tag: dev
-    secrets: [docker_username, docker_password]
-    when:
-      branch: master
-      event: push
+    password:
+      from_secret: docker_password
+    username:
+      from_secret: docker_username
+  when:
+    branch:
+    - master
+    event:
+    - push
 
-  publish-staging:
-    group: publish
-    image: plugins/docker
+- name: publish-staging
+  pull: always
+  image: plugins/docker
+  settings:
+    context: .
     dockerfile: Dockerfile.staging
     repo: rancher/docs
-    context: .
     tag: staging
-    secrets: [docker_username, docker_password]
-    when:
-      branch: master
-      event: push
+    password:
+      from_secret: docker_password
+    username:
+      from_secret: docker_username
+  when:
+    branch:
+    - staging
+    event:
+    - push
 
-  publish-latest:
-    group: publish
-    image: plugins/docker
-    dockerfile: Dockerfile.prod
-    repo: rancher/docs
+- name: publish-latest
+  pull: always
+  image: plugins/docker
+  settings:
     context: .
+    dockerfile: Dockerfile.prod
+    group: publish
+    repo: rancher/docs
     tag: latest
-    secrets: [docker_username, docker_password]
-    when:
-      branch: master
-      event: push
+    password:
+      from_secret: docker_password
+    username:
+      from_secret: docker_username
+  when:
+    branch:
+    - master
+    event:
+    - push
 
-  publish-latest-algolia:
-    image: plugins/docker
+- name: publish-latest-algolia
+  pull: always
+  image: plugins/docker
+  settings:
+    context: .
     dockerfile: Dockerfile.algolia
     repo: rancher/docs
-    context: .
     tag: algolia
-    secrets: [docker_username, docker_password]
-    when:
-      branch: master
-      event: push
-
+    password:
+      from_secret: docker_password
+    username:
+      from_secret: docker_username
+  when:
+    branch:
+    - master
+    event:
+    - push
