@@ -40,7 +40,10 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
 
 - Swap should be disabled on any worker nodes
 
-- Following kernel modules should be present
+- Following kernel modules should be present. This can be checked using:
+   * `modprobe module_name`
+   * `lsmod | grep module_name`
+   * `grep module_name /lib/modules/$(uname -r)/modules.builtin`, if it's a built-in module
 
 Module name |
 ------------|
