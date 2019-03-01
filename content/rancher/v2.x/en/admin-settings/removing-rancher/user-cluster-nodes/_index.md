@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/removing-rancher/
   - /rancher/v2.x/en/faq/cleaning-cluster-nodes/
 ---
-When you use Rancher to [launch nodes for a cluster]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher), resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created. 
+When you use Rancher to [launch nodes for a cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher), resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created. 
 
 When removing nodes from your Rancher-launched cluster (provided that they are in `Active` state), those resources automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
 
