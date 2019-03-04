@@ -3,7 +3,7 @@ title: Network Plug-ins
 weight: 261
 ---
 
-RKE supports the following network plug-ins that are deployed as add-ons:
+RKE provides the following network plug-ins that are deployed as add-ons:
 
 - Flannel
 - Calico
