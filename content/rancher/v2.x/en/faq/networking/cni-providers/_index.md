@@ -41,9 +41,9 @@ CNI providers using this network model include Calico and Romana.
 
 ![Unencapsulated Network]({{< baseurl >}}/img/rancher/unencapsulated-network.svg)
 
-### What CNI Providers are Supported by Rancher?
+### What CNI Providers does Rancher offer?
 
-Out-of-the-box, Rancher supports three different CNI providers for Kubernetes clusters: Canal, Flannel, and Calico. You can choose your CNI when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, Rancher offers three different CNI providers for Kubernetes clusters: Canal, Flannel, and Calico. You can choose your CNI when you create new Kubernetes clusters from Rancher.
 
 #### Canal
 
@@ -93,13 +93,13 @@ For more information, see the following pages:
 
 ### CNI Features by Provider
 
-The following table summarizes the different features available for each CNI provider supported by Rancher.
+The following table summarizes the different features available for each CNI provider offered by Rancher.
 
-| Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies | Commercial Support |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes | No |
-| Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No | No |
-| Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes | Yes |
+| Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
+| Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
+| Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes |
 
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
@@ -118,7 +118,7 @@ The following table summarizes the different features available for each CNI pro
 
 #### CNI Community Popularity
 
-The following table summarizes different GitHub metrics to give you an idea of each supported project's popularity and activity. This data was collected in July 2018.
+The following table summarizes different GitHub metrics to give you an idea of each offered project's popularity and activity. This data was collected in July 2018.
 
 | Provider | Project | Stars | Forks | Contributors |
 | ---- | ---- | ---- | ---- | ---- |
@@ -128,7 +128,7 @@ The following table summarizes different GitHub metrics to give you an idea of e
 <br/>
 ### Which CNI Provider Should I Use?
 
-It depends on your project needs. There are many different providers, which each have various features and options. There isn't one provider that meets everyone's needs. At the moment, Rancher v2.0 supports the 3 most versatile CNI providers.
+It depends on your project needs. There are many different providers, which each have various features and options. There isn't one provider that meets everyone's needs. At the moment, Rancher offers the 3 most versatile CNI providers.
 
 As of Rancher v2.0.7, Canal is the default CNI provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking. 
 
