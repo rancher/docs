@@ -3,7 +3,7 @@ title: "7. Load Balancing"
 weight: 700
 ---
 
-If your applications are public-facing and draw significant traffic from the internet, you should place a load balancer in front of your cluster so that users can always access their apps without service interruption.  Typically, you can fulfill a high volume of service requests by [horizontally scaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) your deployment, which spins up additional application containers as traffic ramps up. However, this technique requires routing that distributes traffic across your nodes efficiently. In cases where you need to accommodate public traffic that scales up and down, you'll need a load balancer.
+If your applications are public-facing and consume significant traffic, you should place a load balancer in front of your cluster so that users can always access their apps without service interruption. Typically, you can fulfill a high volume of service requests by [horizontally scaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) your deployment, which spins up additional application containers as traffic ramps up. However, this technique requires routing that distributes traffic across your nodes efficiently. In cases where you need to accommodate public traffic that scales up and down, you'll need a load balancer.
 
 As outlined in [its documentation](https://rancher.com/docs/rancher/v1.6/en/cattle/adding-load-balancers/), Rancher v1.6 provided rich support for load balancing using its own microservice powered by HAProxy, which supports HTTP, HTTPS, TCP hostname, and path-based routing. Most of these same features are available in v2.x. However, load balancers that you used with v1.6 cannot be migrated to v2.x. You'll have to manually recreate your v1.6 load balancer in v2.x.
 
@@ -24,59 +24,26 @@ If you encounter the `output.txt` text below after parsing your v1.6 Compose fil
 - [Deploying Ingress](#deploying-ingress)
 - [Rancher v2.x Load Balancing Limitations](#rancher-v2-x-load-balancing-limitations)
 
-
 <!-- /TOC -->
 
 ## Load Balancing Protocol Options
 
-<!--
+By default, Rancher v2.x replaces the v1.6 load balancer microservice with the native [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which is backed by NGINX Ingress Controller for layer 7 load balancing. By default, Kubernetes Ingress only supports the HTTP and HTTPS protocols, not TCP. Load balancing is limited to these two protocols when using Ingress.
 
-<figcaption>Rancher v1.6 rancher-compose.yml Load Balancer Configuration</figcaption>
-
-```
-...
-    webLB:
-        scale: 1
-        start_on_create: true
-        lb_config:
-          certs: []
-          port_rules:
-          - hostname: myapp.chat.com
-            path: /login
-            priority: 1
-            protocol: http
-            service: web
-            source_port: 80
-            target_port: 8080
-        health_check:
-          healthy_threshold: 2
-          response_timeout: 2000
-          port: 42
-          unhealthy_threshold: 3
-          initializing_timeout: 60000
-          interval: 2000
-          reinitializing_timeout: 60000
-```
-
---> 
-By default, Rancher v2.x replaces the v1.6 load balancer microservice with the native [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which is backed by Nginx Ingress Controller for layer 7 load balancing. By default, Kubernetes Ingress only supports the HTTP and HTTPS protocols, not TCP. Load balancing is limited to these two protocols when using Ingress.
-
-> **TCP Required?** Rancher v2.x still supports layer 4 load balancers, although you must create the load balancer using the cloud provider in which your Kubernetes cluster is deployed. 
+> **TCP Required?** See [TCP Load Balancing Optionsl](#tcp-load-balancing-options)
 
 
 ## Load Balancer Deployment
-
-<!-- TODO: Add table, link to relevant sections -->
 
 In Rancher v1.6, you could add port/service rules for configuring your HAProxy to load balance for target services. You could also configure the hostname/path-based routing rules.
 
 Rancher v2.x offers similar functionality, but load balancing is instead handled by Ingress. An Ingress is a specification of rules that a controller component applies to your load balancer. The actual load balancer can run outside of your cluster or within it.
 
-By default, Rancher v2.x deploys Nginx Ingress Controller and load balancer on clusters provisioned using RKE (Rancher's own Kubernetes installer) to process the Kubernetes Ingress rules. The Nginx Ingress Controller is installed by default only in clusters provisioned by RKE. Clusters provisioned by cloud providers like GKE have their own Ingress Controllers that configure the load balancer. For this document, our scope is limited to the RKE-installed NGINX Ingress Controller only, but you can read about cloud providers in our documentation <!-- TODO: link -->
+By default, Rancher v2.x deploys NGINX Ingress Controller on clusters provisioned using RKE (Rancher's own Kubernetes installer) to process the Kubernetes Ingress rules. The NGINX Ingress Controller is installed by default only in clusters provisioned by RKE. Clusters provisioned by cloud providers like GKE have their own Ingress Controllers that configure the load balancer. For this document, our scope is limited to the RKE-installed NGINX Ingress Controller only, but you can read about cloud providers in [our documentation]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/).
 
-RKE deploys Nginx Ingress Controller as a Kubernetes DaemonSet <!-- TODO: link -->, meaning that an NGINX instance is deployed on every node in the cluster. Nginx acts like an Ingress Controller listening to Ingress creation within your entire cluster, and it also configures itself as the load balancer to satisfy the Ingress rules. The DaemonSet is configured with hostNetwork to expose two ports: 80 and 443. 
+RKE deploys NGINX Ingress Controller as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), meaning that an NGINX instance is deployed on every node in the cluster. NGINX acts like an Ingress Controller listening to Ingress creation within your entire cluster, and it also configures itself as the load balancer to satisfy the Ingress rules. The DaemonSet is configured with hostNetwork to expose two ports: 80 and 443. 
 
-For more information Nginx Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation](https://rancher.com/docs/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
+For more information NGINX Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation](https://rancher.com/docs/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
 
 ## Load Balancing Architecture
 
@@ -90,7 +57,7 @@ In Rancher v1.6 you could deploy a scalable load balancer service within your st
 
 ![Rancher v1.6 Load Balancing]({{< baseurl >}}/img/rancher/cattle-load-balancer.svg)
 
-The Rancher v2.x Ingress Controller is a DaemonSet—it is globally deployed on all schedulable nodes to serve your entire Kubernetes Cluster. Therefore, when you program the Ingress rules, you must use a unique hostname and path to point to your workloads, as the load balancer node IP addresses and ports 80 and 443 are common access points for all workloads.
+The Rancher v2.x Ingress Controller is a DaemonSet, it is globally deployed on all schedulable nodes to serve your entire Kubernetes Cluster. Therefore, when you program the Ingress rules, you must use a unique hostname and path to point to your workloads, as the load balancer node IP addresses and ports 80 and 443 are common access points for all workloads.
 
 <figcaption>Rancher v2.x Load Balancing Architecture</figcaption>
 
@@ -108,8 +75,6 @@ Although Rancher v2.x supports HTTP and HTTPS hostname and path-based load balan
 
 ## Deploying Ingress
 
-
-
 You can launch a new load balancer to replace your load balancer from v1.6. Using the Rancher v2.x UI, browse to the applicable project and choose **Workloads** from the main menu. Then choose the **Load Balancing** tab and begin by clicking **Deploy**. During deployment, you can choose a target project or namespace.
 
 >**Prerequisite:** Before deploying Ingress, you must have a workload deployed that's running a scale of two or more pods.
@@ -126,7 +91,7 @@ Similar to a service/port rules in Rancher v1.6, here you can specify rules targ
 
 ### Configuring Host- and Path-Based Routing
 
-Using Rancher v2.x, you can add Ingress rules that are based on host names or a URL path. Based on the rules you create, your Nginx Ingress Controller routes traffic to multiple target workloads or Kubernetes services.
+Using Rancher v2.x, you can add Ingress rules that are based on host names or a URL path. Based on the rules you create, your NGINX Ingress Controller routes traffic to multiple target workloads or Kubernetes services.
 
 For example, let's say you have multiple workloads deployed to a single namespace. You can add an Ingress to route traffic to these two workloads using the same hostname but different paths, as depicted in the image below. URL requests to `foo.com/name.html` will direct users to the `web` workload, and URL requests to `foo.com/login` will direct users to the `chat` workload.
 
@@ -152,8 +117,8 @@ kubectl get ingress
 
 Rancher v2.x Ingress functionality supports the HTTPS protocol, but if you want to use it, you need to use a valid SSL/TLS certificate. While configuring Ingress rules, use the **SSL/TLS Certificates** section to configure a certificate.
 
-- If you're configuring Ingress for an internal audience that knows it can safely ignore a certificate warning, using the **Use default ingress controller certificate** is easiest.
-- If you're configuring Ingress for a public audience, we recommend [uploading a certificate]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/) from a known certificate authority (you'll have to do this before configuring Ingress). Then, while configuring your load balancer, use the **Choose a certificate** option and select the uploaded certificate that you want to use. 
+- We recommend [uploading a certificate]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/) from a known certificate authority (you'll have to do this before configuring Ingress). Then, while configuring your load balancer, use the **Choose a certificate** option and select the uploaded certificate that you want to use.
+- If you have configured [NGINX default certificate]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/#configuring-an-nginx-default-certificate), you can select **Use default ingress controller certificate**.
 
 <figcaption>Load Balancer Configuration: SSL/TLS Certificate Section</figcaption>
 
@@ -173,27 +138,27 @@ For example, if we create a deployment named `myapp` and specify a Layer 4 load 
 
 Once configuration of the load balancer succeeds, the Rancher UI provides a link to your workload's public endpoint.
 
-#### Nginx Ingress Controller TCP Support by ConfigMaps
+#### NGINX Ingress Controller TCP Support by ConfigMaps
 
-Although Nginx supports TCP, Kubernetes Ingress itself does not support the TCP protocol. Therefore, out-of-the-box configuration of Nginx Ingress Controller for TCP balancing isn't possible.
+Although NGINX supports TCP, Kubernetes Ingress itself does not support the TCP protocol. Therefore, out-of-the-box configuration of NGINX Ingress Controller for TCP balancing isn't possible.
 
-However, there is a workaround to use Nginx's TCP balancing by creating a Kubernetes ConfigMap, as described in the [Ingress GitHub readme](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md). You can create a ConfigMap object that stores pod configuration parameters as key-value pairs, separate from the pod image, as described in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/).
+However, there is a workaround to use NGINX's TCP balancing by creating a Kubernetes ConfigMap, as described in the [Ingress GitHub readme](https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/exposing-tcp-udp-services.md). You can create a ConfigMap object that stores pod configuration parameters as key-value pairs, separate from the pod image, as described in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/).
 
-To configure Nginx to expose your services via TCP, you can add the ConfigMap `tcp-services` that should exist in the `ingress-nginx` namespace. This namespace also contains the Nginx Ingress Controller pods.
+To configure NGINX to expose your services via TCP, you can add the ConfigMap `tcp-services` that should exist in the `ingress-nginx` namespace. This namespace also contains the NGINX Ingress Controller pods.
 
 ![Layer-4 Load Balancer: ConfigMap Workaround]({{< baseurl >}}/img/rancher/layer-4-lb-config-map.png)
 
-The key in the ConfigMap entry should be the TCP port that you want to expose for public access: `<namespace/service name>:<service port>`. As shown above, two workloads are listed in the `Default` namespace. For example, the first entry in the ConfigMap above instructs NGINX to expose the `myapp` workload (the one in the `default` namespace that's listening on private port 80) over external port `6790`. Adding these entries to the ConfigMap automatically updates the Nginx pods to configure these workloads for TCP balancing. The workloads exposed should be available at `<NodeIP>:<TCP Port>`. If they are not accessible, you might have to expose the TCP port explicitly using a NodePort service.
+The key in the ConfigMap entry should be the TCP port that you want to expose for public access: `<namespace/service name>:<service port>`. As shown above, two workloads are listed in the `Default` namespace. For example, the first entry in the ConfigMap above instructs NGINX to expose the `myapp` workload (the one in the `default` namespace that's listening on private port 80) over external port `6790`. Adding these entries to the ConfigMap automatically updates the NGINX pods to configure these workloads for TCP balancing. The workloads exposed should be available at `<NodeIP>:<TCP Port>`. If they are not accessible, you might have to expose the TCP port explicitly using a NodePort service.
 
 ## Rancher v2.x Load Balancing Limitations
 
 Cattle provided feature-rich load balancer support that is [well documented](https://rancher.com/docs/rancher/v1.6/en/cattle/adding-load-balancers/#load-balancers). Some of these features do not have equivalents in Rancher v2.x. This is the list of such features:
 
-- No support for SNI in current Nginx Ingress Controller.
+- No support for SNI in current NGINX Ingress Controller.
 - TCP load balancing requires a load balancer appliance enabled by cloud provider within the cluster. There is no Ingress support for TCP on Kubernetes.
 - Only ports 80 and 443 can be configured for HTTP/HTTPS routing via Ingress. Also Ingress Controller is deployed globally as a DaemonSet and not launched as a scalable service. Also, users cannot assign random external ports to be used for balancing. Therefore, users need to ensure that they configure unique hostname/path combinations to avoid routing conflicts using the same two ports.
 - There is no way to specify port rule priority and ordering.
 - Rancher v1.6 added support for draining backend connections and specifying a drain timeout. This is not supported in Rancher v2.x.
-- There is no support for specifying a custom stickiness policy and a custom load balancer config to be appended to the default config as of now in Rancher v2.x. There is some support, however, available in native Kubernetes for customizing the Nginx configuration as noted in the [NGINX Ingress Controller Custom Conguration Documentation](https://kubernetes.github.io/ingress-nginx/examples/customization/custom-configuration/).
+- There is no support for specifying a custom stickiness policy and a custom load balancer config to be appended to the default config as of now in Rancher v2.x. There is some support, however, available in native Kubernetes for customizing the NGINX configuration as noted in the [NGINX Ingress Controller Custom Conguration Documentation](https://kubernetes.github.io/ingress-nginx/examples/customization/custom-configuration/).
 
 ### Finished!
