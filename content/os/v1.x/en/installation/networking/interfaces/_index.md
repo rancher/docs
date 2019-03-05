@@ -169,9 +169,9 @@ rancher:
 
 ### WiFi
 
-_Available as of v1.5+_
+_Available as of v1.5_
 
-In order to enable wifi access, you can update the cloud-config with the wifi network information. You can use DHCP or STATIC mode.
+In order to enable WiFi access, update the `cloud-config` with the WiFi network information. You can use `DHCP` or `STATIC` mode.
 
 #### Example of a wireless adapter using DHCP
 
@@ -232,25 +232,25 @@ rancher:
         scan_ssid: 1
 ```
 
-Adding in wifi access can be done with a system reboot, you only need to restart the `network` service. 
+When adding in WiFi access, you do not need a system reboot, you only need to restart the `network` service in System Docker. 
 
 ```
 $ sudo system-docker restart network
 ```
 
-> **Note:** For Intel wireless adapters, there are some built-in firmware and modules, which prevents you have requiring to install any new modules or firmware. For other adapters, you may need to install additional os kernel-extras.
+> **Note:** For Intel wireless adapters, there are some built-in firmware and modules, which prevents requiring to install any new modules or firmware. For other adapters, you may need to install additional os kernel-extras.
 
 ### 4G-LTE
 
-_Available as of v1.5+_
+_Available as of v1.5_
 
-In order to support 4G-LTE, you will need a 4G-LTE module, which can be easily connected to the motherboard. In order to get a good signal, you will also need an external antenna. You can assemble such a device, which can support USB interface and SIM cards slot:
+In order to support 4G-LTE, 4G-LTE module will need to be connected to the motherboard and to get a good signal, an external atenna will need to be added. You can assemble such a device, which supports USB interface and SIM cards slot:
 
 ![](https://ws1.sinaimg.cn/bmiddle/006tNc79ly1fzcuvhu6zpj30k80qwag1.jpg)
 
-In order to use RancherOS, you will need to use a special ISO built for 4G-LTE support. This ISO has a built-in `modem-manager` service. This special ISO can be downloaded from [here](https://releases.rancher.com/os/latest/4glte/rancheros.iso).
+In order to use RancherOS, you will need to use the ISO built for 4G-LTE support. This ISO has a built-in `modem-manager` service and is available with each release. 
 
-After booting the ISO, you can see a 4G NIC, such as `wwan0`. You can use the following cloud-config to set the APN parameter to get it working. 
+After booting the ISO, there will be a 4G NIC, such as `wwan0`. Use the following `cloud-config` to set the APN parameter. 
 
 ```yaml
 rancher:
@@ -260,10 +260,10 @@ rancher:
         apn: xxx
 ```
 
-If there are any configuration changes, you will only need to restart the `modem-manager` service to apply these changes.
+After any configuration changes, restart the `modem-manager` service to apply these changes.
 
 ```
 $ sudo system-docker restart modem-manager
 ```
 
-> **Note:** There are some built-in `udev` rules to allow RancherOS to recognize specific 4G devices. There are still some vendors that may be missing and if you need support for these, please file an issue. 
+> **Note:** Currently, RancherOS has some built-in  rules in `udev` rules to allow RancherOS to recognize specific 4G devices, but there are additional vendors that may be missing. If you need to add these in, please file an issue. 
