@@ -188,6 +188,74 @@ PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 {{% /tabs %}}
 
 {{% /accordion %}}
+{{% accordion id="publish-catalog-template" label="Publish Catalog Template" %}}
+
+_Available as of v2.2.0_
+
+The **Publish Catalog Template** step publishes a version of catalog app template(helm chart) to a [git hosted chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the pipeline dedicated namespace to complete successfully. [Pipeline variable substitution]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/) is supported for any file in the chart folder.
+
+{{% tabs %}}
+
+{{% tab "By UI" %}}
+<br/>
+
+1. From the **Step Type** drop-down, choose **Publish Catalog Template**.
+
+1. Fill in the rest of the form. Descriptions for each field are listed below. When you're done, click **Add**.
+
+    Field | Description |
+    ---------|----------|
+     Chart Folder | The relative path to the chart folder in the source code repo, where the `Chart.yaml` file is located. |
+     Catalog Template Name | The name of the template. For example, wordpress. |
+     Catalog Template Version | The version of the template you want to publish, it should be consistent with the version defined in the `Chart.yaml` file. |
+     Protocol | You can choose to publish via HTTP(S) or SSH protocol. |
+     Secret   | The secret that stores your Git credentials. You need to create a secret in pipeline dedicated namespace in the project before adding this step. If you use HTTP(S) protocol, store Git username and password in `USERNAME` and `PASSWORD` key of the secret. If you use SSH protocol, store Git deploy key in `DEPLOY_KEY` key of the secret. After the secret is created, select it in this option. |
+     Git URL  | The Git URL of the chart repository that the template will be published to. |
+     Git Branch | The Git branch of the chart repository that the template will be published to. |
+     Author Name | The author name used in the commit message. |
+     Author Email | The author email used in the commit message. |
+
+
+{{% /tab %}}
+
+{{% tab "By YAML" %}}
+
+You can add **Publish Catalog Template** steps directly in the `.rancher-pipeline.yml` file.
+
+Under the `steps` section, add a step with `publishCatalogConfig`. You will provide the following information:
+
+
+* Path: The relative path to the chart folder in the source code repo, where the `Chart.yaml` file is located.
+* CatalogTemplate: The name of the template.
+* Version: The version of the template you want to publish, it should be consistent with the version defined in the `Chart.yaml` file.
+* GitUrl: The git URL of the chart repository that the template will be published to.
+* GitBranch: The git branch of the chart repository that the template will be published to.
+* GitAuthor: The author name used in the commit message.
+* GitEmail: The author email used in the commit message.
+* Credentials: You should provide Git credentials by referencing secrets in pipeline dedicated namespace. If you publish via SSH protocol, inject your deploy key to the `DEPLOY_KEY` environment variable. If you publish via HTTP(S) protolcol, inject your username and password to `USERNAME` and `PASSWORD` environment variables.
+
+```yaml
+# example
+stages:
+- name: Publish Wordpress Template
+  steps:
+  - publishCatalogConfig:
+      path: ./charts/wordpress/latest
+      catalogTemplate: wordpress
+      version: ${CICD_GIT_TAG}
+      gitUrl: git@github.com:myrepo/charts.git
+      gitBranch: master
+      gitAuthor: example-user
+      gitEmail: user@example.com
+    envFrom:
+    - sourceName: publish-keys
+      sourceKey: DEPLOY_KEY
+```
+{{% /tab %}}
+
+{{% /tabs %}}
+
+{{% /accordion %}}
 {{% accordion id="deploy-yaml" label="Deploy YAML" %}}
 
 This step deploys arbitrary Kubernetes resources to the project. This deployment requires a Kubernetes manifest file to be present in the source code repository. Pipeline variable substitution is supported in the manifest file. You can view an example file at [GitHub](https://github.com/rancher/pipeline-example-go/blob/master/deployment.yaml). For available variables, refer to [Pipeline Variable Reference]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/).
@@ -220,7 +288,63 @@ stages:
 {{% /tabs %}}     
 
 {{% /accordion %}}
+{{% accordion id="deploy-catalog-app" label="Deploy Catalog App" %}}
 
+_Available as of v2.2.0_
+
+The **Deploy Catalog App** step deploys a catalog app in the project. It will install a new app if it is not present, or upgrade an existing one.
+
+{{% tabs %}}
+
+{{% tab "By UI" %}}
+<br/>
+
+1. From the **Step Type** drop-down, choose **Deploy Catalog App**.
+
+1. Fill in the rest of the form. Descriptions for each field are listed below. When you're done, click **Add**.
+
+    Field | Description |
+    ---------|----------|
+     Catalog | The catalog from which the app template will be used. |
+     Template Name | The name of the app template. For example, wordpress. |
+     Template Version | The version of the app template you want to deploy. |
+     Namespace | The target namespace where you want to deploy the app. |
+     App Name  | The name of the app you want to deploy. |
+     Answers   | Key-value pairs of answers used to deploy the app. |
+
+
+{{% /tab %}}
+
+{{% tab "By YAML" %}}
+
+You can add **Deploy Catalog App** steps directly in the `.rancher-pipeline.yml` file.
+
+Under the `steps` section, add a step with `applyAppConfig`. You will provide the following information:
+
+* CatalogTemplate: The ID of the template. This can be found by clicking `Launch app` and selecting `View details` for the app. It is the last part of the URL.
+* Version: The version of the template you want to deploy.
+* Answers: Key-value pairs of answers used to deploy the app.
+* Name: The name of the app you want to deploy.
+* TargetNamespace: The target namespace where you want to deploy the app.
+
+```yaml
+# example
+stages:
+- name: Deploy App
+  steps:
+  - applyAppConfig:
+      catalogTemplate: cattle-global-data:library-mysql
+      version: 0.3.8
+      answers:
+        persistence.enabled: "false"
+      name: testmysql
+      targetNamespace: test
+```
+{{% /tab %}}
+
+{{% /tabs %}}
+
+{{% /accordion %}}
 1. When you're finished adding stages and steps, click **Done.** 
 
 ### 3. Running the Pipeline
