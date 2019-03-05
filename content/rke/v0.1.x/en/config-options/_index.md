@@ -56,7 +56,7 @@ ignore_docker_version: true
 
 You can select which version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions. If a version is defined in `kubernetes_version` and is not found in this list, the default version is used. If you want to use a different version than listed below, please use the [system images](#rke-system-images) option. 
 
-The supported Kubernetes versions for RKE v0.1.15 are:
+The supported Kubernetes versions for RKE v0.1.16 are:
 
  Kubernetes version|
  -----------------|
