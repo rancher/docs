@@ -27,7 +27,7 @@ You can schedule your migrated v1.6 services while editing a deployment. Schedul
 - [Scheduling Pods to a Specific Node](#scheduling-pods-to-a-specific-node)
 - [Scheduling Using Labels](#scheduling-using-labels)
 - [Scheduling Pods Using Resource Constraints](#scheduling-pods-using-resource-constraints)
-- [Scheduling Specific Services to Specific Nodes](#scheduling-specific-services-to-specific-nodes)
+- [Preventing Scheduling Specific Services to Specific Nodes](#preventing-scheduling-specific-services-to-specific-nodes)
 - [Scheduling Global Services](#scheduling-global-services)
 
 
@@ -52,16 +52,16 @@ The sections that follow provide information on using each scheduling options, a
 
 Option | v1.6 Feature | v2.x Feature
 -------|------|------
-[Schedule pods by scale?](#scheduling-pods-by-scale) | ✓ | ✓ 
+[Schedule a certain number of pods?](#schedule-a-certain-number-of-pods) | ✓ | ✓ 
 [Schedule pods to specific node?](#scheduling-pods-to-a-specific-node) | ✓ | ✓
 [Schedule to nodes using labels?](#scheduling-pods-using-labels) | ✓ | ✓ 
 [Schedule to nodes using label affinity/anti-affinity rules?](#scheduling-pods-using-affinityanti-affinity-label) | ✓ | ✓
 [Schedule based on resource constraints?](#scheduling-pods-using-resource-constraints) | ✓ | ✓
-[Schedule specific services to specific hosts?](#scheduling-specific-services-to-specific-nodes) | ✓ | ✓
+[Preventing scheduling specific services to specific hosts?](#preventing-scheduling-specific-services-to-specific-nodes) | ✓ | ✓
 [Schedule services globally?](#scheduling-global-services) | ✓ | ✓ 
 
 
-### Scheduling Pods by Scale
+### Schedule a certain number of pods
 
 In v1.6, you could control the number of container replicas deployed for a service. You can schedule pods the same way in v2.x, but you'll have to set the scale manually while editing a workload. 
 
@@ -152,13 +152,7 @@ Before you can schedule pods based on labels, you must first apply labels to you
 >**Hooray!**
 >All the labels that you manually applied in Rancher v1.6 (but _not_ the ones automatically created by Rancher) are parsed by migration-tools CLI, meaning you don't have to manually reapply labels.
 
-To apply labels to pods, make additions to the **Labels and Annotations** section as you configure your workload. After you complete workload configuration, you can view the label by viewing each pod that you've scheduled. The GIF below demonstrates how to apply and view pod labels.
-
-![Add Pod Label]({{< baseurl >}}/img/rancher/add-pod-label.gif)
-
-To apply labels to nodes, edit your node and make additions to the **Labels** section.
-
-![Add Node Label]({{< baseurl >}}/img/rancher/add-node-label.gif)
+To apply labels to pods, make additions to the **Labels and Annotations** section as you configure your workload. After you complete workload configuration, you can view the label by viewing each pod that you've scheduled. To apply labels to nodes, edit your node and make additions to the **Labels** section.
 
 
 #### Label Affinity/AntiAffinity
@@ -204,62 +198,17 @@ Detailed documentation for affinity/anti-affinity is available in the [Kubernete
 Affinity rules that you create in the UI update your workload, adding pod affinity/anti-affinity directives to the workload Kubernetes manifest specs.
 
 
-<!-- 
-
-The following Rancher v2.x workload is running Wordpress and mySql DB. Notice that both `containers` have constraints for a minimum (`requests`) and maximum (`limits`) for both `memory` and `cpu`.  
-
-```YAML
-apiVersion: v1
-kind: Pod
-metadata:
-  name: frontend
-spec:
-  containers:
-  - name: db
-    image: mysql
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: "password"
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-  - name: wp
-    image: wordpress
-    resources:
-      requests:
-        memory: "64Mi"
-        cpu: "250m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-```
-
--->
-
-You can find more detail about these specs and how to use them in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container).
-
-
 ### Preventing Scheduling Specific Services to Specific Nodes
 
 In Rancher v1.6 setups, you could prevent services from being scheduled to specific nodes with the use of labels. In Rancher v2.x, you can reproduce this behavior using native Kubernetes scheduling options.
 
-In Rancher v2.x, you can prevent pods from being scheduled to specific nodes by applying _taints_ to a node. Think of a taint as a "stink" coming off a node. Pods will not be scheduled to a tainted node unless it has special permission, called a _toleration_. A toleration is a special label that allows a pod to be deployed to a tainted node. While editing a workload, you can apply tolerations using the **Node Scheduling** section. Click **Show advanced options**.
+In Rancher v2.x, you can prevent pods from being scheduled to specific nodes by applying _taints_ to a node. Pods will not be scheduled to a tainted node unless it has special permission, called a _toleration_. A toleration is a special label that allows a pod to be deployed to a tainted node. While editing a workload, you can apply tolerations using the **Node Scheduling** section. Click **Show advanced options**.
 
 <figcaption>Applying Tolerations</figcaption>
 
 ![Tolerations]({{< baseurl >}}/img/rancher/node-schedule-advanced-options.png)
 
 For more information, see the Kubernetes documentation on [taints and tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/). 
-
-As of v2.1.1, there is no UI support for scheduling workloads to specific nodes, but you can still use this option by editing the deployment's Kubernetes manifest.
-
-<!-- TODO: Add code sample -->
-
-<!-- Question: how are taints and tolerations different from antiaffinity? They sound synonymous -->
 
 ### Scheduling Global Services
 
@@ -278,64 +227,6 @@ To create a daemonset while configuring a workload, choose **Run one pod on each
 <figcaption>Workload Configuration: Choose run one pod on each node to configure daemonset</figcaption>
 
 ![choose Run one pod on each node]({{< baseurl >}}/img/rancher/workload-type.png)
-
-<!--
-
-{{% tabs %}}
-{{% tab "Rancher v2.x Kubernetes Manifest" %}}
-
-
-This is what the Kubernetes manifest specs look like for a _DaemonSet_:
-
-```YAML
-apiVersion: apps/v1beta2
-kind: DaemonSet
-metadata:
-  labels:
-    workload.user.cattle.io/workloadselector: daemonSet-default-globalapp
-  name: globalapp
-  namespace: default
-spec:
-  selector:
-    matchLabels:
-      workload.user.cattle.io/workloadselector: daemonSet-default-globalapp
-  template:
-    metadata:
-      labels:
-        workload.user.cattle.io/workloadselector: daemonSet-default-globalapp
-    spec:
-      affinity: {}
-      containers:
-      - image: nginx
-        imagePullPolicy: Always
-        name: globalapp
-        resources: {}
-        stdin: true
-        tty: true
-      restartPolicy: Always
-
-```
- 
-{{% /tab %}}
-{{% tab "Rancher v1.6 Compose" %}}
-
-
-The sample below is an example of a global service in Rancher v1.6. Note that just placing the required label is sufficient to make a service global.
-
-```YAML
-version: '2'
-services: 
-  global:
-    image: nginx
-    stdin_open: true
-    tty: true
-    labels:
-      io.rancher.container.pull_image: always
-      io.rancher.scheduler.global: 'true'
-```
-
-{{% /tab %}}
-{{% /tabs %}} -->
 
 ### Scheduling Pods Using Resource Constraints
 
@@ -359,5 +250,7 @@ To declare resource constraints, edit your migrated workloads, editing the **Sec
 <figcaption>Scheduling: Resource Constraint Settings</figcaption>
 
 ![Resource Constraint Settings]({{< baseurl >}}/img/rancher/resource-constraint-settings.png)
+
+You can find more detail about these specs and how to use them in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container).
 
 ### [Next: Service Discovery]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/discover-services/)
