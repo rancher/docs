@@ -5,16 +5,16 @@ weight: 108
 
 As of v1.1.0, RancherOS automatically detects that it is running on VMware ESXi, and automatically adds the `open-vm-tools` service to be downloaded and started, and uses `guestinfo` keys to set the cloud-init data.
 
-As of v1.5.0, We release all stuff for vmware, it will include initrd, regular ISO for vmware, vmdk image, and so on. The open-vm-tools has been built in RancherOS, you don't need to download it.
+As of v1.5.0, RancherOS releases anything required for VMware, which includes initrd, a standard ISO for VMware, a `vmdk` image, and a specific ISO to be used with Docker Machine. The open-vm-tools is built in to RancherOS, there is no need to download it.
 
-| Description  | URL Link |
+| Description  | Downlaod URL |
 |---|---|
 | Booting from ISO   | https://releases.rancher.com/os/latest/vmware/rancheros.iso |
 | For docker-machine | https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso |
 | VMDK               | https://releases.rancher.com/os/latest/vmware/rancheros.vmdk |
 | Initrd             | https://releases.rancher.com/os/latest/vmware/initrd |
 
-### VMware guestinfo
+### VMware Guest Info
 
 | VARIABLE | TYPE |
 |---|---|
