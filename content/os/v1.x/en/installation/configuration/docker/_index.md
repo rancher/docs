@@ -155,41 +155,45 @@ Digest: sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c
 Status: Downloaded newer image for alpine:latest
 ```
 
-### Using Multiple User-Docker Daemons
+### Using Multiple User Docker Daemons
 
-_Available as of v1.5_
+_Available as of v1.5.0_
+
+When RancherOS is booted, you start with a User Docker service that is running in System Docker. With v1.5.0, RancherOS has the ability to create additional User Docker services that can run at the same time. 
 
 #### Terminology
 
+Throughout the rest of this documentation, we may simplify to use these terms when describing Docker. 
+
 | Terminology                  | Definition                                       |
 |-----------------------|--------------------------------------------------|
-| Dind                  |  Docker in docker  |
-| User docker, UD       |  The user-docker on RancherOS |
-| Other user docker, OUD|  The other user-docker daemons you create, these user-docker daemons are Dind mode.  |
+| DinD                  |  Docker in docker  |
+| User Docker     |  The user-docker on RancherOS |
+| Other User Docker|  The other user-docker daemons you create, these user-docker daemons are automatically assumed to be Docker in Docker.  |
 
-#### Prepare
+#### Pre-Requisites
 
-You must switch user-docker to 17.12.1 or earlier version. Otherwise, it may get these error when creating an user-defined network on system-docker.
+User Docker must be set as Docker 17.12.1 or earlier. If it's a later Docker version, it will produce errors when creating a user defined network in System Docker. 
 
 ```
 $ ros engine switch docker-17.12.1-ce
 ```
 
-Create an user-define network, need to use this network when creating an OUD:
+You will need to create a user-defined network, which will be used when creating the Other User Docker. 
 
 ```
 $ system-docker network create --subnet=172.20.0.0/16 dind
 ```
 
-#### Create OUD
+#### Create the Other User Docker
 
-Just use `ros engine create`. For the OUD image, currently only support docker `17.12.1` and `18.03.1`.
+In order to create another User Docker, you will use `ros engine create`. Currently, RancherOS only supports Docker `17.12.1` and `18.03.1` for the Other User Docker image.
 
 ```
-$ ros engine create dind1 --network=dind --fixed-ip=172.20.0.2
+$ ros engine create otheruserdockername --network=dind --fixed-ip=172.20.0.2
 ```
 
-After the OUD service is created, users can query the OUD service as usual.
+After the Other User Docker service is created, users can query this service like other services. 
 
 ```
 $ ros service list
@@ -197,27 +201,27 @@ $ ros service list
 ...
 disabled volume-efs
 disabled volume-nfs
-enabled  dind1
+enabled  otheruserdockername
 ```
 
-To make the dind1 service running, can use:
+You can use `ros service up` to start the Other User Docker service.  
 
 ```
-$ ros service up dind1
+$ ros service up otheruserdockername
 ```
 
-After the OUD service is started, you can interact with it as if they were using the docker command.
+After the Other User Docker service is running, you can interact with it just like you can use the built-in User Docker. You would need to append `-<SERVICE_NAME>` to `docker`. 
 
 ```
-$ docker-dind1 ps -a
+$ docker-otheruserdockername ps -a
 ```
 
-#### SSH into OUD container
+#### SSH into the Other User Docker container
 
-You can specify an external ssh port with `--ssh-port`, and ssh keys with `--authorized-keys`. Both of them are optional.
+When creating the Other User Docker, you can set an external SSH port so you can SSH into the Other User Docker container in System Docker. By using `--ssh-port` and adding ssh keys with `--authorized-keys`, you can set up this optional SSH port. 
 
 ```
-$ ros engine create  -h
+$ ros engine create  --help
 ...
 ...
 OPTIONS:
@@ -225,17 +229,18 @@ OPTIONS:
     --authorized-keys value
 ```
 
-For `--authorized-keys`, user needs to put the key file in one of the following directories:
+When using `--authorized-keys`, you will need to put the key file in one of the following directories:
+
 ```
 /var/lib/rancher/
 /opt/
 /home/
 ```
 
-RancherOS will generate a random password for each OUD container, which you can see in the container logs. This password is useful if you do not set the keys.
+RancherOS will generate a random password for each Other User Docker container, which can be viewed in the container logs. If you do not set any SSH keys, the password can be used. 
 
 ```
-$ system-docker logs dind1
+$ system-docker logs otheruserdockername
 
 ======================================
 chpasswd: password for 'root' changed
@@ -243,23 +248,23 @@ password: xCrw6fEG
 ======================================
 ```
 
-You can ssh into any OUD container like this:
+In System Docker, you can SSH into any Other Uesr Docker Container using `ssh`. 
 
 ```
 $ system-docker ps
 CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                             NAMES
-2ca07a25799b        rancher/os-dind:17.12.1          "docker-entrypoint..."   5 seconds ago       Up 3 seconds        2375/tcp, 0.0.0.0:34791->22/tcp   dind1
+2ca07a25799b        rancher/os-dind:17.12.1          "docker-entrypoint..."   5 seconds ago       Up 3 seconds        2375/tcp, 0.0.0.0:34791->22/tcp   otheruserdockername
 
-$ ssh -p 34791 root@<host-external-ip>
+$ ssh -p 34791 root@<HOST_EXTERNAL_IP>
 
-$ ssh root@<OUD-container-ip>
-
-```
-
-#### Remove OUD
-
-Just use `ros engine rm`:
+$ ssh root@<OTHERUSERDOCKER_CONTAINER_IP>
 
 ```
-$ ros engine rm dind1
+
+#### Removing any Other User Docker Service
+
+We recommend using `ros engine rm` to remove any Other User Docker service. 
+
+```
+$ ros engine rm otheruserdockername
 ```
