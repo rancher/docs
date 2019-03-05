@@ -31,7 +31,7 @@ Initial configuration of a pipeline in a production environment involves complet
 
 ### 1. Configuring Version Control Providers
 
-Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub and GitLab. 
+Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub, GitLab and Bitbucket.
 
 Select your provider's tab below and follow the directions.
 
@@ -74,6 +74,54 @@ Select your provider's tab below and follow the directions.
 >**Note:** 
 > 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
 > 2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
+{{% /tab %}}
+{{% tab "Bitbucket Cloud" %}}
+
+_Available as of v2.2.0_
+
+1. From the context menu, open the project for which you're configuring a pipeline.
+
+1. From the main menu, select **Tools > Pipelines**.
+
+1. Choose the **Use public Bitbucket Cloud** option(the default).
+
+1. Follow the directions displayed to setup an OAuth consumer in Bitbucket.
+
+    ![Bitbucket Cloud Pipeline Instructions]({{< baseurl >}}/img/rancher/bitbucketcloud-pipeline.png)
+
+1. From Bitbucket, copy the consumer **Key** and **Secret**. Paste them into Rancher.
+
+1. Click **Authenticate**.
+
+1. Enable the repository for which you want to run a pipeline. Then click **Done**.
+
+{{% /tab %}}
+{{% tab "Bitbucket Server" %}}
+
+_Available as of v2.2.0_
+
+1. From the context menu, open the project for which you're configuring a pipeline.
+
+1. From the main menu, select **Tools > Pipelines**.
+
+1. Choose the **Use private Bitbucket Server steup** option.
+
+1. Follow the directions displayed to setup an application link in Bitbucket.
+
+    ![Bitbucket Server Pipeline Instructions]({{< baseurl >}}/img/rancher/bitbucketserver-pipeline.png)
+
+1. Enter the host address of your Bitbucket server installation.
+
+1. Click **Authenticate**.
+
+1. Enable the repository for which you want to run a pipeline. Then click **Done**.
+
+>**Note:**
+> Bitbucket server needs to do SSL verification when sending webhooks to Rancher. Please ensure that Rancher server's certificate is trusted by the Bitbucket server. There are two options:
+>
+> 1. Setup Rancher server with a certificate from a trusted CA.
+> 1. If you're using self-signed certificates, import Rancher server's certificate to the Bitbucket server. For instructions, see the Bitbucket server documentation for [configuring self-signed certificates](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html).
+>
 {{% /tab %}}
 {{% /tabs %}}
 
