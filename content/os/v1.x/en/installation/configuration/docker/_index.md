@@ -154,3 +154,117 @@ DEBU[0204] Applied tar sha256:3fb66f713c9fa9debcdaa58bb9858bd04c17350d9614b7a250
 Digest: sha256:0b94d1d1b5eb130dd0253374552445b39470653fb1a1ec2d81490948876e462c
 Status: Downloaded newer image for alpine:latest
 ```
+
+### Using Multiple User Docker Daemons
+
+_Available as of v1.5.0_
+
+When RancherOS is booted, you start with a User Docker service that is running in System Docker. With v1.5.0, RancherOS has the ability to create additional User Docker services that can run at the same time. 
+
+#### Terminology
+
+Throughout the rest of this documentation, we may simplify to use these terms when describing Docker. 
+
+| Terminology                  | Definition                                       |
+|-----------------------|--------------------------------------------------|
+| DinD                  |  Docker in docker  |
+| User Docker     |  The user-docker on RancherOS |
+| Other User Docker|  The other user-docker daemons you create, these user-docker daemons are automatically assumed to be Docker in Docker.  |
+
+#### Pre-Requisites
+
+User Docker must be set as Docker 17.12.1 or earlier. If it's a later Docker version, it will produce errors when creating a user defined network in System Docker. 
+
+```
+$ ros engine switch docker-17.12.1-ce
+```
+
+You will need to create a user-defined network, which will be used when creating the Other User Docker. 
+
+```
+$ system-docker network create --subnet=172.20.0.0/16 dind
+```
+
+#### Create the Other User Docker
+
+In order to create another User Docker, you will use `ros engine create`. Currently, RancherOS only supports Docker `17.12.1` and `18.03.1` for the Other User Docker image.
+
+```
+$ ros engine create otheruserdockername --network=dind --fixed-ip=172.20.0.2
+```
+
+After the Other User Docker service is created, users can query this service like other services. 
+
+```
+$ ros service list
+...
+...
+disabled volume-efs
+disabled volume-nfs
+enabled  otheruserdockername
+```
+
+You can use `ros service up` to start the Other User Docker service.  
+
+```
+$ ros service up otheruserdockername
+```
+
+After the Other User Docker service is running, you can interact with it just like you can use the built-in User Docker. You would need to append `-<SERVICE_NAME>` to `docker`. 
+
+```
+$ docker-otheruserdockername ps -a
+```
+
+#### SSH into the Other User Docker container
+
+When creating the Other User Docker, you can set an external SSH port so you can SSH into the Other User Docker container in System Docker. By using `--ssh-port` and adding ssh keys with `--authorized-keys`, you can set up this optional SSH port. 
+
+```
+$ ros engine create  --help
+...
+...
+OPTIONS:
+    --ssh-port value
+    --authorized-keys value
+```
+
+When using `--authorized-keys`, you will need to put the key file in one of the following directories:
+
+```
+/var/lib/rancher/
+/opt/
+/home/
+```
+
+RancherOS will generate a random password for each Other User Docker container, which can be viewed in the container logs. If you do not set any SSH keys, the password can be used. 
+
+```
+$ system-docker logs otheruserdockername
+
+======================================
+chpasswd: password for 'root' changed
+password: xCrw6fEG
+======================================
+```
+
+In System Docker, you can SSH into any Other Uesr Docker Container using `ssh`. 
+
+```
+$ system-docker ps
+CONTAINER ID        IMAGE                              COMMAND                  CREATED             STATUS              PORTS                             NAMES
+2ca07a25799b        rancher/os-dind:17.12.1          "docker-entrypoint..."   5 seconds ago       Up 3 seconds        2375/tcp, 0.0.0.0:34791->22/tcp   otheruserdockername
+
+$ ssh -p 34791 root@<HOST_EXTERNAL_IP>
+
+$ ssh root@<OTHERUSERDOCKER_CONTAINER_IP>
+
+```
+
+#### Removing any Other User Docker Service
+
+We recommend using `ros engine rm` to remove any Other User Docker service. 
+
+```
+$ ros engine rm otheruserdockername
+```
