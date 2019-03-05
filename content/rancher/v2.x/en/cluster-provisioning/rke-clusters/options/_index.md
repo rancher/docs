@@ -35,7 +35,7 @@ From this section you can choose:
         >**Attention Rancher v2.0.0 - v2.0.6 Users**
         >
         >- In previous Rancher releases, Canal isolates project network communications with no option to disable it. If you are using any of these Rancher releases, be aware that using Canal prevents all communication between pods in different projects.
-        >- If you are have clusters using Canal and are upgrading to v2.0.7, those clusters enable Project Network Isolation by default. If you want to disable Project Network Isolation, edit the cluster and disable the option.
+        >- If you have clusters using Canal and are upgrading to v2.0.7, those clusters enable Project Network Isolation by default. If you want to disable Project Network Isolation, edit the cluster and disable the option.
 
 
     - [Flannel](https://github.com/coreos/flannel#flannel)
