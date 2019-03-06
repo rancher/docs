@@ -39,7 +39,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitHub" %}}
 1. From the context menu, open the project for which you're configuring a pipeline. 
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**.
 
 1. Follow the directions displayed to setup an OAuth application in GitHub.
 
@@ -57,7 +57,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitLab" %}}
 1. From the context menu, open the project for which you're configuring a pipeline. 
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**.
 
 1. Follow the directions displayed to setup a GitLab application.
 
@@ -605,6 +605,6 @@ The _executor quota_ decides how many builds can run simultaneously in the proje
 
 1. From the context menu, open the project for which you've configured a pipeline.
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**.
 
 1. From `The maximum number of pipeline executors` increment the **Scale** up or down to change the quota. A value of `0` or less removes the quota limit.
