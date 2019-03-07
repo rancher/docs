@@ -477,23 +477,25 @@ branch:
 
 ### Configuring Notifications
 
+_Available as of v2.2_
+
 You can configure pipelines to send out notifications to any [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers) based on the build status of a pipeline. Before configuring a notification, Rancher recommends [setting up notifiers]]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) so it will be easy to add recipients immediately. 
 
 > **Note:** Notifiers are configured at a cluster level, but pipelines are configured at the project level.
 
 {{% tabs %}}
 {{% tab "By UI" %}}
-1. Find the pipline that you want to add a notification to, by opening the **Pipelines** tab in your project.
+1. Find the pipline that you want to add a notification to, by opening the **Workloads** > **Pipelines** tab in your project.
 
 1. From the pipeline for which you want to add notifications, select **Ellipsis (...) > Edit Config**.
 
-1. Within the **Notification** section, select **Enable**. 
+1. Within the **Notification** section, turn on notifications by clicking **Enable**. 
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**. 
 
 1. If you don't have any existing [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers), Rancher will provide a warning that no notifers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking **Add Recipient** button.
 
-1. For each recipient, select which notifier from the dropdown. Based on the type of notifier, you can use the default setting or override it with a different value. For example, if you have a notifier for Slack, you can update which channel to send the notification to. You can add additional notifiers by clicking **Add Recipient**.
+1. For each recipient, select which notifier type from the dropdown. Based on the type of notifier, you can use the default recipient or override the recipient with a different one. For example, if you have a notifier for Slack, you can update which channel to send the notification to. You can add additional notifiers by clicking **Add Recipient**.
  
 {{% /tab %}}
 {{% tab "By YAML" %}}
@@ -507,7 +509,7 @@ Under the `notification` section, you will provide the following information:
   *  Notifier: The ID of the notifier. This can be found by finding the notifier and selecting **View in API** to get the ID. 
   * Recipient: Depending on the type of the notifier, the "default recipient" can be used or you can override this with a different recipient. For example, when configuring a slack notifier, you select a channel as your default recipient, but if you wanted to send notifications to a different channel, you can select a different recipient. 
 * Condition: Select which conditions of when you want the notification to be sent. 
-* Message (Optional): If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI,  
+* Message (Optional): If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI.  
 
 ```yaml
 # Example
