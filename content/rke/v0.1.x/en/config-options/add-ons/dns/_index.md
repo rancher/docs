@@ -11,6 +11,8 @@ The images used for kube-dns are under the [`system_images` directive]({{< baseu
 
 ## Scheduling kube-dns
 
+_Available as of v0.2.0_
+
 If you only wanted ingress controllers to be deployed on specific nodes, you can set a `node_selector` for the ingress. The label in the `node_selector` would need to match the label on the nodes for the ingress controller to be deployed.
 
 ```yaml
@@ -29,6 +31,8 @@ dns:
 
 ## Disabling kube-dns
 
+_Available as of v0.2.0_
+
 You can disable the default DNS provider by specifying `none` to  the dns `provider` directive in the cluster configuration. Be aware that this will prevent your pods from doing name resolution in your cluster.
 
 ```yaml
@@ -38,6 +42,8 @@ dns:
 ## Configuring kube-dns
 
 ### Upstream nameservers
+
+_Available as of v0.2.0_
 
 By default, kube-dns will use the host configured nameservers (usually residing at `/etc/resolv.conf`) to resolve external queries. If you want to configure specific upstream nameservers to be used by kube-dns, you can use the `upstreamnameservers` directive.
 
@@ -51,7 +57,7 @@ dns:
 
 ## CoreDNS (experimental)
 
-<p>Experimental support for CoreDNS is available in RKE v0.2.0 and later.</p>
+_Available as of v0.2.0_
 
 If you want to use CoreDNS, you can set the `provider` directive to `coredns`. Both the `node_selector` and `upstreamnameservers` directive is also supported for CoreDNS.
 
