@@ -20,3 +20,4 @@ When using Rancher to create a cluster hosted by a provider, you are prompted fo
 - [Creating a GKE Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke)
 - [Creating an EKS Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks)
 - [Creating an AKS Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/aks)
+- [Creating a Huawei CCE Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/cce)
