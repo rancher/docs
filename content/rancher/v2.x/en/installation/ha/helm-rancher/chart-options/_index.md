@@ -143,41 +143,44 @@ Rancher will respond `200` to health checks on the `/healthz` endpoint.
 * Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
 
 ```
-upstream rancher {
-    server IP_NODE_1:80;
-    server IP_NODE_2:80;
-    server IP_NODE_3:80;
-}
+events { }
+https {
+    upstream rancher {
+        server IP_NODE_1:80;
+        server IP_NODE_2:80;
+        server IP_NODE_3:80;
+    }
 
-map $http_upgrade $connection_upgrade {
-    default Upgrade;
-    ''      close;
-}
+    map $http_upgrade $connection_upgrade {
+        default Upgrade;
+        ''      close;
+    }
 
-server {
-    listen 443 ssl http2;
-    server_name FQDN;
-    ssl_certificate /certs/fullchain.pem;
-    ssl_certificate_key /certs/privkey.pem;
+    server {
+        listen 443 ssl http2;
+        server_name FQDN;
+        ssl_certificate /certs/fullchain.pem;
+        ssl_certificate_key /certs/privkey.pem;
 
-    location / {
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-Port $server_port;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_pass http://rancher;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-        # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
-        proxy_read_timeout 900s;
-        proxy_buffering off;
-   }
-}
+        location / {
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Port $server_port;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://rancher;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+            # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
+            proxy_read_timeout 900s;
+            proxy_buffering off;
+       }
+    }
 
-server {
-    listen 80;
-    server_name FQDN;
-    return 301 https://$server_name$request_uri;
+    server {
+        listen 80;
+        server_name FQDN;
+        return 301 https://$server_name$request_uri;
+    }
 }
 ```
