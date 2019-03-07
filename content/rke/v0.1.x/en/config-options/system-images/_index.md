@@ -6,7 +6,7 @@ When RKE is deploying Kubernetes, there are several images that are pulled. Thes
 
 As of `v0.1.6`, the functionality of a couple of the system images were consolidated into a single `rancher/rke-tools` image to simplify and speed the deployment process.
 
-You can configure the [network plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/) and [ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/) as well as the options for these add-ons separately.
+You can configure the [network plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/), [ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/dns/) as well as the options for these add-ons separately.
 
 This is the example of the full list of system images used to deploy Kubernetes through RKE. The image tags are dependent on the [Kubernetes image/version used](https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go).
 
@@ -14,39 +14,49 @@ This is the example of the full list of system images used to deploy Kubernetes 
 
 ```yaml
 system_images:
-    kubernetes: rancher/hyperkube:v1.10.3-rancher2
-    etcd: rancher/coreos-etcd:v3.1.12
-    alpine: rancher/rke-tools:v0.1.9
-    nginx_proxy: rancher/rke-tools:v0.1.9
-    cert_downloader: rancher/rke-tools:v0.1.9
-    kubernetes_services_sidecar: rancher/rke-tools:v0.1.9
-    kubedns: rancher/k8s-dns-kube-dns-amd64:1.14.8
-    dnsmasq: rancher/k8s-dns-dnsmasq-nanny-amd64:1.14.8
-    kubedns_sidecar: rancher/k8s-dns-sidecar-amd64:1.14.8
-    kubedns_autoscaler: rancher/cluster-proportional-autoscaler-amd64:1.0.0
-    pod_infra_container: rancher/pause-amd64:3.1
+  etcd: rancher/coreos-etcd:v3.2.24
+  alpine: rancher/rke-tools:v0.1.24
+  nginx_proxy: rancher/rke-tools:v0.1.24
+  cert_downloader: rancher/rke-tools:v0.1.24
+  kubernetes: rancher/hyperkube:v1.13.1-rancher1
+  kubernetes_services_sidecar: rancher/rke-tools:v0.1.24
+  pod_infra_container: rancher/pause-amd64:3.1
 
-    # Flannel Networking Options
-    flannel: rancher/coreos-flannel:v0.9.1
-    flannel_cni: rancher/coreos-flannel-cni:v0.2.0
+  # kube-dns images
+  kubedns: rancher/k8s-dns-kube-dns-amd64:1.15.0
+  dnsmasq: rancher/k8s-dns-dnsmasq-nanny-amd64:1.15.0
+  kubedns_sidecar: rancher/k8s-dns-sidecar-amd64:1.15.0
+  kubedns_autoscaler: rancher/cluster-proportional-autoscaler-amd64:1.0.0
 
-    # Calico Networking Options
-    calico_node: rancher/calico-node:v3.1.1
-    calico_cni: rancher/calico-cni:v3.1.1
-    calico_ctl: rancher/calico-ctl:v2.0.0
+  # CoreDNS images
+  coredns: coredns/coredns:1.2.6
+  coredns_autoscaler: rancher/cluster-proportional-autoscaler-amd64:1.0.0
 
-    # Canal Networking Options
-    canal_node: rancher/calico-node:v3.1.1
-    canal_cni: rancher/calico-cni:v3.1.1
-    canal_flannel: rancher/coreos-flannel:v0.9.1
+  # Flannel images
+  flannel: rancher/coreos-flannel:v0.10.0
+  flannel_cni: rancher/coreos-flannel-cni:v0.3.0
 
-    # Weave Networking Options
-    weave_node: weaveworks/weave-kube:2.1.2
-    weave_cni: weaveworks/weave-npc:2.1.2
+  # Calico images
+  calico_node: rancher/calico-node:v3.4.0
+  calico_cni: rancher/calico-cni:v3.4.0
+  calico_controllers: ""
+  calico_ctl: rancher/calico-ctl:v2.0.0
 
-    # Ingress Options
-    ingress: rancher/nginx-ingress-controller:0.10.2-rancher3
-    ingress_backend: rancher/nginx-ingress-controller-defaultbackend:1.4
+  # Canal images
+  canal_node: rancher/calico-node:v3.4.0
+  canal_cni: rancher/calico-cni:v3.4.0
+  canal_flannel: rancher/coreos-flannel:v0.10.0
+
+  # Weave images
+  weave_node: weaveworks/weave-kube:2.5.0
+  weave_cni: weaveworks/weave-npc:2.5.0
+
+  # Ingress controller images
+  ingress: rancher/nginx-ingress-controller:0.21.0-rancher1
+  ingress_backend: rancher/nginx-ingress-controller-defaultbackend:1.4
+
+  # Metrics server image
+  metrics_server: rancher/metrics-server-amd64:v0.3.1
 ```
 
 Prior to `v0.1.6`, instead of using the `rancher/rke-tools` image, we used the following images:
