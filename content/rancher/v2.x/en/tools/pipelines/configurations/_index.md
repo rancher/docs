@@ -369,26 +369,33 @@ During the process of configuring a pipeline, you can configure advanced options
 
 ### Configuring Pipeline Trigger Rules
 
-When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging.
+When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging. When an event type is disabled, pipeline executions will not be triggered by the wehook of that event type.
 
-Trigger rules come in two types:
+To change trigger rules for a repository:
+
+1. From the context menu, open the project for which you’ve configured a pipeline. Then select the Pipelines tab.
+
+1. From the pipeline for which you want to change the trigger rules, select **Ellipsis (...) > Setting**.
+
+1. Click on the check box to enable/disable triggering for **Push**, **Pull Request** or **Tag** event.
+
+1. Click **Save**.
+
+You can also set trigger rules to have fine-grained control of pipeline executions in pipeline configurations. Trigger rules come in two types:
 
 - **Run this when:**
 
     This type of rule starts the pipeline, stage, or step when a trigger explicitly occurs.
 
 - **Do Not Run this when:**
+
+    This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
  
-    If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
+If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 
 {{% tabs %}}
 {{% tab "Pipeline Trigger" %}}
-
-You can configure trigger rules for the entire pipeline in two different contexts:
-
-{{% accordion id="pipeline-creation" label="During Initial Pipeline Configuration" %}}
-
 
 1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
@@ -401,22 +408,6 @@ You can configure trigger rules for the entire pipeline in two different context
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
     1. **Optional:** Add more branches that trigger a build.  
-{{% /accordion %}}
-
-{{% accordion id="pipeline-settings" label="While Editing Pipeline Settings" %}}
- 
-After you've configured a pipeline, you can go back and choose the events that trigger a pipeline execution.
-
->**Note:** This option is not available for example repositories.
-
-1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
-
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Setting**.
-
-1. Select (or clear) the events that you want to trigger a pipeline execution.
-
-1. Click **Save**.   
-{{% /accordion %}}
 
 {{% /tab %}}
 {{% tab "Stage Trigger" %}}
@@ -463,7 +454,7 @@ After you've configured a pipeline, you can go back and choose the events that t
 
 1. Click **Save**.
 {{% /tab %}}
-{{% tab "Do Not Run YAML" %}}
+{{% tab "By YAML" %}}
 ```yaml
 # example
 stages:
