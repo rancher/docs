@@ -162,3 +162,14 @@ pod "kube-dns-5fd74c7488-6pwsf" deleted
 ```
 
 Try to resolve name again using [Check if domain names are resolving](#check-if-domain-names-are-resolving).
+
+If you want to check the kube-dns configuration in your cluster (for example, to check if there are different upstream nameservers configured), you can run the following command to list the kube-dns configuration:
+
+```
+kubectl -n kube-system get configmap kube-dns -o go-template='{{range $key, $value := .data}}{{ $key }}{{":"}}{{ $value }}{{"\n"}}{{end}}'
+```
+
+Example output:
+```
+upstreamNameservers:["1.1.1.1"]
+```
