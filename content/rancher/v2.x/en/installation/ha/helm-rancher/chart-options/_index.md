@@ -64,6 +64,19 @@ You can set extra environment variables for Rancher server using `extraEnv`. Thi
 --set 'extraEnv[0].value=http://registry.example.com/'
 ```
 
+### TLS settings
+
+_Available as of v2.1.7_
+
+To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
+
+```plain
+--set 'extraEnv[0].name=CATTLE_TLS_MIN_VERSION'
+--set 'extraEnv[0].value=1.0'
+```
+
+See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
+
 ### Import `local` Cluster
 
 By default Rancher server will detect and import the `local` cluster it's running on.  User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
