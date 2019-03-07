@@ -29,7 +29,7 @@ weight: 276
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
 | `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs |
 | `debug` | false | `bool` - set debug flag on rancher server |
-| `extraEnv` | [] | `list` - set additional environment variables for rancher. |
+| `extraEnv` | [] | `list` - set additional environment variables for Rancher |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
@@ -55,9 +55,9 @@ By default enabling Audit Logging will create a sidecar container in the Rancher
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
-### Set Extra Environment Variables
+### Setting Extra Environment Variables
 
-You can set extra environment variable for Rancher server with `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
+You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
 
 ```plain
 --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
