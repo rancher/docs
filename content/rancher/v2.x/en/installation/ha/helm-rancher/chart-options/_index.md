@@ -57,6 +57,8 @@ Set the `auditLog.destination` to `hostPath` to forward logs to volume shared wi
 
 ### Setting Extra Environment Variables
 
+_Available as of v2.2.0_
+
 You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
 
 ```plain
@@ -66,7 +68,7 @@ You can set extra environment variables for Rancher server using `extraEnv`. Thi
 
 ### TLS settings
 
-_Available as of v2.1.7_
+_Available as of v2.2.0_
 
 To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
 
