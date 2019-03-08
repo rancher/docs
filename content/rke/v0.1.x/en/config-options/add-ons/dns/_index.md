@@ -55,7 +55,7 @@ dns:
     - 8.8.4.4
 ```
 
-## CoreDNS (experimental)
+## CoreDNS (Experimental)
 
 _Available as of v0.2.0_
 
