@@ -27,7 +27,7 @@ weight: 276
 | `auditLog.maxAge` | 1 | `int` - maximum number of days to retain old audit log files |
 | `auditLog.maxBackups` | 1 | `int` - maximum number of audit log files to retain |
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
-| `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs |
+| `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_ |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `extraEnv` | [] | `list` - set additional environment variables for Rancher |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
