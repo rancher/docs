@@ -7,7 +7,7 @@ If you have a cluster in Rancher that you want to use as a template for creating
 
 ## Caveats
 
-- Only [cluster types]({{< baseurl >}}/content/rancher/v2.x/en/cluster-provisioning) that interact with cloud hosts over API can be cloned. Duplication of imported clusters and custom clusters provisioned using Docker machine is not supported.
+- Only [cluster types]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) that interact with cloud hosts over API can be cloned. Duplication of imported clusters and custom clusters provisioned using Docker machine is not supported.
 
     | Cluster Type                     | Cloneable?    |
     | -------------------------------- | ------------- |
