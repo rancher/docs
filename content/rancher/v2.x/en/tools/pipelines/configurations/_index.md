@@ -523,10 +523,10 @@ notification:
   recipients:
   - # Recipient
     recipient: "#mychannel"
-    # Name or ID of Notifier
-    notifier: "my-slack-notifier"
+    # ID of Notifier
+    notifier: "c-wdcsr:n-c9pg7"
   - recipient: "test@example.com"
-    notifier: "my-email-notifier"
+    notifier: "c-wdcsr:n-lkrhd"
   # Select which statuses you want the notification to be sent  
   condition: ["Failed", "Success", "Changed"]
   # Ability to override the default message (Optional)
