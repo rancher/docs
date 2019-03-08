@@ -48,15 +48,34 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. **Optional:** Enter one or more [index](http://docs.splunk.com/Documentation/Splunk/7.1.2/Indexer/Aboutindexesandindexers) that's allowed for your token.
 
+1. If your instance of Splunk uses SSL, complete the **SSL Configuration** form. 
+
+    1. Enter a private key and client certificate. Either copy and paste them or browse to them using **Read from a file**. This certificate will be installed on your logging server.
+
+        You can use either a self-signed certificate or one provided by a certificate authority.
+
+        You can generate a self-signed certificate using an openssl command. For example:
+            
+            openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+       
+
+    1. Enter your private key password.
+
+    1. If you are using a certificate from a certificate authority (and not a self-signed certificate), select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate Chain**.
+
 1. Complete the **Additional Logging Configuration** form.
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
 
+    1. **Include System Log**. Include system project log and rke components log by default, uncheck it to exclude system log.
+
+1. Click **Test** will send a test log to Splunk.
+
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send logs to Splunk. Log into your Spunk instance to view events for your cluster and containers.
+**Result:** Rancher is now configured to send logs to Splunk. Log into your Splunk instance to view events for your cluster and containers.
 
 ## Viewing Logs
 

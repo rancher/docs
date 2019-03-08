@@ -50,13 +50,19 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. Enter your private key password.
 
-    1. If you are using a certificate from a certificate authority (and not a self-signed certificate), select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate**.
+    1. Enter your ssl version, the default is tlsv1_2.
+
+    1. If you are using a certificate from a certificate authority (and not a self-signed certificate), select the **Enabled - Input trusted server certificate** option and then enter your **Trusted Server Certificate Chain**.
 
 1. Complete the **Additional Logging Configuration** form.
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes data to the logging server. Intervals are measured in seconds.
+
+    1. **Include System Log**. Include system project log and rke components log by default, uncheck it to exclude system log.
+
+1. Click **Test** will send a test log to Elasticsearch.
 
 1. Click **Save**.
 

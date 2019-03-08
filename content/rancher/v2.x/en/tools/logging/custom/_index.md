@@ -1,15 +1,15 @@
 ---
-title: Syslog
+title: Custom
 weight: 500
 ---
 
-You can configure Rancher to send Kubernetes logs to a [Syslog](https://tools.ietf.org/html/rfc5424) server.
+You can configure Rancher to send Kubernetes logs to Elasticsearch, Splunk, Kafka, Syslog, Fluentd
 
-## Configuring Syslog
+## Configuring Advance Mode
 
-You can configure Rancher to send cluster or project logs to Syslog.
+You can configure Rancher to send cluster or project logs to one of the logging target in advance mode by inputting raw fluentd configure.
 
->**Prerequisite:** You must have a Syslog server configured.
+>**Prerequisite:** You must have a one of the Elasticsearch, Splunk, Kafka, Syslog, Fluentd server configured.
 
 1. Browse to the cluster or project that you want to log.
 {{% accordion id="cluster" label="To Configure Cluster Logging:" %}}
@@ -29,19 +29,45 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 {{% /accordion %}}
 
-1. Select **Syslog**.
+1. Select one of the logging targets, giving example for **Elasticsearch**.
 
-1. Complete the **Syslog Configuration** form.
+1. Click the  **Edit as File**.
 
-    1. From the **Endpoint** field, enter the IP address and port for your Syslog server. Additionally, select the protocol that your Syslog server uses from the drop-down.
+    1. Input the Fluentd output configure, **Edit as File** could support more configure than the **Edit as a Form** mode.
 
-    1. From the **Program** field, enter the name of the application sending logs to your Syslog server (i.e., Rancher).
+    1. Giving an example for **Elasticsearch** configure.
+    
+        ```sh
+        @type elasticsearch
+        include_tag_key  true
+        user elasticsearch
+        password PleaseChaneMe
+        hosts https://rancher.com:9200    
+        logstash_format true
+        logstash_prefix "elastic-index"
+        logstash_dateformat  %Y-%m-%d
+        type_name  "container_log"    
+        <buffer>
+            @type file
+            path /fluentd/log/buffer/cluster.buffer
+            flush_interval 60s
+            flush_mode interval
+            flush_thread_count 8
+        </buffer> 
 
-    1. If you are using a cloud logging service (i.e., [Sumologic](https://www.sumologic.com/)), enter a **Token** that authenticates with your Syslog server. Use the cloud logging service to create this token.
+        ```
 
-    1. Select a **Log Severity** for events that are logged to the Syslog server. For more information on each severity level, see the [Syslog protocol documentation](https://tools.ietf.org/html/rfc5424#page-11).
+    1. Configure Elasticsearch, for more information, see the [Elasticsearch](https://github.com/uken/fluent-plugin-elasticsearch).
 
-1. If your Syslog server uses **TCP** protocol, check **Use TLS**, complete the **SSL Configuration** form.
+    1. Configure Splunk, for more information, see the [Splunk](https://github.com/fluent/fluent-plugin-splunk).
+
+    1. Configure Kafka, for more information, see the [Kafka](https://github.com/fluent/fluent-plugin-kafka).
+
+    1. Configure Syslog, for more information, see the [Syslog](https://github.com/dlackty/fluent-plugin-remote_syslog).
+
+    1. Configure Fluentd, for more information, see the [Fluentd](https://docs.fluentd.org/v1.0/articles/out_forward).
+
+1. If your logging server use TLS, complete the **SSL Configuration** form.
 
     1. Enter a private key and client certificate. Either copy and paste them or browse to them using **Read from a file**. This certificate will be installed on your logging server.
 
@@ -61,8 +87,8 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. **Include System Log**. Include system project log and rke components log by default, uncheck it to exclude system log.
 
-1. Click **Test** will send a test log to Syslog.
+1. Click **Dry Run**, then rancher calls the fluentd dry run command to validate the configure.
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send logs to your Syslog server. View your Syslog stream to view logs for your cluster and containers.
+**Result:** Rancher is now configured to send logs to your configured server. View your server to view logs for your cluster and containers.
