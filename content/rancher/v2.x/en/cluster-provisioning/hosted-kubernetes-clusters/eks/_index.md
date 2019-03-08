@@ -118,7 +118,7 @@ If you chose this option, you must also choose a **VPC & Subnet** that allow you
     Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here.
     Minimum ASG Size | The minimum number of instances that your cluster will scale to during low traffic, as controlled by [Amazon Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
     Maximum ASG Size | The maximum number of instances that your cluster will scale to during high traffic, as controlled by [Amazon Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
-    User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.**
+    User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
 1. Click **Create**.
 
 {{< result_create-cluster >}}
