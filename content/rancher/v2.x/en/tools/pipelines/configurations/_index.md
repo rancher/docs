@@ -477,7 +477,7 @@ branch:
 
 ### Configuring Notifications
 
-_Available as of v2.2_
+_Available as of v2.2.0_
 
 You can configure pipelines to send out notifications to any [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers) based on the build status of a pipeline. Before configuring a notification, Rancher recommends [setting up notifiers]]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) so it will be easy to add recipients immediately. 
 
