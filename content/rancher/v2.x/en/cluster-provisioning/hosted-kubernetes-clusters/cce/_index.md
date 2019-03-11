@@ -12,16 +12,13 @@ You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine(
 
 ## Prerequisites
 
-Obtain the following information from the Huawei Cloud Portal:
-
-- A Region to deploy the CCE cluster.
-- Your project ID of the region, you can found it in IAM service -> Projects. See the CCE documentation [Manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
-- Access Key ID and Secret Access Key. See the CCE documentation [Manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
+- Find your project ID in IAM service -> Projects in Huawei CCE portal. See the CCE documentation [Manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
+- Create Access Key ID and Secret Access Key. See the CCE documentation [Manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
 - Enable **Huawei CCE** Cloud Driver. See [how to enable cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers)
 
 ## Limitations
 
-As Huawei CCE service doesn't support to create cluster public access via API, we can only use CCE Cloud driver when Rancher server instances should have access to the VPC network you choose for the CCE cluster. e.g. Your Rancher server can run in the same vpc with your CCE cluster's.
+Huawei CCE service doesn't support to create cluster with public access via API. We can only use CCE Cloud driver when Rancher server instances have access to the VPC network you choose for the CCE cluster. You have to run Rancher server in the same vpc with your CCE clusters.
 
 ## Create the CCE Cluster
 
