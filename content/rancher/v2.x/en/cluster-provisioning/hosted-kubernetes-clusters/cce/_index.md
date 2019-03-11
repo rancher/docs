@@ -15,12 +15,9 @@ You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine(
 Obtain the following information from the Huawei Cloud Portal:
 
 - A Region to deploy the CCE cluster.
-- Your project ID of the region, you can found it in IAM service -> Projects.
-- Access Key ID and Secret Access Key.
-
-[This is the document for how to find and manage your projects.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html)
-
-[This is the document for how to manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html)
+- Your project ID of the region, you can found it in IAM service -> Projects. See the CCE documentation [Manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
+- Access Key ID and Secret Access Key. See the CCE documentation [Manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
+- Enable **Huawei CCE** Cloud Driver in **Drivers** page and wait for driver active.
 
 ## Limitations
 
@@ -28,19 +25,17 @@ As Huawei CCE service doesn't support to create cluster public access via API, w
 
 ## Create the CCE Cluster
 
-1. Enable **Huawei CCE** Cloud Driver in **Drivers** page and wait for driver active.
+1. From the **Clusters** page, click **Add Cluster**.
 
-2. From the **Clusters** page, click **Add Cluster**.
+2. Choose **Huawei CCE**.
 
-3. Choose **Huawei CCE**.
+3. Enter a **Cluster Name**.
 
-4. Enter a **Cluster Name**.
+4. {{< step_create-cluster_member-roles >}}
 
-5. {{< step_create-cluster_member-roles >}}
+5. Enter **Project Id**, Access Key ID as **Access Key** and Secret Access Key **Secret Key**. Then Click **Next: Configure cluster**.
 
-6. Enter **Project Id**, Access Key ID as **Access Key** and Secret Access Key **Secret Key**. Then Click **Next: Configure cluster**.
-
-7. Fill the following cluster configuration:
+6. Fill the following cluster configuration:
 
     |Settings|Description|
     |---|---|
@@ -53,11 +48,11 @@ As Huawei CCE service doesn't support to create cluster public access via API, w
 	| Container Network CIDR | Network CIDR for the cluster. |
 	| VPC Name | The VPC name which the cluster is going to deploy into. Rancher will create one if it is blank. |
 	| Subnet Name | The Subnet name which the cluster is going to deploy into. Rancher will create one if it is blank. |
-	| External Server | This option is reserved for the future we can enable CCE cluster public access via API. For now, it is always disabled. |
+	| External Server | This option is reserved for the future we can enable CCE cluster public access via API. For now, it is always disabled. |
 	| Cluster Label | The labels for the cluster. |
 	| Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
 
-8. Fill following node configuration of the cluster:
+7. Fill following node configuration of the cluster:
 
     |Settings|Description|
 	|---|---|
@@ -82,6 +77,6 @@ As Huawei CCE service doesn't support to create cluster public access via API, w
 	| Authentication Mode | It means enabling `RBAC` or also enabling `Authenticating Proxy`. If you select `Authenticating Proxy`, the certificate which is used for authenticating proxy will be also required. |
 	| Node Label | The labels for the cluster node(s). |
 
-9. Click **Create** to create the CCE cluster.
+8. Click **Create** to create the CCE cluster.
 
 {{< result_create-cluster >}}
