@@ -17,7 +17,7 @@ Obtain the following information from the Huawei Cloud Portal:
 - A Region to deploy the CCE cluster.
 - Your project ID of the region, you can found it in IAM service -> Projects. See the CCE documentation [Manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
 - Access Key ID and Secret Access Key. See the CCE documentation [Manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
-- Enable **Huawei CCE** Cloud Driver.
+- Enable **Huawei CCE** Cloud Driver. See [how to enable cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers)
 
 ## Limitations
 
