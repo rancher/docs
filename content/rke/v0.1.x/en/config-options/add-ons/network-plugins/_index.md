@@ -62,6 +62,24 @@ network:
     calico_cloud_provider: aws
 ```
 
+### Weave Network Plug-in Options
+
+```yaml
+network:
+  plugin: "weave"
+```
+
+#### Weave encryption
+
+Weave encryption can be enabled by using a weave string password, in rke config weave encryption can be enabled by adding the `password` option to `weave_network_provider`:
+
+```yaml
+network:
+  plugin: "weave"
+weave_network_provider:
+  password: "Q]SZOQ5wp@n$oijz"
+```
+
 #### Cloud Provider
 
 Calico currently only supports 2 cloud providers, AWS or GCE, which can be set using `calico_cloud_provider`.
