@@ -54,11 +54,7 @@ ignore_docker_version: true
 
 ### Kubernetes Version
 
-You can select which version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions. If a version is defined in `kubernetes_version` and is not found in this list, the default version is used, As of version 0.2.0 this behavior has changed and the version is now being checked against all versions, and if the version is not found in the list then an error will be presented.
-
-If you want to use a different version than listed below, please use the [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) option.
-
-To find out what the list of supported Kubernetes versions are for your version of RKE, please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running.
+By default, RKE is defaulted to launch with a specific Kubernetes version. You can also select a different version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions.
 
 You can set the Kubernetes version as follows:
 
@@ -66,7 +62,14 @@ You can set the Kubernetes version as follows:
 kubernetes_version: "v1.11.6-rancher1-1"
 ```
 
-To list the supported versions and system images of specific version of RKE release, you can run the following command:
+In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) are defined, the system images configuration will take precedence over `kubernetes_version`.
+
+#### Listing Supported Kubernetes Versions
+
+Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
+
+You can also list the supported versions and system images of specific version of RKE release with a quick command. 
+
 ```
 $ rke config --system-images --all
 
@@ -78,7 +81,13 @@ INFO[0000] Generating images list for version [v1.12.6-rancher1-2]:
 .......
 ```
 
-In case both `kubernetes_version` and [system images](#rke-system-images) are defined, the system images configuration will take precedence over `kubernetes_version`.
+#### Using an unsupported Kubernetes version 
+
+As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out. 
+
+Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used. 
+
+If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) option.
 
 ### Cluster Level SSH Key Path
 
