@@ -67,15 +67,6 @@ OAuth token if your Git or Helm repository server support that.
 
 [Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/private/)
 
-
->**Notes:**
->
->- Currently, you can only add custom catalogs to Rancher at the global level. Therefore, any catalog that you add is shared with all clusters and projects.
->
->- Currently, authenticated catalogs repositories are only supported from Rancher v2.0.0.
-<br/>
-<br/>
-
 <!--There are two types of catalogs that can be added into Rancher. There are global catalogs and project catalogs. In a global catalog, the catalog templates are available in *all* projects. In a project catalog, the catalog charts are only available in the project that the catalog is added to.
 
 An [admin]({{< baseurl >}}/rancher/v2.x/en/admin-settings/#global-Permissions) of Rancher has the ability to add or remove catalogs globally in Rancher.
