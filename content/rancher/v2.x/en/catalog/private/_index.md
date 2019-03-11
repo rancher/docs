@@ -41,11 +41,11 @@ with `repo` permission selected, and click **Generate token**.
     | Variable              |  Description  |
     | --------------------  | ------------- |
     | 	Name                | Custom catalog name. |
-    | 	Catalog URL         | The URL of your custom chart repository, e.g, `https://github.com/username/myrepo.git`. |
+    | 	Catalog URL         | The URL of your custom chart repository. |
     | 	Use Private Catalog | Select it to use private catalog. |
-    | 	Username            | Enter your Git generated OAuth token. |
+    | 	Username            | Your Git generated OAuth token. |
     | 	Password            | Enter `x-oauth-basic`. read [using Git over HTTPS and OAuth](https://github.blog/2012-09-21-easier-builds-and-deployments-using-git-over-https-and-oauth/) for more details. |
-    | 	Branch              | Enter your Github branch name, default to master. |
+    | 	Branch              | Your Git branch name, default to master. |
     
 
 **Result**: Your custom catalog is added to the Rancher with `Active` state once it completes synchronization.
