@@ -18,15 +18,7 @@ _Available as of v2.2.0_
 
 1. Create an SSH key pair. It is used to access nodes in the kubernetes cluster. For instructions, see the Alibaba Cloud documentation [Create an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm).
 
-## Enable the ACK cluster driver
-
-The ACK driver is disabled by default. To enable it,
-
-1. From the top navigation bar, click **Drivers**
-
-1. Find the Alibaba ACK driver in the **Cluster Drivers** list, and then select **Ellipsis (...) > Activate**
-
-1. Wait and see that the ACK driver turns to **Downloading** then **Active** state.
+1. Enable ACK cluster driver
 
 ## Create an ACK Cluster
 
