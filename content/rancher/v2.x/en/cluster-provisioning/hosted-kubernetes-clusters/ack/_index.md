@@ -18,7 +18,7 @@ _Available as of v2.2.0_
 
 1. Create an SSH key pair. It is used to access nodes in the kubernetes cluster. For instructions, see the Alibaba Cloud documentation [Create an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm).
 
-1. Enable ACK cluster driver
+1. Enable ACK cluster driver. See [how to enable cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers)
 
 ## Create an ACK Cluster
 
