@@ -153,40 +153,25 @@ By default, Atomic hosts do not come with a Docker group. You can update the own
 
 - Docker - Each Kubernetes version supports different Docker versions.
 
-Kubernetes Version | Docker 1.12.6 | Docker 1.13.1 | Docker 17.03.2 |
-----|----|----|----|
-v1.11.x | X | X | X |
-v1.10.x | X | X | X |
-v1.9.x | X | X | X |
+Kubernetes Version | Supported Docker version(s) |
+----|----|
+v1.13.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
+v1.12.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
+v1.11.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
 
-You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker.
+You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker. For RHEL, please see [How to install Docker on Red Hat Enterprise Linux 7](https://access.redhat.com/solutions/3727511).
 
 Docker Version   | Install Script |
 ----------|------------------
-17.03.2 |  <code>curl https://releases.rancher.com/install-docker/17.03.sh &#124; sh</code> |
-1.13.1  | <code>curl https://releases.rancher.com/install-docker/1.13.sh &#124; sh</code> |
-1.12.6  |  <code>curl https://releases.rancher.com/install-docker/1.12.sh &#124; sh</code> |
+18.09.2 |  <code>curl https://releases.rancher.com/install-docker/18.09.2.sh &#124; sh</code> |
+18.06.2 |  <code>curl https://releases.rancher.com/install-docker/18.06.2.sh &#124; sh</code> |
+17.03.2 |  <code>curl https://releases.rancher.com/install-docker/17.03.2.sh &#124; sh</code> |
 
-Confirm that a Kubernetes supported version of Docker is installed on your machine, by running  `docker version`.
+Confirm that a Kubernetes supported version of Docker is installed on your machine, by running `docker version --format '{{.Server.Version}}'`.
 
 ```
-$ docker version
-Client:
- Version:      17.03.2-ce
- API version:  1.27
- Go version:   go1.7.5
- Git commit:   f5ec1e2
- Built:        Tue Jun 27 03:35:14 2017
- OS/Arch:      linux/amd64
-
-Server:
- Version:      17.03.2-ce
- API version:  1.27 (minimum version 1.12)
- Go version:   go1.7.5
- Git commit:   f5ec1e2
- Built:        Tue Jun 27 03:35:14 2017
- OS/Arch:      linux/amd64
- Experimental: false
+docker version --format '{{.Server.Version}}'
+17.03.2-ce
 ```
 
 - OpenSSH 7.0+ - In order to SSH into each node, OpenSSH must be installed on each node.

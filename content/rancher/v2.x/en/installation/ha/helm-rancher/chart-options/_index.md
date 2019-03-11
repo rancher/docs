@@ -27,7 +27,9 @@ weight: 276
 | `auditLog.maxAge` | 1 | `int` - maximum number of days to retain old audit log files |
 | `auditLog.maxBackups` | 1 | `int` - maximum number of audit log files to retain |
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
+| `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_ |
 | `debug` | false | `bool` - set debug flag on rancher server |
+| `extraEnv` | [] | `list` - set additional environment variables for Rancher |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
@@ -52,6 +54,30 @@ You can collect this log as you would any container log. Enable the [Logging ser
 By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
+
+### Setting Extra Environment Variables
+
+_Available as of v2.2.0_
+
+You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
+
+```plain
+--set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
+--set 'extraEnv[0].value=http://registry.example.com/'
+```
+
+### TLS settings
+
+_Available as of v2.2.0_
+
+To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
+
+```plain
+--set 'extraEnv[0].name=CATTLE_TLS_MIN_VERSION'
+--set 'extraEnv[0].value=1.0'
+```
+
+See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
 ### Import `local` Cluster
 
