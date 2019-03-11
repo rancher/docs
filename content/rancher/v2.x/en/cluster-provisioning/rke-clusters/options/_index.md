@@ -52,6 +52,8 @@ From this section you can choose:
 
     >**Note:** If your cloud provider is not listed as an option, you will need to use the [config file option](#config-file) to use that cloud provider. Please reference the [RKE's cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure these other cloud providers.
 
+- Whether or not to allow the cluster to act as an _authorized cluster endpoint_. Enabling will allow users to directly access a Kubernetes API server in the cluster without requiring communication through Rancher server. Providing an FQDN and certificate will generate kubeconfig files which use those values for accessing the cluster behind a load balancer, otherwise node IP addresses and kubernetes API certs will be used. See the [kubeconfig documentation]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) for more information.
+
 - Whether or not to use a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing pod security policy configured before you can use this option.
 
 ## Config File
