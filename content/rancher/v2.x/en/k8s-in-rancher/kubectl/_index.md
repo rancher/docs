@@ -47,4 +47,6 @@ Alternatively, you can access your clusters by installing kubectl on your workst
         ```
 4. From your workstation, launch kubectl. Use it to interact with your kubernetes cluster.
 
+     For information on using cluster contexts, see [Kubeconfig Files]({{< baseurl >}}/rancher/v2.x/en//k8s-in-rancher/kubeconfig).
+
      For more information on using kubectl, see [Kubernetes Documentation: Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
