@@ -28,10 +28,10 @@ or through `Edit as YAML` view:
 ### Supports Real Custom `values.yaml` for Catalog Apps
 _Available as of v2.2.0_
 
-From Rancher v2.2.0, you can now set custom values using a YAML formatted structure through `Edit as YAML`.
+From Rancher v2.2.0, you can set custom values using a YAML formatted structure through `Edit as YAML`.
 
 ![custom-values-yaml.png]({{< baseurl >}}/img/rancher/catalog/custom-values-yaml.png)
 
-It allows the user to customize more complicated input values like multi-lines, array, and JSON object in a user-friendly format compared with `dot-structure`.
+You can customize more complicated input values like multi-lines, array, and JSON object in a user-friendly format compared with `dot-structure`.
 
 ![custom-values-yaml-long.png]({{< baseurl >}}/img/rancher/catalog/custom-values-yaml-long.png)
