@@ -15,24 +15,43 @@ This kubeconfig file and its contents are specific to the cluster you are viewin
 
 For more information, see [Using kubectl to Access a Cluster]({{< baseurl >}}/rancher/v2.x/en//k8s-in-rancher/kubectl).
 
->**Note:** By default, kubectl checks `~/.kube/config` for kubeconfig files, but you can use any directory you want using the `--kubeconfig` flag. For example:
+>**Note:** By default, kubectl checks `~/.kube/config` for a kubeconfig file, but you can use any directory you want using the `--kubeconfig` flag. For example:
 >```
-kubectl --kubeconfig /custom/path/kube.config get pods
-```
-
-Rancher generates kubeconfig files that by default proxy through Rancher server to connect to the Kubernetes API server on a cluster.
-
-For RKE clusters which are configured as _authorized cluster endpoints_ we will generate extra contexts in the kubeconfig file for connecting directly to a cluster.
-If an FQDN is defined for the cluster then a single extra context will be created, otherwise an extra context which points to the IP address of each node in the control plane will be created.
-Please examine the kubeconfig file for a complete list of available contexts.
-
->Example of using the FQDN context for an RKE cluster:
+>kubectl --kubeconfig /custom/path/kube.config get pods
 >```
-kubectl --context rke-fqdn api-resources
-```
->or node context without FQDN defined:
->```
-kubectl --context rke-node1 api-resources
-```
+
+## Accessing Rancher Launched Kubernetes clusters without Rancher server running
+
+By default, Rancher generates a kubeconfig file that will proxy through the Rancher server to connect to the Kubernetes API server on a cluster.
+
+For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) clusters, which have  _[authorized cluster endpoints]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)_ enabled, Rancher generates extra context(s) in the kubeconfig file in order to connect directly to the cluster. 
+
+> **Note:** By default, all Rancher Launched Kubernetes clusters are enabled as _[authorized cluster endpoints]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)_. 
+
+To find the name of the context(s), view the kubeconfig file. 
 
 See [Cluster Options for Provisioning RKE in Rancher]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/) and [RKE Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/authentication/) for more information on user authentication in a cluster.
+
+### Clusters with FQDN defined as an Authorized Cluster Endpoint
+
+If an FQDN is defined for the cluster, a single context referencing the FQDN will be created. The context will be named `<CLUSTER_NAME>-fqdn`. When you want to use `kubectl` to access this cluster without Rancher, you will need to use this context. 
+
+```
+# Assuming the kubeconfig file is located at ~/.kube/config
+kubectl --context <CLUSTER_NAME>-fqdn get nodes
+
+# Directly referencing the location of the kubeconfig file
+kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-fqdn get pods
+```
+
+### Clusters without FQDN defined as an Authorized Cluster Endpoint
+
+If there is no FQDN defined for the cluster, extra contexts will be created referencing the IP address of each node in the control plane. Each context will be named `<CLUSTER_NAME>-<NODE_NAME>`. When you want to use `kubectl` to access this cluster without Rancher, you will need to use this context. 
+
+```
+# Assuming the kubeconfig file is located at ~/.kube/config
+kubectl --context <CLUSTER_NAME>-<NODE_NAME> get nodes
+
+# Directly referencing the location of the kubeconfig file
+kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-<NODE_NAME> get pods
+```
