@@ -95,13 +95,20 @@ For more information, see the following pages:
 
 ![Weave Logo]({{< baseurl >}}/img/rancher/weave-logo.png)
 
-Weave Net creates a virtual network that connects Docker containers across multiple hosts and enables their automatic discovery. With Weave Net, portable microservices-based applications consisting of multiple containers can run anywhere, Weave works as a cni plugin to Kubernetes to connect pods across Kubernetes nodes.
+Weave enables networking and network policy in Kubernetes clusters across the cloud. Additionally, it support encrypting traffic between the peers.
 
-Weave support encrypting traffic between peers by assigning a password as a config option or `WEAVE_PASSWORD` environment variable to the weave Kubernetes YAML, Rancher UI automatically generates this password when weave plugin is selected, you can still change this password by editing the cluster YAML from the UI.
+To enable encryption, `WEAVE_PASSWORD` has to be set as a network plugin parameter. Rancher UI automatically generates the password when weave CNI plugin is selected. You can change the default password by editing the cluster YAML from the UI:
+
+```yaml
+network:
+  plugin: "weave"
+weave_network_provider:
+  password: "Q]SZOQ5wp@n$oijz"
+```
 
 Kubernetes workers should open TCP port 6783 and UDP 6783/6784.
 
-Weave is available as a cni-plugin in Rancher as of version 2.2, For more information, see the following pages:
+Weave is available as a CNI plugin in Rancher as of version 2.2, For more information, see the following pages:
 
 - [Weave Net Official Site](https://www.weave.works/)
 
