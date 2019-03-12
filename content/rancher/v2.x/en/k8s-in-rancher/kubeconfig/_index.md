@@ -30,8 +30,6 @@ For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provis
 
 To find the name of the context(s), view the kubeconfig file. 
 
-See [Cluster Options for Provisioning RKE in Rancher]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/) and [RKE Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/authentication/) for more information on user authentication in a cluster.
-
 ### Clusters with FQDN defined as an Authorized Cluster Endpoint
 
 If an FQDN is defined for the cluster, a single context referencing the FQDN will be created. The context will be named `<CLUSTER_NAME>-fqdn`. When you want to use `kubectl` to access this cluster without Rancher, you will need to use this context. 
