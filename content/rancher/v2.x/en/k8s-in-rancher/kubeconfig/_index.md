@@ -1,4 +1,5 @@
 ---
+metaTitle: "Kubeconfig File | Kubectl | Accessing Kubernetes | Rancher"
 title: Kubeconfig Files
 weight: 3010
 aliases:
@@ -9,7 +10,7 @@ A _kubeconfig file_ is a file used to configure access to Kubernetes when used i
 
 For more details on how kubeconfig and kubectl work together, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/).
 
-When you create a cluster using the Rancher GUI, Rancher automatically creates a kubeconfig for your cluster.
+When you create a cluster using the Rancher GUI, Rancher automatically creates a kubeconfig file for your cluster.
 
 This kubeconfig file and its contents are specific to the cluster you are viewing. You will need a separate kubeconfig file for each cluster that you have access to in Rancher.
 
