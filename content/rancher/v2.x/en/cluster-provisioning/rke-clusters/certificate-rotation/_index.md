@@ -7,10 +7,10 @@ weight: 2225
 
 ## Certificate Rotation
 
-As of v2.2, you can rotate certificates for any RKE clusters within Rancher, rotating certificates includes:
+As of v2.2, you can rotate certificates for RKE clusters in Rancher. You can chose to:
 
-- Rotate Certificate for all components
-- Rotate Certificates for specific component.
+- Rotate Certificate for all cluster components
+- Rotate Certificates for a specific component.
 - Rotate CA certificates.
 
 To rotate certificates for your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis (...) > Rotate Certificates** for the cluster that you want to rotate certificate.
