@@ -57,12 +57,12 @@ A Helm chart repository is an HTTP server that houses one or more packaged chart
 
 Helm comes with built-in package server for developer testing (helm serve). The Helm team has tested other servers, including Google Cloud Storage with website mode enabled, S3 with website mode enabled or hosting custom chart repository server using open-source projects like [ChartMuseum](https://github.com/helm/chartmuseum).
 
-In Rancher, You can add the custom Helm chart repository with only specify a catalog name and the URL address of the chart repository.
+In Rancher, you can add the custom Helm chart repository with only a catalog name and the URL address of the chart repository.
 
 #### Add Private Git/Helm Chart Repositories
 _Available as of v2.2.0_
 
-From Rancher v2.2.0, you can now select to add private catalog repositories using credentials like Username and Password, you may also want to use the 
+In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the 
 OAuth token if your Git or Helm repository server support that.
 
 [Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/private/)
