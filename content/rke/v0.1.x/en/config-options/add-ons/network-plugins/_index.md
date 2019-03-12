@@ -71,7 +71,9 @@ network:
 
 #### Weave encryption
 
-Weave encryption can be enabled by using a weave string password, in rke config weave encryption can be enabled by adding the `password` option to `weave_network_provider`:
+Weave encryption can be enabled by passing a string password to the network provider config. 
+
+### Weave Network Plug-in Options
 
 ```yaml
 network:
