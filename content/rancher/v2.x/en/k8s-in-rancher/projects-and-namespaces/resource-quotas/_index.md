@@ -73,8 +73,22 @@ When you create a resource quota, you are configuring the pool of resources avai
 | Replications Controllers | The maximum number of replication controllers that can exist in the project/namespace.                                                                                                            |
 | Secrets                  | The maximum number of secrets that can exist in the project/namespace.                                                                                                                            |
 
->**<sup>1</sup>** In the quota, if you set CPU or Memory limits, all containers you create in the project / namespace must explicitly satisfy the quota. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details.
+### Setting Container Default Resource Limit
+In the quota, if you set CPU or Memory limits, all containers you create in the project / namespace must explicitly satisfy the quota. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details.
 
+
+To avoid setting the limit on each and every container during a workload creation, default container resource limit can be specified on a project or a namespace level. If set on a project, the parameter will be inherited by every namespace created in the project.
+
+Once the following container default resource limits are configured either on a project a namespace belongs to, or an individual namespace level, they will be derived and set on every container started in the namespace:
+
+| Resource Type            | Description                                                                                                                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPU Limit                | The maximum amount of CPU (in [millicores](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)) allocated to the container.|
+| CPU Reservation          | The minimum amount of CPU (in millicores) guaranteed to the container.                                                                                                       |
+| Memory Limit             | The maximum amount of memory (in bytes) allocated to the container.                                                                                                          |
+| Memory Reservation       | The minimum amount of memory (in bytes) guaranteed to the container.
+
+>**Note:** This option is only available in v2.2.0 and later.
  
 ### Overriding the Default Limit for a Namespace
 
