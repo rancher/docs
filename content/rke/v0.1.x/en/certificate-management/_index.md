@@ -7,7 +7,7 @@ aliases:
 
 ## Certificate Rotation
 
-As of v0.2.0, RKE can be used to rotate the cluster certificates with different options, the certificate rotation is one of the subcommands of `./rke cert` command:
+As of v0.2.0, RKE can be used to rotate the cluster certificates. The certificate rotation is one of the subcommands of `./rke cert` command, and can be called with a several options:
 
 ```
 $ rke cert rotate --help
@@ -25,16 +25,16 @@ OPTIONS:
 
 ### Certificate rotation for all components
 
-To rotate certificates for all kubernetes components including:
+Certificates can be rotated for the following kubernetes cluster components:
 
-- Kube-apiserver
-- Kube-scheduler
-- kube-controller-manager
-- etcd nodes
-- kube-proxy
+- etcd
 - kubelet
+- kube-apiserver
+- kube-proxy
+- kube-scheduler
+- kube-controller-manager
 
-The rotation command can be run as following:
+To rotate the certificates for all the components listed above, run the following command:
 
 ```
 $ rke cert rotate
@@ -56,12 +56,13 @@ INFO[0002] Rebuilding Kubernetes cluster with rotated certificates
 INFO[0050] [worker] Successfully restarted Worker Plane..
 ```
 
-The rotation command will rotate the certificates and trigger a restart to kubernetes components so that they can work with the new rotated certificates.
+The command will rotate all the certificates followed by the kubernetes components restart. This way they can start working with the new rotated certificates.
 
 
 ### Certificate rotation for specific component
 
-To rotate certificates for only one or more component you can use `--service` option, for example to rotate kubelet certificates on all nodes:
+To rotate certificates for an individual component, use `--service` option. The example below triggers cert rotation for a kubelet component: 
+
 ```
 $ rke cert rotate --service kubelet
 INFO[0000] Initiating Kubernetes cluster                
@@ -75,7 +76,7 @@ INFO[0033] [worker] Successfully restarted Worker Plane..
 
 ### Certificate rotation for CA
 
-To rotate Kubernetes CA certificate you can use `--rotate-ca` option, note that rotating this certificate will trigger rotating all components certificates as well to be signed with the new rotated CA:
+To rotate Kubernetes CA certificate, use `--rotate-ca` option.Note that rotating this certificate will trigger rotating all components' certificates as they need to be signed with the new rotated CA:
 ```
 $ rke cert rotate --rotate-ca      
 INFO[0000] Initiating Kubernetes cluster                
@@ -98,12 +99,14 @@ INFO[0001] Rebuilding Kubernetes cluster with rotated certificates
 
 ## Custom Certificates
 
-As of v0.2.0 RKE can be configured to use custom certificates instead of RKE generates a set of certificates, to use custom certificates use the following option with any rke operation:
+By default RKE auto generates the certificates for all the cluster components. As of v0.2.0, RKE can be configured to use custom certificates. To use custom certificates, use the following option with any rke operation:
 
 ```
 $ rke up --custom-certs
 ```
-This option will make RKE uses the certificates from a certificate directory, this option default to `./cluster_certs`, the following certificates must exist in the certificate directory:
+This option will make RKE use the certificates from a certificate directory `./cluster_certs`. To change the default certificate directly, pass `--cert-dir` flag to the command.
+
+The following certificates must exist in the certificate directory:
 
 |            Name            |                 Cert                |                   Key                   | Optional |
 |:--------------------------:|:-----------------------------------:|:---------------------------------------:|:--------:|
@@ -118,10 +121,13 @@ This option will make RKE uses the certificates from a certificate directory, th
 |         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |   false  |
 |    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |   true   |
 
+The next section of the doc goes over the process of custom certificates generation.
+
 
 ### CSR Generation
 
-If you want to sign the certificates from a real Certificate Authority (CA), you can use rke to generate a set of Certificate Signing Requests (CSRs) and keys to the list of nodes used in the cluster configuration file, for example to generate CSRs to one node:
+If you want to create and sign the certificates by a real Certificate Authority (CA), you can use rke to generate a set of Certificate Signing Requests (CSRs) and Keys. Here is an example on how to generate CSRs for one node cluster:
+
 ```
 nodes:
   - address: x.x.x.x
@@ -144,7 +150,7 @@ INFO[0001] [certificates] Generating Kubernetes API server proxy client csr
 INFO[0001] [certificates] Generating etcd-x.x.x.x csr and key
 INFO[0001] Successfully Deployed certificates at [./cluster_certs]
 ```
-The CSRs and keys will be deployed in `cluster_certs` directory by default, to use different directory you can use `--cert-dir` option.
+The CSRs and keys will be deployed in `./cluster_certs` directory by default. To use a different directory, pass `--cert-dir` option.
 
 ```
 $ tree cluster_certs
@@ -171,4 +177,4 @@ cluster_certs
 
 ```
 
-These CSR files will contain the right Alternative DNS and IP Names for the certificates, you can use them then to sign a certificates from a real CA.
+These CSR files will contain the right Alternative DNS and IP Names for the certificates. You can use them then to sign the certificates by a real CA, and then upload to the cluster_certs directory for rke use.
