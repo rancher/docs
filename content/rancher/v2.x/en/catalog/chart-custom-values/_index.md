@@ -25,7 +25,7 @@ or through `Edit as YAML` view:
 ![dot-custom-values.png]({{< baseurl >}}/img/rancher/catalog/dot-custom-values.png)
 <hr>
 
-### Supports Real Custom `values.yaml` for Catalog Apps
+### Support For Real Custom `values.yaml`
 _Available as of v2.2.0_
 
 From Rancher v2.2.0, you can set custom values using a YAML formatted structure through `Edit as YAML`.
