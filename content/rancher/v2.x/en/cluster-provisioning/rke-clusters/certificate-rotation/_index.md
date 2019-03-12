@@ -26,7 +26,7 @@ Certificates can be rotated for the following kubernetes cluster components:
 - kube-proxy
 - kubelet
 
-Select **Rotate all Service certificates (keep the same CA)** to rotate all certificates mentioned above
+Select **Rotate all Service certificates (keep the same CA)** to rotate all the certificates mentioned above
 
 ### Certificate rotation for a specific component
 
