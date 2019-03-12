@@ -192,7 +192,7 @@ PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
 _Available as of v2.2.0_
 
-The **Publish Catalog Template** step publishes a version of catalog app template(helm chart) to a [git hosted chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the pipeline dedicated namespace to complete successfully. [Pipeline variable substitution]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/) is supported for any file in the chart folder.
+The **Publish Catalog Template** step publishes a version of catalog app template(helm chart) to a [git hosted chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. [Pipeline variable substitution]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/) is supported for any file in the chart folder.
 
 {{% tabs %}}
 
@@ -209,7 +209,7 @@ The **Publish Catalog Template** step publishes a version of catalog app templat
      Catalog Template Name | The name of the template. For example, wordpress. |
      Catalog Template Version | The version of the template you want to publish, it should be consistent with the version defined in the `Chart.yaml` file. |
      Protocol | You can choose to publish via HTTP(S) or SSH protocol. |
-     Secret   | The secret that stores your Git credentials. You need to create a secret in pipeline dedicated namespace in the project before adding this step. If you use HTTP(S) protocol, store Git username and password in `USERNAME` and `PASSWORD` key of the secret. If you use SSH protocol, store Git deploy key in `DEPLOY_KEY` key of the secret. After the secret is created, select it in this option. |
+     Secret   | The secret that stores your Git credentials. You need to create a secret in dedicated pipeline namespace in the project before adding this step. If you use HTTP(S) protocol, store Git username and password in `USERNAME` and `PASSWORD` key of the secret. If you use SSH protocol, store Git deploy key in `DEPLOY_KEY` key of the secret. After the secret is created, select it in this option. |
      Git URL  | The Git URL of the chart repository that the template will be published to. |
      Git Branch | The Git branch of the chart repository that the template will be published to. |
      Author Name | The author name used in the commit message. |
@@ -232,7 +232,7 @@ Under the `steps` section, add a step with `publishCatalogConfig`. You will prov
 * GitBranch: The git branch of the chart repository that the template will be published to.
 * GitAuthor: The author name used in the commit message.
 * GitEmail: The author email used in the commit message.
-* Credentials: You should provide Git credentials by referencing secrets in pipeline dedicated namespace. If you publish via SSH protocol, inject your deploy key to the `DEPLOY_KEY` environment variable. If you publish via HTTP(S) protolcol, inject your username and password to `USERNAME` and `PASSWORD` environment variables.
+* Credentials: You should provide Git credentials by referencing secrets in dedicated pipeline namespace. If you publish via SSH protocol, inject your deploy key to the `DEPLOY_KEY` environment variable. If you publish via HTTP(S) protolcol, inject your username and password to `USERNAME` and `PASSWORD` environment variables.
 
 ```yaml
 # example
