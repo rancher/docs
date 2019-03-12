@@ -17,7 +17,7 @@ To rotate certificates for your cluster, open the **Global** view, make sure the
 
 ### Certificate rotation for all components
 
-To rotate certificates for all kubernetes components including:
+Certificates can be rotated for the following kubernetes cluster components:
 
 - Kube-apiserver
 - Kube-scheduler
@@ -28,11 +28,11 @@ To rotate certificates for all kubernetes components including:
 
 Select **Rotate all Service certificates (keep the same CA)** to rotate all certificates mentioned above
 
-### Certificate rotation for specific component
+### Certificate rotation for a specific component
 
-To rotate certificates for only one or more component you can select **Rotate an individual service** and then select one of the components from the drop down menu, this will result in rotating certificate for only this component.
+To rotate certificates for one of the components, expand **Rotate an individual service** and select one of the components from the drop down menu. It will result in rotating certificate for only this component.
 
 
 ### Certificate rotation for CA
 
-To rotate Kubernetes CA certificate you can select **Rotate the CA and all Service certificates** option, note that rotating this certificate will trigger rotating all components certificates as well to be signed with the new rotated CA.
+To rotate Kubernetes CA certificate, select **Rotate the CA and all Service certificates** option. Note that rotating this certificate will trigger rotating all components' certificates as they need to be signed with the new rotated CA.
