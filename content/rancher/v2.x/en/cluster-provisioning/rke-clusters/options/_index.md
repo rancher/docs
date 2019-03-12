@@ -30,7 +30,7 @@ From this section you can choose:
 
         In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
-        As of release v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
+        As of v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
         >**Attention Rancher v2.0.0 - v2.0.6 Users**
         >
@@ -51,6 +51,8 @@ From this section you can choose:
 - Whether or not to use a [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
     >**Note:** If your cloud provider is not listed as an option, you will need to use the [config file option](#config-file) to use that cloud provider. Please reference the [RKE's cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure these other cloud providers.
+
+- As of v2.2.0, whether or not to allow the cluster to act as an _authorized cluster endpoint_. Enabling will allow users to directly access the Kubernetes API server in the cluster without requiring communication through Rancher server. Providing an FQDN and certificate will generate kubeconfig files which use those values for accessing the cluster behind a load balancer, otherwise node IP addresses and Kubernetes API certificates will be used. See the [kubeconfig documentation]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) for more information.
 
 - Whether or not to use a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing pod security policy configured before you can use this option.
 
