@@ -110,3 +110,21 @@ Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-a
 1. Click **Create**.
  
 **Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, Rancher won't let you save your changes.
+
+
+## Editing Container Default Resource Limit
+
+Edit [container default resource limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
+
+- You have a CPU or Memory resource quota set on a project, and want to supply the corresponding default values for a container.
+- You want to readjust the default container resource limit.
+
+1. From the **Global** view, open the cluster containing the project to which you want to apply a resource quota.
+
+1. From the main menu, select **Projects/Namespaces**.
+
+1. Find the project that you want to add a resource quota to. From that project, select **Ellipsis (...) > Edit**.
+
+1. Expand **Container Default Resource Limit** and edit the values.
+
+>**Note:** This option is only available in v2.2.0 and later.

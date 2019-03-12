@@ -127,7 +127,10 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
         | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. The combined limit of all project namespaces shouldn't exceed the project limit.  | 
     
     1. **Optional:** Repeat these substeps to add more quotas.
- 
+
+1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit)
+	>**Note:** This option is only available in v2.2.0 and later.
+
 
 1. Click **Create**.
 
