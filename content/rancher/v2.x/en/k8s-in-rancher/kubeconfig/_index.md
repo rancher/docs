@@ -16,7 +16,8 @@ This kubeconfig file and its contents are specific to the cluster you are viewin
 For more information, see [Using kubectl to Access a Cluster]({{< baseurl >}}/rancher/v2.x/en//k8s-in-rancher/kubectl).
 
 >**Note:** By default, kubectl checks `~/.kube/config` for a kubeconfig file, but you can use any directory you want using the `--kubeconfig` flag. For example:
->```
+
+```
 kubectl --kubeconfig /custom/path/kube.config get pods
 ```
 
@@ -24,9 +25,9 @@ kubectl --kubeconfig /custom/path/kube.config get pods
 
 By default, Rancher generates a kubeconfig file that will proxy through the Rancher server to connect to the Kubernetes API server on a cluster.
 
-For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) clusters, which have  _[authorized cluster endpoints]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)_ enabled, Rancher generates extra context(s) in the kubeconfig file in order to connect directly to the cluster.
+For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) clusters, which have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled, Rancher generates extra context(s) in the kubeconfig file in order to connect directly to the cluster.
 
-> **Note:** By default, all Rancher Launched Kubernetes clusters are enabled as _[authorized cluster endpoints]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)_.
+> **Note:** By default, all Rancher Launched Kubernetes clusters have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled.
 
 To find the name of the context(s), view the kubeconfig file.
 
