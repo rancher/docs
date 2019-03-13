@@ -40,7 +40,7 @@ When you provision a cluster, it automatically creates a `default` project for t
 
 ### System Project
 
-_available as of v2.0.7_
+_Available as of v2.0.7_
 
 When troubleshooting, you can view the `system` project to check if important namespaces in the Kubernetes system are working properly. This easily accessible project saves you from troubleshooting individual system namespace containers.
 
@@ -113,7 +113,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
     
 1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas).
 
-    >**Note:** This option is only available in v2.1.0 and later.
+    >**Note:** This option is available as of v2.1.0.
 
     1. Click **Add Quota**.
     
@@ -129,7 +129,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
     1. **Optional:** Repeat these substeps to add more quotas.
 
 1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit)
-	>**Note:** This option is only available in v2.2.0 and later.
+	>**Note:** This option is available as of v2.2.0.
 
 
 1. Click **Create**.
