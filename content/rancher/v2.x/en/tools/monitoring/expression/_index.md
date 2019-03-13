@@ -124,6 +124,18 @@ weight: 10000
 
 ## Etcd Metrics
 
+- **Etcd has a leader**
+
+    `max(etcd_server_has_leader)`
+
+- **Number of leader changes**
+
+    `max(etcd_server_leader_changes_seen_total)`
+
+- **Number of failed proposals**
+
+    `sum(etcd_server_proposals_failed_total)`
+
 - **GRPC Client Traffic**
 
     | Catalog | Expression |
@@ -238,12 +250,12 @@ weight: 10000
     | Detail | `max(nginx_ingress_controller_request_duration_seconds_bucket{le="1"}) by (host, path)` |
     | Summary | `max(nginx_ingress_controller_request_duration_seconds_bucket{le="1"}) by (host, path)` |
 
-- **Nginx Response Seconds**
+- **Ingress Upstream Response Time**
 
     | Catalog | Expression |
     | --- | --- |
-    | Detail | `sort_desc(max(nginx_ingress_controller_ingress_upstream_latency_seconds_sum) by (host, path))` |
-    | Summary | `sort_desc(max(nginx_ingress_controller_ingress_upstream_latency_seconds_sum) by (host, path))` |
+    | Detail | `sort_desc(max(nginx_ingress_controller_response_duration_seconds_bucket) by (host, path))` |
+    | Summary | `sort_desc(max(nginx_ingress_controller_response_duration_seconds_bucket) by (host, path))` |
 
 ## Rancher Logging Metrics
 
