@@ -16,11 +16,9 @@ When creating a cluster using one of the options described in [Rancher Launched 
 
 From this section you can choose:
 
-- The version of Kubernetes installed on your cluster nodes. Rancher uses its own version of Kubernetes based on [hyperkube](https://hub.docker.com/r/kubernetesonarm/hyperkube/), but packaged with more utilities.
+- The version of Kubernetes installed on your cluster nodes. Rancher packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
 
-- Whether Rancher should check if the nodes are running a supported or unsupported version of Docker. If you only allow supported versions, the cluster automatically fails to launch if you have an unsupported version of Docker. Each Kubernetes version is tied to specific Docker versions based on what Kubernetes tests against.
-
-- The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [newtorking faqs]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/).
+- The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [Networking FAQ]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/).
 
     >**Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you  tear down the entire cluster and all its applications.
 
@@ -42,19 +40,58 @@ From this section you can choose:
 
          In v2.0.5, this was the default option, which did not prevent any network isolation between projects.
 
-    - [Calico](https://docs.projectcalico.org/v3.1/introduction/)
-
-        Another network provider option.
+    - [Calico](https://docs.projectcalico.org/)
+    - [Weave](https://github.com/weaveworks/weave) (_Available as of v2.2.0_)
 
 <br/>
 
-- Whether or not to use a [cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+- If you want to configure a [Kubernetes cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
-    >**Note:** If your cloud provider is not listed as an option, you will need to use the [config file option](#config-file) to use that cloud provider. Please reference the [RKE's cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure these other cloud providers.
+    >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
-- As of v2.2.0, whether or not to allow the cluster to act as an _authorized cluster endpoint_. Enabling will allow users to directly access the Kubernetes API server in the cluster without requiring communication through Rancher server. Providing an FQDN and certificate will generate kubeconfig files which use those values for accessing the cluster behind a load balancer, otherwise node IP addresses and Kubernetes API certificates will be used. See the [kubeconfig documentation]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) for more information.
+If you want to see all the configuration options for a cluster, please click **Show advanced options** on the bottom right. The advanced options are described below:
 
-- Whether or not to use a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing pod security policy configured before you can use this option.
+### Private registries
+
+_Available as of v2.2.0_
+
+If you are using a private registry with authentication for your Docker images, please configure the registry in this section to allow the nodes to pull images from this registry. See [Private Registries]({{< baseurl >}}/rke/v0.1.x/en/config-options/private-registries/) for more information.
+
+### Authorized Cluster Endpoint
+
+_Available as of v2.2.0_
+
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) for more information.
+
+### Advanced Cluster Options
+
+#### Nginx Ingress
+
+Option to enable or disable the [NGINX ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
+
+#### Node Port Range
+
+Option to change the range of ports that can be used for [NodePort services](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport). Default is `30000-32767`.
+
+#### Metrics Server Monitoring
+
+Option to enable or disable [Metrics Server]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/metrics-server/).
+
+#### Pod Security Policy Support
+
+Option to enable and select a default [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing Pod Security Policy configured before you can use this option.
+
+#### Docker version on nodes
+
+Option to require [a supported Docker version]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/) installed on the cluster nodes that are added to the cluster, or to allow unsupported Docker versions installed on the cluster nodes.
+
+#### Docker Root Directory
+
+If the nodes you are adding to the cluster have Docker configured with a non-default Docker Root Directory (default is `/var/lib/docker`), please specify the correct Docker Root Directory in this option.
+
+#### Recurring etcd Snapshots
+
+Option to enable or disable [recurring etcd snaphots]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#etcd-recurring-snapshots).
 
 ## Config File
 
@@ -63,8 +100,39 @@ From this section you can choose:
 Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
 
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
-- To read from an existing RKE file, click **Read from File**.
+- To read from an existing RKE file, click **Read from a file**.
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
 For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
+
+### Rancher specific parameters
+
+_Available as of v2.2.0_
+
+Besides the RKE config file options, there are also Rancher specific settings that can be configured in the Config File (YAML):
+
+#### docker_root_dir
+
+See [Docker Root Directory](#docker-root-directory).
+
+#### enable_cluster_monitoring
+
+Option to enable or disable [Cluster Monitoring]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring/).
+
+#### enable_network_policy
+
+Option to enable or disable Project Network Isolation.
+
+#### local_cluster_auth_endpoint
+
+See [Authorized Cluster Endpoint](#authorized-cluster-endpoint).
+
+Example:
+
+```yaml
+local_cluster_auth_endpoint:
+  enabled: true
+  fqdn: "FQDN"
+  ca_certs: "BASE64_CACERT"
+```

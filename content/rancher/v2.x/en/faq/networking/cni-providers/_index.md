@@ -117,7 +117,7 @@ Weave is available as a CNI plugin in Rancher as of version 2.2, For more inform
 The following table summarizes the different features available for each CNI provider provided by Rancher.
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
 | Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes |
