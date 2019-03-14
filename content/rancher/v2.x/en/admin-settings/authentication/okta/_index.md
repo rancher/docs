@@ -1,7 +1,8 @@
 ---
 title: Configuring Okta (SAML)
-weight: 1200
+weight: 1210
 ---
+
 _Available as of v2.2.0_
 
 If your organization uses Okta Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
@@ -50,7 +51,7 @@ In Okta, create a SAML Application with the settings below. See the [Okta docume
 
 **Result:** Rancher is configured to work with Okta. Your users can now sign into Rancher using their Okta logins.
 
->**Keycloak Identity Provider Caveats:**
+>**Okta Identity Provider Caveats:**
 >
 >- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
 >- When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
