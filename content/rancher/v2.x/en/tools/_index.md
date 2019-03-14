@@ -12,12 +12,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Logging](#logging)
 - [Pipelines](#pipelines)
 - [Monitoring](#monitoring)
-
-At the **Global View**, following tools are available, that help manage operations that can span multiple clusters:
-
-- [Global DNS Entries](#global-dns)
-- [Global DNS Providers](#global-dns)
-
+- [Global DNS](#global-dns)
 
 <!-- /TOC -->
 
@@ -96,11 +91,11 @@ In other words, Prometheus let's you view metrics from your different Rancher an
 
 For more information, see the [Monitoring Documentation]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring).
 
-## Global DNS
+## Global DNS 
 
-In certain usecases it is necessary to deploy the same application to multiple Kubernetes Clusters. In such cases, there is a need to program an external DNS server to assign a fully qualified domain name (a.k.a FQDN) to your application, to route traffic to endpoints in all the clusters. The Global DNS feature enables you to do this.
+_Available as v2.2.0_
 
-Using this feature you can program an external DNS from a set of supported providers and let Rancher know the FQDN you want to program and the application workloads it should resolve to. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
+When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN and your applications to program the DNS.r will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
 
-For more information on how to use this feature, see [Global DNS Workflow]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/#Global DNS Workflow).
+For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/).
 
