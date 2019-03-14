@@ -3,7 +3,7 @@ title: Configuring Pipelines
 weight: 3725
 ---
 
-Configuring a pipeline automates the process of triggering and publishing builds. This section describes how to set up a pipeline in a production environment. 
+Configuring a pipeline automates the process of triggering and publishing builds. This section describes how to set up a pipeline in a production environment.
 
 - The [Basic Configuration](#basic-configuration) section provides sequential instruction on how to configure a functional pipeline.
 - The [Advanced Configuration](#advanced-configuration) section provides instructions for configuring pipeline options.
@@ -25,19 +25,19 @@ Initial configuration of a pipeline in a production environment involves complet
 - [3. Running the Pipeline](#3-running-the-pipeline)
 - [4. Configuring Persistent Data for Pipeline Components](#4-configuring-persistent-data-for-pipeline-components)
 - [Advanced Configuration](#advanced-configuration)
- 
+
 
 <!-- /TOC -->
 
 ### 1. Configuring Version Control Providers
 
-Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub and GitLab. 
+Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub and GitLab.
 
 Select your provider's tab below and follow the directions.
 
 {{% tabs %}}
 {{% tab "GitHub" %}}
-1. From the context menu, open the project for which you're configuring a pipeline. 
+1. From the context menu, open the project for which you're configuring a pipeline.
 
 1. From the main menu, select **Resources > Pipelines**.
 
@@ -49,13 +49,13 @@ Select your provider's tab below and follow the directions.
 
 1. If you're using GitHub for enterprise, select **Use a private github enterprise installation**. Enter the host address of your GitHub installation.
 
-1. Click **Authenticate**. 
+1. Click **Authenticate**.
 
 1. Enable the repository for which you want to run a pipeline. Then click **Done**.  
 
 {{% /tab %}}
 {{% tab "GitLab" %}}
-1. From the context menu, open the project for which you're configuring a pipeline. 
+1. From the context menu, open the project for which you're configuring a pipeline.
 
 1. From the main menu, select **Resources > Pipelines**.
 
@@ -71,7 +71,7 @@ Select your provider's tab below and follow the directions.
 
 1. Enable the repository for which you want to run a pipeline. Then click **Done**.  
 
->**Note:** 
+>**Note:**
 > 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
 > 2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
 {{% /tab %}}
@@ -90,18 +90,18 @@ Select your provider's tab below and follow the directions.
 Now that the pipeline is added to your project, you need to configure its automated stages and steps. For your convenience, there are multiple built-in step types for dedicated tasks.
 
 1. From your project's **Pipeline** tab, find your new pipeline, and select **Ellipsis (...) > Edit Config**.
-    
+
     >**Note:** When configuring a pipeline, it takes a few moments for Rancher to check for an existing pipeline configuration.
 
 1. Click **Configure pipeline for this branch**.
- 
+
 1. Add stages to your pipeline execution by clicking **Add Stage**.
 
 1. Add steps to each stage by clicking **Add a Step**. You can add multiple steps to each stage.
 
     >**Note:** As you build out each stage and step, click `Show advanced options` to make [Advanced Configurations](#advanced-configuration), such as rules to trigger or skip pipeline actions, add environment variables, or inject environment variables using secrets. Advanced options are available the pipeline, each stage, and each individual step.
 
-    **Step types available include:** 
+    **Step types available include:**
 
     {{% accordion id="clone" label="Clone" %}}
 
@@ -119,7 +119,7 @@ The **Run Script** step executes arbitrary commands in the workspace inside a sp
 
 1. From the **Step Type** drop-down, choose **Run Script** and fill in the form.
 
-1. Click **Add**. 
+1. Click **Add**.
 
 {{% /tab %}}
 
@@ -133,7 +133,7 @@ stages:
   - runScriptConfig:
       image: golang
       shellScript: go build
-``` 
+```
 {{% /tab %}}
 
 {{% /tabs %}}     
@@ -149,10 +149,10 @@ The **Build and Publish Image** step builds and publishes a Docker image. This p
 1. From the **Step Type** drop-down, choose **Build and Publish**.
 
 1. Fill in the rest of the form. Descriptions for each field are listed below. When you're done, click **Add**.
- 
+
     Field | Description |
     ---------|----------|
-     Dockerfile Path | The relative path to the Dockerfile in the source code repo. By default, this path is `./Dockerfile`, which assumes the Dockerfile is in the root directory. You can set it to other paths in different use cases (`./path/to/myDockerfile` for example). | 
+     Dockerfile Path | The relative path to the Dockerfile in the source code repo. By default, this path is `./Dockerfile`, which assumes the Dockerfile is in the root directory. You can set it to other paths in different use cases (`./path/to/myDockerfile` for example). |
      Image Name | The image name in `name:tag` format. The registry address is not required. For example, to build  `example.com/repo/my-image:dev`, enter `repo/my-image:dev`. |
      Push image to remote repository | An option to set the registry that publishes the image that's built.  To use this option, enable it and choose a registry from the drop-down. If this option is disabled, the image is pushed to the internal registry. |
      Build Context <br/><br/> (**Show advanced options**)| By default, the root directory of the source code (`.`). For more details, see the Docker [build command documentation](https://docs.docker.com/engine/reference/commandline/build/).
@@ -181,7 +181,7 @@ PLUGIN_DRY_RUN          | Disable docker push
 PLUGIN_DEBUG            | Docker daemon executes in debug mode
 PLUGIN_MIRROR           | Docker daemon registry mirror
 PLUGIN_INSECURE         | Docker daemon allows insecure registries
-PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list 
+PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
 {{% /tab %}}
 
@@ -200,7 +200,7 @@ This step deploys arbitrary Kubernetes resources to the project. This deployment
 
 1. Enter the **YAML Path**, which is the path to the manifest file in the source code.
 
-1. Click **Add**. 
+1. Click **Add**.
 
 {{% /tab %}}
 
@@ -213,7 +213,7 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
-``` 
+```
 
 {{% /tab %}}
 
@@ -221,7 +221,7 @@ stages:
 
 {{% /accordion %}}
 
-1. When you're finished adding stages and steps, click **Done.** 
+1. When you're finished adding stages and steps, click **Done.**
 
 ### 3. Running the Pipeline
 
@@ -256,7 +256,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 
     - **Add Volume > Add a new persistent volume (claim)**
     - **Add Volume > Use an existing persistent volume (claim)**
- 
+
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
 {{% tabs %}}
 
@@ -302,7 +302,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 
     - **Add Volume > Add a new persistent volume (claim)**
     - **Add Volume > Use an existing persistent volume (claim)**
- 
+
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
 {{% tabs %}}
 
@@ -364,7 +364,7 @@ Trigger rules come in two types:
     This type of rule starts the pipeline, stage, or step when a trigger explicitly occurs.
 
 - **Do Not Run this when:**
- 
+
     If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 
@@ -390,7 +390,7 @@ You can configure trigger rules for the entire pipeline in two different context
 {{% /accordion %}}
 
 {{% accordion id="pipeline-settings" label="While Editing Pipeline Settings" %}}
- 
+
 After you've configured a pipeline, you can go back and choose the events that trigger a pipeline execution.
 
 >**Note:** This option is not available for example repositories.
@@ -412,12 +412,12 @@ After you've configured a pipeline, you can go back and choose the events that t
 
 1. From the pipeline stage that you want to configure a trigger for, click the **Edit** icon.
 
-1. Click **Show advanced options**. 
+1. Click **Show advanced options**.
 
 1. Add one or more trigger rules.
 
     1.  Click **Add Rule**.  
-    
+
     1.  Choose the **Type** that triggers the stage.
 
         | Type   | Value                                                                |
@@ -434,12 +434,12 @@ After you've configured a pipeline, you can go back and choose the events that t
 
 1. From the pipeline step that you want to configure a trigger for, click the **Edit** icon.
 
-1. Click **Show advanced options**. 
+1. Click **Show advanced options**.
 
 1. Add one or more trigger rules.
 
     1.  Click **Add Rule**.  
-    
+
     1.  Choose the **Type** that triggers the step.
 
         | Type   | Value                                                                |
@@ -479,9 +479,9 @@ branch:
 
 _Available as of v2.2.0_
 
-You can configure pipelines to send out notifications to any [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers) based on the build status of a pipeline. Before configuring a notification, Rancher recommends [setting up notifiers]]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) so it will be easy to add recipients immediately. 
+You can configure pipelines to send out notifications to any [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers) based on the build status of a pipeline. Before configuring a notification, Rancher recommends [setting up notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) so it will be easy to add recipients immediately.
 
-> **Note:** Notifiers are configured at a cluster level, but pipelines are configured at the project level.
+> **Note:** Notifiers are configured at a cluster level, but pipeline notifications are configured at the project level.
 
 {{% tabs %}}
 {{% tab "By UI" %}}
@@ -489,27 +489,27 @@ You can configure pipelines to send out notifications to any [notifiers]({{< bas
 
 1. From the pipeline for which you want to add notifications, select **Ellipsis (...) > Edit Config**.
 
-1. Within the **Notification** section, turn on notifications by clicking **Enable**. 
+1. Within the **Notification** section, turn on notifications by clicking **Enable**.
 
-1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**. 
+1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
 
-1. If you don't have any existing [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers), Rancher will provide a warning that no notifers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking **Add Recipient** button.
+1. If you don't have any existing [notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers), Rancher will provide a warning that no notifers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
 1. For each recipient, select which notifier type from the dropdown. Based on the type of notifier, you can use the default recipient or override the recipient with a different one. For example, if you have a notifier for Slack, you can update which channel to send the notification to. You can add additional notifiers by clicking **Add Recipient**.
- 
+
 {{% /tab %}}
 {{% tab "By YAML" %}}
 
-You can add notifiers directly in the `.rancher-pipeline.yml` file. 
+You can add notifiers directly in the `.rancher-pipeline.yml` file.
 
 Under the `notification` section, you will provide the following information:
 
 
-* Recipients: This will be the list of notifiers/recipients that will receive the notification. 
-  *  Notifier: The ID of the notifier. This can be found by finding the notifier and selecting **View in API** to get the ID. 
-  * Recipient: Depending on the type of the notifier, the "default recipient" can be used or you can override this with a different recipient. For example, when configuring a slack notifier, you select a channel as your default recipient, but if you wanted to send notifications to a different channel, you can select a different recipient. 
-* Condition: Select which conditions of when you want the notification to be sent. 
-* Message (Optional): If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI.  
+* **Recipients:** This will be the list of notifiers/recipients that will receive the notification.
+  * **Notifier:** The ID of the notifier. This can be found by finding the notifier and selecting **View in API** to get the ID.
+  * **Recipient:** Depending on the type of the notifier, the "default recipient" can be used or you can override this with a different recipient. For example, when configuring a slack notifier, you select a channel as your default recipient, but if you wanted to send notifications to a different channel, you can select a different recipient.
+* **Condition:** Select which conditions of when you want the notification to be sent.
+* **Message (Optional):** If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI.  
 
 ```yaml
 # Example
@@ -531,13 +531,13 @@ notification:
   condition: ["Failed", "Success", "Changed"]
   # Ability to override the default message (Optional)
   message: "my-message"
-``` 
+```
 {{% /tab %}}
 {{% /tabs %}}
 
 ### Configuring Timeouts
 
-Each pipeline execution has a default timeout of 60 minutes. If the pipeline execution cannot complete within its timeout period, the pipeline is aborted. If a pipeline has more executions than can be completed in 60 minutes, 
+Each pipeline execution has a default timeout of 60 minutes. If the pipeline execution cannot complete within its timeout period, the pipeline is aborted. If a pipeline has more executions than can be completed in 60 minutes,
 
 {{% tabs %}}
 {{% tab "By UI" %}}
@@ -548,7 +548,7 @@ Each pipeline execution has a default timeout of 60 minutes. If the pipeline exe
 1. Click **Show advanced options**.  
 
 1. Enter a new value in the **Timeout** field.
- 
+
 {{% /tab %}}
 {{% tab "By YAML" %}}
 ```yaml
@@ -560,7 +560,7 @@ stages:
         image: busybox
         shellScript: ls
 timeout: 30
-``` 
+```
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -583,7 +583,7 @@ When configuring a pipeline, you can use environment variables to configure the 
 
 1. Edit the script, adding your environment variable(s).
 
-1. Click **Save**. 
+1. Click **Save**.
 
 {{% /tab %}}
 
@@ -599,7 +599,7 @@ stages:
       env:
         FIRST_KEY: VALUE
         SECOND_KEY: VALUE2
-``` 
+```
 {{% /tab %}}
 
 {{% /tabs %}}
@@ -624,7 +624,7 @@ If you need to use security-sensitive information in your pipeline scripts (like
 
 1. Click **Add From Secret**. Select the secret file that you want to use. Then choose a key. Optionally, you can enter an alias for the key.
 
-1. Click **Save**. 
+1. Click **Save**.
 
 {{% /tab %}}
 {{% tab "By YAML" %}}
@@ -641,7 +641,7 @@ stages:
       - sourceName: my-secret
         sourceKey: secret-key
         targetKey: ALIAS_ENV
-``` 
+```
 {{% /tab %}}
 {{% /tabs %}}
 
