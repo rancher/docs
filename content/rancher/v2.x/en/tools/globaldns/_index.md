@@ -5,7 +5,7 @@ weight: 10005
 
 _Available as of v2.2.0_
 
-Rancher's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would be accessible. 
+Rancher's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would still be accessible.
 
 > **Note:** Global DNS is only available in [HA setups]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) with the [`local` cluster enabled]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster).
 
@@ -13,9 +13,9 @@ Rancher's Global DNS feature provides a way to program an external DNS provider 
 
 Prior to adding in Global DNS entries, you will need to configure access to an external provider.
 
-The following table lists the first version of Rancher each provider debuted. 
+The following table lists the first version of Rancher each provider debuted.
 
-| Auth Service | Available as of  |
+| DNS Provider | Available as of  |
 | --- | --- |
 | [AWS Route53](https://aws.amazon.com/route53/)  | v2.2.0 |
 | [CloudFlare](https://www.cloudflare.com/dns/) | v2.2.0 |
