@@ -29,7 +29,7 @@ weight: 276
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
 | `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_ |
 | `debug` | false | `bool` - set debug flag on rancher server |
-| `extraEnv` | [] | `list` - set additional environment variables for Rancher |
+| `extraEnv` | [] | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_ |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
@@ -130,8 +130,8 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 For details on installing Rancher with a private registry, see:
 
-- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/) 
-- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/) 
+- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/)
+- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
 
 ### External TLS Termination
