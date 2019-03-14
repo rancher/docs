@@ -3,32 +3,32 @@ title: Recovering etcd
 weight: 300
 ---
 
-> **Note:** Recovering etcd is only applicable to [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
+> **Note:** The ability to recovering etcd is only applicable to [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters.
 
-If the etcd cluster loses quorum (see [Count of etcd Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/production/#count-of-etcd-nodes)), the Kubernetes cluster will report a failure in Rancher because no operations can be executed in the Kubernetes cluster (operations like deploying workloads or scaling workloads). If you want to recover your etcd cluster, you can follow the steps below.
+If the group of etcd nodes loses quorum, the Kubernetes cluster will report a failure because no operations, e.g. deploying workloads, can be executed in the Kubernetes cluster. Please review the best practices for the what the [number of etcd nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/production/#count-of-etcd-nodes) should be in a Kubernetes cluster. If you want to recover your set of etcd nodes, follow these instructions:
 
-1- Remove all other etcd nodes and leave only one etcd node in the cluster.
+1. Keep only one etcd node in the cluster by removing all other etcd nodes.
 
-2- On the single remaining etcd node, run the following command:
+2. On the single remaining etcd node, run the following command:
 
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock assaflavie/runlike etcd
-```
+    ```
+    $ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock assaflavie/runlike etcd
+    ```
 
-This command will get the running command for etcd, you should save this command for later.
+    This command outputs the running command for etcd, save this command to use later.
 
-3- Now we need to stop the etcd container and rename it to `etcd-old`:
+3. Stop the etcd container that you launched in the previous step and rename it to `etcd-old`.
 
-```
-$ docker stop etcd
-$ docker rename etcd etcd-old
-```
+    ```
+    $ docker stop etcd
+    $ docker rename etcd etcd-old
+    ```
 
-4- Use the command retrieved in step 2 and make the following changes in the command:
+4. Take the saved command from Step 2 and revise it:
 
-- If you originally had more than 1 etcd node, then you need to change `--initial-cluster` to contain only this node.
-- Add `--force-new-cluster` to the end of the command.
+    - If you originally had more than 1 etcd node, then you need to change `--initial-cluster` to only contain the node that remains.
+    - Add `--force-new-cluster` to the end of the command.
 
-5- Run the command after the changes in step 4.
+5. Run the revised command.
 
-6- It is recommended to add new nodes with the etcd role. If you are using a custom cluster and you want to reuse the old node, it is essential to clean the nodes first before adding them back. See [Node Cleanup]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
+6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) and you want to reuse an old node, you are required to [clean up the nodes]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  
