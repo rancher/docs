@@ -5,7 +5,7 @@ weight: 7600
 
 _Available as of v2.2.0_
 
-From Rancher v2.2.0, you can run Rancher server on ARM64 platform and manage ARM64 Kubernetes clusters. There is no extra configuration needed for ARM64. The instructions are the same with AMD64.
+From Rancher v2.2.0, you can run Rancher server on ARM64 platform and manage ARM64 Kubernetes clusters. There is no extra configuration needed for ARM64. The instructions are same for AMD64.
 
 >**Notes:**
 >
