@@ -1,69 +1,85 @@
 ---
 title: Global DNS
-aliases:
+weight: 10005
 ---
 
-Rancher's Global DNS feature provides a way to program an external DNS provider for the kubernetes workloads. It is programmed at a global level in Rancher, and can be used to program DNS for workloads that may be running in multiple kubernetes clusters. 
+_Available as of v2.2.0_
 
-This feature helps in achieving high availability for an application that may be running on multiple kubernetes clusters, by programming an FQDN for your application against IP addresses from different clusters where the application is running.
+Rancher's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would be accessible. 
 
-Note that, Global DNS feature is only available in HA setups with a local cluster enabled. Refer [here](https://rancher.com/docs/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster) to see how to enable the local cluster for HA installations.
+> **Note:** Global DNS is only available in [HA setups]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) with the [`local` cluster enabled]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster).
 
+## Global DNS Providers
 
-## External DNS Provider Support
+Prior to adding in Global DNS entries, you will need to configure access to an external provider.
 
-Rancher deploys the provider implementations available under [kubernetes-incubator/external-dns](https://github.com/kubernetes-incubator/external-dns) project.
-The External DNS providers supported in Rancher 2.2 release are AWS Route53, CloudFlare and AliDNS. AWS Route53 is the default provider. Support for more providers may be added in future releases.
+The following table lists the first version of Rancher each provider debuted. 
 
-## Global DNS Workflow
+| Auth Service | Available as of  |
+| --- | --- |
+| [AWS Route53](https://aws.amazon.com/route53/)  | v2.2.0 |
+| [CloudFlare](https://www.cloudflare.com/dns/) | v2.2.0 |
+| [AliDNS](http://www.alidns.com/) | v2.2.0 |
+
+## Global DNS Entries
+
+For each application that you want to route traffic to, you will need to create a Global DNS Entry. This entry will use a fully qualified domain name (a.k.a FQDN) from a global DNS provider to target applications. The applications can either resolve to a single multi-cluster application or to specific projects. You must [add specific annotation labels](#adding-annotations-to-ingresses-to-program-the-external-dns) to the ingresses in order for traffic to be routed correctly to the applications. Without this annotation, the programming for the DNS entry will not work. 
+
+## Permissions for Global DNS Providers/Entries
+
+By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) and the creator of the Global DNS provider or Global DNS entry have access to use, edit and delete them. When creating the provider or entry, the creator can add additional users in order for those users to access and manage them. By default, these members will get `Owner` role to manage them. 
+
+## Setting up Global DNS for Applications
 
 ### Add a Global DNS Provider
 
 1. From the **Global View**, select **Tools > Global DNS Providers**
-1. To add a provider, choose from the available provider options and configure the Global DNS Provider with necessary credentials and an optional domain
-1. You can also assign other users as members to this provider. Members added get 'Owner' role and can manage the Global DNS Provider.
+1. To add a provider, choose from the available provider options and configure the Global DNS Provider with necessary credentials and an optional domain.
+1. (Optional) Add additional users so they could  use the provider when creating Globel DNS entries as well as manage the Global DNS provider.
+
 {{% accordion id="route53" label="Route53" %}}
 1. Enter a **Name** for the provider.
-1. Enter the **Root Domain** of the hosted zone on AWS Route53. This field is optional, in case this is not provided, Rancher's Global DNS Provider will work with all hosted zones that the AWS keys can access.
-1. Enter the AWS *Access Key*.
-1. Enter the AWS *Secret Key*.
-1. Under **Member Access**, add any users you may want to add as "Owner" of this provider. They can edit/delete the Global DNS Provider entry.
+1. (Optional) Enter the **Root Domain** of the hosted zone on AWS Route53. If this is not provided, Rancher's Global DNS Provider will work with all hosted zones that the AWS keys can access.
+1. Enter the AWS **Access Key**.
+1. Enter the AWS **Secret Key**.
+1. Under **Member Access**, search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry.
 1. Click **Create**.
 {{% /accordion %}}
 {{% accordion id="cloudflare" label="CloudFlare" %}}
 1. Enter a **Name** for the provider.
 1. Enter the **Root Domain**, this field is optional, in case this is not provided, Rancher's Global DNS Provider will work with all domains that the keys can access.
-1. Enter the CloudFlare *API Email*.
-1. Enter the CloudFlare *API Key*.
-1. Under **Member Access**, add any users you may want to add as "Owner" of this provider. They can edit/delete the Global DNS Provider entry.
+1. Enter the CloudFlare **API Email**.
+1. Enter the CloudFlare **API Key**.
+1. Under **Member Access**, search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry.
 1. Click **Create**.
 {{% /accordion %}}
 {{% accordion id="alidns" label="alidns" %}}
 1. Enter a **Name** for the provider.
 1. Enter the **Root Domain**, this field is optional, in case this is not provided, Rancher's Global DNS Provider will work with all domains that the keys can access.
-1. Enter the *Access Key*.
-1. Enter the *Secret Key*.
-1. Under **Member Access**, add any users you may want to add as "Owner" of this provider. They can edit/delete the Global DNS Provider entry.
+1. Enter the **Access Key**.
+1. Enter the **Secret Key**.
+1. Under **Member Access**, search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry.
 1. Click **Create**.
 {{% /accordion %}}
 
 
 ### Add a Global DNS Entry
 
-1. From the **Global View**, select **Tools > Global DNS Entries**
+1. From the **Global View**, select **Tools > Global DNS Entries**.
+1. Click on **Add DNS Entry**. 
 1. Enter the **FQDN** you wish to program on the external DNS.
-1. Assign a Global DNS Provider to this entry.
-1. Choose whether this DNS entry will be programmed for a Multi-cluster app or for workloads under some Cluster Projects. This defines the scope in which Rancher will search for an ingress having a specific annotation, to be programmed on to the external DNS. Thus when the targets of the DNS entry are set, then ingresses in some other projects or part of another Multi-cluster app will not be programmed on the external DNS.
-1. Configure the **DNS TTL** value in seconds - by default it will be 300 seconds.
-1. Under **Member Access**, add any users you may want to add as "Owner" of this entry. They can edit/delete the Global DNS entry.
+1. Select a Global DNS **Provider** from the list.
+1. Select if this DNS entry will be for a multi-cluster application or for workloads in different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).  You will need to ensure that [annotations are added to any ingresses](#adding-annotations-to-ingresses-to-program-the-external-dns) for the applications that you want to target. 
+1. Configure the **DNS TTL** value in seconds. By default, it will be 300 seconds.
+1. Under **Member Access**, search for any users that you want to have the ability to manage this Global DNS entry. 
 
+## Adding Annotations to Ingresses to program the External DNS
 
-## Add Annotation to an Ingress to program the External DNS
+In order for Global DNS entries to be programmed, you will need to add a specific annotation label on each ingress and this ingress needs to use a specific `hostname` that should match the FQDN of the Global DNS entry. 
 
-To program an external DNS provider like Route53 or CloudFlare for your workloads, please follow the steps below.
+1. For any application that you want targetted for your Global DNS entry, find the ingresses associated with these applications. 
+1. In order for the DNS to pe programmed, the following requirements must be met:
+   * The ingress must be set to use a `hostname` that matches the FQDN of the Global DNS entry. 
+   * The ingress must have an annotation label (`rancher.io/globalDNS.<HOSTNAME>`) where `<HOSTNAME>` matches is also the FQDN of the Global DNS entry. 
+1. Once the ingress in your multi-cluster application or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
 
-1. Create a Global DNS Provider and configure it with the necessary credentials.
-1. Create a Global DNS entry with the FQDN and provider of your choice. Point this entry to a Multi-cluster app or target workloads under some Cluster Projects.
-1. Add the annotation label ( rancher.io/globalDNS.hostname ) on an ingress in the Multi-cluster app or the target projects. 
-1. Value of this annotation is the host name used in the ingress routing rules and it should match the FQDN on the Global DNS entry.
-1. Once the ingress in your Multi-cluster app or target project is in Active state, you will be able to see the FQDN programmed on the external DNS against the Ingress IP addresses.
