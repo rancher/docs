@@ -19,6 +19,18 @@ _Charts_ are a packaging format popularized by [Helm](https://docs.helm.sh/). Th
 
 Rancher improves on Helm catalogs and charts. All native Helm charts can work within Rancher, but Rancher adds several enhancements to improve their user experience.
 
+## Catalog Scopes
+
+Catalogs can be added at different scopes of Rancher.
+
+Scope | Description
+--- | ---
+Global | Catalogs added at this scope are available for all clusters and all projects in Rancher.
+Cluster | Catalogs added within a cluster are available for all projects in that cluster.
+Project | Catalogs added within a project are only available for that project.
+
+## Global catalogs
+
 ## Enabling Built-in Catalogs
 
 Within Rancher, there are default catalogs packaged as part of Rancher. These can be enabled or disabled by an administrator.
