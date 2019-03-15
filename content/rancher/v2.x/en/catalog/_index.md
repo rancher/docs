@@ -23,7 +23,8 @@ Rancher improves on Helm catalogs and charts. All native Helm charts can work wi
 
 Within Rancher, there are default catalogs packaged as part of Rancher. These can be enabled or disabled by an administrator.
 
-1. From the **Global** view, choose **Catalogs** from the main menu.
+1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
+
 2. Toggle the default catalogs that you want use to a setting of **Enabled**.
 
     - **Library**
@@ -40,7 +41,7 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
     	Similar in user experience to Helm Stable, but this catalog is filled with applications in **beta**.
 
- **Result**: The chosen catalogs are enabled. Wait a few minutes for Rancher to replicate the catalog charts. When replication completes, you'll be able to see them in any of your projects by selecting **Catalog Apps** from the main menu.
+ **Result**: The chosen catalogs are enabled. Wait a few minutes for Rancher to replicate the catalog charts. When replication completes, you'll be able to see them in any of your projects by selecting **Apps** from the main navigation bar. In versions prior to v2.2.0, you can select **Catalog Apps** from the main navigation bar.
 
 ## Adding Custom Catalogs
 
@@ -61,7 +62,7 @@ An [admin]({{< baseurl >}}/rancher/v2.x/en/admin-settings/#global-Permissions) o
 NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/accounts/#account-types) of a Rancher environment has the ability to add or remove environment catalogs in their respective Rancher environment in **Catalog** -> **Manage**.
  -->
 
- 1. From the **Global** view, choose **Catalogs** from the main menu.
+ 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
  2. Click **Add Catalog**.
  3. Complete the form and click **Create**.
 
@@ -69,11 +70,11 @@ NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}
 
 ## Launching Catalog Applications
 
-After you've either enabled the built-in catalogs or added your own custom catalog, you can start launching any catalog application.
+After you've either enabled the built-in catalogs or added your own custom catalog, you can start launching any catalog application.>
 
 1. From the **Global** view, open the project that you want to deploy to.
 
-2. From the main menu, choose **Catalog Apps**. Then click **Launch**.
+2. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
 3. Find the app that you want to launch, and then click **View Now**.
 
@@ -97,7 +98,7 @@ After you've either enabled the built-in catalogs or added your own custom catal
 **Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's:
 
 - **Workloads** view
-- **Catalog Apps** view
+- **Apps** view (In versions prior to v2.2.0, this is the **Catalog Apps** view).
 
 ## Deleting Catalog Application Deployments
 
