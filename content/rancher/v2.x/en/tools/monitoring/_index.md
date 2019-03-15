@@ -62,7 +62,7 @@ When you enable monitoring for a Rancher project, Prometheus collects metrics fr
 
 ## Configuring Cluster Monitoring
 
-You can deploy Prometheus monitoring for a cluster, navigate to **Tools > Monitoring** as shown in the GIF below, which displays a user enabling cluster monitoring for a cluster named `custom-u1804`. The only required action for deployment is to select the **Enable** option and click **Save**, but you might want to [customize configuration options](#prometheus-configuration-options) for your environment.
+You can deploy Prometheus monitoring for a cluster, navigate to **Tools > Monitoring** as shown in the GIF below, which displays a user enabling cluster monitoring for a cluster named `local`. The only required action for deployment is to select the **Enable** option and click **Save**, but you might want to [customize configuration options](#prometheus-configuration-options) for your environment.
 
 ![EnableClusterMonitoring]({{< baseurl >}}/img/rancher/enable-cluster-monitoring.gif)
 
