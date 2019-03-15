@@ -8,6 +8,8 @@ aliases:
 
 _Available as of v2.2.0_
 
+You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers/) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
+
 ## Prerequisites
 
 1. Make sure the services such as Container Service, Resource Orchestration Service (ROS), and RAM have been activated. Log in to the [Container Service console](https://cs.console.aliyun.com), [ROS console](https://ros.console.aliyun.com), and [RAM console](https://ram.console.aliyun.com) to activate the corresponding services.
@@ -16,9 +18,7 @@ _Available as of v2.2.0_
 
 1. Create an access key. For instructions, see the Alibaba Cloud documentation [Creating an AccessKey](https://www.alibabacloud.com/help/doc-detail/53045.html).
 
-1. Create an SSH key pair. It is used to access nodes in the kubernetes cluster. For instructions, see the Alibaba Cloud documentation [Create an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm).
-
-1. Enable ACK cluster driver. See [how to enable cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers)
+1. Create an SSH key pair. This key is used to access nodes in the Kubernetes cluster. For instructions, see the Alibaba Cloud documentation [Create an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm).
 
 ## Create an ACK Cluster
 
@@ -30,7 +30,7 @@ _Available as of v2.2.0_
 
 1. {{< step_create-cluster_member-roles >}}
 
-1. Configure **Account Access** for the ACK cluster. Choose the geographical region in which to build your cluster, and input the access key you create in the prerequisites.
+1. Configure **Account Access** for the ACK cluster. Choose the geographical region in which to build your cluster, and input the access key that was created as part of the prerequisite steps.
 
 1. Click **Next: Configure Cluster**, then choose cluster type, the version of Kubernetes and the availability zone.
 
@@ -41,4 +41,3 @@ _Available as of v2.2.0_
 1. Review your options to confirm they're correct. Then click **Create**.
 
 {{< result_create-cluster >}}
-
