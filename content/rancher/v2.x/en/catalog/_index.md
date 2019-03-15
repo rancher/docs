@@ -23,8 +23,14 @@ Rancher improves on Helm catalogs and charts. All native Helm charts can work wi
 
 Within Rancher, there are default catalogs packaged as part of Rancher. These can be enabled or disabled by an administrator.
 
+>**Note:**
+>
+>- As of Rancher 2.2 from the Global, Cluster, and Project view, Catalogs have moved from the main menu bar to the Tools menu. Additionally, from the Project view Catalog Apps have been renamed to Apps on the main menu.
+>
+<br/>
+
 1. From the **Global** view, choose **Catalogs** from the Tools menu.
->**Note:** In Rancher 2.0 and 2.1 choose **Catalogs** from the main menu.
+
 2. Toggle the default catalogs that you want use to a setting of **Enabled**.
 
     - **Library**
@@ -42,12 +48,10 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
     	Similar in user experience to Helm Stable, but this catalog is filled with applications in **beta**.
 
  **Result**: The chosen catalogs are enabled. Wait a few minutes for Rancher to replicate the catalog charts. When replication completes, you'll be able to see them in any of your projects by selecting **Apps** from the main menu.
->**Note:** In Rancher 2.0 and 2.1 select **Catalogs Apps* from the main menu.
 
 ## Adding Custom Catalogs
 
-Adding a catalog is as simple as adding a catalog name, a URL and a branch name. 
-
+Adding a catalog is as simple as adding a catalog name, a URL and a branch name.
 
 #### Add Custom Git Repositories
 The Git URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`. The branch name must be a branch that is in your catalog URL. If no branch name is provided, it will use the `master` branch by default. Whenever you add a catalog to Rancher, it will be available immediately.
@@ -64,7 +68,7 @@ In Rancher, you can add the custom Helm chart repository with only a catalog nam
 #### Add Private Git/Helm Chart Repositories
 _Available as of v2.2.0_
 
-In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the 
+In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the
 OAuth token if your Git or Helm repository server support that.
 
 [Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/private/)
@@ -77,7 +81,6 @@ NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}
  -->
 
  1. From the **Global** view, choose **Catalogs** from the Tools menu.
->**Note:** In Rancher 2.0 and 2.1 choose **Catalogs** from the main menu.
  2. Click **Add Catalog**.
  3. Complete the form and click **Create**.
 
@@ -87,10 +90,15 @@ NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}
 
 After you've either enabled the built-in catalogs or added your own custom catalog, you can start launching any catalog application.
 
+>**Note:**
+>
+>- As of Rancher 2.2 from the Project view Catalog Apps have been renamed to Apps on the main menu.
+>
+<br/>
+
 1. From the **Global** view, open the project that you want to deploy to.
 
 2. From the main menu, choose **Apps**. Then click **Launch**.
->**Note:** In Rancher 2.0 and 2.1 choose **Catalog Apps** from the main menu, then click **Launch**.
 
 3. Find the app that you want to launch, and then click **View Now**.
 
@@ -114,7 +122,7 @@ After you've either enabled the built-in catalogs or added your own custom catal
 **Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's:
 
 - **Workloads** view
-- **Apps** view (**Catalog Apps** view in Rancher 2.0 and 2.1)
+- **Apps** view
 
 ## Deleting Catalog Application Deployments
 
