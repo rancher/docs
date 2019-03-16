@@ -3,7 +3,7 @@ title: Rancher Tools
 weight: 5000
 ---
 
-Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into four categories:
+Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:
 
 <!-- TOC -->
 
@@ -12,6 +12,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Logging](#logging)
 - [Pipelines](#pipelines)
 - [Monitoring](#monitoring)
+- [Global DNS](#global-dns)
 
 <!-- /TOC -->
 
@@ -89,3 +90,12 @@ Using Rancher, you can monitor the state and processes of your cluster nodes, Ku
 In other words, Prometheus let's you view metrics from your different Rancher and Kubernetes objects. Using timestamps, you can query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus. By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.  Multi-tenancy support in terms of cluster and project-only Prometheus instances are also supported.
 
 For more information, see the [Monitoring Documentation]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring).
+
+## Global DNS 
+
+_Available as v2.2.0_
+
+When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
+
+For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/).
+

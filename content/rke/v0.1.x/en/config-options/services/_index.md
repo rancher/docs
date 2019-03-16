@@ -30,6 +30,8 @@ services:
     # Expose a different port range for NodePort services
     service_node_port_range: 30000-32767
     pod_security_policy: false
+    # Enable AlwaysPullImages Admission controller plugin
+    # Available as of v0.2.0
     always_pull_images: false
 ```
 
@@ -41,7 +43,7 @@ RKE supports the following options for the `kube-api` service :
 - **Node Port Range** (`service_node_port_range`) - The port range to be used for Kubernetes services created with the [type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) `NodePort`. By default, the port range is `30000-32767`.
 - **Pod Security Policy** (`pod_security_policy`) - An option to enable the [Kubernetes Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). By default, we do not enable pod security policies as it is set to `false`.
     > **Note:** If you set `pod_security_policy` value to `true`, RKE will configure an  open policy to allow any pods to work on the cluster. You will need to configure your own policies to fully utilize PSP.
-- **Always Pull Images** (`always_pull_images`) - Enable `AlwaysPullImages` Admission controller plugin.  Enabling `AlwaysPullImages` is a security best practice. It forces Kubernetes to validate the image and pull credentials with the remote image registry. Local image layer cache will still be used, but it does add a small bit of overhead when launching containers to pull and compare image hashes.
+- **Always Pull Images** (`always_pull_images`) - Enable `AlwaysPullImages` Admission controller plugin.  Enabling `AlwaysPullImages` is a security best practice. It forces Kubernetes to validate the image and pull credentials with the remote image registry. Local image layer cache will still be used, but it does add a small bit of overhead when launching containers to pull and compare image hashes. _Note: Available as of v0.2.0_
 
 ## Kubernetes Controller Manager
 

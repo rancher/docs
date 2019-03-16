@@ -109,6 +109,22 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 > **Note:** If you have used a different file name from `cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
 
+### Kubernetes Cluster State
+
+The Kubernetes cluster state, which consists of the cluster configuration file `cluster.yml` and components certificates in Kubernetes cluster, is saved by RKE, but depending on your RKE version, the cluster state is saved differently.
+
+As of v0.2.0, RKE creates a `.rkestate` file in the same directory that has the cluster configuration file `cluster.yml`. The `.rkestate` file contains the current state of the cluster including the RKE configuration and the certificates. It is required to keep this file in order to update the cluster or perform any operation on it through RKE.
+
+```
+$ tree -L 1
+.
+├── cluster.rkestate
+├── cluster.yml
+├── kube_config_cluster.yml
+```
+
+Prior to v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret.   
+
 ### Interacting with your Kubernetes cluster
 
 In order to start interacting with your Kubernetes cluster, you will use a different binary called `kubectl`. You will need to [install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine. You can connect to the RKE created cluster by using the `kube_config_cluster.yml` that was generated when you deployed Kubernetes.
@@ -129,3 +145,4 @@ kubectl --kubeconfig kube_config_cluster.yml get nodes
 NAME            STATUS    ROLES                      AGE       VERSION
 10.0.0.1         Ready     controlplane,etcd,worker   35m       v1.10.3-rancher1
 ```
+

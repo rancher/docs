@@ -114,11 +114,23 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 
 <br/>
 
-## FAQ and Troubleshooting
-
-{{< ssl_faq_single >}}
-
 ## Advanced Options
+
+### TLS settings
+
+_Available as of v2.1.7_
+
+To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -e CATTLE_TLS_MIN_VERSION="1.0" \
+  rancher/rancher:latest
+```
+
+See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
+
 
 ### Enable API Audit Log
 
@@ -135,7 +147,6 @@ docker run -d --restart=unless-stopped \
   -e AUDIT_LEVEL=1 \
   rancher/rancher:latest
 ```
-
 
 ### Air Gap
 
@@ -164,3 +175,7 @@ docker run -d --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
   rancher/rancher:latest
 ```
+
+## FAQ and Troubleshooting
+
+{{< ssl_faq_single >}}

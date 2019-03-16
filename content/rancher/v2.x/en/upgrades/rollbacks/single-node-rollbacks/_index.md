@@ -66,14 +66,14 @@ If you have issues upgrading Rancher, roll it back to its lastest known healthy 
 1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the [placeholder](#before-you-start). Don't forget to close the quotes.
 
     ```
-    docker run  --volumes-from rancher-data
-    -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf
+    docker run  --volumes-from rancher-data \
+    -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf \
     && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
 1. Start a new Rancher Server container with the `<PRIOR_RANCHER_VERSION>` tag [placeholder](#before-you-start) pointing to the data container.
     ```
-    docker run -d --volumes-from rancher-data 
+    docker run -d --volumes-from rancher-data \
     --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
