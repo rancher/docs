@@ -16,5 +16,7 @@ From Rancher v2.2.0, you can run Rancher server on ARM64 platform and manage ARM
 >- Currently, only Kubernetes version `v1.12` and above is supported on ARM64 platform.
 >
 >- Currently, only running Rancher server on ARM64 platform, creating custom clusters on ARM64 platform and importing ARM64 Kubernetes clusters platform have been tested.
+>
+>- Currently, catalog support may not work well with ARM64.
 <br/>
 <br/>
