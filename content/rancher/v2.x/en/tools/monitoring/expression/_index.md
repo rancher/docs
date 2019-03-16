@@ -240,22 +240,15 @@ weight: 10000
 
     | Catalog | Expression |
     | --- | --- |
-    | Detail | <table><tr><td>reading</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="reading"}) by (instance)`</td></tr><tr><td>waiting</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="waiting"}) by (instance)`</td></tr><tr><td>writing</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="writing"}) by (instance)`</td></tr><tr><td>accpeted</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="accepted"}[5m])) by (instance)`</td></tr><tr><td>active</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="active"}[5m])) by (instance)`</td></tr><tr><td>handled</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="handled"}[5m])) by (instance)`</td></tr></table> |
-    | Summary | <table><tr><td>reading</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="reading"})`</td></tr><tr><td>waiting</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="waiting"})`</td></tr><tr><td>writing</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="writing"})`</td></tr><tr><td>accpeted</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="accepted"}[5m]))`</td></tr><tr><td>active</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="active"}[5m]))`</td></tr><tr><td>handled</td><td>`sum(increase(nginx_ingress_controller_nginx_process_connections_total{state="handled"}[5m]))`</td></tr></table> |
+    | Detail | <table><tr><td>reading</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="reading"}) by (instance)`</td></tr><tr><td>waiting</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="waiting"}) by (instance)`</td></tr><tr><td>writing</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="writing"}) by (instance)`</td></tr><tr><td>accpeted</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="accepted"}[5m]))) by (instance)`</td></tr><tr><td>active</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="active"}[5m]))) by (instance)`</td></tr><tr><td>handled</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="handled"}[5m]))) by (instance)`</td></tr></table> |
+    | Summary | <table><tr><td>reading</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="reading"})`</td></tr><tr><td>waiting</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="waiting"})`</td></tr><tr><td>writing</td><td>`sum(nginx_ingress_controller_nginx_process_connections{state="writing"})`</td></tr><tr><td>accpeted</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="accepted"}[5m])))`</td></tr><tr><td>active</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="active"}[5m])))`</td></tr><tr><td>handled</td><td>`sum(ceil(increase(nginx_ingress_controller_nginx_process_connections_total{state="handled"}[5m])))`</td></tr></table> |
 
 - **Ingress Controller Request Process Time**
 
     | Catalog | Expression |
     | --- | --- |
-    | Detail | `max(nginx_ingress_controller_request_duration_seconds_bucket{le="1"}) by (host, path)` |
-    | Summary | `max(nginx_ingress_controller_request_duration_seconds_bucket{le="1"}) by (host, path)` |
-
-- **Ingress Upstream Response Time**
-
-    | Catalog | Expression |
-    | --- | --- |
-    | Detail | `sort_desc(max(nginx_ingress_controller_response_duration_seconds_bucket) by (host, path))` |
-    | Summary | `sort_desc(max(nginx_ingress_controller_response_duration_seconds_bucket) by (host, path))` |
+    | Detail | `topk(10, histogram_quantile(0.95,sum by (le, host, path)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
+    | Summary | `topk(10, histogram_quantile(0.95,sum by (le, host)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
 
 ## Rancher Logging Metrics
 
