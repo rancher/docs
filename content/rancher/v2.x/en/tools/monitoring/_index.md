@@ -248,7 +248,9 @@ Some of the more important component metrics to monitor are:
 
     Failed pods can have a variety of causes, such as unbound persistent volume claims, exhausted hardware resources, non-responsive nodes, etc.
 
-Also note that at the bottom of the widget, **Ingress Upstream Response Times** are listed. This section gives you an idea of how fast ingress is routing connections to your cluster services.
+- **Ingress Controller Request Process Time** 
+
+    How fast ingress is routing connections to your cluster services.
 
 [_Get expressions for Kubernetes Component Metrics_]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring/expression/#kubernetes-component-metrics)
 
