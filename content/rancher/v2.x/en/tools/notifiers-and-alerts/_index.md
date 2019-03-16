@@ -69,7 +69,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 1. Enter a **Name** for the notifier.
 1. In the **Corporation ID** field, enter the "EnterpriseID" of your corporation, you could get it from [Profile page](https://work.weixin.qq.com/wework_admin/frame#profile).
 1. From Enterprise WeChat, create an application in the [Application page](https://work.weixin.qq.com/wework_admin/frame#apps), and then enter the "AgentId" and "Secret" of this application to the **Application Agent ID** and **Application Secret** fields. 
-1. Select the **Recipient Type** and then enter a corresponding name of type to **Default Recipient** field, for example, the party name, tag name or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).
+1. Select the **Recipient Type** and then enter a corresponding id to **Default Recipient** field, for example, the party id, tag id or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).
 {{% /accordion %}}
 
 1. Click **Add** to complete adding the notifier.
