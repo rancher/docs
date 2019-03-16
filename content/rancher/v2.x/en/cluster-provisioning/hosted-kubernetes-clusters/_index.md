@@ -14,6 +14,7 @@ Rancher supports the following Kubernetes providers:
 - Microsoft AKS (Azure Kubernetes Service)
 - Alibaba ACK (Alibaba Cloud Container Service for Kubernetes)
 - Tencent TKE (Tencent Kubernetes Engine)
+- Huawei CCE (Huawei Cloud Container Engine)
 
 ## Hosted Kubernetes Provider Authentication
 
