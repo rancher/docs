@@ -1,14 +1,12 @@
 ---
-title: Creating an ACK Cluster
+title: Creating an Alibaba ACK Cluster
 shortTitle: Alibaba Cloud Container Service for Kubernetes
 weight: 2120
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-ack/
 ---
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers/) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
+You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
 
 ## Prerequisites
 

@@ -2,23 +2,20 @@
 title: Creating a Huawei CCE Cluster
 shortTitle: Huawei Cloud Kubernetes Service
 weight: 2130
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-huaweicloud-container-service/
 ---
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine(CCE).
+You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine (CCE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/) for CCE, but by default, this cluster driver is `inactive`. In order to launch CCE clusters, you will need to [enable the CCE cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning CCE clusters.
 
 ## Prerequisites
 
-- Find your project ID in Huawei CCE portal. See the CCE documentation [Manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
-- Create Access Key ID and Secret Access Key. See the CCE documentation [Manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
-- Enable **Huawei CCE** Cloud Driver. See [how to enable cluster driver]({{< baseurl >}}/rancher/v2.x/en/drivers/cluster-drivers)
+- Find your project ID in Huawei CCE portal. See the CCE documentation on how to [manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
+- Create an Access Key ID and Secret Access Key. See the CCE documentation on how to [manage your Access Key ID and Secret Access Key.](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0079477318.html).
 
 ## Limitations
 
-Huawei CCE service doesn't support to create cluster with public access via API. You have to run Rancher server in the same vpc with your CCE clusters.
+Huawei CCE service doesn't support the ability to create clusters with public access through their API. You are required to run Rancher in the same VPC as the CCE clusters that you want to provision.
 
 ## Create the CCE Cluster
 
@@ -49,7 +46,7 @@ Huawei CCE service doesn't support to create cluster with public access via API.
 	| Cluster Label | The labels for the cluster. |
 	| Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
 
-7. Fill following node configuration of the cluster:
+7. Fill the following node configuration of the cluster:
 
     |Settings|Description|
 	|---|---|
