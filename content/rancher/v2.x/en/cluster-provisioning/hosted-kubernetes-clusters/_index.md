@@ -13,6 +13,7 @@ Rancher supports the following Kubernetes providers:
 - Amazon EKS (Elastic Container Service)
 - Microsoft AKS (Azure Kubernetes Service)
 - Alibaba ACK (Alibaba Cloud Container Service for Kubernetes)
+- Tencent TKE (Tencent Kubernetes Engine)
 
 ## Hosted Kubernetes Provider Authentication
 
@@ -23,3 +24,4 @@ When using Rancher to create a cluster hosted by a provider, you are prompted fo
 - [Creating an AKS Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/aks)
 - [Creating a Huawei CCE Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/cce)
 - [Creating an ACK Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/ack)
+- [Creating an TKE Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/tke)
