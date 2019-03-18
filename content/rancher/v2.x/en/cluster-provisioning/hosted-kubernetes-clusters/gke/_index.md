@@ -5,17 +5,8 @@ weight: 2105
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
 ---
-## Objectives
 
-1.	[Create a Service Account](#create-a-service-account)
-
-	Begin by logging into Google Cloud Platform and creating a service account to operate your cluster.
-
-2. [Create the Cluster](#create-the-gke-cluster)
-
-	Using your service account, create your Google Container Engine (GKE) cluster.
-
-## Create a Service Account
+## Prerequisites in Google Cloud Platform
 
 Create a service account using [Google Cloud Platform](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts). GKE uses this account to operate your cluster. Creating this account also generates a private key used for authentication.
 
@@ -43,10 +34,6 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 
 	>**Note:** After submitting your private key, you may have to enable the Google Kubernetes Engine API. If prompted, browse to the URL displayed in the Rancher UI to enable the API.
 
-6. {{< step_create-cluster_cluster-options >}}
-
-7. Use **Nodes** to provision each node in your cluster and choose a geographical region.
-
-8. Review your options to confirm they're correct. Then click **Create**.
+6. Select your **Cluster Options**, customize your **Nodes** and customize the **Security** for the GKE cluster. Review your options to confirm they're correct. Then click **Create**.
 
 {{< result_create-cluster >}}

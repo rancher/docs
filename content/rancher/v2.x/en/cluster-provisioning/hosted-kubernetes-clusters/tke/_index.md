@@ -2,23 +2,24 @@
 title: Creating a Tencent TKE Cluster
 shortTitle: Tencent Kubernetes Engine
 weight: 2125
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-tke/
 ---
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine(TKE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
+You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
 
-## Prerequisites
+## Prerequisites in Tencent
 
-- Make sure that the account you will be using to create the TKE cluster has the appropriate permissions. Referring to the official Tencent Cloud documentation about [Cloud Access Management](https://intl.cloud.tencent.com/document/product/598/10600) for reference.
-- Create a [Cloud API SecretId and SecretKey](https://console.cloud.tencent.com/capi). 
-- Create a Private Network and Subnet in the rhttps://intl.cloud.tencent.com/document/product/213/6092equired region. See the Tencent Cloud documentation on [How to create Private Network and Subnet](https://intl.cloud.tencent.com/document/product/215/4927).
-- Create an SSH key pair. This key is used to access nodes in the Kubernetes cluster. For instructions, see the Tencent Cloud documentation on [Create an SSH key pair](https://intl.cloud.tencent.com/document/product/213/6092).
+1. Make sure that the account you will be using to create the TKE cluster has the appropriate permissions by referring to the  [Cloud Access Management](https://intl.cloud.tencent.com/document/product/598/10600) documentation for details.
 
+2. Create a [Cloud API Secret ID and Secret Key](https://console.cloud.tencent.com/capi).
+
+3. Create a [Private Network and Subnet](https://intl.cloud.tencent.com/document/product/215/4927) in the region that you want to deploy your Kubernetes cluster.
+
+4. Create a [SSH key pair](https://intl.cloud.tencent.com/document/product/213/6092). This key is used to access the nodes in the Kubernetes cluster. 
 
 ## Create a TKE Cluster
+
 1. From the **Clusters** page, click **Add Cluster**.
 
 2. Choose **Tencent TKE**.
