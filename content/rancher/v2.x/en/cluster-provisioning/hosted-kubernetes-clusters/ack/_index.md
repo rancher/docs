@@ -10,13 +10,17 @@ You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK)
 
 ## Prerequisites
 
-1. Make sure the services such as Container Service, Resource Orchestration Service (ROS), and RAM have been activated. Log in to the [Container Service console](https://cs.console.aliyun.com), [ROS console](https://ros.console.aliyun.com), and [RAM console](https://ram.console.aliyun.com) to activate the corresponding services.
+1. In Aliyun, activate the following services in their respective consoles.
 
-1. Make sure that the account you will be using to create the ACK cluster has the appropriate permissions. Referring to the official Alibaba Cloud documentation about [Role authorization](https://www.alibabacloud.com/help/doc-detail/86483.htm) and [Use the Container Service console as a RAM user](https://www.alibabacloud.com/help/doc-detail/86484.htm) for details.
+    - [Container Service](https://cs.console.aliyun.com)
+    - [Resource Orchestration Service](https://ros.console.aliyun.com)
+    - [RAM](https://ram.console.aliyun.com)
 
-1. Create an access key. For instructions, see the Alibaba Cloud documentation [Creating an AccessKey](https://www.alibabacloud.com/help/doc-detail/53045.html).
+2. Make sure that the account you will be using to create the ACK cluster has the appropriate permissions. Referring to the official Alibaba Cloud documentation about [Role authorization](https://www.alibabacloud.com/help/doc-detail/86483.htm) and [Use the Container Service console as a RAM user](https://www.alibabacloud.com/help/doc-detail/86484.htm) for details.
 
-1. Create an SSH key pair. This key is used to access nodes in the Kubernetes cluster. For instructions, see the Alibaba Cloud documentation [Create an SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.htm).
+3. In Alibaba Cloud, create an [access key](https://www.alibabacloud.com/help/doc-detail/53045.html).
+
+4. In Alibaba Cloud, create an [SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.html). This key is used to access nodes in the Kubernetes cluster.
 
 ## Create an ACK Cluster
 
