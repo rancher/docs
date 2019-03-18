@@ -8,17 +8,17 @@ aliases:
 
 You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
 
-## Prerequisites
+## Prerequisites in the Microsoft Azure Portal 
 
-Obtain the following information from the <a href='https://portal.azure.com' target='_blank'>Microsoft Azure Portal</a>:
+Obtain the following information from the [Microsoft Azure Portal](https://portal.azure.com) by completing how to [Create Service Principal for Azure AD](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad).
 
 - Your Subscription ID.
 - Your Tenant ID.
 - A Client ID and Client Secret.
 
-	Complete <a href='https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad' target='_blank'>Create Service Principal for Azure AD</a> to obtain this information.
+## Create the AKS Cluster
 
-## To Create an AKS Cluster
+Use Rancher to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
