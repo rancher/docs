@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/
 ---
 
-Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher. Any custom catalog must be a public Git repository. The URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`.
+Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher. Any custom catalog must be a Git or Helm chart repository. The Git URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`.
 
 ## Chart Types
 

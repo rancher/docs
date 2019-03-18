@@ -11,7 +11,7 @@ aliases:
 
 Rancher provides a catalog of charts that make it easy to repeatedly deploy any applications.
 
-_Catalogs_ are GitHub repositories filled with applications that are ready-made for deployment. Applications are bundled in objects called _charts_.
+_Catalogs_ are GitHub repositories or Helm Chart Repository filled with applications that are ready-made for deployment. Applications are bundled in objects called _charts_.
 
 _Charts_ are a packaging format popularized by [Helm](https://docs.helm.sh/). Think of them as templates for deployments. Per Helm, charts are:
 
@@ -45,15 +45,28 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
 ## Adding Custom Catalogs
 
-Adding a catalog is as simple as adding a catalog name, a URL and a branch name. The URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`. The branch name must be a branch that is in your catalog URL. If no branch name is provided, it will use the `master` branch by default. Whenever you add a catalog to Rancher, it will be available immediately.
+Adding a catalog is as simple as adding a catalog name, a URL and a branch name. 
 
->**Notes:**
->
->- Currently, you can only add custom catalogs to Rancher at the global level. Therefore, any catalog that you add is shared with all clusters and projects.
->
->- Currently, only unauthenticated catalogs are supported.
-<br/>
-<br/>
+
+#### Add Custom Git Repositories
+The Git URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`. The branch name must be a branch that is in your catalog URL. If no branch name is provided, it will use the `master` branch by default. Whenever you add a catalog to Rancher, it will be available immediately.
+
+
+#### Add Custom Helm Chart Repositories
+
+A Helm chart repository is an HTTP server that houses one or more packaged charts. Any HTTP server that can serve YAML files and tar files and can answer GET requests can be used as a repository server.
+
+Helm comes with built-in package server for developer testing (helm serve). The Helm team has tested other servers, including Google Cloud Storage with website mode enabled, S3 with website mode enabled or hosting custom chart repository server using open-source projects like [ChartMuseum](https://github.com/helm/chartmuseum).
+
+In Rancher, you can add the custom Helm chart repository with only a catalog name and the URL address of the chart repository.
+
+#### Add Private Git/Helm Chart Repositories
+_Available as of v2.2.0_
+
+In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the 
+OAuth token if your Git or Helm repository server support that.
+
+[Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/private/)
 
 <!--There are two types of catalogs that can be added into Rancher. There are global catalogs and project catalogs. In a global catalog, the catalog templates are available in *all* projects. In a project catalog, the catalog charts are only available in the project that the catalog is added to.
 
