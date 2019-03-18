@@ -20,7 +20,7 @@ If there are specific cluster drivers that you do not want to show your users, y
 
 By default, Rancher only activates drivers for the most popular cloud providers, Google GKE, Amazon EKS and Azure AKS. If you want to show or hide any node driver, you can change its status.
 
-1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. In version prior to v2.2.0, you can select **Drivers** directly in the navigation bar.
+1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar.
 
 2.  From the **Drivers** page, select the **Cluster Drivers** tab.
 
@@ -30,7 +30,7 @@ By default, Rancher only activates drivers for the most popular cloud providers,
 
 If you want to use a cluster driver that Rancher doesn't support out-of-the-box, you can add the provider's driver in order to start using them to create _hosted_ kubernetes clusters.
 
-1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. In version prior to v2.2.0, you can select **Drivers** directly in the navigation bar.
+1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar.
 
 2.  From the **Drivers** page select the **Cluster Drivers** tab.
 
