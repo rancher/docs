@@ -7,6 +7,8 @@ aliases:
 
 As of v0.1.7, you can configure a RKE cluster to automatically take snapshots of etcd. In a disaster scenario, you can restore these snapshots, which are stored on other nodes in the cluster.
 
+As of v0.2.0, you can use RKE to automatically upload your snapshots to an S3 compatible backend. Additionally, the **pki.bundle.tar.gz** file usage is no longer required as v0.2.0 uses a [newer state management model]({{< baseurl >}}/rke/v0.1.x/en/installation/#kubernetes-cluster-state).
+
 ## One-Time Snapshots
 
 RKE can take a one-time snapshot of a running etcd node in a RKE cluster. The snapshot is automatically saved in `/opt/rke/etcd-snapshots`.
@@ -29,6 +31,35 @@ INFO[0006] Finished saving snapshot [rke_etcd_snapshot_2018-05-17T23:32:08+02:00
 ```
 
 The command will save a snapshot of etcd from each etcd node in the cluster config file and will save it in `/opt/rke/etcd-snapshots`. When running the command, an additional container is created to take the snapshot. When the snapshot is completed, the container is automatically removed.
+
+### S3 One-Time Snapshots
+_Available as of v0.2.0_
+
+As of v0.2.0, it's possible to use RKE to save and directly upload snapshots to S3.
+
+```
+$ rke etcd snapshot-save --help
+NAME:
+   rke etcd snapshot-save - Take snapshot on all etcd hosts
+
+USAGE:
+   rke etcd snapshot-save [command options] [arguments...]
+
+OPTIONS:
+   --name value             Specify snapshot name
+   --config value           Specify an alternate cluster YAML file (default: "cluster.yml") [$RKE_CONFIG]
+   --s3                     Enabled backup to s3
+   --s3-endpoint value      Specify s3 endpoint url (default: "s3.amazonaws.com")
+   --access-key value       Specify s3 accessKey
+   --secret-key value       Specify s3 secretKey
+   --bucket-name value      Specify s3 bucket name
+   --region value           Specify the s3 bucket location (optional)
+   --ssh-agent-auth         Use SSH Agent Auth defined by SSH_AUTH_SOCK
+   --ignore-docker-version  Disable Docker version check
+
+
+$ rke etcd snapshot-save --config cluster.yml --s3  --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY --bucket-name s3-bucket-name --name snapshot-name --s3-endpoint s3.amazonaws.com
+```
 
 ## Etcd Recurring Snapshots
 
@@ -61,18 +92,43 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 For every node that has the `etcd` role, these `backups` are saved to `/opt/rke/etcd-snapshots/`.
 
 ### Snapshot Options
+|Option|Description|
+|---|---|
+|**Snapshot**|By default, the recurring snapshot service is disabled. To enable the service, you need to define it as part of `etcd` and set it to `true`.|
+|**Creation**|By default, the snapshot service will take snapshots every 5 minutes (`5m0s`). You can change the time between snapshots as part of the `creation` directive for the `etcd` service.|
+|**Retention**|By default, all snapshots are saved for 24 hours (`24h`) before being deleted and purged. You can change how long to store a snapshot as part of the `retention` directive for the `etcd` service.|
 
-**Snapshot**
+## S3 Recurring Backups
+_Available as of v0.2.0_
 
-By default, the recurring snapshot service is disabled. To enable the service, you need to define it as part of `etcd` and set it to `true`.
+As of v0.2.0, RKE support saving snapshots to S3 compatible backends. This is true for both recurring backups and one time snapshots.
 
-**Creation**
+### S3 Snapshot Options
+The new backup options replace the [legacy backup configuration]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#etcd-recurring-snapshots) and should be used instead in the `cluster.yml` file:
 
-By default, the snapshot service will take snapshots every 5 minutes (`5m0s`). You can change the time between snapshots as part of the `creation` directive for the `etcd` service.
+```yaml
+services:
+  etcd:
+    backup_config:
+      interval_hours: 12
+      retention: 6
+      s3backupconfig:
+        access_key: S3_ACCESS_KEY
+        secret_key: S3_SECRET_KEY
+        bucket_name: s3-bucket-name
+        region: ""
+        endpoint: s3.amazonaws.com
+```
 
-**Retention**
-
-By default, all snapshots are saved for 24 hours (`24h`) before being deleted and purged. You can change how long to store a snapshot as part of the `retention` directive for the `etcd` service.
+|Option|Description|
+|---|---|
+|**interval_hours**| The duration in hours between recurring backups. This deprecates the `creation` legacy option and will override it if both are specified.|
+|**retention**| The number of snapshots to retain before rotation. This deprecates the `retention` legacy option and will override it if both are specified.|
+|**bucket_name**| S3 bucket name where backups will be stored|
+|**access_key**| S3 access key with permission to access the backup bucket.|
+|**secret_key** |S3 secret key with permission to access the backup bucket.|
+|**region** |S3 region for the backup bucket. This is optional.|
+|**endpoint** |S3 regions endpoint for the backup bucket.|
 
 ## Etcd Disaster recovery
 
@@ -120,7 +176,34 @@ INFO[0027] [remove/rke-log-linker] Successfully removed container on host [z.z.z
 INFO[0027] [etcd] Successfully started etcd plane..
 INFO[0027] Finished restoring on all etcd hosts
 ```
+### S3 Snapshot Restore
+_Available as of v0.2.0_
 
+As of v0.2.0, RKE support downloading snapshots from S3 compatible backends. This is true for both recurring backups and one time snapshots.
+
+In order to restore a cluster for a snapshot stored on S3, you need to run the following command:
+```
+$ rke etcd snapshot-restore --help
+NAME:
+   rke etcd snapshot-restore - Restore existing snapshot
+
+USAGE:
+   rke etcd snapshot-restore [command options] [arguments...]
+
+OPTIONS:
+   --name value             Specify snapshot name
+   --config value           Specify an alternate cluster YAML file (default: "cluster.yml") [$RKE_CONFIG]
+   --s3                     Enabled backup to s3
+   --s3-endpoint value      Specify s3 endpoint url (default: "s3.amazonaws.com")
+   --access-key value       Specify s3 accessKey
+   --secret-key value       Specify s3 secretKey
+   --bucket-name value      Specify s3 bucket name
+   --region value           Specify the s3 bucket location (optional)
+   --ssh-agent-auth         Use SSH Agent Auth defined by SSH_AUTH_SOCK
+   --ignore-docker-version  Disable Docker version check
+
+$ rke  etcd snapshot-restore --config cluster.yml --s3  --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY --bucket-name s3-bucket-name --name snapshot-name --s3-endpoint s3.amazonaws.com
+```
 ## Example
 
 In this example, the Kubernetes cluster was deployed on two AWS nodes.
@@ -140,9 +223,14 @@ $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 
 ![etcd snapshot]({{< baseurl >}}/img/rke/rke-etcd-backup.png)
 
+
 ### Store the snapshot externally
 
+>**Note:** As of version 0.2.0, this is no longer required, as RKE can upload and download snapshots automatically from S3.
+>**Note:** As of version 0.2.0, the file **pki.bundle.tar.gz** is no longer required.
+
 After taking the etcd snapshot on `node2`, we recommend saving this backup in a persistence place. One of the options is to save the backup on a S3 bucket or tape backup.
+
 
 ```
 # If you're using an AWS host and have the ability to connect to S3
