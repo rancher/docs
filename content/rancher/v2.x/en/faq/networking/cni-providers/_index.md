@@ -91,6 +91,27 @@ For more information, see the following pages:
 - [Project Calico GitHub Page](https://github.com/projectcalico/calico)
 
 
+#### Weave
+
+![Weave Logo]({{< baseurl >}}/img/rancher/weave-logo.png)
+
+Weave enables networking and network policy in Kubernetes clusters across the cloud. Additionally, it support encrypting traffic between the peers.
+
+To enable encryption, `WEAVE_PASSWORD` has to be set as a network plugin parameter. Rancher UI automatically generates the password when weave CNI plugin is selected. You can change the default password by editing the cluster YAML from the UI:
+
+```yaml
+network:
+  plugin: "weave"
+weave_network_provider:
+  password: "Q]SZOQ5wp@n$oijz"
+```
+
+Kubernetes workers should open TCP port 6783 and UDP 6783/6784.
+
+Weave is available as a CNI plugin in Rancher as of version 2.2, For more information, see the following pages:
+
+- [Weave Net Official Site](https://www.weave.works/)
+
 ### CNI Features by Provider
 
 The following table summarizes the different features available for each CNI provider provided by Rancher.
@@ -100,7 +121,7 @@ The following table summarizes the different features available for each CNI pro
 | Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
 | Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes |
-
+| Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
 
@@ -125,6 +146,8 @@ The following table summarizes different GitHub metrics to give you an idea of e
 | Canal | https://github.com/projectcalico/canal | 536 | 75 | 19 |
 | flannel | https://github.com/coreos/flannel | 3.279 | 774 | 107 |
 | Calico | https://github.com/projectcalico/calico | 572 | 225 | 82 |
+| Weave | https://github.com/weaveworks/weave/ | 5446 | 498 | 63 |
+
 <br/>
 ### Which CNI Provider Should I Use?
 
