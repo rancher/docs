@@ -1,19 +1,17 @@
 ---
-title: Catalogs and Charts
+title: Catalogs and Apps
 weight: 4000
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/catalog/
   - /rancher/v2.x/en/concepts/catalogs/
   - /rancher/v2.x/en/tasks/global-configuration/catalog/
-  - /rancher/v2.x/en/tasks/global-configuration/catalog/enabling-default-catalogs/
-  - /rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs/
 ---
 
-Rancher provides a catalog of charts that make it easy to repeatedly deploy any applications.
+## Catalogs
 
-_Catalogs_ are GitHub repositories or Helm Chart Repository filled with applications that are ready-made for deployment. Applications are bundled in objects called _charts_.
+Rancher provides the ability to use a catalog of Helm charts that make it easy to repeatedly deploy applications.
 
-_Charts_ are a packaging format popularized by [Helm](https://docs.helm.sh/). Think of them as templates for deployments. Per Helm, charts are:
+_Catalogs_ are GitHub repositories or Helm Chart repositories filled with applications that are ready-made for deployment. Applications are bundled in objects called _Helm charts_.
 
 >A collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
 
@@ -121,17 +119,21 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
 **Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's:
 
-- **Workloads** view
-- **Apps** view (In versions prior to v2.2.0, this is the **Catalog Apps** view).
+By creating a customized repository with added files, Rancher improves on Helm repositories and charts. All native Helm charts can work within Rancher, but Rancher adds several enhancements to improve their user experience.
 
-## Deleting Catalog Application Deployments
+### Catalog Scope
 
-As a safeguard to prevent you from unintentionally deleting other catalog applications that share a namespace, deleting catalog applications themselves does not delete the namespace they're assigned to. Therefore, when you want to delete a deployed catalog application, assuming that it's the only app in its namespace, delete the namespace rather than the catalog app itself. Deleting the namespace deletes both the namespace and the catalog app, whereas deleting the catalog app only deletes the app but not the namespace.
+Within Rancher, you can manage catalogs at three different scopes. Global catalogs is shared across all clusters and project. There are some use cases where you might not want to share catalogs across between different clusters or even projects in the same cluster. By leveraging cluster and project scoped catalogs, you will be able to provide applications for specific teams without needing to share them with all clusters and/or projects.
 
-1. From the **Global** view, open the project that contains the catalog application that you want to delete.
+Scope |  Description | Available As of |
+--- |  --- | --- |
+Global | All clusters and all projects can access the Helm charts in this catalog | v2.0.0 |
+Cluster | All projects in the specific cluster can access the Helm charts in this catalog | v2.2.0 |
+Project | This specific cluster can access the Helm charts in this catalog |  v2.2.0 |
 
-1. From the main menu, choose **Namespaces**.
+## Apps
 
-1. Find the namespace running your catalog app. Select it and click **Delete**.
+In Rancher, applications are deployed from the templates in a catalog. Rancher supports two types of applications:
 
-**Result:** The catalog application deployment and its namespace are deleted.
+* [Multi-cluster applications]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster/)
+* [Applications deployed in a specific Project]({{< baseurl >}}/rancher/v2.x/en/catalog/apps)
