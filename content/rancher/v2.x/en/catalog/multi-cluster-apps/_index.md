@@ -112,7 +112,8 @@ The ability to use the same configuration to deploy the same application across 
 The creator and any users added with the access-type "owner" to a multi-cluster app, can upgrade its Roles. When adding a new Role, we check if the user has that exact role in all current target projects. These checks allow the same relaxations for global admins, cluster owners and project-owners as described in the installation section for the field `Roles`.
 
 - **Adding/Removing target projects**
-The creator and any users added with access-type "owner" to a multi-cluster app, can add or remove its target projects. When adding a new project, we check if the caller of this request has all Roles defined on multi-cluster app, in the new projects they want to add. The roles checks are again relaxed for global admins, cluster-owners and project-owners.
+1. The creator and any users added with access-type "owner" to a multi-cluster app, can add or remove its target projects. When adding a new project, we check if the caller of this request has all Roles defined on multi-cluster app, in the new projects they want to add. The roles checks are again relaxed for global admins, cluster-owners and project-owners.
+2. We do not do these membership checks when removing target projects. This is because the caller's permissions could have with respect to the target project, or the project could have been deleted and hence the caller wants to remove it from targets list. 
 
 
 ## Multi-Cluster Application Management
@@ -130,3 +131,15 @@ After a multi-cluster application is deployed, you can easily upgrade to a diffe
 ### Rolling Back a Multi-Cluster Application
 
 If after an upgrade, there are issues for your multi-cluster application for one or more of your [targets](#targets), Rancher has stored up to 10 versions of the multi-cluster application. Rolling back a multi-cluster application reverts the application for **all** target clusters and projects, not just the targets(s) affected by the upgrade issue.
+
+## Deleting a Multi-Cluster Application
+
+1. From the **Global** view, choose **Apps** in the navigation bar.
+
+2. Choose the multi-cluster application you want to delete and click on the vertical ellipsis button on it.
+
+3. You can see **Delete** as one of the actions shown. 
+
+4. Click on it to delete this multi-cluster application. It will delete all the applications it created under its target projects, and all the namespaces created for those applications.
+
+> **NOTE** The applications in projects created for the multi-cluster applications cannot be deleted individually. They will only get deleted once the multi-cluster application is deleted.
