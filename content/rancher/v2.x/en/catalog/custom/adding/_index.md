@@ -9,7 +9,7 @@ aliases:
 
 ## Adding Global Catalogs
 
->**Prerequisites:** In order to manage the [built-in catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or [manage global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-adding/#adding-global-catalogs), you need _one_ of the following permissions:
+>**Prerequisites:** In order to manage the [built-in catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or manage global catalogs, you need _one_ of the following permissions:
 >
 >- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
 >- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Catalogs]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
@@ -24,7 +24,7 @@ aliases:
 
 _Available as of v2.2.0_
 
->**Prerequisites:** In order to [manage cluster scoped catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-adding/#adding-cluster-catalogs), you need _one_ of the following permissions:
+>**Prerequisites:** In order to manage cluster scoped catalogs, you need _one_ of the following permissions:
 >
 >- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
 >- [Cluster Owner Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles)
@@ -42,7 +42,7 @@ _Available as of v2.2.0_
 
 _Available as of v2.2.0_
 
->**Prerequisites:** In order to [manage project scoped catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-adding/#adding-project-catalogs), you need _one_ of the following permissions:
+>**Prerequisites:** In order to manage project scoped catalogs, you need _one_ of the following permissions:
 >
 >- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
 >- [Cluster Owner Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles)
