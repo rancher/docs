@@ -9,7 +9,7 @@ There are default [global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#glo
 
 ## Managing Built-in Global Catalogs
 
->**Prerequisites:** In order to manage the [built-in catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or [manage global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom-adding/#adding-global-catalogs), you need _one_ of the following permissions:
+>**Prerequisites:** In order to manage the built-in catalogs or [manage global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/#adding-global-catalogs), you need _one_ of the following permissions:
 >
 >- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
 >- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Catalogs]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
