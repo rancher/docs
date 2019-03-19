@@ -4,9 +4,9 @@ weight: 5000
 ---
 _Available as of v2.2.0_
 
-Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based om your target project. Since multi-cluster applications is considered a single application, it's easy to manage and maintain this application.
+Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
 
-Any Helm charts from a [global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#catalog-scope) can be used to deploy and manage multi-cluster applications.
+Any Helm charts from a [global catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/#catalog-scope) can be used to deploy and manage multi-cluster applications.
 
 ## Launching a Multi-Cluster App
 
@@ -16,7 +16,7 @@ Any Helm charts from a [global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog
 
 3.  (Optional) Review the detailed descriptions, which are derived from the Helm chart's `README`.
 
-4. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is is named `<MULTI-CLUSTER_APPLICTION_NAME>-p-<PROJECT_ID>`.
+4. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is named as `<MULTI-CLUSTER_APPLICTION_NAME>-<PROJECT_ID>`.
 
 5. Select a **Template Version**.
 
@@ -42,9 +42,9 @@ In the **Targets** section, select the [projects]({{< baseurl >}}/rancher/v2.x/e
 
 In the **Upgrades** section, select the upgrade strategy to use, when you decide to upgrade your application.
 
-* **Rolling Update (batched):** When selecting this upgrade strategy, the number of containers upgraded at a time is based on the selected **Batch size** and the **Interval** specifies how many seconds to wait before starting the next batch of updates.
+* **Rolling Update (batched):** When selecting this upgrade strategy, the number of applications upgraded at a time is based on the selected **Batch size** and the **Interval** specifies how many seconds to wait before starting the next batch of updates.
 
-* **Upgrade all apps simultaneously:** When selecting this upgrade strategy, all workloads across all projects will be upgraded at the same time.
+* **Upgrade all apps simultaneously:** When selecting this upgrade strategy, all applications across all projects will be upgraded at the same time.
 
 #### Roles
 
@@ -52,7 +52,7 @@ In the **Roles** section, you define the role of the multi-cluster application. 
 
 For multi-cluster applications, the application is deployed by a _system user_ and is assigned as the creator of all underlying resources. A _system user_ is used instead of the actual user due to the fact that the actual user could be removed from one of the target projects. If the actual user was removed from one of the projects, then that user would no longer be able to manage the application for the other projects.
 
-Based on the user's permissions, Rancher will display one or two roles available for the multi-cluster application.
+Rancher will let you select from two options for Roles, **Project** and **Cluster**. Rancher will allow creation using any of these roles based on the user's permissions.
 
 - **Project** - This is the equivalent of a [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or a [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles), then the user is considered to have the appropriate level of permissions.   
 
@@ -90,7 +90,7 @@ By default, multi-cluster applications can only be managed by the user who creat
 
     - **Read-only**: This access type cannot modify any configuration option for the multi-cluster application. Users can only view these applications.
 
-    > **Note:**  Please ensure only trusted users are given _Owner_ or _Member_ access as they will automatically be able to manage applications in projects that they might not have direct access to.
+    > **Note:**  Please ensure only trusted users are given _Owner_ or _Member_ access as they will automatically be able to manage applications created for this multi-cluster application in target projects they might not have direct access to.
 
 ### Overriding Application Configuration Options for Specific Projects
 
