@@ -54,7 +54,7 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
 1. <a id="tarball"></a>From the data container that you just created (`rancher-data-<DATE>`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`). Use the following command, replacing each [placeholder](#before-you-start).
 
     ```
-    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup:z alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** A stream of commands runs on the screen.
