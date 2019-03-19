@@ -4,16 +4,16 @@ weight: 10000
 ---
 _Available as of v2.2.0_
 
-Using Rancher, you can now backup and restore your RKE or Custom Kubernetes clusters directly from the UI.
+Using Rancher, you can now perform ETCD backup and recovery for Rancher provisioned Kubernetes clusters directly from the UI.
 
-Using Rancher you can can configure local snapshots on your ETCD plane nodes, as well as configure remote backups to an S3 compatible target which allows you to restore your cluster even if all nodes are lost.
+Rancher lets you configure local snapshots on your ETCD plane nodes, as well as setup remote backups to an S3 compatible target which allows you to restore your cluster even if all nodes are lost.
 
 When Cluster Backup is enabled, it's also possible to do one-time snapshots along with configured recurring snapshots.
 
-> **Note:** Cluster Backup is only available for [RKE Clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/) and [Custom Clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/custom-clusters/).
+> **Note:** Cluster Backup is only available for [Rancher provisioned Kubernetes clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/) and [Custom Clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/custom-clusters/).
 
 ## Configuring Cluster Backups
-As of version 2.0.0, all newly RKE provisioned clusters have Local Cluster recurring Snapshots enabled by default. For RKE clusters provisioned with an older versions of Rancher, see [How to enable Cluster backups for existing clusters]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/existing-clusters/)
+As of version 2.0.0, all newly Rancher provisioned Kubernetes clusters have Local Cluster Recurring Snapshots enabled by default. For clusters provisioned with an older versions of Rancher, see [How to enable Cluster backups for existing clusters]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/existing-clusters/)
 
 To configure or disable Cluster Backups, you need to access the Cluster Backup configuration section. This is available during initial cluster configuration or later by editing the cluster.
 - While on the **Add Cluster** or **Edit** cluster view, click on **Show advanced options**
@@ -33,7 +33,7 @@ Rancher Cluster Backup support two different backup targets:
 * [S3 Target](#s3-target)
 
 ## Local Backup Target
-Local Backup target is the most basic option. It's enabled by default for all newly RKE provisioned clusters.
+Local Backup target is the most basic option. It's enabled by default for all newly Rancher provisioned Kubernetes clusters.
 
 Local Backup target works by saving local ETCD snapshot on all ETCD plane nodes at a pre-configured interval. This provides the user an ability to do point-in-time recovery, or recover from a broken ETCD cluster. However, it doesn't provide the ability to recover if all the ETCD plane nodes are lost, since the snapshots are stored locally on the nodes.
 
