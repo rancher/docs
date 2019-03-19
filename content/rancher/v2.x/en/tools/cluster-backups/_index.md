@@ -13,7 +13,7 @@ When Cluster Backup is enabled, it's also possible to do one-time snapshots alon
 > **Note:** Cluster Backup is only available for [RKE Clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/) and [Custom Clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/custom-clusters/).
 
 ## Configuring Cluster Backups
-As of version 2.0.0, all newly provisioned clusters have Local Cluster Backups enabled by default. For cluster provisioned with older versions of Rancher, see [How to enable Cluster backups for existing clusters]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/existing-clusters/)
+As of version 2.0.0, all newly RKE provisioned clusters have Local Cluster recurring Snapshots enabled by default. For RKE clusters provisioned with an older versions of Rancher, see [How to enable Cluster backups for existing clusters]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/existing-clusters/)
 
 To configure or disable Cluster Backups, you need to access the Cluster Backup configuration section. This is available during initial cluster configuration or later by editing the cluster.
 - While on the **Add Cluster** or **Edit** cluster view, click on **Show advanced options**
@@ -23,7 +23,7 @@ To configure or disable Cluster Backups, you need to access the Cluster Backup c
 | --- | ---| --- |
 |etcd Snapshot Backup Target| Select cluster backup target | local|
 |Recurring etcd Snapshot Enabled| Enable/Disable recurring snapshot | Yes|
-| Recurring etcd Snapshot Creation Period | Time in hours between recurring|  snapshots| 12 hours |
+|Recurring etcd Snapshot Creation Period | Time in hours between recurring|  snapshots| 12 hours |
 |Recurring etcd Snapshot Retention Count| Number of snapshots to retain| 6 |
 
 ## Cluster Backup Targets
@@ -33,15 +33,15 @@ Rancher Cluster Backup support two different backup targets:
 * [S3 Target](#s3-target)
 
 ## Local Backup Target
-Local Backup target is the most basic backup one. It's enabled by default for all newly provisioned clusters.
+Local Backup target is the most basic option. It's enabled by default for all newly RKE provisioned clusters.
 
-Local Backup target works by saving local ETCD snapshot on all ETCD plane nodes at a pre-configured interval. This provides the user the ability to do point-in-time recovery, or recover from a broken ETCD cluster. However, it doesn't provide the ability to recover if all the ETCD plane nodes are lost, since the snapshots are stored locally on the nodes.
+Local Backup target works by saving local ETCD snapshot on all ETCD plane nodes at a pre-configured interval. This provides the user an ability to do point-in-time recovery, or recover from a broken ETCD cluster. However, it doesn't provide the ability to recover if all the ETCD plane nodes are lost, since the snapshots are stored locally on the nodes.
 
 
 ## S3 Backup Target
-S3 Backup target allows the user to configure an S3 compatible backend for remote snapshot storage.
+S3 Backup target allows the user to configure an S3 compatible backend as a remote snapshot storage.
 
-Having the snapshots stored remotely provides a lot of flexibility. In addition to point-in-time recovery and recovering broken ETCD cluster, this targets allows the user to recover the cluster from disaster situations like losing all nodes on the ETCD plane, essentially allowing the user to replace a broken cluster by restoring from backup.
+Having the snapshots stored remotely provides a lot of flexibility. In addition to point-in-time recovery and recovering broken ETCD cluster, this targets allows the user to recover the cluster from disaster situations like losing all nodes on the ETCD plane. In other words, it essentially lets the user to replace a broken cluster by restoring from a remote backup.
 
 When S3 target is enabled, additional configuration is required to set it up:
 
