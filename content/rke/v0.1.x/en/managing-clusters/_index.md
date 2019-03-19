@@ -1,5 +1,5 @@
 ---
-title: Adding and Removing Nodes in RKE Clusters
+title: Adding and Removing Nodes
 weight: 175
 aliases:
   - /rke/v0.1.x/en/installation/managing-clusters/
