@@ -28,7 +28,7 @@ In Rancher, you can add the custom Helm chart repository with only a catalog nam
 
 ## Catalog Fields
 
-When adding in your catalog into Rancher, you'll provide the following information:
+When [adding your catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/) to Rancher, you'll provide the following information:
 
 
 | Variable              |  Description  |

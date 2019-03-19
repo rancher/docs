@@ -15,7 +15,7 @@ After you've either enabled the [built-in global catalogs]({{< baseurl >}}/ranch
 
 3. Find the application that you want to launch, and then click **View Details**.
 
-4. (Optional) Review the detailed descriptions, which are derived from the Helm chart readme.
+4. (Optional) Review the detailed descriptions, which comes from the Helm chart's `README`.
 
 5. Under **Configuration Options** enter a **Name**. By default, this name is also used to create a Kubernetes namespace for the application.
 
@@ -35,7 +35,7 @@ After you've either enabled the [built-in global catalogs]({{< baseurl >}}/ranch
 
 ### Configuration Options
 
-For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set), as Rancher passes them as ``--set` flags to Helm.
+For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.
 
 > For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is reuired to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
@@ -87,15 +87,23 @@ You can directly paste that YAML formatted structure into the YAML editor. By al
 {{% /tab %}}
 {{% /tabs %}}
 
-## Upgrading/Rolling Back Catalog applications
+## Application Management
 
-After an application is deployed, you can easily upgrade or rollback to a different template version.
+After deploying an application, one of the benefits of using an application versus individual workloads/resources is the ease of being able to manage many workloads/resources applications. Apps can be cloned, upgraded or rolled back.
+
+### Cloning Catalog Applications
+
+After an application is deployed, you can easily clone it to use create another application with almost the same configuration. It saves you the work of manually filling in duplicate information.
+
+### Upgrading Catalog Applications
+
+After an application is deployed, you can easily upgrade to a different template version.
 
 1. From the **Global** view, navigate to the project that contains the catalog application that you want to upgrade.
 
 1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
-3. Find the application that you want to upgrade/rollback, and then click the Ellipsis to find **Upgrade**/**Rollback**.
+3. Find the application that you want to upgrade, and then click the Ellipsis to find **Upgrade**.
 
 4. Select the **Template Version** that you want to deploy.
 
@@ -103,7 +111,7 @@ After an application is deployed, you can easily upgrade or rollback to a differ
 
 6. (Optional) Select whether or not you want to force the catalog application to be upgraded by checking the box for **Delete and recreate resources if needed during the upgrade**.
 
-    > In Kubernetes, some fields are designed to be immutable or cannot be updated directly. As of v2.2.0, you can now force your catalog application to be updated regardless of these fields. This will cause the catalog apps to be deleted and resources to be re-created if needed during the upgrade/rollback.
+    > In Kubernetes, some fields are designed to be immutable or cannot be updated directly. As of v2.2.0, you can now force your catalog application to be updated regardless of these fields. This will cause the catalog apps to be deleted and resources to be re-created if needed during the upgrade.
 
 7. Review the files in the **Preview** section. When you're satisfied, click **Launch**.
 
@@ -112,7 +120,31 @@ After an application is deployed, you can easily upgrade or rollback to a differ
 - **Workloads** view
 - **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
 
-## Deleting Catalog Application Deployments
+
+### Rolling Back Catalog Applications
+
+After an application has been upgraded, you can easily rollback to a different template version.
+
+1. From the **Global** view, navigate to the project that contains the catalog application that you want to upgrade.
+
+1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
+
+3. Find the application that you want to rollback, and then click the Ellipsis to find **Rollback**.
+
+4. Select the **Revision** that you want to roll back to. By default, Rancher saves up to the last 10 revisions.
+
+5. (Optional) Select whether or not you want to force the catalog application to be upgraded by checking the box for **Delete and recreate resources if needed during the upgrade**.
+
+    > In Kubernetes, some fields are designed to be immutable or cannot be updated directly. As of v2.2.0, you can now force your catalog application to be updated regardless of these fields. This will cause the catalog apps to be deleted and resources to be re-created if needed during the rollback.
+
+7. Click **Rollback**.
+
+**Result**: Your application is updated. You can view the application status from the project's:
+
+- **Workloads** view
+- **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
+
+### Deleting Catalog Application Deployments
 
 As a safeguard to prevent you from unintentionally deleting other catalog applications that share a namespace, deleting catalog applications themselves does not delete the namespace they're assigned to. Therefore, when you want to delete a deployed catalog application, assuming that it's the only app in its namespace, delete the namespace rather than the catalog app itself. Deleting the namespace deletes both the namespace and the catalog app, whereas deleting the catalog app only deletes the app but not the namespace.
 

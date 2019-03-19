@@ -131,9 +131,16 @@ Global | All clusters and all projects can access the Helm charts in this catalo
 Cluster | All projects in the specific cluster can access the Helm charts in this catalog | v2.2.0 |
 Project | This specific cluster can access the Helm charts in this catalog |  v2.2.0 |
 
+### Working with catalogs
+
+There are two types of catalogs in Rancher. Learn more about each type:
+
+* [Built-in Global Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/)
+* [Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/)
+
 ## Apps
 
 In Rancher, applications are deployed from the templates in a catalog. Rancher supports two types of applications:
 
-* [Multi-cluster applications]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster/)
+* [Multi-cluster applications]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/)
 * [Applications deployed in a specific Project]({{< baseurl >}}/rancher/v2.x/en/catalog/apps)
