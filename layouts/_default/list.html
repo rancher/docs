@@ -21,11 +21,19 @@
         <hr/>
       {{end}}
 
+      {{ if .Params.ctaBanner }}
+        {{ with index .Site.Data.cta .Params.ctaBanner }}
+          <div class="row center-xs middle-xs bg-info shadow rounded-corners">
+            <h3 class="m-v-sm m-r-sm text-white">{{ .header }}</h3>
+            <a href="{{ .link }}" target="_blank" class="btn border-btn">{{ .button }}</a>
+          </div>
+        {{ end }}
+      {{ end }}
+
       <div class="main-content docs-body">
         <!-- this is a test -->
         <!-- {{ partial "page-nav.html" . }} -->
         <!-- end test -->
-
         {{ .Content }}
 
         {{ $paginator := .Scratch.Get "paginator" }}

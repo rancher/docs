@@ -2,6 +2,7 @@
 shortTitle: Rancher 2.x
 insertOneSix: true
 weight: 1
+ctaBanner: intro-k8s-rancher-online-training
 ---
 
 ## What's New?
