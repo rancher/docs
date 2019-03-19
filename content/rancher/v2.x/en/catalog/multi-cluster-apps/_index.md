@@ -84,7 +84,7 @@ By default, multi-cluster applications can only be managed by the user who creat
 
 2. Select the **Access Type** for that member. There are three access types for a multi-cluster project, but due to how the permissions of a multi-cluster application are launched, please read carefully to understand what these access types mean.  
 
-    - **Owner**: This access type can manage any configuration part of the multi-cluster application including the template version, the [multi-cluster applications specific configuration options](#configuration-options-to-make-a-multi-cluster-app), the [application specific configuration options](#application-configuration-options), the [members who can interact with the multi-cluster application](#members) and the [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects). Since a multi-cluster application is created with a different set of permissions from the user, any _owner_ of the multi-cluster application can manage/remove applications in [target projects](#target-projects) without explicitly having access to these project(s). Only trusted users should be provided with this access type.
+    - **Owner**: This access type can manage any configuration part of the multi-cluster application including the template version, the [multi-cluster applications specific configuration options](#configuration-options-to-make-a-multi-cluster-app), the [application specific configuration options](#application-configuration-options), the [members who can interact with the multi-cluster application](#members) and the [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects). Since a multi-cluster application is created with a different set of permissions from the user, any _owner_ of the multi-cluster application can manage/remove applications in [target projects](#targets) without explicitly having access to these project(s). Only trusted users should be provided with this access type.
 
     - **Member**: This access type can only modify the template version, the [application specific configuration options](#application-configuration-options) and the [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects). Since a multi-cluster application is created with a different set of permissions from the user, any _member_ of the multi-cluster application can modify the application without explicitly having access to these project(s). Only trusted users should be provided with this access type.
 
@@ -125,7 +125,7 @@ After a multi-cluster application is deployed, you can easily clone it to use cr
 
 ### Upgrading a Multi-Cluster Applications
 
-After a multi-cluster application is deployed, you can easily upgrade to a different template version. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrade-strategy) can be modified if you have the correct [access type](#members).
+After a multi-cluster application is deployed, you can easily upgrade to a different template version. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrades) can be modified if you have the correct [access type](#members).
 
 ### Rolling Back a Multi-Cluster Application
 

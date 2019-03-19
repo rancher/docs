@@ -17,7 +17,7 @@ _Helm Charts_ are a list of files packaged by a popular packaging format called 
 
 >A collection of files that describe a related set of Kubernetes resources. A single chart might be used to deploy something simple, like a memcached pod, or something complex, like a full web app stack with HTTP servers, databases, caches, and so on.
 
-By creating a customized repository with added files, Rancher improves on Helm repositories and charts. All native Helm charts can work within Rancher, but Rancher adds several enhancements to improve their user experience.
+All native Helm charts work within Rancher, but [custom catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/) can be created take advantage of existing Helm charts and extend it with additional files. With these additional files, Rancher can improve the user experience. 
 
 ### Catalog Scope
 
