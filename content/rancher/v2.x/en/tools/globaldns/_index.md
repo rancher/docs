@@ -82,3 +82,23 @@ In order for Global DNS entries to be programmed, you will need to add a specifi
    * The ingress must be set to use a `hostname` that matches the FQDN of the Global DNS entry.
    * The ingress must have an annotation label (`rancher.io/globalDNS.<HOSTNAME>`) where `<HOSTNAME>` matches is also the FQDN of the Global DNS entry.
 1. Once the ingress in your [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
+
+## Editing a Global DNS Provider
+The creator and any users added as members to a Global DNS Provider, have the "owner" access to the provider. Members can edit all fields of a Global DNS Provider including 
+
+1. Root Domain
+1. Access Keys/Credentials
+1. Members
+
+## Editing a Global DNS Entry
+The creator and any users added as members to a Global DNS entry, have the "owner" access to the entry. Members can edit all fields of a Global DNS entry including 
+
+1. FQDN
+1. Global DNS Provider 
+1. Target Projects or Multi-Cluster App
+1. DNS TTL
+1. Members
+
+A member can add only those target projects that he/she has access to. However members can remove target projects that may not have access to.
+
+Permission checks are relaxed for removing target projects inorder to support siuations like the member's permissions got changed with respect to the target project and hence he/she wants to delete the target; or the target project could have been deleted and hence the member wants to remove it from the target list.
