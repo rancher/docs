@@ -35,7 +35,7 @@ This network model provides an L3 network to route packets between containers. T
 
 In simple terms, this network model generates a kind of network router extended between Kubernetes workers, which provides information about how to reach pods.
 
-This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensible to latency.
+This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensitive to latency.
 
 CNI providers using this network model include Calico and Romana.
 
