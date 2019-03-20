@@ -118,13 +118,13 @@ The following table summarizes the different features available for each CNI pro
 
 #### CNI Community Popularity
 
-The following table summarizes different GitHub metrics to give you an idea of each project's popularity and activity. This data was collected in July 2018.
+The following table summarizes different GitHub metrics to give you an idea of each project's popularity and activity. This data was collected in March 2019.
 
 | Provider | Project | Stars | Forks | Contributors |
 | ---- | ---- | ---- | ---- | ---- |
-| Canal | https://github.com/projectcalico/canal | 536 | 75 | 19 |
-| flannel | https://github.com/coreos/flannel | 3.279 | 774 | 107 |
-| Calico | https://github.com/projectcalico/calico | 572 | 225 | 82 |
+| Canal | https://github.com/projectcalico/canal | 580 | 84 | 20 |
+| flannel | https://github.com/coreos/flannel | 3,980 | 987 | 123 |
+| Calico | https://github.com/projectcalico/calico | 953 | 305 | 101 |
 <br/>
 ### Which CNI Provider Should I Use?
 
