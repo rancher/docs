@@ -80,7 +80,13 @@ INFO[0033] [worker] Successfully restarted Worker Plane..
 
 ### Rotating the CA and all service certificates
 
-If the CA needs to be rotated, you are required to rotate all the services certificates as they need to be signed with the newly rotated CA. To include rotating the CA with the service certificates, add the `--rotate-ca` option. After the the CA and all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
+If the CA certificate needs to be rotated, you are required to rotate all the services certificates as they need to be signed with the newly rotated CA certificate. To include rotating the CA with the service certificates, add the `--rotate-ca` option. After the the CA and all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
+
+Rotating the CA certificate will result in restarting other system pods, that will also use the new CA certificate. This includes:
+
+- Networking pods (canal, calico, flannel, and weave)
+- Ingress Controller pods
+- KubeDNS pods
 
 ```
 $ rke cert rotate --rotate-ca      
@@ -102,8 +108,4 @@ INFO[0001] Successfully Deployed state file at [./cluster.rkestate]
 INFO[0001] Rebuilding Kubernetes cluster with rotated certificates
 ```
 
-Rotating the CA certificate will also result in restarting some system pods to use the new CA certificate, this includes:
 
-- Networking pods (canal, calico, flannel, and weave).
-- Ingress Controller pods.
-- KubeDNS pods.
