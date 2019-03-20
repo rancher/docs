@@ -132,4 +132,4 @@ It depends on your project needs. There are many different providers, which each
 
 As of Rancher v2.0.7, Canal is the default CNI provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking.
 
-All of 3 solutions are capable CNI providers and will likely suit your needs.
+All 3 solutions are capable CNI providers and will likely suit your needs.
