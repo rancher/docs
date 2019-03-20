@@ -5,7 +5,7 @@ weight: 150
 
 _Available as of v0.2.0_
 
-By default, RKE auto-generates the certificates for all the cluster components when installing Kubernetes. RKE can also use custom certificates for these Kubernetes cluster components.
+By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all the Kubernetes services. RKE can also use custom certificates for these Kubernetes services.
 
 When [deploying Kubernetes with RKE]({{< baseurl >}}/rke/v0.1.x/en/installation/#deploying-kubernetes-with-rke), there are two additional options that can be used with `rke up` so that RKE uses custom certificates.
 
@@ -43,11 +43,11 @@ The following certificates must exist in the certificate directory.
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
-If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to generate a set of Certificate Signing Requests (CSRs) and keys. Using the `rke cert generate-csr` command, you will be able to generate the CRSs and keys.
+If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to generate a set of Certificate Signing Requests (CSRs) and keys. Using the `rke cert generate-csr` command, you can generate the CSRs and keys.
 
 1. Set up your `cluster.yml` with the [node information]({{< baseurl >}}/rke/v0.1.x/en/config-options/nodes/).
 
-2. Run `rke cert generate-csr` to generate certificates for the node(s) in the `cluster.yml`. By default, the CSRs and keys will be saved in `./cluster_certs`. To have them saved in a different directory, use `--cert-dir`.
+2. Run `rke cert generate-csr` to generate certificates for the node(s) in the `cluster.yml`. By default, the CSRs and keys will be saved in `./cluster_certs`. To have them saved in a different directory, use `--cert-dir` to define what directory to have them saved in.
 
     ```
     $ rke cert generate-csr     
@@ -63,7 +63,7 @@ If you want to create and sign the certificates by a real Certificate Authority 
     INFO[0001] Successfully Deployed certificates at [./cluster_certs]
     ```
 
-**Result:** The CSRs and keys will be deployed in `./cluster_certs` directory. The CSR files will contain the right Alternative DNS and IP Names for the certificates. You can use them to sign the certificates by a real CA. After the certificates are signed, they can be used by RKE for custom certificates.
+**Result:** The CSRs and keys will be deployed in `./cluster_certs` directory, assuming you didn't specify a `--cert-dir`. The CSR files will contain the right Alternative DNS and IP Names for the certificates. You can use them to sign the certificates by a real CA. After the certificates are signed, those certificates can be used by RKE as custom certificates.
 
 ```
 $ tree cluster_certs
