@@ -13,6 +13,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Pipelines](#pipelines)
 - [Monitoring](#monitoring)
 - [Global DNS](#global-dns)
+- [Cluster Backups](#cluster-backups)
 
 <!-- /TOC -->
 
@@ -104,3 +105,13 @@ _Available as v2.2.0_
 When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
 
 For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/).
+
+## Cluster Backups
+
+_Available as v2.2.0_
+
+Using Rancher, you can manage ETCD databases snapshots for Rancher provisioned Kubernetes clusters directly from the UI. Rancher allows you to configure a cluster with recurring local snapshots that will reside on ETCD plane nodes. For more resilience, you can setup snapshots backup to an external S3 compatible provider.
+
+From the Rancher UI, you will be able to restore your cluster to a previously taken snapshot on an existing set of ETCD nodes. Or if all ETCD nodes are down, you can replace them with the new set of nodes and perform the recovery from the remotely backed up snapshot.
+
+For more information on how to use this feature, see [Cluster Backups]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/).
