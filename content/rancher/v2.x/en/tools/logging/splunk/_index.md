@@ -31,7 +31,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. From the **Global** view, open the project that you want to configure logging for.
 
-1. From the main menu, select **Resources > Logging**. 
+1. From the main menu, select **Tools > Logging**. 
 {{% /accordion %}}
 
 1. Select **Splunk**.
@@ -48,15 +48,33 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
     1. **Optional:** Enter one or more [index](http://docs.splunk.com/Documentation/Splunk/7.1.2/Indexer/Aboutindexesandindexers) that's allowed for your token.
 
+1. If your Splunk is using SSL, you need to complete the **SSL Configuration** form. 
+
+    1. Enter the private key and client certificate. You can either copy and paste them or upload them by **Read from a file**.
+
+        You can use either a self-signed certificate or one provided by a certificate authority.
+
+        You can generate a self-signed certificate using an openssl command. For example:
+            
+            openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+
+    1. Enter your private key password.
+
+    1. If you are using a self-signed certificate, you need to select the **Enabled - Input trusted server certificate** option and enter your **CA Certificate PEM**.
+
 1. Complete the **Additional Logging Configuration** form.
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes event data to the logging server. Intervals are measured in seconds.
 
+    1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
+
+1. Click **Test**. Rancher sends a test log to Splunk.
+
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send logs to Splunk. Log into your Spunk instance to view events for your cluster and containers.
+**Result:** Rancher is now configured to send logs to Splunk. Log into your Splunk instance to view events for your cluster and containers.
 
 ## Viewing Logs
 

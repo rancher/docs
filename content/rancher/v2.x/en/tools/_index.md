@@ -60,14 +60,11 @@ For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/noti
 
 Rancher can integrate with popular external services used for event streams, telemetry, or search. Rancher can integrate with the following services:
 
-- Embedded Elasticsearch (experimental)
-
-    >**Note:** This option is available only at the cluster level.
-
 - Elasticsearch
 - splunk
 - kafka
 - syslog
+- fluentd
 
 These services collect container log events, which are saved to the `/var/log/containers` directory on each of your nodes. The service collects both standard and error events. You can then log into your services to review the events collected, leveraging each service's unique features.
 
