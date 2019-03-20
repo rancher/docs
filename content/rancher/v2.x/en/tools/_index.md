@@ -13,7 +13,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Pipelines](#pipelines)
 - [Monitoring](#monitoring)
 - [Global DNS](#global-dns)
-- [Cluster Backups](#cluster-backups)
+- [Snapshots](#Snapshots)
 
 <!-- /TOC -->
 
@@ -107,12 +107,12 @@ When creating applications that span multiple Kubernetes clusters, a Global DNS 
 
 For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/).
 
-## Cluster Backups
+## Snapshots
 
 _Available as v2.2.0_
 
-Using Rancher, you can manage ETCD databases snapshots for Rancher provisioned Kubernetes clusters directly from the UI. Rancher allows you to configure a cluster with recurring local snapshots that will reside on ETCD plane nodes. For more resilience, you can setup snapshots backup to an external S3 compatible provider.
+For [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the etcd database can be backed up by enabling the ability to take recurring snapshots. Clusters can be configured to have these snapshots saved locally on the etcd nodes or saved to an external S3 compatible provider.
 
-From the Rancher UI, you will be able to restore your cluster to a previously taken snapshot on an existing set of ETCD nodes. Or if all ETCD nodes are down, you can replace them with the new set of nodes and perform the recovery from the remotely backed up snapshot.
+When needed, these snapshots can be used to restore existing set of etcd nodes in your [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). If all the etcd nodes are down, a snapshot, that was backed up remotely, can be used  on a new set of etcd nodes.
 
-For more information on how to use this feature, see [Cluster Backups]({{< baseurl >}}/rancher/v2.x/en/tools/cluster-backups/).
+For more information on how to use this feature, see [Snapshots]({{< baseurl >}}/rancher/v2.x/en/tools/snapshots/).
