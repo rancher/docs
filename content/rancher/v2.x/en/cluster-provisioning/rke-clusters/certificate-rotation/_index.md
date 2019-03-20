@@ -1,23 +1,16 @@
 ---
-title: Rotate Certificates for RKE clusters
-shortTitle: Certificate Rotation
-weight: 2225
+title: Certificate Rotation
+weight: 2245
 ---
 
+_Available as of v2.2.0_
 
-## Certificate Rotation
+By default, Kubernetes clusters require certificates and Rancher launched Kubernetes clusters have certificates automatically generated for them.
 
-As of v2.2, you can rotate certificates for RKE clusters in Rancher. You can chose to:
+> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher Launched Kubernetes clusters.
+hen generating certificates, the cluster certificates are set to expire after 1 year and the CA certificate expires after 10 years. Rotating these certificates are important before the certificates expire as well as if a certificate is compromised.
 
-- Rotate Certificate for all cluster components.
-- Rotate Certificates for a specific component.
-- Rotate CA certificates.
-
-To rotate certificates for your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis (...) > Rotate Certificates** for the cluster that you want to rotate certificate.
-
-### Certificate rotation for all cluster components
-
-Certificates can be rotated for the following kubernetes cluster components:
+After the certificates are rotated, the Kubernetes components are automatically restarted. Certificates can be rotated for the following services:
 
 - etcd
 - kubelet
@@ -26,13 +19,18 @@ Certificates can be rotated for the following kubernetes cluster components:
 - kube-scheduler
 - kube-controller-manager
 
-Select **Rotate all Service certificates (keep the same CA)** to rotate all the certificates above.
+Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
 
-### Certificate rotation for a specific component
+1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
 
-To rotate an individual service certificate, select **Rotate an individual service** and chose one of the components from the drop down menu. It will result in rotating certificate for only this component.
+2. Select the **Ellipsis (...) > Rotate Certificates**.
 
+3. Select which certificates that you want to rotate.
 
-### Certificate rotation for CA
+   * Rotate the CA and all Service certificates
+   * Rotate all Service certificates (keep the same CA)
+   * Rotate an individual service and choose one of the services from the drop down menu
 
-To rotate Kubernetes CA certificate, select **Rotate the CA and all Service certificates** option. Note that rotating this certificate will trigger rotating all components' certificates as they need to be signed with the new rotated CA.
+4. Click **Save**.
+
+**Results:** The selected certificates will be rotated and the related services will be restarted to start using the new certificate.

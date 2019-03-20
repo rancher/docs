@@ -5,22 +5,22 @@ weight: 150
 
 _Available as of v0.2.0_
 
-Certificates are an important part of Kubernetes clusters and are used for all Kubernetes cluster components. RKE has added a `rke cert` command to help manage these certificates.
+Certificates are an important part of Kubernetes clusters and are used for all Kubernetes cluster components. RKE has a `rke cert` command to help work with certificates.
 
 * [Ability to generate certificate sign requests for the Kubernetes components](#generating-certificate-signing-requests-csrs-and-keys)
-* [Rotate Auto-Generated Cluster Certificates](#certifiate-rotation)
+* [Rotate Auto-Generated Certificates](#certificate-rotation)
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
-If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to [generate a set of Certificate Signing Requests (CSRs) and keys]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/#generating-certificate-signing-requests-csrs-and-keys). Using the `rke cert generate-csr` command, you will be able to generate the CRSs and keys.
+If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to [generate a set of Certificate Signing Requests (CSRs) and keys]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/#generating-certificate-signing-requests-csrs-and-keys).
 
-You can use the CSRs and keys to sign the certificates by a real CA. After the certificates are signed, they can be used by RKE to use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/).
+You can use the CSRs and keys to sign the certificates by a real CA. After the certificates are signed, these custom certificates can be used by RKE to as [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/) for the Kubernetes cluster.
 
 ## Certificate Rotation
 
-By default, Kubernetes clusters require certificates and RKE will automatically generate certificates for the clusters. When generating certificates, the cluster certificates will automatically expire after 1 year and the CA certificate will expire after 10 years. Before your certificates expire, Rancher recommends rotating the cluster certificates.
+By default, Kubernetes clusters require certificates and RKE will automatically generate certificates for the clusters. When generating certificates, the certificates in each service are set to expire after 1 year and the CA certificate expires after 10 years. Rotating these certificates are important before the certificates expire as well as if a certificate is compromised.
 
-After the certificates are rotated, the Kubernetes components are automatically restarted. Certificates can be rotated for the following Kubernetes cluster components:
+After the certificates are rotated, the Kubernetes components are automatically restarted. Certificates can be rotated for the following services:
 
 - etcd
 - kubelet
@@ -29,33 +29,17 @@ After the certificates are rotated, the Kubernetes components are automatically 
 - kube-scheduler
 - kube-controller-manager
 
-RKE has the ability to rotate these auto-generated certificates with some simple commands:
+RKE has the ability to rotate the auto-generated certificates with some simple commands:
 
-* Rotating Cluster Certificates for All Kubernetes Cluster Components
-* Rotating Cluster Certificates for a Single Kubernetes Component
-* Rotating the CA Certificate and Cluster Certificates
+* Rotating all service certificates while using the same CA
+* Rotating a certificate on an individual service while using the same CA
+* Rotating the CA and all service certificates
 
 Whenever you're trying to rotate certificates, the `cluster.yml` that was used to deploy the Kubernetes cluster is required. You can reference a different location for this file by using the `--config` option when running `rke cert rotate`.
 
+### Rotating all Service Certificates while using the same CA
 
-
-```
-$ rke cert rotate --help
-NAME:
-   rke cert rotate - Rotate RKE cluster certificates
-
-USAGE:
-   rke cert rotate [command options] [arguments...]
-
-OPTIONS:
-   --config value   Specify an alternate cluster YAML file (default: "cluster.yml") [$RKE_CONFIG]
-   --service value  Specify a k8s service to rotate certs, (allowed values: kube-apiserver, kube-controller-manager, kube-scheduler, kubelet, kube-proxy, etcd)
-   --rotate-ca      Rotate all certificates including CA certs
-```
-
-### Rotating Cluster Certificates for All Components
-
-To rotate the cluster certificates for all the Kubernetes cluster components, run the following command, i.e. `rke cert rotate`. After all the cluster certificates are rotated, the Kubernetes components will automatically be restarted.
+To rotate the service certificates for all the Kubernetes services, run the following command, i.e. `rke cert rotate`. After all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
 
 ```
 $ rke cert rotate
@@ -77,11 +61,11 @@ INFO[0002] Rebuilding Kubernetes cluster with rotated certificates
 INFO[0050] [worker] Successfully restarted Worker Plane..
 ```
 
-### Rotating Cluster Certificates for a Specific Component
+### Rotating a Certificate on an Individual Service while using the same CA
 
-To rotate certificates for individual Kubernetes components, use the `--service` option when rotating certificates to specify which component. As always, the specified Kubernetes component is automatically restarted after the certificate is rotated.
+To rotate the certificate for an individual Kubernetes service, use the `--service` option when rotating certificates to specify the service. After the specified Kubernetes service has had its certificate rotated, it is automatically restarted to start using the new certificate.
 
-Example of rotating the certificate for only the `kubelet` component.
+Example of rotating the certificate for only the `kubelet`:
 
 ```
 $ rke cert rotate --service kubelet
@@ -94,10 +78,9 @@ INFO[0000] Rebuilding Kubernetes cluster with rotated certificates
 INFO[0033] [worker] Successfully restarted Worker Plane..
 ```
 
-### Rotating CA Certificate and all Cluster Certificates
+### Rotating the CA and all service certificates
 
-If the CA certificate needs to be rotated, you are required to rotate all the cluster certificates for all components as they need to be signed with the newly rotated CA certificate. To include rotating the CA certificate with the cluster certificates, add the `--rotate-ca` option. As always, all Kubernetes components are automatically restarted after the certificates are rotated.
-
+If the CA needs to be rotated, you are required to rotate all the services certificates as they need to be signed with the newly rotated CA. To include rotating the CA with the service certificates, add the `--rotate-ca` option. After the the CA and all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
 
 ```
 $ rke cert rotate --rotate-ca      

@@ -113,7 +113,7 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 _Available as of v0.2.0_
 
-By default, RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage the auto-generated certificates]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/).
+By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/#certifcate-rotation).
 
 ### Kubernetes Cluster State
 
