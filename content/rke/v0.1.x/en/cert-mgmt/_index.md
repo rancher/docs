@@ -18,7 +18,7 @@ You can use the CSRs and keys to sign the certificates by a real CA. After the c
 
 ## Certificate Rotation
 
-By default, Kubernetes clusters require certificates and RKE will automatically generate certificates for the clusters. When generating certificates, the certificates in each service are set to expire after 1 year and the CA certificate expires after 10 years. Rotating these certificates are important before the certificates expire as well as if a certificate is compromised.
+By default, Kubernetes clusters require certificates and RKE will automatically generate certificates for the clusters. Rotating these certificates are important before the certificates expire as well as if a certificate is compromised.
 
 After the certificates are rotated, the Kubernetes components are automatically restarted. Certificates can be rotated for the following services:
 
@@ -107,5 +107,3 @@ INFO[0001] [certificates] Generating etcd-zzzzz certificate and key
 INFO[0001] Successfully Deployed state file at [./cluster.rkestate]
 INFO[0001] Rebuilding Kubernetes cluster with rotated certificates
 ```
-
-
