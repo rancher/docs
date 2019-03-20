@@ -336,7 +336,7 @@ This alert type monitors for the status of a specific pod.
     - **Warning**: Normal urgency
     - **Info**: Least urgent
 
-    Select the urgency level of the alert based on pod state and expandability. For example, a stateless pod that's not can be easily replaced, so select **Info**. However, if an important pod isn't scheduled, it may affect operations, so choose **Critical**.
+    Select the urgency level of the alert based on pod state. For example, select **Info** for Job pod which stop running after job finished. However, if an important pod isn't scheduled, it may affect operations, so choose **Critical**.
 
 1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
 
