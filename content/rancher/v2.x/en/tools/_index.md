@@ -52,6 +52,7 @@ _Notifiers_ are services that inform you of alert events. You can configure noti
 - Email: Choose email recipients for alert notifications.
 - PagerDuty: Route notifications to staff by phone, SMS, or personal email.
 - Webhooks: Update a webpage with alert notifications.
+- WeChat: Send alert notifications to your Enterprise WeChat contacts.
 
 For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers).
 
