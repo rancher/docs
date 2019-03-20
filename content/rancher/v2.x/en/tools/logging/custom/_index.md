@@ -1,23 +1,24 @@
 ---
-title: Elasticsearch
-weight: 200
+title: Custom
+weight: 700
 ---
 
-If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs for your cluster or container.
+You can configure Rancher to send Kubernetes logs to Elasticsearch, Splunk, Kafka, Syslog or Fluentd.
 
-## Configuring Elasticsearch Logging
+## Configuring Advance Mode
 
-You can configure Rancher to send logs from your cluster or project to your instance of Elasticsearch.
+You can configure Rancher to send cluster or project logs to one of the logging targets in advance mode by inputting raw fluentd configuration.
 
->**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
+>**Prerequisite:** You must have a one of the logging targets of Elasticsearch, Splunk, Kafka, Syslog and Fluentd server configured.
 
-1. Browse to the cluster or project that you want to log.
+1. Browse to the cluster or project.
 {{% accordion id="cluster" label="To Configure Cluster Logging:" %}}
 If you're a [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) who works in operations or security, configure cluster logging.
 
 1. From the **Global** view, open the cluster that you want to configure logging for.
 
 1. From the main menu, select **Tools > Logging**.
+
 {{% /accordion %}}
 {{% accordion id="project" label="To Configure Project Logging:" %}}
 If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
@@ -25,19 +26,41 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 1. From the **Global** view, open the project that you want to configure logging for.
 
 1. From the main menu, select **Tools > Logging**. 
+
 {{% /accordion %}}
 
-1. Select **Elasticsearch**.
+1. Select one of the logging targets, giving example for **Elasticsearch**.
 
-1. Complete the **Elasticsearch Configuration** form.
+1. Click the  **Edit as File**.
 
-    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch instance. You can copy this information from the dashboard of your Elasticsearch deployment. Elasticsearch usually uses port `9200` for HTTP and `9243` for HTTPS.
+    1. Input the Fluentd output configuration.
 
-    1. If you are using [X-Pack Security](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html), enter your Elasticsearch **Username** and **Password** for authentication.
+    1. Giving an example for **Elasticsearch** target.
+    
+        ```sh
+        @type elasticsearch
+        include_tag_key  true
+        user elasticsearch
+        password PleaseChaneMe
+        hosts https://rancher.com:9200    
+        logstash_format true
+        logstash_prefix elastic-index
+        logstash_dateformat  %Y-%m-%d
+        type_name  container_log    
+        
+        ```
 
-    1. Enter an [Index Pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html).
+    1. For Elasticsearch configuration, see [Elasticsearch Documentation](https://github.com/uken/fluent-plugin-elasticsearch) for details.
 
-1. If your instance of Elasticsearch uses SSL, complete the **SSL Configuration** form. 
+    1. For Splunk configuration, see [Splunk Documentation](https://github.com/fluent/fluent-plugin-splunk) for details.
+
+    1. For Kafka configuration, see [Kafka Documentation](https://github.com/fluent/fluent-plugin-kafka) for details.
+
+    1. For Syslog configuration, see [Syslog Documentation](https://github.com/dlackty/fluent-plugin-remote_syslog) for details.
+
+    1. For Fluentd configuration, see [Fluentd Documentation](https://docs.fluentd.org/v1.0/articles/out_forward) for details.
+
+1. If your logging server is using TLS, you need to complete the **SSL Configuration** form.
 
     1. Enter the private key and client certificate. You can either copy and paste them or upload them by **Read from a file**.
 
@@ -50,22 +73,16 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
     
     1. If you are using a self-signed certificate, you need to provide the **CA Certificate PEM** as well.
 
-    1. Enter your private key password.
-
-    1. Enter your ssl version. The default version is tlsv1_2.
-
-    1. Select the **Enabled - Input trusted server certificate** option and enter your **Trusted Server Certificate Chain** if you are using a certificate from a certificate authority.
-
 1. Complete the **Additional Logging Configuration** form.
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
-
+    
     1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes data to the logging server. Intervals are measured in seconds.
 
     1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
 
-1. Click **Test**. Rancher sends a test log to Elasticsearch.
+1. Click **Dry Run**. Rancher calls the fluentd dry run command to validate the configuration.
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send cluster and container logs to Elasticsearch. Log into Elasticsearch or Kibana to view your cluster/project logs.
+**Result:** Rancher is now configured to send logs to your configured server. View your server to see logs for your cluster and containers.
