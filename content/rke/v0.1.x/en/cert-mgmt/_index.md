@@ -101,3 +101,9 @@ INFO[0001] [certificates] Generating etcd-zzzzz certificate and key
 INFO[0001] Successfully Deployed state file at [./cluster.rkestate]
 INFO[0001] Rebuilding Kubernetes cluster with rotated certificates
 ```
+
+Rotating the CA certificate will also result in restarting some system pods to use the new CA certificate, this includes:
+
+- Networking pods (canal, calico, flannel, and weave).
+- Ingress Controller pods.
+- KubeDNS pods.
