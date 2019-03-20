@@ -65,7 +65,7 @@ For more information, see the [Canal GitHub Page](https://github.com/projectcali
 
 Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan).
 
-Encapsulated traffic is unencrypted by default. Threfore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers.
+Encapsulated traffic is unencrypted by default. Therefore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers.
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
