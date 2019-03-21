@@ -144,20 +144,20 @@ This reference contains variables that you can use in `questions.yml`.
         - CMS
         questions:
         - variable: persistence.enabled
-        default: "false"
-        description: "Enable persistent volume for WordPress"
-        type: boolean
-        required: true
-        label: WordPress Persistent Volume Enabled
-        show_subquestion_if: true
-        group: "WordPress Settings"
-        subquestions:
-        - variable: persistence.size
+          default: "false"
+          description: "Enable persistent volume for WordPress"
+          type: boolean
+          required: true
+          label: WordPress Persistent Volume Enabled
+          show_subquestion_if: true
+          group: "WordPress Settings"
+          subquestions:
+          - variable: persistence.size
             default: "10Gi"
             description: "WordPress Persistent Volume Size"
             type: string
             label: WordPress Volume Size
-        - variable: persistence.storageClass
+          - variable: persistence.storageClass
             default: ""
             description: "If undefined or null, uses the default StorageClass. Default to null"
             type: storageclass
