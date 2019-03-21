@@ -20,6 +20,15 @@ network:
 
 The images used for network plug-ins are under the [`system_images` directive]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each network plug-in, but these can be overridden by changing the image tag in `system_images`.
 
+## Disabling deployment of a network plug-in
+
+You can disable deploying a network plug-in by specifying `none` to the network `plugin` directive in the cluster configuration.
+
+```yaml
+network:
+    plugin: none
+```
+
 ## Network Plug-in Options
 
 Besides the different images that could be used to deploy network plug-ins, certain network plug-ins support additional options that can be used to customize the network plug-in.
