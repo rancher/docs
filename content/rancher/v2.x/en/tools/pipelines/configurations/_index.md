@@ -39,7 +39,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitHub" %}}
 1. From the context menu, open the project for which you're configuring a pipeline.
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
 1. Follow the directions displayed to setup an OAuth application in GitHub.
 
@@ -57,7 +57,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitLab" %}}
 1. From the context menu, open the project for which you're configuring a pipeline.
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
 1. Follow the directions displayed to setup a GitLab application.
 
@@ -81,9 +81,24 @@ Select your provider's tab below and follow the directions.
 
 <!-- What happens if you change this value while builds are running? -->
 
+#### Integrate with self-signed-certificate version control providers
+
+If you configure your version control providers with a certificate from a custom/internal CA root, the CA root certificates need to be added to Rancher and pipeline build pods.
 
 
+1. Follow instructions to [use custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate) to set up Rancher.
 
+1. Follow instructions to [configure your version control providers](#1-configuring-version-control-providers).
+
+1. From the context menu, open the project for which you're configuring a pipeline.
+
+1. From the main menu, select **Tools > Pipelines**.
+
+1. Click **Edit cacerts**.
+
+1. Paste in the CA root certificates and click **Save cacerts**.
+
+1. Start using pipelines.
 
 ### 2. Configuring Pipeline Stages and Steps
 
@@ -476,12 +491,23 @@ During the process of configuring a pipeline, you can configure advanced options
 - [Configuring Environment Variables](#configuring-environment-variables)
 - [Configuring Pipeline Secrets](#configuring-pipeline-secrets)
 - [Configuring the Executor Quota](#configuring-the-executor-quota)
+- [Configuring the Compute Resources](#configuring-the-compute-resources)
 
 ### Configuring Pipeline Trigger Rules
 
-When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging.
+When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging. When an event type is disabled, pipeline executions will not be triggered by the wehook of that event type.
 
-Trigger rules come in two types:
+To change trigger rules for a repository:
+
+1. From the context menu, open the project for which you’ve configured a pipeline. Then select the Pipelines tab.
+
+1. From the pipeline for which you want to change the trigger rules, select **Ellipsis (...) > Setting**.
+
+1. Click on the check box to enable/disable triggering for **Push**, **Pull Request** or **Tag** event.
+
+1. Click **Save**.
+
+You can also set trigger rules to have fine-grained control of pipeline executions in pipeline configurations. Trigger rules come in two types:
 
 - **Run this when:**
 
@@ -489,16 +515,13 @@ Trigger rules come in two types:
 
 - **Do Not Run this when:**
 
-    If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
+    This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
+ 
+If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 
 {{% tabs %}}
 {{% tab "Pipeline Trigger" %}}
-
-You can configure trigger rules for the entire pipeline in two different contexts:
-
-{{% accordion id="pipeline-creation" label="During Initial Pipeline Configuration" %}}
-
 
 1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
 
@@ -511,22 +534,6 @@ You can configure trigger rules for the entire pipeline in two different context
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
     1. **Optional:** Add more branches that trigger a build.  
-{{% /accordion %}}
-
-{{% accordion id="pipeline-settings" label="While Editing Pipeline Settings" %}}
-
-After you've configured a pipeline, you can go back and choose the events that trigger a pipeline execution.
-
->**Note:** This option is not available for example repositories.
-
-1. From the context menu, open the project for which you've configured a pipeline. Then select the **Pipelines** tab.
-
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Setting**.
-
-1. Select (or clear) the events that you want to trigger a pipeline execution.
-
-1. Click **Save**.   
-{{% /accordion %}}
 
 {{% /tab %}}
 {{% tab "Stage Trigger" %}}
@@ -573,7 +580,7 @@ After you've configured a pipeline, you can go back and choose the events that t
 
 1. Click **Save**.
 {{% /tab %}}
-{{% tab "Do Not Run YAML" %}}
+{{% tab "By YAML" %}}
 ```yaml
 # example
 stages:
@@ -775,6 +782,57 @@ The _executor quota_ decides how many builds can run simultaneously in the proje
 
 1. From the context menu, open the project for which you've configured a pipeline.
 
-1. From the main menu, select **Resources > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**.
 
 1. From `The maximum number of pipeline executors` increment the **Scale** up or down to change the quota. A value of `0` or less removes the quota limit.
+
+### Configuring the Compute Resources
+
+When a pipeline execution is triggered, a build pod is dynamically provisioned to run your CI tasks. Under the hood, A build pod consists of one Jenkins agent container and one container for each pipeline step. You can [manage compute resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/) for every containers in the pod.
+
+To configure compute resources for Jenkins agent containers:
+
+1. From the context menu, open the project for which you've configured a pipeline.
+
+1. From the main menu, select **Tools > Pipelines**.
+
+1. From `Configure the resource limit and reservation for executors` edit the **Memory Reservation**, **Memory Limit**, **CPU Reservation** or **CPU Limit**, then click **Update Limit and Reservation**.
+
+To configure compute resources for pipeline-step containers:
+{{% tabs %}}
+{{% tab "By YAML" %}}
+
+You can configure compute resources for pipeline-step containers in the `.rancher-pipeline.yml` file.
+
+Under a `step` section, you will provide the following information:
+
+* CpuRequest: CPU request for the container of a pipeline step.
+* CpuLimit: CPU limit for the container of a pipeline step.
+* MemoryRequest: Memory request for the container of a pipeline step.
+* MemoryLimit: Memory limit for the container of a pipeline step.
+
+```yaml
+# example
+stages:
+  - name: Build something
+    steps:
+    - runScriptConfig:
+        image: busybox
+        shellScript: ls
+      cpuRequest: 100m
+      cpuLimit: 1
+      memoryRequest:100Mi
+      memoryLimit: 1Gi
+    - publishImageConfig:
+        dockerfilePath: ./Dockerfile
+        buildContext: .
+        tag: repo/app:v1
+      cpuRequest: 100m
+      cpuLimit: 1
+      memoryRequest:100Mi
+      memoryLimit: 1Gi
+```
+
+>**Note:** Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
+{{% /tab %}}
+{{% /tabs %}}
