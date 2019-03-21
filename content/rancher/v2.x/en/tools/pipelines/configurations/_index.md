@@ -26,7 +26,6 @@ Initial configuration of a pipeline in a production environment involves complet
 - [4. Configuring Persistent Data for Pipeline Components](#4-configuring-persistent-data-for-pipeline-components)
 - [Advanced Configuration](#advanced-configuration)
 
-
 <!-- /TOC -->
 
 ### 1. Configuring Version Control Providers
@@ -41,9 +40,7 @@ Select your provider's tab below and follow the directions.
 
 1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
-1. Follow the directions displayed to setup an OAuth application in GitHub.
-
-    ![GitHub Pipeline Instructions]({{< baseurl >}}/img/rancher/github-pipeline.png)
+1. Follow the directions displayed to **Setup a Github application**. Rancher redirects you to Github to setup an OAuth App in Github.
 
 1. From GitHub, copy the **Client ID** and **Client Secret**. Paste them into Rancher.
 
@@ -51,25 +48,22 @@ Select your provider's tab below and follow the directions.
 
 1. Click **Authenticate**.
 
-1. Enable the repository for which you want to run a pipeline. Then click **Done**.  
-
 {{% /tab %}}
 {{% tab "GitLab" %}}
+
+_Available as of v2.1.0_
+
 1. From the context menu, open the project for which you're configuring a pipeline.
 
 1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
-1. Follow the directions displayed to setup a GitLab application.
-
-    ![GitLab Pipeline Instructions]({{< baseurl >}}/img/rancher/gitlab-pipeline.png)
+1. Follow the directions displayed to **Setup a GitLab application**. Rancher redirects you to GitLab.
 
 1. From GitLab, copy the **Application ID** and **Secret**. Paste them into Rancher.
 
 1. If you're using GitLab for enterprise setup, select **Use a private gitlab enterprise installation**. Enter the host address of your GitLab installation.
 
 1. Click **Authenticate**.
-
-1. Enable the repository for which you want to run a pipeline. Then click **Done**.  
 
 >**Note:**
 > 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
@@ -83,17 +77,13 @@ _Available as of v2.2.0_
 
 1. From the main menu, select **Tools > Pipelines**.
 
-1. Choose the **Use public Bitbucket Cloud** option(the default).
+1. Choose the **Use public Bitbucket Cloud** option.
 
-1. Follow the directions displayed to setup an OAuth consumer in Bitbucket.
-
-    ![Bitbucket Cloud Pipeline Instructions]({{< baseurl >}}/img/rancher/bitbucketcloud-pipeline.png)
+1. Follow the directions displayed to **Setup a Bitbucket Cloud application**. Rancher redirects you to Bitbucket to setup an OAuth consumer in Bitbucket.
 
 1. From Bitbucket, copy the consumer **Key** and **Secret**. Paste them into Rancher.
 
 1. Click **Authenticate**.
-
-1. Enable the repository for which you want to run a pipeline. Then click **Done**.
 
 {{% /tab %}}
 {{% tab "Bitbucket Server" %}}
@@ -104,17 +94,13 @@ _Available as of v2.2.0_
 
 1. From the main menu, select **Tools > Pipelines**.
 
-1. Choose the **Use private Bitbucket Server steup** option.
+1. Choose the **Use private Bitbucket Server setup** option.
 
-1. Follow the directions displayed to setup an application link in Bitbucket.
-
-    ![Bitbucket Server Pipeline Instructions]({{< baseurl >}}/img/rancher/bitbucketserver-pipeline.png)
+1. Follow the directions displayed to **Setup a Bitbucket Server application**.
 
 1. Enter the host address of your Bitbucket server installation.
 
 1. Click **Authenticate**.
-
-1. Enable the repository for which you want to run a pipeline. Then click **Done**.
 
 >**Note:**
 > Bitbucket server needs to do SSL verification when sending webhooks to Rancher. Please ensure that Rancher server's certificate is trusted by the Bitbucket server. There are two options:
@@ -125,18 +111,13 @@ _Available as of v2.2.0_
 {{% /tab %}}
 {{% /tabs %}}
 
-**Result:** A pipeline is added to the project.
+**Result:** After the version control provider is authenticated, you will be automatically re-directed to start configuring which repositories that you want start using pipelines against. The list of repositories displayed are based on the user that setup the version control provider. Enable which repositories that you want to start using with a pipeline. Then click **Done**. You will be re-directed to the **Workloads > Pipelines** page and can start configuring your pipeline stages and steps.
 
-<!-- What happens if you change this value while builds are running? -->
+#### Using Self-Signed-Certificate with Version Control Providers
 
-#### Integrate with self-signed-certificate version control providers
+If you want to use a version control provider with a certificate from a custom/internal CA root, the CA root certificates need to be added to the pipeline build pods. After configuring the version control provider, you will need to add the CA root certificate to the setting of the pipeline.
 
-If you configure your version control providers with a certificate from a custom/internal CA root, the CA root certificates need to be added to Rancher and pipeline build pods.
-
-
-1. Follow instructions to [use custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate) to set up Rancher.
-
-1. Follow instructions to [configure your version control providers](#1-configuring-version-control-providers).
+1. Follow the instructions to [configure your version control providers](#1-configuring-version-control-providers).
 
 1. From the context menu, open the project for which you're configuring a pipeline.
 
@@ -146,7 +127,7 @@ If you configure your version control providers with a certificate from a custom
 
 1. Paste in the CA root certificates and click **Save cacerts**.
 
-1. Start using pipelines.
+**Result:** Pipelines can be used and will be able to work with the self-signed-certificate.
 
 ### 2. Configuring Pipeline Stages and Steps
 
@@ -156,11 +137,13 @@ Now that the pipeline is added to your project, you need to configure its automa
 
     >**Note:** When configuring a pipeline, it takes a few moments for Rancher to check for an existing pipeline configuration.
 
-1. Click **Configure pipeline for this branch**.
+1. Select the **branch** you want to configure your pipeline for.
 
-1. Add stages to your pipeline execution by clicking **Add Stage**.
+1. If you are not configuring your pipeline using a yaml file, i.e. `.rancher-pipeline.yml`, click **Configure pipeline for this branch**.
 
-1. Add steps to each stage by clicking **Add a Step**. You can add multiple steps to each stage.
+1. Add stages to your pipeline execution by clicking **Add Stage**. Select names for each stage of your pipeline.
+
+1. After the stages are created, start adding steps to each stage by clicking **Add a Step**. You can add multiple steps to each stage.
 
     >**Note:** As you build out each stage and step, click `Show advanced options` to make [Advanced Configurations](#advanced-configuration), such as rules to trigger or skip pipeline actions, add environment variables, or inject environment variables using secrets. Advanced options are available the pipeline, each stage, and each individual step.
 
@@ -255,7 +238,7 @@ PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
 _Available as of v2.2.0_
 
-The **Publish Catalog Template** step publishes a version of catalog app template(helm chart) to a [git hosted chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. [Pipeline variable substitution]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/) is supported for any file in the chart folder.
+The **Publish Catalog Template** step publishes a version of a catalog app template (i.e. Helm chart) to a [git hosted chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. [Pipeline variable substitution]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/reference/) is supported for any file in the chart folder.
 
 {{% tabs %}}
 
