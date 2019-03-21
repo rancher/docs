@@ -68,6 +68,25 @@ You can deploy Prometheus monitoring for a cluster, navigate to **Tools > Monito
 
 Following Prometheus deployment, two monitoring applications are added to the cluster's `system` project's **Apps** page: `cluster-monitoring` and `monitoring-operator`. You can use the `cluster-monitoring` catalog app to [access the Grafana instance](#grafana-accessing-for-clusters) for the cluster.
 
+When enabling cluster level monitoring, resources should be allocated to the Prometheus pod based on the number of nodes. The control plane and etcd nodes should also be counted in the number. The table below provides a guide for the ammount of resources that should be planned for the Prometheus pod, when enabling cluster monitoring. Total disk space allocation should be approximated by the `rate * retention` period set at the cluster level.
+
+
+Number of Cluster Nodes | CPU(milli CPU) | Memory | Disk 
+------------------------|-----|--------|------
+5 | 500 | 650 MB | ~1 GB/Day
+50| 2000 | 2 GB | ~5 GB/Day
+256| 4000 | 6 GB | ~18 GB/Day
+
+Additionally, the following components will be deployed when cluster monitoring is enabled and consume approximately the following amount of resources.
+
+Pod | CPU (milli CPU) | Memory (MB)
+----|-----------------|------------
+Node Exporter (Per Node) | 100 | 30
+Kube State Cluster Monitor | 100 | 130
+Grafana | 100 | 150
+Prometheus Cluster Monitoring Nginx | 50 | 50
+
+
 ## Configuring Project Monitoring
 
 You can enable project monitoring by opening the project and then selecting **Tools > Monitoring** as shown in the GIF below, which displays enabling the `default` project monitoring.
