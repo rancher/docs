@@ -66,6 +66,9 @@ Set up a notifier so that you can begin configuring and sending alerts.
 1. Click **Test**. If the test is successful, the URL you're configuring as a notifier outputs `Webhook setting validated`.
 {{% /accordion %}}
 {{% accordion id="WeChat" label="WeChat" %}}
+
+_Available as of v2.2.0_
+
 1. Enter a **Name** for the notifier.
 1. In the **Corporation ID** field, enter the "EnterpriseID" of your corporation, you could get it from [Profile page](https://work.weixin.qq.com/wework_admin/frame#profile).
 1. From Enterprise WeChat, create an application in the [Application page](https://work.weixin.qq.com/wework_admin/frame#apps), and then enter the "AgentId" and "Secret" of this application to the **Application Agent ID** and **Application Secret** fields. 
@@ -315,7 +318,9 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 
 1. From the **Global** view, open the project that you want to configure alerts for.
 
-1. From the main menu, select **Tools > Alerts**. Then click **Add Alert Group**.
+1. From the main menu, select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**. 
+
+1. Click **Add Alert Group**.
 
 1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.
 
@@ -441,7 +446,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
 
 #### Managing Project Alerts
 
-To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. You can:
+To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**. You can:
 
 - Deactivate/Reactive alerts
 - Edit alert settings

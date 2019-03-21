@@ -25,7 +25,7 @@ If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-sett
 
 1. From the **Global** view, open the project that you want to configure logging for.
 
-1. From the main menu, select **Tools > Logging**. 
+1. From the main menu, select **Tools > Logging**. In versions prior to v2.2.0, you can choose **Resources > Logging**.
 
 {{% /accordion %}}
 
