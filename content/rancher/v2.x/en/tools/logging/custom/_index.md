@@ -3,6 +3,8 @@ title: Custom
 weight: 700
 ---
 
+_Available as of v2.2.0_
+
 You can configure Rancher to send Kubernetes logs to Elasticsearch, Splunk, Kafka, Syslog or Fluentd.
 
 ## Configuring Advance Mode
