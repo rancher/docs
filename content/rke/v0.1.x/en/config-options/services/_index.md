@@ -13,6 +13,8 @@ Kubernetes uses [etcd](https://github.com/coreos/etcd/blob/master/Documentation/
 
 RKE supports running etcd in a single node mode or in HA cluster mode. It also supports adding and removing etcd nodes to the cluster.
 
+You can enable etcd to [take recurring snapshots]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#recurring-snapshots). These snapshots can be used to [restore etcd]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#etcd-disaster-recovery). 
+
 By default, RKE will deploy a new etcd service, but you can also run Kubernetes with an [external etcd service]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/external-etcd/).
 
 ## Kubernetes API Server

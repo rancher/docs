@@ -58,7 +58,7 @@ The snapshot is saved in `/opt/rke/etcd-snapshots` as well as uploaded to the S3
 
 ## Recurring Snapshots
 
-To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. In the `cluster.yml`, you need to turn enable `snapshot` as part of the `etcd service`. By default, `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`. If you set up the [options for S3](#options-for-the-etcd-snapshot-service), the snapshot will also be uploaded to the S3 backend.
+To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service with [extra configuration options the etcd service](#options-for-the-etcd-snapshot-service). `etcd-snapshot` runs in a service container alongside the `etcd` container. By default, the `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`. If you set up the [options for S3](#options-for-the-etcd-snapshot-service), the snapshot will also be uploaded to the S3 backend.
 
 Prior to v0.2.0, along with the snapshots, RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and pki bundle file are required for the restore process in versions prior to v0.2.0.
 
@@ -250,7 +250,7 @@ nodes:
         - etcd
 ```
 
-After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. The snapshot and `pki.bundle.tar.gz` file are expected to be saved at `/opt/rke/etcd-snapshots`. 
+After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. The snapshot and `pki.bundle.tar.gz` file are expected to be saved at `/opt/rke/etcd-snapshots`.
 As of v0.2.0, if you want to directly retrieve the snapshot from S3, add in the [S3 options](#options-for-rke-etcd-snapshot-restore).
 
 > **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process.
