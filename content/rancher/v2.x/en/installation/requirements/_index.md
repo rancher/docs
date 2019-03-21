@@ -22,7 +22,13 @@ Rancher is supported on the following operating systems and their subsequent non
   * Docker 17.06
 
 If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
-`sudo ros engine switch docker-17.03.2-ce`
+```
+# Look up available versions
+sudo ros engine list
+
+# Switch to a supported version
+sudo ros engine switch docker-18.09.2
+```
 
 [Docker Documentation: Installation Instructions](https://docs.docker.com/)
 

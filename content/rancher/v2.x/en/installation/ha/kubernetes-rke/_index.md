@@ -89,7 +89,7 @@ Check that all the required pods and containers are healthy are ready to continu
 
 * Pods are in `Running` or `Completed` state.
 * `READY` column shows all the containers are running (i.e. `3/3`) for pods with `STATUS` `Running`
-* Pods with `STATUS` `Completed` are run-one Jobs. For these pods `READY` should be `0/1`.
+* Pods with `STATUS` `Completed` are run-once Jobs. For these pods `READY` should be `0/1`.
 
 ```
 kubectl get pods --all-namespaces
