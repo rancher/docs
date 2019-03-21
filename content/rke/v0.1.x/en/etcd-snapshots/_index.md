@@ -17,7 +17,7 @@ RKE can also upload your snapshots to a S3 compatible backend. Additionally, the
 
 The `rke etcd snapshot-save` command will save a snapshot of etcd from each etcd node in the cluster config file. The snapshot is saved in `/opt/rke/etcd-snapshots`. When running the command, an additional container is created to take the snapshot. When the snapshot is completed, the container is automatically removed.
 
-Along with the snapshots, RKE will save a backup the certificates needed for the restore process in the same location with the filename `pki.bundle.tar.gz`. Both files, the snapshot file and this pki bundle are required for the restore process.
+Prior to v0.2.0, along with the individual snapshot, RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and pki bundle file are required for the restore process in versions prior to v0.2.0.
 
 As of v0.2.0, the one-time snapshot can be uploaded to a S3 compatible backend by using the additional options to specify the S3 backend.
 
@@ -60,7 +60,7 @@ The snapshot is saved in `/opt/rke/etcd-snapshots` as well as uploaded to the S3
 
 To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service. `etcd-snapshot` runs in a service container alongside the `etcd` container. In the `cluster.yml`, you need to turn enable `snapshot` as part of the `etcd service`. By default, `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`. If you set up the [options for S3](#options-for-the-etcd-snapshot-service), the snapshot will also be uploaded to the S3 backend.
 
-Proior to v0.2.0, RKE will also save the pki bundle to the same location.
+Prior to v0.2.0, along with the snapshots, RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and pki bundle file are required for the restore process in versions prior to v0.2.0.
 
 When a cluster is launched with the `etcd-snapshot` service enabled, you can view the `etcd-rolling-snapshots` logs to confirm backups are being created automatically.
 
@@ -148,7 +148,7 @@ The snapshot used to restore your etcd cluster can either be stored locally in `
 
 ### Example of Restoring from a Local Snapshot
 
-When restoring etcd from a local snapshot, the snapshot is assumed to be located in `/opt/rke/etcd-snapshots`.
+When restoring etcd from a local snapshot, the snapshot is assumed to be located in `/opt/rke/etcd-snapshots`. In versions prior to v0.2.0, the `pki.bundle.tar.gz` file is also expected to be in the same location. As of v0.2.0, this file is no longer needed as v0.2.0 has changed how the [Kubernetes cluster state is stored]({{< baseurl >}}/rke/v0.1.x/en/installation/#kubernetes-cluster-state).
 
 ```
 $ rke etcd snapshot-restore --config cluster.yml --name mysnapshot
@@ -176,7 +176,7 @@ In this example, the Kubernetes cluster was deployed on two AWS nodes.
 
 ### Back up the `etcd` cluster
 
-Take a local snapshot of the Kubernetes cluster. As of v0.2.0, you can also upload this snapshot directly to a S3 backend with the S3 options.
+Take a local snapshot of the Kubernetes cluster. As of v0.2.0, you can also upload this snapshot directly to a S3 backend with the [S3 options](/#options-for-rke-etcd-snapshot-save).
 
 ```
 $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
@@ -185,20 +185,18 @@ $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 ![etcd snapshot]({{< baseurl >}}/img/rke/rke-etcd-backup.png)
 
 
-### Store the Snapshot Externally
+### Store the Snapshot Externally to S3
 
->**Note:** As of version 0.2.0, this step is no longer required, as RKE can upload and download snapshots automatically from S3 by adding in S3 options when running the `rke etcd snapshot-save` command.
+As of v0.2.0, this step is no longer required, as RKE can upload and download snapshots automatically from S3 by adding in [S3 options](#options-for-rke-etcd-snapshot-save) when running the `rke etcd snapshot-save` command.
 
->**Note:** As of version 0.2.0, the file **pki.bundle.tar.gz** is no longer required.
+After taking the etcd snapshot on `node2`, we recommend saving this backup in a persistence place. One of the options is to save the backup and `pki.bundle.tar.gz` file on a S3 bucket or tape backup.
 
-After taking the etcd snapshot on `node2`, we recommend saving this backup in a persistence place. One of the options is to save the backup on a S3 bucket or tape backup.
-
-Additionally, you need to save the **pki.bundle.tar.gz** file along with the snapshot file.
+> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process.
 
 ```
 # If you're using an AWS host and have the ability to connect to S3
 root@node2:~# s3cmd mb s3://rke-etcd-backup
-root@node2:~# s3cmd /opt/rke/etcdbackup/snapshot.db /opt/rke/etcdbackup/pki.bundle.tar.gz s3://rke-etcd-backup/
+root@node2:~# s3cmd /opt/rke/etcd-snapshots/snapshot.db /opt/rke/etcd-snapshots/pki.bundle.tar.gz s3://rke-etcd-backup/
 ```
 
 ### Place the backup on a new node
@@ -252,7 +250,10 @@ nodes:
         - etcd
 ```
 
-After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. As of v0.2.0, if you wnat to directly retrieve the snapshot from S3, add in the S3 options.
+After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. The snapshot and `pki.bundle.tar.gz` file are expected to be saved at `/opt/rke/etcd-snapshots`. 
+As of v0.2.0, if you want to directly retrieve the snapshot from S3, add in the [S3 options](#options-for-rke-etcd-snapshot-restore).
+
+> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process.
 
 ```
 $ rke etcd snapshot-restore --name snapshot.db --config cluster.yml
