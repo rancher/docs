@@ -33,7 +33,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 ### Add a Global DNS Provider
 
-1. From the **Global View**, select **Tools > Global DNS Providers**
+1. From the **Global View**, select **Tools > Global DNS Providers**.
 1. To add a provider, choose from the available provider options and configure the Global DNS Provider with necessary credentials and an optional domain.
 1. (Optional) Add additional users so they could  use the provider when creating Globel DNS entries as well as manage the Global DNS provider.
 
@@ -62,7 +62,6 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 1. Click **Create**.
 {{% /accordion %}}
 
-
 ### Add a Global DNS Entry
 
 1. From the **Global View**, select **Tools > Global DNS Entries**.
@@ -84,21 +83,31 @@ In order for Global DNS entries to be programmed, you will need to add a specifi
 1. Once the ingress in your [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
 
 ## Editing a Global DNS Provider
-The creator and any users added as members to a Global DNS Provider, have the "owner" access to the provider. Members can edit all fields of a Global DNS Provider including 
 
-1. Root Domain
-1. Access Keys/Credentials
-1. Members
+The [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS provider and any users added as `members` to a Global DNS provider, have _owner_ access to that provider. Any members can edit the following fields:
+
+- Root Domain
+- Access Key & Secret Key
+- Members
+
+1. From the **Global View**, select **Tools > Global DNS Providers**.
+
+1. For the Global DNS provider that you want to edit, click the **Vertical Ellipsis (...) > Edit**.
 
 ## Editing a Global DNS Entry
-The creator and any users added as members to a Global DNS entry, have the "owner" access to the entry. Members can edit all fields of a Global DNS entry including 
 
-1. FQDN
-1. Global DNS Provider 
-1. Target Projects or Multi-Cluster App
-1. DNS TTL
-1. Members
+The [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS entry and any users added as `members` to a Global DNS entry, have _owner_ access to that DNS entry. Any members can edit the following fields:
 
-A member can add only those target projects that he/she has access to. However members can remove target projects that may not have access to.
+- FQDN
+- Global DNS Provider
+- Target Projects or Multi-Cluster App
+- DNS TTL
+- Members
 
-Permission checks are relaxed for removing target projects inorder to support siuations like the member's permissions got changed with respect to the target project and hence he/she wants to delete the target; or the target project could have been deleted and hence the member wants to remove it from the target list.
+Any users who can access the Global DNS entry can **only** add target projects that they have access to. However, users can remove **any** target project as there is no check to confirm if that user has access to the target project.
+
+Permission checks are relaxed for removing target projects in order to support situations where the user's permissions might have changed before they were able to delete the target project. Another use case could be that the target project was removed from the cluster before being removed from a target project of the Global DNS entry.
+
+1. From the **Global View**, select **Tools > Global DNS Entries**.
+
+1. For the Global DNS entry that you want to edit, click the **Vertical Ellipsis (...) > Edit**.
