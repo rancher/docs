@@ -112,21 +112,34 @@ The ability to use the same configuration to deploy the same application across 
 The creator and any users added with the access-type "owner" to a multi-cluster app, can upgrade its Roles. When adding a new Role, we check if the user has that exact role in all current target projects. These checks allow the same relaxations for global admins, cluster owners and project-owners as described in the installation section for the field `Roles`.
 
 - **Adding/Removing target projects**
-The creator and any users added with access-type "owner" to a multi-cluster app, can add or remove its target projects. When adding a new project, we check if the caller of this request has all Roles defined on multi-cluster app, in the new projects they want to add. The roles checks are again relaxed for global admins, cluster-owners and project-owners.
+1. The creator and any users added with access-type "owner" to a multi-cluster app, can add or remove its target projects. When adding a new project, we check if the caller of this request has all Roles defined on multi-cluster app, in the new projects they want to add. The roles checks are again relaxed for global admins, cluster-owners and project-owners.
+2. We do not do these membership checks when removing target projects. This is because the caller's permissions could have with respect to the target project, or the project could have been deleted and hence the caller wants to remove it from targets list. 
 
 
 ## Multi-Cluster Application Management
 
-After deploying a multi-cluster application, one of the benefits of using an application versus individual workloads/resources is the ease of being able to manage many workloads/resources applications. Multi-cluster applications can be cloned, upgraded or rolled back.
+One of the benefits of using a multi-cluster application as opposed to multiple individual applications of the same type, is the ease of manangement.Multi-cluster applications can be cloned, upgraded or rolled back.
 
-### Cloning Multi-Cluster Applications
+1. From the **Global** view, choose **Apps** in the navigation bar.
 
-After a multi-cluster application is deployed, you can easily clone it to use create another multi-cluster application with almost the same configuration. It saves you the work of manually filling in duplicate information.
+2. Choose the multi-cluster application you want to take one of these actions on and click on the vertical ellipsis button on it.
 
-### Upgrading a Multi-Cluster Applications
+3. You will see some actions including **Clone**, **Upgrade** and **Rollback**.
 
-After a multi-cluster application is deployed, you can easily upgrade to a different template version. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrades) can be modified if you have the correct [access type](#members).
+4. Clicking on **Clone** will create another multi-cluster application with the same configuration. This saves you the work of manually filling in duplicate information.
 
-### Rolling Back a Multi-Cluster Application
+5. You can easily upgrade your multi-cluster application by clicking on **Upgrade**. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrade-strategy) can be modified if you have the correct [access type](#members).
 
-If after an upgrade, there are issues for your multi-cluster application for one or more of your [targets](#targets), Rancher has stored up to 10 versions of the multi-cluster application. Rolling back a multi-cluster application reverts the application for **all** target clusters and projects, not just the targets(s) affected by the upgrade issue.
+6. If after an upgrade, there are issues for your multi-cluster application for one or more of your [targets](#targets), Rancher has stored up to 10 versions of the multi-cluster application. You can click on **Rollback** to choose to revert your application to a previous version Rolling back a multi-cluster application reverts the application for **all** target clusters and projects, not just the targets(s) affected by the upgrade issue.
+
+## Deleting a Multi-Cluster Application
+
+1. From the **Global** view, choose **Apps** in the navigation bar.
+
+2. Choose the multi-cluster application you want to delete and click on the vertical ellipsis button on it.
+
+3. You can see **Delete** as one of the actions shown. 
+
+4. Click on it to delete this multi-cluster application. It will delete all the applications it created under its target projects, and all the namespaces created for those applications.
+
+> **NOTE** The applications in projects created for the multi-cluster applications cannot be deleted individually. They will only get deleted once the multi-cluster application is deleted.
