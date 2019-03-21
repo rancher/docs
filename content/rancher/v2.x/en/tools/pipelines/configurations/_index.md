@@ -31,11 +31,7 @@ Initial configuration of a pipeline in a production environment involves complet
 
 ### 1. Configuring Version Control Providers
 
-<<<<<<< HEAD
 Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub, GitLab and Bitbucket.
-=======
-Begin configuration of your pipeline by enabling authentication with your version control provider. Rancher Pipeline supports integration with GitHub and GitLab.
->>>>>>> fixes for pipeline notifications
 
 Select your provider's tab below and follow the directions.
 
@@ -359,7 +355,6 @@ stages:
 
 _Available as of v2.2.0_
 
-<<<<<<< HEAD
 The **Deploy Catalog App** step deploys a catalog app in the project. It will install a new app if it is not present, or upgrade an existing one.
 
 {{% tabs %}}
@@ -413,10 +408,7 @@ stages:
 {{% /tabs %}}
 
 {{% /accordion %}}
-1. When you're finished adding stages and steps, click **Done.** 
-=======
 1. When you're finished adding stages and steps, click **Done.**
->>>>>>> fixes for pipeline notifications
 
 ### 3. Running the Pipeline
 
@@ -571,14 +563,10 @@ You can also set trigger rules to have fine-grained control of pipeline executio
 
 - **Do Not Run this when:**
 
-<<<<<<< HEAD
-    This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
- 
-If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
-=======
-    If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
->>>>>>> fixes for pipeline notifications
 
+    This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
+
+If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 {{% tabs %}}
 {{% tab "Pipeline Trigger" %}}
@@ -594,8 +582,7 @@ If all conditions evaluate to true, then the pipeline/stage/step is executed. Ot
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
     1. **Optional:** Add more branches that trigger a build.  
-<<<<<<< HEAD
-=======
+
 {{% /accordion %}}
 
 {{% accordion id="pipeline-settings" label="While Editing Pipeline Settings" %}}
@@ -612,7 +599,6 @@ After you've configured a pipeline, you can go back and choose the events that t
 
 1. Click **Save**.   
 {{% /accordion %}}
->>>>>>> fixes for pipeline notifications
 
 {{% /tab %}}
 {{% tab "Stage Trigger" %}}
