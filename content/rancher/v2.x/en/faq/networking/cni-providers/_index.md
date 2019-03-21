@@ -150,4 +150,4 @@ As of Rancher v2.0.7, Canal is the default CNI network provider. We recommend it
 
 ### How can I configure a CNI network provider?
 
-Please see [Cluster Options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/) on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a [Config File](/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the options for [Network Plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/).
+Please see [Cluster Options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/) on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the options for [Network Plug-ins]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/).
