@@ -221,9 +221,9 @@ Before restoring etcd and running `rke up`, we need to retrieve the backup saved
 # Make a Directory
 root@node3:~# mkdir -p /opt/rke/etcdbackup
 # Get the Backup from S3
-root@node3:~# s3cmd get s3://rke-etcd-backup/snapshot.db /opt/rke/etcdbackup/snapshot.db
+root@node3:~# s3cmd get s3://rke-etcd-backup/snapshot.db /opt/rke/etcd-snapshots/snapshot.db
 # Get the pki bundle from S3, only needed prior to v0.2.0
-root@node3:~# s3cmd get s3://rke-etcd-backup/pki.bundle.tar.gz /opt/rke/etcdbackup/pki.bundle.tar.gz
+root@node3:~# s3cmd get s3://rke-etcd-backup/pki.bundle.tar.gz /opt/rke/etcd-snapshots/pki.bundle.tar.gz
 ```
 
 ###  Restore `etcd` on the new node from the backup
