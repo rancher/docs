@@ -26,7 +26,7 @@ The Rancher authentication proxy integrates with the following external authenti
 | [Microsoft AD FS]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/) | v2.0.7           |
 | [PingIdentity]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/ping-federate/)     | v2.0.7           |
 | [Keycloak]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/keycloak/)              | v2.1.0           |
-
+| [Okta]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/okta/)                      | v2.2.0           |
 <br/>
 However, Rancher also provides local authentication.
 

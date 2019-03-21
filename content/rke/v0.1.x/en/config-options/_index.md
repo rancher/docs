@@ -54,25 +54,40 @@ ignore_docker_version: true
 
 ### Kubernetes Version
 
-You can select which version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions. If a version is defined in `kubernetes_version` and is not found in this list, the default version is used. If you want to use a different version than listed below, please use the [system images](#rke-system-images) option. 
+By default, RKE is defaulted to launch with a specific Kubernetes version. You can also select a different version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions.
 
-The supported Kubernetes versions for RKE v0.1.15 are:
-
- Kubernetes version|
- -----------------|
- `v1.12.4-rancher1-1`|
- `v1.11.6-rancher1-1` (default)|
- `v1.10.12-rancher1-1`|
-
-<br>
-
-You can define the Kubernetes version as follows:
+You can set the Kubernetes version as follows:
 
 ```yaml
 kubernetes_version: "v1.11.6-rancher1-1"
 ```
 
-In case both `kubernetes_version` and [system images](#rke-system-images) are defined, the system images configuration will take precedence over `kubernetes_version`.
+In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) are defined, the system images configuration will take precedence over `kubernetes_version`.
+
+#### Listing Supported Kubernetes Versions
+
+Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
+
+You can also list the supported versions and system images of specific version of RKE release with a quick command. 
+
+```
+$ rke config --system-images --all
+
+INFO[0000] Generating images list for version [v1.13.4-rancher1-2]:
+.......
+INFO[0000] Generating images list for version [v1.11.8-rancher1-1]:
+.......
+INFO[0000] Generating images list for version [v1.12.6-rancher1-2]:
+.......
+```
+
+#### Using an unsupported Kubernetes version 
+
+As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out. 
+
+Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used. 
+
+If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/) option.
 
 ### Cluster Level SSH Key Path
 
@@ -109,5 +124,3 @@ $ echo $SSH_AUTH_SOCK
 You can define [add-ons]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.
 
 ```yaml
-addon_job_timeout: 30
-```

@@ -139,3 +139,14 @@ Pod kube-dns-667c7cb9dd-z4dsf on host x.x.x.x
 nameserver 1.1.1.1
 nameserver 8.8.4.4
 ```
+
+If you want to check the kube-dns configuration in your cluster (for example, to check if there are different upstream nameservers configured), you can run the following command to list the kube-dns configuration:
+
+```
+kubectl -n kube-system get configmap kube-dns -o go-template='{{range $key, $value := .data}}{{ $key }}{{":"}}{{ $value }}{{"\n"}}{{end}}'
+```
+
+Example output:
+```
+upstreamNameservers:["1.1.1.1"]
+```

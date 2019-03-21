@@ -24,6 +24,6 @@ The following CLI tools are required for this install. Make sure these tools are
 - [3. Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
 - [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
 - [5. Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)
-
+- [6. Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/)
 
 ### [Next: Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/) 

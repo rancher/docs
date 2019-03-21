@@ -71,7 +71,7 @@ In the image below, the `web-deployment.yml` and `web-service.yml` files [create
 
 Just as you can create an alias for Rancher v1.6 services, you can do the same for Rancher v2.x workloads. Similarly, you can also create DNS records pointing to services running externally, using either their hostname or IP address. These DNS records are Kubernetes service objects.
 
-Using the v2.x UI, use the context menu to navigate to the `<CLUSTER> > <PROJECT>` view and choose the **Service Discovery** tab. All existing DNS records created for your workloads are listed under each namespace.
+Using the v2.x UI, use the context menu to navigate to the `Project` view and choose the **Service Discovery** tab. All existing DNS records created for your workloads are listed under each namespace.
 
 Click **Add Record** to create new DNS records. Then view the various options supported to link to external services or to create aliases for another workload, DNS record, or set of pods.
 

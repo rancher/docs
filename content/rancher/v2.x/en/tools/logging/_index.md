@@ -13,6 +13,7 @@ Rancher supports the following services:
 - [Splunk]({{< baseurl >}}/rancher/v2.x/en/tools/logging/splunk)
 - [Kafka]({{< baseurl >}}/rancher/v2.x/en/tools/logging/kafka)
 - [Syslog]({{< baseurl >}}/rancher/v2.x/en/tools/logging/syslog) 
+- [Fluentd]({{< baseurl >}}/rancher/v2.x/en/tools/logging/fluentd) 
 
 ## Requirements
 
@@ -49,7 +50,7 @@ You can configure logging at either cluster or project level.
 
 - If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
 
-    Project logging writes logs for every pod in the project (`/var/log/containers`).
+    Project logging writes logs for every pod in the project.
 
 After collection, all logs are stored by your logging service. Log into your service to view them.
 

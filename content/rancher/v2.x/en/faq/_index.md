@@ -92,7 +92,7 @@ At this time, we only support Docker.
 
 #### Will Rancher v2.x support Calico, Contiv, Contrail, Flannel, Weave net, etc., for embedded and imported Kubernetes?
 
-We will initially only support Calico, Canal, and Flannel.
+We will provide the ability to use Calico, Canal, and Flannel, but always refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/) on what is officially supported.
 
 #### Are you planning on supporting Traefik for existing setups?
 

@@ -13,6 +13,8 @@ Kubernetes uses [etcd](https://github.com/coreos/etcd/blob/master/Documentation/
 
 RKE supports running etcd in a single node mode or in HA cluster mode. It also supports adding and removing etcd nodes to the cluster.
 
+You can enable etcd to [take recurring snapshots]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#recurring-snapshots). These snapshots can be used to [restore etcd]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#etcd-disaster-recovery). 
+
 By default, RKE will deploy a new etcd service, but you can also run Kubernetes with an [external etcd service]({{< baseurl >}}/rke/v0.1.x/en/config-options/services/external-etcd/).
 
 ## Kubernetes API Server
@@ -28,8 +30,11 @@ services:
     # This must match the service_cluster_ip_range in kube-controller
     service_cluster_ip_range: 10.43.0.0/16
     # Expose a different port range for NodePort services
-    service_node_port_range: 30000-32767    
+    service_node_port_range: 30000-32767
     pod_security_policy: false
+    # Enable AlwaysPullImages Admission controller plugin
+    # Available as of v0.2.0
+    always_pull_images: false
 ```
 
 ### Kubernetes API Server Options
@@ -39,8 +44,8 @@ RKE supports the following options for the `kube-api` service :
 - **Service Cluster IP Range** (`service_cluster_ip_range`) - This is the virtual IP address that will be assigned to services created on Kubernetes. By default, the service cluster IP range is `10.43.0.0/16`. If you change this value, then it must also be set with the same value on the Kubernetes Controller Manager (`kube-controller`).
 - **Node Port Range** (`service_node_port_range`) - The port range to be used for Kubernetes services created with the [type](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) `NodePort`. By default, the port range is `30000-32767`.
 - **Pod Security Policy** (`pod_security_policy`) - An option to enable the [Kubernetes Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). By default, we do not enable pod security policies as it is set to `false`.
-
     > **Note:** If you set `pod_security_policy` value to `true`, RKE will configure an  open policy to allow any pods to work on the cluster. You will need to configure your own policies to fully utilize PSP.
+- **Always Pull Images** (`always_pull_images`) - Enable `AlwaysPullImages` Admission controller plugin.  Enabling `AlwaysPullImages` is a security best practice. It forces Kubernetes to validate the image and pull credentials with the remote image registry. Local image layer cache will still be used, but it does add a small bit of overhead when launching containers to pull and compare image hashes. _Note: Available as of v0.2.0_
 
 ## Kubernetes Controller Manager
 
