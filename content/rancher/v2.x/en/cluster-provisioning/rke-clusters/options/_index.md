@@ -43,6 +43,9 @@ From this section you can choose:
     - [Calico](https://docs.projectcalico.org/)
     - [Weave](https://github.com/weaveworks/weave) (_Available as of v2.2.0_)
 
+         When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the [Weave Network Plug-in Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+
+
 <br/>
 
 - If you want to configure a [Kubernetes cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
