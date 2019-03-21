@@ -176,7 +176,7 @@ In this example, the Kubernetes cluster was deployed on two AWS nodes.
 
 ### Back up the `etcd` cluster
 
-Take a local snapshot of the Kubernetes cluster. As of v0.2.0, you can also upload this snapshot directly to a S3 backend with the [S3 options](/#options-for-rke-etcd-snapshot-save).
+Take a local snapshot of the Kubernetes cluster. As of v0.2.0, you can also upload this snapshot directly to a S3 backend with the [S3 options](#options-for-rke-etcd-snapshot-save).
 
 ```
 $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
