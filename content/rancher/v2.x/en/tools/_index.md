@@ -3,17 +3,25 @@ title: Rancher Tools
 weight: 5000
 ---
 
-Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into four categories:
+Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:
 
 <!-- TOC -->
-
+- [Drivers](#drivers)
 - [Alerts](#alerts)
 - [Notifiers](#notifiers)
 - [Logging](#logging)
 - [Pipelines](#pipelines)
 - [Monitoring](#monitoring)
+- [Global DNS](#global-dns)
+- [Snapshots](#Snapshots)
 
 <!-- /TOC -->
+
+## Drivers
+
+Drivers in Rancher allow you to manage which providers can be used to deploy [hosted Kubernetes clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) or [nodes in an infrastructure provider]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to allow Rancher to deploy and manage Kubernetes.
+
+For more information, see [Drivers]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/).
 
 ## Alerts
 
@@ -44,6 +52,7 @@ _Notifiers_ are services that inform you of alert events. You can configure noti
 - Email: Choose email recipients for alert notifications.
 - PagerDuty: Route notifications to staff by phone, SMS, or personal email.
 - Webhooks: Update a webpage with alert notifications.
+- WeChat: Send alert notifications to your Enterprise WeChat contacts.
 
 For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/notifiers-and-alerts/#notifiers).
 
@@ -51,14 +60,11 @@ For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/tools/noti
 
 Rancher can integrate with popular external services used for event streams, telemetry, or search. Rancher can integrate with the following services:
 
-- Embedded Elasticsearch (experimental)
-
-    >**Note:** This option is available only at the cluster level.
-
 - Elasticsearch
 - splunk
 - kafka
 - syslog
+- fluentd
 
 These services collect container log events, which are saved to the `/var/log/containers` directory on each of your nodes. The service collects both standard and error events. You can then log into your services to review the events collected, leveraging each service's unique features.
 
@@ -89,3 +95,21 @@ Using Rancher, you can monitor the state and processes of your cluster nodes, Ku
 In other words, Prometheus let's you view metrics from your different Rancher and Kubernetes objects. Using timestamps, you can query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus. By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.  Multi-tenancy support in terms of cluster and project-only Prometheus instances are also supported.
 
 For more information, see the [Monitoring Documentation]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring).
+
+## Global DNS
+
+_Available as v2.2.0_
+
+When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
+
+For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/tools/globaldns/).
+
+## Snapshots
+
+_Available as v2.2.0_
+
+For [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the etcd database can be backed up by enabling the ability to take recurring snapshots. Clusters can be configured to have these snapshots saved locally on the etcd nodes or saved to an external S3 compatible provider.
+
+When needed, these snapshots can be used to restore existing set of etcd nodes in your [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). If all the etcd nodes are down, a snapshot, that was backed up remotely, can be used  on a new set of etcd nodes.
+
+For more information on how to use this feature, see [Snapshots]({{< baseurl >}}/rancher/v2.x/en/tools/snapshots/).

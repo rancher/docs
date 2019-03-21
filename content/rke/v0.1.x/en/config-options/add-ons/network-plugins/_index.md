@@ -45,8 +45,8 @@ The `canal_flannel_backend_type` option allows you to specify the type of [flann
 network:
     plugin: flannel
     options:
-      flannel_iface: eth1
-      flannel_backend_type: vxlan
+        flannel_iface: eth1
+        flannel_backend_type: vxlan
 ```
 
 #### Flannel Interface
@@ -59,10 +59,10 @@ The `flannel_backend_type` option allows you to specify the type of [flannel bac
 ```yaml
 network:
     plugin: calico
-    calico_cloud_provider: aws
+    options:
+        calico_cloud_provider: aws
 ```
-
-#### Cloud Provider
+#### Calico Cloud Provider
 
 Calico currently only supports 2 cloud providers, AWS or GCE, which can be set using `calico_cloud_provider`.
 
@@ -70,3 +70,16 @@ Calico currently only supports 2 cloud providers, AWS or GCE, which can be set u
 
 - `aws`
 - `gce`
+
+### Weave Network Plug-in Options
+
+```yaml
+network:
+    plugin: weave
+    weave_network_provider:
+        password: "Q]SZOQ5wp@n$oijz"
+```
+
+#### Weave encryption
+
+Weave encryption can be enabled by passing a string password to the network provider config.

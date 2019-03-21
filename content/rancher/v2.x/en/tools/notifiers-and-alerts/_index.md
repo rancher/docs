@@ -21,6 +21,7 @@ Rancher integrates with a variety of popular IT services, including:
 - **Email**: Choose email recipients for alert notifications.
 - **PagerDuty**: Route notifications to staff by phone, SMS, or personal email.
 - **WebHooks**: Update a webpage with alert notifications.
+- **WeChat**: Send alert notifications to your Enterprise WeChat contacts.
 <br/>
 <br/>
 
@@ -28,7 +29,7 @@ Rancher integrates with a variety of popular IT services, including:
 
 Set up a notifier so that you can begin configuring and sending alerts.
 
-1. From the **Global View**, open the cluster that you want to add a notifier to.
+1. From the **Global View**, open the cluster that you want to add a notifier.
 
 1. From the main menu, select **Tools > Notifiers**. Then click **Add Notifier**.
 
@@ -45,7 +46,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 {{% accordion id="email" label="Email" %}}
 1. Enter a **Name** for the notifier.
 1. In the **Sender** field, enter an email address available on your mail server that you want to send the notification.
-1. In the **Host** field, enter the IP address or host name for your SMTP server. Example: `smtp.email.com`
+1. In the **Host** field, enter the IP address or hostname for your SMTP server. Example: `smtp.email.com`
 1. In the **Port** field, enter the port used for email. Typically, TLS uses `587` and SSL uses `465`. If you're using TLS, make sure **Use TLS** is selected.
 1. Enter a **Username** and **Password** that authenticate with the SMTP server. 
 1. In the **Default Recipient** field, enter the email address that you want to receive the notification. 
@@ -63,6 +64,12 @@ Set up a notifier so that you can begin configuring and sending alerts.
 1. Using the app of your choice, create a webhook URL.
 1. Enter your webhook **URL**.
 1. Click **Test**. If the test is successful, the URL you're configuring as a notifier outputs `Webhook setting validated`.
+{{% /accordion %}}
+{{% accordion id="WeChat" label="WeChat" %}}
+1. Enter a **Name** for the notifier.
+1. In the **Corporation ID** field, enter the "EnterpriseID" of your corporation, you could get it from [Profile page](https://work.weixin.qq.com/wework_admin/frame#profile).
+1. From Enterprise WeChat, create an application in the [Application page](https://work.weixin.qq.com/wework_admin/frame#apps), and then enter the "AgentId" and "Secret" of this application to the **Application Agent ID** and **Application Secret** fields. 
+1. Select the **Recipient Type** and then enter a corresponding id to **Default Recipient** field, for example, the party id, tag id or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).
 {{% /accordion %}}
 
 1. Click **Add** to complete adding the notifier.
@@ -99,12 +106,14 @@ At the [cluster level](#adding-cluster-alerts), Rancher monitors components in y
 - The state of your nodes.
 - The system services that manage your Kubernetes cluster.
 - The resource events from specific system services.
+- The Prometheus expression cross the thresholds
 
 At the [project level](#adding-project-alerts), Rancher monitors specific deployments and sends alerts for:
 
 * Deployment availability
 * Workloads status
 * Pod status
+* The Prometheus expression cross the thresholds
 <br/>
 <br/>
 
@@ -116,13 +125,13 @@ As a cluster owner, you can configure Rancher to send you alerts for cluster eve
 
 1. From the **Global** view, open the cluster that you want to configure alerts for.
 
-1. From the main menu, select **Tools > Alerts**. Then click **Add Alert**.
+1. From the main menu, select **Tools > Alerts**. Then click **Add Alert Group**.
 
-1. Enter a **Name** for the alert that describes its purpose.
+1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.
 
 1. Based on the type of alert you want to create, complete one of the instruction subsets below.
 {{% accordion id="system-service" label="System Service Alerts" %}}
-This alert type monitors for events that affect one of the Kubernetes master components, regardless of the node it occurs on.
+This alert type monitor for events that affect one of the Kubernetes master components, regardless of the node it occurs on.
 
 1. Select the **System Services** option, and then select an option from the drop-down.
 
@@ -130,7 +139,7 @@ This alert type monitors for events that affect one of the Kubernetes master com
   - [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd)
   - [scheduler](https://kubernetes.io/docs/concepts/overview/components/#kube-scheduler)
 
-1. Select the urgency level of the of alert. The options are:
+1. Select the urgency level of the alert. The options are:
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
@@ -138,6 +147,13 @@ This alert type monitors for events that affect one of the Kubernetes master com
     <br/>
     <br/>
     Select the urgency level based on the importance of the service and how many nodes fill the role within your cluster. For example, if you're making an alert for the `etcd` service, select **Critical**. If you're making an alert for redundant schedulers, **Warning** is more appropriate.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
 {{% /accordion %}}
 {{% accordion id="resource-event" label="Resource Event Alerts" %}}
 This alert type monitors for specific events that are thrown from a resource type.
@@ -155,7 +171,7 @@ This alert type monitors for specific events that are thrown from a resource typ
   - [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
   - [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 
-1. Select the urgency level of the of alert.
+1. Select the urgency level of the alert.
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
@@ -165,8 +181,13 @@ This alert type monitors for specific events that are thrown from a resource typ
     Select the urgency level of the alert by considering factors such as how often the event occurs or its importance. For example:
 
     - If you set a normal alert for pods, you're likely to receive alerts often, and individual pods usually self-heal, so select an urgency of **Info**.
-    - If you set a warning alert for StatefulSets, its very likely to impact operations, so select an urgency of **Critical**.
+    - If you set a warning alert for StatefulSets, it's very likely to impact operations, so select an urgency of **Critical**.
 
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="node" label="Node Alerts" %}}
@@ -178,16 +199,23 @@ This alert type monitors for events that occur on a specific node.
 
   - **Not Ready**: Sends you an alert when the node is unresponsive.
   - **CPU usage over**: Sends you an alert when the node raises above an entered percentage of its processing allocation.
-  - **Mem usuage over**: Sends you an alert when the node raises above an entered percentage of its memory allocation.
+  - **Mem usage over**: Sends you an alert when the node raises above an entered percentage of its memory allocation.
 
-1. Select the urgency level of the of alert.
+1. Select the urgency level of the alert.
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
     - **Info**: Least urgent
     <br/>
     <br/>
-    Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a node's CPU raises above 60% deems a urgency of **Info**, but a node that is **Not Ready** deems an urgency of **Critical**.
+    Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a node's CPU raises above 60% deems an urgency of **Info**, but a node that is **Not Ready** deems an urgency of **Critical**.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
 {{% /accordion %}}
 {{% accordion id="node-selector" label="Node Selector Alerts" %}}
 This alert type monitors for events that occur on any node on marked with a label. For more information, see the Kubernetes documentation for [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
@@ -198,17 +226,72 @@ This alert type monitors for events that occur on any node on marked with a labe
 
   - **Not Ready**: Sends you an alert when selected nodes are unresponsive.
   - **CPU usage over**: Sends you an alert when selected nodes raise above an entered percentage of processing allocation.
-  - **Mem usuage over**: Sends you an alert when selected nodes raise above an entered percentage of memory allocation.
+  - **Mem usage over**: Sends you an alert when selected nodes raise above an entered percentage of memory allocation.
 
-1. Select the urgency level of the of alert.
+1. Select the urgency level of the alert.
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
     - **Info**: Least urgent
     <br/>
     <br/>
-      Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a node's CPU raises above 60% deems a urgency of **Info**, but a node that is **Not Ready** deems an urgency of **Critical**.
+      Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a node's CPU raises above 60% deems an urgency of **Info**, but a node that is **Not Ready** deems an urgency of **Critical**.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
 {{% /accordion %}}
+{{% accordion id="cluster-expression" label="Metric Expression Alerts" %}}
+This alert type monitors for the overload from Prometheus expression querying, it would be available after you enable monitoring.
+
+1. Input or select an **Expression**, the drop down shows the original metrics from Prometheus, including:
+
+  - [**Node**](https://github.com/prometheus/node_exporter)
+  - [**Container**](https://github.com/google/cadvisor)
+  - [**ETCD**](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/monitoring.md)
+  - [**Kubernetes Components**](https://github.com/kubernetes/metrics)
+  - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
+  - [**Fluentd**](https://docs.fluentd.org/v1.0/articles/monitoring-prometheus) (supported by [Logging]({{< baseurl >}}/rancher/v2.x/en/tools/logging))
+  - [**Cluster Level Grafana**](http://docs.grafana.org/administration/metrics/)
+  - **Cluster Level Prometheus**
+
+1. Choose a **Comparison**.
+
+  - **Equal**: Trigger alert when expression value equal to the threshold.
+  - **Not Equal**: Trigger alert when expression value not equal to the threshold.
+  - **Greater Than**: Trigger alert when expression value greater than to threshold.
+  - **Less Than**: Trigger alert when expression value equal or less than the threshold.
+  - **Greater or Equal**: Trigger alert when expression value greater to equal to the threshold.
+  - **Less or Equal**: Trigger alert when expression value less or equal to the threshold.
+
+1. Input a **Threshold**, for trigger alert when the value of expression cross the threshold.
+
+1. Choose a **Comparison**.
+
+1. Select a duration, for trigger alert when expression value crosses the threshold longer than the configured duration.
+
+1. Select the urgency level of the alert.
+
+    - **Critical**: Most urgent
+    - **Warning**: Normal urgency
+    - **Info**: Least urgent
+    <br/>
+    <br/>
+    Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a node's load expression ```sum(node_load5)  / count(node_cpu_seconds_total{mode="system"})``` raises above 0.6 deems an urgency of **Info**, but 1 deems an urgency of **Critical**.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
+{{% /accordion %}}
+
+1. Continue adding more **Alert Rule** to the group. 
+
 1. Finally, choose the notifiers that send you alerts. 
 
     - You can set up multiple notifiers.
@@ -223,6 +306,8 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 - Deactivate/Reactive alerts
 - Edit alert settings
 - Delete unnecessary alerts
+- Mute firing alerts
+- Unmute muted alerts
 
 #### Adding Project Alerts
 
@@ -230,28 +315,35 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 
 1. From the **Global** view, open the project that you want to configure alerts for.
 
-1. From the main menu, select **Resources > Alerts**. Then click **Add Alert**.
+1. From the main menu, select **Tools > Alerts**. Then click **Add Alert Group**.
 
-1. Enter a **Name** for the alert that describes its purpose.
+1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.
 
 1. Based on the type of alert you want to create, complete one of the instruction subsets below.
 {{% accordion id="pod" label="Pod Alerts" %}}
 This alert type monitors for the status of a specific pod.
 
 1. Select the **Pod** option, and then select a pod from the drop-down.
-1. Select a pod status that triggers and alert:
+1. Select a pod status that triggers an alert:
 
     - **Not Running**
     - **Not Scheduled**
     - **Restarted `<x>` times with the last `<x>` Minutes**
 
-1. Select the urgency level of the of alert. The options are:
+1. Select the urgency level of the alert. The options are:
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
     - **Info**: Least urgent
 
-    Select the urgency level of the alert based on pod state and expendability. For example, an stateless pod that's not can be easily replaced, so select **Info**. However, if an important pod isn't scheduled, it may affect operations, so choose **Critical**.
+    Select the urgency level of the alert based on pod state. For example, select **Info** for Job pod which stop running after job finished. However, if an important pod isn't scheduled, it may affect operations, so choose **Critical**.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
 {{% /accordion %}}
 {{% accordion id="workload" label="Workload Alerts" %}}
 This alert type monitors for the availability of a workload.
@@ -260,13 +352,19 @@ This alert type monitors for the availability of a workload.
 
 1. Choose an availability percentage using the slider. The alert is triggered when the workload's availability on your cluster nodes drops below the set percentage.
 
-1. Select the urgency level of the of alert.
+1. Select the urgency level of the alert.
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
     - **Info**: Least urgent
 
     Select the urgency level of the alert based on the percentage you choose and the importance of the workload.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="workload-selector" label="Workload Selector Alerts" %}}
@@ -274,15 +372,65 @@ This alert type monitors for the availability of all workloads marked with tags 
 
 1. Select the **Workload Selector** option, and then click **Add Selector** to enter the key value pair for a label. If one of the workloads drops below your specifications, an alert is triggered. This label should be applied to one or more of your workloads.
 
-1. Select the urgency level of the of alert.
+1. Select the urgency level of the alert.
 
     - **Critical**: Most urgent
     - **Warning**: Normal urgency
     - **Info**: Least urgent
 
     Select the urgency level of the alert based on the percentage you choose and the importance of the workload.
-    
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
 {{% /accordion %}}
+{{% accordion id="project-expression" label="Metric Expression Alerts" %}}
+This alert type monitors for the overload from Prometheus expression querying, it would be available after you enable monitoring.
+
+1. Input or select an **Expression**, the drop down shows the original metrics from Prometheus, including:
+  
+  - [**Container**](https://github.com/google/cadvisor)
+  - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
+  - [**Customize**]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring/#custom-metrics)
+  - [**Project Level Grafana**](http://docs.grafana.org/administration/metrics/)
+  - **Project Level Prometheus**
+
+1. Choose a comparison.
+
+  - **Equal**: Trigger alert when expression value equal to the threshold.
+  - **Not Equal**: Trigger alert when expression value not equal to the threshold.
+  - **Greater Than**: Trigger alert when expression value greater than to threshold.
+  - **Less Than**: Trigger alert when expression value equal or less than the threshold.
+  - **Greater or Equal**: Trigger alert when expression value greater to equal to the threshold.
+  - **Less or Equal**: Trigger alert when expression value less or equal to the threshold.
+
+1. Input a **Threshold**, for trigger alert when the value of expression cross the threshold.
+
+1. Choose a **Comparison**.
+
+1. Select a **Duration**, for trigger alert when expression value crosses the threshold longer than the configured duration.
+
+1. Select the urgency level of the alert.
+
+    - **Critical**: Most urgent
+    - **Warning**: Normal urgency
+    - **Info**: Least urgent
+    <br/>
+    <br/>
+    Select the urgency level of the alert based on its impact on operations. For example, an alert triggered when a expression for container memory close to the limit raises above 60% deems an urgency of **Info**, but raised about 95% deems an urgency of **Critical**.
+
+1. Configure advanced options. By default, the below options will apply to all alert rules within the group. You can disable these advanced options when configuring a specific rule.
+
+    - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
+    - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
+    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+
+{{% /accordion %}}
+
+1. Continue adding more **Alert Rule** to the group. 
 
 1. Finally, choose the notifiers that send you alerts.
 
@@ -293,8 +441,10 @@ This alert type monitors for the availability of all workloads marked with tags 
 
 #### Managing Project Alerts
 
-To manage project alerts, browse to the project that alerts you want to manage. Then select **Resources > Alerts**. You can:
+To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. You can:
 
 - Deactivate/Reactive alerts
 - Edit alert settings
 - Delete unnecessary alerts
+- Mute firing alerts
+- Unmute muted alerts

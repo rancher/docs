@@ -109,6 +109,12 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 > **Note:** If you have used a different file name from `cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
 
+### Certificates
+
+_Available as of v0.2.0_
+
+By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/#certifcate-rotation).
+
 ### Kubernetes Cluster State
 
 The Kubernetes cluster state, which consists of the cluster configuration file `cluster.yml` and components certificates in Kubernetes cluster, is saved by RKE, but depending on your RKE version, the cluster state is saved differently.
@@ -125,24 +131,11 @@ $ tree -L 1
 
 Prior to v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret.   
 
-### Interacting with your Kubernetes cluster
+## Interacting with your Kubernetes cluster
 
-In order to start interacting with your Kubernetes cluster, you will use a different binary called `kubectl`. You will need to [install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local machine. You can connect to the RKE created cluster by using the `kube_config_cluster.yml` that was generated when you deployed Kubernetes.
+After your cluster is up and running, you can start using the [generated kubeconfig file]({{< baseurl >}}/rke/v0.1.x/en/kubeconfig) to start interacting with your Kubernetes cluster using `kubectl`.
 
-Confirm that kubectl is working by checking the version of your Kubernetes cluster
+After installation, there are several maintenance items that might arise:
 
-```
-kubectl --kubeconfig kube_config_cluster.yml version
-
-Client Version: version.Info{Major:"1", Minor:"10", GitVersion:"v1.10.0", GitCommit:"fc32d2f3698e36b93322a3465f63a14e9f0eaead", GitTreeState:"clean", BuildDate:"2018-03-27T00:13:02Z", GoVersion:"go1.9.4", Compiler:"gc", Platform:"darwin/amd64"}
-Server Version: version.Info{Major:"1", Minor:"8+", GitVersion:"v1.8.9-rancher1", GitCommit:"68595e18f25e24125244e9966b1e5468a98c1cd4", GitTreeState:"clean", BuildDate:"2018-03-13T04:37:53Z", GoVersion:"go1.8.3", Compiler:"gc", Platform:"linux/amd64"}
-```
-
-The client and server version are reported, indicating that you have a local `kubectl` client and are able to request the server version from the newly built cluster. Now, you can issue [any kubectl command](https://kubernetes.io/docs/reference/kubectl/kubectl/) to your cluster, like requesting the nodes that are in the cluster.
-
-```
-kubectl --kubeconfig kube_config_cluster.yml get nodes
-NAME            STATUS    ROLES                      AGE       VERSION
-10.0.0.1         Ready     controlplane,etcd,worker   35m       v1.10.3-rancher1
-```
-
+* [Certificate Management]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/)
+* [Adding and Removing Nodes in the cluster]({{< baseurl >}}/rke/v0.1.x/en/managing-clusters)

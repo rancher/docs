@@ -1,8 +1,9 @@
 ---
 title: Adding Users to Clusters
-weight: 2500
+weight: 100
 aliases:
   - /rancher/v2.x/en/tasks/clusters/adding-managing-cluster-members/
+  - /rancher/v2.x/en/cluster-provisioning/cluster-members/
 ---
 
 If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.

@@ -36,11 +36,13 @@ The following table lists each built-in custom cluster role available in Rancher
 | Custom Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
 | ---------------------------------- | ------------- | --------------------------------- |
 | Manage Cluster Members             | ✓             |                                   |
+| Manage Cluster Catalogs			 | ✓             |
 | Manage Nodes                       | ✓             |                                   |
 | Manage Storage                     | ✓             |                                   |
 | View All Projects                  | ✓             |                                   |
 | Create Project                     | ✓             | ✓                                 |
 | View Cluster Members               | ✓             | ✓                                 |
+| View Cluster Catalogs              | ✓             | ✓                                 |
 | View Nodes                         | ✓             | ✓                                 |
 
 > **Notes:** 
@@ -83,6 +85,7 @@ The following table lists each built-in custom project role available in Rancher
 | Create Namespaces                  | ✓             | ✓                             |               |
 | Manage Config Maps                 | ✓             | ✓                             |               |
 | Manage Ingress                     | ✓             | ✓                             |               |
+| Manage Project Catalogs            | ✓             |                               |               |
 | Manage Secrets                     | ✓             | ✓                             |               |
 | Manage Service Accounts            | ✓             | ✓                             |               |
 | Manage Services                    | ✓             | ✓                             |               |
@@ -91,6 +94,7 @@ The following table lists each built-in custom project role available in Rancher
 | View Config Maps                   | ✓             | ✓                             | ✓             |
 | View Ingress                       | ✓             | ✓                             | ✓             |
 | View Project Members               | ✓             | ✓                             | ✓             |
+| View Project Catalogs              | ✓             | ✓                             | ✓             |
 | View Secrets                       | ✓             | ✓                             | ✓             |
 | View Service Accounts              | ✓             | ✓                             | ✓             |
 | View Services                      | ✓             | ✓                             | ✓             |
