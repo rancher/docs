@@ -393,7 +393,7 @@ You can also set trigger rules to have fine-grained control of pipeline executio
 
     This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
  
-    If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
+If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
 
 
 {{% tabs %}}
