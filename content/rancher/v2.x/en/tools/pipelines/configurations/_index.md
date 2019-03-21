@@ -39,7 +39,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitHub" %}}
 1. From the context menu, open the project for which you're configuring a pipeline. 
 
-1. From the main menu, select **Tools > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
 1. Follow the directions displayed to setup an OAuth application in GitHub.
 
@@ -57,7 +57,7 @@ Select your provider's tab below and follow the directions.
 {{% tab "GitLab" %}}
 1. From the context menu, open the project for which you're configuring a pipeline. 
 
-1. From the main menu, select **Tools > Pipelines**.
+1. From the main menu, select **Tools > Pipelines**. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
 
 1. Follow the directions displayed to setup a GitLab application.
 
