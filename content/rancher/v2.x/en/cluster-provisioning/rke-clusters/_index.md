@@ -15,6 +15,10 @@ RKE launched clusters are separated into two categories:
 
     Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers). The benefit of using a node hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
+    Starting 2.2, you will create [cloud credential]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials) to store credentials for launching nodes in your cloud providers. There are two benefits of using cloud credential - 
+    - Credentials are stored in Kubernetes secrets for security. This also means you no longer have to enter credential every time you edit a node template.
+    - Multiple node templates can share the same cloud credential to create node pools. So when your keys are expired or compromised, you can just update cloud credential in one place and changes will be updated to all the node templates using it. 
+
 - [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
 
     For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
