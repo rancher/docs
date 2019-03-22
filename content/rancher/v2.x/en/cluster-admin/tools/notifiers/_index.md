@@ -3,12 +3,6 @@ title: Notifiers
 weight: 1
 ---
 
-Notifiers and alerts are two features that work together to inform you of events in the Rancher system. Notifiers are objects that you configure to leverage popular IT services, which send you notification of Rancher events. Alerts are rule sets that trigger when those notifications are sent.
-
-Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
-
-Before you can receive [alerts]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/), you must configure one or more notifier in Rancher.
-
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.
 
 Notifiers are configured at the cluster level. This model ensures that only cluster owners need to configure notifiers, leaving project owners to simply configure alerts in the scope of their projects. You don't need to dispense privileges like SMTP server access or cloud account access.
@@ -20,8 +14,6 @@ Rancher integrates with a variety of popular IT services, including:
 - **PagerDuty**: Route notifications to staff by phone, SMS, or personal email.
 - **WebHooks**: Update a webpage with alert notifications.
 - **WeChat**: Send alert notifications to your Enterprise WeChat contacts.
-<br/>
-<br/>
 
 ## Adding Notifiers
 
@@ -81,10 +73,8 @@ _Available as of v2.2.0_
 
 After creating a notifier, set up alerts to receive notifications of Rancher system events.
 
-- [Cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/cluster-alerts).
-- [Project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/project-alerts).
-<br/>
-<br/>
+- [Cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/).
+- [Project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
 
 ## Managing Notifiers
 

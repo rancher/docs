@@ -3,13 +3,13 @@ title: Alerts
 weight: 2
 ---
 
-Notifiers and alerts are two features that work together to inform you of events in the Rancher system. Notifiers are objects that you configure to leverage popular IT services, which send you notification of Rancher events. Alerts are rule sets that trigger when those notifications are sent.
-
-Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
-
 To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts.
 
-Alerts are sets of rules, chosen by you, to monitor for specific events. The scope for alerts can be set at either the cluster or [project]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/) level.
+Alerts are sets of rules, chosen by you, to monitor for specific events.
+
+## Alerts Scope
+
+The scope for alerts can be set at either the cluster level or [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
 
 At the cluster level, Rancher monitors components in your Kubernetes cluster, and sends you alerts related to:
 
@@ -18,12 +18,9 @@ At the cluster level, Rancher monitors components in your Kubernetes cluster, an
 - The resource events from specific system services.
 - The Prometheus expression cross the thresholds
 
-<br/>
-<br/>
-
 ## Adding Cluster Alerts
 
-As a cluster owner, you can configure Rancher to send you alerts for cluster events.
+As a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to send you alerts for cluster events.
 
 >**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
 
@@ -196,7 +193,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
 
 1. Continue adding more **Alert Rule** to the group.
 
-1. Finally, choose the notifiers that send you alerts.
+1. Finally, choose the [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) to send the alerts to.
 
     - You can set up multiple notifiers.
     - You can change notifier recipients on the fly.

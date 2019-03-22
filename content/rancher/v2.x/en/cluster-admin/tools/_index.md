@@ -10,14 +10,34 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 
 <!-- TOC -->
 
-- [Alerts](#alerts)
 - [Notifiers](#notifiers)
+- [Alerts](#alerts)
 - [Logging](#logging)
 - [Monitoring](#monitoring)
 
 <!-- /TOC -->
 
-## Alerts
+## Notifiers and Alerts
+
+Notifiers and alerts are two features that work together to inform you of events in the Rancher system. Notifiers are objects that you configure to leverage popular IT services, which send you notification of Rancher events. Alerts are rule sets that trigger when those notifications are sent.
+
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
+
+### Notifiers
+
+Before you can receive alerts, you must configure one or more notifier in Rancher.
+
+_Notifiers_ are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Rancher integrates with a variety of popular IT services, including:
+
+- Slack: Send alert notifications to your Slack channels.
+- Email: Choose email recipients for alert notifications.
+- PagerDuty: Route notifications to staff by phone, SMS, or personal email.
+- Webhooks: Update a webpage with alert notifications.
+- WeChat: Send alert notifications to your Enterprise WeChat contacts.
+
+For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/).
+
+### Alerts
 
 To keep your clusters and applications healthy and driving your organizational productivity forward, you need stay informed of events occurring in your clusters, both planned and unplanned. To help you stay informed of these events, Rancher allows you to configure alerts.
 
@@ -36,19 +56,6 @@ Additionally, you can set an urgency level for each alert. This urgency appears 
 
 You can configure alerts at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
 
-## Notifiers
-
-Before you can receive alerts, you must configure one or more notifier in Rancher.
-
-_Notifiers_ are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Rancher integrates with a variety of popular IT services, including:
-
-- Slack: Send alert notifications to your Slack channels.
-- Email: Choose email recipients for alert notifications.
-- PagerDuty: Route notifications to staff by phone, SMS, or personal email.
-- Webhooks: Update a webpage with alert notifications.
-- WeChat: Send alert notifications to your Enterprise WeChat contacts.
-
-For more information, see [Notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/).
 
 ## Logging
 
