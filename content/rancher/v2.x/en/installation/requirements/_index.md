@@ -34,8 +34,10 @@ sudo ros engine switch docker-18.09.2
 
 {{% /tab %}}
 {{% tab "Hardware" %}}
+
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements.
 
+**HA Node Requirements**
 <table>
     <tr>
     <th>Deployment Size</th>
@@ -48,23 +50,63 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
     <td>Small</td>
     <td>Up to 5</td>
     <td>Up to 50</td>
+    <td>2</td>
+    <td>8GB</td>
+    </tr>
+    <tr>
+    <td>Medium</td>
+    <td>Up to 15</td>
+    <td>Up to 200</td>
     <td>4</td>
     <td>16GB</td>
     </tr>
     <tr>
-    <td>Medium</td>
-    <td>Up to 100</td>
+    <td>Large</td>
+    <td>Up to 50</td>
     <td>Up to 500</td>
     <td>8</td>
     <td>32GB</td>
     </tr>
     <tr>
-    <td>Large</td>
-    <td>Over 100</td>
-    <td>Over 500</td>
-    <td colspan="2"><a href="https://rancher.com/contact/">Contact Rancher</a></td>
+    <td>X-Large</td>
+    <td>Up to 100</td>
+    <td>Up to 1000</td>
+    <td>32</td>
+    <td>128GB</td>
+    </tr>
+    <tr>
+    <td>XX-Large</td>
+    <td>100+</td>
+    <td>1000+</td>
+    <td colspan="2"><a href="https://rancher.com/contact/"> Contact Rancher</a></td>
     </tr>
 </table>
+
+**Stand Alone Docker**
+<table>
+ <tr>
+ <th>Deployment Size</th>
+ <th>Clusters</th>
+ <th>Nodes</th>
+ <th>vCPUs</th>
+ <th>RAM</th>
+ </tr>
+    <tr>
+    <td>Small</td>
+    <td>Up to 5</td>
+    <td>Up to 50</td>
+    <td>1</td>
+    <td>4GB</td>
+    </tr>
+    <tr>
+    <td>Medium</td>
+    <td>Up to 15</td>
+    <td>Up to 200</td>
+    <td>2</td>
+    <td>8GB</td>
+    </tr>
+</table>
+
 <br/>
 
 {{% /tab %}}
