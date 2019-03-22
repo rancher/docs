@@ -96,58 +96,45 @@ The load balancer or proxy has to be configured to support the following:
 
 ### Example Nginx configuration
 
-This NGINX configuration is tested on NGINX 1.14.
+This layer 7 Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
 
- >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
-
-* Replace `rancher-server` with the IP address or hostname of the node running the Rancher container.
-* Replace both occurences of `FQDN` to the DNS name for Rancher.
-* Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
+ >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 
 ```
-worker_processes 4;
-worker_rlimit_nofile 40000;
-
-events {
-    worker_connections 8192;
+upstream rancher {
+    server rancher-server:80;
 }
 
-http {
-    upstream rancher {
-        server rancher-server:80;
-    }
+map $http_upgrade $connection_upgrade {
+    default Upgrade;
+    ''      close;
+}
 
-    map $http_upgrade $connection_upgrade {
-        default Upgrade;
-        ''      close;
-    }
+server {
+    listen 443 ssl http2;
+    server_name rancher.yourdomain.com;
+    ssl_certificate /etc/your_certificate_directory/fullchain.pem;
+    ssl_certificate_key /etc/your_certificate_directory/privkey.pem;
 
-    server {
-        listen 443 ssl http2;
-        server_name FQDN;
-        ssl_certificate /certs/fullchain.pem;
-        ssl_certificate_key /certs/privkey.pem;
-
-        location / {
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header X-Forwarded-Port $server_port;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass http://rancher;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $connection_upgrade;
-            # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
-            proxy_read_timeout 900s;
-            proxy_buffering off;
-        }
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://rancher;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
+        proxy_read_timeout 900s;
+        proxy_buffering off;
     }
+}
 
-    server {
-        listen 80;
-        server_name FQDN;
-        return 301 https://$server_name$request_uri;
-    }
+server {
+    listen 80;
+    server_name rancher.yourdomain.com;
+    return 301 https://$server_name$request_uri;
 }
 ```
 

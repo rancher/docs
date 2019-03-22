@@ -164,59 +164,46 @@ Rancher will respond `200` to health checks on the `/healthz` endpoint.
 
 #### Example NGINX config
 
-This NGINX configuration is tested on NGINX 1.14.
-
-  >**Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/). 
-
 * Replace `IP_NODE1`, `IP_NODE2` and `IP_NODE3` with the IP addresses of the nodes in your cluster.
 * Replace both occurences of `FQDN` to the DNS name for Rancher.
 * Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
 
 ```
-worker_processes 4;
-worker_rlimit_nofile 40000;
-
-events {
-    worker_connections 8192;
+upstream rancher {
+    server IP_NODE_1:80;
+    server IP_NODE_2:80;
+    server IP_NODE_3:80;
 }
 
-http {
-    upstream rancher {
-        server IP_NODE_1:80;
-        server IP_NODE_2:80;
-        server IP_NODE_3:80;
-    }
+map $http_upgrade $connection_upgrade {
+    default Upgrade;
+    ''      close;
+}
 
-    map $http_upgrade $connection_upgrade {
-        default Upgrade;
-        ''      close;
-    }
+server {
+    listen 443 ssl http2;
+    server_name FQDN;
+    ssl_certificate /certs/fullchain.pem;
+    ssl_certificate_key /certs/privkey.pem;
 
-    server {
-        listen 443 ssl http2;
-        server_name FQDN;
-        ssl_certificate /certs/fullchain.pem;
-        ssl_certificate_key /certs/privkey.pem;
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://rancher;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
+        proxy_read_timeout 900s;
+        proxy_buffering off;
+   }
+}
 
-        location / {
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header X-Forwarded-Port $server_port;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_pass http://rancher;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $connection_upgrade;
-            # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
-            proxy_read_timeout 900s;
-            proxy_buffering off;
-        }
-    }
-
-    server {
-        listen 80;
-        server_name FQDN;
-        return 301 https://$server_name$request_uri;
-    }
+server {
+    listen 80;
+    server_name FQDN;
+    return 301 https://$server_name$request_uri;
 }
 ```

@@ -1,5 +1,5 @@
 ---
-title: Rancher Security
+title: Security
 weight: 7505
 ---
 

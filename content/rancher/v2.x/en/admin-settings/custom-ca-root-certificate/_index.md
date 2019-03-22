@@ -1,6 +1,6 @@
 ---
 title: Custom CA root certificate
-weight: 252
+weight: 1110
 aliases:
   - /rancher/v2.x/en/installation/custom-ca-root-certificate/
 ---

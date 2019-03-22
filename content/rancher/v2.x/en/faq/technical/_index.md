@@ -226,11 +226,6 @@ This is due to a combination of the following default Kubernetes settings:
 
 See [Kubernetes: kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) and [Kubernetes: kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) for more information on these settings.
 
-In Kubernetes v1.13, the `TaintBasedEvictions` feature is enabled by default. See [Kubernetes: Taint based Evictions](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/#taint-based-evictions) for more information.
-
-* kube-apiserver (Kubernetes v1.13 and up)
-  * `default-not-ready-toleration-seconds`: Indicates the tolerationSeconds of the toleration for notReady:NoExecute that is added by default to every pod that does not already have such a toleration.
-  * `default-unreachable-toleration-seconds`: Indicates the tolerationSeconds of the toleration for unreachable:NoExecute that is added by default to every pod that does not already have such a toleration.
 
 ### Can I use keyboard shortcuts in the UI?
 

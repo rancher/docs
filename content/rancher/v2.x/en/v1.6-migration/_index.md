@@ -1,5 +1,5 @@
 ---
-title: Migrating from Rancher v1.6 to v2.x
+title: Migrating from v1.6 to v2.x
 weight: 10000
 ---
 
@@ -31,11 +31,11 @@ This video demonstrates a complete walk through of migration from Rancher v1.6 t
 
 ## Migration Example Files
 
-Throughout this migration guide, we will reference several example services from Rancher v1.6 that we're migrating to v2.x. These services are: 
+Throughout this migration guide, we will reference several example services from Rancher v1.6 that we're migrating to v2.x. These services are:
 
 - A service named `web`, which runs [Let's Chat](http://sdelements.github.io/lets-chat/), a self-hosted chat for small teams.
 - A service named `database`, which runs [Mongo DB](https://www.mongodb.com/), an open source document database.
-- A service named `webLB`, which runs [HAProxy](http://www.haproxy.org/), an open source load balancer used in Rancher v1.6. 
+- A service named `webLB`, which runs [HAProxy](http://www.haproxy.org/), an open source load balancer used in Rancher v1.6.
 
 During migration, we'll export these services from Rancher v1.6.  The export generates a unique directory for each Rancher v1.6 environment and stack, and two files are output into each stack's directory:
 
