@@ -11,7 +11,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >**Do you want to...**
 >
 >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
->- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#enable-api-audit-log).
+>- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#api-audit-log).
 
 
 Choose from the following options:

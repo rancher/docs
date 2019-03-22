@@ -1,6 +1,6 @@
 ---
 title: Production Ready Cluster
-weight: 2510
+weight: 2005
 ---
 
 While Rancher makes it easy to create Kubernetes clusters, a production ready cluster takes more consideration and planning. There are three roles that can be assigned to nodes: `etcd`, `controlplane` and `worker`. In the next sections each of the roles will be described in more detail.

@@ -53,7 +53,7 @@ If you elect to use a self-signed certificate to encrypt communication, you must
       -v /etc/your_certificate_directory/cacerts.pem:/etc/rancher/ssl/cacerts.pem \
       rancher/rancher:latest
     ```
- 
+
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
@@ -72,7 +72,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
     rancher/rancher:latest --no-cacerts
-    ``` 
+    ```
 {{% /accordion %}}
 
 ## 3. Configure Load Balancer
@@ -181,7 +181,86 @@ If you want to record all transactions with the Rancher API, enable the [API Aud
 If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
- 	
+
+	 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
+
+### Persistent Data
+
+{{< persistentdata >}}
+
+This layer 7 Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
+
+ >**Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+
+```
+upstream rancher {
+    server rancher-server:80;
+}
+
+map $http_upgrade $connection_upgrade {
+    default Upgrade;
+    ''      close;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name rancher.yourdomain.com;
+    ssl_certificate /etc/your_certificate_directory/fullchain.pem;
+    ssl_certificate_key /etc/your_certificate_directory/privkey.pem;
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://rancher;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        # This allows the ability for the execute shell window to remain open for up to 15 minutes. Without this parameter, the default is 1 minute and will automatically close.
+        proxy_read_timeout 900s;
+        proxy_buffering off;
+    }
+}
+
+server {
+    listen 80;
+    server_name rancher.yourdomain.com;
+    return 301 https://$server_name$request_uri;
+}
+```
+
+<br/>
+
+## What's Next?
+
+- **Recommended:** Review [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+
+<br/>
+
+## FAQ and Troubleshooting
+
+{{< ssl_faq_single >}}
+
+## Advanced Options
+
+### API Auditing
+
+If you want to record all transactions with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+
+	-e AUDIT_LEVEL=1 \
+	-e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
+	-e AUDIT_LOG_MAXAGE=20 \
+	-e AUDIT_LOG_MAXBACKUP=20 \
+	-e AUDIT_LOG_MAXSIZE=100 \
+
+### Air Gap
+
+If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
+
+**Example:**
+
 	 <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
 
 ### Persistent Data

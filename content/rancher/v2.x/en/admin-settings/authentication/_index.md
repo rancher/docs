@@ -1,6 +1,6 @@
 ---
 title: Authentication
-weight: 1110
+weight: 1115
 aliases:
     - /rancher/v2.x/en/concepts/global-configuration/authentication/
     - /rancher/v2.x/en/tasks/global-configuration/authentication/
@@ -14,7 +14,7 @@ This centralized user authentication is accomplished using the Rancher authentic
 
 ### External vs. Local Authentication
 
-The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted. 
+The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted.
 
 | Auth Service                                                                                     | Available as of  |
 | ------------------------------------------------------------------------------------------------ | ---------------- |
