@@ -22,9 +22,7 @@ At the project level, Rancher monitors specific deployments and sends alerts for
 
 >**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/notifiers/#adding-notifiers).
 
-1. From the **Global** view, open the project that you want to configure alerts for.
-
-1. From the main menu, select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
+1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
 
 1. Click **Add Alert Group**.
 

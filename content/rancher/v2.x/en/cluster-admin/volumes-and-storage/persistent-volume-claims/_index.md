@@ -3,7 +3,7 @@ title: Persistent Volume Claims
 weight: 3052
 aliases:
   - /rancher/v2.x/en/tasks/workloads/add-persistent-volume-claim
-  - /rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/persistent-volume-claims/
+  - /rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/
 ---
 
 _Persistent Volume Claims_ (or PVCs) are objects that request storage resources from your cluster. They're similar to a voucher that your deployment can redeem for storage access. When you create a deployment, you should usually attach a PVC so that your application can lay claim to persistent storage. This claim lets your deployment application store its data in an external location, so that if one of the application's containers fails, it can be replaced with a new container and continue accessing its data stored externally, as though an outage never occurred.

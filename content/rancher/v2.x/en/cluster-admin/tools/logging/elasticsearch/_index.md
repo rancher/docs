@@ -5,69 +5,39 @@ aliases:
   - /rancher/v2.x/en/tools/logging/elasticsearch/
 ---
 
-If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs for your cluster or container.
-
-## Configuring Elasticsearch Logging
-
-You can configure Rancher to send logs from your cluster or project to your instance of Elasticsearch.
+If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.
 
 >**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
 
-1. Browse to the cluster or project that you want to log.
-{{% accordion id="cluster" label="To Configure Cluster Logging:" %}}
-If you're a [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) who works in operations or security, configure cluster logging.
+## Elasticsearch Configuration
 
-1. From the **Global** view, open the cluster that you want to configure logging for.
+1. In the **Endpoint** field, enter the IP address and port of your Elasticsearch instance. You can find this information from the dashboard of your Elasticsearch deployment.
 
-1. From the main menu, select **Tools > Logging**.
-{{% /accordion %}}
-{{% accordion id="project" label="To Configure Project Logging:" %}}
-If you're a [project owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) who works on an application, configure project logging.
+    * Elasticsearch usually uses port `9200` for HTTP and `9243` for HTTPS.
 
-1. From the **Global** view, open the project that you want to configure logging for.
+1. If you are using [X-Pack Security](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html), enter your Elasticsearch **Username** and **Password** for authentication.
 
-1. From the main menu, select **Tools > Logging**. In versions prior to v2.2.0, you can choose **Resources > Logging**.
-{{% /accordion %}}
+1. Enter an [Index Pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html).
 
-1. Select **Elasticsearch**.
+## SSL Configuration
 
-1. Complete the **Elasticsearch Configuration** form.
+If your instance of Elasticsearch uses SSL, your **Endpoint** will need to begin with `https://`. With the correct endpoint, the **SSL Configuration** form is enabled and ready to be completed.
 
-    1. From the **Endpoint** field, enter the IP address and port for your Elasticsearch instance. You can copy this information from the dashboard of your Elasticsearch deployment. Elasticsearch usually uses port `9200` for HTTP and `9243` for HTTPS.
+1. Provide the **Client Private Key** and **Client Certificate**. You can either copy and paste them or upload them by using the **Read from a file** button.
 
-    1. If you are using [X-Pack Security](https://www.elastic.co/guide/en/x-pack/current/xpack-introduction.html), enter your Elasticsearch **Username** and **Password** for authentication.
+    - You can use either a self-signed certificate or one provided by a certificate authority.
 
-    1. Enter an [Index Pattern](https://www.elastic.co/guide/en/kibana/current/index-patterns.html).
+    - You can generate a self-signed certificate using an openssl command. For example:
 
-1. If your instance of Elasticsearch uses SSL, complete the **SSL Configuration** form.
+         ```
+         openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+         ```
+         
+1. Enter your **Client Key Password**.
 
-    1. Enter the private key and client certificate. You can either copy and paste them or upload them by **Read from a file**.
+1. Enter your **SSL Version**. The default version is `TLSv1_2`.
 
-        You can use either a self-signed certificate or one provided by a certificate authority.
+1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can copy and paste the certificate or upload it using the **Read from a file** button.
 
-        You can generate a self-signed certificate using an openssl command. For example:
-
-            openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
-
-
-    1. If you are using a self-signed certificate, you need to provide the **CA Certificate PEM** as well.
-
-    1. Enter your private key password.
-
-    1. Enter your ssl version. The default version is tlsv1_2.
-
-    1. Select the **Enabled - Input trusted server certificate** option and enter your **Trusted Server Certificate Chain** if you are using a certificate from a certificate authority.
-
-1. Complete the **Additional Logging Configuration** form.
-
-    1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
-
-    1. Enter a **Flush Interval**. This value determines how often [Fluentd](https://www.fluentd.org/) flushes data to the logging server. Intervals are measured in seconds.
-
-    1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
-
-1. Click **Test**. Rancher sends a test log to Elasticsearch.
-
-1. Click **Save**.
-
-**Result:** Rancher is now configured to send cluster and container logs to Elasticsearch. Log into Elasticsearch or Kibana to view your cluster/project logs.
+    * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+    * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.

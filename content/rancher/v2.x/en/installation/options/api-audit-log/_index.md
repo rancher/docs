@@ -4,6 +4,7 @@ weight: 10000
 aliases:
  - /rancher/v2.x/en/installation/api-auditing/
  - /rancher/v2.x/en/admin-settings/api-auditing/
+ - /rancher/v2.x/en/admin-settings/api-audit-log/
 ---
 
 You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.

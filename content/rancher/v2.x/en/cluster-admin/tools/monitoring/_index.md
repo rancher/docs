@@ -46,9 +46,11 @@ Using Prometheus, you can monitor Rancher at both the cluster and project level.
 
 [Cluster monitoring](#cluster-monitoring) allows you to view the health of a cluster's Kubernetes control plane and individual nodes. System administrators will likely be more interested in cluster monitoring, as administrators are more invested in the health of the Rancher control plane and cluster nodes.
 
-[Project monitoring](#project-monitoring) lets you view the state of pods running in a given project. Users responsible for maintaining a project will be most interested in project monitoring, as it helps them keep their applications up and running for their users.
+[Project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/monitoring/) lets you view the state of pods running in a given project. Users responsible for maintaining a project will be most interested in project monitoring, as it helps them keep their applications up and running for their users. When you enable monitoring for a Rancher project, Prometheus collects metrics from its deployed HTTP and TCP/UDP workloads.
 
-### Cluster Monitoring
+For the rest of this document, everything is referred to monitoring for a cluster.
+
+## Cluster Monitoring
 
 When you enable monitoring for one of your Rancher clusters, Prometheus collects metrics from the cluster components below, which you can view in graphs and charts. We'll have more about the specific metrics collected later in this document.
 
@@ -56,15 +58,9 @@ When you enable monitoring for one of your Rancher clusters, Prometheus collects
 - [etcd database](#etcd-metrics)
 - [All nodes (including workers)](#cluster-metrics)
 
-### Project Monitoring
-
-When you enable monitoring for a Rancher project, Prometheus collects metrics from its deployed HTTP and TCP/UDP workloads. We'll have more about the specific metrics collected [later in this document](#custom-metrics).
-
-## Configuring Cluster Monitoring
+## Configuring Monitoring
 
 You can deploy Prometheus monitoring for a cluster, navigate to **Tools > Monitoring** as shown in the GIF below, which displays a user enabling cluster monitoring for a cluster named `local`. The only required action for deployment is to select the **Enable** option and click **Save**, but you might want to [customize configuration options](#prometheus-configuration-options) for your environment.
-
-![EnableClusterMonitoring]({{< baseurl >}}/img/rancher/enable-cluster-monitoring.gif)
 
 Following Prometheus deployment, two monitoring applications are added to the cluster's `system` project's **Apps** page: `cluster-monitoring` and `monitoring-operator`. You can use the `cluster-monitoring` catalog app to [access the Grafana instance](#grafana-accessing-for-clusters) for the cluster.
 
@@ -93,19 +89,9 @@ Kube State Cluster Monitor | 100 | 130
 Grafana | 100 | 150
 Prometheus Cluster Monitoring Nginx | 50 | 50
 
-## Configuring Project Monitoring
-
-You can enable project monitoring by opening the project and then selecting **Tools > Monitoring** as shown in the GIF below, which displays enabling the `default` project monitoring.
-
-![EnableProjectMonitoring]({{< baseurl >}}/img/rancher/enable-project-monitoring.gif)
-
-After you enable project monitoring, a single application is added to the project's **Apps** page: `project-monitoring`. Use this catalog app to [access the Grafana instance](#grafana-accessing-for-projects) for the project.
-
-With enabling cluster monitoring, you can collect the [Workload metrics](#workload-metrics) for this project, otherwise, you can only collect the [Custom metrics](#custom-metrics) from this project.
-
 ## Prometheus Configuration Options
 
-While configuring monitoring at either the cluster or project level, you can choose options to customize your monitoring settings. You can enable the options below while completing either [Configuring Cluster Monitoring](#configuring-cluster-monitoring) or [Configuring Project Monitoring](#configuring-project-monitoring).
+While configuring monitoring at either the cluster or project level, you can choose options to customize your monitoring settings.
 
 Option | Description
 -------|-------------
@@ -122,7 +108,7 @@ Add Selector | If you want to deploy the Prometheus/Grafana pods to a specific n
 
 ### Enable Node Exporter
 
-Node Exporter is a popular open source exporter which can expose the metrics for hardware and \*NIX kernels OS, it is designed to monitor the host system. However, there are still namespacing issues with running it in a container, mostly around filesystem mount spaces. So if we need to monitor the actual network stats for the container network, we must deploy it with `hostNetwork` mode.
+Node Exporter is a popular open source exporter which can expose the metrics for hardware and \*NIX kernels OS, it is designed to monitor the host system. However, there are still issues with namespaces when running it in a container, mostly around filesystem mount spaces. So if we need to monitor the actual network stats for the container network, we must deploy it with `hostNetwork` mode.
 
 Firstly, you need to consider which host port should expose to avoid port conflicts and fill into `Node Exporter Host Port` field. Secondly, you must open that port to allow the internal traffic from `Prometheus`.
 
@@ -138,7 +124,7 @@ You can configure persistent storage for Prometheus and/or Grafana by using the 
 
 >**Warning:** Monitoring app is [a specially designed app](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring). Any modification without familiarizing the entire app can lead to catastrophic errors.
 
-Monitoring is driven by [Rancher Catalog App]({{< baseurl >}}/rancher/v2.x/en/catalog), so you can expand all options by clicking the **Show advanced options** and then configure it as you wolud configure any other app.
+Monitoring is driven by [Rancher catalog application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/), so you can expand all options by clicking the **Show advanced options** and then configure it as you would configure any other app.
 
 ## Viewing Metrics
 

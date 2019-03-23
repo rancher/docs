@@ -71,6 +71,15 @@ These services collect container log events, which are saved to the `/var/log/co
 
 When configuring Rancher to integrate with these services, you'll have to point Rancher toward the service's endpoint and provide authentication information. Additionally, you'll have the opportunity to enter key value pairs to filter the log events collected. The service will only collect events for containers marked with your configured key value pairs.
 
+### Logging Advantages
+
+Setting up a logging service to collect logs from your cluster or project is helpful several ways:
+
+- Logs errors and warnings in your Kubernetes infrastructure to a stream. The stream informs you of events like a container crashing, a pod eviction, or a node dying.
+- Allows you to capture and analyze the state of your cluster and look for trends in your environment using the log stream.
+- Helps you when troubleshooting or debugging.
+- Saves your logs to a safe location outside of your cluster, so that you can still access them even if your cluster encounters issues.
+
 You can configure these services to collect logs at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/) or [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/logging/).
 
 ## Monitoring

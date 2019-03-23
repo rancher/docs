@@ -24,9 +24,7 @@ As a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster
 
 >**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
 
-1. From the **Global** view, open the cluster that you want to configure alerts for.
-
-1. From the main menu, select **Tools > Alerts**. Then click **Add Alert Group**.
+1. From the **Global** view, navigate to the cluster that you want to configure cluster alerts for. Select **Tools > Alerts**. Then click **Add Alert Group**.
 
 1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.
 
