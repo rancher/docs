@@ -11,7 +11,7 @@ If your organization uses [Splunk](https://www.splunk.com/), you can configure R
 >**Prerequisites:**
 >
 >- Configure HTTP event collection for your Splunk Server (Splunk Enterprise or Splunk Cloud).
->- Enable all tokens, and then create a new token.
+>- Either create a new token or copy an existing token.
 >
 >For more information, see [Splunk Documentation](http://docs.splunk.com/Documentation/Splunk/7.1.2/Data/UsetheHTTPEventCollector#About_Event_Collector_tokens).
 
@@ -43,10 +43,10 @@ If your instance of Splunk uses SSL, your **Endpoint** will need to begin with `
 
 1. Enter your **Client Key Password**.
 
-1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can copy and paste the certificate or upload it using the **Read from a file** button.
+1. Select whether or not you want to verify your SSL.
 
-    * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
-    * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.
+    * If you are using a self-signed certificate, select **Enabled - Input trusted server certificate**, provide the **CA Certificate PEM**. You can copy and paste the certificate or upload it using the **Read from a file** button.  
+    * If you are using a certificate from a certificate authority, select **Enabled - Input trusted server certificate**. You do not need to provide a **CA Certificate PEM**.
 
 ## Viewing Logs
 
