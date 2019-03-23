@@ -11,7 +11,7 @@ If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can
 
 If you are using rsyslog, please make sure your rsyslog authentication mode is `x509/name`.
 
-## Syslog Configuration
+## Syslog Server Configuration
 
 1. In the **Endpoint** field, enter the IP address and port for your Syslog server. Additionally, in the dropdown, select the protocol that your Syslog server uses.
 
@@ -39,6 +39,8 @@ If your Syslog server is using **TCP** protocol and uses TLS, you need to select
          ```
          openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
          ```
-1. Enter your private key password.
 
-1. If you are using a self-signed certificate, you need to select the **Enabled - Input trusted server certificate** option and provide your **CA Certificate PEM** certificate. You can copy and paste the certificate or upload it using the **Read from a file** button
+1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can copy and paste the certificate or upload it using the **Read from a file** button.
+
+    * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+    * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.
