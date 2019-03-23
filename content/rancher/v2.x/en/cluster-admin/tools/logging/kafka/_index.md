@@ -9,7 +9,7 @@ If your organization uses [Kafka](https://kafka.apache.org/), you can configure 
 
 >**Prerequisite:** You must have a Kafka server configured.
 
-## Kafka Configuration
+## Kafka Server Configuration
 
 1. Select the type of **Endpoint** your Kafka server is using:
 
@@ -34,10 +34,7 @@ If your Kafka cluster is using SSL for the **Broker**, you need to complete the 
         openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
         ```
 
-1. In the **CA Certificate PEM** certificate section, either copy and paste the certificate or upload it using the **Read from a file** button.
-
-   * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
-   * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.
+1. If you are using a self-signed certificate, provide the **CA Certificate PEM**. You can either copy and paste the certificate or upload it using the **Read from a file** button.
 
 ### SASL configuration
 

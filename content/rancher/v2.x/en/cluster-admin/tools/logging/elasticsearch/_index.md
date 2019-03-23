@@ -9,7 +9,7 @@ If your organization uses [Elasticsearch](https://www.elastic.co/), either on pr
 
 >**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
 
-## Elasticsearch Configuration
+## Elasticsearch Deployment Configuration
 
 1. In the **Endpoint** field, enter the IP address and port of your Elasticsearch instance. You can find this information from the dashboard of your Elasticsearch deployment.
 
@@ -32,12 +32,12 @@ If your instance of Elasticsearch uses SSL, your **Endpoint** will need to begin
          ```
          openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
          ```
-         
+
 1. Enter your **Client Key Password**.
 
 1. Enter your **SSL Version**. The default version is `TLSv1_2`.
 
-1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can copy and paste the certificate or upload it using the **Read from a file** button.
+1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section, i.e. **Ca Certificate PEM** is displayed. You can copy and paste the certificate or upload it using the **Read from a file** button.
 
     * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
     * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.

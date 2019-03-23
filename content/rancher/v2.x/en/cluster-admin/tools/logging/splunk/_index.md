@@ -43,8 +43,6 @@ If your instance of Splunk uses SSL, your **Endpoint** will need to begin with `
 
 1. Enter your **Client Key Password**.
 
-1. Enter your **SSL Version**. The default version is `TLSv1_2`.
-
 1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can copy and paste the certificate or upload it using the **Read from a file** button.
 
     * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  

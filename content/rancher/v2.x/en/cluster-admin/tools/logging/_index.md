@@ -62,13 +62,35 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports the following services:
 
-   - [Elasticsearch]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/elasticsearch)
-   - [Splunk]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/splunk)
-   - [Kafka]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/kafka)
-   - [Syslog]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/syslog)
-   - [Fluentd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/fluentd)
+   - [Elasticsearch]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/elasticsearch/)
+   - [Splunk]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/splunk/)
+   - [Kafka]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/kafka/)
+   - [Syslog]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/syslog/)
+   - [Fluentd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/fluentd/)
 
-1. Complete the **Additional Logging Configuration** form.
+1. (Optional) Instead of using the UI to configure the logging services, you can enter custom advanced configurations by clicking on **Edit as File**, which is located above the logging targets. This link is only visible after you select a logging service.
+
+    - With the file editor, enter raw fluentd configuration for any logging service. Refer to the documentation for each logging service on how to setup the output configuration.
+
+       - [Elasticsearch Documentation](https://github.com/uken/fluent-plugin-elasticsearch)
+       - [Splunk Documentation](https://github.com/fluent/fluent-plugin-splunk)
+       - [Kafka Documentation](https://github.com/fluent/fluent-plugin-kafka)
+       - [Syslog Documentation](https://github.com/dlackty/fluent-plugin-remote_syslog)
+       - [Fluentd Documentation](https://docs.fluentd.org/v1.0/articles/out_forward)
+
+   - If the logging service is using TLS, you also need to complete the **SSL Configuration** form.
+       1. Provide the **Client Private Key** and **Client Certificate**. You can either copy and paste them or upload them by using the **Read from a file** button.
+
+           - You can use either a self-signed certificate or one provided by a certificate authority.
+
+           - You can generate a self-signed certificate using an openssl command. For example:
+
+                ```
+                openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+                ```
+       2. If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+
+1. (Optional) Complete the **Additional Logging Configuration** form.
 
     1. **Optional:** Use the **Add Field** button to add custom log fields to your logging configuration. These fields are key value pairs (such as `foo=bar`) that you can use to filter the logs from another system.
 
@@ -77,6 +99,8 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
     1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
 
 1. Click **Test**. Rancher sends a test log to the service.
+
+    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, Rancher calls the fluentd dry drun command to validate the configuration. 
 
 1. Click **Save**.
 
