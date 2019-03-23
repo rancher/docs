@@ -6,7 +6,7 @@ weight: 2125
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{< baseurl >}}/rancher/v2.x/en/tools/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
+You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
 
 ## Prerequisites in Tencent
 
@@ -16,7 +16,7 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 3. Create a [Private Network and Subnet](https://intl.cloud.tencent.com/document/product/215/4927) in the region that you want to deploy your Kubernetes cluster.
 
-4. Create a [SSH key pair](https://intl.cloud.tencent.com/document/product/213/6092). This key is used to access the nodes in the Kubernetes cluster. 
+4. Create a [SSH key pair](https://intl.cloud.tencent.com/document/product/213/6092). This key is used to access the nodes in the Kubernetes cluster.
 
 ## Create a TKE Cluster
 

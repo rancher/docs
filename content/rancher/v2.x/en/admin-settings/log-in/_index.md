@@ -1,6 +1,6 @@
 ---
 title: First Log In
-weight: 50
+weight: 1105
 aliases:
     - /rancher/v2.x/en/concepts/global-configuration/server-url/
     - /rancher/v2.x/en/tasks/global-configuration/server-url/

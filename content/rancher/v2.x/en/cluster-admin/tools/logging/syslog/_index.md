@@ -1,0 +1,44 @@
+---
+title: Syslog
+weight: 500
+aliases:
+  - /rancher/v2.x/en/tools/logging/syslog/
+---
+
+If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.
+
+>**Prerequisite:** You must have a Syslog server configured.
+
+If you are using rsyslog, please make sure your rsyslog authentication mode is `x509/name`.
+
+## Syslog Configuration
+
+1. In the **Endpoint** field, enter the IP address and port for your Syslog server. Additionally, in the dropdown, select the protocol that your Syslog server uses.
+
+1. In the **Program** field, enter the name of the application sending logs to your Syslog server, e.g. `Rancher`.
+
+1. If you are using a cloud logging service, e.g. [Sumologic](https://www.sumologic.com/), enter a **Token** that authenticates with your Syslog server. You will need to create this token in the cloud logging service.
+
+1. Select a **Log Severity** for events that are logged to the Syslog server. For more information on each severity level, see the [Syslog protocol documentation](https://tools.ietf.org/html/rfc5424#page-11).
+
+## Encryption Configuration
+
+If your Syslog server is using **TCP** protocol and uses TLS, you need to select **Use TLS** and complete the **Encryption Configuration** form.
+
+1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can either copy and paste the certificate or upload them by **Read from a file**.
+
+    * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+    * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.
+
+1. Provide the **Client Private Key** and **Client Certificate**. You can either copy and paste them or upload them by using the **Read from a file** button.
+
+    - You can use either a self-signed certificate or one provided by a certificate authority.
+
+    - You can generate a self-signed certificate using an openssl command. For example:
+
+         ```
+         openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+         ```
+1. Enter your private key password.
+
+1. If you are using a self-signed certificate, you need to select the **Enabled - Input trusted server certificate** option and provide your **CA Certificate PEM** certificate. You can copy and paste the certificate or upload it using the **Read from a file** button

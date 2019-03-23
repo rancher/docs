@@ -1,5 +1,5 @@
 ---
-title: Kubernetes in Rancher
+title: Working in Projects
 weight: 3000
 aliases:
   - /rancher/v2.x/en/concepts/

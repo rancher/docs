@@ -1,6 +1,6 @@
 ---
-title: Roles in Rancher
-weight: 1125
+title: Roles 
+weight: 1120
 aliases:
     - /rancher/v2.x/en/concepts/global-configuration/users-permissions-roles/
 ---
