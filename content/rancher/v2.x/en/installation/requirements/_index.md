@@ -34,7 +34,6 @@ sudo ros engine switch docker-18.09.2
 
 {{% /tab %}}
 {{% tab "Hardware" %}}
-
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements.
 
 **HA Node Requirements**
