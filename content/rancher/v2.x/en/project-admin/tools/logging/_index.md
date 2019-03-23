@@ -37,7 +37,7 @@ Setting up a logging service to collect logs from your cluster/project has sever
 
 You can configure logging at either [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/) or project level.
 
-- Cluster logging writes logs for every pod in the cluster, i.e. in all the projects. For [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), it also writes logts for all the Kubernetes system components.
+- Cluster logging writes logs for every pod in the cluster, i.e. in all the projects. For [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), it also writes logs for all the Kubernetes system components.
 
 - Project logging writes logs for every pod in that particular project.
 
@@ -95,7 +95,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Click **Test**. Rancher sends a test log to the service.
 
-    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, Rancher calls the fluentd dry drun command to validate the configuration.
+    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, Rancher calls the fluentd dry run command to validate the configuration.
 
 1. Click **Save**.
 
