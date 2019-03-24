@@ -36,7 +36,7 @@ sudo ros engine switch docker-18.09.2
 {{% tab "Hardware" %}}
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements.
 
-**HA Node Requirements**
+**[HA Node]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/) Requirements**
 <table>
     <tr>
     <th>Deployment Size</th>
@@ -81,7 +81,7 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
     </tr>
 </table>
 
-**Stand Alone Docker**
+**[Single Node]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/) Requirementsr**
 <table>
  <tr>
  <th>Deployment Size</th>
