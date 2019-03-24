@@ -1,6 +1,6 @@
 ---
 title: Expression
-weight: 10000
+weight: 4
 ---
 
 ## In This Document
@@ -8,13 +8,11 @@ weight: 10000
 <!-- TOC -->
 
 - [Cluster Metrics](#cluster-metrics)
-
     + [Node Metrics](#node-metrics)
 - [Etcd Metrics](#etcd-metrics)
 - [Kubernetes Components Metrics](#kubernetes-components-metrics)
 - [Rancher Logging Metrics](#rancher-logging-metrics)
 - [Workload Metrics](#workload-metrics)
-
     + [Pod Metrics](#pod-metrics)
     + [Container Metrics](#container-metrics)
 
@@ -37,7 +35,7 @@ weight: 10000
     | Summary | <table><tr><td>load1</td><td>`sum(node_load1) by (instance) / count(node_cpu_seconds_total{mode="system"})`</td></tr><tr><td>load5</td><td>`sum(node_load5) by (instance) / count(node_cpu_seconds_total{mode="system"})`</td></tr><tr><td>load15</td><td>`sum(node_load15) by (instance) / count(node_cpu_seconds_total{mode="system"})`</td></tr></table> |
 
 - **Memory Utilization**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | `1 - sum(node_memory_MemAvailable_bytes) by (instance) / sum(node_memory_MemTotal_bytes) by (instance)` |
@@ -49,7 +47,7 @@ weight: 10000
     | --- | --- |
     | Detail | `(sum(node_filesystem_size_bytes{device!="rootfs"}) by (instance) - sum(node_filesystem_free_bytes{device!="rootfs"}) by (instance)) / sum(node_filesystem_size_bytes{device!="rootfs"}) by (instance)` |
     | Summary | `(sum(node_filesystem_size_bytes{device!="rootfs"}) - sum(node_filesystem_free_bytes{device!="rootfs"})) / sum(node_filesystem_size_bytes{device!="rootfs"})` |
-    
+
 - **Disk I/O**
 
     | Catalog | Expression |
@@ -65,7 +63,7 @@ weight: 10000
     | Summary | <table><tr><td>receive-dropped</td><td><code>sum(rate(node_network_receive_drop_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr><tr><td>receive-errs</td><td><code>sum(rate(node_network_receive_errs_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr><tr><td>receive-packets</td><td><code>sum(rate(node_network_receive_packets_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr><tr><td>transmit-dropped</td><td><code>sum(rate(node_network_transmit_drop_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr><tr><td>transmit-errs</td><td><code>sum(rate(node_network_transmit_errs_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr><tr><td>transmit-packets</td><td><code>sum(rate(node_network_transmit_packets_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m]))</code></td></tr></table> |
 
 - **Network I/O**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | <table><tr><td>receive</td><td><code>sum(rate(node_network_receive_bytes_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m])) by (instance)</code></td></tr><tr><td>transmit</td><td><code>sum(rate(node_network_transmit_bytes_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*"}[5m])) by (instance)</code></td></tr></table> |
@@ -88,7 +86,7 @@ weight: 10000
     | Summary | <table><tr><td>load1</td><td>`sum(node_load1{instance=~"$instance"}) / count(node_cpu_seconds_total{mode="system",instance=~"$instance"})`</td></tr><tr><td>load5</td><td>`sum(node_load5{instance=~"$instance"}) / count(node_cpu_seconds_total{mode="system",instance=~"$instance"})`</td></tr><tr><td>load15</td><td>`sum(node_load15{instance=~"$instance"}) / count(node_cpu_seconds_total{mode="system",instance=~"$instance"})`</td></tr></table> |
 
 - **Memory Utilization**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | `1 - sum(node_memory_MemAvailable_bytes{instance=~"$instance"}) / sum(node_memory_MemTotal_bytes{instance=~"$instance"})` |
@@ -100,7 +98,7 @@ weight: 10000
     | --- | --- |
     | Detail | `(sum(node_filesystem_size_bytes{device!="rootfs",instance=~"$instance"}) by (device) - sum(node_filesystem_free_bytes{device!="rootfs",instance=~"$instance"}) by (device)) / sum(node_filesystem_size_bytes{device!="rootfs",instance=~"$instance"}) by (device)` |
     | Summary | `(sum(node_filesystem_size_bytes{device!="rootfs",instance=~"$instance"}) - sum(node_filesystem_free_bytes{device!="rootfs",instance=~"$instance"})) / sum(node_filesystem_size_bytes{device!="rootfs",instance=~"$instance"})` |
-    
+
 - **Disk I/O**
 
     | Catalog | Expression |
@@ -116,7 +114,7 @@ weight: 10000
     | Summary | <table><tr><td>receive-dropped</td><td><code>sum(rate(node_network_receive_drop_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr><tr><td>receive-errs</td><td><code>sum(rate(node_network_receive_errs_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr><tr><td>receive-packets</td><td><code>sum(rate(node_network_receive_packets_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr><tr><td>transmit-dropped</td><td><code>sum(rate(node_network_transmit_drop_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr><tr><td>transmit-errs</td><td><code>sum(rate(node_network_transmit_errs_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr><tr><td>transmit-packets</td><td><code>sum(rate(node_network_transmit_packets_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m]))</code></td></tr></table> |
 
 - **Network I/O**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | <table><tr><td>receive</td><td><code>sum(rate(node_network_receive_bytes_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m])) by (device)</code></td></tr><tr><td>transmit</td><td><code>sum(rate(node_network_transmit_bytes_total{device!~"lo &#124; veth.* &#124; docker.* &#124; flannel.* &#124; cali.* &#124; cbr.*",instance=~"$instance"}[5m])) by (device)</code></td></tr></table> |
@@ -151,7 +149,7 @@ weight: 10000
     | Summary | <table><tr><td>in</td><td>`sum(rate(etcd_network_peer_received_bytes_total[5m]))`</td></tr><tr><td>out</td><td>`sum(rate(etcd_network_peer_sent_bytes_total[5m]))`</td></tr></table> |
 
 - **DB Size**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | `sum(etcd_debugging_mvcc_db_total_size_in_bytes) by (instance)` |
@@ -230,7 +228,7 @@ weight: 10000
     | Summary | `sum(histogram_quantile(0.99, sum(scheduler_e2e_scheduling_latency_microseconds_bucket) by (le, instance)) / 1e+06)` |
 
 - **Scheduler Preemption Attempts**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | `sum(rate(scheduler_total_preemption_attempts[5m])) by (instance)` |
@@ -274,7 +272,7 @@ weight: 10000
     | Summary | `sum(rate(fluentd_output_status_num_errors[5m]))` |
 
 - **Fluentd Output Rate**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | `sum(rate(fluentd_output_status_num_records_total[5m])) by (instance)` |
@@ -297,14 +295,14 @@ weight: 10000
     | Summary | `sum(container_memory_working_set_bytes{namespace="$namespace",pod_name=~"$podName", container_name!=""})` |
 
 - **Network Packets**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | <table><tr><td>receive-packets</td><td>`sum(rate(container_network_receive_packets_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>receive-dropped</td><td>`sum(rate(container_network_receive_packets_dropped_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>receive-errors</td><td>`sum(rate(container_network_receive_errors_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>transmit-packets</td><td>`sum(rate(container_network_transmit_packets_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>transmit-dropped</td><td>`sum(rate(container_network_transmit_packets_dropped_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>transmit-errors</td><td>`sum(rate(container_network_transmit_errors_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr></table> |
     | Summary | <table><tr><td>receive-packets</td><td>`sum(rate(container_network_receive_packets_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr><tr><td>receive-dropped</td><td>`sum(rate(container_network_receive_packets_dropped_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr><tr><td>receive-errors</td><td>`sum(rate(container_network_receive_errors_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-packets</td><td>`sum(rate(container_network_transmit_packets_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-dropped</td><td>`sum(rate(container_network_transmit_packets_dropped_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-errors</td><td>`sum(rate(container_network_transmit_errors_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m]))`</td></tr></table> |
 
 - **Network I/O**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | <table><tr><td>receive</td><td>`sum(rate(container_network_receive_bytes_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr><tr><td>transmit</td><td>`sum(rate(container_network_transmit_bytes_total{namespace="$namespace",pod_name=~"$podName",container_name!=""}[5m])) by (pod_name)`</td></tr></table> |
@@ -334,7 +332,7 @@ weight: 10000
     | Summary | `sum(container_memory_working_set_bytes{container_name!="POD",namespace="$namespace",pod_name="$podName",container_name!=""})` |
 
 - **Network Packets**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | Detail | <table><tr><td>receive-packets</td><td>`sum(rate(container_network_receive_packets_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr><tr><td>receive-dropped</td><td>`sum(rate(container_network_receive_packets_dropped_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr><tr><td>receive-errors</td><td>`sum(rate(container_network_receive_errors_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-packets</td><td>`sum(rate(container_network_transmit_packets_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-dropped</td><td>`sum(rate(container_network_transmit_packets_dropped_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr><tr><td>transmit-errors</td><td>`sum(rate(container_network_transmit_errors_total{namespace="$namespace",pod_name="$podName",container_name!=""}[5m]))`</td></tr></table> |
@@ -370,10 +368,8 @@ weight: 10000
     `sum(container_memory_working_set_bytes{namespace="$namespace",pod_name="$podName",container_name="$containerName"})`
 
 - **Disk IO**
-    
+
     | Catalog | Expression |
     | --- | --- |
     | read | `sum(rate(container_fs_reads_bytes_total{namespace="$namespace",pod_name="$podName",container_name="$containerName"}[5m]))` |
     | write | `sum(rate(container_fs_writes_bytes_total{namespace="$namespace",pod_name="$podName",container_name="$containerName"}[5m]))` |
-
-    
