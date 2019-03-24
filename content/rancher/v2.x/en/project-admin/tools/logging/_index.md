@@ -35,9 +35,9 @@ Setting up a logging service to collect logs from your cluster/project has sever
 
 ## Logging Scope
 
-You can configure logging at either [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/) or project level.
+You can configure logging at either cluster level or project level.
 
-- Cluster logging writes logs for every pod in the cluster, i.e. in all the projects. For [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), it also writes logs for all the Kubernetes system components.
+- [Cluster logging]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/) writes logs for every pod in the cluster, i.e. in all the projects. For [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), it also writes logs for all the Kubernetes system components.
 
 - Project logging writes logs for every pod in that particular project.
 
@@ -51,7 +51,7 @@ Logs that are sent to your logging service are from the following locations:
 
 As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) or [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles), you can configure Rancher to send Kubernetes logs to a logging service.
 
-1. From the **Global** view, navigate to the project that you want to configure project logging for.
+1. From the **Global** view, navigate to the project that you want to configure project logging.
 
 1. Select **Tools > Logging** in the navigation bar. In versions prior to v2.2.0, you can choose **Resources > Logging**.
 

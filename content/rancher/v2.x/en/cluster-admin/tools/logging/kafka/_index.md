@@ -26,15 +26,9 @@ If your Kafka cluster is using SSL for the **Broker**, you need to complete the 
 
 1. Provide the **Client Private Key** and **Client Certificate**. You can either copy and paste them or upload them by using the **Read from a file** button.
 
-    - You can use either a self-signed certificate or one provided by a certificate authority.
+1. Provide the **CA Certificate PEM**. You can either copy and paste the certificate or upload it using the **Read from a file** button.
 
-    - You can generate a self-signed certificate using an openssl command. For example:
-
-        ```
-        openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
-        ```
-
-1. If you are using a self-signed certificate, provide the **CA Certificate PEM**. You can either copy and paste the certificate or upload it using the **Read from a file** button.
+>**Note:** Kafka does not support self signed certificates. 
 
 ### SASL configuration
 
