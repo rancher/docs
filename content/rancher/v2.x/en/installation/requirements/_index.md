@@ -81,7 +81,7 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
     </tr>
 </table>
 
-**[Single Node]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/) Requirementsr**
+**[Single Node]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/) Requirements**
 <table>
  <tr>
  <th>Deployment Size</th>
