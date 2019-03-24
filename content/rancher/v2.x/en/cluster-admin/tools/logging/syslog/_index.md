@@ -25,11 +25,6 @@ If you are using rsyslog, please make sure your rsyslog authentication mode is `
 
 If your Syslog server is using **TCP** protocol and uses TLS, you need to select **Use TLS** and complete the **Encryption Configuration** form.
 
-1. Select whether or not you want to verify your SSL. If the **Enabled - Input trusted server certificate** option is selected, a certificate section is enabled. You can either copy and paste the certificate or upload them by **Read from a file**.
-
-    * If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
-    * If you are using a certificate from a certificate authority, provide your **Trusted Server Certificate Chain**.
-
 1. Provide the **Client Private Key** and **Client Certificate**. You can either copy and paste them or upload them by using the **Read from a file** button.
 
     - You can use either a self-signed certificate or one provided by a certificate authority.
