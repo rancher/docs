@@ -70,13 +70,13 @@ After you configure a pipeline, you can trigger it using different methods:
 
 - **Manually:**
 
-    After you configure a pipeline, you can trigger a build using the latest CI definition from either Rancher UI or Git CLI.  When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
+    After you configure a pipeline, you can trigger a build using the latest CI definition from Rancher UI. When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
 
 - **Automatically:**
 
     When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo—push code, open pull requests, or create a tag—the version control system sends a webhook to Rancher Server, triggering a pipeline execution.
 
-    To use this automation, webhook management permission is required for the repository. Therefore, when users authenticate and fetch their repositories, only those on which they have admin permission will be shown.
+    To use this automation, webhook management permission is required for the repository. Therefore, when users authenticate and fetch their repositories, only those on which they have webhook management permission will be shown.
 
 ## Version Control Providers
 

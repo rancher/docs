@@ -45,7 +45,7 @@ After the version control provider is authorized, you are automatically re-direc
 
 1. Click on **Configure Repositories**.
 
-1. A list of repositories are displayed. The list of repositories displayed are based on the [user that set up the version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#version-control-providers).
+1. A list of repositories are displayed. If you are configuring repositories the first time, click on **Authorize & Fetch Your Own Repositories** to fetch your repository list.
 
 1. For each repository that you want to set up a pipeline, click on **Enable**.
 
@@ -68,36 +68,7 @@ Now that repositories are added to your project, you can start configuring the p
 
     >**Note:** When editing the pipeline configuration, it takes a few moments for Rancher to check for an existing pipeline configuration.
 
-1. Select which `branch` to use from the repository.
-
-    {{% accordion id="branch" label="Branch Selection" %}}
-{{% tabs %}}
-{{% tab "By UI" %}}
-<br>
-Select the **branch** from the list of branches.
-<br>
-<br>
-{{% /tab %}}
-{{% tab "By YAML" %}}
-<br>
-You are required to include a branch in order for the pipeline to work.
-
-```yaml
-stages:
-  - name: Build something
-    steps:
-    - runScriptConfig:
-        image: busybox
-        shellScript: ls
-# branch conditions for the pipeline
-branch:
-  include: [ master, feature/*]
-  exclude: [ dev ]
-```
-<br>
-{{% /tab %}}
-{{% /tabs %}}
-    {{% /accordion %}}
+1. Select which `branch` to use from the list of branches.
 
 1. Pipeline configuration is split into stages and [steps](#step-types). Remember that stages must fully complete before moving onto the next stage, but steps in a stage run concurrently.
 
@@ -527,6 +498,18 @@ Within a pipeline, there are multiple advanced options for different parts of th
 
 When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging. When an event type is disabled, pipeline executions will not be triggered by the wehook of that event type.
 
+To change event triggers for a repository:
+
+1. From the **Global** view, navigate to the project that you want to configure pipelines.
+
+1. Select **Workloads** in the navigation bar and then select the Pipelines tab.
+
+1. From the repository for which you want to change the event triggers, select **Ellipsis (...) > Setting**.
+
+1. Click on the check box to enable/disable triggering for **Push**, **Pull Request** or **Tag** event.
+
+1. Click **Save**.
+
 You can also set trigger rules to have fine-grained control of pipeline executions in pipeline configurations. Trigger rules come in two types:
 
 - **Run this when:**
@@ -680,7 +663,7 @@ stages:
 
 If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using Kubernetes [secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 
->**Prerequisite:** Create a secret in the same project as your pipeline.
+>**Prerequisite:** Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
 
 >**Note:** Secret injection is disabled on pull request events.
 
