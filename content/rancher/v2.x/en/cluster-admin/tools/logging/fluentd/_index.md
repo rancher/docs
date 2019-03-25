@@ -29,6 +29,6 @@ After adding all the Fluentd servers, you have the option to select **Enable Gzi
 
 ## SSL Configuration
 
-If your Fluentd servers are using TLS, you need to select **Use TLS**. Provide the **CA Certificate PEM**. You can copy and paste the certificate or upload it using the **Read from a file** button.
+If your Fluentd servers are using TLS, you need to select **Use TLS**. If you are using a self-signed certificate, provide the **CA Certificate PEM**. You can copy and paste the certificate or upload it using the **Read from a file** button.
 
->**Note:** Fluentd does not support self signed certificates. 
+>**Note:** Fluentd does not support self-signed certificates when client authentication is enabled. 

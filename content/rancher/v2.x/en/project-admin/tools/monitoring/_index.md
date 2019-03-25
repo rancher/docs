@@ -35,7 +35,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Click **Save**.
 
-**Result:** A single application,`project-monitoring`, is added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.  After the application is `active`, you can start viewing [project metrics](#project-metrics) through the [Rancher dashboard]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#rancher-dashboard) or directly from [Grafana]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
+**Result:** A single application,`project-monitoring`, is added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the project.  After the application is `active`, you can start viewing [project metrics](#project-metrics) through the [Rancher dashboard]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#rancher-dashboard) or directly from [Grafana]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
 
 ## Project Metrics
 
