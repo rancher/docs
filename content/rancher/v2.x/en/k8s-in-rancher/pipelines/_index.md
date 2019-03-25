@@ -241,6 +241,30 @@ During this initial run, your pipeline is tested, and the following [pipeline co
 
 This process takes several minutes. When it completes, you can view each pipeline component from the project **Workloads** tab.
 
+## Pipeline Setting
+
+When a repository is enabled, a webhook is automatically set in the version control provider. By default, the pipeline is triggered by a **push** event to a repository, but you can modify the event(s) that trigger running the pipeline.
+
+Available Events:
+
+* **Push**: Whenever a commit is pushed to the branch in the repository, the pipeline is triggered.
+* **Pull Request**: Whenever a pull request is made to the repository, the pipeline is triggered.
+* **Tag**: When a tag is created in the repository, the pipeline is triggered.
+
+> **Note:** This option doesn't exist for Rancher's [example repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/example/).
+
+### Modifying the Event Triggers for the Repository
+
+1. From the **Global** view, navigate to the project that you want to modify the event trigger for the pipeline.
+
+1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+
+1. Find the repository that you want to modify the event triggers. Select the vertical **Ellipsis (...) > Setting**.
+
+1. Select which event triggers (**Push**, **Pull Request** or **Tag**) you want for the repository.
+
+1. Click **Save**.
+
 ## Step Types
 
 Within each stage, you can add as many steps as you'd like. When there are multiple steps in one stage, they run concurrently.
@@ -272,7 +296,7 @@ The **Run Script** step executes arbitrary commands in the workspace inside a sp
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
-
+<br>
 ```yaml
 # example
 stages:
@@ -282,6 +306,7 @@ stages:
       image: golang
       shellScript: go build
 ```
+<br>
 {{% /tab %}}
 
 {{% /tabs %}}     
@@ -307,6 +332,7 @@ The **Build and Publish Image** step builds and publishes a Docker image. This p
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
+<br>
 ```yaml
 # example
 stages:
@@ -329,7 +355,7 @@ PLUGIN_DEBUG            | Docker daemon executes in debug mode
 PLUGIN_MIRROR           | Docker daemon registry mirror
 PLUGIN_INSECURE         | Docker daemon allows insecure registries
 PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
-
+<br>
 {{% /tab %}}
 
 {{% /tabs %}}
@@ -365,7 +391,7 @@ The **Publish Catalog Template** step publishes a version of a catalog app templ
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
-
+<br>
 You can add **Publish Catalog Template** steps directly in the `.rancher-pipeline.yml` file.
 
 Under the `steps` section, add a step with `publishCatalogConfig`. You will provide the following information:
@@ -396,6 +422,8 @@ stages:
     - sourceName: publish-keys
       sourceKey: DEPLOY_KEY
 ```
+
+<br>
 {{% /tab %}}
 
 {{% /tabs %}}
@@ -417,7 +445,7 @@ This step deploys arbitrary Kubernetes resources to the project. This deployment
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
-
+<br>
 ```yaml
 # example
 stages:
@@ -426,7 +454,7 @@ stages:
   - applyYamlConfig:
       path: ./deployment.yaml
 ```
-
+<br>
 {{% /tab %}}
 
 {{% /tabs %}}     
@@ -440,7 +468,6 @@ The **Deploy Catalog App** step deploys a catalog app in the project. It will in
 {{% tabs %}}
 
 {{% tab "By UI" %}}
-<br/>
 
 1. From the **Step Type** drop-down, choose **Deploy Catalog App**.
 
@@ -459,7 +486,7 @@ The **Deploy Catalog App** step deploys a catalog app in the project. It will in
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
-
+<br>
 You can add **Deploy Catalog App** steps directly in the `.rancher-pipeline.yml` file.
 
 Under the `steps` section, add a step with `applyAppConfig`. You will provide the following information:
@@ -483,6 +510,7 @@ stages:
       name: testmysql
       targetNamespace: test
 ```
+<br>
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -490,27 +518,13 @@ stages:
 
 Within a pipeline, there are multiple advanced options for different parts of the pipeline.
 
-- [Pipeline Trigger Rules](#trigger-rules)
+- [Trigger Rules](#trigger-rules)
 - [Environment Variables](#configuring-environment-variables)
 - [Secrets](#configuring-pipeline-secrets)
 
 ### Trigger Rules
 
-When a repository is enabled, a webhook for it is automatically set in the version control system. By default, the project pipeline is triggered by a push event to a specific repository, but you can add (or change) events that trigger a build, such as a pull request or a tagging. When an event type is disabled, pipeline executions will not be triggered by the wehook of that event type.
-
-To change event triggers for a repository:
-
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
-
-1. Select **Workloads** in the navigation bar and then select the Pipelines tab.
-
-1. From the repository for which you want to change the event triggers, select **Ellipsis (...) > Setting**.
-
-1. Click on the check box to enable/disable triggering for **Push**, **Pull Request** or **Tag** event.
-
-1. Click **Save**.
-
-You can also set trigger rules to have fine-grained control of pipeline executions in pipeline configurations. Trigger rules come in two types:
+Trigger rules can be created to have fine-grained control of pipeline executions in your pipeline configuration. Trigger rules come in two types:
 
 - **Run this when:**
 
@@ -520,17 +534,18 @@ You can also set trigger rules to have fine-grained control of pipeline executio
 
     This type of rule skips the pipeline, stage, or step when a trigger explicitly occurs.
 
-If all conditions evaluate to true, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, no execution will be triggered. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run. Wildcard character (`*`) expansion is supported in conditions.
+If all conditions evaluate to `true`, then the pipeline/stage/step is executed. Otherwise it is skipped. When a pipeline is skipped, none of the pipeline is executed. When a stage/step is skipped, it is considered successful and follow-up stages/steps continue to run.
 
-#### Pipeline Trigger
+Wildcard character (`*`) expansion is supported in `branch` conditions.
+
 {{% tabs %}}
 {{% tab "Pipeline Trigger" %}}
 
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
+1. From the **Global** view, navigate to the project that you want to configure a pipeline trigger rule.
 
 1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
 
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
 1. Click on **Show Advanced Options**.
 
@@ -544,21 +559,21 @@ If all conditions evaluate to true, then the pipeline/stage/step is executed. Ot
 
 {{% /tab %}}
 {{% tab "Stage Trigger" %}}
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
+1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
 1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
 
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
-1. Find the **stage** that you want to configure a trigger rule for, click the **Edit** icon.
+1. Find the **stage** that you want to manage trigger rules, click the **Edit** icon for that stage.
 
 1. Click **Show advanced options**.
 
-1. In the **Trigger Rules** section, configure rules to run or skip the pipeline.
+1. In the **Trigger Rules** section, configure rules to run or skip the stage.
 
     1.  Click **Add Rule**.  
 
-    1.  Choose the **Type** that triggers the step and enter a value.
+    1.  Choose the **Type** that triggers the stage and enter a value.
 
         | Type   | Value                                                                |
         | ------ | -------------------------------------------------------------------- |
@@ -569,17 +584,17 @@ If all conditions evaluate to true, then the pipeline/stage/step is executed. Ot
 
 {{% /tab %}}
 {{% tab "Step Trigger" %}}
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
+1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
 1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
 
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
-1. Within one of the stages, find the **step** that you want to configure a trigger for, click the **Edit** icon.
+1. Find the **step** that you want to manage trigger rules, click the **Edit** icon for that step.
 
 1. Click **Show advanced options**.
 
-1. Add one or more trigger rules.
+1. In the **Trigger Rules** section, configure rules to run or skip the step.
 
     1.  Click **Add Rule**.  
 
@@ -587,12 +602,14 @@ If all conditions evaluate to true, then the pipeline/stage/step is executed. Ot
 
         | Type   | Value                                                                |
         | ------ | -------------------------------------------------------------------- |
-        | Branch | The name of the branch that triggers the stage.                      |
-        | Event  | The type of event that triggers the stage. Values are: `Push`, `Pull Request`, `Tag`  |
+        | Branch | The name of the branch that triggers the step.                      |
+        | Event  | The type of event that triggers the step. Values are: `Push`, `Pull Request`, `Tag` |
 
 1. Click **Save**.
+
 {{% /tab %}}
 {{% tab "By YAML" %}}
+<br>
 ```yaml
 # example
 stages:
@@ -615,6 +632,7 @@ branch:
   include: [ master, feature/*]
   exclude: [ dev ]
 ```
+<br>
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -643,6 +661,7 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
+<br>
 ```yaml
 # example
 stages:
@@ -655,6 +674,7 @@ stages:
         FIRST_KEY: VALUE
         SECOND_KEY: VALUE2
 ```
+<br>
 {{% /tab %}}
 
 {{% /tabs %}}
@@ -663,9 +683,11 @@ stages:
 
 If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using Kubernetes [secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 
->**Prerequisite:** Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
+#### Prerequisite
+Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
+<br>
 
->**Note:** Secret injection is disabled on pull request events.
+>**Note:** Secret injection is disabled on [pull request events](#pipeline-setting).
 
 {{% tabs %}}
 {{% tab "By UI" %}}
@@ -685,6 +707,7 @@ If you need to use security-sensitive information in your pipeline scripts (like
 
 {{% /tab %}}
 {{% tab "By YAML" %}}
+<br>
 ```yaml
 # example
 stages:
@@ -699,6 +722,7 @@ stages:
         sourceKey: secret-key
         targetKey: ALIAS_ENV
 ```
+<br>
 {{% /tab %}}
 {{% /tabs %}}
 

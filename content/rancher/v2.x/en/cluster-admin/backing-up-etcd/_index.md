@@ -9,9 +9,12 @@ In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clu
 
 Rancher recommends enabling the ability to set up recurring snapshots, but one-time snapshots can easily be taken as well.  
 
+>**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, you must [edit the existing cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and save it in order to enable the new snapshot features. Even if you had already enabled snapshots prior to v2.2.0, you must do this step as the old snapshots will not be available to [back up and restore etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/restoring-etcd/).
+
 ## Configuring Recurring Snapshots for the Cluster
 
-By default, any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are enabled to take recurring snapshots that are saved locally. If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, you can enable recurring snapshots by editing the existing cluster.
+By default, any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are enabled to take recurring snapshots that are saved locally.
+
 
 During cluster provisioning or editing the cluster, the configuration about snapshots are in the advanced section for **Cluster Options**. Click on **Show advanced options**.
 
