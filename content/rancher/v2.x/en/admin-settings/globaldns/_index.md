@@ -19,7 +19,7 @@ The following table lists the first version of Rancher each provider debuted.
 | --- | --- |
 | [AWS Route53](https://aws.amazon.com/route53/)  | v2.2.0 |
 | [CloudFlare](https://www.cloudflare.com/dns/) | v2.2.0 |
-| [AliDNS](http://www.alidns.com/) | v2.2.0 |
+| [AliDNS](https://www.alibabacloud.com/product/dns) | v2.2.0 |
 
 ## Global DNS Entries
 
@@ -53,13 +53,18 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 1. Under **Member Access**, search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry.
 1. Click **Create**.
 {{% /accordion %}}
-{{% accordion id="alidns" label="alidns" %}}
+{{% accordion id="alidns" label="AliDNS" %}}
 1. Enter a **Name** for the provider.
 1. Enter the **Root Domain**, this field is optional, in case this is not provided, Rancher's Global DNS Provider will work with all domains that the keys can access.
 1. Enter the **Access Key**.
 1. Enter the **Secret Key**.
 1. Under **Member Access**, search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry.
 1. Click **Create**.
+
+>**Notes:**
+>
+>- Alibaba Cloud SDK uses TZ data. It needs to be present on `/usr/share/zoneinfo` path of the nodes running [`local` cluster]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster), and it is mounted to the external DNS pods. If it is not available on the nodes, please follow the [instruction](https://www.ietf.org/timezones/tzdb-2018f/tz-link.html) to prepare it.
+>- Different versions of AliDNS have different allowable TTL range, where the default TTL for a global DNS entry may not be valid. Please see the [reference](https://www.alibabacloud.com/help/doc-detail/34338.htm) before adding an AliDNS entry.
 {{% /accordion %}}
 
 ### Add a Global DNS Entry
