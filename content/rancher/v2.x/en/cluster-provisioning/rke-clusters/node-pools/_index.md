@@ -19,13 +19,15 @@ After you create a node template in Rancher, it's saved so that you can use this
 
 ## Cloud Credentials 
 
-Starting 2.2, Node templates will use cloud credentials to store credentials for launching nodes in your cloud provider. There are two benefits of using cloud credential -
+_Available as of v2.2.0_
 
-- Credentials are stored in Kubernetes secrets for security. This also means you no longer have to enter credential every time you edit a node template.
+Node templates can use cloud credentials to store credentials for launching nodes in your cloud provider, which has some benefits:
 
-- After you create cloud credential in Rancher, it's saved so that this credential can be used again to create other node templates. 
+- Cloud credentials are stored as Kubernetes secrets for security. Credentials are no longer needed to be re-entered any time you want to edit a node template.
 
-- So when your keys are expired or compromised, you can just update cloud credential in one place and changes will be updated to all the node templates using it.
+- After the cloud credential is created, it can be re-used to create additional node templates. 
+
+- When access and secret keys are expired or compromised, the cloud credential can be updated with the new information, which will automatically be updated for all the node templates referencing this cloud credential. 
 
 ## Node Drivers
 
