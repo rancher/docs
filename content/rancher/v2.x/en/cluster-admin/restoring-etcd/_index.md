@@ -9,6 +9,8 @@ etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl 
 
 Rancher recommends enabling the [ability to set up recurring snapshots of etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots-for-the-cluster), but [one-time snapshots]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](##restoring-your-cluster-from-a-snapshot) or if you don't have any snapshots, you can still [restore etcd](#recovering-etcd-without-a-snapshot).
 
+>**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, you must [edit the existing cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and save it in order to [enable the new snapshot features]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/). Even if you had already enabled snapshots prior to v2.2.0, you must do this step as the old snapshots will not be available to back up and restore etcd.
+
 ## Viewing Available Snapshots
 
 The list of all available snapshots for the cluster is available.
