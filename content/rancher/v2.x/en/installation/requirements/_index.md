@@ -8,18 +8,20 @@ Whether you're configuring Rancher to run in a single-node or high-availability 
 
 {{% tabs %}}
 {{% tab "Operating Systems and Docker" %}}
-Rancher is supported on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
-
+Rancher is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
 
 *   Ubuntu 16.04 (64-bit)
-  * Docker 17.03.2, 18.06.2, 18.09.2
-*   Red Hat Enterprise Linux (RHEL)/CentOS 7.5 (64-bit)
+  * Docker 17.03.x, 18.06.x, 18.09.x
+*   Ubuntu 18.04 (64-bit)
+  * Docker 18.06.x, 18.09.x
+*   Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit)
   * RHEL Docker 1.13
-  * Docker 17.03.2, 18.06.2, 18.09.2
+  * Docker 17.03.x, 18.06.x, 18.09.x
 *   RancherOS 1.5.1 (64-bit)
-  * Docker 17.03.2, 18.06.2, 18.09.2
+  * Docker 17.03.x, 18.06.x, 18.09.x
 *   Windows Server version 1803 (64-bit)
   * Docker 17.06
+  * _Experimental, see [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)_
 
 If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
 ```
