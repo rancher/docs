@@ -169,9 +169,9 @@ _Available as of v2.2.0_
 
 **Result:** After the version control provider is authenticated, you will be automatically re-directed to start [configuring which repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) that you want start using with a pipeline. Once a repository is enabled, you can start to [configure the pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
 
-## Managing Pipeline Settings
+## Managing Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured for all pipelines.
+After configuring a version control provider, there are several options that can be configured globally on how [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) are executed in Rancher.
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
