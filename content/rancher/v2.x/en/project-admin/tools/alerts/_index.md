@@ -7,6 +7,8 @@ To keep your clusters and applications healthy and driving your organizational p
 
 Alerts are sets of rules, chosen by you, to monitor for specific events.
 
+Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
+
 ## Alerts Scope
 
  The scope for alerts can be set at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.

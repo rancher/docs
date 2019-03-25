@@ -28,6 +28,8 @@ Typically, pipeline stages include:
 
     After the artifacts are published, you would release your application so users could start using the updated product.
 
+Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can [configure version control providers](#version-control-providers) and [manage global pipeline execution settings](#managing-global-pipeline-execution-settings). Project members can only configure [repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) and [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
+
 ## Overview
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
@@ -80,7 +82,7 @@ After you configure a pipeline, you can trigger it using different methods:
 
 ## Version Control Providers
 
-Before you can start [configuring a pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) for your repository, you must configure and authorize a version control provider.
+Before you can start [configuring a pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) for your repository, you must configure and authorize a version control provider.
 
 | Provider  | Available as of  |
 | --- | --- |

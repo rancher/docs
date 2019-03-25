@@ -15,6 +15,8 @@ Rancher supports the following services:
 
 >**Note:** You can only configure one logging service per cluster or per project.
 
+Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can configure Rancher to send Kubernetes logs to a logging service.
+
 ## Requirements
 
 The Docker daemon on each node in the cluster should be [configured](https://docs.docker.com/config/containers/logging/configure/) with the (default) log-driver: `json-file`. You can check the log-driver by running the following command:
@@ -48,8 +50,6 @@ Logs that are sent to your logging service are from the following locations:
   - Kubernetes system components logs stored at `/var/lib/rancher/rke/logs/`.
 
 ## Enabling Project Logging
-
-As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) or [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles), you can configure Rancher to send Kubernetes logs to a logging service.
 
 1. From the **Global** view, navigate to the project that you want to configure project logging.
 

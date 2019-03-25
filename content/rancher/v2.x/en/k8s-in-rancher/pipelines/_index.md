@@ -13,7 +13,7 @@ aliases:
 
 Before setting up any pipelines, review the [pipeline overview]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/) and ensure that the project has [configured authentication to your version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#version-control-providers), e.g. GitHub, GitLab, Bitucket. If you haven't configured a version control provider, you can always use [Rancher's example repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/example/) to view some common pipeline deployments.
 
-If you can access a project, you can enable repositories to start building pipelines. Only an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) or [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can authorize version control providers.
+If you can access a project, you can enable repositories to start building pipelines. Only an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can authorize version control providers.
 
 ## Concepts
 
