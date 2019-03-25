@@ -79,12 +79,12 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 ## Adding Annotations to Ingresses to program the External DNS
 
-In order for Global DNS entries to be programmed, you will need to add a specific annotation label on each ingress and this ingress needs to use a specific `hostname` that should match the FQDN of the Global DNS entry.
+In order for Global DNS entries to be programmed, you will need to add a specific annotation on an ingress in your application or target project and this ingress needs to use a specific `hostname` and an annotation that should match the FQDN of the Global DNS entry.
 
-1. For any application that you want targetted for your Global DNS entry, find the ingresses associated with these applications.
-1. In order for the DNS to pe programmed, the following requirements must be met:
-   * The ingress must be set to use a `hostname` that matches the FQDN of the Global DNS entry.
-   * The ingress must have an annotation label (`rancher.io/globalDNS.hostname`) and the value of the label should match the FQDN of the Global DNS entry.
+1. For any application that you want targetted for your Global DNS entry, find an ingress associated with the application.
+1. In order for the DNS to be programmed, the following requirements must be met:
+   * The ingress routing rule must be set to use a `hostname` that matches the FQDN of the Global DNS entry.
+   * The ingress must have an annotation (`rancher.io/globalDNS.hostname`) and the value of this annotation should match the FQDN of the Global DNS entry.
 1. Once the ingress in your [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
 
 ## Editing a Global DNS Provider
