@@ -1,6 +1,6 @@
 ---
 title: Pipelines
-weight: 3065
+weight: 3047
 aliases:
   - /rancher/v2.x/en/tools/pipelines/concepts/
 
