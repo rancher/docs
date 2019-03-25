@@ -157,7 +157,7 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 In Windows clusters, containers communicate with each other using the `host-gw` mode of Flannel. In `host-gw` mode, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
 
-- When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work. Please contact [Rancher support](https://rancher.com/support/) if your worker nodes on AWS, virtualization clusters, or bare metal servers don't belong to the same layer 2 network.
+- When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work.
 
 - When worker nodes are provisioned on GCE or Azure, they are not on the same layer 2 subnet. Nodes on GCE and Azure belong to a routable layer 3 network. Follow the instructions below to configure GCE and Azure so that the cloud network knows how to route the host subnets on each node.
 
