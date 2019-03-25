@@ -1,5 +1,5 @@
 ---
-title: Recovering etcd
+title: Restoring etcd
 weight: 2050
 ---
 

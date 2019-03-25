@@ -1,6 +1,6 @@
 ---
 title: Global DNS
-weight: 1145
+weight: 5010
 ---
 
 _Available as of v2.2.0_

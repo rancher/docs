@@ -55,7 +55,7 @@ After clusters have been [provisioned into Rancher]({{< baseurl >}}/rancher/v2.x
 | [Cloning Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cloning-clusters/)| | * | * |
 | [Ability to rotate certificates]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/certificate-rotation/) | * |  | |
 | [Ability to back up your Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/) | * | | |
-| [Recovering etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/recovering-etcd/) | * | | |
+| [Ability to recover and restore etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/restoring-etcd/) | * | | |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cleaning-cluster-nodes/) | * | | |
 
 ## Configuring Tools

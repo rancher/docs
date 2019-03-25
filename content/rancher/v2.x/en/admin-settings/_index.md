@@ -4,20 +4,40 @@ weight: 1100
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/
   - /rancher/v2.x/en/tasks/global-configuration/
+  - /rancher/v2.x/en/concepts/global-configuration/server-url/
+  - /rancher/v2.x/en/tasks/global-configuration/server-url/
+  - /rancher/v2.x/en/admin-settings/server-url/
+  - /rancher/v2.x/en/admin-settings/log-in/
 ---
 
-After installation, the system administrator should configure Rancher to configure security, default settings, and user access.
+After installation, the [system administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) should configure Rancher to configure authentication, authorization, security, default settings, security policies, drivers and global DNS entries.
 
-## Drivers
+## First Log In
 
-Drivers in Rancher allow you to manage which providers can be used to deploy [hosted Kubernetes clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) or [nodes in an infrastructure provider]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to allow Rancher to deploy and manage Kubernetes.
+After you log into Rancher for the first time, Rancher will prompt you for a **Rancher Server URL**.You should set the URL to the main entry point to the Rancher Server. When a load balancer sits in front a Rancher Server cluster, the URL should resolve to the load balancer. The system will automatically try to infer the Rancher Server URL from the IP address or host name of the host running the Rancher Server. This is only correct if you are running a single node Rancher Server installation. In most cases, therefore, you need to set the Rancher Server URL to the correct value yourself.
 
-For more information, see [Drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/).
+>**Important!** After you set the Rancher Server URL, we do not support updating it. Set the URL with extreme care.
 
-## Global DNS
+## Authentication
 
-_Available as v2.2.0_
+One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows to set up local users and/or connect to an external authentication provider. By connecting to an external authentication provider, you can leverage that provider's user and groups.
 
-When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
+For more information how authentication works and how to configure each provider, see [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/).
 
-For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/admin-settings/globaldns/).
+## Authorization
+
+Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by the user's role. Rancher provides built-in roles to allow you to easily configure a user's permissions to resources, but Rancher also provides the ability to customize the roles for each Kubernetes resource.
+
+For more information how authorization works and how to customize roles, see [Roles Based Access Control (RBAC)]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
+
+## Pod Security Policies
+
+_Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification, e.g. root privileges. If a pod does not meet the conditions specified in the PSP, Kubernetes will not allow it to start, and Rancher will display an error message.
+
+For more information how to create and use PSPs, see [Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/).
+
+## Provisioning Drivers
+
+Drivers in Rancher allow you to manage which providers can be used to provision [hosted Kubernetes clusters]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) or [nodes in an infrastructure provider]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to allow Rancher to deploy and manage Kubernetes.
+
+For more information, see [Provisioning Drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/).
