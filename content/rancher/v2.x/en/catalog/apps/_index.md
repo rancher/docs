@@ -5,6 +5,8 @@ weight: 5005
 
 Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#catalog-scope).
 
+If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
+
 ## Launching Catalog Applications
 
 After you've either enabled the [built-in global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or [added your own custom catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding), you can start launching catalog applications.

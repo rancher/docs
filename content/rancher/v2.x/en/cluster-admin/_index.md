@@ -32,15 +32,47 @@ etcd is a distributed key value store, meaning it runs on multiple nodes so that
 
 Worker nodes also run storage and networking drivers, and ingress controllers when required. You create as many worker nodes as necessary to run your workloads.
 
+After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
+
+## Interacting with Clusters
+
+- **Rancher UI**
+
+    Rancher provides an intuitive user interface for interacting with your clusters. All options available in the UI use the Rancher API. Therefore any action possible in the UI is also possible in the Rancher CLI or Rancher API.
+
+- **kubectl**
+
+    You can use the Kubernetes command-line tool, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), to manage   your clusters. You have two options for using kubectl:
+
+    - **Rancher kubectl shell**
+
+        Interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part.
+
+        For more information, see [Accessing Clusters with kubectl Shell]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-shell).
+
+    - **Terminal remote connection**
+
+        You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local desktop and then copying the cluster's kubeconfig file to your local `~/.kube/config` directory.
+
+        For more information, see [Accessing Clusters with kubectl and a kubeconfig File]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file).
+
+- **Rancher CLI**
+
+    You can control your clusters by downloading Rancher's own command-line interface, [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli/). This CLI tool can interact directly with different clusters and projects or pass them `kubectl` commands.
+
+- **Rancher API**
+
+    Finally, you can interact with your clusters over the Rancher API. Before you use the API, you must obtain an [API key]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/). To view the different resource fields and actions for an API object, open the API UI, which can be accessed by clicking on **View in API** for any Rancher UI object.
+
 ## Switching between Clusters
 
 To switch between clusters, use the drop-down available in the navigation bar.
 
-Alternatively, you can switch between projects and clusters directly in the navigation bar. Open the **Global** view and select **Clusters** from the main menu. Then open a cluster.
+Alternatively, you can switch between projects and clusters directly in the navigation bar. Open the **Global** view and select **Clusters** from the main menu. Then select the name of the cluster you want to open.
 
 ## Managing Clusters in Rancher
 
-After clusters have been [provisioned into Rancher]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/), [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) will need to manage these clusters.
+After clusters have been [provisioned into Rancher]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/), [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster. 
 
 | Action | [Rancher launched Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) | [Hosted Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) | [Imported Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters) |
 | --- | --- | ---| ---|

@@ -47,3 +47,4 @@ Ingress can provide other functionality as well, such as SSL termination, name-b
 
 - For more information on how to setup ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).

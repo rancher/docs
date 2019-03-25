@@ -8,6 +8,8 @@ Typically, most applications are deployed on a single Kubernetes cluster, but th
 
 Any Helm charts from a [global catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/#catalog-scope) can be used to deploy and manage multi-cluster applications.
 
+After creating a multi-cluster application, you can program a [Global DNS entry]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/) to make it easier to access the application.
+
 ## Launching a Multi-Cluster App
 
 1. From the **Global** view, choose **Apps** in the navigation bar. Click **Launch**.
