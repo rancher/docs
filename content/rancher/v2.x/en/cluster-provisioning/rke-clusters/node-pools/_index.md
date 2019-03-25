@@ -17,6 +17,18 @@ A node template is the saved configuration for the parameters to use when provis
 
 After you create a node template in Rancher, it's saved so that you can use this template again to create other node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
+## Cloud Credentials 
+
+_Available as of v2.2.0_
+
+Node templates can use cloud credentials to store credentials for launching nodes in your cloud provider, which has some benefits:
+
+- Cloud credentials are stored as Kubernetes secrets for security. Credentials are no longer needed to be re-entered any time you want to edit a node template.
+
+- After the cloud credential is created, it can be re-used to create additional node templates. 
+
+- When access and secret keys are expired or compromised, the cloud credential can be updated with the new information, which will automatically be updated for all the node templates referencing this cloud credential. 
+
 ## Node Drivers
 
 If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers), or you can [add your own custom node driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/#adding-custom-node-drivers).

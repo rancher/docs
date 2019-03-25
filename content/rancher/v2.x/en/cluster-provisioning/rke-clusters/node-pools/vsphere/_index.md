@@ -61,6 +61,8 @@ To create a cluster, you need to create at least one vSphere [node template]({{<
 
 4. Under [Account Access](#account-access) enter the vCenter FQDN or IP address and the credentials for the vSphere user account (see [Prerequisites](#prerequisites)).
 
+	{{< step_create-cloud-credential >}}
+
 5. Under [Instance Options](#instance-options), configure the number of vCPUs, memory, and disk size for the VMs created by this template.
 
 6. **Optional:** Enter the URL pointing to a [RancherOS]({{< baseurl >}}/os/v1.x/en/) cloud-config file in the [Cloud Init](#instance-options) field.

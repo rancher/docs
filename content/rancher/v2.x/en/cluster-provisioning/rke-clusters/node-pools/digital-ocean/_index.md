@@ -25,6 +25,8 @@ Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 		[DigitalOcean Instructions: How To Generate a Personal Access Token](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token)
 
+		{{< step_create-cloud-credential >}}
+
 	3. Complete the **DigitalOcean Options** form.
 
 		- **Droplet Options** provision your cluster's geographical region and specifications.

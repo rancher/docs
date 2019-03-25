@@ -31,6 +31,8 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
       * **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisistes](#prerequisistes) how to create the Access Key and Secret Key and the needed permissions.
 
+        {{< step_create-cloud-credential >}}
+                
 	- **Zone and Network** configures the availability zone and network settings for your cluster.
     - **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{< baseurl >}}/rancher/v2.x/en/installation/references/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
     - **Instance** configures the instances that will be created. Make sure you configure the correct **SSH User** for the configured AMI.

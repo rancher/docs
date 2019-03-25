@@ -43,5 +43,7 @@ When access credentials are changed or compromised, updating a cloud credential 
 In order to delete cloud credentials, there must not be any node template associated with it. If you are unable to delete the cloud credential, [delete any node templates]({{< baseurl >}}/rancher/v2.x/en/user-settings/node-templates/#deleting-a-node-template) that are still associated to that cloud credential.
 
 1. From your user settings, select **User Avatar > Cloud Credentials**.
-1. You can either individually delete a cloud credential or bulk delete. To individually delete one, choose the cloud credential you want to edit and click the **Vertical Ellipsis (...) > Delete**. To bulk delete cloud credentials, select one or more cloud credentials from the list. Click **Delete**.
+1. You can either individually delete a cloud credential or bulk delete. 
+	- To individually delete one, choose the cloud credential you want to edit and click the **Vertical Ellipsis (...) > Delete**. 
+	- To bulk delete cloud credentials, select one or more cloud credentials from the list. Click **Delete**.
 1. Confirm that you want to delete these cloud credentials.
