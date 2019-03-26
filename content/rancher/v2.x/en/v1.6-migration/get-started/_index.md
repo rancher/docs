@@ -88,7 +88,7 @@ After provisioning a new cluster and project, you can authorize your users to ac
 
 ## D. Create Stacks
 
-In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{< baseurl >}}rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-namespaces), which are the v2.x equivalent of stacks, for the same purpose.
+In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-namespaces), which are the v2.x equivalent of stacks, for the same purpose.
 
 In Rancher v2.x, namespaces are child objects to projects. When you create a project, a `default` namespace is added to the project, but you can create your own to parallel your stacks from v1.6.
 
