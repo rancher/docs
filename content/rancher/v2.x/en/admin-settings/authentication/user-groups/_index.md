@@ -44,7 +44,7 @@ If you are not sure the last time Rancher performed an automatic refresh of user
 
 1. From the **Global** view, click on **Users** in the navigation bar.
 
-1. Click on **Refresh Global Memberships**.
+1. Click on **Refresh Group Memberships**.
 
 **Results:** Rancher refreshes the user information for all users. Requesting this refresh will update which users can access Rancher as well as all the groups that each user belongs to.
 
