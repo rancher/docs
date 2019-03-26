@@ -51,19 +51,15 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
     >**Note:**  There is no option to use existing Jenkins deployments as the pipeline engine.
 
-    <a id="reg"></a>
-
   - **Docker Registry:**
 
     Out-of-the-box, the default target for your build-publish step is an internal Docker Registry. However, you can make configurations to push to a remote registry instead. The internal Docker Registry is only accessible from cluster nodes and cannot be directly accessed by users. Images are not persisted beyond the lifetime of the pipeline and should only be used in pipeline runs. If you need to access your images outside of pipeline runs, please push to an external registry.
-
-    <a id="minio"></a>
 
   - **Minio:**
 
     Minio storage is used to store the logs for pipeline executions.
 
-  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components](#data-persistency-for-pipeline-components).
+  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components](#configuring-persistent-data-for-pipeline-components).
 
 ## Pipeline Triggers
 
@@ -250,15 +246,13 @@ If you want to use a version control provider with a certificate from a custom/i
 
 ## Configuring Persistent Data for Pipeline Components
 
-The internal [Docker registry]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#reg) and the [Minio]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/#minio) workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
-
-Complete both [A—Configuring Persistent Data for Docker Registry](#a—configuring-persistent-data-for-docker-registry) _and_ [B—Configuring Persistent Data for Minio](#b—configuring-persistent-data-for-minio).
+The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelines-work) workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
 >**Prerequisites (for both parts A and B):**
 >
 >[Persistent volumes]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#persistent-volumes) must be available for the cluster.
 
-#### A. Configuring Persistent Data for Docker Registry
+### A. Configuring Persistent Data for Docker Registry
 
 1. From the project that you're configuring a pipeline for, select the **Workloads** tab.
 
@@ -305,7 +299,7 @@ Complete both [A—Configuring Persistent Data for Docker Registry](#a—configu
 
 1. Click **Upgrade**.
 
-#### B. Configuring Persistent Data for Minio
+### B. Configuring Persistent Data for Minio
 
 1. From the **Workloads** tab, find the `minio` workload and select **Ellipsis (...) > Edit**.
 

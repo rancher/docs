@@ -32,7 +32,7 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
 
 2. After executing the command a `tokens.json` file will be created.  Important! Back up this file in a safe place.** You will need it to restore functionality to your clusters after rolling back Rancher.  **If you lose this file, you may lose access to your clusters.**
 
-3. Rollback Rancher following the [normal instructions](https://rancher.com/docs/rancher/v2.x/en/upgrades/rollbacks/).
+3. Rollback Rancher following the [normal instructions]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/).
 
 4. Once Rancher comes back up, every cluster managed by Rancher (except for Imported clusters) will be in an `Unavailable` state.
 

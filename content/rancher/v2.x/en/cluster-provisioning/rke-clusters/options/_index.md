@@ -121,7 +121,7 @@ See [Docker Root Directory](#docker-root-directory).
 
 #### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring/).
+Option to enable or disable [Cluster Monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/).
 
 #### enable_network_policy
 

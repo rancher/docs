@@ -9,7 +9,7 @@ For Rancher v2.x, we've replaced the health check microservice, leveraging inste
 
 Use this document to correct Rancher v2.x workloads and services that list `health_check` in `output.txt`. You can correct them by configuring a liveness probe (i.e., a health check).
 
-For example, for the image below, we would configure liveness probes for the `web` and `weblb` workloads (i.e., the Kubernetes manifests output by migration-tools CLI). 
+For example, for the image below, we would configure liveness probes for the `web` and `weblb` workloads (i.e., the Kubernetes manifests output by migration-tools CLI).
 
 <figcaption>Resolve <code>health_check</code> for the <code>web</code> and <code>webLB</code> Workloads</figcaption>
 
@@ -34,7 +34,7 @@ The health check microservice features two types of health checks, which have a 
 
 - **TCP health checks**:
 
-    These health checks check if a TCP connection opens at the specified port for the monitored service. For full details, see the [Rancher v1.6 documentation](https://rancher.com/docs/rancher/v1.6/en/cattle/health-checks/).
+    These health checks check if a TCP connection opens at the specified port for the monitored service. For full details, see the [Rancher v1.6 documentation]({{< baseurl >}}/rancher/v1.6/en/cattle/health-checks/).
 
 - **HTTP health checks**:
 
@@ -89,7 +89,7 @@ Configure probes by using the **Health Check** section while editing deployments
 
 ### Configuring Checks
 
-While you create a workload using Rancher v2.x, we recommend configuring a check that monitors the health of the deployment's pods. 
+While you create a workload using Rancher v2.x, we recommend configuring a check that monitors the health of the deployment's pods.
 
 {{% tabs %}}
 

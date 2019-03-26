@@ -5,7 +5,7 @@ weight: 700
 
 If your applications are public-facing and consume significant traffic, you should place a load balancer in front of your cluster so that users can always access their apps without service interruption. Typically, you can fulfill a high volume of service requests by [horizontally scaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) your deployment, which spins up additional application containers as traffic ramps up. However, this technique requires routing that distributes traffic across your nodes efficiently. In cases where you need to accommodate public traffic that scales up and down, you'll need a load balancer.
 
-As outlined in [its documentation](https://rancher.com/docs/rancher/v1.6/en/cattle/adding-load-balancers/), Rancher v1.6 provided rich support for load balancing using its own microservice powered by HAProxy, which supports HTTP, HTTPS, TCP hostname, and path-based routing. Most of these same features are available in v2.x. However, load balancers that you used with v1.6 cannot be migrated to v2.x. You'll have to manually recreate your v1.6 load balancer in v2.x.
+As outlined in [its documentation]({{< baseurl >}}/rancher/v1.6/en/cattle/adding-load-balancers/), Rancher v1.6 provided rich support for load balancing using its own microservice powered by HAProxy, which supports HTTP, HTTPS, TCP hostname, and path-based routing. Most of these same features are available in v2.x. However, load balancers that you used with v1.6 cannot be migrated to v2.x. You'll have to manually recreate your v1.6 load balancer in v2.x.
 
 If you encounter the `output.txt` text below after parsing your v1.6 Compose files to Kubernetes manifests, you'll have to resolve it by manually creating a load balancer in v2.x.
 
@@ -41,9 +41,9 @@ Rancher v2.x offers similar functionality, but load balancing is instead handled
 
 By default, Rancher v2.x deploys NGINX Ingress Controller on clusters provisioned using RKE (Rancher's own Kubernetes installer) to process the Kubernetes Ingress rules. The NGINX Ingress Controller is installed by default only in clusters provisioned by RKE. Clusters provisioned by cloud providers like GKE have their own Ingress Controllers that configure the load balancer. For this document, our scope is limited to the RKE-installed NGINX Ingress Controller only, but you can read about cloud providers in [our documentation]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/).
 
-RKE deploys NGINX Ingress Controller as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), meaning that an NGINX instance is deployed on every node in the cluster. NGINX acts like an Ingress Controller listening to Ingress creation within your entire cluster, and it also configures itself as the load balancer to satisfy the Ingress rules. The DaemonSet is configured with hostNetwork to expose two ports: 80 and 443. 
+RKE deploys NGINX Ingress Controller as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), meaning that an NGINX instance is deployed on every node in the cluster. NGINX acts like an Ingress Controller listening to Ingress creation within your entire cluster, and it also configures itself as the load balancer to satisfy the Ingress rules. The DaemonSet is configured with hostNetwork to expose two ports: 80 and 443.
 
-For more information NGINX Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation](https://rancher.com/docs/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
+For more information NGINX Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
 
 ## Load Balancing Architecture
 
@@ -128,7 +128,7 @@ Rancher v2.x Ingress functionality supports the HTTPS protocol, but if you want 
 
 #### Layer-4 Load Balancer
 
-For the TCP protocol, Rancher v2.x supports configuring a Layer 4 load balancer using the cloud provider in which your Kubernetes cluster is deployed. Once this load balancer appliance is configured for your cluster, when you choose the option of a `Layer-4 Load Balancer` for port-mapping during workload deployment, Rancher automatically creates a corresponding load balancer service. This service will call the corresponding cloud provider and configure the load balancer appliance to route requests to the appropriate pods. See [Cloud Providers](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for information on how to configure LoadBalancer services for your cloud provider.
+For the TCP protocol, Rancher v2.x supports configuring a Layer 4 load balancer using the cloud provider in which your Kubernetes cluster is deployed. Once this load balancer appliance is configured for your cluster, when you choose the option of a `Layer-4 Load Balancer` for port-mapping during workload deployment, Rancher automatically creates a corresponding load balancer service. This service will call the corresponding cloud provider and configure the load balancer appliance to route requests to the appropriate pods. See [Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for information on how to configure LoadBalancer services for your cloud provider.
 
 For example, if we create a deployment named `myapp` and specify a Layer 4 load balancer in the **Port Mapping** section, Rancher will automatically add an entry to the **Load Balancer** tab named `myapp-loadbalancer`.
 
@@ -152,7 +152,7 @@ The key in the ConfigMap entry should be the TCP port that you want to expose fo
 
 ## Rancher v2.x Load Balancing Limitations
 
-Cattle provided feature-rich load balancer support that is [well documented](https://rancher.com/docs/rancher/v1.6/en/cattle/adding-load-balancers/#load-balancers). Some of these features do not have equivalents in Rancher v2.x. This is the list of such features:
+Cattle provided feature-rich load balancer support that is [well documented]({{< baseurl >}}/rancher/v1.6/en/cattle/adding-load-balancers/#load-balancers). Some of these features do not have equivalents in Rancher v2.x. This is the list of such features:
 
 - No support for SNI in current NGINX Ingress Controller.
 - TCP load balancing requires a load balancer appliance enabled by cloud provider within the cluster. There is no Ingress support for TCP on Kubernetes.

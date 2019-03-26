@@ -97,7 +97,7 @@ Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-a
 
 1. Expand **Resource Quotas** and click **Add Quota**. Alternatively, you can edit existing quotas.
 
-1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/#resource-quota-types).
 
 1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
 

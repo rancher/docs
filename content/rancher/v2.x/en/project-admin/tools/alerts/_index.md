@@ -22,7 +22,7 @@ At the project level, Rancher monitors specific deployments and sends alerts for
 
 ## Adding Project Alerts
 
->**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/notifiers/#adding-notifiers).
+>**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
 
 1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
 
@@ -99,13 +99,16 @@ This alert type monitors for the availability of all workloads marked with tags 
 
 {{% /accordion %}}
 {{% accordion id="project-expression" label="Metric Expression Alerts" %}}
-This alert type monitors for the overload from Prometheus expression querying, it would be available after you enable monitoring.
+<br>
+_Available as of v2.2.0_
+
+If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/#monitoring), this alert type monitors for the overload from Prometheus expression querying.
 
 1. Input or select an **Expression**, the drop down shows the original metrics from Prometheus, including:
 
   - [**Container**](https://github.com/google/cadvisor)
   - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
-  - [**Customize**]({{< baseurl >}}/rancher/v2.x/en/tools/monitoring/#custom-metrics)
+  - [**Customize**]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
   - [**Project Level Grafana**](http://docs.grafana.org/administration/metrics/)
   - **Project Level Prometheus**
 
@@ -138,7 +141,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
     - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
-
+<br>
 {{% /accordion %}}
 
 1. Continue adding more **Alert Rule** to the group.
