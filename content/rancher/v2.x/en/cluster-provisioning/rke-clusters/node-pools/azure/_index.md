@@ -39,7 +39,7 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 	4. Click **Create**.
 
 	5. **Optional:** Add additional node pools.
-
+<br>
 7. Review your options to confirm they're correct. Then click **Create**.
 
 {{< result_create-cluster >}}
