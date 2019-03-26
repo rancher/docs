@@ -23,6 +23,19 @@ nodes:
         -----BEGIN RSA PRIVATE KEY-----
 
         -----END RSA PRIVATE KEY-----
+    - address: 3.3.3.3
+      user: ubuntu
+      role:
+      - worker
+      ssh_key_path: /home/user/.ssh/id_rsa
+      ssh_cert_path: /home/user/.ssh/id_rsa-cert.pub
+    - address: 4.4.4.4
+      user: ubuntu
+      role:
+      - worker
+      ssh_key_path: /home/user/.ssh/id_rsa
+      ssh_cert: |-
+        ssh-rsa-cert-v01@openssh.com AAAAHHNza...
     - address: example.com
       user: ubuntu
       role:
@@ -68,6 +81,14 @@ For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private ke
 ### SSH Key
 
 Instead of setting the path to the SSH key, you can alternatively specify the actual key, i.e. `ssh_key`, to be used to connect to the node.
+
+### SSH Certificate Path
+
+For each node, you can specify the path, i.e. `ssh_cert_path`, for the signed SSH certificate to be used when connecting to this node.
+
+### SSH Certificate
+
+Instead of setting the path to the signed SSH certificate, you can alternatively specify the actual certificate, i.e. `ssh_cert`, to be used to connect to the node.
 
 ### Kubernetes Roles
 

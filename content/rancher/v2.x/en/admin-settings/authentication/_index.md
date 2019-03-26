@@ -1,6 +1,6 @@
 ---
 title: Authentication
-weight: 1110
+weight: 1115
 aliases:
     - /rancher/v2.x/en/concepts/global-configuration/authentication/
     - /rancher/v2.x/en/tasks/global-configuration/authentication/
@@ -12,9 +12,9 @@ This centralized user authentication is accomplished using the Rancher authentic
 
 <!-- todomark add diagram -->
 
-### External vs. Local Authentication
+## External vs. Local Authentication
 
-The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted. 
+The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted.
 
 | Auth Service                                                                                     | Available as of  |
 | ------------------------------------------------------------------------------------------------ | ---------------- |
@@ -26,13 +26,21 @@ The Rancher authentication proxy integrates with the following external authenti
 | [Microsoft AD FS]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/) | v2.0.7           |
 | [PingIdentity]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/ping-federate/)     | v2.0.7           |
 | [Keycloak]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/keycloak/)              | v2.1.0           |
-
+| [Okta]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/okta/)                      | v2.2.0           |
 <br/>
-However, Rancher also provides local authentication.
+However, Rancher also provides [local authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/local/).
 
-In most cases, you should use an external authentication service over local, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
+In most cases, you should use an external authentication service over local authentication, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
 
-### External Authentication Configuration and Principal Users
+## Users and Groups
+
+Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, multi-cluster apps, and global DNS providers and entries. When you give access to a group, all users who are a member of that group in the authentication provider will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see [Role Based Access Control]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
+
+> **Note:** Local authentication does not support creating or managing groups.
+
+For more information, see [Users and Groups]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/user-groups/)
+
+## External Authentication Configuration and Principal Users
 
 Configuration of external authentication requires:
 

@@ -24,8 +24,11 @@ The following instructions will guide you through upgrading a high-availability 
 
     [Install or update](https://docs.helm.sh/using_helm/#installing-helm) Helm to the latest version.
 
-- **Upgrades to v2.0.7+ only: check system namespace locations**
+- **Upgrades to v2.0.7+ only: check system namespace locations**<br/>
      Starting in v2.0.7, Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
+
+- **Upgrades to v2.2.0 only: mirror system-charts repository and configure Rancher**<br/>
+    Starting in v2.2.0, Rancher introduced the [System Charts](https://github.com/rancher/system-charts) repository which contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository locally and configure Rancher to use that repository. Please follow the instructions to [configure Rancher system charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/).
 
 ## Caveats
 Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories/) aren't supported.

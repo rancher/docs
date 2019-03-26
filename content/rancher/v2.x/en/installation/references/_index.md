@@ -17,7 +17,7 @@ The following table lists the ports that need to be open to and from nodes that 
 
 The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
->**Tip:** 
+>**Tip:**
 >
 >If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports](#commonly-used-ports) as your port reference instead of the comprehensive tables below.
 
@@ -44,7 +44,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{% tab "Hosted Clusters" %}}
 
-The following table depicts the port requirements for [hosted clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters). 
+The following table depicts the port requirements for [hosted clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters).
 
 {{< ports-imported-hosted >}}
 
@@ -75,6 +75,8 @@ These ports are typically opened on your Kubernetes nodes, regardless of what ty
 |    TCP   	|       2380       	| etcd peer communication                         	|
 |    UDP   	|       8472       	| Canal/Flannel VXLAN overlay networking          	|
 |    TCP   	|       9099       	| Canal/Flannel livenessProbe/readinessProbe      	|
+|    TCP   	|       6783       	| Weave Port      	|
+|    UDP   	|       6783-6784   | Weave UDP Ports      	|
 |    TCP   	|       10250      	| kubelet API                                     	|
 |    TCP   	|       10254      	| Ingress controller livenessProbe/readinessProbe 	|
 | TCP/UDP  	| 30000-</br>32767 	| NodePort port range                             	|
@@ -84,13 +86,13 @@ These ports are typically opened on your Kubernetes nodes, regardless of what ty
 ### Local Node Traffic
 
 Ports marked as `local traffic` (i.e., `9099 TCP`) in the above requirements are used for Kubernetes healthchecks (`livenessProbe` and`readinessProbe`).
-These healthchecks are executed on the node itself. In most cloud environments, this local traffic is allowed by default. 
+These healthchecks are executed on the node itself. In most cloud environments, this local traffic is allowed by default.
 
 However, this traffic may be blocked when:
 
 - You have applied strict host firewall policies on the node.
 - You are using nodes that have multiple interfaces (multihomed).
- 
+
 In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes / instances.
 
 ### Rancher AWS EC2 security group

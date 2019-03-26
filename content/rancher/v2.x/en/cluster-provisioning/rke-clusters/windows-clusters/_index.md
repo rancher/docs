@@ -15,7 +15,7 @@ This guide walks you through create of a custom cluster that includes 3 nodes: a
 
 >**Notes:**
 >
->- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
+>- For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
 >- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
 >- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
 
@@ -28,12 +28,11 @@ When setting up a custom cluster with support for Windows nodes and containers, 
 <!-- TOC -->
 
 - [1. Provision Hosts](#1-provision-hosts)
-- [2. Cloud-host VM Networking Configuration](#2-cloud-host-vm-networking-configuration)
+- [2. Cloud-host VM Networking Configuration](#2-cloud-hosted-vm-networking-configuration)
 - [3. Create the Custom Cluster](#3-create-the-custom-cluster)
 - [4. Add Linux Host for Ingress Support](#4-add-linux-host-for-ingress-support)
 - [5. Adding Windows Workers](#5-adding-windows-workers)
-- [6. Cloud-host VM Routes Configuration](#6-cloud-host-vm-routes-configuration)
-- [Troubleshooting](#troubleshooting)
+- [6. Cloud-host VM Routes Configuration](#6-cloud-hosted-vm-routes-configuration)
 
 <!-- /TOC -->
 
@@ -43,14 +42,14 @@ To begin provisioning a custom cluster with Windows support, prepare your host s
 
 - Cloud-hosted VMs
 - VMs from virtualization clusters
-- Bare-metal servers 
+- Bare-metal servers
 
 The table below lists the [Kubernetes roles]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
 Node 1  | Linux (Ubuntu Server 16.04 recommended)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support) 
+Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support)
 Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
 ### Requirements
@@ -115,7 +114,7 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 1. Using the content menu, open the custom cluster your created in [2. Create the Custom Cluster](#2-create-the-custom-cluster).
 
-1. From the main menu, select **Nodes**. 
+1. From the main menu, select **Nodes**.
 
 1. Click **Edit Cluster**.
 
@@ -127,7 +126,7 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 1. Log in to your Linux host using a remote Terminal connection. Run the command copied to your clipboard.
 
-1. From **Rancher**, click **Save**. 
+1. From **Rancher**, click **Save**.
 
 **Result:** The worker role is installed on your Linux host, and the node registers with Rancher.
 
@@ -135,7 +134,7 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 You can add Windows hosts to a custom cluster by editing the cluster and choosing the **Windows** option.
 
-1. From the main menu, select **Nodes**. 
+1. From the main menu, select **Nodes**.
 
 1. Click **Edit Cluster**.
 
@@ -147,7 +146,7 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 1. Log in to your Windows host using your preferred tool, such as [Microsoft Remote Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Run the command copied to your clipboard in the **Command Prompt (CMD)**.
 
-1. From Rancher, click **Save**. 
+1. From Rancher, click **Save**.
 
 1. **Optional:** Repeat these instruction if you want to add more Windows nodes to your cluster.
 
@@ -157,11 +156,11 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 In Windows clusters, containers communicate with each other using the `host-gw` mode of Flannel. In `host-gw` mode, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
 
-- When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work. Please contact [Rancher support](https://rancher.com/support/) if your worker nodes on AWS, virtualization clusters, or bare metal servers don't belong to the same layer 2 network.
+- When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work.
 
 - When worker nodes are provisioned on GCE or Azure, they are not on the same layer 2 subnet. Nodes on GCE and Azure belong to a routable layer 3 network. Follow the instructions below to configure GCE and Azure so that the cloud network knows how to route the host subnets on each node.
 
-To configure host subnet routing on GCE or Azure, first run the following command to find out the host subnets on each worker node: 
+To configure host subnet routing on GCE or Azure, first run the following command to find out the host subnets on each worker node:
 
 ```bash
 kubectl get nodes -o custom-columns=nodeName:.metadata.name,nodeIP:status.addresses[0].address,routeDestination:.spec.podCIDR
@@ -176,4 +175,3 @@ Azure VM | For Azure, create a routing table: [Custom Routes: User-defined](http
 
 
 ` `
-

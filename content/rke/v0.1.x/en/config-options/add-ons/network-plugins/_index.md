@@ -20,6 +20,15 @@ network:
 
 The images used for network plug-ins are under the [`system_images` directive]({{< baseurl >}}/rke/v0.1.x/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each network plug-in, but these can be overridden by changing the image tag in `system_images`.
 
+## Disabling deployment of a network plug-in
+
+You can disable deploying a network plug-in by specifying `none` to the network `plugin` directive in the cluster configuration.
+
+```yaml
+network:
+    plugin: none
+```
+
 ## Network Plug-in Options
 
 Besides the different images that could be used to deploy network plug-ins, certain network plug-ins support additional options that can be used to customize the network plug-in.
@@ -45,8 +54,8 @@ The `canal_flannel_backend_type` option allows you to specify the type of [flann
 network:
     plugin: flannel
     options:
-      flannel_iface: eth1
-      flannel_backend_type: vxlan
+        flannel_iface: eth1
+        flannel_backend_type: vxlan
 ```
 
 #### Flannel Interface
@@ -59,10 +68,10 @@ The `flannel_backend_type` option allows you to specify the type of [flannel bac
 ```yaml
 network:
     plugin: calico
-    calico_cloud_provider: aws
+    options:
+        calico_cloud_provider: aws
 ```
-
-#### Cloud Provider
+#### Calico Cloud Provider
 
 Calico currently only supports 2 cloud providers, AWS or GCE, which can be set using `calico_cloud_provider`.
 
@@ -70,3 +79,16 @@ Calico currently only supports 2 cloud providers, AWS or GCE, which can be set u
 
 - `aws`
 - `gce`
+
+### Weave Network Plug-in Options
+
+```yaml
+network:
+    plugin: weave
+    weave_network_provider:
+        password: "Q]SZOQ5wp@n$oijz"
+```
+
+#### Weave encryption
+
+Weave encryption can be enabled by passing a string password to the network provider config.

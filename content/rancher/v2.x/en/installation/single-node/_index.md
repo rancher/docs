@@ -22,7 +22,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/proxy/)
 >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
 >- Complete an Air Gap Installation? See [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/)
->- Record all transactions with the Rancher API? See [API Auditing](#api-auditing)
+>- Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
 >
 
 Choose from the following options:
@@ -114,13 +114,32 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 
 <br/>
 
-## FAQ and Troubleshooting
-
-{{< ssl_faq_single >}}
-
 ## Advanced Options
 
-### Enable API Audit Log
+When installing Rancher, there are several [advanced options]({{< baseurl >}}/rancher/v2.x/en/installation/options/) that can be enabled.
+
+### Custom CA Certificate
+
+If you want to configure Rancher to use a CA root certificate to be used when validating services, you would start the Rancher container sharing the directory that contains the CA root certificate.
+
+Use the command example to start a Rancher container with your private CA certificates mounted.
+
+- The volume option (`-v`) should specify the host directory containing the CA root certificates.
+- The `e` flag in combination with `SSL_CERT_DIR` declares an environment variable that specifies the mounted CA root certificates directory location inside the container.
+	- Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`.
+	- Mounting a host directory inside the container can be done using `-v host-source-directory:container-destination-directory` or `--volume host-source-directory:container-destination-directory`.
+
+The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /host/certs:/container/certs \
+  -e SSL_CERT_DIR="/container/certs" \
+  rancher/rancher:latest
+```
+
+### API Audit Log
 
 The API Audit Log records all the user and system transactions made through Rancher server.
 
@@ -136,6 +155,20 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
+### TLS settings
+
+_Available as of v2.1.7_
+
+To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -e CATTLE_TLS_MIN_VERSION="1.0" \
+  rancher/rancher:latest
+```
+
+See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
 ### Air Gap
 
@@ -164,3 +197,7 @@ docker run -d --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
   rancher/rancher:latest
 ```
+
+## FAQ and Troubleshooting
+
+{{< ssl_faq_single >}}

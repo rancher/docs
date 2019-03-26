@@ -14,7 +14,7 @@ You can schedule your migrated v1.6 services while editing a deployment. Schedul
 <figcaption>Editing Workloads: Workload Type and Node Scheduling Sections</figcaption>
 
 ![Workload Type and Node Scheduling Sections]({{< baseurl >}}/img/rancher/migrate-schedule-workloads.png)
- 
+
 
 ## In This Document
 
@@ -31,12 +31,12 @@ You can schedule your migrated v1.6 services while editing a deployment. Schedul
 - [Scheduling Global Services](#scheduling-global-services)
 
 
-<!-- /TOC --> 
+<!-- /TOC -->
 
 ## What's Different for Scheduling Services?
 
 
-Rancher v2.x retains _all_ methods available in v1.6 for scheduling your services. However, because the default container orchestration system has changed from Cattle to Kubernetes, the terminology and implementation for each scheduling option has changed. 
+Rancher v2.x retains _all_ methods available in v1.6 for scheduling your services. However, because the default container orchestration system has changed from Cattle to Kubernetes, the terminology and implementation for each scheduling option has changed.
 
 In v1.6, you would schedule a service to a host while adding a service to a Stack. In Rancher v2.x., the equivalent action is to schedule a workload for deployment. The following composite image shows a comparison of the UI used for scheduling in Rancher v2.x versus v1.6.
 
@@ -44,7 +44,7 @@ In v1.6, you would schedule a service to a host while adding a service to a Stac
 
 ## Node Scheduling Options
 
-Rancher offers a variety of options when scheduling nodes to host workload pods (i.e., scheduling hosts for containers in Rancher v1.6). 
+Rancher offers a variety of options when scheduling nodes to host workload pods (i.e., scheduling hosts for containers in Rancher v1.6).
 
 You can choose a scheduling option as you deploy a workload. The term _workload_ is synonymous with adding a service to a Stack in Rancher v1.6). You can deploy a workload by using the context menu to browse to a cluster project (`<CLUSTER> > <PROJECT> > Workloads`).
 
@@ -52,23 +52,23 @@ The sections that follow provide information on using each scheduling options, a
 
 Option | v1.6 Feature | v2.x Feature
 -------|------|------
-[Schedule a certain number of pods?](#schedule-a-certain-number-of-pods) | ✓ | ✓ 
+[Schedule a certain number of pods?](#schedule-a-certain-number-of-pods) | ✓ | ✓
 [Schedule pods to specific node?](#scheduling-pods-to-a-specific-node) | ✓ | ✓
-[Schedule to nodes using labels?](#scheduling-pods-using-labels) | ✓ | ✓ 
+[Schedule to nodes using labels?](#scheduling-pods-using-labels) | ✓ | ✓
 [Schedule to nodes using label affinity/anti-affinity rules?](#scheduling-pods-using-affinityanti-affinity-label) | ✓ | ✓
 [Schedule based on resource constraints?](#scheduling-pods-using-resource-constraints) | ✓ | ✓
 [Preventing scheduling specific services to specific hosts?](#preventing-scheduling-specific-services-to-specific-nodes) | ✓ | ✓
-[Schedule services globally?](#scheduling-global-services) | ✓ | ✓ 
+[Schedule services globally?](#scheduling-global-services) | ✓ | ✓
 
 
 ### Schedule a certain number of pods
 
-In v1.6, you could control the number of container replicas deployed for a service. You can schedule pods the same way in v2.x, but you'll have to set the scale manually while editing a workload. 
+In v1.6, you could control the number of container replicas deployed for a service. You can schedule pods the same way in v2.x, but you'll have to set the scale manually while editing a workload.
 
 
 ![Resolve Scale]({{< baseurl >}}/img/rancher/resolve-scale.png)
 
-During migration, you can resolve `scale` entries in `output.txt` by setting a value for the **Workload Type** option **Scalable deployment** depicted below. 
+During migration, you can resolve `scale` entries in `output.txt` by setting a value for the **Workload Type** option **Scalable deployment** depicted below.
 
 <figcaption>Scalable Deployment Option</figcaption>
 
@@ -87,7 +87,7 @@ As you deploy a workload, use the **Node Scheduling** section to choose a node t
 
 ![Workload Tab and Group by Node Icon]({{< baseurl >}}/img/rancher/schedule-specific-node.png)
 
-Rancher schedules pods to the node you select if 1) there are compute resource available for the node and 2) you've configured port mapping to use the HostPort option, that there are no port conflicts. 
+Rancher schedules pods to the node you select if 1) there are compute resource available for the node and 2) you've configured port mapping to use the HostPort option, that there are no port conflicts.
 
 If you expose the workload using a NodePort that conflicts with another workload, the deployment gets created successfully, but no NodePort service is created. Therefore, the workload isn't exposed outside of the cluster.
 
@@ -97,7 +97,7 @@ After the workload is created, you can confirm that the pods are scheduled to yo
 
 <!--
 
-If you export the workload's manifest for Rancher v2.x, you can see in the pod spec that the workload is scheduled to the node that you selected (`nodeName: mark-do1`). 
+If you export the workload's manifest for Rancher v2.x, you can see in the pod spec that the workload is scheduled to the node that you selected (`nodeName: mark-do1`).
 
 <figcaption>Kubernetes manifest: All Pods Scheduled to Single Node</figcaption>
 
@@ -143,7 +143,7 @@ In Rancher v2.x, you can constrain pods for scheduling to specific nodes (referr
 Label Object | Rancher v1.6 | Rancher v2.x
 -------------|--------------|---------------
 Schedule by Node? | ✓       | ✓
-Schedule by Pod?  | ✓       | ✓ 
+Schedule by Pod?  | ✓       | ✓
 
 #### Applying Labels to Nodes and Pods
 
@@ -157,7 +157,7 @@ To apply labels to pods, make additions to the **Labels and Annotations** sectio
 
 #### Label Affinity/AntiAffinity
 
-Some of the most-used scheduling features in v1.6 were affinity and anti-affinity rules. 
+Some of the most-used scheduling features in v1.6 were affinity and anti-affinity rules.
 
 <figcaption><code>output.txt</code> Affinity Label</figcaption>
 
@@ -166,7 +166,7 @@ Some of the most-used scheduling features in v1.6 were affinity and anti-affinit
 - **Affinity**
 
     Any pods that share the same label are scheduled to the same node. Affinity can be configured in one of two ways:
-    
+
     Affinity | Description
     ---------|------------
     **Hard** |  A hard affinity rule means that the host chosen must satisfy all the scheduling rules. If no such host can be found, the workload will fail to deploy. In the Kubernetes manifest, this rule translates to the `nodeAffinity` directive.<br/><br/>To use hard affinity, configure a rule using the **Require ALL of** section (see figure below).
@@ -181,9 +181,9 @@ Some of the most-used scheduling features in v1.6 were affinity and anti-affinit
 
 - **AntiAffinity**
 
-    Any pods that share the same label are scheduled to different nodes. In other words, while affinity _attracts_ a specific label to each other, anti-affinity _repels_ a label from itself, so that pods are scheduled to different nodes. 
+    Any pods that share the same label are scheduled to different nodes. In other words, while affinity _attracts_ a specific label to each other, anti-affinity _repels_ a label from itself, so that pods are scheduled to different nodes.
 
-    You can create an anti-affinity rules using either hard or soft affinity. However, when creating your rule, you must use either the `is not set` or `not in list` operator. 
+    You can create an anti-affinity rules using either hard or soft affinity. However, when creating your rule, you must use either the `is not set` or `not in list` operator.
 
     For anti-affinity rules, we recommend using labels with phrases like `NotIn` and `DoesNotExist`, as these terms are more intuitive when users are applying anti-affinity rules.
 
@@ -208,11 +208,11 @@ In Rancher v2.x, you can prevent pods from being scheduled to specific nodes by 
 
 ![Tolerations]({{< baseurl >}}/img/rancher/node-schedule-advanced-options.png)
 
-For more information, see the Kubernetes documentation on [taints and tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/). 
+For more information, see the Kubernetes documentation on [taints and tolerations](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/).
 
 ### Scheduling Global Services
 
-Rancher v1.6 included the ability to deploy [global services](https://rancher.com/docs/rancher/v1.6/en/cattle/scheduling/#global-service), which are services that deploy duplicate containers to each host in the environment (i.e.,  nodes in your cluster using Rancher v2.x terms). If a service has the `io.rancher.scheduler.global: 'true'` label declared, then Rancher v1.6 schedules a service container on each host in the environment.
+Rancher v1.6 included the ability to deploy [global services]({{< baseurl >}}/rancher/v1.6/en/cattle/scheduling/#global-service), which are services that deploy duplicate containers to each host in the environment (i.e.,  nodes in your cluster using Rancher v2.x terms). If a service has the `io.rancher.scheduler.global: 'true'` label declared, then Rancher v1.6 schedules a service container on each host in the environment.
 
 
 <figcaption><code>output.txt</code> Global Service Label</figcaption>
@@ -222,7 +222,7 @@ Rancher v1.6 included the ability to deploy [global services](https://rancher.co
 
 In Rancher v2.x, you can schedule a pod to each node using a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a specific type of workload <!-- link -->). A _DaemonSet_ functions exactly like a Rancher v1.6 global service. The Kubernetes scheduler deploys a pod on each node of the cluster, and as new nodes are added, the scheduler will start new pods on them provided they match the scheduling requirements of the workload. Additionally, in v2.x, you can also limit a DaemonSet to be deployed to nodes that have a specific label.
 
-To create a daemonset while configuring a workload, choose **Run one pod on each node** from the the **Workload Type** options. 
+To create a daemonset while configuring a workload, choose **Run one pod on each node** from the the **Workload Type** options.
 
 <figcaption>Workload Configuration: Choose run one pod on each node to configure daemonset</figcaption>
 
@@ -230,22 +230,22 @@ To create a daemonset while configuring a workload, choose **Run one pod on each
 
 ### Scheduling Pods Using Resource Constraints
 
-While creating a service in the Rancher v1.6 UI, you could schedule its containers to hosts based on hardware requirements that you choose. The containers are then scheduled to hosts based on which ones have bandwidth, memory, and CPU capacity. 
+While creating a service in the Rancher v1.6 UI, you could schedule its containers to hosts based on hardware requirements that you choose. The containers are then scheduled to hosts based on which ones have bandwidth, memory, and CPU capacity.
 
 In Rancher v2.x, you can still specify the resources required by your pods. However, these options are unavailable in the UI. Instead, you must edit your workload's manifest file to declare these resource constraints.  
 
-To declare resource constraints, edit your migrated workloads, editing the **Security & Host** sections. 
+To declare resource constraints, edit your migrated workloads, editing the **Security & Host** sections.
 
 - To reserve a minimum hardware reservation available for your pod(s), edit the following sections:
 
     - Memory Reservation
     - CPU Reservation
-    - NVIDIA GPU Reservation 
+    - NVIDIA GPU Reservation
 
 - To set a maximum hardware limit for your pods, edit:
 
-    - Memory Limit 
-    - CPU Limit 
+    - Memory Limit
+    - CPU Limit
 
 <figcaption>Scheduling: Resource Constraint Settings</figcaption>
 

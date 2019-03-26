@@ -58,13 +58,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 **Result:** Rancher is configured to work with Keycloak. Your users can now sign into Rancher using their Keycloak logins.
 
->**Keycloak Identity Provider Caveats:**
->
->- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
->- When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
->- When adding groups, you *must* select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
->
->   - The group drop-down shows *only* the groups that you are a member of. You will not be able to add groups that you are not a member of.
+{{< saml_caveats >}}
 
 ## Annex: Troubleshooting
 
