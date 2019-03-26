@@ -171,7 +171,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
 From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
 
-Enter the values that you copied to your [text file]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/azure-ad/#tip).
+Enter the values that you copied to your [text file](#tip).
 
 1. Log into Rancher. From the **Global** view, select **Security > Authentication**.
 
