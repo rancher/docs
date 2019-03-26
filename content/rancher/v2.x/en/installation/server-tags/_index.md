@@ -1,5 +1,5 @@
 ---
-title: Choosing a Version 
+title: Choosing a Version
 weight: 230
 ---
 
@@ -49,16 +49,9 @@ Instructions on when to select these repos are available below in [Switching to 
 
 ### Helm Chart Versions
 
-Up until the initial release of the Helm chart for Rancher v2.1.0, the version of the Helm chart matched the Rancher version (i.e `appVersion`).
+Rancher Helm chart versions match the Rancher version (i.e `appVersion`).
 
-Since there are times where the Helm chart will require changes without any changes to the Rancher version, we have moved to a versioning scheme using `yyyy.mm.<build-number>` for the Helm charts.
-
-Run `helm search rancher` to view which Rancher version will be launched for the your Helm chart.
-
-```
-NAME                      CHART VERSION    APP VERSION    DESCRIPTION
-rancher-latest/rancher    2018.10.1            v2.1.0      Install Rancher Server to manage Kubernetes clusters acro...
-```
+For the Rancher v2.1.x versions, there were some Helm charts, that were using a version that was a build number, i.e. `yyyy.mm.<build-number>`. These charts have been replaced with the equivalent Rancher version and are no longer available.
 
 ### Switching to a Different Helm Chart Repository
 

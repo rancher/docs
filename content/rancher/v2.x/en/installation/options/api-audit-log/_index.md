@@ -25,7 +25,7 @@ The usage below defines rules about what the audit log should record and what da
 
 Parameter | Description |
 ---------|----------|
- <a id="audit-level"></a>`AUDIT_LEVEL` | `0` - Disable audit log (default setting).<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. Each log transaction for a request/response pair uses the same `auditID` value.<br/><br/>See [Audit Level Logging](#audit-level-logging) for a table that displays what each setting logs. |
+ <a id="audit-level"></a>`AUDIT_LEVEL` | `0` - Disable audit log (default setting).<br/>`1` - Log event metadata.<br/>`2` - Log event metadata and request body.</br>`3` - Log event metadata, request body, and response body. Each log transaction for a request/response pair uses the same `auditID` value.<br/><br/>See [Audit Level Logging](#audit-log-levels) for a table that displays what each setting logs. |
  `AUDIT_LOG_PATH` | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/> |
  `AUDIT_LOG_MAXAGE` | Defined the maximum number of days to retain old audit log files. Default is 10 days. |
  `AUDIT_LOG_MAXBACKUP` | Defines the maximum number of audit log files to retain. Default is 10.
