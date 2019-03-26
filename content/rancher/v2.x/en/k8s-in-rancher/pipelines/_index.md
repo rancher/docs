@@ -519,8 +519,8 @@ stages:
 Within a pipeline, there are multiple advanced options for different parts of the pipeline.
 
 - [Trigger Rules](#trigger-rules)
-- [Environment Variables](#configuring-environment-variables)
-- [Secrets](#configuring-pipeline-secrets)
+- [Environment Variables](#environment-variables)
+- [Secrets](#secrets)
 
 ### Trigger Rules
 
