@@ -34,7 +34,7 @@ After provisioning your node(s), install Rancher:
 
     For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability (HA) configuration. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
 
-    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [High Availability (HA) Install](https://rancher.com/docs/rancher/v2.x/en/installation/ha/) for full requirements.
+    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) for full requirements.
 
 ## B. Configure Authentication
 
@@ -88,7 +88,7 @@ After provisioning a new cluster and project, you can authorize your users to ac
 
 ## D. Create Stacks
 
-In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{< baseurl >}}rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-namespaces), which are the v2.x equivalent of stacks, for the same purpose. 
+In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{< baseurl >}}rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-namespaces), which are the v2.x equivalent of stacks, for the same purpose.
 
 In Rancher v2.x, namespaces are child objects to projects. When you create a project, a `default` namespace is added to the project, but you can create your own to parallel your stacks from v1.6.
 

@@ -5,7 +5,7 @@ weight: 100
 
 Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.
 
-Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x. 
+Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x.
 
 This command line interface tool will:
 
@@ -50,7 +50,7 @@ After you download migration-tools CLI, rename it and make it executable.
 
 Next, use the migration-tools CLI to export all stacks in all of the Cattle environments into Compose files. Then, for stacks that you want to migrate to Rancher v2.x, convert the Compose files into Kubernetes manifest.
 
->**Prerequisite:** Create an [Account API Key](https://rancher.com/docs/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with Rancher v1.6 when using the migration-tools CLI.
+>**Prerequisite:** Create an [Account API Key]({{< baseurl >}}/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with Rancher v1.6 when using the migration-tools CLI.
 
 1. Export the Docker Compose files for your Cattle environments and stacks from Rancher v1.6.
 
@@ -231,7 +231,7 @@ status: {}
 
 ## D. Re-Deploy Services as Kubernetes Manifests
 
->**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests. 
+>**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests.
 
 {{% tabs %}}
 {{% tab "Rancher UI" %}}
@@ -260,7 +260,7 @@ Use the following Rancher CLI commands to deploy your application using Rancher 
 
 ./rancher kubectl create -f <SERVICE_YAML_FILE> # DEPLOY THE SERVICE YAML
 ```
- 
+
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -273,7 +273,7 @@ Following importation, you can view your v1.6 services in the v2.x UI as Kuberne
 
 ## What Now?
 
-Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below. 
+Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below.
 
 <figcaption>Edit Migrated Services</figcaption>
 
@@ -306,7 +306,7 @@ start_on_create | No Kubernetes equivalent. No action is required from you.
 
 <!-- MB: oops, skipped 6 -->
 
-[7]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-using-labels 
+[7]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-using-labels
 [8]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-global-services
 [9]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#label-affinity-antiaffinity
 
