@@ -34,7 +34,7 @@ In most cases, you should use an external authentication service over local auth
 
 ## Users and Groups
 
-Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, multi-cluster apps, and global DNS providers and entries. When you give access to a group, all users, who are a member of that group in the authentication provider, will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see [Role Based Access Control]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
+Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, multi-cluster apps, and global DNS providers and entries. When you give access to a group, all users who are a member of that group in the authentication provider will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see [Role Based Access Control]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
 
 > **Note:** Local authentication does not support creating or managing groups.
 
