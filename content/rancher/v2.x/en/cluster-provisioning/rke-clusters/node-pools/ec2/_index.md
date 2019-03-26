@@ -34,7 +34,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
   1. Complete each of the following forms using information available from the [EC2 Management Console](https://aws.amazon.com/ec2).
 
-		- **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisistes](#prerequisistes) how to create the Access Key and Secret Key and the needed permissions.
+		- **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisistes](#prerequisites) how to create the Access Key and Secret Key and the needed permissions.
 
 		{{< step_create-cloud-credential >}}
 

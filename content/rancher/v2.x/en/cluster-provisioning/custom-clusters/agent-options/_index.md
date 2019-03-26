@@ -36,7 +36,7 @@ Rancher deploys an agent on each node to communicate with the node. This pages d
 
 ### Dynamic IP address options
 
-For automation purposes, you can't have a specific IP address in a command as it has to be generic to be used for every node. For this, we have dynamic IP address options. They are used as a value to the existing [IP address options](#ip-address-options). This is supported for `--address` and `--internal-address`.
+For automation purposes, you can't have a specific IP address in a command as it has to be generic to be used for every node. For this, we have dynamic IP address options. They are used as a value to the existing IP address options. This is supported for `--address` and `--internal-address`.
 
 | Value  | Example | Description |
 | ---------- | -------------------- | ----------- |

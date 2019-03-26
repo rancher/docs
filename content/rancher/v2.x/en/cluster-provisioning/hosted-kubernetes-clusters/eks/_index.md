@@ -24,7 +24,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 1. {{< step_create-cluster_member-roles >}}
 
-1. Configure **Account Access** for the EKS cluster. Complete each drop-down and field using the information obtained in [2. Create Access Key and Secret Key](#2-create-access-key-and-secret-key).
+1. Configure **Account Access** for the EKS cluster. Complete each drop-down and field using the information obtained in [2. Create Access Key and Secret Key](#prerequisites-in-amazon-web-services).
 
     | Setting    | Description                                                                                                          |
     | ---------- | -------------------------------------------------------------------------------------------------------------------- |

@@ -1,5 +1,5 @@
 ---
-title: Creating an Alibaba ACK Cluster
+title: Creating an Aliyun ACK Cluster
 shortTitle: Alibaba Cloud Container Service for Kubernetes
 weight: 2120
 ---
