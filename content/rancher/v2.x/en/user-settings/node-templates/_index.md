@@ -21,14 +21,13 @@ When you create a node template, it is bound to your user profile. Node template
 ## Updating a Node Template
 
 1. From your user settings, select **User Avatar > Node Templates**.
-1. Choose the Node Template you want to edit and click the **Vertical Ellipsis (...) > Edit**.
-	
-	**Note:** 
-	Starting 2.2, you'll have to enter Account Access Information and create a **cloud credential** before editing node template. This will save you the hassle of re-entering access information everytime you edit a node template.
+1. Choose the node template that you want to edit and click the **Vertical Ellipsis (...) > Edit**.
 
-1. Edit the required information and click **Save**. 
+	   > **Note:** As of v2.2.0, the default `active` [node drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use [cloud credentials]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials). If you have upgraded to v2.2.0, existing node templates will continue to work with the previous account access  information, but when you edit the node template, you will be required to create a cloud credential and the node template will start using it.
 
-**Result:** The node template is updated with new information. All node pools using this node template will automatically use the updated information when new nodes are added.
+1. Edit the required information and click **Save**.
+
+**Result:** The node template is updated. All node pools using this node template will automatically use the updated information when new nodes are added.
 
 ## Cloning Node Templates
 

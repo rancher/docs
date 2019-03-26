@@ -21,13 +21,11 @@ Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 	1.	Click **Add Node Template**.
 
-	2.	Paste your DigitalOcean Personal Access Token.
+	2.  Complete the **Digital Ocean Options** form.
 
-		[DigitalOcean Instructions: How To Generate a Personal Access Token](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token)
+		- **Access Token** stores your DigitalOcean Personal Access Token. Refer to [DigitalOcean Instructions: How To Generate a Personal Access Token](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token).
 
-		{{< step_create-cloud-credential >}}
-
-	3. Complete the **DigitalOcean Options** form.
+		  {{< step_create-cloud-credential >}}
 
 		- **Droplet Options** provision your cluster's geographical region and specifications.
 
