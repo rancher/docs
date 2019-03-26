@@ -35,7 +35,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Click **Save**.
 
-**Result:** The Prometheus server will be deployed as well as two monitoring applications. The two monitoring applications, `cluster-monitoring` and `monitoring-operator`, are added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.  After the applications are `active`, you can start viewing [cluster metrics]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/) through the [Rancher dashboard]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#rancher-dashboard) or directly from [Grafana]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
+**Result:** The Prometheus server will be deployed as well as two monitoring applications. The two monitoring applications, `cluster-monitoring` and `monitoring-operator`, are added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.  After the applications are `active`, you can start viewing [cluster metrics]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/) through the [Rancher dashboard]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/viewing-metrics/#rancher-dashboard) or directly from [Grafana]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
 
 ### Resource Consumption
 

@@ -23,7 +23,7 @@ The following table lists which node options are available for each [type of clu
 | [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, or label for a node. |
 | [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
-| [Download Keys](#remoting-into-a-node-pool-node) | ✓                                                |                  |                     |                     | Download SSH key for remoting into the node.                     |
+| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
 
 [1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
@@ -107,7 +107,7 @@ For nodes hosted by an infrastructure provider, you can scale the number of node
 ![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
 
 
-## Remoting into a Node Hosted by an Infrastructure Provider
+## SSH into a Node Hosted by an Infrastructure Provider
 
 For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 

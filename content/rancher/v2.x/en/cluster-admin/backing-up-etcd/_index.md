@@ -5,7 +5,7 @@ weight: 2045
 
 _Available as of v2.2.0_
 
-In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either [locally on to the etcd nodes](#test) or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
+In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either [locally onto the etcd nodes](#local-backup-target) or to a [S3 compatible target](#s3-backup-target). The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
 Rancher recommends enabling the ability to set up recurring snapshots, but one-time snapshots can easily be taken as well.  
 
@@ -14,7 +14,6 @@ Rancher recommends enabling the ability to set up recurring snapshots, but one-t
 ## Configuring Recurring Snapshots for the Cluster
 
 By default, any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are enabled to take recurring snapshots that are saved locally.
-
 
 During cluster provisioning or editing the cluster, the configuration about snapshots are in the advanced section for **Cluster Options**. Click on **Show advanced options**.
 
@@ -36,7 +35,7 @@ Rancher supports two different backup targets:
 
 #### Local Backup Target
 
-By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). All recurring snapshots are taken at configured [intervals](#intervals). The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
+By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). All recurring snapshots are taken at configured intervals. The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
 
 #### S3 Backup Target
 
