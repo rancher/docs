@@ -70,8 +70,8 @@ In Rancher v1.6, compute nodes were added to an _environment_. Rancher v2.x esch
 Rancher v2.x lets you launch a Kubernetes cluster anywhere. Host your cluster using:
 
 - A [hosted Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/).
-- A [pool of nodes from an infrastructure provider]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/). Rancher launches Kubernetes on the nodes.
-- Any [custom node(s)]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/). Rancher can launch Kubernetes on the nodes, be they bare metal servers, virtual machines, or cloud hosts on a less popular infrastructure provider.
+- A [pool of nodes from an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/). Rancher launches Kubernetes on the nodes.
+- Any [custom node(s)]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/). Rancher can launch Kubernetes on the nodes, be they bare metal servers, virtual machines, or cloud hosts on a less popular infrastructure provider.
 
 ### Projects
 
