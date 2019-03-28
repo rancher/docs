@@ -79,4 +79,29 @@ docker run -d --restart=unless-stopped --name <rancher.my.org> \
 ```
 
 Note: when using a containerized nginx, ensure ipv4 forwarding on the machine is turned on by default.
+
 Note: Rancher only handles requests from the expected domain name you input in step four. Therefore, the name of your container must reflect your domain name when using an nginx container when doing bare metal installs.
+
+It may be a good idea to create a systemd process to ensure container start on machine boot. An example added to a new file /etc/systemd/system/nginx-rancher.service
+```
+sudo vim /etc/systemd/system/nginx-rancher.service
+```
+```
+[Unit]
+Description=Rancher nginx container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a rancher-nginx
+ExecStop=/usr/bin/docker stop -t 2 rancher-nginx
+
+[Install]
+WantedBy=default.target
+```
+
+After writing to the file, enbable the service by running the following
+```
+sudo systemctl enable nginx-rancher.service
+```
