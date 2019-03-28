@@ -51,8 +51,6 @@ private_registries:
   is_default: true
 ```
 
-
-
 ## B. Run RKE
 
 After configuring `rancher-cluster.yml`, open Terminal and change directories to the RKE binary. Then enter the command below to stand up your high availability cluster.
@@ -60,5 +58,16 @@ After configuring `rancher-cluster.yml`, open Terminal and change directories to
 ```
 rke up --config ./rancher-cluster.yml
 ```
+
+## C. Save Your Files
+
+> **Important**
+> The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
+
+Save a copy of the following files in a secure location:
+
+- `rancher-cluster.yml`: The RKE cluster configuration file.
+- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/v0.1.x/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/v0.1.x/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._ 
 
 ### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher)
