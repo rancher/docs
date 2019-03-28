@@ -72,8 +72,11 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
 Instead of installing NGINX as a package on the operating system, you can rather run it as a Docker container. Save the edited **Example NGINX config** as `/etc/nginx.conf` and run the following command to launch the NGINX container:
 
 ```
-docker run -d --restart=unless-stopped \
+docker run -d --restart=unless-stopped --name <rancher.my.org> \
   -p 80:80 -p 443:443 \
   -v /etc/nginx.conf:/etc/nginx/nginx.conf \
   nginx:1.14
 ```
+
+Note: when using a containerized nginx, ensure ipv4 forwarding on the machine is turned on by default.
+Note: Rancher only handles requests from the expected domain name you input in step four. Therefore, the name of your container must reflect your domain name when using an nginx container when doing bare metal installs.
