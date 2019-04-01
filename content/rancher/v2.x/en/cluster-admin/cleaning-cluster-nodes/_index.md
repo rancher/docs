@@ -50,7 +50,7 @@ When a node is unreachable and removed from the cluster, the automatic cleaning 
 
 ## Imported Cluster Nodes
 
-For imported clusters, the process for removing Rancher from its nodes is a little different. You can the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
+For imported clusters, the process for removing Rancher from its nodes is a little different. You have the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
 
 {{% tabs %}}
 {{% tab "By UI / API" %}}
@@ -82,9 +82,9 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
     chmod +x user-cluster.sh
     ```
 
-1. **Air Gap Users Only:** Open `user-cluster.sh` and replace `yaml_url` with the URL in `user-cluster.yml`.
+1. **Air Gap Environments Only:** Open `user-cluster.sh` and replace `yaml_url` with the URL in `user-cluster.yml`.
 
-    If you aren't an air gap user, skip this step.
+    If you don't have an air gap environment, skip this step.
 
 1. From the same directory, run the script and provide the `rancher/rancher-agent` image version which should be equal to the version of Rancher used to manage the cluster. (`<RANCHER_VERSION>`):
 
@@ -103,7 +103,7 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
 
 ### Docker Containers, Images, and Volumes
 
-Based on what role you assigned to the node, Kubernetes components in containers, containers belonging to overlay networking, DNS, ingress controller and Rancher agent. (and pods you created that have been scheduled to this node)
+Based on what role you assigned to the node, there are Kubernetes components in containers, containers belonging to overlay networking, DNS, ingress controller and Rancher agent. (and pods you created that have been scheduled to this node)
 
 **To clean all Docker containers, images and volumes:**
 
@@ -177,9 +177,7 @@ rm -rf /etc/ceph \
 
 ### Network Interfaces and Iptables
 
-The remaining two components that are changed/configured are (virtual) network interfaces and iptables rules. Both are non-persistent to the node, meaning that they will be cleared after a restart of the node.
-
-This is the recommended method.
+The remaining two components that are changed/configured are (virtual) network interfaces and iptables rules. Both are non-persistent to the node, meaning that they will be cleared after a restart of the node. To remove these components, a restart is recommended.
 
 **To restart a node:**
 
