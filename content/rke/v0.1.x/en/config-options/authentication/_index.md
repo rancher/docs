@@ -13,7 +13,7 @@ authentication:
       - "my-loadbalancer-1234567890.us-west-2.elb.amazonaws.com"
 ```
 
-RKE also supports the webhook authentication strategy. You can enable both x509 and webhook strategies by using a `|` separator in the configuration. Contents of the webhook config file should be provided, see [Kubernetes webhook documentation](https://kubernetes.io/docs/reference/access-authn-authz/webhook/) for information on the file format. Additionally, a cache timeout for webhook authentication responses can be set.
+RKE also supports the webhook authentication strategy. You can enable both x509 and webhook strategies by using a `|` separator in the configuration. Contents of the webhook config file should be provided, see [Kubernetes webhook documentation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication) for information on the file format. Additionally, a cache timeout for webhook authentication responses can be set.
 
 ```yaml
 authentication:
