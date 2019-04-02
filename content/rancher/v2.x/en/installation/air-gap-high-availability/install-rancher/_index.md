@@ -55,13 +55,13 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
 1. From a system connected to the internet, fetch the latest cert-manager chart available from the [official Helm chart repository](https://github.com/helm/charts/tree/master/stable). 
 
     ```plain
-    helm fetch stable/cert-manager
+    helm fetch stable/cert-manager --version 0.5.2
     ```
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
 
     ```plain
-    helm template ./cert-manager-<version>.tgz --output-dir . \
+    helm template ./cert-manager-v0.5.2.tgz --output-dir . \
     --name cert-manager --namespace kube-system \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
     ```
