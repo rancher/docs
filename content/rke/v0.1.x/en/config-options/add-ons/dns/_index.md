@@ -13,7 +13,7 @@ The images used for kube-dns are under the [`system_images` directive]({{< baseu
 
 _Available as of v0.2.0_
 
-If you only wanted ingress controllers to be deployed on specific nodes, you can set a `node_selector` for the ingress. The label in the `node_selector` would need to match the label on the nodes for the ingress controller to be deployed.
+If you only want the kube-dns pod to be deployed on specific nodes, you can set a `node_selector` in the `dns` section. The label in the `node_selector` would need to match the label on the nodes for the kube-dns pod to be deployed.
 
 ```yaml
 nodes:
