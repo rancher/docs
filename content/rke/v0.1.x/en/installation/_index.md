@@ -18,7 +18,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
     - **MacOS**: `rke_darwin-amd64`
     - **Linux (Intel/AMD)**: `rke_linux-amd64`
     - **Linux (ARM 32-bit)**: `rke_linux-arm`
-    - **Linux (ARM 64-bix)**: `rke_linux-arm64`
+    - **Linux (ARM 64-bit)**: `rke_linux-arm64`
     - **Windows (32-bit)**: `rke_windows-386.exe`
     - **Windows (64-bit)**: `rke_windows-amd64.exe`
 
