@@ -6,10 +6,11 @@ weight: 50
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
 
 1. [Download the RKE Binary](#download-the-rke-binary)
-2. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
-3. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
-4. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
-5. [Interacting with your Kubernetes Cluster](#interacting-with-your-kubernetes-cluster)
+1. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
+1. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
+1. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
+1. [Save your Files](#save-your-files)
+1. [Interacting with your Kubernetes Cluster](#interacting-with-your-kubernetes-cluster)
 
 ## Download the RKE binary
 
@@ -93,6 +94,12 @@ RKE is HA ready, you can specify more than one `controlplane` node in the `clust
 
 To create an HA cluster, specify more than one host with role `controlplane`.
 
+### Certificates
+
+_Available as of v0.2.0_
+
+By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/#certificate-rotation).
+
 ## Deploying Kubernetes with RKE
 
 After you've created your `cluster.yml`, you can deploy your cluster with a simple command. This command assumes the `cluster.yml` file is in the same directory as where you are running the command.
@@ -112,25 +119,22 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 
 > **Note:** If you have used a different file name from `cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
 
-### Certificates
+## Save Your Files
 
-_Available as of v0.2.0_
+> **Important**
+> The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
 
-By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/v0.1.x/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{< baseurl >}}/rke/v0.1.x/en/cert-mgmt/#certifcate-rotation).
+Save a copy of the following files in a secure location:
+
+- `cluster.yml`: The RKE cluster configuration file.
+- `kube_config_cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/v0.1.x/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `cluster.rkestate`: The [Kubernetes Cluster State file](#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
 ### Kubernetes Cluster State
 
 The Kubernetes cluster state, which consists of the cluster configuration file `cluster.yml` and components certificates in Kubernetes cluster, is saved by RKE, but depending on your RKE version, the cluster state is saved differently.
 
 As of v0.2.0, RKE creates a `.rkestate` file in the same directory that has the cluster configuration file `cluster.yml`. The `.rkestate` file contains the current state of the cluster including the RKE configuration and the certificates. It is required to keep this file in order to update the cluster or perform any operation on it through RKE.
-
-```
-$ tree -L 1
-.
-├── cluster.rkestate
-├── cluster.yml
-├── kube_config_cluster.yml
-```
 
 Prior to v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret.   
 
