@@ -11,7 +11,7 @@ Use your provider of choice to provision 3 nodes and a Load Balancer endpoint fo
 
 View the supported operating systems and hardware/software/networking requirements for nodes running Rancher at [Node Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
-View the OS requirements for RKE at [RKE Requirements]({{< baseurl >}}/rke/v0.1.x/en/os/)
+View the OS requirements for RKE at [RKE Requirements]({{< baseurl >}}/rke/latest/en/os/)
 
 ### Load Balancer
 

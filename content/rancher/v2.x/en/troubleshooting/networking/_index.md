@@ -77,6 +77,16 @@ NODE1 cannot reach NODE3
 
 Cleanup the alpine DaemonSet by running `kubectl delete ds/overlaytest`.
 
+### Check if MTU is correctly configured on hosts and on peering/tunnel appliances/devices
+
+When the MTU is incorrectly configured (either on hosts running Rancher, nodes in created/imported clusters or on appliances/devices in between), error messages will be logged in Rancher and in the agents, similar to:
+
+* `websocket: bad handshake`
+* `Failed to connect to proxy`
+* `read tcp: i/o timeout`
+
+See [Google Cloud VPN: MTU Considerations](https://cloud.google.com/vpn/docs/concepts/mtu-considerations#gateway_mtu_vs_system_mtu) for an example how to configure MTU correctly when using Google Cloud VPN between Rancher and cluster nodes.
+
 ### Resolved issues
 
 #### Overlay network broken when using Canal/Flannel due to missing node annotations

@@ -50,7 +50,7 @@ services:
 
 RKE has many configuration options for customizing the install to suit your specific environment.
 
-Please see the [RKE Documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/) for the full list of options and capabilities.
+Please see the [RKE Documentation]({{< baseurl >}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 
 ### Run RKE
 
@@ -112,7 +112,14 @@ kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   
 
 ### Save Your Files
 
-Save a copy of the `kube_config_rancher-cluster.yml` and `rancher-cluster.yml` files. You will need these files to maintain and upgrade your Rancher instance.
+> **Important**
+> The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
+
+Save a copy of the following files in a secure location:
+
+- `rancher-cluster.yml`: The RKE cluster configuration file.
+- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
 ### Issues or errors?
 

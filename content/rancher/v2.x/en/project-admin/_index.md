@@ -3,12 +3,12 @@ title: Project Administration
 weight: 2500
 ---
 
-_Projects_ are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications. Typically, any
+_Projects_ are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.
 
 In terms of hierarchy:
 
-- Clusters contain projects.
-- Projects contain namespaces.
+- Clusters contain projects
+- Projects contain namespaces
 
 Within Rancher, projects allow you to manage multiple namespaces as a single entity. In native Kubernetes, which does not include projects, features like role-based access rights or cluster resources are assigned to individual namespaces. In clusters where multiple namespaces require the same set of access rights, assigning these rights to each individual namespace can become tedious. Even though all namespaces require the same rights, there's no way to apply those rights to all of your namespaces in a single action. You'd have to repetitively assign these rights to each namespace!
 
@@ -16,12 +16,12 @@ Rancher projects resolve this issue by allowing you to apply resources and acces
 
 You can use projects to perform actions like:
 
-- [Assign users access to a group of namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/project-members).
-- Assign users [specific roles in a project]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
+- [Assign users access to a group of namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/project-members)
+- Assign users [specific roles in a project]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/)
 - [Edit project settings]({{< baseurl >}}/rancher/v2.x/en/project-admin/editing-projects/)
-- [Set Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/)
-- [Manage Namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/namespaces/)
-- [Configure Tools]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/)
+- [Set resource quotas]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/)
+- [Manage namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/namespaces/)
+- [Configure tools]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/)
 
 ### Authorization
 
@@ -33,7 +33,7 @@ Whoever creates the project automatically becomes a [project owner]({{< baseurl 
 
 To switch between projects, use the drop-down available in the navigation bar. Alternatively, you can switch between projects directly in the navigation bar.
 
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
+1. From the **Global** view, navigate to the project that you want to configure.
 
 1. Select **Projects/Namespaces** from the navigation bar.
 

@@ -12,7 +12,7 @@ Rancher supports air gap installs using a private registry. You must have your o
 The following CLI tools are required for this install. Make sure these tools are installed on your workstation and available in your `$PATH`.
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-* [rke]({{< baseurl >}}/rke/v0.1.x/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+* [rke]({{< baseurl >}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
 * [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
 
 >**Note:** If you install Rancher in an HA configuration in an air gap environment, you cannot transition to a single-node setup during future upgrades.
