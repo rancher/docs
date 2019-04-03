@@ -23,7 +23,7 @@ This procedure describes how to use RKE to restore a snapshot of the Rancher Kub
 
 ### 1. Preparation
 
-You will need [RKE]({{< baseurl >}}/rke/v0.1.x/en/installation/) and [kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
+You will need [RKE]({{< baseurl >}}/rke/latest/en/installation/) and [kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
 
 Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/) for node requirements.
 

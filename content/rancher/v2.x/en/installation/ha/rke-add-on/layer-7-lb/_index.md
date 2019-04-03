@@ -98,7 +98,7 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
 
 RKE (Rancher Kubernetes Engine) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will use RKE to setup our cluster and run Rancher.
 
-1. Follow the [RKE Install]({{< baseurl >}}/rke/v0.1.x/en/installation) instructions.
+1. Follow the [RKE Install]({{< baseurl >}}/rke/latest/en/installation) instructions.
 
 2. Confirm that RKE is now executable by running the following command:
 
@@ -118,7 +118,7 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
     >**Advanced Config Options:**
     >
     >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/api-auditing/).
-    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/).
+    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/latest/en/config-options/).
 
 
 2. Rename the file to `rancher-cluster.yml`.
@@ -135,7 +135,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
     >**Note:**
     >  
-    >When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/v0.1.x/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
+    >When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/latest/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
 
         nodes:
             # The IP address or hostname of the node
