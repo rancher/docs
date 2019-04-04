@@ -16,7 +16,7 @@ When creating a vSphere cluster, Rancher first provisions the specified amount o
 
 ## Prerequisites
 
-Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/vsphere/) that must be met.
+Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere/) that must be met.
 
 ## Provisioning a vSphere Cluster
 

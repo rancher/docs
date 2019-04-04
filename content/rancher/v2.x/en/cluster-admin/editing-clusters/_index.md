@@ -128,14 +128,14 @@ Option | Description |
 
 >**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/latest/en/config-options/) in an RKE installation.
 
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from File**.
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
-For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
+For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/example-yamls/).  
 
 ## Managing Node Pools
 
