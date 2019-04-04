@@ -8,7 +8,7 @@ aliases:
 
 Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
 
-Rancher supports the following services:
+Rancher supports integration with the following services:
 
 - Elasticsearch
 - Splunk
@@ -56,7 +56,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Select **Tools > Logging** in the navigation bar.
 
-1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports the following services:
+1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports integration with the following services:
 
    - [Elasticsearch]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/elasticsearch/)
    - [Splunk]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/splunk/)
