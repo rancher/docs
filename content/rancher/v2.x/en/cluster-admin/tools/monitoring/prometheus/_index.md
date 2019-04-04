@@ -16,7 +16,7 @@ Node Exporter Host Port | The host port on which data is exposed, i.e. data that
 [Enable Persistent Storage](#persistent-storage) for Prometheus | Whether or not to configure storage for Prometheus so that metrics can be retained even if the Prometheus pod fails.
 [Enable Persistent Storage](#persistent-storage) for Grafana | Whether or not to configure storage for Grafana so that the Grafana dashboards and configuration  can be retained even if the Grafana pod fails.
 Prometheus [CPU Limit](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |  CPU resource limit for the Prometheus pod.
-Prometheus [CPU Reservation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) | CPU reservation for the Promehtues pod.
+Prometheus [CPU Reservation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) | CPU reservation for the Promethues pod.
 Prometheus [Memory Limit](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) | Memory resource limit for the Prometheus pod.
 Prometheus [Memory Reservation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) | Memory resource requests for the Prometheus pod.
 Selector | Ability to select the nodes in which Prometheus and Grafana pods are deployed to. To use this option, the nodes must have labels.
