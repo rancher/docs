@@ -19,16 +19,16 @@ When cleaning nodes provisioned using Rancher, the following components are dele
 | `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` labeled by Rancher | ✓               | ✓                 | ✓                   | ✓                   |
 | Labels, Annotations, and Finalizers                                            | ✓               | ✓                 | ✓                   | ✓                   |
 | Rancher Deployment                                                             | ✓               | ✓                 | ✓                   |                     |
-| Machines, clusters, projects, and user custom resource deployments (CRDs)      | ✓               | ✓                 | ✓                   |                     |
+| Machines, clusters, projects, and user custom resource defintions (CRDs)       | ✓               | ✓                 | ✓                   |                     |
 | All resources create under the `management.cattle.io` API Group                | ✓               | ✓                 | ✓                   |                     |
-| All CRDs created by Rancher v2.0.x                                             | ✓               | ✓                 | ✓                   |                     |
+| All CRDs created by Rancher v2.x                                               | ✓               | ✓                 | ✓                   |                     |
 
 [1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
 [2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
 [3]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
 [4]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
 
-## Removing A Node from a Cluster by Rancher UI
+## Removing a Node from a Cluster by Rancher UI
 
 When the node is in `Active` state, removing the node from a cluster will trigger a process to clean up the node. Please restart the node after the automatic cleanup process is done to make sure any non-persistent data is properly removed.
 
@@ -36,10 +36,10 @@ When the node is in `Active` state, removing the node from a cluster will trigge
 
 ```
 # using reboot
-reboot
+$ sudo reboot
 
 # using shutdown
-shutdown -r now
+$ sudo shutdown -r now
 ```
 
 ## Cleaning a Node Manually
@@ -183,10 +183,10 @@ The remaining two components that are changed/configured are (virtual) network i
 
 ```
 # using reboot
-reboot
+$ sudo reboot
 
 # using shutdown
-shutdown -r now
+$ sudo shutdown -r now
 ```
 
 If you want to know more on (virtual) network interfaces or iptables rules, please see the specific subjects below.
@@ -223,7 +223,7 @@ ip link delete interface_name
 
 >**Note:** Depending on the network provider configured for the cluster the node was part of, some of the chains will or won't be present on the node.
 
-Iptables rules are used to route traffic from and to containers. The created rules are not persistent, so restarting the node will restore iptables to it's original state.
+Iptables rules are used to route traffic from and to containers. The created rules are not persistent, so restarting the node will restore iptables to its original state.
 
 Chains |
 --------|
