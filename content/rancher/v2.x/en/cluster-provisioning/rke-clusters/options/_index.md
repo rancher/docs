@@ -3,12 +3,12 @@ title: Cluster Options
 weight: 2250
 ---
 
-As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rke/v0.1.x/en/), you can choose custom Kubernetes options.
+As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rke/latest/en/), you can choose custom Kubernetes options.
 
 You can configure Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Config File](#config-file): Alternatively, you can create a [RKE config file]({{< baseurl >}}/rke/v0.1.x/en/config-options/) to customize any option offered by Kubernetes.
+- [Config File](#config-file): Alternatively, you can create a [RKE config file]({{< baseurl >}}/rke/latest/en/config-options/) to customize any option offered by Kubernetes.
 
 ## Rancher UI
 
@@ -43,14 +43,14 @@ From this section you can choose:
     - [Calico](https://docs.projectcalico.org/)
     - [Weave](https://github.com/weaveworks/weave) (_Available as of v2.2.0_)
 
-         When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the [Weave Network Plug-in Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+         When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the [Weave Network Plug-in Options]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
 
 
 <br/>
 
 - If you want to configure a [Kubernetes cloud provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
-    >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/) on how to configure the cloud provider.
+    >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
 If you want to see all the configuration options for a cluster, please click **Show advanced options** on the bottom right. The advanced options are described below:
 
@@ -58,7 +58,7 @@ If you want to see all the configuration options for a cluster, please click **S
 
 _Available as of v2.2.0_
 
-If you are using a private registry with authentication for your Docker images, please configure the registry in this section to allow the nodes to pull images from this registry. See [Private Registries]({{< baseurl >}}/rke/v0.1.x/en/config-options/private-registries/) for more information.
+If you are using a private registry with authentication for your Docker images, please configure the registry in this section to allow the nodes to pull images from this registry. See [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information.
 
 ### Authorized Cluster Endpoint
 
@@ -70,7 +70,7 @@ Authorized Cluster Endpoint can be used to directly access the Kubernetes API se
 
 #### Nginx Ingress
 
-Option to enable or disable the [NGINX ingress controller]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
+Option to enable or disable the [NGINX ingress controller]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/).
 
 #### Node Port Range
 
@@ -78,7 +78,7 @@ Option to change the range of ports that can be used for [NodePort services](htt
 
 #### Metrics Server Monitoring
 
-Option to enable or disable [Metrics Server]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/metrics-server/).
+Option to enable or disable [Metrics Server]({{< baseurl >}}/rke/latest/en/config-options/add-ons/metrics-server/).
 
 #### Pod Security Policy Support
 
@@ -94,20 +94,20 @@ If the nodes you are adding to the cluster have Docker configured with a non-def
 
 #### Recurring etcd Snapshots
 
-Option to enable or disable [recurring etcd snaphots]({{< baseurl >}}/rke/v0.1.x/en/etcd-snapshots/#etcd-recurring-snapshots).
+Option to enable or disable [recurring etcd snaphots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
 
 ## Config File
 
 >**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/v0.1.x/en/config-options/) in an RKE installation.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available]({{< baseurl >}}/rke/latest/en/config-options/) in an RKE installation.
 
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from a file**.
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
-For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/example-yamls/).  
+For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/example-yamls/).  
 
 ### Rancher specific parameters
 

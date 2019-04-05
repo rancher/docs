@@ -1,3 +1,7 @@
 --ignore-dir=public
 --ignore-dir=static
 --ignore-dir=src/img
+--ignore-dir=src/img
+--type-add=svg:ext:svg
+--no-xml
+--no-svg

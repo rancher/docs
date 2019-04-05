@@ -30,7 +30,7 @@ Some of the biggest metrics to look out for:
 1. From the **Global** view, navigate to the cluster that you want to view metrics.
 
 1. Select **Nodes** in the navigation bar.
-exre
+
 1. Select a specific node and click on its name.
 
 1. Click on **Node Metrics**.
@@ -91,7 +91,7 @@ Some of the more important component metrics to monitor are:
 
 ## Rancher Logging Metrics
 
-Although the Dashboard for a cluster primarly displays data sourced from Prometheus, it also displays information for cluster logging, provided that you have [configured Rancher to use a logging service]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/).
+Although the Dashboard for a cluster primarily displays data sourced from Prometheus, it also displays information for cluster logging, provided that you have [configured Rancher to use a logging service]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/logging/).
 
 [_Get expressions for Rancher Logging Metrics_]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#rancher-logging-metrics)
 

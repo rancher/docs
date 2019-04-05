@@ -39,7 +39,7 @@ By default, Rancher v2.x deploys NGINX Ingress Controller on clusters provisione
 
 RKE deploys NGINX Ingress Controller as a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), meaning that an NGINX instance is deployed on every node in the cluster. NGINX acts like an Ingress Controller listening to Ingress creation within your entire cluster, and it also configures itself as the load balancer to satisfy the Ingress rules. The DaemonSet is configured with hostNetwork to expose two ports: 80 and 443.
 
-For more information NGINX Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/).
+For more information NGINX Ingress Controller, their deployment as DaemonSets, deployment configuration options, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/).
 
 ## Load Balancing Architecture
 
@@ -90,7 +90,7 @@ kubectl get ingress
 Rancher v2.x Ingress functionality supports the HTTPS protocol, but if you want to use it, you need to use a valid SSL/TLS certificate. While configuring Ingress rules, use the **SSL/TLS Certificates** section to configure a certificate.
 
 - We recommend [uploading a certificate]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/) from a known certificate authority (you'll have to do this before configuring Ingress). Then, while configuring your load balancer, use the **Choose a certificate** option and select the uploaded certificate that you want to use.
-- If you have configured [NGINX default certificate]({{< baseurl >}}/rke/v0.1.x/en/config-options/add-ons/ingress-controllers/#configuring-an-nginx-default-certificate), you can select **Use default ingress controller certificate**.
+- If you have configured [NGINX default certificate]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/#configuring-an-nginx-default-certificate), you can select **Use default ingress controller certificate**.
 
 ### TCP Load Balancing Options
 

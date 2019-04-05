@@ -11,7 +11,7 @@ From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use 
 
 Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts) you created.
 
->**Tip:** For more details on the options available, see the RKE [Config Options]({{< baseurl >}}/rke/v0.1.x/en/config-options/).
+>**Tip:** For more details on the options available, see the RKE [Config Options]({{< baseurl >}}/rke/latest/en/config-options/).
 
 <figcaption>RKE Options</figcaption>
 
@@ -67,7 +67,7 @@ rke up --config ./rancher-cluster.yml
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/v0.1.x/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
-- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/v0.1.x/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._ 
+- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._ 
 
 ### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher)

@@ -69,7 +69,7 @@ If you use a Kubernetes provider such as Google GKE, Rancher integrates with its
 
 ### Rancher Launched Kubernetes
 
-Alternatively, you can use Rancher to create a cluster on your own nodes, using [Rancher Kubernetes Engine (RKE)]({{< baseurl >}}/rke/v0.1.x/en/). RKE is Rancher’s own lightweight Kubernetes installer. In RKE clusters, Rancher manages the deployment of Kubernetes. These clusters can be deployed on any bare metal server, cloud provider, or virtualization platform. These nodes can either:
+Alternatively, you can use Rancher to create a cluster on your own nodes, using [Rancher Kubernetes Engine (RKE)]({{< baseurl >}}/rke/latest/en/). RKE is Rancher’s own lightweight Kubernetes installer. In RKE clusters, Rancher manages the deployment of Kubernetes. These clusters can be deployed on any bare metal server, cloud provider, or virtualization platform. These nodes can either:
 
 - Be provisioned through Rancher's UI, which calls [Docker Machine](https://docs.docker.com/machine/) to launch nodes on various cloud providers.
 - Be a prior existing node that's brought into the cluster by running a Rancher agent container on it.
