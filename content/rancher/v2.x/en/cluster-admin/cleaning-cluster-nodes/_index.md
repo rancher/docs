@@ -19,7 +19,7 @@ When cleaning nodes provisioned using Rancher, the following components are dele
 | `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` labeled by Rancher | ✓               | ✓                 | ✓                   | ✓                   |
 | Labels, Annotations, and Finalizers                                            | ✓               | ✓                 | ✓                   | ✓                   |
 | Rancher Deployment                                                             | ✓               | ✓                 | ✓                   |                     |
-| Machines, clusters, projects, and user custom resource defintions (CRDs)       | ✓               | ✓                 | ✓                   |                     |
+| Machines, clusters, projects, and user custom resource definitions (CRDs)      | ✓               | ✓                 | ✓                   |                     |
 | All resources create under the `management.cattle.io` API Group                | ✓               | ✓                 | ✓                   |                     |
 | All CRDs created by Rancher v2.x                                               | ✓               | ✓                 | ✓                   |                     |
 
