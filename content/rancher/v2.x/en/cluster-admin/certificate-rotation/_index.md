@@ -32,3 +32,28 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 4. Click **Save**.
 
 **Results:** The selected certificates will be rotated and the related services will be restarted to start using the new certificate.
+
+_Certificate Rotation for v2.1.14 and v2.0.9_
+
+Certificate Rotation for all services was backported to **v2.1.14** and **v2.0.9**, the following services will be rotated:
+
+- etcd
+- kubelet
+- kube-apiserver
+- kube-proxy
+- kube-scheduler
+- kube-controller-manager
+
+Certificates can be rotated through the API using the following steps:
+
+1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
+
+2. Select the **Ellipsis (...) > View in API**.
+
+3. Click on **RotateCertificates**.
+
+4. Click on **Show Request**.
+
+5. Click on **Send Request**.
+
+**Results:** All kubernetes certificates will be rotated.
