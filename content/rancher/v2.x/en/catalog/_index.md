@@ -75,7 +75,7 @@ _Available as of v2.2.0_
 In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the
 OAuth token if your Git or Helm repository server support that.
 
-[Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/private/)
+[Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#private-repositories)
 
 <!--There are two types of catalogs that can be added into Rancher. There are global catalogs and project catalogs. In a global catalog, the catalog templates are available in *all* projects. In a project catalog, the catalog charts are only available in the project that the catalog is added to.
 
