@@ -15,7 +15,7 @@ For more information visit [CNI GitHub project](https://github.com/containernetw
 
 ### What Network Models are Used in CNI?
 
-CNI providers implement their network fabric using either an encapsulated network model such as Virtual Extensible Lan ([VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan)) or an unencapsulated network model such as Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)).
+CNI network providers implement their network fabric using either an encapsulated network model such as Virtual Extensible Lan ([VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan)) or an unencapsulated network model such as Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)).
 
 #### What is an Encapsulated Network?
 
@@ -23,11 +23,11 @@ This network model provides a logical Layer 2 (L2) network encapsulated over the
 
 In simple terms, this network model generates a kind of network bridge extended between Kubernetes workers, where pods are connected.
 
-This network model is used when an extended L2 bridge is preferred. This network model is sensible for L3 network latencies of the Kubernetes workers. If datacenters are in distinct geolocations, be sure to have low latencies between them to avoid eventual network segmentation.
+This network model is used when an extended L2 bridge is preferred. This network model is sensitive to L3 network latencies of the Kubernetes workers. If datacenters are in distinct geolocations, be sure to have low latencies between them to avoid eventual network segmentation.
 
-CNI providers using this network model include Flannel, Canal, and Weave.
+CNI network providers using this network model include Flannel, Canal, and Weave.
 
-![Encapsulated Network]({{< baseurl >}}/img/rancher/encapsulated-network.svg)
+![Encapsulated Network]({{< baseurl >}}/img/rancher/encapsulated-network.png)
 
 #### What is an Unencapsulated Network?
 
@@ -35,23 +35,23 @@ This network model provides an L3 network to route packets between containers. T
 
 In simple terms, this network model generates a kind of network router extended between Kubernetes workers, which provides information about how to reach pods.
 
-This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensible to latency.
+This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensitive to latency.
 
-CNI providers using this network model include Calico and Romana.
+CNI network providers using this network model include Calico and Romana.
 
-![Unencapsulated Network]({{< baseurl >}}/img/rancher/unencapsulated-network.svg)
+![Unencapsulated Network]({{< baseurl >}}/img/rancher/unencapsulated-network.png)
 
 ### What CNI Providers are Provided by Rancher?
 
-Out-of-the-box, Rancher provides three different CNI providers for Kubernetes clusters: Canal, Flannel, and Calico. You can choose your CNI when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0). You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
 #### Canal
 
 ![Canal Logo]({{< baseurl >}}/img/rancher/canal-logo.png)
 
-Canal is a CNI provider that gives you the best of Flannel and Calico. It allows users to easily deploy Calico and Flannel networking together as a unified networking solution, combining Calico’s network policy enforcement with the rich superset of Calico (unencapsulated) and/or Flannel (encapsulated) network connectivity options.
+Canal is a CNI network provider that gives you the best of Flannel and Calico. It allows users to easily deploy Calico and Flannel networking together as a unified networking solution, combining Calico’s network policy enforcement with the rich superset of Calico (unencapsulated) and/or Flannel (encapsulated) network connectivity options.
 
-In Rancher, Canal is the default CNI provider combined with Flannel and VXLAN encapsulation.
+In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
@@ -65,7 +65,7 @@ For more information, see the [Canal GitHub Page](https://github.com/projectcali
 
 Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan).
 
-Encapsulated traffic is unencrypted by default. Threfore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers.
+Encapsulated traffic is unencrypted by default. Therefore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers.
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
@@ -81,7 +81,7 @@ Calico enables networking and network policy in Kubernetes clusters across the c
 
 Calico also provides a stateless IP-in-IP encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
 
-Kubernetes workers should open TCP port `179` (BGP).
+Kubernetes workers should open TCP port `179` (BGP). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
 ![Calico Diagram]({{< baseurl >}}/img/rancher/calico-diagram.svg)
 
@@ -91,26 +91,40 @@ For more information, see the following pages:
 - [Project Calico GitHub Page](https://github.com/projectcalico/calico)
 
 
+#### Weave
+
+![Weave Logo]({{< baseurl >}}/img/rancher/weave-logo.png)
+
+_Available as of v2.2.0_
+
+Weave enables networking and network policy in Kubernetes clusters across the cloud. Additionally, it support encrypting traffic between the peers.
+
+Kubernetes workers should open TCP port `6783` (control port), UDP port `6783` and UDP port `6784` (data ports). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
+
+For more information, see the following pages:
+
+- [Weave Net Official Site](https://www.weave.works/)
+
 ### CNI Features by Provider
 
-The following table summarizes the different features available for each CNI provider provided by Rancher.
+The following table summarizes the different features available for each CNI network provider provided by Rancher.
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
 | Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes |
-
+| Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
 
-- Route Distribution: An exterior gateway protocol designed to exchange routing and reachability information on the Internet. BGP can assist with pod-to-pod networking between clusters. This feature is a must on unencapsulated CNI providers, and it is typically done by BGP. If you plan to build clusters split across network segments, route distribution is a feature that's nice-to-have.
+- Route Distribution: An exterior gateway protocol designed to exchange routing and reachability information on the Internet. BGP can assist with pod-to-pod networking between clusters. This feature is a must on unencapsulated CNI network providers, and it is typically done by BGP. If you plan to build clusters split across network segments, route distribution is a feature that's nice-to-have.
 
 - Network Policies: Kubernetes offers functionality to enforce rules about which services can communicate with each other using network policies. This feature is stable as of Kubernetes v1.7 and is ready to use with certain networking plugins.
 
 - Mesh: This feature allows service-to-service networking communication between distinct Kubernetes clusters.
 
-- External Datastore: CNI providers with this feature need an external datastore for its data.
+- External Datastore: CNI network providers with this feature need an external datastore for its data.
 
 - Encyption: This feature allows cyphered and secure network control and data planes.
 
@@ -122,14 +136,18 @@ The following table summarizes different GitHub metrics to give you an idea of e
 
 | Provider | Project | Stars | Forks | Contributors |
 | ---- | ---- | ---- | ---- | ---- |
-| Canal | https://github.com/projectcalico/canal | 536 | 75 | 19 |
-| flannel | https://github.com/coreos/flannel | 3.279 | 774 | 107 |
-| Calico | https://github.com/projectcalico/calico | 572 | 225 | 82 |
+| Canal | https://github.com/projectcalico/canal | 580 | 84 | 20 |
+| flannel | https://github.com/coreos/flannel | 3980 | 987 | 123 |
+| Calico | https://github.com/projectcalico/calico | 953 | 305 | 101 |
+| Weave | https://github.com/weaveworks/weave/ | 5457 | 501 | 63 |
+
 <br/>
 ### Which CNI Provider Should I Use?
 
-It depends on your project needs. There are many different providers, which each have various features and options. There isn't one provider that meets everyone's needs. At the moment, Rancher v2.0 provides the 3 most versatile CNI providers.
+It depends on your project needs. There are many different providers, which each have various features and options. There isn't one provider that meets everyone's needs.
 
-As of Rancher v2.0.7, Canal is the default CNI provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking.
+As of Rancher v2.0.7, Canal is the default CNI network provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking.
 
-All of 3 solutions are capable CNI providers and will likely suit your needs.
+### How can I configure a CNI network provider?
+
+Please see [Cluster Options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/) on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the options for [Network Plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/).

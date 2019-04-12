@@ -139,3 +139,37 @@ Pod kube-dns-667c7cb9dd-z4dsf on host x.x.x.x
 nameserver 1.1.1.1
 nameserver 8.8.4.4
 ```
+
+If the output shows an address in the loopback range (`127.0.0.0/8`), you can correct this in two ways:
+
+* Make sure the correct nameservers are listed in `/etc/resolv.conf` on your nodes in the cluster, please consult your operating system documentation on how to do this. Make sure you execute this before provisioning a cluster, or reboot the nodes after making the modification.
+* Configure the `kubelet` to use a different file for resolving names, by using `extra_args` as shown below (where `/run/resolvconf/resolv.conf` is the file with the correct nameservers):
+
+```
+services:
+  kubelet:
+    extra_args:
+      resolv-conf: "/run/resolvconf/resolv.conf"
+```
+
+> **Note:** As the `kubelet` is running inside a container, the path for files located in `/etc` and `/usr` are in `/host/etc` and `/host/usr` inside the `kubelet` container.
+
+See [Editing Cluster as YAML]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/#editing-cluster-as-yaml) how to apply this change. When the provisioning of the cluster has finished, you have to remove the kube-dns pod to activate the new setting in the pod:
+
+```
+kubectl delete pods -n kube-system -l k8s-app=kube-dns
+pod "kube-dns-5fd74c7488-6pwsf" deleted
+```
+
+Try to resolve name again using [Check if domain names are resolving](#check-if-domain-names-are-resolving).
+
+If you want to check the kube-dns configuration in your cluster (for example, to check if there are different upstream nameservers configured), you can run the following command to list the kube-dns configuration:
+
+```
+kubectl -n kube-system get configmap kube-dns -o go-template='{{range $key, $value := .data}}{{ $key }}{{":"}}{{ $value }}{{"\n"}}{{end}}'
+```
+
+Example output:
+```
+upstreamNameservers:["1.1.1.1"]
+```

@@ -24,9 +24,11 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 	2.	Complete the **Azure Options** form.
 
-		- **Placement** sets the geographical region where where your cluster is hosted and other location metadata.
-
 		- **Account Access** stores your account information for authenticating with Azure.
+
+		{{< step_create-cloud-credential >}}
+
+		- **Placement** sets the geographical region where where your cluster is hosted and other location metadata.
 
 		- **Network** configures the networking used in your cluster.
 
@@ -37,7 +39,7 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 	4. Click **Create**.
 
 	5. **Optional:** Add additional node pools.
-
+<br>
 7. Review your options to confirm they're correct. Then click **Create**.
 
 {{< result_create-cluster >}}

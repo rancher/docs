@@ -16,7 +16,7 @@ When creating a vSphere cluster, Rancher first provisions the specified amount o
 
 ## Prerequisites
 
-Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/v0.1.x/en/config-options/cloud-providers/vsphere/) that must be met.
+Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere/) that must be met.
 
 ## Provisioning a vSphere Cluster
 
@@ -60,6 +60,8 @@ To create a cluster, you need to create at least one vSphere [node template]({{<
 3. Click **Add Template** and then click on the **vSphere** icon.
 
 4. Under [Account Access](#account-access) enter the vCenter FQDN or IP address and the credentials for the vSphere user account (see [Prerequisites](#prerequisites)).
+
+	{{< step_create-cloud-credential >}}
 
 5. Under [Instance Options](#instance-options), configure the number of vCPUs, memory, and disk size for the VMs created by this template.
 

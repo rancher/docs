@@ -122,12 +122,10 @@ To use Azure AD with Rancher you must whitelist Rancher with Azure. You can comp
 1. From the **Reply URLs** blade, enter the URL of your Rancher Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
        >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
-       >
-       > ![Reply URL Example]({{< baseurl >}}/img/rancher/azure-reply-url.png)
 
 1. Click **Save**.
 
-**Result:** Your reply URL is saved. 
+**Result:** Your reply URL is saved.
 
 >**Note:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
 
@@ -179,13 +177,13 @@ Enter the values that you copied to your [text file](#tip).
 
 1. Select **Azure AD**.
 
-1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#4-copy-azure-application-data).
+1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#5-copy-azure-application-data).
 
     >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
     >
     ><code>http<span>s://g</span>raph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher. 
+    The following table maps the values you copied in the Azure portal to the fields in Rancher.
 
     | Rancher Field      | Azure Value                           |
     | ------------------ | ------------------------------------- |

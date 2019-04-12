@@ -9,11 +9,11 @@
 			<!-- TODO: Improve the engine options -->
 			<p><strong>Engine Options</strong> customize the configuration of the <a href="https://docs.docker.com/engine/docker-overview/#the-docker-daemon">Docker daemon</a>. Important configuration options might include:
 			<ul>
-			<li><strong>Docker Engine Install URL:</strong> Determines what Docker version will be installed on the instance.</li>
+			<li><strong>Docker Engine Install URL:</strong> Determines what Docker version will be installed on the instance.<br/><br/>When using RancherOS, please check what Docker versions are available using <code>sudo ros engine list</code> on the RancherOS version you want to use, as the default Docker version configured might not be available. If you experience issues installing Docker on other operating systems, please try to install Docker manually using the configured Docker Engine Install URL to troubleshoot.</li>
 			<li><strong>Registry mirrors:</strong> Docker Registry mirror to be used by the Docker daemon</li>
 			</ul>
 			</p>
 
-			<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/">daemon option reference</a></p>
+			<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/">Docker daemon option reference</a></p>
 		</li>
 	</ul>

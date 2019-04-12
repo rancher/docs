@@ -21,3 +21,5 @@ Rancher needs to be configured to use the private registry in order to provision
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 
 >**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+
+### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-system-charts/)

@@ -5,7 +5,7 @@ weight: 100
 
 Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.
 
-Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x. 
+Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x.
 
 This command line interface tool will:
 
@@ -20,7 +20,7 @@ This command line interface tool will:
 - [A. Download the migration-tools CLI](#a-download-the-migration-tools-cli)
 - [B. Configure the migration-tools CLI](#b-configure-the-migration-tools-cli)
 - [C. Run the migration-tools CLI](#c-run-the-migration-tools-cli)
-- [D. Deploy Services Using Rancher CLI](#d-deploy-services-using-rancher-cli)
+- [D. Deploy Services Using Rancher CLI](#d-re-deploy-services-as-kubernetes-manifests)
 - [What Now?](#what-now)
 
 
@@ -50,7 +50,7 @@ After you download migration-tools CLI, rename it and make it executable.
 
 Next, use the migration-tools CLI to export all stacks in all of the Cattle environments into Compose files. Then, for stacks that you want to migrate to Rancher v2.x, convert the Compose files into Kubernetes manifest.
 
->**Prerequisite:** Create an [Account API Key](https://rancher.com/docs/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with Rancher v1.6 when using the migration-tools CLI.
+>**Prerequisite:** Create an [Account API Key]({{< baseurl >}}/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with Rancher v1.6 when using the migration-tools CLI.
 
 1. Export the Docker Compose files for your Cattle environments and stacks from Rancher v1.6.
 
@@ -85,7 +85,7 @@ Next, use the migration-tools CLI to export all stacks in all of the Cattle envi
 
     >**Note:** If you omit the `--docker-file` and `--rancher-file` options from your command, migration-tools uses the current working directory to find Compose files.
 
->**Want full usage and options for the migration-tools CLI?** See the [Migration Tools CLI Reference]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/migration-tools-ref/).
+>**Want full usage and options for the migration-tools CLI?** See the [Migration Tools CLI Reference]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/migration-tools-ref/).
 
 ### migration-tools CLI Output
 
@@ -231,21 +231,16 @@ status: {}
 
 ## D. Re-Deploy Services as Kubernetes Manifests
 
->**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests. 
+>**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests.
 
 {{% tabs %}}
 {{% tab "Rancher UI" %}}
 
 You can deploy the Kubernetes manifests created by migration-tools by importing them into Rancher v2.x.
 
-<figcaption>Deploy Services: Import Kubernetes Manifest</figcaption>
-
 >**Receiving an `ImportYaml Error`?**
 >
 >Delete the YAML directive listed in the error message. These are YAML directives from your v1.6 services that Kubernetes can't read.
-
-
-![Deploy Services]({{< baseurl >}}/img/rancher/deploy-service.gif)
 
 {{% /tab %}}
 {{% tab "Rancher CLI" %}}
@@ -260,32 +255,19 @@ Use the following Rancher CLI commands to deploy your application using Rancher 
 
 ./rancher kubectl create -f <SERVICE_YAML_FILE> # DEPLOY THE SERVICE YAML
 ```
- 
+
 {{% /tab %}}
 {{% /tabs %}}
 
 Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Workloads** and **Service Discovery** tabs.
 
-<figcaption>Imported Services</figcaption>
-
-![Imported Services]({{< baseurl >}}/img/rancher/imported-workloads.png)
-
-
 ## What Now?
 
-Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below. 
-
-<figcaption>Edit Migrated Services</figcaption>
-
-![Edit Migrated Workload]({{< baseurl >}}/img/rancher/edit-migration-workload.gif)
+Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below.
 
 As mentioned in [Migration Tools CLI Output](#migration-tools-cli-output), the `output.txt` files generated during parsing lists the manual steps you must make for each deployment. Review the upcoming topics for more information on manually editing your Kubernetes specs.
 
 Open your `output.txt` file and take a look at its contents. When you parsed your Compose files into Kubernetes manifests, migration-tools CLI output a manifest for each workload that it creates for Kubernetes. For example, our when our [Migration Example Files]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/#migration-example-files) are parsed into Kubernetes manifests, `output.txt` lists each resultant parsed [Kubernetes manifest file](#migration-example-file-output) (i.e., workloads). Each workload features a list of action items to restore operations for the workload in v2.x.
-
-<figcaption>Output.txt Example</figcaption>
-
-![output.txt]({{< baseurl >}}/img/rancher/output-dot-text.png)
 
 The following table lists possible directives that may appear in `output.txt`, what they mean, and links on how to resolve them.
 
@@ -306,7 +288,7 @@ start_on_create | No Kubernetes equivalent. No action is required from you.
 
 <!-- MB: oops, skipped 6 -->
 
-[7]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-using-labels 
+[7]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-using-labels
 [8]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#scheduling-global-services
 [9]:{{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/#label-affinity-antiaffinity
 

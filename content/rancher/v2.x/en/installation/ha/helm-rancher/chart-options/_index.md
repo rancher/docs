@@ -27,7 +27,9 @@ weight: 276
 | `auditLog.maxAge` | 1 | `int` - maximum number of days to retain old audit log files |
 | `auditLog.maxBackups` | 1 | `int` - maximum number of audit log files to retain |
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated |
+| `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_ |
 | `debug` | false | `bool` - set debug flag on rancher server |
+| `extraEnv` | [] | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_ |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
@@ -41,17 +43,41 @@ weight: 276
 
 ### API Audit Log
 
-Enabling the [API Audit Log](https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing/).
+Enabling the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing/).
 
-You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
+You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{< baseurl >}}/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
 
 ```plain
 --set auditLog.level=1
 ```
 
-By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools](https://rancher.com/docs/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
+By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{< baseurl >}}/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
+
+### Setting Extra Environment Variables
+
+_Available as of v2.2.0_
+
+You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
+
+```plain
+--set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
+--set 'extraEnv[0].value=http://registry.example.com/'
+```
+
+### TLS settings
+
+_Available as of v2.2.0_
+
+To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
+
+```plain
+--set 'extraEnv[0].name=CATTLE_TLS_MIN_VERSION'
+--set 'extraEnv[0].value=1.0'
+```
+
+See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
 ### Import `local` Cluster
 
@@ -104,8 +130,8 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 For details on installing Rancher with a private registry, see:
 
-- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/) 
-- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/) 
+- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/)
+- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
 
 ### External TLS Termination
@@ -140,7 +166,7 @@ Rancher will respond `200` to health checks on the `/healthz` endpoint.
 
 This NGINX configuration is tested on NGINX 1.14.
 
-  >**Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/). 
+  >**Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
 
 * Replace `IP_NODE1`, `IP_NODE2` and `IP_NODE3` with the IP addresses of the nodes in your cluster.
 * Replace both occurences of `FQDN` to the DNS name for Rancher.

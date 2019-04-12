@@ -1,6 +1,6 @@
 ---
 title: "5. Configure Rancher for the Private Registry"
-weight:
+weight: 500
 aliases:
 
 ---
@@ -22,3 +22,5 @@ Rancher needs to be configured to use the private registry in order to provision
 1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
 
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
+
+### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/)

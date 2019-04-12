@@ -3,13 +3,9 @@ title: "6. Service Discovery"
 weight: 600
 ---
 
-Service discovery is one of the core functionalities of any container-based environment. Once you have packaged and launched your application, the next step is making it discoverable to other containers in your environment or the external world. This document will describe how to use the service discovery support provided by Rancher v2.x so that you can find them by name. 
+Service discovery is one of the core functionalities of any container-based environment. Once you have packaged and launched your application, the next step is making it discoverable to other containers in your environment or the external world. This document will describe how to use the service discovery support provided by Rancher v2.x so that you can find them by name.
 
 This document will also show you how to link the workloads and services that you migrated into Rancher v2.x. When you parsed your services from v1.6 using migration-tools CLI, it output two files for each service: one deployment manifest and one service manifest. You'll have to link these two files together before the deployment works correctly in v2.x.
-
-<figcaption>Resolve the <code>output.txt</code> Link Directive</figcaption>
-
-![Resolve Link Directive]({{< baseurl >}}/img/rancher/resolve-links.png)
 
 ## In This Document
 
@@ -27,7 +23,7 @@ This document will also show you how to link the workloads and services that you
 
 For Rancher v2.x, we've replaced the Rancher DNS microservice used in v1.6 with native [Kubernetes DNS support](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/), which provides equivalent service discovery for Kubernetes workloads and pods. Former Cattle users can replicate all the service discovery features from Rancher v1.6 in v2.x. There's no loss of functionality.
 
-Kubernetes schedules a DNS pod and service in the cluster, which is similar to the [Rancher v1.6 DNS microservice](https://rancher.com/docs/rancher/v1.6/en/cattle/internal-dns-service/#internal-dns-service-in-cattle-environments). Kubernetes then configures its kubelets to route all DNS lookups to this DNS service, which is skyDNS, a flavor of the default Kube-DNS implementation.
+Kubernetes schedules a DNS pod and service in the cluster, which is similar to the [Rancher v1.6 DNS microservice]({{< baseurl >}}/rancher/v1.6/en/cattle/internal-dns-service/#internal-dns-service-in-cattle-environments). Kubernetes then configures its kubelets to route all DNS lookups to this DNS service, which is skyDNS, a flavor of the default Kube-DNS implementation.
 
 The following table displays each service discovery feature available in the two Rancher releases.
 
@@ -62,11 +58,6 @@ When you migrate v1.6 services to v2.x, Rancher does not automatically create a 
 
 In the image below, the `web-deployment.yml` and `web-service.yml` files [created after parsing]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/#migration-example-file-output) our [migration example services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/#migration-example-files) are linked together.
 
-<figcaption>Linked Workload and Kubernetes Service</figcaption>
-
-![Linked Workload and Kubernetes Service]({{< baseurl >}}/img/rancher/linked-service-workload.png)
-
-
 ### Service Name Alias Creation
 
 Just as you can create an alias for Rancher v1.6 services, you can do the same for Rancher v2.x workloads. Similarly, you can also create DNS records pointing to services running externally, using either their hostname or IP address. These DNS records are Kubernetes service objects.
@@ -74,9 +65,6 @@ Just as you can create an alias for Rancher v1.6 services, you can do the same f
 Using the v2.x UI, use the context menu to navigate to the `Project` view and choose the **Service Discovery** tab. All existing DNS records created for your workloads are listed under each namespace.
 
 Click **Add Record** to create new DNS records. Then view the various options supported to link to external services or to create aliases for another workload, DNS record, or set of pods.
-
-<figcaption>Add Service Discovery Record</figcaption>
-![Add Service Discovery Record]({{< baseurl >}}/img/rancher/add-record.png)
 
 The following table indicates which alias options are implemented natively by Kubernetes and which options are implemented by Rancher leveraging Kubernetes.
 

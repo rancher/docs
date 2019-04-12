@@ -2,8 +2,6 @@
 title: Nodes Hosted in an Infrastructure Provider
 weight: 2205
 aliases:
-  - /rancher/v2.x/en/concepts/global-configuration/node-drivers/
-  - /rancher/v2.x/en/tasks/global-configuration/node-drivers/
   - /rancher/v2.x/en/concepts/global-configuration/node-templates/
 ---
 
@@ -19,33 +17,22 @@ A node template is the saved configuration for the parameters to use when provis
 
 After you create a node template in Rancher, it's saved so that you can use this template again to create other node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
+## Cloud Credentials
+
+_Available as of v2.2.0_
+
+Node templates can use cloud credentials to store credentials for launching nodes in your cloud provider, which has some benefits:
+
+- Cloud credentials are stored as Kubernetes secrets for security. Credentials are no longer needed to be re-entered any time you want to edit a node template.
+
+- After the cloud credential is created, it can be re-used to create additional node templates.
+
+- When access and secret keys are expired or compromised, the cloud credential can be updated with the new information, which will automatically be updated for all the node templates referencing this cloud credential.
+
+> **Note:** As of v2.2.0, the default `active` [node drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use cloud credentials. If you have upgraded to v2.2.0, existing node templates will continue to work with the previous account access  information, but when you edit the node template, you will be required to create a cloud credential and the node template will start using it.
+
+After cloud credentials are created, the user can start [managing the cloud credentials that they created]({{< baseurl >}}/rancher/v2.x/en/user-settings/cloud-credentials/).
+
 ## Node Drivers
 
-A node driver is the same as a [Docker Machine driver](https://docs.docker.com/machine/drivers/). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, Rancher is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to Rancher.
-
-If there are specific node drivers that you don't want to show to your users, you would need to de-activate these node drivers.
-
-#### Managing Node Drivers
-
->**Prerequisites:** To create, edit, or delete drivers, you need _one_ of the following permissions:
->
->- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
->- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Node Drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
-
-## Adding Custom Node Drivers
-
-If you want to use a node driver that Rancher doesn't support out-of-the-box, you can add the provider's drivers in order to start using them to create node templates and eventually node pools.
-
-1.	From the **Global** view, select **Node Drivers** from the main menu.
-
-2.	Click **Add Node Driver**.
-
-3.	Complete the **Add Node Driver** form. Then click **Create**.
-
-## Activating/Deactivating Node Drivers
-
-By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, DigitalOcean and vSphere. If you want to show or hide any node driver, you can change it's status.
-
-1.	From the **Global** view, select **Node Drivers** from the main menu.
-
-2.	Find the driver that you want to activate or deactivate and select **Vertical Elipsis (...) > Edit**. Choose either **Activate** or **Deactivate**.
+If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers), or you can [add your own custom node driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/#adding-custom-node-drivers).
