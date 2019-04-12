@@ -31,6 +31,7 @@ For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provis
 > **Note:** By default, all Rancher Launched Kubernetes clusters have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled.
 
 To find the name of the context(s), run:
+
 ```
 kubectl config get-contexts --kubeconfig /custom/path/kube.config
 CURRENT   NAME                        CLUSTER                     AUTHINFO     NAMESPACE
