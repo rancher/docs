@@ -5,14 +5,26 @@ Rancher Docs
 
 The `rancher/docs:dev` docker image runs a live-updating server.  To run on your workstation, run:
 
+Linux
 ```bash
   ./scripts/dev
 ```
 
+Windows
+```powershell
+./scripts/dev-windows.ps1
+```
+
 and then navigate to http://localhost:9001/.  You can customize the port by passing it as an argument:
 
+Linux
 ```bash
   ./scripts/dev 8080
+```
+
+Windows
+```powershell
+./scripts/dev-windows.ps1 -port 8080
 ```
 
 License
