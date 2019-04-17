@@ -186,7 +186,7 @@ If you are visiting this page to complete an air gap installation, you must pre-
 
 In the situation where you want to use a single node to run Rancher and to be able to add the same node to a cluster, you have to adjust the host ports mapped for the `rancher/rancher` container.
 
-If a node is added to a cluster, it deploys the nginx ingress controller which will use port 80 and 443. This will conflict with the default ports we advice to expose for the `rancher/rancher` container.
+If a node is added to a cluster, it deploys the nginx ingress controller which will use port 80 and 443. This will conflict with the default ports we advise to expose for the `rancher/rancher` container.
 
 Please note that this setup is not recommended for production use, but can be convenient for development/demo purposes.
 
