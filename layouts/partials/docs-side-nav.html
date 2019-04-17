@@ -12,10 +12,10 @@
 {{end}}
 
 <!-- product dropdown -->
-<ul class="dropdown sub-menu unstyled">
-  <li class="m-b-0">
-    <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="btn bg-link p-a-0">
-      <span class="p-h-xs">
+<ul class="side-menus-wrap">
+  <li class="">
+    <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="">
+      <span class="">
         {{ range $product := $.Site.Sections }}
           {{ range $version := .Sections }}
             {{ range $language := .Sections }}
@@ -28,39 +28,35 @@
           {{end}}
         {{end}}
       </span>
-      <i class="material-icons darken p-a-xs">keyboard_arrow_down</i>
     </a>
 
-    <ul class="sub dropdown-menu bg-white unstyled">
+    <ul class="submenu submenus-wrap">
       {{ range $product := $.Site.Sections }}
         {{ range $version := .Sections }}
           {{ range $language := .Sections }}
-            <li class="m-b-0"><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
+            <li><a href="{{ .Permalink }}">{{ .Params.shortTitle }}</a></li>
             {{ if .Params.insertonesix }}
-              <li class="m-b-0"><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
+              <li><a href="https://rancher.com/docs/rancher/v1.6/en/" target="blank">Rancher 1.6</a></li>
             {{end}}
           {{end}}
         {{end}}
       {{end}}
-
     </ul>
   </li>
 </ul>
 
-<div class="tree-nav invisible">
-  <ul>
+<ul class="side-menus-wrap second">
     <!-- {{ template "section-tree-nav" ($.Scratch.Get "secondLevel") }} -->
     {{ template "section-tree-nav" ($.Scratch.Get "topLevel") }}
-  </ul>
-</div>
+</ul>
+
 {{ define "section-tree-nav" }}
   {{ range .Sections}}
-    <li class="tree-nav-item"><a href="{{ .RelPermalink}}">{{ .Title }}</a>
+    <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a>
       {{if gt (len .Sections) 0}}
-        <i class="material-icons expand-toggle">add_box</i>
-        <ul class="tree-nav-sublist hide">
+        <ul class="submenu submenus-wrap">
           {{ range .Pages }}
-            <li class="tree-nav-item-child"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
+            <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
           {{ end }}
           {{ template "section-tree-nav" . }}
         </ul>
