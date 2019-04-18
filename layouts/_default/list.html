@@ -50,9 +50,22 @@
     
           {{ if .Params.ctaBanner }}
             {{ with index .Site.Data.cta .Params.ctaBanner }}
-              <div class="row center-xs middle-xs bg-info shadow rounded-corners">
-                <h3 class="m-v-sm m-r-sm text-white">{{ .header }}</h3>
-                <a href="{{ .link }}" target="_blank" class="btn border-btn">{{ .button }}</a>
+              <div class="docs-banner">
+                <h3 class="">{{ .header }}</h3>
+
+                <div class="buttons-container">
+                  <a href="{{ .link }}" target="_blank" class="btn border-btn">
+                    <button class="button has-icon-right">
+                      <span>{{ .button }}</span>
+                      <svg class="icon right" enable-background="new 0 0 34 34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                          <path class="svg-linear" d="m19.5 12 5 5-5 5"></path>
+                          <path class="svg-linear" d="m24.5 17h-15"></path>
+                        </g>
+                      </svg>
+                    </button>
+                  </a>
+                </div>
               </div>
             {{ end }}
           {{ end }}
