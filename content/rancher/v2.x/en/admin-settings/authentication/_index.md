@@ -30,7 +30,7 @@ The Rancher authentication proxy integrates with the following external authenti
 <br/>
 However, Rancher also provides [local authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/local/).
 
-In most cases, you should use an external authentication service over local authentication, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if Active Directory is down.
+In most cases, you should use an external authentication service over local authentication, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if your external authentication provider is unavailable or undergoing maintenance.
 
 ## Users and Groups
 
