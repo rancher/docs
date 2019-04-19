@@ -6,7 +6,7 @@ aliases:
 
 ## A. Prepare System Charts
 
-The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as moniotring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach and configure Rancher to use that repository.
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach and configure Rancher to use that repository.
 
 ## B. Configure System Charts
 
