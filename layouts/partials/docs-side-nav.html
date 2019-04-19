@@ -59,6 +59,19 @@
 <div class="side-menus-container guide-menus jquery-accordion-menu">
   <ul class="side-menus-wrap second">
     {{ template "section-tree-nav" ($.Scratch.Get "topLevel") }}
+
+    <li class="back-to-the-top">
+      <a href="#" class="submenu-indicator-close">
+        Back to the top 
+        <svg class="svg-icon" enable-background="new 0 0 34 34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+          <g class="svg-linear" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+              <path d="m12 14.5 5-5 5 5"></path><path d="m17 9.5v15"></path>
+          </g>
+        </svg>
+
+        <span class="submenu-indicator"><span class="object1"></span><span class="object2"></span><span class="object3"></span></span>
+      </a>
+    </li>
   </ul>
 </div>
 

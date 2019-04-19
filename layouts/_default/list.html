@@ -180,7 +180,7 @@
                 e.preventDefault();
 
                 if ($(this).attr('class') === 'back-to-the-top') {
-                  $('.mobile-header-container').scrollTop(0);
+                  $('.side-menus-container').scrollTop(0);
                 }
 
                 if($(this).children(".submenu").length > 0) {
@@ -248,108 +248,16 @@
         })( jQuery, window, document );
 
         var sideNavMenus = $('.side-menus-container');
-
         sideNavMenus.jqueryAccordionMenu();
+
+        var sideNavMenusMobile = $('.docs-container .side-menus');
+        $('.guide-menus-activator').click(function() {
+          if (sideNavMenusMobile.hasClass('show')) {
+            sideNavMenusMobile.removeClass('show');
+          } else {
+            sideNavMenusMobile.addClass('show');
+          }
+        });
       });
   </script>
-
-
-
-
-
-
-
-
-  <div class="wrapper">
-
-    <div class="row m-t-sm">
-
-      <aside class="col-md-3 col-xs-12 p-l-0">
-        {{ partial "docs-side-nav.html" . }}
-      </aside>
-
-      <article class="{{ if ($.Scratch.Get "showSidebar") }}col-sm-6{{else}}col-md-9 p-l-lg {{end}}col-xs-12">
-
-      {{ with .Params.Title }}
-        <h1 class="m-t-0">{{ . }}</h1>
-        <hr/>
-      {{end}}
-
-      {{ if .Params.ctaBanner }}
-        {{ with index .Site.Data.cta .Params.ctaBanner }}
-          <div class="row center-xs middle-xs bg-info shadow rounded-corners">
-            <h3 class="m-v-sm m-r-sm text-white">{{ .header }}</h3>
-            <a href="{{ .link }}" target="_blank" class="btn border-btn">{{ .button }}</a>
-          </div>
-        {{ end }}
-      {{ end }}
-
-      <div class="main-content docs-body">
-        <!-- this is a test -->
-        <!-- {{ partial "page-nav.html" . }} -->
-        <!-- end test -->
-        {{ .Content }}
-
-        {{ $paginator := .Scratch.Get "paginator" }}
-        {{ range $paginator.Pages }}
-          <div class="box m-b-md">
-            <div class="p-a-sm">
-              <h3><a href="{{.URL}}">{{.Title}}</a></h3>
-
-              {{ if .Params.Image }}
-                <div class="thumbnail"><img src="{{ .Params.Image }}" alt="{{ .Params.Title }}"></div>
-              {{end}}
-
-              <p>{{ .Summary | safeHTML }}</p>
-              {{ if .Truncated }}
-              <div>
-                <a href="{{ .RelPermalink }}">Read More…</a>
-              </div>
-              {{ end }}
-            </div>
-            <div class="bg-default">
-              <div class="row">
-
-                {{ with .Params.Author }}
-                  <div class="p-h-sm p-v-xs"><i class="material-icons">person_outline</i> By: {{ . }}</div>
-                {{end}}
-
-                {{ if eq .Section "events" }}
-                  {{ with .Params.EventDate }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ . }}</div>
-                  {{end}}
-
-                {{ else }}
-
-                  {{ with .Params.Date }}
-                    <div class="p-h-sm p-v-xs"><i class="material-icons">event</i> {{ .Format "January 2, 2006" }}</div>
-                  {{end}}
-                {{end}}
-
-                {{ if eq .Section "blog" }}
-                  <div class="p-h-sm p-v-xs"><i class="material-icons">timer</i> Read Time: {{.ReadingTime}} minutes</div>
-                {{end}}
-
-                {{ with .Params.Location }}
-                  <div class="p-h-sm p-v-xs"><i class="material-icons">location_on</i> {{ . }}</div>
-                  {{end}}
-
-              </div>
-            </div>
-          </div>
-          {{ end }}
-        </div>
-        {{ template "_internal/pagination.html" . }}
-
-        <div class="p-v-xs">{{ partial "page-edit.html" . }}</div>
-      </article>
-      <!-- {{ with .TableOfContents }}
-        <div class="offset-watch invisible"></div>
-        <aside class="col-sm-2 col-xs-12 unstyled toc-container hidden-md">
-          <h4 class="m-b-0">On this page</h4>
-          {{ . }}
-        </aside>
-      {{ end }} -->
-    </div>
-  </div>
 {{ end }}
