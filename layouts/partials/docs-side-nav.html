@@ -48,7 +48,11 @@
 </div>
 
 <div class="guide-menus-activator">
-  Quick start guides
+{{ if .Title }}
+{{.Title}} 
+{{ else }}
+Quick Start Guide
+{{end}}
 
   <span class="indicator">
     <span class="object1"></span>
