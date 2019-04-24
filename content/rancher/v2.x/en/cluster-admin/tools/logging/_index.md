@@ -46,7 +46,7 @@ You can configure logging at either cluster level or project level.
 Logs that are sent to your logging service are from the following locations:
 
   - Pod logs stored at `/var/log/containers`.
-  - Kubernetes system components logs stored at `/var/lib/rancher/rke/logs/`.
+  - Kubernetes system components logs stored at `/var/lib/rancher/rke/log/`.
 
 ## Enabling Cluster Logging
 
