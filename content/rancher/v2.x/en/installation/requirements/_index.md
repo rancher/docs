@@ -32,7 +32,9 @@ sudo ros engine list
 # Switch to a supported version
 sudo ros engine switch docker-18.09.2
 ```
-
+See [Running on ARM64 (Experimental)]({{< baseurl >}}/rancher/v2.x/en/installation/arm64-platform/) if you plan to run Rancher on ARM64.
+<br>
+<br>
 [Docker Documentation: Installation Instructions](https://docs.docker.com/)
 <br>
 <br>
