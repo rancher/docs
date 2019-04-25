@@ -24,7 +24,7 @@ Load Balancers have a couple of limitations you should be aware of:
 
 - Load Balancers can only handle one IP address per service, which means if you run multiple services in your cluster, you must have a load balancer for each service. Running multiples load balancers can be expensive.
 
-- If you want to use a load balancer with a Hosted Kubernetes cluster (i.e., clusters hosted in GKE, EKS, or AKS), you must host your load balancer with the same cloud provider. Please review the compatibility tables regarding support for load balancers based on how you've provisioned your clusters:
+- If you want to use a load balancer with a Hosted Kubernetes cluster (i.e., clusters hosted in GKE, EKS, or AKS), the load balancer must be running within that cloud provider's infrastructure. Please review the compatibility tables regarding support for load balancers based on how you've provisioned your clusters:
 
 
     - [Support for Layer-4 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-4-load-balancing)
