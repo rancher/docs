@@ -11,16 +11,16 @@ Whether you're configuring Rancher to run in a single-node or high-availability 
 <br>
 Rancher is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
 
-*   Ubuntu 16.04 (64-bit)
+*   Ubuntu 16.04 (64-bit x86)
   * Docker 17.03.x, 18.06.x, 18.09.x
-*   Ubuntu 18.04 (64-bit)
+*   Ubuntu 18.04 (64-bit x86)
   * Docker 18.06.x, 18.09.x
-*   Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit)
+*   Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit x86)
   * RHEL Docker 1.13
   * Docker 17.03.x, 18.06.x, 18.09.x
-*   RancherOS 1.5.1 (64-bit)
+*   RancherOS 1.5.1 (64-bit x86)
   * Docker 17.03.x, 18.06.x, 18.09.x
-*   Windows Server version 1803 (64-bit)
+*   Windows Server version 1803 (64-bit x86)
   * Docker 17.06
   * _Experimental, see [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)_
 
