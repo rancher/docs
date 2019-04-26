@@ -79,14 +79,13 @@ Quick Start Guide
   </ul>
 </div>
 
-
 {{ define "section-tree-nav" }}
   {{ range .Sections}}
-    <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a>
+    <li class="tree-nav-item"><a href="{{ .RelPermalink}}">{{ .Title }}</a>
       {{if gt (len .Sections) 0}}
-        <ul class="submenu submenus-wrap">
+        <ul class="tree-nav-sublist submenu submenus-wrap">
           {{ range .Pages }}
-            <li class=""><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
+            <li class="tree-nav-item-child"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
           {{ end }}
           {{ template "section-tree-nav" . }}
         </ul>
