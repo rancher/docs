@@ -7,15 +7,15 @@ _Available as of v2.2.0_
 
 In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either [locally onto the etcd nodes](#local-backup-target) or to a [S3 compatible target](#s3-backup-target). The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
-Rancher recommends enabling the ability to set up recurring snapshots, but one-time snapshots can easily be taken as well.  
+Rancher recommends configuring recurrent `etcd` snapshots for all production clusters. Additonally, one-time snapshots can easily be taken as well.
 
 >**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, after upgrading Rancher, you must [edit the cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots prior to v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/restoring-etcd/).
 
 ## Configuring Recurring Snapshots for the Cluster
 
-By default, any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are enabled to take recurring snapshots that are saved locally.
+By default, [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are configured to take recurring snapshots (saved to local disk). To protect against local disk failure, using the [S3 Target](#s3-backup-target) or replicating the path on disk is advised.
 
-During cluster provisioning or editing the cluster, the configuration about snapshots are in the advanced section for **Cluster Options**. Click on **Show advanced options**.
+During cluster provisioning or editing the cluster, the configuration for snapshots can be found in the advanced section for **Cluster Options**. Click on **Show advanced options**.
 
 In the **Advanced Cluster Options** section, there are several options available to configure:
 
@@ -39,7 +39,7 @@ By default, the `local` backup target is selected. The benefits of this option i
 
 #### S3 Backup Target
 
-The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The main benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. The downside of using the `S3` backup target is that additional configuration is required in order to have these snapshots saved remotely.
+The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration reuqirements do require additional effort that should be considered. 
 
 | Option | Description | Required|
 |---|---|---|
@@ -55,7 +55,7 @@ Select how often you want recurring snapshots to be taken as well as how many sn
 
 ## One-Time Snapshots
 
-Besides recurring snapshots, you might want to take a one-time snapshot in specific use cases. For example, if you're about to upgrade the Kubernetes version of your cluster, you might want to take a snapshot right before the upgrade.
+In addition to recurring snapshots, you may want to take a "one-time" snapshot. For example, before upgrading the Kubernetes version of a cluster it's best to backup the state of the cluster to protect against upgrade failure. 
 
 1. In the **Global** view, navigate to the cluster that you want to take a one-time snapshot.
 
