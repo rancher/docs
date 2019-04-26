@@ -5,128 +5,134 @@ weight: 1
 
 _Available as of v2.3.0-alpha_
 
-While setting up Global Registry, you need to configure the credentials and storage options for Harbor.
+There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/latest/en/example-yamls/) that contain all the options.
 
-At a minimum, the admin needs to configure a Harbor admin password, a Harbor
-encryption key, and a storage type. If the databases are already set up, Rancher can use default options for the rest of the configuration.
+### Configuring Nodes
+* [Nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/)
+* [Ignoring unsupported Docker versions](#supported-docker-versions)
+* [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/)
+* [Cluster Level SSH Key Path](#cluster-level-ssh-key-path)
+* [SSH Agent](#ssh-agent)
+* [Bastion Host]({{< baseurl >}}/rke/latest/en/config-options/bastion-host/)
 
-The Global Registry needs databases for the Harbor registry and data. If you plan to use Clair for image vulnerability scanning, or a Notary server to verify the origin of images, you should also set up those databases before enabling Global Registry.
-
-Each option maps to a field of a Kubernetes [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps) or [secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets). When you change an option, it only affects the workload that uses that option.
-
-To specify the workload that uses each option, you can add a node selector in the UI to match the labels which you added in a node. Then the workload will be deployed to that  node. If you don't select a node, Rancher will select a node by default.
-
-You can configure each aspect of the Harbor registry:
-
-- **General:** Set admin credentials and encryption
-- **Registry:** Set basic Harbor registry storage options
-- **Database:** Configure Harbor database
-- **Redis:** Configure the cache layer
-- **Clair:** Scan images for vulnerabilities with Clair
-- **Notary:** Verify the integrity and origin of images with Notary
-
-
-## General
-
-The admin password is the initial password for the Harbor admin user. After you enable Global Registry, go to the Harbor UI to change the password for the admin user.
-
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Admin Password | The initial password of Harbor admin. Change it from Harbor UI after the registry is ready | Yes | No | n/a
-Encryption Key For Harbor | The key used for encryption. Must be a string of 16 chars | No | Yes | n/a
-
-## Registry
-
-Use these options to configure the Harbor registry. For more information on persistent volumes (PVs) and persistent volume claims (PVCs), refer to [Volumes and Storage]({{< baseurl >}}rancher/v2.x/en/cluster-admin/volumes-and-storage).
-
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Storage Backend Type | Storage type for images: `filesystem` or `s3`. If `filesystem` is selected, persistent volume is required in your local cluster. | Yes | No | filesystem
-Source | Whether to use a storage class to provision a new PV or to use an existing PVC | Yes | Yes | Use a storage class
-Storage Class | Specify the storage class used to provision the  (A storage class is required in the local cluster to use this option) | Yes, when using SC | Yes | The default storage class
-Persistent Volume Size | Specify the size of the persistent volume | Yes, when using SC | Yes | 100Gi
-Existing Claim | Specify the existing PVC for registry images (An existing PVC is required to use this option) | Yes, when using existing PV | Yes | n/a 
-Registry CPU Limit | CPU limit for the Docker registry workload | Yes | Yes | 1000 (milli CPUs)
-Registry Memory Limit | Memory limit for the Docker registry workload | Yes | Yes | 2048 (MB)
-Registry CPU Reservation | CPU reservation for the Docker registry workload | Yes | Yes | 100 (milli CPUs)
-Registry Memory Reservation | Memory reservation for the Docker registry workload | Yes | Yes | 256 (MB)
-Registry Node Selector | Select the nodes where the Docker registry workload will be scheduled to | No | Yes | n/a 
-
-## Database
-
-These options are used to configure the database for Harbor data. For more information on persistent volumes (PVs) and persistent volume claims (PVCs), refer to [Volumes and Storage]({{< baseurl >}}rancher/v2.x/en/cluster-admin/volumes-and-storage).
-
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Config Database Type | Choose `internal` or `external`. When `internal` is selected, a PostgreSQL workload will be included in the application, and a persistent volume is required for it. When `external` is selected, you can configure an external PostgreSQL. | Yes | No | internal
-Source | Whether to use a storage class to provision a new PV or to use an existing PVC | Yes, when using internal database | Yes | Use a storage class
-Storage Class | Specify the storage class used to provision the persistent volume (A storage class is required in the local cluster to use this option) | Yes, when using SC and internal database | Yes | The default storage class
-Persistent Volume Size | Specify the size of the persistent volume | Yes, when using SC and internal database | Yes | 5Gi
-Existing Claim | Specify the existing PVC for PostgreSQL database (An existing PVC is required to use this option) | Yes, when using existing PV and internal database | Yes | n/a 
-Database CPU Limit | CPU limit for the database workload | Yes | Yes | 500 (milli CPUs)
-Database Memory Limit | Memory limit for the database workload | Yes | Yes | 2048 (MB)
-Database CPU Reservation | CPU reservation for the database workload | Yes | Yes | 100 (milli CPUs)
-Database Memory Reservation | Memory reservation for the database workload | Yes | Yes | 256 (MB)
-Database Node Selector | Select the nodes where the database workload will be scheduled to | No (Only shows when using external database) | Yes | n/a 
-SSL Mode for PostgreSQL | SSL mode used to connect the external database | No (Only shows when using external database) | Yes | disable
-Host for PostgreSQL | The hostname for external database | Yes (Only shows when using external database) | Yes | n/a 
-Port for PostgreSQL | The port for external database | Yes (Only shows when using external database) | Yes | 5432
-Username for PostgreSQL | The username for external database | Yes (Only shows when using external database) | Yes | n/a 
-Password for PostgreSQL | The password for external database | Yes (Only shows when using external database) | Yes | n/a 
-Core Database | The database used by core service | No (Only shows when using external database) | Yes | registry
-Clair Database | The database used by Clair | No (Only shows when using external database) | Yes | clair
-Notary Server Database | The database used by Notary server | No (Only shows when using external database) | Yes | notary_server
-Notary Signer Database | The database used by Notary signer | No (Only shows when using external database) | Yes | notary_signer
+### Configuring Kubernetes Cluster
+* [Cluster Name](#cluster-name)
+* [Kubernetes Version](#kubernetes-version)
+* [Prefix Path](#prefix-path)
+* [System Images]({{< baseurl >}}/rke/latest/en/config-options/system-images/)
+* [Services]({{< baseurl >}}/rke/latest/en/config-options/services/)
+* [Extra Args and Binds and Environment Variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/)
+* [External Etcd]({{< baseurl >}}/rke/latest/en/config-options/services/external-etcd/)
+* [Authentication]({{< baseurl >}}/rke/latest/en/config-options/authentication/)
+* [Authorization]({{< baseurl >}}/rke/latest/en/config-options/authorization/)
+* [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/)
+* [Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/)
+  * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
+  * [Network Plugins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
+  * [Ingress Controller]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
+  * [User-Defined-Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
 
 
-## Redis
+## Cluster Level Options
 
-These options are used to configure the cache layer. For more information on persistent volumes (PVs) and persistent volume claims (PVCs), refer to [Volumes and Storage]({{< baseurl >}}rancher/v2.x/en/cluster-admin/volumes-and-storage).
+### Cluster Name
 
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Config Redis Type | Choose `internal` or `external`. When `internal` is selected, a Redis workload will be included in the application, and a persistent volume is required for it. When `external` is selected, you can configure an external Redis. | Yes | No | internal
-Source | Whether to use a storage class to provision a new PV or to use an existing PVC | Yes, when using internal Redis | Yes | Use a storage class
-Storage Class | Specify the storage class used to provision the persistent volume (A storage class is required in the local cluster to use this option) | Yes, when using SC and internal Redis | Yes | The default storage class
-Persistent Volume Size | Specify the size of the persistent volume | Yes, when using SC and internal Redis | Yes | 5Gi
-Existing Claim | Specify the existing PVC for Redis (An existing PVC is required to use this option) | Yes, when using existing PV and internal Redis | Yes | n/a 
-Redis CPU Limit | CPU limit for the Redis workload | Yes | Yes | 500 (milli CPUs)
-Redis Memory Limit | Memory limit for the Redis workload | Yes | Yes | 2048 (MB)
-Redis CPU Reservation | CPU reservation for the Redis workload | Yes | Yes | 100 (milli CPUs)
-Redis Memory Reservation | Memory reservation for the Redis workload | Yes | Yes | 256 (MB)
-Redis Node Selector | Select the nodes where the Redis workload will be scheduled to | No | Yes | n/a 
-Host for Redis | The hostname for external Redis | Yes (Only shows when using external Redis) | Yes | n/a 
-Port for Redis | The port for external Redis | Yes (Only shows when using external Redis) | Yes | 6379
-Password for Redis | The password for external Redis | No (Only shows when using external Redis) | Yes | n/a 
-Jobservice Database Index | The database index for jobservice | Yes (Only shows when using external Redis) | Yes | n/a 
-Registry Database Index | The database index for Docker registry | Yes (Only shows when using external Redis) | Yes | n/a 
+By default, the name of your cluster will be `local`. If you want a different name, you would use the `cluster_name` directive to change the name of your cluster. The name will be set in your cluster's generated kubeconfig file.
 
-## Clair
+```yaml
+cluster_name: mycluster
+```
 
-You can optionally scan images for vulnerabilities with Clair.
+### Supported Docker Versions
 
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Enable Clair | Whether or not to enable Clair for vulnerabilities scanning | Yes | Yes | true
-Clair CPU Limit | CPU limit for the Clair workload | Yes, when Clair enabled | Yes | 500 (milli CPUs)
-Clair Memory Limit | Memory limit for the Clair workload | Yes, when Clair enabled | Yes | 2048 (MB)
-Clair CPU Reservation | CPU reservation for the Clair workload | Yes, when Clair enabled | Yes | 100 (milli CPUs)
-Clair Memory Reservation | Memory reservation for the Clair workload | Yes, when Clair enabled | Yes | 256 (MB)
-Clair Node Selector | Select the nodes where the Clair workload will be scheduled to | Yes, when Clair enabled | Yes | n/a 
+By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. The list of [supported Docker versions](https://github.com/rancher/rke/blob/master/docker/docker.go#L37-L41) are set specifically for each Kubernetes version. To override this behavior, set this option to `true`.
 
-## Notary
+The default value is `false`.
 
-You can optionally verify the integrity and origin of images with Notary.
+```yaml
+ignore_docker_version: true
+```
 
-Field | Description | Required | Editable | Default
-----|-----------------|------------|------------|------------
-Enable Notary | Whether or not to enable Notary for [Docker Content Trust](https://docs.docker.com/engine/security/trust/content_trust/). When enabled, the access endpoint to the Notary server is `<Rancher-Server-URL>/registry/notary`. | Yes | Yes | true
-Notary Server CPU Limit | CPU limit for the Notary Server workload | Yes, when Notary enabled | Yes | 500 (milli CPUs)
-Notary Server Memory Limit | Memory limit for the Notary Server workload | Yes, when Notary enabled | Yes | 2048 (MB)
-Notary Server CPU Reservation | CPU reservation for the Notary Server workload | Yes, when Notary enabled | Yes | 100 (milli CPUs)
-Notary Server Memory Reservation | Memory reservation for the Notary Server workload | Yes, when Notary enabled | Yes | 256 (MB)
-Notary Signer CPU Limit | CPU limit for the Notary Signer workload | Yes, when Notary enabled | Yes | 500 (milli CPUs)
-Notary Signer Memory Limit | Memory limit for the Notary Signer workload | Yes, when Notary enabled | Yes | 2048 (MB)
-Notary Signer CPU Reservation | CPU reservation for the Notary Signer workload | Yes, when Notary enabled | Yes | 100 (milli CPUs)
-Notary Signer Memory Reservation | Memory reservation for the Notary Signer workload | Yes, when Notary enabled | Yes | 256 (MB)
-Notary Node Selector | Select the nodes where the Notary Server and Notary Signer workloads will be scheduled to | No | Yes | n/a 
+### Kubernetes Version
+
+By default, RKE is defaulted to launch with a specific Kubernetes version. You can also select a different version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions.
+
+You can set the Kubernetes version as follows:
+
+```yaml
+kubernetes_version: "v1.11.6-rancher1-1"
+```
+
+In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) are defined, the system images configuration will take precedence over `kubernetes_version`.
+
+#### Listing Supported Kubernetes Versions
+
+Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
+
+You can also list the supported versions and system images of specific version of RKE release with a quick command.
+
+```
+$ rke config --system-images --all
+
+INFO[0000] Generating images list for version [v1.13.4-rancher1-2]:
+.......
+INFO[0000] Generating images list for version [v1.11.8-rancher1-1]:
+.......
+INFO[0000] Generating images list for version [v1.12.6-rancher1-2]:
+.......
+```
+
+#### Using an unsupported Kubernetes version
+
+As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
+
+Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
+
+If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) option.
+
+### Prefix Path
+
+For some operating systems including ROS, and CoreOS, RKE stores its resources to a different prefix path, this prefix path is by default for these operating systems is:
+```
+/opt/rke
+```
+So `/etc/kubernetes` will be stored in `/opt/rke/etc/kubernetes` and `/var/lib/etcd` will be stored in `/opt/rke/var/lib/etcd` etc.
+
+To change the default prefix path for any cluster, you can use the following option in the cluster configuration file `cluster.yml`:
+```
+prefix_path: /opt/custom_path
+```
+
+### Cluster Level SSH Key Path
+
+RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/).
+
+If ssh key paths are defined at the cluster level and at the node level, the node-level key will take precedence.
+
+```yaml
+ssh_key_path: ~/.ssh/test
+```
+
+### SSH Agent
+
+RKE supports using ssh connection configuration from a local ssh agent. The default value for this option is `false`. If you want to set using a local ssh agent, you would set this to `true`.
+
+```yaml
+ssh_agent_auth: true
+```
+
+If you want to use an SSH private key with a passphrase, you will need to add your key to `ssh-agent` and have the environment variable `SSH_AUTH_SOCK` configured.
+
+```
+$ eval "$(ssh-agent -s)"
+Agent pid 3975
+$ ssh-add /home/user/.ssh/id_rsa
+Enter passphrase for /home/user/.ssh/id_rsa:
+Identity added: /home/user/.ssh/id_rsa (/home/user/.ssh/id_rsa)
+$ echo $SSH_AUTH_SOCK
+/tmp/ssh-118TMqxrXsEx/agent.3974
+```
+
+### Add-ons Job Timeout
+
+You can define [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.
