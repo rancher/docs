@@ -58,14 +58,20 @@ The cluster state (`/var/lib/etcd`) contains wrong information to join the clust
 
 ### etcd cluster and connectivity checks
 
-If any of the commands respond with `Error:  context deadline exceeded`, the etcd instance is unhealthy (either quorum is lost or the instance is not correctly joined in the cluster)
+The address where etcd is listening depends on the address configuration of the host etcd is running on. If an internal address is configured for the host etcd is running on, the endpoint for `etcdctl` needs to be specified explicitly. If any of the commands respond with `Error:  context deadline exceeded`, the etcd instance is unhealthy (either quorum is lost or the instance is not correctly joined in the cluster)
 
 * Check etcd members on all nodes
 
 Output should contain all the nodes with the `etcd` role and the output should be identical on all nodes.
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl member list
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list"
 ```
 
 Example output:
@@ -79,8 +85,14 @@ xxx, started, etcd-xxx, https://IP:2380, https://IP:2379,https://IP:4001
 
 The values for `RAFT TERM` should be equal and `RAFT INDEX` should be not be too far apart from each other.
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table
 ```
 
 Example output:
@@ -96,8 +108,14 @@ Example output:
 
 * Check endpoint health
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl endpoint health --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd etcdctl endpoint health --endpoints=$(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")
 ```
 
 Example output:
@@ -109,6 +127,7 @@ https://IP:2379 is healthy: successfully committed proposal: took = 2.451201ms
 
 * Check connectivity on port TCP/2379
 
+Command when no internal address is configured on the host:
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5"); do
   echo "Validating connection to ${endpoint}/health";
@@ -116,10 +135,27 @@ for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5
 done
 ```
 
+Command when internal address is configured on the host:
+```
+for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5"); do
+  echo "Validating connection to ${endpoint}/health";
+  curl -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/health";
+done
+```
+
 If you are running on an operating system without `curl` (for example, RancherOS), you can use the following command which uses a Docker container to run the `curl` command.
 
+Command when no internal address is configured on the host:
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5"); do
+  echo "Validating connection to ${endpoint}/health";
+  docker run --net=host -v /opt/rke/etc/kubernetes/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/health"
+done
+```
+
+Command when internal address is configured on the host:
+```
+for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5"); do
   echo "Validating connection to ${endpoint}/health";
   docker run --net=host -v /opt/rke/etc/kubernetes/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/health"
 done
@@ -137,6 +173,7 @@ Validating connection to https://IP:2379/health
 
 * Check connectivity on port TCP/2380
 
+Command when no internal address is configured on the host:
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f4"); do
   echo "Validating connection to ${endpoint}/version";
@@ -144,10 +181,27 @@ for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f4
 done
 ```
 
+Command when internal address is configured on the host:
+```
+for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f4"); do
+  echo "Validating connection to ${endpoint}/version";
+  curl -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/version";
+done
+```
+
 If you are running on an operating system without `curl` (for example, RancherOS), you can use the following command which uses a Docker container to run the `curl` command.
 
+Command when no internal address is configured on the host:
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f4"); do
+  echo "Validating connection to ${endpoint}/version";
+  docker run --net=host -v /opt/rke/etc/kubernetes/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/version"
+done
+```
+
+Command when internal address is configured on the host:
+```
+for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f4"); do
   echo "Validating connection to ${endpoint}/version";
   docker run --net=host -v /opt/rke/etc/kubernetes/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/version"
 done
@@ -167,8 +221,14 @@ Validating connection to https://IP:2380/version
 
 etcd will trigger alarms, for instance when it runs out of space.
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl alarm list
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT alarm list"
 ```
 
 Example output when NOSPACE alarm is triggered:
@@ -186,9 +246,16 @@ Resolution:
 
 * Compact the keyspace
 
+Command when no internal address is configured on the host:
 ```
 rev=$(docker exec etcd etcdctl endpoint status --write-out json | egrep -o '"revision":[0-9]*' | egrep -o '[0-9]*')
 docker exec etcd etcdctl compact "$rev"
+```
+
+Command when internal address is configured on the host:
+```
+rev=$(docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT endpoint status --write-out json | egrep -o '\"revision\":[0-9]*' | egrep -o '[0-9]*'")
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT compact \"$rev\""
 ```
 
 Example output:
@@ -198,8 +265,14 @@ compacted revision xxx
 
 * Defrag all etcd members
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl defrag --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd sh -c "etcdctl defrag --endpoints=$(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")"
 ```
 
 Example output:
@@ -211,8 +284,14 @@ Finished defragmenting etcd member[https://IP:2379]
 
 * Check endpoint status
 
+Command when no internal address is configured on the host:
 ```
 docker exec etcd etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd sh -c "etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table"
 ```
 
 Example output:
@@ -224,6 +303,32 @@ Example output:
 | https://IP:2379 | 4a509c997b26c206 |  3.2.18 |  553 kB |     false |        32 |    2449410 |
 | https://IP:2379 | b217e736575e9dd3 |  3.2.18 |  553 kB |      true |        32 |    2449410 |
 +-----------------+------------------+---------+---------+-----------+-----------+------------+
+```
+
+### Log level
+
+The log level of etcd can be changed dynamically via the API. You can configure debug logging using the commands below.
+
+Command when no internal address is configured on the host:
+```
+curl -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) https://localhost:2379/config/local/log
+```
+
+Command when internal address is configured on the host:
+```
+curl -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv $ETCDCTL_ENDPOINT)/config/local/log
+```
+
+To reset the log level back to the default (`INFO`), you can use the following command.
+
+Command when no internal address is configured on the host:
+```
+curl -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) https://localhost:2379/config/local/log
+```
+
+Command when internal address is configured on the host:
+```
+curl -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv $ETCDCTL_ENDPOINT)/config/local/log
 ```
 
 ## controlplane

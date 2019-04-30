@@ -20,28 +20,30 @@ Run the command below and check the following:
 
 
 ```
-kubectl get nodes
+kubectl get nodes -o wide
 ``` 
 
 Example output:
 
 ```
-NAME                              STATUS    ROLES          AGE       VERSION   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-etcd-0                            Ready     etcd           2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-etcd-1                            Ready     etcd           2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-etcd-2                            Ready     etcd           2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-controlplane-0                    Ready     controlplane   2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-controlplane-1                    Ready     controlplane   1m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-worker-0                          Ready     worker         2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
-worker-1                          Ready     worker         2m        v1.11.5   <none>        Ubuntu 16.04.5 LTS   4.4.0-138-generic   docker://17.3.2
+NAME             STATUS   ROLES          AGE   VERSION   INTERNAL-IP      EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+controlplane-0   Ready    controlplane   31m   v1.13.5   138.68.188.91    <none>        Ubuntu 18.04.2 LTS   4.15.0-47-generic   docker://18.9.5
+etcd-0           Ready    etcd           31m   v1.13.5   138.68.180.33    <none>        Ubuntu 18.04.2 LTS   4.15.0-47-generic   docker://18.9.5
+worker-0         Ready    worker         30m   v1.13.5   139.59.179.88    <none>        Ubuntu 18.04.2 LTS   4.15.0-47-generic   docker://18.9.5
 ```
 
 #### Get node conditions
 
+Run the command below to list nodes with [Node Conditions](https://kubernetes.io/docs/concepts/architecture/nodes/#condition)
+
+```
+kubectl get nodes -o go-template='{{range .items}}{{$node := .}}{{range .status.conditions}}{{$node.metadata.name}}{{": "}}{{.type}}{{":"}}{{.status}}{{"\n"}}{{end}}{{end}}'
+```
+
 Run the command below to list nodes with [Node Conditions](https://kubernetes.io/docs/concepts/architecture/nodes/#condition) that are active that could prevent normal operation.
 
 ```
-kubectl get nodes -o go-template='{{range .items}}{{$node := .}}{{range .status.conditions}}{{if ne .type "Ready"}}{{if eq .status "True"}}{{$node.metadata.name}}{{": "}}{{.type}}{{":"}}{{.status}}{{"\n"}}{{end}}{{end}}{{end}}{{end}}'
+kubectl get nodes -o go-template='{{range .items}}{{$node := .}}{{range .status.conditions}}{{if ne .type "Ready"}}{{if eq .status "True"}}{{$node.metadata.name}}{{": "}}{{.type}}{{":"}}{{.status}}{{"\n"}}{{end}}{{else}}{{if ne .status "True"}}{{$node.metadata.name}}{{": "}}{{.type}}{{": "}}{{.status}}{{"\n"}}{{end}}{{end}}{{end}}{{end}}'
 ```
 
 Example output:
