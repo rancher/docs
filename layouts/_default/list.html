@@ -258,6 +258,50 @@
             sideNavMenusMobile.addClass('show');
           }
         });
+
+        function anchorLoad() {
+          // anchor load.
+          var hash = window.location.hash.substring(1),
+              objt = $(window.location.hash),
+              depth = 110,
+              scrn = $(window).width();
+              scrn_check = 1025;
+
+          if (scrn < scrn_check) {
+            depth = 120;
+          }
+
+          if (window.location.hash.charAt(0) === "#") {
+            $('html').scrollTop(objt.offset().top - depth);
+            console.debug('go', objt.offset().top - depth);
+          }
+        }
+        anchorLoad();
+
+        // anchor click control.
+        $("a[href*='#']").click(function(e) {
+          if (!$(this).attr('data-target')) {
+            var hash = $(this).attr('href').substring(1),
+                objt = $('#' + hash),
+                objt_mt = Number(objt.css('margin-top').replace(/[^0-9]/g,"")),
+                depth = 80,
+                scrn = $(window).width();
+                scrn_check = 1025;
+
+            if (scrn < scrn_check) {
+              depth = 120;
+            }
+            
+            if (objt_mt > 0) {
+              depth = depth + objt_mt
+            }
+
+            if ($(this).attr('href').charAt(0) === '#') {
+              e.preventDefault();
+              $('html').scrollTop($($(this).attr('href')).offset().top - depth);
+            }
+          }
+        });
       });
   </script>
 {{ end }}
