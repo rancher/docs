@@ -259,25 +259,6 @@
           }
         });
 
-        function anchorLoad() {
-          // anchor load.
-          var hash = window.location.hash.substring(1),
-              objt = $(window.location.hash),
-              depth = 110,
-              scrn = $(window).width();
-              scrn_check = 1025;
-
-          if (scrn < scrn_check) {
-            depth = 120;
-          }
-
-          if (window.location.hash.charAt(0) === "#") {
-            $('html').scrollTop(objt.offset().top - depth);
-            console.debug('go', objt.offset().top - depth);
-          }
-        }
-        anchorLoad();
-
         // anchor click control.
         $("a[href*='#']").click(function(e) {
           if (!$(this).attr('data-target')) {
