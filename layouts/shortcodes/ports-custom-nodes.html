@@ -21,8 +21,8 @@
           <td style="background-color: #3497DA; color:#ffffff;">git.rancher.io <sup>(2)</sup>:<br>35.160.43.145:32<br>35.167.242.46:32<br>52.33.59.17:32</td>
         </tr>
         <tr>
-          <td rowspan="5">etcd Plane Nodes</td>
-          <td rowspan="5" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
+          <td rowspan="6">etcd Plane Nodes</td>
+          <td rowspan="6" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
           <td style="background-color: #3497DA; color:#ffffff;">2379 TCP</td>
           <td></td>
           <td></td>
@@ -46,14 +46,18 @@
           <td></td>
         </tr>
         <tr>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
+          <td></td>
+        </tr>
+        <tr>
           <td style="background-color: #3497DA; color:#ffffff;">9099 TCP <sup>(4)</sup></td>
           <td></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <td rowspan="7">Control Plane Nodes</td>
-          <td rowspan="7" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
+          <td rowspan="8">Control Plane Nodes</td>
+          <td rowspan="8" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
           <td style="background-color: #3497DA; color:#ffffff;">2379 TCP</td>
           <td></td>
           <td></td>
@@ -77,6 +81,10 @@
           <td></td>
         </tr>
         <tr>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
+          <td></td>
+        </tr>
+        <tr>
           <td colspan="3" style="background-color: #3497DA; color:#ffffff;">10250 TCP</td>
           <td></td>
         </tr>
@@ -93,8 +101,8 @@
           <td></td>
         </tr>
         <tr>
-          <td rowspan="4">Worker Plane Nodes</td>
-          <td rowspan="4" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
+          <td rowspan="5">Worker Plane Nodes</td>
+          <td rowspan="5" style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
           <td></td>
           <td style="background-color: #3497DA; color:#ffffff;">6443 TCP</td>
           <td></td>
@@ -103,6 +111,10 @@
         </tr>
         <tr>
           <td colspan="3" style="background-color: #3497DA; color:#ffffff;">8472 UDP</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
           <td></td>
         </tr>
         <tr>
@@ -175,7 +187,7 @@
           <td></td>
         </tr>
         <tr>
-          <td colspan="7">Notes:<br><br>1. Nodes running standalone server or Rancher HA deployment.<br>2. Required to fetch Rancher chart library.<br>3. Only without external load balancer.<br>4. Local traffic to the node itself (not across nodes).<br>5. Load balancer / proxy that handles tragging to the Rancher UI / API.<br>6. Only if SSL is not terminated at external load balancer.</td>
+          <td colspan="7">Notes:<br><br>1. Nodes running standalone server or Rancher HA deployment.<br>2. Required to fetch Rancher chart library.<br>3. Only without external load balancer.<br>4. Local traffic to the node itself (not across nodes).<br>5. Load balancer / proxy that handles tragging to the Rancher UI / API.<br>6. Only if SSL is not terminated at external load balancer.<br>7. Only if using Overlay mode on Windows cluster.</td>
         </tr>
     </tbody>
 </table>
