@@ -18,7 +18,7 @@ This guide walks you through create of a custom cluster that includes 3 nodes: a
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 >- Windows worker adding script must run on Windows Server 2019 (core version 1809 or above) hosts. Core version 1803 and earlier versions do not support Kubernetes properly.
 >- Containers built for Windows Server 1803 or earlier do not run on Windows Server 2019. You must build containers on Windows Server 2019 to run these containers on Windows Server 2019.
->- Windows Overlay networking requires [KB4489899](https://support.microsoft.com/en-us/help/4489899) hostfix. Most of Cloud-hosted VMs already have this hotfix.
+>- Windows Overlay networking requires [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix. Most of Cloud-hosted VMs already have this hotfix.
 
 ## Objectives for Creating Cluster with Windows Support
 
@@ -62,7 +62,7 @@ Node 3  | Windows (Windows Server 2019 required)            | [Worker]({{< baseu
 
 - You can view node requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 - For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them.
-- For **VXLAN (Overlay)** netwokring, you must confirm the Windows Server 2019 host with [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix. Most of Cloud-hosted VMs already have this hotfix.
+- For **VXLAN (Overlay)** networking, you must confirm the Windows Server 2019 host with [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix. Most of Cloud-hosted VMs already have this hotfix.
 - Your cluster must include at least one Linux worker node to run Rancher Cluster agent, DNS, Metrics server and Ingress related containers.
 - Although we recommend the three node architecture listed in the table above, you can add additional Linux and Windows workers to scale up your cluster for redundancy.
 
