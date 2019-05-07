@@ -30,7 +30,14 @@ For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provis
 
 > **Note:** By default, all Rancher Launched Kubernetes clusters have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled.
 
-To find the name of the context(s), view the kubeconfig file.
+To find the name of the context(s), run:
+
+```
+kubectl config get-contexts --kubeconfig /custom/path/kube.config
+CURRENT   NAME                        CLUSTER                     AUTHINFO     NAMESPACE
+*         my-cluster                  my-cluster                  user-46tmn
+          my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
+```
 
 ### Clusters with FQDN defined as an Authorized Cluster Endpoint
 

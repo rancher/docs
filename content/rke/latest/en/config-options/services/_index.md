@@ -65,7 +65,7 @@ services:
 
 ### Kubernetes Controller Manager Options
 
-RKE support the following options for the `kube-controller` service:
+RKE supports the following options for the `kube-controller` service:
 
 - **Cluster CIDR** (`cluster_cidr`) - The CIDR pool used to assign IP addresses to pods in the cluster. By default, each node in the cluster is assigned a `/24` network from this pool for pod IP assignments. The default value for this option is `10.42.0.0/16`.
 - **Service Cluster IP Range** (`service_cluster_ip_range`) - This is the virtual IP address that will be assigned to services created on Kubernetes. By default, the service cluster IP range is `10.43.0.0/16`. If you change this value, then it must also be set with the same value on the Kubernetes API server (`kube-api`).
