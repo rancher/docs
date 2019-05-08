@@ -3,7 +3,7 @@ title: Creating Backups—High Availability Installs
 weight: 50
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
-  - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/ 
+  - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
@@ -44,38 +44,36 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 **To Enable Recurring Snapshots:**
 
 1. Open `rancher-cluster.yml` with your favorite text editor.
-2. Add the following code block to the bottom of the file:
 
-_Pre 0.2.0_
+2. Edit the code for the `etcd` service to enable recurring snapshots. As of RKE v0.2.0, snapshots can be saved in a S3 compatible backend.  
 
-~~~yaml
-```
-services:
-  etcd:
-    snapshot: true # enables recurring etcd snapshots
-    creation: 6h0s # time increment between snapshots
-    retention: 24h # time increment before snapshot purge
-```
-~~~
-_Post 0.2.0: Note: S3 backup is optional_
-~~~yaml
-```
-services:
-  etcd:
-    backup_config: 
-      enabled: true     # enables recurring etcd snapshots
-      interval_hours: 6 # time increment between snapshots
-      retention: 60     # time in days before snapshot purge
-      s3_backup_config: # optional
-        access_key: "myaccesskey"
-        secret_key:  "myaccesssecret"
-        bucket_name: "my-backup-bucket"
-        endpoint: "s3.eu-west-1.amazonaws.com"
-        region: "eu-west-1"
-```
-~~~
+    _Using RKE v0.2.0+_
 
-3. Edit the code according to your requirements.
+    ```
+    services:
+      etcd:
+        backup_config:
+          enabled: true     # enables recurring etcd snapshots
+          interval_hours: 6 # time increment between snapshots
+          retention: 60     # time in days before snapshot purge
+          # Optional S3
+          s3_backup_config:
+            access_key: "myaccesskey"
+            secret_key:  "myaccesssecret"
+            bucket_name: "my-backup-bucket"
+            endpoint: "s3.eu-west-1.amazonaws.com"
+            region: "eu-west-1"
+    ```
+
+    _Using RKE v0.1.x_
+
+    ```
+    services:
+      etcd:
+        snapshot: true # enables recurring etcd snapshots
+        creation: 6h0s # time increment between snapshots
+        retention: 24h # time increment before snapshot purge
+    ```
 
 4. Save and close `rancher-cluster.yml`.
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
@@ -85,7 +83,7 @@ services:
 	rke up --config rancher-cluster.yml
 	```
 
-**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved to the following directory: `/opt/rke/etcd-snapshots/`.
+**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`. If configured, the snapshots are also uploaded to your S3 compatible backend.
 
 #### Option B: One-Time Snapshots
 
@@ -105,21 +103,23 @@ When you're about to upgrade Rancher or restore it to a previous snapshot, you s
 
 **To Take a One-Time S3 Snapshot:**
 
+_Available as of RKE v0.2.0_
+
 1. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 
 2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
-   ```shell
-   rke etcd snapshot-save --config rancher-cluster.yml --name snapshot-name  \
-   --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
-   --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
-   ```
+    ```shell
+    rke etcd snapshot-save --config rancher-cluster.yml --name snapshot-name  \
+    --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
+    --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
+    ```
 
-   *The snapshot is saved in `/opt/rke/etcd-snapshots` as well as uploaded to the S3 backend.*
+**Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`. It is also uploaded to the S3 compatible backend.
 
 ### 2. Backup Local Snapshots to a Safe Location
 
-> Note: This step is done for you where S3 backups are enabled
+> **Note:** If you are using RKE v0.2.0, you can enable saving the backups to a S3 compatible backend directly and skip this step.
 
 After taking the `etcd` snapshots, save them to a safe location so that they're unaffected if your cluster experiences a disaster scenario. This location should be persistent.
 
@@ -131,6 +131,3 @@ In this documentation, as an example, we're using Amazon S3 as our safe location
 root@node:~# s3cmd mb s3://rke-etcd-snapshots
 root@node:~# s3cmd put /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
 ```
-
-
-
