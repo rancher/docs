@@ -1,309 +1,332 @@
 <div>	
-	<p><strong>etcd nodes:</strong><br/>Nodes with the role <strong>etcd</strong></p>
-	<h3>etcd nodes - Inbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Source</th>
-	        <th align="left">Description</th>
-	    </tr>
-            <tr>
-                <td>TCP</td>
-                <td>2376</td>
-                <td><ul><li>Rancher nodes</li></td>
-                <td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
-            </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2379</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
-	        <td>etcd client requests</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2380</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
-	        <td>etcd peer communication</td>
-	    </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10250</td>
-	        <td><ul><li>controlplane nodes</li></ul></td>
-	        <td>kubelet</td>
-	    </tr>
-	</table>
-	<h3>etcd nodes - Outbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Destination</th>
-	        <th align="left">Description</th>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>443</td>
-	        <td><ul><li>Rancher nodes</li></ul></td>
-	        <td>Rancher agent</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2379</td>
-	        <td><ul><li>etcd nodes</li></ul></td>
-	        <td>etcd client requests</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2380</td>
-	        <td><ul><li>etcd nodes</li></ul></td>
-	        <td>etcd peer communication</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>6443</td>
-	        <td><ul><li>controlplane nodes</li></ul></td>
-	        <td>Kubernetes apiserver</td>
-	    </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	</table>
-	<p><strong>controlplane nodes:</strong><br/>Nodes with the role <strong>controlplane</strong></p>
-	<h3>controlplane nodes - Inbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Source</th>
-	        <th align="left">Description</th>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>80</td>
-	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
-	        <td>Ingress controller (HTTP)</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>443</td>
-	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
-	        <td>Ingress controller (HTTPS)</td>
-	    </tr>
-            <tr>
-                <td>TCP</td>
-                <td>2376</td>
-                <td><ul><li>Rancher nodes</li></td>
-                <td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
-            </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>6443</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Kubernetes apiserver</td>
-	    </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10250</td>
-	        <td><ul><li>controlplane nodes</li></ul></td>
-	        <td>kubelet</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10254</td>
-	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Ingress controller livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP/UDP</td>
-	        <td>30000-32767</td>
-	        <td><ul><li>Any source that consumes NodePort services</li></ul></td>
-	        <td>NodePort port range</td>
-	    </tr>
-	</table>
-	<h3>controlplane nodes - Outbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Destination</th>
-	        <th align="left">Description</th>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>443</td>
-	        <td><ul><li>Rancher nodes</li></ul></td>
-	        <td>Rancher agent</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2379</td>
-	        <td><ul><li>etcd nodes</li></ul></td>
-	        <td>etcd client requests</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>2380</td>
-	        <td><ul><li>etcd nodes</li></ul></td>
-	        <td>etcd peer communication</td>
-	    </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10250</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>kubelet</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10254</td>
-	        <td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Ingress controller livenessProbe/readinessProbe</td>
-	    </tr>
-	</table>
-	<p><strong>worker nodes:</strong><br/>Nodes with the role <strong>worker</strong></p>
-	<h3>worker nodes - Inbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Source</th>
-	        <th align="left">Description</th>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>80</td>
-	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
-	        <td>Ingress controller (HTTP)</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>443</td>
-	        <td><ul><li>Any that consumes Ingress services</li></ul></td>
-	        <td>Ingress controller (HTTPS)</td>
-	    </tr>
-            <tr>
-                <td>TCP</td>
-                <td>2376</td>
-                <td><ul><li>Rancher nodes</li></td>
-                <td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
-            </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10250</td>
-	        <td><ul><li>controlplane nodes</li></ul></td>
-	        <td>kubelet</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10254</td>
-	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Ingress controller livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP/UDP</td>
-	        <td>30000-32767</td>
-	        <td><ul><li>Any source that consumes NodePort services</li></ul></td>
-	        <td>NodePort port range</td>
-	    </tr>
-	</table>
-	<h3>worker nodes - Outbound rules</h3>
-	<table>
-	    <tr>
-	        <th>Protocol</th>
-	        <th>Port</th>
-	        <th align="left">Destination</th>
-	        <th align="left">Description</th>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>443</td>
-	        <td><ul><li>Rancher nodes</li></ul></td>
-	        <td>Rancher agent</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>6443</td>
-	        <td><ul><li>controlplane nodes</li></ul></td>
-	        <td>Kubernetes apiserver</td>
-	    </tr>
-	    <tr>
-		<td>UDP</td>
-	        <td>8472</td>
-	        <td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
-	        <td>Canal/Flannel VXLAN overlay networking</td>
-	    </tr>
-	    <tr>
-		<td>TCP</td>
-	        <td>9099</td>
-	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Canal/Flannel livenessProbe/readinessProbe</td>
-	    </tr>
-	    <tr>
-	        <td>TCP</td>
-	        <td>10254</td>
-	        <td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
-	        <td>Ingress controller livenessProbe/readinessProbe</td>
-	    </tr>
-	</table>
-    <br/>
-    <h3 id="local-node-traffic">Information on local node traffic</h3>
-    <p>Kubernetes healthchecks (<code>livenessProbe</code> and <code>readinessProbe</code>) are executed on the host itself. On most nodes, this is allowed by default. When you have applied strict host firewall (i.e. <code>iptables</code>) policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic gets blocked. In this case, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
-    </p>	
-</div>
+		<p><strong>etcd nodes:</strong><br/>Nodes with the role <strong>etcd</strong></p>
+		<h3>etcd nodes - Inbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Source</th>
+				<th align="left">Description</th>
+			</tr>
+				<tr>
+					<td>TCP</td>
+					<td>2376</td>
+					<td><ul><li>Rancher nodes</li></td>
+					<td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
+				</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2379</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
+				<td>etcd client requests</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2380</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li></ul></td>
+				<td>etcd peer communication</td>
+			</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10250</td>
+				<td><ul><li>controlplane nodes</li></ul></td>
+				<td>kubelet</td>
+			</tr>
+		</table>
+		<h3>etcd nodes - Outbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Destination</th>
+				<th align="left">Description</th>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>443</td>
+				<td><ul><li>Rancher nodes</li></ul></td>
+				<td>Rancher agent</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2379</td>
+				<td><ul><li>etcd nodes</li></ul></td>
+				<td>etcd client requests</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2380</td>
+				<td><ul><li>etcd nodes</li></ul></td>
+				<td>etcd peer communication</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>6443</td>
+				<td><ul><li>controlplane nodes</li></ul></td>
+				<td>Kubernetes apiserver</td>
+			</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>etcd node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+		</table>
+		<p><strong>controlplane nodes:</strong><br/>Nodes with the role <strong>controlplane</strong></p>
+		<h3>controlplane nodes - Inbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Source</th>
+				<th align="left">Description</th>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>80</td>
+				<td><ul><li>Any that consumes Ingress services</li></ul></td>
+				<td>Ingress controller (HTTP)</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>443</td>
+				<td><ul><li>Any that consumes Ingress services</li></ul></td>
+				<td>Ingress controller (HTTPS)</td>
+			</tr>
+				<tr>
+					<td>TCP</td>
+					<td>2376</td>
+					<td><ul><li>Rancher nodes</li></td>
+					<td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
+				</tr>
+			<tr>
+				<td>TCP</td>
+				<td>6443</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Kubernetes apiserver</td>
+			</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10250</td>
+				<td><ul><li>controlplane nodes</li></ul></td>
+				<td>kubelet</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10254</td>
+				<td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Ingress controller livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP/UDP</td>
+				<td>30000-32767</td>
+				<td><ul><li>Any source that consumes NodePort services</li></ul></td>
+				<td>NodePort port range</td>
+			</tr>
+		</table>
+		<h3>controlplane nodes - Outbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Destination</th>
+				<th align="left">Description</th>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>443</td>
+				<td><ul><li>Rancher nodes</li></ul></td>
+				<td>Rancher agent</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2379</td>
+				<td><ul><li>etcd nodes</li></ul></td>
+				<td>etcd client requests</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>2380</td>
+				<td><ul><li>etcd nodes</li></ul></td>
+				<td>etcd peer communication</td>
+			</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10250</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>kubelet</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10254</td>
+				<td><ul><li>controlplane node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Ingress controller livenessProbe/readinessProbe</td>
+			</tr>
+		</table>
+		<p><strong>worker nodes:</strong><br/>Nodes with the role <strong>worker</strong></p>
+		<h3>worker nodes - Inbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Source</th>
+				<th align="left">Description</th>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>22</td>
+				<td>
+					<ul>
+						<li><strong>Linux worker nodes only</strong></li>
+						<li>Any network that you want to be able to remotely access this node from.</li>
+					</ul>
+				</td>
+				<td>Remote access over SSH</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>3389</td>
+				<td>
+					<ul>
+						<li><strong>Windows worker nodes only</strong></li>
+						<li>Any network that you want to be able to remotely access this node from.</li>
+					</ul>
+				</td>
+				<td>Remote access over RDP</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>80</td>
+				<td><ul><li>Any that consumes Ingress services</li></ul></td>
+				<td>Ingress controller (HTTP)</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>443</td>
+				<td><ul><li>Any that consumes Ingress services</li></ul></td>
+				<td>Ingress controller (HTTPS)</td>
+			</tr>
+				<tr>
+					<td>TCP</td>
+					<td>2376</td>
+					<td><ul><li>Rancher nodes</li></td>
+					<td>Docker daemon TLS port used by Docker Machine<br />(only needed when using Node Driver/Templates)</td>
+				</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10250</td>
+				<td><ul><li>controlplane nodes</li></ul></td>
+				<td>kubelet</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10254</td>
+				<td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Ingress controller livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP/UDP</td>
+				<td>30000-32767</td>
+				<td><ul><li>Any source that consumes NodePort services</li></ul></td>
+				<td>NodePort port range</td>
+			</tr>
+		</table>
+		<h3>worker nodes - Outbound rules</h3>
+		<table>
+			<tr>
+				<th>Protocol</th>
+				<th>Port</th>
+				<th align="left">Destination</th>
+				<th align="left">Description</th>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>443</td>
+				<td><ul><li>Rancher nodes</li></ul></td>
+				<td>Rancher agent</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>6443</td>
+				<td><ul><li>controlplane nodes</li></ul></td>
+				<td>Kubernetes apiserver</td>
+			</tr>
+			<tr>
+			<td>UDP</td>
+				<td>8472</td>
+				<td><ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li></ul></td>
+				<td>Canal/Flannel VXLAN overlay networking</td>
+			</tr>
+			<tr>
+			<td>TCP</td>
+				<td>9099</td>
+				<td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Canal/Flannel livenessProbe/readinessProbe</td>
+			</tr>
+			<tr>
+				<td>TCP</td>
+				<td>10254</td>
+				<td><ul><li>worker node itself (local traffic, not across nodes)</li></ul>See <a href=#local-node-traffic>Local node traffic</a></td>
+				<td>Ingress controller livenessProbe/readinessProbe</td>
+			</tr>
+		</table>
+		<br/>
+		<h3 id="local-node-traffic">Information on local node traffic</h3>
+		<p>Kubernetes healthchecks (<code>livenessProbe</code> and <code>readinessProbe</code>) are executed on the host itself. On most nodes, this is allowed by default. When you have applied strict host firewall (i.e. <code>iptables</code>) policies on the node, or when you are using nodes that have multiple interfaces (multihomed), this traffic gets blocked. In this case, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as Source or Destination in your security group, that this only applies to the private interface of the nodes/instances.
+		</p>	
+	</div>
+	
