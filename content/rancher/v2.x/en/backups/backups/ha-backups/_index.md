@@ -44,38 +44,36 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 **To Enable Recurring Snapshots:**
 
 1. Open `rancher-cluster.yml` with your favorite text editor.
-2. Add the following code block to the bottom of the file:
 
-_Pre 0.2.0_
+2. Edit the code for the `etcd` service to enable recurring snapshots. As of RKE v0.2.0, snapshots can be saved in a S3 compatible backend.  
 
-~~~yaml
-```
-services:
-  etcd:
-    snapshot: true # enables recurring etcd snapshots
-    creation: 6h0s # time increment between snapshots
-    retention: 24h # time increment before snapshot purge
-```
-~~~
-_Post 0.2.0: Note: S3 backup is optional_
-~~~yaml
-```
-services:
-  etcd:
-    backup_config: 
-      enabled: true     # enables recurring etcd snapshots
-      interval_hours: 6 # time increment between snapshots
-      retention: 60     # time in days before snapshot purge
-      s3_backup_config: # optional
-        access_key: "myaccesskey"
-        secret_key:  "myaccesssecret"
-        bucket_name: "my-backup-bucket"
-        endpoint: "s3.eu-west-1.amazonaws.com"
-        region: "eu-west-1"
-```
-~~~
+    _Using RKE v0.2.0+_
 
-3. Edit the code according to your requirements.
+    ```
+    services:
+      etcd:
+        backup_config:
+          enabled: true     # enables recurring etcd snapshots
+          interval_hours: 6 # time increment between snapshots
+          retention: 60     # time in days before snapshot purge
+          # Optional S3
+          s3_backup_config:
+            access_key: "myaccesskey"
+            secret_key:  "myaccesssecret"
+            bucket_name: "my-backup-bucket"
+            endpoint: "s3.eu-west-1.amazonaws.com"
+            region: "eu-west-1"
+    ```
+
+    _Using RKE v0.1.x_
+
+    ```
+    services:
+      etcd:
+        snapshot: true # enables recurring etcd snapshots
+        creation: 6h0s # time increment between snapshots
+        retention: 24h # time increment before snapshot purge
+    ```
 
 4. Save and close `rancher-cluster.yml`.
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
@@ -133,6 +131,3 @@ In this documentation, as an example, we're using Amazon S3 as our safe location
 root@node:~# s3cmd mb s3://rke-etcd-snapshots
 root@node:~# s3cmd put /opt/rke/etcd-snapshots/snapshot.db s3://rke-etcd-snapshots/
 ```
-
-
-
