@@ -47,33 +47,7 @@ When you take a snapshot, RKE saves a backup of the certificates, i.e. a file na
 Pick one of the clean nodes. That node will be the "target node" for the initial restore. Place the snapshot and PKI certificate bundle files in the `/opt/rke/etcd-snapshots` directory on the target node.
 
 * Snapshot - `<snapshot>.db`
-* PKI Bundle - `pki.bundle.tar.gz`  *(Pre RKE 0.2.0 only; after 0.2 you should have an cluster.rkestate file)*
-
-***Continue to step 3***
-
-
-
-**Remote Snapshots** (rancher 2.1 / rke 0.2.0 onwards)
-
-
-Ensuring your `cluster.rkestate` file is present, run rke restore from s3.
-
-```shell
-rke etcd snapshot-restore --config rancher-cluster-restore.yml \ 
---name snap-shot-name.db \
---s3 --access-key KEY --secret-key SECRET \
---bucket-name my-rancher-etcd-backup-bucket \
---s3-endpoint s3.amazonaws.com \
---region eu-west-2
-```
-
-Once the process has completed, if rancher has been installed via helm, the UI will load (can take a few minutes).
-
-At this point the restoration is complete. 
-
-> Note: At this point it is a good idea to ensure your `kube_config_cluster.yml` and `cluster.rkestate` are backed up and preserved for any future maintenance. 
-
-
+* PKI Bundle - `pki.bundle.tar.gz`
 
 ### 3. Configure RKE
 
