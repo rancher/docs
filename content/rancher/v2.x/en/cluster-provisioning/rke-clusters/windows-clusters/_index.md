@@ -20,13 +20,13 @@ This guide walks you through the creation of a custom cluster that includes thre
 >**Notes:**
 >
 >- For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
->- Windows worker adding script must run on Windows Server 2019 (core version 1809 or above) hosts. Core version 1803 and earlier versions do not support Kubernetes properly.
+>- The script to add a Windows worker must be ran on Windows Server 2019 (core version 1809 or above) hosts. Core version 1803 and earlier versions do not support Kubernetes properly.
 >- Containers built for Windows Server 1803 or earlier do not run on Windows Server 2019. You must build containers on Windows Server 2019 to run these containers on Windows Server 2019.
 >- Windows Overlay networking requires [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix. Most of Cloud-hosted VMs already have this hotfix.
 
 ## Objectives for Creating Cluster with Windows Support
 
-When setting up a custom cluster with support for Windows nodes and containers, complete the series of tasks below.
+To set up a custom cluster with support for Windows nodes and containers, you will need to complete the series of tasks listed below. 
 
 <!-- TOC -->
 
@@ -59,14 +59,14 @@ Node 3  | Windows (Windows Server 2019 required)            | [Worker]({{< baseu
 
 >**Notes:**
 >
->- If you are using AWS, you can choose *Microsoft Windows Server 2019 Base with Containers* as Amazon Machine Image (AMI)
->- If you are using GCE, you can choose *Windows Server 2019 Datacenter for Containers* as OS image
+>- If you are using AWS, you should choose *Microsoft Windows Server 2019 Base with Containers* as the Amazon Machine Image (AMI).
+>- If you are using GCE, you should choose *Windows Server 2019 Datacenter for Containers* as the OS image.
 
 ### Requirements
 
-- You can view node requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
+- You can view the requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 - For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them.
-- For **VXLAN (Overlay)** networking, you must confirm the Windows Server 2019 host with [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix. Most of Cloud-hosted VMs already have this hotfix.
+- For **VXLAN (Overlay)** networking, you must confirm the Windows Server 2019 has the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix installed. Most of Cloud-hosted VMs already have this hotfix.
 - Your cluster must include at least one Linux worker node to run Rancher Cluster agent, DNS, Metrics server and Ingress related containers.
 - Although we recommend the three node architecture listed in the table above, you can add additional Linux and Windows workers to scale up your cluster for redundancy.
 
@@ -98,7 +98,7 @@ Azure VM   | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/
 
 ## 3. Add Linux Master Node
 
-The first node in your cluster should be a Linux host that fills both *Control Plane* and *etcd* role. Both of this two roles must fulfill before you can add Windows hosts to your cluster. At a minimum, the node must have 2 roles enabled, but we recommend enabling all three. The following table lists our recommended settings (we'll provide the recommended settings for nodes 2 and 3 later).
+The first node in your cluster should be a Linux host that fills both *Control Plane* and *etcd* role. Both of this two roles must be fulfilled before you can add Windows hosts to your cluster. At a minimum, the node must have 2 roles enabled, but we recommend enabling all three. The following table lists our recommended settings (we'll provide the recommended settings for nodes 2 and 3 later).
 
 Option | Setting
 -------|--------
@@ -157,7 +157,7 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 ## 6. Cloud-hosted VM Routes Configuration for Host Gateway Mode
 
-If using [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) backend of Flannel, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
+If you are using the [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) backend of Flannel, all containers on the same node belong to a private subnet, and traffic routes from a subnet on one node to a subnet on another node through the host network.
 
 - When worker nodes are provisioned on AWS, virtualization clusters, or bare metal servers, make sure they belong to the same layer 2 subnet. If the nodes don't belong to the same layer 2 subnet, `host-gw` networking will not work.
 
