@@ -5,7 +5,7 @@ weight: 2240
 
 >**Notes:**
 >
->- Windows are new and improved for Rancher v2.3!  
+>- Windows support is new and improved for Rancher v2.3!  
 >- Still using v2.1.x or v2.2.x? As of v2.1.10 and v2.2.3, the previous Windows feature has been removed. See the windows documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/).
 
 _Available as of v2.3.0-alpha1_
@@ -18,11 +18,13 @@ When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-pro
 
 This guide walks you through the creation of a custom cluster that includes three nodes.
 
-* A Linux node, which serves as a Kubernetes control plane node.
+* A Linux node, which serves as the Kubernetes control plane node.
 * Another Linux node, which serves as a Kubernetes worker used to support Rancher Cluster agent, Metrics server, DNS and Ingress for the cluster.
 * A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
 
-## Pre-Prerequisites
+## Prerequisites
+
+Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{< baseurl >}}/rancher/v2.x/en/installation/) before proceeding with this guide. 
 
 For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
 
@@ -34,9 +36,9 @@ Windows overlay networking requires that [KB4489899](https://support.microsoft.c
 
 ### Container Requirements
 
-Windows requires that containers must be built on the same Windows server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 in order to be used with the node requirements of running Windows Server 2019. If you have existing containers built for Windows Server 1803 or earlier, they must be re-built to use Windows Server 2019.
+Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1809. If you have existing containers built for Windows Server 2019 core version 1803 or earlier, they must be re-built on Windows Server 2019 core version 1809.
 
-## Objectives for Creating Cluster with Windows Support
+## Steps for Creating a Cluster with Windows Support
 
 To set up a custom cluster with support for Windows nodes and containers, you will need to complete the series of tasks listed below.
 
@@ -59,7 +61,7 @@ To begin provisioning a custom cluster with Windows support, prepare your hosts.
 - VMs from virtualization clusters
 - Bare-metal servers
 
-The table below lists the [Kubernetes roles]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we’re installing all three roles on this node. The second node is also a Linux worker, which is responsible for running a DNS server, Ingress controller, Metrics server and Rancher Cluster agent. Finally, the third node is the Windows worker, which will run your Windows applications.
+The table below lists the [Kubernetes roles]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host. The roles will be enabled later on in the configuration process. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane. In this guide, we will be installing all three roles on this node. The second node is also a Linux worker, which is responsible for running a DNS server, Ingress controller, Metrics server and Rancher Cluster agent. The third node, a Windows worker, will run your Windows containers.
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
@@ -76,26 +78,34 @@ Node 3  | Windows (Windows Server 2019 required)            | [Worker]({{< baseu
 
 - You can view the general requirements for Linux and Windows nodes in the [installation section]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 - For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them.
-- For **VXLAN (Overlay)** networking, you must confirm that the Windows Server 2019 has the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix installed. Most cloud-hosted VMs already have this hotfix.
+- For **VXLAN (Overlay)** networking, you must confirm that Windows Server 2019 has the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix installed. Most cloud-hosted VMs already have this hotfix.
 - Your cluster must include at least one Linux worker node to run Rancher Cluster agent, DNS, Metrics server and Ingress related containers.
 - Although we recommend the three node architecture listed in the table above, you can always add additional Linux and Windows workers to scale up your cluster for redundancy.
 
 ## 2. Create the Custom Cluster
 
-To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster), starting from [2. Create the Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster). While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed below.
+The instructions for creating a custom cluster that supports Windows nodes are very similar to the general [instructions for creating a custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster) with some Windows specific requirements. The entire process is documented below. 
+
+1. From the main Rancher dashboard click on the **Clusters** tab and select **Add Cluster**.
+
+1. The first section asks where the cluster is hosted. You should select **Custom**. 
+
+1. Enter a name for your cluster in the **Cluster Name** text box. 
+
+1. {{< step_create-cluster_member-roles >}}
+
+1. {{< step_create-cluster_cluster-options >}}
+
+    In order to use Windows workers, you must choose the following options: 
+      - You must select `v1.14` or above for **Kubernetes Version**.
+      - You must select **Flannel** as the **Network Provider**. There are two options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
+      - You must select **Enable** for **Windows Support**.
+
+1. If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, see [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) for configuration info.
+
+1. Click **Next**.
 
 
-1. Select `v1.14 or above` version for **Kubernetes Version**.
-
-1. Select **Flannel** as **Network Provider**.
-
-1. Select **Enable** for **Windows Support**.
-
-1. Choose the **Flannel Backend**. There are two options [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). Default is **VXLAN (Overlay)** mode.
-
-If your nodes are hosted by a **Cloud Provider** and you want automation support such as load balancers or persistent storage devices, see [Selecting Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) for configuration info.
-
-Finally, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 6]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-6).
 
 >**Important:**  If you are using *Host Gateway (L2bridge)* mode and hosting your nodes on any of the cloud services listed below, you must disable the private IP address checks for both your Linux or Windows hosts on startup. To disable this check for each node, follow the directions provided by each service below.
 
@@ -114,7 +124,24 @@ Option | Setting
 Node Operating System | Linux
 Node Roles            | etcd <br/> Control Plane <br/> Worker (optional)
 
-When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
+1. For Node Operating System select **Linux**.
+
+1. From **Node Role**, choose at least **etcd** and **Control Plane**.
+
+1. **Optional**: Click **Show advanced options** to specify IP address(es) to use when registering the node, override the hostname of the node or to add labels to the node.
+
+	[Rancher Agent Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/agent-options/)<br/>
+	[Kubernetes Documentation: Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+
+1. Copy the command displayed on the screen to your clipboard. 
+
+	>**Note:** Repeat steps 7-10 if you want to dedicate specific hosts to specific node roles. Repeat the steps as many times as needed.
+
+1. SSH into your Linux host and run the command that you copied to your clipboard.
+
+1. When you are finished provisioning your Linux node(s), select **Done**.
+
+{{< result_create-cluster >}}
 
 ## 4. Add Linux Worker Node
 
@@ -138,8 +165,6 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 **Result:** The **Worker** role is installed on your Linux host, and the node registers with Rancher.
 
-
-
 ## 5. Add Windows Workers
 
 You can add Windows hosts to a custom cluster by editing the cluster and choosing the **Windows** option.
@@ -161,8 +186,6 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 1. **Optional:** Repeat these instruction if you want to add more Windows nodes to your cluster.
 
 **Result:** The **Worker** role is installed on your Windows host, and the node registers with Rancher.
-
-
 
 ## 6. Cloud-hosted VM Routes Configuration for Host Gateway Mode
 
