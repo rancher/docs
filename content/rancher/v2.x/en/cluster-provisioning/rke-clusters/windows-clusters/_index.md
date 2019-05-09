@@ -6,7 +6,7 @@ weight: 2240
 >**Notes:**
 >
 >- Windows are new and improved for Rancher v2.3!  
->- Still using v2.1.x or v2.2.x? The previous Windows feature has been dropped since 2.1.10 and 2.2.3. See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/).
+>- Still using v2.1.x or v2.2.x? As of v2.1.10 and v2.2.3, the previous Windows feature has been removed. See the windows documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/).
 
 _Available as of v2.3.0-alpha1_
 
