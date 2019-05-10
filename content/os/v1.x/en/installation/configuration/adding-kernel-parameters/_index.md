@@ -41,7 +41,11 @@ RancherOS v1.1.0 added a Syslinux boot menu, which allows you to temporarily edi
 
 On desktop systems the Syslinux boot menu can be switched to graphical mode by adding `UI vesamenu.c32` to a new line in `global.cfg` (use `sudo ros config syslinux` to edit the file).
 
-### Useful RancherOS cloud-init or boot settings
+### Useful RancherOS kernel boot parameters
+
+#### User password
+
+`rancher.password=<passwd...>` will set the password for rancher user. If you are not willing to use SSH keys, you can consider this parameter.
 
 #### Recovery console
 
