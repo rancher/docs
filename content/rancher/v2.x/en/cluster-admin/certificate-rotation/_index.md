@@ -39,7 +39,7 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 ### Certificate Rotation in Rancher v2.1.x and v2.0.x
 
-_Available as of v2.1.14 and v2.0.9_
+_Available as of v2.1.9 and v2.0.14_
 
 Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the API.
 
