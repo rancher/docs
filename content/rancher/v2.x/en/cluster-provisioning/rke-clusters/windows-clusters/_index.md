@@ -188,15 +188,15 @@ Azure VM   | For Azure, create a routing table: [Custom Routes: User-defined](ht
 
 ## 7. Configuration for Azure Files
 
-You can use Azure Files as the [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) if you are using Azure VM in your cluster. For detailed information about it , [see here](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv).
+If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster. 
 
-To allow the Azure platform to create the required storage resources, follow these steps:
+In order to have the Azure platform create the required storage resources, follow these steps:
 
-1. [Configure the Azure cloud provider]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/azure)
+1. [Configure the Azure cloud provider.]({{< baseurl >}}rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/#azure)
 
-1. Configure kubectl to connect to your cluster.
+1. Configure `kubectl` to connect to your cluster.
 
-1. Copy the ClusterRole and ClusterRoleBinding manifest for service account.
+1. Copy the `ClusterRole` and `ClusterRoleBinding` manifest for service account.
 
         ---
         apiVersion: rbac.authorization.k8s.io/v1
@@ -221,7 +221,8 @@ To allow the Azure platform to create the required storage resources, follow the
           name: persistent-volume-binder
           namespace: kube-system
 
-1. Create them in your cluster using one of the follow command.
- ```
-  # kubectl create -f <MANIFEST>
-  ```
+1. Create these in your cluster using one of the follow command.
+
+    ```
+    # kubectl create -f <MANIFEST>
+    ```
