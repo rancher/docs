@@ -48,7 +48,7 @@ To set up a custom cluster with support for Windows nodes and containers, you wi
 - [4. Add Linux Worker Node](#4-add-linux-worker-node)
 - [5. Add Windows Workers](#5-add-windows-workers)
 - [6. Cloud-host VM Routes Configuration for Host Gateway Mode (Optional)](#6-cloud-hosted-vm-routes-configuration-for-host-gateway-mode)
-
+- [7. Configuration for Azure Files (Optional)](#7-configuration-for-azure-files)
 <!-- /TOC -->
 
 ## 1. Provision Hosts
@@ -186,4 +186,42 @@ Google GCE | For GCE, add a static route for each node: [Adding a Static Route](
 Azure VM   | For Azure, create a routing table: [Custom Routes: User-defined](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined).
 
 
-` `
+## 7. Configuration for Azure Files
+
+You can use Azure Files as the [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) if you are using Azure VM in your cluster. For detailed information about it , [see here](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv).
+
+To allow the Azure platform to create the required storage resources, follow these steps:
+
+1. [Configure the Azure cloud provider]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/azure)
+
+1. Configure kubectl to connect to your cluster.
+
+1. Copy the ClusterRole and ClusterRoleBinding manifest for service account.
+
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRole
+        metadata:
+          name: system:azure-cloud-provider
+        rules:
+        - apiGroups: ['']
+          resources: ['secrets']
+          verbs:     ['get','create']
+        ---
+        apiVersion: rbac.authorization.k8s.io/v1
+        kind: ClusterRoleBinding
+        metadata:
+          name: system:azure-cloud-provider
+        roleRef:
+          kind: ClusterRole
+          apiGroup: rbac.authorization.k8s.io
+          name: system:azure-cloud-provider
+        subjects:
+        - kind: ServiceAccount
+          name: persistent-volume-binder
+          namespace: kube-system
+
+1. Create them in your cluster using one of the follow command.
+ ```
+  # kubectl create -f <MANIFEST>
+  ```
