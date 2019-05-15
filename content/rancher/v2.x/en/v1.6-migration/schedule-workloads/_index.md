@@ -183,7 +183,7 @@ Rancher v1.6 included the ability to deploy [global services]({{< baseurl >}}/ra
 
 In Rancher v2.x, you can schedule a pod to each node using a [Kubernetes DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a specific type of workload <!-- link -->). A _DaemonSet_ functions exactly like a Rancher v1.6 global service. The Kubernetes scheduler deploys a pod on each node of the cluster, and as new nodes are added, the scheduler will start new pods on them provided they match the scheduling requirements of the workload. Additionally, in v2.x, you can also limit a DaemonSet to be deployed to nodes that have a specific label.
 
-To create a daemonset while configuring a workload, choose **Run one pod on each node** from the the **Workload Type** options.
+To create a daemonset while configuring a workload, choose **Run one pod on each node** from the **Workload Type** options.
 
 ### Scheduling Pods Using Resource Constraints
 

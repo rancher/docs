@@ -816,7 +816,7 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     ```
     # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
     ```
-    If the the API is working correctly, you should receive output similar to the output below.
+    If the API is working correctly, you should receive output similar to the output below.
     ```
     {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
     ```
@@ -825,7 +825,7 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     ```
     # kubectl get --raw /apis/metrics.k8s.io/v1beta1
     ```
-    If the the API is working correctly, you should receive output similar to the output below.
+    If the API is working correctly, you should receive output similar to the output below.
     ```
     {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
     ```
