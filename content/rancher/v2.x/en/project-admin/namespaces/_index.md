@@ -28,7 +28,7 @@ Create a new namespace to isolate apps and resources in a project.
 
 1. From the **Global** view, open the project where you want to create a namespace.
 
-    >**Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can can create them from the cluster level as well.
+    >**Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can create them from the cluster level as well.
 
 1. From the main menu, select **Namespace**. The click **Add Namespace**.
 

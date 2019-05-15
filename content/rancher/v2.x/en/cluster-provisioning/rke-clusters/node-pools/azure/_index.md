@@ -28,7 +28,7 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 		{{< step_create-cloud-credential >}}
 
-		- **Placement** sets the geographical region where where your cluster is hosted and other location metadata.
+		- **Placement** sets the geographical region where your cluster is hosted and other location metadata.
 
 		- **Network** configures the networking used in your cluster.
 

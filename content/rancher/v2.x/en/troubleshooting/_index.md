@@ -30,7 +30,7 @@ This section contains information to help you troubleshoot issues when using Ran
 
 - [Rancher HA]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/rancherha/)
 
-    If you experience issues issues with your [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
+    If you experience issues with your [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
 
 - [Imported clusters]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/imported-clusters/)
 

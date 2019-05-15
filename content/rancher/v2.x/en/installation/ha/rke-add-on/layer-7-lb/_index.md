@@ -198,7 +198,7 @@ If you are using a Certificate Signed By A Recognized Certificate Authority, you
 
 ## 8. Configure FQDN
 
-There is one reference to `<FQDN>` in the RKE config file. Replace this reference with the FQDN you chose in in [3. Configure DNS](#3-configure-dns).
+There is one reference to `<FQDN>` in the RKE config file. Replace this reference with the FQDN you chose in [3. Configure DNS](#3-configure-dns).
 
 1. Open `rancher-cluster.yml`.
 

@@ -405,7 +405,7 @@ spec:
 1. Test that pod autoscaling works as intended.<br/></br>
   **To Test Autoscaling Using Resource Metrics:**
   {{% accordion id="observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
-Use your load testing tool to to scale up to two pods based on CPU Usage.
+Use your load testing tool to scale up to two pods based on CPU Usage.
 
 1. View your HPA.
     ```
@@ -491,7 +491,7 @@ Use your load testing tool to upspace to 3 pods based on CPU usage with `horizon
       ```
   {{% /accordion %}}
   {{% accordion id="observe-downscale-1-pod" label="Downscale to 1 Pod: All Metrics Below Target" %}}
-Use your load testing to to scale down to 1 pod when all metrics are below target for `horizontal-pod-autoscaler-downscale-delay` (5 minutes by default).
+Use your load testing to scale down to 1 pod when all metrics are below target for `horizontal-pod-autoscaler-downscale-delay` (5 minutes by default).
 
 1. Enter the following command.
   ```
@@ -794,7 +794,7 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     ```
     # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
     ```
-    Then review the log to confirm that that the `metrics-server` package is running.
+    Then review the log to confirm that the `metrics-server` package is running.
     {{% accordion id="metrics-server-run-check" label="Metrics Server Log Output" %}}
     I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
     I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
