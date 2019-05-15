@@ -11,7 +11,7 @@ After you configure external authentication, the users that display on the **Use
 
 - If you are logged in as a local user, only local users display.
 
-- If you are logged in an an external user, both external and local users display.
+- If you are logged in an external user, both external and local users display.
 
 ## Users and Roles
 
