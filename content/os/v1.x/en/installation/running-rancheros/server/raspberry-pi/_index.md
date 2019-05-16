@@ -29,3 +29,39 @@ RancherOS does not currently expand the root partition to fill the remainder of 
 If this is not a new installation, you'll have to copy over your existing Docker root (`/var/lib/docker`) to the new root (`/mnt/docker`).
 1. `sudo cp -R /var/lib/docker/* /mnt/docker` to recursively copy all files
 2. `sudo system-docker restart docker` to restart Docker using the new root
+
+### Using Wi-Fi
+
+_Available as of v1.5.2_
+
+Here are steps about how to enable Wi-Fi on a Raspberry Pi:
+
+```
+modprobe brcmfmac
+wpa_passphrase <ssid> <psk> > /etc/wpa_supplicant.conf
+wpa_supplicant -iwlan0 -B -c /etc/wpa_supplicant.conf
+# wait a few seconds, then
+dhcpcd -MA4 wlan0
+```
+
+You can also use cloud-config to enable Wi-Fi:
+
+```
+#cloud-config
+rancher:
+  network:
+    interfaces:
+      wlan0:
+        wifi_network: network1
+    wifi_networks:
+      network1:
+        ssid: "Your wifi ssid"
+        psk: "Your wifi password"
+        scan_ssid: 1
+```
+
+Raspberry Pi will automatically drop Wi-Fi connection after a while, this is due to power management. To fix this problem, you can try this:
+
+```
+iwconfig wlan0 power off
+```
