@@ -60,7 +60,7 @@ This can effectively reduce the memory required to decompress the initrd on boot
 $ USER_DOCKER_VERSION=17.03.2 make release
 ```
 
-#### Building with a different  console
+#### Building with a different console
 
 _Available as of v1.5.0_
 
@@ -71,3 +71,23 @@ Here is an example of building RanchreOS and having the alpine console enabled:
 ```
 $ OS_CONSOLE=alpine make release
 ```
+
+#### Building with predefined docker images
+
+If you want to custom an ISO file to address your offline scenario, you can predefined images for system-docker and user-docker.
+
+RancherOS supports `APPEND_SYSTEM_IMAGES`, it can save images to the initrd file, and loaded with system-docker when booting. 
+You can build ISO like this:
+
+```
+APPEND_SYSTEM_IMAGES="rancher/os-openvmtools:10.3.10-1" make release
+```
+
+RancherOS also supports APPEND_USER_IMAGES, it can save images to the initrd file, and loaded with user-docker when booting. 
+You can build ISO like this:
+
+```
+APPEND_USER_IMAGES="alpine:3.9 ubuntu:bionic" make release
+```
+
+Please note that these will be packaged into the initrd, and the predefined images will take up the resource footprint at startup.
