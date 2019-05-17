@@ -31,7 +31,7 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 6. Run `terraform init`.
 
-7. To initiate the creation of the environment, run `terraform apply`. Then wait for the the following output:
+7. To initiate the creation of the environment, run `terraform apply`. Then wait for the following output:
 
 	```
 	Apply complete! Resources: 2 added, 0 changed, 0 destroyed. 

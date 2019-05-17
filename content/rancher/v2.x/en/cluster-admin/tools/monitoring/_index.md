@@ -39,7 +39,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 ### Resource Consumption
 
-When enabling cluster monitoring, you need to ensure your worker nodes and Prometheus pod have enough resources. The tables below provides a guide of how much resource consumption will be used.
+When enabling cluster monitoring, you need to ensure your worker nodes and Prometheus pod have enough resources. The tables below provides a guide of how much resource consumption will be used. In larger deployments, it is strongly advised that the monitoring infrastructure be placed on dedicated nodes in the cluster.
 
 #### Prometheus Pod Resource Consumption
 
@@ -50,6 +50,24 @@ Number of Cluster Nodes | CPU (milli CPU) | Memory | Disk
 5 | 500 | 650 MB | ~1 GB/Day
 50| 2000 | 2 GB | ~5 GB/Day
 256| 4000 | 6 GB | ~18 GB/Day
+
+Additional pod resource requirements for cluster level monitoring.
+
+Workload | Container | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable
+---------|-----------|---------------|---------------|-------------|-------------|-------------
+Prometheus|Prometheus| 750m | 750Mi| 1000m | 1000Mi| Y
+ ||Prometheus-proxy| 50m | 50Mi | 100m | 100Mi| Y
+ ||Prometheus-auth| 100m | 100Mi | 500m | 200Mi | Y
+ ||Prometheus-config-reloader| - | - | 50m | 50Mi | N
+ ||rules-configmap-reloader | - | - | 100m | 25Mi | N
+Grafana | grafana-init-plugin-json-copy | 50m |50Mi|50m|50Mi|Y
+ ||grafana-init-plugin-json-modify|50m|50Mi|50m|50Mi|Y
+ ||grafana |100m|100Mi|200m|200Mi|Y
+ ||grafana-proxy|50m|50Mi|100m|100Mi|Y
+Kube-State Exporter|kube-state |100m|130Mi|100m|200Mi|Y
+Node Exporter | exporter-node | 200m | 200Mi | 200m | 200Mi|Y
+Operator | prometheus-operator | 100m | 50Mi | 200m | 100Mi | Y
+
 
 #### Other Pods Resource Consumption
 

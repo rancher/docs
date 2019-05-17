@@ -158,14 +158,18 @@ $ rke etcd snapshot-restore --config cluster.yml --name mysnapshot
 
 _Available as of v0.2.0_
 
+> **Note:** Ensure your `cluster.rkestate` is present before starting the restore, as this contains your certificate data for the cluster
+
 When restoring etcd from a snapshot located in S3, the command needs the S3 information in order to connect to the S3 backend and retrieve the snapshot.
 
-```
+```shell
 $ rke etcd snapshot-restore --config cluster.yml --name snapshot-name \
 --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
 --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
 ```
-## Example
+> **Note:** if you were restoring a cluster that had rancher installed the UI should start-up after a few minutes; you don't need to re-run helm.
+
+### Example Scenario of restoring from a Local Snapshot
 
 In this example, the Kubernetes cluster was deployed on two AWS nodes.
 
@@ -185,7 +189,7 @@ $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 ![etcd snapshot]({{< baseurl >}}/img/rke/rke-etcd-backup.png)
 
 
-### Store the Snapshot Externally to S3
+### Store the Snapshot Externally in S3
 
 As of v0.2.0, this step is no longer required, as RKE can upload and download snapshots automatically from S3 by adding in [S3 options](#options-for-rke-etcd-snapshot-save) when running the `rke etcd snapshot-save` command.
 
@@ -253,7 +257,7 @@ nodes:
 After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. The snapshot and `pki.bundle.tar.gz` file are expected to be saved at `/opt/rke/etcd-snapshots`.
 As of v0.2.0, if you want to directly retrieve the snapshot from S3, add in the [S3 options](#options-for-rke-etcd-snapshot-restore).
 
-> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process.
+> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process as the certificates required to restore are preserved within the `cluster.rkestate` 
 
 ```
 $ rke etcd snapshot-restore --name snapshot.db --config cluster.yml
@@ -294,3 +298,6 @@ docker container inspect rke-bundle-cert
 ```
 
 The important thing to note is the mounts of the container and location of the **pki.bundle.tar.gz**.
+
+
+

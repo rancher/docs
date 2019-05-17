@@ -140,7 +140,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
                 "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:key-pair/*",
                 "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:network-interface/*",
                 "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:security-group/*",
-                "arn:aws:iam::AWS_ACCOUNT_ID:role/your-role-name"
+                "arn:aws:iam::AWS_ACCOUNT_ID:role/YOUR_ROLE_NAME"
             ]
         },
         {

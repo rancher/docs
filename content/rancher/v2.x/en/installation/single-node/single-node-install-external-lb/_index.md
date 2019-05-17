@@ -4,7 +4,7 @@ weight: 252
 aliases:
 - /rancher/v2.x/en/installation/single-node-install-external-lb/
 ---
-For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
+For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
 
 >**Want to skip the external load balancer?**
 > See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.

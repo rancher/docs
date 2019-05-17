@@ -15,7 +15,7 @@ During upgrade, you'll enter a series of commands, filling placeholders with dat
 docker run  --volumes-from rancher-data -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
 ```
 
-In this command, `<RANCHER_VERSION>-<DATE>` is the the version number and date of creation for a backup of Rancher.
+In this command, `<RANCHER_VERSION>-<DATE>` is the version number and date of creation for a backup of Rancher.
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#completing-the-upgrade).
 

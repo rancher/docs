@@ -18,7 +18,7 @@ RKE only adds additional add-ons when using `rke up` multiple times. RKE does **
 
 As of v0.1.8, RKE will update an add-on if it is the same name.
 
-Prior to v0.1.8, update any add-ons by by using `kubectl edit`.
+Prior to v0.1.8, update any add-ons by using `kubectl edit`.
 
 
 ## Critical and Non-Critical Add-ons

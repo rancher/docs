@@ -5,7 +5,7 @@ weight: 2520
 
 Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
 
-Although you assign resources at the project level so that each namespace can in the project can use them, you can override this inheritance by assigning resources explicitly to a namespace.
+Although you assign resources at the project level so that each namespace in the project can use them, you can override this inheritance by assigning resources explicitly to a namespace.
 
 Resources that you can assign directly to namespaces include:
 
@@ -28,7 +28,7 @@ Create a new namespace to isolate apps and resources in a project.
 
 1. From the **Global** view, open the project where you want to create a namespace.
 
-    >**Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can can create them from the cluster level as well.
+    >**Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can create them from the cluster level as well.
 
 1. From the main menu, select **Namespace**. The click **Add Namespace**.
 
