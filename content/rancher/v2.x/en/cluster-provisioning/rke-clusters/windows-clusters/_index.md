@@ -5,8 +5,8 @@ weight: 2240
 
 >**Notes:**
 >
->- Windows are new and improved for Rancher v2.3!  
->- Still using v2.1.x or v2.2.x? As of v2.1.10 and v2.2.3, the previous Windows feature has been removed. See the windows documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/).
+>- Configuring Windows clusters is new and improved for Rancher v2.3.0!  
+>- Still using v2.1.x or v2.2.x?  See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
 
 _Available as of v2.3.0-alpha1_
 
@@ -188,7 +188,7 @@ Azure VM   | For Azure, create a routing table: [Custom Routes: User-defined](ht
 
 ## 7. Configuration for Azure Files
 
-If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster. 
+If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster.
 
 In order to have the Azure platform create the required storage resources, follow these steps:
 
