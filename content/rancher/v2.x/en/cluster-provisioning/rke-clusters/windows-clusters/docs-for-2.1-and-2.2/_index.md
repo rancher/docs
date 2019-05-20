@@ -3,9 +3,9 @@ title: v2.1.x and v2.2.x Windows Documentation (Experimental)
 weight: 9100
 ---
 
->**Note:** This section describes the Windows feature as implemented in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3 or later, where Windows have been significantly improved, please refer to the new documentation for [v2.3 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
+>**Note:** This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
 
-_Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.2_
+_Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.3_
 
 >**Important:**
 >
