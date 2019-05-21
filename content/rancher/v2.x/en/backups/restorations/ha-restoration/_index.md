@@ -14,7 +14,7 @@ Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0
 <!-- TOC -->
 
 - [1. Preparation](#1-preparation)
-- [2. Place Snapshot](#2-snapshot)
+- [2. Place Snapshot](#2-place-snapshot)
 - [3. Configure RKE](#3-configure-rke)
 - [4. Restore Database](#4-restore-database)
 - [5. Bring Up the Cluster](#5-bring-up-the-cluster)
@@ -31,24 +31,23 @@ We recommend that you start with fresh nodes and a clean state. Alternatively yo
 
 > **IMPORTANT:** Before starting the restore make sure all the Kubernetes services on the old cluster nodes are stopped. We recommend powering off the nodes to be sure.
 
-### 2. Place Snapshot <a name="2-snapshot"></a>
+### 2. Place Snapshot
 The snapshot used to restore your etcd cluster is handled differently based on your version of RKE.
 
-#### For RKE Prior to v0.2.0: Place Snapshot and PKI Bundle on Local
-Pick one of the clean nodes. That node will be the "target node" for the initial restore. 
+#### RKE v0.2.0+
 
-Place the snapshot and PKI certificate bundle files in the `/opt/rke/etcd-snapshots` directory on the target node.
+As of RKE v0.2.0, snapshots could be saved in an S3 compatible backend. To restore your cluster from the snapshot stored in S3 compatible backend, you can skip this step and retrieve the snapshot in [Step 4: Restore Database](#4-restore-database). Otherwise, you will need to place the snapshot directly on the nodes.
+
+Pick one of the clean nodes. That node will be the "target node" for the initial restore. Place your snapshot in `/opt/rke/etcd-snapshots` on the target node.
+
+#### RKE v0.1.x
 
 When you take a snapshot, RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and PKI bundle file are required for the restore process, and they are expected to be in the same location.
 
+Pick one of the clean nodes. That node will be the "target node" for the initial restore. Place the snapshot and PKI certificate bundle files in the `/opt/rke/etcd-snapshots` directory on the target node.
+
 * Snapshot - `<snapshot>.db`
 * PKI Bundle - `pki.bundle.tar.gz`
-
-#### For RKE v0.2.0 or Later: Place Snapshot on Local or S3
-
-To restore your etcd cluster from a local snapshot, pick one of the clean nodes. That node will be the "target node" for the initial restore. Place your snapshot in `/opt/rke/etcd-snapshots` on the target node.
-
-RKE v0.2.0 also allows you to restore your cluster from an S3 compatible backend. To restore your cluster from S3, you will use the [S3 configuration options](#restore-from-snapshot) during step 4: Restore Database.
 
 ### 3. Configure RKE
 
@@ -62,7 +61,7 @@ Modify the copy and make the following changes.
 
 * Remove or comment out entire the `addons:` section. The Rancher deployment and supporting configuration is already in the `etcd` database.
 * Change your `nodes:` section to point to the restore nodes.
-* Comment out the nodes that are not your "target node." We want the cluster to only start on that one node.
+* Comment out the nodes that are not your "target node". We want the cluster to only start on that one node.
 
 *Example* `rancher-cluster-restore.yml`
 
@@ -91,37 +90,37 @@ nodes:
 
 ### 4. Restore Database
 
-Use RKE with the new `rancher-cluster-restore.yml` configuration and restore the database to the single "target node."
+Use RKE with the new `rancher-cluster-restore.yml` configuration and restore the database to the single "target node".
 
-#### Example of Restoring from a Local Snapshot
+RKE will create an `etcd` container with the restored database on the target node. This container will not complete the `etcd` initialization and stay in a running state until the cluster brought up in the next step.
+
+#### Restoring from a Local Snapshot
 
 When restoring etcd from a local snapshot, the snapshot is assumed to be located on the target node in the directory `/opt/rke/etcd-snapshots`.
 
-> **Note:** For RKE prior to v0.2.0, the `pki.bundle.tar.gz` file is also expected to be in the same location. 
+> **Note:** For RKE v0.1.x, the `pki.bundle.tar.gz` file is also expected to be in the same location.
 
 ```
 rke etcd snapshot-restore --name <snapshot>.db --config ./rancher-cluster-restore.yml
 ```
 
-RKE will create an `etcd` container with the restored database on the target node. This container will not complete the `etcd` initialization and stay in a running state until the cluster brought up in the next step.
+#### Restoring from a Snapshot in S3
 
-#### Example of Restoring from a Snapshot in S3 (For RKE v0.2.0 or Later) <a name="restore-from-snapshot"></a>
+_Available as of RKE v0.2.0_
 
-When restoring etcd from a snapshot located in S3, the command needs the S3 information in order to connect to the S3 backend and retrieve the snapshot.
+When restoring etcd from a snapshot located in an S3 compatible backend, the command needs the S3 information in order to connect to the S3 backend and retrieve the snapshot.
 
 > **Note:** Ensure your `cluster.rkestate` is present before starting the restore, as this contains your certificate data for the cluster.
 
 ```
-shell
 $ rke etcd snapshot-restore --config cluster.yml --name snapshot-name \
 --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
 --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
 ```
-The UI should start up after a few minutes; you don't need to re-run helm.
 
 #### Options for `rke etcd snapshot-restore`
 
-S3 specific options are only available for RKE v0.2.0 or later.
+S3 specific options are only available for RKE v0.2.0+.
 
 | Option | Description | S3 Specific |
 | --- | --- | ---|
@@ -139,6 +138,8 @@ S3 specific options are only available for RKE v0.2.0 or later.
 ### 5. Bring Up the Cluster
 
 Use RKE and bring up the cluster on the single "target node."
+
+> **Note:** For users running RKE v0.2.0+, ensure your `cluster.rkestate` is present before starting the restore, as this contains your certificate data for the cluster.
 
 ```
 rke up --config ./rancher-cluster-restore.yml
