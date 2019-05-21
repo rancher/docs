@@ -21,6 +21,7 @@ weight: 276
 | --- | --- | --- |
 | `additionalTrustedCAs` | false | `bool` - See [Additional Trusted CAs](#additional-trusted-cas) |
 | `addLocal` | "auto" | `string` - Have Rancher detect and import the "local" Rancher server cluster [Import "local Cluster](#import-local-cluster) |
+| `antiAffinity` | "preferred" | `string` - AntiAffinity rule for Rancher pods - "preferred, required" |
 | `auditLog.destination` | "sidecar" | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath" |
 | `auditLog.hostPath` | "/var/log/rancher/audit" | `string` - log file destination on host |
 | `auditLog.level` | 0 | `int` - set the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3] |
@@ -32,6 +33,7 @@ weight: 276
 | `extraEnv` | [] | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_ |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
+| `ingress.configurationSnippet` | "" | `string` - Add additional Nginx configuration. Can be used for proxy configuration. |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
 | `noProxy` | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
@@ -98,7 +100,15 @@ To customize or use a different ingress with Rancher server you can set your own
 Example on setting a custom certificate issuer:
 
 ```plain
- --set ingress.extraAnnotations.'certmanager\.k8s\.io/cluster-issuer'=ca-key-pair
+--set ingress.extraAnnotations.'certmanager\.k8s\.io/cluster-issuer'=ca-key-pair
+```
+
+_Available as of v2.0.15, v2.1.10 and v2.2.4_
+
+Example on setting a static proxy header with `ingress.configurationSnippet`. This value is parsed like a template so variables can be used.
+
+```plain
+--set ingress.configurationSnippet='more_set_input_headers X-Forwarded-Host {{ .Values.hostname }};'
 ```
 
 ### HTTP Proxy
