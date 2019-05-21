@@ -12,9 +12,10 @@ Create a service account using [Google Cloud Platform](https://console.cloud.goo
 
 The service account requires the following roles:
 
--	`project/viewer`
--	`kubernetes-engine/admin`
--	`service-account/user`
+- **Compute Viewer:** `roles/compute.viewer`
+- **Project Viewer:** `roles/viewer`
+- **Kubernetes Engine Admin:** `roles/container.admin` 
+- **Service Account User:** `roles/iam.serviceAccountUser`
 
 [Google Documentation: Creating and Enabling Service Accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
 
