@@ -45,24 +45,23 @@ You can drain nodes that are in either a `cordoned` or `active` state. When you 
 
 However, you can override the conditions draining when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
 
-### Aggressive and Safe Draining Options
-These draining options are different based on your version of Rancher.
+The node draining options are different based on your version of Rancher.
 
-#### Rancher v2.2.x+
+### Aggressive and Safe Draining Options for Rancher v2.2.x+
 
 There are two drain modes: aggressive and safe.
 
-##### Aggressive Mode
+- **Aggressive Mode** 
+    
+    In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
+    
+    Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
 
-In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
+- **Safe Mode** 
+    
+    If a node has standalone pods or ephemeral data it will be cordoned but not drained.
 
-Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
-
-##### Safe Mode
-
-If a node has standalone pods or ephemeral data it will be cordoned but not drained.
-
-#### Rancher Prior to v2.2.x
+### Aggressive and Safe Draining Options for Rancher Prior to v2.2.x
 
 The following list describes each drain option:
 
