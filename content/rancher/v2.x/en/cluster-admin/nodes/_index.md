@@ -10,8 +10,6 @@ After you launch a Kubernetes cluster in Rancher, you can manage individual node
 
 To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
 
-![Node Options]({{< baseurl >}}/img/rancher/node-edit.png)
-
 >**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
 The following table lists which node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
@@ -45,11 +43,27 @@ _Draining_ is the process of first cordoning the node, and then evicting all its
 
 You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, the node is cordoned, the nodes are evaluated for conditions they must meet to be drained, and then (if it meets the conditions) the node evicts its pods.
 
-However, you can override the conditions draining when you initiate the drain (see [below](#below)). You're also given an opportunity to set a grace period and timeout value.
+However, you can override the conditions draining when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
 
-![Drain]({{< baseurl >}}/img/rancher/node-drain.png)
+### Aggressive and Safe Draining Options
+These draining options are different based on your version of Rancher.
 
-<a id="below"></a>
+#### Rancher v2.2.x+
+
+There are two drain modes: aggressive and safe.
+
+##### Aggressive Mode
+
+In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
+
+Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
+
+##### Safe Mode
+
+If a node has standalone pods or ephemeral data it will be cordoned but not drained.
+
+#### Rancher Prior to v2.2.x
+
 The following list describes each drain option:
 
 - **Even if there are pods not managed by a ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet**
@@ -64,15 +78,18 @@ The following list describes each drain option:
 
     If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods.
 
-- **Grace Period**
 
-    The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used.
+### Grace Period
 
-- **Timeout**  
+The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used.
 
-    The amount of time drain should continue to wait before giving up.
+### Timeout 
 
-    >**Kubernetes Known Issue:** Currently, the [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) is not enforced while draining a node. This issue will be corrected as of Kubernetes 1.12.
+The amount of time drain should continue to wait before giving up.
+
+>**Kubernetes Known Issue:** Currently, the [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) is not enforced while draining a node. This issue will be corrected as of Kubernetes 1.12.
+
+### Drained and Cordoned State
 
 If there's any error related to user input, the node enters a `cordoned` state because the drain failed. You can either correct the input and attempt to drain the node again, or you can abort by uncordoning the node.
 
@@ -103,9 +120,6 @@ Use **Delete** to remove defective nodes from the cloud provider. When you the d
 ## Scaling Nodes
 
 For nodes hosted by an infrastructure provider, you can scale the number of nodes in each node pool by using the scale controls. This option isn't available for other cluster types.
-
-![Scaling Nodes]({{< baseurl >}}/img/rancher/iaas-scale-nodes.png)
-
 
 ## SSH into a Node Hosted by an Infrastructure Provider
 
