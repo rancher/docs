@@ -35,13 +35,21 @@ Using Prometheus, you can monitor Rancher at both the [cluster level]({{< baseur
 
 1. Click **Save**.
 
+### Project Level Monitoring Resource Requirements
+
+Container| CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable
+---------|---------------|---------------|-------------|-------------|-------------
+Prometheus|750m| 750Mi | 1000m | 1000Mi | Yes
+Grafana | 100m | 100Mi | 200m | 200Mi | No
+
+
 **Result:** A single application,`project-monitoring`, is added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the project.  After the application is `active`, you can start viewing [project metrics](#project-metrics) through the [Rancher dashboard]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#rancher-dashboard) or directly from [Grafana]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
 
 ## Project Metrics
 
 If [cluster monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) is also enabled for the project, [workload metrics]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#workload-metrics) are  available for the project.
 
-If only project monitoring is enabled, you can monitor custom metrics from any [exporters](https://prometheus.io/docs/instrumenting/exporters/). You can expose some endpoints on deployments without needing to configure Prometheus for your project.
+If only project monitoring is enabled, you can monitor custom metrics from any [exporters](https://prometheus.io/docs/instrumenting/exporters/). You can also expose some custom endpoints on deployments without needing to configure Prometheus for your project.
 
 ### Example
 
