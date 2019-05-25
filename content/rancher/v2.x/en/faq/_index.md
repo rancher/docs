@@ -80,7 +80,7 @@ We plan to provide Windows support for v2.1 based on Microsoft’s new approach 
 
 #### Are you planning on supporting Istio in Rancher v2.x?
 
-We like Istio, and it's something we're looking at potentially integrating and supporting.
+Yes! Istio is implemented in our micro-PaaS "Rio" (which works on Rancher 2x along wtih any CNCF compliant Kubernetes cluster). You can read more about it here: https://rio.io/
 
 #### Will Rancher v2.x support Hashicorp's Vault for storing secrets?
 
