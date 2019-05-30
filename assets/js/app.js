@@ -106,14 +106,15 @@ const bootstrapDocsSearch = function() {
 }
 
 const bootstrapIdLinks = function() {
-  const container = '.wrapper ARTICLE';
+  const $container = $('.main-content')
   const selector = 'h2[id], h3[id], h4[id], h5[id], h6[id]';
-  $(container).on('mouseenter', selector, function(e) {
-    $(e.target).append($('<a />').addClass('header-anchor').attr('href', '#' + e.target.id).html('<i class="material-icons p-l-xs" aria-hidden="true">link</i>'));
+
+  $container.on('mouseenter', selector, function(e) {
+    $(e.target).append($('<a />').addClass('header-anchor').attr('href', '#' + e.target.id).html('<i style="font-size: 12px" aria-hidden="true">link</i>'));
   });
 
-  $(container).on('mouseleave', selector, function(e) {
-    $(e.target).parent().find('.header-anchor').remove();
+  $container.on('mouseleave', selector, function(e) {
+    $container.find('.header-anchor').remove();
   });
 }
 
