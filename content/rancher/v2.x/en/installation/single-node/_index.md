@@ -97,7 +97,7 @@ For production environments, you also have the option of using [Let's Encrypt](h
 >- Open port `TCP/80` on your Linux host. The Let's Encrypt http-01 challenge can come from any source IP address, so port `TCP/80` must be open to all IP addresses.
 
 
-After you fulfill the prerequisites, you can install Rancher using a Let's Encrypt certificate by running the following command. Replace `<YOUR.DNS.NAME>` with your your domain.
+After you fulfill the prerequisites, you can install Rancher using a Let's Encrypt certificate by running the following command. Replace `<YOUR.DNS.NAME>` with your domain.
 
 	docker run -d --restart=unless-stopped \
 	  -p 80:80 -p 443:443 \

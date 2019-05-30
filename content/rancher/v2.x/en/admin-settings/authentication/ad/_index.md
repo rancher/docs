@@ -144,7 +144,7 @@ $ ldapsearch -x -D "acme\jdoe" -w "secret" -p 389 \
 -h ad.acme.com -b "dc=acme,dc=com" -s sub "sAMAccountName=jdoe"
 ```
 
-This command performs an LDAP search with the search base set to the domain root (`-b "dc=acme,dc=com"`) and a filter targeting the the user account (`sAMAccountNam=jdoe`), returning the attributes for said user:
+This command performs an LDAP search with the search base set to the domain root (`-b "dc=acme,dc=com"`) and a filter targeting the user account (`sAMAccountNam=jdoe`), returning the attributes for said user:
 
 ![LDAP User]({{< baseurl >}}/img/rancher/ldapsearch-user.png)
 

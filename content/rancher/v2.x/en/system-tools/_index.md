@@ -115,4 +115,4 @@ When you run the command below, all the resources listed [above](#remove) will b
 | ---------------------------------------------- | ------------
 | `--kubeconfig <KUBECONFIG_PATH>, -c <KUBECONFIG_PATH>` | The cluster's kubeconfig file
 | `--namespace <NAMESPACE>, -n cattle-system`    | Rancher 2.x deployment namespace (`<NAMESPACE>`). If no namespace is defined, the options defaults to `cattle-system`.
-| `--force`                                      | Skips the the interactive removal confirmation and removes the Rancher deployment without prompt.
+| `--force`                                      | Skips the interactive removal confirmation and removes the Rancher deployment without prompt.

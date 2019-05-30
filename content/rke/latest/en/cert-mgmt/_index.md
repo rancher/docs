@@ -80,7 +80,7 @@ INFO[0033] [worker] Successfully restarted Worker Plane..
 
 ### Rotating the CA and all service certificates
 
-If the CA certificate needs to be rotated, you are required to rotate all the services certificates as they need to be signed with the newly rotated CA certificate. To include rotating the CA with the service certificates, add the `--rotate-ca` option. After the the CA and all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
+If the CA certificate needs to be rotated, you are required to rotate all the services certificates as they need to be signed with the newly rotated CA certificate. To include rotating the CA with the service certificates, add the `--rotate-ca` option. After the CA and all the service certificates are rotated, these services will automatically be restarted to start using the new certificate.
 
 Rotating the CA certificate will result in restarting other system pods, that will also use the new CA certificate. This includes:
 

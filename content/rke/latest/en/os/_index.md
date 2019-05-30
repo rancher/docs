@@ -99,7 +99,7 @@ rpm -q docker-ce
 When using the upstream Docker packages, please follow [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 #### Using RHEL/CentOS packaged Docker
-If you are using the Docker Docker package supplied by Red Hat / CentOS, the package name is `docker`. You can check the installed package by executing:
+If you are using the Docker package supplied by Red Hat / CentOS, the package name is `docker`. You can check the installed package by executing:
 
 ```
 rpm -q docker

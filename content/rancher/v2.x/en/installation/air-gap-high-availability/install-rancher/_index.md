@@ -107,8 +107,8 @@ By default, Rancher generates a CA and uses cert manger to issue the certificate
       --name rancher \
       --namespace cattle-system \
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
-      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-      --set ingress.tls.source=secret \
+      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+      --set ingress.tls.source=secret
 ```
 
 1.    See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
