@@ -18,6 +18,7 @@ There are several options that can be configured in cluster configuration option
 ### Configuring Kubernetes Cluster
 * [Cluster Name](#cluster-name)
 * [Kubernetes Version](#kubernetes-version)
+* [Prefix Path](#prefix-path)
 * [System Images]({{< baseurl >}}/rke/latest/en/config-options/system-images/)
 * [Services]({{< baseurl >}}/rke/latest/en/config-options/services/)
 * [Extra Args and Binds and Environment Variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/)
@@ -68,7 +69,7 @@ In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/latest
 
 Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
 
-You can also list the supported versions and system images of specific version of RKE release with a quick command. 
+You can also list the supported versions and system images of specific version of RKE release with a quick command.
 
 ```
 $ rke config --system-images --all
@@ -81,13 +82,26 @@ INFO[0000] Generating images list for version [v1.12.6-rancher1-2]:
 .......
 ```
 
-#### Using an unsupported Kubernetes version 
+#### Using an unsupported Kubernetes version
 
-As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out. 
+As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
 
-Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used. 
+Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
 
 If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) option.
+
+### Prefix Path
+
+As a part of cluster provisioning, RKE uploads config files' content - `/etc/kubernetes`,`/var/lib/etcd`, etc - to the worker nodes. By default, these configs get stored under `/`. 
+For some operating systems like RancherOS and CoreOS, the location is `/opt/rke` instead of `/`. With that, `/etc/kubernetes` will be stored in `/opt/rke/etc/kubernetes`, `/var/lib/etcd` will be stored in `/opt/rke/var/lib/etcd`, and so on.
+
+To change the default prefix path for any type of cluster, you can use the following option in the cluster configuration file `cluster.yml`:
+
+```
+prefix_path: /opt/custom_path
+```
+
+#### **Important: currently there is a limitation when `prefix_path` can not be changed or reset after the cluster is provisioned**
 
 ### Cluster Level SSH Key Path
 
