@@ -33,7 +33,7 @@ weight: 276
 | `extraEnv` | [] | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_ |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
-| `ingress.configurationSnippet` | "" | `string` - Add additional Nginx configuration. Can be used for proxy configuration. |
+| `ingress.configurationSnippet` | "" | `string` - Add additional Nginx configuration. Can be used for proxy configuration. _Note: Available as of v2.0.15, v2.1.10 and v2.2.4_ |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
 | `noProxy` | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
