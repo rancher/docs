@@ -18,6 +18,7 @@ VirtualBox     | >=v1.0.0 | [rancheros.iso](https://releases.rancher.com/os/late
 VMWare VSphere | >=v1.4.0 | [rancheros-autoformat.iso](https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso)
 VMWare Fusion  | >=v1.4.0 | [rancheros-autoformat.iso](https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso)
 Hyper-V        | >=v1.5.0 | [rancheros.iso](https://releases.rancher.com/os/latest/hyperv/rancheros.iso)
+Proxmox VE     | >=v1.5.1 | [rancheros-autoformat.iso](https://releases.rancher.com/os/latest/proxmoxve/rancheros-autoformat.iso)
 
 ### Using Docker Machine
 
@@ -101,6 +102,11 @@ $ docker-machine.exe create -d hyperv \
         --hyperv-virtual-switch <SWITCH_NAME> \
         <MACHINE_NAME>
 ```
+#### Using Docker Machine with Proxmox VE
+
+_Available as of v1.5.1_
+
+There is currently no official Proxmox VE driver, but there is a [choice](https://github.com/lnxbil/docker-machine-driver-proxmox-ve) that you can refer to.
 
 ### Logging into RancherOS
 
