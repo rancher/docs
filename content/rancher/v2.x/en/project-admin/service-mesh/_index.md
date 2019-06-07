@@ -16,6 +16,8 @@ Using Rancher, you can connect, secure, control, and observe services through in
 
 In create and edit namespace page, you can enable or disable [Istio sidecar auto injection](https://istio.io/blog/2019/data-plane-setup/#automatic-injection). When you enable it, Rancher will add `istio-injection=enabled` label to the namespace automatically.
 
+> **Note:** Injection occurs at pod creation time. If the pod has been created before you enable auto injection. You need to kill the running pod and verify a new pod is created with the injected sidecar.
+
 ## View Traffic Graph
 
 Rancher integrates Kiali Graph into Rancher UI. The Kiali graph provides a powerful way to visualize the topology of your service mesh. It shows you which services communicate with each other.
