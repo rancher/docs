@@ -67,4 +67,4 @@ After enabling an example repository, run the pipeline to see how it works.
 
 ## What's Next?
 
-For detailed information about setting up your own pipeline for your repository, [configure a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines), [enable a repository](#configure-repositories) and finally [configure your pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancer/pipelines/#pipeline-configuration).
+For detailed information about setting up your own pipeline for your repository, [configure a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines), [enable a repository](#configure-repositories) and finally [configure your pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
