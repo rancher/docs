@@ -23,13 +23,19 @@ The etcd data set is automatically cleaned up on a five minute interval by Kuber
 
 If you ever run into `mvcc: database space exceeded` errors, once you compact, defrag and disarm to recover you should consider increasing the keyspace to mitigate this issue.
 
-**Example: This snippet increases the key space size to 5GB**
+**Example: This snippet of the RKE cluster.yml file increases the key space size to 5GB**
 ```yaml
+<<<<<<< HEAD
 >>>>>>> add advanced etcd configuration
+=======
+# RKE cluster.yml
+...
+>>>>>>> Added link from RKE install page
 services:
   etcd:
     extra_args:
       quota-backend-bytes: 5368709120
+<<<<<<< HEAD
 <<<<<<< HEAD
 ...
 ```
@@ -46,14 +52,22 @@ To implement this solution in an RKE cluster, the `/var/lib/etcd/data` and `/var
 # RKE cluster.yml
 ...
 =======
+=======
+...
+>>>>>>> Added link from RKE install page
 ```
 
-## Scaling etcd Disk Performance ##
+## Scaling etcd disk performance ##
 
 To reduce IO contention on the disks for etcd, you can split the data and WAL directories onto separate devices. To do so, you need to provision nodes with devices and format them before running etcd on them. Based on etcd best practices, mirroring array configurations are unnecessary because etcd replicates the data between the nodes. However, you can use stripping RAID configurations to increase the IOPS available to etcd. To configure dedicated arrays, you can configure this in the RKE cluster.yml file with the following snippet.
 
 ```yaml
+<<<<<<< HEAD
 >>>>>>> add advanced etcd configuration
+=======
+# RKE cluster.yml
+...
+>>>>>>> Added link from RKE install page
 services:
   etcd:
     extra_args:
@@ -70,6 +84,7 @@ services:
     extra_binds:
     - "/var/lib/etcd/data:/var/lib/rancher/etcd/data"
     - "/var/lib/etcd/wal:/var/lib/rancher/etcd/wal"
+...
 ```
 
 For the solution above to work, this requires `/var/lib/etcd/data` and `/var/lib/etcd/wal` to be mounted and formated on the underlying host. Note the addition of the 'wall_dir' directory in the extra_args section. Without this directory being defined, etcd tries to modify the root directory and without sufficient permissions.
