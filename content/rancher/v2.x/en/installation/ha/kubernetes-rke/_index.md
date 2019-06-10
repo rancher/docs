@@ -52,6 +52,8 @@ RKE has many configuration options for customizing the install to suit your spec
 
 Please see the [RKE Documentation]({{< baseurl >}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 
+For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide]({{< baseurl >}}/rancher/v2.x/en/installation/options/etcd/).
+
 ### Run RKE
 
 ```
