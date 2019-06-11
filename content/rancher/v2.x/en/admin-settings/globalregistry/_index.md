@@ -99,6 +99,8 @@ To disable the Global Registry:
 
 The persistent volumes used by the Global Registry will not be removed on disabling, in order to prevent the images and metadata in the persistent volumes from being lost. You need to manually delete relevant volumes in local cluster's `system` project if you want to clean them up.
 
+**Result:** The `global-registry-harbor` application in local cluster's `system` project gets removed. Note that persistent volumes used by the Global Registry will not be removed on disabling, in order to prevent the images and metadata in the persistent volumes from being lost. You need to manually delete relevant volumes in local cluster's `system` project if you want to clean them up.
+
 ## Using Global Registry
 
 Once the Global Registry is enabled, you can:
