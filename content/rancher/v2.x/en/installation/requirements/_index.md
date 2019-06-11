@@ -67,7 +67,7 @@ Medium | Up to 15 | Up to 200 | 2 | 8 GB |
 
 **Disks**
 
-Rancher performance depends on etcd in the cluster performance. To ensure optimal speed, we recommend always using SSD disks to back your Rancher management plane. On cloud providers, you will also want to use the size minimum size that allows the maximum IOPs. Consider in larger clusters using dedicated dedicated storage devices for etcd data and wal directories.
+Rancher performance depends on etcd in the cluster performance. To ensure optimal speed, we recommend always using SSD disks to back your Rancher management Kubernetes cluster. On cloud providers, you will also want to use the size minimum size that allows the maximum IOPs. Consider in larger clusters using dedicated dedicated storage devices for etcd data and wal directories.
 
 <br/>
 
