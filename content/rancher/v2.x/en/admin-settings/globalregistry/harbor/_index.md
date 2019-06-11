@@ -7,14 +7,12 @@ _Available as of v2.3.0-alpha_
 
 While setting up Global Registry, you need to configure the credentials and storage options for Harbor.
 
-<<<<<<< HEAD
 At a minimum, the admin needs to configure a Harbor admin password, a Harbor encryption key, and a storage type. If the databases are already set up, and you have created a default storage class, Rancher can use default options for the rest of the configuration.
 
 The Global Registry needs databases for the Harbor registry and data. If you plan to use Clair for image vulnerability scanning, or a Notary server to verify the origin of images, you should also set up those databases before enabling Global Registry.
 
 You need internal or external storage for the images, Postgres for metadata, and Redis for the cache.
 
-<<<<<<< HEAD
 Each configuration option maps to a field of a Kubernetes [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps) or [secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets). When you change an option, it only affects the workload that uses that option.
 
 To specify the workload that uses each configuration option, you can add a node selector in the UI to match the labels which you added in a node. Then the workload will be deployed to that node. If you don't select a node, Rancher will select a node by default.
