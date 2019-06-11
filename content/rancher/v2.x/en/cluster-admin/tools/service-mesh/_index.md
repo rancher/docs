@@ -15,7 +15,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Select **Tools > Service Mesh** in the navigation bar.
 
-1. Select **Enable** to show the [Service mesh configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/service-mesh/istio/). Enter in your desired configuration options.
+1. Select **Enable** to show the [Service mesh configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/service-mesh/istio/). Enter in your desired configuration options. Ensure you have enough resources for service mesh and on your worker nodes to enable service mesh.
 
 1. Click **Save**.
 
