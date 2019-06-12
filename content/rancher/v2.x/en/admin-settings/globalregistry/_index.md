@@ -33,7 +33,7 @@ The Global Registry needs databases for the Harbor registry and data. It needs `
 
 For more information on configuring the storage, refer to the [Configuration Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/globalregistry/harbor/).
 
-The prerequisites are different depending on whether you use `internal` or `external` storage. A database is considered `internal` if Redis or a local database instance will be deployed in the local cluster, whereas `external` storage is outside the local cluster. When using the `internal` type of storage, the databases are deployed together with Harbor in the same app.
+The prerequisites are different depending on whether you use `internal` or `external` storage. A database is considered `internal` if Redis or a local database instance will be deployed in the local cluster, whereas `external` storage is outside the local cluster. When using the `internal` type of databases, users don't set up databases before setting up the Global Registry. The databases are deployed together with Harbor in the same app.
 
 - **Requirements for `internal` storage:** [Persistent volumes]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) are required in the local cluster if you use `filesystem` type for Docker registry storage. For instructions on how to add a persistent volume, refer to [Adding Persistent Volumes]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-persistent-volumes).
 - **Requirements for `external` storage:** If you use an `external` database, you need to create the database in PostgreSQL before registry deployment. You can configure which databases to use in the configuration options.

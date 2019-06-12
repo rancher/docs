@@ -15,7 +15,9 @@ The Global Registry needs databases for the Harbor registry and data. It needs `
 - A Postgres database for the metadata (only Postgres is supported)
 - Redis for the cache
 
-If you plan to use Clair for image vulnerability scanning, or a Notary server to verify the origin of images, you should also set up those databases before enabling Global Registry.
+When using the `internal` type of databases, users don't set up databases before setting up the Global Registry. The databases are deployed together with Harbor in the same app.
+
+The Global Registry optionally also uses databases for Clair, which scans images for vulnerabilities, and a Notary server, which verifies the origin of images.
 
 Each configuration option maps to a field of a Kubernetes [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps) or [secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets). When you change an option, it only affects the workload that uses that option.
 
