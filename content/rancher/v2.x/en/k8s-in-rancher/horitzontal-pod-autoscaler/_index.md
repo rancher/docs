@@ -5,7 +5,10 @@ weight: 3026
 
 Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) feature (HPA), you can configure your cluster to automatically scale the services it's running up or down.
 
->**Note:** Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler.
+>**Note:**
+>
+>- Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler.
+>- You can create, manage, and delete HPAs using Rancher UI in Rancher v2.3.0-alpha and higher version. It only supports HPA in `autoscaling/v2beta2` API.
 
 ### Why Use Horizontal Pod Autoscaler?
 
@@ -40,6 +43,59 @@ For full documentation on HPA, refer to the [Kubernetes Documentation](https://k
 HPA is an API resource in the Kubernetes `autoscaling` API group. The current stable version is `autoscaling/v1`, which only includes support for CPU autoscaling. To get additional support for scaling based on memory and custom metrics, use the beta version instead: `autoscaling/v2beta1`.
 
 For more information about the HPA API object, see the [HPA GitHub Readme](https://git.k8s.io/community/contributors/design-proposals/autoscaling/horizontal-pod-autoscaler.md#horizontalpodautoscaler-object).
+
+### Rancher UI
+
+You can create, manage, and delete HPAs using Rancher UI:
+
+#### Creating a HPA
+
+1. From the **Global** view, open the project that you want to deploy a HPA to.
+
+1. Select **Workloads** in the navigation bar and then select the **HPA** tab.
+
+1. Click **Add HPA**
+
+1. Enter a **Name** for the HPA.
+
+1. Select a **Namespace** for the HPA.
+
+1. Select a **Deployment** as scale target for the HPA.
+
+1. Specify the **Minimum Scale** and **Maximum Scale** for the HPA.
+
+1. Configure the metrics for the HPA
+
+1. Click **Create** to create the HPA
+
+**Result:** The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's **Workloads** -> **HPA** view.
+
+#### Getting HPA info
+
+1. From the **Global** view, open the project that you want to deploy a HPA to.
+
+1. Select **Workloads** in the navigation bar and then select the **HPA** tab.
+
+1. Find the HPA which you would like to view info
+
+1. Click the name of the HPA
+
+1. You can view the HPA info in the HPA detail page
+
+
+#### Deleting HPA
+
+1. From the **Global** view, open the project that you want to deploy a HPA to.
+
+1. Select **Workloads** in the navigation bar and then select the **HPA** tab.
+
+1. Find the HPA which you would like to delete
+
+1. Click **Ellipsis (...) > Delete**.
+
+1. Click **Delete** to confim.
+
+**Result:** The HPA is deleted from current cluster.
 
 ### kubectl Commands
 
