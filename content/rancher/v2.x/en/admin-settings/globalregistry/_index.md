@@ -13,10 +13,9 @@ Global Registry is only available in [HA setups]({{< baseurl >}}/rancher/v2.x/en
 
 After you enable Global Registry, you can:
 
-- Use Global Registry as a private registry in Rancher projects. For more information, see [how to use registries]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/registries/). You would use the Rancher server URL as the domain name when using the private registry. 
-- Access the Harbor UI through an endpoint on your Rancher server
-- Pull Docker images from the Global Registry and deploy the workloads in a project
-- Control access to Docker images using Harbor authentication
+- Add the Global Registry as a private registry in Rancher projects. For more information, see [how to use registries]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/registries/). You would use the Rancher server URL as the domain name when using the private registry. 
+- Use the private registry to pull Docker images and deploy the workloads in a project
+- Control access to Docker images using the Harbor UI and Harbor authentication
 - Ensure content trust using Docker Notary (optional)
 - Scan images for vulnerability using Clair (optional)
 
@@ -26,18 +25,24 @@ The Global Registry reuses the same SSL certificate of Rancher server so you don
 
 ## Prerequisites
 
-Before setting up Global Registry, you should set up databases for the Harbor registry and data. You need internal or external storage for the images, Postgres for metadata, and Redis for the cache. For more information on configuring the storage, refer to the [Configuration Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/globalregistry/harbor/).
+The Global Registry needs databases for the Harbor registry and data. It needs `internal` or `external` storage for storing:
 
-There prerequisites are different depending on whether you use `internal` or `external` storage. A database is considered `internal` if Redis or a local database instance will be deployed in the local cluster, whereas `external` storage is outside the local cluster. When using the `internal` type of storage, the databases are deployed together with Harbor in the same app.
+- Docker images
+- A Postgres database for the metadata
+- Redis for the cache
+
+For more information on configuring the storage, refer to the [Configuration Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/globalregistry/harbor/).
+
+The prerequisites are different depending on whether you use `internal` or `external` storage. A database is considered `internal` if Redis or a local database instance will be deployed in the local cluster, whereas `external` storage is outside the local cluster. When using the `internal` type of storage, the databases are deployed together with Harbor in the same app.
 
 - **Requirements for `internal` storage:** [Persistent volumes]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) are required in the local cluster if you use `filesystem` type for Docker registry storage. For instructions on how to add a persistent volume, refer to [Adding Persistent Volumes]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-persistent-volumes).
-- **Requirements for `external` storage:** If you use an `external` database, you need to create databases in PostgreSQL before registry deployment. You can configure which databases to use in the configuration options.
+- **Requirements for `external` storage:** If you use an `external` database, you need to create the database in PostgreSQL before registry deployment. You can configure which databases to use in the configuration options.
 
 > **Note:** It is not recommended to use NFS (network file system) for setting up a persistent volume because it can [cause problems with Postgres](https://www.postgresql.org/docs/9.1/creating-cluster.html#CREATING-CLUSTER-NFS).
 
 ### Setting Up Persistent Volumes on the Cloud
 
-If your high-availability installation is on a cloud and your persistent volumes will also be on the cloud, you need to set your cloud provider when installing Kubernetes on your cluster. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.` Below is an example of a `cluster.yml` cluster config file with a cloud provider specified:
+If your high-availability installation is in the cloud infrastructure provider and your persistent volumes will also be in the cloud, you must set your cloud provider when installing Kubernetes on your cluster that is running the Rancher server. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.` Below is an example of a `cluster.yml` cluster config file with a cloud provider specified:
 
 ```
 nodes:
@@ -97,7 +102,9 @@ To disable the Global Registry:
 
 ### Manual Cleanup
 
-The persistent volumes used by the Global Registry will not be removed on disabling, in order to prevent the images and metadata in the persistent volumes from being lost. You need to manually delete relevant volumes in local cluster's `system` project if you want to clean them up.
+The persistent volumes used by the Global Registry will not be removed on disabling, in order to prevent the images and metadata in the persistent volumes from being lost.
+
+You need to manually delete all relevant volumes in the local cluster's `system` project. It is important to remove all volumes because if you try to re-enable the Global registry with only partial cleanup, it will not be re-enabled correctly.
 
 ## Using Global Registry
 
