@@ -9,9 +9,13 @@ While setting up Global Registry, you need to configure the credentials and stor
 
 At a minimum, the admin needs to configure a Harbor admin password, a Harbor encryption key, and a storage type. If the databases are already set up, and you have created a default storage class, Rancher can use default options for the rest of the configuration.
 
-The Global Registry needs databases for the Harbor registry and data. If you plan to use Clair for image vulnerability scanning, or a Notary server to verify the origin of images, you should also set up those databases before enabling Global Registry.
+The Global Registry needs databases for the Harbor registry and data. It needs `internal` or `external` storage for storing:
 
-You need internal or external storage for the images, Postgres for metadata, and Redis for the cache.
+- Docker images
+- A Postgres database for the metadata (only Postgres is supported)
+- Redis for the cache
+
+If you plan to use Clair for image vulnerability scanning, or a Notary server to verify the origin of images, you should also set up those databases before enabling Global Registry.
 
 Each configuration option maps to a field of a Kubernetes [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/), [ConfigMap]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps) or [secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets). When you change an option, it only affects the workload that uses that option.
 
@@ -29,7 +33,7 @@ You can configure each aspect of the Harbor registry:
 
 ## Persistent Volumes in Cloud Clusters
 
-If your high-availability installation is on a cloud and your persistent volumes will also be on the cloud, you need to set your cloud provider when installing Kubernetes on your cluster. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.` 
+If your high-availability installation is in the cloud infrastructure provider and your persistent volumes will also be in the cloud, you must set your cloud provider when installing Kubernetes on your cluster that is running the Rancher server. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.`
 
 For more information on how to set your specific cloud provider for your Kubernetes cluster, refer to the RKE documentation on [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/).
 
@@ -61,7 +65,7 @@ Registry Node Selector | Select the nodes where the Docker registry workload wil
 
 ## Database
 
-These options are used to configure the database for Harbor data. For more information on persistent volumes (PVs) and persistent volume claims (PVCs), refer to [Volumes and Storage]({{< baseurl >}}rancher/v2.x/en/cluster-admin/volumes-and-storage).
+These options are used to configure the database for Harbor data. Only Postgres is supported. For more information on persistent volumes (PVs) and persistent volume claims (PVCs), refer to [Volumes and Storage]({{< baseurl >}}rancher/v2.x/en/cluster-admin/volumes-and-storage).
 
 Field | Description | Required | Editable | Default
 ----|-----------------|------------|------------|------------
