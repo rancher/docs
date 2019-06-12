@@ -1,9 +1,9 @@
 ---
-title: Global Registry Configuration
-weight: 1
+title: Config Options
+weight: 200
 ---
 
-_Available as of v2.3.0-alpha_
+When setting up your `cluster.yml` for RKE, there are a lot of different options that can be configured to control the behavior of how RKE launches Kubernetes.
 
 There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/latest/en/example-yamls/) that contain all the options.
 
