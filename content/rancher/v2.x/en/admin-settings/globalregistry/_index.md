@@ -28,7 +28,7 @@ The Global Registry reuses the same SSL certificate of Rancher server so you don
 The Global Registry needs databases for the Harbor registry and data. It needs `internal` or `external` storage for storing:
 
 - Docker images
-- A Postgres database for the metadata
+- A Postgres database for the metadata (only Postgres is supported)
 - Redis for the cache
 
 For more information on configuring the storage, refer to the [Configuration Options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/globalregistry/harbor/).
@@ -42,7 +42,9 @@ The prerequisites are different depending on whether you use `internal` or `exte
 
 ### Setting Up Persistent Volumes on the Cloud
 
-If your high-availability installation is in the cloud infrastructure provider and your persistent volumes will also be in the cloud, you must set your cloud provider when installing Kubernetes on your cluster that is running the Rancher server. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.` Below is an example of a `cluster.yml` cluster config file with a cloud provider specified:
+If your high-availability installation is in the cloud infrastructure provider and your persistent volumes will also be in the cloud, you must set your cloud provider when installing Kubernetes on your cluster that is running the Rancher server. Persistent volumes will be created by your storage class if you specify your cloud provider in `cluster.yml.` 
+
+Below is an example of a `cluster.yml` cluster config file with a cloud provider specified:
 
 ```
 nodes:
