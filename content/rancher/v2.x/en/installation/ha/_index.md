@@ -7,7 +7,9 @@ For production environments, we recommend installing Rancher in a high-availabil
 
 This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
 
-> **Important:** It is not supported, nor generally a good idea, to run Rancher on top of hosted Kubernetes solutions such as Amazon's EKS, or Google's GKE. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations. It is strongly recommended to use hosted infrastructure such as EC2 or GCE instead. 
+{{% warning %}}
+It is not supported, nor generally a good idea, to run Rancher on top of hosted Kubernetes solutions such as Amazon's EKS, or Google's GKE. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations. It is strongly recommended to use hosted infrastructure such as EC2 or GCE instead. 
+{{% /warning %}}
 
 > **Important:** For the best performance, we recommend this Kubernetes cluster to be dedicated only to run Rancher. After the Kubernetes cluster to run Rancher is setup, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
