@@ -11,21 +11,21 @@ Using Rancher, you can connect, secure, control, and observe services through in
 
 As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Istio to your Kubernetes cluster.
 
-1. From the **Global** view, navigate to the cluster that you want to configure the service mesh for.
+1. From the **Global** view, navigate to the cluster that you want to configure Istio for.
 
 1. Select **Tools > Istio** in the navigation bar.
 
-1. Select **Enable** to show the [Istio configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/config/). Enter in your desired configuration options. Ensure you have enough resources for the service mesh and on your worker nodes to enable the service mesh.
+1. Select **Enable** to show the [Istio configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/config/). Enter in your desired configuration options. Ensure you have enough resources on your worker nodes to enable Istio.
 
 1. Click **Save**.
 
 **Result:** The Istio application, `cluster-istio`, is added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.  After the application is `active`, you can start using Istio.
 
-> **Note:** When enabling the service mesh, you need to ensure your worker nodes and Istio pod have enough resources. In larger deployments, it is strongly advised that the service mesh infrastructure be placed on dedicated nodes in the cluster.
+> **Note:** When enabling Istio, you need to ensure your worker nodes and Istio pod have enough resources. In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster.
 
 ## Using Istio
 
-Once Istio is `active`, you can see visualizations for your service mesh across several services:
+Once Istio is `active`, you can see visualizations of your Istio service mesh across several services:
 
 1. Access [Kiali UI](https://www.kiali.io/) by clicking the Kiali UI icon in the Istio page.
 1. Access [Jaeger UI](https://www.jaegertracing.io/) by clicking the Jaeger UI icon in the Istio page.
@@ -37,7 +37,7 @@ Once Istio is `active`, you can see visualizations for your service mesh across 
 
 To disable Istio:
 
-1. From the **Global** view, navigate to the cluster that you want to disable the service mesh for.
+1. From the **Global** view, navigate to the cluster that you want to disable Istio for.
 
 1. Select **Tools > Istio** in the navigation bar.
 
