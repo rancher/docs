@@ -1,5 +1,5 @@
 ---
-title: Service Mesh
+title: Istio
 weight: 3528
 ---
 
@@ -12,7 +12,7 @@ Using Rancher, you can connect, secure, control, and observe services through in
 >- [Service Mesh]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/service-mesh/) must be enabled in the cluster.
 >- To be a part of an Istio service mesh, pods and services in a Kubernetes cluster must satisfy the [Istio Pods and Services Requirements](https://istio.io/docs/setup/kubernetes/prepare/requirements/)
 
-## Istio sidecar auto injection
+## Istio Sidecar Auto Injection
 
 In the create and edit namespace page, you can enable or disable [Istio sidecar auto injection](https://istio.io/blog/2019/data-plane-setup/#automatic-injection). When you enable it, Rancher will add `istio-injection=enabled` label to the namespace automatically.
 
