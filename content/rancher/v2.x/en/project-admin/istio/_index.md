@@ -20,13 +20,13 @@ In the create and edit namespace page, you can enable or disable [Istio sidecar 
 
 ## View Traffic Graph
 
-Rancher integrates Kiali Graph into the Rancher UI. The Kiali graph provides a powerful way to visualize the topology of your service mesh. It shows you which services communicate with each other.
+Rancher integrates Kiali Graph into the Rancher UI. The Kiali graph provides a powerful way to visualize the topology of your Istio service mesh. It shows you which services communicate with each other.
 
 To see the traffic graph for a particular namespace:
 
 1. From the **Global** view, navigate to the project that you want to view traffic graph for.
 
-1. Select **Service Mesh** in the navigation bar.
+1. Select **Istio** in the navigation bar.
 
 1. Select **Traffic Graph** in the navigation bar.
 
@@ -40,7 +40,7 @@ To see the Success Rate, Request Volume, 4xx Request Count, Project 5xx Request 
 
 1. From the **Global** view, navigate to the project that you want to view traffic metrics for.
 
-1. Select **Service Mesh** in the navigation bar.
+1. Select **Istio** in the navigation bar.
 
 1. Select **Traffic Metrics** in the navigation bar.
 
