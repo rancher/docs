@@ -36,6 +36,7 @@ Many of the standard Docker daemon arguments can be placed under the `rancher.do
 Key | Value
 ---|---
 `bridge` | String
+`bip` | String
 `config_file` | String
 `containerd` | String
 `debug` | Boolean
@@ -76,6 +77,16 @@ The following example can be used to set MTU on the Docker daemon:
 rancher:
   docker:
     extra_args: [--mtu, 1460]
+```
+
+#### Example using bip for docker0 bridge
+
+_Available as of v1.4.x_
+
+The docker0 bridge can be configured with docker args, it will take effect after reboot.
+
+```
+$ ros config set rancher.docker.bip 192.168.100.1/16
 ```
 
 ### Configuring System Docker
