@@ -5,9 +5,13 @@ weight: 1
 
 _Available as of v2.3.0-alpha_
 
-There are several configuration options for Istio.
+There are several configuration options for Istio. You can find more information about Istio configuration in the [official Istio documentation](https://istio.io/docs/concepts/what-is-istio).
 
 ## PILOT
+
+Pilot provides service discovery for the Envoy sidecars, traffic management capabilities for intelligent routing (e.g., A/B tests, canary rollouts, etc.), and resiliency (timeouts, retries, circuit breakers, etc.).
+
+For more information on Pilot, refer to the [documentation](https://istio.io/docs/concepts/traffic-management/#pilot-and-envoy).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
@@ -19,6 +23,8 @@ Trace sampling Percentage | [Trace sampling percentage](https://istio.io/docs/ta
 Pilot Selector | Ability to select the nodes in which istio-pilot pod is deployed to. To use this option, the nodes must have labels. | No       | n/a
 
 ## MIXER
+
+Mixer is a platform-independent component. Mixer enforces access control and usage policies across the service mesh, and collects telemetry data from the Envoy proxy and other services. For more information on Mixer, policies and telemetry, refer to the [documentation](https://istio.io/docs/concepts/policies-and-telemetry/).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
