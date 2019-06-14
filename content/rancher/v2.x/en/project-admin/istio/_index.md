@@ -9,7 +9,7 @@ Using Rancher, you can connect, secure, control, and observe services through in
 
 >**Prerequisites:**
 >
->- [Service Mesh]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/service-mesh/) must be enabled in the cluster.
+>- [Istio]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/) must be enabled in the cluster.
 >- To be a part of an Istio service mesh, pods and services in a Kubernetes cluster must satisfy the [Istio Pods and Services Requirements](https://istio.io/docs/setup/kubernetes/prepare/requirements/)
 
 ## Istio Sidecar Auto Injection

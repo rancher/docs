@@ -15,7 +15,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 1. Select **Tools > Istio** in the navigation bar.
 
-1. Select **Enable** to show the [Istio configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/service-mesh/istio/). Enter in your desired configuration options. Ensure you have enough resources for the service mesh and on your worker nodes to enable the service mesh.
+1. Select **Enable** to show the [Istio configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/config/). Enter in your desired configuration options. Ensure you have enough resources for the service mesh and on your worker nodes to enable the service mesh.
 
 1. Click **Save**.
 
@@ -31,7 +31,7 @@ Once Istio is `active`, you can see visualizations for your service mesh across 
 1. Access [Jaeger UI](https://www.jaegertracing.io/) by clicking the Jaeger UI icon in the Istio page.
 1. Access [Grafana UI](https://grafana.com/) by clicking the Grafana UI icon in the Istio page.
 1. Access [Prometheus UI](https://prometheus.io/) by clicking the Prometheus UI icon in the Istio page.
-1. Go to a project to [view traffic graph, traffic metrics and manage traffic]({{< baseurl >}}/rancher/v2.x/en/project-admin/service-mesh/).
+1. Go to a project to [view traffic graph, traffic metrics and manage traffic]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
 
 ## Disabling Istio
 
