@@ -16,7 +16,17 @@ When creating a vSphere cluster, Rancher first provisions the specified amount o
 
 ## Prerequisites
 
+### vSphere API permissions
+
 Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. If you are planning to make use of vSphere volumes for persistent storage in the cluster, there are [additional requirements]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere/) that must be met.
+
+### Network permissions
+
+You must ensure that the hosts running Rancher servers are able to establish network connections to the following network endpoints:
+
+- vCenter server (usually port 443/TCP)
+- Every ESXi host that is part of the datacenter to be used to provision virtual machines for your clusters (port 443/TCP).
+
 
 ## Provisioning a vSphere Cluster
 
