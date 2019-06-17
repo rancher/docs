@@ -41,6 +41,8 @@ Mixer Selector | Ability to select the nodes in which istio-policy and istio-tel
 
 ## TRACING
 
+Istio-enabled applications can collect trace spans. For more information on distributed tracing with Istio, refer to the [documentation](https://istio.io/docs/tasks/telemetry/distributed-tracing/overview/).
+
 Option | Description| Required | Default
 -------|------------|-------|-------
 Enable Tracing | Whether or not to deploy the istio-tracing. | Yes | True
@@ -51,6 +53,8 @@ Tracing Memory Reservation | Memory resource requests for the istio-tracing pod.
 Tracing Selector | Ability to select the nodes in which tracing pod is deployed to. To use this option, the nodes must have labels. | No       | n/a
 
 ## INGRESS GATEWAY
+
+The Istio Gateway allows Istio features such as monitoring and route rules to be applied to traffic entering the cluster. For more information, refer to the [documentation](https://istio.io/docs/tasks/traffic-management/ingress/).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
@@ -68,6 +72,8 @@ Ingress Gateway Selector | Ability to select the nodes in which istio-ingressgat
 
 ## PROMETHEUS
 
+You can query for Istio metrics using Prometheus. Prometheus is an open-source systems monitoring and alerting toolkit.
+
 Option | Description| Required | Default
 -------|------------|-------|-------
 Prometheus CPU Limit | CPU resource limit for the Prometheus pod.| Yes      | 1000
@@ -78,6 +84,8 @@ Retention for Prometheus | How long your Prometheus instance retains data | Yes 
 Prometheus Selector | Ability to select the nodes in which Prometheus pod is deployed to. To use this option, the nodes must have labels.| No       | n/a
 
 ## GRAFANA
+
+You can visualize metrics with Grafana. Grafana is a tool that lets you visualize Istio traffic data.
 
 Option | Description| Required | Default
 -------|------------|-------|-------

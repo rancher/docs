@@ -10,17 +10,19 @@ Using Rancher, you can connect, secure, control, and observe services through in
 >**Prerequisites:**
 >
 >- [Istio]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/) must be enabled in the cluster.
->- To be a part of an Istio service mesh, pods and services in a Kubernetes cluster must satisfy the [Istio Pods and Services Requirements](https://istio.io/docs/setup/kubernetes/prepare/requirements/)
+>- To be a part of an Istio service mesh, pods and services in a Kubernetes cluster must satisfy the [Istio Pods and Services Requirements](https://istio.io/docs/setup/kubernetes/prepare/requirements/).
 
 ## Istio Sidecar Auto Injection
 
 In the create and edit namespace page, you can enable or disable [Istio sidecar auto injection](https://istio.io/blog/2019/data-plane-setup/#automatic-injection). When you enable it, Rancher will add `istio-injection=enabled` label to the namespace automatically.
 
+After the `istio-injection=enabled` label is added to the namespace, all pods that are created in the namespace will have an injected Istio sidecar.
+
 > **Note:** Injection occurs at pod creation time. If the pod has been created before you enable auto injection. You need to kill the running pod and verify a new pod is created with the injected sidecar.
 
 ## View Traffic Graph
 
-Rancher integrates Kiali Graph into the Rancher UI. The Kiali graph provides a powerful way to visualize the topology of your Istio service mesh. It shows you which services communicate with each other.
+Rancher integrates a Kiali graph into the Rancher UI. The Kiali graph provides a powerful way to visualize the topology of your Istio service mesh. It shows you which services communicate with each other.
 
 To see the traffic graph for a particular namespace:
 
@@ -30,13 +32,11 @@ To see the traffic graph for a particular namespace:
 
 1. Select **Traffic Graph** in the navigation bar.
 
-1. Select the namespace. Note: It only shows the namespaces which has `istio-injection=enabled` label.
+1. Select the namespace. Note: It only shows the namespaces which have the `istio-injection=enabled` label.
 
 ## View Traffic Metrics
 
-Istio’s monitoring features provide visibility into the performance of all your services.
-
-To see the Success Rate, Request Volume, 4xx Request Count, Project 5xx Request Count and Request Duration metrics:
+Istio’s monitoring features provide visibility into the performance of all your services. To see the Success Rate, Request Volume, 4xx Response Count, Project 5xx Response Count and Request Duration metrics:
 
 1. From the **Global** view, navigate to the project that you want to view traffic metrics for.
 

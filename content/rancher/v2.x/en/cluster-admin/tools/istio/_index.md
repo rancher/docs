@@ -27,6 +27,15 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 Once Istio is `active`, you can see visualizations of your Istio service mesh across several services:
 
+- **Kiali** helps you define, validate, and observe your Istio service mesh. Kiali shows you what services are in your mesh and how they are connected. Kiali includes Jaeger Tracing to provide distributed tracing out of the box.
+- **Jaeger** is a distributed tracing system released as open source by Uber Technologies. It is used for monitoring and troubleshooting microservices-based distributed systems.
+- **Grafana** is an analytics platform that allows you to query, visualize, alert on and understand your metrics. Grafana lets you visualize data from Prometheus.
+- **Prometheus** is a systems monitoring and alerting toolkit.
+
+Kiali, Jaeger, Grafana, and Prometheus are open-source.
+
+With Istio enabled, you can:
+
 1. Access [Kiali UI](https://www.kiali.io/) by clicking the Kiali UI icon in the Istio page.
 1. Access [Jaeger UI](https://www.jaegertracing.io/) by clicking the Jaeger UI icon in the Istio page.
 1. Access [Grafana UI](https://grafana.com/) by clicking the Grafana UI icon in the Istio page.
