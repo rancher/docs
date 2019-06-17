@@ -36,11 +36,11 @@ Kiali, Jaeger, Grafana, and Prometheus are open-source.
 
 With Istio enabled, you can:
 
-1. Access [Kiali UI](https://www.kiali.io/) by clicking the Kiali UI icon in the Istio page.
-1. Access [Jaeger UI](https://www.jaegertracing.io/) by clicking the Jaeger UI icon in the Istio page.
-1. Access [Grafana UI](https://grafana.com/) by clicking the Grafana UI icon in the Istio page.
-1. Access [Prometheus UI](https://prometheus.io/) by clicking the Prometheus UI icon in the Istio page.
-1. Go to a project to [view traffic graph, traffic metrics and manage traffic]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
+- Access [Kiali UI](https://www.kiali.io/) by clicking the Kiali UI icon in the Istio page.
+- Access [Jaeger UI](https://www.jaegertracing.io/) by clicking the Jaeger UI icon in the Istio page.
+- Access [Grafana UI](https://grafana.com/) by clicking the Grafana UI icon in the Istio page.
+- Access [Prometheus UI](https://prometheus.io/) by clicking the Prometheus UI icon in the Istio page.
+- Go to a project to [view traffic graph, traffic metrics and manage traffic]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
 
 ## Disabling Istio
 
