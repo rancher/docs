@@ -1,11 +1,11 @@
 ---
-title: Service Mesh Configuration
+title: Istio Configuration
 weight: 1
 ---
 
 _Available as of v2.3.0-alpha_
 
-There are several configuration options for the service mesh.
+There are several configuration options for Istio.
 
 ## PILOT
 
