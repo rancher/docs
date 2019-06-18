@@ -7,7 +7,7 @@ Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/task
 
 Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler.
 
-You can create, manage, and delete HPAs using the Rancher UI in Rancher v2.3.0-alpha and higher versions. It only supports HPA in the `autoscaling/v2beta2` API.
+You can create, manage, and delete HPAs using the Rancher UI in Rancher v2.3.0-alpha4 and higher versions. It only supports HPA in the `autoscaling/v2beta2` API.
 
 ## Why Use Horizontal Pod Autoscaler?
 
