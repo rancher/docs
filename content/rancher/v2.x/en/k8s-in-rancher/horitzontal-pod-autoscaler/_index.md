@@ -7,7 +7,7 @@ The [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application
 
 Rancher provides some additional features to help manage HPAs, depending on the version of Rancher. 
 
-For more information on how HPA works and why it is used, refer to [Background Information on HPAs]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-background).
+You can create, manage, and delete HPAs using the Rancher UI in Rancher v2.3.0-alpha4 and higher versions. It only supports HPA in the `autoscaling/v2beta2` API.
 
 ## Managing HPAs
 
