@@ -3,7 +3,7 @@ title: Istio Configuration
 weight: 1
 ---
 
-_Available as of v2.3.0-alpha_
+_Available as of v2.3.0-alpha4_
 
 There are several configuration options for Istio. You can find more information about Istio configuration in the [official Istio documentation](https://istio.io/docs/concepts/what-is-istio).
 
