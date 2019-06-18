@@ -3,7 +3,11 @@ title: How to Use Istio in Your Project
 weight: 3528
 ---
 
+<<<<<<< HEAD
 _Available as of v2.3.0-alpha_
+=======
+_Available as of v2.3.0-alpha4_
+>>>>>>> Change v2.3.0-alpha to v2.3.0-alph4 for HPA and Istio docs
 
 Using Rancher, you can connect, secure, control, and observe services through integration with [Istio](https://istio.io/), a leading open-source service mesh solution. Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
 
