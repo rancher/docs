@@ -5,9 +5,33 @@ weight: 3026
 
 Using the Kubernetes [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) feature (HPA), you can configure your cluster to automatically scale the services it's running up or down.
 
-Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler.
+HPAs are handled differently based on your version of Rancher and your version of the Kubernetes API.
 
-You can create, manage, and delete HPAs using the Rancher UI in Rancher v2.3.0-alpha and higher versions. It only supports HPA in the `autoscaling/v2beta2` API.
+### For Kubernetes API version `autoscaling/V2beta1`
+
+This version of the Kubernetes API lets you autoscale your pods based on the CPU and memory utilization of your application.
+
+### For Kubernetes API Version `autoscaling/V2beta2`
+
+This version of the Kubernetes API lets you autoscale your pods based on CPU and memory utilization, in addition to custom metrics.
+
+### For Rancher v2.0.7+
+
+Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use HPA.
+
+### For Rancher Prior to v2.0.7
+
+Clusters created in Rancher prior to v2.0.7 don't automatically have the requirements needed to use HPA. For instructions on installing HPA for these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
+
+### For Rancher Prior to v2.3.0-alpha
+
+You can [manage HPAs using `kubectl`]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl).
+
+### For Rancher v2.3.0-alpha+
+
+You can create, manage, and delete HPAs using the Rancher UI. From the Rancher UI you can configure the HPA to scale based on CPU and memory utilization.
+
+For configuring HPA to scale based on custom metrics, you still need to use `kubectl`. For more information, refer to [Managing HPAs using `kubectl`]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/_index.md)
 
 ## Why Use Horizontal Pod Autoscaler?
 
