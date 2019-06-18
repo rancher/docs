@@ -1,5 +1,5 @@
 ---
-title: Istio
+title: How to Use Istio in Your Project
 weight: 3528
 ---
 
