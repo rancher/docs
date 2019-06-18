@@ -7,6 +7,12 @@ _Available as of v2.3.0-alpha_
 
 Using Rancher, you can connect, secure, control, and observe services through integration with [Istio](https://istio.io/), a leading open-source service mesh solution. Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
 
+## Prerequisites
+
+The required resource allocation for each service is listed in the [configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/config/). Please review it before attempting to enable Istio.
+
+In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster.
+
 ## Enabling Istio
 
 As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Istio to your Kubernetes cluster.
@@ -21,18 +27,15 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 **Result:** The Istio application, `cluster-istio`, is added as an [application]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.  After the application is `active`, you can start using Istio.
 
-> **Note:** When enabling Istio, you need to ensure your worker nodes and Istio pod have enough resources. In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster.
 
-## Using Istio
+## Using Istio for Metrics Visualization
 
-Once Istio is `active`, you can see visualizations of your Istio service mesh across several services:
+Once Istio is `active`, you can see visualizations of your Istio service mesh with Kiali, Jaeger, Grafana, and Prometheus, which are all open-source projects that Rancher has integrated with.
 
 - **Kiali** helps you define, validate, and observe your Istio service mesh. Kiali shows you what services are in your mesh and how they are connected. Kiali includes Jaeger Tracing to provide distributed tracing out of the box.
 - **Jaeger** is a distributed tracing system released as open source by Uber Technologies. It is used for monitoring and troubleshooting microservices-based distributed systems.
 - **Grafana** is an analytics platform that allows you to query, visualize, alert on and understand your metrics. Grafana lets you visualize data from Prometheus.
 - **Prometheus** is a systems monitoring and alerting toolkit.
-
-Kiali, Jaeger, Grafana, and Prometheus are open-source.
 
 With Istio enabled, you can:
 
@@ -41,6 +44,10 @@ With Istio enabled, you can:
 - Access [Grafana UI](https://grafana.com/) by clicking the Grafana UI icon in the Istio page.
 - Access [Prometheus UI](https://prometheus.io/) by clicking the Prometheus UI icon in the Istio page.
 - Go to a project to [view traffic graph, traffic metrics and manage traffic]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
+
+## Leveraging Istio in Projects
+
+After you enable Istio, you can see traphic metrics and a traffic graph on the project level. You can see a traffic graph for all namespaces that have Istio sidecar injection enabled. For more information, refer to the [Project Administration docs for Istio]]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
 
 ## Disabling Istio
 
