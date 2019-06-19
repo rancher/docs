@@ -166,44 +166,50 @@
         $.extend(Plugin.prototype, {
           
           init: function () {
-            this.openSubmenu();
             this.submenuIndicators();
+            this.openSubmenu();
             if(this.settings.clickEffect){
               this.addClickEffect();
             }
           },
           
           openSubmenu: function () {
-            var opts = this.settings; //to differ from local variable "this"
-            $(this.element).children("ul").find("li").bind("click touchstart", function(e){
-              e.stopPropagation(); 
+            var touchmoved;
+                opts = this.settings; //to differ from local variable "this"
+
+            $(this.element).children("ul").find("li").find('.submenu-indicator').bind("click", function(e){
+              var targetElement = $(this).parent().parent()
               e.preventDefault();
 
-              if ($(this).attr('class') === 'back-to-the-top') {
+              if (targetElement.attr('class') === 'back-to-the-top') {
                 $('.side-menus-container').scrollTop(0);
               }
 
-              if($(this).children(".submenu").length > 0) {
-                if($(this).children(".submenu").css("display") == "none") {
-                  $(this).children(".submenu").delay(opts.showDelay).slideDown(opts.speed);
-                  $(this).children(".submenu").siblings("a").addClass("submenu-indicator-minus");
-                  $(this).addClass("activate");
+              if(targetElement.children(".submenu").length > 0) {
+                if(targetElement.children(".submenu").css("display") == "none") {
+                  targetElement.children(".submenu").delay(opts.showDelay).slideDown(opts.speed);
+                  targetElement.children(".submenu").siblings("a").addClass("submenu-indicator-minus");
+                  targetElement.addClass("activate");
                   if(opts.singleOpen){
-                    $(this).siblings().children(".submenu").slideUp(opts.speed);
-                    $(this).siblings().children(".submenu").siblings("a").removeClass("submenu-indicator-minus");
-                    $(this).removeClass("activate");
+                    targetElement.siblings().children(".submenu").slideUp(opts.speed);
+                    targetElement.siblings().children(".submenu").siblings("a").removeClass("submenu-indicator-minus");
+                    targetElement.removeClass("activate");
                   }
                   return false;
                 } else {
-                  $(this).children(".submenu").delay(opts.hideDelay).slideUp(opts.speed);
-                  $(this).removeClass("activate");
+                  targetElement.children(".submenu").delay(opts.hideDelay).slideUp(opts.speed);
+                  targetElement.removeClass("activate");
                 }
-                if($(this).children(".submenu").siblings("a").hasClass("submenu-indicator-minus")){
-                  $(this).children(".submenu").siblings("a").removeClass("submenu-indicator-minus");
+                if(targetElement.children(".submenu").siblings("a").hasClass("submenu-indicator-minus")){
+                  targetElement.children(".submenu").siblings("a").removeClass("submenu-indicator-minus");
                 }
               }
-              window.location.href = $(this).children("a").attr("href");
             });
+            // .on('touchmove', function(e) {
+            //   touchmoved = true;
+            // }).on('touchstart', function(e) {
+            //   touchmoved = false;
+            // });
           },
           
           submenuIndicators: function () {
