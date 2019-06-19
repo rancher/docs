@@ -1,9 +1,9 @@
 ---
-title: Managing HPAs with kubectl
-weight: 3027
+title: Manual HPA Installation for Clusters Created Before Rancher v2.0.7
+weight: 3050
 ---
 
-# Manual Installation for Clusters Created Before Rancher v2.0.7
+This section describes how to manually install HPAs for clusters created with Rancher prior to v2.0.7. This section also describes how to configure your HPA to scale up or down, and how to assign roles to your HPA.
 
 Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
 

@@ -1,13 +1,23 @@
 ---
 title: Managing HPAs with kubectl
-weight: 3027
+weight: 3029
 ---
 
-In Rancher v2.3.x, a feature was added to the UI to manage HPAs. In the UI, you can create, view, and delete HPAs, and you can configure them to scale based on CPU or memory usage.
+This section describes HPA management with `kubectl`. This document has instructions for how to:
 
-For versions of Rancher prior to 2.3.x, or for scaling HPAs based on other metrics, you need `kubectl` to manage HPAs.
+- Create an HPA
+- Get information on HPAs
+- Delete an HPA
+- Configure your HPAs to scale with CPU or memory utilization
+- Configure your HPAs to scale using custom metrics, if you use a third-party tool such as Prometheus for metrics
 
-This section describes HPA management with `kubectl`. 
+### Note For Rancher v2.3.x
+
+In Rancher v2.3.x, you can create, view, and delete HPAs from the Rancher UI. You can also configure them to scale based on CPU or memory usage from the Rancher UI. For more information, refer to [Managing HPAs with the Rancher UI]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui). For scaling HPAs based on other metrics than CPU or memory, you still need `kubectl`.
+
+### Note For Rancher Prior to v2.0.7
+
+Clusters created with older versions of Rancher don't automatically have all the requirements to create an HPA. To install an HPA on these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
 
 # Basic kubectl Command for Managing HPAs
 
@@ -188,189 +198,3 @@ For HPA to use custom metrics from Prometheus, package [k8s-prometheus-adapter](
     {{% accordion id="custom-metrics-api-response-rancher" label="API Response" %}}
     {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
     {{% /accordion %}}
-
-
-
-# Manual Installation for Clusters Created Before Rancher v2.0.7
-
-Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
-
-### Requirements
-
-Be sure that your Kubernetes cluster services are running with these flags at minimum:
-
-- kube-api: `requestheader-client-ca-file`
-- kubelet: `read-only-port` at 10255
-- kube-controller: Optional, just needed if distinct values than default are required.
-
-  - `horizontal-pod-autoscaler-downscale-delay: "5m0s"`
-  - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
-  - `horizontal-pod-autoscaler-sync-period: "30s"`
-
-For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **Ellipsis (...) > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
-
-```
-services:
-...
-  kube-api:
-    extra_args:
-      requestheader-client-ca-file: "/etc/kubernetes/ssl/kube-ca.pem"
-  kube-controller:
-    extra_args:
-      horizontal-pod-autoscaler-downscale-delay: "5m0s"
-      horizontal-pod-autoscaler-upscale-delay: "1m0s"
-      horizontal-pod-autoscaler-sync-period: "30s"
-  kubelet:
-    extra_args:
-      read-only-port: 10255
-```
-
-Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
-
->**Note:** `kubectl` command samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
-
-### Configuring HPA to Scale Using Resource Metrics
-
-To create HPA resources based on resource metrics such as CPU and memory use, you need to deploy the `metrics-server` package in the `kube-system` namespace of your Kubernetes cluster. This deployment allows HPA to consume the `metrics.k8s.io` API.
-
->**Prerequisite:** You must be running `kubectl` 1.8 or later.
-
-1. Connect to your Kubernetes cluster using `kubectl`.
-
-1. Clone the GitHub `metrics-server` repo:
-  ```
-  # git clone https://github.com/kubernetes-incubator/metrics-server
-  ```
-
-1. Install the `metrics-server` package.
-  ```
-  # kubectl create -f metrics-server/deploy/1.8+/
-  ```
-
-1. Check that `metrics-server` is running properly. Check the service pod and logs in the `kube-system` namespace.
-
-  1. Check the service pod for a status of `running`. Enter the following command:
-    ```
-    # kubectl get pods -n kube-system
-    ```
-    Then check for the status of `running`.
-    ```
-    NAME                                  READY     STATUS    RESTARTS   AGE
-    ...
-    metrics-server-6fbfb84cdd-t2fk9       1/1       Running   0          8h
-    ...
-    ```
-  1. Check the service logs for service availability. Enter the following command:
-    ```
-    # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
-    ```
-    Then review the log to confirm that the `metrics-server` package is running.
-    {{% accordion id="metrics-server-run-check" label="Metrics Server Log Output" %}}
-    I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
-    I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
-    I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
-    I0723 08:09:56.194501       1 configs.go:62] Using kubelet port 10255
-    I0723 08:09:56.198612       1 heapster.go:128] Starting with Metric Sink
-    I0723 08:09:56.780114       1 serving.go:308] Generated self-signed cert (apiserver.local.config/certificates/apiserver.crt, apiserver.local.config/certificates/apiserver.key)
-    I0723 08:09:57.391518       1 heapster.go:101] Starting Heapster API server...
-    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
-    [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
-    I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
-    {{% /accordion %}}
-
-
-1. Check that the metrics api is accessible from `kubectl`.
-
-
-  - If you are accessing the cluster through Rancher, enter your Server URL in the `kubectl` config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
-    ```
-    # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
-    ```
-    If the API is working correctly, you should receive output similar to the output below.
-    ```
-    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-    ```
-
-  - If you are accessing the cluster directly, enter your Server URL in the kubectl config in the following format: `https://<K8s_URL>:6443`.
-    ```
-    # kubectl get --raw /apis/metrics.k8s.io/v1beta1
-    ```
-    If the API is working correctly, you should receive output similar to the output below.
-    ```
-    {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"metrics.k8s.io/v1beta1","resources":[{"name":"nodes","singularName":"","namespaced":false,"kind":"NodeMetrics","verbs":["get","list"]},{"name":"pods","singularName":"","namespaced":true,"kind":"PodMetrics","verbs":["get","list"]}]}
-    ```
-
-### Assigning Additional Required Roles to Your HPA
-
-By default, HPA reads resource and custom metrics with the user `system:anonymous`. Assign `system:anonymous` to `view-resource-metrics` and `view-custom-metrics` in the ClusterRole and ClusterRoleBindings manifests. These roles are used to access metrics.
-
-To do it, follow these steps:
-
-1. Configure `kubectl` to connect to your cluster.
-
-1. Copy the ClusterRole and ClusterRoleBinding manifest for the type of metrics you're using for your HPA.
-  {{% accordion id="cluster-role-resource-metrics" label="Resource Metrics: ApiGroups resource.metrics.k8s.io" %}}
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRole
-        metadata:
-          name: view-resource-metrics
-        rules:
-        - apiGroups:
-            - metrics.k8s.io
-          resources:
-            - pods
-            - nodes
-          verbs:
-            - get
-            - list
-            - watch
-        ---
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRoleBinding
-        metadata:
-          name: view-resource-metrics
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: ClusterRole
-          name: view-resource-metrics
-        subjects:
-          - apiGroup: rbac.authorization.k8s.io
-            kind: User
-            name: system:anonymous
-    {{% /accordion %}}
-{{% accordion id="cluster-role-custom-resources" label="Custom Metrics: ApiGroups custom.metrics.k8s.io" %}}
-
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    name: view-custom-metrics
-  rules:
-  - apiGroups:
-      - custom.metrics.k8s.io
-    resources:
-      - "*"
-    verbs:
-      - get
-      - list
-      - watch
-  ---
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: view-custom-metrics
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: view-custom-metrics
-  subjects:
-    - apiGroup: rbac.authorization.k8s.io
-      kind: User
-      name: system:anonymous
-  ```
-{{% /accordion %}}
-1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
- ```
-  # kubectl create -f <RESOURCE_METRICS_MANIFEST>
-  # kubectl create -f <CUSTOM_METRICS_MANIFEST>
-  ```

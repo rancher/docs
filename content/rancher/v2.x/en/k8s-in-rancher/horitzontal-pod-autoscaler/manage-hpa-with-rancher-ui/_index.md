@@ -3,11 +3,9 @@ title: Managing HPAs with the Rancher UI
 weight: 3028
 ---
 
-In Rancher v2.3.x+, the Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
+This section applies only to Rancher v2.3.x+, which supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
 
-For prior versions of Rancher, you can [manage HPAs using kubectl]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/). You also need to use `kubectl` if you want to create HPAs that scale based on other metrics than CPU and memory.
-
-Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use an HPA.
+If you want to create HPAs that scale based on other metrics than CPU and memory, refer to [Configuring HPA to Scale Using Custom Metrics with Prometheus]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
 
 ## Creating an HPA
 
