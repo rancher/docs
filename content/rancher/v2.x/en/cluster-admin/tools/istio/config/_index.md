@@ -1,13 +1,17 @@
 ---
-title: Service Mesh Configuration
+title: Istio Configuration
 weight: 1
 ---
 
-_Available as of v2.3.0-alpha_
+_Available as of v2.3.0-alpha4_
 
-There are several configuration options for the service mesh.
+There are several configuration options for Istio. You can find more information about Istio configuration in the [official Istio documentation](https://istio.io/docs/concepts/what-is-istio).
 
 ## PILOT
+
+Pilot provides service discovery for the Envoy sidecars, traffic management capabilities for intelligent routing (e.g., A/B tests, canary rollouts, etc.), and resiliency (timeouts, retries, circuit breakers, etc.).
+
+For more information on Pilot, refer to the [documentation](https://istio.io/docs/concepts/traffic-management/#pilot-and-envoy).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
@@ -19,6 +23,8 @@ Trace sampling Percentage | [Trace sampling percentage](https://istio.io/docs/ta
 Pilot Selector | Ability to select the nodes in which istio-pilot pod is deployed to. To use this option, the nodes must have labels. | No       | n/a
 
 ## MIXER
+
+Mixer is a platform-independent component. Mixer enforces access control and usage policies across the service mesh, and collects telemetry data from the Envoy proxy and other services. For more information on Mixer, policies and telemetry, refer to the [documentation](https://istio.io/docs/concepts/policies-and-telemetry/).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
@@ -35,6 +41,8 @@ Mixer Selector | Ability to select the nodes in which istio-policy and istio-tel
 
 ## TRACING
 
+Istio-enabled applications can collect trace spans. For more information on distributed tracing with Istio, refer to the [documentation](https://istio.io/docs/tasks/telemetry/distributed-tracing/overview/).
+
 Option | Description| Required | Default
 -------|------------|-------|-------
 Enable Tracing | Whether or not to deploy the istio-tracing. | Yes | True
@@ -45,6 +53,8 @@ Tracing Memory Reservation | Memory resource requests for the istio-tracing pod.
 Tracing Selector | Ability to select the nodes in which tracing pod is deployed to. To use this option, the nodes must have labels. | No       | n/a
 
 ## INGRESS GATEWAY
+
+The Istio Gateway allows Istio features such as monitoring and route rules to be applied to traffic entering the cluster. For more information, refer to the [documentation](https://istio.io/docs/tasks/traffic-management/ingress/).
 
 Option | Description| Required | Default
 -------|------------|-------|-------
@@ -62,6 +72,8 @@ Ingress Gateway Selector | Ability to select the nodes in which istio-ingressgat
 
 ## PROMETHEUS
 
+You can query for Istio metrics using Prometheus. Prometheus is an open-source systems monitoring and alerting toolkit.
+
 Option | Description| Required | Default
 -------|------------|-------|-------
 Prometheus CPU Limit | CPU resource limit for the Prometheus pod.| Yes      | 1000
@@ -72,6 +84,8 @@ Retention for Prometheus | How long your Prometheus instance retains data | Yes 
 Prometheus Selector | Ability to select the nodes in which Prometheus pod is deployed to. To use this option, the nodes must have labels.| No       | n/a
 
 ## GRAFANA
+
+You can visualize metrics with Grafana. Grafana is a tool that lets you visualize Istio traffic data.
 
 Option | Description| Required | Default
 -------|------------|-------|-------
