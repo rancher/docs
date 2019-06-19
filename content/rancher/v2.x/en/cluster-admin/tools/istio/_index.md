@@ -23,8 +23,8 @@ istio-pilot |discovery| 500m | 2048Mi | 1000m | 4096Mi | Y
  istio-tracing   | jaeger     | 100m          | 100Mi         | 500m        | 1024Mi      | Y            
  prometheus      | prometheus | 750m          | 750Mi         | 1000m       | 1024Mi      | Y            
  grafana         | grafana    | 100m          | 100Mi         | 200m        | 512Mi       | Y            
- Others          | n/a        | 500m          | 500Mi         | n/a         | n/a         | N            
- Total           | n/a        | 3950m         | 5546Mi        | n/a         | n/a         | n/a          
+ Others          | -        | 500m          | 500Mi         | -         | -         | N            
+ Total           | -        | 3950m         | 5546Mi        | -         | -         | -          
 
 ## Enabling Istio
 
