@@ -19,31 +19,33 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 3.  Open the **Project: Default** project.
 
-4.  Click **Deploy**.
+4.  From the main menu select **Workloads**, then click on the **Workloads** tab.
+
+5.  Click **Deploy**.
 
 	**Step Result:** The **Deploy Workload** page opens.
 
-5.  Enter a **Name** for your workload.
+6.  Enter a **Name** for your workload.
 
-6.  From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
+7.  From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
 
-7.  From **Port Mapping**, click **Add Port**.
+8.  From **Port Mapping**, click **Add Port**.
 
-8.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
+9.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
 
 	![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
 
-9.  From the **On Listening Port** field, leave the **Random** value in place.
+10.  From the **On Listening Port** field, leave the **Random** value in place.
 
 	![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
 
-10. From the **Publish the container port** field, enter port `80`.
+11. From the **Publish the container port** field, enter port `80`.
 
 	![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
 
-11. Leave the remaining options on their default setting. We'll tell you about them later.
+12. Leave the remaining options on their default setting. We'll tell you about them later.
 
-12. Click **Launch**.
+13. Click **Launch**.
 
 **Result:**
 
