@@ -11,7 +11,20 @@ Using Rancher, you can connect, secure, control, and observe services through in
 
 The required resource allocation for each service is listed in the [configuration options]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/istio/config/). Please review it before attempting to enable Istio.
 
-In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster.
+In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster by adding node selector for each Istio components.
+
+#### Default Resource Consumption
+
+Workload | Container | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable
+---------|-----------|---------------|---------------|-------------|-------------|-------------
+istio-pilot |discovery| 500m | 2048Mi | 1000m | 4096Mi | Y
+ istio-telemetry |mixer| 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y            
+ istio-policy | mixer      | 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y            
+ istio-tracing   | jaeger     | 100m          | 100Mi         | 500m        | 1024Mi      | Y            
+ prometheus      | prometheus | 750m          | 750Mi         | 1000m       | 1024Mi      | Y            
+ grafana         | grafana    | 100m          | 100Mi         | 200m        | 512Mi       | Y            
+ Others          | -        | 500m          | 500Mi         | -         | -         | N            
+ Total           | -        | 3950m         | 5546Mi        | -         | -         | -          
 
 ## Enabling Istio
 
