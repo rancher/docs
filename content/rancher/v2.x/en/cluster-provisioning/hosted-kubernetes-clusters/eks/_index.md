@@ -6,6 +6,9 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-eks/
 ---
 
+Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
+
+
 ## Prerequisites in Amazon Web Services
 
 1. Make sure that the account you will be using to create the EKS cluster has the appropriate permissions. Referring to the official [EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html) for details.
