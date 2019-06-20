@@ -11,10 +11,8 @@ Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon 
 
 ## Prerequisites in Amazon Web Services
 
->**Note**
->Deploying to Amazon AWS will incur charges. For more information, refer to the [EKS pricing page](https://aws.amazon.com/eks/pricing/).
-
 To set up a cluster on EKS, you will need to set up an Amazon VPC (Virtual Private Cloud). You will also need to make sure that the account you will be using to create the EKS cluster has the appropriate permissions. For details, refer to the official guide on [Amazon EKS Prerequisites](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-prereqs).
+
 
 ### Amazon VPC
 
@@ -33,12 +31,6 @@ Rancher needs access to your AWS account in order to provision and administer yo
 > **Note:** It's important to regularly rotate your access and secret keys. See this [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#rotating_access_keys_console) for more information.
 
 For more detailed information on IAM policies for EKS, refer to the official [documentation on Amazon EKS IAM Policies, Roles, and Permissions](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html).
-
-## Architecture
-
-The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
-
-![Rancher architecture with EKS hosted cluster]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
 
 ## Architecture
 
