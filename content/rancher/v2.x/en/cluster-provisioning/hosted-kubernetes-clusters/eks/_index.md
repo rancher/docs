@@ -46,6 +46,12 @@ The figure below illustrates the high-level architecture of Rancher 2.x. The fig
 
 ![Rancher architecture with EKS hosted cluster]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
 
+## Architecture
+
+The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
+
+![Rancher architecture with EKS hosted cluster]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
+
 ## Create the EKS Cluster
 
 Use Rancher to set up and configure your Kubernetes cluster.
