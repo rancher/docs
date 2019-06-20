@@ -33,9 +33,9 @@ A Kubernetes cluster consists of multiple nodes.
 
 The majority of Rancher 2.x software runs on the Rancher Server.  Rancher Server includes all the software components used to manage the entire Rancher deployment.
 
-The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by GKE.
+The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by Amazon EKS (Elastic Kubernetes Service).
 
-![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.png)
+![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
 
 In this section we describe the functionalities of each Rancher server components.
 
