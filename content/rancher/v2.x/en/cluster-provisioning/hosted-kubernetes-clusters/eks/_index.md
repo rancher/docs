@@ -15,6 +15,12 @@ Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon 
 
 2. Use AWS to create an [access key and client secret for the IAM account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) used in the previous step.
 
+## Architecture
+
+The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
+
+![Rancher architecture with EKS hosted cluster]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
+
 ## Create the EKS Cluster
 
 Use Rancher to set up and configure your Kubernetes cluster.
