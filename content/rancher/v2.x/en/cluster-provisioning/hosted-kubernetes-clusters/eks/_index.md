@@ -11,9 +11,26 @@ Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon 
 
 ## Prerequisites in Amazon Web Services
 
-1. Make sure that the account you will be using to create the EKS cluster has the appropriate permissions. Referring to the official [EKS documentation](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html) for details.
+To set up a cluster on EKS, you will need to set up an Amazon VPC (Virtual Private Cloud). You will also need to make sure that the account you will be using to create the EKS cluster has the appropriate permissions. For details, refer to the official guide on [Amazon EKS Prerequisites](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-prereqs).
 
-2. Use AWS to create an [access key and client secret for the IAM account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) used in the previous step.
+
+### Amazon VPC
+
+You need to set up an Amazon VPC to launch the EKS cluster. The VPC enables you to launch AWS resources into a virtual network that you've defined. For more information, refer to the [Tutorial: Creating a VPC with Public and Private Subnets for Your Amazon EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-public-private-vpc.html).
+
+### IAM Policies
+
+Rancher needs access to your AWS account in order to provision and administer your Kubernetes clusters in Amazon EKS. You'll need to create a user for Rancher in your AWS account and define what that user can access.
+
+1. Create a user with programmatic access by following the steps [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
+
+2. Next, create an IAM policy that defines what this user has access to in your AWS account. It's important to only grant this user minimal access within your account. Follow the steps [here](https://docs.aws.amazon.com/eks/latest/userguide/EKS_IAM_user_policies.html) to create an IAM policy and attach it to your user.
+
+3. Finally, follow the steps [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) to create an access key and secret key for this user.
+
+> **Note:** It's important to regularly rotate your access and secret keys. See this [documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#rotating_access_keys_console) for more information.
+
+For more detailed information on IAM policies for EKS, refer to the official [documentation on Amazon EKS IAM Policies, Roles, and Permissions](https://docs.aws.amazon.com/eks/latest/userguide/IAM_policies.html).
 
 ## Architecture
 
@@ -57,9 +74,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
     Yes | When your cluster nodes are provisioned, they're assigned a both a private and public IP address.
     No: Private IPs only | When your cluster nodes are provisioned, they're assigned only a private IP address.<br/><br/>If you choose this option, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane.
 
-1. Now choose a **VPC & Subnet**. Follow one of the sets of instructions below based on your selection from the previous step.
-
-    Amazon Documentation:
+1. Now choose a **VPC & Subnet**. For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
 
 	- [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
 	- [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
@@ -101,7 +116,7 @@ If you chose this option, you must also choose a **VPC & Subnet** that allow you
 1. <a id="security-group"></a>Choose a **Security Group**. See the documentation below on how to create one.
 
     Amazon Documentation:
-
+    - [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
     - [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
     - [Create a Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html#getting-started-create-security-group)
 
@@ -118,3 +133,19 @@ If you chose this option, you must also choose a **VPC & Subnet** that allow you
 1. Click **Create**.
 
 {{< result_create-cluster >}}
+
+## Troubleshooting
+
+For any issues or troubleshooting details for your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting.html).
+
+## AWS Service Events
+
+To find information on any AWS Service events, please see [this page](https://status.aws.amazon.com/).
+
+## Security and Compliance
+
+For more information on security and compliance with your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/shared-responsibilty.html).
+
+## Tutorial
+
+This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with Rancher, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
