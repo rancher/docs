@@ -10,6 +10,9 @@ You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK)
 
 ## Prerequisites
 
+>**Note**
+>Deploying to ACK will incur charges.
+
 1. In Aliyun, activate the following services in their respective consoles.
 
     - [Container Service](https://cs.console.aliyun.com)
