@@ -8,6 +8,9 @@ aliases:
 
 ## Prerequisites in Google Cloud Platform
 
+>**Note**
+>Deploying to GKE will incur charges.
+
 Create a service account using [Google Cloud Platform](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts). GKE uses this account to operate your cluster. Creating this account also generates a private key used for authentication.
 
 The service account requires the following roles:
