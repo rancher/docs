@@ -10,6 +10,9 @@ You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Ser
 
 ## Prerequisites in the Microsoft Azure Portal 
 
+>**Note**
+>Deploying to AKS will incur charges.
+
 Obtain the following information from the [Microsoft Azure Portal](https://portal.azure.com) by completing how to [Create Service Principal for Azure AD](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad).
 
 - Your Subscription ID.
