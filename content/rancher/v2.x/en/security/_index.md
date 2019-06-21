@@ -20,7 +20,21 @@ weight: 7505
 </tr>
 </table>
 
-### Rancher Vulnerabilities
+### Rancher Hardening Guide
+
+The Rancher Hardening Guide is based off of controls and best practices found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/).  See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#CIS-Benchmark-Rancher-Self-Assessment) for the full list of security controls.
+
+* [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.1/)
+
+### CIS Benchmark Rancher Self-Assessment
+
+Since Rancher and RKE install Kubernetes services as Docker containers many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters.  The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
+
+* [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+
+### Rancher CVEs and Resolutions
+
+Rancher is committed to informing the community of security issues in our products. Rancher will publish CVEs for issues we have resolved.
 
 | ID | Description | Date | Resolution |
 |----|-------------|------|------------|
