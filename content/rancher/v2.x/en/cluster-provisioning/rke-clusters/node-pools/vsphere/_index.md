@@ -168,7 +168,7 @@ The following table lists the permissions required for the vSphere user account 
 
 | Privilege Group       | Operations  |
 |:----------------------|:-----------------------------------------------------------------------|
-| Datastore             | AllocateSpace </br> Browse </br> FileManagement </br> UpdateVirtualMachineFiles </br> UpdateVirtualMachineMetadata |
+| Datastore             | AllocateSpace </br> Browse </br> FileManagement (Low level file operations) </br> UpdateVirtualMachineFiles </br> UpdateVirtualMachineMetadata |
 | Network               | Assign |
 | Resource              | AssignVMToPool |
 | Virtual Machine       | Config (All) </br> GuestOperations (All) </br> Interact (All) </br> Inventory (All) </br> Provisioning (All) |
