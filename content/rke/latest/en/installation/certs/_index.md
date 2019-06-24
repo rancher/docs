@@ -28,18 +28,18 @@ $ rke up --custom-certs --cert-dir ~/my/own/certs
 
 The following certificates must exist in the certificate directory.
 
-| Name |  Certificate | Key | Required |
-|---|---|---|---|
-|          Master CA         |             kube-ca.pem             |                    -                    |   *  |
-|          Kube API          |          kube-apiserver.pem         |          kube-apiserver-key.pem         |   *  |
-|   Kube Controller Manager  |     kube-controller-manager.pem     |     kube-controller-manager-key.pem     |   *  |
-|       Kube Scheduler       |          kube-scheduler.pem         |          kube-scheduler-key.pem         |   *  |
-|         Kube Proxy         |            kube-proxy.pem           |            kube-proxy-key.pem           |   *  |
-|         Kube Admin         |            kube-admin.pem           |            kube-admin-key.pem           |   *  |
-|   Apiserver Proxy Client   |   kube-apiserver-proxy-client.pem   |   kube-apiserver-proxy-client-key.pem   |   *  |
-|         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |   *  |
-| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem | kube-apiserver-requestheader-ca-key.pem |      |
-|    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |      |
+| Name |  Certificate | Key |
+|---|---|---|
+|          Master CA         |             kube-ca.pem             |                    -                    |
+|          Kube API          |          kube-apiserver.pem         |          kube-apiserver-key.pem         |
+|   Kube Controller Manager  |     kube-controller-manager.pem     |     kube-controller-manager-key.pem     |
+|       Kube Scheduler       |          kube-scheduler.pem         |          kube-scheduler-key.pem         |
+|         Kube Proxy         |            kube-proxy.pem           |            kube-proxy-key.pem           |
+|         Kube Admin         |            kube-admin.pem           |            kube-admin-key.pem           |
+|   Apiserver Proxy Client   |   kube-apiserver-proxy-client.pem   |   kube-apiserver-proxy-client-key.pem   |
+|         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |
+| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem | kube-apiserver-requestheader-ca-key.pem |
+|    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
@@ -63,6 +63,11 @@ If you want to create and sign the certificates by a real Certificate Authority 
     INFO[0001] Successfully Deployed certificates at [./cluster_certs]
     ```
 
+3. In addition to the CSRs, you also need to generate the kube-service-account-token-key.pem key. To do this, run the following:
+    ```
+    $ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./cluster_certs/kube-service-account-token-key.pem -out ./cluster_certs/kube-service-account-token.pem
+    ```
+
 **Result:** The CSRs and keys will be deployed in `./cluster_certs` directory, assuming you didn't specify a `--cert-dir`. The CSR files will contain the right Alternative DNS and IP Names for the certificates. You can use them to sign the certificates by a real CA. After the certificates are signed, those certificates can be used by RKE as custom certificates.
 
 ```
@@ -84,8 +89,10 @@ cluster_certs
 ├── kube-proxy-csr.pem
 ├── kube-proxy-key.pem
 ├── kube-scheduler-csr.pem
+├── kube-service-account-token-key.pem
+├── kube-service-account-token.pem
 └── kube-scheduler-key.pem
 
-0 directories, 16 files
+0 directories, 18 files
 
 ```
