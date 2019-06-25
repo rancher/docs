@@ -16,7 +16,7 @@ To start a RancherOS droplet on Digital Ocean:
 1. Optional: In the **Select additional options** section, you can check the **User data** box and enter a `cloud-config` file in the text box that appears. The `cloud-config` file is used to provide a script to be run on the first boot. An example is below.
 1. Choose an SSH key that you have access to, or generate a new SSH key.
 1. Choose your project.
-1. Click Create.
+1. Click **Create.**
 
 
 You can access the host via SSH after the droplet is booted. The default user is `rancher`.
