@@ -12,26 +12,29 @@
 {{end}}
 
 <!-- product dropdown -->
-<div class="side-menus-container product-select jquery-accordion-menu">
+<div class="side-menus-container product-select tree-nav jquery-accordion-menu">
   <ul class="side-menus-wrap">
-    <li class="">
-      <a href="{{ ($.Scratch.Get "topLevel").Permalink }}" class="">
-        <span class="">
-          {{ range $product := $.Site.Sections }}
-            {{ range $version := .Sections }}
-              {{ range $language := .Sections }}
-                {{if $.CurrentSection}}
-                  {{ if .IsAncestor $.CurrentSection }}
-                    {{ .Params.shortTitle }}
-                  {{end}}
+    <li class="tree-nav-item">
+      <a>
+        {{ range $product := $.Site.Sections }}
+          {{ range $version := .Sections }}
+            {{ range $language := .Sections }}
+              {{if $.CurrentSection}}
+                {{ if .IsAncestor $.CurrentSection }}
+                  {{ .Params.shortTitle }}
                 {{end}}
               {{end}}
             {{end}}
           {{end}}
+        {{end}}
+        <span class="submenu-indicator">
+          <span class="object1"></span>
+          <span class="object2"></span>
+          <span class="object3"></span>
         </span>
       </a>
 
-      <ul class="submenu submenus-wrap">
+      <ul class="tree-nav-sublist submenu submenus-wrap hide">
         {{ range $product := $.Site.Sections }}
           {{ range $version := .Sections }}
             {{ range $language := .Sections }}
@@ -48,11 +51,11 @@
 </div>
 
 <div class="guide-menus-activator">
-{{ if .Title }}
-{{.Title}} 
-{{ else }}
-Quick Start Guide
-{{end}}
+  {{ if .Title }}
+    {{.Title}}
+  {{ else }}
+    (No Title)
+  {{end}}
 
   <span class="indicator">
     <span class="object1"></span>
@@ -60,36 +63,72 @@ Quick Start Guide
     <span class="object3"></span>
   </span>
 </div>
-<div class="side-menus-container guide-menus jquery-accordion-menu">
+<div class="side-menus-container guide-menus tree-nav jquery-accordion-menu">
   <ul class="side-menus-wrap second">
-    {{ template "section-tree-nav" ($.Scratch.Get "topLevel") }}
-
-    <li class="back-to-the-top">
-      <a href="#" class="submenu-indicator-close">
-        Back to the top 
-        <svg class="svg-icon" enable-background="new 0 0 34 34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
-          <g class="svg-linear" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
-              <path d="m12 14.5 5-5 5 5"></path><path d="m17 9.5v15"></path>
-          </g>
-        </svg>
-
-        <span class="submenu-indicator"><span class="object1"></span><span class="object2"></span><span class="object3"></span></span>
-      </a>
-    </li>
+    {{ $activeNode := . }}
+    {{ range ($.Scratch.Get "topLevel").Sections }}
+      {{ template "menu" dict "node" . "activeNode" $activeNode }}
+    {{ end }}
   </ul>
 </div>
 
-{{ define "section-tree-nav" }}
-  {{ range .Sections}}
-    <li class="tree-nav-item"><a href="{{ .RelPermalink}}">{{ .Title }}</a>
-      {{if gt (len .Sections) 0}}
-        <ul class="tree-nav-sublist submenu submenus-wrap">
-          {{ range .Pages }}
-            <li class="tree-nav-item-child"><a href="{{ .RelPermalink}}">{{ .Title }}</a></li>
-          {{ end }}
-          {{ template "section-tree-nav" . }}
-        </ul>
-      {{end}}
-    </li>
+{{ define "menu" }}
+  {{/* .node and .activeNode come from the caller */}}
+  {{- $activeNode := .activeNode -}}
+  {{- with .node -}}
+    {{- $isActive := "" -}}
+    {{- if eq .UniqueID $activeNode.UniqueID -}}
+      {{- $isActive = "active" -}}
+    {{- end -}}
+
+    {{- $isOpen := false -}}
+    {{- if (or .Params.alwaysOpen (.IsAncestor $activeNode)) -}}
+      {{- $isOpen = true -}}
+    {{- end -}}
+
+    {{- if .IsSection -}}
+      {{- $children := (add (len .Pages) (len .Sections)) -}}
+      <li class="tree-nav-item {{ $isActive }}">
+        <a href="{{ .URL }}" class="{{if $isOpen}}submenu-indicator-minus{{end}}">
+          {{- if .Params.shortTitle -}}
+            {{ .Params.shortTitle}}
+          {{- else -}}
+            {{ .Title }}
+          {{- end -}}
+          {{- if gt $children 0 -}}
+            <span class="submenu-indicator">
+              <span class="object1"></span>
+              <span class="object2"></span>
+              <span class="object3"></span>
+            </span>
+          {{- end -}}
+        </a>
+        {{if gt $children 0}}
+        <ul class="tree-nav-sublist submenu submenus-wrap {{ if not $isOpen }}hide{{end}}">
+            {{- $pages := .Pages -}}
+
+            {{- if .Sections -}}
+              {{- $pages = (.Pages | union .Sections) -}}
+            {{- end -}}
+
+            {{- range $pages.ByWeight -}}
+              {{- if not .Params.hidden -}}
+                {{template "menu" dict "node" . "activeNode" $activeNode}}
+              {{- end -}}
+            {{- end -}}
+          </ul>
+        {{- end -}}
+      </li>
+    {{- else if not .Params.hidden -}}
+      <li class="{{ $isActive }}">
+        <a href="{{ .URL }}">
+          {{- if .Params.shortTitle -}}
+            {{ .Params.shortTitle}}
+          {{- else -}}
+            {{ .Title }}
+          {{- end -}}
+        </a>
+      </li>
+    {{- end -}}
   {{ end }}
 {{ end }}
