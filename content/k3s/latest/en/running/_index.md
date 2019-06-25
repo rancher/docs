@@ -8,12 +8,17 @@ This section contains information for running k3s in various environments.
 Starting the Server
 ------------------
 
+<<<<<<< HEAD
 The installation script will auto-detect if your OS is using systemd or openrc and start the service.
 When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`. An example of installing and auto-starting with the install script:
 
 ```bash
 curl -sfL https://get.k3s.io | sh -
 ```
+=======
+The installation script will auto-detect if your OS is using systemd or openrc.
+When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`.
+>>>>>>> Initial k3s docs
 
 When running the server manually you should get an output similar to:
 
@@ -43,6 +48,7 @@ Joining Nodes
 -------------
 
 When the server starts it creates a file `/var/lib/rancher/k3s/server/node-token`. 
+<<<<<<< HEAD
 Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
 to join as an agent using the install script:
 
@@ -53,6 +59,17 @@ When using the install script openrc logs will be created at `/var/log/k3s-agent
 Or running k3s manually with the token as `NODE_TOKEN`:
 
     k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+=======
+Use the contents of that file as `NODE_TOKEN` and then running the agent manually:
+
+    k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+    
+Or as a `K3S_TOKEN` environment variable using the install script:
+
+    curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
+
+When running with openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
+>>>>>>> Initial k3s docs
 
 SystemD
 -------
@@ -85,7 +102,11 @@ WantedBy=multi-user.target
 OpenRC
 ------
 
+<<<<<<< HEAD
 And an example openrc `/etc/init.d/k3s`:
+=======
+And an excample openrc `/etc/init.d/k3s`:
+>>>>>>> Initial k3s docs
 
 ```bash
 #!/sbin/openrc-run
@@ -141,7 +162,11 @@ Then update **/etc/update-extlinux.conf** by adding:
 default_kernel_opts="...  cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory"
 ```
 
+<<<<<<< HEAD
 Then update the config and reboot:
+=======
+Than update the config and reboot
+>>>>>>> Initial k3s docs
 
 ```bash
 update-extlinux
@@ -159,7 +184,11 @@ Running in Docker (and docker-compose)
 [k3d](https://github.com/rancher/k3d) is a utility designed to easily run k3s in Docker. It can be installed via the [brew](https://brew.sh/) utility for MacOS.
 
 `rancher/k3s` images are also available to run k3s server and agent from Docker.  A `docker-compose.yml` is in the root of the k3s repo that
+<<<<<<< HEAD
 serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run:
+=======
+serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run
+>>>>>>> Initial k3s docs
 
     docker-compose up --scale node=3
     # kubeconfig is written to current dir
@@ -190,7 +219,11 @@ serves as an example of how to run k3s agent from Docker. Alternatively the Dock
 Air-Gap Support
 ---------------
 
+<<<<<<< HEAD
 k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, for example:
+=======
+k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, eg:
+>>>>>>> Initial k3s docs
 ```sh
 sudo mkdir -p /var/lib/rancher/k3s/agent/images/
 sudo cp ./k3s-airgap-images-$ARCH.tar /var/lib/rancher/k3s/agent/images/
@@ -210,7 +243,11 @@ k3s additionally provides a `--resolv-conf` flag for kubelets, which may help wi
 Upgrades
 --------
 
+<<<<<<< HEAD
 To upgrade k3s from an older version you can re-run the installation script using the same flags, for example:
+=======
+To upgrade k3s from an older version you can re-run the installation script using the same flags, eg:
+>>>>>>> Initial k3s docs
 
 ```sh
 curl -sfL https://get.k3s.io | sh -
@@ -257,4 +294,8 @@ Hyperkube
 k3s is bundled in a nice wrapper to remove the majority of the headache of running k8s. If
 you don't want that wrapper and just want a smaller k8s distro, the releases includes
 the `hyperkube` binary you can use.  It's then up to you to know how to use `hyperkube`. If
+<<<<<<< HEAD
 you want individual binaries you will need to compile them yourself from source.
+=======
+you want individual binaries you will need to compile them yourself from source
+>>>>>>> Initial k3s docs

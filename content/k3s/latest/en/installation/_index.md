@@ -9,7 +9,11 @@ Install Script
 --------------
 
 The install script will attempt to download the latest release, to specify a specific
+<<<<<<< HEAD
 version for download we can use the `INSTALL_K3S_VERSION` environment variable, for example:
+=======
+version for download we can use the `INSTALL_K3S_VERSION` environment variable, eg:
+>>>>>>> Initial k3s docs
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
@@ -20,7 +24,11 @@ environment variable to the command:
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable-agent" sh -
 ```
 
+<<<<<<< HEAD
 The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, for example:
+=======
+The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, eg:
+>>>>>>> Initial k3s docs
 ```sh
 curl -sfL https://github.com/rancher/k3s/releases/download/vX.Y.Z/k3s -o /usr/local/bin/k3s
 chmod 0755 /usr/local/bin/k3s
@@ -86,10 +94,14 @@ The full help text for the install script environment variables are as follows:
      if not specified.
 
 Server Options
+<<<<<<< HEAD
 --------------
 
 The following information on server options is also available through `k3s server --help` :
 
+=======
+------------------
+>>>>>>> Initial k3s docs
 * `--bind-address` _value_
 
     k3s bind address (default: localhost)
@@ -228,17 +240,28 @@ The following information on server options is also available through `k3s serve
 
 * `--node-label` _value_
 
+<<<<<<< HEAD
     (agent) Registering kubelet with set of labels
 
 * `--node-taint` _value_
 
     (agent) Registering kubelet with set of taints
+=======
+    (agent) Registring kubelet with set of labels
+
+* `--node-taint` _value_
+
+    (agent) Registring kubelet with set of taints
+>>>>>>> Initial k3s docs
 
 Agent Options
 ------------------
 
+<<<<<<< HEAD
 The following information on agent options is also available through `k3s agent --help` :
 
+=======
+>>>>>>> Initial k3s docs
 * `--token` _value_, `-t` _value_
 
     Token to use for authentication [$`K3S_TOKEN`]
@@ -305,17 +328,26 @@ The following information on agent options is also available through `k3s agent 
 
 * `--node-label` _value_
 
+<<<<<<< HEAD
     (agent) Registering kubelet with set of labels
 
 * `--node-taint` _value_
 
     (agent) Registering kubelet with set of taints
+=======
+    (agent) Registring kubelet with set of labels
+
+* `--node-taint` _value_
+
+    (agent) Registring kubelet with set of taints
+>>>>>>> Initial k3s docs
 
 Customizing components
 ----------------------
 
 As of v0.3.0 any of the following processes can be customized with extra flags:
 
+<<<<<<< HEAD
 * `--kube-apiserver-arg` _value_
 
     (server) [kube-apiserver options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
@@ -341,4 +373,23 @@ For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log
 
 ```
 --kube-apiserver-arg v=9   --kube-apiserver-arg log-file=/tmp/kubeapi.log
+=======
+- [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) (server)
+- [kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) (server)
+- [kube-scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/) (server)
+- [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) (agent)
+- [kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) (agent)
+
+Adding extra argument can be done by passing the following flags to server or agent:
+```
+--kube-apiserver-arg value
+--kube-scheduler-arg value
+--kube-controller-arg value
+--kubelet-arg value        
+--kube-proxy-arg value     
+```
+For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log` to the kube-apiserver, you should pass the following:
+```
+k3s server --kube-apiserver-arg v=9 --kube-apiserver-arg log-file=/tmp/kubeapi.log
+>>>>>>> Initial k3s docs
 ```
