@@ -5,6 +5,15 @@ weight: 107
 
 RancherOS is avaliable in the Digital Ocean portal. RancherOS is a member of container distributions and you can find it easily.
 
+## Prerequisites
+
+>**Note**
+>Deploying to Digital Ocean will incur charges.
+
+Make sure your Digital Ocean droplet has the [minimum hardware requirements for RancherOS]({{< baseurl >}}os/v1.x/en/overview/#hardware-requirements).
+
+## Creating a Droplet with RancherOS
+
 To start a RancherOS droplet on Digital Ocean:
 
 1. In the Digital Ocean portal, go to the project view.
