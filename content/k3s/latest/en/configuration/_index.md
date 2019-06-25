@@ -88,11 +88,13 @@ Containerd and Docker
 
 k3s includes and defaults to containerd. Why? Because it's just plain better. If you want to
 run with Docker first stop and think, "Really? Do I really want more headache?" If still
-yes then you just need to run the agent with the `--docker` flag.
+yes then you just need to run the agent with the `--docker` flag
+
+     k3s agent -s ${SERVER_URL} -t ${NODE_TOKEN} --docker &
 
 k3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`, for advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
-The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
+The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template,the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
 
 Rootless
 --------
@@ -102,7 +104,7 @@ _**WARNING**:_ Some advanced magic, user beware
 Initial rootless support has been added but there are a series of significant usability issues surrounding it.
 We are releasing the initial support for those interested in rootless and hopefully some people can help to
 improve the usability.  First ensure you have proper setup and support for user namespaces.  Refer to the
-[requirements section](https://github.com/rootless-containers/rootlesskit#setup) in RootlessKit for instructions.
+[requirements section](https://github.com/rootless-containers/rootlesskit#setup) in rootlesskit for instructions.
 In short, latest Ubuntu is your best bet for this to work.
 
 
@@ -132,15 +134,16 @@ In short, latest Ubuntu is your best bet for this to work.
 **Running w/ Rootless**:
 
 Just add `--rootless` flag to either server or agent.  So run `k3s server --rootless` and then look for the message
-`Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.  Be careful, if you use `-o` to write
+`Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.  Becareful, if you use `-o` to write
 the kubeconfig to a different directory it will probably not work.  This is because the k3s instance in running in a different
 mount namespace.
 
 Node Labels and Taints
 ----------------------
 
-k3s agents can be configured with options `--node-label` and `--node-taint` which adds set of Labels and Taints to kubelet, the two options only adds labels/taints at registration time, so they can only be added once and not changed after that, an example of options to add new label is:
+k3s server and agent can be configured with options `--node-label` and `--node-taint` which adds set of Labels and Taints to kubelet, the two options only adds labels/taints at registration time, so they can only be added once and not changed after that, an example to add new label is:
 ```
+k3s server \
      --node-label foo=bar \
      --node-label hello=world \
      --node-taint key1=value1:NoExecute
@@ -149,21 +152,27 @@ k3s agents can be configured with options `--node-label` and `--node-taint` whic
 Flannel
 -------
 
-Flannel is included by default, if you don't want flannel then run the agent with `--no-flannel` option.
+Flannel is included by default, if you don't want flannel then run the agent with `--no-flannel` as follows
+
+     k3s agent -u ${SERVER_URL} -t ${NODE_TOKEN} --no-flannel &
 
 In this setup you will still be required to install your own CNI driver.  More info [here](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network)
 
 CoreDNS
 -------
 
-CoreDNS is deployed on start of the agent, to disable run the server with the `--no-deploy coredns` option.
+CoreDNS is deployed on start of the agent, to disable add `--no-deploy coredns` to the server
+
+     k3s server --no-deploy coredns
 
 If you don't install CoreDNS you will need to install a cluster DNS provider yourself.
 
 Traefik
 -------
 
-Traefik is deployed by default when starting the server; to disable it, start the server with the `--no-deploy traefik` option.
+Traefik is deployed by default when starting the server; to disable it, start the server with `--no-deploy traefik` like this
+
+     k3s server --no-deploy traefik
 
 Service Load Balancer
 ---------------------
@@ -172,15 +181,16 @@ k3s includes a basic service load balancer that uses available host ports.  If y
 a load balancer that listens on port 80, for example, it will try to find a free host in the cluster
 for port 80.  If no port is available the load balancer will stay in Pending.
 
-To disable the embedded load balancer run the server with the `--no-deploy servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
+To disable the embedded service load balancer (if you wish to use a different implementation like
+MetalLB) just add `--no-deploy=servicelb` to the server on startup.
 
 Metrics Server
 --------------
 
-To add functionality for commands such as `k3s kubectl top nodes` metrics-server must be installed, 
+To add functionality for commands such as `k3s kubectl top node` metrics-server must be installed, 
 to install see the instructions located at https://github.com/kubernetes-incubator/metrics-server/.
 
-**NOTE** : By default the image used in `metrics-server-deployment.yaml` is valid only for **amd64** devices,
+NOTE: By default the image used in `metrics-server-deployment.yaml` is valid only for amd64 devices,
 this should be edited as appropriate for your architecture. As of this writing metrics-server provides
 the following images relevant to k3s: `amd64:v0.3.3`, `arm64:v0.3.2`, and `arm:v0.3.2`. Further information
 on the images provided through gcr.io can be found at https://console.cloud.google.com/gcr/images/google-containers/GLOBAL.
@@ -188,7 +198,7 @@ on the images provided through gcr.io can be found at https://console.cloud.goog
 Storage Backends
 ----------------
 
-As of version 0.6.0, k3s can support various storage backends including: SQLite (default), MySQL, Postgres, and etcd, this enhancement depends on the following arguments that can be passed to k3s server:
+As of version 0.6.0, k3s can support various storage backends including: SQLite (default), MySQL, Postgres, and etcd, this enahancement depends on the following arguments that can be passed to k3s server:
 
 * `--storage-backend` _value_
 
@@ -215,13 +225,14 @@ As of version 0.6.0, k3s can support various storage backends including: SQLite 
 To use k3s with MySQL storage backend, you can specify the following for insecure connection:
 
 ```
-     --storage-endpoint="mysql://"
+k3s server --storage-endpoint="mysql://"
 ```
 By default the server will attempt to connect to mysql using the mysql socket at `/var/run/mysqld/mysqld.sock` using the root user and with no password, k3s will also create a database with the name `kubernetes` if the database is not specified in the DSN.
 
 To override the method of connection, user/pass, and database name, you can provide a custom DSN, for example:
 
 ```
+k3s server \
      --storage-endpoint="mysql://k3suser:k3spass@tcp(192.168.1.100:3306)/k3stest"
 ```
 
@@ -229,6 +240,7 @@ This command will attempt to connect to MySQL on host `192.168.1.100` on port `3
 
 To connect to MySQL securely, you can use the following example:
 ```
+k3s server \
      --storage-endpoint="mysql://k3suser:k3spass@tcp(192.168.1.100:3306)/k3stest" \
      --storage-cafile ca.crt \
      --storage-certfile mysql.crt \
@@ -242,7 +254,7 @@ The above command will use these certificates to generate the tls config to comm
 Connection to postgres can be established using the following command:
 
 ```
-     --storage-endpoint="postgres://"
+k3s server --storage-endpoint="postgres://"
 ```
 
 By default the server will attempt to connect to postgres on localhost with using the `postgres` user and with `postgres` password, k3s will also create a database with the name `kubernetes` if the database is not specified in the DSN.
@@ -250,6 +262,7 @@ By default the server will attempt to connect to postgres on localhost with usin
 To override the method of connection, user/pass, and database name, you can provide a custom DSN, for example:
 
 ```
+k3s server \
      --storage-endpoint="postgres://k3suser:k3spass@192.168.1.100:5432/k3stest"
 ```
 
@@ -258,30 +271,30 @@ This command will attempt to connect to Postgres on host `192.168.1.100` on port
 To connect to Postgres securely, you can use the following example:
 
 ```
-     --storage-endpoint="postgres://k3suser:k3spass@192.168.1.100:5432/k3stest" \
+k3s server \
+     --storage-endpoint="postgres://k3suser:k3spass@192.168.1.100:5432/k3stest?sslmode=verify-full" \
      --storage-certfile postgres.crt \
      --storage-keyfile postgres.key \
      --storage-cafile ca.crt
 ```
 
-The above command will use these certificates to generate the tls config to communicate with postgres securely.
+The above command will use these certificates to generate the tls config to communicate with postgres securely, note that the `sslmode` in the example is `verify-full` which verify that the certification presented by the server was signed by a trusted CA and the server host name matches the one in the certificate.
 
 ### etcd
 
 Connection to etcd3 can be established using the following command:
 
 ```
-     --storage-backend=etcd3 \
+k3s server --storage-backend=etcd3 \
      --storage-endpoint="https://127.0.0.1:2379"
 ```
 The above command will attempt to connect insecurely to etcd on localhost with port `2379`, you can connect securely to etcd using the following command:
 
 ```
+k3s server \
      --storage-backend=etcd3 \
      --storage-endpoint="https://127.0.0.1:2379" \
      --storage-cafile ca.crt \
      --storage-certfile etcd.crt \
      --storage-keyfile etcd.key
 ```
-
-The above command will use these certificates to generate the tls config to communicate with etcd securely.

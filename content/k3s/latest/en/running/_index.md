@@ -10,6 +10,7 @@ Starting the Server
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 The installation script will auto-detect if your OS is using systemd or openrc and start the service.
 When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`. An example of installing and auto-starting with the install script:
 
@@ -21,6 +22,10 @@ The installation script will auto-detect if your OS is using systemd or openrc.
 =======
 The installation script will auto-detect if your OS is using systemd or openrc and start the service.
 >>>>>>> Cleanup k3s docs
+When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`.
+>>>>>>> Initial k3s docs
+=======
+The installation script will auto-detect if your OS is using systemd or openrc.
 When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`.
 >>>>>>> Initial k3s docs
 
@@ -54,6 +59,7 @@ Joining Nodes
 When the server starts it creates a file `/var/lib/rancher/k3s/server/node-token`. 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
 to join as an agent using the install script:
 
@@ -78,15 +84,22 @@ When running with openrc logs will be created at `/var/log/k3s-agent.log`, or wi
 =======
 Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
 to join as an agent using the install script:
+=======
+Use the contents of that file as `NODE_TOKEN` and then running the agent manually:
+>>>>>>> Initial k3s docs
+
+    k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+    
+Or as a `K3S_TOKEN` environment variable using the install script:
 
     curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
 
-When using the install script openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
-
-Or running k3s manually with the token as `NODE_TOKEN`:
-
+<<<<<<< HEAD
     k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
 >>>>>>> Cleanup k3s docs
+=======
+When running with openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
+>>>>>>> Initial k3s docs
 
 SystemD
 -------
@@ -121,7 +134,11 @@ OpenRC
 ------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 And an example openrc `/etc/init.d/k3s`:
+=======
+And an excample openrc `/etc/init.d/k3s`:
+>>>>>>> Initial k3s docs
 =======
 And an excample openrc `/etc/init.d/k3s`:
 >>>>>>> Initial k3s docs
@@ -181,7 +198,11 @@ default_kernel_opts="...  cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=mem
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Then update the config and reboot:
+=======
+Than update the config and reboot
+>>>>>>> Initial k3s docs
 =======
 Than update the config and reboot
 >>>>>>> Initial k3s docs
@@ -203,7 +224,11 @@ Running in Docker (and docker-compose)
 
 `rancher/k3s` images are also available to run k3s server and agent from Docker.  A `docker-compose.yml` is in the root of the k3s repo that
 <<<<<<< HEAD
+<<<<<<< HEAD
 serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run:
+=======
+serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run
+>>>>>>> Initial k3s docs
 =======
 serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run
 >>>>>>> Initial k3s docs
@@ -230,7 +255,11 @@ Air-Gap Support
 ---------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, for example:
+=======
+k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, eg:
+>>>>>>> Initial k3s docs
 =======
 k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, eg:
 >>>>>>> Initial k3s docs
@@ -254,7 +283,11 @@ Upgrades
 --------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 To upgrade k3s from an older version you can re-run the installation script using the same flags, for example:
+=======
+To upgrade k3s from an older version you can re-run the installation script using the same flags, eg:
+>>>>>>> Initial k3s docs
 =======
 To upgrade k3s from an older version you can re-run the installation script using the same flags, eg:
 >>>>>>> Initial k3s docs
@@ -305,7 +338,11 @@ k3s is bundled in a nice wrapper to remove the majority of the headache of runni
 you don't want that wrapper and just want a smaller k8s distro, the releases includes
 the `hyperkube` binary you can use.  It's then up to you to know how to use `hyperkube`. If
 <<<<<<< HEAD
+<<<<<<< HEAD
 you want individual binaries you will need to compile them yourself from source.
+=======
+you want individual binaries you will need to compile them yourself from source
+>>>>>>> Initial k3s docs
 =======
 you want individual binaries you will need to compile them yourself from source
 >>>>>>> Initial k3s docs
