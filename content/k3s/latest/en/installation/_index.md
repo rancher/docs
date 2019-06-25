@@ -86,7 +86,10 @@ The full help text for the install script environment variables are as follows:
      if not specified.
 
 Server Options
-------------------
+--------------
+
+The following information on server options is also available through `k3s server --help` :
+
 * `--bind-address` _value_
 
     k3s bind address (default: localhost)
@@ -234,6 +237,8 @@ Server Options
 Agent Options
 ------------------
 
+The following information on agent options is also available through `k3s agent --help` :
+
 * `--token` _value_, `-t` _value_
 
     Token to use for authentication [$`K3S_TOKEN`]
@@ -311,21 +316,29 @@ Customizing components
 
 As of v0.3.0 any of the following processes can be customized with extra flags:
 
-- [kube-apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) (server)
-- [kube-controller-manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) (server)
-- [kube-scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/) (server)
-- [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) (agent)
-- [kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) (agent)
+* `--kube-apiserver-arg` _value_
 
-Adding extra argument can be done by passing the following flags to server or agent:
+    (server) [kube-apiserver options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
+* `--kube-controller-arg` _value_
+
+    (server) [kube-controller-manager options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
+* `--kube-scheduler-arg` _value_
+
+    (server) [kube-scheduler options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/)
+
+* `--kubelet-arg` _value_
+
+    (agent) [kubelet options](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+
+* `--kube-proxy-arg` _value_
+
+    (agent) [kube-proxy options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)
+
+Adding extra arguments can be done by passing the following flags to server or agent.
+For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log` to the kube-apiserver, you should add the following options to k3s server:
+
 ```
---kube-apiserver-arg value
---kube-scheduler-arg value
---kube-controller-arg value
---kubelet-arg value        
---kube-proxy-arg value     
-```
-For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log` to the kube-apiserver, you should pass the following:
-```
-k3s server --kube-apiserver-arg v=9 --kube-apiserver-arg log-file=/tmp/kubeapi.log
+--kube-apiserver-arg v=9   --kube-apiserver-arg log-file=/tmp/kubeapi.log
 ```
