@@ -9,6 +9,7 @@ Starting the Server
 ------------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 The installation script will auto-detect if your OS is using systemd or openrc and start the service.
 When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`. An example of installing and auto-starting with the install script:
 
@@ -17,6 +18,9 @@ curl -sfL https://get.k3s.io | sh -
 ```
 =======
 The installation script will auto-detect if your OS is using systemd or openrc.
+=======
+The installation script will auto-detect if your OS is using systemd or openrc and start the service.
+>>>>>>> Cleanup k3s docs
 When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`.
 >>>>>>> Initial k3s docs
 
@@ -49,6 +53,7 @@ Joining Nodes
 
 When the server starts it creates a file `/var/lib/rancher/k3s/server/node-token`. 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
 to join as an agent using the install script:
 
@@ -70,6 +75,18 @@ Or as a `K3S_TOKEN` environment variable using the install script:
 
 When running with openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
 >>>>>>> Initial k3s docs
+=======
+Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
+to join as an agent using the install script:
+
+    curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
+
+When using the install script openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
+
+Or running k3s manually with the token as `NODE_TOKEN`:
+
+    k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
+>>>>>>> Cleanup k3s docs
 
 SystemD
 -------

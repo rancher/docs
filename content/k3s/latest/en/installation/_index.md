@@ -9,11 +9,7 @@ Install Script
 --------------
 
 The install script will attempt to download the latest release, to specify a specific
-<<<<<<< HEAD
 version for download we can use the `INSTALL_K3S_VERSION` environment variable, for example:
-=======
-version for download we can use the `INSTALL_K3S_VERSION` environment variable, eg:
->>>>>>> Initial k3s docs
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
@@ -24,11 +20,7 @@ environment variable to the command:
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable-agent" sh -
 ```
 
-<<<<<<< HEAD
 The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, for example:
-=======
-The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, eg:
->>>>>>> Initial k3s docs
 ```sh
 curl -sfL https://github.com/rancher/k3s/releases/download/vX.Y.Z/k3s -o /usr/local/bin/k3s
 chmod 0755 /usr/local/bin/k3s
@@ -95,13 +87,19 @@ The full help text for the install script environment variables are as follows:
 
 Server Options
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Cleanup k3s docs
 --------------
 
 The following information on server options is also available through `k3s server --help` :
 
+<<<<<<< HEAD
 =======
 ------------------
 >>>>>>> Initial k3s docs
+=======
+>>>>>>> Cleanup k3s docs
 * `--bind-address` _value_
 
     k3s bind address (default: localhost)
@@ -258,10 +256,15 @@ Agent Options
 ------------------
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 The following information on agent options is also available through `k3s agent --help` :
 
 =======
 >>>>>>> Initial k3s docs
+=======
+The following information on agent options is also available through `k3s agent --help` :
+
+>>>>>>> Cleanup k3s docs
 * `--token` _value_, `-t` _value_
 
     Token to use for authentication [$`K3S_TOKEN`]
@@ -348,6 +351,9 @@ Customizing components
 As of v0.3.0 any of the following processes can be customized with extra flags:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Cleanup k3s docs
 * `--kube-apiserver-arg` _value_
 
     (server) [kube-apiserver options](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
@@ -370,6 +376,7 @@ As of v0.3.0 any of the following processes can be customized with extra flags:
 
 Adding extra arguments can be done by passing the following flags to server or agent.
 For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log` to the kube-apiserver, you should add the following options to k3s server:
+<<<<<<< HEAD
 
 ```
 --kube-apiserver-arg v=9   --kube-apiserver-arg log-file=/tmp/kubeapi.log
@@ -379,17 +386,14 @@ For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log
 - [kube-scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/) (server)
 - [kubelet](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) (agent)
 - [kube-proxy](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) (agent)
+=======
+>>>>>>> Cleanup k3s docs
 
-Adding extra argument can be done by passing the following flags to server or agent:
 ```
---kube-apiserver-arg value
---kube-scheduler-arg value
---kube-controller-arg value
---kubelet-arg value        
---kube-proxy-arg value     
-```
-For example to add the following arguments `-v=9` and `log-file=/tmp/kubeapi.log` to the kube-apiserver, you should pass the following:
-```
+<<<<<<< HEAD
 k3s server --kube-apiserver-arg v=9 --kube-apiserver-arg log-file=/tmp/kubeapi.log
 >>>>>>> Initial k3s docs
+=======
+--kube-apiserver-arg v=9   --kube-apiserver-arg log-file=/tmp/kubeapi.log
+>>>>>>> Cleanup k3s docs
 ```
