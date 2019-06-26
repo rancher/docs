@@ -9,7 +9,7 @@ Install Script
 --------------
 
 The install script will attempt to download the latest release, to specify a specific
-version for download we can use the `INSTALL_K3S_VERSION` environment variable, eg:
+version for download we can use the `INSTALL_K3S_VERSION` environment variable, for example:
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
@@ -20,7 +20,7 @@ environment variable to the command:
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable-agent" sh -
 ```
 
-The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, eg:
+The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, for example:
 ```sh
 curl -sfL https://github.com/rancher/k3s/releases/download/vX.Y.Z/k3s -o /usr/local/bin/k3s
 chmod 0755 /usr/local/bin/k3s
@@ -228,11 +228,11 @@ The following information on server options is also available through `k3s serve
 
 * `--node-label` _value_
 
-    (agent) Registring kubelet with set of labels
+    (agent) Registering kubelet with set of labels
 
 * `--node-taint` _value_
 
-    (agent) Registring kubelet with set of taints
+    (agent) Registering kubelet with set of taints
 
 Agent Options
 ------------------
@@ -305,11 +305,11 @@ The following information on agent options is also available through `k3s agent 
 
 * `--node-label` _value_
 
-    (agent) Registring kubelet with set of labels
+    (agent) Registering kubelet with set of labels
 
 * `--node-taint` _value_
 
-    (agent) Registring kubelet with set of taints
+    (agent) Registering kubelet with set of taints
 
 Customizing components
 ----------------------
