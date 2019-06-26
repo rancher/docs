@@ -83,7 +83,7 @@ yes then you just need to run the agent with the `--docker` flag.
 
 k3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`, for advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
-The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template,the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
+The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
 
 Rootless
 --------
@@ -93,7 +93,7 @@ _**WARNING**:_ Some advanced magic, user beware
 Initial rootless support has been added but there are a series of significant usability issues surrounding it.
 We are releasing the initial support for those interested in rootless and hopefully some people can help to
 improve the usability.  First ensure you have proper setup and support for user namespaces.  Refer to the
-[requirements section](https://github.com/rootless-containers/rootlesskit#setup) in rootlesskit for instructions.
+[requirements section](https://github.com/rootless-containers/rootlesskit#setup) in RootlessKit for instructions.
 In short, latest Ubuntu is your best bet for this to work.
 
 
@@ -123,7 +123,7 @@ In short, latest Ubuntu is your best bet for this to work.
 **Running w/ Rootless**:
 
 Just add `--rootless` flag to either server or agent.  So run `k3s server --rootless` and then look for the message
-`Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.  Becareful, if you use `-o` to write
+`Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.  Be careful, if you use `-o` to write
 the kubeconfig to a different directory it will probably not work.  This is because the k3s instance in running in a different
 mount namespace.
 
