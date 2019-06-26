@@ -9,7 +9,11 @@ Starting the Server
 ------------------
 
 The installation script will auto-detect if your OS is using systemd or openrc and start the service.
-When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`.
+When running with openrc logs will be created at `/var/log/k3s.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s`. An example of installing and auto-starting with the install script:
+
+```bash
+curl -sfL https://get.k3s.io | sh -
+```
 
 When running the server manually you should get an output similar to:
 
@@ -137,7 +141,7 @@ Then update **/etc/update-extlinux.conf** by adding:
 default_kernel_opts="...  cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory"
 ```
 
-Than update the config and reboot
+Then update the config and reboot:
 
 ```bash
 update-extlinux
@@ -155,7 +159,7 @@ Running in Docker (and docker-compose)
 [k3d](https://github.com/rancher/k3d) is a utility designed to easily run k3s in Docker. It can be installed via the [brew](https://brew.sh/) utility for MacOS.
 
 `rancher/k3s` images are also available to run k3s server and agent from Docker.  A `docker-compose.yml` is in the root of the k3s repo that
-serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run
+serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run:
 
     docker-compose up --scale node=3
     # kubeconfig is written to current dir
@@ -186,7 +190,7 @@ serves as an example of how to run k3s agent from Docker. Alternatively the Dock
 Air-Gap Support
 ---------------
 
-k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, eg:
+k3s supports pre-loading of containerd images by placing them in the `images` directory for the agent before starting, for example:
 ```sh
 sudo mkdir -p /var/lib/rancher/k3s/agent/images/
 sudo cp ./k3s-airgap-images-$ARCH.tar /var/lib/rancher/k3s/agent/images/
@@ -206,7 +210,7 @@ k3s additionally provides a `--resolv-conf` flag for kubelets, which may help wi
 Upgrades
 --------
 
-To upgrade k3s from an older version you can re-run the installation script using the same flags, eg:
+To upgrade k3s from an older version you can re-run the installation script using the same flags, for example:
 
 ```sh
 curl -sfL https://get.k3s.io | sh -
@@ -253,4 +257,4 @@ Hyperkube
 k3s is bundled in a nice wrapper to remove the majority of the headache of running k8s. If
 you don't want that wrapper and just want a smaller k8s distro, the releases includes
 the `hyperkube` binary you can use.  It's then up to you to know how to use `hyperkube`. If
-you want individual binaries you will need to compile them yourself from source
+you want individual binaries you will need to compile them yourself from source.
