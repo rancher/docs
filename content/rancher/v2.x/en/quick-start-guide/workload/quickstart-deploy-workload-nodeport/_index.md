@@ -60,7 +60,7 @@ From the **Workloads** page, click the link underneath your workload. If your de
 
 ### Attention: Cloud-Hosted Sandboxes
 
-When using a cloud-hosted virtual machine, you may not have access to the port running the container. In this event, you can test Nginx in an ssh session on the local machine. Use the port number after the `:` in the link under your workload, which is `31568` in this example.
+When using a cloud-hosted virtual machine, you may not have access to the port running the container. In this event, you can test Nginx in an ssh session on the local machine using `Execute Shell`. Use the port number after the `:` in the link under your workload if available, which is `31568` in this example.
 
 ```sh
 gettingstarted@rancher:~$ curl http://localhost:31568
