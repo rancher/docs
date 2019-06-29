@@ -4,8 +4,14 @@ weight: 3063
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-registries/
 ---
+Registries are Kubernetes secrets containing credentials used to authenticate with [private Docker registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). 
 
-Registries are secrets containing credentials used to authenticate with [private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). Deployments use these secrets to authenticate with a private registry and then pull a Docker image hosted on it.
+The word "registry" can refer to two things:
+
+- A ** Docker registry** contains Docker images that you can pull in order to use them in your deployment. The registry is a stateless, scalable server side application that stores and lets you distribute Docker images.
+- The Kubernetes secret that your deployment uses to authenticate with a Docker registry
+
+Deployments use the secrets in the Kubernetes registry to authenticate with a private Docker registry and then pull a Docker image hosted on it.
 
 Currently, credentials are pulled automatically only if the workload is created in the Rancher UI and not when it is created via kubectl.
 
@@ -25,10 +31,12 @@ Currently, credentials are pulled automatically only if the workload is created 
 
 1. Click **Save**.
 
-**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Registries** view.
+**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Registries** view. Any workload that you create in the Rancher UI will be able to access your registry if it is within the registry's scope.
 
-## What's Next?
+## How to Deploy Workloads with Images in a Private Registry
 
-Now that you have a registry added to the project or namespace, you can add it to a workload that's deploying an image from your private registry.
+After adding a registry to a project, any workloads deployed via the Rancher UI will be able to pull images from that registry.
+
+Now that you have a registry added to the project or namespace, you can add it to a workload that you want to deploy an image from your private registry.
 
 For more information on adding a registry to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
