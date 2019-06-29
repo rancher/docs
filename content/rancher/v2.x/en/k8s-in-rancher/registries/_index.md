@@ -33,10 +33,24 @@ Currently, credentials are pulled automatically only if the workload is created 
 
 **Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Registries** view. Any workload that you create in the Rancher UI will be able to access your registry if it is within the registry's scope.
 
-## How to Deploy Workloads with Images in a Private Registry
+## How to Deploy Workloads with an Image from a Private Registry
 
-After adding a registry to a project, any workloads deployed via the Rancher UI will be able to pull images from that registry.
+You can deploy a workload with an image from a private registry through the Rancher UI, or with `kubectl`.
 
-Now that you have a registry added to the project or namespace, you can add it to a workload that you want to deploy an image from your private registry.
+### Deploying the Workload with the Rancher UI
 
-For more information on adding a registry to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
+When you create the workload, in the **Docker Image** field, you need to enter the URL of the path to the Docker image in your private registry.
+
+You don't need to enter your private registry credentials because the pod automatically has access to the Kubernetes registry secret if the workload is in the scope of a registry that you added.
+
+### Deploying the Workload with kubectl
+
+When you create the workload using `kubectl`, you need to configure the pod so that its YAML has:
+
+- The path to the container image in the private registry, for example `quay.io/$(registry owner's name)/$(name of registry)`
+- The name of the Kubernetes secret that has the private registry credentials
+
+To reference this secret in the Pod yaml, you will add the field `imagePullSecrets` with the name of the secret. For more information, refer to the Kubernetes documentation on [creating a pod that uses your secret.](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret)
+
+The reason you have to add the Kubernetes secret manually is that the pod only automatically gets the private registry credentials if you create it in the Rancher UI.
+
