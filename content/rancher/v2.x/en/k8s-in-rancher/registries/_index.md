@@ -56,9 +56,11 @@ To deploy a workload with an image from your private registry,
 
 ### Using the Private Registry with kubectl
 
-When you create the workload using `kubectl`, you need to configure the pod so that its YAML has the path to the private registry. You also have to specify the registry secret because the pod only automatically gets access to the private registry credentials if it is created in the Rancher UI.
+When you create the workload using `kubectl`, you need to configure the pod so that its YAML has the path to the image in the private registry. You also have to create and reference the registry secret because the pod only automatically gets access to the private registry credentials if it is created in the Rancher UI.
 
-Below is an example `pod.yml` for a workload that uses an image from a private registry. In this example, the pod uses an image from Quay.io, and the .yml specifies the path to the image. The pod authenticates with the registry using credentials stored in a Kubernetes secret called `testquay`, which is specified in `spec.imagePullSecrets.name`:
+The secret has to be created in the same namespace where the workload gets deployed.
+
+Below is an example `pod.yml` for a workload that uses an image from a private registry. In this example, the pod uses an image from Quay.io, and the .yml specifies the path to the image. The pod authenticates with the registry using credentials stored in a Kubernetes secret called `testquay`, which is specified in `spec.imagePullSecrets` in the `name` field:
 
 ```
 apiVersion: v1
@@ -73,7 +75,9 @@ spec:
   - name: testquay
 ```
 
-You can use `kubectl` to create the secret with the private registry credentials. In this example, the secret is named `testquay`:
+In this example, the secret named `testquay` is in the default namespace.
+
+You can use `kubectl` to create the secret with the private registry credentials. This command creates the secret named `testquay`:
 
 ```
 kubectl create secret docker-registry testquay \
