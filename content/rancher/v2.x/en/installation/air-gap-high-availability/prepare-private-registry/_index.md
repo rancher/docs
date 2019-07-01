@@ -40,7 +40,7 @@ Start by collecting all the images needed to install Rancher in an air gap envir
     1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
 
         ```plain
-        helm fetch stable/cert-manager
+        helm fetch stable/cert-manager --version 0.5.2
         helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
         ```
 
