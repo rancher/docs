@@ -31,7 +31,7 @@ Rancher deploys an agent on each node to communicate with the node. This pages d
 
 | Parameter  | Environment variable | Description |
 | ---------- | -------------------- | ----------- |
-| `--address` | `CATTLE_ADDRESS` | The IP address the node will be registered with (defaults to the IP used to reach `8.8.8.8` |
+| `--address` | `CATTLE_ADDRESS` | The IP address the node will be registered with (defaults to the IP used to reach `8.8.8.8`) |
 | `--internal-address` | `CATTLE_INTERNAL_ADDRESS` | The IP address used for inter-host communication on a private network |
 
 ### Dynamic IP address options
