@@ -9,7 +9,7 @@ aliases:
 
 Start by collecting all the images needed to install Rancher in an air gap environment. You'll collect images from your chosen Rancher release, RKE, and (if you're using a self-signed TLS certificate) Cert-Manager.
 
-1. Using a computer with internet access, browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.1.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Using a computer with internet access, browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
     ![Choose Release Version]({{< baseurl >}}/img/rancher/choose-release-version.png)
 
