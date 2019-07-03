@@ -35,6 +35,8 @@ The `rke remove` command does the following to each node in the `cluster.yml`:
   - `kube-proxy`
   - `nginx-proxy`
 
+The cluster's etcd snapshots are removed, including both local snapshots and snapshots that are stored on S3.
+
 > **Note:** Pods are not removed from the nodes. If the node is re-used, the pods will automatically be removed when the new Kubernetes cluster is created.
 
 - Clean each host from the directories left by the services:
