@@ -48,7 +48,7 @@ When a node is unreachable and removed from the cluster, the automatic cleaning 
 
 >**Warning:** The commands listed below will remove data from the node. Make sure you have created a backup of files you want to keep before executing any of the commands as data will be lost.
 
-## Imported Cluster Nodes
+### Imported Cluster Nodes
 
 For imported clusters, the process for removing Rancher from its nodes is a little different. You have the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
 
@@ -100,6 +100,19 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
 {{% /tab %}}
 {{% /tabs %}}
 
+### Windows Nodes
+
+To clean up a Windows node, you can run a cleanup script located in `c:\etc\rancher`. The script deletes Kubernetes generated resources and the execution binary. It also drops the firewall rules and network settings.
+
+To run the script, you can use this command in the PowerShell:
+
+```
+pushd c:\etc\rancher
+.\cleanup.ps1
+popd
+```
+
+**Result:** The node is reset and can be re-added to a Kubernetes cluster.
 
 ### Docker Containers, Images, and Volumes
 
