@@ -41,7 +41,8 @@ Yes. In the upcoming Rancher v2.1 release we will provide a tool to help transla
 
 #### Can I still create templates for environments and clusters?
 
-No.  Starting with 2.0, the concept of an environment has now been changed to a Kubernetes cluster as going forward, only the Kubernetes orchestration engine is supported.
+Starting with 2.0, the concept of an environment has now been changed to a Kubernetes cluster as going forward, only the Kubernetes orchestration engine is supported.
+Kubernetes Cluster Templates is on our roadmap for 2.x. Please refer to our Release Notes and documentation for all the features that we currently support.
 
 #### Can you still add an existing host to an environment? (i.e. not provisioned directly from Rancher)
 
@@ -76,15 +77,16 @@ Yes.
 
 #### What about Windows support?
 
-We plan to provide Windows support for v2.1 based on Microsoft’s new approach to providing an overlay network using Kubernetes and CNI. This new approach matches well with what we are doing in v2.1 and, once that is complete, you will be able to leverage the same Rancher UX, or Kubernetes UX, but with Windows. We are in the middle of discussing how we can make this happen with Microsoft, and we will provide more information before the end of this year.
+With [Rancher 2.3.0 Preview 1](https://forums.rancher.com/t/rancher-release-v2-3-0-alpha3-preview-of-windows-containers/14260), we have enabled the support for Windows Server 2019 containers. The technology is in preview mode but we intend to make it GA later this year. Please refer to our documentation and Release Notes to get the latest information on this feature.
 
 #### Are you planning on supporting Istio in Rancher v2.x?
 
-Yes! Istio is implemented in our micro-PaaS "Rio" (which works on Rancher 2x along wtih any CNCF compliant Kubernetes cluster). You can read more about it here: https://rio.io/
+[Rancher 2.3.0 Preview 2](https://forums.rancher.com/t/rancher-release-v2-3-0-alpha5-preview-of-istio/14585/2) has support for Istio. Please refer to our documentation and Release Notes to get the latest information on this feature.
+Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Rancher 2.x along wtih any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/).
 
 #### Will Rancher v2.x support Hashicorp's Vault for storing secrets?
 
-Not yet. We currently support Hashicorp's Vault in v1.6 and plan on supporting it in an upcoming release post v2.0.
+Secrets management is on our roadmap but we haven't assigned it to a specific release yet. 
 
 #### Does Rancher v2.x support RKT containers as well?
 
