@@ -23,9 +23,9 @@ You can add/remove only worker nodes, by running `rke up --update-only`. This wi
 
 In order to remove the Kubernetes components from nodes, you use the `rke remove` command.
 
-> **Note:** This command is irreversible and will destroy the Kubernetes cluster.
+> **Warning:** This command is irreversible and will destroy the Kubernetes cluster, including etcd snapshots on S3. If there is a disaster and your cluster is inaccessible, refer to the process for [restoring your cluster from a snapshot]({{< baseurl >}}rke/latest/en/etcd-snapshots/#etcd-disaster-recovery).
 
-This command does the following to each node in the `cluster.yml`:
+The `rke remove` command does the following to each node in the `cluster.yml`:
 
 - Remove the Kubernetes component deployed on it
   - `etcd`
@@ -34,6 +34,8 @@ This command does the following to each node in the `cluster.yml`:
   - `kubelet`
   - `kube-proxy`
   - `nginx-proxy`
+
+The cluster's etcd snapshots are removed, including both local snapshots and snapshots that are stored on S3.
 
 > **Note:** Pods are not removed from the nodes. If the node is re-used, the pods will automatically be removed when the new Kubernetes cluster is created.
 
