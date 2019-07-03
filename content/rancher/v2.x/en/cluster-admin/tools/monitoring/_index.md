@@ -53,20 +53,20 @@ Number of Cluster Nodes | CPU (milli CPU) | Memory | Disk
 
 Additional pod resource requirements for cluster level monitoring.
 
-Workload | Container | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable
----------|-----------|---------------|---------------|-------------|-------------|-------------
-Prometheus|Prometheus| 750m | 750Mi| 1000m | 1000Mi| Y
- ||Prometheus-proxy| 50m | 50Mi | 100m | 100Mi| Y
- ||Prometheus-auth| 100m | 100Mi | 500m | 200Mi | Y
- ||Prometheus-config-reloader| - | - | 50m | 50Mi | N
- ||rules-configmap-reloader | - | - | 100m | 25Mi | N
-Grafana | grafana-init-plugin-json-copy | 50m |50Mi|50m|50Mi|Y
- ||grafana-init-plugin-json-modify|50m|50Mi|50m|50Mi|Y
- ||grafana |100m|100Mi|200m|200Mi|Y
- ||grafana-proxy|50m|50Mi|100m|100Mi|Y
-Kube-State Exporter|kube-state |100m|130Mi|100m|200Mi|Y
-Node Exporter | exporter-node | 200m | 200Mi | 200m | 200Mi|Y
-Operator | prometheus-operator | 100m | 50Mi | 200m | 100Mi | Y
+| Workload            |      Container                  | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable |
+|---------------------|---------------------------------|---------------|---------------|-------------|-------------|--------------|
+| Prometheus          | prometheus                      |     750m      |     750Mi     |    1000m    |    1000Mi   |       Y      |
+|                     | prometheus-proxy                |      50m      |      50Mi     |     100m    |     100Mi   |       Y      |
+|                     | prometheus-auth                 |     100m      |     100Mi     |     500m    |     200Mi   |       Y      |
+|                     | prometheus-config-reloader      |       -       |       -       |      50m    |      50Mi   |       N      |
+|                     | rules-configmap-reloader        |       -       |       -       |     100m    |      25Mi   |       N      |
+| Grafana             | grafana-init-plugin-json-copy   |      50m      |      50Mi     |      50m    |      50Mi   |       Y      |
+|                     | grafana-init-plugin-json-modify |      50m      |      50Mi     |      50m    |      50Mi   |       Y      |
+|                     | grafana                         |     100m      |     100Mi     |     200m    |     200Mi   |       Y      |
+|                     | grafana-proxy                   |      50m      |      50Mi     |     100m    |     100Mi   |       Y      |
+| Kube-State Exporter | kube-state                      |     100m      |     130Mi     |     100m    |     200Mi   |       Y      |
+| Node Exporter       | exporter-node                   |     200m      |     200Mi     |     200m    |     200Mi   |       Y      |
+| Operator            | prometheus-operator             |     100m      |      50Mi     |     200m    |     100Mi   |       Y      |
 
 
 #### Other Pods Resource Consumption
