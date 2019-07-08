@@ -1,17 +1,18 @@
 ---
-title: Hardening Guide - Rancher v2.1.x
+title: Hardening Guide - Rancher v2.2.x
 weight: 100
 ---
 
-### Hardening Guide for Rancher 2.1.x with Kubernetes 1.11
+### Hardening Guide for Rancher 2.2.x with Kubernetes 1.11
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.1.x/Rancher_Hardening_Guide.pdf)
+@TODO generate PDF of this document
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.1.x. It outlines the configurations and controls required to address CIS-Kubernetes benchmark controls.
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address CIS-Kubernetes benchmark controls.
 
-[CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+[CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/)
 
 ### Profile Definitions
 
@@ -111,7 +112,7 @@ This supports the following controls:
 On the control plane hosts for the Rancher HA cluster run:
 
 ``` bash
-stat /etc/kubernetes/encryption.yaml
+stat /opt/kubernetes/encryption.yaml
 ```
 
 Ensure that:
@@ -143,14 +144,14 @@ Where `aescbc` is the key type, and `secret` is populated with a 32-byte base64 
 
 ``` bash
 head -c 32 /dev/urandom | base64 -i -
-touch /etc/kubernetes/encryption.yaml
+touch /opt/kubernetes/encryption.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/encryption.yaml
-chmod 0600 /etc/kubernetes/encryption.yaml
+chown root:root /opt/kubernetes/encryption.yaml
+chmod 0600 /opt/kubernetes/encryption.yaml
 ```
 
 - Set the contents to:
@@ -198,7 +199,7 @@ This supports the following controls:
 On each control plane node, run:
 
 ``` bash
-stat /etc/kubernetes/audit.yaml
+stat /opt/kubernetes/audit.yaml
 ```
 
 Ensure that:
@@ -222,14 +223,14 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /etc/kubernetes/audit.yaml
+touch /opt/kubernetes/audit.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/audit.yaml
-chmod 0600 /etc/kubernetes/audit.yaml
+chown root:root /opt/kubernetes/audit.yaml
+chmod 0600 /opt/kubernetes/audit.yaml
 ```
 
 - Set the contents to:
@@ -264,8 +265,8 @@ This supports the following control:
 On nodes with the `controlplane` role run:
 
 ``` bash
-stat /etc/kubernetes/admission.yaml
-stat /etc/kubernetes/event.yaml
+stat /opt/kubernetes/admission.yaml
+stat /opt/kubernetes/event.yaml
 ```
 
 For each file, ensure that:
@@ -281,7 +282,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /etc/kubernetes/event.yaml
+  path: /opt/kubernetes/event.yaml
 ```
 
 For `event.yaml` ensure that the file contains:
@@ -291,8 +292,8 @@ apiVersion: eventratelimit.admission.k8s.io/v1alpha1
 kind: Configuration
 limits:
 - type: Server
-  qps: 500
-  burst: 5000
+  qps: 5000
+  burst: 20000
 ```
 
 **Remediation**
@@ -302,17 +303,17 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /etc/kubernetes/admission.yaml
-touch /etc/kubernetes/event.yaml
+touch /opt/kubernetes/admission.yaml
+touch /opt/kubernetes/event.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/admission.yaml
-chown root:root /etc/kubernetes/event.yaml
-chmod 0600 /etc/kubernetes/admission.yaml
-chmod 0600 /etc/kubernetes/event.yaml
+chown root:root /opt/kubernetes/admission.yaml
+chown root:root /opt/kubernetes/event.yaml
+chmod 0600 /opt/kubernetes/admission.yaml
+chmod 0600 /opt/kubernetes/event.yaml
 ```
 
 - For `admission.yaml` set the contents to:
@@ -322,7 +323,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /etc/kubernetes/event.yaml
+  path: /opt/kubernetes/event.yaml
 ```
 
 - For event.yaml set the contents to:
@@ -332,8 +333,8 @@ apiVersion: eventratelimit.admission.k8s.io/v1alpha1
 kind: Configuration
 limits:
 - type: Server
-  qps: 500
-  burst: 5000
+  qps: 5000
+  burst: 20000
 ```
 
 ## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
@@ -437,8 +438,8 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 --repair-malformed-updates=false
 --service-account-lookup=true
 --enable-admission-plugins= "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
---experimental-encryption-provider-config=/etc/kubernetes/encryption.yaml
---admission-control-config-file=/etc/kubernetes/admission.yaml
+--encryption-provider-config=/opt/kubernetes/encryption.yaml
+--admission-control-config-file=/opt/kubernetes/admission.yaml
 --audit-log-path=/var/log/kube-audit/audit-log.json
 --audit-log-maxage=5
 --audit-log-maxbackup=5
@@ -467,14 +468,14 @@ services:
       repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      experimental-encryption-provider-config: /etc/kubernetes/encryption.yaml
-      admission-control-config-file: "/etc/kubernetes/admission.yaml"
+      encryption-provider-config: /opt/kubernetes/encryption.yaml
+      admission-control-config-file: "/opt/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
       audit-log-maxbackup: "5"
       audit-log-maxsize: "100"
       audit-log-format: "json"
-      audit-policy-file: /etc/kubernetes/audit.yaml
+      audit-policy-file: /opt/kubernetes/audit.yaml
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
 ```
@@ -811,7 +812,7 @@ kubectl get deployment rancher -n cattle-system -o yaml |grep 'add-local'
 
 **Remediation**
 
-- Upgrade to Rancher v2.1.2 via the Helm chart. While performing the upgrade, provide the following installation flag:
+- While upgrading or installing Rancher 2.2.x, provide the following flag:
 
 ``` text
 --set addLocal="false"
@@ -1023,7 +1024,7 @@ services:
       repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      experimental-encryption-provider-config: /etc/kubernetes/encryption.yaml
+      encryption-provider-config: /etc/kubernetes/encryption.yaml
       admission-control-config-file: "/etc/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
