@@ -1,15 +1,16 @@
 ---
-title: Benchmark - Rancher v2.1.x
+title: Benchmark - Rancher v2.2.x
 weight: 100
 ---
 
-### CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11
+### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.1.x/Rancher_Benchmark_Assessment.pdf)
+@TODO: Generate pdf version
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview
 
-The following document scores a Kubernetes 1.11.x RKE cluster provisioned according to the Rancher 2.1.x hardening guide against the CIS 1.3.0 Kubernetes benchmark. This document is to be used by Rancher operators, security teams, auditors and decision makers.
+The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher 2.2.x hardening guide against the CIS 1.4.0 Kubernetes benchmark. This document is to be used by Rancher operators, security teams, auditors and decision makers.
 
 #### Testing controls methodology
 
@@ -19,20 +20,15 @@ Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Whe
 
 When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the `jq` command to provide human-readable formatting.
 
-Tests will have an exit code of zero on success and non-zero on failure.
-
 #### Known Scored Control Failures
 
 The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
 
 - 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
-- 1.3.6 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 - 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more-restrictive (Scored)
 - 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
-- 2.1.3 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
-- 2.1.9 - Ensure that the `--hostname-override` argument is not set (Scored)
-- 2.1.13 - Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
-- 2.1.14 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
+- 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
+- 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
 
 ### Controls
 
@@ -190,13 +186,13 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 
 **Result:** Pass
 
-#### 1.1.13 - Ensure that the admission control plugin `SecurityContextDeny` is set (Scored)
+#### 1.1.13 - Ensure that the admission control plugin `SecurityContextDeny` is set (Not Scored)
 
 **Notes**
 
-This control may be out of date. This **SHOULD NOT** be set if you are using `PodSecurityPolicy` (PSP). From the Kubernetes 1.11 documentation:
+This **SHOULD NOT** be set if you are using `PodSecurityPolicy` (PSP). From CIS Benchmark document:
 
-> This should be enabled if a cluster doesn’t utilize pod security policies to restrict the set of values a security context can take.
+> This admission controller should only be used where Pod Security Policies cannot be used on the cluster, as it can interact poorly with certain Pod Security Policies
 
 Several system services (such as `nginx-ingress`) utilize `SecurityContext` to switch users and assign capabilities. These exceptions to the general principle of not allowing privilege or capabilities can be managed with PSP.
 
@@ -319,6 +315,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--token-auth-file=.*
 RKE is using the kubelet's ability to automatically create self-signed certs. No CA cert is saved to verify the communication between `kube-apiserver` and `kubelet`.
 
 **Mitigation**
+@TODO: See what happens when you give RKE a private cert.
 
 Make sure nodes with `role:controlplane` are on the same local network as your nodes with `role:worker`.  Use network ACLs to restrict connections to the kubelet port (10250/tcp) on worker nodes, only permitting it from controlplane nodes.
 
@@ -384,7 +381,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--service-account-key-file=.*").string'
 ```
 
-**Returned Value:** `--service-account-key-file=/etc/kubernetes/ssl/kube-apiserver-key.pem`
+**Returned Value:** `--service-account-key-file=/etc/kubernetes/ssl/kube-service-account-token-key.pem`
 
 **Result:** Pass
 
@@ -462,10 +459,10 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=
 **Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
+docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
 ```
 
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+**Returned Value:** `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305).*").captures[].string'
@@ -474,34 +471,34 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=
 **Returned Value:** `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
-```
-
-**Returned Value:**
-
-``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305`
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
+docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`
+**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
 **Returned Value:** `TLS_RSA_WITH_AES_256_GCM_SHA384`
+
+``` bash
+docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
+```
+
+**Returned Value:** `TLS_RSA_WITH_AES_128_GCM_SHA256`
 
 **Audit** (Disallowed Ciphers)
 
@@ -531,7 +528,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--etcd-cafile=.*").s
 
 **Result:** Pass
 
-#### 1.1.32 - Ensure that the `--authorization-mode` argument is set to Node (Scored)
+#### 1.1.32 - Ensure that the `--authorization-mode` argument includes Node (Scored)
 
 **Audit**
 
@@ -539,7 +536,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--etcd-cafile=.*").s
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--authorization-mode=(Node|RBAC|,)+").string'
 ```
 
-**Returned Value:** `--authorization-mode=Node,RBA`
+**Returned Value:** `--authorization-mode=Node,RBAC`
 **Result:** Pass
 
 #### 1.1.33 - Ensure that the admission control plugin `NodeRestriction` is set (Scored)
@@ -556,13 +553,16 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 
 #### 1.1.34 - Ensure that the `--experimental-encryption-provider-config` argument is set as appropriate (Scored)
 
+**Notes**
+In Kubernetes 1.13.x this flag is `--encryption-provider-config`
+
 **Audit**
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--experimental-encryption-provider-config=.*").string'
+docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--encryption-provider-config=.*").string'
 ```
 
-**Returned Value:** `--experimental-encryption-provider-config=/etc/kubernetes/encryption.yaml`
+**Returned Value:** `encryption-provider-config=/etc/kubernetes/encryption.yaml`
 
 **Result:** Pass
 
@@ -575,7 +575,7 @@ Only the first provider in the list is active.
 **Audit**
 
 ``` bash
-grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
+grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
 ```
 
 **Returned Value:**  `- aescbc:`
@@ -588,8 +588,8 @@ grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
 
 The `EventRateLimit` plugin requires setting the `--admission-control-config-file` option and configuring details in the following files:
 
-- `/etc/kubernetes/admission.yaml`
-- `/etc/kubernetes/event.yaml`
+- `/opt/kubernetes/admission.yaml`
+- `/opt/kubernetes/event.yaml`
 
 See Host Configuration for details.
 
@@ -631,7 +631,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(A
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=.*").string'
 ```
 
-**Returned Value:** `--audit-policy-file=/etc/kubernetes/audit.yaml`
+**Returned Value:** `--audit-policy-file=/opt/kubernetes/audit.yaml`
 
 **Result:** Pass
 
@@ -639,7 +639,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=
 
 **Notes**
 
-RKE uses the default value of 60s and doesn't set this option.
+RKE uses the default value of 60s and doesn't set this option. Tuning this value is specific to the environment.
 
 **Audit**
 
@@ -651,75 +651,15 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--request-timeout=.*
 
 **Result:** Pass
 
-#### 1.1.39 - Ensure that the API Server only makes use of strong cryptographic ciphers (Not Scored)
+#### Ensure that the --authorization-mode argument includes RBAC (Scored)
 
-**Notes**
-
-This appears to be a repeat of 1.1.30.
-
-**Audit** (Allowed Ciphers)
+**Audit**
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
+docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--authorization-mode=.*").string'
 ```
 
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
-```
-
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305).*").captures[].string'
-```
-
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
-```
-
-**Returned Value:**
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
-```
-
-**Returned Value:**
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305).*").captures[].string'
-```
-
-**Returned Value:**
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
-```
-
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
-```
-
-**Returned Value:** `TLS_RSA_WITH_AES_256_GCM_SHA384`
-
-**Audit** (Disallowed Ciphers)
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(CBC).*").captures[].string'
-```
-
-**Returned Value:** `null`
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(RC4).*").captures[].string'
-```
-
-**Returned Value:** `null`
+**Returned Value:** `"--authorization-mode=Node,RBAC"`
 
 **Result:** Pass
 
@@ -758,6 +698,7 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--terminate
 ```
 
 **Returned Value:** `--terminated-pod-gc-threshold=1000`
+
 **Result:** Pass
 
 #### 1.3.2 - Ensure that the `--profiling` argument is set to false (Scored)
@@ -792,7 +733,7 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--use-servi
 docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--service-account-private-key-file=.*").string'
 ```
 
-**Returned Value:** `--service-account-private-key-file=/etc/kubernetes/ssl/kube-apiserver-key.pem`
+**Returned Value:** `--service-account-private-key-file=/etc/kubernetes/ssl/kube-service-account-token-key.pem`
 
 **Result:** Pass
 
@@ -817,12 +758,12 @@ RKE does not yet support certificate rotation. This feature is due for the 0.1.1
 **Audit**
 
 ``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
+docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `RotateKubeletServerCertificate=true`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 1.3.7 - Ensure that the `--address` argument is set to 127.0.0.1 (Scored)
 
@@ -910,31 +851,33 @@ This is a manual check.
 
 **Audit** (`/var/lib/cni/networks/k8s-pod-network`)
 
+**Note**
+This may return a lockfile. Permissions on this file do not need to be as restrictive as the CNI files.
+
 ``` bash
-ls -l /var/lib/cni/networks/k8s-pod-network/
+stat -c "%n - %a" /var/lib/cni/networks/k8s-pod-network/*
 ```
 
 **Returned Value:**
 
 ``` bash
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.2
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.3
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.4
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.5
--rw-r--r-- 1 root root   10 Nov  7 16:25 last_reserved_ip.0
+/var/lib/cni/networks/k8s-pod-network/10.42.0.2 - 644
+/var/lib/cni/networks/k8s-pod-network/10.42.0.3 - 644
+/var/lib/cni/networks/k8s-pod-network/last_reserved_ip.0 - 644
+/var/lib/cni/networks/k8s-pod-network/lock - 750
 ```
 
 **Audit** (`/etc/cni/net.d`)
 
 ``` bash
-ls -l /etc/cni/net.d/
+stat -c "%n - %a" /etc/cni/net.d/*
 ```
 
 **Returned Value:**
 
 ``` bash
--rw-r--r-- 1 root root 1474 Nov  6 20:05 10-calico.conflist
--rw------- 1 root root 2529 Nov  6 20:05 calico-kubeconfig
+/etc/cni/net.d/10-canal.conflist - 664
+/etc/cni/net.d/calico-kubeconfig - 600
 ```
 
 **Result:** Pass
@@ -948,30 +891,29 @@ This is a manual check.
 **Audit** (`/var/lib/cni/networks/k8s-pod-network`)
 
 ``` bash
-ls -l /var/lib/cni/networks/k8s-pod-network/
+stat -c "%n - %U:%G" /var/lib/cni/networks/k8s-pod-network/*
 ```
 
 **Returned Value:**
 
 ``` bash
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.2
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.3
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.4
--rw-r--r-- 1 root root   64 Nov  6 20:05 10.42.0.5
--rw-r--r-- 1 root root   10 Nov  7 16:25 last_reserved_ip.0
+/var/lib/cni/networks/k8s-pod-network/10.42.0.2 - root:root
+/var/lib/cni/networks/k8s-pod-network/10.42.0.3 - root:root
+/var/lib/cni/networks/k8s-pod-network/last_reserved_ip.0 - root:root
+/var/lib/cni/networks/k8s-pod-network/lock - root:root
 ```
 
 **Audit** (`/etc/cni/net.d`)
 
 ``` bash
-ls -l /etc/cni/net.d/
+stat -c "%n - %U:%G" /etc/cni/net.d/*
 ```
 
 **Returned Value:**
 
 ``` bash
--rw-r--r-- 1 root root 1474 Nov  6 20:05 10-calico.conflist
--rw------- 1 root root 2529 Nov  6 20:05 calico-kubeconfig
+/etc/cni/net.d/10-canal.conflist - root:root
+/etc/cni/net.d/calico-kubeconfig - root:root
 ```
 
 **Result:** Pass
@@ -980,14 +922,12 @@ ls -l /etc/cni/net.d/
 
 **Notes**
 
-Files underneath the data dir are permissioned `700`
+Files underneath the data dir have permissions set to `700`
 
 ``` bash
-ls -al /var/lib/etcd
-total 12
-drwxr-xr-x  3 root root 4096 Nov 14 17:06 .
-drwxr-xr-x 47 root root 4096 Nov 14 17:06 ..
-drwx------  4 root root 4096 Nov 14 17:06 member
+stat -c "%n - %a" /var/lib/etcd/*
+
+/var/lib/etcd/member - 700
 ```
 
 **Audit**
@@ -1080,6 +1020,102 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml
 
 **Result:** Pass
 
+#### 1.4.19 - Ensure that the Kubernetes PKI directory and file ownership is set to root:root (Scored)
+
+**Audit**
+
+``` bash
+ls -laR /etc/kubernetes/ssl/ |grep -v yaml
+
+```
+
+**Returned Value:**
+``` bash
+total 128
+drwxr-xr-x 2 root root 4096 Jul  1 19:53 .
+drwxr-xr-x 4 root root 4096 Jul  1 19:53 ..
+-rw------- 1 root root 1679 Jul  1 19:53 kube-apiserver-key.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-apiserver-proxy-client-key.pem
+-rw-r--r-- 1 root root 1107 Jul  1 19:53 kube-apiserver-proxy-client.pem
+-rw------- 1 root root 1675 Jul  1 19:53 kube-apiserver-requestheader-ca-key.pem
+-rw-r--r-- 1 root root 1082 Jul  1 19:53 kube-apiserver-requestheader-ca.pem
+-rw-r--r-- 1 root root 1285 Jul  1 19:53 kube-apiserver.pem
+-rw------- 1 root root 1675 Jul  1 19:53 kube-ca-key.pem
+-rw-r--r-- 1 root root 1017 Jul  1 19:53 kube-ca.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-controller-manager-key.pem
+-rw-r--r-- 1 root root 1062 Jul  1 19:53 kube-controller-manager.pem
+-rw------- 1 root root 1675 Jul  1 19:53 kube-etcd-172-31-16-161-key.pem
+-rw-r--r-- 1 root root 1277 Jul  1 19:53 kube-etcd-172-31-16-161.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-etcd-172-31-24-134-key.pem
+-rw-r--r-- 1 root root 1277 Jul  1 19:53 kube-etcd-172-31-24-134.pem
+-rw------- 1 root root 1675 Jul  1 19:53 kube-etcd-172-31-30-57-key.pem
+-rw-r--r-- 1 root root 1277 Jul  1 19:53 kube-etcd-172-31-30-57.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-node-key.pem
+-rw-r--r-- 1 root root 1070 Jul  1 19:53 kube-node.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-proxy-key.pem
+-rw-r--r-- 1 root root 1046 Jul  1 19:53 kube-proxy.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-scheduler-key.pem
+-rw-r--r-- 1 root root 1050 Jul  1 19:53 kube-scheduler.pem
+-rw------- 1 root root 1679 Jul  1 19:53 kube-service-account-token-key.pem
+-rw-r--r-- 1 root root 1285 Jul  1 19:53 kube-service-account-token.pem
+```
+
+**Result:** Pass
+
+#### 1.4.20 - Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored)
+
+**Audit**
+
+``` bash
+stat -c "%n - %a" /etc/kubernetes/ssl/*.pem |grep -v key
+
+```
+
+**Returned Value:**
+``` bash
+/etc/kubernetes/ssl/kube-apiserver-proxy-client.pem - 644
+/etc/kubernetes/ssl/kube-apiserver-requestheader-ca.pem - 644
+/etc/kubernetes/ssl/kube-apiserver.pem - 644
+/etc/kubernetes/ssl/kube-ca.pem - 644
+/etc/kubernetes/ssl/kube-controller-manager.pem - 644
+/etc/kubernetes/ssl/kube-etcd-172-31-16-161.pem - 644
+/etc/kubernetes/ssl/kube-etcd-172-31-24-134.pem - 644
+/etc/kubernetes/ssl/kube-etcd-172-31-30-57.pem - 644
+/etc/kubernetes/ssl/kube-node.pem - 644
+/etc/kubernetes/ssl/kube-proxy.pem - 644
+/etc/kubernetes/ssl/kube-scheduler.pem - 644
+/etc/kubernetes/ssl/kube-service-account-token.pem - 644
+```
+
+**Result:** Pass
+
+#### 1.4.21 - Ensure that the Kubernetes PKI key file permissions are set to 600 (Scored)
+
+**Audit**
+
+``` bash
+stat -c "%n - %a" /etc/kubernetes/ssl/*key*
+
+```
+
+**Returned Value:**
+``` bash
+/etc/kubernetes/ssl/kube-apiserver-key.pem - 600
+/etc/kubernetes/ssl/kube-apiserver-proxy-client-key.pem - 600
+/etc/kubernetes/ssl/kube-apiserver-requestheader-ca-key.pem - 600
+/etc/kubernetes/ssl/kube-ca-key.pem - 600
+/etc/kubernetes/ssl/kube-controller-manager-key.pem - 600
+/etc/kubernetes/ssl/kube-etcd-172-31-16-161-key.pem - 600
+/etc/kubernetes/ssl/kube-etcd-172-31-24-134-key.pem - 600
+/etc/kubernetes/ssl/kube-etcd-172-31-30-57-key.pem - 600
+/etc/kubernetes/ssl/kube-node-key.pem - 600
+/etc/kubernetes/ssl/kube-proxy-key.pem - 600
+/etc/kubernetes/ssl/kube-scheduler-key.pem - 600
+/etc/kubernetes/ssl/kube-service-account-token-key.pem - 600
+```
+
+**Result:** Pass
+
 ### 1.5 - etcd
 
 #### 1.5.1 - Ensure that the `--cert-file` and `--key-file` arguments are set as appropriate (Scored)
@@ -1090,7 +1126,10 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml
 docker inspect etcd | jq -e '.[0].Args[] | match("--cert-file=.*").string'
 ```
 
-**Returned Value:** `--cert-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135.pem`
+**Note**
+Certificate file name may vary slightly, since it contains the IP of the etcd container.
+
+**Returned Value:** `--cert-file=/etc/kubernetes/ssl/kube-etcd-172-31-24-134.pem`
 
 **Audit** (`--key-file`)
 
@@ -1098,7 +1137,10 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--cert-file=.*").string'
 docker inspect etcd | jq -e '.[0].Args[] | match("--key-file=.*").string'
 ```
 
-**Returned Value:** `--key-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135-key.pem`
+**Note**
+Key file name may vary slightly, since it contains the IP of the etcd container.
+
+**Returned Value:** `--key-file=/etc/kubernetes/ssl/kube-etcd-172-31-24-134-key.pem`
 
 **Result:** Pass
 
@@ -1138,6 +1180,9 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--auto-tls(?:(?!=false).*)").s
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-cert-file=.*").string'
 ```
 
+**Note**
+Certificate file name may vary slightly, since it contains the IP of the etcd container.
+
 **Returned Value:** `--peer-cert-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135.pem`
 
 **Audit** (`--peer-key-file)
@@ -1145,6 +1190,9 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--peer-cert-file=.*").string'
 ``` bash
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-key-file=.*").string'
 ```
+
+**Note**
+Key file name may vary slightly, since it contains the IP of the etcd container.
 
 **Returned Value:** `--peer-key-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135-key.pem`
 
@@ -1162,7 +1210,7 @@ Setting "--peer-client-cert-auth" is the equivalent of setting "--peer-client-ce
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-client-cert-auth(=true)*").string'
 ```
 
-**Returned Value:** `--client-cert-auth`
+**Returned Value:** `--peer-client-cert-auth`
 
 **Result:** Pass
 
@@ -1367,17 +1415,7 @@ kubectl get psp restricted -o jsonpath='{.spec.requiredDropCapabilities}' | grep
 
 ### 2.1 - Kubelet
 
-#### 2.1.1 - Ensure that the `--allow-privileged` argument is set to false (Scored)
-
-**Notes**
-
-The `--allow-privileged` argument is deprecated from Kubernetes v1.11, and the default setting is `true` with the intention that users should use `PodSecurityPolicy` settings to allow or prevent privileged containers.
-
-Our RKE configuration uses `PodSecurityPolicy` with a default policy to reject privileged containers.
-
-**Result:** Pass (Not Applicable)
-
-#### 2.1.2 - Ensure that the `--anonymous-auth` argument is set to `false` (Scored)
+#### 2.1.1 - Ensure that the `--anonymous-auth` argument is set to `false` (Scored)
 
 **Audit**
 
@@ -1389,7 +1427,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--anonymous-auth=false").st
 
 **Result:** Pass
 
-#### 2.1.3 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
+#### 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 
 **Notes**
 
@@ -1405,7 +1443,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--authorization-mode=Webhoo
 
 **Result:** Fail
 
-#### 2.1.4 - Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
+#### 2.1.3 - Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
 
 **Audit**
 
@@ -1417,7 +1455,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--client-ca-file=.*").strin
 
 **Result:** Pass
 
-#### 2.1.5 - Ensure that the `--read-only-port` argument is set to `0` (Scored)
+#### 2.1.4 - Ensure that the `--read-only-port` argument is set to `0` (Scored)
 
 **Audit**
 
@@ -1429,7 +1467,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--read-only-port=0").string
 
 **Result:** Pass
 
-#### 2.1.6 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to `0` (Scored)
+#### 2.1.5 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to `0` (Scored)
 
 **Audit**
 
@@ -1441,7 +1479,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--streaming-connection-idle
 
 **Result:** Pass
 
-#### 2.1.7 - Ensure that the `--protect-kernel-defaults` argument is set to `true` (Scored)
+#### 2.1.6 - Ensure that the `--protect-kernel-defaults` argument is set to `true` (Scored)
 
 **Audit**
 
@@ -1453,7 +1491,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--protect-kernel-defaults=t
 
 **Result:** Pass
 
-#### 2.1.8 - Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored)
+#### 2.1.7 - Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored)
 
 **Audit**
 
@@ -1465,7 +1503,10 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--make-iptables-util-chains
 
 **Result:** Pass
 
-#### 2.1.9 - Ensure that the `--hostname-override` argument is not set (Scored)
+#### 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
+
+**Notes**
+This is used by most cloud providers. Not setting this is not practical in most cases.
 
 **Audit**
 
@@ -1477,7 +1518,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--hostname-override=.*").st
 
 **Result:** Fail
 
-#### 2.1.10 - Ensure that the `--event-qps` argument is set to `0` (Scored)
+#### 2.1.9 - Ensure that the `--event-qps` argument is set to `0` (Scored)
 
 **Audit**
 
@@ -1489,7 +1530,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--event-qps=0").string'
 
 **Result:** Pass
 
-#### 2.1.11 - Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
+#### 2.1.10 - Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
 
 **Notes**
 
@@ -1513,7 +1554,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-private-key-file=.*")
 
 **Result:** Pass
 
-#### 2.1.12 - Ensure that the `--cadvisor-port` argument is set to `0` (Scored)
+#### 2.1.11 - Ensure that the `--cadvisor-port` argument is set to `0` (Scored)
 
 **Audit**
 
@@ -1521,15 +1562,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-private-key-file=.*")
 docker inspect kubelet | jq -e '.[0].Args[] | match("--cadvisor-port=0").string'
 ```
 
-**Returned Value:** `--cadvisor-port=0`
+**Returned Value:** `null`
 
 **Result:** Pass
 
-#### 2.1.13 - Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
+#### 2.1.12 - Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
 
 **Notes**
 
-RKE will enable certificate rotation in version 0.1.12.
+RKE handles certificate rotation through an external process.
 
 **Audit**
 
@@ -1539,13 +1580,9 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--rotate-certificates=true"
 
 **Returned Value:** `null`
 
-**Result:** Fail
+**Result:** Pass (Not Applicable)
 
-#### 2.1.14 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
-
-**Notes**
-
-RKE does not yet support certificate rotation. This feature is due for the 0.1.12 release of RKE.
+#### 2.1.13 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 
 **Audit**
 
@@ -1553,11 +1590,11 @@ RKE does not yet support certificate rotation. This feature is due for the 0.1.1
 docker inspect kubelet | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `RotateKubeletServerCertificate=true`
 
-**Result:** Fail
+**Result:** Pass
 
-#### 2.1.15 - Ensure that the kubelet only makes use of strong cryptographic ciphers (Not Scored)
+#### 2.1.14 - Ensure that the kubelet only makes use of strong cryptographic ciphers (Not Scored)
 
 **Audit** (Allowed Ciphers)
 
@@ -1570,10 +1607,10 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_
 **Audit**
 
 ``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
+docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
 ```
 
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+**Returned Value:** `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 
 **Audit**
 
@@ -1586,18 +1623,10 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_
 **Audit**
 
 ``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
-```
-
-**Returned Value:**
-
-**Audit**
-
-``` bash
 docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 
 **Audit**
 
@@ -1605,15 +1634,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_
 docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** `TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305`
 
 **Audit**
 
 ``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
+docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
-**Returned Value:** `TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`
+**Returned Value:** `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
 
 **Audit**
 
@@ -1622,6 +1651,14 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_
 ```
 
 **Returned Value:** `TLS_RSA_WITH_AES_256_GCM_SHA384`
+
+**Audit**
+
+``` bash
+docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
+```
+
+**Returned Value:** `TLS_RSA_WITH_AES_128_GCM_SHA256`
 
 **Audit** (Disallowed Ciphers)
 
