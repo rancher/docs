@@ -36,6 +36,9 @@ As of v0.2.0, the one-time snapshot can be uploaded to a S3 compatible backend b
 | `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
 | `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
 
+##### IAM Support
+In addition to API access keys, RKE supports using IAM roles for S3 authentication. The cluster etcd nodes must be assigned an IAM role that has read/write access to the designated backup bucket on S3. Also, the nodes must have network access to the S3 endpoint specified. 
+
 ### Local One-Time Snapshot Example
 
 ```
@@ -257,7 +260,7 @@ nodes:
 After the new node is added to the `cluster.yml`, run `rke etcd snapshot-restore` to launch `etcd` from the backup. The snapshot and `pki.bundle.tar.gz` file are expected to be saved at `/opt/rke/etcd-snapshots`.
 As of v0.2.0, if you want to directly retrieve the snapshot from S3, add in the [S3 options](#options-for-rke-etcd-snapshot-restore).
 
-> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process as the certificates required to restore are preserved within the `cluster.rkestate` 
+> **Note:** As of v0.2.0, the file **pki.bundle.tar.gz** is no longer required for the restore process as the certificates required to restore are preserved within the `cluster.rkestate`
 
 ```
 $ rke etcd snapshot-restore --name snapshot.db --config cluster.yml
@@ -298,6 +301,3 @@ docker container inspect rke-bundle-cert
 ```
 
 The important thing to note is the mounts of the container and location of the **pki.bundle.tar.gz**.
-
-
-

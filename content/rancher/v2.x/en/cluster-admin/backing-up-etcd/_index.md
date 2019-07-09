@@ -39,7 +39,7 @@ By default, the `local` backup target is selected. The benefits of this option i
 
 #### S3 Backup Target
 
-The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration reuqirements do require additional effort that should be considered. 
+The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration requirements do require additional effort that should be considered.
 
 | Option | Description | Required|
 |---|---|---|
@@ -49,13 +49,21 @@ The `S3` backup target allows users to configure a S3 compatible backend to stor
 |S3 Access Key|S3 access key with permission to access the backup bucket|*|
 |S3 Secret Key|S3 secret key with permission to access the backup bucket|*|
 
+##### IAM Support
+The `S3` backup target supports using IAM authentication to AWS API in addition to using API credentials. To use IAM authentication, the following requirements must be met:
+ * The cluster etcd nodes must have an instance role that has read/write access to the designated backup bucket.
+ * The cluster etcd nodes must have network access to the specified S3 endpoint.
+ * The Rancher Server node(s) must have an instance role that has read/write to the designated backup bucket.
+ * The Rancher Server node(s) must have network access to the specified S3 endpoint.
+
+
 ### Snapshot Creation Period and Retention Count
 
 Select how often you want recurring snapshots to be taken as well as how many snapshots to keep. The amount of time is measured in hours. With timestamped snapshots, the user has the ability to do a point-in-time recovery.
 
 ## One-Time Snapshots
 
-In addition to recurring snapshots, you may want to take a "one-time" snapshot. For example, before upgrading the Kubernetes version of a cluster it's best to backup the state of the cluster to protect against upgrade failure. 
+In addition to recurring snapshots, you may want to take a "one-time" snapshot. For example, before upgrading the Kubernetes version of a cluster it's best to backup the state of the cluster to protect against upgrade failure.
 
 1. In the **Global** view, navigate to the cluster that you want to take a one-time snapshot.
 
