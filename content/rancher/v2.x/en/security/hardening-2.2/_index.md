@@ -114,7 +114,7 @@ This supports the following controls:
 On the control plane hosts for the Rancher HA cluster run:
 
 ``` bash
-stat /opt/kubernetes/encryption.yaml
+stat /etc/kubernetes/encryption.yaml
 ```
 
 Ensure that:
@@ -146,14 +146,14 @@ Where `aescbc` is the key type, and `secret` is populated with a 32-byte base64 
 
 ``` bash
 head -c 32 /dev/urandom | base64 -i -
-touch /opt/kubernetes/encryption.yaml
+touch /etc/kubernetes/encryption.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /opt/kubernetes/encryption.yaml
-chmod 0600 /opt/kubernetes/encryption.yaml
+chown root:root /etc/kubernetes/encryption.yaml
+chmod 0600 /etc/kubernetes/encryption.yaml
 ```
 
 - Set the contents to:
@@ -201,7 +201,7 @@ This supports the following controls:
 On each control plane node, run:
 
 ``` bash
-stat /opt/kubernetes/audit.yaml
+stat /etc/kubernetes/audit.yaml
 ```
 
 Ensure that:
@@ -225,14 +225,14 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /opt/kubernetes/audit.yaml
+touch /etc/kubernetes/audit.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /opt/kubernetes/audit.yaml
-chmod 0600 /opt/kubernetes/audit.yaml
+chown root:root /etc/kubernetes/audit.yaml
+chmod 0600 /etc/kubernetes/audit.yaml
 ```
 
 - Set the contents to:
@@ -267,8 +267,8 @@ This supports the following control:
 On nodes with the `controlplane` role run:
 
 ``` bash
-stat /opt/kubernetes/admission.yaml
-stat /opt/kubernetes/event.yaml
+stat /etc/kubernetes/admission.yaml
+stat /etc/kubernetes/event.yaml
 ```
 
 For each file, ensure that:
@@ -284,7 +284,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /opt/kubernetes/event.yaml
+  path: /etc/kubernetes/event.yaml
 ```
 
 For `event.yaml` ensure that the file contains:
@@ -305,17 +305,17 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /opt/kubernetes/admission.yaml
-touch /opt/kubernetes/event.yaml
+touch /etc/kubernetes/admission.yaml
+touch /etc/kubernetes/event.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /opt/kubernetes/admission.yaml
-chown root:root /opt/kubernetes/event.yaml
-chmod 0600 /opt/kubernetes/admission.yaml
-chmod 0600 /opt/kubernetes/event.yaml
+chown root:root /etc/kubernetes/admission.yaml
+chown root:root /etc/kubernetes/event.yaml
+chmod 0600 /etc/kubernetes/admission.yaml
+chmod 0600 /etc/kubernetes/event.yaml
 ```
 
 - For `admission.yaml` set the contents to:
@@ -325,7 +325,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /opt/kubernetes/event.yaml
+  path: /etc/kubernetes/event.yaml
 ```
 
 - For event.yaml set the contents to:
@@ -445,8 +445,8 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 --repair-malformed-updates=false
 --service-account-lookup=true
 --enable-admission-plugins= "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
---encryption-provider-config=/opt/kubernetes/encryption.yaml
---admission-control-config-file=/opt/kubernetes/admission.yaml
+--encryption-provider-config=/etc/kubernetes/encryption.yaml
+--admission-control-config-file=/etc/kubernetes/admission.yaml
 --audit-log-path=/var/log/kube-audit/audit-log.json
 --audit-log-maxage=5
 --audit-log-maxbackup=5
@@ -475,14 +475,14 @@ services:
       repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      encryption-provider-config: /opt/kubernetes/encryption.yaml
-      admission-control-config-file: "/opt/kubernetes/admission.yaml"
+      encryption-provider-config: /etc/kubernetes/encryption.yaml
+      admission-control-config-file: "/etc/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
       audit-log-maxbackup: "5"
       audit-log-maxsize: "100"
       audit-log-format: "json"
-      audit-policy-file: /opt/kubernetes/audit.yaml
+      audit-policy-file: /etc/kubernetes/audit.yaml
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
 ```
