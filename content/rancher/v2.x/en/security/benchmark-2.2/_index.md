@@ -1230,7 +1230,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--peer-auto-tls(?:(?!=false).*
 
 **Notes**
 
-RKE does not currently implement a seperate CA for etcd certificates.
+RKE does not currently implement a separate CA for etcd certificates. This could be remediated by managing an external etcd cluster.
 
 `--trusted-ca-file` is set and different from the `--client-ca-file` used by `kube-apiserver`.
 
