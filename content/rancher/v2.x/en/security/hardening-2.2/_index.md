@@ -969,7 +969,7 @@ done
 
 The `admin` role should only be assigned to users that require administrative privileges. Any role that is not `admin` or `user` should be audited in the RBAC section of the UI to ensure that the privileges adhere to policies for global access.
 
-The Rancher server permits customization of the default global permissions. We  recommend that auditors also review the policies of any custom global roles.
+The Rancher server permits customization of the default global permissions. We recommend that auditors also review the policies of any custom global roles.
 
 **Remediation**
 
