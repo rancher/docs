@@ -496,6 +496,8 @@ rke up --config cluster.yml
 
 Set the appropriate options for the Kubernetes scheduling service.
 
+**NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
+
 **Rationale**
 
 To address the following controls on the CIS benchmark, the command line options should be set on the Kubernetes scheduler.
@@ -546,6 +548,8 @@ rke up --config cluster.yml
 **Description**
 
 Set the appropriate arguments on the Kubernetes controller manager.
+
+**NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
 
 **Rationale**
 
