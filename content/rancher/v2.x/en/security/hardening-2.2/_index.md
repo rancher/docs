@@ -3,7 +3,7 @@ title: Hardening Guide - Rancher v2.2.x
 weight: 100
 ---
 
-### Hardening Guide for Rancher 2.2.x with Kubernetes 1.11
+### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
 
 @TODO generate PDF of this document
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
@@ -97,6 +97,8 @@ kernel.panic_on_oops=1
 **Description**
 
 Create a Kubernetes encryption configuration file on each of the RKE nodes that will be provisioned with the `controlplane` role:
+
+**NOTE:** The `--experimental-encryption-provider-config` flag in Kubernetes 1.13+ is actually `--encryption-provider-config`
 
 **Rationale**
 
@@ -400,6 +402,11 @@ rke up --config cluster.yml
 **Description**
 
 Ensure the RKE configuration is set to deploy the `kube-api` service with the options required for controls.
+
+**NOTE:**
+
+Enabling the `AlwaysPullImages` admission control plugin can cause degraded performance due to overhead of always pulling images.
+Enabling the `DenyEscalatingExec` admission control plugin will prevent the 'Launch kubectl' functionality in the UI from working.
 
 **Rationale**
 
