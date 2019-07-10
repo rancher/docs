@@ -575,7 +575,7 @@ Only the first provider in the list is active.
 **Audit**
 
 ``` bash
-grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
+grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
 ```
 
 **Returned Value:**  `- aescbc:`
@@ -588,8 +588,8 @@ grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
 
 The `EventRateLimit` plugin requires setting the `--admission-control-config-file` option and configuring details in the following files:
 
-- `/opt/kubernetes/admission.yaml`
-- `/opt/kubernetes/event.yaml`
+- `/etc/kubernetes/admission.yaml`
+- `/etc/kubernetes/event.yaml`
 
 See Host Configuration for details.
 
@@ -631,7 +631,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(A
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=.*").string'
 ```
 
-**Returned Value:** `--audit-policy-file=/opt/kubernetes/audit.yaml`
+**Returned Value:** `--audit-policy-file=/etc/kubernetes/audit.yaml`
 
 **Result:** Pass
 
