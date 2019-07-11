@@ -85,7 +85,7 @@ WantedBy=multi-user.target
 OpenRC
 ------
 
-And an excample openrc `/etc/init.d/k3s`:
+And an example openrc `/etc/init.d/k3s`:
 
 ```bash
 #!/sbin/openrc-run
