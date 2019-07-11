@@ -135,6 +135,7 @@ OpenRC
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 And an example openrc `/etc/init.d/k3s`:
 =======
 And an excample openrc `/etc/init.d/k3s`:
@@ -142,6 +143,9 @@ And an excample openrc `/etc/init.d/k3s`:
 =======
 And an excample openrc `/etc/init.d/k3s`:
 >>>>>>> Initial k3s docs
+=======
+And an example openrc `/etc/init.d/k3s`:
+>>>>>>> remove roadmap
 
 ```bash
 #!/sbin/openrc-run
