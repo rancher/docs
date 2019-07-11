@@ -19,17 +19,19 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 3.  Open the **Project: Default** project.
 
-4.  Click **Deploy**.
+4.  From the main menu select **Workloads**, then click on the **Workloads** tab.
+
+5.  Click **Deploy**.
 
 	**Step Result:** The **Deploy Workload** page opens.
 
-5.  Enter a **Name** for your workload.
+6.  Enter a **Name** for your workload.
 
-6.  From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
+7.  From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
 
-7. Leave the remaining options on their default setting. We'll tell you about them later.
+8. Leave the remaining options on their default setting. We'll tell you about them later.
 
-8. Click **Launch**.
+9. Click **Launch**.
 
 **Result:**
 
@@ -47,7 +49,7 @@ Now that the application is up and running it needs to be exposed so that other 
 
 3.  Open the **Default** project.
 
-4.  Click on the **Load Balancing** tab.
+4.  From the main menu select **Workloads**, then click on the **Load Balancing** tab.
 
 5.  Click **Add Ingress**.
 
