@@ -315,7 +315,6 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--token-auth-file=.*
 RKE is using the kubelet's ability to automatically create self-signed certs. No CA cert is saved to verify the communication between `kube-apiserver` and `kubelet`.
 
 **Mitigation**
-@TODO: See what happens when you give RKE a private cert.
 
 Make sure nodes with `role:controlplane` are on the same local network as your nodes with `role:worker`.  Use network ACLs to restrict connections to the kubelet port (10250/tcp) on worker nodes, only permitting it from controlplane nodes.
 
@@ -1228,9 +1227,11 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--peer-auto-tls(?:(?!=false).*
 
 #### 1.5.7 - Ensure that a unique Certificate Authority is used for `etcd` (Not Scored)
 
-**Notes**
+**Mitigation**
 
-RKE does not currently implement a separate CA for etcd certificates. This could be remediated by managing an external etcd cluster.
+RKE supports connecting to an external etcd cluster. This external cluster could be configured with its own discreet CA.
+
+**Notes**
 
 `--trusted-ca-file` is set and different from the `--client-ca-file` used by `kube-apiserver`.
 
@@ -1242,7 +1243,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--trusted-ca-file=(?:(?!/etc/k
 
 **Returned Value:** `null`
 
-**Result:** Fail
+**Result:** Pass (See Mitigation)
 
 #### 1.6 - General Security Primitives
 
