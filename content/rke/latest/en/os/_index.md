@@ -23,6 +23,7 @@ aliases:
 
     - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
     - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp-6443-using-firewalld)
+- [SSH Server Configuration](#ssh-server-configuration)
 
 <!-- /TOC -->
 
@@ -216,4 +217,12 @@ firewall-cmd --permanent --zone=public --add-rich-rule='
   source address="your_ip_here/32"
   port protocol="tcp" port="6443" accept'
 firewall-cmd --reload
+```
+
+## SSH Server Configuration
+
+Your SSH server system-wide configuration file, located at `/etc/ssh/sshd_config`, must include this line that allows TCP forwarding:
+
+```
+AllowTcpForwarding yes
 ```
