@@ -81,7 +81,9 @@ $ sudo ros config set rancher.upgrade.url https://foo.bar.com/os/releases.yml
 
 # Example Cloud-config
 
-Here is a total cloud-config example for using RancherOS in air gap environment.
+
+Here is a total cloud-config example for using RancherOS in an air gap environment.
+
 For `system-docker`, see [Configuring Private Docker Registry]({{< baseurl >}}/os/v1.x/en/installation/configuration/airgap-configuration/#configuring-private-docker-registry).
 
 ```yaml
