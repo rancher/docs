@@ -3,25 +3,24 @@ title: Air Gap Configuration
 weight: 138
 ---
 
-In the airgap environment, `Docker Registry`, `RancherOS Reposirotries URL` and `RancherOS Upgrade URL` should be configured to ensure the os can pull images and update os services and upgrade os.
+In the air gap environment, the Docker registry, RancherOS repositories URL, and the RancherOS upgrade URL should be configured to ensure the OS can pull images, update OS services, and upgrade the OS.
 
 
-### Configuring Private Docker Registry
+# Configuring a Private Docker Registry
 
-You should use private docker registry for `user-docker` and `system-docker` to pull images.
+You should use a private Docker registry so that `user-docker` and `system-docker` can pull images.
 
-1. Add [Images prefix]({{< baseurl >}}/os/v1.x/en/installation/configuration/images-prefix/) for private docker registries.
-2. Set private registries certificates for `user-docker`
-  - [Certificates for private registries]({{< baseurl >}}/os/v1.x/en/installation/configuration/private-registries/#certificates-for-private-registries)
-3. Set private registries certificates for `system-docker`
-  1. To set the private registries certificates before the RancherOS startup, RancherOS provide a way to flush your custom certs to the ISO. See how to [set custom certs to ISO]({{< baseurl >}}/os/v1.x/en/installation/configuration/airgap-configuration/#set-custom-certs-to-iso)
-  2. You can also set the private registries certificates after the RancherOS startup.
-      - Append your private registries certs to `/etc/ssl/certs/ca-certificates.crt.rancher` file then reboot to make the certs fully take effect.
-4. The images used by RancherOS should be pushed to your private registries.
+1. Add the private Docker registry domain to the [images prefix]({{< baseurl >}}/os/v1.x/en/installation/configuration/images-prefix/).
+2. Set the private registry certificates for `user-docker`. For details, refer to [Certificates for Private Registries]({{< baseurl >}}/os/v1.x/en/installation/configuration/private-registries/#certificates-for-private-registries)
+3. Set the private registry certificates for `system-docker`. There are two ways to set the certificates:
+  - To set the private registry certificates before RancherOS starts, you can run a script included with RancherOS. For details, refer to [Set Custom Certs in ISO]({{< baseurl >}}/os/v1.x/en/installation/configuration/airgap-configuration/#set-custom-certs-in-iso).
+  - To set the private registry certificates after RancherOS starts, append your private registry certs to the `/etc/ssl/certs/ca-certificates.crt.rancher` file. Then reboot to make the certs fully take effect.
+4. The images used by RancherOS should be pushed to your private registry.
 
-#### Set custom certs to ISO
+# Set Custom Certs in ISO
 
-RancherOS provide a [script](https://github.com/rancher/os/blob/master/scripts/tools/flush_crt_iso.sh) to set your custom certs to a ISO. The following commands show how to use the script to flush certs into a ISO.
+RancherOS provides a [script](https://github.com/rancher/os/blob/master/scripts/tools/flush_crt_iso.sh) to set your custom certs for an ISO. The following commands show how to use the script:
+
 ```shell
 $ git clone https://github.com/rancher/os.git
 $ cd os
@@ -35,14 +34,15 @@ $ exit
 $ ls ./build/
 ```
 
-### Configuring RancherOS Reposirotries and Upgrade URL
+# Configuring RancherOS Repositories and Upgrade URL
 
-By default, RancherOS will update the `engine`, `console`,  `service` list from `https://raw.githubusercontent.com/rancher/os-services` and update `os` list from `https://releases.rancher.com/os/releases.yml`.  
-So in the airgap environment, you should change the Reposirotries URL and Upgrade URL to your own URL.
+The following steps show how to configure RancherOS to update from private repositories.
 
-#### 1. Clone os-services files
+By default, RancherOS will update the `engine`, `console`, and `service` list from `https://raw.githubusercontent.com/rancher/os-services` and update the `os` list from `https://releases.rancher.com/os/releases.yml`. So in the air gap environment, you need to change the repository URL and upgrade URL to your own URLs. 
 
-Clone `github.com/rancher/os-services` to local. The repo has many branches named after the RancherOS versions. Please checkout the branch that you are using.
+### 1. Clone os-services files
+
+Clone `github.com/rancher/os-services` to local. The repo has many branches named after the RancherOS versions. Please check out the branch that you are using.
 
 ```
 $ git clone https://github.com/rancher/os-services.git
@@ -50,18 +50,18 @@ $ cd os-services
 $ git checkout v1.5.2
 ```
 
-#### 2. Download the os releases yaml
+### 2. Download the OS releases yaml
 
 Download the `releases.yml` from `https://releases.rancher.com/os/releases.yml`.
 
-#### 3. Serve these files by HTTP
+### 3. Serve these files by HTTP
 
-Use a HTTP server to serve the cloned `os-services` directory and downloaded `releases.yml`.   
+Use a HTTP server to serve the cloned `os-services` directory and download `releases.yml`.   
 Make sure you can access all the files in `os-services` and `releases.yml` by URL.
 
-#### 4. Set the URLs to `rancher.repositories.core.url` and `rancher.upgrade.url`.
+### 4. Set the URLs
 
-In your cloud-config, set `rancher.repositories.core.url` and `rancher.upgrade.url` to your own `os-services` URL.
+In your cloud-config, set `rancher.repositories.core.url` and `rancher.upgrade.url` to your own `os-services` and `releases` URLs:
 ```yaml
 #cloud-config
 rancher:
@@ -79,9 +79,9 @@ $ sudo ros config set rancher.repositories.core.url https://foo.bar.com/os-servi
 $ sudo ros config set rancher.upgrade.url https://foo.bar.com/os/releases.yml
 ```
 
-### Example Cloud-config
+# Example Cloud-config
 
-Here is an total cloud-config example for using RancherOS in airgap environment.
+Here is a total cloud-config example for using RancherOS in an air gap environment.
 For `system-docker`, see [Configuring Private Docker Registry]({{< baseurl >}}/os/v1.x/en/installation/configuration/airgap-configuration/#configuring-private-docker-registry).
 
 ```yaml
