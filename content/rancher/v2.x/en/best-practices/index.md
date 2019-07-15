@@ -1,8 +1,7 @@
 ---
 title: Best Practices Guide
-layout: bpg-default-v1.0
-version: v1.0
-lang: en
+weight: 1000
+
 ---
 
 # Best Practices Guide

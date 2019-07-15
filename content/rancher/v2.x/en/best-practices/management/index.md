@@ -1,8 +1,6 @@
 ---
 title: Rancher & Kubernetes Management
-layout: bpg-default-v1.0
-version: v1.0
-lang: en
+weight: 100
 ---
 
 Rancher Operating System and Docker

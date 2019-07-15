@@ -1,8 +1,6 @@
 ---
 title: Container Best Practices 
-layout: bpg-default-v1.0
-version: v1.0
-lang: en
+weight: 100
 ---
 
 Running well built containers can greatly impact the overall performance and security of your environment. Few tips:
