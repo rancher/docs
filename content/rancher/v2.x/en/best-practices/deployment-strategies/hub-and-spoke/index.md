@@ -1,8 +1,6 @@
 ---
 title: Rancher Deployment Strategies
-layout: bpg-default-v1.0
-version: v1.0
-lang: en
+weight: 100
 ---
 
 ## Hub & Spoke

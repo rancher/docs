@@ -1,8 +1,6 @@
 ---
 title: Deployment Types
-layout: bpg-default-v1.0
-version: v1.0
-lang: en
+weight: 100
 ---
 
 For production and any installation deemed as "important" should use a three-node installation. Having multiple Rancher instances running on multiple nodes ensures high availability that cannot be accomplished with a single node environment. It's also strongly recommended to have a "staging" or "pre-production" Rancher HA environment that mirrors your production environment as closely as possible in terms of software and hardware configuration. Also consider the following points for your Rancher HA setup:
