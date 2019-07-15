@@ -162,10 +162,12 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
         ![Click Endpoints]({{< baseurl >}}/img/rancher/click-endpoints.png)
 
     2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
-
-        - **Microsoft Azure AD Graph API Endpoint** (Graph Endpoint)
-        - **OAuth 2.0 Token Endpoint** (Token Endpoint)
-        - **OAuth 2.0 Authorization Endpoint** (Auth Endpoint)
+    
+        - **Microsoft Graph API endpoint** (Graph Endpoint)
+        - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
+        - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
+        
+>**Note:** Copy the v1 version of the endpoints
 
 ### 6. Configure Azure AD in Rancher
 
