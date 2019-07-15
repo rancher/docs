@@ -5,7 +5,6 @@ weight: 100
 
 ### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
 
-@TODO: Generate pdf version
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview

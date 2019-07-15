@@ -5,7 +5,6 @@ weight: 100
 
 ### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
 
-@TODO generate PDF of this document
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
 
 ### Overview
