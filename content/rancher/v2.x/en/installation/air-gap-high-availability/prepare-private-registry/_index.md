@@ -35,7 +35,7 @@ Start by collecting all the images needed to install Rancher in an air gap envir
     ```
     rke config --system-images >> ./rancher-images.txt
     ```
-1. **Default Rancher Generated Self-Signed Certificate Users Only:** If you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image to `rancher-images.txt` as well. You may skip to [B. Publish Images](#b-publish-images  ) if you are using you using your own certificates.
+1. **Default Rancher Generated Self-Signed Certificate Users Only:** If you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://github.com/helm/charts/tree/master/stable/cert-manager) image to `rancher-images.txt` as well. You may skip this step if you are using you using your own certificates.
 
     1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
 
