@@ -3,8 +3,9 @@ title: Rancher & Kubernetes Management
 weight: 100
 ---
 
-Rancher Operating System and Docker
-Rancher is container based and can potentially run on any Linux-based operating system. However, only operating systems listed in the requirements documentation (see https://rancher.com/docs/rancher/v2.x/en/installation/requirements/) should be used along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
+## Rancher Operating System and Docker
+
+Rancher is container based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/) should be used along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
 
 ## Kubernetes Clusters
 Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production:
@@ -17,14 +18,14 @@ Rancher allows you to set up numerous combinations of configurations. Some confi
 - When possible, use Rancher to provision your Kubernetes cluster rather than importing a cluster. This will ensure the best compatibility and supportability.
 - Have multiple people in your organization set up calendar reminders for certificate renewal. Rancher provisioned Kubernetes clusters will use certificates that expire in one year. Clusters provisioned by other means may have a longer or shorter expiration. Certificates can be renewed for Rancher provisioned clusters through the user interface. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using monitoring and alerting mechanisms to tracking certificate expiration.
 - Closely monitor and scale your nodes as needed. Use the included Prometheus and Grafana options (see “Monitoring” sections of documentation) as a starting point to achieve this.  
-- Keep your Kubernetes cluster up to date with a recent and supported version. Typically the Kubernetes community will support the current version and previous 3 minor releases (for example, 1.14.x, 1.13.x, 1.12.x, and 1.11.x). Once a new version is released, older version will be EOL'd. Running on an EOL release can be a risk if a security issues are found and patches are not available. The community typically makes minor releases every quarter (3 months). Rancher’s SLA’s are not community dependent but as Kubernetes is a community driven software, the quality of experience will degrade as you get farther away from their supported target. 
+- Keep your Kubernetes cluster up to date with a recent and supported version. Typically the Kubernetes community will support the current version and previous 3 minor releases (for example, 1.14.x, 1.13.x, 1.12.x, and 1.11.x). Once a new version is released, older version will be EOL'd. Running on an EOL release can be a risk if a security issues are found and patches are not available. The community typically makes minor releases every quarter (3 months). Rancher’s SLA’s are not community dependent but as Kubernetes is a community driven software, the quality of experience will degrade as you get farther away from their supported target.
 - Run chaoskube or a similar mechanism to randomly kill pods in your test environment. This will test the resiliency of your infrastructure and the ability of Kubernetes to self-heal. It's not recommended to run this in your production environment.
-Kubernetes Orchestration 
-- Rancher's "Add Cluster" UI is preferable for getting started with Kubernetes cluster orchestration or for simple use cases, however for more complex or demanding use cases using a CLI/API driven approach is preferred. Terraform is recommended as the tooling to implement this. Using terraform with version control and a CI/CD environment you can have high assurances of consistency and reliability when deploying Kubernetes clusters. This approach also gives you the most customization options. 
+Kubernetes Orchestration
+- Rancher's "Add Cluster" UI is preferable for getting started with Kubernetes cluster orchestration or for simple use cases, however for more complex or demanding use cases using a CLI/API driven approach is preferred. Terraform is recommended as the tooling to implement this. Using terraform with version control and a CI/CD environment you can have high assurances of consistency and reliability when deploying Kubernetes clusters. This approach also gives you the most customization options.
 - Rancher maintains a terraform provider for working with Rancher 2.0 Kubernetes called the rancher2 provider.
 Network Topology
 - Kubernetes clusters are best served by low-latency networks. This is especially true for the control plane components and etcd where lots of coordination / leader election traffic occurs. Networking between Rancher server and the Kubernetes clusters it manages are more tolerant of latency.
-- Limit the use of proxies or load balancers between Rancher server and Kubernetes clusters. As Rancher is maintaining a long-lived web sockets connection, these intermediaries can interfere with the connection lifecycle as they often weren't configured with this use case in mind. 
+- Limit the use of proxies or load balancers between Rancher server and Kubernetes clusters. As Rancher is maintaining a long-lived web sockets connection, these intermediaries can interfere with the connection lifecycle as they often weren't configured with this use case in mind.
 
 
 ### Rancher Software Updates
