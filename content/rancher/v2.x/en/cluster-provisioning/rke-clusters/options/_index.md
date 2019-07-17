@@ -109,6 +109,16 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/example-yamls/).  
 
+### Default DNS provider
+
+The table below indicates what DNS provider is deployed by default. See [RKE documentation on DNS provider]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/) for more information how to configure a different DNS provider. CoreDNS can only be used on Kubernetes v1.12.0 and higher.
+
+| Rancher version | Kubernetes version | Default DNS provider |
+|-------------|--------------------|----------------------|
+| v2.2.5 and higher | v1.14.0 and higher | CoreDNS |
+| v2.2.5 and higher | v1.13.x and lower | kube-dns |
+| v2.2.4 and lower | any | kube-dns |
+
 ### Rancher specific parameters
 
 _Available as of v2.2.0_
