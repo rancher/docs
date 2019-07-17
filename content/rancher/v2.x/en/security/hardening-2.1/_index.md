@@ -1,6 +1,6 @@
 ---
 title: Hardening Guide - Rancher v2.1.x
-weight: 100
+weight: 102
 ---
 
 ### Hardening Guide for Rancher 2.1.x with Kubernetes 1.11
@@ -11,7 +11,7 @@ weight: 100
 
 This document provides prescriptive guidance for hardening a production installation of Rancher v2.1.x. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more detail on how a hardened cluster scores against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/).
+For more detail on how a hardened cluster scores against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.1.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/).
 
 ### Profile Definitions
 
