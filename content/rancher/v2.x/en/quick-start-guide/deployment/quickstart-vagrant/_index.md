@@ -6,9 +6,6 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 
 ## Prerequisites
 
->**Note**
->Deploying to Vagrant will incur charges.
-
 - [Vagrant](https://www.vagrantup.com): Vagrant is required as this is used to provision the machine based on the Vagrantfile.
 - [Virtualbox](https://www.virtualbox.org): The virtual machines that Vagrant provisions need to be provisioned to VirtualBox.
 - At least 4GB of free RAM.
