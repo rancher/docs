@@ -1,6 +1,6 @@
 ---
-title: Benchmark - Rancher v2.2.x
-weight: 100
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x
+weight: 103
 ---
 
 ### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
@@ -9,7 +9,15 @@ weight: 100
 
 #### Overview
 
-The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher 2.2.x hardening guide against the CIS 1.4.0 Kubernetes benchmark. This document is to be used by Rancher operators, security teams, auditors and decision makers.
+The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher v2.2.x hardening guide against the CIS 1.4.0 Kubernetes benchmark.
+
+This document is a companion to the Rancher v2.2.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+
+Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
+
+This document is to be used by Rancher operators, security teams, auditors and decision makers.
+
+For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.0. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
@@ -189,7 +197,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 
 **Notes**
 
-This **SHOULD NOT** be set if you are using `PodSecurityPolicy` (PSP). From CIS Benchmark document:
+This **SHOULD NOT** be set if you are using a `PodSecurityPolicy` (PSP). From the CIS Benchmark document:
 
 > This admission controller should only be used where Pod Security Policies cannot be used on the cluster, as it can interact poorly with certain Pod Security Policies
 
@@ -1172,7 +1180,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--auto-tls(?:(?!=false).*)").s
 
 #### 1.5.4 - Ensure that the `--peer-cert-file` and `--peer-key-file` arguments are set as appropriate (Scored)
 
-**Audit** (`--peer-cert-file)
+**Audit** (`--peer-cert-file`)
 
 ``` bash
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-cert-file=.*").string'
@@ -1183,7 +1191,7 @@ Certificate file name may vary slightly, since it contains the IP of the etcd co
 
 **Returned Value:** `--peer-cert-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135.pem`
 
-**Audit** (`--peer-key-file)
+**Audit** (`--peer-key-file`)
 
 ``` bash
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-key-file=.*").string'
@@ -1200,7 +1208,7 @@ Key file name may vary slightly, since it contains the IP of the etcd container.
 
 **Notes**
 
-Setting "--peer-client-cert-auth" is the equivalent of setting "--peer-client-cert-auth=true".
+Setting `--peer-client-cert-auth` is the equivalent of setting `--peer-client-cert-auth=true`.
 
 **Audit**
 
@@ -1271,7 +1279,7 @@ Since this requires the enabling of AllAlpha feature gates we would not recommen
 
 #### 1.6.5 - Apply security context to your pods and containers (Not Scored)
 
-This practice does go against control 1.1.13, but we prefer using PSP and allowing security context to be set over a blanket deny.
+This practice does go against control 1.1.13, but we prefer using a PodSecurityPolicy and allowing security context to be set over a blanket deny.
 
 Rancher allows users to set various Security Context options when launching pods via the GUI interface.
 
@@ -1285,7 +1293,7 @@ Rancher can (optionally) automatically create Network Policies to isolate projec
 
 See the _Cluster Options_ section when creating a cluster with Rancher to turn on network isolation.
 
-#### 1.6.8 - Place compensating controls in the form of PSP and RBAC for privileged container usage (Not Scored)
+#### 1.6.8 - Place compensating controls in the form of PodSecurityPolicy (PSP) and RBAC for privileged container usage (Not Scored)
 
 Section 1.7 of this guide shows how to add and configure a default "restricted" PSP based on controls.
 
@@ -1303,7 +1311,7 @@ This RKE configuration has two Pod Security Policies.
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1319,7 +1327,7 @@ kubectl get psp restricted -o jsonpath='{.spec.privileged}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1335,7 +1343,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostPID}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1351,7 +1359,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostIPC}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1367,7 +1375,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostNetwork}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1383,7 +1391,7 @@ kubectl get psp restricted -o jsonpath='{.spec.allowPrivilegeEscalation}' | grep
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1399,7 +1407,7 @@ kubectl get psp restricted -o jsonpath='{.spec.runAsUser.rule}' | grep "RunAsAny
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy is available to all ServiceAccounts.
 
 **Audit**
 
