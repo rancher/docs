@@ -1,17 +1,17 @@
 ---
-title: Hardening Guide - Rancher v2.1.x
+title: Hardening Guide - Rancher v2.2.x
 weight: 100
 ---
 
-### Hardening Guide for Rancher 2.1.x with Kubernetes 1.11
+### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.1.x/Rancher_Hardening_Guide.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.1.x. It outlines the configurations and controls required to address CIS-Kubernetes benchmark controls.
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address CIS-Kubernetes benchmark controls.
 
-[CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+[CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/)
 
 ### Profile Definitions
 
@@ -96,6 +96,8 @@ kernel.panic_on_oops=1
 **Description**
 
 Create a Kubernetes encryption configuration file on each of the RKE nodes that will be provisioned with the `controlplane` role:
+
+**NOTE:** The `--experimental-encryption-provider-config` flag in Kubernetes 1.13+ is actually `--encryption-provider-config`
 
 **Rationale**
 
@@ -291,8 +293,8 @@ apiVersion: eventratelimit.admission.k8s.io/v1alpha1
 kind: Configuration
 limits:
 - type: Server
-  qps: 500
-  burst: 5000
+  qps: 5000
+  burst: 20000
 ```
 
 **Remediation**
@@ -332,8 +334,8 @@ apiVersion: eventratelimit.admission.k8s.io/v1alpha1
 kind: Configuration
 limits:
 - type: Server
-  qps: 500
-  burst: 5000
+  qps: 5000
+  burst: 20000
 ```
 
 ## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
@@ -400,6 +402,11 @@ rke up --config cluster.yml
 
 Ensure the RKE configuration is set to deploy the `kube-api` service with the options required for controls.
 
+**NOTE:**
+
+Enabling the `AlwaysPullImages` admission control plugin can cause degraded performance due to overhead of always pulling images.
+Enabling the `DenyEscalatingExec` admission control plugin will prevent the 'Launch kubectl' functionality in the UI from working.
+
 **Rationale**
 
 To pass the following controls for the kube-api server ensure RKE configuration passes the appropriate options.
@@ -437,7 +444,7 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 --repair-malformed-updates=false
 --service-account-lookup=true
 --enable-admission-plugins= "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
---experimental-encryption-provider-config=/etc/kubernetes/encryption.yaml
+--encryption-provider-config=/etc/kubernetes/encryption.yaml
 --admission-control-config-file=/etc/kubernetes/admission.yaml
 --audit-log-path=/var/log/kube-audit/audit-log.json
 --audit-log-maxage=5
@@ -467,7 +474,7 @@ services:
       repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      experimental-encryption-provider-config: /etc/kubernetes/encryption.yaml
+      encryption-provider-config: /etc/kubernetes/encryption.yaml
       admission-control-config-file: "/etc/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
@@ -494,6 +501,8 @@ rke up --config cluster.yml
 **Description**
 
 Set the appropriate options for the Kubernetes scheduling service.
+
+**NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
 
 **Rationale**
 
@@ -545,6 +554,8 @@ rke up --config cluster.yml
 **Description**
 
 Set the appropriate arguments on the Kubernetes controller manager.
+
+**NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
 
 **Rationale**
 
@@ -809,7 +820,7 @@ kubectl get deployment rancher -n cattle-system -o yaml |grep 'add-local'
 
 **Remediation**
 
-- Upgrade to Rancher v2.1.2 via the Helm chart. While performing the upgrade, provide the following installation flag:
+- While upgrading or installing Rancher 2.2.x, provide the following flag:
 
 ``` text
 --set addLocal="false"
@@ -955,7 +966,7 @@ done
 
 The `admin` role should only be assigned to users that require administrative privileges. Any role that is not `admin` or `user` should be audited in the RBAC section of the UI to ensure that the privileges adhere to policies for global access.
 
-The Rancher server permits customization of the default global permissions. We  recommend that auditors also review the policies of any custom global roles.
+The Rancher server permits customization of the default global permissions. We recommend that auditors also review the policies of any custom global roles.
 
 **Remediation**
 
@@ -1021,7 +1032,7 @@ services:
       repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      experimental-encryption-provider-config: /etc/kubernetes/encryption.yaml
+      encryption-provider-config: /etc/kubernetes/encryption.yaml
       admission-control-config-file: "/etc/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
