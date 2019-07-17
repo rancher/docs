@@ -1,5 +1,5 @@
 ---
-title: Benchmark - Rancher v2.1.x
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.1.x
 weight: 100
 ---
 
@@ -9,7 +9,15 @@ weight: 100
 
 #### Overview
 
-The following document scores a Kubernetes 1.11.x RKE cluster provisioned according to the Rancher 2.1.x hardening guide against the CIS 1.3.0 Kubernetes benchmark. This document is to be used by Rancher operators, security teams, auditors and decision makers.
+This document is a companion to the Rancher v2.1.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster.
+
+The scope of this document is limited to scoring a Kubernetes v1.11.x RKE cluster against the CIS Kubernetes benchmark v1.3.0. The hardened cluster is evaluated against each recommendation from the Center for Internet Security (CIS) in the benchmark.
+
+Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
+
+This document is to be used by Rancher operators, security teams, auditors and decision makers.
+
+For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.3.0. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
@@ -477,19 +485,19 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** The return should be blank.
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** The return should be blank.
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305).*").captures[].string'
 ```
 
-**Returned Value:**
+**Returned Value:** The return should be blank.
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--tls-cipher-suites=.*(TLS_RSA_WITH_AES_128_GCM_SHA256).*").captures[].string'
@@ -1020,7 +1028,7 @@ stat -c %U:%G /var/lib/etcd
 
 **Notes**
 
-RKE does not store the kubernetes default kubeconfig credentials file on the nodes.  It's presented to user where RKE is run. We recommend that this kube_config_cluster.yml file be kept in secure store.
+RKE does not store the kubernetes default kubeconfig credentials file on the nodes.  It's presented to user where RKE is run. We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 
 **Result:** Pass (Not Applicable)
 
@@ -1132,7 +1140,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--auto-tls(?:(?!=false).*)").s
 
 #### 1.5.4 - Ensure that the `--peer-cert-file` and `--peer-key-file` arguments are set as appropriate (Scored)
 
-**Audit** (`--peer-cert-file)
+**Audit** (`--peer-cert-file`)
 
 ``` bash
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-cert-file=.*").string'
@@ -1140,7 +1148,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--peer-cert-file=.*").string'
 
 **Returned Value:** `--peer-cert-file=/etc/kubernetes/ssl/kube-etcd-172-31-22-135.pem`
 
-**Audit** (`--peer-key-file)
+**Audit** (`--peer-key-file`)
 
 ``` bash
 docker inspect etcd | jq -e '.[0].Args[] | match("--peer-key-file=.*").string'
@@ -1154,7 +1162,7 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--peer-key-file=.*").string'
 
 **Notes**
 
-Setting "--peer-client-cert-auth" is the equivalent of setting "--peer-client-cert-auth=true".
+Setting `--peer-client-cert-auth` is the equivalent of setting `--peer-client-cert-auth=true`.
 
 **Audit**
 
@@ -1223,7 +1231,7 @@ Since this requires the enabling of AllAlpha feature gates we would not recommen
 
 #### 1.6.5 - Apply security context to your pods and containers (Not Scored)
 
-This practice does go against control 1.1.13, but we prefer using PSP and allowing security context to be set over a blanket deny.
+This practice does go against control 1.1.13, but we prefer using `PodSecurityPolicy` and allowing security context to be set over a blanket deny.
 
 Rancher allows users to set various Security Context options when launching pods via the GUI interface.
 
@@ -1237,7 +1245,7 @@ Rancher can (optionally) automatically create Network Policies to isolate projec
 
 See the _Cluster Options_ section when creating a cluster with Rancher to turn on network isolation.
 
-#### 1.6.8 - Place compensating controls in the form of PSP and RBAC for privileged container usage (Not Scored)
+#### 1.6.8 - Place compensating controls in the form of PodSecurityPolicy (PSP) and RBAC for privileged container usage (Not Scored)
 
 Section 1.7 of this guide shows how to add and configure a default "restricted" PSP based on controls.
 
@@ -1255,7 +1263,7 @@ This RKE configuration has two Pod Security Policies.
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1271,7 +1279,7 @@ kubectl get psp restricted -o jsonpath='{.spec.privileged}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1287,7 +1295,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostPID}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1303,7 +1311,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostIPC}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1319,7 +1327,7 @@ kubectl get psp restricted -o jsonpath='{.spec.hostNetwork}' | grep "true"
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1335,7 +1343,7 @@ kubectl get psp restricted -o jsonpath='{.spec.allowPrivilegeEscalation}' | grep
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
@@ -1351,7 +1359,7 @@ kubectl get psp restricted -o jsonpath='{.spec.runAsUser.rule}' | grep "RunAsAny
 
 **Notes**
 
-The restricted PSP is available to all ServiceAccounts.
+The restricted PodSecurityPolicy (PSP) is available to all ServiceAccounts.
 
 **Audit**
 
