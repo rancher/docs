@@ -27,10 +27,12 @@ There are several options that can be configured in cluster configuration option
 * [Authorization]({{< baseurl >}}/rke/latest/en/config-options/authorization/)
 * [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/)
 * [Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/)
-  * [Add-ons Jobs Timeout](#add-ons-jobs-timeout)
-  * [Network Plugins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
-  * [Ingress Controller]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
-  * [User-Defined-Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+  * [Network Plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
+  * [DNS providers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/)
+  * [Ingress Controllers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
+  * [Metrics Server]({{< baseurl >}}/rke/latest/en/config-options/add-ons/metrics-server/)
+  * [User-Defined Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+  * [Add-ons Job Timeout](#add-ons-job-timeout)
 
 
 ## Cluster Level Options
