@@ -1,6 +1,6 @@
 ---
 title: Hardening Guide - Rancher v2.2.x
-weight: 100
+weight: 101
 ---
 
 ### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
@@ -9,13 +9,15 @@ weight: 100
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address CIS-Kubernetes benchmark controls.
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x with Kubernetes v1.13. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-[CIS Benchmark Rancher Self-Assessment Guide]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/)
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/).
 
 ### Profile Definitions
 
-The following profile definitions agree with the CIS Benchmarks for Kubernetes.
+The following profile definitions agree with the CIS benchmarks for Kubernetes.
+
+A profile is a set of configurations that provide a certain amount of hardening. Generally, the more hardened an environment is, the more it affects performance.
 
 #### Level 1
 
@@ -327,7 +329,7 @@ plugins:
   path: /etc/kubernetes/event.yaml
 ```
 
-- For event.yaml set the contents to:
+- For `event.yaml` set the contents to:
 
 ``` yaml
 apiVersion: eventratelimit.admission.k8s.io/v1alpha1
@@ -356,10 +358,10 @@ Ensure Kubelet options are configured to match CIS controls.
 
 To pass the following controls in the CIS benchmark, ensure the appropriate flags are passed to the Kubelet.
 
-- 2.1.6 - Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Scored)
-- 2.1.7 - Ensure that the --protect-kernel-defaults argument is set to true (Scored)
-- 2.1.8 - Ensure that the --make-iptables-util-chains argument is set to true (Scored)
-- 2.1.10 - Ensure that the --event-qps argument is set to 0 (Scored)
+- 2.1.6 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to 0 (Scored)
+- 2.1.7 - Ensure that the `--protect-kernel-defaults` argument is set to true (Scored)
+- 2.1.8 - Ensure that the `--make-iptables-util-chains` argument is set to true (Scored)
+- 2.1.10 - Ensure that the `--event-qps` argument is set to 0 (Scored)
 
 **Audit**
 
@@ -561,9 +563,9 @@ Set the appropriate arguments on the Kubernetes controller manager.
 
 To address the following controls the options need to be passed to the Kubernetes controller manager.
 
-- 1.3.1 - Ensure that the --terminated-pod-gc-threshold argument is set as appropriate (Scored)
-- 1.3.2 - Ensure that the --profiling argument is set to false (Scored)
-- 1.3.7 - Ensure that the --address argument is set to 127.0.0.1 (Scored)
+- 1.3.1 - Ensure that the `--terminated-pod-gc-threshold` argument is set as appropriate (Scored)
+- 1.3.2 - Ensure that the `--profiling` argument is set to false (Scored)
+- 1.3.7 - Ensure that the `--address` argument is set to 127.0.0.1 (Scored)
 
 **Audit**
 
@@ -583,7 +585,7 @@ docker inspect kube-controller-manager
 
 **Remediation**
 
-- In the RKE cluster.yml file ensure the following options are set:
+- In the RKE `cluster.yml` file ensure the following options are set:
 
 ``` yaml
 services:

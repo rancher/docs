@@ -14,7 +14,7 @@ weight: 7505
 <p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security@rancher.com">security@rancher.com</a></p>
 </td>
 <td width="30%" style="border: none;">
-<h4>Announcments</h4>
+<h4>Announcements</h4>
 <p style="padding: 8px">Subscribe to the <a href="https://forums.rancher.com/c/announcements">Rancher announcements forum</a> for release updates.</p>
 </td>
 </tr>
@@ -22,17 +22,19 @@ weight: 7505
 
 ### Rancher Hardening Guide
 
-The Rancher Hardening Guide is based off of controls and best practices found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/). The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x. See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#CIS-Benchmark-Rancher-Self-Assessment) for the full list of security controls.
+The Rancher Hardening Guide is based off of controls and best practices found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) from the Center for Internet Security. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x. and Rancher v2.2.x. See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#cis-benchmark-rancher-self-assessment) for the full list of security controls.
 
-* [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.1/)
+- [Hardening Guide for Rancher v2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.1/)
+- [Hardening Guide for Rancher v2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.2/)
 
 ### CIS Benchmark Rancher Self-Assessment
 
-This document is a companion to the Rancher v2.1.x security hardening guide. While the hardening guide shows you how to harden the cluster, the benchmark guide is meant to help you evaluate the level of security of the hardened cluster.
+The benchmark self-assessment is a companion to the Rancher security hardening guide. While the hardening guide shows you how to harden the cluster, the benchmark guide is meant to help you evaluate the level of security of the hardened cluster.
 
-Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters. The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
+Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters.  The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
 
 * [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+* [CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/)
 
 ### Rancher CVEs and Resolutions
 

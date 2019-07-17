@@ -1,6 +1,6 @@
 ---
 title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.1.x
-weight: 100
+weight: 104
 ---
 
 ### CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11
@@ -9,9 +9,9 @@ weight: 100
 
 #### Overview
 
-This document is a companion to the Rancher v2.1.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster.
+The following document scores a Kubernetes 1.11.x RKE cluster provisioned according to the Rancher v2.1.x hardening guide against the CIS 1.3.0 Kubernetes benchmark.
 
-The scope of this document is limited to scoring a Kubernetes v1.11.x RKE cluster against the CIS Kubernetes benchmark v1.3.0. The hardened cluster is evaluated against each recommendation from the Center for Internet Security (CIS) in the benchmark.
+This document is a companion to the Rancher v2.1.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
@@ -202,7 +202,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 
 **Notes**
 
-This control may be out of date. This **SHOULD NOT** be set if you are using `PodSecurityPolicy` (PSP). From the Kubernetes 1.11 documentation:
+This control may be out of date. This **SHOULD NOT** be set if you are using a `PodSecurityPolicy` (PSP). From the Kubernetes 1.11 documentation:
 
 > This should be enabled if a cluster doesn’t utilize pod security policies to restrict the set of values a security context can take.
 
