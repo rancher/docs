@@ -805,9 +805,7 @@ Having access to the local cluster from the Rancher UI is convenient for trouble
 kubectl get deployment rancher -n cattle-system -o yaml |grep 'add-local'
 ```
 
-- In the Rancher UI go to _Clusters_ in the _Global_ view and verify that no `local` cluster is present. On a fresh install the _Clusters_ tab will look like the following image:
-
-  ![No Local Cluster](images/no-local-cluster.png)
+- In the Rancher UI go to _Clusters_ in the _Global_ view and verify that no `local` cluster is present.
 
 **Remediation**
 
