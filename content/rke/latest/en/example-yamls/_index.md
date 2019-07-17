@@ -185,6 +185,10 @@ addon_job_timeout: 30
 network:
     plugin: canal
 
+# Specify DNS provider (coredns or kube-dns)
+dns:
+    provider: coredns
+
 # Currently only nginx ingress provider is supported.
 # To disable ingress controller, set `provider: none`
 
