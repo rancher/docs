@@ -74,6 +74,15 @@ IMPORTANT. The VXLAN port on nodes should not be exposed to the world, it opens 
 cluster network to accessed by anyone.  Run your nodes behind a firewall/security group that
 disables access to port 8472.
 
+Node Registration
+-----------------
+
+Agents will register with the server using the node cluster secret along with a randomly generated 
+password for the node, stored at `/var/lib/rancher/k3s/agent/node-password.txt`. The server will
+store the passwords for individual nodes at `/var/lib/rancher/k3s/server/cred/node-passwd`, and any 
+subsequent attempts must use the same password. If the data directory of an agent is removed the
+password file should be recreated for the agent, or the entry removed from the server.
+
 Containerd and Docker
 ----------
 
