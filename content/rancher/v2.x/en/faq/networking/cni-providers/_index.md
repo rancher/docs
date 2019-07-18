@@ -113,7 +113,7 @@ The following table summarizes the different features available for each CNI net
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
-| Calico | Unencapsulated | Yes | Yes | Yes | Etcd | Yes | Yes |
+| Calico | Unencapsulated | Yes | Yes | Yes | Etcd | No | Yes |
 | Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
