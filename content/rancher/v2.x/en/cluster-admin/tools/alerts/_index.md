@@ -7,6 +7,8 @@ To keep your clusters and applications healthy and driving your organizational p
 
 Alerts are sets of rules, chosen by you, to monitor for specific events.
 
+When you create a cluster and enable monitoring for the cluster, some alerts are added by default. For details, refer to the [documentation on default alerts.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/default-alerts)
+
 ## Alerts Scope
 
 The scope for alerts can be set at either the cluster level or [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
