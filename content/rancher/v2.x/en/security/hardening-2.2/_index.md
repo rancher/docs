@@ -415,7 +415,6 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 
 - 1.1.1 - Ensure that the `--anonymous-auth` argument is set to false (Scored)
 - 1.1.8 - Ensure that the `--profiling argument` is set to false (Scored)
-- 1.1.9 - Ensure that the `--repair-malformed-updates` argument is set to false (Scored)
 - 1.1.11 - Ensure that the admission control plugin `AlwaysPullImages` is set (Scored)
 - 1.1.12 - Ensure that the admission control plugin `DenyEscalatingExec` is set (Scored)
 - 1.1.14 - Ensure that the admission control plugin `NamespaceLifecycle` is set (Scored)
@@ -443,7 +442,6 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 ``` text
 --anonymous-auth=false
 --profiling=false
---repair-malformed-updates=false
 --service-account-lookup=true
 --enable-admission-plugins= "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
 --encryption-provider-config=/etc/kubernetes/encryption.yaml
@@ -473,7 +471,6 @@ services:
     extra_args:
       anonymous-auth: "false"
       profiling: "false"
-      repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
       encryption-provider-config: /etc/kubernetes/encryption.yaml
@@ -1031,7 +1028,6 @@ services:
     extra_args:
       anonymous-auth: "false"
       profiling: "false"
-      repair-malformed-updates: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
       encryption-provider-config: /etc/kubernetes/encryption.yaml
