@@ -14,6 +14,8 @@ On the other hand, if you are using a private registry that requires credentials
 
 >**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
+For more information on using a private registry with Rancher, you can refer to the [documentation about registries]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/#using-a-private-registry). For more information on using a private registry with Rancher, you can refer to the [documentation about registries]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/#using-a-private-registry).
+
 1. Log into Rancher and configure the default admin password.
 
 1. Go into the **Settings** view.
