@@ -147,13 +147,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--profiling=false").
 
 #### 1.1.9 - Ensure that the `--repair-malformed-updates` argument is set to `false` (Scored)
 
-**Audit**
-
-``` bash
-docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--repair-malformed-updates=false").string'
-```
-
-**Returned Value:** `--repair-malformed-updates=false`
+**Note:** This deprecated flag was removed in 1.14, so it cannot be set.
 
 **Result:** Pass
 
