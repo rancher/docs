@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/prepare-private-reg/
 ---
 
+<<<<<<< HEAD
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
 By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/). 
@@ -14,6 +15,15 @@ As of RKE v0.1.10, you have to configure your private registry credentials, but 
 Prior to RKE v0.1.10, you had to configure your private registry credentials **and** update the names of all the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) in the `cluster.yml` so that the image names would have the private registry URL appended before each image name.
 
 The steps in this guide assume that your private registry requires credentials, but Rancher doesn't require the private registry to have credentials. If you don't need credentials to pull from the registry, you can skip configuring the registry in RKE and later configure it from the Rancher UI instead.
+=======
+>**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use. For more information on using a private registry with Rancher, you can refer to the [documentation about registries]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/#using-a-private-registry).
+
+By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/). 
+
+As of v0.1.10, you have to configure your private registry credentials, but you can specify this registry as a default registry so that all system images are pulled from the designated private registry. You can use the command `rke config --system-images` to get the list of default system images to populate your private registry. 
+
+Prior to v0.1.10, you had to configure your private registry credentials **and** update the names of all the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) in the `cluster.yml` so that the image names would have the private registry URL appended before each image name. 
+>>>>>>> Add RKE info on airgap registry to airgap installation docs
 
 ## A. Collect Images
 
