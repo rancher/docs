@@ -52,10 +52,6 @@ Keep in mind that Rancher does End of Life support for old versions, so you will
 
 For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-maintenance-terms/).
 
-### Ask Rancher for Assistance Before Upgrades
-Notify Rancher support of your upgrade plans so they can be on full alert during your maintenance window in the event you need their assistance.
-
-
 # Network Topology
 These tips can help Rancher work more smoothly with your network.
 
@@ -95,7 +91,7 @@ Below are some basic tips for increasing security in Rancher. For more detailed 
 Keep your Rancher installation up to date with the latest patches. Patch updates have important software fixes and sometimes have security fixes. When patches with security fixes are released, customers with Rancher licenses are notified by e-mail. These updates are also posted on Rancher's [forum](https://forums.rancher.com/).
 
 ### Report Security Issues Directly to Rancher
-If you believe you have uncovered a security-related problem in Rancher, please communicate this immediately and discretely to the Rancher support team (rancher@support.com). Posting security issues on public forums such as Twitter, Rancher Slack, GitHub, etc. can potentially compromise security for all Rancher customers. Reporting security issues discretely allows Rancher to assess and mitigate the problem. Security patches are typically given high priority and released as quickly as possible.
+If you believe you have uncovered a security-related problem in Rancher, please communicate this immediately and discretely to the Rancher team (security@rancher.com). Posting security issues on public forums such as Twitter, Rancher Slack, GitHub, etc. can potentially compromise security for all Rancher customers. Reporting security issues discretely allows Rancher to assess and mitigate the problem. Security patches are typically given high priority and released as quickly as possible.
 
 ### Only Upgrade One Component at a Time
 In addition to Rancher software updates, closely monitor security fixes for related software, such as Docker, Linux, and any libraries used by your workloads. For production environments, try to avoid upgrading too many entities during a single maintenance window. Upgrading multiple components can make it difficult to root cause an issue in the event of a failure. As business requirements allow, upgrade one component at a time.
