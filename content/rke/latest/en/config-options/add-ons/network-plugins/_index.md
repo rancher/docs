@@ -53,8 +53,9 @@ The `canal_flannel_backend_type` option allows you to specify the type of [flann
 ```yaml
 network:
     plugin: flannel
+    flannel_cloud_provider:
+        iface: eth1
     options:
-        flannel_iface: eth1
         flannel_backend_type: vxlan
 ```
 
