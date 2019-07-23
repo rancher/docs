@@ -43,6 +43,11 @@ The full help text for the install script environment variables are as follows:
    - `INSTALL_K3S_SKIP_DOWNLOAD`
 
      If set to true will not download k3s hash or binary.
+     
+   - INSTALL_K3S_SYMLINK
+
+     If set to 'skip' will not create symlinks, 'force' will overwrite,
+     default will symlink if command does not exist in path.
 
    - `INSTALL_K3S_VERSION`
 
