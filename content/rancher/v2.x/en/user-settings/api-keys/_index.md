@@ -29,7 +29,7 @@ API Keys are composed of four components:
 
     The API key won't be valid after expiration. Shorter expiration periods are more secure.
     
-    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authroized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{< baseurl >}}/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) for more information.
+    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{< baseurl >}}/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) for more information.
 
 4. Click **Create**.
 
