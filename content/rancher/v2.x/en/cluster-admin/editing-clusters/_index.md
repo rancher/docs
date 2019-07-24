@@ -75,7 +75,7 @@ Following an upgrade to the latest version of Rancher, you can update your exist
 
 **Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable.
 
-The `ingress-nginx` pods are set to only upgrade on delete. After upgrading your cluster, you need to delete these pods to get on the correct version for your deployment. 
+The `ingress-nginx` pods are set to only upgrade on delete. After upgrading your cluster, you need to delete these pods to get the correct version for your deployment. 
 
 ### Adding a Pod Security Policy
 
