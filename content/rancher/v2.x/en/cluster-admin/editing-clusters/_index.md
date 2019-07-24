@@ -75,6 +75,8 @@ Following an upgrade to the latest version of Rancher, you can update your exist
 
 **Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable.
 
+The `ingress-nginx` pods are set to only upgrade on delete. After upgrading your cluster, you need to delete these pods to get on the correct version for your deployment. 
+
 ### Adding a Pod Security Policy
 
 When your cluster is running pods with security-sensitive configurations, assign it a [pod security policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/), which is a set of rules that monitors the conditions and settings in your pods. If a pod doesn't meet the rules specified in your policy, the policy stops it from running.
