@@ -19,7 +19,7 @@ In Rancher v2.3.x, you can create, view, and delete HPAs from the Rancher UI. Yo
 
 Clusters created with older versions of Rancher don't automatically have all the requirements to create an HPA. To install an HPA on these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
 
-# Basic kubectl Command for Managing HPAs
+##### Basic kubectl Command for Managing HPAs
 
 If you have an HPA manifest file, you can create, manage, and delete HPAs using `kubectl`:
 
@@ -39,7 +39,7 @@ If you have an HPA manifest file, you can create, manage, and delete HPAs using 
 
   - `kubectl delete hpa hello-world`
 
-# HPA Manifest Definition Example
+##### HPA Manifest Definition Example
 
 The HPA manifest is the config file used for managing an HPA with `kubectl`.
 
@@ -79,7 +79,7 @@ Directive | Description
  `targetAverageValue: 100Mi`  |  Indicates the deployment will scale pods up when the average running pod uses more that 100Mi of memory.
 <br/>
 
-# Configuring HPA to Scale Using Resource Metrics (CPU and Memory)
+##### Configuring HPA to Scale Using Resource Metrics (CPU and Memory)
 
 Clusters created in Rancher v2.0.7 and higher have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use Horizontal Pod Autoscaler. Run the following commands to check if metrics are available in your installation:
 
@@ -113,7 +113,7 @@ I1002 12:55:32.928597       1 serve.go:85] Serving securely on 0.0.0.0:443
 
 If you have created your cluster in Rancher v2.0.6 or before, please refer to [Manual installation](#manual-installation)
 
-# Configuring HPA to Scale Using Custom Metrics with Prometheus
+##### Configuring HPA to Scale Using Custom Metrics with Prometheus
 
 You can configure HPA to autoscale based on custom metrics provided by third-party software. The most common use case for autoscaling using third-party software is based on application-level metrics (i.e., HTTP requests per second). HPA uses the `custom.metrics.k8s.io` API to consume these metrics. This API is enabled by deploying a custom metrics adapter for the metrics collection solution.
 
