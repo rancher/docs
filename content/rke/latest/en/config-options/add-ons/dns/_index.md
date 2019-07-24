@@ -50,6 +50,8 @@ dns:
 
 By default, CoreDNS will use the host configured nameservers (usually residing at `/etc/resolv.conf`) to resolve external queries. If you want to configure specific upstream nameservers to be used by CoreDNS, you can use the `upstreamnameservers` directive.
 
+When you set `upstreamnameservers`, the `provider` also needs to be set.
+
 ```yaml
 dns:
     provider: coredns
@@ -91,6 +93,8 @@ dns:
 _Available as of v0.2.0_
 
 By default, kube-dns will use the host configured nameservers (usually residing at `/etc/resolv.conf`) to resolve external queries. If you want to configure specific upstream nameservers to be used by kube-dns, you can use the `upstreamnameservers` directive.
+
+When you set `upstreamnameservers`, the `provider` also needs to be set.
 
 ```yaml
 dns:
