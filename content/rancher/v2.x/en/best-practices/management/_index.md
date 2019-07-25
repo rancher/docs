@@ -96,6 +96,31 @@ If you believe you have uncovered a security-related problem in Rancher, please 
 ### Only Upgrade One Component at a Time
 In addition to Rancher software updates, closely monitor security fixes for related software, such as Docker, Linux, and any libraries used by your workloads. For production environments, try to avoid upgrading too many entities during a single maintenance window. Upgrading multiple components can make it difficult to root cause an issue in the event of a failure. As business requirements allow, upgrade one component at a time.
 
+# Tips for Multi-Tenant Clusters
+
+### Namespaces
+Each tenant should have their own unique namespaces within the cluster. This avoids naming conflicts and allows resources to be only visible to their owner through use of RBAC policy 
+
+### Project Isolation
+Use Rancher's Project Isolation to automatically generate Network Policy between Projects (sets of Namespaces). This further protects workloads from interference
+
+### Resource Limits
+Enforce use of sane resource limit definitions for every deployment in your cluster. This not only protects the owners of the deployment, but the neighboring resources from other tenants as well. Remember, namespaces do not isolate at the node level, so over-consumption of resources on a node affects other namespace deployments. Admission controllers can be written to require resource limit definitions
+
+### Resource Requirements
+Enforce use of resource requirement definitions for each deployment in your cluster. This enables the scheduler to appropriately schedule workloads. Otherwise you will eventually end up with over-provisioned nodes. 
+
+# Class of Service and Kubernetes Clusters
+A class of service describes the expectations around cluster uptime, durability, and duration of maintenance windows. Typically organizations group these characteristics into labels such as "dev" or "prod"
+
+### Consider fault domains
+Kubernetes clusters can span multiple classes of service, however it is important to consider the ability for one workload to affect another. Without proper deployment practices such as resource limits, requirements, etc, a deployment that is not behaving well has the potential to impact the health of the cluster. In a "dev" environment it is common for end-users to exercise less caution with deployments, thus increasing the chance of such behavior. Sharing this behavior with your production workload increases risk. 
+
+### Upgrade risks
+Upgrades of Kuberentes are not without risk, the best way to predict the outcome of an upgrade is try it on a cluster of similar load and use case as your production cluster. This is where having non-prod class of service clusters can be advantageous. 
+
+### Resource Efficiency 
+Clusters can be built with varying degrees of redundancy. In a class of service with low expectations for uptime, resources and cost can be conserved by building clusters without redundant Kubernetes control components. This approach may also free up more budget/resources to increase the redundancy at the production level
 
 # Network Security
 In general, you can use network security best practices in your Rancher and Kubernetes clusters. Consider the following:
