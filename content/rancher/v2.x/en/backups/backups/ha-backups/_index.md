@@ -57,7 +57,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
           interval_hours: 6 # time increment between snapshots
           retention: 60     # time in days before snapshot purge
           # Optional S3
-          s3_backup_config:
+          s3backupconfig:
             access_key: "myaccesskey"
             secret_key:  "myaccesssecret"
             bucket_name: "my-backup-bucket"
