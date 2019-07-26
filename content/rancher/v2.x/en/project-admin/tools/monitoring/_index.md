@@ -49,7 +49,7 @@ Grafana | 100m | 100Mi | 200m | 200Mi | No
 
 If [cluster monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) is also enabled for the project, [workload metrics]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#workload-metrics) are  available for the project.
 
-If only project monitoring is enabled, you can monitor custom metrics from any [exporters](https://prometheus.io/docs/instrumenting/exporters/). You can also expose some custom endpoints on deployments without needing to configure Prometheus for your project.
+You can monitor custom metrics from any [exporters](https://prometheus.io/docs/instrumenting/exporters/) as long as project monitoring is enabled. You can also expose some custom endpoints on deployments without needing to configure Prometheus for your project.
 
 ### Example
 
