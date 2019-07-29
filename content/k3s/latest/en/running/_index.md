@@ -170,21 +170,13 @@ serves as an example of how to run k3s from Docker.  To run from `docker-compose
     d54c8b17c055   Ready    <none>   11s   v1.13.2-k3s2
     db7a5a5a5bdd   Ready    <none>   12s   v1.13.2-k3s2
 
-To run the agent only in Docker use the following `docker-compose-agent.yml` is in the root of this repo that
-serves as an example of how to run k3s agent from Docker. Alternatively the Docker run command can also be used;
+To run the agent only in Docker, use `docker-compose up node`. Alternatively the Docker run command can also be used;
 
     sudo docker run \
             -d --tmpfs /run \
             --tmpfs /var/run \
             -e K3S_URL=${SERVER_URL} \
             -e K3S_TOKEN=${NODE_TOKEN} \
-            --privileged rancher/k3s:vX.Y.Z
-
-    sudo docker run \
-            -d --tmpfs /run \
-            --tmpfs /var/run \
-            -e K3S_URL=https://k3s.example.com:6443 \
-            -e K3S_TOKEN=XXX \
             --privileged rancher/k3s:vX.Y.Z
 
 Air-Gap Support
