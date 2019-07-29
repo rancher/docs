@@ -67,7 +67,7 @@ If you have issues upgrading Rancher, roll it back to its lastest known healthy 
 
     ```
     docker run  --volumes-from rancher-data \
-    -v $PWD:/backup alpine sh -c "rm /var/lib/rancher/* -rf \
+    -v $PWD:/backup busybox sh -c "rm /var/lib/rancher/* -rf \
     && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
