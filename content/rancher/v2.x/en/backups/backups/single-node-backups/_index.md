@@ -13,7 +13,7 @@ After completing your single node installation of Rancher, we recommend creating
 During the creation of your backup, you'll enter a series of commands, replacing placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
 ```
-docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
 ```
 
 In this command, `<DATE>` is a placeholder for the date that the data container and backup were created. `9-27-18` for example.
@@ -54,7 +54,7 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
 1. <a id="tarball"></a>From the data container that you just created (`rancher-data-<DATE>`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`). Use the following command, replacing each [placeholder](#before-you-start).
 
     ```
-    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup:z alpine tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup:z busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** A stream of commands runs on the screen.

@@ -14,7 +14,7 @@ During restoration of your backup, you'll enter a series of commands, filling pl
 
 ```
 docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
-alpine sh -c "rm /var/lib/rancher/* -rf  && \
+busybox sh -c "rm /var/lib/rancher/* -rf  && \
 tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
 ```
 
@@ -56,7 +56,7 @@ Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-bac
 
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
-    alpine sh -c "rm /var/lib/rancher/* -rf  && \
+    busybox sh -c "rm /var/lib/rancher/* -rf  && \
     tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
