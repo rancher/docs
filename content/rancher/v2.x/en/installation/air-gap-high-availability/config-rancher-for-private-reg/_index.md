@@ -6,11 +6,9 @@ aliases:
 
 After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry. The steps to configure the private registry are different depending on whether your private registry requires credentials.
 
-If your private registry doesn't require credentials, you can follow the steps below to configure the private registry by changing the settings in the Rancher UI. 
+If your private registry requires credentials, you need to pass the credentials to Rancher through the UI or through your `cluster.yml`. For an example of how to pass private registry credentials to the `.yml` file, you can refer to the [RKE documentation on private registries]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#private-registries).
 
-On the other hand, if you are using a private registry that requires credentials, you need to configure RKE to use these credentials when provisioning your cluster. As of RKE v0.1.10, RKE supports specifying a default registry from the list of private registries to be used with all system images. This allows RKE to assume that you want to pull all of the system images from your private registry, and it will use the [ default private registry credentials]({{<baseurl>}}/rke/latest/en/config-options/private-registries/#default-registry) that you specify in your `cluster.yml`. For more information, you can refer to the documentation about [configuring RKE to use private registries]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#private-registries).
-
-# Changing the Default Private Registry from the Rancher UI
+# Configuring the Private Registry from the Rancher UI
 
 >**Note:** If you want to configure Rancher to use your private registry when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
