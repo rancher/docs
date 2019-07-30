@@ -126,10 +126,10 @@ Ensure that:
 - The file contains:
 
 ``` yaml
-apiVersion: v1
-kind: EncryptionConfig
+apiVersion: apiserver.config.k8s.io/v1
+kind: EncryptionConfiguration
 resources:
-- resources:
+  - resources:
     - secrets
     providers:
     - aescbc:
@@ -358,10 +358,13 @@ Ensure Kubelet options are configured to match CIS controls.
 
 To pass the following controls in the CIS benchmark, ensure the appropriate flags are passed to the Kubelet.
 
+- 2.1.1 -  Ensure that the `--anonymous-auth` argument is set to false (Scored)
 - 2.1.6 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to 0 (Scored)
 - 2.1.7 - Ensure that the `--protect-kernel-defaults` argument is set to true (Scored)
 - 2.1.8 - Ensure that the `--make-iptables-util-chains` argument is set to true (Scored)
 - 2.1.10 - Ensure that the `--event-qps` argument is set to 0 (Scored)
+- 2.1.13 - Ensure that the `RotateKubeletServerCertificate` argument is set to true (Scored)
+- 2.1.14 - Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers (Not Scored)
 
 **Audit**
 
@@ -371,6 +374,9 @@ Inspect the Kubelet containers on all hosts and verify that they are running wit
 - `--protect-kernel-defaults=false`
 - `--make-iptables-util-chains=false`
 - `--event-qps=0`
+- `--anonymous-auth=false`
+- `--feature-gates="RotateKubeletServerCertificate=true"`
+- `--tls-cipher-suites="TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"`
 
 **Remediation**
 
@@ -384,6 +390,9 @@ services:
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
       event-qps: "0"
+      anonymous-auth: "false"
+      feature-gates: "RotateKubeletServerCertificate=true"
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
   Where `<duration>` is in a form like `1800s`.
@@ -424,6 +433,7 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 - 1.1.18 - Ensure that the `--audit-log-maxsize` argument is set as appropriate (Scored)
 - 1.1.23 - Ensure that the `--service-account-lookup` argument is set to true (Scored)
 - 1.1.24 - Ensure that the admission control plugin `PodSecurityPolicy` is set (Scored)
+- 1.1.30 Ensure that the API Server only makes use of Strong Cryptographic Ciphers (Not Scored)
 - 1.1.34 - Ensure that the `--experimental-encryption-provider-config` argument is set as appropriate (Scored)
 - 1.1.35 - Ensure that the encryption provider is set to `aescbc` (Scored)
 - 1.1.36 - Ensure that the admission control plugin `EventRateLimit` is set (Scored)
@@ -452,6 +462,7 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 --audit-log-maxsize=100
 --audit-log-format=json
 --audit-policy-file=/etc/kubernetes/audit.yaml
+--tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
 - In the `volume` section of the output ensure the bind mount is present:
@@ -481,6 +492,7 @@ services:
       audit-log-maxsize: "100"
       audit-log-format: "json"
       audit-policy-file: /etc/kubernetes/audit.yaml
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
 ```
@@ -562,6 +574,7 @@ To address the following controls the options need to be passed to the Kubernete
 
 - 1.3.1 - Ensure that the `--terminated-pod-gc-threshold` argument is set as appropriate (Scored)
 - 1.3.2 - Ensure that the `--profiling` argument is set to false (Scored)
+- 1.3.6 Ensure that the RotateKubeletServerCertificate argument is set to true (Scored)
 - 1.3.7 - Ensure that the `--address` argument is set to 127.0.0.1 (Scored)
 
 **Audit**
@@ -578,6 +591,7 @@ docker inspect kube-controller-manager
 --terminated-pod-gc-threshold=1000
 --profiling=false
 --address=127.0.0.1
+--feature-gates="RotateKubeletServerCertificate=true"
 ```
 
 **Remediation**
@@ -591,6 +605,7 @@ services:
       profiling: "false"
       address: "127.0.0.1"
       terminated-pod-gc-threshold: "1000"
+      feature-gates: "RotateKubeletServerCertificate=true"
 ```
 
 - Reconfigure the cluster:
@@ -1023,6 +1038,9 @@ services:
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
       event-qps: "0"
+      anonymous-auth: "false"
+      feature-gates: "RotateKubeletServerCertificate=true"
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
   kube-api:
     pod_security_policy: true
     extra_args:
@@ -1038,6 +1056,7 @@ services:
       audit-log-maxsize: "100"
       audit-log-format: "json"
       audit-policy-file: /etc/kubernetes/audit.yaml
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
   scheduler:
@@ -1049,7 +1068,13 @@ services:
       profiling: "false"
       address: "127.0.0.1"
       terminated-pod-gc-threshold: "1000"
+      feature-gates: "RotateKubeletServerCertificate=true"
 addons: |
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: ingress-nginx
+  ---
   apiVersion: rbac.authorization.k8s.io/v1
   kind: Role
   metadata:
