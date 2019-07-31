@@ -315,6 +315,10 @@ stages:
 
 The **Build and Publish Image** step builds and publishes a Docker image. This process requires a Dockerfile in your source code's repository to complete successfully.
 
+_Available as of Rancher v2.1.0_
+
+The option to publish an image to an insecure registry is not exposed in the UI, but you can specify an environment variable in the YAML that allows you to publish an image insecurely.
+
 {{% tabs %}}
 
 {{% tab "By UI" %}}
@@ -332,9 +336,23 @@ The **Build and Publish Image** step builds and publishes a Docker image. This p
 {{% /tab %}}
 
 {{% tab "By YAML" %}}
+
+You can use specific arguments for Docker daemon and the build. They are not exposed in the UI, but they are available in pipeline YAML format, as indicated in the example above. Available environment variables include:
+
+Variable Name           | Description
+------------------------|------------------------------------------------------------
+PLUGIN_DRY_RUN          | Disable docker push
+PLUGIN_DEBUG            | Docker daemon executes in debug mode
+PLUGIN_MIRROR           | Docker daemon registry mirror
+PLUGIN_INSECURE         | Docker daemon allows insecure registries
+PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
+
 <br>
 ```yaml
-# example
+# This example shows an environment variable being used
+# in the Publish Image step. This variable allows you to
+# publish an image to an insecure registry:
+
 stages:
 - name: Publish Image
   steps:
@@ -344,17 +362,9 @@ stages:
       tag: repo/app:v1
       pushRemote: true
       registry: example.com
+    env:
+      PLUGIN_INSECURE: "true"
 ```
-
-You can use specific arguments for Docker daemon and the build. They are not exposed in the UI, but they are available in pipeline YAML format, as indicated in the example above. Available variables includes:
-
-Variable Name           | Description
-------------------------|------------------------------------------------------------
-PLUGIN_DRY_RUN          | Disable docker push
-PLUGIN_DEBUG            | Docker daemon executes in debug mode
-PLUGIN_MIRROR           | Docker daemon registry mirror
-PLUGIN_INSECURE         | Docker daemon allows insecure registries
-PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 <br>
 {{% /tab %}}
 
