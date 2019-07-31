@@ -6,7 +6,7 @@ aliases:
 
 After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry. The steps to configure the private registry are different depending on whether your private registry requires credentials.
 
-If your private registry requires credentials, you need to pass the credentials to Rancher through the UI or through your `cluster.yml`. For an example of how to pass private registry credentials to the `.yml` file, you can refer to the [RKE documentation on private registries]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#private-registries).
+If your private registry requires credentials, you need to pass the credentials to Rancher through the UI.
 
 # Configuring the Private Registry from the Rancher UI
 

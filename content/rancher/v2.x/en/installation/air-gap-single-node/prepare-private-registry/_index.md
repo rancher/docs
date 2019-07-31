@@ -6,11 +6,7 @@ aliases:
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
-By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/). 
-
-As of RKE v0.1.10, you have to configure your private registry. You can specify this registry as a default registry so that all system images are pulled from the designated private registry. You can use the command `rke config --system-images` to get the list of default system images to populate your private registry. For details, refer to the [RKE documentation on how to set a default registry]({{<baseurl>}}/rke/latest/en/config-options/private-registries/).
-
-Prior to RKE v0.1.10, you had to configure your private registry **and** update the names of all the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) in the `cluster.yml` so that the image names would have the private registry URL appended before each image name.
+By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/).
 
 When configuring your private registry, you only need to provide credentials if your registry requires them.
 
