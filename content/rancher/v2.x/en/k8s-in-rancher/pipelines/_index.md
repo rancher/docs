@@ -337,7 +337,7 @@ The option to publish an image to an insecure registry is not exposed in the UI,
 
 {{% tab "By YAML" %}}
 
-You can use specific arguments for Docker daemon and the build. They are not exposed in the UI, but they are available in pipeline YAML format, as indicated in the example above. Available environment variables include:
+You can use specific arguments for Docker daemon and the build. They are not exposed in the UI, but they are available in pipeline YAML format, as indicated in the example below. Available environment variables include:
 
 Variable Name           | Description
 ------------------------|------------------------------------------------------------
