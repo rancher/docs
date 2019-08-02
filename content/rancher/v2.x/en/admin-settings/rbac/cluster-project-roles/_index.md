@@ -88,7 +88,7 @@ To assign the role to a new cluster member,
 
 1. When you click **Create**, the member should have the assigned role.
 
-To assign the role to an existing cluster member,
+To assign any custom role to an existing cluster member,
 
 1. Go to the member you want to give the role to. Click the **Ellipsis (...) > View in API.**
 
