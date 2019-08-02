@@ -51,20 +51,6 @@ For details on how each cluster role can access Kubernetes resources, you can go
 > **Note:**
 >When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
-### Configuring the Default Permissions for Cluster Owners
-
-Admins can configure the default role of cluster creators from the Rancher UI. To change the default role for a cluster creator,
-
-1. Go to the **Global** view.
-
-1. Click **Security > Roles** and go to the **Clusters** tab.
-
-1. Go to the cluster role that you want to make the default for cluster owners and click **Ellipsis (...) > Edit.**
-
-1. In the **Cluster Creator Default** section, click the option **Yes: Default role for new cluster creation.**
-
-> **Result:** The role will be used by default for the creator of a new cluster.
-
 ### Giving a Custom Cluster Role to a Cluster Member
 
 Admins can set up custom cluster roles that can be assigned to cluster owners and members.
