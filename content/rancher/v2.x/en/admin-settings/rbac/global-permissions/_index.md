@@ -56,7 +56,7 @@ The following table lists each custom global permission available and whether it
 | Create Clusters                    | ✓             | ✓             |
 | Manage Authentication              | ✓             |               |
 | Manage Catalogs                    | ✓             |               |
-| Manager Cluster Drivers            | ✓             |               |
+| Manage Cluster Drivers            | ✓             |               |
 | Manage Node Drivers                | ✓             |               |
 | Manage PodSecurityPolicy Templates | ✓             |               |
 | Manage Roles                       | ✓             |               |
