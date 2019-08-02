@@ -84,7 +84,7 @@ To change the default global permissions that are assigned to external users upo
 
 1. Find the permissions set that you want to use as default. Then edit the permission by selecting **Ellipsis > Edit**.
 
-1. Select **Yes: Default role for new users** and then click **Save**.
+1. If you want to add the permission as a default, Select **Yes: Default role for new users** and then click **Save**.
 
 1. If you want to remove a default permission, edit the permission and select **No** from **New User Default**.
 
