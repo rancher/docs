@@ -31,27 +31,54 @@ Rancher lets you assign _custom cluster roles_ to a user instead of the typical 
 
 #### Cluster Role Reference
 
-The following table lists each built-in custom cluster role available in Rancher and whether it is also granted by the `Owner` or `Member` role.
+The following table lists each built-in custom cluster role available and whether that level of access is included in the default cluster-level permissions, `Cluster Owner` and `Cluster Member`.
 
 | Built-in Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
 | ---------------------------------- | ------------- | --------------------------------- |
+| Create Projects                    | ✓             |                                   |
+| Manage Cluster Backups             | ✓             |                                   |
+| Manage Cluster Catalogs            | ✓             |                                   |
 | Manage Cluster Members             | ✓             |                                   |
-| Manage Cluster Catalogs			 | ✓             |
 | Manage Nodes                       | ✓             |                                   |
-| Manage Snapshots                   | ✓             ||
 | Manage Storage                     | ✓             |                                   |
-| View All Projects                  | ✓             |                                   |
-| Create Project                     | ✓             | ✓                                 |
-| View Cluster Members               | ✓             | ✓                                 |
+| View All Projects                  | ✓             | ✓                                 |
 | View Cluster Catalogs              | ✓             | ✓                                 |
+| View Cluster Members               | ✓             | ✓                                 |
 | View Nodes                         | ✓             | ✓                                 |
-| View Snapshots                     | ✓             | ✓                                 |
 
-> **Notes:**
->
->- Each cluster role listed above, including `Owner` and `Member`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.   
->- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
->- The `Manage Cluster Members` role allows the user to manage any members of the cluster **and** grant them any cluster scoped role regardless of their access to the cluster resources. Be cautious when assigning this role out individually.
+For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
+
+> **Note:**
+>When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+
+### Giving a Custom Cluster Role to a Cluster Member
+
+Admins can set up custom cluster roles that can be assigned to cluster owners and members.
+
+Cluster owners and admins can then assign those roles to cluster members.
+
+To create a custom cluster role,
+
+1. In the **Global** view under **Security > Roles,** click **Add Cluster Role.**
+
+1. In the **Grant Resources** section, choose any combination of operations on Kubernetes resources that will be allowed by the new role. Give the new cluster role a name and click **Create.**
+
+Then, from the **Cluster** view, go to the **Members** tab. From this tab, you can give the cluster role to members in two ways:
+
+- You can assign the role to a new member with the Rancher UI.
+- You can assign the role to an existing member with the Rancher API view.
+
+To assign the role to a new cluster member,
+
+1. Click **Add Member.** Then in the **Cluster Permissions** section, you can choose your custom cluster role. 
+
+1. When you click **Create**, the member should have the assigned role.
+
+To assign any custom role to an existing cluster member,
+
+1. Go to the member you want to give the role to. Click the **Ellipsis (...) > View in API.**
+
+1. In the **roleTemplateId** field, go to the drop-down menu and choose the role you want to assign to the member. Click **Show Request** and **Send Request.** After that, the member's role should be updated.
 
 ### Project Roles
 
@@ -132,7 +159,7 @@ There are two methods for changing default cluster/project roles:
 >- Although you can [lock]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/) a default role, the system still assigns the role to users who create a cluster/project.
 >- Only users that create clusters/projects inherit their roles. Users added to the cluster/project membership afterward must be explicitly assigned their roles.
 
-### Configuring Default Roles
+### Configuring Default Roles for Cluster and Project Creators
 
 You can change the cluster or project role(s) that are automatically assigned to the creating user.
 
@@ -162,3 +189,4 @@ When you revoke the cluster membership for a user that's explicitly assigned mem
 - Exercise any [individual project roles](#project-role-reference) they are assigned.
 
 If you want to completely revoke a user's access within a cluster, revoke both their cluster and project memberships.
+
