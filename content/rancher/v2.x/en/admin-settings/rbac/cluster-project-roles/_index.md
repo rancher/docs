@@ -158,7 +158,7 @@ There are two methods for changing default cluster/project roles:
 >- Although you can [lock]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/) a default role, the system still assigns the role to users who create a cluster/project.
 >- Only users that create clusters/projects inherit their roles. Users added to the cluster/project membership afterward must be explicitly assigned their roles.
 
-### Configuring Default Roles
+### Configuring Default Roles for Cluster and Project Creators
 
 You can change the cluster or project role(s) that are automatically assigned to the creating user.
 
