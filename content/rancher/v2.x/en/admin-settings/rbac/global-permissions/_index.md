@@ -43,7 +43,7 @@ Administrators can enforce custom global permissions in three ways:
 
 - Changing the [default permissions for new users](#configuring-default-global-permissions)
 
-- Editing the [permissions of a user](#configuring-permissions-for-individual-users)
+- Editing the [permissions of a user](#configuring-global-permissions-for-individual-users)
 
 - Choosing the **Custom** cluster permissions option when [adding a new member to a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-members/)
 
