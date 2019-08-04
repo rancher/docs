@@ -135,6 +135,11 @@ Once the Rancher deployment is created, copy your CA certs in pem format into a 
 ```plain
 kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-additional.pem
 ```
+Update certificates directories for rancher containers 
+
+```plan
+kubectl -n cattle-system set env deployment/rancher SSL_CERT_DIR=/etc/ssl/certs
+```
 
 ### Private Registry and Air Gap Installs
 
