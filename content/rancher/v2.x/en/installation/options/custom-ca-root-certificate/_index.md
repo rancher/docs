@@ -19,7 +19,7 @@ Examples of services that Rancher can access:
 
 ## Installing with the custom CA Certificate
 
-For details on starting a Rancher continer with your private CA certificates mounted, refer to the installation docs:
+For details on starting a Rancher container with your private CA certificates mounted, refer to the installation docs:
 
 - [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#custom-ca-certificate)
 
