@@ -33,7 +33,7 @@ Rancher lets you assign _custom cluster roles_ to a user instead of the typical 
 
 The following table lists each built-in custom cluster role available in Rancher and whether it is also granted by the `Owner` or `Member` role.
 
-| Custom Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
+| Built-in Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
 | ---------------------------------- | ------------- | --------------------------------- |
 | Manage Cluster Members             | ✓             |                                   |
 | Manage Cluster Catalogs			 | ✓             |
@@ -51,6 +51,7 @@ The following table lists each built-in custom cluster role available in Rancher
 >
 >- Each cluster role listed above, including `Owner` and `Member`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.   
 >- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+>- The `Manage Cluster Members` role allows the user to manage any members of the cluster **and** grant them any cluster scoped role regardless of their access to the cluster resources. Be cautious when assigning this role out individually.
 
 ### Project Roles
 
@@ -81,7 +82,7 @@ Rancher lets you assign _custom project roles_ to a user instead of the typical 
 
 The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
-| Custom Cluster Role                | Owner         | Member<a id="proj-roles"><a/> | Read Only     |
+| Built-in Project Role                | Owner         | Member<a id="proj-roles"><a/> | Read Only     |
 | ---------------------------------- | ------------- | ----------------------------- | ------------- |
 | Manage Project Members             | ✓             |                               |               |
 | Create Namespaces                  | ✓             | ✓                             |               |
@@ -107,6 +108,7 @@ The following table lists each built-in custom project role available in Rancher
 >
 >- Each project role listed above, including `Owner`, `Member`, and `Read Only`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 >- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+>- The `Manage Project Members` role allows the user to manage any members of the project **and** grant them any project scoped role regardless of their access to the project resources. Be cautious when assigning this role out individually.
 
 ### Defining Custom Roles
 As previously mentioned, custom roles can be defined for use at the cluster or project level. The context field defines whether the role will appear on the cluster member page, project member page, or both.
