@@ -305,6 +305,34 @@ Example output:
 +-----------------+------------------+---------+---------+-----------+-----------+------------+
 ```
 
+* Disarm alarm
+
+After verifying that the DB size went down after compaction and defragmenting, the alarm needs to be disarmed for etcd to allow writes again.
+
+Command when no internal address is configured on the host:
+```
+docker exec etcd etcdctl alarm list
+docker exec etcd etcdctl alarm disarm
+docker exec etcd etcdctl alarm list
+```
+
+Command when internal address is configured on the host:
+```
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT alarm list"
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT alarm disarm"
+docker exec etcd sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT alarm list"
+```
+
+Example output:
+```
+docker exec etcd etcdctl alarm list
+memberID:x alarm:NOSPACE
+memberID:x alarm:NOSPACE
+memberID:x alarm:NOSPACE
+docker exec etcd etcdctl alarm disarm
+docker exec etcd etcdctl alarm list
+```
+
 ### Log level
 
 The log level of etcd can be changed dynamically via the API. You can configure debug logging using the commands below.
