@@ -11,7 +11,7 @@ The API has its own user interface accessible from a web browser.  This is an ea
 
 API requests must include authentication information.  Authentication is done with HTTP basic authentication using [API Keys]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/). API keys can create new clusters and have access to multiple clusters via `/v3/clusters/`. [Cluster and project roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/) apply to these keys and restrict what clusters and projects the account can see and what actions they can take.
 
-By default, all cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens never expire unless you invalidate them. For details on how to invalidate them, refer to the [API tokens page]({{<baseurl>}}/rancher/v2.x/en/api/api-tokens).
+By default, some cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens with `ttl=0` never expire unless you invalidate them. For details on how to invalidate them, refer to the [API tokens page]({{<baseurl>}}/rancher/v2.x/en/api/api-tokens).
 
 ## Making requests
 

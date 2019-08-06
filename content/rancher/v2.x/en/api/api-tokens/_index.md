@@ -3,7 +3,7 @@ title: API Tokens
 weight: 1
 ---
 
-By default, all cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens never expire unless you invalidate them. Tokens are not invalidated by changing a password.
+By default, some cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens with `ttl=0` never expire unless you invalidate them. Tokens are not invalidated by changing a password.
 
 You can deactivate API tokens by deleting them or by deactivating the user account.
 
