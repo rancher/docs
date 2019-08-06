@@ -33,19 +33,17 @@ Assignment of global permissions to a user depends on their authentication sourc
 
 Using custom permissions is convenient for providing users with narrow or specialized access to Rancher.
 
-When a user from an [external authentication source]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, new users are assigned the user permissions.
+When a user from an [external authentication source]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in from the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
 
 However, in some organizations, these permissions may extend too much access. Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a more restrictive set of custom global permissions.
 
 The default roles, Admin and User, each come with multiple global permissions built into them. The Admin role includes all global permissions, while the default user role includes three global permissions: Create Clusters, Use Catalog Templates, and User Base, which is equivalent to the minimum permission to log in to Rancher. In other words, the custom global permissions are modularized so that if you want to change the default user role permissions, you can choose which subset of global permissions are included in the new default user role.
 
-Administrators can enforce custom global permissions in three ways:
+Administrators can enforce custom global permissions in two ways:
 
 - Changing the [default permissions for new users](#configuring-default-global-permissions)
 
-- Editing the [permissions of a user](#configuring-global-permissions-for-individual-users)
-
-- Choosing the **Custom** cluster permissions option when [adding a new member to a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-members/)
+- Editing the [permissions of an existing user](#configuring-global-permissions-for-individual-users)
 
 ### Custom Global Permissions Reference
 
@@ -57,14 +55,19 @@ The following table lists each custom global permission available and whether it
 | Create RKE Templates               | ✓             | ✓             |
 | Manage Authentication              | ✓             |               |
 | Manage Catalogs                    | ✓             |               |
-| Manage Cluster Drivers            | ✓             |               |
+| Manage Cluster Drivers             | ✓             |               |
 | Manage Node Drivers                | ✓             |               |
 | Manage PodSecurityPolicy Templates | ✓             |               |
 | Manage Roles                       | ✓             |               |
 | Manage Settings                    | ✓             |               |
 | Manage Users                       | ✓             |               |
 | Use Catalog Templates              | ✓             | ✓             |
-| User Base (Basic log-in access)    | ✓             | ✓             |
+| User Base* (Basic log-in access)   | ✓             | ✓             |
+
+> *This role has two names:
+>
+> - When you go to the <b>Users</b> tab and edit a user's global role, this role is called <b>Login Access</b> in the custom global permissions list.
+> - When you go to the <b>Security</b> tab and edit the roles from the roles page, this role is called <b>User Base.</b>
 
 For details on which Kubernetes resources correspond to each global permission, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Global** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
 
