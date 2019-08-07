@@ -77,14 +77,23 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
      --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
+<<<<<<< HEAD
      --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
+=======
+     --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM>'
+>>>>>>> Say to pass private registry as env variable in air gap install
     ```
 
     Placeholder | Description
     ------------|-------------
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+<<<<<<< HEAD
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
+=======
+    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
+    `<REGISTRY.YOURDOMAIN.COM>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
+>>>>>>> Say to pass private registry as env variable in air gap install
     
 {{% /accordion %}}
 
@@ -104,14 +113,23 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
       --set ingress.tls.source=secret
       --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
+<<<<<<< HEAD
       --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
+=======
+      --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM>'
+>>>>>>> Say to pass private registry as env variable in air gap install
     ```
 
     Placeholder | Description
     ------------|-------------
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+<<<<<<< HEAD
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
+=======
+    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
+    `<REGISTRY.YOURDOMAIN.COM>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
+>>>>>>> Say to pass private registry as env variable in air gap install
     
     > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`
 
