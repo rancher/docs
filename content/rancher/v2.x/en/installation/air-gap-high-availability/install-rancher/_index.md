@@ -52,9 +52,9 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-
 In this section you will configure your cert manager and private registry in the Rancher template.
 
 {{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
-By default, Rancher generates a CA and uses cert manager to issue the certificate for access to the Rancher server interface. 
+By default, Rancher generates a CA and uses cert manager to issue the certificate for access to the Rancher server interface.
 
-1. From a system connected to the internet, fetch the latest cert-manager chart available from the [official Helm chart repository](https://github.com/helm/charts/tree/master/stable). 
+1. From a system connected to the internet, fetch the latest cert-manager chart available from the [official Helm chart repository](https://github.com/helm/charts/tree/master/stable).
 
     ```plain
     helm fetch stable/cert-manager --version 0.5.2
@@ -69,7 +69,7 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
     ```
 
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools. To configure Rancher to use your private registry when starting the `rancher/rancher` container, use the `CATTLE_SYSTEM_DEFAULT_REGISTRY` variable. You can set the the extra environment variable `extraEnv` to use the same `name` and `value` keys as the container manifest definitions. Remember to quote the values:
-    
+
      ```plain
     helm template ./rancher-<VERSION>.tgz --output-dir . \
      --name rancher \
@@ -77,24 +77,15 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
      --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
-<<<<<<< HEAD
      --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
-=======
-     --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM>'
->>>>>>> Say to pass private registry as env variable in air gap install
     ```
 
     Placeholder | Description
     ------------|-------------
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-<<<<<<< HEAD
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
-=======
-    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-    `<REGISTRY.YOURDOMAIN.COM>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
->>>>>>> Say to pass private registry as env variable in air gap install
-    
+
 {{% /accordion %}}
 
 {{% accordion id="secret" label="Option B: Certificates for Files (Kubernetes Secret)" %}}
@@ -104,7 +95,7 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
     > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
 
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools. To configure Rancher to use your private registry when starting the `rancher/rancher` container, the `CATTLE_SYSTEM_DEFAULT_REGISTRY` variable. You can set the the extra environment variable `extraEnv` to use the same `name` and `value` keys as the container manifest definitions. Remember to quote the values:
-    
+
     ```
     helm template ./rancher-<VERSION>.tgz --output-dir . \
       --name rancher \
@@ -113,27 +104,18 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
       --set ingress.tls.source=secret
       --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
-<<<<<<< HEAD
       --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
-=======
-      --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM>'
->>>>>>> Say to pass private registry as env variable in air gap install
     ```
 
     Placeholder | Description
     ------------|-------------
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-<<<<<<< HEAD
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
-=======
-    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-    `<REGISTRY.YOURDOMAIN.COM>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
->>>>>>> Say to pass private registry as env variable in air gap install
     
     > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`
 
-1.    See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
+1.    See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 {{% /accordion %}}
 
 ## D. Install Rancher
