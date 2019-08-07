@@ -148,6 +148,7 @@ The exact options for the command to render the Helm template will vary dependin
 {{% tabs %}}
 {{% tab "Rancher v2.3.0+" %}}
 
+
 As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
 
 If your private registry doesn't require credentials, you can set it as default when starting the `rancher/rancher` container by using the `systemDefaultRegistry` variable. This will allow Rancher to use the registry when provisioning other clusters without additional configuration.
