@@ -1,5 +1,5 @@
 ---
-title: "6. Configure Rancher System Charts"
+title: "5. Configure Rancher System Charts"
 weight: 600
 aliases:
 ---
