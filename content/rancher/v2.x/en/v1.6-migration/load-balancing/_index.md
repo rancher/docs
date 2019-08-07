@@ -26,7 +26,7 @@ If you encounter the `output.txt` text below after parsing your v1.6 Compose fil
 
 By default, Rancher v2.x replaces the v1.6 load balancer microservice with the native [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which is backed by NGINX Ingress Controller for layer 7 load balancing. By default, Kubernetes Ingress only supports the HTTP and HTTPS protocols, not TCP. Load balancing is limited to these two protocols when using Ingress.
 
-> **TCP Required?** See [TCP Load Balancing Optionsl](#tcp-load-balancing-options)
+> **TCP Required?** See [TCP Load Balancing Options](#tcp-load-balancing-options)
 
 
 ## Load Balancer Deployment
