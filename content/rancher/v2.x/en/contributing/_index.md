@@ -15,6 +15,8 @@ For more detailed information on how to contribute to the development of Rancher
 - Debugging and troubleshooting
 - Developing the Rancher API
 
+On the Rancher Users Slack, the channel for developers is **#developer**.
+
 # Repositories
 
 All of repositories are located within our main GitHub organization. There are many repositories used for Rancher, but we'll provide descriptions of some of the main ones used in Rancher.
