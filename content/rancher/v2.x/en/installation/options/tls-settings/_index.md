@@ -15,7 +15,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 
 - [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#tls-settings)
 
-- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#tls-settings)
+- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#tls-settings)
 
 ## TLS settings
 

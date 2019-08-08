@@ -38,7 +38,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 For HA air gap configurations, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#external-tls-termination).
 
 | Configuration | Chart option | Description | Requires cert-manager |
 |-----|-----|-----|-----|
@@ -103,6 +103,7 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
       --set ingress.tls.source=secret
+<<<<<<< HEAD
       --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
       --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
     ```
@@ -114,8 +115,11 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
     
     > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`
+=======
+    ```
+>>>>>>> Move HA installation reference docs so air gap readers can see them
 
-1.    See [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
+1.    See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
 {{% /accordion %}}
 
 ## D. Install Rancher
@@ -137,12 +141,17 @@ kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
 
-### Additional Resources
+### Advanced Configurations
 
-These resources could be helpful when you install Rancher:
+The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-- [Rancher Helm chart options]({{<baseurl>}}rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/)
-- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
+* [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#http-proxy)
+* [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#external-tls-termination)
 
-### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/)
+See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/) for the full list of options.
+
+### Troubleshooting
+
+Doesn't work? Take a look at the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/troubleshooting/) Page.
+
+### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)

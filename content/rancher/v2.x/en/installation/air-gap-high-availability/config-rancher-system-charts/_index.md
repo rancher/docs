@@ -48,3 +48,9 @@ In the catalog management page in the Rancher UI, follow these steps:
 1. Click **Send Request**
 
 **Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
+
+### Finishing Up
+
+That's it. You should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
+
+Doesn't work? Take a look at the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/troubleshooting/) Page.

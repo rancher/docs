@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting
-weight: 276
+title: HA Installation Troubleshooting
+weight: 8000
 ---
 
 ### Where is everything

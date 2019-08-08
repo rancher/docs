@@ -1,7 +1,9 @@
 ---
 title: Adding TLS Secrets
-weight: 276
+weight: 7700
 ---
+
+This section explains how to configure TLS secrets during a high-availability installation of Rancher.
 
 Kubernetes will create all the objects and services for Rancher, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.
 
