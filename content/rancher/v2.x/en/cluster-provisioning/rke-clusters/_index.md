@@ -9,21 +9,29 @@ If you don't want to use a hosted Kubernetes provider, you can have Rancher laun
 - On-premise virtual machines
 - Virtual machines hosted by an infrastructure provider
 
-RKE launched clusters are separated into two categories:
+RKE launched clusters are separated into two categories: [Nodes Hosted by an Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), and [custom nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
-- [Nodes Hosted by an Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/):
+# Launching Clusters on Nodes Hosted by an Infrastructure Provider
 
-    Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers). The benefit of using a node hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
+When you launch clusters with Rancher on an infrastructure provider, Rancher can use node pools, node templates, and cloud credentials to manage nodes.
 
-    As of v2.2.0, [cloud credential]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials) are created to store credentials for launching nodes in your infrastructure providers. There are two benefits of using a cloud credential:
-    - Credentials are stored as a Kubernetes secret, which is not only more secure, but it also allows you to edit a node template without having to enter your credentials every time.
-    - Multiple node templates can share the same cloud credential to create node pools. If your key is compromised or expired, the cloud credential can be updated in a single place, which allows all node templates that are using it to be updated at once. 
+### Node Pools and Templates
+Using Rancher, you can create pools of nodes based on a [node template]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers. The available cloud providers to create a node template are decided based on active [node drivers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers). The benefit of using a node hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-- [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/):
+### Cloud Credentials
+As of Rancher v2.2.0, [cloud credentials]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials) are created to store credentials for launching nodes in your infrastructure providers. There are two benefits of using a cloud credential:
 
-    For use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
+- Credentials are stored as a Kubernetes secret, which is not only more secure, but it also allows you to edit a node template without having to enter your credentials every time.
+- Multiple node templates can share the same cloud credential to create node pools. If your key is compromised or expired, the cloud credential can be updated in a single place, which allows all node templates that are using it to be updated at once. 
 
-    >**Note:** If you want to reuse a node from a previous custom cluster, [clean the node]({{< baseurl >}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+# Launching Clusters on Custom Nodes
+
+This option is for use cases where you want to provision bare-metal servers, on-premise virtual machines, or bring virtual machines that already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
+
+>**Note:** If you want to reuse a node from a previous custom cluster, [clean the node]({{< baseurl >}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+
+# Cluster Templates
+As of Rancher v2.3.0, you can provision a cluster from a cluster template. If an admin enforces a cluster template, you may need to use a template that is available to you, and configure only the options that are `Questions` in the template. For details, refer to the [cluster template documentation]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates).
 
 <br/>
 
