@@ -3,13 +3,19 @@ title: Cluster Templates
 weight: 7010
 ---
 
-When you provision a cluster [hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), cluster templates can be used to provision the cluster. 
-These cluster templates let you pre-define all cluster configuration options and while creating a cluster you can just use all settings from this cluster template.
+You can use cluster templates to provision Rancher-launched clusters [hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters).
+
+These cluster templates let you pre-define all cluster configuration options, and while creating a cluster, all settings defined in the cluster template are applied. If you create a cluster from a template, you cannot modify the settings defined in the template unless you [update the cluster to a newer version](#updating-a-cluster-created-using-a-cluster-template) of the same template.
+
 Cluster creation by figuring out right settings can take a lot of effort and time and after it worked one time, applying the same settings over and over again across clusters is both painful and error prone. 
 For such cases creating a cluster template to define all the cluster settings at one place and using that template to create clusters is useful.
 
 When you create a cluster template, it is bound to your user profile. You can share the Cluster templates with other users or groups and can also make it public.
 
+
+## Specifying a Kubernetes Version in a Cluster Template
+
+For kubernetes versions that ends in .x, the template will allow users to launch Rancher with the latest Kubernetes maintenance version of that minor version. When editing the cluster, users will be able to upgrade to the latest available Kubernetes maintenance versions. For example, if the template specifies that Kubernetes v1.14.x must be used, a cluster launched with that template would be able to upgrade from Kubernetes v1.14.4 to v1.14.5.
 
 ## Who can create Cluster Templates?
 
@@ -139,7 +145,7 @@ To add a cluster[hosted by an infrastructure provider]({{< baseurl >}}/rancher/v
 1. Any settings set as questions on the cluster template, will be the only fields that you can edit and answer.
 1. Click **Save** to launch the cluster.
 
-### Editing the Cluster created using a cluster template
+### Updating a Cluster Created Using a Cluster Template
 
 1. A cluster created from a cluster template, can be edited to change to a new revision of the cluster template.
 1. Also any parameters that are set on the cluster template as questions can be changed on a cluster edit.
