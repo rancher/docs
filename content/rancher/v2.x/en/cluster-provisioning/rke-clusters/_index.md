@@ -35,6 +35,7 @@ This option is for use cases where you want to provision bare-metal servers, on-
 
 _Available as of Rancher v2.3.0_
 
+<<<<<<< HEAD
 Cluster templates can be used to provision custom clusters or clusters that are launched by a infrastructure provider.
 
 With cluster templates, admins could enforce users to *always* use cluster templates when creating cluster. This allows admins to guarantee that clusters in Rancher are created with specific settings. They would be able to control which specific options can be altered during cluster creation. Since cluster templates are specifically shared with users, admins can not only control which cluster options could be changed but they could also create different cluster templates for different sets of users.
@@ -42,6 +43,15 @@ With cluster templates, admins could enforce users to *always* use cluster templ
 When using a cluster template for cluster creation, the settings of the cluster are already defined. Most of these options will be locked by the cluster template creator, but there could be some cluster options that can be changed. These options will be made available in the UI to change if the cluster template creator had enabled them to be selected. 
 
 When using a cluster template for cluster creation, you can no longer directly edit your cluster options. The only way to edit these options is to upgrade to a [new revision of the cluster template]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/#updating-a-cluster-created-with-a-cluster-template).
+=======
+You can use cluster templates to provision Rancher-launched clusters hosted by an infrastructure provider.
+
+Figuring out the right settings to create a cluster can take a lot of effort and time, and applying the same settings to multiple clusters can also be painful and error-prone. For such cases, it is useful to create a cluster template to define all the cluster settings in one place and use that template to create clusters.
+
+While creating a cluster, all settings defined in the cluster template are applied and locked in, unless the template settings are marked as Questions. After you create a cluster from a template, the template-defined settings cannot be modified unless you [update the cluster to a newer version]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/#updating-a-cluster-created-with-a-cluster-template) of the same template.
+
+Global Admins can also use template enforcement to require new clusters to use a template.
+>>>>>>> Edit cluster template docs
 
 For details on how to managing templates and launching clusters from templates, refer to the [cluster template documentation]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates).
 
