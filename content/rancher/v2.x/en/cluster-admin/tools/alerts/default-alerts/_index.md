@@ -41,11 +41,11 @@ The [scheduler](https://kubernetes.io/docs/reference/command-line-tools-referenc
 
 
 # Alerts for Events
-Events can trigger alerts. 
+Kubernetes events are objects that provide insight into what is happening inside a cluster, such as what decisions were made by the scheduler or why some pods were evicted from the node. In the Rancher UI, from the project view, you can see events for each workload.
 
 | Alert | Explanation |
 |-------|-------------|
-| Get warning deployment event | A warning alert is triggered by a deployment event happens. |
+| Get warning deployment event | A warning alert is triggered by a warning event happens on a deployment. |
 
 
 # Alerts for Node
@@ -62,5 +62,5 @@ When you enable monitoring for the project, some project-level alerts are provid
 
 | Alert | Explanation |
 |-------|-------------|
-| Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload.` |
-| Memory usage close to the quota | A warning alert is triggered if the project's memory usage exceeds the memory resource limits for the project. |
+| Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload`. |
+| Memory usage close to the quota | A warning alert is triggered if the project's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
