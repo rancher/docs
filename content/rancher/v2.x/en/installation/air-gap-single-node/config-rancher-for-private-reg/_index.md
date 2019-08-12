@@ -4,7 +4,13 @@ weight: 400
 aliases:
 ---
 
-Rancher needs to be configured to use the private registry in order to provision any [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or [Rancher tools]({{< baseurl >}}/rancher/v2.x/en/tools/).
+After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry. The steps to configure the private registry are different depending on whether your private registry requires credentials.
+
+If your private registry requires credentials, you need to pass the credentials to Rancher through the UI.
+
+# Configuring the Private Registry from the Rancher UI
+
+>**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
 1. Log into Rancher and configure the default admin password.
 
@@ -20,6 +26,5 @@ Rancher needs to be configured to use the private registry in order to provision
 
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
 
->**Note:** If you want to configure the setting when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
 ### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-system-charts/)
