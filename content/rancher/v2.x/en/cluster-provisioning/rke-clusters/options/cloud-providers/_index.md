@@ -163,6 +163,11 @@ Setting the value of the tag to `owned` tells the cluster that all resources wit
 
 **Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `shared`.
 
+
+#### Using Amazon Elastic Container Registry (ECR)
+
+The kubelet component has the ability to automatically obtain ECR credentials, when the IAM profile mentioned in [Create an IAM Role and attach to the instances](#create-an-iam-role-and-attach-to-the-instances) is attached to the instance(s). When using a Kubernetes version older than v1.15.0, the Amazon cloud provider needs be configured in the cluster. Starting with Kubernetes version v1.15.0, the kubelet can obtain ECR credentials without having the Amazon cloud provider configured in the cluster.
+
 ## Azure
 
 When using the `Azure` cloud provider, you can leverage the following capabilities:
