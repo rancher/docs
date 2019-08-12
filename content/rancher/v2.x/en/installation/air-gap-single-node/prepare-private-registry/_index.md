@@ -4,6 +4,12 @@ weight: 200
 aliases:
 ---
 
+>**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+
+By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/).
+
+When configuring your private registry, you only need to provide credentials if your registry requires them.
+
 ## A. Collect Image Sources
 
 Using a computer with internet access, browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher 2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
