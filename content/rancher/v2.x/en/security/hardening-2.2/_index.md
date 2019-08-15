@@ -1038,6 +1038,7 @@ services:
   kubelet:
     extra_args:
       streaming-connection-idle-timeout: "1800s"
+      authorization-mode: "Webhook"
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
       event-qps: "0"
