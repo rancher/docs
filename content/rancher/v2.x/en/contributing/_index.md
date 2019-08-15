@@ -5,7 +5,19 @@ aliases:
   - /rancher/v2.x/en/faq/contributing/
 ---
 
-### Repositories
+This section explains the respositories used for Rancher, how to build the repositories, and what information to include when you file an issue.
+
+For more detailed information on how to contribute to the development of Rancher projects, refer to the [Rancher Developer Wiki](https://github.com/rancher/rancher/wiki). The wiki has resources on many topics, including the following:
+
+- How to set up the Rancher development environment and run tests
+- The typical flow of an issue through the development lifecycle
+- Coding guidelines and development best practices
+- Debugging and troubleshooting
+- Developing the Rancher API
+
+On the Rancher Users Slack, the channel for developers is **#developer**.
+
+# Repositories
 
 All of repositories are located within our main GitHub organization. There are many repositories used for Rancher, but we'll provide descriptions of some of the main ones used in Rancher.
 
@@ -29,7 +41,7 @@ To see all libraries/projects used in Rancher, see the `vendor.conf` in the `ran
 ![Rancher diagram]({{< baseurl >}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
 <sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
 
-### Building
+# Building
 
 Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository (plus additional `trash` commands, please see below for more information about using `trash`), and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.
 
@@ -37,27 +49,29 @@ The default target is `ci`, and will run `./scripts/validate`, `./scripts/build`
 
 Dependencies on other libraries/projects are managed using [Trash](https://github.com/rancher/trash). See the [Trash README](https://github.com/rancher/trash/blob/master/README.md) to discover how it can be used. In short, it uses a `vendor.conf` file to specify the source repository and revision to fetch, checkout and copy to the `./vendor` directory. After updating `vendor.conf`, you can run `make trash` to update dependencies for your change. When the dependencies are updated, you can build the project again using `make` so that it will be built using the updated dependencies.
 
-### Bugs, Issues or Questions
+# Bugs, Issues or Questions
 
 If you find any bugs or are having any trouble, please search the [reported issue](https://github.com/rancher/rancher/issues) as someone may have experienced the same issue or we are actively working on a solution.
 
 If you can't find anything related to your issue, contact us by [filing an issue](https://github.com/rancher/rancher/issues/new). Though we have many repositories related to Rancher, we want the bugs filed in the Rancher repository so we won't miss them! If you want to ask a question or ask fellow users about an use case, we suggest creating a post on the [Rancher Forums](https://forums.rancher.com).
+
+### Checklist for Filing Issues
 
 Please follow this checklist when filing an issue which will helps us investigate and fix the issue. More info means more data we can use to determine what is causing the issue or what might be related to the issue.
 
 >**Note:** For large amounts of data, please use [GitHub Gist](https://gist.github.com/) or similar and link the created resource in the issue.
 >**Important:** Please remove any sensitive data as it will be publicly viewable.
 
-- Provide as much as detail as possible on the used resources. As the source of the issue can be many things, including as much of detail as possible helps to determine the root cause. See some examples below:
-  - Hosts (What specifications does the host have, like CPU/memory/disk, what cloud does it happen on, what Amazon Machine Image are you using, what DigitalOcean droplet are you using, what image are you provisioning that we can rebuild or use when we try to reproduce)
-  - Operating System (What operating system are you using. Providing specifics helps here like the output of `cat /etc/os-release` for exact OS release and `uname -r` for exact kernel used)
-  - Docker (What Docker version are you using, how did you install it? Most of the details of Docker can be found by supplying output of `docker version` and `docker info`)
-  - Environment (Are you in a proxy environment, are you using recognized CA/self signed certificates, are you using an external loadbalancer)
-  - Rancher (What version of Rancher are you using, this can be found on the bottom left of the UI or be retrieved from the image tag you are running on the host)
-  - Clusters (What kind of cluster did you create, how did you create it, what did you specify when you were creating it)
-- Provide as much detail on how you got into the reported situation. This helps the person to reproduce the situation you are in.
+- **Resources:** Provide as much as detail as possible on the used resources. As the source of the issue can be many things, including as much of detail as possible helps to determine the root cause. See some examples below:
+  - **Hosts:** What specifications does the host have, like CPU/memory/disk, what cloud does it happen on, what Amazon Machine Image are you using, what DigitalOcean droplet are you using, what image are you provisioning that we can rebuild or use when we try to reproduce
+  - **Operating System:** What operating system are you using? Providing specifics helps here like the output of `cat /etc/os-release` for exact OS release and `uname -r` for exact kernel used
+  - **Docker:** What Docker version are you using, how did you install it? Most of the details of Docker can be found by supplying output of `docker version` and `docker info`
+  - **Environment:** Are you in a proxy environment, are you using recognized CA/self signed certificates, are you using an external loadbalancer
+  - **Rancher:** What version of Rancher are you using, this can be found on the bottom left of the UI or be retrieved from the image tag you are running on the host
+  - **Clusters:** What kind of cluster did you create, how did you create it, what did you specify when you were creating it
+- **Steps to reproduce the issue:** Provide as much detail on how you got into the reported situation. This helps the person to reproduce the situation you are in.
   - Provide manual steps or automation scripts used to get from a newly created setup to the situation you reported.
-- Provide data/logs from the used resources.
+- **Logs:** Provide data/logs from the used resources.
   - Rancher
       - Single node
 
@@ -99,10 +113,9 @@ Please follow this checklist when filing an issue which will helps us investigat
       - `/var/log/kern.log`
   - Docker daemon logging (these might not all exist, depending on operating system)
       - `/var/log/docker.log`
+- **Metrics:** If you are experiencing performance issues, please provide as much of data (files or screenshots) of metrics which can help determining what is going on. If you have an issue related to a machine, it helps to supply output of `top`, `free -m`, `df` which shows processes/memory/disk usage.
 
-If you are experiencing performance issues, please provide as much of data (files or screenshots) of metrics which can help determining what is going on. If you have an issue related to a machine, it helps to supply output of `top`, `free -m`, `df` which shows processes/memory/disk usage.
-
-### Docs
+# Docs
 
 If you have any updates to our documentation, please make any pull request to our docs repo.
 
