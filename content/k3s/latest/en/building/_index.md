@@ -13,10 +13,11 @@ The clone will be much faster on this repo if you do
 
 This repo includes all of Kubernetes history so `--depth 1` will avoid most of that.
 
-To build the full release binary run `make` and that will create `./dist/artifacts/k3s`. 
+To build the full release binary run `make` and that will create `./dist/artifacts/k3s`.
+
 Optionally to build the binaries without running linting or building docker images:
 ```sh
-./scripts/build && ./scripts/package-cli
+./scripts/download && ./scripts/build && ./scripts/package-cli
 ```
 
 For development, you just need go 1.12 and a sane GOPATH.  To compile the binaries run:
