@@ -1,16 +1,12 @@
 ---
-title: Default Alerts
+title: Default Alerts for Cluster Monitoring
 weight: 1
 ---
 
-# Overview of Default Alerts for Cluster Monitoring
-
-When you enable monitoring for a cluster, Rancher provides several alerts by default. These alerts notify you about signs that the cluster could be unhealthy.
+When you create a cluster, some alert rules are predefined. These alerts notify you about signs that the cluster could be unhealthy. You can receive these alerts if you configure a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) for them.
 
 Several of the alerts use Prometheus expressions as the metric that triggers the alert. For more information on how expressions work, you can refer to the Rancher [documentation about Prometheus expressions]({{< baseurl >}}
 /rancher/v2.x/en/cluster-admin/tools/monitoring/expression/) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
-
->**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
 
 # Alerts for etcd
 Etcd is the key-value store that contains the state of the Kubernetes cluster. If you provide monitoring on your cluster, Rancher provides default alerts if the monitoring detects a potential problem with etcd.
@@ -22,9 +18,9 @@ The leader of the cluster can change in response to certain events. It is normal
 | Alert | Explanation |
 |-------|-------------|
 | A high number of leader changes within the etcd cluster are happening | A warning alert is triggered when the leader changes more than three times in one hour. |
-| Database usage close to the quota 500M | A warning alert is triggered when the size of etcd exceeds 524.288M.|
+| Database usage close to the quota 500M | A warning alert is triggered when the size of etcd exceeds 500M.|
 | Etcd is unavailable | A critical alert is triggered when etcd becomes unavailable. |
-| Etcd member has no leader | A critical alert is triggered when etcd does not have a leader for at least three minutes. |
+| Etcd member has no leader | A critical alert is triggered when the etcd cluster does not have a leader for at least three minutes. |
 
 
 # Alerts for Kube Components
@@ -48,7 +44,7 @@ Kubernetes events are objects that provide insight into what is happening inside
 | Get warning deployment event | A warning alert is triggered by a warning event happens on a deployment. |
 
 
-# Alerts for Node
+# Alerts for Nodes
 Alerts can be triggered based on node metrics.
 
 | Alert | Explanation |
@@ -63,4 +59,4 @@ When you enable monitoring for the project, some project-level alerts are provid
 | Alert | Explanation |
 |-------|-------------|
 | Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload`. |
-| Memory usage close to the quota | A warning alert is triggered if the project's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
+| Memory usage close to the quota | A warning alert is triggered if the workload's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
