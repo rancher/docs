@@ -34,7 +34,6 @@ The following scored controls do not currently pass, and Rancher Labs is working
 - 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
 - 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more-restrictive (Scored)
 - 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
-- 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 - 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
 
 ### Controls
@@ -1431,19 +1430,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--anonymous-auth=false").st
 
 #### 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 
-**Notes**
-
-RKE currently runs the kubelet without the `--authorization-mode` flag.
-
 **Audit**
 
 ``` bash
 docker inspect kubelet | jq -e '.[0].Args[] | match("--authorization-mode=Webhook").string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `--authorization-mode=Webhook`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 2.1.3 - Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
 

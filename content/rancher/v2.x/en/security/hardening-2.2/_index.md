@@ -359,6 +359,7 @@ Ensure Kubelet options are configured to match CIS controls.
 To pass the following controls in the CIS benchmark, ensure the appropriate flags are passed to the Kubelet.
 
 - 2.1.1 -  Ensure that the `--anonymous-auth` argument is set to false (Scored)
+- 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 - 2.1.6 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to 0 (Scored)
 - 2.1.7 - Ensure that the `--protect-kernel-defaults` argument is set to true (Scored)
 - 2.1.8 - Ensure that the `--make-iptables-util-chains` argument is set to true (Scored)
@@ -371,6 +372,7 @@ To pass the following controls in the CIS benchmark, ensure the appropriate flag
 Inspect the Kubelet containers on all hosts and verify that they are running with the following options:
 
 - `--streaming-connection-idle-timeout=<duration greater than 0>`
+- `--authorization-mode=Webhook`
 - `--protect-kernel-defaults=false`
 - `--make-iptables-util-chains=false`
 - `--event-qps=0`
@@ -386,6 +388,7 @@ Inspect the Kubelet containers on all hosts and verify that they are running wit
 services:
   kubelet:
     extra_args:
+      authorization-mode: "Webhook"
       streaming-connection-idle-timeout: "<duration>"
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
