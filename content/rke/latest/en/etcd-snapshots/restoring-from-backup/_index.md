@@ -8,14 +8,16 @@ The details of restoring your cluster from backup are different depending on you
 {{% tabs %}}
 {{% tab "RKE v0.2.0+"%}}
 
-If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts the etcd to a specific snapshot. The following actions are included in the command:
+If there is a disaster with your Kubernetes cluster,you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts the etcd to a specific snapshot. The following actions are included in the command:
 
-- Removes the old `etcd` container
-- Deletes your current `etcd` cluster (runs `rke remove` to clean old data)
-- Syncs the snapshot or downloads the snapshot from s3
-- Creates a new `etcd` cluster using the snapshot that you have chosen (triggers `rke up`)
+- Syncs the snapshot or downloads the snapshot from S3, if necessary.
+- Checks snapshot checksum across etcd nodes to make sure they are identical.
+- Deletes your current cluster (runs `rke remove` to clean old data). This removes the entire Kubernetes cluster, not just the etcd cluster.
+- Rebuilds the etcd cluster from the chosen snapshot.
+- Creates a new cluster (triggers `rke up`).
+- Restarts cluster system pods.
 
->**Warning:** You should back up any important data in your cluster before running `rke etcd snapshot-restore` because the command deletes your current etcd cluster and replaces it with a new one.
+>**Warning:** You should back up any important data in your cluster before running `rke etcd snapshot-restore` because the command deletes your current Kubernetes cluster and replaces it with a new one.
 
 The snapshot used to restore your etcd cluster can either be stored locally in `/opt/rke/etcd-snapshots` or from a S3 compatible backend.
 
@@ -67,11 +69,16 @@ $ rke etcd snapshot-restore \
 {{% /tab %}}
 {{% tab "RKE prior to v0.2.0"%}}
 
-If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot. RKE also removes the old `etcd` container before creating a new `etcd` cluster using the snapshot that you have chosen.
+If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot. The following actions are included in this command:
 
->**Warning:** You should back up any important data in your cluster before running `rke etcd snapshot-restore` because the command deletes your current etcd cluster and replaces it with a new one.
+- Removes the old etcd cluster
+- Rebuilds the etcd cluster using the local snapshot
+
+Before you run this command, you must manually sync the snapshot across all `etcd` nodes.
 
 The snapshot used to restore your etcd cluster is stored locally in  `/opt/rke/etcd-snapshots`.
+
+>**Warning:** You should back up any important data in your cluster before running `rke etcd snapshot-restore` because the command deletes your current etcd cluster and replaces it with a new one.
 
 ### Example of Restoring from a Local Snapshot
 
@@ -82,6 +89,8 @@ $ rke etcd snapshot-restore --config cluster.yml --name mysnapshot
 ```
 
 The snapshot is assumed to be located in `/opt/rke/etcd-snapshots`.
+
+The snapshot must be manually synched across all `etcd` nodes.
 
 The `pki.bundle.tar.gz` file is also expected to be in the same location.
 
