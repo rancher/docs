@@ -7,7 +7,7 @@ You can use cluster templates to provision Rancher-launched clusters [hosted by 
 
 Figuring out the right settings to create a cluster can take a lot of effort and time, and applying the same settings to multiple clusters can also be painful and error-prone. For such cases, it is useful to create a cluster template to define all the cluster settings in one place and use that template to create clusters.
 
-While creating a cluster from a template, all settings defined in the cluster template are applied and locked in, unless the template settings are marked as Questions. After a cluster is created from a template, its template-defined settings cannot be changed unless you [update the cluster to a newer version](#updating-a-cluster-created-with-a-cluster-template) of the same template.
+While creating a cluster from a template, all settings defined in the cluster template are applied and locked in, unless the template settings are marked as Questions. After a cluster is created from a template, its template-defined settings cannot be changed unless [the cluster is updated to a newer version](#updating-a-cluster-created-with-a-cluster-template) of the same template.
 
 Global Admins can use template enforcement to require new clusters to use a template.
 
@@ -23,21 +23,23 @@ When you create a cluster template, it is bound to your user profile. You can sh
 
 This document explains:
 
-- [Permissions to Create Cluster Templates](#permissions-to-create-cluster-templates)
+- [Permissions to Create and Revise Cluster Templates](#permissions-to-create-and-revise-cluster-templates)
 - [Defining Which Template Settings Can Be Overridden](#defining-which-template-settings-can-be-overridden)
 - [Sharing Cluster Templates](#sharing-cluster-templates)
 - [Requiring New Clusters to Use a Cluster Template](#requiring-new-clusters-to-use-a-cluster-template)
 - [Creating, Updating, Deleting, and Disabling Cluster Templates](#creating-updating-deleting-and-disabling-cluster-templates)
 - [Creating and Updating Clusters with Cluster Templates](#creating-and-updating-clusters-with-cluster-templates)
 
-# Permissions to Create Cluster Templates
+# Permissions to Create and Revise Cluster Templates
 
 Cluster templates can only be created by:
 
 - Global Admins
 - Users who have the global role **Create Cluster Templates,** which is given to them by a Global Admin
 
-### How to Give Users Permission to Create Templates
+If you create a cluster template and add another user as an Owner, that user must also have the **Create Cluster Templates** global role in order to create new revisions.
+
+### Giving Users Permission to Create Templates
 
 Global Admins can give users permission to create cluster templates in two ways:
 
@@ -58,6 +60,22 @@ Alternatively, the Global Admin can give all new users the default permission to
 1. Select the option **Yes: Default role for new users** and click **Save.**
 
 **Result:** Any new user created in this Rancher installation will be able to create cluster templates.
+
+### Giving Users Permission to Create Template Revisions
+
+If you are the creator of a template, you can give users the Owner access type. Users can only create, read, update and delete template revisions for a template if they have Owner access to the template. Only users with the Owner access type can share the template with other users.
+
+> **Prerequisite:** Users can only have Owner access to a template if they have the <b>Create Cluster Templates</b> global role. This permission can only be given by a Global Admin.
+
+To give a user Owner access to a template,
+
+1. Click **User Avatar > Cluster Templates.**
+1. Choose the cluster template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
+1. Under **Share Template**, click on **Add Member** and search in the **Name** field for the user or group you want to share the template with.
+1. In the **Access Type** field, click **Owner.**
+1. Click **Save.**
+
+**Result** The user has the Owner access type for the template, but cannot use those privileges without the **Create Cluster Templates** global role. For details on how a user can get that role, refer to [Giving Users Permission to Create Templates.](#giving-users-permission-to-create-templates)
 
 # Defining Which Template Settings Can Be Overridden
 
@@ -81,7 +99,12 @@ You can share the cluster template with other users or groups in three ways:
 - You can add members to an existing cluster template
 - You can make the cluster template public, sharing it with all users in the Rancher setup
 
-To share an existing cluster:
+When you share a template with a user, you can choose one of two access levels:
+
+- **Owner:** If you assign this role to a user who has the **Create Cluster Template** global role, the user can create, read, update, and delete templates and revisions of existing templates. The creator of the cluster template can assign the Owner role to any user, but the **Create Cluster Template** global permission can only be assigned by a Global Admin. For details, refer to [Giving Users Permission to Create Templates.](#giving-users-permission-to-create-templates)
+- **User:** These users can create clusters using the template and upgrade those clusters to new revisions of the template.
+
+To share a cluster template:
 
 1. Click **User Avatar > Cluster Templates.**
 1. Choose the cluster template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
