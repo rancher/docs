@@ -4,11 +4,14 @@ weight: 400
 aliases:
 ---
 
-After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry.
+After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry. There are two places you need to use a private registry:
 
-There are multiple ways to configure the private registry, depending on whether your private registry requires credentials:
+- When Rancher is installed, to provide the Rancher system images
+- After Rancher is installed, to use when deploying clusters
 
-- If your private registry requires credentials, you need to pass the credentials to Rancher by editing the cluster options for each cluster that needs them.
+There are multiple ways to configure private registries in Rancher, depending on whether your private registry requires credentials:
+
+- If your private registry requires credentials, you need to pass the credentials to Rancher by editing the cluster options for each cluster that needs to pull images from the registry.
 - If the private registry doesn't require credentials, you can configure it as a default registry through the **Settings** tab in the global view.
 
 If your private registry requires credentials, it cannot be used as the default registry. There is no global way to set up a private registry with authorization for every Rancher-provisioned cluster. Therefore, if you want a Rancher-provisioned cluster to pull images from a private registry with credentials, you will have to [pass in the registry credentials through the advanced cluster options](#provisioning-clusters-with-private-registries-that-require-credentials) every time you create a new cluster. 
@@ -33,7 +36,7 @@ If your private registry requires credentials, it cannot be used as the default 
 
 **Result:** Rancher will use your private registry to pull system images.
 
-# Setting a Private Registry with Credentials when Provisioning a Cluster
+# Setting a Private Registry with Credentials for Deploying Clusters
 
 You can follow these steps to configure a private registry when you provision a cluster with Rancher:
 
