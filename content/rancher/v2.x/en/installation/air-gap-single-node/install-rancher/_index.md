@@ -21,6 +21,7 @@ If you are installing Rancher in a development or testing environment where iden
 
 Log into your Linux host, and then run the installation command below. Replace `<REGISTRY.YOURDOMAIN.COM:PORT>` with your private registry URL and port. Replace `<RANCHER_VERSION_TAG>` with release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
 
+If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
@@ -49,7 +50,7 @@ Placeholder | Description
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
 `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
 
-If your private registry doesn't require credentials to pull images, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
 ```
 docker run -d --restart=unless-stopped \
@@ -71,6 +72,8 @@ In production environments where you're exposing an app publicly, use a certific
 After obtaining your certificate, run the Docker command below, replacing each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 
 When entering the command, use the table below to replace each placeholder.
+
+If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
 Placeholder | Description
 ------------|-------------
