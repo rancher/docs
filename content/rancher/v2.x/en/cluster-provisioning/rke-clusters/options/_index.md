@@ -365,7 +365,7 @@ network:
     plugin: none
 ```
 
-Then, in the `addons` section of the YAML, you can add the add-on manifest of a cluster that has the network plugin-that you want. In the below example, we are replacing the Canal plugin with a Flannel plugin by adding the add-on manifest for the cluster through the `addons` field:
+Then, in the `addons` section of the YAML, you can add the `configmap` file of a cluster that has the network plugin-that you want. In the below example, we are replacing the Canal plugin with a Flannel plugin by adding a network plug-in manifest as a `configmap` for the cluster through the `addons` field:
 
 ```
 addons: |-
