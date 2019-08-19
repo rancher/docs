@@ -7,6 +7,15 @@ To deploy Kubernetes, RKE deploys several core components or services in Docker 
 
 **All services support additional [custom arguments, Docker mount binds and extra environment variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/).**
 
+| Component               | Services key name in cluster.yml |
+|-------------------------|----------------------------------|
+| etcd                    | `etcd`                           |
+| kube-apiserver          | `kube-api`                       |
+| kube-controller-manager | `kube-controller`                |
+| kubelet                 | `kubelet`                        |
+| kube-scheduler          | `scheduler`                      |
+| kube-proxy              | `kubeproxy`                      |
+
 ## etcd
 
 Kubernetes uses [etcd](https://github.com/coreos/etcd/blob/master/Documentation/docs.md) as a store for cluster state and data. Etcd is a reliable, consistent and distributed key-value store.
