@@ -122,7 +122,7 @@ The following configuration options are available:
 |:----------------------:|:--------:|:---------:|:-----------------------------------------------------------------------------:|
 | server                 | string   |   *       | IP or FQDN of the vCenter/ESXi that should be used for creating the volumes. Must match one of the vCenters defined under the `virtual_center` directive.|
 | datacenter             | string   |   *       | Name of the datacenter that should be used for creating volumes. For ESXi enter *ha-datacenter*.|
-| folder                 | string   |   *       | Path of folder in which to create dummy VMs used for volume provisioning (relative from the root of the datastore), e.g. "kubernetes".|
+| folder                 | string   |   *       | Path of folder in which to create dummy VMs used for volume provisioning (relative from the root folder in vCenter), e.g. "kubernetes".|
 | default-datastore      | string   |           | Name of default datastore to place VMDKs if neither datastore or storage policy are specified in the volume options of a PVC. If datastore is located in a storage folder or is a member of a datastore cluster, specify the full path. |
 | resourcepool-path      | string   |           | Absolute or relative path to the resource pool where the dummy VMs for [Storage policy based provisioning](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/policy-based-mgmt.html) should be created. If a relative path is specified, it is resolved with respect to the datacenter's *host* folder. Examples: `/<dataCenter>/host/<hostOrClusterName>/Resources/<poolName>`, `Resources/<poolName>`. For standalone ESXi specify `Resources`.|
 
@@ -135,7 +135,7 @@ ___
     workspace:
       server: 172.158.111.1 # matches IP of vCenter defined in the virtual_center block
       datacenter: eu-west-1
-      folder: k8s-dummy
+      folder: kubernetes
       default-datastore: ds-1
 ```
 
@@ -165,7 +165,7 @@ Given the following:
 - VMs in the cluster are running in the same datacenter `eu-west-1` managed by the vCenter `vc.example.com`.
 - The vCenter has a user `provisioner` with password `secret` with the required roles assigned, see [Prerequisites](#prerequisites).
 - The vCenter has a datastore named `ds-1` which should be used to store the VMDKs for volumes.
-- A `k8s-dummy` folder exists in the root of the datastore.
+- A `kubernetes` folder exists in vCenter.
 
 The corresponding configuration for the provider would then be as follows:
 
@@ -181,7 +181,7 @@ cloud_provider:
         datacenters: eu-west-1
     workspace:
       server: vc.example.com
-      folder: k8s-dummy
+      folder: kubernetes
       default-datastore: ds-1
       datacenter: eu-west-1
 
