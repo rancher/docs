@@ -9,7 +9,7 @@ Several of the alerts use Prometheus expressions as the metric that triggers the
 /rancher/v2.x/en/cluster-admin/tools/monitoring/expression/) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 # Alerts for etcd
-Etcd is the key-value store that contains the state of the Kubernetes cluster. If you provide monitoring on your cluster, Rancher provides default alerts if the monitoring detects a potential problem with etcd.
+Etcd is the key-value store that contains the state of the Kubernetes cluster. Rancher provides default alerts if the built-in monitoring detects a potential problem with etcd. You don't have to enable monitoring to receive these alerts.
 
 A leader is the node that handles all client requests that need cluster consensus. For more information, you can refer to this [explanation of how etcd works.](https://rancher.com/blog/2019/2019-01-29-what-is-etcd/#how-does-etcd-work)
 
@@ -23,7 +23,7 @@ The leader of the cluster can change in response to certain events. It is normal
 | Etcd member has no leader | A critical alert is triggered when the etcd cluster does not have a leader for at least three minutes. |
 
 
-# Alerts for Kube Components
+# Alerts for Kubernetes Components
 Rancher provides alerts when core Kubernetes system components become unhealthy.
 
 Controllers update Kubernetes resources based on changes in etcd. The [controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) monitors the cluster desired state through the Kubernetes API server and makes the necessary changes to the current state to reach the desired state.
@@ -41,11 +41,11 @@ Kubernetes events are objects that provide insight into what is happening inside
 
 | Alert | Explanation |
 |-------|-------------|
-| Get warning deployment event | A warning alert is triggered by a warning event happens on a deployment. |
+| Get warning deployment event | A warning alert is triggered when a warning event happens on a deployment. |
 
 
 # Alerts for Nodes
-Alerts can be triggered based on node metrics.
+Alerts can be triggered based on node metrics. Each computing resource in a Kubernetes cluster is called a node. [Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/#kubernetes-cluster-node-components) can be either bare-metal servers or virtual machines.
 
 | Alert | Explanation |
 |-------|-------------|
