@@ -157,6 +157,14 @@ services:
       # Optionally define additional volume binds to a service
       extra_binds:
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins"
+    scheduler:
+      extra_args:
+        # Set the level of log output to debug-level
+        v: 4
+    kubeproxy:
+      extra_args:
+        # Set the level of log output to debug-level
+        v: 4
 
 # Currently, only authentication strategy supported is x509.
 # You can optionally create additional SANs (hostnames or IPs) to add to
