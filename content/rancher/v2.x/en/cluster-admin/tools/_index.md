@@ -23,6 +23,8 @@ Notifiers and alerts are two features that work together to inform you of events
 
 Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
 
+When you create a cluster, some alert rules are predefined. For details, refer to the [documentation on default alerts.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/default-alerts)
+
 ### Notifiers
 
 Before you can receive alerts, you must configure one or more notifier in Rancher.
