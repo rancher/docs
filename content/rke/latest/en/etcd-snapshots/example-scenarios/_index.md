@@ -161,9 +161,7 @@ root@node2:~# poweroff
 |  Name |    IP    |          Role          |
 |:-----:|:--------:|:----------------------:|
 | node1 | 10.0.0.1 | [controlplane, worker] |
-| ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~                 |
-| node3 | 10.0.0.3 | [etcd]                 |
-|   |   |   |
+| ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~     |
 
 <a id="remove-the-kubernetes-cluster-and-clean-the-nodes-rke-prior-to-v0.2.0"></a>
 ### Remove the Kubernetes Cluster and Clean the Nodes
