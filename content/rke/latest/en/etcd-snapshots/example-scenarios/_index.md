@@ -47,8 +47,7 @@ root@node2:~# poweroff
 |  Name |    IP    |          Role          |
 |:-----:|:--------:|:----------------------:|
 | node1 | 10.0.0.1 | [controlplane, worker] |
-| ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~                 |
-| node3 | 10.0.0.3 | [etcd]                 |
+| ~~node2~~ | ~~10.0.0.2~~ | ~~[etcd]~~     |
 
 ###  Add a New etcd Node to the Kubernetes Cluster
 
