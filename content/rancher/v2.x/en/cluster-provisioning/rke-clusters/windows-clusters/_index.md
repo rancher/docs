@@ -1,18 +1,11 @@
 ---
-title: Configuring Custom Clusters for Windows (Experimental)
+title: Configuring Custom Clusters for Windows
 weight: 2240
 ---
 
->**Notes:**
->
->- Configuring Windows clusters is new and improved for Rancher v2.3.0!  
->- Still using v2.1.x or v2.2.x?  See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
-
 _Available as of v2.3.0-alpha1_
 
->**Important:**
->
->Support for Windows nodes is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
+Rancher officially supports Windows nodes in Rancher v2.3. 
 
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
 
@@ -22,21 +15,26 @@ This guide walks you through the creation of a custom cluster that includes thre
 * Another Linux node, which serves as a Kubernetes worker used to support Rancher Cluster agent, Metrics server, DNS and Ingress for the cluster.
 * A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
 
+>**Notes:**
+>
+>- Configuring Windows clusters is new and improved for Rancher v2.3.0!  
+>- Still using v2.1.x or v2.2.x? See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/) (experimental). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
+
 ## Prerequisites
 
 Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{< baseurl >}}/rancher/v2.x/en/installation/) before proceeding with this guide. 
 
-For a summary of Kubernetes features supported in Windows, see [Using Windows Server Containers in Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features).
+For a summary of Kubernetes features supported in Windows, see the Kubernetes documentation on [supported functionality and limitations for using Kubernetes with Windows](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations) or the [guide for scheduling Windows containers in Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/).
 
 ### Node Requirements
 
-In order to add Windows worker nodes, the node must be running Windows Server 2019 (i.e. core version 1809 or above). Any earlier versions (e.g. core version 1803 and earlier) do not properly support Kubernetes.
+In order to add Windows worker nodes, the node must be running Windows Server 2019 (i.e. core version 1903 or above). Any earlier versions do not properly support Kubernetes.
 
 Windows overlay networking requires that [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix is installed. Most cloud-hosted VMs already have this hotfix.
 
 ### Container Requirements
 
-Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1809. If you have existing containers built for Windows Server 2019 core version 1803 or earlier, they must be re-built on Windows Server 2019 core version 1809.
+Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1903. If you have existing containers built for an earlier Windows Server 2019 core version, they must be re-built on Windows Server 2019 core version 1903.
 
 ## Steps for Creating a Cluster with Windows Support
 
