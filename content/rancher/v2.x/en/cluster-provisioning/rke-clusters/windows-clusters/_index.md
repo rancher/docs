@@ -28,7 +28,7 @@ For a summary of Kubernetes features supported in Windows, see the Kubernetes do
 
 ### Node Requirements
 
-In order to add Windows worker nodes, the node must be running Windows Server 2019 (i.e. core version 1903 or above). Any earlier versions do not properly support Kubernetes.
+In order to add Windows worker nodes, the node must be running Windows Server 2019 (i.e. core version 1903 or above).
 
 Windows overlay networking requires that [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix is installed. Most cloud-hosted VMs already have this hotfix.
 
