@@ -49,3 +49,16 @@ If you are not sure the last time Rancher performed an automatic refresh of user
 **Results:** Rancher refreshes the user information for all users. Requesting this refresh will update which users can access Rancher as well as all the groups that each user belongs to.
 
 >**Note:** Since SAML does not support user lookup, SAML-based authentication providers do not support the ability to manually refresh user information. User information will only be refreshed when the user logs into the Rancher UI.
+
+
+## Session Length
+
+_Available as of v2.3.0_
+
+The default length (TTL) of each user session is adjustable. The default session length is 16 hours.
+
+1. From the **Global** view, click on **Settings**.
+1. In the **Settings** page, find **`auth-user-session-ttl-minutes`** and click **Edit.**
+1. Enter the amount of time in minutes a session length should last and click **Save.**
+
+**Result:** Users are automatically logged out of Rancher after the set number of minutes.
