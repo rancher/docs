@@ -7,7 +7,13 @@ aliases:
 
 # Node Templates
 
+<<<<<<< HEAD
 A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. Rancher provides a nice UI to be able to launch these nodes and uses [Docker Machine](https://docs.docker.com/machine/) to provision these nodes. The available cloud providers to create node templates are based on the active node drivers in Rancher.
+=======
+Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if you delete an unhealthy node from the cluster, a new node will be created to keep the cluster count active.
+
+By default, if you have a pool of nodes, but one loses connectivity and goes inactive, rancher does not automatically spin up a new node until the inactive node is deleted from Rancher. As of Rancher v2.3, you can configure a node pool so that a node is deleted and replaced if it becomes inactive for a specified number of minutes.
+>>>>>>> Revise cluster template docs
 
 After you create a node template in Rancher, it's saved so that you can use this template again to create [node pools.](#node-pools) Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
