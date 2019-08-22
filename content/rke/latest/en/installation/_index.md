@@ -92,15 +92,13 @@ Run `rke config` to create a new `cluster.yml` in the current directory. This co
 rke config --name cluster.yml
 ```
 
-#### Creating an Empty `cluster.yml`
+#### Other RKE Configuration Options
 
 You can create an empty template `cluster.yml` file by specifying the `--empty` flag.
 
 ```
 rke config --empty --name cluster.yml
 ```
-
-#### Printing the `cluster.yml`
 
 Instead of creating a file, you can print the generated configuration to stdout using the `--print` flag.
 
