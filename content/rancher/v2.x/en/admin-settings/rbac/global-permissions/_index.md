@@ -49,7 +49,8 @@ The following table lists each custom global permission available and whether it
 | Manage Roles                       | ✓             |               |
 | Manage Users                       | ✓             |               |
 | Create Clusters                    | ✓             | ✓             |
-| Use Catalog Templates             | ✓             | ✓             |
+| Create Cluster Templates           | ✓             | ✓             |
+| Use Catalog Templates              | ✓             | ✓             |
 | Login Access                       | ✓             | ✓             |
 
 > **Notes:** 
