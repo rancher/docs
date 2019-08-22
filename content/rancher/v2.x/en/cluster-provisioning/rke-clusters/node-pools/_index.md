@@ -7,7 +7,9 @@ aliases:
 
 ## Node Pools
 
-Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if a node loses connectivity with the cluster, Rancher will automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
+Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if you delete an unhealthy node from the cluster, a new node will be created to keep the cluster count active.
+
+By default, if you have a pool of nodes, but one loses connectivity and goes inactive, rancher does not automatically spin up a new node until the inactive node is deleted from Rancher. As of Rancher v2.3, you can configure a node pool so that a node is deleted and replaced if it becomes inactive for a specified number of minutes.
 
 Each node pool is assigned with a [node component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#node-components) to specify how these nodes should be configured for the Kubernetes cluster.
 
