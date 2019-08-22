@@ -23,11 +23,6 @@ _Available as of Rancher v2.3.0_
 
 If a node is in a node pool, Rancher can automatically recreate the node if it becomes unreachable by enabling the ability to auto-replace nodes. Rancher will use the existing node template for the given node pool to recreate the node.
 
-You can enable node auto-replace in two ways:
-
-- During node pool creation, from the Rancher UI
-- After node pool creation, from the Rancher API view
-
 {{% accordion id="how-does-node-auto-replace-work" label="How does Node Auto-replace Work?" %}}
    Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.
 {{% /accordion %}} 
