@@ -1,214 +1,113 @@
 ---
-title: Cluster Templates
+title: Managing Cluster Templates
 weight: 7010
 ---
 
-Cluster templates can be used to provision custom clusters or clusters that are launched by a infrastructure provider.
+_Available as of Rancher v2.3.0_
 
-With cluster templates, admins could enforce users to *always* use cluster templates when creating cluster. This allows admins to guarantee that clusters in Rancher are created with specific settings. They would be able to control which specific options can be altered during cluster creation. Since cluster templates are specifically shared with users, admins can not only control which cluster options could be changed but they could also create different cluster templates for different sets of users.
+Cluster templates are designed to allow DevOps and security teams to standardize and simplify the creation of Kubernetes clusters.
 
-When using a cluster template for cluster creation, the settings of the cluster are already defined. Most of these options will be locked by the cluster template creator, but there could be some cluster options that can be changed. These options will be made available in the UI to change if the cluster template creator had enabled them to be selected. 
+With Kubernetes increasing in popularity, there is a trend toward managing a larger number of smaller clusters. When you want to create many clusters, it’s more important to manage them consistently. Multi-cluster management comes with challenges to enforcing security and add-on configurations that need to be standardized before turning clusters over to end users.
 
-When using a cluster template for cluster creation, you can no longer directly edit your cluster options. The only way to edit these options is to upgrade to a [new revision of the cluster template]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/#updating-a-cluster-created-with-a-cluster-template).
+Cluster templates help standardize these configurations. Regardless of whether clusters are created with the Rancher UI, the Rancher API, or an automated process, Rancher will guarantee that every cluster it provisions from a cluster template is uniform and consistent in the way it is produced. Admins can control which cluster options can be changed by end users. Cluster templates can also be shared with specific users, so that admins can create different cluster templates for different sets of users.
 
-When you define a cluster template, you can define the same settings as on Rancher's **Add Cluster** UI form, including:
+To summarize, cluster templates allow dev ops and security teams to:
 
-- Kubernetes parameters
-- Kubernetes settings per component (API server, Kubelet, etcd)
-- Pod Security Policy
-- Network Security Policy
-- Cluster Options like Kubernetes version and cloud provider options
+- Standardize cluster configuration and ensure that Rancher-provisioned clusters are created following best practices
+- Prevent less technical users from making uninformed choices when provisioning clusters
+- Share different templates with different sets of users
+- Delegate ownership of templates to users who are trusted to make changes to them
+- Control which users can create templates
+- Require users to create clusters from a template
 
-When you create a cluster template, it is bound to your user profile. You can share the cluster templates with other users or groups, and you can also make it public.
+# Configurable Settings
 
-This document explains:
+Templates can be created in the Rancher UI or defined in YAML format. They can define all the same parameters that can be specified in Rancher’s cluster creation feature, including the following:
 
-- [Permissions to Create and Revise Cluster Templates](#permissions-to-create-and-revise-cluster-templates)
-- [Defining Which Template Settings Can Be Overridden](#defining-which-template-settings-can-be-overridden)
-- [Sharing Cluster Templates](#sharing-cluster-templates)
-- [Requiring New Clusters to Use a Cluster Template](#requiring-new-clusters-to-use-a-cluster-template)
-- [Creating, Updating, Deleting, and Disabling Cluster Templates](#creating-updating-deleting-and-disabling-cluster-templates)
-- [Creating and Updating Clusters with Cluster Templates](#creating-and-updating-clusters-with-cluster-templates)
+- Cloud provider options
+- Pod security options
+- Network providers
+- Ingress controllers
+- Network security configuration
+- Network plugins
+- Private registry URL and credentials
+- Add-ons
+- Kubernetes options, including configurations for Kubernetes components such as kube-api, kube-controller, kubelet, and services
 
-# Permissions to Create and Revise Cluster Templates
+The [add-on section](#add-ons) of a cluster template is especially powerful because it allows a wide range of customization options.
 
-Cluster templates can only be created by:
+# Scope of Cluster Templates
 
-- Administrators
-- Users who have the [global role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) **Create Cluster Templates,** which is given to them by an administrator
+Cluster templates are supported for Rancher-provisioned clusters. The templates can be used to provision custom clusters or clusters that are launched by an infrastructure provider.
+ 
+Cluster templates are for defining Kubernetes and Rancher settings. Node templates are responsible for configuring nodes. For tips on how to use cluster templates in conjunction with hardware, you can refer to [Cluster Templates and Hardware]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/cluster-templates-and-hardware).
+ 
+Cluster templates can be applied to new clusters, but not existing clusters.
 
-*Important*: ```If you create a cluster template and add another user as an Owner, that user must also have the **Create Cluster Templates** global role in order to manage the cluster template.
+# Example Scenarios
+When an organization has both basic and advanced Rancher users, administrators might want to give the advanced users more options for cluster creation, while restricting the options for basic users.
 
-For more information on administrator permissions, refer to the [documentation]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/).
+These [example scenarios]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-scenarios) describe how an organization could use templates to standardize cluster creation.
 
-### Giving Users Permission to Create Templates
+Some of the example scenarios include the following:
 
-Administrators can give users permission to create cluster templates in two ways:
+- **Enforcing templates:** Administrators might want to [enforce one or more template settings for everyone]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-scenarios/#enforcing-a-template-setting-for-everyone) if they want all new Rancher-provisioned clusters to have those settings.
+- **Sharing different templates with different users:** Administrators might give [different templates to basic and advanced users,]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-scenarios/#templates-for-basic-and-advanced-users) so that basic users can have more restricted options and advanced users can have more discretion when creating clusters.
+- **Updating template settings:** If an organization's security and DevOps teams decide to embed best practices into the required settings for new clusters, those best practices could change over time. If the best practices change, [a template can be updated to a new revision]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-scenarios/#updating-templates-and-clusters-created-with-them) and clusters created from the template can upgrade to the new version of the template.
+- **Sharing ownership of a template:** When a template owner no longer wants to maintain a template, or wants to share ownership of the template, this scenario describes how [template ownership can be shared.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-scenarios/#allowing-other-users-to-update-and-share-a-template)
 
-- By editing the permissions of an individual user
-- By changing the default permissions of new users
+# Template Management
 
-An administrator can individually grant the role **Create Cluster Templates** to any existing user by following these steps:
+When you create a cluster template, it is bound to your user profile. When you create a template, you become the template owner, which gives you permission to revise and share the template. You can share the cluster templates with specific users or groups, and you can also make it public.
 
-1. From the global view, click the **Users** tab. Choose the user you want to edit and click the **Vertical Ellipsis (...) > Edit.**
-1. In the **Global Permissions** section, choose **Custom** and select the **Create Cluster Templates** role along with any other roles the user should have. Click **Save.**
+Administrators can require users to always use cluster templates when creating a cluster. This allows administrators to guarantee that clusters in Rancher are created with specific settings.
 
-**Result:** The user has permission to create cluster templates.
+Cluster template updates are handled through a revision system. If you want to change or update a template, you can create a new revision of the template. Then a cluster that was created with the older version of the template can be upgraded to the new template revision.
 
-Alternatively, the administrator can give all new users the default permission to create cluster templates by following the following steps. This will not affect the permissions of existing users.
+There are two types of settings in a cluster template: settings that can be overridden by the end user and settings that cannot. The difference is indicated by the **Allow User Override** toggle over each setting in the Rancher UI when the template is created.
 
-1. From the global view, click **Security > Roles.**
-1. Under the **Global** roles tab, go to the role **Create Cluster Templates** and click the **Vertical Ellipsis (...) > Edit**.
-1. Select the option **Yes: Default role for new users** and click **Save.**
+For the settings that cannot be overridden, the end user will not be able to directly edit them. The only way to edit these options would be to upgrade to a new revision of the same cluster template.
 
-**Result:** Any new user created in this Rancher installation will be able to create cluster templates. Existing users will not get this permission.
+The documents in this section explain the details of cluster template management:
 
-### Giving Users Permission to Create Template Revisions
+- [Getting permission to create and revise templates]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/owner-permissions/)
+- [Creating and revising templates]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/creating-and-revising/)
+- [Enforcing template settings]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/enforcement-and-overrides/#requiring-new-clusters-to-use-a-cluster-template)
+- [Overriding template settings]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/enforcement-and-overrides/#defining-which-template-settings-can-be-overridden)
+- [Sharing templates with cluster creators]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/sharing-templates/#sharing-cluster-templates-with-specific-users)
+- [Sharing ownership of a template]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/sharing-templates/#sharing-ownership-of-templates)
 
-If you are the creator of a template, you can give users the Owner access type. Users can only create, read, update and delete template revisions for a template if they have Owner access to the template. Only users with the Owner access type can share the template with other users.
+An [example YAML configuration file for a template]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-yaml) is provided for reference.
 
-> **Prerequisite:** Users can only have Owner access to a template if they have the <b>Create Cluster Templates</b> global role. This permission can only be given by an administrator.
+# Applying Templates
 
-To give a user Owner access to a template,
+You can [create a cluster from a template]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/applying-templates/#creating-a-cluster-from-a-cluster-template) that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/sharing-templates)
 
-1. Click **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
-1. Under **Share Template**, click on **Add Member** and search in the **Name** field for the user or group you want to share the template with.
-1. In the **Access Type** field, click **Owner.**
-1. Click **Save.**
+If the cluster template owner creates a new revision of the template, you can [upgrade your clsuter to that revision.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/applying-templates/#updating-a-cluster-created-with-a-cluster-template)
 
-**Result** The user has the Owner access type for the template, but cannot use those privileges without the **Create Cluster Templates** global role. For details on how a user can get that role, refer to [Giving Users Permission to Create Templates.](#giving-users-permission-to-create-templates)
+Cluster templates can only be applied to new clusters, not existing clusters.
 
-# Defining Which Template Settings Can Be Overridden
+# Standardizing Hardware
+Cluster templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you can use cluster templates [in conjuction with other tools]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/cluster-templates-and-hardware).
 
-After a cluster is created via cluster template, you can't update any of the settings defined in the template except for those settings that are set as Questions. When any parameter is set as a question on the cluster template, it means that while creating a cluster using this template, the parameter's value can be overridden.
+# YAML Customization
 
-Therefore, if there are any cluster settings that need to be updated over time on the cluster, the cluster template creator should define these configuration options as Questions on the cluster template. While creating a cluster using a cluster template, users can answer these questions to set the exact values of the parameter.
+If you define a cluster template as a YAML file, you can modify this [example cluster template YAML]({{<baseurl>}}/rancher/v2.x/en/user-settings/cluster-templates/example-yaml).
 
-The Question-Answer model of the cluster template is useful in use cases like the following:
+The RKE documentation also has [annotated]({{<baseurl>}}/rke/latest/en/example-yamls/) `cluster.yml` files that you can use for reference.
 
- - If the access key or secret key credentials for a cluster component should be provided by each cluster creator, the cluster template creator should not define them in the template.
- - If you want clusters to be able to upgrade to a new Kubernetes version, you should set the Kubernetes version as a question.
+For guidance on available options, you can also refer to the RKE documentation on [cluster configuration.]({{<baseurl>}}/rke/latest/en/config-options/)
 
-### Cluster Template Kubernetes Version
-For Kubernetes versions that ends in .x, the template will allow users to launch Rancher with the latest Kubernetes maintenance version of that minor version. When editing the cluster, can also upgrade to the latest available Kubernetes maintenance version. For example, if the template defines the Kubernetes version as v1.15.x, a cluster created from that template can be edited to upgrade Kubernetes from v1.15.4 to v1.15.5.
+### Add-ons
 
-# Sharing Cluster Templates
+The add-on section of the cluster template configuration file works the same way as the [add-on section of a cluster configuration file]({{<baseurl>}}/rke/latest/en/config-options/add-ons/). The user-defined add-ons directive allows you to either call out and pull down Kubernetes manifests or put them inline directly. If you include these manifests as part of your cluster template, Rancher will provision those in the cluster.
 
-You can share the cluster template with other users or groups in three ways:
+Some things you could do with add-ons include:
 
-- You can add members to a new cluster template during template creation
-- You can add members to an existing cluster template
-- You can make the cluster template public, sharing it with all users in the Rancher setup
+- Install applications on the Kubernetes cluster after it starts
+- Install plugins on nodes that are deployed with a Kubernetes daemonset
+- Automatically set up namespaces, service accounts, or role binding
 
-When you share a template with a user, you can choose one of two access levels:
+To set add-ons, when creating the template, click **Edit as YAML.** Then use the `addons` or `addons_include` directive to set which YAML files are used for the add-ons.
 
-- **Owner:** If you assign this role to a user who has the **Create Cluster Template** global role, the user can create, read, update, and delete templates and revisions of existing templates. The creator of the cluster template can assign the Owner role to any user, but the **Create Cluster Template** global permission can only be assigned by an administrator. For details, refer to [Giving Users Permission to Create Templates.](#giving-users-permission-to-create-templates)
-- **User:** These users can create clusters using the template and upgrade those clusters to new revisions of the template.
-
-To share a cluster template:
-
-1. Click **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
-1. Under **Share Template**, click on **Add Member** and search in the **Name** field for the user or group you want to share the template with. Then click **Save.**
-
-To share an existing cluster template with all users:
-
-1. Click **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
-1. Under **Share Template,** click **Make Public (read-only).** Then click **Save.**
-
-# Requiring New Clusters to Use a Cluster Template
-
-You might want to require new clusters to use a template to ensure that any cluster launched by any user will use the Kubernetes and/or Rancher parameters vetted by Admins.
-
-To require new clusters to use a cluster template, administrators can turn on **Cluster Template Enforcement** from the settings under **User Avatar > Cluster Templates.**
-
-By default, only an administrator has the ability to create clusters without a template. All other users must use a cluster template when creating a cluster. Users can only create new templates if the administrator [gives them permission.](#how-to-give-users-permission-to-create-templates)
-
-# Creating, Updating, Deleting, and Disabling Cluster Templates
-
-This section describes how to manage cluster templates and revisions from your user settings.
-
-### Creating a New Cluster Template
-
-1. Click **User Avatar > Cluster Templates.**
-1. Click **Add Template.**
-1. Provide a name for the template. An auto-generated name is already provided for the template's revision, which is created along with this template.
-1. Optional: You can share the template with other users or groups by adding them as members. You can also make the template public to share with everyone in the Rancher setup.
-1. Then follow the form on screen to save the cluster configuration parameters as part of the template's revision. The revision can be marked as default for this template.
-
-**Result:** A cluster template with one revision is configured. You can use this cluster template revision later when you [provision a Rancher-launched cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters).
-
-### Updating a Cluster Template
-
-When you update a cluster template, you are creating a revision of the existing template. Clusters that were created with an older version of the template can be updated to match the new revision.
-
-1. From your user settings, select **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to edit and click the **Vertical Ellipsis (...) > Edit.**
-1. Edit the required information and click **Save.**
-1. Optional: You can change the default revision of this template and also change who it is shared with.
-
-**Result:** The cluster template is updated.
-
-### Creating a Revision Based on the Default Revision
-
-You can clone the default template revision and quickly update its settings rather than creating a new revision from scratch. Cloning templates saves you the hassle of re-entering the access keys and other parameters needed for cluster creation.
-
-1. From your user settings, select **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to clone and click the **Vertical Ellipsis (...) > New Revision From Default.**
-1. Complete the rest of the form to create a new revision.
-
-**Result:** The cluster template revision is cloned and configured.
-
-### Deleting a Cluster Template
-
-When you no longer use a cluster template for any of your clusters, you can delete it from your user settings.
-
-1. Click **User Avatar > Cluster Templates.**
-1. Choose the cluster template that you want to delete and click the **Vertical Ellipsis (...) > Delete.**
-1. Confirm the deletion when prompted.
-
-**Result:** The cluster template is deleted.
-
-### Creating a Revision Based on a Cloned Revision
-
-When creating new cluster template revisions from your user settings, you can clone an existing revision and quickly update its settings rather than creating a new one from scratch. Cloning template revisions saves you the hassle of re-entering the cluster parameters.
-
-1. From your user settings, select **User Avatar > Cluster Templates.**
-1. Find the template revision you want to clone. Then select **Ellipsis > Clone Revision.**
-1. Complete the rest of the form.
-
-**Result:** The cluster template revision is cloned and configured. You can use the cluster template revision later when you provision a cluster. Any existing cluster using this cluster template can be upgraded to this new revision.
-
-### Disabling a Cluster Template Revision
-
-When you no longer want to use a cluster template revision for creating new clusters, you can disable it.
-
-You can disable the revision if it is not being used by any cluster.
-
-1. From your user settings, select **User Avatar > Cluster Templates.**
-1. Find the template revision you want to disable. Then select **Ellipsis > Disable.**
-
-# Creating and Updating Clusters with Cluster Templates
-
-You can create a cluster from any template that you created, or any template that has been [shared with you.](#sharing-cluster-templates) After creating the cluster, you can update the cluster by editing the settings marked as Questions in the cluster template, or by updating the cluster to [a new revision](#updating-a-cluster-template) of the same template.
-
-### Creating a Cluster Using a Cluster Template
-
-To add a cluster [hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) using a cluster template, use these steps:
-
-1. Click **Add Cluster** and choose the infrastructure provider.
-1. Provide the cluster name and node template details as usual.
-1. To use a cluster template, under the **Cluster Options**, select the option **Use an existing cluster template and revision.**
-1. Choose an existing template and associated revision from the dropdown menu.
-1. All settings defined in the template revision will be loaded on the UI form. The settings cannot be changed after the cluster is created unless the cluster is updated to a new revision of the template. The only settings that you can edit and answer are marked as Questions on the cluster template.
-1. Click **Save** to launch the cluster.
-
-### Updating a Cluster Created with a Cluster Template
-
-If a cluster was created from a cluster template, you can edit it and update it to [a new revision](#updating-a-cluster-template) of the template.
-
-Any parameters that are set on the cluster template as questions can also be changed on a cluster edit.
-
-You can't change the cluster to use a different cluster template. You can only update the cluster to a new revision of the same template.
+For information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
