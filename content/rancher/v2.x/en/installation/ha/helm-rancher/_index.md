@@ -37,25 +37,47 @@ There are three recommended options for the source of the certificate.
 
 > **Important:** Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
 
-Rancher relies on [cert-manager](https://github.com/kubernetes/charts/tree/master/stable/cert-manager) version v0.5.2 from the official Kubernetes Helm chart repository to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
+Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
+[These instructions come from cert-manager's official docs.](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#installing-with-helm)
 
-Install `cert-manager` from Kubernetes Helm chart repository.
 
 ```
-helm install stable/cert-manager \
+# Install the CustomResourceDefinition resources separately
+kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+
+# Create the namespace for cert-manager
+kubectl create namespace cert-manager
+
+# Label the cert-manager namespace to disable resource validation
+kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+
+# Add the Jetstack Helm repository
+helm repo add jetstack https://charts.jetstack.io
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Install the cert-manager Helm chart
+helm install \
   --name cert-manager \
-  --namespace kube-system \
-  --version v0.5.2
+  --namespace cert-manager \
+  --version v0.9.1 \
+  jetstack/cert-manager
 ```
 
-Wait for `cert-manager` to be rolled out:
+Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
 
 ```
-kubectl -n kube-system rollout status deploy/cert-manager
-Waiting for deployment "cert-manager" rollout to finish: 0 of 1 updated replicas are available...
-deployment "cert-manager" successfully rolled out
+kubectl get pods --namespace kube-system
+
+NAME                                            READY   STATUS      RESTARTS   AGE
+cert-manager-7cbdc48784-rpgnt                   1/1     Running     0          3m
+cert-manager-webhook-5b5dd6999-kst4x            1/1     Running     0          3m
+cert-manager-cainjector-3ba5cd2bcd-de332x       1/1     Running     0          3m
 ```
+
+If the ‘webhook’ pod (2nd line) is in a ContainerCreating state, it may still be waiting for the Secret to be mounted into the pod. Wait a couple of minutes for this to happen but if you experience problems, please check the [troubleshooting](https://docs.cert-manager.io/en/latest/getting-started/troubleshooting.html) guide.
 
 <br/>
 
