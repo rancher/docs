@@ -88,3 +88,25 @@ You are correctly redirected to your IdP login page and you are able to enter yo
 
   * Check your Keycloak log.
   * If the log displays `request validation failed: org.keycloak.common.VerificationException: SigAlg was null`, set `Client Signature Required` to `OFF` in your Keycloak client.
+  
+### Keycloak 6.0.0+: IDPSSODescriptor missing from options
+
+SAML Metadata IDPSSODescriptor is no longer available on Keycloak 6.0.0+. You can still get the XML from the following url:
+
+`https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
+
+At the moment of writing rancher (rancher 2.2.7)  wants the root element to be `EntityDescriptor` rather than `EntitiesDescriptor` follow the the steps to adjust the xml:
+
+  * Copying the tags from `EntitiesDescriptor` to the `EntityDescriptor`.
+  * Remove the `<EntitiesDescriptor>` tag from the beginning.
+  * Remove the `</EntitiesDescriptor>` from the end of the xml.
+
+You are left with something similar as the example below:
+
+```
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" entityID="https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}">
+  ....
+
+</EntityDescriptor>
+```
+
