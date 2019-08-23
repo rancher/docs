@@ -5,9 +5,13 @@ weight: 1021
 
 The following instructions will guide you through upgrading a high-availability Rancher Server installed in an air gap environment.
 
+<<<<<<< HEAD
 >**Note:** [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager)
 
 > **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+=======
+>**Note:** [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) In order to upgrade cert-manager to the newer version follow [these instructions.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/upgrade-cert-manager-airgap)
+>>>>>>> Add information for cert-manager
 
 ## Prerequisites
 
