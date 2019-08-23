@@ -17,7 +17,6 @@ The following instructions will guide you through upgrading a high-availability 
 
 > **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
 
-
 ## Prerequisites
 
 - **Backup your Rancher cluster**
