@@ -8,7 +8,7 @@ The details of restoring your cluster from backup are different depending on you
 {{% tabs %}}
 {{% tab "RKE v0.2.0+"%}}
 
-If there is a disaster with your Kubernetes cluster,you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts the etcd to a specific snapshot. The following actions are included in the command:
+If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts the etcd to a specific snapshot. The following actions are included in the command:
 
 - Syncs the snapshot or downloads the snapshot from S3, if necessary.
 - Checks snapshot checksum across etcd nodes to make sure they are identical.
