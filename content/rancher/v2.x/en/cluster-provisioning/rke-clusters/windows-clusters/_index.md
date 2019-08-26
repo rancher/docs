@@ -3,22 +3,17 @@ title: Configuring Custom Clusters for Windows
 weight: 2240
 ---
 
-_Available as of v2.3.0-alpha1_
-
-Rancher officially supports Windows nodes in Rancher v2.3. 
+_Available as of v2.3.0_
 
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
 
-This guide walks you through the creation of a custom cluster that includes three nodes.
+This guide walks you through the creation of a custom cluster that includes three nodes:
 
 * A Linux node, which serves as the Kubernetes control plane node.
 * Another Linux node, which serves as a Kubernetes worker used to support Rancher Cluster agent, Metrics server, DNS and Ingress for the cluster.
 * A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
 
->**Notes:**
->
->- Configuring Windows clusters is new and improved for Rancher v2.3.0!  
->- Still using v2.1.x or v2.2.x? See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/) (experimental). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
+> **Still using v2.1.x or v2.2.x?** See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/) (experimental). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
 
 ## Prerequisites
 
