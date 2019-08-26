@@ -38,7 +38,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 For HA air gap configurations, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#external-tls-termination).
+> **Note:** If you want to terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/chart-options/#external-tls-termination).
 
 | Configuration | Chart option | Description | Requires cert-manager |
 |-----|-----|-----|-----|
@@ -103,7 +103,6 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
       --set ingress.tls.source=secret
-<<<<<<< HEAD
       --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
       --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
     ```
@@ -115,9 +114,6 @@ By default, Rancher generates a CA and uses cert manager to issue the certificat
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
     
     > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`
-=======
-    ```
->>>>>>> Move HA installation reference docs so air gap readers can see them
 
 1.    See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them. 
 {{% /accordion %}}
