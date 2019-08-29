@@ -42,7 +42,7 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
 ## Upgrade Rancher
 
-> **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#upgrading-rancher)
+> **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm-airgap/)
 
 1. Update your local helm repo cache.
 
