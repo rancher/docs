@@ -561,7 +561,7 @@ In Kubernetes 1.13.x this flag is `--encryption-provider-config`
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--encryption-provider-config=.*").string'
 ```
 
-**Returned Value:** `encryption-provider-config=/etc/kubernetes/encryption.yaml`
+**Returned Value:** `encryption-provider-config=/opt/kubernetes/encryption.yaml`
 
 **Result:** Pass
 
@@ -574,7 +574,7 @@ Only the first provider in the list is active.
 **Audit**
 
 ``` bash
-grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
+grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
 ```
 
 **Returned Value:**  `- aescbc:`
@@ -587,8 +587,8 @@ grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
 
 The `EventRateLimit` plugin requires setting the `--admission-control-config-file` option and configuring details in the following files:
 
-- `/etc/kubernetes/admission.yaml`
-- `/etc/kubernetes/event.yaml`
+- `/opt/kubernetes/admission.yaml`
+- `/opt/kubernetes/event.yaml`
 
 See Host Configuration for details.
 
@@ -606,7 +606,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--admission-control-config-file=.*").string'
 ```
 
-**Returned Value:** `--admission-control-config-file=/etc/kubernetes/admission.yaml`
+**Returned Value:** `--admission-control-config-file=/opt/kubernetes/admission.yaml`
 
 **Result:** Pass
 
@@ -630,7 +630,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(A
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=.*").string'
 ```
 
-**Returned Value:** `--audit-policy-file=/etc/kubernetes/audit.yaml`
+**Returned Value:** `--audit-policy-file=/opt/kubernetes/audit.yaml`
 
 **Result:** Pass
 
