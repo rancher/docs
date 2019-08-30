@@ -175,6 +175,10 @@ resources:
 
 Where `secret` is the 32-byte base64-encoded string generated in the first step.
 
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
+
 ### 1.1.3 - Install the audit log configuration on all control plane nodes.
 
 **Profile Applicability**
@@ -244,6 +248,10 @@ kind: Policy
 rules:
 - level: Metadata
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ### 1.1.4 - Place Kubernetes event limit configuration on each control plane host
 
@@ -339,6 +347,10 @@ limits:
   qps: 5000
   burst: 20000
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
 
@@ -498,6 +510,7 @@ services:
       tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
+      - "/opt/kubernetes:/opt/kubernetes"
 ```
 
 - Reconfigure the cluster:
@@ -505,6 +518,10 @@ services:
 ``` bash
 rke up --config cluster.yml
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ### 2.1.3 - Configure scheduler options
 
@@ -1063,6 +1080,7 @@ services:
       tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
+      - "/opt/kubernetes:/opt/kubernetes"
   scheduler:
     extra_args:
       profiling: "false"
