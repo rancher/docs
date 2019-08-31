@@ -37,13 +37,13 @@ To set up a custom cluster with support for Windows nodes and containers, you wi
 
 <!-- TOC -->
 
-- [1. Provision Hosts](#1-provision-hosts)
-- [2. Create the Custom Cluster](#2-create-the-custom-cluster)
-- [3. Add Linux Master Node](#3-add-linux-master-node)
-- [4. Add Linux Worker Node](#4-add-linux-worker-node)
-- [5. Add Windows Workers](#5-add-windows-workers)
-- [6. Cloud-host VM Routes Configuration for Host Gateway Mode (Optional)](#6-cloud-hosted-vm-routes-configuration-for-host-gateway-mode)
-- [7. Configuration for Azure Files (Optional)](#7-configuration-for-azure-files)
+1. [Provision Hosts](#1-provision-hosts)
+1. [Create the Custom Cluster](#2-create-the-custom-cluster)
+1. [Add Linux Master Node](#3-add-linux-master-node)
+1. [Add Linux Worker Node](#4-add-linux-worker-node)
+1. [Add Windows Workers](#5-add-windows-workers)
+1. [Cloud-host VM Routes Configuration for Host Gateway Mode (Optional)](#6-cloud-hosted-vm-routes-configuration-for-host-gateway-mode)
+1. [Configuration for Azure Files (Optional)](#7-configuration-for-azure-files)
 <!-- /TOC -->
 
 ## 1. Provision Hosts
@@ -81,7 +81,7 @@ The instructions for creating a custom cluster that supports Windows nodes are v
 
 1. From the main Rancher dashboard click on the **Clusters** tab and select **Add Cluster**.
 
-1. The first section asks where the cluster is hosted. You should select **Custom**. 
+1. The first section asks where the cluster is hosted. You should select **From existing nodes (Custom)**. 
 
 1. Enter a name for your cluster in the **Cluster Name** text box. 
 
