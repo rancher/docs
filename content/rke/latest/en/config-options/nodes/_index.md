@@ -116,6 +116,13 @@ Taint Key                              | Taint Value  | Taint Effect
 
 With this role, any workloads or pods that are deployed will land on these nodes.
 
+* **Windows clusters**
+If you are provisioning Windows cluster in Rancher, following taints will be added to you linux node.
+
+Taint Key      | Taint Value   | Taint Effect
+---------------|---------------|--------------
+`cattle.io/os` | `linux`       | `NoSchedule`
+
 ### Docker Socket
 
 If the Docker socket is different than the default, you can set the `docker_socket`. The default is `/var/run/docker.sock`
