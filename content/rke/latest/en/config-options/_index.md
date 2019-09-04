@@ -74,14 +74,11 @@ Please refer to the [release notes](https://github.com/rancher/rke/releases) of 
 You can also list the supported versions and system images of specific version of RKE release with a quick command.
 
 ```
-$ rke config --system-images --all
-
-INFO[0000] Generating images list for version [v1.13.4-rancher1-2]:
-.......
-INFO[0000] Generating images list for version [v1.11.8-rancher1-1]:
-.......
-INFO[0000] Generating images list for version [v1.12.6-rancher1-2]:
-.......
+$ rke config --list-version --all
+v1.15.3-rancher2-1
+v1.13.10-rancher1-2
+v1.14.6-rancher2-1
+v1.16.0-beta.1-rancher1-1
 ```
 
 #### Using an unsupported Kubernetes version
