@@ -97,6 +97,7 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     ```plain
     curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
     ```
+
 {{% /tab %}}
 {{% tab "Option B: Certificates for Files (Kubernetes Secret)" %}}
 
