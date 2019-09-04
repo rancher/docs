@@ -35,36 +35,50 @@ There are three recommended options for the source of the certificate.
 
 > **Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
 
-> **Important:** Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
+> **Important:**
+
+> Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
+
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
-[These instructions come from cert-manager's official docs.](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#installing-with-helm)
+These instructions are adapted from the [official cert-manager documentation](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#installing-with-helm).
 
 
-```
-# Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+1. Install the CustomResourceDefinition resources separately
+    ```plain
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+    ```
 
-# Create the namespace for cert-manager
-kubectl create namespace cert-manager
+1. Create the namespace for cert-manager
+    ```plain
+    kubectl create namespace cert-manager
+    ```
 
-# Label the cert-manager namespace to disable resource validation
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+1. Label the cert-manager namespace to disable resource validation
+    ```plain
+    kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+    ```
 
-# Add the Jetstack Helm repository
-helm repo add jetstack https://charts.jetstack.io
+1. Add the Jetstack Helm repository
+    ```plain
+    helm repo add jetstack https://charts.jetstack.io
+    ```
 
-# Update your local Helm chart repository cache
-helm repo update
+1. Update your local Helm chart repository cache
+    ```plain
+    helm repo update
+    ```
 
-# Install the cert-manager Helm chart
-helm install \
-  --name cert-manager \
-  --namespace cert-manager \
-  --version v0.9.1 \
-  jetstack/cert-manager
-```
+1. Install the cert-manager Helm chart
+    ```plain
+    helm install \
+      --name cert-manager \
+      --namespace cert-manager \
+      --version v0.9.1 \
+      jetstack/cert-manager
+    ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
 
