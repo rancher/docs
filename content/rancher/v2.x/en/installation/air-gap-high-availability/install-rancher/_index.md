@@ -52,7 +52,10 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-
 In this section you will configure your cert manager and private registry in the Rancher template.
 
 {{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
-By default, Rancher generates a CA and uses cert-manger to issue the certificate for access to the Rancher server interface. 
+By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
+
+> **Note:**
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 1. From a system connected to the internet, add the cert-manager repo to helm
 
@@ -88,7 +91,7 @@ By default, Rancher generates a CA and uses cert-manger to issue the certificate
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.).
-    
+
     
      ```plain
     helm template ./rancher-<VERSION>.tgz --output-dir . \
