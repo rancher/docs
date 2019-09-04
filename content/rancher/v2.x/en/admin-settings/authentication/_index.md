@@ -40,6 +40,28 @@ Rancher relies on users and groups to determine who is allowed to log in to Ranc
 
 For more information, see [Users and Groups]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/user-groups/)
 
+## Scope of Rancher Authorization
+
+After you configure Rancher to allow sign on using an external authentication service, you should configure who should be allowed to log in and use Rancher. The following options are available:
+
+| Access Level | Description |
+|----------------------------------------------|-------------|
+| Allow any valid Users                   | _Any_ user in the authorization service can access Rancher. We generally discourage use of this setting! |
+| Allow members of Clusters, Projects, plus Authorized Users and Organizations | Any user in the authorization service and any group added as a **Cluster Member** or **Project Member** can log in to Rancher. Additionally, any user in the authentication service or group you add to the **Authorized Users and Organizations** list may log in to Rancher. |
+| Restrict access to only Authorized Users and Organizations | Only users in the authentication service or groups added to the Authorized Users and Organizations can log in to Rancher. |
+
+To set the Rancher access level for users in the authorization service, follow these steps:
+
+1. From the **Global** view, click **Security > Authentication.**
+
+1. Use the **Site Access** options to configure the scope of user authorization. The table above explains the access level for each option.
+
+1. Optional: If you choose an option other than **Allow any valid Users,** you can add users to the list of authorized users and organizations by searching for them in the text field that appears.
+
+1. Click **Save.**
+
+**Result:** The Rancher access configuration settings are applied.
+
 ## External Authentication Configuration and Principal Users
 
 Configuration of external authentication requires:
