@@ -86,13 +86,13 @@ Alternatively, you can set the installer image to any image in System Docker to 
 
 _Available as of v1.5.3_
 
-Sometimes, some of the configurations included in cloud-config require additional docker images support. These images are typically downloaded automatically by RancherOS when booting after installation. These configurations can be:
+Some configurations included in `cloud-config` require images to be downloaded from Docker to start. After installation, these images are downloaded automatically by RancherOS when booting. An example of these configurations are:
 
 - rancher.services_include
 - rancher.console
 - rancher.docker
 
-If you want to download and save these images to disk during installation, they will be loaded automatically when booting next time. You can add `-s` when using `ros install`:
+If you want to download and save these images to disk during installation, they will be cached and not need to be downloaded again upon each boot. You can cache these images by adding `-s` when using `ros install`:
 
 ```
 $ ros install -d <disk> -c <cloud-config.yaml> -s
