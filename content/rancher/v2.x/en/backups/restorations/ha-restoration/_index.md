@@ -229,6 +229,6 @@ rke up --config ./rancher-cluster-restore.yml
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters. Swap the endpoints for Rancher DNS or the Load Balancer you built during Step 1 of the HA install ([1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/#load-balancer)) to target the new cluster. It might help to review the [suggested architecture]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#recommended-architecture). Once this is done the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
+Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#recommended-architecture) for HA installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the HA install ([1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
 
 > **IMPORTANT:** Remember to save your new RKE config (`rancher-cluster-restore.yml`) and `kubectl` credentials (`kube_config_rancher-cluster-restore.yml`) files in a safe place for future maintenance.
