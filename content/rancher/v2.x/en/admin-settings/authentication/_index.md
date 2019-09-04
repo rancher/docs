@@ -62,6 +62,8 @@ To set the Rancher access level for users in the authorization service, follow t
 
 **Result:** The Rancher access configuration settings are applied.
 
+{{< saml_caveats >}}
+
 ## External Authentication Configuration and Principal Users
 
 Configuration of external authentication requires:
