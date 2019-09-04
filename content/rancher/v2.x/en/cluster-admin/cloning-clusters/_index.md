@@ -7,22 +7,18 @@ aliases:
 
 If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the  cloned cluster.
 
-## Caveats
+You can clone clusters only if the nodes in the cluster are hosted by an infrastructure provider, such as EC2, Azure, or DigitalOcean.
 
-- Only [cluster types]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) that interact with cloud hosts over API can be cloned. Duplication of imported clusters and custom clusters provisioned using Docker machine is not supported.
+Duplication of imported clusters, clusters in hosted Kubernetes providers, and custom clusters provisioned using Docker machine is not supported.
 
-    | Cluster Type                     | Cloneable?    |
-    | -------------------------------- | ------------- |
-    | [Hosted Kubernetes Providers][1] | ✓             |
-    | [Nodes Hosted by Infrastructure Provider][2]        | ✓             |
-    | [Custom Cluster][3]              |               |
-    | [Imported Cluster][4]            |               |
-- During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
+| Cluster Type                     | Cloneable?    |
+|----------------------------------|---------------|
+| [Nodes Hosted by Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
+| [Hosted Kubernetes Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) |               |
+| [Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              |               |
+| [Imported Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
 
-[1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
-[2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
-[3]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/
-[4]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
+> **Warning:** During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
 
 ## Prerequisites
 
@@ -62,77 +58,25 @@ Use your favorite text editor to modify the cluster configuration in `cluster-te
     >**Warning:** Only edit the cluster config values explicitly called out below. Many of the values listed in this file are used to provision your cloned cluster, and editing their values may break the provisioning process.
 
 
-1. As depicted in one of the examples below, at the `<CLUSTER_NAME>` placeholder, replace your original cluster's name with a unique name (`<CLUSTER_NAME>`). If your cloned cluster has a duplicate name, the cluster will not provision successfully.
-{{% accordion id="gke" label="GKE" %}}
-```yml
-Version: v3
-clusters:
-    <CLUSTER_NAME>: # ENTER UNIQUE NAME
-    dockerRootDir: /var/lib/docker
-    enableNetworkPolicy: false
-    googleKubernetesEngineConfig:
-      credential: |-
-        {
-          "type": "service_account",
-          "project_id": "gke-cluster-221300",
-          "private_key_id": "1d210afae352bc298bde1b3e680ec0c8b22cdd61"
-```
-{{% /accordion %}}
-{{% accordion id="eks" label="EKS" %}}
-```yml
-Version: v3
-clusters:
-    <CLUSTER_NAME>: # ENTER UNIQUE NAME
-    amazonElasticContainerServiceConfig:
-        accessKey: 00000000000000000000
-        associateWorkerNodePublicIp: true
-        instanceType: t2.medium
-        maximumNodes: 3
-        minimumNodes: 1
-        region: us-west-2
-        secretKey: 0000000000000000000000000000000000000000
-    dockerRootDir: /var/lib/docker
-    enableNetworkPolicy: false
-```
-{{% /accordion %}}
-{{% accordion id="aks" label="AKS" %}}
-```yml
-Version: v3
-clusters:
-    <CLUSTER_NAME>: # ENTER UNIQUE NAME
-    azureKubernetesServiceConfig:
-      adminUsername: azureuser
-      agentPoolName: rancher
-      agentVmSize: Standard_D5_v2
-      clientId: 00000000-0000-0000-0000-000000000000
-      clientSecret: 00000000000000000000000000000000000000000000
-      count: 3
-      kubernetesVersion: 1.11.2
-      location: westus
-      osDiskSizeGb: 100
-      resourceGroup: docker-machine
-      sshPublicKeyContents: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJc2kDExgRaDLD
-```
-{{% /accordion %}}
-{{% accordion id="ec2" label="Nodes Hosted by Infrastructure Provider (EC2, Azure, or DigitalOcean )" %}}
-```yml
-Version: v3
-clusters:
-    <CLUSTER_NAME>: # ENTER UNIQUE NAME
-    dockerRootDir: /var/lib/docker
-    enableNetworkPolicy: false
-    rancherKubernetesEngineConfig:
-      addonJobTimeout: 30
-      authentication:
-        strategy: x509
-      authorization: {}
-      bastionHost: {}
-      cloudProvider: {}
-      ignoreDockerVersion: true
-```
-{{% /accordion %}}
+1. As depicted in the example below, at the `<CLUSTER_NAME>` placeholder, replace your original cluster's name with a unique name (`<CLUSTER_NAME>`). If your cloned cluster has a duplicate name, the cluster will not provision successfully.
 
-1. **Nodes Hosted by Infrastructure Provider Only:** For each `nodePools` section, replace the original nodepool name with a unique name at the `<NODEPOOL_NAME>` placeholder.  If your cloned cluster has a duplicate nodepool name, the cluster will not provision successfully.
+    ```yml
+    Version: v3
+    clusters:
+        <CLUSTER_NAME>: # ENTER UNIQUE NAME
+        dockerRootDir: /var/lib/docker
+        enableNetworkPolicy: false
+        rancherKubernetesEngineConfig:
+        addonJobTimeout: 30
+        authentication:
+            strategy: x509
+        authorization: {}
+        bastionHost: {}
+        cloudProvider: {}
+        ignoreDockerVersion: true
+    ```
+
+1. For each `nodePools` section, replace the original nodepool name with a unique name at the `<NODEPOOL_NAME>` placeholder.  If your cloned cluster has a duplicate nodepool name, the cluster will not provision successfully.
 
     ```yml
     nodePools:
