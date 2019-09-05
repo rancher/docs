@@ -3,25 +3,26 @@ title: v2.1.x and v2.2.x Windows Documentation (Experimental)
 weight: 9100
 ---
 
->**Note:** This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
-
 _Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.3_
 
->**Important:**
->
->Support for Windows nodes is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
+This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
+
+>**Important:** In versions of Rancher prior to v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher prior to v2.3.
 
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
 
-This guide walks you through create of a custom cluster that includes 3 nodes: a Linux node, which serves as a Kubernetes control plane node; another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster; and a Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
+This guide walks you through create of a custom cluster that includes three nodes: 
 
->**Notes:**
->
->- For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
->- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
->- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
+- A Linux node, which serves as a Kubernetes control plane node
+- Another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster
+- A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers
 
+For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
 
+## OS and Container Requirements
+
+- For clusters provisioned with Rancher v2.1.x and v2.2.x, containers must run on Windows Server 1803.
+- You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
 
 ## Objectives for Creating Cluster with Windows Support
 
