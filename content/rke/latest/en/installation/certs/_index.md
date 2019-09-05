@@ -24,6 +24,18 @@ $ rke up --custom-certs
 $ rke up --custom-certs --cert-dir ~/my/own/certs
 ```
 
+If you want add an extra SAN (Subject Alternative Name) to the Kube API Server, add to `cluster.yml`:
+
+```
+authentication:
+    strategy: x509
+    sans:
+      - "10.18.160.10"
+      - "my-custom-hostname.domain.com"
+```
+
+See [authentication]({{< baseurl >}}/rke/latest/en/config-options/authentication/) for more details.
+
 ## Certificates
 
 The following certificates must exist in the certificate directory.
