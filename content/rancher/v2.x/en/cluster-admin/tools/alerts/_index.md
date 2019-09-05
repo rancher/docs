@@ -154,7 +154,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
 
   - [**Node**](https://github.com/prometheus/node_exporter)
   - [**Container**](https://github.com/google/cadvisor)
-  - [**ETCD**](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/monitoring.md)
+  - [**ETCD**](https://etcd.io/docs/v3.3.12/op-guide/monitoring/)
   - [**Kubernetes Components**](https://github.com/kubernetes/metrics)
   - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
   - [**Fluentd**](https://docs.fluentd.org/v1.0/articles/monitoring-prometheus) (supported by [Logging]({{< baseurl >}}/rancher/v2.x/en/tools/logging))
