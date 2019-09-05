@@ -17,6 +17,7 @@ Rancher deploys an agent on each node to communicate with the node. This pages d
 | `--ca-checksum`  | `CATTLE_CA_CHECKSUM` | The SHA256 checksum of the configured Rancher `cacerts` setting to validate |
 | `--node-name` | `CATTLE_NODE_NAME` | Override the hostname that is used to register the node (defaults to `hostname -s`) |
 | `--label` | `CATTLE_NODE_LABEL` | Add node labels to the node (`--label key=value`) |
+| `--taints` | `CATTLE_NODE_TAINTS` | Add node taints to node (`--taints key=value:effect`) |
 
 ## Role options
 

@@ -57,6 +57,12 @@ You can disable node auto-replace from the Rancher UI with the following steps:
 
 **Result:** Node auto-replace is disabled for the node pool.
 
+### Pre-defined Node Taints
+
+_Available as of Rancher v2.3.0_
+
+You can pre-define node taints in both node template and node pool. Those taints will automatically be applied to the newly created node in the node pool. And the taints from node pool and node template will be merged if there is no conflict. If there are two taints with same key and effect, the taints from the node pool will override the taints from the node template.
+
 # Cloud Credentials
 
 _Available as of v2.2.0_

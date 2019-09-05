@@ -18,7 +18,7 @@ The following table lists which node options are available for each [type of clu
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
 | [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
-| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, or label for a node. |
+| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
 | [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
@@ -101,7 +101,7 @@ Once drain successfully completes, the node will be in a state of `drained`. You
 
 ## Editing a Node
 
-Editing a node lets you change its name, add a description of the node, or add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+Editing a node lets you change its name, add a description of the node, add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or add/remove [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/).
 
 
 ## Viewing a Node API
