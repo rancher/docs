@@ -13,20 +13,19 @@ You can only add Windows nodes to a cluster if Windows support is enabled. Windo
 
 For a summary of Kubernetes features supported in Windows, see the Kubernetes documentation on [supported functionality and limitations for using Kubernetes with Windows](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations) or the [guide for scheduling Windows containers in Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/).
 
-> **Still using v2.1.x or v2.2.x?** See the documentation for how to provision Windows clusters on [previous versions]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/) (experimental). As of v2.1.10 and v2.2.4, the ability to provision Windows clusters has been removed in the 2.1.x and 2.2.x lines.
-
 This guide covers the following topics:
 
+<!-- TOC -->
 - [Prerequisites](#prerequisites)
 - [Requirements](#requirements-for-windows-clusters)
-  - [OS and Docker](#os-and-docker-requirements)
-  - [Hardware](#hardware-requirements)
-  - [Networking](#networking-requirements)
-  - [Architecture](#architecture-requirements)
-  - [Containers](#container-requirements)
-- [Recommended Architecture](#recommended-architecture)
+  - [OS and Docker](#os-and-docker)
+  - [Hardware](#hardware)
+  - [Networking](#networking)
+  - [Architecture](#architecture)
+  - [Containers](#containers)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
+<!-- /TOC -->
 
 # Prerequisites
 
@@ -38,28 +37,28 @@ Before provisioning a new cluster, be sure that you have already installed Ranch
 
 For a custom cluster, the general node requirements for networking, operating systems, and Docker are the same as the node requirements for a [Rancher installation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 
-### OS and Docker Requirements
+### OS and Docker
 
-In order to add Windows worker nodes to a cluster, the node must be running Windows Server 2019 (i.e. core version 1903 or above) and [Docker 18.09.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+In order to add Windows worker nodes to a cluster, the node must be running Windows Server 2019 (i.e. core version 1903 or above) and [Docker 19.03.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 >**Notes:**
 >
->- If you are using AWS, you should choose *Microsoft Windows Server 2019 Base with Containers* as the Amazon Machine Image (AMI).
->- If you are using GCE, you should choose *Windows Server 2019 Datacenter for Containers* as the OS image.
+>- If you are using AWS, Rancher recommends *Microsoft Windows Server 2019 Base with Containers* as the Amazon Machine Image (AMI).
+>- If you are using GCE, Rancher recommends *Windows Server 2019 Datacenter for Containers* as the OS image.
 
-### Hardware Requirements
+### Hardware
 
 The hosts in the cluster need to have at least:
 
 - 2 core CPUs
-- 4.5 GiB memory
-- 30 GiB of disk space
+- 4.5 GiB memory (~4.83 GB)
+- 30 GiB of disk space (~32.21 GB)
 
 Rancher will not provision the node if the node does not meet these requirements.
 
-### Networking Requirements
+### Networking
 
-Windows support requires Flannel as the network provider.
+Rancher only supports Windows using Flannel as the network provider.
 
 There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
 
@@ -67,17 +66,11 @@ For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 ne
 
 For **VXLAN (Overlay)** networking, the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix must be installed. Most cloud-hosted VMs already have this hotfix.
 
-### Architecture Requirements
+### Architecture
 
-Your cluster must include at least one Linux `worker`node to run the Rancher cluster agent, DNS, Metrics server and Ingress related containers.
+The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run on Linux nodes.
 
-The `controlplane` and `etcd` nodes must also run Linux.
-
-### Container Requirements
-
-Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1903. If you have existing containers built for an earlier Windows Server 2019 core version, they must be re-built on Windows Server 2019 core version 1903.
-
-# Recommended Architecture
+The `worker` nodes, which is where your workloads will be deployed on, will typically be Windows nodes, but there must be at least one `worker` node that is run on Linux in order to run the Rancher cluster agent, DNS, metrics server, and Ingress related containers.
 
 We recommend the minimum three-node architecture listed in the table below, but you can always add additional Linux and Windows workers to scale up your cluster for redundancy:
 
@@ -89,16 +82,19 @@ Node 1  | Linux (Ubuntu Server 18.04 recommended)           | [Control Plane]({{
 Node 2  | Linux (Ubuntu Server 18.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster
 Node 3  | Windows (Windows Server 2019 required)            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
 
+### Containers
+
+Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1903. If you have existing containers built for an earlier Windows Server 2019 core version, they must be re-built on Windows Server 2019 core version 1903.
+
 # Tutorial: How to Create a Cluster with Windows Support
 
-The tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [table above.](#guide-architecture)
+The tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [recommended architecture.](#guide-architecture)
 
 When you provision a custom cluster with Rancher, you will add nodes to the cluster by installing the [Rancher agent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/agent-options/) on each one. When you create or edit your cluster from the Rancher UI, you will see a **Customize Node Run Command** that you can run on each server to add it to your custom cluster.
 
 To set up a custom cluster with support for Windows nodes and containers, you will need to complete the tasks below.
 
 <!-- TOC -->
-
 1. [Provision Hosts](#1-provision-hosts)
 1. [Create the Custom Cluster](#2-create-the-custom-cluster)
 1. [Add Nodes to the Cluster](#3-add-nodes-to-the-cluster)
@@ -117,7 +113,7 @@ Your hosts can be:
 
 You will provision three nodes:
 
-- One Linux node, which will will manage the Kubernetes control plane
+- One Linux node, which manages the Kubernetes control plane and stores your `etcd`
 - A second Linux node, which will be another worker node
 - The Windows node, which will run your Windows containers as a worker node
 
@@ -161,8 +157,6 @@ This section describes how to register your Linux and Worker nodes to your custo
 
 The first node in your cluster should be a Linux host has both the **Control Plane** and **etcd** roles. At a minimum, both of these roles must be enabled for this node, and this node must be added to your cluster before you can add Windows hosts.
 
-We recommend enabling all three roles for this node, so that Linux-only workloads can be run on this node as well as the Linux worker node that we will create next.
-
 In this section, we fill out a form on the Rancher UI to get a custom command to install the Rancher agent on the Linux master node. Then we will copy the command and run it on our Linux master node to register the node in the cluster.
 
 1. In the **Node Operating System** section, click **Linux**.
@@ -183,7 +177,7 @@ It may take a few minutes for the node to be registered in your cluster.
 
 ### Add Linux Worker Node
 
-After the initial provisioning of your custom cluster, your cluster only has a single Linux host. Next, we add another Linux host, which will be used to support *Rancher cluster agent*, *Metrics server*, *DNS* and *Ingress* for your cluster.
+After the initial provisioning of your custom cluster, your cluster only has a single Linux host. Next, we add another Linux `worker` host, which will be used to support *Rancher cluster agent*, *Metrics server*, *DNS* and *Ingress* for your cluster.
 
 1. From the **Global** view, click **Clusters.**
 

@@ -14,14 +14,15 @@ When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-pro
 This guide walks you through create of a custom cluster that includes three nodes: 
 
 - A Linux node, which serves as a Kubernetes control plane node
-- Another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster - A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers
+- Another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster
+- A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers
 
 For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
 
-## Windows-specific Cluster Requirements
+## OS and Container Requirements
 
-- Windows containers must run on Windows Server 1903 nodes.
-- You must build containers on Windows Server 1903 to run these containers on Windows Server 1903.
+- For clusters provisioned with Rancher v2.1.x and v2.2.x, containers must run on Windows Server 1803.
+- You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
 
 ## Objectives for Creating Cluster with Windows Support
 
@@ -52,7 +53,7 @@ Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
 Node 1  | Linux (Ubuntu Server 16.04 recommended)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support)
-Node 3  | Windows (*Windows Server 1903 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
 ### Requirements
 
