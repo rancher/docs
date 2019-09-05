@@ -5,6 +5,7 @@ weight: 2240
 
 _Available as of v2.3.0_
 
+
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
 
 You can use a mix of Linux and Windows hosts as your cluster nodes. Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
@@ -103,7 +104,7 @@ To set up a custom cluster with support for Windows nodes and containers, you wi
 
 # 1. Provision Hosts
 
-To begin provisioning a custom cluster with Windows support, prepare your hosts. 
+To begin provisioning a custom cluster with Windows support, prepare your hosts.
 
 Your hosts can be:
 
@@ -119,8 +120,8 @@ You will provision three nodes:
 
 Node | Operating System
 -----|-----------------
-Node 1  | Linux (Ubuntu Server 18.04 recommended) 
-Node 2  | Linux (Ubuntu Server 18.04 recommended) 
+Node 1  | Linux (Ubuntu Server 18.04 recommended)
+Node 2  | Linux (Ubuntu Server 18.04 recommended)
 Node 3  | Windows (Windows Server 2019 required)
 
 If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
@@ -133,14 +134,14 @@ Windows support only be enabled if the cluster uses Kubernetes v1.15+ and the Fl
 
 1. From the **Global** view, click on the **Clusters** tab and click **Add Cluster**.
 
-1. Click **From existing nodes (Custom)**. 
+1. Click **From existing nodes (Custom)**.
 
-1. Enter a name for your cluster in the **Cluster Name** text box. 
+1. Enter a name for your cluster in the **Cluster Name** text box.
 
 1. In the **Kubernetes Version** dropdown menu, select v1.15 or above.
 
 1. In the **Network Provider** field, select **Flannel.**
-    
+
 1. In the **Windows Support** section, click **Enable.**
 
 1. Optional: After you enable Windows support, you will be able to choose the Flannel backend. There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
@@ -165,7 +166,7 @@ In this section, we fill out a form on the Rancher UI to get a custom command to
 
 1. Optional: If you click **Show advanced options,** you can customize the settings for the [Rancher agent]({{< baseurl >}}/rancher/v2.x/en/admin-settings/agent-options/) and [node labels.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
-1. Copy the command displayed on the screen to your clipboard. 
+1. Copy the command displayed on the screen to your clipboard.
 
 1. SSH into your Linux host and run the command that you copied to your clipboard.
 
