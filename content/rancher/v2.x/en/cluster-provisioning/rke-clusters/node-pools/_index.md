@@ -7,15 +7,9 @@ aliases:
 
 # Node Templates
 
-<<<<<<< HEAD
-A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. Rancher provides a nice UI to be able to launch these nodes and uses [Docker Machine](https://docs.docker.com/machine/) to provision these nodes. The available cloud providers to create node templates are based on the active node drivers in Rancher.
-=======
-Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if you delete an unhealthy node from the cluster, a new node will be created to keep the cluster count active.
+A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. These nodes can be launched from the UI. Rancher uses [Docker Machine](https://docs.docker.com/machine/) to provision these nodes. The available cloud providers to create node templates are based on the active node drivers in Rancher.
 
-By default, if you have a pool of nodes, but one loses connectivity and goes inactive, rancher does not automatically spin up a new node until the inactive node is deleted from Rancher. As of Rancher v2.3, you can configure a node pool so that a node is deleted and replaced if it becomes inactive for a specified number of minutes.
->>>>>>> Revise cluster template docs
-
-After you create a node template in Rancher, it's saved so that you can use this template again to create [node pools.](#node-pools) Node templates are bound to your login. After you add a template, you can remove them from your user profile.
+After you create a node template in Rancher, it's saved so that you can use this template again to create node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
 # Node Pools
 
@@ -27,7 +21,7 @@ Each node pool is assigned with a [node component]({{< baseurl >}}/rancher/v2.x/
 
 _Available as of Rancher v2.3.0_
 
-If a node is in a node pool, Rancher can automatically recreate the node if it becomes unreachable by enabling the ability to auto-replace nodes. Rancher will use the existing node template for the given node pool to recreate the node.
+If a node is in a node pool, Rancher can automatically replace unreachable nodes. Rancher will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
 
 {{% accordion id="how-does-node-auto-replace-work" label="How does Node Auto-replace Work?" %}}
    Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.

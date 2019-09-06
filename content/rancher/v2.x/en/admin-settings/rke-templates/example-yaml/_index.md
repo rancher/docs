@@ -1,9 +1,9 @@
 ---
-title: Example Cluster Template YAML
+title: Example YAML
 weight: 60
 ---
 
-Below is an example cluster template configuration file for reference.
+Below is an example RKE template configuration file for reference.
 
 ```yaml
 addon_job_timeout: 30
