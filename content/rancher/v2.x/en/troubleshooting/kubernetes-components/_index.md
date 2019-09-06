@@ -361,6 +361,42 @@ Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) a
 curl -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv $ETCDCTL_ENDPOINT)/config/local/log
 ```
 
+### etcd content
+
+If you want to investigate the contents of your etcd, you can either watch streaming events or you can query etcd directly, see below for examples.
+
+* Watch streaming events
+
+Command:
+```
+docker exec etcd etcdctl watch --prefix /registry
+```
+
+Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
+```
+docker exec etcd etcdctl --endpoints=\$ETCDCTL_ENDPOINT watch --prefix /registry
+```
+
+If you only want to see the affected keys (and not the binary data), you can append `| grep -a ^/registry` to the command to filter for keys only.
+
+* Query etcd directly
+
+Command:
+```
+docker exec etcd etcdctl get /registry --prefix=true --keys-only
+```
+
+Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
+```
+docker exec etcd etcdctl --endpoints=\$ETCDCTL_ENDPOINT get /registry --prefix=true --keys-only
+```
+
+You can process the data to get a summary of count per key, using the command below:
+
+```
+docker exec etcd etcdctl get /registry --prefix=true --keys-only | grep -v ^$ | awk -F'/' '{ if ($3 ~ /cattle.io/) {h[$3"/"$4]++} else { h[$3]++ }} END { for(k in h) print h[k], k }' | sort -nr
+```
+
 ## controlplane
 
 This section applies to nodes with the `controlplane` role.
