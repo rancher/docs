@@ -3,7 +3,7 @@ title: Upgrading Cert-Manager
 weight: 2040
 ---
 
-Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, two important changes to cert-manager are set to occur that you need to take aciton on if you have an HA deployment of Rancher:
+Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, two important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:
 
 1. [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager is deprecating and replacing the certificate.spec.acme.solvers field](https://docs.cert-manager.io/en/latest/tasks/upgrading/upgrading-0.7-0.8.html#upgrading-from-v0-7-to-v0-8). This change has no exact deadline.
@@ -17,7 +17,7 @@ To address these changes, this guide will do two things:
 ## Performing the upgrade
 >**Note:** The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
-In order to upgrade cert-manager to the follow these instructions:
+In order to upgrade cert-manager, follow these instructions:
 {{% accordion id="normal" label="Upgrading cert-manager with Internet access" %}}
 1. Back up existing resources as a precaution
     ```plain
@@ -57,11 +57,11 @@ In order to upgrade cert-manager to the follow these instructions:
 
 {{% accordion id="airgap" label="Upgrading cert-manager in an airgapped environment" %}}
 ### Prerequisites
-Before you can perform the upgrade, you must prepare your air gapped environment by adding the necesary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
+Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
 1. Follow the guide to [Prepare your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
 
-1. From a system connected to the internet, add the cert-manager repo to helm
+1. From a system connected to the internet, add the cert-manager repo to Helm
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -80,6 +80,8 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     helm template ./cert-manager-v0.9.1.tgz --output-dir . \
     --name cert-manager --namespace kube-system \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
+    --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
+    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector
     ```
 
 1. Download the required CRD file for cert-manager

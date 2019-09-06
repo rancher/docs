@@ -33,7 +33,7 @@ There are three recommended options for the source of the certificate.
 
 ### Optional: Install cert-manager
 
-> **Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+**Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
 
 > **Important:**
 
@@ -83,7 +83,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
 
 ```
-kubectl get pods --namespace kube-system
+kubectl get pods --namespace cert-manager
 
 NAME                                            READY   STATUS      RESTARTS   AGE
 cert-manager-7cbdc48784-rpgnt                   1/1     Running     0          3m

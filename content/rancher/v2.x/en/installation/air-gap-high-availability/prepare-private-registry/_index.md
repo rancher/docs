@@ -49,6 +49,8 @@ Start by collecting all the images needed to install Rancher in an air gap envir
 
     1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
 
+        > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+        
         ```plain
         helm repo add jetstack https://charts.jetstack.io
         helm repo update
