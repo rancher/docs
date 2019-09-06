@@ -5,7 +5,9 @@ weight: 2240
 
 _Available as of v2.3.0_
 
-When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
+When you create a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure.
+
+You can provision a custom Windows cluster using Rancher by using a mix of Linux and Windows hosts as your cluster nodes.
 
 Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
 
