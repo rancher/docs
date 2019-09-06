@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
 ---
 
-When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure.
+When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure. This section describes how to set up a custom cluster.
 
 ## Custom Nodes
 
