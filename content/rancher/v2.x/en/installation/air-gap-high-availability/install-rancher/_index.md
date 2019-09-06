@@ -58,7 +58,7 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 > **Note:**
 > Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
-1. From a system connected to the internet, add the cert-manager repo to helm
+1. From a system connected to the internet, add the cert-manager repo to Helm.
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -77,6 +77,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     helm template ./cert-manager-v0.9.1.tgz --output-dir . \
     --name cert-manager --namespace cert-manager \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
+    --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
+    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector
     ```
 
 1. Download the required CRD file for cert-manager
@@ -143,10 +145,25 @@ Use `kubectl` to create namespaces and apply the rendered manifests.
 
 If you are using self-signed certificates, install cert-manager:
 
-```plain
-kubectl apply -f cert-manager/cert-manager-crd.yaml
-kubectl -n cert-manager apply -R -f ./cert-manager
-```
+1. Create the namespace for cert-manager.
+    ```plain
+    kubectl create namespace cert-manager
+    ```
+
+1. Label the cert-manager namespace to disable resource validation.
+    ```plain
+    kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+    ```
+
+1. Create the cert-manager CustomResourceDefinitions (CRDs).
+    ```plain
+    kubectl apply -f cert-manager/cert-manager-crd.yaml
+    ```
+
+1. Launch cert-manager.
+    ```plain
+    kubectl apply -R -f ./cert-manager
+    ```
 
 Install rancher:
 
