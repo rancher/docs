@@ -8,7 +8,7 @@ As of `v0.1.6`, the functionality of a couple of the system images were consolid
 
 You can configure the [network plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/), [ingress controller]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/) as well as the options for these add-ons separately.
 
-This is the example of the full list of system images used to deploy Kubernetes through RKE. The image tags are dependent on the [Kubernetes image/version used](https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go).
+This is the example of the full list of system images used to deploy Kubernetes through RKE. The image tags are dependent on the [Kubernetes image/version used](https://github.com/rancher/types/).
 
 > **Note:** As versions of RKE are released, the tags on these images will no longer be up to date. This list is specific for `v1.10.3-rancher2`.
 

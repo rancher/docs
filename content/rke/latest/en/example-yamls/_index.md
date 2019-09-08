@@ -83,12 +83,12 @@ bastion_host:
 cluster_name: mycluster
 
 
-# The kubernetes version used. For now, this should match the version defined in rancher/types defaults map: https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go#L14
+# The kubernetes version used. For now, this should match the version defined in rancher/types defaults map: https://github.com/rancher/types/#L14
 # In case the kubernetes_version and kubernetes image in system_images are defined, the system_images configuration will take precedence over kubernetes_version.
 kubernetes_version: v1.10.3-rancher2
 
 # System Image Tags are defaulted to a tag tied with specific kubernetes Versions
-# Default Tags: https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go)
+# Default Tags: https://github.com/rancher/types/)
 system_images:
     kubernetes: rancher/hyperkube:v1.10.3-rancher2
     etcd: rancher/coreos-etcd:v3.1.12
