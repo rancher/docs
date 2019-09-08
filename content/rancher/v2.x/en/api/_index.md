@@ -5,11 +5,11 @@ weight: 7500
 
 ## How to use the API
 
-The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it, click on your user avatar in the upper right corner. Under **API & Keys**, you can find the URL endpoint as well as create [API keys]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/).
+The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it, click on your user avatar in the upper right corner. Under **API & Keys**, you can find the URL endpoint as well as create API keys.
 
 ## Authentication
 
-API requests must include authentication information.  Authentication is done with HTTP basic authentication using [API Keys]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys/). API keys can create new clusters and have access to multiple clusters via `/v3/clusters/`. [Cluster and project roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/) apply to these keys and restrict what clusters and projects the account can see and what actions they can take.
+API requests must include authentication information.  Authentication is done with HTTP basic authentication using API keys. API keys can create new clusters and have access to multiple clusters via `/v3/clusters/`. [Cluster and project roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/) apply to these keys and restrict what clusters and projects the account can see and what actions they can take.
 
 By default, some cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens with `ttl=0` never expire unless you invalidate them. For details on how to invalidate them, refer to the [API tokens page]({{<baseurl>}}/rancher/v2.x/en/api/api-tokens).
 

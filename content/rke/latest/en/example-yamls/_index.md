@@ -86,6 +86,7 @@ bastion_host:
 cluster_name: mycluster
 
 
+<<<<<<< HEAD
 # The Kubernetes version used. The default versions of Kubernetes
 # are tied to specific versions of the system images.
 #
@@ -114,6 +115,14 @@ kubernetes_version: v1.10.3-rancher2
 # located here:
 # https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 #
+=======
+# The kubernetes version used. For now, this should match the version defined in rancher/types defaults map: https://github.com/rancher/types/#L14
+# In case the kubernetes_version and kubernetes image in system_images are defined, the system_images configuration will take precedence over kubernetes_version.
+kubernetes_version: v1.10.3-rancher2
+
+# System Image Tags are defaulted to a tag tied with specific kubernetes Versions
+# Default Tags: https://github.com/rancher/types/)
+>>>>>>> 404s
 system_images:
     kubernetes: rancher/hyperkube:v1.10.3-rancher2
     etcd: rancher/coreos-etcd:v3.1.12
