@@ -7,9 +7,13 @@ The following instructions will guide you through upgrading a high-availability 
 
 >**Note:** If you installed Rancher using the RKE Add-on yaml, see the following documents to migrate or upgrade.
 >
->* [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on)
+>- [Migrating from RKE Add-On Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on)
 >
 >       As of release v2.0.8, Rancher supports installation and upgrade by Helm chart, although RKE installs/upgrades are still supported as well. If you want to change upgrade method from RKE Add-on to Helm chart, follow this procedure.
+
+---
+
+>**Note:** [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/upgrade-cert-manager)
 
 
 ## Prerequisites
@@ -42,7 +46,7 @@ Upgrades _to_ or _from_ any chart in the  [rancher-alpha repository]({{< baseurl
 
 ## Upgrade Rancher
 
-> **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/#upgrading-rancher)
+> **Note:** For Air Gap installs see [Upgrading HA Rancher - Air Gap]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm-airgap/)
 
 1. Update your local helm repo cache.
 

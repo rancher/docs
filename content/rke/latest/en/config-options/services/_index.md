@@ -18,7 +18,7 @@ To deploy Kubernetes, RKE deploys several core components or services in Docker 
 
 ## etcd
 
-Kubernetes uses [etcd](https://github.com/coreos/etcd/blob/master/Documentation/docs.md) as a store for cluster state and data. Etcd is a reliable, consistent and distributed key-value store.
+Kubernetes uses [etcd](https://etcd.io/) as a store for cluster state and data. Etcd is a reliable, consistent and distributed key-value store.
 
 RKE supports running etcd in a single node mode or in HA cluster mode. It also supports adding and removing etcd nodes to the cluster.
 

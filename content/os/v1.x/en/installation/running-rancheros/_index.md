@@ -24,6 +24,12 @@ RancherOS runs on virtualization platforms, cloud providers and bare metal serve
 
 [Azure]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/azure)
 
+[OpenStack]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/openstack)
+
+[VMware ESXi]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/vmware-esxi)
+
+[Aliyun]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/aliyun)
+
 #### Bare Metal & Virtual Servers
 
 [PXE]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/server/pxe)

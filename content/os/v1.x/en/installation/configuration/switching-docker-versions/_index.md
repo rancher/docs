@@ -83,7 +83,7 @@ FROM scratch
 COPY engine /engine
 ```
 
-Once the image is built a [system service]({{< baseurl >}}/os/v1.x/en/installation/system-services/adding-system-services/) configuration file must be created. An [example file](https://github.com/rancher/os-services/blob/master/d/docker-1.12.6.yml) can be found in the rancher/os-services repo. Change the `image` field to point to the Docker engine image you've built.
+Once the image is built a [system service]({{< baseurl >}}/os/v1.x/en/installation/system-services/adding-system-services/) configuration file must be created. An [example file](https://github.com/rancher/os-services/blob/master/d/docker-18.06.3-ce.yml) can be found in the rancher/os-services repo. Change the `image` field to point to the Docker engine image you've built.
 
 All of the previously mentioned methods of switching Docker engines are now available. For example, if your service file is located at `https://myservicefile` then the following cloud-config file could be used to use your custom Docker engine.
 
