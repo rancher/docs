@@ -26,6 +26,8 @@ During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces a
 - To prevent this issue from occurring before the upgrade, see [Preventing Cluster Networking Issues](#preventing-cluster-networking-issues).
 - To fix this issue following upgrade, see [Restoring Cluster Networking](#restoring-cluster-networking).
 
+> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+
 ## Preventing Cluster Networking Issues
 
 You can prevent cluster networking issues from occurring during your upgrade to v2.0.7+ by unassigning system namespaces from all of your Rancher projects. Complete this task if you've assigned any of a cluster's system namespaces into a Rancher project.

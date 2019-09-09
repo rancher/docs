@@ -6,6 +6,8 @@ aliases:
 ---
 To upgrade Rancher Server 2.x when a new version is released, create a data container for your current Rancher deployment, pull the latest image of Rancher, and then start a new Rancher container using your data container.
 
+> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+
 ## Before You Start
 
 During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
