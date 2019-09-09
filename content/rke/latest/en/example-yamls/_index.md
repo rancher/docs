@@ -49,7 +49,8 @@ nodes:
       labels:
         app: ingress
 
-# If set to true, RKE will not fail when unsupported Docker version are found
+# If set to true, RKE will not fail when unsupported Docker version
+# are found
 ignore_docker_version: false
 
 # Cluster level SSH private key
@@ -57,11 +58,13 @@ ignore_docker_version: false
 ssh_key_path: ~/.ssh/test
 
 # Enable use of SSH agent to use SSH private keys with passphrase
-# This requires the environment `SSH_AUTH_SOCK` configured pointing to your SSH agent which has the private key added
+# This requires the environment `SSH_AUTH_SOCK` configured pointing
+#to your SSH agent which has the private key added
 ssh_agent_auth: true
 
 # List of registry credentials
-# If you are using a Docker Hub registry, you can omit the `url` or set it to `docker.io`
+# If you are using a Docker Hub registry, you can omit the `url`
+# or set it to `docker.io`
 private_registries:
     - url: registry.com
       user: Username
@@ -83,11 +86,21 @@ bastion_host:
 cluster_name: mycluster
 
 
-# The kubernetes version used. For now, this should match the version defined in rancher/types defaults map: https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go#L14
-# In case the kubernetes_version and kubernetes image in system_images are defined, the system_images configuration will take precedence over kubernetes_version.
+# The Kubernetes version used. For now, this should match the
+# version defined in the rancher/types defaults map.
+#   
+#   - For RKE v0.2.x and below, the defaults map is at:
+#     https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go
+#   - For RKE v0.3.0 and above, the defaults map at:
+#     https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+#
+# In case the kubernetes_version and kubernetes image in
+# system_images are defined, the system_images configuration
+# will take precedence over kubernetes_version.
 kubernetes_version: v1.10.3-rancher2
 
-# System Image Tags are defaulted to a tag tied with specific kubernetes Versions
+# System Image Tags are defaulted to a tag tied with specific
+# kubernetes Versions
 # Default Tags: https://github.com/rancher/types/blob/master/apis/management.cattle.io/v3/k8s_defaults.go)
 system_images:
     kubernetes: rancher/hyperkube:v1.10.3-rancher2
@@ -120,7 +133,10 @@ services:
       #   -----BEGIN PRIVATE KEY-----
       #   xxxxxxxxxx
       #   -----END PRIVATE KEY-----
-    # Note for Rancher 2 users: If you are configuring Cluster Options using a Config File when creating Rancher Launched Kubernetes, the names of services should contain underscores only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
+    # Note for Rancher 2 users: If you are configuring Cluster
+    # Options using a Config File when creating Rancher Launched
+    # Kubernetes, the names of services should contain underscores
+    # only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
     kube-api:
       # IP range for any services created on Kubernetes
       # This must match the service_cluster_ip_range in kube-controller
@@ -137,7 +153,10 @@ services:
         delete-collection-workers: 3
         # Set the level of log output to debug-level
         v: 4
-    # Note for Rancher 2 users: If you are configuring Cluster Options using a Config File when creating Rancher Launched Kubernetes, the names of services should contain underscores only: `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
+    # Note for Rancher 2 users: If you are configuring Cluster Options
+    # using a Config File when creating Rancher Launched Kubernetes,
+    # the names of services should contain underscores only:
+    # `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
     kube-controller:
       # CIDR pool used to assign IP addresses to pods in the cluster
       cluster_cidr: 10.42.0.0/16
@@ -159,9 +178,10 @@ services:
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins"
 
 # Currently, only authentication strategy supported is x509.
-# You can optionally create additional SANs (hostnames or IPs) to add to
-#  the API server PKI certificate.
-# This is useful if you want to use a load balancer for the control plane servers.
+# You can optionally create additional SANs (hostnames or IPs) to
+# add to the API server PKI certificate.
+# This is useful if you want to use a load balancer for the
+# control plane servers.
 authentication:
     strategy: x509
     sans:
@@ -174,14 +194,17 @@ authentication:
 authorization:
     mode: rbac
 
-# If you want to set a Kubernetes cloud provider, you specify the name and configuration
+# If you want to set a Kubernetes cloud provider, you specify
+# the name and configuration
 cloud_provider:
     name: aws
 
-# Add-ons are deployed using kubernetes jobs. RKE will give up on trying to get the job status after this timeout in seconds..
+# Add-ons are deployed using kubernetes jobs. RKE will give
+# up on trying to get the job status after this timeout in seconds..
 addon_job_timeout: 30
 
-# There are several network plug-ins that work, but we default to canal      
+# There are several network plug-ins that work, but we default
+# to canal      
 network:
     plugin: canal
 
