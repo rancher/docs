@@ -5,11 +5,11 @@ weight: 32
 
 This section describes how to manage RKE templates and revisions. You an create, share, update, and delete templates from the **Global** view under **Tools > RKE Templates.**
 
-Template updates are handled through a revision system. When template owners want to change or update a template, they create a new revision of the template. Then a cluster that was created with the older version of the template can be upgraded to the new template revision.
+Template updates are handled through a revision system. When template owners want to change or update a template, they create a new revision of the template. Individual revisions cannot be edited. However, if you want to prevent a revision from being used to create a new cluster, you can disable it.
 
-You can't edit individual revisions. However, if you want to prevent a revision from being used to create a new cluster, you can disable it.
+Template revisions can be used in two ways: to create a new cluster, or to upgrade a cluster that was created with an earlier version of the template. The template creator can choose a default revision, but when end users create a cluster, they can choose any template and any template revision that is available to them. After the cluster is created from a specific revision, it cannot change to another template, but the cluster can be upgraded to another available revision of the same template.
 
-You can use an older revision as the basis for a new one, and you can choose which revision is the default revision for the template.
+The template owner has full control over template revisions, and can create new revisions to update the template, delete or disable revisions that should not be used to create clusters, and choose which template revision is the default.
 
 ### Prerequisites
 

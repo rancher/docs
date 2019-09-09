@@ -15,6 +15,8 @@ RKE templates help standardize these configurations. Regardless of whether clust
 
 Admins control which cluster options can be changed by end users. RKE templates can also be shared with specific users, so that admins can create different RKE templates for different sets of users.
 
+If a cluster was created with an RKE template, you can't change it to a different RKE template. You can only update the cluster to a new revision of the same template.
+
 To summarize, RKE templates allow DevOps and security teams to:
 
 - Standardize cluster configuration and ensure that Rancher-provisioned clusters are created following best practices
@@ -23,8 +25,6 @@ To summarize, RKE templates allow DevOps and security teams to:
 - Delegate ownership of templates to users who are trusted to make changes to them
 - Control which users can create templates
 - Require users to create clusters from a template
-
-> **Note:** If a cluster was created with an RKE template, you can't change it to a different RKE template. You can only update the cluster to a new revision of the same template.
 
 # Configurable Settings
 
@@ -98,7 +98,7 @@ RKE templates are designed to standardize Kubernetes and Rancher settings. If yo
 
 # YAML Customization
 
-If you define an RKE template as a YAML file, you can modify this [example RKE template YAML]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/example-yaml).
+If you define an RKE template as a YAML file, you can modify this [example RKE template YAML]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/example-yaml). The YAML in the RKE template uses the same customization that Rancher uses when creating an RKE cluster, but since the YAML is located within the context of a Rancher provisioned cluster, you will need to nest the RKE template customization under the `rancher_kubernetes_engine` directive in the YAML.
 
 The RKE documentation also has [annotated]({{<baseurl>}}/rke/latest/en/example-yamls/) `cluster.yml` files that you can use for reference.
 
@@ -106,7 +106,9 @@ For guidance on available options, refer to the RKE documentation on [cluster co
 
 ### Add-ons
 
-The add-on section of the RKE template configuration file works the same way as the [add-on section of a cluster configuration file]({{<baseurl>}}/rke/latest/en/config-options/add-ons/). The user-defined add-ons directive allows you to either call out and pull down Kubernetes manifests or put them inline directly. If you include these manifests as part of your RKE template, Rancher will provision those in the cluster.
+The add-on section of the RKE template configuration file works the same way as the [add-on section of a cluster configuration file]({{<baseurl>}}/rke/latest/en/config-options/add-ons/).
+
+The user-defined add-ons directive allows you to either call out and pull down Kubernetes manifests or put them inline directly. If you include these manifests as part of your RKE template, Rancher will provision those in the cluster.
 
 Some things you could do with add-ons include:
 
@@ -114,8 +116,4 @@ Some things you could do with add-ons include:
 - Install plugins on nodes that are deployed with a Kubernetes daemonset
 - Automatically set up namespaces, service accounts, or role binding
 
-To set add-ons, when creating the template, click **Edit as YAML.** Then use the `addons` or `addons_include` directive to set which YAML files are used for the add-ons.
-
-The RKE template configuration must be nested within the `rancher_kubernetes_engine` directive.
-
-For information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+The RKE template configuration must be nested within the `rancher_kubernetes_engine` directive. To set add-ons, when creating the template, you will click **Edit as YAML.** Then use the `addons` directive to add a manifest, or the `addons_include` directive to set which YAML files are used for the add-ons. For more information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
