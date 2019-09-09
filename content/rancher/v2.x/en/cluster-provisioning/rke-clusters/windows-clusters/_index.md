@@ -5,9 +5,9 @@ weight: 2240
 
 _Available as of v2.3.0_
 
-When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
+When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
 
-Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
+You can use a mix of Linux and Windows hosts as your cluster nodes. Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
 
 You can only add Windows nodes to a cluster if Windows support is enabled. Windows support can be enabled for new custom clusters that use Kubernetes 1.15+ and the Flannel network provider. Windows support cannot be enabled for existing clusters.
 
@@ -88,7 +88,7 @@ Windows requires that containers must be built on the same Windows Server versio
 
 # Tutorial: How to Create a Cluster with Windows Support
 
-The tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [recommended architecture.](#guide-architecture)
+This tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [recommended architecture.](#guide-architecture)
 
 When you provision a custom cluster with Rancher, you will add nodes to the cluster by installing the [Rancher agent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/agent-options/) on each one. When you create or edit your cluster from the Rancher UI, you will see a **Customize Node Run Command** that you can run on each server to add it to your custom cluster.
 
