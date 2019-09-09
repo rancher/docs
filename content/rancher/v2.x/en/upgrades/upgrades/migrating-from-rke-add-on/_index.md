@@ -17,6 +17,8 @@ You will need the to have [kubectl](https://kubernetes.io/docs/tasks/tools/insta
 
 > **Note:** This guide assumes a standard Rancher install. If you have modified any of the object names or namespaces, please adjust accordingly.
 
+> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+
 ### Point kubectl at your Rancher Cluster
 
 Make sure `kubectl` is using the correct kubeconfig YAML file. Set the `KUBECONFIG` environmental variable to point to `kube_config_rancher-cluster.yml`:
