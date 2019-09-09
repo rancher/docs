@@ -25,7 +25,7 @@ VMWare     | 1GB                       | 1280MB (rancheros.iso) <br> 2048MB (ran
 GCE        | 1GB                       | 1280MB
 AWS        | 1GB                       | 1.7GB
 
-You can adjust memory requirements by custom building RancherOS, please refer to reduce-memory-requirements
+You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
 
 ### How RancherOS Works
 
