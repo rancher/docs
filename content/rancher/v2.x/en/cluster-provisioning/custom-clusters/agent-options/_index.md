@@ -8,6 +8,8 @@ aliases:
 
 Rancher deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to [Create a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) and add the options to the generated `docker run` command when adding a node.
 
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
+
 ## General options
 
 | Parameter  | Environment variable | Description |
@@ -17,6 +19,7 @@ Rancher deploys an agent on each node to communicate with the node. This pages d
 | `--ca-checksum`  | `CATTLE_CA_CHECKSUM` | The SHA256 checksum of the configured Rancher `cacerts` setting to validate |
 | `--node-name` | `CATTLE_NODE_NAME` | Override the hostname that is used to register the node (defaults to `hostname -s`) |
 | `--label` | `CATTLE_NODE_LABEL` | Add node labels to the node (`--label key=value`) |
+| `-e` | `CATTLE_SYSTEM_CATALOG` | Set to `bundled` to tell Rancher to use a pre-loaded copy of the `system-charts` repository instead of fetching it from GitHub |
 
 ## Role options
 

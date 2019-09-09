@@ -51,5 +51,3 @@ After collecting the release files, publish the images from `rancher-images.txt`
         ```plain
         ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
         ```
-
-### [Next: Choose an SSL Option and Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/install-rancher/)

@@ -3,10 +3,10 @@ title: 4. Install Rancher
 weight: 400
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
+  - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/_index.md
 ---
 
 ## A. Add the Helm Chart Repository
-
 
 From a system that has access to the internet, render the installs and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
@@ -50,6 +50,7 @@ For HA air gap configurations, there are two recommended options for the source 
 Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-install-cert-manager), complete one of the procedures below.
 
 In this section you will configure your cert manager and private registry in the Rancher template.
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
 
 {{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
 
@@ -95,8 +96,10 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --namespace cattle-system \
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-     --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
-     --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
+     --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY
+     --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>
+     --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \
+     --set extraEnv[0].value=bundled 
     ```
 
     Placeholder | Description
@@ -121,9 +124,11 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
       --namespace cattle-system \
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-      --set ingress.tls.source=secret
-      --set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
-      --set 'extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>'
+      --set ingress.tls.source=secret \
+      --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
+      --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+      --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \
+      --set extraEnv[0].value=bundled 
     ```
 
     Placeholder | Description
@@ -131,6 +136,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
+     
+
 
     > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`
 
