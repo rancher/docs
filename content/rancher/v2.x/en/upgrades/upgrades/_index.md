@@ -4,6 +4,8 @@ weight: 1005
 ---
 This section contains information about how to upgrade your Rancher server to a newer version.
 
+> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+
 ### Single Node Install
 
 - [Upgrading a Single Node Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/)

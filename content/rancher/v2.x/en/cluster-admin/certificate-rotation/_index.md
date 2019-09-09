@@ -55,4 +55,33 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 5. Click on **Send Request**.
 
-**Results:** All kubernetes certificates will be rotated.
+**Results:** All Kubernetes certificates will be rotated.
+
+### Rotating Expired Certificates After Upgrading Older Rancher Versions
+
+If you are upgrading from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your clusters have expired certificates, some manual steps are required to complete the certificate rotation.
+
+1. For the `controlplane` and `etcd` nodes, log in to each corresponding host and check if the certificate `kube-apiserver-requestheader-ca.pem` is in the following directory:
+
+    ```
+    cd /etc/kubernetes/.tmp
+    ```
+
+    If the certificate is not in the directory, perform the following commands:
+
+    ```
+    cp kube-ca.pem kube-apiserver-requestheader-ca.pem
+    cp kube-ca-key.pem kube-apiserver-requestheader-ca-key.pem
+    cp kube-apiserver.pem kube-apiserver-proxy-client.pem
+    cp kube-apiserver-key.pem kube-apiserver-proxy-client-key.pem
+    ```
+
+    If the `.tmp` directory does not exist, you can copy the entire SSL certificate to `.tmp`:
+
+    ```
+    cp -r /etc/kubernetes/ssl /etc/kubernetes/.tmp
+    ```
+
+1. Rotate the certificates. For Rancher v2.0.x and v2.1.x, use the [Rancher API.](#certificate-rotation-in-rancher-v2-1-x-and-v2-0-x) For Rancher 2.2.x, [use the UI.](#certificate-rotation-in-rancher-v2-2-x)
+
+1. After the command is finished, check if the `worker` nodes are Active. If not, log in to each `worker` node and restart the kubelet and proxy.
