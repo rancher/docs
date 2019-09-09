@@ -86,14 +86,20 @@ bastion_host:
 cluster_name: mycluster
 
 
-# The Kubernetes version used. For now, this should match the
-# version defined in the rancher/types defaults map.
+# The Kubernetes version used.
 #
-# For RKE v0.2.x and below, the default versions are defined at:
+# For RKE v0.2.x and below, the default versions of Kubernetes
+# are tied to specific versions of system images. Therefore,
+# your Kubernetes version should match the
+# version defined in the rancher/types defaults map:
 # https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go
 # 
-# For RKE v0.3.0 and above, the default versions are defined at:
-# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+# For RKE v0.3.0 and above, you can configure
+# the Kubernetes version independently of the Rancher version.
+# If you change the Kubernetes version, you can supply the
+# corresponding system images yourself, according to the
+# mappings in this file:
+# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 #
 # In case the kubernetes_version and kubernetes image in
 # system_images are defined, the system_images configuration
@@ -103,11 +109,18 @@ kubernetes_version: v1.10.3-rancher2
 # System Image Tags are defaulted to a tag tied with specific
 # kubernetes Versions
 #
-# For RKE v0.2.x and below, the default versions are defined at:
+# For RKE v0.2.x and below, the default versions of Kubernetes
+# are tied to specific versions of system images. Therefore,
+# your Kubernetes version should match the
+# version defined in the rancher/types defaults map:
 # https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go
 # 
-# For RKE v0.3.0 and above, the default versions are defined at:
-# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+# For RKE v0.3.0 and above, you can configure
+# the Kubernetes version independently of the Rancher version.
+# If you change the Kubernetes version, you can supply the
+# corresponding system images yourself, according to the
+# mappings in this file:
+# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 system_images:
     kubernetes: rancher/hyperkube:v1.10.3-rancher2
     etcd: rancher/coreos-etcd:v3.1.12
