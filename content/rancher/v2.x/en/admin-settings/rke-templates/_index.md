@@ -13,7 +13,7 @@ With Kubernetes increasing in popularity, there is a trend toward managing a lar
 
 RKE templates help standardize these configurations. Regardless of whether clusters are created with the Rancher UI, the Rancher API, or an automated process, Rancher will guarantee that every cluster it provisions from an RKE template is uniform and consistent in the way it is produced.
 
-Admins can control which cluster options can be changed by end users. RKE templates can also be shared with specific users, so that admins can create different RKE templates for different sets of users.
+Admins control which cluster options can be changed by end users. RKE templates can also be shared with specific users, so that admins can create different RKE templates for different sets of users.
 
 To summarize, RKE templates allow DevOps and security teams to:
 
@@ -24,9 +24,11 @@ To summarize, RKE templates allow DevOps and security teams to:
 - Control which users can create templates
 - Require users to create clusters from a template
 
+> **Note:** If a cluster was created with an RKE template, you can't change it to a different RKE template. You can only update the cluster to a new revision of the same template.
+
 # Configurable Settings
 
-RKE templates can be created in the Rancher UI or defined in YAML format. They can define all the same parameters that can be specified in Rancher’s cluster creation feature, including the following:
+RKE templates can be created in the Rancher UI or defined in YAML format. They can define all the same parameters that can be specified when you use Rancher to provision custom nodes or nodes from an infrastructure provider:
 
 - Cloud provider options
 - Pod security options
@@ -44,7 +46,7 @@ The [add-on section](#add-ons) of an RKE template is especially powerful because
 
 RKE templates are supported for Rancher-provisioned clusters. The templates can be used to provision custom clusters or clusters that are launched by an infrastructure provider.
  
-RKE templates are for defining Kubernetes and Rancher settings. Node templates are responsible for configuring nodes. For tips on how to use RKE templates in conjunction with hardware, you can refer to [RKE Templates and Hardware]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
+RKE templates are for defining Kubernetes and Rancher settings. Node templates are responsible for configuring nodes. For tips on how to use RKE templates in conjunction with hardware, refer to [RKE Templates and Hardware]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
 
 RKE templates can be applied to new clusters, but not existing clusters.
 
@@ -66,11 +68,11 @@ When you create a RKE template, it is available in the Rancher UI from the **Glo
 
 Administrators can turn on template enforcement to require users to always use RKE templates when creating a cluster. This allows administrators to guarantee that Rancher always provisions clusters with specific settings.
 
-RKE template updates are handled through a revision system. If you want to change or update a template, you can create a new revision of the template. Then a cluster that was created with the older version of the template can be upgraded to the new template revision.
+RKE template updates are handled through a revision system. If you want to change or update a template, you create a new revision of the template. Then a cluster that was created with the older version of the template can be upgraded to the new template revision.
 
-There are two types of settings in an RKE template: settings that can be overridden by the end user and settings that cannot. The difference is indicated by the **Allow User Override** toggle over each setting in the Rancher UI when the template is created.
+In an RKE template, settings can be restricted to what the template owner chooses, or they can be open for the end user to select the value. The difference is indicated by the **Allow User Override** toggle over each setting in the Rancher UI when the template is created.
 
-For the settings that cannot be overridden, the end user will not be able to directly edit them. The only way to edit these options would be to upgrade to a new revision of the same RKE template.
+For the settings that cannot be overridden, the end user will not be able to directly edit them. In order for a user to get different options of these settings, an RKE template owner would need to create a new revision of the RKE template, which would allow the user to upgrade and change that option.
 
 The documents in this section explain the details of RKE template management:
 
@@ -92,7 +94,7 @@ If the RKE template owner creates a new revision of the template, you can [upgra
 RKE templates can only be applied to new clusters, not existing clusters.
 
 # Standardizing Hardware
-RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you can use RKE templates [in conjuction with other tools]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
+RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you use RKE templates [in conjuction with other tools]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
 
 # YAML Customization
 
@@ -100,7 +102,7 @@ If you define an RKE template as a YAML file, you can modify this [example RKE t
 
 The RKE documentation also has [annotated]({{<baseurl>}}/rke/latest/en/example-yamls/) `cluster.yml` files that you can use for reference.
 
-For guidance on available options, you can also refer to the RKE documentation on [cluster configuration.]({{<baseurl>}}/rke/latest/en/config-options/)
+For guidance on available options, refer to the RKE documentation on [cluster configuration.]({{<baseurl>}}/rke/latest/en/config-options/)
 
 ### Add-ons
 
@@ -113,5 +115,7 @@ Some things you could do with add-ons include:
 - Automatically set up namespaces, service accounts, or role binding
 
 To set add-ons, when creating the template, click **Edit as YAML.** Then use the `addons` or `addons_include` directive to set which YAML files are used for the add-ons.
+
+The RKE template configuration must be nested within the `rancher_kubernetes_engine` directive.
 
 For information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)

@@ -5,6 +5,8 @@ weight: 60
 
 Below is an example RKE template configuration file for reference.
 
+> **Note:** The YAML in the RKE template uses the same customization that is used when you create an RKE cluster. However, since the YAML is within the context of a Rancher provisioned RKE cluster, the customization from the RKE docs needs to be nested under the `rancher_kubernetes_engine` directive.
+
 ```yaml
 addon_job_timeout: 30
 authentication: 

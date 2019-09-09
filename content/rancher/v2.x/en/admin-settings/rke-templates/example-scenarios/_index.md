@@ -6,7 +6,7 @@ weight: 5
 These example scenarios describe how an organization could use templates to standardize cluster creation.
 
 - **Enforcing templates:** Administrators might want to [enforce one or more template settings for everyone](#enforcing-a-template-setting-for-everyone) if they want all new Rancher-provisioned clusters to have those settings.
-- **Sharing different templates with different users:** Administrators might give [different templates to basic and advanced users,](#templates-for-basic-and-advanced-users) so that basic users can have more restricted options and advanced users can have more discretion when creating clusters.
+- **Sharing different templates with different users:** Administrators might give [different templates to basic and advanced users,](#templates-for-basic-and-advanced-users) so that basic users have more restricted options and advanced users have more discretion when creating clusters.
 - **Updating template settings:** If an organization's security and DevOps teams decide to embed best practices into the required settings for new clusters, those best practices could change over time. If the best practices change, [a template can be updated to a new revision](#updating-templates-and-clusters-created-with-them) and clusters created from the template can upgrade to the new version of the template.
 - **Sharing ownership of a template:** When a template owner no longer wants to maintain a template, or wants to delegate ownership of the template, this scenario describes how [template ownership can be shared.](#allowing-other-users-to-control-and-share-a-template)
 
@@ -18,15 +18,15 @@ Let's say there is an organization in which the administrators decide that all n
 1. First, an administrator creates a template which specifies the Kubernetes version as 1.14 and marks all other settings as **Allow User Override**. 
 1. Then the administrator makes the template public and turns on template enforcement.
 
-**Result:** All Rancher users in the organization have access to the template. All users except for administrators are required to use a template when creating new clusters.
+**Result:** All Rancher users in the organization have access to the template. All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) use Kubernetes 1.14 and they are unable to use a different Kubernetes version.
 
-In this way, the administrators can enforce the Kubernetes version across the organization, while still allowing end users to configure everything else.
+In this way, the administrators enforce the Kubernetes version across the organization, while still allowing end users to configure everything else.
 
 # Templates for Basic and Advanced Users
 
-Let's say an organization has both basic and advanced users. Adminstrators want the basic users to be required to use a template, while the advanced users and administrators can create their clusters however they want.
+Let's say an organization has both basic and advanced users. Adminstrators want the basic users to be required to use a template, while the advanced users and administrators create their clusters however they want.
 
-1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-a-cluster-template) This means that every non-administrator in Rancher will need to use an RKE template when they create a cluster.
+1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-a-cluster-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
 1. The administrator then creates two templates: 
 
   - One template for basic users, with almost every option specified except for access keys
@@ -53,7 +53,7 @@ The template owner has several options for allowing the cluster creators to upgr
 
 Let's say Alice is a Rancher administrator. She owns an RKE template that reflects her organization's agreed-upon best practices for creating a cluster.
 
-Bob is an advanced user who can make informed decisions about cluster configuration. Alice decides Bob can be trusted to create new revisions of her template as the best practices get updated over time. Therefore, she decides to make Bob an owner of the template.
+Bob is an advanced user who can make informed decisions about cluster configuration. Alice trusts Bob to create new revisions of her template as the best practices get updated over time. Therefore, she decides to make Bob an owner of the template.
 
 To share ownership of the template with Bob, Alice [adds Bob as an owner of her template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-ownership-of-templates)
 

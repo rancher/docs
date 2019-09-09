@@ -7,7 +7,7 @@ In Rancher, RKE templates are used to provision Kubernetes and define Rancher se
 
 Therefore, even if RKE template enforcement is turned on, the end user still has flexibility when picking the underlying hardware when creating a Rancher cluster. The end users of an RKE template can still choose an infrastructure provider and the nodes they want to use.
 
-If you want to standardize the hardware in your clusters, you can use RKE templates conjunction with node templates or with a server provisioning tool such as Terraform.
+If you want to standardize the hardware in your clusters, use RKE templates conjunction with node templates or with a server provisioning tool such as Terraform.
 
 ### Node Templates
 
@@ -49,7 +49,7 @@ When you need to make changes to your infrastructure, instead of manually updati
 
 - You can reverse engineer how to do define a setting in Terraform by changing the setting in Rancher, then going back and checking your Terraform state file to see how it maps to the current state of your infrastructure.
 
-- If you want to manage Kubernetes cluster settings, Rancher settings, and hardware settings all in one place, you can use [Terraform modules](https://github.com/rancher/terraform-modules). You can pass a cluster configuration YAML file or an RKE template configuration file to a Terraform module so that the Terraform module will create it. In that case, you could use your infrastructure-as-code to manage the version control and revision history of both your Kubernetes cluster and its underlying hardware.
+- If you want to manage Kubernetes cluster settings, Rancher settings, and hardware settings all in one place, use [Terraform modules](https://github.com/rancher/terraform-modules). You can pass a cluster configuration YAML file or an RKE template configuration file to a Terraform module so that the Terraform module will create it. In that case, you could use your infrastructure-as-code to manage the version control and revision history of both your Kubernetes cluster and its underlying hardware.
 
 # Tip for Creating CIS Benchmark Compliant Clusters
 
@@ -57,7 +57,7 @@ This section describes one way that you can make security and compliance-related
 
 When you create a [CIS benchmark compliant cluster,]({{<baseurl>}}/rancher/v2.x/en/security/) you have an encryption config file and an audit log config file.
 
-Your infrastructure provisioning system can write those files to disk. Then in your RKE template, you can specify where those files will be, then add your encryption config file and audit log config file as extra mounts to the `kube-api-server`.
+Your infrastructure provisioning system can write those files to disk. Then in your RKE template, you would specify where those files will be, then add your encryption config file and audit log config file as extra mounts to the `kube-api-server`.
 
 Then you would make sure that the `kube-api-server` flag in your RKE template uses your CIS-compliant config files.
 

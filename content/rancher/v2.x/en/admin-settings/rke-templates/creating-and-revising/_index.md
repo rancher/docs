@@ -22,7 +22,7 @@ You can revise, share, and delete a template if you are an owner of the template
 1. From the **Global** view, click **Tools > RKE Templates.**
 1. Click **Add Template.**
 1. Provide a name for the template. An auto-generated name is already provided for the template' first version, which is created along with this template.
-1. Optional: You can share the template with other users or groups by [adding them as members.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users) You can also make the template public to share with everyone in the Rancher setup.
+1. Optional: Share the template with other users or groups by [adding them as members.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users) You can also make the template public to share with everyone in the Rancher setup.
 1. Then follow the form on screen to save the cluster configuration parameters as part of the template's revision. The revision can be marked as default for this template.
 
 **Result:** An RKE template with one revision is configured. You can use this RKE template revision later when you [provision a Rancher-launched cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters).
@@ -31,7 +31,7 @@ You can revise, share, and delete a template if you are an owner of the template
 
 When you update an RKE template, you are creating a revision of the existing template. Clusters that were created with an older version of the template can be updated to match the new revision.
 
-You can't edit individual revisions. However, if you want to prevent a revision from being used to create a new cluster, you can [disable it.](#disabling-a-template-revision)
+You can't edit individual revisions. Since you can't edit individual revisions of a template, in order to prevent a revision from being used, you can [disable it.](#disabling-a-template-revision)
 
 New template revisions can be created without affecting clusters already using a revision of the template.
 
@@ -74,7 +74,7 @@ When creating new RKE template revisions from your user settings, you can clone 
 
 ### Disabling a Template Revision
 
-When you no longer want an RKE template revision to be used for creating new clusters, you can disable it.
+When you no longer want an RKE template revision to be used for creating new clusters, you can disable it. A disabled revision can be re-enabled.
 
 You can disable the revision if it is not being used by any cluster.
 
@@ -102,3 +102,14 @@ To set an RKE template revision as default,
 1. Go to the RKE template revision that should be default and click the **Ellipsis (...) > Set as Default.**
 
 **Result:** The RKE template revision will be used as the default option when clusters are created with the template.
+
+### Deleting a Template Revision
+
+You can delete all revisions of a template except for the default revision.
+
+To permanently delete a revision,
+
+1. From the **Global** view, click **Tools > RKE Templates.**
+1. Go to the RKE template revision that should be deleted and click the **Ellipsis (...) > Delete.**
+
+**Result:** The RKE template revision is deleted.
