@@ -99,8 +99,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
      --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
      --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
-     --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \ # For Rancher v2.3.0 only
-     --set extraEnv[0].value=bundled # For Rancher v2.3.0 only
+     --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \ # For Rancher v2.3.0+ only
+     --set extraEnv[0].value=bundled # For Rancher v2.3.0+ only
     ```
 
     Placeholder | Description
@@ -188,6 +188,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Additional Resources
 
 These resources could be helpful when you install Rancher:
@@ -202,3 +203,6 @@ If you are installing Rancher v2.3.0, the installation is complete.
 
 If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 >>>>>>> Respond to feedback about system chart setup docs
+=======
+### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/)
+>>>>>>> Minor corrections to air gap install docs

@@ -35,7 +35,7 @@ If your private registry doesn't require credentials, you can set it as default 
 ```
     docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
-    -e CATTLE_SYSTEM_CATALOG=bundled \
+    -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
@@ -67,7 +67,7 @@ If your private registry doesn't require credentials, you can set it as default 
 ```
 docker run -d --restart=unless-stopped \
  -p 80:80 -p 443:443 \
- -e CATTLE_SYSTEM_CATALOG=bundled \
+ -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
  -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
  -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
  -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
@@ -100,7 +100,7 @@ Placeholder | Description
 ```
 docker run -d --restart=unless-stopped \
  -p 80:80 -p 443:443 \
- -e CATTLE_SYSTEM_CATALOG=bundled \
+ -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
  -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
  -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
  <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> --no-cacerts

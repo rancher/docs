@@ -8,7 +8,7 @@ aliases:
 
 The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.
 
-In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using CLI flag in Rancher v2.3.0, and using a local Git mirror for Rancher versions prior to v2.3.0.
+In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in Rancher v2.3.0, and using a Git mirror for Rancher versions prior to v2.3.0.
 
 # Using Local System Charts in Rancher v2.3.0
 
