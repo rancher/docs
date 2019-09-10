@@ -3,7 +3,6 @@ title: 4. Install Rancher
 weight: 400
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
-  - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/_index.md
 ---
 
 ## A. Add the Helm Chart Repository
@@ -49,8 +48,10 @@ For HA air gap configurations, there are two recommended options for the source 
 
 Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-install-cert-manager), complete one of the procedures below.
 
-In this section you will configure your cert manager and private registry in the Rancher template.
-The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. 
+
+- As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
+- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
 {{% accordion id="self-signed" label="Option A: Default Self-Signed Certificate" %}}
 
@@ -95,11 +96,11 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --name rancher \
      --namespace cattle-system \
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
-     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher
-     --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY
-     --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT>
-     --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \
-     --set extraEnv[0].value=bundled 
+     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+     --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
+     --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+     --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \ # For Rancher v2.3.0 only
+     --set extraEnv[0].value=bundled # For Rancher v2.3.0 only
     ```
 
     Placeholder | Description
@@ -124,12 +125,19 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
       --namespace cattle-system \
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+<<<<<<< HEAD
       --set ingress.tls.source=secret \
       --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
       --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
       --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \
       --set extraEnv[0].value=bundled 
     ```
+=======
+      --set ingress.tls.source=secret
+      --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG \ # For Rancher v2.3.0 only
+      --set extraEnv[0].value=bundled # For Rancher v2.3.0 only
+```
+>>>>>>> Respond to feedback about system chart setup docs
 
     Placeholder | Description
     ------------|-------------
@@ -179,6 +187,7 @@ kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
 
+<<<<<<< HEAD
 ### Additional Resources
 
 These resources could be helpful when you install Rancher:
@@ -188,3 +197,8 @@ These resources could be helpful when you install Rancher:
 - [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
 
 ### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/)
+=======
+If you are installing Rancher v2.3.0, the installation is complete.
+
+If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
+>>>>>>> Respond to feedback about system chart setup docs
