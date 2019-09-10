@@ -22,3 +22,8 @@ Rancher needs to be configured to use the private registry in order to provision
 1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
 
     ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
+
+
+If you are installing Rancher v2.3.0, the installation is complete.
+
+If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)

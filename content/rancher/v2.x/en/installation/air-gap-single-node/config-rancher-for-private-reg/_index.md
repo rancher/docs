@@ -47,4 +47,6 @@ You can follow these steps to configure a private registry when you provision a 
 
 **Result:** The new cluster will be able to pull images from the private registry.
 
-### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-system-charts/)
+If you are installing Rancher v2.3.0, the installation is complete.
+
+If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)

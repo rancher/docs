@@ -46,7 +46,6 @@ In the catalog management page in the Rancher UI, follow these steps:
 **Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
 
 {{% /tab %}}
-
 {{% tab "Rancher API" %}}
 
 1. Log into Rancher.
@@ -65,5 +64,5 @@ In the catalog management page in the Rancher UI, follow these steps:
 
 **Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
 
-{{ /tab %}}
-{{ /tabs % }}
+{{% /tab %}}
+{{% /tabs %}}
