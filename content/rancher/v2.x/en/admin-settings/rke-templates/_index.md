@@ -98,7 +98,7 @@ RKE templates are designed to standardize Kubernetes and Rancher settings. If yo
 
 # YAML Customization
 
-If you define an RKE template as a YAML file, you can modify this [example RKE template YAML]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/example-yaml). The YAML in the RKE template uses the same customization that Rancher uses when creating an RKE cluster, but since the YAML is located within the context of a Rancher provisioned cluster, you will need to nest the RKE template customization under the `rancher_kubernetes_engine` directive in the YAML.
+If you define an RKE template as a YAML file, you can modify this [example RKE template YAML]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/example-yaml). The YAML in the RKE template uses the same customization that Rancher uses when creating an RKE cluster, but since the YAML is located within the context of a Rancher provisioned cluster, you will need to nest the RKE template customization under the `rancher_kubernetes_engine_config` directive in the YAML.
 
 The RKE documentation also has [annotated]({{<baseurl>}}/rke/latest/en/example-yamls/) `cluster.yml` files that you can use for reference.
 
@@ -116,4 +116,4 @@ Some things you could do with add-ons include:
 - Install plugins on nodes that are deployed with a Kubernetes daemonset
 - Automatically set up namespaces, service accounts, or role binding
 
-The RKE template configuration must be nested within the `rancher_kubernetes_engine` directive. To set add-ons, when creating the template, you will click **Edit as YAML.** Then use the `addons` directive to add a manifest, or the `addons_include` directive to set which YAML files are used for the add-ons. For more information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+The RKE template configuration must be nested within the `rancher_kubernetes_engine_config` directive. To set add-ons, when creating the template, you will click **Edit as YAML.** Then use the `addons` directive to add a manifest, or the `addons_include` directive to set which YAML files are used for the add-ons. For more information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
