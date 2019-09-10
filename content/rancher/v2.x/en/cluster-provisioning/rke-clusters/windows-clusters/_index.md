@@ -1,5 +1,5 @@
 ---
-title: Configuring Custom Clusters for Windows (Experimental)
+title: Configuring Custom Clusters for Windows
 weight: 2240
 ---
 
