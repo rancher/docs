@@ -98,10 +98,10 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     kubectl get -o yaml --all-namespaces issuer,clusterissuer,certificates > cert-manager-backup.yaml
     ```
 
-1. Delete the existing deployment
+1. Delete the existing cert-manager installation
 
     ```plain
-    helm delete --purge cert-manager
+    kubectl -n kube-system delete deployment,sa,clusterrole,clusterrolebinding -l 'app=cert-manager' -l 'chart=cert-manager-v0.5.2'
     ```
 
 1. Install the CustomResourceDefinition resources separately
