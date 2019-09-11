@@ -14,7 +14,7 @@ During upgrade, you'll enter a series of commands, filling placeholders with dat
 
 
 ```
-docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+docker stop <RANCHER_CONTAINER_NAME>
 ```
 
 In this command, `<RANCHER_VERSION>-<DATE>` is the version number and date of creation for a backup of Rancher.
