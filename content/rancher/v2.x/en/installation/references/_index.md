@@ -13,6 +13,8 @@ The following table lists the ports that need to be open to and from nodes that 
 
 {{< ports-rancher-nodes >}}
 
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+
 ## Kubernetes Cluster Nodes
 
 The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
