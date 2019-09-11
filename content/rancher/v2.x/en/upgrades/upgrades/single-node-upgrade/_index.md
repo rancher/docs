@@ -10,8 +10,9 @@ To upgrade Rancher Server 2.x when a new version is released, create a data cont
 
 ## Before You Start
 
-During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
+During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). 
 
+Here's an **example** of a command with a placeholder:
 
 ```
 docker stop <RANCHER_CONTAINER_NAME>
