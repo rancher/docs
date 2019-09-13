@@ -18,7 +18,7 @@ Here's an **example** of a command with a placeholder:
 docker stop <RANCHER_CONTAINER_NAME>
 ```
 
-In this command, `<RANCHER_VERSION>-<DATE>` is the version number and date of creation for a backup of Rancher.
+In this command, `<RANCHER_CONTAINER_NAME>` is the name of your Rancher container.
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#completing-the-upgrade).
 
