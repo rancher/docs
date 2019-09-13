@@ -5,9 +5,11 @@ weight: 32
 
 This section describes how template administrators can enforce templates in Rancher, restricting the ability of users to create clusters without a template.
 
-This section also describes how template owners can define which settings in a template can be edited by end users.
+By default, any standard user in Rancher can create clusters. But when RKE template enforcement is turned on,
 
-By default, any standard user in Rancher can create clusters, but you can change the default so that only an administrator has the ability to create clusters without a template. When you turn on temmplate enforcement, all standard users must use an RKE template when creating a cluster.
+- Only an administrator has the ability to create clusters without a template.
+- All standard users must use an RKE template to create a new cluster.
+- Standard users cannot create a cluster without using a template.
 
 Users can only create new templates if the administrator [gives them permission.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creator-permissions/#allowing-a-user-to-create-templates)
 
