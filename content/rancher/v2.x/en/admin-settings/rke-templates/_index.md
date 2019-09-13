@@ -13,7 +13,7 @@ With Kubernetes increasing in popularity, there is a trend toward managing a lar
 
 RKE templates help standardize these configurations. Regardless of whether clusters are created with the Rancher UI, the Rancher API, or an automated process, Rancher will guarantee that every cluster it provisions from an RKE template is uniform and consistent in the way it is produced.
 
-Admins control which cluster options can be changed by end users. RKE templates can also be shared with specific users, so that admins can create different RKE templates for different sets of users.
+Admins control which cluster options can be changed by end users. RKE templates can also be shared with specific users and groups, so that admins can create different RKE templates for different sets of users.
 
 If a cluster was created with an RKE template, you can't change it to a different RKE template. You can only update the cluster to a new revision of the same template.
 
@@ -21,7 +21,7 @@ To summarize, RKE templates allow DevOps and security teams to:
 
 - Standardize cluster configuration and ensure that Rancher-provisioned clusters are created following best practices
 - Prevent less technical users from making uninformed choices when provisioning clusters
-- Share different templates with different sets of users
+- Share different templates with different sets of users and groups
 - Delegate ownership of templates to users who are trusted to make changes to them
 - Control which users can create templates
 - Require users to create clusters from a template
