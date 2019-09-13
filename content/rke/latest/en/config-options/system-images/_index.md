@@ -11,7 +11,7 @@ You can configure the [network plug-ins]({{<baseurl>}}/rke/latest/en/config-opti
 Below is an example of the list of system images used to deploy Kubernetes through RKE.
 
 - For RKE v0.2.x and below, the default versions of Kubernetes are tied to specific versions of the system images. Therefore, your Kubernetes version should match the version defined in the `rancher/types` defaults map, located here: https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go
-- For RKE v0.3.0 and above, the default Kubernetes versions are no longer tied to specific versions of the system images. If you change the Kubernetes version, you can supply the corresponding system images yourself, according to the mappings in this file: https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+- For RKE v0.3.0 and above, the default Kubernetes versions are no longer tied to specific versions of the system images. If you change the Kubernetes version, you can supply the corresponding system images yourself, according to the mappings in this file: https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 
 > **Note:** As versions of RKE are released, the tags on these images will no longer be up to date. This list is specific for `v1.10.3-rancher2`.
 

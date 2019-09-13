@@ -100,7 +100,7 @@ cluster_name: mycluster
 # If you change the Kubernetes version, you can supply the
 # corresponding system images yourself, according to the
 # mappings in this file:
-# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 #
 # In case the kubernetes_version and kubernetes image in
 # system_images are defined, the system_images configuration
@@ -122,7 +122,7 @@ kubernetes_version: v1.10.3-rancher2
 # If you change the Kubernetes version, you can supply the
 # corresponding system images yourself, according to the
 # mappings in this file:
-# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_defaults.go
+# https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_rke_system_images.go
 system_images:
     kubernetes: rancher/hyperkube:v1.10.3-rancher2
     etcd: rancher/coreos-etcd:v3.1.12
@@ -154,10 +154,10 @@ services:
       #   -----BEGIN PRIVATE KEY-----
       #   xxxxxxxxxx
       #   -----END PRIVATE KEY-----
-    # Note for Rancher 2 users: If you are configuring Cluster
-    # Options using a Config File when creating Rancher Launched
+    # Note for Rancher v2.0.5 and v2.0.6 users: If you are configuring
+    # Cluster Options using a Config File when creating Rancher Launched
     # Kubernetes, the names of services should contain underscores
-    # only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
+    # only: `kube_api`.
     kube-api:
       # IP range for any services created on Kubernetes
       # This must match the service_cluster_ip_range in kube-controller
