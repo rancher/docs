@@ -1,10 +1,12 @@
 ---
-title: "4. Configure Rancher for the Private Registry"
+title: Configuring a Private Registry
 weight: 400
 aliases:
 ---
 
-After your private registry is populated with all the required system images, you need to configure Rancher to use the private registry. There are two places you need to use a private registry:
+For air gap installations of Rancher, a private registry should be configured during the Rancher installation. This section describes how to configure a private registry from the Rancher UI if you need to set it after Rancher is installed.
+
+There are two places you need to use a private registry:
 
 - When Rancher is installed, to provide the Rancher system images
 - After Rancher is installed, to use when deploying clusters
@@ -46,5 +48,3 @@ You can follow these steps to configure a private registry when you provision a 
 1. Click **Save.**
 
 **Result:** The new cluster will be able to pull images from the private registry.
-
-### [Next: Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-system-charts/)
