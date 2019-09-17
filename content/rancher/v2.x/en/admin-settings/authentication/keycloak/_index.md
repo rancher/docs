@@ -91,13 +91,14 @@ You are correctly redirected to your IdP login page and you are able to enter yo
   
 ### Keycloak 6.0.0+: IDPSSODescriptor missing from options
 
-SAML Metadata IDPSSODescriptor is no longer available on Keycloak 6.0.0+. You can still get the XML from the following url:
+Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab. 
+You can still get the XML from the following url:
 
 `https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
 
-At the moment of writing rancher (rancher 2.2.7)  wants the root element to be `EntityDescriptor` rather than `EntitiesDescriptor` follow the the steps to adjust the xml:
+The XML obtained from this URL contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
 
-  * Copying the tags from `EntitiesDescriptor` to the `EntityDescriptor`.
+  * Copy all the tags from `EntitiesDescriptor` to the `EntityDescriptor`.
   * Remove the `<EntitiesDescriptor>` tag from the beginning.
   * Remove the `</EntitiesDescriptor>` from the end of the xml.
 
