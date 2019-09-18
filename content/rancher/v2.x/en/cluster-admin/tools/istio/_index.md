@@ -60,7 +60,7 @@ With Istio enabled, you can:
 
 ## Leveraging Istio in Projects
 
-After you enable Istio, you can see traphic metrics and a traffic graph on the project level. You can see a traffic graph for all namespaces that have Istio sidecar injection enabled. For more information, refer to [How to Use Istio in Your Project]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
+After you enable Istio, you can see metrics and a traffic graph on the project level. You can see a traffic graph for all namespaces that have Istio sidecar injection enabled. For more information, refer to [How to Use Istio in Your Project]({{< baseurl >}}/rancher/v2.x/en/project-admin/istio/).
 
 ## Disabling Istio
 
