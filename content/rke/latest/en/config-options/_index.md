@@ -67,6 +67,8 @@ kubernetes_version: "v1.11.6-rancher1-1"
 
 In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) are defined, the system images configuration will take precedence over `kubernetes_version`.
 
+> **Note:** In RKE, `kubernetes_version` is used to map services default parameters and options. A detailed list of the options can be found [here](https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go)
+
 #### Listing Supported Kubernetes Versions
 
 Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
