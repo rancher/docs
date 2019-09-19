@@ -62,6 +62,10 @@ The `S3` backup target allows users to configure a S3 compatible backend to stor
 |S3 Region Endpoint|S3 regions endpoint for the backup bucket|* |
 |S3 Access Key|S3 access key with permission to access the backup bucket|*|
 |S3 Secret Key|S3 secret key with permission to access the backup bucket|*|
+| Custom CA Certificate | A custom certificate used to access private S3 backends ||
+
+#### Using a custom CA certificate for S3
+It's possible to backup snapshot to custom S3 backends like [minio](https://min.io/). If the S3 backend uses a self-signed or a custom certificate, It's possible to provide a custom certificate using the option `Custom CA Certificate` to connect the the S3 backend.
 
 # IAM Support for Storing Snapshots in S3
 The `S3` backup target supports using IAM authentication to AWS API in addition to using API credentials. An IAM role gives temporary permissions that an application can use when making API calls to S3 storage. To use IAM authentication, the following requirements must be met:

@@ -37,6 +37,10 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 |**secret_key** |S3 secret key with permission to access the backup bucket.| * |
 |**region** |S3 region for the backup bucket. This is optional.| * |
 |**endpoint** |S3 regions endpoint for the backup bucket.| * |
+| **endpoint-ca**       | Custom CA certificate to connect to custom S3 endpoint. Provided as a multi-line string. | *|
+
+##### Using a custom CA certificate for S3
+It's possible to backup snapshot to custom S3 backends like [minio](https://min.io/). If the S3 backend uses a self-signed or a custom certificate, It's possible to provide a custom certificate using the option `endpoint-ca` to connect the the S3 backend.
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
 
