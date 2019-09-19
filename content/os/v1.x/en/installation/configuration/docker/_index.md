@@ -39,6 +39,7 @@ Key | Value
 `bip` | String
 `config_file` | String
 `containerd` | String
+`data-root` | String
 `debug` | Boolean
 `exec_root` | String
 `group` | String
