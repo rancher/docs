@@ -16,9 +16,14 @@ These example scenarios describe how an organization could use templates to stan
 Let's say there is an organization in which the administrators decide that all new clusters should be created with Kubernetes version 1.14.
 
 1. First, an administrator creates a template which specifies the Kubernetes version as 1.14 and marks all other settings as **Allow User Override**. 
-1. Then the administrator makes the template public and turns on template enforcement.
+1. The administrator makes the template public.
+1. The administrator turns on template enforcement.
 
-**Result:** All Rancher users in the organization have access to the template. All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) use Kubernetes 1.14 and they are unable to use a different Kubernetes version.
+**Results:** 
+
+- All Rancher users in the organization have access to the template.
+- All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) with this template will use Kubernetes 1.14 and they are unable to use a different Kubernetes version. By default, standard users don't have permission to create templates, so this template will be the only template they can use unless more templates are shared with them.
+- All standard users must use a cluster template to create a new cluster. They cannot create a cluster without using a template.
 
 In this way, the administrators enforce the Kubernetes version across the organization, while still allowing end users to configure everything else.
 
