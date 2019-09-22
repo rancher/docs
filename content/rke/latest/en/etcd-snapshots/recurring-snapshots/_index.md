@@ -37,6 +37,7 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 |**secret_key** |S3 secret key with permission to access the backup bucket.| * |
 |**region** |S3 region for the backup bucket. This is optional.| * |
 |**endpoint** |S3 regions endpoint for the backup bucket.| * |
+|**custom_ca** |Custom certificate authority to use when connecting to the endpoint. Only required for private S3 compatible storage solutions. Available for RKE v0.2.5+.| * |
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
 
