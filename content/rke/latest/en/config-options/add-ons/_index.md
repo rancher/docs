@@ -20,7 +20,6 @@ As of v0.1.8, RKE will update an add-on if it is the same name.
 
 Prior to v0.1.8, update any add-ons by using `kubectl edit`.
 
-
 ## Critical and Non-Critical Add-ons
 
 As of version v0.1.7, add-ons are split into two categories:
@@ -37,3 +36,18 @@ RKE uses Kubernetes jobs to deploy add-ons. In some cases, add-ons deployment ta
 ```yaml
 addon_job_timeout: 30
 ```
+
+## Add-on placement
+
+_Applies to v0.2.3 and higher_
+
+| Component          | nodeAffinity nodeSelectorTerms             | nodeSelector | Tolerations |
+| ------------------ | ------------------------------------------ | ------------ | ----------- |
+| Calico             | `beta.kubernetes.io/os:NotIn:windows`  | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists`<br/>- `CriticalAddonsOnly:Exists` |
+| Flannel            | `beta.kubernetes.io/os:NotIn:windows`  | none | - `operator:Exists` |
+| Canal              | `beta.kubernetes.io/os:NotIn:windows`  | none         | - `NoSchedule:Exists`<br/>- `NoExecute:Exists`<br/>- `CriticalAddonsOnly:Exists` |
+| Weave              | `beta.kubernetes.io/os:NotIn:windows`  | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
+| CoreDNS            | `node-role.kubernetes.io/worker:Exists` | `beta.kubernetes.io/os:linux` | - `NoSchedule:Exists`<br/>- `NoExecute:Exists`<br/>- `CriticalAddonsOnly:Exists` |
+| kube-dns           | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none  | - `NoSchedule:Exists`<br/>- `NoExecute:Exists`<br/>- `CriticalAddonsOnly:Exists` |
+| nginx-ingress      | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
+| metrics-server     | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
