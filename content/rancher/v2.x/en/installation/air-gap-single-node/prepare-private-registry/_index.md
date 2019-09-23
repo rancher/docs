@@ -6,7 +6,9 @@ aliases:
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
-By default, all system images are being pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/).
+By default, all [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) are pulled from DockerHub. If you are on a system that does not have access to DockerHub, you will need to create a private registry that is populated with all the required system images so that you can provision [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) and use [Rancher tools]({{<baseurl>}}/rancher/v2.x/en/tools/).
+
+This section describes how to set up your private registry so that when you install Rancher, you can use a command line option to tell Rancher to pull images from this registry.
 
 When configuring your private registry, you only need to provide credentials if your registry requires them.
 

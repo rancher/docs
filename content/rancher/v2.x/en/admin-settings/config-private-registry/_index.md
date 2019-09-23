@@ -4,12 +4,11 @@ weight: 400
 aliases:
 ---
 
-For air gap installations of Rancher, a private registry should be configured during the Rancher installation. This section describes how to configure a private registry from the Rancher UI if you need to set it after Rancher is installed.
+You might want to use a private Docker registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the Docker images that are used in your clusters.
 
-There are two places you need to use a private registry:
+A private registry is also used for air gap installations of Rancher, in which the registry is located somewhere accessible by Rancher. Then Rancher can provision clusters using images from the registry without direct access to the Internet.
 
-- When Rancher is installed, to provide the Rancher system images
-- After Rancher is installed, to use when deploying clusters
+This section describes how to configure a private Docker registry from the Rancher UI after Rancher is installed. For instructions on setting up a private registry with command line options during the installation of Rancher, refer to the [single node]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node) or [high-availability]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability) Rancher air gap installation instructions.
 
 There are multiple ways to configure private registries in Rancher, depending on whether your private registry requires credentials:
 
@@ -19,8 +18,6 @@ There are multiple ways to configure private registries in Rancher, depending on
 If your private registry requires credentials, it cannot be used as the default registry. There is no global way to set up a private registry with authorization for every Rancher-provisioned cluster. Therefore, if you want a Rancher-provisioned cluster to pull images from a private registry with credentials, you will have to [pass in the registry credentials through the advanced cluster options](#provisioning-clusters-with-private-registries-that-require-credentials) every time you create a new cluster. 
 
 # Setting a Private Registry with No Credentials as the Default Registry
-
->**Note:** If you want to set the default private registry when starting the rancher/rancher container, you can use the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
 1. Log into Rancher and configure the default admin password.
 
@@ -38,7 +35,7 @@ If your private registry requires credentials, it cannot be used as the default 
 
 **Result:** Rancher will use your private registry to pull system images.
 
-# Setting a Private Registry with Credentials for Deploying Clusters
+# Setting a Private Registry with Credentials when Deploying a Cluster
 
 You can follow these steps to configure a private registry when you provision a cluster with Rancher:
 

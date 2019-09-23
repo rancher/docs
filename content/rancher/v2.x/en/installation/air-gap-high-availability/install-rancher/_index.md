@@ -14,6 +14,7 @@ This section describes installing Rancher in five parts:
 - [C. Set Up Rancher Certificates](#c-set-up-rancher-certificates)
 - [D. Render the Rancher Helm Template](#d-render-the-rancher-helm-template)
 - [E. Install Rancher](#e-install-rancher)
+- [F. For Rancher prior to v2.3.0, Configure System Charts](#f-for-rancher-prior-to-v2-3-0-configure-system-charts)
 
 ## A. Add the Helm Chart Repository
 
@@ -52,7 +53,7 @@ For HA air gap configurations, there are two recommended options for the source 
 | Configuration | Chart option | Description | Requires cert-manager |
 |-----|-----|-----|-----|
 | [Rancher Generated Self-Signed Certificates](#self-signed) | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br/>This is the **default** | yes |
-| [Certificates from Files](#secret) | `ingress.tls.source=secret` | Use your own certificate files by creating Kubernetes Secret(s) | no |
+| [Certificates from Files](#secret) | `ingress.tls.source=secret` | Use your own certificate files by creating Kubernetes Secret(s). Then you will use this option when rendering the Rancher Helm template. | no |
 
 ## C. Set Up Rancher Certificates
 
@@ -144,6 +145,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
      --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT>
      --set extraEnv[0].name=CATTLE_SYSTEM_CATALOG
      --set extraEnv[0].value=bundled
+     --set ingress.tls.source=secret # Use this option if you are using your own certificates instead of cert-manager.
 ```
 {{% /tab %}}
 {{% tab "Rancher prior to v2.3.0" %}}
@@ -160,6 +162,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
   --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
   --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+  --set ingress.tls.source=secret # Use this option if you are using your own certificates instead of cert-manager.
 ```
 {{% /tab %}}
 {{% /tabs %}}
@@ -200,6 +203,8 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 
 If you are installing Rancher v2.3.0, the installation is complete.
+
+### F. For Rancher Prior to v2.3.0, Configure System Charts
 
 If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
