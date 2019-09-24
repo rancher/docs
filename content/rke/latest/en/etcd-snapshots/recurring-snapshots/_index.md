@@ -33,6 +33,7 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 |**interval_hours**| The duration in hours between recurring backups.  This supercedes the `creation` option (which was used in RKE prior to v0.2.0) and will override it if both are specified.| |
 |**retention**| The number of snapshots to retain before rotation. This supercedes the `retention` option and will override it if both are specified.| |
 |**bucket_name**| S3 bucket name where backups will be stored| * |
+|**folder**| Folder inside S3 bucket where backups will be stored. This is optional.| * |
 |**access_key**| S3 access key with permission to access the backup bucket.| * |
 |**secret_key** |S3 secret key with permission to access the backup bucket.| * |
 |**region** |S3 region for the backup bucket. This is optional.| * |
@@ -82,6 +83,7 @@ services:
         secret_key: S3_SECRET_KEY
         bucket_name: s3-bucket-name
         region: ""
+        folder: ""
         endpoint: s3.amazonaws.com
 ```
 
