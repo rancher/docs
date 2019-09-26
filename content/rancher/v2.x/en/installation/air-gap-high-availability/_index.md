@@ -5,6 +5,8 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
 ---
 
+This section is about high-availability installations of Rancher in an air gapped environment. An air gapped environment could be offline, behind a firewall, or behind a proxy.
+
 ## Prerequisites
 
 Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
@@ -23,6 +25,5 @@ The following CLI tools are required for this install. Make sure these tools are
 - [2. Collect and Publish Image Sources]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)
 - [3. Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
 - [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
-- [5. Configure Rancher System Charts]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/)
 
 ### [Next: Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/) 

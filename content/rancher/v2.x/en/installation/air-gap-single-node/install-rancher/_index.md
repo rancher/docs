@@ -1,12 +1,16 @@
 ---
 title: "3. Choose an SSL Option and Install Rancher"
 weight: 300
-aliases:
 ---
 
 For development and testing in air gap environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll deploy Rancher to your air gap host using an image pulled from your private registry.
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.
+
+- As of Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra flag, `-e CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
+- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
 >**Do you want to...**
 >
@@ -19,13 +23,23 @@ Choose from the following options:
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
-Log into your Linux host, and then run the installation command below. Replace `<REGISTRY.YOURDOMAIN.COM:PORT>` with your private registry URL and port. Replace `<RANCHER_VERSION_TAG>` with release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
+Log into your Linux host, and then run the installation command below. 
 
 If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
 
-    docker run -d --restart=unless-stopped \
+- Replace `<REGISTRY.YOURDOMAIN.COM:PORT>` with your private registry URL and port.
+- Replace `<RANCHER_VERSION_TAG>` with release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
+
+```
+docker run -d --restart=unless-stopped \
     -p 80:80 -p 443:443 \
-    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
+    -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
+    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> \
+    --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
+    --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+    --set extraEnv[1].name=CATTLE_SYSTEM_CATALOG \
+    --set extraEnv[1].value=bundled 
+```
 
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
@@ -50,17 +64,21 @@ Placeholder | Description
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port. This configures Rancher to use your private registry when starting the `rancher/rancher` container.
 `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to install.
 
-If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`. This will allow Rancher to use the registry when provisioning other clusters without additional configuration.
 
 ```
 docker run -d --restart=unless-stopped \
- -p 80:80 -p 443:443 \
- -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
- -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
- -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
- <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
+    -p 80:80 -p 443:443 \
+    -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
+    -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+    -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+    -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> \
+    --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
+    --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+    --set extraEnv[1].name=CATTLE_SYSTEM_CATALOG \
+    --set extraEnv[1].value=bundled 
 ```
-
 
 {{% /accordion %}}
 {{% accordion id="option-c" label="Option C-Bring Your Own Certificate: Signed by Recognized CA" %}}
@@ -73,7 +91,7 @@ After obtaining your certificate, run the Docker command below, replacing each p
 
 When entering the command, use the table below to replace each placeholder.
 
-If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`.
+If your private registry doesn't require credentials, you can set it as default when starting the rancher/rancher container by using the environment variable `CATTLE_SYSTEM_DEFAULT_REGISTRY`. This will allow Rancher to use the registry when provisioning other clusters without additional configuration.
 
 Placeholder | Description
 ------------|-------------
@@ -86,12 +104,20 @@ Placeholder | Description
 
 ```
 docker run -d --restart=unless-stopped \
- -p 80:80 -p 443:443 \
- -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
- -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
- <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> --no-cacerts
+    -p 80:80 -p 443:443 \
+    -e CATTLE_SYSTEM_CATALOG=bundled \ # For Rancher v2.3.0+ only
+    -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+    -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+    <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG> --no-cacerts \
+    --set extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY \
+    --set extraEnv[0].value=<REGISTRY.YOURDOMAIN.COM:PORT> \
+    --set extraEnv[1].name=CATTLE_SYSTEM_CATALOG \
+    --set extraEnv[1].value=bundled 
 ```
 
 {{% /accordion %}}
 
-### [Next: Configure Rancher for the Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/config-rancher-for-private-reg/)
+
+If you are installing Rancher v2.3.0, the installation is complete.
+
+If you are installing Rancher prior to v2.3.0, the final step is to [configure the Rancher system charts.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
