@@ -9,7 +9,7 @@ aliases:
 <!-- TOC -->
 
 - [Operating System](#operating-system)
-
+    - [General Linux Requirements](#general-linux-requirements)
     - [Red Hat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
 
         - [Using upstream Docker](#using-upstream-docker)
@@ -28,6 +28,8 @@ aliases:
 <!-- /TOC -->
 
 ## Operating System
+
+### General Linux Requirements
 
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
