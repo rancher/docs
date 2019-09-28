@@ -10,7 +10,7 @@ One-time snapshots are handled differently depending on your version of RKE.
 
 To save a snapshot of etcd from each etcd node in the cluster config file, run the `rke etcd snapshot-save` command.
 
-The snapshot is saved in `/opt/rke/etcd-snapshots`. 
+The snapshot is saved in `/opt/rke/etcd-snapshots`.
 
 When running the command, an additional container is created to take the snapshot. When the snapshot is completed, the container is automatically removed.
 
@@ -47,6 +47,7 @@ $ rke etcd snapshot-save \
 |   `--config` value       |    Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |  |
 |   `--s3`                 |    Enabled backup to s3 |   * |
 |   `--s3-endpoint` value  |    Specify s3 endpoint url (default: "s3.amazonaws.com") |   * |
+| `--s3-endpoint-ca` value     |    Specify a path to a CA cert file to connect to a custom s3 endpoint (optional) _Available as of v0.2.5_ | * |
 |   `--access-key` value   |    Specify s3 accessKey |   * |
 |   `--secret-key` value   |    Specify s3 secretKey |  * |
 |   `--bucket-name` value  |    Specify s3 bucket name |   * |
@@ -55,6 +56,12 @@ $ rke etcd snapshot-save \
 | `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
+
+##### Using a custom CA certificate for S3
+
+_Available as of v2.2.5_
+
+The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the `--s3-endpoint-ca` to connect to the S3 back end.
 
 ### IAM Support for Storing Snapshots in S3
 
@@ -105,7 +112,7 @@ $ rke etcd snapshot-save --config cluster.yml --name snapshot-name
 
 | Option | Description |
 | --- | --- |
-|   `--name` value         |    Specify snapshot name | 
+|   `--name` value         |    Specify snapshot name |
 |   `--config` value       |    Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |
 | `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) |
 | `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
