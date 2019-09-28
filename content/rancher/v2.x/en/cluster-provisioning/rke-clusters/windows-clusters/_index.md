@@ -180,6 +180,7 @@ It may take a few minutes for the node to be registered in your cluster.
 
 After the initial provisioning of your custom cluster, your cluster only has a single Linux host. Next, we add another Linux `worker` host, which will be used to support *Rancher cluster agent*, *Metrics server*, *DNS* and *Ingress* for your cluster.
 
+
 1. From the **Global** view, click **Clusters.**
 
 1. Go to the custom cluster that you created and click **Ellipsis (...) > Edit.**
@@ -195,6 +196,14 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 1. From **Rancher**, click **Save**.
 
 **Result:** The **Worker** role is installed on your Linux host, and the node registers with Rancher. It may take a few minutes for the node to be registered in your cluster.
+
+> **Note:** Taints on Linux Worker Nodes
+>
+>For each Linux worker node added into the cluster, the following taints will be added to Linux worker node. By adding this taint to the Linux worker node, any workloads added to the windows cluster will be automatically scheduled to the Windows worker node. If you want to schedule workloads specifically onto the Linux worker node, you will need to add tolerations to those workloads.
+
+>Taint Key      | Taint Value   | Taint Effect
+>---|---|---
+>`cattle.io/os` | `linux`       | `NoSchedule`
 
 ### Add a Windows Worker Node
 
