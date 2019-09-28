@@ -40,6 +40,8 @@ weight: 276
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |
 | `tls` | "ingress" | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external" |
+| `systemDefaultRegistry` | "" | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/ _Available as of v2.3.0_ |
+| `useBundledSystemChart` | `false` | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations. _Available as of v2.3.0_
 
 <br/>
 
@@ -64,8 +66,8 @@ _Available as of v2.2.0_
 You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
 
 ```plain
---set 'extraEnv[0].name=CATTLE_SYSTEM_DEFAULT_REGISTRY'
---set 'extraEnv[0].value=http://registry.example.com/'
+--set 'extraEnv[0].name=CATTLE_TLS_MIN_VERSION'
+--set 'extraEnv[0].value=1.0'
 ```
 
 ### TLS settings

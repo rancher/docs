@@ -18,7 +18,7 @@ The following table lists which node options are available for each [type of clu
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
 | [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
-| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, or label for a node. |
+| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
 | [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
@@ -51,14 +51,14 @@ The node draining options are different based on your version of Rancher.
 
 There are two drain modes: aggressive and safe.
 
-- **Aggressive Mode** 
-    
+- **Aggressive Mode**
+
     In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
-    
+
     Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
 
-- **Safe Mode** 
-    
+- **Safe Mode**
+
     If a node has standalone pods or ephemeral data it will be cordoned but not drained.
 
 ### Aggressive and Safe Draining Options for Rancher Prior to v2.2.x
@@ -82,7 +82,7 @@ The following list describes each drain option:
 
 The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used.
 
-### Timeout 
+### Timeout
 
 The amount of time drain should continue to wait before giving up.
 
@@ -101,7 +101,12 @@ Once drain successfully completes, the node will be in a state of `drained`. You
 
 ## Editing a Node
 
-Editing a node lets you change its name, add a description of the node, or add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+Editing a node lets you:
+
+* Change its name
+* Change its description
+* Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+* Add/Remove [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 
 
 ## Viewing a Node API
