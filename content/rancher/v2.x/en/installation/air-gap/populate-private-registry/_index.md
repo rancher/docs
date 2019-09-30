@@ -284,4 +284,6 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
 {{% /tab %}}
 {{% /tabs %}}
 
-## [Next: Prepare to Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-rancher/)
+### [Next: HA Installs - Launch a Kubernetes Cluster with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/launch-kubernetes/)
+
+### [Next: Single Node Installs - Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/install-rancher/)

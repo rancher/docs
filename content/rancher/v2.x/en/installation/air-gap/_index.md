@@ -33,8 +33,8 @@ The following CLI tools are required for the HA install. Make sure these tools a
 
 - [1. Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-nodes/)
 - [2. Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/)
-- [3. Prepare to Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/select-install-options/)
+- [3. Launch a Kubernetes Cluster with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/launch-kubernetes/)
 - [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/install-rancher/)
 
 
-## [Next: Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-nodes/)
+### [Next: Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-nodes/)

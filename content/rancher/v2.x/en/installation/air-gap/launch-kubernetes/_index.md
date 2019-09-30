@@ -1,11 +1,19 @@
 ---
-title: "3. Install Kubernetes with RKE"
+title: "3. Install Kubernetes with RKE (HA Installs Only)"
 weight: 300
 aliases:
-
+  - /rancher/v2.x/en/installation/air-gap-high-availability/install-kube
 ---
 
-## A. Create an RKE Config File
+>**Note:** Applicable only to HA installations.
+
+Rancher recommends installing Rancher in a Highly Available (HA) configuration. An HA installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
+
+This section is about how to prepare to launch a Kubernetes cluster which is used to deploy Rancher server for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
+
+Since a HA installation requires a Kubernetes cluster, we will create a Kubernetes cluster using [Rancher Kubernetes Engine]({{< baseurl >}}/rke/latest/en/) (RKE). Before being able to start your Kubernetes cluster, you'll need to create a RKE config file.
+
+### A. Create an RKE Config File
 
 From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create a new file named `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying Rancher to.
 
@@ -51,15 +59,15 @@ private_registries:
   is_default: true
 ```
 
-## B. Run RKE
+### B. Run RKE
 
-After configuring `rancher-cluster.yml`, open Terminal and change directories to the RKE binary. Then enter the command below to stand up your high availability cluster.
+After configuring `rancher-cluster.yml`, bring up your Kubernetes cluster.
 
 ```
 rke up --config ./rancher-cluster.yml
 ```
 
-## C. Save Your Files
+### C. Save Your Files
 
 > **Important**
 > The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
@@ -68,6 +76,6 @@ Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
 - `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
-- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._ 
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
-### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher)
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/install-rancher)

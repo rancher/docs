@@ -24,13 +24,13 @@ Rancher recommends installing Rancher in a Highly Available (HA) configuration. 
 
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
 
-### 1. Provision three air gapped Linux hosts according to our requirements
+### A. Provision three air gapped Linux hosts according to our requirements
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
 View hardware and software requirements for each of your cluster nodes in [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
 
-### 2. Set up your Load Balancer
+### B. Set up your Load Balancer
 
 When setting up the Kubernetes cluster that will run the Rancher server components, an Ingress controller pod will be deployed on each of your nodes. The Ingress controller pods are bound to ports TCP/80 and TCP/443 on the host network and are the entry point for HTTPS traffic to the Rancher server.
 
@@ -49,7 +49,7 @@ YOu will need to configure a load balancer as a basic Layer 4 TCP forwarder to d
 
 The single node installation is for Rancher users that are wanting to **test** out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. **Important: If you install Rancher following the single node installation guide, there is no upgrade path to transition your single node installation to a HA installation.** Instead of running the single node installation, you have the option to follow the HA install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a HA installation.
 
-### 1. Provision a single, air gapped Linux host according to our Requirements
+### A. Provision a single, air gapped Linux host according to our Requirements
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
@@ -58,4 +58,4 @@ View hardware and software requirements for each of your cluster nodes in [Requi
 {{% /tab %}}
 {{% /tabs %}}
 
-## [Next: Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/)
+### [Next: Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/)
