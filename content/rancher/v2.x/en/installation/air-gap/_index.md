@@ -1,5 +1,5 @@
 ---
-title: "Air Gap Installation"
+title: "Air Gap Install"
 weight: 290
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
@@ -9,9 +9,9 @@ aliases:
 
 This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. Throughout the installations instructions, there will be _tabs_ for either a high availability installation or a single node installation.
 
-* **High Availability (HA) Installation:** Rancher recommends installing Rancher in a HA configuration, which will setup 3 nodes running Rancher server. With a HA installation, there are multiple copies of the Rancher server etcd store, so if one of the nodes in the Rancher server goes down, you will have additional copies of the etcd data store.
+* **High Availability (HA) Installation:** Rancher recommends installing Rancher in a Highly Available (HA) configuration. An HA installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
-* **Single Node Installation:** The single node installation is for Rancher users that are wanting to test out Rancher. Since there is only one node used in this installation, if the node goes down, there is no copy of the etcd data and you will lose all the data of your Rancher server. **Important: If you install Rancher in a single node installation, there is no upgrade path to transition your single node installation to a HA installation.**
+* **Single Node Installation:** The single node installation is for Rancher users that are wanting to **test** out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. **Important: If you install Rancher following the single node installation guide, there is no upgrade path to transition your single node installation to a HA installation.** Instead of running the single node installation, you have the option to follow the HA install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a HA installation.
 
 ## Prerequisites
 
@@ -31,7 +31,10 @@ The following CLI tools are required for the HA install. Make sure these tools a
 
 ## Installation Outline
 
-- [1. Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/)
-- [2. Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)
-- [3. Prepare to Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
-- [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
+- [1. Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-nodes/)
+- [2. Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/)
+- [3. Prepare to Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/select-install-options/)
+- [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/install-rancher/)
+
+
+## [Next: Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/prepare-nodes/)
