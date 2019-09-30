@@ -1,0 +1,37 @@
+---
+title: "Air Gap Installation"
+weight: 290
+aliases:
+  - /rancher/v2.x/en/installation/air-gap-installation/
+  - /rancher/v2.x/en/installation/air-gap-high-availability/
+  - /rancher/v2.x/en/installation/air-gap-single-node/
+---
+
+This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. Throughout the installations instructions, there will be _tabs_ for either a high availability installation or a single node installation.
+
+* **High Availability (HA) Installation:** Rancher recommends installing Rancher in a HA configuration, which will setup 3 nodes running Rancher server. With a HA installation, there are multiple copies of the Rancher server etcd store, so if one of the nodes in the Rancher server goes down, you will have additional copies of the etcd data store.
+
+* **Single Node Installation:** The single node installation is for Rancher users that are wanting to test out Rancher. Since there is only one node used in this installation, if the node goes down, there is no copy of the etcd data and you will lose all the data of your Rancher server. **Important: If you install Rancher in a single node installation, there is no upgrade path to transition your single node installation to a HA installation.**
+
+## Prerequisites
+
+Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
+
+{{% tabs %}}
+{{% tab "HA Install" %}}
+
+The following CLI tools are required for the HA install. Make sure these tools are installed on your workstation and available in your `$PATH`.
+
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+* [rke]({{< baseurl >}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
+
+{{% /tab %}}
+{{% /tabs %}}
+
+## Installation Outline
+
+- [1. Prepare your Node(s)]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts/)
+- [2. Collect and Publish Images to your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/)
+- [3. Prepare to Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-kube/)
+- [4. Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/)
