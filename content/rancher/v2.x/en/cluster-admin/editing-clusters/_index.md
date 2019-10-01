@@ -8,7 +8,7 @@ aliases:
 After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster. To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis (...) > Edit** for the cluster that you want to edit.
 
 <sup>To Edit an Existing Cluster</sup>
-![Edit Cluster]({{< baseurl >}}/img/rancher/edit-cluster.png)
+![Edit Cluster]({{<baseurl>}}/img/rancher/edit-cluster.png)
 
 The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
 
@@ -62,6 +62,8 @@ When editing clusters, clusters that are [launched using RKE]({{< baseurl >}}/ra
 ### Upgrading Kubernetes
 
 Following an upgrade to the latest version of Rancher, you can update your existing clusters to use the latest supported version of Kubernetes. Before a new version of Rancher is released, it's tested with the latest versions of Kubernetes to ensure compatibility.
+
+As of Rancher v2.3.0, the Kubernetes metadata feature was added, which allows you to use newer Kubernetes versions as soon as they are released, without upgrading Rancher. For details, refer to the [section on Kubernetes metadata.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata)
 
 >**Recommended:** Before upgrading Kubernetes, [backup your cluster]({{< baseurl >}}/rancher/v2.x/en/backups).
 
