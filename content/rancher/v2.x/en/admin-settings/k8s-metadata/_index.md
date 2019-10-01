@@ -7,7 +7,9 @@ _Available as of v2.3.0_
 
 The RKE metadata feature allows you to provision clusters with new versions of Kubernetes as soon as they are released, without upgrading Rancher. This feature is useful for taking advantage of patch versions of Kubernetes, for example, if you want to upgrade to Kubernetes v1.14.7 when your Rancher server originally supported v1.14.6.
 
-Rancher's Kubernetes metadata contains information specific to the Kubernetes version that Rancher uses to provision [RKE clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). Rancher syncs the data periodically and creates custom resource definitions (CRDs) for **system images,** **service options** and **addon templates.**  Consequently, when a new Kubernetes version is compatible with the Rancher server version, the Kubernetes metadata makes the new version available to Rancher for provisioning clusters. The metadata gives you an overview of the information that the [Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/) (RKE) uses for deploying various Kubernetes versions.
+> **Note:** The Kubernetes API can change between minor versions. Therefore, we don't support upgrades of minor Kubernetes versions, such as upgrades from 1.14 to 1.15, without upgrading Rancher.
+
+Rancher's Kubernetes metadata contains information specific to the Kubernetes version that Rancher uses to provision [RKE clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/). Rancher syncs the data periodically and creates custom resource definitions (CRDs) for **system images,** **service options** and **addon templates.** Consequently, when a new Kubernetes version is compatible with the Rancher server version, the Kubernetes metadata makes the new version available to Rancher for provisioning clusters. The metadata gives you an overview of the information that the [Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/) (RKE) uses for deploying various Kubernetes versions.
 
 This table below describes the CRDs that are affected by the periodic data sync. 
 
@@ -43,9 +45,9 @@ To edit the metadata config in Rancher,
 1. Go to the **rke-metadata-config** section. Click the **Ellipsis (...)** and click **Edit.**
 1. You can optionally fill in the following parameters:
 
-  - `refresh-interval-minutes`: This is the amount of time that Rancher waits to sync the metadata. To disable the periodic refresh, set `refresh-interval-minutes` to 0.
-  - `url`: This is the HTTP path that Rancher fetches data from.
-  - `branch`: This refers to the Git branch name if the URL is a Git URL. 
+ - `refresh-interval-minutes`: This is the amount of time that Rancher waits to sync the metadata. To disable the periodic refresh, set `refresh-interval-minutes` to 0.
+ - `url`: This is the HTTP path that Rancher fetches data from.
+ - `branch`: This refers to the Git branch name if the URL is a Git URL. 
 
 If you don't have an air gap setup, you don't need to specify the URL or Git branch where Rancher gets the metadata, because the default setting is to pull from [Rancher's metadata Git repository.](https://github.com/rancher/kontainer-driver-metadata.git)
 
@@ -59,11 +61,11 @@ If you have an air gap setup, you might not be able to get the automatic periodi
 
 To sync Rancher with a local mirror of the RKE metadata, an administrator would configure the `rke-metadata-config` settings by updating the `url` and `branch` to point to the mirror.
 
-After new Kubernetes versions are loaded into the Rancher setup, additional steps would be required in order to use them for launching clusters. Rancher needs access to updated system images. While the metadata settings can only be changed by administrators, any user can download the Rancher system images and prepare a  private Docker registry for them.
+After new Kubernetes versions are loaded into the Rancher setup, additional steps would be required in order to use them for launching clusters. Rancher needs access to updated system images. While the metadata settings can only be changed by administrators, any user can download the Rancher system images and prepare a private Docker registry for them.
 
 1. To download the system images for the private registry, click the Rancher server version at the bottom left corner of the Rancher UI.
 1. Download the OS specific image lists for Linux or Windows.
 1. Download `rancher-images.txt`.
-1. Prepare the private registry using the same steps that are used for preparing a registry for a [Single Node]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/prepare-private-registry/) or [HA]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/) air gap installation of Rancher.
+1. Prepare the private registry using the same steps during the [air gap install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/populate-private-registry), but instead of using the `rancher-images.txt` from the releases page, use the one obtained from the previous steps.
 
 **Result:** The air gap installation of Rancher can now sync the Kubernetes metadata. If you update your private registry when new versions of Kubernetes are released, you can provision clusters with the new version without having to upgrade Rancher.
