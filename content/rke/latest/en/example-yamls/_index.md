@@ -226,10 +226,12 @@ dns:
 
 # Currently only nginx ingress provider is supported.
 # To disable ingress controller, set `provider: none`
-
+# `node_selector` controls ingress placement and is optional
 ingress:
     provider: nginx
-
+    node_selector:
+      app: ingress
+      
 # All add-on manifests MUST specify a namespace
 addons: |-
     ---
