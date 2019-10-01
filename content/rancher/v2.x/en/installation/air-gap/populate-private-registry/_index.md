@@ -8,13 +8,14 @@ aliases:
 ---
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+>
+>**Note:** Populating the private registry with images is the same process for HA and single node installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
 
 By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gap installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
 By default, we provide the steps of how to populate your private registry assuming you are provisioning Linux only clusters, but if you plan on provisioning any [Windows clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed for a Windows cluster.
-
 
 {{% tabs %}}
 {{% tab "Linux Only Clusters" %}}
@@ -130,6 +131,8 @@ D. Populate the private registry
 
 These steps expect you to use a Windows 1903 Server workstation that has internet access, access to your private registry, and at least 50 GB of disk space.
 
+The workstation must have Docker 18.02+ in order to support manifests, which are required when provisioning Windows clusters.  
+
 ### A. Find the required assets for your Rancher version
 
 1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
@@ -205,6 +208,8 @@ D. Populate the private registry
 You must populate the private registry with the Windows images before populating the private registry with Linux images. If you have already populated the registry with Linux images, you will need to follow these instructions again as they will publish manifests that support Windows and Linux images.
 
 These steps expect you to use a Linux workstation that has internet access, access to your private registry, and at least 20 GB of disk space.
+
+The workstation must have Docker 18.02+ in order to support manifests, which are required when provisioning Windows clusters.
 
 ### A. Find the required assets for your Rancher version
 
