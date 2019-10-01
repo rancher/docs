@@ -26,7 +26,7 @@ This section describes installing Rancher in five parts:
 
 ### A. Add the Helm Chart Repository
 
-From a system that has access to the internet, render the installs and copy the resulting manifests to a system that has access to the Rancher server cluster.
+From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
 1. If you haven't already, initialize `helm` locally on a workstation that has internet access.
 
