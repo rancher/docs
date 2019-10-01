@@ -115,20 +115,13 @@ _Available as of v2.3.0_
 
 For Rancher servers that will provision Linux and Windows clusters, there are distinctive steps to populate your private registry for the Windows images and the Linux images. Since a Windows cluster is a mix of Linux and Windows nodes, the Linux images pushed into the private registry are manifests.
 
-### Windows and Linux steps
+### Windows Steps
 
 The Windows images need to be collected and pushed from a Windows server workstation.
 
 A. Find the required assets for your Rancher version <br>
 B. Save the images to your Windows Server workstation <br>
 C. Prepare the Docker daemon  <br>
-D. Populate the private registry
-
-The Linux images needs to be collected and pushed from a Linux host, but *must be done after* populating the Windows images into the private registry. These step are different from the Linux only steps as the Linux images that are pushed will actually manifests that support Windows and Linux images.
-
-A. Find the required assets for your Rancher version <br>
-B. Collect all the required images <br>
-C. Save the images to your Linux workstation <br>
 D. Populate the private registry
 
 {{% accordion label="Collecting and Populating Windows Images into the Private Registry"%}}
@@ -194,6 +187,16 @@ Move the images in the `rancher-windows-images.tar.gz` to your private registry 
     ```
 
 {{% /accordion %}}
+
+### Linux Steps
+
+The Linux images needs to be collected and pushed from a Linux host, but *must be done after* populating the Windows images into the private registry. These step are different from the Linux only steps as the Linux images that are pushed will actually manifests that support Windows and Linux images.
+
+A. Find the required assets for your Rancher version <br>
+B. Collect all the required images <br>
+C. Save the images to your Linux workstation <br>
+D. Populate the private registry
+
 
 {{% accordion label="Collecting and Populating Linux Images into the Private Registry" %}}
 
