@@ -61,7 +61,7 @@ private_registries:
 
 ### B. Run RKE
 
-After configuring `rancher-cluster.yml`, bring up your Kubernetes cluster.
+After configuring `rancher-cluster.yml`, bring up your Kubernetes cluster:
 
 ```
 rke up --config ./rancher-cluster.yml

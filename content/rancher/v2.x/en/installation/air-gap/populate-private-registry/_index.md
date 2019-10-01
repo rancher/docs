@@ -45,15 +45,15 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### B. Collect all the required images
 
-1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`, which is a list of all the files needed to install Rancher.
+1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`, which is a list of all the files needed to install Rancher:
 
     ```
     rke --quiet config --system-images >> ./rancher-images.txt
     ```
 
-1. **For HA Installs using Rancher Generated Self-Signed Certificate:** In a HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+1. **For HA Installs using Rancher Generated Self-Signed Certificate:** In an HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
-    1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
+    1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
         > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
@@ -64,7 +64,7 @@ These steps expect you to use a Linux workstation that has internet access, acce
         helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
         ```
 
-    2. Sort and unique the images list to remove any overlap between the sources.
+    2. Sort and unique the images list to remove any overlap between the sources:
 
         ```plain
         sort -u rancher-images.txt -o rancher-images.txt
@@ -72,13 +72,13 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### C. Save the images to your workstation
 
-1. Make `rancher-save-images.sh` an executable.
+1. Make `rancher-save-images.sh` an executable:
 
     ```
     chmod +x rancher-save-images.sh
     ```
 
-1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images.
+1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images:
 
     ```plain
     ./rancher-save-images.sh --image-list ./rancher-images.txt
@@ -91,19 +91,19 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script.
 
-1. Log into your private registry if required.
+1. Log into your private registry if required:
 
     ```plain
     docker login <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
 
-1. Make `rancher-load-images.sh` an executable.
+1. Make `rancher-load-images.sh` an executable:
 
     ```
     chmod +x rancher-load-images.sh
     ```
 
-1. Use `rancher-load-images.sh` to extract, tag and push `rancher-images.txt` and `rancher-images.tar.gz` to your private registry.
+1. Use `rancher-load-images.sh` to extract, tag and push `rancher-images.txt` and `rancher-images.tar.gz` to your private registry:
 
     ```plain
     ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
@@ -134,7 +134,7 @@ These steps expect you to use a Windows 1903 Server workstation that has interne
 
 1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
-2. From the release's **Assets** section (pictured above), download the following files:
+2. From the release's "Assets" section, download the following files:
 
     | Release File | Description |
     | --- | --- |
@@ -147,7 +147,7 @@ These steps expect you to use a Windows 1903 Server workstation that has interne
 
 1. Using `powershell`, go to the directory that has the files that were downloaded in the previous step.
 
-1. Run `rancher-save-images.ps1` to create a tarball of all the required images.
+1. Run `rancher-save-images.ps1` to create a tarball of all the required images:
 
     ```plain
     ./rancher-save-images.ps1
@@ -174,13 +174,13 @@ These steps expect you to use a Windows 1903 Server workstation that has interne
 
 Move the images in the `rancher-windows-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-windows-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.ps1` script.
 
-1. Using `powershell`, log into your private registry if required.
+1. Using `powershell`, log into your private registry if required:
 
     ```plain
     docker login <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
 
-1. Using `powershell`, use `rancher-load-images.ps1` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry.
+1. Using `powershell`, use `rancher-load-images.ps1` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry:
 
     ```plain
     ./rancher-load-images.ps1 --registry <REGISTRY.YOURDOMAIN.COM:PORT>
@@ -224,7 +224,7 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 1. **For HA Installs using Rancher Generated Self-Signed Certificate:** In a HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
-    1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details.
+    1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
         > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
@@ -235,7 +235,7 @@ These steps expect you to use a Linux workstation that has internet access, acce
         helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
         ```
 
-    2. Sort and unique the images list to remove any overlap between the sources.
+    2. Sort and unique the images list to remove any overlap between the sources:
 
         ```plain
         sort -u rancher-images.txt -o rancher-images.txt
@@ -243,13 +243,13 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### C. Save the images to your workstation
 
-1. Make `rancher-save-images.sh` an executable.
+1. Make `rancher-save-images.sh` an executable:
 
     ```
     chmod +x rancher-save-images.sh
     ```
 
-1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images.
+1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images:
 
     ```plain
     ./rancher-save-images.sh --image-list ./rancher-images.txt
@@ -260,21 +260,21 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### D. Populate the private registry
 
-Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-images.txt`, `rancher-windows-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script..
+Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-images.txt`, `rancher-windows-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script.
 
-1. Log into your private registry if required.
+1. Log into your private registry if required:
 
     ```plain
     docker login <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
 
-1. Make `rancher-load-images.sh` an executable.
+1. Make `rancher-load-images.sh` an executable:
 
     ```
     chmod +x rancher-load-images.sh
     ```
 
-1. Use `rancher-load-images.sh` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry.
+1. Use `rancher-load-images.sh` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry:
 
     ```plain
     ./rancher-load-images.sh --image-list ./rancher-images.txt \
