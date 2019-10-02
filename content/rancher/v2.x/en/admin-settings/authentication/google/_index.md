@@ -26,8 +26,11 @@ You need to configure your G Suite account and generate OAuth credentials and se
 *As per [this](https://github.com/google/guava/wiki/InternetDomainNameExplained#public-suffixes-and-private-domains) article*  
 >"The top private domain is simply the rightmost superdomain preceding the public suffix. So for example, www.foo.co.uk
 >has a public suffix of co.uk, and a top private domain of foo.co.uk."  
-4. Go to **Scopes for Google APIs** and make sure "email", "profile" and "openid" are enabled
-#### Creating OAuth2 credentials for Rancher server
+4. Go to **Scopes for Google APIs** and make sure "email", "profile" and "openid" are enabled.  
+5. Click on **Save**.  
+
+#### Creating OAuth2 credentials for Rancher server  
+
 1. Click [here](https://console.developers.google.com/apis/credentials) to go to credentials page of your google domain and select your Project  
 2. Go to **Credentials** tab  
 ![Credentials]({{< baseurl >}}/img/rancher/Google-Credentials-tab.png)   
@@ -57,8 +60,9 @@ Since the google admin SDK is available only to admins, regular users cannot use
 6. Using the Unique ID of this key, register it as an Oauth Client using the following steps
 	1.  Get the Unique ID of the key you just created. This is a numeric key, if it's not displayed in the list of keys right next to the one you created, you will have to enable it to be listed by doing the following  
 	![Service account Unique ID]({{< baseurl >}}/img/rancher/Google-Select-UniqueID-column.png)  
-	2.  `Unique ID` must be clicked, and then click on OK. This will add a column to the list of service account keys for Unique ID. Save the one listed for the service account you created. NOTE: This is a numeric key, not to be confused with the alpha numeric field `Key ID`  
-	3. Go to `Manage OAuth client access` page: [https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients](https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients)  
+	2.  Select the `Unique ID` check box, and then click on OK. This will add a column to the list of service account keys for Unique ID. Save the one listed for the service account you created.  
+	**NOTE**: This is a numeric key, not to be confused with the alpha numeric field `Key ID`  
+	3. Go to [Manage OAuth client access](https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients) page  
 	Add the Unique ID obtained in previous step as `Client Name`, and add these scopes for `One or More API Scopes`:  
 	```
 	openid,profile,email,https://www.googleapis.com/auth/admin.directory.user.readonly,https://www.googleapis.com/auth/admin.directory.group.readonly
@@ -79,7 +83,5 @@ Since the google admin SDK is available only to admins, regular users cannot use
 
 6.  Step Three requires generation of Service Account credentials and registering the service account unique ID as an OAuth client in your GSuite account. Refer [this section]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/google/#creating-service-account-credentials) for detailed steps.
 
-7.	Click **Authenticate with Google**.
-
-8.	Click **Save**.  
+7.	Click **Authenticate with Google**.  
 **Result:** Google authentication is configured.
