@@ -352,7 +352,42 @@ limits:
 
 Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
-### 1.4.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive
+### 1.4.11 Ensure that the etcd data directory permissions are set to `700` or more restrictive
+
+**Profile Applicability**
+
+-  Level 1
+
+**Description**
+
+Ensure that the etcd data directory has permissions of 700 or more restrictive.
+
+**Rationale**
+
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes. It should not be readable or writable by any group members or the world.
+
+**Audit**
+
+On the etcd server node, get the etcd data directory, passed as an argument `--data-dir` ,
+from the below command:
+
+``` bash
+ps -ef | grep etcd
+```
+
+Run the below command (based on the etcd data directory found above). For example,
+
+``` bash
+stat -c %a /var/lib/rancher/etcd
+```
+
+Verify that the permissions are `700` or more restrictive.
+
+**Remediation**
+
+Follow the steps as documented in [1.4.12]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.3/#1-4-12-ensure-that-the-etcd-data-directory-ownership-is-set-to-etcd-etcd) remediation.
+
+### 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd`
 
 **Profile Applicability**
 

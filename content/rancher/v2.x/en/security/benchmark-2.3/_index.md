@@ -922,7 +922,7 @@ stat -c "%n - %U:%G" /etc/cni/net.d/*
 Files underneath the data dir have permissions set to `700`
 
 ``` bash
-stat -c "%n - %a" /var/lib/etcd/*
+stat -c "%n - %a" /var/lib/rancher/etcd/*
 
 /var/lib/etcd/member - 700
 ```
@@ -930,7 +930,7 @@ stat -c "%n - %a" /var/lib/etcd/*
 **Audit**
 
 ``` bash
-stat -c %a /var/lib/etcd
+stat -c %a /var/lib/rancher/etcd
 ```
 
 **Returned Value:** `700`
@@ -941,17 +941,17 @@ stat -c %a /var/lib/etcd
 
 **Notes**
 
-The `etcd` container runs as the `root` user. The data directory and files are owned by `root`.
+The `etcd` container runs as the `etcd` user. The data directory and files are owned by `etcd`.
 
 **Audit**
 
 ``` bash
-stat -c %U:%G /var/lib/etcd
+stat -c %U:%G /var/lib/rancher/etcd
 ```
 
 **Returned Value:** `etcd:etcd`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 1.4.13 - Ensure that the file permissions for `admin.conf` are set to `644` or more restrictive (Scored)
 
