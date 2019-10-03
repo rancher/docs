@@ -125,8 +125,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --namespace cattle-system \
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-     --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ #Available as of v2.2.0, set a default private registry to be used in Rancher
-     --set useBundledSystemChart=true #Available as of v2.3.0, use the packaged Rancher system charts
+     --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
+     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
     ```
 
 {{% /accordion %}}
@@ -154,8 +154,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
       --set hostname=<RANCHER.YOURDOMAIN.COM> \
       --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
       --set ingress.tls.source=secret \
-      --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ #Available as of v2.2.0, set a default private registry to be used in Rancher
-      --set useBundledSystemChart=true #Available as of v2.3.0, use the packaged Rancher system charts
+      --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
+      --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
     ```
 
 1.    See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
