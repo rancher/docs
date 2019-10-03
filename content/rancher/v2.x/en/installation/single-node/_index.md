@@ -67,7 +67,10 @@ docker run -d --restart=unless-stopped \
 
 In production environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
->**Prerequisite:** The certificate files must be in [PEM format](#pem).
+>**Prerequisites:**
+>
+>- The certificate files must be in [PEM format](#pem).
+>- In your certificate file, include all intermediate certificates provided by the recognized CA. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 After obtaining your certificate, run the Docker command below.
 
