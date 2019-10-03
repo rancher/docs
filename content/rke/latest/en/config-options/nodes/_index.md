@@ -36,6 +36,10 @@ nodes:
       ssh_key_path: /home/user/.ssh/id_rsa
       ssh_cert: |-
         ssh-rsa-cert-v01@openssh.com AAAAHHNza...
+      taints: # Available as of v0.3.0
+        - key: test-key
+          value: test-value
+          effect: NoSchedule
     - address: example.com
       user: ubuntu
       role:
@@ -123,3 +127,9 @@ If the Docker socket is different than the default, you can set the `docker_sock
 ### Labels
 
 You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/) `node_selector` option.
+
+### Taints
+
+_Available as of v0.3.0_
+
+You have the ability to add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) for each node.
