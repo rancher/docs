@@ -44,32 +44,26 @@ These steps expect you to use a Linux workstation that has internet access, acce
     | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry. |
 
 
-### B. Collect all the required images
+### B. Collect all the required images (For HA Installs using Rancher Generated Self-Signed Certificate)
 
-1. From the directory that contains the RKE binary, add RKE's images to `rancher-images.txt`, which is a list of all the files needed to install Rancher:
+In an HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
+1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
+
+    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+
+    ```plain
+    helm repo add jetstack https://charts.jetstack.io
+    helm repo update
+    helm fetch jetstack/cert-manager --version v0.9.1
+    helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
     ```
-    rke --quiet config --system-images >> ./rancher-images.txt
+
+2. Sort and unique the images list to remove any overlap between the sources:
+
+    ```plain
+    sort -u rancher-images.txt -o rancher-images.txt
     ```
-
-1. **For HA Installs using Rancher Generated Self-Signed Certificate:** In an HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
-
-    1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
-
-        > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
-
-        ```plain
-        helm repo add jetstack https://charts.jetstack.io
-        helm repo update
-        helm fetch jetstack/cert-manager --version v0.9.1
-        helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
-        ```
-
-    2. Sort and unique the images list to remove any overlap between the sources:
-
-        ```plain
-        sort -u rancher-images.txt -o rancher-images.txt
-        ```
 
 ### C. Save the images to your workstation
 
