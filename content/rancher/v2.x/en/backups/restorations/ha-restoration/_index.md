@@ -115,7 +115,8 @@ When restoring etcd from a snapshot located in an S3 compatible backend, the com
 ```
 $ rke etcd snapshot-restore --config cluster.yml --name snapshot-name \
 --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
---bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
+--bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com \
+--folder folder-name # Available as of v2.3.0
 ```
 
 #### Options for `rke etcd snapshot-restore`
@@ -131,6 +132,7 @@ S3 specific options are only available for RKE v0.2.0+.
 | `--access-key` value      |  Specify s3 accessKey | *|
 | `--secret-key` value      |  Specify s3 secretKey | *|
 | `--bucket-name` value     |  Specify s3 bucket name | *|
+| `--folder` value |  Specify s3 folder in the bucket name _Available as of v2.3.0_ | *|
 | `--region` value          |  Specify the s3 bucket location (optional) | *|
 | `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
 | `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
