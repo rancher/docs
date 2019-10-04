@@ -19,7 +19,7 @@ Currently, deployments pull the private registry credentials automatically only 
 
 1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
 
-1. From the main menu, select **Resources > Registries**. Click **Add Registry**.
+1. From the main menu, select **Resources > Secrets > Registry Credentials**. Click **Add Registry**.
 
 1. Enter a **Name** for the registry.
 
