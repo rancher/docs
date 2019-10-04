@@ -47,6 +47,7 @@ $ rke etcd snapshot-restore \
 --access-key S3_ACCESS_KEY \
 --secret-key S3_SECRET_KEY \
 --bucket-name s3-bucket-name \
+--folder s3-folder-name \ # Optional - Available as of v0.3.0
 --s3-endpoint s3.amazonaws.com
 ```
 **Note:** if you were restoring a cluster that had Rancher installed, the Rancher UI should start up after a few minutes; you don't need to re-run Helm.
@@ -62,6 +63,7 @@ $ rke etcd snapshot-restore \
 | `--access-key` value      |  Specify s3 accessKey | *|
 | `--secret-key` value      |  Specify s3 secretKey | *|
 | `--bucket-name` value     |  Specify s3 bucket name | *|
+| `--folder` value     |   Specify folder inside  bucket where backup will be stored. This is optional.  This is optional. _Available as of v0.3.0_ | *|
 | `--region` value          |  Specify the s3 bucket location (optional) | *|
 | `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
 | `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
