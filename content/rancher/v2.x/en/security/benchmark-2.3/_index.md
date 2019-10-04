@@ -3,13 +3,16 @@ title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.x
 weight: 103
 ---
 
-### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.13
+### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.15
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview
 
-The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher v2.3.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
+The following document scores a Kubernetes 1.15.x RKE cluster provisioned according to the Rancher v2.3.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
+
+> At the time of writing this guide the latest version of the CIS Benchmark was version v.1.4.1 and provides guidance for establishing a secure configuration
+posture for Kubernetes 1.13. This Self-Assessment Guide covers the recommended configuration running on Kubernetes 1.15. When new versions of the CIS Benchmark are published this document will be updated accordingly.
 
 This document is a companion to the Rancher v2.3.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
@@ -17,7 +20,7 @@ Because Rancher and RKE install Kubernetes services as Docker containers, many o
 
 This document is to be used by Rancher operators, security teams, auditors and decision makers.
 
-For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.0. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
+For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.1. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
@@ -551,7 +554,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 #### 1.1.34 - Ensure that the `--experimental-encryption-provider-config` argument is set as appropriate (Scored)
 
 **Notes**
-In Kubernetes 1.13.x this flag is `--encryption-provider-config`
+In Kubernetes 1.15.x this flag is `--encryption-provider-config`
 
 **Audit**
 
