@@ -915,7 +915,7 @@ stat -c "%n - %U:%G" /etc/cni/net.d/*
 
 **Result:** Pass
 
-#### 1.4.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive (Scored)
+#### 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more restrictive (Scored)
 
 **Notes**
 
