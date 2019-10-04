@@ -11,8 +11,7 @@ weight: 103
 
 The following document scores a Kubernetes 1.15.x RKE cluster provisioned according to the Rancher v2.3.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
 
-> At the time of writing this guide the latest version of the CIS Benchmark was version v.1.4.1 and provides guidance for establishing a secure configuration
-posture for Kubernetes 1.13. This Self-Assessment Guide covers the recommended configuration running on Kubernetes 1.15. When new versions of the CIS Benchmark are published this document will be updated accordingly.
+> The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.15, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
 
 This document is a companion to the Rancher v2.3.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
