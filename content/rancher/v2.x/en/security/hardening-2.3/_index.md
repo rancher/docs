@@ -1,6 +1,6 @@
 ---
 title: Hardening Guide - Rancher v2.3.x
-weight: 101
+weight: 100
 ---
 
 ### Hardening Guide for Rancher 2.3.x with Kubernetes 1.15
