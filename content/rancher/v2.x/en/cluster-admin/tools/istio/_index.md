@@ -23,7 +23,7 @@ This service mesh provides features that include but are not limited to the foll
 - Load balancing
 - Automatic retries, backoff, and circuit breaking
 
-After Istio is enabled in a cluster, you can leverage Istios' control plane functionality with `kubectl`.
+After Istio is enabled in a cluster, you can leverage Istio's control plane functionality with `kubectl`.
 
 Rancher's Istio integration comes with comprehensive visualization aids:
 
