@@ -146,7 +146,7 @@ $ ldapsearch -x -D "acme\jdoe" -w "secret" -p 389 \
 
 This command performs an LDAP search with the search base set to the domain root (`-b "dc=acme,dc=com"`) and a filter targeting the user account (`sAMAccountNam=jdoe`), returning the attributes for said user:
 
-![LDAP User]({{< baseurl >}}/img/rancher/ldapsearch-user.png)
+{{< img "/img/rancher/ldapsearch-user.png" "LDAP User">}}
 
 Since in this case the user's DN is `CN=John Doe,CN=Users,DC=acme,DC=com` [5], we should configure the **User Search Base** with the parent node DN `CN=Users,DC=acme,DC=com`.
 
@@ -179,7 +179,7 @@ $ ldapsearch -x -D "acme\jdoe" -w "secret" -p 389 \
 
 This command will inform us on the attributes used for group objects:
 
-![LDAP Group]({{< baseurl >}}/img/rancher/ldapsearch-group.png)
+{{< img "/img/rancher/ldapsearch-group.png" "LDAP Group">}}
 
 Again, this allows us to determine the correct values to enter in the group schema configuration:
 

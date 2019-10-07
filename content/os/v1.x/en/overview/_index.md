@@ -35,7 +35,7 @@ System Docker runs a special container called **Docker**, which is another Docke
 
  We created this separation not only for the security benefits, but also to make sure that commands like `docker rm -f $(docker ps -qa)` don't delete the entire OS.
 
-![How it works]({{< baseurl >}}/img/os/rancheroshowitworks.png)
+{{< img "/img/os/rancheroshowitworks.png" "How it works">}}
 
 ### Running RancherOS
 
