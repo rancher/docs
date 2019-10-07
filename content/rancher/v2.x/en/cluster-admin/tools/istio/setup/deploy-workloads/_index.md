@@ -1,6 +1,6 @@
 ---
-title: 5. Add Deployments and Services with the Istio Sidecar
-weight: 5
+title: 4. Add Deployments and Services with the Istio Sidecar
+weight: 4
 ---
 
 > **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have Istio enabled.  
@@ -16,23 +16,24 @@ Wait a few minutes for the workload to upgrade to have the istio sidecar. Click 
 Next we add the Kubernetes resources for the sample deployments and services for the BookInfo app in Istio's documentation.
 
 1. Go to the cluster view and click **Import YAML.**
-1. Copy the resources below into the form.
+1. Copy the below resources into the form.
+1.  Click **Import.**
 
 This will set up the following sample resources from Istio's example BookInfo app:
 
-### Details
+Details service and deployment:
 
 - A `details` Service
 - A ServiceAccount for `bookinfo-details`
 - A `details-v1` Deployment
 
-### Ratings
+Ratings service and deployment:
 
 - A `ratings` Service
 - A ServiceAccount for `bookinfo-ratings`
 - A `ratings-v1` Deployment
 
-### Reviews
+Reviews service and deployments (three versions):
 
 - A `reviews` Service
 - A ServiceAccount for `bookinfo-reviews`
@@ -40,7 +41,7 @@ This will set up the following sample resources from Istio's example BookInfo ap
 - A `reviews-v2` Deployment
 - A `reviews-v3` Deployment
 
-### ProductPage
+Productpage service and deployment:
 
 This is the main page of the app, which will be visible from a web browser. The other services will be called from this page.
 
@@ -51,7 +52,6 @@ This is the main page of the app, which will be visible from a web browser. The 
 ### Resource YAML
 
 ```yaml
-&&&&&&&&
 # Copyright 2017 Istio Authors
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -318,4 +318,4 @@ spec:
 ---
 ```
 
-### [Next: Set up Istio's Components for Traffic Management]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/set-up-traffic-management)
+### [Next: Set up the Istio Gateway]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway)
