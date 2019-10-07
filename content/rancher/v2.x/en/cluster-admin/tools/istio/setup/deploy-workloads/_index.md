@@ -15,10 +15,40 @@ Wait a few minutes for the workload to upgrade to have the istio sidecar. Click 
 
 Next we add the Kubernetes resources for the sample deployments and services for the BookInfo app in Istio's documentation.
 
+1. Go to the cluster view and click **Import YAML.**
+1. Copy the resources below into the form.
 
-### [Next: Set up Istio's Components for Traffic Management]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/set-up-traffic-management)
+This will set up the following sample resources from Istio's example BookInfo app:
 
+### Details
 
+- A `details` Service
+- A ServiceAccount for `bookinfo-details`
+- A `details-v1` Deployment
+
+### Ratings
+
+- A `ratings` Service
+- A ServiceAccount for `bookinfo-ratings`
+- A `ratings-v1` Deployment
+
+### Reviews
+
+- A `reviews` Service
+- A ServiceAccount for `bookinfo-reviews`
+- A `reviews-v1` Deployment
+- A `reviews-v2` Deployment
+- A `reviews-v3` Deployment
+
+### ProductPage
+
+This is the main page of the app, which will be visible from a web browser. The other services will be called from this page.
+
+- A `productpage` service
+- A ServiceAccount for `bookinfo-productpage`
+- A `productpage-v1` Deployment
+
+### Resource YAML
 
 ```yaml
 &&&&&&&&
@@ -287,3 +317,5 @@ spec:
         - containerPort: 9080
 ---
 ```
+
+### [Next: Set up Istio's Components for Traffic Management]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/set-up-traffic-management)

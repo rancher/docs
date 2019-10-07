@@ -13,7 +13,7 @@ If you use Istio for traffic management, you will need to allow external traffic
 
 1. [Enable Istio in the cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster)
 1. [Enable Istio in all the namespaces where you want to use it.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-namespace)
-1. [Set up nodes with taints and tolerations for the Istio components and Istio Gateway.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/taints-and-tolerations)
+1. [Designate which nodes the main Istio components will be deployed to.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/taints-and-tolerations)
 1. [Set up the Istio gateway. ]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway)
 1. [Add deployments and services that have the Istio sidecar injected.](#deploy-workloads-in-the-cluster)
 1. [Set up Istio's components for traffic management.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/set-up-traffic-management)
