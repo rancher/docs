@@ -65,7 +65,7 @@ Open Ports / Network Security
 ---------------------------
 
 The server needs port 6443 to be accessible by the nodes.  The nodes need to be able to reach
-other nodes over UDP port 8472.  This is used for flannel VXLAN.  If you don't use flannel
+other nodes over UDP port 8472.  The nodes also need to be able to reach the server on UDP port 8472.  This is used for flannel VXLAN.  If you don't use flannel
 and provide your own custom CNI, then 8472 is not needed by k3s. The node should not listen
 on any other port.  k3s uses reverse tunneling such that the nodes make outbound connections
 to the server and all kubelet traffic runs through that tunnel.

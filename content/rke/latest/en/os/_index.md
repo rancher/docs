@@ -9,7 +9,7 @@ aliases:
 <!-- TOC -->
 
 - [Operating System](#operating-system)
-
+    - [General Linux Requirements](#general-linux-requirements)
     - [Red Hat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
 
         - [Using upstream Docker](#using-upstream-docker)
@@ -29,6 +29,8 @@ aliases:
 
 ## Operating System
 
+### General Linux Requirements
+
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
 - [SSH user]({{< baseurl >}}/rke/latest/en/config-options/nodes/#ssh-user) - The SSH user used for node access must be a member of the `docker` group on the node:
@@ -45,15 +47,16 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
    * `modprobe module_name`
    * `lsmod | grep module_name`
    * `grep module_name /lib/modules/$(uname -r)/modules.builtin`, if it's a built-in module
-   * bash script
-     ```bash
+   * The following bash script
+
+```bash
      for module in br_netfilter ip6_udp_tunnel ip_set ip_set_hash_ip ip_set_hash_net iptable_filter iptable_nat iptable_mangle iptable_raw nf_conntrack_netlink nf_conntrack nf_conntrack_ipv4   nf_defrag_ipv4 nf_nat nf_nat_ipv4 nf_nat_masquerade_ipv4 nfnetlink udp_tunnel veth vxlan x_tables xt_addrtype xt_conntrack xt_comment xt_mark xt_multiport xt_nat xt_recent xt_set  xt_statistic xt_tcpudp;
      do
        if ! lsmod | grep -q $module; then
          echo "module $module is not present";
        fi;
      done
-     ```
+```
 
 Module name |
 ------------|

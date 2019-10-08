@@ -165,12 +165,12 @@ Once you have your own Services repository, you can add a new service to its ind
 
 To create your own console images, you need to:
 
-1 install some basic tools, including an ssh daemon, sudo, and kernel module tools
-2 create `rancher` and `docker` users and groups with UID and GID's of `1100` and `1101` respectively
-3 add both users to the `docker` and `sudo` groups
-4 add both groups into the `/etc/sudoers` file to allow password-less sudo
-5 configure sshd to accept logins from users in the `docker` group, and deny `root`.
-6 set `ENTRYPOINT ["/usr/bin/ros", "entrypoint"]`
+1. install some basic tools, including an ssh daemon, sudo, and kernel module tools
+2. create `rancher` and `docker` users and groups with UID and GID's of `1100` and `1101` respectively
+3. add both users to the `docker` and `sudo` groups
+4. add both groups into the `/etc/sudoers` file to allow password-less sudo
+5. configure sshd to accept logins from users in the `docker` group, and deny `root`.
+6. set `ENTRYPOINT ["/usr/bin/ros", "entrypoint"]`
 
 the `ros` binary, and other host specific configuration files will be bind mounted into the running console container when its launched.
 

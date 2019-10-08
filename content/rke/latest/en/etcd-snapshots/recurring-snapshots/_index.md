@@ -33,12 +33,19 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 |**interval_hours**| The duration in hours between recurring backups.  This supercedes the `creation` option (which was used in RKE prior to v0.2.0) and will override it if both are specified.| |
 |**retention**| The number of snapshots to retain before rotation. This supercedes the `retention` option and will override it if both are specified.| |
 |**bucket_name**| S3 bucket name where backups will be stored| * |
+|**folder**| Folder inside S3 bucket where backups will be stored. This is optional. _Available as of v0.3.0_ | * |
 |**access_key**| S3 access key with permission to access the backup bucket.| * |
 |**secret_key** |S3 secret key with permission to access the backup bucket.| * |
 |**region** |S3 region for the backup bucket. This is optional.| * |
 |**endpoint** |S3 regions endpoint for the backup bucket.| * |
+| **endpoint-ca**       | Custom CA certificate to connect to custom S3 endpoint. Provided as a multi-line string. _Available as of v0.2.5_ | *|
+|**custom_ca** |Custom certificate authority to use when connecting to the endpoint. Only required for private S3 compatible storage solutions. Available for RKE v0.2.5+.| * |
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
+
+##### Using a custom CA certificate for S3
+
+The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the option `endpoint-ca` to connect to the S3 backend.
 
 ### IAM Support for Storing Snapshots in S3
 
@@ -81,6 +88,7 @@ services:
         secret_key: S3_SECRET_KEY
         bucket_name: s3-bucket-name
         region: ""
+        folder: "" # Optional - Available as of v0.3.0
         endpoint: s3.amazonaws.com
 ```
 

@@ -1,11 +1,11 @@
 ---
-title: Creating Custom Catalogs
+title: Creating Custom Catalogs Apps
 weight: 4000
 aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/
 ---
 
-Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher. 
+Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher.
 
 ## Chart Types
 
@@ -73,9 +73,26 @@ Before you create your own custom catalog, you should have a basic understanding
 	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
 
-### Question Variable Reference
+### Questions.yml
 
-This reference contains variables that you can use in `questions.yml`.
+Inside the `questions.yml`, most of the content will be around the questions to ask the end user, but there are some additional fields that can be set in this file.
+
+#### Min/Max Rancher versions
+
+_Available as of v2.3.0_
+
+For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
+
+> **Note:** Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+
+```
+rancher_min_version: 2.3.0
+rancher_max_version: 2.3.99
+```
+
+#### Question Variable Reference
+
+This reference contains variables that you can use in `questions.yml` nested under `questions:`.
 
 | Variable  | Type | Required | Description |
 | ------------- | ------------- | --- |------------- |
