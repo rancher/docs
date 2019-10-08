@@ -49,20 +49,15 @@ Each storage class contains the fields `provisioner`, `parameters`, and `reclaim
 
 The `provisioner` determines which volume plugin is used to provision the persistent volumes.
 
-{{% accordion id="provisioners" label="Supported Storage Class Provisioners" %}}
+{{% accordion id="provisioners" label="Enabled Storage Class Provisioners" %}}
 - Amazon EBS Disk
 - AzureFile
 - AzureDisk
-- Ceph RBD
-- Gluster Volume
 - Google Persistent Disk
 - Longhorn
-- Openstack Cinder Volume
-- Portworx Volume
-- Quobyte Volume
-- ScaleIO Volume
-- StorageOS
 - Vmware vSphere Volume
+- Local
+
 {{% /accordion %}}
 <br/>
 

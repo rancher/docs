@@ -1,10 +1,10 @@
 ---
-title: Enabling Unsupported Features
+title: Enabling Experimental Features
 weight: 8000
 ---
 _Available as of v2.3.0_
 
-Rancher includes some features that are unsupported and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/unsupported-storage-drivers) outweighs the risk of using a feature that is not supported. Feature flags were introduced to allow you to try these features. 
+Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in two ways:
 
@@ -26,7 +26,7 @@ The following is a list of the feature flags available in Rancher:
 
 Feature | Environment Variable Key | Default Value | Description | Available as of |
 ---|---|---|---|---
-[Allow unsupported storage drivers]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/unsupported-storage-drivers) | `unsupported-storage-drivers` | `false` | This feature enables unsupported types for storage providers and provisioners. | v2.3.0
+[Allow unsupported storage drivers]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/enable-not-default-storage-drivers) | `unsupported-storage-drivers` | `false` | This feature enables types for storage providers and provisioners that are not enabled by default. | v2.3.0
 [UI for Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/istio-virtual-service-ui) | `istio-virtual-service-ui`| `false` | Enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio | v2.3.0
 
 # Enabling Features when Starting Rancher
@@ -43,8 +43,8 @@ helm install rancher-latest/rancher \
   --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
-  --set 'extraEnv[0].name=CATTLE_FEATURES'
-  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true'
+  --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
+  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true' # Available as of v2.3.0
 ```
 
 ### Rendering the Helm Chart for Air Gap Installations
@@ -61,8 +61,8 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set ingress.tls.source=secret \
   --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
   --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
-  --set 'extraEnv[0].name=CATTLE_FEATURES'
-  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true'
+  --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
+  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true' # Available as of v2.3.0
 ```
 {{% /tab %}}
 {{% tab "Single Node Install" %}}
@@ -71,7 +71,7 @@ When installing Rancher with Docker, use the `--features` option:
 docker run -d -p 80:80 -p 443:443 \
   --restart=unless-stopped \
   rancher/rancher:rancher-latest \
-  --features="<FEATURE-NAME1>=true,<FEATURE-NAME2>=true
+  --features=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true # Available as of v2.3.0
 ```
 {{% /tab %}}
 {{% /tabs %}}
