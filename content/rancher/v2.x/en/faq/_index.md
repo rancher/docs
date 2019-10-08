@@ -42,7 +42,7 @@ Yes. In the upcoming Rancher v2.1 release we will provide a tool to help transla
 #### Can I still create templates for environments and clusters?
 
 Starting with 2.0, the concept of an environment has now been changed to a Kubernetes cluster as going forward, only the Kubernetes orchestration engine is supported.
-Kubernetes Cluster Templates is on our roadmap for 2.x. Please refer to our Release Notes and documentation for all the features that we currently support.
+Kubernetes RKE Templates is on our roadmap for 2.x. Please refer to our Release Notes and documentation for all the features that we currently support.
 
 #### Can you still add an existing host to an environment? (i.e. not provisioned directly from Rancher)
 

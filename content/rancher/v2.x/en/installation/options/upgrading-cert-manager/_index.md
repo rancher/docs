@@ -18,6 +18,7 @@ To address these changes, this guide will do two things:
 >**Note:** The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
 In order to upgrade cert-manager, follow these instructions:
+
 {{% accordion id="normal" label="Upgrading cert-manager with Internet access" %}}
 1. Back up existing resources as a precaution
     ```plain
@@ -57,6 +58,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 {{% accordion id="airgap" label="Upgrading cert-manager in an airgapped environment" %}}
 ### Prerequisites
+
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
 1. Follow the guide to [Prepare your Private Registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
@@ -144,7 +146,7 @@ If the ‘webhook’ pod (2nd line) is in a ContainerCreating state, it may stil
 
 ## Cert-Manager API change and data migration
 
-Cert-manager has deprecated the use of the `certificate.spec.acme.solvers` field and will drop support for it completely in an upcoming release. 
+Cert-manager has deprecated the use of the `certificate.spec.acme.solvers` field and will drop support for it completely in an upcoming release.
 
 Per the cert-manager documentation, a new format for configuring ACME certificate resources was introduced in v0.8. Specifically, the challenge solver configuration field was moved. Both the old format and new are supported as of v0.9, but support for the old format will be dropped in an upcoming release of cert-manager. The cert-manager documentation strongly recommends that after upgrading you update your ACME Issuer and Certificate resources to the new format.
 

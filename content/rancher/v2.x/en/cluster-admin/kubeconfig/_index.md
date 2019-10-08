@@ -62,3 +62,17 @@ kubectl --context <CLUSTER_NAME>-<NODE_NAME> get nodes
 # Directly referencing the location of the kubeconfig file
 kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-<NODE_NAME> get pods
 ```
+
+### kube-api-auth
+
+The `kube-api-auth` resource is deployed to provide the functionality for Authorized Cluster Endpoint.
+
+During cluster provisioning, the file `/etc/kubernetes/kube-api-authn-webhook.yaml` is deployed and `kube-apiserver` is configured with `--authentication-token-webhook-config-file=/etc/kubernetes/kube-api-authn-webhook.yaml`. This configures the `kube-apiserver` to query `http://127.0.0.1:6440/v1/authenticate` to determine authentication for bearer tokens.
+
+The scheduling rules for `kube-api-auth` are listed below:
+
+_Applies to v2.3.0 and higher_
+
+| Component            | nodeAffinity nodeSelectorTerms             | nodeSelector | Tolerations                                                                    |
+| -------------------- | ------------------------------------------ | ------------ | ------------------------------------------------------------------------------ |
+| kube-api-auth        | `beta.kubernetes.io/os:NotIn:windows`<br/>`node-role.kubernetes.io/controlplane:In:"true"` | none         | `operator:Exists`              |
