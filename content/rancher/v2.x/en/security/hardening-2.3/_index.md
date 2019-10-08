@@ -1314,3 +1314,117 @@ addons: |
     kind: Group
     name: system:authenticated
 ```
+
+## Appendix B - Complete RKE Template Example
+
+``` yaml
+#
+# Cluster Config
+#
+docker_root_dir: /var/lib/docker
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
+enable_network_policy: false
+#
+# Rancher Config
+#
+rancher_kubernetes_engine_config:
+  addon_job_timeout: 30
+  ignore_docker_version: true
+#
+#   If you are using calico on AWS
+#
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+#
+# # To specify flannel interface
+#
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+#
+# # To specify flannel interface for canal plugin
+#
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+#
+  network:
+    plugin: canal
+#
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+#
+  services:
+    etcd:
+      backup_config:
+        enabled: false
+        interval_hours: 12
+        retention: 6
+        safe_timestamp: false
+      creation: 12h
+      extra_args:
+        election-timeout: '5000'
+        heartbeat-interval: '500'
+      gid: 1001
+      retention: 72h
+      snapshot: false
+      uid: 1001
+    kube_api:
+      always_pull_images: false
+      extra_args:
+        admission-control-config-file: /opt/kubernetes/admission.yaml
+        anonymous-auth: 'false'
+        audit-log-format: json
+        audit-log-maxage: '5'
+        audit-log-maxbackup: '5'
+        audit-log-maxsize: '100'
+        audit-log-path: /var/log/kube-audit/audit-log.json
+        audit-policy-file: /opt/kubernetes/audit.yaml
+        enable-admission-plugins: >-
+          ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy
+        encryption-provider-config: /opt/kubernetes/encryption.yaml
+        profiling: 'false'
+        service-account-lookup: 'true'
+        tls-cipher-suites: >-
+          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      extra_binds:
+        - '/var/log/kube-audit:/var/log/kube-audit'
+        - '/opt/kubernetes:/opt/kubernetes'
+      pod_security_policy: true
+      service_node_port_range: 30000-32767
+    kube_controller:
+      extra_args:
+        address: 127.0.0.1
+        feature-gates: RotateKubeletServerCertificate=true
+        profiling: 'false'
+        terminated-pod-gc-threshold: '1000'
+    kubelet:
+      extra_args:
+        anonymous-auth: 'false'
+        event-qps: '0'
+        feature-gates: RotateKubeletServerCertificate=true
+        make-iptables-util-chains: 'true'
+        protect-kernel-defaults: 'true'
+        streaming-connection-idle-timeout: 1800s
+        tls-cipher-suites: >-
+          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      fail_swap_on: false
+    scheduler:
+      extra_args:
+        address: 127.0.0.1
+        profiling: 'false'
+  ssh_agent_auth: false
+windows_prefered_cluster: false
+```
