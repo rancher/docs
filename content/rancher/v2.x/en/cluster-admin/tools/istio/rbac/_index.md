@@ -20,7 +20,7 @@ After Istio is enabled in a cluster, project owners and members have permission 
 - Enable and disable Istio sidecar auto-injection for namespaces
 - Add the Istio sidecar to workloads
 - View the traffic metrics and traffic graph for the cluster
-- View the Kiali and Jaeger visualizations if cluster administrators give access to projet members
+- View the Kiali and Jaeger visualizations if cluster administrators give access to project members
 - Configure Istio's resources (such as the gateway, destination rules, or virtual services) with `kubectl` (This does not apply to read-only project members)
 
 # Access to Visualizations
