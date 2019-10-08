@@ -88,10 +88,11 @@ We recommend the minimum three-node architecture listed in the table below, but 
 
 <a id="guide-architecture"></a>
 
-| Node   | Operating System                        | Kubernetes Cluster Role(s)                                                                                                                                                                                                                         | Purpose                                                                             |
+<<<<<<< HEAD
+| Node | Operating System | Kubernetes Cluster Role(s) | Purpose |
 | ------ | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Node 1 | Linux (Ubuntu Server 18.04 recommended) | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster                                                       |
-| Node 2 | Linux (Ubuntu Server 18.04 recommended) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
+| Node 1 | Linux (Ubuntu Server 18.04 recommended) | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster |
+| Node 2 | Linux (Ubuntu Server 18.04 recommended) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
 
 <<<<<<< HEAD
 Node 3 | Windows (Windows Server core version 1809 or above) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
@@ -100,11 +101,19 @@ Node 3 | Windows (Windows Server core version 1809 or above) | [Worker]({{< base
 
 # Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809 or above. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809 or above.
 
-Node 3 | Windows (Windows Server 1809 required) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
+# Node 3 | Windows (Windows Server 1809 required) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
+
+| Node   | Operating System                                    | Kubernetes Cluster Role(s)                                                                                                                                                                                                                         | Purpose                                                                             |
+| ------ | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Node 1 | Linux (Ubuntu Server 18.04 recommended)             | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster                                                       |
+| Node 2 | Linux (Ubuntu Server 18.04 recommended)             | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
+| Node 3 | Windows (Windows Server core version 1809 or above) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Run your Windows containers                                                         |
+
+> > > > > > > Edit Windows server version info
 
 ### Container Requirements
 
-Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809.
+Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809 or above. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809 or above.
 
 > > > > > > > Update required Windows Server version
 
@@ -140,7 +149,8 @@ You will provision three nodes:
 - A second Linux node, which will be another worker node
 - The Windows node, which will run your Windows containers as a worker node
 
-| Node   | Operating System                        |
+<<<<<<< HEAD
+| Node | Operating System |
 | ------ | --------------------------------------- |
 | Node 1 | Linux (Ubuntu Server 18.04 recommended) |
 | Node 2 | Linux (Ubuntu Server 18.04 recommended) |
@@ -150,7 +160,15 @@ Node 3 | Windows (Windows Server core version 1809 or above required)
 =======
 Node 3 | Windows (Windows Server 1809 or later required)
 
-> > > > > > > Update required Windows Server version
+> > > > > > > # Update required Windows Server version
+> > > > > > >
+> > > > > > > | Node   | Operating System                                             |
+> > > > > > > | ------ | ------------------------------------------------------------ |
+> > > > > > > | Node 1 | Linux (Ubuntu Server 18.04 recommended)                      |
+> > > > > > > | Node 2 | Linux (Ubuntu Server 18.04 recommended)                      |
+> > > > > > > | Node 3 | Windows (Windows Server core version 1809 or above required) |
+> > > > > > >
+> > > > > > > Edit Windows server version info
 
 If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
 
