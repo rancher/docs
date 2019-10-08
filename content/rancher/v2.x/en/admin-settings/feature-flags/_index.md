@@ -18,7 +18,9 @@ Each feature has two values:
 
 If no value has been set, Rancher uses the default value.
 
-Because the API sets the actual value and the command line sets the default value, that means that if you enable or disable a feature with the API, it will override any value set with the command line. For example, if you install Rancher, then set a feature flag to true with the Rancher API, then upgrade Rancher with a command that sets the feature flag to false, the default value will still be true because it was set with the Rancher API.
+Because the API sets the actual value and the command line sets the default value, that means that if you enable or disable a feature with the API, it will override any value set with the command line.
+
+For example, if you install Rancher, then set a feature flag to true with the Rancher API, then upgrade Rancher with a command that sets the feature flag to false, the default value will still be false, but the feature will still be enabled because it was set with the Rancher API. If you then deleted the set value (true) with the Rancher API, setting it to NULL, the default value (false) would take effect.
 
 The following is a list of the feature flags available in Rancher:
 
