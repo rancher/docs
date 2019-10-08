@@ -52,9 +52,13 @@ Rancher supports two different backup targets:
 By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) in `/opt/rke/etcd-snapshots`. All recurring snapshots are taken at configured intervals. The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
 
 #### Safe Timestamps
-As of `v2.2.6` Snapshot files are timestamped to simplify processing the files using external tools and scripts. In some environments, this is not supported. As of `v2.3.0`, the option `safe_timestamp` is added to support safer file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
 
->>**Note:** This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface. 
+_Available as of v2.3.0_
+
+As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of Rancher v2.3.0, the option `safe_timestamp` is added to support compatiable file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
+
+>>**Note:** This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface.
+
 ### S3 Backup Target
 
 The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration requirements do require additional effort that should be considered.
