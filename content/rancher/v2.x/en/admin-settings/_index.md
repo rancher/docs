@@ -54,7 +54,7 @@ Rancher Kubernetes Metadata contains Kubernetes version information which Ranche
 
 For more information on how metadata works and how to configure metadata config, see [Rancher Kubernetes Metadata]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rke-metadata/).
 
-## Enabling Unsupported Features
+## Enabling Experimental Features
 
 _Available as of v2.3.0_
 
