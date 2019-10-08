@@ -20,7 +20,7 @@ After Istio is enabled in a cluster, project owners and members have permission 
 - Enable and disable Istio sidecar auto-injection for namespaces
 - Add the Istio sidecar to workloads
 - View the traffic metrics and traffic graph for the cluster
-- View the Prometheus UI and the Grafana UI
+- View the Kiali and Jaeger visualizations if cluster administrators give access to project members
 - Configure Istio's resources (such as the gateway, destination rules, or virtual services) with `kubectl` (This does not apply to read-only project members)
 
 # Access to Visualizations
@@ -50,7 +50,9 @@ To configure who has permission to access the Kiali and Jaeger UI,
 | Control who has access to Kiali and the Jaeger UI | ✓     |                |                 |                           |
 | Enable and disable Istio for a namespace | ✓              | ✓              | ✓              |                           |
 | Enable and disable Istio on workloads    | ✓              | ✓              | ✓              |                           |
-| Configure Istio with `kubectl`           | ✓              | ✓              | ✓              | ✓                         |
-| View Prometheus UI and Grafana UI           | ✓              | ✓              | ✓              | ✓                         |
-| View Kiali UI and Jaeger UI  | ✓              |                |                |                           |
-| View Istio project dashboard, traffic graph and traffic metrics | ✓          | ✓              | ✓            | ✓           |
+| Configure Istio with `kubectl`           | ✓              | ✓              | ✓              |                          |
+| View Prometheus UI and Grafana UI           | ✓              |               |               |                          |
+| View Kiali UI and Jaeger UI ([Configurable](#access-to-visualizations)) | ✓              |                |                |                           |
+| View Istio project dashboard, including traffic metrics* | ✓          | ✓              | ✓            | ✓        |
+
+* By default, only the cluster owner will see the traffic graph. Project members will see only a subset of traffic metrics. Project members cannot see the traffic graph because it comes from Kiali, and access to Kiali is restricted to cluster owners by default.
