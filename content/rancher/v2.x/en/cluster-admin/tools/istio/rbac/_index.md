@@ -50,7 +50,9 @@ To configure who has permission to access the Kiali and Jaeger UI,
 | Control who has access to Kiali and the Jaeger UI | ✓     |                |                 |                           |
 | Enable and disable Istio for a namespace | ✓              | ✓              | ✓              |                           |
 | Enable and disable Istio on workloads    | ✓              | ✓              | ✓              |                           |
-| Configure Istio with `kubectl`           | ✓              | ✓              | ✓              | ✓                         |
+| Configure Istio with `kubectl`           | ✓              | ✓              | ✓              |                          |
 | View Prometheus UI and Grafana UI           | ✓              |               |               |                          |
 | View Kiali UI and Jaeger UI ([Configurable](#access-to-visualizations)) | ✓              |                |                |                           |
-| View Istio project dashboard, traffic graph and traffic metrics | ✓          | ✓              | ✓            | ✓           |
+| View Istio project dashboard, including traffic metrics* | ✓          | ✓              | ✓            | ✓        |
+
+* By default, only the cluster owner will see the traffic graph. Project members will see only a subset of traffic metrics. Project members cannot see the traffic graph because it comes from Kiali, and access to Kiali is restricted to cluster owners by default.
