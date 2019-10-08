@@ -52,11 +52,11 @@ In the catalog management page in the Rancher UI, follow these steps:
 
 1. Open `https://<your-rancher-server>/v3/catalogs/system-library` in your browser.
 
-    ![Open]({{< baseurl >}}/img/rancher/airgap/system-charts-setting.png)
+    {{< img "/img/rancher/airgap/system-charts-setting.png" "Open">}}
 
 1. Click **Edit** on the upper right corner and update the value for **url** to the location of the Git mirror of the `system-charts` repository.
 
-    ![Update]({{< baseurl >}}/img/rancher/airgap/system-charts-update.png)
+    {{< img "/img/rancher/airgap/system-charts-update.png" "Update">}}
 
 1. Click **Show Request**
 
