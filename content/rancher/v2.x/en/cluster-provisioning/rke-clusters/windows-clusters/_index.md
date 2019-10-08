@@ -41,7 +41,9 @@ For a custom cluster, the general node requirements for networking, operating sy
 
 ### OS and Docker Requirements
 
-In order to add Windows worker nodes to a cluster, the node must be running Windows Server core version 1809 or above and [Docker 19.03.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker:
+ - Windows Server core version 1809 and Docker 18.09
+ - Windows server core version 1903 and Docker 19.03
 
 The nodes must run Docker Engine - Enterprise Edition (EE).
 
@@ -88,11 +90,11 @@ Node    | Operating System | Kubernetes Cluster Role(s) | Purpose
 --------|------------------|----------------------------|--------
 Node 1  | Linux (Ubuntu Server 18.04 recommended)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster
 Node 2  | Linux (Ubuntu Server 18.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster
-Node 3  | Windows (Windows Server 1809 required)            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
+Node 3  | Windows (Windows Server core version 1809 or above)            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
 
 ### Container Requirements
 
-Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809.
+Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809 or above. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809 or above.
 
 # Tutorial: How to Create a Cluster with Windows Support
 
@@ -129,7 +131,7 @@ Node | Operating System
 -----|-----------------
 Node 1  | Linux (Ubuntu Server 18.04 recommended)
 Node 2  | Linux (Ubuntu Server 18.04 recommended)
-Node 3  | Windows (Windows Server 1809 or later required)
+Node 3  | Windows (Windows Server core version 1809 or above required)
 
 If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
 
