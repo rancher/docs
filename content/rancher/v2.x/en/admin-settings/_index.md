@@ -58,4 +58,4 @@ For more information on how metadata works and how to configure metadata config,
 
 _Available as of v2.3.0_
 
-Rancher includes some features that are unsupported and disabled by default. Feature flags were introduced to allow you to try these features. For more information, refer to the section about [feature flags.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags)
+Rancher includes some features that are experimental and disabled by default. Feature flags were introduced to allow you to try these features. For more information, refer to the section about [feature flags.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags)
