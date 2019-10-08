@@ -48,21 +48,25 @@ To remove Istio components from a cluster, namepace, or workload, refer to the s
 
 > By default, only cluster owners have access to Jaeger and Kiali. For instructions on how to allow project members to access them, refer to [Access to Visualizations.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/rbac/#access-to-visualizations)
 
-After Istio is set up in a cluster, Grafana, Prometheus, Jaeger, and Kiali are available in the Rancher UI. 
+After Istio is set up in a cluster, Grafana, Prometheus, Jaeger, and Kiali are available in the Rancher UI.
 
-To see them, go to the cluster where Istio is set up and click **Tools > Istio.** You should see links to each UI at the top of the page.
+Your access to the visualizations depend on your role. Grafana and Prometheus are only available for cluster owners. The Kiali and Jaeger UIs are available only to cluster owners by default, but cluster owners can allow project members to access them by editing the Istio settings. When you go to your project and click **Resources > Istio,** you can go to each UI for Kiali, Jaeger, Grafana, and Prometheus by clicking their icons in the top right corner of the page.
 
-You can also get to the visualization tools from the project view:
+To see the visualizations, go to the cluster where Istio is set up and click **Tools > Istio.** You should see links to each UI at the top of the page.
+
+You can also get to the visualization tools from the project view.
+
+# Viewing the Kiali Traffic Graph
 
 1. From the project view in Rancher, click **Resources > Istio.**
-1. Go to the **Traffic Graph** tab. This tab has the Kiali network visualization integrated into the UI. In addition, you can go to each UI for Kiali, Jaeger, Grafana, and Prometheus by clicking their icons in the top right corner of the page.
+1. If you are a cluster owner, you can go to the **Traffic Graph** tab. This tab has the Kiali network visualization integrated into the UI.
 
 # Viewing Traffic Metrics
 
 Istio’s monitoring features provide visibility into the performance of all your services.
 
 1. From the project view in Rancher, click **Resources > Istio.**
-1. Go to the **Traffic Metrics** tab. After traffic is generated in your cluster, you should be able to see metrics for **Success Rate, Request Volume, 4xx Response Count, Project 5xx Response Count** and **Request Duration.**
+1. Go to the **Traffic Metrics** tab. After traffic is generated in your cluster, you should be able to see metrics for **Success Rate, Request Volume, 4xx Response Count, Project 5xx Response Count** and **Request Duration.** Cluster owners can see all of the metrics, while project members can see a subset of the metrics.
 
 # Architecture
 
