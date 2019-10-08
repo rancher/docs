@@ -8,7 +8,7 @@ As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rk
 You can configure Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Config File](#config-file): Alternatively, you can create a [RKE config file]({{< baseurl >}}/rke/latest/en/config-options/) to customize any option offered by Kubernetes.
+- [Config File](#config-file): Your cluster config file allows you to nest [a cluster config file for the Rancher Kubernetes Engine ]({{<baseurl>}}/rke/latest/en/config-options/) under the `rancher_kubernetes_engine_config` directive. In this way, you can use any option offered by Kubernetes.
 
 ## Rancher UI
 
@@ -107,7 +107,102 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
-For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/example-yamls/).  
+### Config File Structure in Rancher v2.3.0+
+
+RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,]({{<baseurl>}}/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
+
+{{% accordion id="2.3.0-cluster-config-file" label="Example Rancher v2.3.0 Cluster Config File" %}}
+```yaml
+# 
+# Cluster Config
+# 
+docker_root_dir: /var/lib/docker
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
+enable_network_policy: false
+local_cluster_auth_endpoint:
+  enabled: true
+# 
+# Rancher Config
+# 
+rancher_kubernetes_engine_config: # Your RKE template config goes here.
+  addon_job_timeout: 30
+  authentication:
+    strategy: x509
+  ignore_docker_version: true
+# 
+# # Currently only nginx ingress provider is supported.
+# # To disable ingress controller, set `provider: none`
+# # To enable ingress on specific nodes, use the node_selector, eg:
+#    provider: nginx
+#    node_selector:
+#      app: ingress
+# 
+  ingress:
+    provider: nginx
+  kubernetes_version: v1.15.3-rancher3-1
+  monitoring:
+    provider: metrics-server
+# 
+#   If you are using calico on AWS
+# 
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+# 
+# # To specify flannel interface
+# 
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+# 
+# # To specify flannel interface for canal plugin
+# 
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+# 
+  network:
+    options:
+      flannel_backend_type: vxlan
+    plugin: canal
+# 
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+# 
+  services:
+    etcd:
+      backup_config:
+        enabled: true
+        interval_hours: 12
+        retention: 6
+        safe_timestamp: false
+      creation: 12h
+      extra_args:
+        election-timeout: 5000
+        heartbeat-interval: 500
+      gid: 0
+      retention: 72h
+      snapshot: false
+      uid: 0
+    kube_api:
+      always_pull_images: false
+      pod_security_policy: false
+      service_node_port_range: 30000-32767
+  ssh_agent_auth: false
+windows_prefered_cluster: false
+```
+{{% /accordion %}}
 
 ### Default DNS provider
 
