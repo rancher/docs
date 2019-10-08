@@ -1,25 +1,25 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x
-weight: 104
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.x
+weight: 103
 ---
 
-### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
-There is no material difference in control verification checks between CIS Kubernetes Benchmark 1.4.0 and [1.4.1](https://rancher.com/docs/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
-### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13
+### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Benchmark_Assessment.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview
 
-The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher v2.2.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
+The following document scores a Kubernetes 1.15.x RKE cluster provisioned according to the Rancher v2.3.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
 
-This document is a companion to the Rancher v2.2.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+> The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.15, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
+
+This document is a companion to the Rancher v2.3.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
 This document is to be used by Rancher operators, security teams, auditors and decision makers.
 
-For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.0. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
+For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.1. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
@@ -34,8 +34,6 @@ When performing the tests, you will need access to the Docker command line on th
 The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
 
 - 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
-- 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more-restrictive (Scored)
-- 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
 - 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
 
 ### Controls
@@ -555,7 +553,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 #### 1.1.34 - Ensure that the `--experimental-encryption-provider-config` argument is set as appropriate (Scored)
 
 **Notes**
-In Kubernetes 1.13.x this flag is `--encryption-provider-config`
+In Kubernetes 1.15.x this flag is `--encryption-provider-config`
 
 **Audit**
 
@@ -919,14 +917,14 @@ stat -c "%n - %U:%G" /etc/cni/net.d/*
 
 **Result:** Pass
 
-#### 1.4.11 - Ensure that the etcd data directory permissions are set to 700 or more restrictive (Scored)
+#### 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more restrictive (Scored)
 
 **Notes**
 
 Files underneath the data dir have permissions set to `700`
 
 ``` bash
-stat -c "%n - %a" /var/lib/etcd/*
+stat -c "%n - %a" /var/lib/rancher/etcd/*
 
 /var/lib/etcd/member - 700
 ```
@@ -934,28 +932,28 @@ stat -c "%n - %a" /var/lib/etcd/*
 **Audit**
 
 ``` bash
-stat -c %a /var/lib/etcd
+stat -c %a /var/lib/rancher/etcd
 ```
 
-**Returned Value:** `755`
+**Returned Value:** `700`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 1.4.12 - Ensure that the `etcd` data directory ownership is set to `etcd:etcd` (Scored)
 
 **Notes**
 
-The `etcd` container runs as the `root` user. The data directory and files are owned by `root`.
+The `etcd` container runs as the `etcd` user. The data directory and files are owned by `etcd`.
 
 **Audit**
 
 ``` bash
-stat -c %U:%G /var/lib/etcd
+stat -c %U:%G /var/lib/rancher/etcd
 ```
 
-**Returned Value:** `root:root`
+**Returned Value:** `etcd:etcd`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 1.4.13 - Ensure that the file permissions for `admin.conf` are set to `644` or more restrictive (Scored)
 
