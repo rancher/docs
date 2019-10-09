@@ -13,7 +13,7 @@ The following instructions will guide you through upgrading a high-availability 
 
 - **Review the [Known Upgrade Issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
 
-- **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installations/air-gap/) Collect and Populate Images for the new Rancher server version**
+- **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/) Collect and Populate Images for the new Rancher server version**
 
     Follow the guide to [populate your private registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
