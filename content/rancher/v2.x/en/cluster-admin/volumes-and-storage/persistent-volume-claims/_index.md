@@ -17,7 +17,7 @@ _Persistent Volume Claims_ (or PVCs) are objects that request storage resources 
 
 1. From the **Global** view, open the project containing a workload that you want to add a PVC to.
 
-1. From the main menu, make sure that **Workloads** is selected. Then select the **Volumes** tab. Click **Add Volume**.
+1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Then select the **Volumes** tab. Click **Add Volume**.
 
 1. Enter a **Name** for the volume claim.
 

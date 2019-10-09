@@ -41,7 +41,7 @@ After the version control provider is authorized, you are automatically re-direc
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Click on **Configure Repositories**.
 
@@ -59,7 +59,7 @@ Now that repositories are added to your project, you can start configuring the p
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the repository that you want to set up a pipeline for. Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`. Throughout the next couple of steps, we'll provide the options of how to do pipeline configuration through the UI or the YAML file.
 
@@ -257,7 +257,7 @@ Available Events:
 
 1. From the **Global** view, navigate to the project that you want to modify the event trigger for the pipeline.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the repository that you want to modify the event triggers. Select the vertical **Ellipsis (...) > Setting**.
 
@@ -553,7 +553,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 
 1. From the **Global** view, navigate to the project that you want to configure a pipeline trigger rule.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
@@ -571,7 +571,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 {{% tab "Stage Trigger" %}}
 1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
@@ -596,7 +596,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 {{% tab "Step Trigger" %}}
 1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
 
@@ -654,7 +654,7 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 {{% tab "By UI" %}}
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
 
@@ -703,7 +703,7 @@ Create a secret in the same project as your pipeline, or explicitly in the names
 {{% tab "By UI" %}}
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
 

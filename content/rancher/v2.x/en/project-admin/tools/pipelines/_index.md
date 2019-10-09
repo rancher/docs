@@ -254,7 +254,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 ### A. Configuring Persistent Data for Docker Registry
 
-1. From the project that you're configuring a pipeline for, select the **Workloads** tab.
+1. From the project that you're configuring a pipeline for, and click **Resources > Workloads.** In versions prior to v2.3.0, select the **Workloads** tab.
 
 1. Find the `docker-registry` workload and select **Ellipsis (...) > Edit**.
 
@@ -301,7 +301,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 ### B. Configuring Persistent Data for Minio
 
-1. From the **Workloads** tab, find the `minio` workload and select **Ellipsis (...) > Edit**.
+1. From the project view, click **Resources > Workloads.** (In versions prior to v2.3.0, click the **Workloads** tab.) Find the `minio` workload and select **Ellipsis (...) > Edit**.
 
 1. Scroll to the **Volumes** section and expand it. Make one of the following selections from the **Add Volume** menu, which is near the bottom of the section:
 
