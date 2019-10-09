@@ -10,7 +10,7 @@ _Persistent Volume Claims_ (or PVCs) are objects that request storage resources 
 
 - Rancher lets you create as many PVCs within a project as you'd like.
 - You can mount PVCs to a deployment as you create it, or later after its running.
-- Each Rancher project contains a list of PVCs that you've created, available from the **Volumes** tab. You can reuse these PVCs when creating deployments in the future.
+- Each Rancher project contains a list of PVCs that you've created, available from **Resources > Workloads > Volumes.** (In versions prior to v2.3.0, the PVCs are in the **Volumes** tab.) You can reuse these PVCs when creating deployments in the future.
 
 >**Prerequisite:**
 > You must have a pre-provisioned [persistent volume]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-a-persistent-volume) available for use, or you must have a [storage class created]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-storage-classes) that dynamically creates a volume upon request from the workload.

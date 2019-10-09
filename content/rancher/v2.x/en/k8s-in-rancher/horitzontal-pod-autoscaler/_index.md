@@ -28,7 +28,7 @@ You might have additional HPA installation steps if you are using an older versi
 
 ## Testing HPAs with a Service Deployment
 
-In Rancher v2.3.x+, you can see your HPA's current number of replicas by going to your project's **HPA** tab. For more information, refer to [Get HPA Metrics and Status]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui/).
+In Rancher v2.3.x+, you can see your HPA's current number of replicas by going to your project and clicking **Resources > HPA.** For more information, refer to [Get HPA Metrics and Status]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui/).
 
 You can also use `kubectl` to get the status of HPAs that you test with your load testing tool. For more information, refer to [Testing HPAs with kubectl]
 ({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/testing-hpa/).

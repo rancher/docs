@@ -49,7 +49,7 @@ Now that the application is up and running it needs to be exposed so that other 
 
 3.  Open the **Default** project.
 
-4.  Click **Resources > Workloads.** In versions prior to v2.3.0, click the **Workloads** tab. Click on the **Load Balancing** tab.
+4.  Click **Resources > Workloads > Load Balancing.** In versions prior to v2.3.0, click the **Workloads** tab. Click on the **Load Balancing** tab.
 
 5.  Click **Add Ingress**.
 

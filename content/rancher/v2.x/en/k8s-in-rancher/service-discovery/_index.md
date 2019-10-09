@@ -12,7 +12,7 @@ However, you also have the option of creating additional Service Discovery recor
 
 1. From the **Global** view, open the project that you want to add a DNS record to.
 
-1. Select the **Service Discovery** tab. Then click **Add Record**.
+1. Click **Resources > Workloads > Service Discovery.** (In versions prior to v2.3.0, click the **Service Discovery** tab.) Then click **Add Record**.
 
 1. Enter a **Name** for the DNS record. This name is used for DNS resolution.
 

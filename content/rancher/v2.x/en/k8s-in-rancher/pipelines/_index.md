@@ -231,7 +231,7 @@ timeout: 30
 
 ## Running your Pipelines
 
-Run your pipeline for the first time. From the **Pipeline** tab, find your pipeline and select the vertical **Ellipsis (...) > Run**.
+Run your pipeline for the first time. From the project view in Rancher, go to **Resources > Pipelines.** (In versions prior to v2.3.0, go to the **Pipelines** tab.) Find your pipeline and select the vertical **Ellipsis (...) > Run**.
 
 During this initial run, your pipeline is tested, and the following [pipeline components]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#how-pipelines-work) are deployed to your project as workloads in a new namespace dedicated to the pipeline:
 

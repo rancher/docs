@@ -67,7 +67,7 @@ You can launch a new load balancer to replace your load balancer from v1.6. Usin
 >**Prerequisite:** Before deploying Ingress, you must have a workload deployed that's running a scale of two or more pods.
 >
 
-For balancing between these two pods, you must create a Kubernetes Ingress rule. To create this rule, navigate to your cluster and project, and then select the **Load Balancing** tab. Then click **Add Ingress**. This GIF below depicts how to add Ingress to one of your projects.
+For balancing between these two pods, you must create a Kubernetes Ingress rule. To create this rule, navigate to your cluster and project, and click **Resources > Workloads > Load Balancing.** (In versions prior to v2.3.0, click the **Load Balancing** tab.) Then click **Add Ingress**. This GIF below depicts how to add Ingress to one of your projects.
 
 Similar to a service/port rules in Rancher v1.6, here you can specify rules targeting your workload's container port. The sections below demonstrate how to create Ingress rules.
 
