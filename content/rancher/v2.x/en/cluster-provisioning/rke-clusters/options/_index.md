@@ -8,7 +8,7 @@ As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rk
 You can configure Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Config File](#config-file): The cluster config file allows you to use any option offered by Kubernetes by specifying them in YAML. In Rancher prior to v2.3.0, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive.
+- [Config File](#config-file): The cluster config file allows you to use any option offered by Kubernetes by specifying them in YAML. In Rancher v2.0.0-v2.2.x, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive.
 
 ## Rancher UI
 
@@ -107,13 +107,13 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
-The structure of the config file is different depending on your version of Rancher. Below are example config files for Rancher prior to v2.3.0 and for Rancher v2.3.0+.
+The structure of the config file is different depending on your version of Rancher. Below are example config files for Rancher v2.0.0-v2.2.x and for Rancher v2.3.0+.
 
-### Config File Structure in Rancher prior to v2.3.0
+### Config File Structure in Rancher v2.0.0-v2.2.x
 
-An example cluster config file for Rancher prior to v2.3.0 is included below.
+An example cluster config file is included below.
 
-{{% accordion id="prior-to-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher prior to v2.3.0" %}}
+{{% accordion id="prior-to-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.0.0-v2.2.x" %}}
 
 ```yaml
 nodes:
