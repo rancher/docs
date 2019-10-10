@@ -45,6 +45,10 @@ In order to add Windows worker nodes to a cluster, the node must be running Wind
 
 The nodes must run Docker Enterprise Edition (EE).
 
+Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09.
+
+Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
+
 >**Notes:**
 >
 >- If you are using AWS, Rancher recommends *Microsoft Windows Server 2019 Base with Containers* as the Amazon Machine Image (AMI).
