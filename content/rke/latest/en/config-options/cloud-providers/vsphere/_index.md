@@ -32,7 +32,7 @@ When provisioning clusters in Rancher using the [vSphere node driver]({{< baseur
     ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
 
 8. Click on **Edit as YAML**
-9. Insert the following top-level structure to the pre-populated cluster YAML. Note that the `name` *must* be set to `vsphere`. Refer to the [configuration reference](#configuration-reference) to learn about the properties of the `vsphereCloudProvider` directive.
+9. Insert the following structure to the pre-populated cluster YAML. In versions prior to v2.3.0, it has to be defined as a top level field. In versions v2.3.0 and higher, it has to be placed under `rancher_kubernetes_engine_config`. Note that the `name` *must* be set to `vsphere`. Refer to the [configuration reference](#configuration-reference) to learn about the properties of the `vsphereCloudProvider` directive.
 
     ```yaml
     cloud_provider:
