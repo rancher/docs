@@ -21,7 +21,7 @@ Rancher is tested on the following operating systems and their subsequent non-ma
 *   RancherOS 1.5.1 (64-bit x86)
   * Docker 17.03.x, 18.06.x, 18.09.x
 *   Windows Server 2019 (64-bit x86)
-    * Requires Docker Enterprise Edition (EE)
+    * Requires Docker Engine - Enterprise Edition (EE)
     * Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 
     * Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03
   * Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)

@@ -43,7 +43,7 @@ For a custom cluster, the general node requirements for networking, operating sy
 
 In order to add Windows worker nodes to a cluster, the node must be running Windows Server 2019 (i.e. core version 1903 or above) and [Docker 19.03.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
-The nodes must run Docker Enterprise Edition (EE).
+The nodes must run Docker Engine - Enterprise Edition (EE).
 
 Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09.
 
