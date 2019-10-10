@@ -43,11 +43,9 @@ To see all libraries/projects used in Rancher, see the `vendor.conf` in the `ran
 
 # Building
 
-Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository (plus additional `trash` commands, please see below for more information about using `trash`), and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.
+Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository, and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.
 
 The default target is `ci`, and will run `./scripts/validate`, `./scripts/build`, `./scripts/test` and `./scripts/package`. The resulting binaries of the build will be in `./build/bin` and are usually also packaged in a Docker image.
-
-Dependencies on other libraries/projects are managed using [Trash](https://github.com/rancher/trash). See the [Trash README](https://github.com/rancher/trash/blob/master/README.md) to discover how it can be used. In short, it uses a `vendor.conf` file to specify the source repository and revision to fetch, checkout and copy to the `./vendor` directory. After updating `vendor.conf`, you can run `make trash` to update dependencies for your change. When the dependencies are updated, you can build the project again using `make` so that it will be built using the updated dependencies.
 
 # Bugs, Issues or Questions
 
