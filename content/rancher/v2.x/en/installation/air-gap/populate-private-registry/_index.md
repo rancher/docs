@@ -5,6 +5,8 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/prepare-private-reg/
   - /rancher/v2.x/en/installation/air-gap-high-availability/prepare-private-registry/
   - /rancher/v2.x/en/installation/air-gap-single-node/prepare-private-registry/
+  - /rancher/v2.x/en/installation/air-gap-single-node/config-rancher-for-private-reg/
+  - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
 ---
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
