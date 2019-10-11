@@ -213,7 +213,7 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
+- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
 - [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/)
 - [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
 
