@@ -24,7 +24,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-Feature | Environment Variable Key | Default Value | Description | Available as of |
+Feature | Feature Flag Name | Default Value | Description | Available as of |
 ---|---|---|---|---
 [Allow unsupported storage drivers]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/enable-not-default-storage-drivers) | `unsupported-storage-drivers` | `false` | This feature enables types for storage providers and provisioners that are not enabled by default. | v2.3.0
 [UI for Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/istio-virtual-service-ui) | `istio-virtual-service-ui`| `false` | Enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio | v2.3.0
@@ -37,21 +37,21 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 
 {{% tabs %}}
 {{% tab "HA Install" %}}
-When installing Rancher with a Helm chart, use the `--features` option:
+When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 ```
 helm install rancher-latest/rancher \
   --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
-  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true' # Available as of v2.3.0
+  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 
 ### Rendering the Helm Chart for Air Gap Installations
 
 For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/install-rancher)
 
-Here is an example of a command for passing in the feature flag options when rendering the Helm template:
+Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 ```
 helm template ./rancher-<VERSION>.tgz --output-dir . \
   --name rancher \
@@ -62,16 +62,16 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
   --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
   --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
-  --set 'extraEnv[0].value=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true' # Available as of v2.3.0
+  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 {{% /tab %}}
 {{% tab "Single Node Install" %}}
-When installing Rancher with Docker, use the `--features` option:
+When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 ```
 docker run -d -p 80:80 -p 443:443 \
   --restart=unless-stopped \
   rancher/rancher:rancher-latest \
-  --features=<FEATURE-NAME1>=true,<FEATURE-NAME2>=true # Available as of v2.3.0
+  --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-NAME-2>=true # Available as of v2.3.0
 ```
 {{% /tab %}}
 {{% /tabs %}}
