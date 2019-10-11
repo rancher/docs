@@ -7,32 +7,32 @@ aliases:
   - /rancher/v2.x/en/upgrades/air-gap-upgrade/
 ---
 
-The following instructions will guide you through upgrading a high-availability (HA) Rancher server installation.  
+The following instructions will guide you through using Helm to upgrade a high-availability (HA) Rancher server installation. 
 
->**Note:** If you installed Rancher using the RKE Add-on yaml, following the directions to [migrate or upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on).
+To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
+If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on).
 
 >**Note:** [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager)
 
-## Prerequisites
+# Prerequisites
 
 - **Review the [Known Upgrade Issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
-
 
 - **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/) Collect and Populate Images for the new Rancher server version**
 
     Follow the guide to [populate your private registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
-## Upgrade Outline
+# Upgrade Outline
 
 Follow the steps to upgrade Rancher server:
 
-- A. Backup your Kubernetes Cluster that is running Rancher server
-- B. Update the Helm chart repository
-- C. Upgrade Rancher
-- D. Verify the Upgrade
+- [A. Back up your Kubernetes cluster that is running Rancher server](#a-backup-your-kubernetes-cluster-that-is-running-rancher-server)
+- [B. Update the Helm chart repository](#b-update-the-helm-chart-repository)
+- [C. Upgrade Rancher](#c-upgrade-rancher)
+- [D. Verify the Upgrade](#d-verify-the-upgrade)
 
-### A. Backup your Kubernetes Cluster that is running Rancher server
+### A. Back up Your Kubernetes Cluster that is Running Rancher Server
 
 [Take a one-time snapshot]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server. You'll use the snapshot as a restoration point if something goes wrong during upgrade.
@@ -72,10 +72,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
 
 ### C. Upgrade Rancher
 
-Choose from the following options:
-
-* HA Upgrade
-* HA Upgrade for Air Gap Installs
+This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
 
 {{% tabs %}}
 {{% tab "HA Upgrade" %}}

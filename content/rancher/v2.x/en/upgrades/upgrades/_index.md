@@ -2,7 +2,7 @@
 title: Upgrades
 weight: 1005
 ---
-This section contains information about how to upgrade your Rancher server to a newer version. Regardless if you installed in an air gap environment or not, the upgrade steps will be based on what type of install you chosen. Select from the following options:
+This section contains information about how to upgrade your Rancher server to a newer version. Regardless if you installed in an air gap environment or not, the upgrade steps mainly depend on whether you have a single node or high-availability installation of Rancher. Select from the following options:
 
 - [Upgrading a Single Node Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node/)
 - [Upgrading an HA Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha/)
