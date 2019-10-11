@@ -5,12 +5,13 @@ weight: 2240
 
 _Available as of v2.3.0_
 
-
 When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
 
 You can use a mix of Linux and Windows hosts as your cluster nodes. Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
 
 You can only add Windows nodes to a cluster if Windows support is enabled. Windows support can be enabled for new custom clusters that use Kubernetes 1.15+ and the Flannel network provider. Windows support cannot be enabled for existing clusters.
+
+> Windows clusters have more requirements than Linux clusters. For example, Windows nodes must have 50 GB of disk space. Make sure your Windows cluster fulfills all of the [requirements.](#requirements-for-windows-clusters)
 
 For a summary of Kubernetes features supported in Windows, see the Kubernetes documentation on [supported functionality and limitations for using Kubernetes with Windows](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations) or the [guide for scheduling Windows containers in Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/).
 
@@ -19,11 +20,11 @@ This guide covers the following topics:
 <!-- TOC -->
 - [Prerequisites](#prerequisites)
 - [Requirements](#requirements-for-windows-clusters)
-  - [OS and Docker](#os-and-docker)
-  - [Hardware](#hardware)
-  - [Networking](#networking)
-  - [Architecture](#architecture)
-  - [Containers](#containers)
+  - [OS and Docker](#os-and-docker-requirements)
+  - [Nodes](#node-requirements)
+  - [Networking](#networking-requirements)
+  - [Architecture](#architecture-requirements)
+  - [Containers](#container-requirements)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
 <!-- /TOC -->
@@ -38,26 +39,32 @@ Before provisioning a new cluster, be sure that you have already installed Ranch
 
 For a custom cluster, the general node requirements for networking, operating systems, and Docker are the same as the node requirements for a [Rancher installation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 
-### OS and Docker
+### OS and Docker Requirements
 
 In order to add Windows worker nodes to a cluster, the node must be running Windows Server 2019 (i.e. core version 1903 or above) and [Docker 19.03.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+
+The nodes must run Docker Engine - Enterprise Edition (EE).
+
+Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09.
+
+Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
 
 >**Notes:**
 >
 >- If you are using AWS, Rancher recommends *Microsoft Windows Server 2019 Base with Containers* as the Amazon Machine Image (AMI).
 >- If you are using GCE, Rancher recommends *Windows Server 2019 Datacenter for Containers* as the OS image.
 
-### Hardware
+### Node Requirements
 
 The hosts in the cluster need to have at least:
 
 - 2 core CPUs
-- 4.5 GiB memory (~4.83 GB)
-- 30 GiB of disk space (~32.21 GB)
+- 5 GB memory
+- 50 GB disk space
 
 Rancher will not provision the node if the node does not meet these requirements.
 
-### Networking
+### Networking Requirements
 
 Rancher only supports Windows using Flannel as the network provider.
 
@@ -67,7 +74,7 @@ For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 ne
 
 For **VXLAN (Overlay)** networking, the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix must be installed. Most cloud-hosted VMs already have this hotfix.
 
-### Architecture
+### Architecture Requirements
 
 The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run on Linux nodes.
 
@@ -83,7 +90,7 @@ Node 1  | Linux (Ubuntu Server 18.04 recommended)           | [Control Plane]({{
 Node 2  | Linux (Ubuntu Server 18.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster
 Node 3  | Windows (Windows Server 2019 required)            | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Run your Windows containers
 
-### Containers
+### Container Requirements
 
 Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server 2019 core version 1903. If you have existing containers built for an earlier Windows Server 2019 core version, they must be re-built on Windows Server 2019 core version 1903.
 
