@@ -1,6 +1,6 @@
 ---
 title: Advanced Options
-weight: 350
+weight: 9
 ---
 
 When installing Rancher, there are several advanced options that can be enabled during installation. Within each install guide, these options are presented. Learn more about these options:

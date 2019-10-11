@@ -17,7 +17,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 
 - [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#api-audit-log)
 
-- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#api-audit-log)
+- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#api-audit-log)
 
 ## API Audit Log Options
 

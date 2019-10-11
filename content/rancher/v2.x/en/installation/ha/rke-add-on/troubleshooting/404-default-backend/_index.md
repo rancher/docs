@@ -2,7 +2,7 @@
 title: 404 - default backend
 weight: 30
 aliases:
-- /rancher/v2.x/en/installation/troubleshooting-ha/404-default-backend/
+- /rancher/v2.x/en/installation/resources-for-ha/troubleshooting-ha/404-default-backend/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

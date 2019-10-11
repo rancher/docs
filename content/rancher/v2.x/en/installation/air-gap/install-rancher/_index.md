@@ -56,7 +56,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 For HA air gap configurations, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#external-tls-termination).
 
 | Configuration | Chart option | Description | Requires cert-manager |
 |-----|-----|-----|-----|
@@ -158,7 +158,7 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
       --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
     ```
 
-1.    See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+1.    See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/resources-for-ha/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 {{% /accordion %}}
 
@@ -213,9 +213,9 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/)
-- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
+- [Rancher Helm chart options]({{<baseurl>}}rancher/v2.x/en/installation/resources-for-ha/chart-options/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/resources-for-ha/tls-secrets/)
+- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/resources-for-ha/troubleshooting/)
 
 {{% /tab %}}
 {{% tab "Single Node Install" %}}

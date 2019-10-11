@@ -1,6 +1,6 @@
 ---
-title: "Air Gap Install"
-weight: 290
+title: Air Gap Install
+weight: 6
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
   - /rancher/v2.x/en/installation/air-gap-high-availability/

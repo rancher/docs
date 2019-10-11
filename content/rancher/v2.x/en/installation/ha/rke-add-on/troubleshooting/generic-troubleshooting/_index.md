@@ -2,7 +2,7 @@
 title: Generic troubleshooting
 weight: 5
 aliases:
-- /rancher/v2.x/en/installation/troubleshooting-ha/generic-troubleshooting/
+- /rancher/v2.x/en/installation/resources-for-ha/troubleshooting-ha/generic-troubleshooting/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

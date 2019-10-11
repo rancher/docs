@@ -2,7 +2,7 @@
 title: Failed to get job complete status
 weight: 20
 aliases:
-- /rancher/v2.x/en/installation/troubleshooting-ha/job-complete-status/
+- /rancher/v2.x/en/installation/resources-for-ha/troubleshooting-ha/job-complete-status/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

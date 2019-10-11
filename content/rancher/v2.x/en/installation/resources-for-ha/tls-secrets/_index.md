@@ -1,6 +1,6 @@
 ---
 title: Adding TLS Secrets
-weight: 276
+weight: 2
 ---
 
 Kubernetes will create all the objects and services for Rancher, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.

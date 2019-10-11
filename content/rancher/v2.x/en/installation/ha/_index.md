@@ -1,6 +1,6 @@
 ---
 title: High Availability (HA) Install
-weight: 275
+weight: 5
 ---
 
 For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.

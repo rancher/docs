@@ -23,7 +23,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 There are three recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#external-tls-termination).
 
 | Configuration | Chart option | Description | Requires cert-manager |
 |-----|-----|-----|-----|
@@ -33,7 +33,7 @@ There are three recommended options for the source of the certificate.
 
 ### Optional: Install cert-manager
 
-**Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+**Note:** cert-manager is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#external-tls-termination).
 
 > **Important:**
 > Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
@@ -160,7 +160,7 @@ helm install rancher-<CHART_REPO>/rancher \
   --set ingress.tls.source=secret
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 After adding the secrets, check if Rancher was rolled out successfully:
 
@@ -184,11 +184,11 @@ It should show the same count for `DESIRED` and `AVAILABLE`.
 
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-* [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
-* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#private-registry-and-air-gap-installs)
-* [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination)
+* [HTTP Proxy]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#http-proxy)
+* [Private Docker Image Registry]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#private-registry-and-air-gap-installs)
+* [TLS Termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/#external-tls-termination)
 
-See the [Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/) for the full list of options.
+See the [Helm Chart Options]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/chart-options/) for the full list of options.
 
 ### Save your options
 
@@ -198,4 +198,4 @@ Make sure you save the `--set` options you used. You will need to use the same o
 
 That's it you should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
 
-Doesn't work? Take a look at the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/) Page
+Doesn't work? Take a look at the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/resources-for-ha/troubleshooting/) Page

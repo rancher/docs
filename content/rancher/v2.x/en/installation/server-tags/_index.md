@@ -1,6 +1,6 @@
 ---
 title: Choosing a Version
-weight: 230
+weight: 3
 ---
 
 ## Single Node Installs
