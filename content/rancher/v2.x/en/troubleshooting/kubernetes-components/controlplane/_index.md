@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Controlplane
+title: Troubleshooting Controlplane Nodes
 weight: 2
 ---
 

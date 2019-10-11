@@ -1,9 +1,9 @@
 ---
-title: Troubleshooting etcd
+title: Troubleshooting etcd Nodes
 weight: 1
 ---
 
-This section contains commands that can be used to troubleshoot nodes with the `etcd` role.
+This section contains commands and tips for troubleshooting nodes with the `etcd` role.
 
 This page covers the following topics:
 
@@ -21,6 +21,7 @@ This page covers the following topics:
 - [etcd Content](#etcd-content)
   - [Watch Streaming Events](#watch-streaming-events)
   - [Query etcd Directly](#query-etcd-directly)
+- [Replacing Unhealthy etcd Nodes](#replacing-unhealthy-etcd-nodes)
 
 # Checking if the etcd Container is Running
 
@@ -396,3 +397,11 @@ You can process the data to get a summary of count per key, using the command be
 ```
 docker exec etcd etcdctl get /registry --prefix=true --keys-only | grep -v ^$ | awk -F'/' '{ if ($3 ~ /cattle.io/) {h[$3"/"$4]++} else { h[$3]++ }} END { for(k in h) print h[k], k }' | sort -nr
 ```
+
+# Replacing Unhealthy etcd Nodes
+
+When a node in your etcd cluster becomes unhealthy, the recommended approach is to fix or remove the failed or unhealthy node before adding a new etcd node to the cluster.
+
+To prevent quorum loss, etcd does not allow a new etcd node to be added to the etcd cluster when one or more etcd nodes in the cluster is unhealthy.
+
+It is possible to override this default setting and add an etcd node to a cluster with a failing etcd node if you set the `--strict-reconfig-check` option to false when configuring etcd with `kubectl`. However, this option is not recommended because it can cause etcd to go into a state of quorum loss, which breaks the cluster.

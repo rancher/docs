@@ -7,10 +7,10 @@ The commands and steps listed in this section apply to the core Kubernetes compo
 
 This section includes troubleshooting tips in the following categories:
 
-- [Troubleshooting etcd]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/etcd)
-- [Troubleshooting Controlplane]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/controlplane)
-- [Troubleshooting nginx-proxy]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/nginx-proxy)
-- [Troubleshooting Worker and Generic Components]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/worker-and-generic)
+- [Troubleshooting etcd Nodes]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/etcd)
+- [Troubleshooting Controlplane Nodes]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/controlplane)
+- [Troubleshooting nginx-proxy Nodes]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/nginx-proxy)
+- [Troubleshooting Worker Nodes and Generic Components]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/worker-and-generic)
 
 # Kubernetes Component Diagram
 

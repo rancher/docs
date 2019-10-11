@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Worker and Generic Components
+title: Troubleshooting Worker Nodes and Generic Components
 weight: 4
 ---
 
