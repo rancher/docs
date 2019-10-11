@@ -401,7 +401,3 @@ docker exec etcd etcdctl get /registry --prefix=true --keys-only | grep -v ^$ | 
 # Replacing Unhealthy etcd Nodes
 
 When a node in your etcd cluster becomes unhealthy, the recommended approach is to fix or remove the failed or unhealthy node before adding a new etcd node to the cluster.
-
-To prevent quorum loss, etcd does not allow a new etcd node to be added to the etcd cluster when one or more etcd nodes in the cluster is unhealthy.
-
-It is possible to override this default setting and add an etcd node to a cluster with a failing etcd node if you set the `--strict-reconfig-check` option to false when configuring etcd with `kubectl`. However, this option is not recommended because it can cause etcd to go into a state of quorum loss, which breaks the cluster.
