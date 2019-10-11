@@ -28,6 +28,13 @@ To install on worker nodes we should pass `K3S_URL` along with
 curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
 ```
 
+> **NOTE:**
+Running in a secure environment (INPUT table default policy set to DROP or REJECT), you need to ensure that API server port is accessible from the k3s agent (eg: worker node). In order to do so, add the following rule to iptables:
+```bash
+iptables -A INPUT -s `K3S_AGENT_IP` -d `K3S_MASTER_IP` -p tcp --dport 6443 -j ACCEPT
+```
+Where `K3S_AGENT_IP` is the ip address of the worker node and `K3S_MASTER_IP` is the ip address of the master node.
+
 Manual Download
 ---------------
 1. Download `k3s` from latest [release](https://github.com/rancher/k3s/releases/latest), x86_64, armhf, and arm64 are supported.
@@ -38,7 +45,7 @@ sudo k3s server &
 # Kubeconfig is written to /etc/rancher/k3s/k3s.yaml
 sudo k3s kubectl get nodes
 
-# On a different node run the below. NODE_TOKEN comes from 
+# On a different node run the below. NODE_TOKEN comes from
 # /var/lib/rancher/k3s/server/node-token on your server
 sudo k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
 ```
