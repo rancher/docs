@@ -9,7 +9,7 @@ Deploy a workload to run an application in one or more containers.
 
 1. From the **Global** view, open the project that you want to deploy a workload to.
 
-1. From the **Workloads** view, click **Deploy**.
+1. 1. Click **Resources > Workloads.** (In versions prior to v2.3.0, click the **Workloads** tab.) From the **Workloads** view, click **Deploy**.
 
 1. Enter a **Name** for the workload.
 

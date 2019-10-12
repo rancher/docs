@@ -19,7 +19,7 @@ By default, the example pipeline repositories are disabled. Enable one (or more)
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Click **Configure Repositories**.
 
@@ -45,7 +45,7 @@ After enabling an example repository, review the pipeline to see how it is set u
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the example repository, select the vertical **Ellipsis (...)**. There are two ways to view the pipeline:
   * **Rancher UI**: Click on **Edit Config** to view the stages and steps of the pipeline.
@@ -57,7 +57,7 @@ After enabling an example repository, run the pipeline to see how it works.
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Select **Workloads** in the navigation bar and then select the **Pipelines** tab.
+1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the example repository, select the vertical **Ellipsis (...) > Run**.
 
