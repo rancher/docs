@@ -58,7 +58,14 @@ If you want to see all the configuration options for a cluster, please click **S
 
 _Available as of v2.2.0_
 
-If you are using a private registry with authentication for your Docker images, please configure the registry in this section to allow the nodes to pull images from this registry. See [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information.
+The registry configuration here is applied during the provisioning of the cluster. This option tells Rancher where to pull the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) or [addon images.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
+
+- **System images** are components needed to maintain the Kubernetes cluster. 
+- **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
+
+To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
+
+See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
 ### Authorized Cluster Endpoint
 
