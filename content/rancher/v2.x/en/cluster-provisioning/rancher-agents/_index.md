@@ -27,8 +27,7 @@ _Applies to v2.3.0 and higher_
 | `cattle-cluster-agent` | `beta.kubernetes.io/os:NotIn:windows`      | none         | `operator:Exists`                                                              |
 | `cattle-node-agent`    | `beta.kubernetes.io/os:NotIn:windows`      | none         | `operator:Exists`                                                              |
 
-The `cattle-cluster-agent` Deployment has preferred scheduling rules using `requiredDuringSchedulingIgnoredDuringExecution`, favoring to be scheduled on nodes with the `controlplane` node. See [Kubernetes: Assigning Pods to Nodes](https://kubernetes.io/docs
-concepts/configuration/assign-pod-node/) to find more information about scheduling rules.
+The `cattle-cluster-agent` Deployment has preferred scheduling rules using `requiredDuringSchedulingIgnoredDuringExecution`, favoring to be scheduled on nodes with the `controlplane` node. See [Kubernetes: Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to find more information about scheduling rules.
 
 The `requiredDuringSchedulingIgnoredDuringExecution` configuration is shown in the table below:
 
