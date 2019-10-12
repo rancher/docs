@@ -75,7 +75,7 @@ Rancher schedules pods to the node you select if 1) there are compute resource a
 
 If you expose the workload using a NodePort that conflicts with another workload, the deployment gets created successfully, but no NodePort service is created. Therefore, the workload isn't exposed outside of the cluster.
 
-After the workload is created, you can confirm that the pods are scheduled to your chosen node. From the **Workloads** tab, click the **Group by Node** icon to sort your workloads by node. Note that both Nginx pods are scheduled to the same node.
+After the workload is created, you can confirm that the pods are scheduled to your chosen node. From the project view, click **Resources > Workloads.** (In versions prior to v2.3.0, click the **Workloads** tab.) Click the **Group by Node** icon to sort your workloads by node. Note that both Nginx pods are scheduled to the same node.
 
 <!--
 

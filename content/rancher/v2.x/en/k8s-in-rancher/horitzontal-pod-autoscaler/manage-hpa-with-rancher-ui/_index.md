@@ -3,7 +3,7 @@ title: Managing HPAs with the Rancher UI
 weight: 3028
 ---
 
-_Available as of v2.3.0-alpha5_
+_Available as of v2.3.0_
 
 The Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
 
@@ -13,7 +13,7 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. From the **Global** view, open the project that you want to deploy a HPA to.
 
-1. Select **Workloads** in the navigation bar and then select the **HPA** tab.
+1. Click **Resources > HPA.**
 
 1. Click **Add HPA.**
 
@@ -29,13 +29,13 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. Click **Create** to create the HPA.
 
-> **Result:** The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's Workloads > HPA view.
+> **Result:** The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's Resources > HPA view.
 
 ## Get HPA Metrics and Status
 
 1. From the **Global** view, open the project with the HPAs you want to look at.
 
-1. Select **Workloads** in the navigation bar and then select the **HPA** tab. The **HPA** tab shows the number of current replicas.
+1. Click **Resources > HPA.** The **HPA** tab shows the number of current replicas.
 
 1. For more detailed metrics and status of a specific HPA, click the name of the HPA. This leads to the HPA detail page.
 
@@ -44,7 +44,7 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. From the **Global** view, open the project that you want to delete an HPA from.
 
-1. Select **Workloads** in the navigation bar and then select the **HPA** tab.
+1. Click **Resources > HPA.**
 
 1. Find the HPA which you would like to delete.
 
