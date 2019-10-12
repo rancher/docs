@@ -40,6 +40,10 @@ After provisioning your node(s), install Rancher:
 
 After your Rancher v2.x Server is installed, we recommend configuring external authentication (like Active Directory or GitHub) so that users can log into Rancher using their single sign-on. For a full list of supported authentication providers and instructions on how to configure them, see [Authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication).
 
+<figcaption>Rancher v2.x Authentication</figcaption>
+
+![Rancher v2.x Authentication]({{< baseurl >}}/img/rancher/auth-providers.svg)
+
 ### Local Users
 
 Although we recommend using an external authentication provider, Rancher v1.6 and v2.x both offer support for users local to Rancher. However, these users cannot be migrated from Rancher v1.6 to v2.x. If you used local users in Rancher v1.6 and want to continue this practice in v2.x, you'll need to [manually recreate these user accounts]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) and assign them access rights.

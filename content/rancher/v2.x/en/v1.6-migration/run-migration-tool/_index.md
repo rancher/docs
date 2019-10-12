@@ -242,6 +242,10 @@ You can deploy the Kubernetes manifests created by migration-tools by importing 
 >
 >Delete the YAML directive listed in the error message. These are YAML directives from your v1.6 services that Kubernetes can't read.
 
+<figcaption>Deploy Services: Import Kubernetes Manifest</figcaption>
+
+![Deploy Services]({{< baseurl >}}/img/rancher/deploy-service.gif)
+
 {{% /tab %}}
 {{% tab "Rancher CLI" %}}
 
@@ -261,13 +265,25 @@ Use the following Rancher CLI commands to deploy your application using Rancher 
 
 Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Resources > Workloads** and on the tab at **Resources > Workloads > Service Discovery.** (In Rancher v2.x prior to v2.3.0, these are on the **Workloads** and **Service Discovery** tabs in the top navigation bar.)
 
+<figcaption>Imported Services</figcaption>
+
+![Imported Services]({{< baseurl >}}/img/rancher/imported-workloads.png)
+
 ## What Now?
 
 Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below.
 
+<figcaption>Edit Migrated Services</figcaption>
+
+![Edit Migrated Workload]({{< baseurl >}}/img/rancher/edit-migration-workload.gif)
+
 As mentioned in [Migration Tools CLI Output](#migration-tools-cli-output), the `output.txt` files generated during parsing lists the manual steps you must make for each deployment. Review the upcoming topics for more information on manually editing your Kubernetes specs.
 
 Open your `output.txt` file and take a look at its contents. When you parsed your Compose files into Kubernetes manifests, migration-tools CLI output a manifest for each workload that it creates for Kubernetes. For example, our when our [Migration Example Files]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/#migration-example-files) are parsed into Kubernetes manifests, `output.txt` lists each resultant parsed [Kubernetes manifest file](#migration-example-file-output) (i.e., workloads). Each workload features a list of action items to restore operations for the workload in v2.x.
+
+<figcaption>Output.txt Example</figcaption>
+
+![output.txt]({{< baseurl >}}/img/rancher/output-dot-text.png)
 
 The following table lists possible directives that may appear in `output.txt`, what they mean, and links on how to resolve them.
 

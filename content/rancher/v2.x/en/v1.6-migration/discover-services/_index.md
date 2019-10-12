@@ -7,6 +7,10 @@ Service discovery is one of the core functionalities of any container-based envi
 
 This document will also show you how to link the workloads and services that you migrated into Rancher v2.x. When you parsed your services from v1.6 using migration-tools CLI, it output two files for each service: one deployment manifest and one service manifest. You'll have to link these two files together before the deployment works correctly in v2.x.
 
+<figcaption>Resolve the <code>output.txt</code> Link Directive</figcaption>
+
+![Resolve Link Directive]({{< baseurl >}}/img/rancher/resolve-links.png)
+
 ## In This Document
 
 <!-- TOC -->
@@ -58,6 +62,11 @@ When you migrate v1.6 services to v2.x, Rancher does not automatically create a 
 
 In the image below, the `web-deployment.yml` and `web-service.yml` files [created after parsing]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/#migration-example-file-output) our [migration example services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/#migration-example-files) are linked together.
 
+<figcaption>Linked Workload and Kubernetes Service</figcaption>
+
+![Linked Workload and Kubernetes Service]({{< baseurl >}}/img/rancher/linked-service-workload.png)
+
+
 ### Service Name Alias Creation
 
 Just as you can create an alias for Rancher v1.6 services, you can do the same for Rancher v2.x workloads. Similarly, you can also create DNS records pointing to services running externally, using either their hostname or IP address. These DNS records are Kubernetes service objects.
@@ -65,6 +74,9 @@ Just as you can create an alias for Rancher v1.6 services, you can do the same f
 Using the v2.x UI, use the context menu to navigate to the `Project` view. Then click **Resources > Workloads > Service Discovery.** (In versions prior to v2.3.0, click the **Workloads > Service Discovery** tab.) All existing DNS records created for your workloads are listed under each namespace.
 
 Click **Add Record** to create new DNS records. Then view the various options supported to link to external services or to create aliases for another workload, DNS record, or set of pods.
+
+<figcaption>Add Service Discovery Record</figcaption>
+![Add Service Discovery Record]({{< baseurl >}}/img/rancher/add-record.png)
 
 The following table indicates which alias options are implemented natively by Kubernetes and which options are implemented by Rancher leveraging Kubernetes.
 
