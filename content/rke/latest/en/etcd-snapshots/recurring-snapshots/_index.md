@@ -38,14 +38,13 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 |**secret_key** |S3 secret key with permission to access the backup bucket.| * |
 |**region** |S3 region for the backup bucket. This is optional.| * |
 |**endpoint** |S3 regions endpoint for the backup bucket.| * |
-| **endpoint-ca**       | Custom CA certificate to connect to custom S3 endpoint. Provided as a multi-line string. _Available as of v0.2.5_ | *|
 |**custom_ca** |Custom certificate authority to use when connecting to the endpoint. Only required for private S3 compatible storage solutions. Available for RKE v0.2.5+.| * |
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
 
 ##### Using a custom CA certificate for S3
 
-The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the option `endpoint-ca` to connect to the S3 backend.
+The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the option `custom_ca` to connect to the S3 backend.
 
 ### IAM Support for Storing Snapshots in S3
 
@@ -53,7 +52,7 @@ In addition to API access keys, RKE supports using IAM roles for S3 authenticati
 
 Below is an [example IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_s3_rw-bucket.html) that would allow nodes to store and retrieve backups from S3:
 
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
