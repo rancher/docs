@@ -6,7 +6,7 @@ When RKE is deploying Kubernetes, there are several images that are pulled. Thes
 
 As of `v0.1.6`, the functionality of a couple of the system images were consolidated into a single `rancher/rke-tools` image to simplify and speed the deployment process.
 
-You can configure the [network plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), [ingress controller]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/) as well as the options for these add-ons separately.
+You can configure the [network plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), [ingress controller]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/) as well as the options for these add-ons separately in the `cluster.yml`.
 
 Below is an example of the list of system images used to deploy Kubernetes through RKE. The default versions of Kubernetes are tied to specific versions of system images. 
 
