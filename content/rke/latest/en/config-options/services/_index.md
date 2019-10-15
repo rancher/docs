@@ -22,7 +22,7 @@ Kubernetes uses [etcd](https://etcd.io/) as a store for cluster state and data. 
 
 RKE supports running etcd in a single node mode or in HA cluster mode. It also supports adding and removing etcd nodes to the cluster.
 
-You can enable etcd to [take recurring snapshots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#recurring-snapshots). These snapshots can be used to [restore etcd]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-disaster-recovery). 
+You can enable etcd to [take recurring snapshots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#recurring-snapshots). These snapshots can be used to [restore etcd]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-disaster-recovery).
 
 By default, RKE will deploy a new etcd service, but you can also run Kubernetes with an [external etcd service]({{< baseurl >}}/rke/latest/en/config-options/services/external-etcd/).
 
@@ -44,6 +44,8 @@ services:
     # Enable AlwaysPullImages Admission controller plugin
     # Available as of v0.2.0
     always_pull_images: false
+    secrets_encryption_config:
+      enabled: true
 ```
 
 ### Kubernetes API Server Options
@@ -55,7 +57,7 @@ RKE supports the following options for the `kube-api` service :
 - **Pod Security Policy** (`pod_security_policy`) - An option to enable the [Kubernetes Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/). By default, we do not enable pod security policies as it is set to `false`.
     > **Note:** If you set `pod_security_policy` value to `true`, RKE will configure an  open policy to allow any pods to work on the cluster. You will need to configure your own policies to fully utilize PSP.
 - **Always Pull Images** (`always_pull_images`) - Enable `AlwaysPullImages` Admission controller plugin.  Enabling `AlwaysPullImages` is a security best practice. It forces Kubernetes to validate the image and pull credentials with the remote image registry. Local image layer cache will still be used, but it does add a small bit of overhead when launching containers to pull and compare image hashes. _Note: Available as of v0.2.0_
-
+- **Secrets Encryption Config** (`secrets_encryption_config`) - Manage Kubernetes at-rest data encryption. Documented [here]({{< baseurl >}}//rke/latest/en/config-options/secrets-encryption)
 ## Kubernetes Controller Manager
 
 > **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) when creating [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
