@@ -77,7 +77,7 @@ Yes.
 
 #### What about Windows support?
 
-With [Rancher 2.3.0 Preview 1](https://forums.rancher.com/t/rancher-release-v2-3-0-alpha3-preview-of-windows-containers/14260), we have enabled the support for Windows Server 2019 containers. The technology is in preview mode but we intend to make it GA later this year. Please refer to our documentation and Release Notes to get the latest information on this feature.
+With [Rancher 2.3.0 Preview 1](https://forums.rancher.com/t/rancher-release-v2-3-0-alpha3-preview-of-windows-containers/14260), we have enabled the support for Windows Server 1809 containers. The technology is in preview mode but we intend to make it GA later this year. Please refer to our documentation and Release Notes to get the latest information on this feature.
 
 #### Are you planning on supporting Istio in Rancher v2.x?
 
