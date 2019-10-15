@@ -125,7 +125,7 @@ D. Populate the private registry
 
 ### Prerequisites
 
-These steps expect you to use a Windows 1903 Server workstation that has internet access, access to your private registry, and at least 50 GB of disk space.
+These steps expect you to use a Windows Server 1809 workstation that has internet access, access to your private registry, and at least 50 GB of disk space.
 
 The workstation must have Docker 18.02+ in order to support manifests, which are required when provisioning Windows clusters.  
 

@@ -11,22 +11,23 @@ Whether you're configuring Rancher to run in a single-node or high-availability 
 <br>
 Rancher is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
 
-*   Ubuntu 16.04 (64-bit x86)
-  * Docker 17.03.x, 18.06.x, 18.09.x
-*   Ubuntu 18.04 (64-bit x86)
-  * Docker 18.06.x, 18.09.x
-*   Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit x86)
-  * RHEL Docker 1.13
-  * Docker 17.03.x, 18.06.x, 18.09.x
-*   RancherOS 1.5.1 (64-bit x86)
-  * Docker 17.03.x, 18.06.x, 18.09.x
-*   Windows Server 2019 (64-bit x86)
-    * Requires Docker Engine - Enterprise Edition (EE)
-    * Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 
-    * Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03
-  * Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
+- Ubuntu 16.04 (64-bit x86)
+- Docker 17.03.x, 18.06.x, 18.09.x
+- Ubuntu 18.04 (64-bit x86)
+- Docker 18.06.x, 18.09.x
+- Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit x86)
+- RHEL Docker 1.13
+- Docker 17.03.x, 18.06.x, 18.09.x
+- RancherOS 1.5.1 (64-bit x86)
+- Docker 17.03.x, 18.06.x, 18.09.x
+- Windows Server 2019 (64-bit x86)
+  - Requires Docker Engine - Enterprise Edition (EE)
+  - Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09
+  - Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03
+- Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
 If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
+
 ```
 # Look up available versions
 sudo ros engine list
@@ -34,6 +35,7 @@ sudo ros engine list
 # Switch to a supported version
 sudo ros engine switch docker-18.09.2
 ```
+
 See [Running on ARM64 (Experimental)]({{< baseurl >}}/rancher/v2.x/en/installation/arm64-platform/) if you plan to run Rancher on ARM64.
 <br>
 <br>
@@ -45,25 +47,24 @@ See [Running on ARM64 (Experimental)]({{< baseurl >}}/rancher/v2.x/en/installati
 <br>
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements.
 
-
 **[HA Node]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/) Requirements**
 
-Deployment Size | Clusters | Nodes | vCPUs | RAM |
---- | --- | --- | --- | --- |
-Small | Up to 5 | Up to 50 | 2 | 8 GB |
-Medium | Up to 15 | Up to 200 | 4 | 16 GB |
-Large | Up to 50 | Up to 500 | 8 | 32 GB |
-X-Large | Up to 100 | Up to 1000 | 32 | 128 GB |
-XX-Large | 100+ | 1000+ | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
+| Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
+| --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
+| Small           | Up to 5   | Up to 50   | 2                                               | 8 GB                                            |
+| Medium          | Up to 15  | Up to 200  | 4                                               | 16 GB                                           |
+| Large           | Up to 50  | Up to 500  | 8                                               | 32 GB                                           |
+| X-Large         | Up to 100 | Up to 1000 | 32                                              | 128 GB                                          |
+| XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
 
 <br>
 
 **[Single Node]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/) Requirements**
 
-Deployment Size | Clusters | Nodes | vCPUs | RAM |
---- | --- | --- | --- | --- |
-Small | Up to 5 | Up to 50 | 1 | 4 GB |
-Medium | Up to 15 | Up to 200 | 2 | 8 GB |
+| Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
+| --------------- | -------- | --------- | ----- | ---- |
+| Small           | Up to 5  | Up to 50  | 1     | 4 GB |
+| Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
 
 <br/>
 
