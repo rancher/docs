@@ -61,19 +61,6 @@ Accessing Cluster from Outside
 Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace
 "localhost" with the IP or name of your k3s server. `kubectl` can now manage your k3s cluster.
 
-Open Ports / Network Security
----------------------------
-
-The server needs port 6443 to be accessible by the nodes.  The nodes need to be able to reach
-other nodes over UDP port 8472.  This is used for flannel VXLAN.  If you don't use flannel
-and provide your own custom CNI, then 8472 is not needed by k3s. The node should not listen
-on any other port.  k3s uses reverse tunneling such that the nodes make outbound connections
-to the server and all kubelet traffic runs through that tunnel.
-
-IMPORTANT. The VXLAN port on nodes should not be exposed to the world, it opens up your
-cluster network to accessed by anyone.  Run your nodes behind a firewall/security group that
-disables access to port 8472.
-
 Node Registration
 -----------------
 
@@ -86,18 +73,16 @@ password file should be recreated for the agent, or the entry removed from the s
 Containerd and Docker
 ----------
 
-k3s includes and defaults to containerd. Why? Because it's just plain better. If you want to
-run with Docker first stop and think, "Really? Do I really want more headache?" If still
-yes then you just need to run the agent with the `--docker` flag.
+k3s includes and defaults to containerd. If you want to use Docker instead of containerd then you simply need to run the agent with the `--docker` flag.
 
 k3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`, for advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
 The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
 
-Rootless
+Rootless (Experimental)
 --------
 
-_**WARNING**:_ Some advanced magic, user beware
+_**WARNING**:_ Experimental feature
 
 Initial rootless support has been added but there are a series of significant usability issues surrounding it.
 We are releasing the initial support for those interested in rootless and hopefully some people can help to
@@ -185,14 +170,10 @@ this should be edited as appropriate for your architecture. As of this writing m
 the following images relevant to k3s: `amd64:v0.3.3`, `arm64:v0.3.2`, and `arm:v0.3.2`. Further information
 on the images provided through gcr.io can be found at https://console.cloud.google.com/gcr/images/google-containers/GLOBAL.
 
-Storage Backends
+Storage Backends (Experimental)
 ----------------
 
 As of version 0.6.0, k3s can support various storage backends including: SQLite (default), MySQL, Postgres, and etcd, this enhancement depends on the following arguments that can be passed to k3s server:
-
-* `--storage-backend` _value_
-
-    Specify storage type etcd3 or kvsql [$`K3S_STORAGE_BACKEND`]
 
 * `--storage-endpoint` _value_
 
@@ -271,13 +252,11 @@ The above command will use these certificates to generate the tls config to comm
 Connection to etcd3 can be established using the following command:
 
 ```
-     --storage-backend=etcd3 \
      --storage-endpoint="https://127.0.0.1:2379"
 ```
 The above command will attempt to connect insecurely to etcd on localhost with port `2379`, you can connect securely to etcd using the following command:
 
 ```
-     --storage-backend=etcd3 \
      --storage-endpoint="https://127.0.0.1:2379" \
      --storage-cafile ca.crt \
      --storage-certfile etcd.crt \
