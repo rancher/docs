@@ -3,7 +3,11 @@ title: Bastion/Jump Host Configuration
 weight: 220
 ---
 
+<<<<<<< HEAD
 Since RKE uses `ssh` to connect to [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/), you can configure to use a bastion host. Keep in mind that the [port requirements]({{< baseurl >}}/rke/latest/en/os/#ports) for the RKE node move to the configured bastion host. Your private SSH key(s) only needs to reside on the host running RKE. You do not need to copy your private SSH key(s) to the bastion host.
+=======
+Since RKE uses `ssh` to connect to [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/), you can configure the `cluster.yml` so RKE will use a bastion host. Keep in mind that the [port requirements]({{< baseurl >}}/rke/latest/en/os/#ports) for the RKE node move to the configured bastion host.
+>>>>>>> Clarified location of configuration
 
 ```yaml
 bastion_host:
