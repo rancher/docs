@@ -23,7 +23,7 @@ Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/nod
 
 On the first machine, run the following command to install k3s and connect it to the database.
 
->**Note:** You may wish to taint the master nodes. They will run the kubelet by default and be scheduleable. You can only add node labels and taints during the install process. If you wish to do this, use the `--node-taint` flag. For example `--node-taint key1=value1:NoExecute` the folllowing examples do not include this flag.
+>**Note:** You may wish to taint the master nodes. They will run the kubelet by default and be scheduleable. You can only add node labels and taints during the install process. If you wish to do this, use the `--node-taint` flag. For example `--node-taint key1=value1:NoExecute` the following examples do not include this flag.
 
 ```
 curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='postgres://username:password@hostname:5432/dbname' --bootstrap-save

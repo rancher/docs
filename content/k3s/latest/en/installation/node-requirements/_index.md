@@ -17,7 +17,7 @@ k3s should run on just about any flavor of Linux. However, k3s is tested on the 
 
 ## Hardware
 
-Hardware requirements scale based on the size of your deployments. Minimum recommenedations are outlined here.
+Hardware requirements scale based on the size of your deployments. Minimum recommendations are outlined here.
 
 *    RAM: 512MB Minimum
 *    CPU: 1 Minimum
