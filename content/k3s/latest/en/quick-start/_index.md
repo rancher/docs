@@ -3,7 +3,7 @@ title: "Quick-Start Guide"
 weight: 1
 ---
 
->**Note:** The intent of this guide is to quickly launch a cluster that you can use to evaluate K3S. This guide is not intended for production environments. Production environments should utilize a High-Availability solutuion. The [installation options](../installation) section covers in greater detail how K3S can be setup.
+>**Note:** The intent of this guide is to quickly launch a cluster that you can use to evaluate k3s. This guide is not intended for production environments. Production environments should utilize a High-Availability solutuion. The [installation options](../installation) section covers in greater detail how k3s can be setup.
 
 Install Script
 --------------
