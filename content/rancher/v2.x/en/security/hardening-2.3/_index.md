@@ -1325,6 +1325,7 @@ docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
 enable_cluster_monitoring: false
 enable_network_policy: false
+default_pod_security_policy_template_id: restricted
 #
 # Rancher Config
 #
