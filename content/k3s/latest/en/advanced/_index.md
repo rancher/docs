@@ -36,9 +36,6 @@ INFO[2019-01-22T15:16:20.541049100-07:00] Run: k3s kubectl
 The output will likely be much longer as the agent will create a lot of logs. By default the server
 will register itself as a node (run the agent).
 
-It is common and almost required these days that the control plane be part of the cluster.
-To disable the agent when running the server use the `--disable-agent` flag, the agent can then be run as a separate process.
-
 Alpine Linux
 ------------
 
