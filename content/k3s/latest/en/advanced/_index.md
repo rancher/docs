@@ -1,9 +1,9 @@
 ---
-title: "Running K3S"
+title: "Advanced Options"
 weight: 3
 ---
 
-This section contains information for running k3s in various environments.
+This section contains advanced information describing the different ways you can run and manage k3s.
 
 Starting the Server
 ------------------

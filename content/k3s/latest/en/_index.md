@@ -1,6 +1,6 @@
 ---
-title: "K3S - 5 less than k8s"
-shortTitle: K3S
+title: "k3s - 5 less than k8s"
+shortTitle: k3s
 date: 2019-02-05T09:52:46-07:00
 name: "menu"
 ---
