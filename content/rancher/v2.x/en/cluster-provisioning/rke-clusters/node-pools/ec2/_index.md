@@ -40,7 +40,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 		{{< step_create-cloud-credential >}}
 
 		- **Zone and Network** configures the availability zone and network settings for your cluster.
-		- **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{< baseurl >}}/rancher/v2.x/en/installation/references/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
+		- **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#port-requirements/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
 		- **Instance** configures the instances that will be created. Make sure you configure the correct **SSH User** for the configured AMI.
 <br><br>
 		If you need to pass an **IAM Instance Profile Name** (not ARN), for example, when you want to use a [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers), you will need an additional permission in your policy. See [Example IAM policy with PassRole](#example-iam-policy-with-passrole) for an example policy.

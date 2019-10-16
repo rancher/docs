@@ -9,7 +9,7 @@ Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG
 
 ### Double check if all the required ports are opened in your (host) firewall
 
-Double check if all the [required ports]({{< baseurl >}}/rancher/v2.x/en/installation/references/) are opened in your (host) firewall. The overlay network uses UDP in comparison to all other required ports which are TCP.
+Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#port-requirements/) are opened in your (host) firewall. The overlay network uses UDP in comparison to all other required ports which are TCP.
 
 ### Check if overlay network is functioning correctly
 
@@ -58,7 +58,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
     => End network overlay test
     ```
 
-If you see error in the output, that means that the [required ports]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for overlay networking are not opened between the hosts indicated.
+If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#port-requirements/) for overlay networking are not opened between the hosts indicated.
 
 Example error output of a situation where NODE1 had the UDP ports blocked.
 
