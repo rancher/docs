@@ -1,5 +1,6 @@
 ---
 title: Creating a Cluster with Custom Nodes
+description: To create a cluster with custom nodes you’ll need to access to servers in your cluster and provision them according to Rancher requirements 
 shortTitle: Custom Nodes
 weight: 2225
 aliases:

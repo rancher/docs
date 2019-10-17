@@ -1,5 +1,6 @@
 ---
-title: Adding TLS Secrets
+title: Adding Kubernetes TLS Secrets
+description: Read about how to populate the Kubernetes TLS secret for a Rancher installation 
 weight: 276
 ---
 

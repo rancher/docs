@@ -1,5 +1,6 @@
 ---
 title: Port Requirements
+description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and Kubernetes cluster nodes
 weight: 300
 aliases:
   - /rancher/v2.x/en/hosts/amazon/#required-ports-for-rancher-to-work/

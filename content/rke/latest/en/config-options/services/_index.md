@@ -1,5 +1,6 @@
 ---
-title: Kubernetes Default Services
+title: Default Kubernetes Services
+description: To deploy Kubernetes, RKE deploys several default Kubernetes services. Read about etcd, kube-api server, kubelet, kube-proxy and more
 weight: 230
 ---
 

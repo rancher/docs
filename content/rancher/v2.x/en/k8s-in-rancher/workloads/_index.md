@@ -1,5 +1,6 @@
 ---
-title: Workloads
+title: Kubernetes Workloads and Pods
+description: Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods
 weight: 3025
 aliases:
   - /rancher/v2.x/en/concepts/workloads/

@@ -1,5 +1,6 @@
 ---
-title: Installation
+title: Installing Rancher in Development and Production Environments
+description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 50
 ---
 This section contains instructions for installing Rancher in development and production environments.

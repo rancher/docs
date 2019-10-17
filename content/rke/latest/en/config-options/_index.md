@@ -1,5 +1,6 @@
 ---
-title: Config Options
+title: Kubernetes Configuration Options
+description: There are a lot of different Kubernetes Configuration options you can choose from when setting up your cluster.yml for RKE
 weight: 200
 ---
 

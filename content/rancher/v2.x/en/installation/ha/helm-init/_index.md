@@ -1,5 +1,6 @@
 ---
-title: "3. Initialize Helm (Install Tiller)"
+title: Initialize Helm: Install the Tiller Service
+description: With Helm you can create configurable deployments instead of using static files. In order to use Helm, the tiller service needs to be installed on your cluster.
 weight: 195
 ---
 

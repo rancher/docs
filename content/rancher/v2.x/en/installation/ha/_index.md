@@ -1,5 +1,6 @@
 ---
 title: High Availability (HA) Install
+description: For production environments, install Rancher in a high-availability configuration. Read the guide for setting up a 3-node cluster and still install Rancher using a helm chart.
 weight: 275
 ---
 

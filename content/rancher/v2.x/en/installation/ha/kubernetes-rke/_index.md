@@ -1,5 +1,6 @@
 ---
-title: "2. Install Kubernetes with RKE"
+title: Install Kubernetes with RKE
+description: Learn how to use Rancher Kubernetes Enginge (RKE) to install Kubernetes with a high availability etcd configuration.
 weight: 190
 ---
 

@@ -1,5 +1,6 @@
 ---
-title: Registries
+title: Kubernetes Registry and Docker Registry
+description: Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the Rancher UI
 weight: 3063
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-registries/

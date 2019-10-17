@@ -1,5 +1,6 @@
 ---
 title: Single Node Install
+description: For development and testing environments, use a single node install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
 weight: 250
 aliases:
   - /rancher/v2.x/en/installation/single-node-install/

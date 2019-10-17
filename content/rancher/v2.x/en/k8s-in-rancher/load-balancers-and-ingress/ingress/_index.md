@@ -1,5 +1,6 @@
 ---
-title: Ingress
+title: Adding Ingresses to Your Project
+description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path based routing. Learn how to Add Rancher Ingress to your project
 weight: 3042
 aliases:
   - /rancher/v2.x/en/tasks/workloads/add-ingress/

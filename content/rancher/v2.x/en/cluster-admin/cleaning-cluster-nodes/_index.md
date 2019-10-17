@@ -1,5 +1,6 @@
 ---
-title: Cleaning up Clusters
+title: Performing Cluster Cleanup When Removing Nodes
+description: Learn about cluster cleanup when removing nodes from your Rancher launched Kubernetes cluster. What is removed, how to do it manually
 weight: 2055
 aliases:
   - /rancher/v2.x/en/faq/cleaning-cluster-nodes/

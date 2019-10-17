@@ -1,5 +1,6 @@
 ---
-title:  Pipelines
+title:  Rancher's CI/CD Pipelines
+description: Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users
 weight: 2529
 aliases:
   - /rancher/v2.x/en/concepts/ci-cd-pipelines/

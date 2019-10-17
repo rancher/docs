@@ -1,5 +1,6 @@
 ---
-title: Catalogs and Apps
+title: Catalogs, Helm Charts and Apps
+description: Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment ready apps.
 weight: 4000
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/catalog/

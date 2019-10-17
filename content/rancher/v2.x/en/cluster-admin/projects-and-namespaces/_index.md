@@ -1,5 +1,6 @@
 ---
-title: Projects and Namespaces
+title: Projects and Kubernetes Namespaces with Rancher
+description: Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespace
 weight: 2032
 aliases:
   - /rancher/v2.x/en/concepts/projects/

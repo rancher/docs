@@ -1,5 +1,6 @@
 ---
 title: Adding and Removing Nodes
+description: RKE supports adding/removing nodes for worker and controlplane hosts. Learn about the changes you need to make to the cluster.yml in order add/remove nodes
 weight: 175
 aliases:
   - /rke/latest/en/installation/managing-clusters/

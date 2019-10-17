@@ -1,6 +1,7 @@
 ---
 title: Overview of RKE
 shortTitle: RKE
+description: RKE solves Kubernetes installation complexity. With RKE, Kubernetes installation is simplified, regardless of what OSs and platforms you’re running.
 weight: 1
 ---
 
