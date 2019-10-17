@@ -1,10 +1,9 @@
 ---
-title: "Quick-Start"
+title: "Quick-Start Guide"
 weight: 1
 ---
 
-There are many ways to run k3s, we cover a couple easy ways to get started in this section.
-The [installation options](../installation) section will cover in greater detail how k3s can be setup.
+>**Note:** The intent of this guide is to quickly launch a cluster that you can use to evaluate k3s. This guide is not intended for production environments. Production environments should utilize a High-Availability solution. The [installation options](../installation) section covers in greater detail how k3s can be setup.
 
 Install Script
 --------------
@@ -15,30 +14,12 @@ curl -sfL https://get.k3s.io | sh -
 ```
 
 A kubeconfig file is written to `/etc/rancher/k3s/k3s.yaml` and the service is automatically started or restarted.
-The install script will install k3s and additional utilities, such as `kubectl`, `crictl`, `k3s-killall.sh`, and `k3s-uninstall.sh`, for example:
+The install script will install k3s and additional utilities, such as `kubectl`, `crictl`, `ctr`, `k3s-killall.sh`, and `k3s-uninstall.sh`.
 
-```bash
-sudo kubectl get nodes
-```
+To install on worker nodes and add them to the cluster, we should pass `K3S_URL` along with `K3S_TOKEN` or `K3S_CLUSTER_SECRET` environment variables. `K3S_TOKEN` is created at `/var/lib/rancher/k3s/server/node-token` on your server. Here is an example showing how to join a node:
 
-`K3S_TOKEN` is created at `/var/lib/rancher/k3s/server/node-token` on your server.
-To install on worker nodes we should pass `K3S_URL` along with
-`K3S_TOKEN` or `K3S_CLUSTER_SECRET` environment variables, for example:
 ```bash
 curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
 ```
 
-Manual Download
----------------
-1. Download `k3s` from latest [release](https://github.com/rancher/k3s/releases/latest), x86_64, armhf, and arm64 are supported.
-2. Run server.
-
-```bash
-sudo k3s server &
-# Kubeconfig is written to /etc/rancher/k3s/k3s.yaml
-sudo k3s kubectl get nodes
-
-# On a different node run the below. NODE_TOKEN comes from 
-# /var/lib/rancher/k3s/server/node-token on your server
-sudo k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
-```
+Note: Each machine must have a unique hostname. If your machines do not have unique hostnames, pass the `K3S_NODE_NAME` environment variable and provide a value with a valid and unique hostname for each node.
