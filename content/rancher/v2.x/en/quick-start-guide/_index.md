@@ -1,6 +1,6 @@
 ---
-title: Quick Start Guides
-short title: Quick Start Index
+title: Rancher Deployment Quick Start Guides
+short title: Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases. 
 weight: 25
 ---
 >**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{< baseurl >}}/rancher/v2.x/en/installation/).

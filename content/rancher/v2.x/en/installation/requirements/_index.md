@@ -1,5 +1,6 @@
 ---
 title: Installation Requirements
+description: Learn the node requirements for each node running Rancher server when you’re configuring  Rancher to run either in a single-node or high-availability setup
 weight: 1
 aliases:
   - /rancher/v2.x/en/installation/references

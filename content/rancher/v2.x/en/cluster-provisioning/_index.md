@@ -1,5 +1,6 @@
 ---
 title: Provisioning Kubernetes Clusters
+description: Read about Kubernetes clusters, what they are, the different node types, and how to create clusters in Rancher
 weight: 2000
 aliases:
   - /rancher/v2.x/en/concepts/clusters/

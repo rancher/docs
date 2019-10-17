@@ -1,5 +1,6 @@
 ---
-title: Logging
+title: Rancher Integration with Logging Services
+description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
 weight: 3
 aliases:
   - /rancher/v2.x/en/tasks/logging/
