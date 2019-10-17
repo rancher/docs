@@ -51,7 +51,7 @@ At this time, we only support Docker.
 
 **Does Rancher v2.x support Calico, Contiv, Contrail, Flannel, Weave net, etc., for embedded and imported Kubernetes?**
 
-We provide the ability to use Calico, Canal, and Flannel, but always refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/) on what is officially supported.
+Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0).  Always refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/) for details about what is officially supported.
 
 <br>
 
