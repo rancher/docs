@@ -211,6 +211,10 @@ The following information on server options is also available through `k3s serve
 
     (agent) Override default flannel interface
 
+* `--flannel-backend` _value_
+
+    (agent) Specify the flannel backend you would like to use: vxlan (default), ipsec, or wireguard
+
 * `--container-runtime-endpoint` _value_
 
     (agent) Disable embedded containerd and use alternative CRI implementation
@@ -279,6 +283,10 @@ The following information on agent options is also available through `k3s agent 
 * `--flannel-iface` _value_
 
     (agent) Override default flannel interface
+
+* `--flannel-backend` _value_
+
+    (agent) Specify the flannel backend you would like to use: vxlan (default), ipsec, or wireguard
 
 * `--node-name` _value_
 
