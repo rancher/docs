@@ -284,10 +284,6 @@ The following information on agent options is also available through `k3s agent 
 
     (agent) Override default flannel interface
 
-* `--flannel-backend` _value_
-
-    (agent) Specify the flannel backend you would like to use: vxlan (default), ipsec, or wireguard
-
 * `--node-name` _value_
 
     (agent) Node name [$`K3S_NODE_NAME`]
