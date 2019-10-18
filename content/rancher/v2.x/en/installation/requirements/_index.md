@@ -116,7 +116,9 @@ This section describes the port requirements for nodes running the `rancher/ranc
 
 The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
 
-In the [HA installation instructions,]({{<baseurl>}}/rancher/v2.x/en/installation/ha) a Rancher server is installed on three nodes, where each node is assigned all three Kubernetes roles: etcd, controlplane, and worker. The rules below apply to all three of the nodes in the Rancher server cluster.
+In the [HA installation instructions,]({{<baseurl>}}/rancher/v2.x/en/installation/ha) a Rancher server is installed on three nodes, where each node is assigned all three Kubernetes roles: etcd, controlplane, and worker. In that case, the rules below apply to all three of the nodes in the Rancher server cluster.
+
+For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 
 <figcaption>Port Requirements for the Rancher Management Plane</figcaption>
 
