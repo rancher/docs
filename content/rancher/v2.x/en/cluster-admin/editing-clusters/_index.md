@@ -79,7 +79,7 @@ As of Rancher v2.3.0, the Kubernetes metadata feature was added, which allows Ra
 
 **Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable.
 
-> **Note:** The `ingress-nginx` pods are set to only upgrade on delete. After upgrading your cluster, you need to delete these pods to get the correct version for your deployment. 
+> **Note:** Check the upgrade policy of the `ingress-nginx` pods. If the upgrade policy is set to **onDelete,** you will need to delete these pods to get the correct version for your deployment.
 
 ### Adding a Pod Security Policy
 
