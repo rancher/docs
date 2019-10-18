@@ -51,8 +51,6 @@ Begin by using Rancher CLI to export the configuration for the cluster that you 
 
 ## 2. Modify Cluster Config
 
-> As of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
-
 Use your favorite text editor to modify the cluster configuration in `cluster-template.yml` for your cloned cluster.
 
 > **Note:** As of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
