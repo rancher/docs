@@ -1,6 +1,8 @@
 ---
 title: "Advanced Options"
 weight: 3
+aliases:
+  - /rancher.com/docs/k3s/latest/en/running/
 ---
 
 This section contains advanced information describing the different ways you can run and manage k3s.
