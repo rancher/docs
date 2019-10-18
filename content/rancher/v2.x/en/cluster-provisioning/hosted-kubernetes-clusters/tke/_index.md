@@ -48,6 +48,8 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
     | VPC | Select the VPC name that you have created in the Tencent Cloud Console. |
     | Container Network CIDR | Enter the CIDR range of your Kubernetes cluster, you may check the available range of the CIDR in the VPC service of the Tencent Cloud Console. Default to 172.16.0.0/16. |
 
+> Note: If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+
 7. Click `Next: Select Instance Type` to choose the instance type that will use for your TKE cluster.
 
     | Option | Description                                                                                                          |

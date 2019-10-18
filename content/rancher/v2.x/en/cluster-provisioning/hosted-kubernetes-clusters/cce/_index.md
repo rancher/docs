@@ -50,6 +50,8 @@ Huawei CCE service doesn't support the ability to create clusters with public ac
 	| Cluster Label | The labels for the cluster. |
 	| Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
 
+> Note: If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+
 7. Fill the following node configuration of the cluster:
 
     |Settings|Description|
