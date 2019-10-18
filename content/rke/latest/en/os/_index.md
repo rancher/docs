@@ -190,7 +190,6 @@ docker version --format '{{.Server.Version}}'
 - OpenSSH 7.0+ - In order to SSH into each node, OpenSSH must be installed on each node.
 
 ## Ports
-
 {{< ports-rke-nodes >}}
 {{< requirements_ports_rke >}}
 

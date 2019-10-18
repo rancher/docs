@@ -88,7 +88,9 @@ When deploying Rancher in an HA cluster, certain ports on your nodes must be ope
 
 <figcaption>Cluster Type Port Requirements</figcaption>
 
-![Basic Port Requirements]({{< baseurl >}}/img/rancher/port-communications.svg)
+In the [HA installation instructions,]({{<baseurl>}}/rancher/v2.x/en/installation/ha) a Rancher server is installed on three nodes, where each node is assigned all three Kubernetes roles: etcd, controlplane, and worker. In that case, the rules below apply to all three of the nodes in the Rancher server cluster.
+
+For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 
 {{< requirements_ports_rancher >}}
 {{< requirements_ports_rke >}}
