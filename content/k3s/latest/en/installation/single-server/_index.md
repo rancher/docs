@@ -245,8 +245,7 @@ The following information on server options is also available through `k3s serve
 
 * `--node-taint` _value_
 
-    (agent) Registering kubelet with set of taints
-    
+    (agent) Registering kubelet with set of taints    
 
 Agent Options
 ------------------
