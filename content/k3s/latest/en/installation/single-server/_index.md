@@ -191,6 +191,10 @@ The following information on server options is also available through `k3s serve
 
     SSL key file used to secure storage backend communication [$`K3S_STORAGE_KEYFILE`]
 
+* `--disable-cloud-controller`
+
+    Disable k3s default cloud controller manager
+
 * `--node-ip` _value_, `-i` _value_
 
     (agent) IP address to advertise for node
@@ -242,6 +246,7 @@ The following information on server options is also available through `k3s serve
 * `--node-taint` _value_
 
     (agent) Registering kubelet with set of taints
+    
 
 Agent Options
 ------------------
