@@ -65,6 +65,7 @@ _Available as of v2.2.0_
 1. Select the **Recipient Type** and then enter a corresponding id to **Default Recipient** field, for example, the party id, tag id or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).
 {{% /accordion %}}
 
+1. _Available as of v2.3.0_ - Select **Enable** for **Send Resolved Alerts** if you wish to notify about resolved alerts.
 1. Click **Add** to complete adding the notifier.
 
 **Result:** Your notifier is added to Rancher.
