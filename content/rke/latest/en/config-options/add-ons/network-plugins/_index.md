@@ -96,4 +96,4 @@ Weave encryption can be enabled by passing a string password to the network prov
 
 ## Custom Network Plug-ins
 
-It is possible to add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. In the `addons` field, you can provide a network plug-in manifest as a `configmap` for the cluster.
+It is possible to add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. In the `addons` field, you can add the add-on manifest of a cluster that has the network plugin-that you want. 
