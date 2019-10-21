@@ -29,7 +29,7 @@ When provisioning clusters in Rancher using the [vSphere node driver]({{< baseur
 6. Expand **Cluster Options** and configure as required.
 7. Set **Cloud Provider** option to `Custom`.
 
-    ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
+    {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
 
 8. Click on **Edit as YAML**
 9. Insert the following top-level structure to the pre-populated cluster YAML. Note that the `name` *must* be set to `vsphere`. Refer to the [configuration reference](#configuration-reference) to learn about the properties of the `vsphereCloudProvider` directive.
@@ -200,7 +200,7 @@ The required property can be set while creating or modifying VMs in the vSphere 
 1. For each VM navigate to the tab **VM Options** and click on **Edit Configuration**.
 2. Add the parameter `disk.EnableUUID` with a value of **TRUE**.
 
-    ![vsphere-advanced-parameters]({{< baseurl >}}/img/rke/vsphere-advanced-parameters.png)
+    {{< img "/img/rke/vsphere-advanced-parameters.png" "vsphere-advanced-parameters">}}
 
 #### Using the GOVC CLI tool
 
@@ -222,7 +222,7 @@ When creating new clusters in Rancher using vSphere node templates, you can conf
 
 4. Enter `disk.enableUUID` as key with a value of **TRUE**.
 
-    ![vsphere-nodedriver-enable-uuid]({{< baseurl >}}/img/rke/vsphere-nodedriver-enable-uuid.png)
+    {{< img "/img/rke/vsphere-nodedriver-enable-uuid.png" "vsphere-nodedriver-enable-uuid">}}
 
 5. Click **Create** or **Save**.
 

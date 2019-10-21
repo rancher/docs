@@ -61,7 +61,7 @@ For example, for the web-deployment.yml file parsed from v1.6 that we've been us
 
 <figcaption>Port Mapping: Setting HostPort</figcaption>
 
-![Set HostPort]({{< baseurl >}}/img/rancher/set-hostport.gif)
+{{< img "/img/rancher/set-hostport.gif" "Set HostPort">}}
 
 ## NodePort
 

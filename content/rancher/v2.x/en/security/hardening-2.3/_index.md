@@ -526,7 +526,7 @@ Enabling the `DenyEscalatingExec` admission control plugin will prevent the 'Lau
 To pass the following controls for the kube-api server ensure RKE configuration passes the appropriate options.
 
 - 1.1.1 - Ensure that the `--anonymous-auth` argument is set to false (Scored)
-- 1.1.8 - Ensure that the `--profiling argument` is set to false (Scored)
+- 1.1.8 - Ensure that the `--profiling` argument is set to false (Scored)
 - 1.1.11 - Ensure that the admission control plugin `AlwaysPullImages` is set (Scored)
 - 1.1.12 - Ensure that the admission control plugin `DenyEscalatingExec` is set (Scored)
 - 1.1.14 - Ensure that the admission control plugin `NamespaceLifecycle` is set (Scored)

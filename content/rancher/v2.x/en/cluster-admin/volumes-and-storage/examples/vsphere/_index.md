@@ -23,7 +23,7 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 3. Enter a **Name** for the class.
 4. Under **Provisioner**, select **VMWare vSphere Volume**.
 
-	![vsphere-storage-class]({{< baseurl >}}/img/rancher/vsphere-storage-class.png)
+    {{< img "/img/rancher/vsphere-storage-class.png" "vsphere-storage-class">}}
 
 5. Optionally, specify additional properties for this storage class under **Parameters**. Refer to the [vSphere storage documentation](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/storageclass.html) for details.
 5. Click **Save**.
@@ -37,7 +37,7 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 5. Assign a **Name** for the claim, ie. `test-volume` and select the vSphere storage class created in the previous step.
 6. Enter the required **Capacity** for the volume. Then click **Define**.
 
-    ![workload-add-volume]({{< baseurl >}}/img/rancher/workload-add-volume.png)
+    {{< img "/img/rancher/workload-add-volume.png" "workload-add-volume">}}
 
 7. Assign a path in the **Mount Point** field. This is the full path where the volume will be mounted in the container file system, e.g. `/persistent`.
 8. Click **Launch** to create the workload.

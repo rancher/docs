@@ -13,7 +13,7 @@ There are two recommended deployment strategies. Each one has its own pros and c
 
 In this deployment scenario, there is a single Rancher control plane managing Kubernetes clusters across the globe. The control plane would be run in an HA (high-availability) configuration, and there would be impact due to latencies.
 
-![Hub and Spoke Deployment]({{< baseurl >}}/img/rancher/bpg/hub-and-spoke.png)
+{{< img "/img/rancher/bpg/hub-and-spoke.png" "Hub and Spoke Deployment">}}
 
 ### Pros
 
@@ -30,7 +30,7 @@ In this deployment scenario, there is a single Rancher control plane managing Ku
 ---
 In the regional deployment model a control plane is deployed in close proximity to the compute nodes.
 
-![Regional Deployment]({{< baseurl >}}/img/rancher/bpg/regional.png)
+{{< img "/img/rancher/bpg/regional.png" "Regional Deployment">}}
 
 ### Pros
 

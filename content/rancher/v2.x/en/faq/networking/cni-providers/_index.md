@@ -55,7 +55,7 @@ In Rancher, Canal is the default CNI network provider combined with Flannel and 
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [Port Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/references/) for more details.
 
-![Canal Diagram]({{< baseurl >}}/img/rancher/canal-diagram.png)
+{{< img "/img/rancher/canal-diagram.png" "Canal Diagram">}}
 
 For more information, see the [Canal GitHub Page](https://github.com/projectcalico/canal).
 

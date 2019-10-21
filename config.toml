@@ -5,6 +5,7 @@ title = "Rancher Labs"
 theme = "rancher-website-theme"
 themesDir = "node_modules"
 pluralizeListTitles = false
+timeout = 30000
 
 enableRobotsTXT = true
 pygmentsCodeFences = true

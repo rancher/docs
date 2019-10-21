@@ -7,7 +7,6 @@ The `nodes` directive is the only required section in the `cluster.yml` file. It
 
 ```yaml
 nodes:
-    nodes:
     - address: 1.1.1.1
       user: ubuntu
       role:

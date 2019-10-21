@@ -1,9 +1,11 @@
 ---
-title: "Running K3S"
+title: "Advanced Options"
 weight: 3
+aliases:
+  - /k3s/latest/en/running/
 ---
 
-This section contains information for running k3s in various environments.
+This section contains advanced information describing the different ways you can run and manage k3s.
 
 Starting the Server
 ------------------
@@ -35,84 +37,6 @@ INFO[2019-01-22T15:16:20.541049100-07:00] Run: k3s kubectl
 
 The output will likely be much longer as the agent will create a lot of logs. By default the server
 will register itself as a node (run the agent).
-
-It is common and almost required these days that the control plane be part of the cluster.
-To disable the agent when running the server use the `--disable-agent` flag, the agent can then be run as a separate process.
-
-Joining Nodes
--------------
-
-When the server starts it creates a file `/var/lib/rancher/k3s/server/node-token`. 
-Using the contents of that file as `K3S_TOKEN` and setting `K3S_URL` allows the node
-to join as an agent using the install script:
-
-    curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
-
-When using the install script openrc logs will be created at `/var/log/k3s-agent.log`, or with systemd in `/var/log/syslog` and viewed using `journalctl -u k3s-agent`.
-
-Or running k3s manually with the token as `NODE_TOKEN`:
-
-    k3s agent --server https://myserver:6443 --token ${NODE_TOKEN}
-
-SystemD
--------
-
-If you are using systemd here is a sample unit `k3s.service`:
-
-```ini
-[Unit]
-Description=Lightweight Kubernetes
-Documentation=https://k3s.io
-After=network-online.target
-
-[Service]
-Type=notify
-EnvironmentFile=/etc/systemd/system/k3s.service.env
-ExecStart=/usr/local/bin/k3s server
-KillMode=process
-Delegate=yes
-LimitNOFILE=infinity
-LimitNPROC=infinity
-LimitCORE=infinity
-TasksMax=infinity
-TimeoutStartSec=0
-Restart=always
-RestartSec=5s
-
-[Install]
-WantedBy=multi-user.target
-```
-
-OpenRC
-------
-
-And an example openrc `/etc/init.d/k3s`:
-
-```bash
-#!/sbin/openrc-run
-
-depend() {
-    after net-online
-    need net
-}
-
-start_pre() {
-    rm -f /tmp/k3s.*
-}
-
-supervisor=supervise-daemon
-name="k3s"
-command="/usr/local/bin/k3s"
-command_args="server >>/var/log/k3s.log 2>&1"
-
-pidfile="/var/run/k3s.pid"
-respawn_delay=5
-
-set -o allexport
-if [ -f /etc/environment ]; then source /etc/environment; fi
-if [ -f /etc/rancher/k3s/k3s.env ]; then source /etc/rancher/k3s/k3s.env; fi
-set +o allexport
-```
 
 Alpine Linux
 ------------
