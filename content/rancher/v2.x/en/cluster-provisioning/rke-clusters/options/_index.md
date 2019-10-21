@@ -63,7 +63,7 @@ The registry configuration here is applied during the provisioning of the cluste
 - **System images** are components needed to maintain the Kubernetes cluster. 
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
+To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
 
 See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
