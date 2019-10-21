@@ -27,7 +27,7 @@ When creating a secret, you can make it available for any deployment within a pr
 
   >**Tip:** You can add multiple key value pairs to the secret by copying and pasting.
   >
-  > ![Bulk Key Value Pair Copy/Paste]({{< baseurl >}}/img/rancher/bulk-key-values.gif)
+  > {{< img "/img/rancher/bulk-key-values.gif" "Bulk Key Value Pair Copy/Paste">}}
 
 1. Click **Save**.
 

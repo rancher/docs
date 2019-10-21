@@ -34,7 +34,7 @@ ConfigMaps store general configuration information for an application, such as c
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
-	> ![Bulk Key Value Pair Copy/Paste]({{< baseurl >}}/img/rancher/bulk-key-values.gif)
+    > {{< img "/img/rancher/bulk-key-values.gif" "Bulk Key Value Pair Copy/Paste">}}
 
 **Result:** Your ConfigMap is added to the namespace. You can view it in the Rancher UI from the **Resources > Config Maps** view.
 

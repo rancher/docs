@@ -38,21 +38,21 @@ The following steps create a role with the required privileges and then assign i
 
 3. Create a new role.  Give it a name and select the privileges listed in the [permissions table](#annex-vsphere-permissions).
 
-	![image]({{< baseurl >}}/img/rancher/rancherroles1.png)
+    {{< img "/img/rancher/rancherroles1.png" "image">}}
 
 4. Go to the **Users and Groups** tab.
 
 5. Create a new user. Fill out the form and then click **OK**. Make sure to note the username and password, as you will need it when configuring node templates in Rancher.
 
-	![image]({{< baseurl >}}/img/rancher/rancheruser.png)
+    {{< img "/img/rancher/rancheruser.png" "image">}}
 
 6. Go to the **Global Permissions** tab.
 
 7. Create a new Global Permission.  Add the user you created earlier and assign it the role you created earlier. Click **OK**.
 
-	![image]({{< baseurl >}}/img/rancher/globalpermissionuser.png)
+    {{< img "/img/rancher/globalpermissionuser.png" "image">}}
 
-	![image]({{< baseurl >}}/img/rancher/globalpermissionrole.png)
+    {{< img "/img/rancher/globalpermissionrole.png" "image">}}
 
 ## Creating vSphere Clusters
 
@@ -79,13 +79,13 @@ To create a cluster, you need to create at least one vSphere [node template]({{<
 
 7. Ensure that the [OS ISO URL](#instance-options) contains the URL of a VMware ISO release for RancherOS (`rancheros-vmware.iso`).
 
-	![image]({{< baseurl >}}/img/rancher/vsphere-node-template-1.png)
+    {{< img "/img/rancher/vsphere-node-template-1.png" "image">}}
 
 8. **Optional:** Provide a set of [Configuration Parameters](#instance-options) for the VMs.
 
 9. Under **Scheduling**, enter the name/path of the **Data Center** to create the VMs in, the name of the **VM Network** to attach to, and the name/path of the **Datastore** to store the disks in.
 
-	![image]({{< baseurl >}}/img/rancher/vsphere-node-template-2.png)
+    {{< img "/img/rancher/vsphere-node-template-2.png" "image">}}
 
 10. **Optional:** Assign labels to the VMs that can be used as a base for scheduling rules in the cluster.
 
@@ -111,7 +111,7 @@ After you've created a template, you can use it stand up the vSphere cluster its
 
 6. {{< step_create-cluster_node-pools >}}
 
-	![image]({{< baseurl >}}/img/rancher/vsphere-cluster-create-1.png)
+    {{< img "/img/rancher/vsphere-cluster-create-1.png" "Image">}}
 
 7. Review your configuration, then click **Create**.
 
