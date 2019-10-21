@@ -8,12 +8,12 @@ After RKE has deployed Kubernetes, you can upgrade the versions of the component
 ## Kubernetes Version Upgrades
 
 You can use RKE to upgrade the Kubernetes version of clusters previously deployed via RKE. There are two methods of specifying the Kubernetes version to upgrade to:
-- By specifying the [`kubernetes_version`](({{<base url>}}/rke/latest/en/config-options/#kubernetes-version)) configuration in the `cluster.yml`. This is the recommended option, as RKE will then select the appropriate set of cluster component images for that Kubernetes version.
+- By specifying the [`kubernetes_version`](({{< baseurl >}}/rke/latest/en/config-options/#kubernetes-version)) configuration in the `cluster.yml`. This is the recommended option, as RKE will then select the appropriate set of cluster component images for that Kubernetes version.
 - By specifying the [`system_images`]({{< baseurl >}}/rke/latest/en/config-options/system-images/) configuration in the `cluster.yml`. This enables fine-grained control of the image version for each component, but is not recommended for the majority of use cases, as it requires the user to manually configure each component image, and could result in running with images in an un-tested combination.
 
 > **Note:** In case both `kubernetes_version` and `system_images` are defined, the `system_images` configuration will take precedence over `kubernetes_version`. In addition, if neither `kubernetes_version` nor `system_images` are configured in the `cluster.yml`, RKE will apply the default Kubernetes version for the specific version of RKE used to invoke `rke up`. The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
-It is important to ensure that the correct files to manage [Kubernetes cluster state]({{<base url>}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory when invoking `rke up` to upgrade the cluster.
+It is important to ensure that the correct files to manage [Kubernetes cluster state]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory when invoking `rke up` to upgrade the cluster.
 - In v0.1.x, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret. When upgrading a cluster last managed via RKE v0.1.x you should ensure the `kube_config_cluster.yml` file is present in the working directory when invoking `rke up`.
 - As of v0.2.0, RKE creates a `.rkestate` file in the same directory that has the cluster configuration file `cluster.yml`. The `.rkestate` file contains the current state of the cluster including the RKE configuration and the certificates. It is required to keep this file in order to update the cluster or perform any operation on it through RKE. When upgrading a cluster last managed via RKE v0.2.0 or later, you should ensure the `cluster.rkestate` file is present in the working directory when invoking `rke up`.
 
@@ -21,7 +21,7 @@ It is important to ensure that the correct files to manage [Kubernetes cluster s
 
 ### Upgrading using kubernetes_version
 
-To upgrade the Kubernetes version using [`kubernetes_version`]({{<base url>}}/rke/latest/en/config-options/#kubernetes-version), set the `kubernetes_version` string in the `cluster.yml` to the desired version from the list of supported Kubernetes versions for the specific version of RKE. The list of supported Kubernetes versions for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
+To upgrade the Kubernetes version using [`kubernetes_version`]({{< baseurl >}}/rke/latest/en/config-options/#kubernetes-version), set the `kubernetes_version` string in the `cluster.yml` to the desired version from the list of supported Kubernetes versions for the specific version of RKE. The list of supported Kubernetes versions for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
 ```yaml
 kubernetes_version: "v1.15.5-rancher1-1"
