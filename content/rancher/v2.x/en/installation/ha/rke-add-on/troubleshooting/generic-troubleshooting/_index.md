@@ -15,15 +15,7 @@ Below are steps that you can follow to determine what is wrong in your cluster.
 
 ### Double check if all the required ports are opened in your (host) firewall
 
-<<<<<<< HEAD
-Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#port-requirements/) are opened in your (host) firewall.
-=======
-<<<<<<< HEAD
-Double check if all the [required ports]({{< baseurl >}}/rancher/v2.x/en/installation/references/) are opened in your (host) firewall.
-=======
 Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) are opened in your (host) firewall.
->>>>>>> Fix links
->>>>>>> bedbfa3f... Fix links
 
 ### All nodes should be present and in **Ready** state
 
@@ -151,11 +143,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
     => End
     ```
 
-<<<<<<< HEAD
-If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#port-requirements/) for overlay networking are not opened between the hosts indicated.
-=======
 If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) for overlay networking are not opened between the hosts indicated.
->>>>>>> bedbfa3f... Fix links
 
 Example error output of a situation where NODE1 had the UDP ports blocked.
 
