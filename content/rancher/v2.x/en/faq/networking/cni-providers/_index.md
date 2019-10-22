@@ -53,7 +53,7 @@ Canal is a CNI network provider that gives you the best of Flannel and Calico. I
 
 In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). For details, refer to [the port requirements for user clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/)
+Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). For details, refer to [the port requirements for user clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/)
 
 {{< img "/img/rancher/canal-diagram.png" "Canal Diagram">}}
 

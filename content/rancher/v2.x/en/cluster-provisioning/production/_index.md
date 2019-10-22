@@ -13,7 +13,7 @@ For a full list of all the best practices that we recommend, refer to the [best 
 
 ### Node Requirements
 
-* Make sure your nodes fulfill all of the node requirements, including the [port requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements)
+* Make sure your nodes fulfill all of the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/) including the port requirements.
 
 ### Back up etcd
 
