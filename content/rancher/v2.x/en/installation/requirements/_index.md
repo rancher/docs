@@ -8,7 +8,7 @@ aliases:
 
 This page describes the requirements for the nodes where the Rancher server will be installed.
 
-> This section is about the requirements for a Rancher cluster, not the clusters that run your apps and services. The OS and Docker requirements are the same for the Rancher cluster and user clusters, but the requirements for networking and hardware are different. For user cluster requirements, refer to the [node requirements for a user cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/)Your workloads should not run in the same cluster as Rancher. 
+> This section is about the requirements for a Rancher cluster, not the clusters that run your apps and services. The OS and Docker requirements are the same for the Rancher cluster and user clusters, but other requirements are different. For user cluster requirements, refer to the [node requirements for a user cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/)
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
