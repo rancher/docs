@@ -1,6 +1,6 @@
 ---
 title: Commonly Used Ports
-weight: 4
+weight: 5
 ---
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.

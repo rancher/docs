@@ -1,6 +1,6 @@
 ---
 title: Security Group for Nodes on AWS EC2
-weight: 9
+weight: 6
 ---
 
 When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.

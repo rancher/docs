@@ -61,7 +61,7 @@ References:
 
 Adding more than one node with the `worker` role will make sure your workloads can be rescheduled if a node fails.
 
-# Why Production Requirements are Different for the Rancher Cluster and the Clusters Running Your Applications
+### Why Production Requirements are Different for the Rancher Cluster and the Clusters Running Your Applications
 
 You may have noticed that our [High Availability (HA) Install]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) instructions do not meet our definition of a production-ready cluster, as there are no dedicated nodes for the `worker` role. However, for your Rancher installation, this three node cluster is valid, because:
 
