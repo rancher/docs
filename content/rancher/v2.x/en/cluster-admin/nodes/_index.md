@@ -143,7 +143,7 @@ For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en
 1. Enter the following command:
 
     ```
-    ssh -i id_rsa root@<IP_OF_HOST>
+    ssh -i id_rsa docker@<IP_OF_HOST>
     ```
 
 ## Notes for Node Pool Nodes
