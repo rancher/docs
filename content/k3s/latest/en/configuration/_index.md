@@ -161,7 +161,7 @@ If you don't install CoreDNS you will need to install a cluster DNS provider you
 Traefik
 -------
 
-Traefik is deployed by default when starting the server; to disable it, start the server with the `--no-deploy traefik` option.
+Traefik is deployed by default when starting the server; to disable it, start the server with the `--no-deploy traefik` option. The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml` and any changes made to this file will automatically be picked up  deployed to Kubernetes in a manner similar to `kubectl apply`.
 
 Service Load Balancer
 ---------------------
