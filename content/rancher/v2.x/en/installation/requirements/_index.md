@@ -12,7 +12,7 @@ This page describes the requirements for the nodes where the Rancher server will
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
-- [Operating Systems and Docker Requirements](#operating-systems-and-docker)
+- [Operating Systems and Docker Requirements](#operating-systems-and-docker-requirements)
 - [Hardware Requirements](#hardware-requirements)
   - [CPU and Memory](#cpu-and-memory)
   - [Disks](#disks)
@@ -106,7 +106,7 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the nodes where the Rancher server is installed.
 
-### Node IP Address
+### Node IP Addresses
 
 Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, the nodes should have a DHCP reservation to make sure the node gets the same IP allocated.
 
