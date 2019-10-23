@@ -38,6 +38,8 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
    ```
    usermod -aG docker <user_name>
    ```
+   
+> **Note:** Users added to the `docker` group are granted effective root permissions on the host by means of the Docker API. Only choose a user that is intended for this purpose and has its credentials and access properly secured. 
 
    See [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to see how you can configure access to Docker without using the `root` user.
 
