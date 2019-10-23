@@ -3,7 +3,7 @@ title: AWS Cloud Provider
 weight: 251
 ---
 
-To enable the AWS cloud provider, there are no configuration options. You only need to set the name as `aws`. In order to use the AWS cloud provider, all cluster nodes must have already been configured with an [appropriate IAM role](#iam-requirements) and your AWS resources must be [tagged with a cluster ID](#tagging-amazon-resources).
+To enable the AWS cloud provider, there are no RKE configuration options. You only need to set the name as `aws`. In order to use the AWS cloud provider, all cluster nodes must have already been configured with an [appropriate IAM role](#iam-requirements) and your AWS resources must be [tagged with a cluster ID](#tagging-amazon-resources).
 
 ```yaml
 cloud_provider:
