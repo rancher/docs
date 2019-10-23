@@ -5,7 +5,7 @@ weight: 1
 
 This page describes the requirements for the nodes where your apps and services will be installed.
 
-In this section, "user cluster" refers to the clusters that run your apps, which should be separate from the cluster (or single node) running Rancher.
+In this section, "user cluster" refers to a cluster running your apps, which should be separate from the cluster (or single node) running Rancher.
 
 > The Rancher server cluster and user clusters have the same requirements for OS and Docker, but other requirements are different. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
