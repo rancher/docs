@@ -4,7 +4,7 @@ weight: 50
 ---
 This section contains instructions for installing Rancher in development and production environments.
 
-Before installing Rancher, make sure that your nodes fulfull all of the [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+Before installing Rancher, make sure that your nodes fulfill all of the [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 ### Installation Options
 
