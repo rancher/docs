@@ -261,7 +261,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### D. Populate the private registry
 
-Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-images.txt`, `rancher-windows-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script.
+Move the images in the `rancher-images.tar.gz` to your private registry using the `rancher-load-images.sh script` to load the images. The `rancher-images.txt` / `rancher-windows-images.txt` image list is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script.
 
 1. Log into your private registry if required:
 
