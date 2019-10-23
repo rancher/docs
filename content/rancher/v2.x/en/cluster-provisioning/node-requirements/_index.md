@@ -55,7 +55,7 @@ If you are launching a cluster with a hosted Kubernetes provider such as Google 
 
 ### Port Requirements for Imported Clusters
 
-If you are importing an existing cluster, refer to [these requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-imported-clusters})
+If you are importing an existing cluster, refer to [these requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-imported-clusters)
 
 ### Port Requirements for Local Traffic
 
