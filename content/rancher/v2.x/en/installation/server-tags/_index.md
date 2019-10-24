@@ -1,9 +1,15 @@
 ---
-title: Choosing a Version
+title: Choosing a Rancher Version
 weight: 230
 ---
 
-## Single Node Installs
+This section describes how to choose a Rancher version.
+
+For a high-availability installation of Rancher, which is recommended for production, the Rancher server is installed using a Helm chart on a Kubernetes cluster. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
+
+For single node installations of Rancher, which is used for development and testing, you will install Rancher as a Docker image.
+
+# Single Node Installs
 
 When performing [single-node installs]({{< baseurl >}}/rancher/v2.x/en/installation/single-node), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
@@ -17,9 +23,6 @@ Tag                        | Description
 `rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.
 `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.
 
-
-
-
 >**Notes:**
 >
 >- The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
@@ -27,10 +30,11 @@ Tag                        | Description
 >
 >        _Caveat:_ Alpha releases cannot be upgraded to or from any other release.
 
-
-## High Availability Installs
+# High Availability Installs
 
 When installing, upgrading, or rolling back Rancher Server in a [high availability configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/), Rancher server is installed using a Helm chart on a Kubernetes cluster. Therefore, as you prepare to install or upgrade a high availability Rancher configuration, you must add a Helm chart repository that contains the charts for installing Rancher.
+
+Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
 ### Helm Chart Repositories
 

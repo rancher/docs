@@ -5,7 +5,9 @@ weight: 200
 
 Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
 
-> **Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
+For systems without direct internet access, see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
+
+Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
 ### Add the Helm Chart Repository
 
