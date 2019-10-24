@@ -24,7 +24,7 @@ The following CLI tools are required for the HA install. Make sure these tools a
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
 * [rke]({{< baseurl >}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
-* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes.
+* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
 {{% /tab %}}
 {{% /tabs %}}
