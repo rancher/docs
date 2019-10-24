@@ -366,8 +366,8 @@ To pass the following controls in the CIS benchmark, ensure the appropriate flag
 Inspect the Kubelet containers on all hosts and verify that they are running with the following options:
 
 - `--streaming-connection-idle-timeout=<duration greater than 0>`
-- `--protect-kernel-defaults=false`
-- `--make-iptables-util-chains=false`
+- `--protect-kernel-defaults=true`
+- `--make-iptables-util-chains=true`
 - `--event-qps=0`
 
 **Remediation**
