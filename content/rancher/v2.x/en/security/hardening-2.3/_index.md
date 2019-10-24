@@ -431,7 +431,7 @@ Record the uid/gid:
 id etcd
 ```
 
-- Add the following to the RKE `cluster.yml` kubelet section under `services`:
+- Add the following to the RKE `cluster.yml` etcd section under `services`:
 
 ``` yaml
 services:
