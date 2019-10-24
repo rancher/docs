@@ -171,6 +171,10 @@ The following information on server options is also available through `k3s serve
 
     Customized flag for kube-controller-manager process
 
+* `--kube-cloud-controller-arg` _value_
+
+    Customized flag for kube-cloud-controller-manager process
+
 * `--rootless`
 
     (experimental) Run rootless
@@ -191,9 +195,29 @@ The following information on server options is also available through `k3s serve
 
     SSL key file used to secure storage backend communication [$`K3S_STORAGE_KEYFILE`]
 
+* `--advertise-address` _value_
+
+    IP address that apiserver uses to advertise to members of the cluster
+
+* `--advertise-port` _value_
+
+    Port that apiserver uses to advertise to members of the cluster (default: 0)
+
+* `--disable-scheduler`
+
+    Disable Kubernetes default scheduler
+
 * `--disable-cloud-controller`
 
     Disable k3s default cloud controller manager
+
+* `--disable-network-policy`
+
+    Disable k3s default network policy controller
+
+* `--default-local-storage-path` _value_
+
+    Default local storage path for local provisioner storage class
 
 * `--node-ip` _value_, `-i` _value_
 
@@ -214,6 +238,10 @@ The following information on server options is also available through `k3s serve
 * `--flannel-iface` _value_
 
     (agent) Override default flannel interface
+
+* `--flannel-conf` _value_
+
+    (agent) (experimental) Override default flannel config file
 
 * `--flannel-backend` _value_
 
@@ -246,6 +274,14 @@ The following information on server options is also available through `k3s serve
 * `--node-taint` _value_
 
     (agent) Registering kubelet with set of taints
+
+* `--private-registry` _value_
+
+    (agent) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
+
+* `--node-external-ip` _value_
+
+    (agent) External IP address to advertise for node
 
 Agent Options
 ------------------
@@ -288,11 +324,15 @@ The following information on agent options is also available through `k3s agent 
 
     (agent) Override default flannel interface
 
+* `--flannel-conf` _value_
+
+    (agent) (experimental) Override default flannel config file
+
 * `--node-name` _value_
 
     (agent) Node name [$`K3S_NODE_NAME`]
 
-* `--node-ip` _value_, `-i` _value
+* `--node-ip` _value_, `-i` _value_
 
     (agent) IP address to advertise for node
 
@@ -323,6 +363,14 @@ The following information on agent options is also available through `k3s agent 
 * `--node-taint` _value_
 
     (agent) Registering kubelet with set of taints
+
+* `--private-registry` _value_
+
+    (agent) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
+
+* `--node-external-ip` _value_
+
+    (agent) External IP address to advertise for node
 
 Customizing components
 ----------------------
