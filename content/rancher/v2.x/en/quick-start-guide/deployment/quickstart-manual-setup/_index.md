@@ -4,7 +4,7 @@ weight: 300
 ---
 Howdy Partner! This tutorial walks you through:
     
-- Installation of {{< product >}} {{< version >}}
+- Installation of {{< product >}} 2.x
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
