@@ -156,11 +156,9 @@ You may terminate the SSL/TLS on a L7 load balancer external to the Rancher clus
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
-#### Enabling Forward Host Headers
+#### Enabling Forward Host Headers for NGINX v0.25.0
 
-_For Rancher v2.3.0+, which uses NGINX 0.25.0_
-
-If you are using an NGINX ingress controller, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
+If you are using an NGINX v0.25.0 ingress controller, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
 
 ```yaml
 ingress:
