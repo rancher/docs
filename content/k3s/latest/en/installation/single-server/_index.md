@@ -10,25 +10,25 @@ intended only for development and testing environments.
 Installation
 ------------
 
-k3s is easy to install. To install the latest version, simply run the following:
+k3s is easy to install. To install the latest version, simply run:
 
 ```sh
-curl -sfL https://get.k3s.io
+curl -sfL https://get.k3s.io | sh -
 ```
 
-The install script will attempt to download the latest release, to specify a specific
-version for download we can use the `INSTALL_K3S_VERSION` environment variable, for example:
+The install script will attempt to download the latest release. To specify a specific
+version for download we can use the `INSTALL_K3S_VERSION` environment variable. For example:
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
 
 To install with a specific flag we can use the `INSTALL_K3S_EXEC`
-environment variable like in this example shown below:
+environment variable. For example:
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--no-flannel" sh -
 ```
 
-The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`, for example:
+The installer can also be run without performing downloads by setting `INSTALL_K3S_SKIP_DOWNLOAD=true`. For example:
 ```sh
 curl -sfL https://github.com/rancher/k3s/releases/download/vX.Y.Z/k3s -o /usr/local/bin/k3s
 chmod 0755 /usr/local/bin/k3s
