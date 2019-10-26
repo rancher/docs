@@ -27,9 +27,9 @@ Rancher is tested on the following operating systems and their subsequent non-ma
   - Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03
   - Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
-* The standard Oracle Linux image in the AWS Cloud Market (OL7.6-x86_64-HVM-2019-01-29) has default firewall rules that block communication with Helm. You must open the ports according to the [port requirements]({{<baseurl>}}/rancher/v2.x/en/installation/references) before doing a high-availability installation of Rancher with Helm.
+\* The standard Oracle Linux image in the AWS Cloud Market (OL7.6-x86_64-HVM-2019-01-29) has default firewall rules that block communication with Helm. You must open the ports according to the [port requirements]({{<baseurl>}}/rancher/v2.x/en/installation/references) before doing a high-availability installation of Rancher with Helm.
 
-If you are using RancherOS, make sure you switch the Docker engine to a supported version using:<br>
+If you are using RancherOS, make sure you switch the Docker engine to a supported version using:
 
 ```
 # Look up available versions
