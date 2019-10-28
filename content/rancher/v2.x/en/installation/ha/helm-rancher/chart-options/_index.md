@@ -158,7 +158,7 @@ Your load balancer must support long lived websocket connections and will need t
 
 #### Configuring Ingress for External TLS when Using NGINX v0.25
 
-Rancher v2.3.0 shipped with NGINX v0.25.1. In this version, the behavior of NGINX has [changed](https://github.com/kubernetes/ingress-nginx/blob/master/Changelog.md#0220) regarding forwarding headers and external TLS termination. Therefore, in the scenario that you are using external TLS termination configuration with NGINX 0.25, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
+In NGINX v0.25, the behavior of NGINX has [changed](https://github.com/kubernetes/ingress-nginx/blob/master/Changelog.md#0220) regarding forwarding headers and external TLS termination. Therefore, in the scenario that you are using external TLS termination configuration with NGINX v0.25, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
 
 ```yaml
 ingress:
