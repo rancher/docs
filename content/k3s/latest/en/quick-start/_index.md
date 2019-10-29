@@ -3,7 +3,9 @@ title: "Quick-Start Guide"
 weight: 1
 ---
 
->**Note:** The intent of this guide is to quickly launch a cluster that you can use to evaluate k3s. This guide is not intended for production environments. Production environments should utilize a High-Availability solution. The [installation options](../installation) section covers in greater detail how k3s can be setup.
+>**Note:** The intent of this guide is to quickly launch a cluster that you can use to evaluate k3s. This guide is not intended for production environments. Production environments should utilize a High-Availiability solution. The [installation options](../installation) section covers in greater detail how k3s can be setup.
+
+> New to Kubernetes? The official Kubernetes docs already have some great tutorials outlining the basics [here](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
 
 Install Script
 --------------
