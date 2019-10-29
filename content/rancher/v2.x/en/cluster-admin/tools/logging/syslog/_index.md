@@ -21,6 +21,8 @@ If you are using rsyslog, please make sure your rsyslog authentication mode is `
 
 1. Select a **Log Severity** for events that are logged to the Syslog server. For more information on each severity level, see the [Syslog protocol documentation](https://tools.ietf.org/html/rfc5424#page-11).
 
+    - By specifying a **Log Severity** does not mean that will act as a filtering mechanism for logs. To do that you should use a parser on the Syslog server.
+
 ## Encryption Configuration
 
 If your Syslog server is using **TCP** protocol and uses TLS, you need to select **Use TLS** and complete the **Encryption Configuration** form.
