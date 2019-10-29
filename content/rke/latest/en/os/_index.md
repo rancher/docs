@@ -166,13 +166,21 @@ By default, Atomic hosts do not come with a Docker group. You can update the own
 
 ## Software
 
-- Docker - Each Kubernetes version supports different Docker versions.
+This section describes the requirements for Docker, Kubernetes, and SSH.
 
-Kubernetes Version | Supported Docker version(s) |
-----|----|
-v1.13.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
-v1.12.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
-v1.11.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
+### OpenSSH
+
+In order to SSH into each node, OpenSSH 7.0+ must be installed on each node.
+
+### Kubernetes
+
+Refer to the [RKE release notes](https://github.com/rancher/rke/releases) for the supported versions of Kubernetes.
+
+### Docker
+
+Each Kubernetes version supports different Docker versions. The Kubernetes release notes contain the [current list](https://kubernetes.io/docs/setup/release/notes/#dependencies) of validated Docker versions.
+
+### Installing Docker
 
 You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker. For RHEL, please see [How to install Docker on Red Hat Enterprise Linux 7](https://access.redhat.com/solutions/3727511).
 
@@ -182,14 +190,14 @@ Docker Version   | Install Script |
 18.06.2 |  <code>curl https://releases.rancher.com/install-docker/18.06.2.sh &#124; sh</code> |
 17.03.2 |  <code>curl https://releases.rancher.com/install-docker/17.03.2.sh &#124; sh</code> |
 
+### Checking the Installed Docker Version
+
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running `docker version --format '{{.Server.Version}}'`.
 
 ```
 docker version --format '{{.Server.Version}}'
 17.03.2-ce
 ```
-
-- OpenSSH 7.0+ - In order to SSH into each node, OpenSSH must be installed on each node.
 
 ## Ports
 
