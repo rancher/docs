@@ -10,6 +10,8 @@ RKE provides the following network plug-ins that are deployed as add-ons:
 - Canal
 - Weave
 
+> **Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn’t allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you tear down the entire cluster and all its applications.
+
 By default, the network plug-in is `canal`. If you want to use another network plug-in, you need to specify which network plug-in to enable at the cluster level in the `cluster.yml`.
 
 ```yaml

@@ -13,11 +13,10 @@ RKE supports configuring pluggable add-ons in the cluster YML. Add-ons are used 
 These add-ons require images that can be found under the [`system_images` directive]({{< baseurl >}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each add-on, but these can be overridden by changing the image tag in `system_images`.
 
 There are a few things worth noting:
+
 * In addition to these pluggable add-ons, you can specify an add-on that you want deployed after the cluster deployment is complete.
-* RKE only adds additional add-ons when using `rke up` multiple times. RKE does **not** support removing of cluster add-ons when doing `rke up` with a different list of add-ons.
 * As of v0.1.8, RKE will update an add-on if it is the same name.
 * Prior to v0.1.8, update any add-ons by using `kubectl edit`.
-
 
 ## Critical and Non-Critical Add-ons
 
