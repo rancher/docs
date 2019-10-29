@@ -123,26 +123,6 @@ https://IP:2379 is healthy: successfully committed proposal: took = 2.451201ms
 
 ### Check Connectivity on Port TCP/2379
 
-Requires the `curl` binary on the node.
-
-Command:
-```
-for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5"); do
-  echo "Validating connection to ${endpoint}/health";
-  curl -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/health";
-done
-```
-
-Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
-```
-for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f5"); do
-  echo "Validating connection to ${endpoint}/health";
-  curl -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/health";
-done
-```
-
-If you are running on an operating system without `curl` (for example, RancherOS), you can use the following command which uses a Docker container to run the `curl` command.
-
 Command:
 ```
 for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5"); do
@@ -170,24 +150,6 @@ Validating connection to https://IP:2379/health
 ```
 
 ### Check Connectivity on Port TCP/2380
-
-Command:
-```
-for endpoint in $(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f4"); do
-  echo "Validating connection to ${endpoint}/version";
-  curl --http1.1 -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/version";
-done
-```
-
-Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
-```
-for endpoint in $(docker exec etcd /bin/sh -c "etcdctl --endpoints=\$ETCDCTL_ENDPOINT member list | cut -d, -f4"); do
-  echo "Validating connection to ${endpoint}/version";
-  curl --http1.1 -w "\n" --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) "${endpoint}/version";
-done
-```
-
-If you are running on an operating system without `curl` (for example, RancherOS), you can use the following command which uses a Docker container to run the `curl` command.
 
 Command:
 ```
@@ -342,24 +304,24 @@ The log level of etcd can be changed dynamically via the API. You can configure 
 
 Command:
 ```
-curl -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINTS)/config/local/log
+docker run --net=host -v $(docker inspect kubelet --format '{{ range .Mounts }}{{ if eq .Destination "/etc/kubernetes" }}{{ .Source }}{{ end }}{{ end }}')/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINTS)/config/local/log
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
 ```
-curl -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv $ETCDCTL_ENDPOINT)/config/local/log
+docker run --net=host -v $(docker inspect kubelet --format '{{ range .Mounts }}{{ if eq .Destination "/etc/kubernetes" }}{{ .Source }}{{ end }}{{ end }}')/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -XPUT -d '{"Level":"DEBUG"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINT)/config/local/log
 ```
 
 To reset the log level back to the default (`INFO`), you can use the following command.
 
 Command:
 ```
-curl -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINTS)/config/local/log
+docker run --net=host -v $(docker inspect kubelet --format '{{ range .Mounts }}{{ if eq .Destination "/etc/kubernetes" }}{{ .Source }}{{ end }}{{ end }}')/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINTS)/config/local/log
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
 ```
-curl -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv $ETCDCTL_ENDPOINT)/config/local/log
+docker run --net=host -v $(docker inspect kubelet --format '{{ range .Mounts }}{{ if eq .Destination "/etc/kubernetes" }}{{ .Source }}{{ end }}{{ end }}')/ssl:/etc/kubernetes/ssl:ro appropriate/curl -s -XPUT -d '{"Level":"INFO"}' --cacert $(docker exec etcd printenv ETCDCTL_CACERT) --cert $(docker exec etcd printenv ETCDCTL_CERT) --key $(docker exec etcd printenv ETCDCTL_KEY) $(docker exec etcd printenv ETCDCTL_ENDPOINT)/config/local/log
 ```
 
 # etcd Content
