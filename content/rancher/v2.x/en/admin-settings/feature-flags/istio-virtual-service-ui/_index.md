@@ -4,13 +4,16 @@ weight: 2
 ---
 _Available as of v2.3.0_
 
+This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.
+
 > **Prerequisite:** Turning on this feature does not enable Istio. A cluster administrator needs to [enable Istio for the cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup) in order to use the feature.
 
 To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags)
 
-Environment Variable Key | Default Value | Description
----|---|---
-`istio-virtual-service-ui`| `false` | Enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio 
+Environment Variable Key | Default Value | Status | Available as of
+---|---|---|---
+`istio-virtual-service-ui` |`false` |  Experimental | v2.3.0
+`istio-virtual-service-ui` | `true` | GA                    | v2.3.2
 
 # About this Feature
 
