@@ -16,6 +16,8 @@ RKE provides the following DNS providers that can be deployed as add-ons:
 
 CoreDNS was made the default in RKE v0.2.5 when using Kubernetes 1.14 and higher. If you are using an RKE version lower than v0.2.5, kube-dns will be deployed by default.
 
+> **Note:** If you switch from one DNS provider to another, the existing DNS provider will be removed before the new one is deployed.
+
 # CoreDNS
 
 _Available as of v0.2.5_
