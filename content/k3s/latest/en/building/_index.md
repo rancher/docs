@@ -1,6 +1,6 @@
 ---
 title: "Building from Source"
-weight: 10
+weight: 99999
 ---
 
 This section provides information on building k3s from source.
