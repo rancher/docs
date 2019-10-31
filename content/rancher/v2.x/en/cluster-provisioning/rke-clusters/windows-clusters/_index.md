@@ -42,16 +42,10 @@ For a custom cluster, the general node requirements for networking, operating sy
 
 ### OS and Docker Requirements
 
-In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker:
+In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
 
-- Windows Server core version 1809 and Docker 18.09
-- Windows server core version 1903 and Docker 19.03
-
-The nodes must run Docker Engine - Enterprise Edition (EE).
-
-Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09.
-
-Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
+- Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03.
+- Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
 
 > **Notes:**
 >
