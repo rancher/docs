@@ -37,6 +37,16 @@ The ports required to be open are different depending on how the user cluster is
 
 For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 
+Details on which ports are used in each situation are found in the following sections:
+
+- [Commonly used ports](#commonly-used-ports)
+- [Port requirements for custom clusters](#port-requirements-for-custom-clusters)
+- [Port requirements for clusters hosted by an infrastructure provider](#port-requirements-for-clusters-hosted-by-an-infrastructure-provider)
+  - [Security group for nodes on AWS EC2](#security-group-for-nodes-on-aws-ec2)
+- [Port requirements for clusters hosted by a Kubernetes provider](#port-requirements-for-clusters-hosted-by-a-kubernetes-provider)
+- [Port requirements for imported clusters](#port-requirements-for-imported-clusters)
+- [Port requirements for local traffic](#port-requirements-for-local-traffic)
+
 ### Commonly Used Ports
 
 If security isn't a large concern and you're okay with opening a few additional ports, you can use this table as your port reference instead of the comprehensive tables in the following sections.
@@ -93,6 +103,26 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{% /accordion %}}
 
+#### Security Group for Nodes on AWS EC2
+
+When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
+
+|       Type      | Protocol |  Port Range | Source/Destination     | Rule Type |
+|-----------------|:--------:|:-----------:|------------------------|:---------:|
+|       SSH       |    TCP   | 22          | 0.0.0.0/0              | Inbound   |
+|       HTTP      |    TCP   | 80          | 0.0.0.0/0              | Inbound   |
+| Custom TCP Rule |    TCP   | 443         | 0.0.0.0/0              | Inbound   |
+| Custom TCP Rule |    TCP   | 2376        | 0.0.0.0/0              | Inbound   |
+| Custom TCP Rule |    TCP   | 2379-2380   | sg-xxx (rancher-nodes) | Inbound   |
+| Custom UDP Rule |    UDP   | 4789        | sg-xxx (rancher-nodes) | Inbound   |
+| Custom TCP Rule |    TCP   | 6443        | 0.0.0.0/0              | Inbound   |
+| Custom UDP Rule |    UDP   | 8472        | sg-xxx (rancher-nodes) | Inbound   |
+| Custom TCP Rule |    TCP   | 10250-10252 | sg-xxx (rancher-nodes) | Inbound   |
+| Custom TCP Rule |    TCP   | 10256       | sg-xxx (rancher-nodes) | Inbound   |
+| Custom TCP Rule |    TCP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
+| Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
+| All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
+
 ### Port Requirements for Clusters Hosted by a Kubernetes Provider
 
 If you are launching a cluster with a hosted Kubernetes provider such as Google Kubernetes Engine, Amazon EKS, or Azure Kubernetes Service, refer to these port requirements.
@@ -128,23 +158,3 @@ However, this traffic may be blocked when:
 - You are using nodes that have multiple interfaces (multihomed).
 
 In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes/instances.
-
-### Security Group for Nodes on AWS EC2
-
-When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
-
-|       Type      | Protocol |  Port Range | Source/Destination     | Rule Type |
-|-----------------|:--------:|:-----------:|------------------------|:---------:|
-|       SSH       |    TCP   | 22          | 0.0.0.0/0              | Inbound   |
-|       HTTP      |    TCP   | 80          | 0.0.0.0/0              | Inbound   |
-| Custom TCP Rule |    TCP   | 443         | 0.0.0.0/0              | Inbound   |
-| Custom TCP Rule |    TCP   | 2376        | 0.0.0.0/0              | Inbound   |
-| Custom TCP Rule |    TCP   | 2379-2380   | sg-xxx (rancher-nodes) | Inbound   |
-| Custom UDP Rule |    UDP   | 4789        | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 6443        | 0.0.0.0/0              | Inbound   |
-| Custom UDP Rule |    UDP   | 8472        | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 10250-10252 | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 10256       | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
-| Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
-| All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
