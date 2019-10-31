@@ -43,8 +43,8 @@ Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/nod
 Run the following command to join a worker node to the master nodes. You can get the node-token from any of the servers at `/var/lib/rancher/k3s/server/node-token`
 
 ```
-curl -sfL https://get.k3s.io | K3S_URL=https:/<Master_node>:6443 K3S_TOKEN=XXX sh-
+curl -sfL https://get.k3s.io | K3S_URL=https:/<master_node>:6443 K3S_TOKEN=XXX sh-
 ```
 
-Provide the IP or DNS in place of `<Master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes. The K3S_URL you provide will actually be the last used in a fail-over scenario.
+Provide the IP or DNS in place of `<master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes.
 
