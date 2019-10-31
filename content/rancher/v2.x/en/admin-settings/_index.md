@@ -42,7 +42,7 @@ Drivers in Rancher allow you to manage which providers can be used to provision 
 
 For more information, see [Provisioning Drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/).
 
-## Adding Kubernetes Versions into RANCHER
+## Adding Kubernetes Versions into Rancher
 
 _Available as of v2.3.0_
 
