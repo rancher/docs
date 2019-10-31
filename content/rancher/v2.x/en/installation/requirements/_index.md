@@ -6,11 +6,11 @@ aliases:
   - /rancher/v2.x/en/installation/references
 ---
 
-This page describes the requirements for the nodes where the Rancher server will be installed.
+This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
 
-> This section is about the requirements for a Rancher cluster, not the clusters that run your apps and services. The OS and Docker requirements are the same for the Rancher cluster and user clusters, but other requirements are different. For user cluster requirements, refer to the [node requirements for a user cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/)
+> It is important to note that if you install Rancher on a Kubernetes cluster, the hardware and networking requirements for the Rancher cluster are different than the [node requirements for user clusters,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/) which will run your apps and services.
 
-Make sure the nodes for the Rancher server fulfill the following requirements:
+Make sure the node(s) for the Rancher server fulfill the following requirements:
 
 - [Operating Systems and Docker Requirements](#operating-systems-and-docker-requirements)
 - [Hardware Requirements](#hardware-requirements)
@@ -104,34 +104,40 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 # Networking Requirements
 
-This section describes the networking requirements for the nodes where the Rancher server is installed.
+This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
 ### Node IP Addresses
 
-Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, the nodes should have a DHCP reservation to make sure the node gets the same IP allocated.
+Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.
 
 ### Port Requirements
 
 This section describes the port requirements for nodes running the `rancher/rancher` container.
 
-The ports that must be open change according to the type of machines hosting your cluster nodes. For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
+The port requirements are different depending on whether you are installing Rancher on a single node or on a high-availability Kubernetes cluster. For a single node, you only need to open the [ports required to enable Rancher to communicate with user clusters.](#port-requirements-for-enabling-rancher-to-communicate-with-user-clusters) For a high-availability installation, the same ports need to be opened, as well as additional [ports required to set up the Kubernetes cluster](#additional-port-requirements-for-nodes-in-high-availability-rancher-installations) that Rancher is installed on.
 
-In the [HA installation instructions,]({{<baseurl>}}/rancher/v2.x/en/installation/ha) a Rancher server is installed on three nodes, where each node is assigned all three Kubernetes roles: etcd, controlplane, and worker. In that case, the rules below apply to all three of the nodes in the Rancher server cluster.
+### Port Requirements for Enabling Rancher to Communicate with User Clusters
 
-For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
+For a single-node installation, you only need to open the ports for the Rancher management plane. These ports are opened to allow the Rancher server to communicate with the Kubernetes clusters that will run your apps and services.
+
+For a high-availability installation, these rules apply as well as the [port requirements to set up the Kubernetes cluster](#additional-port-requirements-for-nodes-in-high-availability-rancher-installations) that Rancher is installed on.
+
+The port requirements are different based the infrastructure you are using. For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH. The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
 
 <figcaption>Port Requirements for the Rancher Management Plane</figcaption>
 
 ![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
 
-### Inbound Rules for Rancher Nodes
+The following tables break down the port requirements for inbound and outbound traffic:
+
+<figcaption>Inbound Rules for Rancher Nodes</figcaption>
 
 | Protocol | Port | Source | Description |
 |------------|-------|---------|----------------|
 | TCP | 80 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used |
 | TCP | 443 | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl |
 
-### Outbound Rules for Rancher Nodes
+<figcaption>Outbound Rules for Rancher Nodes</figcaption>
 
 | Protocol | Port | Source | Description |
 |------------|-------|---------|----------------|
@@ -141,3 +147,9 @@ For a breakdown of the port requirements for etcd nodes, controlplane nodes, and
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
 **Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+
+### Additional Port Requirements for Nodes in High-Availability Rancher Installations
+
+You will need to open additional ports to the launch the Kubernetes cluster that is required for a high-availability installation of Rancher.
+
+The ports that need to be opened for each node depend on the node's Kubernetes role: etcd, controlplane, or worker. For a breakdown of the port requirements for each role, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)

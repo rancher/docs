@@ -7,7 +7,7 @@ This page describes the requirements for the nodes where your apps and services 
 
 In this section, "user cluster" refers to a cluster running your apps, which should be separate from the cluster (or single node) running Rancher.
 
-> The Rancher server cluster and user clusters have the same requirements for OS and Docker, but other requirements are different. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+> It is important to note that if Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and user clusters have the same requirements for OS and Docker, but other requirements are different. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
@@ -33,15 +33,48 @@ For hardware recommendations for etcd clusters in production, refer to the offic
 
 For a production cluster, we recommend that you restrict traffic by opening only the ports defined in the port requirements below.
 
-If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/common-ports) as your port reference instead of the comprehensive tables in this section.
-
 The ports required to be open are different depending on how the user cluster is launched. Each of the sections below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
 For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 
+### Commonly Used Ports
+
+If security isn't a large concern and you're okay with opening a few additional ports, you can use this table as your port reference instead of the comprehensive tables in the following sections.
+
+These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
+
+{{% accordion id="common-ports" label="Click to Expand" %}}
+
+<figcaption>Commonly Used Ports Reference</figcaption>
+
+| Protocol 	|       Port       	| Description                                     	|
+|:--------:	|:----------------:	|-------------------------------------------------	|
+|    TCP   	|        22        	| Node driver SSH provisioning                    	|
+|    TCP   	|       2376       	| Node driver Docker daemon TLS port              	|
+|    TCP   	|       2379       	| etcd client requests                           	|
+|    TCP   	|       2380       	| etcd peer communication                         	|
+|    UDP   	|       8472       	| Canal/Flannel VXLAN overlay networking          	|
+|    UDP   	|       4789       	| Flannel VXLAN overlay networking on Windows cluster |
+|    TCP   	|       9099       	| Canal/Flannel livenessProbe/readinessProbe      	|
+|    TCP   	|       6783       	| Weave Port      	|
+|    UDP   	|       6783-6784   | Weave UDP Ports      	|
+|    TCP   	|       10250      	| kubelet API                                     	|
+|    TCP   	|       10254      	| Ingress controller livenessProbe/readinessProbe 	|
+| TCP/UDP  	| 30000-</br>32767 	| NodePort port range                             	|
+
+{{% /accordion %}}
+
 ### Port Requirements for Custom Clusters
 
-If you are launching a Kubernetes cluster on your existing infrastructure, refer to [these port requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-custom-clusters)
+If you are launching a Kubernetes cluster on your existing infrastructure, refer to these port requirements.
+
+{{% accordion id="port-reqs-for-custom-clusters" label="Click to Expand" %}}
+
+The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [custom nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
+
+{{< ports-custom-nodes >}}
+
+{{% /accordion %}}
 
 ### Port Requirements for Clusters Hosted by an Infrastructure Provider
 
@@ -49,13 +82,40 @@ If you are launching a Kubernetes cluster on nodes that are in an infastructure 
 
 These required ports are automatically opened by Rancher during creation of clusters using cloud providers.
 
+{{% accordion id="port-reqs-for-infrastructure-providers" label="Click to Expand" %}}
+
+The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
+
+>**Note:**
+>The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
+
+{{< ports-iaas-nodes >}}
+
+{{% /accordion %}}
+
 ### Port Requirements for Clusters Hosted by a Kubernetes Provider
 
-If you are launching a cluster with a hosted Kubernetes provider such as Google Kubernetes Engine, Amazon EKS, or Azure Kubernetes Service, refer to [these port requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-hosted-clusters)
+If you are launching a cluster with a hosted Kubernetes provider such as Google Kubernetes Engine, Amazon EKS, or Azure Kubernetes Service, refer to these port requirements.
+
+{{% accordion id="port-reqs-for-hosted-kubernetes" label="Click to Expand" %}}
+
+The following table depicts the port requirements for nodes in [hosted Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters).
+
+{{< ports-imported-hosted >}}
+
+{{% /accordion %}}
 
 ### Port Requirements for Imported Clusters
 
-If you are importing an existing cluster, refer to [these requirements.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-imported-clusters)
+If you are importing an existing cluster, refer to these port requirements.
+
+{{% accordion id="port-reqs-for-imported-clusters" label="Click to Expand" %}}
+
+The following table depicts the port requirements for [imported clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/).
+
+{{< ports-imported-hosted >}}
+
+{{% /accordion %}}
 
 ### Port Requirements for Local Traffic
 
