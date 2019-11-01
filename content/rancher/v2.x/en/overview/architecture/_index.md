@@ -1,102 +1,53 @@
 ---
-title: Architecture
+title: Rancher Server Architecture
 weight: 1
 ---
 
-This section explains how Rancher interacts with the two fundamental technologies Rancher is built on: Docker and Kubernetes.
+This section focuses on the Rancher server and its components. The Rancher server includes all the software components used to manage the entire Rancher deployment.
 
-## Docker
+- For the different ways that Rancher can be installed, refer to the [installation options section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/installation-options)
+- For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/architecture-recommendations)
+- For an explanation of how Rancher communicates with downstream Kubernetes clusters, refer to the section on [Rancher and downstream user clusters.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/rancher-and-downstream)
 
-Docker is the container packaging and runtime standard. Developers build container images from Dockerfiles and distribute container images from Docker registries. [Docker Hub](https://hub.docker.com) is the most popular public registry. Many organizations also setup private Docker registries. Docker is primarily used to manage containers on individual nodes.
+> This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.x/en/overview/concepts) page.
 
->**Note:** Although Rancher 1.6 supported Docker Swarm clustering technology, it is no longer supported in Rancher 2.x due to the success of Kubernetes.
+# Features of the Rancher API Server
 
-## Kubernetes
+The Rancher API server is built on top of an embedded Kubernetes API server and an etcd database. It implements the following functionalities:
 
-Kubernetes is the container cluster management standard. YAML files specify containers and other resources that form an application. Kubernetes performs functions such as scheduling, scaling, service discovery, health check, secret management, and configuration management.
+-  **User management:** The Rancher API server manages user identities that correspond to external authentication providers like Active Directory or GitHub.
+-	**Authorization:** The Rancher API server manages access control and security policies.
+-	**Managing projects:** A _project_ is a group of multiple namespaces and access control policies within a cluster.
+-  **Tracking nodes:** The Rancher API server tracks identities of all the nodes in all clusters.
+- **Provisioning Kubernetes Clusters:** The Rancher API server can provision Kubernetes clusters. Rancher can also set up Kubernetes on existing nodes, or import existing Kubernetes clusters into Rancher.
+- **Setting up infrastructure:**  When configured to use a cloud provider, Rancher can dynamically provision new nodes and persistent storage in the cloud.
 
-A Kubernetes cluster consists of multiple nodes.
+# Rancher Server Architecture
 
--   **etcd database**
+The majority of Rancher 2.x software runs on the Rancher Server. Rancher Server includes all the software components used to manage the entire Rancher deployment.
 
- 	Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create a High Availability (HA) configuration.
+The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two downstream Kubernetes clusters: one created by RKE and another created by Amazon EKS (Elastic Kubernetes Service).
 
--   **Master nodes**
+For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
- 	Master nodes are stateless and are used to run the API server, scheduler, and controllers.
-
--   **Worker nodes**
-
- 	The application workload runs on worker nodes.
-
-## Rancher
-
-The majority of Rancher 2.x software runs on the Rancher Server.  Rancher Server includes all the software components used to manage the entire Rancher deployment.
-
-The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by Rancher Kubernetes Engine (RKE) and another created by Amazon EKS (Elastic Kubernetes Service).
-
-![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
-
-In this section we describe the functionalities of each Rancher server components.
-
-#### Single Node and High-Availability Installations of Rancher
+![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture-rancher-api-server.svg)
 
 You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
 
 A single-node installation is recommended for development and testing purposes, and a high-availability installation is recommended for production.
 
-In a single-node installation of Rancher, the node running the Rancher server should be separate from your Kubernetes clusters.
+### Rancher Server Components
 
-In high-availability installations of Rancher, it is important to note the following:
+This diagram shows each component that the Rancher server is composed of:
 
-- The Rancher server cluster should be separate from user clusters. A user cluster is a Kubernetes cluster  that runs your apps and services.
-- The Rancher server cluster and user clusters have separate requirements for hardware and networking. The requirements for the Rancher server can be found [here]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) and the requirements for user clusters can be found [here.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/requirements})
-- We recommend installing Rancher on a Kubernetes cluster in which each node has all three Kubernetes roles: etcd, controlplane, and worker. However, when you set up the clusters that run your apps and services, we recommend that each node in the cluster should have a single role for stability and scalability. For details on the recommended best practices for user clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+![Rancher Components]({{<baseurl>}}/img/rancher/rancher-architecture-rancher-components.svg)
 
-![Single Node vs. High-Availability Architecture]({{<baseurl>}}/img/rancher/rancher-single-node-and-ha-installations.svg)
+The GitHub repositories for each component of Rancher can be found at the following links:
 
-#### Rancher API Server
-
-Rancher API server is built on top of an embedded Kubernetes API server and etcd database. It implements the following functionalities:
-
--  **User Management**
-
-	Rancher API server manages user identities that correspond to external authentication providers like Active Directory or GitHub.
-
--	**Authorization**
-
- 	Rancher API server manages access control and security policies.
-
--	**Managing Projects**
-
- 	A _project_ is a group of multiple namespaces and access control policies within a cluster.
-
--  **Tracking Nodes**
-
-	Rancher API server tracks identities of all the nodes in all clusters.
-
-#### Cluster Controller and Agents
-
-The cluster controller and cluster agents implement the business logic required to manage Kubernetes clusters.
-
-- The _cluster controller_ implements the logic required for the global Rancher install. It performs the following actions:
-
-	-  Configuration of access control policies to clusters and projects.
-
-	-  Provisioning of clusters by calling:
-
-		- The required Docker machine drivers.
-		- Kubernetes engines like RKE and GKE.
-
-
-- A separate _cluster agent_ instance implements the logic required for the corresponding cluster. It performs the following activities:
-
-	-  Workload Management, such as pod creation and deployment within each cluster.
-
-	-  Application of the roles and bindings defined in each cluster's global policies.
-
-	-  Communication between clusters and Rancher Server: events, stats, node info, and health.
-
-#### Authentication Proxy
-
-The _authentication proxy_ forwards all Kubernetes API calls. It integrates with authentication services like local authentication, Active Directory, and GitHub. On every Kubernetes API call, the authentication proxy authenticates the caller and sets the proper Kubernetes impersonation headers before forwarding the call to Kubernetes masters. Rancher communicates with Kubernetes clusters using a service account.
+- [Main Rancher server repository](https://github.com/rancher/rancher)
+- [Rancher UI](https://github.com/rancher/ui)
+- [Rancher API UI](https://github.com/rancher/api-ui)
+- [Norman,](https://github.com/rancher/norman) Rancher's API framework
+- [Types](https://github.com/rancher/types)
+- [Rancher CLI](https://github.com/rancher/cli)
+- [Catalog applications](https://github.com/rancher/helm)
