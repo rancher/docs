@@ -9,9 +9,9 @@ This procedure walks you through setting up a 3-node cluster with Rancher Kubern
 
 > **Important:** The Rancher management server can only be run on an RKE-managed Kubernetes cluster. Use of Rancher on hosted Kubernetes or other providers is not supported. 
 
-> **Important:** For the best performance, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+> **Important:** For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
-## Recommended Architecture
+We recommend the following configurations for the load balancer and Ingress controllers:
 
 * DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
 * The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
@@ -44,7 +44,7 @@ The following CLI tools are required for this install. Please make sure these to
 
 [RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)
 
-> ##### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+> **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
 >Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
 >
