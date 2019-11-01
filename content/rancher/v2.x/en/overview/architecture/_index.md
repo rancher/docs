@@ -39,6 +39,22 @@ The figure below illustrates the high-level architecture of Rancher 2.x. The fig
 
 In this section we describe the functionalities of each Rancher server components.
 
+#### Single Node and High-Availability Installations of Rancher
+
+You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
+
+A single-node installation is recommended for development and testing purposes, and a high-availability installation is recommended for production.
+
+In a single-node installation of Rancher, the node running the Rancher server should be separate from your Kubernetes clusters.
+
+In high-availability installations of Rancher, it is important to note the following:
+
+- The Rancher server cluster should be separate from user clusters. A user cluster is a Kubernetes cluster  that runs your apps and services.
+- The Rancher server cluster and user clusters have separate requirements for hardware and networking. The requirements for the Rancher server can be found [here]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) and the requirements for user clusters can be found [here.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/requirements})
+- We recommend installing Rancher on a Kubernetes cluster in which each node has all three Kubernetes roles: etcd, controlplane, and worker. However, when you set up the clusters that run your apps and services, we recommend that each node in the cluster should have a single role for stability and scalability. For details on the recommended best practices for user clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+
+![Single Node vs. High-Availability Architecture]({{<baseurl>}}/img/rancher/rancher-single-node-and-ha-installations.svg)
+
 #### Rancher API Server
 
 Rancher API server is built on top of an embedded Kubernetes API server and etcd database. It implements the following functionalities:
@@ -51,11 +67,11 @@ Rancher API server is built on top of an embedded Kubernetes API server and etcd
 
  	Rancher API server manages access control and security policies.
 
--	**Projects**
+-	**Managing Projects**
 
  	A _project_ is a group of multiple namespaces and access control policies within a cluster.
 
--  **Nodes**
+-  **Tracking Nodes**
 
 	Rancher API server tracks identities of all the nodes in all clusters.
 
