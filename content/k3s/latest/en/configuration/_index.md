@@ -55,6 +55,37 @@ Also note that besides `set` you can use `valuesContent` in the spec section. An
 
 k3s versions `<= v0.5.0` used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
 
+Using the helm CRD
+---------------------
+
+You can deploy a 3rd party helm chart using an example like this:
+
+```yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: nginx
+  namespace: kube-system
+spec:
+  chart: nginx
+  repo: https://charts.bitnami.com/bitnami
+  targetNamespace: default
+```
+
+You can install a specific version of a helm chart using an example like this:
+
+```yaml
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: stable/nginx-ingress
+  namespace: kube-system
+spec:
+  chart: nginx-ingress
+  version: 1.24.4
+  targetNamespace: default
+```
+
 Accessing Cluster from Outside
 -----------------------------
 
