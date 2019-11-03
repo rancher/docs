@@ -53,7 +53,7 @@ spec:
 
 Also note that besides `set` you can use `valuesContent` in the spec section. And it's okay to use both of them.
 
-k3s versions <= v0.5.0 used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
+k3s versions `<= v0.5.0` used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
 
 Accessing Cluster from Outside
 -----------------------------
