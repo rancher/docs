@@ -9,7 +9,7 @@ Within Rancher, you can setup load balancers and ingress controllers to redirect
 
 After you launch an application, the app is only available within the cluster. It can't be reached from outside the cluster.
 
-If you want your applications to be externally accessible, you must add a load balancer to your cluster. Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
+If you want your applications to be externally accessible, you must add a load balancer or ingress to your cluster Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
 
 Rancher supports two types of load balancers:
 
@@ -33,18 +33,28 @@ Load Balancers have a couple of limitations you should be aware of:
 
 ## Ingress
 
-As mentioned in the limitations above, using a load balancer per service can be expensive. You can get around this issue using an ingress.
+As mentioned in the limitations above, the disadvantages of using a load balancer are:
 
-Ingress is a set or rules that act as a load balancer. Ingress works in conjunction with one or more ingress controllers to dynamically route service requests. When the ingress receives a request, the ingress controller(s) in your cluster program the load balancer to direct the request to the correct service based on service subdomains or path rules that you've configured.
+- Load Balancers can only handle one IP address per service.
+- If you run multiple services in your cluster, you must have a load balancer for each service.
+- It can be expensive to have a load balancer for every service.
 
-Your load balancer can either reside within your cluster or externally. Ingress and ingress controllers residing in RKE-launcher clusters are powered by [Nginx](https://www.nginx.com/).
+In contrast, when an ingress is used as the entrypoint into a cluster, the ingress can route traffic to multiple services with greater flexibility. It can map multiple HTTP requests to services without individual IP addresses for each service. 
+
+Therefore, it is useful to have an ingress if you want multiple services to be exposed with the same IP address, the same Layer 7 protocol, or the same privileged node-ports: 80 and 443.
+
+Ingress works in conjunction with one or more ingress controllers to dynamically route service requests. When the ingress receives a request, the ingress controller(s) in your cluster direct the request to the correct service based on service subdomains or path rules that you've configured.
+
+Each Kubernetes Ingress resource corresponds roughly to a file in `/etc/nginx/sites-available/` containing a `server{}` configuration block, where requests for specific files and folders are configured.
+
+Your ingress, which creates a port of entry to your cluster similar to a load balancer, can reside within your cluster or externally. Ingress and ingress controllers residing in RKE-launcher clusters are powered by [Nginx](https://www.nginx.com/).
 
 Ingress can provide other functionality as well, such as SSL termination, name-based virtual hosting, and more.
 
 >**Using Rancher in a High Availability Configuration?**
 >
->Refrain from adding an Ingress to the `local` cluster. The Nginx Ingress Controller that Rancher uses acts as a global load balancer for _all_ clusters managed by Rancher, including the `local` cluster.  Therefore, when users try to access an application, your Rancher connection may drop due to the Nginx configuration being reloaded. We recommend working around this issue by deploying applications only in clusters that you launch using Rancher.
+>Refrain from adding an Ingress to the `local` cluster. The Nginx Ingress Controller that Rancher uses acts as a global entry point for _all_ clusters managed by Rancher, including the `local` cluster.  Therefore, when users try to access an application, your Rancher connection may drop due to the Nginx configuration being reloaded. We recommend working around this issue by deploying applications only in clusters that you launch using Rancher.
 
-- For more information on how to setup ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
+- For more information on how to set up ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 - When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
