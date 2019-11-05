@@ -5,36 +5,10 @@ weight: 5
 
 This section describes how Rancher provisions and manages the downstream user clusters that run your apps and services.
 
-- [How Rancher Provisions Kubernetes Clusters](#how-rancher-provisions-kubernetes-clusters)
 - [How Rancher Communicates with Downstream User Clusters](#how-rancher-communicates-with-downstream-user-clusters)
 - [Authentication Proxy](#authentication-proxy)
   - [Connecting to a Cluster without the Rancher UI](#connecting-to-a-cluster-without-the-rancher-ui)
-
-# How Rancher Provisions Kubernetes Clusters
-
-The tools that Rancher uses to provision downstream user clusters depends on the type of cluster that is being provisioned.
-
-### Rancher Launched Kubernetes for Hodes Hosted in an Infrastructure Provider
-
-Rancher can dynamically provision nodes in a provider such as Amazon EC2, DigitalOcean, Azure, or vSphere, then install Kubernetes on them.
-
-Rancher provisions this type of cluster using [RKE](https://github.com/rancher/rke) and [docker-machine.](https://github.com/rancher/machine)
-
-### Rancher Launched Kubernetes for Custom Nodes
-
-When setting up this type of cluster, Rancher installs Kubernetes on existing nodes, which creates a custom cluster.
-
-Rancher provisions this type of cluster using [RKE.](https://github.com/rancher/rke)
-
-### Hosted Kubernetes Providers
-
-When setting up this type of cluster, Kubernetes is installed by providers such as Google Kubernetes Engine, Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
-
-Rancher provisions this type of cluster using [kontainer-engine.](https://github.com/rancher/kontainer-engine)
-
-### Imported Kubernetes Clusters
-
-In this type of cluster, Rancher connects to a Kubernetes cluster that has already been set up. Therefore, Rancher does not provision Kubernetes, but only sets up the Rancher agents to communicate with the cluster.
+- [How Rancher Provisions Kubernetes Clusters](#how-rancher-provisions-kubernetes-clusters)
 
 # How Rancher Communicates with Downstream User Clusters
 
@@ -47,6 +21,17 @@ Rancher installs the `cattle-node-agent` on each node in downstream user cluster
 <figcaption>Cluster Controller, Cluster Agent, and Node Agents Allow Rancher to Control Downstream Clusters</figcaption>
 
 ![Rancher Components]({{<baseurl>}}/img/rancher/rancher-architecture-cluster-controller.svg)
+
+The following descriptions correspond to the numbers in the diagram above:
+
+1. Let's say a user, Bob, wants to see all pods running on a downstream user cluster called User Cluster 1. From within Rancher, he can run a `kubectl` command to see
+the pods. Bob is authenticated through Rancher's authentication proxy.
+
+2. Each downstream user cluster has a cluster agent, which opens a tunnel connecting the user cluster with Rancher's corresponding cluster controller.
+
+3. By default, the cluster controller connects to the cluster agent. If the cluster agent is not available, one of the node agents creates a tunnel to the cluster controller to communicate with Rancher.
+
+4. Let's say that the Rancher server is located in the United States, and User Cluster 1 is located in China. A user, Alice, lives in China. Alice can manipulate resources in User Cluster 1 by using the Rancher UI, but she may experience latency due to the distance between US and China. To reduce latency, she can use Rancher's authorized cluster endpoint feature. By default, an authorized cluster endpoint is enabled, which allows Alice to be authenticated by calling the Kubernetes API server of the user cluster, without going through Rancher's authentication proxy. When Alice uses kubectl to access the user cluster, the cluster's Kubernetes API server authenticates Alice by using the `kube-api-auth` service as a webhook. The `kube-api-auth` authentication service and authorized cluster endpoint are only available for Rancher-launched Kubernetes clusters.
 
 ### The Cluster Controller
 
@@ -94,3 +79,29 @@ The files mentioned below are needed to maintain, troubleshoot and upgrade your 
 - `rancher-cluster.rkestate`: The Kubernetes Cluster State file. This file contains credentials for full access to the cluster. Note: This state file is only created when using RKE v0.2.0 or higher.
 
 For more information on connecting to a cluster without the Rancher UI, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/kubeconfig/) documentation.
+
+# How Rancher Provisions Kubernetes Clusters
+
+The tools that Rancher uses to provision downstream user clusters depends on the type of cluster that is being provisioned.
+
+### Rancher Launched Kubernetes for Hodes Hosted in an Infrastructure Provider
+
+Rancher can dynamically provision nodes in a provider such as Amazon EC2, DigitalOcean, Azure, or vSphere, then install Kubernetes on them.
+
+Rancher provisions this type of cluster using [RKE](https://github.com/rancher/rke) and [docker-machine.](https://github.com/rancher/machine)
+
+### Rancher Launched Kubernetes for Custom Nodes
+
+When setting up this type of cluster, Rancher installs Kubernetes on existing nodes, which creates a custom cluster.
+
+Rancher provisions this type of cluster using [RKE.](https://github.com/rancher/rke)
+
+### Hosted Kubernetes Providers
+
+When setting up this type of cluster, Kubernetes is installed by providers such as Google Kubernetes Engine, Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
+
+Rancher provisions this type of cluster using [kontainer-engine.](https://github.com/rancher/kontainer-engine)
+
+### Imported Kubernetes Clusters
+
+In this type of cluster, Rancher connects to a Kubernetes cluster that has already been set up. Therefore, Rancher does not provision Kubernetes, but only sets up the Rancher agents to communicate with the cluster.
