@@ -36,7 +36,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >**Note:**
   > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
   >
-  > For a full list of port requirements, refer to [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/references).
+  > For a full list of port requirements, refer to [Single Node Installation]({{<baseurl>}}/rancher/v2.x/en/installation/node-requirements/).
 
   Provision the host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
 

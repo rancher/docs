@@ -200,7 +200,6 @@ docker version --format '{{.Server.Version}}'
 ```
 
 ## Ports
-
 {{< ports-rke-nodes >}}
 {{< requirements_ports_rke >}}
 

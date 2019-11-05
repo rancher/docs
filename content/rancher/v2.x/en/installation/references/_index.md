@@ -1,8 +1,6 @@
 ---
 title: Port Requirements
 weight: 300
-aliases:
-  - /rancher/v2.x/en/hosts/amazon/#required-ports-for-rancher-to-work/
 ---
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and Kubernetes cluster nodes.
