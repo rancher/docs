@@ -118,6 +118,21 @@ Node Templates can be accessed by opening your account menu (top right) and sele
 
 The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
+### My (single node) cluster broke (after an update), how can I recover?
+
+If your cluster broke after you did some kind of update (e.g you updated `cluster.yml` or updated to a newer version of rancher) and it shows errors you can try to recover it using the following steps:
+
+1. Perform an backup of you (single node) system, for example do a snapshot the VM
+2. Take note of the exact rancher server version you were using or use [runlike](https://github.com/lavie/runlike): `docker run --rm -v /var/run/docker.sock:/var/run/docker.sock assaflavie/runlike YOUR-RANCHER-SERVER-CONTAINER`
+3. Remove all your running containers on the server: `docker ps -aq | docker kill` amd `docker ps -aq | docker rm -v`
+4. Start the Rancher Server with the exact same image version as before or your saved runlike command
+6. Delete your existing node from the Rancher Server UI
+7. Add a new node using the `docker run [...] rancher/rancher-agent:v2.3.1 --server [..]` command shown on the UI but make sure it use a DIFFERENT node-name than before (this is very important)
+8. Go grab lunch, things might take a while now
+9. If the cluster does not come back to life, run `docker logs -f YOUR-RANCHER-SERVER-CONTAINER` and watch the log closly. Watch out for error messages, wrong IP adresss or DNS resolv failures
+
+Good luck.
+
 ### Where is the state of Rancher stored?
 
 - Single node install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
