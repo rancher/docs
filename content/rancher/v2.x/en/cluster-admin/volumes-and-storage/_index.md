@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Persistent Storage: Volumes and Storage Classes
-description: Learn about the two ways with which you can creat persistent storage in Kubernetes: persistent volumes and storage classes
+title: "Kubernetes Persistent Storage: Volumes and Storage Classes"
+description: "Learn about the two ways with which you can creat persistent storage in Kubernetes: persistent volumes and storage classes"
 weight: 2031
 aliases:
   - /rancher/v2.x/en/concepts/volumes-and-storage/
