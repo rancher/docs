@@ -45,7 +45,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
 
 2. Launch it using `kubectl create -f ds-overlaytest.yml`
 3. Wait until `kubectl rollout status ds/overlaytest -w` returns: `daemon set "overlaytest" successfully rolled out`.
-4. Run the following command to let each container on every host ping each other (it's a single line command).
+4. Run the following command, from the same location, to let each container on every host ping each other (it's a single line bash command).
 
     ```
     echo "=> Start network overlay test"; kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End network overlay test"
