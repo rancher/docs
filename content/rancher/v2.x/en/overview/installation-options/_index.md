@@ -21,10 +21,10 @@ Basic options for installing Rancher include the following:
 Level of Internet Access | Single Node Instructions | HA Instructions
 ---------------------------|-----------------------------|------------------
 With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/)                  | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/)
-Behind an HTTP proxy  | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/proxy/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
+Behind an HTTP proxy  | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/proxy/) | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
 In an air gap environment | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/)
 
-# More Options
+# More Options for HA Installations
 
 Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/) for details on installing HA Rancher with other configurations, including:
 
@@ -32,10 +32,14 @@ Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/
 - With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination)
 - With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#customizing-your-ingress)
 
-RKE also has many configuration options for customizing the Kubernetes cluster to suit your specific environment. Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
+# More Options for Single Node Installations
 
 Refer to the [single node installation docs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/) for details other configurations including:
 
 - With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/#api-audit-log)
 - With an [external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/single-node-install-external-lb/)
 - With a [persistent data store]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/#persistent-data)
+
+# More Kubernetes Options
+
+RKE also has many configuration options for customizing the Kubernetes cluster to suit your specific environment. Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.

@@ -71,7 +71,15 @@ See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/
 
 _Available as of v2.2.0_
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API Keys]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys/#creating-an-api-key) documentation for more information.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+
+> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters) to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+
+This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
+
+For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/4-authorized-cluster-endpoint)
+
+We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
 
 ### Advanced Cluster Options
 
