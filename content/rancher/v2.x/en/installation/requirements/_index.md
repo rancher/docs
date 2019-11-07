@@ -28,33 +28,18 @@ Rancher is tested on the following operating systems and their subsequent non-ma
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
 
-- Ubuntu 16.04 (64-bit x86)
-- Docker 17.03.x, 18.06.x, 18.09.x
-- Ubuntu 18.04 (64-bit x86)
-- Docker 18.06.x, 18.09.x
-- Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit x86)
-- RHEL Docker 1.13
-- Oracle Linux 7 update 6* (64-bit x86)
-- Docker 17.03.x, 18.06.x, 18.09.x
-- RancherOS 1.5.1 (64-bit x86)
-- Docker 17.03.x, 18.06.x, 18.09.x
-- Windows Server 2019 (64-bit x86)
-  - Requires Docker Engine - Enterprise Edition (EE)
-  - Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09
-  - Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03
-  - Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
+Operating System | Tested Docker Versions
+---------------------|--------------------------
+Ubuntu 16.04 (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x
+Ubuntu 18.04 (64-bit x86) | Docker 18.06.x, 18.09.x
+Red Hat Enterprise Linux (RHEL)/CentOS 7.6 (64-bit x86) | RHEL Docker 1.13
+Oracle Linux 7 update 6* (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x
+RancherOS 1.5.4 (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x
+Windows Server 2019 (64-bit x86) | Requires Docker Engine - Enterprise Edition (EE).** 
 
 \* Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
-If you are using RancherOS, make sure you switch the Docker engine to a supported version using:
-
-```
-# Look up available versions
-sudo ros engine list
-
-# Switch to a supported version
-sudo ros engine switch docker-18.09.2
-```
+\** Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09. Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03. Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental)]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
 
