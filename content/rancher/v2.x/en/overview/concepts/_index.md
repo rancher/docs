@@ -3,6 +3,8 @@ title: Kubernetes Concepts
 weight: 4
 ---
 
+This page explains concepts related to Kubernetes that are important for understanding how Rancher works. The descriptions below provide a simplified interview of Kubernetes components. For more details, refer to the [official documentation on Kubernetes components.](https://kubernetes.io/docs/concepts/overview/components/)
+
 This section covers the following topics:
 
 - [About Docker](#about-docker)

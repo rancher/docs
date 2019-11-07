@@ -14,6 +14,7 @@ This section covers the following topics:
 - [Recommended Load Balancer Configuration for HA Installations](#recommended-load-balancer-configuration-for-ha-installations)
 - [Environment for HA Installations](#environment-for-ha-installations)
 - [Recommended Node Roles for HA Installations](#recommended-node-roles-for-ha-installations)
+- [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
 
 # Separation of Rancher and User Clusters
 
@@ -82,4 +83,10 @@ With that said, it is safe to use all three roles on three nodes when setting up
 
 Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of user clusters.
 
-For details on the recommended best practices for user clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+For more best practices for user clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+
+# Architecture for an Authorized Cluster Endpoint
+
+If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
+
+If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API keys]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys/#creating-an-api-key) for more information.

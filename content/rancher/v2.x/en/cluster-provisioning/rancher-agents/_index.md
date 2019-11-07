@@ -8,6 +8,8 @@ There are two different agent resources deployed on Rancher managed clusters:
 - [cattle-cluster-agent](#cattle-cluster-agent)
 - [cattle-node-agent](#cattle-node-agent)
 
+For a conceptual overview of how the Rancher server provisions clusters and what tools it uses to provision them, refer to the [architecture]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/)
+
 ### cattle-cluster-agent
 
 The `cattle-cluster-agent` is used to connect to the Kubernetes API of [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters. The `cattle-cluster-agent` is deployed using a Deployment resource.
