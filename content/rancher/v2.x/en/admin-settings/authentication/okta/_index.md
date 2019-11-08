@@ -7,6 +7,8 @@ _Available as of v2.2.0_
 
 If your organization uses Okta Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 
+>**Note:** Okta integration only supports Service Provider initiated logins.
+
 ## Prerequisites
 
 In Okta, create a SAML Application with the settings below. See the [Okta documentation](https://developer.okta.com/standards/SAML/setting_up_a_saml_application_in_okta) for help.
