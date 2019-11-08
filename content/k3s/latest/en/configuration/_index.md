@@ -1,6 +1,6 @@
 ---
 title: "Configuration Info"
-weight: 4
+weight: 50
 ---
 
 This section contains information on using k3s with various configurations.

@@ -1,6 +1,6 @@
 ---
 title: "Installation Options"
-weight: 2
+weight: 20
 ---
 
 This section contains instructions for installing k3s in testing and production environments. Please ensure you have met the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) before you begin installing k3s.
