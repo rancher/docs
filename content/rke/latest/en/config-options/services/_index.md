@@ -92,6 +92,8 @@ services:
      cluster_dns_server: 10.43.0.10
      # Fail if swap is on
      fail_swap_on: false
+     # Generate per node serving certificate
+     generate_serving_certificate: false
 ```
 
 ### Kubelet Options
@@ -101,6 +103,13 @@ RKE supports the following options for the `kubelet` service:
 - **Cluster Domain** (`cluster_domain`) - The [base domain](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/) for the cluster. All services and DNS records created on the cluster. By default, the domain is set to `cluster.local`.
 - **Cluster DNS Server** (`cluster_dns_server`) - The IP address assigned to the DNS service endpoint within the cluster. DNS queries will be sent to this IP address which is used by KubeDNS. The default value for this option is `10.43.0.10`
 - **Fail if Swap is On** (`fail_swap_on`) - In Kubernetes, the default behavior for the kubelet is to **fail** if swap is enabled on the node. RKE does **not** follow this default and allows deployments on nodes with swap enabled. By default, the value is `false`. If you'd like to revert to the default kubelet behavior, set this option to `true`.  
+- **Generate Serving Certificate** (`generate_serving_certificate`) - Generate a certificate signed by the `kube-ca` Certificate Authority for the kubelet to use as serving certificate. The default value for this option is `false`. Before enabling this option, please read [the requirements](#kubelet-serving-certificate-requirements)
+
+### Kubelet serving certificate requirements
+
+If `hostname_override` is configured for one or more nodes in `cluster.yml`, please make sure the correct IP address is configured in `address` (and the internal address in `internal_address`) to make sure the generated certificate contains the correct IP address(es).
+
+An example of an error situation is an EC2 instance where the the public IP address is configured in `address`, and `hostname_override` is used, the connection between `kube-apiserver` and `kubelet` will fail because the `kubelet` will be contacted on the private IP address and the generated certificate will not be valid (the error `x509: certificate is valid for value_in_address, not private_ip` will be seen). The resolution is to provide the internal IP address in `internal_address`.
 
 ## Kubernetes Scheduler
 
