@@ -8,6 +8,12 @@ weight: 30
 
 For production environments, we recommend installing k3s in a high-availability configuration so that you can always access your cluster. This procedure walks you through setting up a 2-node cluster with k3s with an external PostgreSQL database. As of v0.10.0 release (Experimental HA) we are supporting PostgreSQL 10.7-R1 thru 11.5-R1
 
+# Recommended Architecture
+![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup-v3.svg)
+This image depicts a k3s HA install with load balancer to expose workloads and a load balancer for worker (agent) node registration and Kubernetes API access (e.g. kubectl).
+
+The HA database shown should be a single endpoint k3s can access such as a load balancer. The worker registration / kubernetes API load balancer is needed if the master nodepool will be auto scaling and thus master nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
+
 Installation Outline
 --------------------
 1. Create backend database (PostgreSQL)
