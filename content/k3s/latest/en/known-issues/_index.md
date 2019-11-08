@@ -1,6 +1,6 @@
 ---
 title: Known Issues
-weight: 9000
+weight: 70
 ---
 The Known Issues are updated periodically and designed to inform you about any issues that may not be immediately addressed in the next upcoming release.
 

@@ -1,6 +1,6 @@
 ---
 title: FAQ
-weight: 8000
+weight: 60
 ---
 
 The FAQ is updated periodically and designed to answer the questions our users most frequently ask about k3s.
