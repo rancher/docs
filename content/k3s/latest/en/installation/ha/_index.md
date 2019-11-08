@@ -10,7 +10,10 @@ For production environments, we recommend installing k3s in a high-availability 
 
 # Recommended Architecture
 ![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup-v3.svg)
-This image depicts a k3s HA install with load balancer to expose workloads and a load balancer for worker (agent) node registration and Kubernetes API access (e.g. kubectl).
+This image depicts a k3s HA install with two load balancers:
+
+* A load balancer to expose workloads to external traffic
+* A load balancer to expose the Kubernetes API for worker node registration and admin access via `kubectl`
 
 The HA database shown should be a single endpoint k3s can access such as a load balancer. The worker registration / kubernetes API load balancer is needed if the master nodepool will be auto scaling and thus master nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
 
