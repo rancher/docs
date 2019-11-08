@@ -9,7 +9,7 @@ weight: 30
 For production environments, we recommend installing k3s in a high-availability configuration so that you can always access your cluster. This procedure walks you through setting up a 2-node cluster with k3s with an external PostgreSQL database. As of v0.10.0 release (Experimental HA) we are supporting PostgreSQL 10.7-R1 thru 11.5-R1
 
 # Recommended Architecture
-![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup-v3.svg)
+![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup-v4.svg)
 This image depicts a k3s HA install with two load balancers:
 
 * A load balancer to expose workloads to external traffic
