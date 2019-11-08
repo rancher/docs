@@ -15,9 +15,10 @@ Wait a few minutes for the workload to upgrade to have the istio sidecar. Click 
 
 Next we add the Kubernetes resources for the sample deployments and services for the BookInfo app in Istio's documentation.
 
-1. Go to the cluster view and click **Import YAML.**
+1. Go to the project inside the cluster you want to deploy the workload on.
+1. In Workloads, click **Import YAML.**
 1. Copy the below resources into the form.
-1.  Click **Import.**
+1. Click **Import.**
 
 This will set up the following sample resources from Istio's example BookInfo app:
 
