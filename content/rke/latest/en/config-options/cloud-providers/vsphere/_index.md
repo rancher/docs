@@ -32,13 +32,14 @@ When provisioning clusters in Rancher using the [vSphere node driver]({{< baseur
     {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
 
 8. Click on **Edit as YAML**
-9. Insert the following structure to the pre-populated cluster YAML. In versions prior to v2.3.0, it has to be defined as a top level field. In versions v2.3.0 and higher, it has to be placed under `rancher_kubernetes_engine_config`. Note that the `name` *must* be set to `vsphere`. Refer to the [configuration reference](#configuration-reference) to learn about the properties of the `vsphereCloudProvider` directive.
+9. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top level field. Note that the `name` *must* be set to `vsphere`. Refer to the [configuration reference](#configuration-reference) to learn about the properties of the `vsphereCloudProvider` directive.
 
     ```yaml
-    cloud_provider:
-        name: vsphere
-        vsphereCloudProvider:
-            [Insert provider configuration]
+    rancher_kubernetes_engine_config: # Required as of Rancher v2.3+
+      cloud_provider:
+          name: vsphere
+          vsphereCloudProvider:
+              [Insert provider configuration]
     ```
 
 10. Configure the **Node Pools** per your requirements while ensuring to use a node template that enables disk UUIDs for the VMs (See [Annex - Enable disk UUIDs for vSphere VMs]).
