@@ -16,7 +16,7 @@ k3s should run on just about any flavor of Linux. However, k3s is tested on the 
 
 *    Ubuntu 16.04 (amd64)
 *    Ubuntu 18.04 (amd64)
-*    Raspian Buster (armhf)
+*    Raspbian Buster (armhf)
 
 ## Hardware
 
