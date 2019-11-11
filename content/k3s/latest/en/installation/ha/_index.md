@@ -23,7 +23,7 @@ Installation Outline
 2. Create master nodes
 3. Join worker nodes
 
-### Create Database
+### Create Database for Cluster Datastore
 The first step for setting up High Availability (HA) is to create the database for the backend. As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
 
 ### Create Master Nodes
@@ -57,7 +57,7 @@ curl -sfL https://get.k3s.io | K3S_URL=https:/<master_node>:6443 K3S_TOKEN=XXX s
 
 Provide the IP or DNS in place of `<master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes.
 
-# Backend Options
+# Cluster Datastore Options
 
 >**Note:** As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
 
