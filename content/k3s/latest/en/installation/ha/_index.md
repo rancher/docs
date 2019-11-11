@@ -23,8 +23,8 @@ Installation Outline
 2. Create master nodes
 3. Join worker nodes
 
-### Create Database
-The first step for setting up High Availability (HA) is to create the database for the backend. As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1
+### Create Database for Cluster Datastore
+The first step for setting up High Availability (HA) is to create the database for the backend. As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
 
 ### Create Master Nodes
 Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision at least two machines.
@@ -56,4 +56,100 @@ curl -sfL https://get.k3s.io | K3S_URL=https:/<master_node>:6443 K3S_TOKEN=XXX s
 ```
 
 Provide the IP or DNS in place of `<master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes.
+
+# Cluster Datastore Options
+
+>**Note:** As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
+
+k3s can support various storage backends including: SQLite (default), MySQL, Postgres, and etcd, this enhancement depends on the following arguments that can be passed to k3s server:
+
+* `--storage-endpoint` _value_
+
+    Specify etcd, Mysql, Postgres, or Sqlite (default) data source name [$`K3S_STORAGE_ENDPOINT`]
+
+* `--storage-cafile` _value_
+
+    SSL Certificate Authority file used to secure storage backend communication [$`K3S_STORAGE_CAFILE`]
+
+* `--storage-certfile` _value_
+
+    SSL certification file used to secure storage backend communication [$`K3S_STORAGE_CERTFILE`]
+
+* `--storage-keyfile` _value_
+
+    SSL key file used to secure storage backend communication [$`K3S_STORAGE_KEYFILE`]
+
+### MySQL
+
+To use k3s with MySQL storage backend, you can specify the following for insecure connection:
+
+```
+     --storage-endpoint="mysql://"
+```
+By default the server will attempt to connect to mysql using the mysql socket at `/var/run/mysqld/mysqld.sock` using the root user and with no password, k3s will also create a database with the name `kubernetes` if the database is not specified in the DSN.
+
+To override the method of connection, user/pass, and database name, you can provide a custom DSN, for example:
+
+```
+     --storage-endpoint="mysql://k3suser:k3spass@tcp(192.168.1.100:3306)/k3stest"
+```
+
+This command will attempt to connect to MySQL on host `192.168.1.100` on port `3306` with username `k3suser` and password `k3spass` and k3s will automatically create a new database with the name `k3stest` if it doesn't exist, for more information about the MySQL driver data source name, please refer to https://github.com/go-sql-driver/mysql#dsn-data-source-name
+
+To connect to MySQL securely, you can use the following example:
+```
+     --storage-endpoint="mysql://k3suser:k3spass@tcp(192.168.1.100:3306)/k3stest" \
+     --storage-cafile ca.crt \
+     --storage-certfile mysql.crt \
+     --storage-keyfile mysql.key
+```
+The above command will use these certificates to generate the tls config to communicate with mysql securely.
+
+
+### Postgres
+
+Connection to postgres can be established using the following command:
+
+```
+     --storage-endpoint="postgres://"
+```
+
+By default the server will attempt to connect to postgres on localhost with using the `postgres` user and with `postgres` password, k3s will also create a database with the name `kubernetes` if the database is not specified in the DSN.
+
+To override the method of connection, user/pass, and database name, you can provide a custom DSN, for example:
+
+```
+     --storage-endpoint="postgres://k3suser:k3spass@192.168.1.100:5432/k3stest"
+```
+
+This command will attempt to connect to Postgres on host `192.168.1.100` on port `5432` with username `k3suser` and password `k3spass` and k3s will automatically create a new database with the name `k3stest` if it doesn't exist, for more information about the Postgres driver data source name, please refer to https://godoc.org/github.com/lib/pq
+
+To connect to Postgres securely, you can use the following example:
+
+```
+     --storage-endpoint="postgres://k3suser:k3spass@192.168.1.100:5432/k3stest" \
+     --storage-certfile postgres.crt \
+     --storage-keyfile postgres.key \
+     --storage-cafile ca.crt
+```
+
+The above command will use these certificates to generate the tls config to communicate with postgres securely.
+
+### etcd
+
+Connection to etcd3 can be established using the following command:
+
+```
+     --storage-endpoint="https://127.0.0.1:2379"
+```
+The above command will attempt to connect insecurely to etcd on localhost with port `2379`, you can connect securely to etcd using the following command:
+
+```
+     --storage-endpoint="https://127.0.0.1:2379" \
+     --storage-cafile ca.crt \
+     --storage-certfile etcd.crt \
+     --storage-keyfile etcd.key
+```
+
+The above command will use these certificates to generate the tls config to communicate with etcd securely.
 
