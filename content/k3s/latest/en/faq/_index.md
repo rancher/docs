@@ -16,3 +16,7 @@ Simply start k3s server with `--no-deploy=traefik` and deploy your ingress.
 **Does k3s support Windows?**
 
 At this time k3s does not natively support Windows, however we are open to the idea in the future.
+
+**How can I build from source?**
+
+Please reference the k3s [README.md](https://github.com/rancher/k3s/blob/master/README.md) with instructions.
