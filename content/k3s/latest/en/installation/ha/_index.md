@@ -6,7 +6,7 @@ weight: 30
 >**Important:** High-Availability (HA) was introduced in the v0.10.0 release of k3s and is _experimental_. Our v1.0 release plans to support HA in production environments. HA should currently only be used for testing purposes in non-production environments.
 >**Note:** k3s does not utilize etcd by default so only a 2-node cluster is needed for HA at a minimum. The following will guide you through setting up a 2-node cluster with PostgreSQL. You could optionally add one or more nodes for additional redundancy. In the future we plan to add support for additional database providers.
 
-For production environments, we recommend installing k3s in a high-availability configuration so that you can always access your cluster. This procedure walks you through setting up a 2-node cluster with k3s with an external PostgreSQL database. As of v0.10.0 release (Experimental HA) we are supporting PostgreSQL 10.7-R1 thru 11.5-R1
+For production environments that cannot tolerate down time, we recommend installing k3s in a high-availability configuration so that you can always access your cluster. This procedure walks you through setting up a 2-node cluster with k3s with an external PostgreSQL database. As of v0.10.0 release (Experimental HA) we are supporting PostgreSQL 10.7-R1 thru 11.5-R1
 
 # Recommended Architecture
 ![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup-v4.svg)
@@ -24,7 +24,7 @@ Installation Outline
 3. Join worker nodes
 
 ### Create Database for Cluster Datastore
-The first step for setting up High Availability (HA) is to create the database for the backend. As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
+The first step for setting up High Availability (HA) is to create the database for the backend (cluster datastore). As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1.
 
 ### Create Master Nodes
 Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision at least two machines.
