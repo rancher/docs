@@ -14,3 +14,7 @@ This section contains instructions for installing k3s in testing and production 
 *   [High Availability (HA) Installation]({{< baseurl >}}/k3s/latest/en/installation/ha/)
 
 	Install k3s on two or more Linux hosts. High Availability installs are recommended for production environments.
+
+*   [Air-Gap Installation]({{< baseurl >}}/k3s/latest/en/installation/airgap/)
+
+	Install k3s in an air-gapped environment. High Availability is recommended for production environments.
