@@ -1,6 +1,6 @@
 ---
 title: "Advanced Options"
-weight: 3
+weight: 40
 aliases:
   - /k3s/latest/en/running/
 ---
