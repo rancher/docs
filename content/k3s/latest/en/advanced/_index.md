@@ -104,10 +104,3 @@ To run the agent only in Docker, use `docker-compose up node`. Alternatively the
             -e K3S_TOKEN=${NODE_TOKEN} \
             --privileged rancher/k3s:vX.Y.Z
 
-Hyperkube
----------
-
-k3s is bundled in a nice wrapper to remove the majority of the headache of running k8s. If
-you don't want that wrapper and just want a smaller k8s distro, the releases includes
-the `hyperkube` binary you can use.  It's then up to you to know how to use `hyperkube`. If
-you want individual binaries you will need to compile them yourself from source.
