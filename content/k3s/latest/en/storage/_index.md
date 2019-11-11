@@ -8,7 +8,7 @@ When deploying an application that needs to retain data, you’ll need to create
 # Local Storage Provider
 k3s comes with Rancher's Local Path Provisioner and this enables the ability to create persistent volume claims out of the box using local storage on the respective node. Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
-Create a hostPath backed persistent volume and a pod to utilize it:
+Create a hostPath backed persistent volume claim and a pod to utilize it:
 
 ### pvc.yaml
 
@@ -53,7 +53,7 @@ spec:
 
 Apply the yaml `kubectl create -f pvc.yaml` and `kubectl create -f pod.yaml`
 
-Confirm the pv and pvc are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
+Confirm the PV and PVC are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
 
 # Longhorn
 
@@ -69,7 +69,7 @@ Apply the longhorn.yaml to install Longhorn.
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
 ```
 
-Longhorn will be installed in the namespace `longhorn-system`
+Longhorn will be installed in the namespace `longhorn-system`.
 
 Before we create a PVC, we will create a storage class for longhorn with this yaml.
 
@@ -77,7 +77,7 @@ Before we create a PVC, we will create a storage class for longhorn with this ya
 kubectl create -f https://raw.githubusercontent.com/longhorn/longhorn/master/examples/storageclass.yaml
 ```
 
-Now, apply the following yaml to create the pvc and pod with `kubectl create -f pvc.yaml` and `kubectl create -f pod.yaml`
+Now, apply the following yaml to create the PVC and pod with `kubectl create -f pvc.yaml` and `kubectl create -f pod.yaml`
 
 ### pvc.yaml
 
@@ -119,4 +119,4 @@ spec:
       claimName: longhorn-volv-pvc
 ```
 
-Confirm the pv and pvc are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
+Confirm the PV and PVC are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
