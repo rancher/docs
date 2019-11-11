@@ -3,9 +3,7 @@ title: "Single Master Install"
 weight: 20
 ---
 
->**Note:** This section contains information on flags and environment variables used for starting a single-master 
-(non-HA) k3s cluster. A High-Availability (HA) k3s cluster is required for production. A single server install is 
-intended only for development and testing environments.
+>**Note:** This section contains information on flags and environment variables used for starting a single-master (non-HA) k3s cluster. A High-Availability (HA) k3s cluster is recommended for production environments that cannot tolerate down time.
 
 Installation
 ------------
