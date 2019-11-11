@@ -104,11 +104,6 @@ To run the agent only in Docker, use `docker-compose up node`. Alternatively the
             -e K3S_TOKEN=${NODE_TOKEN} \
             --privileged rancher/k3s:vX.Y.Z
 
-Uninstalling
-------------
-
-If you installed k3s with the help of `install.sh` script an uninstall script is generated during installation, which will be created on your server node at `/usr/local/bin/k3s-uninstall.sh` (or as `k3s-agent-uninstall.sh`).
-
 Hyperkube
 ---------
 

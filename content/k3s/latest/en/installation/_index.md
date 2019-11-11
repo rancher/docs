@@ -18,3 +18,7 @@ This section contains instructions for installing k3s in testing and production 
 *   [Air-Gap Installation]({{< baseurl >}}/k3s/latest/en/installation/airgap/)
 
 	Install k3s in an air-gapped environment. High Availability is recommended for production environments.
+
+### Uninstalling
+
+If you installed k3s with the help of the `install.sh` script an uninstall script is generated during installation, which will be created on your node at `/usr/local/bin/k3s-uninstall.sh` (or as `k3s-agent-uninstall.sh`).
