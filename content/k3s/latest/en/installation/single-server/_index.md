@@ -14,8 +14,7 @@ k3s is easy to install. To install the latest version, simply run:
 curl -sfL https://get.k3s.io | sh -
 ```
 
-The install script will attempt to download the latest release. To specify a specific
-version for download we can use the `INSTALL_K3S_VERSION` environment variable. For example:
+The install script will attempt to download the latest release. To specify a version for download we can use the `INSTALL_K3S_VERSION` environment variable. For example:
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
