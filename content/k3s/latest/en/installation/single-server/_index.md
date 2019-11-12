@@ -3,9 +3,7 @@ title: "Single Master Install"
 weight: 20
 ---
 
->**Note:** This section contains information on flags and environment variables used for starting a single-master 
-(non-HA) k3s cluster. A High-Availability (HA) k3s cluster is required for production. A single server install is 
-intended only for development and testing environments.
+>**Note:** This section contains information on flags and environment variables used for starting a single-master (non-HA) k3s cluster. A High-Availability (HA) k3s cluster is recommended for production environments that cannot tolerate down time.
 
 Installation
 ------------
@@ -16,8 +14,7 @@ k3s is easy to install. To install the latest version, simply run:
 curl -sfL https://get.k3s.io | sh -
 ```
 
-The install script will attempt to download the latest release. To specify a specific
-version for download we can use the `INSTALL_K3S_VERSION` environment variable. For example:
+The install script will attempt to download the latest release. To specify a version for download we can use the `INSTALL_K3S_VERSION` environment variable. For example:
 ```sh
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=vX.Y.Z-rc1 sh -
 ```
