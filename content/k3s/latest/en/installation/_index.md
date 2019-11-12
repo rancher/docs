@@ -1,5 +1,5 @@
 ---
-title: "Installation Options"
+title: "Installation"
 weight: 20
 ---
 
