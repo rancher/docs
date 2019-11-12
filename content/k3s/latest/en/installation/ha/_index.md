@@ -38,7 +38,10 @@ On the first machine, run the following command to install k3s and connect it to
 ```
 curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='postgres://username:password@hostname:5432/dbname' --cluster-secret='mysecret' --bootstrap-save
 ```
-Note: You may want to provide the database password and cluster-secret temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine. The cluster-secret can contain any Unicode, although you should avoid single and double quotes and make sure the contents are terminal-friendly.
+
+The cluster-secret can contain any Unicode, although you should avoid single and double quotes and make sure the contents are terminal-friendly.
+
+Note: You may want to provide the database password and cluster-secret temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine.
 
 On the second machine, run the following command. Since we ran the first node with the `--bootstrap-save` flag the second and any additional machines will now automatically bootstrap HA.
 

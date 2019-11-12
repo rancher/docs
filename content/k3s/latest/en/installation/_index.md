@@ -9,15 +9,15 @@ This section contains instructions for installing k3s in various environments. P
 
 *   [Single Master Installation]({{< baseurl >}}/k3s/latest/en/installation/single-server/)
 
-	Install k3s on a single Linux host. Single master installs are recommended for development, test, or production environments where the cluster doesn't have to be readily available for a user-base and some down time is acceptible.
+	Install k3s on a single Linux host. Single master installs are recommended for development, test, or production environments where the cluster doesn't have to be readily available for a user-base and some downtime is acceptible.
 
 *   [High Availability (HA) Installation]({{< baseurl >}}/k3s/latest/en/installation/ha/)
 
-	Install k3s on two or more Linux hosts. High Availability installs are recommended for production environments that cannot tolerate any down time.
+	Install k3s on two or more Linux hosts. High Availability installs are recommended for production environments that cannot tolerate any downtime.
 
 *   [Air-Gap Installation]({{< baseurl >}}/k3s/latest/en/installation/airgap/)
 
-	Install k3s in an air-gapped environment. High Availability is recommended for production environments that cannot tolerate any down time.
+	Install k3s in an air-gapped environment. High Availability is recommended for production environments that cannot tolerate any downtime.
 
 ### Uninstalling
 

@@ -4,7 +4,7 @@ weight: 10
 ---
 
 >**Note:** The intent of this guide is to quickly launch a cluster with default options. It is suitable for production environments if you can accept some downtime in production (e.g. on the Edge). A High-Availiability solution should be utilized if down time is not acceptible.
-The [installation options](../installation) section covers in greater detail how k3s can be setup.
+The [installation options](../installation) section covers in greater detail how k3s can be set up.
 
 > New to Kubernetes? The official Kubernetes docs already have some great tutorials outlining the basics [here](https://kubernetes.io/docs/tutorials/kubernetes-basics/).
 
