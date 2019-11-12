@@ -13,9 +13,9 @@ For production environments that cannot tolerate down time, we recommend install
 This image depicts a k3s HA install with two load balancers:
 
 * A load balancer to expose workloads to external traffic
-* A load balancer to expose the Kubernetes API for worker node registration and admin access via `kubectl`
+* A load balancer to expose the Kubernetes API for clients such as kubectl and to expose a stable k3s worker registration endpoint
 
-The HA database shown should be a single endpoint k3s can access such as a load balancer. The worker registration / kubernetes API load balancer is needed if the master nodepool will be auto scaling and thus master nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
+The external database shown should be a single endpoint k3s can access. The worker registration / kubernetes API load balancer is needed if the master nodepool will be auto scaling and thus master nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
 
 Installation Outline
 --------------------
