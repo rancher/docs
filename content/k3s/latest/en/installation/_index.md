@@ -7,9 +7,9 @@ This section contains instructions for installing k3s in various environments. P
 
 ### Installation Options
 
-*   [Single Master Installation]({{< baseurl >}}/k3s/latest/en/installation/single-server/)
+*   [Single Server Installation]({{< baseurl >}}/k3s/latest/en/installation/single-server/)
 
-	Install k3s on a single Linux host. Single master installs are recommended for development, test, or production environments where the cluster doesn't have to be readily available for a user-base and some downtime is acceptible.
+	Install k3s on a single Linux host. Single server installs are recommended for development, test, or production environments where the cluster doesn't have to be readily available for a user-base and some downtime is acceptible.
 
 *   [High Availability (HA) Installation]({{< baseurl >}}/k3s/latest/en/installation/ha/)
 
