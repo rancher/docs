@@ -5,15 +5,15 @@ weight: 50
 
 >**Note:** Running k3s v1.0.0 or newer is recommended as it has official support for PostgreSQL, MySQL, and etcd. v0.10.0 introduced support for PostgreSQL 10.7 and 11.5 only. Older versions did not have any official support for any external databases. 
 
->In v1.0.0 the method for adding master nodes is easier. If you are running a version of k3s older than v1.0.0 use these instructions for adding additional servers. Otherwise, the process is unchanged such as for joining workers (agents) to the cluster.
+>In v1.0.0 the method for adding server nodes is easier. If you are running a version of k3s older than v1.0.0 use these instructions for adding additional servers. Otherwise, the process is unchanged such as for joining workers (agents) to the cluster.
 
-First, create your initial master, for example:
+First, create your initial server, for example:
 
 ```
 curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='value_here' --cluster-secret='mysecret' --bootstrap-save
 ```
 
-Then, add additional masters:
+Then, add additional servers:
 
 ```
 curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='value_here'

@@ -3,7 +3,7 @@ title: "High Availability (HA) Install"
 weight: 30
 ---
 
->**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release. HA may work on older releases but has limited support. Older versions of k3s bring up master nodes slightly differently. Reference [this]({{< baseurl >}}/k3s/latest/en/installation/older-installations/) page for more information.
+>**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release. HA may work on older releases but has limited support. Older versions of k3s bring up server nodes slightly differently. Reference [this]({{< baseurl >}}/k3s/latest/en/installation/older-installations/) page for more information.
 
 >k3s servers do not utilize a quorum for leader election and so only a 2-node cluster is needed for HA at a minimum. You could optionally add one or more server nodes for additional redundancy.
 
@@ -16,13 +16,13 @@ This image depicts a k3s HA install with two load balancers:
 * A load balancer to expose workloads to external traffic
 * A load balancer to expose the Kubernetes API for clients such as kubectl and to expose a stable k3s worker registration endpoint
 
-The external database shown should be a single endpoint k3s can access. The worker registration / kubernetes API load balancer is needed if the master nodepool will be auto scaling and thus master nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
+The external database shown should be a single endpoint k3s can access. The worker registration / kubernetes API load balancer is needed if the server nodepool will be auto scaling and thus server nodes are ephemeral. Port 6443 is used for worker (agent) node registration and the Kubernetes API.
 
 Installation Outline
 --------------------
-1. Create backend database (PostgreSQL, MySQL, or etcd)
-2. Create server (master) nodes
-3. Join worker nodes
+1. Create Database for Cluster Datastore (PostgreSQL, MySQL, or etcd)
+2. Create Server Nodes
+3. Join Worker Nodes
 
 ### Create Database for Cluster Datastore
 You will first need to create the database for the backend (cluster datastore). k3s must have a single endpoint it can reach to talk to the database.
@@ -33,13 +33,13 @@ Here is a list of supported backend databases as of our v1.0.0 release:
 *  MySQL 5.7
 *  etcd 3.3.15
 
-### Create Master Nodes
+### Create Server Nodes
 Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision at least two machines.
-The sections below will indicate what you need to run (depending on the type of database) to bring the server (master) nodes up.
+The sections below will indicate what you need to run (depending on the type of database) to bring the server nodes up.
 
->**Note:** You may wish to taint the server (master) nodes. They will run the kubelet and be scheduleable. If you wish to do this, you can use the `--node-taint` flag. For example `--node-taint key=value:NoExecute`.
+>**Note:** You may wish to taint the server nodes. They will run the kubelet and be scheduleable. If you wish to do this, you can use the `--node-taint` flag. For example `--node-taint key=value:NoExecute`.
 
->If your server (master) node pool will be auto-scaling, we recommend using the `--cluster-secret` flag instead of the default node-token. For example, this will make it easier to write user-data. The examples we provide use this flag.
+>If your server node pool will be auto-scaling, we recommend using the `--cluster-secret` flag instead of the default node-token. For example, this will make it easier to write user-data. The examples we provide use this flag.
 
 
 {{% tabs %}}
@@ -133,22 +133,18 @@ curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='http://hostname
 {{% /tab %}}
 {{% /tabs %}}
 
-
->**Note:** The cluster-secret can contain any Unicode, although you should avoid single and double quotes and make sure the contents are terminal-friendly. You should use a strong password.
->You may want to provide the database password and cluster-secret temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine.
-
 Ensure that both of the nodes are in a Ready state such as with `k3s kubectl get nodes`
 
 ### Join Worker Nodes
 Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision one or more machines to fill the role of the worker node(s).
 
-Run the following command to join a worker node to the master nodes. We are leveraging the cluster-secret here. Since our master nodes were set up to use this, so too must any agent nodes.
+Run the following command to join a worker node to the server nodes. We are leveraging the cluster-secret here. Since our server nodes were set up to use this, so too must any agent nodes.
 
 ```
-curl -sfL https://get.k3s.io | K3S_URL=https:/<master_node>:6443 K3S_CLUSTER_SECRET='mysecret' sh -
+curl -sfL https://get.k3s.io | K3S_URL=https:/<server_node>:6443 K3S_CLUSTER_SECRET='mysecret' sh -
 ```
 
-Provide the IP or DNS in place of `<master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes.
+Provide the IP or DNS in place of `<server_node>` this can be any one server node. k3s automatically handles load balancing the server nodes.
 
 Note: You may want to provide the cluster-secret temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine.
 
