@@ -12,7 +12,7 @@ runcmd:
 - echo "test" > /home/rancher/test2
 ```
 
-Commands specified using `runcmd` will be executed within the context of the `console` container. More details on the ordering of commands run in the `console` container can be found [here]({{< baseurl >}}/os/v1.x/en/installation/boot-process/built-in-system-services/#console).
+Commands specified using `runcmd` will be executed within the context of the `console` container.
 
 ### Running Docker commands
 
