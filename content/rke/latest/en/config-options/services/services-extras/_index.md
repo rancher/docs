@@ -9,9 +9,16 @@ RKE supports additional service arguments, volume binds and environment variable
 
 For any of the Kubernetes services, you can update the `extra_args` to change the existing defaults.
 
-As of `v0.1.3`, using `extra_args` will add new arguments and **override** any existing defaults. For example, if you need to modify the default admission controllers list, you need to include the default list and edit it with your changes so all changes are included.
+As of `v0.1.3`, using `extra_args` will add new arguments and **override** any existing defaults. For example, if you need to modify the default admission plugins list, you need to include the default list and edit it with your changes so all changes are included.
 
 Prior to `v0.1.3`, using `extra_args` would only add new arguments to the list and there was no ability to change the default list.
+
+All service defaults and parameters are defined per [`kubernetes_version`]({{<baseurl>}}/rke/latest/en/config-options/#kubernetes-version):
+
+- For RKE v0.3.0+, the service defaults are located here: https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go
+- For RKE prior to v0.3.0, the service defaults are located here: https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go
+
+The default list of admission plugins for RKE v0.3.0+ is defined [here](https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go#L11). The list is sometimes changed per Kubernetes version. The exact list per version is defined in the same file. The admission plugins for RKE prior to v0.3.0 is defined [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go). 
 
 ```yaml
 services:
