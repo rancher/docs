@@ -3,9 +3,9 @@ title: "Installations Prior to v1.0.0"
 weight: 50
 ---
 
->**Note:** Running k3s v1.0.0 or newer is recommended as it has official support for PostgreSQL, MySQL, and etcd. v0.10.0 introduced support for PostgreSQL 10.7 and 11.5 only. Older versions did not have any official support for any external databases. 
+Running k3s v1.0.0 or newer is recommended as it has official support for PostgreSQL, MySQL, and etcd. v0.10.0 introduced support for PostgreSQL 10.7 and 11.5 only. Older versions did not have any official support for any external databases. 
 
->In v1.0.0 the method for adding server nodes is easier. If you are running a version of k3s older than v1.0.0 use these instructions for adding additional servers. Otherwise, the process is unchanged such as for joining workers (agents) to the cluster.
+In v1.0.0 the method for adding server nodes is easier. If you are running a version of k3s older than v1.0.0, use these instructions for adding additional servers. Otherwise, the process is unchanged for joining workers.
 
 First, create your initial server, for example:
 

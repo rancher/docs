@@ -66,7 +66,7 @@ curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='postgres://user
 
 ```
 
-The above command will use these certificates to generate the tls config to communicate with postgres securely.
+The above command will use these certificates to generate the TLS config to communicate with PostgreSQL securely.
 
 ### Insecure Method
 Run the following command on each server to install k3s and connect it to the database insecurely.
@@ -99,7 +99,7 @@ curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='mysql://usernam
 
 
 ```
-The above command will use these certificates to generate the tls config to communicate with mysql securely.
+The above command will use these certificates to generate the TLS config to communicate with MySQL securely.
 
 ### Insecure Method
 Run the following command on each server to install k3s and connect it to the database insecurely.
@@ -121,7 +121,7 @@ curl -fL https://get.k3s.io | sh -s - server --storage-endpoint="https://hostnam
  --storage-certfile etcd.crt \
  --storage-keyfile etcd.key
 ```
-The above command will use these certificates to generate the tls config to communicate with etcd securely.
+The above command will use these certificates to generate the TLS config to communicate with etcd securely.
 
 ### Insecure Method
 Run the following command on each server to install k3s and connect it to the database insecurely.
@@ -144,7 +144,7 @@ Run the following command to join a worker node to the server nodes. We are leve
 curl -sfL https://get.k3s.io | K3S_URL=https:/<server_node>:6443 K3S_CLUSTER_SECRET='mysecret' sh -
 ```
 
-Provide the IP or DNS in place of `<server_node>` this can be any one server node. k3s automatically handles load balancing the server nodes.
+Provide the IP or DNS in place of `<server_node>`. This can be any one server node. k3s automatically handles load balancing the server nodes.
 
 Note: You may want to provide the cluster-secret temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine.
 
