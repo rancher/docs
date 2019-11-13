@@ -112,6 +112,7 @@ curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='mysql://usernam
 {{% tab "etcd" %}}
 
 ### Secure Method
+Run the following command on each server to install k3s and connect it to the database securely.
 
 ```
 curl -fL https://get.k3s.io | sh -s - server --storage-endpoint="https://hostname:2379" \
