@@ -182,7 +182,7 @@ cloud_provider:
         datacenters: eu-west-1
     workspace:
       server: vc.example.com
-      folder: kubernetes
+      folder: vm/kubernetes
       default-datastore: ds-1
       datacenter: eu-west-1
 
