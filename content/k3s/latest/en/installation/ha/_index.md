@@ -141,7 +141,7 @@ Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/nod
 Run the following command to join a worker node to the server nodes. We are leveraging the cluster-secret here. Since our server nodes were set up to use this, so too must any agent nodes.
 
 ```
-curl -sfL https://get.k3s.io | K3S_URL=https:/<server_node>:6443 K3S_CLUSTER_SECRET='mysecret' sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://<server_node>:6443 K3S_CLUSTER_SECRET='mysecret' sh -
 ```
 
 Provide the IP or DNS in place of `<server_node>`. This can be any one server node. k3s automatically handles load balancing the server nodes.
