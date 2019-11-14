@@ -3,7 +3,7 @@ title: "High Availability (HA) Install"
 weight: 30
 ---
 
->**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release. HA may work on older releases but has limited support. Older versions of k3s bring up server nodes slightly differently. Reference [this]({{< baseurl >}}/k3s/latest/en/installation/older-installations/) page for more information.
+>**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release.
 
 >k3s servers do not utilize a quorum for leader election and so only a 2-node cluster is needed for HA at a minimum. You could optionally add one or more server nodes for additional redundancy.
 

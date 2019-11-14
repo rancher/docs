@@ -162,7 +162,3 @@ k3s agents can be configured with options `--node-label` and `--node-taint` whic
      --node-taint key1=value1:NoExecute
 ```
 
-Metrics Server
---------------
-
->**Note:** v1.0.0 and newer includes the metrics-server by default. For older versions of k3s, please visit [Configuration Info Prior to v1.0.0]({{< baseurl >}}/k3s/latest/en/configuration/older-configuration/).
