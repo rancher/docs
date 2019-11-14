@@ -69,7 +69,7 @@ In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/latest
 
 > **Note:** In RKE, `kubernetes_version` is used to map the version of Kubernetes to the default services, parameters, and options:
 > - For RKE v0.3.0+, the service defaults are located [here](https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go).
-> - For RKE prior to v0.3.0, the service defaults are located [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go).
+> - For RKE prior to v0.3.0, the service defaults are located [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go). Note: The version in the path of the service defaults file corresponds to a Rancher version. Therefore, for Rancher v2.1.x, [this file](https://github.com/rancher/types/blob/release/v2.1/apis/management.cattle.io/v3/k8s_defaults.go) should be used.
 
 #### Listing Supported Kubernetes Versions
 
