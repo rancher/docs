@@ -68,6 +68,8 @@ The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 
 >**Note:** K3s additionally provides a `--resolv-conf` flag for kubelets, which may help with configuring DNS in air-gap networks.
 
+# Upgrading
+
 Upgrading an air-gap environment can be accomplished in the following manner:
 
 1. Download the new air-gap images (tar file) from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be upgrading to. Place the tar in the `/var/lib/rancher/k3s/agent/images/` directory on each node. Delete the old tar file.
