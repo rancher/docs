@@ -5,7 +5,7 @@ aliases:
   - /k3s/latest/en/running/
 ---
 
-This section contains advanced information describing the different ways you can run and manage k3s.
+This section contains advanced information describing the different ways you can run and manage K3s.
 
 Starting the Server
 ------------------
@@ -81,10 +81,10 @@ After rebooting:
 Running in Docker (and docker-compose)
 -----------------
 
-[k3d](https://github.com/rancher/k3d) is a utility designed to easily run k3s in Docker. It can be installed via the [brew](https://brew.sh/) utility for MacOS.
+[k3d](https://github.com/rancher/k3d) is a utility designed to easily run K3s in Docker. It can be installed via the [brew](https://brew.sh/) utility for MacOS.
 
-`rancher/k3s` images are also available to run k3s server and agent from Docker.  A `docker-compose.yml` is in the root of the k3s repo that
-serves as an example of how to run k3s from Docker.  To run from `docker-compose` from this repo run:
+`rancher/k3s` images are also available to run K3s server and agent from Docker.  A `docker-compose.yml` is in the root of the K3s repo that
+serves as an example of how to run K3s from Docker.  To run from `docker-compose` from this repo run:
 
     docker-compose up --scale node=3
     # kubeconfig is written to current dir

@@ -3,12 +3,12 @@ title: "Single Server Install"
 weight: 20
 ---
 
->**Note:** This section contains information on flags and environment variables used for starting a single-server (non-HA) k3s cluster. A High-Availability (HA) k3s cluster is recommended for production environments that cannot tolerate down time.
+>**Note:** This section contains information on flags and environment variables used for starting a single-server (non-HA) K3s cluster. A High-Availability (HA) K3s cluster is recommended for production environments that cannot tolerate down time.
 
 Installation
 ------------
 
-k3s is easy to install. To install the latest version, simply run:
+K3s is easy to install. To install the latest version, simply run:
 
 ```sh
 curl -sfL https://get.k3s.io | sh -
@@ -47,7 +47,7 @@ The full help text for the install script environment variables are as follows:
 
    - `INSTALL_K3S_SKIP_DOWNLOAD`
 
-     If set to true will not download k3s hash or binary.
+     If set to true will not download K3s hash or binary.
      
    - `INSTALL_K3S_SYMLINK`
 
@@ -56,12 +56,12 @@ The full help text for the install script environment variables are as follows:
 
    - `INSTALL_K3S_VERSION`
 
-     Version of k3s to download from github. Will attempt to download the
+     Version of K3s to download from github. Will attempt to download the
      latest version if not specified.
 
    - `INSTALL_K3S_BIN_DIR`
 
-     Directory to install k3s binary, links, and uninstall script to, or use
+     Directory to install K3s binary, links, and uninstall script to, or use
      /usr/local/bin as the default
 
    - `INSTALL_K3S_SYSTEMD_DIR`
@@ -71,7 +71,7 @@ The full help text for the install script environment variables are as follows:
 
    - `INSTALL_K3S_EXEC` or script arguments
 
-     Command with flags to use for launching k3s in the systemd service, if
+     Command with flags to use for launching K3s in the systemd service, if
      the command is not specified will default to "agent" if `K3S_URL` is set
      or "server" if not. The final systemd command resolves to a combination
      of EXEC and script args ($@).
@@ -87,11 +87,11 @@ The full help text for the install script environment variables are as follows:
 
    - `INSTALL_K3S_NAME`
 
-     Name of systemd service to create, will default from the k3s exec command
+     Name of systemd service to create, will default from the K3s exec command
      if not specified. If specified the name will be prefixed with 'k3s-'.
 
    - `INSTALL_K3S_TYPE`
 
-     Type of systemd service to create, will default from the k3s exec command
+     Type of systemd service to create, will default from the K3s exec command
      if not specified.
 

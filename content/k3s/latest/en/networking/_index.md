@@ -36,7 +36,7 @@ To disable it, start each server with the `--no-deploy traefik` option.
 Service Load Balancer
 ---------------------
 
-k3s includes a basic service load balancer that uses available host ports.  If you try to create
+K3s includes a basic service load balancer that uses available host ports.  If you try to create
 a load balancer that listens on port 80, for example, it will try to find a free host in the cluster
 for port 80.  If no port is available the load balancer will stay in Pending.
 
