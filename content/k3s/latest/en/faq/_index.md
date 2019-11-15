@@ -19,4 +19,4 @@ At this time k3s does not natively support Windows, however we are open to the i
 
 **How can I build from source?**
 
-Please reference the k3s [README.md](https://github.com/rancher/k3s/blob/master/README.md) with instructions.
+Please reference the k3s [BUILDING.md](https://github.com/rancher/k3s/blob/master/BUILDING.md) with instructions.
