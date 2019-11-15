@@ -34,3 +34,5 @@ k3s performance depends on the performance of the database. To ensure optimal sp
 The k3s server needs port 6443 to be accessible by the nodes. The nodes need to be able to reach other nodes over UDP port 8472 (Flannel VXLAN). If you do not use flannel and provide your own custom CNI, then port 8472 is not needed by k3s. The node should not listen on any other port. k3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel.
 
 IMPORTANT: The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disabled access to port 8472.
+
+If you wish to utilize the metrics server, you will need to open port 10250 on each node.
