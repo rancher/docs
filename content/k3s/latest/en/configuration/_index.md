@@ -3,7 +3,7 @@ title: "Configuration Info"
 weight: 50
 ---
 
-This section contains information on using k3s with various configurations.
+This section contains information on using K3s with various configurations.
 
 
 Auto-Deploying Manifests
@@ -12,7 +12,7 @@ Auto-Deploying Manifests
 Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to
 Kubernetes in a manner similar to `kubectl apply`.
 
-It is also possible to deploy Helm charts. k3s supports a CRD controller for installing charts. A YAML file specification can look as following (example taken from `/var/lib/rancher/k3s/server/manifests/traefik.yaml`):
+It is also possible to deploy Helm charts. K3s supports a CRD controller for installing charts. A YAML file specification can look as following (example taken from `/var/lib/rancher/k3s/server/manifests/traefik.yaml`):
 
 ```yaml
 apiVersion: helm.cattle.io/v1
@@ -27,7 +27,7 @@ spec:
     ssl.enabled: "true"
 ```
 
-Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because k3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual helm release, you can do that using `targetNamespace` key in the spec section:
+Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual helm release, you can do that using `targetNamespace` key in the spec section:
 
 ```
 apiVersion: helm.cattle.io/v1
@@ -53,7 +53,7 @@ spec:
 
 Also note that besides `set` you can use `valuesContent` in the spec section. And it's okay to use both of them.
 
-k3s versions `<= v0.5.0` used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
+K3s versions `<= v0.5.0` used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
 
 Using the helm CRD
 ---------------------
@@ -90,7 +90,7 @@ Accessing Cluster from Outside
 -----------------------------
 
 Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace
-"localhost" with the IP or name of your k3s server. `kubectl` can now manage your k3s cluster.
+"localhost" with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.
 
 Node Registration
 -----------------
@@ -104,9 +104,9 @@ password file should be recreated for the agent, or the entry removed from the s
 Containerd and Docker
 ----------
 
-k3s includes and defaults to containerd. If you want to use Docker instead of containerd then you simply need to run the agent with the `--docker` flag.
+K3s includes and defaults to containerd. If you want to use Docker instead of containerd then you simply need to run the agent with the `--docker` flag.
 
-k3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`, for advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
+K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`, for advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
 The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
 
@@ -126,9 +126,9 @@ In short, latest Ubuntu is your best bet for this to work.
 
 * **Ports**
 
-    When running rootless a new network namespace is created.  This means that k3s instance is running with networking
-    fairly detached from the host.  The only way to access services run in k3s from the host is to setup port forwards
-    to the k3s network namespace.  We have a controller that will automatically bind 6443 and service port below 1024 to the host with an offset of 10000. 
+    When running rootless a new network namespace is created.  This means that K3s instance is running with networking
+    fairly detached from the host.  The only way to access services run in K3s from the host is to setup port forwards
+    to the K3s network namespace.  We have a controller that will automatically bind 6443 and service port below 1024 to the host with an offset of 10000. 
 
     That means service port 80 will become 10080 on the host, but 8080 will become 8080 without any offset.
 
@@ -136,7 +136,7 @@ In short, latest Ubuntu is your best bet for this to work.
 
 * **Daemon lifecycle**
 
-    Once you kill k3s and then start a new instance of k3s it will create a new network namespace, but it doesn't kill the old pods.  So you are left
+    Once you kill K3s and then start a new instance of K3s it will create a new network namespace, but it doesn't kill the old pods.  So you are left
     with a fairly broken setup.  This is the main issue at the moment, how to deal with the network namespace.
 
     The issue is tracked in https://github.com/rootless-containers/rootlesskit/issues/65
@@ -149,13 +149,13 @@ In short, latest Ubuntu is your best bet for this to work.
 
 Just add `--rootless` flag to either server or agent.  So run `k3s server --rootless` and then look for the message
 `Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.  Be careful, if you use `-o` to write
-the kubeconfig to a different directory it will probably not work.  This is because the k3s instance in running in a different
+the kubeconfig to a different directory it will probably not work.  This is because the K3s instance in running in a different
 mount namespace.
 
 Node Labels and Taints
 ----------------------
 
-k3s agents can be configured with options `--node-label` and `--node-taint` which adds set of Labels and Taints to kubelet, the two options only adds labels/taints at registration time, so they can only be added once and not changed after that, an example of options to add new label is:
+K3s agents can be configured with options `--node-label` and `--node-taint` which adds set of Labels and Taints to kubelet, the two options only adds labels/taints at registration time, so they can only be added once and not changed after that, an example of options to add new label is:
 ```
      --node-label foo=bar \
      --node-label hello=world \

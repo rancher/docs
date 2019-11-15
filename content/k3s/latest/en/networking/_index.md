@@ -3,18 +3,9 @@ title: "Networking"
 weight: 35
 ---
 
-Open Ports / Network Security
----------------------------
-
-The server needs port 6443 to be accessible by the nodes.  The nodes need to be able to reach
-other nodes over UDP port 8472.  The nodes also need to be able to reach the server on UDP port 8472.  This is used for flannel VXLAN.  If you don't use flannel
-and provide your own custom CNI, then 8472 is not needed by k3s. The node should not listen
-on any other port.  k3s uses reverse tunneling such that the nodes make outbound connections
-to the server and all kubelet traffic runs through that tunnel.
-
-IMPORTANT. The VXLAN port on nodes should not be exposed to the world, it opens up your
-cluster network to accessed by anyone.  Run your nodes behind a firewall/security group that
-disables access to port 8472.
+Open Ports
+----------
+Please reference the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/#networking) page for port information.
 
 Flannel
 -------
@@ -45,7 +36,7 @@ To disable it, start each server with the `--no-deploy traefik` option.
 Service Load Balancer
 ---------------------
 
-k3s includes a basic service load balancer that uses available host ports.  If you try to create
+K3s includes a basic service load balancer that uses available host ports.  If you try to create
 a load balancer that listens on port 80, for example, it will try to find a free host in the cluster
 for port 80.  If no port is available the load balancer will stay in Pending.
 

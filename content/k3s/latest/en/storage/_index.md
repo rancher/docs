@@ -6,7 +6,7 @@ weight: 30
 When deploying an application that needs to retain data, you’ll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application’s pod fails.
 
 # Local Storage Provider
-k3s comes with Rancher's Local Path Provisioner and this enables the ability to create persistent volume claims out of the box using local storage on the respective node. Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
+K3s comes with Rancher's Local Path Provisioner and this enables the ability to create persistent volume claims out of the box using local storage on the respective node. Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 Create a hostPath backed persistent volume claim and a pod to utilize it:
 
@@ -61,7 +61,7 @@ Confirm the PV and PVC are created. `kubectl get pv` and `kubectl get pvc` The s
 
 > **Note:** At this time Longhorn only supports amd64.
 
-k3s supports [Longhorn](https://github.com/longhorn/longhorn). Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/longhorn/longhorn/blob/master/README.md).
+K3s supports [Longhorn](https://github.com/longhorn/longhorn). Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/longhorn/longhorn/blob/master/README.md).
 
 Apply the longhorn.yaml to install Longhorn.
 
