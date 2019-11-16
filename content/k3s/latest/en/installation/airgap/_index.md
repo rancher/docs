@@ -1,6 +1,6 @@
 ---
 title: "Air-Gap Install"
-weight: 40
+weight: 60
 ---
 
 In this guide, we are assuming you have created your nodes in your air-gap environment and have a secure Docker private registry on your bastion server.
@@ -12,7 +12,7 @@ Installation Outline
 3. Install K3s
 
 ### Prepare Images Directory
-Obtain the images tar file for your architecture from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be running. 
+Obtain the images tar file for your architecture from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be running.
 
 Place the tar file in the `images` directory before starting K3s on each node, for example:
 
@@ -73,6 +73,5 @@ The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 Upgrading an air-gap environment can be accomplished in the following manner:
 
 1. Download the new air-gap images (tar file) from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be upgrading to. Place the tar in the `/var/lib/rancher/k3s/agent/images/` directory on each node. Delete the old tar file.
-2. Copy and replace the old K3s binary in `/usr/local/bin` on each node. Copy over the install script at https://get.k3s.io (as it is possible it has changed since the last release). Run the script again just as you had done in the past with the same enviornment variables.
+2. Copy and replace the old K3s binary in `/usr/local/bin` on each node. Copy over the install script at https://get.k3s.io (as it is possible it has changed since the last release). Run the script again just as you had done in the past with the same environment variables.
 3. Restart the K3s service (if not restarted automatically by installer).
-
