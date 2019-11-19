@@ -39,7 +39,7 @@ Windows Server 2019 (64-bit x86) | Requires Docker Engine - Enterprise Edition (
 
 \* Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
-\** Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09. Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03. Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
+\** Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03. Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03. Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental)]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
 
