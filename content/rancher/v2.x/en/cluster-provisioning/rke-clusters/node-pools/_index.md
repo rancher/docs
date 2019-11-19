@@ -29,6 +29,8 @@ Using Rancher, you can create pools of nodes based on a [node template](#node-te
 
 Each node pool is assigned with a [node component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) to specify how these nodes should be configured for the Kubernetes cluster.
 
+> Self-healing node pools are designed to help you replace worker nodes for stateless applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
+
 ### Node Pool Taints
 
 _Available as of Rancher v2.3.0_
