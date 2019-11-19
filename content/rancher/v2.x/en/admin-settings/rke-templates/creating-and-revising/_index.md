@@ -24,6 +24,7 @@ This section covers the following topics:
 - [Setting a template revision as default](#setting-a-template-revision-as-default)
 - [Deleting a template revision](#deleting-a-template-revision)
 - [Upgrading a cluster to use a new template revision](#upgrading-a-cluster-to-use-a-new-template-revision)
+- [Exporting a running cluster to a new RKE template and revision](#exporting-a-running-cluster-to-a-new-rke-template-and-revision)
 
 ### Prerequisites
 
@@ -140,4 +141,22 @@ To upgrade a cluster to use a new template revision,
 1. In the **Cluster Options** section, click the dropdown menu for the template revision, then select the new template revision.
 1. Click **Save.**
 
-**Result:** The cluster is upgrades to use the settings defined in the new template revision.
+**Result:** The cluster is upgraded to use the settings defined in the new template revision.
+
+### Exporting a Running Cluster to a New RKE Template and Revision
+
+You can save an existing cluster's settings as an RKE template.
+
+This exports the cluster's settings as a new RKE template, and also binds the cluster to that template. The result is that the cluster can only be changed if the [template is updated,]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template) and the cluster is upgraded to [use a newer version of the template.]
+
+To convert an existing cluster to use an RKE template,
+
+1. From the **Global** view in Rancher, click the **Clusters** tab.
+1. Go to the cluster that will be converted to use an RKE template. Click **Ellipsis (...)** > **Save as RKE Template.**
+1. Enter a name for the template in the form that appears, and click **Create.**
+
+**Results:**
+
+- A new RKE template is created.
+- The cluster is converted to use the new template.
+- New clusters can be [created from the new template and revision.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#creating-a-cluster-from-an-rke-template)
