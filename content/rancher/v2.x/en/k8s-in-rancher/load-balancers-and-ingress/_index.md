@@ -3,13 +3,13 @@ title: Load Balancing and Ingresses
 weight: 3040
 ---
 
-Within Rancher, you can setup load balancers and ingress controllers to redirect service requests.
+Within Rancher, you can set up load balancers and ingress controllers to redirect service requests.
 
 ## Load Balancers
 
 After you launch an application, the app is only available within the cluster. It can't be reached from outside the cluster.
 
-If you want your applications to be externally accessible, you must add a load balancer or ingress to your cluster Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
+If you want your applications to be externally accessible, you must add a load balancer or ingress to your cluster. Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
 
 Rancher supports two types of load balancers:
 
