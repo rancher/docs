@@ -17,7 +17,7 @@ Admins control which cluster options can be changed by end users. RKE templates 
 
 If a cluster was created with an RKE template, you can't change it to a different RKE template. You can only update the cluster to a new revision of the same template.
 
-As of Rancher v2.3.3, you can [save the configuration of an existing cluster as an RKE template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#converting-an-existing-cluster-to-use-an-rke-template) Then the cluster's settings can only be changed if the template is updated.
+As of Rancher v2.3.3, you can [save the configuration of an existing cluster as an RKE template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#converting-an-existing-cluster-to-use-an-rke-template) Then the cluster's settings can only be changed if the template is updated. The new template can also be used to launch new clusters.
 
 The core features of RKE templates allow DevOps and security teams to:
 
@@ -50,7 +50,7 @@ RKE templates are supported for Rancher-provisioned clusters. The templates can 
  
 RKE templates are for defining Kubernetes and Rancher settings. Node templates are responsible for configuring nodes. For tips on how to use RKE templates in conjunction with hardware, refer to [RKE Templates and Hardware]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
 
-RKE templates can be applied to new clusters.
+RKE templates can be created from scratch to pre-define cluster configuration. They can be applied to launch new clusters, or templates can also be exported from existing running clusters.
 
 As of v2.3.3, the settings of an existing cluster can be [saved as an RKE template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#converting-an-existing-cluster-to-use-an-rke-template) This creates a new template and binds the cluster settings to the template, so that the cluster can only be upgraded if the [template is updated]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template), and the cluster is upgraded to [use a newer version of the template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creating-and-revising/#upgrading-a-cluster-to-use-a-new-template-revision) The new template can also be used to create new clusters.
 
@@ -96,7 +96,7 @@ You can [create a cluster from a template]({{<baseurl>}}/rancher/v2.x/en/admin-s
 
 If the RKE template owner creates a new revision of the template, you can [upgrade your cluster to that revision.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#updating-a-cluster-created-with-an-rke-template)
 
-RKE templates can be applied to new clusters.
+RKE templates can be created from scratch to pre-define cluster configuration. They can be applied to launch new clusters, or templates can also be exported from existing running clusters.
 
 As of Rancher v2.3.3, you can [save the configuration of an existing cluster as an RKE template.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#converting-an-existing-cluster-to-use-an-rke-template) Then the cluster's settings can only be changed if the template is updated.
 
