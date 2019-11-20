@@ -1,6 +1,6 @@
 ---
-title: "K3S - 5 less than k8s"
-shortTitle: K3S
+title: "K3s - 5 less than K8s"
+shortTitle: K3s
 date: 2019-02-05T09:52:46-07:00
 name: "menu"
 ---
@@ -18,18 +18,14 @@ Great for:
 What is this?
 ---
 
-k3s is intended to be a fully compliant Kubernetes distribution with the following changes:
+K3s is a fully compliant Kubernetes distribution with the following enhancements:
 
-1. Legacy, alpha, non-default features are removed. Hopefully, you shouldn't notice the
-   stuff that has been removed.
-2. Removed most in-tree plugins (cloud providers and storage plugins) which can be replaced
-   with out of tree addons.
-3. Add sqlite3 as the default storage mechanism. etcd3 is still available, but not the default.
-4. Wrapped in simple launcher that handles a lot of the complexity of TLS and options.
-5. Minimal to no OS dependencies (just a sane kernel and cgroup mounts needed). k3s packages required
-   dependencies
+* An embedded SQLite database has replaced etcd as the default datastore. External datastores such as PostgreSQL, MySQL, and etcd are also supported.
+* Simple but powerful "batteries-included" features have been added, such as: a local storage provider, a service load balancer, a helm controller, and the Traefik ingress controller.
+* Operation of all Kubernetes control plane components is encapsulated in a single binary and process. This allows K3s to automate and manage complex cluster operations like distributing certificates.
+* In-tree cloud providers and storage plugins have been removed.
+* External dependencies have been minimized (just a modern kernel and cgroup mounts needed). K3s packages required dependencies, including:
     * containerd
     * Flannel
     * CoreDNS
-    * CNI
     * Host utilities (iptables, socat, etc)

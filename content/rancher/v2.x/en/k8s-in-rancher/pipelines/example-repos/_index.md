@@ -11,7 +11,7 @@ Rancher ships with several example repositories that you can use to familiarize 
 - Maven
 - php
 
-> **Note**: The example repositories are only available if you have not [configured a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines).
+> **Note:** The example repositories are only available if you have not [configured a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines).
 
 ## Configure Repositories
 

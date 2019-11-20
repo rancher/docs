@@ -63,7 +63,7 @@ The registry configuration here is applied during the provisioning of the cluste
 - **System images** are components needed to maintain the Kubernetes cluster. 
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
+To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
 
 See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
@@ -71,7 +71,7 @@ See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/
 
 _Available as of v2.2.0_
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API Keys]({{< baseurl >}}/v2.x/en/user-settings/api-keys/#creating-an-api-key) documentation for more information.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API Keys]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys/#creating-an-api-key) documentation for more information.
 
 ### Advanced Cluster Options
 
@@ -337,3 +337,16 @@ local_cluster_auth_endpoint:
   fqdn: "FQDN"
   ca_certs: "BASE64_CACERT"
 ```
+
+### Custom Network Plug-in
+
+_Available as of v2.2.4_
+
+You can add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. You define any add-on that you want deployed after the Kubernetes cluster is deployed.
+
+There are two ways that you can specify an add-on:
+
+- [In-line Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/#in-line-add-ons)
+- [Referencing YAML Files for Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/#referencing-yaml-files-for-add-ons)
+
+For an example of how to configure a custom network plug-in by editing the `cluster.yml`, refer to the [RKE documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/custom-network-plugin-example)

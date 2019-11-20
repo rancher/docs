@@ -11,4 +11,6 @@ We have Quick Start Guides for:
 
 - [Deploying Rancher Server]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/): Get started running Rancher using the method most convenient for you.
 
-- [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide//workload/): Deploy a simple workload and expose it, letting you access it from outside the cluster.
+- [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload/): Deploy a simple workload and expose it, letting you access it from outside the cluster.
+
+- [Using the CLI]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/cli/): Use `kubectl` or Rancher command line interface (CLI) to interact with your Rancher instance.

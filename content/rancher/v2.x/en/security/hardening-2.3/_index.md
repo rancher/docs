@@ -431,7 +431,7 @@ Record the uid/gid:
 id etcd
 ```
 
-- Add the following to the RKE `cluster.yml` kubelet section under `services`:
+- Add the following to the RKE `cluster.yml` etcd section under `services`:
 
 ``` yaml
 services:
@@ -473,8 +473,8 @@ Inspect the Kubelet containers on all hosts and verify that they are running wit
 
 - `--streaming-connection-idle-timeout=<duration greater than 0>`
 - `--authorization-mode=Webhook`
-- `--protect-kernel-defaults=false`
-- `--make-iptables-util-chains=false`
+- `--protect-kernel-defaults=true`
+- `--make-iptables-util-chains=true`
 - `--event-qps=0`
 - `--anonymous-auth=false`
 - `--feature-gates="RotateKubeletServerCertificate=true"`
@@ -526,7 +526,7 @@ Enabling the `DenyEscalatingExec` admission control plugin will prevent the 'Lau
 To pass the following controls for the kube-api server ensure RKE configuration passes the appropriate options.
 
 - 1.1.1 - Ensure that the `--anonymous-auth` argument is set to false (Scored)
-- 1.1.8 - Ensure that the `--profiling argument` is set to false (Scored)
+- 1.1.8 - Ensure that the `--profiling` argument is set to false (Scored)
 - 1.1.11 - Ensure that the admission control plugin `AlwaysPullImages` is set (Scored)
 - 1.1.12 - Ensure that the admission control plugin `DenyEscalatingExec` is set (Scored)
 - 1.1.14 - Ensure that the admission control plugin `NamespaceLifecycle` is set (Scored)

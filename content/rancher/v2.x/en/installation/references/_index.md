@@ -2,8 +2,6 @@
 title: Port Requirements
 description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and Kubernetes cluster nodes
 weight: 300
-aliases:
-  - /rancher/v2.x/en/hosts/amazon/#required-ports-for-rancher-to-work/
 ---
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and Kubernetes cluster nodes.
@@ -14,7 +12,7 @@ The following table lists the ports that need to be open to and from nodes that 
 
 {{< ports-rancher-nodes >}}
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 ## Kubernetes Cluster Nodes
 
