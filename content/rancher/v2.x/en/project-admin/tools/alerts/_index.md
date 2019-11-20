@@ -40,7 +40,7 @@ For information on other default alerts, refer to the section on [cluster-level 
 
 ## Adding Project Alerts
 
->**Prerequisite:** Before you can receive project alerts, you must add a notifier.
+>**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
 
 1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
 
@@ -165,7 +165,7 @@ If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin
 
 1. Continue adding more **Alert Rule** to the group.
 
-1. Finally, choose the notifiers that send you alerts.
+1. Finally, choose the [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) that send you alerts.
 
     - You can set up multiple notifiers.
     - You can change notifier recipients on the fly.
