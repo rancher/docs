@@ -12,8 +12,21 @@ The YAML in the RKE template uses the same customization that is used when you c
 # Cluster Config
 # 
 docker_root_dir: /var/lib/docker
+
 enable_cluster_alerting: false
-enable_cluster_monitoring: false
+# This setting is not enforced. Clusters
+# created with this sample template
+# would have alerting turned off by default,
+# but end users could still turn alerting
+# on or off.
+
+enable_cluster_monitoring: true 
+# This setting is not enforced. Clusters
+# created with this sample template
+# would have monitoring turned on
+# by default, but end users could still
+# turn monitoring on or off.
+
 enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: true
