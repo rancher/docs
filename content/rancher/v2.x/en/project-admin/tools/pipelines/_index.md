@@ -7,10 +7,6 @@ aliases:
   - /rancher/v2.x/en/tools/pipelines/
   - /rancher/v2.x/en/tools/pipelines/configurations/
 ---
->**Notes:**
->
->- Pipelines are new and improved for Rancher v2.1! Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
->- Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
 A _pipeline_ is a software delivery process that is broken into different stages and steps. Setting up a pipeline can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
 
@@ -29,6 +25,12 @@ Typically, pipeline stages include:
     After the artifacts are published, you would release your application so users could start using the updated product.
 
 Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can [configure version control providers](#version-control-providers) and [manage global pipeline execution settings](#managing-global-pipeline-execution-settings). Project members can only configure [repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) and [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
+
+
+> **Notes:**
+>
+> - Pipelines were improved in Rancher v2.1. Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
+> - Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
 ## Overview
 
