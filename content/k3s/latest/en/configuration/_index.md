@@ -96,10 +96,11 @@ Node Registration
 -----------------
 
 Agents will register with the server using the node cluster secret along with a randomly generated 
-password for the node, stored at `/var/lib/rancher/k3s/agent/node-password.txt`. The server will
+password for the node, stored at `/etc/rancher/node/password`. The server will
 store the passwords for individual nodes at `/var/lib/rancher/k3s/server/cred/node-passwd`, and any 
-subsequent attempts must use the same password. If the data directory of an agent is removed the
-password file should be recreated for the agent, or the entry removed from the server.
+subsequent attempts must use the same password. If the `/etc/rancher/node` directory of an agent is removed the
+password file should be recreated for the agent, or the entry removed from the server. A unique node
+id can be appended to the hostname by launching k3s servers or agents using the `--with-node-id` flag.
 
 Containerd and Docker
 ----------
