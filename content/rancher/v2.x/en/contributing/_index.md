@@ -36,7 +36,7 @@ CLI | https://github.com/rancher/cli | This repository is the source code for th
 Telemetry repository | https://github.com/rancher/telemetry | This repository is the source for the Telemetry binary.
 loglevel repository | https://github.com/rancher/loglevel | This repository is the source of the loglevel binary, used to dynamically change log levels.
 
-To see all libraries/projects used in Rancher, see the `vendor.conf` in the `rancher/rancher` repository.
+To see all libraries/projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
 
 ![Rancher diagram]({{< baseurl >}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
 <sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>

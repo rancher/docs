@@ -5,6 +5,10 @@ weight: 2
 
 Rancher can be installed on a single node or a high-availability cluster. 
 
+A high-availability installation is recommended for production. A single-node installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a high-availability installation from the start.
+
+The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
+
 On a single node, Rancher is installed with Docker and many options are configured with Docker commands.
 
 On a Kubernetes cluster, Rancher is installed with Helm, and Helm commands are used to pass in configuration options. [Helm]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) is a Kubernetes package manager.
@@ -42,4 +46,4 @@ Refer to the [single node installation docs]({{<baseurl>}}/rancher/v2.x/en/insta
 
 # More Kubernetes Options
 
-RKE also has many configuration options for customizing the Kubernetes cluster to suit your specific environment. Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
+In the Rancher installation instructions, we recommend using RKE (Rancher Kubernetes Engine) to set up a Kubernetes cluster before installing Rancher on the cluster. RKE has many configuration options for customizing the Kubernetes cluster to suit your specific environment. Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.

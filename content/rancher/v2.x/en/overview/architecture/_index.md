@@ -5,9 +5,7 @@ weight: 1
 
 This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.
 
-The Rancher server includes all the software components used to manage the entire Rancher deployment.
-
-For the different ways that Rancher can be installed, refer to the [installation options section.]({{<baseurl>}}/rancher/v2.x/en/overview/installation-options)
+For information on the different ways that Rancher can be installed, refer to the [installation options section.]({{<baseurl>}}/rancher/v2.x/en/overview/installation-options)
 
 For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations)
 
@@ -17,7 +15,6 @@ This section covers the following topics:
 
 - [Rancher server architecture](#rancher-server-architecture)
   - [Features of the Rancher API server](#features-of-the-rancher-api-server)
-  - [Rancher server components and source code](#rancher-server-components-and-source-code)
 - [Communicating with downstream user clusters](#communicating-with-downstream-user-clusters)
   - [The authentication proxy](#1-the-authentication-proxy)
   - [Cluster controllers and cluster agents](#2-cluster-controllers-and-cluster-agents)
@@ -25,6 +22,7 @@ This section covers the following topics:
   - [Authorized cluster endpoint](#4-authorized-cluster-endpoint)
 - [Important files](#important-files)
 - [Tools for provisioning Kubernetes clusters](#tools-for-provisioning-kubernetes-clusters)
+- [Rancher server components and source code](#rancher-server-components-and-source-code)
 
 # Rancher Server Architecture
 
@@ -34,48 +32,42 @@ The figure below illustrates the high-level architecture of Rancher 2.x. The fig
 
 For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
-You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
-
-A single-node installation is recommended for development and testing purposes, and a high-availability installation is recommended for production.
-
 The diagram below shows how users can manipulate both [Rancher-launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters and [hosted Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) clusters through Rancher's authentication proxy:
 
-<figcaption>Manipulating Clusters through Rancher's Authentication Proxy</figcaption>
+<figcaption>Managing Kubernetes Clusters through Rancher's Authentication Proxy</figcaption>
 
 ![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture-rancher-api-server.svg)
+
+You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
+
+A high-availability installation is recommended for production. A single-node installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a high-availability installation from the start.
+
+The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
 
 ### Features of the Rancher API Server
 
 The Rancher API server is built on top of an embedded Kubernetes API server and an etcd database. It implements the following functionalities:
 
--  **User management:** The Rancher API server [manages user identities]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) that correspond to external authentication providers like Active Directory or GitHub.
+-  **User management:** The Rancher API server [manages user identities]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) that correspond to external authentication providers like Active Directory or GitHub, in addition to local users.
 -	**Authorization:** The Rancher API server manages [access control]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/) and [security]({{<baseurl>}}/rancher/v2.x/en/admin-settings/pod-security-policies/) policies.
--	**Managing projects:** A [project]({{<baseurl>}}/rancher/v2.x/en/project-admin/) is a group of multiple namespaces and access control policies within a cluster.
+-	**Managing projects:** A project is a group of multiple namespaces and access control policies within a cluster. A project is a Rancher concept, not a Kubernetes concept, and it allows you manage multiple namespaces as a group. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
 -  **Tracking nodes:** The Rancher API server tracks identities of all the [nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/nodes/) in all clusters.
-- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) on existing nodes, or [import existing Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) into Rancher.
+- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) on existing nodes, [import existing Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) into Rancher, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/#upgrading-kubernetes)
 - **Setting up infrastructure:**  When configured to use a cloud provider, Rancher can dynamically provision [new nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) and [persistent storage]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) in the cloud.
-
-### Rancher Server Components and Source Code
-
-This diagram shows each component that the Rancher server is composed of:
-
-![Rancher Components]({{<baseurl>}}/img/rancher/rancher-architecture-rancher-components.svg)
-
-The GitHub repositories for each component of Rancher can be found at the following links:
-
-- [Main Rancher server repository](https://github.com/rancher/rancher)
-- [Rancher UI](https://github.com/rancher/ui)
-- [Rancher API UI](https://github.com/rancher/api-ui)
-- [Norman,](https://github.com/rancher/norman) Rancher's API framework
-- [Types](https://github.com/rancher/types)
-- [Rancher CLI](https://github.com/rancher/cli)
-- [Catalog applications](https://github.com/rancher/helm)
+- **Catalog management:** Rancher provides the ability to use a [catalog of Helm charts]({{<baseurl>}}/rancher/v2.x/en/catalog/) that make it easy to repeatedly deploy applications.
+- **Logging:** Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters. Logging can be set up [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/logging/)
+- **Monitoring:** Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with Prometheus, a leading open-source monitoring solution. Monitoring can be configured [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/)
+- **Alerting:** To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/)
+- **Pipelines:** Setting up a [pipeline]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/pipelines/) can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
+- **Istio:** Our [integration with Istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/) is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 
 # Communicating with Downstream User Clusters
 
 This section describes how Rancher provisions and manages the downstream user clusters that run your apps and services.
 
-<figcaption>Cluster Controller, Cluster Agent, and Node Agents Allow Rancher to Control Downstream Clusters</figcaption>
+The below diagram shows how the cluster controllers, cluster agents, and node agents allow Rancher to control downstream clusters.
+
+<figcaption>Communicating with Downstream Clusters</figcaption>
 
 ![Rancher Components]({{<baseurl>}}/img/rancher/rancher-architecture-cluster-controller.svg)
 
@@ -158,7 +150,7 @@ For more information on connecting to a cluster without the Rancher authenticati
 
 The tools that Rancher uses to provision downstream user clusters depends on the type of cluster that is being provisioned.
 
-### Rancher Launched Kubernetes for Hodes Hosted in an Infrastructure Provider
+### Rancher Launched Kubernetes for Nodes Hosted in an Infrastructure Provider
 
 Rancher can dynamically provision nodes in a provider such as Amazon EC2, DigitalOcean, Azure, or vSphere, then install Kubernetes on them.
 
@@ -179,3 +171,21 @@ Rancher provisions this type of cluster using [kontainer-engine.](https://github
 ### Imported Kubernetes Clusters
 
 In this type of cluster, Rancher connects to a Kubernetes cluster that has already been set up. Therefore, Rancher does not provision Kubernetes, but only sets up the Rancher agents to communicate with the cluster.
+
+# Rancher Server Components and Source Code
+
+This diagram shows each component that the Rancher server is composed of:
+
+![Rancher Components]({{<baseurl>}}/img/rancher/rancher-architecture-rancher-components.svg)
+
+The GitHub repositories for Rancher can be found at the following links:
+
+- [Main Rancher server repository](https://github.com/rancher/rancher)
+- [Rancher UI](https://github.com/rancher/ui)
+- [Rancher API UI](https://github.com/rancher/api-ui)
+- [Norman,](https://github.com/rancher/norman) Rancher's API framework
+- [Types](https://github.com/rancher/types)
+- [Rancher CLI](https://github.com/rancher/cli)
+- [Catalog applications](https://github.com/rancher/helm)
+
+This is a partial list of the most important Rancher repositories. For more details about Rancher source code, refer to the section on [contributing to Rancher.]({{<baseurl>}}/rancher/v2.x/en/contributing/#repositories) To see all libraries and projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
