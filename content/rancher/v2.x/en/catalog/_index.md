@@ -119,7 +119,7 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
     * For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs), answers are provided as key value pairs in the **Answers** section.
     * Keys and values are available within **Detailed Descriptions**.
-    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.  
+    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of-set), as Rancher passes them as `--set` flags to Helm.  
 
         For example, when entering an answer that includes two values separated by a comma (i.e., `abc, bcd`), wrap the values with double quotes (i.e., `"abc, bcd"`).
 
