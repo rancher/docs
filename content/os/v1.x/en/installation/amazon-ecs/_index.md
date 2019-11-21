@@ -56,7 +56,8 @@ rancher:
     # Note: You will need to make sure to include the colon in front of the version.
     ECS_AGENT_VERSION: :v1.9.0
     # If you have selected a RancherOS AMI that does not have ECS enabled by default,
-    # you'll need to enable the system service for the ECS agent.
+    # you'll need to enable the system service for the ECS agent and configure the 
+    # iptables rules.
   sysctl:
     net.ipv4.conf.all.route_localnet: 1
   network:
