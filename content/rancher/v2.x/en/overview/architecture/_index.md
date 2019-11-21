@@ -7,6 +7,8 @@ This section focuses on the Rancher server, its components, and how Rancher comm
 
 For information on the different ways that Rancher can be installed, refer to the [installation options section.]({{<baseurl>}}/rancher/v2.x/en/overview/installation-options)
 
+For a list of main eatures of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.x/en/overview/#features-of-the-rancher-api-server)
+
 For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations)
 
 > This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.x/en/overview/concepts) page.
@@ -14,7 +16,6 @@ For guidance about setting up the underlying infrastructure for the Rancher serv
 This section covers the following topics:
 
 - [Rancher server architecture](#rancher-server-architecture)
-  - [Features of the Rancher API server](#features-of-the-rancher-api-server)
 - [Communicating with downstream user clusters](#communicating-with-downstream-user-clusters)
   - [The authentication proxy](#1-the-authentication-proxy)
   - [Cluster controllers and cluster agents](#2-cluster-controllers-and-cluster-agents)
@@ -43,23 +44,6 @@ You can install Rancher on a single node, or on a high-availability Kubernetes c
 A high-availability installation is recommended for production. A single-node installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a high-availability installation from the start.
 
 The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
-
-### Features of the Rancher API Server
-
-The Rancher API server is built on top of an embedded Kubernetes API server and an etcd database. It implements the following functionalities:
-
--  **User management:** The Rancher API server [manages user identities]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) that correspond to external authentication providers like Active Directory or GitHub, in addition to local users.
--	**Authorization:** The Rancher API server manages [access control]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/) and [security]({{<baseurl>}}/rancher/v2.x/en/admin-settings/pod-security-policies/) policies.
--	**Managing projects:** A project is a group of multiple namespaces and access control policies within a cluster. A project is a Rancher concept, not a Kubernetes concept, and it allows you manage multiple namespaces as a group. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
--  **Tracking nodes:** The Rancher API server tracks identities of all the [nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/nodes/) in all clusters.
-- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) on existing nodes, [import existing Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) into Rancher, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/#upgrading-kubernetes)
-- **Setting up infrastructure:**  When configured to use a cloud provider, Rancher can dynamically provision [new nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) and [persistent storage]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) in the cloud.
-- **Catalog management:** Rancher provides the ability to use a [catalog of Helm charts]({{<baseurl>}}/rancher/v2.x/en/catalog/) that make it easy to repeatedly deploy applications.
-- **Logging:** Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters. Logging can be set up [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/logging/)
-- **Monitoring:** Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with Prometheus, a leading open-source monitoring solution. Monitoring can be configured [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/)
-- **Alerting:** To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts [at the cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or [at the project level.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/)
-- **Pipelines:** Setting up a [pipeline]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/pipelines/) can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
-- **Istio:** Our [integration with Istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/) is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 
 # Communicating with Downstream User Clusters
 
