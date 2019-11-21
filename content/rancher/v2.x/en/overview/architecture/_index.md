@@ -77,14 +77,14 @@ By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/
 
 Each downstream user cluster has a cluster agent, which opens a tunnel to the corresponding cluster controller within the Rancher server.
 
-There is one cluster controller and one cluster agent for each downstream cluster.
+There is one cluster controller and one cluster agent for each downstream cluster. Each cluster controller:
 
-By default, to enable Rancher to communicate with a downstream cluster, the cluster controller connects to the cluster agent. If the cluster agent is not available, the cluster controller can connect to a [node agent](#3-node-agents) instead.
-
-The cluster controller is a component of the Rancher server performs the following tasks:
-
+- Watches for resource changes in the downstream cluster
+- Brings the current state of the downstream cluster to the desired state
 -  Configures access control policies to clusters and projects
 -  Provisions clusters by calling the required Docker machine drivers and Kubernetes engines, such as RKE and GKE
+
+By default, to enable Rancher to communicate with a downstream cluster, the cluster controller connects to the cluster agent. If the cluster agent is not available, the cluster controller can connect to a [node agent](#3-node-agents) instead.
 
 The cluster agent, also called `cattle-cluster-agent`, is a component that runs in a downstream user cluster. It performs the following tasks:
 
