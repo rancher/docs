@@ -24,6 +24,7 @@ This section covers the following topics:
   - [Grace period](#grace-period)
   - [Timeout](#timeout)
   - [Drained and cordoned state](#drained-and-cordoned-state)
+- [Labeling a node to be ignored by Rancher](#labeling-a-node-to-be-ignored-by-rancher)
 
 # Node Options Available for Each Cluster Creation Option
 
@@ -180,3 +181,46 @@ If the drain continues without error, the node enters a `draining` state. You'll
 Once drain successfully completes, the node will be in a state of `drained`. You can then power off or delete the node.
 
 >**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
+
+# Labeling a Node to be Ignored by Rancher
+
+_Available as of 2.3.3_
+
+Some solutions, such as F5's BIG-IP integration, may require creating a node that is never registered to a cluster.
+
+Since the node will never finish registering, it will always be shown as unhealthy in the Rancher UI.
+
+In that case, you may want to label the node to be ignored by Rancher so that Rancher only shows nodes as unhealthy when they are actually failing.
+
+You can label nodes to be ignored by using a setting in the Rancher UI, or by using `kubectl`.
+
+> **Note:** There is an [open issue](https://github.com/rancher/rancher/issues/24172) in which nodes labeled to be ignored can get stuck in an updating state.
+
+### Labeling Nodes to be Ignored with the Rancher UI
+
+To add a node that is ignored by Rancher,
+
+1. From the **Global** view, click the **Settings** tab.
+1. Go to the `ignore-node-name` setting and click **Ellipsis (...) > Edit.**
+1. Enter a name that Rancher will use to ignore nodes. All nodes with this name will be ignored.
+1. Click **Save.**
+
+**Result:** Rancher will not wait to register nodes with this name. In the UI, the node will displayed with a grayed-out status. The node is still part of the cluster and can be listed with `kubectl`.
+
+If the setting is changed afterward, the ignored nodes will continue to be hidden.
+
+### Labeling Nodes to be Ignored with kubectl
+
+To add a node that will be ignored by Rancher, use `kubectl` to create a node that has the following label:
+
+```
+cattle.rancher.io/node-status: ignore
+```
+
+**Result:** If you add the node to a cluster, Rancher will not attempt to sync with this node. The node can still be part of the cluster and can be listed with `kubectl`.
+
+If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI. 
+
+If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
+
+If you delete the node from the Rancher server using the Rancher UI or API, the node will not be removed from the cluster if the `nodeName` is listed in the Rancher settings under `ignore-node-name`.
