@@ -5,22 +5,27 @@ weight: 2030
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.
 
-This page covers the following topics:
+> If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
-- [Node options for each type of cluster](#node-options-for-each-type-of-cluster)
-- [Cordoning and draining nodes](#cordoning-and-draining-nodes)
-- [Editing a node](#editing-a-node)
-- [Viewing a node API](#viewing-a-node-api)
+This section covers the following topics:
+
+- [Node options available for each cluster creation option](#node-options-available-for-each-cluster-creation-option)
+  - [Nodes hosted by an infrastructure provider](#nodes-hosted-by-an-infrastructure-provider)
+  - [Nodes provisioned by hosted Kubernetes providers](#nodes-provisioned-by-hosted-kubernetes-providers)
+  - [Imported nodes](#imported-nodes)
+- [Managing and editing individual nodes](#managing-and-editing-individual-nodes)
+- [Viewing a node in the Rancher API](#viewing-a-node-in-the-rancher-api)
 - [Deleting a node](#deleting-a-node)
 - [Scaling nodes](#scaling-nodes)
 - [SSH into a node hosted by an infrastructure provider](#ssh-into-a-node-hosted-by-an-infrastructure-provider)
-- [Managing node pools](#managing-node-pools)
+- [Cordoning a node](#cordoning-a-node)
+- [Draining a node](#draining-a-node)
+  - [Aggressive and safe draining options](#aggressive-and-safe-draining-options)
+  - [Grace period](#grace-period)
+  - [Timeout](#timeout)
+  - [Drained and cordoned state](#drained-and-cordoned-state)
 
-To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
-
->**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
-
-# Node Options for Each Type of Cluster
+# Node Options Available for Each Cluster Creation Option
 
 The following table lists which node options are available for each [type of cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
@@ -28,8 +33,8 @@ The following table lists which node options are available for each [type of clu
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
 | [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
-| [Edit](#editing-a-node)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
-| [View API](#viewing-a-node-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
+| [Edit](#managing-and-editing-individual-nodes)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
+| [View API](#viewing-a-node-in-the-rancher-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
@@ -39,92 +44,25 @@ The following table lists which node options are available for each [type of clu
 [3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
 [4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
 
-### Notes for Node Pool Nodes
+### Nodes Hosted by an Infrastructure Provider
 
-Clusters provisioned using [one of the node pool options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) automatically maintain the node scale that's set during the initial cluster provisioning. This scale determines the number of active nodes that Rancher maintains for the cluster.
+Node pools are available when you provision Rancher-launched Kubernetes clusters on nodes that are [hosted in an infrastructure provider.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/)
 
-### Notes for Nodes Provisioned by Hosted Kubernetes Providers
+Clusters provisioned using [one of the node pool options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) can be scaled up or down if the node pool is edited.
 
-Options for managing nodes [hosted by a Kubernetes provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
+A node pool can also automatically maintain the node scale that's set during the initial cluster provisioning if [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-auto-replace) This scale determines the number of active nodes that Rancher maintains for the cluster.
 
-### Notes for Imported Nodes
+Rancher uses [node templates]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) to replace nodes in the node pool. Each node template uses cloud provider credentials to allow Rancher to set up the node in the infrastructure provider.
 
-Although you can deploy workloads to an [imported cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
+### Nodes Provisioned by Hosted Kubernetes Providers
 
-# Cordoning and Draining Nodes
+Options for managing nodes [hosted by a Kubernetes provider]({{<baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
 
-_Cordoning_ a node marks it as unschedulable. This feature is useful for performing short tasks on the node during small maintenance windows, like reboots, upgrades, or decommissions.  When you're done, power back on and make the node schedulable again by uncordoning it.
+### Imported Nodes
 
-_Draining_ is the process of first cordoning the node, and then evicting all its pods. This feature is useful for performing node maintenance (like kernel upgrades or hardware maintenance). It prevents new pods from deploying to the node while redistributing existing pods so that users don't experience service interruption.
+Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
 
-When nodes are drained, pods are handled with the following rules:
-
-- For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
-
-- For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
-
-You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, the node is cordoned, the nodes are evaluated for conditions they must meet to be drained, and then (if it meets the conditions) the node evicts its pods.
-
-However, you can override the conditions draining when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
-
-The node draining options are different based on your version of Rancher.
-
-### Aggressive and Safe Draining Options
-
-{{% tabs %}}
-{{% tab "Rancher v2.2.x+" %}}
-There are two drain modes: aggressive and safe.
-
-- **Aggressive Mode**
-
-    In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
-
-    Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
-
-- **Safe Mode**
-
-    If a node has standalone pods or ephemeral data it will be cordoned but not drained.
-{{% /tab %}}
-{{% tab "Rancher Prior to v2.2.x" %}}
-The following list describes each drain option:
-
-- **Even if there are pods not managed by a ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet**
-
-    These types of pods won't get rescheduled to a new node, since they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods. Kubernetes forces you to choose this option (which will delete/evict these pods) or drain won't proceed.
-
-- **Even if there are DaemonSet-managed pods**
-
-    Similar to above, if you have any daemonsets, drain would proceed only if this option is selected. Even when this option is on, pods won't be deleted since they'll immediately be replaced. On startup, Rancher currently has a few daemonsets running by default in the system, so this option is turned on by default.
-
-- **Even if there are pods using emptyDir**
-
-    If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods.
-
-{{% /tab %}}
-{{% /tabs %}}
-
-### Grace Period
-
-The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used.
-
-### Timeout
-
-The amount of time drain should continue to wait before giving up.
-
->**Kubernetes Known Issue:** Currently, the [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) is not enforced while draining a node. This issue will be corrected as of Kubernetes 1.12.
-
-### Drained and Cordoned State
-
-If there's any error related to user input, the node enters a `cordoned` state because the drain failed. You can either correct the input and attempt to drain the node again, or you can abort by uncordoning the node.
-
-If the drain continues without error, the node enters a `draining` state. You'll have the option to stop the drain when the node is in this state, which will stop the drain process and change the node's state to `cordoned`.
-
-Once drain successfully completes, the node will be in a state of `drained`. You can then power off or delete the node.
-
->**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
-
-
-# Editing a Node
+# Managing and Editing Individual Nodes
 
 Editing a node lets you:
 
@@ -133,27 +71,27 @@ Editing a node lets you:
 * Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 * Add/Remove [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 
+To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
 
-# Viewing a Node API
+# Viewing a Node in the Rancher API
 
-Select this option to view the node's [API endpoints]({{<baseurl>}}/rancher/v2.x/en/api/).
-
+Select this option to view the node's [API endpoints]({{< baseurl >}}/rancher/v2.x/en/api/).
 
 # Deleting a Node
 
-Use **Delete** to remove defective nodes from the cloud provider. When you the delete a defective node, Rancher automatically replaces it with an identically provisioned node.
+Use **Delete** to remove defective nodes from the cloud provider.
+
+When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-auto-replace)
 
 >**Tip:** If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
 
-
 # Scaling Nodes
 
-For nodes hosted by an infrastructure provider, you can scale the number of nodes in each node pool by using the scale controls. This option isn't available for other cluster types.
+For nodes hosted by an infrastructure provider, you can scale the number of nodes in each [node pool]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) by using the scale controls. This option isn't available for other cluster types.
 
 # SSH into a Node Hosted by an Infrastructure Provider
 
-For [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
-
+For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
 1. From the cluster hosted by an infrastructure provider, select **Nodes** from the main menu.
 
@@ -170,19 +108,75 @@ For [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/c
     ```
     ssh -i id_rsa root@<IP_OF_HOST>
     ```
-    
-# Managing Node Pools
 
-> **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) The node pool features are not available for imported clusters or clusters hosted by a Kubernetes provider.
+# Cordoning a Node
 
-In clusters [launched by RKE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
+_Cordoning_ a node marks it as unschedulable. This feature is useful for performing short tasks on the node during small maintenance windows, like reboots, upgrades, or decommissions.  When you're done, power back on and make the node schedulable again by uncordoning it.
 
-- Add new [pools of nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to your cluster. The nodes added to the pool are provisioned according to the [node template]({{<baseurl>}}/rancher/v2.x/en/user-settings/node-templates/) that you use.
+# Draining a Node
 
-	- Click **+** and follow the directions on screen to create a new template.
+_Draining_ is the process of first cordoning the node, and then evicting all its pods. This feature is useful for performing node maintenance (like kernel upgrades or hardware maintenance). It prevents new pods from deploying to the node while redistributing existing pods so that users don't experience service interruption.
 
-	- You can also reuse existing templates by selecting one from the **Template** drop-down.
+- For pods with a replica set, the pod is replaced by a new pod that will be scheduled to a new node. Additionally, if the pod is part of a service, then clients will automatically be redirected to the new pod.
 
-- Redistribute Kubernetes roles amongst your node pools by making different checkbox selections  
+- For pods with no replica set, you need to bring up a new copy of the pod, and assuming it is not part of a service, redirect clients to it.
 
-- Scale the number of nodes in a pool up or down (although, if you simply want to maintain your node scale, we recommend using the cluster's [Nodes tab]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/nodes/#nodes-provisioned-by-node-pool) instead.)
+You can drain nodes that are in either a `cordoned` or `active` state. When you drain a node, the node is cordoned, the nodes are evaluated for conditions they must meet to be drained, and then (if it meets the conditions) the node evicts its pods.
+
+However, you can override the conditions draining when you initiate the drain. You're also given an opportunity to set a grace period and timeout value.
+
+### Aggressive and Safe Draining Options
+
+The node draining options are different based on your version of Rancher.
+
+{{% tabs %}}
+{{% tab "Rancher v2.2.x+" %}}
+There are two drain modes: aggressive and safe.
+
+- **Aggressive Mode**
+
+    In this mode, pods won't get rescheduled to a new node, even if they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods.
+
+    Kubernetes also expects the implementation to decide what to do with pods using emptyDir. If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Choosing aggressive mode will delete these pods.
+
+- **Safe Mode**
+
+    If a node has standalone pods or ephemeral data it will be cordoned but not drained.
+{{% /tab %}}
+{{% tab "Rancher prior to v2.2.x" %}}
+
+The following list describes each drain option:
+
+- **Even if there are pods not managed by a ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet**
+
+    These types of pods won't get rescheduled to a new node, since they do not have a controller. Kubernetes expects you to have your own logic that handles the deletion of these pods. Kubernetes forces you to choose this option (which will delete/evict these pods) or drain won't proceed.
+
+- **Even if there are DaemonSet-managed pods**
+
+    Similar to above, if you have any daemonsets, drain would proceed only if this option is selected. Even when this option is on, pods won't be deleted since they'll immediately be replaced. On startup, Rancher currently has a few daemonsets running by default in the system, so this option is turned on by default.
+
+- **Even if there are pods using emptyDir**
+
+    If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods.
+{{% /tab %}}
+{{% /tabs %}}
+
+### Grace Period
+
+The timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. For example, when pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If negative, the default value specified in the pod will be used.
+
+### Timeout
+
+The amount of time drain should continue to wait before giving up.
+
+>**Kubernetes Known Issue:** The [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) was not enforced while draining a node prior to Kubernetes 1.12.
+
+### Drained and Cordoned State
+
+If there's any error related to user input, the node enters a `cordoned` state because the drain failed. You can either correct the input and attempt to drain the node again, or you can abort by uncordoning the node.
+
+If the drain continues without error, the node enters a `draining` state. You'll have the option to stop the drain when the node is in this state, which will stop the drain process and change the node's state to `cordoned`.
+
+Once drain successfully completes, the node will be in a state of `drained`. You can then power off or delete the node.
+
+>**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
