@@ -63,6 +63,9 @@ $ aws iam put-role-policy --role-name rancher-node --policy-name rancher-policy 
 $ aws iam add-role-to-instance-profile --instance-profile rancher-node --role-name rancher-node
 ```
 
+Set `IAM Instance Profile Name` in node template to `rancher-node`
+
+
 ## Tagging Amazon Resources
 
 Any resources used in a Kubernetes cluster with the Amazon cloud provider must be tagged with a cluster ID.
