@@ -5,7 +5,7 @@ weight: 1
 
 This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.
 
-For information on the different ways that Rancher can be installed, refer to the [installation options section.]({{<baseurl>}}/rancher/v2.x/en/overview/installation-options)
+For information on the different ways that Rancher can be installed, refer to the [section on choosing an installation method.]({{<baseurl>}}/rancher/v2.x/en/installation/choosing-installation)
 
 For a list of main eatures of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.x/en/overview/#features-of-the-rancher-api-server)
 

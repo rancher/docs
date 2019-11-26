@@ -1,5 +1,5 @@
 ---
-title: Installation Options
+title: Choosing an Installation Method
 weight: 2
 ---
 
@@ -13,10 +13,7 @@ On a single node, Rancher is installed with Docker and many options are configur
 
 On a Kubernetes cluster, Rancher is installed with Helm, and Helm commands are used to pass in configuration options. [Helm]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) is a Kubernetes package manager.
 
-The simplest way to install Rancher is on a single node with direct access to the Internet. Other options require more steps:
-
-- For a high-availability installation, you need to first set up a Kubernetes cluster using the Rancher Kubernetes Engine, then install Rancher on the cluster.
-- If the installation environment is behind an HTTP proxy or in an air gap environment, additional steps are required to work around the lack of direct access to DockerHub and GitHub.
+The simplest way to install Rancher is on a single node with direct access to the Internet. Other options require more steps. For a high-availability installation, you need to first set up a Kubernetes cluster using the Rancher Kubernetes Engine, then install Rancher on the cluster. If the installation environment is behind an HTTP proxy or in an air gap environment, additional steps are required to work around the lack of direct access to DockerHub and GitHub.
 
 Depending on your environment, the result of of the extra steps is the increased security and reliability of Rancher.
 
