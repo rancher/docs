@@ -22,11 +22,12 @@ weight: 7505
 
 ### Rancher Hardening Guide
 
-The Rancher Hardening Guide is based off of controls and best practices found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) from the Center for Internet Security. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x, v2.2.x and v.2.3.x. See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#cis-benchmark-rancher-self-assessment) for the full list of security controls.
+The Rancher Hardening Guide is based off of controls and best practices found in the [CIS Kubernetes Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) from the Center for Internet Security. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x, v2.2.x, v.2.3.0-v2.3.2 and v2.3.3+. See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#cis-benchmark-rancher-self-assessment) for the full list of security controls.
 
 - [Hardening Guide for Rancher v2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.1/)
 - [Hardening Guide for Rancher v2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.2/)
-- [Hardening Guide for Rancher v2.3.x with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.3/)
+- [Hardening Guide for Rancher v2.3.0-v2.3.2 with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.3/)
+- [Hardening Guide for Rancher v2.3.3+ with Kubernetes 1.16]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.3.3/)
 
 ### CIS Benchmark Rancher Self-Assessment
 
@@ -34,10 +35,11 @@ The benchmark self-assessment is a companion to the Rancher security hardening g
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters.  The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
 
-- [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
-- [CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-0-rancher-2-2-x-with-kubernetes-1-13/)
-- [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
-- [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-x-with-kubernetes-1-15)
+* [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+* [CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-0-rancher-2-2-x-with-kubernetes-1-13/)
+* [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
+* [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.0-2.3.2 with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-0-2-3-2-with-kubernetes-1-15)
+* [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.3+ with Kubernetes 1.16]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-3-+-with-kubernetes-1-16)
 
 ### Third Party Pen Test Reports
 

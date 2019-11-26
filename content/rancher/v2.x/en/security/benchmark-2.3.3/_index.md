@@ -1,19 +1,19 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.0-v2.3.2
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3+
 weight: 103
 ---
 
-### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.0-2.3.2 with Kubernetes 1.15
+### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.3+ with Kubernetes 1.16
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Benchmark_Assessment.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.3/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview
 
-The following document scores a Kubernetes 1.15.x RKE cluster provisioned according to the Rancher v2.3.x hardening guide against the CIS 1.4.1 Kubernetes benchmark.
+The following document scores a Kubernetes 1.16.x RKE cluster provisioned according to the Rancher v2.3.3+ hardening guide against the CIS 1.4.1 Kubernetes benchmark.
 
-> The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.15, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
+> The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.16, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
 
-This document is a companion to the Rancher v2.3.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the Rancher v2.3.3+ security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
@@ -248,7 +248,7 @@ Audit logs should be collected and shipped off-system to guarantee their integri
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-log-maxage=\\d+").string'
 ```
 
-**Returned Value:** `--audit-log-maxage=5`
+**Returned Value:** `--audit-log-maxage=30`
 
 **Result:** Pass
 
@@ -264,7 +264,7 @@ Audit logs should be collected and shipped off-system to guarantee their integri
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-log-maxbackup=\\d+").string'
 ```
 
-**Returned Value:** `--audit-log-maxbackup=5`
+**Returned Value:** `--audit-log-maxbackup=10`
 
 **Result:** Pass
 
@@ -310,23 +310,15 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--token-auth-file=.*
 
 #### 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
 
-**Notes**
-
-RKE is using the kubelet's ability to automatically create self-signed certs. No CA cert is saved to verify the communication between `kube-apiserver` and `kubelet`.
-
-**Mitigation**
-
-Make sure nodes with `role:controlplane` are on the same local network as your nodes with `role:worker`.  Use network ACLs to restrict connections to the kubelet port (10250/tcp) on worker nodes, only permitting it from controlplane nodes.
-
 **Audit**
 
 ``` bash
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--kubelet-certificate-authority=.*").string'
 ```
 
-**Returned Value:** none
+**Returned Value:** `--kubelet-certificate-authority=/etc/kubernetes/ssl/kube-ca.pem`
 
-**Result:** Fail (See Mitigation)
+**Result:** Pass
 
 #### 1.1.22 - Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments are set as appropriate (Scored)
 
@@ -555,7 +547,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 #### 1.1.34 - Ensure that the `--experimental-encryption-provider-config` argument is set as appropriate (Scored)
 
 **Notes**
-In Kubernetes 1.15.x this flag is `--encryption-provider-config`
+In Kubernetes 1.16.x this flag is `--encryption-provider-config`
 
 **Audit**
 
@@ -563,7 +555,7 @@ In Kubernetes 1.15.x this flag is `--encryption-provider-config`
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--encryption-provider-config=.*").string'
 ```
 
-**Returned Value:** `encryption-provider-config=/opt/kubernetes/encryption.yaml`
+**Returned Value:** `encryption-provider-config=/etc/kubernetes/ssl/encryption.yaml`
 
 **Result:** Pass
 
@@ -576,7 +568,7 @@ Only the first provider in the list is active.
 **Audit**
 
 ``` bash
-grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
+grep -A 1 providers: /etc/kubernetes/ssl/encryption.yaml | grep aescbc
 ```
 
 **Returned Value:**  `- aescbc:`
@@ -589,8 +581,7 @@ grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
 
 The `EventRateLimit` plugin requires setting the `--admission-control-config-file` option and configuring details in the following files:
 
-- `/opt/kubernetes/admission.yaml`
-- `/opt/kubernetes/event.yaml`
+- `/etc/kubernetes/admission.yaml`
 
 See Host Configuration for details.
 
@@ -608,7 +599,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--admission-control-config-file=.*").string'
 ```
 
-**Returned Value:** `--admission-control-config-file=/opt/kubernetes/admission.yaml`
+**Returned Value:** `--admission-control-config-file=/etc/kubernetes/admission.yaml`
 
 **Result:** Pass
 
@@ -632,7 +623,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(A
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=.*").string'
 ```
 
-**Returned Value:** `--audit-policy-file=/opt/kubernetes/audit.yaml`
+**Returned Value:** `--audit-policy-file=/etc/kubernetes/audit-policy.yaml`
 
 **Result:** Pass
 
@@ -879,7 +870,7 @@ stat -c "%n - %a" /etc/cni/net.d/*
 **Returned Value:**
 
 ``` bash
-/etc/cni/net.d/10-canal.conflist - 664
+/etc/cni/net.d/10-canal.conflist - 644
 /etc/cni/net.d/calico-kubeconfig - 600
 ```
 
@@ -928,7 +919,7 @@ stat -c "%n - %U:%G" /etc/cni/net.d/*
 Files underneath the data dir have permissions set to `700`
 
 ``` bash
-stat -c "%n - %a" /var/lib/rancher/etcd/*
+stat -c "%n - %a" /var/lib/etcd/*
 
 /var/lib/etcd/member - 700
 ```
@@ -936,7 +927,7 @@ stat -c "%n - %a" /var/lib/rancher/etcd/*
 **Audit**
 
 ``` bash
-stat -c %a /var/lib/rancher/etcd
+stat -c %a /var/lib/etcd
 ```
 
 **Returned Value:** `700`
@@ -952,7 +943,7 @@ The `etcd` container runs as the `etcd` user. The data directory and files are o
 **Audit**
 
 ``` bash
-stat -c %U:%G /var/lib/rancher/etcd
+stat -c %U:%G /var/lib/etcd
 ```
 
 **Returned Value:** `etcd:etcd`
@@ -983,7 +974,7 @@ RKE does not store the default `kubectl` config credentials file on the nodes.  
 stat -c %a /etc/kubernetes/ssl/kubecfg-kube-scheduler.yaml
 ```
 
-**Returned Value:** `644`
+**Returned Value:** `640`
 
 **Result:** Pass
 
@@ -1007,7 +998,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-scheduler.yaml
 stat -c %a /etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml
 ```
 
-**Returned Value:** `644`
+**Returned Value:** `640`
 
 **Result:** Pass
 
@@ -1029,7 +1020,6 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml
 
 ``` bash
 ls -laR /etc/kubernetes/ssl/ |grep -v yaml
-
 ```
 
 **Returned Value:**
@@ -1076,18 +1066,18 @@ stat -c "%n - %a" /etc/kubernetes/ssl/*.pem |grep -v key
 
 **Returned Value:**
 ``` bash
-/etc/kubernetes/ssl/kube-apiserver-proxy-client.pem - 644
-/etc/kubernetes/ssl/kube-apiserver-requestheader-ca.pem - 644
-/etc/kubernetes/ssl/kube-apiserver.pem - 644
-/etc/kubernetes/ssl/kube-ca.pem - 644
-/etc/kubernetes/ssl/kube-controller-manager.pem - 644
-/etc/kubernetes/ssl/kube-etcd-172-31-16-161.pem - 644
-/etc/kubernetes/ssl/kube-etcd-172-31-24-134.pem - 644
-/etc/kubernetes/ssl/kube-etcd-172-31-30-57.pem - 644
-/etc/kubernetes/ssl/kube-node.pem - 644
-/etc/kubernetes/ssl/kube-proxy.pem - 644
-/etc/kubernetes/ssl/kube-scheduler.pem - 644
-/etc/kubernetes/ssl/kube-service-account-token.pem - 644
+/etc/kubernetes/ssl/kube-apiserver-proxy-client.pem - 640
+/etc/kubernetes/ssl/kube-apiserver-requestheader-ca.pem - 640
+/etc/kubernetes/ssl/kube-apiserver.pem - 640
+/etc/kubernetes/ssl/kube-ca.pem - 640
+/etc/kubernetes/ssl/kube-controller-manager.pem - 640
+/etc/kubernetes/ssl/kube-etcd-172-31-16-161.pem - 640
+/etc/kubernetes/ssl/kube-etcd-172-31-24-134.pem - 640
+/etc/kubernetes/ssl/kube-etcd-172-31-30-57.pem - 640
+/etc/kubernetes/ssl/kube-node.pem - 640
+/etc/kubernetes/ssl/kube-proxy.pem - 640
+/etc/kubernetes/ssl/kube-scheduler.pem - 640
+/etc/kubernetes/ssl/kube-service-account-token.pem - 640
 ```
 
 **Result:** Pass
@@ -1302,7 +1292,7 @@ With Rancher you can create a centrally maintained "restricted" PSP and deploy i
 This RKE configuration has two Pod Security Policies.
 
 - `default-psp`: assigned to namespaces that require additional privileged access:  `kube-system`, `ingress-nginx` and `cattle-system`.
-- `restricted`: This is the cluster default PSP and follows the best practices defined by controls in this section.
+- `restricted-psp`: This is the cluster default PSP and follows the best practices defined by controls in this section.
 
 #### 1.7.1 - Do not admit privileged containers (Not Scored)
 
@@ -1313,7 +1303,7 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.privileged}' | grep "true"
+kubectl get psp restricted-psp -o jsonpath='{.spec.privileged}' | grep "true"
 ```
 
 **Returned Value:** `null`
@@ -1329,7 +1319,7 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.hostPID}' | grep "true"
+kubectl get psp restricted-psp -o jsonpath='{.spec.hostPID}' | grep "true"
 ```
 
 **Returned Value:** `null`
@@ -1345,7 +1335,7 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.hostIPC}' | grep "true"
+kubectl get psp restricted-psp -o jsonpath='{.spec.hostIPC}' | grep "true"
 ```
 
 **Returned Value:** `null`
@@ -1361,7 +1351,7 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.hostNetwork}' | grep "true"
+kubectl get psp restricted-psp -o jsonpath='{.spec.hostNetwork}' | grep "true"
 ```
 
 **Returned Value:** `null`
@@ -1377,7 +1367,7 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.allowPrivilegeEscalation}' | grep "true"
+kubectl get psp restricted-psp -o jsonpath='{.spec.allowPrivilegeEscalation}' | grep "true"
 ```
 
 **Returned Value:** `null`
@@ -1393,10 +1383,10 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.runAsUser.rule}' | grep "RunAsAny"
+kubectl get psp restricted-psp -o jsonpath='{.spec.runAsUser.rule}' | grep "RunAsAny"
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `RunAsAny`
 
 **Result:** Pass
 
@@ -1409,10 +1399,10 @@ The restricted PodSecurityPolicy is available to all ServiceAccounts.
 **Audit**
 
 ``` bash
-kubectl get psp restricted -o jsonpath='{.spec.requiredDropCapabilities}' | grep "NET_RAW"
+kubectl get psp restricted-psp -o jsonpath='{.spec.requiredDropCapabilities}' | grep "NET_RAW"
 ```
 
-**Returned Value:** `[NET_RAW]`
+**Returned Value:** `null`
 
 **Result:** Pass
 
@@ -1476,7 +1466,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--read-only-port=0").string
 docker inspect kubelet | jq -e '.[0].Args[] | match("--streaming-connection-idle-timeout=.*").string'
 ```
 
-**Returned Value:** `--streaming-connection-idle-timeout=1800s`
+**Returned Value:** `--streaming-connection-idle-timeout=30m`
 
 **Result:** Pass
 
@@ -1543,7 +1533,7 @@ RKE does not set these options and uses the kubelet's self generated certificate
 docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cert-file=.*").string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `--tls-cert-file=/etc/kubernetes/ssl/kube-kubelet-172-31-40-84.pem`
 
 **Audit** (`--tls-private-key-file`)
 
@@ -1551,7 +1541,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-cert-file=.*").string
 docker inspect kubelet | jq -e '.[0].Args[] | match("--tls-private-key-file=.*").string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `--tls-private-key-file=/etc/kubernetes/ssl/kube-kubelet-172-31-40-84-key.pem`
 
 **Result:** Pass
 
@@ -1693,7 +1683,7 @@ This is the value of the `--kubeconfig` option.
 stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 ```
 
-**Returned Value:** `644`
+**Returned Value:** `640`
 
 **Result:** Pass
 
@@ -1738,7 +1728,7 @@ RKE doesn't require or maintain a configuration file for kubelet. All configurat
 stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 ```
 
-**Returned Value:** `644`
+**Returned Value:** `640`
 
 **Result:** Pass
 
@@ -1762,7 +1752,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 stat -c %a /etc/kubernetes/ssl/kube-ca.pem
 ```
 
-**Returned Value:** `644`
+**Returned Value:** `640`
 
 **Result:** Pass
 
