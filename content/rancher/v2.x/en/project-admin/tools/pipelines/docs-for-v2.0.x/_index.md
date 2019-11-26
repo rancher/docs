@@ -45,7 +45,7 @@ You can set up your pipeline to run a series of stages and steps to test your co
 
 	-	Only the branch {BRANCH NAME}: Only events triggered by changes to this branch will be built.
 
-	-	Evertyhing but {BRANCH NAME}: Build any branch that triggered an event EXCEPT events from this branch.
+	-	Everything but {BRANCH NAME}: Build any branch that triggered an event EXCEPT events from this branch.
 
 	-	All branches: Regardless of the branch that triggered the event always build.
 
