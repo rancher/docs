@@ -8,7 +8,7 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 
 1. From the **Global** view, open the project running the workload you want to add a sidecar to.
 
-1. Select the **Workloads** tab.
+1. Click **Resources > Workloads.** In versions prior to v2.3.0, select the **Workloads** tab.
 
 1. Find the workload that you want to extend. Select **Ellipsis icon (...) > Add a Sidecar**.
 

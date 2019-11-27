@@ -23,8 +23,8 @@ For a summary of Kubernetes features supported in Windows, see [Using Windows in
 
 ## OS and Container Requirements
 
-- For clusters provisioned with Rancher v2.1.x and v2.2.x, containers must run on Windows Server 1803.
-- You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
+- For clusters provisioned with Rancher v2.1.x and v2.2.x, containers must run on Windows Server 1809 or above.
+- You must build containers on a Windows Server core version 1809 or above to run these containers on the same server version.
 
 ## Objectives for Creating Cluster with Windows Support
 
@@ -55,7 +55,7 @@ Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
 Node 1  | Linux (Ubuntu Server 16.04 recommended)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support)
-Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 3  | Windows (Windows Server core version 1809 or above)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
 ### Requirements
 
@@ -102,8 +102,6 @@ Option | Setting
 -------|--------
 Node Operating System | Linux
 Node Roles | etcd <br/> Control Plane <br/> Worker
-
-![Recommended Linux Control Plane Configuration]({{< baseurl >}}/img/rancher/linux-control-plane.png)
 
 When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
 

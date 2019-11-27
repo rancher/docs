@@ -11,7 +11,7 @@ Rancher recommends installing Rancher in a Highly Available (HA) configuration. 
 
 This section is about how to prepare to launch a Kubernetes cluster which is used to deploy Rancher server for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
-Since a HA installation requires a Kubernetes cluster, we will create a Kubernetes cluster using [Rancher Kubernetes Engine]({{< baseurl >}}/rke/latest/en/) (RKE). Before being able to start your Kubernetes cluster, you'll need to create a RKE config file.
+Since a HA installation requires a Kubernetes cluster, we will create a Kubernetes cluster using [Rancher Kubernetes Engine]({{< baseurl >}}/rke/latest/en/) (RKE). Before being able to start your Kubernetes cluster, you'll need to [install RKE]({{< baseurl >}}/rke/latest/en/installation/) and create a RKE config file.
 
 ### A. Create an RKE Config File
 

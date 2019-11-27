@@ -1,14 +1,14 @@
 ---
 title: Cluster Options
 weight: 2250
----
+--- 
 
 As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rke/latest/en/), you can choose custom Kubernetes options.
 
 You can configure Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Config File](#config-file): Alternatively, you can create a [RKE config file]({{< baseurl >}}/rke/latest/en/config-options/) to customize any option offered by Kubernetes.
+- [Config File](#config-file): The cluster config file allows you to use any option offered by Kubernetes by specifying them in YAML. In Rancher v2.0.0-v2.2.x, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive.
 
 ## Rancher UI
 
@@ -58,13 +58,20 @@ If you want to see all the configuration options for a cluster, please click **S
 
 _Available as of v2.2.0_
 
-If you are using a private registry with authentication for your Docker images, please configure the registry in this section to allow the nodes to pull images from this registry. See [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information.
+The registry configuration here is applied during the provisioning of the cluster. This option tells Rancher where to pull the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) or [addon images.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
+
+- **System images** are components needed to maintain the Kubernetes cluster. 
+- **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
+
+To deploy workloads that pull images from a private registry, you will need to [set up your own Kubernetes registry]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/) for your project.
+
+See the [RKE documentation on private registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
 ### Authorized Cluster Endpoint
 
 _Available as of v2.2.0_
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API Keys]({{< baseurl >}}/v2.x/en/user-settings/api-keys/#creating-an-api-key) documentation for more information.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher. This is enabled by default, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates. It is recommended to create an FQDN pointing to a load balancer which load balances across your nodes with the `controlplane` role. If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate which will be included in the generated kubeconfig to validate the certificate chain. See the [Kubeconfig Files]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubeconfig/) and [API Keys]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys/#creating-an-api-key) documentation for more information.
 
 ### Advanced Cluster Options
 
@@ -107,7 +114,188 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
-For an example of RKE config file syntax, see the [RKE documentation]({{< baseurl >}}/rke/latest/en/example-yamls/).  
+The structure of the config file is different depending on your version of Rancher. Below are example config files for Rancher v2.0.0-v2.2.x and for Rancher v2.3.0+.
+
+### Config File Structure in Rancher v2.3.0+
+
+RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,]({{<baseurl>}}/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
+
+{{% accordion id="v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.3.0+" %}}
+
+```yaml
+# 
+# Cluster Config
+# 
+docker_root_dir: /var/lib/docker
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
+enable_network_policy: false
+local_cluster_auth_endpoint:
+  enabled: true
+# 
+# Rancher Config
+# 
+rancher_kubernetes_engine_config: # Your RKE template config goes here.
+  addon_job_timeout: 30
+  authentication:
+    strategy: x509
+  ignore_docker_version: true
+# 
+# # Currently only nginx ingress provider is supported.
+# # To disable ingress controller, set `provider: none`
+# # To enable ingress on specific nodes, use the node_selector, eg:
+#    provider: nginx
+#    node_selector:
+#      app: ingress
+# 
+  ingress:
+    provider: nginx
+  kubernetes_version: v1.15.3-rancher3-1
+  monitoring:
+    provider: metrics-server
+# 
+#   If you are using calico on AWS
+# 
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+# 
+# # To specify flannel interface
+# 
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+# 
+# # To specify flannel interface for canal plugin
+# 
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+# 
+  network:
+    options:
+      flannel_backend_type: vxlan
+    plugin: canal
+# 
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+# 
+  services:
+    etcd:
+      backup_config:
+        enabled: true
+        interval_hours: 12
+        retention: 6
+        safe_timestamp: false
+      creation: 12h
+      extra_args:
+        election-timeout: 5000
+        heartbeat-interval: 500
+      gid: 0
+      retention: 72h
+      snapshot: false
+      uid: 0
+    kube_api:
+      always_pull_images: false
+      pod_security_policy: false
+      service_node_port_range: 30000-32767
+  ssh_agent_auth: false
+windows_prefered_cluster: false
+```
+{{% /accordion %}}
+
+### Config File Structure in Rancher v2.0.0-v2.2.x
+
+An example cluster config file is included below.
+
+{{% accordion id="prior-to-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.0.0-v2.2.x" %}}
+```yaml
+addon_job_timeout: 30
+authentication:
+  strategy: x509
+ignore_docker_version: true
+# 
+# # Currently only nginx ingress provider is supported.
+# # To disable ingress controller, set `provider: none`
+# # To enable ingress on specific nodes, use the node_selector, eg:
+#    provider: nginx
+#    node_selector:
+#      app: ingress
+# 
+ingress:
+  provider: nginx
+kubernetes_version: v1.15.3-rancher3-1
+monitoring:
+  provider: metrics-server
+# 
+#   If you are using calico on AWS
+# 
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+# 
+# # To specify flannel interface
+# 
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+# 
+# # To specify flannel interface for canal plugin
+# 
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+# 
+network:
+  options:
+    flannel_backend_type: vxlan
+  plugin: canal
+# 
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+# 
+services:
+  etcd:
+    backup_config:
+      enabled: true
+      interval_hours: 12
+      retention: 6
+      safe_timestamp: false
+    creation: 12h
+    extra_args:
+      election-timeout: 5000
+      heartbeat-interval: 500
+    gid: 0
+    retention: 72h
+    snapshot: false
+    uid: 0
+  kube_api:
+    always_pull_images: false
+    pod_security_policy: false
+    service_node_port_range: 30000-32767
+ssh_agent_auth: false
+```
+{{% /accordion %}}
 
 ### Default DNS provider
 
@@ -149,3 +337,16 @@ local_cluster_auth_endpoint:
   fqdn: "FQDN"
   ca_certs: "BASE64_CACERT"
 ```
+
+### Custom Network Plug-in
+
+_Available as of v2.2.4_
+
+You can add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. You define any add-on that you want deployed after the Kubernetes cluster is deployed.
+
+There are two ways that you can specify an add-on:
+
+- [In-line Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/#in-line-add-ons)
+- [Referencing YAML Files for Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/#referencing-yaml-files-for-add-ons)
+
+For an example of how to configure a custom network plug-in by editing the `cluster.yml`, refer to the [RKE documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/custom-network-plugin-example)

@@ -10,9 +10,10 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 ## Prerequisites
 
 - AWS EC2 Access Key and Secret key that will be used to create the instances. See [Amazon Documentation: Creating Access Keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey) how to create an Access Key and Secret Key.
-- IAM Policy created to add to the user of the Access Key And Secret Key. See [Amazon Documentation: Creating IAM Policies (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start) how to create an IAM policy. See our two example JSON policies below:
+- IAM Policy created to add to the user of the Access Key And Secret Key. See [Amazon Documentation: Creating IAM Policies (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start) how to create an IAM policy. See our three example JSON policies below:
   - [Example IAM Policy](#example-iam-policy)
   - [Example IAM Policy with PassRole](#example-iam-policy-with-passrole) (needed if you want to use [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) or want to pass an IAM Profile to an instance)
+  - [Example IAM Policy to allow encrypted EBS volumes](#example-iam-policy-to-allow-encrypted-ebs-volumes) 
 - IAM Policy added as Permission to the user. See [Amazon Documentation: Adding Permissions to a User (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) how to attach it to an user.
 
 
@@ -39,7 +40,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 		{{< step_create-cloud-credential >}}
 
 		- **Zone and Network** configures the availability zone and network settings for your cluster.
-		- **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{< baseurl >}}/rancher/v2.x/en/installation/references/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
+		- **Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#amazonec2-securitygroup-nodedriver) to see what rules are created in the `rancher-nodes` Security Group.
 		- **Instance** configures the instances that will be created. Make sure you configure the correct **SSH User** for the configured AMI.
 <br><br>
 		If you need to pass an **IAM Instance Profile Name** (not ARN), for example, when you want to use a [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers), you will need an additional permission in your policy. See [Example IAM policy with PassRole](#example-iam-policy-with-passrole) for an example policy.
@@ -155,5 +156,47 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
             "Resource": "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:instance/*"
         }
     ]
+}
+```
+### Example IAM Policy to allow encrypted EBS volumes
+``` json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kms:Decrypt",
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:Encrypt",
+        "kms:DescribeKey",
+        "kms:CreateGrant",
+        "ec2:DetachVolume",
+        "ec2:AttachVolume",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteVolume",
+        "ec2:CreateSnapshot"
+      ],
+      "Resource": [
+        "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:volume/*",
+        "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:instance/*",
+        "arn:aws:ec2:REGION:AWS_ACCOUNT_ID:snapshot/*",
+        "arn:aws:kms:REGION:AWS_ACCOUNT_ID:key/KMS_KEY_ID"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeSnapshots"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```

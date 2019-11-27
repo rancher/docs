@@ -32,7 +32,7 @@ When possible, use a non-privileged user when running processes within your cont
 ### Define Resource Limits
 Apply CPU and memory limits to your pods. This can help manage the resources on your worker nodes and avoid a malfunctioning microservice from impacting other microservices.
 
-In standard Kubernetes, you can set resource limits on the namespace level. In Rancher, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the [Rancher docs]({{<baseurl>}}rancher/v2.x/en/project-admin/resource-quotas/).
+In standard Kubernetes, you can set resource limits on the namespace level. In Rancher, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the [Rancher docs]({{<baseurl>}}/rancher/v2.x/en/project-admin/resource-quotas/).
 
 When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project or namespace, all containers will require a respective CPU or Memory field set during creation. To avoid setting these limits on each and every container during workload creation, a default container resource limit can be specified on the namespace.
 

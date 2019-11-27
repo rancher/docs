@@ -7,10 +7,6 @@ aliases:
   - /rancher/v2.x/en/tools/pipelines/
   - /rancher/v2.x/en/tools/pipelines/configurations/
 ---
->**Notes:**
->
->- Pipelines are new and improved for Rancher v2.1! Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
->- Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
 A _pipeline_ is a software delivery process that is broken into different stages and steps. Setting up a pipeline can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
 
@@ -29,6 +25,12 @@ Typically, pipeline stages include:
     After the artifacts are published, you would release your application so users could start using the updated product.
 
 Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can [configure version control providers](#version-control-providers) and [manage global pipeline execution settings](#managing-global-pipeline-execution-settings). Project members can only configure [repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) and [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
+
+
+> **Notes:**
+>
+> - Pipelines were improved in Rancher v2.1. Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
+> - Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
 ## Overview
 
@@ -254,7 +256,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 ### A. Configuring Persistent Data for Docker Registry
 
-1. From the project that you're configuring a pipeline for, select the **Workloads** tab.
+1. From the project that you're configuring a pipeline for, and click **Resources > Workloads.** In versions prior to v2.3.0, select the **Workloads** tab.
 
 1. Find the `docker-registry` workload and select **Ellipsis (...) > Edit**.
 
@@ -301,7 +303,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 ### B. Configuring Persistent Data for Minio
 
-1. From the **Workloads** tab, find the `minio` workload and select **Ellipsis (...) > Edit**.
+1. From the project view, click **Resources > Workloads.** (In versions prior to v2.3.0, click the **Workloads** tab.) Find the `minio` workload and select **Ellipsis (...) > Edit**.
 
 1. Scroll to the **Volumes** section and expand it. Make one of the following selections from the **Add Volume** menu, which is near the bottom of the section:
 

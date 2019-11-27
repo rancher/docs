@@ -54,9 +54,4 @@ Alerts can be triggered based on node metrics. Each computing resource in a Kube
 | Node disk is running full within 24 hours | A critical alert is triggered if the disk space on the node is expected to run out in the next 24 hours based on the disk growth over the last 6 hours. |
 
 # Project-level Alerts
-When you enable monitoring for the project, some project-level alerts are provided.
-
-| Alert | Explanation |
-|-------|-------------|
-| Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload`. |
-| Memory usage close to the quota | A warning alert is triggered if the workload's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
+When you enable monitoring for the project, some project-level alerts are provided. For details, refer to the [section on project-level alerts.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/#default-project-level-alerts)

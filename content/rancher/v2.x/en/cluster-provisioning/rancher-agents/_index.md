@@ -14,7 +14,7 @@ The `cattle-cluster-agent` is used to connect to the Kubernetes API of [Rancher 
 
 ### cattle-node-agent
 
-The `cattle-node-agent` is used to interact with nodes in a [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) cluster when performing cluster operations. Examples of cluster operations are upgrading Kubernetes version and creating/restoring etcd snapshots. The `cattle-node-agent` is deployed using a DaemonSet resource to make sure it runs on every node. The `cattle-node-agent` is used as fallback option to connect to the Kubernets API of [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters when `cattle-cluster-agent` is unavailable.
+The `cattle-node-agent` is used to interact with nodes in a [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) cluster when performing cluster operations. Examples of cluster operations are upgrading Kubernetes version and creating/restoring etcd snapshots. The `cattle-node-agent` is deployed using a DaemonSet resource to make sure it runs on every node. The `cattle-node-agent` is used as fallback option to connect to the Kubernetes API of [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters when `cattle-cluster-agent` is unavailable.
 
 > **Note:** In Rancher v2.2.4 and lower, the `cattle-node-agent` pods did not tolerate all taints, causing Kubernetes upgrades to fail on these nodes. The fix for this has been included in Rancher v2.2.5 and higher.
 
@@ -27,8 +27,7 @@ _Applies to v2.3.0 and higher_
 | `cattle-cluster-agent` | `beta.kubernetes.io/os:NotIn:windows`      | none         | `operator:Exists`                                                              |
 | `cattle-node-agent`    | `beta.kubernetes.io/os:NotIn:windows`      | none         | `operator:Exists`                                                              |
 
-The `cattle-cluster-agent` Deployment has preferred scheduling rules using `requiredDuringSchedulingIgnoredDuringExecution`, favoring to be scheduled on nodes with the `controlplane` node. See [Kubernetes: Assigning Pods to Nodes](https://kubernetes.io/docs
-concepts/configuration/assign-pod-node/) to find more information about scheduling rules.
+The `cattle-cluster-agent` Deployment has preferred scheduling rules using `requiredDuringSchedulingIgnoredDuringExecution`, favoring to be scheduled on nodes with the `controlplane` node. See [Kubernetes: Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to find more information about scheduling rules.
 
 The `requiredDuringSchedulingIgnoredDuringExecution` configuration is shown in the table below:
 

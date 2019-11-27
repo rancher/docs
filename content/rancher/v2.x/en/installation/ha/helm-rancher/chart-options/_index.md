@@ -156,6 +156,17 @@ You may terminate the SSL/TLS on a L7 load balancer external to the Rancher clus
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
+#### Configuring Ingress for External TLS when Using NGINX v0.25
+
+In NGINX v0.25, the behavior of NGINX has [changed](https://github.com/kubernetes/ingress-nginx/blob/master/Changelog.md#0220) regarding forwarding headers and external TLS termination. Therefore, in the scenario that you are using external TLS termination configuration with NGINX v0.25, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
+
+```yaml
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
+```
+
 #### Required Headers
 
 * `Host`

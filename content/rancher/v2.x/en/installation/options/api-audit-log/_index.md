@@ -67,7 +67,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
     ![Local Cluster: System Project]({{< baseurl >}}/img/rancher/audit_logs_gui/context_local_system.png)
 
-1. From the **Workloads** tab, find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
+1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
 
     ![Rancher Workload]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_workload.png)
 

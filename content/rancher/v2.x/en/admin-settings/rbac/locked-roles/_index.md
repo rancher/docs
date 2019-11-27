@@ -27,7 +27,7 @@ If you want to prevent a role from being assigned to users, you can set it to a 
 
 You can lock roles in two contexts:
 
-- When you're [adding a custom role](({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
+- When you're [adding a custom role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
 - When you editing an existing role (see below).
 
 1. From the **Global** view, select **Security** > **Roles**.

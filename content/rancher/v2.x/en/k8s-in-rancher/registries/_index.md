@@ -46,7 +46,7 @@ You can deploy a workload with an image from a private registry through the Ranc
 To deploy a workload with an image from your private registry,
 
 1. Go to the project view,
-1. Go to the **Workloads** tab.
+1. Click **Resources > Workloads.** In versions prior to v2.3.0, go to the **Workloads** tab.
 1. Click **Deploy.**
 1. Enter a unique name for the workload and choose a namespace.
 1. In the **Docker Image** field, enter the URL of the path to the Docker image in your private registry. For example, if your private registry is on Quay.io, you could use `quay.io/<Quay profile name>/<Image name>`.

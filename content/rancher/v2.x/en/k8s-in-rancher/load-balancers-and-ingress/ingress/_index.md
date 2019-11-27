@@ -9,7 +9,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 1. From the **Global** view, open the project that you want to add ingress to.
 
-1. Select the **Load Balancing** tab. Then click **Add Ingress**.
+1. Click **Resources** in the main navigation bar. Click the **Load Balancing** tab. (In versions prior to v2.3.0, just click the **Load Balancing** tab.) Then click **Add Ingress**.
 
 1. Enter a **Name** for the ingress.
 
