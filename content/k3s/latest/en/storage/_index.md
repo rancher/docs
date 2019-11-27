@@ -5,7 +5,11 @@ weight: 30
 
 When deploying an application that needs to retain data, you’ll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application’s pod fails.
 
-# Local Storage Provider
+A persistent volume (PV) is a piece of storage in the Kubernetes cluster, while a persistent volume claim (PVC) is a request for storage. For details on how PVs and PVCs work, refer to the official Kubernetes documentation on [storage.](https://kubernetes.io/docs/concepts/storage/volumes/)
+
+This page describes how to set up persistent storage with a local storage provider, or with [Longhorn.](#setting-up-longhorn)
+
+# Setting up the Local Storage Provider
 K3s comes with Rancher's Local Path Provisioner and this enables the ability to create persistent volume claims out of the box using local storage on the respective node. Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
 Create a hostPath backed persistent volume claim and a pod to utilize it:
@@ -51,19 +55,33 @@ spec:
       claimName: local-path-pvc
 ```
 
-Apply the yaml `kubectl create -f pvc.yaml` and `kubectl create -f pod.yaml`
+Apply the yaml:
 
-Confirm the PV and PVC are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
+```
+kubectl create -f pvc.yaml
+kubectl create -f pod.yaml
+```
 
-# Longhorn
+Confirm the PV and PVC are created:
+
+```
+kubectl get pv
+kubectl get pvc
+```
+
+The status should be Bound for each.
+
+# Setting up Longhorn
 
 [comment]: <> (pending change - longhorn may support arm64 and armhf in the future.)
 
 > **Note:** At this time Longhorn only supports amd64.
 
-K3s supports [Longhorn](https://github.com/longhorn/longhorn). Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/longhorn/longhorn/blob/master/README.md).
+K3s supports [Longhorn](https://github.com/longhorn/longhorn). Longhorn is an open-source distributed block storage system for Kubernetes.
 
-Apply the longhorn.yaml to install Longhorn.
+Below we cover a simple example. For more information, refer to the official documentation [here](https://github.com/longhorn/longhorn/blob/master/README.md).
+
+Apply the longhorn.yaml to install Longhorn:
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/deploy/longhorn.yaml
@@ -71,13 +89,18 @@ kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/master/depl
 
 Longhorn will be installed in the namespace `longhorn-system`.
 
-Before we create a PVC, we will create a storage class for longhorn with this yaml.
+Before we create a PVC, we will create a storage class for Longhorn with this yaml:
 
 ```
 kubectl create -f https://raw.githubusercontent.com/longhorn/longhorn/master/examples/storageclass.yaml
 ```
 
-Now, apply the following yaml to create the PVC and pod with `kubectl create -f pvc.yaml` and `kubectl create -f pod.yaml`
+Apply the yaml to create the PVC and pod:
+
+```
+kubectl create -f pvc.yaml
+kubectl create -f pod.yaml
+```
 
 ### pvc.yaml
 
@@ -119,4 +142,11 @@ spec:
       claimName: longhorn-volv-pvc
 ```
 
-Confirm the PV and PVC are created. `kubectl get pv` and `kubectl get pvc` The status should be Bound for each.
+Confirm the PV and PVC are created:
+
+```
+kubectl get pv
+kubectl get pvc
+```
+
+The status should be Bound for each.
