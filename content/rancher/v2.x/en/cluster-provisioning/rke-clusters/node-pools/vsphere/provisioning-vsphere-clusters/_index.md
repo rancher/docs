@@ -9,7 +9,7 @@ This section explains how to configure Rancher with vSphere credentials, provisi
 
 This section describes the requirements for setting up vSphere so that Rancher can provision VMs and clusters.
 
-The v2.3.3 node templates were tested with the vSphere Web Services API version 6.5.
+The node templates are documented and tested with the vSphere Web Services API version 6.5.
 
 - [Create credentials in vSphere](#create-credentials-in-vsphere)
 - [Network permissions](#network-permissions)
