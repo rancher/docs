@@ -46,14 +46,16 @@ You will need to do the following:
 
 1. [Create a node template using vSphere credentials](#1-create-a-node-template-using-vsphere-credentials)
 2. [Create a Kubernetes cluster using the node template](#2-create-a-kubernetes-cluster-using-the-node-template)
-  - [Important: Enable the vSphere cloud provider for the cluster](#enable-the-vsphere-cloud-provider-for-the-cluster)
 3. [Optional: Provision storage](#3-optional-provision-storage)
+  - [Enable the vSphere cloud provider for the cluster](#enable-the-vsphere-cloud-provider-for-the-cluster)
 
 ### Configuration References
 
 For details on configuring the node template, refer to the [node template configuration reference.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference/)
 
 Rancher uses the RKE library to provision Kubernetes clusters. For details on configuring clusters in vSphere, refer to the [cluster configuration reference in the RKE documentation.]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/)
+
+Note that the vSphere cloud provider must be [enabled](#enable-the-vsphere-cloud-provider-for-the-cluster) to allow dynamic provisioning of volumes.
 
 # 1. Create a Node Template Using vSphere Credentials
 
@@ -240,11 +242,10 @@ To install Kubernetes on vSphere nodes, you will need to enable the vSphere clou
 To create the cluster and enable the vSphere provider for cluster, follow these steps:
 
 - [A. Set up the cluster name and member roles](#a-set-up-the-cluster-name-and-member-roles)
-- [B. Enable the vSphere cloud provider for the cluster](#b-enable-the-vsphere-cloud-provider-for-the-cluster)
-- [C. Configure Kubernetes options](#c-configure-kubernetes-options)
-- [D. Add node pools to the cluster](#d-add-node-pools-to-the-cluster)
-- [E. Optional: Add a self-healing node pool](#e-optional-add-a-self-healing-node-pool)
-- [F. Create the cluster](#f-create-the-cluster)
+- [B. Configure Kubernetes options](#b-configure-kubernetes-options)
+- [C. Add node pools to the cluster](#c-add-node-pools-to-the-cluster)
+- [D. Optional: Add a self-healing node pool](#d-optional-add-a-self-healing-node-pool)
+- [E. Create the cluster](#e-create-the-cluster)
 
 ### A. Set up the Cluster Name and Member Roles
 
@@ -258,38 +259,20 @@ To create the cluster and enable the vSphere provider for cluster, follow these 
 > 
 > If you have a cluster with DRS enabled, setting up [VM-VM Affinity Rules](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.resmgmt.doc/GUID-7297C302-378F-4AF2-9BD6-6EDB1E0A850A.html) is recommended. These rules allow VMs assigned the etcd and control-plane roles to operate on separate ESXi hosts when they are assigned to different node pools. This practice ensures that the failure of a single physical machine does not affect the availability of those planes.
 
-### B. Enable the vSphere Cloud Provider for the Cluster
 
-7. Set **Cloud Provider** option to `Custom`.
-
-    ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
-
-8. Click on **Edit as YAML**
-9. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 
-
-    ```yaml
-    rancher_kubernetes_engine_config: # Required as of Rancher v2.3+
-      cloud_provider:
-          name: vsphere
-          vsphereCloudProvider:
-              [Insert provider configuration]
-    ```
-
-    Rancher uses RKE (the Rancher Kubernetes Engine) to provision Kubernetes clusters. Refer to the [vSphere configuration reference in the RKE documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/) for details about the properties of the `vsphereCloudProvider` directive.
-
-### C. Configure Kubernetes Options
+### B. Configure Kubernetes Options
 {{<step_create-cluster_cluster-options>}}
 
-### D. Add Node Pools to the Cluster
+### C. Add Node Pools to the Cluster
 {{<step_create-cluster_node-pools>}}
 
-### E. Optional: Add a Self-Healing Node Pool
+### D. Optional: Add a Self-Healing Node Pool
 
 To make a node pool self-healing, enter a number greater than zero in the **Auto Replace** column. Rancher will use the node template for the given node pool to recreate the node if it becomes inactive for that number of minutes.
 
 > **Note:** Self-healing node pools are designed to help you replace worker nodes for stateless applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
 
-### F. Create the Cluster
+### E. Create the Cluster
 
 Click **Create** to start provisioning the VMs and Kubernetes services.
 
@@ -301,3 +284,22 @@ For an example of how to provision storage in vSphere using Rancher, refer to th
  [cluster administration section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/vsphere)
 
  In order to provision storage in vSphere, the vSphere provider must be enabled.
+
+### Enable the vSphere Cloud Provider for the Cluster
+
+1. Set **Cloud Provider** option to `Custom`.
+
+    ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
+
+1. Click on **Edit as YAML**
+1. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 
+
+    ```yaml
+    rancher_kubernetes_engine_config: # Required as of Rancher v2.3+
+      cloud_provider:
+          name: vsphere
+          vsphereCloudProvider:
+              [Insert provider configuration]
+    ```
+
+    Rancher uses RKE (the Rancher Kubernetes Engine) to provision Kubernetes clusters. Refer to the [vSphere configuration reference in the RKE documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/) for details about the properties of the `vsphereCloudProvider` directive.

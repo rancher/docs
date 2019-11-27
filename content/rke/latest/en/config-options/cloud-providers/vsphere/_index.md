@@ -27,7 +27,3 @@ This section describes how to enable the vSphere cloud provider. You will need t
 # Enabling the vSphere Provider with the RKE CLI
 
 To enable the vSphere Cloud Provider in the cluster, you must add the top-level `cloud_provider` directive to the cluster configuration file, set the `name` property to `vsphere` and add the `vsphereCloudProvider` directive containing the configuration matching your infrastructure. See the [configuration reference]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/config-reference) for the gory details.
-
-# Enabling the vSphere Provider with Rancher
-
-If you are using Rancher, refer to the [Rancher documentation](/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/#enable-the-vsphere-cloud-provider-for-the-cluster) for instructions on enabling the vSphere provider in Rancher.

@@ -18,7 +18,7 @@ The vSphere node templates have been updated, allowing you to bring cloud operat
 
 ### Self-healing Node Pools
 
-_Self-healing node pools are available as of v2.3.0. Node auto-replace is available in the vSphere node driver as of v2.3.3._
+_Available as of v2.3.0_
 
 One of the biggest advantages of provisioning vSphere nodes with Rancher is that it allows you to take advantage of Rancher's self-healing node pools, also called the [node auto-replace feature,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-auto-replace) in your on-premises clusters. Self-healing node pools are designed to help you replace worker nodes for stateless applications. When Rancher provisions nodes from a node template, Rancher can automatically replace unreachable nodes.
 

@@ -3,6 +3,12 @@ title: vSphere Configuration Reference
 weight: 3
 ---
 
+This section shows an example of how to configure the vSphere cloud provider.
+
+The vSphere cloud provider must be enabled to allow dynamic provisioning of volumes.
+
+For more details on deploying a Kubernetes cluster on vSphere, refer to the [official cloud provider documentation.](https://cloud-provider-vsphere.sigs.k8s.io/tutorials/kubernetes-on-vsphere-with-kubeadm.html)
+
 >  **Note:** This documentation reflects the new vSphere Cloud Provider configuration schema introduced in Kubernetes v1.9 which differs from previous versions.
 
 # vSphere Configuration Example
@@ -25,12 +31,14 @@ cloud_provider:
       vc.example.com:
         user: provisioner
         password: secret
-        datacenters: eu-west-1
+        port: 443
+        datacenters: /us-west-1
     workspace:
       server: vc.example.com
-      folder: vm/kubernetes
-      default-datastore: ds-1
-      datacenter: eu-west-1
+      folder: /us-west-1/folder/myvmfolder
+      default-datastore: /us-west-1/datastore/ds-1
+      datacenter: /us-west-1
+      resourcepool-path: /us-west-1/host/hn1/resources/myresourcepool
 
 ```
 # Configuration Options
