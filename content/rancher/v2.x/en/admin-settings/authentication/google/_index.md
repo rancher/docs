@@ -35,7 +35,7 @@ Before you can set up Google OAuth in Rancher, you need to log in to your G Suit
 **Result:** Rancher has been added as an authorized domain for the Admin SDK API.
 
 ### 2. Creating OAuth2 Credentials for the Rancher Server
-1. Go to the Google API console, select your project, and go to the [credentials page.]((https://console.developers.google.com/apis/credentials) )
+1. Go to the Google API console, select your project, and go to the [credentials page.](https://console.developers.google.com/apis/credentials)
 ![Credentials]({{<baseurl>}}/img/rancher/Google-Credentials-tab.png)  
 1. On the **Create Credentials** dropdown, select **OAuth client ID.** 
 1. Click **Web application.**
