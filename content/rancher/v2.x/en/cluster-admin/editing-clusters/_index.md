@@ -83,7 +83,7 @@ As of Rancher v2.3.0, the Kubernetes metadata feature was added, which allows Ra
 
 For RKE v0.1.8+, the `ingress-nginx` YAML does not contain an upgrade policy, which makes the update strategy `RollingUpdate` by default. This policy allows the daemonset to restart the pods.
 
-For RKE prior to v0.1.8, the `updateStrategy` directive in the `ingress-nginx` YAML is set to `OnDelete.` In that case, you will need to delete these pods to get the correct version for your deployment.
+For RKE prior to v0.1.8, the `updateStrategy` directive in the `ingress-nginx` YAML was set to `OnDelete` because RKE did not yet support updating ingress and addons. In that case, you will need to delete these pods to get the correct version for your deployment.
 
 ### Adding a Pod Security Policy
 
