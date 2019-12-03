@@ -9,7 +9,7 @@ For systems without direct internet access, see [Air Gap: High Availability Inst
 
 Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
-> **Note:** The installation instructions assume you are using Helm 2. The instructions will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, refer to [these instructions.](https://github.com/ibrokethecloud/rancher-helm3)
+> **Note:** The installation instructions assume you are using Helm 3. Migration of installs from Helm 2 to Helm 3 will be documented soon.  
 
 ### Add the Helm Chart Repository
 
@@ -19,6 +19,13 @@ Use `helm repo add` command to add the Helm chart repository that contains chart
 
 ```
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
+```
+
+### Create a Namespace for Rancher
+We'll need to define a namespace where the resources created by the Chart should be installed. This should always be `cattle-system`:
+
+```
+kubectl create namespace cattle-system
 ```
 
 ### Choose your SSL Configuration
@@ -77,7 +84,6 @@ These instructions are adapted from the [official cert-manager documentation](ht
 1. Install the cert-manager Helm chart
     ```plain
     helm install \
-      --name cert-manager \
       --namespace cert-manager \
       --version v0.9.1 \
       jetstack/cert-manager
@@ -108,7 +114,6 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
@@ -131,7 +136,6 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
@@ -158,7 +162,6 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
