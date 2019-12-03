@@ -3,12 +3,12 @@ title: Technical
 weight: 8006
 ---
 
-### How can I reset the admin password?
+### How can I reset the administrator password?
 
 Single node install:
 ```
 $ docker exec -ti <container_id> reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
@@ -16,7 +16,7 @@ High Availability install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
@@ -24,7 +24,7 @@ High Availability install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
@@ -33,8 +33,8 @@ New password for default admin user (user-xxxxx):
 Single node install:
 ```
 $ docker exec -ti <container_id> ensure-default-admin
-New default admin user (user-xxxxx)
-New password for default admin user (user-xxxxx):
+New default administrator (user-xxxxx)
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
@@ -42,7 +42,7 @@ High Availability install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 

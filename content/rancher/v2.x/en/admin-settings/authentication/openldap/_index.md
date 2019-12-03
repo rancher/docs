@@ -22,7 +22,7 @@ If your organization uses LDAP for user authentication, you can configure Ranche
 
 ## Prerequisites
 
-Rancher must be configured with a LDAP bind account (aka service account) to search and retrieve LDAP entries pertaining to users and groups that should have access. It is recommended to not use an admin account or personal account for this purpose and instead create a dedicated account in OpenLDAP with read-only access to users and groups under the configured search base (see below).
+Rancher must be configured with a LDAP bind account (aka service account) to search and retrieve LDAP entries pertaining to users and groups that should have access. It is recommended to not use an administrator account or personal account for this purpose and instead create a dedicated account in OpenLDAP with read-only access to users and groups under the configured search base (see below).
 
 > **Using TLS?**
 >
@@ -109,7 +109,7 @@ Once you have completed the configuration, proceed by testing  the connection to
 
 > **Note:**
 >
-> The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned admin privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
+> The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
 
 1. Enter the **username** and **password** for the OpenLDAP account that should be mapped to the local principal account.
 2. Click **Authenticate With OpenLDAP** to test the OpenLDAP connection and finalise the setup.

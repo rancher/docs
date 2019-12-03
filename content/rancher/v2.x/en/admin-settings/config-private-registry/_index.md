@@ -19,7 +19,7 @@ If your private registry requires credentials, it cannot be used as the default 
 
 # Setting a Private Registry with No Credentials as the Default Registry
 
-1. Log into Rancher and configure the default admin password.
+1. Log into Rancher and configure the default administrator password.
 
 1. Go into the **Settings** view.
 
