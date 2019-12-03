@@ -11,7 +11,7 @@ The projects and clusters accessible to non-administrative users is determined b
 
 When you create a cluster or project, Rancher automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
-> **Note:** Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the user membership.
+> **Note:** Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the project and cluster membership.
 
 ### Cluster Roles
 
@@ -27,7 +27,7 @@ _Cluster roles_ are roles that you can assign to users, granting them access to 
 
 #### Custom Cluster Roles
 
-Rancher lets you assign _custom cluster roles_ to a user instead of the typical `Owner` or `Member` roles. These roles can be either a built-in custom cluster role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a user within a cluster. See the table below for a list of built-in custom cluster roles.
+Rancher lets you assign _custom cluster roles_ to a standard user instead of the typical `Owner` or `Member` roles. These roles can be either a built-in custom cluster role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a standard user within a cluster. See the table below for a list of built-in custom cluster roles.
 
 #### Cluster Role Reference
 
@@ -53,32 +53,24 @@ For details on how each cluster role can access Kubernetes resources, you can go
 
 ### Giving a Custom Cluster Role to a Cluster Member
 
-Admins can set up custom cluster roles that can be assigned to cluster owners and members.
+After an administrator [sets up a custom cluster role,]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/#adding-a-custom-role) cluster owners and admins can then assign those roles to cluster members.
 
-Cluster owners and admins can then assign those roles to cluster members.
-
-To create a custom cluster role,
-
-1. In the **Global** view under **Security > Roles,** click **Add Cluster Role.**
-
-1. In the **Grant Resources** section, choose any combination of operations on Kubernetes resources that will be allowed by the new role. Give the new cluster role a name and click **Create.**
-
-Then, from the **Cluster** view, go to the **Members** tab. From this tab, you can give the cluster role to members in two ways:
-
-- You can assign the role to a new member with the Rancher UI.
-- You can assign the role to an existing member with the Rancher API view.
+To assign a custom role to a new cluster member, you can use the Rancher UI. To modify the permissions of an existing member, you will need to use the Rancher API view.
 
 To assign the role to a new cluster member,
 
-1. Click **Add Member.** Then in the **Cluster Permissions** section, you can choose your custom cluster role. 
+1. Go to the **Cluster** view, then go to the **Members** tab.
+1. Click **Add Member.** Then in the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
+1. Click **Create.**
 
-1. When you click **Create**, the member should have the assigned role.
+**Result:** The member has the assigned role.
 
 To assign any custom role to an existing cluster member,
 
 1. Go to the member you want to give the role to. Click the **Ellipsis (...) > View in API.**
+1. In the **roleTemplateId** field, go to the drop-down menu and choose the role you want to assign to the member. Click **Show Request** and **Send Request.**
 
-1. In the **roleTemplateId** field, go to the drop-down menu and choose the role you want to assign to the member. Click **Show Request** and **Send Request.** After that, the member's role should be updated.
+**Result:** The member has the assigned role.
 
 ### Project Roles
 
@@ -103,7 +95,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
 #### Custom Project Roles
 
-Rancher lets you assign _custom project roles_ to a user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a user within a project. See the table below for a list of built-in custom project roles.
+Rancher lets you assign _custom project roles_ to a standard user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a standard user within a project. See the table below for a list of built-in custom project roles.
 
 #### Project Role Reference
 
@@ -135,7 +127,7 @@ The following table lists each built-in custom project role available in Rancher
 >
 >- Each project role listed above, including `Owner`, `Member`, and `Read Only`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
 >- When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
->- The `Manage Project Members` role allows the user to manage any members of the project **and** grant them any project scoped role regardless of their access to the project resources. Be cautious when assigning this role out individually.
+>- The `Manage Project Members` role allows the project owner to manage any members of the project **and** grant them any project scoped role regardless of their access to the project resources. Be cautious when assigning this role out individually.
 
 ### Defining Custom Roles
 As previously mentioned, custom roles can be defined for use at the cluster or project level. The context field defines whether the role will appear on the cluster member page, project member page, or both.
@@ -144,7 +136,7 @@ When defining a custom role, you can grant access to specific resources or speci
 
 ### Default Cluster and Project Roles
 
-By default, when a user creates a new cluster or project, they are automatically assigned an ownership role: either [cluster owner](#cluster-roles) or [project owner](#project-roles). However, in some organizations, these roles may overextend administrative access. In this use case, you can change the default role to something more restrictive, such as a set of individual roles or a custom role.
+By default, when a standard user creates a new cluster or project, they are automatically assigned an ownership role: either [cluster owner](#cluster-roles) or [project owner](#project-roles). However, in some organizations, these roles may overextend administrative access. In this use case, you can change the default role to something more restrictive, such as a set of individual roles or a custom role.
 
 There are two methods for changing default cluster/project roles:
 
@@ -183,7 +175,7 @@ You can change the cluster or project role(s) that are automatically assigned to
 
 ### Cluster Membership Revocation Behavior
 
-When you revoke the cluster membership for a user that's explicitly assigned membership to both the cluster _and_ a project within the cluster, that user [loses their cluster roles](#clus-roles) but [retains their project roles](#proj-roles). In other words, although you have revoked the user's permissions to access the cluster and its nodes, the user can still:
+When you revoke the cluster membership for a standard user that's explicitly assigned membership to both the cluster _and_ a project within the cluster, that standard user [loses their cluster roles](#clus-roles) but [retains their project roles](#proj-roles). In other words, although you have revoked the user's permissions to access the cluster and its nodes, the standard user can still:
 
 - Access the projects they hold membership in.
 - Exercise any [individual project roles](#project-role-reference) they are assigned.
