@@ -215,11 +215,11 @@ In the custom attributes, Rancher will let you select all the custom attributes 
 {{% /tab %}}
 {{% /tabs %}}
 
-### G. Optional: Configure Cloud Init
+### G. Optional: Configure cloud-init
 
 [Cloud-init](https://cloud-init.io/) is a tool that applies user data to your nodes when they boot for the first time.
 
-The configuration file for `cloud-init` is named `cloud-config.yml.` In the **Cloud Init** field, it is optional to enter a file name or URL pointing to a `cloud-config.yml` file.
+The configuration file for `cloud-init` is named `cloud-config.yml.` In the **Cloud Init** field, it is optional to enter a file name or URL pointing to a `cloud-config.yml` file. Only YAML format is supported for the cloud config.
 
 You can use `cloud-init` to automate tasks that should happen when the instance boots, such as creating users, running shell commands, adding a load balancer, or preinstalling Kubernetes on the VM.
 
