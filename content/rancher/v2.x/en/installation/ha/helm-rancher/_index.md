@@ -3,13 +3,17 @@ title: "4.  Install Rancher"
 weight: 200
 ---
 
-Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
+Rancher installation is managed using the Helm package manager for Kubernetes.  Helm “charts” provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at https://helm.sh/.
 
 For systems without direct internet access, see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
 
 Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
 > **Note:** The installation instructions assume you are using Helm 3. Migration of installs from Helm 2 to Helm 3 will be documented soon.  
+
+### Install Helm
+
+Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platofrm.
 
 ### Add the Helm Chart Repository
 
