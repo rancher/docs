@@ -69,8 +69,4 @@ For high-availability installations of Rancher, Helm is the tool used to install
 
 Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh).
 
-To be able to use Helm, the server-side component `tiller` needs to be installed on your cluster. Helm installs the `tiller` service on your cluster to manage charts because Helm cannot manipulate Kubernetes resources directly.
-
-Because Rancher Kubernetes Engine enables role-based access control by default, the `tiller` service needs to be given permission to manipulate Kubernetes resources. Therefore, the high-availability Rancher installation instructions show you how to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so that `tiller` has permission to deploy Rancher on the cluster.
-
 For more information on service accounts and cluster role binding, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
