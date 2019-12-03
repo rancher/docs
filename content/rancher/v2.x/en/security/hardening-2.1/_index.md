@@ -870,7 +870,7 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 ## 3.2 - Rancher Management Control Plane Authentication
 
-### 3.2.1 - Change the local admin password from the default value
+### 3.2.1 - Change the local administrator password from the default value
 
 **Profile Applicability**
 
@@ -878,11 +878,11 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 **Description**
 
-The local admin password should be changed from the default.
+The local administrator password should be changed from the default.
 
 **Rationale**
 
-The default admin password is common across all Rancher installations and should be changed immediately upon startup.
+The default administrator password is common across all Rancher installations and should be changed immediately upon startup.
 
 **Audit**
 

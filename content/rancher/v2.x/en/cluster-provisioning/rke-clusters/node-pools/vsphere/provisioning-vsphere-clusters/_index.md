@@ -65,7 +65,7 @@ After you create a node template, it is saved, and you can re-use it whenever yo
 
 To create a node template,
 
-1. Log in with an admin account to the Rancher UI.
+1. Log in with an administrator account to the Rancher UI.
 
 1. From the user settings menu, select **Node Templates.**
 
@@ -249,7 +249,7 @@ To create the cluster and enable the vSphere provider for cluster, follow these 
 
 ### A. Set up the Cluster Name and Member Roles
 
-1. Log in to the Rancher UI as an admin user.
+1. Log in to the Rancher UI as an administrator.
 2. Navigate to **Clusters** in the **Global** view.
 3. Click **Add Cluster** and select the **vSphere** infrastructure provider.
 4. Assign a **Cluster Name.**

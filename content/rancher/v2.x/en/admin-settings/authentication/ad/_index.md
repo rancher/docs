@@ -110,7 +110,7 @@ Once you have completed the configuration, proceed by testing  the connection to
 
 > **Note:**
 >
-> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned admin privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
+> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
 
 1. Enter the **username** and **password** for the AD account that should be mapped to the local principal account.
 2. Click **Authenticate with Active Directory** to finalise the setup.
