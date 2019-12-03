@@ -5,11 +5,11 @@ weight: 275
 
 For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.
 
-This procedure walks you through setting up a 3-node cluster with RKE and installing the Rancher chart with the Helm package manager.
+This procedure walks you through setting up a 3-node cluster with Rancher Kubernetes Engine (RKE) and installing the Rancher chart with the Helm package manager.
 
-> **Important:** It is not supported, nor generally a good idea, to run Rancher on top of hosted Kubernetes solutions such as Amazon's EKS, or Google's GKE. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations. It is strongly recommended to use hosted infrastructure such as EC2 or GCE instead. 
+> **Important:** Rancher Management Server can only be run on an RKE managed Kubernetes cluster. Use of Rancher on hosted Kubernetes or other providers is not supported. 
 
-> **Important:** For the best performance, we recommend this Kubernetes cluster to be dedicated only to run Rancher. After the Kubernetes cluster to run Rancher is setup, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+> **Important:** For the best performance, we recommend a dedicated Kubernetes cluster for Rancher Management Server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 ## Recommended Architecture
 
