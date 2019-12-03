@@ -12,7 +12,7 @@ Rancher simplifies the creation of clusters by allowing you to create them throu
 
 This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.x/en/overview/concepts) page.
 
-For a conceptual overview of how the Rancher server provisions clusters and what tools it uses to provision them, refer to the [architecture]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/)
+For a conceptual overview of how the Rancher server provisions clusters and what tools it uses to provision them, refer to the [architecture]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/) page.
 
 ## Cluster Creation Options
 
