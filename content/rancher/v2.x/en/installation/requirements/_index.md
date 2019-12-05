@@ -36,7 +36,8 @@ Operating System | Version | Tested Docker Versions
 **Oracle Linux*** | 7.7 | Docker 19.03.x
 **RancherOS** | 1.5.4 | Docker 17.03.2, 18.06.2, 18.09.x (up to 18.09.8), 19.03.x
 **Red Hat Enterprise Linux (RHEL)***  | 7.7 | RHEL Docker 1.13.x, Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
-**Ubuntu** | 16.04, 18.04 | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
+**Ubuntu** | 16.04 | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
+**Ubuntu** | 18.04 | Docker 18.06.x, 18.09.x, 19.03.x
 
 \* Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
