@@ -92,9 +92,6 @@ To change the default global permissions that are assigned to external users upo
 
 1. If you want to remove a default permission, edit the permission and select **No** from **New User Default**.
 
-<<<<<<< HEAD
-**Result:** The default global permissions are configured based on your changes. Permissions assigned to new users display a check in the **New User Default** column.
-=======
 **Result:** The default global permissions are configured based on your changes. Permissions assigned to new users display a check in the **New User Default** column.
 
 ### Configuring Global Permissions for Individual Users
@@ -112,5 +109,3 @@ To configure permission for a user,
 1. Click **Save.**
 
 > **Result:** The user's global permissions have been updated.
-
->>>>>>> Update and clarify docs on global and cluster permissions
