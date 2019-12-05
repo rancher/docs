@@ -1,5 +1,6 @@
 ---
 title: Rancher Deployment Quick Start Guides
+metaDescription: Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases.
 short title: Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases. 
 weight: 25
 ---
