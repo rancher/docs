@@ -34,7 +34,7 @@ Operating System | Version | Tested Docker Versions
 
 \** Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 (1809) or Docker EE-basic 19.03 (1903). Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03. Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
+If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
 
 For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
 
