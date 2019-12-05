@@ -52,13 +52,15 @@ Also obtain the K3s install script at https://get.k3s.io
 Place the binary in `/usr/local/bin` on each node.
 Place the install script anywhere on each node, name it `install.sh`.
 
-Install K3s on each node. The example below shows how to do this for a server or an agent (worker):
+Install K3s on each server:
 
 ```
-# K3s Server
 INSTALL_K3S_SKIP_DOWNLOAD=true ./install.sh
+```
 
-# K3s Agent
+Install K3s on each agent:
+
+```
 INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken ./install.sh
 ```
 
