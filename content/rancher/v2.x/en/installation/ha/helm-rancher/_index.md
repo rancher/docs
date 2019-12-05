@@ -88,9 +88,9 @@ These instructions are adapted from the [official cert-manager documentation](ht
 1. Install the cert-manager Helm chart
     ```plain
     helm install \
+      cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v0.9.1 \
-      jetstack/cert-manager
+      --version v0.9.1
     ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
