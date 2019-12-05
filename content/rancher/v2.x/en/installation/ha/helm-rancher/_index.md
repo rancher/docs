@@ -117,7 +117,7 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
@@ -139,7 +139,7 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
@@ -165,7 +165,7 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 - If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
