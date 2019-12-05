@@ -3,13 +3,17 @@ title: "4.  Install Rancher"
 weight: 200
 ---
 
-Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
+Rancher installation is managed using the Helm package manager for Kubernetes.  Helm “charts” provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at https://helm.sh/.
 
 For systems without direct internet access, see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
 
 Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
-> **Note:** The installation instructions assume you are using Helm 2. The instructions will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, refer to [these instructions.](https://github.com/ibrokethecloud/rancher-helm3)
+> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 Migration Docs](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
+
+### Install Helm
+
+Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platofrm.
 
 ### Add the Helm Chart Repository
 
@@ -19,6 +23,13 @@ Use `helm repo add` command to add the Helm chart repository that contains chart
 
 ```
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
+```
+
+### Create a Namespace for Rancher
+We'll need to define a namespace where the resources created by the Chart should be installed. This should always be `cattle-system`:
+
+```
+kubectl create namespace cattle-system
 ```
 
 ### Choose your SSL Configuration
@@ -77,7 +88,6 @@ These instructions are adapted from the [official cert-manager documentation](ht
 1. Install the cert-manager Helm chart
     ```plain
     helm install \
-      --name cert-manager \
       --namespace cert-manager \
       --version v0.9.1 \
       jetstack/cert-manager
@@ -107,8 +117,7 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
@@ -130,8 +139,7 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
@@ -157,8 +165,7 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 - If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
 
 ```
-helm install rancher-<CHART_REPO>/rancher \
-  --name rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
