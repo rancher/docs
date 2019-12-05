@@ -8,7 +8,7 @@ aliases:
 
 This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
 
-> It is important to note that if you install Rancher on a Kubernetes cluster, the hardware and networking requirements for the Rancher cluster are different than the [node requirements for user clusters,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/) which will run your apps and services.
+> It is important to note that if you install Rancher on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/) which will run your apps and services.
 
 Make sure the node(s) for the Rancher server fulfill the following requirements:
 
@@ -24,7 +24,7 @@ For a list of best practices that we recommend for running the Rancher server in
 
 # Operating Systems and Docker Requirements
 
-Rancher is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
+The Rancher server is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
 
@@ -33,17 +33,14 @@ All supported operating systems are 64-bit x86.
 Operating System | Version | Tested Docker Versions
 ---------------------|----------|----------------
 **CentOS** | 7.5, 7.6, 7.7 | Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
-**Oracle Linux*** | 7.6 (version 7 update 6) | Docker 19.03.x
+**Oracle Linux*** | 7.7 | Docker 19.03.x
 **RancherOS** | 1.5.4 | Docker 17.03.2, 18.06.2, 18.09.x (up to 18.09.8), 19.03.x
-**Red Hat Enterprise Linux (RHEL)***  | 7.5, 7.6, 7.7 | RHEL Docker 1.13.x, Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
+**Red Hat Enterprise Linux (RHEL)***  | 7.7 | RHEL Docker 1.13.x, Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
 **Ubuntu** | 16.04, 18.04 | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
-**Windows Server** | 1809, 1903 | Docker 18.09.x (1809), 19.03.x (1903). Requires Docker Engine - Enterprise Edition (EE).**
 
 \* Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
-\** Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 (1809) or Docker EE-basic 19.03 (1903). Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03. Supported for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
-
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental)]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
+If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
 
 For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
 
