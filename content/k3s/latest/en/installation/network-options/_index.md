@@ -36,6 +36,14 @@ Visit the [Project Calico Docs](https://docs.projectcalico.org/) website. Follow
 
 Applyl the Canal YAML.
 
+Ensure the settings were applied by running the following command on the host:
+
+```
+cat /etc/cni/net.d/10-calico.conflist
+```
+
+You should see that ip forwarding is set to true.
+
 {{% /tab %}}
 {{% tab "Calico" %}}
 
@@ -48,6 +56,15 @@ Follow the [Calico CNI Plugins Guide](https://docs.projectcalico.org/master/refe
 ```
 
 Apply the Calico YAML.
+
+Ensure the settings were applied by running the following command on the host:
+
+```
+cat /etc/cni/net.d/10-canal.conflist
+```
+
+You should see that ip forwarding is set to true.
+
 
 {{% /tab %}}
 {{% /tabs %}}
