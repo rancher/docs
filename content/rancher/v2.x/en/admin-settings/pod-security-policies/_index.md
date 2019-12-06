@@ -17,7 +17,7 @@ _Pod Security Policies_ (or PSPs) are objects that control security-sensitive as
     - You can override the default PSP by assigning a different PSP directly to the project.
 - Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
 
->**NOTE:** You must enable PSPs at the cluster level before you can assign them to a project. This can be found under the "Edit cluster" menu. 
+>**Note:** You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/)
 
 Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
