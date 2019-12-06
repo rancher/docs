@@ -30,13 +30,12 @@ In HA installations of Rancher, the Rancher server cluster should also be separa
 
 We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the data stored on etcd. The Rancher server stores its data in etcd in both single-node and HA installations.
 
-When Rancher is installed on a single node, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
+When Rancher is installed on a single node, if the node goes down, there is no copy of the etcd data available on other nodes and you could lose the data on your Rancher server.
 
 By contrast, in the high-availability installation,
 
 - The etcd data is replicated on three nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
-- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure.
-- When one application server fails or becomes unavailable, the load balancer directs traffic to available servers using an algorithm. For example, the least connection method directs traffic to the service with the fewest active connections. The least connection method is indicated with the `least_conn` option in this [example]({{<baseurl>}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP). The load balancer handles traffic so that each server can receive a manageable load.
+- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
 
 # Recommended Load Balancer Configuration for HA Installations
 
