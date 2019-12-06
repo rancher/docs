@@ -18,7 +18,7 @@ This section is about installations of Rancher server in an air gapped environme
 Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
 {{% tabs %}}
-{{% tab "HA Install" %}}
+{{% tab "For HA Install Only" %}}
 
 The following CLI tools are required for the HA install. Make sure these tools are installed on your workstation and available in your `$PATH`.
 
