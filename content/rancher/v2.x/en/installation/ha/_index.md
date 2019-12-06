@@ -11,7 +11,7 @@ This procedure walks you through setting up a 3-node cluster with Rancher Kubern
 
 > **Important:** For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
-We recommend the following configurations for the load balancer and Ingress controllers:
+We recommend the following architecture and configurations for the load balancer and Ingress controllers:
 
 * DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
 * The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
