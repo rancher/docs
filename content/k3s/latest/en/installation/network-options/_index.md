@@ -5,11 +5,11 @@ weight: 25
 
 > **Note:** Please reference the [Networking]({<< baseurl >>}/k3s/latest/en/networking) page for information about CoreDNS, Traefik, and the Service LB.
 
-By default, K3s will run with flannel as the CNI, using VXLAN as the default backend. To change the CNI, refer to the section on configuring a custom CNI. To change the flannel backend, refer to the flannel options section.
+By default, K3s will run with flannel as the CNI, using VXLAN as the default backend. To change the CNI, refer to the section on configuring a [custom CNI](#custom-cni). To change the flannel backend, refer to the flannel options section.
 
 ### Flannel Options
 
-The default backend for flannel is VXLAN. If you would like to use a different backend with flannel, use one of the options in the table below.
+The default backend for flannel is VXLAN. To enable encryption, pass the IPSec (Internet Protocol Security) or WireGuard options below.
 
 If you wish to use WireGuard as your flannel backend it may require additional kernel modules. Please see the [WireGuard Install Guide](https://www.wireguard.com/install/) for details. The WireGuard install steps will ensure the appropriate kernel modules are installed for your operating system. You need to install WireGuard on every node, both server and agents before attempting to leverage the WireGuard flannel backend option.
 
@@ -42,7 +42,7 @@ Ensure the settings were applied by running the following command on the host:
 cat /etc/cni/net.d/10-calico.conflist
 ```
 
-You should see that ip forwarding is set to true.
+You should see that IP forwarding is set to true.
 
 {{% /tab %}}
 {{% tab "Calico" %}}
@@ -63,7 +63,7 @@ Ensure the settings were applied by running the following command on the host:
 cat /etc/cni/net.d/10-canal.conflist
 ```
 
-You should see that ip forwarding is set to true.
+You should see that IP forwarding is set to true.
 
 
 {{% /tab %}}
