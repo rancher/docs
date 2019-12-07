@@ -13,7 +13,7 @@ Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installat
 
 ### Install Helm
 
-Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platofrm.
+Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
 
 ### Add the Helm Chart Repository
 
