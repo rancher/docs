@@ -22,7 +22,7 @@ If your organization uses LDAP for user authentication, you can configure Ranche
 
 ## Prerequisites
 
-Rancher must be configured with a LDAP bind account (aka service account) to search and retrieve LDAP entries pertaining to users and groups that should have access. It is recommended to not use an admin account or personal account for this purpose and instead create a dedicated account in OpenLDAP with read-only access to users and groups under the configured search base (see below).
+Rancher must be configured with a LDAP bind account (aka service account) to search and retrieve LDAP entries pertaining to users and groups that should have access. It is recommended to not use an administrator account or personal account for this purpose and instead create a dedicated account in OpenLDAP with read-only access to users and groups under the configured search base (see below).
 
 > **Using TLS?**
 >
@@ -75,7 +75,7 @@ The table below details the parameters for the user schema configuration.
 
 | Parameter | Description |
 |:--|:--|
-| Object Class | The name of the object class used for user objects in your domain. |
+| Object Class | The name of the object class used for user objects in your domain. If defined, only specify the name of the object class - *don't* include it in an LDAP wrapper such as &(objectClass=xxxx) |
 | Username Attribute | The user attribute whose value is suitable as a display name. |
 | Login Attribute | The attribute whose value matches the username part of credentials entered by your users when logging in to Rancher. This is typically `uid`. |
 | User Member Attribute | The user attribute containing the Distinguished Name of groups a user is member of. Usually this is one of `memberOf` or `isMemberOf`. |
@@ -93,7 +93,7 @@ The table below details the parameters for the group schema configuration.
 
 | Parameter | Description |
 |:--|:--|
-| Object Class | The name of the object class used for group entries in your domain. |
+| Object Class | The name of the object class used for group entries in your domain. If defined, only specify the name of the object class - *don't* include it in an LDAP wrapper such as &(objectClass=xxxx) |
 | Name Attribute | The group attribute whose value is suitable for a display name. |
 | Group Member User Attribute | The name of the **user attribute** whose format matches the group members in the `Group Member Mapping Attribute`. |
 | Group Member Mapping Attribute | The name of the group attribute containing the members of a group. |
@@ -109,7 +109,7 @@ Once you have completed the configuration, proceed by testing  the connection to
 
 > **Note:**
 >
-> The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned admin privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
+> The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
 
 1. Enter the **username** and **password** for the OpenLDAP account that should be mapped to the local principal account.
 2. Click **Authenticate With OpenLDAP** to test the OpenLDAP connection and finalise the setup.

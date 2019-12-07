@@ -1,16 +1,19 @@
 ---
-title: "Installation Options"
-weight: 2
+title: "Installation"
+weight: 20
 ---
 
-This section contains instructions for installing k3s in testing and production environments. Please ensure you have met the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) before you begin installing k3s.
+This section contains instructions for installing K3s in various environments. Please ensure you have met the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) before you begin installing K3s.
 
-### Installation Options
+[Installation and Configuration Options]({{< baseurl >}}/k3s/latest/en/installation/install-options/) provides guidance on the options available to you when installing K3s.
 
-*   [Single Master Installation]({{< baseurl >}}/k3s/latest/en/installation/single-server/)
 
-	Install k3s on a single Linux host. Single master installs are recommended for development and test environments, as setup is simple and the cluster doesn't have to be readily available for a user-base.
+[High Availability with an External DB]({{< baseurl >}}/k3s/latest/en/installation/ha/) details how to setup an HA K3s cluster backed by an external datastore such as MySQL, PostgreSQL, or etcd.
 
-*   [High Availability (HA) Installation]({{< baseurl >}}/k3s/latest/en/installation/ha/)
+[High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installation/ha-embedded/) details how to setup an HA K3s cluster that leverages a built-in distributed database.
 
-	Install k3s on two or more Linux hosts. High Availability installs are recommended for production environments.
+[Air-Gap Installation]({{< baseurl >}}/k3s/latest/en/installation/airgap/) details how to setup K3s in environments that do not have direct access to the Internet.
+
+### Uninstalling
+
+If you installed K3s with the help of the `install.sh` script, an uninstall script is generated during installation, which will be created on your node at `/usr/local/bin/k3s-uninstall.sh` (or as `k3s-agent-uninstall.sh`).

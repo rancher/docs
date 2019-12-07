@@ -42,16 +42,10 @@ For a custom cluster, the general node requirements for networking, operating sy
 
 ### OS and Docker Requirements
 
-In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker:
+In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
 
-- Windows Server core version 1809 and Docker 18.09
-- Windows server core version 1903 and Docker 19.03
-
-The nodes must run Docker Engine - Enterprise Edition (EE).
-
-Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09.
-
-Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
+- Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03.
+- Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
 
 > **Notes:**
 >
@@ -160,7 +154,7 @@ Windows support only be enabled if the cluster uses Kubernetes v1.15+ and the Fl
 
 1. Click **Next**.
 
-> **Important:** For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the [documentation on configuring cloud-hosted VM routes.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#cloud-hosted-vm-routes-configuration) You will also need to [disable private IP address checks]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#disabling-private-ip-address-checks) if you are using Amazon EC2, Google GCE, or Azure VM.
+> **Important:** For <b>Host Gateway (L2bridge)</b> networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the [documentation on configuring cloud-hosted VM routes.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#cloud-hosted-vm-routes-configuration) You will also need to [disable private IP address checks]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#disabling-private-ip-address-checks) if you are using Amazon EC2, Google GCE, or Azure VM.
 
 # 3. Add Nodes to the Cluster
 

@@ -74,7 +74,7 @@ The table below details the parameters for the user schema section configuration
 
 | Parameter | Description |
 |:--|:--|
-| Object Class | The name of the object class used for user objects in your domain. |
+| Object Class | The name of the object class used for user objects in your domain. If defined, only specify the name of the object class - *don't* include it in an LDAP wrapper such as &(objectClass=xxxx) |
 | Username Attribute | The user attribute whose value is suitable as a display name. |
 | Login Attribute | The attribute whose value matches the username part of credentials entered by your users when logging in to Rancher. If your users authenticate with their UPN (e.g. "jdoe@acme.com") as username then this field must normally be set to `userPrincipalName`. Otherwise for the old, NetBIOS-style logon names (e.g. "jdoe") it's usually `sAMAccountName`. |
 | User Member Attribute | The attribute containing the groups that a user is a member of. |
@@ -93,7 +93,7 @@ The table below details the parameters for the group schema configuration.
 
 | Parameter | Description |
 |:--|:--|
-| Object Class | The name of the object class used for group objects in your domain. |
+| Object Class | The name of the object class used for group objects in your domain. If defined, only specify the name of the object class - *don't* include it in an LDAP wrapper such as &(objectClass=xxxx)  |
 | Name Attribute | The group attribute whose value is suitable for a display name. |
 | Group Member User Attribute | The name of the **user attribute** whose format matches the group members in the `Group Member Mapping Attribute`. |
 | Group Member Mapping Attribute | The name of the group attribute containing the members of a group. |
@@ -110,7 +110,7 @@ Once you have completed the configuration, proceed by testing  the connection to
 
 > **Note:**
 >
-> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned admin privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
+> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
 
 1. Enter the **username** and **password** for the AD account that should be mapped to the local principal account.
 2. Click **Authenticate with Active Directory** to finalise the setup.

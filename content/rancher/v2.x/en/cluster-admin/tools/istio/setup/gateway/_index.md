@@ -86,7 +86,7 @@ spec:
 
 Confirm that the resource exists by running:
 ```
-kubectl get gateway
+kubectl get gateway -A
 ```
 
 The result should be something like this:

@@ -1,50 +1,57 @@
 ---
-title: "High Availability (HA) Install (Experimental)"
+title: "High Availability with an External DB"
 weight: 30
 ---
 
->**Important:** High-Availability (HA) was introduced in the v0.10.0 release of k3s and is _experimental_. Our v1.0 release plans to support HA in production environments. HA should currently only be used for testing purposes in non-production environments.
->**Note:** k3s does not utilize etcd by default so only a 2-node cluster is needed for HA at a minimum. The following will guide you through setting up a 2-node cluster with PostgreSQL. You could optionally add one or more nodes for additional redundancy. In the future we plan to add support for additional database providers.
+>**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release.
 
-For production environments, we recommend installing k3s in a high-availability configuration so that you can always access your cluster. This procedure walks you through setting up a 2-node cluster with k3s with an external PostgreSQL database. As of v0.10.0 release (Experimental HA) we are supporting PostgreSQL 10.7-R1 thru 11.5-R1
+Single server clusters can meet a variety of use cases, but for environments where uptime of the Kubernetes control plane is critical, you can run K3s in an HA configuration. An HA K3s cluster is comprised of:
+
+* Two or more **server nodes** that will serve the Kubernetes API and run other control plane services
+* An **external datastore** (as opposed to the embedded SQLite datastore used in single server setups)
+* A **fixed registration address** placed in front of the server nodes to allow worker nodes to register with the cluster
+
+The following diagram illustrates the above configuration:
+![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup.svg)
+
+In this architecture a server node is defined as a machine (bare-metal or virtual) running the `k3s server` command. A worker node is defined as a machine running the `k3s agent` command.
+
+Workers register through the fixed registration address, but after registration they establish a connection directly to one of the sever nodes. This is a websocket connection initiated by the `k3s agent` process and it is maintained by a client-side load balancer running as part of the agent process.
 
 Installation Outline
 --------------------
-1. Create backend database (PostgreSQL)
-2. Create master nodes
-3. Join worker nodes
+Setting up an HA cluster requires the following steps:
 
-### Create Database
-The first step for setting up High Availability (HA) is to create the database for the backend. As of v0.10.0 release (Experimental HA) we are currently supporting PostgreSQL 10.7-R1 thru 11.5-R1
+1. Create an external datastore
+2. Launch server nodes
+3. Configure fixed registration address
+4. Join worker nodes
 
-### Create Master Nodes
-Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision at least two machines.
+### Create an External Datastore
+You will first need to create an external datastore for the cluster. See the [Cluster Datastore Options]({{< baseurl >}}/k3s/latest/en/installation/datastore/) documentation for more details.
 
-On the first machine, run the following command to install k3s and connect it to the database.
+### Launch Server Nodes
+K3s requires two or more server nodes for this HA configuration. See the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) guide for minimum machine requirements.
 
->**Note:** You may wish to taint the master nodes. They will run the kubelet by default and be scheduleable. You can only add node labels and taints during the install process. If you wish to do this, use the `--node-taint` flag. For example `--node-taint key1=value1:NoExecute` the following examples do not include this flag.
+When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore. Please see the [datastore configuration guide]({{< baseurl >}}/k3s/latest/en/installation/datastore/#external-datastore-configuration-parameters) for information on configuring this parameter.
 
-```
-curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='postgres://username:password@hostname:5432/dbname' --bootstrap-save
-```
-Note: You may want to provide the password temporarily via a file or environment variable then destroy it or clear your bash history so the password is no longer exposed in plain text on the machine.
+> **Note:** The same installation options available to single-server installs are also available for HA installs. For more details, see the [Installation and Configuration Options]({{< baseurl >}}/k3s/latest/en/installation/install-options/) documentation.
 
-On the second machine, run the following command. Since we ran the first node with the `--bootstrap-save` flag the second and any additional machines will now automatically bootstrap HA.
+By default, server nodes will be schedulable and thus your workloads can get launched on them. If you wish to have a dedicated control plane where no user workloads will run, you can use taints. The <span style='white-space: nowrap'>`node-taint`</span> parameter will allow you to configure nodes with taints, for example <span style='white-space: nowrap'>`--node-taint k3s-controlplane=true:NoExecute`</span>.
 
-```
-curl -fL https://get.k3s.io | sh -s - server --storage-endpoint='postgres://username:password@hostname:5432/dbname'
-```
+Once you've launched the `k3s server` process on all server nodes, you can ensure that the cluster has come up properly by checking that the nodes are in the Ready state with `k3s kubectl get nodes`.
 
-Ensure that both of the nodes are in a Ready state such as with `k3s kubectl get nodes`
+### Configure the Fixed Registration Address
+Worker nodes need a URL to register against. This can be the IP or hostname of any of the server nodes, but in many cases those may change over time. For example, if you are running your cluster in a cloud that supports scaling groups, you may scale the server node group up and down over time, causing nodes to be created and destroyed and thus having different IPs from the initial set of server nodes. Therefore, you should have a stable endpoint in front of the server nodes that will not change over time. This endpoint can be setup using any number approaches, such as:
+
+* A layer-4 (TCP) load balancer
+* Round-robin DNS
+* A virtual or elastic IP addresses
+
+This endpoint can also be used for accessing the Kubernetes API. So you can, for example, modify your kubeconfig file to point to it instead of a specific node.
 
 ### Join Worker Nodes
-Following the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/) page, provision one or more machines to fill the role of the worker node(s).
-
-Run the following command to join a worker node to the master nodes. You can get the node-token from any of the servers at `/var/lib/rancher/k3s/server/node-token`
-
+Joining worker nodes in an HA cluster is the same as joining worker nodes in a single server cluster. You just need to specify the URL the agent should register to and the token it should use.
 ```
-curl -sfL https://get.k3s.io | K3S_URL=https:/<master_node>:6443 K3S_TOKEN=XXX sh -
+K3S_TOKEN=SECRET k3s agent --server https://fixed-registration-address:6443
 ```
-
-Provide the IP or DNS in place of `<master_node>` this can be any one master node. k3s automatically handles load balancing the master nodes.
-

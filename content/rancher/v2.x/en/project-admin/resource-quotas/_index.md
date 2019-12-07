@@ -15,7 +15,7 @@ Resource quotas in Rancher include the same functionality as the [native version
 
 In a standard Kubernetes deployment, resource quotas are applied to individual namespaces. However, you cannot apply the quota to your namespaces simultaneously with a single action. Instead, the resource quota must be applied multiple times.
 
-In the following diagram, a Kubernetes admin is trying to enforce a resource quota without Rancher. The admin wants to apply a resource quota that sets the same CPU and memory limit to every namespace in his cluster (`Namespace 1-4`) . However, in the base version of Kubernetes, each namespace requires a unique resource quota. The admin has to create four different resource quotas that have the same specs configured (`Resource Quota 1-4`) and apply them individually.
+In the following diagram, a Kubernetes administrator is trying to enforce a resource quota without Rancher. The administrator wants to apply a resource quota that sets the same CPU and memory limit to every namespace in his cluster (`Namespace 1-4`) . However, in the base version of Kubernetes, each namespace requires a unique resource quota. The administrator has to create four different resource quotas that have the same specs configured (`Resource Quota 1-4`) and apply them individually.
 
 <sup>Base Kubernetes: Unique Resource Quotas Being Applied to Each Namespace</sup>
 ![Native Kubernetes Resource Quota Implementation]({{< baseurl >}}/img/rancher/kubernetes-resource-quota.svg)
@@ -33,7 +33,7 @@ The resource quota includes two limits, which you set while creating or editing 
 
     This value is the default resource limit available for each namespace. When the resource quota is set on the project level, this limit is automatically propagated to each namespace in the project. Each namespace is bound to this default limit unless you [override it](#namespace-default-limit-overrides).
 
-In the following diagram, a Rancher admin wants to apply a resource quota that sets the same CPU and memory limit for every namespace in their project (`Namespace 1-4`). However, in Rancher, the admin can set a resource quota for the project (`Project Resource Quota`) rather than individual namespaces. This quota includes resource limits for both the entire project (`Project Limit`) and individual namespaces (`Namespace Default Limit`). Rancher then propagates the `Namespace Default Limit` quotas to each namespace (`Namespace Resource Quota`).
+In the following diagram, a Rancher administrator wants to apply a resource quota that sets the same CPU and memory limit for every namespace in their project (`Namespace 1-4`). However, in Rancher, the administrator can set a resource quota for the project (`Project Resource Quota`) rather than individual namespaces. This quota includes resource limits for both the entire project (`Project Limit`) and individual namespaces (`Namespace Default Limit`). Rancher then propagates the `Namespace Default Limit` quotas to each namespace (`Namespace Resource Quota`).
 
 <sup>Rancher: Resource Quotas Propagating to Each Namespace</sup>
 ![Rancher Resource Quota Implementation]({{< baseurl >}}/img/rancher/rancher-resource-quota.svg)
@@ -80,7 +80,7 @@ When you create a resource quota, you are configuring the pool of resources avai
 
 Although the **Namespace Default Limit** propagates from the project to each namespace, in some cases, you may need to increase (or decrease) the performance for a specific namespace. In this situation, you can override the default limits by editing the namespace.
 
-In the diagram below, the Rancher admin has a resource quota in effect for their project. However, the admin wants to override the namespace limits for `Namespace 3` so that it performs better. Therefore, the admin [raises the namespace limits]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#editing-namespace-resource-quotas) for `Namespace 3` so that the namespace can access more resources.
+In the diagram below, the Rancher administrator has a resource quota in effect for their project. However, the administrator wants to override the namespace limits for `Namespace 3` so that it performs better. Therefore, the administrator [raises the namespace limits]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#editing-namespace-resource-quotas) for `Namespace 3` so that the namespace can access more resources.
 
 <sup>Namespace Default Limit Override</sup>
 ![Namespace Default Limit Override]({{< baseurl >}}/img/rancher/rancher-resource-quota-override.svg)
