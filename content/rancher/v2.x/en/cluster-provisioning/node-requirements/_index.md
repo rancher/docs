@@ -108,7 +108,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 ### Port Requirements for Clusters Hosted by an Infrastructure Provider
 
-If you are launching a Kubernetes cluster on nodes that are in an infastructure provider such as Amazon EC2, Google Container Engine, DigitalOcean, Azure, or vSphere, [these port requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/port-reqs-for-infrastructure-provider) apply.
+If you are launching a Kubernetes cluster on nodes that are in an infastructure provider such as Amazon EC2, Google Container Engine, DigitalOcean, Azure, or vSphere, these port requirements apply.
 
 These required ports are automatically opened by Rancher during creation of clusters using cloud providers.
 

@@ -131,7 +131,7 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP | 2376 | Any node IP from a node created using Node driver | Docker daemon TLS port used by Docker Machine |
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 ### Additional Port Requirements for Nodes in High-Availability Rancher Installations
 

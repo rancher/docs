@@ -9,7 +9,11 @@ A Rancher [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/glob
 
 1. From the **Global** view, navigate to the **cluster** where you want to enable Istio.
 1. Click **Tools > Istio.**
+<<<<<<< HEAD
 1. Optional: Configure member access and [resource limits]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/resources) for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
+=======
+1. Optional: Configure member access and resource limits for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
+>>>>>>> Fix broken links
 1. Click **Enable**.
 1. Click **Save**.
 
