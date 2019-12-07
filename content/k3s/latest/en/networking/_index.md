@@ -3,16 +3,11 @@ title: "Networking"
 weight: 35
 ---
 
+>**Note:** CNI options are covered in detail on the [Installation Network Options]({{< baseurl >}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
+
 Open Ports
 ----------
 Please reference the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/#networking) page for port information.
-
-Flannel
--------
-
-Flannel is included by default, if you don't want flannel then run each agent with `--no-flannel` option.
-
-In this setup you will still be required to install your own CNI driver.  More info [here](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network)
 
 CoreDNS
 -------
