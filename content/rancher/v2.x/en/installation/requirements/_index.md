@@ -161,14 +161,14 @@ TCP/UDP | 30000-32767 | Any source that consumes NodePort services | NodePort po
 Protocol | Port | Source | Destination | Description
 -----------|------|----------|---------------|--------------
 TCP | 22 | RKE node | Any node configured in Cluster Configuration File | SSH provisioning of node by RKE
-TCP | 443 | Rancher nodes | Rancher agent | 
-TCP | 2379 | etcd nodes | etcd client requests | 
-TCP | 2380 | etcd nodes | etcd peer communication | 
+TCP | 443 | Rancher nodes | Rancher agent |
+TCP | 2379 | etcd nodes | etcd client requests |
+TCP | 2380 | etcd nodes | etcd peer communication |
 TCP | 6443 | RKE node | controlplane nodes | Kubernetes API server
-TCP | 6443 | controlplane nodes | Kubernetes API server | 
-UDP | 8472 | etcd nodes, controlplane nodes, and worker nodes | Canal/Flannel VXLAN overlay networking | 
-TCP | 9099 | the node itself (local traffic, not across nodes) | Canal/Flannel livenessProbe/readinessProbe | 
-TCP | 10250 | etcd nodes, controlplane nodes, and worker nodes | kubelet | 
+TCP | 6443 | controlplane nodes | Kubernetes API server |
+UDP | 8472 | etcd nodes, controlplane nodes, and worker nodes | Canal/Flannel VXLAN overlay networking |
+TCP | 9099 | the node itself (local traffic, not across nodes) | Canal/Flannel livenessProbe/readinessProbe |
+TCP | 10250 | etcd nodes, controlplane nodes, and worker nodes | kubelet |
 TCP | 10254 | the node itself (local traffic, not across nodes) | Ingress controller livenessProbe/readinessProbe
 
 The ports that need to be opened for each node depend on the node's Kubernetes role: etcd, controlplane, or worker. If you installed Rancher on a Kubernetes cluster that doesn't have all three roles on each node, refer to the [port requirements for the Rancher Kubernetes Engine (RKE).]({{<baseurl>}}/rke/latest/en/os/#ports) The RKE docs show a breakdown of the port requirements for each role.
@@ -188,12 +188,16 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+
+
 <figcaption>Inbound Rules for Rancher Nodes</figcaption>
 
 | Protocol | Port | Source                                                                                                                                                                                | Description                                          |
 | -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
 | TCP      | 443  | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
+
 
 <figcaption>Outbound Rules for Rancher Nodes</figcaption>
 
