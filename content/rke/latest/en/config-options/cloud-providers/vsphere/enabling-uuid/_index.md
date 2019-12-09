@@ -18,7 +18,7 @@ The required property can be set while creating or modifying VMs in the vSphere 
 1. For each VM navigate to the tab **VM Options** and click on **Edit Configuration**.
 2. Add the parameter `disk.EnableUUID` with a value of **TRUE**.
 
-    ![vsphere-advanced-parameters]({{< baseurl >}}/img/rke/vsphere-advanced-parameters.png)
+    {{< img "/img/rke/vsphere-advanced-parameters.png" "vsphere-advanced-parameters" >}}
 
 ### Using the GOVC CLI tool
 

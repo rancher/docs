@@ -131,7 +131,7 @@ In the **Scheduling** section, enter:
 - The name of the **VM Network** to attach to
 - The name/path of the **Datastore** to store the disks in
 
-    ![image]({{< baseurl >}}/img/rancher/vsphere-node-template-2.png)
+    {{< img "/img/rancher/vsphere-node-template-2.png" "image" >}}
 
 {{% /tab %}}
 {{% /tabs %}}
@@ -289,7 +289,7 @@ For an example of how to provision storage in vSphere using Rancher, refer to th
 
 1. Set **Cloud Provider** option to `Custom`.
 
-    ![vsphere-node-driver-cloudprovider]({{< baseurl >}}/img/rancher/vsphere-node-driver-cloudprovider.png)
+    {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
 
 1. Click on **Edit as YAML**
 1. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 

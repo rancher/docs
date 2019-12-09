@@ -1,17 +1,14 @@
 {{ $img := .Get 0 }}
 {{ $alt := .Get 1 }}
 {{ with resources.Get $img }}
-    {{ $thumb20 := .Resize "2000x" }}
-    {{ $thumb16 := .Resize "1600x" }}
-    {{ $thumb12 := .Resize "1200x" }}
     {{ $thumb10 := .Resize "1000x" }}
     {{ $thumb8 := .Resize "800x" }}
     {{ $thumb6 := .Resize "600x" }}
     {{ $thumb4 := .Resize "400x" }}
     {{ $thumb2 := .Resize "200x" }}
     <img
-            srcset="{{ $thumb2.Permalink }} 200w, {{ $thumb4.Permalink }} 400w, {{ $thumb6.Permalink }} 600w, {{ $thumb8.Permalink }} 800w, {{ $thumb10.Permalink }} 1000w, {{ $thumb12.Permalink }} 1200w, {{ $thumb16.Permalink }} 1600w, {{ $thumb20.Permalink }} 2000w"
-            src="{{ .Permalink }}"
+            srcset="{{ $thumb2.Permalink }} 200w, {{ $thumb4.Permalink }} 400w, {{ $thumb6.Permalink }} 600w, {{ $thumb8.Permalink }} 800w, {{ $thumb10.Permalink }} 1000w"
+            src="{{ $thumb6.Permalink }}"
             alt ="{{$alt}}"
     >
 {{ end }}
