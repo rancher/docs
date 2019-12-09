@@ -19,7 +19,7 @@ A Kubernetes cluster consists of multiple nodes.
 
 -   **etcd database**
 
- 	Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration.
+ 	Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create a High Availability (HA) configuration.
 
 -   **Master nodes**
 
