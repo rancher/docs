@@ -9,9 +9,9 @@ For systems without direct internet access, see [Air Gap: High Availability Inst
 
 Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
-> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 Migration Docs](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
+> **Note:** Helm 2 and Helm 3 are installed differently. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 Migration Docs](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/)
 
-### Install Helm
+# Install Helm
 
 Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
 
@@ -31,6 +31,75 @@ We'll need to define a namespace where the resources created by the Chart should
 ```
 kubectl create namespace cattle-system
 ```
+
+### Additional Steps for Helm 2 Users
+
+Only follow the steps in this section if you are using Helm 2.
+
+Helm is controlled with the Helm CLI, but in Helm 2, Tiller is the service that communicates with the Kubernetes API to manage the Helm packages.
+
+{{% accordion id="tiller-steps" label="Click to Expand" %}}
+### Install Tiller on the Cluster
+
+> **Important:** Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.	
+Helm installs the `tiller` service on your cluster to manage charts. Since RKE enables RBAC by default ,we will need to use `kubectl` to create a `serviceaccount` and `clusterrolebinding` so `tiller` has permission to deploy to the cluster.	
+
+* Create the `ServiceAccount` in the `kube-system` namespace.	
+* Create the `ClusterRoleBinding` to give the `tiller` account access to the cluster.	
+* Finally use `helm` to install the `tiller` service	
+
+```plain	
+kubectl -n kube-system create serviceaccount tiller	
+kubectl create clusterrolebinding tiller \	
+  --clusterrole=cluster-admin \	
+  --serviceaccount=kube-system:tiller	
+helm init --service-account tiller	
+# Users in China: You will need to specify a specific tiller-image in order to initialize tiller. 	
+# The list of tiller image tags are available here: https://dev.aliyun.com/detail.html?spm=5176.1972343.2.18.ErFNgC&repoId=62085. 	
+# When initializing tiller, you'll need to pass in --tiller-image	
+helm init --service-account tiller \	
+--tiller-image registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:<tag>	
+```	
+
+> **Note:** This`tiller`install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. Check out the [helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for restricting `tiller` access to suit your security requirements.	
+
+### Test your Tiller installation	
+
+Run the following command to verify the installation of `tiller` on your cluster:	
+
+```	
+kubectl -n kube-system  rollout status deploy/tiller-deploy	
+Waiting for deployment "tiller-deploy" rollout to finish: 0 of 1 updated replicas are available...	
+deployment "tiller-deploy" successfully rolled out	
+```	
+
+And run the following command to validate Helm can talk to the `tiller` service:	
+
+```	
+helm version	
+Client: &version.Version{SemVer:"v2.12.1", GitCommit:"02a47c7249b1fc6d8fd3b94e6b4babf9d818144e", GitTreeState:"clean"}	
+Server: &version.Version{SemVer:"v2.12.1", GitCommit:"02a47c7249b1fc6d8fd3b94e6b4babf9d818144e", GitTreeState:"clean"}	
+```
+
+### Troubleshooting: Helm commands show forbidden	
+
+When Helm is initiated in the cluster without specifying the correct `ServiceAccount`, the command `helm init` will succeed but you won't be able to execute most of the other `helm` commands. The following error will be shown:	
+
+```	
+Error: configmaps is forbidden: User "system:serviceaccount:kube-system:default" cannot list configmaps in the namespace "kube-system"	
+```	
+
+To resolve this, the server component (`tiller`) needs to be removed and added with the correct `ServiceAccount`. You can use `helm reset --force` to remove the `tiller` from the cluster. Please check if it is removed using `helm version --server`.	
+
+```	
+helm reset --force	
+Tiller (the Helm server-side component) has been uninstalled from your Kubernetes Cluster.	
+helm version --server	
+Error: could not find tiller	
+```	
+
+When you have confirmed that `tiller` has been removed, please follow the steps provided in [Initialize Helm (Install tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/) to install `tiller` with the correct `ServiceAccount`.
+{{% /accordion %}}
 
 ### Choose your SSL Configuration
 
@@ -85,13 +154,27 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm repo update
     ```
 
-1. Install the cert-manager Helm chart
-    ```plain
-    helm install \
-      cert-manager jetstack/cert-manager \
-      --namespace cert-manager \
-      --version v0.9.1
-    ```
+1. Install the cert-manager Helm chart. The command is different for Helm 2 and Helm 3.
+
+{{% tabs %}}
+{{% tab "Helm 3" %}}
+```plain
+helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --version v0.9.1
+```
+{{% /tab %}}
+{{% tab "Helm 2" %}}
+```plain
+helm install \
+  --name cert-manager
+  --namespace cert-manager \
+  --version v0.9.1 \
+     jetstack/cert-manager
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
 
@@ -116,11 +199,25 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 
+The Helm command to install Rancher is different depending on the version of Helm.
+
+{{% tabs %}}
+{{% tab "Helm 3" %}}
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
+{{% /tab %}}
+{{% tab "Helm 2" %}}
+```
+helm install rancher-<CHART_REPO>/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 Wait for Rancher to be rolled out:
 
@@ -138,6 +235,10 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
 
+The Helm command to install Rancher is different depending on the version of Helm.
+
+{{% tabs %}}
+{{% tab "Helm 3" %}}
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
@@ -145,6 +246,18 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set ingress.tls.source=letsEncrypt \
   --set letsEncrypt.email=me@example.org
 ```
+{{% /tab %}}
+{{% tab "Helm 2" %}}
+```
+helm install rancher-<CHART_REPO>/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=letsEncrypt  \
+  --set letsEncrypt.email=me@example.org
+```
+{{% /tab %}}
+{{% tabs %}}
 
 Wait for Rancher to be rolled out:
 
@@ -164,12 +277,27 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 - Set `hostname` and set `ingress.tls.source` to `secret`.
 - If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
 
+The Helm command to install Rancher is different depending on the version of Helm.
+
+{{% tabs %}}
+{{% tab "Helm 3" %}}
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
 ```
+{{% /tab %}}
+{{% tab "Helm 2" %}}
+```
+helm install rancher-<CHART_REPO>/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=secret
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 Now that Rancher is deployed, see [Adding TLS Secrets]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
