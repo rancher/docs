@@ -32,7 +32,7 @@ Operating System | Tested Docker Versions
 ---------------------|--------------------------
 Ubuntu 16.04 (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
 Ubuntu 18.04 (64-bit x86) | Docker 18.06.x, 18.09.x, 19.03.x
-Red Hat Enterprise Linux (RHEL)/CentOS 7.7 (64-bit x86) | RHEL Docker 1.13
+Red Hat Enterprise Linux (RHEL)/CentOS 7.7 (64-bit x86) | RHEL Docker 1.13, Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
 Oracle Linux 7 update 6* (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
 RancherOS 1.5.4 (64-bit x86) | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
 Windows Server 2019 (64-bit x86) | Requires Docker Engine - Enterprise Edition (EE).** 
