@@ -7,17 +7,35 @@ This page describes the requirements for the nodes where your apps and services 
 
 In this section, "user cluster" refers to a cluster running your apps, which should be separate from the cluster (or single node) running Rancher.
 
-> It is important to note that if Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and user clusters have the same requirements for OS and Docker, but other requirements are different. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and user clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
-- Operating systems and Docker requirements - same as the [requirements for Rancher installation]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/#operating-systems-and-docker-requirements)
+- [Operating systems and Docker requirements](#operating-systems-and-docker-requirements)
 - [Hardware Requirements](#hardware-requirements)
 - [Networking Requirements](#networking-requirements)
 
 # Operating Systems and Docker Requirements
 
-For the nodes in user clusters, the requirements for the operating system and Docker version are the same as the [OS and Docker requirements for the Rancher server cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/#operating-systems-and-docker-requirements)
+Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#requirements-for-windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in Rancher v2.3.0.
+
+Rancher works has been tested and is supported with downstream clusters running Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux. For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+
+All supported operating systems are 64-bit x86.
+
+If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
+
+For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
+
+> **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+
+### Requirements for Windows Nodes
+
+_Windows worker nodes can be used as of Rancher v2.3.0_
+
+Nodes with Windows Server must run Docker Enterprise Edition.
+
+Windows nodes can be used for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
 # Hardware Requirements
 
