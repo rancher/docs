@@ -26,9 +26,9 @@ For a list of best practices that we recommend for running the Rancher server in
 
 Rancher should work with any modern Linux distribution and any modern Docker version.
 
-Rancher has been tested with Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
+Rancher has been tested and is supported with Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
 
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
