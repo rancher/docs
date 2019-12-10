@@ -19,7 +19,7 @@ Make sure the nodes for the Rancher server fulfill the following requirements:
 
 Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#requirements-for-windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in Rancher v2.3.0.
 
-Rancher works has been tested with downstream clusters running Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux. For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
+Rancher works has been tested and is supported with downstream clusters running Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux. For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
@@ -33,9 +33,7 @@ For information on how to install Docker, refer to the offical [Docker documenta
 
 _Windows worker nodes can be used as of Rancher v2.3.0_
 
-Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 (1809) or Docker EE-basic 19.03 (1903).
-
-Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
+Nodes with Windows Server must run Docker Enterprise Edition.
 
 Windows nodes can be used for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
