@@ -24,22 +24,15 @@ For a list of best practices that we recommend for running the Rancher server in
 
 # Operating Systems and Docker Requirements
 
-The Rancher server is tested on the following operating systems and their subsequent non-major releases with a supported version of [Docker](https://www.docker.com/).
+Rancher should work with any modern Linux distribution and any modern Docker version.
+
+Rancher has been tested with Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
 
 All supported operating systems are 64-bit x86.
 
-Operating System | Version | Tested Docker Versions
----------------------|----------|----------------
-**CentOS** | 7.5, 7.6, 7.7 | Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
-**Oracle Linux*** | 7.7 | Docker 19.03.x
-**RancherOS** | 1.5.4 | Docker 17.03.2, 18.06.2, 18.09.x (up to 18.09.8), 19.03.x
-**Red Hat Enterprise Linux (RHEL)***  | 7.7 | RHEL Docker 1.13.x, Docker 17.03.2, 18.06.2, 18.09.x, 19.03.x
-**Ubuntu** | 16.04 | Docker 17.03.x, 18.06.x, 18.09.x, 19.03.x
-**Ubuntu** | 18.04 | Docker 18.06.x, 18.09.x, 19.03.x
-
-\* Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+> **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
 
