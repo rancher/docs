@@ -34,7 +34,7 @@ You can upload this snapshot directly to an S3 backend with the [S3 options]({{<
 $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 ```
 
-![etcd snapshot]({{< baseurl >}}/img/rke/rke-etcd-backup.png)
+{{< img "/img/rke/rke-etcd-backup.png" "etcd snapshot" >}}
 
 ### 2. Simulate a Node Failure
 
@@ -133,7 +133,7 @@ Back up the Kubernetes cluster by taking a local snapshot:
 $ rke etcd snapshot-save --name snapshot.db --config cluster.yml
 ```
 
-![etcd snapshot]({{< baseurl >}}/img/rke/rke-etcd-backup.png)
+{{< img "/img/rke/rke-etcd-backup.png" "etcd snapshot" >}}
 
 <a id="store-the-snapshot-externally-rke-prior-to-v0.2.0"></a>
 ### 2. Store the Snapshot Externally

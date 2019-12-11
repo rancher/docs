@@ -22,20 +22,20 @@ The following steps create a role with the required privileges and then assign i
 
 3. Create a new role.  Give it a name and select the privileges listed in the permissions table above.
 
-    ![image]({{< baseurl >}}/img/rancher/rancherroles1.png)
+    {{< img "/img/rancher/rancherroles1.png" "image" >}}
 
 4. Go to the **Users and Groups** tab.
 
 5. Create a new user. Fill out the form and then click **OK**. Make sure to note the username and password, because you will need it when configuring node templates in Rancher.
 
-    ![image]({{< baseurl >}}/img/rancher/rancheruser.png)
+    {{< img "/img/rancher/rancheruser.png" "image" >}}
 
 6. Go to the **Global Permissions** tab.
 
 7. Create a new Global Permission. Add the user you created earlier and assign it the role you created earlier. Click **OK**.
 
-    ![image]({{< baseurl >}}/img/rancher/globalpermissionuser.png)
-
-	![image]({{< baseurl >}}/img/rancher/globalpermissionrole.png)
+    {{< img "/img/rancher/globalpermissionuser.png" "image" >}}
+    
+    {{< img "/img/rancher/globalpermissionrole.png" "image" >}}
 
 **Result:** You now have credentials that Rancher can use to manipulate vSphere resources.

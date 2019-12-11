@@ -17,7 +17,7 @@ To enable disk UUIDs for all VMs created for a cluster,
 
 4. Enter `disk.enableUUID` as key with a value of **TRUE**.
 
-    ![vsphere-nodedriver-enable-uuid]({{< baseurl >}}/img/rke/vsphere-nodedriver-enable-uuid.png)
+    {{< img "/img/rke/vsphere-nodedriver-enable-uuid.png" "vsphere-nodedriver-enable-uuid" >}}
 
 5. Click **Create** or **Save**.
 

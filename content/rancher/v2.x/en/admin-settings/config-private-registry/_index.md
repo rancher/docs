@@ -23,15 +23,15 @@ If your private registry requires credentials, it cannot be used as the default 
 
 1. Go into the **Settings** view.
 
-    ![Settings]({{< baseurl >}}/img/rancher/airgap/settings.png)
+    {{< img "/img/rancher/airgap/settings.png" "Settings" >}}
 
 1. Look for the setting called `system-default-registry` and choose **Edit**.
 
-    ![Edit]({{< baseurl >}}/img/rancher/airgap/edit-system-default-registry.png)
+    {{< img "/img/rancher/airgap/edit-system-default-registry.png" "Edit" >}}
 
 1. Change the value to your registry (e.g. `registry.yourdomain.com:port`). Do not prefix the registry with `http://` or `https://`.
 
-    ![Save]({{< baseurl >}}/img/rancher/airgap/enter-system-default-registry.png)
+    {{< img "/img/rancher/airgap/enter-system-default-registry.png" "Save" >}}
 
 **Result:** Rancher will use your private registry to pull system images.
 
