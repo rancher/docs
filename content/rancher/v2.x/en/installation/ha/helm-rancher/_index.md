@@ -53,26 +53,24 @@ There are three recommended options for the source of the certificate.
 > **Important:**
 > Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
 
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
-These instructions are adapted from the [official cert-manager documentation](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#installing-with-helm).
+These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
 
 1. Install the CustomResourceDefinition resources separately
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
+
+> **Important:**
+> If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false flag to your kubectl apply command above else you will receive a validation error relating to the x-kubernetes-preserve-unknown-fields field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
 
 1. Create the namespace for cert-manager
     ```plain
     kubectl create namespace cert-manager
-    ```
-
-1. Label the cert-manager namespace to disable resource validation
-    ```plain
-    kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
     ```
 
 1. Add the Jetstack Helm repository
@@ -90,7 +88,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm install \
       cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v0.9.1
+      --version v0.12.0 
     ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
@@ -98,13 +96,11 @@ Once you’ve installed cert-manager, you can verify it is deployed correctly by
 ```
 kubectl get pods --namespace cert-manager
 
-NAME                                            READY   STATUS      RESTARTS   AGE
-cert-manager-7cbdc48784-rpgnt                   1/1     Running     0          3m
-cert-manager-webhook-5b5dd6999-kst4x            1/1     Running     0          3m
-cert-manager-cainjector-3ba5cd2bcd-de332x       1/1     Running     0          3m
+NAME                                       READY   STATUS    RESTARTS   AGE
+cert-manager-5c6866597-zw7kh               1/1     Running   0          2m
+cert-manager-cainjector-577f6d9fd7-tr77l   1/1     Running   0          2m
+cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 ```
-
-If the ‘webhook’ pod (2nd line) is in a ContainerCreating state, it may still be waiting for the Secret to be mounted into the pod. Wait a couple of minutes for this to happen but if you experience problems, please check the [troubleshooting](https://docs.cert-manager.io/en/latest/getting-started/troubleshooting.html) guide.
 
 <br/>
 

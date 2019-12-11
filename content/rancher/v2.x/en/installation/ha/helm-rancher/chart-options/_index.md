@@ -29,6 +29,7 @@ weight: 276
 | `auditLog.maxBackups` | 1 | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`) |
 | `auditLog.maxSize` | 100 | `int` - maximum size in megabytes of the audit log file before it gets rotated  (only applies when `auditLog.destination` is set to `hostPath`) |
 | `busyboxImage` | "busybox" | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_ |
+| `certmanager.version` | "" | `string` - set cert-manager compatibility |
 | `debug` | false | `bool` - set debug flag on rancher server |
 | `extraEnv` | [] | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_ |
 | `imagePullSecrets` | [] | `list` - list of names of Secret resource containing private registry credentials |
