@@ -24,11 +24,13 @@ kubectl --kubeconfig /custom/path/kube.config get pods
 
 ## Accessing Rancher Launched Kubernetes clusters without Rancher server running
 
+By default, all Rancher Launched Kubernetes clusters have [Authorized Cluster Endpoint]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled.
+
+> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters)  to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+
 By default, Rancher generates a kubeconfig file that will proxy through the Rancher server to connect to the Kubernetes API server on a cluster.
 
-For [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) clusters, which have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled, Rancher generates extra context(s) in the kubeconfig file in order to connect directly to the cluster.
-
-> **Note:** By default, all Rancher Launched Kubernetes clusters have [Authorized Cluster Endpoint]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) enabled.
+For [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters) clusters that have the authorized cluster endpoint enabled, Rancher generates extra context(s) in the kubeconfig file in order to connect directly to the cluster.
 
 To find the name of the context(s), run:
 
@@ -38,6 +40,9 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
 *         my-cluster                  my-cluster                  user-46tmn
           my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
 ```
+For more information on how the authorized cluster endpoint works, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/4-authorized-cluster-endpoint)
+
+We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
 
 ### Clusters with FQDN defined as an Authorized Cluster Endpoint
 
@@ -65,7 +70,9 @@ kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-<NODE_NAM
 
 ### kube-api-auth
 
-The `kube-api-auth` resource is deployed to provide the functionality for Authorized Cluster Endpoint.
+The `kube-api-auth` resource is deployed to provide the functionality for the [authorized cluster endpoint.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/4-authorized-cluster-endpoint)
+
+The `kube-api-auth` microservice is deployed to provide the user authentication functionality for the authorized cluster endpoint. When you access the user cluster using `kubectl`, the cluster's Kubernetes API server authenticates you by using the `kube-api-auth` service as a webhook.
 
 During cluster provisioning, the file `/etc/kubernetes/kube-api-authn-webhook.yaml` is deployed and `kube-apiserver` is configured with `--authentication-token-webhook-config-file=/etc/kubernetes/kube-api-authn-webhook.yaml`. This configures the `kube-apiserver` to query `http://127.0.0.1:6440/v1/authenticate` to determine authentication for bearer tokens.
 

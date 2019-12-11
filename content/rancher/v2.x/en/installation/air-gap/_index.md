@@ -17,17 +17,14 @@ This section is about installations of Rancher server in an air gapped environme
 
 Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines. If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
 
-{{% tabs %}}
-{{% tab "HA Install" %}}
 
-The following CLI tools are required for the HA install. Make sure these tools are installed on your workstation and available in your `$PATH`.
-
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-* [rke]({{< baseurl >}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
-* [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
-
-{{% /tab %}}
-{{% /tabs %}}
+> **Prerequisites For HA Install Only:**
+>
+> The following CLI tools are required for the HA install. Make sure these tools are installed on your workstation and available in your `$PATH`.
+> 
+> * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+> * [rke]({{< baseurl >}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
+> * [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/helm-version) to choose a version of Helm to install Rancher.
 
 ## Installation Outline
 
