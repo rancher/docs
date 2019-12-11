@@ -3,27 +3,35 @@ title: Choosing an Installation Method
 weight: 2
 ---
 
-Rancher can be installed on a single node or a high-availability cluster. 
+We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased avaialability is achieved by running Rancher on multiple nodes.
 
-A high-availability installation is recommended for production. A single-node installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a high-availability installation from the start.
+For testing and demonstration purposes, Rancher can be installed with Docker on a single node.
 
-The simplest way to install Rancher is on a single node with direct access to the Internet. Other options require more steps. For a high-availability installation, you need to first set up a Kubernetes cluster using the Rancher Kubernetes Engine, then install Rancher on the cluster. If the installation environment is behind an HTTP proxy or in an air gap environment, additional steps are required to work around the lack of direct access to DockerHub and GitHub.
+There are also separate instructions for installing Rancher in an air gap environment or behind an HTTP proxy:
 
-Depending on your environment, the result of of the extra steps is the increased security and reliability of Rancher.
-
-Basic options for installing Rancher include the following:
-
-Level of Internet Access | Single Node Instructions | High-Availability Instructions
+Level of Internet Access | Installing on a Kubernetes Cluster - Strongly Recommended | Installing in a Single Docker Container
 ---------------------------|-----------------------------|------------------
-With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/)                  | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/)
+With direct access to the Internet  | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/)   
 Behind an HTTP proxy  | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/proxy/) | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy)
 In an air gap environment | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/)
 
-The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
+### Why We Recommend an HA Installation
 
-On a single node, Rancher is installed with Docker and many options are configured with Docker commands.
+An HA installation of Rancher is recommended for production because it protects the Rancher management server's data from being lost. A single-node installation may be used for development and testing purposes, but there is no migration path from a single-node to an HA installation. Therefore, you may want to use an HA installation from the start.
 
-On a Kubernetes cluster, Rancher is installed with Helm, and Helm commands are used to pass in configuration options. [Helm]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) is a Kubernetes package manager.
+> For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+
+For more architecture recommendations, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations)
+
+### How an HA Rancher Installation Works
+
+In a typical HA Rancher installation, Kubernetes is first installed on three nodes that are hosted in an infrastructure provider such as Amazon's EC2 or Google Compute Engine.
+
+Then Helm is used to install Rancher on top of the Kubernetes cluster. Helm uses Rancher's Helm chart to install a replica of Rancher on each of the three nodes in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster, in order to increase Rancher's availability.
+
+The Rancher server data is stored on etcd. This etcd database also runs on all three nodes, and requires an odd number of nodes so that it can always elect a leader with a majority of the etcd cluster. If the etcd database cannot elect a leader, etcd can fail, requiring the cluster to be restored from backup.
+
+For information on how Rancher works, regardless of the installation method, refer to the [overview section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture)
 
 # More Options for HA Installations
 
