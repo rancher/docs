@@ -140,7 +140,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     ```
 
 > **Important:**
-> If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false flag to your kubectl apply command above else you will receive a validation error relating to the x-kubernetes-preserve-unknown-fields field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
+> If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false` flag to your kubectl apply command above else you will receive a validation error relating to the x-kubernetes-preserve-unknown-fields field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
 
 1. Create the namespace for cert-manager
     ```plain
