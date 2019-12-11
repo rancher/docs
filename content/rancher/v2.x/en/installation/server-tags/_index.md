@@ -9,8 +9,8 @@ For a high-availability installation of Rancher, which is recommended for produc
 
 For single node installations of Rancher, which is used for development and testing, you will install Rancher as a Docker image.
 
-# Single Node Installs
-
+{{% tabs %}}
+{{% tab "Docker Images for Single Node/Docker Installs" %}}
 When performing [single-node installs]({{< baseurl >}}/rancher/v2.x/en/installation/single-node), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
 ### Server Tags
@@ -29,8 +29,8 @@ Tag                        | Description
 >- Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`).
 >
 >        _Caveat:_ Alpha releases cannot be upgraded to or from any other release.
-
-# High Availability Installs
+{{% /tab %}}
+{{% tab "Helm Charts for HA/Kubernetes Installs" %}}
 
 When installing, upgrading, or rolling back Rancher Server in a [high availability configuration]({{< baseurl >}}/rancher/v2.x/en/installation/ha/), Rancher server is installed using a Helm chart on a Kubernetes cluster. Therefore, as you prepare to install or upgrade a high availability Rancher configuration, you must add a Helm chart repository that contains the charts for installing Rancher.
 
@@ -88,3 +88,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
     ```
 
 4. Continue to follow the steps to [upgrade Rancher]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/) from the new Helm chart repository.
+{{% /tab %}}
+{{% /tabs %}}
+
+
