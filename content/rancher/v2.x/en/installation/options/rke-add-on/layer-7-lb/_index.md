@@ -3,6 +3,7 @@ title: HA Install with External Load Balancer (HTTPS/Layer 7)
 weight: 276
 aliases:
 - /rancher/v2.x/en/installation/ha-server-install-external-lb/
+- /rancher/v2.x/en/installation/ha/rke-add-on/layer-7-lb
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
