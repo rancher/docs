@@ -93,13 +93,12 @@ The load balancer or proxy has to be configured to support the following:
 - **SPDY** / **HTTP/2** protocols
 - Passing / setting the following headers:
 
-  | Header              | Value                           | Description                                                                                                                                                                             |
-  | ------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | `Host`              | Hostname used to reach Rancher. | To identify the server requested by the client.                                                                                                                                         |
-  | `X-Forwarded-Proto` | `https`                         | To identify the protocol that a client used to connect to the load balancer or proxy.<br /><br/>**Note:** If this header is present, `rancher/rancher` does not redirect HTTP to HTTPS. |
-  | `X-Forwarded-Port`  | Port used to reach Rancher.     | To identify the protocol that client used to connect to the load balancer or proxy.                                                                                                     |
-  | `X-Forwarded-For`   | IP of the client connection.    | To identify the originating IP address of a client.                                                                                                                                     |
-
+    | Header | Value | Description |
+    |--------|-------|-------------|
+    | `Host`                | Hostname used to reach Rancher.          | To identify the server requested by the client.
+    | `X-Forwarded-Proto`   | `https`                                  | To identify the protocol that a client used to connect to the load balancer or proxy.<br /><br/>**Note:** If this header is present, `rancher/rancher` does not redirect HTTP to HTTPS.
+    | `X-Forwarded-Port`    | Port used to reach Rancher.              | To identify the protocol that client used to connect to the load balancer or proxy.
+    | `X-Forwarded-For`     | IP of the client connection.             | To identify the originating IP address of a client.
 ### Example Nginx configuration
 
 This NGINX configuration is tested on NGINX 1.14.

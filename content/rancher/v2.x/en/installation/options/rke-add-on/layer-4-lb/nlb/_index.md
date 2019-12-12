@@ -3,6 +3,7 @@ title: Amazon NLB Configuration
 weight: 277
 aliases:
 - /rancher/v2.x/en/installation/ha-server-install/nlb/
+- /rancher/v2.x/en/installation/ha/rke-add-on/layer-4-lb/nlb
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

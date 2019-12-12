@@ -3,6 +3,7 @@ title: NGINX Configuration
 weight: 277
 aliases:
 - /rancher/v2.x/en/installation/ha-server-install-external-lb/nginx/
+- /rancher/v2.x/en/installation/ha/rke-add-on/layer-7-lb/nginx
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

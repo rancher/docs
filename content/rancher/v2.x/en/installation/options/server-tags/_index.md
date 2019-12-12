@@ -1,6 +1,8 @@
 ---
 title: Choosing a Rancher Version
 weight: 230
+aliases:
+ - /rancher/v2.x/en/installation/server-tags
 ---
 
 This section describes how to choose a Rancher version.
