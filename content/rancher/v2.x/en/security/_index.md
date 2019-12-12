@@ -34,10 +34,19 @@ The benchmark self-assessment is a companion to the Rancher security hardening g
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters.  The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
 
-* [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
-* [CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-0-rancher-2-2-x-with-kubernetes-1-13/)
-* [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
-* [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-x-with-kubernetes-1-15)
+- [CIS Kubernetes Benchmark 1.3.0 - Rancher 2.1.x with Kubernetes 1.11]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/)
+- [CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-0-rancher-2-2-x-with-kubernetes-1-13/)
+- [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
+- [CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.x with Kubernetes 1.15]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-x-with-kubernetes-1-15)
+
+### Third Party Pen Test Reports
+
+Rancher periodically hires third parties to perform security audits and penetration tests of the Rancher 2.x software stack. The environments under test follow the Rancher provided hardening guides at the time of the testing. Results are posted when the third party has also verified fixes classified MEDIUM or above.
+
+Results:
+
+- [Cure53 Pen Test - 7/2019](https://relesases.rancher.com/documents/security/pen-tests/2019/RAN-01-cure53-report.final.pdf)
+- [Untamed Theory Pen Test- 3/2019](https://relesases.rancher.com/documents/security/pen-tests/2019/UntamedTheory-Rancher_SecurityAssessment-20190712_v5.pdf)
 
 ### Rancher CVEs and Resolutions
 
