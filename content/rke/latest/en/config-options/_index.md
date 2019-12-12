@@ -25,6 +25,7 @@ There are several options that can be configured in cluster configuration option
 * [External Etcd]({{< baseurl >}}/rke/latest/en/config-options/services/external-etcd/)
 * [Authentication]({{< baseurl >}}/rke/latest/en/config-options/authentication/)
 * [Authorization]({{< baseurl >}}/rke/latest/en/config-options/authorization/)
+* [Rate Limiting]({{<baseurl>}}/rke/latest/en/config-options/rate-limiting/)
 * [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/)
 * [Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/)
   * [Network Plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
