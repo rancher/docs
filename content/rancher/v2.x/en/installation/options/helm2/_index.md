@@ -1,7 +1,13 @@
 ---
-title: High Availability (HA) Install
-weight: 275
+title: HA Installation Using Helm 2
+weight: 1
 ---
+
+> After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.
+>
+> If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
+>
+> This section provides a copy of the older high-availability (HA) Rancher installation instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.
 
@@ -9,9 +15,9 @@ This procedure walks you through setting up a 3-node cluster with Rancher Kubern
 
 > **Important:** The Rancher management server can only be run on an RKE-managed Kubernetes cluster. Use of Rancher on hosted Kubernetes or other providers is not supported.
 
-> **Important:** For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+> **Important:** For the best performance, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
-We recommend the following architecture and configurations for the load balancer and Ingress controllers:
+## Recommended Architecture
 
 - DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
 - The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
@@ -34,12 +40,12 @@ The following CLI tools are required for this install. Please make sure these to
 
 - [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
 - [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
+- [Initialize Helm (tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
 - [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
 
 ## Additional Install Options
 
 - [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/)
-- [Installing Rancher with Helm 2:]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) This section provides a copy of the older high-availability Rancher installation instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 ## Previous Methods
 
