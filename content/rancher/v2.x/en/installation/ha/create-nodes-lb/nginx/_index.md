@@ -1,10 +1,11 @@
 ---
-title: NGINX
+title: Setting up an NGINX Load Balancer
 weight: 270
 ---
+
 NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.
 
->**Note:**
+> **Note:**
 > In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host capable of running NGINX.
 >
 > One caveat: do not use one of your Rancher nodes as the load balancer.
@@ -19,11 +20,11 @@ The `stream` module is required, which is present when using the official NGINX 
 
 After installing NGINX, you need to update the NGINX configuration file, `nginx.conf`, with the IP addresses for your nodes.
 
-1. Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
+1.  Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
 
-2. From `nginx.conf`, replace both occurences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
+2.  From `nginx.conf`, replace both occurences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
 
-    >**Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
+    > **Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
 
     <figcaption>Example NGINX config</figcaption>
     ```
@@ -31,20 +32,20 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
     worker_rlimit_nofile 40000;
 
     events {
-        worker_connections 8192;
+    worker_connections 8192;
     }
 
     stream {
-        upstream rancher_servers_http {
-            least_conn;
-            server <IP_NODE_1>:80 max_fails=3 fail_timeout=5s;
-            server <IP_NODE_2>:80 max_fails=3 fail_timeout=5s;
-            server <IP_NODE_3>:80 max_fails=3 fail_timeout=5s;
-        }
-        server {
-            listen     80;
-            proxy_pass rancher_servers_http;
-        }
+    upstream rancher_servers_http {
+    least_conn;
+    server <IP_NODE_1>:80 max_fails=3 fail_timeout=5s;
+    server <IP_NODE_2>:80 max_fails=3 fail_timeout=5s;
+    server <IP_NODE_3>:80 max_fails=3 fail_timeout=5s;
+    }
+    server {
+    listen 80;
+    proxy_pass rancher_servers_http;
+    }
 
         upstream rancher_servers_https {
             least_conn;
@@ -56,12 +57,16 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
             listen     443;
             proxy_pass rancher_servers_https;
         }
+
     }
+
     ```
 
-3. Save `nginx.conf` to your load balancer at the following path: `/etc/nginx/nginx.conf`.
+    ```
 
-4. Load the updates to your NGINX configuration by running the following command:
+3.  Save `nginx.conf` to your load balancer at the following path: `/etc/nginx/nginx.conf`.
+
+4.  Load the updates to your NGINX configuration by running the following command:
 
     ```
     # nginx -s reload

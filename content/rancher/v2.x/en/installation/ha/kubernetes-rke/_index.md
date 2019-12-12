@@ -1,33 +1,32 @@
 ---
-title: "2. Install Kubernetes with RKE"
+title: '2. Install Kubernetes with RKE'
 weight: 190
 ---
 
-Use RKE to install Kubernetes with a high availability etcd configuration.
+Use RKE to install a Kubernetes cluster on your three nodes using a high-availability etcd configuration.
 
->**Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/) for install details.
+For systems without direct internet access, refer to [Air Gap: High Availability Install.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
 ### Create the `rancher-cluster.yml` File
 
-Using the sample below create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
+Using the sample below, create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
 
-> **Note:**  If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication.  Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
-
+> If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication. Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 ```yaml
 nodes:
   - address: 165.227.114.63
     internal_address: 172.16.22.12
     user: ubuntu
-    role: [controlplane,worker,etcd]
+    role: [controlplane, worker, etcd]
   - address: 165.227.116.167
     internal_address: 172.16.32.37
     user: ubuntu
-    role: [controlplane,worker,etcd]
+    role: [controlplane, worker, etcd]
   - address: 165.227.127.226
     internal_address: 172.16.42.73
     user: ubuntu
-    role: [controlplane,worker,etcd]
+    role: [controlplane, worker, etcd]
 
 services:
   etcd:
@@ -38,13 +37,13 @@ services:
 
 #### Common RKE Nodes Options
 
-| Option | Required | Description |
-| --- | --- | --- |
-| `address` | yes | The public DNS or IP address |
-| `user` | yes | A user that can run docker commands |
-| `role` | yes | List of Kubernetes roles assigned to the node |
-| `internal_address` | no | The private DNS or IP address for internal cluster traffic |
-| `ssh_key_path` | no | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`) |
+| Option             | Required | Description                                                                            |
+| ------------------ | -------- | -------------------------------------------------------------------------------------- |
+| `address`          | yes      | The public DNS or IP address                                                           |
+| `user`             | yes      | A user that can run docker commands                                                    |
+| `role`             | yes      | List of Kubernetes roles assigned to the node                                          |
+| `internal_address` | no       | The private DNS or IP address for internal cluster traffic                             |
+| `ssh_key_path`     | no       | Path to SSH private key used to authenticate to the node (defaults to `~/.ssh/id_rsa`) |
 
 #### Advanced Configurations
 
@@ -89,9 +88,9 @@ NAME                          STATUS    ROLES                      AGE       VER
 
 Check that all the required pods and containers are healthy are ready to continue.
 
-* Pods are in `Running` or `Completed` state.
-* `READY` column shows all the containers are running (i.e. `3/3`) for pods with `STATUS` `Running`
-* Pods with `STATUS` `Completed` are run-once Jobs. For these pods `READY` should be `0/1`.
+- Pods are in `Running` or `Completed` state.
+- `READY` column shows all the containers are running (i.e. `3/3`) for pods with `STATUS` `Running`
+- Pods with `STATUS` `Completed` are run-once Jobs. For these pods `READY` should be `0/1`.
 
 ```
 kubectl get pods --all-namespaces

@@ -23,7 +23,7 @@ Rancher works has been tested and is supported with downstream clusters running 
 
 All supported operating systems are 64-bit x86.
 
-If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
+If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/) 
 
 For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
 
