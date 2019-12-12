@@ -1,6 +1,8 @@
 ---
 title: HTTP Proxy Configuration
 weight: 277
+aliases:
+ - /rancher/v2.x/en/installation/ha/rke-add-on/proxy
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
