@@ -18,7 +18,6 @@ The following configuration in the `cluster.yml` can be used to enable the event
 ```yaml
 services:
   kube-api:
-    service_cluster_ip_range: 10.44.0.0/24
     event_rate_limit:
       enabled: true
 ```
@@ -43,7 +42,6 @@ To customize the event rate limit, the entire Kubernetes resource for the config
 ```yaml
 services:
   kube-api:
-    service_cluster_ip_range: 10.44.0.0/24
     event_rate_limit:
       enabled: true
       configuration:
