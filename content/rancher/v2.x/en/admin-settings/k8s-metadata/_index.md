@@ -66,6 +66,6 @@ After new Kubernetes versions are loaded into the Rancher setup, additional step
 1. To download the system images for the private registry, click the Rancher server version at the bottom left corner of the Rancher UI.
 1. Download the OS specific image lists for Linux or Windows.
 1. Download `rancher-images.txt`.
-1. Prepare the private registry using the same steps during the [air gap install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/populate-private-registry), but instead of using the `rancher-images.txt` from the releases page, use the one obtained from the previous steps.
+1. Prepare the private registry using the same steps during the [air gap install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry), but instead of using the `rancher-images.txt` from the releases page, use the one obtained from the previous steps.
 
 **Result:** The air gap installation of Rancher can now sync the Kubernetes metadata. If you update your private registry when new versions of Kubernetes are released, you can provision clusters with the new version without having to upgrade Rancher.

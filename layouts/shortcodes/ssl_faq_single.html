@@ -2,9 +2,9 @@
 
 <p>You can recognize the PEM format by the following traits:</p>
 <ul>
-	<li>The file begins with the following header:<br/> <code>-----BEGIN CERTIFICATE-----</code></li>
-	<li>The header is followed by a long string of characters. Like, really long.</li>
-	<li>The file ends with a footer:<br/> <code>-----END CERTIFICATE-----</code></li>
+  <li>The file begins with the following header:<br /> <code>-----BEGIN CERTIFICATE-----</code></li>
+  <li>The header is followed by a long string of characters. Like, really long.</li>
+  <li>The file ends with a footer:<br /> <code>-----END CERTIFICATE-----</code></li>
 </ul>
 
 <p><strong>PEM Certificate Example:</strong></p>
@@ -27,9 +27,11 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 -----END RSA PRIVATE KEY-----
 </pre>
 
-<p>If your key looks like the example below, see <a href="#convert-pkcs8">How Can I Convert My Certificate Key From PKCS8 to PKCS1?</a><p>
+<p>If your key looks like the example below, see <a href="#convert-pkcs8">How Can I Convert My Certificate Key From
+    PKCS8 to PKCS1?</a>
+  <p>
 
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 -----BEGIN PRIVATE KEY-----
 MIIGVDCCBDygAwIBAgIJAMiIrEm29kRLMA0GCSqGSIb3DQEBCwUAMHkxCzAJBgNV
 ... more lines
@@ -37,27 +39,27 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 -----END PRIVATE KEY-----
 </pre>
 
-<h3 id="convert-pkcs8">How Can I Convert My Certificate Key From PKCS8 to PKCS1?</h3>
+    <h3 id="convert-pkcs8">How Can I Convert My Certificate Key From PKCS8 to PKCS1?</h3>
 
-<p>If you are using a PKCS8 certificate key file, Rancher will log the following line:</p>
+    <p>If you are using a PKCS8 certificate key file, Rancher will log the following line:</p>
 
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 ListenConfigController cli-config [listener] failed with : failed to read private key: asn1: structure error: tags don't match (2 vs {class:0 tag:16 length:13 isCompound:true})
 </pre>
 
-<p>To make this work, you will need to convert the key from PKCS8 to PKCS1 using the command below:</p>
+    <p>To make this work, you will need to convert the key from PKCS8 to PKCS1 using the command below:</p>
 
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 openssl rsa -in key.pem -out convertedkey.pem
 </pre>
 
-<p>You can now use <code>convertedkey.pem</code> as certificate key file for Rancher.</p>
+    <p>You can now use <code>convertedkey.pem</code> as certificate key file for Rancher.</p>
 
-<h3 id="cert-order">What is the Order of Certificates if I Want to Add My Intermediate(s)?</h3>
+    <h3 id="cert-order">What is the Order of Certificates if I Want to Add My Intermediate(s)?</h3>
 
-<p>The order of adding certificates is as follows:</p>
+    <p>The order of adding certificates is as follows:</p>
 
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 -----BEGIN CERTIFICATE-----
 %YOUR_CERTIFICATE%
 -----END CERTIFICATE-----
@@ -66,12 +68,16 @@ openssl rsa -in key.pem -out convertedkey.pem
 -----END CERTIFICATE-----
 </pre>
 
-<h3 id="validate-cert-chain">How Do I Validate My Certificate Chain?</h3>
+    <h3 id="validate-cert-chain">How Do I Validate My Certificate Chain?</h3>
 
-<p>You can validate the certificate chain by using the <code>openssl</code> binary. If the output of the command (see the command example below) ends with <code>Verify return code: 0 (ok)</code>, your certificate chain is valid. The <code>ca.pem</code> file must be the same as you added to the <code>rancher/rancher</code> container. When using a certificate signed by a recognized Certificate Authority, you can omit the <code>-CAfile</code> parameter.</p>
+    <p>You can validate the certificate chain by using the <code>openssl</code> binary. If the output of the command
+      (see the command example below) ends with <code>Verify return code: 0 (ok)</code>, your certificate chain is
+      valid. The <code>ca.pem</code> file must be the same as you added to the <code>rancher/rancher</code> container.
+      When using a certificate signed by a recognized Certificate Authority, you can omit the <code>-CAfile</code>
+      parameter.</p>
 
-<h5>Command:</h5>
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+    <p>Command:</p>
+    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 openssl s_client -CAfile ca.pem -connect rancher.yourdomain.com:443
 ...
     Verify return code: 0 (ok)

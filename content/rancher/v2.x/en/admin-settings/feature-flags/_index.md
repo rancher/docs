@@ -2,6 +2,7 @@
 title: Enabling Experimental Features
 weight: 8000
 ---
+
 _Available as of v2.3.0_
 
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
@@ -30,11 +31,11 @@ The following is a list of the feature flags available in Rancher:
 
 The below table shows the availability and default value for feature flags in Rancher:
 
-Feature Flag Name | Default Value | Status | Available as of |
----|---|---|---
-`unsupported-storage-drivers` | `false` | Experimental | v2.3.0
-`istio-virtual-service-ui` | `false` | Experimental | v2.3.0
-`istio-virtual-service-ui` | `true` | GA | v2.3.2
+| Feature Flag Name             | Default Value | Status       | Available as of |
+| ----------------------------- | ------------- | ------------ | --------------- |
+| `unsupported-storage-drivers` | `false`       | Experimental | v2.3.0          |
+| `istio-virtual-service-ui`    | `false`       | Experimental | v2.3.0          |
+| `istio-virtual-service-ui`    | `true`        | GA           | v2.3.2          |
 
 # Enabling Features when Starting Rancher
 
@@ -45,6 +46,7 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 {{% tabs %}}
 {{% tab "HA Install" %}}
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
+
 ```
 helm install rancher-latest/rancher \
   --name rancher \
@@ -56,9 +58,10 @@ helm install rancher-latest/rancher \
 
 ### Rendering the Helm Chart for Air Gap Installations
 
-For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap/install-rancher)
+For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher)
 
 Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
+
 ```
 helm template ./rancher-<VERSION>.tgz --output-dir . \
   --name rancher \
@@ -71,15 +74,18 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
+
 {{% /tab %}}
 {{% tab "Single Node Install" %}}
 When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
+
 ```
 docker run -d -p 80:80 -p 443:443 \
   --restart=unless-stopped \
   rancher/rancher:rancher-latest \
   --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-NAME-2>=true # Available as of v2.3.0
 ```
+
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -100,7 +106,6 @@ _Available as of Rancher v2.3.3_
 1. To disable a feature, go to the enabled feature you want to disable and click **Ellipsis (...) > Deactivate.**
 
 **Result:** The feature is disabled.
-
 
 # Enabling Features with the Rancher API
 

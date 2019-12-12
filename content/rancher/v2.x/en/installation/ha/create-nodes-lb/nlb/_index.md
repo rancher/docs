@@ -1,22 +1,23 @@
 ---
-title: Amazon NLB
+title: Setting up an Amazon NLB Load Balancer
 weight: 277
 ---
+
 ## Objectives
 
 Configuring an Amazon NLB is a multistage process. We've broken it down into multiple tasks so that it's easy to follow.
 
 1. [Create Target Groups](#create-target-groups)
 
-	Begin by creating two target groups for the **TCP** protocol, one regarding TCP port 443 and one regarding TCP port 80 (providing redirect to TCP port 443). You'll add your Linux nodes to these groups.
+   Begin by creating two target groups for the **TCP** protocol, one regarding TCP port 443 and one regarding TCP port 80 (providing redirect to TCP port 443). You'll add your Linux nodes to these groups.
 
 2. [Register Targets](#register-targets)
 
-	Add your Linux nodes to the target groups.
+   Add your Linux nodes to the target groups.
 
 3. [Create Your NLB](#create-your-nlb)
 
-	Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in **1. Create Target Groups**.
+   Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in **1. Create Target Groups**.
 
 > **Note:** Rancher only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ELB or ALB.
 
@@ -36,21 +37,21 @@ Click **Create target group** to create the first target group, regarding TCP po
 
 Configure the first target group according to the table below. Screenshots of the configuration are shown just below the table.
 
-Option                                | Setting
---------------------------------------|------------------------------------
-Target Group Name                     | `rancher-tcp-443`
-Protocol                              | `TCP`
-Port                                  | `443`
-Target type                           | `instance`
-VPC                                   | Choose your VPC
-Protocol<br/>(Health Check)           | `HTTP`
-Path<br/>(Health Check)               | `/healthz`
-Port (Advanced health check)          | `override`,`80`
-Healthy threshold (Advanced health)   | `3`
-Unhealthy threshold (Advanced)        | `3`
-Timeout (Advanced)                    | `6 seconds`
-Interval (Advanced)                   | `10 second`
-Success codes                         | `200-399`
+| Option                              | Setting           |
+| ----------------------------------- | ----------------- |
+| Target Group Name                   | `rancher-tcp-443` |
+| Protocol                            | `TCP`             |
+| Port                                | `443`             |
+| Target type                         | `instance`        |
+| VPC                                 | Choose your VPC   |
+| Protocol<br/>(Health Check)         | `HTTP`            |
+| Path<br/>(Health Check)             | `/healthz`        |
+| Port (Advanced health check)        | `override`,`80`   |
+| Healthy threshold (Advanced health) | `3`               |
+| Unhealthy threshold (Advanced)      | `3`               |
+| Timeout (Advanced)                  | `6 seconds`       |
+| Interval (Advanced)                 | `10 second`       |
+| Success codes                       | `200-399`         |
 
 <hr>
 **Screenshot Target group TCP port 443 settings**<br/>
@@ -68,21 +69,21 @@ Click **Create target group** to create the second target group, regarding TCP p
 
 Configure the second target group according to the table below. Screenshots of the configuration are shown just below the table.
 
-Option                                | Setting
---------------------------------------|------------------------------------
-Target Group Name                     | `rancher-tcp-80`
-Protocol                              | `TCP`
-Port                                  | `80`
-Target type                           | `instance`
-VPC                                   | Choose your VPC
-Protocol<br/>(Health Check)           | `HTTP`
-Path<br/>(Health Check)               | `/healthz`
-Port (Advanced health check)          | `traffic port`
-Healthy threshold (Advanced health)   | `3`
-Unhealthy threshold (Advanced)        | `3`
-Timeout (Advanced)                    | `6 seconds`
-Interval (Advanced)                   | `10 second`
-Success codes                         | `200-399`
+| Option                              | Setting          |
+| ----------------------------------- | ---------------- |
+| Target Group Name                   | `rancher-tcp-80` |
+| Protocol                            | `TCP`            |
+| Port                                | `80`             |
+| Target type                         | `instance`       |
+| VPC                                 | Choose your VPC  |
+| Protocol<br/>(Health Check)         | `HTTP`           |
+| Path<br/>(Health Check)             | `/healthz`       |
+| Port (Advanced health check)        | `traffic port`   |
+| Healthy threshold (Advanced health) | `3`              |
+| Unhealthy threshold (Advanced)      | `3`              |
+| Timeout (Advanced)                  | `6 seconds`      |
+| Interval (Advanced)                 | `10 second`      |
+| Success codes                       | `200-399`        |
 
 <hr>
 **Screenshot Target group TCP port 80 settings**<br/>
@@ -122,43 +123,45 @@ Repeat those steps, replacing **rancher-tcp-443** with **rancher-tcp-80**. The s
 
 Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in [Create Target Groups](#create-target-groups).
 
-1. From your web browser, navigate to the [Amazon EC2 Console](https://console.aws.amazon.com/ec2/).
+1.  From your web browser, navigate to the [Amazon EC2 Console](https://console.aws.amazon.com/ec2/).
 
-2. From the navigation pane, choose **LOAD BALANCING** > **Load Balancers**.
+2.  From the navigation pane, choose **LOAD BALANCING** > **Load Balancers**.
 
-3. Click **Create Load Balancer**.
+3.  Click **Create Load Balancer**.
 
-4. Choose **Network Load Balancer** and click **Create**.
+4.  Choose **Network Load Balancer** and click **Create**.
 
-5. Complete the **Step 1: Configure Load Balancer** form.
-	- **Basic Configuration**
+5.  Complete the **Step 1: Configure Load Balancer** form.
 
-	   - Name: `rancher`
-	   - Scheme: `internal` or `internet-facing`
-	   
-	     The Scheme that you choose for your NLB is dependent on the configuration of your instances/VPC. If your instances do not have public IPs associated with them, or you will only be accessing Rancher internally, you should set your NLB Scheme to `internal` rather than `internet-facing`. 
-	- **Listeners**
+    - **Basic Configuration**
 
-		Add the **Load Balancer Protocols** and **Load Balancer Ports** below.
-		- `TCP`: `443`
+      - Name: `rancher`
+      - Scheme: `internal` or `internet-facing`
 
-	- **Availability Zones**
+        The Scheme that you choose for your NLB is dependent on the configuration of your instances/VPC. If your instances do not have public IPs associated with them, or you will only be accessing Rancher internally, you should set your NLB Scheme to `internal` rather than `internet-facing`.
 
-	   - Select Your **VPC** and **Availability Zones**.
+    - **Listeners**
 
-6. Complete the **Step 2: Configure Routing** form.
+          	Add the **Load Balancer Protocols** and **Load Balancer Ports** below.
+          	- `TCP`: `443`
 
-	- From the **Target Group** drop-down, choose **Existing target group**.
+    - **Availability Zones**
 
-	- From the **Name** drop-down, choose `rancher-tcp-443`.
+      - Select Your **VPC** and **Availability Zones**.
 
-	- Open **Advanced health check settings**, and configure **Interval** to `10 seconds`.
+6.  Complete the **Step 2: Configure Routing** form.
 
-7. Complete **Step 3: Register Targets**. Since you registered your targets earlier, all you have to do is click **Next: Review**.
+    - From the **Target Group** drop-down, choose **Existing target group**.
 
-8. Complete **Step 4: Review**. Look over the load balancer details and click **Create** when you're satisfied.
+    - From the **Name** drop-down, choose `rancher-tcp-443`.
 
-9. After AWS creates the NLB, click **Close**.
+    - Open **Advanced health check settings**, and configure **Interval** to `10 seconds`.
+
+7.  Complete **Step 3: Register Targets**. Since you registered your targets earlier, all you have to do is click **Next: Review**.
+
+8.  Complete **Step 4: Review**. Look over the load balancer details and click **Create** when you're satisfied.
+
+9.  After AWS creates the NLB, click **Close**.
 
 ## Add listener to NLB for TCP port 80
 

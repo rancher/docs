@@ -13,9 +13,9 @@ The following instructions will guide you through upgrading a high-availability 
 
 - **Review the [Known Upgrade Issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
 
-- **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/) Collect and Populate Images for the new Rancher server version**
+- **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) Collect and Populate Images for the new Rancher server version**
 
-    Follow the guide to [populate your private registry]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+    Follow the guide to [populate your private registry]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 ## Placeholder Review
 
@@ -99,7 +99,7 @@ Get the options set from your current Rancher install
 
     Placeholder | Description
     ------------|-------------
-    `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+    `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
     ```
     docker pull rancher/rancher:<RANCHER_VERSION_TAG>
@@ -113,7 +113,7 @@ Get the options set from your current Rancher install
 
     >**Did you...**
     >
-    >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/proxy/)
+    >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-nodeproxy/)
     >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
     >- Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
     >
@@ -134,7 +134,7 @@ If you have selected to use the Rancher generated self-signed certificate, you a
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -149,7 +149,7 @@ docker run -d --volumes-from rancher-data \
 
 If you have selected to bring your own self-signed certificate, you add the `--volumes-from rancher-data` to the command that you had started your original Rancher server container and need to have access to the same certificate that you had originally installed with.
 
->**Reminder of the Cert Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem). In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
+>**Reminder of the Cert Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem). In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 Placeholder | Description
 ------------|-------------
@@ -157,7 +157,7 @@ Placeholder | Description
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<CA_CERTS>` | The path to the certificate authority's private key.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -174,14 +174,14 @@ docker run -d --volumes-from rancher-data \
 
 If you have selected to use a certificate signed by a recognized CA, you add the `--volumes-from rancher-data` to the command that you had started your original Rancher server container and need to have access to the same certificates that you had originally installed with. Remember to include `--no-cacerts` as an argument to the container to disable the default CA certificate generated by Rancher.
 
->**Reminder of the Cert Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem). In your certificate file, include all intermediate certificates provided by the recognized CA. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
+>**Reminder of the Cert Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem). In your certificate file, include all intermediate certificates provided by the recognized CA. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 Placeholder | Description
 ------------|-------------
 `<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -206,7 +206,7 @@ If you have selected to use [Let's Encrypt](https://letsencrypt.org/) certificat
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 `<YOUR.DNS.NAME>` | The domain address that you had originally started with
 
 ```
@@ -227,7 +227,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >**Did you...**
 >
 >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
->- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#api-audit-log).
+>- Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#api-audit-log).
 
  - For Rancher versions from v2.2.0 to v2.2.x, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
@@ -240,7 +240,7 @@ If you have selected to use the Rancher generated self-signed certificate, you a
 Placeholder | Description
 ------------|-------------
 `<REGISTRY.YOURDOMAIN.COM:PORT>` |  Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to to upgrade to.
 
 ```
   docker run -d --volumes-from rancher-data \
@@ -256,7 +256,7 @@ Placeholder | Description
 
 If you have selected to bring your own self-signed certificate, you add the `--volumes-from rancher-data` to the command that you had started your original Rancher server container and need to have access to the same certificate that you had originally installed with.
 
->**Reminder of the Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem). In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
+>**Reminder of the Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem). In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 Placeholder | Description
 ------------|-------------
@@ -265,7 +265,7 @@ Placeholder | Description
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<CA_CERTS>` | The path to the certificate authority's private key.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --restart=unless-stopped \
@@ -283,7 +283,7 @@ docker run -d --restart=unless-stopped \
 
 If you have selected to use a certificate signed by a recognized CA, you add the `--volumes-from rancher-data` to the command that you had started your original Rancher server container and need to have access to the same certificates that you had originally installed with.
 
- >**Reminder of the Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#pem). In your certificate file, include all intermediate certificates provided by the recognized CA. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
+ >**Reminder of the Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem). In your certificate file, include all intermediate certificates provided by the recognized CA. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting](#cert-order).
 
 Placeholder | Description
 ------------|-------------
@@ -291,7 +291,7 @@ Placeholder | Description
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 > **Note:**  Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
 

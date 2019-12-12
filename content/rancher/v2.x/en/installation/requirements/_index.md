@@ -34,7 +34,7 @@ All supported operating systems are 64-bit x86.
 
 > **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/arm64-platform/) 
+If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
 
 For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
 
@@ -51,9 +51,9 @@ For production environments, the Rancher server should be installed on an HA clu
 Rancher can also be installed on a single node in a development or testing environment.
 
 {{% tabs %}}
-{{% tab "HA Node Requirements" %}} 
+{{% tab "HA Node Requirements" %}}
 
-These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/)  of Rancher.
+These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) of Rancher.
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
@@ -66,7 +66,7 @@ These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/ins
 {{% /tab %}}
 {{% tab "Single Node Requirements" %}}
 
-These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/single-node/) installations of Rancher.
+These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) installations of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
@@ -110,19 +110,19 @@ The following tables break down the port requirements for inbound and outbound t
 
 <figcaption>Inbound Rules for Rancher Nodes</figcaption>
 
-| Protocol | Port | Source | Description |
-|------------|-------|---------|----------------|
-| TCP | 80 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used |
-| TCP | 443 | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl |
+| Protocol | Port | Source                                                                                                                                                                                | Description                                          |
+| -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
+| TCP      | 443  | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
 
 <figcaption>Outbound Rules for Rancher Nodes</figcaption>
 
-| Protocol | Port | Source | Description |
-|------------|-------|---------|----------------|
-| TCP | 22 | Any node IP from a node created using Node Driver | SSH provisioning of nodes using Node Driver |
-| TCP | 443 |  `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs) |
-| TCP | 2376 | Any node IP from a node created using Node driver | Docker daemon TLS port used by Docker Machine |
-| TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
+| Protocol | Port | Source                                                   | Description                                   |
+| -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
+| TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
+| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
+| TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
+| TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
 **Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 

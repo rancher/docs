@@ -17,7 +17,7 @@ Upgrading from v2.0.13 or earlier  | If your cluster's certificates have expired
 Upgrading from v2.0.7 or earlier | Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
 
 ### Caveats
-Upgrades _to_ or _from_ any chart in the [rancher-alpha repository]({{< baseurl >}}/rancher/v2.x/en/installation/server-tags/#helm-chart-repositories/) aren't supported.
+Upgrades _to_ or _from_ any chart in the [rancher-alpha repository]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories/) aren't supported.
 
 ### RKE Add-on Installs
 
