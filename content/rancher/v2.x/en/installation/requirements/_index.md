@@ -128,6 +128,6 @@ The following tables break down the port requirements for inbound and outbound t
 
 ### Additional Port Requirements for Nodes in High-Availability Rancher Installations
 
-You will need to open additional ports to the launch the Kubernetes cluster that is required for a high-availability installation of Rancher.
+You will need to open additional ports to launch the Kubernetes cluster that are required for a high-availability installation of Rancher.
 
 The ports that need to be opened for each node depend on the node's Kubernetes role: etcd, controlplane, or worker. For a breakdown of the port requirements for each role, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
