@@ -1,3 +1,4 @@
+{{ if not .Lastmod.IsZero }}Last updated on {{ .Lastmod.Format "Jan 2, 2006" }}{{ end }}
 <div class="buttons-container">
     <a href="{{.Site.Params.ghdocsrepo}}/edit/master/content/{{.File.Path}}" class="btn bg-link">
         <button class="button has-icon-right">
