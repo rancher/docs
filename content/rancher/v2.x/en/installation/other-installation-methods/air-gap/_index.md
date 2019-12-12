@@ -11,7 +11,7 @@ This section is about installations of Rancher server in an air gapped environme
 
 ### Air Gapped High Availability (HA) Installations
 
-Rancher recommends installing Rancher in a Highly Available (HA) configuration in an air gapped environment.
+This section covers how to install Rancher in a Highly Available (HA) configuration in an air gapped environment.
 
 An HA installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
