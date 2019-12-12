@@ -48,7 +48,9 @@ The default values for the audit log should be displayed:
 
 ```
 
-To customize the audit log, use the `configuration` directive:
+To customize the audit log, the `configuration` directive is used.
+
+A rules policy is passed to kube-apiserver using the `--audit-policy-file` or the `policy` directive in the `cluster.yml`. Below is an example `cluster.yml` with custom values and an audit log policy nested under the `configuration` directive. This example audit log policy is taken from the official [Kubernetes documentation:](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy)
 
 ```yaml
 services:
