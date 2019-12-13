@@ -135,12 +135,12 @@ In the **Scheduling** section, enter:
 
 ### C. Configure Instances and Operating Systems
 
-Depending on the Rancher version there are different options available to configure the instances in the node template.
+Depending on the Rancher version there are different options available to configure instances.
 
 {{% tabs %}}
 {{% tab "Rancher v2.3.3+" %}}
 
-In the **Instance Options**section, configure the number of vCPUs, memory, and disk size for the VMs created by this template.
+In the **Instance Options** section, configure the number of vCPUs, memory, and disk size for the VMs created by this template.
 
 In the **Creation method** field, configure the method used to provision VMs in vSphere. Available options include creating VMs that boot from a RancherOS ISO or creating VMs by cloning from an existing virtual machine or [VM template](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-F7BF0E6B-7C4F-4E46-8BBF-76229AEA7220.html).
 
