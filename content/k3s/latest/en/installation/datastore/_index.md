@@ -80,14 +80,14 @@ The above assumes a typical three node etcd cluster. The parameter can accept on
 {{% /tab %}}
 {{% /tabs %}}
 
-<br/>Based on the above, the following example command could be used to launch a server instance that connects to a PostgresSQL database named k3s-db:
+<br/>Based on the above, the following example command could be used to launch a server instance that connects to a PostgresSQL database named k3s:
 ```
-K3S_DATASTORE_ENDPOINT='postgres://username:password@hostname:5432/k3s-db' k3s server
+K3S_DATASTORE_ENDPOINT='postgres://username:password@hostname:5432/k3s' k3s server
 ```
 
 And the following example could be used to connect to a MySQL database using client certificate authentication:
 ```
-K3S_DATASTORE_ENDPOINT='mysql://username:password@tcp(hostname:3306)/k3s-db' \
+K3S_DATASTORE_ENDPOINT='mysql://username:password@tcp(hostname:3306)/k3s' \
 K3S_DATASTORE_CERTFILE='/path/to/client.crt' \
 K3S_DATASTORE_KEYFILE='/path/to/client.key' \
 k3s server
