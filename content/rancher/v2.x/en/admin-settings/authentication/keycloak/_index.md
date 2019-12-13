@@ -22,7 +22,8 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
-- Export a `metadata.xml` file from your Keycloak client. From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
+- Export a `metadata.xml` file from your Keycloak client: 
+  From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
 
 
 ## Configuring Keycloak in Rancher
