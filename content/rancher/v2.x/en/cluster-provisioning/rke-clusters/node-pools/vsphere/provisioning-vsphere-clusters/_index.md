@@ -23,16 +23,13 @@ Refer to this [how-to guide]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/
 
 ### Network Permissions
 
-There needs to be two-way communication between Rancher and the vSphere API.
+It must be ensured that the hosts running the Rancher server are able to establish the following network connections:
 
-You must ensure that the hosts running Rancher servers are able to establish network connections to the following network endpoints:
+- To the vSphere API on the vCenter server (usually port 443/TCP).
+- To the Host API (port 443/TCP) on all ESXi hosts used to instantiate virtual machines for the clusters (*only required with Rancher prior to v2.3.3 or when using the ISO creation method in later versions*).
+- To port 22/TCP and 2376/TCP on the created VMs
 
-- vCenter server (usually port 443/TCP)
-- Every ESXi host that is part of the datacenter to be used to provision virtual machines for your clusters (port 443/TCP).
-
-By default, Rancher uses port 443 to communicate with vSphere.
-
-The vSphere API websocket port will be 84453 by default.
+See [Node Networking Requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements) for a detailed list of port requirements applicable for creating nodes on an infrastructure provider.
 
 ### Valid ESXi License for vSphere API Access
 
@@ -138,32 +135,30 @@ In the **Scheduling** section, enter:
 
 ### C. Configure Instances and Operating Systems
 
-The instances are configured differently depending on your Rancher version.
+Depending on the Rancher version there are different options available to configure instances.
 
 {{% tabs %}}
 {{% tab "Rancher v2.3.3+" %}}
 
-In this section, configure the number of vCPUs, memory, and disk size for the VMs created by this template.
+In the **Instance Options** section, configure the number of vCPUs, memory, and disk size for the VMs created by this template.
 
-In the **Creation method** field, you will configure the method for setting up an operating system on the node. The operating system can be installed from an ISO or from a VM template.
+In the **Creation method** field, configure the method used to provision VMs in vSphere. Available options include creating VMs that boot from a RancherOS ISO or creating VMs by cloning from an existing virtual machine or [VM template](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-F7BF0E6B-7C4F-4E46-8BBF-76229AEA7220.html).
 
-[VM templates](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-F7BF0E6B-7C4F-4E46-8BBF-76229AEA7220.html) are useful for setting up the operating system and other software, because they allow you to save time. For example, you could use a VM template to automatically install Kubernetes and Docker on each node. You can choose ISOs defined from templates in a vSphere data center or content library.
-
-The node can be created with any operating system that supports `cloud-init`.
+The existing VM or template may use any modern Linux operating system that is configured with support for [cloud-init](https://cloudinit.readthedocs.io/en/latest/) using the [NoCloud datasource](https://cloudinit.readthedocs.io/en/latest/topics/datasources/nocloud.html).
 
 Choose the way that the VM will be created:
 
-- **Deploy from template: Data Center:** Choose a template that exists in the data center that you selected.
-- **Deploy from template: Content Library:** In the two fields that appear when you select this option, choose the [content library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html). Then select the [VM template](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-F7BF0E6B-7C4F-4E46-8BBF-76229AEA7220.html) from the list of templates within the content library. This template will be used to create the new VM.
+- **Deploy from template: Data Center:** Choose a VM template that exists in the data center that you selected.
+- **Deploy from template: Content Library:** First, select the [Content Library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html) that contains your template, then select the template from the populated list `Library templates`.
 - **Clone an existing virtual machine:** In the **Virtual machine** field, choose an existing VM that the new VM will be cloned from.
-- **Install from boot2docker ISO:** Ensure that the OS ISO URL contains the URL of a VMware ISO release for RancherOS (rancheros-vmware.iso).
+- **Install from boot2docker ISO:** Ensure that the `OS ISO URL` field contains the URL of a VMware ISO release for RancherOS (rancheros-vmware.iso). Note that this URL must be accessible from the nodes running your Rancher server installation.
 
 {{% /tab %}}
 {{% tab "Rancher prior to v2.3.3" %}}
 
 In the **Instance Options** section, configure the number of vCPUs, memory, and disk size for the VMs created by this template.
 
-Only RancherOS VMs are supported.
+Only VMs booting from RancherOS ISO are supported.
 
 Ensure that the [OS ISO URL](#instance-options) contains the URL of the VMware ISO release for RancherOS: `rancheros-vmware.iso`.
 
@@ -217,13 +212,24 @@ In the custom attributes, Rancher will let you select all the custom attributes 
 
 ### G. Optional: Configure cloud-init
 
-[Cloud-init](https://cloud-init.io/) is a tool that applies user data to your nodes when they boot for the first time.
+[Cloud-init](https://cloudinit.readthedocs.io/en/latest/) allows you to initialize your nodes by applying configuration on the first boot. This may involve things such as creating users, authorizing SSH keys or setting up the network.
 
-The configuration file for `cloud-init` is named `cloud-config.yml.` In the **Cloud Init** field, it is optional to enter a file name or URL pointing to a `cloud-config.yml` file. Only YAML format is supported for the cloud config.
+The scope of cloud-init support for the VMs differs depending on the Rancher version.
 
-You can use `cloud-init` to automate tasks that should happen when the instance boots, such as creating users, running shell commands, adding a load balancer, or preinstalling Kubernetes on the VM.
+{{% tabs %}}
+{{% tab "Rancher v2.3.3+" %}}
 
- For examples of how to write a `cloud-config` file, refer to the [cloud-init documentation.](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+To make use of cloud-init initialization, create a cloud config file using valid YAML syntax and paste the file content in the the **Cloud Init** field. Refer to the [cloud-init documentation.](https://cloudinit.readthedocs.io/en/latest/topics/examples.html) for a commented set of examples of supported cloud config directives.
+
+*Note that cloud-init is not supported when using the ISO creation method.*
+
+{{% /tab %}}
+{{% tab "Rancher prior to v2.3.3" %}}
+
+You may specify the URL of a RancherOS cloud-config.yaml file in the the **Cloud Init** field. Refer to the [RancherOS Documentation]https://rancher.com/docs/os/v1.x/en/installation/configuration/#cloud-config) for details on the supported configuration directives. Note that the URL must be network accessible from the VMs created by the template.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ### H. Saving the Node Template
 
