@@ -1,7 +1,6 @@
 ---
 title: "K3s - 5 less than K8s"
 shortTitle: K3s
-date: 2019-02-05T09:52:46-07:00
 name: "menu"
 ---
 
