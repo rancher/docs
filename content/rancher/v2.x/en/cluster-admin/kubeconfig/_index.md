@@ -70,7 +70,7 @@ kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-<NODE_NAM
 
 ### kube-api-auth
 
-The `kube-api-auth` resource is deployed to provide the functionality for the [authorized cluster endpoint.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/4-authorized-cluster-endpoint)
+The `kube-api-auth` resource is deployed to provide the functionality for the [authorized cluster endpoint.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint)
 
 The `kube-api-auth` microservice is deployed to provide the user authentication functionality for the authorized cluster endpoint. When you access the user cluster using `kubectl`, the cluster's Kubernetes API server authenticates you by using the `kube-api-auth` service as a webhook.
 
