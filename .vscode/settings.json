@@ -1,2 +1,5 @@
 {
+    "editor.fontFamily": "'Lato', sans-serif;",
+    "editor.fontSize": 18,
+    "workbench.colorTheme": "Dainty – Purple Haze"
 }
