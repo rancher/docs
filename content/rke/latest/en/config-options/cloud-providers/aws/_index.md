@@ -12,7 +12,7 @@ cloud_provider:
 
 ## IAM Requirements
 
-The nodes used in RKE that will be running the AWS cloud provider must have at least the following IAM policy.
+The nodes used in RKE that will be running the AWS cloud provider must have at least the following IAM policy (`rancher-role.json`).
 
 ```json
 {
@@ -22,7 +22,7 @@ The nodes used in RKE that will be running the AWS cloud provider must have at l
 }
 ```
 
-In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(s) will need to have the an IAM role with appropriate access.
+In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(s) will need to have the an IAM role with appropriate access (`rancher-policy.json`).
 
 ## Example Policy for IAM Role:
 
@@ -53,6 +53,18 @@ In order to use Elastic Load Balancers (ELBs) and EBS with Kubernetes, the node(
   ]
 }
 ```
+
+Deploy files to AWS IAM:
+
+```bash
+$ aws iam create-instance-profile --instance-profile-name rancher-node
+$ aws iam create-role --role-name rancher-node --assume-role-policy-document file://rancher-role.json
+$ aws iam put-role-policy --role-name rancher-node --policy-name rancher-policy --policy-document file://rancher-policy.json
+$ aws iam add-role-to-instance-profile --instance-profile rancher-node --role-name rancher-node
+```
+
+Set `IAM Instance Profile Name` in node template to `rancher-node`
+
 
 ## Tagging Amazon Resources
 
