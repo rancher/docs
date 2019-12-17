@@ -112,6 +112,22 @@ kubectl -n ingress-nginx logs -l app=ingress-nginx
 kubectl -n ingress-nginx get events
 ```
 
+#### Debug logging
+
+To enable debug logging:
+
+```
+kubectl -n ingress-nginx patch ds nginx-ingress-controller --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--v=5"}]'
+```
+
+#### Check configuration
+
+Retrieve generated configuration in each pod:
+
+```
+kubectl -n ingress-nginx get pods -l app=ingress-nginx --no-headers -o custom-columns=.NAME:.metadata.name | while read pod; do kubectl -n ingress-nginx exec $pod -- cat /etc/nginx/nginx.conf; done
+```
+
 ### Rancher agents
 
 Communication to the cluster (Kubernetes API via `cattle-cluster-agent`) and communication to the nodes (cluster provisioning via `cattle-node-agent`) is done through Rancher agents.
