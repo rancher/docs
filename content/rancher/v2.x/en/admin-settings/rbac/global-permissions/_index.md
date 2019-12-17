@@ -33,7 +33,7 @@ Assignment of global permissions to a user depends on their authentication sourc
 
 Using custom permissions is convenient for providing users with narrow or specialized access to Rancher.
 
-When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in from the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
+When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
 
 However, in some organizations, these permissions may extend too much access. Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a more restrictive set of custom global permissions.
 
@@ -74,7 +74,7 @@ For details on which Kubernetes resources correspond to each global permission, 
 > **Notes:**
 >
 > - Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
-> - When viewing the resources associated with default roles created by Rancher, if there are multiple Kuberenetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+> - When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
 ### Configuring Default Global Permissions
 
