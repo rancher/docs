@@ -2,11 +2,14 @@
 title: Bare metal Quick Start
 weight: 200
 ---
+Rancher should work with any modern Linux distribution and any modern Docker version. Rancher has been tested and is supported with Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
+
+<br>
 The following steps quickly deploy a Rancher Server on `bare metal` (aka a computer with no operating system).
 
 ## Prerequisites
 
-- [rancheros.iso](https://github.com/rancher/os/releases): Download the latest rancheros.iso file and create bootable device
+- Download the latest [rancheros.iso](https://github.com/rancher/os/releases) file and create bootable device
 - Computer allows access to boot menu, has at least one hard drive, and network has DHCP server
 - Computer's first hard drive can be erased
 
