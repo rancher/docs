@@ -90,7 +90,7 @@ Accessing Cluster from Outside
 -----------------------------
 
 Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace
-"localhost" with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.
+"127.0.0.1" with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.
 
 Node Registration
 -----------------
