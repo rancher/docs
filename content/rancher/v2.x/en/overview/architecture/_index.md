@@ -7,7 +7,7 @@ This section focuses on the Rancher server, its components, and how Rancher comm
 
 For information on the different ways that Rancher can be installed, refer to the [section on choosing an installation method.]({{<baseurl>}}/rancher/v2.x/en/installation/choosing-installation)
 
-For a list of main eatures of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.x/en/overview/#features-of-the-rancher-api-server)
+For a list of main features of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.x/en/overview/#features-of-the-rancher-api-server)
 
 For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations)
 
