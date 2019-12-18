@@ -125,6 +125,6 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/troubleshooting/) page.
+See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/kubernetes-rke/troubleshooting/) page.
 
-### [Next: Initialize Helm (Install tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
+### [Next: Initialize Helm (Install tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
