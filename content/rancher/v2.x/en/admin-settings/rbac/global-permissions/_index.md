@@ -16,6 +16,8 @@ You cannot update or delete the built-in Global Permissions.
 This section covers the following topics:
 
 - [Global permission assignment](#global-permission-assignment)
+  - [Global permissions for new local users](#global-permissions-for-new-local-users)
+  - [Global permissions for users with external authentication](#global-permissions-for-users-with-external-authentication)
 - [Custom global permissions](#custom-global-permissions)
   - [Custom global permissions reference](#custom-global-permissions-reference)
   - [Configuring default global permissions for new users](#configuring-default-global-permissions)
@@ -24,10 +26,25 @@ This section covers the following topics:
 
 # Global Permission Assignment
 
-Assignment of global permissions to a user depends on their authentication source: external or local.
+Global permissions for local users are assigned differently than users who log in to Rancher using external authentication.
 
-- **External Authentication:** When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission.
-- **Local Authentication:** When you create a new local user, you assign them a global permission as you complete the **Add User** form.
+### Global Permissions for New Local Users
+
+When you create a new local user, you assign them a global permission as you complete the **Add User** form.
+
+To see the default permissions for new users, go to the **Global** view and click **Security > Roles.** On the **Global** tab, there is a column named **New User Default.** When adding a new local user, the user receives all  default global permissions that are marked as checked in this column. You can [change the default global permissions to meet your needs.](#configuring-default-global-permissions)
+
+### Global Permissions for Users with External Authentication
+
+When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission by default. 
+
+When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the  **New User Default** global permissions. By default, Rancher assigns the **Standard User** permission for new users.
+
+To see the default permissions for new users, go to the **Global** view and click **Security > Roles.** On the **Global** tab, there is a column named **New User Default.** When adding a new local user, the user receives all default global permissions that are marked as checked in this column, and you can [change them to meet your needs.](#configuring-default-global-permissions)
+
+Permissions can be assigned to an individual user with [these steps.](#configuring-global-permissions-for-existing-individual-users)
+
+As of Rancher v2.4, you can [assign a role to everyone in the group at the same time](#configuring-global-permissions-for-groups) if the external authentication provider supports groups.
 
 # Custom Global Permissions
 
@@ -112,7 +129,7 @@ To configure permission for a user,
 
 ### Configuring Global Permissions for Groups
 
-_Available as of v2.3.4_
+_Available as of v2.4_
 
 If you have a group of individuals that need the same level of access in Rancher, in can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
 
