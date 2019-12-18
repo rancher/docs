@@ -10,16 +10,16 @@ aliases:
 
 ## Projects
 
-_Projects_ are organizational objects introduced in Rancher that ease the administrative burden of your cluster. You can use projects to support multi-tenancy.
+A project is a group of multiple [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) and access control policies within a cluster. A project is a concept introduced by Rancher, not Kubernetes, which allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
 
-Projects provide an extra level of organization in your Kubernetes clusters beyond [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). In terms of hierarchy:
+In terms of hierarchy:
 
-- Clusters contain projects.
-- Projects contain namespaces.
+- Clusters contain projects
+- Projects contain namespaces
 
-Within Rancher, projects allow you to manage multiple namespaces as a single entity. In the base version of Kubernetes, which does not include projects, features like role-based access rights or cluster resources are assigned to individual namespaces. In clusters where multiple namespaces require the same set of access rights, assigning these rights to each individual namespace can become tedious. Even though all namespaces require the same rights, there's no way to apply those rights to all of your namespaces in a single action. You'd have to repetitively assign these rights to each namespace!
+You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
 
-Rancher projects resolve this issue by allowing you to apply resources and access rights at the project level. Each namespace in the project then inherits these resources and policies, so you only have to assign them to the project once, rather than assigning them to each namespace.
+In the base version of Kubernetes, features like role-based access rights or cluster resources are assigned to individual namespaces. A project allows you to save time by giving an individual or a team acess to multiple namespaces simultaneously.
 
 You can use projects to perform actions like:
 
@@ -28,8 +28,7 @@ You can use projects to perform actions like:
 - Assign resources to the project.
 - Assign Pod Security Policies.
 
-
-When you create a cluster, two project are automatically created within it:
+When you create a cluster, two projects are automatically created within it:
 
 - [Default Project](#default-project)
 - [System Project](#system-project)
