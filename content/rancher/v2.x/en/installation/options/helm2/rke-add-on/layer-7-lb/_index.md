@@ -7,7 +7,7 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
@@ -117,7 +117,7 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 
     >**Advanced Config Options:**
     >
-    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/api-auditing/).
+    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/api-auditing/).
     >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/latest/en/config-options/).
 
 
