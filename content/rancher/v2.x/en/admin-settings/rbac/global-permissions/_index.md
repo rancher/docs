@@ -36,8 +36,6 @@ To see the default permissions for new users, go to the **Global** view and clic
 
 ### Global Permissions for Users with External Authentication
 
-When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the `Standard User` global permission by default. 
-
 When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the  **New User Default** global permissions. By default, Rancher assigns the **Standard User** permission for new users.
 
 To see the default permissions for new users, go to the **Global** view and click **Security > Roles.** On the **Global** tab, there is a column named **New User Default.** When adding a new local user, the user receives all default global permissions that are marked as checked in this column, and you can [change them to meet your needs.](#configuring-default-global-permissions)
@@ -133,9 +131,11 @@ _Available as of v2.4_
 
 If you have a group of individuals that need the same level of access in Rancher, in can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
 
-When a user in the group logs in, they will get the built-in Standard User global role by default. They will also get the permissions assigned to their groups.
+After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to Rancher. The users will gain the permissions from the custom global role in addition to the **New User Default** global permissions.
 
-If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have their individual Standard User role.
+By default, the **New User Default** permissions are equivalent to the **Standard User** global role, but the default permissions can be [configured.](#configuring-default-global-permissions)
+
+If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have the roles that were marked as **New User Default.**
 
 > **Prerequisites:** You can only assign a global role to a group if:
 > 
