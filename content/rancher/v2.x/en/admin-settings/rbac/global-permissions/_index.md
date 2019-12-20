@@ -23,6 +23,7 @@ This section covers the following topics:
   - [Configuring default global permissions for new users](#configuring-default-global-permissions)
   - [Configuring global permissions for existing individual users](#configuring-global-permissions-for-existing-individual-users)
   - [Configuring global permissions for groups](#configuring-global-permissions-for-groups)
+  - [Refreshing group memberships](#refreshing-group-memberships)
 
 # Global Permission Assignment
 
@@ -129,13 +130,15 @@ To configure permission for a user,
 
 _Available as of v2.4_
 
-If you have a group of individuals that need the same level of access in Rancher, in can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
+If you have a group of individuals that need the same level of access in Rancher, it can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
 
-After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to Rancher. The users will gain the permissions from the custom global role in addition to the **New User Default** global permissions.
+After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to Rancher.
 
-By default, the **New User Default** permissions are equivalent to the **Standard User** global role, but the default permissions can be [configured.](#configuring-default-global-permissions)
+For existing users, the new permissions will take effect when the users log out of Rancher and back in again, or when an administrator [refreshes the group memberships.](#refreshing-group-memberships)
 
-If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have the roles that were marked as **New User Default.**
+For new users, the new permissions take effect when the users log in to Rancher for the first time. New users from this group will receive the permissions from the custom global role in addition to the **New User Default** global permissions. By default, the **New User Default** permissions are equivalent to the **Standard User** global role, but the default permissions can be [configured.](#configuring-default-global-permissions)
+
+If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have any remaining roles that were assigned to them, which would typically include the roles marked as **New User Default.** Rancher will remove the permissions that are associated with the group when the user logs out, or when an administrator [refreshes group memberships,]((#refreshing-group-memberships)) whichever comes first.
 
 > **Prerequisites:** You can only assign a global role to a group if:
 > 
@@ -152,3 +155,18 @@ To assign a custom global role to a group, follow these steps:
 1. Click **Create.**
 
 **Result:** The custom global role will take effect when the users in the group log into Rancher.
+
+### Refreshing Group Memberships
+
+When an administrator updates the global permissions for a group, the changes take effect for individual group members after they log out of Rancher and log in again.
+
+To make the changes take effect immediately, an administrator or cluster owner can refresh group memberships.
+
+An administrator might also want to refresh group memberships if a user is removed from a group in the external authentication service. In that case, the refresh makes Rancher aware that the user was removed from the group.
+
+To refresh group memberships,
+
+1. From the **Global** view, click **Security > Users.**
+1. Click **Refresh Group Memberships.**
+
+**Result:** Any changes to the group members' permissions will take effect.
