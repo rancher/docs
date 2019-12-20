@@ -52,11 +52,7 @@ The information that Rancher uses to provision [RKE clusters]({{< baseurl >}}/ra
 
 Rancher Kubernetes Metadata contains Kubernetes version information which Rancher uses to provision [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/).
 
-<<<<<<< HEAD
 For more information on how metadata works and how to configure metadata config, see [Rancher Kubernetes Metadata]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata).
-=======
-For more information on how metadata works and how to configure metadata config, see Rancher Kubernetes Metadata.
->>>>>>> Fix broken links
 
 ## Enabling Experimental Features
 
