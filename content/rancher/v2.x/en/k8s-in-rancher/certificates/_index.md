@@ -13,7 +13,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From the **Global** view, select the project where you want to deploy your ingress.
 
-1. From the main menu, select **Resources > Certificates**. Click **Add Certificate**.
+1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**.
 
 1. Enter a **Name** for the certificate.
 
@@ -37,7 +37,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 - If you added an SSL certificate to the project, the certificate is available for deployments created in any project namespace.
 - If you added an SSL certificate to a namespace, the certificate is available only for deployments in that namespace.
-- Your certificate is added to the **Resources > Certificates** view.
+- Your certificate is added to the **Resources > Secrets > Certificates** view.
 
 ## What's Next?
 
