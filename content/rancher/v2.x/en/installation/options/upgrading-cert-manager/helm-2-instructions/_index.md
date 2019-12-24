@@ -1,5 +1,5 @@
 ---
-title: Upgrading Cert-Manager
+title: Upgrading Cert-Manager with Helm 2
 weight: 2040
 ---
 
@@ -15,10 +15,7 @@ To address these changes, this guide will do two things:
 
 
 ## Performing the upgrade
-
-The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
-
-> These instructions have been updated for Helm 3. If you are still using Helm 2, refer to [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/helm-2-instructions)
+>**Note:** The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
 In order to upgrade cert-manager, follow these instructions:
 
