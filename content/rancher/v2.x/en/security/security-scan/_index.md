@@ -13,13 +13,11 @@ When Rancher runs a CIS Security Scan on a cluster, it generates a report showin
 
 To check clusters for CIS Kubernetes Benchmark compliance, the security scan leverages [kube-bench,](https://github.com/aquasecurity/kube-bench) an open-source tool from Aqua Security.
 
-When Rancher scans a cluster hosted in a managed Kubernetes provider such as GKE, EKS, or AKS, only worker nodes can be scanned.
-
 ### About the Generated Report
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
-The version of the [Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) that is used depends on the cluster's Kubernetes version. 
+To determine which version of the [Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) to use in the scan, Rancher chooses a version that is appropriate for the cluster's Kubernetes version. The Benchmark version is included in the generated report.
 
 Each test in the report is identified by its corresponding Scored test in the Benchmark. For example, if a cluster fails test 1.3.6, you can look up the description and rationale for the section 1.3.6 in the Benchmark itself, or in Rancher's [hardening guide for the Kubernetes version that the cluster is using.]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) Recommendations marked as Not Scored in the Benchmark are not included in the report.
 
@@ -28,6 +26,10 @@ Similarly, for information on how to manually audit the test result, you could l
 ### Prerequisites
 
 To run security scans on a cluster and access the generated reports, you must be an [Administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [Cluster Owner.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
+
+Rancher can only run security scans on clusters that were created with RKE, which includes custom clusters and clusters that Rancher created in an infrastructure provider such as Amazon EC2 or GCE. Imported clusters and clusters in hosted Kubernetes providers can't be scanned by Rancher.
+
+The security scan cannot run in a cluster that has Windows nodes.
 
 ### Running a Scan
 
