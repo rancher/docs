@@ -12,6 +12,8 @@ This section contains instructions for installing K3s in various environments. P
 
 [High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installation/ha-embedded/) details how to setup an HA K3s cluster that leverages a built-in distributed database.
 
+[Using private registries with k3s]({{< baseurl >}}/k3s/latest/en/installation/private-registry/) shows how to configure k3s to use a private registry.
+
 [Air-Gap Installation]({{< baseurl >}}/k3s/latest/en/installation/airgap/) details how to setup K3s in environments that do not have direct access to the Internet.
 
 ### Uninstalling
