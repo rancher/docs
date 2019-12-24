@@ -39,11 +39,11 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
 
-   | Release File             | Description                                                                                                                          |
-   | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | `rancher-images.txt`     | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools.                            |
-   | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
-   | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.                             |
+| Release File   | Description  |
+| ---------------- | -------------- |
+| `rancher-images.txt`     | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools. |
+| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.   |
 
 ### B. Collect all the required images (For HA Installs using Rancher Generated Self-Signed Certificate)
 
