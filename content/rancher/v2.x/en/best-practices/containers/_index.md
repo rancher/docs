@@ -32,11 +32,11 @@ When possible, use a non-privileged user when running processes within your cont
 ### Define Resource Limits
 Apply CPU and memory limits to your pods. This can help manage the resources on your worker nodes and avoid a malfunctioning microservice from impacting other microservices.
 
-In standard Kubernetes, you can set resource limits on the namespace level. In Rancher, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the [Rancher docs]({{<baseurl>}}/rancher/v2.x/en/project-admin/resource-quotas/).
+In standard Kubernetes, you can set resource limits on the namespace level. In Rancher, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the Rancher docs.
 
 When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project or namespace, all containers will require a respective CPU or Memory field set during creation. To avoid setting these limits on each and every container during workload creation, a default container resource limit can be specified on the namespace.
 
-The Kubernetes docs have more information on how resource limits can be set at the [container level](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container) and the [namespace level](https://kubernetes.io/docs/concepts/policy/resource-quotas/).
+The Kubernetes docs have more information on how resource limits can be set at the [container level](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container) and the namespace level.
 
 ### Define Resource Requirements
 You should apply CPU and memory requirements to your pods. This is crucial for informing the scheduler which type of compute node your pod needs to be placed on, and ensuring it does not over-provision that node. In Kubernetes, you can set a resource requirement by defining `resources.requests` in the resource requests field in a pod's container spec. For details, refer to the [Kubernetes docs](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container).
