@@ -18,8 +18,10 @@ If you want to configure Rancher to use a CA root certificate to be used when va
 
 Use the command example to start a Rancher container with your private CA certificates mounted.
 
-- The volume option (`-v`) should specify the host directory containing the CA root certificates.
-- The `e` flag in combination with `SSL_CERT_DIR` declares an environment variable that specifies the mounted CA root certificates directory location inside the container. - Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. - Mounting a host directory inside the container can be done using `-v host-source-directory:container-destination-directory` or `--volume host-source-directory:container-destination-directory`.
+- The volume flag (`-v`) should specify the host directory containing the CA root certificates.
+- The environment variable flag (`-e`) in combination with `SSL_CERT_DIR` and directory declares an environment variable that specifies the mounted CA root certificates directory location inside the container.
+- Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`.
+- Mounting a host directory inside the container can be done using `-v host-source-directory:container-destination-directory` or `--volume host-source-directory:container-destination-directory`.
 
 The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
 
