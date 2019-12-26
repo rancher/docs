@@ -45,7 +45,7 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Previous Methods
 
-[RKE add-on install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/)
+RKE add-on install
 
 > **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
