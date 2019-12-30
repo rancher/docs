@@ -79,7 +79,11 @@ As of Rancher v2.3.0, the Kubernetes metadata feature was added, which allows Ra
 
 **Result:** Kubernetes begins upgrading for the cluster. During the upgrade, your cluster is unavailable.
 
-> **Note:** The `ingress-nginx` pods are set to only upgrade on delete. After upgrading your cluster, you need to delete these pods to get the correct version for your deployment. 
+### Upgrading ingress-nginx
+
+For RKE v0.1.8+, the `ingress-nginx` YAML does not contain an `updateStrategy`. Therefore, the `updateStrategy` is the default value that is set by the Kubernetes API version. For example, the default `updateStrategy` for Kubernetes v1.13 was `onDelete`. When RKE v0.3.2 began supporting Kubernetes v1.16, the `updateStrategy` for `ingress-nginx` became `RollingUpdate` by default for RKE clusters with Kubernetes 1.16. This policy allows the daemonset to restart the pods.
+
+For RKE prior to v0.1.8, the `updateStrategy` directive in the `ingress-nginx` YAML was set to `OnDelete` because RKE did not yet support updating ingress and addons. In that case, you will need to delete these pods to get the correct version for your deployment.
 
 ### Adding a Pod Security Policy
 
