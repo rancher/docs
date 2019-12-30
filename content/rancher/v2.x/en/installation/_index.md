@@ -1,5 +1,5 @@
 ---
-title: Overview of Installation Options
+title: Installing Rancher
 description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 50
 ---
