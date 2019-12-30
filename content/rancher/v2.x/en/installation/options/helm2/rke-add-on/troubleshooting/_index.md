@@ -19,7 +19,7 @@ Choose from the following options:
 
 	In this section, you can find generic ways to debug your Kubernetes cluster.
 
-- [Failed to set up SSH tunneling for host](ssh-tunneling/)
+- [Failed to set up SSH tunneling for host]({{<baseurl>}}/rke/latest/en/troubleshooting/ssh-connectivity-errors/)
 
 	In this section, you can find errors related to SSH tunneling when you run the `rke` command to setup your nodes.
 

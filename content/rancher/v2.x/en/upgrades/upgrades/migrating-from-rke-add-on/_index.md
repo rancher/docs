@@ -105,5 +105,5 @@ addons: |-
 
 From here follow the standard install steps.
 
-* [3 - Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/)
-* [4 - Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
+* [3 - Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
+* [4 - Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/)
