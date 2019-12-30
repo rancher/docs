@@ -40,7 +40,7 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
 *         my-cluster                  my-cluster                  user-46tmn
           my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
 ```
-For more information on how the authorized cluster endpoint works, refer to the [architecture section.]({{<baseurl}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint)
+For more information on how the authorized cluster endpoint works, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint)
 
 We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
 
