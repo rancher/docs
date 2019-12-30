@@ -1,5 +1,6 @@
 ---
-title: Kubeconfig File
+title: Configuring Access to Kubernetes Using A Kubeconfig File
+description: A kubeconfig file is used to configure access to Kubernetes. When you create a cluster with Rancher, it automatically creates a kubeconfig for your cluster
 weight: 2010
 aliases:
   - /rancher/v2.x/en/concepts/clusters/kubeconfig-files/
