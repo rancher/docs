@@ -31,24 +31,20 @@ This section describes installing Rancher in five parts:
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
 1. If you haven't already, initialize `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
-
-   ```plain
-   helm init -c
-   ```
+    ```plain
+    helm init -c
+    ```
 
 2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
-
-   {{< release-channel >}}
-
-   ```
-   helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
-   ```
+  {{< release-channel >}}
+    ```
+    helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
+    ```
 
 3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
-
-   ```plain
-   helm fetch rancher-<CHART_REPO>/rancher
-   ```
+```plain
+helm fetch rancher-<CHART_REPO>/rancher
+```
 
 > Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
 
@@ -69,12 +65,12 @@ For HA air gap configurations, there are two recommended options for the source 
 
 When setting up the Rancher Helm template, there are several options in the Helm chart that are designed specifically for air gap installations.
 
-| Chart Option            | Chart Value                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ----------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Chart Option            | Chart Value                      | Description   |
+| ----------------------- | -------------------------------- | ------- |
+| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.    |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. _Available as of v2.3.0_ |
 
-Based on the choice your made in [B. Choose your SSL Configuration](#b-optional-install-cert-manager), complete one of the procedures below.
+Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), complete one of the procedures below.
 
 {{% accordion id="self-signed" label="Option A-Default Self-Signed Certificate" %}}
 
@@ -84,20 +80,17 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 > Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade cert-manager documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 1. From a system connected to the internet, add the cert-manager repo to Helm.
-
-   ```plain
-   helm repo add jetstack https://charts.jetstack.io
-   helm repo update
-   ```
+    ```plain
+    helm repo add jetstack https://charts.jetstack.io
+    helm repo update
+    ```
 
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
-
-   ```plain
-   helm fetch jetstack/cert-manager --version v0.9.1
-   ```
+    ```plain
+    helm fetch jetstack/cert-manager --version v0.9.1
+    ```
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
-
    ```plain
    helm template ./cert-manager-v0.9.1.tgz --output-dir . \
        --name cert-manager --namespace cert-manager \
@@ -107,21 +100,17 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
    ```
 
 1. Download the required CRD file for cert-manager
-
    ```plain
    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
    ```
-
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
-
-    Placeholder | Description
-    ------------|-------------
-    `<VERSION>` | The version number of the output tarball.
-    `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-
-     ```plain
+Placeholder | Description
+ ------------|-------------
+`<VERSION>` | The version number of the output tarball.
+`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
+ ```plain
     helm template ./rancher-<VERSION>.tgz --output-dir . \
      --name rancher \
      --namespace cattle-system \
@@ -129,27 +118,24 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
      --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
      --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
-    ```
+```
 
 {{% /accordion %}}
 
 {{% accordion id="secret" label="Option B: Certificates From Files using Kubernetes Secrets" %}}
 
-1. Create Kubernetes secrets from your own certificates for Rancher to use.
+Create Kubernetes secrets from your own certificates for Rancher to use. The common name for the cert will need to match the `hostname` option in the command below, or the ingress controller will fail to provision the site for Rancher.
 
-   > **Note:** The common name for the cert will need to match the `hostname` option or the ingress controller will fail to provision the site for Rancher.
+Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
-1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
+If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`.
 
-   > **Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`.
-
-   | Placeholder                      | Description                                     |
-   | -------------------------------- | ----------------------------------------------- |
-   | `<VERSION>`                      | The version number of the output tarball.       |
-   | `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
-   | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
-
-   ```plain
+| Placeholder                      | Description                                     |
+| -------------------------------- | ----------------------------------------------- |
+| `<VERSION>`                      | The version number of the output tarball.       |
+| `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
+| `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
+```plain
    helm template ./rancher-<VERSION>.tgz --output-dir . \
     --name rancher \
     --namespace cattle-system \
@@ -158,9 +144,9 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     --set ingress.tls.source=secret \
     --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
-   ```
+```
 
-1. See [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 {{% /accordion %}}
 
@@ -170,34 +156,31 @@ Copy the rendered manifest directories to a system that has access to the Ranche
 
 Use `kubectl` to create namespaces and apply the rendered manifests.
 
-If you chose to use self-signed certificates in [B. Choose your SSL Configuration](#b-optional-install-cert-manager), install cert-manager.
+If you chose to use self-signed certificates in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), install cert-manager.
 
 {{% accordion id="install-cert-manager" label="Self-Signed Certificate Installs - Install Cert-manager" %}}
 
 If you are using self-signed certificates, install cert-manager:
 
 1. Create the namespace for cert-manager.
-
-   ```plain
-   kubectl create namespace cert-manager
-   ```
+```plain
+kubectl create namespace cert-manager
+```
 
 1. Label the cert-manager namespace to disable resource validation.
-
-   ```plain
-   kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
-   ```
+```plain
+kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
+```
 
 1. Create the cert-manager CustomResourceDefinitions (CRDs).
-
-   ```plain
-   kubectl apply -f cert-manager/cert-manager-crd.yaml
-   ```
+```plain
+kubectl apply -f cert-manager/cert-manager-crd.yaml
+```
 
 1. Launch cert-manager.
-   ```plain
-   kubectl apply -R -f ./cert-manager
-   ```
+```plain
+kubectl apply -R -f ./cert-manager
+```
 
 {{% /accordion %}}
 
@@ -229,9 +212,9 @@ The single node installation is for Rancher users that are wanting to **test** o
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
-| Environment Variable Key         | Environment Variable Value       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| -------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `CATTLE_SYSTEM_DEFAULT_REGISTRY` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Environment Variable Key         | Environment Variable Value       | Description     |
+| -------------------------------- | -------------------------------- | ---- |
+| `CATTLE_SYSTEM_DEFAULT_REGISTRY` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `CATTLE_SYSTEM_CATALOG`          | `bundled`                        | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. _Available as of v2.3.0_ |
 
 > **Do you want to...**
