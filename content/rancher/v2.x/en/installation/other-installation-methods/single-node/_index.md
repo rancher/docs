@@ -38,10 +38,11 @@ If you are installing Rancher in a development or testing environment where iden
 
 Log into your Linux host, and then run the minimum installation command below.
 
-    docker run -d --restart=unless-stopped \
-    -p 80:80 -p 443:443 \
-    rancher/rancher:latest
-
+```
+docker run -d --restart=unless-stopped \
+-p 80:80 -p 443:443 \
+rancher/rancher:latest
+```
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
