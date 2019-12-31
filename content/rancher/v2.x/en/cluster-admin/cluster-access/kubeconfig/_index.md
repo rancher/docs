@@ -5,6 +5,7 @@ weight: 2010
 aliases:
   - /rancher/v2.x/en/concepts/clusters/kubeconfig-files/
   - /rancher/v2.x/en/k8s-in-rancher/kubeconfig/
+  - /rancher/2.x/en/cluster-admin/kubeconfig
 ---
 
 A _kubeconfig file_ is a file used to configure access to Kubernetes when used in conjunction with the kubectl commandline tool (or other clients).
