@@ -10,6 +10,13 @@ Any Helm charts from a [global catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/
 
 After creating a multi-cluster application, you can program a [Global DNS entry]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/) to make it easier to access the application.
 
+# Prerequisites
+
+To create a multi-cluster app in Rancher, you must have at least one of the following permissions:
+
+- A [project-member role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster(s), which gives you the ability to create, read, update, and delete the workloads
+- A [cluster owner role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the clusters(s) that include the target project(s)
+
 ## Launching a Multi-Cluster App
 
 1. From the **Global** view, choose **Apps** in the navigation bar. Click **Launch**.

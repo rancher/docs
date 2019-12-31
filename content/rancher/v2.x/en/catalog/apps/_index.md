@@ -7,6 +7,13 @@ Within a project, when you want to deploy applications from catalogs, the applic
 
 If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
 
+## Prerequisites
+
+To create a multi-cluster app in Rancher, you must have at least one of the following permissions:
+
+- A [project-member role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster, which gives you the ability to create, read, update, and delete the workloads
+- A [cluster owner role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the cluster that include the target project
+
 ## Launching Catalog Applications
 
 After you've either enabled the [built-in global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or [added your own custom catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding), you can start launching catalog applications.
