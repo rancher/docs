@@ -112,7 +112,6 @@ This section describes how to upgrade normal (Internet-connected) or air gap ins
     `<VERSION>` | The version number of the output tarball.
     `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-    `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
 {{% accordion id="self-signed" label="Option A-Default Self-Signed Certificate" %}}
 
@@ -121,7 +120,6 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
  --name rancher \
  --namespace cattle-system \
  --set hostname=<RANCHER.YOURDOMAIN.COM> \
- --set certmanager.version=<CERTMANAGER_VERSION> \
  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
  --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
