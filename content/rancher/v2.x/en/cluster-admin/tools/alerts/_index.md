@@ -3,15 +3,38 @@ title: Alerts
 weight: 2
 ---
 
-To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts.
+To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.
 
-Alerts are sets of rules, chosen by you, to monitor for specific events.
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
+
+Before you can receive alerts, you must configure one or more notifier in Rancher.
 
 When you create a cluster, some alert rules are predefined. You can receive these alerts if you configure a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) for them.
 
 For details about what triggers the predefined alerts, refer to the [documentation on default alerts.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/default-alerts)
 
-## Alerts Scope
+This section covers the following topics:
+
+- [Alert event examples](#alert-event-examples)
+- [Urgency levels](#urgency-levels)
+- [Scope of alerts](#scope-of-alerts)
+- [Adding cluster alerts](#adding-cluster-alerts)
+- [Managing cluster alerts](#managing-cluster-alerts)
+
+# Alert Event Examples
+
+Some examples of alert events are:
+
+- A Kubernetes [master component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) entering an unhealthy state.
+- A node or [workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/) error occurring.
+- A scheduled deployment taking place as planned.
+- A node's hardware resources becoming overstressed.
+
+# Urgency Levels
+
+You can set an urgency level for each alert. This urgency appears in the notification you receive, helping you to prioritize your response actions. For example, if you have an alert configured to inform you of a routine deployment, no action is required. These alerts can be assigned a low priority level. However, if a deployment fails, it can critically impact your organization, and you need to react quickly. Assign these alerts a high priority level.
+
+# Scope of Alerts
 
 The scope for alerts can be set at either the cluster level or [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
 
@@ -22,7 +45,7 @@ At the cluster level, Rancher monitors components in your Kubernetes cluster, an
 - The resource events from specific system services.
 - The Prometheus expression cross the thresholds
 
-## Adding Cluster Alerts
+# Adding Cluster Alerts
 
 As a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to send you alerts for cluster events.
 
@@ -202,7 +225,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
 
 **Result:** Your alert is configured. A notification is sent when the alert is triggered.
 
-## Managing Cluster Alerts
+# Managing Cluster Alerts
 
 After you set up cluster alerts, you can manage each alert object. To manage alerts, browse to the cluster containing the alerts, and then select **Tools > Alerts** that you want to manage. You can:
 
