@@ -6,10 +6,11 @@ aliases:
   - /rancher/v2.x/en/installation/single-node-install/
   - /rancher/v2.x/en/installation/single-node
 ---
+
 For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Single Node Install with an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node/single-node-install-external-lb) instead.
+> See [Single Node Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/single-node-install-external-lb) instead.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -17,7 +18,7 @@ Make sure that your node fulfills the general [installation requirements.]({{<ba
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
+Provision a single Linux host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) to launch your Rancher server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -25,9 +26,9 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/)
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
-> - Complete an Air Gap Installation? See [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/)
+> - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/)
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
+> - Complete an Air Gap Installation? See [Air Gap: Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
 > - Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
 
 Choose from the following options:
@@ -40,8 +41,8 @@ Log into your Linux host, and then run the minimum installation command below.
 
 ```
 docker run -d --restart=unless-stopped \
--p 80:80 -p 443:443 \
-rancher/rancher:latest
+	-p 80:80 -p 443:443 \
+	rancher/rancher:latest
 ```
 {{% /accordion %}}
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
@@ -90,7 +91,7 @@ After obtaining your certificate, run the Docker command below.
 | ------------------- | ------------------------------------------------------------ |
 | `<CERT_DIRECTORY>`  | The path to the directory containing your certificate files. |
 | `<FULL_CHAIN.pem>`  | The path to your full certificate chain.                     |
-| `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.            |
+| `<PRIVATE_KEY.pem>` | The path to the private key for your certificate. |
 
 ```
 docker run -d --restart=unless-stopped \
@@ -98,7 +99,7 @@ docker run -d --restart=unless-stopped \
 	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
 	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
 	rancher/rancher:latest \
-  --no-cacerts
+	--no-cacerts
 ```
 
 {{% /accordion %}}
@@ -122,11 +123,10 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 
 ```
 docker run -d --restart=unless-stopped \
-  -p 80:80 -p 443:443 \
-  rancher/rancher:latest \
-  --acme-domain <YOUR.DNS.NAME>
+	-p 80:80 -p 443:443 \
+	rancher/rancher:latest \
+	--acme-domain <YOUR.DNS.NAME>
 ```
-
 {{% /accordion %}}
 
 ## Advanced Options
