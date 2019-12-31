@@ -16,6 +16,8 @@ Deployments use the Kubernetes registry secret to authenticate with a private Do
 
 Currently, deployments pull the private registry credentials automatically only if the workload is created in the Rancher UI and not when it is created via kubectl.
 
+# Creating a Registry
+
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
 1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
@@ -40,7 +42,7 @@ Currently, deployments pull the private registry credentials automatically only 
 - You can view the secret in the Rancher UI from the **Resources > Registries** view.
 - Any workload that you create in the Rancher UI will have the credentials to access the registry if the workload is within the registry's scope.
 
-## Using a Private Registry
+# Using a Private Registry
 
 You can deploy a workload with an image from a private registry through the Rancher UI, or with `kubectl`.
 
