@@ -28,12 +28,11 @@ Cluster administrators can [edit the membership for a cluster,]({{<baseurl>}}/ra
 
 When editing clusters, clusters that are [launched using RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) feature more options than clusters that are imported or hosted by a Kubernetes provider. The headings that follow document options available only for RKE clusters.
 
-### Upgrading ingress-nginx
+### Updating ingress-nginx
 
-For RKE v0.1.8+, the `ingress-nginx` YAML does not contain an `updateStrategy`. Therefore, the `updateStrategy` is the default value that is set by the Kubernetes API version. For example, the default `updateStrategy` for Kubernetes v1.13 was `onDelete`. When RKE v0.3.2 began supporting Kubernetes v1.16, the `updateStrategy` for `ingress-nginx` became `RollingUpdate` by default for RKE clusters with Kubernetes 1.16. This policy allows the daemonset to restart the pods.
+Clusters that were created before Kubernetes 1.16 will have an `ingress-nginx` `updateStrategy` of `OnDelete`. Clusters that were created with Kubernetes 1.16 or newer will have `RollingUpdate`.
 
-For RKE prior to v0.1.8, the `updateStrategy` directive in the `ingress-nginx` YAML was set to `OnDelete` because RKE did not yet support updating ingress and addons. In that case, you will need to delete these pods to get the correct version for your deployment.
-
+If the `updateStrategy` of `ingress-nginx` is `OnDelete`, you will need to delete these pods to get the correct version for your deployment.
 
 # Editing Other Cluster Options
 
