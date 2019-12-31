@@ -35,7 +35,7 @@ The Rancher API server is built on top of an embedded Kubernetes API server and 
 
 ### Working with Kubernetes
 
-- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) on existing nodes, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/#upgrading-kubernetes)
+- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) on existing nodes, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/upgrading-kubernetes)
 - **Catalog management:** Rancher provides the ability to use a [catalog of Helm charts]({{<baseurl>}}/rancher/v2.x/en/catalog/) that make it easy to repeatedly deploy applications.
 - **Managing projects:** A project is a group of multiple namespaces and access control policies within a cluster. A project is a Rancher concept, not a Kubernetes concept, which allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
 - **Pipelines:** Setting up a [pipeline]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/pipelines/) can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.

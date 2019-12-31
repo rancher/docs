@@ -1,5 +1,5 @@
 ---
-title: Configuring Tools
+title: Tools for Logging, Monitoring, and Visibility
 weight: 2033
 aliases:
   - /rancher/v2.x/en/tools/
