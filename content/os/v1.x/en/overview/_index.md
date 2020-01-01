@@ -29,7 +29,7 @@ You can adjust memory requirements by custom building RancherOS, please refer to
 
 ### How RancherOS Works
 
-Everything in RancherOS is a Docker container. We accomplish this by launching two instances of Docker. One is what we call **System Docker** and is the first process on the system. All other system services, like `ntpd`, `syslog`, and `console`, are running in Docker containers. System Docker replaces traditional init systems like `systemd` and is used to launch [additional system services]({{<baseurl>}}/os/v1.x/en/installation/system-services/adding-system-services/).
+Everything in RancherOS is a Docker container. We accomplish this by launching two instances of Docker. One is what we call **System Docker** and is the first process on the system. All other system services, like `ntpd`, `syslog`, and `console`, are running in Docker containers. System Docker replaces traditional init systems like `systemd` and is used to launch [additional system services]({{< baseurl >}}/os/v1.x/en/system-services/).
 
 System Docker runs a special container called **Docker**, which is another Docker daemon responsible for managing all of the user’s containers. Any containers that you launch as a user from the console will run inside this Docker. This creates isolation from the System Docker containers and ensures that normal user commands don’t impact system services.
 

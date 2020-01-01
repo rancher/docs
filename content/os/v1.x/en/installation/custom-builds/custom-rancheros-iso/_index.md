@@ -29,7 +29,7 @@ If you need a compressed ISO, you can run this command:
 $ make release
 ```
 
-The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine).
+The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine).
 
 ## Creating a GCE Image Archive
 
