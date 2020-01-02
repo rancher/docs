@@ -49,7 +49,7 @@ On desktop systems the Syslinux boot menu can be switched to graphical mode by a
 
 #### Recovery console
 
-`rancher.recovery=true` will start a single user `root` bash session as easily in the boot process, with no network, or persitent filesystem mounted. This can be used to fix disk problems, or to debug your system.
+`rancher.recovery=true` will start a single user `root` bash session as easily in the boot process, with no network, or persistent filesystem mounted. This can be used to fix disk problems, or to debug your system.
 
 #### Enable/Disable sshd
 
@@ -61,7 +61,7 @@ On desktop systems the Syslinux boot menu can be switched to graphical mode by a
 
 #### Autologin console
 
-`rancher.autologin=<tty...>` will automatically log in the sepcified console - common values are `tty1`, `ttyS0` and `ttyAMA0` - depending on your platform.
+`rancher.autologin=<tty...>` will automatically log in the specified console - common values are `tty1`, `ttyS0` and `ttyAMA0` - depending on your platform.
 
 #### Enable/Disable hypervisor service auto-enable
 

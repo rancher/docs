@@ -34,7 +34,7 @@ Visit the [Project Calico Docs](https://docs.projectcalico.org/) website. Follow
           }
 ```
 
-Applyl the Canal YAML.
+Apply the Canal YAML.
 
 Ensure the settings were applied by running the following command on the host:
 
@@ -68,4 +68,3 @@ You should see that IP forwarding is set to true.
 
 {{% /tab %}}
 {{% /tabs %}}
-

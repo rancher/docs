@@ -50,6 +50,6 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. Click **Ellipsis (...) > Delete**.
 
-1. Click **Delete** to confim.
+1. Click **Delete** to confirm.
 
 > **Result:** The HPA is deleted from the current cluster.

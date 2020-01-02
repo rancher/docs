@@ -134,7 +134,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
-    >  
+    >
     >When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/latest/en/installation/os#redhat-enterprise-linux-rhel-centos) for RHEL/CentOS specific requirements.
 
         nodes:
@@ -159,7 +159,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
         services:
           etcd:
-            backup: false   
+            backup: false
 
 ## 7. Configure Certificates
 
@@ -278,7 +278,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 ## What's Next?
 
-- **Recommended:** Review [Creating Backups—High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/) to learn how to backup your Rancher Server in case of a disaster scenario.
+- **Recommended:** Review [Creating Backups—High Availability Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/) to learn how to backup your Rancher Server in case of a disaster scenario.
 - Create a Kubernetes cluster: [Creating a Cluster]({{< baseurl >}}/rancher/v2.x/en/tasks/clusters/creating-a-cluster/).
 
 <br/>

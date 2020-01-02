@@ -15,11 +15,11 @@ These example scenarios describe how an organization could use templates to stan
 
 Let's say there is an organization in which the administrators decide that all new clusters should be created with Kubernetes version 1.14.
 
-1. First, an administrator creates a template which specifies the Kubernetes version as 1.14 and marks all other settings as **Allow User Override**. 
+1. First, an administrator creates a template which specifies the Kubernetes version as 1.14 and marks all other settings as **Allow User Override**.
 1. The administrator makes the template public.
 1. The administrator turns on template enforcement.
 
-**Results:** 
+**Results:**
 
 - All Rancher users in the organization have access to the template.
 - All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) with this template will use Kubernetes 1.14 and they are unable to use a different Kubernetes version. By default, standard users don't have permission to create templates, so this template will be the only template they can use unless more templates are shared with them.
@@ -29,10 +29,10 @@ In this way, the administrators enforce the Kubernetes version across the organi
 
 # Templates for Basic and Advanced Users
 
-Let's say an organization has both basic and advanced users. Adminstrators want the basic users to be required to use a template, while the advanced users and administrators create their clusters however they want.
+Let's say an organization has both basic and advanced users. Administrators want the basic users to be required to use a template, while the advanced users and administrators create their clusters however they want.
 
 1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-a-cluster-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
-1. The administrator then creates two templates: 
+1. The administrator then creates two templates:
 
   - One template for basic users, with almost every option specified except for access keys
   - One template for advanced users, which has most or all options has **Allow User Override** turned on
@@ -44,7 +44,7 @@ Let's say an organization has both basic and advanced users. Adminstrators want 
 
 # Updating Templates and Clusters Created with Them
 
-Let's say an organization has a template that requires clusters to use Kubernetes v1.14. However, as time goes on, the adminstrators change their minds. They decide they want users to be able to upgrade their clusters to use newer versions of Kubernetes.
+Let's say an organization has a template that requires clusters to use Kubernetes v1.14. However, as time goes on, the administrators change their minds. They decide they want users to be able to upgrade their clusters to use newer versions of Kubernetes.
 
 In this organization, many clusters were created with a template that requires Kubernetes v1.14. Because the template does not allow that setting to be overridden, the users who created the cluster cannot directly edit that setting.
 

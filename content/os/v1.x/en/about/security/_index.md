@@ -14,7 +14,7 @@ weight: 303
 <p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security@rancher.com">security@rancher.com</a></p>
 </td>
 <td width="30%" style="border: none;">
-<h4>Announcments</h4>
+<h4>Announcements</h4>
 <p style="padding: 8px">Subscribe to the <a href="https://forums.rancher.com/c/announcements">Rancher announcements forum</a> for release updates.</p>
 </td>
 </tr>

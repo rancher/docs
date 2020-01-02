@@ -1,6 +1,6 @@
 ---
 title: Integrating Rancher and Prometheus for Cluster Monitoring
-description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Lern about the scope of monitoring and how to enable cluster monitoring
+description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 weight: 4
 ---
 
@@ -27,7 +27,7 @@ You can configure these services to collect logs at either the cluster level or 
 
 In other words, Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Using timestamps, Prometheus lets you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus.
 
-By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc. 
+By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.
 
 Multi-tenancy support in terms of cluster-only and project-only Prometheus instances are also supported.
 

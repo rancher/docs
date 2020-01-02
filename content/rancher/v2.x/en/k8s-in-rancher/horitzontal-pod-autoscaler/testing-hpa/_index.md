@@ -60,7 +60,7 @@ spec:
   selector:
     app: hello-world
 ```
-{{% /accordion %}}  
+{{% /accordion %}}
 
 1. Deploy it to your cluster.
 
@@ -222,14 +222,14 @@ Use your load testing tool to scale up to two pods based on CPU Usage.
       # kubectl get pods
    ```
    You should receive output similar to what follows:
-   ```  
+   ```
       NAME                                                     READY     STATUS    RESTARTS   AGE
       hello-world-54764dfbf8-k8ph2                             1/1       Running   0          1m
       hello-world-54764dfbf8-q6l4v                             1/1       Running   0          3h
    ```
   {{% /accordion %}}
   {{% accordion id="observe-upscale-3-pods-cpu-cooldown" label="Upscale to 3 pods: CPU Usage Up to Target" %}}
-Use your load testing tool to upspace to 3 pods based on CPU usage with `horizontal-pod-autoscaler-upscale-delay` set to 3 minutes.
+Use your load testing tool to upscale to 3 pods based on CPU usage with `horizontal-pod-autoscaler-upscale-delay` set to 3 minutes.
 
 1. Enter the following command.
    ```
@@ -312,7 +312,7 @@ Use your load testing to scale down to 1 pod when all metrics are below target f
 Use your load testing tool to upscale two pods based on CPU usage.
 
 1. Enter the following command.
-  ```  
+  ```
     # kubectl describe hpa
   ```
   You should receive output similar to what follows.
@@ -345,7 +345,7 @@ Use your load testing tool to upscale two pods based on CPU usage.
     # kubectl get pods
   ```
   You should receive output similar to what follows.
-  ```  
+  ```
         NAME                           READY     STATUS    RESTARTS   AGE
         hello-world-54764dfbf8-5pfdr   1/1       Running   0          3s
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
@@ -387,7 +387,7 @@ Use your load testing tool to scale up to three pods when the cpu_system usage l
 1. Enter the following command to confirm three pods are running.
    ```
    # kubectl get pods
-   ```    
+   ```
    You should receive output similar to what follows:
    ```
       # kubectl get pods
@@ -443,7 +443,7 @@ Use your load testing tool to upscale to four pods based on CPU usage. `horizont
       hello-world-54764dfbf8-m2hrl   1/1       Running   0          1s
       hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
     ```
-{{% /accordion %}}  
+{{% /accordion %}}
 {{% accordion id="custom-metrics-observe-downscale-1-pod" label="Downscale to 1 Pod: All Metrics Below Target" %}}
 Use your load testing tool to scale down to one pod when all metrics below target for `horizontal-pod-autoscaler-downscale-delay`.
 
@@ -484,8 +484,8 @@ Use your load testing tool to scale down to one pod when all metrics below targe
         # kubectl get pods
     ```
     You should receive output similar to what follows.
-    ```        
+    ```
         NAME                           READY     STATUS    RESTARTS   AGE
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
-    ```    
+    ```
 {{% /accordion %}}

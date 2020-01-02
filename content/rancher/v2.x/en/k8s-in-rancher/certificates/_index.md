@@ -32,7 +32,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From **Certificate**, either copy and paste your certificate into the text box (include the header and footer), or click **Read from a file** to browse to the certificate on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
-    Certifcate files end with an extension of `.crt`.
+    Certificate files end with an extension of `.crt`.
 
 **Result:** Your certificate is added to the project or namespace. You can now add it to deployments.
 

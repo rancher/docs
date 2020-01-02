@@ -7,7 +7,7 @@ This section applies to nodes with the `controlplane` role.
 
 # Check if the Controlplane Containers are Running
 
-There are three specific containers launched on nodes with the `controlpane` role:
+There are three specific containers launched on nodes with the `controlplane` role:
 
 * `kube-apiserver`
 * `kube-controller-manager`

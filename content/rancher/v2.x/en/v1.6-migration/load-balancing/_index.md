@@ -157,6 +157,6 @@ Cattle provided feature-rich load balancer support that is [well documented]({{<
 - Only ports 80 and 443 can be configured for HTTP/HTTPS routing via Ingress. Also Ingress Controller is deployed globally as a DaemonSet and not launched as a scalable service. Also, users cannot assign random external ports to be used for balancing. Therefore, users need to ensure that they configure unique hostname/path combinations to avoid routing conflicts using the same two ports.
 - There is no way to specify port rule priority and ordering.
 - Rancher v1.6 added support for draining backend connections and specifying a drain timeout. This is not supported in Rancher v2.x.
-- There is no support for specifying a custom stickiness policy and a custom load balancer config to be appended to the default config as of now in Rancher v2.x. There is some support, however, available in native Kubernetes for customizing the NGINX configuration as noted in the [NGINX Ingress Controller Custom Conguration Documentation](https://kubernetes.github.io/ingress-nginx/examples/customization/custom-configuration/).
+- There is no support for specifying a custom stickiness policy and a custom load balancer config to be appended to the default config as of now in Rancher v2.x. There is some support, however, available in native Kubernetes for customizing the NGINX configuration as noted in the [NGINX Ingress Controller Custom Configuration Documentation](https://kubernetes.github.io/ingress-nginx/examples/customization/custom-configuration/).
 
 ### Finished!

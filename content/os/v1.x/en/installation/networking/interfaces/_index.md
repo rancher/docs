@@ -232,7 +232,7 @@ rancher:
         scan_ssid: 1
 ```
 
-When adding in WiFi access, you do not need a system reboot, you only need to restart the `network` service in System Docker. 
+When adding in WiFi access, you do not need a system reboot, you only need to restart the `network` service in System Docker.
 
 ```
 $ sudo system-docker restart network
@@ -244,13 +244,13 @@ $ sudo system-docker restart network
 
 _Available as of v1.5_
 
-In order to support 4G-LTE, 4G-LTE module will need to be connected to the motherboard and to get a good signal, an external atenna will need to be added. You can assemble such a device, which supports USB interface and SIM cards slot:
+In order to support 4G-LTE, 4G-LTE module will need to be connected to the motherboard and to get a good signal, an external antenna will need to be added. You can assemble such a device, which supports USB interface and SIM cards slot:
 
 ![](https://ws1.sinaimg.cn/bmiddle/006tNc79ly1fzcuvhu6zpj30k80qwag1.jpg)
 
-In order to use RancherOS, you will need to use the ISO built for 4G-LTE support. This ISO has a built-in `modem-manager` service and is available with each release. 
+In order to use RancherOS, you will need to use the ISO built for 4G-LTE support. This ISO has a built-in `modem-manager` service and is available with each release.
 
-After booting the ISO, there will be a 4G NIC, such as `wwan0`. Use the following `cloud-config` to set the APN parameter. 
+After booting the ISO, there will be a 4G NIC, such as `wwan0`. Use the following `cloud-config` to set the APN parameter.
 
 ```yaml
 rancher:
@@ -266,4 +266,4 @@ After any configuration changes, restart the `modem-manager` service to apply th
 $ sudo system-docker restart modem-manager
 ```
 
-> **Note:** Currently, RancherOS has some built-in  rules in `udev` rules to allow RancherOS to recognize specific 4G devices, but there are additional vendors that may be missing. If you need to add these in, please file an issue. 
+> **Note:** Currently, RancherOS has some built-in  rules in `udev` rules to allow RancherOS to recognize specific 4G devices, but there are additional vendors that may be missing. If you need to add these in, please file an issue.

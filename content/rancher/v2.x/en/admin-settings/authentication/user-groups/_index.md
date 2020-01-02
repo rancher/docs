@@ -29,7 +29,7 @@ Rancher will periodically refresh the user information even before a user logs i
 
 - **`auth-user-info-max-age-seconds`**
 
-    This setting controls how old a user's information can be before Rancher refreshes it. If a user makes an API call (either directly or by using the Rancher CLI or kubectl) and the time since the user's last refresh is greater than this setting, then Rancher will trigger a refresh. This settting defaults to `3600` seconds, i.e. 1 hour.
+    This setting controls how old a user's information can be before Rancher refreshes it. If a user makes an API call (either directly or by using the Rancher CLI or kubectl) and the time since the user's last refresh is greater than this setting, then Rancher will trigger a refresh. This setting defaults to `3600` seconds, i.e. 1 hour.
 
 - **`auth-user-info-resync-cron`**
 
