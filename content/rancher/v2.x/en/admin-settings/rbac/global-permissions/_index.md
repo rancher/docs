@@ -141,9 +141,9 @@ For new users, the new permissions take effect when the users log in to Rancher 
 If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have any remaining roles that were assigned to them, which would typically include the roles marked as **New User Default.** Rancher will remove the permissions that are associated with the group when the user logs out, or when an administrator [refreshes group memberships,]((#refreshing-group-memberships)) whichever comes first.
 
 > **Prerequisites:** You can only assign a global role to a group if:
-> 
+>
 > * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-vs-local-authentication)
-> * The external authentication provider suppports [user groups]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/user-groups/)
+> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/user-groups/)
 > * You have already set up at least one user group with the authentication provider
 
 To assign a custom global role to a group, follow these steps:

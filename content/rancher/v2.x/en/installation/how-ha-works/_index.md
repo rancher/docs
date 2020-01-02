@@ -3,7 +3,7 @@ title: About High-availability Installations
 weight: 2
 ---
 
-We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased avaialability is achieved by running Rancher on multiple nodes.
+We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased availability is achieved by running Rancher on multiple nodes.
 
 In a typical HA Rancher installation, Kubernetes is first installed on three nodes that are hosted in an infrastructure provider such as Amazon's EC2 or Google Compute Engine.
 

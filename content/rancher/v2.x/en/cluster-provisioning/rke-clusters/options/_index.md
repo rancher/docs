@@ -1,7 +1,7 @@
 ---
 title: Cluster Options
 weight: 2250
---- 
+---
 
 As you configure a new cluster that's provisioned using [RKE]({{< baseurl >}}/rke/latest/en/), you can choose custom Kubernetes options.
 
@@ -60,7 +60,7 @@ _Available as of v2.2.0_
 
 The registry configuration here is applied during the provisioning of the cluster. This option tells Rancher where to pull the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) or [addon images.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
 
-- **System images** are components needed to maintain the Kubernetes cluster. 
+- **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
 To deploy workloads that pull images from a private registry, you will need to set up your own Kubernetes registry for your project.
@@ -109,7 +109,7 @@ If the nodes you are adding to the cluster have Docker configured with a non-def
 
 #### Recurring etcd Snapshots
 
-Option to enable or disable [recurring etcd snaphots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
+Option to enable or disable [recurring etcd snapshots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
 
 ## Config File
 
@@ -131,63 +131,63 @@ RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kuber
 {{% accordion id="v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.3.0+" %}}
 
 ```yaml
-# 
+#
 # Cluster Config
-# 
+#
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
 enable_cluster_monitoring: false
 enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: true
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config: # Your RKE template config goes here.
   addon_job_timeout: 30
   authentication:
     strategy: x509
   ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
   ingress:
     provider: nginx
   kubernetes_version: v1.15.3-rancher3-1
   monitoring:
     provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     options:
       flannel_backend_type: vxlan
     plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -197,7 +197,7 @@ rancher_kubernetes_engine_config: # Your RKE template config goes here.
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:
@@ -232,46 +232,46 @@ addon_job_timeout: 30
 authentication:
   strategy: x509
 ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
 ingress:
   provider: nginx
 kubernetes_version: v1.15.3-rancher3-1
 monitoring:
   provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
 network:
   options:
     flannel_backend_type: vxlan
   plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -281,7 +281,7 @@ network:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
 services:
   etcd:
     backup_config:

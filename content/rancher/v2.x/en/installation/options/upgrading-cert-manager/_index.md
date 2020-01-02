@@ -11,7 +11,7 @@ Rancher uses cert-manager to automatically generate and renew TLS certificates f
 To address these changes, this guide will do two things:
 
 1. Document the procedure for upgrading cert-manager
-1. Explain the cert-manager API changes and link to cert-manager's offficial documentation for migrating your data
+1. Explain the cert-manager API changes and link to cert-manager's official documentation for migrating your data
 
 
 ## Performing the upgrade

@@ -30,7 +30,7 @@ Rancher's Istio integration comes with comprehensive visualization aids:
 - **Trace the root cause of errors with Jaeger.** [Jaeger](https://www.jaegertracing.io/) is an open-source tool that provides a UI for a distributed tracing system, which is useful for root cause analysis and for determining what causes poor performance. Distributed tracing allows you to view an entire chain of calls, which might originate with a user request and traverse dozens of microservices.
 - **Get the full picture of your microservice architecture with Kiali.** [Kiali](https://www.kiali.io/) provides a diagram that shows the services within a service mesh and how they are connected, including the traffic rates and latencies between them. You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
 - **Gain insights from time series analytics with Grafana dashboards.** [Grafana](https://grafana.com/) is an analytics platform that allows you to query, visualize, alert on and understand the data gathered by Prometheus.
-- **Write custom queries for time series data with the Promethus UI.** [Prometheus](https://prometheus.io/) is a systems monitoring and alerting toolkit. Prometheus scrapes data from your cluster, which is then used by Grafana. A Prometheus UI is also integrated into Rancher, and lets you write custom queries for time series data and see the results in the UI.
+- **Write custom queries for time series data with the Prometheus UI.** [Prometheus](https://prometheus.io/) is a systems monitoring and alerting toolkit. Prometheus scrapes data from your cluster, which is then used by Grafana. A Prometheus UI is also integrated into Rancher, and lets you write custom queries for time series data and see the results in the UI.
 
 # Prerequisites
 
@@ -42,7 +42,7 @@ Refer to the [setup guide]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/ist
 
 # Disabling Istio
 
-To remove Istio components from a cluster, namepace, or workload, refer to the section on [disabling Istio.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/disabling-istio)
+To remove Istio components from a cluster, namespace, or workload, refer to the section on [disabling Istio.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/disabling-istio)
 
 # Accessing Visualizations
 

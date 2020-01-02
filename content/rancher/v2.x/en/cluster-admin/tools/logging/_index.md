@@ -14,7 +14,7 @@ Logging is helpful because it allows you to:
 - Look for trends in your environment
 - Save your logs to a safe location outside of your cluster
 - Stay informed of events like a container crashing, a pod eviction, or a node dying
-- More easily debugg and troubleshoot problems
+- More easily debug and troubleshoot problems
 
 Rancher supports integration with the following services:
 
@@ -100,7 +100,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
                 ```
                 openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
                 ```
-       2. If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+       2. If you are using a self-signed certificate, provide the **CA Certificate PEM**.
 
 1. (Optional) Complete the **Additional Logging Configuration** form.
 

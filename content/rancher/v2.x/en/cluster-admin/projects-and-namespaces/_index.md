@@ -20,7 +20,7 @@ In terms of hierarchy:
 
 You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
 
-In the base version of Kubernetes, features like role-based access rights or cluster resources are assigned to individual namespaces. A project allows you to save time by giving an individual or a team acess to multiple namespaces simultaneously.
+In the base version of Kubernetes, features like role-based access rights or cluster resources are assigned to individual namespaces. A project allows you to save time by giving an individual or a team access to multiple namespaces simultaneously.
 
 You can use projects to perform actions like:
 

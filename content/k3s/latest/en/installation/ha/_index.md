@@ -16,7 +16,7 @@ The following diagram illustrates the above configuration:
 
 In this architecture a server node is defined as a machine (bare-metal or virtual) running the `k3s server` command. A worker node is defined as a machine running the `k3s agent` command.
 
-Workers register through the fixed registration address, but after registration they establish a connection directly to one of the sever nodes. This is a websocket connection initiated by the `k3s agent` process and it is maintained by a client-side load balancer running as part of the agent process.
+Workers register through the fixed registration address, but after registration they establish a connection directly to one of the server nodes. This is a websocket connection initiated by the `k3s agent` process and it is maintained by a client-side load balancer running as part of the agent process.
 
 Installation Outline
 --------------------

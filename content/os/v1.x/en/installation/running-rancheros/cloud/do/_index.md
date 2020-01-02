@@ -3,7 +3,7 @@ title: Digital Ocean
 weight: 107
 ---
 
-RancherOS is avaliable in the Digital Ocean portal. RancherOS is a member of container distributions and you can find it easily.
+RancherOS is available in the Digital Ocean portal. RancherOS is a member of container distributions and you can find it easily.
 
 >**Note**
 >Deploying to Digital Ocean will incur charges.

@@ -40,7 +40,7 @@ If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<b
 
 ### Installing Docker
 
-Docker can be installed by following the steps in the offical [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
+Docker can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
 
 # Hardware Requirements
 

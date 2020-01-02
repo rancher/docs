@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/faq/contributing/
 ---
 
-This section explains the respositories used for Rancher, how to build the repositories, and what information to include when you file an issue.
+This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.
 
 For more detailed information on how to contribute to the development of Rancher projects, refer to the [Rancher Developer Wiki](https://github.com/rancher/rancher/wiki). The wiki has resources on many topics, including the following:
 

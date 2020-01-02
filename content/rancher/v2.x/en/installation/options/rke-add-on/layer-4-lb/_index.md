@@ -211,7 +211,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
         services:
           etcd:
-            backup: false   
+            backup: false
 
 
 ## 7. Configure Certificates
@@ -393,7 +393,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availablility Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>

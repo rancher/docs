@@ -5,19 +5,19 @@ aliases:
     - /rancher/v2.x/en/tasks/global-configuration/authentication/active-directory/
 ---
 
-If your organization uses Microsoft Active Directory as central user repository, you can configure Rancher to communicate with an Active Directory server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the Rancher UI. 
+If your organization uses Microsoft Active Directory as central user repository, you can configure Rancher to communicate with an Active Directory server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the Rancher UI.
 
 Rancher uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/openldap) integration.
 
 > **Note:**
-> 
+>
 > Before you start, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 ## Prerequisites
 
 You'll need to create or obtain from your AD administrator a new AD user to use as service account for Rancher. This user must have sufficient permissions to perform LDAP searches and read attributes of users and groups under your AD domain.
 
-Usually a (non-admin) **Domain User** account should be used for this purpose, as by default such user has read-only privileges for most objects in the domain partition. 
+Usually a (non-admin) **Domain User** account should be used for this purpose, as by default such user has read-only privileges for most objects in the domain partition.
 
 Note however, that in some locked-down Active Directory configurations this default behaviour may not apply. In such case you will need to ensure that the service account user has at least **Read** and **List Content** permissions granted either on the Base OU (enclosing users and groups) or globally for the domain.
 
@@ -126,7 +126,7 @@ Once you have completed the configuration, proceed by testing  the connection to
 
 ## Annex: Identify Search Base and Schema using ldapsearch
 
-In order to successfully configure AD authentication it is crucial that you provide the correct configuration pertaining to the hirarchy and schema of your AD server.
+In order to successfully configure AD authentication it is crucial that you provide the correct configuration pertaining to the hierarchy and schema of your AD server.
 
 The [`ldapsearch`](http://manpages.ubuntu.com/manpages/artful/man1/ldapsearch.1.html) tool allows you to query your AD server to learn about the schema used for user and group objects.
 
@@ -165,7 +165,7 @@ The output of the above `ldapsearch` query also allows to determine the correct 
 
 > **Note:**
 >
-> If the AD users in our organisation were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.  
+> If the AD users in our organisation were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
 
 We'll also set the `Search Attribute` parameter to **sAMAccountName|name**. That way users can be added to clusters/projects in the Rancher UI either by entering their username or full name.
 

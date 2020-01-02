@@ -22,7 +22,7 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
 
 1.  Copy and paste the code sample below into your favorite text editor. Save it as `nginx.conf`.
 
-2.  From `nginx.conf`, replace both occurences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
+2.  From `nginx.conf`, replace both occurrences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your [nodes]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/).
 
     > **Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
 

@@ -45,7 +45,7 @@ The following diagram displays the health check microservice evaluating a contai
 
 ## Rancher v2.x Health Checks
 
-In Rancher v2.x, the health check microservice is replaced with Kubernete's native health check mechanisms, called _probes_. These probes, similar to the Rancher v1.6 health check microservice, monitor the health of pods over TCP and HTTP.
+In Rancher v2.x, the health check microservice is replaced with Kubernetes's native health check mechanisms, called _probes_. These probes, similar to the Rancher v1.6 health check microservice, monitor the health of pods over TCP and HTTP.
 
 However, probes in Rancher v2.x have some important differences, which are described below. For full details about probes, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes).
 

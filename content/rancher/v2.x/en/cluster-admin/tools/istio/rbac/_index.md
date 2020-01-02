@@ -7,7 +7,7 @@ This section describes the permissions required to access Istio features and how
 
 # Cluster-level Access
 
-By default, only cluster adminstrators can:
+By default, only cluster administrators can:
 
 - Enable Istio for the cluster
 - Configure resource allocations for Istio
@@ -33,7 +33,7 @@ By default,  the Kiali and Jaeger visualizations are restricted to the cluster o
 
 Rancher supports giving groups permission to access Kiali and Jaeger, but not individuals.
 
-To configure who has permission to access the Kiali and Jaeger UI, 
+To configure who has permission to access the Kiali and Jaeger UI,
 
 1. Go to the cluster view and click **Tools > Istio.**
 1. Then go to the **Member Access** section. If you want to restrict access to certain groups, choose **Allow cluster owner and specified members to access Kiali and Jaeger UI.** Search for the groups that you want to have access to Kiali and Jaeger. If you want all members to have access to the tools, click **Allow all members to access Kiali and Jaeger UI.**
