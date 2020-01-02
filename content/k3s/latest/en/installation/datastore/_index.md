@@ -94,4 +94,4 @@ k3s server
 ```
 
 ### Embedded DQLite for HA (Experimental)
-K3s's use of DQLite is similar to its use of SQLite. It is simple to setup and manage. As such, there is no external configuration or additional steps to take in order to use this option. Please see [High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installation/ha-embedded/) for instructions on how to run with this option.
+K3s's use of DQLite is similar to its use of SQLite. It is simple to set up and manage. As such, there is no external configuration or additional steps to take in order to use this option. Please see [High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installation/ha-embedded/) for instructions on how to run with this option.

@@ -5,11 +5,11 @@ weight: 60
 
 In this guide, we are assuming you have created your nodes in your air-gap environment and have a secure Docker private registry on your bastion server.
 
-Installation Outline
---------------------
-1. Prepare Images Directory
-2. Create Registry YAML
-3. Install K3s
+# Installation Outline
+
+1. [Prepare Images Directory](#prepare-images-directory)
+2. [Create Registry YAML](#create-registry-YAML)
+3. [Install K3s](#install-k3s)
 
 ### Prepare Images Directory
 Obtain the images tar file for your architecture from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be running.

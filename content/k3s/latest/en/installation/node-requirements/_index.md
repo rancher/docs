@@ -18,6 +18,8 @@ K3s should run on just about any flavor of Linux. However, K3s is tested on the 
 *    Ubuntu 18.04 (amd64)
 *    Raspbian Buster (armhf)
 
+> If you are using Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+
 ## Hardware
 
 Hardware requirements scale based on the size of your deployments. Minimum recommendations are outlined here.

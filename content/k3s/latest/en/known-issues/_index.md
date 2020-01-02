@@ -11,3 +11,7 @@ If you plan to use K3s with docker, Docker installed via a snap package is not r
 **Iptables**
 
 If you are running iptables in nftables mode instead of legacy you might encounter issues. We recommend utilizing newer iptables (such as 1.6.1+) to avoid issues.
+
+**RootlessKit**
+
+Running K3s with RootlessKit is experimental and has several [known issues.]({{<baseurl>}}/k3s/latest/en/advanced/#known-issues-with-rootlesskit)

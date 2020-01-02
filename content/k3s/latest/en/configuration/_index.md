@@ -27,7 +27,11 @@ spec:
     ssl.enabled: "true"
 ```
 
-Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual helm release, you can do that using `targetNamespace` key in the spec section:
+Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources.
+
+If you want to specify the namespace for the actual Helm release, you can do that using `targetNamespace` key under the `spec` directive, as shown in the configuration example below.
+
+Also note that besides `set`, you can also use `valuesContent` under the `spec` directive. And it's okay to use both of them:
 
 ```yaml
 apiVersion: helm.cattle.io/v1
@@ -50,8 +54,6 @@ spec:
       datasources:
         enabled: true
 ```
-
-Also note that besides `set` you can use `valuesContent` in the spec section. And it's okay to use both of them.
 
 K3s versions `<= v0.5.0` used `k3s.cattle.io` for the api group of helmcharts, this has been changed to `helm.cattle.io` for later versions.
 
