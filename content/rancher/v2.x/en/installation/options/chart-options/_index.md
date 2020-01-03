@@ -32,6 +32,8 @@ aliases:
 | `auditLog.maxSize`             | 100                                                   | `int` - maximum size in megabytes of the audit log file before it gets rotated (only applies when `auditLog.destination` is set to `hostPath`)    |
 | `busyboxImage`                 | "busybox"                                             | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_                                             |
 | `debug`                        | false                                                 | `bool` - set debug flag on rancher server                                                                                                         |
+| `certmanager.version` | "" | `string` - set cert-manager compatibility 
+                                                |
 | `extraEnv`                     | []                                                    | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_                                                          |
 | `imagePullSecrets`             | []                                                    | `list` - list of names of Secret resource containing private registry credentials                                                                 |
 | `ingress.extraAnnotations`     | {}                                                    | `map` - additional annotations to customize the ingress                                                                                           |
