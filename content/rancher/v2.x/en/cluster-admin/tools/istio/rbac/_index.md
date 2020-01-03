@@ -33,6 +33,8 @@ By default,  the Kiali and Jaeger visualizations are restricted to the cluster o
 
 Rancher supports giving groups permission to access Kiali and Jaeger, but not individuals.
 
+> To configure permissions for Jaeger and Kiali, you must have at least read-only [access]({{<baseurl>}}/rancher/v2.x/en/project-admin/project-members/) to the `System` project.
+
 To configure who has permission to access the Kiali and Jaeger UI,
 
 1. Go to the cluster view and click **Tools > Istio.**
