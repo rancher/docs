@@ -60,21 +60,6 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 ### Editing Namespace Resource Quotas
 
-If there is a [resource quota]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) configured for a project, you can override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
+You can always override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
 
-1. From the **Global** view, open the cluster that contains the namespace for which you want to edit the resource quota.
-
-1. From the main menu, select **Projects/Namespaces**.
-
-1. Find the namespace for which you want to edit the resource quota. Select **Ellipsis (...) > Edit**.
-
-1. Edit the Resource Quota **Limits**.  These limits determine the resources available to the namespace. The limits must be set within the configured project limits.
-
-    For more information about each **Resource Type**, see [Resource Quota Types]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
-
-    >**Note:**
-    >
-    >- If a resource quota is not configured for the project, these options will not be available.
-    >- If you enter limits that exceed the configured project limits, Rancher will not let you save your edits.
-
-**Result:** The namespace's default resource quota is overwritten with your override.
+For more information, see how to [edit namespace resource quotas]({{< baseurl >}}/rancher/v2.x/en/project-admin//resource-quotas/override-namespace-default/#editing-namespace-resource-quotas).

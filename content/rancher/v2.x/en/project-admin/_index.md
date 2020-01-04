@@ -1,6 +1,9 @@
 ---
 title: Project Administration
 weight: 2500
+aliases:
+  - /rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/
+  - /rancher/v2.x/en/project-admin/editing-projects/
 ---
 
 _Projects_ are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.
@@ -18,10 +21,11 @@ You can use projects to perform actions like:
 
 - [Assign users access to a group of namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/project-members)
 - Assign users [specific roles in a project]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/)
-- [Edit project settings]({{< baseurl >}}/rancher/v2.x/en/project-admin/editing-projects/)
 - [Set resource quotas]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/)
 - [Manage namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/namespaces/)
 - [Configure tools]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/)
+- [Set up pipelines for continuous integration and deployment]({{<baseurl>}}/rancher/v2.x/en/project-admin/pipelines)
+- [Configure pod security policies]({{<baseurl>}}/rancher/v2.x/en/project-admin/pod-security-policies)
 
 ### Authorization
 
