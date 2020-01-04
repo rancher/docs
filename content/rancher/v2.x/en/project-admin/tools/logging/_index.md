@@ -5,6 +5,8 @@ weight: 2527
 
 Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
 
+For background information about how logging integrations work, refer to the [cluster administration section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/#how-logging-integrations-work)
+
 Rancher supports the following services:
 
 - Elasticsearch
