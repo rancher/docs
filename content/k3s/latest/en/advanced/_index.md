@@ -8,6 +8,7 @@ aliases:
 
 This section contains advanced information describing the different ways you can run and manage K3s:
 
+- [Using Helm 3](#using-helm-3)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using the Helm CRD](#using-the-helm-crd)
 - [Accessing the cluster from outside with kubectl](#accessing-the-cluster-from-outside-with-kubectl)
@@ -17,6 +18,17 @@ This section contains advanced information describing the different ways you can
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
+
+# Using Helm 3
+
+K3s release _v1.17.0+k3s.1_ added support for Helm 3. You can access the Helm 3 documentation [here](https://helm.sh/docs/intro/quickstart/).
+Note that Helm 3 no longer requires tiller and the helm init command. Refer to the official documentation for details.
+
+K3s does not require any special configuration to start using Helm 3. Just be sure you have properly set your KUBECONFIG for Helm to work properly.
+
+### Upgrading
+
+If you were using Helm v2 in previous versions of K3s, you may upgrade to v1.17.0+k3s.1 or newer and Helm 2 will still function. If you wish to migrate to Helm 3, [this](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) blog post by Helm explains how to use a plugin to successfully migrate. Refer to the official Helm 3 documentation [here](https://helm.sh/docs/) for more information. K3s will handle either Helm v2 or Helm v3 as of v1.17.0+k3s.1. Just be sure you have properly set your KUBECONFIG for Helm to work properly.
 
 # Auto-Deploying Manifests
 
