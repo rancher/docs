@@ -10,7 +10,7 @@ Before installing Rancher, make sure that your nodes fulfill all of the [install
 
 ### Overview of Installation Options
 
-We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased avaialability is achieved by running Rancher on multiple nodes.
+We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased availability is achieved by running Rancher on multiple nodes.
 
 For testing and demonstration purposes, Rancher can also be installed with Docker on a single node. However, there is no migration path from a single-node Docker installation to an HA installation on a Kubernetes cluster. Therefore, you may want to use an HA installation from the start.
 
