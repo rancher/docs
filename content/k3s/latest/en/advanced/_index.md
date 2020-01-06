@@ -8,6 +8,8 @@ aliases:
 
 This section contains advanced information describing the different ways you can run and manage K3s:
 
+- [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) 
+- [Using Helm 3](#using-helm-3)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using the Helm CRD](#using-the-helm-crd)
 - [Accessing the cluster from outside with kubectl](#accessing-the-cluster-from-outside-with-kubectl)
@@ -17,6 +19,37 @@ This section contains advanced information describing the different ways you can
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
+
+# Setting Up the kubeconfig File
+
+The kubeconfig file is used to configure access to the Kubernetes cluster. It is required to be set up properly in order to access the Kubernetes API such as with kubectl or for installing applications with Helm. You may set the kubeconfig by either exporting the KUBECONFIG environment variable or by specifying a flag for kubectl and helm. Refer to the examples below for details.
+
+Leverage the KUBECONFIG environment variable:
+
+```
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+kubectl get pods --all-namespaces
+helm ls --all-namespaces
+```
+
+Or specify the location of the kubeconfig file per command:
+
+```
+kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get pods --all-namespaces
+helm --kubeconfig /etc/rancher/k3s/k3s.yaml ls --all-namespaces
+```
+
+# Using Helm 3
+
+K3s release _v1.17.0+k3s.1_ added support for Helm 3. You can access the Helm 3 documentation [here](https://helm.sh/docs/intro/quickstart/).
+Note that Helm 3 no longer requires tiller and the helm init command. Refer to the official documentation for details.
+
+K3s does not require any special configuration to start using Helm 3. Just be sure you have properly set up your kubeconfig as per the [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) section above.
+
+
+### Upgrading
+
+If you were using Helm v2 in previous versions of K3s, you may upgrade to v1.17.0+k3s.1 or newer and Helm 2 will still function. If you wish to migrate to Helm 3, [this](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) blog post by Helm explains how to use a plugin to successfully migrate. Refer to the official Helm 3 documentation [here](https://helm.sh/docs/) for more information. K3s will handle either Helm v2 or Helm v3 as of v1.17.0+k3s.1. Just be sure you have properly set your kubeconfig as per the examples above in the [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) section.
 
 # Auto-Deploying Manifests
 
@@ -39,6 +72,8 @@ spec:
 ```
 
 Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual Helm release, you can do that using `targetNamespace` key under the `spec` directive, as shown in the configuration example below.
+
+> **Note:** In order for the Helm Controller to know which version of Helm to use to Auto-Deploy a helm app, please specify the `helmVersion` in the spec of your YAML file.
 
 Also note that besides `set`, you can use `valuesContent` under the `spec` directive. And it's okay to use both of them:
 
