@@ -87,7 +87,11 @@ This section describes how to upgrade normal (Internet-connected) or air gap ins
 
     > **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
 
-2. Upgrade Rancher to the latest version with all your settings.
+> **Note:** If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, please follow Option B: Reinstalling Rancher, otherwise follow Option A: Upgrading Rancher
+
+{{% accordion id="secret" label="Option A: Upgrading Rancher" %}}
+
+1. Upgrade Rancher to the latest version with all your settings.
 
     - Take all the values from the previous step and append them to the command using `--set key=value`.
 
@@ -95,6 +99,27 @@ This section describes how to upgrade normal (Internet-connected) or air gap ins
     helm upgrade rancher rancher-<CHART_REPO>/rancher \
     --set hostname=rancher.my.org # Note: There will be many more options from the previous step that need to be appended.
     ```
+
+{{% /accordion %}}
+
+{{% accordion id="secret" label="Option B: Reinstalling Rancher chart" %}}
+
+1. Uninstall Rancher
+
+    ```
+    helm delete rancher -n cattle-system
+    ```
+
+2. Reinstall Rancher to the latest version with all your settings.
+
+    - Take all the values from the previous step and append them to the command using `--set key=value`.
+
+    ```
+    helm install rancher rancher-<CHART_REPO>/rancher \
+    --set hostname=rancher.my.org # Note: There will be many more options from the previous step that need to be appended.
+    ```
+
+{{% /accordion %}}
 
 {{% /tab %}}
 
