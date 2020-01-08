@@ -215,8 +215,7 @@ cloud_provider:
 # up on trying to get the job status after this timeout in seconds..
 addon_job_timeout: 30
 
-# There are several network plug-ins that work, but we default
-# to canal      
+# Specify network plugin-in (canal, calico, flannel, weave, or none)
 network:
     plugin: canal
 
