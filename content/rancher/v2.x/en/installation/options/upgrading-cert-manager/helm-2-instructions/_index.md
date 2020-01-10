@@ -161,10 +161,10 @@ Per the cert-manager documentation, a new format for configuring ACME certificat
 
 Details about the change and migration instructions can be found in the [cert-manager v0.7 to v0.8 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/).
 
-The v0.11 release marks the removal of the v1alpha1 API that was used in previous versions of cert-manager, as well as our API group changing to be cert-manager.io instead of certmanager.k8s.io.
+The v0.11 release marks the removal of the v1alpha1 API that was used in previous versions of cert-manager, as well as our API group changing to be `cert-manager.io` instead of `certmanager.k8s.io.`
 
 We have also removed support for the old configuration format that was deprecated in the v0.8 release. This means you must transition to using the new solvers style configuration format for your ACME issuers before upgrading to v0.11. For more information, see the [upgrading to v0.8 guide](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/).
 
 Details about the change and migration instructions can be found in the [cert-manager v0.10 to v0.11 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/).
 
-More info about [cert-manager upgrade information](https://cert-manager.io/docs/installation/upgrading/).
+For information on upgrading from all other versions of cert-manager, refer to the [official documentation](https://cert-manager.io/docs/installation/upgrading/).
