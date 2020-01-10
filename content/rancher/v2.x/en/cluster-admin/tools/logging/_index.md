@@ -1,12 +1,20 @@
 ---
-title: Logging
+title: Rancher Integration with Logging Services
+description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
+metaDescription: "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster."
 weight: 3
 aliases:
   - /rancher/v2.x/en/tasks/logging/
   - /rancher/v2.x/en/tools/logging/
 ---
 
-Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
+Logging is helpful because it allows you to:
+
+- Capture and analyze the state of your cluster
+- Look for trends in your environment
+- Save your logs to a safe location outside of your cluster
+- Stay informed of events like a container crashing, a pod eviction, or a node dying
+- More easily debug and troubleshoot problems
 
 Rancher supports integration with the following services:
 
@@ -16,9 +24,26 @@ Rancher supports integration with the following services:
 - Syslog
 - Fluentd
 
+This section covers the following topics:
+
+- [How logging integrations work](#how-logging-integrations-work)
+- [Requirements](#requirements)
+- [Logging scope](#logging-scope)
+- [Enabling cluster logging](#enabling-cluster-logging)
+
+# How Logging Integrations Work
+
+Rancher can integrate with popular external services used for event streams, telemetry, or search. These services can log errors and warnings in your Kubernetes infrastructure to a stream.
+
+These services collect container log events, which are saved to the `/var/log/containers` directory on each of your nodes. The service collects both standard and error events. You can then log into your services to review the events collected, leveraging each service's unique features.
+
+When configuring Rancher to integrate with these services, you'll have to point Rancher toward the service's endpoint and provide authentication information.
+
+Additionally, you'll have the opportunity to enter key-value pairs to filter the log events collected. The service will only collect events for containers marked with your configured key-value pairs.
+
 >**Note:** You can only configure one logging service per cluster or per project.
 
-## Requirements
+# Requirements
 
 The Docker daemon on each node in the cluster should be [configured](https://docs.docker.com/config/containers/logging/configure/) with the (default) log-driver: `json-file`. You can check the log-driver by running the following command:
 
@@ -27,16 +52,7 @@ $ docker info | grep 'Logging Driver'
 Logging Driver: json-file
 ```
 
-## Advantages
-
-Setting up a logging service to collect logs from your cluster/project has several advantages:
-
-- Logs errors and warnings in your Kubernetes infrastructure to a stream. The stream informs you of events like a container crashing, a pod eviction, or a node dying.
-- Allows you to capture and analyze the state of your cluster and look for trends in your environment using the log stream.
-- Helps you when troubleshooting or debugging.
-- Saves your logs to a safe location outside of your cluster, so that you can still access them even if your cluster encounters issues.
-
-## Logging Scope
+# Logging Scope
 
 You can configure logging at either cluster level or project level.
 
@@ -48,7 +64,7 @@ Logs that are sent to your logging service are from the following locations:
   - Pod logs stored at `/var/log/containers`.
   - Kubernetes system components logs stored at `/var/lib/rancher/rke/log/`.
 
-## Enabling Cluster Logging
+# Enabling Cluster Logging
 
 As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to send Kubernetes logs to a logging service.
 
@@ -84,7 +100,7 @@ As an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
                 ```
                 openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
                 ```
-       2. If you are using a self-signed certificate, provide the **CA Certificate PEM**.  
+       2. If you are using a self-signed certificate, provide the **CA Certificate PEM**.
 
 1. (Optional) Complete the **Additional Logging Configuration** form.
 

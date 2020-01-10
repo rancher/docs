@@ -32,7 +32,8 @@ For a full list of all the best practices that we recommend, refer to the [best 
 
 For more information on what each role is used for, refer to the [section on roles for nodes in Kubernetes.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production/nodes-and-roles)
 
-For more information about the recommended number of nodes for each Kubernetes role, refer to the [section on recommended architecture.]({{<baseurl>}}/rancher/v2.x/encluster-provisioning/recommended-architecture)
+For more information about the 
+number of nodes for each Kubernetes role, refer to the section on [recommended architecture.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/)
 
 ### Logging and Monitoring
 

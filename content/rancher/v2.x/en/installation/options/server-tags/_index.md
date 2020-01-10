@@ -87,8 +87,7 @@ Rancher Server is distributed as a Docker image, which have tags attached to the
 > **Notes:**
 >
 > - The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
-> - Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`).
->
->          _Caveat:_ Alpha releases cannot be upgraded to or from any other release.
->
->   {{% /tab %}} > {{% /tabs %}}
+> - Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`). Caveat: Alpha releases cannot be upgraded to or from any other release.
+
+{{% /tab %}} 
+{{% /tabs %}}

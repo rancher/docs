@@ -47,7 +47,7 @@ The [add-on section](#add-ons) of an RKE template is especially powerful because
 # Scope of RKE Templates
 
 RKE templates are supported for Rancher-provisioned clusters. The templates can be used to provision custom clusters or clusters that are launched by an infrastructure provider.
- 
+
 RKE templates are for defining Kubernetes and Rancher settings. Node templates are responsible for configuring nodes. For tips on how to use RKE templates in conjunction with hardware, refer to [RKE Templates and Hardware]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
 
 RKE templates can be created from scratch to pre-define cluster configuration. They can be applied to launch new clusters, or templates can also be exported from existing running clusters.
@@ -102,7 +102,7 @@ As of Rancher v2.3.3, you can [save the configuration of an existing cluster as 
 
 # Standardizing Hardware
 
-RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you use RKE templates [in conjuction with other tools]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
+RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you use RKE templates [in conjunction with other tools]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware).
 
 # YAML Customization
 

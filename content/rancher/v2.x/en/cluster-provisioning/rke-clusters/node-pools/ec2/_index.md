@@ -1,6 +1,7 @@
 ---
 title: Creating an Amazon EC2 Cluster
 shortTitle: Amazon EC2
+description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher
 weight: 2210
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-amazon-ec2/
@@ -13,7 +14,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 - IAM Policy created to add to the user of the Access Key And Secret Key. See [Amazon Documentation: Creating IAM Policies (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start) how to create an IAM policy. See our three example JSON policies below:
   - [Example IAM Policy](#example-iam-policy)
   - [Example IAM Policy with PassRole](#example-iam-policy-with-passrole) (needed if you want to use [Kubernetes Cloud Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers) or want to pass an IAM Profile to an instance)
-  - [Example IAM Policy to allow encrypted EBS volumes](#example-iam-policy-to-allow-encrypted-ebs-volumes) 
+  - [Example IAM Policy to allow encrypted EBS volumes](#example-iam-policy-to-allow-encrypted-ebs-volumes)
 - IAM Policy added as Permission to the user. See [Amazon Documentation: Adding Permissions to a User (Console)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) how to attach it to an user.
 
 
@@ -35,7 +36,7 @@ Use {{< product >}} to create a Kubernetes cluster in Amazon EC2.
 
   1. Complete each of the following forms using information available from the [EC2 Management Console](https://aws.amazon.com/ec2).
 
-		- **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisistes](#prerequisites) how to create the Access Key and Secret Key and the needed permissions.
+		- **Account Access** is where you configure the region of the nodes, and the credentials (Access Key and Secret Key) used to create the machine. See [Prerequisites](#prerequisites) how to create the Access Key and Secret Key and the needed permissions.
 
 		{{< step_create-cloud-credential >}}
 

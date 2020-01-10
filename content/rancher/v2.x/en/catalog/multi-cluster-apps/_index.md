@@ -18,7 +18,7 @@ After creating a multi-cluster application, you can program a [Global DNS entry]
 
 3.  (Optional) Review the detailed descriptions, which are derived from the Helm chart's `README`.
 
-4. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is named as `<MULTI-CLUSTER_APPLICTION_NAME>-<PROJECT_ID>`.
+4. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is named as `<MULTI-CLUSTER_APPLICATION_NAME>-<PROJECT_ID>`.
 
 5. Select a **Template Version**.
 
@@ -50,13 +50,13 @@ In the **Upgrades** section, select the upgrade strategy to use, when you decide
 
 #### Roles
 
-In the **Roles** section, you define the role of the multi-cluster application. Typically, when a user [launches catalog applications]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/#launching-catalog-applications), that specific users's permissions are used for creation of all workloads/resources that is required by the app.
+In the **Roles** section, you define the role of the multi-cluster application. Typically, when a user [launches catalog applications]({{< baseurl >}}/rancher/v2.x/en/catalog/apps/#launching-catalog-applications), that specific user's permissions are used for creation of all workloads/resources that is required by the app.
 
 For multi-cluster applications, the application is deployed by a _system user_ and is assigned as the creator of all underlying resources. A _system user_ is used instead of the actual user due to the fact that the actual user could be removed from one of the target projects. If the actual user was removed from one of the projects, then that user would no longer be able to manage the application for the other projects.
 
 Rancher will let you select from two options for Roles, **Project** and **Cluster**. Rancher will allow creation using any of these roles based on the user's permissions.
 
-- **Project** - This is the equivalent of a [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or a [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles), then the user is considered to have the appropriate level of permissions.   
+- **Project** - This is the equivalent of a [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or a [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles), then the user is considered to have the appropriate level of permissions.
 
 - **Cluster** - This is the equivalent of a [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [cluster owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _cluster owner_ role, if the user is an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), then the user is considered to have the appropriate level of permissions.
 
@@ -68,7 +68,7 @@ When launching the application, Rancher will confirm if you have these permissio
 
 For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://github.com/helm/helm/blob/master/docs/using_helm.md#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.
 
-> For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is reuired to wrap the values with double quotes (i.e., ``"abc, bcd"``).
+> For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
 #### Using a `questions.yml` file
 
@@ -84,7 +84,7 @@ By default, multi-cluster applications can only be managed by the user who creat
 
 1. Find the user that you want to add by typing in the member's name in the **Member** search box.
 
-2. Select the **Access Type** for that member. There are three access types for a multi-cluster project, but due to how the permissions of a multi-cluster application are launched, please read carefully to understand what these access types mean.  
+2. Select the **Access Type** for that member. There are three access types for a multi-cluster project, but due to how the permissions of a multi-cluster application are launched, please read carefully to understand what these access types mean.
 
     - **Owner**: This access type can manage any configuration part of the multi-cluster application including the template version, the [multi-cluster applications specific configuration options](#configuration-options-to-make-a-multi-cluster-app), the [application specific configuration options](#application-configuration-options), the [members who can interact with the multi-cluster application](#members) and the [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects). Since a multi-cluster application is created with a different set of permissions from the user, any _owner_ of the multi-cluster application can manage/remove applications in [target projects](#targets) without explicitly having access to these project(s). Only trusted users should be provided with this access type.
 
@@ -108,7 +108,7 @@ The ability to use the same configuration to deploy the same application across 
 
 	- **Answer**: Enter the answer that you want to be used instead.
 
-## Upgrading Multi-Cluster App Roles and Projects  
+## Upgrading Multi-Cluster App Roles and Projects
 
 - **Changing Roles on an existing Multi-Cluster app**
 The creator and any users added with the access-type "owner" to a multi-cluster app, can upgrade its Roles. When adding a new Role, we check if the user has that exact role in all current target projects. These checks allow the same relaxations for global admins, cluster owners and project-owners as described in the installation section for the field `Roles`.
@@ -120,7 +120,7 @@ The creator and any users added with the access-type "owner" to a multi-cluster 
 
 ## Multi-Cluster Application Management
 
-One of the benefits of using a multi-cluster application as opposed to multiple individual applications of the same type, is the ease of manangement.Multi-cluster applications can be cloned, upgraded or rolled back.
+One of the benefits of using a multi-cluster application as opposed to multiple individual applications of the same type, is the ease of management. Multi-cluster applications can be cloned, upgraded or rolled back.
 
 1. From the **Global** view, choose **Apps** in the navigation bar.
 

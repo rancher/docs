@@ -42,7 +42,7 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 7. Assign a path in the **Mount Point** field. This is the full path where the volume will be mounted in the container file system, e.g. `/persistent`.
 8. Click **Launch** to create the workload.
 
-### Verifing Persistence of the Volume
+### Verifying Persistence of the Volume
 
 1. From the context menu of the workload you just created, click **Execute Shell**.
 2. Note the directory at root where the volume has been mounted to (in this case `/persistent`).
@@ -50,7 +50,7 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 4. **Close** the shell window.
 5. Click on the name of the workload to reveal detail information.
 6. Open the context menu next to the Pod in the *Running* state.
-7. Delete the Pod by selecting **Delete**.  
+7. Delete the Pod by selecting **Delete**.
 8. Observe that the pod is deleted. Then a new pod is scheduled to replace it so that the workload maintains its configured scale of a single stateful pod.
 9. Once the replacement pod is running, click **Execute Shell**.
 10. Inspect the contents of the directory where the volume is mounted by entering `ls -l /<volumeMountPoint>`. Note that the file you created earlier is still present.

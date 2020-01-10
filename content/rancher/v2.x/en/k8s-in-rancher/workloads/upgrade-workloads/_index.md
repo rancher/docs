@@ -8,7 +8,7 @@ When a new version of an application image is released on Docker Hub, you can up
 
 1. From the **Global** view, open the project running the workload you want to upgrade.
 
-1. Find the workload that you want to upgrade and select **Vertical Elipsis (... ) > Edit**.
+1. Find the workload that you want to upgrade and select **Vertical Ellipsis (... ) > Edit**.
 
 1. Update the **Docker Image** to the updated version of the application image on Docker Hub.
 

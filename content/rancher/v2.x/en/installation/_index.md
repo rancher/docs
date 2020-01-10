@@ -1,5 +1,6 @@
 ---
-title: Installation
+title: Installing Rancher
+description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 50
 ---
 
@@ -9,16 +10,16 @@ Before installing Rancher, make sure that your nodes fulfill all of the [install
 
 ### Overview of Installation Options
 
-We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased avaialability is achieved by running Rancher on multiple nodes.
+We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability (HA) installation because increased availability is achieved by running Rancher on multiple nodes.
 
 For testing and demonstration purposes, Rancher can also be installed with Docker on a single node. However, there is no migration path from a single-node Docker installation to an HA installation on a Kubernetes cluster. Therefore, you may want to use an HA installation from the start.
 
 There are also separate instructions for installing Rancher in an air gap environment or behind an HTTP proxy:
 
-| Level of Internet Access           | Installing on a Kubernetes Cluster - Strongly Recommended                                                                                                                                                           | Installing in a Single Docker Container                                                                                                                                       |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/)                                                                                                                                                              | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node)                                                                                     |
-| Behind an HTTP proxy               | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-nodeproxy/) | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#http-proxy) |
+| Level of Internet Access           | Installing on a Kubernetes Cluster - Strongly Recommended                | Installing in a Single Docker Container                             |
+| ---------------------------------- | ------------------------------ | ---------- |
+| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node)                                                                                     |
+| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
 
 > For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.

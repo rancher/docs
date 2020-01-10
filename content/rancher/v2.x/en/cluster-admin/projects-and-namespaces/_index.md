@@ -1,25 +1,38 @@
 ---
-title: Projects and Namespaces
+title: Projects and Kubernetes Namespaces with Rancher
+description: Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces
 weight: 2032
 aliases:
   - /rancher/v2.x/en/concepts/projects/
   - /rancher/v2.x/en/tasks/projects/
   - /rancher/v2.x/en/tasks/projects/create-project/
   - /rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/
+  - /rancher/v2.x/en/tasks/projects/create-project/  
 ---
 
-## Projects
+This section describes how projects and namespaces work with Rancher. It covers the following topics:
 
-_Projects_ are organizational objects introduced in Rancher that ease the administrative burden of your cluster. You can use projects to support multi-tenancy.
+- [About projects](#about-projects)
+  - [The cluster's default project](#the-cluster-s-default-project)
+  - [The system project](#the-system-project)
+- [Project authorization](#project-authorization)
+- [Pod security policies](#pod-security-policies)
+- [Creating projects](#creating-projects)
+- [Switching between clusters and projects](#switching-between-clusters-and-projects)
+- [Namespaces](#namespaces)
 
-Projects provide an extra level of organization in your Kubernetes clusters beyond [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). In terms of hierarchy:
+# About Projects
 
-- Clusters contain projects.
-- Projects contain namespaces.
+A project is a group of multiple [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) and access control policies within a cluster. A project is a concept introduced by Rancher, not Kubernetes, which allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
 
-Within Rancher, projects allow you manage multiple namespaces as a single entity. In the base version of Kubernetes, which does not include projects, features like role-based access rights or cluster resources are assigned to individual namespaces. In clusters where multiple namespaces require the same set of access rights, assigning these rights to each individual namespace can become tedious. Even though all namespaces require the same rights, there's no way to apply those rights to all of your namespaces in a single action. You'd have to repetitively assign these rights to each namespace!
+In terms of hierarchy:
 
-Rancher projects resolve this issue by allowing you to apply resources and access rights at the project level. Each namespace in the project then inherits these resources and policies, so you only have to assign them to the project once, rather than assigning them to each namespace.
+- Clusters contain projects
+- Projects contain namespaces
+
+You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
+
+In the base version of Kubernetes, features like role-based access rights or cluster resources are assigned to individual namespaces. A project allows you to save time by giving an individual or a team access to multiple namespaces simultaneously.
 
 You can use projects to perform actions like:
 
@@ -28,18 +41,16 @@ You can use projects to perform actions like:
 - Assign resources to the project.
 - Assign Pod Security Policies.
 
-
-When you create a cluster, two project are automatically created within it:
+When you create a cluster, two projects are automatically created within it:
 
 - [Default Project](#default-project)
 - [System Project](#system-project)
 
+### The Cluster's Default Project
 
-### Default Project
+When you provision a cluster with Rancher, it automatically creates a `default` project for the cluster. This is a project you can use to get started with your cluster, but you can always delete it and replace it with projects that have more descriptive names.
 
-When you provision a cluster, it automatically creates a `default` project for the cluster. This is a project you can use to get started with your cluster, but you can always delete it and replace it with projects that have more descriptive names.
-
-### System Project
+### The System Project
 
 _Available as of v2.0.7_
 
@@ -61,18 +72,18 @@ The `system` project:
 >
 >The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health.
 
-### Authorization
+# Project Authorization
 
 Non-administrative users are only authorized for project access after an administrator, cluster owner or cluster member explicitly adds them to the project's **Members** tab.
 
 >**Exception:**
 > Non-administrative users can access projects that they create themselves.
 
-### Pod Security Policies
+# Pod Security Policies
 
-Rancher extends Kubernetes to allow the application of [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) at the project level in addition to the cluster level. However, as a best practice, we recommend applying Pod Security Policies at the cluster level.
+Rancher extends Kubernetes to allow the application of [Pod Security Policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) at the [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/pod-security-policies) in addition to the [cluster level.](../pod-security-policy) However, as a best practice, we recommend applying Pod Security Policies at the cluster level.
 
-### Creating Projects
+# Creating Projects
 
 1. From the **Global** view, choose **Clusters** from the main menu. From the **Clusters** page, open the cluster from which you want to create a project.
 
@@ -129,7 +140,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
     1. **Optional:** Repeat these substeps to add more quotas.
 
-1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit)
+1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/#setting-container-default-resource-limit)
 	>**Note:** This option is available as of v2.2.0.
 
 
@@ -137,7 +148,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
 **Result:** Your project is created. You can view it from the cluster's **Projects/Namespaces** view.
 
-## Switching between Clusters/Projects
+# Switching between Clusters and Projects
 
 To switch between clusters and projects, use the **Global** drop-down available in the main menu.
 
@@ -148,7 +159,7 @@ Alternatively, you can switch between projects and clusters using the main menu.
 - To switch between clusters, open the **Global** view and select **Clusters** from the main menu. Then open a cluster.
 - To switch between projects, open a cluster, and then select **Projects/Namespaces** from the main menu. Select the link for the project that you want to open.
 
-## Namespaces
+# Namespaces
 
 Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
 

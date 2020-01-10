@@ -113,7 +113,7 @@ Get the options set from your current Rancher install
 
     >**Did you...**
     >
-    >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-nodeproxy/)
+    >- Use a proxy? See [HTTP Proxy Configuration]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/)
     >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
     >- Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
     >

@@ -1,5 +1,6 @@
 ---
-title: CNI Providers
+title: Container Network Interface (CNI) Providers
+description: Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you
 weight: 2300
 ---
 
@@ -126,7 +127,7 @@ The following table summarizes the different features available for each CNI net
 
 - External Datastore: CNI network providers with this feature need an external datastore for its data.
 
-- Encyption: This feature allows cyphered and secure network control and data planes.
+- Encryption: This feature allows cyphered and secure network control and data planes.
 
 - Ingress/Egress Policies: This feature allows you to manage routing control for both Kubernetes and non-Kubernetes communications.
 

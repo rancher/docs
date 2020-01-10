@@ -1,9 +1,18 @@
 ---
-title: "Installation and Configuration Options"
+title: "Installation Options"
 weight: 20
 ---
 
-### Installation script options
+This page focuses on the options that can be used when you set up K3s for the first time:
+
+- [Installation script options](#installation-script-options)
+- [Installing K3s from the binary](#installing-k3s-from-the-binary)
+- [Registration options for the K3s server](#registration-options-for-the-k3s-server)
+- [Registration options for the K3s agent](#registration-options-for-the-k3s-agent)
+
+For more advanced options, refer to [this page.]({{<baseurl>}}/k3s/latest/en/advanced)
+
+# Installation Script Options
 
 As mentioned in the [Quick-Start Guide]({{< baseurl >}}/k3s/latest/en/quick-start/), you can use the installation script available at https://get.k3s.io to install K3s as a service on systemd and openrc based systems.
 
@@ -36,7 +45,7 @@ When using this method to install K3s, the following environment variables can b
 
 - `INSTALL_K3S_BIN_DIR_READ_ONLY`
 
-    If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting INSTALL_K3S_SKIP_DOWNLOAD=true.
+    If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting `INSTALL_K3S_SKIP_DOWNLOAD=true`.
 
 - `INSTALL_K3S_SYSTEMD_DIR`
 
@@ -44,7 +53,9 @@ When using this method to install K3s, the following environment variables can b
 
 - `INSTALL_K3S_EXEC`
 
-    Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set or "server" if it is not set. The final systemd command resolves to a combination of this environment variable and script args. To illustrate this, the following commands result in the same behavior:
+    Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set or "server" if it is not set.
+    
+    The final systemd command resolves to a combination of this environment variable and script args. To illustrate this, the following commands result in the same behavior of registering a server without flannel:
      ```sh
      curl ... | INSTALL_K3S_EXEC="--no-flannel" sh -s -
      curl ... | INSTALL_K3S_EXEC="server --no-flannel" sh -s -
@@ -65,7 +76,8 @@ When using this method to install K3s, the following environment variables can b
 Environment variables which begin with `K3S_` will be preserved for the systemd and openrc services to use. Setting `K3S_URL` without explicitly setting an exec command will default the command to "agent". When running the agent `K3S_TOKEN` must also be set.
 
 
-### Beyond the Installation Script
+# Installing K3s from the Binary
+
 As stated, the installation script is primarily concerned with configuring K3s to run as a service. If you choose to not use the script, you can run K3s simply by downloading the binary from our [release page](https://github.com/rancher/k3s/releases/latest), placing it on your path, and executing it. The K3s binary supports the following commands:
 
 Command | Description
@@ -79,7 +91,7 @@ Command | Description
 
 The `k3s server` and `k3s agent` commands have additional configuration options that can be viewed with <span class='nowrap'>`k3s server --help`</span> or <span class='nowrap'>`k3s agent --help`</span>. For convenience, that help text is presented here:
 
-### `k3s server`
+# Registration Options for the K3s Server
 ```
 NAME:
    k3s server - Run management server
@@ -145,7 +157,7 @@ OPTIONS:
    --cluster-secret value                     (deprecated) use --token [$K3S_CLUSTER_SECRET]
 ```
 
-### `k3s agent`
+# Registration Options for the K3s Agent
 ```
 NAME:
    k3s agent - Run node agent
@@ -181,3 +193,16 @@ OPTIONS:
    --no-flannel                        (deprecated) use --flannel-backend=none
    --cluster-secret value              (deprecated) use --token [$K3S_CLUSTER_SECRET]
 ```
+
+### Node Labels and Taints for Agents
+
+K3s agents can be configured with the options `--node-label` and `--node-taint` which adds a label and taint to the kubelet. The two options only add labels and/or taints at registration time, so they can only be added once and not changed after that again by running K3s commands.
+
+Below is an example showing how to add labels and a taint:
+```
+     --node-label foo=bar \
+     --node-label hello=world \
+     --node-taint key1=value1:NoExecute
+```
+
+If you want to change node labels and taints after node registration you should use `kubectl`. Refer to the official Kubernetes documentation for details on how to add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) and [node labels.](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node)

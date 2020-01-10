@@ -1,9 +1,11 @@
 ---
-title: Using kubectl to Access a Cluster
+title: "Access a Cluster with Kubectl Shell or Kubectl CLI"
+description: "Lean how you can access and manage your Kubernetes clusters using kubectl in two ways: with kubectl Shell or with kubectl CLI and kubeconfig file"
 weight: 2015
 aliases:
   - /rancher/v2.x/en/tasks/clusters/using-kubectl-to-access-a-cluster/
   - /rancher/v2.x/en/k8s-in-rancher/kubectl/
+  - /rancher/v2.x/en/cluster-admin/kubectl
 ---
 You can access and manage your Kubernetes clusters using kubectl in two ways:
 

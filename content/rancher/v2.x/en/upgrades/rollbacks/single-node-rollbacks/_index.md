@@ -38,7 +38,7 @@ You can obtain `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 ## Rolling Back Rancher
 
-If you have issues upgrading Rancher, roll it back to its lastest known healthy state by pulling the last version you used and then restoring the backup you made before upgrade.
+If you have issues upgrading Rancher, roll it back to its latest known healthy state by pulling the last version you used and then restoring the backup you made before upgrade.
 
 >**Warning!** Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
 
@@ -51,7 +51,7 @@ If you have issues upgrading Rancher, roll it back to its lastest known healthy 
     ```
     docker pull rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
-    
+
 1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
 
     ```

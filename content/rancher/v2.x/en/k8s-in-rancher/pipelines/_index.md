@@ -11,7 +11,7 @@ aliases:
 >- Pipelines are new and improved for Rancher v2.1! Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
 >- Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
-Before setting up any pipelines, review the [pipeline overview]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/) and ensure that the project has [configured authentication to your version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#version-control-providers), e.g. GitHub, GitLab, Bitucket. If you haven't configured a version control provider, you can always use [Rancher's example repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/example/) to view some common pipeline deployments.
+Before setting up any pipelines, review the [pipeline overview]({{< baseurl >}}/rancher/v2.x/en/project-admin/pipelines/) and ensure that the project has [configured authentication to your version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/pipelines/#version-control-providers), e.g. GitHub, GitLab, Bitbucket. If you haven't configured a version control provider, you can always use [Rancher's example repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/example/) to view some common pipeline deployments.
 
 If you can access a project, you can enable repositories to start building pipelines. Only an [administrator]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owner or member]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owner]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can authorize version control providers.
 
@@ -99,7 +99,7 @@ If you haven't added any stages, click **Configure pipeline for this branch** to
 {{% /tab %}}
 {{% tab "By YAML" %}}
 <br>
-For each stage, you can add multiple steps. Read more about each [step type](#step-types) and the [advanced options](#advanced-options) to get all thhe details on how to configure the YAML. This is only a small example of how to have multiple stages with a singular step in each stage.
+For each stage, you can add multiple steps. Read more about each [step type](#step-types) and the [advanced options](#advanced-options) to get all the details on how to configure the YAML. This is only a small example of how to have multiple stages with a singular step in each stage.
 
 ```yaml
 # example
@@ -145,7 +145,7 @@ _Available as of v2.2.0_
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
 
-1. If you don't have any existing [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
+1. If you don't have any existing [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
     > **Note:** Notifiers are configured at a cluster level and require a different level of permissions.
 
@@ -163,7 +163,7 @@ In the `notification` section, you will provide the following information:
   * **Notifier:** The ID of the notifier. This can be found by finding the notifier and selecting **View in API** to get the ID.
   * **Recipient:** Depending on the type of the notifier, the "default recipient" can be used or you can override this with a different recipient. For example, when configuring a slack notifier, you select a channel as your default recipient, but if you wanted to send notifications to a different channel, you can select a different recipient.
 * **Condition:** Select which conditions of when you want the notification to be sent.
-* **Message (Optional):** If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI.  
+* **Message (Optional):** If you want to change the default notification message, you can edit this in the yaml. Note: This option is not available in the UI.
 
 ```yaml
 # Example
@@ -181,7 +181,7 @@ notification:
     notifier: "c-wdcsr:n-c9pg7"
   - recipient: "test@example.com"
     notifier: "c-wdcsr:n-lkrhd"
-  # Select which statuses you want the notification to be sent  
+  # Select which statuses you want the notification to be sent
   condition: ["Failed", "Success", "Changed"]
   # Ability to override the default message (Optional)
   message: "my-message"
@@ -233,7 +233,7 @@ timeout: 30
 
 Run your pipeline for the first time. From the project view in Rancher, go to **Resources > Pipelines.** (In versions prior to v2.3.0, go to the **Pipelines** tab.) Find your pipeline and select the vertical **Ellipsis (...) > Run**.
 
-During this initial run, your pipeline is tested, and the following [pipeline components]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#how-pipelines-work) are deployed to your project as workloads in a new namespace dedicated to the pipeline:
+During this initial run, your pipeline is tested, and the following [pipeline components]({{< baseurl >}}/rancher/v2.x/en/project-admin/pipelines/#how-pipelines-work) are deployed to your project as workloads in a new namespace dedicated to the pipeline:
 
 - `docker-registry`
 - `jenkins`
@@ -309,7 +309,7 @@ stages:
 <br>
 {{% /tab %}}
 
-{{% /tabs %}}     
+{{% /tabs %}}
 
 ### Build and Publish Images
 
@@ -413,7 +413,7 @@ Under the `steps` section, add a step with `publishCatalogConfig`. You will prov
 * GitBranch: The git branch of the chart repository that the template will be published to.
 * GitAuthor: The author name used in the commit message.
 * GitEmail: The author email used in the commit message.
-* Credentials: You should provide Git credentials by referencing secrets in dedicated pipeline namespace. If you publish via SSH protocol, inject your deploy key to the `DEPLOY_KEY` environment variable. If you publish via HTTP(S) protolcol, inject your username and password to `USERNAME` and `PASSWORD` environment variables.
+* Credentials: You should provide Git credentials by referencing secrets in dedicated pipeline namespace. If you publish via SSH protocol, inject your deploy key to the `DEPLOY_KEY` environment variable. If you publish via HTTP(S) protocol, inject your username and password to `USERNAME` and `PASSWORD` environment variables.
 
 ```yaml
 # example
@@ -467,7 +467,7 @@ stages:
 <br>
 {{% /tab %}}
 
-{{% /tabs %}}     
+{{% /tabs %}}
 
 ### Deploy Catalog App
 
@@ -563,7 +563,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
-    1. **Optional:** Add more branches that trigger a build.  
+    1. **Optional:** Add more branches that trigger a build.
 
 1. Click **Done.**
 
@@ -581,7 +581,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 
 1. In the **Trigger Rules** section, configure rules to run or skip the stage.
 
-    1.  Click **Add Rule**.  
+    1.  Click **Add Rule**.
 
     1.  Choose the **Type** that triggers the stage and enter a value.
 
@@ -606,7 +606,7 @@ Wildcard character (`*`) expansion is supported in `branch` conditions.
 
 1. In the **Trigger Rules** section, configure rules to run or skip the step.
 
-    1.  Click **Add Rule**.  
+    1.  Click **Add Rule**.
 
     1.  Choose the **Type** that triggers the step and enter a value.
 
@@ -660,7 +660,7 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 
 1. Within one of the stages, find the **step** that you want to add an environment variable for, click the **Edit** icon.
 
-1. Click **Show advanced options**.  
+1. Click **Show advanced options**.
 
 1. Click **Add Variable**, and then enter a key and value in the fields that appear. Add more variables if needed.
 
@@ -709,7 +709,7 @@ Create a secret in the same project as your pipeline, or explicitly in the names
 
 1. Within one of the stages, find the **step** that you want to use a secret for, click the **Edit** icon.
 
-1. Click **Show advanced options**.  
+1. Click **Show advanced options**.
 
 1. Click **Add From Secret**. Select the secret file that you want to use. Then choose a key. Optionally, you can enter an alias for the key.
 

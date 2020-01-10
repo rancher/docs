@@ -1,5 +1,6 @@
 ---
-title: '2. Install Kubernetes with RKE'
+title: 2. Install Kubernetes with RKE
+description: Learn how to use Rancher Kubernetes Engine (RKE) to install Kubernetes with a high availability etcd configuration.
 weight: 190
 ---
 
@@ -33,6 +34,13 @@ services:
     snapshot: true
     creation: 6h
     retention: 24h
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
 ```
 
 #### Common RKE Nodes Options

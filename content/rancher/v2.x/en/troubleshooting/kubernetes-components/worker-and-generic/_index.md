@@ -7,7 +7,7 @@ This section applies to every node as it includes components that run on nodes w
 
 # Check if the Containers are Running
 
-There are three specific containers launched on nodes with the `controlpane` role:
+There are three specific containers launched on nodes with the `controlplane` role:
 
 * kubelet
 * kube-proxy

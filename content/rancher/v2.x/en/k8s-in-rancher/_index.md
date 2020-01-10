@@ -56,7 +56,7 @@ For more information, see [Service Discovery]({{< baseurl >}}/rancher/v2.x/en/k8
 
 ## Pipelines
 
-After your project has been [configured to a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/pipelines/#version-control-providers), you can add the repositories and start configuring a pipeline for each repository.
+After your project has been [configured to a version control provider]({{< baseurl >}}/rancher/v2.x/en/project-admin/pipelines/#version-control-providers), you can add the repositories and start configuring a pipeline for each repository.
 
 For more information, see [Pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/).
 

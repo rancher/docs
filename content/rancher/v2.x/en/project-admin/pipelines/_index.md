@@ -1,12 +1,29 @@
 ---
-title:  Pipelines
-weight: 2529
+title:  Rancher's CI/CD Pipelines
+description: Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users
+weight: 4000
 aliases:
   - /rancher/v2.x/en/concepts/ci-cd-pipelines/
   - /rancher/v2.x/en/tasks/pipelines/
   - /rancher/v2.x/en/tools/pipelines/
   - /rancher/v2.x/en/tools/pipelines/configurations/
+  - /rancher/v2.x/en/project-admin/tools/pipelines
 ---
+Using Rancher, you can integrate with a GitHub repository to setup a continuous integration (CI) pipeline.
+
+To set up a pipeline, you'll first need to authorize Rancher using your GitHub settings. Directions are provided in the Rancher UI. After authorizing Rancher in GitHub, provide Rancher with a client ID and secret to authenticate.
+
+After configuring Rancher and GitHub, you can deploy containers running Jenkins to automate a pipeline execution:
+
+- Build your application from code to image.
+- Validate your builds.
+- Deploy your build images to your cluster.
+- Run unit tests.  
+- Run regression tests.
+
+
+
+
 
 A _pipeline_ is a software delivery process that is broken into different stages and steps. Setting up a pipeline can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
 

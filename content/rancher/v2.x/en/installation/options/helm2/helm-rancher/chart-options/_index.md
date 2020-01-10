@@ -152,7 +152,7 @@ We recommend configuring your load balancer as a Layer 4 balancer, forwarding pl
 
 You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/#using-a-private-ca-signed-certificate) to add the CA cert for Rancher.
+> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/tls-secrets/#using-a-private-ca-signed-certificate) to add the CA cert for Rancher.
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
@@ -192,7 +192,7 @@ This NGINX configuration is tested on NGINX 1.14.
   >**Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
 
 * Replace `IP_NODE1`, `IP_NODE2` and `IP_NODE3` with the IP addresses of the nodes in your cluster.
-* Replace both occurences of `FQDN` to the DNS name for Rancher.
+* Replace both occurrences of `FQDN` to the DNS name for Rancher.
 * Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
 
 ```

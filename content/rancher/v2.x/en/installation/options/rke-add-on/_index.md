@@ -9,7 +9,7 @@ weight: 276
 >
 > If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
-- [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/layer-4-lb)
-- [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/layer-7-lb)
-- [HTTP Proxy Configuration for a High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/proxy/)
-- [Troubleshooting RKE Add-on Installs]({{< baseurl >}}/rancher/v2.x/en/installation/ha/rke-add-on/troubleshooting/)
+- [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/options/rke-add-on/layer-4-lb)
+- [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/options/rke-add-on/layer-7-lb)
+- [HTTP Proxy Configuration for a High Availability Installation]({{< baseurl >}}/rancher/v2.x/en/installation/options/rke-add-on/proxy/)
+- [Troubleshooting RKE Add-on Installs]({{< baseurl >}}/rancher/v2.x/en/installation/options/rke-add-on/troubleshooting/)

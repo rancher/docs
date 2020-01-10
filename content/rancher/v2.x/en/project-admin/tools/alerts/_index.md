@@ -3,11 +3,13 @@ title:  Alerts
 weight: 2526
 ---
 
-To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts.
+To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.
 
-Alerts are sets of rules, chosen by you, to monitor for specific events.
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
 
-Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
+Before you can receive alerts, one or more [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) must be configured at the cluster level.
+
+Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
 
 This section covers the following topics:
 
@@ -18,7 +20,7 @@ This section covers the following topics:
 
 ## Alerts Scope
 
- The scope for alerts can be set at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
+The scope for alerts can be set at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
 
 At the project level, Rancher monitors specific deployments and sends alerts for:
 
@@ -29,7 +31,7 @@ At the project level, Rancher monitors specific deployments and sends alerts for
 
 ## Default Project-level Alerts
 
-When you enable monitoring for the project, some project-level alerts are provided.
+When you enable monitoring for the project, some project-level alerts are provided. You can receive these alerts if a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) for them is configured at the cluster level.
 
 | Alert | Explanation |
 |-------|-------------|
@@ -40,7 +42,7 @@ For information on other default alerts, refer to the section on [cluster-level 
 
 ## Adding Project Alerts
 
->**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
+>**Prerequisite:** Before you can receive project alerts, you must add a notifier.
 
 1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
 

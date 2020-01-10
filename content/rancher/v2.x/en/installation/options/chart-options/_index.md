@@ -192,7 +192,7 @@ This NGINX configuration is tested on NGINX 1.14.
 > **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
 
 - Replace `IP_NODE1`, `IP_NODE2` and `IP_NODE3` with the IP addresses of the nodes in your cluster.
-- Replace both occurences of `FQDN` to the DNS name for Rancher.
+- Replace both occurrences of `FQDN` to the DNS name for Rancher.
 - Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
 
 ```

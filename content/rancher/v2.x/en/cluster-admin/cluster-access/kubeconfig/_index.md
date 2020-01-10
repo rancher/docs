@@ -1,9 +1,11 @@
 ---
-title: Kubeconfig File
+title: Configuring Access to Kubernetes Using A Kubeconfig File
+description: A kubeconfig file is used to configure access to Kubernetes. When you create a cluster with Rancher, it automatically creates a kubeconfig for your cluster
 weight: 2010
 aliases:
   - /rancher/v2.x/en/concepts/clusters/kubeconfig-files/
   - /rancher/v2.x/en/k8s-in-rancher/kubeconfig/
+  - /rancher/2.x/en/cluster-admin/kubeconfig
 ---
 
 A _kubeconfig file_ is a file used to configure access to Kubernetes when used in conjunction with the kubectl commandline tool (or other clients).
@@ -40,7 +42,7 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
 *         my-cluster                  my-cluster                  user-46tmn
           my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
 ```
-For more information on how the authorized cluster endpoint works, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/4-authorized-cluster-endpoint)
+For more information on how the authorized cluster endpoint works, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint)
 
 We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
 

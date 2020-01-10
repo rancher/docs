@@ -1,5 +1,6 @@
 ---
 title: Configuring Keycloak (SAML)
+description: Create a Keycloak SAML client and configure Rancher to work with Keycloak. By the end your users will be able to sign into Rancher using their Keycloak logins
 weight: 1200
 ---
 _Available as of v2.1.0_
@@ -11,7 +12,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 - You must have a [Keycloak IdP Server](https://www.keycloak.org/docs/latest/server_installation/) configured.
 - In Keycloak, create a [new SAML client](https://www.keycloak.org/docs/latest/server_admin/#saml-clients), with the settings below. See the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#saml-clients) for help.
 
-     Setting | Value    
+     Setting | Value
      ------------|------------
       `Sign Documents` | `ON` <sup>1</sup>
       `Sign Assertions` | `ON` <sup>1</sup>
@@ -22,7 +23,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
-- Export a `metadata.xml` file from your Keycloak client: 
+- Export a `metadata.xml` file from your Keycloak client:
   From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
 
 
@@ -47,7 +48,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
     | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.               |
 
     >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
-    >    
+    >
     >        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
 
 
@@ -63,7 +64,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Keycloak server, first double-check the confiuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{< baseurl >}}/rancher/v2.x/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{< baseurl >}}/rancher/v2.x/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
 
 ### You are not redirected to Keycloak
 
@@ -89,10 +90,10 @@ You are correctly redirected to your IdP login page and you are able to enter yo
 
   * Check your Keycloak log.
   * If the log displays `request validation failed: org.keycloak.common.VerificationException: SigAlg was null`, set `Client Signature Required` to `OFF` in your Keycloak client.
-  
+
 ### Keycloak 6.0.0+: IDPSSODescriptor missing from options
 
-Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab. 
+Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab.
 You can still get the XML from the following url:
 
 `https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
@@ -111,4 +112,3 @@ You are left with something similar as the example below:
 
 </EntityDescriptor>
 ```
-

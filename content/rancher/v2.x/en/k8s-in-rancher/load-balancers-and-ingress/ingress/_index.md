@@ -1,5 +1,6 @@
 ---
-title: Ingress
+title: Adding Ingresses to Your Project
+description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add Rancher ingress to your project
 weight: 3042
 aliases:
   - /rancher/v2.x/en/tasks/workloads/add-ingress/
@@ -72,7 +73,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
     1. Enter the **Host** using encrypted communication.
 
-    1. To add additional hosts that use the certitificate, click **Add Hosts**.
+    1. To add additional hosts that use the certificate, click **Add Hosts**.
 
 1. **Optional:** Add [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) and/or [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to provide metadata for your ingress.
 

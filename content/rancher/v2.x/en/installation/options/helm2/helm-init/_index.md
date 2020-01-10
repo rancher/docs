@@ -1,5 +1,6 @@
 ---
-title: "3. Initialize Helm (Install Tiller)"
+title: "Initialize Helm: Install the Tiller Service"
+description: "With Helm, you can create configurable deployments instead of using static files. In order to use Helm, the Tiller service needs to be installed on your cluster."
 weight: 195
 ---
 
@@ -60,6 +61,6 @@ Server: &version.Version{SemVer:"v2.12.1", GitCommit:"02a47c7249b1fc6d8fd3b94e6b
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-init/troubleshooting/) page.
+See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-init/troubleshooting/) page.
 
-### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
+### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/)

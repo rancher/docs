@@ -7,7 +7,7 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+>Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
@@ -19,7 +19,7 @@ Choose from the following options:
 
 	In this section, you can find generic ways to debug your Kubernetes cluster.
 
-- [Failed to set up SSH tunneling for host](ssh-tunneling/)
+- [Failed to set up SSH tunneling for host]({{<baseurl>}}/rke/latest/en/troubleshooting/ssh-connectivity-errors/)
 
 	In this section, you can find errors related to SSH tunneling when you run the `rke` command to setup your nodes.
 

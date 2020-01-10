@@ -23,9 +23,9 @@ Rancher works has been tested and is supported with downstream clusters running 
 
 All supported operating systems are 64-bit x86.
 
-If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/) 
+If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
 
-For information on how to install Docker, refer to the offical [Docker documentation.](https://docs.docker.com/)
+For information on how to install Docker, refer to the official [Docker documentation.](https://docs.docker.com/)
 
 > **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
@@ -41,7 +41,7 @@ Windows nodes can be used for worker nodes only. See [Configuring Custom Cluster
 
 The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory.
 
-Regarding CPU and memory, it is recommended that the different planes of Kubernetes clusters (etcd, controplane, and workers) should be hosted on different nodes so that they can scale separately from each other.
+Regarding CPU and memory, it is recommended that the different planes of Kubernetes clusters (etcd, controlplane, and workers) should be hosted on different nodes so that they can scale separately from each other.
 
 For hardware recommendations for large Kubernetes clusters, refer to the official Kubernetes documentation on [building large clusters.](https://kubernetes.io/docs/setup/best-practices/cluster-large/)
 
@@ -106,7 +106,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 ### Port Requirements for Clusters Hosted by an Infrastructure Provider
 
-If you are launching a Kubernetes cluster on nodes that are in an infastructure provider such as Amazon EC2, Google Container Engine, DigitalOcean, Azure, or vSphere, these port requirements apply.
+If you are launching a Kubernetes cluster on nodes that are in an infrastructure provider such as Amazon EC2, Google Container Engine, DigitalOcean, Azure, or vSphere, these port requirements apply.
 
 These required ports are automatically opened by Rancher during creation of clusters using cloud providers.
 

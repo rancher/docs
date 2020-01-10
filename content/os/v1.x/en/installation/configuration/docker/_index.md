@@ -119,7 +119,7 @@ $ ros config set rancher.system_docker.bip 172.19.0.0/16
 
 _Available as of v1.4.x_
 
-The default path of system-docker logs is `/var/log/system-docker.log`. If you want to write the system-docker logs to a separate partition, 
+The default path of system-docker logs is `/var/log/system-docker.log`. If you want to write the system-docker logs to a separate partition,
 e.g. [RANCHER_OEM partition]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/#use-rancher-oem-partition), you can try `rancher.defaults.system_docker_logs`:
 
 ```
@@ -170,11 +170,11 @@ Status: Downloaded newer image for alpine:latest
 
 _Available as of v1.5.0_
 
-When RancherOS is booted, you start with a User Docker service that is running in System Docker. With v1.5.0, RancherOS has the ability to create additional User Docker services that can run at the same time. 
+When RancherOS is booted, you start with a User Docker service that is running in System Docker. With v1.5.0, RancherOS has the ability to create additional User Docker services that can run at the same time.
 
 #### Terminology
 
-Throughout the rest of this documentation, we may simplify to use these terms when describing Docker. 
+Throughout the rest of this documentation, we may simplify to use these terms when describing Docker.
 
 | Terminology                  | Definition                                       |
 |-----------------------|--------------------------------------------------|
@@ -184,13 +184,13 @@ Throughout the rest of this documentation, we may simplify to use these terms wh
 
 #### Pre-Requisites
 
-User Docker must be set as Docker 17.12.1 or earlier. If it's a later Docker version, it will produce errors when creating a user defined network in System Docker. 
+User Docker must be set as Docker 17.12.1 or earlier. If it's a later Docker version, it will produce errors when creating a user defined network in System Docker.
 
 ```
 $ ros engine switch docker-17.12.1-ce
 ```
 
-You will need to create a user-defined network, which will be used when creating the Other User Docker. 
+You will need to create a user-defined network, which will be used when creating the Other User Docker.
 
 ```
 $ system-docker network create --subnet=172.20.0.0/16 dind
@@ -204,7 +204,7 @@ In order to create another User Docker, you will use `ros engine create`. Curren
 $ ros engine create otheruserdockername --network=dind --fixed-ip=172.20.0.2
 ```
 
-After the Other User Docker service is created, users can query this service like other services. 
+After the Other User Docker service is created, users can query this service like other services.
 
 ```
 $ ros service list
@@ -215,13 +215,13 @@ disabled volume-nfs
 enabled  otheruserdockername
 ```
 
-You can use `ros service up` to start the Other User Docker service.  
+You can use `ros service up` to start the Other User Docker service.
 
 ```
 $ ros service up otheruserdockername
 ```
 
-After the Other User Docker service is running, you can interact with it just like you can use the built-in User Docker. You would need to append `-<SERVICE_NAME>` to `docker`. 
+After the Other User Docker service is running, you can interact with it just like you can use the built-in User Docker. You would need to append `-<SERVICE_NAME>` to `docker`.
 
 ```
 $ docker-otheruserdockername ps -a
@@ -229,7 +229,7 @@ $ docker-otheruserdockername ps -a
 
 #### SSH into the Other User Docker container
 
-When creating the Other User Docker, you can set an external SSH port so you can SSH into the Other User Docker container in System Docker. By using `--ssh-port` and adding ssh keys with `--authorized-keys`, you can set up this optional SSH port. 
+When creating the Other User Docker, you can set an external SSH port so you can SSH into the Other User Docker container in System Docker. By using `--ssh-port` and adding ssh keys with `--authorized-keys`, you can set up this optional SSH port.
 
 ```
 $ ros engine create  --help
@@ -248,7 +248,7 @@ When using `--authorized-keys`, you will need to put the key file in one of the 
 /home/
 ```
 
-RancherOS will generate a random password for each Other User Docker container, which can be viewed in the container logs. If you do not set any SSH keys, the password can be used. 
+RancherOS will generate a random password for each Other User Docker container, which can be viewed in the container logs. If you do not set any SSH keys, the password can be used.
 
 ```
 $ system-docker logs otheruserdockername
@@ -259,7 +259,7 @@ password: xCrw6fEG
 ======================================
 ```
 
-In System Docker, you can SSH into any Other Uesr Docker Container using `ssh`. 
+In System Docker, you can SSH into any Other User Docker Container using `ssh`.
 
 ```
 $ system-docker ps
@@ -274,7 +274,7 @@ $ ssh root@<OTHERUSERDOCKER_CONTAINER_IP>
 
 #### Removing any Other User Docker Service
 
-We recommend using `ros engine rm` to remove any Other User Docker service. 
+We recommend using `ros engine rm` to remove any Other User Docker service.
 
 ```
 $ ros engine rm otheruserdockername

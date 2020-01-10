@@ -1,5 +1,6 @@
 ---
-title: SSL Certificates
+title: Secure Sockets Layer Certificate
+description: Learn how to add a secure sockets layer (SSL) certificate to either a project, a namespace, or both, so that you can add it to deployments
 weight: 3060
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-ssl-certificates/
@@ -13,7 +14,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From the **Global** view, select the project where you want to deploy your ingress.
 
-1. From the main menu, select **Resources > Certificates**. Click **Add Certificate**.
+1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For Rancher prior to v2.3, click **Resources > Certificates.**)
 
 1. Enter a **Name** for the certificate.
 
@@ -31,13 +32,13 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From **Certificate**, either copy and paste your certificate into the text box (include the header and footer), or click **Read from a file** to browse to the certificate on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
-    Certifcate files end with an extension of `.crt`.
+    Certificate files end with an extension of `.crt`.
 
 **Result:** Your certificate is added to the project or namespace. You can now add it to deployments.
 
 - If you added an SSL certificate to the project, the certificate is available for deployments created in any project namespace.
 - If you added an SSL certificate to a namespace, the certificate is available only for deployments in that namespace.
-- Your certificate is added to the **Resources > Certificates** view.
+- Your certificate is added to the **Resources > Secrets > Certificates** view. (For Rancher prior to v2.3, it is added to **Resources > Certificates.**)
 
 ## What's Next?
 

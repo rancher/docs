@@ -39,11 +39,11 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
 
-   | Release File             | Description                                                                                                                          |
-   | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | `rancher-images.txt`     | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools.                            |
-   | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
-   | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.                             |
+| Release File   | Description  |
+| ---------------- | -------------- |
+| `rancher-images.txt`     | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools. |
+| `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.   |
 
 ### B. Collect all the required images (For HA Installs using Rancher Generated Self-Signed Certificate)
 
@@ -69,43 +69,35 @@ In an HA install, if you elect to use the Rancher default self-signed TLS certif
 ### C. Save the images to your workstation
 
 1. Make `rancher-save-images.sh` an executable:
-
    ```
    chmod +x rancher-save-images.sh
    ```
 
 1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images:
-
    ```plain
    ./rancher-save-images.sh --image-list ./rancher-images.txt
    ```
-
-   **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
+   **Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
 
 ### D. Populate the private registry
 
 Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images. The `rancher-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script.
 
 1.  Log into your private registry if required:
-
     ```plain
     docker login <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
-
 1.  Make `rancher-load-images.sh` an executable:
-
     ```
     chmod +x rancher-load-images.sh
     ```
 
 1.  Use `rancher-load-images.sh` to extract, tag and push `rancher-images.txt` and `rancher-images.tar.gz` to your private registry:
-
-        ```plain
-        ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
-        ```
-
-    {{% /tab %}}
-    {{% tab "Linux and Windows Clusters" %}}
+    ```plain
+     ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
+    ```
+{{% /tab %}}
+{{% tab "Linux and Windows Clusters" %}}
 
 _Available as of v2.3.0_
 
