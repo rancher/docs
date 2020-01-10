@@ -39,6 +39,8 @@ Items in this profile extend the “Level 1” profile and exhibit one or more o
 
 ## 1.1 - Rancher HA Kubernetes cluster host configuration
 
+(See Appendix A. for full ubuntu `cloud-config` example)
+
 ### 1.1.1 - Configure default sysctl settings on all hosts
 
 **Profile Applicability**
@@ -65,6 +67,12 @@ This supports the following control:
 sysctl vm.overcommit_memory
 ```
 
+- Verify `vm.panic_on_oom = 0`
+
+``` bash
+sysctl vm.panic_on_oom
+```
+
 - Verify `kernel.panic = 10`
 
 ``` bash
@@ -77,17 +85,32 @@ sysctl kernel.panic
 sysctl kernel.panic_on_oops
 ```
 
+- Verify `kernel.keys.root_maxkeys = 1000000`
+
+``` bash
+sysctl kernel.keys.root_maxkeys
+```
+
+- Verify `kernel.keys.root_maxbytes = 25000000`
+
+``` bash
+sysctl kernel.keys.root_maxbytes
+```
+
 **Remediation**
 
-- Set the following parameters in `/etc/sysctl.conf` on all nodes:
+- Set the following parameters in `/etc/sysctl.d/90-kubelet.conf` on all nodes:
 
 ``` plain
 vm.overcommit_memory=1
+vm.panic_on_oom=0
 kernel.panic=10
 kernel.panic_on_oops=1
+kernel.keys.root_maxkeys=1000000
+kernel.keys.root_maxbytes=25000000
 ```
 
-- Run `sysctl -p` to enable the settings.
+- Run `sysctl -p /etc/sysctl.d/90-kubelet.conf` to enable the settings.
 
 ### 1.1.2 - Install the encryption provider configuration on all control plane nodes
 
@@ -442,7 +465,7 @@ services:
 
 ## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
 
-(See Appendix A. for full RKE `cluster.yml` example)
+(See Appendix B. for full RKE `cluster.yml` example)
 
 ### 2.1.1 - Configure kubelet options
 
@@ -1122,7 +1145,97 @@ If a disallowed node driver is active, visit the _Node Drivers_ page under _Glob
 
 ---
 
-## Appendix A - Complete RKE `cluster.yml` Example
+## Appendix A - Complete ubuntu `cloud-config` Example
+
+`cloud-config` file to automate hardening manual steps on nodes deployment.
+
+```
+#cloud-config
+bootcmd:
+- apt-get update
+- apt-get install -y apt-transport-https
+apt:
+  sources:
+    docker:
+      source: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $RELEASE stable"
+      keyid: 0EBFCD88
+packages:
+- [docker-ce, '5:19.03.5~3-0~ubuntu-bionic']
+- jq
+write_files:
+# 1.1.1 - Configure default sysctl settings on all hosts
+- path: /etc/sysctl.d/90-kubelet.conf
+  owner: root:root
+  permissions: '0644'
+  content: |
+    vm.overcommit_memory=1
+    vm.panic_on_oom=0
+    kernel.panic=10
+    kernel.panic_on_oops=1
+    kernel.keys.root_maxkeys=1000000
+    kernel.keys.root_maxbytes=25000000
+# 1.1.2 encription provider
+- path: /opt/kubernetes/encryption.yaml
+  owner: root:root
+  permissions: '0600'
+  content: |
+    apiVersion: apiserver.config.k8s.io/v1
+    kind: EncryptionConfiguration
+    resources:
+      - resources:
+        - secrets
+        providers:
+        - aescbc:
+            keys:
+            - name: key1
+              secret: QRCexFindur3dzS0P/UmHs5xA6sKu58RbtWOQFarfh4=
+        - identity: {}
+# 1.1.3 audit log
+- path: /opt/kubernetes/audit.yaml
+  owner: root:root
+  permissions: '0600'
+  content: |
+    apiVersion: audit.k8s.io/v1beta1
+    kind: Policy
+    rules:
+    - level: Metadata
+# 1.1.4 event limit
+- path: /opt/kubernetes/admission.yaml
+  owner: root:root
+  permissions: '0600'
+  content: |
+    apiVersion: apiserver.k8s.io/v1alpha1
+    kind: AdmissionConfiguration
+    plugins:
+    - name: EventRateLimit
+      path: /opt/kubernetes/event.yaml
+- path: /opt/kubernetes/event.yaml
+  owner: root:root
+  permissions: '0600'
+  content: |
+    apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+    kind: Configuration
+    limits:
+    - type: Server
+      qps: 5000
+      burst: 20000
+# 1.4.12 etcd user
+groups:
+  - etcd
+users:
+  - default
+  - name: etcd
+    gecos: Etcd user
+    primary_group: etcd
+    homedir: /var/lib/etcd
+# 1.4.11 etcd data dir
+runcmd:
+  - chmod 0700 /var/lib/etcd
+  - usermod -G docker -a ubuntu
+  - sysctl -p /etc/sysctl.d/90-kubelet.conf
+```
+
+## Appendix B - Complete RKE `cluster.yml` Example
 
 ``` yaml
 nodes:
@@ -1315,7 +1428,7 @@ addons: |
     name: system:authenticated
 ```
 
-## Appendix B - Complete RKE Template Example
+## Appendix C - Complete RKE Template Example
 
 ``` yaml
 #
