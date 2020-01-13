@@ -15,13 +15,7 @@ To upgrade the Kubernetes version of an RKE-provisioned cluster, set the `kubern
 kubernetes_version: "v1.15.5-rancher1-1"
 ```
 
-You can find the list of supported Kubernetes versions for a specific version of RKE as documented at [Listing Supported Kubernetes Versions]({{< baseurl >}}/rke/latest/en/config-options/#listing-supported-kubernetes-versions.). 
-
-To see all of the Kubernetes versions that are available for your version of RKE, run the following command:
-
-```
-rke config -l -a
-```
+You can find the list of supported Kubernetes versions for a specific version of RKE as documented at [Listing Supported Kubernetes Versions]({{< baseurl >}}/rke/latest/en/config-options/#listing-supported-kubernetes-versions).
 
 > **Note:** In case both `kubernetes_version` and `system_images` are defined, the `system_images` configuration will take precedence over `kubernetes_version`. In addition, if neither `kubernetes_version` nor `system_images` are configured in the `cluster.yml`, RKE will apply the default Kubernetes version for the specific version of RKE used to invoke `rke up`. The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
