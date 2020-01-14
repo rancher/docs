@@ -5,9 +5,20 @@ weight: 100
 
 After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, [definition of the Kubernetes services]({{< baseurl >}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/).
 
-### Prerequisites for Upgrading Kubernetes
+This page covers the following topics:
 
-- Having configured the `kubernetes_version`, ensure that any `system_images` configuration is absent from the `cluster.yml`. For details on how `system_images` configuration can affect the upgrade, refer to the section on [Kubernetes version precedence.](#kubernetes-version-precedence)
+- [Prerequisites](#prerequisites)
+- [Upgrading Kubernetes](#upgrading-kubernetes)
+- [Listing supported Kubernetes versions](#listing-supported-kubernetes-versions)
+- [Kubernetes version precedence](#kubernetes-version-precedence)
+- [Default Kubernetes version](#default-kubernetes-version)
+- [Using an unsupported Kubernetes version](#using-an-unsupported-kubernetes-version)
+- [Service upgrades](#service-upgrades)
+- [Add-ons upgrades](#add-ons-upgrades)
+
+### Prerequisites
+
+- Ensure that any `system_images` configuration is absent from the `cluster.yml`. The Kubernetes version should only be listed under the `system_images` directive if an [unsupported version](#using-an-unsupported-kubernetes-version) is being used. For details on how `system_images` configuration can affect the upgrade, refer to the section on [Kubernetes version precedence.](#kubernetes-version-precedence)
 - Ensure that the correct files to manage [Kubernetes cluster state]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory. Refer to the tabs below for the required files, which differ based on the RKE version.
 
 {{% tabs %}}
@@ -24,6 +35,22 @@ Ensure that the `kube_config_cluster.yml` file is present in the working directo
 RKE saves the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates or changes the state, and saves a new secret. The `kube_config_cluster.yml` file is required for upgrading a cluster last managed via RKE v0.1.x.
 {{% /tab %}}
 {{% /tabs %}}
+
+### Upgrading Kubernetes
+
+> **Note:** RKE does not support rolling back to previous versions.
+
+To upgrade the Kubernetes version of an RKE-provisioned cluster, set the `kubernetes_version` string in the `cluster.yml` to the desired version from the [list of supported Kubernetes versions](#listing-supported-kubernetes-versions) for the specific version of RKE:
+
+```yaml
+kubernetes_version: "v1.15.5-rancher1-1"
+```
+
+Then invoke `rke up`:
+
+```
+$ rke up --config cluster.yml
+```
 
 ### Listing Supported Kubernetes Versions
 
@@ -45,26 +72,11 @@ In case both `kubernetes_version` and `system_images` are defined, the `system_i
 
 In addition, if neither `kubernetes_version` nor `system_images` are configured in the `cluster.yml`, RKE will apply the default Kubernetes version for the specific version of RKE used to invoke `rke up`.
 
-### Kubernetes Version Upgrades
-
-> **Note:** RKE does not support rolling back to previous versions.
-
-To upgrade the Kubernetes version of an RKE-provisioned cluster, set the `kubernetes_version` string in the `cluster.yml` to the desired version from the list of supported Kubernetes versions for the specific version of RKE:
-
-```yaml
-kubernetes_version: "v1.15.5-rancher1-1"
-```
-
-Then invoke `rke up`:
-
-```
-$ rke up --config cluster.yml
-```
 ### Default Kubernetes Version
 
 The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
-### Using an unsupported Kubernetes version
+### Using an Unsupported Kubernetes Version
 
 As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
 
