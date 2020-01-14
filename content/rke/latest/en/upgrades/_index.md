@@ -3,7 +3,15 @@ title: Upgrades
 weight: 100
 ---
 
-After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, [definition of the Kubernetes services]({{< baseurl >}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/).
+After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, the [definition of the Kubernetes services]({{< baseurl >}}/rke/latest/en/config-options/services/) or the [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/).
+
+The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
+
+You can also select a newer version of Kubernetes to install for your cluster. Downgrading Kubernetes is not supported.
+
+Each version of RKE has a specific [list of supported Kubernetes versions.](#listing-supported-kubernetes-versions)
+
+In case the Kubernetes version is defined in the `kubernetes_version` directive and under the `system-images` directive are defined, the `system-images` configuration will take precedence over `kubernetes_version`.
 
 This page covers the following topics:
 
@@ -11,14 +19,14 @@ This page covers the following topics:
 - [Upgrading Kubernetes](#upgrading-kubernetes)
 - [Listing supported Kubernetes versions](#listing-supported-kubernetes-versions)
 - [Kubernetes version precedence](#kubernetes-version-precedence)
-- [Default Kubernetes version](#default-kubernetes-version)
 - [Using an unsupported Kubernetes version](#using-an-unsupported-kubernetes-version)
+- [Mapping the Kubernetes version to services](#mapping-the-kubernetes-version-to-services)
 - [Service upgrades](#service-upgrades)
 - [Add-ons upgrades](#add-ons-upgrades)
 
 ### Prerequisites
 
-- Ensure that any `system_images` configuration is absent from the `cluster.yml`. The Kubernetes version should only be listed under the `system_images` directive if an [unsupported version](#using-an-unsupported-kubernetes-version) is being used. For details on how `system_images` configuration can affect the upgrade, refer to the section on [Kubernetes version precedence.](#kubernetes-version-precedence)
+- Ensure that any `system_images` configuration is absent from the `cluster.yml`. The Kubernetes version should only be listed under the `system_images` directive if an [unsupported version](#using-an-unsupported-kubernetes-version) is being used. Refer to [Kubernetes version precedence](#kubernetes-version-precedence) for more information.
 - Ensure that the correct files to manage [Kubernetes cluster state]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory. Refer to the tabs below for the required files, which differ based on the RKE version.
 
 {{% tabs %}}
@@ -72,10 +80,6 @@ In case both `kubernetes_version` and `system_images` are defined, the `system_i
 
 In addition, if neither `kubernetes_version` nor `system_images` are configured in the `cluster.yml`, RKE will apply the default Kubernetes version for the specific version of RKE used to invoke `rke up`.
 
-### Default Kubernetes Version
-
-The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
-
 ### Using an Unsupported Kubernetes Version
 
 As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
@@ -83,6 +87,14 @@ As of v0.2.0, if a version is defined in `kubernetes_version` and is not found i
 Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
 
 If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) option.
+
+### Mapping the Kubernetes Version to Services
+
+In RKE, `kubernetes_version` is used to map the version of Kubernetes to the default services, parameters, and options.
+
+For RKE v0.3.0+, the service defaults are located [here](https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go).
+
+For RKE prior to v0.3.0, the service defaults are located [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go). Note: The version in the path of the service defaults file corresponds to a Rancher version. Therefore, for Rancher v2.1.x, [this file](https://github.com/rancher/types/blob/release/v2.1/apis/management.cattle.io/v3/k8s_defaults.go) should be used.
 
 ### Service Upgrades
 
