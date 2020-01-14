@@ -17,23 +17,27 @@ Environment Variable Key | Default Value | Description
 ### Types for Persistent Volume Plugins that are Enabled by Default
 Below is a list of storage types for persistent volume plugins that are enabled by default. When enabling this feature flag, any persistent volume plugins that are not on this list are considered experimental and unsupported:
 
-- `aws-ebs`
-- `azure-disk`
-- `azure-file`
-- `flex-volume-longhorn`
-- `gce-pd`
-- `host-path`
-- `local`
-- `nfs`
-- `vsphere-volume`
+Name | Plugin
+--------|----------
+Amazon EBS Disk |  `aws-ebs`
+AzureFile | `azure-file`
+AzureDisk | `azure-disk`
+Google Persistent Disk | `gce-pd`
+Longhorn | `flex-volume-longhorn`
+VMware vSphere Volume |  `vsphere-volume`
+Local | `local`
+Network File System | `nfs`
+hostPath | `host-path`
 
 ### Types for StorageClass that are Enabled by Default
 Below is a list of storage types for a StorageClass that are enabled by default. When enabling this feature flag, any persistent volume plugins that are not on this list are considered experimental and unsupported:
 
-- `aws-ebs`
-- `azure-disk`
-- `azure-file`
-- `gce-pd`
-- `longhorn`
-- `local`
-- `vsphere-volume`
+Name | Plugin
+--------|--------
+Amazon EBS Disk |  `aws-ebs`
+AzureFile | `azure-file`
+AzureDisk | `azure-disk`
+Google Persistent Disk | `gce-pd`
+Longhorn | `flex-volume-longhorn`
+VMware vSphere Volume | `vsphere-volume`
+Local | `local`

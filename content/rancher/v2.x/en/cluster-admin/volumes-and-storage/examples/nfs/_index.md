@@ -10,9 +10,9 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
 
 >**Note:**
 >
->- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within Rancher. Instead, skip the rest of this procedure and complete [adding storage]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/).
+>- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within Rancher. Instead, skip the rest of this procedure and complete [adding storage]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/).
 >
->- This procedure demonstrates how to setup an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
+>- This procedure demonstrates how to set up an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
 
 >**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
 
