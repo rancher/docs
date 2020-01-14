@@ -15,6 +15,9 @@ Don't run Rancher HA in a hosted Kubernetes environment such as Google's GKE, Am
 
 It is strongly recommended to use hosted infrastructure such as Amazon's EC2 or Google's GCE instead. When you create a cluster using RKE on an infrastructure provider, you can configure the cluster to create etcd snapshots as a backup. You can then [use RKE]({{<baseurl>}}/rke/latest/en/etcd-snapshots/) or [Rancher]({{<baseurl>}}/rancher/v2.x/en/backups/restorations/) to restore your cluster from one of these snapshots. In a hosted Kubernetes environment, this backup and restore functionality is not supported.
 
+### Make sure nodes are configured correctly for Kubernetes ###
+It's important to follow K8s and etcd best practices when deploying your nodes, including disabling swap, double checking you have full network connectivity between all machines in the cluster, using unique hostnames, MAC addresses, and product_uuids for every node, checking that all correct ports are opened, and deploying with ssd backed etcd.  More details can be found in the [kubernetes docs](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) and [etcd's performance op guide](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/performance.md)
+
 ### When using RKE: Backup the Statefile
 RKE keeps record of the cluster state in a file called `cluster.rkestate`. This file is important for the recovery of a cluster and/or the continued maintenance of the cluster through RKE. Because this file contains certificate material, we strongly recommend encrypting this file before backing up. After each run of `rke up` you should backup the state file. 
 
