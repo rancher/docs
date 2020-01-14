@@ -44,7 +44,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 There are three recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
 
 | Configuration                  | Chart option                     | Description                                                                                 | Requires cert-manager                 |
 | ------------------------------ | -------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------- |
