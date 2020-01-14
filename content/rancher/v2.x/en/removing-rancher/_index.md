@@ -10,6 +10,10 @@ aliases:
 
 When you deploy the Rancher server, Rancher's components are installed on the nodes you use. 
 
-If you installed Rancher on a [high-availability]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) Kubernetes cluster, remove Rancher by using the [System Tools]({{< baseurl >}}/rancher/v2.x/en/system-tools/) with the `remove` subcommand.
+If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) remove Rancher by using the [System Tools]({{<baseurl>}}/rancher/v2.x/en/system-tools/) with the `remove` subcommand.
 
-For information about how to remove Rancher components from downstream Kubernetes clusters, refer to the section on [detaching clusters.]({{<baseurl>}}/rancher/v2.x/en/detaching-rancher/)
+### Detaching Rancher from Downstream Clusters
+
+If an imported cluster is deleted from the Rancher UI, the cluster is detached from Rancher, but not destroyed. You can still access the cluster using `kubectl`.
+
+For other types of clusters, including RKE clusters and hosted Kubernetes clusters, it is not possible to detach the cluster from Rancher in a way that allows you to continue using the cluster. If the cluster is deleted from the Rancher UI, it is destroyed.
