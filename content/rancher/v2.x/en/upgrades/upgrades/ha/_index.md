@@ -87,7 +87,7 @@ hostname: rancher.my.org
 
 > **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
 
-If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow Option B: Reinstalling Rancher. Otherwise, follow Option A: Upgrading Rancher.
+If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow `Option B: Reinstalling Rancher`. Otherwise, follow `Option A: Upgrading Rancher`.
 
 {{% accordion label="Option A: Upgrading Rancher" %}}
 
@@ -103,6 +103,10 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 {{% /accordion %}}
 
 {{% accordion label="Option B: Reinstalling Rancher chart" %}}
+
+If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manger due to the API change in cert-manger v0.11. 
+
+Please refer the [Upgrading Cert-Manager]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager) page for more information.
 
 1. Uninstall Rancher
 
