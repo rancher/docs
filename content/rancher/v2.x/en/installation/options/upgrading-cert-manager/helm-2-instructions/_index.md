@@ -14,8 +14,19 @@ To address these changes, this guide will do two things:
 1. Document the procedure for upgrading cert-manager
 1. Explain the cert-manager API changes and link to cert-manager's offficial documentation for migrating your data
 
+> **Important:**
+> If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, you need to reinstall both of them:
 
-## Performing the upgrade
+> 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
+> 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
+> 3. Install the newer version of Rancher and cert-manager 
+
+> The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
+
+## Upgrade Cert-Manager Only 
+
+> **Note:**
+> These instructions are applied if you have no plan to upgrade Rancher. 
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
