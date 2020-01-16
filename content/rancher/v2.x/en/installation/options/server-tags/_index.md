@@ -11,6 +11,8 @@ For a high-availability installation of Rancher, which is recommended for produc
 
 For single node installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image.**
 
+For more information on how Rancher releases and branches work, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/options/versioning-scheme)
+
 {{% tabs %}}
 {{% tab "Helm Charts" %}}
 
