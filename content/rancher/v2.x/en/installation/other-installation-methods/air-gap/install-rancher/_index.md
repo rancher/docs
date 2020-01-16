@@ -66,8 +66,9 @@ For HA air gap configurations, there are two recommended options for the source 
 When setting up the Rancher Helm template, there are several options in the Helm chart that are designed specifically for air gap installations.
 
 | Chart Option            | Chart Value                      | Description   |
-| ----------------------- | -------------------------------- | ------- |
-| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.    |
+| ----------------------- | -------------------------------- | ---- |
+| `certmanager.version` | "<version>" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
+| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. _Available as of v2.3.0_ |
 
 Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), complete one of the procedures below.
@@ -77,7 +78,7 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade cert-manager documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 1. From a system connected to the internet, add the cert-manager repo to Helm.
     ```plain
@@ -86,13 +87,20 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     ```
 
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
+<<<<<<< HEAD
     ```plain
     helm fetch jetstack/cert-manager --version v0.9.1
     ```
+=======
+
+   ```plain
+   helm fetch jetstack/cert-manager --version v0.12.0
+   ```
+>>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
    ```plain
-   helm template ./cert-manager-v0.9.1.tgz --output-dir . \
+   helm template ./cert-manager-v0.12.0.tgz --output-dir . \
        --name cert-manager --namespace cert-manager \
        --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
        --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
@@ -101,20 +109,33 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 1. Download the required CRD file for cert-manager
    ```plain
-   curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+   curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
    ```
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
+<<<<<<< HEAD
 Placeholder | Description
  ------------|-------------
 `<VERSION>` | The version number of the output tarball.
 `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
  ```plain
+=======
+
+    Placeholder | Description
+    ------------|-------------
+    `<VERSION>` | The version number of the output tarball.
+    `<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
+    `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
+    `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
+
+     ```plain
+>>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
     helm template ./rancher-<VERSION>.tgz --output-dir . \
      --name rancher \
      --namespace cattle-system \
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
+     --set certmanager.version=<CERTMANAGER_VERSION> \
      --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
      --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
      --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
@@ -167,15 +188,21 @@ If you are using self-signed certificates, install cert-manager:
 kubectl create namespace cert-manager
 ```
 
+<<<<<<< HEAD
 1. Label the cert-manager namespace to disable resource validation.
 ```plain
 kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
 ```
 
+=======
+>>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
 1. Create the cert-manager CustomResourceDefinitions (CRDs).
 ```plain
 kubectl apply -f cert-manager/cert-manager-crd.yaml
 ```
+
+> **Important:**
+> If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false flag to your kubectl apply command above else you will receive a validation error relating to the x-kubernetes-preserve-unknown-fields field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
 
 1. Launch cert-manager.
 ```plain
