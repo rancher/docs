@@ -22,6 +22,8 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
 
 For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.x/en/best-practices/deployment-types/)
 
+The Rancher UI works best in Firefox or Chrome.
+
 # Operating Systems and Docker Requirements
 
 Rancher should work with any modern Linux distribution and any modern Docker version.
