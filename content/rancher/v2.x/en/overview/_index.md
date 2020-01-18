@@ -58,10 +58,10 @@ The options and settings available for an existing cluster change based on the m
 
 After a cluster is created with Rancher, a cluster administrator can manage cluster membership, enable pod security policies, and manage node pools, among [other options.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/)
 
-The following table shows an overview of the options and settings available for each cluster type:
+The following table summarizes the options and settings available for each cluster type:
 
- Cluster Type | Manage Member Roles | Edit Cluster Options | Manage Node Pools
----------|----------|---------|---------|
- [RKE-Launched]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#rancher-launched-kubernetes) | ✓ | ✓ | ✓ |
- [Hosted Kubernetes Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#hosted-kubernetes-cluster) | ✓ |  |  |
- [Imported]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#import-existing-cluster) | ✓ |  |  |
+ Rancher Capability | RKE Launched | Hosted Kubernetes Cluster | Imported Cluster
+ ---------|----------|---------|---------|
+ Manage member roles | ✓ | ✓ | ✓
+ Edit cluster options | ✓ | | 
+ Manage node pools | ✓ | |

@@ -19,13 +19,11 @@ Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
 
 6. {{< step_create-cluster_node-pools >}}
 
-	1.	Click **Add Node Template**.
+	1.	Click **Add Node Template**. Note: As of v2.2.0, account access information is stored as a cloud credentials. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one. To create a new cloud credential, enter **Name** and **Account Access** data, then click **Create.**
 
 	2.  Complete the **Digital Ocean Options** form.
 
 		- **Access Token** stores your DigitalOcean Personal Access Token. Refer to [DigitalOcean Instructions: How To Generate a Personal Access Token](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token).
-
-		  {{< step_create-cloud-credential >}}
 
 		- **Droplet Options** provision your cluster's geographical region and specifications.
 

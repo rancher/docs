@@ -1,11 +1,13 @@
 ---
-title: Hosted Kubernetes Providers
+title: Setting up Clusters from Hosted Kubernetes Providers
 weight: 2100
 ---
 
-You can use Rancher to create clusters in a hosted Kubernetes provider, such as Google GKE.
+In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
 
-In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-premise or in an infrastructure provider, all from the same UI.
+If you use a Kubernetes provider such as Google GKE, Rancher integrates with its cloud APIs, allowing you to create and manage role-based access control for the hosted cluster from the Rancher UI.
+
+In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-premise or in an infrastructure provider.
 
 Rancher supports the following Kubernetes providers:
 

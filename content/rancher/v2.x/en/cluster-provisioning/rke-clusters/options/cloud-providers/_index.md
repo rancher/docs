@@ -1,5 +1,5 @@
 ---
-title: Selecting Cloud Providers
+title: Setting up Cloud Providers
 weight: 2255
 aliases:
   - /rancher/v2.x/en/concepts/clusters/cloud-providers/
