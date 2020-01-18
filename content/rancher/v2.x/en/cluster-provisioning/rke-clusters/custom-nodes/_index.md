@@ -1,24 +1,24 @@
 ---
-title: Creating a Cluster with Custom Nodes
+title: Launching Kubernetes on Existing Custom Nodes
 description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements 
 metaDescription: "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements"
-shortTitle: Custom Nodes
 weight: 2225
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
+  - /rancher/v2.x/en/cluster-provisioning/custom-clusters
 ---
 
-When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure. This section describes how to set up a custom cluster.
+When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-premise bare-metal servers, on-premise virtual machines, or in any node hosted by an infrastructure provider.
 
-## Custom Nodes
+To use this option you'll need access to servers you intend to use in your Kubernetes cluster. Provision each server according to the [requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
 
-To use this option you'll need access to servers you intend to use in your Kubernetes cluster. Provision each server according to Rancher [requirements](#requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
+This section describes how to set up a custom cluster.
 
-## Objectives for Creating Cluster with Custom Nodes
+# Creating a Cluster with Custom Nodes
 
 >**Want to use Windows hosts as Kubernetes workers?**
 >
->See [Configuring Custom Clusters for Windows]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/) before you start.
+>See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/) before you start.
 
 <!-- TOC -->
 
@@ -28,7 +28,7 @@ To use this option you'll need access to servers you intend to use in your Kuber
 
 <!-- /TOC -->
 
-## 1. Provision a Linux Host
+### 1. Provision a Linux Host
 
 Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
@@ -36,18 +36,11 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-premise VM
 - A bare-metal server
 
->**Notes:**
->
->- While creating your cluster, you must assign Kubernetes roles to your cluster nodes. If you plan on dedicating servers to each role, you must provision a server for each role (i.e. provision multiple servers).
->- If you want to reuse a node from a previous custom cluster, [clean the node]({{< baseurl >}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
-Provision the host according to the requirements below.
+Provision the host according to the [installation requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements) and the [checklist for production-ready clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production)
 
-### Requirements
-
-Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
-
-## 2. Create the Custom Cluster
+### 2. Create the Custom Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -84,7 +77,7 @@ Each node in your cluster must meet our [Requirements]({{< baseurl >}}/rancher/v
 
 {{< result_create-cluster >}}
 
-## 3. Amazon Only: Tag Resources
+### 3. Amazon Only: Tag Resources
 
 If you have configured your cluster to use Amazon as **Cloud Provider**, tag your AWS resources with a cluster ID.
 

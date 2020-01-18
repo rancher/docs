@@ -1,5 +1,5 @@
 ---
-title: Configuring Custom Clusters for Windows
+title: Launching Kubernetes on Windows Clusters
 weight: 2240
 ---
 

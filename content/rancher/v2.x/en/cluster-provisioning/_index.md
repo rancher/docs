@@ -1,5 +1,5 @@
 ---
-title: Provisioning Kubernetes Clusters
+title: Setting up Kubernetes Clusters in Rancher
 description: Provisioning Kubernetes Clusters
 weight: 2000
 aliases:
@@ -15,29 +15,35 @@ This section assumes a basic familiarity with Docker and Kubernetes. For a brief
 
 For a conceptual overview of how the Rancher server provisions clusters and what tools it uses to provision them, refer to the [architecture]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/) page.
 
-## Cluster Creation Options
-
-Options include:
+This section covers the following topics:
 
 <!-- TOC -->
-
-- [Hosted Kubernetes Cluster](#hosted-kubernetes-cluster)
-- [Rancher Launched Kubernetes](#rancher-launched-kubernetes)
-    - [Nodes Hosted by an Infrastructure Provider](#nodes-hosted-by-an-infrastructure-provider)
-    - [Custom Nodes](#custom-nodes)
-- [Import Existing Cluster](#import-existing-cluster)
-
+- [Setting up clusters in a hosted Kubernetes provider](#setting-up-clusters-in-a-hosted-kubernetes-cluster)
+- [Launching Kubernetes with Rancher](#launching-kubernetes-with-rancher)
+    - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
+    - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
+- [Importing Existing Cluster](#importing-existing-cluster)
 <!-- /TOC -->
 
-# Hosted Kubernetes Cluster
+The following table summarizes the options and settings available for each cluster type:
 
-If you use a Kubernetes provider such as Google GKE, Rancher integrates with its cloud APIs, allowing you to create and manage a hosted cluster from the Rancher UI.
+ Rancher Capability | RKE Launched | Hosted Kubernetes Cluster | Imported Cluster
+ ---------|----------|---------|---------|
+ Manage member roles | ✓ | ✓ | ✓
+ Edit cluster options | ✓ | | 
+ Manage node pools | ✓ | |
 
-[Hosted Kubernetes Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters)
+# Setting up Clusters in a Hosted Kubernetes Provider
 
-# Rancher Launched Kubernetes
+In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
 
-The [Rancher Kubernetes Engine (RKE)]({{<baseurl>}}/rke/latest/en/) allows you to create a Kubernetes cluster on your own nodes. RKE is Rancher’s own lightweight Kubernetes installer.
+If you use a Kubernetes provider such as Google GKE, Rancher integrates with its cloud APIs, allowing you to create and manage role-based access control for the hosted cluster from the Rancher UI.
+
+For more information, refer to the section on [hosted Kubernetes clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters)
+
+# Launching Kubernetes with Rancher
+
+Rancher uses the [Rancher Kubernetes Engine (RKE)]({{<baseurl>}}/rke/latest/en/)as a library when provisioning Kubernetes on your own nodes. RKE is Rancher’s own lightweight Kubernetes installer.
 
 In RKE clusters, Rancher manages the deployment of Kubernetes. These clusters can be deployed on any bare metal server, cloud provider, or virtualization platform.
 
@@ -47,27 +53,29 @@ If you already have a node that you want to add to an RKE cluster, you can add i
 
 For more information, refer to the section on [RKE clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
 
-### Nodes Hosted by an Infrastructure Provider
+### Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider
+
+Rancher can dynamically provision nodes in infrastructure providers such as Amazon EC2, DigitalOcean, Azure, or vSphere, then install Kubernetes on them.
 
 Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This template defines the parameters used to launch nodes in your cloud providers.
 
-The benefit of using nodes hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher automatically replaces it, thus maintaining the expected cluster configuration.
+One benefit of using nodes hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically replace it, thus maintaining the expected cluster configuration.
 
 The cloud providers available for creating a node template are decided based on the [node drivers]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers) active in the Rancher UI.
 
 For more information, refer to the section on [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/)
 
-### Custom Nodes
+### Launching Kubernetes on Existing Custom Nodes
 
-You can bring any nodes you want to Rancher and use them to create a cluster. Clusters created with custom nodes are also called custom clusters.
+When setting up this type of cluster, Rancher installs Kubernetes on existing [custom nodes,]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) which creates a custom cluster.
+
+You can bring any nodes you want to Rancher and use them to create a cluster.
 
 These nodes include on-premise bare metal servers, cloud-hosted virtual machines, or on-premise virtual machines.
 
-[Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/)
+# Importing Existing Clusters
 
-# Import Existing Cluster
-
-Users can import an existing Kubernetes cluster into Rancher. 
+In this type of cluster, Rancher connects to a Kubernetes cluster that has already been set up. Therefore, Rancher does not provision Kubernetes, but only sets up the Rancher agents to communicate with the cluster.
 
 Note that Rancher does not automate the provisioning, scaling, or upgrade of imported clusters. All other Rancher features, including management of cluster, policy, and workloads, are available for imported clusters.
 

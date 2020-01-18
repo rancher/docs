@@ -24,9 +24,7 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 	2.	Complete the **Azure Options** form.
 
-		- **Account Access** stores your account information for authenticating with Azure.
-
-		{{< step_create-cloud-credential >}}
+		- **Account Access** stores your account information for authenticating with Azure. Note: As of v2.2.0, account access information is stored as a cloud credentials. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one. To create a new cloud credential, enter **Name** and **Account Access** data, then click **Create.**
 
 		- **Placement** sets the geographical region where your cluster is hosted and other location metadata.
 
