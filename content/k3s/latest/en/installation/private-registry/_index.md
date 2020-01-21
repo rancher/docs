@@ -10,7 +10,7 @@ Upon startup, K3s will check to see if a `registries.yaml` file exists at `/etc/
 
 Note that server nodes are schedulable by default. If you have not tainted the server nodes and will be running workloads on them, please ensure you also create the registires.yaml file on each server as well.
 
-Configuration in Containerd can be used to connect to a private registry with a TLS connection and with registries that enable authentication as well. The following section will explain the `registries.yaml` file and give different examples of using private registry configuration in K3s.
+Configuration in containerd can be used to connect to a private registry with a TLS connection and with registries that enable authentication as well. The following section will explain the `registries.yaml` file and give different examples of using private registry configuration in K3s.
 
 # Registries Configuration File
 
@@ -30,7 +30,7 @@ mirrors:
       - "https://mycustomreg.com:5000"
 ```
 
-Each mirror must have a name and set of endpoints. When pulling an image from a registry, Containerd will try these endpoint URLs one by one, and use the first working one.
+Each mirror must have a name and set of endpoints. When pulling an image from a registry, containerd will try these endpoint URLs one by one, and use the first working one.
 
 ### Configs
 
@@ -51,14 +51,12 @@ The credentials consist of either username/password or authentication token:
 Below are basic examples of using private registries in different modes:
 
 ### With TLS
-​
+
 Below are examples showing how you may configure `/etc/rancher/k3s/registries.yaml` on each node when using TLS.
-​
+
 {{% tabs %}}
 {{% tab "With Authentication" %}}
-​
-With Auth Content here:
-​
+
 ```
 mirrors:
   mycustomreg.com:5000
@@ -74,12 +72,10 @@ configs:
       key_file:  # path to the key file used in the registry
       ca_file:   # path to the ca file used in the registry
 ```
-​
+
 {{% /tab %}}
 {{% tab "Without Authentication" %}}
-​
-Without Auth content:
-​
+
 ```
 mirrors:
   mycustomreg.com:5000
@@ -97,13 +93,11 @@ configs:
 {{% /tabs %}}
 
 ### Without TLS
-​
+
 Below are examples showing how you may configure `/etc/rancher/k3s/registries.yaml` on each node when _not_ using TLS.
-​
+
 {{% tabs %}}
 {{% tab "With Authentication" %}}
-​
-With Auth content:
 
 ```
 mirrors:
@@ -116,11 +110,9 @@ configs:
       username: xxxxxx # this is the registry username
       password: xxxxxx # this is the registry password
 ```
-​
+
 {{% /tab %}}
 {{% tab "Without Authentication" %}}
-​
-Without Auth content:
 
 ```
 mirrors:
@@ -134,4 +126,4 @@ mirrors:
 
 > In case of no TLS communication, you need to specify `http://` for the endpoints, otherwise it will default to https.
  
-In order for Containerd to take an effect, you need to restart K3s on each node in order to leverage the private registry.
+In order for the registry changes to take effect, you need to restart K3s on each node.
