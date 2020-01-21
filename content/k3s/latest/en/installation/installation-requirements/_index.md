@@ -1,5 +1,5 @@
 ---
-title: Node Requirements
+title: Installation Requirements
 weight: 1
 ---
 
@@ -8,6 +8,7 @@ K3s is very lightweight, but has some minimum requirements as outlined below.
 Whether you're configuring a K3s cluster to run in a Docker or Kubernetes setup, each node running K3s should meet the following minimum requirements. You may need more resources to fit your needs.
 
 ## Prerequisites
+
 *    Two nodes cannot have the same hostname. If all your nodes have the same hostname, pass `--node-name` or set `$K3S_NODE_NAME` with a unique name for each node you add to the cluster.
 
 ## Operating Systems
@@ -38,3 +39,32 @@ The K3s server needs port 6443 to be accessible by the nodes. The nodes need to 
 IMPORTANT: The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disabled access to port 8472.
 
 If you wish to utilize the metrics server, you will need to open port 10250 on each node.
+
+## Large Clusters
+
+Hardware requirement is based on the size of your K3s cluster, for production and large clusters its recommended to use HA setup with external database setup, that includes:
+- MySQL
+- PostgreSQL
+- etcd
+
+### CPU and Memory
+
+The following is the memory/cpu installation requirement recommendation for HA server nodes of K3s cluster:
+
+| Deployment Size |   Nodes   | VCPUS |  RAM  |
+|:---------------:|:---------:|:-----:|:-----:|
+|      Small      |  Up to 10 |   2   |  4 GB |
+|      Medium     | Up to 100 |   4   |  8 GB |
+|      Large      | Up to 250 |   8   | 16 GB |
+|     X-Large     | Up to 500 |   16  | 32 GB |
+|     XX-Large    |   500+    |   32  | 64 GB |
+
+### Disks
+
+The cluster performance depends on database performance. To ensure optimal speed, we recommend always using SSD disks to back your K3s cluster. On cloud providers, you will also want to use the minimum size that allows the maximum IOPS.
+
+### Network
+
+You should consider increasing the subnet size for the cluster cidr so that you don't run out of IPs for the pods, you can do that by passing `--cluster-cidr` option to k3s server upon starting. 
+
+
