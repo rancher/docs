@@ -24,4 +24,4 @@ For details on starting a Rancher container with your private CA certificates mo
 
 - [Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#custom-ca-certificate)
 
-- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#additional-trusted-cas)
+- [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#additional-trusted-cas)

@@ -25,7 +25,7 @@ Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0
 
 You will need [RKE]({{< baseurl >}}/rke/latest/en/installation/) and [kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
 
-Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/) for node requirements.
+Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/) for node requirements.
 
 We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
 
@@ -231,6 +231,6 @@ rke up --config ./rancher-cluster-restore.yml
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#recommended-architecture) for HA installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the HA install ([1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
+Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/#recommended-architecture) for HA installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the HA install ([1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
 
 > **IMPORTANT:** Remember to save your new RKE config (`rancher-cluster-restore.yml`) and `kubectl` credentials (`kube_config_rancher-cluster-restore.yml`) files in a safe place for future maintenance.

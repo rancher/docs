@@ -11,7 +11,7 @@ aliases:
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a single node installation.
 
-> **Note:** These instructions assume you are using Helm 2. The docs will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, you can refer to the [migration guide](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) or the [non-air-gap HA installation docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher) which have already been updated for Helm 3.
+> **Note:** These instructions assume you are using Helm 2. The docs will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, you can refer to the [migration guide](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) or the [docs on installing Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher) which have already been updated for Helm 3.
 
 {{% tabs %}}
 {{% tab "HA Install (Recommended)" %}}
@@ -46,7 +46,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
 helm fetch rancher-<CHART_REPO>/rancher
 ```
 
-> Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
+> Want additional options? Need help troubleshooting? See [Kubernetes Install: Advanced Options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#advanced-configurations).
 
 ### B. Choose your SSL Configuration
 
@@ -54,7 +54,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 For HA air gap configurations, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -152,7 +152,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 {{% /accordion %}}
 
@@ -205,9 +205,9 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/)
-- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
+- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/)
+- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/)
 
 {{% /tab %}}
 {{% tab "Single Node Install" %}}

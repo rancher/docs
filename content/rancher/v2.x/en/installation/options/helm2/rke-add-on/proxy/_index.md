@@ -25,8 +25,8 @@ NO_PROXY                  | Network address(es), network address range(s) and do
 
 When using High Availability Installation, the environment variables need to be added to the RKE Config File template.
 
-* [High Availability Installation with External Load Balancer (TCP/Layer 4) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/#5-download-rke-config-file-template)
-* [High Availability Installation with External Load Balancer (HTTPS/Layer 7) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb/#5-download-rke-config-file-template)
+* [Kubernetes Installation with External Load Balancer (TCP/Layer 4) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install-server-install/#5-download-rke-config-file-template)
+* [Kubernetes Installation with External Load Balancer (HTTPS/Layer 7) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install-server-install-external-lb/#5-download-rke-config-file-template)
 
 The environment variables should be defined in the `Deployment` inside the RKE Config File Template. You only have to add the part starting with `env:` to (but not including) `ports:`. Make sure the indentation is identical to the preceding `name:`. Required values for `NO_PROXY` are:
 

@@ -1,5 +1,5 @@
 ---
-title: How to Install Rancher on a Three-node Kubernetes Cluster
+title: Installing Rancher on a Kubernetes Cluster
 weight: 3
 description: For production environments, install Rancher in a high-availability configuration. Read the guide for setting up a 3-node cluster and still install Rancher using a Helm chart.
 ---
@@ -35,9 +35,9 @@ The following CLI tools are required for this install. Please make sure these to
 
 ## Installation Outline
 
-- [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/)
-- [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/)
-- [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
+- [Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/)
+- [Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/)
+- [Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)
 
 ## Additional Install Options
 
@@ -50,6 +50,6 @@ The following CLI tools are required for this install. Please make sure these to
 
 > **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
-> Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/ha/#installation-outline).
+> Please use the Rancher helm chart to install HA Rancher. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/#installation-outline).
 >
 > If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.

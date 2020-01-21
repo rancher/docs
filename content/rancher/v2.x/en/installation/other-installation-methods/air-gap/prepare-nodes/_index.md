@@ -81,8 +81,8 @@ You will need to configure a load balancer as a basic Layer 4 TCP forwarder to d
 
 **Load Balancer Configuration Samples:**
 
-- For an example showing how to set up an NGINX load balancer, refer to [this page.]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx)
-- For an example showing how to set up an Amazon NLB load balancer, refer to [this page.]({{< baseurl >}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nlb)
+- For an example showing how to set up an NGINX load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx)
+- For an example showing how to set up an Amazon NLB load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb)
 
 {{% /tab %}}
 {{% tab "Single Node Install" %}}

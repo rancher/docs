@@ -28,9 +28,9 @@ This section contains information to help you troubleshoot issues when using Ran
 
     When you experience name resolution issues in your cluster.
 
-- [Rancher HA]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/rancherha/)
+- [Troubleshooting Rancher installed on Kubernetes]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/rancherha/)
 
-    If you experience issues with your [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
+    If you experience issues with your [Rancher server installed on Kubernetes]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/)
 
 - [Imported clusters]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/imported-clusters/)
 

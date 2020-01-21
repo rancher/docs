@@ -59,7 +59,7 @@ Rancher can also be installed on a single node in a development or testing envir
 {{% tabs %}}
 {{% tab "HA Node Requirements" %}}
 
-These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) of Rancher.
+These requirements apply to [installing Rancher on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) of Rancher.
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
