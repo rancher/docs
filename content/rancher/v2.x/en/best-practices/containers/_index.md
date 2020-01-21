@@ -17,8 +17,6 @@ Smaller distributions such as Alpine and BusyBox reduce container image size and
 
 Popular distributions such as Ubuntu, Fedora, and CentOS are more field-tested and offer more functionality.
 
-Another option is RancherOS, an operating system composed entirely of Docker containers. Everything in RancherOS is a container managed by Docker. This includes system services such as udev and syslog. RancherOS includes only the bare minimum amount of software needed to run Docker, decreasing complexity and boot time. The small code base and decreased attack surface of RancherOS also improves security. For details, you can refer to the [RancherOS docs]({{< baseurl >}}/os/v1.x/en/).
-
 ### Start with a FROM scratch container
 If your microservice is a standalone static binary, you should use a FROM scratch container. 
 
