@@ -224,7 +224,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 > **Do you want to...**
 >
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
-> - Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#api-audit-log).
+> - Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log).
 
 - For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
@@ -257,8 +257,8 @@ In development or testing environments where your team will access your Rancher 
 > **Prerequisites:**
 > From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
 >
-> - The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem).
-> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#cert-order).
+> - The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#pem).
+> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#cert-order).
 
 After creating your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
@@ -287,7 +287,7 @@ docker run -d --restart=unless-stopped \
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
-> **Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem).
+> **Prerequisite:** The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#pem).
 
 After obtaining your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 

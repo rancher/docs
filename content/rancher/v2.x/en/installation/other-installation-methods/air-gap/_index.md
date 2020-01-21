@@ -1,13 +1,15 @@
 ---
 title: Installing Rancher in an Air Gapped Environment
-weight: 2
+weight: 3
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
   - /rancher/v2.x/en/installation/air-gap-high-availability/
   - /rancher/v2.x/en/installation/air-gap-single-node/
 ---
 
-This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. Throughout the installations instructions, there will be _tabs_ for either a high availability installation or a single node installation.
+This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
+
+Throughout the installations instructions, there will be _tabs_ for either a high availability Kubernetes installation or a single-node Docker installation.
 
 ### Air Gapped High Availability (HA) Installations
 

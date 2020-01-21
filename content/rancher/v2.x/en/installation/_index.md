@@ -18,7 +18,7 @@ There are also separate instructions for installing Rancher in an air gap enviro
 
 | Level of Internet Access           | Installing on a Kubernetes Cluster - Strongly Recommended                | Installing in a Single Docker Container                             |
 | ---------------------------------- | ------------------------------ | ---------- |
-| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node)                                                                                     |
+| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
 | Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
 
@@ -36,11 +36,11 @@ Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/
 
 ### More Options for Single Node Installations with Docker
 
-Refer to the [single node installation docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) for details other configurations including:
+Refer to the [single node installation docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) for details other configurations including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node#api-audit-log)
-- With an [external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/single-node-install-external-lb/)
-- With a [persistent data store]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node#persistent-data)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log)
+- With an [external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb/)
+- With a [persistent data store]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#persistent-data)
 
 ### More Kubernetes Options
 

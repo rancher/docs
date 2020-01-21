@@ -1,5 +1,5 @@
 ---
-title: How to Install Rancher on a High-availability Kubernetes Cluster
+title: How to Install Rancher on a Three-node Kubernetes Cluster
 weight: 3
 description: For production environments, install Rancher in a high-availability configuration. Read the guide for setting up a 3-node cluster and still install Rancher using a Helm chart.
 ---

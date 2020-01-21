@@ -1,16 +1,19 @@
 ---
 title: Installing Rancher on a Single Node Using Docker
-description: For development and testing environments, use a single node install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
+description: For development and testing environments only, use a single node install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
 weight: 1
 aliases:
   - /rancher/v2.x/en/installation/single-node-install/
   - /rancher/v2.x/en/installation/single-node
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node
 ---
 
-For development and testing environments, we recommend installing Rancher by running a single Docker container. In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
+For development and testing environments only, Rancher can be installed by running a single Docker container.
+
+In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Single Node Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/single-node-install-external-lb) instead.
+> See [Single Node Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb) instead.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -26,7 +29,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node/proxy/)
+> - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/)
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
 > - Complete an Air Gap Installation? See [Air Gap: Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
 > - Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)

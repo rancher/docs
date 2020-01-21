@@ -72,7 +72,7 @@ These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/ins
 {{% /tab %}}
 {{% tab "Single Node Requirements" %}}
 
-These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) installations of Rancher.
+These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |

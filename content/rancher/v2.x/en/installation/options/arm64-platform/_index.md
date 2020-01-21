@@ -14,7 +14,7 @@ _Available as of v2.2.0_
 The following options are available when using an ARM64 platform:
 
 - Running Rancher on ARM64 based node(s)
-  - Only [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node)
+  - Only [Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)
 - Create custom cluster and adding ARM64 based node(s)
   - Kubernetes cluster version must be 1.12 or higher
   - CNI Network Provider must be [Flannel]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/#flannel)
