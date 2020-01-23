@@ -180,6 +180,6 @@ In these cases, you have to explicitly allow this traffic in your host firewall,
 
 # Optional: Security Considerations
 
-If you want to provision a secure Kubernetes cluster that is compliant with the CIS (Center for Internet Security) Kubernetes Benchmark, we recommend to following our hardening guide to secure your nodes before installing Kubernetes.
+If you want to provision a Kubernetes cluster that is compliant with the CIS (Center for Internet Security) Kubernetes Benchmark, we recommend to following our hardening guide to configure your nodes before installing Kubernetes.
 
 For more information on the hardening guide and details on which version of the guide corresponds to your Rancher and Kubernetes versions, refer to the [security section.]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide)
