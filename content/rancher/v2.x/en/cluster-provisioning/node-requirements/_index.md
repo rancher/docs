@@ -14,6 +14,7 @@ Make sure the nodes for the Rancher server fulfill the following requirements:
 - [Operating systems and Docker requirements](#operating-systems-and-docker-requirements)
 - [Hardware Requirements](#hardware-requirements)
 - [Networking Requirements](#networking-requirements)
+- [Optional: Security Considerations](#optional-security-considerations)
 
 # Operating Systems and Docker Requirements
 
@@ -176,3 +177,9 @@ However, this traffic may be blocked when:
 - You are using nodes that have multiple interfaces (multihomed).
 
 In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes/instances.
+
+# Optional: Security Considerations
+
+If you want to provision a secure Kubernetes cluster that is compliant with the CIS (Center for Internet Security) Kubernetes Benchmark, we recommend to following our hardening guide to secure your nodes before installing Kubernetes.
+
+For more information on the hardening guide and details on which version of the guide corresponds to your Rancher and Kubernetes versions, refer to the [security section.]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide)

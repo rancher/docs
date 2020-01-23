@@ -1,17 +1,21 @@
 ---
-title: Hardening Guide - Rancher v2.3.3+
+title: Hardening Guide v2.3.3
 weight: 100
 ---
 
-### Hardening Guide for Rancher 2.3.3+ with Kubernetes 1.16
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.3. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+
+> This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+
+This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+
+Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
+------------------------|----------------|-----------------------|------------------
+Hardening Guide v2.3.3 | Rancher v2.3.3 | Benchmark v1.4.1 | Kubernetes 1.14, 1.15, and 1.16
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.3/Rancher_Hardening_Guide.pdf)
 
-### Overview
-
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.3+ with Kubernetes v1.14, v1.15 and v1.16. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
-
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3+]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.3/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide v2.3.3]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.3/).
 
 ### Profile Definitions
 
