@@ -1,5 +1,5 @@
 ---
-title: Single Node Upgrade
+title: Upgrading Rancher Installed with Docker
 weight: 1010
 aliases:
   - /rancher/v2.x/en/upgrades/single-node-upgrade/
@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/upgrades/single-node-air-gap-upgrade
 ---
 
-The following instructions will guide you through upgrading a high-availability Rancher server installation.
+The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
 ## Prerequisites
 

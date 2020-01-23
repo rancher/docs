@@ -1,7 +1,6 @@
 ---
 title: Upgrading to v2.0.7+ — Namespace Migration
-weight:
-aliases:
+weight: 1040
 ---
 >This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
