@@ -28,7 +28,7 @@ For more information how authentication works and how to configure each provider
 
 Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by the user's role. Rancher provides built-in roles to allow you to easily configure a user's permissions to resources, but Rancher also provides the ability to customize the roles for each Kubernetes resource.
 
-For more information how authorization works and how to customize roles, see [Roles Based Access Control (RBAC)]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
+For more information how authorization works and how to customize roles, see [Roles Based Access Control (RBAC)]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/).
 
 ## Pod Security Policies
 

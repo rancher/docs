@@ -67,7 +67,7 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from File**.
 
-In Rancher v2.0.0-v2.2.x, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the section about the [cluster config file.](#cluster-config-file)
+In Rancher v2.0.0-v2.2.x, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the [cluster configuration reference.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)
 
 ![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
 
