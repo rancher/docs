@@ -1,13 +1,15 @@
 ---
-title: Upgrading Rancher Installed on Kubernetes
-weight: 1020
-aliases:
-  - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm
-  - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm-airgap
-  - /rancher/v2.x/en/upgrades/air-gap-upgrade/
+title: Upgrading Rancher Installed on Kubernetes with Helm 2
+weight: 1050
 ---
 
-The following instructions will guide you through using Helm to upgrade a Rancher server that was installed on a Kubernetes cluster.
+> After Helm 3 was released, the [instructions for upgrading Rancher on a Kubernetes cluster](./ha) were updated to use Helm 3.
+>
+> If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
+>
+> This section provides a copy of the older instructions for upgrading Rancher with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+
+The following instructions will guide you through using Helm to upgrade a high-availability (HA) Rancher server installation. 
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
@@ -17,11 +19,11 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 > 
 > - [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager)
 > - If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
-> - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha/helm2) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+> - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/upgrades/helm2) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 # Prerequisites
 
-- **Review the [Known Upgrade Issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
+- **Review the [Known Upgrade Issues]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
 
 - **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) Collect and Populate Images for the new Rancher server version**
 
@@ -97,16 +99,14 @@ If you are also upgrading cert-manager to the latest version from a version olde
 
 Upgrade Rancher to the latest version with all your settings.
 
-Take all the values from the previous step and append them to the command using `--set key=value`:
+Take all the values from the previous step and append them to the command using `--set key=value`. Note: There will be many more options from the previous step that need to be appended.
 
 ```
-helm upgrade rancher rancher-<CHART_REPO>/rancher \
+helm upgrade rancher-<CHART_REPO>/rancher \
+  --name rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
-
-> **Note:** There will be many more options from the previous step that need to be appended.
-
 {{% /accordion %}}
 
 {{% accordion label="Option B: Reinstalling Rancher chart" %}}
@@ -124,7 +124,8 @@ Please refer the [Upgrading Cert-Manager]({{< baseurl >}}/rancher/v2.x/en/instal
 2. Reinstall Rancher to the latest version with all your settings. Take all the values from the previous step and append them to the command using `--set key=value`. Note: There will be many more options from the previous step that need to be appended.
 
     ```
-    helm install rancher rancher-<CHART_REPO>/rancher \
+    helm install rancher-<CHART_REPO>/rancher \
+    --name rancher \
     --namespace cattle-system \
     --set hostname=rancher.my.org
     ```
