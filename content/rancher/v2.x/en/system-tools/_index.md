@@ -41,16 +41,6 @@ After you download the tools, complete the following actions:
 
 # Logs
 
-The following subcommands are available:
-
-| Command | Description
-|---|---
-| [logs](#logs) | Collect Kubernetes cluster component logs from nodes.
-| [stats](#stats) | Stream system metrics from nodes.
-| [remove](#remove) | Remove Kubernetes resources created by Rancher.
-
-### Logs
-
 The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/). See [Troubleshooting]({{< baseurl >}}//rancher/v2.x/en/troubleshooting/) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
