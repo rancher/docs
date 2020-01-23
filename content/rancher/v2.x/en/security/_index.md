@@ -55,10 +55,10 @@ Each version of the hardening guide is intended to be used with specific version
 
 Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
 ------------------------|----------------|-----------------------|------------------
-[Hardening Guide v2.1]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.1/) | Rancher v2.1.x | Benchmark v1.3.0 | Kubernetes 1.11
-[Hardening Guide v2.2]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.2/) | Rancher v2.2.x | Benchmark v1.4.1 and 1.4.0 | Kubernetes 1.13
-[Hardening Guide v2.3]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3/) | Rancher v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes 1.15
 [Hardening Guide v2.3.3]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3.3/) | Rancher v2.3.3 | Benchmark v1.4.1 | Kubernetes 1.14, 1.15, and 1.16
+[Hardening Guide v2.3]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3/) | Rancher v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes 1.15
+[Hardening Guide v2.2]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.2/) | Rancher v2.2.x | Benchmark v1.4.1 and 1.4.0 | Kubernetes 1.13
+[Hardening Guide v2.1]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.1/) | Rancher v2.1.x | Benchmark v1.3.0 | Kubernetes 1.11
 
 ### The CIS Benchmark and Self-Assessment
 
@@ -70,10 +70,10 @@ Each version of Rancher's self assessment guide corresponds to specific versions
 
 Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
 ---------------------------|----------|---------|-------|-----
-[Self Assessment Guide v2.1]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.1/) | Rancher v2.1.x | Hardening Guide v2.1 | Kubernetes 1.11 | Benchmark 1.3.0
-[Self Assessment Guide v2.2]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.2/) | Rancher v2.2.x | Hardening Guide v2.2 | Kubernetes 1.13 | Benchmark v1.4.0 and v1.4.1
-[Self Assessment Guide v2.3]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-0-2-3-2-with-kubernetes-1-15) | Rancher v2.3.0-2.3.2 | Hardening Guide v2.3 | Kubernetes 1.15 | Benchmark v1.4.1
 [Self Assessment Guide v2.3.3]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.3.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-3-+-with-kubernetes-1-16) | Rancher v2.3.3 | Hardening Guide v2.3.3 | Kubernetes v1.16 | Benchmark v1.4.1
+[Self Assessment Guide v2.3]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.3/#cis-kubernetes-benchmark-1-4-1-rancher-2-3-0-2-3-2-with-kubernetes-1-15) | Rancher v2.3.0-2.3.2 | Hardening Guide v2.3 | Kubernetes 1.15 | Benchmark v1.4.1
+[Self Assessment Guide v2.2]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.2/) | Rancher v2.2.x | Hardening Guide v2.2 | Kubernetes 1.13 | Benchmark v1.4.0 and v1.4.1
+[Self Assessment Guide v2.1]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.1/) | Rancher v2.1.x | Hardening Guide v2.1 | Kubernetes 1.11 | Benchmark 1.3.0
 
 ### Third-party Penetration Test Reports
 

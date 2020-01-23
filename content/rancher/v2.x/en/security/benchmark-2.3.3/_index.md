@@ -1,5 +1,5 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3+
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3
 weight: 103
 ---
 
