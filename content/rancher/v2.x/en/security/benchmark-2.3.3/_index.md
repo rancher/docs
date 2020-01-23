@@ -1,19 +1,19 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3+
+title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3
 weight: 103
 ---
 
-### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.3.3+ with Kubernetes 1.16
+This document is a companion to the Rancher v2.3.3 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+
+This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+
+Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
+---------------------------|----------|---------|-------|-----
+Self Assessment Guide v2.3.3 | Rancher v2.3.3 | Hardening Guide v2.3.3 | Kubernetes v1.16 | Benchmark v1.4.1
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.3/Rancher_Benchmark_Assessment.pdf)
 
-#### Overview
-
-The following document scores a Kubernetes 1.16.x RKE cluster provisioned according to the Rancher v2.3.3+ hardening guide against the CIS 1.4.1 Kubernetes benchmark.
-
 > The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.16, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
-
-This document is a companion to the Rancher v2.3.3+ security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
