@@ -86,14 +86,18 @@ If you want to see all the configuration options for a cluster, please click **S
 
 _Available as of v2.2.0_
 
-The registry configuration here is applied during the provisioning of the cluster. This option tells Rancher where to pull the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) or [addon images.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
+The cluster-level private registry configuration is only used for provisioning clusters.
+
+There are two main ways to set up private registries in Rancher: by setting up the [global default registry]({{<baseurl>}}/rancher/v2.x/en/admin-settings/config-private-registry) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
+
+If your private registry requires credentials, you need to pass the credentials to Rancher by editing the cluster options for each cluster that needs to pull images from the registry.
+
+The private registry configuration option tells Rancher where to pull the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) or [addon images]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) that will be used in your cluster.
 
 - **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-To deploy workloads that pull images from a private registry, you will need to set up your own Kubernetes registry for your project.
-
-See the RKE documentation on private registries for more information on the private registry for components applied during the provisioning of the cluster.
+See the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
 ### Authorized Cluster Endpoint
 
