@@ -237,37 +237,3 @@ server {
 
 <br/>
 
-## What's Next?
-
-- **Recommended:** Review [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
-
-<br/>
-
-## FAQ and Troubleshooting
-
-{{< ssl_faq_single >}}
-
-## Advanced Options
-
-### API Auditing
-
-If you want to record all transactions with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
-
-    -e AUDIT_LEVEL=1 \
-    -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
-    -e AUDIT_LOG_MAXAGE=20 \
-    -e AUDIT_LOG_MAXBACKUP=20 \
-    -e AUDIT_LOG_MAXSIZE=100 \
-
-### Air Gap
-
-If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
-
-**Example:**
-
-     <REGISTRY.DOMAIN.COM:PORT>/rancher/rancher:latest
-
-### Persistent Data
-
-{{< persistentdata >}}
