@@ -277,7 +277,7 @@ brew install k3d
 
 A `docker-compose.yml` is in the root of the K3s repo that serves as an example of how to run K3s from Docker. To run from `docker-compose` from this repo, run:
 
-    docker-compose up --scale node=3
+    docker-compose up --scale agent=3
     # kubeconfig is written to current dir
 
     kubectl --kubeconfig kubeconfig.yaml get node
@@ -287,7 +287,7 @@ A `docker-compose.yml` is in the root of the K3s repo that serves as an example 
     d54c8b17c055   Ready    <none>   11s   v1.13.2-k3s2
     db7a5a5a5bdd   Ready    <none>   12s   v1.13.2-k3s2
 
-To run the agent only in Docker, use `docker-compose up node`.
+To run the agent only in Docker, use `docker-compose up agent`.
 
 Alternatively the `docker run` command can also be used:
 
