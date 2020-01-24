@@ -3,7 +3,7 @@ title: Security Scans
 weight: 1
 ---
 
-_Available as of v2.4_
+_Available as of v2.4.0-alpha1_
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS (Center for Internet Security) Kubernetes Benchmark.
 

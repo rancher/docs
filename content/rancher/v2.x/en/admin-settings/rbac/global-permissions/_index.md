@@ -43,7 +43,7 @@ To see the default permissions for new users, go to the **Global** view and clic
 
 Permissions can be assigned to an individual user with [these steps.](#configuring-global-permissions-for-existing-individual-users)
 
-As of Rancher v2.4, you can [assign a role to everyone in the group at the same time](#configuring-global-permissions-for-groups) if the external authentication provider supports groups.
+As of Rancher v2.4.0-alpha1, you can [assign a role to everyone in the group at the same time](#configuring-global-permissions-for-groups) if the external authentication provider supports groups.
 
 # Custom Global Permissions
 
