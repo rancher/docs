@@ -241,11 +241,6 @@ update-extlinux
 reboot
 ```
 
-After rebooting:
-
-- Download **k3s** to **/usr/local/bin/k3s**
-- Create an openrc file in **/etc/init.d**
-
 # Running K3d (K3s in Docker) and docker-compose
 
 [k3d](https://github.com/rancher/k3d) is a utility designed to easily run K3s in Docker.
