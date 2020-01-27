@@ -1,5 +1,5 @@
 ---
-title: HA Install with External Load Balancer (TCP/Layer 4)
+title: Kubernetes Install with External Load Balancer (TCP/Layer 4)
 weight: 275
 aliases:
 - /rancher/v2.x/en/installation/k8s-install-server-install/
@@ -7,19 +7,19 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
+>Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
 >
->If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the Helm chart.
 
 This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 4 load balancer (TCP)
 - [NGINX ingress controller with SSL termination (HTTPS)](https://kubernetes.github.io/ingress-nginx/)
 
-In an HA setup that uses a layer 4 load balancer, the load balancer accepts Rancher client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
+In a Kubernetes setup that uses a layer 4 load balancer, the load balancer accepts Rancher client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
 
-<sup>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
-![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
+<sup>Kubernetes Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
+![High-availability Kubernetes installation of Rancher]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
 
 ## Installation Outline
 
@@ -46,11 +46,11 @@ Installation of Rancher in a high-availability configuration involves multiple p
 
 ## 1. Provision Linux Hosts
 
-Provision three Linux hosts according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
+Provision three Linux hosts according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements).
 
 ## 2. Configure Load Balancer
 
-We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install-server-install/nlb/)
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install-server-install/nlb/)
 
 >**Note:**
 > In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running NGINX.
@@ -150,7 +150,7 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
 
 RKE (Rancher Kubernetes Engine) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will use RKE to setup our cluster and run Rancher.
 
-1. Follow the [RKE Install]({{< baseurl >}}/rke/latest/en/installation) instructions.
+1. Follow the [RKE Install]({{<baseurl>}}/rke/latest/en/installation) instructions.
 
 2. Confirm that RKE is now executable by running the following command:
 
@@ -169,8 +169,8 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 
     >**Advanced Config Options:**
     >
-    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/api-auditing/).
-    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{< baseurl >}}/rke/latest/en/config-options/).
+    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/api-auditing/).
+    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
 
 
 2. Rename the file to `rancher-cluster.yml`.
@@ -186,7 +186,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
     For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
-    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{< baseurl >}}/rke/latest/en/installation/os#redhat-enterprise-linux-rhel-centos) >for RHEL/CentOS specific requirements.
+    > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{<baseurl>}}/rke/latest/en/installation/os#redhat-enterprise-linux-rhel-centos) >for RHEL/CentOS specific requirements.
 
         nodes:
             # The IP address or hostname of the node
@@ -392,8 +392,8 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restoration]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>
 

@@ -1,6 +1,6 @@
 ---
 title: Installing Rancher on a Single Node Using Docker
-description: For development and testing environments only, use a single node install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
+description: For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
 weight: 1
 aliases:
   - /rancher/v2.x/en/installation/single-node-install/
@@ -13,7 +13,7 @@ For development and testing environments only, Rancher can be installed by runni
 In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Single Node Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb) instead.
+> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb) instead.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -31,7 +31,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >
 > - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/)
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
-> - Complete an Air Gap Installation? See [Air Gap: Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
+> - Complete an Air Gap Installation? See [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
 > - Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
 
 Choose from the following options:
@@ -151,5 +151,5 @@ Refer to [this page](./troubleshooting) for frequently asked questions and troub
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+- **Recommended:** Review [Single Node Backup and Restoration]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).

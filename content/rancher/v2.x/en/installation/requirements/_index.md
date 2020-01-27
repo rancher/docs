@@ -50,7 +50,7 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 
 ### CPU and Memory
 
-Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher on a single node or on a high-availability (HA) cluster.
+Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher on a single node or on a high-availability Kubernetes cluster.
 
 For production environments, the Rancher server should be installed on an HA cluster.
 
@@ -100,11 +100,11 @@ This section describes the port requirements for nodes running the `rancher/ranc
 
 The port requirements are different depending on whether you are installing Rancher on a single node or on a high-availability Kubernetes cluster.
 
-- **For a single-node installation,** you only need to open the ports required to enable Rancher to communicate with downstream user clusters.
+- **For a Docker installation,** you only need to open the ports required to enable Rancher to communicate with downstream user clusters.
 - **For a high-availability installation,** the same ports need to be opened, as well as additional ports required to set up the Kubernetes cluster that Rancher is installed on.
 
 {{% tabs %}}
-{{% tab "HA Install Port Requirements" %}}
+{{% tab "Kubernetes Install Port Requirements" %}}
 ### Ports for Communication with Downstream Clusters
 
 To communicate with downstream clusters, Rancher requires different ports to be open depending on the infrastructure you are using.
@@ -135,7 +135,7 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 ### Additional Port Requirements for Nodes in an HA/Kubernetes Cluster
 
@@ -193,7 +193,7 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 
 <figcaption>Inbound Rules for Rancher Nodes</figcaption>
@@ -213,6 +213,6 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 {{% /tab %}}
 {{% /tabs %}}

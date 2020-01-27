@@ -32,9 +32,9 @@ After provisioning your node(s), install Rancher:
 
 - [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/)
 
-    For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability (HA) configuration. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
+    For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability Kubernetes installation. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
 
-    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/) for full requirements.
+    >**Important Difference:** Although you could install Rancher v1.6 in a high-availability Kubernetes configuration using an external database and a Docker command on each node, Rancher v2.x in a Kubernetes install requires an existing Kubernetes cluster. Review [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/) for full requirements.
 
 ## B. Configure Authentication
 

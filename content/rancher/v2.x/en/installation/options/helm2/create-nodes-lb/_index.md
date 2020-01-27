@@ -9,9 +9,9 @@ Use your provider of choice to provision 3 nodes and a Load Balancer endpoint fo
 
 ### Node Requirements
 
-View the supported operating systems and hardware/software/networking requirements for nodes running Rancher at [Node Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements).
+View the supported operating systems and hardware/software/networking requirements for nodes running Rancher at [Node Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements).
 
-View the OS requirements for RKE at [RKE Requirements]({{< baseurl >}}/rke/latest/en/os/)
+View the OS requirements for RKE at [RKE Requirements]({{<baseurl>}}/rke/latest/en/os/)
 
 ### Load Balancer
 
@@ -24,7 +24,7 @@ Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configurat
 
 #### Examples
 
-* [Nginx]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/create-nodes-lb/nginx/)
-* [Amazon NLB]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/create-nodes-lb/nlb/)
+* [Nginx]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/create-nodes-lb/nginx/)
+* [Amazon NLB]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/create-nodes-lb/nlb/)
 
-### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/kubernetes-rke/)
+### [Next: Install Kubernetes with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/kubernetes-rke/)

@@ -5,9 +5,9 @@ weight: 277
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install HA Rancher. For details, see the [HA Install - Installation Outline]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
+>Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
 >
->If you are currently using the RKE add-on install method, see [Migrating from an HA RKE Add-on Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
 If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
 
@@ -25,8 +25,8 @@ NO_PROXY                  | Network address(es), network address range(s) and do
 
 When using High Availability Installation, the environment variables need to be added to the RKE Config File template.
 
-* [Kubernetes Installation with External Load Balancer (TCP/Layer 4) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install-server-install/#5-download-rke-config-file-template)
-* [Kubernetes Installation with External Load Balancer (HTTPS/Layer 7) RKE Config File Template]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install-server-install-external-lb/#5-download-rke-config-file-template)
+* [Kubernetes Installation with External Load Balancer (TCP/Layer 4) RKE Config File Template]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install-server-install/#5-download-rke-config-file-template)
+* [Kubernetes Installation with External Load Balancer (HTTPS/Layer 7) RKE Config File Template]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install-server-install-external-lb/#5-download-rke-config-file-template)
 
 The environment variables should be defined in the `Deployment` inside the RKE Config File Template. You only have to add the part starting with `env:` to (but not including) `ports:`. Make sure the indentation is identical to the preceding `name:`. Required values for `NO_PROXY` are:
 

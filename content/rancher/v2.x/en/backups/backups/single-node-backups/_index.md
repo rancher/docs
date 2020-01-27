@@ -1,12 +1,12 @@
 ---
-title: Creating Backups—Single Node Installs
+title: Creating Backups—Docker Installs
 weight: 25
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
   - /rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/
 ---
 
-After completing your single node installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
+After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
 
 ## Before You Start
 
@@ -69,4 +69,4 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration) if you need to restore backup data.
+**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration) if you need to restore backup data.

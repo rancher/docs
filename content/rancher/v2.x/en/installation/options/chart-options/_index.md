@@ -1,5 +1,5 @@
 ---
-title: Helm Chart Options for HA Installations
+title: Helm Chart Options for Kubernetes Installations
 weight: 276
 aliases:
   - /rancher/v2.x/en/installation/ha/helm-rancher/chart-options
@@ -26,7 +26,7 @@ aliases:
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
-| `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3]                                 |
+| `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3]                                 |
 | `auditLog.maxAge`              | 1                                                     | `int` - maximum number of days to retain old audit log files (only applies when `auditLog.destination` is set to `hostPath`)                      |
 | `auditLog.maxBackups`          | 1                                                     | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`)                               |
 | `auditLog.maxSize`             | 100                                                   | `int` - maximum size in megabytes of the audit log file before it gets rotated (only applies when `auditLog.destination` is set to `hostPath`)    |
@@ -51,15 +51,15 @@ aliases:
 
 ### API Audit Log
 
-Enabling the [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing/).
+Enabling the [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing/).
 
-You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{< baseurl >}}/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
+You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
 
 ```plain
 --set auditLog.level=1
 ```
 
-By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable the [Logging service under Rancher Tools]({{< baseurl >}}/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
+By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
@@ -85,7 +85,7 @@ To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` a
 --set 'extraEnv[0].value=1.0'
 ```
 
-See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
+See [TLS settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
 ### Import `local` Cluster
 
@@ -146,8 +146,8 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 For details on installing Rancher with a private registry, see:
 
-- [Air Gap: Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-single-node/)
-- [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/)
+- [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
+- [Air Gap: High Availability Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
 ### External TLS Termination
 
@@ -155,7 +155,7 @@ We recommend configuring your load balancer as a Layer 4 balancer, forwarding pl
 
 You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/#using-a-private-ca-signed-certificate) to add the CA cert for Rancher.
+> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/#using-a-private-ca-signed-certificate) to add the CA cert for Rancher.
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 

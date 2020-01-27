@@ -5,7 +5,7 @@ weight: 8006
 
 ### How can I reset the administrator password?
 
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> reset-password
 New password for default administrator (user-xxxxx):
@@ -30,7 +30,7 @@ New password for default administrator (user-xxxxx):
 
 
 ### I deleted/deactivated the last admin, how can I fix it?
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> ensure-default-admin
 New default administrator (user-xxxxx)
@@ -56,7 +56,7 @@ New password for default admin user (user-xxxxx):
 
 ### How can I enable debug logging?
 
-* Single node install
+* Docker Install
  * Enable
 ```
 $ docker exec -ti <container_id> loglevel --set debug
@@ -120,7 +120,7 @@ The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, thi
 
 ### Where is the state of Rancher stored?
 
-- Single node install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
+- Docker Install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
 - High Availability install: in the etcd of the RKE cluster created to run Rancher.
 
 ### How are the supported Docker versions determined?

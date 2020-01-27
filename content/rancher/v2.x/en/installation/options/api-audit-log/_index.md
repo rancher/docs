@@ -15,9 +15,9 @@ You can enable API Auditing during Rancher installation or upgrade.
 
 The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
 
-- [Single Node Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log)
+- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log)
 
-- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#api-audit-log)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#api-audit-log)
 
 ## API Audit Log Options
 
@@ -46,11 +46,11 @@ The following table displays what parts of API transactions are logged for each 
 
 ## Viewing API Audit Logs
 
-### Single Node Install
+### Docker Install
 
 Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the host system. The log can be parsed by standard CLI tools or forwarded on to a log collection tool like Fluentd, Filebeat, Logstash, etc.
 
-### HA Install
+### Kubernetes Install
 
 Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the Rancher pod. This container will stream the log to standard output (stdout). You can view the log as you would any container log.
 
@@ -66,23 +66,23 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 1. From the context menu, select **Cluster: local > System**.
 
-   ![Local Cluster: System Project]({{< baseurl >}}/img/rancher/audit_logs_gui/context_local_system.png)
+   ![Local Cluster: System Project]({{<baseurl>}}/img/rancher/audit_logs_gui/context_local_system.png)
 
 1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
 
-   ![Rancher Workload]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_workload.png)
+   ![Rancher Workload]({{<baseurl>}}/img/rancher/audit_logs_gui/rancher_workload.png)
 
 1. Pick one of the `rancher` pods and select **Ellipsis (...) > View Logs**.
 
-   ![View Logs]({{< baseurl >}}/img/rancher/audit_logs_gui/view_logs.png)
+   ![View Logs]({{<baseurl>}}/img/rancher/audit_logs_gui/view_logs.png)
 
 1. From the **Logs** drop-down, select `rancher-audit-log`.
 
-   ![Select Audit Log]({{< baseurl >}}/img/rancher/audit_logs_gui/rancher_audit_log_container.png)
+   ![Select Audit Log]({{<baseurl>}}/img/rancher/audit_logs_gui/rancher_audit_log_container.png)
 
 #### Shipping the Audit Log
 
-You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging]({{< baseurl >}}/rancher/v2.x/en/tools/logging) for details.
+You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging]({{<baseurl>}}/rancher/v2.x/en/tools/logging) for details.
 
 ## Audit Log Samples
 

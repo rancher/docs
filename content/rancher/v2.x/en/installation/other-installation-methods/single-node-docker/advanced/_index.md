@@ -1,9 +1,9 @@
 ---
-title: Advanced Options for Single-node Installs
+title: Advanced Options for Docker Installs
 weight: 5
 ---
 
-When installing Rancher, there are several [advanced options]({{< baseurl >}}/rancher/v2.x/en/installation/options/) that can be enabled:
+When installing Rancher, there are several [advanced options]({{<baseurl>}}/rancher/v2.x/en/installation/options/) that can be enabled:
 
 - [Custom CA Certificate](#custom-ca-certificate)
 - [API Audit Log](#api-audit-log)
@@ -39,7 +39,7 @@ The API Audit Log records all the user and system transactions made through Ranc
 
 The API Audit Log writes to `/var/log/auditlog` inside the rancher container by default. Share that directory as a volume and set your `AUDIT_LEVEL` to enable the log.
 
-See [API Audit Log]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) for more information and options.
+See [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) for more information and options.
 
 ```
 docker run -d --restart=unless-stopped \
@@ -62,7 +62,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-See [TLS settings]({{< baseurl >}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
+See [TLS settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
 ### Air Gap
 

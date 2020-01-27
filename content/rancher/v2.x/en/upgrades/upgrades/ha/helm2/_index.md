@@ -9,7 +9,7 @@ weight: 1050
 >
 > This section provides a copy of the older instructions for upgrading Rancher with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
-The following instructions will guide you through using Helm to upgrade a high-availability (HA) Rancher server installation. 
+The following instructions will guide you through using Helm to upgrade a Rancher server that is installed on a Kubernetes cluster. 
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 

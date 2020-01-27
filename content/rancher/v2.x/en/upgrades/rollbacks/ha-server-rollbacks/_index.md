@@ -1,5 +1,5 @@
 ---
-title: High Availability (HA) Rollback
+title: Kubernetes Rollback
 weight: 1025
 aliases:
   - /rancher/v2.x/en/backups/rollbacks/ha-server-rollbacks/

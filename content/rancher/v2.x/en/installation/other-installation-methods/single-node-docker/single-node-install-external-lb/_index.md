@@ -1,5 +1,5 @@
 ---
-title: Single Node Install with External Load Balancer
+title: Docker Install with External Load Balancer
 weight: 252
 aliases:
   - /rancher/v2.x/en/installation/single-node-install-external-lb/
@@ -9,7 +9,7 @@ aliases:
 For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
 
 > **Want to skip the external load balancer?**
-> See [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node) instead.
+> See [Docker Installation]({{<baseurl>}}/rancher/v2.x/en/installation/single-node) instead.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -27,7 +27,7 @@ Make sure that your node fulfills the general [installation requirements.]({{<ba
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
+Provision a single Linux host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -160,8 +160,8 @@ http {
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restoration]({{< baseurl >}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
-- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/).
+- **Recommended:** Review [Single Node Backup and Restoration]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>
 
@@ -173,7 +173,7 @@ http {
 
 ### API Auditing
 
-If you want to record all transactions with the Rancher API, enable the [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
+If you want to record all transactions with the Rancher API, enable the [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) feature by adding the flags below into your install command.
 
     -e AUDIT_LEVEL=1 \
     -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
@@ -183,7 +183,7 @@ If you want to record all transactions with the Rancher API, enable the [API Aud
 
 ### Air Gap
 
-If you are visiting this page to complete an [Air Gap Installation]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
+If you are visiting this page to complete an [Air Gap Installation]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
 

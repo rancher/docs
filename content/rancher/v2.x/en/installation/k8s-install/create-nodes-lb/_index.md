@@ -11,7 +11,7 @@ Use your infrastructure provider of choice to provision three nodes and a load b
 
 Make sure that your nodes fulfill the general [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
-View the OS requirements for RKE at [RKE Requirements.]({{< baseurl >}}/rke/latest/en/os/)
+View the OS requirements for RKE at [RKE Requirements.]({{<baseurl>}}/rke/latest/en/os/)
 
 ### Load Balancer
 
@@ -27,4 +27,4 @@ Configure a load balancer as a basic Layer 4 TCP forwarder. The exact configurat
 - For an example showing how to set up an NGINX load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx/)
 - For an example showing how to setup an Amazon NLB load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb/)
 
-### [Next: Install Kubernetes with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/)
+### [Next: Install Kubernetes with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/)

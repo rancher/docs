@@ -18,9 +18,9 @@ Make sure `NO_PROXY` contains the network addresses, network address ranges and 
 
 > **Note** NO_PROXY must be in uppercase to use network range (CIDR) notation.
 
-## Single Node Installation
+## Docker Installation
 
-Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Single Node Installation]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/) are:
+Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation]({{<baseurl>}}/rancher/v2.x/en/installation/single-node-install/) are:
 
 - `localhost`
 - `127.0.0.1`
