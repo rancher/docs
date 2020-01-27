@@ -1,5 +1,5 @@
 ---
-title: Restoring Backups—High Availability Installs
+title: Restoring Backups—Kubernetes installs
 weight: 370
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/

@@ -25,7 +25,7 @@ NO_PROXY                  | Network address(es), network address range(s) and do
 
 ##  Installing Rancher on a Kubernetes Cluster
 
-When using High Availability Installation, the environment variables need to be added to the RKE Config File template.
+When using Kubernetes installation, the environment variables need to be added to the RKE Config File template.
 
 * [Kubernetes Installation with External Load Balancer (TCP/Layer 4) RKE Config File Template]({{<baseurl>}}/rancher/v2.x/en/installation/ha-server-install/#5-download-rke-config-file-template)
 * [Kubernetes Installation with External Load Balancer (HTTPS/Layer 7) RKE Config File Template]({{<baseurl>}}/rancher/v2.x/en/installation/ha-server-install-external-lb/#5-download-rke-config-file-template)

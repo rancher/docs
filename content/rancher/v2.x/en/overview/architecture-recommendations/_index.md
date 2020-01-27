@@ -21,7 +21,7 @@ In Kubernetes Installations of Rancher, the Rancher server cluster should also b
 
 # Why HA is Better for Rancher in Production
 
-We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the data stored on etcd. The Rancher server stores its data in etcd in both single-node and Kubernetes Installations.
+We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the Rancher server data. The Rancher server stores its data in etcd in both single-node and Kubernetes Installations.
 
 When Rancher is installed on a single node, if the node goes down, there is no copy of the etcd data available on other nodes and you could lose the data on your Rancher server.
 

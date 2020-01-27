@@ -4,8 +4,8 @@ weight: 1010
 ---
 This section contains information about how to rollback your Rancher server to a previous version.
 
-- [Rolling back a Docker Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/)
-- [Rolling back a High Availability Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
+- [Rolling back Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/)
+- [Rolling back Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
 
 ### Special Scenarios regarding Rollbacks
 

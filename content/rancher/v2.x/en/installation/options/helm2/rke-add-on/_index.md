@@ -10,7 +10,7 @@ weight: 276
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
 
-* [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/layer-4-lb)
-* [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/layer-7-lb)
-* [HTTP Proxy Configuration for a High Availability Installation]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/proxy/)
+* [Kubernetes installation with External Load Balancer (TCP/Layer 4)]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/layer-4-lb)
+* [Kubernetes installation with External Load Balancer (HTTPS/Layer 7)]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/layer-7-lb)
+* [HTTP Proxy Configuration for a Kubernetes installation]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/proxy/)
 * [Troubleshooting RKE Add-on Installs]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/troubleshooting/)

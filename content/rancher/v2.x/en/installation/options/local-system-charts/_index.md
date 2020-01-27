@@ -14,7 +14,7 @@ In an air gapped installation of Rancher, you will need to configure Rancher to 
 
 In Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
 
-Example commands for a Rancher installation with a bundled `system-charts` are included in the [air gap Docker installation]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/install-rancher) instructions and the [air gap high availability installation]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/#c-install-rancher) instructions.
+Example commands for a Rancher installation with a bundled `system-charts` are included in the [air gap Docker installation]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/install-rancher) instructions and the [air gap Kubernetes installation]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/#c-install-rancher) instructions.
 
 # Setting Up System Charts for Rancher Prior to v2.3.0
 

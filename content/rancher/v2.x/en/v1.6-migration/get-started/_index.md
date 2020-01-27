@@ -26,11 +26,11 @@ Before installing v2.x, provision one host or more to function as your Rancher S
 
 After provisioning your node(s), install Rancher:
 
-- [Docker Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node)
+- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/single-node)
 
     For development environments, Rancher can be installed on a single node using Docker. This installation procedure deploys a single Rancher container to your host.
 
-- [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
     For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability Kubernetes installation. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
 

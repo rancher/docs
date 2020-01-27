@@ -11,7 +11,7 @@ aliases:
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
-This section contains common errors seen when setting up a High Availability Installation.
+This section contains common errors seen when setting up a Kubernetes installation.
 
 Choose from the following options:
 
