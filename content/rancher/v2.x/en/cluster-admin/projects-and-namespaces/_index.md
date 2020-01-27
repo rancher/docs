@@ -10,8 +10,13 @@ aliases:
   - /rancher/v2.x/en/tasks/projects/create-project/  
 ---
 
+A namespace is a Kubernetes concept that allows a virtual cluster within a cluster, which is useful for dividing the cluster into separate "virtual clusters" that each have their own access control and resource quotas.
+
+A project is a group of namespaces, and it is a concept introduced by Rancher. Projects allow you to manage multiple namespaces as a group and perform Kubernetes operations in them. You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
+
 This section describes how projects and namespaces work with Rancher. It covers the following topics:
 
+- [About namespaces](#about-namespaces)
 - [About projects](#about-projects)
   - [The cluster's default project](#the-cluster-s-default-project)
   - [The system project](#the-system-project)
@@ -19,7 +24,40 @@ This section describes how projects and namespaces work with Rancher. It covers 
 - [Pod security policies](#pod-security-policies)
 - [Creating projects](#creating-projects)
 - [Switching between clusters and projects](#switching-between-clusters-and-projects)
-- [Namespaces](#namespaces)
+
+# About Namespaces
+
+A namespace is a concept introduced by Kubernetes. According to the [official Kubernetes documentation,](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+
+> Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces. [...] Namespaces are intended for use in environments with many users spread across multiple teams, or projects. For clusters with a few to tens of users, you should not need to create or think about namespaces at all.
+
+Namespaces provide the following functionality:
+
+- **Providing a scope for names:** Names of resources need to be unique within a namespace, but not across namespaces. Namespaces can not be nested inside one another and each Kubernetes resource can only be in one namespace.
+- **Resource quotas:** Namespaces provide a way to divide cluster resources between multiple users.
+
+Within Rancher, a project can contain multiple namespaces, making it possible to organize and isolate resources within the project.
+
+If you don't have a need for more than the default namespace, you also do not need more than the **Default** project in Rancher.
+
+If you require another level of organization beyond the **Default** project, you can create more projects in Rancher to isolate namespaces, applications and resources.
+
+You can assign resources at the project level so that each namespace in the project can use them. You can also bypass this inheritance by assigning resources explicitly to a namespace.
+
+You can assign the following resources directly to namespaces:
+
+- [Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/)
+- [Load Balancers/Ingress]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/)
+- [Service Discovery Records]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/service-discovery/)
+- [Persistent Volume Claims]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/)
+- [Certificates]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/certificates/)
+- [ConfigMaps]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/configmaps/)
+- [Registries]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/)
+- [Secrets]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/secrets/)
+
+>**Note:** Although you can assign role-based access to namespaces in the base version of Kubernetes, you cannot assign roles to namespaces in Rancher. Instead, assign role-based access at the project level.
+
+For more information, see [Namespaces]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/).
 
 # About Projects
 
@@ -36,8 +74,8 @@ In the base version of Kubernetes, features like role-based access rights or clu
 
 You can use projects to perform actions like:
 
-- Assign users access to a group of namespaces (i.e., [project membership]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/project-members)).
-- Assign users specific roles in a project. A role can be owner, member, read-only, or [custom]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
+- Assign users access to a group of namespaces (i.e., [project membership]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/project-members)).
+- Assign users specific roles in a project. A role can be owner, member, read-only, or [custom]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
 - Assign resources to the project.
 - Assign Pod Security Policies.
 
@@ -67,7 +105,7 @@ The `system` project:
 
 >**Note:** In clusters where both:
 >
-> - The [Canal network plug-in]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#canal) is in use.
+> - The [Canal network plug-in]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#canal) is in use.
 > - The Project Network Isolation option is enabled.
 >
 >The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health.
@@ -97,7 +135,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
     - Apply the PSP to the project.
     - Apply the PSP to any namespaces you add to the project later.
 
-    >**Note:** This option is only available if you've already created a Pod Security Policy. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/).
+    >**Note:** This option is only available if you've already created a Pod Security Policy. For instruction, see [Creating Pod Security Policies]({{<baseurl>}}/rancher/v2.x/en/admin-settings/pod-security-policies/).
 
 1. **Recommended:** Add project members.
 
@@ -113,23 +151,23 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
     1. From the **Role** drop-down, choose a role.
 
-        [What are Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
+        [What are Roles?]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
         >**Notes:**
         >
         >- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
         >
-        >- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
+        >- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
 
     1. To add more members, repeat substeps a—c.
 
-1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas).
+1. **Optional:** Add **Resource Quotas**, which limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas).
 
     >**Note:** This option is available as of v2.1.0.
 
     1. Click **Add Quota**.
 
-    1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+    1. Select a [Resource Type]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
 
     1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
 
@@ -140,7 +178,7 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
     1. **Optional:** Repeat these substeps to add more quotas.
 
-1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/#setting-container-default-resource-limit)
+1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{<baseurl>}}/rancher/v2.x/en/project-admin/resource-quotas/#setting-container-default-resource-limit)
 	>**Note:** This option is available as of v2.2.0.
 
 
@@ -152,30 +190,9 @@ Rancher extends Kubernetes to allow the application of [Pod Security Policies](h
 
 To switch between clusters and projects, use the **Global** drop-down available in the main menu.
 
-![Global Menu]({{< baseurl >}}/img/rancher/global-menu.png)
+![Global Menu]({{<baseurl>}}/img/rancher/global-menu.png)
 
 Alternatively, you can switch between projects and clusters using the main menu.
 
 - To switch between clusters, open the **Global** view and select **Clusters** from the main menu. Then open a cluster.
 - To switch between projects, open a cluster, and then select **Projects/Namespaces** from the main menu. Select the link for the project that you want to open.
-
-# Namespaces
-
-Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
-
-You can assign resources at the project level so that each namespace in the project can use them. You can also bypass this inheritance by assigning resources explicitly to a namespace.
-
-Resources that you can assign directly to namespaces include:
-
-- [Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/)
-- [Load Balancers/Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/)
-- [Service Discovery Records]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/service-discovery/)
-- [Persistent Volume Claims]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/)
-- [Certificates]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/certificates/)
-- [ConfigMaps]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/configmaps/)
-- [Registries]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/registries/)
-- [Secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/)
-
->**Note:** Although you can assign role-based access to namespaces in the base version of Kubernetes, you cannot assign roles to namespaces in Rancher. Instead, assign role-based access at the project level.
-
-For more information, see [Namespaces]({{< baseurl >}}/rancher/v2.x/en/project-admin/namespaces/).
