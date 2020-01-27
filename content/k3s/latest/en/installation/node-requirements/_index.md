@@ -5,7 +5,7 @@ weight: 1
 
 K3s is very lightweight, but has some minimum requirements as outlined below.
 
-Whether you're configuring a K3s cluster to run in a single-node or high-availability (HA) setup, each node running K3s should meet the following minimum requirements. You may need more resources to fit your needs.
+Whether you're configuring a K3s cluster to run in a Docker or Kubernetes setup, each node running K3s should meet the following minimum requirements. You may need more resources to fit your needs.
 
 ## Prerequisites
 *    Two nodes cannot have the same hostname. If all your nodes have the same hostname, pass `--node-name` or set `$K3S_NODE_NAME` with a unique name for each node you add to the cluster.

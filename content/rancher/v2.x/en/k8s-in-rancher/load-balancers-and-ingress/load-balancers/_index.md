@@ -69,6 +69,6 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 - [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
 - [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
-- [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+- [Docker Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
 

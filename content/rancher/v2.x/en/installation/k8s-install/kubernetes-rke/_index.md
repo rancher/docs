@@ -8,11 +8,16 @@ Use RKE to install a Kubernetes cluster on your three nodes using a high-availab
 
 For systems without direct internet access, refer to [Air Gap: High Availability Install.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
+> **Single-node Installation Tip:**
+> In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
+>
+> To set up a single-node cluster, configure only one node in the `cluster.yml` when provisioning the cluster with RKE. The single node should have all three roles: `etcd`, `controlplane`, and `worker`. Then Rancher can be installed with Helm on the cluster in the same way that it would be installed on any other cluster.
+
 ### Create the `rancher-cluster.yml` File
 
 Using the sample below, create the `rancher-cluster.yml` file. Replace the IP Addresses in the `nodes` list with the IP address or DNS names of the 3 nodes you created.
 
-> If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication. Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
+If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication. Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 ```yaml
 nodes:
@@ -57,9 +62,9 @@ ingress:
 
 RKE has many configuration options for customizing the install to suit your specific environment.
 
-Please see the [RKE Documentation]({{< baseurl >}}/rke/latest/en/config-options/) for the full list of options and capabilities.
+Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 
-For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide]({{< baseurl >}}/rancher/v2.x/en/installation/options/etcd/).
+For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/etcd/).
 
 ### Run RKE
 
@@ -127,11 +132,11 @@ kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
-- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
+- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/troubleshooting/) page.
 
-### [Next: Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/)
+### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)

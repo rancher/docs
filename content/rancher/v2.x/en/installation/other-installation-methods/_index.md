@@ -3,9 +3,9 @@ title: Other Installation Methods
 weight: 4
 ---
 
-### Single Node Installations
+### Docker Installations
 
-The [single-node Docker installation]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) is for Rancher users that are wanting to test out Rancher. Instead of running on a Kubernetes cluster using Helm, you install the Rancher server component on a single node using a `docker run` command.
+The [single-node Docker installation]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) is for Rancher users that are wanting to test out Rancher. Instead of running on a Kubernetes cluster using Helm, you install the Rancher server component on a single node using a `docker run` command.
 
 Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
 

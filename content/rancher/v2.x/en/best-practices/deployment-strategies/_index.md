@@ -11,7 +11,7 @@ There are two recommended deployment strategies. Each one has its own pros and c
 # Hub & Spoke Strategy
 ---
 
-In this deployment scenario, there is a single Rancher control plane managing Kubernetes clusters across the globe. The control plane would be run in an HA (high-availability) configuration, and there would be impact due to latencies.
+In this deployment scenario, there is a single Rancher control plane managing Kubernetes clusters across the globe. The control plane would be run on a high-availability Kubernetes cluster, and there would be impact due to latencies.
 
 {{< img "/img/rancher/bpg/hub-and-spoke.png" "Hub and Spoke Deployment">}}
 

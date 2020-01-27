@@ -3,7 +3,7 @@ title: High Availability with an External DB
 weight: 30
 ---
 
->**Note:** Official support for High-Availability (HA) was introduced in our v1.0.0 release.
+>**Note:** Official support for installing Rancher on a Kubernetes cluster was introduced in our v1.0.0 release.
 
 This section describes how to install a high-availability K3s cluster with an external database.
 
@@ -34,7 +34,7 @@ K3s requires two or more server nodes for this HA configuration. See the [Node R
 
 When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore. Please see the [datastore configuration guide]({{< baseurl >}}/k3s/latest/en/installation/datastore/#external-datastore-configuration-parameters) for information on configuring this parameter.
 
-> **Note:** The same installation options available to single-server installs are also available for HA installs. For more details, see the [Installation and Configuration Options]({{< baseurl >}}/k3s/latest/en/installation/install-options/) documentation.
+> **Note:** The same installation options available to single-server installs are also available for Kubernetes Installs. For more details, see the [Installation and Configuration Options]({{< baseurl >}}/k3s/latest/en/installation/install-options/) documentation.
 
 By default, server nodes will be schedulable and thus your workloads can get launched on them. If you wish to have a dedicated control plane where no user workloads will run, you can use taints. The <span style='white-space: nowrap'>`node-taint`</span> parameter will allow you to configure nodes with taints, for example <span style='white-space: nowrap'>`--node-taint k3s-controlplane=true:NoExecute`</span>.
 

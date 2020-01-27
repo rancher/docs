@@ -9,14 +9,14 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-single-node/install-rancher
 ---
 
-This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a single node installation.
+This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
 
-> **Note:** These instructions assume you are using Helm 2. The docs will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, you can refer to the [migration guide](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) or the [non-air-gap HA installation docs,]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher) which have already been updated for Helm 3.
+> **Note:** These instructions assume you are using Helm 2. The docs will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, you can refer to the [migration guide](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) or the [docs on installing Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher) which have already been updated for Helm 3.
 
 {{% tabs %}}
-{{% tab "HA Install (Recommended)" %}}
+{{% tab "Kubernetes Install (Recommended)" %}}
 
-Rancher recommends installing Rancher in a Highly Available (HA) configuration. An HA installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
+Rancher recommends installing Rancher in a Highly Available (HA) configuration. A Kubernetes Installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
 This section describes installing Rancher in five parts:
 
@@ -35,7 +35,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
     helm init -c
     ```
 
-2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
   {{< release-channel >}}
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
@@ -46,7 +46,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
 helm fetch rancher-<CHART_REPO>/rancher
 ```
 
-> Want additional options? Need help troubleshooting? See [High Availability Install: Advanced Options]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/#advanced-configurations).
+> Want additional options? Need help troubleshooting? See [Kubernetes Install: Advanced Options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#advanced-configurations).
 
 ### B. Choose your SSL Configuration
 
@@ -54,7 +54,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 For HA air gap configurations, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -78,7 +78,7 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 1. From a system connected to the internet, add the cert-manager repo to Helm.
     ```plain
@@ -152,7 +152,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 {{% /accordion %}}
 
@@ -205,14 +205,14 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/tls-secrets/)
-- [Troubleshooting Rancher HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting/)
+- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/)
+- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/)
 
 {{% /tab %}}
-{{% tab "Single Node Install" %}}
+{{% tab "Docker Install" %}}
 
-The single node installation is for Rancher users that are wanting to **test** out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. **Important: If you install Rancher following the single node installation guide, there is no upgrade path to transition your single node installation to a HA installation.** Instead of running the single node installation, you have the option to follow the HA install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a HA installation.
+The Docker installation is for Rancher users that are wanting to **test** out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. **Important: If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker installation to a Kubernetes Installation.** Instead of running the single node installation, you have the option to follow the Kubernetes Install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a Kubernetes Installation.
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -223,8 +223,8 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
-> - Record all transactions with the Rancher API? See [API Auditing]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#api-audit-log).
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
+> - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log).
 
 - For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
@@ -239,7 +239,7 @@ Log into your Linux host, and then run the installation command below. When ente
 | Placeholder                      | Description                                                                                                                   |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
 
 ```
 docker run -d --restart=unless-stopped \
@@ -257,8 +257,8 @@ In development or testing environments where your team will access your Rancher 
 > **Prerequisites:**
 > From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
 >
-> - The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem).
-> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#cert-order).
+> - The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#pem).
+> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#cert-order).
 
 After creating your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
@@ -269,7 +269,7 @@ After creating your certificate, log into your Linux host, and then run the inst
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<CA_CERTS>`                     | The path to the certificate authority's certificate.                                                                          |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
 
 ```
 docker run -d --restart=unless-stopped \
@@ -287,7 +287,7 @@ docker run -d --restart=unless-stopped \
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
-> **Prerequisite:** The certificate files must be in [PEM format]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/single-node#pem).
+> **Prerequisite:** The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#pem).
 
 After obtaining your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 
@@ -297,7 +297,7 @@ After obtaining your certificate, log into your Linux host, and then run the ins
 | `<FULL_CHAIN.pem>`               | The path to your full certificate chain.                                                                                      |
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to install. |
 
 > **Note:** Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
 

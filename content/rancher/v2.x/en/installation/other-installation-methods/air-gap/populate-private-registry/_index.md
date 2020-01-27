@@ -11,7 +11,7 @@ aliases:
 
 > **Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 >
-> **Note:** Populating the private registry with images is the same process for HA and single node installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
+> **Note:** Populating the private registry with images is the same process for HA and Docker installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
 
 By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gap installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
@@ -45,13 +45,13 @@ These steps expect you to use a Linux workstation that has internet access, acce
 | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
 | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.   |
 
-### B. Collect all the required images (For HA Installs using Rancher Generated Self-Signed Certificate)
+### B. Collect all the required images (For Kubernetes Installs using Rancher Generated Self-Signed Certificate)
 
-In an HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -211,11 +211,11 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### B. Collect all the required images
 
-1. **For HA Installs using Rancher Generated Self-Signed Certificate:** In a HA install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+1. **For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
    1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-      > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+      > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
       ```plain
       helm repo add jetstack https://charts.jetstack.io
@@ -275,6 +275,6 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
 {{% /tab %}}
 {{% /tabs %}}
 
-### [Next: HA Installs - Launch a Kubernetes Cluster with RKE]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
+### [Next: Kubernetes Installs - Launch a Kubernetes Cluster with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 
-### [Next: Single Node Installs - Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
+### [Next: Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)

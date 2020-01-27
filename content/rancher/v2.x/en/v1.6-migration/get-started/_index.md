@@ -26,15 +26,15 @@ Before installing v2.x, provision one host or more to function as your Rancher S
 
 After provisioning your node(s), install Rancher:
 
-- [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node)
+- [Docker Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node)
 
-    For development environments, we recommend a single node install. This installation procedure deploys a single Rancher container to your host.
+    For development environments, Rancher can be installed on a single node using Docker. This installation procedure deploys a single Rancher container to your host.
 
-- [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
+- [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/)
 
-    For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability (HA) configuration. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
+    For production environments where your user base requires constant access to your cluster, we recommend installing Rancher in a high availability Kubernetes installation. This installation procedure provisions a three-node cluster and installs Rancher on each node using a Helm chart.
 
-    >**Important Difference:** Although you could install Rancher v1.6 in an HA configuration using an external database and a Docker command on each node, Rancher v2.x in an HA configuration requires an existing Kubernetes cluster. Review [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) for full requirements.
+    >**Important Difference:** Although you could install Rancher v1.6 in a high-availability Kubernetes configuration using an external database and a Docker command on each node, Rancher v2.x in a Kubernetes install requires an existing Kubernetes cluster. Review [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/) for full requirements.
 
 ## B. Configure Authentication
 

@@ -71,16 +71,16 @@ Please follow this checklist when filing an issue which will helps us investigat
   - Provide manual steps or automation scripts used to get from a newly created setup to the situation you reported.
 - **Logs:** Provide data/logs from the used resources.
   - Rancher
-      - Single node
+      - Docker install
 
         ```
         docker logs \
         --timestamps \
         $(docker ps | grep -E "rancher/rancher:|rancher/rancher " | awk '{ print $1 }')
         ```
-      - High Availability (HA) install using `kubectl`
+      - Kubernetes install using `kubectl`
 
-        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` if Rancher is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 
         ```
         kubectl -n cattle-system \
@@ -88,16 +88,16 @@ Please follow this checklist when filing an issue which will helps us investigat
         -l app=rancher \
         --timestamps=true
         ```
-      - High Availability (HA) install using `docker` on each of the nodes in the RKE cluster
+      - Docker install using `docker` on each of the nodes in the RKE cluster
 
         ```
         docker logs \
         --timestamps \
         $(docker ps | grep -E "rancher/rancher@|rancher_rancher" | awk '{ print $1 }')
         ```
-      - High Availability (HA) RKE Add-On Install
+      - Kubernetes Install with RKE Add-On
 
-        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` if the Rancher server is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 
         ```
         kubectl -n cattle-system \

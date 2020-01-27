@@ -1,43 +1,36 @@
----
-title: Architecture Recommendations
-weight: 3
----
-
-This page describes our recommendations for how to install Rancher.
-
-These recommendations focus on how to set up Rancher on a high-availability (HA) cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
+Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
 
 This section covers the following topics:
 
 - [Separation of Rancher and User Clusters](#separation-of-rancher-and-user-clusters)
 - [Why HA is Better for Rancher in Production](#why-ha-is-better-for-rancher-in-production)
-- [Recommended Load Balancer Configuration for HA Installations](#recommended-load-balancer-configuration-for-ha-installations)
-- [Environment for HA Installations](#environment-for-ha-installations)
-- [Recommended Node Roles for HA Installations](#recommended-node-roles-for-ha-installations)
+- [Recommended Load Balancer Configuration for Kubernetes Installations](#recommended-load-balancer-configuration-for-ha-installations)
+- [Environment for Kubernetes Installations](#environment-for-ha-installations)
+- [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-ha-installations)
 - [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
 
 # Separation of Rancher and User Clusters
 
 A user cluster is a downstream Kubernetes cluster that runs your apps and services.
 
-If you have a single node installation of Rancher, the node running the Rancher server should be separate from your downstream clusters.
+If you have a Docker installation of Rancher, the node running the Rancher server should be separate from your downstream clusters.
 
-In HA installations of Rancher, the Rancher server cluster should also be separate from the user clusters.
+In Kubernetes Installations of Rancher, the Rancher server cluster should also be separate from the user clusters.
 
 ![Separation of Rancher Server from User Clusters]({{<baseurl>}}/img/rancher/rancher-architecture-separation-of-rancher-server.svg)
 
 # Why HA is Better for Rancher in Production
 
-We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the data stored on etcd. The Rancher server stores its data in etcd in both single-node and HA installations.
+We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the data stored on etcd. The Rancher server stores its data in etcd in both single-node and Kubernetes Installations.
 
 When Rancher is installed on a single node, if the node goes down, there is no copy of the etcd data available on other nodes and you could lose the data on your Rancher server.
 
 By contrast, in the high-availability installation,
 
 - The etcd data is replicated on three nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
-- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/ha/create-nodes-lb/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
+- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
 
-# Recommended Load Balancer Configuration for HA Installations
+# Recommended Load Balancer Configuration for Kubernetes Installations
 
 We recommend the following configurations for the load balancer and Ingress controllers:
 
@@ -46,11 +39,11 @@ We recommend the following configurations for the load balancer and Ingress cont
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
-<figcaption>HA Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
+<figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
 ![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
-<sup>HA Rancher install with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
+<sup>Rancher installed on a Kubernetes cluster with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
 
-# Environment for HA Installations
+# Environment for Kubernetes Installations
 
 It is strongly recommended to install Rancher on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
 
@@ -58,7 +51,7 @@ For the best performance and greater security, we recommend a dedicated Kubernet
 
 It is not recommended to install Rancher on top of a managed Kubernetes service such as Amazon’s EKS or Google Kubernetes Engine. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations.
 
-# Recommended Node Roles for HA Installations 
+# Recommended Node Roles for Kubernetes Installations 
 
 We recommend installing Rancher on a Kubernetes cluster in which each node has all three Kubernetes roles: etcd, controlplane, and worker.
 

@@ -8,7 +8,7 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 ## Rancher Nodes
 
-The following table lists the ports that need to be open to and from nodes that are running the Rancher server container for [single node installs]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install/) or pods for [high availability installs]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install/).
+The following table lists the ports that need to be open to and from nodes that are running the Rancher server container for [Docker installs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node-install/) or pods for [installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/).
 
 {{< ports-rancher-nodes >}}
 
@@ -16,7 +16,7 @@ The following table lists the ports that need to be open to and from nodes that 
 
 ## Kubernetes Cluster Nodes
 
-The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
+The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
 >**Tip:**
 >
@@ -26,7 +26,7 @@ The ports required to be open for cluster nodes changes depending on how the clu
 
 {{% tab "Node Pools" %}}
 
-The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
+The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
 
 >**Note:**
 >The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
@@ -37,7 +37,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{% tab "Custom Nodes" %}}
 
-The following table depicts the port requirements for [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
+The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
 {{< ports-custom-nodes >}}
 
@@ -45,7 +45,7 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{% tab "Hosted Clusters" %}}
 
-The following table depicts the port requirements for [hosted clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters).
+The following table depicts the port requirements for [hosted clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters).
 
 {{< ports-imported-hosted >}}
 
@@ -53,7 +53,7 @@ The following table depicts the port requirements for [hosted clusters]({{< base
 
 {{% tab "Imported Clusters" %}}
 
-The following table depicts the port requirements for [imported clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/).
+The following table depicts the port requirements for [imported clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/).
 
 {{< ports-imported-hosted >}}
 
@@ -99,7 +99,7 @@ In these cases, you have to explicitly allow this traffic in your host firewall,
 
 ### Rancher AWS EC2 security group
 
-When using the [AWS EC2 node driver]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
+When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
 
 |       Type      | Protocol |  Port Range | Source/Destination     | Rule Type |
 |-----------------|:--------:|:-----------:|------------------------|:---------:|

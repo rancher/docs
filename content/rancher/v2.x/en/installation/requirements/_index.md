@@ -36,7 +36,7 @@ All supported operating systems are 64-bit x86.
 
 The `ntp` (Network Time Protocol) package should be installed. This prevents errors with certificate validation that can occur when the time is not synchronized between the client and server.
 
-> **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
 
@@ -50,7 +50,7 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 
 ### CPU and Memory
 
-Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher on a single node or on a high-availability (HA) cluster.
+Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher on a single node or on a high-availability Kubernetes cluster.
 
 For production environments, the Rancher server should be installed on an HA cluster.
 
@@ -59,7 +59,7 @@ Rancher can also be installed on a single node in a development or testing envir
 {{% tabs %}}
 {{% tab "HA Node Requirements" %}}
 
-These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/installation/ha/) of Rancher.
+These requirements apply to [installing Rancher on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) of Rancher.
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
@@ -72,7 +72,7 @@ These requirements apply to [HA installations]({{<baseurl>}}/rancher/v2.x/en/ins
 {{% /tab %}}
 {{% tab "Single Node Requirements" %}}
 
-These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node) installations of Rancher.
+These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
@@ -100,11 +100,11 @@ This section describes the port requirements for nodes running the `rancher/ranc
 
 The port requirements are different depending on whether you are installing Rancher on a single node or on a high-availability Kubernetes cluster.
 
-- **For a single-node installation,** you only need to open the ports required to enable Rancher to communicate with downstream user clusters.
+- **For a Docker installation,** you only need to open the ports required to enable Rancher to communicate with downstream user clusters.
 - **For a high-availability installation,** the same ports need to be opened, as well as additional ports required to set up the Kubernetes cluster that Rancher is installed on.
 
 {{% tabs %}}
-{{% tab "HA Install Port Requirements" %}}
+{{% tab "Kubernetes Install Port Requirements" %}}
 ### Ports for Communication with Downstream Clusters
 
 To communicate with downstream clusters, Rancher requires different ports to be open depending on the infrastructure you are using.
@@ -135,7 +135,7 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 ### Additional Port Requirements for Nodes in an HA/Kubernetes Cluster
 
@@ -193,7 +193,7 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 
 
 <figcaption>Inbound Rules for Rancher Nodes</figcaption>
@@ -213,6 +213,6 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
+**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
 {{% /tab %}}
 {{% /tabs %}}

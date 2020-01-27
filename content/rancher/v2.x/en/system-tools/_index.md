@@ -3,7 +3,7 @@ title: System Tools
 weight: 6001
 ---
 
-System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/). The tasks include:
+System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for installing Rancher on Kubernetes]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/). The tasks include:
 
 * Collect logging and system metrics from nodes.
 * Remove Kubernetes resources created by Rancher.
@@ -41,7 +41,7 @@ After you download the tools, complete the following actions:
 
 # Logs
 
-The `logs` subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/). See [Troubleshooting]({{< baseurl >}}//rancher/v2.x/en/troubleshooting/) for a list of core Kubernetes cluster components.
+The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/). See [Troubleshooting]({{< baseurl >}}//rancher/v2.x/en/troubleshooting/) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
 
@@ -61,7 +61,7 @@ The following are the options for the logs command:
 
 # Stats
 
-The `stats` subcommand will display system metrics from nodes in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/).
+The stats subcommand will display system metrics from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or nodes in an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/).
 
 System Tools will deploy a DaemonSet, and run a predefined command based on `sar` (System Activity Report) to show system metrics.
 

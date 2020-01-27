@@ -41,12 +41,12 @@ The below table shows the availability and default value for feature flags in Ra
 
 # Enabling Features when Starting Rancher
 
-When you install Rancher, enable the feature you want with a feature flag. The command is different depending on whether you are installing Rancher on a single node or if you are doing an HA installation of Rancher.
+When you install Rancher, enable the feature you want with a feature flag. The command is different depending on whether you are installing Rancher on a single node or if you are doing a Kubernetes Installation of Rancher.
 
 > **Note:** Values set from the Rancher API will override the value passed in through the command line.
 
 {{% tabs %}}
-{{% tab "HA Install" %}}
+{{% tab "Kubernetes Install" %}}
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 
 ```
@@ -78,7 +78,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 ```
 
 {{% /tab %}}
-{{% tab "Single Node Install" %}}
+{{% tab "Docker Install" %}}
 When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
 ```

@@ -67,7 +67,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 >Download and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 {{% tabs %}}
-{{% tab "HA Install" %}}
+{{% tab "Kubernetes Install" %}}
 1. From **Terminal**, change directories to your kubectl file that's generated during Rancher install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during Rancher installation.
 
 1. Before repairing networking, run the following two commands to make sure that your nodes have a status of `Ready` and that your cluster components are `Healthy`.

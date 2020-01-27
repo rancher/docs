@@ -5,7 +5,7 @@ weight: 190
 
 Use RKE to install Kubernetes with a high availability etcd configuration.
 
->**Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{< baseurl >}}/rancher/v2.x/en/installation/air-gap-high-availability/) for install details.
+>**Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/) for install details.
 
 ### Create the `rancher-cluster.yml` File
 
@@ -50,9 +50,9 @@ services:
 
 RKE has many configuration options for customizing the install to suit your specific environment.
 
-Please see the [RKE Documentation]({{< baseurl >}}/rke/latest/en/config-options/) for the full list of options and capabilities.
+Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 
-For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide]({{< baseurl >}}/rancher/v2.x/en/installation/options/etcd/).
+For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/etcd/).
 
 ### Run RKE
 
@@ -120,11 +120,11 @@ kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
-- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
+- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/kubernetes-rke/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/kubernetes-rke/troubleshooting/) page.
 
-### [Next: Initialize Helm (Install tiller)]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
+### [Next: Initialize Helm (Install tiller)]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
