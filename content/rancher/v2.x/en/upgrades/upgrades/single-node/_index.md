@@ -120,11 +120,11 @@ Get the options set from your current Rancher install
 
     Choose from the following options:
 
-    * Single Node Upgrade
-    * Single Node Upgrade for Air Gap Installs
+    * Docker Upgrade
+    * Docker Upgrade for Air Gap Installs
 
 {{% tabs %}}
-{{% tab "Single Node Upgrade" %}}
+{{% tab "Docker Upgrade" %}}
 
 Select which option you had installed Rancher server
 
@@ -220,7 +220,7 @@ docker run -d --volumes-from rancher-data \
 {{% /accordion %}}
 
 {{% /tab %}}
-{{% tab "Single Node Air Gap Upgrade" %}}
+{{% tab "Docker Air Gap Upgrade" %}}
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 

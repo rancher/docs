@@ -52,7 +52,7 @@ helm fetch rancher-<CHART_REPO>/rancher
 
 Rancher Server is designed to be secure by default and requires SSL/TLS configuration.
 
-For HA air gap configurations, there are two recommended options for the source of the certificate.
+When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
 > **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination).
 

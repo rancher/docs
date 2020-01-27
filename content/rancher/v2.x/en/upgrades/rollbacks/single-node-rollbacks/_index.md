@@ -59,9 +59,9 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     ```
     You can obtain the name for your Rancher container by entering `docker ps`.
 
-1. Move the backup tarball that you created during completion of [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
+1. Move the backup tarball that you created during completion of [Docker Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    If you followed the naming convention we suggested in [Single Node Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
+    If you followed the naming convention we suggested in [Docker Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
 
 1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the [placeholder](#before-you-start). Don't forget to close the quotes.
 
