@@ -8,7 +8,7 @@ Rancher is installed using the Helm package manager for Kubernetes. Helm charts 
 
 With Helm, we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at https://helm.sh/.
 
-For systems without direct internet access, see [Air Gap: High Availability Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
+For systems without direct internet access, see [Air Gap: Kubernetes install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-installation/install-rancher/).
 
 To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags)
 

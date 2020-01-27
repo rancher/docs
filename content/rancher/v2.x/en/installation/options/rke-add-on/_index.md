@@ -11,5 +11,5 @@ weight: 276
 
 - [Kubernetes Installation with External Load Balancer (TCP/Layer 4)]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/layer-4-lb)
 - [Kubernetes Installation with External Load Balancer (HTTPS/Layer 7)]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/layer-7-lb)
-- [HTTP Proxy Configuration for a High Availability Installation]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/proxy/)
+- [HTTP Proxy Configuration for a Kubernetes installation]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/proxy/)
 - [Troubleshooting RKE Add-on Installs]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/troubleshooting/)

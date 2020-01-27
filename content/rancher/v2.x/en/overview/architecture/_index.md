@@ -41,7 +41,7 @@ The diagram below shows how users can manipulate both [Rancher-launched Kubernet
 
 You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
 
-A high-availability installation is recommended for production. A Docker installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a high-availability installation from the start.
+A high-availability Kubernetes installation is recommended for production. A Docker installation may be used for development and testing purposes, but there is no migration path from a single-node to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
 
 The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
 

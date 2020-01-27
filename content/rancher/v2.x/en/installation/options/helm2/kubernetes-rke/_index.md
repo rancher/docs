@@ -5,7 +5,7 @@ weight: 190
 
 Use RKE to install Kubernetes with a high availability etcd configuration.
 
->**Note:** For systems without direct internet access see [Air Gap: High Availability Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/) for install details.
+>**Note:** For systems without direct internet access see [Air Gap: Kubernetes install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/) for install details.
 
 ### Create the `rancher-cluster.yml` File
 

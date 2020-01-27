@@ -1,5 +1,5 @@
 ---
-title: Creating Backups—High Availability Installs
+title: Creating Backups for Rancher Installed on Kubernetes
 weight: 50
 aliases:
   - /rancher/v2.x/en/installation/after-installation/k8s-install-backup-and-restoration/

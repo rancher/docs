@@ -6,7 +6,7 @@ weight: 190
 
 Use RKE to install a Kubernetes cluster on your three nodes using a high-availability etcd configuration.
 
-For systems without direct internet access, refer to [Air Gap: High Availability Install.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
+For systems without direct internet access, refer to [Air Gap: Kubernetes install.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
 > **Single-node Installation Tip:**
 > In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
