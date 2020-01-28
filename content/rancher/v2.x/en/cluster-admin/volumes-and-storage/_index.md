@@ -10,9 +10,17 @@ aliases:
 ---
 When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails.
 
-Rancher can only manage storage in clusters [created with RKE.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
-
 The documents in this section assume that you understand the Kubernetes concepts of persistent volumes, persistent volume claims, and storage classes. For more information, refer to the section on [how storage works.](./how-storage-works)
+
+### Prerequisites
+
+To set up persistent storage, the `Manage Volumes` [role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference) is required.
+
+If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
+
+For provisioning new storage with Rancher, the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+
+For attaching existing persistent storage to a cluster, the cloud provider does not need to be enabled.
 
 ### Setting up Existing Storage
 
