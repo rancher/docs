@@ -79,7 +79,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
 This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
 
 {{% tabs %}}
-{{% tab "HA Upgrade" %}}
+{{% tab "Kubernetes Upgrade" %}}
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
 
@@ -133,7 +133,7 @@ Please refer the [Upgrading Cert-Manager]({{< baseurl >}}/rancher/v2.x/en/instal
 
 {{% /tab %}}
 
-{{% tab "HA Air Gap Upgrade" %}}
+{{% tab "Kubernetes Air Gap Upgrade" %}}
 
 1. Render the Rancher template using the same chosen options that were used when installing Rancher. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
