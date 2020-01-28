@@ -39,7 +39,7 @@ Apply the Canal YAML.
 Ensure the settings were applied by running the following command on the host:
 
 ```
-cat /etc/cni/net.d/10-calico.conflist
+cat /etc/cni/net.d/10-canal.conflist
 ```
 
 You should see that IP forwarding is set to true.
@@ -60,7 +60,7 @@ Apply the Calico YAML.
 Ensure the settings were applied by running the following command on the host:
 
 ```
-cat /etc/cni/net.d/10-canal.conflist
+cat /etc/cni/net.d/10-calico.conflist
 ```
 
 You should see that IP forwarding is set to true.
