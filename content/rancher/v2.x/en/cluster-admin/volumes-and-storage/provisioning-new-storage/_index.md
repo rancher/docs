@@ -106,4 +106,4 @@ To attach the PVC to an existing workload,
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Save.**
 
-**Result:** The workload will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC.
+**Result:** The workload will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC. If not, Rancher will provision new persistent storage.
