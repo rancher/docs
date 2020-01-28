@@ -37,7 +37,7 @@ For details and prerequisites, refer to [this page.](./provisioning-new-storage)
 
 ### Provisioning Storage Examples
 
-We provide examples of how to provision storage with [NFS,](./examples/nfs) [vSphere,](./examples/vsphere) and [Amazon's EBS.](./examples/nfs)
+We provide examples of how to provision storage with [NFS,](./examples/nfs) [vSphere,](./examples/vsphere) and [Amazon's EBS.](./examples/ebs)
 
 ### GlusterFS Volumes
 
