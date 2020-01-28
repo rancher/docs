@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
   - /rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/
   - /rancher/v2.x/en/installation/air-gap-single-node/install-rancher
+  - /rancher/v2.x/en/installation/air-gap/install-rancher
 ---
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a single node installation.
@@ -87,16 +88,10 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     ```
 
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
-<<<<<<< HEAD
-    ```plain
-    helm fetch jetstack/cert-manager --version v0.9.1
-    ```
-=======
 
    ```plain
    helm fetch jetstack/cert-manager --version v0.12.0
    ```
->>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
    ```plain
@@ -113,14 +108,6 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
    ```
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
-<<<<<<< HEAD
-Placeholder | Description
- ------------|-------------
-`<VERSION>` | The version number of the output tarball.
-`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
- ```plain
-=======
 
     Placeholder | Description
     ------------|-------------
@@ -130,7 +117,6 @@ Placeholder | Description
     `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
      ```plain
->>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
     helm template ./rancher-<VERSION>.tgz --output-dir . \
      --name rancher \
      --namespace cattle-system \
@@ -188,14 +174,6 @@ If you are using self-signed certificates, install cert-manager:
 kubectl create namespace cert-manager
 ```
 
-<<<<<<< HEAD
-1. Label the cert-manager namespace to disable resource validation.
-```plain
-kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true
-```
-
-=======
->>>>>>> Revert "Revert "Updated cert-manager installation/upgrade docs""
 1. Create the cert-manager CustomResourceDefinitions (CRDs).
 ```plain
 kubectl apply -f cert-manager/cert-manager-crd.yaml
