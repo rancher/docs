@@ -6,7 +6,7 @@ weight: 50
 
 This section provides an overview of the architecture options of installing Rancher, describing advantages of each option:
 
-- **High-availability Kubernetes Install:** We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. We recommend using three nodes in the cluster because increased availability is achieved by running Rancher on multiple nodes.
+- **High-availability Kubernetes Install:** We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/concepts/#about-helm) a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. We recommend using three nodes in the cluster because increased availability is achieved by running Rancher on multiple nodes.
 - **Single-node Kubernetes Install:** Another option is to install Rancher with Helm on a Kubernetes cluster, but to only use a single node in the cluster. In this case, the Rancher server doesn't have high availability, which is important for running Rancher in production. However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 - **Docker Install:** For test and demonstration purposes, Rancher can be installed with Docker on a single node. This installation is simpler to set up, but there is no migration path from a Docker installation to a high-availability installation on a Kubernetes cluster. Therefore, you may want to use a Kubernetes installation from the start.
 
