@@ -16,9 +16,8 @@ To set up storage, follow these steps:
 
 ### Prerequisites
 
-- Rancher can only dynamically provision new storage in clusters [created with RKE.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
 - To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
-- If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider, and the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+- If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
 ### 1. Set up persistent storage in an infrastructure provider
 
