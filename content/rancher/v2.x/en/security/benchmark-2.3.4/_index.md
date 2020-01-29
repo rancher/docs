@@ -38,66 +38,66 @@ The following scored controls do not currently pass, and Rancher Labs is working
 ### Controls
 
 ---
-## - 1 Master Node Security Configuration
-### - 1.1 Master Node Configuration Files 
+## 1 Master Node Security Configuration
+### 1.1 Master Node Configuration Files 
 
-#### - 1.1.1 Ensure that the API server pod specification file permissions are set to `644` or more restrictive (Scored)
-
-**Result:** INFO
-
-**Remediation:**
-RKE doesn’t require or maintain a configuration file for the API server. All configuration is passed in as arguments at container run time.
-
-#### - 1.1.2 Ensure that the API server pod specification file ownership is set to `root:root` (Scored)
+#### 1.1.1 Ensure that the API server pod specification file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the API server. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.3 Ensure that the controller manager pod specification file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.2 Ensure that the API server pod specification file ownership is set to `root:root` (Scored)
+
+**Result:** INFO
+
+**Remediation:**
+RKE doesn’t require or maintain a configuration file for the API server. All configuration is passed in as arguments at container run time.
+
+#### 1.1.3 Ensure that the controller manager pod specification file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the controller manager. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.4 Ensure that the controller manager pod specification file ownership is set to `root:root` (Scored)
+#### 1.1.4 Ensure that the controller manager pod specification file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the controller manager. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.5 Ensure that the scheduler pod specification file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.5 Ensure that the scheduler pod specification file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the scheduler. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.6 Ensure that the scheduler pod specification file ownership is set to `root:root` (Scored)
+#### 1.1.6 Ensure that the scheduler pod specification file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the scheduler. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.7 Ensure that the etcd pod specification file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.7 Ensure that the etcd pod specification file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.8 Ensure that the etcd pod specification file ownership is set to `root:root` (Scored)
+#### 1.1.8 Ensure that the etcd pod specification file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.9 Ensure that the Container Network Interface file permissions are set to `644` or more restrictive (Not Scored)
+#### 1.1.9 Ensure that the Container Network Interface file permissions are set to `644` or more restrictive (Not Scored)
 
 **Result:** WARN
 
@@ -115,7 +115,7 @@ chmod 644 <path/to/cni/files>
 stat -c %a <path/to/cni/files>
 ```
 
-#### - 1.1.10 Ensure that the Container Network Interface file ownership is set to `root:root` (Not Scored)
+#### 1.1.10 Ensure that the Container Network Interface file ownership is set to `root:root` (Not Scored)
 
 **Result:** WARN
 
@@ -133,7 +133,7 @@ chown root:root <path/to/cni/files>
 stat -c %U:%G <path/to/cni/files>
 ```
 
-#### - 1.1.11 Ensure that the etcd data directory permissions are set to `700` or more restrictive (Scored)
+#### 1.1.11 Ensure that the etcd data directory permissions are set to `700` or more restrictive (Scored)
 
 **Result:** FAIL
 
@@ -157,7 +157,7 @@ chmod 700 /var/lib/etcd
 ps -ef | grep etcd | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%' | xargs stat -c %a
 ```
 
-#### - 1.1.12 Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
+#### 1.1.12 Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
 
 **Result:** FAIL
 
@@ -181,7 +181,7 @@ chown etcd:etcd /var/lib/etcd
 ps -ef | grep etcd | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%' | xargs stat -c %U:%G
 ```
 
-#### - 1.1.13 Ensure that the `admin.conf` file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.13 Ensure that the `admin.conf` file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
@@ -189,7 +189,7 @@ ps -ef | grep etcd | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%' 
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes. It’s presented to user where RKE is run.
 We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 
-#### - 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored) 
+#### 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored) 
 
 **Result:** INFO
 
@@ -197,35 +197,35 @@ We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes. It’s presented to user where RKE is run.
 We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 
-#### - 1.1.15 Ensure that the `scheduler.conf` file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.15 Ensure that the `scheduler.conf` file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the scheduler. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.16 Ensure that the `scheduler.conf` file ownership is set to `root:root` (Scored)
+#### 1.1.16 Ensure that the `scheduler.conf` file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the scheduler. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.17 Ensure that the `controller-manager.conf` file permissions are set to `644` or more restrictive (Scored)
+#### 1.1.17 Ensure that the `controller-manager.conf` file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the controller manager. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.18 Ensure that the `controller-manager.conf` file ownership is set to `root:root` (Scored)
+#### 1.1.18 Ensure that the `controller-manager.conf` file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the controller manager. All configuration is passed in as arguments at container run time.
 
-#### - 1.1.19 Ensure that the Kubernetes PKI directory and file ownership is set to `root:root` (Scored)
+#### 1.1.19 Ensure that the Kubernetes PKI directory and file ownership is set to `root:root` (Scored)
 
 **Result:** WARN
 
@@ -243,7 +243,7 @@ chown -R root:root /etc/kubernetes/pki/
 ls -laR /etc/kubernetes/pki/
 ```
 
-#### - 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored) 
+#### 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored) 
 
 **Result:** WARN
 
@@ -261,7 +261,7 @@ chmod -R 644 /etc/kubernetes/pki/*.crt
 stat -c %n %a /etc/kubernetes/pki/*.crt
 ```
 
-#### - 1.1.21 Ensure that the Kubernetes PKI key file permissions are set to `600` (Scored)
+#### 1.1.21 Ensure that the Kubernetes PKI key file permissions are set to `600` (Scored)
 
 **Result:** WARN
 
@@ -279,9 +279,9 @@ chmod -R 600 /etc/kubernetes/pki/*.key
 stat -c %n %a /etc/kubernetes/pki/*.key
 ```
 
-### - 1.2 API Server
+### 1.2 API Server
 
-#### - 1.2.1 Ensure that the `--anonymous-auth` argument is set to `false` (Not Scored)
+#### 1.2.1 Ensure that the `--anonymous-auth` argument is set to `false` (Not Scored)
 
 **Result:** PASS
 
@@ -305,7 +305,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### - 1.2.2 Ensure that the `--basic-auth-file` argument is not set (Scored)
+#### 1.2.2 Ensure that the `--basic-auth-file` argument is not set (Scored)
 
 **Result:** PASS
 
@@ -326,7 +326,7 @@ on the master node and remove the `--basic-auth-file=<filename>` parameter.
 '--basic-auth-file' is not present
 ```
 
-#### - 1.2.3 Ensure that the `--token-auth-file` parameter is not set (Scored)
+#### 1.2.3 Ensure that the `--token-auth-file` parameter is not set (Scored)
 
 **Result:** PASS
 
@@ -347,7 +347,7 @@ on the master node and remove the `--token-auth-file=<filename>` parameter.
 '--token-auth-file' is not present
 ```
 
-#### - 1.2.4 Ensure that the `--kubelet-https` argument is set to true (Scored)
+#### 1.2.4 Ensure that the `--kubelet-https` argument is set to true (Scored)
 
 **Result:** PASS
 
@@ -367,7 +367,7 @@ on the master node and remove the `--kubelet-https` parameter.
 '--kubelet-https' is present OR '--kubelet-https' is not present
 ```
 
-#### - 1.2.5 Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments are set as appropriate (Scored)
+#### 1.2.5 Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -394,7 +394,7 @@ kubelet client certificate and key parameters as below.
 '--kubelet-client-certificate' is present AND '--kubelet-client-key' is present
 ```
 
-#### - 1.2.6 Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
+#### 1.2.6 Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
 
 **Result:** FAIL
 
@@ -411,7 +411,7 @@ the apiserver and kubelets. Then, edit the API server pod specification file
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
-#### - 1.2.7 Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
+#### 1.2.7 Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 
 **Result:** PASS
 
@@ -436,7 +436,7 @@ One such example could be as below.
 'Node,RBAC' not have 'AlwaysAllow'
 ```
 
-#### - 1.2.8 Ensure that the `--authorization-mode` argument includes `Node` (Scored)
+#### 1.2.8 Ensure that the `--authorization-mode` argument includes `Node` (Scored)
 
 **Result:** PASS
 
@@ -460,7 +460,7 @@ on the master node and set the `--authorization-mode` parameter to a value that 
 'Node,RBAC' has 'Node'
 ```
 
-#### - 1.2.9 Ensure that the `--authorization-mode` argument includes `RBAC` (Scored)
+#### 1.2.9 Ensure that the `--authorization-mode` argument includes `RBAC` (Scored)
 
 **Result:** PASS
 
@@ -485,7 +485,7 @@ for example:
 'Node,RBAC' has 'RBAC'
 ```
 
-#### - 1.2.10 Ensure that the admission control plugin `EventRateLimit` is set (Not Scored)
+#### 1.2.10 Ensure that the admission control plugin `EventRateLimit` is set (Not Scored)
 
 **Result:** PASS
 
@@ -511,7 +511,7 @@ and set the below parameters.
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'EventRateLimit'
 ```
 
-#### - 1.2.11 Ensure that the admission control plugin `AlwaysAdmit` is not set (Scored)
+#### 1.2.11 Ensure that the admission control plugin `AlwaysAdmit` is not set (Scored)
 
 **Result:** PASS
 
@@ -532,7 +532,7 @@ value that does not include `AlwaysAdmit`.
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' not have 'AlwaysAdmit' OR '--enable-admission-plugins' is not present
 ```
 
-#### - 1.2.12 Ensure that the admission control plugin `AlwaysPullImages` is set (Not Scored)
+#### 1.2.12 Ensure that the admission control plugin `AlwaysPullImages` is set (Not Scored)
 
 **Result:** PASS
 
@@ -557,7 +557,7 @@ on the master node and set the `--enable-admission-plugins` parameter to include
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'AlwaysPullImages'
 ```
 
-#### - 1.2.13 Ensure that the admission control plugin `SecurityContextDeny` is set if `PodSecurityPolicy` is not used (Not Scored)
+#### 1.2.13 Ensure that the admission control plugin `SecurityContextDeny` is set if `PodSecurityPolicy` is not used (Not Scored)
 
 **Result:** WARN
 
@@ -576,7 +576,7 @@ on the master node and set the `--enable-admission-plugins` parameter to include
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
-#### - 1.2.14 Ensure that the admission control plugin `ServiceAccount` is set (Scored)
+#### 1.2.14 Ensure that the admission control plugin `ServiceAccount` is set (Scored)
 
 **Result:** PASS
 
@@ -598,7 +598,7 @@ value that does not include `ServiceAccount`.
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'ServiceAccount' OR '--enable-admission-plugins' is not present
 ```
 
-#### - 1.2.15 Ensure that the admission control plugin `NamespaceLifecycle` is set (Scored)
+#### 1.2.15 Ensure that the admission control plugin `NamespaceLifecycle` is set (Scored)
 
 **Result:** PASS
 
@@ -619,7 +619,7 @@ ensure it does not include `NamespaceLifecycle`.
 '--disable-admission-plugins' is present OR '--disable-admission-plugins' is not present
 ```
 
-#### - 1.2.16 Ensure that the admission control plugin `PodSecurityPolicy` is set (Scored)
+#### 1.2.16 Ensure that the admission control plugin `PodSecurityPolicy` is set (Scored)
 
 **Result:** PASS
 
@@ -647,7 +647,7 @@ Then restart the API Server.
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'PodSecurityPolicy'
 ```
 
-#### - 1.2.17 Ensure that the admission control plugin `NodeRestriction` is set (Scored)
+#### 1.2.17 Ensure that the admission control plugin `NodeRestriction` is set (Scored)
 
 **Result:** PASS
 
@@ -673,7 +673,7 @@ value that includes `NodeRestriction`.
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'NodeRestriction'
 ```
 
-#### - 1.2.18 Ensure that the `--insecure-bind-address` argument is not set (Scored)
+#### 1.2.18 Ensure that the `--insecure-bind-address` argument is not set (Scored)
 
 **Result:** PASS
 
@@ -693,7 +693,7 @@ on the master node and remove the `--insecure-bind-address` parameter.
 '--insecure-bind-address' is not present
 ```
 
-#### - 1.2.19 Ensure that the `--insecure-port` argument is set to `0` (Scored)
+#### 1.2.19 Ensure that the `--insecure-port` argument is set to `0` (Scored)
 
 **Result:** PASS
 
@@ -717,7 +717,7 @@ on the master node and set the below parameter.
 '0' is equal to '0'
 ```
 
-#### - 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored) 
+#### 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored) 
 
 **Result:** PASS
 
@@ -738,7 +738,7 @@ set it to a different **(non-zero)** desired port.
 6443 is greater than 0 OR '--secure-port' is not present
 ```
 
-#### - 1.2.21 Ensure that the `--profiling` argument is set to `false` (Scored)
+#### 1.2.21 Ensure that the `--profiling` argument is set to `false` (Scored)
 
 **Result:** PASS
 
@@ -762,7 +762,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### - 1.2.22 Ensure that the `--audit-log-path` argument is set (Scored)
+#### 1.2.22 Ensure that the `--audit-log-path` argument is set (Scored)
 
 **Result:** PASS
 
@@ -787,7 +787,7 @@ file where you would like audit logs to be written, for example:
 '--audit-log-path' is present
 ```
 
-#### - 1.2.23 Ensure that the `--audit-log-maxage` argument is set to `30` or as appropriate (Scored)
+#### 1.2.23 Ensure that the `--audit-log-maxage` argument is set to `30` or as appropriate (Scored)
 
 **Result:** PASS
 
@@ -811,7 +811,7 @@ on the master node and set the `--audit-log-maxage` parameter to `30` or as an a
 30 is greater or equal to 30
 ```
 
-#### - 1.2.24 Ensure that the `--audit-log-maxbackup` argument is set to `10` or as appropriate (Scored)
+#### 1.2.24 Ensure that the `--audit-log-maxbackup` argument is set to `10` or as appropriate (Scored)
 
 **Result:** PASS
 
@@ -836,7 +836,7 @@ value.
 10 is greater or equal to 10
 ```
 
-#### - 1.2.25 Ensure that the `--audit-log-maxsize` argument is set to `100` or as appropriate (Scored)
+#### 1.2.25 Ensure that the `--audit-log-maxsize` argument is set to `100` or as appropriate (Scored)
 
 **Result:** PASS
 
@@ -861,7 +861,7 @@ For example, to set it as `100` **MB**:
 100 is greater or equal to 100
 ```
 
-#### - 1.2.26 Ensure that the `--request-timeout` argument is set as appropriate (Scored)
+#### 1.2.26 Ensure that the `--request-timeout` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -886,7 +886,7 @@ For example,
 '--request-timeout' is not present OR '--request-timeout' is present
 ```
 
-#### - 1.2.27 Ensure that the `--service-account-lookup` argument is set to `true` (Scored)
+#### 1.2.27 Ensure that the `--service-account-lookup` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -913,7 +913,7 @@ that the default takes effect.
 '--service-account-lookup' is not present OR 'true' is equal to 'true'
 ```
 
-#### - 1.2.28 Ensure that the `--service-account-key-file` argument is set as appropriate (Scored)
+#### 1.2.28 Ensure that the `--service-account-key-file` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -938,7 +938,7 @@ to the public key file for service accounts:
 '--service-account-key-file' is present
 ```
 
-#### - 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored) 
+#### 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored) 
 
 **Result:** PASS
 
@@ -964,7 +964,7 @@ on the master node and set the **etcd** certificate and **key** file parameters.
 '--etcd-certfile' is present AND '--etcd-keyfile' is present
 ```
 
-#### - 1.2.30 Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
+#### 1.2.30 Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -990,7 +990,7 @@ on the master node and set the TLS certificate and private key file parameters.
 '--tls-cert-file' is present AND '--tls-private-key-file' is present
 ```
 
-#### - 1.2.31 Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
+#### 1.2.31 Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1015,7 +1015,7 @@ on the master node and set the client certificate authority file.
 '--client-ca-file' is present
 ```
 
-#### - 1.2.32 Ensure that the `--etcd-cafile` argument is set as appropriate (Scored)
+#### 1.2.32 Ensure that the `--etcd-cafile` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1040,7 +1040,7 @@ on the master node and set the etcd certificate authority file parameter.
 '--etcd-cafile' is present
 ```
 
-#### - 1.2.33 Ensure that the `--encryption-provider-config` argument is set as appropriate (Scored)
+#### 1.2.33 Ensure that the `--encryption-provider-config` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1065,7 +1065,7 @@ on the master node and set the `--encryption-provider-config` parameter to the p
 '--encryption-provider-config' is present
 ```
 
-#### - 1.2.34 Ensure that encryption providers are appropriately configured (Scored)
+#### 1.2.34 Ensure that encryption providers are appropriately configured (Scored)
 
 **Result:** WARN
 
@@ -1079,7 +1079,7 @@ In this file, choose **aescbc**, **kms** or **secretbox** as the encryption prov
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
-#### - 1.2.35 Ensure that the API Server only makes use of Strong Cryptographic Ciphers (Not Scored)
+#### 1.2.35 Ensure that the API Server only makes use of Strong Cryptographic Ciphers (Not Scored)
 
 **Result:** PASS
 
@@ -1103,9 +1103,9 @@ on the master node and set the below parameter.
 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256' has 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256'
 ```
 
-### - 1.3 Controller Manager
+### 1.3 Controller Manager
 
-#### - 1.3.1 Ensure that the `--terminated-pod-gc-threshold` argument is set as appropriate (Scored)
+#### 1.3.1 Ensure that the `--terminated-pod-gc-threshold` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1130,7 +1130,7 @@ for example:
 '--terminated-pod-gc-threshold' is present
 ```
 
-#### - 1.3.2 Ensure that the `--profiling` argument is set to false (Scored)
+#### 1.3.2 Ensure that the `--profiling` argument is set to false (Scored)
 
 **Result:** PASS
 
@@ -1154,7 +1154,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### - 1.3.3 Ensure that the `--use-service-account-credentials` argument is set to `true` (Scored)
+#### 1.3.3 Ensure that the `--use-service-account-credentials` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1178,7 +1178,7 @@ on the master node to set the below parameter.
 'true' is not equal to 'false'
 ```
 
-#### - 1.3.4 Ensure that the `--service-account-private-key-file` argument is set as appropriate (Scored)
+#### 1.3.4 Ensure that the `--service-account-private-key-file` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1203,7 +1203,7 @@ to the private key file for service accounts.
 '--service-account-private-key-file' is present
 ```
 
-#### - 1.3.5 Ensure that the `--root-ca-file` argument is set as appropriate (Scored)
+#### 1.3.5 Ensure that the `--root-ca-file` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1227,7 +1227,7 @@ on the master node and set the `--root-ca-file` parameter to the certificate bun
 '--root-ca-file' is present
 ```
 
-#### - 1.3.6 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
+#### 1.3.6 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1251,7 +1251,7 @@ on the master node and set the `--feature-gates` parameter to include `RotateKub
 'RotateKubeletServerCertificate=true' is equal to 'RotateKubeletServerCertificate=true'
 ```
 
-#### - 1.3.7 Ensure that the `--bind-address argument` is set to `127.0.0.1` (Scored)
+#### 1.3.7 Ensure that the `--bind-address argument` is set to `127.0.0.1` (Scored)
 
 **Result:** PASS
 
@@ -1271,9 +1271,9 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 '--bind-address' is present OR '--bind-address' is not present
 ```
 
-### - 1.4 Scheduler
+### 1.4 Scheduler
 
-#### - 1.4.1 Ensure that the `--profiling` argument is set to `false` (Scored)
+#### 1.4.1 Ensure that the `--profiling` argument is set to `false` (Scored)
 
 **Result:** PASS
 
@@ -1297,7 +1297,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### - 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored) 
+#### 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored) 
 
 **Result:** PASS
 
@@ -1317,10 +1317,10 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 '--bind-address' is present OR '--bind-address' is not present
 ```
 
-## - 2 Etcd Node Configuration
-### - 2 Etcd Node Configuration Files
+## 2 Etcd Node Configuration
+### 2 Etcd Node Configuration Files
 
-#### - 2.1 Ensure that the `--cert-file` and `--key-file` arguments are set as appropriate (Scored)
+#### 2.1 Ensure that the `--cert-file` and `--key-file` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1346,7 +1346,7 @@ on the master node and set the below parameters.
 '--cert-file' is present AND '--key-file' is present
 ```
 
-#### - 2.2 Ensure that the `--client-cert-auth` argument is set to `true` (Scored)
+#### 2.2 Ensure that the `--client-cert-auth` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1370,7 +1370,7 @@ node and set the below parameter.
 'true' is equal to 'true'
 ```
 
-#### - 2.3 Ensure that the `--auto-tls` argument is not set to `true` (Scored)
+#### 2.3 Ensure that the `--auto-tls` argument is not set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1394,7 +1394,7 @@ node and either remove the `--auto-tls` parameter or set it to `false`.
 '--auto-tls' is not present OR '--auto-tls' is not present
 ```
 
-#### - 2.4 Ensure that the `--peer-cert-file` and `--peer-key-file` arguments are set as appropriate (Scored)
+#### 2.4 Ensure that the `--peer-cert-file` and `--peer-key-file` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1420,7 +1420,7 @@ master node and set the below parameters.
 '--peer-cert-file' is present AND '--peer-key-file' is present
 ```
 
-#### - 2.5 Ensure that the `--peer-client-cert-auth` argument is set to `true` (Scored)
+#### 2.5 Ensure that the `--peer-client-cert-auth` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1444,7 +1444,7 @@ node and set the below parameter.
 'true' is equal to 'true'
 ```
 
-#### - 2.6 Ensure that the `--peer-auto-tls` argument is not set to `true` (Scored)
+#### 2.6 Ensure that the `--peer-auto-tls` argument is not set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1468,7 +1468,7 @@ node and either remove the `--peer-auto-tls` parameter or set it to `false`.
 '--peer-auto-tls' is not present OR '--peer-auto-tls' is present
 ```
 
-#### - 2.7 Ensure that a unique Certificate Authority is used for etcd (Not Scored)
+#### 2.7 Ensure that a unique Certificate Authority is used for etcd (Not Scored)
 
 **Result:** PASS
 
@@ -1495,10 +1495,10 @@ master node and set the below parameter.
 '--trusted-ca-file' is present
 ```
 
-## - 3 Control Plane Configuration
-### - 3.1 Authentication and Authorization
+## 3 Control Plane Configuration
+### 3.1 Authentication and Authorization
 
-#### - 3.1.1 Client certificate authentication should not be used for users (Not Scored) 
+#### 3.1.1 Client certificate authentication should not be used for users (Not Scored) 
 
 **Result:** WARN
 
@@ -1506,16 +1506,16 @@ master node and set the below parameter.
 Alternative mechanisms provided by Kubernetes such as the use of OIDC should be
 implemented in place of client certificates.
 
-### - 3.2 Logging
+### 3.2 Logging
 
-#### - 3.2.1 Ensure that a minimal audit policy is created (Scored) 
+#### 3.2.1 Ensure that a minimal audit policy is created (Scored) 
 
 **Result:** WARN
 
 **Remediation:**
 Create an audit policy file for your cluster.
 
-#### - 3.2.2 Ensure that the audit policy covers key security concerns (Not Scored) 
+#### 3.2.2 Ensure that the audit policy covers key security concerns (Not Scored) 
 
 **Result:** WARN
 
@@ -1523,52 +1523,52 @@ Create an audit policy file for your cluster.
 Consider modification of the audit policy in use on the cluster to include these items, at a
 minimum.
 
-## - 4 Worker Node Security Configuration
-### - 4.1 Worker Node Configuration Files
+## 4 Worker Node Security Configuration
+### 4.1 Worker Node Configuration Files
 
-#### - 4.1.1 Ensure that the kubelet service file permissions are set to `644` or more restrictive (Scored)
-
-**Result:** INFO
-
-**Remediation:**
-RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
-
-#### - 4.1.2 Ensure that the kubelet service file ownership is set to `root:root` (Scored)
+#### 4.1.1 Ensure that the kubelet service file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.3 Ensure that the proxy kubeconfig file permissions are set to `644` or more restrictive (Scored)
+#### 4.1.2 Ensure that the kubelet service file ownership is set to `root:root` (Scored)
+
+**Result:** INFO
+
+**Remediation:**
+RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
+
+#### 4.1.3 Ensure that the proxy kubeconfig file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the proxy service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.4 Ensure that the proxy kubeconfig file ownership is set to `root:root` (Scored)
+#### 4.1.4 Ensure that the proxy kubeconfig file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the proxy service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.5 Ensure that the kubelet.conf file permissions are set to `644` or more restrictive (Scored)
+#### 4.1.5 Ensure that the kubelet.conf file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.6 Ensure that the kubelet.conf file ownership is set to `root:root` (Scored)
+#### 4.1.6 Ensure that the kubelet.conf file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.7 Ensure that the certificate authorities file permissions are set to `644` or more restrictive (Scored)
+#### 4.1.7 Ensure that the certificate authorities file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** WARN
 
@@ -1579,7 +1579,7 @@ Run the following command to modify the file permissions of the
 --client-ca-file chmod 644 <filename>
 ```
 
-#### - 4.1.8 Ensure that the client certificate authorities file ownership is set to `root:root` (Scored)
+#### 4.1.8 Ensure that the client certificate authorities file ownership is set to `root:root` (Scored)
 
 **Result:** PASS
 
@@ -1602,23 +1602,23 @@ chown root:root <filename>
 'root:root' is equal to 'root:root'
 ```
 
-#### - 4.1.9 Ensure that the kubelet configuration file has permissions set to `644` or more restrictive (Scored)
+#### 4.1.9 Ensure that the kubelet configuration file has permissions set to `644` or more restrictive (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-#### - 4.1.10 Ensure that the kubelet configuration file ownership is set to `root:root` (Scored)
+#### 4.1.10 Ensure that the kubelet configuration file ownership is set to `root:root` (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-### - 4.2 Kubelet
+### 4.2 Kubelet
 
-#### - 4.2.1 Ensure that the `--anonymous-auth argument` is set to false (Scored)
+#### 4.2.1 Ensure that the `--anonymous-auth argument` is set to false (Scored)
 
 **Result:** PASS
 
@@ -1658,7 +1658,7 @@ systemctl restart kubelet.service
 'false' is equal to 'false'
 ```
 
-#### - 4.2.2 Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
+#### 4.2.2 Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 
 **Result:** PASS
 
@@ -1697,7 +1697,7 @@ systemctl restart kubelet.service
 'Webhook' not have 'AlwaysAllow'
 ```
 
-#### - 4.2.3 Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
+#### 4.2.3 Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1737,7 +1737,7 @@ systemctl restart kubelet.service
 '--client-ca-file' is present
 ```
 
-#### - 4.2.4 Ensure that the `--read-only-port` argument is set to `0` (Scored)
+#### 4.2.4 Ensure that the `--read-only-port` argument is set to `0` (Scored)
 
 **Result:** PASS
 
@@ -1776,7 +1776,7 @@ systemctl restart kubelet.service
 '0' is equal to '0'
 ```
 
-#### - 4.2.5 Ensure that the `--streaming-connection-idle-timeout` argument is not set to `0` (Scored)
+#### 4.2.5 Ensure that the `--streaming-connection-idle-timeout` argument is not set to `0` (Scored)
 
 **Result:** PASS
 
@@ -1816,7 +1816,7 @@ systemctl restart kubelet.service
 '1800s' is not equal to '0' OR '--streaming-connection-idle-timeout' is not present
 ```
 
-#### - 4.2.6 Ensure that the ```--protect-kernel-defaults``` argument is set to `true` (Scored)
+#### 4.2.6 Ensure that the ```--protect-kernel-defaults``` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1855,7 +1855,7 @@ systemctl restart kubelet.service
 'true' is equal to 'true'
 ```
 
-#### - 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored) 
+#### 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored) 
 
 **Result:** PASS
 
@@ -1890,7 +1890,7 @@ systemctl restart kubelet.service
 'true' is equal to 'true' OR '--make-iptables-util-chains' is not present
 ```
 
-#### - 4.2.8 Ensure that the `--hostname-override` argument is not set (Not Scored)
+#### 4.2.8 Ensure that the `--hostname-override` argument is not set (Not Scored)
 
 **Result:** WARN
 
@@ -1911,7 +1911,7 @@ systemctl restart kubelet.service
 /bin/ps -fC kubelet 
 ```
 
-#### - 4.2.9 Ensure that the `--event-qps` argument is set to `0` or a level which ensures appropriate event capture (Not Scored)
+#### 4.2.9 Ensure that the `--event-qps` argument is set to `0` or a level which ensures appropriate event capture (Not Scored)
 
 **Result:** PASS
 
@@ -1945,14 +1945,14 @@ systemctl restart kubelet.service
 '0' is equal to '0'
 ```
 
-#### - 4.2.10 Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
+#### 4.2.10 Ensure that the `--tls-cert-file` and `--tls-private-key-file` arguments are set as appropriate (Scored)
 
 **Result:** INFO
 
 **Remediation:**
 RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
 
-#### - 4.2.11 Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
+#### 4.2.11 Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
 
 **Result:** PASS
 
@@ -1988,7 +1988,7 @@ systemctl restart kubelet.service
 '--rotate-certificates' is present OR '--rotate-certificates' is not present
 ```
 
-#### - 4.2.12 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
+#### 4.2.12 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -2025,7 +2025,7 @@ systemctl restart kubelet.service
 'true' is equal to 'true'
 ```
 
-#### - 4.2.13 Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers (Not Scored)
+#### 4.2.13 Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers (Not Scored)
 
 **Result:** PASS
 
@@ -2070,10 +2070,10 @@ systemctl restart kubelet.service
 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256' contains valid elements from 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256'
 ```
 
-## - 5 Kubernetes Policies
-### - 5.1 RBAC and Service Accounts
+## 5 Kubernetes Policies
+### 5.1 RBAC and Service Accounts
 
-#### - 5.1.1 Ensure that the cluster-admin role is only used where required (Not Scored)
+#### 5.1.1 Ensure that the cluster-admin role is only used where required (Not Scored)
 
 **Result:** WARN
 
@@ -2087,14 +2087,14 @@ Where possible, first bind users to a lower privileged role and then remove the
 kubectl delete clusterrolebinding [name]
 ```
 
-#### - 5.1.2 Minimize access to secrets (Not Scored)
+#### 5.1.2 Minimize access to secrets (Not Scored)
 
 **Result:** WARN
 
 **Remediation:**
 Where possible, remove `get`, `list` and `watch` access to secret objects in the cluster.
 
-#### - 5.1.3 Minimize wildcard use in Roles and ClusterRoles (Not Scored)
+#### 5.1.3 Minimize wildcard use in Roles and ClusterRoles (Not Scored)
 
 **Result:** WARN
 
@@ -2102,11 +2102,11 @@ Where possible, remove `get`, `list` and `watch` access to secret objects in the
 Where possible replace any use of wildcards in `clusterroles` and roles with specific
 objects or actions.
 
-#### - 5.1.4 Minimize access to create pods (Not Scored)
+#### 5.1.4 Minimize access to create pods (Not Scored)
 
 **Result:** WARN
 
-#### - 5.1.5 Ensure that default service accounts are not actively used. (Scored)
+#### 5.1.5 Ensure that default service accounts are not actively used. (Scored)
 
 **Result:** WARN
 
@@ -2119,7 +2119,7 @@ Modify the configuration of each default service account to include this value
 automountServiceAccountToken: false
 ```
 
-#### - 5.1.6 Ensure that Service Account Tokens are only mounted where necessary (Not Scored)
+#### 5.1.6 Ensure that Service Account Tokens are only mounted where necessary (Not Scored)
 
 **Result:** WARN
 
@@ -2127,9 +2127,9 @@ automountServiceAccountToken: false
 Modify the definition of pods and service accounts which do not need to mount service
 account tokens to disable it.
 
-### - 5.2 Pod Security Policies
+### 5.2 Pod Security Policies
 
-#### - 5.2.1 Minimize the admission of privileged containers (Not Scored)
+#### 5.2.1 Minimize the admission of privileged containers (Not Scored)
 
 **Result:** WARN
 
@@ -2137,7 +2137,7 @@ account tokens to disable it.
 Create a PSP as described in the Kubernetes documentation, ensuring that
 the `.spec.privileged` field is omitted or set to `false`.
 
-#### - 5.2.2 Minimize the admission of containers wishing to share the host process ID namespace (Scored)
+#### 5.2.2 Minimize the admission of containers wishing to share the host process ID namespace (Scored)
 
 **Result:** WARN
 
@@ -2145,7 +2145,7 @@ the `.spec.privileged` field is omitted or set to `false`.
 Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.hostPID` field is omitted or set to `false`.
 
-#### - 5.2.3 Minimize the admission of containers wishing to share the host IPC namespace (Scored)
+#### 5.2.3 Minimize the admission of containers wishing to share the host IPC namespace (Scored)
 
 **Result:** WARN
 
@@ -2153,7 +2153,7 @@ Create a PSP as described in the Kubernetes documentation, ensuring that the
 Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.hostIPC` field is omitted or set to `false`.
 
-#### - 5.2.4 Minimize the admission of containers wishing to share the host network namespace (Scored)
+#### 5.2.4 Minimize the admission of containers wishing to share the host network namespace (Scored)
 
 **Result:** WARN
 
@@ -2161,7 +2161,7 @@ Create a PSP as described in the Kubernetes documentation, ensuring that the
 Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.hostNetwork` field is omitted or set to `false`.
 
-#### - 5.2.5 Minimize the admission of containers with `allowPrivilegeEscalation` (Scored)
+#### 5.2.5 Minimize the admission of containers with `allowPrivilegeEscalation` (Scored)
 
 **Result:** WARN
 
@@ -2169,7 +2169,7 @@ Create a PSP as described in the Kubernetes documentation, ensuring that the
 Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.allowPrivilegeEscalation` field is omitted or set to `false`.
 
-#### - 5.2.6 Minimize the admission of root containers (Not Scored)
+#### 5.2.6 Minimize the admission of root containers (Not Scored)
 
 **Result:** WARN
 
@@ -2178,7 +2178,7 @@ Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.runAsUser.rule` is set to either `MustRunAsNonRoot` or `MustRunAs` with the range of
 UIDs not including `0`.
 
-#### - 5.2.7 Minimize the admission of containers with the `NET_RAW` capability (Not Scored)
+#### 5.2.7 Minimize the admission of containers with the `NET_RAW` capability (Not Scored)
 
 **Result:** WARN
 
@@ -2186,7 +2186,7 @@ UIDs not including `0`.
 Create a PSP as described in the Kubernetes documentation, ensuring that the
 `.spec.requiredDropCapabilities` is set to include either `NET_RAW` or `ALL`.
 
-#### - 5.2.8 Minimize the admission of containers with added capabilities (Not Scored)
+#### 5.2.8 Minimize the admission of containers with added capabilities (Not Scored)
 
 **Result:** WARN
 
@@ -2194,7 +2194,7 @@ Create a PSP as described in the Kubernetes documentation, ensuring that the
 Ensure that `allowedCapabilities` is not present in PSPs for the cluster unless
 it is set to an empty array.
 
-#### - 5.2.9 Minimize the admission of containers with capabilities assigned (Not Scored) 
+#### 5.2.9 Minimize the admission of containers with capabilities assigned (Not Scored) 
 
 **Result:** WARN
 
@@ -2203,9 +2203,9 @@ Review the use of capabilites in applications runnning on your cluster. Where a 
 contains applicaions which do not require any Linux capabities to operate consider adding
 a PSP which forbids the admission of containers which do not drop all capabilities.
 
-### - 5.3 Network Policies and CNI
+### 5.3 Network Policies and CNI
 
-#### - 5.3.1 Ensure that the CNI in use supports Network Policies (Not Scored)
+#### 5.3.1 Ensure that the CNI in use supports Network Policies (Not Scored)
 
 **Result:** WARN
 
@@ -2214,16 +2214,16 @@ If the CNI plugin in use does not support network policies, consideration should
 making use of a different plugin, or finding an alternate mechanism for restricting traffic
 in the Kubernetes cluster.
 
-#### - 5.3.2 Ensure that all Namespaces have Network Policies defined (Scored)
+#### 5.3.2 Ensure that all Namespaces have Network Policies defined (Scored)
 
 **Result:** WARN
 
 **Remediation:**
 Follow the documentation and create `NetworkPolicy` objects as you need them.
 
-### - 5.4 Secrets Management
+### 5.4 Secrets Management
 
-#### - 5.4.1 Prefer using secrets as files over secrets as environment variables (Not Scored)
+#### 5.4.1 Prefer using secrets as files over secrets as environment variables (Not Scored)
 
 **Result:** WARN
 
@@ -2231,7 +2231,7 @@ Follow the documentation and create `NetworkPolicy` objects as you need them.
 if possible, rewrite application code to read secrets from mounted secret files, rather than
 from environment variables.
 
-#### - 5.4.2 Consider external secret storage (Not Scored)
+#### 5.4.2 Consider external secret storage (Not Scored)
 
 **Result:** WARN
 
@@ -2239,18 +2239,18 @@ from environment variables.
 Refer to the secrets management options offered by your cloud provider or a third-party
 secrets management solution.
 
-### - 5.5 Extensible Admission Control
+### 5.5 Extensible Admission Control
 
-#### - 5.5.1 Configure Image Provenance using `ImagePolicyWebhook` admission controller (Not Scored)
+#### 5.5.1 Configure Image Provenance using `ImagePolicyWebhook` admission controller (Not Scored)
 
 **Result:** WARN
 
 **Remediation:**
 Follow the Kubernetes documentation and setup image provenance.
 
-### - 5.6 General Policies
+### 5.6 General Policies
 
-#### - 5.6.1 Create administrative boundaries between resources using namespaces (Not Scored)
+#### 5.6.1 Create administrative boundaries between resources using namespaces (Not Scored)
 
 **Result:** WARN
 
@@ -2258,7 +2258,7 @@ Follow the Kubernetes documentation and setup image provenance.
 Follow the documentation and create namespaces for objects in your deployment as you need
 them.
 
-#### - 5.6.2 Ensure that the seccomp profile is set to docker/default in your pod definitions (Not Scored)
+#### 5.6.2 Ensure that the seccomp profile is set to docker/default in your pod definitions (Not Scored)
 
 **Result:** WARN
 
@@ -2291,7 +2291,7 @@ spec:
  image: sotrustworthy:latest
 ```
 
-#### - 5.6.3 Apply Security Context to Your Pods and Containers (Not Scored)
+#### 5.6.3 Apply Security Context to Your Pods and Containers (Not Scored)
 
 **Result:** WARN
 
@@ -2300,7 +2300,7 @@ Follow the Kubernetes documentation and apply security contexts to your pods. Fo
 suggested list of security contexts, you may refer to the CIS Security Benchmark for Docker
 Containers.
 
-#### - 5.6.4 The default namespace should not be used (Scored)
+#### 5.6.4 The default namespace should not be used (Scored)
 
 **Result:** WARN
 
