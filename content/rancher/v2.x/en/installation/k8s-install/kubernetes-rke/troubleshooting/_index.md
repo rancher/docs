@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting
 weight: 276
+aliases:
+  - /rancher/v2.x/en/installation/ha/kubernetes-rke/troubleshooting
 ---
 
 ### canal Pods show READY 2/3

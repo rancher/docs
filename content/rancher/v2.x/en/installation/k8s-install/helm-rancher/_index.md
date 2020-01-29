@@ -2,6 +2,8 @@
 title: 3. Installing Rancher Using the Helm Kubernetes Package Manager
 description: Rancher installation is managed using the Helm Kubernetes package manager. Use Helm to install the prerequisites and charts to install Rancher
 weight: 200
+aliases:
+  - /rancher/v2.x/en/installation/ha/helm-rancher
 ---
 
 Rancher is installed using the Helm package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents.
