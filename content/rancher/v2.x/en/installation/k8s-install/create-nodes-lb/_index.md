@@ -1,6 +1,8 @@
 ---
 title: '1. Create Nodes and Load Balancer'
 weight: 185
+aliases:
+  - /rancher/v2.x/en/installation/ha/create-nodes-lb
 ---
 
 Use your infrastructure provider of choice to provision three nodes and a load balancer endpoint for your RKE install.

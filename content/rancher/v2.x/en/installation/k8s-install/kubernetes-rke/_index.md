@@ -2,6 +2,8 @@
 title: 2. Install Kubernetes with RKE
 description: Learn how to use Rancher Kubernetes Engine (RKE) to install Kubernetes with a high availability etcd configuration.
 weight: 190
+aliases:
+  - /rancher/v2.x/en/installation/ha/kubernetes-rke/
 ---
 
 Use RKE to install a Kubernetes cluster on your three nodes using a high-availability etcd configuration.

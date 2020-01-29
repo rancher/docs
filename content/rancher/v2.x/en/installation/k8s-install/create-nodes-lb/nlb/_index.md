@@ -1,6 +1,8 @@
 ---
 title: Setting up an Amazon NLB Load Balancer
 weight: 277
+aliases:
+  - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
 ---
 
 ## Objectives
