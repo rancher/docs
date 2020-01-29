@@ -2,6 +2,8 @@
 title: Installing Rancher on a Kubernetes Cluster
 weight: 3
 description: For production environments, install Rancher in a high-availability configuration. Read the guide for setting up a 3-node cluster and still install Rancher using a Helm chart.
+aliases:
+  - /rancher/v2.x/en/installation/ha/
 ---
 
 For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.
