@@ -1,6 +1,6 @@
 ---
-title: Secure Sockets Layer Certificate
-description: Learn how to add a secure sockets layer (SSL) certificate to either a project, a namespace, or both, so that you can add it to deployments
+title: Encrypting HTTP Communication
+description: Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate to either a project, a namespace, or both, so that you can add it to deployments
 weight: 3060
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-ssl-certificates/
