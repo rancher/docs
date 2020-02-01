@@ -1,6 +1,6 @@
 ---
 title: Tuning etcd for Large Installations
-weight: 1
+weight: 3
 aliases:
 ---
 

@@ -125,6 +125,18 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
 
+    The Helm 3 command is as follows:
+
+    ```plain
+    helm template cert-manager ./cert-manager-v0.12.0.tgz --output-dir . \
+    --namespace cert-manager \
+    --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
+    --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
+    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector
+    ```
+
+    The Helm 2 command is as follows:
+
     ```plain
     helm template ./cert-manager-v0.12.0.tgz --output-dir . \
     --name cert-manager --namespace cert-manager \

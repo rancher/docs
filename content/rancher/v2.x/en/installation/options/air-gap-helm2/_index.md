@@ -1,11 +1,17 @@
 ---
-title: Installing Rancher in an Air Gapped Environment
-weight: 3
+title: Installing Rancher in an Air Gapped Environment with Helm 2
+weight: 2
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
   - /rancher/v2.x/en/installation/air-gap-high-availability/
   - /rancher/v2.x/en/installation/air-gap-single-node/
 ---
+
+> After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.
+>
+> If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
+>
+> This section provides a copy of the older instructions for installing Rancher on a Kubernetes cluster using Helm 2 in an air air gap environment, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
@@ -15,7 +21,7 @@ Throughout the installations instructions, there will be _tabs_ for either a hig
 
 This section covers how to install Rancher on a Kubernetes cluster in an air gapped environment.
 
-A Kubernetes install is composed of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
+A Kubernetes installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
 ### Air Gapped Docker Installations
 

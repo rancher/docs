@@ -62,7 +62,23 @@ helm install rancher-latest/rancher \
 
 For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher)
 
-Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
+Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list.
+
+The Helm 3 command is as follows:
+
+```
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+  --namespace cattle-system \
+  --set hostname=<RANCHER.YOURDOMAIN.COM> \
+  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+  --set ingress.tls.source=secret \
+  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
+  --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
+  --set 'extraEnv[0].name=CATTLE_FEATURES' # Available as of v2.3.0
+  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
+```
+
+The Helm 2 command is as follows:
 
 ```
 helm template ./rancher-<VERSION>.tgz --output-dir . \

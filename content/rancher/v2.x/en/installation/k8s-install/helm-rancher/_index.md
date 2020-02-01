@@ -16,7 +16,7 @@ To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({
 
 To choose a version of Helm to install Rancher with, refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version)
 
-> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older high-availability Rancher installation instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older installation instructions for Rancher installed on Kubernetes with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 ### Install Helm
 
