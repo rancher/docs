@@ -12,12 +12,10 @@ aliases:
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
 
-> **Note:** These installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/air-gap-helm2) provides a copy of the older air gap installation instructions for Rancher installed on Kubernetes with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
-
 {{% tabs %}}
 {{% tab "Kubernetes Install (Recommended)" %}}
 
-Rancher recommends installing Rancher on a Kubernetes cluster. A highly available Kubernetes install is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
+Rancher recommends installing Rancher on a Kubernetes cluster. A highly available Kubernetes Installation is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
 This section describes installing Rancher in five parts:
 
@@ -95,8 +93,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
    ```plain
-   helm template cert-manager ./cert-manager-v0.12.0.tgz --output-dir . \
-       --namespace cert-manager \
+   helm template ./cert-manager-v0.12.0.tgz --output-dir . \
+       --name cert-manager --namespace cert-manager \
        --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
        --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
        --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector
@@ -117,7 +115,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
     `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
      ```plain
-    helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+    helm template ./rancher-<VERSION>.tgz --output-dir . \
+     --name rancher \
      --namespace cattle-system \
      --set hostname=<RANCHER.YOURDOMAIN.COM> \
      --set certmanager.version=<CERTMANAGER_VERSION> \
@@ -142,7 +141,8 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 | `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
 ```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+   helm template ./rancher-<VERSION>.tgz --output-dir . \
+    --name rancher \
     --namespace cattle-system \
     --set hostname=<RANCHER.YOURDOMAIN.COM> \
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
