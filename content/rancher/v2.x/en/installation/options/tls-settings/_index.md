@@ -15,7 +15,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 
 - [Installing Rancher on a single node with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#tls-settings)
 
-- [Installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#tls-settings)
+- [Installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#tls-settings)
 
 ## TLS settings
 
