@@ -51,11 +51,11 @@ For more architecture recommendations, refer to [this page.]({{<baseurl>}}/ranch
 
 ### More Options for Installations on a Kubernetes Cluster
 
-Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
+Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#api-audit-log)
-- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination)
-- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#customizing-your-ingress)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#api-audit-log)
+- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
+- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#customizing-your-ingress)
 
 In the Rancher installation instructions, we recommend using RKE (Rancher Kubernetes Engine) to set up a Kubernetes cluster before installing Rancher on the cluster. RKE has many configuration options for customizing the Kubernetes cluster to suit your specific environment. Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 

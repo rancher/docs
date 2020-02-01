@@ -20,7 +20,7 @@ For help installing NGINX, refer to their [install documentation](https://www.ng
 
 ## Create NGINX Configuration
 
-See [Example NGINX config]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#example-nginx-config).
+See [Example NGINX config]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#example-nginx-config).
 
 ## Run NGINX
 

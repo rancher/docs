@@ -55,7 +55,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -206,7 +206,7 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/)
+- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/)
 - [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/)
 - [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/)
 

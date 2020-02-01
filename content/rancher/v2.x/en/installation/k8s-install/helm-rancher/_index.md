@@ -58,7 +58,7 @@ There are three recommended options for the source of the certificate.
 
 Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
-`cert-manager` is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination).
+`cert-manager` is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
 
 {{% accordion id="cert-manager" label="Click to Expand" %}}
 
@@ -197,11 +197,11 @@ It should show the same count for `DESIRED` and `AVAILABLE`.
 
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#http-proxy)
-- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#private-registry-and-air-gap-installs)
-- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/#external-tls-termination)
+- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy)
+- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#private-registry-and-air-gap-installs)
+- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
 
-See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/chart-options/) for the full list of options.
+See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for the full list of options.
 
 ### Save your options
 
