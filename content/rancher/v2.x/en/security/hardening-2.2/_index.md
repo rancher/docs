@@ -1,6 +1,6 @@
 ---
 title: Hardening Guide v2.2
-weight: 101
+weight: 103
 ---
 
 This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
