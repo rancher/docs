@@ -28,7 +28,9 @@ If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/r
 
 For information on how to install Docker, refer to the official [Docker documentation.](https://docs.docker.com/)
 
-> **Note:** Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+
+SUSE Linux may have a firewall that blocks all ports by default. In that situation, follow [these steps](#opening-suse-linux-ports) to open the ports needed for adding a host to a custom cluster.
 
 ### Requirements for Windows Nodes
 
@@ -183,3 +185,22 @@ In these cases, you have to explicitly allow this traffic in your host firewall,
 If you want to provision a Kubernetes cluster that is compliant with the CIS (Center for Internet Security) Kubernetes Benchmark, we recommend to following our hardening guide to configure your nodes before installing Kubernetes.
 
 For more information on the hardening guide and details on which version of the guide corresponds to your Rancher and Kubernetes versions, refer to the [security section.]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide)
+
+# Opening SUSE Linux Ports
+
+SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
+
+1. SSH into the instance.
+1. Edit /`etc/sysconfig/SuSEfirewall2` and set the following ports:
+  ```
+  FW_SERVICES_EXT_TCP="22 80 443 2376 2379 2380 6443 9099 10250 10254 30000:32767"
+  FW_SERVICES_EXT_UDP="8472 30000:32767"
+  FW_ROUTE=yes
+  ```
+1. Restart the firewall with the new ports:
+  ```
+  SuSEfirewall2
+  ```
+
+**Result:** The node has the open ports required to be added to a custom cluster.
+
