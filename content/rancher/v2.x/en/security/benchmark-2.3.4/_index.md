@@ -1,6 +1,6 @@
 ---
 title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.4
-weight: 103
+weight: 105
 ---
 
 ### CIS Kubernetes Benchmark 1.5 - Rancher 2.3.4 with Kubernetes 1.15
@@ -9,9 +9,13 @@ weight: 103
 
 #### Overview
 
-The following document scores a Kubernetes 1.15.x RKE cluster provisioned according to the Rancher v2.3.4 hardening guide against the CIS 1.5 Kubernetes benchmark.
-
 This document is a companion to the Rancher v2.3.4 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+
+This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+
+Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
+---------------------------|----------|---------|-------|-----
+Self Assessment Guide v2.3.4 | Rancher v2.3.4 | Hardening Guide v2.3.4 | Kubernetes v1.15 | Benchmark v1.5
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
@@ -26,14 +30,6 @@ Rancher and RKE install Kubernetes services via Docker containers. Configuration
 Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Where the commands differ from the original CIS benchmark, the commands specific to Rancher Labs are provided for testing.
 
 When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the `jq` command to provide human-readable formatting.
-
-#### Known Scored Control Failures
-
-The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
-
-- 1.1.11 Ensure that the etcd data directory permissions are set to 700 or more restrictive (Scored)
-- 1.1.12 Ensure that the etcd data directory ownership is set to etcd:etcd (Scored)
-- 1.2.6 Ensure that the --kubelet-certificate-authority argument is set as appropriate (Scored)
 
 ### Controls
 
@@ -111,7 +107,7 @@ chmod 644 <path/to/cni/files>
 
 **Audit:**
 
-``` bash
+```
 stat -c %a <path/to/cni/files>
 ```
 
@@ -129,13 +125,13 @@ chown root:root <path/to/cni/files>
 
 **Audit:**
 
-``` bash
+```
 stat -c %U:%G <path/to/cni/files>
 ```
 
 #### 1.1.11 Ensure that the etcd data directory permissions are set to `700` or more restrictive (Scored)
 
-**Result:** FAIL
+**Result:** PASS
 
 **Remediation:**
 On the etcd server node, get the etcd data directory, passed as an argument `--data-dir`,
@@ -153,13 +149,19 @@ chmod 700 /var/lib/etcd
 
 **Audit:**
 
-``` bash
+```
 ps -ef | grep etcd | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%' | xargs stat -c %a
+```
+
+**Expected result**:
+
+```
+'700' is equal to '700'
 ```
 
 #### 1.1.12 Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
 
-**Result:** FAIL
+**Result:** PASS
 
 **Remediation:**
 On the etcd server node, get the etcd data directory, passed as an argument `--data-dir`,
@@ -177,8 +179,14 @@ chown etcd:etcd /var/lib/etcd
 
 **Audit:**
 
-``` bash
+```
 ps -ef | grep etcd | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%' | xargs stat -c %U:%G
+```
+
+**Expected result**:
+
+```
+'etcd:etcd' is present
 ```
 
 #### 1.1.13 Ensure that the `admin.conf` file permissions are set to `644` or more restrictive (Scored)
@@ -239,7 +247,7 @@ chown -R root:root /etc/kubernetes/pki/
 
 **Audit:**
 
-``` bash
+```
 ls -laR /etc/kubernetes/pki/
 ```
 
@@ -257,7 +265,7 @@ chmod -R 644 /etc/kubernetes/pki/*.crt
 
 **Audit:**
 
-``` bash
+```
 stat -c %n %a /etc/kubernetes/pki/*.crt
 ```
 
@@ -275,7 +283,7 @@ chmod -R 600 /etc/kubernetes/pki/*.key
 
 **Audit:**
 
-``` bash
+```
 stat -c %n %a /etc/kubernetes/pki/*.key
 ```
 
@@ -295,13 +303,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'false' is equal to 'false'
 ```
 
@@ -316,13 +324,13 @@ on the master node and remove the `--basic-auth-file=<filename>` parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--basic-auth-file' is not present
 ```
 
@@ -337,13 +345,13 @@ on the master node and remove the `--token-auth-file=<filename>` parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--token-auth-file' is not present
 ```
 
@@ -357,13 +365,13 @@ on the master node and remove the `--kubelet-https` parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--kubelet-https' is present OR '--kubelet-https' is not present
 ```
 
@@ -384,19 +392,19 @@ kubelet client certificate and key parameters as below.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--kubelet-client-certificate' is present AND '--kubelet-client-key' is present
 ```
 
 #### 1.2.6 Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
 
-**Result:** FAIL
+**Result:** PASS
 
 **Remediation:**
 Follow the Kubernetes documentation and setup the TLS connection between
@@ -407,8 +415,14 @@ the apiserver and kubelets. Then, edit the API server pod specification file
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
+```
+
+**Expected result**:
+
+```
+'--kubelet-certificate-authority' is present
 ```
 
 #### 1.2.7 Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
@@ -426,13 +440,13 @@ One such example could be as below.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'Node,RBAC' not have 'AlwaysAllow'
 ```
 
@@ -450,13 +464,13 @@ on the master node and set the `--authorization-mode` parameter to a value that 
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'Node,RBAC' has 'Node'
 ```
 
@@ -475,13 +489,13 @@ for example:
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'Node,RBAC' has 'RBAC'
 ```
 
@@ -501,13 +515,13 @@ and set the below parameters.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'EventRateLimit'
 ```
 
@@ -522,13 +536,13 @@ value that does not include `AlwaysAdmit`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' not have 'AlwaysAdmit' OR '--enable-admission-plugins' is not present
 ```
 
@@ -547,13 +561,13 @@ on the master node and set the `--enable-admission-plugins` parameter to include
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'AlwaysPullImages'
 ```
 
@@ -572,7 +586,7 @@ on the master node and set the `--enable-admission-plugins` parameter to include
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
@@ -588,13 +602,13 @@ value that does not include `ServiceAccount`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'ServiceAccount' OR '--enable-admission-plugins' is not present
 ```
 
@@ -609,13 +623,13 @@ ensure it does not include `NamespaceLifecycle`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--disable-admission-plugins' is present OR '--disable-admission-plugins' is not present
 ```
 
@@ -637,13 +651,13 @@ Then restart the API Server.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'PodSecurityPolicy'
 ```
 
@@ -663,13 +677,13 @@ value that includes `NodeRestriction`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy' has 'NodeRestriction'
 ```
 
@@ -683,13 +697,13 @@ on the master node and remove the `--insecure-bind-address` parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--insecure-bind-address' is not present
 ```
 
@@ -707,13 +721,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '0' is equal to '0'
 ```
 
@@ -728,13 +742,13 @@ set it to a different **(non-zero)** desired port.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 6443 is greater than 0 OR '--secure-port' is not present
 ```
 
@@ -752,13 +766,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'false' is equal to 'false'
 ```
 
@@ -777,13 +791,13 @@ file where you would like audit logs to be written, for example:
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--audit-log-path' is present
 ```
 
@@ -801,13 +815,13 @@ on the master node and set the `--audit-log-maxage` parameter to `30` or as an a
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 30 is greater or equal to 30
 ```
 
@@ -826,13 +840,13 @@ value.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 10 is greater or equal to 10
 ```
 
@@ -851,13 +865,13 @@ For example, to set it as `100` **MB**:
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 100 is greater or equal to 100
 ```
 
@@ -876,13 +890,13 @@ For example,
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--request-timeout' is not present OR '--request-timeout' is present
 ```
 
@@ -903,13 +917,13 @@ that the default takes effect.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--service-account-lookup' is not present OR 'true' is equal to 'true'
 ```
 
@@ -928,13 +942,13 @@ to the public key file for service accounts:
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--service-account-key-file' is present
 ```
 
@@ -954,13 +968,13 @@ on the master node and set the **etcd** certificate and **key** file parameters.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--etcd-certfile' is present AND '--etcd-keyfile' is present
 ```
 
@@ -980,13 +994,13 @@ on the master node and set the TLS certificate and private key file parameters.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--tls-cert-file' is present AND '--tls-private-key-file' is present
 ```
 
@@ -1005,13 +1019,13 @@ on the master node and set the client certificate authority file.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--client-ca-file' is present
 ```
 
@@ -1030,13 +1044,13 @@ on the master node and set the etcd certificate authority file parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--etcd-cafile' is present
 ```
 
@@ -1055,13 +1069,13 @@ on the master node and set the `--encryption-provider-config` parameter to the p
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--encryption-provider-config' is present
 ```
 
@@ -1075,7 +1089,7 @@ In this file, choose **aescbc**, **kms** or **secretbox** as the encryption prov
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
@@ -1093,13 +1107,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-apiserver | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256' has 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256'
 ```
 
@@ -1120,13 +1134,13 @@ for example:
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--terminated-pod-gc-threshold' is present
 ```
 
@@ -1144,13 +1158,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'false' is equal to 'false'
 ```
 
@@ -1168,13 +1182,13 @@ on the master node to set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is not equal to 'false'
 ```
 
@@ -1193,13 +1207,13 @@ to the private key file for service accounts.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--service-account-private-key-file' is present
 ```
 
@@ -1217,13 +1231,13 @@ on the master node and set the `--root-ca-file` parameter to the certificate bun
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--root-ca-file' is present
 ```
 
@@ -1241,13 +1255,13 @@ on the master node and set the `--feature-gates` parameter to include `RotateKub
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'RotateKubeletServerCertificate=true' is equal to 'RotateKubeletServerCertificate=true'
 ```
 
@@ -1261,13 +1275,13 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-controller-manager | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--bind-address' is present OR '--bind-address' is not present
 ```
 
@@ -1287,13 +1301,13 @@ on the master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-scheduler | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'false' is equal to 'false'
 ```
 
@@ -1307,13 +1321,13 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | grep kube-scheduler | grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--bind-address' is present OR '--bind-address' is not present
 ```
 
@@ -1336,13 +1350,13 @@ on the master node and set the below parameters.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--cert-file' is present AND '--key-file' is present
 ```
 
@@ -1360,13 +1374,13 @@ node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is equal to 'true'
 ```
 
@@ -1384,13 +1398,13 @@ node and either remove the `--auto-tls` parameter or set it to `false`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--auto-tls' is not present OR '--auto-tls' is not present
 ```
 
@@ -1410,13 +1424,13 @@ master node and set the below parameters.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--peer-cert-file' is present AND '--peer-key-file' is present
 ```
 
@@ -1434,13 +1448,13 @@ node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is equal to 'true'
 ```
 
@@ -1458,13 +1472,13 @@ node and either remove the `--peer-auto-tls` parameter or set it to `false`.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--peer-auto-tls' is not present OR '--peer-auto-tls' is present
 ```
 
@@ -1485,13 +1499,13 @@ master node and set the below parameter.
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -ef | /bin/grep etcd | /bin/grep -v grep
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--trusted-ca-file' is present
 ```
 
@@ -1592,13 +1606,13 @@ chown root:root <filename>
 
 **Audit:**
 
-``` bash
+```
 /bin/sh -c 'if test -e /etc/kubernetes/ssl/kube-ca.pem; then stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem; fi' 
 ```
 
 **Expected result**:
 
-``` bash
+```
 'root:root' is equal to 'root:root'
 ```
 
@@ -1642,19 +1656,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'false' is equal to 'false'
 ```
 
@@ -1681,19 +1695,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'Webhook' not have 'AlwaysAllow'
 ```
 
@@ -1721,19 +1735,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--client-ca-file' is present
 ```
 
@@ -1760,19 +1774,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 '0' is equal to '0'
 ```
 
@@ -1800,19 +1814,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 '1800s' is not equal to '0' OR '--streaming-connection-idle-timeout' is not present
 ```
 
@@ -1839,19 +1853,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is equal to 'true'
 ```
 
@@ -1874,19 +1888,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is equal to 'true' OR '--make-iptables-util-chains' is not present
 ```
 
@@ -1907,7 +1921,7 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet 
 ```
 
@@ -1929,19 +1943,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 '0' is equal to '0'
 ```
 
@@ -1972,19 +1986,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 '--rotate-certificates' is present OR '--rotate-certificates' is not present
 ```
 
@@ -2009,19 +2023,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'true' is equal to 'true'
 ```
 
@@ -2054,19 +2068,19 @@ systemctl restart kubelet.service
 
 **Audit:**
 
-``` bash
+```
 /bin/ps -fC kubelet
 ```
 
 **Audit Config:**
 
-``` bash
+```
 /bin/cat /var/lib/kubelet/config.yaml
 ```
 
 **Expected result**:
 
-``` bash
+```
 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256' contains valid elements from 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256'
 ```
 
