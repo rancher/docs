@@ -15,7 +15,7 @@ During restoration of your backup, you'll enter a series of commands, filling pl
 ```
 docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
 busybox sh -c "rm /var/lib/rancher/* -rf  && \
-tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
+tar pzxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
 ```
 
 In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>-<DATE>` are environment variables for your Rancher deployment.
@@ -57,7 +57,7 @@ Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-bac
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
     busybox sh -c "rm /var/lib/rancher/* -rf  && \
-    tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
+    tar pzxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
     **Step Result:** A series of commands should run.
