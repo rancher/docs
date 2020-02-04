@@ -104,7 +104,7 @@ To test and see if the BookInfo app deployed correctly, the app can be viewed a 
 To get the ingress gateway URL and port,
 
 1. Go to the `System` project in your cluster.
-1. Within the `System` project, go to the namespace `istio-system`. 
+1. Within the `System` project, go to `Resources` > `Workloads` then scroll down to the `istio-system` namespace. 
 1. Within `istio-system`, there is a workload named `istio-ingressgateway`. Under the name of this workload, you should see links, such as `80/tcp`.
 1. Click one of those links. This should show you the URL of the ingress gateway in your web browser. Append `/productpage` to the URL.
 
