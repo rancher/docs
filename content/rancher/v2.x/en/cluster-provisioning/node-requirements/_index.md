@@ -191,9 +191,9 @@ For more information on the hardening guide and details on which version of the 
 SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
 
 1. SSH into the instance.
-1. Edit /`etc/sysconfig/SuSEfirewall2` and set the following ports:
+1. Edit /`etc/sysconfig/SuSEfirewall2` and open the required ports. In this example, ports 9796 and 10250 are also opened for monitoring:
   ```
-  FW_SERVICES_EXT_TCP="22 80 443 2376 2379 2380 6443 9099 10250 10254 30000:32767"
+  FW_SERVICES_EXT_TCP="22 80 443 2376 2379 2380 6443 9099 9796 10250 10254 30000:32767"
   FW_SERVICES_EXT_UDP="8472 30000:32767"
   FW_ROUTE=yes
   ```
