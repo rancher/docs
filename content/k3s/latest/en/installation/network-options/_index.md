@@ -17,6 +17,7 @@ If you wish to use WireGuard as your flannel backend it may require additional k
   -------------------|------------
  <span style="white-space: nowrap">`--flannel-backend=vxlan`</span> | (Default) Uses the VXLAN backend. |
  <span style="white-space: nowrap">`--flannel-backend=ipsec`</span> | Uses the IPSEC backend which encrypts network traffic. |
+ <span style="white-space: nowrap">`--flannel-backend=host-gw`</span> |  Uses the host-gw backend. |
  <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. |
 
 ### Custom CNI
