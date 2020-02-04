@@ -71,7 +71,7 @@ The authentication proxy forwards all Kubernetes API calls to downstream cluster
 
 Rancher communicates with Kubernetes clusters using a [service account,](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) which provides an identity for processes that run in a pod.
 
-By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubeconfig/) that contains credentials for proxying through the Rancher server to connect to the Kubernetes API server on a downstream user cluster. The kubeconfig file (`kube_config_rancher-cluster.yml`) contains full access to the cluster.
+By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl/) that contains credentials for proxying through the Rancher server to connect to the Kubernetes API server on a downstream user cluster. The kubeconfig file (`kube_config_rancher-cluster.yml`) contains full access to the cluster.
 
 ### 2. Cluster Controllers and Cluster Agents
 
@@ -118,7 +118,7 @@ Like the authorized cluster endpoint, the `kube-api-auth` authentication service
 
 With this endpoint enabled for the downstream cluster, Rancher generates an extra Kubernetes context in the kubeconfig file in order to connect directly to the cluster. This file has the credentials for `kubectl` and `helm`. 
 
-You will need to use a context defined in this kubeconfig file to access the cluster if Rancher goes down. Therefore, we recommend exporting the kubeconfig file so that if Rancher goes down, you can still use the credentials in the file to access your cluster. For more information, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubeconfig) documentation.
+You will need to use a context defined in this kubeconfig file to access the cluster if Rancher goes down. Therefore, we recommend exporting the kubeconfig file so that if Rancher goes down, you can still use the credentials in the file to access your cluster. For more information, refer to the section on accessing your cluster with [kubectl and the kubeconfig file.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl)
 
 # Important Files
 

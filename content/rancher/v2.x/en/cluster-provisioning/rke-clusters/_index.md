@@ -11,6 +11,8 @@ You can have Rancher launch a Kubernetes cluster using any nodes you want. When 
 
 Rancher can install Kubernetes on existing nodes, or it can dynamically provision nodes in an infrastructure provider and install Kubernetes on them.
 
+RKE clusters include clusters that Rancher launched on Windows nodes or other existing custom nodes, as well as clusters that Rancher launched with new nodes on Azure, Digital Ocean, EC2, or vSphere.
+
 ### Requirements
 
 If you use RKE to set up a cluster, your nodes must meet the [requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements) for nodes in downstream user clusters.

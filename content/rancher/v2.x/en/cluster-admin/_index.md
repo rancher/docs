@@ -25,8 +25,7 @@ After clusters have been [provisioned into Rancher]({{< baseurl >}}/rancher/v2.x
 
 | Action | [Rancher launched Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) | [Hosted Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) | [Imported Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters) |
 | --- | --- | ---| ---|
-| [Using kubeconfig file to access a Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cluster-access/kubeconfig/) | * | * | * |
-| [Using kubectl to Access a Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl/) | * | * | * |
+| [Using kubectl and a kubeconfig file to Access a Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl/) | * | * | * |
 | [Adding Cluster Members]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/cluster-access/cluster-members/) | * | * | * |
 | [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) | * | * | * |
 | [Managing Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/nodes) | * | * | * |
