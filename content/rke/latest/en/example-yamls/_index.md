@@ -65,10 +65,13 @@ ssh_agent_auth: true
 # List of registry credentials
 # If you are using a Docker Hub registry, you can omit the `url`
 # or set it to `docker.io`
+# is_default set to `true` will override the system default
+# registry set in the global settings
 private_registries:
-    - url: registry.com
-      user: Username
-      password: password
+     - url: registry.com
+       user: Username
+       password: password
+       is_default: true
 
 # Bastion/Jump host configuration
 bastion_host:
