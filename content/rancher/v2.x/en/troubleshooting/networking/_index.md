@@ -15,7 +15,7 @@ Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-p
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
-To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `busybox` container on every host, which we will use to run a `ping` test between containers on all hosts. If you want to run tools such as mtr, use the alpine image and you should be able to install the tool with `apk add`.
+To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `busybox` container on every host, which we will use to run a `ping` test between containers on all hosts.
 
 1. Save the following file as `ds-overlaytest.yml`
 
@@ -75,7 +75,7 @@ NODE1 cannot reach NODE3
 => End network overlay test
 ```
 
-Cleanup the alpine DaemonSet by running `kubectl delete ds/overlaytest`.
+Cleanup the busybox DaemonSet by running `kubectl delete ds/overlaytest`.
 
 ### Check if MTU is correctly configured on hosts and on peering/tunnel appliances/devices
 
