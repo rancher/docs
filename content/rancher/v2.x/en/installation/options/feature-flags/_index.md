@@ -28,7 +28,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/able-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
+- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
 - `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
 
 The below table shows the availability and default value for feature flags in Rancher:
