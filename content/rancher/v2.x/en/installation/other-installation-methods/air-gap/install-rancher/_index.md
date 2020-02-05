@@ -2,7 +2,6 @@
 title: 4. Install Rancher
 weight: 400
 aliases:
-  - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
   - /rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/

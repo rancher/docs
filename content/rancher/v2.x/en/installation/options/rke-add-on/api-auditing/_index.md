@@ -3,7 +3,6 @@ title: Enable API Auditing
 weight: 300
 aliases:
   - /rke/latest/en/config-options/add-ons/api-auditing/
-  - /rancher/v2.x/en/installation/ha/rke-add-on/api-auditing
 ---
 
 >**Important: RKE add-on install is only supported up to Rancher v2.0.8**

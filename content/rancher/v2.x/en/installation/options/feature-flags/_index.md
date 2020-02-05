@@ -1,8 +1,6 @@
 ---
 title: Enabling Experimental Features
 weight: 8000
-aliases:
-  - /rancher/v2.x/en/admin-settings/feature-flags
 ---
 
 _Available as of v2.3.0_

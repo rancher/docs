@@ -6,7 +6,6 @@ aliases:
   - /rancher/v2.x/en/concepts/projects/
   - /rancher/v2.x/en/tasks/projects/
   - /rancher/v2.x/en/tasks/projects/create-project/
-  - /rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/
   - /rancher/v2.x/en/tasks/projects/create-project/  
 ---
 

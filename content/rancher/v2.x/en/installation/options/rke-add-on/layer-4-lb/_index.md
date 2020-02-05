@@ -2,7 +2,6 @@
 title: Kubernetes Install with External Load Balancer (TCP/Layer 4)
 weight: 275
 aliases:
-- /rancher/v2.x/en/installation/ha-server-install/
 - /rancher/v2.x/en/installation/ha/rke-add-on/layer-4-lb
 ---
 

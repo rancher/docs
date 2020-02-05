@@ -2,7 +2,6 @@
 title: Upgrading Rancher Installed on Kubernetes
 weight: 1020
 aliases:
-  - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm
   - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm-airgap
   - /rancher/v2.x/en/upgrades/air-gap-upgrade/
 ---

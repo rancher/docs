@@ -2,7 +2,6 @@
 title: Docker Install with External Load Balancer
 weight: 252
 aliases:
-  - /rancher/v2.x/en/installation/single-node-install-external-lb/
   - /rancher/v2.x/en/installation/single-node/single-node-install-external-lb/
 ---
 

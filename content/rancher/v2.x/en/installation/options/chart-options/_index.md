@@ -1,8 +1,6 @@
 ---
 title: Helm Chart Options for Kubernetes Installations
 weight: 276
-aliases:
-  - /rancher/v2.x/en/installation/ha/helm-rancher/chart-options
 ---
 
 ### Common Options

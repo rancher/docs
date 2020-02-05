@@ -3,7 +3,6 @@ title: Adding Users to Clusters
 weight: 2020
 aliases:
   - /rancher/v2.x/en/tasks/clusters/adding-managing-cluster-members/
-  - /rancher/v2.x/en/cluster-provisioning/cluster-members/
   - /rancher/v2.x/en/k8s-in-rancher/cluster-members/
   - /rancher/v2.x/en/cluster-admin/cluster-members
 ---

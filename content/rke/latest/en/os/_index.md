@@ -1,8 +1,6 @@
 ---
 title: Requirements
 weight: 5
-aliases:
-  - /rke/latest/en/installation/os
 ---
 **In this section:** 
 
