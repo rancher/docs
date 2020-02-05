@@ -228,24 +228,7 @@ will register itself as a node (run the agent).
 
 In order to set up Alpine Linux, you have to go through the following preparation:
 
-```bash
-echo "cgroup /sys/fs/cgroup cgroup defaults 0 0" >> /etc/fstab
-
-cat >> /etc/cgconfig.conf <<EOF
-mount {
-cpuacct = /cgroup/cpuacct;
-memory = /cgroup/memory;
-devices = /cgroup/devices;
-freezer = /cgroup/freezer;
-net_cls = /cgroup/net_cls;
-blkio = /cgroup/blkio;
-cpuset = /cgroup/cpuset;
-cpu = /cgroup/cpu;
-}
-EOF
-```
-
-Then update **/etc/update-extlinux.conf** by adding:
+Update **/etc/update-extlinux.conf** by adding:
 
 ```
 default_kernel_opts="...  cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory"
@@ -257,11 +240,6 @@ Then update the config and reboot:
 update-extlinux
 reboot
 ```
-
-After rebooting:
-
-- Download **k3s** to **/usr/local/bin/k3s**
-- Create an openrc file in **/etc/init.d**
 
 # Running K3d (K3s in Docker) and docker-compose
 
