@@ -20,11 +20,8 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 
 # Prerequisites
 
-- **Review the [Known Upgrade Issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [Caveats]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#caveats)**
-
-- **[Air Gap Installs Only:]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) Collect and Populate Images for the new Rancher server version**
-
-    Follow the guide to [populate your private registry]({{< baseurl >}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+- **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [caveats]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#caveats)** in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+- **For [air gap installs only,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 # Upgrade Outline
 

@@ -9,6 +9,8 @@ This section contains information about how to upgrade your Rancher server to a 
 
 ### Known Upgrade Issues
 
+The following table lists some of the most noteworthy issues to be considered when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+
 Upgrade Scenario | Issue
 ---|---
 Upgrading to v2.3.0+ | Any user provisioned cluster will be automatically updated upon any edit as tolerations were added to the images used for Kubernetes provisioning.
