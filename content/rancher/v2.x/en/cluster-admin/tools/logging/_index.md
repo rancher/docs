@@ -5,7 +5,6 @@ metaDescription: "Rancher integrates with popular logging services. Learn the re
 weight: 3
 aliases:
   - /rancher/v2.x/en/tasks/logging/
-  - /rancher/v2.x/en/tools/logging/
 ---
 
 Logging is helpful because it allows you to:

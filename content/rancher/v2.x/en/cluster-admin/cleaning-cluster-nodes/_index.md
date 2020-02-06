@@ -2,9 +2,6 @@
 title: Removing Kubernetes Components from Nodes
 description: Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually
 weight: 2055
-aliases:
-  - /rancher/v2.x/en/faq/cleaning-cluster-nodes/
-  - /rancher/v2.x/en/admin-settings/removing-rancher/user-cluster-nodes/
 ---
 
 This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.

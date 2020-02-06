@@ -5,9 +5,7 @@ weight: 4000
 aliases:
   - /rancher/v2.x/en/concepts/ci-cd-pipelines/
   - /rancher/v2.x/en/tasks/pipelines/
-  - /rancher/v2.x/en/tools/pipelines/
   - /rancher/v2.x/en/tools/pipelines/configurations/
-  - /rancher/v2.x/en/project-admin/tools/pipelines
 ---
 Using Rancher, you can integrate with a GitHub repository to setup a continuous integration (CI) pipeline.
 

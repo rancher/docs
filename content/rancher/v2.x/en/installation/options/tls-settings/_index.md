@@ -1,8 +1,6 @@
 ---
 title: TLS settings
 weight: 11000
-aliases:
-  - /rancher/v2.x/en/admin-settings/tls-settings/
 ---
 
 _Available as of v2.1.7_

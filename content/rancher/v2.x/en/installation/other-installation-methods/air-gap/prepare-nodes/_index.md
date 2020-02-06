@@ -2,7 +2,6 @@
 title: '1. Prepare your Node(s)'
 weight: 100
 aliases:
-  - /rancher/v2.x/en/installation/air-gap-high-availability/provision-hosts
   - /rancher/v2.x/en/installation/air-gap-single-node/provision-host
 ---
 

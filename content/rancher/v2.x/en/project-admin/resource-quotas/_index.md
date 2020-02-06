@@ -1,8 +1,6 @@
 ---
 title: Project Resource Quotas
 weight: 2515
-aliases:
-  - /rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/
 ---
 
 _Available as of v2.1.0_

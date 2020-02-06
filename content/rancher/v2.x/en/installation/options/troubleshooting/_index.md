@@ -1,8 +1,6 @@
 ---
 title: Troubleshooting
 weight: 276
-aliases:
-  - /rancher/v2.x/en/installation/ha/helm-rancher/troubleshooting
 ---
 
 ### Where is everything

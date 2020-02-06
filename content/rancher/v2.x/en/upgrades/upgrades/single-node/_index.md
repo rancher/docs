@@ -3,7 +3,6 @@ title: Upgrading Rancher Installed with Docker
 weight: 1010
 aliases:
   - /rancher/v2.x/en/upgrades/single-node-upgrade/
-  - /rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/
   - /rancher/v2.x/en/upgrades/upgrades/single-node-air-gap-upgrade
 ---
 

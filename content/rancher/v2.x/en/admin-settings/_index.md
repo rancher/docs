@@ -6,7 +6,6 @@ aliases:
   - /rancher/v2.x/en/tasks/global-configuration/
   - /rancher/v2.x/en/concepts/global-configuration/server-url/
   - /rancher/v2.x/en/tasks/global-configuration/server-url/
-  - /rancher/v2.x/en/admin-settings/server-url/
   - /rancher/v2.x/en/admin-settings/log-in/
 ---
 

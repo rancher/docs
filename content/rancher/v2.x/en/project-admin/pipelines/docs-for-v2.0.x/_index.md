@@ -2,7 +2,6 @@
 title: v2.0.x Pipeline Documentation
 weight: 9000
 aliases:
-  - /rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x
   - /rancher/v2.x/en/project-admin/tools/pipelines/docs-for-v2.0.x
 ---
 

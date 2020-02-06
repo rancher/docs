@@ -2,7 +2,6 @@
 title: Tools for Logging, Monitoring, and Visibility
 weight: 2033
 aliases:
-  - /rancher/v2.x/en/tools/
   - /rancher/v2.x/en/tools/notifiers-and-alerts/
 ---
 
