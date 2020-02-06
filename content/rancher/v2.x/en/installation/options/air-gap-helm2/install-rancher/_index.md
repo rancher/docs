@@ -151,7 +151,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 {{% /accordion %}}
 
@@ -205,7 +205,7 @@ If you are installing Rancher versions prior to v2.3.0, you will not be able to 
 These resources could be helpful when installing Rancher:
 
 - [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/)
 - [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/)
 
 {{% /tab %}}
