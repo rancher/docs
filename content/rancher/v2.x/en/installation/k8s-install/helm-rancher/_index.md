@@ -171,7 +171,7 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set ingress.tls.source=secret
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 After adding the secrets, check if Rancher was rolled out successfully:
 
