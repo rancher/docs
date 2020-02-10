@@ -205,7 +205,7 @@ These resources could be helpful when installing Rancher:
 
 - [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/)
 - [Adding TLS secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/)
-- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/)
+- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/)
 
 {{% /tab %}}
 {{% tab "Docker Install" %}}
