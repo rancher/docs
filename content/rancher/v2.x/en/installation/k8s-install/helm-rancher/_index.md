@@ -211,4 +211,4 @@ Make sure you save the `--set` options you used. You will need to use the same o
 
 That's it you should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
 
-Doesn't work? Take a look at the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/) Page
+Doesn't work? Take a look at the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) Page
