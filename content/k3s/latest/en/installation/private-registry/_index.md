@@ -25,7 +25,7 @@ Mirrors is a directive that defines the names and endpoints of the private regis
 
 ```
 mirrors:
-  mycustomreg.com:5000
+  "mycustomreg.com:5000":
     endpoint:
       - "https://mycustomreg.com:5000"
 ```
@@ -59,11 +59,11 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  mycustomreg.com:5000
+  "mycustomreg.com:5000":
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
-  mycustomreg:5000
+  "mycustomreg:5000":
     auth:
       username: xxxxxx # this is the registry username
       password: xxxxxx # this is the registry password
@@ -78,11 +78,11 @@ configs:
 
 ```
 mirrors:
-  mycustomreg.com:5000
+  "mycustomreg.com:5000":
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
-  mycustomreg:5000
+  "mycustomreg:5000":
     tls:
       cert_file: # path to the cert file used in the registry
       key_file:  # path to the key file used in the registry
@@ -101,11 +101,11 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  mycustomreg.com:5000
+  "mycustomreg.com:5000":
     endpoint:
       - "http://mycustomreg.com:5000"
 configs:
-  mycustomreg:5000
+  "mycustomreg:5000":
     auth:
       username: xxxxxx # this is the registry username
       password: xxxxxx # this is the registry password
@@ -116,7 +116,7 @@ configs:
 
 ```
 mirrors:
-  mycustomreg.com:5000
+  "mycustomreg.com:5000":
     endpoint:
       - "http://mycustomreg.com:5000"
 ```
