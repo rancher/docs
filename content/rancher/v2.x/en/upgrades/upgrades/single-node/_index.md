@@ -46,7 +46,6 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
 - A. Create a copy of the data from your Rancher server container
 - B. Create a backup tarball
-Get the options set from your current Rancher install
 - C. Upgrade Rancher
 - D. Verify the Upgrade
 - E. Clean up your old Rancher server container
