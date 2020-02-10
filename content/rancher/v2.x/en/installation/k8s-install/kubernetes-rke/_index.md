@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/ha/kubernetes-rke/
 ---
 
-Use RKE to install a Kubernetes cluster on your three nodes using a high-availability etcd configuration.
+This section describes how to install a Kubernetes cluster on your three nodes according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server. We recommend using RKE to install Kubernetes on this cluster. Hosted Kubernetes providers such as EKS should not be used.
 
 For systems without direct internet access, refer to [Air Gap: Kubernetes install.]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
