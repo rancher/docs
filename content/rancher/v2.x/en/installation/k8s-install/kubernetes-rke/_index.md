@@ -1,5 +1,5 @@
 ---
-title: 2. Install Kubernetes with RKE
+title: 2. Set up a Kubernetes Cluster
 description: Learn how to use Rancher Kubernetes Engine (RKE) to install Kubernetes with a high availability etcd configuration.
 weight: 190
 aliases:

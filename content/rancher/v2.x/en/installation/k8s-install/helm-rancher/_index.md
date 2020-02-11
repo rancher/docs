@@ -1,5 +1,5 @@
 ---
-title: 3. Installing Rancher Using the Helm Kubernetes Package Manager
+title: 3. Install Rancher on the Kubernetes Cluster
 description: Rancher installation is managed using the Helm Kubernetes package manager. Use Helm to install the prerequisites and charts to install Rancher
 weight: 200
 aliases:
