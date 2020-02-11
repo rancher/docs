@@ -8,7 +8,7 @@ This installation guide will help you to deploy and configure the [Kubernetes Da
 ### Deploying the Kubernetes Dashboard
 
 ```bash
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
+sudo k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
 ```
 
 ### Dashboard RBAC Configuration
