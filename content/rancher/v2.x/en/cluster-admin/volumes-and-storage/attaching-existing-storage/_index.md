@@ -16,7 +16,7 @@ To set up storage, follow these steps:
 
 ### Prerequisites
 
-- To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+- To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
 ### 1. Set up persistent storage in an infrastructure provider

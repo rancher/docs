@@ -61,7 +61,7 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
     	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. 
 
-    	This catalog features Rancher Charts, which include some [notable advantages]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
+    	This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
 
     - **Helm Stable**
 
@@ -94,11 +94,11 @@ _Available as of v2.2.0_
 In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the
 OAuth token if your Git or Helm repository server support that.
 
-[Read More About Adding Private Git/Helm Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#private-repositories)
+[Read More About Adding Private Git/Helm Catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#private-repositories)
 
 <!--There are two types of catalogs that can be added into Rancher. There are global catalogs and project catalogs. In a global catalog, the catalog templates are available in *all* projects. In a project catalog, the catalog charts are only available in the project that the catalog is added to.
 
-An [admin]({{< baseurl >}}/rancher/v2.x/en/admin-settings/#global-Permissions) of Rancher has the ability to add or remove catalogs globally in Rancher.
+An [admin]({{<baseurl>}}/rancher/v2.x/en/admin-settings/#global-Permissions) of Rancher has the ability to add or remove catalogs globally in Rancher.
 
 NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/accounts/#account-types) of a Rancher environment has the ability to add or remove environment catalogs in their respective Rancher environment in **Catalog** -> **Manage**.
  -->
@@ -144,15 +144,15 @@ By creating a customized repository with added files, Rancher improves on Helm r
 
 There are two types of catalogs in Rancher. Learn more about each type:
 
-* [Built-in Global Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/)
-* [Custom Catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/)
+* [Built-in Global Catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/built-in/)
+* [Custom Catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/)
 
 ### Apps
 
 In Rancher, applications are deployed from the templates in a catalog. Rancher supports two types of applications:
 
-* [Multi-cluster applications]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/)
-* [Applications deployed in a specific Project]({{< baseurl >}}/rancher/v2.x/en/catalog/apps)
+* [Multi-cluster applications]({{<baseurl>}}/rancher/v2.x/en/catalog/multi-cluster-apps/)
+* [Applications deployed in a specific Project]({{<baseurl>}}/rancher/v2.x/en/catalog/apps)
 
 ### Global DNS
 
@@ -160,7 +160,7 @@ _Available as v2.2.0_
 
 When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
 
-For more information on how to use this feature, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
+For more information on how to use this feature, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
 
 ### Chart Compatibility with Rancher
 

@@ -33,7 +33,7 @@ Single server clusters can meet a variety of use cases, but for environments whe
 * An **external datastore** (as opposed to the embedded SQLite datastore used in single-server setups)
 
 <figcaption>K3s Architecture with a High-availability Server</figcaption>
-![Architecture]({{< baseurl >}}/img/rancher/k3s-architecture-ha-server.png)
+![Architecture]({{<baseurl>}}/img/rancher/k3s-architecture-ha-server.png)
 
 ### Fixed Registration Address for Agent Nodes
 
@@ -41,7 +41,7 @@ In the high-availability server configuration, each node must also register with
 
 After registration, the agent nodes establish a connection directly to one of the server nodes.
 
-![k3s HA]({{< baseurl >}}/img/k3s/k3s-production-setup.svg)
+![k3s HA]({{<baseurl>}}/img/k3s/k3s-production-setup.svg)
 
 # How Agent Node Registration Works
 

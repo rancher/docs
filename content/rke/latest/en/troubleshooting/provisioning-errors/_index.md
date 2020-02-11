@@ -5,7 +5,7 @@ weight: 200
 
 ### Failed to get job complete status
 
-Most common reason for this error is that a node is having issues that block the deploy job from completing successfully. See [Get node conditions]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/kubernetes-resources/#get-node-conditions) how to check node conditions.
+Most common reason for this error is that a node is having issues that block the deploy job from completing successfully. See [Get node conditions]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-resources/#get-node-conditions) how to check node conditions.
 
 You can also retrieve the log from the job to see if it has an indication of the error, make sure you replace `rke-network-plugin-deploy-job` with the job name from the error:
 

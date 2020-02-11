@@ -38,7 +38,7 @@ loglevel repository | https://github.com/rancher/loglevel | This repository is t
 
 To see all libraries/projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
 
-![Rancher diagram]({{< baseurl >}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
+![Rancher diagram]({{<baseurl>}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
 <sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
 
 # Building

@@ -33,7 +33,7 @@ $ rke etcd snapshot-restore --config cluster.yml --name mysnapshot
 
 The snapshot is assumed to be located in `/opt/rke/etcd-snapshots`.
 
-**Note:** The `pki.bundle.tar.gz` file is not needed because RKE v0.2.0 changed how the [Kubernetes cluster state is stored]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state).
+**Note:** The `pki.bundle.tar.gz` file is not needed because RKE v0.2.0 changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state).
 
 ### Example of Restoring from a Snapshot in S3
 
@@ -67,8 +67,8 @@ $ rke etcd snapshot-restore \
 | `--bucket-name` value     |  Specify s3 bucket name | *|
 | `--folder` value     |   Specify folder inside  bucket where backup will be stored. This is optional.  This is optional. _Available as of v0.3.0_ | *|
 | `--region` value          |  Specify the s3 bucket location (optional) | *|
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) | |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
 {{% tab "RKE prior to v0.2.0"%}}
@@ -109,8 +109,8 @@ The `pki.bundle.tar.gz` file is also expected to be in the same location.
 | --- | --- |
 | `--name` value            |  Specify snapshot name |
 | `--config` value          |  Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
 {{% /tabs %}}

@@ -13,7 +13,7 @@ For example, for the image below, we would configure liveness probes for the `we
 
 <figcaption>Resolve <code>health_check</code> for the <code>web</code> and <code>webLB</code> Workloads</figcaption>
 
-![Resolve health_check]({{< baseurl >}}/img/rancher/resolve-health-checks.png)
+![Resolve health_check]({{<baseurl>}}/img/rancher/resolve-health-checks.png)
 
 ## In This Document
 
@@ -33,7 +33,7 @@ The health check microservice features two types of health checks, which have a 
 
 - **TCP health checks**:
 
-    These health checks check if a TCP connection opens at the specified port for the monitored service. For full details, see the [Rancher v1.6 documentation]({{< baseurl >}}/rancher/v1.6/en/cattle/health-checks/).
+    These health checks check if a TCP connection opens at the specified port for the monitored service. For full details, see the [Rancher v1.6 documentation]({{<baseurl>}}/rancher/v1.6/en/cattle/health-checks/).
 
 - **HTTP health checks**:
 
@@ -73,7 +73,7 @@ The following diagram displays kubelets running probes on containers they are mo
 
 ## Configuring Probes in Rancher v2.x
 
-The [migration-tool CLI]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/) cannot parse health checks from Compose files to Kubernetes manifest. Therefore, if want you to add health checks to your Rancher v2.x workloads, you'll have to add them manually.
+The [migration-tool CLI]({{<baseurl>}}/rancher/v2.x/en/v1.6-migration/run-migration-tool/) cannot parse health checks from Compose files to Kubernetes manifest. Therefore, if want you to add health checks to your Rancher v2.x workloads, you'll have to add them manually.
 
 Using the Rancher v2.x UI, you can add TCP or HTTP health checks to Kubernetes workloads. By default, Rancher asks you to configure a readiness check for your workloads and applies a liveness check using the same configuration. Optionally, you can define a separate liveness check.
 
@@ -83,7 +83,7 @@ Configure probes by using the **Health Check** section while editing deployments
 
 <figcaption>Edit Deployment: Health Check Section</figcaption>
 
-![Health Check Section]({{< baseurl >}}/img/rancher/health-check-section.png)
+![Health Check Section]({{<baseurl>}}/img/rancher/health-check-section.png)
 
 ### Configuring Checks
 
@@ -95,7 +95,7 @@ While you create a workload using Rancher v2.x, we recommend configuring a check
 
 TCP checks monitor your deployment's health by attempting to open a connection to the pod over a specified port. If the probe can open the port, it's considered healthy. Failure to open it is considered unhealthy, which notifies Kubernetes that it should kill the pod and then replace it according to its [restart policy](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy). (this applies to Liveness probes, for Readiness probes, it will mark the pod as Unready).
 
-You can configure the probe along with values for specifying its behavior by selecting the **TCP connection opens successfully** option in the **Health Check** section. For more information, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/). For help setting probe timeout and threshold values, see [Health Check Parameter Mappings](#health-check-parameter-mappings).
+You can configure the probe along with values for specifying its behavior by selecting the **TCP connection opens successfully** option in the **Health Check** section. For more information, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/). For help setting probe timeout and threshold values, see [Health Check Parameter Mappings](#health-check-parameter-mappings).
 
 ![TCP Check]({{<baseurl>}}/img/rancher/readiness-check-tcp.png)
 
@@ -133,7 +133,7 @@ When you configure a readiness check using Rancher v2.x, the `readinessProbe` di
 
 HTTP checks monitor your deployment's health by sending an HTTP GET request to a specific URL path that you define. If the pod responds with a message range of `200`-`400`, the health check is considered successful. If the pod replies with any other value, the check is considered unsuccessful, so Kubernetes kills and replaces the pod according to its [restart policy](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy). (this applies to Liveness probes, for Readiness probes, it will mark the pod as Unready).
 
-You can configure the probe along with values for specifying its behavior by selecting the **HTTP returns successful status** or **HTTPS returns successful status**. For more information, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).  For help setting probe timeout and threshold values, see [Health Check Parameter Mappings](#healthcheck-parameter-mappings).
+You can configure the probe along with values for specifying its behavior by selecting the **HTTP returns successful status** or **HTTPS returns successful status**. For more information, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).  For help setting probe timeout and threshold values, see [Health Check Parameter Mappings](#healthcheck-parameter-mappings).
 
 ![HTTP Check]({{<baseurl>}}/img/rancher/readiness-check-http.png)
 
@@ -153,7 +153,7 @@ While configuring a readiness check for either the TCP or HTTP protocol, you can
 
 Rancher v2.x, like v1.6, lets you perform health checks using the TCP and HTTP protocols. However, Rancher v2.x also lets you check the health of a pod by running a command inside of it. If the container exits with a code of `0` after running the command, the pod is considered healthy.
 
-You can configure a liveness or readiness check that executes a command that you specify by selecting the `Command run inside the container exits with status 0` option from **Health Checks** while [deploying a workload]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
+You can configure a liveness or readiness check that executes a command that you specify by selecting the `Command run inside the container exits with status 0` option from **Health Checks** while [deploying a workload]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
 
 ![Healthcheck Execute Command]({{<baseurl>}}/img/rancher/healthcheck-cmd-exec.png)
 
@@ -171,4 +171,4 @@ Rancher v1.6 Compose Parameter | Rancher v2.x Kubernetes Parameter
 `initializing_timeout`         | `initialDelaySeconds`
 `strategy`                     | `restartPolicy`
 
-### [Next: Schedule Your Services]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)
+### [Next: Schedule Your Services]({{<baseurl>}}/rancher/v2.x/en/v1.6-migration/schedule-workloads/)

@@ -9,7 +9,7 @@ Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://p
 
 Before you can receive alerts, one or more [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) must be configured at the cluster level.
 
-Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
+Only [administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
 
 This section covers the following topics:
 
@@ -20,7 +20,7 @@ This section covers the following topics:
 
 ## Alerts Scope
 
-The scope for alerts can be set at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
+The scope for alerts can be set at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
 
 At the project level, Rancher monitors specific deployments and sends alerts for:
 
@@ -123,13 +123,13 @@ This alert type monitors for the availability of all workloads marked with tags 
 <br>
 _Available as of v2.2.4_
 
-If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/#monitoring), this alert type monitors for the overload from Prometheus expression querying.
+If you enable [project monitoring]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/#monitoring), this alert type monitors for the overload from Prometheus expression querying.
 
 1. Input or select an **Expression**, the drop down shows the original metrics from Prometheus, including:
 
   - [**Container**](https://github.com/google/cadvisor)
   - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
-  - [**Customize**]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
+  - [**Customize**]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
   - [**Project Level Grafana**](http://docs.grafana.org/administration/metrics/)
   - **Project Level Prometheus**
 
@@ -167,7 +167,7 @@ If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin
 
 1. Continue adding more **Alert Rule** to the group.
 
-1. Finally, choose the [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) that send you alerts.
+1. Finally, choose the [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) that send you alerts.
 
     - You can set up multiple notifiers.
     - You can change notifier recipients on the fly.

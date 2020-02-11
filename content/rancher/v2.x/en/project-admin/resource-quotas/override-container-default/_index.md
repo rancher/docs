@@ -13,7 +13,7 @@ To avoid setting these limits on each and every container during workload creati
 
 _Available as of v2.2.0_
 
-Edit [container default resource limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
+Edit [container default resource limit]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
 
 - You have a CPU or Memory resource quota set on a project, and want to supply the corresponding default values for a container.
 - You want to edit the default container resource limit.

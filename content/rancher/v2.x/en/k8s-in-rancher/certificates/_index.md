@@ -24,7 +24,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
     - **Available to all namespaces in this project:** The certificate is available for any deployment in any namespaces in the project.
 
-    - **Available to a single namespace:** The certificate is only available for the deployments in one [namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces). If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
+    - **Available to a single namespace:** The certificate is only available for the deployments in one [namespace]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces). If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
 
 1. From **Private Key**, either copy and paste your certificate's private key into the text box (include the header and footer), or click **Read from a file** to browse to the private key on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
@@ -42,4 +42,4 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 ## What's Next?
 
-Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress/).
+Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress/).

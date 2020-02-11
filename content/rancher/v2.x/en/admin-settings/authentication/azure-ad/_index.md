@@ -41,13 +41,11 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
 1. Use search to open the **App registrations** service.
 
-    ![Open App Registrations]({{< baseurl >}}/img/rancher/search-app-registrations.png)
+    ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
 
 1. Click **New registrations** and complete the **Create** form.
 
-    ![New App Registration]({{< baseurl >}}/img/rancher/new-app-registration-1.png)
-
-    ![New App Registration Register]({{< baseurl >}}/img/rancher/new-app-registration-2.png)
+    ![New App Registration]({{<baseurl>}}/img/rancher/new-app-registration.png)
 
     1. Enter a **Name** (something like `Rancher`).
 
@@ -67,7 +65,7 @@ From the Azure portal, create a client secret. Rancher will use this key to auth
 
 1. Use search to open **App registrations** services. Then open the entry for Rancher that you created in the last procedure.
 
-     ![Open Rancher Registration]({{< baseurl >}}/img/rancher/open-rancher-app.png)
+     ![Open Rancher Registration]({{<baseurl>}}/img/rancher/open-rancher-app.png)
 
 1. From the navigation pane on left, click **Certificates and Secrets**.
 
@@ -94,7 +92,7 @@ Next, set API permissions for Rancher within Azure.
 
 1. From the navigation pane on left, select **API permissions**.
 
-    ![Open API Permissions]({{< baseurl >}}/img/rancher/select-required-permissions-1.png)
+    ![Open Required Permissions]({{<baseurl>}}/img/rancher/select-required-permissions.png)
 
 1. Click **Add a permission**.
 
@@ -117,13 +115,35 @@ Next, set API permissions for Rancher within Azure.
 
     >**Note:** You must be signed in as an Azure administrator to successfully save your permission settings.
 
-### 4. Copy Azure Application Data
+
+### 4. Add a Reply URL
+
+To use Azure AD with Rancher you must whitelist Rancher with Azure. You can complete this whitelisting by providing Azure with a reply URL for Rancher, which is your Rancher Server URL followed with a verification path.
+
+
+1. From the **Setting** blade, select **Reply URLs**.
+
+    ![Azure: Enter Reply URL]({{<baseurl>}}/img/rancher/enter-azure-reply-url.png)
+
+1. From the **Reply URLs** blade, enter the URL of your Rancher Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
+
+       >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
+
+1. Click **Save**.
+
+**Result:** Your reply URL is saved.
+
+>**Note:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
+
+### 5. Copy Azure Application Data
 
 As your final step in Azure, copy the data that you'll use to configure Rancher for Azure AD authentication and paste it into an empty text file.
 
 1. Obtain your Rancher **Tenant ID**.
 
-    1. From **App registrations** select the app configured above.
+    1. Use search to open the **Azure Active Directory** service.
+
+         ![Open Azure Active Directory]({{<baseurl>}}/img/rancher/search-azure-ad.png)
 
     1. From the left navigation pane, open **Overview**.
 
@@ -135,7 +155,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     1. Use search to open **App registrations**.
 
-         ![Open App Registrations]({{< baseurl >}}/img/rancher/search-app-registrations.png)
+         ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
 
     1. Find the entry you created for Rancher.
 
@@ -145,7 +165,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     1. From **App registrations**, click **Endpoints**.
 
-        ![Click Endpoints]({{< baseurl >}}/img/rancher/click-endpoints.png)
+        ![Click Endpoints]({{<baseurl>}}/img/rancher/click-endpoints.png)
 
     2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
     

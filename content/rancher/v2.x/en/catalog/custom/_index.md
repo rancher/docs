@@ -5,7 +5,7 @@ aliases:
 
 ---
 
-Any user can [create custom catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/creating/) to add into Rancher. Besides the content of the catalog, users must ensure their catalogs are able to be added into Rancher.
+Any user can [create custom catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/creating/) to add into Rancher. Besides the content of the catalog, users must ensure their catalogs are able to be added into Rancher.
 
 ## Types of Repositories
 
@@ -28,7 +28,7 @@ In Rancher, you can add the custom Helm chart repository with only a catalog nam
 
 ## Catalog Fields
 
-When [adding your catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/) to Rancher, you'll provide the following information:
+When [adding your catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding/) to Rancher, you'll provide the following information:
 
 
 | Variable              |  Description  |
@@ -48,7 +48,7 @@ Private Git or Helm chart repositories can be added into Rancher using either cr
 
 ### Using Username and Password
 
-1. When [adding the catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/), select the **Use private catalog** checkbox.
+1. When [adding the catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding/), select the **Use private catalog** checkbox.
 
 2. Provide the `Username` and `Password` for your Git or Helm repository.
 
@@ -59,6 +59,6 @@ Read [using Git over HTTPS and OAuth](https://github.blog/2012-09-21-easier-buil
 1. Create an [OAuth token](https://github.com/settings/tokens)
 with `repo` permission selected, and click **Generate token**.
 
-2. When [adding the catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/), select the **Use private catalog** checkbox.
+2. When [adding the catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding/), select the **Use private catalog** checkbox.
 
 3. For `Username`, provide the Git generated OAuth token. For `Password`, enter `x-oauth-basic`.  

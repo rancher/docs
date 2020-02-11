@@ -116,7 +116,7 @@ The `internal_address` provides the ability to have nodes with multiple addresse
 
 The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address, but it must be a valid [Kubernetes resource name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names). If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
 
-> **Note:** When [cloud providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. There is an exception for the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws), where the `hostname_override` field will be explicitly ignored.
+> **Note:** When [cloud providers]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. There is an exception for the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws), where the `hostname_override` field will be explicitly ignored.
 
 ### SSH Port
 
@@ -130,7 +130,7 @@ For each node, you specify the `user` to be used when connecting to this node. T
 
 For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to this node. The default key path for each node is `~/.ssh/id_rsa`.
 
-> **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{< baseurl >}}/rke/latest/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
+> **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{<baseurl>}}/rke/latest/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
 
 ### SSH Key
 
@@ -150,7 +150,7 @@ If the Docker socket is different than the default, you can set the `docker_sock
 
 ### Labels
 
-You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/) `node_selector` option.
+You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) `node_selector` option.
 
 ### Taints
 

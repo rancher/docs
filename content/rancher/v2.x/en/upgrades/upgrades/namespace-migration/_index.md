@@ -52,11 +52,11 @@ You can prevent cluster networking issues from occurring during your upgrade to 
     ><sup>1</sup> Only displays if this feature is enabled for the cluster.
 
     <figcaption>Moving namespaces out of projects</figcaption>
-    ![Moving Namespaces]({{< baseurl >}}/img/rancher/move-namespaces.png)
+    ![Moving Namespaces]({{<baseurl>}}/img/rancher/move-namespaces.png)
 
 1. Repeat these steps for each cluster where you've assigned system namespaces to projects.
 
-**Result:** All system namespaces are moved out of Rancher projects. You can now safely begin the [upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades).
+**Result:** All system namespaces are moved out of Rancher projects. You can now safely begin the [upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades).
 
 ## Restoring Cluster Networking
 
@@ -171,8 +171,8 @@ Reset the cluster nodes' network policies to restore connectivity.
 <br/>
 If you can access Rancher, but one or more of the clusters that you launched using Rancher has no networking, you can repair them by moving the
 
-- From the cluster's [embedded kubectl shell]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-shell).
-- By [downloading the cluster kubeconfig file and running it]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file) from your workstation.
+- From the cluster's [embedded kubectl shell]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-shell).
+- By [downloading the cluster kubeconfig file and running it]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubectl/#accessing-clusters-with-kubectl-and-a-kubeconfig-file) from your workstation.
 
     ```
     for namespace in $(kubectl --kubeconfig kube_config_rancher-cluster.yml get ns -o custom-columns=NAME:.metadata.name --no-headers); do
