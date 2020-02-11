@@ -1,6 +1,5 @@
 ---
-title: Global Configuration, Authentication and Permissions
-shortTitle: Global Configuration
+title: Authentication, Permissions and Global Configuration
 weight: 1100
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/
