@@ -13,7 +13,7 @@ RancherOS is available as an image in Aliyun, and can be easily run in Elastic C
 
 Example: 
 
-![RancherOS on Aliyun 1]({{< baseurl >}}/img/os/RancherOS_aliyun1.jpg)
+![RancherOS on Aliyun 1]({{<baseurl>}}/img/os/RancherOS_aliyun1.jpg)
 
 ## Options
 
@@ -29,6 +29,6 @@ After the image is uploaded, we can use the `Aliyun Console` to start a new inst
 
 Since the image is private, we need to use the `Custom Images`.
 
-![RancherOS on Aliyun 2]({{< baseurl >}}/img/os/RancherOS_aliyun2.jpg)
+![RancherOS on Aliyun 2]({{<baseurl>}}/img/os/RancherOS_aliyun2.jpg)
 
 After the instance is successfully started, we can login with the `rancher` user via SSH.

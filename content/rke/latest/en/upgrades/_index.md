@@ -3,7 +3,7 @@ title: Upgrades
 weight: 100
 ---
 
-After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, the [definition of the Kubernetes services]({{< baseurl >}}/rke/latest/en/config-options/services/) or the [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/).
+After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, the [definition of the Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or the [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/).
 
 The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
@@ -27,7 +27,7 @@ This page covers the following topics:
 ### Prerequisites
 
 - Ensure that any `system_images` configuration is absent from the `cluster.yml`. The Kubernetes version should only be listed under the `system_images` directive if an [unsupported version](#using-an-unsupported-kubernetes-version) is being used. Refer to [Kubernetes version precedence](#kubernetes-version-precedence) for more information.
-- Ensure that the correct files to manage [Kubernetes cluster state]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory. Refer to the tabs below for the required files, which differ based on the RKE version.
+- Ensure that the correct files to manage [Kubernetes cluster state]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state) are present in the working directory. Refer to the tabs below for the required files, which differ based on the RKE version.
 
 {{% tabs %}}
 {{% tab "RKE v0.2.0+" %}}
@@ -86,7 +86,7 @@ As of v0.2.0, if a version is defined in `kubernetes_version` and is not found i
 
 Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
 
-If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) option.
+If you want to use a different version from the supported list, please use the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) option.
 
 ### Mapping the Kubernetes Version to Services
 
@@ -98,7 +98,7 @@ For RKE prior to v0.3.0, the service defaults are located [here](https://github.
 
 ### Service Upgrades
 
-[Services]({{< baseurl >}}/rke/latest/en/config-options/services/) can be upgraded by changing any of the services arguments or `extra_args` and running `rke up` again with the updated configuration file.
+[Services]({{<baseurl>}}/rke/latest/en/config-options/services/) can be upgraded by changing any of the services arguments or `extra_args` and running `rke up` again with the updated configuration file.
 
 > **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods are not automatically upgraded.
 
@@ -106,4 +106,4 @@ For RKE prior to v0.3.0, the service defaults are located [here](https://github.
 
 As of v0.1.8, upgrades to add-ons are supported.
 
-[Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
+[Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.

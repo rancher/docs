@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/k8s-in-rancher/nodes/
 ---
 
-After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.
+After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.
 
 This page covers the following topics:
 
@@ -20,11 +20,11 @@ This page covers the following topics:
 
 To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
 
->**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
+>**Note:** If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters).
 
 # Node Options for Each Type of Cluster
 
-The following table lists which node options are available for each [type of cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+The following table lists which node options are available for each [type of cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
 | Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
@@ -36,22 +36,22 @@ The following table lists which node options are available for each [type of clu
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
 
-[1]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
-[2]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
-[3]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
-[4]: {{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
+[1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/
 
 ### Notes for Node Pool Nodes
 
-Clusters provisioned using [one of the node pool options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) automatically maintain the node scale that's set during the initial cluster provisioning. This scale determines the number of active nodes that Rancher maintains for the cluster.
+Clusters provisioned using [one of the node pool options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) automatically maintain the node scale that's set during the initial cluster provisioning. This scale determines the number of active nodes that Rancher maintains for the cluster.
 
 ### Notes for Nodes Provisioned by Hosted Kubernetes Providers
 
-Options for managing nodes [hosted by a Kubernetes provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
+Options for managing nodes [hosted by a Kubernetes provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
 
 ### Notes for Imported Nodes
 
-Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
+Although you can deploy workloads to an [imported cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
 
 # Cordoning and Draining Nodes
 
@@ -135,7 +135,7 @@ Editing a node lets you:
 
 # Viewing a Node API
 
-Select this option to view the node's [API endpoints]({{< baseurl >}}/rancher/v2.x/en/api/).
+Select this option to view the node's [API endpoints]({{<baseurl>}}/rancher/v2.x/en/api/).
 
 
 # Deleting a Node
@@ -151,7 +151,7 @@ For nodes hosted by an infrastructure provider, you can scale the number of node
 
 # SSH into a Node Hosted by an Infrastructure Provider
 
-For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
+For [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
 
 1. From the cluster hosted by an infrastructure provider, select **Nodes** from the main menu.
@@ -172,11 +172,11 @@ For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en
     
 # Managing Node Pools
 
-> **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) The node pool features are not available for imported clusters or clusters hosted by a Kubernetes provider.
+> **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) The node pool features are not available for imported clusters or clusters hosted by a Kubernetes provider.
 
-In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
+In clusters [launched by RKE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can:
 
-- Add new [pools of nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to your cluster. The nodes added to the pool are provisioned according to the [node template]({{< baseurl >}}/rancher/v2.x/en/user-settings/node-templates/) that you use.
+- Add new [pools of nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to your cluster. The nodes added to the pool are provisioned according to the [node template]({{<baseurl>}}/rancher/v2.x/en/user-settings/node-templates/) that you use.
 
 	- Click **+** and follow the directions on screen to create a new template.
 
@@ -184,4 +184,4 @@ In clusters [launched by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioni
 
 - Redistribute Kubernetes roles amongst your node pools by making different checkbox selections  
 
-- Scale the number of nodes in a pool up or down (although, if you simply want to maintain your node scale, we recommend using the cluster's [Nodes tab]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/nodes/#nodes-provisioned-by-node-pool) instead.)
+- Scale the number of nodes in a pool up or down (although, if you simply want to maintain your node scale, we recommend using the cluster's [Nodes tab]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/nodes/#nodes-provisioned-by-node-pool) instead.)

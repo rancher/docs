@@ -38,7 +38,7 @@ For more detailed information on IAM policies for EKS, refer to the official [do
 
 The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
 
-![Rancher architecture with EKS hosted cluster]({{< baseurl >}}/img/rancher/rancher-architecture.svg)
+![Rancher architecture with EKS hosted cluster]({{<baseurl>}}/img/rancher/rancher-architecture.svg)
 
 ## Create the EKS Cluster
 

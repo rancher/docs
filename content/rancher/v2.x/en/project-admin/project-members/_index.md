@@ -10,11 +10,11 @@ If you want to provide a user with access and permissions to _specific_ projects
 
 You can add members to a project as it is created, or add them to an existing project.
 
->**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/cluster-members/) instead.
+>**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/cluster-members/) instead.
 
 ### Adding Members to a New Project
 
-You can add members to a project as you create it (recommended if possible). For details on creating a new project, refer to the [cluster administration section.]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/)
+You can add members to a project as you create it (recommended if possible). For details on creating a new project, refer to the [cluster administration section.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/)
 
 ### Adding Members to an Existing Project
 
@@ -36,7 +36,7 @@ Following project creation, you can add users as project members so that they ca
 
 1. Assign the user or group **Project** roles.  
 
-	[What are Project Roles?]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
+	[What are Project Roles?]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
     >**Notes:**
     >
@@ -44,8 +44,8 @@ Following project creation, you can add users as project members so that they ca
     >
     >- For `Custom` roles, you can modify the list of individual roles available for assignment.
     >
-    >    - To add roles to the list, [Add a Custom Role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles).
-    >    - To remove roles from the list, [Lock/Unlock Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
+    >    - To add roles to the list, [Add a Custom Role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles).
+    >    - To remove roles from the list, [Lock/Unlock Roles]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
 **Result:** The chosen users are added to the project.
 

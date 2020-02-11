@@ -39,13 +39,13 @@ Typically, pipeline stages include:
 
     After the artifacts are published, you would release your application so users could start using the updated product.
 
-Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can [configure version control providers](#version-control-providers) and [manage global pipeline execution settings](#managing-global-pipeline-execution-settings). Project members can only configure [repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) and [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
+Only [administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can [configure version control providers](#version-control-providers) and [manage global pipeline execution settings](#managing-global-pipeline-execution-settings). Project members can only configure [repositories]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) and [pipelines]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
 
 
 > **Notes:**
 >
 > - Pipelines were improved in Rancher v2.1. Therefore, if you configured pipelines while using v2.0.x, you'll have to reconfigure them after upgrading to v2.1.
-> - Still using v2.0.x? See the pipeline documentation for [previous versions]({{< baseurl >}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
+> - Still using v2.0.x? See the pipeline documentation for [previous versions]({{<baseurl>}}/rancher/v2.x/en/tools/pipelines/docs-for-v2.0.x).
 
 ## Overview
 
@@ -95,7 +95,7 @@ After you configure a pipeline, you can trigger it using different methods:
 
 ## Version Control Providers
 
-Before you can start [configuring a pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) for your repository, you must configure and authorize a version control provider.
+Before you can start [configuring a pipeline]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) for your repository, you must configure and authorize a version control provider.
 
 | Provider  | Available as of  |
 | --- | --- |
@@ -182,11 +182,11 @@ _Available as of v2.2.0_
 {{% /tab %}}
 {{% /tabs %}}
 
-**Result:** After the version control provider is authenticated, you will be automatically re-directed to start [configuring which repositories]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) that you want start using with a pipeline. Once a repository is enabled, you can start to [configure the pipeline]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
+**Result:** After the version control provider is authenticated, you will be automatically re-directed to start [configuring which repositories]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#configuring-repositories) that you want start using with a pipeline. Once a repository is enabled, you can start to [configure the pipeline]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration).
 
 ## Managing Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured globally on how [pipelines]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) are executed in Rancher.
+After configuring a version control provider, there are several options that can be configured globally on how [pipelines]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/) are executed in Rancher.
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
@@ -213,7 +213,7 @@ To configure compute resources for pipeline-step containers:
 
 You can configure compute resources for pipeline-step containers in the `.rancher-pipeline.yml` file.
 
-In a [step type]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#step-types), you will provide the following information:
+In a [step type]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#step-types), you will provide the following information:
 
 * **CPU Reservation (`CpuRequest`)**: CPU request for the container of a pipeline step.
 * **CPU Limit (`CpuLimit`)**: CPU limit for the container of a pipeline step.
@@ -267,7 +267,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 >**Prerequisites (for both parts A and B):**
 >
->[Persistent volumes]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#persistent-volumes) must be available for the cluster.
+>[Persistent volumes]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#persistent-volumes) must be available for the cluster.
 
 ### A. Configuring Persistent Data for Docker Registry
 
@@ -289,7 +289,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 1. Select a volume claim **Source**:
 
-    - If you select **Use a Storage Class to provision a new persistent volume**, select a [Storage Class]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes) and enter a **Capacity**.
+    - If you select **Use a Storage Class to provision a new persistent volume**, select a [Storage Class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes) and enter a **Capacity**.
 
     - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
 1. From the **Customize** section, choose the read/write access for the volume.
@@ -334,7 +334,7 @@ The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelin
 
 1. Select a volume claim **Source**:
 
-    - If you select **Use a Storage Class to provision a new persistent volume**, select a [Storage Class]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes) and enter a **Capacity**.
+    - If you select **Use a Storage Class to provision a new persistent volume**, select a [Storage Class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes) and enter a **Capacity**.
 
     - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
 1. From the **Customize** section, choose the read/write access for the volume.

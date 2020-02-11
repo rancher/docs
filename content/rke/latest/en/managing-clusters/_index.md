@@ -8,7 +8,7 @@ aliases:
 
 ### Adding/Removing Nodes
 
-RKE supports adding/removing [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/) for worker and controlplane hosts.
+RKE supports adding/removing [nodes]({{<baseurl>}}/rke/latest/en/config-options/nodes/) for worker and controlplane hosts.
 
 In order to add additional nodes, you update the original `cluster.yml` file with any additional nodes and specify their role in the Kubernetes cluster.
 
@@ -26,7 +26,7 @@ You can add/remove only worker nodes, by running `rke up --update-only`. This wi
 
 In order to remove the Kubernetes components from nodes, you use the `rke remove` command.
 
-> **Warning:** This command is irreversible and will destroy the Kubernetes cluster, including etcd snapshots on S3. If there is a disaster and your cluster is inaccessible, refer to the process for [restoring your cluster from a snapshot]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-disaster-recovery).
+> **Warning:** This command is irreversible and will destroy the Kubernetes cluster, including etcd snapshots on S3. If there is a disaster and your cluster is inaccessible, refer to the process for [restoring your cluster from a snapshot]({{<baseurl>}}rke/latest/en/etcd-snapshots/#etcd-disaster-recovery).
 
 The `rke remove` command does the following to each node in the `cluster.yml`:
 

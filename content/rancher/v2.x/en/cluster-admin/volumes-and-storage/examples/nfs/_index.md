@@ -65,4 +65,4 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
 
 ## What's Next?
 
-Within Rancher, add the NFS server as a [storage volume]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-a-persistent-volume) and/or [storage class]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-storage-classes). After adding the server, you can use it for storage for your deployments.
+Within Rancher, add the NFS server as a [storage volume]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-a-persistent-volume) and/or [storage class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#adding-storage-classes). After adding the server, you can use it for storage for your deployments.

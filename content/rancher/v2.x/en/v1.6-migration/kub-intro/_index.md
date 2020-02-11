@@ -36,4 +36,4 @@ Because Rancher v1.6 defaulted to our Cattle container orchestrator, it primaril
 More detailed information on Kubernetes concepts can be found in the
 [Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/).
 
-### [Next: Get Started]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/get-started/)
+### [Next: Get Started]({{<baseurl>}}/rancher/v2.x/en/v1.6-migration/get-started/)

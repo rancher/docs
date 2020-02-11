@@ -6,35 +6,35 @@ weight: 200
 
 When setting up your `cluster.yml` for RKE, there are a lot of different options that can be configured to control the behavior of how RKE launches Kubernetes.
 
-There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/latest/en/example-yamls/) that contain all the options.
+There are several options that can be configured in cluster configuration option. There are several [example yamls]({{<baseurl>}}/rke/latest/en/example-yamls/) that contain all the options.
 
 ### Configuring Nodes
-* [Nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/)
+* [Nodes]({{<baseurl>}}/rke/latest/en/config-options/nodes/)
 * [Ignoring unsupported Docker versions](#supported-docker-versions)
-* [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/)
+* [Private Registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/)
 * [Cluster Level SSH Key Path](#cluster-level-ssh-key-path)
 * [SSH Agent](#ssh-agent)
-* [Bastion Host]({{< baseurl >}}/rke/latest/en/config-options/bastion-host/)
+* [Bastion Host]({{<baseurl>}}/rke/latest/en/config-options/bastion-host/)
 
 ### Configuring Kubernetes Cluster
 * [Cluster Name](#cluster-name)
 * [Kubernetes Version](#kubernetes-version)
 * [Prefix Path](#prefix-path)
-* [System Images]({{< baseurl >}}/rke/latest/en/config-options/system-images/)
-* [Services]({{< baseurl >}}/rke/latest/en/config-options/services/)
-* [Extra Args and Binds and Environment Variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/)
-* [External Etcd]({{< baseurl >}}/rke/latest/en/config-options/services/external-etcd/)
-* [Authentication]({{< baseurl >}}/rke/latest/en/config-options/authentication/)
-* [Authorization]({{< baseurl >}}/rke/latest/en/config-options/authorization/)
+* [System Images]({{<baseurl>}}/rke/latest/en/config-options/system-images/)
+* [Services]({{<baseurl>}}/rke/latest/en/config-options/services/)
+* [Extra Args and Binds and Environment Variables]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/)
+* [External Etcd]({{<baseurl>}}/rke/latest/en/config-options/services/external-etcd/)
+* [Authentication]({{<baseurl>}}/rke/latest/en/config-options/authentication/)
+* [Authorization]({{<baseurl>}}/rke/latest/en/config-options/authorization/)
 * [Rate Limiting]({{<baseurl>}}/rke/latest/en/config-options/rate-limiting/)
-* [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/)
+* [Cloud Providers]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/)
 * [Audit Log]({{<baseurl>}}/rke/latest/en/config-options/audit-log)
-* [Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/)
-  * [Network Plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
-  * [DNS providers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/)
-  * [Ingress Controllers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
-  * [Metrics Server]({{< baseurl >}}/rke/latest/en/config-options/add-ons/metrics-server/)
-  * [User-Defined Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+* [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
+  * [Network Plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/)
+  * [DNS providers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/)
+  * [Ingress Controllers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
+  * [Metrics Server]({{<baseurl>}}/rke/latest/en/config-options/add-ons/metrics-server/)
+  * [User-Defined Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
   * [Add-ons Job Timeout](#add-ons-job-timeout)
 
 
@@ -79,7 +79,7 @@ prefix_path: /opt/custom_path
 
 ### Cluster Level SSH Key Path
 
-RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/).
+RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{<baseurl>}}/rke/latest/en/config-options/nodes/).
 
 If ssh key paths are defined at the cluster level and at the node level, the node-level key will take precedence.
 
@@ -109,4 +109,4 @@ $ echo $SSH_AUTH_SOCK
 
 ### Add-ons Job Timeout
 
-You can define [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.
+You can define [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.

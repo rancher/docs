@@ -10,7 +10,7 @@ Rancher allows you to set up numerous combinations of configurations. Some confi
 These tips can help you solve problems before they happen.
 
 ### Run Rancher on a Supported OS and Supported Docker Version
-Rancher is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/) should be used for running Rancher, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
+Rancher is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/) should be used for running Rancher, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
 
 ### Upgrade Your Kubernetes Version
 Keep your Kubernetes cluster up to date with a recent and supported version. Typically the Kubernetes community will support the current version and previous three minor releases (for example, 1.14.x, 1.13.x, 1.12.x, and 1.11.x). After a new version is released, the third-oldest supported version reaches EOL (End of Life) status. Running on an EOL release can be a risk if a security issues are found and patches are not available. The community typically makes minor releases every quarter (every three months).
@@ -29,11 +29,11 @@ Rancher [maintains a Terraform provider](https://rancher.com/blog/2019/rancher-2
 All upgrades, both patch and feature upgrades, should be first tested on a staging environment before production is upgraded. The more closely the staging environment mirrors production, the higher chance your production upgrade will be successful.
 
 ### Renew Certificates Before they Expire
-Multiple people in your organization should set up calendar reminders for certificate renewal. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using [monitoring and alerting mechanisms]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/) to track certificate expiration.
+Multiple people in your organization should set up calendar reminders for certificate renewal. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using [monitoring and alerting mechanisms]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/) to track certificate expiration.
 
 Rancher-provisioned Kubernetes clusters will use certificates that expire in one year. Clusters provisioned by other means may have a longer or shorter expiration.
 
-Certificates can be renewed for Rancher-provisioned clusters [through the Rancher user interface]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/certificate-rotation/).
+Certificates can be renewed for Rancher-provisioned clusters [through the Rancher user interface]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/).
 
 ### Enable Recurring Snapshots for Backing up and Restoring the Cluster
 Make sure etcd recurring snapshots are enabled. Extend the snapshot retention to a period of time that meets your business needs. In the event of a catastrophic failure or deletion of data, this may be your only recourse for recovery. For details about configuring snapshots, refer to the [RKE documentation]({{<baseurl>}}/rke/latest/en/etcd-snapshots/) or the [Rancher documentation on backups]({{<baseurl>}}/rancher/v2.x/en/backups/).
@@ -78,13 +78,13 @@ Provision 3 or 5 etcd nodes. Etcd requires a quorum to determine a leader by the
 Provision two or more control plane nodes. Some control plane components, such as the `kube-apiserver`, run in [active-active](https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster) mode and will give you more scalability. Other components such as kube-scheduler and kube-controller run in active-passive mode (leader elect) and give you more fault tolerance.
 
 ### Monitor Your Cluster
-Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
+Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
 
 
 # Tips for Security
 Below are some basic tips for increasing security in Rancher. For more detailed information about securing your cluster, you can refer to these resources:
 
-- Rancher's [security documentation and Kubernetes cluster hardening guide]({{< baseurl >}}/rancher/v2.x/en/security/)
+- Rancher's [security documentation and Kubernetes cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/)
 - [101 More Security Best Practices for Kubernetes](https://rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
 
 ### Update Rancher with Security Patches

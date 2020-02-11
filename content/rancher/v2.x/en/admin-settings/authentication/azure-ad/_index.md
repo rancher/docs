@@ -42,11 +42,11 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
 1. Use search to open the **App registrations** service.
 
-    ![Open App Registrations]({{< baseurl >}}/img/rancher/search-app-registrations.png)
+    ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
 
 1. Click **New application registration** and complete the **Create** form.
 
-    ![New App Registration]({{< baseurl >}}/img/rancher/new-app-registration.png)
+    ![New App Registration]({{<baseurl>}}/img/rancher/new-app-registration.png)
 
     1. Enter a **Name** (something like `Rancher`).
 
@@ -62,7 +62,7 @@ From the Azure portal, create an API key. Rancher will use this key to authentic
 
 1. Use search to open **App registrations** services. Then open the entry for Rancher that you created in the last procedure.
 
-     ![Open Rancher Registration]({{< baseurl >}}/img/rancher/open-rancher-app.png)
+     ![Open Rancher Registration]({{<baseurl>}}/img/rancher/open-rancher-app.png)
 
     **Step Result:** A new blade opens for Rancher.
 
@@ -91,7 +91,7 @@ Next, set API permissions for Rancher within Azure.
 
 1. From the **Settings** blade, select **Required permissions**.
 
-    ![Open Required Permissions]({{< baseurl >}}/img/rancher/select-required-permissions.png)
+    ![Open Required Permissions]({{<baseurl>}}/img/rancher/select-required-permissions.png)
 
 1. Click **Windows Azure Active Directory**.
 
@@ -119,7 +119,7 @@ To use Azure AD with Rancher you must whitelist Rancher with Azure. You can comp
 
 1. From the **Setting** blade, select **Reply URLs**.
 
-    ![Azure: Enter Reply URL]({{< baseurl >}}/img/rancher/enter-azure-reply-url.png)
+    ![Azure: Enter Reply URL]({{<baseurl>}}/img/rancher/enter-azure-reply-url.png)
 
 1. From the **Reply URLs** blade, enter the URL of your Rancher Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
@@ -139,7 +139,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     1. Use search to open the **Azure Active Directory** service.
 
-         ![Open Azure Active Directory]({{< baseurl >}}/img/rancher/search-azure-ad.png)
+         ![Open Azure Active Directory]({{<baseurl>}}/img/rancher/search-azure-ad.png)
 
     1. From the **Azure Active Directory** menu, open **Properties**.
 
@@ -151,7 +151,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     1. Use search to open **App registrations**.
 
-         ![Open App Registrations]({{< baseurl >}}/img/rancher/search-app-registrations.png)
+         ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
 
     1. Find the entry you created for Rancher.
 
@@ -161,7 +161,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     1. From **App registrations**, click **Endpoints**.
 
-        ![Click Endpoints]({{< baseurl >}}/img/rancher/click-endpoints.png)
+        ![Click Endpoints]({{<baseurl>}}/img/rancher/click-endpoints.png)
 
     2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
     

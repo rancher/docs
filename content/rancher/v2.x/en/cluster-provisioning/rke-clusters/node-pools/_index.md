@@ -46,7 +46,7 @@ Since taints can be added at a node template and node pool, if there is no confl
 
 Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if a node is destroyed or deleted, you can increase the number of live nodes to compensate for the node that was lost. The node pool helps you ensure that the count of the node pool is as expected.
 
-Each node pool is assigned with a [node component]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) to specify how these nodes should be configured for the Kubernetes cluster.
+Each node pool is assigned with a [node component]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) to specify how these nodes should be configured for the Kubernetes cluster.
 
 ### Node Pool Taints
 
@@ -112,9 +112,9 @@ Node templates can use cloud credentials to store credentials for launching node
 
 - Multiple node templates can share the same cloud credential to create node pools. If your key is compromised or expired, the cloud credential can be updated in a single place, which allows all node templates that are using it to be updated at once.
 
-> **Note:** As of v2.2.0, the default `active` [node drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use cloud credentials. If you have upgraded to v2.2.0, existing node templates will continue to work with the previous account access  information, but when you edit the node template, you will be required to create a cloud credential and the node template will start using it.
+> **Note:** As of v2.2.0, the default `active` [node drivers]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use cloud credentials. If you have upgraded to v2.2.0, existing node templates will continue to work with the previous account access  information, but when you edit the node template, you will be required to create a cloud credential and the node template will start using it.
 
-After cloud credentials are created, the user can start [managing the cloud credentials that they created]({{< baseurl >}}/rancher/v2.x/en/user-settings/cloud-credentials/).
+After cloud credentials are created, the user can start [managing the cloud credentials that they created]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/).
 
 # Node Drivers
 
