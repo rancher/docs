@@ -8,12 +8,12 @@ aliases:
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
-## Prerequisites
+# Prerequisites
 
 - **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [caveats]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#caveats)** in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 - **For [air gap installs only,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
-## Placeholder Review
+# Placeholder Review
 
 During upgrade, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`).
 
@@ -38,23 +38,24 @@ Cross reference the image and reference table below to learn how to obtain this 
 | `<DATE>`                   | `2018-12-19`               | The date that the data container or backup was created.   |
 <br/>
 
-You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
+You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped using a different command: `docker ps -a`. Use these commands for help anytime during while creating backups.
 
-## Upgrade Outline
+# Upgrade Outline
 
 During upgrade, you create a copy of the data from your current Rancher container and a backup in case something goes wrong. Then you deploy the new version of Rancher in a new container using your existing data. Follow the steps to upgrade Rancher server:
 
-- A. Create a copy of the data from your Rancher server container
-- B. Create a backup tarball
-- C. Upgrade Rancher
-- D. Verify the Upgrade
-- E. Clean up your old Rancher server container
+- [A. Create a copy of the data from your Rancher server container](#a-create-a-copy-of-the-data-from-your-rancher-server-container)
+- [B. Create a backup tarball](#b-create-a-backup-tarball)
+- [C. Pull the new Docker image](#c-pull-the-new-docker-image)
+- [D. Start the new Rancher server container](#d-start-the-new-rancher-server-container)
+- [E. Verify the Upgrade](#e-verify-the-upgrade)
+- [F. Clean up your old Rancher server container](#f-clean-up-your-old-rancher-server-container)
 
 ### A. Create a copy of the data from your Rancher server container
 
-1. Using a remote Terminal connection, log into the node running your Rancher Server.
+1. Using a remote Terminal connection, log into the node running your Rancher server.
 
-1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
+1. Stop the container currently running Rancher server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
 
     ```
     docker stop <RANCHER_CONTAINER_NAME>
@@ -86,37 +87,36 @@ During upgrade, you create a copy of the data from your current Rancher containe
    rancher-data-backup-v2.1.3-20181219.tar.gz
     ```
 
-1. Move your backup tarball to a safe location external from your Rancher Server.
+1. Move your backup tarball to a safe location external from your Rancher server.
 
-### C. Upgrade Rancher
+### C. Pull the New Docker Image
 
-1. Pull the image of the Rancher version that you want to upgrade to.
+Pull the image of the Rancher version that you want to upgrade to.
 
-    Placeholder | Description
-    ------------|-------------
-    `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+Placeholder | Description
+------------|-------------
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
-    ```
-    docker pull rancher/rancher:<RANCHER_VERSION_TAG>
-    ```
+```
+docker pull rancher/rancher:<RANCHER_VERSION_TAG>
+```
 
-1. Start a new Rancher server container using the data from the `rancher-data` container. Remember to pass in all the environment variables that you had used when you started the original container.
+### D. Start the New Rancher Server Container
 
-    >**Note:** After upgrading Rancher Server, data from your upgraded server is now saved to the `rancher-data` container for use in future upgrades.
+Start a new Rancher server container using the data from the `rancher-data` container. Remember to pass in all the environment variables that you had used when you started the original container.
 
-    >**Important:** _Do not_ stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
+>**Important:** _Do not_ stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
 
-    >**Did you...**
-    >
-    >- Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/)
-    >- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
-    >- Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
-    >
+If you used a proxy, see [HTTP Proxy Configuration.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/)
 
-    Choose from the following options:
+If you configured a custom CA root certificate to access your services, see [Custom CA root certificate.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#custom-ca-certificate)
 
-    * Docker Upgrade
-    * Docker Upgrade for Air Gap Installs
+If you are recording all transactions with the Rancher API, see [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
+
+To see the command to use when starting the new Rancher server container, choose from the following options:
+
+- Docker Upgrade
+- Docker Upgrade for Air Gap Installs
 
 {{% tabs %}}
 {{% tab "Docker Upgrade" %}}
@@ -219,14 +219,9 @@ docker run -d --volumes-from rancher-data \
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
->**Did you...**
->
->- Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{< baseurl >}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
->- Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log).
+> For Rancher versions from v2.2.0 to v2.2.x, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
 
- - For Rancher versions from v2.2.0 to v2.2.x, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
-
-Choose from the following options:
+When starting the new Rancher server container, choose from the following options:
 
 {{% accordion id="option-a" label="Option A-Default Self-Signed Certificate" %}}
 
@@ -305,7 +300,9 @@ docker run -d --volumes-from rancher-data \
 {{% /tab %}}
 {{% /tabs %}}
 
-### D. Verify the Upgrade
+**Result:** You have upgraded Rancher. Data from your upgraded server is now saved to the `rancher-data` container for use in future upgrades.
+
+### E. Verify the Upgrade
 
 Log into Rancher. Confirm that the upgrade succeeded by checking the version displayed in the bottom-left corner of the browser window.
 
@@ -314,9 +311,9 @@ Log into Rancher. Confirm that the upgrade succeeded by checking the version dis
 > See [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 
-### E. Clean up your old Rancher server container
+### F. Clean up Your Old Rancher Server Container
 
-Remove the previous Rancher Server container. If you only stop the previous Rancher Server container (and don't remove it), the container may restart after the next server reboot.
+Remove the previous Rancher server container. If you only stop the previous Rancher server container (and don't remove it), the container may restart after the next server reboot.
 
 ## Rolling Back
 

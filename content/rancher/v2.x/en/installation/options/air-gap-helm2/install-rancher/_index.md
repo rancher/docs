@@ -222,7 +222,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/).
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#additional-trusted-cas).
 > - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log).
 
 - For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)

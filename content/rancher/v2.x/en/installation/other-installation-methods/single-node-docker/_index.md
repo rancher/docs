@@ -30,7 +30,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 > **Do you want to...**
 >
 > - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/)
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/admin-settings/custom-ca-root-certificate/)
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#custom-ca-certificate/)
 > - Complete an Air Gap Installation? See [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
 > - Record all transactions with the Rancher API? See [API Auditing](#api-audit-log)
 
