@@ -11,7 +11,7 @@ This quick-start guide will help you to deploy and configure the [Kubernetes Das
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
 ```
 
-### Dashboard admin-user RBAC Configuration
+### Dashboard RBAC Configuration
 
 > **Important:** Granting admin privileges to the Dashboard's Service Account might be a security risk! The admin-user created in this guide will have administrative privileges and is for educational purposes only.
 
@@ -56,7 +56,7 @@ kubectl -n kube-system describe secret admin-user-token | grep ^token
 
 ### Local Access to the Dashboard
 
-Local proxy configuration:
+To access the Dashboard you must create a secure channel to your K3s cluster:
 
 ```bash
 kubectl proxy
@@ -69,7 +69,7 @@ The Dashboard is now accessible at:
 
 #### Advanced: Remote Access to the Dashboard
 
-[Port Forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) can be used to Access Applications in a Cluster.
+Please see: Using [Port Forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to Access Applications in a Cluster.
 
 ### Upgrading the Dashboard
 
