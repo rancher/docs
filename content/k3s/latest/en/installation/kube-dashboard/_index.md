@@ -13,7 +13,7 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-
 
 ### Dashboard RBAC Configuration
 
-> **Important:** Granting admin privileges to the Dashboard's Service Account might be a security risk! The admin-user created in this guide will have administrative privileges and is for educational purposes only.
+> **Important:** The `admin-user` created in this guide will have administrative privileges in the Dashboard.
 
 Create the following resource manifest files:
 
@@ -23,7 +23,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: admin-user
-  namespace: kube-system
+  namespace: kubernetes-dashboard
 ```
 
 `dashboard.admin-user-role.yml`
@@ -39,19 +39,19 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: admin-user
-  namespace: kube-system
+  namespace: kubernetes-dashboard
 ```
 
 Deploy the `admin-user` configuration:
 
 ```bash
-kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
+sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
 ```
 
 ### Obtain the Bearer Token
 
 ```bash
-kubectl -n kube-system describe secret admin-user-token | grep ^token
+sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep ^token
 ```
 
 ### Local Access to the Dashboard
@@ -59,7 +59,7 @@ kubectl -n kube-system describe secret admin-user-token | grep ^token
 To access the Dashboard you must create a secure channel to your K3s cluster:
 
 ```bash
-kubectl proxy
+sudo k3s kubectl proxy
 ```
 
 The Dashboard is now accessible at:
@@ -76,13 +76,13 @@ Please see: Using [Port Forwarding](https://kubernetes.io/docs/tasks/access-appl
 The latest Dashboard releases are available from: https://github.com/kubernetes/dashboard/releases/latest
 
 ```bash
-kubectl delete ns kubernetes-dashboard
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/[...]
+sudo k3s kubectl delete ns kubernetes-dashboard
+sudo k3s kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/[...]
 ```
 
 ### Deleting the Dashboard and admin-user configuration
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
-kubectl delete -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
+sudo k3s kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
+sudo k3s kubectl delete -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
 ```
