@@ -1,9 +1,9 @@
 ---
 title: "Kubernetes Dashboard"
-weight: 10
+weight: 60
 ---
 
-This quick-start guide will help you to deploy and configure the [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) on K3s.
+This installation guide will help you to deploy and configure the [Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) on K3s.
 
 ### Deploying the Kubernetes Dashboard
 
