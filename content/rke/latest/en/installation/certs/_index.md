@@ -36,11 +36,13 @@ The following certificates must exist in the certificate directory.
 |       Kube Scheduler       |          kube-scheduler.pem         |          kube-scheduler-key.pem         |
 |         Kube Proxy         |            kube-proxy.pem           |            kube-proxy-key.pem           |
 |         Kube Admin         |            kube-admin.pem           |            kube-admin-key.pem           |
+|         Kube Node          |            kube-node.pem           |            kube-node-key.pem             |
 |   Apiserver Proxy Client   |   kube-apiserver-proxy-client.pem   |   kube-apiserver-proxy-client-key.pem   |
 |         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |
-| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem | kube-apiserver-requestheader-ca-key.pem |
+| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem* | kube-apiserver-requestheader-ca-key.pem** |
 |    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |
-
+* Is the same as kube-ca.pem 
+** Is the same as kube-ca-key
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
 If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to generate a set of Certificate Signing Requests (CSRs) and keys. Using the `rke cert generate-csr` command, you can generate the CSRs and keys.
