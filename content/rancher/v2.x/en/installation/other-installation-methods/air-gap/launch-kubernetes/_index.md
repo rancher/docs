@@ -83,4 +83,8 @@ Save a copy of the following files in a secure location:
 
 See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
 
+### Issues or errors?
+
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
+
 ### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher)
