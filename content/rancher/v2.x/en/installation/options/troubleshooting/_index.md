@@ -3,11 +3,13 @@ title: Troubleshooting the Rancher Server Kubernetes Cluster
 weight: 276
 aliases:
   - /rancher/v2.x/en/installation/k8s-install/helm-rancher/troubleshooting/
+  - /rancher/v2.x/en/installation/ha/kubernetes-rke/troubleshooting
+  - /rancher/v2.x/en/installation/k8s-install/kubernetes-rke/troubleshooting
 ---
 
 This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.
 
-### Where is everything
+### Relevant Namespaces
 
 Most of the troubleshooting will be done on objects in these 3 namespaces.
 
@@ -24,7 +26,7 @@ Things to check
 - [Is Rancher Running](#is-rancher-running)
 - [Cert CN is "Kubernetes Ingress Controller Fake Certificate"](#cert-cn-is-kubernetes-ingress-controller-fake-certificate)
 
-### Is Rancher Running
+### Check if Rancher is Running
 
 Use `kubectl` to check the `cattle-system` system namespace and see if the Rancher pods are in a Running state.
 
@@ -52,7 +54,7 @@ Events:
   Normal   Started                11m   kubelet, localhost  Started container
 ```
 
-### Checking the rancher logs
+### Check the Rancher Logs
 
 Use `kubectl` to list the pods.
 
@@ -75,7 +77,7 @@ Use your browser to check the certificate details. If it says the Common Name is
 
 > **Note:** if you are using LetsEncrypt to issue certs it can sometimes take a few minuets to issue the cert.
 
-#### cert-manager issued certs (Rancher Generated or LetsEncrypt)
+### Checking for issues with cert-manager issued certs (Rancher Generated or LetsEncrypt)
 
 `cert-manager` has 3 parts.
 
@@ -106,7 +108,7 @@ Events:
   Warning  ErrGetKeyPair  9m (x16 over 19m)   cert-manager  Error getting keypair for CA issuer: secret "tls-rancher" not found
 ```
 
-#### Bring Your Own SSL Certs
+### Checking for Issues with Your Own SSL Certs
 
 Your certs get applied directly to the Ingress object in the `cattle-system` namespace.
 
@@ -126,7 +128,7 @@ kubectl -n ingress-nginx logs -f nginx-ingress-controller-rfjrq nginx-ingress-co
 W0705 23:04:58.240571       7 backend_ssl.go:49] error obtaining PEM from secret cattle-system/tls-rancher-ingress: error retrieving secret cattle-system/tls-rancher-ingress: secret cattle-system/tls-rancher-ingress was not found
 ```
 
-### no matches for kind "Issuer"
+### No matches for kind "Issuer"
 
 The [SSL configuration]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#choose-your-ssl-configuration) option you have chosen requires [cert-manager]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#optional-install-cert-manager) to be installed before installing Rancher or else the following error is shown:
 
@@ -135,3 +137,51 @@ Error: validation failed: unable to recognize "": no matches for kind "Issuer" i
 ```
 
 Install [cert-manager]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#optional-install-cert-manager) and try installing Rancher again.
+
+
+### Canal Pods show READY 2/3
+
+The most common cause of this issue is port 8472/UDP is not open between the nodes. Check your local firewall, network routing or security groups.
+
+Once the network issue is resolved, the `canal` pods should timeout and restart to establish their connections.
+
+### nginx-ingress-controller Pods show RESTARTS
+
+The most common cause of this issue is the `canal` pods have failed to establish the overlay network. See [canal Pods show READY `2/3`](#canal-pods-show-ready-2-3) for troubleshooting.
+
+
+### Failed to dial to /var/run/docker.sock: ssh: rejected: administratively prohibited (open failed)
+
+* User specified to connect with does not have permission to access the Docker socket. This can be checked by logging into the host and running the command `docker ps`:
+
+```
+$ ssh user@server
+user@server$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+```
+
+See [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) how to set this up properly.
+
+* When using RedHat/CentOS as operating system, you cannot use the user `root` to connect to the nodes because of [Bugzilla #1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). You will need to add a separate user and configure it to access the Docker socket. See [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) how to set this up properly.
+
+* SSH server version is not version 6.7 or higher. This is needed for socket forwarding to work, which is used to connect to the Docker socket over SSH. This can be checked using `sshd -V` on the host you are connecting to, or using netcat:
+```
+$ nc xxx.xxx.xxx.xxx 22
+SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.10
+```
+
+### Failed to dial ssh using address [xxx.xxx.xxx.xxx:xx]: Error configuring SSH: ssh: no key found
+
+* The key file specified as `ssh_key_path` cannot be accessed. Make sure that you specified the private key file (not the public key, `.pub`), and that the user that is running the `rke` command can access the private key file.
+
+### Failed to dial ssh using address [xxx.xxx.xxx.xxx:xx]: ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain
+
+* The key file specified as `ssh_key_path` is not correct for accessing the node. Double-check if you specified the correct `ssh_key_path` for the node and if you specified the correct user to connect with.
+
+### Failed to dial ssh using address [xxx.xxx.xxx.xxx:xx]: Error configuring SSH: ssh: cannot decode encrypted private keys
+
+* If you want to use encrypted private keys, you should use `ssh-agent` to load your keys with your passphrase. If the `SSH_AUTH_SOCK` environment variable is found in the environment where the `rke` command is run, it will be used automatically to connect to the node.
+
+### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+* The node is not reachable on the configured `address` and `port`.

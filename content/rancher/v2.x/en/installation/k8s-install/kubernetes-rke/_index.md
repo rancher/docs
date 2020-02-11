@@ -139,6 +139,6 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
 
 ### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)
