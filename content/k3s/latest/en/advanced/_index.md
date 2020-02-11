@@ -1,6 +1,6 @@
 ---
 title: "Advanced Options and Configuration"
-weight: 40
+weight: 45
 aliases:
   - /k3s/latest/en/running/
   - /k3s/latest/en/configuration/
@@ -8,11 +8,7 @@ aliases:
 
 This section contains advanced information describing the different ways you can run and manage K3s:
 
-- [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) 
-- [Using Helm 3](#using-helm-3)
 - [Auto-deploying manifests](#auto-deploying-manifests)
-- [Using the Helm CRD](#using-the-helm-crd)
-- [Accessing the cluster from outside with kubectl](#accessing-the-cluster-from-outside-with-kubectl)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
 - [Running K3s with RootlessKit (Experimental)](#running-k3s-with-rootlesskit-experimental)
 - [Node labels and taints](#node-labels-and-taints)
@@ -20,120 +16,11 @@ This section contains advanced information describing the different ways you can
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
 
-# Setting Up the kubeconfig File
-
-The kubeconfig file is used to configure access to the Kubernetes cluster. It is required to be set up properly in order to access the Kubernetes API such as with kubectl or for installing applications with Helm. You may set the kubeconfig by either exporting the KUBECONFIG environment variable or by specifying a flag for kubectl and helm. Refer to the examples below for details.
-
-Leverage the KUBECONFIG environment variable:
-
-```
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-kubectl get pods --all-namespaces
-helm ls --all-namespaces
-```
-
-Or specify the location of the kubeconfig file per command:
-
-```
-kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get pods --all-namespaces
-helm --kubeconfig /etc/rancher/k3s/k3s.yaml ls --all-namespaces
-```
-
-# Using Helm 3
-
-K3s release _v1.17.0+k3s.1_ added support for Helm 3. You can access the Helm 3 documentation [here](https://helm.sh/docs/intro/quickstart/).
-Note that Helm 3 no longer requires tiller and the helm init command. Refer to the official documentation for details.
-
-K3s does not require any special configuration to start using Helm 3. Just be sure you have properly set up your kubeconfig as per the [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) section above.
-
-
-### Upgrading
-
-If you were using Helm v2 in previous versions of K3s, you may upgrade to v1.17.0+k3s.1 or newer and Helm 2 will still function. If you wish to migrate to Helm 3, [this](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) blog post by Helm explains how to use a plugin to successfully migrate. Refer to the official Helm 3 documentation [here](https://helm.sh/docs/) for more information. K3s will handle either Helm v2 or Helm v3 as of v1.17.0+k3s.1. Just be sure you have properly set your kubeconfig as per the examples above in the [Setting Up the kubeconfig File](#setting-up-the-kubeconfig-file) section.
-
 # Auto-Deploying Manifests
 
-Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to
-Kubernetes in a manner similar to `kubectl apply`.
+Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
 
-It is also possible to deploy Helm charts. K3s supports a CRD controller for installing charts. A YAML file specification can look as following (example taken from `/var/lib/rancher/k3s/server/manifests/traefik.yaml`):
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: traefik
-  namespace: kube-system
-spec:
-  chart: stable/traefik
-  set:
-    rbac.enabled: "true"
-    ssl.enabled: "true"
-```
-
-Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual Helm release, you can do that using `targetNamespace` key under the `spec` directive, as shown in the configuration example below.
-
-> **Note:** In order for the Helm Controller to know which version of Helm to use to Auto-Deploy a helm app, please specify the `helmVersion` in the spec of your YAML file.
-
-Also note that besides `set`, you can use `valuesContent` under the `spec` directive. And it's okay to use both of them:
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: grafana
-  namespace: kube-system
-spec:
-  chart: stable/grafana
-  targetNamespace: monitoring
-  set:
-    adminPassword: "NotVerySafePassword"
-  valuesContent: |-
-    image:
-      tag: master
-    env:
-      GF_EXPLORE_ENABLED: true
-    adminUser: admin
-    sidecar:
-      datasources:
-        enabled: true
-```
-
-K3s versions `<= v0.5.0` used `k3s.cattle.io` for the API group of HelmCharts. This has been changed to `helm.cattle.io` for later versions.
-
-# Using the Helm CRD
-
-You can deploy a 3rd party Helm chart using an example like this:
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: nginx
-  namespace: kube-system
-spec:
-  chart: nginx
-  repo: https://charts.bitnami.com/bitnami
-  targetNamespace: default
-```
-
-You can install a specific version of a Helm chart using an example like this:
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: stable/nginx-ingress
-  namespace: kube-system
-spec:
-  chart: nginx-ingress
-  version: 1.24.4
-  targetNamespace: default
-```
-
-# Accessing the Cluster from Outside with kubectl
-
-Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace "localhost" with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.
+For information about deploying Helm charts, refer to the section about [Helm.](../helm)
 
 # Using Docker as the Container Runtime
 
@@ -177,12 +64,11 @@ In short, latest Ubuntu is your best bet for this to work.
 
 ### Running Servers and Agents with Rootless
 
-Just add `--rootless` flag to either server or agent.  So run `k3s server --rootless` and then look for the message
-`Wrote kubeconfig [SOME PATH]` for where your kubeconfig to access you cluster is.
+Just add `--rootless` flag to either server or agent. So run `k3s server --rootless` and then look for the message `Wrote kubeconfig [SOME PATH]` for where your kubeconfig file is.
 
-> Be careful, if you use `-o` to write
-the kubeconfig to a different directory it will probably not work.  This is because the K3s instance in running in a different
-mount namespace.
+For more information about setting up the kubeconfig file, refer to the [section about cluster access.](../cluster-access)
+
+> Be careful, if you use `-o` to write the kubeconfig to a different directory it will probably not work. This is because the K3s instance in running in a different mount namespace.
 
 # Node Labels and Taints
 
