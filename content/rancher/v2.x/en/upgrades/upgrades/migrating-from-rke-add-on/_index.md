@@ -57,7 +57,7 @@ kubectl -n cattle-system get secret cattle-keys-server -o jsonpath --template='{
 
 Remove the Kubernetes objects created by the RKE install.
 
-> **Note:** Removing these Kubernetes components will not affect the Rancher configuration or database, but with any maintenance it is a good idea to create a backup of the data before hand. See [Creating Backups-Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups) for details.
+> **Note:** Removing these Kubernetes components will not affect the Rancher configuration or database, but with any maintenance it is a good idea to create a backup of the data before hand. See [Creating Backups-Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/backups/backups/ha-backups) for details.
 
 ```
 kubectl -n cattle-system delete ingress cattle-ingress-http
@@ -105,5 +105,5 @@ addons: |-
 
 From here follow the standard install steps.
 
-* [3 - Initialize Helm]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
-* [4 - Install Rancher]({{< baseurl >}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/)
+* [3 - Initialize Helm]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-init/)
+* [4 - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/)

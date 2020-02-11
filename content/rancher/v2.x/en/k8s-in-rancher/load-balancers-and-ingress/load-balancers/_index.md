@@ -67,8 +67,8 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 #### Tutorials
 
-- [Kubernetes installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
-- [Kubernetes installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
-- [Docker Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+- [Kubernetes installation with External Load Balancer (HTTPS/Layer 7)]({{<baseurl>}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+- [Kubernetes installation with External Load Balancer (TCP/Layer 4)]({{<baseurl>}}/rancher/v2.x/en/installation/ha-server-install)
+- [Docker Installation with External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
 

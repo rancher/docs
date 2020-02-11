@@ -22,7 +22,7 @@ Rancher provides an intuitive user interface for DevOps engineers to manage thei
 
 The following figure illustrates the role Rancher plays in IT and DevOps organizations. Each team deploys their applications on the public or private clouds they choose. IT administrators gain visibility and enforce policies across all users, clusters, and clouds.
 
-![Platform]({{< baseurl >}}/img/rancher/platform.png)
+![Platform]({{<baseurl>}}/img/rancher/platform.png)
 
 # Features of the Rancher API Server
 
@@ -54,7 +54,7 @@ The Rancher API server is built on top of an embedded Kubernetes API server and 
 
 # Editing Downstream Clusters with Rancher
 
-The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
+The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
 
 After a cluster is created with Rancher, a cluster administrator can manage cluster membership, enable pod security policies, and manage node pools, among [other options.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/)
 

@@ -53,18 +53,18 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
     >**Using Windows nodes as Kubernetes workers?**
     >
-    >- See [Enable the Windows Support Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#enable-the-windows-support-option).
-    >- The only Network Provider available for clusters with Windows support is Flannel. See [Networking Option]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#networking-option).
+    >- See [Enable the Windows Support Option]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#enable-the-windows-support-option).
+    >- The only Network Provider available for clusters with Windows support is Flannel. See [Networking Option]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#networking-option).
 6.	<a id="step-6"></a>Click **Next**.
 
 7.	From **Node Role**, choose the roles that you want filled by a cluster node.
 
 	>**Notes:**
 	>
-    >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#node-configuration).
+    >- Using Windows nodes as Kubernetes workers? See [Node Configuration]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/#node-configuration).
 	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{< baseurl >}}/rancher/v2.x/en/admin-settings/agent-options/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
+8.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{<baseurl>}}/rancher/v2.x/en/admin-settings/agent-options/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
 
 9. Copy the command displayed on screen to your clipboard.
 

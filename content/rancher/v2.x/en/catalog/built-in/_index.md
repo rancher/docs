@@ -5,14 +5,14 @@ aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/enabling-default-catalogs/
 ---
 
-There are default [global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#global-catalogs) packaged as part of Rancher.
+There are default [global catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/#global-catalogs) packaged as part of Rancher.
 
 ## Managing Built-in Global Catalogs
 
->**Prerequisites:** In order to manage the built-in catalogs or [manage global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding/#adding-global-catalogs), you need _one_ of the following permissions:
+>**Prerequisites:** In order to manage the built-in catalogs or [manage global catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding/#adding-global-catalogs), you need _one_ of the following permissions:
 >
->- [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
->- [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Catalogs]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
+>- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
+>- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Catalogs]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
 
 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
 
@@ -22,7 +22,7 @@ There are default [global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#glo
 
     	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. In Rancher 2.x, only global catalogs are supported. Support for cluster-level and project-level charts will be added in the future.
 
-    	This catalog features Rancher Charts, which include some [notable advantages]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
+    	This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
 
     - **Helm Stable**
 

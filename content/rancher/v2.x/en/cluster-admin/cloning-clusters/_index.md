@@ -13,16 +13,16 @@ Duplication of imported clusters, clusters in hosted Kubernetes providers, and c
 
 | Cluster Type                     | Cloneable?    |
 |----------------------------------|---------------|
-| [Nodes Hosted by Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
-| [Hosted Kubernetes Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) |               |
-| [Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              |               |
-| [Imported Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
+| [Nodes Hosted by Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
+| [Hosted Kubernetes Providers]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) |               |
+| [Custom Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              |               |
+| [Imported Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
 
 > **Warning:** During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
 
 ## Prerequisites
 
-Download and install [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli). Remember to [create an API bearer token]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys) if necessary.
+Download and install [Rancher CLI]({{<baseurl>}}/rancher/v2.x/en/cli). Remember to [create an API bearer token]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys) if necessary.
 
 
 ## 1. Export Cluster Config

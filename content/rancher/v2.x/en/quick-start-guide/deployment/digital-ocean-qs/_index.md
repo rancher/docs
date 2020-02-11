@@ -47,7 +47,7 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload).
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/workload).
 
 ## Destroying the Environment
 
