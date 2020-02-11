@@ -25,7 +25,7 @@ Setting up an HA cluster requires the following steps:
 1. [Create an external datastore](#1-create-an-external-datastore)
 2. [Launch server nodes](#2-launch-server-nodes)
 3. [Configure the fixed registration address](#3-configure-the-fixed-registration-address)
-4. [Join agent nodes](#4-join-agent-nodes)
+4. [Join agent nodes](#4-optional-join-agent-nodes)
 
 ### 1. Create an External Datastore
 You will first need to create an external datastore for the cluster. See the [Cluster Datastore Options]({{< baseurl >}}/k3s/latest/en/installation/datastore/) documentation for more details.
