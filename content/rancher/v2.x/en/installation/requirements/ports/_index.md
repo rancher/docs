@@ -1,10 +1,10 @@
 ---
 title: Port Requirements
-description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and Kubernetes cluster nodes
+description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes
 weight: 300
 ---
 
-To operate properly, Rancher requires a number of ports to be open on Rancher nodes and Kubernetes cluster nodes.
+To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes.
 
 ## Rancher Nodes
 
@@ -14,7 +14,7 @@ The following table lists the ports that need to be open to and from nodes that 
 
 **Note** Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
 
-## Kubernetes Cluster Nodes
+## Downstream Kubernetes Cluster Nodes
 
 The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
