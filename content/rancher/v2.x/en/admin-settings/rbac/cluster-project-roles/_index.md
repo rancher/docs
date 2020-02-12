@@ -35,13 +35,13 @@ The following table lists each built-in custom cluster role available and whethe
 
 | Built-in Cluster Role                | Owner         | Member <a id="clus-roles"></a> |
 | ---------------------------------- | ------------- | --------------------------------- |
-| Create Projects                    | ✓             |                                   |
+| Create Projects                    | ✓             | ✓                                  |
 | Manage Cluster Backups             | ✓             |                                   |
 | Manage Cluster Catalogs            | ✓             |                                   |
 | Manage Cluster Members             | ✓             |                                   |
 | Manage Nodes                       | ✓             |                                   |
 | Manage Storage                     | ✓             |                                   |
-| View All Projects                  | ✓             | ✓                                 |
+| View All Projects                  | ✓             |                                  |
 | View Cluster Catalogs              | ✓             | ✓                                 |
 | View Cluster Members               | ✓             | ✓                                 |
 | View Nodes                         | ✓             | ✓                                 |
