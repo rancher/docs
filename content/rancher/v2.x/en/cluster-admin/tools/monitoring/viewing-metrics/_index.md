@@ -41,18 +41,19 @@ Grafana allows you to query, visualize, alert, and ultimately, understand your c
 
 Rancher determines which users can access the new Grafana instance, as well as the objects they can view within it, by validating them against the user's [cluster or project roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/). In other words, a user's access in Grafana mirrors their access in Rancher.
 
-### Accessing Grafana from the Grafana Instance
+When you go to the Grafana instance, you will be logged in with the username `admin` and the password `admin`. If you log out and log in again, you will be prompted to change your password. You will only be able to log in to the Grafana instance if you have access to view the same metrics in Rancher. So for example, if your Rancher permissions are scoped to the project level, you won't be able to see cluster-level metrics in Grafana.
 
-1. From the **Global** view, navigate to the cluster that you want to access Grafana.
+### Accessing the Cluster-level Grafana Instance
 
-1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar.
+1. From the **Global** view, navigate to a cluster that has monitoring enabled.
 
-1. Find the application based on what level of metrics you want to view:
+1. Go to the **System** project view. This project is where the cluster-level Grafana instance runs.
 
-   - **Cluster Level**: Find the `cluster-monitoring` application.
-   - **Project Level**: Find the `project-monitoring` application.
+1. Click **Apps.** In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar.
 
-1. Click the `/index.html` link. You will be redirected to a new webpage for Grafana, which shows metrics for either the cluster or project depending on which application you selected.
+1. Go to the `cluster-monitoring` application.
+
+1. In the `cluster-monitoring` application, there are two `/index.html` links: one that leads to a Grafana instance and one that leads to a Prometheus instance. Click the first `/index.html` link, and you will be redirected to a new webpage for Grafana, which shows metrics for the cluster.
 
 1. Sign in to Grafana. The default username is `admin` and the default password is `admin`. For security, Rancher recommends changing the default password after logging in.
 
