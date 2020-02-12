@@ -35,7 +35,9 @@ Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global
 
 ### Enabling Project Monitoring
 
-1. From the **Global** view, navigate to the project that you want to configure project monitoring.
+> **Prerequisite:** Cluster monitoring must be [enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/)
+
+1. Go to the project where monitoring should be enabled. Note: When cluster monitoring is enabled, monitoring is also enabled by default in the **System** project.
 
 1. Select **Tools > Monitoring** in the navigation bar.
 
@@ -72,8 +74,8 @@ To access a project-level Grafana instance,
 
 1. Go to the `project-monitoring` application.
 
-1. In the `project-monitoring` application, there are two `/index.html` links: one that leads to a Grafana instance and one that leads to a Prometheus instance. Click the first `/index.html` link, and you will be redirected to a new webpage for Grafana, which shows metrics for the project.
+1. In the `project-monitoring` application, there are two `/index.html` links: one that leads to a Grafana instance and one that leads to a Prometheus instance. When you click the Grafana link, it will redirect you to a new webpage for Grafana, which shows metrics for the cluster.
 
-1. Sign in to Grafana. The default username is `admin` and the default password is `admin`. For security, Rancher recommends changing the default password after logging in.
+1. You will be signed in to the Grafana instance automatically. The default username is `admin` and the default password is `admin`. For security, we recommend that you log out of Grafana, log back in with the `admin` password, and change your password.
 
 **Results:** You will be logged into Grafana from the Grafana instance. After logging in, you can view the preset Grafana dashboards, which are imported via the [Grafana provisioning mechanism](http://docs.grafana.org/administration/provisioning/#dashboards), so you cannot modify them directly. For now, if you want to configure your own dashboards, clone the original and modify the new copy.
