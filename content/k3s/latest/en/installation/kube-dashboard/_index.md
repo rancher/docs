@@ -8,7 +8,9 @@ This installation guide will help you to deploy and configure the [Kubernetes Da
 ### Deploying the Kubernetes Dashboard
 
 ```bash
-sudo k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
+GITHUB_URL=https://github.com/kubernetes/dashboard/releases
+VERSION_KUBE_DASHBOARD=$(curl -w '%{url_effective}' -I -L -s -S ${GITHUB_URL}/latest -o /dev/null | sed -e 's|.*/||')
+sudo k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/${VERSION_KUBE_DASHBOARD}/aio/deploy/recommended.yaml
 ```
 
 ### Dashboard RBAC Configuration
@@ -69,20 +71,19 @@ The Dashboard is now accessible at:
 
 #### Advanced: Remote Access to the Dashboard
 
-Please see: Using [Port Forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to Access Applications in a Cluster.
+Please see the Dashboard documentation: Using [Port Forwarding](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to Access Applications in a Cluster.
 
 ### Upgrading the Dashboard
 
-The latest Dashboard releases are available from: https://github.com/kubernetes/dashboard/releases/latest
-
 ```bash
 sudo k3s kubectl delete ns kubernetes-dashboard
-sudo k3s kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/[...]
+GITHUB_URL=https://github.com/kubernetes/dashboard/releases
+VERSION_KUBE_DASHBOARD=$(curl -w '%{url_effective}' -I -L -s -S ${GITHUB_URL}/latest -o /dev/null | sed -e 's|.*/||')
+sudo k3s kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/${VERSION_KUBE_DASHBOARD}/aio/deploy/recommended.yaml -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
 ```
 
 ### Deleting the Dashboard and admin-user configuration
 
 ```bash
-sudo k3s kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-rc5/aio/deploy/recommended.yaml
-sudo k3s kubectl delete -f dashboard.admin-user.yml -f dashboard.admin-user-role.yml
+sudo k3s kubectl delete ns kubernetes-dashboard
 ```
