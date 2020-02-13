@@ -25,6 +25,7 @@ Passing environment variables to the Rancher container can be done using `-e KEY
 - `localhost`
 - `127.0.0.1`
 - `0.0.0.0`
+- `10.0.0.0/8`
 
 The example below is based on a proxy server accessible at `http://192.168.0.1:3128`, and excluding usage the proxy when accessing network range `192.168.10.0/24` and every hostname under the domain `example.com`.
 
@@ -33,6 +34,6 @@ docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -e HTTP_PROXY="http://192.168.10.1:3128" \
   -e HTTPS_PROXY="http://192.168.10.1:3128" \
-  -e NO_PROXY="localhost,127.0.0.1,0.0.0.0,192.168.10.0/24,example.com" \
+  -e NO_PROXY="localhost,127.0.0.1,0.0.0.0,10.0.0.0/8,192.168.10.0/24,example.com" \
   rancher/rancher:latest
 ```
