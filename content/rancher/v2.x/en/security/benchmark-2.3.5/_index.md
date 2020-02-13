@@ -27,9 +27,10 @@ For more detail about each audit, including rationales and remediations for fail
 
 Rancher and RKE install Kubernetes services via Docker containers. Configuration is defined by arguments passed to the container at the time of initialization, not via configuration files.
 
-Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Where the commands differ from the original CIS benchmark, the commands specific to Rancher Labs are provided for testing. Only **scored** tests will be covered in this guide.
+Where control audits differ from the original CIS benchmark, the audit commands specific to Rancher Labs are provided for testing.
+When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the [jq](https://stedolan.github.io/jq/) and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (with valid config) tools to and are required in the testing and evaluation of test results.
 
-When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the `jq` and `kubectl` (with valid config) commands to provide human-readable formatting.
+> NOTE: only scored tests are covered in this guide.
 
 ### Controls
 
