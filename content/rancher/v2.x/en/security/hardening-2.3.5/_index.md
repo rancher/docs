@@ -26,7 +26,7 @@ For more detail about evaluating a hardened cluster against the official CIS ben
 
 The folowing `sysctl` configuration is recommended for all nodes type in the cluster. Set the following parameters in `/etc/sysctl.d/90-kubelet.conf`:
 
-``` bash
+```
 vm.overcommit_memory=1
 vm.panic_on_oom=0
 kernel.panic=10
@@ -96,11 +96,43 @@ communicate with each other and other network endpoints.
 Network Policies are namespace scoped. When a network policy is introduced to a given
 namespace, all traffic not allowed by the policy is denied. However, if there are no network
 policies in a namespace all traffic will be allowed into and out of the pods in that
-namespace.
+namespace. To use network policies, you must be using a networking solution which supports `NetworkPolicy`.
+A CNI (container network interface) plugin can provide the needed `NetworkPolicy` resource.
+For this guide [canal](https://github.com/projectcalico/canal) will be used to provide
+the `NetworkPolicy` resource. Additional information about CNI providers can be found
+[here](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)
 
-> todo: add information about network policies and provide default example here:
+Once a CNI provider is enabled on a cluster that supports the `NetworkPolicy` resouce a default network policy
+can be applied. For reference purposes a **permissive** example is provide below. If you want to
+allow all traffic to all pods in a namespace (even if policies are added that cause some pods to be treated as “isolated”),
+you can create a policy that explicitly allows all traffic in that namespace. Save the following `yaml` as
+`default-allow-all.yaml`
 
 
+``` yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-allow-all
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+
+Create a bash script file called `apply_networkPolicy_to_all_ns.sh`. Be sure to
+`chmod +x apply_networkPolicy_to_all_ns.sh` so the script has execute permissions.
+
+```
+#!/bin/bash -e
+
+for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+  kubectl apply -f default-allow-all.yaml -n ${namespace}
+done
+```
+Execute this scipt to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
 
 ### Reference Hardened RKE `config.yml` configuration 
 
