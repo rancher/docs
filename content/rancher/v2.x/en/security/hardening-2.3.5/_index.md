@@ -96,18 +96,19 @@ communicate with each other and other network endpoints.
 Network Policies are namespace scoped. When a network policy is introduced to a given
 namespace, all traffic not allowed by the policy is denied. However, if there are no network
 policies in a namespace all traffic will be allowed into and out of the pods in that
-namespace. To use network policies, you must be using a networking solution which supports `NetworkPolicy`.
-A CNI (container network interface) plugin can provide the needed `NetworkPolicy` resource.
-For this guide [canal](https://github.com/projectcalico/canal) will be used to provide
-the `NetworkPolicy` resource. Additional information about CNI providers can be found
+namespace. To enforce network policies, a CNI (container network interface) plugin must be enabled.
+This guide uses [canal](https://github.com/projectcalico/canal) to provide the policy enforcement.
+Additional information about CNI providers can be found
 [here](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)
 
-Once a CNI provider is enabled on a cluster that supports the `NetworkPolicy` resouce a default network policy
-can be applied. For reference purposes a **permissive** example is provide below. If you want to
-allow all traffic to all pods in a namespace (even if policies are added that cause some pods to be treated as “isolated”),
+Once a CNI provider is enabled on a cluster a default network policy can be applied. For reference purposes a
+**permissive** example is provide below. If you want to allow all traffic to all pods in a namespace
+(even if policies are added that cause some pods to be treated as “isolated”),
 you can create a policy that explicitly allows all traffic in that namespace. Save the following `yaml` as
-`default-allow-all.yaml`
+`default-allow-all.yaml`. Additional [documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+about network poilices can be found on the Kubernetes site.
 
+> This `NetworkPolicy` is not recommended for production use
 
 ``` yaml
 ---
