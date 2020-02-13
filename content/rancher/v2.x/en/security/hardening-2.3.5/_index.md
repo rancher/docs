@@ -136,7 +136,7 @@ done
 Execute this script to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
 
 ### Reference Hardened RKE `cluster.yml` configuration
-The reference `cluster.yml` provides the configuration needed to acheive a hardened install
+The reference `cluster.yml` is used by the RKE cli that provides the configuration needed to acheive a hardened install
 of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
 provided with additional details about the configuration items.
 
