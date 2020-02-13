@@ -8,15 +8,82 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 ## Rancher Nodes
 
-The following table lists the ports that need to be open to and from nodes that are running the Rancher server container for [Docker installs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node-install/) or pods for [installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/).
+The following table lists the ports that need to be open to and from nodes that are running the Rancher server.
 
-{{< ports-rancher-nodes >}}
+The port requirements differ based on whether Rancher is installed in a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
 
-**Note** Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
+{{% tabs %}}
+{{% tab "K3s" %}}
+
+The K3s server needs port 6443 to be accessible by the nodes.
+
+The nodes need to be able to reach other nodes over UDP port 8472 when Flannel VXLAN is used. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel. However, if you do not use Flannel and provide your own custom CNI, then port 8472 is not needed by K3s.
+
+If you wish to utilize the metrics server, you will need to open port 10250 on each node.
+
+> **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+
+<figcaption>Inbound Rules for Rancher Server Nodes</figcaption>
+
+| Protocol | Port | Source | Description
+|-----|-----|----------------|---|
+| TCP | 6443 | K3s server nodes | Kubernetes API
+| UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN.
+| TCP | 10250 | K3s server and agent nodes | kubelet
+
+Typically all outbound traffic is allowed.
+
+{{% /tab %}}
+{{% tab "RKE" %}}
+<figcaption>Inbound Rules for Rancher Nodes</figcaption>
+
+| Protocol | Port | Source | Description |
+|-----|-----|----------------|---|
+| TCP | 80 | Load Balancer/Reverse Proxy | HTTP traffic to Rancher UI/API |
+| TCP | 443 | <ul><li>Load Balancer/Reverse Proxy</li><li>IPs of all cluster nodes and other API/UI clients</li></ul> | HTTPS traffic to Rancher UI/API |
+
+<figcaption>Outbound Rules for Rancher Nodes</figcaption>
+
+| Protocol | Port | Destination | Description |
+|-----|-----|----------------|---|
+| TCP | 443 | `35.160.43.145`,`35.167.242.46`,`52.33.59.17` | Rancher catalog (git.rancher.io) |
+| TCP | 22 | Any node created using a node driver | SSH provisioning of node by node driver |
+| TCP | 2376 | Any node created using a node driver | Docker daemon TLS port used by node driver |
+| TCP | Provider dependent | Port of the Kubernetes API endpoint in hosted cluster | Kubernetes API |
+
+{{% /tab %}}
+{{% tab "Docker" %}}
+
+<figcaption>Inbound Rules for Rancher Node</figcaption>
+
+| Protocol | Port | Source | Description
+|-----|-----|----------------|---|
+| TCP | 80 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used
+| TCP | 443 | <ul><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl
+
+<figcaption>Outbound Rules for Rancher Node</figcaption>
+
+| Protocol | Port | Source | Description |
+|-----|-----|----------------|---|
+| TCP | 22 | Any node IP from a node created using Node Driver | SSH provisioning of nodes using Node Driver |
+| TCP | 443 | `35.160.43.145/32`,`35.167.242.46/32`,`52.33.59.17/32` | git.rancher.io (catalogs) |
+| TCP | 2376 | Any node IP from a node created using a node driver | Docker daemon TLS port used by Docker Machine |
+| TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
+
+{{% /tab %}}
+{{% /tabs %}}
+
+> **Notes:**
+>
+> - Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
+> - Kubernetes recommends TCP 30000-32767 for node port services.
+> - For firewalls, traffic may need to be enabled within the cluster and pod CIDR.
 
 ## Downstream Kubernetes Cluster Nodes
 
-The ports required to be open for cluster nodes changes depending on how the cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
+Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.
+
+The port requirements differ depending on how the downstream cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster types]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
 
 >**Tip:**
 >
