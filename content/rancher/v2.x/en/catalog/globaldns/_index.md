@@ -7,7 +7,7 @@ _Available as of v2.2.0_
 
 Rancher's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would still be accessible.
 
-> **Note:** Global DNS is only available in [HA setups]({{< baseurl >}}/rancher/v2.x/en/installation/ha/) with the [`local` cluster enabled]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster).
+> **Note:** Global DNS is only available in [Kubernetes installations]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) with the [`local` cluster enabled]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#import-local-cluster).
 
 ## Global DNS Providers
 
@@ -35,7 +35,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 1. From the **Global View**, select **Tools > Global DNS Providers**.
 1. To add a provider, choose from the available provider options and configure the Global DNS Provider with necessary credentials and an optional domain.
-1. (Optional) Add additional users so they could  use the provider when creating Globel DNS entries as well as manage the Global DNS provider.
+1. (Optional) Add additional users so they could  use the provider when creating Global DNS entries as well as manage the Global DNS provider.
 
 {{% accordion id="route53" label="Route53" %}}
 1. Enter a **Name** for the provider.
@@ -63,7 +63,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 >**Notes:**
 >
->- Alibaba Cloud SDK uses TZ data. It needs to be present on `/usr/share/zoneinfo` path of the nodes running [`local` cluster]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#import-local-cluster), and it is mounted to the external DNS pods. If it is not available on the nodes, please follow the [instruction](https://www.ietf.org/timezones/tzdb-2018f/tz-link.html) to prepare it.
+>- Alibaba Cloud SDK uses TZ data. It needs to be present on `/usr/share/zoneinfo` path of the nodes running [`local` cluster]({{< baseurl >}}/rancher/v2.x/en/installation/options/chart-options/#import-local-cluster), and it is mounted to the external DNS pods. If it is not available on the nodes, please follow the [instruction](https://www.ietf.org/timezones/tzdb-2018f/tz-link.html) to prepare it.
 >- Different versions of AliDNS have different allowable TTL range, where the default TTL for a global DNS entry may not be valid. Please see the [reference](https://www.alibabacloud.com/help/doc-detail/34338.htm) before adding an AliDNS entry.
 {{% /accordion %}}
 
@@ -81,7 +81,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 In order for Global DNS entries to be programmed, you will need to add a specific annotation on an ingress in your application or target project and this ingress needs to use a specific `hostname` and an annotation that should match the FQDN of the Global DNS entry.
 
-1. For any application that you want targetted for your Global DNS entry, find an ingress associated with the application.
+1. For any application that you want targeted for your Global DNS entry, find an ingress associated with the application.
 1. In order for the DNS to be programmed, the following requirements must be met:
    * The ingress routing rule must be set to use a `hostname` that matches the FQDN of the Global DNS entry.
    * The ingress must have an annotation (`rancher.io/globalDNS.hostname`) and the value of this annotation should match the FQDN of the Global DNS entry.

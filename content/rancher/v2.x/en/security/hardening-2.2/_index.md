@@ -1,15 +1,19 @@
 ---
-title: Hardening Guide - Rancher v2.2.x
+title: Hardening Guide v2.2
 weight: 101
 ---
 
-### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+
+> This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+
+This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+
+Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
+------------------------|----------------|-----------------------|------------------
+Hardening Guide v2.2 | Rancher v2.2.x | Benchmark v1.4.1, 1.4.0 | Kubernetes 1.13
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
-
-### Overview
-
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x with Kubernetes v1.13. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/).
 
@@ -115,7 +119,7 @@ This supports the following controls:
 On the control plane hosts for the Rancher HA cluster run:
 
 ``` bash
-stat /etc/kubernetes/encryption.yaml
+stat /opt/kubernetes/encryption.yaml
 ```
 
 Ensure that:
@@ -147,14 +151,14 @@ Where `aescbc` is the key type, and `secret` is populated with a 32-byte base64 
 
 ``` bash
 head -c 32 /dev/urandom | base64 -i -
-touch /etc/kubernetes/encryption.yaml
+touch /opt/kubernetes/encryption.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/encryption.yaml
-chmod 0600 /etc/kubernetes/encryption.yaml
+chown root:root /opt/kubernetes/encryption.yaml
+chmod 0600 /opt/kubernetes/encryption.yaml
 ```
 
 - Set the contents to:
@@ -174,6 +178,10 @@ resources:
 ```
 
 Where `secret` is the 32-byte base64-encoded string generated in the first step.
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ### 1.1.3 - Install the audit log configuration on all control plane nodes.
 
@@ -202,7 +210,7 @@ This supports the following controls:
 On each control plane node, run:
 
 ``` bash
-stat /etc/kubernetes/audit.yaml
+stat /opt/kubernetes/audit.yaml
 ```
 
 Ensure that:
@@ -226,14 +234,14 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /etc/kubernetes/audit.yaml
+touch /opt/kubernetes/audit.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/audit.yaml
-chmod 0600 /etc/kubernetes/audit.yaml
+chown root:root /opt/kubernetes/audit.yaml
+chmod 0600 /opt/kubernetes/audit.yaml
 ```
 
 - Set the contents to:
@@ -244,6 +252,10 @@ kind: Policy
 rules:
 - level: Metadata
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ### 1.1.4 - Place Kubernetes event limit configuration on each control plane host
 
@@ -268,8 +280,8 @@ This supports the following control:
 On nodes with the `controlplane` role run:
 
 ``` bash
-stat /etc/kubernetes/admission.yaml
-stat /etc/kubernetes/event.yaml
+stat /opt/kubernetes/admission.yaml
+stat /opt/kubernetes/event.yaml
 ```
 
 For each file, ensure that:
@@ -285,7 +297,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /etc/kubernetes/event.yaml
+  path: /opt/kubernetes/event.yaml
 ```
 
 For `event.yaml` ensure that the file contains:
@@ -306,17 +318,17 @@ On nodes with the `controlplane` role:
 - Generate an empty configuration file:
 
 ``` bash
-touch /etc/kubernetes/admission.yaml
-touch /etc/kubernetes/event.yaml
+touch /opt/kubernetes/admission.yaml
+touch /opt/kubernetes/event.yaml
 ```
 
 - Set the file ownership to `root:root` and the permissions to `0600`
 
 ``` bash
-chown root:root /etc/kubernetes/admission.yaml
-chown root:root /etc/kubernetes/event.yaml
-chmod 0600 /etc/kubernetes/admission.yaml
-chmod 0600 /etc/kubernetes/event.yaml
+chown root:root /opt/kubernetes/admission.yaml
+chown root:root /opt/kubernetes/event.yaml
+chmod 0600 /opt/kubernetes/admission.yaml
+chmod 0600 /opt/kubernetes/event.yaml
 ```
 
 - For `admission.yaml` set the contents to:
@@ -326,7 +338,7 @@ apiVersion: apiserver.k8s.io/v1alpha1
 kind: AdmissionConfiguration
 plugins:
 - name: EventRateLimit
-  path: /etc/kubernetes/event.yaml
+  path: /opt/kubernetes/event.yaml
 ```
 
 - For `event.yaml` set the contents to:
@@ -339,6 +351,10 @@ limits:
   qps: 5000
   burst: 20000
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
 
@@ -359,6 +375,7 @@ Ensure Kubelet options are configured to match CIS controls.
 To pass the following controls in the CIS benchmark, ensure the appropriate flags are passed to the Kubelet.
 
 - 2.1.1 -  Ensure that the `--anonymous-auth` argument is set to false (Scored)
+- 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 - 2.1.6 - Ensure that the `--streaming-connection-idle-timeout` argument is not set to 0 (Scored)
 - 2.1.7 - Ensure that the `--protect-kernel-defaults` argument is set to true (Scored)
 - 2.1.8 - Ensure that the `--make-iptables-util-chains` argument is set to true (Scored)
@@ -371,8 +388,9 @@ To pass the following controls in the CIS benchmark, ensure the appropriate flag
 Inspect the Kubelet containers on all hosts and verify that they are running with the following options:
 
 - `--streaming-connection-idle-timeout=<duration greater than 0>`
-- `--protect-kernel-defaults=false`
-- `--make-iptables-util-chains=false`
+- `--authorization-mode=Webhook`
+- `--protect-kernel-defaults=true`
+- `--make-iptables-util-chains=true`
 - `--event-qps=0`
 - `--anonymous-auth=false`
 - `--feature-gates="RotateKubeletServerCertificate=true"`
@@ -386,6 +404,7 @@ Inspect the Kubelet containers on all hosts and verify that they are running wit
 services:
   kubelet:
     extra_args:
+      authorization-mode: "Webhook"
       streaming-connection-idle-timeout: "<duration>"
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
@@ -454,14 +473,14 @@ To pass the following controls for the kube-api server ensure RKE configuration 
 --profiling=false
 --service-account-lookup=true
 --enable-admission-plugins= "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
---encryption-provider-config=/etc/kubernetes/encryption.yaml
---admission-control-config-file=/etc/kubernetes/admission.yaml
+--encryption-provider-config=/opt/kubernetes/encryption.yaml
+--admission-control-config-file=/opt/kubernetes/admission.yaml
 --audit-log-path=/var/log/kube-audit/audit-log.json
 --audit-log-maxage=5
 --audit-log-maxbackup=5
 --audit-log-maxsize=100
 --audit-log-format=json
---audit-policy-file=/etc/kubernetes/audit.yaml
+--audit-policy-file=/opt/kubernetes/audit.yaml
 --tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
 ```
 
@@ -484,17 +503,18 @@ services:
       profiling: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      encryption-provider-config: /etc/kubernetes/encryption.yaml
-      admission-control-config-file: "/etc/kubernetes/admission.yaml"
+      encryption-provider-config: /opt/kubernetes/encryption.yaml
+      admission-control-config-file: "/opt/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
       audit-log-maxbackup: "5"
       audit-log-maxsize: "100"
       audit-log-format: "json"
-      audit-policy-file: /etc/kubernetes/audit.yaml
+      audit-policy-file: /opt/kubernetes/audit.yaml
       tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
+      - "/opt/kubernetes:/opt/kubernetes"
 ```
 
 - Reconfigure the cluster:
@@ -502,6 +522,10 @@ services:
 ``` bash
 rke up --config cluster.yml
 ```
+
+**NOTE:**
+
+Files that are placed in `/opt/kubernetes` need to be mounted in using the `extra_binds` functionality in RKE.
 
 ### 2.1.3 - Configure scheduler options
 
@@ -889,11 +913,11 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#advanced-options>
+- <https://rancher.com/docs/rancher/v2.x/en/installation/options/chart-options/#advanced-options>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 
-### 3.2.1 - Change the local admin password from the default value
+### 3.2.1 - Change the local administrator password from the default value
 
 **Profile Applicability**
 
@@ -901,11 +925,11 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 **Description**
 
-The local admin password should be changed from the default.
+The local administrator password should be changed from the default.
 
 **Rationale**
 
-The default admin password is common across all Rancher installations and should be changed immediately upon startup.
+The default administrator password is common across all Rancher installations and should be changed immediately upon startup.
 
 **Audit**
 
@@ -1035,6 +1059,7 @@ services:
   kubelet:
     extra_args:
       streaming-connection-idle-timeout: "1800s"
+      authorization-mode: "Webhook"
       protect-kernel-defaults: "true"
       make-iptables-util-chains: "true"
       event-qps: "0"
@@ -1048,17 +1073,18 @@ services:
       profiling: "false"
       service-account-lookup: "true"
       enable-admission-plugins: "ServiceAccount,NamespaceLifecycle,LimitRanger,PersistentVolumeLabel,DefaultStorageClass,ResourceQuota,DefaultTolerationSeconds,AlwaysPullImages,DenyEscalatingExec,NodeRestriction,EventRateLimit,PodSecurityPolicy"
-      encryption-provider-config: /etc/kubernetes/encryption.yaml
-      admission-control-config-file: "/etc/kubernetes/admission.yaml"
+      encryption-provider-config: /opt/kubernetes/encryption.yaml
+      admission-control-config-file: "/opt/kubernetes/admission.yaml"
       audit-log-path: "/var/log/kube-audit/audit-log.json"
       audit-log-maxage: "5"
       audit-log-maxbackup: "5"
       audit-log-maxsize: "100"
       audit-log-format: "json"
-      audit-policy-file: /etc/kubernetes/audit.yaml
+      audit-policy-file: /opt/kubernetes/audit.yaml
       tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     extra_binds:
       - "/var/log/kube-audit:/var/log/kube-audit"
+      - "/opt/kubernetes:/opt/kubernetes"
   scheduler:
     extra_args:
       profiling: "false"

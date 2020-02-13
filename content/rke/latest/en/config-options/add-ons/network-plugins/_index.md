@@ -10,6 +10,8 @@ RKE provides the following network plug-ins that are deployed as add-ons:
 - Canal
 - Weave
 
+> **Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn’t allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you tear down the entire cluster and all its applications.
+
 By default, the network plug-in is `canal`. If you want to use another network plug-in, you need to specify which network plug-in to enable at the cluster level in the `cluster.yml`.
 
 ```yaml
@@ -20,7 +22,7 @@ network:
 
 The images used for network plug-ins are under the [`system_images` directive]({{< baseurl >}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each network plug-in, but these can be overridden by changing the image tag in `system_images`.
 
-## Disabling deployment of a network plug-in
+# Disabling Deployment of a Network Plug-in
 
 You can disable deploying a network plug-in by specifying `none` to the network `plugin` directive in the cluster configuration.
 
@@ -29,11 +31,11 @@ network:
     plugin: none
 ```
 
-## Network Plug-in Options
+# Network Plug-in Options
 
 Besides the different images that could be used to deploy network plug-ins, certain network plug-ins support additional options that can be used to customize the network plug-in.
 
-### Canal Network Plug-in Options
+## Canal Network Plug-in Options
 
 ```yaml
 network:
@@ -48,7 +50,7 @@ network:
 By setting the `canal_iface`, you can configure the interface to use for inter-host communication.
 The `canal_flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
-### Flannel Network Plug-in Options
+## Flannel Network Plug-in Options
 
 ```yaml
 network:
@@ -63,7 +65,7 @@ network:
 By setting the `flannel_iface`, you can configure the interface to use for inter-host communication.
 The `flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
-### Calico Network Plug-in Options
+## Calico Network Plug-in Options
 
 ```yaml
 network:
@@ -80,7 +82,7 @@ Calico currently only supports 2 cloud providers, AWS or GCE, which can be set u
 - `aws`
 - `gce`
 
-### Weave Network Plug-in Options
+## Weave Network Plug-in Options
 
 ```yaml
 network:
@@ -92,3 +94,8 @@ network:
 #### Weave encryption
 
 Weave encryption can be enabled by passing a string password to the network provider config.
+
+
+## Custom Network Plug-ins
+
+It is possible to add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. In the `addons` field, you can add the add-on manifest of a cluster that has the network plugin-that you want, as shown in [this example.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/custom-network-plugin-example)

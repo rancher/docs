@@ -3,50 +3,50 @@ title: Technical
 weight: 8006
 ---
 
-### How can I reset the admin password?
+### How can I reset the administrator password?
 
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (Helm):
+Kubernetes install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (RKE add-on):
+Kubernetes install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
 
 ### I deleted/deactivated the last admin, how can I fix it?
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> ensure-default-admin
-New default admin user (user-xxxxx)
-New password for default admin user (user-xxxxx):
+New default administrator (user-xxxxx)
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (Helm):
+Kubernetes install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (RKE add-on):
+Kubernetes install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- ensure-default-admin
@@ -56,7 +56,7 @@ New password for default admin user (user-xxxxx):
 
 ### How can I enable debug logging?
 
-* Single node install
+* Docker Install
  * Enable
 ```
 $ docker exec -ti <container_id> loglevel --set debug
@@ -70,7 +70,7 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
-* High Availability install (Helm)
+* Kubernetes install (Helm)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -90,7 +90,7 @@ OK
 OK
 ```
 
-* High Availability install (RKE add-on)
+* Kubernetes install (RKE add-on)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -120,8 +120,8 @@ The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, thi
 
 ### Where is the state of Rancher stored?
 
-- Single node install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
-- High Availability install: in the etcd of the RKE cluster created to run Rancher.
+- Docker Install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
+- Kubernetes install: in the etcd of the RKE cluster created to run Rancher.
 
 ### How are the supported Docker versions determined?
 

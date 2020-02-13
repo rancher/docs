@@ -7,7 +7,7 @@ The commands/steps listed on this page can be used to check name resolution issu
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
-Before running the DNS checks, make sure that [the overlay network is functioning correctly]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/networking/#check-if-overlay-network-is-functioning-correctly) as this can also be the reason why DNS resolution (partly) fails.
+Before running the DNS checks, check the [default DNS provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#default-dns-provider) for your cluster and make sure that [the overlay network is functioning correctly]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/networking/#check-if-overlay-network-is-functioning-correctly) as this can also be the reason why DNS resolution (partly) fails.
 
 ### Check if DNS pods are running
 
@@ -15,7 +15,13 @@ Before running the DNS checks, make sure that [the overlay network is functionin
 kubectl -n kube-system get pods -l k8s-app=kube-dns
 ```
 
-Example output:
+Example output when using CoreDNS:
+```
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-799dffd9c4-6jhlz   1/1     Running   0          76m
+```
+
+Example output when using kube-dns:
 ```
 NAME                        READY   STATUS    RESTARTS   AGE
 kube-dns-5fd74c7488-h6f7n   3/3     Running   0          4m13s
@@ -123,9 +129,45 @@ command terminated with exit code 1
 
 Cleanup the alpine DaemonSet by running `kubectl delete ds/dnstest`.
 
-### Check upstream nameservers in kubedns container
+### CoreDNS specific
 
-By default, the configured nameservers on the host (in `/etc/resolv.conf`) will be used as upstream nameservers for `kube-dns`. Sometimes the host will run a local caching DNS nameserver, which means the address in `/etc/resolv.conf` will point to an address in the loopback range (`127.0.0.0/8`) which will be unreachable by the container. In case of Ubuntu 18.04, this is done by `systemd-resolved`. Since Rancher v2.0.7, we detect if `systemd-resolved` is running, and will automatically use the `/etc/resolv.conf` file with the correct upstream nameservers (which is located at `/run/systemd/resolve/resolv.conf`).
+#### Check CoreDNS logging
+
+```
+kubectl -n kube-system logs -l k8s-app=kube-dns
+```
+
+#### Check configuration
+
+CoreDNS configuration is stored in the configmap `coredns` in the `kube-system` namespace.
+
+```
+kubectl -n kube-system get configmap coredns -o go-template={{.data.Corefile}}
+```
+
+#### Check upstream nameservers in resolv.conf
+
+By default, the configured nameservers on the host (in `/etc/resolv.conf`) will be used as upstream nameservers for CoreDNS. You can check this file on the host or run the following Pod with `dnsPolicy` set to `Default`, which will inherit the `/etc/resolv.conf` from the host it is running on.
+
+```
+kubectl run -i --restart=Never --rm test-${RANDOM} --image=ubuntu --overrides='{"kind":"Pod", "apiVersion":"v1", "spec": {"dnsPolicy":"Default"}}' -- sh -c 'cat /etc/resolv.conf'
+```
+
+#### Enable query logging
+
+Enabling query logging can be done by enabling the [log plugin](https://coredns.io/plugins/log/) in the Corefile configuration in the configmap `coredns`. You can do so by using `kubectl -n kube-system edit configmap coredns` or use the command below to replace the configuration in place:
+
+```
+kubectl get configmap -n kube-system coredns -o json |  kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\n    loadbalance_g' | kubectl apply -f -
+```
+
+All queries will now be logged and can be checked using the command in [Check CoreDNS logging](#check-coredns-logging).
+
+### kube-dns specific
+
+#### Check upstream nameservers in kubedns container
+
+By default, the configured nameservers on the host (in `/etc/resolv.conf`) will be used as upstream nameservers for kube-dns. Sometimes the host will run a local caching DNS nameserver, which means the address in `/etc/resolv.conf` will point to an address in the loopback range (`127.0.0.0/8`) which will be unreachable by the container. In case of Ubuntu 18.04, this is done by `systemd-resolved`. Since Rancher v2.0.7, we detect if `systemd-resolved` is running, and will automatically use the `/etc/resolv.conf` file with the correct upstream nameservers (which is located at `/run/systemd/resolve/resolv.conf`).
 
 Use the following command to check the upstream nameservers used by the kubedns container:
 

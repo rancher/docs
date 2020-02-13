@@ -1,5 +1,6 @@
 ---
-title: Load Balancers
+title: "Layer 4 and Layer 7 Load Balancing"
+description: "Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing. Learn about the support for each way in different deployments"
 weight: 3041
 aliases:
   - /rancher/v2.x/en/concepts/load-balancing/
@@ -8,7 +9,11 @@ Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer
 
 ## Layer-4 Load Balancer
 
-Layer-4 load balancer (or the external load balancer) forwards traffic to Nodeports. Layer-4 load balancer allows you to forward both HTTP and TCP traffic. Layer-4 load balancer is supported by the underlying cloud provider. As a result, when you deploy RKE clusters on bare metal servers and vSphere clusters, layer-4 load balancer is not supported.
+Layer-4 load balancer (or the external load balancer) forwards traffic to Nodeports. Layer-4 load balancer allows you to forward both HTTP and TCP traffic.
+
+Often, the Layer-4 load balancer is supported by the underlying cloud provider, so when you deploy RKE clusters on bare-metal servers and vSphere clusters, Layer-4 load balancer is not supported. However, a single [globally managed config-map](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/) can be used to expose services on NGINX or third-party ingress.
+
+> **Note:** It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in Rancher or RKE.
 
 ### Support for Layer-4 Load Balancing
 
@@ -16,13 +21,16 @@ Support for layer-4 load balancer varies based on the underlying cloud provider.
 
 Cluster Deployment                            | Layer-4 Load Balancer Support
 ----------------------------------------------|--------------------------------
-Amazon EKS                                    | Supported by AWS cloud provider
-Google GKE                                    | Supported by GCE cloud provider
-Azure AKS                                     | Supported by Azure cloud provider
-RKE on EC2                                    | Supported by AWS cloud provider
-RKE on DigitalOcean                           | Not Supported
-RKE on vSphere                                | Not Supported
-RKE on Custom Hosts<br/>(e.g. bare-metal servers) | Not Supported
+Amazon EKS                | Supported by AWS cloud provider
+Google GKE                   | Supported by GCE cloud provider
+Azure AKS                       | Supported by Azure cloud provider
+RKE on EC2                 | Supported by AWS cloud provider
+RKE on DigitalOcean         | Limited NGINX or third-party Ingress*
+RKE on vSphere           | Limited NGINX or third party-Ingress*
+RKE on Custom Hosts<br/>(e.g. bare-metal servers) | Limited NGINX or third-party Ingress*
+Third-party MetalLB | Limited NGINX or third-party Ingress*
+
+\* Services can be exposed through a single [globally managed config-map.](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/)
 
 ## Layer-7 Load Balancer
 
@@ -59,8 +67,8 @@ The benefit of using xip.io is that you obtain a working entrypoint URL immediat
 
 #### Tutorials
 
-- [High Availability Installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
-- [High Availability Installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
-- [Single Node Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
+- [Kubernetes installation with External Load Balancer (HTTPS/Layer 7)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install-external-lb)
+- [Kubernetes installation with External Load Balancer (TCP/Layer 4)]({{< baseurl >}}/rancher/v2.x/en/installation/ha-server-install)
+- [Docker Installation with External Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/single-node-install-external-lb)
 
 

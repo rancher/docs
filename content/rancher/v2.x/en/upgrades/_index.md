@@ -13,8 +13,8 @@ aliases:
 
 In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade:
 
-- [Single-Node Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/single-node-rollbacks)
-- [High-Availability Rollbacks]({{< baseurl >}}/rancher/v2.x/en/upgrades/ha-server-rollbacks)
+- [Rollbacks for Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/upgrades/single-node-rollbacks)
+- [Rollbacks for Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/ha-server-rollbacks)
 
 > **Note:** If you are rolling back to versions in either of these scenarios, you must follow some extra [instructions]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/) in order to get your clusters working.
 >

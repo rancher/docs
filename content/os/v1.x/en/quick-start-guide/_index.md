@@ -92,7 +92,7 @@ $ sudo system-docker run -d --net=host --name busydash husseingalal/busydash
 ```
 In the command, we used `--net=host` to tell System Docker not to containerize the container's networking, and use the host’s networking instead. After running the container, you can see the monitoring server by accessing `http://<IP_OF_MACHINE>`.
 
-![System Docker Container]({{< baseurl >}}/img/os/Rancher_busydash.png)
+{{< img "/img/os/Rancher_busydash.png" "System Docker Container">}}
 
 To make the container survive during the reboots, you can create the `/opt/rancher/bin/start.sh` script, and add the Docker start line to launch the Docker at each startup.
 

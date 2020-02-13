@@ -101,7 +101,7 @@ Workload metrics display the hardware utilization for a Kubernetes workload. You
 
 1. From the **Global** view, navigate to the project that you want to view workload metrics.
 
-1. Select **Workloads > Workloads** in the navigation bar.
+1. From the main navigation bar, choose **Resources > Workloads.** In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.
 
 1. Select a specific workload and click on its name.
 

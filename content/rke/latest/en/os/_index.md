@@ -1,15 +1,13 @@
 ---
 title: Requirements
 weight: 5
-aliases:
-  - /rke/latest/en/installation/os
 ---
 **In this section:** 
 
 <!-- TOC -->
 
 - [Operating System](#operating-system)
-
+    - [General Linux Requirements](#general-linux-requirements)
     - [Red Hat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
 
         - [Using upstream Docker](#using-upstream-docker)
@@ -29,6 +27,8 @@ aliases:
 
 ## Operating System
 
+### General Linux Requirements
+
 RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
 
 - [SSH user]({{< baseurl >}}/rke/latest/en/config-options/nodes/#ssh-user) - The SSH user used for node access must be a member of the `docker` group on the node:
@@ -36,6 +36,8 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
    ```
    usermod -aG docker <user_name>
    ```
+   
+> **Note:** Users added to the `docker` group are granted effective root permissions on the host by means of the Docker API. Only choose a user that is intended for this purpose and has its credentials and access properly secured. 
 
    See [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to see how you can configure access to Docker without using the `root` user.
 
@@ -45,15 +47,16 @@ RKE runs on almost any Linux OS with Docker installed. Most of the development a
    * `modprobe module_name`
    * `lsmod | grep module_name`
    * `grep module_name /lib/modules/$(uname -r)/modules.builtin`, if it's a built-in module
-   * bash script
-     ```bash
+   * The following bash script
+
+```bash
      for module in br_netfilter ip6_udp_tunnel ip_set ip_set_hash_ip ip_set_hash_net iptable_filter iptable_nat iptable_mangle iptable_raw nf_conntrack_netlink nf_conntrack nf_conntrack_ipv4   nf_defrag_ipv4 nf_nat nf_nat_ipv4 nf_nat_masquerade_ipv4 nfnetlink udp_tunnel veth vxlan x_tables xt_addrtype xt_conntrack xt_comment xt_mark xt_multiport xt_nat xt_recent xt_set  xt_statistic xt_tcpudp;
      do
        if ! lsmod | grep -q $module; then
-         echo "module $module is not present"
-       fi
-     done;     
-     ```
+         echo "module $module is not present";
+       fi;
+     done
+```
 
 Module name |
 ------------|
@@ -161,13 +164,21 @@ By default, Atomic hosts do not come with a Docker group. You can update the own
 
 ## Software
 
-- Docker - Each Kubernetes version supports different Docker versions.
+This section describes the requirements for Docker, Kubernetes, and SSH.
 
-Kubernetes Version | Supported Docker version(s) |
-----|----|
-v1.13.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
-v1.12.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
-v1.11.x | RHEL Docker 1.13, 17.03.2, 18.06.2, 18.09.2 |
+### OpenSSH
+
+In order to SSH into each node, OpenSSH 7.0+ must be installed on each node.
+
+### Kubernetes
+
+Refer to the [RKE release notes](https://github.com/rancher/rke/releases) for the supported versions of Kubernetes.
+
+### Docker
+
+Each Kubernetes version supports different Docker versions. The Kubernetes release notes contain the [current list](https://kubernetes.io/docs/setup/release/notes/#dependencies) of validated Docker versions.
+
+### Installing Docker
 
 You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker. For RHEL, please see [How to install Docker on Red Hat Enterprise Linux 7](https://access.redhat.com/solutions/3727511).
 
@@ -177,6 +188,8 @@ Docker Version   | Install Script |
 18.06.2 |  <code>curl https://releases.rancher.com/install-docker/18.06.2.sh &#124; sh</code> |
 17.03.2 |  <code>curl https://releases.rancher.com/install-docker/17.03.2.sh &#124; sh</code> |
 
+### Checking the Installed Docker Version
+
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running `docker version --format '{{.Server.Version}}'`.
 
 ```
@@ -184,10 +197,7 @@ docker version --format '{{.Server.Version}}'
 17.03.2-ce
 ```
 
-- OpenSSH 7.0+ - In order to SSH into each node, OpenSSH must be installed on each node.
-
 ## Ports
-
 {{< ports-rke-nodes >}}
 {{< requirements_ports_rke >}}
 

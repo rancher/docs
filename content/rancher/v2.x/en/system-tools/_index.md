@@ -3,12 +3,20 @@ title: System Tools
 weight: 6001
 ---
 
-System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/). The tasks include:
+System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for installing Rancher on Kubernetes]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/). The tasks include:
 
 * Collect logging and system metrics from nodes.
 * Remove Kubernetes resources created by Rancher.
 
-### Download System Tools
+The following commands are available:
+
+| Command | Description
+|---|---
+| [logs](#logs) | Collect Kubernetes cluster component logs from nodes.
+| [stats](#stats) | Stream system metrics from nodes.
+| [remove](#remove) | Remove Kubernetes resources created by Rancher.
+
+# Download System Tools
 
 You can download the latest version of System Tools from the [GitHub releases page](https://github.com/rancher/system-tools/releases/latest). Download the version of `system-tools` for the OS that you are using to interact with the cluster.
 
@@ -31,29 +39,19 @@ After you download the tools, complete the following actions:
     chmod +x system-tools
     ```
 
-### Using System Tools
+# Logs
 
-The following subcommands are available:
-
-| Command | Description
-|---|---
-| [logs](#logs) | Collect Kubernetes cluster component logs from nodes.
-| [stats](#stats) | Stream system metrics from nodes.
-| [remove](#remove) | Remove Kubernetes resources created by Rancher.
-
-### Logs
-
-The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/). See [Troubleshooting]({{< baseurl >}}//rancher/v2.x/en/troubleshooting/) for a list of core Kubernetes cluster components.
+The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/). See [Troubleshooting]({{< baseurl >}}//rancher/v2.x/en/troubleshooting/) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
 
-#### Usage
+### Usage
 
 ```
 ./system-tools_darwin-amd64 logs --kubeconfig <KUBECONFIG>
 ```
 
-#### Options
+The following are the options for the logs command:
 
 | Option                                                 | Description
 | ------------------------------------------------------ | ------------------------------------------------------
@@ -61,19 +59,19 @@ System Tools will use the provided kubeconfig file to deploy a DaemonSet, that w
 | `--output <FILENAME>, -o cluster-logs.tar`             | Name of the created tarball containing the logs. If no output filename is defined, the options defaults to `cluster-logs.tar`.
 | `--node <NODENAME>, -n node1`                         | Specify the nodes to collect the logs from. If no node is specified, logs from all nodes in the cluster will be collected.
 
-### Stats
+# Stats
 
-The stats subcommand will display system metrics from nodes in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [RKE cluster as used for Rancher HA]({{< baseurl >}}/rancher/v2.x/en/installation/ha/kubernetes-rke/).
+The stats subcommand will display system metrics from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) or nodes in an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/).
 
 System Tools will deploy a DaemonSet, and run a predefined command based on `sar` (System Activity Report) to show system metrics.
 
-#### Usage
+### Usage
 
 ```
 ./system-tools_darwin-amd64 stats --kubeconfig <KUBECONFIG>
 ```
 
-#### Options
+The following are the options for the stats command:
 
 | Option                                                 | Description
 | ------------------------------------------------------ | ------------------------------
@@ -81,11 +79,11 @@ System Tools will deploy a DaemonSet, and run a predefined command based on `sar
 | `--node <NODENAME>, -n node1`                          | Specify the nodes to display the system metrics from. If no node is specified, logs from all nodes in the cluster will be displayed.
 | `--stats-command value, -s value`                      | The command to run to display the system metrics. If no command is defined, the options defaults to `/usr/bin/sar -u -r -F 1 1`.
 
-### Remove
-
-When you install Rancher on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove Rancher from your cluster, you can use the remove subcommand to remove the Kubernetes resources. When you use the remove subcommand, the following resources will be removed:
+# Remove
 
 >**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{< baseurl >}}/rancher/v2.x/en/backups/backups) before executing the command.
+
+When you install Rancher on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove Rancher from your cluster, you can use the `remove` subcommand to remove the Kubernetes resources. When you use the `remove` subcommand, the following resources will be removed:
 
 - The Rancher deployment namespace (`cattle-system` by default).
 - Any `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` that Rancher applied the `cattle.io/creator:norman` label to. Rancher applies this label to any resource that it creates as of v2.1.0.
@@ -99,7 +97,7 @@ When you install Rancher on a Kubernetes cluster, it will create Kubernetes reso
 >
 >These versions of Rancher do not automatically delete the `serviceAccount`, `clusterRole`, and `clusterRoleBindings` resources after the job runs. You'll have to delete them yourself.
 
-#### Usage
+### Usage
 
 When you run the command below, all the resources listed [above](#remove) will be removed from the cluster.
 
@@ -109,7 +107,7 @@ When you run the command below, all the resources listed [above](#remove) will b
 ./system-tools remove --kubeconfig <KUBECONFIG> --namespace <NAMESPACE>
 ```
 
-#### Options
+The following are the options for the `remove` command:
 
 | Option                                         | Description
 | ---------------------------------------------- | ------------

@@ -1,6 +1,6 @@
 ---
-title: Restoring Backups—Single Node Installs
-shortTitle: Singe Node Installs
+title: Restoring Backups—Docker Installs
+shortTitle: Docker Installs
 weight: 365
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
@@ -15,7 +15,7 @@ During restoration of your backup, you'll enter a series of commands, filling pl
 ```
 docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
 busybox sh -c "rm /var/lib/rancher/* -rf  && \
-tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
+tar pzxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>"
 ```
 
 In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>-<DATE>` are environment variables for your Rancher deployment.
@@ -46,9 +46,9 @@ Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-bac
     ```
     docker stop <RANCHER_CONTAINER_NAME>
     ```
-1. Move the backup tarball that you created during completion of [Creating Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
+1. Move the backup tarball that you created during completion of [Creating Backups—Docker Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    If you followed the naming convention we suggested in [Creating Backups—Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
+    If you followed the naming convention we suggested in [Creating Backups—Docker Installs]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
 
 1. Enter the following command to delete your current state data and replace it with your backup data, replacing the [placeholders](#before-you-start). Don't forget to close the quotes.
 
@@ -57,7 +57,7 @@ Using a [backup]({{< baseurl >}}/rancher/v2.x/en/backups/backups/single-node-bac
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
     busybox sh -c "rm /var/lib/rancher/* -rf  && \
-    tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
+    tar pzxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
     **Step Result:** A series of commands should run.

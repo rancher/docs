@@ -1,19 +1,18 @@
 ---
-title: Creating Backups—Single Node Installs
+title: Creating Backups for Rancher Installed with Docker
 weight: 25
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
-  - /rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/
 ---
 
-After completing your single node installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
+After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
 
 ## Before You Start
 
 During the creation of your backup, you'll enter a series of commands, replacing placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
 ```
-docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup busybox tar pzcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
 ```
 
 In this command, `<DATE>` is a placeholder for the date that the data container and backup were created. `9-27-18` for example.
@@ -54,7 +53,7 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
 1. <a id="tarball"></a>From the data container that you just created (`rancher-data-<DATE>`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`). Use the following command, replacing each [placeholder](#before-you-start).
 
     ```
-    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup:z busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup:z busybox tar pzcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** A stream of commands runs on the screen.
@@ -69,4 +68,4 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Single Node Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration) if you need to restore backup data.
+**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{< baseurl >}}/rancher/v2.x/en/backups/restorations/single-node-restoration) if you need to restore backup data.

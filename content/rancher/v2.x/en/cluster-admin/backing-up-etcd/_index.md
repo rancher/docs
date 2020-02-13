@@ -7,7 +7,7 @@ _Available as of v2.2.0_
 
 In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either [locally onto the etcd nodes](#local-backup-target) or to a [S3 compatible target](#s3-backup-target). The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
-Rancher recommends configuring recurrent `etcd` snapshots for all production clusters. Additonally, one-time snapshots can easily be taken as well.
+Rancher recommends configuring recurrent `etcd` snapshots for all production clusters. Additionally, one-time snapshots can easily be taken as well.
 
 >**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, after upgrading Rancher, you must [edit the cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots prior to v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/restoring-etcd/).
 
@@ -51,6 +51,14 @@ Rancher supports two different backup targets:
 
 By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) in `/opt/rke/etcd-snapshots`. All recurring snapshots are taken at configured intervals. The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
 
+#### Safe Timestamps
+
+_Available as of v2.3.0_
+
+As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of Rancher v2.3.0, the option `safe_timestamp` is added to support compatible file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
+
+>>**Note:** This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface.
+
 ### S3 Backup Target
 
 The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration requirements do require additional effort that should be considered.
@@ -62,6 +70,13 @@ The `S3` backup target allows users to configure a S3 compatible backend to stor
 |S3 Region Endpoint|S3 regions endpoint for the backup bucket|* |
 |S3 Access Key|S3 access key with permission to access the backup bucket|*|
 |S3 Secret Key|S3 secret key with permission to access the backup bucket|*|
+| Custom CA Certificate | A custom certificate used to access private S3 backends _Available as of v2.2.5_ ||
+
+#### Using a custom CA certificate for S3
+
+_Available as of v2.2.5_
+
+The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 back end uses a self-signed or custom certificate, provide a custom certificate using the `Custom CA Certificate` option to connect to the S3 backend.
 
 # IAM Support for Storing Snapshots in S3
 The `S3` backup target supports using IAM authentication to AWS API in addition to using API credentials. An IAM role gives temporary permissions that an application can use when making API calls to S3 storage. To use IAM authentication, the following requirements must be met:

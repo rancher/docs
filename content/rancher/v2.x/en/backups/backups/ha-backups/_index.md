@@ -1,8 +1,8 @@
 ---
-title: Creating Backups—High Availability Installs
+title: Creating Backups for Rancher Installed on Kubernetes
 weight: 50
 aliases:
-  - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
+  - /rancher/v2.x/en/installation/after-installation/k8s-install-backup-and-restoration/
   - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/
 ---
 This section describes how to create backups of your high-availability Rancher install.
@@ -61,6 +61,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
             access_key: "myaccesskey"
             secret_key:  "myaccesssecret"
             bucket_name: "my-backup-bucket"
+            folder: "folder-name" # Available as of v2.3.0
             endpoint: "s3.eu-west-1.amazonaws.com"
             region: "eu-west-1"
     ```
@@ -112,7 +113,8 @@ _Available as of RKE v0.2.0_
     ```shell
     rke etcd snapshot-save --config rancher-cluster.yml --name snapshot-name  \
     --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
-    --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com
+    --bucket-name s3-bucket-name  --s3-endpoint  s3.amazonaws.com \
+    --folder folder-name # Available as of v2.3.0
     ```
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`. It is also uploaded to the S3 compatible backend.

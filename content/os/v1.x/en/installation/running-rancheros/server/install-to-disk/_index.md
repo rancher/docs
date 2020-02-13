@@ -82,6 +82,22 @@ rancher/os:v0.5.0 remote
 
 Alternatively, you can set the installer image to any image in System Docker to install RancherOS. This is particularly useful for machines that will not have direct access to the internet.
 
+#### Caching Images
+
+_Available as of v1.5.3_
+
+Some configurations included in `cloud-config` require images to be downloaded from Docker to start. After installation, these images are downloaded automatically by RancherOS when booting. An example of these configurations are:
+
+- rancher.services_include
+- rancher.console
+- rancher.docker
+
+If you want to download and save these images to disk during installation, they will be cached and not need to be downloaded again upon each boot. You can cache these images by adding `-s` when using `ros install`:
+
+```
+$ ros install -d <disk> -c <cloud-config.yaml> -s
+```
+
 ### SSH into RancherOS
 
 After installing RancherOS, you can ssh into RancherOS using your private key and the **rancher** user.

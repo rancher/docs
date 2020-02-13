@@ -3,25 +3,28 @@ title: v2.1.x and v2.2.x Windows Documentation (Experimental)
 weight: 9100
 ---
 
->**Note:** This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
-
 _Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.3_
 
->**Important:**
->
->Support for Windows nodes is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using Windows nodes in a production environment.
+This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
 
-When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, you can use a mix of Linux and Windows hosts as your cluster nodes.
+When you create a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure.
 
-This guide walks you through create of a custom cluster that includes 3 nodes: a Linux node, which serves as a Kubernetes control plane node; another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster; and a Windows node, which is assigned the Kubernetes worker role and runs your Windows containers.
+You can provision a custom Windows cluster using Rancher by using a mix of Linux and Windows hosts as your cluster nodes.
 
->**Notes:**
->
->- For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
->- Windows containers must run on Windows Server 1803 nodes. Windows Server 1709 and earlier versions do not support Kubernetes properly.
->- Containers built for Windows Server 1709 or earlier do not run on Windows Server 1803. You must build containers on Windows Server 1803 to run these containers on Windows Server 1803.
+>**Important:** In versions of Rancher prior to v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher prior to v2.3.
 
+This guide walks you through create of a custom cluster that includes three nodes:
 
+- A Linux node, which serves as a Kubernetes control plane node
+- Another Linux node, which serves as a Kubernetes worker used to support Ingress for the cluster
+- A Windows node, which is assigned the Kubernetes worker role and runs your Windows containers
+
+For a summary of Kubernetes features supported in Windows, see [Using Windows in Kubernetes](https://kubernetes.io/docs/setup/windows/intro-windows-in-kubernetes/).
+
+## OS and Container Requirements
+
+- For clusters provisioned with Rancher v2.1.x and v2.2.x, containers must run on Windows Server 1809 or above.
+- You must build containers on a Windows Server core version 1809 or above to run these containers on the same server version.
 
 ## Objectives for Creating Cluster with Windows Support
 
@@ -52,7 +55,7 @@ Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
 Node 1  | Linux (Ubuntu Server 16.04 recommended)           | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support)
-Node 3  | Windows (*Windows Server 1803 required*)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 3  | Windows (Windows Server core version 1809 or above)          | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
 
 ### Requirements
 
@@ -99,8 +102,6 @@ Option | Setting
 -------|--------
 Node Operating System | Linux
 Node Roles | etcd <br/> Control Plane <br/> Worker
-
-![Recommended Linux Control Plane Configuration]({{< baseurl >}}/img/rancher/linux-control-plane.png)
 
 When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
 

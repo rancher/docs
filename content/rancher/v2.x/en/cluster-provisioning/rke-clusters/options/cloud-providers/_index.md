@@ -1,5 +1,5 @@
 ---
-title: Selecting Cloud Providers
+title: Setting up Cloud Providers
 weight: 2255
 aliases:
   - /rancher/v2.x/en/concepts/clusters/cloud-providers/
@@ -162,6 +162,11 @@ Use the following tag:
 Setting the value of the tag to `owned` tells the cluster that all resources with this tag are owned and managed by this cluster. If you share resources between clusters, you can change the tag to:
 
 **Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `shared`.
+
+
+#### Using Amazon Elastic Container Registry (ECR)
+
+The kubelet component has the ability to automatically obtain ECR credentials, when the IAM profile mentioned in [Create an IAM Role and attach to the instances](#create-an-iam-role-and-attach-to-the-instances) is attached to the instance(s). When using a Kubernetes version older than v1.15.0, the Amazon cloud provider needs be configured in the cluster. Starting with Kubernetes version v1.15.0, the kubelet can obtain ECR credentials without having the Amazon cloud provider configured in the cluster.
 
 ## Azure
 

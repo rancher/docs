@@ -61,7 +61,7 @@ For example, for the web-deployment.yml file parsed from v1.6 that we've been us
 
 <figcaption>Port Mapping: Setting HostPort</figcaption>
 
-![Set HostPort]({{< baseurl >}}/img/rancher/set-hostport.gif)
+{{< img "/img/rancher/set-hostport.gif" "Set HostPort">}}
 
 ## NodePort
 
@@ -99,6 +99,6 @@ For example, for the `web-deployment.yml` file parsed from v1.6 that we've been 
 
 <figcaption>Port Mapping: Setting NodePort</figcaption>
 
-![Set NodePort]({{< baseurl >}}/img/rancher/set-nodeport.gif)
+{{< img "/img/rancher/set-nodeport.gif" "Set NodePort" >}}
 
 ### [Next: Configure Health Checks]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/monitor-apps)

@@ -1,11 +1,11 @@
 ---
-title: Creating Custom Catalogs
+title: Creating Custom Catalogs Apps
 weight: 4000
 aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/
 ---
 
-Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher. 
+Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher.
 
 ## Chart Types
 
@@ -73,16 +73,33 @@ Before you create your own custom catalog, you should have a basic understanding
 	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
 
 
-### Question Variable Reference
+### Questions.yml
 
-This reference contains variables that you can use in `questions.yml`.
+Inside the `questions.yml`, most of the content will be around the questions to ask the end user, but there are some additional fields that can be set in this file.
+
+#### Min/Max Rancher versions
+
+_Available as of v2.3.0_
+
+For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
+
+> **Note:** Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+
+```
+rancher_min_version: 2.3.0
+rancher_max_version: 2.3.99
+```
+
+#### Question Variable Reference
+
+This reference contains variables that you can use in `questions.yml` nested under `questions:`.
 
 | Variable  | Type | Required | Description |
 | ------------- | ------------- | --- |------------- |
 | 	variable          | string  | true    |  Define the variable name specified in the `values.yml` file, using `foo.bar` for nested objects. |
 | 	label             | string  | true      |  Define the UI label. |
 | 	description       | string  | false      |  Specify the description of the variable.|
-| 	type              | string  | false      |  Default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
+| 	type              | string  | false      |  Default to `string` if not specified (current supported types are string, multiline, boolean, int, enum, password, storageclass, hostname, pvc, and secret).|
 | 	required          | bool    | false      |  Define if the variable is required or not (true \| false)|
 | 	default           | string  | false      |  Specify the default value. |
 | 	group             | string  | false      |  Group questions by input value. |
@@ -104,7 +121,7 @@ This reference contains variables that you can use in `questions.yml`.
 
  You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
 
->**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
+>**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://helm.sh/docs/chart_template_guide/).
 
 1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure](#chart-directory-structure).
 

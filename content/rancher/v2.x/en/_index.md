@@ -1,11 +1,15 @@
 ---
-shortTitle: Rancher 2.x
+title: "Rancher 2.x"
+shortTitle: "Rancher 2.x"
+description: "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
+metaTitle: "Rancher 2.x Docs: What is New?"
+metaDescription: "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
 insertOneSix: true
 weight: 1
 ctaBanner: intro-k8s-rancher-online-training
 ---
 
-## What's New?
+# What's New?
 
 Rancher was originally built to work with multiple orchestrators, and it included its own orchestrator called Cattle. With the rise of Kubernetes in the marketplace, Rancher now exclusively deploys and manages multiple Kubernetes clusters running anywhere, on any provider. It can provision Kubernetes from a hosted provider, provision compute nodes and then install Kubernetes onto them, or inherit existing Kubernetes clusters running anywhere.
 

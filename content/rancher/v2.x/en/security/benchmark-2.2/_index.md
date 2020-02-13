@@ -1,17 +1,22 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x
-weight: 103
+title: CIS Benchmark Rancher Self-Assessment Guide v2.2
+weight: 104
 ---
 
+This document is a companion to the Rancher v2.2 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+
+This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+
+Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
+---------------------------|----------|---------|-------|-----
+Self Assessment Guide v2.2 | Rancher v2.2.x | Hardening Guide v2.2 | Kubernetes 1.13 | Benchmark v1.4.0 and v1.4.1
+
 ### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
+There is no material difference in control verification checks between CIS Kubernetes Benchmark 1.4.0 and [1.4.1](https://rancher.com/docs/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
+
+### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Benchmark_Assessment.pdf)
-
-#### Overview
-
-The following document scores a Kubernetes 1.13.x RKE cluster provisioned according to the Rancher v2.2.x hardening guide against the CIS 1.4.0 Kubernetes benchmark.
-
-This document is a companion to the Rancher v2.2.x security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
@@ -34,7 +39,6 @@ The following scored controls do not currently pass, and Rancher Labs is working
 - 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
 - 1.4.11 - Ensure that the etcd data directory permissions are set to `700` or more-restrictive (Scored)
 - 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd` (Scored)
-- 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 - 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
 
 ### Controls
@@ -562,7 +566,7 @@ In Kubernetes 1.13.x this flag is `--encryption-provider-config`
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--encryption-provider-config=.*").string'
 ```
 
-**Returned Value:** `encryption-provider-config=/etc/kubernetes/encryption.yaml`
+**Returned Value:** `encryption-provider-config=/opt/kubernetes/encryption.yaml`
 
 **Result:** Pass
 
@@ -575,7 +579,7 @@ Only the first provider in the list is active.
 **Audit**
 
 ``` bash
-grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
+grep -A 1 providers: /opt/kubernetes/encryption.yaml | grep aescbc
 ```
 
 **Returned Value:**  `- aescbc:`
@@ -588,8 +592,8 @@ grep -A 1 providers: /etc/kubernetes/encryption.yaml | grep aescbc
 
 The `EventRateLimit` plugin requires setting the `--admission-control-config-file` option and configuring details in the following files:
 
-- `/etc/kubernetes/admission.yaml`
-- `/etc/kubernetes/event.yaml`
+- `/opt/kubernetes/admission.yaml`
+- `/opt/kubernetes/event.yaml`
 
 See Host Configuration for details.
 
@@ -607,7 +611,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--enable-admission-p
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--admission-control-config-file=.*").string'
 ```
 
-**Returned Value:** `--admission-control-config-file=/etc/kubernetes/admission.yaml`
+**Returned Value:** `--admission-control-config-file=/opt/kubernetes/admission.yaml`
 
 **Result:** Pass
 
@@ -631,7 +635,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--feature-gates=.*(A
 docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--audit-policy-file=.*").string'
 ```
 
-**Returned Value:** `--audit-policy-file=/etc/kubernetes/audit.yaml`
+**Returned Value:** `--audit-policy-file=/opt/kubernetes/audit.yaml`
 
 **Result:** Pass
 
@@ -1431,19 +1435,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--anonymous-auth=false").st
 
 #### 2.1.2 - Ensure that the `--authorization-mode` argument is not set to `AlwaysAllow` (Scored)
 
-**Notes**
-
-RKE currently runs the kubelet without the `--authorization-mode` flag.
-
 **Audit**
 
 ``` bash
 docker inspect kubelet | jq -e '.[0].Args[] | match("--authorization-mode=Webhook").string'
 ```
 
-**Returned Value:** `null`
+**Returned Value:** `--authorization-mode=Webhook`
 
-**Result:** Fail
+**Result:** Pass
 
 #### 2.1.3 - Ensure that the `--client-ca-file` argument is set as appropriate (Scored)
 

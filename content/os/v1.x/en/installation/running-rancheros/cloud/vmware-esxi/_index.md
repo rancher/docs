@@ -7,7 +7,7 @@ As of v1.1.0, RancherOS automatically detects that it is running on VMware ESXi,
 
 As of v1.5.0, RancherOS releases anything required for VMware, which includes initrd, a standard ISO for VMware, a `vmdk` image, and a specific ISO to be used with Docker Machine. The open-vm-tools is built in to RancherOS, there is no need to download it.
 
-| Description  | Downlaod URL |
+| Description  | Download URL |
 |---|---|
 | Booting from ISO   | https://releases.rancher.com/os/latest/vmware/rancheros.iso |
 | For docker-machine | https://releases.rancher.com/os/latest/vmware/rancheros-autoformat.iso |

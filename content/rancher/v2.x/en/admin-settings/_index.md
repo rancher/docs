@@ -1,12 +1,11 @@
 ---
-title: Global Configuration
+title: Authentication, Permissions and Global Configuration
 weight: 1100
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/
   - /rancher/v2.x/en/tasks/global-configuration/
   - /rancher/v2.x/en/concepts/global-configuration/server-url/
   - /rancher/v2.x/en/tasks/global-configuration/server-url/
-  - /rancher/v2.x/en/admin-settings/server-url/
   - /rancher/v2.x/en/admin-settings/log-in/
 ---
 
@@ -28,7 +27,7 @@ For more information how authentication works and how to configure each provider
 
 Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by the user's role. Rancher provides built-in roles to allow you to easily configure a user's permissions to resources, but Rancher also provides the ability to customize the roles for each Kubernetes resource.
 
-For more information how authorization works and how to customize roles, see [Roles Based Access Control (RBAC)]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/).
+For more information how authorization works and how to customize roles, see [Roles Based Access Control (RBAC)]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/).
 
 ## Pod Security Policies
 
@@ -41,3 +40,21 @@ For more information how to create and use PSPs, see [Pod Security Policies]({{<
 Drivers in Rancher allow you to manage which providers can be used to provision [hosted Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) or [nodes in an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) to allow Rancher to deploy and manage Kubernetes.
 
 For more information, see [Provisioning Drivers]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/).
+
+## Adding Kubernetes Versions into Rancher
+
+_Available as of v2.3.0_
+
+With this feature, you can upgrade to the latest version of Kubernetes as soon as it is released, without upgrading Rancher. This feature allows you to easily upgrade Kubernetes patch versions (i.e. `v1.15.X`), but not intended to upgrade Kubernetes minor versions (i.e. `v1.X.0`) as Kubernetes tends to deprecate or add APIs between minor versions.
+
+The information that Rancher uses to provision [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) is now located in the Rancher Kubernetes Metadata. For details on metadata configuration and how to change the Kubernetes version used for provisioning RKE clusters, see [Rancher Kubernetes Metadata.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata/)
+
+Rancher Kubernetes Metadata contains Kubernetes version information which Rancher uses to provision [RKE clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/).
+
+For more information on how metadata works and how to configure metadata config, see [Rancher Kubernetes Metadata]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata/).
+
+## Enabling Experimental Features
+
+_Available as of v2.3.0_
+
+Rancher includes some features that are experimental and disabled by default. Feature flags were introduced to allow you to try these features. For more information, refer to the section about [feature flags.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/)

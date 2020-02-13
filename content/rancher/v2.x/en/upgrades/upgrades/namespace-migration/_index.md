@@ -1,7 +1,6 @@
 ---
 title: Upgrading to v2.0.7+ — Namespace Migration
-weight:
-aliases:
+weight: 1040
 ---
 >This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
@@ -25,6 +24,8 @@ During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces a
 
 - To prevent this issue from occurring before the upgrade, see [Preventing Cluster Networking Issues](#preventing-cluster-networking-issues).
 - To fix this issue following upgrade, see [Restoring Cluster Networking](#restoring-cluster-networking).
+
+> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
 
 ## Preventing Cluster Networking Issues
 
@@ -66,7 +67,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 >Download and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 {{% tabs %}}
-{{% tab "HA Install" %}}
+{{% tab "Kubernetes Install" %}}
 1. From **Terminal**, change directories to your kubectl file that's generated during Rancher install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during Rancher installation.
 
 1. Before repairing networking, run the following two commands to make sure that your nodes have a status of `Ready` and that your cluster components are `Healthy`.

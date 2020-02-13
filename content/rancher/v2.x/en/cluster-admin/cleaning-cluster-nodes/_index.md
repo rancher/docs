@@ -1,13 +1,14 @@
 ---
-title: Cleaning up Clusters
+title: Removing Kubernetes Components from Nodes
+description: Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually
 weight: 2055
-aliases:
-  - /rancher/v2.x/en/faq/cleaning-cluster-nodes/
-  - /rancher/v2.x/en/admin-settings/removing-rancher/user-cluster-nodes/
 ---
+
+This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.
+
 When you use Rancher to [launch nodes for a cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher), resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created.
 
-When removing nodes from your Rancher launched Kubernetes cluster (provided that they are in `Active` state), those resources automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
+When removing nodes from your Rancher launched Kubernetes cluster (provided that they are in `Active` state), those resources are automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
 
 ## What Gets Removed?
 
@@ -42,29 +43,31 @@ $ sudo reboot
 $ sudo shutdown -r now
 ```
 
-## Cleaning a Node Manually
+## Removing Rancher Components from a Cluster Manually
 
-When a node is unreachable and removed from the cluster, the automatic cleaning process can't be triggered because the node is unreachable. Please follow the steps below to manually clean the node.
+When a node is unreachable and removed from the cluster, the automatic cleaning process can't be triggered because the node is unreachable. Please follow the steps below to manually remove the Rancher components.
 
 >**Warning:** The commands listed below will remove data from the node. Make sure you have created a backup of files you want to keep before executing any of the commands as data will be lost.
 
-### Imported Cluster Nodes
+### Removing Rancher Components from Imported Clusters
 
-For imported clusters, the process for removing Rancher from its nodes is a little different. You have the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
+For imported clusters, the process for removing Rancher is a little different. You have the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
+
+After the imported cluster is detached from Rancher, the cluster's workloads will be unaffected and you can access the cluster using the same methods that you did before the cluster was imported into Rancher.
 
 {{% tabs %}}
 {{% tab "By UI / API" %}}
->**Warning:** This process will remove data from your nodes. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
+>**Warning:** This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
 After you initiate the removal of an [imported cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#import-existing-cluster) using the Rancher UI (or API), the following events occur.
 
-1. Rancher creates a `serviceAccount` that it uses to remove the cluster. This account is assigned the [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) permissions, which are required to remove the cluster.
+1. Rancher creates a `serviceAccount` that it uses to remove the Rancher components from the cluster. This account is assigned the [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) permissions, which are required to remove the Rancher components.
 
-1. Using the `serviceAccount`, Rancher schedules and runs a [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that cleans the Rancher and Kubernetes components off of the node. This job also references the `serviceAccount` and its roles as dependencies, so the job deletes them before its completion.
+1. Using the `serviceAccount`, Rancher schedules and runs a [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that cleans the Rancher components off of the cluster. This job also references the `serviceAccount` and its roles as dependencies, so the job deletes them before its completion.
 
-1. Rancher is removed from the cluster nodes. However, the cluster persists, running the native version of Kubernetes.
+1. Rancher is removed from the cluster. However, the cluster persists, running the native version of Kubernetes.
 
- **Result:** All components listed for imported clusters in [What Gets Removed?](#what-gets-removed) are deleted.
+**Result:** All components listed for imported clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
 {{% /tab %}}
 {{% tab "By Script" %}}

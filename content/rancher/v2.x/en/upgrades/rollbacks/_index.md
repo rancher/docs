@@ -4,8 +4,8 @@ weight: 1010
 ---
 This section contains information about how to rollback your Rancher server to a previous version.
 
-- [Rolling back a Single Node Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/)
-- [Rolling back a High Availability Install]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
+- [Rolling back Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/)
+- [Rolling back Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
 
 ### Special Scenarios regarding Rollbacks
 
@@ -20,12 +20,12 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
 1. Record the `serviceAccountToken` for each cluster.  To do this, save the following script on a machine with `kubectl` access to the Rancher management plane and execute it.  You will need to run these commands on the machine where the rancher container is running. Ensure JQ is installed before running the command. The commands will vary depending on how you installed Rancher.
 
 
-    **Single Node Rancher Install**
+    **Rancher Installed with Docker**
     ```
     docker exec <NAME OF RANCHER CONTAINER> kubectl get clusters -o json | jq '[.items[] | select(any(.status.conditions[]; .type == "ServiceAccountMigrated")) | {name: .metadata.name, token: .status.serviceAccountToken}]' > tokens.json
     ```
 
-    **HA Rancher Install**
+    **Rancher Installed on a Kubernetes Cluster**
     ```
     kubectl get clusters -o json | jq '[.items[] | select(any(.status.conditions[]; .type == "ServiceAccountMigrated")) | {name: .metadata.name, token: .status.serviceAccountToken}]' > tokens.json
     ```
@@ -38,7 +38,7 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
 
 5. Apply the backed up tokens based on how you installed Rancher.
 
-    **Single Node Rancher Install**
+    **Rancher Installed with Docker**
 
     Save the following script as `apply_tokens.sh` to the machine where the Rancher docker container is running. Also copy the `tokens.json` file created previously to the same directory as the script.
     ```
@@ -58,7 +58,7 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
     ```
     After a few moments the clusters will go from Unavailable back to Available.
 
-    **HA Rancher Install**
+    **Rancher Installed on a Kubernetes Cluster**
 
     Save the following script as `apply_tokens.sh` to a machine with kubectl access to the Rancher management plane. Also copy the `tokens.json` file created previously to the same directory as the script.
     ```
