@@ -132,9 +132,12 @@ for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.
   kubectl apply -f default-allow-all.yaml -n ${namespace}
 done
 ```
-Execute this scipt to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
+Execute this script to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
 
-### Reference Hardened RKE `config.yml` configuration 
+### Reference Hardened RKE `cluster.yml` configuration
+The reference `cluster.yml` provides the configuration needed to acheive a hardened install
+of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
+provided with additional details about the configuration items.
 
 ``` yaml
 # If you intened to deploy Kubernetes in an air-gapped environment,
@@ -142,16 +145,6 @@ Execute this scipt to apply the `default-allow-all.yaml` the **permissive** `Net
 kubernetes_version: "v1.15.9-rancher1-1"
 enable_network_policy: true
 default_pod_security_policy_template_id: "restricted"
-nodes:
-- address: "172.16.16.9"
-  port: ""
-  internal_address: ""
-  role: 
-    - controlplane
-    - etcd
-    - worker
-  hostname_override: ""
-  user: "ubuntu"
 services:
   etcd:
     uid: 52034
@@ -423,13 +416,268 @@ dns: null
 
 ### Reference Hardened RKE Template configuration 
 
-``` yaml
-todo:
+The reference RKE Template provides the configuration needed to acheive a hardened install of Kubenetes.
+RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
+[documentaion](https://rancher.com/docs/rancher/v2.x/en/installation) for additional installation and RKE Template details.
 
+``` yaml
+# 
+# Cluster Config
+# 
+default_pod_security_policy_template_id: restricted
+docker_root_dir: /var/lib/docker
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
+enable_network_policy: true
+# 
+# Rancher Config
+# 
+rancher_kubernetes_engine_config:
+  addon_job_timeout: 30
+  addons: |-
+    ---
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: ingress-nginx
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: default-psp-role
+      namespace: ingress-nginx
+    rules:
+    - apiGroups:
+      - extensions
+      resourceNames:
+      - default-psp
+      resources:
+      - podsecuritypolicies
+      verbs:
+      - use
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: default-psp-rolebinding
+      namespace: ingress-nginx
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: default-psp-role
+    subjects:
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:serviceaccounts
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:authenticated
+    ---
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: cattle-system
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      name: default-psp-role
+      namespace: cattle-system
+    rules:
+    - apiGroups:
+      - extensions
+      resourceNames:
+      - default-psp
+      resources:
+      - podsecuritypolicies
+      verbs:
+      - use
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      name: default-psp-rolebinding
+      namespace: cattle-system
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: default-psp-role
+    subjects:
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:serviceaccounts
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:authenticated
+    ---
+    apiVersion: extensions/v1beta1
+    kind: PodSecurityPolicy
+    metadata:
+      name: restricted
+    spec:
+      requiredDropCapabilities:
+      - NET_RAW
+      privileged: false
+      allowPrivilegeEscalation: false
+      defaultAllowPrivilegeEscalation: false
+      fsGroup:
+        rule: RunAsAny
+      runAsUser:
+        rule: MustRunAsNonRoot
+      seLinux:
+        rule: RunAsAny
+      supplementalGroups:
+        rule: RunAsAny
+      volumes:
+      - emptyDir
+      - secret
+      - persistentVolumeClaim
+      - downwardAPI
+      - configMap
+      - projected
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: psp:restricted
+    rules:
+    - apiGroups:
+      - extensions
+      resourceNames:
+      - restricted
+      resources:
+      - podsecuritypolicies
+      verbs:
+      - use
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: psp:restricted
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: psp:restricted
+    subjects:
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:serviceaccounts
+    - apiGroup: rbac.authorization.k8s.io
+      kind: Group
+      name: system:authenticated
+    ---
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: tiller
+      namespace: kube-system
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: tiller
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
+    subjects:
+    - kind: ServiceAccount
+      name: tiller
+      namespace: kube-system
+  ignore_docker_version: true
+  kubernetes_version: v1.15.9-rancher1-1
+# 
+#   If you are using calico on AWS
+# 
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+# 
+# # To specify flannel interface
+# 
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+# 
+# # To specify flannel interface for canal plugin
+# 
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+# 
+  network:
+    mtu: 0
+    plugin: canal
+# 
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+# 
+  services:
+    etcd:
+      backup_config:
+        enabled: false
+        interval_hours: 12
+        retention: 6
+        safe_timestamp: false
+      creation: 12h
+      extra_args:
+        election-timeout: '5000'
+        heartbeat-interval: '500'
+      gid: 52034
+      retention: 72h
+      snapshot: false
+      uid: 52034
+    kube_api:
+      always_pull_images: false
+      audit_log:
+        enabled: true
+      event_rate_limit:
+        enabled: true
+      pod_security_policy: true
+      secrets_encryption_config:
+        enabled: true
+      service_node_port_range: 30000-32767
+    kube_controller:
+      extra_args:
+        address: 127.0.0.1
+        feature-gates: RotateKubeletServerCertificate=true
+        profiling: 'false'
+        terminated-pod-gc-threshold: '1000'
+    kubelet:
+      extra_args:
+        anonymous-auth: 'false'
+        event-qps: '0'
+        feature-gates: RotateKubeletServerCertificate=true
+        make-iptables-util-chains: 'true'
+        protect-kernel-defaults: 'true'
+        streaming-connection-idle-timeout: 1800s
+        tls-cipher-suites: >-
+          TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      fail_swap_on: false
+      generate_serving_certificate: true
+    scheduler:
+      extra_args:
+        address: 127.0.0.1
+        profiling: 'false'
+  ssh_agent_auth: false
+windows_prefered_cluster: false
 ```
 
-
 ### Hardened Reference Ubuntu **cloud-config**:
+
+The reference **cloud-config** is generenally used in cloud infrastructure environments to allow for
+configuration managment of compute instances. The reference config configures Ubuntu operating system level settings
+needed before installing kubernetes.
 
 ``` yaml
 #cloud-config
