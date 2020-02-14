@@ -360,7 +360,7 @@ for file in $(find ${check_dir} -name "*key.pem"); do
     continue
   else
     echo "FAIL: ${file} ${file_permission}"
-    exit 666
+    exit 1
   fi
 done
 
@@ -1996,7 +1996,7 @@ export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
 kubectl version > /dev/null
 if [ $? -ne 0 ]; then
   echo "fail: kubectl failed"
-  exit 666
+  exit 1
 fi
 
 accounts="$(kubectl --kubeconfig=${KUBECONFIG} get serviceaccounts -A -o json | jq -r '.items[] | select(.metadata.name=="default") | select((.automountServiceAccountToken == null) or (.automountServiceAccountToken == true)) | "fail \(.metadata.name) \(.metadata.namespace)"')"
@@ -2007,7 +2007,7 @@ if [[ "${accounts}" == "" ]]; then
 fi
 
 echo ${accounts}
-exit 666
+exit 1
 ```
 
 **Audit Execution:**
@@ -2123,14 +2123,14 @@ export KUBECONFIG=${KUBECONFIG:-"/root/.kube/config"}
 kubectl version > /dev/null
 if [ $? -ne 0 ]; then
   echo "fail: kubectl failed"
-  exit 666
+  exit 1
 fi
 
 for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
   policy_count=$(kubectl get networkpolicy -n ${namespace} -o json | jq '.items | length')
   if [ ${policy_count} -eq 0 ]; then
     echo "fail: ${namespace}"
-    exit 666
+    exit 1
   fi
 done
 
@@ -2169,7 +2169,7 @@ export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
 kubectl version > /dev/null
 if [[ $? -gt 0 ]]; then
   echo "fail: kubectl failed"
-  exit 666
+  exit 1
 fi
 
 default_resources=$(kubectl get all -o json | jq --compact-output '.items[] | select((.kind == "Service") and (.metadata.name == "kubernetes") and (.metadata.namespace == "default") | not)' | wc -l)
