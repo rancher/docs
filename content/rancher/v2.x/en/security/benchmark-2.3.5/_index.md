@@ -112,10 +112,22 @@ Run the below command (based on the etcd data directory found above). For exampl
 chmod 700 /var/lib/etcd
 ```
 
-**Audit:**
+**Audit Script:** 1.1.11.sh
 
 ```
-/mnt/kube-bench/test_helpers/1.1.11.sh etcd
+#!/bin/bash -e
+
+etcd_bin=${1}
+
+test_dir=$(ps -ef | grep ${etcd_bin} | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%')
+
+docker inspect etcd | jq -r '.[].HostConfig.Binds[]' | grep "${test_dir}" | cut -d ":" -f 1 | xargs stat -c %a
+```
+
+**Audit Execution:**
+
+```
+./1.1.11.sh etcd
 ```
 
 **Expected result**:
@@ -142,10 +154,22 @@ For example,
 chown etcd:etcd /var/lib/etcd
 ``` 
 
-**Audit:**
+**Audit Script:** 1.1.12.sh
 
 ```
-/mnt/kube-bench/test_helpers/1.1.12.sh etcd
+#!/bin/bash -e
+
+etcd_bin=${1}
+
+test_dir=$(ps -ef | grep ${etcd_bin} | grep -- --data-dir | sed 's%.*data-dir[= ]\([^ ]*\).*%\1%')
+
+docker inspect etcd | jq -r '.[].HostConfig.Binds[]' | grep "${test_dir}" | cut -d ":" -f 1 | xargs stat -c %U:%G
+```
+
+**Audit Execution:**
+
+```
+./1.1.12.sh etcd
 ```
 
 **Expected result**:
@@ -234,10 +258,76 @@ For example,
 chmod -R 644 /etc/kubernetes/ssl"
 ```
 
-**Audit:**
+**Audit Script:** check_files_permissions.sh
 
 ```
-/mnt/kube-bench/test_helpers/check_files_permissions.sh '/etc/kubernetes/ssl/*.pem'
+#!/usr/bin/env bash
+
+# This script is used to ensure the file permissions are set to 644 or
+# more restrictive for all files in a given directory or a wildcard
+# selection of files
+#
+# inputs:
+#   $1 = /full/path/to/directory or /path/to/fileswithpattern
+#                                   ex: !(*key).pem
+#
+#   $2 (optional) = permission (ex: 600)
+#
+# outputs:
+#   true/false
+
+# Turn on "extended glob" for use of '!' in wildcard
+shopt -s extglob
+
+# Turn off history to avoid surprises when using '!'
+set -H
+
+USER_INPUT=$1
+
+if [[ "${USER_INPUT}" == "" ]]; then
+  echo "false"
+  exit
+fi
+
+
+if [[ -d ${USER_INPUT} ]]; then
+  PATTERN="${USER_INPUT}/*"
+else
+  PATTERN="${USER_INPUT}"
+fi
+
+PERMISSION=""
+if [[ "$2" != "" ]]; then
+  PERMISSION=$2
+fi
+
+FILES_PERMISSIONS=$(stat -c %n\ %a ${PATTERN})
+
+while read -r fileInfo; do
+  p=$(echo ${fileInfo} | cut -d' ' -f2)
+
+  if [[ "${PERMISSION}" != "" ]]; then
+    if [[ "$p" != "${PERMISSION}" ]]; then
+      echo "false"
+      exit
+    fi
+  else
+    if [[ "$p" != "644" && "$p" != "640" && "$p" != "600" ]]; then
+      echo "false"
+      exit
+    fi
+  fi
+done <<< "${FILES_PERMISSIONS}"
+
+
+echo "true"
+exit
+```
+
+**Audit Execution:**
+
+```
+./check_files_permissions.sh '/etc/kubernetes/ssl/*.pem'
 ```
 
 **Expected result**:
@@ -258,10 +348,29 @@ For example,
 chmod -R 600 /etc/kubernetes/ssl/certs/serverca
 ```
 
-**Audit:**
+**Audit Script:** 1.1.21.sh
 
 ```
-/mnt/kube-bench/test_helpers/1.1.21.sh /etc/kubernetes/ssl
+#!/bin/bash -e
+check_dir=${1:-/etc/kubernetes/ssl}
+
+for file in $(find ${check_dir} -name "*key.pem"); do
+	file_permission=$(stat -c %a ${file})
+  if [[ "${file_permission}" == "600" ]]; then
+    continue
+  else
+    echo "FAIL: ${file} ${file_permission}"
+    exit 666
+  fi
+done
+
+echo "pass"
+```
+
+**Audit Execution:**
+
+```
+./1.1.21.sh /etc/kubernetes/ssl
 ```
 
 **Expected result**:
@@ -976,10 +1085,27 @@ on the master node and set the `--encryption-provider-config` parameter to the p
 Follow the Kubernetes documentation and configure a `EncryptionConfig` file.
 In this file, choose **aescbc**, **kms** or **secretbox** as the encryption provider.
 
-**Audit:**
+**Audit Script:** 1.2.34.sh
 
 ```
-/mnt/kube-bench/test_helpers/1.2.34.sh /etc/kubernetes/ssl/encryption.yaml
+#!/bin/bash -e
+
+check_file=${1}
+
+grep -q -E 'aescbc|kms|secretbox' ${check_file}
+if [ $? -eq 0 ]; then
+  echo "--pass"
+  exit 0
+else
+  echo "fail: encryption provider found in ${check_file}"
+  exit 1
+fi
+```
+
+**Audit Execution:**
+
+```
+./1.2.34.sh /etc/kubernetes/ssl/encryption.yaml
 ```
 
 **Expected result**:
@@ -1363,10 +1489,20 @@ node and either remove the `--peer-auto-tls` parameter or set it to `false`.
 **Remediation:**
 Create an audit policy file for your cluster.
 
-**Audit:**
+**Audit Script:** 3.2.1.sh
 
 ```
-/mnt/kube-bench/test_helpers/3.2.1.sh kube-apiserver
+#!/bin/bash -e
+
+api_server_bin=${1}
+
+/bin/ps -ef | /bin/grep ${api_server_bin} | /bin/grep -v ${0} | /bin/grep -v grep
+```
+
+**Audit Execution:**
+
+```
+./3.2.1.sh kube-apiserver
 ```
 
 **Expected result**:
@@ -1850,10 +1986,35 @@ Modify the configuration of each default service account to include this value
 automountServiceAccountToken: false
 ```
 
-**Audit:**
+**Audit Script:** 5.1.5.sh
 
 ```
-/mnt/kube-bench/test_helpers/5.1.5.sh
+#!/bin/bash
+
+export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
+
+kubectl version > /dev/null
+if [ $? -gt 0 ]; then
+  echo "fail: kubectl failed"
+  exit 666
+fi
+
+accounts="$(kubectl --kubeconfig=${KUBECONFIG} get serviceaccounts -A -o json | jq -r '.items[] | select(.metadata.name=="default") | select((.automountServiceAccountToken == null) or (.automountServiceAccountToken == true)) | "fail \(.metadata.name) \(.metadata.namespace)"')"
+
+if [[ "${accounts}" == "" ]]; then
+  echo "--pass"
+  exit 0
+fi
+
+#echo ${accounts}
+#exit 0
+echo "--pass"
+```
+
+**Audit Execution:**
+
+```
+./5.1.5.sh 
 ```
 
 **Expected result**:
@@ -1953,10 +2114,37 @@ kubectl --kubeconfig=/root/.kube/config get psp -o json | jq .items[] | jq -r 's
 **Remediation:**
 Follow the documentation and create `NetworkPolicy` objects as you need them.
 
-**Audit:**
+**Audit Script:** 5.3.2.sh
 
 ```
-/mnt/kube-bench/test_helpers/5.3.2.sh
+#!/bin/bash -e
+
+echo "--pass"
+exit
+
+KUBECONFIG="/root/.kube/config"
+
+kubectl version > /dev/null
+if [ $? -gt 0 ]; then
+  echo "fail: kubectl failed"
+  exit 666
+fi
+
+for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+  policy_count=$(kubectl get networkpolicy -n ${namespace} -o json | jq '.items | length')
+  if [ ${policy_count} -eq 0 ]; then
+    echo "fail: ${namespace}"
+    exit 666
+  fi
+done
+
+echo "--pass"
+```
+
+**Audit Execution:**
+
+```
+./5.3.2.sh 
 ```
 
 **Expected result**:
@@ -1975,10 +2163,28 @@ Follow the documentation and create `NetworkPolicy` objects as you need them.
 Ensure that namespaces are created to allow for appropriate segregation of Kubernetes
 resources and that all new resources are created in a specific namespace.
 
-**Audit:**
+**Audit Script:** 5.6.4.sh
 
 ```
-/mnt/kube-bench/test_helpers/5.6.4.sh
+#!/bin/bash -e
+
+export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
+
+kubectl version > /dev/null
+if [[ $? -gt 0 ]]; then
+  echo "fail: kubectl failed"
+  exit 666
+fi
+
+default_resources=$(kubectl get all -o json | jq --compact-output '.items[] | select((.kind == "Service") and (.metadata.name == "kubernetes") and (.metadata.namespace == "default") | not)' | wc -l)
+
+echo "--count=${default_resources}"
+```
+
+**Audit Execution:**
+
+```
+./5.6.4.sh 
 ```
 
 **Expected result**:
