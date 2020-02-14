@@ -255,7 +255,7 @@ Run the below command (based on the file location on your system) on the master 
 For example,
 
 ``` bash
-chmod -R 644 /etc/kubernetes/ssl"
+chmod -R 644 /etc/kubernetes/ssl
 ```
 
 **Audit Script:** check_files_permissions.sh
@@ -1994,7 +1994,7 @@ automountServiceAccountToken: false
 export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
 
 kubectl version > /dev/null
-if [ $? -gt 0 ]; then
+if [ $? -ne 0 ]; then
   echo "fail: kubectl failed"
   exit 666
 fi
@@ -2006,9 +2006,8 @@ if [[ "${accounts}" == "" ]]; then
   exit 0
 fi
 
-#echo ${accounts}
-#exit 0
-echo "--pass"
+echo ${accounts}
+exit 666
 ```
 
 **Audit Execution:**
@@ -2119,13 +2118,10 @@ Follow the documentation and create `NetworkPolicy` objects as you need them.
 ```
 #!/bin/bash -e
 
-echo "--pass"
-exit
-
-KUBECONFIG="/root/.kube/config"
+export KUBECONFIG=${KUBECONFIG:-"/root/.kube/config"}
 
 kubectl version > /dev/null
-if [ $? -gt 0 ]; then
+if [ $? -ne 0 ]; then
   echo "fail: kubectl failed"
   exit 666
 fi
@@ -2138,7 +2134,7 @@ for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.
   fi
 done
 
-echo "--pass"
+echo "pass"
 ```
 
 **Audit Execution:**
@@ -2150,7 +2146,7 @@ echo "--pass"
 **Expected result**:
 
 ```
-'--pass' is present
+'pass' is present
 ```
 
 ### 5.6 General Policies
