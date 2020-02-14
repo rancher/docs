@@ -48,10 +48,10 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 
 ### CPU and Memory
 
-Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher with Docker or on a Kubernetes cluster.
+Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
 {{% tabs %}}
-{{% tab "Nodes in Kubernetes Install" %}}
+{{% tab "Kubernetes Install Requirements" %}}
 
 These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
@@ -64,7 +64,11 @@ These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<bas
 | XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
 
 {{% /tab %}}
+<<<<<<< HEAD
 {{% tab "Node in Docker Install" %}}
+=======
+{{% tab "Docker Install Requirements" %}}
+>>>>>>> Explain K3s Rancher install
 
 These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
 

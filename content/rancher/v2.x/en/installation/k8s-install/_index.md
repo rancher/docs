@@ -16,37 +16,24 @@ If you only have one node, but you want to use the Rancher server in production 
 
 One option is to install Rancher with Helm on a Kubernetes cluster, but to only use a single node in the cluster. In this case, the Rancher server does not have high availability, which is important for running Rancher in production. However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 
-The single-node Kubernetes install can be achieved by describing only one node in the `cluster.yml` when provisioning the Kubernetes cluster with RKE. The single node would have all three roles: `etcd`, `controlplane`, and `worker`. Then Rancher would be installed with Helm on the cluster in the same way that it would be installed on any other cluster.
+To set up a single-node RKE cluster, configure only one node in the `cluster.yml` . The single node should have all three roles: `etcd`, `controlplane`, and `worker`.
+
+To set up a single-node K3s cluster, run the Rancher server installation command on just one node instead of two nodes.
+
+In both single-node Kubernetes setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
 
 ### Important Notes on Architecture
 
-The Rancher management server can only be run on an RKE-managed Kubernetes cluster. Use of Rancher on hosted Kubernetes or other providers is not supported.
+The Rancher management server can only be run on Kubernetes cluster in an infrastructure provider where Kubernetes is installed using K3s or RKE. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported.
 
 For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
-We recommend the following architecture and configurations for the load balancer and Ingress controllers:
-
-- DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
-- The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
-- The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
-- The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
-
-For more information on how a Kubernetes Installation works, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/how-ha-works)
-
 For information on how Rancher works, regardless of the installation method, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture)
-
-## Required CLI Tools
-
-The following CLI tools are required for this install. Please make sure these tools are installed and available in your `$PATH`
-
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-- [rke]({{<baseurl>}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
-- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
 
 ## Installation Outline
 
-- [Create Nodes and Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/)
-- [Install Kubernetes with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/)
+- [Set up Infrastructure]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/)
+- [Set up a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/)
 - [Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)
 
 ## Additional Install Options
