@@ -7,10 +7,11 @@ aliases:
 
 NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.
 
-> **Note:**
-> In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host capable of running NGINX.
->
-> One caveat: do not use one of your Rancher nodes as the load balancer.
+In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host capable of running NGINX.
+
+One caveat: do not use one of your Rancher nodes as the load balancer.
+
+> These examples show the load balancer being configured to direct traffic to three Rancher server nodes. If Rancher is installed on an RKE Kubernetes cluster, three nodes are required. If Rancher is installed on a K3s Kubernetes cluster, only two nodes are required.
 
 ## Install NGINX
 
