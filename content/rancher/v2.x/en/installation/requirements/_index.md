@@ -48,16 +48,12 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 
 ### CPU and Memory
 
-Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher on a single node or on a high-availability Kubernetes cluster.
-
-For production environments, the Rancher server should be installed on an HA cluster.
-
-Rancher can also be installed on a single node in a development or testing environment.
+Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher with Docker
 
 {{% tabs %}}
-{{% tab "HA Node Requirements" %}}
+{{% tab "Kubernetes Install Requirements" %}}
 
-These requirements apply to [installing Rancher on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) of Rancher.
+These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
@@ -68,7 +64,7 @@ These requirements apply to [installing Rancher on a Kubernetes cluster]({{<base
 | XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
 
 {{% /tab %}}
-{{% tab "Single Node Requirements" %}}
+{{% tab "Docker Install Requirements" %}}
 
 These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
 
