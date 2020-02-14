@@ -4,7 +4,7 @@ shortTitle: K3s
 name: "menu"
 ---
 
-Lightweight Kubernetes.  Easy to install, half the memory, all in a binary less than 40mb.
+Lightweight Kubernetes.  Easy to install, half the memory, all in a binary less than 50mb.
 
 Great for:
 
