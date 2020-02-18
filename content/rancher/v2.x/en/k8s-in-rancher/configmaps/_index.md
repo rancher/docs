@@ -10,10 +10,6 @@ While most types of Kubernetes secrets store sensitive information, [ConfigMaps]
 
 ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. After you upload a config map, any workload can reference it as either an environment variable or a volume mount.
 
->**Note:** ConfigMaps are only available within [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) and not [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects).
-({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces)
-ConfigMaps store general configuration information for an application, such as configuration files, command-line arguments, environment variables, etc. ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. Add ConfigMaps to your Rancher workspaces so that you can add them to your workloads later. 
-
 >**Note:** ConfigMaps can only be applied to namespaces and not projects.
 
 1. From the **Global** view, select the project containing the namespace that you want to add a ConfigMap to.
