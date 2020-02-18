@@ -7,7 +7,7 @@ _Available as of v0.2.0_
 
 By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all the Kubernetes services. RKE can also use custom certificates for these Kubernetes services.
 
-When [deploying Kubernetes with RKE]({{< baseurl >}}/rke/latest/en/installation/#deploying-kubernetes-with-rke), there are two additional options that can be used with `rke up` so that RKE uses custom certificates.
+When [deploying Kubernetes with RKE]({{<baseurl>}}/rke/latest/en/installation/#deploying-kubernetes-with-rke), there are two additional options that can be used with `rke up` so that RKE uses custom certificates.
 
 | Option | Description |
 | --- | --- |
@@ -45,7 +45,7 @@ The following certificates must exist in the certificate directory.
 
 If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to generate a set of Certificate Signing Requests (CSRs) and keys. Using the `rke cert generate-csr` command, you can generate the CSRs and keys.
 
-1. Set up your `cluster.yml` with the [node information]({{< baseurl >}}/rke/latest/en/config-options/nodes/).
+1. Set up your `cluster.yml` with the [node information]({{<baseurl>}}/rke/latest/en/config-options/nodes/).
 
 2. Run `rke cert generate-csr` to generate certificates for the node(s) in the `cluster.yml`. By default, the CSRs and keys will be saved in `./cluster_certs`. To have them saved in a different directory, use `--cert-dir` to define what directory to have them saved in.
 

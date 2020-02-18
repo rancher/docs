@@ -9,7 +9,7 @@ Use this document to correct workloads that list `ports` in `output.txt`. You ca
 
 <figcaption>Resolve <code>ports</code> for the <code>web</code> Workload</figcaption>
 
-![Resolve Ports]({{< baseurl >}}/img/rancher/resolve-ports.png)
+![Resolve Ports]({{<baseurl>}}/img/rancher/resolve-ports.png)
 
 
 ## In This Document
@@ -38,7 +38,7 @@ A _HostPort_ is a port exposed to the public on a _specific node_ running one or
 
 In the following diagram, a user is trying to access an instance of Nginx, which is running within a pod on port 80. However, the Nginx deployment is assigned a HostPort of 9890. The user can connect to this pod by browsing to its host IP address, followed by the HostPort in use (9890 in case).
 
-![HostPort Diagram]({{< baseurl >}}/img/rancher/hostPort.svg)
+![HostPort Diagram]({{<baseurl>}}/img/rancher/hostPort.svg)
 
 
 #### HostPort Pros
@@ -71,7 +71,7 @@ NodePorts help you circumvent an IP address shortcoming. Although pods can be re
 
 In the following diagram, a user is trying to connect to an instance of Nginx running in a Kubernetes cluster managed by Rancher. Although he knows what NodePort Nginx is operating on (30216 in this case), he does not know the IP address of the specific node that the pod is running on. However, with NodePort enabled, he can connect to the pod using the IP address for _any_ node in the cluster. Kubeproxy will forward the request to the correct node and pod.  
 
-![NodePort Diagram]({{< baseurl >}}/img/rancher/nodePort.svg)
+![NodePort Diagram]({{<baseurl>}}/img/rancher/nodePort.svg)
 
 NodePorts are available within your Kubernetes cluster on an internal IP. If you want to expose pods external to the cluster, use NodePorts in conjunction with an external load balancer. Traffic requests from outside your cluster for `<NodeIP>:<NodePort>` are directed to the workload. The `<NodeIP>` can be the IP address of any node in your Kubernetes cluster.
 
@@ -101,4 +101,4 @@ For example, for the `web-deployment.yml` file parsed from v1.6 that we've been 
 
 {{< img "/img/rancher/set-nodeport.gif" "Set NodePort" >}}
 
-### [Next: Configure Health Checks]({{< baseurl >}}/rancher/v2.x/en/v1.6-migration/monitor-apps)
+### [Next: Configure Health Checks]({{<baseurl>}}/rancher/v2.x/en/v1.6-migration/monitor-apps)

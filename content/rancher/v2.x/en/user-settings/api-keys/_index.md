@@ -29,7 +29,7 @@ API Keys are composed of four components:
 
     The API key won't be valid after expiration. Shorter expiration periods are more secure.
     
-    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{< baseurl >}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint) for more information.
+    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint) for more information.
 
 4. Click **Create**.
 
@@ -43,7 +43,7 @@ API Keys are composed of four components:
 
 - Enter your API key information into the application that will send requests to the Rancher API.
 - Learn more about the Rancher endpoints and parameters by selecting **View in API** for an object in the Rancher UI.
-- API keys are used for API calls and [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli).
+- API keys are used for API calls and [Rancher CLI]({{<baseurl>}}/rancher/v2.x/en/cli).
 
 ## Deleting API Keys
 

@@ -9,15 +9,15 @@ In situations where several teams share a cluster, one team may overconsume the 
 
 This page is a how-to guide for creating resource quotas in existing projects.
 
-Resource quotas can also be set when a new project is created. For details, refer to the section on [creating new projects.]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/projects-and-namespaces/#creating-projects)
+Resource quotas can also be set when a new project is created. For details, refer to the section on [creating new projects.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/projects-and-namespaces/#creating-projects)
 
-> Resource quotas in Rancher include the same functionality as the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, in Rancher, resource quotas have been extended so that you can apply them to [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects). For details on how resource quotas work with projects in Rancher, refer to [this page.](./quotas-for-projects)
+> Resource quotas in Rancher include the same functionality as the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, in Rancher, resource quotas have been extended so that you can apply them to [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects). For details on how resource quotas work with projects in Rancher, refer to [this page.](./quotas-for-projects)
 
 ### Applying Resource Quotas to Existing Projects
 
 _Available as of v2.0.1_
 
-Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) when:
+Edit [resource quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) when:
 
 - You want to limit the resources that a project and its namespaces can use.
 - You want to scale the resources available to a project up or down when a research quota is already in effect.
@@ -30,7 +30,7 @@ Edit [resource quotas]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-a
 
 1. Expand **Resource Quotas** and click **Add Quota**. Alternatively, you can edit existing quotas.
 
-1. Select a [Resource Type]({{< baseurl >}}/rancher/v2.x/en/project-admin/resource-quotas/#resource-quota-types).
+1. Select a [Resource Type]({{<baseurl>}}/rancher/v2.x/en/project-admin/resource-quotas/#resource-quota-types).
 
 1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
 

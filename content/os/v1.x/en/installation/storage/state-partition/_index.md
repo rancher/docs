@@ -13,7 +13,7 @@ rancher:
     dev: LABEL=RANCHER_STATE
 ```
 
-For other labels such as `RANCHER_BOOT` and `RANCHER_OEM` and `RANCHER_SWAP`, please refer to [Custom partition layout]({{< baseurl >}}/os/v1.x/en/about/custom-partition-layout/).
+For other labels such as `RANCHER_BOOT` and `RANCHER_OEM` and `RANCHER_SWAP`, please refer to [Custom partition layout]({{<baseurl>}}/os/v1.x/en/about/custom-partition-layout/).
 
 ### Autoformat
 

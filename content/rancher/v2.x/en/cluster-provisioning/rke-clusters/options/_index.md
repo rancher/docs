@@ -36,7 +36,7 @@ This section is a cluster configuration reference, covering the following topics
 
 # Rancher UI Options
 
-When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic Kubernetes options using the **Cluster Options** section.
+When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters), you can configure basic Kubernetes options using the **Cluster Options** section.
 
 ### Kubernetes Version
 
@@ -44,7 +44,7 @@ The version of Kubernetes installed on your cluster nodes. Rancher packages its 
 
 ### Network Provider
 
-The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [Networking FAQ]({{< baseurl >}}/rancher/v2.x/en/faq/networking/cni-providers/).
+The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [Networking FAQ]({{<baseurl>}}/rancher/v2.x/en/faq/networking/cni-providers/).
 
 >**Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you  tear down the entire cluster and all its applications.
 
@@ -57,9 +57,9 @@ Out of the box, Rancher is compatible with the following network providers:
 
 **Notes on Canal:**
   
-In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
+In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
-As of v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
+As of v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).
 
 >**Attention Rancher v2.0.0 - v2.0.6 Users**
 >
@@ -72,13 +72,13 @@ In v2.0.5, this was the default option, which did not prevent any network isolat
 
 **Notes on Weave:**
 
-When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the [Weave Network Plug-in Options]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
 
 ### Kubernetes Cloud Providers
 
 You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
->**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
+>**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
 If you want to see all the configuration options for a cluster, please click **Show advanced options** on the bottom right. The advanced options are described below:
 
@@ -119,7 +119,7 @@ The following options are available when you create clusters in the Rancher UI. 
 
 ### NGINX Ingress
 
-Option to enable or disable the [NGINX ingress controller]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/).
+Option to enable or disable the [NGINX ingress controller]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/).
 
 ### Node Port Range
 
@@ -127,15 +127,15 @@ Option to change the range of ports that can be used for [NodePort services](htt
 
 ### Metrics Server Monitoring
 
-Option to enable or disable [Metrics Server]({{< baseurl >}}/rke/latest/en/config-options/add-ons/metrics-server/).
+Option to enable or disable [Metrics Server]({{<baseurl>}}/rke/latest/en/config-options/add-ons/metrics-server/).
 
 ### Pod Security Policy Support
 
-Option to enable and select a default [Pod Security Policy]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing Pod Security Policy configured before you can use this option.
+Option to enable and select a default [Pod Security Policy]({{<baseurl>}}/rancher/v2.x/en/admin-settings/pod-security-policies). You must have an existing Pod Security Policy configured before you can use this option.
 
 ### Docker Version on Nodes
 
-Option to require [a supported Docker version]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/) installed on the cluster nodes that are added to the cluster, or to allow unsupported Docker versions installed on the cluster nodes.
+Option to require [a supported Docker version]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/) installed on the cluster nodes that are added to the cluster, or to allow unsupported Docker versions installed on the cluster nodes.
 
 ### Docker Root Directory
 
@@ -143,7 +143,7 @@ If the nodes you are adding to the cluster have Docker configured with a non-def
 
 ### Recurring etcd Snapshots
 
-Option to enable or disable [recurring etcd snapshots]({{< baseurl >}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
+Option to enable or disable [recurring etcd snapshots]({{<baseurl>}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
 
 # Cluster Config File
 
@@ -154,7 +154,7 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 - To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from a file**.
 
-![image]({{< baseurl >}}/img/rancher/cluster-options-yaml.png)
+![image]({{<baseurl>}}/img/rancher/cluster-options-yaml.png)
 
 The structure of the config file is different depending on your version of Rancher. Below are example config files for Rancher v2.0.0-v2.2.x and for Rancher v2.3.0+.
 
@@ -341,7 +341,7 @@ ssh_agent_auth: false
 
 ### Default DNS provider
 
-The table below indicates what DNS provider is deployed by default. See [RKE documentation on DNS provider]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/) for more information how to configure a different DNS provider. CoreDNS can only be used on Kubernetes v1.12.0 and higher.
+The table below indicates what DNS provider is deployed by default. See [RKE documentation on DNS provider]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/) for more information how to configure a different DNS provider. CoreDNS can only be used on Kubernetes v1.12.0 and higher.
 
 | Rancher version | Kubernetes version | Default DNS provider |
 |-------------|--------------------|----------------------|
@@ -361,7 +361,7 @@ See [Docker Root Directory](#docker-root-directory).
 
 ### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/).
+Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/).
 
 ### enable_network_policy
 

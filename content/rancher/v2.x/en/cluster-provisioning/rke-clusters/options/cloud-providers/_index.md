@@ -13,10 +13,10 @@ By default, the **Cloud Provider** option is set to `None`. Supported cloud prov
 
 The `Custom` cloud provider is available if you want to configure any [Kubernetes cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/).
 
-For the custom cloud provider option, you can refer to the [RKE docs]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
+For the custom cloud provider option, you can refer to the [RKE docs]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
 
-* [vSphere]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere/)
-* [Openstack]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/openstack/)
+* [vSphere]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/)
+* [Openstack]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/openstack/)
 
 > **Warning:** Your cluster will not provision correctly if you configure a cloud provider cluster of nodes that do not meet the prerequisites. Prerequisites for supported cloud providers are listed below.
 
@@ -34,7 +34,7 @@ See [cloud-provider-aws README](https://github.com/kubernetes/cloud-provider-aws
 - Create an IAM role and attach to the instances
 - Configuring the ClusterID
 
-> **Note:** When you create an [Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
+> **Note:** When you create an [Amazon EC2 Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
 
 #### Create an IAM Role and attach to the instances
 
@@ -140,8 +140,8 @@ IAM policy for nodes with the `etcd` or `worker` role:
 }
 ```
 
-- While creating an [Amazon EC2 cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
-- While creating a [Custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must manually attach the IAM role to the instance(s).
+- While creating an [Amazon EC2 cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
+- While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must manually attach the IAM role to the instance(s).
 
 #### Configuring the ClusterID
 

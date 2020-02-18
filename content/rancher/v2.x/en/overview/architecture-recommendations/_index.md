@@ -45,14 +45,14 @@ We recommend the following configurations for the load balancer and Ingress cont
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
 <figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
-![Rancher HA]({{< baseurl >}}/img/rancher/ha/rancher2ha.svg)
+![Rancher HA]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
 <sup>Rancher installed on a Kubernetes cluster with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
 
 # Environment for Kubernetes Installations
 
 It is strongly recommended to install Rancher on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
 
-For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 It is not recommended to install Rancher on top of a managed Kubernetes service such as Amazon’s EKS or Google Kubernetes Engine. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations.
 

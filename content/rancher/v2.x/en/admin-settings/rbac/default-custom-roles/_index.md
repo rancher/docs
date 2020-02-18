@@ -22,8 +22,8 @@ This section covers the following topics:
 
 To complete the tasks on this page, one of the following permissions are required:
 
- - [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/).
- - [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
+ - [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/).
+ - [Custom Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
 
 ## Creating A Custom Role for a Cluster or Project
 
@@ -68,7 +68,7 @@ The steps to add custom roles differ depending on the version of Rancher.
 
 1.  **Name** the role.
 
-1.  Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
+1.  Choose whether to set the role to a status of [locked]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
     > **Note:** Locked roles cannot be assigned to users.
 

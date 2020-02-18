@@ -55,10 +55,10 @@ If your instance of Splunk uses SSL, your **Endpoint** will need to begin with `
 1. Click on **Search & Reporting**. The number of **Indexed Events** listed should be increasing.
 
 1. Click on Data Summary and select the Sources tab.
-  ![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk4.jpg)
+  ![View Logs]({{<baseurl>}}/img/rancher/splunk/splunk4.jpg)
 
 1. To view the actual logs, click on the source that you declared earlier.
-  ![View Logs]({{< baseurl >}}/img/rancher/splunk/splunk5.jpg)
+  ![View Logs]({{<baseurl>}}/img/rancher/splunk/splunk5.jpg)
 
 ## Troubleshooting
 

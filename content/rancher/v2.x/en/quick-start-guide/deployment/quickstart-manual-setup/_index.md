@@ -38,7 +38,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >
   > For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/).
 
-  Provision the host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
+  Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/).
 
 ### 2. Install Rancher
 
@@ -105,4 +105,4 @@ Congratulations! You have created your first cluster.
 
 #### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload).
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/workload).

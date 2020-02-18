@@ -63,11 +63,11 @@ Valid cloud-init datasources for RancherOS.
 | cmdline | Kernel command line: `cloud-config-url=http://link/user_data` |
 | configdrive | /media/config-2 |
 | url | URL address |
-| vmware| Set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/cloud/vmware-esxi) |
+| vmware| Set `guestinfo` cloud-init or interface data as per [VMware ESXi]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/cloud/vmware-esxi) |
 | * | This will add ["configdrive", "vmware", "ec2", "digitalocean", "packet", "gce"] into the list of datasources to try |
 
 The vmware datasource was added as of v1.1.
 
 ### Cloud-Config
 
-When booting via iPXE, RancherOS can be configured using a [cloud-config file]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config).
+When booting via iPXE, RancherOS can be configured using a [cloud-config file]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config).

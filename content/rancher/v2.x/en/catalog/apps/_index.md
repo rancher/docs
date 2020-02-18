@@ -3,13 +3,13 @@ title: Apps in a Project
 weight: 5005
 ---
 
-Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/#catalog-scope).
+Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/#catalog-scope).
 
-If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
+If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
 
 ## Launching Catalog Applications
 
-After you've either enabled the [built-in global catalogs]({{< baseurl >}}/rancher/v2.x/en/catalog/built-in/) or [added your own custom catalog]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/adding), you can start launching catalog applications.
+After you've either enabled the [built-in global catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/built-in/) or [added your own custom catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding), you can start launching catalog applications.
 
 1. From the **Global** view, navigate to your project that you want to start deploying applications.
 
@@ -50,7 +50,7 @@ If the Helm chart that you are deploying contains a `questions.yml` file, Ranche
 
 #### Key Value Pairs for Native Helm Charts
 
-For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{< baseurl >}}/rancher/v2.x/en/catalog/custom/#custom-helm-chart-repository)), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
+For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#custom-helm-chart-repository)), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
 
 {{% /tab %}}
 {{% tab "Editing YAML Files" %}}

@@ -10,8 +10,8 @@ While most types of Kubernetes secrets store sensitive information, [ConfigMaps]
 
 ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. After you upload a config map, any workload can reference it as either an environment variable or a volume mount.
 
->**Note:** ConfigMaps are only available within [namespaces]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) and not [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects).
-({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces)
+>**Note:** ConfigMaps are only available within [namespaces]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) and not [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#projects).
+({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces)
 ConfigMaps store general configuration information for an application, such as configuration files, command-line arguments, environment variables, etc. ConfigMaps accept key value pairs in common string formats, like config files or JSON blobs. Add ConfigMaps to your Rancher workspaces so that you can add them to your workloads later. 
 
 >**Note:** ConfigMaps can only be applied to namespaces and not projects.
@@ -30,7 +30,7 @@ ConfigMaps store general configuration information for an application, such as c
 
 1. Click **Save**.
 
-	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
@@ -45,4 +45,4 @@ Now that you have a ConfigMap added to a namespace, you can add it to a workload
 - Application environment variables.
 - Specifying parameters for a Volume mounted to the workload.
 
-For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
+For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).

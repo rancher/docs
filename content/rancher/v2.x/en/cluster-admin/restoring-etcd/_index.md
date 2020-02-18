@@ -5,11 +5,11 @@ weight: 2050
 
 _Available as of v2.2.0_
 
-etcd backup and recovery for [Rancher launched Kubernetes clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
+etcd backup and recovery for [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
-Rancher recommends enabling the [ability to set up recurring snapshots of etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots-for-the-cluster), but [one-time snapshots]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](#restoring-your-cluster-from-a-snapshot) or if you don't have any snapshots, you can still [restore etcd](#recovering-etcd-without-a-snapshot).
+Rancher recommends enabling the [ability to set up recurring snapshots of etcd]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots-for-the-cluster), but [one-time snapshots]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](#restoring-your-cluster-from-a-snapshot) or if you don't have any snapshots, you can still [restore etcd](#recovering-etcd-without-a-snapshot).
 
->**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, after upgrading Rancher, you must [edit the cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the [updated snapshot features]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/). Even if you were already creating snapshots prior to v2.2.0, you must do this step as the older snapshots will not be available to use to back up and restore etcd through the UI.
+>**Note:** If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, after upgrading Rancher, you must [edit the cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the [updated snapshot features]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/). Even if you were already creating snapshots prior to v2.2.0, you must do this step as the older snapshots will not be available to use to back up and restore etcd through the UI.
 
 ## Viewing Available Snapshots
 
@@ -33,11 +33,11 @@ If your Kubernetes cluster is broken, you can restore the cluster from a snapsho
 
 **Result:** The cluster will go into `updating` state and the process of restoring the `etcd` nodes from the snapshot will start. The cluster is restored when it returns to an `active` state.
 
-> **Note:** If you are restoring a cluster with unavailable etcd nodes, it's recommended that all etcd nodes are removed from Rancher before attempting to restore. For clusters that were provisioned using [nodes hosted in an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), new etcd nodes will automatically be created. For [custom clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/), please ensure that you add new etcd nodes to the cluster.   
+> **Note:** If you are restoring a cluster with unavailable etcd nodes, it's recommended that all etcd nodes are removed from Rancher before attempting to restore. For clusters that were provisioned using [nodes hosted in an infrastructure provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/), new etcd nodes will automatically be created. For [custom clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/), please ensure that you add new etcd nodes to the cluster.   
 
 ## Recovering etcd without a Snapshot
 
-If the group of etcd nodes loses quorum, the Kubernetes cluster will report a failure because no operations, e.g. deploying workloads, can be executed in the Kubernetes cluster. Please review the best practices for the what the [number of etcd nodes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/production/#count-of-etcd-nodes) should be in a Kubernetes cluster. If you want to recover your set of etcd nodes, follow these instructions:
+If the group of etcd nodes loses quorum, the Kubernetes cluster will report a failure because no operations, e.g. deploying workloads, can be executed in the Kubernetes cluster. Please review the best practices for the what the [number of etcd nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production/#count-of-etcd-nodes) should be in a Kubernetes cluster. If you want to recover your set of etcd nodes, follow these instructions:
 
 1. Keep only one etcd node in the cluster by removing all other etcd nodes.
 
@@ -63,4 +63,4 @@ If the group of etcd nodes loses quorum, the Kubernetes cluster will report a fa
 
 5. Run the revised command.
 
-6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) and you want to reuse an old node, you are required to [clean up the nodes]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  
+6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) and you want to reuse an old node, you are required to [clean up the nodes]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  

@@ -162,7 +162,7 @@ Only VMs booting from RancherOS ISO are supported.
 
 Ensure that the [OS ISO URL](#instance-options) contains the URL of the VMware ISO release for RancherOS: `rancheros-vmware.iso`.
 
-    ![image]({{< baseurl >}}/img/rancher/vsphere-node-template-1.png)
+    ![image]({{<baseurl>}}/img/rancher/vsphere-node-template-1.png)
 
 {{% /tab %}}
 {{% /tabs %}}

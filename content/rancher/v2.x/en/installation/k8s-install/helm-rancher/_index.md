@@ -16,11 +16,16 @@ To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({
 
 To choose a version of Helm to install Rancher with, refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version)
 
-> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older installation instructions for Rancher installed on Kubernetes with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older installation instructions for Rancher installed on an RKE Kubernetes cluster with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
-### Install Helm
+# Required CLI Tools
 
-Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+The following CLI tools are required for setting up the Kubernetes cluster. Please make sure these tools are installed and available in your `$PATH`.
+
+Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
 
 ### Add the Helm Chart Repository
 
@@ -42,9 +47,9 @@ kubectl create namespace cattle-system
 
 ### Choose your SSL Configuration
 
-Rancher Server is designed to be secure by default and requires SSL/TLS configuration.
+The Rancher management server is designed to be secure by default and requires SSL/TLS configuration.
 
-There are three recommended options for the source of the certificate.
+There are three recommended options for the source of the certificate. For discussion of each option and its use case, refer to this [blog post.](https://rancher.com/blog/2020/transport-layer-security-p2)
 
 > **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
 
