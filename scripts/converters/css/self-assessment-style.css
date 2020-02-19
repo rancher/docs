@@ -1,0 +1,87 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    color: #4a6482;
+    font-weight: 400;
+    margin-top: 70px;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 400;
+    color: #4a6482;
+    background-color: ghostwhite;
+    padding-top: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    background-color: #8ea3be;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 30px;
+    margin-top: 0;
+}
+
+h4 {
+    font-size: 20px;
+    color: #4a6482;
+    margin-top: 50px;
+}
+
+li {
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #0075A8;
+}
+
+p {
+    margin-top: 20px;
+    line-height: 25px;
+    font-size: 15px;
+}
+
+strong {
+    color: #4a6482;
+}
+code {
+    background-color: ghostwhite;
+    line-height: 25px;
+    color: #4a6482;
+    word-wrap: break-word;
+}
+
+h4 > code {
+    color: #4a6482;
+}
+
+.sourceCode {
+    color: #333333;
+    background-color: #f4f4f4;
+    font-size: 15px;
+    width: 100%;
+    display: inline-block;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: normal;
+    line-break: strict;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    white-space: normal;
+    padding-right: 50px;
+}

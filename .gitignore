@@ -6,3 +6,4 @@ package-lock.json
 */**/.tern-port
 .DS_Store
 .vscode/settings.json
+/scripts/converters/output
