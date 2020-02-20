@@ -24,7 +24,7 @@ For more detail about evaluating a hardened cluster against the official CIS ben
 
 ### Configure Kernel Runtime Parameters
 
-The folowing `sysctl` configuration is recommended for all nodes type in the cluster. Set the following parameters in `/etc/sysctl.d/90-kubelet.conf`:
+The following `sysctl` configuration is recommended for all nodes type in the cluster. Set the following parameters in `/etc/sysctl.d/90-kubelet.conf`:
 
 ```
 vm.overcommit_memory=1
@@ -106,7 +106,7 @@ Once a CNI provider is enabled on a cluster a default network policy can be appl
 (even if policies are added that cause some pods to be treated as “isolated”),
 you can create a policy that explicitly allows all traffic in that namespace. Save the following `yaml` as
 `default-allow-all.yaml`. Additional [documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-about network poilices can be found on the Kubernetes site.
+about network policies can be found on the Kubernetes site.
 
 > This `NetworkPolicy` is not recommended for production use
 
@@ -136,12 +136,12 @@ done
 Execute this script to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
 
 ### Reference Hardened RKE `cluster.yml` configuration
-The reference `cluster.yml` is used by the RKE cli that provides the configuration needed to acheive a hardened install
+The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened install
 of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
 provided with additional details about the configuration items.
 
 ``` yaml
-# If you intened to deploy Kubernetes in an air-gapped environment,
+# If you intend to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
 kubernetes_version: "v1.15.9-rancher1-1"
 enable_network_policy: true
@@ -417,7 +417,7 @@ dns: null
 
 ### Reference Hardened RKE Template configuration 
 
-The reference RKE Template provides the configuration needed to acheive a hardened install of Kubenetes.
+The reference RKE Template provides the configuration needed to achieve a hardened install of Kubenetes.
 RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
 [documentaion](https://rancher.com/docs/rancher/v2.x/en/installation) for additional installation and RKE Template details.
 
@@ -674,10 +674,10 @@ rancher_kubernetes_engine_config:
 windows_prefered_cluster: false
 ```
 
-### Hardened Reference Ubuntu **cloud-config**:
+### Hardened Reference Ubuntu 18.04 LTS **cloud-config**:
 
-The reference **cloud-config** is generenally used in cloud infrastructure environments to allow for
-configuration managment of compute instances. The reference config configures Ubuntu operating system level settings
+The reference **cloud-config** is generally used in cloud infrastructure environments to allow for
+configuration management of compute instances. The reference config configures Ubuntu operating system level settings
 needed before installing kubernetes.
 
 ``` yaml
