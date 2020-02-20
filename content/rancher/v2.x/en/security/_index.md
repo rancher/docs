@@ -55,6 +55,7 @@ Each version of the hardening guide is intended to be used with specific version
 
 Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
 ------------------------|----------------|-----------------------|------------------
+[Hardening Guide v2.3.5]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3.5/) | Rancher v2.3.5 | Benchmark v1.5 | Kubernetes v1.15
 [Hardening Guide v2.3.3]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3.3/) | Rancher v2.3.3 | Benchmark v1.4.1 | Kubernetes v1.14, v1.15, and v1.16
 [Hardening Guide v2.3]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3/) | Rancher v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes v1.15
 [Hardening Guide v2.2]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.2/) | Rancher v2.2.x | Benchmark v1.4.1 and 1.4.0 | Kubernetes v1.13
