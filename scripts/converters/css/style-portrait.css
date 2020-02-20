@@ -307,23 +307,30 @@ h4 > code {
     color: #4a6482;
 }
 
-.sourceCode {
-    color: #333333;
-    background-color: #f4f4f4;
-    font-size: 15px;
-    width: 100%;
-    display: inline-block;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: normal;
-    line-break: strict;
-    hyphens: none;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    white-space: normal;
-    padding-right: 50px;
-}
+#.sourceCode {
+#    color: #333333;
+#    background-color: #f4f4f4;
+#    font-size: 15px;
+#    width: 100%;
+#    display: inline-block;
+#    overflow-wrap: break-word;
+#    word-wrap: break-word;
+#    word-break: normal;
+#    line-break: strict;
+#    hyphens: none;
+#    -webkit-hyphens: none;
+#    -moz-hyphens: none;
+#    white-space: normal;
+#    padding-right: 50px;
+#}
 
+.sourceCode {
+		background-color: ghostwhite;
+    font-family: monospace;
+    line-height: 25px;
+    color: #4a6482;
+    word-wrap: break-word;
+}
 
 /*--------------------------------------------
 08-14-2019
