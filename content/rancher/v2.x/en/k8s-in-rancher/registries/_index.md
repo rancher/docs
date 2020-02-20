@@ -10,7 +10,7 @@ Registries are Kubernetes secrets containing credentials used to authenticate wi
 The word "registry" can mean two things, depending on whether it is used to refer to a Docker or Kubernetes registry:
 
 - A **Docker registry** contains Docker images that you can pull in order to use them in your deployment. The registry is a stateless, scalable server side application that stores and lets you distribute Docker images.
-- The **Kubernetes registry** is a secret that your deployment uses to authenticate with a Docker registry.
+- The **Kubernetes registry** is an image pull secret that your deployment uses to authenticate with a Docker registry.
 
 Deployments use the Kubernetes registry secret to authenticate with a private Docker registry and then pull a Docker image hosted on it.
 
