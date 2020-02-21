@@ -48,15 +48,13 @@ You can assign the following resources directly to namespaces:
 - [Registries]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/registries/)
 - [Secrets]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/secrets/)
 
->**Note:** Although you can assign role-based access to namespaces in the base version of Kubernetes, you cannot assign roles to namespaces in Rancher. Instead, assign role-based access at the project level.
+To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
+
+> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
 
 For more information on creating and moving namespaces, see [Namespaces]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/).
 
 # About Projects
-
-Within Rancher, a project can contain multiple namespaces and access control policies, making it possible to organize and isolate resources within the project.
-
-A project is a concept introduced by Rancher that allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/)
 
 In terms of hierarchy:
 
@@ -67,9 +65,9 @@ You can use projects to support multi-tenancy, so that a team can access a proje
 
 In the base version of Kubernetes, features like role-based access rights or cluster resources are assigned to individual namespaces. A project allows you to save time by giving an individual or a team access to multiple namespaces simultaneously.
 
-You can use projects to perform actions like:
+You can use projects to perform actions such as:
 
-- Assign users access to a group of namespaces (i.e., [project membership]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/project-members)).
+- Assign users to a group of namespaces (i.e., [project membership]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/project-members)).
 - Assign users specific roles in a project. A role can be owner, member, read-only, or [custom]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/).
 - Assign resources to the project.
 - Assign Pod Security Policies.
