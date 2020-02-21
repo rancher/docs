@@ -4,7 +4,7 @@ shortTitle: K3s
 name: "menu"
 ---
 
-Lightweight Kubernetes.  Easy to install, half the memory, all in a binary of less than 50mb.
+Lightweight Kubernetes. Easy to install, half the memory, all in a binary of less than 50mb.
 
 Great for:
 
@@ -12,7 +12,7 @@ Great for:
 * IoT
 * CI
 * ARM
-* Situations where a PhD in k8s clusterology is infeasible
+* Situations where a PhD in K8s clusterology is infeasible
 
 # What is K3s?
 

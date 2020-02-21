@@ -41,8 +41,7 @@ When running the command to start the K3s Kubernetes API server, you will pass i
 1. On the Linux node, run this command to start the K3s server and connect it to the external datastore:
   ```
   curl -sfL https://get.k3s.io | sh -s - server \
-    --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name" \
-    --no-deploy=traefik
+    --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"
   ```
   Note: The datastore endpoint can also be passed in using the environment variable `$K3S_DATASTORE_ENDPOINT`.
 
@@ -78,7 +77,29 @@ To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. Replace `localhost` in the kubeconfig file with the IP or name of your K3s server.
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
+
+```
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: [CERTIFICATE-DATA]
+    server: [LOAD-BALANCER-DNS]:6443 # Edit this line
+  name: default
+contexts:
+- context:
+    cluster: default
+    user: default
+  name: default
+current-context: default
+kind: Config
+preferences: {}
+users:
+- name: default
+  user:
+    password: [PASSWORD]
+    username: admin
+```
 
 **Result:** You can now use `kubectl` to manage your K3s cluster.
 

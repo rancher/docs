@@ -1,6 +1,6 @@
 ---
-title: Creating Backups for Rancher Installed on Kubernetes
-weight: 50
+title: Backing up Rancher Installed on an RKE Kubernetes Cluster
+weight: 2
 aliases:
   - /rancher/v2.x/en/installation/after-installation/k8s-install-backup-and-restoration/
   - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/

@@ -8,7 +8,10 @@ This section is devoted to protecting your data in a disaster scenario.
 
 To protect yourself from a disaster scenario, you should create backups on a regular basis.
 
-  - [Rancher Server Backups]({{<baseurl>}}/rancher/v2.x/en/backups/backups)
+  - Rancher server backups:
+    - [Rancher installed on a K3s Kubernetes cluster](./backups/k3s-backups)
+    - [Rancher installed on an RKE Kubernetes cluster](./backups/ha-backups)
+    - Rancher installed with Docker
   - [Backing up Rancher Launched Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/)
 
 
