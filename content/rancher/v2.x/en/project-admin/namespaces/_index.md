@@ -18,9 +18,10 @@ Resources that you can assign directly to namespaces include:
 - [Registries]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/registries/)
 - [Secrets]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/)
 
-Although you can assign role-based access to namespaces in the base version of Kubernetes, you cannot assign roles to namespaces in Rancher. Instead, assign role-based access at the project level.
+To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
 
-> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher](#creating-namespaces) to ensure that you will have permission to access the namespace.
+> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
+
 
 ### Creating Namespaces
 
