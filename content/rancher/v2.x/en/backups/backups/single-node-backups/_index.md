@@ -1,6 +1,6 @@
 ---
-title: Creating Backups for Rancher Installed with Docker
-weight: 25
+title: Backing up Rancher Installed with Docker
+weight: 3
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
 ---
