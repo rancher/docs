@@ -33,7 +33,7 @@ When Rancher is installed on a single node, if the node goes down, there is no c
 By contrast, in the high-availability installation,
 
 - The etcd data is replicated on three nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
-- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
+- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/options/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
 
 # Recommended Load Balancer Configuration for Kubernetes Installations
 
