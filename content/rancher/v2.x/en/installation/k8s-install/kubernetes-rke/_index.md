@@ -8,7 +8,7 @@ aliases:
 
 This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
-For Rancher prior to v2.4, Rancher should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution and that runs entirely within Docker containers.
+For Rancher prior to v2.4, Rancher should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 
 As of Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 50 MB. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
 
@@ -101,7 +101,11 @@ users:
     username: admin
 ```
 
-**Result:** You can now use `kubectl` to manage your K3s cluster.
+**Result:** You can now use `kubectl` to manage your K3s cluster. If you have more than one kubeconfig file, you can specify which one you want to use by passing in the path to the file when using `kubectl`:
+
+```
+kubectl --kubeconfig ~/.kube/config/k3s.yaml get pods --all-namespaces
+```
 
 For more information about the `kubeconfig` file, refer to the [K3s documentation]({{<baseurl>}}/k3s/latest/en/cluster-access/) or the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) about organizing cluster access using `kubeconfig` files.
 

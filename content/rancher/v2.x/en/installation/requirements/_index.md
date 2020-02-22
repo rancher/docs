@@ -26,7 +26,15 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution and any modern Docker version.
 
-Rancher has been tested and is supported with Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
+Rancher and RKE have been tested and are supported on Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
+
+K3s should run on just about any flavor of Linux. However, K3s is tested on the following operating systems and their subsequent non-major releases:
+
+- Ubuntu 16.04 (amd64)
+- Ubuntu 18.04 (amd64)
+- Raspbian Buster (armhf)
+
+If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
@@ -34,7 +42,7 @@ All supported operating systems are 64-bit x86.
 
 The `ntp` (Network Time Protocol) package should be installed. This prevents errors with certificate validation that can occur when the time is not synchronized between the client and server.
 
-Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules and how to open the ports with `firewalld` if necessary.
+Some distributions of Linux may have default firewall rules that block communication with Helm. This [how-to guide]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) shows how to check the default firewall rules for Oracle Linux and how to open the ports with `firewalld` if necessary.
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
 

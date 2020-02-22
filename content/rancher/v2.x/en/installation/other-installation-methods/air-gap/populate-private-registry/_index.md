@@ -16,7 +16,7 @@ By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/ran
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
-By default, we provide the steps of how to populate your private registry assuming you are provisioning Linux only clusters, but if you plan on provisioning any [Windows clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed for a Windows cluster.
+By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed.
 
 {{% tabs %}}
 {{% tab "Linux Only Clusters" %}}
@@ -46,7 +46,7 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### B. Collect all the required images (For Kubernetes Installs using Rancher Generated Self-Signed Certificate)
 
-In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
@@ -274,6 +274,6 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
 {{% /tab %}}
 {{% /tabs %}}
 
-### [Next: Kubernetes Installs - Launch a Kubernetes Cluster with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
+### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 
-### [Next: Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
+### [Next step for Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
