@@ -1,11 +1,16 @@
 ---
-title: Docker Install with External Load Balancer
+title: Docker Install with TLS Termination at Layer-7 NGINX Load Balancer
 weight: 252
 aliases:
   - /rancher/v2.x/en/installation/single-node/single-node-install-external-lb/
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb
 ---
 
-For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction. This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer 7 Nginx load balancer.
+For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.
+
+A layer-7 load balancer can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with.
+
+This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer-7 NGINX load balancer.
 
 > **Want to skip the external load balancer?**
 > See [Docker Installation]({{<baseurl>}}/rancher/v2.x/en/installation/single-node) instead.
@@ -98,11 +103,11 @@ The load balancer or proxy has to be configured to support the following:
     | `X-Forwarded-Proto`   | `https`                                  | To identify the protocol that a client used to connect to the load balancer or proxy.<br /><br/>**Note:** If this header is present, `rancher/rancher` does not redirect HTTP to HTTPS.
     | `X-Forwarded-Port`    | Port used to reach Rancher.              | To identify the protocol that client used to connect to the load balancer or proxy.
     | `X-Forwarded-For`     | IP of the client connection.             | To identify the originating IP address of a client.
-### Example Nginx configuration
+### Example NGINX configuration
 
 This NGINX configuration is tested on NGINX 1.14.
 
-> **Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+> **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
 
 - Replace `rancher-server` with the IP address or hostname of the node running the Rancher container.
 - Replace both occurrences of `FQDN` to the DNS name for Rancher.
@@ -192,9 +197,9 @@ If you are visiting this page to complete an [Air Gap Installation]({{<baseurl>}
 
 {{< persistentdata >}}
 
-This layer 7 Nginx configuration is tested on Nginx version 1.13 (mainline) and 1.14 (stable).
+This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 
-> **Note:** This Nginx configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+> **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 
 ```
 upstream rancher {

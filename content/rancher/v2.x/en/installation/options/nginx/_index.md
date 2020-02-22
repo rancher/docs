@@ -3,6 +3,7 @@ title: Setting up an NGINX Load Balancer
 weight: 270
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nginx
+  - /rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx
 ---
 
 NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.
