@@ -1,8 +1,9 @@
 ---
-title: DigitalOcean Quick Start
+title: Rancher DigitalOcean Quick Start Guide
+description: Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
 ---
-The following steps will quickly deploy a Rancher Server with a single node cluster attached.
+The following steps will quickly deploy a Rancher Server on DigitalOcean with a single node cluster attached.
 
 ## Prerequisites
 
@@ -18,32 +19,43 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the DigitalOcean folder containing the terraform file by executing `cd quickstart/do`.
+1. Go into the DigitalOcean folder containing the terraform files by executing `cd quickstart/do`.
 
-3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
+1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. Edit `terraform.tfvars` to include your DigitalOcean Access Key.
+1. Edit `terraform.tfvars` and customize the following variables:
+    - `do_token` - DigitalOcean access key
+    - `rancher_server_admin_password` - Admin password for created Rancher server
 
-5. **Optional:** Edit `terraform.tfvars` to:
+1. **Optional:** Modify optional variables within `terraform.tfvars`.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [DO Quickstart Readme](https://github.com/rancher/quickstart/tree/master/do) for more information.
+Suggestions include:
+    - `do_region` - DigitalOcean region, choose the closest instead of the default
+    - `prefix` - Prefix for all created resources
+    - `droplet_size` - Droplet size used, minimum is `s-2vcpu-4gb` but `s-4vcpu-8g` could be used if within budget
+    - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
-    - Change the number of nodes. (`count_agent_all_nodes`)
-    - Change the password of the `admin` user for logging into Rancher. (`admin_password`)
+1. Run `terraform init`.
 
-6. Run `terraform init`.
+1. Install the [RKE terraform provider](https://github.com/rancher/terraform-provider-rke), see [installation instructions](https://github.com/rancher/terraform-provider-rke#using-the-provider).
 
-7. To initiate the creation of the environment, run `terraform apply`. Then wait for the following output:
+1. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
 
-	```
-	Apply complete! Resources: 2 added, 0 changed, 0 destroyed. 
-	  Outputs: 
-	  rancher-url = [ 
-              https://xxx.xxx.xxx.xxx 
-      ]
-	```
+    ```
+    Apply complete! Resources: 15 added, 0 changed, 0 destroyed.
 
-8. Paste the `rancher-url` from the output above into the browser. Log in when prompted (default password is `admin`).
+    Outputs:
 
-**Result:** Rancher Server and your Kubernetes cluster is installed on DigitalOcean.
+    rancher_node_ip = xx.xx.xx.xx
+    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    workload_node_ip = yy.yy.yy.yy
+    ```
+
+1. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
+
+#### Result
+
+Two Kubernetes clusters are deployed into your DigitalOcean account, one running Rancher Server and the other ready for experimentation deployments.
 
 ### What's Next?
 
@@ -51,6 +63,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/do` folder, execute `terraform destroy --force`.
+1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
