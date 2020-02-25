@@ -42,4 +42,4 @@ To add the annotation to a workload,
 
 **Result:** The Istio sidecar will not be injected into the workload.
 
-### [Next: Set up Taints and Tolerations]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/node-selectors)
+### [Next: Set Up Node Selectors]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/node-selectors)
