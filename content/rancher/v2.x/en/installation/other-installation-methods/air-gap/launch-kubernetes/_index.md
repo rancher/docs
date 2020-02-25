@@ -18,19 +18,14 @@ The steps to set up an air-gapped Kubernetes cluster depend on whether RKE or K3
 {{% tabs %}}
 {{% tab "K3s" %}}
 
-### 1. Install Kubernetes and Set up the K3s Server
-
-
 In this guide, we are assuming you have created your nodes in your air-gap environment and have a secure Docker private registry on your bastion server.
 
-# Installation Outline
+### Installation Outline
 
 1. [Prepare Images Directory](#1-prepare-images-directory)
-2. [Create Registry YAML](#2-create-registry-YAML)
+2. [Create Registry YAML](#2-create-registry-yaml)
 3. [Install K3s](#3-install-k3s)
-4. [Confirm that K3s is Running](#4-confirm-that-k3s-is-running)
-5. [Save and Start Using the kubeconfig File](#5-save-and-start-using-the-kubeconfig-file)
-6. [Check the Health of Your Cluster Pods](#6-check-the-health-of-your-cluster-pods)
+4. [Save and Start Using the kubeconfig File](#4-save-and-start-using-the-kubeconfig-file)
 
 ### 1. Prepare Images Directory
 Obtain the images tar file for your architecture from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be running.
@@ -71,7 +66,7 @@ Obtain the K3s binary from the [releases](https://github.com/rancher/k3s/release
 Also obtain the K3s install script at https://get.k3s.io
 
 Place the binary in `/usr/local/bin` on each node.
-Place the install script anywhere on each node, name it `install.sh`.
+Place the install script anywhere on each node, and name it `install.sh`.
 
 Install K3s on each server:
 
@@ -88,16 +83,9 @@ INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetok
 Note, take care to ensure you replace `myserver` with the IP or valid DNS of the server and replace `mynodetoken` with the node-token from the server.
 The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 
-
 >**Note:** K3s additionally provides a `--resolv-conf` flag for kubelets, which may help with configuring DNS in air-gap networks.
 
-
-
-### 4. Confirm that K3s is Running
-
-Placeholder
-
-### 5. Save and Start Using the kubeconfig File
+### 4. Save and Start Using the kubeconfig File
 
 When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
@@ -136,9 +124,6 @@ kubectl --kubeconfig ~/.kube/config/k3s.yaml get pods --all-namespaces
 ```
 
 For more information about the `kubeconfig` file, refer to the [K3s documentation]({{<baseurl>}}/k3s/latest/en/cluster-access/) or the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) about organizing cluster access using `kubeconfig` files.
-
-### 6. Check the Health of Your Cluster Pods
-
 
 ### Note on Upgrading
 
@@ -231,4 +216,4 @@ See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/tro
 
 See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
 
-### [Next: Install Rancher](./install-rancher)
+### [Next: Install Rancher](../install-rancher)

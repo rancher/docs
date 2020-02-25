@@ -13,7 +13,7 @@ aliases:
 >
 > **Note:** Populating the private registry with images is the same process for HA and Docker installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
 
-By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gap installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gap installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
@@ -35,9 +35,9 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 ### A. Find the required assets for your Rancher version
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets*.*
 
-2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section, download the following files:
 
 | Release File   | Description  |
 | ---------------- | -------------- |
@@ -200,7 +200,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
-2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section, download the following files, which are required to install Rancher in an air gap environment:
 
    | Release File                 | Description                                                                                                                          |
    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |

@@ -13,12 +13,12 @@ The infrastructure depends on whether you are installing Rancher on a K3s Kubern
 
 {{% tabs %}}
 {{% tab "K3s" %}}
-We recommend setting up the following infrastructure:
+We recommend setting up the following infrastructure for a high-availability installation:
 
 - **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
 - **An external database** to store the cluster data. PostgreSQL, MySQL, and etcd are supported.
 - **A load balancer** to direct traffic to the two nodes.
-- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 - **A private Docker registry** to distribute Docker images to your machines.
 
 ### 1. Set up Linux Nodes
@@ -79,7 +79,7 @@ For a how-to guide for setting up a DNS record to route domain traffic to an Ama
 
 Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
 
-If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
+If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 {{% /tab %}}
 {{% tab "RKE" %}}
 
@@ -87,7 +87,7 @@ To install the Rancher management server on a high-availability RKE cluster, we 
 
 - **Three Linux nodes,** typically virtual machines, in an infrastructure provider such as Amazon's EC2, Google Compute Engine, or vSphere.
 - **A load balancer** to direct front-end traffic to the three nodes.
-- **A DNS record** to map a URL to the load balancer.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 - **A private Docker registry** to distribute Docker images to your machines.
 
 These nodes must be in the same region/data center. You may place these servers in separate availability zones.
@@ -138,9 +138,9 @@ For a how-to guide for setting up a DNS record to route domain traffic to an Ama
 
 ### 4. Set up a Private Docker Registry
 
-Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
+Rancher supports air gap installs using a secure Docker private registry. You must have your own private registry or other means of distributing Docker images to your machines.
 
-If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
+If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 
 {{% /tab %}}
 {{% tab "Docker" %}}
@@ -160,7 +160,7 @@ For an example of one way to set up Linux nodes, refer to this [tutorial]({{<bas
 
 ### 2. Set up a Private Docker Registry
 
-Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
+Rancher supports air gap installs using a Docker private registry on your bastion server. You must have your own private registry or other means of distributing Docker images to your machines.
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
 
