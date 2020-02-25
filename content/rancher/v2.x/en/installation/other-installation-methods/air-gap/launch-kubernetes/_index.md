@@ -1,9 +1,11 @@
 ---
-title: '3. Install Kubernetes (Skip for Docker installs)'
+title: '3. Install Kubernetes (RKE and K3s installs only)'
 weight: 300
 aliases:
   - /rancher/v2.x/en/installation/air-gap-high-availability/install-kube
 ---
+
+> Skip this section if you are installing Rancher on a single node with Docker.
 
 This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
@@ -18,7 +20,7 @@ The steps to set up an air-gapped Kubernetes cluster depend on whether RKE or K3
 {{% tabs %}}
 {{% tab "K3s" %}}
 
-In this guide, we are assuming you have created your nodes in your air-gap environment and have a secure Docker private registry on your bastion server.
+In this guide, we are assuming you have created your nodes in your air gapped environment and have a secure Docker private registry on your bastion server.
 
 ### Installation Outline
 
@@ -39,6 +41,7 @@ sudo cp ./k3s-airgap-images-$ARCH.tar /var/lib/rancher/k3s/agent/images/
 
 ### 2. Create Registry YAML
 Create the registries.yaml file at `/etc/rancher/k3s/registries.yaml`. This will tell K3s the necessary details to connect to your private registry.
+
 The registries.yaml file should look like this before plugging in the necessary information:
 
 ```
@@ -58,7 +61,9 @@ configs:
       ca_file: <path to the ca file used in the registry>
 ```
 
-Note, at this time only secure registries are supported with K3s (SSL with custom CA)
+Note, at this time only secure registries are supported with K3s (SSL with custom CA).
+
+For more information on private registries configuration file for K3s, refer to the [K3s documentation.]({{<baseurl>}}/k3s/latest/en/installation/private-registry/)
 
 ### 3. Install K3s
 
@@ -209,10 +214,6 @@ Save a copy of the following files in a secure location:
 {{% /tabs %}}
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
-
-### Issues or errors?
-
-See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
 
 ### Issues or errors?
 
