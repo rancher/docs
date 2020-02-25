@@ -19,9 +19,9 @@ Throughout the installation instructions, there will be _tabs_ for each installa
 
 # Installation Outline
 
-- [1. Set up infrastructure and private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/)
-- [2. Collect and publish images to your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/)
-- [3. Set up a Kubernetes cluster (Skip this step for Docker installations)]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
-- [4. Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
+1. [Set up infrastructure and private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/)
+2. [Collect and publish images to your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/)
+3. [Set up a Kubernetes cluster (Skip this step for Docker installations)]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
+4. [Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
 
 ### [Next: Prepare your Node(s)]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/)
