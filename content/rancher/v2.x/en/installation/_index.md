@@ -18,23 +18,12 @@ In this section,
 
 ### Overview of Installation Options
 
-We recommend installing Rancher on a Kubernetes cluster, because in a multi-node cluster, the Rancher management server becomes highly available. This high-availability configuration helps maintain consistent access to the downstream Kubernetes clusters that Rancher will manage.
-
-For that reason, we recommend that for a production-grade architecture, you should set up a high-availability Kubernetes cluster, then install Rancher on it. After Rancher is installed, you can use Rancher to deploy and manage Kubernetes clusters.
-
-For testing or demonstration purposes, you can install Rancher in single Docker container. In this Docker install, you can use Rancher to set up Kubernetes clusters out-of-the-box.
-
-Our [instructions for installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install) describe how to first use K3s or RKE to create and manage a Kubernetes cluster, then install Rancher onto that cluster.
-
-When the nodes in your Kubernetes cluster are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) you will use RKE or K3s to deploy Kubernetes onto them. Then you will use Helm to deploy Rancher onto Kubernetes. Helm uses Rancher's Helm chart to install a replica of Rancher on each node in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster.
-
-For a longer discussion of Rancher architecture, refer to the [architecture overview,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture) [recommendations for production-grade architecture,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/deployment-types)
-
-To summarize, Rancher can be installed on these main architectures:
+Rancher can be installed on these main architectures:
 
 - **High-availability Kubernetes Install:** We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/concepts/#about-helm) a Kubernetes package manager, to install Rancher on multiple nodes on a dedicated Kubernetes cluster. For RKE clusters, three nodes are required to achieve a high-availability cluster. For K3s clusters, only two nodes are required.
 - **Single-node Kubernetes Install:** Another option is to install Rancher with Helm on a Kubernetes cluster, but to only use a single node in the cluster. In this case, the Rancher server doesn't have high availability, which is important for running Rancher in production. However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 - **Docker Install:** For test and demonstration purposes, Rancher can be installed with Docker on a single node. This installation works out-of-the-box, but there is no migration path from a Docker installation to a high-availability installation on a Kubernetes cluster. Therefore, you may want to use a Kubernetes installation from the start.
+
 
 There are also separate instructions for installing Rancher in an air gap environment or behind an HTTP proxy:
 
@@ -43,6 +32,18 @@ There are also separate instructions for installing Rancher in an air gap enviro
 | With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
 | Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
+
+We recommend installing Rancher on a Kubernetes cluster, because in a multi-node cluster, the Rancher management server becomes highly available. This high-availability configuration helps maintain consistent access to the downstream Kubernetes clusters that Rancher will manage.
+
+For that reason, we recommend that for a production-grade architecture, you should set up a high-availability Kubernetes cluster using either RKE or K3s, then install Rancher on it. After Rancher is installed, you can use Rancher to deploy and manage Kubernetes clusters.
+
+For testing or demonstration purposes, you can install Rancher in single Docker container. In this Docker install, you can use Rancher to set up Kubernetes clusters out-of-the-box.
+
+Our [instructions for installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install) describe how to first use K3s or RKE to create and manage a Kubernetes cluster, then install Rancher onto that cluster.
+
+When the nodes in your Kubernetes cluster are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) you will use Helm to deploy Rancher onto Kubernetes. Helm uses Rancher's Helm chart to install a replica of Rancher on each node in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster.
+
+For a longer discussion of Rancher architecture, refer to the [architecture overview,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture) [recommendations for production-grade architecture,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/deployment-types)
 
 ### Prerequisites
 Before installing Rancher, make sure that your nodes fulfill all of the [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
