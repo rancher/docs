@@ -9,7 +9,7 @@ aliases:
 
 This section is about installations of Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
-The steps to install Rancher differ depending on whether Rancher is installed on an RKE Kubernetes cluster, a K3s Kubernetes cluster, or a single Docker container.
+The installation steps differ depending on whether Rancher is installed on an RKE Kubernetes cluster, a K3s Kubernetes cluster, or a single Docker container.
 
 For more information on each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/)
 
