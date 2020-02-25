@@ -9,6 +9,8 @@ If the Rancher server will be installed on an RKE Kubernetes cluster, you should
 
 If the Rancher server will be installed on a K3s Kubernetes cluster, you only need to provision two instances.
 
+If the Rancher server is installed in a single Docker container, you only need one instance.
+
 ### 1. Optional Preparation
 
 - **Create IAM role:** To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this [page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/)

@@ -8,7 +8,7 @@ aliases:
 
 For production environments, we recommend installing Rancher in a high-availability configuration so that your user base can always access Rancher Server. When installed in a Kubernetes cluster, Rancher will integrate with the cluster's etcd database and take advantage of Kubernetes scheduling for high-availability.
 
-This section describes how to first use RKE to create and manage a cluster, then install Rancher onto that cluster. For this type of architecture, you will need to deploy three VMs in the infrastructure provider of your choice. You will also need to configure a load balancer to direct front-end traffic to the three VMs. When the VMs are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) you can use RKE to deploy Kubernetes onto them, then use the Helm package manager to deploy Rancher onto Kubernetes.
+This section describes how to create and manage a Kubernetes cluster, then install Rancher onto that cluster. For this type of architecture, you will need to deploy nodes - typically virtual machines - in the infrastructure provider of your choice. You will also need to configure a load balancer to direct front-end traffic to the three VMs. When the VMs are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) you can use RKE or K3s to deploy Kubernetes onto them, then use the Helm package manager to deploy Rancher onto Kubernetes.
 
 ### Optional: Installing Rancher on a Single-node Kubernetes Cluster
 

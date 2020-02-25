@@ -1,15 +1,16 @@
 ---
-title: Setting up an Amazon NLB Load Balancer
+title: Setting up an Amazon ELB Network Load Balancer
 weight: 277
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
+  - /rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb
 ---
 
-This how-to guide describes how to set up a load balancer in Amazon's EC2 service that will direct traffic to multiple instances on EC2.
+This how-to guide describes how to set up a Network Load Balancer (NLB) in Amazon's EC2 service that will direct traffic to multiple instances on EC2.
 
 These examples show the load balancer being configured to direct traffic to three Rancher server nodes. If Rancher is installed on an RKE Kubernetes cluster, three nodes are required. If Rancher is installed on a K3s Kubernetes cluster, only two nodes are required.
 
-> **Note:** Rancher only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ELB or ALB.
+> **Note:** Rancher only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ALB.
 
 Configuring an Amazon NLB is a multistage process:
 
