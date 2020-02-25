@@ -20,7 +20,7 @@ To install the Rancher management server on a high-availability K3s cluster, we 
 - **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
 - **An external database** to store the cluster data. PostgreSQL, MySQL, and etcd are supported.
 - **A load balancer** to direct traffic to the two nodes.
-- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 
 ### 1. Set up Linux Nodes
 
@@ -82,7 +82,7 @@ To install the Rancher management server on a high-availability RKE cluster, we 
 
 - **Three Linux nodes,** typically virtual machines, in an infrastructure provider such as Amazon's EC2, Google Compute Engine, or vSphere.
 - **A load balancer** to direct front-end traffic to the three nodes.
-- **A DNS record** to map a URL to the load balancer.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 
 These nodes must be in the same region/data center. You may place these servers in separate availability zones.
 

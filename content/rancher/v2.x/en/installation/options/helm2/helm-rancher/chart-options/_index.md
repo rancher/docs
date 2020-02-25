@@ -49,13 +49,13 @@ weight: 276
 
 Enabling the [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing/).
 
-You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/tools/logging/) for the `System` Project on the Rancher server cluster.
+You can collect this log as you would any container log. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/) for the `System` Project on the Rancher server cluster.
 
 ```plain
 --set auditLog.level=1
 ```
 
-By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/tools/logging/) for the Rancher server cluster or System Project.
+By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`.  You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable the [Logging service under Rancher Tools]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
