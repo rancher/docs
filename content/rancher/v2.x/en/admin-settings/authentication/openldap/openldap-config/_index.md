@@ -7,14 +7,28 @@ This section is intended to be used as a reference when setting up an OpenLDAP a
 
 For further details on configuring OpenLDAP, refer to the [official documentation.](https://www.openldap.org/doc/)
 
+> Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
+
+- [Background: OpenLDAP Authentication Flow](#background-openldap-authentication-flow)
 - [OpenLDAP server configuration](#openldap-server-configuration)
 - [User/group schema configuration](#user-group-schema-configuration)
   - [User schema configuration](#user-schema-configuration)
   - [Group schema configuration](#group-schema-configuration)
 
+## Background: OpenLDAP Authentication Flow 
+ 
+1. When a user attempts to login with his LDAP credentials, Rancher creates an initial bind to the LDAP server using a service account with permissions to search the directory and read user/group attributes. 
+2. Rancher then searches the directory for the user by using a search filter based on the provided username and configured attribute mappings. 
+3. Once the user has been found, he is authenticated with another LDAP bind request using the user's DN and provided password. 
+4. Once authentication succeeded, Rancher then resolves the group memberships both from the membership attribute in the user's object and by performing a group search based on the configured user mapping attribute.
+
 # OpenLDAP Server Configuration
 
 You will need to enter the address, port, and protocol to connect to your OpenLDAP server. `389` is the standard port for insecure traffic, `636` for TLS traffic.
+
+> **Using TLS?**
+>
+> If the certificate used by the OpenLDAP server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
 
 If you are in doubt about the correct values to enter in the user/group Search Base configuration fields, consult your LDAP administrator or refer to the section [Identify Search Base and Schema using ldapsearch]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/ad/#annex-identify-search-base-and-schema-using-ldapsearch) in the Active Directory authentication documentation.
 

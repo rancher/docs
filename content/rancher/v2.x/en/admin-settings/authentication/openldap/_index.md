@@ -8,17 +8,6 @@ aliases:
 _Available as of v2.0.5_
 
 If your organization uses LDAP for user authentication, you can configure Rancher to communicate with an OpenLDAP server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the organisation's central user repository, while allowing end-users to authenticate with their LDAP credentials when logging in to the Rancher UI. 
- 
-## OpenLDAP Authentication Flow 
- 
-1. When a user attempts to login with his LDAP credentials, Rancher creates an initial bind to the LDAP server using a service account with permissions to search the directory and read user/group attributes. 
-2. Rancher then searches the directory for the user by using a search filter based on the provided username and configured attribute mappings. 
-3. Once the user has been found, he is authenticated with another LDAP bind request using the user's DN and provided password. 
-4. Once authentication succeeded, Rancher then resolves the group memberships both from the membership attribute in the user's object and by performing a group search based on the configured user mapping attribute.
-
-> **Note:**
-> 
-> Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 ## Prerequisites
 
@@ -28,7 +17,9 @@ Rancher must be configured with a LDAP bind account (aka service account) to sea
 >
 > If the certificate used by the OpenLDAP server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
 
-## Configuration Steps
+## Configure OpenLDAP in Rancher
+
+> Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 1. Log into the Rancher UI using the initial local `admin` account.
 2. From the **Global** view, navigate to **Security** > **Authentication**
