@@ -34,7 +34,7 @@ K3s performance depends on the performance of the database. To ensure optimal sp
 
 ## Networking
 
-The K3s server needs port 6443 to be accessible by the nodes. The nodes need to be able to reach other nodes over UDP port 8472 (Flannel VXLAN). If you do not use flannel and provide your own custom CNI, then port 8472 is not needed by K3s. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel.
+The K3s server needs port 6443 to be accessible by the nodes. The nodes need to be able to reach other nodes over UDP port 8472 (Flannel VXLAN). If you do not use Flannel and provide your own custom CNI, then port 8472 is not needed by K3s. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel.
 
 IMPORTANT: The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disabled access to port 8472.
 
@@ -42,14 +42,14 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 ## Large Clusters
 
-Hardware requirement is based on the size of your K3s cluster, for production and large clusters its recommended to use HA setup with external database setup, that includes:
+Hardware requirements are based on the size of your K3s cluster. For production and large clusters, we recommend using a high-availability setup with an external database. The following options are recommended for the external database in production:
 - MySQL
 - PostgreSQL
 - etcd
 
 ### CPU and Memory
 
-The following is the memory/cpu installation requirement recommendation for HA server nodes of K3s cluster:
+The following are the minimum CPU and memory requirements for nodes in a high-availability K3s server:
 
 | Deployment Size |   Nodes   | VCPUS |  RAM  |
 |:---------------:|:---------:|:-----:|:-----:|
@@ -65,6 +65,6 @@ The cluster performance depends on database performance. To ensure optimal speed
 
 ### Network
 
-You should consider increasing the subnet size for the cluster cidr so that you don't run out of IPs for the pods, you can do that by passing `--cluster-cidr` option to k3s server upon starting. 
+You should consider increasing the subnet size for the cluster CIDR so that you don't run out of IPs for the pods. You can do that by passing the `--cluster-cidr` option to K3s server upon starting. 
 
 
