@@ -11,8 +11,6 @@ Because Shibboleth is a SAML provider, it does not support searching for groups.
 
 One solution to this problem is to configure an OpenLDAP identity provider. With an OpenLDAP back end for Shibboleth, you will be able to search for groups in Rancher and assign them to resources such as clusters, projects, or namespaces from the Rancher UI.
 
-This section covers the following topics:
-
 ### Terminology
 
 - **Shibboleth** is a single sign-on log-in system for computer networks and the Internet. It allows people to sign in using just one identity to various systems. It validates user credentials, but does not, on its own, handle group memberships.
