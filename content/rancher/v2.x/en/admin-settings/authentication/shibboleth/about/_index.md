@@ -13,9 +13,6 @@ One solution to this problem is to configure an OpenLDAP identity provider. With
 
 This section covers the following topics:
 
-- [Terminology]
-- [OpenLDAP authentication flow]
-
 ### Terminology
 
 - **Shibboleth** is a single sign-on log-in system for computer networks and the Internet. It allows people to sign in using just one identity to various systems. It validates user credentials, but does not, on its own, handle group memberships.
@@ -37,13 +34,3 @@ Shibboleth validates her credentials, and retrieves user attributes from OpenLDA
 
 ![Adding OpenLDAP Group Permissions to Rancher Resources]({{<baseurl>}}/img/rancher/shibboleth-with-openldap-groups.svg)
  
-### OpenLDAP Authentication Flow 
- 
-1. When a user attempts to log in with his or her LDAP credentials, Rancher creates an initial bind to the LDAP server using a service account with permissions to search the directory and read user/group attributes. 
-2. Rancher then searches the directory for the user by using a search filter based on the provided username and configured attribute mappings. 
-3. Once the user has been found, he is authenticated with another LDAP bind request using the user's DN and provided password. 
-4. Once authentication succeeded, Rancher then resolves the group memberships both from the membership attribute in the user's object and by performing a group search based on the configured user mapping attribute.
-
-> **Note:**
-> 
-> Before you proceed with the configuration, please familiarize yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
