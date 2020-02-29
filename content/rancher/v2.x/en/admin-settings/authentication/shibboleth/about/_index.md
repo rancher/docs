@@ -28,7 +28,7 @@ In this scenario, OpenLDAP allows the cluster owner to search for groups when as
 
 When a member of the OpenLDAP group logs in to Rancher, she is redirected to Shibboleth and enters her username and password.
 
-Shibboleth validates her credentials, and retrieves user attributes from OpenLDAP, including groups. Then Shibboleth sends a SAML assertion to Rancher including the user attributes. Rancher uses the group data so that she can access all of the resources and permissions that her groups has permissions for.
+Shibboleth validates her credentials, and retrieves user attributes from OpenLDAP, including groups. Then Shibboleth sends a SAML assertion to Rancher including the user attributes. Rancher uses the group data so that she can access all of the resources and permissions that her groups have permissions for.
 
 ![Adding OpenLDAP Group Permissions to Rancher Resources]({{<baseurl>}}/img/rancher/shibboleth-with-openldap-groups.svg)
  
