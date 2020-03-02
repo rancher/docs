@@ -20,6 +20,8 @@ After you've made changes to add/remove nodes, run `rke up` with the updated `cl
 
 You can add/remove only worker nodes, by running `rke up --update-only`. This will ignore everything else in the `cluster.yml` except for any worker nodes.
 
+> **Note:** When using `--update-only`, other actions that do not specifically relate to nodes may be deployed or updated, for example [addons]({{< baseurl >}}/rke/latest/en/config-options/add-ons).
+
 ### Removing Kubernetes Components from Nodes
 
 In order to remove the Kubernetes components from nodes, you use the `rke remove` command.
