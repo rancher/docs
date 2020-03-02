@@ -23,7 +23,7 @@ Note however, that in some locked-down Active Directory configurations this defa
 
 > **Using TLS?**
 >
-> If the certificate used by the AD server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
+> If the certificate used by the AD server is self-signed or not from a recognised certificate authority, make sure to have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
 
 ## Configuration Steps
 ### Open Active Directory Configuration
