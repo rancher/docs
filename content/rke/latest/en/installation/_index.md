@@ -8,6 +8,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
 1. [Download the RKE Binary](#download-the-rke-binary)
     1. [Alternative RKE MacOS X Install - Homebrew](#alternative-rke-macos-x-install---homebrew)
+    1. [Alternative RKE MacOS X Install - MacPorts](#alternative-rke-macos-x-install---macports)
 1. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
 1. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
 1. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
@@ -68,6 +69,24 @@ If you have already installed RKE using `brew`, you can upgrade RKE by running:
 
 ```
 $ brew upgrade rke
+```
+
+### Alternative RKE MacOS X Install - MacPorts
+
+RKE can also be installed and updated using MacPorts, a package manager for MacOS X.
+
+1. Install MacPorts. See https://www.macports.org/ for instructions.
+
+2. Using `port`, install RKE by running the following command in a Terminal window:
+
+    ```
+    $ port install rke
+    ```
+
+If you have already installed RKE using `port`, you can upgrade RKE by running:
+
+```
+$ port upgrade rke
 ```
 
 ## Prepare the Nodes for the Kubernetes cluster
