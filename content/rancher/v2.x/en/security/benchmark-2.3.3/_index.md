@@ -11,7 +11,7 @@ Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kube
 ---------------------------|----------|---------|-------|-----
 Self Assessment Guide v2.3.3 | Rancher v2.3.3 | Hardening Guide v2.3.3 | Kubernetes v1.16 | Benchmark v1.4.1
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.3/Rancher_Benchmark_Assessment.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Benchmark_Assessment.pdf)
 
 > The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.16, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
 
