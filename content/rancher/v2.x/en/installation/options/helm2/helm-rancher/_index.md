@@ -42,7 +42,7 @@ There are three recommended options for the source of the certificate.
 > **Important:**
 > Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
 
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
@@ -79,7 +79,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.9.1 \
+      --version v0.12.0 \
       jetstack/cert-manager
     ```
 
