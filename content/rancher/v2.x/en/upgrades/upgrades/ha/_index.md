@@ -80,7 +80,7 @@ This section describes how to upgrade normal (Internet-connected) or air gap ins
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
 
 ```
-helm get values rancher
+helm get values rancher -n cattle-system
 
 hostname: rancher.my.org
 ```
