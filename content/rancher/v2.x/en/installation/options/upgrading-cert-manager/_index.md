@@ -50,7 +50,7 @@ In order to upgrade cert-manager, follow these instructions:
 1. [Uninstall existing deployment](https://cert-manager.io/docs/installation/uninstall/kubernetes/#uninstalling-with-helm)
 
     ```plain
-    helm delete --purge cert-manager
+    helm uninstall cert-manager
     ```
 
     Delete the CustomResourceDefinition using the link to the version vX.Y you installed
