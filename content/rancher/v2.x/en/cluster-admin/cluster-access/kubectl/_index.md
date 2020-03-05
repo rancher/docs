@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.x/en/concepts/clusters/kubeconfig-files/
   - /rancher/v2.x/en/k8s-in-rancher/kubeconfig/
   - /rancher/2.x/en/cluster-admin/kubeconfig
+  - /rancher/v2.x/en/cluster-admin/cluster-access/kubeconfig/
 ---
 
 This section describes how to manipulate your downstream Kubernetes cluster with kubectl from the Rancher UI or from your workstation.
