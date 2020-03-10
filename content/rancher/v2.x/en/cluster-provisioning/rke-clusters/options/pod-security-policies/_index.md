@@ -7,7 +7,7 @@ _Pod Security Policies_ are objects that control security-sensitive aspects of p
 
 ## Adding a Default Pod Security Policy
 
-When you create a new cluster, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. The PSP assigned to the cluster will be the default PSP for projects within the cluster.
+When you create a new cluster with RKE, you can configure it to apply a PSP immediately. As you create the cluster, use the **Cluster Options** to enable a PSP. The PSP assigned to the cluster will be the default PSP for projects within the cluster.
 
 >**Prerequisite:**
 >Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies]({{< baseurl >}}/rancher/v2.x/en/admin-settings/pod-security-policies/).
