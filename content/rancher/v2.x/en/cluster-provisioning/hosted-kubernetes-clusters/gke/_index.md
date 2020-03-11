@@ -28,7 +28,7 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Google Container Engine**.
+2. Choose **Google Kubernetes Engine**.
 
 3. Enter a **Cluster Name**.
 
