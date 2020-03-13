@@ -179,7 +179,6 @@ services:
     infra_container_image: ""
     cluster_dns_server: ""
     fail_swap_on: false
-    generate_serving_certificate: true
   kubeproxy:
     image: ""
     extra_args: {}

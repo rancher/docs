@@ -34,7 +34,6 @@ When performing the tests, you will need access to the Docker command line on th
 The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
 
 - 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
-- 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
 
 ### Controls
 
@@ -148,7 +147,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--profiling=false").
 
 **Note:** This deprecated flag was removed in 1.14, so it cannot be set.
 
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 1.1.10 - Ensure that the admission control plugin `AlwaysAdmit` is not set (Scored)
 
@@ -756,17 +755,9 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--root-ca-f
 
 **Notes**
 
-RKE does not yet support certificate rotation. This feature is due for the 0.1.12 release of RKE.
+RKE handles certificate rotation through an external process.
 
-**Audit**
-
-``` bash
-docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
-```
-
-**Returned Value:** `RotateKubeletServerCertificate=true`
-
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 1.3.7 - Ensure that the `--address` argument is set to 127.0.0.1 (Scored)
 
@@ -1509,15 +1500,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--make-iptables-util-chains
 **Notes**
 This is used by most cloud providers. Not setting this is not practical in most cases.
 
-**Audit**
-
-``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--hostname-override=.*").string'
-```
-
-**Returned Value:** `--hostname-override=<ipv4 address>`
-
-**Result:** Fail
+**Result:** Not Applicable
 
 #### 2.1.9 - Ensure that the `--event-qps` argument is set to `0` (Scored)
 
@@ -1581,19 +1564,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--rotate-certificates=true"
 
 **Returned Value:** `null`
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.1.13 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 
-**Audit**
+**Notes**
 
-``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
-```
+RKE handles certificate rotation through an external process.
 
-**Returned Value:** `RotateKubeletServerCertificate=true`
-
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 2.1.14 - Ensure that the kubelet only makes use of strong cryptographic ciphers (Not Scored)
 
