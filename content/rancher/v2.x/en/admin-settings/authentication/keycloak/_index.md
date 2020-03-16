@@ -23,6 +23,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
+      ><sup>2</sup>: Rancher SAML metadata won't be generated until a SAML provider is configured and saved.
 - Export a `metadata.xml` file from your Keycloak client:
   From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
 
@@ -80,6 +81,11 @@ You are correctly redirected to your IdP login page and you are able to enter yo
 
   * Check the Rancher debug log.
   * If the log displays `ERROR: either the Response or Assertion must be signed`, make sure either `Sign Documents` or `Sign assertions` is set to `ON` in your Keycloak client.
+
+### HTTP502 when trying to access /v1-saml/keycloak/saml/metadata
+
+This is usually due to the metadata not being created until a SAML provider is configured.
+Try configuring and saving keycloak as your SAML provider and then accessing the metadata.
 
 ### Keycloak Error: "We're sorry, failed to process response"
 
