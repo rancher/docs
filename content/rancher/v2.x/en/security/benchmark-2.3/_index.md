@@ -319,7 +319,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--kubelet-certificat
 
 **Returned Value:** none
 
-**Result:** Fail (See Mitigation)
+**Result:** Pass
 
 #### 1.1.22 - Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments are set as appropriate (Scored)
 
