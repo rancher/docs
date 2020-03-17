@@ -56,6 +56,8 @@ helm install rancher-latest/rancher \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 
+Note: If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+
 ### Rendering the Helm Chart for Air Gap Installations
 
 For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher)

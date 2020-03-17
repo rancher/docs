@@ -33,13 +33,19 @@ On this page, we provide security-related documentation along with resources to 
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
-_Available as of v2.4.0-alpha1_
+_Available as of v2.4.0-alpha1_ 
 
 Rancher leverages [kube-bench](https://github.com/aquasecurity/kube-bench) to run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS (Center for Internet Security) Kubernetes Benchmark.
 
-The CIS Kubernetes Benchmark is a reference document that can be used to establish a secure configuration baseline for Kubernetes. The Benchmark provides recommendations of two types: Scored and Not Scored. We run tests related to only Scored recommendations.
+The CIS Kubernetes Benchmark is a reference document that can be used to establish a secure configuration baseline for Kubernetes.
 
-When Rancher runs a CIS Security Scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
+The Center for Internet Security (CIS) is a 501(c)(3) nonprofit organization, formed in October 2000, with a mission is to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace."
+
+CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
+
+The Benchmark provides recommendations of two types: Scored and Not Scored. We run tests related to only Scored recommendations.
+
+When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 
 For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.x/en/security/security-scan)
 
