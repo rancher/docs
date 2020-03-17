@@ -2,10 +2,17 @@
 Theme Name: Linux Academy Study Guide Template 08-14-2019
 */
 
-@font-face {font-family: Poppins;src: url(./fonts/Poppins/Poppins-Regular.ttf);}
-@font-face {font-family: Roboto;src: url(./fonts/Roboto/Roboto-Regular.ttf);}
-@font-face {font-family: PoppinsExtraLight;  src: url(./fonts/Poppins/Poppins-ExtraLight.ttf);}
+/*
+#@font-face {font-family: Poppins;src: url(fonts/Poppins/Poppins-Regular.ttf);}
+@font-face {font-family: Poppins;src: url('https://fonts.googleapis.com/css?family=Poppins&display=swap');}
+@font-face {font-family: Roboto;src: url(fonts/truetype/Roboto/Roboto-Regular.ttf);}
+@font-face {font-family: PoppinsExtraLight;  src: url(fonts/truetype/Poppins/Poppins-ExtraLight.ttf);}
+*/
+
 /* This lighter one is only used as H1, and in the table of contents */
+
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
 
 
 @page :first {
@@ -14,7 +21,7 @@ Theme Name: Linux Academy Study Guide Template 08-14-2019
   border-left-style: none;
   background:none;
   background: url("../images/rancher-logo-stacked-color.png") no-repeat left;
-  background-size: 10cm;
+  background-size: 50cm;
   background-position: top 1cm left;
   margin-top:1cm;
   margin-bottom:1cm;
@@ -23,7 +30,7 @@ Theme Name: Linux Academy Study Guide Template 08-14-2019
   @top-left {
    background: #000;
    color:#fff;
-   content: "v2.3.4";
+   content: "v2.3.5";
    height: 1cm;
    text-align: center;
    width: 5cm;
