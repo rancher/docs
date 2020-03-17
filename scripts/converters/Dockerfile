@@ -8,14 +8,15 @@ RUN apt-get autoclean
 
 RUN pip3 install WeasyPrint
 
-COPY fonts/ /usr/share/fonts/truetype/
-
 WORKDIR /doc_tools
 
+COPY fonts/ fonts/
 COPY css css/
 COPY images images/
 COPY templates templates/
 COPY headers headers/
 COPY scripts scripts/ 
+
+RUN ls -la fonts
 
 ENTRYPOINT ["scripts/entrypoint.sh"]
