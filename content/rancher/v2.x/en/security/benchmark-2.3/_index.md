@@ -773,7 +773,7 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--address=1
 
 RKE doesn't require or maintain a configuration file for kube-apiserver. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.2 - Ensure that the API server pod specification file ownership is set to `root:root` (Scored)
 
@@ -781,7 +781,7 @@ RKE doesn't require or maintain a configuration file for kube-apiserver. All con
 
 RKE doesn't require or maintain a configuration file for kube-apiserver. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.3 - Ensure that the controller manager pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -789,7 +789,7 @@ RKE doesn't require or maintain a configuration file for kube-apiserver. All con
 
 RKE doesn't require or maintain a configuration file for `kube-controller-manager`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.4 - Ensure that the controller manager pod specification file ownership is set to `root:root` (Scored)
 
@@ -797,7 +797,7 @@ RKE doesn't require or maintain a configuration file for `kube-controller-manage
 
 RKE doesn't require or maintain a configuration file for `kube-controller-manager`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.5 - Ensure that the scheduler pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -805,7 +805,7 @@ RKE doesn't require or maintain a configuration file for `kube-controller-manage
 
 RKE doesn't require or maintain a configuration file for `kube-scheduler`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.6 - Ensure that the scheduler pod specification file ownership is set to `root:root` (Scored)
 
@@ -813,7 +813,7 @@ RKE doesn't require or maintain a configuration file for `kube-scheduler`. All c
 
 RKE doesn't require or maintain a configuration file for kube-scheduler. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.7 - Ensure that the `etcd` pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -821,7 +821,7 @@ RKE doesn't require or maintain a configuration file for kube-scheduler. All con
 
 RKE doesn't require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.8 - Ensure that the `etcd` pod specification file ownership is set to `root:root` (Scored)
 
@@ -829,7 +829,7 @@ RKE doesn't require or maintain a configuration file for etcd. All configuration
 
 RKE doesn't require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.9 - Ensure that the Container Network Interface file permissions are set to `644` or more restrictive (Not Scored)
 
@@ -950,7 +950,7 @@ stat -c %U:%G /var/lib/rancher/etcd
 
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes.  It's presented to user where RKE is run. We recommend that this kube_config_cluster.yml file be kept in secure store.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.14 - Ensure that ownership of `admin.conf` is set to `root:root` (Scored)
 
@@ -958,7 +958,7 @@ RKE does not store the kubernetes default kubeconfig credentials file on the nod
 
 RKE does not store the default `kubectl` config credentials file on the nodes.  It presents credentials to the user when `rke` is first run, and only on the device where the user ran the command. Rancher Labs recommends that this `kube_config_cluster.yml` file be kept in secure store.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.15 - Ensure that the file permissions for `scheduler.conf` are set to `644` or more restrictive (Scored)
 
@@ -1692,7 +1692,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 
 #### 2.2.4 - Ensure that the kubelet service file ownership is set to `root:root` (Scored)
@@ -1701,7 +1701,7 @@ RKE doesn't require or maintain a configuration file for kubelet. All configurat
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.2.5 - Ensure that the proxy kubeconfig file permissions are set to `644` or more restrictive (Scored)
 
@@ -1757,7 +1757,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.2.10 - Ensure that the kubelet configuration file permissions are set to `644` or more restrictive (Scored)
 
@@ -1765,4 +1765,4 @@ RKE doesn't require or maintain a configuration file for kubelet. All configurat
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
