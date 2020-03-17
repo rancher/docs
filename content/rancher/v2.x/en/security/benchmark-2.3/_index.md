@@ -29,12 +29,6 @@ Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Whe
 
 When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the `jq` command to provide human-readable formatting.
 
-#### Known Scored Control Failures
-
-The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
-
-- 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
-
 ### Controls
 
 ---

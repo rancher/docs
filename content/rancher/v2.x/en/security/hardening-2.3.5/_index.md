@@ -118,6 +118,10 @@ metadata:
   name: default-allow-all
 spec:
   podSelector: {}
+  ingress:
+  - {}
+  egress:
+  - {}
   policyTypes:
   - Ingress
   - Egress
