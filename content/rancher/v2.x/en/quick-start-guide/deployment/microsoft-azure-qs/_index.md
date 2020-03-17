@@ -3,7 +3,8 @@ title: Rancher Azure Quick Start Guide
 description: Read this step by step Rancher Azure guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
 ---
-The following steps will quickly deploy a Rancher Server on Azure with a single node cluster attached.
+
+The following steps will quickly deploy a Rancher server on Azure in a single-node RKE Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
 ## Prerequisites
 
