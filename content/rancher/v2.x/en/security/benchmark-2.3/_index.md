@@ -29,13 +29,6 @@ Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Whe
 
 When performing the tests, you will need access to the Docker command line on the hosts of all three RKE roles. The commands also make use of the the `jq` command to provide human-readable formatting.
 
-#### Known Scored Control Failures
-
-The following scored controls do not currently pass, and Rancher Labs is working towards addressing these through future enhancements to the product.
-
-- 1.1.21 - Ensure that the `--kubelet-certificate-authority` argument is set as appropriate (Scored)
-- 2.1.8 - Ensure that the `--hostname-override` argument is not set (Scored)
-
 ### Controls
 
 ---
@@ -148,7 +141,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--profiling=false").
 
 **Note:** This deprecated flag was removed in 1.14, so it cannot be set.
 
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 1.1.10 - Ensure that the admission control plugin `AlwaysAdmit` is not set (Scored)
 
@@ -326,7 +319,7 @@ docker inspect kube-apiserver | jq -e '.[0].Args[] | match("--kubelet-certificat
 
 **Returned Value:** none
 
-**Result:** Fail (See Mitigation)
+**Result:** Pass
 
 #### 1.1.22 - Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments are set as appropriate (Scored)
 
@@ -756,17 +749,9 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--root-ca-f
 
 **Notes**
 
-RKE does not yet support certificate rotation. This feature is due for the 0.1.12 release of RKE.
+RKE handles certificate rotation through an external process.
 
-**Audit**
-
-``` bash
-docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
-```
-
-**Returned Value:** `RotateKubeletServerCertificate=true`
-
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 1.3.7 - Ensure that the `--address` argument is set to 127.0.0.1 (Scored)
 
@@ -788,7 +773,7 @@ docker inspect kube-controller-manager | jq -e '.[0].Args[] | match("--address=1
 
 RKE doesn't require or maintain a configuration file for kube-apiserver. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.2 - Ensure that the API server pod specification file ownership is set to `root:root` (Scored)
 
@@ -796,7 +781,7 @@ RKE doesn't require or maintain a configuration file for kube-apiserver. All con
 
 RKE doesn't require or maintain a configuration file for kube-apiserver. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.3 - Ensure that the controller manager pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -804,7 +789,7 @@ RKE doesn't require or maintain a configuration file for kube-apiserver. All con
 
 RKE doesn't require or maintain a configuration file for `kube-controller-manager`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.4 - Ensure that the controller manager pod specification file ownership is set to `root:root` (Scored)
 
@@ -812,7 +797,7 @@ RKE doesn't require or maintain a configuration file for `kube-controller-manage
 
 RKE doesn't require or maintain a configuration file for `kube-controller-manager`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.5 - Ensure that the scheduler pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -820,7 +805,7 @@ RKE doesn't require or maintain a configuration file for `kube-controller-manage
 
 RKE doesn't require or maintain a configuration file for `kube-scheduler`. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.6 - Ensure that the scheduler pod specification file ownership is set to `root:root` (Scored)
 
@@ -828,7 +813,7 @@ RKE doesn't require or maintain a configuration file for `kube-scheduler`. All c
 
 RKE doesn't require or maintain a configuration file for kube-scheduler. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.7 - Ensure that the `etcd` pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -836,7 +821,7 @@ RKE doesn't require or maintain a configuration file for kube-scheduler. All con
 
 RKE doesn't require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.8 - Ensure that the `etcd` pod specification file ownership is set to `root:root` (Scored)
 
@@ -844,7 +829,7 @@ RKE doesn't require or maintain a configuration file for etcd. All configuration
 
 RKE doesn't require or maintain a configuration file for etcd. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.9 - Ensure that the Container Network Interface file permissions are set to `644` or more restrictive (Not Scored)
 
@@ -965,7 +950,7 @@ stat -c %U:%G /var/lib/rancher/etcd
 
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes.  It's presented to user where RKE is run. We recommend that this kube_config_cluster.yml file be kept in secure store.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.14 - Ensure that ownership of `admin.conf` is set to `root:root` (Scored)
 
@@ -973,7 +958,7 @@ RKE does not store the kubernetes default kubeconfig credentials file on the nod
 
 RKE does not store the default `kubectl` config credentials file on the nodes.  It presents credentials to the user when `rke` is first run, and only on the device where the user ran the command. Rancher Labs recommends that this `kube_config_cluster.yml` file be kept in secure store.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 1.4.15 - Ensure that the file permissions for `scheduler.conf` are set to `644` or more restrictive (Scored)
 
@@ -1509,15 +1494,7 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--make-iptables-util-chains
 **Notes**
 This is used by most cloud providers. Not setting this is not practical in most cases.
 
-**Audit**
-
-``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--hostname-override=.*").string'
-```
-
-**Returned Value:** `--hostname-override=<ipv4 address>`
-
-**Result:** Fail
+**Result:** Not Applicable
 
 #### 2.1.9 - Ensure that the `--event-qps` argument is set to `0` (Scored)
 
@@ -1581,19 +1558,15 @@ docker inspect kubelet | jq -e '.[0].Args[] | match("--rotate-certificates=true"
 
 **Returned Value:** `null`
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.1.13 - Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 
-**Audit**
+**Notes**
 
-``` bash
-docker inspect kubelet | jq -e '.[0].Args[] | match("--feature-gates=.*(RotateKubeletServerCertificate=true).*").captures[].string'
-```
+RKE handles certificate rotation through an external process.
 
-**Returned Value:** `RotateKubeletServerCertificate=true`
-
-**Result:** Pass
+**Result:** Not Applicable
 
 #### 2.1.14 - Ensure that the kubelet only makes use of strong cryptographic ciphers (Not Scored)
 
@@ -1719,7 +1692,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 
 #### 2.2.4 - Ensure that the kubelet service file ownership is set to `root:root` (Scored)
@@ -1728,7 +1701,7 @@ RKE doesn't require or maintain a configuration file for kubelet. All configurat
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.2.5 - Ensure that the proxy kubeconfig file permissions are set to `644` or more restrictive (Scored)
 
@@ -1784,7 +1757,7 @@ stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
 
 #### 2.2.10 - Ensure that the kubelet configuration file permissions are set to `644` or more restrictive (Scored)
 
@@ -1792,4 +1765,4 @@ RKE doesn't require or maintain a configuration file for kubelet. All configurat
 
 RKE doesn't require or maintain a configuration file for kubelet. All configuration is passed in as arguments at container run time.
 
-**Result:** Pass (Not Applicable)
+**Result:** Not Applicable
