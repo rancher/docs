@@ -16,9 +16,11 @@ For all imported Kubernetes clusters except for K3s clusters, the configuration 
 
 Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well as the ability to upgrade Kubernetes by editing the cluster in the Rancher UI.
 
+- [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Importing a cluster](#importing-a-cluster)
 - [Additional features for imported K3s clusters](#additional-features-for-imported-k3s-clusters)
+- [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
 
 ### Features
 
@@ -29,7 +31,7 @@ After importing a cluster, the cluster owner can:
 - Enable [Istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.x/en/project-admin/pipelines/)
 - Configure [alerts]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) and [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/)
-- Manage [projects]() and [workloads]()
+- Manage [projects]({{<baseurl>}}/rancher/v2.x/en/project-admin/) and [workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/)
 
 After importing a K3s cluster, the cluster owner can also [upgrade Kubernetes from the Rancher UI.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/upgrading-kubernetes/)
 
@@ -49,9 +51,9 @@ before running the `kubectl` command to import the cluster.
 
 By default, GKE users are not given this privilege, so you will need to run the command before importing GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
-### Importing a Cluster
+> If you are importing a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
 
-> **Prerequisites:** If you are importing a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
+### Importing a Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
 2. Choose **Import**.
@@ -71,7 +73,7 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 _Available as of v2.4.0_
 
-You can now import a K3s cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the cluster in the Rancher UI.
+You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the K3s cluster in the Rancher UI.
 
 When a K3s cluster is imported, Rancher will recognize it as K3s, and the Rancher UI will expose the following features in addition to the functionality for other imported clusters:
 
@@ -81,7 +83,7 @@ When a K3s cluster is imported, Rancher will recognize it as K3s, and the Ranche
 
 The **concurrency** is the maximum number of nodes that are permitted to be unavailable during an upgrade. If number of unavailable nodes is larger than the **concurrency,** the upgrade will fail. If an upgrade fails, you may need to repair or remove failed nodes before the upgrade can succeed.
 
-- **Server concurrency:** The maximum number of server nodes to upgrade at a single time; also the maximum unavailable server nodes
+- **Controlplane concurrency:** The maximum number of server nodes to upgrade at a single time; also the maximum unavailable server nodes
 - **Worker concurrency:** The maximum number worker nodes to upgrade at the same time; also the maximum unavailable worker nodes
 
 In the K3s documentation, controlplane nodes are called server nodes. These nodes run the Kubernetes master, which maintains the desired state of the cluster. In K3s, these controlplane nodes have the capability to have workloads scheduled to them by default.

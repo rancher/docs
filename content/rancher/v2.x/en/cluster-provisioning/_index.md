@@ -23,6 +23,7 @@ This section covers the following topics:
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
 - [Importing Existing Clusters](#importing-existing-clusters)
+  - [Importing and Editing K3s Clusters](#importing-and-editing-k3s-clusters)
   <!-- /TOC -->
 
 The following table summarizes the options and settings available for each cluster type:
