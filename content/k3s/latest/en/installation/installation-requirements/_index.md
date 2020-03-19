@@ -9,7 +9,7 @@ Whether you're configuring a K3s cluster to run in a Docker or Kubernetes setup,
 
 ## Prerequisites
 
-*    Two nodes cannot have the same hostname. If all your nodes have the same hostname, pass `--node-name` or set `$K3S_NODE_NAME` with a unique name for each node you add to the cluster.
+*    Two nodes cannot have the same hostname. If all your nodes have the same hostname, use the `--with-node-id` option to append a random suffix for each node, or otherwise devise a unique name to pass with `--node-name` or `$K3S_NODE_NAME` for each node you add to the cluster.
 
 ## Operating Systems
 
@@ -43,6 +43,7 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 ## Large Clusters
 
 Hardware requirements are based on the size of your K3s cluster. For production and large clusters, we recommend using a high-availability setup with an external database. The following options are recommended for the external database in production:
+
 - MySQL
 - PostgreSQL
 - etcd
@@ -65,6 +66,4 @@ The cluster performance depends on database performance. To ensure optimal speed
 
 ### Network
 
-You should consider increasing the subnet size for the cluster CIDR so that you don't run out of IPs for the pods. You can do that by passing the `--cluster-cidr` option to K3s server upon starting. 
-
-
+You should consider increasing the subnet size for the cluster CIDR so that you don't run out of IPs for the pods. You can do that by passing the `--cluster-cidr` option to K3s server upon starting.
