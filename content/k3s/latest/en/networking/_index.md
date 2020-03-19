@@ -3,11 +3,12 @@ title: "Networking"
 weight: 35
 ---
 
->**Note:** CNI options are covered in detail on the [Installation Network Options]({{< baseurl >}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
+> **Note:** CNI options are covered in detail on the [Installation Network Options]({{< baseurl >}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
 
 Open Ports
 ----------
-Please reference the [Node Requirements]({{< baseurl >}}/k3s/latest/en/installation/node-requirements/#networking) page for port information.
+
+Please reference the [Installation Requirements]({{< baseurl >}}/k3s/latest/en/installation/installation-requirements/#networking) page for port information.
 
 CoreDNS
 -------
