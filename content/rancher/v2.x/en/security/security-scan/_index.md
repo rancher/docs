@@ -15,7 +15,10 @@ The Benchmark provides recommendations of two types: Scored and Not Scored. We r
 
 - [About the CIS Benchmark](#about-the-cis-benchmark)
 - [About the generated report](#about-the-generated-report)
-- [Permissive and hardened test profiles](#permissive-and-hardened-test-profiles)
+- [Test profiles](#test-profiles)
+- [Skipped and not applicable tests](#skipped-and-not-applicable-tests)
+  - [CIS Benchmark v1.4 skipped tests](#cis-benchmark-v1-4-skipped-tests)
+  - [CIS Benchmark v1.4 not applicable tests](#cis-benchmark-v1-4-not-applicable-tests)
 - [Prerequisites](#prerequisites)
 - [Running a scan](#running-a-scan)
 - [Scheduling recurring scans](#scheduling-recurring-scans)
@@ -24,7 +27,7 @@ The Benchmark provides recommendations of two types: Scored and Not Scored. We r
 - [Deleting a report](#deleting-a-report)
 - [Downloading a report](#downloading-a-report)
 
-### About the CIS Benchmark
+# About the CIS Benchmark
 
 The Center for Internet Security is a 501(c)(3) nonprofit organization, formed in October 2000, with a mission is to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace". The organization is headquartered in East Greenbush, New York, with members including large corporations, government agencies, and academic institutions.
 
@@ -34,7 +37,7 @@ The official Benchmark documents are available through the CIS website. The sign
 
 To check clusters for CIS Kubernetes Benchmark compliance, the security scan leverages [kube-bench,](https://github.com/aquasecurity/kube-bench) an open-source tool from Aqua Security.
 
-### About the Generated Report
+# About the Generated Report
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
@@ -61,7 +64,7 @@ The report contains the following information:
 
 Refer to [the table in the cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
 
-### Profiles
+# Test Profiles
 
 For every CIS benchmark version, Rancher ships with two types of profiles. These profiles are named based on the type of cluster (e.g. `RKE`), the CIS benchmark version (e.g. CIS 1.4) and the profile type (e.g. `Permissive` or `Hardened`). For example, a full profile name would be `RKE-CIS-1.4-Permissive`
 
@@ -74,9 +77,9 @@ There are 2 types of profiles:
 
 In order to pass the "Hardened" profile, you will need to follow the steps on the [hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
 
-#### Skipped and Not Applicable Tests
+# Skipped and Not Applicable Tests
 
-#### CIS 1.4 Skipped Tests
+### CIS Benchmark v1.4 Skipped Tests
 
 Number | Description | Reason for Skipping
 ---|---|---
@@ -96,7 +99,7 @@ Number | Description | Reason for Skipping
 2.1.6 | "Ensure that the --protect-kernel-defaults argument is set to true (Scored)" | System level configurations are required prior to provisioning the cluster in order for this argument to be set to true.
 2.1.10 | "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Scored)" | When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.
 
-#### CIS 1.4 Not Applicable Tests
+### CIS Benchmark v1.4 Not Applicable Tests
 
 Number | Description | Reason for being not applicable
 ---|---|---
@@ -121,7 +124,7 @@ Number | Description | Reason for being not applicable
 2.2.10 | "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Scored)" | RKE doesn’t require or maintain a configuration file for the kubelet.
 
 
-### Prerequisites
+# Prerequisites
 
 To run security scans on a cluster and access the generated reports, you must be an [Administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [Cluster Owner.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
@@ -131,7 +134,7 @@ The security scan cannot run in a cluster that has Windows nodes.
 
 You will only be able to see the CIS scan reports for clusters that you have access to.
 
-### Running a Scan
+# Running a Scan
 
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
 1. Click **Run Scan.**
@@ -139,7 +142,7 @@ You will only be able to see the CIS scan reports for clusters that you have acc
 
 **Result:** A report is generated and displayed in the **CIS Scans** page. To see details of the report, click the report's name.
 
-### Scheduling Recurring Scans
+# Scheduling Recurring Scans
 
 Recurring scans can be scheduled to run on any RKE Kubernetes cluster.
 
@@ -171,7 +174,7 @@ scheduled_cluster_scan:
 ```
 
 
-### Skipping Tests
+# Skipping Tests
 
 You can define a set of tests that will be skipped by the CIS scan when the next report is generated.
 
@@ -199,7 +202,7 @@ To skip tests by editing a ConfigMap resource,
 
 **Result:** These tests will be skipped on subsequent scans that use the defined CIS Benchmark version.
 
-### Setting Alerts
+# Setting Alerts
 
 Rancher provides a set of alerts for cluster scans. which are not configured to have notifiers by default:
 
@@ -222,14 +225,14 @@ To activate an alert for a CIS scan result,
 
 **Result:** The notifications will be triggered when the a scan is run on a cluster and the active alerts have satisfied conditions.
 
-### Deleting a Report
+# Deleting a Report
 
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
 1. Go to the report that should be deleted.
 1. Click the **Ellipsis (...) > Delete.**
 1. Click **Delete.**
 
-### Downloading a Report
+# Downloading a Report
 
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
 1. Go to the report that you want to download. Click **Ellipsis (...) > Download.**

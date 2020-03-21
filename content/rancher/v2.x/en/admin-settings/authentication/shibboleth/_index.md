@@ -84,17 +84,19 @@ To enable searching for groups when assigning permissions in Rancher, you will n
 
 # Setting up OpenLDAP in Rancher
 
+If you also configure OpenLDAP as the back end to Shibboleth, it will return a SAML assertion to Rancher with user attributes that include groups. Then authenticated users will be able to access resources in Rancher that their groups have permissions for.
+
 ### OpenLDAP Prerequisites
 
 Rancher must be configured with a LDAP bind account (aka service account) to search and retrieve LDAP entries pertaining to users and groups that should have access. It is recommended to not use an administrator account or personal account for this purpose and instead create a dedicated account in OpenLDAP with read-only access to users and groups under the configured search base (see below).
 
 > **Using TLS?**
 >
-> If the certificate used by the OpenLDAP server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
+> If the certificate used by the OpenLDAP server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
 
 ### Configure OpenLDAP in Rancher
 
-Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.](../openldap-config)
+Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/openldap/openldap-config)
 
 > Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
