@@ -44,10 +44,10 @@ Set up a notifier so that you can begin configuring and sending alerts.
 {{% /accordion %}}
 {{% accordion id="pagerduty" label="PagerDuty" %}}
 1. Enter a **Name** for the notifier.
-1. From PagerDuty, create a webhook. For instructions, see the [PagerDuty Documentation](https://support.pagerduty.com/docs/webhooks).
-1. From PagerDuty, copy the webhook's **Integration Key**.
+1. From PagerDuty, create a Prometheus integration. For instructions, see the [PagerDuty Documentation](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/).
+1. From PagerDuty, copy the integration's **Integration Key**.
 1. From Rancher, enter the key in the **Service Key** field.
-1. Click **Test**. If the test is successful, your PagerDuty endpoint outputs `PageDuty setting validated`.
+1. Click **Test**. If the test is successful, your PagerDuty endpoint outputs `PagerDuty setting validated`.
 {{% /accordion %}}
 {{% accordion id="webhook" label="WebHook" %}}
 1. Enter a **Name** for the notifier.
