@@ -15,6 +15,7 @@ This section contains advanced information describing the different ways you can
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
+- [Raspbian Buster - Enable legacy iptables](#raspbian-buster---enable-legacy-iptables)
 
 # Auto-Deploying Manifests
 
@@ -162,3 +163,13 @@ Alternatively the `docker run` command can also be used:
       -e K3S_TOKEN=${NODE_TOKEN} \
       --privileged rancher/k3s:vX.Y.Z
 
+
+# Raspbian Buster - enable legacy iptables
+
+Raspbian Buster defaults to using `nftables` instead of `iptables`.  **K3S** networking features require `iptables` and do not work with `nftables`.  Follow the steps below to switch configure **Buster** to use `legacy iptables`:
+```
+sudo iptables -F
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+sudo reboot
+```
