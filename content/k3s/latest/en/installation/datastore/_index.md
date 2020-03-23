@@ -14,6 +14,7 @@ K3s supports the following datastore options:
 * Embedded [SQLite](https://www.sqlite.org/index.html)
 * [PostgreSQL](https://www.postgresql.org/) (certified against versions 10.7 and 11.5)
 * [MySQL](https://www.mysql.com/) (certified against version 5.7)
+* [MariaDB](https://mariadb.org/) (certified against version 10.3.20)
 * [etcd](https://etcd.io/) (certified against version 3.3.15)
 * Embedded [DQLite](https://dqlite.io/) for High Availability (experimental)
 
@@ -50,9 +51,9 @@ If you only supply `postgres://`  as the endpoint, K3s will attempt to do the fo
 
 
 {{% /tab %}}
-{{% tab "MySQL" %}}
+{{% tab "MySQL / MariaDB" %}}
 
-In its most common form, the `datastore-endpoint` parameter for MySQL has the following format:
+In its most common form, the `datastore-endpoint` parameter for MySQL and MariaDB has the following format:
 
 `mysql://username:password@tcp(hostname:3306)/database-name`
 
