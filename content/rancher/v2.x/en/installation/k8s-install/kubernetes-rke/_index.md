@@ -13,7 +13,7 @@ For systems without direct internet access, refer to [Air Gap: Kubernetes instal
 > **Single-node Installation Tip:**
 > In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
 >
-> To set up a single-node cluster, configure only one node in the `cluster.yml` when provisioning the cluster with RKE. The single node should have all three roles: `etcd`, `controlplane`, and `worker`. Then Rancher can be installed with Helm on the cluster in the same way that it would be installed on any other cluster.
+> To set up a single-node cluster, configure only one node in the `cluster.yml` when provisioning the cluster with RKE. The single node should have all three roles: `etcd`, `controlplane` and `worker`. Then Rancher can be installed with Helm on the cluster in the same way that it would be installed on any other cluster.
 
 ### Create the `rancher-cluster.yml` File
 
