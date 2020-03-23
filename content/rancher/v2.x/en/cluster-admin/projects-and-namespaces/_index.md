@@ -50,9 +50,17 @@ You can assign the following resources directly to namespaces:
 
 To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
 
-> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
-
 For more information on creating and moving namespaces, see [Namespaces]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/).
+
+### Role-based access control issues with namespaces and kubectl
+
+Because projects are a concept introduced by Rancher, kubectl does not have the capability to restrict the creation of namespaces to a project the creator has access to.
+
+This means that when standard users with project-scoped permissions create a namespaces with `kubectl`, it may be unusable because `kubectl` doesn't require the new namespace to be scoped within a certain project.
+
+If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
+
+If a standard user is a project owner, the user will be able to create namespaces within that project. The Rancher UI will prevent that user from creating namespaces outside the scope of the projects they have access to. 
 
 # About Projects
 
