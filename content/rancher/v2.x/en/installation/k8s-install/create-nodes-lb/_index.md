@@ -7,7 +7,7 @@ aliases:
 
 Use your infrastructure provider of choice to provision three nodes and a load balancer endpoint for your RKE install.
 
-> **Note:** These nodes must be in the same region/datacenter. You may place these servers in separate availability zones.
+> **Note:** These nodes must be in the same region. You may place these servers in separate availability zones (datacenter).
 
 ### Requirements for OS, Docker, Hardware, and Networking
 
