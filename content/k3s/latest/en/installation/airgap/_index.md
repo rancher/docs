@@ -28,11 +28,11 @@ The registries.yaml file should look like this before plugging in the necessary 
 ```
 ---
 mirrors:
-  customreg:
+  "mycustomreg.com:5000":
     endpoint:
-      - "https://ip-to-server:5000"
+      - "https://mycustomreg.com:5000"
 configs:
-  customreg:
+  "mycustomreg:5000":
     auth:
       username: xxxxxx # this is the registry username
       password: xxxxxx # this is the registry password
