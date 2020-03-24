@@ -7,11 +7,11 @@ After RKE has deployed Kubernetes, you can upgrade the versions of the component
 
 The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/).
 
-You can also select a newer version of Kubernetes to install for your cluster. Downgrading Kubernetes is not supported.
+You can also select a newer version of Kubernetes to install for your cluster.
 
 Each version of RKE has a specific [list of supported Kubernetes versions.](#listing-supported-kubernetes-versions)
 
-In case the Kubernetes version is defined in the `kubernetes_version` directive and under the `system-images` directive are defined, the `system-images` configuration will take precedence over `kubernetes_version`.
+In case the Kubernetes version is defined in the `kubernetes_version` directive and under the `system-images` directive, the `system-images` configuration will take precedence over the `kubernetes_version`.
 
 This page covers the following topics:
 
@@ -22,7 +22,10 @@ This page covers the following topics:
 - [Using an unsupported Kubernetes version](#using-an-unsupported-kubernetes-version)
 - [Mapping the Kubernetes version to services](#mapping-the-kubernetes-version-to-services)
 - [Service upgrades](#service-upgrades)
-- [Add-ons upgrades](#add-ons-upgrades)
+- [Configuring the upgrade strategy](#configuring-the-upgrade-strategy)
+- [Upgrading Nodes Manually](#upgrading-nodes-manually)
+- [Rolling Back the Kubernetes Version](#rolling-back-the-kubernetes-version)
+- [Troubleshooting](#troubleshooting)
 
 ### Prerequisites
 
@@ -102,8 +105,46 @@ For RKE prior to v0.3.0, the service defaults are located [here](https://github.
 
 > **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods are not automatically upgraded.
 
-### Add-Ons Upgrades
+### Configuring the Upgrade Strategy
 
-As of v0.1.8, upgrades to add-ons are supported.
+As of v0.1.8, upgrades to add-ons are supported. [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
 
-[Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
+As of v1.1.0, additional upgrade options became available to give you more granular control over the upgrade process. These options can be used to maintain availability of your applications during a cluster upgrade.
+
+For details on upgrade configuration options, refer to [Configuring the Upgrade Strategy.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy)
+
+For the requirements to maintain availability of applications during a cluster upgrade, refer to [this section.]({{<baseurl>}}/rke/latest/en/upgrades/maintaining-availability)
+
+### Upgrading Nodes Manually
+
+_Available as of v1.1.0_
+
+You can manually update each type of node separately. As a best practice, upgrade the etcd nodes first, followed by controlplane and then worker nodes.
+
+### Rolling Back the Kubernetes Version
+
+_Available as of v1.1.0_
+
+A cluster can be restored back to a snapshot that uses a previous Kubernetes version.
+
+### Troubleshooting
+
+_Applies to v1.1.0+_
+
+If a node doesn't come up after an upgrade, the `rke up` command errors out.
+
+No upgrade will proceed if the number of unavailable nodes exceeds the configured maximum.
+
+If an upgrade stops, you may need to fix an unavailable node or remove it from the cluster before the upgrade can continue.
+
+A failed node could be in many different states:
+
+- Powered off
+- Unavailable
+- User drains a node while upgrade is in process, so there are no kubelets on the node
+- The upgrade itself failed
+
+Some expected failure scenarios include the following:
+
+- If the maximum unavailable number of nodes is reached during an upgrade, the RKE CLI will error out and exit the CLI with a failure code.
+- If some nodes fail to upgrade, but the number of failed nodes doesn't reach the maximum unavailable number of nodes, the RKE CLI logs the nodes that were unable to upgrade and continues to upgrade the add-ons. After the add-ons are upgraded, RKE will error out and exit the CLI with a failure code regardless of add-on upgrade status.
