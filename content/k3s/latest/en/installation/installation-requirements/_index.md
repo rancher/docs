@@ -17,7 +17,6 @@ K3s should run on just about any flavor of Linux. However, K3s is tested on the 
 
 *    Ubuntu 16.04 (amd64)
 *    Ubuntu 18.04 (amd64)
-*    Raspbian Buster (armhf)  **NOTE: requires legacy iptables.  See Note below.
 
 > * If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#raspbian-buster---enable-legacy-iptables) to switch to legacy iptables.
 > * If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
