@@ -67,3 +67,16 @@ The cluster performance depends on database performance. To ensure optimal speed
 ### Network
 
 You should consider increasing the subnet size for the cluster CIDR so that you don't run out of IPs for the pods. You can do that by passing the `--cluster-cidr` option to K3s server upon starting.
+
+### Database
+
+K3s supports different databases including MySQL, PostgreSQL, MariaDB, and etcd, the following is a sizing guide for the database resources you need to run large clusters:
+
+| Deployment Size |   Nodes   | VCPUS |  RAM  |
+|:---------------:|:---------:|:-----:|:-----:|
+|      Small      |  Up to 10 |   1   |  2 GB |
+|      Medium     | Up to 100 |   2   |  8 GB |
+|      Large      | Up to 250 |   4   | 16 GB |
+|     X-Large     | Up to 500 |   8   | 32 GB |
+|     XX-Large    |   500+    |   16  | 64 GB |
+
