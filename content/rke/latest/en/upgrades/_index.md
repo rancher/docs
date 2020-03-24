@@ -15,17 +15,23 @@ In case the Kubernetes version is defined in the `kubernetes_version` directive 
 
 This page covers the following topics:
 
+- [How upgrades work](#how-upgrades-work)
 - [Prerequisites](#prerequisites)
 - [Upgrading Kubernetes](#upgrading-kubernetes)
+- [Configuring the upgrade strategy](#configuring-the-upgrade-strategy)
+- [Maintaining availability for applications during upgrades](#maintaining-availability-for-applications-during-upgrades)
 - [Listing supported Kubernetes versions](#listing-supported-kubernetes-versions)
 - [Kubernetes version precedence](#kubernetes-version-precedence)
 - [Using an unsupported Kubernetes version](#using-an-unsupported-kubernetes-version)
 - [Mapping the Kubernetes version to services](#mapping-the-kubernetes-version-to-services)
 - [Service upgrades](#service-upgrades)
-- [Configuring the upgrade strategy](#configuring-the-upgrade-strategy)
 - [Upgrading Nodes Manually](#upgrading-nodes-manually)
 - [Rolling Back the Kubernetes Version](#rolling-back-the-kubernetes-version)
 - [Troubleshooting](#troubleshooting)
+
+### How Upgrades Work
+
+In [this section,]({{<baseurl>}}/rke/latest/en/upgrades/how-upgrades-work) you'll learn what happens when you edit or upgrade your RKE Kubernetes cluster.
 
 ### Prerequisites
 
@@ -62,6 +68,18 @@ Then invoke `rke up`:
 ```
 $ rke up --config cluster.yml
 ```
+
+### Configuring the Upgrade Strategy
+
+As of v0.1.8, upgrades to add-ons are supported. [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
+
+As of v1.1.0, additional upgrade options became available to give you more granular control over the upgrade process. These options can be used to maintain availability of your applications during a cluster upgrade.
+
+For details on upgrade configuration options, refer to [Configuring the Upgrade Strategy.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy)
+
+### Maintaining Availability for Applications During Upgrades
+
+In [this section,]({{<baseurl>}}/rke/latest/en/upgrades/maintaining-availability/) you'll learn the requirements to prevent downtime for your applications when you upgrade the cluster using `rke up`.
 
 ### Listing Supported Kubernetes Versions
 
@@ -104,16 +122,6 @@ For RKE prior to v0.3.0, the service defaults are located [here](https://github.
 [Services]({{<baseurl>}}/rke/latest/en/config-options/services/) can be upgraded by changing any of the services arguments or `extra_args` and running `rke up` again with the updated configuration file.
 
 > **Note:** The following arguments, `service_cluster_ip_range` or `cluster_cidr`, cannot be changed as any changes to these arguments will result in a broken cluster. Currently, network pods are not automatically upgraded.
-
-### Configuring the Upgrade Strategy
-
-As of v0.1.8, upgrades to add-ons are supported. [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) can also be upgraded by changing any of the add-ons and running `rke up` again with the updated configuration file.
-
-As of v1.1.0, additional upgrade options became available to give you more granular control over the upgrade process. These options can be used to maintain availability of your applications during a cluster upgrade.
-
-For details on upgrade configuration options, refer to [Configuring the Upgrade Strategy.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy)
-
-For the requirements to maintain availability of applications during a cluster upgrade, refer to [this section.]({{<baseurl>}}/rke/latest/en/upgrades/maintaining-availability)
 
 ### Upgrading Nodes Manually
 
