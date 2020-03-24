@@ -10,6 +10,7 @@ This section contains advanced information describing the different ways you can
 
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with RootlessKit (Experimental)](#running-k3s-with-rootlesskit-experimental)
 - [Node labels and taints](#node-labels-and-taints)
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
@@ -29,6 +30,45 @@ K3s includes and defaults to [containerd,](https://containerd.io/) an industry-s
 K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`. For advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
 The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
+
+# Secrets Encryption Config (Experimental)
+As of v1.17.4+k3s1, K3s added the experimental feature of enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server, this flag will do the following automatically:
+
+- Generate an AES-CBC key
+- Generate an encryption config file with the generated key
+
+```
+{
+  "kind": "EncryptionConfiguration",
+  "apiVersion": "apiserver.config.k8s.io/v1",
+  "resources": [
+    {
+      "resources": [
+        "secrets"
+      ],
+      "providers": [
+        {
+          "aescbc": {
+            "keys": [
+              {
+                "name": "aescbckey",
+                "secret": "xxxxxxxxxxxxxxxxxxx"
+              }
+            ]
+          }
+        },
+        {
+          "identity": {}
+        }
+      ]
+    }
+  ]
+}
+```
+
+- Pass the config to the KubeAPI as encryption-provider-config
+
+Once enabled any created secret will be encrypted with this key. Note that if you disable encryption then any encrypted secrets will not be readable until you enable encryption again.
 
 # Running K3s with RootlessKit (Experimental)
 
