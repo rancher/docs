@@ -43,7 +43,7 @@ A user account and group for the **etcd** service is required to be setup prior 
 To create the **etcd** group run the following console commands.
 
 ```
-addgroup --gid 52034 etcd
+groupadd --gid 52034 etcd
 useradd --comment "etcd service account" --uid 52034 --gid 52034 etcd
 ```
 
