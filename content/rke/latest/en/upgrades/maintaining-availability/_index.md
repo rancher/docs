@@ -29,16 +29,15 @@ The following must be true of the cluster that will be upgraded:
 1. The cluster has three or more etcd nodes.
 1. The cluster has two or more controlplane nodes.
 1. The cluster has two or more worker nodes.
-1. The Ingress, DNS, and other addons are schedulable to a number of nodes that exceeds the maximum number of unavailable worker nodes. By default, the minimum number of unavailable worker nodes is one.
+1. The Ingress, DNS, and other addons are schedulable to a number of nodes that exceeds the maximum number of unavailable worker nodes, also called the batch size. By default, the minimum number of unavailable worker nodes is 10 percent of worker nodes, rounded down to the nearest node, with a minimum batch size of one node.
 
 ### 3. Workload Requirements
 
 The following must be true of the cluster's applications:
 
-1. The application and Ingress are deployed across a number of nodes exceeding the maximum number of unavailable worker nodes.
+1. The application and Ingress are deployed across a number of nodes exceeding the maximum number of unavailable worker nodes, also called the batch size. By default, the minimum number of unavailable worker nodes is 10 percent of worker nodes, rounded down to the nearest node, with a minimum batch size of one node.
 1. The applications must make use of liveness and readiness probes.
 
 For information on how to use node selectors to assign pods to nodes, refer to the [official Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/)
 
 For information on configuring the number of replicas for each addon, refer to [this section.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy/)
-

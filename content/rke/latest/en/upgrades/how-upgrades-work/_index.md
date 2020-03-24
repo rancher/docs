@@ -3,7 +3,7 @@ title: How Upgrades Work
 weight: 1
 ---
 
-In this section, you'll learn how each type of node is upgraded by default when a cluster is upgraded using `rke up`.
+In this section, you'll learn what happens when you edit or upgrade your RKE Kubernetes cluster. The below sections describe how each type of node is upgraded by default when a cluster is upgraded using `rke up`.
 
 {{% tabs %}}
 {{% tab "RKE v1.1.0+" %}}
@@ -22,11 +22,6 @@ When a cluster is upgraded with `rke up`, using the default options, the followi
 1. [Addons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) get upgraded one by one.
 
 The following sections break down in more detail what happens when etcd nodes, controlplane nodes, worker nodes, and addons are upgraded. This information is intended to be used to help you understand the update strategy for the cluster, and may be useful when troubleshooting problems with upgrading the cluster.
-
-- [Upgrades of etcd nodes](#upgrades-of-etcd-nodes)
-- [Upgrades of controlplane nodes](#upgrades-of-controlplane-nodes)
-- [Upgrades of worker nodes](#upgrades-of-worker-nodes)
-- [Upgrades of addons](#upgrades-of-addons)
 
 ### Upgrades of etcd Nodes
 
@@ -62,11 +57,11 @@ RKE will handle all worker node upgrades before upgrading any add-ons. As long a
 
 The availability of your applications partly depends on the availability of [RKE addons.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) Addons are used to deploy several cluster components, including network plug-ins, the Ingress controller, DNS provider, and metrics server.
 
-Because RKE addons are necessary for allowing traffic into the cluster, a zero-downtime upgrade requires them to be updated in batches. You will need to configure the maximum number of unavailable replicas for each addon in the `cluster.yml` to ensure that your cluster will retain enough available replicas during an upgrade.
+Because RKE addons are necessary for allowing traffic into the cluster, they will need to be updated in batches to maintain availability. You will need to configure the maximum number of unavailable replicas for each addon in the `cluster.yml` to ensure that your cluster will retain enough available replicas during an upgrade.
 
 For more information on configuring the number of replicas for each addon, refer to [this section.](#replicas-for-rke-addons)
 
-For an example showing how to configure the addons for zero downtime, refer to the [example cluster.yml.](#example-cluster-yml)
+For an example showing how to configure the addons, refer to the [example cluster.yml.](#example-cluster-yml)
 
 {{% /tab %}}
 {{% tab "RKE prior to v1.1.0" %}}
