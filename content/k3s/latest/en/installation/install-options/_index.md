@@ -114,7 +114,7 @@ OPTIONS:
    --service-cidr value                       (networking) Network CIDR to use for services IPs (default: "10.43.0.0/16")
    --cluster-dns value                        (networking) Cluster IP for coredns service. Should be in your service-cidr range (default: 10.43.0.10)
    --cluster-domain value                     (networking) Cluster Domain (default: "cluster.local")
-   --flannel-backend value                    (networking) One of 'none', 'vxlan', 'ipsec', or 'flannel' (default: "vxlan")
+   --flannel-backend value                    (networking) One of 'none', 'vxlan', 'ipsec', 'host-gw', or 'wireguard' (default: "vxlan")
    --token value, -t value                    (cluster) Shared secret used to join a server or agent to a cluster [$K3S_TOKEN]
    --token-file value                         (cluster) File containing the cluster-secret/token [$K3S_TOKEN_FILE]
    --write-kubeconfig value, -o value         (client) Write kubeconfig for admin client to this file [$K3S_KUBECONFIG_OUTPUT]
@@ -128,17 +128,17 @@ OPTIONS:
    --datastore-certfile value                 (db) TLS certification file used to secure datastore backend communication [$K3S_DATASTORE_CERTFILE]
    --datastore-keyfile value                  (db) TLS key file used to secure datastore backend communication [$K3S_DATASTORE_KEYFILE]
    --default-local-storage-path value         (storage) Default local storage path for local provisioner storage class
-   --no-deploy value                          (components) Do not deploy packaged components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
+   --disable value                            (components) Do not deploy packaged components and delete any deployed components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
    --disable-scheduler                        (components) Disable Kubernetes default scheduler
    --disable-cloud-controller                 (components) Disable k3s default cloud controller manager
    --disable-network-policy                   (components) Disable k3s default network policy controller
    --node-name value                          (agent/node) Node name [$K3S_NODE_NAME]
    --with-node-id                             (agent/node) Append id to node name
-   --node-label value                         (agent/node) Registering kubelet with set of labels
+   --node-label value                         (agent/node) Registering and starting kubelet with set of labels
    --node-taint value                         (agent/node) Registering kubelet with set of taints
    --docker                                   (agent/runtime) Use docker instead of containerd
    --container-runtime-endpoint value         (agent/runtime) Disable embedded containerd and use alternative CRI implementation
-   --pause-image value                        (agent/runtime) Customized pause image for containerd sandbox
+   --pause-image value                        (agent/runtime) Customized pause image for containerd or docker sandbox (default: "docker.io/rancher/pause:3.1")
    --private-registry value                   (agent/runtime) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
    --node-ip value, -i value                  (agent/networking) IP address to advertise for node
    --node-external-ip value                   (agent/networking) External IP address to advertise for node
@@ -153,7 +153,9 @@ OPTIONS:
    --server value, -s value                   (experimental/cluster) Server to connect to, used to join a cluster [$K3S_URL]
    --cluster-init                             (experimental/cluster) Initialize new cluster master [$K3S_CLUSTER_INIT]
    --cluster-reset                            (experimental/cluster) Forget all peers and become a single cluster new cluster master [$K3S_CLUSTER_RESET]
+   --secrets-encryption                       (experimental) Enable Secret encryption at rest
    --no-flannel                               (deprecated) use --flannel-backend=none
+   --no-deploy value                          (deprecated) Do not deploy packaged components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
    --cluster-secret value                     (deprecated) use --token [$K3S_CLUSTER_SECRET]
 ```
 
@@ -176,11 +178,11 @@ OPTIONS:
    --data-dir value, -d value          (agent/data) Folder to hold state (default: "/var/lib/rancher/k3s")
    --node-name value                   (agent/node) Node name [$K3S_NODE_NAME]
    --with-node-id                      (agent/node) Append id to node name
-   --node-label value                  (agent/node) Registering kubelet with set of labels
+   --node-label value                  (agent/node) Registering and starting kubelet with set of labels
    --node-taint value                  (agent/node) Registering kubelet with set of taints
    --docker                            (agent/runtime) Use docker instead of containerd
    --container-runtime-endpoint value  (agent/runtime) Disable embedded containerd and use alternative CRI implementation
-   --pause-image value                 (agent/runtime) Customized pause image for containerd sandbox
+   --pause-image value                 (agent/runtime) Customized pause image for containerd or docker sandbox (default: "docker.io/rancher/pause:3.1")
    --private-registry value            (agent/runtime) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
    --node-ip value, -i value           (agent/networking) IP address to advertise for node
    --node-external-ip value            (agent/networking) External IP address to advertise for node
