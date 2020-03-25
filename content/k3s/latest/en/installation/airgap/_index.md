@@ -11,7 +11,8 @@ We are assuming you have already created your nodes in your air-gap environment 
 
 ### Create the Registry YAML
 Create the registries.yaml file at `/etc/rancher/k3s/registries.yaml`. This will tell K3s the necessary details to connect to your private registry.
-The registries.yaml file should look like this before plugging in the necessary information:
+It is recommended to mirror docker.io and the following YAML will accomplish this.
+Make sure you replace `mycustomreg.com` in both places, and supply the registry auth username, pass, and all tls cert paths.
 
 ```
 ---
@@ -34,10 +35,13 @@ Note, at this time only secure registries are supported with K3s (SSL with custo
 
 1. Pull the K3s images from the k3s-images.txt file from docker.io
  Note, the k3s-images.txt file is an asset on GitHub for your release.
+Example: `docker pull docker.io/rancher/coredns-coredns:1.6.3`
 
 2. Retag the images to the private registry.
+Example: `docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns`
 
 3. Push the images to the private registry.
+Example: `docker push mycustomreg:5000/coredns-coredns`
 
 You can now go to the [Install K3s](install-k3s) section below and begin K3s installation.
 
@@ -142,7 +146,7 @@ Then, install the system upgrade controller by applying the manifest yaml. For e
 You will need to obtain the latest release of the yaml before you apply it.
 
 Now, configure your system upgrade controller YAML (Plan) to your liking. Refer to the [readme](https://github.com/rancher/system-upgrade-controller/blob/master/README.md) for more information.
-Below, we have provided an example for server nodes and agent nodes. You should take care to ensure each Plan you will utilize meets your needs. Please note, before you apply your Plans, ensure you have set your labels appropriately for each node.
+Below, we have provided an example for server nodes and agent nodes. You should take care to ensure each Plan you will utilize meets your needs. Please note, before you apply your Plans, ensure you have set your labels appropriately for each node and if using the examples below that you have plugged in the K3s version for each instance of `VERSION_HERE`.
 
 ```
 ---
@@ -155,7 +159,7 @@ metadata:
   namespace: system-upgrade
 spec:
   concurrency: 1
-  version: v1.17.4-k3s1
+  version: VERSION_HERE
   nodeSelector:
     matchExpressions:
       - {key: k3s-server-upgrade, operator: Exists}
@@ -163,7 +167,7 @@ spec:
   drain:
     force: true
   upgrade:
-    image: rancher/k3s-upgrade
+    image: k3s-upgrade
 ```
 
 ```
@@ -178,9 +182,9 @@ metadata:
 spec:
   prepare:
      image: rancher/k3s-upgrade:latest
-     args: ["prepare","k3s-master-plan"]
+     args: ["prepare","k3s-server-plan"]
   concurrency: 1
-  version: v1.17.4-k3s1
+  version: VERSION_HERE
   nodeSelector:
     matchExpressions:
       - {key: k3s-agent-upgrade, operator: Exists}
@@ -188,7 +192,7 @@ spec:
   drain:
     force: true
   upgrade:
-    image: rancher/k3s-upgrade
+    image: k3s-upgrade
 ```
 
 Once you have applied the necessary labels to each node you can apply your Plans. Always take care to deploy the plan for servers first before applying the plan to agents.
