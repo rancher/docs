@@ -101,73 +101,15 @@ with the same environment variables.
 3. Restart the K3s service (if not restarted automatically by installer).
 
 
-### System Upgrade Controller Method
+### Automated Upgrades Method
 
-As of v1.17.4+k3s1 the [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller/blob/master/README.md) is supported. The system upgrade controller can be utilized in an environment that has a private registry to rollout upgrades to your cluster as directed in a new CRD the controller introduces called a **Plan**. 
-
-First, push necessary (newer) images to the registry. Take care to replace TAG with the newer tag, using the latest stable release (tag) for each image.
+As of v1.17.4+k3s1 the [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller/blob/master/README.md) is supported. The system upgrade controller can be utilized in an environment that has a private registry to rollout upgrades to your cluster as directed in a new CRD the controller introduces called a **Plan**.
+ 
+>**Note:** In order to leverage automated upgrades with the System Upgrade Controller in an airgapped environemnt, push the necessary images to the registry. Take care to replace TAG with the latest stable release (tag) for each image. After you have completed this, you can then follow the [Automated upgrades]({{< baseurl >}}/k3s/latest/en/upgrades/automated/) guide to learn more about the System Upgrade Controller and how to configure it. 
 
 ```
 rancher/k3s-upgrade:TAG
 rancher/system-upgrade-controller:TAG
 rancher/kubectl:TAG
 ```
-
-Then, install the system upgrade controller by applying the manifest yaml. For example v0.3.1 is at https://github.com/rancher/system-upgrade-controller/blob/v0.3.1/manifests/system-upgrade-controller.yaml 
-You will need to obtain the latest release of the yaml before you apply it.
-
-Now, configure your system upgrade controller YAML (Plan) to your liking. Refer to the [readme](https://github.com/rancher/system-upgrade-controller/blob/master/README.md) for more information.
-Below, we have provided an example for server nodes and agent nodes. You should take care to ensure each Plan you will utilize meets your needs. Please note, before you apply your Plans, ensure you have set your labels appropriately for each node and if using the examples below that you have plugged in the K3s version for each instance of `VERSION_HERE`.
-
-```
----
-# Example server upgrade plan
-# Always upgrade server nodes first
-apiVersion: upgrade.cattle.io/v1
-kind: Plan
-metadata:
-  name: k3s-server-plan
-  namespace: system-upgrade
-spec:
-  concurrency: 1
-  version: VERSION_HERE
-  nodeSelector:
-    matchExpressions:
-      - {key: k3s-server-upgrade, operator: Exists}
-  serviceAccountName: system-upgrade
-  drain:
-    force: true
-  upgrade:
-    image: k3s-upgrade
-```
-
-```
----
-# Example agent upgrade plan
-# Always upgrade any agent nodes last
-apiVersion: upgrade.cattle.io/v1
-kind: Plan
-metadata:
-  name: k3s-agent-plan
-  namespace: system-upgrade
-spec:
-  prepare:
-     image: rancher/k3s-upgrade:latest
-     args: ["prepare","k3s-server-plan"]
-  concurrency: 1
-  version: VERSION_HERE
-  nodeSelector:
-    matchExpressions:
-      - {key: k3s-agent-upgrade, operator: Exists}
-  serviceAccountName: system-upgrade
-  drain:
-    force: true
-  upgrade:
-    image: k3s-upgrade
-```
-
-Once you have applied the necessary labels to each node you can apply your Plans. Always take care to deploy the plan for servers first before applying the plan to agents.
-Based on our examples provided above, we would need to set the `k3s-server-upgrade` label for our server plan and the `k3s-agent-upgrade` label for our agent plan.
-
-The System Upgrade Controller will rollout the upgrade plan as per the spec for each plan. Please be patient as the rollout can take time in large clusters depending on the concurrency value.
 
