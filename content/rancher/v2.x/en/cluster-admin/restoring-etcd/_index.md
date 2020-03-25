@@ -1,5 +1,5 @@
 ---
-title: Restoring etcd
+title: Restoring a Cluster from Backup 
 weight: 2050
 ---
 
