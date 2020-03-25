@@ -87,9 +87,10 @@ The cluster cannot be downgraded to a previous Kubernetes version.
 
 _Available as of v2.4_
 
-A cluster can be restored to a backup in which the previous Kubernetes version was used.
+A cluster can be restored to a backup in which the previous Kubernetes version was used. For more information, refer to the following sections:
 
-RKE v1.1.0 introduced the ability to restore a Kubernetes cluster to an older Kubernetes version by restoring it to a snapshot that includes the older Kubernetes version.
+- [Backing up a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#how-snapshots-work)
+- [Restoring a cluster from backup]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/restoring-etcd/restoring-a-cluster-from-a-snapshot)
 
 # Configuring the Upgrade Strategy
 
@@ -127,6 +128,8 @@ To enable draining each node during a cluster upgrade,
 1. Click **Save.**
 
 **Result:** The cluster is updated to use the new upgrade strategy.
+
+> **Note:** As of Rancher v2.4.0, there is a known issue in which the Rancher UI doesn't show state of nodes as drained, even though they are being drained.
 
 ### Maintaining Availability for Applications During Upgrades
 
