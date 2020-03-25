@@ -3,53 +3,24 @@ title: "Air-Gap Install"
 weight: 60
 ---
 
-You can install K3s in an air-gapped environment using two different methods. You can either deploy a private registry such as on your bastion host and mirror docker.io or you can manually deploy images such as for small clusters.
+You can install K3s in an air-gapped environment using two different methods. You can either deploy a private registry and mirror docker.io or you can manually deploy images such as for small clusters.
 
 # Private Registry Method
 
-We are assuming you have already created your nodes in your air-gap environment and have a secure Docker private registry on your bastion host.
+This document assumes you have already created your nodes in your air-gap environment and have a secure Docker private registry on your bastion host.
+If you have not yet set up a private Docker registry, refer to the official documentation [here](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry).
 
 ### Create the Registry YAML
-Create the registries.yaml file at `/etc/rancher/k3s/registries.yaml`. This will tell K3s the necessary details to connect to your private registry.
-It is recommended to mirror docker.io and the following YAML will accomplish this.
-Make sure you replace `mycustomreg.com` in both places, and supply the registry auth username, pass, and all tls cert paths.
 
-```
----
-mirrors:
-  docker.io:
-    endpoint:
-      - "https://mycustomreg.com:5000"
-configs:
-  "mycustomreg:5000":
-    auth:
-      username: xxxxxx # this is the registry username
-      password: xxxxxx # this is the registry password
-    tls:
-      cert_file: # path to the cert file used in the registry
-      key_file:  # path to the key file used in the registry
-      ca_file: # path to the ca file used in the registry
-```
+Follow the [Private Registry Configuration]({{< baseurl >}}/k3s/latest/en/installation/private-registry) guide to create and configure the registry.yaml file.
 
-Note, at this time only secure registries are supported with K3s (SSL with custom CA)
-
-1. Pull the K3s images from the k3s-images.txt file from docker.io
- Note, the k3s-images.txt file is an asset on GitHub for your release.
-Example: `docker pull docker.io/rancher/coredns-coredns:1.6.3`
-
-2. Retag the images to the private registry.
-Example: `docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns`
-
-3. Push the images to the private registry.
-Example: `docker push mycustomreg:5000/coredns-coredns`
-
-You can now go to the [Install K3s](install-k3s) section below and begin K3s installation.
+Once you have completed this, you may now go to the [Install K3s](#install-k3s) section below.
 
 
 # Manually Deploy Images Method
 
 We are assuming you have created your nodes in your air-gap environment.
-This method requires you to manually deploy the necessary images to each node. As such, it's not recommended for larger clusters as this could be difficult to manage.
+This method requires you to manually deploy the necessary images to each node and is appropriate for edge deployments where running a private registry is not practical.
 
 ### Prepare the Images Directory and K3s Binary
 Obtain the images tar file for your architecture from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be running.
@@ -67,7 +38,7 @@ Follow the steps in the next section to install K3s.
 
 # Install K3s
 
-Only after you have completed either the [Private Registry Method](private-registry-method) or the [Manually Deploy Images Method](manually-deploy-images-method) above should you install K3s.
+Only after you have completed either the [Private Registry Method](#private-registry-method) or the [Manually Deploy Images Method](#manually-deploy-images-method) above should you install K3s.
 
 Obtain the K3s binary from the [releases](https://github.com/rancher/k3s/releases) page, matching the same version used to get the airgap images.
 Obtain the K3s install script at https://get.k3s.io
@@ -97,7 +68,7 @@ INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetok
 {{% /tab %}}
 {{% tab "High Availability Configuration" %}}
 
-Reference the [High Availability with an External DB]({{< baseurl >}}/k3s/latest/en/instalaltion/ha) or [High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installatin/ha-embedded) guides. You will be tweaking install commands so you specify `INSTALL_K3S_SKIP_DOWNLOAD=true` and run your install script locally instead of via curl. You will also utilize `INSTALL_K3S_EXEC='args'` to supply any arguments to k3s.
+Reference the [High Availability with an External DB]({{< baseurl >}}/k3s/latest/en/installation/ha) or [High Availability with Embedded DB (Experimental)]({{< baseurl >}}/k3s/latest/en/installation/ha-embedded) guides. You will be tweaking install commands so you specify `INSTALL_K3S_SKIP_DOWNLOAD=true` and run your install script locally instead of via curl. You will also utilize `INSTALL_K3S_EXEC='args'` to supply any arguments to k3s.
 
 For example, step two of the High Availability with an External DB guide mentions the following:
 
