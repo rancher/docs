@@ -116,3 +116,26 @@ You can disable the default DNS provider by specifying `none` to  the dns `provi
 dns:
     provider: none
 ```
+
+# NodeLocal DNS
+
+_Available as of v1.1.0_
+
+> **Note:** The option to enable NodeLocal DNS is available for:
+>
+> * Kubernetes v1.15.11 and up
+> * Kubernetes v1.16.8 and up
+> * Kubernetes v1.17.4 and up
+
+NodeLocal DNS is an additional component that can be deployed on each node to improve DNS performance. It is not a replacement for the `provider` parameter, you will still need to have one of the available DNS providers configured. See [Using NodeLocal DNSCache in Kubernetes clusters](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/) for more information on how NodeLocal DNS works.
+
+## Configuring NodeLocal DNS
+
+The `ip_address` parameter is used to configure what link-local IP address will be configured one each host to listen on, make sure this IP address is not already configured on the host.
+
+```yaml
+dns:
+    provider: coredns
+    nodelocal:
+        ip_address: "169.254.20.10"
+```
