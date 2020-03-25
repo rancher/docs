@@ -1,5 +1,5 @@
 ---
-title: Backing up Cluster Data
+title: Backing up a Cluster
 weight: 2045
 ---
 
@@ -14,33 +14,49 @@ Snapshots of the etcd database are taken and saved either [locally onto the etcd
 This section covers the following topics:
 
 - [How snapshots work](#how-snapshots-work)
-- [Snapshot creation period and retention count](#snapshot-creation-period-and-retention-count)
-  - [Configuring recurring snapshots for the cluster](#configuring-recurring-snapshots-for-the-cluster)
+- [Configuring recurring snapshots](#configuring-recurring-snapshots)
 - [One-time snapshots](#one-time-snapshots)
 - [Snapshot backup targets](#snapshot-backup-targets)
   - [Local backup target](#local-backup-target)
   - [S3 backup target](#s3-backup-target)
   - [Using a custom CA certificate for S3](#using-a-custom-ca-certificate-for-s3)
   - [IAM Support for storing snapshots in S3](#iam-support-for-storing-snapshots-in-s3)
+- [Viewing available snapshots](#viewing-available-snapshots)
 - [Safe timestamps](#safe-timestamps)
-- [Enabling snapshot features for clusters created before Rancher v2.2.0](#enabling-snapshot-features-for-clusters-created-before-Rancher-v2-2-0)
+- [Enabling snapshot features for clusters created before Rancher v2.2.0](#enabling-snapshot-features-for-clusters-created-before-rancher-v2-2-0)
 
 # How Snapshots Work
 
 {{% tabs %}}
 {{% tab "Rancher v2.4.0+" %}}
+When Rancher creates a snapshot, it includes three components: 
 
+- The cluster data in etcd
+- The Kubernetes version
+- The cluster configuration in the form of the `cluster.yml`
+
+Because the Kubernetes version is now included in the snapshot, it is possible to restore a cluster to a prior Kubernetes version.
+
+The multiple components of the snapshot allow you to select from the following options if you need to a cluster from a snapshot:
+
+- **Restore just the etcd contents:** This restoration is similar to restoring to snapshots in Rancher prior to v2.4.0.
+- **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
+- **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
+
+It's always recommended to take a new snapshot before any upgrades.
 {{% /tab %}}
 {{% tab "Rancher prior to v2.4.0" %}}
 When Rancher creates a snapshot, only the etcd data is included in the snapshot.
+
+Because the Kubernetes version is not included in the snapshot, there is no option to restore a cluster to a different Kubernetes version.
+
+It's always recommended to take a new snapshot before any upgrades.
 {{% /tab %}}
 {{% /tabs %}}
 
-# Snapshot Creation Period and Retention Count
+# Configuring Recurring Snapshots
 
 Select how often you want recurring snapshots to be taken as well as how many snapshots to keep. The amount of time is measured in hours. With timestamped snapshots, the user has the ability to do a point-in-time recovery.
-
-### Configuring Recurring Snapshots for the Cluster
 
 By default, [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) are configured to take recurring snapshots (saved to local disk). To protect against local disk failure, using the [S3 Target](#s3-backup-target) or replicating the path on disk is advised.
 
@@ -120,7 +136,7 @@ _Available as of v2.3.0_
 
 As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of Rancher v2.3.0, the option `safe_timestamp` is added to support compatible file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
 
->>**Note:** This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface.
+This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface.
 
 # Enabling Snapshot Features for Clusters Created Before Rancher v2.2.0
 
