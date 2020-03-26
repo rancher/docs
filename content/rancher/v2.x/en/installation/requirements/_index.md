@@ -62,7 +62,7 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
 {{% tabs %}}
 {{% tab "RKE Install Requirements" %}}
 
-These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
+These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
 Performance increased in Rancher v2.4.0. For the requirements of Rancher prior to v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
 
@@ -79,7 +79,7 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher prior t
 
 {{% tab "K3s Install Requirements" %}}
 
-These requirements apply to [installing Rancher on a K3s Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
+These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size |
 | --------------- | ---------- | ------------ | -------| ---------| ------------ |
@@ -95,7 +95,7 @@ These requirements apply to [installing Rancher on a K3s Kubernetes cluster.]({{
 
 {{% tab "Docker Install Requirements" %}}
 
-These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
+These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
@@ -108,7 +108,7 @@ These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installa
 ### CPU and Memory for Rancher prior to v2.4.0
 
 {{% accordion label="Click to expand" %}}
-These requirements apply to installing Rancher on a Kubernetes cluster prior to Rancher v2.4.0:
+These requirements apply to installing Rancher on an RKE Kubernetes cluster prior to Rancher v2.4.0:
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
