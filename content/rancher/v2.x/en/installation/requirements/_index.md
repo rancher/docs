@@ -72,11 +72,7 @@ These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<bas
 | XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
 
 {{% /tab %}}
-<<<<<<< HEAD
-{{% tab "Node in Docker Install" %}}
-=======
 {{% tab "Docker Install Requirements" %}}
->>>>>>> Explain K3s Rancher install
 
 These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
 

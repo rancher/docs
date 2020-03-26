@@ -20,20 +20,35 @@ A user cluster is a downstream Kubernetes cluster that runs your apps and servic
 
 If you have a Docker installation of Rancher, the node running the Rancher server should be separate from your downstream clusters.
 
-In Kubernetes Installations of Rancher, the Rancher server cluster should also be separate from the user clusters.
+In Kubernetes installations of Rancher, the Rancher server cluster should also be separate from the user clusters.
 
 ![Separation of Rancher Server from User Clusters]({{<baseurl>}}/img/rancher/rancher-architecture-separation-of-rancher-server.svg)
 
 # Why HA is Better for Rancher in Production
 
-We recommend installing the Rancher server on a three-node Kubernetes cluster for production, primarily because it protects the Rancher server data. The Rancher server stores its data in etcd in both single-node and Kubernetes Installations.
+We recommend installing the Rancher server on a high-availability Kubernetes cluster, primarily because it protects the Rancher server data. In a high-availability installation, a load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure.
 
-When Rancher is installed on a single node, if the node goes down, there is no copy of the etcd data available on other nodes and you could lose the data on your Rancher server.
+We don't recommend installing Rancher in a single Docker container, because if the node goes down, there is no copy of the cluster data available on other nodes and you could lose the data on your Rancher server.
 
-By contrast, in the high-availability installation,
+Rancher needs to be installed on either a high-availability [RKE (Rancher Kubernetes Engine)]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster, or a high-availability [K3s (5 less than K8s)]({{<baseurl>}}/k3s/latest/en/) Kubernetes cluster. Both RKE and K3s are fully certified Kubernetes distributions.
 
-- The etcd data is replicated on three nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
-- A load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure. Note: This [example]({{<baseurl>}}/rancher/v2.x/en/installation/options/nginx/) of how to configure an NGINX server as a basic layer 4 load balancer (TCP).
+### K3s Kubernetes Cluster Installations
+
+If you are installing Rancher v2.4 for the first time, we recommend installing it on a K3s Kubernetes cluster. One main advantage of this K3s architecture is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
+
+The option to install Rancher on a K3s cluster is a feature introduced in Rancher v2.4. K3s is easy to install, with half the memory of Kubernetes, all in a binary less than 50 MB.
+
+<figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
+![Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)
+
+### RKE Kubernetes Cluster Installations
+
+If you are installing Rancher prior to v2.4, you will need to install Rancher on an RKE cluster, in which the cluster data is stored on each node with the etcd role. As of Rancher v2.4, there is no migration path to transition the Rancher server from an RKE cluster to a K3s cluster. All versions of the Rancher server, including v2.4+, can be installed on an RKE cluster.
+
+In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
+
+<figcaption>Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
+![Architecture of an RKE Kubernetes cluster running the Rancher management server]({{<baseurl>}}/img/rancher/rke-server-storage.svg)
 
 # Recommended Load Balancer Configuration for Kubernetes Installations
 
@@ -44,9 +59,8 @@ We recommend the following configurations for the load balancer and Ingress cont
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
 
-<figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
+<figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at Ingress controllers</figcaption>
 ![Rancher HA]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
-<sup>Rancher installed on a Kubernetes cluster with Layer 4 load balancer (TCP), depicting SSL termination at ingress controllers</sup>
 
 # Environment for Kubernetes Installations
 
@@ -56,17 +70,31 @@ For the best performance and greater security, we recommend a dedicated Kubernet
 
 It is not recommended to install Rancher on top of a managed Kubernetes service such as Amazon’s EKS or Google Kubernetes Engine. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations.
 
-# Recommended Node Roles for Kubernetes Installations 
+# Recommended Node Roles for Kubernetes Installations
 
-We recommend installing Rancher on a Kubernetes cluster in which each node has all three Kubernetes roles: etcd, controlplane, and worker.
+Our recommendations for the roles of each node differ depending on whether Rancher is installed on a K3s Kubernetes cluster or an RKE Kubernetes cluster.
 
-### Comparing Node Roles for the Rancher Server Cluster and User Clusters
+### K3s Cluster Roles
 
-Our recommendation for node roles on the Rancher server cluster contrast with our recommendations for the downstream user clusters that run your apps and services. We recommend that each node in a user cluster should have a single role for stability and scalability.
+In K3s clusters, there are two types of nodes: server nodes and agent nodes. Both servers and agents can have workloads scheduled on them. Server nodes run the Kubernetes master.
+
+For the cluster running the Rancher management server, we recommend using two server nodes. Agent nodes are not required.
+
+### RKE Cluster Roles
+
+If Rancher is installed on an RKE Kubernetes cluster, the cluster should have three nodes, and each node should have all three Kubernetes roles: etcd, controlplane, and worker.
+
+### Contrasting RKE Cluster Architecture for Rancher Server and for Downstream Kubernetes Clusters
+
+Our recommendation for RKE node roles on the Rancher server cluster contrasts with our recommendations for the downstream user clusters that run your apps and services.
+
+Rancher uses RKE as a library when provisioning downstream Kubernetes clusters. Note: The capability to provision downstream K3s clusters will be added in a future version of Rancher.
+
+For downstream Kubernetes clusters, we recommend that each node in a user cluster should have a single role for stability and scalability.
 
 ![Kubernetes Roles for Nodes in Rancher Server Cluster vs. User Clusters]({{<baseurl>}}/img/rancher/rancher-architecture-node-roles.svg)
 
-Kubernetes only requires at least one node with each role and does not require nodes to be restricted to one role. However, for the clusters that run your apps, we recommend separate roles for each node so that workloads on worker nodes don't interfere with the Kubernetes master or cluster data as your services scale.
+RKE only requires at least one node with each role and does not require nodes to be restricted to one role. However, for the clusters that run your apps, we recommend separate roles for each node so that workloads on worker nodes don't interfere with the Kubernetes master or cluster data as your services scale.
 
 We recommend that downstream user clusters should have at least:
 
@@ -80,9 +108,9 @@ With that said, it is safe to use all three roles on three nodes when setting up
 * It maintains multiple instances of the master components by having multiple `controlplane` nodes.
 * No other workloads than Rancher itself should be created on this cluster.
 
-Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of user clusters.
+Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of downstream clusters.
 
-For more best practices for user clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
 
 # Architecture for an Authorized Cluster Endpoint
 
