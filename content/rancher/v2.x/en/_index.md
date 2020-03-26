@@ -12,7 +12,7 @@ Rancher was originally built to work with multiple orchestrators, and it include
 
 Rancher can provision Kubernetes from a hosted provider, provision compute nodes and then install Kubernetes onto them, or import existing Kubernetes clusters running anywhere.
 
-One Rancher server installation can manage up to 2,000 Kubernetes clusters and 100,000 nodes from the same user interface.
+One Rancher server installation can manage hundreds of Kubernetes clusters and thousands of nodes from the same user interface.
 
 Rancher adds significant value on top of Kubernetes, first by centralizing authentication and role-based access control (RBAC) for all of the clusters, giving global admins the ability to control cluster access from one location.
 

@@ -19,6 +19,7 @@ This section covers the following topics:
 
 - [Prerequisites](#prerequisites)
 - [Catalog scopes](#catalog-scopes)
+- [Catalog Helm Deployment Versions](#catalog-helm-deployment-versions)
 - [Enabling built-in global catalogs](#enabling-built-in-global-catalogs)
 - [Adding custom global catalogs](#adding-custom-global-catalogs)
   - [Add custom Git repositories](#add-custom-git-repositories)
@@ -41,13 +42,27 @@ To launch a catalog app or a multi-cluster app, you should have at least one of 
 
 # Catalog Scopes
 
-Within Rancher, you can manage catalogs at three different scopes. Global catalogs are shared across all clusters and project. There are some use cases where you might not want to share catalogs across between different clusters or even projects in the same cluster. By leveraging cluster and project scoped catalogs, you will be able to provide applications for specific teams without needing to share them with all clusters and/or projects.
+Within Rancher, you can manage catalogs at three different scopes. Global catalogs are shared across all clusters and project. There are some use cases where you might not want to share catalogs between different clusters or even projects in the same cluster. By leveraging cluster and project scoped catalogs, you will be able to provide applications for specific teams without needing to share them with all clusters and/or projects.
 
 Scope |  Description | Available As of |
 --- |  --- | --- |
 Global | All clusters and all projects can access the Helm charts in this catalog | v2.0.0 |
 Cluster | All projects in the specific cluster can access the Helm charts in this catalog | v2.2.0 |
 Project | This specific cluster can access the Helm charts in this catalog |  v2.2.0 |
+
+# Catalog Helm Deployment Versions
+
+_Applicable as of v2.4.0_
+
+In November 2019, Helm 3 was released, and some features were deprecated or refactored. It is not fully backwards compatible with Helm 2. Therefore, catalogs in Rancher need to be separated, with each catalog only using one Helm version.
+
+When you create a custom catalog, you will have to configure the catalog to use either Helm 2 or Helm 3. This version cannot be changed later. If the catalog is added with the wrong Helm version, it will need to be deleted and re-added.
+
+When you launch a new app from a catalog, the app will be managed by the catalog's Helm version. A Helm 2 catalog will use Helm 2 to manage all of the apps, and a Helm 3 catalog will use Helm 3 to manage all apps.
+
+By default, catalogs are assumed to be deployed using Helm 2. If you run an app in Rancher prior to v2.4.0, then upgrade to Rancher v2.4.0+, the app will still be managed by Helm 2.
+
+Charts that are specific to Helm 2 should only be added to a Helm 2 catalog, and Helm 3 specific charts should only be added to a Helm 3 catalog.
 
 # Enabling Built-in Global Catalogs
 
@@ -57,25 +72,17 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
 2. Toggle the default catalogs that you want use to a setting of **Enabled**.
 
-    - **Library**
-
-    	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. 
-
-    	This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
-
-    - **Helm Stable**
-
-    	This catalog, , which is maintained by the Kubernetes community, includes native [Helm charts](https://github.com/kubernetes/helm/blob/master/docs/chart_template_guide/getting_started.md). This catalog features the largest pool of apps.
-
-    - **Helm Incubator**
-
-    	Similar in user experience to Helm Stable, but this catalog is filled with applications in **beta**.
+    - **Library:**	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-types) over native Helm charts.
+    - **Helm Stable:** This catalog, which is maintained by the Kubernetes community, includes native [Helm charts](https://helm.sh/docs/chart_template_guide/). This catalog features the largest pool of apps.
+    - **Helm Incubator:** Similar in user experience to Helm Stable, but this catalog is filled with applications in **beta**.
 
  **Result**: The chosen catalogs are enabled. Wait a few minutes for Rancher to replicate the catalog charts. When replication completes, you'll be able to see them in any of your projects by selecting **Apps** from the main navigation bar. In versions prior to v2.2.0, you can select **Catalog Apps** from the main navigation bar.
 
 # Adding Custom Global Catalogs
 
 Adding a catalog is as simple as adding a catalog name, a URL and a branch name.
+
+**Prerequisite:** An [admin]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) of Rancher has the ability to add or remove catalogs globally in Rancher.
 
 ### Add Custom Git Repositories
 The Git URL needs to be one that `git clone` [can handle](https://git-scm.com/docs/git-clone#_git_urls_a_id_urls_a) and must end in `.git`. The branch name must be a branch that is in your catalog URL. If no branch name is provided, it will use the `master` branch by default. Whenever you add a catalog to Rancher, it will be available immediately.
@@ -91,23 +98,15 @@ In Rancher, you can add the custom Helm chart repository with only a catalog nam
 ### Add Private Git/Helm Chart Repositories
 _Available as of v2.2.0_
 
-In Rancher v2.2.0, you can add private catalog repositories using credentials like Username and Password. You may also want to use the
-OAuth token if your Git or Helm repository server support that.
+Private catalog repositories can be added using credentials like Username and Password. You may also want to use the OAuth token if your Git or Helm repository server supports that.
 
 [Read More About Adding Private Git/Helm Catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#private-repositories)
-
-<!--There are two types of catalogs that can be added into Rancher. There are global catalogs and project catalogs. In a global catalog, the catalog templates are available in *all* projects. In a project catalog, the catalog charts are only available in the project that the catalog is added to.
-
-An [admin]({{<baseurl>}}/rancher/v2.x/en/admin-settings/#global-Permissions) of Rancher has the ability to add or remove catalogs globally in Rancher.
-
-NEEDS TO BE FIXED FOR 2.0: Any [users]({{site.baseurl}}/rancher/{{page.version}}/{{page.lang}}/configuration/accounts/#account-types) of a Rancher environment has the ability to add or remove environment catalogs in their respective Rancher environment in **Catalog** -> **Manage**.
- -->
 
  1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
  2. Click **Add Catalog**.
  3. Complete the form and click **Create**.
 
- **Result**: Your catalog is added to Rancher.
+ **Result:** Your catalog is added to Rancher.
 
 # Launching Catalog Applications
 
@@ -130,7 +129,7 @@ After you've either enabled the built-in catalogs or added your own custom catal
 
     * For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs), answers are provided as key value pairs in the **Answers** section.
     * Keys and values are available within **Detailed Descriptions**.
-    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of-set), as Rancher passes them as `--set` flags to Helm.  
+    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set]https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.  
 
         For example, when entering an answer that includes two values separated by a comma (i.e., `abc, bcd`), wrap the values with double quotes (i.e., `"abc, bcd"`).
 

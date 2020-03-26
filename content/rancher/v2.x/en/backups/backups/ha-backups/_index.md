@@ -9,6 +9,13 @@ This section describes how to create backups of your high-availability Rancher i
 
 >**Prerequisites:** {{< requirements_rollback >}}
 
+## RKE Kubernetes Cluster Data
+
+In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
+
+<figcaption>Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
+![Architecture of an RKE Kubernetes cluster running the Rancher management server]({{<baseurl>}}/img/rancher/rke-server-storage.svg)
+
 ## Backup Outline
 
 Backing up your high-availability Rancher cluster is process that involves completing multiple tasks.
