@@ -22,6 +22,10 @@ This document provides prescriptive guidance for hardening a production installa
 
 For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.5]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.5/).
 
+#### Known Issues
+
+Rancher **exec shell** and **view logs** for pods are **not** functional in a cis 1.5 hardened setup when only public ip is provided when registering custom nodes.
+
 ### Configure Kernel Runtime Parameters
 
 The following `sysctl` configuration is recommended for all nodes type in the cluster. Set the following parameters in `/etc/sysctl.d/90-kubelet.conf`:
