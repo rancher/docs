@@ -103,13 +103,16 @@ with the same environment variables.
 
 ### Automated Upgrades Method
 
-As of v1.17.4+k3s1 the [System Upgrade Controller](https://github.com/rancher/system-upgrade-controller/blob/master/README.md) is supported. The system upgrade controller can be utilized in an environment that has a private registry to rollout upgrades to your cluster as directed in a new CRD the controller introduces called a **Plan**.
- 
->**Note:** In order to leverage automated upgrades with the System Upgrade Controller in an airgapped environemnt, push the necessary images to the registry. Take care to replace TAG with the latest stable release (tag) for each image. After you have completed this, you can then follow the [Automated upgrades]({{< baseurl >}}/k3s/latest/en/upgrades/automated/) guide to learn more about the System Upgrade Controller and how to configure it. 
+As of v1.17.4+k3s1 K3s supports [automated upgrades]({{< baseurl >}}/k3s/latest/en/upgrades/automated/). To enable this in an air-gapped networks, you must ensure the required images are available in your private registry.
+
+You will need the version of rancher/k3s-upgrade that corresponds to the version of K3s you intend to upgrade to. Note, the image tag replaces the `+` in the K3s release with a `-` because Docker images do not support `+`.
+You will also need the versions of system-upgrade-controller and kubectl that are specified in the system-upgrade-controller manifest YAML that you will deploy. Check for the latest release of the system-upgrade-controller [here](https://github.com/rancher/system-upgrade-controller/releases/latest) and download the system-upgrade-controller.yaml to determine the versions you need to push to your private registry.
+
+For example, in release v0.4.0 of the system-upgrade-controller, these images are specified in the manifest YAML:
 
 ```
-rancher/k3s-upgrade:TAG
-rancher/system-upgrade-controller:TAG
-rancher/kubectl:TAG
+rancher/system-upgrade-controller:v0.4.0
+rancher/kubectl:v0.17.0
 ```
 
+Once you have added the necessary rancher/k3s-upgrade, rancher/system-upgrade-controller, and rancher/kubectl images to your private registry, follow the [automated upgrades]({{< baseurl >}}/k3s/latest/en/upgrades/automated/) guide.
