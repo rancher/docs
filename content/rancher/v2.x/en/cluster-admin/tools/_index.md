@@ -13,6 +13,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Logging](#logging)
 - [Monitoring](#monitoring)
 - [Istio](#istio)
+- [OPA Gatekeeper](#opa)
 
 <!-- /TOC -->
 
@@ -47,3 +48,7 @@ Using Rancher, you can monitor the state and processes of your cluster nodes, Ku
 ## Istio
 
  [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices. For details on how to enable Istio in Rancher, refer to the [Istio section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio)
+
+## OPA Gatekeeper
+
+ [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/opa-gatekeeper)
