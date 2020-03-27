@@ -13,6 +13,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
 - [Operating Systems and Docker Requirements](#operating-systems-and-docker-requirements)
 - [Hardware Requirements](#hardware-requirements)
   - [CPU and Memory](#cpu-and-memory)
+  - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
   - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -63,6 +64,8 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
 
 These requirements apply to [installing Rancher on a Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
+Performance increased in Rancher v2.4.0. For the requirements of Rancher prior to v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
+
 | Deployment Size | Clusters  | Nodes      | vCPUs  | RAM    |
 | --------------- | --------- | ---------- | -------| ------- |
 | Small           | Up to 150  | Up to 1500   | 2      | 8 GB   |
@@ -101,6 +104,20 @@ These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installa
 
 {{% /tab %}}
 {{% /tabs %}}
+
+### CPU and Memory for Rancher prior to v2.4.0
+
+{{% accordion label="Click to expand" %}}
+These requirements apply to installing Rancher on a Kubernetes cluster prior to Rancher v2.4.0:
+
+| Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
+| --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |
+| Small           | Up to 5   | Up to 50   | 2                                               | 8 GB                                            |
+| Medium          | Up to 15  | Up to 200  | 4                                               | 16 GB                                           |
+| Large           | Up to 50  | Up to 500  | 8                                               | 32 GB                                           |
+| X-Large         | Up to 100 | Up to 1000 | 32                                              | 128 GB                                          |
+| XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
+{{% /accordion %}}
 
 ### Disks
 
