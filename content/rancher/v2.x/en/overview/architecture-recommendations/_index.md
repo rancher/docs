@@ -39,7 +39,7 @@ If you are installing Rancher v2.4 for the first time, we recommend installing i
 The option to install Rancher on a K3s cluster is a feature introduced in Rancher v2.4. K3s is easy to install, with half the memory of Kubernetes, all in a binary less than 50 MB.
 
 <figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
-![Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)
+![Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)
 
 ### RKE Kubernetes Cluster Installations
 
