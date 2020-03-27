@@ -55,8 +55,6 @@ RKE saves the Kubernetes cluster state as a secret. When updating the state, RKE
 
 ### Upgrading Kubernetes
 
-> **Note:** RKE does not support rolling back to previous versions.
-
 To upgrade the Kubernetes version of an RKE-provisioned cluster, set the `kubernetes_version` string in the `cluster.yml` to the desired version from the [list of supported Kubernetes versions](#listing-supported-kubernetes-versions) for the specific version of RKE:
 
 ```yaml

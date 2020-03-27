@@ -76,7 +76,6 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher prior t
 
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20000 nodes. 
 {{% /tab %}}
-
 {{% tab "K3s Install Requirements" %}}
 
 These requirements apply to [installing Rancher on a K3s Kubernetes cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
@@ -92,7 +91,6 @@ These requirements apply to [installing Rancher on a K3s Kubernetes cluster.]({{
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20000 nodes. 
 
 {{% /tab %}}
-
 {{% tab "Docker Install Requirements" %}}
 
 These requirements apply to [single node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installations of Rancher.
