@@ -24,18 +24,24 @@ Because the API sets the actual value and the command line sets the default valu
 
 For example, if you install Rancher, then set a feature flag to true with the Rancher API, then upgrade Rancher with a command that sets the feature flag to false, the default value will still be false, but the feature will still be enabled because it was set with the Rancher API. If you then deleted the set value (true) with the Rancher API, setting it to NULL, the default value (false) would take effect.
 
+> **Note:** As of v2.4.0, there are some feature flags that may require a restart of the Rancher server container. These features that require a restart are marked in the table of these docs and in the UI.
+
 The following is a list of the feature flags available in Rancher:
 
-- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
+- `dashboard`: This feature enables the new experimental UI that has a new look and feel. The dashboard also leverages a new API in Rancher which allows the UI to access the default Kubernetes resources without any intervention from Rancher.
 - `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
+- `proxy`: This feature enables Rancher to use a new simplified code base for the proxy, which can help enhance performance and security. The proxy feature is known to have issues with Helm deployments, which prevents any catalog applications to be deployed which includes Rancher's tools like monitoring, logging, Istio, etc.
+- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
 
 The below table shows the availability and default value for feature flags in Rancher:
 
-| Feature Flag Name             | Default Value | Status       | Available as of |
-| ----------------------------- | ------------- | ------------ | --------------- |
-| `unsupported-storage-drivers` | `false`       | Experimental | v2.3.0          |
-| `istio-virtual-service-ui`    | `false`       | Experimental | v2.3.0          |
-| `istio-virtual-service-ui`    | `true`        | GA           | v2.3.2          |
+| Feature Flag Name             | Default Value | Status       | Available as of | Rancher Restart Required? |
+| ----------------------------- | ------------- | ------------ | --------------- |---|
+| `dashboard` | `true` | Experimental | v2.4.0 | x |
+| `istio-virtual-service-ui`    | `false`       | Experimental | v2.3.0          | |
+| `istio-virtual-service-ui`    | `true`        | GA           | v2.3.2          | |
+| `proxy` | `false` | Experimental | v2.4.0 | |
+| `unsupported-storage-drivers` | `false`       | Experimental | v2.3.0          | |
 
 # Enabling Features when Starting Rancher
 
@@ -56,7 +62,7 @@ helm install rancher-latest/rancher \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 
-Note: If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+Note: If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ### Rendering the Helm Chart for Air Gap Installations
 
