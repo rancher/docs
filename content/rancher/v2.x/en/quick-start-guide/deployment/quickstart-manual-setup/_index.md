@@ -3,7 +3,7 @@ title: Manual Quick Start
 weight: 300
 ---
 Howdy Partner! This tutorial walks you through:
-    
+
 - Installation of {{< product >}} 2.x
 - Creation of your first cluster
 - Deployment of an application, Nginx
@@ -49,7 +49,7 @@ To install Rancher on your host, connect to it and then use a shell to install.
 2.  From your shell, enter the following command:
 
 	```
-	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 	```
 
 **Result:** Rancher is installed.
