@@ -33,7 +33,7 @@ On this page, we provide security-related documentation along with resources to 
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
-_Available as of v2.4.0-alpha1_ 
+_Available as of v2.4.0_ 
 
 Rancher leverages [kube-bench](https://github.com/aquasecurity/kube-bench) to run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS (Center for Internet Security) Kubernetes Benchmark.
 

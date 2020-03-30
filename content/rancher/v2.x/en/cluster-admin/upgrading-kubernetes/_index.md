@@ -83,7 +83,7 @@ The cluster cannot be downgraded to a previous Kubernetes version.
 
 **Result:** Kubernetes begins upgrading for the cluster.
 
-# Rolling Back the Kubernetes Version
+# Rolling Back
 
 _Available as of v2.4_
 

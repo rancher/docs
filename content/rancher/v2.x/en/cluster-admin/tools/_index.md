@@ -13,7 +13,7 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - [Logging](#logging)
 - [Monitoring](#monitoring)
 - [Istio](#istio)
-- [OPA Gatekeeper](#opa)
+- [OPA Gatekeeper](#opa-gatekeeper)
 
 <!-- /TOC -->
 
