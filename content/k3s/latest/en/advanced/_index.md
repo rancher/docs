@@ -16,7 +16,8 @@ This section contains advanced information describing the different ways you can
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
-- [Raspbian Buster - Enable legacy iptables](#raspbian-buster---enable-legacy-iptables)
+- [Enabling legacy iptables on Raspbian Buster](#enabling-legacy-iptables-on-raspbian-buster)
+- [Experimental SELinux Support](#experimental-selinux-support)
 
 # Auto-Deploying Manifests
 
@@ -204,7 +205,7 @@ Alternatively the `docker run` command can also be used:
       --privileged rancher/k3s:vX.Y.Z
 
 
-# Raspbian Buster - enable legacy iptables
+# Enabling legacy iptables on Raspbian Buster
 
 Raspbian Buster defaults to using `nftables` instead of `iptables`.  **K3S** networking features require `iptables` and do not work with `nftables`.  Follow the steps below to switch configure **Buster** to use `legacy iptables`:
 ```
@@ -214,7 +215,7 @@ sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 sudo reboot
 ```
 
-# SELinux Support (Experimental)
+# Experimental SELinux Support
 
 As of release v1.17.4+k3s1, experimental support for SELinux has been added to K3s's embedded containerd. If you are installing K3s on a system where SELinux is enabled by default (such as CentOS), you must ensure the proper SELinux policies have been installed. The [install script]({{<baseurl>}}/k3s/latest/en/installation/install-options/#installation-script-options) will fail if they are not. The necessary policies can be installed with the following commands:
 ```
