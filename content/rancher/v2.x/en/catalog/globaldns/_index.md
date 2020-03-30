@@ -23,11 +23,11 @@ The following table lists the first version of Rancher each provider debuted.
 
 ## Global DNS Entries
 
-For each application that you want to route traffic to, you will need to create a Global DNS Entry. This entry will use a fully qualified domain name (a.k.a FQDN) from a global DNS provider to target applications. The applications can either resolve to a single [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or to specific projects. You must [add specific annotation labels](#adding-annotations-to-ingresses-to-program-the-external-dns) to the ingresses in order for traffic to be routed correctly to the applications. Without this annotation, the programming for the DNS entry will not work.
+For each application that you want to route traffic to, you will need to create a Global DNS Entry. This entry will use a fully qualified domain name (a.k.a FQDN) from a global DNS provider to target applications. The applications can either resolve to a single [multi-cluster application]({{<baseurl>}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or to specific projects. You must [add specific annotation labels](#adding-annotations-to-ingresses-to-program-the-external-dns) to the ingresses in order for traffic to be routed correctly to the applications. Without this annotation, the programming for the DNS entry will not work.
 
 ## Permissions for Global DNS Providers/Entries
 
-By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) and the creator of the Global DNS provider or Global DNS entry have access to use, edit and delete them. When creating the provider or entry, the creator can add additional users in order for those users to access and manage them. By default, these members will get `Owner` role to manage them.
+By default, only [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) and the creator of the Global DNS provider or Global DNS entry have access to use, edit and delete them. When creating the provider or entry, the creator can add additional users in order for those users to access and manage them. By default, these members will get `Owner` role to manage them.
 
 ## Setting up Global DNS for Applications
 
@@ -63,7 +63,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 
 >**Notes:**
 >
->- Alibaba Cloud SDK uses TZ data. It needs to be present on `/usr/share/zoneinfo` path of the nodes running [`local` cluster]({{< baseurl >}}/rancher/v2.x/en/installation/options/chart-options/#import-local-cluster), and it is mounted to the external DNS pods. If it is not available on the nodes, please follow the [instruction](https://www.ietf.org/timezones/tzdb-2018f/tz-link.html) to prepare it.
+>- Alibaba Cloud SDK uses TZ data. It needs to be present on `/usr/share/zoneinfo` path of the nodes running [`local` cluster]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#import-local-cluster), and it is mounted to the external DNS pods. If it is not available on the nodes, please follow the [instruction](https://www.ietf.org/timezones/tzdb-2018f/tz-link.html) to prepare it.
 >- Different versions of AliDNS have different allowable TTL range, where the default TTL for a global DNS entry may not be valid. Please see the [reference](https://www.alibabacloud.com/help/doc-detail/34338.htm) before adding an AliDNS entry.
 {{% /accordion %}}
 
@@ -73,7 +73,7 @@ By default, only [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-s
 1. Click on **Add DNS Entry**.
 1. Enter the **FQDN** you wish to program on the external DNS.
 1. Select a Global DNS **Provider** from the list.
-1. Select if this DNS entry will be for a [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or for workloads in different [projects]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).  You will need to ensure that [annotations are added to any ingresses](#adding-annotations-to-ingresses-to-program-the-external-dns) for the applications that you want to target.
+1. Select if this DNS entry will be for a [multi-cluster application]({{<baseurl>}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or for workloads in different [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).  You will need to ensure that [annotations are added to any ingresses](#adding-annotations-to-ingresses-to-program-the-external-dns) for the applications that you want to target.
 1. Configure the **DNS TTL** value in seconds. By default, it will be 300 seconds.
 1. Under **Member Access**, search for any users that you want to have the ability to manage this Global DNS entry.
 
@@ -85,11 +85,11 @@ In order for Global DNS entries to be programmed, you will need to add a specifi
 1. In order for the DNS to be programmed, the following requirements must be met:
    * The ingress routing rule must be set to use a `hostname` that matches the FQDN of the Global DNS entry.
    * The ingress must have an annotation (`rancher.io/globalDNS.hostname`) and the value of this annotation should match the FQDN of the Global DNS entry.
-1. Once the ingress in your [multi-cluster application]({{< baseurl >}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
+1. Once the ingress in your [multi-cluster application]({{<baseurl>}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or in your target projects are in `active` state, the FQDN will be programmed on the external DNS against the Ingress IP addresses.
 
 ## Editing a Global DNS Provider
 
-The [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS provider and any users added as `members` to a Global DNS provider, have _owner_ access to that provider. Any members can edit the following fields:
+The [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS provider and any users added as `members` to a Global DNS provider, have _owner_ access to that provider. Any members can edit the following fields:
 
 - Root Domain
 - Access Key & Secret Key
@@ -101,7 +101,7 @@ The [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/
 
 ## Editing a Global DNS Entry
 
-The [global administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS entry and any users added as `members` to a Global DNS entry, have _owner_ access to that DNS entry. Any members can edit the following fields:
+The [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), creator of the Global DNS entry and any users added as `members` to a Global DNS entry, have _owner_ access to that DNS entry. Any members can edit the following fields:
 
 - FQDN
 - Global DNS Provider

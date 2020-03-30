@@ -3,12 +3,11 @@ title: "Networking"
 weight: 35
 ---
 
-> **Note:** CNI options are covered in detail on the [Installation Network Options]({{< baseurl >}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
+>**Note:** CNI options are covered in detail on the [Installation Network Options]({{<baseurl>}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
 
 Open Ports
 ----------
-
-Please reference the [Installation Requirements]({{< baseurl >}}/k3s/latest/en/installation/installation-requirements/#networking) page for port information.
+Please reference the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/node-requirements/#networking) page for port information.
 
 CoreDNS
 -------
@@ -22,7 +21,7 @@ Traefik Ingress Controller
 
 [Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It simplifies networking complexity while designing, deploying, and running applications.
 
-Traefik is deployed by default when starting the server. For more information see [Auto Deploying Manifests]({{< baseurl >}}/k3s/latest/en/advanced/#auto-deploying-manifests). The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml` and any changes made to this file will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
+Traefik is deployed by default when starting the server. For more information see [Auto Deploying Manifests]({{<baseurl>}}/k3s/latest/en/advanced/#auto-deploying-manifests). The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml` and any changes made to this file will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
 
 The Traefik ingress controller will use ports 80, 443, and 8080 on the host (i.e. these will not be usable for HostPort or NodePort).
 

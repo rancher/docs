@@ -13,7 +13,7 @@ For development and testing environments only, Rancher can be installed by runni
 In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb) instead.
+> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/single-node-install-external-lb) instead.
 
 # Requirements for OS, Docker, Hardware, and Networking
 

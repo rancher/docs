@@ -28,7 +28,7 @@ In this command, `<RANCHER_CONTAINER_NAME>` is the name of your Rancher containe
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the upgrade.
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
-![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref.png)
+![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref.png)
 
 | Placeholder                | Example                    | Description                                               |
 | -------------------------- | -------------------------- | --------------------------------------------------------- |
@@ -95,7 +95,7 @@ Pull the image of the Rancher version that you want to upgrade to.
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker pull rancher/rancher:<RANCHER_VERSION_TAG>
@@ -129,7 +129,7 @@ If you have selected to use the Rancher generated self-signed certificate, you a
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -152,7 +152,7 @@ Placeholder | Description
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<CA_CERTS>` | The path to the certificate authority's certificate.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -176,7 +176,7 @@ Placeholder | Description
 `<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --volumes-from rancher-data \
@@ -201,7 +201,7 @@ If you have selected to use [Let's Encrypt](https://letsencrypt.org/) certificat
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 `<YOUR.DNS.NAME>` | The domain address that you had originally started with
 
 ```
@@ -230,7 +230,7 @@ If you have selected to use the Rancher generated self-signed certificate, you a
 Placeholder | Description
 ------------|-------------
 `<REGISTRY.YOURDOMAIN.COM:PORT>` |  Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to to upgrade to.
 
 ```
   docker run -d --volumes-from rancher-data \
@@ -255,7 +255,7 @@ Placeholder | Description
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<CA_CERTS>` | The path to the certificate authority's certificate.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
 docker run -d --restart=unless-stopped \
@@ -281,7 +281,7 @@ Placeholder | Description
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 > **Note:**  Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
 
@@ -308,7 +308,7 @@ Log into Rancher. Confirm that the upgrade succeeded by checking the version dis
 
 >**Having network issues in your user clusters following upgrade?**
 >
-> See [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 
 ### F. Clean up Your Old Rancher Server Container
@@ -317,4 +317,4 @@ Remove the previous Rancher server container. If you only stop the previous Ranc
 
 ## Rolling Back
 
-If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/).
+If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/).

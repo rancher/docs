@@ -61,7 +61,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
 	<figcaption>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</figcaption>
 
-	![app-readme.md]({{< baseurl >}}/img/rancher/app-readme.png)
+	![app-readme.md]({{<baseurl>}}/img/rancher/app-readme.png)
 
 - `questions.yml`
 
@@ -70,7 +70,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
 	<figcaption>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</figcaption>
 
-	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
+	![questions.yml]({{<baseurl>}}/img/rancher/questions.png)
 
 
 ### Questions.yml

@@ -14,7 +14,7 @@ For more advanced options, refer to [this page.]({{<baseurl>}}/k3s/latest/en/adv
 
 # Installation Script Options
 
-As mentioned in the [Quick-Start Guide]({{< baseurl >}}/k3s/latest/en/quick-start/), you can use the installation script available at https://get.k3s.io to install K3s as a service on systemd and openrc based systems.
+As mentioned in the [Quick-Start Guide]({{<baseurl>}}/k3s/latest/en/quick-start/), you can use the installation script available at https://get.k3s.io to install K3s as a service on systemd and openrc based systems.
 
 The simplest form of this command is as follows:
 ```sh

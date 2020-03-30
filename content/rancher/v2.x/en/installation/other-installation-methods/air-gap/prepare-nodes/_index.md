@@ -1,102 +1,174 @@
 ---
-title: '1. Prepare your Node(s)'
+title: '1. Set up Infrastructure and Private Registry'
 weight: 100
 aliases:
   - /rancher/v2.x/en/installation/air-gap-single-node/provision-host
 ---
 
-This section is about how to prepare your node(s) to install Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
+In this section, you will provision the underlying infrastructure for your Rancher management server in an air gapped environment. You will also set up the private Docker registry that must be available to your Rancher node(s).
 
-# Prerequisites
+An air gapped environment is an environment where the Rancher server is installed offline or behind a firewall.
 
-{{% tabs %}}
-{{% tab "Kubernetes Install (Recommended)" %}}
-
-### OS, Docker, Hardware, and Networking
-
-Make sure that your node(s) fulfill the general [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
-
-### Private Registry
-
-Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
-
-If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
-
-### CLI Tools
-
-The following CLI tools are required for the Kubernetes Install. Make sure these tools are installed on your workstation and available in your `$PATH`.
-
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-- [rke]({{<baseurl>}}/rke/latest/en/installation/) - Rancher Kubernetes Engine, cli for building Kubernetes clusters.
-- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
-
-{{% /tab %}}
-{{% tab "Docker Install" %}}
-
-### OS, Docker, Hardware, and Networking
-
-Make sure that your node(s) fulfill the general [installation requirements.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
-
-### Private Registry
-
-Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
-
-If you need help with creating a private registry, please refer to the [Docker documentation](https://docs.docker.com/registry/).
-{{% /tab %}}
-{{% /tabs %}}
-
-# Set up Infrastructure
+The infrastructure depends on whether you are installing Rancher on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container. For more information on each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/)
 
 {{% tabs %}}
-{{% tab "Kubernetes Install (Recommended)" %}}
+{{% tab "K3s" %}}
+We recommend setting up the following infrastructure for a high-availability installation:
 
-Rancher recommends installing Rancher on a Kubernetes cluster. A highly available Kubernetes install is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
+- **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
+- **An external database** to store the cluster data. PostgreSQL, MySQL, and etcd are supported.
+- **A load balancer** to direct traffic to the two nodes.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
+- **A private Docker registry** to distribute Docker images to your machines.
 
-### Recommended Architecture
-
-- DNS for Rancher should resolve to a layer 4 load balancer
-- The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
-- The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
-- The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
-
-<figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</figcaption>
-
-![Rancher HA]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
-
-### A. Provision three air gapped Linux hosts according to our requirements
+### 1. Set up Linux Nodes
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
-View hardware and software requirements for each of your cluster nodes in [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements).
+Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
-### B. Set up your Load Balancer
+For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
 
-When setting up the Kubernetes cluster that will run the Rancher server components, an Ingress controller pod will be deployed on each of your nodes. The Ingress controller pods are bound to ports TCP/80 and TCP/443 on the host network and are the entry point for HTTPS traffic to the Rancher server.
+### 2. Set up External Datastore
 
-You will need to configure a load balancer as a basic Layer 4 TCP forwarder to direct traffic to these ingress controller pods. The exact configuration will vary depending on your environment.
+The ability to run Kubernetes using a datastore other than etcd sets K3s apart from other Kubernetes distributions. This feature provides flexibility to Kubernetes operators. The available options allow you to select a datastore that best fits your use case.
+
+For a high-availability K3s installation, you will need to set up one of the following external databases:
+
+* [PostgreSQL](https://www.postgresql.org/) (certified against versions 10.7 and 11.5)
+* [MySQL](https://www.mysql.com/) (certified against version 5.7)
+* [etcd](https://etcd.io/) (certified against version 3.3.15)
+
+When you install Kubernetes, you will pass in details for K3s to connect to the database.
+
+For an example of one way to set up the database, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/rds) for setting up a MySQL database on Amazon's RDS service.
+
+For the complete list of options that are available for configuring a K3s cluster datastore, refer to the [K3s documentation.]({{<baseurl>}}/k3s/latest/en/installation/datastore/)
+
+### 3. Set up the Load Balancer
+
+You will also need to set up a load balancer to direct traffic to the Rancher replica on both nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
+
+When Kubernetes gets set up in a later step, the K3s tool will deploy a Traefik Ingress controller. This controller will listen on ports 80 and 443 of the worker nodes, answering traffic destined for specific hostnames.
+
+When Rancher is installed (also in a later step), the Rancher system creates an Ingress resource. That Ingress tells the Traefik Ingress controller to listen for traffic destined for the Rancher hostname. The Traefik Ingress controller, when receiving traffic destined for the Rancher hostname, will forward that traffic to the running Rancher pods in the cluster.
+
+For your implementation, consider if you want or need to use a Layer-4 or Layer-7 load balancer:
+
+- **A layer-4 load balancer** is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the Rancher management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the Rancher deployment.
+- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the [Rancher Helm chart options.]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
+
+For an example showing how to set up an NGINX load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/options/nginx/)
+
+For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/options/nlb/)
 
 > **Important:**
-> Only use this load balancer (i.e, the `local` cluster Ingress) to load balance the Rancher server. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps.
+> Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
 
-**Load Balancer Configuration Samples:**
+### 4. Set up the DNS Record
 
-- For an example showing how to set up an NGINX load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nginx)
-- For an example showing how to set up an Amazon NLB load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb)
+Once you have set up your load balancer, you will need to create a DNS record to send traffic to this load balancer.
 
+Depending on your environment, this may be an A record pointing to the load balancer IP, or it may be a CNAME pointing to the load balancer hostname. In either case, make sure this record is the hostname that you intend Rancher to respond on.
+
+You will need to specify this hostname in a later step when you install Rancher, and it is not possible to change it later. Make sure that your decision is a final one.
+
+For a how-to guide for setting up a DNS record to route domain traffic to an Amazon ELB load balancer, refer to the [official AWS documentation.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer)
+
+### 5. Set up a Private Docker Registry
+
+Rancher supports air gap installs using a private registry. You must have your own private registry or other means of distributing Docker images to your machines.
+
+In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
+
+If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 {{% /tab %}}
-{{% tab "Docker Install" %}}
+{{% tab "RKE" %}}
 
-The Docker installation is for Rancher users that are wanting to test out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
+To install the Rancher management server on a high-availability RKE cluster, we recommend setting up the following infrastructure:
 
-> **Important:** If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker installation to a Kubernetes Installation.
+- **Three Linux nodes,** typically virtual machines, in an infrastructure provider such as Amazon's EC2, Google Compute Engine, or vSphere.
+- **A load balancer** to direct front-end traffic to the three nodes.
+- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
+- **A private Docker registry** to distribute Docker images to your machines.
 
-Instead of running the Docker installation, you have the option to follow the Kubernetes Install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a Kubernetes Installation.
+These nodes must be in the same region/data center. You may place these servers in separate availability zones.
 
-### A. Provision a single, air gapped Linux host according to our Requirements
+### Why three nodes?
+
+In an RKE cluster, Rancher server data is stored on etcd. This etcd database runs on all three nodes.
+
+The etcd database requires an odd number of nodes so that it can always elect a leader with a majority of the etcd cluster. If the etcd database cannot elect a leader, etcd can suffer from [split brain](https://www.quora.com/What-is-split-brain-in-distributed-systems), requiring the cluster to be restored from backup. If one of the three etcd nodes fails, the two remaining nodes can elect a leader because they have the majority of the total number of etcd nodes.
+
+### 1. Set up Linux Nodes
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
-View hardware and software requirements for each of your cluster nodes in [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements).
+Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+
+For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
+
+### 2. Set up the Load Balancer
+
+You will also need to set up a load balancer to direct traffic to the Rancher replica on both nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
+
+When Kubernetes gets set up in a later step, the RKE tool will deploy an NGINX Ingress controller. This controller will listen on ports 80 and 443 of the worker nodes, answering traffic destined for specific hostnames.
+
+When Rancher is installed (also in a later step), the Rancher system creates an Ingress resource. That Ingress tells the NGINX Ingress controller to listen for traffic destined for the Rancher hostname. The NGINX Ingress controller, when receiving traffic destined for the Rancher hostname, will forward that traffic to the running Rancher pods in the cluster.
+
+For your implementation, consider if you want or need to use a Layer-4 or Layer-7 load balancer:
+
+- **A layer-4 load balancer** is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the Rancher management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the Rancher deployment.
+- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the [Rancher Helm chart options.]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
+
+For an example showing how to set up an NGINX load balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/options/nginx/)
+
+For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/options/nlb/)
+
+> **Important:**
+> Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
+
+### 3. Set up the DNS Record
+
+Once you have set up your load balancer, you will need to create a DNS record to send traffic to this load balancer.
+
+Depending on your environment, this may be an A record pointing to the LB IP, or it may be a CNAME pointing to the load balancer hostname. In either case, make sure this record is the hostname that you intend Rancher to respond on.
+
+You will need to specify this hostname in a later step when you install Rancher, and it is not possible to change it later. Make sure that your decision is a final one.
+
+For a how-to guide for setting up a DNS record to route domain traffic to an Amazon ELB load balancer, refer to the [official AWS documentation.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer)
+
+### 4. Set up a Private Docker Registry
+
+Rancher supports air gap installs using a secure Docker private registry. You must have your own private registry or other means of distributing Docker images to your machines.
+
+In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
+
+If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
+
+{{% /tab %}}
+{{% tab "Docker" %}}
+> The Docker installation is for Rancher users that are wanting to test out Rancher. Since there is only one node and a single Docker container, if the node goes down, you will lose all the data of your Rancher server.
+>
+> For running Rancher in production, we recommend installing Rancher on a high-availability Kubernetes cluster. There is no upgrade path to transition your Docker installation to a Kubernetes Installation.
+>
+> If you want to save resources by using a single node in the short term, while preserving a migration path to a high-availability installation, we recommend installing Rancher on a single-node Kubernetes cluster.
+
+### 1. Set up a Linux Node
+
+This host will be disconnected from the Internet, but needs to be able to connect to your private registry.
+
+Make sure that your node fulfills the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+
+For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
+
+### 2. Set up a Private Docker Registry
+
+Rancher supports air gap installs using a Docker private registry on your bastion server. You must have your own private registry or other means of distributing Docker images to your machines.
+
+In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
+
+If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
 
 {{% /tab %}}
 {{% /tabs %}}

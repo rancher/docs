@@ -4,7 +4,7 @@ weight: 1205
 ---
 _Available as of v2.0.7_
 
-After you complete [Configuring Microsoft AD FS for Rancher]({{< baseurl >}}/rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/), enter your AD FS information into Rancher to allow AD FS users to authenticate with Rancher.
+After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/), enter your AD FS information into Rancher to allow AD FS users to authenticate with Rancher.
 
 >**Important Notes For Configuring Your AD FS Server:**
 > 

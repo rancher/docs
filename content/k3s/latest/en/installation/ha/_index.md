@@ -28,12 +28,10 @@ Setting up an HA cluster requires the following steps:
 4. [Join agent nodes](#4-optional-join-agent-nodes)
 
 ### 1. Create an External Datastore
-
-You will first need to create an external datastore for the cluster. See the [Cluster Datastore Options]({{< baseurl >}}/k3s/latest/en/installation/datastore/) documentation for more details.
+You will first need to create an external datastore for the cluster. See the [Cluster Datastore Options]({{<baseurl>}}/k3s/latest/en/installation/datastore/) documentation for more details.
 
 ### 2. Launch Server Nodes
-
-K3s requires two or more server nodes for this HA configuration. See the [Installation Requirements]({{< baseurl >}}/k3s/latest/en/installation/installation-requirements/) for minimum machine requirements.
+K3s requires two or more server nodes for this HA configuration. See the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/node-requirements/) guide for minimum machine requirements.
 
 When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore.
 

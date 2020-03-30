@@ -8,35 +8,35 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
 ---
 
-> **Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
->
-> **Note:** Populating the private registry with images is the same process for HA and Docker installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
-
-By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gap installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
-
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
-By default, we provide the steps of how to populate your private registry assuming you are provisioning Linux only clusters, but if you plan on provisioning any [Windows clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed for a Windows cluster.
+By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+
+Populating the private registry with images is the same process for installing Rancher with Docker and for installing Rancher on a Kubernetes cluster.
+
+The steps in this section differ depending on whether or not you are planning to use Rancher to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed.
+
+> **Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry) available to use.
 
 {{% tabs %}}
 {{% tab "Linux Only Clusters" %}}
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
-A. Find the required assets for your Rancher version <br>
-B. Collect all the required images <br>
-C. Save the images to your workstation <br>
-D. Populate the private registry
+1. [Find the required assets for your Rancher version](#1-find-the-required-assets-for-your-rancher-version)
+2. [Collect the cert-manager image](#2-collect-the-cert-manager-image) (unless you are bringing your own certificates or terminating TLS on a load balancer)
+3. [Save the images to your workstation](#3-save-the-images-to-your-workstation)
+4. [Populate the private registry](#4-populate-the-private-registry)
 
 ### Prerequisites
 
 These steps expect you to use a Linux workstation that has internet access, access to your private registry, and at least 20 GB of disk space.
 
-### A. Find the required assets for your Rancher version
+### 1. Find the required assets for your Rancher version
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Go to our [releases page,](https://github.com/rancher/rancher/releases) find the Rancher v2.x.x release that you want to install, and click **Assets.** Note: Don't use releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
-2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section, download the following files, which are required to install Rancher in an air gap environment:
 
 | Release File   | Description  |
 | ---------------- | -------------- |
@@ -44,9 +44,11 @@ These steps expect you to use a Linux workstation that has internet access, acce
 | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
 | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.   |
 
-### B. Collect all the required images (For Kubernetes Installs using Rancher Generated Self-Signed Certificate)
+### 2. Collect the cert-manager image
 
-In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+> Skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
+
+In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. 
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
@@ -65,7 +67,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
     sort -u rancher-images.txt -o rancher-images.txt
     ```
 
-### C. Save the images to your workstation
+### 3. Save the images to your workstation
 
 1. Make `rancher-save-images.sh` an executable:
    ```
@@ -78,7 +80,9 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
    ```
    **Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
 
-### D. Populate the private registry
+### 4. Populate the private registry
+
+Next, you will move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images.
 
 Move the images in the `rancher-images.tar.gz` to your private registry using the scripts to load the images.
 
@@ -88,7 +92,6 @@ The `rancher-images.txt` is expected to be on the workstation in the same direct
    ```plain
    docker login <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
-
 1.  Make `rancher-load-images.sh` an executable:
    ```
    chmod +x rancher-load-images.sh
@@ -202,9 +205,9 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### A. Find the required assets for your Rancher version
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets*.*
 
-2. From the release's **Assets** section (pictured above), download the following files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section, download the following files:
 
    | Release File                 | Description                                                                                                                          |
    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -281,6 +284,6 @@ The image list, `rancher-images.txt` or `rancher-windows-images.txt`, is expecte
 {{% /tab %}}
 {{% /tabs %}}
 
-### [Next: Kubernetes Installs - Launch a Kubernetes Cluster with RKE]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
+### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 
-### [Next: Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
+### [Next step for Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)

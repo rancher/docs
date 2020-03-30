@@ -8,7 +8,7 @@ aliases:
 
 The following instructions will guide you through using Helm to upgrade a Rancher server that was installed on a Kubernetes cluster.
 
-To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
+To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
 If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on).
 
@@ -34,7 +34,7 @@ Follow the steps to upgrade Rancher server:
 
 ### A. Back up Your Kubernetes Cluster that is Running Rancher Server
 
-[Take a one-time snapshot]({{< baseurl >}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
+[Take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server. You'll use the snapshot as a restoration point if something goes wrong during upgrade.
 
 ### B. Update the Helm chart repository
@@ -47,7 +47,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
 
 1. Get the repository name that you used to install Rancher.
 
-    For information about the repos and their differences, see [Helm Chart Repositories]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+    For information about the repos and their differences, see [Helm Chart Repositories]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
 
     {{< release-channel >}}
 
@@ -59,7 +59,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
     rancher-<CHART_REPO>	 https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{< baseurl >}}/rancher/v2.x/en/installation/options/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
 
 1. Fetch the latest chart to install Rancher from the Helm chart repository.
@@ -109,7 +109,7 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manger due to the API change in cert-manger v0.11. 
 
-Please refer the [Upgrading Cert-Manager]({{< baseurl >}}/rancher/v2.x/en/installation/options/upgrading-cert-manager) page for more information.
+Please refer the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager) page for more information.
 
 1. Uninstall Rancher
 
@@ -190,8 +190,8 @@ Log into Rancher to confirm that the upgrade succeeded.
 
 >**Having network issues following upgrade?**
 >
-> See [Restoring Cluster Networking]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
 
 ## Rolling Back
 
-Should something go wrong, follow the [roll back]({{< baseurl >}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade.
+Should something go wrong, follow the [roll back]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade.
