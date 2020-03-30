@@ -21,6 +21,7 @@ Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well 
 - [Importing a cluster](#importing-a-cluster)
 - [Additional features for imported K3s clusters](#additional-features-for-imported-k3s-clusters)
 - [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
+- [Debug Logging and Troubleshooting for Imported K3s clusters](#debug-logging-and-troubleshooting-for-imported-k3s-clusters)
 
 ### Features
 
@@ -105,3 +106,25 @@ The option can also be specified using the environment variable `K3S_KUBECONFIG_
 ```
 $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 ```
+
+### Debug Logging and Troubleshooting for Imported K3s Clusters
+
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes. 
+
+To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
+
+Logs created by the `system-upgrade-controller` can be viewed by running this command:
+
+```
+kubectl logs -n cattle-system system-upgrade-controller
+```
+
+The current status of the plans can be viewed with this command:
+
+```
+kubectl get plans -A -o yaml
+```
+
+If the cluster becomes stuck in upgrading, restart the `system-upgrade-controller`.
+
+To prevent issues when upgrading, the [Kubernetes upgrade best practices](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/) should be followed.
