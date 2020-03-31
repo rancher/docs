@@ -29,7 +29,7 @@ When using this method to install K3s, the following environment variables can b
 
 - `INSTALL_K3S_SYMLINK`
 
-    If set to 'skip' will not create symlinks, 'force' will overwrite, default will symlink if command does not exist in path.
+    By default will create symlinks for the kubectl, crictl, and ctr binaries if the commands do not already exist in path. If set to 'skip' will not create symlinks and 'force' will overwrite.
 
 - `INSTALL_K3S_SKIP_START`
 
