@@ -16,9 +16,10 @@ The following features are new in RKE v1.1.0:
 
 When a cluster is upgraded with `rke up`, using the default options, the following process is used:
 
-1. etcd nodes get updated first, one at a time.
-1. Controlplane nodes get updated second, one at a time.
-1. Worker nodes get updated third, one by one, because the default configuration for the maximum number of unavailable nodes is one.
+1. The etcd plane gets get updated, one node at a time.
+1. Controlplane nodes get updated, one node at a time. This includes the controlplane components and worker plane components of the controlplane nodes.
+1. Worker plane components of etcd nodes get updated, one node at a time.
+1. Worker nodes get updated in batches of a configurable size. The default configuration for the maximum number of unavailable nodes is ten percent, rounded down to the nearest node, with a minimum batch size of one node.
 1. [Addons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) get upgraded one by one.
 
 The following sections break down in more detail what happens when etcd nodes, controlplane nodes, worker nodes, and addons are upgraded. This information is intended to be used to help you understand the update strategy for the cluster, and may be useful when troubleshooting problems with upgrading the cluster.
