@@ -10,7 +10,7 @@ To ensure consistency and compliance, every organization needs the ability to de
 
 OPA provides a high-level declarative language that lets you specify policy as code and ability to extend simple APIs to offload policy decision-making.
 
-(OPA Gatekeeper)[https://github.com/open-policy-agent/gatekeeper] is a project that provides integration between OPA and Kubernetes. OPA Gatekeeper provides:
+[OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is a project that provides integration between OPA and Kubernetes. OPA Gatekeeper provides:
 
 - An extensible, parameterized policy library.
 - Native Kubernetes CRDs for instantiating the policy library, also called “constraints."
