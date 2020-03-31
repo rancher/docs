@@ -15,7 +15,7 @@ In this section, you'll learn how to configure the maximum number of unavailable
 
 The maximum number of unavailable controlplane and worker nodes can be configured in the `cluster.yml` before upgrading the cluster:
 
-- **max_unavailable_controlplane:** The maximum number of controlplane nodes that can fail without causing the cluster upgrade to fail. By default, `max_unavailable_controlplane` is defined as 2 nodes.
+- **max_unavailable_controlplane:** The maximum number of controlplane nodes that can fail without causing the cluster upgrade to fail. By default, `max_unavailable_controlplane` is defined as one node.
 - **max_unavailable_worker:** The maximum number of worker nodes that can fail without causing the cluster upgrade to fail. By default, `max_unavailable_worker` is defined as 10 percent of all worker nodes.*
 
 /*  This number can be configured as a percentage or as an integer. When defined as a percentage, the batch size is rounded down to the nearest node, with a minimum of one node per batch.
@@ -25,7 +25,7 @@ An example configuration of the cluster upgrade strategy is shown below:
 ```yaml
 upgrade_strategy:
   max_unavailable_worker: 10%
-  max_unavailable_controlplane: 2
+  max_unavailable_controlplane: 1
 ```
 
 ### Draining Nodes
@@ -39,7 +39,7 @@ If the `drain` directive is set to `true` in the `cluster.yml`, worker nodes wil
 ```yaml
 upgrade_strategy:
   max_unavailable_worker: 10%
-  max_unavailable_controlplane: 2
+  max_unavailable_controlplane: 1
   drain: false
   node_drain_input:
     force: false
@@ -129,7 +129,7 @@ nodes:
 # nodes skipped for brevity
 upgrade_strategy:
   max_unavailable_worker: 10%
-  max_unavailable_controlplane: 2
+  max_unavailable_controlplane: 1
   drain: false
   node_drain_input:
     force: false
