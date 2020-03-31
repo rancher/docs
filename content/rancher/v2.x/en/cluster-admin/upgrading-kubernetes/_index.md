@@ -14,7 +14,7 @@ This section covers the following topics:
 - [How Upgrades Work](#how-upgrades-work)
 - [Recommended Best Practice for Upgrades](#recommended-best-practice-for-upgrades)
 - [Upgrading the Kubernetes Version](#upgrading-the-kubernetes-version)
-- [Rolling Back the Kubernetes Version](#rolling-back-the-kubernetes-version)
+- [Rolling Back](#rolling-back)
 - [Configuring the Upgrade Strategy](#configuring-the-upgrade-strategy)
   - [Configuring the Maximum Unavailable Worker Nodes in the Rancher UI](#configuring-the-maximum-unavailable-worker-nodes-in-the-rancher-ui)
   - [Enabling Draining Nodes During Upgrades from the Rancher UI](#enabling-draining-nodes-during-upgrades-from-the-rancher-ui)
@@ -90,7 +90,7 @@ _Available as of v2.4_
 A cluster can be restored to a backup in which the previous Kubernetes version was used. For more information, refer to the following sections:
 
 - [Backing up a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#how-snapshots-work)
-- [Restoring a cluster from backup]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/restoring-etcd/restoring-a-cluster-from-a-snapshot)
+- [Restoring a cluster from backup]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/restoring-etcd/#restoring-a-cluster-from-a-snapshot)
 
 # Configuring the Upgrade Strategy
 
@@ -129,7 +129,7 @@ To enable draining each node during a cluster upgrade,
 
 **Result:** The cluster is updated to use the new upgrade strategy.
 
-> **Note:** As of Rancher v2.4.0, there is a known issue in which the Rancher UI doesn't show state of nodes as drained, even though they are being drained.
+> **Note:** As of Rancher v2.4.0, there is a [known issue](https://github.com/rancher/rancher/issues/25478) in which the Rancher UI doesn't show state of etcd and controlplane as drained, even though they are being drained.
 
 ### Maintaining Availability for Applications During Upgrades
 
