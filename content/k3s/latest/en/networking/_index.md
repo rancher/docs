@@ -7,7 +7,7 @@ weight: 35
 
 Open Ports
 ----------
-Please reference the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/node-requirements/#networking) page for port information.
+Please reference the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/installation-requirements/#networking) page for port information.
 
 CoreDNS
 -------
