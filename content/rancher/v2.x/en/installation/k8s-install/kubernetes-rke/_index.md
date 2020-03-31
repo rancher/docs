@@ -35,7 +35,7 @@ The steps to set up the Kubernetes cluster differ depending on whether you are u
 
 ### 1. Install Kubernetes and Set up the K3s Server
 
-When running the command to start the K3s Kubernetes API server, you will pass in two options: one option to use the external datastore that you set up earlier, and one to prevent K3s from deploying Traefik, which is the default ingress in K3s. You need to disable Traefik because Rancher will use NGINX as the ingress to allow external traffic into the cluster.
+When running the command to start the K3s Kubernetes API server, you will pass in an option to use the external datastore that you set up earlier.
 
 1. Connect to one of the Linux nodes that you have prepared to run the Rancher server.
 1. On the Linux node, run this command to start the K3s server and connect it to the external datastore:

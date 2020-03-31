@@ -82,6 +82,10 @@ When a K3s cluster is imported, Rancher will recognize it as K3s, and the Ranche
 - The ability to configure the maximum number of nodes that will be upgraded concurrently
 - The ability to see a read-only version of the K3s cluster's configuration arguments and environment variables used to launch each node in the cluster.
 
+### Configuring K3s Cluster Upgrades
+
+> **Important:** Before upgrading the Kubernetes version of a high-availability K3s cluster, back up the database in whichever way is recommended by the relational database provider. If the upgrade fails, restore the cluster from the snapshot.
+
 The **concurrency** is the maximum number of nodes that are permitted to be unavailable during an upgrade. If number of unavailable nodes is larger than the **concurrency,** the upgrade will fail. If an upgrade fails, you may need to repair or remove failed nodes before the upgrade can succeed.
 
 - **Controlplane concurrency:** The maximum number of server nodes to upgrade at a single time; also the maximum unavailable server nodes
