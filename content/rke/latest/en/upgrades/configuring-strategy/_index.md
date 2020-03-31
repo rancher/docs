@@ -59,13 +59,13 @@ An example configuration of the Ingress and network addons is shown below:
 ingress:
   provider: nginx
   update_strategy: 
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 5
 network:
   plugin: canal
   update_strategy: 
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 6
 ```
@@ -101,7 +101,7 @@ An example configuration of the DNS and monitoring addons is shown below:
 dns:
   provider: coredns
   update_strategy: 
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 20%
       maxSurge: 15%
@@ -114,7 +114,7 @@ dns:
 monitoring:
   provider: metrics-server
   update_strategy: 
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 8
 ```
@@ -140,19 +140,19 @@ upgrade_strategy:
 ingress:
   provider: nginx
   update_strategy: # Available in v2.4
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 5
 network:
   plugin: canal
   update_strategy: # Available in v2.4
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 6
 dns:
   provider: coredns
   update_strategy: # Available in v2.4
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 20%
       maxSurge: 15%
@@ -165,7 +165,7 @@ dns:
 monitoring:
   provider: metrics-server
   update_strategy: # Available in v2.4
-    type: RollingUpdate
+    strategy: RollingUpdate
     rollingUpdate:
       maxUnavailable: 8
 ```
