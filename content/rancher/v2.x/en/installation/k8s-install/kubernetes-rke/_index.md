@@ -120,12 +120,6 @@ NAMESPACE       NAME                                      READY   STATUS    REST
 kube-system     metrics-server-6d684c7b5-bw59k            1/1     Running   0          8d
 kube-system     local-path-provisioner-58fb86bdfd-fmkvd   1/1     Running   0          8d
 kube-system     coredns-d798c9dd-ljjnf                    1/1     Running   0          8d
-cert-manager    cert-manager-cainjector-85fbdf788-ct5cp   1/1     Running   0          7d22h
-cert-manager    cert-manager-754d9b75d9-29llx             1/1     Running   0          7d22h
-cert-manager    cert-manager-webhook-76f9b64b45-lnhdl     1/1     Running   0          7d22h
-cattle-system   rancher-ddf788bbf-2zdb4                   1/1     Running   0          7d22h
-cattle-system   rancher-ddf788bbf-22dxm                   1/1     Running   1          7d22h
-cattle-system   rancher-ddf788bbf-k6vk4                   1/1     Running   1          7d22h
 ```
 
 **Result:** You have confirmed that you can access the cluster with `kubectl` and the K3s cluster is running successfully. Now the Rancher management server can be installed on the cluster.
