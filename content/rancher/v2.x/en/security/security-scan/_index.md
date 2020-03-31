@@ -41,9 +41,7 @@ To check clusters for CIS Kubernetes Benchmark compliance, the security scan lev
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
-As of Rancher v2.4, the CIS scan will use either the Benchmark v1.4 or v1.5, depending on the Kubernetes version.
-
-To determine which version of the [Benchmark](https://www.cisecurity.org/benchmark/kubernetes/) to use in the scan, Rancher chooses a version that is appropriate for the cluster's Kubernetes version. The Benchmark version is included in the generated report.
+As of Rancher v2.4, the scan will use the CIS Benchmark v1.4. The Benchmark version is included in the generated report.
 
 The Benchmark provides recommendations of two types: Scored and Not Scored. Recommendations marked as Not Scored in the Benchmark are not included in the generated report.
 
@@ -151,9 +149,10 @@ To enable recurring scans, edit the advanced options in the cluster configuratio
 To schedule scans for an existing cluster:
 
 1. Go to the cluster view in Rancher.
-1. Click **Ellipsis (...) > Edit.**
-1. Go to the **Advanced Options** section. In the **CIS Scan Enabled** field, click **Yes.**
-1. In the **CIS Scan Profile** field, choose a **Permissive** or **Hardened** profile. The corresponding CIS Benchmark version is included in the profile name. Any skipped tests [defined in a separate ConfigMap](#skipping-tests) will be skipped regardless of whether a **Permissive** or **Hardened** profile is selected. When selecting the the permissive profile, you should see which tests were skipped by Rancher (tests that are skipped by default for RKE clusters) and which tests were skipped by a Rancher user. In the hardened test profile, the only skipped tests will be skipped by users.
+1. Click **Tools > CIS Scans.**
+1. Click **Add Schedule.** This takes you to the section of the cluster editing page that is applicable to configuring a schedule for CIS scans. (This section can also be reached by going to the cluster view, clicking **Ellipsis (...) > Edit,** and going to the **Advanced Options.**)
+1. In the **CIS Scan Enabled** field, click **Yes.**
+1. In the **CIS Scan Profile** field, choose a **Permissive** or **Hardened** profile. The corresponding CIS Benchmark version is included in the profile name. Note: Any skipped tests [defined in a separate ConfigMap](#skipping-tests) will be skipped regardless of whether a **Permissive** or **Hardened** profile is selected. When selecting the the permissive profile, you should see which tests were skipped by Rancher (tests that are skipped by default for RKE clusters) and which tests were skipped by a Rancher user. In the hardened test profile, the only skipped tests will be skipped by users.
 1. In the **CIS Scan Interval (cron)** job, enter a [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) to define how often the cluster will be scanned.
 1. In the **CIS Scan Report Retention** field, enter the number of past reports that should be kept.
 
@@ -213,7 +212,7 @@ Rancher provides a set of alerts for cluster scans. which are not configured to 
 
 > **Prerequisite:** You need to configure a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) before configuring, sending, or receiving alerts.
 
-To activate an alert for a CIS scan result,
+To activate an existing alert for a CIS scan result,
 
 1. From the cluster view in Rancher, click **Tools > Alerts.**
 1. Go to the section called **A set of alerts for cluster scans.**
@@ -224,6 +223,20 @@ To activate an alert for a CIS scan result,
 1. Click **Save.**
 
 **Result:** The notifications will be triggered when the a scan is run on a cluster and the active alerts have satisfied conditions.
+
+To create a new alert,
+
+1. Go to the cluster view and click **Tools > CIS Scans.**
+1. Click **Add Alert.**
+1. Fill out the form. 
+1. Enter a name for the alert.
+1. In the **Is** field, set the alert to be triggered when a scan is completed or when a scan has a failure.
+1. In the **Send a** field, set the alert as a **Critical,** **Warning,** or **Info** alert level.
+1. Choose a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) for the alert.
+
+**Result:** The alert is created and activated. The notifications will be triggered when the a scan is run on a cluster and the active alerts have satisfied conditions.
+
+For more information about alerts, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/)
 
 # Deleting a Report
 
