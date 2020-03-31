@@ -1,6 +1,8 @@
 ---
 title: Installation Requirements
 weight: 1
+aliases:
+  - /k3s/latest/en/installation/node-requirements/
 ---
 
 K3s is very lightweight, but has some minimum requirements as outlined below.
@@ -18,7 +20,7 @@ K3s should run on just about any flavor of Linux. However, K3s is tested on the 
 *    Ubuntu 16.04 (amd64)
 *    Ubuntu 18.04 (amd64)
 
-> * If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#raspbian-buster---enable-legacy-iptables) to switch to legacy iptables.
+> * If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 > * If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 
