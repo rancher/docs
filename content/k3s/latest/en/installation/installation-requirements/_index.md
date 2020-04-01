@@ -37,11 +37,23 @@ K3s performance depends on the performance of the database. To ensure optimal sp
 
 ## Networking
 
-The K3s server needs port 6443 to be accessible by the nodes. The nodes need to be able to reach other nodes over UDP port 8472 (Flannel VXLAN). If you do not use Flannel and provide your own custom CNI, then port 8472 is not needed by K3s. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel.
+The K3s server needs port 6443 to be accessible by the nodes.
 
-IMPORTANT: The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disabled access to port 8472.
+The nodes need to be able to reach other nodes over UDP port 8472 when Flannel VXLAN is used. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel. However, if you do not use Flannel and provide your own custom CNI, then port 8472 is not needed by K3s.
 
 If you wish to utilize the metrics server, you will need to open port 10250 on each node.
+
+> **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+
+<figcaption>Inbound Rules for K3s Server Nodes</figcaption>
+
+| Protocol | Port | Source | Description
+|-----|-----|----------------|---|
+| TCP | 6443 | K3s server nodes | Kubernetes API
+| UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN
+| TCP | 10250 | K3s server and agent nodes | kubelet
+
+Typically all outbound traffic is allowed.
 
 ## Large Clusters
 
