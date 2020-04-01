@@ -29,7 +29,7 @@ When using this method to install K3s, the following environment variables can b
 
 - `INSTALL_K3S_SYMLINK`
 
-    By default will create symlinks for the kubectl, crictl, and ctr binaries if the commands do not already exist in path. If set to 'skip' will not create symlinks and 'force' will overwrite.
+    If set to 'skip' will not create symlinks, 'force' will overwrite, default will symlink if command does not exist in path.
 
 - `INSTALL_K3S_SKIP_START`
 
@@ -66,7 +66,7 @@ When using this method to install K3s, the following environment variables can b
 
    - `INSTALL_K3S_NAME`
 
-    Name of systemd service to create, will default to 'k3s' if running k3s as a server and 'k3s-agent' if running k3s as an agent. If specified the name will be prefixed with 'k3s-'.
+    Name of systemd service to create, will default from the K3s exec command if not specified. If specified the name will be prefixed with 'k3s-'.
 
    - `INSTALL_K3S_TYPE`
 
