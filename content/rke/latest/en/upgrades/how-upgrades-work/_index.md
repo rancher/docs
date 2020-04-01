@@ -62,7 +62,7 @@ Because RKE addons are necessary for allowing traffic into the cluster, they wil
 
 For more information on configuring the number of replicas for each addon, refer to [this section.](#replicas-for-rke-addons)
 
-For an example showing how to configure the addons, refer to the [example cluster.yml.](#example-cluster-yml)
+For an example showing how to configure the addons, refer to the [example cluster.yml.]({{<baseurl>}}rke/latest/en/upgrades/configuring-strategy/#example-cluster-yml)
 
 {{% /tab %}}
 {{% tab "RKE prior to v1.1.0" %}}
