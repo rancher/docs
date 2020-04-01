@@ -2,7 +2,6 @@
 title: Docker Rollback
 weight: 1015
 aliases:
-  - /rancher/v2.x/en/backups/rollbacks/single-node-rollbacks
   - /rancher/v2.x/en/upgrades/single-node-rollbacks
 ---
 
