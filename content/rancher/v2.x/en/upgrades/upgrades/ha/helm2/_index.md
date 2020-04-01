@@ -3,9 +3,9 @@ title: Upgrading Rancher Installed on Kubernetes with Helm 2
 weight: 1050
 ---
 
-> After Helm 3 was released, the [instructions for upgrading Rancher on a Kubernetes cluster](./ha) were updated to use Helm 3.
+> Helm 3 has been released.  If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
 >
-> If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
+> The [current instructions for Upgrading Rancher Installed on Kubernetes](https://rancher.com/docs/rancher/v2.x/en/upgrades/upgrades/ha/) use Helm 3.
 >
 > This section provides a copy of the older instructions for upgrading Rancher with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
