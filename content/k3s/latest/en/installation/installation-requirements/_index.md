@@ -45,7 +45,7 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 > **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
 
-<figcaption>Inbound Rules for Rancher Server Nodes</figcaption>
+<figcaption>Inbound Rules for K3s Server Nodes</figcaption>
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
