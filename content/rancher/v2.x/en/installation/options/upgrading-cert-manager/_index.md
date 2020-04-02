@@ -30,7 +30,7 @@ To address these changes, this guide will do two things:
 
 If you are running cert-manager version 0.11.x or above, please follow official [upgrading doc](https://cert-manager.io/docs/installation/upgrading/#upgrading-with-helm) to upgrade it using helm. 
 
-Continue reading if you are comming from a cert-manager version older than 0.11
+Continue reading if you are coming from a cert-manager version older than 0.11
 
 > **Note:**
 > These instructions are applied if you have no plan to upgrade Rancher. 
