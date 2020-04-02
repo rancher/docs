@@ -20,7 +20,7 @@ Edit [container default resource limit]({{<baseurl>}}/rancher/v2.x/en/k8s-in-ran
 
 1. From the **Global** view, open the cluster containing the project to which you want to edit the container default resource limit.
 1. From the main menu, select **Projects/Namespaces**.
-1. Find the project that you want to edit the container default resource limit. From that project, select **Ellipsis (...) > Edit**.
+1. Find the project that you want to edit the container default resource limit. From that project, select **&#8942; > Edit**.
 1. Expand **Container Default Resource Limit** and edit the values.
 
 ### Resource Limit Propagation

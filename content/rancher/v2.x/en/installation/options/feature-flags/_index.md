@@ -119,7 +119,7 @@ _Available as of Rancher v2.3.3_
 
 1. Go to the **Global** view and click **Settings.**
 1. Click the **Feature Flags** tab. You will see a list of experimental features.
-1. To enable a feature, go to the disabled feature you want to enable and click **Ellipsis (...) > Activate.**
+1. To enable a feature, go to the disabled feature you want to enable and click **&#8942; > Activate.**
 
 **Result:** The feature is enabled.
 
@@ -127,7 +127,7 @@ _Available as of Rancher v2.3.3_
 
 1. Go to the **Global** view and click **Settings.**
 1. Click the **Feature Flags** tab. You will see a list of experimental features.
-1. To disable a feature, go to the enabled feature you want to disable and click **Ellipsis (...) > Deactivate.**
+1. To disable a feature, go to the enabled feature you want to disable and click **&#8942; > Deactivate.**
 
 **Result:** The feature is disabled.
 

@@ -32,6 +32,6 @@ You can lock roles in two contexts:
 
 1. From the **Global** view, select **Security** > **Roles**.
 
-2. From the role that you want to lock (or unlock), select **Vertical Ellipsis (...)** > **Edit**.
+2. From the role that you want to lock (or unlock), select **&#8942;** > **Edit**.
 
 3. From the **Locked** option, choose the **Yes** or **No** radio button. Then click **Save**.

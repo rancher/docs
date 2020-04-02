@@ -9,7 +9,7 @@ When your cluster is running pods with security-sensitive configurations, assign
 
 You can assign a pod security policy when you provision a cluster. However, if you need to relax or restrict security for your pods later, you can update the policy while editing your cluster.
 
-1. From the **Global** view, find the cluster to which you want to apply a pod security policy. Select **Vertical Ellipsis (...) > Edit**.
+1. From the **Global** view, find the cluster to which you want to apply a pod security policy. Select **&#8942; > Edit**.
 
 2. Expand **Cluster Options**.
 

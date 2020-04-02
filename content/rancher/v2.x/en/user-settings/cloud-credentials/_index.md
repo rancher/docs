@@ -34,7 +34,7 @@ All cloud credentials are bound to the user profile of who created it. They **ca
 When access credentials are changed or compromised, updating a cloud credential allows you to rotate those credentials while keeping the same node template.  
 
 1. From your user settings, select **User Avatar > Cloud Credentials**.
-1. Choose the cloud credential you want to edit and click the **Vertical Ellipsis (...) > Edit**.
+1. Choose the cloud credential you want to edit and click the **&#8942; > Edit**.
 1. Update the credential information and click **Save**.
 
 **Result:** The cloud credential is updated with the new access credentials. All existing node templates using this cloud credential will automatically use the updated information whenever [new nodes are added]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
@@ -46,6 +46,6 @@ In order to delete cloud credentials, there must not be any node template associ
 1. From your user settings, select **User Avatar > Cloud Credentials**.
 1. You can either individually delete a cloud credential or bulk delete.
 
-	- To individually delete one, choose the cloud credential you want to edit and click the **Vertical Ellipsis (...) > Delete**.
+	- To individually delete one, choose the cloud credential you want to edit and click the **&#8942; > Delete**.
 	- To bulk delete cloud credentials, select one or more cloud credentials from the list. Click **Delete**.
 1. Confirm that you want to delete these cloud credentials.

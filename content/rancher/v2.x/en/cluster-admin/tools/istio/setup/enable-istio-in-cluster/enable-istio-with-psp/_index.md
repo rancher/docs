@@ -15,7 +15,7 @@ The Istio CNI plugin removes the need for each application pod to have a privile
 ### 1. Configure the System Project Policy to allow Istio install
 
 1. From the main menu of the **Dashboard**, select **Projects/Namespaces**.
-1. Find the **Project: System** project and select the **Ellipsis (...) > Edit**.
+1. Find the **Project: System** project and select the **&#8942; > Edit**.
 1. Change the Pod Security Policy option to be unrestricted, then click Save.
 
 

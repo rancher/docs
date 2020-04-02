@@ -53,7 +53,7 @@ After enabling an example repository, review the pipeline to see how it is set u
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. Find the example repository, select the vertical **Ellipsis (...)**. There are two ways to view the pipeline:
+1. Find the example repository, select the vertical **&#8942;**. There are two ways to view the pipeline:
   * **Rancher UI**: Click on **Edit Config** to view the stages and steps of the pipeline.
   * **YAML**: Click on View/Edit YAML to view the `./rancher-pipeline.yml` file.
 
@@ -65,7 +65,7 @@ After enabling an example repository, run the pipeline to see how it works.
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. Find the example repository, select the vertical **Ellipsis (...) > Run**.
+1. Find the example repository, select the vertical **&#8942; > Run**.
 
     >**Note:** When you run a pipeline the first time, it takes a few minutes to pull relevant images and provision necessary pipeline components.
 

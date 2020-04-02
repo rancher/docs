@@ -93,7 +93,7 @@ The following steps describe how to assign existing storage to a new workload th
 The following steps describe how to assign persistent storage to an existing workload:
 
 1. From the **Project** view, go to the **Workloads** tab.
-1. Go to the workload that you want to add the persistent storage to. The workload type should be a stateful set. Click **Ellipsis (...) > Edit.**
+1. Go to the workload that you want to add the persistent storage to. The workload type should be a stateful set. Click **&#8942; > Edit.**
 1. Expand the **Volumes** section and click **Add Volume > Use an existing persistent volume (claim).**.
 1. In the **Persistent Volume Claim** field, select the PVC that you created.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.

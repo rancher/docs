@@ -97,7 +97,7 @@ The [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/gl
 
 1. From the **Global View**, select **Tools > Global DNS Providers**.
 
-1. For the Global DNS provider that you want to edit, click the **Vertical Ellipsis (...) > Edit**.
+1. For the Global DNS provider that you want to edit, click the **&#8942; > Edit**.
 
 ## Editing a Global DNS Entry
 
@@ -115,4 +115,4 @@ Permission checks are relaxed for removing target projects in order to support s
 
 1. From the **Global View**, select **Tools > Global DNS Entries**.
 
-1. For the Global DNS entry that you want to edit, click the **Vertical Ellipsis (...) > Edit**.
+1. For the Global DNS entry that you want to edit, click the **&#8942; > Edit**.

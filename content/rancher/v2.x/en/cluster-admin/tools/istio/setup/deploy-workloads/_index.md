@@ -7,7 +7,7 @@ weight: 4
 
 Enabling Istio in a namespace only enables automatic sidecar injection for new workloads. To enable the Envoy sidecar for existing workloads, you need to enable it manually for each workload.
 
-To inject the Istio sidecar on an existing workload in the namespace, go to the workload, click the **Ellipsis (...),** and click **Redeploy.** When the workload is redeployed, it will have the Envoy sidecar automatically injected.
+To inject the Istio sidecar on an existing workload in the namespace, go to the workload, click the **&#8942;,** and click **Redeploy.** When the workload is redeployed, it will have the Envoy sidecar automatically injected.
 
 Wait a few minutes for the workload to upgrade to have the istio sidecar. Click it and go to the Containers section. You should be able to see istio-init and istio-proxy alongside your original workload. This means the Istio sidecar is enabled for the workload. Istio is doing all the wiring for the sidecar envoy. Now Istio can do all the features automatically if you enable them in the yaml.
 

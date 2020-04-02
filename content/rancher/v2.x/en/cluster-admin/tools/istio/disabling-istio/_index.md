@@ -18,7 +18,7 @@ To disable Istio,
 # Disable Istio in a Namespace
 
 1. In the Rancher UI, go to the project that has the namespace where you want to disable Istio.
-1. On the **Workloads** tab, you will see a list of namespaces and the workloads deployed in them. Go to the namespace where you want to disable and click the **Ellipsis (...) > Disable Istio Auto Injection.**
+1. On the **Workloads** tab, you will see a list of namespaces and the workloads deployed in them. Go to the namespace where you want to disable and click the **&#8942; > Disable Istio Auto Injection.**
 
 **Result:** When workloads are deployed in this namespace, they will not have the Istio sidecar.
 

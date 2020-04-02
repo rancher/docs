@@ -47,7 +47,7 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 1. In the **Global** view, navigate to the cluster that you want to restore from a snapshots.
 
-2. Click the **Vertical Ellipsis (...) > Restore Snapshot**.
+2. Click the **&#8942; > Restore Snapshot**.
 
 3. Select the snapshot that you want to use for restoring your cluster from the dropdown of available snapshots.
 
@@ -67,7 +67,7 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 1. In the **Global** view, navigate to the cluster that you want to restore from a snapshot.
 
-2. Click the **Vertical Ellipsis (...) > Restore Snapshot**.
+2. Click the **&#8942; > Restore Snapshot**.
 
 3. Select the snapshot that you want to use for restoring your cluster from the dropdown of available snapshots.
 

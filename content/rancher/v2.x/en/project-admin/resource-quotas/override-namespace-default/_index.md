@@ -20,7 +20,7 @@ If there is a [resource quota]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/proj
 
 1. From the main menu, select **Projects/Namespaces**.
 
-1. Find the namespace for which you want to edit the resource quota. Select **Ellipsis (...) > Edit**.
+1. Find the namespace for which you want to edit the resource quota. Select **&#8942; > Edit**.
 
 1. Edit the Resource Quota **Limits**.  These limits determine the resources available to the namespace. The limits must be set within the configured project limits.
 

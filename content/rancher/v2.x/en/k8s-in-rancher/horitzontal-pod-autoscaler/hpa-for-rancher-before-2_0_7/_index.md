@@ -19,7 +19,7 @@ Be sure that your Kubernetes cluster services are running with these flags at mi
   - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
   - `horizontal-pod-autoscaler-sync-period: "30s"`
 
-For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **Ellipsis (...) > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
+For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **&#8942; > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
 
 ```
 services:

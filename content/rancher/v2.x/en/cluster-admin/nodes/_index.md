@@ -72,7 +72,7 @@ Editing a node lets you:
 * Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 * Add/Remove [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 
-To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **Ellipsis** icon (**...**).
+To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **&#8942;** icon (**...**).
 
 # Viewing a Node in the Rancher API
 
@@ -96,7 +96,7 @@ For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.x/en
 
 1. From the cluster hosted by an infrastructure provider, select **Nodes** from the main menu.
 
-1. Find the node that you want to remote into. Select **Ellipsis (...) > Download Keys**.
+1. Find the node that you want to remote into. Select **&#8942; > Download Keys**.
 
     **Step Result:** A ZIP file containing files used for SSH is downloaded.
 
@@ -201,7 +201,7 @@ You can label nodes to be ignored by using a setting in the Rancher UI, or by us
 To add a node that is ignored by Rancher,
 
 1. From the **Global** view, click the **Settings** tab.
-1. Go to the `ignore-node-name` setting and click **Ellipsis (...) > Edit.**
+1. Go to the `ignore-node-name` setting and click **&#8942; > Edit.**
 1. Enter a name that Rancher will use to ignore nodes. All nodes with this name will be ignored.
 1. Click **Save.**
 

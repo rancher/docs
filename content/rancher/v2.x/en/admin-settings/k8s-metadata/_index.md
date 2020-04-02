@@ -46,7 +46,7 @@ The way that the metadata is configured depends on the Rancher version.
 To edit the metadata config in Rancher,
 
 1. Go to the **Global** view and click the **Settings** tab.
-1. Go to the **rke-metadata-config** section. Click the **Ellipsis (...)** and click **Edit.**
+1. Go to the **rke-metadata-config** section. Click the **&#8942;** and click **Edit.**
 1. You can optionally fill in the following parameters:
 
  - `refresh-interval-minutes`: This is the amount of time that Rancher waits to sync the metadata. To disable the periodic refresh, set `refresh-interval-minutes` to 0.
@@ -60,7 +60,7 @@ However, if you have an [air gap setup,](#air-gap-setups) you will need to mirro
 To edit the metadata config in Rancher,
 
 1. Go to the **Global** view and click the **Settings** tab.
-1. Go to the **rke-metadata-config** section. Click the **Ellipsis (...)** and click **Edit.**
+1. Go to the **rke-metadata-config** section. Click the **&#8942;** and click **Edit.**
 1. You can optionally fill in the following parameters:
 
  - `refresh-interval-minutes`: This is the amount of time that Rancher waits to sync the metadata. To disable the periodic refresh, set `refresh-interval-minutes` to 0.

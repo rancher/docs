@@ -10,7 +10,7 @@ This namespace setting will only affect new workloads in the namespace. Any pree
 > **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio enabled.  
 
 1. In the Rancher UI, go to the cluster view. Click the **Projects/Namespaces** tab.
-1. Go to the namespace where you want to enable the Istio sidecar auto injection and click the **Ellipsis (...).**
+1. Go to the namespace where you want to enable the Istio sidecar auto injection and click the **&#8942;.**
 1. Click **Edit.**
 1. In the **Istio sidecar auto injection** section, click **Enable.**
 1. Click **Save.**
@@ -33,7 +33,7 @@ To add the annotation to a workload,
 
 1. From the **Global** view, open the project that has the workload that should not have the sidecar.
 1. Click **Resources > Workloads.**
-1. Go to the workload that should not have the sidecar and click **Ellipsis (...) > Edit.**
+1. Go to the workload that should not have the sidecar and click **&#8942; > Edit.**
 1. Click **Show Advanced Options.** Then expand the **Labels & Annotations** section.
 1. Click **Add Annotation.**
 1. In the **Key** field, enter `sidecar.istio.io/inject`.

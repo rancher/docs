@@ -48,7 +48,7 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. Find the HPA which you would like to delete.
 
-1. Click **Ellipsis (...) > Delete**.
+1. Click **&#8942; > Delete**.
 
 1. Click **Delete** to confirm.
 

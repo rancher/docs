@@ -150,7 +150,7 @@ To schedule scans for an existing cluster:
 
 1. Go to the cluster view in Rancher.
 1. Click **Tools > CIS Scans.**
-1. Click **Add Schedule.** This takes you to the section of the cluster editing page that is applicable to configuring a schedule for CIS scans. (This section can also be reached by going to the cluster view, clicking **Ellipsis (...) > Edit,** and going to the **Advanced Options.**)
+1. Click **Add Schedule.** This takes you to the section of the cluster editing page that is applicable to configuring a schedule for CIS scans. (This section can also be reached by going to the cluster view, clicking **&#8942; > Edit,** and going to the **Advanced Options.**)
 1. In the **CIS Scan Enabled** field, click **Yes.**
 1. In the **CIS Scan Profile** field, choose a **Permissive** or **Hardened** profile. The corresponding CIS Benchmark version is included in the profile name. Note: Any skipped tests [defined in a separate ConfigMap](#skipping-tests) will be skipped regardless of whether a **Permissive** or **Hardened** profile is selected. When selecting the the permissive profile, you should see which tests were skipped by Rancher (tests that are skipped by default for RKE clusters) and which tests were skipped by a Rancher user. In the hardened test profile, the only skipped tests will be skipped by users.
 1. In the **CIS Scan Interval (cron)** job, enter a [cron expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) to define how often the cluster will be scanned.
@@ -216,8 +216,8 @@ To activate an existing alert for a CIS scan result,
 
 1. From the cluster view in Rancher, click **Tools > Alerts.**
 1. Go to the section called **A set of alerts for cluster scans.**
-1. Go to the alert you want to activate and click **Ellipsis (...) > Activate.**
-1. Go to the alert rule group **A set of alerts for cluster scans** and click **Ellipsis (...) > Edit.**
+1. Go to the alert you want to activate and click **&#8942; > Activate.**
+1. Go to the alert rule group **A set of alerts for cluster scans** and click **&#8942; > Edit.**
 1. Scroll down to the **Alert** section. In the **To** field, select the notifier that you would like to use for sending alert notifications.
 1. Optional: To limit the frequency of the notifications, click on **Show advanced options** and configure the time interval of the alerts.
 1. Click **Save.**
@@ -242,12 +242,12 @@ For more information about alerts, refer to [this page.]({{<baseurl>}}/rancher/v
 
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
 1. Go to the report that should be deleted.
-1. Click the **Ellipsis (...) > Delete.**
+1. Click the **&#8942; > Delete.**
 1. Click **Delete.**
 
 # Downloading a Report
 
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
-1. Go to the report that you want to download. Click **Ellipsis (...) > Download.**
+1. Go to the report that you want to download. Click **&#8942; > Download.**
 
 **Result:** The report is downloaded in CSV format. For more information on each columns, refer to the [section about the generated report.](#about-the-generated-report)

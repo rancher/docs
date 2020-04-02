@@ -91,7 +91,7 @@ The detail view of each constraint lists information about the resource that vio
 
 1. Navigate to the cluster's Dashboard view
 1. On the left side menu, expand the cluster menu and click on **OPA Gatekeeper.**
-1. Click the **Vertical Ellipsis (...) > Disable**.
+1. Click the **&#8942; > Disable**.
 
 **Result:** Upon disabling OPA Gatekeeper, all constraint templates and constraints will also be deleted.
 

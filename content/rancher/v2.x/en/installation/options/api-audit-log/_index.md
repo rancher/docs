@@ -70,7 +70,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
    ![Rancher Workload]({{<baseurl>}}/img/rancher/audit_logs_gui/rancher_workload.png)
 
-1. Pick one of the `rancher` pods and select **Ellipsis (...) > View Logs**.
+1. Pick one of the `rancher` pods and select **&#8942; > View Logs**.
 
    ![View Logs]({{<baseurl>}}/img/rancher/audit_logs_gui/view_logs.png)
 

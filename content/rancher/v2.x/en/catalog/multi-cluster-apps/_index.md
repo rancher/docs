@@ -146,7 +146,7 @@ One of the benefits of using a multi-cluster application as opposed to multiple 
 
 1. From the **Global** view, choose **Apps** in the navigation bar.
 
-2. Choose the multi-cluster application you want to take one of these actions on and click the **Vertical Ellipsis (...)**. Select one of the following options:
+2. Choose the multi-cluster application you want to take one of these actions on and click the **&#8942;**. Select one of the following options:
 
    * **Clone**: Creates another multi-cluster application with the same configuration. By using this option, you can easily duplicate a multi-cluster application.
    * **Upgrade**: Upgrade your multi-cluster application to change some part of the configuration. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrades) can be modified if you have the correct [access type](#members).
@@ -156,6 +156,6 @@ One of the benefits of using a multi-cluster application as opposed to multiple 
 
 1. From the **Global** view, choose **Apps** in the navigation bar.
 
-2. Choose the multi-cluster application you want to delete and click the **Vertical Ellipsis (...) > Delete**. When deleting the multi-cluster application, all applications and namespaces are deleted in all of the target projects.
+2. Choose the multi-cluster application you want to delete and click the **&#8942; > Delete**. When deleting the multi-cluster application, all applications and namespaces are deleted in all of the target projects.
 
    > **Note:** The applications in the target projects, that are created for a multi-cluster application, cannot be deleted individually. The applications can only be deleted when the multi-cluster application is deleted.

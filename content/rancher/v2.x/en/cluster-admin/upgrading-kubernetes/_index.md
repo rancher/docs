@@ -73,7 +73,7 @@ The cluster cannot be downgraded to a previous Kubernetes version.
 > - The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) and [imported K3s Kubernetes clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/#additional-features-for-imported-k3s-clusters)
 > - Before upgrading Kubernetes, [back up your cluster.]({{<baseurl>}}/rancher/v2.x/en/backups)
 
-1. From the **Global** view, find the cluster for which you want to upgrade Kubernetes. Select **Vertical Ellipsis (...) > Edit**.
+1. From the **Global** view, find the cluster for which you want to upgrade Kubernetes. Select **&#8942; > Edit**.
 
 1. Expand **Cluster Options**.
 
@@ -107,7 +107,7 @@ By default, the maximum number of unavailable worker is defined as 10 percent of
 To change the default number or percentage of worker nodes,
 
 1. Go to the cluster view in the Rancher UI.
-1. Click **Ellipsis (...) > Edit.**
+1. Click **&#8942; > Edit.**
 1. In the **Advanced Options** section, go to the **Maxiumum Worker Nodes Unavailable** field. Enter the percentage of worker nodes that can be upgraded in a batch. Optionally, select **Count** from the drop-down menu and enter the maximum unavailable worker nodes as an integer.
 1. Click **Save.**
 
@@ -120,7 +120,7 @@ By default, RKE [cordons](https://kubernetes.io/docs/concepts/architecture/nodes
 To enable draining each node during a cluster upgrade,
 
 1. Go to the cluster view in the Rancher UI.
-1. Click **Ellipsis (...) > Edit.**
+1. Click **&#8942; > Edit.**
 1. In the **Advanced Options** section, go to the **Drain nodes** field and click **Yes.**
 1. Choose a safe or aggressive drain option. For more information about each option, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/nodes/#aggressive-and-safe-draining-options)
 1. Optionally, configure a grace period. The grace period is the timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. Pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If this value is negative, the default value specified in the pod will be used.

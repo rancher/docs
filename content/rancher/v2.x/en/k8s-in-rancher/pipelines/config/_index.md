@@ -393,7 +393,7 @@ This section covers the following topics:
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
 1. Click on **Show Advanced Options**.
 
@@ -411,7 +411,7 @@ This section covers the following topics:
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
 1. Find the **stage** that you want to manage trigger rules, click the **Edit** icon for that stage.
 
@@ -436,7 +436,7 @@ This section covers the following topics:
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. From the repository for which you want to manage trigger rules, select the vertical **Ellipsis (...) > Edit Config**.
+1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
 1. Find the **step** that you want to manage trigger rules, click the **Edit** icon for that step.
 
@@ -491,7 +491,7 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
+1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
 
 1. Within one of the stages, find the **step** that you want to add an environment variable for, click the **Edit** icon.
 
@@ -534,7 +534,7 @@ Create a secret in the same project as your pipeline, or explicitly in the names
 
 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. From the pipeline for which you want to edit build triggers, select **Ellipsis (...) > Edit Config**.
+1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
 
 1. Within one of the stages, find the **step** that you want to use a secret for, click the **Edit** icon.
 

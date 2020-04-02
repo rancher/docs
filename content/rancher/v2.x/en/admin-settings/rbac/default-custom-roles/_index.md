@@ -105,7 +105,7 @@ The custom global role can then be assigned to a user or group so that the custo
 To create a custom global role based on an existing role,
 
 1. Go to the **Global** view and click **Security > Roles.**
-1. On the **Global** tab, go to the role that the custom global role will be based on. Click **Ellipsis (…) > Clone.**
+1. On the **Global** tab, go to the role that the custom global role will be based on. Click **&#8942; (…) > Clone.**
 1. Enter a name for the role.
 1. Optional: To assign the custom role default for new users, go to the **New User Default** section and click **Yes: Default role for new users.**
 1. In the **Grant Resources** section, select the Kubernetes resource operations that will be enabled for users with the custom role.
@@ -135,7 +135,7 @@ Custom global roles can be deleted, but built-in roles cannot be deleted.
 To delete a custom global role,
 
 1. Go to the **Global** view and click **Security > Roles.**
-2. On the **Global** tab, go to the custom global role that should be deleted and click **Ellipsis (…) > Delete.**
+2. On the **Global** tab, go to the custom global role that should be deleted and click **&#8942; (…) > Delete.**
 3. Click **Delete.**
 
 ## Assigning a Custom Global Role to a Group

@@ -205,8 +205,8 @@ Now that repositories are added to your project, you can start configuring the p
 
 1. Configure the pipeline through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`. Pipeline configuration is split into stages and steps. Stages must fully complete before moving onto the next stage, but steps in a stage run concurrently. For each stage, you can add different step types. Note: As you build out each step, there are different advanced options based on the step type. Advanced options include trigger rules, environment variables, and secrets. For more information on configuring the pipeline through the UI or the YAML file, refer to the [pipeline configuration reference.]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/config)
 
-   * If you are going to use the UI, select the vertical **Ellipsis (...) > Edit Config** to configure the pipeline using the UI. After the pipeline is configured, you must view the YAML file and push it to the repository.
-   * If you are going to use the YAML file, select the vertical **Ellipsis (...) > View/Edit YAML** to configure the pipeline. If you choose to use a YAML file, you need to push it to the repository after any changes in order for it to be updated in the repository. When editing the pipeline configuration, it takes a few moments for Rancher to check for an existing pipeline configuration.
+   * If you are going to use the UI, select the vertical **&#8942; > Edit Config** to configure the pipeline using the UI. After the pipeline is configured, you must view the YAML file and push it to the repository.
+   * If you are going to use the YAML file, select the vertical **&#8942; > View/Edit YAML** to configure the pipeline. If you choose to use a YAML file, you need to push it to the repository after any changes in order for it to be updated in the repository. When editing the pipeline configuration, it takes a few moments for Rancher to check for an existing pipeline configuration.
 
 1. Select which `branch` to use from the list of branches.
 
@@ -242,7 +242,7 @@ The configuration reference also covers how to configure:
 
 # Running your Pipelines
 
-Run your pipeline for the first time. From the project view in Rancher, go to **Resources > Pipelines.** (In versions prior to v2.3.0, go to the **Pipelines** tab.) Find your pipeline and select the vertical **Ellipsis (...) > Run**.
+Run your pipeline for the first time. From the project view in Rancher, go to **Resources > Pipelines.** (In versions prior to v2.3.0, go to the **Pipelines** tab.) Find your pipeline and select the vertical **&#8942; > Run**.
 
 During this initial run, your pipeline is tested, and the following pipeline components are deployed to your project as workloads in a new namespace dedicated to the pipeline:
 
@@ -270,7 +270,7 @@ Available Events:
 
 1. 1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
 
-1. Find the repository that you want to modify the event triggers. Select the vertical **Ellipsis (...) > Setting**.
+1. Find the repository that you want to modify the event triggers. Select the vertical **&#8942; > Setting**.
 
 1. Select which event triggers (**Push**, **Pull Request** or **Tag**) you want for the repository.
 

@@ -22,7 +22,7 @@ After an application is deployed, you can easily upgrade to a different template
 
 1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
-3. Find the application that you want to upgrade, and then click the Ellipsis to find **Upgrade**.
+3. Find the application that you want to upgrade, and then click the &#8942; to find **Upgrade**.
 
 4. Select the **Template Version** that you want to deploy.
 
@@ -48,7 +48,7 @@ After an application has been upgraded, you can easily rollback to a different t
 
 1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
-3. Find the application that you want to rollback, and then click the Ellipsis to find **Rollback**.
+3. Find the application that you want to rollback, and then click the &#8942; to find **Rollback**.
 
 4. Select the **Revision** that you want to roll back to. By default, Rancher saves up to the last 10 revisions.
 

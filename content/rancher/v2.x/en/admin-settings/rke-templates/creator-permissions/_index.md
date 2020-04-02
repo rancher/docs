@@ -24,7 +24,7 @@ Administrators can give users permission to create RKE templates in two ways:
 
 An administrator can individually grant the role **Create RKE Templates** to any existing user by following these steps:
 
-1. From the global view, click the **Users** tab. Choose the user you want to edit and click the **Vertical Ellipsis (...) > Edit.**
+1. From the global view, click the **Users** tab. Choose the user you want to edit and click the **&#8942; > Edit.**
 1. In the **Global Permissions** section, choose **Custom** and select the **Create RKE Templates** role along with any other roles the user should have. Click **Save.**
 
 **Result:** The user has permission to create RKE templates.
@@ -34,7 +34,7 @@ An administrator can individually grant the role **Create RKE Templates** to any
 Alternatively, the administrator can give all new users the default permission to create RKE templates by following the following steps. This will not affect the permissions of existing users.
 
 1. From the **Global** view, click **Security > Roles.**
-1. Under the **Global** roles tab, go to the role **Create RKE Templates** and click the **Vertical Ellipsis (...) > Edit**.
+1. Under the **Global** roles tab, go to the role **Create RKE Templates** and click the **&#8942; > Edit**.
 1. Select the option **Yes: Default role for new users** and click **Save.**
 
 **Result:** Any new user created in this Rancher installation will be able to create RKE templates. Existing users will not get this permission.
@@ -43,7 +43,7 @@ Alternatively, the administrator can give all new users the default permission t
 
 Administrators can remove a user's permission to create templates with the following steps:
 
-1. From the global view, click the **Users** tab. Choose the user you want to edit and click the **Vertical Ellipsis (...) > Edit.**
+1. From the global view, click the **Users** tab. Choose the user you want to edit and click the **&#8942; > Edit.**
 1. In the **Global Permissions** section, un-check the box for **Create RKE Templates**. In this section, you can change the user back to a standard user, or give the user a different set of custom permissions.
 1. Click **Save.**
 

@@ -77,7 +77,7 @@ In addition to recurring snapshots, you may want to take a "one-time" snapshot. 
 
 1. In the **Global** view, navigate to the cluster that you want to take a one-time snapshot.
 
-2. Click the **Vertical Ellipsis (...) > Snapshot Now**.
+2. Click the **&#8942; > Snapshot Now**.
 
 **Result:** Based on your [snapshot backup target](#snapshot-backup-targets), a one-time snapshot will be taken and saved in the selected backup target.
 

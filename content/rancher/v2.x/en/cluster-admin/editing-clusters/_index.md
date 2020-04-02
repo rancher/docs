@@ -3,7 +3,7 @@ title: Cluster Configuration
 weight: 2025
 ---
 
-After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster. To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **Ellipsis (...) > Edit** for the cluster that you want to edit.
+After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster. To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **&#8942; > Edit** for the cluster that you want to edit.
 
 <sup>To Edit an Existing Cluster</sup>
 ![Edit Cluster]({{<baseurl>}}/img/rancher/edit-cluster.png)

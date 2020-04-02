@@ -26,7 +26,7 @@ Edit [resource quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and
 
 1. From the main menu, select **Projects/Namespaces**.
 
-1. Find the project that you want to add a resource quota to. From that project, select **Ellipsis (...) > Edit**.
+1. Find the project that you want to add a resource quota to. From that project, select **&#8942; > Edit**.
 
 1. Expand **Resource Quotas** and click **Add Quota**. Alternatively, you can edit existing quotas.
 

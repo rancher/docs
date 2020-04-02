@@ -102,7 +102,7 @@ To change the default global permissions that are assigned to external users upo
 
 1. From the **Global** view, select **Security > Roles** from the main menu. Make sure the **Global** tab is selected.
 
-1. Find the permissions set that you want to add or remove as a default. Then edit the permission by selecting **Ellipsis > Edit**.
+1. Find the permissions set that you want to add or remove as a default. Then edit the permission by selecting **&#8942; > Edit**.
 
 1. If you want to add the permission as a default, Select **Yes: Default role for new users** and then click **Save**.
 
@@ -116,7 +116,7 @@ To configure permission for a user,
 
 1. Go to the **Users** tab.
 
-1. On this page, go to the user whose access level you want to change and click **Ellipsis (...) > Edit.**
+1. On this page, go to the user whose access level you want to change and click **&#8942; > Edit.**
 
 1. In the **Global Permissions** section, click **Custom.**
 

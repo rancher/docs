@@ -193,7 +193,7 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 1. From the **Global** view, click **Clusters.**
 
-1. Go to the custom cluster that you created and click **Ellipsis (...) > Edit.**
+1. Go to the custom cluster that you created and click **&#8942; > Edit.**
 
 1. Scroll down to **Node Operating System**. Choose **Linux**.
 
@@ -221,7 +221,7 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 1. From the **Global** view, click **Clusters.**
 
-1. Go to the custom cluster that you created and click **Ellipsis (...) > Edit.**
+1. Go to the custom cluster that you created and click **&#8942; > Edit.**
 
 1. Scroll down to **Node Operating System**. Choose **Windows**. Note: You will see that the **worker** role is the only available role.
 
