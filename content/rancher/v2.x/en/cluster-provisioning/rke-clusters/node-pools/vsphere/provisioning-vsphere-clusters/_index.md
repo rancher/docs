@@ -226,7 +226,7 @@ To make use of cloud-init initialization, create a cloud config file using valid
 {{% /tab %}}
 {{% tab "Rancher prior to v2.3.3" %}}
 
-You may specify the URL of a RancherOS cloud-config.yaml file in the the **Cloud Init** field. Refer to the [RancherOS Documentation]https://rancher.com/docs/os/v1.x/en/installation/configuration/#cloud-config) for details on the supported configuration directives. Note that the URL must be network accessible from the VMs created by the template.
+You may specify the URL of a RancherOS cloud-config.yaml file in the the **Cloud Init** field. Refer to the [RancherOS Documentation]https://rancher.com/docs/os/v1.x/en/configuration/#cloud-config) for details on the supported configuration directives. Note that the URL must be network accessible from the VMs created by the template.
 
 {{% /tab %}}
 {{% /tabs %}}
