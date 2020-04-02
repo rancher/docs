@@ -1,41 +1,46 @@
 ---
-title: Creating Custom Catalogs Apps
-weight: 4000
+title: Creating Catalog Apps
+weight: 400
 aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/
+  - /rancher/v2.x/en/catalog/custom/creating
 ---
 
 Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher.
 
-## Chart Types
+> For a complete walkthrough of developing charts, see the [Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) in the official Helm documentation.
 
-Rancher supports two different types of charts:
+- [Chart types](#chart-types)
+  - [Helm charts](#helm-charts)
+  - [Rancher charts](#rancher-charts)
+- [Chart directory structure](#chart-directory-structure)
+- [Additional Files for Rancher Charts](#additional-files-for-rancher-charts)
+  - [questions.yml](#questions-yml)
+  - [Min/Max Rancher versions](#min-max-rancher-versions)
+  - [Question variable reference](#question-variable-reference)
+- [Tutorial: Example Custom Chart Creation](#tutorial-example-custom-chart-creation)
 
-- **Helm Charts**
+# Chart Types
 
-	Native Helm charts include an application along with other software required to run it. When deploying native Helm charts, you'll learn the chart's parameters and then configure them using **Answers**, which are sets of key value pairs.
+Rancher supports two different types of charts: Helm charts and Rancher charts.
 
-	The Helm Stable and Helm Incubators are populated with native Helm charts. However, you can also use native Helm charts in Custom catalogs (although we recommend Rancher Charts).
+### Helm Charts
 
-- **Rancher Charts**
+Native Helm charts include an application along with other software required to run it. When deploying native Helm charts, you'll learn the chart's parameters and then configure them using **Answers**, which are sets of key value pairs.
 
-	Rancher charts mirror native helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Rancher Chart Additional Files](#rancher-chart-additional-files).
+The Helm Stable and Helm Incubators are populated with native Helm charts. However, you can also use native Helm charts in Custom catalogs (although we recommend Rancher Charts).
 
-	Advantages of Rancher charts include:
+### Rancher Charts
 
-	- **Enhanced Revision Tracking**
+Rancher charts mirror native helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Additional Files for Rancher Charts.](#additional-files-for-rancher-charts)
 
-		While Helm supports versioned deployments, Rancher adds tracking and revision history to display changes between different versions of the chart.
+Advantages of Rancher charts include:
 
-	- **Streamlined Application Launch**
+- **Enhanced revision tracking:** While Helm supports versioned deployments, Rancher adds tracking and revision history to display changes between different versions of the chart.
+- **Streamlined application launch:** Rancher charts add simplified chart descriptions and configuration forms to make catalog application deployment easy. Rancher users need not read through the entire list of Helm variables to understand how to launch an application.
+- **Application resource management:** Rancher tracks all the resources created by a specific application. Users can easily navigate to and troubleshoot on a page listing all the workload objects used to power an application.
 
-		Rancher charts add simplified chart descriptions and configuration forms to make catalog application deployment easy. Rancher users need not read through the entire list of Helm variables to understand how to launch an application.
-
-	- **Application Resource Management**
-
-		Rancher tracks all the resources created by a specific application. Users can easily navigate to and troubleshoot on a page listing all the workload objects used to power an application.
-
-## Chart Directory Structure
+# Chart Directory Structure
 
 The following table demonstrates the directory structure for a chart, which can be found in a chart directory: `charts/<APPLICATION>/<APP_VERSION>/`. This information is helpful when customizing charts for a custom catalog. Files denoted with **Rancher Specific** are specific to Rancher charts, but are optional for chart customization.
 
@@ -51,7 +56,7 @@ charts/<APPLICATION>/<APP_VERSION>/
 |--values.yml        # Default configuration values for the chart.
 ```
 
-## Rancher Chart Additional Files
+# Additional Files for Rancher Charts
 
 Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a native Helm chart. Rancher charts differ slightly from Helm charts in their directory structures. Rancher charts include two files that Helm charts do not.
 
@@ -73,11 +78,11 @@ Before you create your own custom catalog, you should have a basic understanding
 	![questions.yml]({{<baseurl>}}/img/rancher/questions.png)
 
 
-### Questions.yml
+### questions.yml
 
 Inside the `questions.yml`, most of the content will be around the questions to ask the end user, but there are some additional fields that can be set in this file.
 
-#### Min/Max Rancher versions
+### Min/Max Rancher versions
 
 _Available as of v2.3.0_
 
@@ -90,7 +95,7 @@ rancher_min_version: 2.3.0
 rancher_max_version: 2.3.99
 ```
 
-#### Question Variable Reference
+### Question Variable Reference
 
 This reference contains variables that you can use in `questions.yml` nested under `questions:`.
 
@@ -116,71 +121,6 @@ This reference contains variables that you can use in `questions.yml` nested und
 
 >**Note:** `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
 
+# Tutorial: Example Custom Chart Creation
 
-## Example Custom Chart Creation
-
- You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
-
->**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://helm.sh/docs/chart_template_guide/).
-
-1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure](#chart-directory-structure).
-
-    Rancher requires this directory structure, although `app-readme.md` and `questions.yml` are optional.
-
-    >**Tip:**
-    >
-    >- To begin customizing a chart, copy one from either the [Rancher Library](https://github.com/rancher/charts) or the [Helm Stable](https://github.com/kubernetes/charts/tree/master/stable).
-    >- For a complete walk through of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
-
-2. **Recommended:** Create an `app-readme.md` file.
-
-    Use this file to create custom text for your chart's header in the Rancher UI. You can use this text to notify users that the chart is customized for your environment or provide special instruction on how to use it.
-    <br/>
-    <br/>
-    **Example**:
-
-    ```
-    $ cat ./app-readme.md
-
-    # Wordpress ROCKS!
-    ```
-
-3. **Recommended:** Create a `questions.yml` file.
-
-    This file creates a form for users to specify deployment parameters when they deploy the custom chart. Without this file, users **must** specify the parameters manually using key value pairs, which isn't user-friendly.
-    <br/>
-    <br/>
-    The example below creates a form that prompts users for persistent volume size and a storage class.
-    <br/>
-    <br/>
-    For a list of variables you can use when creating a `questions.yml` file, see [Question Variable Reference](#question-variable-reference).
-
-    <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-        categories:
-        - Blog
-        - CMS
-        questions:
-        - variable: persistence.enabled
-        default: "false"
-        description: "Enable persistent volume for WordPress"
-        type: boolean
-        required: true
-        label: WordPress Persistent Volume Enabled
-        show_subquestion_if: true
-        group: "WordPress Settings"
-        subquestions:
-        - variable: persistence.size
-            default: "10Gi"
-            description: "WordPress Persistent Volume Size"
-            type: string
-            label: WordPress Volume Size
-        - variable: persistence.storageClass
-            default: ""
-            description: "If undefined or null, uses the default StorageClass. Default to null"
-            type: storageclass
-            label: Default StorageClass for WordPress
-    </pre>
-
-4. Check the customized chart into your GitHub repo.
-
-**Result:** Your custom chart is added to the repo. Your Rancher Server will replicate the chart within a few minutes.
+For a tutorial on adding a custom Helm chart to a custom catalog, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/catalog/tutorial)
