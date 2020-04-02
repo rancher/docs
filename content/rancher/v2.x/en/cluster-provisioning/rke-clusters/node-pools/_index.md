@@ -16,6 +16,7 @@ This section covers the following topics:
 - [Node templates](#node-templates)
   - [Node labels](#node-labels)
   - [Node taints](#node-taints)
+  - [Administrator control of node templates](#administrator-control-of-node-templates)
 - [Node pools](#node-pools)
   - [Node pool taints](#node-pool-taints)
   - [About node auto-replace](#about-node-auto-replace)
@@ -41,6 +42,19 @@ _Available as of Rancher v2.3.0_
 You can add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) on each node template, so that any nodes created from the node template will automatically have these taints on them.
 
 Since taints can be added at a node template and node pool, if there is no conflict with the same key and effect of the taints, all taints will be added to the nodes. If there are taints with the same key and different effect, the taints from the node pool will override the taints from the node template.
+
+### Administrator Control of Node Templates
+
+_Available as of v2.3.3_
+
+Administrators can control all node templates. Admins can now maintain all the node templates within Rancher. When a node template owner is no longer using Rancher, the node templates created by them can be managed by administrators so the cluster can continue to be updated and maintained.
+
+To access all node templates, an administrator will need to do the following:
+
+1. In the Rancher UI, click the user profile icon in the upper right corner.
+1. Click **Node Templates.**
+
+**Result:** All node templates are listed and grouped by owner. The templates can be edited or cloned by clicking the **Ellipsis (...).**
 
 # Node Pools
 
