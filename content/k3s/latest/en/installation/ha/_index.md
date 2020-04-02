@@ -60,7 +60,7 @@ Agent nodes need a URL to register against. This can be the IP or hostname of an
 * Round-robin DNS
 * Virtual or elastic IP addresses
 
-This endpoint can also be used for accessing the Kubernetes API. So you can, for example, modify your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file to point to it instead of a specific node. To avoid certificate errors you should install the server with the `--tls-san YOUR_IP_OR_HOSTNAME_HERE` option. This option can be specified multiple times if you would like to access via both the ip and hostname.
+This endpoint can also be used for accessing the Kubernetes API. So you can, for example, modify your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file to point to it instead of a specific node. To avoid certificate errors in such a configuration, you should install the server with the `--tls-san YOUR_IP_OR_HOSTNAME_HERE` option. This option adds an additional hostname or IP as a Subject Alternative Name in the TLS cert, and it can be specified multiple times if you would like to access via both the IP and the hostname.
 
 ### 4. Optional: Join Agent Nodes
 
