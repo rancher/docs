@@ -19,22 +19,16 @@ This guide covers the following topics:
 
 <!-- TOC -->
 
-- [Prerequisites](#prerequisites)
 - [Requirements](#requirements-for-windows-clusters)
   - [OS and Docker](#os-and-docker-requirements)
   - [Nodes](#node-requirements)
   - [Networking](#networking-requirements)
   - [Architecture](#architecture-requirements)
   - [Containers](#container-requirements)
+  - [Cloud Providers](#cloud-providers)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
   <!-- /TOC -->
-
-# Prerequisites
-
-Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{<baseurl>}}/rancher/v2.x/en/installation/) before proceeding with this guide.
-
-> **Note on Cloud Providers:** If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
 
 # Requirements for Windows Clusters
 
@@ -64,6 +58,8 @@ Rancher will not provision the node if the node does not meet these requirements
 
 ### Networking Requirements
 
+Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{<baseurl>}}/rancher/v2.x/en/installation/) before proceeding with this guide.
+
 Rancher only supports Windows using Flannel as the network provider.
 
 There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
@@ -91,6 +87,15 @@ We recommend the minimum three-node architecture listed in the table below, but 
 ### Container Requirements
 
 Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809 or above. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809 or above.
+
+### Cloud Providers
+
+If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
+
+If you are using the GCE (Google Compute Engine) cloud provider, you must do the following:
+
+- Specify `gce` as the cloud provider in the `cluster.yml`
+- When provisioning the cluster in Rancher, choose **Custom cloud provider** as the cloud provider in the Rancher UI.
 
 # Tutorial: How to Create a Cluster with Windows Support
 
