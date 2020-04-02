@@ -36,7 +36,7 @@ When using this method to install K3s, the following environment variables can b
 | `INSTALL_K3S_BIN_DIR` | Directory to install K3s binary, links, and uninstall script to, or use `/usr/local/bin` as the default. |
 | `INSTALL_K3S_BIN_DIR_READ_ONLY` | If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting `INSTALL_K3S_SKIP_DOWNLOAD=true`. |
 | `INSTALL_K3S_SYSTEMD_DIR` | Directory to install systemd service and environment files to, or use `/etc/systemd/system` as the default. |
-| `INSTALL_K3S_EXEC` | Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set, or "server" if it is not set. For help, refer to [this example.](#example-a-install-k3s-exec) |
+| `INSTALL_K3S_EXEC` | Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set, or "server" if it is not set. For help, refer to [this example.](#example-b-install-k3s-exec) |
 | `INSTALL_K3S_NAME` | Name of systemd service to create, will default from the K3s exec command if not specified. If specified the name will be prefixed with 'k3s-'. |
 | `INSTALL_K3S_TYPE` | Type of systemd service to create, will default from the K3s exec command if not specified.
 
