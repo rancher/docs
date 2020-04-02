@@ -3,15 +3,24 @@ title:  Alerts
 weight: 2526
 ---
 
-To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. To help you stay informed of these events, you can configure alerts.
+To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.
 
-Alerts are sets of rules, chosen by you, to monitor for specific events.
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) and [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) of events they need to address.
 
-Only [administrators]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
+Before you can receive alerts, one or more [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) must be configured at the cluster level.
+
+Only [administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can manage project alerts.
+
+This section covers the following topics:
+
+- [Alerts scope](#alerts-scope)
+- [Default project-level alerts](#default-project-level-alerts)
+- [Adding project alerts](#adding-project-alerts)
+- [Managing project alerts](#managing-project-alerts)
 
 ## Alerts Scope
 
- The scope for alerts can be set at either the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
+The scope for alerts can be set at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) or project level.
 
 At the project level, Rancher monitors specific deployments and sends alerts for:
 
@@ -20,9 +29,20 @@ At the project level, Rancher monitors specific deployments and sends alerts for
 * Pod status
 * The Prometheus expression cross the thresholds
 
+## Default Project-level Alerts
+
+When you enable monitoring for the project, some project-level alerts are provided. You can receive these alerts if a [notifier]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) for them is configured at the cluster level.
+
+| Alert | Explanation |
+|-------|-------------|
+| Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload`. |
+| Memory usage close to the quota | A warning alert is triggered if the workload's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
+
+For information on other default alerts, refer to the section on [cluster-level alerts.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/default-alerts)
+
 ## Adding Project Alerts
 
->**Prerequisite:** Before you can receive project alerts, you must [add a notifier]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/notifiers/#adding-notifiers).
+>**Prerequisite:** Before you can receive project alerts, you must add a notifier.
 
 1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
 
@@ -31,6 +51,7 @@ At the project level, Rancher monitors specific deployments and sends alerts for
 1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.
 
 1. Based on the type of alert you want to create, complete one of the instruction subsets below.
+
 {{% accordion id="pod" label="Pod Alerts" %}}
 This alert type monitors for the status of a specific pod.
 
@@ -102,13 +123,13 @@ This alert type monitors for the availability of all workloads marked with tags 
 <br>
 _Available as of v2.2.4_
 
-If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/#monitoring), this alert type monitors for the overload from Prometheus expression querying.
+If you enable [project monitoring]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/#monitoring), this alert type monitors for the overload from Prometheus expression querying.
 
 1. Input or select an **Expression**, the drop down shows the original metrics from Prometheus, including:
 
   - [**Container**](https://github.com/google/cadvisor)
   - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
-  - [**Customize**]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
+  - [**Customize**]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
   - [**Project Level Grafana**](http://docs.grafana.org/administration/metrics/)
   - **Project Level Prometheus**
 
@@ -146,14 +167,14 @@ If you enable [project monitoring]({{< baseurl >}}/rancher/v2.x/en/project-admin
 
 1. Continue adding more **Alert Rule** to the group.
 
-1. Finally, choose the [notifiers]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/notifiers/) that send you alerts.
+1. Finally, choose the [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) that send you alerts.
 
     - You can set up multiple notifiers.
     - You can change notifier recipients on the fly.
 
 **Result:** Your alert is configured. A notification is sent when the alert is triggered.
 
-#### Managing Project Alerts
+## Managing Project Alerts
 
 To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**. You can:
 

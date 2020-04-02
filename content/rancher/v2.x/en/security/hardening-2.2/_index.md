@@ -1,17 +1,21 @@
 ---
-title: Hardening Guide - Rancher v2.2.x
-weight: 101
+title: Hardening Guide v2.2
+weight: 103
 ---
 
-### Hardening Guide for Rancher 2.2.x with Kubernetes 1.13
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+
+> This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+
+This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+
+Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
+------------------------|----------------|-----------------------|------------------
+Hardening Guide v2.2 | Rancher v2.2.x | Benchmark v1.4.1, 1.4.0 | Kubernetes 1.13
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.2.x/Rancher_Hardening_Guide.pdf)
 
-### Overview
-
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x with Kubernetes v1.13. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
-
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.2/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.2.x]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.2/).
 
 ### Profile Definitions
 
@@ -385,8 +389,8 @@ Inspect the Kubelet containers on all hosts and verify that they are running wit
 
 - `--streaming-connection-idle-timeout=<duration greater than 0>`
 - `--authorization-mode=Webhook`
-- `--protect-kernel-defaults=false`
-- `--make-iptables-util-chains=false`
+- `--protect-kernel-defaults=true`
+- `--make-iptables-util-chains=true`
 - `--event-qps=0`
 - `--anonymous-auth=false`
 - `--feature-gates="RotateKubeletServerCertificate=true"`
@@ -909,11 +913,11 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#advanced-options>
+- <https://rancher.com/docs/rancher/v2.x/en/installation/options/chart-options/#advanced-options>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 
-### 3.2.1 - Change the local admin password from the default value
+### 3.2.1 - Change the local administrator password from the default value
 
 **Profile Applicability**
 
@@ -921,11 +925,11 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 **Description**
 
-The local admin password should be changed from the default.
+The local administrator password should be changed from the default.
 
 **Rationale**
 
-The default admin password is common across all Rancher installations and should be changed immediately upon startup.
+The default administrator password is common across all Rancher installations and should be changed immediately upon startup.
 
 **Audit**
 

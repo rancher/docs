@@ -7,9 +7,11 @@ This cluster uses the default Nginx controller to allow traffic into the cluster
 
 A Rancher [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can configure Rancher to deploy Istio in a Kubernetes cluster.
 
-1. From the **Global** view, navigate to the cluster where you want to enable Istio.
+> If the cluster has a Pod Security Policy enabled there are [prerequisites steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp/)
+
+1. From the **Global** view, navigate to the **cluster** where you want to enable Istio.
 1. Click **Tools > Istio.**
-1. Optional: Configure member access and [resource limits]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/config/) for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
+1. Optional: Configure member access and [resource limits]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/resources/) for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
 1. Click **Enable**.
 1. Click **Save**.
 

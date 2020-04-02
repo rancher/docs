@@ -5,7 +5,7 @@ weight: 8100
 
 This section contains information to help you troubleshoot issues when using Rancher.
 
-- [Kubernetes components]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/kubernetes-components/)
+- [Kubernetes components]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-components/)
 
     If you need help troubleshooting core Kubernetes cluster components like:
     * `etcd`
@@ -16,22 +16,22 @@ This section contains information to help you troubleshoot issues when using Ran
     * `kube-proxy`
     * `nginx-proxy`
 
-- [Kubernetes resources]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/kubernetes-resources/)
+- [Kubernetes resources]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/kubernetes-resources/)
 
     Options for troubleshooting Kubernetes resources like Nodes, Ingress Controller and Rancher Agents are described in this section.
 
-- [Networking]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/networking/)
+- [Networking]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/networking/)
 
     Steps to troubleshoot networking issues can be found here.
 
-- [DNS]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/dns/)
+- [DNS]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/dns/)
 
     When you experience name resolution issues in your cluster.
 
-- [Rancher HA]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/rancherha/)
+- [Troubleshooting Rancher installed on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/rancherha/)
 
-    If you experience issues with your [High Availability (HA) Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/)
+    If you experience issues with your [Rancher server installed on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
-- [Imported clusters]({{< baseurl >}}/rancher/v2.x/en/troubleshooting/imported-clusters/)
+- [Imported clusters]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/imported-clusters/)
 
-    If you experience issues when [Importing Kubernetes Clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)
+    If you experience issues when [Importing Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)

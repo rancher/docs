@@ -6,7 +6,7 @@ When RKE is deploying Kubernetes, there are several images that are pulled. Thes
 
 As of `v0.1.6`, the functionality of a couple of the system images were consolidated into a single `rancher/rke-tools` image to simplify and speed the deployment process.
 
-You can configure the [network plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), [ingress controller]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/) as well as the options for these add-ons separately.
+You can configure the [network plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), [ingress controller]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [dns provider]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/) as well as the options for these add-ons separately in the `cluster.yml`.
 
 Below is an example of the list of system images used to deploy Kubernetes through RKE. The default versions of Kubernetes are tied to specific versions of system images. 
 
@@ -75,4 +75,4 @@ system_images:
 
 ### Air-gapped Setups
 
-If you have an air-gapped setup and cannot access `docker.io`, you will need to set up your [private registry]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) in your cluster configuration file. After you set up private registry, you will need to update these images to pull from your private registry.
+If you have an air-gapped setup and cannot access `docker.io`, you will need to set up your [private registry]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) in your cluster configuration file. After you set up private registry, you will need to update these images to pull from your private registry.

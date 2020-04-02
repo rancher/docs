@@ -13,16 +13,16 @@ Duplication of imported clusters, clusters in hosted Kubernetes providers, and c
 
 | Cluster Type                     | Cloneable?    |
 |----------------------------------|---------------|
-| [Nodes Hosted by Infrastructure Provider]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
-| [Hosted Kubernetes Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) |               |
-| [Custom Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              |               |
-| [Imported Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
+| [Nodes Hosted by Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
+| [Hosted Kubernetes Providers]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) |               |
+| [Custom Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              |               |
+| [Imported Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
 
 > **Warning:** During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.
 
 ## Prerequisites
 
-Download and install [Rancher CLI]({{< baseurl >}}/rancher/v2.x/en/cli). Remember to [create an API bearer token]({{< baseurl >}}/rancher/v2.x/en/user-settings/api-keys) if necessary.
+Download and install [Rancher CLI]({{<baseurl>}}/rancher/v2.x/en/cli). Remember to [create an API bearer token]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys) if necessary.
 
 
 ## 1. Export Cluster Config
@@ -52,6 +52,8 @@ Begin by using Rancher CLI to export the configuration for the cluster that you 
 ## 2. Modify Cluster Config
 
 Use your favorite text editor to modify the cluster configuration in `cluster-template.yml` for your cloned cluster.
+
+> **Note:** As of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
 
 1. Open `cluster-template.yml` (or whatever you named your config) in your favorite text editor.
 

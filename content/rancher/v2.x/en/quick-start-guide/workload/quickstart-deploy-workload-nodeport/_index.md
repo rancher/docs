@@ -19,7 +19,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 3.  Open the **Project: Default** project.
 
-4.  From the main menu select **Workloads**, then click on the **Workloads** tab.
+4.  Click **Resources > Workloads.** In versions prior to v2.3.0, click **Workloads > Workloads.**
 
 5.  Click **Deploy**.
 
@@ -33,15 +33,15 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 9.  From the **As a** drop-down, make sure that **NodePort (On every node)** is selected.
 
-	![As a dropdown, NodePort (On every node selected)]({{< baseurl >}}/img/rancher/nodeport-dropdown.png)
+	![As a dropdown, NodePort (On every node selected)]({{<baseurl>}}/img/rancher/nodeport-dropdown.png)
 
 10.  From the **On Listening Port** field, leave the **Random** value in place.
 
-	![On Listening Port, Random selected]({{< baseurl >}}/img/rancher/listening-port-field.png)
+	![On Listening Port, Random selected]({{<baseurl>}}/img/rancher/listening-port-field.png)
 
 11. From the **Publish the container port** field, enter port `80`.
 
-	![Publish the container port, 80 entered]({{< baseurl >}}/img/rancher/container-port-field.png)
+	![Publish the container port, 80 entered]({{<baseurl>}}/img/rancher/container-port-field.png)
 
 12. Leave the remaining options on their default setting. We'll tell you about them later.
 
@@ -151,6 +151,6 @@ Congratulations! You have successfully deployed a workload exposed via a NodePor
 
 When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
 
-- [Amazon AWS: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/amazon-aws-qs/#destroying-the-environment)
-- [DigitalOcean: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/#destroying-the-environment)
-- [Vagrant: Destroying the Environment]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/#destroying-the-environment)
+- [Amazon AWS: Destroying the Environment]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/deployment/amazon-aws-qs/#destroying-the-environment)
+- [DigitalOcean: Destroying the Environment]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/#destroying-the-environment)
+- [Vagrant: Destroying the Environment]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/#destroying-the-environment)

@@ -25,7 +25,7 @@ VMWare     | 1GB                       | 1280MB (rancheros.iso) <br> 2048MB (ran
 GCE        | 1GB                       | 1280MB
 AWS        | 1GB                       | 1.7GB
 
-You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
+You can adjust memory requirements by custom building RancherOS, please refer to [reduce-memory-requirements]({{<baseurl>}}/os/v1.x/en/installation/custom-builds/custom-rancheros-iso/#reduce-memory-requirements)
 
 ### How RancherOS Works
 
@@ -35,7 +35,7 @@ System Docker runs a special container called **Docker**, which is another Docke
 
  We created this separation not only for the security benefits, but also to make sure that commands like `docker rm -f $(docker ps -qa)` don't delete the entire OS.
 
-![How it works]({{< baseurl >}}/img/os/rancheroshowitworks.png)
+{{< img "/img/os/rancheroshowitworks.png" "How it works">}}
 
 ### Running RancherOS
 

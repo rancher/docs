@@ -54,8 +54,8 @@ $ rke etcd snapshot-save \
 |   `--bucket-name` value  |    Specify s3 bucket name |   * |
 |   `--folder` value  |    Specify folder inside  bucket where backup will be stored. This is optional. _Available as of v0.3.0_ |   * |
 |   `--region` value       |    Specify the s3 bucket location (optional) |   * |
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) | |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 The `--access-key` and `--secret-key` options are not required if the `etcd` nodes are AWS EC2 instances that have been configured with a suitable IAM instance profile.
 
@@ -116,8 +116,8 @@ $ rke etcd snapshot-save --config cluster.yml --name snapshot-name
 | --- | --- |
 |   `--name` value         |    Specify snapshot name |
 |   `--config` value       |    Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
 {{% /tabs %}}

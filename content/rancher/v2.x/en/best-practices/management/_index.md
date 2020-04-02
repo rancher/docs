@@ -10,12 +10,12 @@ Rancher allows you to set up numerous combinations of configurations. Some confi
 These tips can help you solve problems before they happen.
 
 ### Run Rancher on a Supported OS and Supported Docker Version
-Rancher is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/) should be used for running Rancher, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
+Rancher is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/) should be used for running Rancher, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
 
 ### Upgrade Your Kubernetes Version
 Keep your Kubernetes cluster up to date with a recent and supported version. Typically the Kubernetes community will support the current version and previous three minor releases (for example, 1.14.x, 1.13.x, 1.12.x, and 1.11.x). After a new version is released, the third-oldest supported version reaches EOL (End of Life) status. Running on an EOL release can be a risk if a security issues are found and patches are not available. The community typically makes minor releases every quarter (every three months).
 
-Rancher’s SLA’s are not community dependent, but as Kubernetes is a community-driven software, the quality of experience will degrade as you get farther away from the community's supported target.
+Rancher’s SLAs are not community dependent, but as Kubernetes is a community-driven software, the quality of experience will degrade as you get farther away from the community's supported target.
 
 ### Kill Pods Randomly During Testing
 Run chaoskube or a similar mechanism to randomly kill pods in your test environment. This will test the resiliency of your infrastructure and the ability of Kubernetes to self-heal. It's not recommended to run this in your production environment.
@@ -26,14 +26,14 @@ Rancher's "Add Cluster" UI is preferable for getting started with Kubernetes clu
 Rancher [maintains a Terraform provider](https://rancher.com/blog/2019/rancher-2-terraform-provider/) for working with Rancher 2.0 Kubernetes. It is called the [Rancher2 Provider.](https://www.terraform.io/docs/providers/rancher2/index.html)
 
 ### Upgrade Rancher in a Staging Environment
-All upgrades, both patch and feature upgrades, should be first tested on a staging environment before production is upgraded. The more closely the staging environment mirrors production, the higher chance your production upgrade will be successful. 
+All upgrades, both patch and feature upgrades, should be first tested on a staging environment before production is upgraded. The more closely the staging environment mirrors production, the higher chance your production upgrade will be successful.
 
 ### Renew Certificates Before they Expire
-Multiple people in your organization should set up calendar reminders for certificate renewal. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using [monitoring and alerting mechanisms]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/) to track certificate expiration.
+Multiple people in your organization should set up calendar reminders for certificate renewal. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using [monitoring and alerting mechanisms]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/) to track certificate expiration.
 
 Rancher-provisioned Kubernetes clusters will use certificates that expire in one year. Clusters provisioned by other means may have a longer or shorter expiration.
 
-Certificates can be renewed for Rancher-provisioned clusters [through the Rancher user interface]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/certificate-rotation/).
+Certificates can be renewed for Rancher-provisioned clusters [through the Rancher user interface]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/).
 
 ### Enable Recurring Snapshots for Backing up and Restoring the Cluster
 Make sure etcd recurring snapshots are enabled. Extend the snapshot retention to a period of time that meets your business needs. In the event of a catastrophic failure or deletion of data, this may be your only recourse for recovery. For details about configuring snapshots, refer to the [RKE documentation]({{<baseurl>}}/rke/latest/en/etcd-snapshots/) or the [Rancher documentation on backups]({{<baseurl>}}/rancher/v2.x/en/backups/).
@@ -48,7 +48,7 @@ When installing or upgrading a non-production environment to an early release, a
 
 Make sure the feature version you are upgrading to is considered "stable" as determined by Rancher. Use the beta, release candidate, and "latest" versions in a testing, development, or demo environment to try out new features. Feature version upgrades, for example 2.1.x to 2.2.x, should be considered as and when they are released. Some bug fixes and most features are not back ported into older versions.
 
-Keep in mind that Rancher does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches. 
+Keep in mind that Rancher does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches.
 
 For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-maintenance-terms/).
 
@@ -78,13 +78,13 @@ Provision 3 or 5 etcd nodes. Etcd requires a quorum to determine a leader by the
 Provision two or more control plane nodes. Some control plane components, such as the `kube-apiserver`, run in [active-active](https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster) mode and will give you more scalability. Other components such as kube-scheduler and kube-controller run in active-passive mode (leader elect) and give you more fault tolerance.
 
 ### Monitor Your Cluster
-Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
+Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
 
 
 # Tips for Security
 Below are some basic tips for increasing security in Rancher. For more detailed information about securing your cluster, you can refer to these resources:
 
-- Rancher's [security documentation and Kubernetes cluster hardening guide]({{< baseurl >}}/rancher/v2.x/en/security/)
+- Rancher's [security documentation and Kubernetes cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/)
 - [101 More Security Best Practices for Kubernetes](https://rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
 
 ### Update Rancher with Security Patches
@@ -99,7 +99,7 @@ In addition to Rancher software updates, closely monitor security fixes for rela
 # Tips for Multi-Tenant Clusters
 
 ### Namespaces
-Each tenant should have their own unique namespaces within the cluster. This avoids naming conflicts and allows resources to be only visible to their owner through use of RBAC policy 
+Each tenant should have their own unique namespaces within the cluster. This avoids naming conflicts and allows resources to be only visible to their owner through use of RBAC policy
 
 ### Project Isolation
 Use Rancher's Project Isolation to automatically generate Network Policy between Projects (sets of Namespaces). This further protects workloads from interference
@@ -108,18 +108,18 @@ Use Rancher's Project Isolation to automatically generate Network Policy between
 Enforce use of sane resource limit definitions for every deployment in your cluster. This not only protects the owners of the deployment, but the neighboring resources from other tenants as well. Remember, namespaces do not isolate at the node level, so over-consumption of resources on a node affects other namespace deployments. Admission controllers can be written to require resource limit definitions
 
 ### Resource Requirements
-Enforce use of resource requirement definitions for each deployment in your cluster. This enables the scheduler to appropriately schedule workloads. Otherwise you will eventually end up with over-provisioned nodes. 
+Enforce use of resource requirement definitions for each deployment in your cluster. This enables the scheduler to appropriately schedule workloads. Otherwise you will eventually end up with over-provisioned nodes.
 
 # Class of Service and Kubernetes Clusters
 A class of service describes the expectations around cluster uptime, durability, and duration of maintenance windows. Typically organizations group these characteristics into labels such as "dev" or "prod"
 
 ### Consider fault domains
-Kubernetes clusters can span multiple classes of service, however it is important to consider the ability for one workload to affect another. Without proper deployment practices such as resource limits, requirements, etc, a deployment that is not behaving well has the potential to impact the health of the cluster. In a "dev" environment it is common for end-users to exercise less caution with deployments, thus increasing the chance of such behavior. Sharing this behavior with your production workload increases risk. 
+Kubernetes clusters can span multiple classes of service, however it is important to consider the ability for one workload to affect another. Without proper deployment practices such as resource limits, requirements, etc, a deployment that is not behaving well has the potential to impact the health of the cluster. In a "dev" environment it is common for end-users to exercise less caution with deployments, thus increasing the chance of such behavior. Sharing this behavior with your production workload increases risk.
 
 ### Upgrade risks
-Upgrades of Kuberentes are not without risk, the best way to predict the outcome of an upgrade is try it on a cluster of similar load and use case as your production cluster. This is where having non-prod class of service clusters can be advantageous. 
+Upgrades of Kubernetes are not without risk, the best way to predict the outcome of an upgrade is try it on a cluster of similar load and use case as your production cluster. This is where having non-prod class of service clusters can be advantageous.
 
-### Resource Efficiency 
+### Resource Efficiency
 Clusters can be built with varying degrees of redundancy. In a class of service with low expectations for uptime, resources and cost can be conserved by building clusters without redundant Kubernetes control components. This approach may also free up more budget/resources to increase the redundancy at the production level
 
 # Network Security

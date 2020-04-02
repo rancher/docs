@@ -50,7 +50,7 @@ To configure the resources allocated to an Istio component,
 
 ## Pilot
 
-[Pilot](https://istio.io/docs/concepts/what-is-istio/#pilot)  provides the following:
+[Pilot](https://istio.io/docs/ops/deployment/architecture/#pilot)  provides the following:
 
 - Authentication configuration
 - Service discovery for the Envoy sidecars
@@ -70,7 +70,7 @@ Pilot Selector | Ability to select the nodes in which istio-pilot pod is deploye
 
 ## Mixer
 
-[Mixer](https://istio.io/docs/concepts/what-is-istio/#mixer)  enforces access control and usage policies across the service mesh. It also integrates with plugins for monitoring tools such as Prometheus. The Envoy sidecar proxy passes telemetry data and monitoring data to Mixer, and Mixer passes the monitoring data to Prometheus.
+[Mixer](https://istio.io/docs/ops/deployment/architecture/#mixer)  enforces access control and usage policies across the service mesh. It also integrates with plugins for monitoring tools such as Prometheus. The Envoy sidecar proxy passes telemetry data and monitoring data to Mixer, and Mixer passes the monitoring data to Prometheus.
 
 For more information on Mixer, policies and telemetry, refer to the [documentation](https://istio.io/docs/concepts/policies-and-telemetry/).
 

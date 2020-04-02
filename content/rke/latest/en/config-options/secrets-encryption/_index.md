@@ -18,7 +18,7 @@ RKE provides users with two paths of configuration to enable at-rest data encryp
 - Managed at-rest data encryption
 - Custom configuration for at-rest data encryption
 
-Both configuration options can be added during initial cluster provisioning or by updating an exsiting cluster.
+Both configuration options can be added during initial cluster provisioning or by updating an existing cluster.
 
 To utilize this feature, a new field `secrets_encryption_config` is added to the [Kubernetes API service configuration]({{<baseurl>}}//rke/latest/en/config-options/services/#kubernetes-api-server). A full custom configuration looks like this:
 

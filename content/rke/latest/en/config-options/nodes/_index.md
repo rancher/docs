@@ -5,9 +5,33 @@ weight: 210
 
 The `nodes` directive is the only required section in the `cluster.yml` file. It's used by RKE to specify cluster node(s), ssh credentials used to access the node(s) and which roles these nodes will be in the Kubernetes cluster.
 
+This section covers the following topics:
+
+- [Node configuration example](#node-configuration-example)
+- [Kubernetes roles](#kubernetes-roles)
+  - [etcd](#etcd)
+  - [Controlplane](#controlplane)
+  - [Worker](#worker)
+- [Node options](#node-options)
+  - [Address](#address)
+  - [Internal address](#internal-address)
+  - [Overriding the hostname](#overriding-the-hostname)
+  - [SSH port](#ssh-port)
+  - [SSH users](#ssh-users)
+  - [SSH key path](#ssh-key-path)
+  - [SSH key](#ssh-key)
+  - [SSH certificate path](#ssh-certificate-path)
+  - [SSH certificate](#ssh-certificate)
+  - [Docker socket](#docker-socket)
+  - [Labels](#labels)
+  - [Taints](#taints)
+
+# Node Configuration Example
+
+The following example shows node configuration in an example `cluster.yml`:
+
 ```yaml
 nodes:
-    nodes:
     - address: 1.1.1.1
       user: ubuntu
       role:
@@ -50,7 +74,33 @@ nodes:
         app: ingress
 ```
 
-## Node Options
+# Kubernetes Roles
+
+You can specify the list of roles that you want the node to be as part of the Kubernetes cluster. Three roles are supported: `controlplane`, `etcd` and `worker`. Node roles are not mutually exclusive. It's possible to assign any combination of roles to any node. It's also possible to change a node's role using the upgrade process.
+
+> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes.
+
+### etcd
+
+With this role, the `etcd` container will be run on these nodes.  Etcd keeps the state of your cluster and is the most important component in your cluster, single source of truth of your cluster. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **etcd** role is shown below:
+
+Taint Key                              | Taint Value  | Taint Effect
+---------------------------------------|--------------|--------------
+`node-role.kubernetes.io/etcd`         | `true`       | `NoExecute`
+
+### Controlplane
+
+With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **controlplane** role is shown below:
+
+Taint Key                              | Taint Value  | Taint Effect
+---------------------------------------|--------------|--------------
+`node-role.kubernetes.io/controlplane` | `true`       | `NoSchedule`
+
+### Worker
+
+With this role, any workloads or pods that are deployed will land on these nodes.
+
+# Node Options
 
 Within each node, there are multiple directives that can be used.
 
@@ -66,7 +116,7 @@ The `internal_address` provides the ability to have nodes with multiple addresse
 
 The `hostname_override` is used to be able to provide a friendly name for RKE to use when registering the node in Kubernetes. This hostname doesn't need to be a routable address, but it must be a valid [Kubernetes resource name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names). If the `hostname_override` isn't set, then the `address` directive is used when registering the node in Kubernetes.
 
-> **Note:** When [cloud providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. There is an exception for the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws), where the `hostname_override` field will be explicitly ignored.
+> **Note:** When [cloud providers]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) are configured, you may need to override the hostname in order to use the cloud provider correctly. There is an exception for the [AWS cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#aws), where the `hostname_override` field will be explicitly ignored.
 
 ### SSH Port
 
@@ -80,7 +130,7 @@ For each node, you specify the `user` to be used when connecting to this node. T
 
 For each node, you specify the path, i.e. `ssh_key_path`, for the SSH private key to be used when connecting to this node. The default key path for each node is `~/.ssh/id_rsa`.
 
-> **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{< baseurl >}}/rke/latest/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
+> **Note:** If you have a private key that can be used across all nodes, you can set the [SSH key path at the cluster level]({{<baseurl>}}/rke/latest/en/config-options/#cluster-level-ssh-key-path). The SSH key path set in each node will always take precedence.
 
 ### SSH Key
 
@@ -94,39 +144,13 @@ For each node, you can specify the path, i.e. `ssh_cert_path`, for the signed SS
 
 Instead of setting the path to the signed SSH certificate, you can alternatively specify the actual certificate, i.e. `ssh_cert`, to be used to connect to the node.
 
-### Kubernetes Roles
-
-You can specify the list of roles that you want the node to be as part of the Kubernetes cluster. Three roles are supported: `controlplane`, `etcd` and `worker`. Node roles are not mutually exclusive. It's possible to assign any combination of roles to any node. It's also possible to change a node's role using the upgrade process.
-
-> **Note:** Prior to v0.1.8, workloads/pods might have run on any nodes with `worker` or `controlplane` roles, but as of v0.1.8, they will only be deployed to any `worker` nodes.
-
-* **etcd**
-
-With this role, the `etcd` container will be run on these nodes.  Etcd keeps the state of your cluster and is the most important component in your cluster, single source of truth of your cluster. Although you can run etcd on just one node, it typically takes 3, 5 or more nodes to create an HA configuration. Etcd is a distributed reliable key-value store which stores all Kubernetes state. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **etcd** role is shown below:
-
-Taint Key                              | Taint Value  | Taint Effect
----------------------------------------|--------------|--------------
-`node-role.kubernetes.io/etcd`         | `true`       | `NoExecute`
-
-* **controlplane**
-
-With this role, the stateless components that are used to deploy Kubernetes will run on these nodes. These components are used to run the API server, scheduler, and controllers. [Taint set on nodes](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) with the **controlplane** role is shown below:
-
-Taint Key                              | Taint Value  | Taint Effect
----------------------------------------|--------------|--------------
-`node-role.kubernetes.io/controlplane` | `true`       | `NoSchedule`
-
-* **worker**
-
-With this role, any workloads or pods that are deployed will land on these nodes.
-
 ### Docker Socket
 
 If the Docker socket is different than the default, you can set the `docker_socket`. The default is `/var/run/docker.sock`
 
 ### Labels
 
-You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/) `node_selector` option.
+You have the ability to add an arbitrary map of labels for each node. It can be used when using the [ingress controller's]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) `node_selector` option.
 
 ### Taints
 

@@ -8,7 +8,9 @@ The details of restoring your cluster from backup are different depending on you
 {{% tabs %}}
 {{% tab "RKE v0.2.0+"%}}
 
-If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts the etcd to a specific snapshot. The following actions are included in the command:
+If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot and should be run on an etcd node of the the specific cluster that has suffered the disaster. 
+
+The following actions will be performed when you run the command:
 
 - Syncs the snapshot or downloads the snapshot from S3, if necessary.
 - Checks snapshot checksum across etcd nodes to make sure they are identical.
@@ -31,7 +33,7 @@ $ rke etcd snapshot-restore --config cluster.yml --name mysnapshot
 
 The snapshot is assumed to be located in `/opt/rke/etcd-snapshots`.
 
-**Note:** The `pki.bundle.tar.gz` file is not needed because RKE v0.2.0 changed how the [Kubernetes cluster state is stored]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state).
+**Note:** The `pki.bundle.tar.gz` file is not needed because RKE v0.2.0 changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state).
 
 ### Example of Restoring from a Snapshot in S3
 
@@ -65,15 +67,15 @@ $ rke etcd snapshot-restore \
 | `--bucket-name` value     |  Specify s3 bucket name | *|
 | `--folder` value     |   Specify folder inside  bucket where backup will be stored. This is optional.  This is optional. _Available as of v0.3.0_ | *|
 | `--region` value          |  Specify the s3 bucket location (optional) | *|
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) | |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
 {{% tab "RKE prior to v0.2.0"%}}
 
-If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot.
+If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot and should be run on an etcd node of the the specific cluster that has suffered the disaster. 
 
-The following actions are included in `rke etcd snapshot-restore`:
+The following actions will be performed when you run the command:
 
 - Removes the old etcd cluster
 - Rebuilds the etcd cluster using the local snapshot
@@ -107,8 +109,8 @@ The `pki.bundle.tar.gz` file is also expected to be in the same location.
 | --- | --- |
 | `--name` value            |  Specify snapshot name |
 | `--config` value          |  Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
 {{% /tabs %}}

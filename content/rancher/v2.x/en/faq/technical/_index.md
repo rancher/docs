@@ -3,50 +3,50 @@ title: Technical
 weight: 8006
 ---
 
-### How can I reset the admin password?
+### How can I reset the administrator password?
 
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (Helm):
+Kubernetes install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (RKE add-on):
+Kubernetes install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- reset-password
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
 
 ### I deleted/deactivated the last admin, how can I fix it?
-Single node install:
+Docker Install:
 ```
 $ docker exec -ti <container_id> ensure-default-admin
-New default admin user (user-xxxxx)
-New password for default admin user (user-xxxxx):
+New default administrator (user-xxxxx)
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (Helm):
+Kubernetes install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
-New password for default admin user (user-xxxxx):
+New password for default administrator (user-xxxxx):
 <new_password>
 ```
 
-High Availability install (RKE add-on):
+Kubernetes install (RKE add-on):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- ensure-default-admin
@@ -56,7 +56,7 @@ New password for default admin user (user-xxxxx):
 
 ### How can I enable debug logging?
 
-* Single node install
+* Docker Install
  * Enable
 ```
 $ docker exec -ti <container_id> loglevel --set debug
@@ -70,7 +70,7 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
-* High Availability install (Helm)
+* Kubernetes install (Helm)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -90,7 +90,7 @@ OK
 OK
 ```
 
-* High Availability install (RKE add-on)
+* Kubernetes install (RKE add-on)
  * Enable
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
@@ -116,12 +116,12 @@ Node Templates can be accessed by opening your account menu (top right) and sele
 
 ### Why is my Layer-4 Load Balancer in `Pending` state?
 
-The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
 ### Where is the state of Rancher stored?
 
-- Single node install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
-- High Availability install: in the etcd of the RKE cluster created to run Rancher.
+- Docker Install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
+- Kubernetes install: in the etcd of the RKE cluster created to run Rancher.
 
 ### How are the supported Docker versions determined?
 
@@ -131,7 +131,7 @@ We follow the validated Docker versions for upstream Kubernetes releases. The va
 
 SSH keys to access the nodes created by Rancher can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical ellipsis button at the end of the row, and choose **Download Keys** as shown in the picture below.
 
-![Download Keys]({{< baseurl >}}/img/rancher/downloadsshkeys.png)
+![Download Keys]({{<baseurl>}}/img/rancher/downloadsshkeys.png)
 
 Unzip the downloaded zip file, and use the file `id_rsa` to connect to you host. Be sure to use the correct username (`rancher` or `docker` for RancherOS, `ubuntu` for Ubuntu, `ec2-user` for Amazon Linux)
 
@@ -150,13 +150,13 @@ The UI consists of static files, and works based on responses of the API. That m
 
 A node is required to have a static IP configured (or a reserved IP via DHCP). If the IP of a node has changed, you will have to remove it from the cluster and readd it. After it is removed, Rancher will update the cluster to the correct state. If the cluster is no longer in `Provisioning` state, the node is removed from the cluster.
 
-When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) to clean the node.
+When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) to clean the node.
 
 When the node is removed from the cluster, and the node is cleaned, you can readd the node to the cluster.
 
 ### How can I add additional arguments/binds/environment variables to Kubernetes components in a Rancher Launched Kubernetes cluster?
 
-You can add additional arguments/binds/environment variables via the [Config File]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{< baseurl >}}/rke/latest/en/example-yamls/).
+You can add additional arguments/binds/environment variables via the [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls]({{<baseurl>}}/rke/latest/en/example-yamls/).
 
 ### How do I check if my certificate chain is valid?
 

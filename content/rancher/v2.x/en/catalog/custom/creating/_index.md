@@ -61,7 +61,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
 	<figcaption>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</figcaption>
 
-	![app-readme.md]({{< baseurl >}}/img/rancher/app-readme.png)
+	![app-readme.md]({{<baseurl>}}/img/rancher/app-readme.png)
 
 - `questions.yml`
 
@@ -70,7 +70,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
 	<figcaption>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</figcaption>
 
-	![questions.yml]({{< baseurl >}}/img/rancher/questions.png)
+	![questions.yml]({{<baseurl>}}/img/rancher/questions.png)
 
 
 ### Questions.yml
@@ -99,7 +99,7 @@ This reference contains variables that you can use in `questions.yml` nested und
 | 	variable          | string  | true    |  Define the variable name specified in the `values.yml` file, using `foo.bar` for nested objects. |
 | 	label             | string  | true      |  Define the UI label. |
 | 	description       | string  | false      |  Specify the description of the variable.|
-| 	type              | string  | false      |  Default to `string` if not specified (current supported types are string, boolean, int, enum, password, storageclass and hostname).|
+| 	type              | string  | false      |  Default to `string` if not specified (current supported types are string, multiline, boolean, int, enum, password, storageclass, hostname, pvc, and secret).|
 | 	required          | bool    | false      |  Define if the variable is required or not (true \| false)|
 | 	default           | string  | false      |  Specify the default value. |
 | 	group             | string  | false      |  Group questions by input value. |
@@ -121,7 +121,7 @@ This reference contains variables that you can use in `questions.yml` nested und
 
  You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
 
->**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
+>**Note:** For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://helm.sh/docs/chart_template_guide/).
 
 1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure](#chart-directory-structure).
 

@@ -7,7 +7,7 @@ aliases:
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
 
-In the [pipeline configuration docs](), we provide examples of each available feature within pipelines. Here is a full example for those who want to jump rigt in.
+In the [pipeline configuration docs](), we provide examples of each available feature within pipelines. Here is a full example for those who want to jump right in.
 
 ```yaml
 # example

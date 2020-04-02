@@ -1,5 +1,6 @@
 ---
-title: Installation
+title: RKE Kubernetes Installation
+description: RKE is a fast, versatile Kubernetes installer you can use to install Kubernetes on your Linux hosts. Learn the simple steps for an RKE Kubernetes installation
 weight: 50
 ---
 
@@ -73,20 +74,20 @@ $ brew upgrade rke
 
 The Kubernetes cluster components are launched using Docker on a Linux distro. You can use any Linux you want, as long as you can install Docker on it.
 
-Review the [OS requirements]({{< baseurl >}}/rke/latest/en/installation/os/) and configure each node appropriately.
+Review the [OS requirements]({{<baseurl>}}/rke/latest/en/installation/os/) and configure each node appropriately.
 
 ## Creating the Cluster Configuration File
 
-RKE uses a cluster configuration file, referred to as `cluster.yml` to determine what nodes will be in the cluster and how to deploy Kubernetes. There are [many configuration options]({{< baseurl >}}/rke/latest/en/config-options/) that can be set in the `cluster.yml`. In our example, we will be assuming the minimum of one [node]({{< baseurl >}}/rke/latest/en/config-options/nodes) for your Kubernetes cluster.
+RKE uses a cluster configuration file, referred to as `cluster.yml` to determine what nodes will be in the cluster and how to deploy Kubernetes. There are [many configuration options]({{<baseurl>}}/rke/latest/en/config-options/) that can be set in the `cluster.yml`. In our example, we will be assuming the minimum of one [node]({{<baseurl>}}/rke/latest/en/config-options/nodes) for your Kubernetes cluster.
 
 There are two easy ways to create a `cluster.yml`:
 
-- Using our [minimal `cluster.yml`]({{< baseurl >}}/rke/latest/en/example-yamls/#minimal-cluster-yml-example) and updating it based on the node that you will be using.
+- Using our [minimal `cluster.yml`]({{<baseurl>}}/rke/latest/en/example-yamls/#minimal-cluster-yml-example) and updating it based on the node that you will be using.
 - Using `rke config` to query for all the information needed.
 
 ### Using `rke config`
 
-Run `rke config` to create a new `cluster.yml` in the current directory. This command will prompt you for all the information needed to build a cluster. See [cluster configuration options]({{< baseurl >}}/rke/latest/en/config-options/) for details on the various options.
+Run `rke config` to create a new `cluster.yml` in the current directory. This command will prompt you for all the information needed to build a cluster. See [cluster configuration options]({{<baseurl>}}/rke/latest/en/config-options/) for details on the various options.
 
 ```
 rke config --name cluster.yml
@@ -116,7 +117,7 @@ To create an HA cluster, specify more than one host with role `controlplane`.
 
 _Available as of v0.2.0_
 
-By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{< baseurl >}}/rke/latest/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{< baseurl >}}/rke/latest/en/cert-mgmt/#certificate-rotation).
+By default, Kubernetes clusters require certificates and RKE auto-generates the certificates for all cluster components. You can also use [custom certificates]({{<baseurl>}}/rke/latest/en/installation/certs/). After the Kubernetes cluster is deployed, you can [manage these auto-generated certificates]({{<baseurl>}}/rke/latest/en/cert-mgmt/#certificate-rotation).
 
 ## Deploying Kubernetes with RKE
 
@@ -145,8 +146,10 @@ The last line should read `Finished building Kubernetes cluster successfully` to
 Save a copy of the following files in a secure location:
 
 - `cluster.yml`: The RKE cluster configuration file.
-- `kube_config_cluster.yml`: The [Kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `kube_config_cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `cluster.rkestate`: The [Kubernetes Cluster State file](#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
+
+> **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
 
 ### Kubernetes Cluster State
 
@@ -158,9 +161,9 @@ Prior to v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updati
 
 ## Interacting with your Kubernetes cluster
 
-After your cluster is up and running, you can start using the [generated kubeconfig file]({{< baseurl >}}/rke/latest/en/kubeconfig) to start interacting with your Kubernetes cluster using `kubectl`.
+After your cluster is up and running, you can start using the [generated kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig) to start interacting with your Kubernetes cluster using `kubectl`.
 
 After installation, there are several maintenance items that might arise:
 
-* [Certificate Management]({{< baseurl >}}/rke/latest/en/cert-mgmt/)
-* [Adding and Removing Nodes in the cluster]({{< baseurl >}}/rke/latest/en/managing-clusters)
+* [Certificate Management]({{<baseurl>}}/rke/latest/en/cert-mgmt/)
+* [Adding and Removing Nodes in the cluster]({{<baseurl>}}/rke/latest/en/managing-clusters)

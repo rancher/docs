@@ -1,10 +1,10 @@
 ---
-title: Custom CA root certificate
+title: About Custom CA Root Certificates
 weight: 1110
 aliases:
   - /rancher/v2.x/en/installation/custom-ca-root-certificate/
-  - /rancher/v2.x/en/admin-settings/custom-ca-root-certificate/
 ---
+
 If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).
 
 Services that Rancher needs to access are sometimes configured with a certificate from a custom/internal CA root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error displays: `x509: certificate signed by unknown authority`.
@@ -13,14 +13,15 @@ To validate the certificate, the CA root certificates need to be added to Ranche
 
 Examples of services that Rancher can access:
 
-* Catalogs
-* Authentication providers
-* Accessing hosting/cloud API when using Node Drivers
+- Catalogs
+- Authentication providers
+- Accessing hosting/cloud API when using Node Drivers
 
 ## Installing with the custom CA Certificate
 
 For details on starting a Rancher container with your private CA certificates mounted, refer to the installation docs:
 
-- [Single Node Install]({{< baseurl >}}/rancher/v2.x/en/installation/single-node/#custom-ca-certificate)
+- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#custom-ca-certificate)
 
-- [HA Install]({{< baseurl >}}/rancher/v2.x/en/installation/ha/helm-rancher/chart-options/#additional-trusted-cas)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#additional-trusted-cas)
+

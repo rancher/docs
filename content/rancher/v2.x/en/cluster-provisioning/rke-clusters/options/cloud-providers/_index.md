@@ -1,26 +1,34 @@
 ---
-title: Selecting Cloud Providers
+title: Setting up Cloud Providers
 weight: 2255
 aliases:
   - /rancher/v2.x/en/concepts/clusters/cloud-providers/
 ---
-A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes. You can configure a cloud provider to automatically provision load balancers or persistent storage devices when launching Kubernetes definitions, provided that the cloud provider you're using supports such automation.
+A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes. For more information, refer to the [official Kubernetes documentation on cloud providers.](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+
+When a cloud provider is set up in Rancher, the Rancher server can automatically provision new nodes, load balancers or persistent storage devices when launching Kubernetes definitions, if the cloud provider you're using supports such automation.
+
+- [Cloud provider options](#cloud-provider-options)
+- [Setting up the Amazon cloud provider](#setting-up-the-amazon-cloud-provider)
+- [Setting up the Azure cloud provider](#setting-up-the-azure-cloud-provider)
+
+## Cloud Provider Options
 
 By default, the **Cloud Provider** option is set to `None`. Supported cloud providers are:
 
-* [Amazon](#amazon)
-* [Azure](#azure)
+* [Amazon](#setting-up-the-amazon-cloud-provider)
+* [Azure](#setting-up-the-azure-cloud-provider)
 
 The `Custom` cloud provider is available if you want to configure any [Kubernetes cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/).
 
-For the custom cloud provider option, you can refer to the [RKE docs]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
+For the custom cloud provider option, you can refer to the [RKE docs]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
 
-* [vSphere]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere/)
-* [Openstack]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/openstack/)
+* [vSphere]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/)
+* [Openstack]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/openstack/)
 
 > **Warning:** Your cluster will not provision correctly if you configure a cloud provider cluster of nodes that do not meet the prerequisites. Prerequisites for supported cloud providers are listed below.
 
-## Amazon
+## Setting up the Amazon Cloud Provider
 
 When using the `Amazon` cloud provider, you can leverage the following capabilities:
 
@@ -29,19 +37,21 @@ When using the `Amazon` cloud provider, you can leverage the following capabilit
 
 See [cloud-provider-aws README](https://github.com/kubernetes/cloud-provider-aws/blob/master/README.md) for all information regarding the Amazon cloud provider.
 
-### Prerequisites
+To set up the Amazon cloud provider,
 
-- Create an IAM role and attach to the instances
-- Configuring the ClusterID
+1. [Create an IAM role and attach to the instances](#1-create-an-iam-role-and-attach-to-the-instances)
+2. [Configure the ClusterID](#2-configure-the-clusterid)
 
-> **Note:** When you create an [Amazon EC2 Cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
-
-#### Create an IAM Role and attach to the instances
+### 1. Create an IAM Role and attach to the instances
 
 All nodes added to the cluster must be able to interact with EC2 so that they can create and remove resources. You can enable this interaction by using an IAM role attached to the instance. See [Amazon documentation: Creating an IAM Role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#create-iam-role) how to create an IAM role. There are two example policies:
 
 * The first policy is for the nodes with the `controlplane` role. These nodes have to be able to create/remove EC2 resources. The following IAM policy is an example, please remove any unneeded permissions for your use case.
 * The second policy is for the nodes with the `etcd` or `worker` role. These nodes only have to be able to retrieve information from EC2.
+
+While creating an [Amazon EC2 cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
+
+While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must manually attach the IAM role to the instance(s).
 
 IAM Policy for nodes with the `controlplane` role:
 
@@ -140,10 +150,7 @@ IAM policy for nodes with the `etcd` or `worker` role:
 }
 ```
 
-- While creating an [Amazon EC2 cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
-- While creating a [Custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must manually attach the IAM role to the instance(s).
-
-#### Configuring the ClusterID
+### 2. Configure the ClusterID
 
 The following resources need to tagged with a `ClusterID`:
 
@@ -152,6 +159,8 @@ The following resources need to tagged with a `ClusterID`:
 - **Security Group**: The security group used for your cluster.
 
 >**Note:** Do not tag multiple security groups. Tagging multiple groups generates an error when creating an Elastic Load Balancer (ELB).
+
+When you create an [Amazon EC2 Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
 
 Use the following tag:
 
@@ -163,12 +172,11 @@ Setting the value of the tag to `owned` tells the cluster that all resources wit
 
 **Key** = `kubernetes.io/cluster/CLUSTERID` **Value** = `shared`.
 
+### Using Amazon Elastic Container Registry (ECR)
 
-#### Using Amazon Elastic Container Registry (ECR)
+The kubelet component has the ability to automatically obtain ECR credentials, when the IAM profile mentioned in [Create an IAM Role and attach to the instances](#1-create-an-iam-role-and-attach-to-the-instances) is attached to the instance(s). When using a Kubernetes version older than v1.15.0, the Amazon cloud provider needs be configured in the cluster. Starting with Kubernetes version v1.15.0, the kubelet can obtain ECR credentials without having the Amazon cloud provider configured in the cluster.
 
-The kubelet component has the ability to automatically obtain ECR credentials, when the IAM profile mentioned in [Create an IAM Role and attach to the instances](#create-an-iam-role-and-attach-to-the-instances) is attached to the instance(s). When using a Kubernetes version older than v1.15.0, the Amazon cloud provider needs be configured in the cluster. Starting with Kubernetes version v1.15.0, the kubelet can obtain ECR credentials without having the Amazon cloud provider configured in the cluster.
-
-## Azure
+## Setting up the Azure Cloud Provider
 
 When using the `Azure` cloud provider, you can leverage the following capabilities:
 
@@ -178,30 +186,27 @@ When using the `Azure` cloud provider, you can leverage the following capabiliti
 
 - **Network Storage:** Support Azure Files via CIFS mounts.
 
-### Known Limitations Regarding Azure Subscriptions
-
 The following account types are not supported for Azure Subscriptions:
 
 - Single tenant accounts (i.e. accounts with no subscriptions).
 - Multi-subscription accounts.
 
-### Prerequisites
+To set up the Azure cloud provider following credentials need to be configured:
 
-* Configure the credentials
+1. [Set up the Azure Tenant ID](#1-set-up-the-azure-tenant-id)
+2. [Set up the Azure Client ID and Azure Client Secret](#2-set-up-the-azure-client-id-and-azure-client-secret)
+3. [Configure App Registration Permissions](#3-configure-app-registration-permissions)
+4. [Set up Azure Network Security Group Name](#4-set-up-azure-network-security-group-name)
 
-#### Configure the credentials
+### 1. Set up the Azure Tenant ID
 
-The following credentials need to be configured:
-
-* **Azure Tenant ID (tenantID)**
-
-Visit [Azure portal](https://portal.azure.com), login and go to **Azure Active Directory** and select **Properties**. Your **Directory ID** is your **Tenant ID**.
+Visit [Azure portal](https://portal.azure.com), login and go to **Azure Active Directory** and select **Properties**. Your **Directory ID** is your **Tenant ID** (tenantID).
 
 If you want to use the Azure CLI, you can run the command `az account show` to get the information.
 
-* **Azure Client ID (aadClientId) and Azure Client Secret (aadClientSecret)**
+### 2. Set up the Azure Client ID and Azure Client Secret 
 
-Visit [Azure portal](https://portal.azure.com), login and follow the steps below to create an **App Registration** and the corresponding **Azure Client ID** and **Azure Client Secret**.
+Visit [Azure portal](https://portal.azure.com), login and follow the steps below to create an **App Registration** and the corresponding **Azure Client ID** (aadClientId) and **Azure Client Secret** (aadClientSecret).
 
 1. Select **Azure Active Directory**.
 1. Select **App registrations**.
@@ -218,7 +223,9 @@ The next step is to generate the **Azure Client Secret**:
 1. Enter a **Key description**, select an expiration time and select **Save**.
 1. The generated value shown in the column **Value** is what you need to use as **Azure Client Secret**. This value will only be shown once.
 
-Last thing you will need to do, is assign the appropriate permissions to your App registration.
+### 3. Configure App Registration Permissions
+
+The last thing you will need to do, is assign the appropriate permissions to your App registration.
 
 1. Go to **More services**, search for **Subscriptions** and open it.
 1. Open **Access control (IAM)**.
@@ -227,15 +234,12 @@ Last thing you will need to do, is assign the appropriate permissions to your Ap
 1. For **Select**, select your created App registration name.
 1. Select **Save**.
 
+### 4. Set up Azure Network Security Group Name
 
-* **Azure Network Security Group Name (securityGroupName)**
+A custom Azure Network Security Group (securityGroupName) is needed to allow Azure Load Balancers to work.
 
-Custom Azure Network Security Group needed to allow Azure Load Balancers to work. If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group. You should already assign custom hosts to this Network Security Group during provisioning.
+If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
 
-Only hosts expected to be Load Balancer backends need to be in this group.
+You should already assign custom hosts to this Network Security Group during provisioning.
 
-## Related Links
-
-### External Links
-
-- [Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+Only hosts expected to be load balancer back ends need to be in this group.

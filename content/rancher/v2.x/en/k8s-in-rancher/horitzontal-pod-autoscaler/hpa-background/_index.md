@@ -20,7 +20,7 @@ HPA improves your services by:
 
 ## How HPA Works
 
-![HPA Schema]({{< baseurl >}}/img/rancher/horizontal-pod-autoscaler.jpg)
+![HPA Schema]({{<baseurl>}}/img/rancher/horizontal-pod-autoscaler.jpg)
 
 HPA is implemented as a control loop, with a period controlled by the `kube-controller-manager` flags below:
 

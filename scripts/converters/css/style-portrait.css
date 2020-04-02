@@ -1,0 +1,372 @@
+/*
+Theme Name: Linux Academy Study Guide Template 08-14-2019
+*/
+
+/*
+#@font-face {font-family: Poppins;src: url(fonts/Poppins/Poppins-Regular.ttf);}
+@font-face {font-family: Poppins;src: url('https://fonts.googleapis.com/css?family=Poppins&display=swap');}
+@font-face {font-family: Roboto;src: url(fonts/truetype/Roboto/Roboto-Regular.ttf);}
+@font-face {font-family: PoppinsExtraLight;  src: url(fonts/truetype/Poppins/Poppins-ExtraLight.ttf);}
+*/
+
+/* This lighter one is only used as H1, and in the table of contents */
+
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+
+@page :first {
+  size: portrait;
+  padding:0cm;
+  border-left-style: none;
+  background:none;
+  background: url("../images/rancher-logo-stacked-color.png") no-repeat left;
+  background-size: 50cm;
+  background-position: top 1cm left;
+  margin-top:1cm;
+  margin-bottom:1cm;
+  margin-left:1cm;
+
+  @top-left {
+   background: #000;
+   color:#fff;
+   content: "v2.3.5";
+   height: 1cm;
+   text-align: center;
+   width: 5cm;
+   font-size:1em;
+   font-weight:bold;}
+
+   @top-center {
+    background: none;
+    content: ''; }
+   @top-right {
+    background: none;
+    content: ''; }
+
+/*
+  @bottom-left {
+    height: 1.5cm;
+    width:4.6cm;
+    background-color:#000;
+    content: url("images/white_logo.png");
+
+
+   }
+*/
+
+  @bottom-left img {padding-left:.4cm;float: none;margin-top:-.2cm;}
+  @bottom-center {
+    background: none;
+    content: ''; }
+  @bottom-right {
+    background: none;
+    content: ''; }
+  @bottom-right-corner {
+    background: none;
+    border-left: 1px solid #fff;
+    content: '';}
+    }
+
+@page {
+ font-family: Poppins;
+ size: portrait;
+ margin-top:1cm;
+ padding:.5cm;
+ border-left-style: dashed; border-left-width: 1px; border-color: #000;
+  @top-left {
+   background: #000;
+   color:#fff;
+   content: "" string(title);
+   height: 1cm;
+   text-align: center;
+   width: auto;
+   font-size:1em;
+   font-weight:bold;
+   padding-right:.5cm;
+   padding-left:.5cm;
+   }
+
+  @top-center {
+   background: none;
+    content: none;
+    margin-bottom: 2cm;
+    }
+  @top-right {
+    background: none;
+    content: none;}
+  @bottom-left {
+    background: none;
+    content: none; }
+  @bottom-right {
+    content: url("../images/rancher_logo.svg");
+    height: 1cm;
+    vertical-align: middle;
+    margin-top:.4cm;
+    width: 5.5cm; }
+  @bottom-right img {width:10%;/*height:auto;*/padding-right:.2cm;padding-top:.1cm;}
+
+  @bottom-right-corner {
+    background: #fff;
+    content: counter(page);
+    width: 2cm;
+    height:.5cm;
+    border-left: 1px solid #000;
+    margin-top:.5cm;
+    padding:.2cm;
+    font-size: 10pt;}
+    }
+
+@page :blank {
+  size: portrait;
+  @top-left {
+   padding:0cm;
+   background: #000;
+   color:#fff;
+   content: "Rancher 2.3.x";
+   height: 1cm;
+   text-align: center;
+   width: 5cm;
+   font-size:1em;
+   font-weight:bold;}
+  @top-center {
+    content: none; }
+  @top-right {
+    content: none; }
+    @bottom-right {
+    background: none;
+    content: ''; }
+  @bottom-right-corner {
+    background: none;
+    border-left: 1px solid #fff;
+    content: '';}
+
+    }
+
+@page no-chapter {
+  size: portrait;
+  border-left-style: none;
+  @top-left {
+   background: #000;
+   color:#fff;
+   content: "" string(title);
+   height: 1cm;
+   text-align: center;
+   width: auto;
+   font-size:1em;
+   font-weight:bold;
+   padding-right:.5cm;
+   padding-left:.5cm;}
+  @top-center {
+    content: none; }
+  @top-right {
+    content: none; }
+  @bottom-left {
+    background: none;
+    content: none; }
+  @bottom-center {
+    content: none; }
+  @bottom-right {
+    content: url("../images/rancher_logo.svg");
+    font-size: 9pt;
+    height: 1cm;
+    vertical-align: middle;
+    margin-top:.4cm;
+    width: 5.5cm; }
+  @bottom-right img {width:20%;/*height:auto;*/padding-right:.2cm;padding-top:.1cm;}
+  }
+
+body { font-family: Poppins;color: #000; line-height:1.25em;padding:.25cm;}
+
+header{/*margin-left:11cm;*/ margin-top:10cm;border-left: 1px solid #aaa;min-height:6.5cm;}
+#header_bottom_text{/*position:absolute;bottom:6.2cm;*/}
+
+h1.title {font-family:PoppinsExtraLight;font-weight:100;font-size:2.5em;line-height:1em; padding-left:1cm;}
+p.subtitle{margin-left:1cm;margin-bottom:1.5cm;font-weight:bold;}
+p.author{margin-left:1cm;margin-top:0; margin-bottom:0;font-weight:bold;}
+p.email{margin-left:1cm;margin-top:0; margin-bottom:0;font-weight:bold;}
+p.email a {color:#000;}
+p.date{margin-left:1cm;margin-top:0; margin-bottom:0;font-weight:bold;}
+
+#contentsbox { height:1.5cm; width:4cm; border-bottom:1px solid #aaa;margin-top:1.5cm;margin-bottom:1.5cm;}
+#contentsbox p {font-family:PoppinsExtraLight;font-weight:100;font-size:2.5em;}
+
+img {float:right;max-width:50%; height:auto;border-radius:10px;margin-left:1cm;margin-right:-1cm;}
+
+a:link{outline:none;color:#000;font-weight:bold;}
+
+pre {font-family: Roboto;font-size:.95em; margin-left:.5cm; background-color:#eee;padding:2px;
+            white-space: pre-wrap;
+            word-wrap: normal;}
+code {font-family: Roboto;font-size:.95em;background-color:#87dcc5;padding:2px;}
+
+pre code{background-color:#eee;}
+
+pre.sourceCode{color:initial;}
+
+/* ------------------- Lists --------------------------*/
+
+/* Top level is bold, next level is numbered */
+ul li {margin-left:-.25cm;font-weight:bold;}
+ul li ul {list-style-type: decimal;}
+ul li ul li {margin-left:-.25cm;font-weight:lighter;}
+ul li ul li ul {list-style-type: none;}
+
+/* Same as above, but top level is normal weight */
+.nob ul li {margin-left:-.25cm;font-weight:normal;}
+.nob ul li ul {list-style-type: decimal;}
+.nob ul li ul li {margin-left:-.25cm;font-weight:lighter;}
+.nob ul li ul li ul {list-style-type: none;}
+
+/* Top level is bold, next level is just bullets, no numbers */
+.nonum ul li {margin-left:-.25cm;font-weight:bold;}
+.nonum ul li ul {list-style-type: disc;}
+.nonum ul li ul li {margin-left:-.25cm;font-weight:lighter;}
+.nonum ul li ul li ul {list-style-type: none;}
+
+h1 {string-set:title content();}
+
+h2 {
+ max-width:50%;
+ line-height:2em; vertical-align: middle;padding-left:1cm; padding-top:.2cm; padding-bottom:.2cm;font-size:.9em; margin-left:-1.5cm;width:60%; background-color:#fff;
+ border-radius:5px;
+ border-top: 1px solid #eee;
+ border-left: 1px solid #eee;
+ border-right: 1px solid #aaa;
+ border-bottom: 1px solid #aaa;
+ page-break-before: always;
+ font-size:1.5em;
+ }
+
+h3 {font-size:1.4em;}
+h4 {font-size:1.3em;
+	line-height:30px;
+}
+h5 {font-size:1.2em;}
+h6 {font-size:1.1em;}
+
+h1 code {background:none;}
+h2 code {background:none;}
+h3 code {background:none;}
+h4 code {background:none;}
+h5 code {background:none;}
+h6 code {background:none;}
+
+/*---------------------------------------- NAV (also known as Table of Contents) -----------------------------------------*/
+
+/*--------------------------------------------
+08-14-2019
+By far, the biggest issue with this template
+is the fact that the TOC is only one column.
+When I have recovered from this ruckus, I
+will be digging in and trying to make it work
+--------------------------------------------*/
+
+
+nav {position:relative;margin-left:-.5em;background: none;string-set:heading content(); page:no-chapter;page-break-after: always;}
+nav ul {margin-top:0;margin-left:-.5em;list-style-type: none;}
+
+nav ul li {margin-top:.75em; margin-bottom:1em; width:100%;}
+nav ul li a {
+  border-radius:5px;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+  display:block;
+  height:2em;
+  padding-top:.6em;
+  padding-left:.6em;
+  margin-left:-1.5em;
+}
+
+nav ul li a::after {content: target-counter(attr(href url), page, decimal); float:right;margin-right:10px;}
+nav ul li ul {list-style-type: none; border-left-style: dashed; border-left-width: 1px; border-color: #000; margin-top:1.5em;}
+nav ul li ul li {margin-left:-.5em;color:#ff0000;}
+nav ul li ul li a {border:none;font-family:PoppinsExtraLight;margin-top:-1.5em;}
+nav ul li ul li a::after {font-size:.75em;}
+nav code {background:none;}
+nav a{text-decoration:none;outline:none;color:#000;}
+
+table {
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #ddd;padding: 10px;
+}
+
+blockquote{color:#fff; background-color:#777;padding:2mm;border-radius:4px;border:1px solid #000;}
+blockquote pre, blockquote code {background-color:#555;}
+
+
+.pagebreak { page-break-before: always; }
+
+
+code {
+    background-color: ghostwhite;
+		font-family: monospace;
+    line-height: 25px;
+    color: #4a6482;
+    word-wrap: break-word;
+}
+
+h4 > code {
+    color: #4a6482;
+}
+
+#.sourceCode {
+#    color: #333333;
+#    background-color: #f4f4f4;
+#    font-size: 15px;
+#    width: 100%;
+#    display: inline-block;
+#    overflow-wrap: break-word;
+#    word-wrap: break-word;
+#    word-break: normal;
+#    line-break: strict;
+#    hyphens: none;
+#    -webkit-hyphens: none;
+#    -moz-hyphens: none;
+#    white-space: normal;
+#    padding-right: 50px;
+#}
+
+.sourceCode {
+		background-color: ghostwhite;
+    font-family: monospace;
+    line-height: 25px;
+    color: #4a6482;
+    word-wrap: break-word;
+}
+
+/*--------------------------------------------
+08-14-2019
+The Python looks good here, the Bash not
+so much. So we're leaving them black, at
+least for now, to match the original template
+--------------------------------------------*/
+
+/*
+code.sourceCode.python {color:#d49173;}
+.op {color:#89d473;}
+.dv {color: #ff0000;}
+code.sourceCode.bash {color:#739ed4;}
+.ex{color:#b473d4;}
+*/
+
+/*--------------------------------------------
+08-14-2019
+Here I was trying to dork with image captions,
+but they keep showing up on the left
+--------------------------------------------*/
+
+/*
+figure {
+  display: table;
+}
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  float:right;
+}
+*/

@@ -3,7 +3,7 @@ title: Quick Start
 weight: 1
 ---
 
-If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine/) and show you some of what RancherOS can do.
+If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine/) and show you some of what RancherOS can do.
 
 ### Launching RancherOS using Docker Machine
 
@@ -92,7 +92,7 @@ $ sudo system-docker run -d --net=host --name busydash husseingalal/busydash
 ```
 In the command, we used `--net=host` to tell System Docker not to containerize the container's networking, and use the host’s networking instead. After running the container, you can see the monitoring server by accessing `http://<IP_OF_MACHINE>`.
 
-![System Docker Container]({{< baseurl >}}/img/os/Rancher_busydash.png)
+{{< img "/img/os/Rancher_busydash.png" "System Docker Container">}}
 
 To make the container survive during the reboots, you can create the `/opt/rancher/bin/start.sh` script, and add the Docker start line to launch the Docker at each startup.
 
@@ -120,7 +120,7 @@ $ sudo ros config get rancher.network.dns.nameservers
 ```
 
 
-When using the native Busybox console, any changes to the console will be lost after reboots, only changes to `/home` or `/opt` will be persistent. You can use the `ros console switch` command to switch to a [persistent console]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-console/#console-persistence) and replace the native Busybox console. For example, to switch to the Ubuntu console:
+When using the native Busybox console, any changes to the console will be lost after reboots, only changes to `/home` or `/opt` will be persistent. You can use the `ros console switch` command to switch to a [persistent console]({{<baseurl>}}/os/v1.x/en/installation/custom-builds/custom-console/#console-persistence) and replace the native Busybox console. For example, to switch to the Ubuntu console:
 
 ```
 $ sudo ros console switch ubuntu

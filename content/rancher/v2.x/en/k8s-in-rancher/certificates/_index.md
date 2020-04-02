@@ -1,5 +1,6 @@
 ---
-title: SSL Certificates
+title: Encrypting HTTP Communication
+description: Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate to either a project, a namespace, or both, so that you can add it to deployments
 weight: 3060
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-ssl-certificates/
@@ -13,7 +14,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From the **Global** view, select the project where you want to deploy your ingress.
 
-1. From the main menu, select **Resources > Certificates**. Click **Add Certificate**.
+1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For Rancher prior to v2.3, click **Resources > Certificates.**)
 
 1. Enter a **Name** for the certificate.
 
@@ -23,7 +24,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
     - **Available to all namespaces in this project:** The certificate is available for any deployment in any namespaces in the project.
 
-    - **Available to a single namespace:** The certificate is only available for the deployments in one [namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces). If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
+    - **Available to a single namespace:** The certificate is only available for the deployments in one [namespace]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces). If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
 
 1. From **Private Key**, either copy and paste your certificate's private key into the text box (include the header and footer), or click **Read from a file** to browse to the private key on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
@@ -31,14 +32,14 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From **Certificate**, either copy and paste your certificate into the text box (include the header and footer), or click **Read from a file** to browse to the certificate on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
-    Certifcate files end with an extension of `.crt`.
+    Certificate files end with an extension of `.crt`.
 
 **Result:** Your certificate is added to the project or namespace. You can now add it to deployments.
 
 - If you added an SSL certificate to the project, the certificate is available for deployments created in any project namespace.
 - If you added an SSL certificate to a namespace, the certificate is available only for deployments in that namespace.
-- Your certificate is added to the **Resources > Certificates** view.
+- Your certificate is added to the **Resources > Secrets > Certificates** view. (For Rancher prior to v2.3, it is added to **Resources > Certificates.**)
 
 ## What's Next?
 
-Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress/).
+Now you can add the certificate when launching an ingress within the current project or namespace. For more information, see [Adding Ingress]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress/).

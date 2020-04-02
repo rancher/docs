@@ -29,4 +29,4 @@ If Telemetry is not enabled, the process that collects the data is not running, 
 
 ### How do I turn it on or off?
 
-After initial setup, an admin user can go to the `Settings` page in the `Global` section of the UI and click Edit to change the `telemetry-opt` setting to either `in` or `out`.
+After initial setup, an administrator can go to the `Settings` page in the `Global` section of the UI and click Edit to change the `telemetry-opt` setting to either `in` or `out`.

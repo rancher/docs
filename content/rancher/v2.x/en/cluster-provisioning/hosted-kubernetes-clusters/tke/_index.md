@@ -6,7 +6,7 @@ weight: 2125
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
+You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
 
 ## Prerequisites in Tencent
 
@@ -47,6 +47,8 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
     | Node Count  | Enter the amount of worker node you want to purchase for your Kubernetes cluster, up to 100. |
     | VPC | Select the VPC name that you have created in the Tencent Cloud Console. |
     | Container Network CIDR | Enter the CIDR range of your Kubernetes cluster, you may check the available range of the CIDR in the VPC service of the Tencent Cloud Console. Default to 172.16.0.0/16. |
+
+    **Note:** If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
 
 7. Click `Next: Select Instance Type` to choose the instance type that will use for your TKE cluster.
 

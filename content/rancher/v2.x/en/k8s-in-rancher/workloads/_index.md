@@ -1,5 +1,6 @@
 ---
-title: Workloads
+title: "Kubernetes Workloads and Pods"
+description: "Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods"
 weight: 3025
 aliases:
   - /rancher/v2.x/en/concepts/workloads/
@@ -70,9 +71,9 @@ There are several types of services available in Rancher. The descriptions below
 
 This section of the documentation contains instructions for deploying workloads and using workload options.
 
-- [Deploy Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/)
-- [Upgrade Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/upgrade-workloads/)
-- [Rollback Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/rollback-workloads/)
+- [Deploy Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/)
+- [Upgrade Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/upgrade-workloads/)
+- [Rollback Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/rollback-workloads/)
 
 ## Related Links
 

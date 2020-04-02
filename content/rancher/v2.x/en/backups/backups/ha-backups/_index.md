@@ -1,13 +1,20 @@
 ---
-title: Creating Backups—High Availability Installs
-weight: 50
+title: Backing up Rancher Installed on an RKE Kubernetes Cluster
+weight: 2
 aliases:
-  - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
+  - /rancher/v2.x/en/installation/after-installation/k8s-install-backup-and-restoration/
   - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
 >**Prerequisites:** {{< requirements_rollback >}}
+
+## RKE Kubernetes Cluster Data
+
+In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
+
+<figcaption>Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
+![Architecture of an RKE Kubernetes cluster running the Rancher management server]({{<baseurl>}}/img/rancher/rke-server-storage.svg)
 
 ## Backup Outline
 

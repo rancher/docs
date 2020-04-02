@@ -6,7 +6,7 @@ weight: 2130
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine (CCE). Rancher has already implemented and packaged the [cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) for CCE, but by default, this cluster driver is `inactive`. In order to launch CCE clusters, you will need to [enable the CCE cluster driver]({{< baseurl >}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning CCE clusters.
+You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine (CCE). Rancher has already implemented and packaged the [cluster driver]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) for CCE, but by default, this cluster driver is `inactive`. In order to launch CCE clusters, you will need to [enable the CCE cluster driver]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning CCE clusters.
 
 ## Prerequisites in Huawei
 
@@ -49,6 +49,8 @@ Huawei CCE service doesn't support the ability to create clusters with public ac
 	| External Server | This option is reserved for the future we can enable CCE cluster public access via API. For now, it is always disabled. |
 	| Cluster Label | The labels for the cluster. |
 	| Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
+
+	**Note:** If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
 
 7. Fill the following node configuration of the cluster:
 

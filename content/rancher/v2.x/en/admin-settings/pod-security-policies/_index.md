@@ -9,6 +9,8 @@ aliases:
 
 _Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges). If a pod does not meet the conditions specified in the PSP, Kubernetes will not allow it to start, and Rancher will display an error message of `Pod <NAME> is forbidden: unable to validate...`.
 
+> **Note:** Assigning Pod Security Policies are only available for clusters that are [launched using RKE.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/)
+
 - You can assign PSPs at the cluster or project level.
 - PSPs work through inheritance.
 
@@ -16,6 +18,8 @@ _Pod Security Policies_ (or PSPs) are objects that control security-sensitive as
     - **Exception:** Namespaces that are not assigned to projects do not inherit PSPs, regardless of whether the PSP is assigned to a cluster or project. Because these namespaces have no PSPs, workload deployments to these namespaces will fail, which is the default Kubernetes behavior.
     - You can override the default PSP by assigning a different PSP directly to the project.
 - Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
+
+>**Note:** You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/)
 
 Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
@@ -69,10 +73,10 @@ Rancher ships with two default Pod Security Policies (PSPs): the `restricted` an
 
 You can add a Pod Security Policy (PSPs hereafter) in the following contexts:
 
-- [When creating a cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/pod-security-policies/)
-- [When editing an existing cluster]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/)
-- [When creating a project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-a-project/)
-- [When editing an existing project]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/)
+- [When creating a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/pod-security-policies/)
+- [When editing an existing cluster]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/)
+- [When creating a project]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-a-project/)
+- [When editing an existing project]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/)
 
 > **Note:** We recommend adding PSPs during cluster and project creation instead of adding it to an existing one.
 

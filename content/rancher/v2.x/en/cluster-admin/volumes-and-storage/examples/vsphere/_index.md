@@ -3,14 +3,13 @@ title: vSphere Storage
 weight: 3055
 aliases:
   - /rancher/v2.x/en/tasks/clusters/adding-storage/provisioning-storage/vsphere/
-  - /rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/vsphere/
 ---
 
-To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume [storage class]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes). This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
+To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume [storage class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes). This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
 
 ### Prerequisites
 
-In order to provision vSphere volumes in a cluster created with the [Rancher Kubernetes Engine (RKE)]({{< baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the [vSphere cloud provider]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/vsphere) must be explicitly enabled in the [cluster options]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/).
+In order to provision vSphere volumes in a cluster created with the [Rancher Kubernetes Engine (RKE)]({{< baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the [vSphere cloud provider]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere) must be explicitly enabled in the [cluster options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/).
 
 ### Creating A Storage Class
 
@@ -23,26 +22,26 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 3. Enter a **Name** for the class.
 4. Under **Provisioner**, select **VMWare vSphere Volume**.
 
-	![vsphere-storage-class]({{< baseurl >}}/img/rancher/vsphere-storage-class.png)
+    {{< img "/img/rancher/vsphere-storage-class.png" "vsphere-storage-class">}}
 
 5. Optionally, specify additional properties for this storage class under **Parameters**. Refer to the [vSphere storage documentation](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/storageclass.html) for details.
 5. Click **Save**.
 
 ### Creating a Workload with a vSphere Volume
 
-1. From the cluster where you configured vSphere storage, begin creating a workload as you would in [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
+1. From the cluster where you configured vSphere storage, begin creating a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
 2. For **Workload Type**, select **Stateful set of 1 pod**.
 3. Expand the **Volumes** section and click **Add Volume**.
 4. Choose **Add a new persistent volume (claim)**. This option will implicitly create the claim once you deploy the workload.
 5. Assign a **Name** for the claim, ie. `test-volume` and select the vSphere storage class created in the previous step.
 6. Enter the required **Capacity** for the volume. Then click **Define**.
 
-    ![workload-add-volume]({{< baseurl >}}/img/rancher/workload-add-volume.png)
+    {{< img "/img/rancher/workload-add-volume.png" "workload-add-volume">}}
 
 7. Assign a path in the **Mount Point** field. This is the full path where the volume will be mounted in the container file system, e.g. `/persistent`.
 8. Click **Launch** to create the workload.
 
-### Verifing Persistence of the Volume
+### Verifying Persistence of the Volume
 
 1. From the context menu of the workload you just created, click **Execute Shell**.
 2. Note the directory at root where the volume has been mounted to (in this case `/persistent`).
@@ -50,12 +49,12 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 4. **Close** the shell window.
 5. Click on the name of the workload to reveal detail information.
 6. Open the context menu next to the Pod in the *Running* state.
-7. Delete the Pod by selecting **Delete**.  
+7. Delete the Pod by selecting **Delete**.
 8. Observe that the pod is deleted. Then a new pod is scheduled to replace it so that the workload maintains its configured scale of a single stateful pod.
 9. Once the replacement pod is running, click **Execute Shell**.
 10. Inspect the contents of the directory where the volume is mounted by entering `ls -l /<volumeMountPoint>`. Note that the file you created earlier is still present.
 
-    ![workload-persistent-data]({{< baseurl >}}/img/rancher/workload-persistent-data.png)
+    ![workload-persistent-data]({{<baseurl>}}/img/rancher/workload-persistent-data.png)
 
 ## Why to Use StatefulSets Instead of Deployments
 

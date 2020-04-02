@@ -3,7 +3,7 @@ title: Kubernetes resources
 weight: 101
 ---
 
-The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters.
+The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
@@ -110,6 +110,22 @@ kubectl -n ingress-nginx logs -l app=ingress-nginx
 
 ```
 kubectl -n ingress-nginx get events
+```
+
+#### Debug logging
+
+To enable debug logging:
+
+```
+kubectl -n ingress-nginx patch ds nginx-ingress-controller --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--v=5"}]'
+```
+
+#### Check configuration
+
+Retrieve generated configuration in each pod:
+
+```
+kubectl -n ingress-nginx get pods -l app=ingress-nginx --no-headers -o custom-columns=.NAME:.metadata.name | while read pod; do kubectl -n ingress-nginx exec $pod -- cat /etc/nginx/nginx.conf; done
 ```
 
 ### Rancher agents

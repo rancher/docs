@@ -53,13 +53,40 @@ spec:
         protocol: HTTP
       hosts:
         - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - bookinfo-gateway
+  http:
+  - match:
+    - uri:
+        exact: /productpage
+    - uri:
+        prefix: /static
+    - uri:
+        exact: /login
+    - uri:
+        exact: /logout
+    - uri:
+        prefix: /api/v1/products
+    route:
+    - destination:
+        host: productpage
+        port:
+          number: 9080
 ```
 
 **Result:** You have configured your gateway resource so that Istio can receive traffic from outside the cluster.
 
 Confirm that the resource exists by running:
 ```
-kubectl get gateway
+kubectl get gateway -A
 ```
 
 The result should be something like this:
@@ -77,7 +104,7 @@ To test and see if the BookInfo app deployed correctly, the app can be viewed a 
 To get the ingress gateway URL and port,
 
 1. Go to the `System` project in your cluster.
-1. Within the `System` project, go to the namespace `istio-system`. 
+1. Within the `System` project, go to `Resources` > `Workloads` then scroll down to the `istio-system` namespace. 
 1. Within `istio-system`, there is a workload named `istio-ingressgateway`. Under the name of this workload, you should see links, such as `80/tcp`.
 1. Click one of those links. This should show you the URL of the ingress gateway in your web browser. Append `/productpage` to the URL.
 

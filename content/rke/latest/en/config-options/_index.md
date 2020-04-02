@@ -1,37 +1,40 @@
 ---
-title: Config Options
+title: Kubernetes Configuration Options
+description: There are a lot of different Kubernetes Configuration options you can choose from when setting up your cluster.yml for RKE
 weight: 200
 ---
 
 When setting up your `cluster.yml` for RKE, there are a lot of different options that can be configured to control the behavior of how RKE launches Kubernetes.
 
-There are several options that can be configured in cluster configuration option. There are several [example yamls]({{< baseurl >}}/rke/latest/en/example-yamls/) that contain all the options.
+There are several options that can be configured in cluster configuration option. There are several [example yamls]({{<baseurl>}}/rke/latest/en/example-yamls/) that contain all the options.
 
 ### Configuring Nodes
-* [Nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/)
+* [Nodes]({{<baseurl>}}/rke/latest/en/config-options/nodes/)
 * [Ignoring unsupported Docker versions](#supported-docker-versions)
-* [Private Registries]({{< baseurl >}}/rke/latest/en/config-options/private-registries/)
+* [Private Registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/)
 * [Cluster Level SSH Key Path](#cluster-level-ssh-key-path)
 * [SSH Agent](#ssh-agent)
-* [Bastion Host]({{< baseurl >}}/rke/latest/en/config-options/bastion-host/)
+* [Bastion Host]({{<baseurl>}}/rke/latest/en/config-options/bastion-host/)
 
 ### Configuring Kubernetes Cluster
 * [Cluster Name](#cluster-name)
 * [Kubernetes Version](#kubernetes-version)
 * [Prefix Path](#prefix-path)
-* [System Images]({{< baseurl >}}/rke/latest/en/config-options/system-images/)
-* [Services]({{< baseurl >}}/rke/latest/en/config-options/services/)
-* [Extra Args and Binds and Environment Variables]({{< baseurl >}}/rke/latest/en/config-options/services/services-extras/)
-* [External Etcd]({{< baseurl >}}/rke/latest/en/config-options/services/external-etcd/)
-* [Authentication]({{< baseurl >}}/rke/latest/en/config-options/authentication/)
-* [Authorization]({{< baseurl >}}/rke/latest/en/config-options/authorization/)
-* [Cloud Providers]({{< baseurl >}}/rke/latest/en/config-options/cloud-providers/)
-* [Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/)
-  * [Network Plug-ins]({{< baseurl >}}/rke/latest/en/config-options/add-ons/network-plugins/)
-  * [DNS providers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/dns/)
-  * [Ingress Controllers]({{< baseurl >}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
-  * [Metrics Server]({{< baseurl >}}/rke/latest/en/config-options/add-ons/metrics-server/)
-  * [User-Defined Add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+* [System Images]({{<baseurl>}}/rke/latest/en/config-options/system-images/)
+* [Services]({{<baseurl>}}/rke/latest/en/config-options/services/)
+* [Extra Args and Binds and Environment Variables]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/)
+* [External Etcd]({{<baseurl>}}/rke/latest/en/config-options/services/external-etcd/)
+* [Authentication]({{<baseurl>}}/rke/latest/en/config-options/authentication/)
+* [Authorization]({{<baseurl>}}/rke/latest/en/config-options/authorization/)
+* [Rate Limiting]({{<baseurl>}}/rke/latest/en/config-options/rate-limiting/)
+* [Cloud Providers]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/)
+* [Audit Log]({{<baseurl>}}/rke/latest/en/config-options/audit-log)
+* [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
+  * [Network Plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/)
+  * [DNS providers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/)
+  * [Ingress Controllers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/)
+  * [Metrics Server]({{<baseurl>}}/rke/latest/en/config-options/add-ons/metrics-server/)
+  * [User-Defined Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
   * [Add-ons Job Timeout](#add-ons-job-timeout)
 
 
@@ -57,37 +60,9 @@ ignore_docker_version: true
 
 ### Kubernetes Version
 
-By default, RKE is defaulted to launch with a specific Kubernetes version. You can also select a different version of Kubernetes to install for your cluster. Each version of RKE has a specific list of supported Kubernetes versions.
+For information on upgrading Kubernetes, refer to the [upgrade section.]({{<baseurl>}}/rke/latest/en/upgrades/)
 
-You can set the Kubernetes version as follows:
-
-```yaml
-kubernetes_version: "v1.11.6-rancher1-1"
-```
-
-In case both `kubernetes_version` and [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) are defined, the system images configuration will take precedence over `kubernetes_version`.
-
-#### Listing Supported Kubernetes Versions
-
-Please refer to the [release notes](https://github.com/rancher/rke/releases) of the RKE version that you are running, to find the list of supported Kubernetes versions as well as the default Kubernetes version.
-
-You can also list the supported versions and system images of specific version of RKE release with a quick command.
-
-```
-$ rke config --list-version --all
-v1.15.3-rancher2-1
-v1.13.10-rancher1-2
-v1.14.6-rancher2-1
-v1.16.0-beta.1-rancher1-1
-```
-
-#### Using an unsupported Kubernetes version
-
-As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
-
-Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
-
-If you want to use a different version from the supported list, please use the [system images]({{< baseurl >}}/rke/latest/en/config-options/system-images/) option.
+Rolling back to previous Kubernetes versions is not supported.
 
 ### Prefix Path
 
@@ -104,7 +79,7 @@ prefix_path: /opt/custom_path
 
 ### Cluster Level SSH Key Path
 
-RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{< baseurl >}}/rke/latest/en/config-options/nodes/).
+RKE connects to host(s) using `ssh`. Typically, each node will have an independent path for each ssh key, i.e. `ssh_key_path`, in the `nodes` section, but if you have a SSH key that is able to access **all** hosts in your cluster configuration file, you can set the path to that ssh key at the top level. Otherwise, you would set the ssh key path in the [nodes]({{<baseurl>}}/rke/latest/en/config-options/nodes/).
 
 If ssh key paths are defined at the cluster level and at the node level, the node-level key will take precedence.
 
@@ -134,4 +109,4 @@ $ echo $SSH_AUTH_SOCK
 
 ### Add-ons Job Timeout
 
-You can define [add-ons]({{< baseurl >}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.
+You can define [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.

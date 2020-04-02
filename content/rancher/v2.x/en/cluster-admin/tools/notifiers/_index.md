@@ -44,10 +44,10 @@ Set up a notifier so that you can begin configuring and sending alerts.
 {{% /accordion %}}
 {{% accordion id="pagerduty" label="PagerDuty" %}}
 1. Enter a **Name** for the notifier.
-1. From PagerDuty, create a webhook. For instructions, see the [PagerDuty Documentation](https://support.pagerduty.com/docs/webhooks).
-1. From PagerDuty, copy the webhook's **Integration Key**.
+1. From PagerDuty, create a Prometheus integration. For instructions, see the [PagerDuty Documentation](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/).
+1. From PagerDuty, copy the integration's **Integration Key**.
 1. From Rancher, enter the key in the **Service Key** field.
-1. Click **Test**. If the test is successful, your PagerDuty endpoint outputs `PageDuty setting validated`.
+1. Click **Test**. If the test is successful, your PagerDuty endpoint outputs `PagerDuty setting validated`.
 {{% /accordion %}}
 {{% accordion id="webhook" label="WebHook" %}}
 1. Enter a **Name** for the notifier.
@@ -65,6 +65,7 @@ _Available as of v2.2.0_
 1. Select the **Recipient Type** and then enter a corresponding id to **Default Recipient** field, for example, the party id, tag id or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).
 {{% /accordion %}}
 
+1. _Available as of v2.3.0_ - Select **Enable** for **Send Resolved Alerts** if you wish to notify about resolved alerts.
 1. Click **Add** to complete adding the notifier.
 
 **Result:** Your notifier is added to Rancher.
@@ -73,8 +74,8 @@ _Available as of v2.2.0_
 
 After creating a notifier, set up alerts to receive notifications of Rancher system events.
 
-- [Cluster owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/alerts/).
-- [Project owners]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{< baseurl >}}/rancher/v2.x/en/project-admin/tools/alerts/).
+- [Cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/).
+- [Project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/).
 
 ## Managing Notifiers
 
