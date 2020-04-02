@@ -19,11 +19,13 @@ Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Importing a cluster](#importing-a-cluster)
-- [Additional features for imported K3s clusters](#additional-features-for-imported-k3s-clusters)
-- [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
-- [Debug Logging and Troubleshooting for Imported K3s clusters](#debug-logging-and-troubleshooting-for-imported-k3s-clusters)
+- [Imported K3s clusters](#imported-k3s-clusters)
+  - [Additional features for imported K3s clusters](#additional-features-for-imported-k3s-clusters)
+  - [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
+  - [Debug Logging and Troubleshooting for Imported K3s clusters](#debug-logging-and-troubleshooting-for-imported-k3s-clusters)
+- [Annotating imported clusters](#annotating-imported-clusters)
 
-### Features
+# Features
 
 After importing a cluster, the cluster owner can:
 
@@ -36,7 +38,7 @@ After importing a cluster, the cluster owner can:
 
 After importing a K3s cluster, the cluster owner can also [upgrade Kubernetes from the Rancher UI.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/upgrading-kubernetes/)
 
-### Prerequisites
+# Prerequisites
 
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to import the cluster into Rancher.
 
@@ -54,7 +56,7 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 > If you are importing a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
 
-### Importing a Cluster
+# Importing a Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
 2. Choose **Import**.
@@ -70,11 +72,13 @@ By default, GKE users are not given this privilege, so you will need to run the 
 > **Note:**
 > You can not re-import a cluster that is currently active in a Rancher setup.
 
+# Imported K3s Clusters
+
+You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the K3s cluster in the Rancher UI.
+
 ### Additional Features for Imported K3s Clusters
 
 _Available as of v2.4.0_
-
-You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the K3s cluster in the Rancher UI.
 
 When a K3s cluster is imported, Rancher will recognize it as K3s, and the Rancher UI will expose the following features in addition to the functionality for other imported clusters:
 
@@ -132,3 +136,51 @@ kubectl get plans -A -o yaml
 If the cluster becomes stuck in upgrading, restart the `system-upgrade-controller`.
 
 To prevent issues when upgrading, the [Kubernetes upgrade best practices](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/) should be followed.
+
+### Annotating Imported Clusters
+
+For all types of imported Kubernetes clusters except for K3s Kubernetes clusters, Rancher doesn't have any information about how the cluster is provisioned or configured.
+
+Therefore, when Rancher imports a cluster, it assumes that several capabilities are disabled by default. Rancher assumes this in order to avoid exposing UI options to the user even when the capabilities are not enabled in the imported cluster.
+
+However, if the cluster has a certain capability, such as the ability to use a pod security policy, a user of that cluster might still want to select pod security policies for the cluster in the Rancher UI. In order to do that, the user will need to manually indicate to Rancher that pod security policies are enabled for the cluster.
+
+By annotating an imported cluster, it is possible to indicate to Rancher that a cluster was given a pod security policy, or another capability, outside of Rancher.
+
+This example annotation indicates that a pod security policy is enabled:
+
+```json
+"capabilities.cattle.io/pspEnabled": "true"
+```
+
+This annotation indicates Ingress capabilities:
+
+```json
+capabilities.cattle.io/ingressCapabilities": "[
+  {
+    "customDefaultBackend":true,
+    "ingressProvider":"asdf"
+  }
+]"
+```
+
+The following capabilities can be annotated for the cluster:
+
+- `ingressCapabilities`
+- `loadBalancerCapabilities`
+- `nodePoolScalingSupported`
+- `nodePortRange`
+- `pspEnabled`
+- `taintSupport`
+
+All the capabilities and their type defintions can be viewed in the Rancher API view, at `[Rancher Server URL]/v3/schemas/capabilities`.
+
+To annotate an imported cluster,
+
+1. Go to the cluster view in Rancher and select **&#8942; > Edit.**
+1. Expand the **Labels & Annotations** section.
+1. Click **Add Annotation.**
+1. Add an annotation to the cluster with the format `capabilities/<capability>: <value>` where `value` is the cluster capability that will be overridden by the annotation. In this scenario, Rancher is not aware of any capabilities of the cluster until you add the annotation.
+1. Click **Save.**
+
+**Result:** The annotation does not give the capabilities to the cluster, but it does indicate to Rancher that the cluster has those capabilities.
