@@ -5,8 +5,6 @@ weight: 1
 
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.
 
-Notifiers are configured at the cluster level. This model ensures that only cluster owners need to configure notifiers, leaving project owners to simply configure alerts in the scope of their projects. You don't need to dispense privileges like SMTP server access or cloud account access.
-
 Rancher integrates with a variety of popular IT services, including:
 
 - **Slack**: Send alert notifications to your Slack channels.
@@ -15,7 +13,18 @@ Rancher integrates with a variety of popular IT services, including:
 - **WebHooks**: Update a webpage with alert notifications.
 - **WeChat**: Send alert notifications to your Enterprise WeChat contacts.
 
-## Adding Notifiers
+This section covers the following topics:
+
+- [Roles-based access control for notifiers](#roles-based-access-control-for-notifiers)
+- [Adding notifiers](#adding-notifiers)
+- [Managing notifiers](#managing-notifiers)
+- [Example payload for a webhook alert notifier](#example-payload-for-a-webhook-alert-notifier)
+
+### Roles-based Access Control for Notifiers
+
+Notifiers are configured at the cluster level. This model ensures that only cluster owners need to configure notifiers, leaving project owners to simply configure alerts in the scope of their projects. You don't need to dispense privileges like SMTP server access or cloud account access.
+
+### Adding Notifiers
 
 Set up a notifier so that you can begin configuring and sending alerts.
 
@@ -70,17 +79,54 @@ _Available as of v2.2.0_
 
 **Result:** Your notifier is added to Rancher.
 
-## What's Next?
 
-After creating a notifier, set up alerts to receive notifications of Rancher system events.
-
-- [Cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/).
-- [Project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/).
-
-## Managing Notifiers
+### Managing Notifiers
 
 After you set up notifiers, you can manage them. From the **Global** view, open the cluster that you want to manage your notifiers. Select **Tools > Notifiers**. You can:
 
 - **Edit** their settings that you configured during their initial setup.
 - **Clone** them, to quickly setup slightly different notifiers.
 - **Delete** them when they're no longer necessary.
+
+### Example Payload for a Webhook Alert Notifier
+
+```json
+{
+  "receiver": "c-2a3bc:kube-components-alert",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {
+        "alert_name": "Scheduler is unavailable",
+        "alert_type": "systemService",
+        "cluster_name": "mycluster (ID: c-2a3bc)",
+        "component_name": "scheduler",
+        "group_id": "c-2a3bc:kube-components-alert",
+        "logs": "Get http://127.0.0.1:10251/healthz: dial tcp 127.0.0.1:10251: connect: connection refused",
+        "rule_id": "c-2a3bc:kube-components-alert_scheduler-system-service",
+        "severity": "critical"
+      },
+      "annotations": {},
+      "startsAt": "2020-01-30T19:18:13.321684733Z",
+      "endsAt": "0001-01-01T00:00:00Z",
+      "generatorURL": ""
+    }
+  ],
+  "groupLabels": {
+    "component_name": "scheduler",
+    "rule_id": "c-2a3bc:kube-components-alert_scheduler-system-service"
+  },
+  "commonLabels": {
+    "alert_name": "Scheduler is unavailable",
+    "alert_type": "systemService",
+    "cluster_name": "mycluster (ID: c-2a3bc)"
+  }
+}
+```
+### What's Next?
+
+After creating a notifier, set up alerts to receive notifications of Rancher system events.
+
+- [Cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) can set up alerts at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/).
+- [Project owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can set up alerts at the [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/).
