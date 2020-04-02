@@ -11,7 +11,7 @@ aliases:
 
 When configuring a workload, you'll be able to choose which secrets to include. Like config maps, secrets can be referenced by workloads as either an environment variable or a volume mount.
 
-Any update to an active secrets won't automatically update the pods that are using it. Restart those pods to have them use the new secret.
+Mounted secrets will be updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 
 # Creating Secrets
 
@@ -37,7 +37,7 @@ When creating a secret, you can make it available for any deployment within a pr
 
 **Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Secrets** view.
 
-Any update to an active secrets won't automatically update the pods that are using it. Restart those pods to have them use the new secret.
+Mounted secrets will be updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 
 # What's Next?
 
