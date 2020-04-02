@@ -35,3 +35,8 @@ This section contains information to help you troubleshoot issues when using Ran
 - [Imported clusters]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/imported-clusters/)
 
     If you experience issues when [Importing Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)
+
+- [Logging]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/logging/)
+
+    Read more about what log levels can be configured and how to configure a log level.
+
