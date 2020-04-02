@@ -17,7 +17,6 @@ Rancher improves on Helm catalogs and charts. All native Helm charts can work wi
 
 This section covers the following topics:
 
-- [Prerequisites](#prerequisites)
 - [Catalog scopes](#catalog-scopes)
 - [Catalog Helm Deployment Versions](#catalog-helm-deployment-versions)
 - [Built-in global catalogs](#built-in-global-catalogs)
@@ -25,15 +24,6 @@ This section covers the following topics:
 - [Creating and launching applications](#creating-and-launching-applications)
 - [Chart compatibility with Rancher](#chart-compatibility-with-rancher)
 - [Global DNS](#global-dns)
-
-# Prerequisites
-
-When Rancher deploys a catalog app, it launches an ephemeral instance of a Helm service account that has the permissions of the user deploying the catalog app. Therefore, a user cannot gain more access to the cluster through Helm or a catalog application than they otherwise would have.
-
-To launch a catalog app or a multi-cluster app, you should have at least one of the following permissions:
-
-- A [project-member role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster, which gives you the ability to create, read, update, and delete the workloads
-- A [cluster owner role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the cluster that include the target project
 
 # Catalog Scopes
 
