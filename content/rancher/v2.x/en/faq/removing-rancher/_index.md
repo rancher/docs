@@ -6,7 +6,6 @@ aliases:
   - /rancher/v2.x/en/installation/removing-rancher/
   - /rancher/v2.x/en/admin-settings/removing-rancher/
   - /rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/
-  - /rancher/v2.x/en/removing-rancher/
 ---
 
 This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.

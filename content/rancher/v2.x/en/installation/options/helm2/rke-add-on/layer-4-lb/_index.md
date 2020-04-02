@@ -1,8 +1,6 @@
 ---
 title: Kubernetes Install with External Load Balancer (TCP/Layer 4)
 weight: 275
-aliases:
-- /rancher/v2.x/en/installation/k8s-install-server-install/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

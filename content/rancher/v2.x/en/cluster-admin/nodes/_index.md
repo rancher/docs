@@ -1,8 +1,6 @@
 ---
 title: Nodes and Node Pools
 weight: 2030
-aliases:
-  - /rancher/v2.x/en/k8s-in-rancher/nodes/
 ---
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) to provision the cluster, there are different node options available.

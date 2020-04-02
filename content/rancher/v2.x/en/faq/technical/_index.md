@@ -56,55 +56,7 @@ New password for default admin user (user-xxxxx):
 
 ### How can I enable debug logging?
 
-* Docker Install
- * Enable
-```
-$ docker exec -ti <container_id> loglevel --set debug
-OK
-$ docker logs -f <container_id>
-```
-
- * Disable
-```
-$ docker exec -ti <container_id> loglevel --set info
-OK
-```
-
-* Kubernetes install (Helm)
- * Enable
-```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set debug
-OK
-OK
-OK
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system logs -l app=rancher
-```
-
- * Disable
-```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | xargs -I{} kubectl --kubeconfig $KUBECONFIG -n cattle-system exec {} -- loglevel --set info
-OK
-OK
-OK
-```
-
-* Kubernetes install (RKE add-on)
- * Enable
-```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set debug
-OK
-$ kubectl --kubeconfig $KUBECONFIG logs -n cattle-system -f $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name="cattle-server") | .metadata.name')
-```
-
- * Disable
-```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG exec -n cattle-system $(kubectl --kubeconfig $KUBECONFIG get pods -n cattle-system -o json | jq -r '.items[] | select(.spec.containers[].name=="cattle-server") | .metadata.name') -- loglevel --set info
-OK
-```
+See [Troubleshooting: Logging]({{<baseurl>}}/rancher/v2.x/en/troubleshooting/logging/)
 
 ### My ClusterIP does not respond to ping
 

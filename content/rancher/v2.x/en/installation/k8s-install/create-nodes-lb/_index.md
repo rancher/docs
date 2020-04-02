@@ -40,7 +40,7 @@ For a high-availability K3s installation, you will need to set up one of the fol
 
 When you install Kubernetes using the K3s installation script, you will pass in details for K3s to connect to the database.
 
-For an example of one way to set up the database, refer to this [tutorial](./rds) for setting up a MySQL database on Amazon's RDS service.
+For an example of one way to set up the database, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/rds/) for setting up a MySQL database on Amazon's RDS service.
 
 For the complete list of options that are available for configuring a K3s cluster datastore, refer to the [K3s documentation.]({{<baseurl>}}/k3s/latest/en/installation/datastore/)
 
