@@ -18,7 +18,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 
 1. Enter a **Name** for the Config Map.
 
-    >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, ConfigMaps, registries, and secrets within your workspace.
+    >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, registries, and secrets within your workspace.
 
 1. Select the **Namespace** you want to add Config Map to. You can also add a new namespace on the fly by clicking **Add to a new namespace**.
 

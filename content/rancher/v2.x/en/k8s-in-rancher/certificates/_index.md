@@ -18,7 +18,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. Enter a **Name** for the certificate.
 
-    >**Note:** Kubernetes classifies SSL certificates as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your SSL certificate must have a unique name among the other certificates, ConfigMaps, registries, and secrets within your project/workspace.
+    >**Note:** Kubernetes classifies SSL certificates as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your SSL certificate must have a unique name among the other certificates, registries, and secrets within your project/workspace.
 
 1. Select the **Scope** of the certificate.
 
