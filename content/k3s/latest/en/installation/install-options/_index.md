@@ -9,8 +9,12 @@ This page focuses on the options that can be used when you set up K3s for the fi
 - [Installing K3s from the binary](#installing-k3s-from-the-binary)
 - [Registration options for the K3s server](#registration-options-for-the-k3s-server)
 - [Registration options for the K3s agent](#registration-options-for-the-k3s-agent)
+- [How to Use Flags and Environment Variables](#how-to-use-flags-and-environment-variables)
 
 For more advanced options, refer to [this page.]({{<baseurl>}}/k3s/latest/en/advanced)
+
+> Throughout the K3s documentation, you will see some options that can be passed in as both command flags and environment variables. For help with passing in options, refer to [How to Use Flags and Environment Variables.](#how-to-use-flags-and-environment-variables)
+
 
 # Installation Script Options
 
@@ -23,58 +27,24 @@ curl -sfL https://get.k3s.io | sh -
 
 When using this method to install K3s, the following environment variables can be used to configure the installation:
 
-- `INSTALL_K3S_SKIP_DOWNLOAD`
+| Environment Variable | Description |
+|-----------------------------|---------------------------------------------|
+| `INSTALL_K3S_SKIP_DOWNLOAD` | If set to true will not download K3s hash or binary. |
+| `INSTALL_K3S_SYMLINK` | If set to 'skip' will not create symlinks, 'force' will overwrite, default will symlink if command does not exist in path. |
+| `INSTALL_K3S_SKIP_START` | If set to true will not start K3s service. |
+| `INSTALL_K3S_VERSION` | Version of K3s to download from github. Will attempt to download the latest version if not specified. |
+| `INSTALL_K3S_BIN_DIR` | Directory to install K3s binary, links, and uninstall script to, or use `/usr/local/bin` as the default. |
+| `INSTALL_K3S_BIN_DIR_READ_ONLY` | If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting `INSTALL_K3S_SKIP_DOWNLOAD=true`. |
+| `INSTALL_K3S_SYSTEMD_DIR` | Directory to install systemd service and environment files to, or use `/etc/systemd/system` as the default. |
+| `INSTALL_K3S_EXEC` | Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set, or "server" if it is not set. For help, refer to [this example.](#example-a-install-k3s-exec) |
+| `INSTALL_K3S_NAME` | Name of systemd service to create, will default from the K3s exec command if not specified. If specified the name will be prefixed with 'k3s-'. |
+| `INSTALL_K3S_TYPE` | Type of systemd service to create, will default from the K3s exec command if not specified.
 
-    If set to true will not download K3s hash or binary.
+Environment variables which begin with `K3S_` will be preserved for the systemd and openrc services to use.
 
-- `INSTALL_K3S_SYMLINK`
+Setting `K3S_URL` without explicitly setting an exec command will default the command to "agent".
 
-    If set to 'skip' will not create symlinks, 'force' will overwrite, default will symlink if command does not exist in path.
-
-- `INSTALL_K3S_SKIP_START`
-
-    If set to true will not start K3s service.
-
-- `INSTALL_K3S_VERSION`
-
-    Version of K3s to download from github. Will attempt to download the latest version if not specified.
-
-- `INSTALL_K3S_BIN_DIR`
-
-    Directory to install K3s binary, links, and uninstall script to, or use `/usr/local/bin` as the default.
-
-- `INSTALL_K3S_BIN_DIR_READ_ONLY`
-
-    If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting `INSTALL_K3S_SKIP_DOWNLOAD=true`.
-
-- `INSTALL_K3S_SYSTEMD_DIR`
-
-    Directory to install systemd service and environment files to, or use `/etc/systemd/system` as the default.
-
-- `INSTALL_K3S_EXEC`
-
-    Command with flags to use for launching K3s in the service. If the command is not specified, it will default to "agent" if `K3S_URL` is set or "server" if it is not set.
-    
-    The final systemd command resolves to a combination of this environment variable and script args. To illustrate this, the following commands result in the same behavior of registering a server without flannel:
-     ```sh
-     curl ... | INSTALL_K3S_EXEC="--no-flannel" sh -s -
-     curl ... | INSTALL_K3S_EXEC="server --no-flannel" sh -s -
-     curl ... | INSTALL_K3S_EXEC="server" sh -s - --no-flannel
-     curl ... | sh -s - server --no-flannel
-     curl ... | sh -s - --no-flannel
-     ```
-
-   - `INSTALL_K3S_NAME`
-
-    Name of systemd service to create, will default from the K3s exec command if not specified. If specified the name will be prefixed with 'k3s-'.
-
-   - `INSTALL_K3S_TYPE`
-
-    Type of systemd service to create, will default from the K3s exec command if not specified.
-
-
-Environment variables which begin with `K3S_` will be preserved for the systemd and openrc services to use. Setting `K3S_URL` without explicitly setting an exec command will default the command to "agent". When running the agent `K3S_TOKEN` must also be set.
-
+When running the agent `K3S_TOKEN` must also be set.
 
 # Installing K3s from the Binary
 
@@ -92,7 +62,10 @@ Command | Description
 The `k3s server` and `k3s agent` commands have additional configuration options that can be viewed with <span class='nowrap'>`k3s server --help`</span> or <span class='nowrap'>`k3s agent --help`</span>. For convenience, that help text is presented here:
 
 # Registration Options for the K3s Server
-```
+
+> If an option appears in brackets below, for example `[$K3S_TOKEN]`, it means that the option can be passed in as an environment variable of that name.
+
+```bash
 NAME:
    k3s server - Run management server
 
@@ -160,7 +133,10 @@ OPTIONS:
 ```
 
 # Registration Options for the K3s Agent
-```
+
+> If an option appears in brackets below, for example `[$K3S_URL]`, it means that the option can be passed in as an environment variable of that name.
+
+```bash
 NAME:
    k3s agent - Run node agent
 
@@ -201,10 +177,41 @@ OPTIONS:
 K3s agents can be configured with the options `--node-label` and `--node-taint` which adds a label and taint to the kubelet. The two options only add labels and/or taints at registration time, so they can only be added once and not changed after that again by running K3s commands.
 
 Below is an example showing how to add labels and a taint:
-```
+```bash
      --node-label foo=bar \
      --node-label hello=world \
      --node-taint key1=value1:NoExecute
 ```
 
 If you want to change node labels and taints after node registration you should use `kubectl`. Refer to the official Kubernetes documentation for details on how to add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) and [node labels.](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node)
+
+# How to Use Flags and Environment Variables
+
+Throughout the K3s documentation, you will see some options that can be passed in as both command flags and environment variables. The below examples show how these options can be passed in both ways.
+
+### Example A: K3S_KUBECONFIG_MODE
+
+The option to allow writing to the kubeconfig file is useful for allowing a K3s cluster to be imported into Rancher. Below are two ways to pass in the option.
+
+Using the flag `--write-kubeconfig-mode 644`:
+```bash
+$ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+```
+Using the environment variable `K3S_KUBECONFIG_MODE`:
+```bash
+$ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+```
+
+### Example B: INSTALL_K3S_EXEC
+
+If this command is not specified as a server or agent command, it will default to "agent" if `K3S_URL` is set, or "server" if it is not set.
+
+The final systemd command resolves to a combination of this environment variable and script args. To illustrate this, the following commands result in the same behavior of registering a server without flannel:
+
+```bash
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--no-flannel" sh -s -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --no-flannel" sh -s -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --no-flannel
+curl -sfL https://get.k3s.io | sh -s - server --no-flannel
+curl -sfL https://get.k3s.io | sh -s - --no-flannel
+```
