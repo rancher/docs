@@ -153,18 +153,13 @@ This example annotation indicates that a pod security policy is enabled:
 "capabilities.cattle.io/pspEnabled": "true"
 ```
 
-This annotation indicates Ingress capabilities:
+The following annotation indicates Ingress capabilities. Note that that the values of non-primitive objects need to be JSON encoded, with quotations escaped.
 
 ```json
-capabilities.cattle.io/ingressCapabilities": "[
-  {
-    "customDefaultBackend":true,
-    "ingressProvider":"asdf"
-  }
-]"
+"capabilities.cattle.io/ingressCapabilities": "[{"customDefaultBackend":true,"ingressProvider":"asdf"}]"
 ```
 
-The following capabilities can be annotated for the cluster:
+These capabilities can be annotated for the cluster:
 
 - `ingressCapabilities`
 - `loadBalancerCapabilities`
@@ -173,7 +168,7 @@ The following capabilities can be annotated for the cluster:
 - `pspEnabled`
 - `taintSupport`
 
-All the capabilities and their type defintions can be viewed in the Rancher API view, at `[Rancher Server URL]/v3/schemas/capabilities`.
+All the capabilities and their type definitions can be viewed in the Rancher API view, at `[Rancher Server URL]/v3/schemas/capabilities`.
 
 To annotate an imported cluster,
 
