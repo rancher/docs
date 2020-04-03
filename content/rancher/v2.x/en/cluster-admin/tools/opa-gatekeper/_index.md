@@ -1,6 +1,8 @@
 ---
 title: OPA Gatekeeper
 weight: 1
+aliases:
+ - /rancher/v2.x/en/cluster-admin/tools/opa-gatekeeper
 ---
 _Available as of v2.4.0_
 
