@@ -10,10 +10,12 @@ Throughout the K3s documentation, you will see some options that can be passed i
 The option to allow writing to the kubeconfig file is useful for allowing a K3s cluster to be imported into Rancher. Below are two ways to pass in the option.
 
 Using the flag `--write-kubeconfig-mode 644`:
+
 ```bash
 $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
 ```
 Using the environment variable `K3S_KUBECONFIG_MODE`:
+
 ```bash
 $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 ```
