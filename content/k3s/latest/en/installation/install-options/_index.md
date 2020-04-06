@@ -28,15 +28,16 @@ When using this method to install K3s, the following environment variables can b
 | Environment Variable | Description |
 |-----------------------------|---------------------------------------------|
 | `INSTALL_K3S_SKIP_DOWNLOAD` | If set to true will not download K3s hash or binary. |
-| `INSTALL_K3S_SYMLINK` | If set to 'skip' will not create symlinks, 'force' will overwrite, default will symlink if command does not exist in path. |
+| `INSTALL_K3S_SYMLINK` | By default will create symlinks for the kubectl, crictl, and ctr binaries if the commands do not already exist in path. If set to 'skip' will not create symlinks and 'force' will overwrite. |
 | `INSTALL_K3S_SKIP_START` | If set to true will not start K3s service. |
-| `INSTALL_K3S_VERSION` | Version of K3s to download from github. Will attempt to download the latest version if not specified. |
+| `INSTALL_K3S_VERSION` | Version of K3s to download from Github. Will attempt to download the latest version if not specified. |
 | `INSTALL_K3S_BIN_DIR` | Directory to install K3s binary, links, and uninstall script to, or use `/usr/local/bin` as the default. |
 | `INSTALL_K3S_BIN_DIR_READ_ONLY` | If set to true will not write files to `INSTALL_K3S_BIN_DIR`, forces setting `INSTALL_K3S_SKIP_DOWNLOAD=true`. |
 | `INSTALL_K3S_SYSTEMD_DIR` | Directory to install systemd service and environment files to, or use `/etc/systemd/system` as the default. |
 | `INSTALL_K3S_EXEC` | Command with flags to use for launching K3s in the service. If the command is not specified, and the `K3S_URL` is set, it will default to "agent." If `K3S_URL` not set, it will default to "server." For help, refer to [this example.]({{<baseurl>}}/k3s/latest/en/installation/install-options/how-to-flags/#example-b-install-k3s-exec) |
-| `INSTALL_K3S_NAME` | Name of systemd service to create, will default from the K3s exec command if not specified. If specified the name will be prefixed with 'k3s-'. |
+| `INSTALL_K3S_NAME` | Name of systemd service to create, will default to 'k3s' if running k3s as a server and 'k3s-agent' if running k3s as an agent. If specified the name will be prefixed with 'k3s-'. |
 | `INSTALL_K3S_TYPE` | Type of systemd service to create, will default from the K3s exec command if not specified.
+
 
 Environment variables which begin with `K3S_` will be preserved for the systemd and openrc services to use.
 
@@ -44,7 +45,7 @@ Setting `K3S_URL` without explicitly setting an exec command will default the co
 
 When running the agent `K3S_TOKEN` must also be set.
 
-### Options for Installation from Binary
+# Installing K3s from the Binary
 
 As stated, the installation script is primarily concerned with configuring K3s to run as a service. If you choose to not use the script, you can run K3s simply by downloading the binary from our [release page](https://github.com/rancher/k3s/releases/latest), placing it on your path, and executing it. The K3s binary supports the following commands:
 
