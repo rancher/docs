@@ -32,13 +32,28 @@ Or to manually upgrade K3s:
 
 ### Restarting K3s
 
-Restarting K3s is supported by the installation script for systemd and openrc.
-To restart manually for systemd use:
+Restarting K3s is supported by the installation script for systemd and OpenRC.
+
+**systemd**
+
+To restart servers manually:
 ```sh
 sudo systemctl restart k3s
 ```
 
-To restart manually for openrc use:
+To restart agents manually:
+```sh
+sudo systemctl restart k3s-agent
+```
+
+**OpenRC**
+
+To restart servers manually:
 ```sh
 sudo service k3s restart
+```
+
+To restart agents mantually:
+```sh
+sudo service k3s-agent restart
 ```
