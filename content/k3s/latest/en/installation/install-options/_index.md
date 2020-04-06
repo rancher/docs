@@ -57,7 +57,7 @@ Command | Description
 <span class='nowrap'>`k3s ctr`</span> | Run an embedded [ctr](https://github.com/projectatomic/containerd/blob/master/docs/cli.md). This is a CLI for containerd, the container daemon used by K3s. Useful for debugging.
 <span class='nowrap'>`k3s help`</span> | Shows a list of commands or help for one command
 
-The `k3s server` and `k3s agent` commands have additional configuration options that can be viewed with <span class='nowrap'>`k3s server --help`</span> or <span class='nowrap'>`k3s agent --help`</span>. For convenience, that help text is presented here:
+The `k3s server` and `k3s agent` commands have additional configuration options that can be viewed with <span class='nowrap'>`k3s server --help`</span> or <span class='nowrap'>`k3s agent --help`</span>.
 
 ### Registration Options for the K3s Server
 

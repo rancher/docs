@@ -11,6 +11,10 @@ In this section, you'll learn how to configure the K3s server.
     - [Database](#database)
     - [Cluster Options](#cluster-options)
     - [Client Options](#client-options)
+- [Agent Options](#agent-options)
+    - [Agent Nodes](#agent-nodes)
+    - [Agent Runtime](#agent-runtime)
+    - [Agent Networking](#agent-networking)
 - [Advanced Options](#advanced-options)
     - [Logging](#logging)
     - [Listeners](#listeners)
@@ -19,13 +23,10 @@ In this section, you'll learn how to configure the K3s server.
     - [Customized Options](#customized-options)
     - [Storage Class](#storage-class)
     - [Kubernetes Components](#kubernetes-components)
-    - [Registering Agents](#registering-agent-nodes)
-    - [Registering Agent Runtime](#registering-agent-runtime)
-    - [Registering Agent Networking](#registering-agent)
     - [Customized Flags for Kubernetes Processes](#customized-flags-for-kubernetes-processes)
     - [Experimental Options](#experimental-options)
     - [Deprecated Options](#deprecated-options)
-    - [K3s Server Cli Help](#k3s-server-cli-help)
+- [K3s Server Cli Help](#k3s-server-cli-help)
 
 
 # Commonly Used Options
@@ -52,6 +53,40 @@ In this section, you'll learn how to configure the K3s server.
 |------|----------------------|-------------|
 |  `--write-kubeconfig value, -o` value  | `K3S_KUBECONFIG_OUTPUT` | Write kubeconfig for admin client to this file |
 |  `--write-kubeconfig-mode` value | `K3S_KUBECONFIG_MODE` | Write kubeconfig with this [mode.](https://en.wikipedia.org/wiki/Chmod) The option to allow writing to the kubeconfig file is useful for allowing a K3s cluster to be imported into Rancher. An example value is 644. | 
+
+# Agent Options
+
+K3s agent options are available as server options because the server has the agent process embedded within.
+
+### Agent Nodes
+
+| Flag | Environment Variable | Description |
+|------|----------------------|-------------|
+|   `--node-name` value      | `K3S_NODE_NAME`        | Node name       |
+|   `--with-node-id`     |  N/A           | Append id to node name         | (agent/node) 
+|   `--node-label` value   | N/A         | Registering and starting kubelet with set of labels        | 
+|   `--node-taint` value    | N/A        | Registering kubelet with set of taints         |
+
+### Agent Runtime
+
+| Flag | Default | Description |
+|------|---------|-------------|
+|   `--docker`  |  N/A            |  Use docker instead of containerd            |     (agent/runtime) 
+|  `--container-runtime-endpoint` value  | N/A   | Disable embedded containerd and use alternative CRI implementation |
+|   `--pause-image` value    | "docker.io/rancher/pause:3.1"          | Customized pause image for containerd or Docker sandbox       |
+|   `--private-registry` value  | "/etc/rancher/k3s/registries.yaml"         | Private registry configuration file     |
+
+### Agent Networking
+
+the agent options are there because the server has the agent process embedded within
+
+| Flag | Environment Variable | Description |
+|------|----------------------|-------------|
+|   `--node-ip value, -i` value  | N/A         | IP address to advertise for node     |
+|   `--node-external-ip` value   |  N/A        | External IP address to advertise for node    | 
+|   `--resolv-conf` value   |  `K3S_RESOLV_CONF`    | Kubelet resolv.conf file        |
+|   `--flannel-iface` value    |  N/A         | Override default flannel interface   | 
+|   `--flannel-conf` value   |   N/A         | Override default flannel config file     |
 
 # Advanced Options
 
@@ -115,34 +150,6 @@ In this section, you'll learn how to configure the K3s server.
 |   `--disable-cloud-controller`   | Disable k3s default cloud controller manager           | 
 |   `--disable-network-policy`  | Disable k3s default network policy controller            | 
 
-### Registering Agent Nodes
-
-| Flag | Environment Variable | Description |
-|------|----------------------|-------------|
-|   `--node-name` value      | `K3S_NODE_NAME`        | Node name       |
-|   `--with-node-id`     |  N/A           | Append id to node name         | (agent/node) 
-|   `--node-label` value   | N/A         | Registering and starting kubelet with set of labels        | 
-|   `--node-taint` value    | N/A        | Registering kubelet with set of taints         |
-
-### Registering Agent Runtime
-
-| Flag | Default | Description |
-|------|---------|-------------|
-|   `--docker`  |  N/A            |  Use docker instead of containerd            |     (agent/runtime) 
-|  `--container-runtime-endpoint` value  | N/A   | Disable embedded containerd and use alternative CRI implementation |
-|   `--pause-image` value    | "docker.io/rancher/pause:3.1"          | Customized pause image for containerd or Docker sandbox       |
-|   `--private-registry` value  | "/etc/rancher/k3s/registries.yaml"         | Private registry configuration file     |
-
-### Registering Agent Networking
-
-| Flag | Environment Variable | Description |
-|------|----------------------|-------------|
-|   `--node-ip value, -i` value  | N/A         | IP address to advertise for node     |
-|   `--node-external-ip` value   |  N/A        | External IP address to advertise for node    | 
-|   `--resolv-conf` value   |  `K3S_RESOLV_CONF`    | Kubelet resolv.conf file        |
-|   `--flannel-iface` value    |  N/A         | Override default flannel interface   | 
-|   `--flannel-conf` value   |   N/A         | Override default flannel config file     |
-
 ### Customized Flags for Kubernetes Processes
 
 | Flag |  Description |
@@ -171,7 +178,7 @@ In this section, you'll learn how to configure the K3s server.
 |   `--cluster-secret` value   | `K3S_CLUSTER_SECRET`        | Use --token        |
 
 
-### K3s Server CLI Help
+# K3s Server CLI Help
 
 > If an option appears in brackets below, for example `[$K3S_TOKEN]`, it means that the option can be passed in as an environment variable of that name.
 
