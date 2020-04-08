@@ -131,29 +131,28 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 2. From the release's "Assets" section, download the following files:
 
-   | Release File                 | Description                                                                                                                                          |
-   | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `rancher-windows-images.txt` | This file contains a list of Windows images needed to provision Windows clusters.                                                                    |
-   | `rancher-save-images.ps1`    | This script pulls all the images in the `rancher-windows-images.txt` from Docker Hub and saves all of the images as `rancher-windows-images.tar.gz`. |
-   | `rancher-load-images.ps1`    | This script loads the images from the `rancher-windows-images.tar.gz` file and pushes them to your private registry.                                 |
+| Release File                 | Description      |
+|----------------------------|------------------|
+| `rancher-windows-images.txt` | This file contains a list of Windows images needed to provision Windows clusters.                                                                    |
+| `rancher-save-images.ps1`    | This script pulls all the images in the `rancher-windows-images.txt` from Docker Hub and saves all of the images as `rancher-windows-images.tar.gz`. |
+| `rancher-load-images.ps1`    | This script loads the images from the `rancher-windows-images.tar.gz` file and pushes them to your private registry.                                 |
 
 ### B. Save the images to your Windows Server workstation
 
 1. Using `powershell`, go to the directory that has the files that were downloaded in the previous step.
 
 1. Run `rancher-save-images.ps1` to create a tarball of all the required images:
-
    ```plain
    ./rancher-save-images.ps1
    ```
 
-   **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-windows-images.tar.gz`. Check that the output is in the directory.
+   **Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-windows-images.tar.gz`. Check that the output is in the directory.
 
 ### C. Prepare the Docker daemon
 
-1. Append your private registry address to the `allow-nondistributable-artifacts` config field in the Docker daemon (`C:\ProgramData\Docker\config\daemon.json`). Since the base image of Windows images are maintained by the `mcr.microsoft.com` registry, this step is required as the layers in the Microsoft registry are missing from Docker Hub and need to be pulled into the private registry.
+Append your private registry address to the `allow-nondistributable-artifacts` config field in the Docker daemon (`C:\ProgramData\Docker\config\daemon.json`). Since the base image of Windows images are maintained by the `mcr.microsoft.com` registry, this step is required as the layers in the Microsoft registry are missing from Docker Hub and need to be pulled into the private registry.
 
-   ```json
+   ```
    {
      ...
      "allow-nondistributable-artifacts": [
@@ -171,13 +170,11 @@ Move the images in the `rancher-windows-images.tar.gz` to your private registry 
 The `rancher-windows-images.txt` is expected to be on the workstation in the same directory that you are running the `rancher-load-images.ps1` script. The `rancher-windows-images.tar.gz` should also be in the same directory.
 
 1. Using `powershell`, log into your private registry if required:
-
    ```plain
    docker login <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
 
 1. Using `powershell`, use `rancher-load-images.ps1` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry:
-
    ```plain
    ./rancher-load-images.ps1 --registry <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
@@ -205,25 +202,23 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### A. Find the required assets for your Rancher version
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets*.*
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets.**
 
 2. From the release's **Assets** section, download the following files:
 
-   | Release File                 | Description                                                                                                                          |
-   | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-   | `rancher-images.txt`         | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools.                            |
-   | `rancher-windows-images.txt` | This file contains a list of images needed to provision Windows clusters.                                                            |
-   | `rancher-save-images.sh`     | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
-   | `rancher-load-images.sh`     | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.                             |
+| Release File                 | Description    |
+|----------------------------| -------------------------- |
+| `rancher-images.txt`         | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools.           |
+| `rancher-windows-images.txt` | This file contains a list of images needed to provision Windows clusters.                                                            |
+| `rancher-save-images.sh`     | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
+| `rancher-load-images.sh`     | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.                             |
 
 ### B. Collect all the required images
 
-1. **For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+**For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
    1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
-
       > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
-
       ```plain
       helm repo add jetstack https://charts.jetstack.io
       helm repo update
@@ -232,7 +227,6 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
       ```
 
    2. Sort and unique the images list to remove any overlap between the sources:
-
       ```plain
       sort -u rancher-images.txt -o rancher-images.txt
       ```
@@ -240,18 +234,16 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 ### C. Save the images to your workstation
 
 1. Make `rancher-save-images.sh` an executable:
-
    ```
    chmod +x rancher-save-images.sh
    ```
 
 1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images:
-
    ```plain
    ./rancher-save-images.sh --image-list ./rancher-images.txt
    ```
 
-   **Step Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
+   **Result:** Docker begins pulling the images used for an air gap install. Be patient. This process takes a few minutes. When the process completes, your current directory will output a tarball named `rancher-images.tar.gz`. Check that the output is in the directory.
 
 ### D. Populate the private registry
 
@@ -260,19 +252,16 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
 The image list, `rancher-images.txt` or `rancher-windows-images.txt`, is expected to be on the workstation in the same directory that you are running the `rancher-load-images.sh` script. The `rancher-images.tar.gz` should also be in the same directory.
 
 1. Log into your private registry if required:
-
    ```plain
    docker login <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
 
 1. Make `rancher-load-images.sh` an executable:
-
    ```
    chmod +x rancher-load-images.sh
    ```
 
 1. Use `rancher-load-images.sh` to extract, tag and push the images from `rancher-images.tar.gz` to your private registry:
-
    ```plain
    ./rancher-load-images.sh --image-list ./rancher-images.txt \
      --windows-image-list ./rancher-windows-images.txt \
