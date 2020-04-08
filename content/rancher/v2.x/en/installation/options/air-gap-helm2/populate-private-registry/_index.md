@@ -33,6 +33,8 @@ D. Populate the private registry
 
 These steps expect you to use a Linux workstation that has internet access, access to your private registry, and at least 20 GB of disk space.
 
+If you will use ARM64 hosts, the registry must support manifests. As of April 2020, Amazon Elastic Container Registry does not support manifests.
+
 ### A. Find the required assets for your Rancher version
 
 1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets*.*
@@ -119,6 +121,8 @@ D. Populate the private registry
 These steps expect you to use a Windows Server 1809 workstation that has internet access, access to your private registry, and at least 50 GB of disk space.
 
 The workstation must have Docker 18.02+ in order to support manifests, which are required when provisioning Windows clusters.
+
+Your registry must support manifests. As of April 2020, Amazon Elastic Container Registry does not support manifests.
 
 ### A. Find the required assets for your Rancher version
 
