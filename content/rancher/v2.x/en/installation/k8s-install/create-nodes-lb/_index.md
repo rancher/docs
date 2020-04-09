@@ -18,7 +18,7 @@ For more information about each installation option, refer to [this page.]({{<ba
 To install the Rancher management server on a high-availability K3s cluster, we recommend setting up the following infrastructure:
 
 - **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
-- **An external database** to store the cluster data. PostgreSQL, MySQL, and etcd are supported.
+- **An external database** to store the cluster data. We recommend MySQL.
 - **A load balancer** to direct traffic to the two nodes.
 - **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 
@@ -32,15 +32,11 @@ For an example of one way to set up Linux nodes, refer to this [tutorial]({{<bas
 
 The ability to run Kubernetes using a datastore other than etcd sets K3s apart from other Kubernetes distributions. This feature provides flexibility to Kubernetes operators. The available options allow you to select a datastore that best fits your use case.
 
-For a high-availability K3s installation, you will need to set up one of the following external databases:
-
-* [PostgreSQL](https://www.postgresql.org/) (certified against versions 10.7 and 11.5)
-* [MySQL](https://www.mysql.com/) (certified against version 5.7)
-* [etcd](https://etcd.io/) (certified against version 3.3.15)
+For a high-availability K3s installation, you will need to set a [MySQL](https://www.mysql.com/) external database. Rancher has been tested on K3s Kubernetes clusters using MySQL version 5.7 as the datastore.
 
 When you install Kubernetes using the K3s installation script, you will pass in details for K3s to connect to the database.
 
-For an example of one way to set up the database, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/rds/) for setting up a MySQL database on Amazon's RDS service.
+For an example of one way to set up the MySQL database, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/rds/) for setting up MySQL on Amazon's RDS service.
 
 For the complete list of options that are available for configuring a K3s cluster datastore, refer to the [K3s documentation.]({{<baseurl>}}/k3s/latest/en/installation/datastore/)
 
