@@ -94,7 +94,7 @@ If you set a Kubernetes cloud provider in your cluster, some additional steps ar
 
 If you are using the GCE (Google Compute Engine) cloud provider, you must do the following:
 
-- Specify `gce` as the cloud provider in the `cluster.yml`
+- Enable the GCE cloud provider in the `cluster.yml` by following [these steps.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/gce)
 - When provisioning the cluster in Rancher, choose **Custom cloud provider** as the cloud provider in the Rancher UI.
 
 # Tutorial: How to Create a Cluster with Windows Support
