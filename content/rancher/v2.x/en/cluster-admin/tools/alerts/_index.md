@@ -16,6 +16,7 @@ For details about what triggers the predefined alerts, refer to the [documentati
 This section covers the following topics:
 
 - [Alert event examples](#alert-event-examples)
+  - [Prometheus queries](#prometheus-queries)
 - [Urgency levels](#urgency-levels)
 - [Scope of alerts](#scope-of-alerts)
 - [Adding cluster alerts](#adding-cluster-alerts)
@@ -29,6 +30,12 @@ Some examples of alert events are:
 - A node or [workload]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/) error occurring.
 - A scheduled deployment taking place as planned.
 - A node's hardware resources becoming overstressed.
+
+### Prometheus Queries
+
+> **Prerequisite:** Monitoring must be [enabled]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#enabling-cluster-monitoring) before you can trigger alerts with custom Prometheus queries or expressions.
+
+When you edit an alert rule, you will have the opportunity to configure the alert to be triggered based on a Prometheus expression. For examples of expressions, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression)
 
 # Urgency Levels
 
