@@ -15,7 +15,7 @@ If you are using Calico,
 1. Click **Edit as YAML,** and enter the following configuration:
     ```yaml
     rancher_kubernetes_engine_config:
-      cloud_provider: // indent 2 spaces than `rancher_kubernetes_engine_config`
+      cloud_provider:
         name: gce
         customCloudProvider: |- 
           [Global]
