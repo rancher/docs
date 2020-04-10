@@ -26,6 +26,10 @@ For details on enabling the Amazon cloud provider, refer to [this page.]({{<base
 
 For details on enabling the Azure cloud provider, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/azure)
 
+### Setting up the GCE Cloud Provider
+
+For details on enabling the Google Compute Engine cloud provider, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/gce)
+
 ### Setting up a Custom Cloud Provider
 
 The `Custom` cloud provider is available if you want to configure any [Kubernetes cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/).
