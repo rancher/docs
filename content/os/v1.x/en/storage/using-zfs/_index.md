@@ -21,7 +21,7 @@ $ sudo ros service logs --follow zfs
 $ lsmod | grep zfs
 ```
 
-> *Note:* if you switch consoles, you may need to re-run `ros up zfs`.
+> *Note:* if you switch consoles, you may need to re-run `sudo ros service up zfs`.
 
 #### Creating ZFS pools
 
