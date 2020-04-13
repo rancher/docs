@@ -7,7 +7,7 @@ weight: 50
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
 
 1. [Download the RKE Binary](#download-the-rke-binary)
-    1. [Alternative RKE MacOS X Install - Homebrew](#alternative-rke-macos-x-install---homebrew)
+    1. [Alternative RKE MacOS X Install - Homebrew](#alternative-rke-macos-x-install-homebrew)
 1. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
 1. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
 1. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
