@@ -45,6 +45,8 @@ When OPA Gatekeeper is enabled, Rancher installs some templates by default.
 
 To list the constraint templates installed in the cluster, go to the left side menu under OPA Gatekeeper and click on **Templates.**
 
+For detailed steps on how to create constraints using these default templates, please refer to [this section.](#using-the-default-constraint-templates)
+
 Rancher also provides the ability to create your own constraint templates by importing YAML definitions.
    
 # Creating and Configuring Constraints
@@ -95,3 +97,115 @@ The detail view of each constraint lists information about the resource that vio
 
 **Result:** Upon disabling OPA Gatekeeper, all constraint templates and constraints will also be deleted.
 
+# Using the Default Constraint Templates
+
+When OPA Gatekeeper is enabled, Rancher installs some templates by default. Currently the following constraint templates are installed:
+
+1. `k8sallowedrepos` - Template that can be used to whitelist registries.
+1. `k8srequiredlabels` - Template that can be used to enforce desired labels on specific Kubernetes objects.
+
+This section describes how to use these templates to create constraints for enforcing certain policies on the cluster via the **Dashboard** view.
+
+Currently it is not possible to create a constraint via "Edit as Form" by passing non-scalar parameters, but one can create them by using the **Edit As YAML** option.
+
+The constraint created can be edited using the form.
+
+### Constraint to Whitelist Registries
+
+Suppose you want to apply a policy that restricts creation of any pods in your cluster to use images only from a whitelisted repository. In this case, you would create a constraint from the  `k8sallowedrepos` template.
+
+For example, suppose we want all pods launched in the namespace `test` to use images only from the quay.io registry.
+
+Steps to do that via Rancher's dashboard view are as follows:
+
+> **Prerequisite:** OPA Gatekeeper must be enabled using the cluster's <b>Dashboard</b> view.
+
+1. Navigate to **OPA Gatekeeper > Constraints > Create.**
+1. Use the **Edit As YAML** option on the right hand corner of the Create form. Paste the following YAML and click **Create** to add the constraint:
+
+    ```yaml
+    type: constraints.gatekeeper.sh.k8sallowedrepos
+    spec:
+      match:
+        excludedNamespaces:
+          - cattle-system
+          - gatekeeper-system
+          - ingress-nginx
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - security-scan
+        kinds:
+          - apiGroups: [""]
+            kinds: ["Pod"]
+        namespaces:
+          - "test"
+        labelSelector:
+          matchExpressions: []
+        namespaceSelector:
+          matchExpressions: []
+      parameters:
+        repos:
+          - "quay.io"
+      enforcementAction: deny
+    metadata:
+      name: test-repo-is-quay-io
+      annotations:
+        cattle.io/description: whitelist repo quay.io
+    ```
+    
+    The YAML specifies the directive `repos` as defined by the `k8sallowedrepos` template schema.
+
+    This constraint specifies that the image repository "quay.io" should be used by all pod objects in the `test` namespace. Notice that all the system namespaces are by default added to the list of `excludedNamespaces`. You can edit the constraint via the form to change the namespaces and other information.
+
+**Result:** After the above constraint is created, it will be listed under `K8sAllowedRepos` on the **Constraints** page.  Now if you navigate **Back to Rancher** and create a workload under the `test` namespace with any image other than the "quay.io" registry, you will get an error from OPA Gatekeeper.
+
+### Constraint to Enforce Labels
+
+Suppose you want to apply a policy that requires certain set of labels present on Kubernetes resources of a specific kind, then you can create a constraint from the  `k8srequiredlabels` template.
+
+For example, suppose we want all namespaces in the cluster to be labeled with the name of a team.
+
+Steps to do that via Rancher's dashboard view are as follows:
+
+> **Prerequisite:** OPA Gatekeeper must be enabled using the cluster's <b>Dashboard</b> view.
+
+1. Navigate to OPA Gatekeeper > Constraints > Create.
+1. Use the **Edit As YAML** option on the right hand corner of the Create form. Paste the following yaml and click **Create** to add the constraint:
+
+    ```yaml
+    type: constraints.gatekeeper.sh.k8srequiredlabels
+    spec:
+      match:
+        excludedNamespaces:
+          - cattle-system
+          - gatekeeper-system
+          - ingress-nginx
+          - kube-node-lease
+          - kube-public
+          - kube-system
+          - security-scan
+        kinds:
+          - apiGroups: [""]
+            kinds: ["Namespace"]
+        labelSelector:
+          matchExpressions: []
+        namespaceSelector:
+          matchExpressions: []
+      parameters:
+        message: "All namespaces must have a `team` label that points to your team name"
+        labels:
+          - key: team
+            allowedRegex: "^[a-zA-Z]+$"
+      enforcementAction: deny
+    metadata:
+      name: ns-must-have-label
+      annotations:
+        cattle.io/description: constraint for ns label
+    ```
+    
+    The YAML specifies the directives `message` and `labels` as defined by the `k8srequiredlabels` template schema. This constraint defines that all"namespaces must have a label `team` whose value should match the given "allowedRegex". Notice that all the system namespaces are by default added to list of `excludedNamespaces`.
+
+    You can edit the constraint via the form to change the namespaces and other information.
+
+**Result:** After the above constraint is created, it will be listed under `K8sRequiredLabels` on the **Constraints** page. Now if you navigate **Back to Rancher** and create a new namespace in the cluster without having the label `team`, the create request should be denied.
