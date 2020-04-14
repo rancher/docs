@@ -9,6 +9,16 @@ You might want to configure the audit log as part of compliance with the CIS (Ce
 
 For configuration details, refer to the [official Kubernetes documentation.](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/)
 
+### Enabled by default
+
+In RKE v1.1.0 and higher and when using specific Kubernetes versions, audit log is enabled by default. See the table below to check when audit log is enabled by default.
+
+| RKE version | Kubernetes version | audit log Enabled |
+|-------------|--------------------|----------------------|
+| v1.1.0 and higher | v1.17.4 and higher (v1.17.x) | Yes |
+| v1.1.0 and higher | v1.16.8 and higher (v1.16.x) | Yes |
+| v1.1.0 and higher | v1.15.11 and higher (v1.15.x) | Yes |
+
 ### Example Configurations
 
 The audit log can be enabled by default using the following configuration in `cluster.yml`:
@@ -20,7 +30,7 @@ services:
       enabled: true
 ```
 
-When the audit log is enabled, you should be able to see the default values at `/etc/kubernetes/audit.yaml`:
+When the audit log is enabled, you should be able to see the default values at `/etc/kubernetes/audit-policy.yaml` (This is located at `/etc/kubernetes/audit.yaml` before RKE v1.1.0):
 
 ```yaml
 # Minimum Configuration: Capture event metadata.
@@ -36,7 +46,19 @@ When the audit log is enabled, default values are also set for the audit log pat
 ps -ef | grep kube-apiserver
 ```
 
-The default values for the audit log should be displayed:
+The default values for audit log were changed in RKE v1.1.0 to the following:
+
+```yaml
+--audit-log-maxage=30 # The maximum number of days to retain old audit log files
+--audit-log-maxbackup=10 # The maximum number of audit log files to retain
+--audit-log-path=/var/log/kube-audit/audit-log.json # The log file path that log backend uses to write audit events
+--audit-log-maxsize=100 # The maximum size in megabytes of the audit log file before it gets rotated
+--audit-policy-file=/etc/kubernetes/audit-policy.yaml # The file containing your audit log rules
+--audit-log-format=json # The log file format
+
+```
+
+The default values for the audit log before RKE v1.1.0 are:
 
 ```yaml
 --audit-log-maxage=5 # The maximum number of days to retain old audit log files
