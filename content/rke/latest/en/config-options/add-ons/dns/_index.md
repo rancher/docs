@@ -129,6 +129,8 @@ _Available as of v1.1.0_
 
 NodeLocal DNS is an additional component that can be deployed on each node to improve DNS performance. It is not a replacement for the `provider` parameter, you will still need to have one of the available DNS providers configured. See [Using NodeLocal DNSCache in Kubernetes clusters](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/) for more information on how NodeLocal DNS works.
 
+Enable NodeLocal DNS by configuring an IP address.
+
 ## Configuring NodeLocal DNS
 
 The `ip_address` parameter is used to configure what link-local IP address will be configured one each host to listen on, make sure this IP address is not already configured on the host.
@@ -139,3 +141,11 @@ dns:
     nodelocal:
         ip_address: "169.254.20.10"
 ```
+
+> **Note:** When enabling NodeLocal DNS on an existing cluster, pods that are currently running will not be modified, the updated `/etc/resolv.conf` configuration will take effect only for pods started after enabling NodeLocal DNS.
+
+## Removing NodeLocal DNS
+
+By removing the `ip_address` value, NodeLocal DNS will be removed from the cluster.
+
+> **Warning:** When removing NodeLocal DNS, a disruption to DNS can be expected. The updated `/etc/resolv.conf` configuration will take effect only for pods that are started after removing NodeLocal DNS. In general pods using the default `dnsPolicy: ClusterFirst` will need to be re-deployed.
