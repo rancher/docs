@@ -11,7 +11,7 @@ Create a clone of the main [RancherOS repository](https://github.com/rancher/os)
 $ git clone https://github.com/rancher/os.git
 ```
 
-In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{< baseurl >}}/os/v1.x/en/installation/custom-builds/custom-kernels). 
+In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{<baseurl>}}/os/v1.x/en/installation/custom-builds/custom-kernels). 
 After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files. 
 Build Requirements: `bash`, `make`, `docker` (Docker version >= 1.10.3)
 
@@ -29,7 +29,7 @@ If you need a compressed ISO, you can run this command:
 $ make release
 ```
 
-The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/docker-machine).
+The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine).
 
 ## Creating a GCE Image Archive
 
@@ -50,7 +50,7 @@ RANCHEROS_VERSION=v1.4.0 make build-gce
 
 #### Reduce Memory Requirements
 
-With changes to the kernel and built Docker, RancherOS booting requires more memory. For details, please refer to the [memory requirements]({{< baseurl >}}/os/v1.x/en/#hardware-requirements).
+With changes to the kernel and built Docker, RancherOS booting requires more memory. For details, please refer to the [memory requirements]({{<baseurl>}}/os/v1.x/en/#hardware-requirements).
 
 By customizing the ISO, you can reduce the memory usage on boot. The easiest way is to downgrade the built-in Docker version, because Docker takes up a lot of space. 
 This can effectively reduce the memory required to decompress the `initrd` on boot. Using docker 17.03 is a good choice:

@@ -16,7 +16,7 @@ To use an existing PV, your application will need to use a PVC that is bound to 
 
 For dynamic storage provisioning, your application will need to use a PVC that is bound to a storage class. The storage class contains the authorization to provision new persistent volumes.
 
-![Setting Up New and Existing Persistent Storage]({{< baseurl >}}/img/rancher/rancher-storage.svg)
+![Setting Up New and Existing Persistent Storage]({{<baseurl>}}/img/rancher/rancher-storage.svg)
 
 For more information, refer to the [official Kubernetes documentation on storage](https://kubernetes.io/docs/concepts/storage/volumes/)
 

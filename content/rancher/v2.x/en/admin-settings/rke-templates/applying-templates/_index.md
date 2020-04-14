@@ -53,7 +53,7 @@ RKE templates cannot be applied to existing clusters, except if you save an exis
 To convert an existing cluster to use an RKE template,
 
 1. From the **Global** view in Rancher, click the **Clusters** tab.
-1. Go to the cluster that will be converted to use an RKE template. Click **Ellipsis (...)** > **Save as RKE Template.**
+1. Go to the cluster that will be converted to use an RKE template. Click **&#8942;** > **Save as RKE Template.**
 1. Enter a name for the template in the form that appears, and click **Create.**
 
 **Results:**

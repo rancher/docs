@@ -42,7 +42,7 @@ There are three recommended options for the source of the certificate.
 > **Important:**
 > Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
 
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.9.1, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
@@ -79,7 +79,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.9.1 \
+      --version v0.12.0 \
       jetstack/cert-manager
     ```
 
@@ -105,6 +105,7 @@ If the ‘webhook’ pod (2nd line) is in a ContainerCreating state, it may stil
 The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface. Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
@@ -128,6 +129,7 @@ deployment "rancher" successfully rolled out
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA. This configuration uses HTTP validation (`HTTP-01`) so the load balancer must have a public DNS record and be accessible from the internet.
 
 - Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
@@ -155,6 +157,7 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 
 - Set `hostname` and set `ingress.tls.source` to `secret`.
 - If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher-<CHART_REPO>/rancher \

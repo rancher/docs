@@ -66,7 +66,7 @@ These steps describe how to set up a PVC in the namespace where your stateful wo
 
 1. Enter a **Name** for the volume claim.
 
-1. Select the [Namespace]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) of the volume claim.
+1. Select the [Namespace]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) of the volume claim.
 
 1. In the **Source** field, click **Use a Storage Class to provision a new persistent volume.**
 
@@ -100,7 +100,7 @@ To attach the PVC to a new workload,
 To attach the PVC to an existing workload,
 
 1. Go to the project that has the workload that will have the PVC attached.
-1. Go to the workload that will have persistent storage and click **Ellipsis (...) > Edit.**
+1. Go to the workload that will have persistent storage and click **&#8942; > Edit.**
 1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.

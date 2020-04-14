@@ -31,13 +31,13 @@ The majority of Rancher 2.x software runs on the Rancher Server. Rancher Server 
 
 The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two downstream Kubernetes clusters: one created by RKE and another created by Amazon EKS (Elastic Kubernetes Service).
 
-For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
+For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 The diagram below shows how users can manipulate both [Rancher-launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters and [hosted Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) clusters through Rancher's authentication proxy:
 
 <figcaption>Managing Kubernetes Clusters through Rancher's Authentication Proxy</figcaption>
 
-![Architecture]({{< baseurl >}}/img/rancher/rancher-architecture-rancher-api-server.svg)
+![Architecture]({{<baseurl>}}/img/rancher/rancher-architecture-rancher-api-server.svg)
 
 You can install Rancher on a single node, or on a high-availability Kubernetes cluster.
 
@@ -128,7 +128,9 @@ The files mentioned below are needed to maintain, troubleshoot and upgrade your 
 - `kube_config_rancher-cluster.yml`: The Kubeconfig file for the cluster, this file contains credentials for full access to the cluster. You can use this file to authenticate with a Rancher-launched Kubernetes cluster if Rancher goes down.
 - `rancher-cluster.rkestate`: The Kubernetes cluster state file. This file contains credentials for full access to the cluster. Note: This state file is only created when using RKE v0.2.0 or higher.
 
-For more information on connecting to a cluster without the Rancher authentication proxy and other configuration options, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubeconfig/) documentation.
+> **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+
+For more information on connecting to a cluster without the Rancher authentication proxy and other configuration options, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl/) documentation.
 
 # Tools for Provisioning Kubernetes Clusters
 

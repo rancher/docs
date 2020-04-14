@@ -26,7 +26,7 @@ CoreDNS can only be used on Kubernetes v1.12.0 and higher.
 
 RKE will deploy CoreDNS as a Deployment with the default replica count of 1. The pod consists of 1 container: `coredns`. RKE will also deploy coredns-autoscaler as a Deployment, which will scale the coredns Deployment by using the number of cores and nodes. Please see [Linear Mode](https://github.com/kubernetes-incubator/cluster-proportional-autoscaler#linear-mode) for more information about this logic.
 
-The images used for CoreDNS are under the [`system_images` directive]({{< baseurl >}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with CoreDNS, but these can be overridden by changing the image tag in `system_images`.
+The images used for CoreDNS are under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with CoreDNS, but these can be overridden by changing the image tag in `system_images`.
 
 ## Scheduling CoreDNS
 
@@ -66,7 +66,7 @@ dns:
 
 RKE will deploy kube-dns as a Deployment with the default replica count of 1. The pod consists of 3 containers: `kubedns`, `dnsmasq` and `sidecar`. RKE will also deploy kube-dns-autoscaler as a Deployment, which will scale the kube-dns Deployment by using the number of cores and nodes. Please see [Linear Mode](https://github.com/kubernetes-incubator/cluster-proportional-autoscaler#linear-mode) for more information about this logic.
 
-The images used for kube-dns are under the [`system_images` directive]({{< baseurl >}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with kube-dns, but these can be overridden by changing the image tag in `system_images`.
+The images used for kube-dns are under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with kube-dns, but these can be overridden by changing the image tag in `system_images`.
 
 ## Scheduling kube-dns
 
@@ -116,3 +116,36 @@ You can disable the default DNS provider by specifying `none` to  the dns `provi
 dns:
     provider: none
 ```
+
+# NodeLocal DNS
+
+_Available as of v1.1.0_
+
+> **Note:** The option to enable NodeLocal DNS is available for:
+>
+> * Kubernetes v1.15.11 and up
+> * Kubernetes v1.16.8 and up
+> * Kubernetes v1.17.4 and up
+
+NodeLocal DNS is an additional component that can be deployed on each node to improve DNS performance. It is not a replacement for the `provider` parameter, you will still need to have one of the available DNS providers configured. See [Using NodeLocal DNSCache in Kubernetes clusters](https://kubernetes.io/docs/tasks/administer-cluster/nodelocaldns/) for more information on how NodeLocal DNS works.
+
+Enable NodeLocal DNS by configuring an IP address.
+
+## Configuring NodeLocal DNS
+
+The `ip_address` parameter is used to configure what link-local IP address will be configured one each host to listen on, make sure this IP address is not already configured on the host.
+
+```yaml
+dns:
+    provider: coredns
+    nodelocal:
+        ip_address: "169.254.20.10"
+```
+
+> **Note:** When enabling NodeLocal DNS on an existing cluster, pods that are currently running will not be modified, the updated `/etc/resolv.conf` configuration will take effect only for pods started after enabling NodeLocal DNS.
+
+## Removing NodeLocal DNS
+
+By removing the `ip_address` value, NodeLocal DNS will be removed from the cluster.
+
+> **Warning:** When removing NodeLocal DNS, a disruption to DNS can be expected. The updated `/etc/resolv.conf` configuration will take effect only for pods that are started after removing NodeLocal DNS. In general pods using the default `dnsPolicy: ClusterFirst` will need to be re-deployed.

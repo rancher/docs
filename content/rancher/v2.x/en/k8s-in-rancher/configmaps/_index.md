@@ -18,7 +18,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 
 1. Enter a **Name** for the Config Map.
 
-    >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, ConfigMaps, registries, and secrets within your workspace.
+    >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, registries, and secrets within your workspace.
 
 1. Select the **Namespace** you want to add Config Map to. You can also add a new namespace on the fly by clicking **Add to a new namespace**.
 
@@ -26,7 +26,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 
 1. Click **Save**.
 
-	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/secrets/).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
@@ -41,4 +41,4 @@ Now that you have a ConfigMap added to a namespace, you can add it to a workload
 - Application environment variables.
 - Specifying parameters for a Volume mounted to the workload.
 
-For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
+For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).

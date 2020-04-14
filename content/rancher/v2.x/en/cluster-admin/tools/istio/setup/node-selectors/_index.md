@@ -14,7 +14,7 @@ In larger deployments, it is strongly advised that Istio's infrastructure be pla
 First, add a label to the node where Istio components should be deployed. This label can have any key-value pair. For this example, we will use the key `istio` and the value `enabled`.
 
 1. From the cluster view, go to the **Nodes** tab.
-1. Go to a worker node that will host the Istio components and click **Ellipsis (...) > Edit.**
+1. Go to a worker node that will host the Istio components and click **&#8942; > Edit.**
 1. Expand the **Labels & Annotations** section.
 1. Click **Add Label.**
 1. In the fields that appear, enter `istio` for the key and `enabled` for the value.

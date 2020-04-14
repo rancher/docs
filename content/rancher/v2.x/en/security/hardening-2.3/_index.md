@@ -14,7 +14,7 @@ Hardening Guide v2.3 | Rancher v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes 1.1
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Hardening_Guide.pdf)
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.x]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.3/).
 
 ### Profile Definitions
 
@@ -411,7 +411,7 @@ Verify that the permissions are `700` or more restrictive.
 
 **Remediation**
 
-Follow the steps as documented in [1.4.12]({{< baseurl >}}/rancher/v2.x/en/security/hardening-2.3/#1-4-12-ensure-that-the-etcd-data-directory-ownership-is-set-to-etcd-etcd) remediation.
+Follow the steps as documented in [1.4.12]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3/#1-4-12-ensure-that-the-etcd-data-directory-ownership-is-set-to-etcd-etcd) remediation.
 
 ### 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd`
 
@@ -1266,6 +1266,7 @@ services:
       anonymous-auth: "false"
       feature-gates: "RotateKubeletServerCertificate=true"
       tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+      generate_serving_certificate: true
   kube-api:
     pod_security_policy: true
     extra_args:

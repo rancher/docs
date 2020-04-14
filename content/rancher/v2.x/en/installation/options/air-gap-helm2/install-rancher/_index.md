@@ -5,7 +5,6 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/install-rancher/
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-system-charts/
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
-  - /rancher/v2.x/en/installation/air-gap-high-availability/install-rancher/
   - /rancher/v2.x/en/installation/air-gap-single-node/install-rancher
   - /rancher/v2.x/en/installation/air-gap/install-rancher
 ---

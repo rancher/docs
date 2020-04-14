@@ -10,11 +10,14 @@ This section contains advanced information describing the different ways you can
 
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with RootlessKit (Experimental)](#running-k3s-with-rootlesskit-experimental)
 - [Node labels and taints](#node-labels-and-taints)
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
+- [Enabling legacy iptables on Raspbian Buster](#enabling-legacy-iptables-on-raspbian-buster)
+- [Experimental SELinux Support](#experimental-selinux-support)
 
 # Auto-Deploying Manifests
 
@@ -29,6 +32,45 @@ K3s includes and defaults to [containerd,](https://containerd.io/) an industry-s
 K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`. For advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
 The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
+
+# Secrets Encryption Config (Experimental)
+As of v1.17.4+k3s1, K3s added the experimental feature of enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server, this flag will do the following automatically:
+
+- Generate an AES-CBC key
+- Generate an encryption config file with the generated key
+
+```
+{
+  "kind": "EncryptionConfiguration",
+  "apiVersion": "apiserver.config.k8s.io/v1",
+  "resources": [
+    {
+      "resources": [
+        "secrets"
+      ],
+      "providers": [
+        {
+          "aescbc": {
+            "keys": [
+              {
+                "name": "aescbckey",
+                "secret": "xxxxxxxxxxxxxxxxxxx"
+              }
+            ]
+          }
+        },
+        {
+          "identity": {}
+        }
+      ]
+    }
+  ]
+}
+```
+
+- Pass the config to the KubeAPI as encryption-provider-config
+
+Once enabled any created secret will be encrypted with this key. Note that if you disable encryption then any encrypted secrets will not be readable until you enable encryption again.
 
 # Running K3s with RootlessKit (Experimental)
 
@@ -162,3 +204,27 @@ Alternatively the `docker run` command can also be used:
       -e K3S_TOKEN=${NODE_TOKEN} \
       --privileged rancher/k3s:vX.Y.Z
 
+
+# Enabling legacy iptables on Raspbian Buster
+
+Raspbian Buster defaults to using `nftables` instead of `iptables`.  **K3S** networking features require `iptables` and do not work with `nftables`.  Follow the steps below to switch configure **Buster** to use `legacy iptables`:
+```
+sudo iptables -F
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+sudo reboot
+```
+
+# Experimental SELinux Support
+
+As of release v1.17.4+k3s1, experimental support for SELinux has been added to K3s's embedded containerd. If you are installing K3s on a system where SELinux is enabled by default (such as CentOS), you must ensure the proper SELinux policies have been installed. The [install script]({{<baseurl>}}/k3s/latest/en/installation/install-options/#installation-script-options) will fail if they are not. The necessary policies can be installed with the following commands:
+```
+yum install -y container-selinux selinux-policy-base
+rpm -i https://rpm.rancher.io/k3s-selinux-0.1.1-rc1.el7.noarch.rpm
+```
+
+To force the install script to log a warning rather than fail, you can set the following environment variable: `INSTALL_K3S_SELINUX_WARN=true`.
+
+You can turn off SELinux enforcement in the embedded containerd by launching K3s with the `--disable-selinux` flag.
+
+Note that support for SELinux in containerd is still under development. Progress can be tracked in [this pull request](https://github.com/containerd/cri/pull/1246).

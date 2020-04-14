@@ -13,8 +13,7 @@ This section covers the following topics:
 
 - [Prerequisites](#prerequisites)
 - [Creating a custom role for a cluster or project](#creating-a-custom-role-for-a-cluster-or-project)
-- [Creating a custom global role that copies rules from an existing role](#creating-a-custom-global-role-that-copies-rules-from-an-existing-role)
-- [Creating a custom global role that does not copy rules from another role](#creating-a-custom-global-role-that-does-not-copy-rules-from-another-role)
+- [Creating a custom global role](#creating-a-custom-global-role)
 - [Deleting a custom global role](#deleting-a-custom-global-role)
 - [Assigning a custom global role to a group](#assigning-a-custom-global-role-to-a-group)
 
@@ -22,8 +21,8 @@ This section covers the following topics:
 
 To complete the tasks on this page, one of the following permissions are required:
 
- - [Administrator Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/).
- - [Custom Global Permissions]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
+ - [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/).
+ - [Custom Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
 
 ## Creating A Custom Role for a Cluster or Project
 
@@ -68,7 +67,7 @@ The steps to add custom roles differ depending on the version of Rancher.
 
 1.  **Name** the role.
 
-1.  Choose whether to set the role to a status of [locked]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
+1.  Choose whether to set the role to a status of [locked]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/).
 
     > **Note:** Locked roles cannot be assigned to users.
 
@@ -93,9 +92,11 @@ The steps to add custom roles differ depending on the version of Rancher.
 {{% /tab %}}
 {{% /tabs %}}
 
-## Creating a Custom Global Role that Copies Rules from an Existing Role
+## Creating a Custom Global Role
 
-_Available as of v2.4.0-alpha1_
+_Available as of v2.4.0_
+
+### Creating a Custom Global Role that Copies Rules from an Existing Role
 
 If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom global role in which all of the rules from another role, such as the administrator role, are copied into a new role. This allows you to only configure the variations between the existing role and the new role.
 
@@ -104,15 +105,13 @@ The custom global role can then be assigned to a user or group so that the custo
 To create a custom global role based on an existing role,
 
 1. Go to the **Global** view and click **Security > Roles.**
-1. On the **Global** tab, go to the role that the custom global role will be based on. Click **Ellipsis (…) > Clone.**
+1. On the **Global** tab, go to the role that the custom global role will be based on. Click **&#8942; (…) > Clone.**
 1. Enter a name for the role.
 1. Optional: To assign the custom role default for new users, go to the **New User Default** section and click **Yes: Default role for new users.**
 1. In the **Grant Resources** section, select the Kubernetes resource operations that will be enabled for users with the custom role.
 1. Click **Save.**
 
-## Creating a Custom Global Role that Does Not Copy Rules from Another Role
-
-_Available as of v2.4.0-alpha1_
+### Creating a Custom Global Role that Does Not Copy Rules from Another Role
 
 Custom global roles don't have to be based on existing roles. To create a custom global role by choosing the specific Kubernetes resource operations that should be allowed for the role, follow these steps:
 
@@ -125,7 +124,7 @@ Custom global roles don't have to be based on existing roles. To create a custom
 
 ## Deleting a Custom Global Role
 
-_Available as of v2.4.0-alpha1_
+_Available as of v2.4.0_
 
 When deleting a custom global role, all global role bindings with this custom role are deleted.
 
@@ -136,12 +135,12 @@ Custom global roles can be deleted, but built-in roles cannot be deleted.
 To delete a custom global role,
 
 1. Go to the **Global** view and click **Security > Roles.**
-2. On the **Global** tab, go to the custom global role that should be deleted and click **Ellipsis (…) > Delete.**
+2. On the **Global** tab, go to the custom global role that should be deleted and click **&#8942; (…) > Delete.**
 3. Click **Delete.**
 
 ## Assigning a Custom Global Role to a Group
 
-_Available as of v2.4.0-alpha1_
+_Available as of v2.4.0_
 
 If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom global role. When the role is assigned to a group, the users in the group have the appropriate level of access the first time they sign into Rancher.
 

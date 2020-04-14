@@ -3,7 +3,7 @@ title: Rancher AWS Quick Start Guide
 description: Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
 ---
-The following steps will quickly deploy a Rancher Server with a single node cluster attached.
+The following steps will quickly deploy a Rancher Server on AWS with a single node cluster attached.
 
 ## Prerequisites
 
@@ -20,38 +20,48 @@ The following steps will quickly deploy a Rancher Server with a single node clus
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the AWS folder containing the terraform file by executing `cd quickstart/aws`.
+1. Go into the AWS folder containing the terraform files by executing `cd quickstart/aws`.
 
-3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
+1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-4. Edit `terraform.tfvars` and customize the following variables at minimum. To change node counts and sizes, see `node sizes`.
+1. Edit `terraform.tfvars` and customize the following variables:
+    - `aws_access_key` - Amazon AWS Access Key 
+    - `aws_secret_key` - Amazon AWS Secret Key
+    - `rancher_server_admin_password` - Admin password for created Rancher server
 
-  - `aws_access_key` - Amazon AWS Access Key 
-  - `aws_secret_key` - Amazon AWS Secret Key
-  - `ssh_key_name` - Amazon AWS Key Pair Name
-  - `prefix` - Resource Prefix
-  
-5. **Optional:** Modify the count of the various node types within `terraform.tfvars`. See the [Quickstart Readme](https://github.com/rancher/quickstart) for more information on the variables.
+1. **Optional:** Modify optional variables within `terraform.tfvars`.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/aws) for more information.
+Suggestions include:
+    - `aws_region` - Amazon AWS region, choose the closest instead of the default
+    - `prefix` - Prefix for all created resources
+    - `instance_type` - EC2 instance size used, minimum is `t3a.medium` but `t3a.large` or `t3a.xlarge` could be used if within budget
+    - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
-6. Run `terraform init`.
+1. Run `terraform init`.
 
-7. To initiate the creation of the environment, run `terraform apply`. Then wait for the following output:
+1. Install the [RKE terraform provider](https://github.com/rancher/terraform-provider-rke), see [installation instructions](https://github.com/rancher/terraform-provider-rke#using-the-provider).
 
-	```
-	Apply complete! Resources: 3 added, 0 changed, 0 destroyed. 
-	  Outputs: 
-	  rancher-url = [ 
-              https://xxx.xxx.xxx.xxx 
-      ]
-	```
+1. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
 
-8. Paste the `rancher-url` from the output above into the browser. Log in when prompted (default username is `admin`, and default password is `admin`).
+    ```
+    Apply complete! Resources: 16 added, 0 changed, 0 destroyed.
 
-**Result:** Rancher Server and your Kubernetes cluster is installed in Amazon AWS.
+    Outputs:
+
+    rancher_node_ip = xx.xx.xx.xx
+    rancher_server_url = https://ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+    workload_node_ip = yy.yy.yy.yy
+    ```
+
+1. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
+
+#### Result
+
+Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload).
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/workload).
 
 ## Destroying the Environment
 

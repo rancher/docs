@@ -25,7 +25,7 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
 
-2. Select the **Ellipsis (...) > Rotate Certificates**.
+2. Select the **&#8942; > Rotate Certificates**.
 
 3. Select which certificates that you want to rotate.
 
@@ -47,7 +47,7 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
 
-2. Select the **Ellipsis (...) > View in API**.
+2. Select the **&#8942; > View in API**.
 
 3. Click on **RotateCertificates**.
 

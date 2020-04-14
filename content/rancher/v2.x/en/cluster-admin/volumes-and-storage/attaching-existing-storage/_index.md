@@ -16,7 +16,7 @@ To set up storage, follow these steps:
 
 ### Prerequisites
 
-- To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
+- To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
 ### 1. Set up persistent storage in an infrastructure provider
@@ -93,7 +93,7 @@ The following steps describe how to assign existing storage to a new workload th
 The following steps describe how to assign persistent storage to an existing workload:
 
 1. From the **Project** view, go to the **Workloads** tab.
-1. Go to the workload that you want to add the persistent storage to. The workload type should be a stateful set. Click **Ellipsis (...) > Edit.**
+1. Go to the workload that you want to add the persistent storage to. The workload type should be a stateful set. Click **&#8942; > Edit.**
 1. Expand the **Volumes** section and click **Add Volume > Use an existing persistent volume (claim).**.
 1. In the **Persistent Volume Claim** field, select the PVC that you created.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.

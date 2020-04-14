@@ -3,7 +3,7 @@ title: Manual Quick Start
 weight: 300
 ---
 Howdy Partner! This tutorial walks you through:
-    
+
 - Installation of {{< product >}} 2.x
 - Creation of your first cluster
 - Deployment of an application, Nginx
@@ -38,7 +38,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   >
   > For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/).
 
-  Provision the host according to our [Requirements]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
+  Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/).
 
 ### 2. Install Rancher
 
@@ -49,7 +49,7 @@ To install Rancher on your host, connect to it and then use a shell to install.
 2.  From your shell, enter the following command:
 
 	```
-	$ sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 	```
 
 **Result:** Rancher is installed.
@@ -105,4 +105,4 @@ Congratulations! You have created your first cluster.
 
 #### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.x/en/quick-start-guide/workload).
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.x/en/quick-start-guide/workload).

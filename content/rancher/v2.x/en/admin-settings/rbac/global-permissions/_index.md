@@ -43,7 +43,7 @@ To see the default permissions for new users, go to the **Global** view and clic
 
 Permissions can be assigned to an individual user with [these steps.](#configuring-global-permissions-for-existing-individual-users)
 
-As of Rancher v2.4.0-alpha1, you can [assign a role to everyone in the group at the same time](#configuring-global-permissions-for-groups) if the external authentication provider supports groups.
+As of Rancher v2.4.0, you can [assign a role to everyone in the group at the same time](#configuring-global-permissions-for-groups) if the external authentication provider supports groups.
 
 # Custom Global Permissions
 
@@ -102,7 +102,7 @@ To change the default global permissions that are assigned to external users upo
 
 1. From the **Global** view, select **Security > Roles** from the main menu. Make sure the **Global** tab is selected.
 
-1. Find the permissions set that you want to add or remove as a default. Then edit the permission by selecting **Ellipsis > Edit**.
+1. Find the permissions set that you want to add or remove as a default. Then edit the permission by selecting **&#8942; > Edit**.
 
 1. If you want to add the permission as a default, Select **Yes: Default role for new users** and then click **Save**.
 
@@ -116,7 +116,7 @@ To configure permission for a user,
 
 1. Go to the **Users** tab.
 
-1. On this page, go to the user whose access level you want to change and click **Ellipsis (...) > Edit.**
+1. On this page, go to the user whose access level you want to change and click **&#8942; > Edit.**
 
 1. In the **Global Permissions** section, click **Custom.**
 
@@ -128,7 +128,7 @@ To configure permission for a user,
 
 ### Configuring Global Permissions for Groups
 
-_Available as of v2.4.0-alpha1_
+_Available as of v2.4.0_
 
 If you have a group of individuals that need the same level of access in Rancher, it can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
 

@@ -70,7 +70,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
    ![Rancher Workload]({{<baseurl>}}/img/rancher/audit_logs_gui/rancher_workload.png)
 
-1. Pick one of the `rancher` pods and select **Ellipsis (...) > View Logs**.
+1. Pick one of the `rancher` pods and select **&#8942; > View Logs**.
 
    ![View Logs]({{<baseurl>}}/img/rancher/audit_logs_gui/view_logs.png)
 
@@ -80,7 +80,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 #### Shipping the Audit Log
 
-You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging]({{<baseurl>}}/rancher/v2.x/en/tools/logging) for details.
+You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging) for details.
 
 ## Audit Log Samples
 

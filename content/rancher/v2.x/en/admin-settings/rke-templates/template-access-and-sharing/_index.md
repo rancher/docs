@@ -28,7 +28,7 @@ There are several ways to share templates:
 To allow users or groups to create clusters using your template, you can give them the basic **User** access level for the template.
 
 1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
+1. Go to the template that you want to share and click the **&#8942; > Edit.**
 1. In the **Share Template** section, click on **Add Member**.
 1. Search in the **Name** field for the user or group you want to share the template with.
 1. Choose the **User** access type.
@@ -39,7 +39,7 @@ To allow users or groups to create clusters using your template, you can give th
 ### Sharing Templates with All Users
 
 1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
+1. Go to the template that you want to share and click the **&#8942; > Edit.**
 1. Under **Share Template,** click **Make Public (read-only).** Then click **Save.**
 
 **Result:** All users in the Rancher setup can create clusters using the template.
@@ -53,7 +53,7 @@ In that case, you can give users the Owner access type, which allows another use
 To give Owner access to a user or group,
 
 1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the RKE template that you want to share and click the **Vertical Ellipsis (...) > Edit.**
+1. Go to the RKE template that you want to share and click the **&#8942; > Edit.**
 1. Under **Share Template**, click on **Add Member** and search in the **Name** field for the user or group you want to share the template with.
 1. In the **Access Type** field, click **Owner.**
 1. Click **Save.**

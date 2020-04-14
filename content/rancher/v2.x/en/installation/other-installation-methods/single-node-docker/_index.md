@@ -13,7 +13,7 @@ For development and testing environments only, Rancher can be installed by runni
 In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb) instead.
+> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/single-node-install-external-lb) instead.
 
 # Requirements for OS, Docker, Hardware, and Networking
 
@@ -44,8 +44,8 @@ Log into your Linux host, and then run the minimum installation command below.
 
 ```bash
 docker run -d --restart=unless-stopped \
-	-p 80:80 -p 443:443 \
-	rancher/rancher:latest
+  -p 80:80 -p 443:443 \
+  rancher/rancher:latest
 ```
 
 ### Option B: Bring Your Own Certificate, Self-signed
@@ -68,11 +68,11 @@ After creating your certificate, run the Docker command below to install Rancher
 
 ```bash
 docker run -d --restart=unless-stopped \
-	-p 80:80 -p 443:443 \
-	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
-	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-	-v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-	rancher/rancher:latest
+  -p 80:80 -p 443:443 \
+  -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+  -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+  -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
+  rancher/rancher:latest
 ```
 
 ### Option C: Bring Your Own Certificate, Signed by a Recognized CA
@@ -97,11 +97,11 @@ After obtaining your certificate, run the Docker command below.
 
 ```bash
 docker run -d --restart=unless-stopped \
-	-p 80:80 -p 443:443 \
-	-v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
-	-v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-	rancher/rancher:latest \
-	--no-cacerts
+  -p 80:80 -p 443:443 \
+  -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
+  -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
+  rancher/rancher:latest \
+  --no-cacerts
 ```
 
 ### Option D: Let's Encrypt Certificate
@@ -124,9 +124,9 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 
 ```
 docker run -d --restart=unless-stopped \
-	-p 80:80 -p 443:443 \
-	rancher/rancher:latest \
-	--acme-domain <YOUR.DNS.NAME>
+  -p 80:80 -p 443:443 \
+  rancher/rancher:latest \
+  --acme-domain <YOUR.DNS.NAME>
 ```
 
 ## Advanced Options

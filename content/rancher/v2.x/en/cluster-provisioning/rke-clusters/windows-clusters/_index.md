@@ -5,7 +5,7 @@ weight: 2240
 
 _Available as of v2.3.0_
 
-When provisioning a [custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
+When provisioning a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
 
 You can use a mix of Linux and Windows hosts as your cluster nodes. Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
 
@@ -19,26 +19,20 @@ This guide covers the following topics:
 
 <!-- TOC -->
 
-- [Prerequisites](#prerequisites)
 - [Requirements](#requirements-for-windows-clusters)
   - [OS and Docker](#os-and-docker-requirements)
   - [Nodes](#node-requirements)
   - [Networking](#networking-requirements)
   - [Architecture](#architecture-requirements)
   - [Containers](#container-requirements)
+  - [Cloud Providers](#cloud-providers)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
   <!-- /TOC -->
 
-# Prerequisites
-
-Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{< baseurl >}}/rancher/v2.x/en/installation/) before proceeding with this guide.
-
-> **Note on Cloud Providers:** If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
-
 # Requirements for Windows Clusters
 
-For a custom cluster, the general node requirements for networking, operating systems, and Docker are the same as the node requirements for a [Rancher installation]({{< baseurl >}}/rancher/v2.x/en/installation/requirements/).
+For a custom cluster, the general node requirements for networking, operating systems, and Docker are the same as the node requirements for a [Rancher installation]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/).
 
 ### OS and Docker Requirements
 
@@ -64,6 +58,8 @@ Rancher will not provision the node if the node does not meet these requirements
 
 ### Networking Requirements
 
+Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation]({{<baseurl>}}/rancher/v2.x/en/installation/) before proceeding with this guide.
+
 Rancher only supports Windows using Flannel as the network provider.
 
 There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
@@ -84,13 +80,22 @@ We recommend the minimum three-node architecture listed in the table below, but 
 
 | Node   | Operating System                                    | Kubernetes Cluster Role(s)                                                                                                                                                                                                                         | Purpose                                                                             |
 | ------ | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Node 1 | Linux (Ubuntu Server 18.04 recommended)             | [Control Plane]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster                                                       |
-| Node 2 | Linux (Ubuntu Server 18.04 recommended)             | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
-| Node 3 | Windows (Windows Server core version 1809 or above) | [Worker]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Run your Windows containers                                                         |
+| Node 1 | Linux (Ubuntu Server 18.04 recommended)             | [Control Plane]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#etcd-nodes), [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) | Manage the Kubernetes cluster                                                       |
+| Node 2 | Linux (Ubuntu Server 18.04 recommended)             | [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
+| Node 3 | Windows (Windows Server core version 1809 or above) | [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)                                                                                                                                                                       | Run your Windows containers                                                         |
 
 ### Container Requirements
 
 Windows requires that containers must be built on the same Windows Server version that they are being deployed on. Therefore, containers must be built on Windows Server core version 1809 or above. If you have existing containers built for an earlier Windows Server core version, they must be re-built on Windows Server core version 1809 or above.
+
+### Cloud Providers
+
+If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
+
+If you are using the GCE (Google Compute Engine) cloud provider, you must do the following:
+
+- Enable the GCE cloud provider in the `cluster.yml` by following [these steps.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/gce)
+- When provisioning the cluster in Rancher, choose **Custom cloud provider** as the cloud provider in the Rancher UI.
 
 # Tutorial: How to Create a Cluster with Windows Support
 
@@ -130,11 +135,11 @@ You will provision three nodes:
 | Node 2 | Linux (Ubuntu Server 18.04 recommended)                      |
 | Node 3 | Windows (Windows Server core version 1809 or above required) |
 
-If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
+If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
 
 # 2. Create the Custom Cluster
 
-The instructions for creating a custom cluster that supports Windows nodes are very similar to the general [instructions for creating a custom cluster]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster) with some Windows-specific requirements.
+The instructions for creating a custom cluster that supports Windows nodes are very similar to the general [instructions for creating a custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster) with some Windows-specific requirements.
 
 Windows support only be enabled if the cluster uses Kubernetes v1.15+ and the Flannel network provider.
 
@@ -170,7 +175,7 @@ In this section, we fill out a form on the Rancher UI to get a custom command to
 
 1. In the **Node Role** section, choose at least **etcd** and **Control Plane**. We recommend selecting all three.
 
-1. Optional: If you click **Show advanced options,** you can customize the settings for the [Rancher agent]({{< baseurl >}}/rancher/v2.x/en/admin-settings/agent-options/) and [node labels.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+1. Optional: If you click **Show advanced options,** you can customize the settings for the [Rancher agent]({{<baseurl>}}/rancher/v2.x/en/admin-settings/agent-options/) and [node labels.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
 1. Copy the command displayed on the screen to your clipboard.
 
@@ -188,7 +193,7 @@ After the initial provisioning of your custom cluster, your cluster only has a s
 
 1. From the **Global** view, click **Clusters.**
 
-1. Go to the custom cluster that you created and click **Ellipsis (...) > Edit.**
+1. Go to the custom cluster that you created and click **&#8942; > Edit.**
 
 1. Scroll down to **Node Operating System**. Choose **Linux**.
 
@@ -216,7 +221,7 @@ You can add Windows hosts to a custom cluster by editing the cluster and choosin
 
 1. From the **Global** view, click **Clusters.**
 
-1. Go to the custom cluster that you created and click **Ellipsis (...) > Edit.**
+1. Go to the custom cluster that you created and click **&#8942; > Edit.**
 
 1. Scroll down to **Node Operating System**. Choose **Windows**. Note: You will see that the **worker** role is the only available role.
 
@@ -239,11 +244,11 @@ After creating your cluster, you can access it through the Rancher UI. As a best
 
 # Configuration for Storage Classes in Azure
 
-If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster.
+If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster.
 
 In order to have the Azure platform create the required storage resources, follow these steps:
 
-1.  [Configure the Azure cloud provider.]({{< baseurl >}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/#azure)
+1.  [Configure the Azure cloud provider.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/#azure)
 
 1.  Configure `kubectl` to connect to your cluster.
 

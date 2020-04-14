@@ -17,12 +17,13 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Sign Documents` | `ON` <sup>1</sup>
       `Sign Assertions` | `ON` <sup>1</sup>
       All other `ON/OFF` Settings | `OFF`
-      `Client ID` | `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata`
+      `Client ID` | `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata`<sup>2</sup>
       `Client Name` | <CLIENT_NAME> (e.g. `rancher`)
       `Client Protocol` | `SAML`
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
+      ><sup>2</sup>: Rancher SAML metadata won't be generated until a SAML provider is configured and saved.
 - Export a `metadata.xml` file from your Keycloak client:
   From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
 
@@ -64,7 +65,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{< baseurl >}}/rancher/v2.x/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.x/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
 
 ### You are not redirected to Keycloak
 
@@ -80,6 +81,11 @@ You are correctly redirected to your IdP login page and you are able to enter yo
 
   * Check the Rancher debug log.
   * If the log displays `ERROR: either the Response or Assertion must be signed`, make sure either `Sign Documents` or `Sign assertions` is set to `ON` in your Keycloak client.
+
+### HTTP 502 when trying to access /v1-saml/keycloak/saml/metadata
+
+This is usually due to the metadata not being created until a SAML provider is configured.
+Try configuring and saving keycloak as your SAML provider and then accessing the metadata.
 
 ### Keycloak Error: "We're sorry, failed to process response"
 

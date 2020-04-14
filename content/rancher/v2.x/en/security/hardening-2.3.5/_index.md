@@ -22,6 +22,10 @@ This document provides prescriptive guidance for hardening a production installa
 
 For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.5]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.5/).
 
+#### Known Issues
+
+Rancher **exec shell** and **view logs** for pods are **not** functional in a cis 1.5 hardened setup when only public ip is provided when registering custom nodes.
+
 ### Configure Kernel Runtime Parameters
 
 The following `sysctl` configuration is recommended for all nodes type in the cluster. Set the following parameters in `/etc/sysctl.d/90-kubelet.conf`:
@@ -43,7 +47,7 @@ A user account and group for the **etcd** service is required to be setup prior 
 To create the **etcd** group run the following console commands.
 
 ```
-addgroup --gid 52034 etcd
+groupadd --gid 52034 etcd
 useradd --comment "etcd service account" --uid 52034 --gid 52034 etcd
 ```
 
@@ -118,6 +122,10 @@ metadata:
   name: default-allow-all
 spec:
   podSelector: {}
+  ingress:
+  - {}
+  egress:
+  - {}
   policyTypes:
   - Ingress
   - Egress
@@ -179,7 +187,6 @@ services:
     infra_container_image: ""
     cluster_dns_server: ""
     fail_swap_on: false
-    generate_serving_certificate: true
   kubeproxy:
     image: ""
     extra_args: {}
@@ -511,7 +518,7 @@ rancher_kubernetes_engine_config:
       kind: Group
       name: system:authenticated
     ---
-    apiVersion: extensions/v1beta1
+    apiVersion: policy/v1beta1
     kind: PodSecurityPolicy
     metadata:
       name: restricted

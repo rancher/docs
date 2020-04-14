@@ -25,7 +25,7 @@ Mirrors is a directive that defines the names and endpoints of the private regis
 
 ```
 mirrors:
-  "mycustomreg.com:5000":
+  docker.io:
     endpoint:
       - "https://mycustomreg.com:5000"
 ```
@@ -59,7 +59,7 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  "mycustomreg.com:5000":
+  docker.io:
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
@@ -78,7 +78,7 @@ configs:
 
 ```
 mirrors:
-  "mycustomreg.com:5000":
+  docker.io:
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
@@ -101,7 +101,7 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  "mycustomreg.com:5000":
+  docker.io:
     endpoint:
       - "http://mycustomreg.com:5000"
 configs:
@@ -116,7 +116,7 @@ configs:
 
 ```
 mirrors:
-  "mycustomreg.com:5000":
+  docker.io:
     endpoint:
       - "http://mycustomreg.com:5000"
 ```
@@ -127,3 +127,18 @@ mirrors:
 > In case of no TLS communication, you need to specify `http://` for the endpoints, otherwise it will default to https.
  
 In order for the registry changes to take effect, you need to restart K3s on each node.
+
+# Adding Images to the Private Registry
+
+First, obtain the k3s-images.txt file from GitHub for the release you are working with.
+Pull the K3s images listed on the k3s-images.txt file from docker.io
+
+Example: `docker pull docker.io/rancher/coredns-coredns:1.6.3`
+
+Then, retag the images to the private registry.
+
+Example: `docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns`
+
+Last, push the images to the private registry.
+
+Example: `docker push mycustomreg:5000/coredns-coredns`

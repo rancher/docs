@@ -37,7 +37,7 @@ In the catalog management page in the Rancher UI, follow these steps:
 
 1. Click **Tools > Catalogs.**
 
-1. The system chart is displayed under the name `system-library`. To edit the configuration of the system chart, click **Ellipsis (...) > Edit.**
+1. The system chart is displayed under the name `system-library`. To edit the configuration of the system chart, click **&#8942; > Edit.**
 
 1. In the **Catalog URL** field, enter the location of the Git mirror of the `system-charts` repository.
 

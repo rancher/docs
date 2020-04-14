@@ -3,13 +3,23 @@ title: Custom Console
 weight: 180
 ---
 
-When [booting from the ISO]({{< baseurl >}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
+<<<<<<< HEAD
+When [booting from the ISO]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
 
-You can select which console you want RancherOS to start with using the [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config).
+You can select which console you want RancherOS to start with using the [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config).
 
 ### Enabling Consoles using Cloud-Config
 
-When launching RancherOS with a [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config) file, you can select which console you want to use.
+When launching RancherOS with a [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config) file, you can select which console you want to use.
+=======
+When [booting from the ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
+
+You can select which console you want RancherOS to start with using the [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config).
+
+### Enabling Consoles using Cloud-Config
+
+When launching RancherOS with a [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config) file, you can select which console you want to use.
+>>>>>>> Reorganize RancherOS docs
 
 Currently, the list of available consoles are:
 
@@ -102,7 +112,7 @@ All consoles except the default (busybox) console are persistent. Persistent con
 
 <br>
 
-> **Note:** When using a persistent console and in the current version's console, [rolling back]({{< baseurl >}}/os/v1.x/en/upgrading/#rolling-back-an-upgrade) is not supported. For example, rolling back to v0.4.5 when using a v0.5.0 persistent console is not supported.
+> **Note:** When using a persistent console and in the current version's console, [rolling back]({{<baseurl>}}/os/v1.x/en/upgrading/#rolling-back-an-upgrade) is not supported. For example, rolling back to v0.4.5 when using a v0.5.0 persistent console is not supported.
 
 ### Enabling Consoles
 

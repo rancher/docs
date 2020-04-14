@@ -14,10 +14,10 @@ If you want your applications to be externally accessible, you must add a load b
 
 Rancher supports two types of load balancers:
 
-- [Layer-4 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-4-load-balancer)
-- [Layer-7 Load Balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-7-load-balancer)
+- [Layer-4 Load Balancers]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-4-load-balancer)
+- [Layer-7 Load Balancers]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#layer-7-load-balancer)
 
-For more information, see [load balancers]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers).
+For more information, see [load balancers]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers).
 
 ### Load Balancer Limitations
 
@@ -28,9 +28,9 @@ Load Balancers have a couple of limitations you should be aware of:
 - If you want to use a load balancer with a Hosted Kubernetes cluster (i.e., clusters hosted in GKE, EKS, or AKS), the load balancer must be running within that cloud provider's infrastructure. Please review the compatibility tables regarding support for load balancers based on how you've provisioned your clusters:
 
 
-    - [Support for Layer-4 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-4-load-balancing)
+    - [Support for Layer-4 Load Balancing]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-4-load-balancing)
 
-    - [Support for Layer-7 Load Balancing]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-7-load-balancing)
+    - [Support for Layer-7 Load Balancing]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/#support-for-layer-7-load-balancing)
 
 ## Ingress
 
@@ -48,7 +48,7 @@ Ingress works in conjunction with one or more ingress controllers to dynamically
 
 Each Kubernetes Ingress resource corresponds roughly to a file in `/etc/nginx/sites-available/` containing a `server{}` configuration block, where requests for specific files and folders are configured.
 
-Your ingress, which creates a port of entry to your cluster similar to a load balancer, can reside within your cluster or externally. Ingress and ingress controllers residing in RKE-launcher clusters are powered by [Nginx](https://www.nginx.com/).
+Your ingress, which creates a port of entry to your cluster similar to a load balancer, can reside within your cluster or externally. Ingress and ingress controllers residing in RKE-launched clusters are powered by [Nginx](https://www.nginx.com/).
 
 Ingress can provide other functionality as well, such as SSL termination, name-based virtual hosting, and more.
 
@@ -56,6 +56,6 @@ Ingress can provide other functionality as well, such as SSL termination, name-b
 >
 >Refrain from adding an Ingress to the `local` cluster. The Nginx Ingress Controller that Rancher uses acts as a global entry point for _all_ clusters managed by Rancher, including the `local` cluster.  Therefore, when users try to access an application, your Rancher connection may drop due to the Nginx configuration being reloaded. We recommend working around this issue by deploying applications only in clusters that you launch using Rancher.
 
-- For more information on how to set up ingress in Rancher, see [Ingress]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
+- For more information on how to set up ingress in Rancher, see [Ingress]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
-- When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry, see [Global DNS]({{< baseurl >}}/rancher/v2.x/en/catalog/globaldns/).
+- When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).

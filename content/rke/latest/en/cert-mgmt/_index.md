@@ -12,9 +12,9 @@ Certificates are an important part of Kubernetes clusters and are used for all K
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
-If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to [generate a set of Certificate Signing Requests (CSRs) and keys]({{< baseurl >}}/rke/latest/en/installation/certs/#generating-certificate-signing-requests-csrs-and-keys).
+If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to [generate a set of Certificate Signing Requests (CSRs) and keys]({{<baseurl>}}/rke/latest/en/installation/certs/#generating-certificate-signing-requests-csrs-and-keys).
 
-You can use the CSRs and keys to sign the certificates by a real CA. After the certificates are signed, these custom certificates can be used by RKE to as [custom certificates]({{< baseurl >}}/rke/latest/en/installation/certs/) for the Kubernetes cluster.
+You can use the CSRs and keys to sign the certificates by a real CA. After the certificates are signed, these custom certificates can be used by RKE to as [custom certificates]({{<baseurl>}}/rke/latest/en/installation/certs/) for the Kubernetes cluster.
 
 ## Certificate Rotation
 

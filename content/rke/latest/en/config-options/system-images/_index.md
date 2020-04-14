@@ -75,4 +75,4 @@ system_images:
 
 ### Air-gapped Setups
 
-If you have an air-gapped setup and cannot access `docker.io`, you will need to set up your [private registry]({{< baseurl >}}/rke/latest/en/config-options/private-registries/) in your cluster configuration file. After you set up private registry, you will need to update these images to pull from your private registry.
+If you have an air-gapped setup and cannot access `docker.io`, you will need to set up your [private registry]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) in your cluster configuration file. After you set up private registry, you will need to update these images to pull from your private registry.

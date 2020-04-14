@@ -10,7 +10,7 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 
 1. Click **Resources > Workloads.** In versions prior to v2.3.0, select the **Workloads** tab.
 
-1. Find the workload that you want to extend. Select **Ellipsis icon (...) > Add a Sidecar**.
+1. Find the workload that you want to extend. Select **&#8942; icon (...) > Add a Sidecar**.
 
 1. Enter a **Name** for the sidecar.
 
@@ -30,7 +30,7 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 
 1. Click **Launch**.
 
-**Result:** The sidecar is deployed according to your parameters. Following its deployment, you can view the sidecar by selecting **Ellipsis icon (...) > Edit** for the main deployment.
+**Result:** The sidecar is deployed according to your parameters. Following its deployment, you can view the sidecar by selecting **&#8942; icon (...) > Edit** for the main deployment.
 
 ## Related Links
 

@@ -13,14 +13,14 @@ To avoid setting these limits on each and every container during workload creati
 
 _Available as of v2.2.0_
 
-Edit [container default resource limit]({{< baseurl >}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
+Edit [container default resource limit]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
 
 - You have a CPU or Memory resource quota set on a project, and want to supply the corresponding default values for a container.
 - You want to edit the default container resource limit.
 
 1. From the **Global** view, open the cluster containing the project to which you want to edit the container default resource limit.
 1. From the main menu, select **Projects/Namespaces**.
-1. Find the project that you want to edit the container default resource limit. From that project, select **Ellipsis (...) > Edit**.
+1. Find the project that you want to edit the container default resource limit. From that project, select **&#8942; > Edit**.
 1. Expand **Container Default Resource Limit** and edit the values.
 
 ### Resource Limit Propagation

@@ -2,7 +2,6 @@
 title: Docker Rollback
 weight: 1015
 aliases:
-  - /rancher/v2.x/en/backups/rollbacks/single-node-rollbacks
   - /rancher/v2.x/en/upgrades/single-node-rollbacks
 ---
 
@@ -24,7 +23,7 @@ In this command, `<PRIOR_RANCHER_VERSION>` is the version of Rancher you were ru
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>`</sup>
-![Placeholder Reference]({{< baseurl >}}/img/rancher/placeholder-ref-2.png)
+![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)
 
 | Placeholder                | Example                    | Description                                             |
 | -------------------------- | -------------------------- | ------------------------------------------------------- |
@@ -59,9 +58,9 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     ```
     You can obtain the name for your Rancher container by entering `docker ps`.
 
-1. Move the backup tarball that you created during completion of [Docker Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
+1. Move the backup tarball that you created during completion of [Docker Upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    If you followed the naming convention we suggested in [Docker Upgrade]({{< baseurl >}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
+    If you followed the naming convention we suggested in [Docker Upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
 
 1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the [placeholder](#before-you-start). Don't forget to close the quotes.
 

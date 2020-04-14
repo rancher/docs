@@ -15,7 +15,7 @@ Hardening Guide v2.1 | Rancher v2.1.x | Benchmark v1.3.0 | Kubernetes 1.11
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.1.x/Rancher_Hardening_Guide.pdf)
 
-For more detail on how a hardened cluster scores against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.1.x]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.1/).
+For more detail on how a hardened cluster scores against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.1.x]({{<baseurl>}}/rancher/v2.x/en/security/benchmark-2.1/).
 
 ### Profile Definitions
 

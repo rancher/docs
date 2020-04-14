@@ -67,7 +67,7 @@ To assign the role to a new cluster member,
 
 To assign any custom role to an existing cluster member,
 
-1. Go to the member you want to give the role to. Click the **Ellipsis (...) > View in API.**
+1. Go to the member you want to give the role to. Click the **&#8942; > View in API.**
 1. In the **roleTemplateId** field, go to the drop-down menu and choose the role you want to assign to the member. Click **Show Request** and **Send Request.**
 
 **Result:** The member has the assigned role.
@@ -140,7 +140,7 @@ By default, when a standard user creates a new cluster or project, they are auto
 
 There are two methods for changing default cluster/project roles:
 
-- **Assign Custom Roles**: Create a [custom role]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles) for either your [cluster](#custom-cluster-roles) or [project](#custom-project-roles), and then set the custom role as default.
+- **Assign Custom Roles**: Create a [custom role]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles) for either your [cluster](#custom-cluster-roles) or [project](#custom-project-roles), and then set the custom role as default.
 
 - **Assign Individual Roles**: Configure multiple [cluster](#cluster-role-reference)/[project](#project-role-reference) roles as default for assignment to the creating user.
 
@@ -148,7 +148,7 @@ There are two methods for changing default cluster/project roles:
 
 >**Note:**
 >
->- Although you can [lock]({{< baseurl >}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/) a default role, the system still assigns the role to users who create a cluster/project.
+>- Although you can [lock]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/locked-roles/) a default role, the system still assigns the role to users who create a cluster/project.
 >- Only users that create clusters/projects inherit their roles. Users added to the cluster/project membership afterward must be explicitly assigned their roles.
 
 ### Configuring Default Roles for Cluster and Project Creators
@@ -157,7 +157,7 @@ You can change the cluster or project role(s) that are automatically assigned to
 
 1. From the **Global** view, select **Security > Roles** from the main menu. Select either the **Cluster** or **Project** tab.
 
-1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **Ellipsis > Edit**.
+1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **&#8942; > Edit**.
 
 1. Enable the role as default.
 {{% accordion id="cluster" label="For Clusters" %}}

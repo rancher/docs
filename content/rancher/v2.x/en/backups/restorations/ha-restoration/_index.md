@@ -8,7 +8,7 @@ aliases:
 
 This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. The cluster snapshot will include Kubernetes configuration and the Rancher database and state.
 
-Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0 has changed how the [Kubernetes cluster state is stored]({{< baseurl >}}/rke/latest/en/installation/#kubernetes-cluster-state).
+Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0 has changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state).
 
 ## Restore Outline
 
@@ -24,11 +24,11 @@ Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0
 
 ### 1. Preparation
 
-You will need [RKE]({{< baseurl >}}/rke/latest/en/installation/) and [kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
+You will need [RKE]({{<baseurl>}}/rke/latest/en/installation/) and [kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
 
-Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [Kubernetes Install]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/) for node requirements.
+Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/) for node requirements.
 
-We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{< baseurl >}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
+We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
 
 > **IMPORTANT:** Before starting the restore make sure all the Kubernetes services on the old cluster nodes are stopped. We recommend powering off the nodes to be sure.
 
@@ -135,8 +135,8 @@ S3 specific options are only available for RKE v0.2.0+.
 | `--bucket-name` value     |  Specify s3 bucket name | *|
 | `--folder` value |  Specify s3 folder in the bucket name _Available as of v2.3.0_ | *|
 | `--region` value          |  Specify the s3 bucket location (optional) | *|
-| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{< baseurl >}}/rke/latest/en/config-options/#ssh-agent) | |
-| `--ignore-docker-version`  | [Disable Docker version check]({{< baseurl >}}/rke/latest/en/config-options/#supported-docker-versions) |
+| `--ssh-agent-auth`      |   [Use SSH Agent Auth defined by SSH_AUTH_SOCK]({{<baseurl>}}/rke/latest/en/config-options/#ssh-agent) | |
+| `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 ### 5. Bring Up the Cluster
 
@@ -150,7 +150,7 @@ rke up --config ./rancher-cluster-restore.yml
 
 #### Testing the Cluster
 
-Once RKE completes it will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster-restore.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{< baseurl >}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
+Once RKE completes it will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster-restore.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
 
 Your new cluster will take a few minutes to stabilize. Once you see the new "target node" transition to `Ready` and three old nodes in `NotReady` you are ready to continue.
 
@@ -232,6 +232,6 @@ rke up --config ./rancher-cluster-restore.yml
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/#recommended-architecture) for Kubernetes installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the Kubernetes install ([1. Create Nodes and Load Balancer]({{< baseurl >}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
+Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/#recommended-architecture) for Kubernetes installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the Kubernetes install ([1. Create Nodes and Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
 
 > **IMPORTANT:** Remember to save your new RKE config (`rancher-cluster-restore.yml`) and `kubectl` credentials (`kube_config_rancher-cluster-restore.yml`) files in a safe place for future maintenance.

@@ -16,13 +16,29 @@ To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({
 
 To choose a version of Helm to install Rancher with, refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version)
 
-> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older installation instructions for Rancher installed on Kubernetes with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+> **Note:** The installation instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2) provides a copy of the older installation instructions for Rancher installed on an RKE Kubernetes cluster with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
-### Install Helm
+To set up Rancher,
 
-Helm requires a simple CLI tool to be installed. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+1. [Install the required CLI tools](#1-install-the-required-cli-tools)
+2. [Add the Helm chart repository](#2-add-the-helm-chart-repository)
+3. [Create a namespace for Rancher](#3-create-a-namespace-for-rancher)
+4. [Choose your SSL configuration](#4-choose-your-ssl-configuration)
+5. [Install cert-manager](#5-install-cert-manager) (unless you are bringing your own certificates, or TLS will be terminated on a load balancer)
+6. [Install Rancher with Helm and your chosen certificate option](#6-install-rancher-with-helm-and-your-chosen-certificate-option)
+7. [Verify that the Rancher server is successfully deployed](#7-verify-that-the-rancher-server-is-successfully-deployed)
+8. [Save your options](#8-save-your-options)
 
-### Add the Helm Chart Repository
+### 1. Install the Required CLI Tools
+
+The following CLI tools are required for setting up the Kubernetes cluster. Please make sure these tools are installed and available in your `$PATH`.
+
+Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
+
+### 2. Add the Helm Chart Repository
 
 Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
 
@@ -32,40 +48,42 @@ Use `helm repo add` command to add the Helm chart repository that contains chart
 helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
 ```
 
-### Create a Namespace for Rancher
+### 3. Create a Namespace for Rancher
 
-We'll need to define a namespace where the resources created by the Chart should be installed. This should always be `cattle-system`:
+We'll need to define a Kubernetes namespace where the resources created by the Chart should be installed. This should always be `cattle-system`:
 
 ```
 kubectl create namespace cattle-system
 ```
 
-### Choose your SSL Configuration
+### 4. Choose your SSL Configuration
 
-Rancher Server is designed to be secure by default and requires SSL/TLS configuration.
-
-There are three recommended options for the source of the certificate.
+The Rancher management server is designed to be secure by default and requires SSL/TLS configuration.
 
 > **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
 
-| Configuration                  | Chart option                     | Description                                                                                 | Requires cert-manager                 |
-| ------------------------------ | -------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------- |
-| Rancher Generated Certificates | `ingress.tls.source=rancher`     | Use certificates issued by Rancher's generated CA (self signed)<br/>This is the **default** | [yes](#optional-install-cert-manager) |
-| Let’s Encrypt                  | `ingress.tls.source=letsEncrypt` | Use Let's Encrypt to issue a certificate                                                    | [yes](#optional-install-cert-manager) |
-| Certificates from Files        | `ingress.tls.source=secret`      | Use your own certificate files by creating Kubernetes Secret(s)                             | no                                    |
+There are three recommended options for the source of the certificate used for TLS termination at the Rancher server:
 
-### Optional: Install cert-manager
+- **Rancher-generated TLS certificate:** In this case, you will need to install `cert-manager` into the cluster. Rancher utilizes `cert-manager` to issue and maintain its certificates. Rancher will generate a CA certificate of its own, and sign a cert using that CA. `cert-manager` is then responsible for managing that certificate.
+- **Let's Encrypt:** The Let's Encrypt option also uses `cert-manager`. However, in this case, cert-manager is combined with a special Issuer for Let's Encrypt that performs all actions (including request and validation) necessary for getting a Let's Encrypt issued cert. This configuration uses HTTP validation (`HTTP-01`), so the load balancer must have a public DNS record and be accessible from the internet.
+- **Bring your own certificate:** This option allows you to bring your own public- or private-CA signed certificate. Rancher will use that certificate to secure websocket and HTTPS traffic. In this case, you must upload this certificate (and associated key) as PEM-encoded files with the name `tls.crt` and `tls.key`. If you are using a private CA, you must also upload that certificate. This is due to the fact that this private CA may not be trusted by your nodes. Rancher will take that CA certificate, and generate a checksum from it, which the various Rancher components will use to validate their connection to Rancher.
 
-Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
-`cert-manager` is only required for certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) and Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`). You should skip this step if you are using your own certificate files (option `ingress.tls.source=secret`) or if you use [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
+| Configuration                  | Helm Chart Option           | Requires cert-manager                 |
+| ------------------------------ | ----------------------- | ------------------------------------- |
+| Rancher Generated Certificates (Default) | `ingress.tls.source=rancher`  | [yes](#5-install-cert-manager) |
+| Let’s Encrypt                  | `ingress.tls.source=letsEncrypt`  | [yes](#5-install-cert-manager) |
+| Certificates from Files        | `ingress.tls.source=secret`        | no               |
+
+### 5. Install cert-manager
+
+> You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination). 
+
+This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
 {{% accordion id="cert-manager" label="Click to Expand" %}}
 
-> **Important:**
-> Due to an issue with Helm v2.12.0 and cert-manager, please use Helm v2.12.1 or higher.
-
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
+> **Important:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/).
 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
@@ -73,8 +91,15 @@ These instructions are adapted from the [official cert-manager documentation](ht
 # Install the CustomResourceDefinition resources separately
 kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
 
-> **Important:**
-> If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false flag to your kubectl apply command above else you will receive a validation error relating to the x-kubernetes-preserve-unknown-fields field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
+# **Important:**
+# If you are running Kubernetes v1.15 or below, you
+# will need to add the `--validate=false` flag to your
+# kubectl apply command, or else you will receive a
+# validation error relating to the
+# x-kubernetes-preserve-unknown-fields field in
+# cert-manager’s CustomResourceDefinition resources.
+# This is a benign error and occurs due to the way kubectl
+# performs resource validation.
 
 # Create the namespace for cert-manager
 kubectl create namespace cert-manager
@@ -105,16 +130,20 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 {{% /accordion %}}
 
-### Install Rancher with Helm and Your Chosen Certificate Option
+### 6. Install Rancher with Helm and Your Chosen Certificate Option
+
+The exact command to install Rancher differs depending on the certificate configuration.
 
 {{% tabs %}}
 {{% tab "Rancher-generated Certificates" %}}
 
-> **Note:** You need to have [cert-manager](#optional-install-cert-manager) installed before proceeding.
 
-The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface. Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
+The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
+
+Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -133,11 +162,14 @@ deployment "rancher" successfully rolled out
 {{% /tab %}}
 {{% tab "Let's Encrypt" %}}
 
-> **Note:** You need to have [cert-manager](#optional-install-cert-manager) installed before proceeding.
+This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
-This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA. This configuration uses HTTP validation (`HTTP-01`) so the load balancer must have a public DNS record and be accessible from the internet.
+In the following command,
 
-- Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
+- `hostname` is set to the public DNS record,
+- `ingress.tls.source` is set to `letsEncrypt`
+- `letsEncrypt.email` is set to the email address used for communication about your certificate (for example, expiry notices)
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -157,12 +189,18 @@ deployment "rancher" successfully rolled out
 
 {{% /tab %}}
 {{% tab "Certificates from Files" %}}
-Create Kubernetes secrets from your own certificates for Rancher to use.
+In this option, Kubernetes secrets are created from your own certificates for Rancher to use.
 
-> **Note:** The `Common Name` or a `Subject Alternative Names` entry in the server certificate must match the `hostname` option, or the ingress controller will fail to configure correctly. Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers/applications. If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.x/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
+When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate or the Ingress controller will fail to configure correctly.
 
-- Set `hostname` and set `ingress.tls.source` to `secret`.
+Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers and applications.
+
+> If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.x/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
+
+- Set the `hostname`.
+- Set `ingress.tls.source` to `secret`.
 - If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -171,7 +209,20 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set ingress.tls.source=secret
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
+{{% /tab %}}
+{{% /tabs %}}
+
+The Rancher chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
+
+- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy)
+- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#private-registry-and-air-gap-installs)
+- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
+
+See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for the full list of options.
+
+
+### 7. Verify that the Rancher Server is Successfully Deployed
 
 After adding the secrets, check if Rancher was rolled out successfully:
 
@@ -190,25 +241,15 @@ rancher   3         3         3            3           3m
 ```
 
 It should show the same count for `DESIRED` and `AVAILABLE`.
-{{% /tab %}}
-{{% /tabs %}}
 
-### Advanced Configurations
-
-The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
-
-- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy)
-- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#private-registry-and-air-gap-installs)
-- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
-
-See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for the full list of options.
-
-### Save your options
+### 8. Save Your Options
 
 Make sure you save the `--set` options you used. You will need to use the same options when you upgrade Rancher to new versions with Helm.
 
 ### Finishing Up
 
-That's it you should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
+That's it. You should have a functional Rancher server.
+
+In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
 
 Doesn't work? Take a look at the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) Page

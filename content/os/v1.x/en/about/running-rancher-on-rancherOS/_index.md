@@ -7,7 +7,7 @@ RancherOS can be used to launch [Rancher](/rancher/) and be used as the OS to ad
 
 ### Launching Agents using Cloud-Config
 
-You can easily add hosts into Rancher by using [cloud-config]({{< baseurl >}}/os/v1.x/en/installation/configuration/#cloud-config) to launch the rancher/agent container.
+You can easily add hosts into Rancher by using [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config) to launch the rancher/agent container.
 
 After Rancher is launched and host registration has been saved, you will be able to find use the custom option to add Rancher OS nodes.
 
@@ -37,7 +37,7 @@ rancher:
 ```
 <br>
 
-> **Note:** You can not name the service `rancher-agent` as this will not allow the rancher/agent container to be launched correctly. Please read more about why [you can't name your container as `rancher-agent`]({{< baseurl >}}/rancher/v1.6/en/faqs/agents/#adding-in-name-rancher-agent).
+> **Note:** You can not name the service `rancher-agent` as this will not allow the rancher/agent container to be launched correctly. Please read more about why [you can't name your container as `rancher-agent`]({{<baseurl>}}/rancher/v1.6/en/faqs/agents/#adding-in-name-rancher-agent).
 
 ### Adding in Host Labels
 
