@@ -7,7 +7,6 @@ weight: 50
 RKE is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. You can get started in a couple of quick and easy steps:
 
 1. [Download the RKE Binary](#download-the-rke-binary)
-    1. [Alternative RKE MacOS X Install - Homebrew](#alternative-rke-macos-x-install-homebrew)
 1. [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster)
 1. [Creating the Cluster Configuration File](#creating-the-cluster-configuration-file)
 1. [Deploying Kubernetes with RKE](#deploying-kubernetes-with-rke)
@@ -18,28 +17,17 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
 1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System and Architecture:
 
-    - **MacOS**: `rke_darwin-amd64`
     - **Linux (Intel/AMD)**: `rke_linux-amd64`
     - **Linux (ARM 32-bit)**: `rke_linux-arm`
     - **Linux (ARM 64-bit)**: `rke_linux-arm64`
-    - **Windows (32-bit)**: `rke_windows-386.exe`
-    - **Windows (64-bit)**: `rke_windows-amd64.exe`
 
-2. Copy the RKE binary to a folder in your `$PATH` and rename it `rke` (or `rke.exe` for Windows)
+2. Copy the RKE binary to a folder in your `$PATH` and rename it `rke`.
 
     ```
-    # MacOS
-    $ mv rke_darwin-amd64 rke
-    # Linux
     $ mv rke_linux-amd64 rke
-    # Windows PowerShell
-    > mv rke_windows-amd64.exe rke.exe
     ```
 
 3. Make the RKE binary that you just downloaded executable. Open Terminal, change directory to the location of the RKE binary, and then run one of the commands below.
-
-    >**Using Windows?**
-    >The file is already an executable. Skip to [Prepare the Nodes for the Kubernetes Cluster](#prepare-the-nodes-for-the-kubernetes-cluster).
 
     ```
     $ chmod +x rke
@@ -50,25 +38,6 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
     ```
     $ rke --version
     ```
-
-
-### Alternative RKE MacOS X Install - Homebrew
-
-RKE can also be installed and updated using Homebrew, a package manager for MacOS X.
-
-1. Install Homebrew. See https://brew.sh/ for instructions.
-
-2. Using `brew`, install RKE by running the following command in a Terminal window:
-
-    ```
-    $ brew install rke
-    ```
-
-If you have already installed RKE using `brew`, you can upgrade RKE by running:
-
-```
-$ brew upgrade rke
-```
 
 ## Prepare the Nodes for the Kubernetes cluster
 
