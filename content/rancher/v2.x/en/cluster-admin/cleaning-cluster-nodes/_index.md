@@ -167,6 +167,7 @@ Directories |
 `/var/lib/kubelet` |
 `/var/lib/rancher/rke/log` |
 `/var/log/containers` |
+`/var/log/kube-audit` |
 `/var/log/pods` |
 `/var/run/calico` |
 
@@ -187,6 +188,7 @@ rm -rf /etc/ceph \
        /var/lib/kubelet \
        /var/lib/rancher/rke/log \
        /var/log/containers \
+       /var/log/kube-audit \
        /var/log/pods \
        /var/run/calico
 ```
