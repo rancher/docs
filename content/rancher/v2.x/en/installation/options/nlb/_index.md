@@ -1,5 +1,5 @@
 ---
-title: Setting up an Amazon ELB Network Load Balancer
+title: Setting up\Amazon ELB Network Load Balancer
 weight: 277
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
@@ -100,9 +100,7 @@ Repeat those steps, replacing **rancher-tcp-443** with **rancher-tcp-80**. The s
 
 # 3. Create Your NLB
 
-Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in **1. Create Target Groups**.
-
-Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in [Create Target Groups](#create-target-groups).
+Use Amazon's Wizard to create a Network Load Balancer. As part of this process, you'll add the target groups you created in [1. Create Target Groups](#1-create-target-groups).
 
 1.  From your web browser, navigate to the [Amazon EC2 Console](https://console.aws.amazon.com/ec2/).
 
