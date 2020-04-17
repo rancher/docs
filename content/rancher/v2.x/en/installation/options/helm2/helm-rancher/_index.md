@@ -79,7 +79,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.12.0 \
+      --version v0.14.2 \
       jetstack/cert-manager
     ```
 
