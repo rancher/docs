@@ -187,7 +187,7 @@ If you want to use encrypted private keys, you should use `ssh-agent` to load yo
 
 ### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 
-The node is not reachable on the configured `address` and `port`.
+### The node is not reachable on the configured `address` and `port`.
 =======
 * The key file specified as `ssh_key_path` cannot be accessed. Make sure that you specified the private key file (not the public key, `.pub`), and that the user that is running the `rke` command can access the private key file.
 
