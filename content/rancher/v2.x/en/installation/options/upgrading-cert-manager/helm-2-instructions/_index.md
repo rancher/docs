@@ -8,6 +8,7 @@ Rancher uses cert-manager to automatically generate and renew TLS certificates f
 1. [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager is deprecating and replacing the certificate.spec.acme.solvers field](https://docs.cert-manager.io/en/latest/tasks/upgrading/upgrading-0.7-0.8.html#upgrading-from-v0-7-to-v0-8). This change has no exact deadline.
 1. [Cert-manager is deprecating `v1alpha1` API and replacing its API group](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/)
+1. [Cert-manager is changing the Deployment selector](https://cert-manager.io/docs/installation/upgrading/upgrading-0.13-0.14/)
 
 To address these changes, this guide will do two things:
 
@@ -26,6 +27,10 @@ To address these changes, this guide will do two things:
 > For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha/#c-upgrade-rancher) under the upgrade Rancher section. 
 
 ## Upgrade Cert-Manager Only 
+
+If you are running cert-manager version 0.11.x or above, please follow official [upgrading doc](https://cert-manager.io/docs/installation/upgrading/#upgrading-with-helm) to upgrade it using helm.
+
+Continue reading if you are comming from a cert-manager version older than 0.11
 
 > **Note:**
 > These instructions are applied if you have no plan to upgrade Rancher. 
@@ -179,5 +184,7 @@ The v0.11 release marks the removal of the v1alpha1 API that was used in previou
 We have also removed support for the old configuration format that was deprecated in the v0.8 release. This means you must transition to using the new solvers style configuration format for your ACME issuers before upgrading to v0.11. For more information, see the [upgrading to v0.8 guide](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/).
 
 Details about the change and migration instructions can be found in the [cert-manager v0.10 to v0.11 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/).
+
+Details about the change and migration instructions can be found in the [cert-manager v0.13 to v0.14 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.13-0.14/).
 
 For information on upgrading from all other versions of cert-manager, refer to the [official documentation](https://cert-manager.io/docs/installation/upgrading/).
