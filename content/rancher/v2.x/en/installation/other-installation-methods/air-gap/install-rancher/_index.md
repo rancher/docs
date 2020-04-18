@@ -124,6 +124,8 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
      --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
+**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
+
 {{% /accordion %}}
 
 {{% accordion id="secret" label="Option B: Certificates From Files using Kubernetes Secrets" %}}
@@ -148,6 +150,8 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
     --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
+
+**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
 Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
