@@ -144,6 +144,7 @@ Because `rancher` is the default option for `ingress.tls.source`, we are not spe
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
