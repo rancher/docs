@@ -17,7 +17,7 @@ RKE is a fast, versatile Kubernetes installer that you can use to install Kubern
 
 ## Download the RKE binary
 
-1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases/latest) page. Download the latest RKE installer applicable to your Operating System and Architecture:
+1. From your workstation, open a web browser and navigate to our [RKE Releases](https://github.com/rancher/rke/releases) page. Download the latest RKE v1.x installer applicable to your operating system and architecture:
 
     - **macOS**: `rke_darwin-amd64`
     - **Linux (Intel/AMD)**: `rke_linux-amd64`
