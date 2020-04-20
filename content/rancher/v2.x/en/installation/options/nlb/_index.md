@@ -1,5 +1,5 @@
 ---
-title: Setting up\Amazon ELB Network Load Balancer
+title: Setting up Amazon ELB Network Load Balancer
 weight: 277
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
