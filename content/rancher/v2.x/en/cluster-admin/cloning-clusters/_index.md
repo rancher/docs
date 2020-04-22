@@ -5,11 +5,9 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/cloning-clusters/
 ---
 
-If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the  cloned cluster.
+If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.
 
-You can clone clusters only if the nodes in the cluster are hosted by an infrastructure provider, such as EC2, Azure, or DigitalOcean.
-
-Duplication of imported clusters, clusters in hosted Kubernetes providers, and custom clusters provisioned using Docker machine is not supported.
+Duplication of imported clusters is not supported.
 
 | Cluster Type                     | Cloneable?    |
 |----------------------------------|---------------|
