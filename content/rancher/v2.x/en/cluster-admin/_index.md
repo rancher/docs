@@ -32,7 +32,7 @@ After clusters have been [provisioned into Rancher]({{<baseurl>}}/rancher/v2.x/e
 | [Managing Persistent Volumes and Storage Classes]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) | * | * | * |
 | [Managing Projects and Namespaces]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/projects-and-namespaces/) | * | * | * |
 | [Configuring Tools](#configuring-tools) | * | * | * |
-| [Cloning Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cloning-clusters/)| | * | * |
+| [Cloning Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cloning-clusters/)| * | * | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/) | * |  | |
 | [Ability to back up your Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/) | * | | |
 | [Ability to recover and restore etcd]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/restoring-etcd/) | * | | |
