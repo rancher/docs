@@ -3,7 +3,7 @@ title: Cluster Access
 weight: 21
 ---
 
-The kubeconfig file is used to configure access to the Kubernetes cluster. It is required to be set up properly in order to access the Kubernetes API such as with kubectl or for installing applications with Helm. You may set the kubeconfig by either exporting the KUBECONFIG environment variable or by specifying a flag for kubectl and helm. Refer to the examples below for details.
+The kubeconfig file stored at `/etc/rancher/k3s/k3s.yaml` is used to configure access to the Kubernetes cluster. If you have installed upstream Kubernetes command line tools such as kubectl or helm you will need to configure them with the correct kubeconfig path. This can be done by either exporting the `KUBECONFIG` environment variable or by invoking the `--kubeconfig` command line flag. Refer to the examples below for details.
 
 Leverage the KUBECONFIG environment variable:
 
@@ -13,7 +13,7 @@ kubectl get pods --all-namespaces
 helm ls --all-namespaces
 ```
 
-Or specify the location of the kubeconfig file per command:
+Or specify the location of the kubeconfig file in the command:
 
 ```
 kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get pods --all-namespaces
