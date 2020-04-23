@@ -27,7 +27,9 @@ The Rancher authentication proxy integrates with the following external authenti
 | [PingIdentity]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/ping-federate/)     | v2.0.7           |
 | [Keycloak]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/keycloak/)              | v2.1.0           |
 | [Okta]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/okta/)                      | v2.2.0           |
-| [Google OAuth]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/google/)                      | v2.3.0           |
+| [Google OAuth]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/google/)            | v2.3.0           |
+| [Shibboleth]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/shibboleth)           | v2.4.0           |
+
 <br/>
 However, Rancher also provides [local authentication]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/local/).
 
