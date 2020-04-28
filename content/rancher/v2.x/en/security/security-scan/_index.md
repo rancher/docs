@@ -189,8 +189,15 @@ To skip tests by editing a ConfigMap resource,
 1. Create a ConfigMap named `security-scan-cfg`.
 1. Enter the skip information under the key `config.json` in the following format:
 
-    ```
-    {"skip": {"rke-cis-1.4": [ "1.1.1", "1.2.2"]}}
+    ```json
+    {
+      "skip": {
+        "rke-cis-1.4": [ 
+          "1.1.1", 
+          "1.2.2"
+        ]
+      }
+    }
     ```
     
     In the example above, the CIS benchmark version is specified alongside the tests to be skipped for that version.
