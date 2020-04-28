@@ -145,7 +145,7 @@ the agent options are there because the server has the agent process embedded wi
 
 | Flag |  Description |
 |------|--------------|
-|  `--disable` value    |  Do not deploy packaged components and delete any deployed components (valid items: coredns, servicelb, traefik,local-storage, metrics-server)            |
+|  `--no-deploy` value    |  Do not deploy packaged components and delete any deployed components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)            |
 |   `--disable-scheduler`  | Disable Kubernetes default scheduler            | 
 |   `--disable-cloud-controller`   | Disable k3s default cloud controller manager           | 
 |   `--disable-network-policy`  | Disable k3s default network policy controller            | 
@@ -167,7 +167,6 @@ the agent options are there because the server has the agent process embedded wi
 |   `--server value, -s` value | `K3S_URL`          |  Server to connect to, used to join a cluster    |
 |   `--cluster-init`   |  `K3S_CLUSTER_INIT`            |   Initialize new cluster master      |
 |   `--cluster-reset`   |  `K3S_CLUSTER_RESET`            | Forget all peers and become a single cluster new cluster master        |
-|   `--secrets-encryption`   |   N/A        |  Enable Secret encryption at rest     |
 
 ### Deprecated Options
 
@@ -218,7 +217,7 @@ OPTIONS:
    --datastore-certfile value                 (db) TLS certification file used to secure datastore backend communication [$K3S_DATASTORE_CERTFILE]
    --datastore-keyfile value                  (db) TLS key file used to secure datastore backend communication [$K3S_DATASTORE_KEYFILE]
    --default-local-storage-path value         (storage) Default local storage path for local provisioner storage class
-   --disable value                            (components) Do not deploy packaged components and delete any deployed components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
+   --no-deploy value                          (components) Do not deploy packaged components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
    --disable-scheduler                        (components) Disable Kubernetes default scheduler
    --disable-cloud-controller                 (components) Disable k3s default cloud controller manager
    --disable-network-policy                   (components) Disable k3s default network policy controller
@@ -243,8 +242,6 @@ OPTIONS:
    --server value, -s value                   (experimental/cluster) Server to connect to, used to join a cluster [$K3S_URL]
    --cluster-init                             (experimental/cluster) Initialize new cluster master [$K3S_CLUSTER_INIT]
    --cluster-reset                            (experimental/cluster) Forget all peers and become a single cluster new cluster master [$K3S_CLUSTER_RESET]
-   --secrets-encryption                       (experimental) Enable Secret encryption at rest
    --no-flannel                               (deprecated) use --flannel-backend=none
-   --no-deploy value                          (deprecated) Do not deploy packaged components (valid items: coredns, servicelb, traefik, local-storage, metrics-server)
    --cluster-secret value                     (deprecated) use --token [$K3S_CLUSTER_SECRET]
 ```
