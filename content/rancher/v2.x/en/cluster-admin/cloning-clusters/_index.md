@@ -13,7 +13,7 @@ Duplication of imported clusters is not supported.
 |----------------------------------|---------------|
 | [Nodes Hosted by Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/) | ✓ |
 | [Hosted Kubernetes Providers]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) | ✓    |
-| [Custom Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/)              | ✓              |
+| [Custom Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes)              | ✓              |
 | [Imported Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)            |               |
 
 > **Warning:** During the process of duplicating a cluster, you will edit a config file full of cluster settings. However, we recommend editing only values explicitly listed in this document, as cluster duplication is designed for simple cluster copying, _not_ wide scale configuration changes. Editing other values may invalidate the config file, which will lead to cluster deployment failure.

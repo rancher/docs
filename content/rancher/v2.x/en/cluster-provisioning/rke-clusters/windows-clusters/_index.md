@@ -5,7 +5,7 @@ weight: 2240
 
 _Available as of v2.3.0_
 
-When provisioning a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
+When provisioning a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes custom cluster on your existing infrastructure.
 
 You can use a mix of Linux and Windows hosts as your cluster nodes. Windows nodes can only be used for deploying workloads, while Linux nodes are required for cluster management.
 
@@ -101,7 +101,7 @@ If you are using the GCE (Google Compute Engine) cloud provider, you must do the
 
 This tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [recommended architecture.](#guide-architecture)
 
-When you provision a custom cluster with Rancher, you will add nodes to the cluster by installing the [Rancher agent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/agent-options/) on each one. When you create or edit your cluster from the Rancher UI, you will see a **Customize Node Run Command** that you can run on each server to add it to your custom cluster.
+When you provision a custom cluster with Rancher, you will add nodes to the cluster by installing the [Rancher agent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/) on each one. When you create or edit your cluster from the Rancher UI, you will see a **Customize Node Run Command** that you can run on each server to add it to your custom cluster.
 
 To set up a custom cluster with support for Windows nodes and containers, you will need to complete the tasks below.
 

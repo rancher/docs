@@ -7,7 +7,7 @@ _Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.3_
 
 This section describes how to provision Windows clusters in Rancher v2.1.x and v2.2.x. If you are using Rancher v2.3.0 or later, please refer to the new documentation for [v2.3.0 or later]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/).
 
-When you create a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure.
+When you create a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes), Rancher uses RKE (the Rancher Kubernetes Engine) to provision the Kubernetes cluster on your existing infrastructure.
 
 You can provision a custom Windows cluster using Rancher by using a mix of Linux and Windows hosts as your cluster nodes.
 
