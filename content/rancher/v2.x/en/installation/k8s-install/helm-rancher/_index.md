@@ -170,7 +170,8 @@ In the following command,
 - `hostname` is set to the public DNS record,
 - `ingress.tls.source` is set to `letsEncrypt`
 - `letsEncrypt.email` is set to the email address used for communication about your certificate (for example, expiry notices)
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
+- If you are installing Rancher on an RKE cluster, the `set ingress.class=traefik` option should be omitted because NGINX Ingress will be used.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
