@@ -24,7 +24,7 @@ All nodes added to the cluster must be able to interact with EC2 so that they ca
 
 While creating an [Amazon EC2 cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/#create-the-amazon-ec2-cluster), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
 
-While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/custom-clusters/), you must manually attach the IAM role to the instance(s).
+While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes), you must manually attach the IAM role to the instance(s).
 
 IAM Policy for nodes with the `controlplane` role:
 
