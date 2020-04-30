@@ -177,7 +177,8 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=me@example.org
+  --set letsEncrypt.email=me@example.org \
+  --set ingress.class=traefik
 ```
 
 Wait for Rancher to be rolled out:
