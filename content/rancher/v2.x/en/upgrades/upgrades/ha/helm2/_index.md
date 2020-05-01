@@ -160,7 +160,18 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 {{% /accordion %}}
 {{% accordion id="secret" label="Option B: Certificates From Files using Kubernetes Secrets" %}}
 
->**Note:** If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`.
+```plain
+helm template ./rancher-<VERSION>.tgz --output-dir . \
+--name rancher \
+--namespace cattle-system \
+--set hostname=<RANCHER.YOURDOMAIN.COM> \
+--set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+--set ingress.tls.source=secret \
+--set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
+--set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
+```
+
+If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
 
 ```plain
 helm template ./rancher-<VERSION>.tgz --output-dir . \
@@ -169,6 +180,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 --set hostname=<RANCHER.YOURDOMAIN.COM> \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
 --set ingress.tls.source=secret \
+--set privateCA=true \
 --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
 --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```

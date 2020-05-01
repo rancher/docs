@@ -200,7 +200,6 @@ Although an entry in the `Subject Alternative Names` is technically required, ha
 
 - Set the `hostname`.
 - Set `ingress.tls.source` to `secret`.
-- If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
@@ -208,6 +207,16 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
+```
+
+If you are using a Private CA signed certificate , add `--set privateCA=true` to the command:
+
+```
+helm install rancher rancher-latest/rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=secret \
+  --set privateCA=true
 ```
 
 Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.

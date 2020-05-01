@@ -156,7 +156,6 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 > **Note:** The `Common Name` or a `Subject Alternative Names` entry in the server certificate must match the `hostname` option, or the ingress controller will fail to configure correctly. Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers/applications. If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.x/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
 
 - Set `hostname` and set `ingress.tls.source` to `secret`.
-- If you are using a Private CA signed certificate , add `--set privateCA=true` to the command shown below.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
@@ -165,6 +164,17 @@ helm install rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
+```
+
+If you are using a Private CA signed certificate , add `--set privateCA=true` to the command:
+
+```
+helm install rancher-<CHART_REPO>/rancher \
+  --name rancher \
+  --namespace cattle-system \
+  --set hostname=rancher.my.org \
+  --set ingress.tls.source=secret
+  --set privateCA=true
 ```
 
 Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.

@@ -132,13 +132,12 @@ Create Kubernetes secrets from your own certificates for Rancher to use. The com
 
 Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
-If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`.
-
 | Placeholder                      | Description                                     |
 | -------------------------------- | ----------------------------------------------- |
 | `<VERSION>`                      | The version number of the output tarball.       |
 | `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
+
 ```plain
    helm template ./rancher-<VERSION>.tgz --output-dir . \
     --name rancher \
@@ -146,6 +145,20 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
     --set hostname=<RANCHER.YOURDOMAIN.COM> \
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
     --set ingress.tls.source=secret \
+    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
+    --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
+```
+
+If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
+
+```plain
+   helm template ./rancher-<VERSION>.tgz --output-dir . \
+    --name rancher \
+    --namespace cattle-system \
+    --set hostname=<RANCHER.YOURDOMAIN.COM> \
+    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+    --set ingress.tls.source=secret \
+    --set privateCA=true \
     --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Available as of v2.2.0, set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
