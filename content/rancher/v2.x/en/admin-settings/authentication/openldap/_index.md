@@ -19,7 +19,7 @@ Rancher must be configured with a LDAP bind account (aka service account) to sea
 
 ## Configure OpenLDAP in Rancher
 
-Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.](../openldap-config)
+Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.](./openldap-config)
 
 > Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
