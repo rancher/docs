@@ -24,21 +24,22 @@ Setting | Value
 
 1.	Select **Okta**.
 
-1.	Complete the **Configure Okta Account** form. The examples below describe how you can map Okta attributes to fields within Rancher.
+1.	Complete the **Configure Okta Account** form. The examples below describe how you can map Okta attributes from attribute statements to fields within Rancher.
 
     | Field                     | Description                                                                   |
     | ------------------------- | ----------------------------------------------------------------------------- |
-    | Display Name Field        | The attribute that contains the display name of users.                    |
-    | User Name Field           | The attribute that contains the user name/given name.                     |
-    | UID Field                 | An attribute that is unique to every user.                 |
-    | Groups Field              | Make entries for managing group memberships.                                 |
+    | Display Name Field        | The attribute name from an attribute statement that contains the display name of users.                        |
+    | User Name Field           | The attribute name from an attribute statement that contains the user name/given name.                         |
+    | UID Field                 | The attribute name from an attribute statement that is unique to every user.                                    |
+    | Groups Field              | The attribute name in a group attribute statement that exposes your groups.        |
     | Rancher API Host          | The URL for your Rancher Server.                                              |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. |
+    | Private Key / Certificate | A key/certificate pair used for Assertion Encryption.                         |
     | Metadata XML              | The `Identity Provider metadata` file that you find in the application `Sign On` section.  |
 
     >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
     >    
     >        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.crt
+
 
 
 1. After you complete the **Configure Okta Account** form, click **Authenticate with Okta**, which is at the bottom of the page.
