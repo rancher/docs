@@ -55,13 +55,7 @@ In order to upgrade cert-manager, follow these instructions:
 1. Install the CustomResourceDefinition resources separately
 
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
-    ```
-
-1. Label the kube-system namespace to disable resource validation
-
-    ```plain
-    kubectl label namespace kube-system certmanager.k8s.io/disable-validation=true
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
 1. Add the Jetstack Helm repository
@@ -116,7 +110,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 1. Download the required CRD file for cert-manager
 
     ```plain
-    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
 ### Install cert-manager
@@ -139,11 +133,6 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     kubectl apply -f cert-manager/cert-manager-crd.yaml
     ```
 
-1. Label the kube-system namespace to disable resource validation
-
-    ```plain
-    kubectl label namespace kube-system certmanager.k8s.io/disable-validation=true
-    ```
 
 1. Install cert-manager
 
