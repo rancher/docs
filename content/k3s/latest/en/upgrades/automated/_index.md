@@ -94,14 +94,14 @@ Third, the server-plan targets server nodes by specifying a label selector that 
 
 Fourth, the `prepare` step in the agent-plan will cause upgrade jobs for that plan to wait for the server-plan to complete before they execute.
 
-Fifth, both plans have the `version` field set to v1.17.4+k3s1. Alternatively, you can omit the `version` field and set the `channel` field to a URL that resolves to a release of K3s. This will cause the controller to monitor that URL and upgrade the cluster any time it resolves to a new release. This is designed specifically to work with the [latest release functionality of GitHub](https://help.github.com/en/github/administering-a-repository/linking-to-releases). Thus, you can configure your plans with the following channel to ensure your cluster is always automatically upgraded to the latest release of K3s:
+Fifth, both plans have the `version` field set to v1.17.4+k3s1. Alternatively, you can omit the `version` field and set the `channel` field to a URL that resolves to a release of K3s. This will cause the controller to monitor that URL and upgrade the cluster any time it resolves to a new release. This works well with the [channel server](https://github.com/rancher/channelserver). Thus, you can configure your plans with the following channel to ensure your cluster is always automatically upgraded to the newest stable release of K3s:
 ```
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 ...
 spec:
   ...
-  channel: https://github.com/rancher/k3s/releases/latest
+  channel: https://update.k3s.io/v1-release/channels/stable
 
 ```
 
