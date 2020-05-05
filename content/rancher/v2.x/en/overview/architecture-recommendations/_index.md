@@ -30,13 +30,13 @@ We recommend installing the Rancher server on a high-availability Kubernetes clu
 
 We don't recommend installing Rancher in a single Docker container, because if the node goes down, there is no copy of the cluster data available on other nodes and you could lose the data on your Rancher server.
 
-Rancher needs to be installed on either a high-availability [RKE (Rancher Kubernetes Engine)]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster, or a high-availability [K3s (5 less than K8s)]({{<baseurl>}}/k3s/latest/en/) Kubernetes cluster. Both RKE and K3s are fully certified Kubernetes distributions.
+Rancher needs to be installed on either a high-availability [RKE (Rancher Kubernetes Engine)]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster, or a high-availability [K3s (Lightweight Kubernetes)]({{<baseurl>}}/k3s/latest/en/) Kubernetes cluster. Both RKE and K3s are fully certified Kubernetes distributions.
 
 ### K3s Kubernetes Cluster Installations
 
 If you are installing Rancher v2.4 for the first time, we recommend installing it on a K3s Kubernetes cluster. One main advantage of this K3s architecture is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
 
-The option to install Rancher on a K3s cluster is a feature introduced in Rancher v2.4. K3s is easy to install, with half the memory of Kubernetes, all in a binary less than 50 MB.
+The option to install Rancher on a K3s cluster is a feature introduced in Rancher v2.4. K3s is easy to install, with half the memory of Kubernetes, all in a binary less than 100 MB.
 
 <figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
 ![Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)
