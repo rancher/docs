@@ -144,6 +144,7 @@ These ports are typically opened on your Kubernetes nodes, regardless of what ty
 |    UDP   	|       8472       	| Canal/Flannel VXLAN overlay networking          	|
 |    UDP   	|       4789       	| Flannel VXLAN overlay networking on Windows cluster |
 |    TCP   	|       9099       	| Canal/Flannel livenessProbe/readinessProbe      	|
+|    TCP    |       9796        | Default port required by Monitoring to scrape metrics |
 |    TCP   	|       6783       	| Weave Port      	|
 |    UDP   	|       6783-6784   | Weave UDP Ports      	|
 |    TCP   	|       10250      	| kubelet API                                     	|
