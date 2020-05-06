@@ -5,11 +5,7 @@ aliases:
   - /os/v1.x/en/installation/storage/additional-mounts
 ---
 
-<<<<<<< HEAD:content/os/v1.x/en/installation/storage/additional-mounts/_index.md
-Additional mounts can be specified as part of your [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config). These mounts are applied within the console container. Here's a simple example that mounts `/dev/vdb` to `/mnt/s`.
-=======
 Additional mounts can be specified as part of your [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config). These mounts are applied within the console container. Here's a simple example that mounts `/dev/vdb` to `/mnt/s`.
->>>>>>> Reorganize RancherOS docs:content/os/v1.x/en/storage/additional-mounts/_index.md
 
 ```yaml
 #cloud-config
