@@ -7,9 +7,17 @@ You can upgrade K3s by using the installation script, or by manually installing 
 
 >**Note:** When upgrading, upgrade server nodes first one at a time, then any worker nodes.
 
-### About the Channel Server
+### Release Channels
 
-The [channel server](https://github.com/rancher/channelserver) allows the install script to install or upgrade K3s within specific channels such as `stable` (default), `latest`, or `testing`. For additional channels, see [https://update.k3s.io/v1-release/channels](https://update.k3s.io/v1-release/channels).
+Upgrades performed via the installation script or using our [automated upgrades]({{< baseurl >}}/k3s/latest/en/upgrades/automated/) feature can be tied to different release channels. The following channels are available:
+
+| Channel |   Description  |
+|---------------|---------|
+|      stable     | (Default) Stable is recommended for production environments. These releases have been through a period of community hardening. |
+|      latest      | Latest is recommended for trying out the latest features.  These releases have not yet been through a period of community hardening. |
+|      v1.18 (example)      | There is a release channel tied to each supported Kubernetes minor version. At the time of this writing, they are `v1.18`, `v1.17`, and `v1.16`. These channels will select the latest patch available, not necessarily a stable release. |
+
+For an exhaustive and up-to-date list of channels, you can visit the [k3s channel service API](https://update.k3s.io/v1-release/channels). For more technical details on how channels work, you see the [channelserver project](https://github.com/rancher/channelserver).
 
 ### Upgrade K3s Using the Installation Script
 
@@ -63,7 +71,7 @@ To restart servers manually:
 sudo service k3s restart
 ```
 
-To restart agents mantually:
+To restart agents manually:
 ```sh
 sudo service k3s-agent restart
 ```
