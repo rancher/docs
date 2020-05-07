@@ -11,7 +11,7 @@ K3s is capable of nearly everything k8s can do. It is just a more lightweight ve
 
 **How can I use my own Ingress instead of Traefik?**
 
-Simply start K3s server with `--no-deploy=traefik` and deploy your ingress.
+Simply start K3s server with `--disable traefik` and deploy your ingress.
 
 **Does K3s support Windows?**
 
