@@ -30,11 +30,7 @@ Let’s walk through how to import and create a RancherOS on EC2 machine using t
     {{< img "/img/os/Rancher_aws1.png" "RancherOS on AWS 1">}}
 2. Select the **Community AMIs** on the sidebar and search for **RancherOS**. Pick the latest version and click **Select**.
     {{< img "/img/os/Rancher_aws2.png" "RancherOS on AWS 2">}}
-<<<<<<< HEAD:content/os/v1.x/en/installation/running-rancheros/cloud/aws/_index.md
-3. Go through the steps of creating the instance type through the AWS console. If you want to pass in a [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config) file during boot of RancherOS, you'd pass in the file as **User data** by expanding the **Advanced Details** in **Step 3: Configure Instance Details**. You can pass in the data as text or as a file.
-=======
 3. Go through the steps of creating the instance type through the AWS console. If you want to pass in a [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config) file during boot of RancherOS, you'd pass in the file as **User data** by expanding the **Advanced Details** in **Step 3: Configure Instance Details**. You can pass in the data as text or as a file.
->>>>>>> Reorganize RancherOS docs:content/os/v1.x/en/installation/cloud/aws/_index.md
     {{< img "/img/os/Rancher_aws6.png" "RancherOS on AWS 6">}}
      After going through all the steps, you finally click on **Launch**, and either create a new key pair or choose an existing key pair to be used with the EC2 instance. If you have created a new key pair, download the key pair. If you have chosen an existing key pair, make sure you have the key pair accessible. Click on **Launch Instances**.
      {{< img "/img/os/Rancher_aws3.png" "RancherOS on AWS 3">}}
