@@ -150,3 +150,141 @@ For more information on security and compliance with your Amazon EKS Kubernetes 
 ## Tutorial
 
 This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with Rancher, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
+
+## Appendix - Minimum EKS Permissions
+
+Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher.
+
+Resource targeting uses `*` as the ARN of many of the resources created cannot be known prior to creating the EKS cluster in Rancher. Some permissions (for example `ec2:CreateVpc`) are only used in situations where Rancher handles the creation of certain resources.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EC2Permisssions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:DeleteSubnet",
+                "ec2:CreateKeyPair",
+                "ec2:AttachInternetGateway",
+                "ec2:ReplaceRoute",
+                "ec2:DeleteRouteTable",
+                "ec2:AssociateRouteTable",
+                "ec2:DescribeInternetGateways",
+                "ec2:CreateRoute",
+                "ec2:CreateInternetGateway",
+                "ec2:RevokeSecurityGroupEgress",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DeleteInternetGateway",
+                "ec2:DescribeKeyPairs",
+                "ec2:CreateTags",
+                "ec2:CreateRouteTable",
+                "ec2:DescribeRouteTables",
+                "ec2:DetachInternetGateway",
+                "ec2:DisassociateRouteTable",
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:DeleteVpc",
+                "ec2:CreateSubnet",
+                "ec2:DescribeSubnets",
+                "ec2:DeleteKeyPair",
+                "ec2:DeleteTags",
+                "ec2:CreateVpc",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:CreateSecurityGroup",
+                "ec2:ModifyVpcAttribute",
+                "ec2:AuthorizeSecurityGroupEgress",
+                "ec2:DescribeTags",
+                "ec2:DeleteRoute",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeImages",
+                "ec2:DescribeVpcs",
+                "ec2:DeleteSecurityGroup"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "EKSPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "eks:DeleteFargateProfile",
+                "eks:DescribeFargateProfile",
+                "eks:ListTagsForResource",
+                "eks:UpdateClusterConfig",
+                "eks:DescribeNodegroup",
+                "eks:ListNodegroups",
+                "eks:DeleteCluster",
+                "eks:CreateFargateProfile",
+                "eks:DeleteNodegroup",
+                "eks:UpdateNodegroupConfig",
+                "eks:DescribeCluster",
+                "eks:ListClusters",
+                "eks:UpdateClusterVersion",
+                "eks:UpdateNodegroupVersion",
+                "eks:ListUpdates",
+                "eks:CreateCluster",
+                "eks:UntagResource",
+                "eks:CreateNodegroup",
+                "eks:ListFargateProfiles",
+                "eks:DescribeUpdate",
+                "eks:TagResource"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListRoleTags",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:CreateRole",
+                "iam:AttachRolePolicy",
+                "iam:AddRoleToInstanceProfile",
+                "iam:DetachRolePolicy",
+                "iam:GetRole",
+                "iam:DeleteRole",
+                "iam:CreateInstanceProfile",
+                "iam:ListInstanceProfilesForRole",
+                "iam:PassRole",
+                "iam:GetInstanceProfile",
+                "iam:ListRoles",
+                "iam:ListInstanceProfiles",
+                "iam:DeleteInstanceProfile"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CloudFormationPermisssions",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:DescribeStackResource",
+                "cloudformation:ListStackResources",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ListStacks",
+                "cloudformation:CreateStack"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AutoScalingPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:UpdateAutoScalingGroup",
+                "autoscaling:TerminateInstanceInAutoScalingGroup",
+                "autoscaling:CreateOrUpdateTags",
+                "autoscaling:DeleteAutoScalingGroup",
+                "autoscaling:CreateAutoScalingGroup",
+                "autoscaling:DescribeAutoScalingInstances",
+                "autoscaling:DescribeLaunchConfigurations",
+                "autoscaling:DescribeScalingActivities",
+                "autoscaling:CreateLaunchConfiguration",
+                "autoscaling:DeleteLaunchConfiguration"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
