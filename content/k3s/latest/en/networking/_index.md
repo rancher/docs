@@ -35,3 +35,9 @@ Service Load Balancer
 K3s includes a basic service load balancer that uses available host ports. If you try to create a load balancer that listens on port 80, for example, it will try to find a free host in the cluster for port 80. If no port is available, the load balancer will stay in Pending.
 
 To disable the embedded load balancer, run the server with the `--no-deploy servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
+
+Nodes Without a Hostname
+------------------------
+
+Some cloud providers, such as Linode, will create machines with "localhost" as the hostname and others may not have a hostname set at all. This can cause problems with domain name resolution. You can run K3s with the `--node-name` flag or `K3S_NODE_NAME` environment variable and this will pass the node name to resolve this issue.
+
