@@ -3,15 +3,6 @@ title: Custom Console
 weight: 180
 ---
 
-<<<<<<< HEAD
-When [booting from the ISO]({{<baseurl>}}/os/v1.x/en/installation/running-rancheros/workstation/boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
-
-You can select which console you want RancherOS to start with using the [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config).
-
-### Enabling Consoles using Cloud-Config
-
-When launching RancherOS with a [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config) file, you can select which console you want to use.
-=======
 When [booting from the ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
 
 You can select which console you want RancherOS to start with using the [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config).
@@ -19,7 +10,6 @@ You can select which console you want RancherOS to start with using the [cloud-c
 ### Enabling Consoles using Cloud-Config
 
 When launching RancherOS with a [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config) file, you can select which console you want to use.
->>>>>>> Reorganize RancherOS docs
 
 Currently, the list of available consoles are:
 

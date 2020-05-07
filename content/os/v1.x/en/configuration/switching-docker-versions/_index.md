@@ -5,11 +5,7 @@ aliases:
   - /os/v1.x/en/installation/configuration/switching-docker-versions
 ---
 
-<<<<<<< HEAD:content/os/v1.x/en/installation/configuration/switching-docker-versions/_index.md
-The version of User Docker used in RancherOS can be configured using a [cloud-config]({{<baseurl>}}/os/v1.x/en/installation/configuration/#cloud-config) file or by using the `ros engine` command.
-=======
 The version of User Docker used in RancherOS can be configured using a [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config) file or by using the `ros engine` command.
->>>>>>> Reorganize RancherOS docs:content/os/v1.x/en/configuration/switching-docker-versions/_index.md
 
 > **Note:** There are known issues in Docker when switching between versions. For production systems, we recommend setting the Docker engine only once [using a cloud-config](#setting-the-docker-engine-using-cloud-config).
 
@@ -89,11 +85,7 @@ FROM scratch
 COPY engine /engine
 ```
 
-<<<<<<< HEAD:content/os/v1.x/en/installation/configuration/switching-docker-versions/_index.md
-Once the image is built a [system service]({{<baseurl>}}/os/v1.x/en/installation/system-services/adding-system-services/) configuration file must be created. An [example file](https://github.com/rancher/os-services/blob/master/d/docker-18.06.3-ce.yml) can be found in the rancher/os-services repo. Change the `image` field to point to the Docker engine image you've built.
-=======
 Once the image is built a [system service]({{< baseurl >}}/os/v1.x/en/system-services/) configuration file must be created. An [example file](https://github.com/rancher/os-services/blob/master/d/docker-18.06.3-ce.yml) can be found in the rancher/os-services repo. Change the `image` field to point to the Docker engine image you've built.
->>>>>>> Reorganize RancherOS docs:content/os/v1.x/en/configuration/switching-docker-versions/_index.md
 
 All of the previously mentioned methods of switching Docker engines are now available. For example, if your service file is located at `https://myservicefile` then the following cloud-config file could be used to use your custom Docker engine.
 
