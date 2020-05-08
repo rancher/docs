@@ -74,8 +74,6 @@ If security isn't a large concern and you're okay with opening a few additional 
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-{{% accordion id="common-ports" label="Click to Expand" %}}
-
 <figcaption>Commonly Used Ports Reference</figcaption>
 
 | Protocol 	|       Port       	| Description                                     	|
@@ -93,19 +91,13 @@ These ports are typically opened on your Kubernetes nodes, regardless of what ty
 |    TCP   	|       10254      	| Ingress controller livenessProbe/readinessProbe 	|
 | TCP/UDP  	| 30000-</br>32767 	| NodePort port range                             	|
 
-{{% /accordion %}}
-
 ### Port Requirements for Custom Clusters
 
 If you are launching a Kubernetes cluster on your existing infrastructure, refer to these port requirements.
 
-{{% accordion id="port-reqs-for-custom-clusters" label="Click to Expand" %}}
-
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with [custom nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
 {{< ports-custom-nodes >}}
-
-{{% /accordion %}}
 
 ### Port Requirements for Clusters Hosted by an Infrastructure Provider
 
@@ -113,16 +105,12 @@ If you are launching a Kubernetes cluster on nodes that are in an infrastructure
 
 These required ports are automatically opened by Rancher during creation of clusters using cloud providers.
 
-{{% accordion id="port-reqs-for-infrastructure-providers" label="Click to Expand" %}}
-
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/).
 
 >**Note:**
 >The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
 
 {{< ports-iaas-nodes >}}
-
-{{% /accordion %}}
 
 #### Security Group for Nodes on AWS EC2
 
@@ -146,27 +134,17 @@ When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provi
 
 ### Port Requirements for Clusters Hosted by a Kubernetes Provider
 
-If you are launching a cluster with a hosted Kubernetes provider such as Google Kubernetes Engine, Amazon EKS, or Azure Kubernetes Service, refer to these port requirements.
-
-{{% accordion id="port-reqs-for-hosted-kubernetes" label="Click to Expand" %}}
-
-The following table depicts the port requirements for nodes in [hosted Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters).
+If you are launching a cluster with a [hosted Kubernetes provider]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters). such as Google Kubernetes Engine, Amazon EKS, or Azure Kubernetes Service, refer to these port requirements.
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
 
 ### Port Requirements for Imported Clusters
-
-If you are importing an existing cluster, refer to these port requirements.
-
-{{% accordion id="port-reqs-for-imported-clusters" label="Click to Expand" %}}
 
 The following table depicts the port requirements for [imported clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/).
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
 
 ### Port Requirements for Local Traffic
 
