@@ -47,7 +47,7 @@ $ rke etcd snapshot-save \
 |   `--name` value         |    Specify snapshot name |  |
 |   `--config` value       |    Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] |  |
 |   `--s3`                 |    Enabled backup to s3 |   * |
-|   `--s3-endpoint` value  |    Specify s3 endpoint url (default: "s3.amazonaws.com") |   * |
+|   `--s3-endpoint` value  |    Specify s3 endpoint url (default: "s3.amazonaws.com", to a specific region: "s3.region.amazonaws.com") |   * |
 | `--s3-endpoint-ca` value     |    Specify a path to a CA cert file to connect to a custom s3 endpoint (optional) _Available as of v0.2.5_ | * |
 |   `--access-key` value   |    Specify s3 accessKey |   * |
 |   `--secret-key` value   |    Specify s3 secretKey |  * |
