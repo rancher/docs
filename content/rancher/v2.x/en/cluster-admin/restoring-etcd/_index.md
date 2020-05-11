@@ -35,7 +35,7 @@ Restorations changed in Rancher v2.4.0.
 {{% tabs %}}
 {{% tab "Rancher v2.4.0+" %}}
 
-Snapshots are composed of the cluster data in etcd, the Kubernetes version, and the cluster configuration in the `cluster.yml.` These components allow you can select from the following options when restoring a cluster from a snapshot:
+Snapshots are composed of the cluster data in etcd, the Kubernetes version, and the cluster configuration in the `cluster.yml.` These components allow you to select from the following options when restoring a cluster from a snapshot:
 
 - **Restore just the etcd contents:** This restoration is similar to restoring to snapshots in Rancher prior to v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
