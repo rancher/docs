@@ -19,13 +19,17 @@ Configuring an Amazon NLB is a multistage process:
 3. [Create Your NLB](#3-create-your-nlb)
 4. [Add listener to NLB for TCP port 80](#4-add-listener-to-nlb-for-tcp-port-80)
 
-> **Prerequisite:** These instructions assume you have already created Linux instances in EC2. The load balancer will direct traffic to these two nodes.
+> **Prerequisite:** These instructions assume you have already created Linux instances in EC2. The load balancer will direct traffic to these nodes.
 
 # 1. Create Target Groups
 
 Begin by creating two target groups for the **TCP** protocol, one with TCP port 443 and one regarding TCP port 80 (providing redirect to TCP port 443). You'll add your Linux nodes to these groups.
 
-Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access Rancher, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically. The NGINX ingress controller on the nodes will make sure that port 80 gets redirected to port 443.
+Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access Rancher, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically.
+
+If you are installing Rancher on an RKE Kubernetes cluster, the NGINX Ingress controller on the nodes will make sure that port 80 gets redirected to port 443.
+
+If you are installing Rancher on a K3s Kubernetes cluster, the Traefik Ingress controller will be used, and traffic will not be redirected from port 80. Traffic will need to go only to port 443.
 
 1. Log into the [Amazon AWS Console](https://console.aws.amazon.com/ec2/) to get started. Make sure to select the **Region** where your EC2 instances (Linux nodes) are created.
 1. Select **Services** and choose **EC2**, find the section **Load Balancing** and open **Target Groups**.
@@ -35,21 +39,23 @@ Your first NLB configuration step is to create two target groups. Technically, o
 
 Configure the first target group according to the table below. Screenshots of the configuration are shown just below the table.
 
-| Option                              | Setting           |
-| ----------------------------------- | ----------------- |
-| Target Group Name                   | `rancher-tcp-443` |
-| Protocol                            | `TCP`             |
-| Port                                | `443`             |
-| Target type                         | `instance`        |
-| VPC                                 | Choose your VPC   |
-| Protocol<br/>(Health Check)         | `HTTP`            |
-| Path<br/>(Health Check)             | `/healthz`        |
-| Port (Advanced health check)        | `override`,`80`   |
-| Healthy threshold (Advanced health) | `3`               |
-| Unhealthy threshold (Advanced)      | `3`               |
-| Timeout (Advanced)                  | `6 seconds`       |
-| Interval (Advanced)                 | `10 second`       |
-| Success codes                       | `200-399`         |
+The health check settings differ depending on whether the Rancher server cluster uses an NGINX Ingress controller or a Traefik Ingress controller. If you are installing Rancher on an RKE Kubernetes cluster, NGINX is the default Ingress. If you are installing Rancher on a K3s Kubernetes cluster, Traefik is used to allow traffic to enter the Rancher server cluster.
+
+| Option                              | Setting           |    Applies to NGINX Ingress | Applies to Traefik Ingress |
+| ----------------------------------- | ----------------- | ----------------------------------- | ----------------- |
+| Target Group Name                   | `rancher-tcp-443` | ✓ | ✓ |
+| Protocol                            | `TCP`             | ✓ | ✓ |
+| Port                                | `443`             | ✓ | ✓ |
+| Target type                         | `instance`        | ✓ | ✓ |
+| VPC                                 | Choose your VPC   | ✓ | ✓ |
+| Protocol<br/>(Health Check)         | `HTTP`            | ✓ |  |
+| Path<br/>(Health Check)             | `/healthz`        | ✓ |  |
+| Port (Advanced health check)        | `override`,`80`   | ✓ |  |
+| Healthy threshold (Advanced health) | `3`               | ✓ |  |
+| Unhealthy threshold (Advanced)      | `3`               | ✓ |  |
+| Timeout (Advanced)                  | `6 seconds`       | ✓ | ✓ |
+| Interval (Advanced)                 | `10 second`       | ✓ | ✓ |
+| Success codes                       | `200-399`         | ✓ | ✓ |
 
 
 Click **Create target group** to create the second target group, regarding TCP port 80.
@@ -58,21 +64,23 @@ Click **Create target group** to create the second target group, regarding TCP p
 
 Configure the second target group according to the table below. Screenshots of the configuration are shown just below the table.
 
-| Option                              | Setting          |
-| ----------------------------------- | ---------------- |
-| Target Group Name                   | `rancher-tcp-80` |
-| Protocol                            | `TCP`            |
-| Port                                | `80`             |
-| Target type                         | `instance`       |
-| VPC                                 | Choose your VPC  |
-| Protocol<br/>(Health Check)         | `HTTP`           |
-| Path<br/>(Health Check)             | `/healthz`       |
-| Port (Advanced health check)        | `traffic port`   |
-| Healthy threshold (Advanced health) | `3`              |
-| Unhealthy threshold (Advanced)      | `3`              |
-| Timeout (Advanced)                  | `6 seconds`      |
-| Interval (Advanced)                 | `10 second`      |
-| Success codes                       | `200-399`        |
+The health check settings differ depending on whether the Rancher server cluster uses an NGINX Ingress controller or a Traefik Ingress controller. If you are installing Rancher on an RKE Kubernetes cluster, NGINX is the default Ingress. If you are installing Rancher on a K3s Kubernetes cluster, Traefik is used to allow traffic to enter the Rancher server cluster.
+
+| Option                              | Setting          | Applies to NGINX Ingress | Applies to Traefik Ingress |
+| ----------------------------------- | ---------------- | ----------------------------------- | ----------------- |
+| Target Group Name                   | `rancher-tcp-80` | ✓ | ✓ |
+| Protocol                            | `TCP`            | ✓ | ✓ |
+| Port                                | `80`             | ✓ | ✓ |
+| Target type                         | `instance`       | ✓ | ✓ |
+| VPC                                 | Choose your VPC  | ✓ | ✓ |
+| Protocol<br/>(Health Check)         | `HTTP`           | ✓ |  |
+| Path<br/>(Health Check)             | `/healthz`       | ✓ |  |
+| Port (Advanced health check)        | `traffic port`   | ✓ |  |
+| Healthy threshold (Advanced health) | `3`              | ✓ |  |
+| Unhealthy threshold (Advanced)      | `3`              | ✓ |  |
+| Timeout (Advanced)                  | `6 seconds`      | ✓ | ✓ |
+| Interval (Advanced)                 | `10 second`      | ✓ | ✓ |
+| Success codes                       | `200-399`        | ✓ | ✓ |
 
 # 2. Register Targets
 
