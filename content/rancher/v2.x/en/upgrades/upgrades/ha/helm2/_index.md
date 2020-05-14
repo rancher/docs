@@ -110,15 +110,15 @@ helm upgrade rancher-<CHART_REPO>/rancher \
 
 If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manger due to the API change in cert-manger v0.11. 
 
-Please refer the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager) page for more information.
-
 1. Uninstall Rancher
 
     ```
     helm delete rancher -n cattle-system
     ```
 
-2. Reinstall Rancher to the latest version with all your settings. Take all the values from the previous step and append them to the command using `--set key=value`. Note: There will be many more options from the previous step that need to be appended.
+2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager/helm-2-instructions) page.
+
+3. Reinstall Rancher to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
 
     ```
     helm install rancher-<CHART_REPO>/rancher \
