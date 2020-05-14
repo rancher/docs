@@ -63,6 +63,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/do` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
