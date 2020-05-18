@@ -83,7 +83,7 @@ The values for `RAFT TERM` should be equal and `RAFT INDEX` should be not be too
 
 Command:
 ```
-docker exec etcd etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table
+docker exec -e ETCDCTL_ENDPOINTS=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") etcd etcdctl endpoint status --write-out table
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
@@ -106,7 +106,7 @@ Example output:
 
 Command:
 ```
-docker exec etcd etcdctl endpoint health --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")
+docker exec -e ETCDCTL_ENDPOINTS=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") etcd etcdctl endpoint health
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
@@ -232,7 +232,7 @@ compacted revision xxx
 
 Command:
 ```
-docker exec etcd etcdctl defrag --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','")
+docker exec -e ETCDCTL_ENDPOINTS=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") etcd etcdctl defrag
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
@@ -251,7 +251,7 @@ Finished defragmenting etcd member[https://IP:2379]
 
 Command:
 ```
-docker exec etcd etcdctl endpoint status --endpoints=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") --write-out table
+docker exec -e ETCDCTL_ENDPOINTS=$(docker exec etcd /bin/sh -c "etcdctl member list | cut -d, -f5 | sed -e 's/ //g' | paste -sd ','") etcd etcdctl endpoint status --write-out table
 ```
 
 Command when using etcd version lower than 3.3.x (Kubernetes 1.13.x and lower) and `--internal-address` was specified when adding the node:
