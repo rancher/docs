@@ -9,7 +9,7 @@ You can fill your custom catalogs with either Helm Charts or Rancher Charts, alt
 
 > For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://helm.sh/docs/chart_template_guide/).
 
-1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure](#chart-directory-structure).
+1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in [Chart Directory Structure](../creating-apps/#chart-directory-structure).
 
     Rancher requires this directory structure, although `app-readme.md` and `questions.yml` are optional.
 
