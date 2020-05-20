@@ -114,7 +114,11 @@ helm repo update
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
+<<<<<<< HEAD
   --version v0.14.2
+=======
+  --version v0.15.0
+>>>>>>> jetstack cert-manager doc update
 ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
