@@ -11,6 +11,7 @@ This section contains advanced information describing the different ways you can
 - [Certificate rotation](#certificate-rotation)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Configuring containerd](#configuring-containerd)
 - [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with RootlessKit (Experimental)](#running-k3s-with-rootlesskit-experimental)
 - [Node labels and taints](#node-labels-and-taints)
@@ -34,11 +35,92 @@ For information about deploying Helm charts, refer to the section about [Helm.](
 
 # Using Docker as the Container Runtime
 
-K3s includes and defaults to [containerd,](https://containerd.io/) an industry-standard container runtime. If you want to use Docker instead of containerd then you simply need to run the agent with the `--docker` flag.
+K3s includes and defaults to [containerd,](https://containerd.io/) an industry-standard container runtime.
 
-K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`. For advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
+To use Docker instead of containerd,
 
-The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template, the following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
+1. Install Docker on the K3s node. One of Rancher's [Docker installation scripts](https://github.com/rancher/install-docker) can be used to install Docker:
+
+    ```
+    curl https://releases.rancher.com/install-docker/19.03.sh | sh
+    ```
+
+1. Install K3s using the `--docker` option:
+
+    ```
+    curl -sfL https://get.k3s.io | sh -s - --docker
+    ```
+
+1. Confirm that the cluster is available:
+
+    ```
+    $ sudo k3s kubectl get pods --all-namespaces
+    NAMESPACE     NAME                                     READY   STATUS      RESTARTS   AGE
+    kube-system   local-path-provisioner-6d59f47c7-lncxn   1/1     Running     0          51s
+    kube-system   metrics-server-7566d596c8-9tnck          1/1     Running     0          51s
+    kube-system   helm-install-traefik-mbkn9               0/1     Completed   1          51s
+    kube-system   coredns-8655855d6-rtbnb                  1/1     Running     0          51s
+    kube-system   svclb-traefik-jbmvl                      2/2     Running     0          43s
+    kube-system   traefik-758cd5fc85-2wz97                 1/1     Running     0          43s
+    ```
+
+1. Confirm that the Docker containers are running:
+
+    ```
+    $ sudo docker ps
+    CONTAINER ID        IMAGE                     COMMAND                  CREATED              STATUS              PORTS               NAMES
+    3e4d34729602        897ce3c5fc8f              "entry"                  About a minute ago   Up About a minute                       k8s_lb-port-443_svclb-traefik-jbmvl_kube-system_d46f10c6-073f-4c7e-8d7a-8e7ac18f9cb0_0
+    bffdc9d7a65f        rancher/klipper-lb        "entry"                  About a minute ago   Up About a minute                       k8s_lb-port-80_svclb-traefik-jbmvl_kube-system_d46f10c6-073f-4c7e-8d7a-8e7ac18f9cb0_0
+    436b85c5e38d        rancher/library-traefik   "/traefik --configfi…"   About a minute ago   Up About a minute                       k8s_traefik_traefik-758cd5fc85-2wz97_kube-system_07abe831-ffd6-4206-bfa1-7c9ca4fb39e7_0
+    de8fded06188        rancher/pause:3.1         "/pause"                 About a minute ago   Up About a minute                       k8s_POD_svclb-traefik-jbmvl_kube-system_d46f10c6-073f-4c7e-8d7a-8e7ac18f9cb0_0
+    7c6a30aeeb2f        rancher/pause:3.1         "/pause"                 About a minute ago   Up About a minute                       k8s_POD_traefik-758cd5fc85-2wz97_kube-system_07abe831-ffd6-4206-bfa1-7c9ca4fb39e7_0
+    ae6c58cab4a7        9d12f9848b99              "local-path-provisio…"   About a minute ago   Up About a minute                       k8s_local-path-provisioner_local-path-provisioner-6d59f47c7-lncxn_kube-system_2dbd22bf-6ad9-4bea-a73d-620c90a6c1c1_0
+    be1450e1a11e        9dd718864ce6              "/metrics-server"        About a minute ago   Up About a minute                       k8s_metrics-server_metrics-server-7566d596c8-9tnck_kube-system_031e74b5-e9ef-47ef-a88d-fbf3f726cbc6_0
+    4454d14e4d3f        c4d3d16fe508              "/coredns -conf /etc…"   About a minute ago   Up About a minute                       k8s_coredns_coredns-8655855d6-rtbnb_kube-system_d05725df-4fb1-410a-8e82-2b1c8278a6a1_0
+    c3675b87f96c        rancher/pause:3.1         "/pause"                 About a minute ago   Up About a minute                       k8s_POD_coredns-8655855d6-rtbnb_kube-system_d05725df-4fb1-410a-8e82-2b1c8278a6a1_0
+    4b1fddbe6ca6        rancher/pause:3.1         "/pause"                 About a minute ago   Up About a minute                       k8s_POD_local-path-provisioner-6d59f47c7-lncxn_kube-system_2dbd22bf-6ad9-4bea-a73d-620c90a6c1c1_0
+    64d3517d4a95        rancher/pause:3.1         "/pause"
+    ```
+
+### Optional: Use crictl with Docker
+
+crictl provides a CLI for CRI-compatible container runtimes.
+
+If you would like to use crictl after installing K3s with the `--docker` option, install crictl using the [official documentation:](https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md) 
+
+```
+$ VERSION="v1.17.0"
+$ curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-${VERSION}-linux-amd64.tar.gz --output crictl-${VERSION}-linux-amd64.tar.gz
+$ sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+crictl
+```
+
+Then start using crictl commands:
+
+```
+$ sudo crictl version
+Version:  0.1.0
+RuntimeName:  docker
+RuntimeVersion:  19.03.9
+RuntimeApiVersion:  1.40.0
+$ sudo crictl images
+IMAGE                            TAG                 IMAGE ID            SIZE
+rancher/coredns-coredns          1.6.3               c4d3d16fe508b       44.3MB
+rancher/klipper-helm             v0.2.5              6207e2a3f5225       136MB
+rancher/klipper-lb               v0.1.2              897ce3c5fc8ff       6.1MB
+rancher/library-traefik          1.7.19              aa764f7db3051       85.7MB
+rancher/local-path-provisioner   v0.0.11             9d12f9848b99f       36.2MB
+rancher/metrics-server           v0.3.6              9dd718864ce61       39.9MB
+rancher/pause                    3.1                 da86e6ba6ca19       742kB
+```
+
+# Configuring containerd
+
+K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`.
+
+For advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
+
+The `config.toml.tmpl` will be treated as a Golang template file, and the `config.Node` structure is being passed to the template. The following is an example on how to use the structure to customize the configuration file https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32
 
 # Secrets Encryption Config (Experimental)
 As of v1.17.4+k3s1, K3s added the experimental feature of enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server, this flag will do the following automatically:
