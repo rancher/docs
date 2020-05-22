@@ -93,3 +93,31 @@ If you share resources between clusters, you can change the tag to:
 ```
 Key=kubernetes.io/cluster/CLUSTERID, Value=shared
 ```
+
+## Configuration for a Custom Region
+
+To use a custom region and override the service settings, the following configuration can be used:
+
+```yaml
+cloud_provider:
+  name: aws
+  awsCloudProvider:
+    service_override:
+      "ec2_us-west-2":
+        url: https://ec2.us-west-2.example.com/
+        signing-region: custom-signing-region
+        service: ec2
+        region: example-us-west-2
+    service_override:
+      "iam_us-west-2":
+        url: https://iam.us-west-2.example.com/
+        signing-region: custom-signing-region
+        service: iam
+        region: example-us-west-2
+    service_override:
+      "sts_us-west-2":
+        url: https://sts.us-west-2.example.com/
+        signing-region: custom-signing-region
+        service: sts
+        region: example-us-west-2
+```
