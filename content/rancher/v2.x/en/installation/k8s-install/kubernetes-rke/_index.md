@@ -161,7 +161,7 @@ services:
   etcd:
     snapshot: true
     creation: 6h
-    retention: 24
+    retention: 24h
 
 # Required for external TLS termination with
 # ingress-nginx v0.22+
