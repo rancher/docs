@@ -5,11 +5,13 @@ weight: 1126
 
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
-Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are two default global permissions: `Administrator` and `Standard User`.
+Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are three default global permissions: `Administrator`, `Standard User` and `User-base`.
 
 - **Administrator:** These users have full control over the entire Rancher system and all clusters within it.
 
 - <a id="user"></a>**Standard User:** These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
+
+- **User-Base:** User-Base users have login-access only.
 
 You cannot update or delete the built-in Global Permissions.
 
@@ -63,22 +65,22 @@ Administrators can enforce custom global permissions in multiple ways:
 
 ### Custom Global Permissions Reference
 
-The following table lists each custom global permission available and whether it is included in the default global permissions, `Administrator` and `Standard User`.
+The following table lists each custom global permission available and whether it is included in the default global permissions, `Administrator`, `Standard User` and `User-Base`.
 
-| Custom Global Permission           | Administrator | Standard User |
-| ---------------------------------- | ------------- | ------------- |
-| Create Clusters                    | ✓             | ✓             |
-| Create RKE Templates               | ✓             | ✓             |
-| Manage Authentication              | ✓             |               |
-| Manage Catalogs                    | ✓             |               |
-| Manage Cluster Drivers             | ✓             |               |
-| Manage Node Drivers                | ✓             |               |
-| Manage PodSecurityPolicy Templates | ✓             |               |
-| Manage Roles                       | ✓             |               |
-| Manage Settings                    | ✓             |               |
-| Manage Users                       | ✓             |               |
-| Use Catalog Templates              | ✓             | ✓             |
-| User Base\* (Basic log-in access)  | ✓             | ✓             |
+| Custom Global Permission           | Administrator | Standard User | User-Base |
+| ---------------------------------- | ------------- | ------------- |-----------|
+| Create Clusters                    | ✓             | ✓             |           |
+| Create RKE Templates               | ✓             | ✓             |           |
+| Manage Authentication              | ✓             |               |           |
+| Manage Catalogs                    | ✓             |               |           |
+| Manage Cluster Drivers             | ✓             |               |           |
+| Manage Node Drivers                | ✓             |               |           |
+| Manage PodSecurityPolicy Templates | ✓             |               |           |
+| Manage Roles                       | ✓             |               |           |
+| Manage Settings                    | ✓             |               |           |
+| Manage Users                       | ✓             |               |           |
+| Use Catalog Templates              | ✓             | ✓             |           |
+| User Base\* (Basic log-in access)  | ✓             | ✓             |           |
 
 > \*This role has two names:
 >
