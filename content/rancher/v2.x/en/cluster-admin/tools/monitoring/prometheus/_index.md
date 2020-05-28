@@ -37,3 +37,27 @@ When configuring Prometheus and enabling the node exporter, enter a host port in
 By default, when you enable Prometheus for either a cluster or project, all monitoring data that Prometheus collects is stored on its own pod. With local storage, if the Prometheus or Grafana pods fail, all the data is lost. Rancher recommends configuring an external persistent storage to the cluster. With the external persistent storage, if the Prometheus or Grafana pods fail, the new pods can recover using data from the persistent storage.
 
 When enabling persistent storage for Prometheus or Grafana, specify the size of the persistent volume and select the [storage class]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#storage-classes).
+
+## Remote Storage
+
+>**Prerequisite:** Need a remote storage endpoint to be available. The possible list of integratinos is available [here](https://prometheus.io/docs/operating/integrations/)
+
+Using advanced options the users can specify remote storage integration for the prometheus installation as follows:
+
+```
+prometheus.remoteWrite[0].url = http://remote1/push
+prometheus.remoteWrite[0].remoteTimeout = 33s
+
+prometheus.remoteWrite[1].url = http://remote2/push
+
+
+prometheus.remoteRead[0].url = http://remote1/read
+prometheus.remoteRead[0].proxyUrl = http://proxy.url
+prometheus.remoteRead[0].bearerToken = token-value
+
+prometheus.remoteRead[1].url = http://remote2/read
+prometheus.remoteRead[1].remoteTimeout = 33s
+prometheus.remoteRead[1].readRecent = true
+```
+
+Additional fields can be set up based on the [ReadSpec](https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#remotereadspec) and [RemoteWriteSpec](https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#remotewritespec)
