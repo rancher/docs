@@ -40,9 +40,9 @@ When enabling persistent storage for Prometheus or Grafana, specify the size of 
 
 ## Remote Storage
 
->**Prerequisite:** Need a remote storage endpoint to be available. The possible list of integratinos is available [here](https://prometheus.io/docs/operating/integrations/)
+>**Prerequisite:** Need a remote storage endpoint to be available. The possible list of integrations is available [here](https://prometheus.io/docs/operating/integrations/)
 
-Using advanced options the users can specify remote storage integration for the prometheus installation as follows:
+Using advanced options, remote storage integration for the Prometheus installation can be configured as follows:
 
 ```
 prometheus.remoteWrite[0].url = http://remote1/push
