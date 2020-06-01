@@ -12,7 +12,7 @@ Please reference the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/ins
 CoreDNS
 -------
 
-CoreDNS is deployed on start of the agent. To disable, run each server with the `--no-deploy coredns` option.
+CoreDNS is deployed on start of the agent. To disable, run each server with the `--disable coredns` option.
 
 If you don't install CoreDNS, you will need to install a cluster DNS provider yourself.
 
@@ -27,14 +27,14 @@ The Traefik ingress controller will use ports 80, 443, and 8080 on the host (i.e
 
 You can tweak traefik to meet your needs by setting options in the traefik.yaml file. Refer to the official [Traefik for Helm Configuration Parameters](https://github.com/helm/charts/tree/master/stable/traefik#configuration) readme for more information.
 
-To disable it, start each server with the `--no-deploy traefik` option.
+To disable it, start each server with the `--disable traefik` option.
 
 Service Load Balancer
 ---------------------
 
 K3s includes a basic service load balancer that uses available host ports. If you try to create a load balancer that listens on port 80, for example, it will try to find a free host in the cluster for port 80. If no port is available, the load balancer will stay in Pending.
 
-To disable the embedded load balancer, run the server with the `--no-deploy servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
+To disable the embedded load balancer, run the server with the `--disable servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
 
 Nodes Without a Hostname
 ------------------------
