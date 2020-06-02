@@ -17,7 +17,7 @@ A Rancher [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/glob
 
 **Result:** Istio is enabled at the cluster level.
 
-The Istio application, `cluster-istio`, is added as an [application]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project.
+The Istio application, `cluster-istio`, is added as an application to the cluster's `system` project.
 
 When Istio is enabled in the cluster, the label for Istio sidecar auto injection,`istio-injection=enabled`, will be automatically added to each new namespace in this cluster. This automatically enables Istio sidecar injection in all new workloads that are deployed in those namespaces. You will need to manually enable Istio in preexisting namespaces and workloads.
 
