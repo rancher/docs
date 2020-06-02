@@ -11,18 +11,23 @@ Whether you're configuring a K3s cluster to run in a Docker or Kubernetes setup,
 
 ## Prerequisites
 
-*    Two nodes cannot have the same hostname. If all your nodes have the same hostname, use the `--with-node-id` option to append a random suffix for each node, or otherwise devise a unique name to pass with `--node-name` or `$K3S_NODE_NAME` for each node you add to the cluster.
+Two nodes cannot have the same hostname.
+
+If all your nodes have the same hostname, use the `--with-node-id` option to append a random suffix for each node, or otherwise devise a unique name to pass with `--node-name` or `$K3S_NODE_NAME` for each node you add to the cluster.
 
 ## Operating Systems
 
-K3s should run on just about any flavor of Linux. However, K3s is tested on the following operating systems and their subsequent non-major releases.
+K3s should run on just about any flavor of Linux.
+
+K3s is officially supported and tested on the following operating systems and their subsequent non-major releases:
 
 *    Ubuntu 16.04 (amd64)
 *    Ubuntu 18.04 (amd64)
+*    Raspbian Buster*
 
-> * If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
-> * If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+\* If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
+If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 ## Hardware
 
