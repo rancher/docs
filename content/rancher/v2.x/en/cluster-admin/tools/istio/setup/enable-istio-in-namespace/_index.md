@@ -42,4 +42,7 @@ To add the annotation to a workload,
 
 **Result:** The Istio sidecar will not be injected into the workload.
 
+> **NOTE:** If you are having issues with a Job you deployed not completing, you will need to add this annotation to your pod using the provided steps. Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed. This is a temporary workaround and will disable Istio for any traffic to/from the annoted Pod. Keep in mind this may not allow you to continue to use a Job for Integration Testing as the Job will not have access to the service mesh.
+
+
 ### [Next: Set up Taints and Tolerations]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/node-selectors)
