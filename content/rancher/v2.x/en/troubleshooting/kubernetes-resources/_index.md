@@ -7,9 +7,33 @@ The commands/steps listed on this page can be used to check the most important K
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
-### Nodes
+- [Nodes](#nodes)
+  - [Get nodes](#get-nodes)
+  - [Get node conditions](#get-node-conditions)
+- [Kubernetes leader election](#kubernetes-leader-election)
+  - [Kubernetes controller manager leader](#kubernetes-controller-manager-leader)
+  - [Kubernetes scheduler leader](#kubernetes-scheduler-leader)
+- [Ingress controller](#ingress-controller)
+  - [Pod details](#pod-details)
+  - [Pod container logs](#pod-container-logs)
+  - [Namespace events](#namespace-events)
+  - [Debug logging](#debug-logging)
+  - [Check configuration](#check-configuration)
+- [Rancher agents](#rancher-agents)
+  - [cattle-node-agent](#cattle-node-agent)
+  - [cattle-cluster-agent](#cattle-cluster-agent)
+- [Jobs and pods](#jobs-and-pods)
+  - [Check that pods or jobs have status Running/Completed](#check-that-pods-or-jobs-have-status-running-completed)
+  - [Describe pod](#describe-pod)
+  - [Pod container logs](#pod-container-logs)
+  - [Describe job](#describe-job)
+  - [Logs from the containers of pods of the job](#logs-from-the-containers-of-pods-of-the-job)
+  - [Evicted pods](#evicted-pods)
+  - [Job does not complete](#job-does-not-complete)
 
-#### Get nodes
+# Nodes
+
+### Get nodes
 
 Run the command below and check the following:
 
@@ -32,7 +56,7 @@ etcd-0           Ready    etcd           31m   v1.13.5   138.68.180.33    <none>
 worker-0         Ready    worker         30m   v1.13.5   139.59.179.88    <none>        Ubuntu 18.04.2 LTS   4.15.0-47-generic   docker://18.9.5
 ```
 
-#### Get node conditions
+### Get node conditions
 
 Run the command below to list nodes with [Node Conditions](https://kubernetes.io/docs/concepts/architecture/nodes/#condition)
 
@@ -52,9 +76,9 @@ Example output:
 worker-0: DiskPressure:True
 ```
 
-### Kubernetes leader election
+# Kubernetes leader election
 
-#### Kubernetes Controller Manager leader
+### Kubernetes Controller Manager leader
 
 The leader is determined by a leader election process. After the leader has been determined, the leader (`holderIdentity`) is saved in the `kube-controller-manager` endpoint (in this example, `controlplane-0`).
 
@@ -63,7 +87,7 @@ kubectl -n kube-system get endpoints kube-controller-manager -o jsonpath='{.meta
 {"holderIdentity":"controlplane-0_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","leaseDurationSeconds":15,"acquireTime":"2018-12-27T08:59:45Z","renewTime":"2018-12-27T09:44:57Z","leaderTransitions":0}>
 ```
 
-#### Kubernetes Scheduler leader
+### Kubernetes Scheduler leader
 
 The leader is determined by a leader election process. After the leader has been determined, the leader (`holderIdentity`) is saved in the `kube-scheduler` endpoint (in this example, `controlplane-0`).
 
@@ -72,7 +96,7 @@ kubectl -n kube-system get endpoints kube-scheduler -o jsonpath='{.metadata.anno
 {"holderIdentity":"controlplane-0_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","leaseDurationSeconds":15,"acquireTime":"2018-12-27T08:59:45Z","renewTime":"2018-12-27T09:44:57Z","leaderTransitions":0}>
 ```
 
-### Ingress Controller
+# Ingress Controller
 
 The default Ingress Controller is NGINX and is deployed as a DaemonSet in the `ingress-nginx` namespace. The pods are only scheduled to nodes with the `worker` role.
 
@@ -94,25 +118,25 @@ nginx-ingress-controller-8wxhm          1/1       Running   0          13m      
 
 If a pod is unable to run (Status is not **Running**, Ready status is not showing `1/1` or you see a high count of Restarts), check the pod details, logs and namespace events.
 
-#### Pod details
+### Pod details
 
 ```
 kubectl -n ingress-nginx describe pods -l app=ingress-nginx
 ```
 
-#### Pod container logs
+### Pod container logs
 
 ```
 kubectl -n ingress-nginx logs -l app=ingress-nginx
 ```
 
-#### Namespace events
+### Namespace events
 
 ```
 kubectl -n ingress-nginx get events
 ```
 
-#### Debug logging
+### Debug logging
 
 To enable debug logging:
 
@@ -120,7 +144,7 @@ To enable debug logging:
 kubectl -n ingress-nginx patch ds nginx-ingress-controller --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--v=5"}]'
 ```
 
-#### Check configuration
+### Check configuration
 
 Retrieve generated configuration in each pod:
 
@@ -128,7 +152,7 @@ Retrieve generated configuration in each pod:
 kubectl -n ingress-nginx get pods -l app=ingress-nginx --no-headers -o custom-columns=.NAME:.metadata.name | while read pod; do kubectl -n ingress-nginx exec $pod -- cat /etc/nginx/nginx.conf; done
 ```
 
-### Rancher agents
+# Rancher agents
 
 Communication to the cluster (Kubernetes API via `cattle-cluster-agent`) and communication to the nodes (cluster provisioning via `cattle-node-agent`) is done through Rancher agents.
 
@@ -180,9 +204,9 @@ Check logging of cattle-cluster-agent pod:
 kubectl -n cattle-system logs -l app=cattle-cluster-agent
 ```
 
-### Generic
+# Jobs and Pods
 
-#### All pods/jobs should have status **Running**/**Completed**
+### Check that pods or jobs have status **Running**/**Completed**
 
 To check, run the command:
 
@@ -192,13 +216,13 @@ kubectl get pods --all-namespaces
 
 If a pod is not in **Running** state, you can dig into the root cause by running:
 
-##### Describe pod
+### Describe pod
 
 ```
 kubectl describe pod POD_NAME -n NAMESPACE
 ```
 
-##### Pod container logs
+### Pod container logs
 
 ```
 kubectl logs POD_NAME -n NAMESPACE
@@ -206,19 +230,19 @@ kubectl logs POD_NAME -n NAMESPACE
 
 If a job is not in **Completed** state, you can dig into the root cause by running:
 
-##### Describe job
+### Describe job
 
 ```
 kubectl describe job JOB_NAME -n NAMESPACE
 ```
 
-##### Logs from the containers of pods of the job
+### Logs from the containers of pods of the job
 
 ```
 kubectl logs -l job-name=JOB_NAME -n NAMESPACE
 ```
 
-#### Evicted pods
+### Evicted pods
 
 Pods can be evicted based on [eviction signals](https://kubernetes.io/docs/tasks/administer-cluster/out-of-resource/#eviction-policy).
 
@@ -239,3 +263,9 @@ Retrieve a list of evicted pods, scheduled node and the reason:
 ```
 kubectl get pods --all-namespaces -o go-template='{{range .items}}{{if eq .status.phase "Failed"}}{{if eq .status.reason "Evicted"}}{{.metadata.name}}{{" "}}{{.metadata.namespace}}{{"\n"}}{{end}}{{end}}{{end}}' | while read epod enamespace; do kubectl -n $enamespace get pod $epod -o=custom-columns=NAME:.metadata.name,NODE:.spec.nodeName,MSG:.status.message; done
 ```
+
+### Job does not complete
+
+If you have enabled Istio, and you are having issues with a Job you deployed not completing, you will need to add an annotation to your pod using [these steps.](../../cluster-admin/tools/istio/setup/enable-istio-in-namespace/#excluding-workloads-from-being-injected-with-the-istio-sidecar)
+
+Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed. This is a temporary workaround and will disable Istio for any traffic to/from the annotated Pod. Keep in mind this may not allow you to continue to use a Job for integration testing, as the Job will not have access to the service mesh.
