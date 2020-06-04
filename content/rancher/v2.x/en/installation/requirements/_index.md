@@ -66,30 +66,30 @@ These requirements apply to each host in an [RKE Kubernetes cluster where the Ra
 
 Performance increased in Rancher v2.4.0. For the requirements of Rancher prior to v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
 
-| Deployment Size | Clusters  | Nodes      | vCPUs  | RAM    |
-| --------------- | --------- | ---------- | -------| ------- |
-| Small           | Up to 150  | Up to 1500   | 2      | 8 GB   |
-| Medium          | Up to 300  | Up to 3000 | 4      | 16 GB  |
-| Large           | Up to 500  | Up to 5000  | 8      | 32 GB  |
-| X-Large         | Up to 1000 | Up to 10000 | 16     | 64 GB  |
-| XX-Large        | Up to 2000 | Up to 20000  | 32     | 128GB |
+| Deployment Size | Clusters   | Nodes        | vCPUs  | RAM     |
+| --------------- | ---------- | ------------ | -------| ------- |
+| Small           | Up to 150  | Up to 1500   | 2      | 8 GB    |
+| Medium          | Up to 300  | Up to 3000   | 4      | 16 GB   |
+| Large           | Up to 500  | Up to 5000   | 8      | 32 GB   |
+| X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
+| XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20000 nodes. 
+[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
 {{% /tab %}}
 
 {{% tab "K3s Install Requirements" %}}
 
 These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
 
-| Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size |
-| --------------- | ---------- | ------------ | -------| ---------| ------------ |
-| Small           | Up to 150  | Up to 1500     | 2      | 8 GB     | 2 cores 4GB + 1000 IOPS |
-| Medium          | Up to 300  | Up to 3000    | 4      | 16 GB    | 2 cores 4GB + 1000 IOPS |
-| Large           | Up to 500  | Up to 5000    | 8      | 32 GB    | 2 cores 4GB + 1000 IOPS |
-| X-Large         | Up to 1000 | Up to 10000   | 16     | 64 GB    | 2 cores 4GB + 1000 IOPS |
-| XX-Large        | Up to 2000 | Up to 20000  | 32     | 128GB    | 2 cores 4GB + 1000 IOPS |
+| Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size             |
+| --------------- | ---------- | ------------ | -------| ---------| ------------------------- |
+| Small           | Up to 150  | Up to 1500   | 2      | 8 GB     | 2 cores, 4 GB + 1000 IOPS |
+| Medium          | Up to 300  | Up to 3000   | 4      | 16 GB    | 2 cores, 4 GB + 1000 IOPS |
+| Large           | Up to 500  | Up to 5000   | 8      | 32 GB    | 2 cores, 4 GB + 1000 IOPS |
+| X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
+| XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20000 nodes. 
+[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
 
 {{% /tab %}}
 
