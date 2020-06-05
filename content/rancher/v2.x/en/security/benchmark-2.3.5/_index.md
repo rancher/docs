@@ -1975,7 +1975,7 @@ systemctl restart kubelet.service
 
 #### 5.1.5 Ensure that default service accounts are not actively used. (Scored)
 
-**Result:** PASS
+**Result:** FAIL
 
 **Remediation:**
 Create explicit service accounts wherever a Kubernetes workload requires specific access
