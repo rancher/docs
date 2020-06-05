@@ -34,7 +34,7 @@ get_test() {
   jq -r --arg id "${id}" --arg section "${section}" --arg test_number "${test_number}" 'select(.id==$id).tests[] | select(.section==$section).results[] | select(.test_number==$test_number)' ${results_file}
 }
 
-cat headers/header-2.4.3.md
+cat headers/header-2.4.md
 
 for id in $(get_ids); do
   echo "## ${id} $(get_id_text ${id})"
