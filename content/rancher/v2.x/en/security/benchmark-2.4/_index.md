@@ -1975,7 +1975,7 @@ systemctl restart kubelet.service
 
 #### 5.1.5 Ensure that default service accounts are not actively used. (Scored)
 
-**Result:** PASS
+**Result:** FAIL
 
 **Remediation:**
 Create explicit service accounts wherever a Kubernetes workload requires specific access
@@ -2006,7 +2006,7 @@ if [[ "${accounts}" != "" ]]; then
   exit 1
 fi
 
-default_binding="$(kubectl get rolebindings,clusterrolebindings -A -o json | jq -r '.items[] | select(.subjects[].kind=="ServiceAccount" and .subjects[].name=="default" and .metadata.name=="default").metadata.uid' | wc -l)"
+default_binding="$(kubectl get rolebindings,clusterrolebindings -A -o json | jq -r '.items[] | select(.subjects[].kind=="ServiceAccount" and .subjects[].name=="default" and .metadata.name!="default").metadata.uid' | wc -l)"
 
 if [[ "${default_binding}" -gt 0 ]]; then
 	echo "fail: default service accounts have non default bindings"
