@@ -1,9 +1,9 @@
 ---
-title: Hardening Guide v2.3.5
-weight: 100
+title: Hardening Guide v2.4.3
+weight: 99
 ---
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.4.3. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 > This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
 
@@ -11,16 +11,16 @@ This hardening guide is intended to be used with specific versions of the CIS Ku
 
 Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
 ------------------------|----------------|-----------------------|------------------
-Hardening Guide v2.3.5 | Rancher v2.3.5 | Benchmark v1.5 | Kubernetes 1.15
+Hardening Guide v2.4.3 | Rancher v2.4.3 | Benchmark v1.5 | Kubernetes 1.15
 
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.5/Rancher_Hardening_Guide.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.4.3/Rancher_Hardening_Guide.pdf)
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.5 with Kubernetes v1.15. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of Rancher v2.4.3 with Kubernetes v1.15. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.5]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.5/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.4.3]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.3.5/).
 
 #### Known Issues
 
