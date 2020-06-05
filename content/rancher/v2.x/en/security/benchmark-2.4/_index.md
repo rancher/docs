@@ -1,21 +1,21 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - v2.4.3
+title: CIS Benchmark Rancher Self-Assessment Guide - v2.4
 weight: 204
 ---
 
-### CIS Kubernetes Benchmark v1.5 - Rancher v2.4.3 with Kubernetes v1.15
+### CIS Kubernetes Benchmark v1.5 - Rancher v2.4 with Kubernetes v1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.4.3/Rancher_Benchmark_Assessment.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.4/Rancher_Benchmark_Assessment.pdf)
 
 #### Overview
 
-This document is a companion to the Rancher v2.4.3 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the Rancher v2.4 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
 
 Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
 ---------------------------|----------|---------|-------|-----
-Self Assessment Guide v2.4.3 | Rancher v2.4.3 | Hardening Guide v2.4.3 | Kubernetes v1.15 | Benchmark v1.5
+Self Assessment Guide v2.4 | Rancher v2.4 | Hardening Guide v2.4 | Kubernetes v1.15 | Benchmark v1.5
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply and will have a result of `Not Applicable`. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
