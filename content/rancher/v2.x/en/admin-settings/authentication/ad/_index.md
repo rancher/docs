@@ -106,7 +106,7 @@ The table below details the parameters for the group schema configuration.
 
 ### Test Authentication
 
-Once you have completed the configuration, proceed by testing  the connection to the AD server. Authentication with the configured Active Directory will be enabled implicitly if the test is successful.
+Once you have completed the configuration, proceed by testing the connection to the AD server **using your AD admin account**. If the test is successful, authentication with the configured Active Directory will be enabled implicitly with the account you test with set as admin.
 
 > **Note:**
 >
