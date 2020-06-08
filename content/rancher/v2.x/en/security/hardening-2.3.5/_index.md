@@ -24,7 +24,7 @@ For more detail about evaluating a hardened cluster against the official CIS ben
 
 #### Known Issues
 
-- Rancher **exec shell** and **view logs** for pods are **not** functional in a cis 1.5 hardened setup when only public ip is provided when registering custom nodes.
+- Rancher **exec shell** and **view logs** for pods are **not** functional in a CIS 1.5 hardened setup when only public IP is provided when registering custom nodes.
 - When setting the `default_pod_security_policy_template_id:` to `restricted` Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
 ### Configure Kernel Runtime Parameters
