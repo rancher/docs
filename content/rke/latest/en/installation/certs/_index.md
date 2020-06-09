@@ -41,8 +41,10 @@ The following certificates must exist in the certificate directory.
 |         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |
 | Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem* | kube-apiserver-requestheader-ca-key.pem** |
 |    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |
-* Is the same as kube-ca.pem 
-** Is the same as kube-ca-key
+
+\* Is the same as kube-ca.pem 
+\** Is the same as kube-ca-key
+
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
 If you want to create and sign the certificates by a real Certificate Authority (CA), you can use RKE to generate a set of Certificate Signing Requests (CSRs) and keys. Using the `rke cert generate-csr` command, you can generate the CSRs and keys.
