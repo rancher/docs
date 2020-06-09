@@ -42,7 +42,8 @@ The following certificates must exist in the certificate directory.
 | Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem* | kube-apiserver-requestheader-ca-key.pem** |
 |    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |
 
-\* Is the same as kube-ca.pem 
+\* Is the same as kube-ca.pem
+
 \** Is the same as kube-ca-key
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
