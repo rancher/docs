@@ -151,7 +151,7 @@ Placeholder | Description
  `<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
-`<CA_CERTS>` | The path to the certificate authority's certificate.
+`<CA_CERTS.pem>` | The path to the certificate authority's certificate.
 `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
 ```
@@ -253,7 +253,7 @@ Placeholder | Description
 `<CERT_DIRECTORY>` | The path to the directory containing your certificate files.
 `<FULL_CHAIN.pem>` | The path to your full certificate chain.
 `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.
-`<CA_CERTS>` | The path to the certificate authority's certificate.
+`<CA_CERTS.pem>` | The path to the certificate authority's certificate.
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.
 `<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/) that you want to upgrade to.
 
