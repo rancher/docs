@@ -15,6 +15,7 @@ This page covers the following topics:
 - [High-availability K3s server with an external database](#high-availability-k3s-server-with-an-external-db)
   - [Fixed registration address for agent nodes](#fixed-registration-address-for-agent-nodes)
 - [How agent node registration works](#how-agent-node-registration-works)
+- [Automatically deployed manifests](#automatically-deployed-manifests)
 
 # Single-server Setup with an Embedded DB
 
@@ -52,3 +53,7 @@ Agents will register with the server using the node cluster secret along with a 
 If the `/etc/rancher/node` directory of an agent is removed, the password file should be recreated for the agent, or the entry removed from the server.
 
 A unique node ID can be appended to the hostname by launching K3s servers or agents using the `--with-node-id` flag.
+
+# Automatically Deployed Manifests
+
+The [manifests](https://github.com/rancher/k3s/tree/master/manifests) located at the directory path `/var/lib/rancher/k3s/server/manifests` are bundled into the K3s binary at build time.
