@@ -64,7 +64,7 @@ After creating your certificate, run the Docker command below to install Rancher
 | `<CERT_DIRECTORY>`  | The path to the directory containing your certificate files. |
 | `<FULL_CHAIN.pem>`  | The path to your full certificate chain.                     |
 | `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.            |
-| `<CA_CERTS>`        | The path to the certificate authority's certificate.         |
+| `<CA_CERTS.pem>`        | The path to the certificate authority's certificate.         |
 
 ```bash
 docker run -d --restart=unless-stopped \
