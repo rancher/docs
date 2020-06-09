@@ -23,9 +23,11 @@ For a list of best practices that we recommend for running the Rancher server in
 
 The Rancher UI works best in Firefox or Chrome.
 
-# Operating Systems and Docker Requirements
+# Operating Systems and Container Runtime Requirements
 
-Rancher should work with any modern Linux distribution and any modern Docker version.
+Rancher should work with any modern Linux distribution.
+
+For the container runtime, RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
 
 Rancher and RKE have been tested and are supported on Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
 
@@ -34,6 +36,8 @@ K3s should run on just about any flavor of Linux. However, K3s is tested on the 
 - Ubuntu 16.04 (amd64)
 - Ubuntu 18.04 (amd64)
 - Raspbian Buster (armhf)
+
+If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
 If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 

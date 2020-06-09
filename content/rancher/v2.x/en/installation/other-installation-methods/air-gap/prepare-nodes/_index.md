@@ -25,7 +25,7 @@ We recommend setting up the following infrastructure for a high-availability ins
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
-Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+Make sure that your nodes fulfill the general installation requirements for [OS, container runtime, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
 
@@ -104,7 +104,7 @@ The etcd database requires an odd number of nodes so that it can always elect a 
 
 These hosts will be disconnected from the internet, but require being able to connect with your private registry.
 
-Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+Make sure that your nodes fulfill the general installation requirements for [OS, container runtime, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
 

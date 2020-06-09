@@ -11,7 +11,7 @@ In this section, "user cluster" refers to a cluster running your apps, which sho
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
-- [Operating systems and Docker requirements](#operating-systems-and-docker-requirements)
+- [Operating systems and container runtime requirements](#operating-systems-and-container-runtime-requirements)
 - [Hardware Requirements](#hardware-requirements)
 - [Networking Requirements](#networking-requirements)
 - [Optional: Security Considerations](#optional-security-considerations)

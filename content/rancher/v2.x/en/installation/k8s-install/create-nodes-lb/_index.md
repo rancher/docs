@@ -24,7 +24,7 @@ To install the Rancher management server on a high-availability K3s cluster, we 
 
 ### 1. Set up Linux Nodes
 
-Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+Make sure that your nodes fulfill the general installation requirements for [OS, container runtime, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
 
@@ -90,7 +90,7 @@ The etcd database requires an odd number of nodes so that it can always elect a 
 
 ### 1. Set up Linux Nodes
 
-Make sure that your nodes fulfill the general installation requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+Make sure that your nodes fulfill the general installation requirements for [OS, container runtime, hardware, and networking.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node/) for setting up nodes as instances in Amazon EC2.
 
