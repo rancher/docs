@@ -1,45 +1,44 @@
 {{ define "title" }}
-  {{ .Title }} – {{ .Site.Title }}
+{{ .Title }} – {{ .Site.Title }}
 {{ end }}
 
 {{ define "hero" }}
 <section class="hero">
-    <h5 class="text-white">Rancher 2.x Docs</h5>
-    {{ with .Params.Title }}
-      <h1 class="m-t-0">{{ . }}</h1>
-    {{end}}
+  <h5 class="text-white">Rancher 2.x Docs</h5>
+  {{ with .Params.Title }}
+  <h1 class="m-t-0">{{ . }}</h1>
+  {{end}}
 
-    {{ with .Params.Author }}
-      <span class="byline bg-link">{{ . }}</span>
-    {{end}}
+  {{ with .Params.Author }}
+  <span class="byline bg-link">{{ . }}</span>
+  {{end}}
 </section>
 {{ end }}
 
 {{ define "main" }}
 
 <div class="wrapper">
-    <div class="row m-t-sm">
+  <div class="row m-t-sm">
 
-      <aside class="col-sm-3 col-xs-12 p-l-0">
-        {{ partial "docs-side-nav.html" . }}
-      </aside>
+    <aside class="col-sm-3 col-xs-12 p-l-0">
+      {{ partial "docs-side-nav.html" . }}
+    </aside>
 
-      <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
+    <article class="{{ if ($.Scratch.Get "showSidebar") }} col-sm-6 {{else}} col-md-9 p-r-lg {{end}} col-xs-12">
 
-        <div class="main-content ">
-
+      <div class="main-content ">
         {{ .Content }}
 
       </div>
 
-         <div class="p-v-sm">{{ partial "page-edit.html" . }}</div>
-      </article>
-     <!--  <div class="offset-watch invisible"></div>
+      <div class="p-v-sm">{{ partial "page-edit.html" . }}</div>
+    </article>
+    <!--  <div class="offset-watch invisible"></div>
       <aside class="col-sm-3 col-xs-12 unstyled toc-container">
         <h4 class="m-b-0">On this page</h4>
         {{ .TableOfContents }}
       </aside> -->
-    </div>
-
   </div>
+
+</div>
 {{ end }}

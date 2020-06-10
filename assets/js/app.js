@@ -1,6 +1,6 @@
 // This is for any custom JS that may need to be added to individual apps.
 // Main JS is located in Rancher Website Theme
-const bootstrapDocsSearch = function() {
+const bootstrapDocsSearch = function () {
 
   var firstSearchRender = true;
 
@@ -78,26 +78,26 @@ const bootstrapDocsSearch = function() {
 
     // add a button
     let label = wrapper.find('.footer-button-label').data('footer-label');
-    if ( label ) {
-      modal.addFooterBtn(label, 'tingle-btn tingle-btn--primary', function() {
+    if (label) {
+      modal.addFooterBtn(label, 'tingle-btn tingle-btn--primary', function () {
         // here goes some logic
         modal.close();
       });
     }
 
     modal.open();
-    setTimeout(function() {
+    setTimeout(function () {
       $('#search-box').focus();
     }, 50);
   });
 
   //mobile nav toggle
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("body").addClass("js");
     var $menu = $("#menu"),
-        $menulink = $(".menu-link");
+      $menulink = $(".menu-link");
 
-    $menulink.click(function() {
+    $menulink.click(function () {
       $menulink.toggleClass("active");
       $menu.toggleClass("active");
       return false;
@@ -105,29 +105,29 @@ const bootstrapDocsSearch = function() {
   });
 }
 
-const bootstrapIdLinks = function() {
+const bootstrapIdLinks = function () {
   const $container = $('.main-content')
   const selector = 'h2[id], h3[id], h4[id], h5[id], h6[id]';
 
-  $container.on('mouseenter', selector, function(e) {
+  $container.on('mouseenter', selector, function (e) {
     $(e.target).append($('<a />').addClass('header-anchor').attr('href', '#' + e.target.id).html('<i style="font-size: 12px" aria-hidden="true">link</i>'));
   });
 
-  $container.on('mouseleave', selector, function(e) {
+  $container.on('mouseleave', selector, function (e) {
     $container.find('.header-anchor').remove();
   });
 }
 
-const replaceReleaseChannel = function() {
+const replaceReleaseChannel = function () {
   const form = $('#release-channel')[0];
-  if ( form ) {
+  if (form) {
     const val = form.channel.value;
 
     $('CODE').each((idx, code) => {
       const $code = $(code);
       const text = $code.data('original') || code.innerHTML;
 
-      if ( text.includes('&lt;CHART_REPO&gt;') ) {
+      if (text.includes('&lt;CHART_REPO&gt;')) {
         $code.data('original', text);
         code.innerHTML = text.replace(/&lt;CHART_REPO&gt;/g, val);
       }
@@ -140,5 +140,3 @@ $(document).ready(() => {
   bootstrapIdLinks();
   replaceReleaseChannel();
 });
-
-
