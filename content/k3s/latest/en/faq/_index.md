@@ -20,3 +20,11 @@ At this time K3s does not natively support Windows, however we are open to the i
 **How can I build from source?**
 
 Please reference the K3s [BUILDING.md](https://github.com/rancher/k3s/blob/master/BUILDING.md) with instructions.
+
+**Where are the K3s logs?**
+
+The installation script will auto-detect if your OS is using systemd or openrc and start the service.
+
+When running with openrc, logs will be created at `/var/log/k3s.log`.
+
+When running with systemd, logs will be created in `/var/log/syslog` and viewed using `journalctl -u k3s`.
