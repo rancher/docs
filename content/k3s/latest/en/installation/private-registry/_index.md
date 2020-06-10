@@ -4,37 +4,67 @@ weight: 55
 ---
 _Available as of v1.0.0_
 
-Containerd can be configured to connect to private registries and use them to pull private images on the node.
+With containerd, `docker.io` is the default image registry.  To pull private images on a node, containerd can be configured to connect to private registries.
 
-Upon startup, K3s will check to see if a `registries.yaml` file exists at `/etc/rancher/k3s/` and instruct containerd to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
+In this section, you'll learn:
+
+- How to modify the `registries.yaml` file so that K3s can pull images from your private registry
+- How to populate the registry with the required images for K3s
+
+For more information about configuring containerd to pull private images, refer to the official [containerd documentation.](https://github.com/containerd/cri/blob/master/docs/registry.md)
+
+For information how to install K3s in such a way that it uses images from the private registry, refer to the [section about installing K3s in an air gapped environment.](../../install-options/airgap)
+
+> In order for the registry changes to take effect, you need to restart K3s on each node.
+
+- [Prerequisites](#prerequisites)
+- [Registries Configuration File](#registries-configuration-file)
+  - [Mirrors](#mirrors)
+  - [Configs (TLS and Credentials)](#configs-tls-and-credentials)
+- [Examples](#examples)
+  - [With TLS and Authentication](#with-tls-and-authentication)
+  - [With TLS and without Authentication](#with-tls-and-without-authentication)
+  - [Without TLS and with Authentication](#without-tls-and-with-authentication)
+  - [Without TLS and without Authentication](#without-tls-and-without-authentication)
+- [Adding Images to the Private Registry](#adding-images-to-the-private-registry)
+- [Containerd Configuration Template](#containerd-configuration-template)
+
+# Prerequisites
+
+Upon startup, K3s will check to see if a `registries.yaml` file exists at `/etc/rancher/k3s/`.
+
+Containerd will be instructed to use any registries defined in the file. If you wish to use a private registry, then you will need to create this file as root on each node that will be using the registry.
 
 Note that server nodes are schedulable by default. If you have not tainted the server nodes and will be running workloads on them, please ensure you also create the `registries.yaml` file on each server as well.
 
-Configuration in containerd can be used to connect to a private registry with a TLS connection and with registries that enable authentication as well. The following section will explain the `registries.yaml` file and give different examples of using private registry configuration in K3s.
-
 # Registries Configuration File
 
-The file consists of two main sections:
+The `registries.yaml` file consists of two main sections:
 
 - mirrors
 - configs
 
 ### Mirrors
 
-Mirrors is a directive that defines the names and endpoints of the private registries, for example:
+Mirrors is a directive that defines the names and endpoints of the private registries. The following example shows two mirrors:
 
 ```
 mirrors:
   docker.io:
     endpoint:
       - "https://mycustomreg.com:5000"
+  <YOUR_PRIVATE_REGISTRY_IP>:<PORT>:
+    endpoint:
+      - "<YOUR_PRIVATE_REGISTRY_IP>:<PORT>"
 ```
 
 Each mirror must have a name and set of endpoints. When pulling an image from a registry, containerd will try these endpoint URLs one by one, and use the first working one.
 
-### Configs
+### Configs (TLS and Credentials)
 
-The configs section defines the TLS and credential configuration for each mirror. For each mirror you can define `auth` and/or `tls`. The TLS part consists of:
+The configs section defines the TLS and credential configuration for each mirror. For each mirror you can define `auth` and/or `tls`.
+
+The TLS part consists of:
 
 Directive | Description
 ----------|------------
@@ -42,20 +72,23 @@ Directive | Description
 `key_file` | The client key path that will be used to authenticate with the registry
 `ca_file` | Defines the CA certificate path to be used to verify the registry's server cert file
 
+For one-way SSL, provide the `ca_file` only.
+
+For mutual SSL, provide the `ca_file`, `cert_file` and `key_file`.
+
 The credentials consist of either username/password or authentication token:
 
 - username: user name of the private registry basic auth
 - password: user password of the private registry basic auth
 - auth: authentication token of the private registry basic auth
 
-Below are basic examples of using private registries in different modes:
+# Examples
 
-### With TLS
+Below are basic examples of using private registries in different modes.
 
-Below are examples showing how you may configure `/etc/rancher/k3s/registries.yaml` on each node when using TLS.
+### With TLS and Authentication
 
-{{% tabs %}}
-{{% tab "With Authentication" %}}
+The below configuration can be used in the `/etc/rancher/k3s/registries.yaml` file on each node when using TLS with authentication.
 
 ```
 mirrors:
@@ -73,8 +106,9 @@ configs:
       ca_file:   # path to the ca file used in the registry
 ```
 
-{{% /tab %}}
-{{% tab "Without Authentication" %}}
+### With TLS and without Authentication
+
+The below configuration can be used in the `/etc/rancher/k3s/registries.yaml` file on each node when using TLS without authentication.
 
 ```
 mirrors:
@@ -89,15 +123,11 @@ configs:
       ca_file:   # path to the ca file used in the registry
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
+### Without TLS and with Authentication
 
-### Without TLS
+The below configuration can be used in the `/etc/rancher/k3s/registries.yaml` file on each node when using authentication without TLS.
 
-Below are examples showing how you may configure `/etc/rancher/k3s/registries.yaml` on each node when _not_ using TLS.
-
-{{% tabs %}}
-{{% tab "With Authentication" %}}
+> For communication without TLS, you need to specify `http://` for the endpoints, otherwise it will default to https.
 
 ```
 mirrors:
@@ -111,34 +141,91 @@ configs:
       password: xxxxxx # this is the registry password
 ```
 
-{{% /tab %}}
-{{% tab "Without Authentication" %}}
+### Without TLS and without Authentication
+
+The below configuration can be used in the `/etc/rancher/k3s/registries.yaml` file on each node without using TLS or authentication.
+
+> For communication without TLS, you need to specify `http://` for the endpoints, otherwise it will default to https.
 
 ```
 mirrors:
-  docker.io:
+  "mycustomreg.com:5000":
     endpoint:
       - "http://mycustomreg.com:5000"
 ```
-
-{{% /tab %}}
-{{% /tabs %}}
-
-> In case of no TLS communication, you need to specify `http://` for the endpoints, otherwise it will default to https.
- 
-In order for the registry changes to take effect, you need to restart K3s on each node.
 
 # Adding Images to the Private Registry
 
-First, obtain the k3s-images.txt file from GitHub for the release you are working with.
-Pull the K3s images listed on the k3s-images.txt file from docker.io
+1. Go to the [K3s release notes](https://github.com/rancher/k3s/releases/) and download the  `k3s-images.txt` file for your K3s release.
+1. Pull the K3s images listed on the k3s-images.txt file from docker.io. 
 
-Example: `docker pull docker.io/rancher/coredns-coredns:1.6.3`
+    Example: 
+    
+    ```
+    docker pull docker.io/rancher/coredns-coredns:1.6.3
+    ```
+1. Retag the images to the private registry.
 
-Then, retag the images to the private registry.
+    Example:
+    
+    ```
+    docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns
+    ```
+1. Last, push the images to the private registry.
 
-Example: `docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns`
+    Example: 
+    
+    ```
+    docker push mycustomreg:5000/coredns-coredns
+    ```
 
-Last, push the images to the private registry.
+# Containerd Configuration Template
 
-Example: `docker push mycustomreg:5000/coredns-coredns`
+The following `config.toml.tmpl` template can be placed into `/var/lib/rancher/k3s/agent/etc/containerd`:
+
+```
+[plugins.opt]
+  path = "{{ .NodeConfig.Containerd.Opt }}"
+[plugins.cri]
+  stream_server_address = "127.0.0.1"
+  stream_server_port = "10010"
+  enable_selinux = {{ .SELinuxEnabled }}
+{{- if .IsRunningInUserNS }}
+  disable_cgroup = true
+  disable_apparmor = true
+  restrict_oom_score_adj = true
+{{end}}
+{{- if .NodeConfig.AgentConfig.PauseImage }}
+  sandbox_image = "{{ .NodeConfig.AgentConfig.PauseImage }}"
+{{end}}
+{{- if not .NodeConfig.NoFlannel }}
+[plugins.cri.cni]
+  bin_dir = "{{ .NodeConfig.AgentConfig.CNIBinDir }}"
+  conf_dir = "{{ .NodeConfig.AgentConfig.CNIConfDir }}"
+{{end}}
+[plugins.cri.containerd.runtimes.runc]
+  runtime_type = "io.containerd.runc.v2"
+{{ if .PrivateRegistryConfig }}
+{{ if .PrivateRegistryConfig.Mirrors }}
+[plugins.cri.registry.mirrors]{{end}}
+{{range $k, $v := .PrivateRegistryConfig.Mirrors }}
+[plugins.cri.registry.mirrors."{{$k}}"]
+  endpoint = [{{range $i, $j := $v.Endpoints}}{{if $i}}, {{end}}{{printf "%q" .}}{{end}}]
+{{end}}
+{{range $k, $v := .PrivateRegistryConfig.Configs }}
+{{ if $v.Auth }}
+[plugins.cri.registry.configs."{{$k}}".auth]
+  {{ if $v.Auth.Username }}username = {{ printf "%q" $v.Auth.Username }}{{end}}
+  {{ if $v.Auth.Password }}password = {{ printf "%q" $v.Auth.Password }}{{end}}
+  {{ if $v.Auth.Auth }}auth = {{ printf "%q" $v.Auth.Auth }}{{end}}
+  {{ if $v.Auth.IdentityToken }}identitytoken = {{ printf "%q" $v.Auth.IdentityToken }}{{end}}
+{{end}}
+{{ if $v.TLS }}
+[plugins.cri.registry.configs."{{$k}}".tls]
+  {{ if $v.TLS.CAFile }}ca_file = "{{ $v.TLS.CAFile }}"{{end}}
+  {{ if $v.TLS.CertFile }}cert_file = "{{ $v.TLS.CertFile }}"{{end}}
+  {{ if $v.TLS.KeyFile }}key_file = "{{ $v.TLS.KeyFile }}"{{end}}
+{{end}}
+{{end}}
+{{end}}
+```
