@@ -17,3 +17,60 @@
 pre > code {
 	padding: 0;
 }
+
+.docs-cta-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.docs-cta {
+  padding: 10px;
+  background-color: #0075A8;
+  color: white;
+  border-radius: 30px;
+  display: flex;
+  align-content: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: auto;
+  transition: width 200ms ease-in-out;
+
+  .content {
+    margin: 0 0.5rem;
+
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  .icon {
+    border: 2px solid white;
+    border-radius: 20px;
+    color: white;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+  .close {
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 250ms ease-in-out;
+    color: white;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
