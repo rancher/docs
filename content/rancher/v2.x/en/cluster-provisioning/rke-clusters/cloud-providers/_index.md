@@ -13,10 +13,11 @@ Your cluster will not provision correctly if you configure a cloud provider clus
 
 By default, the **Cloud Provider** option is set to `None`.
 
-Supported cloud providers are:
+The following cloud providers can be enabled:
 
 * Amazon
 * Azure
+* GCE (Google Compute Engine)
 
 ### Setting up the Amazon Cloud Provider
 
