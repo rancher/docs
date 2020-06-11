@@ -42,15 +42,13 @@
         col-12
         texts-container">
         <div class="docs-wrap">
-          <div class="docs-cta-wrapper">
-            <div class="docs-cta">
-              <a class="icon">?</a>
-              <span class="content">
-                <strong>Need Help? </strong>
-                &nbsp;<a href="https://rancher.com/training">Get free intro and advanced online training</a>
-              </span>
-              <a class="close">&times;</a>
-            </div>
+          <div class="docs-cta">
+            <a class="icon">?</a>
+            <span class="content">
+              <strong>Need Help? </strong>
+              &nbsp;<a href="https://rancher.com/training">Get free intro and advanced online training</a>
+            </span>
+            <a class="close">&times;</a>
           </div>
 
           <script>
@@ -64,11 +62,8 @@
                   return decodeURIComponent(cookiePair[1]);
                 }
               }
-
               return null;
             }
-
-            console.log(getCookie('ctaClosed'))
 
             if (getCookie('ctaClosed') == 'true') {
               $('.docs-cta .content, .docs-cta .close').hide();
@@ -78,17 +73,18 @@
             $('.docs-cta .icon').click(function (e) {
               e.preventDefault;
               $('.docs-cta .content, .docs-cta .close').show('fast');
-              $('.docs-cta').remove('closed');
+              $('.docs-cta').removeClass('closed');
               document.cookie = "ctaClosed=false;path=/";
             });
 
             $('.docs-cta .close').click(function (e) {
               e.preventDefault;
               $('.docs-cta .content, .docs-cta .close').hide('fast');
-              $('.docs-cta').toggleClass('closed');
+              $('.docs-cta').addClass('closed');
               document.cookie = "ctaClosed=true;SameSite=Lax;path=/;max-age=" + 10 * 24 * 60 * 60;
             });
           </script>
+
           {{ with .Params.Title }}
           <h1 class="m-t-0">{{ . }}</h1>
           <hr />
