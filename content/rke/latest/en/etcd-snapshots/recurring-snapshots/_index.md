@@ -89,6 +89,10 @@ services:
         region: ""
         folder: "" # Optional - Available as of v0.3.0
         endpoint: s3.amazonaws.com
+        custom_ca: |-
+          -----BEGIN CERTIFICATE-----
+          $CERTIFICATE
+          -----END CERTIFICATE-----
 ```
 
 {{% /tab %}}
