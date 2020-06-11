@@ -71,6 +71,10 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
             folder: "folder-name" # Available as of v2.3.0
             endpoint: "s3.eu-west-1.amazonaws.com"
             region: "eu-west-1"
+            custom_ca: |-
+              -----BEGIN CERTIFICATE-----
+              $CERTIFICATE
+              -----END CERTIFICATE-----
     ```
 
     _Using RKE v0.1.x_
