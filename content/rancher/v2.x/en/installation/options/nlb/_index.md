@@ -45,12 +45,12 @@ Regardless of whether an NGINX Ingress or Traefik Ingress controller is used, th
 
 Configure the first target group according to the table below. Screenshots of the configuration are shown just below the table.
 
-| Option      | Setting           | 
-| --------- | ----------------- | 
-| Target Group Name       | `rancher-tcp-443` |
+| Option                              | Setting           | 
+|-------------------------------------|-------------------| 
+| Target Group Name                   | `rancher-tcp-443` |
 | Target type                         | `instance`        |
-| Protocol                            | `TCP`             | 
-| Port                                | `443`                   | 
+| Protocol                            | `TCP`             |
+| Port                                | `443`             |
 | VPC                                 | Choose your VPC   |
 
 Health check settings:
