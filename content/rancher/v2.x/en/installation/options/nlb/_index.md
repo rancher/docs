@@ -43,51 +43,52 @@ Regardless of whether an NGINX Ingress or Traefik Ingress controller is used, th
 
 ### Target Group (TCP port 443)
 
-Configure the first target group according to the table below. Screenshots of the configuration are shown just below the table.
+Configure the first target group according to the table below.
 
-| Option                              | Setting           | 
-|-------------------------------------|-------------------| 
-| Target Group Name                   | `rancher-tcp-443` |
-| Target type                         | `instance`        |
-| Protocol                            | `TCP`             |
-| Port                                | `443`             |
-| VPC                                 | Choose your VPC   |
+| Option            | Setting           |
+|-------------------|-------------------|
+| Target Group Name | `rancher-tcp-443` |
+| Target type       | `instance`        |
+| Protocol          | `TCP`             |
+| Port              | `443`             |
+| VPC               | Choose your VPC   |
 
 Health check settings:
 
-| Option                                |       |
-| ---------------------------|------|
-| Protocol        | TCP            |
-| Port        | `override`,`80`   |
-| Healthy threshold | `3`               |
-| Unhealthy threshold       | `3`               |
-| Timeout                   | `6 seconds`       |
-| Interval                | `10 seconds`       |
+| Option              | Setting         |
+|---------------------|-----------------|
+| Protocol            | TCP             |
+| Port                | `override`,`80` |
+| Healthy threshold   | `3`             |
+| Unhealthy threshold | `3`             |
+| Timeout             | `6 seconds`     |
+| Interval            | `10 seconds`    |
 
 Click **Create target group** to create the second target group, regarding TCP port 80.
 
 ### Target Group (TCP port 80)
 
-Configure the second target group according to the table below. Screenshots of the configuration are shown just below the table.
+Configure the second target group according to the table below.
 
-| Option    | Setting          |
-| --------- | ---------------- | 
-| Target Group Name                   | `rancher-tcp-80` | 
-| Target type                         | `instance`       | 
-| Protocol                            | `TCP`            |
-| Port                                | `80`             |
-| VPC                                 | Choose your VPC  | 
+| Option            | Setting          |
+|-------------------|------------------|
+| Target Group Name | `rancher-tcp-80` |
+| Target type       | `instance`       |
+| Protocol          | `TCP`            |
+| Port              | `80`             |
+| VPC               | Choose your VPC  |
+
 
 Health check settings:
 
-| Option                                |       |
-| ---------------------------|------|
-| Protocol        | TCP            |
-| Port        | `traffic port`   |
-| Healthy threshold | `3`               |
-| Unhealthy threshold       | `3`               |
-| Timeout                   | `6 seconds`       |
-| Interval                | `10 seconds`       |
+| Option              |Setting         |
+|---------------------|----------------|
+| Protocol            | TCP            |
+| Port                | `traffic port` |
+| Healthy threshold   | `3`            |
+| Unhealthy threshold | `3`            |
+| Timeout             | `6 seconds`    |
+| Interval            | `10 seconds`   |
 
 # 2. Register Targets
 
