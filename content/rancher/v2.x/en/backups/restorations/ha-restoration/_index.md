@@ -6,9 +6,10 @@ aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
 ---
 
-This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. The cluster snapshot will include Kubernetes configuration and the Rancher database and state.
+This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. 
+This will restore the Kubernetes configuration and the Rancher database and state.
 
-Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0 has changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state).
+RKE v0.2.0 has changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), so `pki.bundle.tar.gz` file usage is no longer required.
 
 ## Restore Outline
 
@@ -24,11 +25,11 @@ Additionally, the `pki.bundle.tar.gz` file usage is no longer required as v0.2.0
 
 ### 1. Preparation
 
-You will need [RKE]({{<baseurl>}}/rke/latest/en/installation/) and [kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed.
+It is advised that you run the restore from your local host or a jump box/bastion where your cluster yaml, rke statefile, and kubeconfig are stored.  You will need [RKE]({{<baseurl>}}/rke/latest/en/installation/) and [kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/) CLI utilities installed locally.
 
-Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  See [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/) for node requirements.
+Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  We recommend that you start with fresh nodes and a clean state. For clarification on the requirements, review the [Installation Requirements](https://rancher.com/docs/rancher/v2.x/en/installation/requirements/).  
 
-We recommend that you start with fresh nodes and a clean state. Alternatively you can clear Kubernetes and Rancher configurations from the existing nodes. This will destroy the data on these nodes. See [Node Cleanup]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
+Alternatively you can re-use the existing nodes after clearing Kubernetes and Rancher configurations. This will destroy the data on these nodes. See [Node Cleanup]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
 
 > **IMPORTANT:** Before starting the restore make sure all the Kubernetes services on the old cluster nodes are stopped. We recommend powering off the nodes to be sure.
 
