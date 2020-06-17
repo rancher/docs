@@ -77,8 +77,10 @@ Each vCenter is defined by adding a new entry under the `virtual_center` directi
 
 | virtual_center Options |  Type    | Required  | Description |
 |:----------------------:|:--------:|:---------:|:-----------|
-| user                   | string	  |   *       | vCenter/ESXi user used to authenticate with this server. |
-| password               | string	  |   *       | User's password. |
+| user                   | string	  |   +       | vCenter/ESXi user used to authenticate with this server. |
+| password               | string	  |   +       | User's password. |
+| secret-name            | string   |           | Name of secret resource containing credential key/value pairs. `+` Can be specified in lieu of user/password parameters. |
+| secret-namespace       | string   |           | Namespace in which the secret resource was created in. `+` Can be specified in lieu of user/password parameters. |
 | port                   | string	  |           | Port to use to connect to this server. Defaults to 443.  |
 | datacenters            | string	  |   *       | Comma-separated list of all datacenters in which cluster nodes are running in. |
 | soap-roundtrip-count   | uint     |           | Round tripper count for API requests to the vCenter (num retries = value - 1). |
@@ -87,8 +89,6 @@ Each vCenter is defined by adding a new entry under the `virtual_center` directi
 
 | virtual_center Options |  Type    | Required  | Description |
 |:----------------------:|:--------:|:---------:|:-------|
-| secret-name            | string   |           | Name of secret resource containing credential key/value pairs. Can be specified in lieu of user/password parameters.|
-| secret-namespace       | string   |           | Namespace in which the secret resource was created in. |
 | ca-file                | string   |           | Path to CA cert file used to verify the vCenter certificate. |
 
 **Example:**
