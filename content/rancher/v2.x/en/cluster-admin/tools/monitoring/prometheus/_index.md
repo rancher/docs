@@ -28,7 +28,7 @@ The [node exporter](https://github.com/prometheus/node_exporter/blob/master/READ
 
 When configuring Prometheus and enabling the node exporter, enter a host port in the **Node Exporter Host Port** that will not produce port conflicts with existing applications. The host port chosen must be open to allow internal traffic between Prometheus and the Node Exporter.
 
->**Warning:** In order for Prometheus to collect the metrics of the node exporter, after enabling cluster monitoring, you must open the **Node Exporter Host Port** in the host firewall rules to allow intranet access. By default, `9796` is used as that host port.
+>**Warning:** In order for Prometheus to collect the metrics of the node exporter, after enabling cluster monitoring, you must open the <b>Node Exporter Host Port</b> in the host firewall rules to allow intranet access. By default, `9796` is used as that host port.
 
 ## Persistent Storage
 
