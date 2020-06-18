@@ -7,7 +7,8 @@ You can install K3s in an air-gapped environment using two different methods. Yo
 
 # Private Registry Method
 
-This document assumes you have already created your nodes in your air-gap environment and have a secure Docker private registry on your bastion host.
+This document assumes you have already created your nodes in your air-gap environment and have a Docker private registry on your bastion host.
+
 If you have not yet set up a private Docker registry, refer to the official documentation [here](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry).
 
 ### Create the Registry YAML
