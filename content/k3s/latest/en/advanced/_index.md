@@ -8,6 +8,7 @@ aliases:
 
 This section contains advanced information describing the different ways you can run and manage K3s:
 
+- [Certificate rotation](#certificate-rotation)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
 - [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
@@ -18,6 +19,12 @@ This section contains advanced information describing the different ways you can
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
 - [Enabling legacy iptables on Raspbian Buster](#enabling-legacy-iptables-on-raspbian-buster)
 - [Experimental SELinux Support](#experimental-selinux-support)
+
+# Certificate Rotation
+
+By default, certificates in K3s expire in 12 months.
+
+If the certificates are expired or have fewer than 90 days remaining before they expire, the certificates are rotated when K3s is restarted.
 
 # Auto-Deploying Manifests
 
