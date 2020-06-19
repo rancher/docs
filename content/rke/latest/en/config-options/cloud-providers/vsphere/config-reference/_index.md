@@ -32,13 +32,13 @@ cloud_provider:
         user: provisioner
         password: secret
         port: 443
-        datacenters: /us-west-1
+        datacenters: /eu-west-1
     workspace:
       server: vc.example.com
-      folder: /us-west-1/folder/myvmfolder
-      default-datastore: /us-west-1/datastore/ds-1
-      datacenter: /us-west-1
-      resourcepool-path: /us-west-1/host/hn1/resources/myresourcepool
+      folder: /eu-west-1/folder/myvmfolder
+      default-datastore: /eu-west-1/datastore/ds-1
+      datacenter: /eu-west-1
+      resourcepool-path: /eu-west-1/host/hn1/resources/myresourcepool
 
 ```
 # Configuration Options
