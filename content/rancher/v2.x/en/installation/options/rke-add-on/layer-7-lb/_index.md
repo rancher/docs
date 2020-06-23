@@ -112,8 +112,8 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-certificate.yml)
-	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](https://raw.githubusercontent.com/rancher/rancher/master/rke-templates/3-node-externalssl-recognizedca.yml)
+	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`]({{<baseurl>}}/rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-externalssl-certificate)
+	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`]({{<baseurl>}}/rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-externalssl-recognizedca)
 
     >**Advanced Config Options:**
     >
