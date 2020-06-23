@@ -51,7 +51,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
 
 1. Install the CustomResourceDefinition resources separately
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
 1. Create the namespace for cert-manager
