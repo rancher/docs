@@ -60,8 +60,4 @@ After a cluster is created with Rancher, a cluster administrator can manage clus
 
 The following table summarizes the options and settings available for each cluster type:
 
- Rancher Capability | RKE Launched | Hosted Kubernetes Cluster | Imported Cluster
- ---------|----------|---------|---------|
- Manage member roles | ✓ | ✓ | ✓
- Edit cluster options | ✓ | | 
- Manage node pools | ✓ | |
+{{% readfile file="/rancher/v2.x/en/cluster-admin/cluster-capabilities-table.md" markdown="true" %}}
