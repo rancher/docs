@@ -99,7 +99,7 @@ Upgrade Rancher to the latest version with all your settings.
 Take all the values from the previous step and append them to the command using `--set key=value`. Note: There will be many more options from the previous step that need to be appended.
 
 ```
-helm upgrade --install rancher rancher-latest rancher-<CHART_REPO>/rancher \
+helm upgrade --install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
