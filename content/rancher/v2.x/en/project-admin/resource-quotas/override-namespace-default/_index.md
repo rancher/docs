@@ -3,9 +3,9 @@ title: Overriding the Default Limit for a Namespace
 weight: 2
 ---
 
-Although the **Namespace Default Limit** propagates from the project to each namespace, in some cases, you may need to increase (or decrease) the performance for a specific namespace. In this situation, you can override the default limits by editing the namespace.
+Although the **Namespace Default Limit** propagates from the project to each namespace when created, in some cases, you may need to increase (or decrease) the quotas for a specific namespace. In this situation, you can override the default limits by editing the namespace.
 
-In the diagram below, the Rancher administrator has a resource quota in effect for their project. However, the administrator wants to override the namespace limits for `Namespace 3` so that it performs better. Therefore, the administrator [raises the namespace limits]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#editing-namespace-resource-quotas) for `Namespace 3` so that the namespace can access more resources.
+In the diagram below, the Rancher administrator has a resource quota in effect for their project. However, the administrator wants to override the namespace limits for `Namespace 3` so that it has more resources available. Therefore, the administrator [raises the namespace limits]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#editing-namespace-resource-quotas) for `Namespace 3` so that the namespace can access more resources.
 
 <sup>Namespace Default Limit Override</sup>
 ![Namespace Default Limit Override]({{<baseurl>}}/img/rancher/rancher-resource-quota-override.svg)
@@ -31,4 +31,4 @@ If there is a [resource quota]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/proj
     >- If a resource quota is not configured for the project, these options will not be available.
     >- If you enter limits that exceed the configured project limits, Rancher will not let you save your edits.
 
-**Result:** The namespace's default resource quota is overwritten with your override.
+**Result:** Your override is applied to the namespace's resource quota.
