@@ -189,7 +189,7 @@ To add a resource quota,
 | Field                   | Description                                                                                              |
 | ----------------------- | -------------------------------------------------------------------------------------------------------- |
 | Project Limit           | The overall resource limit for the project.                                                              |
-| Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project. The combined limit of all project namespaces shouldn't exceed the project limit.  |
+| Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project when created. The combined limit of all project namespaces shouldn't exceed the project limit.  |
 
 # Switching between Clusters and Projects
 
