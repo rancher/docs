@@ -211,6 +211,14 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
 
+### Finishing Up
+
+That's it. You should have a functional Rancher server.
+
+In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
+
+By default, an `admin` user is created with the password `admin`. When you go to the Rancher UI for the first time, you will be prompted to change the `admin` user's password. We highly recommend changing the password.
+
 ### Additional Resources
 
 These resources could be helpful when installing Rancher:

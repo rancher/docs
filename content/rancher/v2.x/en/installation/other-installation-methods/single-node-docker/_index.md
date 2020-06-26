@@ -129,6 +129,14 @@ docker run -d --restart=unless-stopped \
   --acme-domain <YOUR.DNS.NAME>
 ```
 
+### Finishing Up
+
+That's it. You should have a functional Rancher server.
+
+In a web browser, go to the DNS name of the Docker container. Then you should be greeted by the colorful login page.
+
+By default, an `admin` user is created with the password `admin`. When you go to the Rancher UI for the first time, you will be prompted to change the `admin` user's password. We highly recommend changing the password.
+
 ## Advanced Options
 
 When installing Rancher on a single node with Docker, there are several advanced options that can be enabled:
