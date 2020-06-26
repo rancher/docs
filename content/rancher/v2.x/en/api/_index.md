@@ -3,9 +3,9 @@ title: API
 weight: 7500
 ---
 
-## How to use the API
-
 The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it, click on your user avatar in the upper right corner. Under **API & Keys**, you can find the URL endpoint as well as create [API keys]({{<baseurl>}}/rancher/v2.x/en/user-settings/api-keys/).
+
+> By default, an `admin` user is created with the password `admin` when the Rancher server is installed. This default password should always be changed, even if you aren't using the Rancher UI.
 
 ## Authentication
 

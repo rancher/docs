@@ -213,6 +213,10 @@ Make sure you save the `--set` options you used. You will need to use the same o
 
 ### Finishing Up
 
-That's it you should have a functional Rancher server. Point a browser at the hostname you picked and you should be greeted by the colorful login page.
+That's it. You should have a functional Rancher server.
+
+In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
+
+By default, an `admin` user is created with the password `admin`. When you go to the Rancher UI for the first time, you will be prompted to change the `admin` user's password. We highly recommend changing the password.
 
 Doesn't work? Take a look at the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/troubleshooting/) Page

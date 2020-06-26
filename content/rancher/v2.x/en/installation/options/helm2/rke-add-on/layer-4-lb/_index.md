@@ -386,6 +386,14 @@ INFO[0101] Finished building Kubernetes cluster successfully
 
 During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
 
+### Finishing Up
+
+That's it. You should have a functional Rancher server.
+
+In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
+
+By default, an `admin` user is created with the password `admin`. When you go to the Rancher UI for the first time, you will be prompted to change the `admin` user's password. We highly recommend changing the password.
+
 ## What's Next?
 
 You have a couple of options:
