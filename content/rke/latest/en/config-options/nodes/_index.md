@@ -110,7 +110,7 @@ The `address` directive will be used to set the hostname or IP address of the no
 
 ### Internal Address
 
-The `internal_address` provides the ability to have nodes with multiple addresses set a specific address to use for inter-host communication on a private network. If the `internal_address` is not set, the `address` is used for inter-host communication.
+The `internal_address` provides the ability to have nodes with multiple addresses set a specific address to use for inter-host communication on a private network. If the `internal_address` is not set, the `address` is used for inter-host communication. The `internal_address` directive will set the address used for inter-host communication of the Kubernetes components, e.g. kube-apiserver and etcd. To change the interface used for the vxlan traffic of the Canal or Flannel network plug-ins please refer to the [Network Plug-ins Documentation]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/).
 
 ### Overriding the Hostname
 
