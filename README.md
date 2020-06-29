@@ -26,9 +26,20 @@ Windows
 ```powershell
 ./scripts/dev-windows.ps1 -port 8080
 ```
+## New versions of the docs
 
-License
-=======
+To create a new version of the documentation for a product:
+
+1. Copy the most recent version of the product documentation to create a new version. If the most recent version is 1.2.4 and you'd like to create 1.2.5:
+
+    ```sh
+    cp -rf content/productName/v1.2.4 content/productName/v1.2.5
+    ```
+
+1. Add the version to the `params.versions` list in `config.toml`. Make sure that the list has the latest version first.
+
+## License
+
 Copyright (c) 2014-2019 [Rancher Labs, Inc.](https://rancher.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");

@@ -24,6 +24,7 @@ PygmentsStyle = "native"
   ghdocsrepo = "https://github.com/rancher/docs"
   pageBy = "title"
   pageLimit = 5
+  rancherVersion = ["2.5.x", "2.0.x-2.4.x"]
 
 [outputFormats.Algolia]
 baseName = "algolia"
