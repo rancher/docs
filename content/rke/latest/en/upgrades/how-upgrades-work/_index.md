@@ -60,7 +60,7 @@ The availability of your applications partly depends on the availability of [RKE
 
 Because RKE addons are necessary for allowing traffic into the cluster, they will need to be updated in batches to maintain availability. You will need to configure the maximum number of unavailable replicas for each addon in the `cluster.yml` to ensure that your cluster will retain enough available replicas during an upgrade.
 
-For more information on configuring the number of replicas for each addon, refer to [this section.](#replicas-for-rke-addons)
+For more information on configuring the number of replicas for each addon, refer to [this section.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy)
 
 For an example showing how to configure the addons, refer to the [example cluster.yml.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy/#example-cluster-yml)
 
