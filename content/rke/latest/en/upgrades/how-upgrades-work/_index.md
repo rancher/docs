@@ -70,7 +70,7 @@ For an example showing how to configure the addons, refer to the [example cluste
 When a cluster is upgraded with `rke up`, using the default options, the following process is used:
 
 - etcd nodes get updated first, one at a time.
-- Controlplane nodes get updated second, one at a time.
+- Controlplane nodes get updated second, in batches of 50 or the total number of worker nodes, whichever is lower.
 - Worker nodes and addons get updated third, in batches of 50 or the total number of worker nodes, whichever is lower.
 - Addons get upgraded one by one.
 
