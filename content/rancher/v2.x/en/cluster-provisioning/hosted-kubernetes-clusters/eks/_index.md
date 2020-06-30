@@ -263,7 +263,8 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
                 "cloudformation:DescribeStackResources",
                 "cloudformation:DescribeStacks",
                 "cloudformation:ListStacks",
-                "cloudformation:CreateStack"
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack"
             ],
             "Resource": "*"
         },
