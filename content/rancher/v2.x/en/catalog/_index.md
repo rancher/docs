@@ -41,7 +41,7 @@ Project | This specific cluster can access the Helm charts in this catalog |  v2
 
 _Applicable as of v2.4.0_
 
-In November 2019, Helm 3 was released, and some features were deprecated or refactored. It is not fully [backwards compatible]({{<baseurl>}}/rancher/v2.x/en/catalog/helm-3-backwards-compatibility) with Helm 2. Therefore, catalogs in Rancher need to be separated, with each catalog only using one Helm version. This will help reduce app deployment issues as your Rancher users will not need to know which version of your chart is compatible with which Helm version - they can just select a catalog, select an app and deploy a version that has already been vetted for compatibility.
+In November 2019, Helm 3 was released, and some features were deprecated or refactored. It is not fully [backwards compatible]({{<baseurl>}}/rancher/v2.x/en/catalog#helm-3-backwards-compatibility) with Helm 2. Therefore, catalogs in Rancher need to be separated, with each catalog only using one Helm version. This will help reduce app deployment issues as your Rancher users will not need to know which version of your chart is compatible with which Helm version - they can just select a catalog, select an app and deploy a version that has already been vetted for compatibility.
 
 When you create a custom catalog, you will have to configure the catalog to use either Helm 2 or Helm 3. This version cannot be changed later. If the catalog is added with the wrong Helm version, it will need to be deleted and re-added.
 
