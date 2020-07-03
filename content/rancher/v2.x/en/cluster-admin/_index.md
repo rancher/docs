@@ -23,7 +23,7 @@ Alternatively, you can switch between projects and clusters directly in the navi
 
 After clusters have been [provisioned into Rancher]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/), [cluster owners]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster. 
 
-{{% readfile file="/rancher/v2.x/en/cluster-admin/cluster-capabilities-table.md" markdown="true" %}}
+{{% include file="/rancher/v2.x/en/includes/cluster-capabilities-table.md" %}}
 
 ## Configuring Tools
 
