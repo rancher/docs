@@ -60,4 +60,4 @@ After a cluster is created with Rancher, a cluster administrator can manage clus
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% readfile file="/rancher/v2.x/en/cluster-admin/cluster-capabilities-table.md" markdown="true" %}}
+{{% include file="/rancher/v2.x/en/cluster-provisioning/cluster-capabilities-table" %}}

@@ -12,7 +12,7 @@ The options and settings available for an existing cluster change based on the m
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% readfile file="/rancher/v2.x/en/cluster-admin/cluster-capabilities-table.md" markdown="true" %}}
+{{% include file="/rancher/v2.x/en/cluster-provisioning/cluster-capabilities-table" %}}
 
 ## Editing Cluster Membership
 
