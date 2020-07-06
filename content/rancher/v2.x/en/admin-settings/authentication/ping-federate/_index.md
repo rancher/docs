@@ -12,6 +12,7 @@ If your organization uses Ping Identity Provider (IdP) for user authentication, 
 >- Following are the Rancher Service Provider URLs needed for configuration:
 Metadata URL: `https://<rancher-server>/v1-saml/ping/saml/metadata`
 Assertion Consumer Service (ACS) URL: `https://<rancher-server>/v1-saml/ping/saml/acs`
+Note that these URLs will not return valid data until the authentication configuration is saved in Rancher.
 >- Export a `metadata.xml` file from your IdP Server. For more information, see the [PingIdentity documentation](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html).
 
 1.	From the **Global** view, select **Security > Authentication** from the main menu.
