@@ -1,192 +1,210 @@
 ---
-title: AWS
+title: Cluster Autoscaler with AWS EC2 Auto Scaling Groups
 weight: 1
 ---
 
-This doc will guide you how to install and use [k8s cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
+This guide will show you how to install and use [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
 
-## Prerequisites
+We are going to install a Rancher RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`. 
+
+- [Prerequisites](#prerequisites)
+- [1. Create a Custom Cluster](#1-create-a-custom-cluster)
+- [2. Configure the Cloud Provider](#2-configure-the-cloud-provider)
+- [3. Deploy Nodes](#3-deploy-nodes)
+- [4. Install cluster-autoscaler](#4-install-cluster-autoscaler)
+  - [Parameters](#parameters)
+  - [Deployment](#deployment)
+- [Testing](#testing)
+  - [Generating Load](#generating-load)
+  - [Checking Scale](#checking-scale)
+
+# Prerequisites
 
 These elements are required to follow this guide:
-* Rancher server is up and running
-* AWS EC2 user with proper permissions to create vm, asg and IAM profiles and roles
 
-## Installation
+* The Rancher server is up and running
+* You have an AWS EC2 user with proper permissions to create virtual machines, auto scaling groups, and IAM profiles and roles
 
-We are going to install a Rancher RKE custom cluster with fixed size on k8s etcd+controlplane planes and variable size on k8s worker plane, managed by cluster-autoscaler. 
-
-### Create cluster
+### 1. Create a Custom Cluster
 
 On Rancher server, we should create a custom k8s cluster v1.18.x. Be sure that cloud_provider name is set to `amazonec2`. Once cluster is created we need to get:
+
 * clusterID: `c-xxxxx` will be used on EC2 `kubernetes.io/cluster/<clusterID>` instance tag
 * clusterName: will be used on EC2 `k8s.io/cluster-autoscaler/<clusterName>` instance tag
 * nodeCommand: will be added on EC2 instance user_data to include new nodes on cluster
-`sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CHECKSUM> <roles>` 
 
-### Configure cloud provider
+    ```sh
+    sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CHECKSUM> <roles>
+    ```
 
-On AWS EC2, we should create few object to configure our system. We've defined 3 distinct groups to configure on AWS:
+### 2. Configure the Cloud Provider
 
-* Autoscale group: Nodes that will be part of the EC2 Auto Scalation Group (ASG). ASG will be used by cluster-autoscaler to scale up and down
-  * IAM profile: Required by k8s nodes where cluster-autoscaler will be running. Recommended, k8s master nodes
-  `K8sAutoscalerProfile`
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:DescribeAutoScalingInstances",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:SetDesiredCapacity",
-                "autoscaling:TerminateInstanceInAutoScalingGroup",
-                "autoscaling:DescribeTags",
-                "autoscaling:DescribeLaunchConfigurations",
-                "ec2:DescribeLaunchTemplateVersions"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
-}
-```
+On AWS EC2, we should create a few objects to configure our system. We've defined three distinct groups and IAM profiles to configure on AWS.
 
-* Master group: Nodes that will be part of the k8s etcd and/or control planes. This will be out of ASG 
-  * IAM profile: Required by k8s cloud_povider integration. Optionally, AWS_ACCESS_KEY and AWS_SECRET_KEY can be used instead [using-aws-credentials](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md#using-aws-credentials)
-  `K8sMasterProfile`
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:DescribeTags",
-                "ec2:DescribeInstances",
-                "ec2:DescribeRegions",
-                "ec2:DescribeRouteTables",
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeSubnets",
-                "ec2:DescribeVolumes",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateTags",
-                "ec2:CreateVolume",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifyVolume",
-                "ec2:AttachVolume",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateRoute",
-                "ec2:DeleteRoute",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteVolume",
-                "ec2:DetachVolume",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:DescribeVpcs",
-                "elasticloadbalancing:AddTags",
-                "elasticloadbalancing:AttachLoadBalancerToSubnets",
-                "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
-                "elasticloadbalancing:CreateLoadBalancer",
-                "elasticloadbalancing:CreateLoadBalancerPolicy",
-                "elasticloadbalancing:CreateLoadBalancerListeners",
-                "elasticloadbalancing:ConfigureHealthCheck",
-                "elasticloadbalancing:DeleteLoadBalancer",
-                "elasticloadbalancing:DeleteLoadBalancerListeners",
-                "elasticloadbalancing:DescribeLoadBalancers",
-                "elasticloadbalancing:DescribeLoadBalancerAttributes",
-                "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-                "elasticloadbalancing:ModifyLoadBalancerAttributes",
-                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-                "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
-                "elasticloadbalancing:AddTags",
-                "elasticloadbalancing:CreateListener",
-                "elasticloadbalancing:CreateTargetGroup",
-                "elasticloadbalancing:DeleteListener",
-                "elasticloadbalancing:DeleteTargetGroup",
-                "elasticloadbalancing:DescribeListeners",
-                "elasticloadbalancing:DescribeLoadBalancerPolicies",
-                "elasticloadbalancing:DescribeTargetGroups",
-                "elasticloadbalancing:DescribeTargetHealth",
-                "elasticloadbalancing:ModifyListener",
-                "elasticloadbalancing:ModifyTargetGroup",
-                "elasticloadbalancing:RegisterTargets",
-                "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
-                "iam:CreateServiceLinkedRole",
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:DescribeRepositories",
-                "ecr:ListImages",
-                "ecr:BatchGetImage",
-                "kms:DescribeKey"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
-}
-```
-  * IAM role: `K8sMasterRole: [K8sMasterProfile,K8sAutoscalerProfile]`
-  * Security group: `K8sMasterSg` More info at[RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
-  * Tags:
-    `kubernetes.io/cluster/<clusterID>: owned`
-  * User data: `K8sMasterUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add etcd+controlplane node to the k8s cluster
-```
-#!/bin/bash -x
+1. Autoscaling group: Nodes that will be part of the EC2 Auto Scaling Group (ASG). The ASG will be used by `cluster-autoscaler` to scale up and down.
+  * IAM profile: Required by k8s nodes where cluster-autoscaler will be running. It is recommended for Kubernetes master nodes. This profile is called `K8sAutoscalerProfile`.
 
-cat <<EOF > /etc/sysctl.d/90-kubelet.conf
-vm.overcommit_memory = 1
-vm.panic_on_oom = 0
-kernel.panic = 10
-kernel.panic_on_oops = 1
-kernel.keys.root_maxkeys = 1000000
-kernel.keys.root_maxbytes = 25000000
-EOF
-sysctl -p /etc/sysctl.d/90-kubelet.conf
+      ```json
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": [
+                      "autoscaling:DescribeAutoScalingGroups",
+                      "autoscaling:DescribeAutoScalingInstances",
+                      "autoscaling:DescribeLaunchConfigurations",
+                      "autoscaling:SetDesiredCapacity",
+                      "autoscaling:TerminateInstanceInAutoScalingGroup",
+                      "autoscaling:DescribeTags",
+                      "autoscaling:DescribeLaunchConfigurations",
+                      "ec2:DescribeLaunchTemplateVersions"
+                  ],
+                  "Resource": [
+                      "*"
+                  ]
+              }
+          ]
+      }
+      ```
 
-curl -sL https://releases.rancher.com/install-docker/19.03.sh | sh
-sudo usermod -aG docker ubuntu
+2. Master group: Nodes that will be part of the Kubernetes etcd and/or control planes. This will be out of the ASG. 
+  * IAM profile: Required by the Kubernetes cloud_provider integration. Optionally, `AWS_ACCESS_KEY` and `AWS_SECRET_KEY` can be used instead [using-aws-credentials.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md#using-aws-credentials) This profile is called `K8sMasterProfile`.
 
-TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
-PRIVATE_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/local-ipv4)
-PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/public-ipv4)
-K8S_ROLES="--etcd --controlplane"
+      ```json
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": [
+                      "autoscaling:DescribeAutoScalingGroups",
+                      "autoscaling:DescribeLaunchConfigurations",
+                      "autoscaling:DescribeTags",
+                      "ec2:DescribeInstances",
+                      "ec2:DescribeRegions",
+                      "ec2:DescribeRouteTables",
+                      "ec2:DescribeSecurityGroups",
+                      "ec2:DescribeSubnets",
+                      "ec2:DescribeVolumes",
+                      "ec2:CreateSecurityGroup",
+                      "ec2:CreateTags",
+                      "ec2:CreateVolume",
+                      "ec2:ModifyInstanceAttribute",
+                      "ec2:ModifyVolume",
+                      "ec2:AttachVolume",
+                      "ec2:AuthorizeSecurityGroupIngress",
+                      "ec2:CreateRoute",
+                      "ec2:DeleteRoute",
+                      "ec2:DeleteSecurityGroup",
+                      "ec2:DeleteVolume",
+                      "ec2:DetachVolume",
+                      "ec2:RevokeSecurityGroupIngress",
+                      "ec2:DescribeVpcs",
+                      "elasticloadbalancing:AddTags",
+                      "elasticloadbalancing:AttachLoadBalancerToSubnets",
+                      "elasticloadbalancing:ApplySecurityGroupsToLoadBalancer",
+                      "elasticloadbalancing:CreateLoadBalancer",
+                      "elasticloadbalancing:CreateLoadBalancerPolicy",
+                      "elasticloadbalancing:CreateLoadBalancerListeners",
+                      "elasticloadbalancing:ConfigureHealthCheck",
+                      "elasticloadbalancing:DeleteLoadBalancer",
+                      "elasticloadbalancing:DeleteLoadBalancerListeners",
+                      "elasticloadbalancing:DescribeLoadBalancers",
+                      "elasticloadbalancing:DescribeLoadBalancerAttributes",
+                      "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+                      "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                      "elasticloadbalancing:ModifyLoadBalancerAttributes",
+                      "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                      "elasticloadbalancing:SetLoadBalancerPoliciesForBackendServer",
+                      "elasticloadbalancing:AddTags",
+                      "elasticloadbalancing:CreateListener",
+                      "elasticloadbalancing:CreateTargetGroup",
+                      "elasticloadbalancing:DeleteListener",
+                      "elasticloadbalancing:DeleteTargetGroup",
+                      "elasticloadbalancing:DescribeListeners",
+                      "elasticloadbalancing:DescribeLoadBalancerPolicies",
+                      "elasticloadbalancing:DescribeTargetGroups",
+                      "elasticloadbalancing:DescribeTargetHealth",
+                      "elasticloadbalancing:ModifyListener",
+                      "elasticloadbalancing:ModifyTargetGroup",
+                      "elasticloadbalancing:RegisterTargets",
+                      "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
+                      "iam:CreateServiceLinkedRole",
+                      "ecr:GetAuthorizationToken",
+                      "ecr:BatchCheckLayerAvailability",
+                      "ecr:GetDownloadUrlForLayer",
+                      "ecr:GetRepositoryPolicy",
+                      "ecr:DescribeRepositories",
+                      "ecr:ListImages",
+                      "ecr:BatchGetImage",
+                      "kms:DescribeKey"
+                  ],
+                  "Resource": [
+                      "*"
+                  ]
+              }
+          ]
+      }
+      ```
 
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CA_CHECKCSUM> --address ${PUBLIC_IP} --internal-address ${PRIVATE_IP} ${K8S_ROLES}
-```
+    * IAM role: `K8sMasterRole: [K8sMasterProfile,K8sAutoscalerProfile]`
+    * Security group: `K8sMasterSg` More info at[RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
+    * Tags:
+      `kubernetes.io/cluster/<clusterID>: owned`
+    * User data: `K8sMasterUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add etcd+controlplane node to the k8s cluster
 
-* Worker group: Nodes that will be part of the k8s worker plane. Worker will be scaled by cluster-autoscaler using ASG
+      ```sh
+      #!/bin/bash -x
+
+      cat <<EOF > /etc/sysctl.d/90-kubelet.conf
+      vm.overcommit_memory = 1
+      vm.panic_on_oom = 0
+      kernel.panic = 10
+      kernel.panic_on_oops = 1
+      kernel.keys.root_maxkeys = 1000000
+      kernel.keys.root_maxbytes = 25000000
+      EOF
+      sysctl -p /etc/sysctl.d/90-kubelet.conf
+
+      curl -sL https://releases.rancher.com/install-docker/19.03.sh | sh
+      sudo usermod -aG docker ubuntu
+
+      TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+      PRIVATE_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/local-ipv4)
+      PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/public-ipv4)
+      K8S_ROLES="--etcd --controlplane"
+
+      sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CA_CHECKSUM> --address ${PUBLIC_IP} --internal-address ${PRIVATE_IP} ${K8S_ROLES}
+      ```
+
+3. Worker group: Nodes that will be part of the k8s worker plane. Worker nodes will be scaled by cluster-autoscaler using the ASG.
   * IAM profile: Provides cloud_provider worker integration.
-  `K8sWorkerProfile`
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances",
-                "ec2:DescribeRegions",
-                "ecr:GetAuthorizationToken",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:GetDownloadUrlForLayer",
-                "ecr:GetRepositoryPolicy",
-                "ecr:DescribeRepositories",
-                "ecr:ListImages",
-                "ecr:BatchGetImage"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
+  This profile is called `K8sWorkerProfile`.
+
+      ```json
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": [
+                      "ec2:DescribeInstances",
+                      "ec2:DescribeRegions",
+                      "ecr:GetAuthorizationToken",
+                      "ecr:BatchCheckLayerAvailability",
+                      "ecr:GetDownloadUrlForLayer",
+                      "ecr:GetRepositoryPolicy",
+                      "ecr:DescribeRepositories",
+                      "ecr:ListImages",
+                      "ecr:BatchGetImage"
+                  ],
+                  "Resource": "*"
+              }
+          ]
+      }
+      ```
+
   * IAM role: `K8sWorkerRole: [K8sWorkerProfile]`
   * Security group: `K8sWorkerSg` More info at [RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
   * Tags:
@@ -194,44 +212,45 @@ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kube
     * `k8s.io/cluster-autoscaler/<clusterName>: true`
     * `k8s.io/cluster-autoscaler/enabled: true`
   * User data: `K8sWorkerUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add worker node to the k8s cluster 
-```
-#!/bin/bash -x
 
-cat <<EOF > /etc/sysctl.d/90-kubelet.conf
-vm.overcommit_memory = 1
-vm.panic_on_oom = 0
-kernel.panic = 10
-kernel.panic_on_oops = 1
-kernel.keys.root_maxkeys = 1000000
-kernel.keys.root_maxbytes = 25000000
-EOF
-sysctl -p /etc/sysctl.d/90-kubelet.conf
+      ```sh
+      #!/bin/bash -x
 
-curl -sL https://releases.rancher.com/install-docker/19.03.sh | sh
-sudo usermod -aG docker ubuntu
+      cat <<EOF > /etc/sysctl.d/90-kubelet.conf
+      vm.overcommit_memory = 1
+      vm.panic_on_oom = 0
+      kernel.panic = 10
+      kernel.panic_on_oops = 1
+      kernel.keys.root_maxkeys = 1000000
+      kernel.keys.root_maxbytes = 25000000
+      EOF
+      sysctl -p /etc/sysctl.d/90-kubelet.conf
 
-TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
-PRIVATE_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/local-ipv4)
-PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/public-ipv4)
-K8S_ROLES="--worker"
+      curl -sL https://releases.rancher.com/install-docker/19.03.sh | sh
+      sudo usermod -aG docker ubuntu
 
-sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CA_CHECKCSUM> --address ${PUBLIC_IP} --internal-address ${PRIVATE_IP} ${K8S_ROLES}
-```
+      TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+      PRIVATE_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/local-ipv4)
+      PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: ${TOKEN}" -s http://169.254.169.254/latest/meta-data/public-ipv4)
+      K8S_ROLES="--worker"
 
-More info at [RKE clusters on AWS]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/) and [Cluster Autoscaler on AWS](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
+      sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CA_CHECKCSUM> --address ${PUBLIC_IP} --internal-address ${PRIVATE_IP} ${K8S_ROLES}
+      ```
 
-### Deploy nodes
+More info is at [RKE clusters on AWS]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/) and [Cluster Autoscaler on AWS.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
 
-Once we've configured AWS, let's cretate vm's to bootstrap our cluster:
+### 3. Deploy Nodes
 
-* master (etcd+controlplane): Depending your needs, deploy 3 master instances with proper size. More info at []({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production/)
+Once we've configured AWS, let's create VMs to bootstrap our cluster:
+
+* master (etcd+controlplane): Depending your needs, deploy three master instances with proper size. More info is at [the recommendations for production-ready clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production/)
   * IAM role: `K8sMasterRole`
   * Security group: `K8sMasterSg`
   * Tags: 
     * `kubernetes.io/cluster/<clusterID>: owned`
   * User data: `K8sMasterUserData`
 
-* worker: Define an ASG on EC2 with following setting:
+* worker: Define an ASG on EC2 with the following settings:
   * Name: `K8sWorkerAsg`
   * IAM role: `K8sWorkerRole`
   * Security group: `K8sWorkerSg`
@@ -245,20 +264,20 @@ Once we've configured AWS, let's cretate vm's to bootstrap our cluster:
     * desired: 2
     * maximum: 10
 
-Once vm's deployment is done, you should have a Rancher custom cluster up and running with 3 master and 2 worker nodes.
+Once the VMs are deployed, you should have a Rancher custom cluster up and running with three master and two worker nodes.
 
-### Cluster-scaler
+### 4. Install Cluster-autoscaler
 
 At this point, we should have rancher cluster up and running. We are going to install cluster-autoscaler on master nodes and `kube-system` namespace, following cluster-autoscaler recommendation. 
 
 #### Parameters
 
-This table shows cluster-autoscaler parameters to fine tuning:
+This table shows cluster-autoscaler parameters for fine tuning:
 
-|Parameter|Default|Description|
-|-|-|-|
+| Parameter | Default | Description |
+|---|---|---|
 |cluster-name|-|Autoscaled cluster name, if available|
-|address|:8085|The address to expose prometheus metrics|
+|address|:8085|The address to expose Prometheus metrics|
 |kubernetes|-|Kubernetes master location. Leave blank for default|
 |kubeconfig|-|Path to kubeconfig file with authorization and master location information|
 |cloud-config|-|The path to the cloud provider configuration file.  Empty string for no configuration file|
@@ -291,7 +310,7 @@ cloud-provider|-|Cloud provider type|
 |nodes|-|sets min,max size and other configuration data for a node group in a format accepted by cloud provider. Can be used multiple times. Format: <min>:<max>:<other...>|
 |node-group-auto-discovery|-|One or more definition(s) of node group auto-discovery. A definition is expressed `<name of discoverer>:[<key>[=<value>]]`|
 |estimator|-|"binpacking"|Type of resource estimator to be used in scale up. Available values: ["binpacking"]|
-|expander|"random"|Type of node group expander to be used in scale up. Available values: ["random","most-pods","least-waste","price","priority"]|
+|expander|"random"|Type of node group expander to be used in scale up. Available values: `["random","most-pods","least-waste","price","priority"]`|
 |ignore-daemonsets-utilization|false|Should CA ignore DaemonSet pods when calculating resource utilization for scaling down|
 |ignore-mirror-pods-utilization|false|Should CA ignore Mirror pods when calculating resource utilization for scaling down|
 |write-status-configmap|true|Should CA write status information to a configmap|
@@ -314,7 +333,7 @@ cloud-provider|-|Cloud provider type|
 Based on [cluster-autoscaler-run-on-master.yaml](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-run-on-master.yaml) example, we've created our own `cluster-autoscaler-deployment.yaml` to use preferred [auto-discovery setup](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#auto-discovery-setup), updating tolerations, nodeSelector, image version and command config:
 
 
-```
+```yml
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -491,26 +510,26 @@ spec:
 
 ```
 
-Once manifest file is prepared, deploy it in the k8s cluster (Rancher UI can be used instead):
+Once the manifest file is prepared, deploy it in the Kubernetes cluster (Rancher UI can be used instead):
 
-```
+```sh
 kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 ```
 
-**Note:** Cluster-autoscaler deployment can also be setup using [manual configuration](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#manual-configuration)
+**Note:** Cluster-autoscaler deployment can also be set up using [manual configuration](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#manual-configuration)
 
-## Testing
+# Testing
 
 At this point, we should have a cluster-scaler up and running in our Rancher custom cluster. Cluster-scale should manage `K8sWorkerAsg` ASG to scale up and down between 2 and 10 nodes, when one of the following conditions is true: 
 
-* there are pods that failed to run in the cluster due to insufficient resources. Scale up
-* there are nodes in the cluster that have been underutilized for an extended period of time and their pods can be placed on other existing nodes. Scale down
+* There are pods that failed to run in the cluster due to insufficient resources. In this case, the cluster is scaled up.
+* There are nodes in the cluster that have been underutilized for an extended period of time and their pods can be placed on other existing nodes. In this case, the cluster is scaled down.
 
-### Generating load
+### Generating Load
 
-We've prepared a `test-deployment.yaml` just to generate load on the k8s cluster and see if cluster-scaler is working properly. Test deployment is requesting 1000m cpu and 1024Mi memory by 3 replica. Adjust requested resources and/or replica to be sure you exhaust k8s cluster resources:
+We've prepared a `test-deployment.yaml` just to generate load on the Kubernetes cluster and see if cluster-autoscaler is working properly. The test deployment is requesting 1000m CPU and 1024Mi memory by three replicas. Adjust the requested resources and/or replica to be sure you exhaust the Kubernetes cluster resources:
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -548,14 +567,14 @@ spec:
             memory: 1024Mi
 ```
 
-Once test deployment is prepared, deploy it in the k8s cluster default namespace (Rancher UI can be used instead):
+Once the test deployment is prepared, deploy it in the Kubernetes cluster default namespace (Rancher UI can be used instead):
 
 ```
 kubectl -n default apply -f test-deployment.yaml
 ```
 
-### Checking scale
+### Checking Scale
 
-Once k8s resources got exhausted, cluster-scaler should scale up worker nodes where schedule failed pods. It should be scaling up until up until all pods became scheduled. You should see new nodes on ASG and on k8s cluster. Check logs on "kube-system" cluster-autoscaler pod.
+Once the Kubernetes resources got exhausted, cluster-autoscaler should scale up worker nodes where pods failed to be scheduled. It should scale up until up until all pods became scheduled. You should see the new nodes on the ASG and on the Kubernetes cluster. Check the logs on the `kube-system` cluster-autoscaler pod.
 
-Once scale up is checked, let check for scale down. To do it, lets reduce the replica number on test deployment until you release enought k8s cluster resource to scale down. You should see disappear nodes on ASG and on k8s cluster. Check logs on "kube-system" cluster-autoscaler pod.
+Once scale up is checked, let check for scale down. To do it, reduce the replica number on the test deployment until you release enough Kubernetes cluster resources to scale down. You should see nodes disappear on the ASG and on the Kubernetes cluster. Check the logs on the `kube-system` cluster-autoscaler pod.
