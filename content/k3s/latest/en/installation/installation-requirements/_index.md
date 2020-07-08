@@ -54,7 +54,7 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
-| TCP | 6443 | K3s server nodes | Kubernetes API
+| TCP | 6443 | K3s agent nodes | Kubernetes API
 | UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN
 | TCP | 10250 | K3s server and agent nodes | kubelet
 
