@@ -5,6 +5,8 @@ weight: 3
 
 RKE uses a cluster.yml file to install and configure your Kubernetes cluster.
 
+This template is intended to be used for RKE add-on installs, which are only supported up to Rancher v2.0.8. Please use the Rancher Helm chart if you are installing a newer Rancher version. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/#installation-outline).
+
 The following template can be used for the cluster.yml if you have a setup with:
 
 - Layer 7 load balancer with self-signed SSL termination (HTTPS)
