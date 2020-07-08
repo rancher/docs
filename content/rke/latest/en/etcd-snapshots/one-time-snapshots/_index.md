@@ -63,7 +63,7 @@ The `--access-key` and `--secret-key` options are not required if the `etcd` nod
 
 _Available as of v0.2.0_
 
-The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the `--s3-endpoint-ca` to connect to the S3 back end.
+The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 backend uses a self-signed or custom certificate, provide a custom certificate using the `--s3-endpoint-ca` to connect to the S3 backend.
 
 ### IAM Support for Storing Snapshots in S3
 
