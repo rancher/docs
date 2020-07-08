@@ -1,5 +1,0 @@
-{{$file := .Get "file"}}
-
-{{- with .Site.GetPage $file -}}
-{{- .Content | markdownify -}}
-{{- end -}}
