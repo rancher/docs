@@ -36,32 +36,38 @@ Alternatively you can re-use the existing nodes after clearing Kubernetes and Ra
 
 As of RKE v0.2.0, snapshots could be saved in an S3 compatible backend. To restore your cluster from the snapshot stored in S3 compatible backend, you can skip this step and retrieve the snapshot in [4. Restore the Database and bring up the Cluster](#4-restore-the-database-and-bring-up-the-cluster). Otherwise, you will need to place the snapshot directly on one of the etcd nodes.
 
-Pick one of the clean nodes that is supposed to become an etcd node. Place your snapshot file in `/opt/rke/etcd-snapshots` on that node.
+Pick one of the clean nodes that will have the etcd role assigned and place the zip-compressed snapshot file in `/opt/rke/etcd-snapshots` on that node.
+
+> **Note:** Because of a current limitation in RKE, the restore process does not work correctly if `/opt/rke/etcd-snapshots` is a NFS share that is mounted on all nodes with the etcd role. The easiest options are to either keep `/opt/rke/etcd-snapshots` as a local folder during the restore process and only mount the NFS share there after it has been completed, or to only mount the NFS share to one node with an etcd role in the beginning.
 
 ### 3. Configure RKE
 
-Use your original `cluster.yml` and `cluster.rkestate` files and back them up before making any changes.
+Use your original `rancher-cluster.yml` and `rancher-cluster.rkestate` files. If they are not stored in a version control system, it is a good idea to back them up before making any changes.
 
 ```
-cp cluster.yml cluster.yml.bak
-cp cluster.rkestate cluster.rkestate.bak
+cp rancher-cluster.yml rancher-cluster.yml.bak
+cp rancher-cluster.rkestate rancher-cluster.rkestate.bak
 ```
 
-Modify the `cluster.yml` file and change the IP addresses of all nodes to your new IP addresses.
+If the replaced or cleaned nodes have been configured with new IP addresses, modify the `rancher-cluster.yml` file to ensure the address and optional internal_address fields reflect the new addresses.
+
+> **IMPORTANT:** You should not rename the `rancher-cluster.yml` or `rancher-cluster.rkestate` files. It is important that the filenames match each other.
 
 ### 4. Restore the Database and bring up the Cluster
 
-Use RKE with the modified `cluster.yml` to restore the etcd database and bring up the cluster again.
+You will now use the RKE command-line tool with the `rancher-cluster.yml` and the `rancher-cluster.rkestate` configuration files to restore the etcd database and bring up the cluster on the new nodes.
 
-> **Note:** Ensure your `cluster.rkestate` is present before starting the restore, as this contains your certificate data for the cluster.
+> **Note:** Ensure your `rancher-cluster.rkestate` is present in the same directory as the `rancher-cluster.yml` file before starting the restore, as this file contains the certificate data for the cluster.
 
 #### Restoring from a Local Snapshot
 
 When restoring etcd from a local snapshot, the snapshot is assumed to be located on the target node in the directory `/opt/rke/etcd-snapshots`.
 
 ```
-rke etcd snapshot-restore --name snapshot-name --config ./cluster.yml
+rke etcd snapshot-restore --name snapshot-name --config ./rancher-cluster.yml
 ```
+
+> **Note:** The --name parameter expects the filename of the snapshot without the extension.
 
 #### Restoring from a Snapshot in S3
 
@@ -70,7 +76,7 @@ _Available as of RKE v0.2.0_
 When restoring etcd from a snapshot located in an S3 compatible backend, the command needs the S3 information in order to connect to the S3 backend and retrieve the snapshot.
 
 ```
-$ rke etcd snapshot-restore --config cluster.yml --name snapshot-name \
+$ rke etcd snapshot-restore --config ./rancher-cluster.yml --name snapshot-name \
 --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
 --bucket-name s3-bucket-name --s3-endpoint s3.amazonaws.com \
 --folder folder-name # Available as of v2.3.0
@@ -96,7 +102,7 @@ S3 specific options are only available for RKE v0.2.0+.
 
 #### Testing the Cluster
 
-Once RKE completes it will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_cluster.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
+Once RKE completes it will have created a credentials file in the local directory.  Configure `kubectl` to use the `kube_config_rancher-cluster.yml` credentials file and check on the state of the cluster. See [Installing and Configuring kubectl]({{<baseurl>}}/rancher/v2.x/en/faq/kubectl/#configuration) for details.
 
 #### Check Kubernetes Pods
 
@@ -125,4 +131,4 @@ kube-system     tiller-deploy-56c4cf647b-j4whh          1/1       Running   1   
 
 Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/#recommended-architecture) for Kubernetes installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the Kubernetes install ([1. Create Nodes and Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
 
-> **IMPORTANT:** Remember to save your updated RKE config (`cluster.yml`) state file (`cluster.rkestate`) and `kubectl` credentials (`kube_config_cluster.yml`) files in a safe place for future maintenance.
+> **IMPORTANT:** Remember to save your updated RKE config (`rancher-cluster.yml`) state file (`rancher-cluster.rkestate`) and `kubectl` credentials (`kube_config_rancher-cluster.yml`) files in a safe place for future maintenance for example in a version control system.
