@@ -47,6 +47,8 @@ A user account and group for the **etcd** service is required to be setup prior 
 #### create `etcd` user and group
 To create the **etcd** group run the following console commands.
 
+The commands below use `52034` for **uid** and **gid** are for example purposes. Any valid unused **uid** or **gid** could also be used in lieu of `52034`.
+
 ```
 groupadd --gid 52034 etcd
 useradd --comment "etcd service account" --uid 52034 --gid 52034 etcd
@@ -147,7 +149,8 @@ Execute this script to apply the `default-allow-all.yaml` the **permissive** `Ne
 ### Reference Hardened RKE `cluster.yml` configuration
 The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened install
 of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
-provided with additional details about the configuration items.
+provided with additional details about the configuration items. This reference `cluster.yml` does not include the required **nodes** directive which will vary depending on your environment. Documentation for node configuration can be found here: https://rancher.com/docs/rke/latest/en/config-options/nodes
+
 
 ``` yaml
 # If you intend to deploy Kubernetes in an air-gapped environment,
@@ -155,6 +158,10 @@ provided with additional details about the configuration items.
 kubernetes_version: "v1.15.9-rancher1-1"
 enable_network_policy: true
 default_pod_security_policy_template_id: "restricted"
+# the nodes directive is required and will vary depending on your environment
+# documentation for node configuration can be found here:
+#  https://rancher.com/docs/rke/latest/en/config-options/nodes
+nodes:
 services:
   etcd:
     uid: 52034
