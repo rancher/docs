@@ -204,8 +204,9 @@ Install Rancher:
 kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
-
 **Step Result:** If you are installing Rancher v2.3.0+, the installation is complete.
+
+> **Note:** If you are not intending to send telemetry data , Opt-out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during intial login.
 
 ### E. For Rancher versions prior to v2.3.0, Configure System Charts
 
