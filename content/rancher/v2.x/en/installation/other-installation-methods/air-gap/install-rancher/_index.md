@@ -206,7 +206,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 **Step Result:** If you are installing Rancher v2.3.0+, the installation is complete.
 
-> **Note:** If you are not intending to send telemetry data , Opt-out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during intial login.
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the intial login.
 
 ### E. For Rancher versions prior to v2.3.0, Configure System Charts
 
@@ -326,6 +326,8 @@ docker run -d --restart=unless-stopped \
 {{% /accordion %}}
 
 If you are installing Rancher v2.3.0+, the installation is complete.
+
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the intial login.
 
 If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
 
