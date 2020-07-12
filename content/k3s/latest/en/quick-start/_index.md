@@ -30,3 +30,5 @@ curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetok
 Setting the `K3S_URL` parameter causes K3s to run in worker mode. The K3s agent will register with the K3s server listening at the supplied URL. The value to use for `K3S_TOKEN` is stored at `/var/lib/rancher/k3s/server/node-token` on your server node.
 
 Note: Each machine must have a unique hostname. If your machines do not have unique hostnames, pass the `K3S_NODE_NAME` environment variable and provide a value with a valid and unique hostname for each node.
+
+Note+: On Ubuntu 19.10 and higher you must append `cgroup_memory=1 cgroup_enable=memory` to `/boot/firmware/nobtcmd.txt` and reboot.  If you don't wish to use sudo in front of every k3s command add `'K3S_KUBECONFIG_MODE=644` to `/etc/systemd/system/k3s.service.env`.   Make sure to `sudo systemctl daemon-reload` afterwards.
