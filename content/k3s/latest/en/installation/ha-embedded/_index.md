@@ -3,7 +3,7 @@ title: "High Availability with Embedded DB (Experimental)"
 weight: 40
 ---
 
-As of v1.0.0, K3s is previewing support for running a highly available control plane without the need for an external database. This means there is no need to manage an external etcd or SQL datastore in order to run a reliable production-grade setup. While this feature is currently experimental, we expect it to be the primary architecture for running HA K3s clusters in the future.
+As of v1.0.0, K3s is previewing support for running a highly available control plane without the need for an external database. This means there is no need to manage an external etcd or SQL datastore in order to run a reliable production-grade setup. 
 
 This architecture is achieved by embedding a dqlite database within the K3s server process. DQLite is short for "distributed SQLite." According to https://dqlite.io, it is "*a fast, embedded, persistent SQL database with Raft consensus that is perfect for fault-tolerant IoT and Edge devices.*" This makes it a natural fit for K3s.
 
