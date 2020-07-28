@@ -43,7 +43,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
           containers:
           - image: leodotcloud/swiss-army-knife
             imagePullPolicy: Always
-            name: swiss-army-knife
+            name: overlaytest
             command: ["sh", "-c", "tail -f /dev/null"]
             terminationMessagePath: /dev/termination-log
     ```
