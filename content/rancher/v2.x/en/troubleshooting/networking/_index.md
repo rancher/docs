@@ -119,8 +119,6 @@ If a path fails the overlay test, you will see errors like the following:
 ```
 command terminated with exit code 1
 NODE2 cannot reach NODE1
-command terminated with exit code 1
-NODE3 cannot reach NODE1
 ```
 
 Cleanup the DaemonSet by running `kubectl delete ds/overlaytest`.
