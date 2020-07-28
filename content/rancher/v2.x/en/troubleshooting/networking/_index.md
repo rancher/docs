@@ -31,7 +31,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
       template:
         metadata:
           labels:
-            name: overlaytest
+            name: ds-overlaytest
         spec:
           tolerations:
           - effect: NoExecute
