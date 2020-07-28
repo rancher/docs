@@ -10,7 +10,6 @@ Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG
 ### Double check if all the required ports are opened in your (host) firewall
 
 Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) are opened in your (host) firewall. The overlay network uses UDP in comparison to all other required ports which are TCP.
-
 ### Check if overlay network is functioning correctly
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
@@ -53,7 +52,79 @@ To test the overlay network, you can launch the following `DaemonSet` definition
 4. Run the following command, from the same location, to let each container on every host ping each other (it's a single line bash command).
 
     ```
-    echo "=> Start network overlay test"; kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End network overlay test"
+    ### Check if overlay network is functioning correctly
+
+The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
+
+To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `swiss-army-knife` container on every host (image was developed by Rancher engineers), which we will use to run a `ping` test between containers on all hosts.
+
+1. Save the following file as `ds-overlaytest.yml`
+
+    ```
+    apiVersion: apps/v1
+    kind: DaemonSet
+    metadata:
+      name: overlaytest
+    spec:
+      selector:
+          matchLabels:
+            name: overlaytest
+      template:
+        metadata:
+          labels:
+            name: ds-overlaytest
+        spec:
+          tolerations:
+          - effect: NoExecute
+            key: "node-role.kubernetes.io/etcd"
+            value: "true"
+          - effect: NoSchedule
+            key: "node-role.kubernetes.io/controlplane"
+            value: "true"
+          containers:
+          - image: leodotcloud/swiss-army-knife
+            imagePullPolicy: Always
+            name: overlaytest
+            command: ["sh", "-c", "tail -f /dev/null"]
+            terminationMessagePath: /dev/termination-log
+    ```
+
+2. Launch it using `kubectl create -f ds-overlaytest.yml`
+3. Wait until `kubectl rollout status ds/overlaytest -w` returns: `daemon set "overlaytest" successfully rolled out`.
+4. Run the following command, from the same location, to let each container on every host ping each other (it's a single line bash command).
+
+    ```
+    echo "=> Start network overlay test"; kubectl get pods -l name=ds-overlaytest -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl get pods -l name=ds-overlaytest -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End network overlay test"
+    ```
+
+5. When this command has finished running, the output indicating everything is correct is:
+
+    ```
+    => Start network overlay test
+    Pinging from pod overlaytest-4cpx5 on host NODE1
+    to pod ip 10.42.1.29 on host NODE1
+    to pod ip 10.42.2.19 on host NODE2
+    to pod ip 10.42.4.12 on host NODE3
+    Pinging from pod overlaytest-vms6w on host NODE2
+    to pod ip 10.42.1.29 on host NODE1
+    to pod ip 10.42.2.19 on host NODE2
+    to pod ip 10.42.4.12 on host NODE3
+    => End network overlay test
+    ```
+
+If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) for overlay networking are not opened between the hosts indicated.
+
+If a path fails the overlay test, you will see errors like the following:
+
+```
+command terminated with exit code 1
+NODE2 cannot reach NODE1
+command terminated with exit code 1
+NODE3 cannot reach NODE1
+```
+
+Cleanup the DaemonSet by running `kubectl delete ds/overlaytest`.
+
     ```
 
 5. When this command has finished running, the output indicating everything is correct is:
@@ -80,7 +151,8 @@ NODE1 cannot reach NODE3
 => End network overlay test
 ```
 
-Cleanup the busybox DaemonSet by running `kubectl delete ds/overlaytest`.
+Cleanup the DaemonSet by running `kubectl delete ds/overlaytest`.
+
 
 ### Check if MTU is correctly configured on hosts and on peering/tunnel appliances/devices
 
