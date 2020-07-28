@@ -1,5 +1,5 @@
 ---
-title: Rancher - Helm Chart Only
+title: Installing/Upgrading Rancher as a Helm Chart
 description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 51
 ---

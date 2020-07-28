@@ -1,5 +1,5 @@
 ---
-title: Rancher Kubernetes Cluster
+title: Installing/Upgrading Rancher
 weight: 50
 ---
 
