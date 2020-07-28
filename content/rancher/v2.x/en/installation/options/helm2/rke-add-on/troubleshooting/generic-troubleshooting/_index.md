@@ -95,23 +95,23 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=ingress-nginx -
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
-To test the overlay network, you can launch the following `DaemonSet` definition. This will run an `alpine` container on every host, which we will use to run a `ping` test between containers on all hosts.
+To test the overlay network, you can launch the following `DaemonSet` definition. This will run a container from a network troubleshooting image developed by Rancher engineers (`swiss-army-knife`) on every host, which we will use to run a `ping` test between containers on all hosts.
 
-1. Save the following file as `ds-alpine.yml`
+1. Save the following file as `ds-swiss-army-knife.yml`
 
     ```
     apiVersion: apps/v1
     kind: DaemonSet
     metadata:
-      name: alpine
+      name: swiss-army-knife
     spec:
       selector:
           matchLabels:
-            name: alpine
+            name: swiss-army-knife
       template:
         metadata:
           labels:
-            name: alpine
+            name: swiss-army-knife
         spec:
           tolerations:
           - effect: NoExecute
@@ -121,19 +121,19 @@ To test the overlay network, you can launch the following `DaemonSet` definition
             key: "node-role.kubernetes.io/controlplane"
             value: "true"
           containers:
-          - image: alpine
+          - image: leodotcloud/swiss-army-knife
             imagePullPolicy: Always
-            name: alpine
+            name: swiss-army-knife
             command: ["sh", "-c", "tail -f /dev/null"]
             terminationMessagePath: /dev/termination-log
     ```
 
-2. Launch it using `kubectl --kubeconfig kube_config_rancher-cluster.yml create -f ds-alpine.yml`
-3. Wait until `kubectl --kubeconfig kube_config_rancher-cluster.yml rollout status ds/alpine -w` returns: `daemon set "alpine" successfully rolled out`.
+2. Launch it using `kubectl --kubeconfig kube_config_rancher-cluster.yml create -f ds-swiss-army-knife.yml`
+3. Wait until `kubectl --kubeconfig kube_config_rancher-cluster.yml rollout status ds/swiss-army-knife -w` returns: `daemon set "swiss-army-knife" successfully rolled out`.
 4. Run the following command to let each container on every host ping each other (it's a single line command).
 
     ```
-    echo "=> Start"; kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=alpine -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=alpine -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --kubeconfig kube_config_rancher-cluster.yml --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End"
+    echo "=> Start"; kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=swiss-army-knife -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=swiss-army-knife -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --kubeconfig kube_config_rancher-cluster.yml --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End"
     ```
 
 5. When this command has finished running, the output indicating everything is correct is:
