@@ -95,23 +95,23 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=ingress-nginx -
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
-To test the overlay network, you can launch the following `DaemonSet` definition. This will run an `alpine` container on every host, which we will use to run a `ping` test between containers on all hosts.
+To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `swiss-army-knife` container on every host (image was developed by Rancher engineers), which we will use to run a `ping` test between containers on all hosts.
 
-1. Save the following file as `ds-alpine.yml`
+1. Save the following file as `ds-overlaytest.yml`
 
     ```
     apiVersion: apps/v1
     kind: DaemonSet
     metadata:
-      name: alpine
+      name: overlaytest
     spec:
       selector:
           matchLabels:
-            name: alpine
+            name: overlaytest
       template:
         metadata:
           labels:
-            name: alpine
+            name: overlaytest
         spec:
           tolerations:
           - effect: NoExecute
@@ -121,26 +121,26 @@ To test the overlay network, you can launch the following `DaemonSet` definition
             key: "node-role.kubernetes.io/controlplane"
             value: "true"
           containers:
-          - image: alpine
+          - image: leodotcloud/swiss-army-knife
             imagePullPolicy: Always
-            name: alpine
+            name: swiss-army-knife
             command: ["sh", "-c", "tail -f /dev/null"]
             terminationMessagePath: /dev/termination-log
     ```
 
-2. Launch it using `kubectl --kubeconfig kube_config_rancher-cluster.yml create -f ds-alpine.yml`
-3. Wait until `kubectl --kubeconfig kube_config_rancher-cluster.yml rollout status ds/alpine -w` returns: `daemon set "alpine" successfully rolled out`.
-4. Run the following command to let each container on every host ping each other (it's a single line command).
+2. Launch it using `kubectl create -f ds-overlaytest.yml`
+3. Wait until `kubectl rollout status ds/overlaytest -w` returns: `daemon set "overlaytest" successfully rolled out`.
+4. Run the following command, from the same location, to let each container on every host ping each other (it's a single line bash command).
 
     ```
-    echo "=> Start"; kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=alpine -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl --kubeconfig kube_config_rancher-cluster.yml get pods -l name=alpine -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --kubeconfig kube_config_rancher-cluster.yml --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End"
+    echo "=> Start network overlay test"; kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.metadata.name}{" "}{@.spec.nodeName}{"\n"}{end}' | while read spod shost; do kubectl get pods -l name=overlaytest -o jsonpath='{range .items[*]}{@.status.podIP}{" "}{@.spec.nodeName}{"\n"}{end}' | while read tip thost; do kubectl --request-timeout='10s' exec $spod -- /bin/sh -c "ping -c2 $tip > /dev/null 2>&1"; RC=$?; if [ $RC -ne 0 ]; then echo $shost cannot reach $thost; fi; done; done; echo "=> End network overlay test"
     ```
 
 5. When this command has finished running, the output indicating everything is correct is:
 
     ```
-    => Start
-    => End
+    => Start network overlay test
+    => End network overlay test
     ```
 
 If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) for overlay networking are not opened between the hosts indicated.
@@ -148,7 +148,7 @@ If you see error in the output, that means that the [required ports]({{<baseurl>
 Example error output of a situation where NODE1 had the UDP ports blocked.
 
 ```
-=> Start
+=> Start network overlay test
 command terminated with exit code 1
 NODE2 cannot reach NODE1
 command terminated with exit code 1
@@ -157,5 +157,7 @@ command terminated with exit code 1
 NODE1 cannot reach NODE2
 command terminated with exit code 1
 NODE1 cannot reach NODE3
-=> End
+=> End network overlay test
 ```
+
+Cleanup the busybox DaemonSet by running `kubectl delete ds/overlaytest`.
