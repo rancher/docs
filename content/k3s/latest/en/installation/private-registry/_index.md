@@ -25,7 +25,7 @@ Mirrors is a directive that defines the names and endpoints of the private regis
 
 ```
 mirrors:
-  docker.io:
+  mycustomreg.com:
     endpoint:
       - "https://mycustomreg.com:5000"
 ```
