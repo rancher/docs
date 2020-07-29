@@ -1,6 +1,6 @@
 ---
 title: Cluster Explorer
-weight: 2005
+weight: 5
 ---
 
 > This section is under construction.

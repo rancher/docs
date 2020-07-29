@@ -1,6 +1,6 @@
 ---
 title: User Preferences
-weight: 7000
+weight: 18
 ---
 
 > This page is under construction.

@@ -1,6 +1,6 @@
 ---
 title: System Tools
-weight: 6001
+weight: 17
 ---
 
 System Tools is a tool to perform operational tasks on [Rancher launched RKE Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters or [installations of Rancher on an RKE cluster.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/kubernetes-rke/) The tasks include:

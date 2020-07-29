@@ -3,7 +3,7 @@ title: The Rancher Command Line Interface
 description: The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI
 metaTitle: "Using the Rancher Command Line Interface "
 metaDescription: "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI"
-weight: 6000
+weight: 16
 ---
 
 The Rancher CLI (Command Line Interface) is a unified tool that you can use to interact with Rancher. With this tool, you can operate Rancher using a command line rather than the GUI.

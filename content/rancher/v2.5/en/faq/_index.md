@@ -1,8 +1,6 @@
 ---
 title: FAQ
-weight: 8000
-aliases:
-  - /rancher/v2.x/en/about/
+weight: 20
 ---
 
 This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.
