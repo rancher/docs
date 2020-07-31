@@ -1,5 +1,5 @@
 ---
-title: Installing the Rancher Helm Chart
+title: Install
 weight: 1
 ---
 

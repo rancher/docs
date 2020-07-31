@@ -1,5 +1,5 @@
 ---
-title: Installing the Rancher Kubernetes Cluster and Helm Chart
+title: Install
 weight: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Installing on a Linux OS
+title: Install on a Linux OS
 weight: 2
 ---
 

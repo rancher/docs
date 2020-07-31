@@ -1,5 +1,5 @@
 ---
-title: Upgrading the Rancher Helm Chart
+title: Upgrade
 weight: 2
 ---
 

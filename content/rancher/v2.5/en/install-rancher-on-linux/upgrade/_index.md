@@ -1,5 +1,5 @@
 ---
-title: Upgrading the Rancher Kubernetes Cluster and Helm Chart
+title: Upgrade
 weight: 2
 ---
 

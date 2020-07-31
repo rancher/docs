@@ -1,5 +1,5 @@
 ---
-title: Classic
+title: Legacy Backup and Restore Docs
 weight: 2
 ---
 
