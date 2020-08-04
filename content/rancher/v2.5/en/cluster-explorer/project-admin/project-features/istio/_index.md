@@ -3,8 +3,6 @@ title: Istio in Projects
 weight: 1
 ---
 
-_Available as of v2.3.0_
-
 Using Rancher, you can connect, secure, control, and observe services through integration with [Istio](https://istio.io/), a leading open-source service mesh solution. Istio provides behavioral insights and operational control over the service mesh as a whole, offering a complete solution to satisfy the diverse requirements of microservice applications.
 
 This service mesh provides features that include but are not limited to the following:

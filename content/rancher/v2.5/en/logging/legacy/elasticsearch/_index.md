@@ -1,8 +1,6 @@
 ---
 title: Elasticsearch
 weight: 200
-aliases:
-  - /rancher/v2.x/en/tools/logging/elasticsearch/
 ---
 
 If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.

@@ -37,8 +37,6 @@ For more information, see [Provisioning Drivers]({{<baseurl>}}/rancher/v2.x/en/a
 
 ## Adding Kubernetes Versions into Rancher
 
-_Available as of v2.3.0_
-
 With this feature, you can upgrade to the latest version of Kubernetes as soon as it is released, without upgrading Rancher. This feature allows you to easily upgrade Kubernetes patch versions (i.e. `v1.15.X`), but not intended to upgrade Kubernetes minor versions (i.e. `v1.X.0`) as Kubernetes tends to deprecate or add APIs between minor versions.
 
 The information that Rancher uses to provision [RKE clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) is now located in the Rancher Kubernetes Metadata. For details on metadata configuration and how to change the Kubernetes version used for provisioning RKE clusters, see [Rancher Kubernetes Metadata.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata/)
@@ -48,7 +46,5 @@ Rancher Kubernetes Metadata contains Kubernetes version information which Ranche
 For more information on how metadata works and how to configure metadata config, see [Rancher Kubernetes Metadata]({{<baseurl>}}/rancher/v2.x/en/admin-settings/k8s-metadata/).
 
 ## Enabling Experimental Features
-
-_Available as of v2.3.0_
 
 Rancher includes some features that are experimental and disabled by default. Feature flags were introduced to allow you to try these features. For more information, refer to the section about [feature flags.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/feature-flags/)

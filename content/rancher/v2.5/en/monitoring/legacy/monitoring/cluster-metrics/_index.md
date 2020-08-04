@@ -2,9 +2,6 @@
 title: Cluster Metrics
 weight: 3
 ---
-
-_Available as of v2.2.0_
-
 Cluster metrics display the hardware utilization for all nodes in your cluster, regardless of its role. They give you a global monitoring insight into the cluster.
 
 Some of the biggest metrics to look out for:

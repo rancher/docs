@@ -102,8 +102,6 @@ stages:
 ```
 # Step Type: Build and Publish Images
 
-_Available as of Rancher v2.1.0_
-
 The **Build and Publish Image** step builds and publishes a Docker image. This process requires a Dockerfile in your source code's repository to complete successfully.
 
 The option to publish an image to an insecure registry is not exposed in the UI, but you can specify an environment variable in the YAML that allows you to publish an image insecurely.
@@ -153,8 +151,6 @@ stages:
 ```
 
 # Step Type: Publish Catalog Template
-
-_Available as of v2.2.0_
 
 The **Publish Catalog Template** step publishes a version of a catalog app template (i.e. Helm chart) to a [git hosted chart repository]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. Any variables in the [pipeline variable substitution reference](#pipeline-variable-substitution-reference) is supported for any file in the chart folder.
 
@@ -235,8 +231,6 @@ stages:
 
 # Step Type :Deploy Catalog App
 
-_Available as of v2.2.0_
-
 The **Deploy Catalog App** step deploys a catalog app in the project. It will install a new app if it is not present, or upgrade an existing one.
 
 ### Configure Deploying Catalog App by UI
@@ -311,8 +305,6 @@ You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.x/en/cl
 
 ### Configuring Notifications by UI
 
-_Available as of v2.2.0_
-
 1. Within the **Notification** section, turn on notifications by clicking **Enable**.
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
@@ -324,7 +316,6 @@ _Available as of v2.2.0_
 1. For each recipient, select which notifier type from the dropdown. Based on the type of notifier, you can use the default recipient or override the recipient with a different one. For example, if you have a notifier for _Slack_, you can update which channel to send the notification to. You can add additional notifiers by clicking **Add Recipient**.
 
 ### Configuring Notifications by YAML
-_Available as of v2.2.0_
 
 In the `notification` section, you will provide the following information:
 
@@ -594,8 +585,6 @@ Select the maximum number of pipeline executors. The _executor quota_ decides ho
 
 ### Resource Quota for Executors
 
-_Available as of v2.2.0_
-
 Configure compute resources for Jenkins agent containers. When a pipeline execution is triggered, a build pod is dynamically provisioned to run your CI tasks. Under the hood, A build pod consists of one Jenkins agent container and one container for each pipeline step. You can [manage compute resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/) for every containers in the pod.
 
 Edit the **Memory Reservation**, **Memory Limit**, **CPU Reservation** or **CPU Limit**, then click **Update Limit and Reservation**.
@@ -635,9 +624,7 @@ stages:
 
 >**Note:** Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
 
-### Custom CA  
-
-_Available as of v2.2.0_
+### Custom CA
 
 If you want to use a version control provider with a certificate from a custom/internal CA root, the CA root certificates need to be added as part of the version control provider configuration in order for the pipeline build pods to succeed.
 

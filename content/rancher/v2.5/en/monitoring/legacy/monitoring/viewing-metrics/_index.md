@@ -3,8 +3,6 @@ title: Viewing Metrics
 weight: 2
 ---
 
-_Available as of v2.2.0_
-
 After you've enabled monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#enabling-cluster-monitoring) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#enabling-project-monitoring), you will want to be start viewing the data being collected. There are multiple ways to view this data.
 
 ## Rancher Dashboard

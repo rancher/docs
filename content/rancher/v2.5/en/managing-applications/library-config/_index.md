@@ -51,8 +51,6 @@ When [adding your catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/adding/)
 
 # Private Repositories
 
-_Available as of v2.2.0_
-
 Private Git or Helm chart repositories can be added into Rancher using either credentials, i.e. `Username` and `Password`. Private Git repositories also support authentication using OAuth tokens.
 
 ### Using Username and Password

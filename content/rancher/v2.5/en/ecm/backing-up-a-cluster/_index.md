@@ -101,11 +101,9 @@ The `S3` backup target allows users to configure a S3 compatible backend to stor
 |S3 Region Endpoint|S3 regions endpoint for the backup bucket|* |
 |S3 Access Key|S3 access key with permission to access the backup bucket|*|
 |S3 Secret Key|S3 secret key with permission to access the backup bucket|*|
-| Custom CA Certificate | A custom certificate used to access private S3 backends _Available as of v2.2.5_ ||
+| Custom CA Certificate | A custom certificate used to access private S3 backends ||
 
 ### Using a custom CA certificate for S3
-
-_Available as of v2.2.5_
 
 The backup snapshot can be stored on a custom `S3` backup like [minio](https://min.io/). If the S3 back end uses a self-signed or custom certificate, provide a custom certificate using the `Custom CA Certificate` option to connect to the S3 backend.
 
@@ -129,8 +127,6 @@ The list of all available snapshots for the cluster is available in the Rancher 
 2. Click **Tools > Snapshots** from the navigation bar to view the list of saved snapshots. These snapshots include a timestamp of when they were created.
 
 # Safe Timestamps
-
-_Available as of v2.3.0_
 
 As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of Rancher v2.3.0, the option `safe_timestamp` is added to support compatible file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
 

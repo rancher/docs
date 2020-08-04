@@ -96,8 +96,6 @@ For more information, see the following pages:
 
 ![Weave Logo]({{<baseurl>}}/img/rancher/weave-logo.png)
 
-_Available as of v2.2.0_
-
 Weave enables networking and network policy in Kubernetes clusters across the cloud. Additionally, it support encrypting traffic between the peers.
 
 Kubernetes workers should open TCP port `6783` (control port), UDP port `6783` and UDP port `6784` (data ports). See the [port requirements for user clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) for more details.

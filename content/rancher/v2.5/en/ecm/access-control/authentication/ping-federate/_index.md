@@ -2,7 +2,6 @@
 title: Configuring PingIdentity (SAML)
 weight: 8
 ---
-_Available as of v2.0.7_
 
 If your organization uses Ping Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 

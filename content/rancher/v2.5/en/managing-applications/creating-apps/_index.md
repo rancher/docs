@@ -83,8 +83,6 @@ Inside the `questions.yml`, most of the content will be around the questions to 
 
 ### Min/Max Rancher versions
 
-_Available as of v2.3.0_
-
 For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
 
 > **Note:** Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.

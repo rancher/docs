@@ -2,7 +2,6 @@
 title: Configuring Google OAuth
 weight: 12
 ---
-_Available as of v2.3.0_
 
 If your organization uses G Suite for user authentication, you can configure Rancher to allow your users to log in using their G Suite credentials.
 

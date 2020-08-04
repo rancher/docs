@@ -130,8 +130,6 @@ To configure permission for a user,
 
 ### Configuring Global Permissions for Groups
 
-_Available as of v2.4.0_
-
 If you have a group of individuals that need the same level of access in Rancher, it can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
 
 After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to Rancher.

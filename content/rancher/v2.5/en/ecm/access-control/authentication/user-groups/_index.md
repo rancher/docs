@@ -23,8 +23,6 @@ Whenever a user logs in to the UI using an authentication provider, Rancher auto
 
 ### Automatically Refreshing User Information
 
-_Available as of v2.2.0_
-
 Rancher will periodically refresh the user information even before a user logs in through the UI. You can control how often Rancher performs this refresh.  From the **Global** view, click on **Settings**. Two settings control this behavior:
 
 - **`auth-user-info-max-age-seconds`**
@@ -52,8 +50,6 @@ If you are not sure the last time Rancher performed an automatic refresh of user
 
 
 ## Session Length
-
-_Available as of v2.3.0_
 
 The default length (TTL) of each user session is adjustable. The default session length is 16 hours.
 

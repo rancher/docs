@@ -85,8 +85,6 @@ The cluster cannot be downgraded to a previous Kubernetes version.
 
 # Rolling Back
 
-_Available as of v2.4_
-
 A cluster can be restored to a backup in which the previous Kubernetes version was used. For more information, refer to the following sections:
 
 - [Backing up a cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/backing-up-etcd/#how-snapshots-work)

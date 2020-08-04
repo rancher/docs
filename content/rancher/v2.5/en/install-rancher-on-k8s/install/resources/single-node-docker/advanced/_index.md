@@ -51,8 +51,6 @@ docker run -d --restart=unless-stopped \
 
 ### TLS settings
 
-_Available as of v2.1.7_
-
 To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
 
 ```

@@ -3,15 +3,11 @@ title: Setting Container Default Resource Limits
 weight: 3
 ---
 
-_Available as of v2.2.0_
-
 When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project / namespace, all containers will require a respective CPU or Memory field set during creation. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details on why this is required.
 
 To avoid setting these limits on each and every container during workload creation, a default container resource limit can be specified on the namespace.
 
 ### Editing the Container Default Resource Limit
-
-_Available as of v2.2.0_
 
 Edit [container default resource limit]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#setting-container-default-resource-limit) when:
 

@@ -3,8 +3,6 @@ title: TLS Settings
 weight: 3
 ---
 
-_Available as of v2.1.7_
-
 In Rancher v2.1.7, the default TLS configuration changed to only accept TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.
 
 ## Configuring TLS settings

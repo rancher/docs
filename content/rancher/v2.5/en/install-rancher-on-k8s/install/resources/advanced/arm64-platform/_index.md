@@ -3,8 +3,6 @@ title: Running on ARM64 (Experimental)
 weight: 3
 ---
 
-_Available as of v2.2.0_
-
 > **Important:**
 >
 > Running on an ARM64 platform is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using ARM64 based nodes in a production environment.

@@ -13,8 +13,6 @@ Resource quotas can also be set when a new project is created. For details, refe
 
 ### Applying Resource Quotas to Existing Projects
 
-_Available as of v2.0.1_
-
 Edit [resource quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) when:
 
 - You want to limit the resources that a project and its namespaces can use.
