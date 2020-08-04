@@ -101,8 +101,6 @@ The `rancher-images.txt` is expected to be on the workstation in the same direct
 {{% /tab %}}
 {{% tab "Linux and Windows Clusters" %}}
 
-_Available as of v2.3.0_
-
 For Rancher servers that will provision Linux and Windows clusters, there are distinctive steps to populate your private registry for the Windows images and the Linux images. Since a Windows cluster is a mix of Linux and Windows nodes, the Linux images pushed into the private registry are manifests.
 
 ### Windows Steps

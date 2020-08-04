@@ -169,8 +169,6 @@ Ensure that the [OS ISO URL](#instance-options) contains the URL of the VMware I
 
 ### D. Add Networks
 
-_Available as of v2.3.3_
-
 The node template now allows a VM to be provisioned with multiple networks. In the **Networks** field, you can now click **Add Network** to add any networks available to you in vSphere.
 
 ### E. If Not Already Enabled, Enable Disk UUIDs

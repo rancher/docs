@@ -2,8 +2,6 @@
 title: Creating an AKS Cluster
 shortTitle: Azure Kubernetes Service
 weight: 2115
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service/
 ---
 
 You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).

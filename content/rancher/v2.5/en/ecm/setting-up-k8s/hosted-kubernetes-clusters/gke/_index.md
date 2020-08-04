@@ -2,8 +2,6 @@
 title: Creating a GKE Cluster
 shortTitle: Google Kubernetes Engine
 weight: 2105
-aliases:
-  - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
 ---
 
 ## Prerequisites in Google Kubernetes Engine

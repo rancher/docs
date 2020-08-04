@@ -1,11 +1,7 @@
 ---
 title: CPU and Memory Allocations
 weight: 1
-aliases:
-    - /rancher/v2.x/en/project-admin/istio/configuring-resource-allocations/_index.md
-    - /rancher/v2.x/en/project-admin/istio/config/_index.md
 ---
-_Available as of v2.3.0_
 
 This section describes the minimum recommended computing resources for the Istio components in a cluster.
 

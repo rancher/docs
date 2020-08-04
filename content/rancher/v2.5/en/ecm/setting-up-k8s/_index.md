@@ -80,8 +80,6 @@ For more information, refer to the section on [importing existing clusters.]({{<
 
 ### Importing and Editing K3s Clusters
 
-_Available as of Rancher v2.4.0_
-
 [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. K3s Kubernetes clusters can now be imported into Rancher.
 
 When a K3s cluster is imported, Rancher will recognize it as K3s, and the Rancher UI will expose the following features in addition to the functionality for other imported clusters:

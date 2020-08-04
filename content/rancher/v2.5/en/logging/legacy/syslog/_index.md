@@ -1,8 +1,6 @@
 ---
 title: Syslog
 weight: 500
-aliases:
-  - /rancher/v2.x/en/tools/logging/syslog/
 ---
 
 If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.

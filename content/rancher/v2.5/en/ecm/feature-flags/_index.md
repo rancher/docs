@@ -115,8 +115,6 @@ docker run -d -p 80:80 -p 443:443 \
 
 # Enabling Features with the Rancher UI
 
-_Available as of Rancher v2.3.3_
-
 1. Go to the **Global** view and click **Settings.**
 1. Click the **Feature Flags** tab. You will see a list of experimental features.
 1. To enable a feature, go to the disabled feature you want to enable and click **&#8942; > Activate.**

@@ -35,15 +35,11 @@ You can add [labels](https://kubernetes.io/docs/concepts/overview/working-with-o
 
 ### Node Taints
 
-_Available as of Rancher v2.3.0_
-
 You can add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) on each node template, so that any nodes created from the node template will automatically have these taints on them.
 
 Since taints can be added at a node template and node pool, if there is no conflict with the same key and effect of the taints, all taints will be added to the nodes. If there are taints with the same key and different effect, the taints from the node pool will override the taints from the node template.
 
 ### Administrator Control of Node Templates
-
-_Available as of v2.3.3_
 
 Administrators can control all node templates. Admins can now maintain all the node templates within Rancher. When a node template owner is no longer using Rancher, the node templates created by them can be managed by administrators so the cluster can continue to be updated and maintained.
 
@@ -62,8 +58,6 @@ Each node pool is assigned with a [node component]({{<baseurl>}}/rancher/v2.x/en
 
 ### Node Pool Taints
 
-_Available as of Rancher v2.3.0_
-
 If you haven't defined [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) on your node template, you can add taints for each node pool. The benefit of adding taints at a node pool is beneficial over adding it at a node template is that you can swap out the node templates without worrying if the taint is on the node template.
 
 For each taint, they will automatically be added to any created node in the node pool. Therefore, if you add taints to a node pool that have existing nodes, the taints won't apply to existing nodes in the node pool, but any new node added into the node pool will get the taint.
@@ -71,8 +65,6 @@ For each taint, they will automatically be added to any created node in the node
 When there are taints on the node pool and node template, if there is no conflict with the same key and effect of the taints, all taints will be added to the nodes. If there are taints with the same key and different effect, the taints from the node pool will override the taints from the node template.
 
 ### About Node Auto-replace
-
-_Available as of Rancher v2.3.0_
 
 If a node is in a node pool, Rancher can automatically replace unreachable nodes. Rancher will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
 
@@ -113,8 +105,6 @@ You can disable node auto-replace from the Rancher UI with the following steps:
 **Result:** Node auto-replace is disabled for the node pool.
 
 # Cloud Credentials
-
-_Available as of v2.2.0_
 
 Node templates can use cloud credentials to store credentials for launching nodes in your cloud provider, which has some benefits:
 

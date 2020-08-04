@@ -34,7 +34,6 @@ Helm comes with built-in package server for developer testing (helm serve). The 
 In Rancher, you can add the custom Helm chart repository with only a catalog name and the URL address of the chart repository.
 
 ### Add Private Git/Helm Chart Repositories
-_Available as of v2.2.0_
 
 Private catalog repositories can be added using credentials like Username and Password. You may also want to use the OAuth token if your Git or Helm repository server supports that.
 
@@ -63,8 +62,6 @@ For more information on private Git/Helm catalogs, refer to the [custom catalog 
 
 # Adding Cluster Level Catalogs
 
-_Available as of v2.2.0_
-
 >**Prerequisites:** In order to manage cluster scoped catalogs, you need _one_ of the following permissions:
 >
 >- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
@@ -81,8 +78,6 @@ _Available as of v2.2.0_
 **Result**: Your custom cluster catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying  [applications in any project in that cluster]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) from this catalog.
 
 # Adding Project Level Catalogs
-
-_Available as of v2.2.0_
 
 >**Prerequisites:** In order to manage project scoped catalogs, you need _one_ of the following permissions:
 >

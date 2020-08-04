@@ -92,8 +92,6 @@ The steps to add custom roles differ depending on the version of Rancher.
 
 ## Creating a Custom Global Role
 
-_Available as of v2.4.0_
-
 ### Creating a Custom Global Role that Copies Rules from an Existing Role
 
 If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom global role in which all of the rules from another role, such as the administrator role, are copied into a new role. This allows you to only configure the variations between the existing role and the new role.
@@ -122,8 +120,6 @@ Custom global roles don't have to be based on existing roles. To create a custom
 
 ## Deleting a Custom Global Role
 
-_Available as of v2.4.0_
-
 When deleting a custom global role, all global role bindings with this custom role are deleted.
 
 If a user is only assigned one custom global role, and the role is deleted, the user would lose access to Rancher. For the user to regain access, an administrator would need to edit the user and apply new global permissions.
@@ -137,8 +133,6 @@ To delete a custom global role,
 3. Click **Delete.**
 
 ## Assigning a Custom Global Role to a Group
-
-_Available as of v2.4.0_
 
 If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom global role. When the role is assigned to a group, the users in the group have the appropriate level of access the first time they sign into Rancher.
 

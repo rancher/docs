@@ -69,8 +69,6 @@ For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubato
 {{% /tab %}}
 {{% tab "Editing YAML Files" %}}
 
-_Available as of v2.1.0_
-
 If you do not want to input answers using the UI, you can choose the **Edit as YAML** option.
 
 With this example YAML:
@@ -96,8 +94,6 @@ servers[0].host=example
 ```
 
 ### YAML files
-
-_Available as of v2.2.0_
 
 You can directly paste that YAML formatted structure into the YAML editor. By allowing custom values to be set using a YAML formatted structure, Rancher has the ability to easily customize for more complicated input values (e.g. multi-lines, array and JSON objects).
 {{% /tab %}}

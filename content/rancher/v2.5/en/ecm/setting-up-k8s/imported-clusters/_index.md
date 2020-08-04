@@ -76,8 +76,6 @@ You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3
 
 ### Additional Features for Imported K3s Clusters
 
-_Available as of v2.4.0_
-
 When a K3s cluster is imported, Rancher will recognize it as K3s, and the Rancher UI will expose the following features in addition to the functionality for other imported clusters:
 
 - The ability to upgrade the K3s version

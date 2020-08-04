@@ -1,10 +1,7 @@
 ---
 title: UI for Istio Virtual Services and Destination Rules
 weight: 2
-aliases:
-  - /rancher/v2.x/en/admin-settings/feature-flags/istio-virtual-service-ui
 ---
-_Available as of v2.3.0_
 
 This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.
 

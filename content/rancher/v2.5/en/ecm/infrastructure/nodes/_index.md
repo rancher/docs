@@ -184,8 +184,6 @@ Once drain successfully completes, the node will be in a state of `drained`. You
 
 # Labeling a Node to be Ignored by Rancher
 
-_Available as of 2.3.3_
-
 Some solutions, such as F5's BIG-IP integration, may require creating a node that is never registered to a cluster.
 
 Since the node will never finish registering, it will always be shown as unhealthy in the Rancher UI.

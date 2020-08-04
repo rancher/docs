@@ -58,8 +58,8 @@ weight: 2
 | `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
 | `rancherImagePullPolicy`       | "IfNotPresent"                                        | `string` - Override imagePullPolicy for rancher server images - "Always", "Never", "IfNotPresent"                                                 |
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
-| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/ _Available as of v2.3.0_                  |
-| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations. _Available as of v2.3.0_ |
+| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
+| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
 
 <br/>
 
@@ -79,8 +79,6 @@ Set the `auditLog.destination` to `hostPath` to forward logs to volume shared wi
 
 ### Setting Extra Environment Variables
 
-_Available as of v2.2.0_
-
 You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
 
 ```plain
@@ -89,8 +87,6 @@ You can set extra environment variables for Rancher server using `extraEnv`. Thi
 ```
 
 ### TLS Settings
-
-_Available as of v2.2.0_
 
 To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
 
@@ -122,8 +118,6 @@ Example on setting a custom certificate issuer:
 ```plain
 --set ingress.extraAnnotations.'certmanager\.k8s\.io/cluster-issuer'=ca-key-pair
 ```
-
-_Available as of v2.0.15, v2.1.10 and v2.2.4_
 
 Example on setting a static proxy header with `ingress.configurationSnippet`. This value is parsed like a template so variables can be used.
 

@@ -1,8 +1,6 @@
 ---
 title: Kafka
 weight: 400
-aliases:
-  - /rancher/v2.x/en/tools/logging/kafka/
 ---
 
 If your organization uses [Kafka](https://kafka.apache.org/), you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Kafka server to view logs.

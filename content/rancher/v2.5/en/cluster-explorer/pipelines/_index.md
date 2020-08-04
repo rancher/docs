@@ -1,9 +1,6 @@
 ---
 title: Pipelines
 weight: 3047
-aliases:
-  - /rancher/v2.x/en/tools/pipelines/concepts/
-
 ---
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
@@ -113,8 +110,6 @@ Select your provider's tab below and follow the directions.
 {{% /tab %}}
 {{% tab "GitLab" %}}
 
-_Available as of v2.1.0_
-
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
 1. Select **Tools > Pipelines** in the navigation bar. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
@@ -133,8 +128,6 @@ _Available as of v2.1.0_
 {{% /tab %}}
 {{% tab "Bitbucket Cloud" %}}
 
-_Available as of v2.2.0_
-
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
 1. Select **Tools > Pipelines** in the navigation bar.
@@ -149,8 +142,6 @@ _Available as of v2.2.0_
 
 {{% /tab %}}
 {{% tab "Bitbucket Server" %}}
-
-_Available as of v2.2.0_
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
@@ -210,7 +201,7 @@ Now that repositories are added to your project, you can start configuring the p
 
 1. Select which `branch` to use from the list of branches.
 
-1. _Available as of v2.2.0_ Optional: Set up notifications.
+1. Optional: Set up notifications.
 
 1. Set up the trigger rules for the pipeline.
 

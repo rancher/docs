@@ -90,8 +90,6 @@ If you require another level of organization beyond the **Default** project, you
 
 ### The System Project
 
-_Available as of v2.0.7_
-
 When troubleshooting, you can view the `system` project to check if important namespaces in the Kubernetes system are working properly. This easily accessible project saves you from troubleshooting individual system namespace containers.
 
 To open it, open the **Global** menu, and then select the `system` project for your cluster.
@@ -166,8 +164,6 @@ To add members:
 1. From the **Role** drop-down, choose a role. For more information, refer to the [documentation on project roles.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/)
 
 ### 4. Optional: Add Resource Quotas
-
-_Available as of v2.1.0_
 
 Resource quotas limit the resources that a project (and its namespaces) can consume. For more information, see [Resource Quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas).
 

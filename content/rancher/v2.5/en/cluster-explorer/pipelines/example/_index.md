@@ -1,8 +1,6 @@
 ---
 title: Example YAML File
 weight: 501
-aliases:
-  - /rancher/v2.x/en/tools/pipelines/reference/
 ---
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.

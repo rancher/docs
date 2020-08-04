@@ -84,8 +84,6 @@ If you want to see all the configuration options for a cluster, please click **S
 
 ### Private registries
 
-_Available as of v2.2.0_
-
 The cluster-level private registry configuration is only used for provisioning clusters.
 
 There are two main ways to set up private registries in Rancher: by setting up the [global default registry]({{<baseurl>}}/rancher/v2.x/en/admin-settings/config-private-registry) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
@@ -100,8 +98,6 @@ The private registry configuration option tells Rancher where to pull the [syste
 See the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
 
 ### Authorized Cluster Endpoint
-
-_Available as of v2.2.0_
 
 Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
 
@@ -351,8 +347,6 @@ The table below indicates what DNS provider is deployed by default. See [RKE doc
 
 # Rancher specific parameters
 
-_Available as of v2.2.0_
-
 Besides the RKE config file options, there are also Rancher specific settings that can be configured in the Config File (YAML):
 
 ### docker_root_dir
@@ -381,8 +375,6 @@ local_cluster_auth_endpoint:
 ```
 
 ### Custom Network Plug-in
-
-_Available as of v2.2.4_
 
 You can add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. You define any add-on that you want deployed after the Kubernetes cluster is deployed.
 
