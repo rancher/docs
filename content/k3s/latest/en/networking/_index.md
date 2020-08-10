@@ -3,7 +3,7 @@ title: "Networking"
 weight: 35
 ---
 
-This page explains how CoreDNS, the Traefik Ingress controller, and the built-in service load balancer work with K3s.
+This page explains how CoreDNS, the Traefik Ingress controller, and Klipper service load balancer work within K3s.
 
 For information on CNI options, refer to the [Installation Network Options]({{<baseurl>}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
 
