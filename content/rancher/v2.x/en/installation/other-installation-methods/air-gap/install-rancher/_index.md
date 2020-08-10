@@ -206,7 +206,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 **Step Result:** If you are installing Rancher v2.3.0+, the installation is complete.
 
-> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login.
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the socket's can not be opened successfully.
 
 ### E. For Rancher versions prior to v2.3.0, Configure System Charts
 
