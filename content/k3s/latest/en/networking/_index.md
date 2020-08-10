@@ -37,7 +37,7 @@ To disable it, start each server with the `--disable traefik` option.
 
 # Service Load Balancer
 
-Any service load balancer (LB) can be leveraged in your Kubernetes cluster. K3s provides a Service LB that uses available host ports.
+Any service load balancer (LB) can be leveraged in your Kubernetes cluster. K3s provides a load balancer known as [Klipper Load Balancer](https://github.com/rancher/klipper-lb) that uses available host ports.
 
 Upstream Kubernetes allows a Service of type LoadBalancer to be created, but doesn't include the implementation of the LB. Some LB services require a cloud provider such as Amazon EC2 or Microsoft Azure. By contrast, the K3s service LB makes it possible to use an LB service without a cloud provider.
 
