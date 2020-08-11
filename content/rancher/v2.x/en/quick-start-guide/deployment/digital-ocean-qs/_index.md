@@ -37,8 +37,6 @@ Suggestions include:
 
 1. Run `terraform init`.
 
-1. Install the [RKE terraform provider](https://github.com/rancher/terraform-provider-rke), see [installation instructions](https://github.com/rancher/terraform-provider-rke#using-the-provider).
-
 1. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
 
     ```

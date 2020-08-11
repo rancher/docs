@@ -12,9 +12,7 @@ The following steps will quickly deploy a Rancher Server on AWS with a single no
 
 - [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
-- [Amazon AWS Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair) Use this link and follow instructions to create a Key Pair.
 - Install [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
-- Install the [RKE terraform provider.](https://github.com/rancher/terraform-provider-rke#installing-the-provider) You will need to download the binary for the Terraform provider for RKE that corresponds to the operating system of your workstation. Then you will need to move the binary into your Terraform plugin directory. The name of the directory will depend on your operating system. For more information how to install Terraform plugins, refer to the [Terraform documentation.](https://www.terraform.io/docs/plugins/basics.html#installing-a-plugin)
 
 
 ## Getting Started
@@ -36,7 +34,6 @@ Suggestions include:
     - `aws_region` - Amazon AWS region, choose the closest instead of the default
     - `prefix` - Prefix for all created resources
     - `instance_type` - EC2 instance size used, minimum is `t3a.medium` but `t3a.large` or `t3a.xlarge` could be used if within budget
-    - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
 1. Run `terraform init`.
 
@@ -48,7 +45,7 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 
