@@ -11,12 +11,25 @@ This page describes how to enable monitoring for a cluster.
 
 This section covers the following topics:
 
+- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [About Prometheus](#about-prometheus)
 - [Monitoring scope](#monitoring-scope)
 - [Enabling cluster monitoring](#enabling-cluster-monitoring)
 - [Resource consumption](#resource-consumption)
   - [Resource consumption of Prometheus pods](#resource-consumption-of-prometheus-pods)
   - [Resource consumption of other pods](#resources-consumption-of-other-pods)
+
+# Changes in Rancher v2.5
+
+Rancher's monitoring application is now powered by the Prometheus operator and relies less on Rancher's in-house monitoring tools.
+
+This change allows Rancher to automatically support new features of the Prometheus operator API.
+
+Previously, you would use the Rancher UI to configure monitoring. The Rancher UI created CRDs that were maintained by Rancher and updated the Prometheus state. In Rancher v2.5, you directly create CRDs for the monitoring application, and those CRDs are exposed in the Rancher UI.
+
+For information on configuring custom Prometheus metrics and alerting rules, refer to the upstream documentation for the [Prometheus operator.](https://github.com/prometheus-operator/prometheus-operator) This documentation can also help you set up RBAC, Thanos, or custom configuration.
+
+The Rancher monitoring application's Helm chart comes with a README that provides documentation. If you want to set up monitoring with advanced features, you can enable them when deploying the application.
 
 # About Prometheus
 
@@ -43,46 +56,3 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 > **Prerequisite:** Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
 
 > The default username and password for the Grafana instance will be `admin/admin`. However, Grafana dashboards are served via the Rancher authentication proxy, so only users who are currently authenticated into the Rancher server have access to the Grafana dashboard.
-
-# Resource Consumption
-
-When enabling cluster monitoring, you need to ensure your worker nodes and Prometheus pod have enough resources. The tables below provides a guide of how much resource consumption will be used. In larger deployments, it is strongly advised that the monitoring infrastructure be placed on dedicated nodes in the cluster.
-
-### Resource Consumption of Prometheus Pods
-
-This table is the resource consumption of the Prometheus pod, which is based on the number of all the nodes in the cluster. The count of nodes includes the worker, control plane and etcd nodes. Total disk space allocation should be approximated by the `rate * retention` period set at the cluster level. When enabling cluster level monitoring, you should adjust the CPU and Memory limits and reservation.
-
-Number of Cluster Nodes | CPU (milli CPU) | Memory | Disk
-------------------------|-----|--------|------
-5 | 500 | 650 MB | ~1 GB/Day
-50| 2000 | 2 GB | ~5 GB/Day
-256| 4000 | 6 GB | ~18 GB/Day
-
-Additional pod resource requirements for cluster level monitoring.
-
-| Workload            |      Container                  | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable |
-|---------------------|---------------------------------|---------------|---------------|-------------|-------------|--------------|
-| Prometheus          | prometheus                      |     750Mi      |     750Mi     |    1500Mi    |    1500Mi  |       Y      |
-|                     | prometheus-proxy                |      50Mi      |      50Mi     |     100Mi    |     100Mi   |       Y      |
-|                     | prometheus-auth                 |     100Mi      |     100Mi     |     500Mi    |     200Mi   |       Y      |
-|                     | prometheus-config-reloader      |       -       |       -       |      50Mi    |      50Mi   |       N      |
-|                     | rules-configmap-reloader        |       -       |       -       |     100Mi    |      25Mi   |       N      |
-| Grafana             | grafana-init-plugin-json-copy   |      50Mi      |      50Mi     |      50Mi    |      50Mi   |       Y      |
-|                     | grafana-init-plugin-json-modify |      50Mi      |      50Mi     |      50Mi    |      50Mi   |       Y      |
-|                     | grafana                         |     100Mi      |     100Mi     |     200Mi    |     200Mi   |       Y      |
-|                     | grafana-proxy                   |      50Mi      |      50Mi     |     100Mi    |     100Mi   |       Y      |
-| Kube-State Exporter | kube-state                      |     100Mi      |     130Mi     |     100Mi    |     200Mi   |       Y      |
-| Node Exporter       | exporter-node                   |     200Mi     |     200Mi     |     200Mi    |     200Mi   |       Y      |
-| Operator            | prometheus-operator             |     100Mi      |      50Mi     |     200Mi    |     100Mi   |       Y      |
-
-
-### Resource Consumption of Other Pods
-
-Besides the Prometheus pod, there are components that are deployed that require additional resources on the worker nodes.
-
-Pod | CPU (milli CPU) | Memory (MB)
-----|-----------------|------------
-Node Exporter (Per Node) | 100 | 30
-Kube State Cluster Monitor | 100 | 130
-Grafana | 100 | 150
-Prometheus Cluster Monitoring Nginx | 50 | 50
