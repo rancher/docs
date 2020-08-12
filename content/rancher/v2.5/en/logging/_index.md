@@ -22,7 +22,10 @@ The following changes were introduced to logging in Rancher v2.5:
 - We now support filtering logs.
 - We now support writing logs to multiple outputs.
 
-<figcaption>How the Banzai Cloud Logging Operator Works with Fluentd</figcaption>
+
+The following figure from the [Banzai documentation](https://banzaicloud.com/docs/one-eye/logging-operator/#architecture) shows the new logging architecture:
+
+<figcaption>How the Banzai Cloud Logging Operator Works with Fluentd and Fluent Bit</figcaption>
 
 ![How the Banzai Cloud Logging Operator Works with Fluentd]({{<baseurl>}}/img/rancher/banzai-cloud-logging-operator.png)
 
