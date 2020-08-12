@@ -7,6 +7,8 @@ weight: 10
 
 Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.
 
+This page describes how to enable monitoring for a cluster. 
+
 This section covers the following topics:
 
 - [About Prometheus](#about-prometheus)
@@ -20,43 +22,25 @@ This section covers the following topics:
 
 Prometheus provides a _time series_ of your data, which is, according to [Prometheus documentation](https://prometheus.io/docs/concepts/data_model/):
 
-You can configure these services to collect logs at either the cluster level or the project level. This page describes how to enable monitoring for a cluster. For details on enabling monitoring for a project, refer to the [project administration section]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/).
-
 >A stream of timestamped values belonging to the same metric and the same set of labeled dimensions, along with comprehensive statistics and metrics of the monitored cluster.
 
 In other words, Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Using timestamps, Prometheus lets you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or [Grafana](https://grafana.com/), which is an analytics viewing platform deployed along with Prometheus.
 
 By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.
 
-Multi-tenancy support in terms of cluster-only and project-only Prometheus instances are also supported.
-
 # Monitoring Scope
 
-Using Prometheus, you can monitor Rancher at both the cluster level and [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/). For each cluster and project that is enabled for monitoring, Rancher deploys a Prometheus server.
+Cluster monitoring allows you to view the health of your Kubernetes cluster. Prometheus collects metrics from the cluster components below, which you can view in graphs and charts.
 
-- Cluster monitoring allows you to view the health of your Kubernetes cluster. Prometheus collects metrics from the cluster components below, which you can view in graphs and charts.
-
-    - [Kubernetes control plane]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#kubernetes-components-metrics)
-    - [etcd database]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#etcd-metrics)
-    - [All nodes (including workers)]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#cluster-metrics)
-
-- [Project monitoring]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/) allows you to view the state of pods running in a given project. Prometheus collects metrics from the project's deployed HTTP and TCP/UDP workloads.
+- [Kubernetes control plane]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#kubernetes-components-metrics)
+- [etcd database]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#etcd-metrics)
+- [All nodes (including workers)]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#cluster-metrics)
 
 # Enabling Cluster Monitoring
 
 As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 
 > **Prerequisite:** Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
-
-1. From the **Global** view, navigate to the cluster that you want to configure cluster monitoring.
-
-1. Select **Tools > Monitoring** in the navigation bar.
-
-1. Select **Enable** to show the [Prometheus configuration options]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/prometheus/). Review the [resource consumption recommendations](#resource-consumption) to ensure you have enough resources for Prometheus and on your worker nodes to enable monitoring. Enter in your desired configuration options.
-
-1. Click **Save**.
-
-**Result:** The Prometheus server will be deployed as well as two monitoring applications. The two monitoring applications, `cluster-monitoring` and `monitoring-operator`, are added as an [application]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) to the cluster's `system` project. After the applications are `active`, you can start viewing [cluster metrics]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/) through the [Rancher dashboard]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/viewing-metrics/#rancher-dashboard) or directly from [Grafana]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#grafana).
 
 > The default username and password for the Grafana instance will be `admin/admin`. However, Grafana dashboards are served via the Rancher authentication proxy, so only users who are currently authenticated into the Rancher server have access to the Grafana dashboard.
 
@@ -78,18 +62,18 @@ Additional pod resource requirements for cluster level monitoring.
 
 | Workload            |      Container                  | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable |
 |---------------------|---------------------------------|---------------|---------------|-------------|-------------|--------------|
-| Prometheus          | prometheus                      |     750m      |     750Mi     |    1000m    |    1000Mi   |       Y      |
-|                     | prometheus-proxy                |      50m      |      50Mi     |     100m    |     100Mi   |       Y      |
-|                     | prometheus-auth                 |     100m      |     100Mi     |     500m    |     200Mi   |       Y      |
-|                     | prometheus-config-reloader      |       -       |       -       |      50m    |      50Mi   |       N      |
-|                     | rules-configmap-reloader        |       -       |       -       |     100m    |      25Mi   |       N      |
-| Grafana             | grafana-init-plugin-json-copy   |      50m      |      50Mi     |      50m    |      50Mi   |       Y      |
-|                     | grafana-init-plugin-json-modify |      50m      |      50Mi     |      50m    |      50Mi   |       Y      |
-|                     | grafana                         |     100m      |     100Mi     |     200m    |     200Mi   |       Y      |
-|                     | grafana-proxy                   |      50m      |      50Mi     |     100m    |     100Mi   |       Y      |
-| Kube-State Exporter | kube-state                      |     100m      |     130Mi     |     100m    |     200Mi   |       Y      |
-| Node Exporter       | exporter-node                   |     200m      |     200Mi     |     200m    |     200Mi   |       Y      |
-| Operator            | prometheus-operator             |     100m      |      50Mi     |     200m    |     100Mi   |       Y      |
+| Prometheus          | prometheus                      |     750Mi      |     750Mi     |    1500Mi    |    1500Mi  |       Y      |
+|                     | prometheus-proxy                |      50Mi      |      50Mi     |     100Mi    |     100Mi   |       Y      |
+|                     | prometheus-auth                 |     100Mi      |     100Mi     |     500Mi    |     200Mi   |       Y      |
+|                     | prometheus-config-reloader      |       -       |       -       |      50Mi    |      50Mi   |       N      |
+|                     | rules-configmap-reloader        |       -       |       -       |     100Mi    |      25Mi   |       N      |
+| Grafana             | grafana-init-plugin-json-copy   |      50Mi      |      50Mi     |      50Mi    |      50Mi   |       Y      |
+|                     | grafana-init-plugin-json-modify |      50Mi      |      50Mi     |      50Mi    |      50Mi   |       Y      |
+|                     | grafana                         |     100Mi      |     100Mi     |     200Mi    |     200Mi   |       Y      |
+|                     | grafana-proxy                   |      50Mi      |      50Mi     |     100Mi    |     100Mi   |       Y      |
+| Kube-State Exporter | kube-state                      |     100Mi      |     130Mi     |     100Mi    |     200Mi   |       Y      |
+| Node Exporter       | exporter-node                   |     200Mi     |     200Mi     |     200Mi    |     200Mi   |       Y      |
+| Operator            | prometheus-operator             |     100Mi      |      50Mi     |     200Mi    |     100Mi   |       Y      |
 
 
 ### Resource Consumption of Other Pods
