@@ -9,10 +9,10 @@ There are a couple of options for installing Docker. One option is to refer to t
 
 Another option is to use one of Rancher's Docker installation scripts, which are available for most recent versions of Docker.
 
-For example, this command could be used to install Docker 18.09 on Ubuntu:
+For example, this command could be used to install Docker 19.03 on Ubuntu:
 
 ```
-curl https://releases.rancher.com/install-docker/18.09.sh | sh
+curl https://releases.rancher.com/install-docker/19.03.sh | sh
 ```
 
-To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher's Docker installation scripts.
+Rancher has installation scripts for every version of upstream Docker that Kubernetes supports. To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher's Docker installation scripts.
