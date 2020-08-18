@@ -101,7 +101,16 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org
 ```
 
-> **Note:** There will be many more options from the previous step that need to be appended.
+> **Note:** The above is an example, there may be more values from the previous step that need to be appended.
+
+Alternatively, it's possible to reuse current values and make small changes with the `--reuse-values` flag. For example, to only change the Rancher version:
+
+```
+helm upgrade rancher rancher-<CHART_REPO>/rancher \
+  --namespace cattle-system \
+  --reuse-values \
+  --version=2.4.5
+```
 
 {{% /accordion %}}
 
