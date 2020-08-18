@@ -22,6 +22,28 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 
 - **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) and [caveats]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#caveats)** in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 - **For [air gap installs only,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+- **Confirm the correct kubeconfig YAML file is configured**, follow the steps below to confirm the Rancher management cluster kubeconfig is configured.
+
+Set the `KUBECONFIG` environment variable for the Rancher management cluster that is being upgraded.
+
+```
+export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
+```
+
+Verify that it contains the correct `server` parameter, it should point directly to one of your cluster nodes on port `6443`.
+
+```
+kubectl config view -o=jsonpath='{.clusters[*].cluster.server}'
+https://NODE:6443
+```
+
+If the output from the command shows your Rancher hostname with the suffix `/k8s/clusters`, the wrong kubeconfig YAML file is configured. It should be the file that was created with RKE or K3s when creating the cluster to run Rancher.
+
+Confirm that Rancher pods are running within the cluster.
+
+```
+kubectl get pods -n cattle-system
+```
 
 # Upgrade Outline
 
