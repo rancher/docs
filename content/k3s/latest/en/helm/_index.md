@@ -63,11 +63,15 @@ spec:
 | spec.valuesContent | N/A | Override complex default Chart values via YAML file content | `--values` |
 | spec.chartContent | N/A | Base64-encoded chart archive (.tgz) | N/A |
 
+Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymously via the Kubernetes APIServer from within the cluster. This URL can be templated using the special variable `%{KUBERNETES_API}%` in the `spec.chart` field. For example, the packaged Traefik component loads its chart from `https://%{KUBERNETES_API}%/static/charts/traefik-1.81.0.tgz`.
+
 ### Customizing Packaged Components with HelmChartConfig
 
-To allow overriding values for packaged components that are deployed as HelmCharts (ie; Traefik), K3s versions `<= v1.19.0+k3s1` support customizing deployments via a HelmChartConfig resources. The HelmChartConfig resource must match the name and namespace of its corresponding HelmChart. The HelmChartConfig allows specifying additional `valuesContent`, which is passed to the `helm` command as an additional value file. Note that value files cannot override options that are customized via the `spec.set` field on the HelmChart.
+To allow overriding values for packaged components that are deployed as HelmCharts (ie; Traefik), K3s versions `<= v1.19.0+k3s1` support customizing deployments via a HelmChartConfig resources. The HelmChartConfig resource must match the name and namespace of its corresponding HelmChart, and supports providing additional `valuesContent`, which is passed to the `helm` command as an additional value file.
 
-For example, to customize the packaged Traefik ingress configuration, you can create a file named `/var/lib/rancher/k3s/server/manifests/trafik-config.yaml` and populate it with the following content:
+> **Note:** HelmChart `spec.set` values override HelmChart and HelmChartConfig `spec.valuesContent` settings.
+
+For example, to customize the packaged Traefik ingress configuration, you can create a file named `/var/lib/rancher/k3s/server/manifests/traefik-config.yaml` and populate it with the following content:
 
 ```yaml
 apiVersion: helm.cattle.io/v1
