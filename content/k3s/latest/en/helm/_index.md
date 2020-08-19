@@ -52,16 +52,16 @@ spec:
 
 | Field | Default | Description | Helm Argument/Flag Equivalent |
 |-------|---------|-------------|-------------------------------|
-| name | N/A | Helm Chart name | NAME |
-| spec.chart | N/A | Helm Chart name in repository, or complete HTTPS URL to chart archive (.tgz) | CHART |
+| name |   | Helm Chart name | NAME |
+| spec.chart |   | Helm Chart name in repository, or complete HTTPS URL to chart archive (.tgz) | CHART |
 | spec.targetNamespace | default | Helm Chart target namespace | `--namespace` |
-| spec.version | N/A | Helm Chart version (when installing from repository) | `--version` |
-| spec.repo | N/A | Helm Chart repository URL | `--repo` |
-| spec.helmVersion | v3 | Helm version to use (`v2` or `v3`) | N/A |
-| spec.bootstrap | False | Set to True if this chart is needed to bootstrap the cluster (Cloud Controller Manager, etc) | N/A |
-| spec.set | N/A | Override simple default Chart values. These take precedence over options set via valuesContent. | `--set` / `--set-string` |
-| spec.valuesContent | N/A | Override complex default Chart values via YAML file content | `--values` |
-| spec.chartContent | N/A | Base64-encoded chart archive (.tgz) | N/A |
+| spec.version |   | Helm Chart version (when installing from repository) | `--version` |
+| spec.repo |   | Helm Chart repository URL | `--repo` |
+| spec.helmVersion | v3 | Helm version to use (`v2` or `v3`) |  |
+| spec.bootstrap | False | Set to True if this chart is needed to bootstrap the cluster (Cloud Controller Manager, etc) |  |
+| spec.set |   | Override simple default Chart values. These take precedence over options set via valuesContent. | `--set` / `--set-string` |
+| spec.valuesContent |   | Override complex default Chart values via YAML file content | `--values` |
+| spec.chartContent |   | Base64-encoded chart archive .tgz - overrides spec.chart | CHART |
 
 Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymously via the Kubernetes APIServer from within the cluster. This URL can be templated using the special variable `%{KUBERNETES_API}%` in the `spec.chart` field. For example, the packaged Traefik component loads its chart from `https://%{KUBERNETES_API}%/static/charts/traefik-1.81.0.tgz`.
 
