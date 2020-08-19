@@ -8,7 +8,6 @@ Rancher uses cert-manager to automatically generate and renew TLS certificates f
 1. [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager is deprecating and replacing the certificate.spec.acme.solvers field](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/). This change has no exact deadline.
 1. [Cert-manager is deprecating `v1alpha1` API and replacing its API group](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/)
-1. [Cert-manager is changing the Deployment selector](https://cert-manager.io/docs/installation/upgrading/upgrading-0.13-0.14/)
 
 To address these changes, this guide will do two things:
 
@@ -19,21 +18,14 @@ To address these changes, this guide will do two things:
 > If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, you need to reinstall both of them:
 
 > 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
-> 2. Uninstall Rancher, cert-manager and the CustomResourceDefinition for cert-manager
-> 3. Install the new CustomResourceDefinition for cert-manager, cert-manager and the newer version of Rancher 
+> 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
+> 3. Install the newer version of Rancher and cert-manager 
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
 > For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha/#c-upgrade-rancher) under the upgrade Rancher section. 
 
-## Upgrade Cert-Manager Only 
-
-If you are running cert-manager version 0.11.x or above, please follow official [upgrading doc](https://cert-manager.io/docs/installation/upgrading/#upgrading-with-helm) to upgrade it using helm. 
-
-Continue reading if you are coming from a cert-manager version older than 0.11
-
-> **Note:**
-> These instructions are applied if you have no plan to upgrade Rancher. 
+## Upgrade Cert-Manager
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
@@ -67,7 +59,7 @@ In order to upgrade cert-manager, follow these instructions:
 1. Install the CustomResourceDefinition resources separately
 
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
     > **Note:**
@@ -97,7 +89,7 @@ In order to upgrade cert-manager, follow these instructions:
     helm install \
       cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v0.14.2 
+      --version v0.12.0 
     ```
 
 1. [Restore back up resources](https://cert-manager.io/docs/tutorials/backup/#restoring-resources)
@@ -125,7 +117,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
 
     ```plain
-    helm fetch jetstack/cert-manager --version v0.14.2
+    helm fetch jetstack/cert-manager --version v0.12.0
     ```
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
@@ -133,7 +125,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     The Helm 3 command is as follows:
 
     ```plain
-    helm template cert-manager ./cert-manager-v0.14.2.tgz --output-dir . \
+    helm template cert-manager ./cert-manager-v0.12.0.tgz --output-dir . \
     --namespace cert-manager \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
     --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
@@ -143,7 +135,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     The Helm 2 command is as follows:
 
     ```plain
-    helm template ./cert-manager-v0.14.2.tgz --output-dir . \
+    helm template ./cert-manager-v0.12.0.tgz --output-dir . \
     --name cert-manager --namespace cert-manager \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller
     --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook
@@ -153,7 +145,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 1. Download the required CRD file for cert-manager (old and new)
 
     ```plain
-    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     curl -L -o cert-manager/cert-manager-crd-old.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-X.Y/deploy/manifests/00-crds.yaml
     ```
 
@@ -237,8 +229,6 @@ The v0.11 release marks the removal of the v1alpha1 API that was used in previou
 We have also removed support for the old configuration format that was deprecated in the v0.8 release. This means you must transition to using the new solvers style configuration format for your ACME issuers before upgrading to v0.11. For more information, see the [upgrading to v0.8 guide](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/).
 
 Details about the change and migration instructions can be found in the [cert-manager v0.10 to v0.11 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/).
-
-Details about the change and migration instructions can be found in the [cert-manager v0.13 to v0.14 upgrade instructions](https://cert-manager.io/docs/installation/upgrading/upgrading-0.13-0.14/).
 
 More info about [cert-manager upgrade information](https://cert-manager.io/docs/installation/upgrading/).
 

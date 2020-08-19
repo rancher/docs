@@ -3,7 +3,7 @@ title: CIS Benchmark Rancher Self-Assessment Guide - v2.3.5
 weight: 205
 ---
 
-### CIS Kubernetes Benchmark 1.5 - Rancher 2.3.5 with Kubernetes 1.15
+### CIS Kubernetes Benchmark v1.5 - Rancher v2.3.5 with Kubernetes v1.15
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.5/Rancher_Benchmark_Assessment.pdf)
 
@@ -1530,31 +1530,99 @@ RKE doesn’t require or maintain a configuration file for the kubelet service. 
 
 #### 4.1.3 Ensure that the proxy kubeconfig file permissions are set to `644` or more restrictive (Scored)
 
-**Result:** Not Applicable
+**Result:** PASS
 
 **Remediation:**
-RKE doesn’t require or maintain a configuration file for the proxy service. All configuration is passed in as arguments at container run time.
+Run the below command (based on the file location on your system) on the each worker node.
+For example,
+
+``` bash
+chmod 644 /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
+```
+
+**Audit:**
+
+```
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+```
+
+**Expected result**:
+
+```
+'644' is present OR '640' is present OR '600' is equal to '600' OR '444' is present OR '440' is present OR '400' is present OR '000' is present
+```
 
 #### 4.1.4 Ensure that the proxy kubeconfig file ownership is set to `root:root` (Scored)
 
-**Result:** Not Applicable
+**Result:** PASS
 
 **Remediation:**
-RKE doesn’t require or maintain a configuration file for the proxy service. All configuration is passed in as arguments at container run time.
+Run the below command (based on the file location on your system) on the each worker node.
+For example, 
+
+``` bash
+chown root:root /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
+```
+
+**Audit:**
+
+```
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+```
+
+**Expected result**:
+
+```
+'root:root' is present
+```
 
 #### 4.1.5 Ensure that the kubelet.conf file permissions are set to `644` or more restrictive (Scored)
 
-**Result:** Not Applicable
+**Result:** PASS
 
 **Remediation:**
-RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
+Run the below command (based on the file location on your system) on the each worker node.
+For example,
+
+``` bash
+chmod 644 /etc/kubernetes/ssl/kubecfg-kube-node.yaml
+```
+
+**Audit:**
+
+```
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+```
+
+**Expected result**:
+
+```
+'644' is present OR '640' is present OR '600' is equal to '600' OR '444' is present OR '440' is present OR '400' is present OR '000' is present
+```
 
 #### 4.1.6 Ensure that the kubelet.conf file ownership is set to `root:root` (Scored)
 
-**Result:** Not Applicable
+**Result:** PASS
 
 **Remediation:**
-RKE doesn’t require or maintain a configuration file for the kubelet service. All configuration is passed in as arguments at container run time.
+Run the below command (based on the file location on your system) on the each worker node.
+For example,
+
+``` bash
+chown root:root /etc/kubernetes/ssl/kubecfg-kube-node.yaml
+```
+
+**Audit:**
+
+```
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+```
+
+**Expected result**:
+
+```
+'root:root' is equal to 'root:root'
+```
 
 #### 4.1.7 Ensure that the certificate authorities file permissions are set to `644` or more restrictive (Scored)
 
@@ -1975,7 +2043,7 @@ systemctl restart kubelet.service
 
 #### 5.1.5 Ensure that default service accounts are not actively used. (Scored)
 
-**Result:** FAIL
+**Result:** PASS
 
 **Remediation:**
 Create explicit service accounts wherever a Kubernetes workload requires specific access
@@ -2001,13 +2069,20 @@ fi
 
 accounts="$(kubectl --kubeconfig=${KUBECONFIG} get serviceaccounts -A -o json | jq -r '.items[] | select(.metadata.name=="default") | select((.automountServiceAccountToken == null) or (.automountServiceAccountToken == true)) | "fail \(.metadata.name) \(.metadata.namespace)"')"
 
-if [[ "${accounts}" == "" ]]; then
-  echo "--pass"
-  exit 0
+if [[ "${accounts}" != "" ]]; then
+  echo "fail: automountServiceAccountToken not false for accounts: ${accounts}"
+  exit 1
 fi
 
-echo ${accounts}
-exit 1
+default_binding="$(kubectl get rolebindings,clusterrolebindings -A -o json | jq -r '.items[] | select(.subjects[].kind=="ServiceAccount" and .subjects[].name=="default" and .metadata.name=="default").metadata.uid' | wc -l)"
+
+if [[ "${default_binding}" -gt 0 ]]; then
+	echo "fail: default service accounts have non default bindings"
+	exit 1
+fi
+
+echo "--pass"
+exit 0
 ```
 
 **Audit Execution:**

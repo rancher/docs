@@ -85,12 +85,12 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
 
    ```plain
-   helm fetch jetstack/cert-manager --version v0.14.2
+   helm fetch jetstack/cert-manager --version v0.12.0
    ```
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
    ```plain
-   helm template cert-manager ./cert-manager-v0.14.2.tgz --output-dir . \
+   helm template cert-manager ./cert-manager-v0.12.0.tgz --output-dir . \
        --namespace cert-manager \
        --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller \
        --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook \
@@ -99,7 +99,7 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 1. Download the required CRD file for cert-manager
    ```plain
-   curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+   curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
    ```
 1. Render the Rancher template, declaring your chosen options. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 
@@ -204,8 +204,9 @@ Install Rancher:
 kubectl create namespace cattle-system
 kubectl -n cattle-system apply -R -f ./rancher
 ```
-
 **Step Result:** If you are installing Rancher v2.3.0+, the installation is complete.
+
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
 
 ### E. For Rancher versions prior to v2.3.0, Configure System Charts
 
@@ -325,6 +326,8 @@ docker run -d --restart=unless-stopped \
 {{% /accordion %}}
 
 If you are installing Rancher v2.3.0+, the installation is complete.
+
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login.
 
 If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/options/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
 

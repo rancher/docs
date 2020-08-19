@@ -89,7 +89,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
 
 ```
 # Install the CustomResourceDefinition resources separately
-kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.14/deploy/manifests/00-crds.yaml
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
 
 # **Important:**
 # If you are running Kubernetes v1.15 or below, you
@@ -114,11 +114,7 @@ helm repo update
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-<<<<<<< HEAD
-  --version v0.14.2
-=======
   --version v0.15.0
->>>>>>> jetstack cert-manager doc update
 ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:

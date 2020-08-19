@@ -1,4 +1,4 @@
 ---
-title: v2.0-v2.4
+title: v2.x
 showBreadcrumb: false
 ---
