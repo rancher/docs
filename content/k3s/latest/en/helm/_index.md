@@ -5,7 +5,7 @@ weight: 42
 
 Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/docs/intro/quickstart/](https://helm.sh/docs/intro/quickstart/).
 
-K3s does not require any special configuration to use with Helm 3. Just be sure you have properly set up your kubeconfig as per the section about [cluster access.](../cluster-access). K3s does include some extra functionality to make deploying both traditional Kubernetes resource manifests and Helm Charts even easier.
+K3s does not require any special configuration to use with Helm command-line tools. Just be sure you have properly set up your kubeconfig as per the section about [cluster access.](../cluster-access). K3s does include some extra functionality to make deploying both traditional Kubernetes resource manifests and Helm Charts even easier.
 
 This section covers the following topics:
 
@@ -50,7 +50,7 @@ spec:
 
 #### HelmChart Field Definitions
 
-| Field | Default | Description | Helm Argument/Flag Equivalent |
+| Field | Default | Description | Helm Argument / Flag Equivalent |
 |-------|---------|-------------|-------------------------------|
 | name |   | Helm Chart name | NAME |
 | spec.chart |   | Helm Chart name in repository, or complete HTTPS URL to chart archive (.tgz) | CHART |
