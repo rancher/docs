@@ -3,48 +3,28 @@ title: Helm
 weight: 42
 ---
 
-K3s release _v1.17.0+k3s.1_ added support for Helm 3. You can access the Helm 3 documentation [here](https://helm.sh/docs/intro/quickstart/).
+Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/docs/intro/quickstart/](https://helm.sh/docs/intro/quickstart/).
 
-Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at https://helm.sh/.
-
-K3s does not require any special configuration to start using Helm 3. Just be sure you have properly set up your kubeconfig as per the section about [cluster access.](../cluster-access)
+K3s does not require any special configuration to use with Helm 3. Just be sure you have properly set up your kubeconfig as per the section about [cluster access.](../cluster-access). K3s does include some extra functionality to make deploying both traditional Kubernetes resource manifests and Helm Charts even easier.
 
 This section covers the following topics:
 
-- [Upgrading Helm](#upgrading-helm)
-- [Deploying manifests and Helm charts](#deploying-manifests-and-helm-charts)
+- [Automatically Deploying Manifests and Helm Charts](#deploying-manifests-and-helm-charts)
 - [Using the Helm CRD](#using-the-helm-crd)
+- [Customizing Packaged Components with HelmChartConfig](#customizing-packaged-components-with-helmchartconfig)
+- [Upgrading Helm](#upgrading-helm)
 
-### Upgrading Helm
+### Automatically Deploying Manifests and Helm Charts
 
-If you were using Helm v2 in previous versions of K3s, you may upgrade to v1.17.0+k3s.1 or newer and Helm 2 will still function. If you wish to migrate to Helm 3, [this](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) blog post by Helm explains how to use a plugin to successfully migrate. Refer to the official Helm 3 documentation [here](https://helm.sh/docs/) for more information. K3s will handle either Helm v2 or Helm v3 as of v1.17.0+k3s.1. Just be sure you have properly set your kubeconfig as per the examples in the section about [cluster access.](../cluster-access)
+Any Kubernetes manifests found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to K3s in a manner similar to `kubectl apply`. Manifests deployed in this manner are managed as AddOn custom resources, and can be viewed by running `kubectl get addon -A`. You will find AddOns for packaged components such as CoreDNS, ServiceLB, Traefik, etc. AddOns are created automatically by the deploy controller, and are named based on their filename in the manifests directory.
 
-Note that Helm 3 no longer requires Tiller and the `helm init` command. Refer to the official documentation for details.
+It is also possible to deploy Helm charts as AddOns. K3s [includes a Helm controller](https://github.com/rancher/helm-controller/) that manages Helm charts using a HelmChart Custom Resource Definition (CRD).
 
-### Deploying Manifests and Helm Charts
+### Using the Helm CRD
 
-Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
+> **Note:** K3s versions `<= v0.5.0` used `k3s.cattle.io/v1` as the apiVersion for HelmCharts. This has been changed to `helm.cattle.io/v1` for later versions.
 
-It is also possible to deploy Helm charts. K3s supports a CRD controller for installing charts. A YAML file specification can look as following (example taken from `/var/lib/rancher/k3s/server/manifests/traefik.yaml`):
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: traefik
-  namespace: kube-system
-spec:
-  chart: stable/traefik
-  set:
-    rbac.enabled: "true"
-    ssl.enabled: "true"
-```
-
-Keep in mind that `namespace` in your HelmChart resource metadata section should always be `kube-system`, because the K3s deploy controller is configured to watch this namespace for new HelmChart resources. If you want to specify the namespace for the actual Helm release, you can do that using `targetNamespace` key under the `spec` directive, as shown in the configuration example below.
-
-> **Note:** In order for the Helm Controller to know which version of Helm to use to Auto-Deploy a helm app, please specify the `helmVersion` in the spec of your YAML file.
-
-Also note that besides `set`, you can use `valuesContent` under the `spec` directive. And it's okay to use both of them:
+The HelmChart resource definition captures most of the options you would normally pass to the `helm` command-line tool. Here's an example of how you might deploy Grafana from the default chart repository, overriding some of the default chart values. Note that the HelmChart resource itself is in the `kube-system` namespace, but the chart's resources will be deployed to the `monitoring` namespace.
 
 ```yaml
 apiVersion: helm.cattle.io/v1
@@ -68,34 +48,54 @@ spec:
         enabled: true
 ```
 
-K3s versions `<= v0.5.0` used `k3s.cattle.io` for the API group of HelmCharts. This has been changed to `helm.cattle.io` for later versions.
+#### HelmChart Field Definitions
 
-### Using the Helm CRD
+| Field | Default | Description | Helm Argument/Flag Equivalent |
+|-------|---------|-------------|-------------------------------|
+| name | N/A | Helm Chart name | NAME |
+| spec.chart | N/A | Helm Chart name in repository, or complete HTTPS URL to chart archive (.tgz) | CHART |
+| spec.targetNamespace | default | Helm Chart target namespace | `--namespace` |
+| spec.version | N/A | Helm Chart version (when installing from repository) | `--version` |
+| spec.repo | N/A | Helm Chart repository URL | `--repo` |
+| spec.helmVersion | v3 | Helm version to use (`v2` or `v3`) | N/A |
+| spec.bootstrap | False | Set to True if this chart is needed to bootstrap the cluster (Cloud Controller Manager, etc) | N/A |
+| spec.set | N/A | Override simple default Chart values. These take precedence over options set via valuesContent. | `--set` / `--set-string` |
+| spec.valuesContent | N/A | Override complex default Chart values via YAML file content | `--values` |
+| spec.chartContent | N/A | Base64-encoded chart archive (.tgz) | N/A |
 
-You can deploy a third-party Helm chart using an example like this:
+### Customizing Packaged Components with HelmChartConfig
+
+To allow overriding values for packaged components that are deployed as HelmCharts (ie; Traefik), K3s versions `<= v1.19.0+k3s1` support customizing deployments via a HelmChartConfig resources. The HelmChartConfig resource must match the name and namespace of its corresponding HelmChart. The HelmChartConfig allows specifying additional `valuesContent`, which is passed to the `helm` command as an additional value file. Note that value files cannot override options that are customized via the `spec.set` field on the HelmChart.
+
+For example, to customize the packaged Traefik ingress configuration, you can create a file named `/var/lib/rancher/k3s/server/manifests/trafik-config.yaml` and populate it with the following content:
 
 ```yaml
 apiVersion: helm.cattle.io/v1
-kind: HelmChart
+kind: HelmChartConfig
 metadata:
-  name: nginx
+  name: traefik
   namespace: kube-system
 spec:
-  chart: nginx
-  repo: https://charts.bitnami.com/bitnami
-  targetNamespace: default
+  valuesContent: |-
+    image: traefik
+    imageTag: v1.7.26-alpine
+    proxyProtocol:
+      enabled: true
+      trustedIPs:
+        - 10.0.0.0/8
+    forwardedHeaders:
+      enabled: true
+      trustedIPs:
+        - 10.0.0.0/8
+    ssl:
+      enabled: true
+      permanentRedirect: false
 ```
 
-You can install a specific version of a Helm chart using an example like this:
+### Upgrading from Helm v2
 
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
-metadata:
-  name: stable/nginx-ingress
-  namespace: kube-system
-spec:
-  chart: nginx-ingress
-  version: 1.24.4
-  targetNamespace: default
-```
+> **Note:** K3s versions `<= v1.17.0+k3s.1` support Helm v3, and will use it by default. Helm v2 charts can be used by setting `helmVersion: v2` in the spec.
+
+If you were using Helm v2 in previous versions of K3s, you may upgrade to v1.17.0+k3s.1 or newer and Helm 2 will still function. If you wish to migrate to Helm 3, [this](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) blog post by Helm explains how to use a plugin to successfully migrate. Refer to the official Helm 3 documentation [here](https://helm.sh/docs/) for more information. K3s will handle either Helm v2 or Helm v3 as of v1.17.0+k3s.1. Just be sure you have properly set your kubeconfig as per the examples in the section about [cluster access.](../cluster-access)
+
+Note that Helm 3 no longer requires Tiller and the `helm init` command. Refer to the official documentation for details.
