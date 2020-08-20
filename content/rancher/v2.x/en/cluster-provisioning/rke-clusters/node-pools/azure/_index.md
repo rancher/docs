@@ -19,7 +19,17 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 5. {{< step_create-cluster_cluster-options >}}
 
 6. {{< step_create-cluster_node-pools >}}
-
+  
+  Before creating a **node template** in Rancher using a cloud infrastructure such as Azure, we must configure Rancher to allow the manipulation of resources in an Azure subscription.
+  
+  To do this, we will first create a new Azure **service principal (SP)** in Azure **Active Directory (AD)**, which, in Azure, is an application user who has permission to manage Azure resources.
+ 
+  The following is a template `az cli` script that you have to run for creating an service principal, where you have to enter your SP name, role, and scope:
+  
+  `az ad sp create-for-rbac --name="<Rancher ServicePrincipal name>" -- role="Contributor" --scopes="/subscriptions/<subscription Id>"`
+  
+  The creation of this service principal returns three pieces of identification information, *The application ID, also called the client ID*, *The client secret*, and *The tenant ID*. This information will be used in the following section adding the **node template**.
+  
 	1.	Click **Add Node Template**.
 
 	2.	Complete the **Azure Options** form.
