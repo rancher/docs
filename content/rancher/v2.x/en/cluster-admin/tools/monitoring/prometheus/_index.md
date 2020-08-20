@@ -20,7 +20,7 @@ Prometheus [CPU Reservation](https://kubernetes.io/docs/concepts/configuration/m
 Prometheus [Memory Limit](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) | Memory resource limit for the Prometheus pod.
 Prometheus [Memory Reservation](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) | Memory resource requests for the Prometheus pod.
 Selector | Ability to select the nodes in which Prometheus and Grafana pods are deployed to. To use this option, the nodes must have labels.
-Advanced Options | Since monitoring is an [application](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) from the [Rancher catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/), it can be [configured like other catalog application]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/#configuration-options). _Warning: Any modification to the application without understanding the entire application can lead to catastrophic errors._
+Advanced Options | Since monitoring is an [application](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) from the [Rancher catalog]({{<baseurl>}}/rancher/v2.x/en/catalog/), it can be [configured like any other catalog application]({{<baseurl>}}/rancher/v2.x/en/catalog/catalog-config/). _Warning: Any modification to the application without understanding the entire application can lead to catastrophic errors._
 
 ## Node Exporter
 
