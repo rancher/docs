@@ -1,6 +1,6 @@
 ---
 title: Other Installation Methods
-weight: 4
+weight: 3
 ---
 
 ### Docker Installations

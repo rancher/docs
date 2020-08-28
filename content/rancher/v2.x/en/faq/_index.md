@@ -1,6 +1,6 @@
 ---
 title: FAQ
-weight: 8000
+weight: 24
 aliases:
   - /rancher/v2.x/en/about/
 ---

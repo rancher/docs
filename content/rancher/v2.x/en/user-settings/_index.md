@@ -1,6 +1,6 @@
 ---
 title: User Settings
-weight: 7000
+weight: 22
 aliases:
   - /rancher/v2.x/en/tasks/user-settings/
 ---

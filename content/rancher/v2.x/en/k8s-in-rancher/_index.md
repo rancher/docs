@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Resources, Registries and Pipelines
-weight: 3000
+weight: 19
 aliases:
   - /rancher/v2.x/en/concepts/
   - /rancher/v2.x/en/tasks/

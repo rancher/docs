@@ -1,6 +1,6 @@
 ---
 title: Project Administration
-weight: 2500
+weight: 9
 aliases:
   - /rancher/v2.x/en/project-admin/editing-projects/
 ---

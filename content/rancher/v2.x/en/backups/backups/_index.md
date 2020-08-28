@@ -1,5 +1,5 @@
 ---
-title: Backups
+title: Backup
 weight: 50
 aliases:
   - /rancher/v2.x/en/installation/after-installation/

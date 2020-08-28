@@ -1,7 +1,7 @@
 ---
 title: Restoring Backups—Docker Installs
 shortTitle: Docker Installs
-weight: 365
+weight: 3
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
 ---

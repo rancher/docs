@@ -44,6 +44,12 @@ The figure below illustrates the high-level architecture of Rancher 2.x. The fig
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
+The form to create EKS clusters was improved in Rancher 2.5.
+
+{{% tabs %}}
+{{% tab "Rancher v2.5+" %}}
+{{% /tab %}}
+{{% tab "Rancher prior to v2.5" %}}
 1. From the **Clusters** page, click **Add Cluster**.
 
 1. Choose **Amazon EKS**.
@@ -134,6 +140,8 @@ If you chose this option, you must also choose a **VPC & Subnet** that allow you
 1. Click **Create**.
 
 {{< result_create-cluster >}}
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Troubleshooting
 
