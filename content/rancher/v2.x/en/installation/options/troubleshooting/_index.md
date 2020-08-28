@@ -15,7 +15,7 @@ Most of the troubleshooting will be done on objects in these 3 namespaces.
 
 - `cattle-system` - `rancher` deployment and pods.
 - `ingress-nginx` - Ingress controller pods and services.
-- `kube-system` - `tiller` and `cert-manager` pods.
+- `cert-manager` - `cert-manager` pods.
 
 ### "default backend - 404"
 
@@ -81,7 +81,7 @@ Use your browser to check the certificate details. If it says the Common Name is
 
 `cert-manager` has 3 parts.
 
-- `cert-manager` pod in the `kube-system` namespace.
+- `cert-manager` pod in the `cert-manager` namespace.
 - `Issuer` object in the `cattle-system` namespace.
 - `Certificate` object in the `cattle-system` namespace.
 
