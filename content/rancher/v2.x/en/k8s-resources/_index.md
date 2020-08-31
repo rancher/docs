@@ -1,7 +1,10 @@
 ---
-title: Cluster Explorer
+title: Kubernetes Resources
 weight: 10
 ---
+
+
+### About the Cluster Explorer
 
 _Available as of v2.5_
 

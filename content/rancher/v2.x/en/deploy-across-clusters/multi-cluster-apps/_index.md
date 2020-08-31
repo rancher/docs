@@ -1,5 +1,6 @@
 ---
-title: Legacy UI Documentation
+title: Legacy Multi-Cluster App Documentation
+shortTitle: Legacy
 weight: 2
 ---
 

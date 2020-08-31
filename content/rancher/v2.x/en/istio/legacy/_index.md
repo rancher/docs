@@ -1,4 +1,5 @@
 ---
-title: Legacy UI Documentation
+title: Legacy Istio Documentation
+shortTitle: Legacy
 weight: 1
 ---

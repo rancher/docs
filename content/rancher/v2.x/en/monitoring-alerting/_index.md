@@ -2,7 +2,7 @@
 title: Monitoring and Alerting
 shortTitle: Monitoring/Alerting
 description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
-weight: 12
+weight: 14
 ---
 
 Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.

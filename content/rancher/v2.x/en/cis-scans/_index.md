@@ -1,6 +1,6 @@
 ---
 title: CIS Scans
-weight: 15
+weight: 18
 ---
 
 _Available as of v2.4.0_

@@ -1,5 +1,6 @@
 ---
-title: Legacy UI Documentation
+title: Legacy CIS Scan Documentation
+shortTitle: Legacy
 weight: 1
 ---
 _Available as of v2.4.0_

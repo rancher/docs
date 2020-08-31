@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Resources, Registries and Pipelines
+title: Legacy
 weight: 19
 aliases:
   - /rancher/v2.x/en/concepts/

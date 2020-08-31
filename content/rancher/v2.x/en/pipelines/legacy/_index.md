@@ -1,6 +1,7 @@
 ---
-title: Pipelines
-weight: 3047
+title: Legacy Pipeline Documentation
+shortTitle: Legacy
+weight: 1
 aliases:
   - /rancher/v2.x/en/tools/pipelines/concepts/
 

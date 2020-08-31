@@ -1,6 +1,6 @@
 ---
 title: Deploying Applications across Clusters
-weight: 18
+weight: 13
 ---
 
 > This section is under construction.

@@ -1,6 +1,6 @@
 ---
-title: Helm Charts in Rancher
-weight: 12
+title: Pipelines
+weight: 11
 ---
 
 > This section is under construction.
