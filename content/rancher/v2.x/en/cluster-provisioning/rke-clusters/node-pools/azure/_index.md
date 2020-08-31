@@ -32,8 +32,11 @@ Use {{< product >}} to create a Kubernetes cluster in Azure.
 
 6. {{< step_create-cluster_node-pools >}}
 
-{{< result_create-cluster >}}
+7. **Optional:** Add additional node pools.
 
+8. Review your options to confirm they're correct. Then click **Create**.
+
+{{< result_create-cluster >}}
 
 ### Optional Next Steps
 
@@ -68,9 +71,7 @@ The creation of this service principal returns three pieces of identification in
 
 1. Click **Create**.
 
-1. **Optional:** Add additional node pools.
-
-1. Review your options to confirm they're correct. Then click **Create**.
+**Result:** The node template can be used during the cluster creation process.
 
 
 ### Template Configuration
