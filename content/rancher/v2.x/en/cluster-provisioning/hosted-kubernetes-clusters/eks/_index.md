@@ -73,7 +73,15 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 # EKS Cluster Configuration Reference
 
+{{% tabs %}}
+{{% tab "Rancher v2.5+" %}}
+{{% /tab %}}
+{{% tab "Rancher prior to v2.5" %}}
+
+
 ### Account Access
+
+<a id="account-access-2-4"></a>
 
 Complete each drop-down and field using the information obtained for your [IAM policy.](#iam-policy)
 
@@ -85,6 +93,8 @@ Complete each drop-down and field using the information obtained for your [IAM p
 
 ### Service Role
 
+<a id="service-role-2-4"></a>
+
 Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
 
 Service Role | Description
@@ -94,6 +104,8 @@ Custom: Choose from your existing service roles | If you choose this role, Ranch
 
 ### Public IP for Worker Nodes
 
+<a id="public-ip-for-worker-nodes-2-4"></a>
+
 Your selection for this option determines what options are available for **VPC & Subnet**.
 
 Option | Description
@@ -102,6 +114,8 @@ Yes | When your cluster nodes are provisioned, they're assigned a both a private
 No: Private IPs only | When your cluster nodes are provisioned, they're assigned only a private IP address.<br/><br/>If you choose this option, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane.
 
 ### VPC & Subnet
+
+<a id="vpc-and-subnet-2-4"></a>
 
 The available options depend on the [public IP for worker nodes.](#public-ip-for-worker-nodes)
 
@@ -122,7 +136,7 @@ If you choose to assign a public IP address to your cluster's worker nodes, you 
 
 If you're using **Custom: Choose from your existing VPC and Subnets**:
 
-(If you're using **Standard**, skip to the [instance options.)](#select-instance-options)
+(If you're using **Standard**, skip to the [instance options.)](#select-instance-options-2-4)
 
 1. Make sure **Custom: Choose from your existing VPC and Subnets** is selected.
 
@@ -143,12 +157,11 @@ Follow the steps below.
 
 1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
 
-1. Click **Next: Select Security Group**.
 {{% /accordion %}}
 
 ### Security Group
 
-<a id="security-group"></a>
+<a id="security-group-2-4"></a>
 
 Amazon Documentation:
 
@@ -158,7 +171,7 @@ Amazon Documentation:
 
 ### Instance Options
 
-<a id="select-instance-options"></a>
+<a id="select-instance-options-2-4"></a>
 
 Instance type and size of your worker nodes affects how many IP addresses each worker node will have available. See this [documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI) for more information.
 
@@ -168,6 +181,10 @@ Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-
 Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here. By default, Rancher will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the EKS version that you chose.
 Desired ASG Size | The number of instances that your cluster will provision.
 User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
+
+{{% /tab %}}
+{{% /tabs %}}
+
 
 # Troubleshooting
 
