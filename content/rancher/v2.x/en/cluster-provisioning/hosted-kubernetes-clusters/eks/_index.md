@@ -73,8 +73,121 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 # EKS Cluster Configuration Reference
 
+### Changes in Rancher v2.5
+
+More EKS options can be configured when you create an EKS cluster in Rancher, including the following:
+
+- Managed node groups
+- The Kubernetes Cluster Autoscaler
+- Control plane logging
+- Secrets encryption with KMS
+
+The following capabilities have been added for configuring EKS clusters in Rancher:
+
+- GPU support
+- Automatically update AMIs
+- Add new nodes
+- Upgrade nodes
+- Add and remove node groups
+- Disable and enable private access
+- Add restrictions to public access
+- Use your cloud credentials to create the EKS cluster instead of passing in your access key and secret key
+
 {{% tabs %}}
 {{% tab "Rancher v2.5+" %}}
+
+### Account Access
+
+<a id="account-access-2-5"></a>
+
+Complete each drop-down and field using the information obtained for your [IAM policy.](#iam-policy)
+
+| Setting    | Description       |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- |
+| Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
+| Cloud Credentials | Select the cloud credentials that you created for your [IAM policy.](#iam-policy) For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+
+### Service Role
+
+<a id="service-role-2-5"></a>
+
+Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
+
+Service Role | Description
+-------------|---------------------------
+Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
+Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
+
+### Secrets Encryption
+
+<a id="secrets-encryption-2-5"></a>
+
+Optional: To encrypt secrets, select or enter a key created in [AWS Key Management Service (KMS)](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
+
+### API Server Endpoint Access
+
+<a id="api-server-endpoint-access-2-5"></a>
+
+Configuring Public/Private API access is an advanced use case. For details, refer to the EKS cluster endpoint access control [documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+
+### Public Access Endpoints
+
+<a id="public-access-endpoints-2-5"></a>
+
+Optionally limit access to the public endpoint via explicit CIDR blocks. If you limit access to specific CIDR blocks, then it is recommended that you also enable the private access to avoid losing network communication to the cluster.
+
+For more information about public and private access to the cluster endpoint, refer to the [Amazon EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+
+### Subnet
+
+<a id="subnet-2-5"></a>
+
+| Option | Description |
+| ------- | ------------ |
+| Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC and Subnet. |
+| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
+
+ For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
+
+- [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
+
+### Security Group
+
+<a id="security-group-2-5"></a>
+
+Amazon Documentation:
+
+- [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
+- [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+- [Create a Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html#getting-started-create-security-group)
+
+### Logging
+
+<a id="logging-2-5"></a>
+
+Configure control plane logs to send to Amazon CloudWatch. You are charged the standard CloudWatch Logs data ingestion and storage costs for any logs sent to CloudWatch Logs from your clusters.
+
+Each log type corresponds to a component of the Kubernetes control plane. To learn more about these components, see [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/) in the Kubernetes documentation.
+
+For more information on EKS control plane logging, refer to the official [documentation.](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+
+### Managed Node Groups
+
+<a id="managed-node-groups-2-5"></a>
+
+Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters. 
+
+For more information about how node groups work and how they are configured, refer to the [EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+
+Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the Kubernetes version. You can configure whether the AMI has GPU enabled.
+
+| Option | Description |
+| ------- | ------------ |
+| Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-types/) for the instance you're provisioning. |
+| Maximum ASG Size | The maximum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
+| Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
+
 {{% /tab %}}
 {{% tab "Rancher prior to v2.5" %}}
 
