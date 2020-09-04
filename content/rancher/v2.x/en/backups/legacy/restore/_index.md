@@ -1,6 +1,8 @@
 ---
 title: Restore
 weight: 1010
+aliases:
+  - /rancher/v2.x/en/backups/restorations
 ---
 If you lose the data on your Rancher Server, you can restore it if you have backups stored in a safe location.
 

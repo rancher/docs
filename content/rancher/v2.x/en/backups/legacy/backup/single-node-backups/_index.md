@@ -4,6 +4,7 @@ shortTitle: Docker Installs
 weight: 3
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
 ---
 
 After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.

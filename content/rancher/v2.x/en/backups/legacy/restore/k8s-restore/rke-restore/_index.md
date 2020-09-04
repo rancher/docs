@@ -5,6 +5,7 @@ weight: 2
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
   - /rancher/v2.x/en/backups/restorations/ha-restoration
+  - /rancher/v2.x/en/backups/restorations/k8s-restore/rke-restore
 ---
 
 This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. 

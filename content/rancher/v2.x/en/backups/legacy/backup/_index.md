@@ -4,6 +4,7 @@ weight: 50
 aliases:
   - /rancher/v2.x/en/installation/after-installation/
   - /rancher/v2.x/en/backups/
+  - /rancher/v2.x/en/backups/backups
 ---
 This section contains information about how to create backups of your Rancher data and how to restore them in a disaster scenario.
 
