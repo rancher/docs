@@ -25,11 +25,14 @@ Use the command example to start a Rancher container with your private CA certif
 
 The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
 
+As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+
 ```
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /host/certs:/container/certs \
   -e SSL_CERT_DIR="/container/certs" \
+  --privileged \
   rancher/rancher:latest
 ```
 
@@ -41,11 +44,14 @@ The API Audit Log writes to `/var/log/auditlog` inside the rancher container by 
 
 See [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) for more information and options.
 
+As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+
 ```
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /var/log/rancher/auditlog:/var/log/auditlog \
   -e AUDIT_LEVEL=1 \
+  --privileged \
   rancher/rancher:latest
 ```
 
@@ -59,8 +65,11 @@ To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` a
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -e CATTLE_TLS_MIN_VERSION="1.0" \
+  --privileged \
   rancher/rancher:latest
 ```
+
+As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
 
 See [TLS settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/tls-settings) for more information and options.
 
@@ -89,5 +98,8 @@ To change the host ports mapping, replace the following part `-p 80:80 -p 443:44
 ```
 docker run -d --restart=unless-stopped \
   -p 8080:80 -p 8443:443 \
+  --privileged \
   rancher/rancher:latest
 ```
+
+As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
