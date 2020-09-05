@@ -74,8 +74,13 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
 1. Start a new Rancher Server container with the `<PRIOR_RANCHER_VERSION>` tag [placeholder](#before-you-start) pointing to the data container.
     ```
     docker run -d --volumes-from rancher-data \
-    --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher:<PRIOR_RANCHER_VERSION>
+    --restart=unless-stopped \
+    -p 80:80 -p 443:443 \
+    --privileged \
+    rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
+    As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+    
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 
 1.  Wait a few moments and then open Rancher in a web browser. Confirm that the rollback succeeded and that your data is restored.
