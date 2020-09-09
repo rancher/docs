@@ -14,7 +14,7 @@ This section is about how to deploy Rancher for your air gapped environment. An 
 
 ### Privileged Access for Rancher v2.5+
 
-When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container, then Rancher is deployed on the cluster. Because privileged access is required to run containers within containers, you will need to install Rancher with the `--privileged` option in order to access many features of Rancher, including deploying pods on the local Kubernetes cluster.
+When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
 {{% tabs %}}
 {{% tab "Kubernetes Install (Recommended)" %}}
