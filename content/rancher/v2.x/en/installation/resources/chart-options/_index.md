@@ -34,7 +34,7 @@ weight: 2
 | Option                         | Default Value                                         | Description                                                                                                                                       |
 | ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `additionalTrustedCAs`         | false                                                 | `bool` - See [Additional Trusted CAs](#additional-trusted-cas)                                                                                    |
-| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster [Import "local Cluster](#import-local-cluster)                       |
+| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster. For more information, see [Import local Cluster.](#import-local-cluster)  If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner.                  |
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
 | `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
@@ -101,9 +101,11 @@ See [TLS settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/tls-settings) fo
 
 By default Rancher server will detect and import the `local` cluster it's running on. User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
 
+> **Important:**  If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner. 
+
 If this is a concern in your environment you can set this option to "false" on your initial install.
 
-> Note: This option is only effective on the initial Rancher install. See [Issue 16522](https://github.com/rancher/rancher/issues/16522) for more information.
+This option is only effective on the initial Rancher install. See [Issue 16522](https://github.com/rancher/rancher/issues/16522) for more information.
 
 ```plain
 --set addLocal="false"
