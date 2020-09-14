@@ -53,7 +53,7 @@ Suggestions include:
 
 #### Result
 
-Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments.
+Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines.
 
 ### What's Next?
 
