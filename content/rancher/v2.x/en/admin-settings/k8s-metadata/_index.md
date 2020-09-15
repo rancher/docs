@@ -33,6 +33,8 @@ The option to refresh the Kubernetes metadata is available for administrators by
 
 To force Rancher to refresh the Kubernetes metadata, a manual refresh action is available under **Tools > Drivers > Refresh Kubernetes Metadata** on the right side corner. 
 
+You can configure Rancher to only refresh metadata when desired by setting `refresh-interval-minutes` to `0` (see below) and using this button to perform the metadata refresh manually when desired.
+
 ### Configuring the Metadata Synchronization
 
 > Only administrators can change these settings.
