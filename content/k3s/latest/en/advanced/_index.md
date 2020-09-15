@@ -314,6 +314,19 @@ rpm -i https://rpm.rancher.io/k3s-selinux-0.1.1-rc1.el7.noarch.rpm
 
 To force the install script to log a warning rather than fail, you can set the following environment variable: `INSTALL_K3S_SELINUX_WARN=true`.
 
+The way that SELinux enforcement is enabled or disabled depends on the K3s version.
+
+{{% tabs %}}
+{{% tab "K3s v1.19.1+k3s1" %}}
+
+To leverage experimental SELinux, specify the `--selinux` flag when starting K3s servers and agents.
+
+{{%/tab%}}
+{{% tab "K3s prior to v1.19.1+k3s1" %}}
+
 You can turn off SELinux enforcement in the embedded containerd by launching K3s with the `--disable-selinux` flag.
+
+{{%/tab%}}
+{{% /tabs %}}
 
 Note that support for SELinux in containerd is still under development. Progress can be tracked in [this pull request](https://github.com/containerd/cri/pull/1246).
