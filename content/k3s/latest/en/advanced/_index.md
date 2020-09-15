@@ -321,6 +321,11 @@ The way that SELinux enforcement is enabled or disabled depends on the K3s versi
 
 To leverage experimental SELinux, specify the `--selinux` flag when starting K3s servers and agents.
 
+This option can also be specified in the K3s [configuration file:]({{<baseurl>}}/k3s/latest/en/installation/install-options/#configuration-file)
+
+```
+selinux: true
+```
 {{%/tab%}}
 {{% tab "K3s prior to v1.19.1+k3s1" %}}
 
