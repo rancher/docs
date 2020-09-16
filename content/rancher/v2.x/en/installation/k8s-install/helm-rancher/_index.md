@@ -112,7 +112,8 @@ helm repo update
 
 # Install the cert-manager Helm chart
 helm install \
-  cert-manager jetstack/cert-manager \
+  --name cert-manager \
+  jetstack/cert-manager \
   --namespace cert-manager \
   --version v0.15.0
 ```
@@ -147,7 +148,8 @@ Because `rancher` is the default option for `ingress.tls.source`, we are not spe
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`
 
 ```
-helm install rancher rancher-<CHART_REPO>/rancher \
+helm install --name rancher \
+  rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
@@ -173,7 +175,8 @@ In the following command,
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
-helm install rancher rancher-<CHART_REPO>/rancher \
+helm install --name rancher \
+  rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
@@ -203,7 +206,8 @@ Although an entry in the `Subject Alternative Names` is technically required, ha
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
-helm install rancher rancher-<CHART_REPO>/rancher \
+helm install --name rancher 
+  rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret
@@ -212,7 +216,8 @@ helm install rancher rancher-<CHART_REPO>/rancher \
 If you are using a Private CA signed certificate , add `--set privateCA=true` to the command:
 
 ```
-helm install rancher rancher-latest/rancher \
+helm install --name rancher \
+  rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret \
