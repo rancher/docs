@@ -3,9 +3,9 @@ title: Istio
 weight: 5
 
 ---
-_Available as of v2.5.0_
+_Available as of v2.4.0_
 
-> If you are usnig a rancher version less than v2.5.0, the older way of setting up Istio is documented in [this section]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
+> This section is about the new version of the Istio app in Rancher v2.5.0. If you are using a rancher version less than v2.5.0, the older way of setting up Istio is documented in [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
 
  [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
 
