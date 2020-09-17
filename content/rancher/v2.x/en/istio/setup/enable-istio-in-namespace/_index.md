@@ -11,7 +11,7 @@ This namespace setting will only affect new workloads in the namespace. Any pree
 
 > **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio installed.  
 
-1. In the Rancher Dashboard, open the kubectl shell
+1. In the Rancher **Cluster Explorer,** open the kubectl shell.
 1. Then run `kubectl label namespace <namespace> istio-injection=enabled`
 
 **Result:** The namespace now has the label `istio-injection=enabled`. All new workloads deployed in this namespace will have the Istio sidecar injected by default.
@@ -30,7 +30,7 @@ sidecar.istio.io/inject: “false”
 
 To add the annotation to a workload,
 
-1. From the **Cluster Explorer** view, use the side-nav to select the **Overview** page for workloads
+1. From the **Cluster Explorer** view, use the side-nav to select the **Overview** page for workloads.
 1. Go to the workload that should not have the sidecar and edit as yaml
 1. Add the following key, value `sidecar.istio.io/inject: false` as an annotation on the workload
 1. Click **Save.**

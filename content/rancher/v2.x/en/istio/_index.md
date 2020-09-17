@@ -3,9 +3,11 @@ title: Istio
 weight: 15
 ---
 
-_Available as of v2.5.0_
+_Available as of v2.4.0_
 
 [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
+
+> Rancher's Istio integration changed significantly in v2.5. If you are using Rancher v2.4, refer to the [legacy documentation.](../legacy)
 
 As a network of microservices changes and grows, the interactions between them can become more difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
 
@@ -22,25 +24,23 @@ This service mesh provides features that include but are not limited to the foll
 
 After Istio is enabled in a cluster, you can leverage Istio's control plane functionality with `kubectl`.
 
-Rancher's Istio integration comes with support for the following addon(s):
+Rancher's Istio integration comes with support for [Kiali.](https://www.kiali.io/) Kiali provides a diagram that shows the services within a service mesh and how they are connected, including the traffic rates and latencies between them. You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
 
-- **Get the full picture of your microservice architecture with Kiali.** [Kiali](https://www.kiali.io/) provides a diagram that shows the services within a service mesh and how they are connected, including the traffic rates and latencies between them. You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
-
-# What's New
+# What's New in Rancher v2.5
 
 The overall architecture of Istio has been simplified. A single component, Istiod, has been created by combining Pilot, Citadel, Galley and the sidecar injector. Node Agent functionality has also been merged into istio-agent.
 
-Addons that were previously installed by Istio (cert-manager, Grafana, Jaeger, Kiali, Prometheus, Zipkin ) will now need to be installed separately. Istio will support installation of integrations that are from the Istio Project and will maintain compatibility with those that are not.
+Addons that were previously installed by Istio (cert-manager, Grafana, Jaeger, Kiali, Prometheus, Zipkin) will now need to be installed separately. Istio will support installation of integrations that are from the Istio Project and will maintain compatibility with those that are not.
 
-A Prometheus integration will still be available through an installation of Rancher Monitoring (insert link here), or by installing your own prometheus operator. Rancher's Istio chart will also install kiali by default to ensure you can get a full picture of your microservice out of the box.
+A Prometheus integration will still be available through an installation of [Rancher Monitoring,](../../monitoring-alerting) or by installing your own Prometheus operator. Rancher's Istio chart will also install Kiali by default to ensure you can get a full picture of your microservices out of the box.
 
-Istio has migrated away from Helm as a way to install Istio and now provides installation through the Istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, Rancher's Istio will maintain a helm chart that utilizes the Istioctl binary to manage your Istio installation.
+Istio has migrated away from Helm as a way to install Istio and now provides installation through the istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, Rancher's Istio will maintain a Helm chart that utilizes the istioctl binary to manage your Istio installation.
 
-This helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it ca be used in the project.
+This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it can be used in the project.
 
 # Prerequisites
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory](instert new url here) to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory](./resources) to run all of the components of Istio.
 
 # Setup Guide
 
