@@ -50,8 +50,7 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
 1. Initiate a Kubernetes upgrade.
-1. If the upgrade fails, revert the cluster to the pre-upgrade Kubernetes version. Before restoring the cluster from the snapshot in the etcd datastore, the cluster should be running the pre-upgrade Kubernetes version.
-1. Restore the cluster from the etcd snapshot.
+1. If the upgrade fails, revert the cluster to the pre-upgrade Kubernetes version. This is achieved by selecting the *Restore etcd and Kubernetes version* option. This will return your cluster to the pre-upgrade kubernetes version before restoring the etcd snapshot.
 
 The restore operation will work on a cluster that is not in a healthy or active state.
 {{% /tab %}}
