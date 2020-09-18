@@ -9,6 +9,7 @@ This page focuses on the options that can be used when you set up K3s for the fi
 - [Options for installation from binary](#options-for-installation-from-binary)
 - [Registration options for the K3s server](#registration-options-for-the-k3s-server)
 - [Registration options for the K3s agent](#registration-options-for-the-k3s-agent)
+- [Configuration File](#configuration-file)
 
 In addition to configuring K3s with environment variables and CLI arguments, K3s can also use a [config file.](#configuration-file)
 
