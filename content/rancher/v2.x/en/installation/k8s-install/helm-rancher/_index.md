@@ -88,6 +88,9 @@ This step is only required to use certificates issued by Rancher's generated CA 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
 ```
+# Install the CustomResourceDefinition resources separately	
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.1/cert-manager.crds.yaml	
+
 # **Important:**
 # If you are running Kubernetes v1.15 or below, you
 # will need to add the `--validate=false` flag to your
@@ -111,8 +114,7 @@ helm repo update
 helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v0.15.0 \
-  --set installCRDs=true
+  --version v1.0.1
 ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
