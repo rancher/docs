@@ -41,6 +41,7 @@ Directive | Description
 `cert_file` | The client certificate path that will be used to authenticate with the registry
 `key_file` | The client key path that will be used to authenticate with the registry
 `ca_file` | Defines the CA certificate path to be used to verify the registry's server cert file
+`insecure_skip_verify` | Boolean that defines if TLS verification should be skipped for the registry
 
 The credentials consist of either username/password or authentication token:
 
