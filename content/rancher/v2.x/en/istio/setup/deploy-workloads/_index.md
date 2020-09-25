@@ -5,22 +5,46 @@ aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/setup/deploy-workloads
 ---
 
-> **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have Istio enabled.  
+> **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have the Istio app installed.  
 
 Enabling Istio in a namespace only enables automatic sidecar injection for new workloads. To enable the Envoy sidecar for existing workloads, you need to enable it manually for each workload.
 
-To inject the Istio sidecar on an existing workload in the namespace, go to the workload, click the **&#8942;,** and click **Redeploy.** When the workload is redeployed, it will have the Envoy sidecar automatically injected.
+To inject the Istio sidecar on an existing workload in the namespace, from the **Cluster Explorer** go to the workload, click the **&#8942;,** and click **Redeploy.** When the workload is redeployed, it will have the Envoy sidecar automatically injected.
 
-Wait a few minutes for the workload to upgrade to have the istio sidecar. Click it and go to the Containers section. You should be able to see istio-init and istio-proxy alongside your original workload. This means the Istio sidecar is enabled for the workload. Istio is doing all the wiring for the sidecar envoy. Now Istio can do all the features automatically if you enable them in the yaml.
+Wait a few minutes for the workload to upgrade to have the istio sidecar. Click it and go to the Containers section. You should be able to see `istio-proxy` alongside your original workload. This means the Istio sidecar is enabled for the workload. Istio is doing all the wiring for the sidecar envoy. Now Istio can do all the features automatically if you enable them in the yaml.
 
 ### 3. Add Deployments and Services
 
+There are a few ways to add new **Deployments** in your namespace
+
+1. From the **Cluster Explorer** click on Workload > Overview
+1. Click **Create**
+1. Select **Deployment** from the various workload options
+1. Fill out the form, or **Edit as Yaml**
+1. Click **Create** 
+
+Alternatively, you can select the specific workload you want to deploy from worklod > specific workload and create from there.
+
+To add a **Service** to your namespace
+
+1. From the **Cluster Explorer** click on **Service Discovery > Services**
+1. Click **Create**
+1. Select the type of service you want to create from the various options
+1. Fill out the form, or **Edit as Yaml**
+1. Click **Create** 
+
+You can also create deployments and services using the kubectl **shell**
+1. Run `kubectl create -f <name of service/deployment file>.yaml` if your file is stored locally in the cluster
+1. Or run `cat<< EOF | kubectl apply -f -`, paste the file contents into the terminal, then run `EOF` to complete the command. 
+
+### 4. Example Deployments and Services
+
 Next we add the Kubernetes resources for the sample deployments and services for the BookInfo app in Istio's documentation.
 
-1. Go to the project inside the cluster you want to deploy the workload on.
-1. In Workloads, click **Import YAML.**
-1. Copy the below resources into the form.
-1. Click **Import.**
+1. From the **Cluster Explorer**, open the kubectl **shell**
+1. Run `cat<< EOF | kubectl apply -f -`
+1. Copy the below resources into the the shell
+1. Run `EOF`
 
 This will set up the following sample resources from Istio's example BookInfo app:
 
