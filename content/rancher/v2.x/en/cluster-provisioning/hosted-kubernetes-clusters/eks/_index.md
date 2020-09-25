@@ -93,6 +93,8 @@ The following capabilities have been added for configuring EKS clusters in Ranch
 - Add restrictions to public access
 - Use your cloud credentials to create the EKS cluster instead of passing in your access key and secret key
 
+Due to the way that the cluster data is synced with EKS, if the cluster is modified from another source, such as in the EKS console, and in Rancher within five minutes, it could cause some changes to be overwritten. For information about how the sync works and how to configure it, refer to [this section](#syncing).
+
 {{% tabs %}}
 {{% tab "Rancher v2.5+" %}}
 
@@ -307,6 +309,8 @@ User Data | Custom commands can to be passed to perform automated configuration 
 
 # Troubleshooting
 
+If your changes were overwritten, it could be due to the way the cluster data is synced with EKS. Changes shouldn't be made to the cluster from another source, such as in the EKS console, and in Rancher within a five-minute span. For information on how this works and how to configure the refresh interval, refer to [Syncing.](#syncing)
+
 For any issues or troubleshooting details for your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting.html).
 
 # AWS Service Events
@@ -458,3 +462,30 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
     ]
 }
 ```
+
+# Syncing
+
+Syncing is the feature that causes Rancher to update its EKS clusters' values so they are up to date with their corresponding cluster object in the EKS console. This enables Rancher to not be the sole owner of an EKS cluster’s state. Its largest limitation is that processing an update from Rancher and another source at the same time or within 5 minutes of one finishing may cause the state from one source to completely overwrite the other.
+
+### How it works
+
+There are two fields on the Rancher Cluster object that must be understood to understand how syncing works:
+
+1. EKSConfig which is located on the Spec of the Cluster.
+2. UpstreamSpec which is located on the EKSStatus field on the Status of the Cluster.
+
+Both of which are defined by the struct EKSClusterConfigSpec found in the eks-operator project: https://github.com/rancher/eks-operator/blob/master/pkg/apis/eks.cattle.io/v1/types.go
+
+All fields with the exception of DisplayName, AmazonCredentialSecret, Region, and Imported are nillable on the EKSClusterConfigSpec.
+
+The EKSConfig represents desired state for its non-nil values. Fields that are non-nil in the EKSConfig can be thought of as “managed".When a cluster is created in Rancher, all fields are non-nil and therefore “managed”. When a pre-existing cluster is registered in rancher all nillable fields are nil and are not “managed”. Those fields become managed once their value has been changed by Rancher.
+
+UpstreamSpec represents the cluster as it is in EKS and is refreshed on an interval of 5 minutes. After the UpstreamSpec has been refreshed rancher checks if the EKS cluster has an update in progress. If it is updating, nothing further is done. If it is not currently updating, any “managed” fields on EKSConfig are overwritten with their corresponding value from the recently updated UpstreamSpec.
+
+The effective desired state can be thought of as the UpstreamSpec + all non-nil fields in the EKSConfig. This is what is displayed in the UI.
+
+If Rancher and another source attempt to update an EKS cluster at the same time or within the 5 minute refresh window of an update finishing, then it is likely any “managed” fields can be caught in a race condition. For example, a cluster may have PrivateAccess as a managed field. If PrivateAccess is false and then enabled in EKS console, then finishes at 11:01, and then tags are updated from Rancher before 11:05 the value will likely be overwritten. This would also occur if tags were updated while the cluster was processing the update. If the cluster was registered and the PrivateAccess fields was nil then this issue should not occur in the aforementioend case.
+
+### Configuring the Refresh Interval
+
+It is possible to change the refresh interval through the setting “eks-refresh-cron". This setting accepts values in the Cron format. The default is `*/5 * * * *`. The shorter the refresh window is the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
