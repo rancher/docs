@@ -5,17 +5,15 @@ aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster
 ---
 
-This cluster uses the default Nginx controller to allow traffic into the cluster.
-
 Only a user with the following [Kubernetes default roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster. 
 
- - Admin
- - Edit
+ - `cluster-admin`
 
 > If the cluster has a Pod Security Policy enabled there are [prerequisites steps.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp/)
 
-1. From the Rancher Dashboard's **Cluster Explorer** view, navigate to available Charts in **Apps & Marketplace** 
+1. From the **Cluster Explorer**, navigate to available **Charts** in **Apps & Marketplace** 
 1. Select the Istio chart from the rancher provided charts
+1. If you have not already installed your own monitoring app, you will be prompted to install the rancher-monitoring app. Optional: Set your Selector or Scrape config options on rancher-monitoring app install. 
 1. Optional: Configure member access and [resource limits]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/resources/) for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
 1. Optional: Make additional configuration changes to values.yaml if needed
 1. Optional: Add additional resources or configuration via the [overlay file](#overlay-file)
@@ -23,20 +21,127 @@ Only a user with the following [Kubernetes default roles](https://kubernetes.io/
 
 **Result:** Istio is installed at the cluster level.
 
-The Istio application, `rancher-istio`, is added as an application to the cluster's `system` project.
+Automatic sidecar injection is disabled by default. To enable this, set the `sidecarInjectorWebhook.enableNamespacesByDefault=true` in the values.yaml on install or upgrade. This automatically enables Istio sidecar injection into all new namespaces that are deployed. 
 
-When Istio is installed in the cluster, the label for Istio sidecar auto injection,`istio-injection=enabled`, will be automatically added to each new namespace in this cluster. This automatically enables Istio sidecar injection in all new workloads that are deployed in those namespaces. You will need to manually enable Istio in preexisting namespaces and workloads.
+## Additonal Config Options
 
-### [Next: Enable Istio in a Namespace]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-namespace)
-
-
-### Advanced Config Options
-
-## Overlay File
+### Overlay File
 
 An Overlay File is designed to support extensive configuration of your Istio installation. It allows you to make changes to any values available in the [IstioOperator API](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/). This will ensure you can customize the default installation to fit any scenario. 
 
 The Overlay File will add configuration on top of the default installation that is provided from the Istio chart installation. This means you do not need to redefine the components that already defined for installation. 
 
-For more information on Overlay Files, refer to the (documentation)[https://istio.io/latest/docs/setup/install/istioctl/#configure-component-settings]
+For more information on Overlay Files, refer to the [documentation](https://istio.io/latest/docs/setup/install/istioctl/#configure-component-settings)
 
+## Selectors & Scrape Configs
+
+The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=true` which means only the `istio-system` namespace will be scraped by prometheus by default. To ensure you can view traffic, metrics and graphs for resources deployed in other namespaces you will need to add additional configuration.
+
+There are three different ways to enable prometheus to detect resources in other namespaces: 
+
+1. Add a Service Monitor or Pod Monitor in the namespace with the targets you want to scrape.
+1. Set `prometheus.prometheusSpec.ignoreNamespaceSelectors=false` on your rancher-monitoring instance.
+1. Add an `additionalScrapeConfig` to your rancher-monitoring instance to scrape all targets in all namespaces.
+
+**Option 1: Create a Service Monitor or Pod Monitor** 
+
+This option allows you to define which specific services or pods you would like monitored in a specific namespace. 
+
+ >Usability tradeoff is that you have to create the service monitor / pod monitor per namespace since you cannot monitor across namespaces. 
+
+ **Pre Requisite:** define a ServiceMonitor or PodMonitor for `<your namespace>`. Example ServiceMonitor is provided below. 
+
+1. From the **Cluster Explorer**, open the kubectl shell
+1. Run `kubectl create -f <name of service/pod monitor file>.yaml` if the file is stored locally in your cluster. 
+1. Or run `cat<< EOF | kubectl apply -f -`, paste the file contents into the terminal, then run `EOF` to complete the command. 
+1. If starting a new install, **Click** the **rancher-monitoring** chart and scroll down to **Preview Yaml**. 
+1. Run `kubectl label namespace <your namespace> istio-injection=enabled` to enable the envoy sidecar injection
+
+**Result:**  `<your namspace>` can be scraped by prometheus. 
+
+**Example Service Monitor for Istio Proxies**
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: envoy-stats-monitor
+  namespace: istio-system
+  labels:
+    monitoring: istio-proxies
+spec:
+  selector:
+    matchExpressions:
+    - {key: istio-prometheus-ignore, operator: DoesNotExist}
+  namespaceSelector:
+    any: true
+  jobLabel: envoy-stats
+  endpoints:
+  - path: /stats/prometheus
+    targetPort: 15090
+    interval: 15s
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_container_port_name]
+      action: keep
+      regex: '.*-envoy-prom'
+    - action: labeldrop
+      regex: "__meta_kubernetes_pod_label_(.+)"
+    - sourceLabels: [__meta_kubernetes_namespace]
+      action: replace
+      targetLabel: namespace
+    - sourceLabels: [__meta_kubernetes_pod_name]
+      action: replace
+      targetLabel: pod_name
+```
+
+**Option 2: Set ingnoreNamspaceSelectors to False** 
+
+This enables monitoring accross namespaces which means ServiceMonitors or PodMonitors will not need to be created per namespace. 
+
+ >Potential security trade off is  users in namespace A can create a service monitor that monitors services in namespace B despite not having permissions to namespace B
+1. From the **Cluster Explorer**, navigate to **Installed Apps** if Monitoring is already installed, or **Charts** in **Apps & Marketplace** 
+1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
+1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
+1. Set`prometheus.prometheusSpec.ignoreNamespaceSelectors=true`
+1. Complete install or upgrade
+
+**Result:** All namespaces with the `istio-injection=enabled` label will be scraped by prometheus.
+
+**Option 3: Set ingnoreNamspaceSelectors to False** 
+
+This enables monitoring accross namespaces by giving prometheus additional scrape configurations. 
+
+ >Usability tradeoff is that  all of prometheus' additionalScrapeConfigs are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
+1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
+1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
+1. If updating an existing installation, click on **Upgrade** and then **Preview Yaml**.
+1. Set`prometheus.prometheusSpec.additionalScrapeConfigs` array to the **Additional Scrape Config** provided below. 
+1. Complete install or upgrade
+
+**Result:** All namespaces with the `istio-injection=enabled` label will be scraped by prometheus.
+
+**Additional Scrape Config:**
+``` yaml
+- job_name: 'istio/envoy-stats'
+  scrape_interval: 15s
+  metrics_path: /stats/prometheus
+  kubernetes_sd_configs:
+    - role: pod
+  relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_container_port_name]
+      action: keep
+      regex: '.*-envoy-prom'
+    - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+      action: replace
+      regex: ([^:]+)(?::\d+)?;(\d+)
+      replacement: $1:15090
+      target_label: __address__
+    - action: labelmap
+      regex: __meta_kubernetes_pod_label_(.+)
+    - source_labels: [__meta_kubernetes_namespace]
+      action: replace
+      target_label: namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: pod_name
+``` 

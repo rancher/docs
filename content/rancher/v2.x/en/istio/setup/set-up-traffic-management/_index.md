@@ -18,11 +18,39 @@ After this virtual service is deployed, we will generate traffic and see from th
 
 To deploy the virtual service and destination rules for the `reviews` service,
 
-1. Go to the project view and click **Import YAML.**
-1. Copy resources below into the form.
-1.  Click **Import.**
+1. From the **Cluster Explorer**, select **Istio** from the nav dropdown. 
+1. Click **DestinationRule** in the side nav bar.
+1. Click **Create from Yaml**.
+1. Copy and paste the DestinationRule yaml provided below.
+1. Click **Create**.
 
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: reviews
+spec:
+  host: reviews
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+  - name: v3
+    labels:
+      version: v3
 ```
+
+Then to deploy the VirtualService that provides the traffic routing that utilizes the DestinationRule
+
+1. Click **VirtualService** in the side nav bar.
+1. Click **Create from Yaml**.
+1. Copy and paste the VirtualService yaml provided below.
+1. Click **Create**.
+
+```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -41,23 +69,8 @@ spec:
         subset: v3
       weight: 50
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: reviews
-spec:
-  host: reviews
-  subsets:
-  - name: v1
-    labels:
-      version: v1
-  - name: v2
-    labels:
-      version: v2
-  - name: v3
-    labels:
-      version: v3
 ```
+
 **Result:** When you generate traffic to this service (for example, by refreshing the ingress gateway URL), the Kiali traffic graph will reflect that traffic to the `reviews` service is divided evenly between `v1` and `v3`.
 
 ### [Next: Generate and View Traffic]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/view-traffic)
