@@ -1,6 +1,6 @@
 ---
 title: Legacy Backup and Restore Documentation
-weight: 1
+weight: 6
 ---
 
 > This section is under construction.
