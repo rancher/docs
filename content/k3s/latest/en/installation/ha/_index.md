@@ -48,7 +48,7 @@ To configure TLS certificates when launching server nodes, refer to the [datasto
 
 > **Note:** The same installation options available to single-server installs are also available for high-availability installs. For more details, see the [Installation and Configuration Options]({{<baseurl>}}/k3s/latest/en/installation/install-options/) documentation.
 
-By default, server nodes will be schedulable and thus your workloads can get launched on them. If you wish to have a dedicated control plane where no user workloads will run, you can use taints. The <span style='white-space: nowrap'>`node-taint`</span> parameter will allow you to configure nodes with taints, for example <span style='white-space: nowrap'>`--node-taint k3s-controlplane=true:NoExecute`</span>.
+By default, server nodes will be schedulable and thus your workloads can get launched on them. If you wish to have a dedicated control plane where no user workloads will run, you can use taints. The <span style='white-space: nowrap'>`node-taint`</span> parameter will allow you to configure nodes with taints, for example <span style='white-space: nowrap'>`--node-taint CriticalAddonsOnly=true:NoExecute`</span>.
 
 Once you've launched the `k3s server` process on all server nodes, ensure that the cluster has come up properly with `k3s kubectl get nodes`. You should see your server nodes in the Ready state.
 
