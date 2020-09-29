@@ -7,8 +7,6 @@ aliases:
 ---
 _Available as of v2.4.0_
 
-> In Rancher 2.5, the OPA Gatekeeper application was improved. There are now two ways to enable OPA Gatekeeper. The older way is documented in this section, and the new application for OPA Gatekeeper is documented in the [dashboard section.]({{<baseurl>}}/rancher/v2.x/en/dashboard/monitoring-alerting)
-
 > This is an experimental feature for the Rancher v2.4 release.
 
 To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. OPA [https://www.openpolicyagent.org/] (Open Policy Agent) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates. 
@@ -28,9 +26,38 @@ To read more about OPA, please refer to the [official documentation.](https://ww
 
 Kubernetes provides the ability to extend API server functionality via admission controller webhooks, which are invoked whenever a resource is created, updated or deleted. Gatekeeper is installed as a validating webhook and enforces policies defined by Kubernetes custom resource definitions. In addition to the admission control usage, Gatekeeper provides the capability to audit existing resources in Kubernetes clusters and mark current violations of enabled policies.
 
-OPA Gatekeeper is made availale via Rancher's Helm system chart, and it is installed in a namespace named `gatekeeper-system.`
+OPA Gatekeeper is made available via Rancher's Helm system chart, and it is installed in a namespace named `gatekeeper-system.`
 
 # Enabling OPA Gatekeeper in a Cluster
+
+In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper from the old UI, then reinstall it in Rancher v2.5.
+
+{{% tabs %}}
+{{% tab "Rancher v2.5" %}}
+
+> **Prerequisite:** Only administrators and cluster owners can enable OPA Gatekeeper.
+
+OPA Gatekeeper can be installed from the new **Cluster Explorer** view in Rancher v2.5, or from the legacy cluster view.
+
+### Enabling OPA Gatekeeper from Cluster Explorer
+
+1. Go to the cluster view in the Rancher UI. Click **Cluster Explorer.**
+1. Click **Apps** in the top navigation bar.
+1. Click **rancher-gatekeeper.**
+1. Click **Install.**
+
+**Result:** OPA Gatekeeper is deployed in your Kubernetes cluster.
+
+### Enabling OPA Gatekeeper from the Legacy Cluster View
+
+1. Go to the cluster view in the Rancher UI.
+1. Click **Tools > OPA Gatekeeper.**
+1. Click **Install.**
+
+**Result:** OPA Gatekeeper is deployed in your Kubernetes cluster.
+
+{{% /tab %}}
+{{% tab "Rancher v2.4" %}}
 
 > **Prerequisites:** 
 > 
@@ -41,7 +68,9 @@ OPA Gatekeeper is made availale via Rancher's Helm system chart, and it is insta
 1. On the left side menu, expand the cluster menu and click on **OPA Gatekeeper.**
 1. To install Gatekeeper with the default configuration, click on **Enable Gatekeeper (v0.1.0) with defaults.**
 1. To change any default configuration, click on **Customize Gatekeeper yaml configuration.**
-      
+{{% /tab %}}
+{{% /tabs %}}
+
 # Constraint Templates
 
 [Constraint templates](https://github.com/open-policy-agent/gatekeeper#constraint-templates) are Kubernetes custom resources that define the schema and Rego logic of the OPA policy to be applied by Gatekeeper. For more information on the Rego policy language, refer to the [official documentation.](https://www.openpolicyagent.org/docs/latest/policy-language/)
@@ -64,7 +93,7 @@ New constraints can be created from a constraint template.
 
 Rancher provides the ability to create a constraint by using a convenient form that lets you input the various constraint fields.
 
-The **Edit as yaml** option is also availble to configure the the constraint's yaml definition.
+The **Edit as yaml** option is also available to configure the the constraint's yaml definition.
 
 ### Exempting Rancher's System Namespaces from Constraints
 
