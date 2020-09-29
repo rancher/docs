@@ -54,7 +54,7 @@ Configure an existing PersistentVolume that will be used to store your backups. 
 
 Resources can be encrypted before they are saved in a backup file.
 
-The `rancher-backup` operator uses the same process to encrypt the backups as is described in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) for encrypting data at rest.Encryption details are provided in an EncryptionConfiguration YAML file.
+The `rancher-backup` operator uses the same process to encrypt the backups as is described in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) for encrypting data at rest. Encryption details are provided in an EncryptionConfiguration YAML file.
 
 You can use any EncryptionConfiguration YAML, including one that is already used in your Kubernetes cluster.
 

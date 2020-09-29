@@ -3,7 +3,7 @@ title: Migrating Rancher to a New Cluster
 weight: 3
 ---
 
-If you are migrating Rancher to a new Kubernetes cluster, you don't need to install Rancher on the new cluster first. If Rancher is restored to a new cluster with Rancher already installed, it can cause problems with [permissions](https://github.com/rancher/rancher-backup/issues/24) and [namespaces.](https://github.com/rancher/rancher-backup/issues/6)
+If you are migrating Rancher to a new Kubernetes cluster, you don't need to install Rancher on the new cluster first. If Rancher is restored to a new cluster with Rancher already installed, it can cause problems.
 
 ### Prerequisites
 

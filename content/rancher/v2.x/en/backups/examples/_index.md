@@ -3,7 +3,7 @@ title: Examples
 weight: 5
 ---
 
-This section contains examples of Backup and Restore custom resources. The original source is [here.](https://github.com/rancher/rancher-backup/tree/master/examples)
+This section contains examples of Backup and Restore custom resources.
 
 The default backup storage location is configured when the `rancher-backup` operator is installed or upgraded.
 
@@ -28,6 +28,8 @@ Encrypted backups can only be restored if the Restore custom resource uses the s
 - [Example EncryptionConfiguration](#example-encryptionconfiguration)
 
 # Backup
+
+This section contains example Backup custom resources.
 
 ### Backup in the Default Location with Encryption
 
@@ -131,7 +133,7 @@ spec:
 
 ### Backup from EC2 Nodes with IAM Permission to Access S3
 
-This example shows that the AWS credential secret does not have to be provided to create a backup if the nodes running `rancher-backup` have [these permissions for access to S3.](../../configuration/backup-config/#iam-permissions-for-eC2-nodes-to-access-s3)
+This example shows that the AWS credential secret does not have to be provided to create a backup if the nodes running `rancher-backup` have [these permissions for access to S3.](../configuration/backup-config/#iam-permissions-for-ec2-nodes-to-access-s3)
 
 ```yaml
 apiVersion: resources.cattle.io/v1
@@ -150,6 +152,8 @@ spec:
 ```
 
 # Restore
+
+This section contains example Restore custom resources.
 
 ### Restore Using the Default Backup File Location
 
@@ -235,7 +239,7 @@ spec:
 
 ### Restore from EC2 Nodes with IAM Permissions to Access S3
 
-This example shows that the AWS credential secret does not have to be provided to restore from backup if the nodes running `rancher-backup` have [these permissions for access to S3.](../../configuration/backup-config/#iam-permissions-for-eC2-nodes-to-access-s3)
+This example shows that the AWS credential secret does not have to be provided to restore from backup if the nodes running `rancher-backup` have [these permissions for access to S3.](../configuration/backup-config/#iam-permissions-for-ec2-nodes-to-access-s3)
 
 ```yaml
 apiVersion: resources.cattle.io/v1
