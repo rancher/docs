@@ -4,12 +4,11 @@ shortTitle: Restore
 weight: 2
 ---
 
-The OpenAPI schema for the Restore custom resource definition is [here.](https://github.com/rancher/rancher-backup/blob/master/crds/restore.yaml)
-
 The Restore custom resource accepts the following fields:
 
-- [BackupFilename]
-- [EncryptionConfigName]
+- [BackupFilename](#backupfilename)
+- [EncryptionConfigName](#encryptionconfigname)
+- [StorageLocation](#storagelocation)
 
 ### BackupFilename
 
@@ -35,7 +34,7 @@ This field is optional.
 
 This field is optional.
 
-Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the [Backup custom resource.](../../backup-config/storagelocation)
+Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the [Backup custom resource.](../../configuration/backup-config/#storagelocation)
 
 If the StorageLocation is specified, the operator will retrieve the backup location from that particular S3 bucket. If not specified, operator will try to find this file in the operator-level S3 store, and in the operator-level PVC store.
 

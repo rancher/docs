@@ -14,7 +14,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 1. In the Rancher UI, go to the **Cluster Explorer.**
 1. Click **Apps.**
 1. Click `rancher-backup`.
-1. Configure the default storage location. For help, refer to the [storage configuration section.](#configuring-the-storage-location)
+1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
 
 ### 2. Perform a Backup
 
@@ -44,13 +44,9 @@ To perform a backup, a custom resource of type Backup must be created.
       retentionCount: 3
       ```
 
+    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)
 
-
-
-
-    For help configuring the Backup, refer to the [configuration reference](../../configuration/backup-config) and to the [examples.](../../examples/backups)
-
-    Recurring backups are scheduled by editing the `Schedule` and `RetentionCount` fields. For more information, refer to the [Backup configuration reference.](../../backup-config/#schedule)
+    Recurring backups are scheduled by editing the `Schedule` and `RetentionCount` fields. For more information, refer to the [Backup configuration reference.](../configuration/backup-config/#schedule)
 
     > **Important:** The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
 1. Click **Create.**

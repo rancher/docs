@@ -4,8 +4,6 @@ shortTitle: Backup
 weight: 1
 ---
 
-The OpenAPI schema for the Backup custom resource definition is [here.](https://github.com/rancher/rancher-backup/blob/master/crds/backup.yaml#L14)
-
 The Backup custom resource accepts the following fields:
 
 - [EncryptionConfigName](#encryptionconfigname)
@@ -64,7 +62,7 @@ The S3 storage location contains the following configuration fields:
 | `folder` | The name of the folder in the S3 bucket where backup files will be stored. | |
 | `region` | The AWS [region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. | ✓ |
 | `endpoint` |  The [endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html)  that is used to access S3 in the region of your bucket.  | ✓ |
-| `endpointCA` | This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-storage-configuration) |  |
+| `endpointCA` | This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-compatible-storage-configuration) |  |
 | `insecureTLSSkipVerify` | Set to true if you are not using TLS. | |
 
 ### Example S3 Compatible Storage Configuration
