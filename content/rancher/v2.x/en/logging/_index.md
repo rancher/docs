@@ -49,3 +49,194 @@ The following Custom Resource Definitions are used to configure logging:
 According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-eye/logging-operator/#architecture)
 
 > You can define `outputs` (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and `flows` that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
+
+### RBAC
+Rancher logging has two roles, `logging-admin` and `logging-view`. `logging-admin` allows users full access to namespaced flows and outputs.  The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs.  Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster.  Cluster admin is the only role with full access to all rancher-logging resources.  Cluster members are not able to edit or read any logging resources.  Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. 
+
+
+### Examples
+
+Let's say you wanted to send all logs in your cluster to an elasticsearch cluster.
+
+First lets create our cluster output: 
+```yaml
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterOutput
+metadata:
+    name: "example-es"
+    namespace: "cattle-logging-system"
+spec:
+    elasticsearch:
+      host: elasticsearch.example.com
+      port: 9200
+      scheme: http
+```
+
+We have created a cluster output, without elasticsearch configuration, in the same namespace as our operator `cattle-logging-system.`. Any time we create a cluster flow or cluster output we have to put it in the `cattle-logging-system` namespace.
+
+Now we have configured where we want the logs to go, lets configure all logs to go to that output.
+
+```yaml
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterFlow
+metadata:
+    name: "all-logs"
+    namespace: "cattle-logging-system"
+spec:
+  globalOutputRefs:
+    - "example-es
+``` 
+
+We should now see our configured index with logs in it.
+
+What if we have an application team who only wants logs from a specific namespaces sent to a splunk server? For this case can use namespaced outputs and flows. 
+
+Before we start lets set up a scenario.
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devteam
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coolapp
+  namespace: devteam
+  labels:
+    app: coolapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: coolapp
+  template:
+    metadata:
+      labels:
+        app: coolapp
+    spec:
+      containers:
+        - name: generator
+          image: paynejacob/loggenerator:latest
+``` 
+
+like before we start with an output, unlike cluster outputs we create our output in our application's namespace:
+
+```yaml
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Output
+metadata:
+    name: "devteam-splunk"
+    namespace: "devteam"
+spec:
+    SplunkHec:
+        host: splunk.example.com
+        port: 8088
+        protocol: http
+```
+
+Once again, lets give our output some logs:
+
+```yaml
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: Flow
+metadata:
+    name: "devteam-logs"
+    namespace: "devteam"
+spec:
+  localOutputRefs:
+    - "devteam-splunk"
+```
+
+For the final example we create an output to write logs to a destination that is not supported out of the box (e.g. syslog):
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: syslog-config
+  namespace: cattle-logging-system
+type: Opaque
+stringData:
+  fluent-bit.conf: |
+    [INPUT]
+        Name              forward
+        Port              24224
+
+    [OUTPUT]
+        Name              syslog
+        InstanceName      syslog-output
+        Match             *
+        Addr              syslog.example.com
+        Port              514
+        Cluster           ranchers
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluentbit-syslog-forwarder
+  namespace: cattle-logging-system
+  labels:
+    output: syslog
+spec:
+  selector:
+    matchLabels:
+      output: syslog
+  template:
+    metadata:
+      labels:
+        output: syslog
+    spec:
+      containers:
+      - name: fluentbit
+        image: paynejacob/fluent-bit-out-syslog:latest
+        ports:
+          - containerPort: 24224
+        volumeMounts:
+          - mountPath: "/fluent-bit/etc/"
+            name: configuration
+      volumes:
+      - name: configuration
+        secret:
+          secretName: syslog-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: syslog-forwarder
+  namespace: cattle-logging-system
+spec:
+  selector:
+    output: syslog
+  ports:
+    - protocol: TCP
+      port: 24224
+      targetPort: 24224
+---
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterFlow
+metadata:
+  name: all-logs
+  namespace: cattle-logging-system
+spec:
+  globalOutputRefs:
+    - syslog
+---
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterOutput
+metadata:
+  name: syslog
+  namespace: cattle-logging-system
+spec:
+  forward:
+    servers:
+      - host: "syslog-forwarder.cattle-logging-system"
+    require_ack_response: false
+    ignore_network_errors_at_startup: false
+```
+
+if we break down what is happening, first we create a deployment of a container that has the additional syslog plugin and accepts logs forwarded from another fluentd.  Next we create an output configured as a forwarder to our deployment. The deployment fluentd will then forward all logs to the configured syslog destination.  
+
+
