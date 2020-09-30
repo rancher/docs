@@ -52,3 +52,12 @@ To perform a backup, a custom resource of type Backup must be created.
 1. Click **Create.**
 
 **Result:** The backup file is created in the storage location configured in the Backup custom resource. The name of this file is used when performing a restore.
+
+
+### RBAC/Permissions
+
+Rancher Backup & Restore is a cluster-admin only feature and available only for the local cluster.
+Which means only the rancher admins, and local cluster’s cluster-owner can:
+* Install the Chart
+* See the navigation links for Backup and Restore CRDs (there is no overview page for this feature, after the chart is installed there’s a separate navigation link for its CRDs)
+* Perform a backup or restore by creating a Backup CR and Restore CR respectively, list backups/restores performed so far
