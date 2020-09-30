@@ -30,8 +30,7 @@ OPA Gatekeeper is made available via Rancher's Helm system chart, and it is inst
 
 # Enabling OPA Gatekeeper in a Cluster
 
-In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper from the old UI, then reinstall it in Rancher v2.5.
-
+In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in Rancher v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`
 {{% tabs %}}
 {{% tab "Rancher v2.5" %}}
 
