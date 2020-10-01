@@ -1,41 +1,34 @@
 ---
-title: Monitoring and Alerting
-shortTitle: Monitoring/Alerting
-description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
-weight: 14
+title: Monitoring / Alerting
+shortTitle: Monitoring / Alerting
+description: Rancher makes it easy to deploy a full monitoring and alerting solution onto a Kubernetes cluster by leveraging popular solutions such as Prometheus, Alertmanager, and Grafana. Learn about the scope of Rancher's monitoring / alerting stack and how to enable it within your cluster.
+weight: 15
 ---
 
-Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.
+Users can deploy a full monitoring and alerting solution (powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) onto your cluster, which:
 
-This page describes how to enable monitoring for a cluster. 
+- Monitors the state and processes of your cluster nodes, Kubernetes components, and software deployments via [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.
+- Defines alerts based on metrics collected via [Prometheus](https://prometheus.io/)
+- Creates custom dashboards to make it easy to visualize collected metrics via [Grafana](https://grafana.com/docs/grafana/latest/getting-started/what-is-grafana/)
+- Configures alert-based notifications via Email, Slack, PagerDuty, etc. using [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
+- Defines precomputed frequently needed / computationally expensive expressions as new time series based on metrics collected via [Prometheus](https://prometheus.io/) (only available in 2.5.x)
+- Exposes collected metrics from Prometheus to the Kubernetes Custom Metrics API via [Prometheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) for use in HPA (only available in 2.5.x)
 
 This section covers the following topics:
 
-- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
-- [About Prometheus](#about-prometheus)
-- [Monitoring scope](#monitoring-scope)
-- [Enabling cluster monitoring](#enabling-cluster-monitoring)
-- [Configuration](#configuration)
-- [Examples](#examples)
-  - [Create ServiceMonitor Custom Resource](#create-servicemonitor-custom-resource)
-  - [PodMonitor](#podmonitor)
-  - [PrometheusRule](#prometheusrule)
-  - [Alertmanager Config](#alertmanager-config)
-  - [Configuring a Persistent Grafana Dashboard](#configuring-a-persistent-grafana-dashboard)
-  - [Configuring Grafana to Use Multiple Data Sources](#configuring-grafana-to-use-multiple-data-sources)
+- [Monitoring Components](#monitoring-components)
+  - [Prometheus](#about-prometheus)
+  - [Grafana](#about-grafana)
+  - [Alertmanager](#about-alertmanager)
+  - [Prometheus Operator](#about-prometheus-operator)
+  - [Prometheus Adapter](#about-prometheus-adapter)
+- [Changes in Rancher 2.5.x](#changes-in-rancher-2.5.x)
+  - [Monitoring & Alerting V1](#monitoring-alerting-v1)
+  - [Monitoring & Alerting V2](#monitoring-alerting-v2)
 
+## Monitoring Components
 
-# Changes in Rancher v2.5
-
-Rancher's monitoring application is powered by the Prometheus operator, and it now relies less on Rancher's in-house monitoring tools.
-
-This change allows Rancher to automatically support new features of the Prometheus operator API. Now all of the features exposed by the upstream Prometheus operator are available in the monitoring application, and you have more flexibility to configure monitoring.
-
-Previously, you would use the Rancher UI to configure monitoring. The Rancher UI created CRDs that were maintained by Rancher and updated the Prometheus state. In Rancher v2.5, you directly create CRDs for the monitoring application, and those CRDs are exposed in the Rancher UI.
-
-The differences between Rancher's monitoring feature and the upstream Prometheus operator can be found in the [changelog.](https://github.com/rancher/charts/blob/dev-v2.5/packages/rancher-monitoring/overlay/CHANGELOG.md)
-
-# About Prometheus
+### Prometheus
 
 Prometheus provides a _time series_ of your data, which is, according to [Prometheus documentation](https://prometheus.io/docs/concepts/data_model/):
 
@@ -45,54 +38,36 @@ In other words, Prometheus lets you view metrics from your different Rancher and
 
 By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, restore crashed servers, etc.
 
-# Monitoring Scope
+### Grafana
 
-Cluster monitoring allows you to view the health of your Kubernetes cluster. Prometheus collects metrics from the cluster components below, which you can view in graphs and charts.
+Insert section here
 
-- [Kubernetes control plane]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#kubernetes-components-metrics)
-- [etcd database]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#etcd-metrics)
-- [All nodes (including workers)]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics/#cluster-metrics)
+### Alertmanager
 
-# Enabling Cluster Monitoring
+Insert section here
 
-As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
+### Prometheus Operator
 
-> **Prerequisite:** Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
+Insert section here
 
-> The default username and password for the Grafana instance will be `admin/admin`. However, Grafana dashboards are served via the Rancher authentication proxy, so only users who are currently authenticated into the Rancher server have access to the Grafana dashboard.
+### Prometheus Adapter (only in 2.5.x)
 
-# Configuration
+Insert section here
 
-For information on configuring custom Prometheus metrics and alerting rules, refer to the upstream documentation for the [Prometheus operator.](https://github.com/prometheus-operator/prometheus-operator) This documentation can help you set up RBAC, Thanos, or custom configuration.
+## Changes in Rancher 2.5.x
 
-To create an additional scrape configuration, refer to [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/additional-scrape-config.md)
+### Monitoring & Alerting V1
 
-# Examples
+As of v2.2.0, Rancher's Enterprise Cluster Manager allows users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. For more information on how to configure Monitoring & Alerting V1, see the [Legacy docs](/rancher/v2.x/en/monitoring-alerting/legacy).
 
-### Create ServiceMonitor Custom Resource
+When Monitoring is enabled, Monitoring V1 deploys [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/docs/grafana/latest/getting-started/what-is-grafana/) onto a cluster to monitor the state of processes of your cluster nodes, Kubernetes components, and software deployments and create custom dashboards to make it easy to visualize collected metrics. Monitoring V1 could be configured on both a cluster-level and on a project-level and would automatically scrape certain workloads deployed as Apps on the Rancher cluster.
 
-An example ServiceMonitor custom resource can be found [here.](https://github.com/prometheus-operator/prometheus-operator/blob/master/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml) 
+When Alerts or Notifiers are enabled, Alerting V1 deploys [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) and a set of Rancher controllers onto a cluster that allows users to define alerts and configure alert-based notifications via Email, Slack, PagerDuty, etc. Users can choose to create different types of alerts depending on what needs to be monitored (e.g. System Services, Resources, CIS Scans, etc.); however, PromQL Expression-based alerts can only be created if Monitoring V1 is enabled.
 
-### PodMonitor
+### Monitoring & Alerting V2
 
-An example PodMonitor can be found [here.](https://github.com/prometheus-operator/prometheus-operator/blob/master/example/user-guides/getting-started/example-app-pod-monitor.yaml) and an example Prometheus resource that refers to it can be found [here.](https://github.com/prometheus-operator/prometheus-operator/blob/master/example/user-guides/getting-started/prometheus-pod-monitor.yaml)
+As of v2.5.0, Rancher Dashboard now allows users to enable Monitoring & Alerting V2 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) together within a cluster. 
 
-### PrometheusRule
+Unlike in Monitoring & Alerting V1, both features are packaged in a single Helm chart found [here](https://github.com/rancher/charts/tree/dev-v2.5/charts/rancher-monitoring). The behavior of this chart and configurable fields closely matches [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), a Prometheus Community Helm chart, and any deviations from the upstream chart can be found in the [CHANGELOG.md](https://github.com/rancher/charts/blob/dev-v2.5/charts/rancher-monitoring/CHANGELOG.md) maintained with the chart.
 
-Prometheus rule files are held in PrometheusRule custom resources. Use the label selector field ruleSelector in the Prometheus object to define the rule files that you want to be mounted into Prometheus. An example PrometheusRule is on [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
-
-### Alertmanager Config
-
-The Prometheus Operator introduces an Alertmanager resource, which allows users to declaratively describe an Alertmanager cluster.
-
-The upstream Prometheus documentation includes information on how to [set up](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md) and [configure](https://prometheus.io/docs/alerting/latest/configuration/) Alertmanager.
-
-### Configuring a Persistent Grafana Dashboard
-
-To allow the Grafana dashboard to persist after it restarts, you will need to add the configuration JSON into a ConfigMap.
-
-You can add this configuration to the ConfigMap using the Rancher UI.
-
-### Configuring Grafana to Use Multiple Data Sources
-
-The data from Prometheus is used as the data source for the Grafana dashboard. Multiple data sources can be configured for Grafana.
+If you currently use Monitoring or Alerting V1 and are interested in upgrading to Monitoring & Alerting V2 in Rancher 2.5, please see [Migrating to 2.5.x](/rancher/v2.x/en/monitoring-alerting/2.5.x/migrating/). For more information on how to configure Monitoring & Alerting V2, see the [2.5.x docs](/rancher/v2.x/en/monitoring-alerting/2.5.x).
