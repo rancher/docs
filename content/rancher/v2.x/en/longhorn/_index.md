@@ -18,7 +18,6 @@ With Longhorn, you can:
 - Schedule recurring snapshots of a volume, and schedule recurring backups to NFS or S3-compatible secondary storage
 - Restore volumes from backup
 - Upgrade Longhorn without disrupting persistent volumes
-- Manipulate Longhorn resources with kubectl
 
 ### New in Rancher v2.5
 
