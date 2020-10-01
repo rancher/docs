@@ -5,7 +5,7 @@ weight: 42
 
 Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/docs/intro/quickstart/](https://helm.sh/docs/intro/quickstart/).
 
-K3s does not require any special configuration to use with Helm command-line tools. Just be sure you have properly set up your kubeconfig as per the section about [cluster access.](../cluster-access). K3s does include some extra functionality to make deploying both traditional Kubernetes resource manifests and Helm Charts even easier.
+K3s does not require any special configuration to use with Helm command-line tools. Just be sure you have properly set up your kubeconfig as per the section about [cluster access](../cluster-access). K3s does include some extra functionality to make deploying both traditional Kubernetes resource manifests and Helm Charts even easier with the [rancher/helm-release CRD.](#using-the-helm-crd)
 
 This section covers the following topics:
 
@@ -24,7 +24,7 @@ It is also possible to deploy Helm charts as AddOns. K3s includes a [Helm Contro
 
 > **Note:** K3s versions through v0.5.0 used `k3s.cattle.io/v1` as the apiVersion for HelmCharts. This has been changed to `helm.cattle.io/v1` for later versions.
 
-The HelmChart resource definition captures most of the options you would normally pass to the `helm` command-line tool. Here's an example of how you might deploy Grafana from the default chart repository, overriding some of the default chart values. Note that the HelmChart resource itself is in the `kube-system` namespace, but the chart's resources will be deployed to the `monitoring` namespace.
+The [HelmChart resource definition](https://github.com/rancher/helm-controller#helm-controller) captures most of the options you would normally pass to the `helm` command-line tool. Here's an example of how you might deploy Grafana from the default chart repository, overriding some of the default chart values. Note that the HelmChart resource itself is in the `kube-system` namespace, but the chart's resources will be deployed to the `monitoring` namespace.
 
 ```yaml
 apiVersion: helm.cattle.io/v1
