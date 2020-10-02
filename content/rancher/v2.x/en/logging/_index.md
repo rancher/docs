@@ -21,6 +21,7 @@ The following changes were introduced to logging in Rancher v2.5:
 - Logging can be configured with a Kubernetes manifest, because now the logging uses a Kubernetes operator with Custom Resource Definitions.
 - We now support filtering logs.
 - We now support writing logs to multiple outputs.
+- We now always collect Control Plane and etcd logs.
 
 
 The following figure from the [Banzai documentation](https://banzaicloud.com/docs/one-eye/logging-operator/#architecture) shows the new logging architecture:
@@ -51,7 +52,7 @@ According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-
 > You can define `outputs` (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and `flows` that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
 ### RBAC
-Rancher logging has two roles, `logging-admin` and `logging-view`. `logging-admin` allows users full access to namespaced flows and outputs.  The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs.  Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster.  Cluster admin is the only role with full access to all rancher-logging resources.  Cluster members are not able to edit or read any logging resources.  Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. 
+Rancher logging has two roles, `logging-admin` and `logging-view`. `logging-admin` allows users full access to namespaced flows and outputs.  The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs.  Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster.  Cluster admin is the only role with full access to all rancher-logging resources.  Cluster members are not able to edit or read any logging resources.  Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. Project owners and project members require at least 1 namespace in their project to use logging.  If they do not have at least one namespace in their project they may not see the logging button in the top nav dropdown. 
 
 
 ### Examples
