@@ -1,5 +1,6 @@
 ---
-title: RBAC
+title: Roles-based Access Contro
+shortTitle: RBAC
 weight: 3
 ---
 

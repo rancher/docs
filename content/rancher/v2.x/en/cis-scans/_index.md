@@ -7,19 +7,46 @@ _Available as of v2.4.0_
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
-The Center for Internet Security (CIS) is a 501(c)(3) nonprofit organization, formed in October 2000, with a mission is to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace". The organization is headquartered in East Greenbush, New York, with members including large corporations, government agencies, and academic institutions.
+The `rancher-cis-application` leverages [kube-bench,](https://github.com/aquasecurity/kube-bench) an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes [Sonobuoy](https://github.com/vmware-tanzu/sonobuoy) for report aggregation.
 
-CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
+> The CIS scan feature was improved in Rancher v2.5. If you are using Rancher v2.4, refer to the older version of the CIS scan documentation [here.](./legacy)
 
-The Benchmark provides recommendations of two types: Scored and Not Scored. We run tests related to only Scored recommendations.
-
+- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [About the CIS Benchmark](#about-the-cis-benchmark)
+- [Installing rancher-cis-benchmark](#installing-rancher-cis-benchmark)
+- [Uninstalling rancher-cis-benchmark](#uninstalling-rancher-cis-benchmark)
+- [Running a Scan](#running-a-scan)
+- [Skipping Tests](#skipping-tests)
+- [Viewing Reports](#viewing-reports)
 - [About the generated report](#about-the-generated-report)
-- [Test profiles](#test-profiles)
-- [Skipped and not applicable tests](#skipped-and-not-applicable-tests)
-  - [CIS Benchmark v1.4 skipped tests](#cis-benchmark-v1-4-skipped-tests)
-  - [CIS Benchmark v1.4 not applicable tests](#cis-benchmark-v1-4-not-applicable-tests)
+- [Test Profiles](#test-profiles)
+- [About Skipped and Not Applicable Tests](#about-skipped-and-not-applicable-tests)
+- [Roles-based access control](./rbac)
+- [Configuration](./configuration)
 
+### Changes in Rancher v2.5
+
+We now support running CIS scans on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE. Previously it was only supported to run CIS scans on RKE Kubernetes clusters.
+
+In Rancher v2.4, the CIS scan tool was available from the **cluster manager** in the Rancher UI. Now it is available in the **Cluster Explorer** and it can be enabled and deployed using a Helm chart. It can be installed from the Rancher UI, but it can also be installed independently of Rancher. It  deploys a CIS scan operator for the cluster, and deploys Kubernetes custom resources for cluster scans. The custom resources can be managed directly from the **Cluster Explorer.**
+
+In v1 of the CIS scan tool, which was available in Rancher v2.4 through the cluster manager, recurring scans could be scheduled. The ability to schedule recurring scans is not yet available in Rancher v2.5.
+
+Support for alerting for the cluster scan results is not available for Rancher v2.5 yet.
+
+More test profiles were added. In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5, the following profiles are available:
+
+- Generic CIS 1.5 (default)
+- RKE permissive
+- RKE hardened
+- EKS
+- GKE
+
+EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
+
+The `rancher-cis-benchmark` currently supports the CIS 1.5 Benchmark version.
+
+> **Note:** The old and new versions of monitoring shouldn't run on the cluster at the same time.
 
 # About the CIS Benchmark
 
@@ -29,7 +56,113 @@ CIS Benchmarks are best practices for the secure configuration of a target syste
 
 The official Benchmark documents are available through the CIS website. The sign-up form to access the documents is [here.](https://learn.cisecurity.org/benchmarks)
 
-To check clusters for CIS Kubernetes Benchmark compliance, the security scan leverages [kube-bench,](https://github.com/aquasecurity/kube-bench) an open-source tool from Aqua Security.
+# Installing rancher-cis-benchmark
+
+The application can be installed with the Rancher UI or with Helm.
+
+### Installing with the Rancher UI
+
+1. In the Rancher UI, go to the **Cluster Explorer.**
+1. Click **Apps.**
+1. Click `rancher-cis-benchmark`.
+1. Click **Install.**
+
+**Result:** The CIS scan application is deployed on the Kubernetes cluster.
+
+### Installing with Helm
+
+There are two Helm charts for the application:
+
+- `rancher-cis-benchmark-crds`, the custom resource definition chart
+- `rancher-cis-benchmark`, the chart deploying [rancher/cis-operator](https://github.com/rancher/cis-operator)
+
+To install the charts, run the following commands:
+```
+helm install clusterscan-operator-crds \
+  ./rancher-cis-benchmark-crds/charts/ \
+  --kubeconfig <cluster-kubeconfig>
+helm install clusterscan-operator \
+  ./rancher-cis-benchmark/charts/ \
+  --create-namespace=true \
+  -n cis-operator-system \
+  --kubeconfig <cluster-kubeconfig>
+```
+
+# Uninstalling rancher-cis-benchmark
+
+The application can be uninstalled with the Rancher UI or with Helm.
+
+### Uninstalling with the Rancher UI
+
+1. From the **Cluster Explorer,** go to the top left dropdown menu and click **Apps & Marketplace.**
+1. Click **Installed Apps.**
+1. Go to the `cis-operator-system` namespace and check the boxes next to `rancher-cis-benchmark-crd` and `rancher-cis-benchmark`.
+1. Click **Delete** and confirm **Delete.**
+
+**Result:** The `rancher-cis-benchmark` application is uninstalled.
+
+### Uninstalling with Helm
+
+Run the following commands:
+
+```
+helm uninstall clusterscan-operator -n cis-operator-system --kubeconfig <cluster-kubeconfig>
+helm uninstall clusterscan-operator-crds --kubeconfig <cluster-kubeconfig>
+```
+
+# Running a Scan
+
+When a ClusterScan custom resource is created, it launches a new CIS scan on the cluster for the chosen ClusterScanProfile.
+
+Note: There is currently a limitation of running only one CIS scan at a time for a cluster.
+
+To run a scan,
+
+1. Go to the **Cluster Explorer** in the Rancher UI. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
+1. In the **Scans** section, click **Create.**
+1. Choose a cluster scan profile. The profile determines which CIS Benchmark version will be used and which tests will be performed. The CIS Operator will choose a default profile applicable to the type of Kubernetes cluster it is installed on.
+1. Click **Create.**
+
+**Result:** A report is generated with the scan results. To see the results, click the name of the scan that appears.
+
+# Skipping Tests
+
+CIS scans can be run using test profiles with user-defined skips.
+
+To skip tests, you will create a custom CIS scan profile. A profile contains the configuration for the CIS scan, which includes the benchmark versions to use and any specific tests to skip in that benchmark.
+
+1. In the **Cluster Explorer,** go to the top-left dropdown menu and click **CIS Benchmark.**
+1. Click **Profiles.**
+1. From here, you can create a profile in multiple ways. To make a new profile, click **Create** and fill out the form in the UI. To make a new profile based on an existing profile, go to the existing profile, click the three vertical dots, and click **Clone as YAML.**  If you are filling out the form, add the tests to skip using the tests IDs, using the relevant CIS Benchmark as a reference. If you are creating the new test profile as YAML, you will add the IDs of the tests to skip in the `skipTests` directive. You will also give the profile a name:
+
+    ```yaml
+    apiVersion: cis.cattle.io/v1
+    kind: ClusterScanProfile
+    metadata:
+      annotations:
+        meta.helm.sh/release-name: clusterscan-operator
+        meta.helm.sh/release-namespace: cis-operator-system
+      labels:
+        app.kubernetes.io/managed-by: Helm
+      name: "<example-profile>"
+    spec:
+      benchmarkVersion: cis-1.5
+      skipTests:
+        - "1.1.20"
+        - "1.1.21"
+    ```
+1. Click **Create.**
+
+**Result:** A new CIS scan profile is created.
+
+When you [run a scan](#running-a-scan) that uses this profile, the defined tests will be skipped during the scan. The skipped tests will be marked in the generated report as `Skip`.
+
+# Viewing Reports
+
+To view the generated CIS scan reports,
+
+1. In the **Cluster Explorer,** go to the top left dropdown menu and click **Cluster Explorer > CIS Benchmark.**
+1. The **Scans** page will show the generated reports. To see a detailed report, go to a scan report and click the name.
 
 # About the Generated Report
 
@@ -54,66 +187,45 @@ The report contains the following information:
 | Passed_Nodes | The name(s) of the nodes that the test passed on. |
 | Failed_Nodes | The name(s) of the nodes that the test failed on. |
 
-Refer to [the table in the cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
-
-
+Refer to [the table in the cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/) for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
 
 # Test Profiles
 
-For every CIS benchmark version, Rancher ships with two types of profiles. These profiles are named based on the type of cluster (e.g. `RKE`), the CIS benchmark version (e.g. CIS 1.4) and the profile type (e.g. `Permissive` or `Hardened`). For example, a full profile name would be `RKE-CIS-1.4-Permissive`
+The following profiles are available:
+
+- Generic CIS 1.5 (default)
+- RKE permissive
+- RKE hardened
+- EKS
+- GKE
+
+You also have the ability to customize a profile by saving a set of tests to skip.
 
 All profiles will have a set of not applicable tests that will be skipped during the CIS scan. These tests are not applicable based on how a RKE cluster manages Kubernetes.
 
-There are 2 types of profiles:
+There are 2 types of RKE cluster scan profiles:
 
 - **Permissive:** This profile has a set of tests that have been will be skipped as these tests will fail on a default RKE Kubernetes cluster. Besides the list of skipped tests, the profile will also not run the not applicable tests.
 - **Hardened:** This profile will not skip any tests, except for the non-applicable tests.
 
+The EKS and GKE cluster scan profiles are based on CIS Benchmark versions that are specific to those types of clusters.
+
 In order to pass the "Hardened" profile, you will need to follow the steps on the [hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
 
-# Skipped and Not Applicable Tests
 
-### CIS Benchmark v1.4 Skipped Tests
 
-Number | Description | Reason for Skipping
----|---|---
-1.1.11 | "Ensure that the admission control plugin AlwaysPullImages is set (Scored)" | Enabling AlwaysPullImages can use significant bandwidth.
-1.1.21 | "Ensure that the --kubelet-certificate-authority argument is set as appropriate (Scored)" | When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.
-1.1.24 | "Ensure that the admission control plugin PodSecurityPolicy is set (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-1.1.34 | "Ensure that the --encryption-provider-config argument is set as appropriate (Scored)" | Enabling encryption changes how data can be recovered as data is encrypted.
-1.1.35 | "Ensure that the encryption provider is set to aescbc (Scored)" | Enabling encryption changes how data can be recovered as data is encrypted.
-1.1.36 | "Ensure that the admission control plugin EventRateLimit is set (Scored)" | EventRateLimit needs to be tuned depending on the cluster.
-1.2.2 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents Rancher's monitoring tool to collect metrics on the scheduler.
-1.3.7 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents Rancher's monitoring tool to collect metrics on the controller manager.
-1.4.12 | "Ensure that the etcd data directory ownership is set to etcd:etcd (Scored)" | A system service account is required for etcd data directory ownership. Refer to Rancher's hardening guide for more details on how to configure this ownership.
-1.7.2 | "Do not admit containers wishing to share the host process ID namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-1.7.3 | "Do not admit containers wishing to share the host IPC namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-1.7.4 | "Do not admit containers wishing to share the host network namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-1.7.5 | " Do not admit containers with allowPrivilegeEscalation (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-2.1.6 | "Ensure that the --protect-kernel-defaults argument is set to true (Scored)" | System level configurations are required prior to provisioning the cluster in order for this argument to be set to true.
-2.1.10 | "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Scored)" | When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.
+# About Skipped and Not Applicable Tests
 
-### CIS Benchmark v1.4 Not Applicable Tests
+For a list of skipped and not applicable tests, refer to [this page.](./skipped-tests)
 
-Number | Description | Reason for being not applicable
----|---|---
-1.1.9 | "Ensure that the --repair-malformed-updates argument is set to false (Scored)" | The argument --repair-malformed-updates has been removed as of Kubernetes version 1.14
-1.3.6 | "Ensure that the RotateKubeletServerCertificate argument is set to true" | Cluster provisioned by RKE handles certificate rotation directly through RKE.
-1.4.1 | "Ensure that the API server pod specification file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for kube-apiserver.
-1.4.2 | "Ensure that the API server pod specification file ownership is set to root:root (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for kube-apiserver.
-1.4.3 | "Ensure that the controller manager pod specification file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for controller-manager.
-1.4.4 | "Ensure that the controller manager pod specification file ownership is set to root:root (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for controller-manager.
-1.4.5 | "Ensure that the scheduler pod specification file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for scheduler.
-1.4.6 | "Ensure that the scheduler pod specification file ownership is set to root:root (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for scheduler.
-1.4.7 | "Ensure that the etcd pod specification file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for etcd.
-1.4.8 | "Ensure that the etcd pod specification file ownership is set to root:root (Scored)" | Cluster provisioned by RKE doesn't require or maintain a configuration file for etcd.
-1.4.13 |  "Ensure that the admin.conf file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE does not store the kubernetes default kubeconfig credentials file on the nodes.
-1.4.14 | "Ensure that the admin.conf file ownership is set to root:root (Scored)" | Cluster provisioned by RKE does not store the kubernetes default kubeconfig credentials file on the nodes.
-2.1.8 | "Ensure that the --hostname-override argument is not set (Scored)" | Clusters provisioned by RKE clusters and most cloud providers require hostnames.
-2.1.12 | "Ensure that the --rotate-certificates argument is not set to false (Scored)" | Cluster provisioned by RKE handles certificate rotation directly through RKE.
-2.1.13 | "Ensure that the RotateKubeletServerCertificate argument is set to true (Scored)" | Cluster provisioned by RKE handles certificate rotation directly through RKE.
-2.2.3 | "Ensure that the kubelet service file permissions are set to 644 or more restrictive (Scored)" | Cluster provisioned by RKE doesn’t require or maintain a configuration file for the kubelet service.
-2.2.4 | "Ensure that the kubelet service file ownership is set to root:root (Scored)" | Cluster provisioned by RKE doesn’t require or maintain a configuration file for the kubelet service.
-2.2.9 | "Ensure that the kubelet configuration file ownership is set to root:root (Scored)" | RKE doesn’t require or maintain a configuration file for the kubelet.
-2.2.10 | "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive (Scored)" | RKE doesn’t require or maintain a configuration file for the kubelet.
+For now, only user-defined skipped tests are marked as skipped in the generated report.
 
+Any skipped tests that are defined as being skipped by one of the default profiles are marked as not applicable.
+
+# Roles-based Access Control
+
+For information about permissions, refer to [this page.](./rbac)
+
+# Configuration
+
+For more information about configuring the custom resources for the scans, profiles, and benchmark versions, refer to [this page.](./configuration)
