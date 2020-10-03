@@ -3,56 +3,44 @@ title: Restoring Rancher
 weight: 2
 ---
 
-A restore is performed by creating a Restore custom resource.
+A restore is performed by creating a Restore custom resource. 
+
+> **Important**
+* Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.](../migrating-rancher)  
+* While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
 
 ### 1. Create the Restore Custom Resource
 
 1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
 1. Click **Restore.**
-1. Create the Restore with the form, or with YAML. For this example, we can use **Create > Create from YAML.**
+1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the [configuration reference](../configuration/restore-config) and to the [examples.](../examples/#restore)
+1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Restore YAML.
 
-Create a Restore custom resource such as the following. 
+    ```yaml
+    apiVersion: resources.cattle.io/v1
+	kind: Restore
+	metadata:
+	  name: restore-migration
+	spec:
+	  backupFilename: backup-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07-27-09Z.tar.gz
+	  encryptionConfigSecretName: encryptionconfig
+	  storageLocation:
+	    s3:
+	      credentialSecretName: s3-creds
+	      credentialSecretNamespace: default
+	      bucketName: rancher-backups
+	      folder: rancher
+	      region: us-west-2
+	      endpoint: s3.us-west-2.amazonaws.com
+      ```
 
-The `prune` directive needs to be set to false so that the secret associated with the operator's service account will not get deleted.
+      For help configuring the Restore, refer to the [configuration reference](../configuration/restore-config) and to the [examples.](../examples/#restore)
 
-Replace the `backupFilename` and `storageLocation` with your own information.
+1. Click **Create.**
+
+**Result:** The rancher-operator scales down the rancher deployment during restore. Once the restore completes, the operator scales back up the rancher deployment. So rancher will be unavailable for the duration of restore. To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
 
 ```yaml
-apiVersion: resources.cattle.io/v1
-kind: Restore
-metadata:
-  name: restore-migration
-spec:
-  backupFilename: b-eks-2-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07#27#09Z.tar.gz
-  prune: false
-  storageLocation:
-    s3:
-      credentialSecretName: s3-creds
-      credentialSecretNamespace: default
-      bucketName: backup-test
-      folder: ecm1
-      region: us-west-2
-      endpoint: s3.us-west-2.amazonaws.com
+kubectl get pods -n cattle-resources-system
+kubectl logs <pod name from above command> -n cattle-resources-system -f
 ```
-
-**Result:** Helm 3 stores the chart release as a Kubernetes [Secret.](https://kubernetes.io/docs/concepts/configuration/secret/) When the restore is performed, the Rancher chart release in the backup is created in the cluster where the restore is performed. Now Rancher does not need to be reinstalled. It just needs to be upgraded.
-
-### 2. Install cert-manager
-
-Follow the steps to [install cert-manager]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/install/#5-install-cert-manager) in the documentation about installing cert-manager on Kubernetes.
-
-### 3. Upgrade the Rancher Release
-
-If Rancher was scaled down when the backup was created, you can set the size of the deployment through the `helm upgrade` command.
-
-```
-helm upgrade rancher rancher-alpha/rancher \
-  --version 2.5.0-alpha1 \
-  --namespace cattle-system \
-  -set hostname=<same hostname as first rancher server> \
-  --set rancherImageTag=master-head
-```
-
-For more information about Rancher image tags, see [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/choosing-version/)
-
-**Result:** Rancher is restored.
