@@ -22,31 +22,33 @@ To perform a backup, a custom resource of type Backup must be created.
 
 1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
 1. Click **Backup.**
-1. Create the Backup with the form, or with YAML. For this example, we can click **Create > Create from YAML.** Enter the Backup YAML. This example Backup custom resource would create encrypted recurring backups in S3:
+1. Create the Backup with the form, or with YAML editor.
+1. For configuring the Backup details using the form, click **Create** and refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)
+1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Backup YAML. This example Backup custom resource would create encrypted recurring backups in S3:
 
     ```yaml
     apiVersion: resources.cattle.io/v1
     kind: Backup
     metadata:
-      name: test-s3-recurring-backup
+      name: s3-recurring-backup
     spec:
       storageLocation:
         s3:
           credentialSecretName: s3-creds
           credentialSecretNamespace: default
-          bucketName: rajashree-backup-test
-          folder: ecm1
+          bucketName: rancher-backups
+          folder: rancher
           region: us-west-2
           endpoint: s3.us-west-2.amazonaws.com
       resourceSetName: rancher-resource-set
-      encryptionConfigSecretName: test-encryptionconfig
-      schedule: "@every 2m"
-      retentionCount: 3
+      encryptionConfigSecretName: encryptionconfig
+      schedule: "@every 1h"
+      retentionCount: 10
       ```
 
-    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)
+    > **Note:** When creating the Backup resource using YAML editor, the `resourceSetName` must be set to `rancher-resource-set`
 
-    Recurring backups are scheduled by editing the `Schedule` and `RetentionCount` fields. For more information, refer to the [Backup configuration reference.](../configuration/backup-config/#schedule)
+    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)    
 
     > **Important:** The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
 1. Click **Create.**
@@ -58,6 +60,7 @@ To perform a backup, a custom resource of type Backup must be created.
 
 Rancher Backup & Restore is a cluster-admin only feature and available only for the local cluster.
 Which means only the rancher admins, and local cluster’s cluster-owner can:
+
 * Install the Chart
 * See the navigation links for Backup and Restore CRDs (there is no overview page for this feature, after the chart is installed there’s a separate navigation link for its CRDs)
 * Perform a backup or restore by creating a Backup CR and Restore CR respectively, list backups/restores performed so far
