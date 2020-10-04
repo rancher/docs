@@ -8,6 +8,8 @@ If you are migrating Rancher to a new Kubernetes cluster, you don't need to inst
 ### Prerequisites
 
 These instructions assume you have [created a backup](../back-up-rancher) and you have already installed a new Kubernetes cluster where Rancher will be deployed.
+It is necessary to use the same hostname that was set as the server URL in the first cluster.
+Rancher version must be v2.5.0 and up
 
 Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. One of Rancher's Kubernetes distributions may also be used:
 
@@ -35,8 +37,9 @@ kind: Restore
 metadata:
   name: restore-migration
 spec:
-  backupFilename: b-eks-2-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07#27#09Z.tar.gz
+  backupFilename: backup-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07-27-09Z.tar.gz
   prune: false
+  encryptionConfigSecretName: encryptionconfig
   storageLocation:
     s3:
       credentialSecretName: s3-creds
@@ -45,6 +48,15 @@ spec:
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
+```
+
+> **Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
+1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:
+
+```
+kubectl create secret generic encryptionconfig \
+  --from-file=./encryption-provider-config.yaml \
+  -n cattle-resources-system
 ```
 
 Then apply the resource:
@@ -59,10 +71,10 @@ Follow the steps to [install cert-manager]({{<baseurl>}}/rancher/v2.x/en/install
 
 ### 4. Bring up Rancher with Helm
 
+Use the same version of Helm to install Rancher, that was used on the first cluster.
+
 ```
-helm upgrade rancher rancher-alpha/rancher \
-  --version 2.5.0-alpha1 \
+helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=<same hostname as first Rancher server> \
-  --set rancherImageTag=master-head
 ```

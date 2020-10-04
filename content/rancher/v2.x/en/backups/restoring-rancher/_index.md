@@ -38,7 +38,13 @@ A restore is performed by creating a Restore custom resource.
 
 1. Click **Create.**
 
-**Result:** The rancher-operator scales down the rancher deployment during restore. Once the restore completes, the operator scales back up the rancher deployment. So rancher will be unavailable for the duration of restore. To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
+**Result:** The rancher-operator scales down the rancher deployment during restore, and scales it back up once the restore completes. The resources are restored in this order:
+
+1. Custom Resource Definitions (CRDs)
+2. Cluster-scoped resources
+3. Namespaced resources
+
+To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
 
 ```yaml
 kubectl get pods -n cattle-resources-system

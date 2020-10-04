@@ -37,10 +37,10 @@ This section contains example Backup custom resources.
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: test-s3-def-backup
+  name: default-location-encrypted-backup
 spec:
   resourceSetName: rancher-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
+  encryptionConfigSecretName: encryptionconfig
 ```
 
 ### Recurring Backup in the Default Location
@@ -49,11 +49,11 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: test-default-location-recurring-backup
+  name: default-location-recurring-backup
 spec:
   resourceSetName: rancher-resource-set
-  schedule: "@every 2m"
-  retentionCount: 3
+  schedule: "@every 1h"
+  retentionCount: 10
 ```
 
 ### Encrypted Recurring Backup in the Default Location
@@ -62,11 +62,11 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: test-s3-recurring-backup
+  name: default-enc-recurring-backup
 spec:
-  resourceSetName: ecm-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
-  schedule: "@every 1m"
+  resourceSetName: rancher-resource-set
+  encryptionConfigSecretName: encryptionconfig
+  schedule: "@every 1h"
   retentionCount: 3
 ```
 
@@ -76,7 +76,7 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: minio-backup-demo
+  name: minio-backup
 spec:
   storageLocation:
     s3:
@@ -86,7 +86,7 @@ spec:
       endpoint: minio.xip.io
       endpointCA: LS0tLS1CRUdJTi3VUFNQkl5UUT.....pbEpWaVzNkRS0tLS0t
   resourceSetName: rancher-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
+  encryptionConfigSecretName: encryptionconfig
 ```
 
 ### Backup in S3 Using AWS Credential Secret
@@ -95,18 +95,18 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: s3-backup-demo
+  name: s3-backup
 spec:
   storageLocation:
     s3:
       credentialSecretName: s3-creds
       credentialSecretNamespace: default
-      bucketName: rajashree-backup-test
+      bucketName: rancher-backups
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
   resourceSetName: rancher-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
+  encryptionConfigSecretName: encryptionconfig
 ```
 
 ### Recurring Backup in S3 Using AWS Credential Secret
@@ -115,20 +115,20 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: test-s3-recurring-backup
+  name: s3-recurring-backup
 spec:
   storageLocation:
     s3:
       credentialSecretName: s3-creds
       credentialSecretNamespace: default
-      bucketName: rajashree-backup-test
+      bucketName: rancher-backups
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
   resourceSetName: rancher-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
-  schedule: "@every 2m"
-  retentionCount: 3
+  encryptionConfigSecretName: encryptionconfig
+  schedule: "@every 1h"
+  retentionCount: 10
 ```
 
 ### Backup from EC2 Nodes with IAM Permission to Access S3
@@ -139,16 +139,16 @@ This example shows that the AWS credential secret does not have to be provided t
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: s3-backup-demo
+  name: s3-iam-backup
 spec:
   storageLocation:
     s3:
-      bucketName: rajashree-backup-test
+      bucketName: rancher-backups
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
   resourceSetName: rancher-resource-set
-  encryptionConfigSecretName: test-encryptionconfig
+  encryptionConfigSecretName: encryptionconfig
 ```
 
 # Restore
@@ -161,9 +161,9 @@ This section contains example Restore custom resources.
 apiVersion: resources.cattle.io/v1
 kind: Restore
 metadata:
-  name: restore-pvc-demo
+  name: restore-default
 spec:
-  backupFilename: test-default-location-recurring-backup-752ecd87-d958-4d20-8350-072f8d090045-2020-09-26T12-29-54-07-00.tar.gz
+  backupFilename: default-location-recurring-backup-752ecd87-d958-4d20-8350-072f8d090045-2020-09-26T12-29-54-07-00.tar.gz
 #  encryptionConfigSecretName: test-encryptionconfig
 ```
 
@@ -174,13 +174,13 @@ kind: Restore
 metadata:
   name: restore-migration
 spec:
-  backupFilename: b-eks-2-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07#27#09Z.tar.gz
+  backupFilename: backup-b0450532-cee1-4aa1-a881-f5f48a007b1c-2020-09-15T07-27-09Z.tar.gz
   prune: false
   storageLocation:
     s3:
       credentialSecretName: s3-creds
       credentialSecretNamespace: default
-      bucketName: rajashree-backup-test
+      bucketName: rancher-backups
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
@@ -192,10 +192,10 @@ spec:
 apiVersion: resources.cattle.io/v1
 kind: Restore
 metadata:
-  name: restore-s3-demo
+  name: restore-encrypted
 spec:
-  backupFilename: default-test-s3-def-backup-c583d8f2-6daf-4648-8ead-ed826c591471-2020-08-24T20#47#05Z.tar.gz
-  encryptionConfigSecretName: test-encryptionconfig
+  backupFilename: default-test-s3-def-backup-c583d8f2-6daf-4648-8ead-ed826c591471-2020-08-24T20-47-05Z.tar.gz
+  encryptionConfigSecretName: encryptionconfig
 ```
 
 ### Restore an Encrypted Backup from Minio
@@ -206,7 +206,7 @@ kind: Restore
 metadata:
   name: restore-minio
 spec:
-  backupFilename: default-minio-backup-demo-aa5c04b7-4dba-4c48-9ac4-ab7916812eaa-2020-08-30T13#18#17-07#00.tar.gz
+  backupFilename: default-minio-backup-demo-aa5c04b7-4dba-4c48-9ac4-ab7916812eaa-2020-08-30T13-18-17-07-00.tar.gz
   storageLocation:
     s3:
       credentialSecretName: minio-creds
@@ -230,7 +230,7 @@ spec:
     s3:
       credentialSecretName: s3-creds
       credentialSecretNamespace: default
-      bucketName: rajashree-backup-test
+      bucketName: rancher-backups
       folder: ecm1
       region: us-west-2
       endpoint: s3.us-west-2.amazonaws.com
