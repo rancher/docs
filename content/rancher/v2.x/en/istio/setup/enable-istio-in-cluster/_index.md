@@ -35,12 +35,26 @@ For more information on Overlay Files, refer to the [documentation](https://isti
 
 ## Selectors & Scrape Configs
 
-The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=true` which means only the `istio-system` namespace will be scraped by prometheus by default. To ensure you can view traffic, metrics and graphs for resources deployed in other namespaces you will need to add additional configuration.
+The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=false` which enables monitoring across all namespaces by default. This ensures you can view traffic, metrics and graphs for resources deployed in a namespace with `istio-injection=enabled` label. 
 
-There are three different ways to enable prometheus to detect resources in other namespaces: 
+If you would like to limit prometheus to specific namespaces, set `prometheus.prometheusSpec.ignoreNamespaceSelectors=true`. Once you do this, you will need to add additional configuration to continue to monitor your resources. 
+
+**Set ingnoreNamspaceSelectors to True** 
+
+This limits monitoring to specific namespaces. 
+
+
+1. From the **Cluster Explorer**, navigate to **Installed Apps** if Monitoring is already installed, or **Charts** in **Apps & Marketplace** 
+1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
+1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
+1. Set`prometheus.prometheusSpec.ignoreNamespaceSelectors=true`
+1. Complete install or upgrade
+
+**Result:** Prometheus will be limited to specific namespaces  which means one of the following configurations will need to be set up to continue to view data in various dashboards
+
+There are two different ways to enable prometheus to detect resources in other namespaces when `prometheus.prometheusSpec.ignoreNamespaceSelectors=true`: 
 
 1. Add a Service Monitor or Pod Monitor in the namespace with the targets you want to scrape.
-1. Set `prometheus.prometheusSpec.ignoreNamespaceSelectors=false` on your rancher-monitoring instance.
 1. Add an `additionalScrapeConfig` to your rancher-monitoring instance to scrape all targets in all namespaces.
 
 **Option 1: Create a Service Monitor or Pod Monitor** 
@@ -94,18 +108,7 @@ spec:
       targetLabel: pod_name
 ```
 
-**Option 2: Set ingnoreNamspaceSelectors to False** 
 
-This enables monitoring accross namespaces which means ServiceMonitors or PodMonitors will not need to be created per namespace. 
-
- >Potential security trade off is  users in namespace A can create a service monitor that monitors services in namespace B despite not having permissions to namespace B
-1. From the **Cluster Explorer**, navigate to **Installed Apps** if Monitoring is already installed, or **Charts** in **Apps & Marketplace** 
-1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
-1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
-1. Set`prometheus.prometheusSpec.ignoreNamespaceSelectors=true`
-1. Complete install or upgrade
-
-**Result:** All namespaces with the `istio-injection=enabled` label will be scraped by prometheus.
 
 **Option 3: Set ingnoreNamspaceSelectors to False** 
 
