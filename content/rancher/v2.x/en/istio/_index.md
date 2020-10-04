@@ -3,24 +3,24 @@ title: Istio
 weight: 15
 ---
 
-> This section is about the new version of the Istio app in Rancher v2.5.0. If you are using a Rancher version from v2.3.0 to v2.5.0, the older way of setting up Istio is documented in [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
+# Istio in Cluster Manager
+If you are using a Rancher version from **v2.3.x** to **v2.4.x**, the older way of setting up Istio in th **Cluster Manager** is documented in [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
 
- [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
 
- As a network of microservices changes and grows, the interactions between them can become more difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
+# Istio in Cluster Explorer
+ [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.
 
-Our integration of Istio is designed so that a Rancher operator, such as an administrator or cluster administrator, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
+As a network of microservices changes and grows, the interactions between them can become increasingly difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
 
-This service mesh provides features that include but are not limited to the following:
+Our integration of Istio is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to a team of developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 
-- Traffic management features
-- Enhanced monitoring and tracing
-- Service discovery and routing
-- Secure connections and service-to-service authentication with mutual TLS
-- Load balancing
-- Automatic retries, backoff, and circuit breaking
+This core service mesh provides features that include but are not limited to the following:
 
-After Istio is enabled in a cluster, you can leverage Istio's control plane functionality with `kubectl`.
+- **Traffic Management** such as ingress and egress routing, circuit breaking, mirroring.
+- **Security** with resources to authenticate and authorize traffic and users, mTLS included.
+- **Observability** of logs, metrics, and distributed traffic flows.
+
+After [setting up istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup) you can leverage Istio's control plane functionality through the Cluster Explorer, `kubectl`, or `istioctl`.
 
 Rancher's Istio integration comes with a comprehensive visualization aid:
 
@@ -66,7 +66,7 @@ To access the Grafana and Prometheus visualizations, from the **Cluster Explorer
 
 To access the Kiali visualization, from the **Cluster Explorer** navigate to the **Istio** app overview page, and click on **Kiali**. From here you can access the **Traffic Graph** tab or the **Traffic Metrics** tab to see network visualizations and metrics. 
 
-By default, only the `istio-system` namespace will picked up by prometheus, which means the other visualization addons will not have displays for resources deployed in other namespaces. Refer to [selector/scrape config setup](URLNEEDED) to get full use of your Grafana and Kiali dashboards.
+By default, all namespace will picked up by prometheus and make data available for Kiali graphs. Refer to [selector/scrape config setup](URLNEEDED) if you would like to use a different configuration for prometheus data scraping. 
 
 Your access to the visualizations depend on your role. Grafana and Prometheus are only available for `cluster-admin` roles. The Kiali UI is available only to `cluster-admin` by default, but `cluster-admin` can allow other roles to access them by editing the Istio values.yaml.
 
@@ -86,7 +86,7 @@ By default, each Rancher-provisioned cluster has one NGINX ingress controller al
 
 ![In an Istio-enabled cluster, you can have two ingresses: the default Nginx ingress, and the default Istio controller.]({{<baseurl>}}/img/rancher/istio-ingress.svg)
  
- Additional Istio Ingress gateways can be enabled via the [overlay file.](URLNEEDED)
+ Additional Istio Ingress gateways can be enabled via the [overlay file](URLNEEDED).
 
 ### Egress Support
 
