@@ -1,9 +1,13 @@
 ---
-title: Legacy CIS Scan Documentation
-shortTitle: Legacy
+title: Cluster Manager CIS Scan (Deprecated)
+shortTitle: Cluster Manager
 weight: 1
 ---
 _Available as of v2.4.0_
+
+This section contains the legacy documentation for the CIS Scan tool that was released in Rancher v2.4, and was available under the **Tools** menu in the top navigation bar of the cluster manager.
+
+As of Rancher v2.5, it is deprecated and replaced with the `rancher-cis-benchmark` application.
 
 - [Prerequisites](#prerequisites)
 - [Running a scan](#running-a-scan)
@@ -12,6 +16,7 @@ _Available as of v2.4.0_
 - [Setting alerts](#setting-alerts)
 - [Deleting a report](#deleting-a-report)
 - [Downloading a report](#downloading-a-report)
+- [List of skipped and not applicable tests](#list-of-skipped-and-not-applicable-tests)
 
 
 # Prerequisites
@@ -146,3 +151,7 @@ For more information about alerts, refer to [this page.]({{<baseurl>}}/rancher/v
 1. Go to the report that you want to download. Click **&#8942; > Download.**
 
 **Result:** The report is downloaded in CSV format. For more information on each columns, refer to the [section about the generated report.](#about-the-generated-report)
+
+# List of Skipped and Not Applicable Tests
+
+For a list of skipped and not applicable tests, refer to <a href="{{<baseurl>}}/rancher/v2.x/en/cis-scans/legacy/skipped-tests" target="_blank">this page.</a>

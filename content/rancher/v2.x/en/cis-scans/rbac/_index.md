@@ -1,5 +1,5 @@
 ---
-title: Roles-based Access Contro
+title: Roles-based Access Control
 shortTitle: RBAC
 weight: 3
 ---
@@ -16,7 +16,7 @@ However, the `rancher-cis-benchmark` chart installs three default `ClusterRoles`
 # Cluster-Admin Access
 
 Rancher CIS Scans is a cluster-admin only feature by default.
-This means only the rancher global admins, and the cluster’s cluster-owner can:
+This means only the Rancher global admins, and the cluster’s cluster-owner can:
 
 - Install/Uninstall the rancher-cis-benchmark App
 - See the navigation links for CIS Benchmark CRDs - ClusterScanBenchmarks, ClusterScanProfiles, ClusterScans
@@ -36,6 +36,8 @@ The rancher-cis-benchmark creates three `ClusterRoles` and adds the CIS Benchmar
 | `cis-edit`| `edit` | Ability to CRUD clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
 | `cis-view` | `view `| Ability to List(R) clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
 
-Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but these default k8s roles will determine access to CIS feature.
+Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but these default k8s roles will determine access to the CIS feature.
+
 By default only cluster-owner role will have ability to use `rancher-cis-benchmark` feature.
+
 But the above ClusterRoles can be granted to cluster-member, project-owner, project-member users if a cluster-owner wants to share access.
