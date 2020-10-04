@@ -7,7 +7,7 @@ _Available as of v2.4.0_
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
-The `rancher-cis-application` leverages [kube-bench,](https://github.com/aquasecurity/kube-bench) an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes [Sonobuoy](https://github.com/vmware-tanzu/sonobuoy) for report aggregation.
+The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> for report aggregation.
 
 > The CIS scan feature was improved in Rancher v2.5. If you are using Rancher v2.4, refer to the older version of the CIS scan documentation [here.](./legacy)
 
@@ -36,17 +36,21 @@ Support for alerting for the cluster scan results is not available for Rancher v
 
 More test profiles were added. In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5, the following profiles are available:
 
-- Generic CIS 1.5 (default)
+- Generic CIS 1.5
 - RKE permissive
 - RKE hardened
 - EKS
 - GKE
 
-EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
+The default profile depends on the type of cluster that will be scanned:
+
+- For RKE Kubernetes clusters, the RKE permissive profile is the default.
+- EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
+- For cluster types other than RKE, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
 The `rancher-cis-benchmark` currently supports the CIS 1.5 Benchmark version.
 
-> **Note:** The old and new versions of monitoring shouldn't run on the cluster at the same time.
+> **Note:** CIS v1 cannot run on a cluster when CIS v2 is deployed. In other words, after `rancher-cis-benchmark` is installed, you can't run scans by going to the Cluster Manager view in the Rancher UI and clicking **Tools > CIS Scans.**
 
 # About the CIS Benchmark
 
@@ -54,7 +58,8 @@ The Center for Internet Security is a 501(c)(3) nonprofit organization, formed i
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
-The official Benchmark documents are available through the CIS website. The sign-up form to access the documents is [here.](https://learn.cisecurity.org/benchmarks)
+The official Benchmark documents are available through the CIS website. The sign-up form to access the documents is 
+<a href="https://learn.cisecurity.org/benchmarks" target="_blank">here.</a>
 
 # Installing rancher-cis-benchmark
 
@@ -74,18 +79,14 @@ The application can be installed with the Rancher UI or with Helm.
 There are two Helm charts for the application:
 
 - `rancher-cis-benchmark-crds`, the custom resource definition chart
-- `rancher-cis-benchmark`, the chart deploying [rancher/cis-operator](https://github.com/rancher/cis-operator)
+- `rancher-cis-benchmark`, the chart deploying <a href="https://github.com/rancher/cis-operator" target="_blank">rancher/cis-operator</a>
 
 To install the charts, run the following commands:
 ```
-helm install clusterscan-operator-crds \
-  ./rancher-cis-benchmark-crds/charts/ \
-  --kubeconfig <cluster-kubeconfig>
-helm install clusterscan-operator \
-  ./rancher-cis-benchmark/charts/ \
-  --create-namespace=true \
-  -n cis-operator-system \
-  --kubeconfig <cluster-kubeconfig>
+helm repo add rancherchart https://charts.rancher.io
+helm repo update
+helm install rancher-cis-benchmark-crd --kubeconfig <> rancherchart/rancher-cis-benchmark-crd --create-namespace -n cis-operator-system
+helm install rancher-cis-benchmark --kubeconfig <> rancherchart/rancher-cis-benchmark -n cis-operator-system
 ```
 
 # Uninstalling rancher-cis-benchmark
@@ -106,21 +107,21 @@ The application can be uninstalled with the Rancher UI or with Helm.
 Run the following commands:
 
 ```
-helm uninstall clusterscan-operator -n cis-operator-system --kubeconfig <cluster-kubeconfig>
-helm uninstall clusterscan-operator-crds --kubeconfig <cluster-kubeconfig>
+helm uninstall rancher-cis-benchmark -n cis-operator-system
+helm uninstall rancher-cis-benchmark-crd -n cis-operator-system
 ```
 
 # Running a Scan
 
 When a ClusterScan custom resource is created, it launches a new CIS scan on the cluster for the chosen ClusterScanProfile.
 
-Note: There is currently a limitation of running only one CIS scan at a time for a cluster.
+Note: There is currently a limitation of running only one CIS scan at a time for a cluster. If you create multiple ClusterScan custom resources, they will be run one after the other by the operator, and until one scan finishes, the rest of the ClusterScan custom resources will be in the "Pending" state.
 
 To run a scan,
 
 1. Go to the **Cluster Explorer** in the Rancher UI. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
 1. In the **Scans** section, click **Create.**
-1. Choose a cluster scan profile. The profile determines which CIS Benchmark version will be used and which tests will be performed. The CIS Operator will choose a default profile applicable to the type of Kubernetes cluster it is installed on.
+1. Choose a cluster scan profile. The profile determines which CIS Benchmark version will be used and which tests will be performed. If you choose the Default profile, then the CIS Operator will choose a profile applicable to the type of Kubernetes cluster it is installed on.
 1. Click **Create.**
 
 **Result:** A report is generated with the scan results. To see the results, click the name of the scan that appears.
@@ -133,7 +134,7 @@ To skip tests, you will create a custom CIS scan profile. A profile contains the
 
 1. In the **Cluster Explorer,** go to the top-left dropdown menu and click **CIS Benchmark.**
 1. Click **Profiles.**
-1. From here, you can create a profile in multiple ways. To make a new profile, click **Create** and fill out the form in the UI. To make a new profile based on an existing profile, go to the existing profile, click the three vertical dots, and click **Clone as YAML.**  If you are filling out the form, add the tests to skip using the tests IDs, using the relevant CIS Benchmark as a reference. If you are creating the new test profile as YAML, you will add the IDs of the tests to skip in the `skipTests` directive. You will also give the profile a name:
+1. From here, you can create a profile in multiple ways. To make a new profile, click **Create** and fill out the form in the UI. To make a new profile based on an existing profile, go to the existing profile, click the three vertical dots, and click **Clone as YAML.**  If you are filling out the form, add the tests to skip using the test IDs, using the relevant CIS Benchmark as a reference. If you are creating the new test profile as YAML, you will add the IDs of the tests to skip in the `skipTests` directive. You will also give the profile a name:
 
     ```yaml
     apiVersion: cis.cattle.io/v1
@@ -164,30 +165,29 @@ To view the generated CIS scan reports,
 1. In the **Cluster Explorer,** go to the top left dropdown menu and click **Cluster Explorer > CIS Benchmark.**
 1. The **Scans** page will show the generated reports. To see a detailed report, go to a scan report and click the name.
 
+One can download the report from the Scans list or from the scan detail page.
+
 # About the Generated Report
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
-As of Rancher v2.4, the scan will use the CIS Benchmark v1.4. The Benchmark version is included in the generated report.
+In Rancher v2.5, the scan will use the CIS Benchmark v1.5. The Benchmark version is included in the generated report.
 
 The Benchmark provides recommendations of two types: Scored and Not Scored. Recommendations marked as Not Scored in the Benchmark are not included in the generated report.
 
-Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that Rancher provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to Rancher's [self-assessment guide for the corresponding Kubernetes version.]({{<baseurl>}}/rancher/v2.x/en/security/#the-cis-benchmark-and-self-assessment)
+Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that Rancher provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to Rancher's <a href="{{<baseurl>}}/rancher/v2.x/en/security/#the-cis-benchmark-and-self-assessment" target="_blank">self-assessment guide for the corresponding Kubernetes version.</a>
 
 The report contains the following information:
 
 | Column in Report | Description |
 |------------------|-------------|
-| ID               | The ID number of the CIS Benchmark. |
-| Description      | The description of the CIS Benchmark test. |
-| Remediation      | What needs to be fixed in order to pass the test. |
-| State of Test    | Indicates if the test passed, failed, was skipped, or was not applicable. |
-| Node type        | The node role, which affects which tests are run on the node. Master tests are run on controlplane nodes, etcd tests are run on etcd nodes, and node tests are run on the worker nodes. |
-| Nodes            | The name(s) of the node that the test was run on. |
-| Passed_Nodes | The name(s) of the nodes that the test passed on. |
-| Failed_Nodes | The name(s) of the nodes that the test failed on. |
+| `id`               | The ID number of the CIS Benchmark. |
+| `description`      | The description of the CIS Benchmark test. |
+| `remediation`      | What needs to be fixed in order to pass the test. |
+| `state`    | Indicates if the test passed, failed, was skipped, or was not applicable. |
+| `node_type`        | The node role, which affects which tests are run on the node. Master tests are run on controlplane nodes, etcd tests are run on etcd nodes, and node tests are run on the worker nodes. |
 
-Refer to [the table in the cluster hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/) for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
+Refer to <a href="{{<baseurl>}}/rancher/v2.x/en/security/" target="_blank">the table in the cluster hardening guide</a> for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
 
 # Test Profiles
 
@@ -210,13 +210,11 @@ There are 2 types of RKE cluster scan profiles:
 
 The EKS and GKE cluster scan profiles are based on CIS Benchmark versions that are specific to those types of clusters.
 
-In order to pass the "Hardened" profile, you will need to follow the steps on the [hardening guide]({{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide) and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
-
-
+In order to pass the "Hardened" profile, you will need to follow the steps on the <a href="{{<baseurl>}}/rancher/v2.x/en/security/#rancher-hardening-guide" target="_blank">hardening guide</a> and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
 
 # About Skipped and Not Applicable Tests
 
-For a list of skipped and not applicable tests, refer to [this page.](./skipped-tests)
+For a list of skipped and not applicable tests, refer to <a href="{{<baseurl>}}/rancher/v2.x/en/cis-scans/skipped-tests" target="_blank">this page.</a>
 
 For now, only user-defined skipped tests are marked as skipped in the generated report.
 
@@ -224,8 +222,8 @@ Any skipped tests that are defined as being skipped by one of the default profil
 
 # Roles-based Access Control
 
-For information about permissions, refer to [this page.](./rbac)
+For information about permissions, refer to <a href="{{<baseurl>}}/rancher/v2.x/en/cis-scans/rbac" target="_blank">this page.</a>
 
 # Configuration
 
-For more information about configuring the custom resources for the scans, profiles, and benchmark versions, refer to [this page.](./configuration)
+For more information about configuring the custom resources for the scans, profiles, and benchmark versions, refer to <a href="{{<baseurl>}}/rancher/v2.x/en/cis-scans/configuration" target="_blank">this page.</a>
