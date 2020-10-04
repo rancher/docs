@@ -3,7 +3,9 @@ title: Backups and Disaster Recovery
 weight: 5
 ---
 
-In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new server.
+In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new server. 
+
+Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher.
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Backup and Restore for Rancher Prior to v2.5](#backup-and-restore-for-rancher-prior-to-v2-5)
@@ -27,13 +29,16 @@ In Rancher v2.4, it was only supported to install Rancher on two types of Kubern
 
 In Rancher v2.5, it is now supported to install Rancher hosted Kubernetes clusters, such as Amazon EKS clusters, which do not expose etcd to a degree that would allow snapshots to be created by an external tool. etcd doesn't need to be exposed for `rancher-backup` to work, because the operator gathers resources by making calls to `kube-apiserver`.
 
-### Backup and Restore for Rancher Prior to v2.5
+### Backup and Restore for Rancher v2.5 installed with Docker
+
+For Rancher installed with Docker, refer to the same steps used up till 2.5 for [single node backups]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/single-node-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/single-node-restoration/) documentation.
+
+### Backup and Restore for Rancher installed on Kubernetes cluster Prior to v2.5
 
 For Rancher prior to v2.5, the way that Rancher is backed up and restored differs based on the way that Rancher was installed. Our legacy backup and restore documentation is here:
 
 - For Rancher installed on an RKE Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/ha-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/rke-restore/) documentation.
 - For Rancher installed on a K3s Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/k3s-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/k3s-restore/) documentation.
-- For Rancher installed with Docker, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/single-node-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/single-node-restoration/) documentation.
 
 ### How Backups and Restores Work
 
@@ -75,10 +80,10 @@ To configure the backup app in Rancher, click **Cluster Explorer** in the upper 
 Install the backup app as a Helm chart:
 
 ```
-helm repo add rancherchart https://charts.rancher.io
+helm repo add rancher-charts https://charts.rancher.io
 helm repo update
-helm install rancher-backup-crd rancherchart/rancher-backup-crd -n cattle-resources-system --create-namespace
-helm install rancher-backup rancherchart/rancher-backup -n cattle-resources-system
+helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace
+helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system
 ```
 
 # Backing up Rancher
