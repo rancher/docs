@@ -6,16 +6,13 @@ weight: 3
 
 Configure a storage location where all backups are saved by default. You will have the option to override this with each backup, but will be limited to using an S3-compatible object store.
 
-The storage location is configured at the operator level. Therefore, it must be configured when the `rancher-backup` operator is installed or upgraded.
-
-Only one storage location can be configured for each backup.
+Only one storage location can be configured at the operator level.
 
 - [Storage Location Configuration](#storage-location-configuration)
   - [No Default Storage Location](#no-default-storage-location)
-  - [Use the Default Storage Class (gp2)](#use-the-default-storage-class-gp2)
   - [S3-compatible Object Store](#s3-compatible-object-store)
-  - [Existing StorageClass](#existing-storageclass)
-  - [Existing PersistentVolume](#existing-persistentvolume)
+  - [Use an existing StorageClass](#existing-storageclass)
+  - [Use an existing PersistentVolume](#existing-persistent-volume)
 - [Encryption](#encryption)
 - [Example values.yaml for the rancher-backup Helm Chart](#example-values-yaml-for-the-rancher-backup-helm-chart)
 
@@ -23,11 +20,7 @@ Only one storage location can be configured for each backup.
 
 ### No Default Storage Location
 
-This option is the default.
-
-### Use the Default Storage Class (gp2)
-
-If this option is selected, the cluster's [default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/) will be used to store the backups.
+You can choose to not have any operator-level storage location configured. If you select this option, you must configure an S3-compatible object store as the storage location for each individual backup.
 
 ### S3-compatible Object Store
 
@@ -42,25 +35,21 @@ If this option is selected, the cluster's [default StorageClass](https://kuberne
 
 ### Existing StorageClass
 
-Configure an existing storage class that will be used to store your backups. For information about creating storage classes in refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/provisioning-new-storage/#1-add-a-storage-class-and-configure-it-to-use-your-storage-provider)
+Installing the `rancher-backup` chart by selecting the StorageClass option will create a Persistent Volume Claim (PVC), and Kubernetes will in turn dynamically provision a Persistent Volume (PV) where all the backups will be saved by default.
 
-If a StorageClass is selected, a new PersistentVolumeClaim will be created on the same host on which the `rancher-backup` operator pod is running. This will in turn create a new PersistentVolume due to dynamic provisioning.
+For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/provisioning-new-storage/#1-add-a-storage-class-and-configure-it-to-use-your-storage-provider)
 
-### Existing PersistentVolume
+> **Important**
+It is highly recommended to use a StorageClass with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  
+If no such StorageClass is available, after the PV is provisioned, make sure to edit its reclaim policy and set it to "Retain" before storing backups in it.
 
-Configure an existing PersistentVolume that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/attaching-existing-storage/#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
+### Existing Persistent Volume
 
-# Encryption
+Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/attaching-existing-storage/#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
 
-Resources can be encrypted before they are saved in a backup file.
+> **Important**
+It is highly recommended to use a Persistent Volume with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  
 
-The `rancher-backup` operator uses the same process to encrypt the backups as is described in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) for encrypting data at rest. Encryption details are provided in an EncryptionConfiguration YAML file.
-
-You can use any EncryptionConfiguration YAML, including one that is already used in your Kubernetes cluster.
-
-In order for `rancher-backup` operator to use the EncryptionConfiguration, the file must be named `encryption-provider-config.yaml`.
-
-> **Important:** The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when a backup is created, and the same file must be used when restoring from this backup.
 
 # Example values.yaml for the rancher-backup Helm Chart
 

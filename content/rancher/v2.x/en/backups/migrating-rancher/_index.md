@@ -8,7 +8,9 @@ If you are migrating Rancher to a new Kubernetes cluster, you don't need to inst
 ### Prerequisites
 
 These instructions assume you have [created a backup](../back-up-rancher) and you have already installed a new Kubernetes cluster where Rancher will be deployed.
-It is necessary to use the same hostname that was set as the server URL in the first cluster.
+
+It is required to use the same hostname that was set as the server URL in the first cluster.
+
 Rancher version must be v2.5.0 and up
 
 Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. One of Rancher's Kubernetes distributions may also be used:
@@ -18,13 +20,28 @@ Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes 
 
 ### 1. Install the rancher-backup Helm chart
 ```
-helm repo add rancherchart https://charts.rancher.io
+helm repo add rancher-charts https://charts.rancher.io
 helm repo update
-helm install rancher-backup-crd rancherchart/rancher-backup-crd -n cattle-resources-system --create-namespace
-helm install rancher-backup rancherchart/rancher-backup -n cattle-resources-system
+helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace
+helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system
 ```
 
 ### 2. Restore from backup using a Restore custom resource
+
+If you are using an S3 store as the backup source, and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys, `accessKey` and `secretKey` containing the s3 credentials like this:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: s3-creds
+type: Opaque
+data:
+  accessKey: <Enter your access key>
+  secretKey: <Enter your secret key>
+```
+
+This secret can be created in any namespace, with the above example it will get created in the default namespace
 
 In the Restore custom resource, `prune` must be set to false. 
 
@@ -76,5 +93,5 @@ Use the same version of Helm to install Rancher, that was used on the first clus
 ```
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
-  --set hostname=<same hostname as first Rancher server> \
+  --set hostname=<same hostname as the server URL from the first Rancher server> \
 ```
