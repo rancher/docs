@@ -4,7 +4,7 @@ shortTitle: Backup
 weight: 1
 ---
 
-The Backup Create page lets you configure a schedule, encryption and storage location for your backups.
+The Backup Create page lets you configure a schedule, enable encryption and specify the storage location for your backups.
 
 {{< img "/img/rancher/backup_restore/backup/backup.png" "">}}
 
@@ -109,8 +109,8 @@ The S3 storage location contains the following configuration fields:
 s3:
   credentialSecretName: s3-creds
   credentialSecretNamespace: default
-  bucketName: rajashree-backup-test
-  folder: ecm1
+  bucketName: rancher-backups
+  folder: rancher
   region: us-west-2
   endpoint: s3.us-west-2.amazonaws.com
 ```

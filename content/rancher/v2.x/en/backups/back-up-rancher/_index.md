@@ -3,7 +3,11 @@ title: Backing up Rancher
 weight: 1
 ---
 
-In this section, you'll learn how to back up Rancher.
+In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups](../legacy/backup/single-node-backups/)
+
+### Prerequisites
+
+Rancher version must be v2.5.0 and up
 
 ### 1. Install the `rancher-backup` operator
 
@@ -62,5 +66,5 @@ Rancher Backup & Restore is a cluster-admin only feature and available only for 
 Which means only the rancher admins, and local cluster’s cluster-owner can:
 
 * Install the Chart
-* See the navigation links for Backup and Restore CRDs (there is no overview page for this feature, after the chart is installed there’s a separate navigation link for its CRDs)
+* See the navigation links for Backup and Restore CRDs
 * Perform a backup or restore by creating a Backup CR and Restore CR respectively, list backups/restores performed so far

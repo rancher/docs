@@ -4,7 +4,9 @@ shortTitle: Restore
 weight: 2
 ---
 
-The Restore custom resource accepts the following fields:
+The Restore Create page lets you provide details of the backup to restore from
+
+{{< img "/img/rancher/backup_restore/restore/restore.png" "">}}
 
 - [Backup Source](#backup-source)
 	- [Getting the Backup Filename from S3](#getting-the-backup-filename-from-s3)
@@ -16,16 +18,27 @@ The Restore custom resource accepts the following fields:
 ### Backup Source
 Provide details of the backup file and its storage location, which the operator will then use to perform the restore. Select from the following options to provide these details
 
+
+{{< img "/img/rancher/backup_restore/restore/existing.png" "">}}
+
 * **An existing backup config**: Selecting this option will populate the **Target Backup** dropdown with the Backups available in this cluster. Select the Backup from the dropdown, and that will fill out the **Backup Filename** field for you, and will also pass the backup source information from the selected Backup to the operator.
+
 
 If the Backup custom resource does not exist in the cluster, you need to get the exact filename and provide the backup source details with either of the following options:
 
-* **The default storage target**: Select this option if you are restoring from a backup file that exists in the default storage location configured at the operator-level. The operator-level configuration is the storage location that was configured when the `rancher-backup` operator was installed or upgraded. Provide the exact filename in the **Backup Filename** field. 
+{{< img "/img/rancher/backup_restore/restore/default.png" "">}}
+
+* **The default storage target**: Select this option if you are restoring from a backup file that exists in the default storage location configured at the operator-level. The operator-level configuration is the storage location that was configured when the `rancher-backup` operator was installed or upgraded. Provide the exact filename in the **Backup Filename** field.
+
+{{< img "/img/rancher/backup_restore/restore/s3store.png" "">}} 
+
 * **An S3-compatible object store**: Select this option if no default storage location is configured at the operator-level, OR if the backup file exists in a different S3 bucket than the one configured as the default storage location. Provide the exact filename in the **Backup Filename** field. Refer [this section](#getting-the-backup-filename-from-s3) for exact steps on getting the backup filename from s3. Fill in all the details for the S3 compatible object store. Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the [Backup custom resource.](../../configuration/backup-config/#storagelocation)
 
 ### Encryption
 
 If the backup was created with encryption enabled, its file will have `.enc` suffix. Choosing such a Backup, or providing a backup filename with `.enc` suffix will display another dropdown named **Encryption Config Secret**.
+
+{{< img "/img/rancher/backup_restore/restore/encryption.png" "">}} 
 
 The Secret selected from this dropdown must have the same contents as the one used for the Backup custom resource while performing the backup. If the encryption configuration doesn't match, the restore will fail
 
