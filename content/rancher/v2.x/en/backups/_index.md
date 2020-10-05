@@ -5,7 +5,11 @@ weight: 5
 
 In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
 
-The Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher. As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore Rancher. The Helm chart is [here.](https://github.com/rancher/charts/tree/main/charts/rancher-backup)
+As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore Rancher. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/main/charts/rancher-backup)
+
+The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+
+The Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher. 
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
   - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
