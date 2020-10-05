@@ -32,6 +32,7 @@ You can choose to not have any operator-level storage location configured. If yo
 | Folder | The [folder in the S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html) where the backups will be stored. |
 | Endpoint | The [S3 endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html) For example, `s3.us-west-2.amazonaws.com`. |
 | Endpoint CA | The CA cert used to for the S3 endpoint. Default: base64 encoded CA cert |
+| insecureTLSSkipVerify | Set to true if you are not using TLS. |
 
 ### Existing StorageClass
 
