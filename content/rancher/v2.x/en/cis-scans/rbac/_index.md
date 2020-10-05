@@ -38,8 +38,8 @@ The rancher-cis-benchmark creates three `ClusterRoles` and adds the CIS Benchmar
 | `cis-edit`| `edit` | Ability to CRUD clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
 | `cis-view` | `view `| Ability to List(R) clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
 
-Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but these default k8s roles will determine access to the CIS feature.
+By default only cluster-owner role will have ability to manage and use `rancher-cis-benchmark` feature.
 
-By default only cluster-owner role will have ability to use `rancher-cis-benchmark` feature.
+The other Rancher roles (cluster-member, project-owner, project-member) do not have default permissions to manage and use rancher-cis-benchmark resources.
 
-But the above ClusterRoles can be granted to cluster-member, project-owner, project-member users if a cluster-owner wants to share access.
+But if a cluster-owner wants to delegate access to other users, they can do so by creating ClusterRoleBindings between these users and the CIS ClusterRoles manually.
