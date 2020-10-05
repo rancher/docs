@@ -153,9 +153,15 @@ This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-ra
 
 ## Appendix - Minimum EKS Permissions
 
-Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher.
+Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher. Additional permissions are required for Rancher to provision the `Service Role` and `VPC` resources. Optionally these resources can be created **before** the cluster creation and will be selectable when defining the cluster configuration.
 
-Resource targeting uses `*` as the ARN of many of the resources created cannot be known prior to creating the EKS cluster in Rancher. Some permissions (for example `ec2:CreateVpc`) are only used in situations where Rancher handles the creation of certain resources.
+Resource | Description 
+---------|------------
+Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. Rancher can create the service role with the following [Service Role Permissions](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#service-role-permissions).
+VPC | Provides isolated network resouces utilised by EKS and worker nodes. Rancher can create the VPC resouces with the follwoing [VPC Permissions](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#vpc-permissions).
+
+
+Resource targeting uses `*` as the ARN of many of the resources created cannot be known prior to creating the EKS cluster in Rancher.
 
 ```json
 {
@@ -165,92 +171,26 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
             "Sid": "EC2Permisssions",
             "Effect": "Allow",
             "Action": [
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:DeleteSubnet",
-                "ec2:CreateKeyPair",
-                "ec2:AttachInternetGateway",
-                "ec2:ReplaceRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:AssociateRouteTable",
-                "ec2:DescribeInternetGateways",
-                "ec2:CreateRoute",
-                "ec2:CreateInternetGateway",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:DescribeAccountAttributes",
-                "ec2:DeleteInternetGateway",
-                "ec2:DescribeKeyPairs",
-                "ec2:CreateTags",
-                "ec2:CreateRouteTable",
-                "ec2:DescribeRouteTables",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateRouteTable",
                 "ec2:RevokeSecurityGroupIngress",
-                "ec2:DeleteVpc",
-                "ec2:CreateSubnet",
-                "ec2:DescribeSubnets",
-                "ec2:DeleteKeyPair",
-                "ec2:DeleteTags",
-                "ec2:CreateVpc",
-                "ec2:DescribeAvailabilityZones",
-                "ec2:CreateSecurityGroup",
-                "ec2:ModifyVpcAttribute",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:DescribeTags",
-                "ec2:DeleteRoute",
-                "ec2:DescribeSecurityGroups",
-                "ec2:DescribeImages",
+                "ec2:RevokeSecurityGroupEgress",
                 "ec2:DescribeVpcs",
-                "ec2:DeleteSecurityGroup"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "EKSPermissions",
-            "Effect": "Allow",
-            "Action": [
-                "eks:DeleteFargateProfile",
-                "eks:DescribeFargateProfile",
-                "eks:ListTagsForResource",
-                "eks:UpdateClusterConfig",
-                "eks:DescribeNodegroup",
-                "eks:ListNodegroups",
-                "eks:DeleteCluster",
-                "eks:CreateFargateProfile",
-                "eks:DeleteNodegroup",
-                "eks:UpdateNodegroupConfig",
-                "eks:DescribeCluster",
-                "eks:ListClusters",
-                "eks:UpdateClusterVersion",
-                "eks:UpdateNodegroupVersion",
-                "eks:ListUpdates",
-                "eks:CreateCluster",
-                "eks:UntagResource",
-                "eks:CreateNodegroup",
-                "eks:ListFargateProfiles",
-                "eks:DescribeUpdate",
-                "eks:TagResource"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "IAMPermissions",
-            "Effect": "Allow",
-            "Action": [
-                "iam:ListRoleTags",
-                "iam:RemoveRoleFromInstanceProfile",
-                "iam:CreateRole",
-                "iam:AttachRolePolicy",
-                "iam:AddRoleToInstanceProfile",
-                "iam:DetachRolePolicy",
-                "iam:GetRole",
-                "iam:DeleteRole",
-                "iam:CreateInstanceProfile",
-                "iam:ListInstanceProfilesForRole",
-                "iam:PassRole",
-                "iam:GetInstanceProfile",
-                "iam:ListRoles",
-                "iam:ListInstanceProfiles",
-                "iam:DeleteInstanceProfile"
+                "ec2:DescribeTags",
+                "ec2:DescribeSubnets",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeRouteTables",
+                "ec2:DescribeKeyPairs",
+                "ec2:DescribeInternetGateways",
+                "ec2:DescribeImages",
+                "ec2:DescribeAvailabilityZones",
+                "ec2:DescribeAccountAttributes",
+                "ec2:DeleteTags",
+                "ec2:DeleteSecurityGroup",
+                "ec2:DeleteKeyPair",
+                "ec2:CreateTags",
+                "ec2:CreateSecurityGroup",
+                "ec2:CreateKeyPair",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ec2:AuthorizeSecurityGroupEgress"
             ],
             "Resource": "*"
         },
@@ -258,34 +198,165 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
             "Sid": "CloudFormationPermisssions",
             "Effect": "Allow",
             "Action": [
-                "cloudformation:DescribeStackResource",
-                "cloudformation:ListStackResources",
-                "cloudformation:DescribeStackResources",
-                "cloudformation:DescribeStacks",
                 "cloudformation:ListStacks",
-                "cloudformation:CreateStack",
-                "cloudformation:DeleteStack"
+                "cloudformation:ListStackResources",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DeleteStack",
+                "cloudformation:CreateStackSet",
+                "cloudformation:CreateStack"
             ],
             "Resource": "*"
         },
         {
-            "Sid": "AutoScalingPermissions",
+            "Sid": "IAMPermissions",
             "Effect": "Allow",
             "Action": [
-                "autoscaling:DescribeAutoScalingGroups",
-                "autoscaling:UpdateAutoScalingGroup",
-                "autoscaling:TerminateInstanceInAutoScalingGroup",
-                "autoscaling:CreateOrUpdateTags",
-                "autoscaling:DeleteAutoScalingGroup",
-                "autoscaling:CreateAutoScalingGroup",
-                "autoscaling:DescribeAutoScalingInstances",
-                "autoscaling:DescribeLaunchConfigurations",
-                "autoscaling:DescribeScalingActivities",
-                "autoscaling:CreateLaunchConfiguration",
-                "autoscaling:DeleteLaunchConfiguration"
+                "iam:PassRole",
+                "iam:ListRoles",
+                "iam:ListRoleTags",
+                "iam:ListInstanceProfilesForRole",
+                "iam:ListInstanceProfiles",
+                "iam:ListAttachedRolePolicies",
+                "iam:GetRole",
+                "iam:GetInstanceProfile",
+                "iam:DetachRolePolicy",
+                "iam:DeleteRole",
+                "iam:CreateRole",
+                "iam:AttachRolePolicy"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "KMSPermisssions",
+            "Effect": "Allow",
+            "Action": "kms:ListKeys",
+            "Resource": "*"
+        },
+        {
+            "Sid": "EKSPermisssions",
+            "Effect": "Allow",
+            "Action": [
+                "eks:UpdateNodegroupVersion",
+                "eks:UpdateNodegroupConfig",
+                "eks:UpdateClusterVersion",
+                "eks:UpdateClusterConfig",
+                "eks:UntagResource",
+                "eks:TagResource",
+                "eks:ListUpdates",
+                "eks:ListTagsForResource",
+                "eks:ListNodegroups",
+                "eks:ListFargateProfiles",
+                "eks:ListClusters",
+                "eks:DescribeUpdate",
+                "eks:DescribeNodegroup",
+                "eks:DescribeFargateProfile",
+                "eks:DescribeCluster",
+                "eks:DeleteNodegroup",
+                "eks:DeleteFargateProfile",
+                "eks:DeleteCluster",
+                "eks:CreateNodegroup",
+                "eks:CreateFargateProfile",
+                "eks:CreateCluster"
             ],
             "Resource": "*"
         }
     ]
+}
+```
+
+### Service Role Permissions
+
+Rancher will create a service role with the following trust policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "eks.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+```
+
+This role will also have two role policy attachments with the following policies ARNs:
+
+```
+arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+```
+
+Permissions required for Rancher to create service role on users behalf during the EKS cluster creation process.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "IAMPermisssions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:AddRoleToInstanceProfile",
+        "iam:AttachRolePolicy",
+        "iam:CreateInstanceProfile",
+        "iam:CreateRole",
+        "iam:CreateServiceLinkedRole",
+        "iam:DeleteInstanceProfile",
+        "iam:DeleteRole",
+        "iam:DetachRolePolicy",
+        "iam:GetInstanceProfile",
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfiles",
+        "iam:ListInstanceProfilesForRole",
+        "iam:ListRoles",
+        "iam:ListRoleTags",
+        "iam:PassRole",
+        "iam:RemoveRoleFromInstanceProfile"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+### VPC Permissions
+
+Permissions required for Rancher to create VPC and associated resources.
+
+```json
+{
+  "Sid": "VPCPermissions",
+  "Effect": "Allow",
+  "Action": [
+     "ec2:ReplaceRoute",
+     "ec2:ModifyVpcAttribute",
+     "ec2:ModifySubnetAttribute",
+     "ec2:DisassociateRouteTable",
+     "ec2:DetachInternetGateway",
+     "ec2:DescribeVpcs",
+     "ec2:DeleteVpc",
+     "ec2:DeleteTags",
+     "ec2:DeleteSubnet",
+     "ec2:DeleteRouteTable",
+     "ec2:DeleteRoute",
+     "ec2:DeleteInternetGateway",
+     "ec2:CreateVpc",
+     "ec2:CreateSubnet",
+     "ec2:CreateSecurityGroup",
+     "ec2:CreateRouteTable",
+     "ec2:CreateRoute",
+     "ec2:CreateInternetGateway",
+     "ec2:AttachInternetGateway",
+     "ec2:AssociateRouteTable"
+  ],
+  "Resource": "*"
 }
 ```
