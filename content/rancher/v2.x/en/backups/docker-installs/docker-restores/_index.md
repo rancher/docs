@@ -11,7 +11,7 @@ If you encounter a disaster scenario, you can restore your Rancher Server to you
 
 ## Before You Start
 
-During restoration of your backup, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
+During restore of your backup, you'll enter a series of commands, filling placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
 ```
 docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \
@@ -69,4 +69,4 @@ Using a [backup]({{<baseurl>}}/rancher/v2.x/en/backups/backups/single-node-backu
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-1.  Wait a few moments and then open Rancher in a web browser. Confirm that the restoration succeeded and that your data is restored.
+1.  Wait a few moments and then open Rancher in a web browser. Confirm that the restore succeeded and that your data is restored.

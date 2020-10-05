@@ -3,12 +3,13 @@ title: Backups and Disaster Recovery
 weight: 5
 ---
 
-In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new server. 
+In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
 
-Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher.
+The Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher. As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore Rancher. The Helm chart is [here.](https://github.com/rancher/charts/tree/main/charts/rancher-backup)
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
-- [Backup and Restore for Rancher Prior to v2.5](#backup-and-restore-for-rancher-prior-to-v2-5)
+  - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
+  - [Backup and Restore for Rancher installed on a Kubernetes Cluster Prior to v2.5](#backup-and-restore-for-rancher-installed-on-a-kubernetes-cluster-prior-to-v2-5)
 - [How Backups and Restores Work](#how-backups-and-restores-work)
 - [Installing the rancher-backup Operator](#installing-the-rancher-backup-operator)
   - [Installing rancher-backup with the Rancher UI](#installing-rancher-backup-with-the-rancher-ui)
@@ -19,7 +20,7 @@ Rancher version must be v2.5.0 and up to use this approach of backing up and res
 - [Default Storage Location Configuration](#default-storage-location-configuration)
   - [Example values.yaml for the rancher-backup Helm Chart](#example-values-yaml-for-the-rancher-backup-helm-chart)
 
-### Changes in Rancher v2.5
+# Changes in Rancher v2.5
 
 The new `rancher-backup` operator allows Rancher to be backed up and restored on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps & Marketplace** page, or by using the Helm CLI.
 
@@ -31,16 +32,16 @@ In Rancher v2.5, it is now supported to install Rancher hosted Kubernetes cluste
 
 ### Backup and Restore for Rancher v2.5 installed with Docker
 
-For Rancher installed with Docker, refer to the same steps used up till 2.5 for [single node backups]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/single-node-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/single-node-restoration/) documentation.
+For Rancher installed with Docker, refer to the same steps used up till 2.5 for [backups](./docker-installs/docker-backups) and [restores.](./docker-installs/docker-backups)
 
-### Backup and Restore for Rancher installed on Kubernetes cluster Prior to v2.5
+### Backup and Restore for Rancher installed on a Kubernetes Cluster Prior to v2.5
 
 For Rancher prior to v2.5, the way that Rancher is backed up and restored differs based on the way that Rancher was installed. Our legacy backup and restore documentation is here:
 
 - For Rancher installed on an RKE Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/ha-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/rke-restore/) documentation.
 - For Rancher installed on a K3s Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/k3s-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/k3s-restore/) documentation.
 
-### How Backups and Restores Work
+# How Backups and Restores Work
 
 The `rancher-backup` operator introduces three custom resources: Backups, Restores, and ResourceSets. The following cluster-scoped custom resource definitions are added to the cluster:
 
@@ -48,7 +49,7 @@ The `rancher-backup` operator introduces three custom resources: Backups, Restor
 - `resourcesets.resources.cattle.io`
 - `restores.resources.cattle.io`
 
-The ResourceSet defines which Kubernetes resources need to be backed up. The ResourceSet is not available to be configured in the Rancher UI because the values required to back up Rancher are predefined.
+The ResourceSet defines which Kubernetes resources need to be backed up. The ResourceSet is not available to be configured in the Rancher UI because the values required to back up Rancher are predefined. This ResourceSet should not be modified.
 
 When a Backup custom resource is created, the `rancher-backup` operator calls the `kube-apiserver` to get the resources in the ResourceSet (specifically, the predefined `rancher-resource-set`) that the Backup custom resource refers to.
 
