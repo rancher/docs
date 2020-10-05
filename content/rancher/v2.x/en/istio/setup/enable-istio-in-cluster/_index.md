@@ -9,7 +9,6 @@ Only a user with the following [Kubernetes default roles](https://kubernetes.io/
 
  - `cluster-admin`
 
-> If the cluster has a Pod Security Policy enabled there are [prerequisites steps.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp/)
 
 1. From the **Cluster Explorer**, navigate to available **Charts** in **Apps & Marketplace** 
 1. Select the Istio chart from the rancher provided charts
@@ -114,7 +113,8 @@ spec:
 
 This enables monitoring accross namespaces by giving prometheus additional scrape configurations. 
 
- >Usability tradeoff is that  all of prometheus' additionalScrapeConfigs are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
+ >Usability tradeoff is that  all of prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
+
 1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
 1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
 1. If updating an existing installation, click on **Upgrade** and then **Preview Yaml**.

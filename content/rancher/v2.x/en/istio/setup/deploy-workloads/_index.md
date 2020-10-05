@@ -34,6 +34,7 @@ To add a **Service** to your namespace
 1. Click **Create** 
 
 You can also create deployments and services using the kubectl **shell**
+
 1. Run `kubectl create -f <name of service/deployment file>.yaml` if your file is stored locally in the cluster
 1. Or run `cat<< EOF | kubectl apply -f -`, paste the file contents into the terminal, then run `EOF` to complete the command. 
 
