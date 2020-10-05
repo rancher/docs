@@ -60,7 +60,7 @@ The Backup and Restore custom resources can be created in the Rancher UI, or by 
 
 # Installing the rancher-backup Operator
 
-The `rancher-backup` operator can be installed from the Rancher UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the Rancher server.
+The `rancher-backup` operator can be installed from the Rancher UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the Rancher server. It is a cluster-admin only feature and available only for the local cluster.
 
 ### Installing rancher-backup with the Rancher UI
 
@@ -85,6 +85,14 @@ helm repo update
 helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace
 helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system
 ```
+
+### RBAC
+
+Only the rancher admins, and local cluster’s cluster-owner can:
+
+* Install the Chart
+* See the navigation links for Backup and Restore CRDs
+* Perform a backup or restore by creating a Backup CR and Restore CR respectively, list backups/restores performed so far
 
 # Backing up Rancher
 
