@@ -28,6 +28,10 @@ spec:
 
 A profile contains the configuration for the CIS scan, which includes the benchmark version to use and any specific tests to skip in that benchmark.
 
+> By default, a few ClusterScanProfiles are installed as part of the `rancher-cis-benchmark` chart. If a user edits these default benchmarks or profiles, the next chart update will reset them back. So it is advisable for users to not edit the default  ClusterScanProfiles.
+
+Users can clone the ClusterScanProfiles to create custom profiles.
+
 Skipped tests are listed under the `skipTests` directive.
 
 When you create a new profile, you will also need to give it a name.

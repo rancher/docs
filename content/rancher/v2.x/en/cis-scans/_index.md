@@ -186,6 +186,13 @@ The report contains the following information:
 | `remediation`      | What needs to be fixed in order to pass the test. |
 | `state`    | Indicates if the test passed, failed, was skipped, or was not applicable. |
 | `node_type`        | The node role, which affects which tests are run on the node. Master tests are run on controlplane nodes, etcd tests are run on etcd nodes, and node tests are run on the worker nodes. |
+| `audit` | This is the audit check that `kube-bench` runs for this test. |
+| `audit_config` | Any configuration applicable to the audit script. |
+| `test_info` | Test-related info as reported by `kube-bench`, if any. |
+| `commands` | Test-related commands as reported by `kube-bench`, if any. |
+| `config_commands` | Test-related configuration data as reported by `kube-bench`, if any. |
+| `actual_value` | The test's actual value, present if reported by `kube-bench`. |
+| `expected_result` | The test's expected result, present if reported by `kube-bench`. |
 
 Refer to <a href="{{<baseurl>}}/rancher/v2.x/en/security/" target="_blank">the table in the cluster hardening guide</a> for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
 

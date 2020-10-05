@@ -13,6 +13,8 @@ However, the `rancher-cis-benchmark` chart installs three default `ClusterRoles`
 - cis-edit
 - cis-view
 
+In Rancher, only cluster owners and global administrators have `cis-admin` access by default. 
+
 # Cluster-Admin Access
 
 Rancher CIS Scans is a cluster-admin only feature by default.

@@ -5,6 +5,8 @@ weight: 3
 
 This section lists the tests that are skipped in the permissive test profile for RKE.
 
+> All the tests that are skipped and not applicable on this page will be counted as Not Applicable in the v2.5 generated report. The skipped test count will only mention the user-defined skipped tests. This allows user-skipped tests to be distinguished from the tests that are skipped by default in the RKE permissive test profile.
+
 # CIS Benchmark v1.5
 
 ### CIS Benchmark v1.5 Skipped Tests
