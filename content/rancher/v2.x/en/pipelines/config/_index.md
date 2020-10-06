@@ -606,7 +606,7 @@ To configure compute resources for pipeline-step containers:
 
 You can configure compute resources for pipeline-step containers in the `.rancher-pipeline.yml` file.
 
-In a [step type]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#step-types), you will provide the following information:
+In a step, you will provide the following information:
 
 * **CPU Reservation (`CpuRequest`)**: CPU request for the container of a pipeline step.
 * **CPU Limit (`CpuLimit`)**: CPU limit for the container of a pipeline step.

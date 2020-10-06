@@ -3,8 +3,6 @@ title: Prometheus Custom Metrics Adapter
 weight: 5
 aliases:
   - rancher/v2.x/en/project-admin/tools/monitoring/custom-metrics
-  - rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics
-  - /rancher/v2.x/en/cluster-admin/tools/monitoring/custom-metrics
 ---
 
 After you've enabled [cluster level monitoring]({{< baseurl >}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.

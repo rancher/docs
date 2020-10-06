@@ -13,7 +13,7 @@ Restoring a snapshot of the Rancher Server cluster will revert Rancher to the ve
 
 >**Note:** Managed clusters are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
 
-- [Rolling back Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/single-node-rollbacks/)
+- [Rolling back Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
 - [Rolling back Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
 
 ### Special Scenarios regarding Rollbacks

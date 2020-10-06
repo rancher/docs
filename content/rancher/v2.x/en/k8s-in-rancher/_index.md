@@ -1,5 +1,5 @@
 ---
-title: Legacy
+title: Kubernetes Resources
 weight: 19
 aliases:
   - /rancher/v2.x/en/concepts/
@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/concepts/resources/  
 ---
 
-When your project is set up, [project members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can start managing their applications and all the components that comprise it.
+> The **Cluster Explorer** is a new feature in Rancher v2.5 that allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI. This section will be updated to reflect the way that Kubernetes resources are handled in Rancher v2.5.
 
 ## Workloads
 

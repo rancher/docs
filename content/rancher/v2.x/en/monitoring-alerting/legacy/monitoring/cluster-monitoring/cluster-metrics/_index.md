@@ -2,8 +2,8 @@
 title: Cluster Metrics
 weight: 3
 aliases:
-  - rancher/v2.x/en/project-admin/tools/monitoring/cluster-metrics
-  - rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics
+  - /rancher/v2.x/en/project-admin/tools/monitoring/cluster-metrics
+  - /rancher/v2.x/en/cluster-admin/tools/monitoring/cluster-metrics
 ---
 
 _Available as of v2.2.0_
