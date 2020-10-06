@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/upgrades/single-node-air-gap-upgrade
   - /rancher/v2.x/en/upgrades/upgrades/single-node
   - /rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/
 ---
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.

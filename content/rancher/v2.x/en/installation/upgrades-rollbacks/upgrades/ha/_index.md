@@ -32,7 +32,7 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 
 Follow the steps to upgrade Rancher server:
 
-- [A. Back up your Kubernetes cluster that is running Rancher server](#a-backup-your-kubernetes-cluster-that-is-running-rancher-server)
+- [A. Back up your Kubernetes cluster that is running Rancher server](#a-back-up-your-kubernetes-cluster-that-is-running-rancher-server)
 - [B. Update the Helm chart repository](#b-update-the-helm-chart-repository)
 - [C. Upgrade Rancher](#c-upgrade-rancher)
 - [D. Verify the Upgrade](#d-verify-the-upgrade)
