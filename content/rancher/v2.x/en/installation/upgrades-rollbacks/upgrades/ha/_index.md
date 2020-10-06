@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/air-gap-upgrade/
   - /rancher/v2.x/en/upgrades/upgrades/ha
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/upgrades/ha
+  - /rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/
 ---
 
 The following instructions will guide you through using Helm to upgrade a Rancher server that was installed on a Kubernetes cluster.
