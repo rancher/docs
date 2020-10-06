@@ -6,7 +6,7 @@ aliases:
 ---
 This section contains information about how to upgrade your Rancher server to a newer version. Regardless if you installed in an air gap environment or not, the upgrade steps mainly depend on whether you have a single node or high-availability installation of Rancher. Select from the following options:
 
-- [Upgrading Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/)
+- [Upgrading Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-upgrades)
 - [Upgrading Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/ha/)
 
 ### Known Upgrade Issues
