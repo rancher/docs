@@ -52,8 +52,8 @@ The `restricted-admin` permissions are as follows:
 - Has full admin access to all downstream clusters managed by Rancher.
 - Has very limited access to the local Kubernetes cluster. Can access Rancher custom resource definitions, but has no access to any Kubernetes native types.
 - Can add other users and assign them to clusters outside of the local cluster.
-- Can create other restricted admins
-- Can not grant any permissions in the local cluster they don't currently have (This is how Kubernetes normally operates)
+- Can create other restricted admins.
+- Cannot grant any permissions in the local cluster they don't currently have. (This is how Kubernetes normally operates)
 
 ### Upgrading from Rancher with a Hidden Local Cluster
 
