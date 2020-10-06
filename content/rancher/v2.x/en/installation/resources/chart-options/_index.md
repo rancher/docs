@@ -1,6 +1,8 @@
 ---
 title: Helm Chart Options
 weight: 2
+aliases:
+  - /rancher/v2.x/en/installation/options/chart-options
 ---
 
 - [Common Options](#common-options)

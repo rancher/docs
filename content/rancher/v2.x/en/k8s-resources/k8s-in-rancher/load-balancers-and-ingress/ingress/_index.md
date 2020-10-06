@@ -4,6 +4,7 @@ description: Ingresses can be added for workloads to provide load balancing, SSL
 weight: 3042
 aliases:
   - /rancher/v2.x/en/tasks/workloads/add-ingress/
+  - /rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/ingress  
 ---
 
 Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing. When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).

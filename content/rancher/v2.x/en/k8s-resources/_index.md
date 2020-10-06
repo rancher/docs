@@ -1,6 +1,8 @@
 ---
 title: Kubernetes Resources
 weight: 10
+aliases:
+  - /rancher/v2.x/en/k8s-in-rancher
 ---
 
 

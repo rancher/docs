@@ -1,6 +1,8 @@
 ---
 title: Pipelines
 weight: 11
+aliases:
+  - /rancher/v2.x/en/k8s-in-rancher/pipelines  
 ---
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.

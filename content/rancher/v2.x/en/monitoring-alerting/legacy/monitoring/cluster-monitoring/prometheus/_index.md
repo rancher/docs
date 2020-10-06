@@ -3,6 +3,7 @@ title: Prometheus Configuration
 weight: 1
 aliases:
   - rancher/v2.x/en/project-admin/tools/monitoring/prometheus
+  - rancher/v2.x/en/cluster-admin/tools/monitoring/prometheus  
 ---
 
 _Available as of v2.2.0_
