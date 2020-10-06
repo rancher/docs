@@ -3,6 +3,7 @@ title: Enabling Experimental Features
 weight: 17
 aliases:
   - /rancher/v2.x/en/installation/options/feature-flags/
+  - /rancher/v2.x/en/admin-settings/feature-flags/
 ---
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 

@@ -7,6 +7,8 @@ aliases:
   - /rancher/v2.x/en/installation/backups-and-restoration/ha-backup-and-restoration/
   - /rancher/v2.x/en/backups/backups/ha-backups
   - /rancher/v2.x/en/backups/backups/k8s-backups/ha-backups
+  - /rancher/v2.x/en/backups/legacy/backup/k8s-backups/ha-backups/
+  - /rancher/v2.x/en/backups/legacy/backups/ha-backups
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
