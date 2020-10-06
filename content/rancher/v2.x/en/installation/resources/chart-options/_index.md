@@ -60,6 +60,7 @@ weight: 2
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
 | `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
 | `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
+| `restrictedAdmin` | `false` | When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#restricted-admin) |
 
 <br/>
 
