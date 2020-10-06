@@ -33,7 +33,7 @@ If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest
 
 Hardware requirements scale based on the size of your deployments. Minimum recommendations are outlined here.
 
-*    RAM: 512MB Minimum
+*    RAM: 512MB Minimum (we recommend at least 1GB)
 *    CPU: 1 Minimum
 
 #### Disks

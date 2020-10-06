@@ -10,6 +10,13 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 - [Virtualbox](https://www.virtualbox.org): The virtual machines that Vagrant provisions need to be provisioned to VirtualBox.
 - At least 4GB of free RAM.
 
+### Note
+- Vagrant will require plugins to create VirtualBox VMs. Install them with the following commands:
+
+  `vagrant plugin install vagrant-vboxmanage`
+  
+  `vagrant plugin install vagrant-vbguest`
+
 ## Getting Started
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
@@ -21,7 +28,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
     - Change the number of nodes and the memory allocations, if required. (`node.count`, `node.cpus`, `node.memory`)
     - Change the password of the `admin` user for logging into Rancher. (`default_password`)
 
-4. To initiate the creation of the environment run, `vagrant up`.
+4. To initiate the creation of the environment run, `vagrant up --provider=virtualbox`.
 
 5. Once provisioning finishes, go to `https://172.22.101.101` in the browser. The default user/password is `admin/admin`.
 

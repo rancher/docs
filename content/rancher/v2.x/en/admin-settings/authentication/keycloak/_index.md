@@ -24,9 +24,36 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
       ><sup>2</sup>: Rancher SAML metadata won't be generated until a SAML provider is configured and saved.
+  
+  {{< img "/img/rancher/keycloak/keycloak-saml-client-configuration.png" "">}}
+      
+- In the new SAML client, create Mappers to expose the users fields
+  - Add all "Builtin Protocol Mappers"
+    {{< img "/img/rancher/keycloak/keycloak-saml-client-builtin-mappers.png" "">}}
+  - Create a new "Group list" mapper to map the member attribute to a user's groups
+    {{< img "/img/rancher/keycloak/keycloak-saml-client-group-mapper.png" "">}}       
 - Export a `metadata.xml` file from your Keycloak client:
   From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
-
+  
+  >**Note**
+  > Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab.
+  > You can still get the XML from the following url:
+  >  
+  > `https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
+  >  
+  > The XML obtained from this URL contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
+  >  
+  >    * Copy all the attributes from `EntitiesDescriptor` to the `EntityDescriptor` that are not present.
+  >    * Remove the `<EntitiesDescriptor>` tag from the beginning.
+  >    * Remove the `</EntitiesDescriptor>` from the end of the xml.
+  >  
+  > You are left with something similar as the example below:
+  >  
+  > ```
+  > <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" entityID="https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}">
+  >   .... 
+  > </EntityDescriptor>
+  > ```
 
 ## Configuring Keycloak in Rancher
 
@@ -35,18 +62,18 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 1.	Select **Keycloak**.
 
-1.	Complete the **Configure Keycloak Account** form. Keycloak IdP lets you specify what data store you want to use. You can either add a database or use an existing LDAP server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
+1.	Complete the **Configure Keycloak Account** form.
 
 
-    | Field                     | Description                                                                   |
-    | ------------------------- | ----------------------------------------------------------------------------- |
-    | Display Name Field        | The AD attribute that contains the display name of users.                     |
-    | User Name Field           | The AD attribute that contains the user name/given name.                      |
-    | UID Field                 | An AD attribute that is unique to every user.                                 |
-    | Groups Field              | Make entries for managing group memberships.                                  |
-    | Rancher API Host          | The URL for your Rancher Server.                                              |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. |
-    | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.               |
+    | Field                     | Description                                                                            |
+    | ------------------------- | -------------------------------------------------------------------------------------- |
+    | Display Name Field        | The attribute that contains the display name of users. <br/><br/>Example: `givenName`  |
+    | User Name Field           | The attribute that contains the user name/given name. <br/><br/>Example: `email`       |
+    | UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                  |
+    | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`               |
+    | Rancher API Host          | The URL for your Rancher Server.                                                       |
+    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.          |
+    | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                        |
 
     >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
     >
@@ -96,25 +123,3 @@ Try configuring and saving keycloak as your SAML provider and then accessing the
 
   * Check your Keycloak log.
   * If the log displays `request validation failed: org.keycloak.common.VerificationException: SigAlg was null`, set `Client Signature Required` to `OFF` in your Keycloak client.
-
-### Keycloak 6.0.0+: IDPSSODescriptor missing from options
-
-Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab.
-You can still get the XML from the following url:
-
-`https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
-
-The XML obtained from this URL contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
-
-  * Copy all the tags from `EntitiesDescriptor` to the `EntityDescriptor`.
-  * Remove the `<EntitiesDescriptor>` tag from the beginning.
-  * Remove the `</EntitiesDescriptor>` from the end of the xml.
-
-You are left with something similar as the example below:
-
-```
-<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" entityID="https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}">
-  ....
-
-</EntityDescriptor>
-```

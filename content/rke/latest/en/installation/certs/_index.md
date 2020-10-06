@@ -39,12 +39,10 @@ The following certificates must exist in the certificate directory.
 |         Kube Node          |            kube-node.pem           |            kube-node-key.pem             |
 |   Apiserver Proxy Client   |   kube-apiserver-proxy-client.pem   |   kube-apiserver-proxy-client-key.pem   |
 |         Etcd Nodes         |        kube-etcd-x-x-x-x.pem        |        kube-etcd-x-x-x-x-key.pem        |
-| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem* | kube-apiserver-requestheader-ca-key.pem** |
+| Kube Api Request Header CA | kube-apiserver-requestheader-ca.pem* | kube-apiserver-requestheader-ca-key.pem |
 |    Service Account Token   |                  -                  |    kube-service-account-token-key.pem   |
 
 \* Is the same as kube-ca.pem
-
-\** Is the same as kube-ca-key
 
 ## Generating Certificate Signing Requests (CSRs) and Keys
 
