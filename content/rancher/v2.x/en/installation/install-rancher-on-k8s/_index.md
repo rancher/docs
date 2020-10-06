@@ -2,6 +2,10 @@
 title: Install Rancher on a Kubernetes Cluster
 description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 3
+aliases:
+  - /rancher/v2.x/en/installation/k8s-install
+  - /rancher/v2.x/en/installation/k8s-install/helm-rancher
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/install
 ---
 
 > **Prerequisite:**

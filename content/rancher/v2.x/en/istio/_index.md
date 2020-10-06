@@ -1,6 +1,8 @@
 ---
 title: Istio
 weight: 15
+aliases:
+  - /rancher/v2.x/en/dashboard/istio
 ---
 
 # Istio in Cluster Manager

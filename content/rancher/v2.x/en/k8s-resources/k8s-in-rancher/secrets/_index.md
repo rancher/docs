@@ -3,6 +3,7 @@ title: Secrets
 weight: 3062
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-a-secret
+  - /rancher/v2.x/en/k8s-in-rancher/secrets   
 ---
 
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.

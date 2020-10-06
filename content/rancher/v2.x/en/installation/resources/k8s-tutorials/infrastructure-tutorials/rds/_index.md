@@ -1,6 +1,8 @@
 ---
 title: Setting up a MySQL Database in Amazon RDS
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/options/rds
 ---
 This tutorial describes how to set up a MySQL database in Amazon's RDS.
 

@@ -3,6 +3,7 @@ title: ConfigMaps
 weight: 3061
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-configmaps
+  - /rancher/v2.x/en/k8s-in-rancher/configmaps  
 ---
 
 

@@ -3,6 +3,7 @@ title: Service Discovery
 weight: 3045
 aliases:
   - /rancher/v2.x/en/tasks/workloads/add-a-dns-record/
+  - /rancher/v2.x/en/k8s-in-rancher/service-discovery
 ---
 
 For every workload created, a complementing Service Discovery entry is created. This Service Discovery entry enables DNS resolution for the workload's pods using the following naming convention:
