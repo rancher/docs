@@ -9,7 +9,7 @@ This section describes how to set up existing persistent storage for workloads i
 
 To set up storage, follow these steps:
 
-1. [Set up persistent storage in an infrastructure provider.](#1-set-up-persistent-storage-in-an-infrastructure-provider)
+1. [Set up persistent storage.](#1-set-up-persistent-storage)
 2. [Add a persistent volume that refers to the persistent storage.](#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
 3. [Add a persistent volume claim that refers to the persistent volume.](#3-add-a-persistent-volume-claim-that-refers-to-the-persistent-volume)
 4. [Mount the persistent volume claim as a volume in your workload.](#4-mount-the-persistent-storage-claim-as-a-volume-in-your-workload)
@@ -19,11 +19,13 @@ To set up storage, follow these steps:
 - To create a persistent volume as a Kubernetes resource, you must have the `Manage Volumes` [role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-role-reference)
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
-### 1. Set up persistent storage in an infrastructure provider
+### 1. Set up persistent storage
 
 Creating a persistent volume in Rancher will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
 
-The steps to set up a persistent storage device will differ based on your infrastructure. We provide examples of how to set up storage using [vSphere,](../examples/vsphere) [NFS,](../examples/nfs) or Amazon's [EBS.](../examples/ebs)
+The steps to set up a persistent storage device will differ based on your infrastructure. We provide examples of how to set up storage using [vSphere,](../examples/vsphere) [NFS,](../examples/nfs) or Amazon's [EBS.](../examples/ebs) 
+
+If you have a pool of block storage, and you don't want to use a cloud provider, Longhorn could help you provide persistent storage to your Kubernetes cluster. For more information, see [this page.]({{<baseurl>}}/rancher/v2.x/en/longhorn)
 
 ### 2. Add a persistent volume that refers to the persistent storage
 

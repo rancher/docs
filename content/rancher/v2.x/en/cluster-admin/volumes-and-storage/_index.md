@@ -24,7 +24,7 @@ For attaching existing persistent storage to a cluster, the cloud provider does 
 
 The overall workflow for setting up existing storage is as follows:
 
-1. Set up persistent storage in an infrastructure provider.
+1. Set up your persistent storage. This may be storage in an infrastructure provider, or it could be your own storage.
 2. Add a persistent volume (PV) that refers to the persistent storage.
 3. Add a persistent volume claim (PVC) that refers to the PV.
 4. Mount the PVC as a volume in your workload.
@@ -35,11 +35,21 @@ For details and prerequisites, refer to [this page.](./attaching-existing-storag
 
 The overall workflow for provisioning new storage is as follows:
 
-1. Add a storage class and configure it to use your storage provider.
+1. Add a StorageClass and configure it to use your storage provider. The StorageClass could refer to storage in an infrastructure provider, or it could refer to your own storage.
 2. Add a persistent volume claim (PVC) that refers to the storage class.
 3. Mount the PVC as a volume for your workload.
 
 For details and prerequisites, refer to [this page.](./provisioning-new-storage)
+
+### Longhorn Storage
+
+[Longhorn](https://longhorn.io/) is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes.
+
+Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the Rancher UI.
+
+If you have a pool of block storage, Longhorn can help you provide persistent storage to your Kubernetes cluster without relying on cloud providers. For more information about Longhorn features, refer to the [documentation.](https://longhorn.io/docs/1.0.2/what-is-longhorn/)
+
+Rancher v2.5 simplified the process of installing Longhorn on a Rancher-managed cluster. For more information, see [this page.]({{<baseurl>}}/rancher/v2.x/en/longhorn)
 
 ### Provisioning Storage Examples
 

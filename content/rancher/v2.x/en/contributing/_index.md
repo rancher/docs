@@ -1,6 +1,6 @@
 ---
 title: Contributing to Rancher
-weight: 9000
+weight: 27
 aliases:
   - /rancher/v2.x/en/faq/contributing/
 ---

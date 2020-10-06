@@ -1,7 +1,7 @@
 ---
 title: Setting up Kubernetes Clusters in Rancher
 description: Provisioning Kubernetes Clusters
-weight: 2000
+weight: 7
 aliases:
   - /rancher/v2.x/en/concepts/clusters/
   - /rancher/v2.x/en/concepts/clusters/cluster-providers/
