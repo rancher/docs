@@ -1,9 +1,9 @@
 ---
-title: Importing Existing Clusters into Rancher
+title: Importing Existing Clusters
 description: Learn how you can create a cluster in Rancher by importing an existing Kubernetes cluster. Then, you can manage it using Rancher
 metaTitle: 'Kubernetes Cluster Management'
 metaDescription: 'Learn how you can import an existing Kubernetes cluster and then manage it using Rancher'
-weight: 2300
+weight: 5
 aliases:
   - /rancher/v2.x/en/tasks/clusters/import-cluster/
 ---
@@ -16,6 +16,9 @@ For all imported Kubernetes clusters except for K3s clusters, the configuration 
 
 Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well as the ability to upgrade Kubernetes by editing the cluster in the Rancher UI.
 
+> Rancher v2.5 added the ability to [register clusters.](#changes-in-rancher-v2-5) This page will be updated to reflect the new functionality.
+
+- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Importing a cluster](#importing-a-cluster)
@@ -24,6 +27,14 @@ Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well 
   - [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
   - [Debug Logging and Troubleshooting for Imported K3s clusters](#debug-logging-and-troubleshooting-for-imported-k3s-clusters)
 - [Annotating imported clusters](#annotating-imported-clusters)
+
+# Changes in Rancher v2.5
+
+In Rancher v2.5, the cluster registration feature replaced the feature to import clusters. Rancher has more capabilities to manage registered clusters compared to imported clusters, and registering a cluster allows Rancher to treat it as though it were created in Rancher.
+
+Amazon EKS clusters can now be registered in Rancher. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
+
+When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 # Features
 

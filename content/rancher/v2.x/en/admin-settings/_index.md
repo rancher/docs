@@ -1,6 +1,6 @@
 ---
 title: Authentication, Permissions and Global Configuration
-weight: 1100
+weight: 6
 aliases:
   - /rancher/v2.x/en/concepts/global-configuration/
   - /rancher/v2.x/en/tasks/global-configuration/

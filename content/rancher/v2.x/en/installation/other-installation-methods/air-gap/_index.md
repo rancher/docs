@@ -1,6 +1,6 @@
 ---
 title: Installing Rancher in an Air Gapped Environment
-weight: 3
+weight: 1
 aliases:
   - /rancher/v2.x/en/installation/air-gap-installation/
   - /rancher/v2.x/en/installation/air-gap-high-availability/

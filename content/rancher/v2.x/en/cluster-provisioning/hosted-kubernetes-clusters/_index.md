@@ -1,6 +1,6 @@
 ---
 title: Setting up Clusters from Hosted Kubernetes Providers
-weight: 2100
+weight: 3
 ---
 
 In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.

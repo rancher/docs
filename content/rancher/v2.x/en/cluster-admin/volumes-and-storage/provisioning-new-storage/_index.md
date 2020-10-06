@@ -5,11 +5,15 @@ weight: 2
 
 This section describes how to provision new persistent storage for workloads in Rancher.
 
-> This section assumes that you understand the Kubernetes concepts of storage classes and persistent volume claims. For more information, refer to the section on [how storage works.](../how-storage-works)
+This section assumes that you understand the Kubernetes concepts of storage classes and persistent volume claims. For more information, refer to the section on [how storage works.](../how-storage-works)
+
+New storage is often provisioned by a cloud provider such as Amazon EBS. However, new storage doesn't have to be in the cloud.
+
+If you have a pool of block storage, and you don't want to use a cloud provider, Longhorn could help you provide persistent storage to your Kubernetes cluster. For more information, see [this page.]({{<baseurl>}}/rancher/v2.x/en/longhorn)
 
 To provision new storage for your workloads, follow these steps:
 
-1. [Add a storage class and configure it to use your storage provider.](#1-add-a-storage-class-and-configure-it-to-use-your-storage-provider)
+1. [Add a storage class and configure it to use your storage.](#1-add-a-storage-class-and-configure-it-to-use-your-storage)
 2. [Add a persistent volume claim that refers to the storage class.](#2-add-a-persistent-volume-claim-that-refers-to-the-storage-class)
 3. [Mount the persistent volume claim as a volume for your workload.](#3-mount-the-persistent-volume-claim-as-a-volume-for-your-workload)
 
@@ -36,7 +40,7 @@ hostPath | `host-path`
 
 To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/feature-flags/enable-not-default-storage-drivers/)
 
-### 1. Add a storage class and configure it to use your storage provider
+### 1. Add a storage class and configure it to use your storage
 
 These steps describe how to set up a storage class at the cluster level.
 
