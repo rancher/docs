@@ -51,6 +51,8 @@ The steps to add custom roles differ depending on the version of Rancher.
 1.  Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
     > When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+    
+    > The Resource text field provides a method to search for pre-defined Kubernetes API resources, or enter a custom resource name for the grant. The pre-defined or `(Custom)` resource must be selected from the dropdown, after entering a resource name into this field.
 
     You can also choose the individual cURL methods (`Create`, `Delete`, `Get`, etc.) available for use with each endpoint you assign.
 
@@ -82,6 +84,8 @@ The steps to add custom roles differ depending on the version of Rancher.
 1.  Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
     > When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+    
+    > The Resource text field provides a method to search for pre-defined Kubernetes API resources, or enter a custom resource name for the grant. The pre-defined or `(Custom)` resource must be selected from the dropdown, after entering a resource name into this field.
 
     You can also choose the individual cURL methods (`Create`, `Delete`, `Get`, etc.) available for use with each endpoint you assign.
 
@@ -109,6 +113,9 @@ To create a custom global role based on an existing role,
 1. Enter a name for the role.
 1. Optional: To assign the custom role default for new users, go to the **New User Default** section and click **Yes: Default role for new users.**
 1. In the **Grant Resources** section, select the Kubernetes resource operations that will be enabled for users with the custom role.
+
+    > The Resource text field provides a method to search for pre-defined Kubernetes API resources, or enter a custom resource name for the grant. The pre-defined or `(Custom)` resource must be selected from the dropdown, after entering a resource name into this field.
+
 1. Click **Save.**
 
 ### Creating a Custom Global Role that Does Not Copy Rules from Another Role
@@ -120,6 +127,9 @@ Custom global roles don't have to be based on existing roles. To create a custom
 1. Enter a name for the role.
 1. Optional: To assign the custom role default for new users, go to the **New User Default** section and click **Yes: Default role for new users.**
 1. In the **Grant Resources** section, select the Kubernetes resource operations that will be enabled for users with the custom role.
+
+    > The Resource text field provides a method to search for pre-defined Kubernetes API resources, or enter a custom resource name for the grant. The pre-defined or `(Custom)` resource must be selected from the dropdown, after entering a resource name into this field.
+    
 1. Click **Save.**
 
 ## Deleting a Custom Global Role

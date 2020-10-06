@@ -28,6 +28,9 @@ API Keys are composed of four components:
 3. **Optional:** Enter a description for the API key and select an expiration period or a scope. We recommend setting an expiration date.
 
     The API key won't be valid after expiration. Shorter expiration periods are more secure.
+
+    _Available as of v2.4.6_
+    Expiration period will be bound by `v3/settings/auth-token-max-ttl-minutes`. If it exceeds the max-ttl, API key will be created with max-ttl as the expiration period.
     
     A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint) for more information.
 

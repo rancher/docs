@@ -5,7 +5,11 @@ weight: 3
 ---
 
 > **Prerequisite:**
-> Set up the Rancher Kubernetes cluster. As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of Rancher's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
+> Set up the Rancher server's local Kubernetes cluster. 
+>
+> - As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of Rancher's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
+> - In Rancher v2.4.x, Rancher needs to be installed on a K3s Kubernetes cluster or an RKE Kubernetes cluster.
+> - In Rancher prior to v2.4, Rancher needs to be installed on an RKE Kubernetes cluster.
 
 # Install the Rancher Helm Chart
 

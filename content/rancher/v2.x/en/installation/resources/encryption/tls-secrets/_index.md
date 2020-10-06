@@ -26,11 +26,9 @@ If you are using a private CA, Rancher requires a copy of the CA certificate whi
 
 Copy the CA certificate into a file named `cacerts.pem` and use `kubectl` to create the `tls-ca` secret in the `cattle-system` namespace.
 
->**Important:** Make sure the file is called `cacerts.pem` as Rancher uses that filename to configure the CA certificate.
-
 ```
 kubectl -n cattle-system create secret generic tls-ca \
-  --from-file=cacerts.pem
+  --from-file=cacerts.pem=./cacerts.pem
 ```
 
 > **Note:** The configured `tls-ca` secret is retrieved when Rancher starts. On a running Rancher installation the updated CA will take effect after new Rancher pods are started.

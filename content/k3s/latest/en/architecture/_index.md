@@ -56,4 +56,4 @@ A unique node ID can be appended to the hostname by launching K3s servers or age
 
 # Automatically Deployed Manifests
 
-The [manifests](https://github.com/rancher/k3s/tree/master/manifests) located at the directory path `/var/lib/rancher/k3s/server/manifests` are bundled into the K3s binary at build time.
+The [manifests](https://github.com/rancher/k3s/tree/master/manifests) located at the directory path `/var/lib/rancher/k3s/server/manifests` are bundled into the K3s binary at build time.  These will be installed at runtime by the [rancher/helm-controller.](https://github.com/rancher/helm-controller#helm-controller)

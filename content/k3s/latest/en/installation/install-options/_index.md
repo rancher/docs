@@ -9,6 +9,9 @@ This page focuses on the options that can be used when you set up K3s for the fi
 - [Options for installation from binary](#options-for-installation-from-binary)
 - [Registration options for the K3s server](#registration-options-for-the-k3s-server)
 - [Registration options for the K3s agent](#registration-options-for-the-k3s-agent)
+- [Configuration File](#configuration-file)
+
+In addition to configuring K3s with environment variables and CLI arguments, K3s can also use a [config file.](#configuration-file)
 
 For more advanced options, refer to [this page.]({{<baseurl>}}/k3s/latest/en/advanced)
 
@@ -71,3 +74,36 @@ For details on configuring the K3s server, refer to the [server configuration re
 ### Registration Options for the K3s Agent
 
 For details on configuring the K3s agent, refer to the [agent configuration reference.]({{<baseurl>}}/k3s/latest/en/installation/install-options/agent-config)
+
+### Configuration File
+
+In addition to configuring K3s with environment variables and CLI arguments, K3s can also use a config file.
+
+By default, values present in a YAML file located at `/etc/rancher/k3s/config.yaml` will be used on install.
+
+An example of a basic `server` config file is below:
+
+```yaml
+write-kubeconfig-mode: "0644"
+tls-san:
+  - "foo.local"
+node-label:
+  - "foo=bar"
+  - "something=amazing"
+```
+
+In general, CLI arguments map to their respective YAML key, with repeatable CLI arguments being represented as YAML lists.
+
+An identical configuration using solely CLI arguments is shown below to demonstrate this:
+
+```bash
+k3s server \
+  --write-kubeconfig-mode "0644"    \
+  --tls-san "foo.local"             \
+  --node-label "foo=bar"            \
+  --node-label "something=amazing"
+```
+
+It is also possible to use both a configuration file and CLI arguments.  In these situations, values will be loaded from both sources, but CLI arguments will take precedence.  For repeatable arguments such as `--node-label`, the CLI arguments will overwrite all values in the list.
+
+Finally, the location of the config file can be changed either through the cli argument `--config FILE, -c FILE`, or the environment variable `$K3S_CONFIG_FILE`.

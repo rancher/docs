@@ -16,6 +16,7 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 > 
 > - If you are upgrading to Rancher v2.5 from a Rancher server that was started with the Helm chart option `--add-local=false`, you will need to drop that flag when upgrading. Otherwise, the Rancher server will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster. For more information, see [this section.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#upgrading-from-rancher-with-a-hidden-local-cluster)
 > - [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/options/upgrading-cert-manager)
+> - Helm should be run from the same location as your kubeconfig file (where you run your kubectl commands from. If you installed K8s with RKE, the config will have been created in the directory you ran `rke up` in) or should manually target the kubeconfig for the intended cluster with the `--kubeconfig` tag (see: https://helm.sh/docs/helm/helm/)
 > - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) The [Helm 2 upgrade page here]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha/helm2) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 > - If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
 
@@ -102,7 +103,16 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org
 ```
 
-> **Note:** There will be many more options from the previous step that need to be appended.
+> **Note:** The above is an example, there may be more values from the previous step that need to be appended.
+
+Alternatively, it's possible to reuse current values and make small changes with the `--reuse-values` flag. For example, to only change the Rancher version:
+
+```
+helm upgrade rancher rancher-<CHART_REPO>/rancher \
+  --namespace cattle-system \
+  --reuse-values \
+  --version=2.4.5
+```
 
 {{% /accordion %}}
 

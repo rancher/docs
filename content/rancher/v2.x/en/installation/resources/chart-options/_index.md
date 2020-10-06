@@ -148,7 +148,7 @@ If you have private registries, catalogs or a proxy that intercepts certificates
 Once the Rancher deployment is created, copy your CA certs in pem format into a file named `ca-additional.pem` and use `kubectl` to create the `tls-ca-additional` secret in the `cattle-system` namespace.
 
 ```plain
-kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-additional.pem
+kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-additional.pem=./ca-additional.pem
 ```
 
 ### Private Registry and Air Gap Installs

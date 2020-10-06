@@ -7,8 +7,6 @@ _Permissions_ are individual access rights that you can assign when selecting a 
 
 Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are three default global permissions: `Administrator`, `Standard User` and `User-base`.
 
-In Rancher v2.5, a restricted-admin role was added.
-
 - **Administrator:** These users have full control over the entire Rancher system and all clusters within it.
 
 - <a id="user"></a>**Standard User:** These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.

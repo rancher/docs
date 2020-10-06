@@ -3,21 +3,27 @@ title: "Networking"
 weight: 35
 ---
 
->**Note:** CNI options are covered in detail on the [Installation Network Options]({{<baseurl>}}/k3s/latest/en/installation/network-options/) page. Please reference that page for details on Flannel and the various flannel backend options or how to set up your own CNI.
+This page explains how CoreDNS, the Traefik Ingress controller, and Klipper service load balancer work within K3s.
 
-Open Ports
-----------
-Please reference the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/installation-requirements/#networking) page for port information.
+Refer to the [Installation Network Options]({{<baseurl>}}/k3s/latest/en/installation/network-options/) page for details on Flannel configuration options and backend selection, or how to set up your own CNI.
 
-CoreDNS
--------
+For information on which ports need to be opened for K3s, refer to the [Installation Requirements.]({{<baseurl>}}/k3s/latest/en/installation/installation-requirements/#networking)
+
+- [CoreDNS](#coredns)
+- [Traefik Ingress Controller](#traefik-ingress-controller)
+- [Service Load Balancer](#service-load-balancer)
+  - [How the Service LB Works](#how-the-service-lb-works)
+  - [Usage](#usage)
+  - [Excluding the Service LB from Nodes](#excluding-the-service-lb-from-nodes)
+  - [Disabling the Service LB](#disabling-the-service-lb)
+
+# CoreDNS
 
 CoreDNS is deployed on start of the agent. To disable, run each server with the `--disable coredns` option.
 
 If you don't install CoreDNS, you will need to install a cluster DNS provider yourself.
 
-Traefik Ingress Controller
---------------------------
+# Traefik Ingress Controller
 
 [Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It simplifies networking complexity while designing, deploying, and running applications.
 
@@ -25,15 +31,59 @@ Traefik is deployed by default when starting the server. For more information se
 
 The Traefik ingress controller will use ports 80, 443, and 8080 on the host (i.e. these will not be usable for HostPort or NodePort).
 
-You can tweak traefik to meet your needs by setting options in the traefik.yaml file. Refer to the official [Traefik for Helm Configuration Parameters](https://github.com/helm/charts/tree/master/stable/traefik#configuration) readme for more information.
+Traefik can be configured by editing the `traefik.yaml` file. To prevent k3s from using or overwriting the modified version, deploy k3s with `--no-deploy traefik` and store the modified copy in the `k3s/server/manifests` directory. For more information, refer to the official [Traefik for Helm Configuration Parameters.](https://github.com/helm/charts/tree/master/stable/traefik#configuration)
 
 To disable it, start each server with the `--disable traefik` option.
 
-Service Load Balancer
----------------------
+# Service Load Balancer
 
-K3s includes a basic service load balancer that uses available host ports. If you try to create a load balancer that listens on port 80, for example, it will try to find a free host in the cluster for port 80. If no port is available, the load balancer will stay in Pending.
+Any service load balancer (LB) can be leveraged in your Kubernetes cluster. K3s provides a load balancer known as [Klipper Load Balancer](https://github.com/rancher/klipper-lb) that uses available host ports.
 
+Upstream Kubernetes allows a Service of type LoadBalancer to be created, but doesn't include the implementation of the LB. Some LB services require a cloud provider such as Amazon EC2 or Microsoft Azure. By contrast, the K3s service LB makes it possible to use an LB service without a cloud provider.
+
+### How the Service LB Works
+
+K3s creates a controller that creates a Pod for the service load balancer, which is a Kubernetes object of kind [Service.](https://kubernetes.io/docs/concepts/services-networking/service/)
+
+For each service load balancer, a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) is created. The DaemonSet creates a pod with the `svc` prefix on each node.
+
+The Service LB controller listens for other Kubernetes Services. After it finds a Service, it creates a proxy Pod for the service using a DaemonSet on all of the nodes. This Pod becomes a proxy to the other Service, so that for example, requests coming to port 8000 on a node could be routed to your workload on port 8888.
+
+If the Service LB runs on a node that has an external IP, it uses the external IP.
+
+If multiple Services are created, a separate DaemonSet is created for each Service.
+
+It is possible to run multiple Services on the same node, as long as they use different ports.
+
+If you try to create a Service LB that listens on port 80, the Service LB will try to find a free host in the cluster for port 80. If no host with that port is available, the LB will stay in Pending.
+
+### Usage
+
+Create a [Service of type LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) in K3s.
+
+### Excluding the Service LB from Nodes
+
+To exclude nodes from using the Service LB, add the following label to the nodes that should not be excluded:
+
+```
+svccontroller.k3s.cattle.io/enablelb
+```
+
+If the label is used, the service load balancer only runs on the labeled nodes.
+
+### Disabling the Service LB
+
+<<<<<<< HEAD
+To disable it, start each server with the `--disable traefik` option.
+=======
+To disable the embedded LB, run the server with the `--disable servicelb` option.
+>>>>>>> 6d1d47358a30f3687e515ee9a5b4ce1c3afd9a33
+
+This is necessary if you wish to run a different LB, such as MetalLB.
+
+# Nodes Without a Hostname
+
+<<<<<<< HEAD
 To disable the embedded load balancer, run the server with the `--disable servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
 
 Nodes Without a Hostname
@@ -41,3 +91,6 @@ Nodes Without a Hostname
 
 Some cloud providers, such as Linode, will create machines with "localhost" as the hostname and others may not have a hostname set at all. This can cause problems with domain name resolution. You can run K3s with the `--node-name` flag or `K3S_NODE_NAME` environment variable and this will pass the node name to resolve this issue.
 
+=======
+Some cloud providers, such as Linode, will create machines with "localhost" as the hostname and others may not have a hostname set at all. This can cause problems with domain name resolution. You can run K3s with the `--node-name` flag or `K3S_NODE_NAME` environment variable and this will pass the node name to resolve this issue.
+>>>>>>> 6d1d47358a30f3687e515ee9a5b4ce1c3afd9a33

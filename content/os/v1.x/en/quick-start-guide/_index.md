@@ -3,7 +3,7 @@ title: Quick Start
 weight: 1
 ---
 
-If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{< baseurl >}}/os/v1.x/en/installation/platform/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine/) and show you some of what RancherOS can do.
+If you have a specific RanchersOS machine requirements, please check out our [guides on running RancherOS]({{< baseurl >}}/os/v1.x/en/installation/). With the rest of this guide, we'll start up a RancherOS using [Docker machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine/) and show you some of what RancherOS can do.
 
 ### Launching RancherOS using Docker Machine
 
