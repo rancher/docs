@@ -1,6 +1,8 @@
 ---
 title: Helm Version Requirements
 weight: 3
+aliases:
+  - /rancher/v2.x/en/installation/options/helm-version
 ---
 
 This section contains the requirements for Helm, which is the tool used to install Rancher on a high-availability Kubernetes cluster.
