@@ -5,10 +5,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/rollbacks
 ---
 
-
-> This page is under construction.
-
-This section contains information about how to rollback your Rancher server to a previous version.
+This section contains information about how to roll back your Rancher server to a previous version.
 
 If you upgrade Rancher and the upgrade does not complete successfully, you may need to [restore Rancher from backup.](../../backups/restores)
 
