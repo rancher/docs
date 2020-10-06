@@ -3,8 +3,6 @@ title: Helm Chart Options
 weight: 2
 ---
 
-> This page is under construction.
-
 - [Common Options](#common-options)
 - [Advanced Options](#advanced-options)
 - [API Audit Log](#api-audit-log)

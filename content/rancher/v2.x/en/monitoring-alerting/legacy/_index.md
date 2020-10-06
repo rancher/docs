@@ -4,4 +4,4 @@ shortTitle: Legacy
 weight: 1
 ---
 
-> This page is under construction.
+This section contains documentation related to the monitoring features available in Rancher prior to v2.5.

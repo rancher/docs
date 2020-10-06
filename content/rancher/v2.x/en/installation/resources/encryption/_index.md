@@ -3,4 +3,4 @@ title: Encryption
 weight: 3
 ---
 
-> This section is under construction.
+The documents in this section contain information about certificate configuration and `cert-manager`.

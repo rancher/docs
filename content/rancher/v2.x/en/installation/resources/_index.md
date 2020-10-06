@@ -3,8 +3,6 @@ title: Resources
 weight: 4
 ---
 
-> This section is under construction.
-
 ### Docker Installations
 
 The [single-node Docker installation]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) is for Rancher users that are wanting to test out Rancher. Instead of running on a Kubernetes cluster using Helm, you install the Rancher server component on a single node using a `docker run` command.
