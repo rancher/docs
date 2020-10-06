@@ -38,7 +38,7 @@ Some of the biggest metrics to look out for:
 
 1. Click on **Node Metrics**.
 
-[_Get expressions for Cluster Metrics_]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#cluster-metrics)
+[_Get expressions for Cluster Metrics_]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/#cluster-metrics)
 
 ### Etcd Metrics
 
@@ -58,7 +58,7 @@ Some of the biggest metrics to look out for:
 
     If this statistic suddenly grows, it usually indicates network communication issues that constantly force the cluster to elect a new leader.
 
-[_Get expressions for Etcd Metrics_]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#etcd-metrics)
+[_Get expressions for Etcd Metrics_]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/#etcd-metrics)
 
 ### Kubernetes Components Metrics
 
@@ -90,13 +90,13 @@ Some of the more important component metrics to monitor are:
 
     How fast ingress is routing connections to your cluster services.
 
-[_Get expressions for Kubernetes Component Metrics_]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#kubernetes-components-metrics)
+[_Get expressions for Kubernetes Component Metrics_]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/#kubernetes-components-metrics)
 
 ## Rancher Logging Metrics
 
 Although the Dashboard for a cluster primarily displays data sourced from Prometheus, it also displays information for cluster logging, provided that you have [configured Rancher to use a logging service]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/).
 
-[_Get expressions for Rancher Logging Metrics_]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#rancher-logging-metrics)
+[_Get expressions for Rancher Logging Metrics_]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/#rancher-logging-metrics)
 
 ## Finding Workload Metrics
 
@@ -113,4 +113,4 @@ Workload metrics display the hardware utilization for a Kubernetes workload. You
     - **View the Pod Metrics:** Click on **Pod Metrics**.
     - **View the Container Metrics:** In the **Containers** section, select a specific container and click on its name. Click on **Container Metrics**.
 
-[_Get expressions for Workload Metrics_]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/expression/#workload-metrics)
+[_Get expressions for Workload Metrics_]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/#workload-metrics)

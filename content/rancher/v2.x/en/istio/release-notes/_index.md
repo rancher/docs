@@ -4,6 +4,16 @@ aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/release-notes
 ---
 
+## Istio 1.5.9 release notes
+
+**Bug fixes**
+
+* The Kiali traffic graph is now working [#28109](https://github.com/rancher/rancher/issues/28109)
+
+**Known Issues**
+
+* The Kiali traffic graph is offset in the UI [#28207](https://github.com/rancher/rancher/issues/28207)
+
 
 # Istio 1.5.8
 

@@ -8,7 +8,7 @@ aliases:
   - /rancher/v2.x/en/cluster-admin/tools/logging
 ---
 
-> In Rancher 2.5, the logging application was improved. There are now two ways to enable logging. The older way is documented in this section, and the new application for logging is documented in the [dashboard section.]({{<baseurl>}}/rancher/v2.x/en/dashboard/logging)
+> In Rancher 2.5, the logging application was improved. There are now two ways to enable logging. The older way is documented in this section, and the new application for logging is documented [dashboard section.]({{<baseurl>}}/rancher/v2.x/en/logging)
 
 Logging is helpful because it allows you to:
 

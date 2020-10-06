@@ -3,7 +3,7 @@ title: OPA Gatekeeper
 weight: 17
 aliases:
  - /rancher/v2.x/en/cluster-admin/tools/opa-gatekeeper
- 
+ - /rancher/v2.x/en/opa-gatekeper/Open%20Policy%20Agent
 ---
 _Available as of v2.4.0_
 

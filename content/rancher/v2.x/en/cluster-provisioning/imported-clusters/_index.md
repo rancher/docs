@@ -41,7 +41,7 @@ When you delete an EKS cluster that was created in Rancher, the cluster is destr
 After importing a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and [logging]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/)
+- Enable [monitoring]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and [logging]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging/)
 - Enable [Istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.x/en/project-admin/pipelines/)
 - Configure [alerts]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/) and [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/)

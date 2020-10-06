@@ -17,15 +17,8 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 
 <!-- /TOC -->
 
-## Notifiers and Alerts
 
-Notifiers and alerts are two features that work together to inform you of events in the Rancher system.
-
-[Notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers) are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Notifications can be sent with Slack, email, PagerDuty, WeChat, and webhooks.
-
-[Alerts]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts) are rules that trigger those notifications. Before you can receive alerts, you must configure one or more notifier in Rancher. The scope for alerts can be set at either the cluster or project level.
-
-## Logging
+# Logging
 
 Logging is helpful because it allows you to:
 
@@ -37,18 +30,24 @@ Logging is helpful because it allows you to:
 
 Rancher can integrate with Elasticsearch, splunk, kafka, syslog, and fluentd.
 
-For details, refer to the [logging section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/logging)
+For details, refer to the [logging section.]({{<baseurl>}}/rancher/v2.x/en/logging)
 
-## Monitoring
+# Monitoring
 
-_Available as of v2.2.0_
+Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution. For details, refer to the [monitoring section.]({{<baseurl>}}/rancher/v2.x/en/monitoring)
 
-Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution. For details, refer to the [monitoring section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring)
+### Notifiers and Alerts
 
-## Istio
+After monitoring is enabled, you can set up alerts and notifiers that provide the mechanism to receive them.
 
- [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices. For details on how to enable Istio in Rancher, refer to the [Istio section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio)
+Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Notifications can be sent with Slack, email, PagerDuty, WeChat, and webhooks.
+
+Alerts are rules that trigger those notifications. Before you can receive alerts, you must configure one or more notifier in Rancher. The scope for alerts can be set at either the cluster or project level.
+
+# Istio
+
+[Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices. For details on how to enable Istio in Rancher, refer to the [Istio section.]({{<baseurl>}}/rancher/v2.x/en/istio)
 
 ## OPA Gatekeeper
 
- [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/opa-gatekeeper)
+ [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/opa-gatekeeper)

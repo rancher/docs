@@ -20,7 +20,7 @@ After creating a multi-cluster application, you can program a [Global DNS entry]
   - [Roles](#roles)
 - [Application configuration options](#application-configuration-options)
   - [Using a questions.yml file](#using-a-questions-yml-file)
-  - [Key value pairs for native Helm charts](key-value-pairs-for-native-helm-charts)
+  - [Key value pairs for native Helm charts](#key-value-pairs-for-native-helm-charts)
   - [Members](#members)
   - [Overriding application configuration options for specific projects](#overriding-application-configuration-options-for-specific-projects)
 - [Upgrading multi-cluster app roles and projects](#upgrading-multi-cluster-app-roles-and-projects)

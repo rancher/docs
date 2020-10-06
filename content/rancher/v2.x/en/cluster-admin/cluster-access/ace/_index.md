@@ -15,7 +15,7 @@ After you download the kubeconfig file, you will be able to use the kubeconfig f
 
 _Available as of v2.4.6_ 
 
-If admins have [enforced TTL on kubeconfig tokens](../../api/api-tokens/#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires [rancher cli](../cli) to be present in your PATH. 
+If admins have [enforced TTL on kubeconfig tokens]({{<baseurl>}}/rancher/v2.x/en/api/api-tokens/#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires [rancher cli](../cli) to be present in your PATH. 
 
 
 ### Two Authentication Methods for RKE Clusters

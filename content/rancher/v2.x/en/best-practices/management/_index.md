@@ -78,7 +78,7 @@ Provision 3 or 5 etcd nodes. Etcd requires a quorum to determine a leader by the
 Provision two or more control plane nodes. Some control plane components, such as the `kube-apiserver`, run in [active-active](https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster) mode and will give you more scalability. Other components such as kube-scheduler and kube-controller run in active-passive mode (leader elect) and give you more fault tolerance.
 
 ### Monitor Your Cluster
-Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
+Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.
 
 
 # Tips for Security
