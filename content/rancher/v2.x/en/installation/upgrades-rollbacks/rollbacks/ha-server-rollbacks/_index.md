@@ -8,7 +8,9 @@ aliases:
 
 If you upgrade Rancher and the upgrade does not complete successfully, you may need to rollback your Rancher Server to its last healthy state.
 
-To restore Rancher follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/restorations/ha-restoration)
+To restore Rancher prior to v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/restorations/ha-restoration)
+
+To restore Rancher v2.5, you can use the `rancher-backup` application and restore Rancher from backup according to [this section.]({{<baseurl>}}/rancher/v2.x/en/backups/restoring-rancher/)
 
 Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 

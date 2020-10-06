@@ -7,11 +7,11 @@ aliases:
 
 ### Upgrading Rancher
 
-To upgrade Rancher, refer to [these instructions.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/upgrades/)
+To upgrade Rancher, refer to [these instructions.](./upgrades/)
 
 ### Rolling Back Unsuccessful Upgrades
 
-In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade using these instructions: [Rollbacks for Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/ha-server-rollbacks)
+In the event that your Rancher Server does not upgrade successfully, you can rollback to your installation prior to upgrade using these instructions: [Rollbacks for Rancher installed on a Kubernetes cluster](./rollbacks/ha-server-rollbacks)
 
 > **Note:** If you are rolling back to versions in either of these scenarios, you must follow some extra [instructions]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/) in order to get your clusters working.
 >

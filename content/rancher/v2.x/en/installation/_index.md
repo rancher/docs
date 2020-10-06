@@ -22,6 +22,8 @@ In Rancher v2.5, the Rancher management server can be installed on any Kubernete
 
 For Docker installations, a local Kubernetes cluster is installed in the single Docker container, and Rancher is installed on the local cluster.
 
+The `restrictedAdmin` Helm chart option was added. When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#restricted-admin)
+
 ### Overview of Installation Options
 
 Rancher can be installed on these main architectures:
