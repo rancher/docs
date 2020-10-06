@@ -2,7 +2,7 @@
 title: About Custom CA Root Certificates
 weight: 1
 aliases:
-  - /rancher/v2.x/en/installation/options/custom-ca-root-certificate
+  - /rancher/v2.x/en/installation/options/custom-ca-root-certificate/
 ---
 
 If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).
@@ -21,7 +21,7 @@ Examples of services that Rancher can access:
 
 For details on starting a Rancher container with your private CA certificates mounted, refer to the installation docs:
 
-- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#custom-ca-certificate)
+- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#custom-ca-certificate)
 
-- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#additional-trusted-cas)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#additional-trusted-cas)
 

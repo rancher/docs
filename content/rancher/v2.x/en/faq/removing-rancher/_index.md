@@ -30,7 +30,7 @@ The capability to access a downstream cluster without Rancher depends on the typ
 
 ### What if I don't want Rancher anymore?
 
-If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) remove Rancher by using the [System Tools]({{<baseurl>}}/rancher/v2.x/en/system-tools/) with the `remove` subcommand.
+If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) remove Rancher by using the [System Tools]({{<baseurl>}}/rancher/v2.x/en/system-tools/) with the `remove` subcommand.
 
 If you installed Rancher with Docker, you can uninstall Rancher by removing the single Docker container that it runs in.
 

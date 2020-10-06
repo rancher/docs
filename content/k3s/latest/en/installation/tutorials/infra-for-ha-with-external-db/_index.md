@@ -3,9 +3,7 @@ title: 'Set up Infrastructure for a High Availability K3s Kubernetes Cluster'
 weight: 1
 ---
 
-> This page is under construction.
-
-In this section, you will provision the underlying infrastructure for your Rancher management server.
+This tutorial is intended to help you provision the underlying infrastructure for a Rancher management server.
 
 The recommended infrastructure for the Rancher-only Kubernetes cluster differs depending on whether Rancher will be installed on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
 
@@ -67,5 +65,3 @@ Depending on your environment, this may be an A record pointing to the load bala
 You will need to specify this hostname in a later step when you install Rancher, and it is not possible to change it later. Make sure that your decision is a final one.
 
 For a how-to guide for setting up a DNS record to route domain traffic to an Amazon ELB load balancer, refer to the [official AWS documentation.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer)
-
-### [Next: Set up a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/ka-k3s/)

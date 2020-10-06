@@ -53,7 +53,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
 
 1. Get the repository name that you used to install Rancher.
 
-    For information about the repos and their differences, see [Helm Chart Repositories]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+    For information about the repos and their differences, see [Helm Chart Repositories]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories).
 
     {{< release-channel >}}
 
@@ -65,7 +65,7 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
     rancher-<CHART_REPO>	 https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
 
 1. Fetch the latest chart to install Rancher from the Helm chart repository.

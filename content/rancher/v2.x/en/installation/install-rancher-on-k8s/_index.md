@@ -3,8 +3,10 @@ title: Install Rancher on a Kubernetes Cluster
 description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 3
 aliases:
-  - /rancher/v2.x/en/installation/k8s-install
+  - /rancher/v2.x/en/installation/k8s-install/
   - /rancher/v2.x/en/installation/k8s-install/helm-rancher
+  - /rancher/v2.x/en/installation/k8s-install/kubernetes-rke
+  - /rancher/v2.x/en/installation/ha-server-install 
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/install
 ---
 
@@ -51,7 +53,7 @@ Refer to the [instructions provided by the Helm project](https://helm.sh/docs/in
 
 ### 2. Add the Helm Chart Repository
 
-Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories).
 
 {{< release-channel >}}
 
@@ -71,7 +73,7 @@ kubectl create namespace cattle-system
 
 The Rancher management server is designed to be secure by default and requires SSL/TLS configuration.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination).
 
 There are three recommended options for the source of the certificate used for TLS termination at the Rancher server:
 
@@ -88,7 +90,7 @@ There are three recommended options for the source of the certificate used for T
 
 ### 5. Install cert-manager
 
-> You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination). 
+> You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination). 
 
 This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
@@ -230,17 +232,17 @@ helm install rancher rancher-latest/rancher \
   --set privateCA=true
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
 {{% /tab %}}
 {{% /tabs %}}
 
 The Rancher chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
 
-- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy)
-- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#private-registry-and-air-gap-installs)
-- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
+- [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#http-proxy)
+- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#private-registry-and-air-gap-installs)
+- [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination)
 
-See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for the full list of options.
+See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/) for the full list of options.
 
 
 ### 7. Verify that the Rancher Server is Successfully Deployed

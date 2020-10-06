@@ -2,7 +2,8 @@
 title: Enabling the API Audit Log to Record System Events
 weight: 4
 aliases:
-  - /rancher/v2.x/en/installation/options/api-audit-log
+  - /rancher/v2.x/en/installation/options/api-audit-log/
+  - /rancher/v2.x/en/installation/api-auditing
 ---
 
 You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.
@@ -13,9 +14,9 @@ You can enable API Auditing during Rancher installation or upgrade.
 
 The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
 
-- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log)
+- [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
 
-- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#api-audit-log)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#api-audit-log)
 
 ## API Audit Log Options
 

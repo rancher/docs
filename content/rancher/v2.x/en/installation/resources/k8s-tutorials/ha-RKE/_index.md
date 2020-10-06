@@ -169,5 +169,8 @@ Save a copy of the following files in a secure location:
 ### Issues or errors?
 
 See the [Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/options/troubleshooting/) page.
+<<<<<<< HEAD
 
 ### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)
+=======
+>>>>>>> Fix installation doc errors

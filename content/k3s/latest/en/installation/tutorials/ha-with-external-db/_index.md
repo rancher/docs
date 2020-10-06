@@ -4,8 +4,6 @@ shortTitle: Set up K3s for Rancher
 weight: 2
 ---
 
-> This page is under construction.
-
 This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
 
 For systems without direct internet access, refer to the air gap installation instructions.
@@ -114,5 +112,3 @@ kube-system     coredns-d798c9dd-ljjnf                    1/1     Running   0   
 ```
 
 **Result:** You have confirmed that you can access the cluster with `kubectl` and the K3s cluster is running successfully. Now the Rancher management server can be installed on the cluster.
-
-### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/)

@@ -131,6 +131,5 @@ kube-system     tiller-deploy-56c4cf647b-j4whh          1/1       Running   1   
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters. Review the [recommended architecture]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/#recommended-architecture) for Kubernetes installations and update the endpoints for Rancher DNS or the Load Balancer that you built during Step 1 of the Kubernetes install ([1. Create Nodes and Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/create-nodes-lb/#load-balancer)) to target the new cluster. Once the endpoints are updated, the agents on your managed clusters should automatically reconnect. This may take 10-15 minutes due to reconnect back off timeouts.
-
+Rancher should now be running and available to manage your Kubernetes clusters. 
 > **IMPORTANT:** Remember to save your updated RKE config (`rancher-cluster.yml`) state file (`rancher-cluster.rkestate`) and `kubectl` credentials (`kube_config_rancher-cluster.yml`) files in a safe place for future maintenance for example in a version control system.
