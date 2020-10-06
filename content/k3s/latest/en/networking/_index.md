@@ -73,24 +73,10 @@ If the label is used, the service load balancer only runs on the labeled nodes.
 
 ### Disabling the Service LB
 
-<<<<<<< HEAD
-To disable it, start each server with the `--disable traefik` option.
-=======
 To disable the embedded LB, run the server with the `--disable servicelb` option.
->>>>>>> 6d1d47358a30f3687e515ee9a5b4ce1c3afd9a33
 
 This is necessary if you wish to run a different LB, such as MetalLB.
 
 # Nodes Without a Hostname
 
-<<<<<<< HEAD
-To disable the embedded load balancer, run the server with the `--disable servicelb` option. This is necessary if you wish to run a different load balancer, such as MetalLB.
-
-Nodes Without a Hostname
-------------------------
-
 Some cloud providers, such as Linode, will create machines with "localhost" as the hostname and others may not have a hostname set at all. This can cause problems with domain name resolution. You can run K3s with the `--node-name` flag or `K3S_NODE_NAME` environment variable and this will pass the node name to resolve this issue.
-
-=======
-Some cloud providers, such as Linode, will create machines with "localhost" as the hostname and others may not have a hostname set at all. This can cause problems with domain name resolution. You can run K3s with the `--node-name` flag or `K3S_NODE_NAME` environment variable and this will pass the node name to resolve this issue.
->>>>>>> 6d1d47358a30f3687e515ee9a5b4ce1c3afd9a33
