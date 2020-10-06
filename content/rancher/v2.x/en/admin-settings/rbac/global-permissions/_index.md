@@ -7,6 +7,8 @@ _Permissions_ are individual access rights that you can assign when selecting a 
 
 Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are three default global permissions: `Administrator`, `Standard User` and `User-base`.
 
+In Rancher v2.5, a restricted-admin role was added.
+
 - **Administrator:** These users have full control over the entire Rancher system and all clusters within it.
 
 - <a id="user"></a>**Standard User:** These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
@@ -17,6 +19,7 @@ You cannot update or delete the built-in Global Permissions.
 
 This section covers the following topics:
 
+- [Restricted Admin](#restricted-admin)
 - [Global permission assignment](#global-permission-assignment)
   - [Global permissions for new local users](#global-permissions-for-new-local-users)
   - [Global permissions for users with external authentication](#global-permissions-for-users-with-external-authentication)
@@ -26,6 +29,49 @@ This section covers the following topics:
   - [Configuring global permissions for existing individual users](#configuring-global-permissions-for-existing-individual-users)
   - [Configuring global permissions for groups](#configuring-global-permissions-for-groups)
   - [Refreshing group memberships](#refreshing-group-memberships)
+
+# Restricted Admin
+
+_Available as of Rancher v2.5_
+
+A new `restricted-admin` role was created in Rancher v2.5 in order to prevent privilege escalation from the local Rancher server Kubernetes cluster. This role has full administrator access to all downstream clusters managed by Rancher, but it does not have permission to alter the local Kubernetes cluster.
+
+The `restricted-admin` can create other `restricted-admin` users with an equal level of access.
+
+A new setting was added to Rancher to set the initial bootstrapped administrator to have the `restricted-admin` role. This applies to the first user created when the Rancher server is started for the first time. If the environment variable is set, then no global administrator would be created, and it would be impossible to create the global administrator through Rancher.
+
+To bootstrap Rancher with the `restricted-admin` as the initial user, the Rancher server should be started with the following environment variable:
+
+```
+CATTLE_RESTRICTED_DEFAULT_ADMIN=true
+```
+### List of `restricted-admin` Permissions
+
+The `restricted-admin` permissions are as follows:
+
+- Has full admin access to all downstream clusters managed by Rancher.
+- Has very limited access to the local Kubernetes cluster. Can access Rancher custom resource definitions, but has no access to any Kubernetes native types.
+- Can add other users and assign them to clusters outside of the local cluster.
+- Can create other restricted admins
+- Can not grant any permissions in the local cluster they don't currently have (This is how Kubernetes normally operates)
+
+### Upgrading from Rancher with a Hidden Local Cluster
+
+Prior to Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
+
+```
+--add-local=false
+```
+
+You will need to drop this flag when upgrading to Rancher v2.5. Otherwise, Rancher will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster.
+
+### Changing Global Administrators to Restricted Admins
+
+If Rancher already has a global administrator, they should change all global administrators over to the new `restricted-admin` role.
+
+This can be done through **Security > Users** and moving any Administrator role over to Restricted Administrator.
+
+Signed-in users can change themselves over to the `restricted-admin` if they wish, but they should only do that as the last step, otherwise they won't have the permissions to do so.
 
 # Global Permission Assignment
 
