@@ -5,6 +5,7 @@ weight: 3025
 aliases:
   - /rancher/v2.x/en/concepts/workloads/
   - /rancher/v2.x/en/tasks/workloads/
+  - /rancher/v2.x/en/k8s-in-rancher/workloads
 ---
 
 You can build any complex containerized application in Kubernetes using two basic constructs: pods and workloads. Once you build an application, you can expose it for access either within the same cluster or on the Internet using a third construct: services.

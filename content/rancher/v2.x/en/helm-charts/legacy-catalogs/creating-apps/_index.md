@@ -4,6 +4,7 @@ weight: 400
 aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/customizing-charts/
   - /rancher/v2.x/en/catalog/custom/creating
+  - /rancher/v2.x/en/catalog/custom
   - /rancher/v2.x/en/catalog/creating-apps
 ---
 

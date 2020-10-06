@@ -2,6 +2,8 @@
 title: Setting up a High-availability RKE Kubernetes Cluster
 shortTitle: Set up RKE Kubernetes
 weight: 3
+aliases:
+  - /rancher/v2.x/en/installation/k8s-install/kubernetes-rke
 ---
 
 

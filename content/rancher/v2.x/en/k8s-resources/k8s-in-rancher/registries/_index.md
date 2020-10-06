@@ -4,6 +4,7 @@ description: Learn about the Docker registry and Kubernetes registry, their use 
 weight: 3063
 aliases:
   - /rancher/v2.x/en/tasks/projects/add-registries/
+  - /rancher/v2.x/en/k8s-in-rancher/registries  
 ---
 Registries are Kubernetes secrets containing credentials used to authenticate with [private Docker registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). 
 

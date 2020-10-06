@@ -4,6 +4,7 @@ weight: 300
 aliases:
   - /rancher/v2.x/en/tasks/logging/splunk/
   - /rancher/v2.x/en/tools/logging/splunk/
+  - /rancher/v2.x/en/cluster-admin/tools/logging/splunk
 ---
 
 If your organization uses [Splunk](https://www.splunk.com/), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Splunk server to view logs.

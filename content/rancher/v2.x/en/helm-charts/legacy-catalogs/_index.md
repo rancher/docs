@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.x/en/concepts/catalogs/
   - /rancher/v2.x/en/tasks/global-configuration/catalog/
   - /rancher/v2.x/en/catalog
+  - /rancher/v2.x/en/catalog/apps
 ---
 
 Rancher provides the ability to use a catalog of Helm charts that make it easy to repeatedly deploy applications.

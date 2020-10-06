@@ -4,7 +4,7 @@ weight: 19
 aliases:
   - /rancher/v2.x/en/concepts/
   - /rancher/v2.x/en/tasks/
-  - /rancher/v2.x/en/concepts/resources/
+  - /rancher/v2.x/en/concepts/resources/  
 ---
 
 When your project is set up, [project members]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#project-roles) can start managing their applications and all the components that comprise it.

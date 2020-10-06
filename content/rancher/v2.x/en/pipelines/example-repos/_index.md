@@ -3,6 +3,7 @@ title: Example Repositories
 weight: 500
 aliases:
   - /rancher/v2.x/en/tools/pipelines/quick-start-guide/
+  - /rancher/v2.x/en/k8s-in-rancher/pipelines/example-repos  
 ---
 
 Rancher ships with several example repositories that you can use to familiarize yourself with pipelines. We recommend configuring and testing the example repository that most resembles your environment before using pipelines with your own repositories in a production environment. Use this example repository as a sandbox for repo configuration, build demonstration, etc. Rancher includes example repositories for:

@@ -3,6 +3,7 @@ title: Prometheus Expressions
 weight: 4
 aliases:
   - rancher/v2.x/en/project-admin/tools/monitoring/expression
+  - rancher/v2.x/en/cluster-admin/tools/monitoring/expression
 ---
 
 The PromQL expressions in this doc can be used to configure [alerts.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/alerts/)
