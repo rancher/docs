@@ -69,7 +69,7 @@ After installing Rancher, if you want to change which Helm chart repository to i
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-4. Continue to follow the steps to [upgrade Rancher]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/) from the new Helm chart repository.
+4. Continue to follow the steps to [upgrade Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/ha) from the new Helm chart repository.
 {{% /tab %}}
 {{% tab "Docker Images" %}}
 When performing [Docker installs]({{<baseurl>}}/rancher/v2.x/en/installation/single-node), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
