@@ -23,22 +23,23 @@ Given the following:
 The corresponding configuration for the provider would then be as follows:
 
 ```yaml
-(...)
-cloud_provider:
-  name: vsphere
-  vsphereCloudProvider:
-    virtual_center:
-      vc.example.com:
-        user: provisioner
-        password: secret
-        port: 443
-        datacenters: /eu-west-1
-    workspace:
-      server: vc.example.com
-      folder: /eu-west-1/folder/myvmfolder
-      default-datastore: /eu-west-1/datastore/ds-1
-      datacenter: /eu-west-1
-      resourcepool-path: /eu-west-1/host/hn1/resources/myresourcepool
+rancher_kubernetes_engine_config:
+  (...)
+  cloud_provider:
+    name: vsphere
+    vsphereCloudProvider:
+      virtual_center:
+        vc.example.com:
+          user: provisioner
+          password: secret
+          port: 443
+          datacenters: /eu-west-1
+      workspace:
+        server: vc.example.com
+        folder: myvmfolder
+        default-datastore: /eu-west-1/datastore/ds-1
+        datacenter: /eu-west-1
+        resourcepool-path: /eu-west-1/host/hn1/resources/myresourcepool
 
 ```
 # Configuration Options
