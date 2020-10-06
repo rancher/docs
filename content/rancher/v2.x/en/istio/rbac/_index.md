@@ -32,8 +32,8 @@ Istio creates three `ClusterRoles` and adds Istio CRD access to the following de
 
 ClusterRole create by chart | Default K8s ClusterRole  | Rancher Role |
  ------------------------------:| ---------------------------:|---------:|
- `istio-admin` | admin| Project Owner, Project Member | 
- `istio-edit`| edit | Project Owner, Project Member | 
+ `istio-admin` | admin| Project Owner | 
+ `istio-edit`| edit | Project Member | 
  `istio-view` | view | Read-only | 
 
 Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but will utilize default roles to determine access. For each default K8s `ClusterRole` there are different Istio CRD permissions and K8s actions (Create ( C ), Get ( G ), List ( L ), Update ( U ), Patch ( P ), Delete( D ), All ( * )) that can be performed. 
