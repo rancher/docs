@@ -1,6 +1,6 @@
 ---
 title: Setting up Amazon ELB Network Load Balancer
-weight:5
+weight: 5
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
   - /rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb
