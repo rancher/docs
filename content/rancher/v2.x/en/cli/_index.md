@@ -59,7 +59,7 @@ The following commands are available for use in Rancher CLI.
 
 | Command  | Result  |
 |---|---|
-| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-directory-structure)).  |
+| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/adding-catalogs/#chart-directory-structure).  |
 | `catalog`  | Performs operations on [catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/).  |
 | `clusters, [cluster]`  | Performs operations on your [clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).  |
 | `context`  | Switches between Rancher [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).  |
