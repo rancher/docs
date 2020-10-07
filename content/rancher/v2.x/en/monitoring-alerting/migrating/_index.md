@@ -32,3 +32,9 @@ A list of differences between Rancher's monitoring feature and the upstream Prom
 Rancher used to use the [Prometheus operator.](https://github.com/prometheus-operator/prometheus-operator) Some parts of the Prometheus operator were included in the [kube-prometheus-stack.](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 The operator that manages Prometheus is still called the Prometheus operator, but it is now deployed as part of the `kube-prometheus-stack` Helm chart.
+
+### Changes to Role-based Access Control
+
+Project owners and members no longer get access to Grafana or Prometheus by default. If view-only users had access to Grafana, they would be able to see data from any namespace. For Kiali, any user can edit things they don’t own in any namespace.
+
+For more information about role-based access control in `rancher-monitoring`, refer to [this page.](../rbac)
