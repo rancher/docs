@@ -1,6 +1,6 @@
 ---
-title: Legacy Catalog Documentation
-shortTitle: Legacy
+title: Cluster Manager Catalog Documentation
+shortTitle: Cluster Manager
 description: Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment-ready apps.
 weight: 1
 aliases:

@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.x/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
   - /rancher/v2.x/en/installation/air-gap-single-node/install-rancher
   - /rancher/v2.x/en/installation/air-gap/install-rancher
+  - /rancher/v2.x/en/installation/options/air-gap-helm2/install-rancher
 ---
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.

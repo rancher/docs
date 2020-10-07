@@ -1,6 +1,6 @@
 ---
-title: Legacy Istio Documentation
-shortTitle: Legacy
+title: Cluster Manager Istio Documentation
+shortTitle: Cluster Manager
 weight: 1
 aliases:
     - /rancher/v2.x/en/project-admin/istio/configuring-resource-allocations/

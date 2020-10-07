@@ -1,6 +1,6 @@
 ---
-title: Legacy Multi-Cluster App Documentation
-shortTitle: Legacy
+title: Cluster Manager Multi-Cluster App Documentation
+shortTitle: Cluster Manager
 weight: 2
 ---
 
