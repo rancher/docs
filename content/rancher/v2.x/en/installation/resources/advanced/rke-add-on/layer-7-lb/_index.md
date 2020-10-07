@@ -4,6 +4,7 @@ weight: 276
 aliases:
 - /rancher/v2.x/en/installation/ha/rke-add-on/layer-7-lb
 - /rancher/v2.x/en/installation/options/rke-add-on/layer-7-lb/
+- /rancher/v2.x/en/installation/options/rke-add-on/layer-7-lb
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

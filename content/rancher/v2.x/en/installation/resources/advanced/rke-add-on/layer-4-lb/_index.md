@@ -1,23 +1,27 @@
 ---
 title: Kubernetes Install with External Load Balancer (TCP/Layer 4)
 weight: 275
+aliases:
+- /rancher/v2.x/en/installation/ha/rke-add-on/layer-4-lb
+- /rancher/v2.x/en/installation/options/helm2/rke-add-on/layer-4-lb
+- /rancher/v2.x/en/installation/options/rke-add-on/layer-4-lb
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
+>Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/#installation-outline).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the Helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
 This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
 - Layer 4 load balancer (TCP)
 - [NGINX ingress controller with SSL termination (HTTPS)](https://kubernetes.github.io/ingress-nginx/)
 
-In a Kubernetes setup that uses a layer 4 load balancer, the load balancer accepts Rancher client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
+In an HA setup that uses a layer 4 load balancer, the load balancer accepts Rancher client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
 
-<sup>Kubernetes Rancher install with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
-![High-availability Kubernetes installation of Rancher]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
+<sup>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
+![Rancher HA]({{<baseurl>}}/img/rancher/ha/rancher2ha.svg)
 
 ## Installation Outline
 
@@ -48,7 +52,7 @@ Provision three Linux hosts according to our [Requirements]({{<baseurl>}}/ranche
 
 ## 2. Configure Load Balancer
 
-We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step .
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration]({{<baseurl>}}/rancher/v2.x/en/installation/options/rke-add-on/layer-4-lb/nlb/)
 
 >**Note:**
 > In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running NGINX.
@@ -165,10 +169,6 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 	- [Template for self-signed certificate<br/> `3-node-certificate.yml`]({{<baseurl>}}/rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-certificate)
 	- [Template for certificate signed by recognized CA<br/> `3-node-certificate-recognizedca.yml`]({{<baseurl>}}/rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-certificate-recognizedca)
 
-    >**Advanced Config Options:**
-    >
-    >- Want records of all transactions with the Rancher API? Enable the [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) feature by editing your RKE config file. For more information, see how to enable it in [your RKE config file]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/rke-add-on/api-auditing/).
-    >- Want to know the other config options available for your RKE template? See the [RKE Documentation: Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
 
 
 2. Rename the file to `rancher-cluster.yml`.

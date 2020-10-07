@@ -1,6 +1,8 @@
 ---
 title: Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-externalssl-recognizedca
 ---
 
 RKE uses a cluster.yml file to install and configure your Kubernetes cluster.
