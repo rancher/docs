@@ -6,6 +6,8 @@ weight: 14
 aliases:
   - /rancher/v2.x/en/dashboard/monitoring-alerting
   - /rancher/v2.x/en/dashboard/notifiers
+  aliases:
+  - /rancher/v2.x/en/cluster-admin/tools/monitoring/
 ---
 
 Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.
