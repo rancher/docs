@@ -3,35 +3,25 @@ title: Migrating to Rancher v2.5 Monitoring
 weight: 5
 ---
 
-If you previously enabled monitoring in Rancher prior to v2.5, there is no upgrade path for the monitoring application. You will need to disable monitoring and re-enable monitoring in Rancher.
+If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no upgrade path for switching to the new monitoring/alerting solution. You will need to disable monitoring/alerting/notifiers in Cluster Manager before deploying the new monitoring solution via Cluster Explorer. 
 
-### Major Changes
+### Legacy Monitoring/Alerting via Cluster Manager
 
-The new version of Rancher's monitoring application is powered by the Prometheus operator, and it now relies less on Rancher's in-house monitoring tools.
+As of v2.2.0, Rancher's Cluster Manager allowed users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. For more information on how to configure Monitoring & Alerting V1, see the [Legacy docs](/rancher/v2.x/en/monitoring-alerting/legacy).
 
-This change allows Rancher to automatically support new features of the Prometheus operator API. Now all of the features exposed by the upstream Prometheus operator are available in the monitoring application, and you have more flexibility to configure monitoring.
+When Monitoring is enabled, Monitoring V1 deploys [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/docs/grafana/latest/getting-started/what-is-grafana/) onto a cluster to monitor the state of processes of your cluster nodes, Kubernetes components, and software deployments and create custom dashboards to make it easy to visualize collected metrics.
 
-Previously, you would use the Rancher UI to configure monitoring. The Rancher UI created CRDs that were maintained by Rancher and updated the Prometheus state. In Rancher v2.5, you directly create CRDs for the monitoring application, and those CRDs are exposed in the Rancher UI.
+Monitoring V1 could be configured on both a cluster-level and on a project-level and would automatically scrape certain workloads deployed as Apps on the Rancher cluster.
 
-Other important changes include:
+When Alerts or Notifiers are enabled, Alerting V1 deploys [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) and a set of Rancher controllers onto a cluster that allows users to define alerts and configure alert-based notifications via Email, Slack, PagerDuty, etc. Users can choose to create different types of alerts depending on what needs to be monitored (e.g. System Services, Resources, CIS Scans, etc.); however, PromQL Expression-based alerts can only be created if Monitoring V1 is enabled.
 
-- In the older version of monitoring, an Ingress  was created outside of the Helm chart deployment, whereas in the new version, an Ingress is created as part of the Helm chart deployment.
-- The monitoring application has the ability to create Prometheus ServiceMonitors and PodMonitors.
-- We exposed a [PushProx](https://github.com/prometheus-community/PushProx) exporter, based on the Prometheus project called PushProx. This [`rancher-pushprox` chart](https://github.com/rancher/dev-charts/tree/master/packages/rancher-pushprox/charts) sets up a Deployment of a PushProx proxy and a DaemonSet of PushProx clients. It monitors internal Kubernetes components for K3s, RKE, and kubeAdm clusters.
-- One aspect of alerting moved into the monitoring application, specifically the ability to create Prometheus rules. Now alerts are created in monitoring, and you configure how you get notified about the alerts.
-- In Rancher v2.4, alerts were configured separately from notifiers. Both alerts and notifiers are configured in the alert configuration.
-- To create alerts, you will create Prometheus alert custom resources.
-- Instead of having a notifier UI where you can add notifiers, notifications should be configured within the Alertmanager secret exposed in the rancher UI. This will let you configure routes, which is something that couldn't be done with Rancher v2.4. 
-- Ingresses need to be set up during the chart deployment or upgrade. You can configure an Ingress for Alertmanager, Prometheus and Grafana. To access each of those services from outside the cluster, they each would need separate Ingresses. Each Ingress would take in the same fields. If you want to use your own custom Ingress, we recommend setting the fields during the `rancher-monitoring` Helm chart deployment because it ensures the fields are as expected.
-- A [PushProx exporter](https://github.com/prometheus-community/PushProx) was exposed. PushProx exporters are created on the cluster where `rancher-monitoring` is installed. etcd, controlplane, proxy, and controller-manager metrics will all use the PushProx exporter.
+### Monitoring/Alerting via Cluster Explorer in Rancher 2.5
 
-A list of differences between Rancher's monitoring feature and the upstream Prometheus operator can be found in the [changelog.](https://github.com/rancher/charts/blob/dev-v2.5/packages/rancher-monitoring/overlay/CHANGELOG.md)
+As of v2.5.0, Rancher's Cluster Explorer now allows users to enable Monitoring & Alerting V2 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) together within a cluster. 
 
-### Prometheus Operator Helm Chart Changes
+Unlike in Monitoring & Alerting V1, both features are packaged in a single Helm chart found [here](https://github.com/rancher/charts/tree/dev-v2.5/charts/rancher-monitoring). The behavior of this chart and configurable fields closely matches [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), a Prometheus Community Helm chart, and any deviations from the upstream chart can be found in the [CHANGELOG.md](https://github.com/rancher/charts/blob/dev-v2.5/charts/rancher-monitoring/CHANGELOG.md) maintained with the chart.
 
-Rancher used to use the [Prometheus operator.](https://github.com/prometheus-operator/prometheus-operator) Some parts of the Prometheus operator were included in the [kube-prometheus-stack.](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
-
-The operator that manages Prometheus is still called the Prometheus operator, but it is now deployed as part of the `kube-prometheus-stack` Helm chart.
+If you currently use Monitoring or Alerting V1 and are interested in upgrading to Monitoring & Alerting V2 in Rancher 2.5, please see [Migrating to 2.5.x](/rancher/v2.x/en/monitoring-alerting/2.5.x/migrating/). For more information on how to configure Monitoring & Alerting V2, see the [2.5.x docs](/rancher/v2.x/en/monitoring-alerting/2.5.x).
 
 ### Changes to Role-based Access Control
 

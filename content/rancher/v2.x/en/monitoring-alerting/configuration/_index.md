@@ -37,53 +37,38 @@ Customizing the scrape configuration used by Prometheus to determine which resou
 
 ### ServiceMonitors
 
-This CRD declaratively specifies how groups of Kubernetes services should be monitored. Any Services in your cluster that match the labels located within the ServiceMonitor selector field will be monitored based on the endpoints specified on the ServiceMonitor. For more information on what fields can be specified, please look at the [spec](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#servicemonitor) provided by Prometheus Operator.
+This CRD declaratively specifies how groups of Kubernetes services should be monitored. Any Services in your cluster that match the labels located within the ServiceMonitor `selector` field will be monitored based on the `endpoints` specified on the ServiceMonitor. For more information on what fields can be specified, please look at the [spec](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#servicemonitor) provided by Prometheus Operator.
 
 For more information about how ServiceMonitors work, refer to the [Prometheus documentation.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/running-exporters.md)
 
 ### PodMonitors
 
-This CRD declaratively specifies how group of pods should be monitored. Any Pods in your cluster that match the labels located within the PodMonitor selector field will be monitored based on the podMetricsEndpoints specified on the PodMonitor. For more information on what fields can be specified, please look at the [spec](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#podmonitorspec) provided by Prometheus Operator.
+This CRD declaratively specifies how group of pods should be monitored. Any Pods in your cluster that match the labels located within the PodMonitor `selector` field will be monitored based on the `podMetricsEndpoints` specified on the PodMonitor. For more information on what fields can be specified, please look at the [spec](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#podmonitorspec) provided by Prometheus Operator.
 
 # Configuring Alerts or Recording Rules with PrometheusRules
 
-Customizing the alerts recorded by Prometheus and the configuration of notifiers that should notify users when alerts are triggered will primarily involve creating/modifying PrometheusRules and the Alertmanager config.
+Customizing the alerts recorded by Prometheus and the configuration of notifications based on those alerts will primarily involve creating/modifying PrometheusRules and the Alertmanager Config Secret.
 
-The Alertmanager needs to be a Secret that exists in the `cattle-monitoring` system namespace in order for that to be used.
+The Alertmanager Config Secret needs to be a Secret that exists in the `cattle-monitoring` system namespace in order for that to be used. On deploying the Rancher Monitoring application, a default Secret is automatically created if an existing Secret is not specified as part of the `Chart Options`; however, the Secret created on installing the chart will never be modified / removed on an upgrade / uninstall.
 
 ### PrometheusRules
 
-This CRD defines a desired set of Prometheus alerting and/or recording rules.
+This CRD defines a group of Prometheus alerting and/or recording rules.
 
-Creating the desired alerting rule will involve creating or updating a RuleGroup with your desired alerting rule. Each alerting rule needs to:
+To add a group of alerting / recording rules, you should create a PrometheusRule CR the defines a RuleGroup with your desired rules, each specifying:
 
-- Name the alert
-- Provide a PromQL expression for the alert
-- Provide any labels or annotations that need to be sent to Alertmanager on the alert
-
-Labels are concise values that identify the alert (e.g. cluster name or severity), while Annotations contain other important pieces of information that need to be displayed when notifying users about an alert (e.g. summary, description, message, runbook URL, etc.).
+- The name of the new alert / record
+- A PromQL expression for the new alert / record (`expr`)
+- Labels that should be attached to the alert / record that identify it (e.g. cluster name or severity)
+- Annotations that encode any additional important pieces of information that need to be displayed on the notification for an alert (e.g. summary, description, message, runbook URL, etc.). This field is not required for recording rules.
 
 For more information on what fields can be specified, please look at the [spec.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusrulespec)
-
-### Recording Rules
-
-If you would like to add [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) to define a frequently needed or computationally intensive PromQL query that should be stored as a new set of time series, you should create a PrometheusRule.
-
-Creating the desired recording rule will involve creating or updating a RuleGroup with your desired recording rule.
-
-Each recording rule needs to:
-
-- Name the new time series
-- Provide a PromQL expression for the series
-- Provide any labels that need to be added to this series
-
-For more information on what fields can be specified, please look at [this page.](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#rule)
 
 ### Alertmanager Config
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
-There only needs to be one Alertmanager in the cluster, and when `rancher-monitor` is installed, a default Alertmanager config is created.
+By default, Rancher Monitoring deploys a single Alertmanager onto a cluster that uses a default Alertmanager Config Secret. As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster that can all be managed using the same underlying Alertmanager Config Secret.
  
 This Secret should be updated or modified any time you want to:
  
@@ -91,21 +76,11 @@ This Secret should be updated or modified any time you want to:
 - Change the alerts that should be sent to specific notifiers or receivers
 - Change the group of alerts that are sent out
 
-> Normally, the Alertmanager config secret is configured as a resource that's not managed by Helm. For the `rancher-monitoring` chart, the default case will leave that secret behind. You should save the Secret so that if you uninstall and reinstall `rancher-monitoring`, you wouldn't lose your alerting configuration.
+> By default, you can either choose to supply an existing Alertmanager Config Secret (i.e. any Secret in the `cattle-monitoring-system` namespace) or allow Rancher Monitoring to deploy a default Alertmanager Config Secret onto your cluster. By default, the Alertmanager Config Secret created by Rancher will never be modified / deleted on an upgrade / uninstall of the `rancher-monitoring` chart to prevent users from losing or overwriting their alerting configuration when executing operations on the chart.
  
 For more information on what fields can be specified in this secret, please look at the [Prometheus Alertmanager docs](https://prometheus.io/docs/alerting/latest/alertmanager/)
 
 The full spec for the Alertmanager configuration file and what it takes in can be found [here.](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)
-
-It is recommended to use an Existing Secret within the namespace `cattle-monitoring-system` for the Alertmanager Config in order to avoid having to to manage the Secret via Helm.
-
-Using the default Helm managed Secret will require a user to redeploy the chart in order to persist any changes to the Alertmanager configuration on a `helm upgrade`. Using an existing Secret will allow the secret to be directly modified to perform live updates on the Alertmanager configuration if necessary.
-
-If using an Existing Secret, please add the label `alertmanager_config` to the Secret to enable modifying the secret using the Rancher Dashboard UI.
-
-Each [Receiver](https://prometheus.io/docs/alerting/latest/configuration/#receiver) (an Alertmanager entity that describes the notification configuration of one or more providers) must define the notification configuration of exactly one provider (i.e. Slack, PagerDuty, OpsGenie, etc.).
-
-In the Alertmanager documentation about routes, it is said that there must be one "configured top-level route, which must match all alerts (i.e. not have any configured matchers)." On this page, we refer to the notifier using that route as the master notifier. The other notifiers that are referenced in child routes (usually a list provided in `.routes`) we refer to as notifiers.
 
 For more information, refer to the [official Prometheus documentation about configuring routes.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
 
@@ -121,7 +96,7 @@ If you need to add a trusted CA to your notifier, follow these steps:
 
 # Additional Scrape Configurations
 
-If the scrape configuration you want cannot be specified via a ServiceMonitor or PodMonitor at the moment, you can provide an additionalScrapeConfigSecret on deploying or upgrading `rancher-monitoring`.
+If the scrape configuration you want cannot be specified via a ServiceMonitor or PodMonitor at the moment, you can provide an `additionalScrapeConfigSecret` on deploying or upgrading `rancher-monitoring`.
 
 A [scrape_config section](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) specifies a set of targets and parameters describing how to scrape them. In the general case, one scrape configuration specifies a single job. 
 
@@ -146,7 +121,7 @@ Prometheus rule files are held in PrometheusRule custom resources. Use the label
 
 ### Alertmanager Config
 
-The following values should generate the Alertmanager Config YAML that will be stored under the key `alertmanager.yaml`. This is an example of a Config contained in this key that represents one master Slack notifier with one master Route and no other notifiers configured. 
+To set up notifications via Slack, the following Alertmanager Config YAML should be placed into the `alertmanager.yaml` key of the Alertmanager Config Secret, where the `api_url` should be updated to use your Webhook URL from Slack:
 
 ```yaml
 route:  
@@ -161,32 +136,6 @@ receivers:
   - send_resolved: true
     text: '{{ template "slack.rancher.text" . }}'
     api_url: <user-provided slack webhook url here>
-templates:
-- /etc/alertmanager/config/*.tmpl
-```
-
-The following is the default Alertmanager config secret deployed by the `rancher-monitoring chart`. This example shows one master Custom Receiver with one Master Route, one other Route, and no other notifiers:
-
-```yaml
-global:
-  resolve_timeout: 5m
-route:
-  group_by: ['job']
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 12h
-  receiver: 'null'
-  routes:
-  - group_by: ['job']
-    group_wait: 30s
-    group_interval: 5m
-    repeat_interval: 12h
-    match:
-      alertname: Watchdog
-    receiver: 'slack'
-receivers:
-- name: 'null'
-- name: 'slack'
 templates:
 - /etc/alertmanager/config/*.tmpl
 ```
