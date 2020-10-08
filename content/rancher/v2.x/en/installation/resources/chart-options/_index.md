@@ -4,6 +4,7 @@ weight: 2
 aliases:
   - /rancher/v2.x/en/installation/options/
   - /rancher/v2.x/en/installation/options/chart-options/
+  - /rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/
 ---
 
 - [Common Options](#common-options)
