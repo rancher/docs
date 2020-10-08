@@ -6,7 +6,6 @@ weight: 14
 aliases:
   - /rancher/v2.x/en/dashboard/monitoring-alerting
   - /rancher/v2.x/en/dashboard/notifiers
-  aliases:
   - /rancher/v2.x/en/cluster-admin/tools/monitoring/
 ---
 
