@@ -1,6 +1,6 @@
 ---
-title: Legacy Monitoring/Alerting Documentation
-shortTitle: Legacy
+title: Cluster Manager Monitoring/Alerting Documentation
+shortTitle: Cluster Manager
 weight: 1
 ---
 

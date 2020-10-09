@@ -1,6 +1,9 @@
 ---
 title: Upgrading Cert-Manager
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/options/upgrading-cert-manager
+  - /rancher/v2.x/en/installation/options/upgrading-cert-manager/helm-2-instructions
 ---
 
 Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:
@@ -23,7 +26,7 @@ To address these changes, this guide will do two things:
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/ha/#c-upgrade-rancher) under the upgrade Rancher section. 
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/ha/#c-upgrade-rancher) under the upgrade Rancher section. 
 
 ## Upgrade Cert-Manager
 

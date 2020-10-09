@@ -10,7 +10,7 @@ This page describes the software, hardware, and networking requirements for the 
 
 Make sure the node(s) for the Rancher server fulfill the following requirements:
 
-- [Operating Systems and Docker Requirements](#operating-systems-and-docker-requirements)
+- [Operating Systems and Container Runtime Requirements](#operating-systems-and-container-runtime-requirements)
 - [Hardware Requirements](#hardware-requirements)
   - [CPU and Memory](#cpu-and-memory)
   - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
@@ -66,7 +66,7 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
 {{% tabs %}}
 {{% tab "RKE Install Requirements" %}}
 
-These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
+These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/)
 
 Performance increased in Rancher v2.4.0. For the requirements of Rancher prior to v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
 
@@ -83,7 +83,7 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher prior t
 
 {{% tab "K3s Install Requirements" %}}
 
-These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/)
+These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size             |
 | --------------- | ---------- | ------------ | -------| ---------| ------------------------- |

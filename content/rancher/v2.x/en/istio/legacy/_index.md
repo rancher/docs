@@ -1,6 +1,6 @@
 ---
-title: Legacy Istio Documentation
-shortTitle: Legacy
+title: Cluster Manager Istio Documentation
+shortTitle: Cluster Manager
 weight: 1
 aliases:
     - /rancher/v2.x/en/project-admin/istio/configuring-resource-allocations/
@@ -10,11 +10,11 @@ aliases:
 ---
 _Available as of v2.3.0_
 
-> In Rancher 2.5, the Istio application was improved. There are now two ways to enable Istio. The older way is documented in this section, and the new application for Istio is documented in the [dashboard section.]({{<baseurl>}}/rancher/v2.x/en/dashboard/istio)
+> In Rancher 2.5, the Istio application was improved. There are now two ways to enable Istio. The older way is documented in this section, and the new application for Istio is documented [here.]({{<baseurl>}}/rancher/v2.x/en/istio)
 
- [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
+[Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
 
- As a network of microservices changes and grows, the interactions between them can become more difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
+As a network of microservices changes and grows, the interactions between them can become more difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
 
 Our integration of Istio is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 

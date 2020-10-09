@@ -21,7 +21,7 @@ docker pull rancher/rancher:<PRIOR_RANCHER_VERSION>
 
 In this command, `<PRIOR_RANCHER_VERSION>` is the version of Rancher you were running before your unsuccessful upgrade. `v2.0.5` for example.
 
-Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the procedure below.
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>`</sup>
 ![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)

@@ -4,6 +4,8 @@ description: The Rancher CLI is a unified tool that you can use to interact with
 metaTitle: "Using the Rancher Command Line Interface "
 metaDescription: "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI"
 weight: 21
+aliases:
+  - /rancher/v2.x/en/cluster-admin/cluster-access/cli
 ---
 
 The Rancher CLI (Command Line Interface) is a unified tool that you can use to interact with Rancher. With this tool, you can operate Rancher using a command line rather than the GUI.
@@ -57,7 +59,7 @@ The following commands are available for use in Rancher CLI.
 
 | Command  | Result  |
 |---|---|
-| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#chart-directory-structure)).  |
+| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/adding-catalogs/#chart-directory-structure).  |
 | `catalog`  | Performs operations on [catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/).  |
 | `clusters, [cluster]`  | Performs operations on your [clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).  |
 | `context`  | Switches between Rancher [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).  |

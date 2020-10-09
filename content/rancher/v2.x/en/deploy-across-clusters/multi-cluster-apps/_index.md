@@ -1,6 +1,6 @@
 ---
-title: Legacy Multi-Cluster App Documentation
-shortTitle: Legacy
+title: Cluster Manager Multi-Cluster App Documentation
+shortTitle: Cluster Manager
 weight: 2
 ---
 
@@ -20,7 +20,7 @@ After creating a multi-cluster application, you can program a [Global DNS entry]
   - [Roles](#roles)
 - [Application configuration options](#application-configuration-options)
   - [Using a questions.yml file](#using-a-questions-yml-file)
-  - [Key value pairs for native Helm charts](key-value-pairs-for-native-helm-charts)
+  - [Key value pairs for native Helm charts](#key-value-pairs-for-native-helm-charts)
   - [Members](#members)
   - [Overriding application configuration options for specific projects](#overriding-application-configuration-options-for-specific-projects)
 - [Upgrading multi-cluster app roles and projects](#upgrading-multi-cluster-app-roles-and-projects)
@@ -100,7 +100,7 @@ If the Helm chart that you are deploying contains a `questions.yml` file, Ranche
 
 ### Key Value Pairs for Native Helm Charts
 
-For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/#custom-helm-chart-repository)), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
+For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.x/en/catalog/custom/), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
 
 ### Members
 

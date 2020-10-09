@@ -1,6 +1,8 @@
 ---
-title: Running on ARM64 (Experimental)
+title: "Running on ARM64 (Experimental)"
 weight: 3
+aliases:
+  - /rancher/v2.x/en/installation/options/arm64-platform
 ---
 
 > **Important:**

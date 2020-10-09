@@ -4,6 +4,7 @@ shortTitle: Kubernetes Installs
 weight: 370
 aliases:
   - /rancher/v2.x/en/installation/after-installation/ha-backup-and-restoration/
+  - /rancher/v2.x/en/installation/backups/restores
 ---
 
 This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. 

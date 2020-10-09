@@ -28,7 +28,7 @@ The `restrictedAdmin` Helm chart option was added. When this option is set to tr
 
 Rancher can be installed on these main architectures:
 
-- **High-availability Kubernetes Install:** We recommend using [Helm,]({{<baseurl>}}/rancher/v2.x/en/overview/concepts/#about-helm) a Kubernetes package manager, to install Rancher on multiple nodes on a dedicated Kubernetes cluster. For RKE clusters, three nodes are required to achieve a high-availability cluster. For K3s clusters, only two nodes are required.
+- **High-availability Kubernetes Install:** We recommend using Helm, a Kubernetes package manager, to install Rancher on multiple nodes on a dedicated Kubernetes cluster. For RKE clusters, three nodes are required to achieve a high-availability cluster. For K3s clusters, only two nodes are required.
 - **Single-node Kubernetes Install:** Another option is to install Rancher with Helm on a Kubernetes cluster, but to only use a single node in the cluster. In this case, the Rancher server doesn't have high availability, which is important for running Rancher in production. However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 - **Docker Install:** For test and demonstration purposes, Rancher can be installed with Docker on a single node. This installation works out-of-the-box, but there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
 
@@ -36,8 +36,8 @@ There are also separate instructions for installing Rancher in an air gap enviro
 
 | Level of Internet Access           | Kubernetes Installation - Strongly Recommended                | Docker Installation                             |
 | ---------------------------------- | ------------------------------ | ---------- |
-| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
-| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
+| With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
+| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
 
 We recommend installing Rancher on a Kubernetes cluster, because in a multi-node cluster, the Rancher management server becomes highly available. This high-availability configuration helps maintain consistent access to the downstream Kubernetes clusters that Rancher will manage.
@@ -52,7 +52,7 @@ For that reason, we recommend that for a production-grade architecture, you shou
 
 For testing or demonstration purposes, you can install Rancher in single Docker container. In this Docker install, you can use Rancher to set up Kubernetes clusters out-of-the-box. The Docker install allows you to explore the Rancher server functionality, but it is intended to be used for development and testing purposes only.
 
-Our [instructions for installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install) describe how to first use K3s or RKE to create and manage a Kubernetes cluster, then install Rancher onto that cluster.
+Our [instructions for installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s) describe how to first use K3s or RKE to create and manage a Kubernetes cluster, then install Rancher onto that cluster.
 
 When the nodes in your Kubernetes cluster are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) you will use Helm to deploy Rancher onto Kubernetes. Helm uses Rancher's Helm chart to install a replica of Rancher on each node in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster.
 
@@ -69,11 +69,11 @@ For more architecture recommendations, refer to [this page.]({{<baseurl>}}/ranch
 
 ### More Options for Installations on a Kubernetes Cluster
 
-Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
+Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#api-audit-log)
-- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#external-tls-termination)
-- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/options/chart-options/#customizing-your-ingress)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#api-audit-log)
+- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination)
+- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#customizing-your-ingress)
 
 In the Rancher installation instructions, we recommend using K3s or RKE to set up a Kubernetes cluster before installing Rancher on the cluster. Both K3s and RKE have many configuration options for customizing the Kubernetes cluster to suit your specific environment. For the full list of their capabilities, refer to their documentation:
 
@@ -84,6 +84,6 @@ In the Rancher installation instructions, we recommend using K3s or RKE to set u
 
 Refer to the [docs about options for Docker installs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) for details about other configurations including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#api-audit-log)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
 - With an [external load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/single-node-install-external-lb/)
-- With a [persistent data store]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#persistent-data)
+- With a [persistent data store]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#persistent-data)

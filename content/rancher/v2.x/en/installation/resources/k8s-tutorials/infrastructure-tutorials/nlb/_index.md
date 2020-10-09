@@ -4,6 +4,7 @@ weight: 5
 aliases:
   - /rancher/v2.x/en/installation/ha/create-nodes-lb/nlb
   - /rancher/v2.x/en/installation/k8s-install/create-nodes-lb/nlb
+  - /rancher/v2.x/en/installation/options/nlb
 ---
 
 This how-to guide describes how to set up a Network Load Balancer (NLB) in Amazon's EC2 service that will direct traffic to multiple instances on EC2.

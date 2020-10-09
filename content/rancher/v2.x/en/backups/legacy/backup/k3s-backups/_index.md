@@ -5,6 +5,8 @@ weight: 1
 aliases:
   - /rancher/v2.x/en/backups/backups/k3s-backups
   - /rancher/v2.x/en/backups/backups/k8s-backups/k3s-backups
+  - /rancher/v2.x/en/backups/legacy/backup/k8s-backups/k3s-backups/
+  - /rancher/v2.x/en/backups/legacy/backups/k3s-backups
 ---
 
 When Rancher is installed on a high-availability Kubernetes cluster, we recommend using an external database to store the cluster data.

@@ -1,6 +1,8 @@
 ---
 title: Restoring Rancher
 weight: 2
+aliases:
+  - /rancher/v2.x/en/installation/backups/restores
 ---
 
 A restore is performed by creating a Restore custom resource. 

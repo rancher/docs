@@ -5,6 +5,8 @@ weight: 3
 aliases:
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
   - /rancher/v2.x/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.x/en/backups/backups/single-node-backups/
+  - /rancher/v2.x/en/backups/legacy/backup/single-node-backups/
 ---
 
 

@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.x/en/tasks/global-configuration/catalog/adding-custom-catalogs/
   - /rancher/v2.x/en/catalog/custom/adding
   - /rancher/v2.x/en/catalog/adding-catalogs
+  - /rancher/v2.x/en/catalog/custom/
 ---
 
 Custom catalogs can be added into Rancher at a global scope, cluster scope, or project scope.

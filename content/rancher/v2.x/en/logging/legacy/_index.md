@@ -1,6 +1,6 @@
 ---
-title: Legacy Logging Documentation
-shortTitle: Legacy
+title: Cluster Manager Logging Documentation
+shortTitle: Cluster Manager
 weight: 1
 ---
 

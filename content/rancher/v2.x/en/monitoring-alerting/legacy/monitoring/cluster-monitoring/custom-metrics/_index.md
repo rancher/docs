@@ -5,7 +5,7 @@ aliases:
   - rancher/v2.x/en/project-admin/tools/monitoring/custom-metrics
 ---
 
-After you've enabled [cluster level monitoring]({{< baseurl >}}/rancher/v2.x/en/cluster-admin/tools/monitoring/#enabling-cluster-monitoring), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
+After you've enabled [cluster level monitoring]({{< baseurl >}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
 
 ## Deploy Prometheus Custom Metrics Adapter
 
@@ -304,9 +304,7 @@ Each rule can be broken down into roughly four parts:
 - *Querying*, which specifies how a request for a particular metric on one
   or more Kubernetes objects should be turned into a query to Prometheus.
 
-A more comprehensive configuration file can be found in
-[sample-config.yaml](sample-config.yaml), but a basic config with one rule
-might look like:
+A basic config with one rule might look like:
 
 ```yaml
 rules:

@@ -30,7 +30,7 @@ The new `rancher-backup` operator allows Rancher to be backed up and restored on
 
 Previously, the way that cluster data was backed up depended on the type of Kubernetes cluster that was used. 
 
-In Rancher v2.4, it was only supported to install Rancher on two types of Kubernetes clusters: an RKE cluster, or a K3s cluster with an external database. If Rancher was installed on an RKE cluster, [RKE would be used]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/ha-backups/) to take a snapshot of the etcd database and restore the cluster. If Rancher was installed on a K3s cluster with an external database, the database would need to be backed up and restored using the upstream documentation for the database.
+In Rancher v2.4, it was only supported to install Rancher on two types of Kubernetes clusters: an RKE cluster, or a K3s cluster with an external database. If Rancher was installed on an RKE cluster, RKE would be used to take a snapshot of the etcd database and restore the cluster. If Rancher was installed on a K3s cluster with an external database, the database would need to be backed up and restored using the upstream documentation for the database.
 
 In Rancher v2.5, it is now supported to install Rancher hosted Kubernetes clusters, such as Amazon EKS clusters, which do not expose etcd to a degree that would allow snapshots to be created by an external tool. etcd doesn't need to be exposed for `rancher-backup` to work, because the operator gathers resources by making calls to `kube-apiserver`.
 
@@ -42,8 +42,8 @@ For Rancher installed with Docker, refer to the same steps used up till 2.5 for 
 
 For Rancher prior to v2.5, the way that Rancher is backed up and restored differs based on the way that Rancher was installed. Our legacy backup and restore documentation is here:
 
-- For Rancher installed on an RKE Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/ha-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/rke-restore/) documentation.
-- For Rancher installed on a K3s Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k8s-backups/k3s-backups/) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k8s-restore/k3s-restore/) documentation.
+- For Rancher installed on an RKE Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/ha-backups) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/rke-restore) documentation.
+- For Rancher installed on a K3s Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k3s-backups) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k3s-restore) documentation.
 
 # How Backups and Restores Work
 

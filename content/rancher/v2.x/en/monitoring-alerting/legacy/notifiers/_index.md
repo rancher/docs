@@ -3,9 +3,11 @@ title: Notifiers
 weight: 1
 aliases:
   - rancher/v2.x/en/project-admin/tools/notifiers
+  - rancher/v2.x/en/cluster-admin/tools/notifiers
+  - /rancher/v2.x/en/cluster-admin/tools/notifiers
 ---
 
-> In Rancher 2.5, the notifier application was improved. There are now two ways to enable notifiers. The older way is documented in this section, and the new application for notifiers is documented in the [dashboard section.]({{<baseurl>}}/rancher/v2.x/en/dashboard/notifiers)
+> In Rancher 2.5, the notifier application was improved. There are now two ways to enable notifiers. The older way is documented in this section, and the new application for notifiers is documented [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting)
 
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.
 
