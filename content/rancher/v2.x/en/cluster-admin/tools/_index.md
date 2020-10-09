@@ -50,4 +50,4 @@ Alerts are rules that trigger those notifications. Before you can receive alerts
 
 ## OPA Gatekeeper
 
- [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/opa-gatekeeper)
+ [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/opa-gatekeper)
