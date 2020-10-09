@@ -80,10 +80,6 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 > - Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
 > - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#resource-requirements)
 
-Monitoring can be enabled through the Rancher UI or with the Helm CLI.
-
-### Enabling Monitoring with the Rancher UI
-
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
@@ -91,17 +87,6 @@ Monitoring can be enabled through the Rancher UI or with the Helm CLI.
 1. Scroll to the bottom of the Helm chart README and click **Install.**
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
-
-### Enabling Monitoring with the Helm CLI
-
-Helm CLI users can install the Rancher Monitoring chart directly from the `rancher/charts` GitHub repository using the following  commands:
-
-```
-helm install rancher-monitoring-crd rancher/stable
-helm install rancher-monitoring rancher/stable
-```
-
-However, it is advised to use the Cluster Explorer UI for most use cases.
 
 ### Default Alerts, Targets and Grafana Dashboards
 
