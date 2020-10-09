@@ -172,7 +172,7 @@ To see the Prometheus Rules, install `rancher-monitoring`. Then go to the **Clus
 
 The resource requests and limits can be configured when installing `rancher-monitoring`.
 
-The default values are in the [values.yaml](https://github.com/rancher/charts/tree/master/charts/prometheus/v9.1.0) in the `rancher-monitoring` Helm chart.
+The default values are in the [values.yaml](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/values.yaml) in the `rancher-monitoring` Helm chart.
 
 The default values in the table below are the minimum required resource limits and requests.
 
