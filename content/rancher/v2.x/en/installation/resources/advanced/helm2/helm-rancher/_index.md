@@ -179,7 +179,7 @@ helm install rancher-<CHART_REPO>/rancher \
   --set privateCA=true
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 After adding the secrets, check if Rancher was rolled out successfully:
 
