@@ -1,14 +1,30 @@
 ---
-title: Backup and Restore Embedded etcd Datastore (Experimental)
-shortTitle: Backup and Restore
+title: Backup and Restore
 weight: 26
 ---
+
+The way K3s is backed up and restored depends on which type of datastore is used.
+
+- [Backup and Restore with External Datastore](#backup-and-restore-with-external-datastore)
+- [Backup and Restore with Embedded etcd Datastore (Experimental)](#backup-and-restore-with-embedded-etcd-datastore-experimental)
+
+# Backup and Restore with External Datastore
+
+When an external datastore is used, backup and restore operations are handled outside of K3s. The database administrator will need to back up the external database, or restore it from a snapshot or dump.
+
+We recommend configuring the database to take recurring snapshots.
+
+For details on taking database snapshots and restoring your database from them, refer to the official database documentation:
+
+- [Official MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-snapshot-method.html)
+- [Official PostgreSQL documentation](https://www.postgresql.org/docs/8.3/backup-dump.html)
+- [Official etcd documentation](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md)
+
+# Backup and Restore with Embedded etcd Datastore (Experimental)
 
 _Available as of v1.19.1+k3s1_
 
 In this section, you'll learn how to create backups of the K3s cluster data and to restore the cluster from backup.
-
-> This is an experimental feature available for K3s clusters with an embedded etcd datastore. If you installed K3s with an external datastore, refer to the upstream documentation for the database for information on backing up the cluster data.
 
 ### Creating Snapshots
 
