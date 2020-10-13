@@ -1,40 +1,42 @@
+#!/bin/bash
+
 results_file="${1:-/source/results.json}"
 test_helpers="${2:-/test_helpers}"
 
 get_ids() {
-  jq -r .id ${results_file} | sort -n
+  jq -r .[].id ${results_file} | sort -n
 }
 
 get_id_text() {
   id=${1}
-  jq -r --arg id "${id}" 'select(.id==$id) | .text' ${results_file}
+  jq -r --arg id "${id}" '.[] | select(.id==$id) | .text' ${results_file}
 }
 
 get_section_ids() {
   id=${1}
-  jq -r --arg id "${id}" 'select(.id==$id) | .tests[].section' ${results_file}
+  jq -r --arg id "${id}" '.[] | select(.id==$id) | .tests[].section' ${results_file}
 }
 
 get_section_desc() {
   id=${1}
   section=${2}
-  jq -r --arg id "${id}" --arg section "${section}" 'select(.id==$id).tests[] | select(.section==$section).desc' ${results_file}
+  jq -r --arg id "${id}" --arg section "${section}" '.[] | select(.id==$id).tests[] | select(.section==$section).desc' ${results_file}
 }
 
 get_tests() {
   id=${1}
   section=${2}
-  jq -r --arg id "${id}" --arg section "${section}" 'select(.id==$id).tests[] | select(.section==$section).results[].test_number' ${results_file}
+  jq -r --arg id "${id}" --arg section "${section}" '.[] | select(.id==$id).tests[] | select(.section==$section).results[].test_number' ${results_file}
 }
 
 get_test() {
   id=${1}
   section=${2}
   test_number=${3}
-  jq -r --arg id "${id}" --arg section "${section}" --arg test_number "${test_number}" 'select(.id==$id).tests[] | select(.section==$section).results[] | select(.test_number==$test_number)' ${results_file}
+  jq -r --arg id "${id}" --arg section "${section}" --arg test_number "${test_number}" '.[] | select(.id==$id).tests[] | select(.section==$section).results[] | select(.test_number==$test_number)' ${results_file}
 }
 
-cat headers/header-2.4.md
+cat headers/header-2.5.md
 
 for id in $(get_ids); do
   echo "## ${id} $(get_id_text ${id})"
