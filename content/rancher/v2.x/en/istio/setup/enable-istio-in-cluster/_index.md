@@ -22,6 +22,22 @@ Only a user with the following [Kubernetes default roles](https://kubernetes.io/
 
 Automatic sidecar injection is disabled by default. To enable this, set the `sidecarInjectorWebhook.enableNamespacesByDefault=true` in the values.yaml on install or upgrade. This automatically enables Istio sidecar injection into all new namespaces that are deployed. 
 
+>**Note:** In clusters where:
+>
+> - The [Canal network plug-in]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#canal) is in use.
+> - The Project Network Isolation option is enabled.
+> - You install the Istio Ingress module
+>
+>The Istio Ingress Gateway pod won't be able to redirect ingress traffic to the workloads by default. This is because all the namespaces will be innacessible from the namespace where Istio is installed. You have two options:
+> 1. You add a new Network Policy in each of the namespaces where you intend to have ingress controlled by Istio. Your policy should include the following lines:
+> ```
+> ...
+> - podSelector:
+>    matchLabels:
+>      app: istio-ingressgateway
+>```
+> 2. You move the `ingress-system` namespace to the `system` project, which by default is excluded from the network isolation
+
 ## Additonal Config Options
 
 ### Overlay File
