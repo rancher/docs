@@ -2,7 +2,7 @@
 title: "4.  Install Rancher"
 weight: 200
 aliases:
-  - /rancher/v2.x/en/installation/options/helm2/helm-rancher/
+  - /rancher/v2.x/en/installation/options/helm2/helm-rancher
 ---
 
 Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.
@@ -15,7 +15,7 @@ Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installat
 
 ### Add the Helm Chart Repository
 
-Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories).
+Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
 
 {{< release-channel >}}
 
@@ -53,7 +53,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
 
 1. Install the CustomResourceDefinition resources separately
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
     ```
 
 1. Create the namespace for cert-manager
@@ -81,7 +81,7 @@ These instructions are adapted from the [official cert-manager documentation](ht
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.12.0 \
+      --version v0.14.2 \
       jetstack/cert-manager
     ```
 
@@ -179,7 +179,7 @@ helm install rancher-<CHART_REPO>/rancher \
   --set privateCA=true
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 After adding the secrets, check if Rancher was rolled out successfully:
 
