@@ -11,7 +11,7 @@ This section describes how to view the traffic that is being managed by Istio.
 
 The Istio overpage provides a link to the Kiali dashboard. From the Kiali dashboard, you are able to view graphs for each namespace. The Kiali graph provides a powerful way to visualize the topology of your Istio service mesh. It shows you which services communicate with each other.
 
->**Prerequisite:** To enable traffic to show up in the graph, ensure you have enabled one of the [Selectors & Scrape Configs]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#selectors-scrape-configs)options. If you do not have this configured, you will not see information on the graph. 
+>**Prerequisite:** To enable traffic to show up in the graph, ensure you have prometheus installed in the cluster. Rancher-istio installs Kiali configured by default to work with the rancher-monitoring chart. You can use rancher-monitoring or install your own monitoring solution. Optional: you can change configuration on how data scraping occurs by setting the [Selectors & Scrape Configs]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#selectors-scrape-configs) options.
 
 To see the traffic graph,
 
