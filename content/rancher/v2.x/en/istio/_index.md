@@ -56,7 +56,11 @@ To remove Istio components from a cluster, namespace, or workload, refer to the 
 
 # Migrate From Previous Istio Version
 
-There is no upgrade path for Istio versions less than 1.7
+There is no upgrade path for Istio versions less than 1.7.x. To successfully install Istio in the **Cluster Explorer**, you will need to disable your existing Istio in the **Cluster Manager**.
+
+If you have a significant amount of additional Istio CRDs you might consider manually migrating CRDs that are supported in both versions of Istio. You can do this by running `kubectl get <resource> -n istio-system -o yaml`, save the output yaml and re-apply in the new version. 
+
+Another option is to manually uninstall istio resources one at a time, but leave the resources that are supported in both versions of Istio and that will not be installed by the newest version. This method is more likely to result in issues installing the new version, but could be a good option depending on your situation.
 
 # Accessing Visualizations
 
