@@ -1,5 +1,6 @@
 ---
 title: Apps and Marketplace
+shortTitle: Rancher v2.5
 weight: 1
 ---
 
