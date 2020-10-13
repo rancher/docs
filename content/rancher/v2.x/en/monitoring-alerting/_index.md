@@ -188,18 +188,6 @@ The default values in the table below are the minimum required resource limits a
 
 At least 50Gi storage is recommended.
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-The data from Prometheus is used as the data source for the Grafana dashboard. Multiple data sources can be configured for Grafana.
-=======
-For more information about using the Promethus adapter, refer to this [documentation.](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/config-walkthrough.md)
->>>>>>> Update monitoring docs
-=======
->>>>>>> Revise monitoring docs
-=======
 # Known Issues
 
 There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend to setting `prometheus.prometheusSpec.resources.memory.limit` to 2500Mi` and `prometheus.prometheusSpec.resources.memory.request` to 1750Mi.
->>>>>>> Add Arvind's changes to monitoring docs
