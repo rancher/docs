@@ -3,7 +3,7 @@ title: "Initialize Helm: Install the Tiller Service"
 description: "With Helm, you can create configurable deployments instead of using static files. In order to use Helm, the Tiller service needs to be installed on your cluster."
 weight: 195
 aliases:
-  - /rancher/v2.x/en/installation/options/helm2/helm-init/
+  - /rancher/v2.x/en/installation/options/helm2/helm-init
 ---
 
 Helm is the package management tool of choice for Kubernetes. Helm "charts" provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh/). To be able to use Helm, the server-side component `tiller` needs to be installed on your cluster.
