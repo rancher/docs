@@ -1,6 +1,6 @@
 ---
 title: Multi-cluster Apps
-shortTitle: Rancher v2.2.0-v2.4.x
+shortTitle: Rancher v2.2-v2.4
 weight: 2
 ---
 

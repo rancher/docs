@@ -1,6 +1,6 @@
 ---
-title: Monitoring in Rancher v2.0.x-v2.4.x
-shortTitle: Rancher v2.0.x-v2.4.x
+title: Monitoring in Rancher v2.0-v2.4
+shortTitle: Rancher v2.0-v2.4
 weight: 2
 ---
 

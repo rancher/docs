@@ -1,6 +1,6 @@
 ---
-title: Rancher v2.0.x-v2.4.x Catalogs (Deprecated)
-shortTitle: Rancher v2.0.x-v2.4.x
+title: Rancher v2.0-v2.4 Catalogs (Deprecated)
+shortTitle: Rancher v2.0-v2.4
 description: Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment-ready apps.
 weight: 1
 aliases:

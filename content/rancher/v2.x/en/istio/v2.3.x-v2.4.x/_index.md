@@ -1,7 +1,7 @@
 ---
-title: Istio in Rancher v2.3.x-v2.4.x
-shortTitle: Rancher v2.3.x-v2.4.x
-weight: 1
+title: Istio in Rancher v2.3-v2.4
+shortTitle: Rancher v2.3-v2.4
+weight: 2
 aliases:
     - /rancher/v2.x/en/project-admin/istio/configuring-resource-allocations/
     - /rancher/v2.x/en/cluster-admin/tools/istio/
