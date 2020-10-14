@@ -114,7 +114,7 @@ To see the Grafana UI, install `rancher-monitoring`. Then go to the **Cluster Ex
 ![Cluster Compute Resources Dashboard in Grafana]({{<baseurl>}}/img/rancher/cluster-compute-resources-dashboard.png)
 
 <figcaption>Default Dashboards in Grafana</figcaption>
-![Default Dashboards in Grafana]({{<baseurl>}}/img/rancher/default-grafana-dashboards.png)
+![Default Dashboards in Grafana]({{<baseurl>}}/img/rancher/grafana-default-dashboard.png)
 
 To allow the Grafana dashboard to persist after it restarts, you will need to add the configuration JSON into a ConfigMap. You can add this configuration to the ConfigMap using the Rancher UI.
 
