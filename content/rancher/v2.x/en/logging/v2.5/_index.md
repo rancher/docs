@@ -8,14 +8,15 @@ weight: 1
 - [Configuring the Logging Output for the Rancher Kubernetes Cluster](#configuring-the-logging-output-for-the-rancher-kubernetes-cluster)
 - [Enabling Logging for Rancher Managed Clusters](#enabling-logging-for-rancher-managed-clusters)
 - [Configuring the Logging Application](#configuring-the-logging-application)
+- [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
 
 ### Changes in Rancher v2.5
 
 The following changes were introduced to logging in Rancher v2.5:
 
-- Rancher's logging feature is now powered the [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) instead of Rancher's in-house logging solution.
-- [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs. [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the outputs. Previously, only Fluentd  was used.
+- The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging in place of the former, in-house logging solution.
+- [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs. [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the outputs. Previously, only Fluentd was used.
 - Logging can be configured with a Kubernetes manifest, because now the logging uses a Kubernetes operator with Custom Resource Definitions.
 - We now support filtering logs.
 - We now support writing logs to multiple outputs.
@@ -49,11 +50,11 @@ According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-
 
 > You can define `outputs` (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and `flows` that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
-### RBAC
+**RBAC**
+
 Rancher logging has two roles, `logging-admin` and `logging-view`. `logging-admin` allows users full access to namespaced flows and outputs.  The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs.  Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster.  Cluster admin is the only role with full access to all rancher-logging resources.  Cluster members are not able to edit or read any logging resources.  Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. Project owners and project members require at least 1 namespace in their project to use logging.  If they do not have at least one namespace in their project they may not see the logging button in the top nav dropdown. 
 
-
-### Examples
+**Examples**
 
 Let's say you wanted to send all logs in your cluster to an elasticsearch cluster.
 
@@ -236,4 +237,64 @@ spec:
     ignore_network_errors_at_startup: false
 ```
 
-if we break down what is happening, first we create a deployment of a container that has the additional syslog plugin and accepts logs forwarded from another fluentd.  Next we create an output configured as a forwarder to our deployment. The deployment fluentd will then forward all logs to the configured syslog destination.
+if we break down what is happening, first we create a deployment of a container that has the additional syslog plugin and accepts logs forwarded from another fluentd.  Next we create an output configured as a forwarder to our deployment. The deployment fluentd will then forward all logs to the configured syslog destination.  
+
+### Working with Taints and Tolerations
+
+"Tainting" a Kubernetes node causes pods to repel running on that node.
+Unless the pods have a ```toleration``` for that node's taint, they will run on other nodes in the cluster.
+[Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) can work in conjunction with the ```nodeSelector``` [field](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) within the ```PodSpec```, which enables the *opposite* effect of a taint.
+Using ```nodeSelector``` gives pods an affinity towards certain nodes.
+Both provide choice for the what node(s) the pod will run on.
+
+**Default Implementation in Rancher's Logging Stack**
+
+By default, Rancher taints all Linux nodes with ```cattle.io/os=linux```, and does not taint Windows nodes.
+The logging stack pods have ```tolerations``` for this taint, which enables them to run on Linux nodes.
+Moreover, we can populate the ```nodeSelector``` to ensure that our pods *only* run on Linux nodes.
+Let's look at an example pod YAML file with these settings...
+
+```yaml
+apiVersion: v1
+kind: Pod
+# metadata:
+spec:
+  # containers:
+  tolerations:
+    - key: cattle.io/os
+      operator: "Equal"
+      value: "linux"
+      effect: NoSchedule 
+  nodeSelector:
+    kubernetes.io/os: linux
+```
+
+In the above example, we ensure that our pod only runs on Linux nodes, and we add a ```toleration``` for the taint we have on all of our Linux nodes.
+You can do the same with Rancher's existing taints, or with your own custom ones.
+
+**Why do we not schedule logging-related pods on Windows nodes?**
+
+No parts of the logging stack are compatible with Windows Kubernetes nodes.
+For instance, if a logging pod is attempting to pull its image from a container registry, there may only be Linux-compatible images available.
+In this scenario, the pod would be stuck in an ```ImagePullBackOff``` status; and would eventually change to a ```ErrImagePull``` status.
+
+**Adding NodeSelector Settings and Tolerations for Custom Taints**
+
+If you would like to add your own ```nodeSelector``` settings, or if you would like to add ```tolerations``` for additional taints, you can pass the following to the chart's values.
+
+```yaml
+tolerations:
+  # insert tolerations list
+nodeSelector:
+  # insert nodeSelector settings
+```
+
+These values will add both settings to the ```fluentd```, ```fluentbit```, and ```logging-operator``` containers.
+Essentially, these are global settings for all pods in the logging stack.
+
+However, if you would like to add tolerations for *only* the ```fluentbit``` container, you can add the following to the chart's values.
+
+```yaml
+fluentbit_tolerations:
+  # insert tolerations list for fluentbit containers only
+```
