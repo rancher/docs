@@ -9,8 +9,6 @@ Rancher can run a security scan to check whether Kubernetes is deployed accordin
 
 The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> for report aggregation.
 
-> The CIS scan feature was improved in Rancher v2.5. If you are using Rancher v2.4, refer to the older version of the CIS scan documentation [here.](./legacy)
-
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [About the CIS Benchmark](#about-the-cis-benchmark)
 - [Installing rancher-cis-benchmark](#installing-rancher-cis-benchmark)

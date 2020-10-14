@@ -23,9 +23,7 @@ This page describes how to enable monitoring & alerting within a cluster using R
 
 If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no upgrade path for switching to the new monitoring/ alerting solution. You will need to disable monitoring/ alerting/notifiers in Cluster Manager before deploying the new monitoring solution via Cluster Explorer.
 
-For more information about upgrading the Monitoring app in Rancher 2.5, please refer to the [migration docs](../migrating). 
-
-For the docs about monitoring for earlier Rancher versions, refer to [this section.](../legacy)
+For more information about upgrading the Monitoring app in Rancher 2.5, please refer to the [migration docs](./migrating). 
 
 > Before enabling monitoring, be sure to review the resource requirements. The default values in [this section](#setting-resource-limits-and-requests) are the minimum required resource limits and requests.
 
@@ -79,7 +77,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](../configuration)
+1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
 1. Scroll to the bottom of the Helm chart README and click **Install.**
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.

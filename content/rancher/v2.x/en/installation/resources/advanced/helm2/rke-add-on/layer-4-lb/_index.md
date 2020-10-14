@@ -50,7 +50,7 @@ Provision three Linux hosts according to our [Requirements]({{<baseurl>}}/ranche
 
 ## 2. Configure Load Balancer
 
-We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install-server-install/nlb/)
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration](./nlb)
 
 >**Note:**
 > In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running NGINX.
