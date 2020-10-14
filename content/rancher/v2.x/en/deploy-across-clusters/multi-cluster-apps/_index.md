@@ -1,10 +1,12 @@
 ---
-title: Cluster Manager Multi-Cluster App Documentation
-shortTitle: Cluster Manager
+title: Multi-cluster Apps
+shortTitle: Rancher v2.2-v2.4
 weight: 2
 ---
 
 _Available as of v2.2.0_
+
+> As of Rancher v2.5, we recommend using [Fleet]({{<baseurl>}}/rancher/v2.x/en/deploy-across-clusters/fleet) for deploying apps across clusters.
 
 Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
 

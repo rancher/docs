@@ -21,7 +21,9 @@ With Longhorn, you can:
 
 ### New in Rancher v2.5
 
-Prior to Rancher v2.5, Longhorn could be installed as a Rancher catalog app. In Rancher v2.5, the catalog system was replaced by the **Apps & Marketplace,** and it became possible to install Longhorn as an app from that page. The **Cluster Explorer** now allows you to manipulate Longhorn's Kubernetes resources from the Rancher UI. So now you can control the Longhorn functionality with the Longhorn UI, or with kubectl, or by manipulating Longhorn's Kubernetes custom resources in the Rancher UI.
+Prior to Rancher v2.5, Longhorn could be installed as a Rancher catalog app. In Rancher v2.5, the catalog system was replaced by the **Apps & Marketplace,** and it became possible to install Longhorn as an app from that page.
+
+The **Cluster Explorer** now allows you to manipulate Longhorn's Kubernetes resources from the Rancher UI. So now you can control the Longhorn functionality with the Longhorn UI, or with kubectl, or by manipulating Longhorn's Kubernetes custom resources in the Rancher UI.
 
 These instructions assume you are using Rancher v2.5, but Longhorn can be installed with earlier Rancher versions. For documentation about installing Longhorn as a catalog app using the legacy Rancher UI, refer to the [Longhorn documentation.](https://longhorn.io/docs/1.0.2/deploy/install/install-with-rancher/)
 
