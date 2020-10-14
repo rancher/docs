@@ -61,10 +61,6 @@ The official Benchmark documents are available through the CIS website. The sign
 
 # Installing rancher-cis-benchmark
 
-The application can be installed with the Rancher UI or with Helm.
-
-### Installing with the Rancher UI
-
 1. In the Rancher UI, go to the **Cluster Explorer.**
 1. Click **Apps.**
 1. Click `rancher-cis-benchmark`.
@@ -72,26 +68,7 @@ The application can be installed with the Rancher UI or with Helm.
 
 **Result:** The CIS scan application is deployed on the Kubernetes cluster.
 
-### Installing with Helm
-
-There are two Helm charts for the application:
-
-- `rancher-cis-benchmark-crds`, the custom resource definition chart
-- `rancher-cis-benchmark`, the chart deploying <a href="https://github.com/rancher/cis-operator" target="_blank">rancher/cis-operator</a>
-
-To install the charts, run the following commands:
-```
-helm repo add rancherchart https://charts.rancher.io
-helm repo update
-helm install rancher-cis-benchmark-crd --kubeconfig <> rancherchart/rancher-cis-benchmark-crd --create-namespace -n cis-operator-system
-helm install rancher-cis-benchmark --kubeconfig <> rancherchart/rancher-cis-benchmark -n cis-operator-system
-```
-
 # Uninstalling rancher-cis-benchmark
-
-The application can be uninstalled with the Rancher UI or with Helm.
-
-### Uninstalling with the Rancher UI
 
 1. From the **Cluster Explorer,** go to the top left dropdown menu and click **Apps & Marketplace.**
 1. Click **Installed Apps.**
@@ -99,15 +76,6 @@ The application can be uninstalled with the Rancher UI or with Helm.
 1. Click **Delete** and confirm **Delete.**
 
 **Result:** The `rancher-cis-benchmark` application is uninstalled.
-
-### Uninstalling with Helm
-
-Run the following commands:
-
-```
-helm uninstall rancher-cis-benchmark -n cis-operator-system
-helm uninstall rancher-cis-benchmark-crd -n cis-operator-system
-```
 
 # Running a Scan
 
