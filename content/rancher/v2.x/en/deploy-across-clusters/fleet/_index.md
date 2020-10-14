@@ -1,6 +1,6 @@
 ---
 title: Fleet - GitOps at Scale
-shortTitle: Fleet
+shortTitle: Rancher v2.5
 weight: 1
 ---
 

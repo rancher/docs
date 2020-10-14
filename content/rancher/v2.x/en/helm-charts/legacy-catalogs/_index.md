@@ -1,6 +1,6 @@
 ---
-title: Cluster Manager Catalog Documentation
-shortTitle: Cluster Manager
+title: Rancher v2.0.x-v2.4.x Catalogs (Deprecated)
+shortTitle: Rancher v2.0.x-v2.4.x
 description: Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment-ready apps.
 weight: 1
 aliases:
@@ -10,6 +10,8 @@ aliases:
   - /rancher/v2.x/en/catalog
   - /rancher/v2.x/en/catalog/apps
 ---
+
+> As of Rancher v2.5, the catalog system is deprecated and has been replaced with [Apps and Marketplace]({{<baseurl>}}/rancher/v2.x/en/helm-charts/apps-marketplace) in the Cluster Explorer.
 
 Rancher provides the ability to use a catalog of Helm charts that make it easy to repeatedly deploy applications.
 
