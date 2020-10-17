@@ -10,12 +10,15 @@ This section describes the permissions required to use the rancher-cis-benchmark
 
 The rancher-cis-benchmark is a cluster-admin only feature by default.
 
-However, the `rancher-cis-benchmark` chart installs three default `ClusterRoles`:
+However, the `rancher-cis-benchmark` chart installs these two default `ClusterRoles`:
 - cis-admin
-- cis-edit
 - cis-view
 
 In Rancher, only cluster owners and global administrators have `cis-admin` access by default. 
+
+Note: If you were using the `cis-edit` role added in Rancher v2.5 setup, it has now been removed since
+Rancher v2.5.2 because it essentially is same as `cis-admin`. If you happen to create any clusterrolebindings
+for `cis-edit`, please update them to use `cis-admin` ClusterRole instead.
 
 # Cluster-Admin Access
 
@@ -37,11 +40,12 @@ The rancher-cis-benchmark creates three `ClusterRoles` and adds the CIS Benchmar
 | ClusterRole created by chart | Default K8s ClusterRole  | Permissions given with Role
 | ------------------------------| ---------------------------| ---------------------------|
 | `cis-admin` | `admin`| Ability to CRUD clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
-| `cis-edit`| `edit` | Ability to CRUD clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
 | `cis-view` | `view `| Ability to List(R) clusterscanbenchmarks, clusterscanprofiles, clusterscans, clusterscanreports CR
+
 
 By default only cluster-owner role will have ability to manage and use `rancher-cis-benchmark` feature.
 
-The other Rancher roles (cluster-member, project-owner, project-member) do not have default permissions to manage and use rancher-cis-benchmark resources.
+The other Rancher roles (cluster-member, project-owner, project-member) do not have any default permissions to manage and use rancher-cis-benchmark resources.
 
-But if a cluster-owner wants to delegate access to other users, they can do so by creating ClusterRoleBindings between these users and the CIS ClusterRoles manually.
+But if a cluster-owner wants to delegate access to other users, they can do so by creating ClusterRoleBindings between these users and the above CIS ClusterRoles manually.
+There is no automatic role aggregation supported for the `rancher-cis-benchmark` ClusterRoles.
