@@ -272,11 +272,12 @@ spec:
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a ```toleration``` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
 
-**Why do we not schedule logging-related pods on Windows nodes?**
+**Are clusters with Windows worker nodes supported?**
 
-No parts of the logging stack are compatible with Windows Kubernetes nodes.
-For instance, if a logging pod is attempting to pull its image from a container registry, there may only be Linux-compatible images available.
-In this scenario, the pod would be stuck in an ```ImagePullBackOff``` status; and would eventually change to a ```ErrImagePull``` status.
+Yes, clusters with Windows worker support logging with some small caveats...
+
+1. Windows node logs are currently unable to be exported.
+2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not interited from the ```logging-operator```.
 
 **Adding NodeSelector Settings and Tolerations for Custom Taints**
 
