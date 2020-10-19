@@ -277,7 +277,7 @@ You can do the same with Rancher's existing taints, or with your own custom ones
 Yes, clusters with Windows worker support logging with some small caveats...
 
 1. Windows node logs are currently unable to be exported.
-2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not interited from the ```logging-operator```.
+2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not inherited from the ```logging-operator```.
 
 **Adding NodeSelector Settings and Tolerations for Custom Taints**
 
