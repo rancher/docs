@@ -1,18 +1,18 @@
 ---
-title: Template for an RKE Cluster with a Self-signed Certificate and SSL Termination on Layer 7 Load Balancer
-weight: 3
+title: Template for an RKE Cluster with a Self-signed Certificate and Layer 4 Load Balancer
+weight: 2
 aliases:	
-  - /rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-externalssl-certificate
+  - /rancher/v2.x/en/installation/options/cluster-yml-templates/3-node-certificate
 ---
-
 RKE uses a cluster.yml file to install and configure your Kubernetes cluster.
 
 This template is intended to be used for RKE add-on installs, which are only supported up to Rancher v2.0.8. Please use the Rancher Helm chart if you are installing a newer Rancher version.
 
 The following template can be used for the cluster.yml if you have a setup with:
 
-- Layer 7 load balancer with self-signed SSL termination (HTTPS)
-- [NGINX Ingress controller](https://kubernetes.github.io/ingress-nginx/) 
+- Self-signed SSL
+- Layer 4 load balancer
+- [NGINX Ingress controller](https://kubernetes.github.io/ingress-nginx/)
 
 > For more options, refer to [RKE Documentation: Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
 
@@ -67,6 +67,16 @@ addons: |-
   apiVersion: v1
   kind: Secret
   metadata:
+    name: cattle-keys-ingress
+    namespace: cattle-system
+  type: Opaque
+  data:
+    tls.crt: <BASE64_CRT>  # ssl cert for ingress. If selfsigned, must be signed by same CA as cattle server
+    tls.key: <BASE64_KEY>  # ssl key for ingress. If selfsigned, must be signed by same CA as cattle server
+  ---
+  apiVersion: v1
+  kind: Secret
+  metadata:
     name: cattle-keys-server
     namespace: cattle-system
   type: Opaque
@@ -86,6 +96,10 @@ addons: |-
       targetPort: 80
       protocol: TCP
       name: http
+    - port: 443
+      targetPort: 443
+      protocol: TCP
+      name: https
     selector:
       app: cattle
   ---
@@ -98,15 +112,18 @@ addons: |-
       nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"   # Max time in seconds for ws to remain shell window open
       nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"   # Max time in seconds for ws to remain shell window open
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"        # Disable redirect to ssl
   spec:
     rules:
-    - host: <FQDN>
+    - host: <FQDN>  # FQDN to access cattle server
       http:
         paths:
         - backend:
             serviceName: cattle-service
             servicePort: 80
+    tls:
+    - secretName: cattle-keys-ingress
+      hosts:
+      - <FQDN>      # FQDN to access cattle server
   ---
   kind: Deployment
   apiVersion: extensions/v1beta1
@@ -147,6 +164,8 @@ addons: |-
             periodSeconds: 10
           ports:
           - containerPort: 80
+            protocol: TCP
+          - containerPort: 443
             protocol: TCP
           volumeMounts:
           - mountPath: /etc/rancher/ssl
