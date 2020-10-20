@@ -25,7 +25,7 @@ Unlike in Monitoring & Alerting V1, both features are packaged in a single Helm 
 
 Monitoring V2 can only be configured on the cluster level. Project-level monitoring and alerting is no longer supported.
 
-For more information on how to configure Monitoring & Alerting V2, see the [docs for monitoring in Rancher v2.5](/rancher/v2.x/en/monitoring-alerting).
+For more information on how to configure Monitoring & Alerting V2, see the [docs for monitoring in Rancher v2.5](../).
 
 ### Changes to Role-based Access Control
 
