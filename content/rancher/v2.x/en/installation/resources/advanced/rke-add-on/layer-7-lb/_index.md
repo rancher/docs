@@ -69,8 +69,8 @@ Health checks can be executed on the `/healthz` endpoint of the node, this will 
 
 We have example configurations for the following load balancers:
 
-* [Amazon ALB configuration](alb/)
-* [NGINX configuration](nginx/)
+* [Amazon ELB configuration]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nlb/)
+* [NGINX configuration]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/)
 
 ## 3. Configure DNS
 
