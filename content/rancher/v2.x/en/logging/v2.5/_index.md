@@ -7,6 +7,7 @@ weight: 1
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Configuring the Logging Output for the Rancher Kubernetes Cluster](#configuring-the-logging-output-for-the-rancher-kubernetes-cluster)
 - [Enabling Logging for Rancher Managed Clusters](#enabling-logging-for-rancher-managed-clusters)
+- [Uninstall Logging](#uninstall-logging)
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
@@ -37,7 +38,24 @@ If you install Rancher using the Rancher CLI on an Linux OS,  the Rancher Helm c
 
 ### Enabling Logging for Rancher Managed Clusters
 
-If you have Enterprise Cluster Manager enabled, you can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+
+1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer.**
+1. Click **Apps.**
+1. Click the `rancher-logging` app.
+1. Scroll to the bottom of the Helm chart README and click **Install.**
+
+**Result:** The logging app is deployed in the `cattle-logging-system` namespace.
+
+### Uninstall Logging
+
+1. From the **Cluster Explorer,** click **Apps & Marketplace.**
+1. Click **Installed Apps.**
+1. Go to the `cattle-logging-system` namespace and check the boxes for `rancher-logging` and `rancher-logging-crd`.
+1. Click **Delete.**
+1. Confirm **Delete.**
+
+**Result** `rancher-logging` is uninstalled.
 
 ### Configuring the Logging Application
 
