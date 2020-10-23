@@ -4,7 +4,6 @@ shortTitle: Rancher v2.5
 weight: 1
 ---
 
-
 Using Rancher, you can quickly deploy leading open-source monitoring & alerting solutions such as [Prometheus](https://prometheus.io/), [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), and [Grafana](https://grafana.com/docs/grafana/latest/getting-started/what-is-grafana/) onto your cluster.
 
 Rancher's solution (powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) allows users to:
@@ -63,7 +62,7 @@ By viewing data that Prometheus scrapes from your cluster control plane, nodes, 
 
 [Grafana](https://grafana.com/grafana/) allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data driven culture.
 
-# Enabling Cluster Monitoring
+# Enable Monitoring
 
 As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 

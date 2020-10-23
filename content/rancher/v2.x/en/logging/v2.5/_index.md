@@ -7,6 +7,7 @@ weight: 1
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Configuring the Logging Output for the Rancher Kubernetes Cluster](#configuring-the-logging-output-for-the-rancher-kubernetes-cluster)
 - [Enabling Logging for Rancher Managed Clusters](#enabling-logging-for-rancher-managed-clusters)
+- [Uninstall Logging](#uninstall-logging)
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
@@ -37,7 +38,24 @@ If you install Rancher using the Rancher CLI on an Linux OS,  the Rancher Helm c
 
 ### Enabling Logging for Rancher Managed Clusters
 
-If you have Enterprise Cluster Manager enabled, you can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+
+1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer.**
+1. Click **Apps.**
+1. Click the `rancher-logging` app.
+1. Scroll to the bottom of the Helm chart README and click **Install.**
+
+**Result:** The logging app is deployed in the `cattle-logging-system` namespace.
+
+### Uninstall Logging
+
+1. From the **Cluster Explorer,** click **Apps & Marketplace.**
+1. Click **Installed Apps.**
+1. Go to the `cattle-logging-system` namespace and check the boxes for `rancher-logging` and `rancher-logging-crd`.
+1. Click **Delete.**
+1. Confirm **Delete.**
+
+**Result** `rancher-logging` is uninstalled.
 
 ### Configuring the Logging Application
 
@@ -272,11 +290,12 @@ spec:
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a ```toleration``` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
 
-**Why do we not schedule logging-related pods on Windows nodes?**
+**Are clusters with Windows worker nodes supported?**
 
-No parts of the logging stack are compatible with Windows Kubernetes nodes.
-For instance, if a logging pod is attempting to pull its image from a container registry, there may only be Linux-compatible images available.
-In this scenario, the pod would be stuck in an ```ImagePullBackOff``` status; and would eventually change to a ```ErrImagePull``` status.
+Yes, clusters with Windows worker support logging with some small caveats...
+
+1. Windows node logs are currently unable to be exported.
+2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not inherited from the ```logging-operator```.
 
 **Adding NodeSelector Settings and Tolerations for Custom Taints**
 

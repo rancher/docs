@@ -68,6 +68,6 @@ Rancher's integration with Istio was improved in Rancher v2.5.
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
-If you are using Rancher v2.5, refer to the CIS scan documentation [here.](./v2.5)
+If you are using Rancher v2.5, refer to the CIS scan documentation [here.]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.5)
 
-If you are using Rancher v2.4, refer to the CIS scan documentation [here.](./v2.4)
+If you are using Rancher v2.4, refer to the CIS scan documentation [here.]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.4)

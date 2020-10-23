@@ -6,7 +6,7 @@ weight: 19
 
 [Longhorn](https://longhorn.io/) is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes.
 
-Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the Rancher UI.
+Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the Rancher UI. You can learn more about its architecture [here.](https://longhorn.io/docs/1.0.2/concepts/)
 
 With Longhorn, you can:
 
@@ -18,6 +18,9 @@ With Longhorn, you can:
 - Schedule recurring snapshots of a volume, and schedule recurring backups to NFS or S3-compatible secondary storage
 - Restore volumes from backup
 - Upgrade Longhorn without disrupting persistent volumes
+
+<figcaption>Longhorn Dashboard</figcaption>
+![Longhorn Dashboard]({{<baseurl>}}/img/rancher/longhorn-screenshot.png)
 
 ### New in Rancher v2.5
 
@@ -60,3 +63,14 @@ The Longhorn project is available [here.](https://github.com/longhorn/longhorn)
 ### Documentation
 
 The Longhorn documentation is [here.](https://longhorn.io/docs/)
+
+### Architecture
+
+Longhorn creates a dedicated storage controller for each volume and synchronously replicates the volume across multiple replicas stored on multiple nodes.
+
+The storage controller and replicas are themselves orchestrated using Kubernetes.
+
+You can learn more about its architecture [here.](https://longhorn.io/docs/1.0.2/concepts/)
+
+<figcaption>Longhorn Architecture</figcaption>
+![Longhorn Architecture]({{<baseurl>}}/img/rancher/longhorn-architecture.svg)

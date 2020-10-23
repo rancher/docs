@@ -32,7 +32,7 @@ See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [DO Q
 Suggestions include:
     - `do_region` - DigitalOcean region, choose the closest instead of the default
     - `prefix` - Prefix for all created resources
-    - `droplet_size` - Droplet size used, minimum is `s-2vcpu-4gb` but `s-4vcpu-8g` could be used if within budget
+    - `droplet_size` - Droplet size used, minimum is `s-2vcpu-4gb` but `s-4vcpu-8gb` could be used if within budget
     - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
 1. Run `terraform init`.

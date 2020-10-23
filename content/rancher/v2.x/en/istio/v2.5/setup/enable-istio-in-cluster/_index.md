@@ -7,10 +7,7 @@ aliases:
 ---
 
 
-Only a user with the following [Kubernetes default roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster. 
-
- - `cluster-admin`
-
+>**Prerequisite:** Only a user with the `cluster-admin` [Kubernetes default role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster. 
 
 1. From the **Cluster Explorer**, navigate to available **Charts** in **Apps & Marketplace** 
 1. Select the Istio chart from the rancher provided charts
@@ -40,7 +37,7 @@ The first option is to add a new Network Policy in each of the namespaces where 
     matchLabels:
       app: istio-ingressgateway
 ``` 
-The second option is to move the `ingress-system` namespace to the `system` project, which by default is excluded from the network isolation
+The second option is to move the `istio-system` namespace to the `system` project, which by default is excluded from the network isolation
 
 ## Additonal Config Options
 

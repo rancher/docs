@@ -113,11 +113,11 @@ The following table lists each built-in custom project role available in Rancher
 | Manage Services                    | ✓             | ✓                             |               |
 | Manage Volumes                     | ✓             | ✓                             |               |
 | Manage Workloads                   | ✓             | ✓                             |               |
+| View Secrets                       | ✓             | ✓                             |               |
 | View Config Maps                   | ✓             | ✓                             | ✓             |
 | View Ingress                       | ✓             | ✓                             | ✓             |
 | View Project Members               | ✓             | ✓                             | ✓             |
 | View Project Catalogs              | ✓             | ✓                             | ✓             |
-| View Secrets                       | ✓             | ✓                             | ✓             |
 | View Service Accounts              | ✓             | ✓                             | ✓             |
 | View Services                      | ✓             | ✓                             | ✓             |
 | View Volumes                       | ✓             | ✓                             | ✓             |

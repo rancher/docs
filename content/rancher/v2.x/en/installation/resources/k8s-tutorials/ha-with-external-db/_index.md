@@ -17,7 +17,7 @@ For systems without direct internet access, refer to the air gap installation in
 
 # Prerequisites
 
-These instructions assume you have set up two nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.](../infra-for-ha-with-external-db)
+These instructions assume you have set up two nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/)
 
 # Installing Kubernetes
 

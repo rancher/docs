@@ -27,6 +27,30 @@ You can use RKE to [restore your cluster from backup]({{<baseurl>}}/rke/latest/e
 
 These [example scenarios]({{<baseurl>}}/rke/latest/en/etcd-snapshots/example-scenarios) for backup and restore are different based on your version of RKE.
 
+# How Snapshots Work
+
+For each etcd node in the cluster, the etcd cluster health is checked. If the node reports that the etcd cluster is healthy, a snapshot is created from it and optionally uploaded to S3.
+
+The snapshot is stored in `/opt/rke/etcd-snapshots`. If the directory is configured on the nodes as a shared mount, it will be overwritten. On S3, the snapshot will always be from the last node that uploads it, as all etcd nodes upload it and the last will remain.
+
+In the case when multiple etcd nodes exist, any created snapshot is created after the cluster has been health checked, so it can be considered a valid snapshot of the data in the etcd cluster.
+
+### Snapshot Naming
+
+The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
+
+An example one-time snapshot name is `rke_etcd_snapshot_2020-10-15T16:47:24+02:00`. An example recurring snapshot name is `2020-10-15T14:53:26Z_etcd`.
+
+### How Restoring from a Snapshot Works
+
+On restore, the following process is used:
+
+1. The snapshot is retrieved from S3, if S3 is configured.
+2. The snapshot is unzipped (if zipped).
+3. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
+4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
+5.  The cluster is restored and post-restore actions will be done in the cluster.
+
 ## Troubleshooting
 
 If you have trouble restoring your cluster, you can refer to the [troubleshooting]({{<baseurl>}}/rke/latest/en/etcd-snapshots/troubleshooting) page.

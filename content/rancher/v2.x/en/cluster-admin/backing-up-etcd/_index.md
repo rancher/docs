@@ -29,6 +29,9 @@ This section covers the following topics:
 
 {{% tabs %}}
 {{% tab "Rancher v2.4.0+" %}}
+
+### Snapshot Components
+
 When Rancher creates a snapshot, it includes three components: 
 
 - The cluster data in etcd
@@ -37,13 +40,50 @@ When Rancher creates a snapshot, it includes three components:
 
 Because the Kubernetes version is now included in the snapshot, it is possible to restore a cluster to a prior Kubernetes version.
 
-The multiple components of the snapshot allow you to select from the following options if you need to a cluster from a snapshot:
+The multiple components of the snapshot allow you to select from the following options if you need to restore a cluster from a snapshot:
 
 - **Restore just the etcd contents:** This restoration is similar to restoring to snapshots in Rancher prior to v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
 It's always recommended to take a new snapshot before any upgrades.
+
+### Generating the Snapshot from etcd Nodes
+
+For each etcd node in the cluster, the etcd cluster health is checked. If the node reports that the etcd cluster is healthy, a snapshot is created from it and optionally uploaded to S3.
+
+The snapshot is stored in `/opt/rke/etcd-snapshots`. If the directory is configured on the nodes as a shared mount, it will be overwritten. On S3, the snapshot will always be from the last node that uploads it, as all etcd nodes upload it and the last will remain.
+
+In the case when multiple etcd nodes exist, any created snapshot is created after the cluster has been health checked, so it can be considered a valid snapshot of the data in the etcd cluster.
+
+### Snapshot Naming Conventions
+
+The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
+
+When Rancher creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
+
+- `m` stands for manual
+- `r` stands for recurring
+- `l` stands for local
+- `s` stands for S3
+
+Some example snapshot names are:
+
+- c-9dmxz-rl-8b2cx
+- c-9dmxz-ml-kr56m
+- c-9dmxz-ms-t6bjb
+- c-9dmxz-rs-8gxc8
+
+### How Restoring from a Snapshot Works
+
+On restore, the following process is used:
+
+1. The snapshot is retrieved from S3, if S3 is configured.
+2. The snapshot is unzipped (if zipped).
+3. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
+4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
+5.  The cluster is restored and post-restore actions will be done in the cluster.
+
 {{% /tab %}}
 {{% tab "Rancher prior to v2.4.0" %}}
 When Rancher creates a snapshot, only the etcd data is included in the snapshot.
@@ -51,6 +91,43 @@ When Rancher creates a snapshot, only the etcd data is included in the snapshot.
 Because the Kubernetes version is not included in the snapshot, there is no option to restore a cluster to a different Kubernetes version.
 
 It's always recommended to take a new snapshot before any upgrades.
+
+### Generating the Snapshot from etcd Nodes
+
+For each etcd node in the cluster, the etcd cluster health is checked. If the node reports that the etcd cluster is healthy, a snapshot is created from it and optionally uploaded to S3.
+
+The snapshot is stored in `/opt/rke/etcd-snapshots`. If the directory is configured on the nodes as a shared mount, it will be overwritten. On S3, the snapshot will always be from the last node that uploads it, as all etcd nodes upload it and the last will remain.
+
+In the case when multiple etcd nodes exist, any created snapshot is created after the cluster has been health checked, so it can be considered a valid snapshot of the data in the etcd cluster.
+
+### Snapshot Naming Conventions
+
+The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
+
+When Rancher creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
+
+- `m` stands for manual
+- `r` stands for recurring
+- `l` stands for local
+- `s` stands for S3
+
+Some example snapshot names are:
+
+- c-9dmxz-rl-8b2cx
+- c-9dmxz-ml-kr56m
+- c-9dmxz-ms-t6bjb
+- c-9dmxz-rs-8gxc8
+
+### How Restoring from a Snapshot Works
+
+On restore, the following process is used:
+
+1. The snapshot is retrieved from S3, if S3 is configured.
+2. The snapshot is unzipped (if zipped).
+3. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
+4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
+5.  The cluster is restored and post-restore actions will be done in the cluster.
+
 {{% /tab %}}
 {{% /tabs %}}
 

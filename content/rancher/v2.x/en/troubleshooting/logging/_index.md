@@ -17,17 +17,17 @@ The following log levels are used in Rancher:
  * Configure debug log level
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | while read rancherpod; do kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $rancherpod -- loglevel --set debug; done
+$ kubectl -n cattle-system get pods -l app=rancher --no-headers -o custom-columns=name:.metadata.name | while read rancherpod; do kubectl -n cattle-system exec $rancherpod -c rancher -- loglevel --set debug; done
 OK
 OK
 OK
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system logs -l app=rancher
+$ kubectl -n cattle-system logs -l app=rancher -c rancher
 ```
 
  * Configure info log level
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | awk '{ print $1 }' | while read rancherpod; do kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $rancherpod -- loglevel --set info; done
+$ kubectl -n cattle-system get pods -l app=rancher --no-headers -o custom-columns=name:.metadata.name | while read rancherpod; do kubectl -n cattle-system exec $rancherpod -c rancher -- loglevel --set info; done
 OK
 OK
 OK
