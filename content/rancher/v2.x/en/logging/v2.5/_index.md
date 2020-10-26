@@ -5,12 +5,10 @@ weight: 1
 ---
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
-- [Configuring the Logging Output for the Rancher Kubernetes Cluster](#configuring-the-logging-output-for-the-rancher-kubernetes-cluster)
 - [Enabling Logging for Rancher Managed Clusters](#enabling-logging-for-rancher-managed-clusters)
 - [Uninstall Logging](#uninstall-logging)
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
-
 
 ### Changes in Rancher v2.5
 
@@ -29,12 +27,6 @@ The following figure from the [Banzai documentation](https://banzaicloud.com/doc
 <figcaption>How the Banzai Cloud Logging Operator Works with Fluentd and Fluent Bit</figcaption>
 
 ![How the Banzai Cloud Logging Operator Works with Fluentd]({{<baseurl>}}/img/rancher/banzai-cloud-logging-operator.png)
-
-### Configuring the Logging Output for the Rancher Kubernetes Cluster
-
-If you install Rancher as a Helm chart, you'll configure the Helm chart options to select a logging output for all the logs in the local Kubernetes cluster.
-
-If you install Rancher using the Rancher CLI on an Linux OS,  the Rancher Helm chart will be installed on a Kubernetes cluster with default options. Then when the Rancher UI is available, you'll enable the logging app from the Apps section of the UI. Then during the process of installing the logging application, you will configure the logging output.
 
 ### Enabling Logging for Rancher Managed Clusters
 
