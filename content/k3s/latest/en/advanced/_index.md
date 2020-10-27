@@ -311,7 +311,7 @@ As of release v1.17.4+k3s1, experimental support for SELinux has been added to K
 {{% tabs %}}
 {{% tab "automatic installation" %}}
 As of release v1.19.3+k3s2, the [install script]({{<baseurl>}}/k3s/latest/en/installation/install-options/#installation-script-options) will automatically install the SELinux RPM from the Rancher RPM repository if on a compatible system if not performing an air-gapped install. Automatic installation can be skipped by setting `INSTALL_K3S_SKIP_SELINUX_RPM=true`.
-{{%/tab%}}
+{{% /tab %}}
 {{% tab "manual installation" %}}
 The necessary policies can be installed with the following commands:
 ```
@@ -321,7 +321,7 @@ yum install -y https://rpm.rancher.io/k3s/latest/common/centos/7/noarch/k3s-seli
 
 To force the install script to log a warning rather than fail, you can set the following environment variable: `INSTALL_K3S_SELINUX_WARN=true`.
 
-{{%/tab%}}
+{{% /tab %}}
 {{% /tabs %}}
 
 The way that SELinux enforcement is enabled or disabled depends on the K3s version. Prior to v1.19.x, SELinux enablement for the builtin containerd was automatic but could be disabled by passing `--disable-selinux`. With v1.19.x and beyond, enabling SELinux must be affirmatively configured via the `--selinux` flag or config file entry. Servers and agents that specify both the `--selinux` and (deprecated) `--disable-selinux` flags will fail to start.
