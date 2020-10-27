@@ -306,13 +306,23 @@ sudo reboot
 
 # Experimental SELinux Support
 
-As of release v1.17.4+k3s1, experimental support for SELinux has been added to K3s's embedded containerd. If you are installing K3s on a system where SELinux is enabled by default (such as CentOS), you must ensure the proper SELinux policies have been installed. The [install script]({{<baseurl>}}/k3s/latest/en/installation/install-options/#installation-script-options) will fail if they are not. The necessary policies can be installed with the following commands:
+As of release v1.17.4+k3s1, experimental support for SELinux has been added to K3s's embedded containerd. If you are installing K3s on a system where SELinux is enabled by default (such as CentOS), you must ensure the proper SELinux policies have been installed. 
+
+{{% tabs %}}
+{{% tab "automatic installation" %}}
+As of release v1.19.3+k3s2, the [install script]({{<baseurl>}}/k3s/latest/en/installation/install-options/#installation-script-options) will automatically install the SELinux RPM from the Rancher RPM repository if on a compatible system if not performing an air-gapped install. Automatic installation can be skipped by setting `INSTALL_K3S_SKIP_SELINUX_RPM=true`.
+{{% /tab %}}
+{{% tab "manual installation" %}}
+The necessary policies can be installed with the following commands:
 ```
 yum install -y container-selinux selinux-policy-base
-rpm -i https://rpm.rancher.io/k3s-selinux-0.1.1-rc1.el7.noarch.rpm
+yum install -y https://rpm.rancher.io/k3s/latest/common/centos/7/noarch/k3s-selinux-0.2-1.el7_8.noarch.rpm
 ```
 
 To force the install script to log a warning rather than fail, you can set the following environment variable: `INSTALL_K3S_SELINUX_WARN=true`.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 The way that SELinux enforcement is enabled or disabled depends on the K3s version. Prior to v1.19.x, SELinux enablement for the builtin containerd was automatic but could be disabled by passing `--disable-selinux`. With v1.19.x and beyond, enabling SELinux must be affirmatively configured via the `--selinux` flag or config file entry. Servers and agents that specify both the `--selinux` and (deprecated) `--disable-selinux` flags will fail to start.
 
