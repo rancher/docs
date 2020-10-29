@@ -5,14 +5,14 @@ weight: 1
 ---
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
-- [Configuring the Logging Output for the Rancher Kubernetes Cluster](#configuring-the-logging-output-for-the-rancher-kubernetes-cluster)
 - [Enabling Logging for Rancher Managed Clusters](#enabling-logging-for-rancher-managed-clusters)
 - [Uninstall Logging](#uninstall-logging)
+- [Role-based Access Control](#role-based-access-control)
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
 
-### Changes in Rancher v2.5
+# Changes in Rancher v2.5
 
 The following changes were introduced to logging in Rancher v2.5:
 
@@ -30,13 +30,7 @@ The following figure from the [Banzai documentation](https://banzaicloud.com/doc
 
 ![How the Banzai Cloud Logging Operator Works with Fluentd]({{<baseurl>}}/img/rancher/banzai-cloud-logging-operator.png)
 
-### Configuring the Logging Output for the Rancher Kubernetes Cluster
-
-If you install Rancher as a Helm chart, you'll configure the Helm chart options to select a logging output for all the logs in the local Kubernetes cluster.
-
-If you install Rancher using the Rancher CLI on an Linux OS,  the Rancher Helm chart will be installed on a Kubernetes cluster with default options. Then when the Rancher UI is available, you'll enable the logging app from the Apps section of the UI. Then during the process of installing the logging application, you will configure the logging output.
-
-### Enabling Logging for Rancher Managed Clusters
+# Enabling Logging for Rancher Managed Clusters
 
 You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
 
@@ -47,7 +41,7 @@ You can enable the logging for a Rancher managed cluster by going to the Apps pa
 
 **Result:** The logging app is deployed in the `cattle-logging-system` namespace.
 
-### Uninstall Logging
+# Uninstall Logging
 
 1. From the **Cluster Explorer,** click **Apps & Marketplace.**
 1. Click **Installed Apps.**
@@ -57,7 +51,27 @@ You can enable the logging for a Rancher managed cluster by going to the Apps pa
 
 **Result** `rancher-logging` is uninstalled.
 
-### Configuring the Logging Application
+# Role-based Access Control
+
+Rancher logging has two roles, `logging-admin` and `logging-view`.
+
+`logging-admin` allows users full access to namespaced flows and outputs. 
+
+The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs. 
+
+Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster. 
+
+In Rancher, the cluster administrator role is the only role with full access to all rancher-logging resources. 
+
+Cluster members are not able to edit or read any logging resources. 
+
+Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. Project owners and project members require at least 1 namespace in their project to use logging.  If they do not have at least one namespace in their project they may not see the logging button in the top nav dropdown. 
+
+# Configuring the Logging Application
+
+To configure the logging application, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging.**
+
+### Overview of Logging Custom Resources
 
 The following Custom Resource Definitions are used to configure logging:
 
@@ -68,11 +82,7 @@ According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-
 
 > You can define `outputs` (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and `flows` that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
-**RBAC**
-
-Rancher logging has two roles, `logging-admin` and `logging-view`. `logging-admin` allows users full access to namespaced flows and outputs.  The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs.  Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster.  Cluster admin is the only role with full access to all rancher-logging resources.  Cluster members are not able to edit or read any logging resources.  Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. Project owners and project members require at least 1 namespace in their project to use logging.  If they do not have at least one namespace in their project they may not see the logging button in the top nav dropdown. 
-
-**Examples**
+### Examples
 
 Let's say you wanted to send all logs in your cluster to an elasticsearch cluster.
 
@@ -257,7 +267,7 @@ spec:
 
 if we break down what is happening, first we create a deployment of a container that has the additional syslog plugin and accepts logs forwarded from another fluentd.  Next we create an output configured as a forwarder to our deployment. The deployment fluentd will then forward all logs to the configured syslog destination.  
 
-### Working with Taints and Tolerations
+# Working with Taints and Tolerations
 
 "Tainting" a Kubernetes node causes pods to repel running on that node.
 Unless the pods have a ```toleration``` for that node's taint, they will run on other nodes in the cluster.
@@ -265,7 +275,7 @@ Unless the pods have a ```toleration``` for that node's taint, they will run on 
 Using ```nodeSelector``` gives pods an affinity towards certain nodes.
 Both provide choice for the what node(s) the pod will run on.
 
-**Default Implementation in Rancher's Logging Stack**
+### Default Implementation in Rancher's Logging Stack
 
 By default, Rancher taints all Linux nodes with ```cattle.io/os=linux```, and does not taint Windows nodes.
 The logging stack pods have ```tolerations``` for this taint, which enables them to run on Linux nodes.
@@ -290,14 +300,14 @@ spec:
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a ```toleration``` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
 
-**Are clusters with Windows worker nodes supported?**
+### Windows Support
 
-Yes, clusters with Windows worker support logging with some small caveats...
+Clusters with Windows worker support logging with some small caveats:
 
 1. Windows node logs are currently unable to be exported.
 2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not inherited from the ```logging-operator```.
 
-**Adding NodeSelector Settings and Tolerations for Custom Taints**
+### Adding NodeSelector Settings and Tolerations for Custom Taints
 
 If you would like to add your own ```nodeSelector``` settings, or if you would like to add ```tolerations``` for additional taints, you can pass the following to the chart's values.
 

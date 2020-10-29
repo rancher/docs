@@ -1,6 +1,8 @@
 ---
 title: Tips for Setting Up Containers
 weight: 100
+aliases:
+  - /rancher/v2.x/en/best-practices/containers
 ---
 
 Running well built containers can greatly impact the overall performance and security of your environment.
