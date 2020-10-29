@@ -1,6 +1,8 @@
 ---
 title: Tips for Running Rancher
 weight: 100
+aliases:
+  - /rancher/v2.x/en/best-practices/deployment-types
 ---
 
 A high-availability Kubernetes installation, defined as an installation of Rancher on a Kubernetes cluster with at least three nodes, should be used in any production installation of Rancher, as well as any installation deemed "important." Multiple Rancher instances running on multiple nodes ensure high availability that cannot be accomplished with a single node environment.
