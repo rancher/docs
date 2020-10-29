@@ -1,9 +1,9 @@
 ---
-title: Rancher Deployment Strategies
+title: Rancher Deployment Strategy
 weight: 100
 ---
 
-There are two recommended deployment strategies. Each one has its own pros and cons. Read more about which one would fit best for your use case:
+There are two recommended deployment strategies for a Rancher server that manages downstream Kubernetes clusters. Each one has its own pros and cons. Read more about which one would fit best for your use case:
 
 * [Hub and Spoke](#hub-and-spoke)
 * [Regional](#regional)
