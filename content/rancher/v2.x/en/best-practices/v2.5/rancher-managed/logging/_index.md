@@ -3,9 +3,15 @@ title: Logging Best Practices
 weight: 1
 ---
 In this guide, we recommend best practices for cluster-level logging and application logging.
-# Pre-2.5 Logging, and post-2.5
 
-Logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
+- [Changes in Logging in Rancher v2.5](#changes-in-logging-in-rancher-v2-5)
+- [Cluster-level Logging](#cluster-level-logging)
+- [Application Logging](#application-logging)
+- [General Best Practices](#general-best-practices)
+
+# Changes in Logging in Rancher v2.5
+
+Prior to Rancher v2.5, logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
 
 Logging in 2.5 has been completely overhauled to provide a more flexible experience for log aggregation. With the new logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options. 
 
@@ -76,7 +82,7 @@ spec:
 ```
 
 
-## General Best Practices
+# General Best Practices
 
 - Where possible, output structured log entries (e.g. `syslog`, JSON). This makes handling of the log entry easier as there are already parsers written for these formats. 
 - Try to provide the name of the application that is creating the log entry, in the entry itself. This can make troubleshooting easier as Kubernetes objects do not always carry the name of the application as the object name. For instance, a pod ID may be something like `myapp-098kjhsdf098sdf98` which does not provide much information about the application running inside the container. 

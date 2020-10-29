@@ -7,11 +7,19 @@ Configuring sensible monitoring and alerting rules is vital for running any prod
 
 The [Rancher Documentation]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/) describes in detail, how you can set up a complete Prometheus and Grafana stack. Out of the box this will scrape monitoring data from all system and Kubernetes components in your cluster and provide sensible dashboards and alerts for them to get started. But for a reliable setup, you also need to monitor your own workloads and adapt Prometheus and Grafana to your own specific use cases and cluster sizes. This document aims to give you best practices for this.
 
-## What to monitor
+- [What to Monitor](#what-to-monitor)
+- [Configuring Prometheus Resource Usage](#configuring-prometheus-resource-usage)
+- [Scraping Custom Workloads](#scraping-custom-workloads)
+- [Monitoring in a (Micro)Service Architecture](#monitoring-in-a-micro-service-architecture)
+- [Real User Monitoring](#real-user-monitoring)
+- [Security Monitoring](#security-monitoring)
+- [Setting up Alerts](#setting-up-alerts)
+
+# What to Monitor
 
 Kubernetes itself, as well as applications running inside of it, form a distributed system where different components interact with each other. For the whole system and each individual component, you have to ensure performance, availability, reliability and scalability. A good resource with more details and information is Google's free [Site Reliability Engineering Book](https://landing.google.com/sre/sre-book/), especially the chapter about [Monitoring distributed systems](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/).
 
-## Configuring Prometheus Resource Usage
+# Configuring Prometheus Resource Usage
 
 When installing the integrated monitoring stack, Rancher allows to configure several settings that are dependent on the size of your cluster and the workloads running in it. This chapter covers these in more detail.
 
@@ -49,13 +57,13 @@ You can find more information about how to calculate the necessary memory in thi
 
 The amount of necessary CPUs correlate with the amount of queries you are performing.
 
-### Federation and long-term Storage
+### Federation and Long-term Storage
 
 Prometheus is not meant to store metrics for a long amount of time, but should only be used for short term storage.
 
 In order to store some, or all metrics for a long time, you can leverage Prometheus' [remote read/write](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations) capabilities to connect it to storage systems like [Thanos](https://thanos.io/), [InfluxDB](https://www.influxdata.com/), [M3DB](https://www.m3db.io/), or others. You can find an example setup in this [blog post](https://rancher.com/blog/2020/prometheus-metric-federation).
 
-## Scraping Custom Workloads
+# Scraping Custom Workloads
 
 While the integrated Rancher Monitoring already scrapes system metrics from a cluster's nodes and system components, the custom workloads that you deploy on Kubernetes should also be scraped for data. For that you can configure Prometheus to do an HTTP request to an endpoint of your applications in a certain interval. These endpoints should then return their metrics in a Prometheus format.
 
@@ -83,23 +91,23 @@ To still get metrics for these use cases, you can set up [prometheus-pushgateway
 
 Sometimes it is useful to monitor workloads from the outside. For this, you can use the [Prometheus blackbox-exporter](https://github.com/prometheus/blackbox_exporter) which allows probing any kind of endpoint over HTTP, HTTPS, DNS, TCP and ICMP.
 
-## Monitoring in a (Micro)Service Architecture
+# Monitoring in a (Micro)Service Architecture
 
 If you have a (micro)service architecture where multiple individual workloads within your cluster are communicating with each other, it is really important to have detailed metrics and traces about this traffic to understand how all these workloads are communicating with each other and where a problem or bottleneck may be.
 
 Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.x/en/cluster-admin/tools/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
 
-## Real User Monitoring
+# Real User Monitoring
 
 Monitoring the availability and performance of all your internal workloads is vitally important to run stable, reliable and fast applications. But these metrics only show you parts of the picture. To get a complete view it is also necessary to know how your end users are actually perceiving it. For this you can look into various [Real user monitoring solutions](https://en.wikipedia.org/wiki/Real_user_monitoring).
 
-## Security Monitoring
+# Security Monitoring
 
 In addition to monitoring workloads to detect performance, availability or scalability problems, the cluster and the workloads running into it should also be monitored for potential security problems. A good starting point is to frequently run and alert on [CIS Scans]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.5/) which check if the cluster is configured according to security best practices.
 
 For the workloads, you can have a look at Kubernetes and Container security solutions like [Falko](https://falco.org/), [Aqua Kubernetes Security](https://www.aquasec.com/solutions/kubernetes-container-security/), [SysDig](https://sysdig.com/).
 
-## Setting up Alerts
+# Setting up Alerts
 
 Getting all the metrics into a monitoring systems and visualizing them in dashboards is great, but you also want to be pro-actively alerted if something goes wrong.
 
