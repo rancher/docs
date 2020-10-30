@@ -8,7 +8,7 @@ weight: 5
 
 - [Operating System](#operating-system)
     - [General Linux Requirements](#general-linux-requirements)
-    - [Red Hat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
+    - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
 
         - [Using upstream Docker](#using-upstream-docker)
         - [Using RHEL/CentOS packaged Docker](#using-rhel-centos-packaged-docker)
@@ -98,9 +98,9 @@ xt_tcpudp |
 net.bridge.bridge-nf-call-iptables=1
 ```
 
-### Red Hat Enterprise Linux (RHEL) / Oracle Enterprise Linux (OEL) / CentOS
+### Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS
 
-If using Red Hat Enterprise Linux, Oracle Enterprise Linux or CentOS, you cannot use the `root` user as [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
+If using Red Hat Enterprise Linux, Oracle Linux or CentOS, you cannot use the `root` user as [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
 
 #### Using upstream Docker
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
