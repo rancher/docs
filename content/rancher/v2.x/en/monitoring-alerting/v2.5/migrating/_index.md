@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/migrating
 ---
 
-If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no upgrade path for switching to the new monitoring/alerting solution. You will need to disable monitoring/alerting/notifiers in the same way it was disabled in Rancher v2.4 before deploying the new monitoring solution via Cluster Explorer. 
+If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. You will need to disable monitoring/alerting/notifiers in the same way it was disabled in Rancher v2.4 before deploying the new monitoring solution via Cluster Explorer. 
 
 ### Monitoring Prior to Rancher v2.5
 
@@ -32,3 +32,66 @@ For more information on how to configure Monitoring & Alerting V2, see [this pag
 Project owners and members no longer get access to Grafana or Prometheus by default. If view-only users had access to Grafana, they would be able to see data from any namespace. For Kiali, any user can edit things they don’t own in any namespace.
 
 For more information about role-based access control in `rancher-monitoring`, refer to [this page.](../rbac)
+
+### Migrating from Monitoring V1 to Monitoring V2
+
+While there is no automatic migration available, it is possible to manually migrate custom Grafana dashboards and alerts that were created in Monitoring V1 to Monitoring V2.
+
+#### Migrating Grafana Dashboards
+
+You can migrate any dashboard added to Grafana in Monitoring V1 to Monitoring V2. In Monitoring V1 you can export an existing dashboard like this:
+
+* Sign into Grafana
+* Navigate to the dashboard you want to export
+* Go to the dashboard settings
+* Copy the [JSON Model](https://grafana.com/docs/grafana/latest/dashboards/json-model/)
+
+In the JSON Model, change all `datasource` fields from `RANCHER_MONITORING` to `Prometheus`. You can easily do this by replacing all occurrences of `"datasource": "RANCHER_MONITORING"` with `"datasource": "Prometheus"`.
+
+Now you can either [import](https://grafana.com/docs/grafana/latest/dashboards/export-import/) this JSON Model into the Monitoring V2 Grafana UI, or you can provide this with a ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: custom-dashboard
+  namespace: cattle-dashboards
+  labels:
+    grafana_dashboard: "1"
+data:
+  custom-dashboard.json: |
+    { 
+      ... 
+    }
+```
+
+#### Migrating Alerts
+
+It is only possible to directly migrate expression-based alerts to Monitoring V2. Fortunately, the event-based alerts that could be set up to alert on system component, node or workload events, are already covered out-of-the-box by the alerts that are part of Monitoring V2. So it is not necessary to migrate them.
+
+To migrate the following expression alert
+
+{{< img "/img/rancher/monitoring/migration/alert_2.4_to_2.5_source.png" "">}}
+
+you have to create a PrometheusRule configuration like this in any namespace
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: custom-rules
+  namespace: default
+spec:
+  groups:
+    - name: custom.rules
+      rules:
+        - alert: Custom Expression Alert
+          expr: prometheus_query > 5
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: "The result of prometheus_query has been larger than 5 for 5m. Current value {{ $value }}"
+```
+
+For more details on how to configure PrometheusRules in Monitoring V2 see [this page]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration).
