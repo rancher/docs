@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/migrating
 ---
 
-If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. You will need to disable monitoring/alerting/notifiers in the same way it was disabled in Rancher v2.4 before deploying the new monitoring solution via Cluster Explorer. 
+If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.
 
 ### Monitoring Prior to Rancher v2.5
 
@@ -48,7 +48,8 @@ You can migrate any dashboard added to Grafana in Monitoring V1 to Monitoring V2
 
 In the JSON Model, change all `datasource` fields from `RANCHER_MONITORING` to `Prometheus`. You can easily do this by replacing all occurrences of `"datasource": "RANCHER_MONITORING"` with `"datasource": "Prometheus"`.
 
-Now you can either [import](https://grafana.com/docs/grafana/latest/dashboards/export-import/) this JSON Model into the Monitoring V2 Grafana UI, or you can provide this with a ConfigMap:
+If Grafana is backed by a persistent volume, you can now [import](https://grafana.com/docs/grafana/latest/dashboards/export-import/) this JSON Model into the Monitoring V2 Grafana UI.
+It is recommended though to provide the dashboard to Grafana with a ConfigMap:
 
 ```yaml
 apiVersion: v1
@@ -64,6 +65,8 @@ data:
       ... 
     }
 ```
+
+Once this ConfigMap is created, the dashboard will automatically be added to Grafana.
 
 #### Migrating Alerts
 
