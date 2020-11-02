@@ -111,8 +111,10 @@ metadata:
     name: "all-logs"
     namespace: "cattle-logging-system"
 spec:
+  match:
+    - select: {}
   globalOutputRefs:
-    - "example-es
+    - "example-es"
 ``` 
 
 We should now see our configured index with logs in it.
@@ -249,6 +251,8 @@ metadata:
   name: all-logs
   namespace: cattle-logging-system
 spec:
+  match:
+    - select: {}
   globalOutputRefs:
     - syslog
 ---
