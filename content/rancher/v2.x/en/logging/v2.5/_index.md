@@ -111,6 +111,8 @@ metadata:
     name: "all-logs"
     namespace: "cattle-logging-system"
 spec:
+  match:
+    - select: {}
   globalOutputRefs:
     - "example-es
 ``` 
@@ -249,6 +251,8 @@ metadata:
   name: all-logs
   namespace: cattle-logging-system
 spec:
+  match:
+    - select: {}
   globalOutputRefs:
     - syslog
 ---
