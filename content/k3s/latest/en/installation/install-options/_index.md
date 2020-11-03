@@ -79,6 +79,8 @@ For details on configuring the K3s agent, refer to the [agent configuration refe
 
 ### Configuration File
 
+_Available as of v1.19.1+k3s1_
+
 In addition to configuring K3s with environment variables and CLI arguments, K3s can also use a config file.
 
 By default, values present in a YAML file located at `/etc/rancher/k3s/config.yaml` will be used on install.
