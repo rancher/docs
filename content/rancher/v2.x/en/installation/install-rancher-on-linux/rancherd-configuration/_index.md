@@ -96,7 +96,7 @@ It can be run with the following options:
 
 | Option | Description |
 |--------|-------------|
-| `--config FILE, -c FILE` | Load configuration from FILE (default: "/etc/rancher/rancherd/config.yaml") |
+| `--config FILE, -c FILE` | Load configuration from FILE (default: "/etc/rancher/rke2/config.yaml") |
 
 ### Logging
 
@@ -200,7 +200,7 @@ It can be run with the following options:
 |--------|-------------|
 | `--container-runtime-endpoint value`  | Disable embedded containerd and use alternative CRI implementation |
 | `--snapshotter value`   | Override default containerd snapshotter (default: "overlayfs") |
-|  `--private-registry value`    | Private registry configuration file (default: "/etc/rancher/rancherd/registries.yaml") |
+|  `--private-registry value`    | Private registry configuration file (default: "/etc/rancher/rke2/registries.yaml") |
 
 ### Agent Networking
 
@@ -242,7 +242,7 @@ The following options are available.
 
 | Option | Description |
 |--------|-------------|
-|   `--config FILE, -c FILE`  | Load configuration from FILE (default: "/etc/rancher/rancherd/config.yaml") |
+|   `--config FILE, -c FILE`  | Load configuration from FILE (default: "/etc/rancher/rke2/config.yaml") |
 
 ### Data
 
@@ -280,7 +280,7 @@ The following options are available.
 |--------|-------------|
 | `--container-runtime-endpoint value`  | Disable embedded containerd and use alternative CRI implementation |
 |   `--snapshotter value` | Override default containerd snapshotter (default: "overlayfs") |
-|  `--private-registry value`   | Private registry configuration file (default: "/etc/rancher/rancherd/registries.yaml") |
+|  `--private-registry value`   | Private registry configuration file (default: "/etc/rancher/rke2/registries.yaml") |
 
 ### Agent Networking
 
