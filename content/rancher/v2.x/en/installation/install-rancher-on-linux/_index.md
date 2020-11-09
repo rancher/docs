@@ -15,6 +15,7 @@ RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then
 - [Part II: High Availability](#part-ii-high-availability)
 - [Upgrades](#upgrades)
 - [Configuration](#configuration)
+- [Uninstall](#uninstall)
 - [RKE2 Documentation](#rke2-documentation)
 
 # About RancherD Installs
@@ -74,12 +75,12 @@ To avoid certificate errors with the fixed registration address, you should laun
 
 This option adds an additional hostname or IP as a Subject Alternative Name in the server's TLS cert, and it can be specified as a list if you would like to access the Kubernetes cluster via both the IP and the hostname.
 
-Create the RancherD config file at `/etc/rancher/rancherd/config.yaml`:
+Create the RancherD config file at `/etc/rancher/rke2/config.yaml`:
 
 ```yaml
 token: my-shared-secret
 tls-san:
-  - my-fixed-registration-address.com
+  - https://my-fixed-registration-address.com
   - another-kubernetes-domain.com
 ```
 
@@ -133,11 +134,10 @@ Now, you can start issuing `kubectl` commands. Use the following commands to ver
 
 ```
 kubectl get daemonset rancher -n cattle-system
-
 kubectl get pod -n cattle-system
 ```
 
-### 6. Set the initial Rancher password
+### 5. Set the initial Rancher password
 
 Once the `rancher` pod is up and running, run the following:
 
@@ -161,7 +161,7 @@ When following these steps, you should still be logged in as root.
 
 Additional server nodes are launched much like the first, except that you must specify the `server` and `token` parameters so that they can successfully connect to the initial server node.
 
-Here is an example of what the RancherD config file would look like for additional server nodes. By default, this config file is expected to be located at `/etc/rancher/rancherd/config.yaml`.
+Here is an example of what the RancherD config file would look like for additional server nodes. By default, this config file is expected to be located at `/etc/rancher/rke2/config.yaml`.
 
 ```yaml
 server: https://my-fixed-registration-address.com:9345
@@ -202,6 +202,14 @@ For information on upgrades and rollbacks, refer to [this page.](./upgrades)
 # Configuration
 
 For information on how to configure certificates, node taints, Rancher Helm chart options, or RancherD CLI options, refer to the [configuration reference.](./rancherd-configuration)
+
+# Uninstall
+
+To uninstall RancherD from your system, run the command below. This will shut down the process, remove the RancherD binary, and clean up files used by RancherD.
+
+```
+rancherd-uninstall.sh
+```
 
 # RKE2 Documentation
 
