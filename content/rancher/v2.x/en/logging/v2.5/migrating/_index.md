@@ -12,17 +12,7 @@ Among the many features and changes in the new logging functionality is the remo
 
 ## Installation
 
-To install logging in Rancher v2.5+, use the following steps:
-
-1. Open the Rancher dashboard. This can be done by clicking the _Cluster Explorer_ button within the cluster context, or from the global page in the _Cluster Manager_.
-
-2. Once within the _Cluster Explorer_, navigate to _Apps & Marketplace_ from the dropdown in the upper-left corner of the dashboard. 
-
-3. Once in the _Apps & Marketplace_ section, locate the "rancher-logging" chart. It is available as part of the "Rancher" repository, installed by default in Rancher v2.5+:
-
-    ![rancher logging chart image](../.../../../../../../../../assets/img/rancher/logging/migration/rancher_logging.png)
-
-4. Scroll to the bottom of the page and click _Install_. 
+To install logging in Rancher v2.5+, refer to [installation instructions]({{<baseurl>}}/rancher/v2.x/en/logging/v2.5/#enabling-logging-for-rancher-managed-clusters).
 
 ## Terminology & Familiarity
 
