@@ -63,7 +63,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
     ```plain
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
-    helm fetch jetstack/cert-manager --version v0.12.0
+    helm fetch jetstack/cert-manager --version v1.0.1
     helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
     ```
 
