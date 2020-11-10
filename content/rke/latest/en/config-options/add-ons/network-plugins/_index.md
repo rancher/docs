@@ -43,6 +43,8 @@ network:
     options:
         canal_iface: eth1
         canal_flannel_backend_type: vxlan
+        # must be 4789 if using Flannel VxLan mode in the cluster with Windows nodes
+        canal_flannel_backend_port: "8472"
 ```
 
 #### Canal Interface
@@ -58,6 +60,8 @@ network:
     options:
         flannel_iface: eth1
         flannel_backend_type: vxlan
+        # must be 4789 if using VxLan mode in the cluster with Windows nodes
+        flannel_backend_port: "8472"
 ```
 
 #### Flannel Interface
