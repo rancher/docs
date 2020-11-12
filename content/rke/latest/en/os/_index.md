@@ -8,7 +8,7 @@ weight: 5
 
 - [Operating System](#operating-system)
     - [General Linux Requirements](#general-linux-requirements)
-    - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-oel-centos)
+    - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-ol-centos)
 
         - [Using upstream Docker](#using-upstream-docker)
         - [Using RHEL/CentOS packaged Docker](#using-rhel-centos-packaged-docker)
