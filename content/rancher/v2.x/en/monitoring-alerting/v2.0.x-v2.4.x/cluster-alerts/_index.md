@@ -90,7 +90,7 @@ This alert type monitor for events that affect one of the Kubernetes master comp
 
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
-    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+    - **Repeat Wait Time**: How long to wait before re-sending a given alert that has already been sent, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="resource-event" label="Resource Event Alerts" %}}
@@ -125,7 +125,7 @@ This alert type monitors for specific events that are thrown from a resource typ
 
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
-    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+    - **Repeat Wait Time**: How long to wait before re-sending a given alert that has already been sent, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="node" label="Node Alerts" %}}
@@ -152,7 +152,7 @@ This alert type monitors for events that occur on a specific node.
 
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
-    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+    - **Repeat Wait Time**: How long to wait before re-sending a given alert that has already been sent, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="node-selector" label="Node Selector Alerts" %}}
@@ -179,7 +179,7 @@ This alert type monitors for events that occur on any node on marked with a labe
 
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
-    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+    - **Repeat Wait Time**: How long to wait before re-sending a given alert that has already been sent, default to 1 hour.
 
 {{% /accordion %}}
 {{% accordion id="cluster-expression" label="Metric Expression Alerts" %}}
@@ -224,7 +224,7 @@ This alert type monitors for the overload from Prometheus expression querying, i
 
     - **Group Wait Time**: How long to wait to buffer alerts of the same group before sending initially, default to 30 seconds.
     - **Group Interval Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 30 seconds.
-    - **Repeat Wait Time**: How long to wait before sending an alert that has been added to a group which contains already fired alerts, default to 1 hour.
+    - **Repeat Wait Time**: How long to wait before re-sending a given alert that has already been sent, default to 1 hour.
 
 {{% /accordion %}}
 
