@@ -37,6 +37,15 @@ For more information about role-based access control in `rancher-monitoring`, re
 
 While there is no automatic migration available, it is possible to manually migrate custom Grafana dashboards and alerts that were created in Monitoring V1 to Monitoring V2.
 
+Before you can install Monitoring V2, Monitoring V1 needs to be uninstalled completely. In order to uninstall Monitoring V1:
+
+* Remove all cluster and project specific alerts and alerts groups
+* Remove all notifiers
+* Disable all project monitoring installations under Cluster -> Project -> Tools -> Monitoring
+* Ensure that all project-monitoring apps in all projects have been removed and are not recreated after a few minutes
+* Disable the cluster monitoring installation under Cluster -> Tools -> Monitoring
+* Ensure that the cluster-monitoring app and the monitoring-operator app in the System project have been removed and are not recreated after a few minutes
+
 #### Migrating Grafana Dashboards
 
 You can migrate any dashboard added to Grafana in Monitoring V1 to Monitoring V2. In Monitoring V1 you can export an existing dashboard like this:
@@ -49,7 +58,7 @@ You can migrate any dashboard added to Grafana in Monitoring V1 to Monitoring V2
 In the JSON Model, change all `datasource` fields from `RANCHER_MONITORING` to `Prometheus`. You can easily do this by replacing all occurrences of `"datasource": "RANCHER_MONITORING"` with `"datasource": "Prometheus"`.
 
 If Grafana is backed by a persistent volume, you can now [import](https://grafana.com/docs/grafana/latest/dashboards/export-import/) this JSON Model into the Monitoring V2 Grafana UI.
-It is recommended though to provide the dashboard to Grafana with a ConfigMap:
+It is recommended to provide the dashboard to Grafana with a ConfigMap in the `cattle-dashboards` namespace that has the label `grafana_dashboard: "1"`:
 
 ```yaml
 apiVersion: v1
@@ -76,7 +85,7 @@ To migrate the following expression alert
 
 {{< img "/img/rancher/monitoring/migration/alert_2.4_to_2.5_source.png" "">}}
 
-you have to create a PrometheusRule configuration like this in any namespace
+you have to either create a PrometheusRule configuration like this in any namespace
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -97,4 +106,12 @@ spec:
             summary: "The result of prometheus_query has been larger than 5 for 5m. Current value {{ $value }}"
 ```
 
-For more details on how to configure PrometheusRules in Monitoring V2 see [this page]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration).
+or add the Prometheus Rule through the Cluster Explorer
+
+{{< img "/img/rancher/monitoring/migration/alert_2.4_to_2.5_target.png" "">}}
+
+For more details on how to configure PrometheusRules in Monitoring V2 see [Monitoring Configuration]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration#prometheusrules).
+
+#### Migrating notifiers
+
+There is no direct equivalent for how notifiers work in Monitoring V1. Instead you have to replicate the desired setup with [Routes and Receivers]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration#alertmanager-config) in Monitoring V2.
