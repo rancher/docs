@@ -197,7 +197,19 @@ If you are visiting this page to complete an [Air Gap Installation]({{<baseurl>}
 
 ### Persistent Data
 
-{{< persistentdata >}}
+Rancher uses etcd as a datastore. When Rancher is installed with Docker, the embedded etcd is being used. The persistent data is at the following path in the container: `/var/lib/rancher`.
+
+You can bind mount a host volume to this location to preserve data on the host it is running on:
+
+```
+docker run -d --restart=unless-stopped \
+  -p 80:80 -p 443:443 \
+  -v /opt/rancher:/var/lib/rancher \
+  --privileged \
+  rancher/rancher:latest
+```
+
+As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 
