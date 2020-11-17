@@ -33,6 +33,8 @@ Hardware requirements scale based on the size of your deployments. Minimum recom
 *    RAM: 512MB Minimum (we recommend at least 1GB)
 *    CPU: 1 Minimum
 
+[This section](./resource-profiling) captures the results of tests to determine minimum resource requirements for the K3s agent, the K3s server with a workload, and the K3s server with one agent. It also contains analysis about what has the biggest impact on K3s server and agent utilization, and how the cluster datastore can be protected from interference from agents and workloads.
+
 #### Disks
 
 K3s performance depends on the performance of the database. To ensure optimal speed, we recommend using an SSD when possible. Disk performance will vary on ARM devices utilizing an SD card or eMMC.
