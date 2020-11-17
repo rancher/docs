@@ -13,6 +13,8 @@ Please note that upgrades from experimental Dqlite to experimental embedded etcd
 
 _Available as of K3s v1.19.1_
 
+> Note: all servers should have the same arguments, except `--cluster-init` and `--server`
+
 To run K3s in this mode, you must have an odd number of server nodes. We recommend starting with three nodes.
 
 To get started, first launch a server node with the `cluster-init` flag to enable clustering and a token that will be used as a shared secret to join additional servers to the cluster.
