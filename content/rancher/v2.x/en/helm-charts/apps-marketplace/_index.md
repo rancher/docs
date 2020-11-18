@@ -20,7 +20,9 @@ The charts page contains all Rancher, Partner, and Custom Charts.
 * Partner charts reside under the Partners label
 * Custom charts will show up under the name of the repository
 
-All three types are deployed and managed in the same way. 
+All three types are deployed and managed in the same way.
+
+> Apps managed by the Cluster Manager should continue to be managed only by the Cluster Manager, and apps managed with the Cluster Explorer must be managed only by the Cluster Explorer.
 
 ### Repositories
 
@@ -29,17 +31,17 @@ From the left sidebar select _"Repositories"_.
 These items represent helm repositories, and can be either traditional helm endpoints which have an index.yaml, or git repositories which will be cloned and can point to a specific branch. In order to use custom charts, simply add your repository here and they will become available in the Charts tab under the name of the repository.
 
 
-### Helm compatilbitiy
+### Helm Compatibility
 
 The Cluster Explorer only supports Helm 3 compatible charts. 
 
 
 ### Deployment and Upgrades
 
-From the _"Charts"_ tab select a Chart to install. Rancher and Partner charts may have extra configurations available through custom pages or questions.yaml files, but all chart installations can modify the values.yaml and other basic settings. Once you click install, a helm operation job is deployed, and the console for the job is displayed. 
+From the _"Charts"_ tab select a Chart to install. Rancher and Partner charts may have extra configurations available through custom pages or questions.yaml files, but all chart installations can modify the values.yaml and other basic settings. Once you click install, a Helm operation job is deployed, and the console for the job is displayed. 
 
 To view all recent changes, go to the _"Recent Operations"_ tab. From there you can view the call that was made, conditions, events, and logs.
 
-After installing a chart, you can find it in the _"Installed Apps"_ tab. In this section you can upgrade or delete the installation, and see further details. When choosing to upgrade, the form and values presented will be the same as installation. 
+After installing a chart, you can find it in the _"Installed Apps"_ tab. In this section you can upgrade or delete the installation, and see further details. When choosing to upgrade, the form and values presented will be the same as installation.
 
 Most Rancher tools have additional pages located in the toolbar below the _"Apps & Marketplace"_ section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information. 
