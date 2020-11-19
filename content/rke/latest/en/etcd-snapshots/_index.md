@@ -35,6 +35,10 @@ The snapshot is stored in `/opt/rke/etcd-snapshots`. If the directory is configu
 
 In the case when multiple etcd nodes exist, any created snapshot is created after the cluster has been health checked, so it can be considered a valid snapshot of the data in the etcd cluster.
 
+_Available as of v1.1.4_
+
+Each snapshot will include the cluster state file in addition to the etcd snapshot file.
+
 ### Snapshot Naming
 
 The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
@@ -46,10 +50,11 @@ An example one-time snapshot name is `rke_etcd_snapshot_2020-10-15T16:47:24+02:0
 On restore, the following process is used:
 
 1. The snapshot is retrieved from S3, if S3 is configured.
-2. The snapshot is unzipped (if zipped).
-3. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
-4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
-5.  The cluster is restored and post-restore actions will be done in the cluster.
+1. The snapshot is unzipped (if zipped).
+1. It is checked if the cluster state file is included in the snapshot, if it is included, it will be used instead of the local cluster state file (_Available as of v1.1.4_)
+1. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
+1. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
+1.  The cluster is restored and post-restore actions will be done in the cluster.
 
 ## Troubleshooting
 
