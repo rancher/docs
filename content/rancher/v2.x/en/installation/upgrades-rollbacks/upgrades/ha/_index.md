@@ -75,6 +75,11 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
     ```
+    You can fetch the chart for the specific version you are upgrading to by adding in the `--version=` tag.  For example:
+    
+    ```plain
+    helm fetch rancher-<CHART_REPO>/rancher --version=v2.4.11
+    ```
 
 ### C. Upgrade Rancher
 
