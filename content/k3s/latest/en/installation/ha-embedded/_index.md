@@ -110,8 +110,9 @@ After these two nodes (2 & 3) comes up, you can hit kubectl get node and all 3 s
 
 PS: you can use pastebin for parsing cloudinit files, however make sure you give https://pastebin.com/raw/randomString otherwise k3Os won't fetch these files.
 
-also github account is used because it has this api to fetch the public key stored in it and it should be stored under ssh/authorised_keys in both k3Os node 
-to be able to ssh it.
+also github account is used because it has this api(https://github.com/${USERNAME}.keys.) to fetch the public key stored in it and it should be stored under ssh/authorised_keys in both k3Os node to be able to ssh it.
+
+
 
 # Extra
 
