@@ -42,7 +42,7 @@ sudo usermod -aG docker YOUR_USERNAME
 And configure the Docker daemon to use the proxy to pull images:
 
 ```
-sudo mkdir -p mkdir /etc/systemd/system/docker.service.d
+sudo mkdir -p /etc/systemd/system/docker.service.d
 cat <<'EOF' | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
 [Service]
 Environment="HTTP_PROXY=http://${proxy_host}"
