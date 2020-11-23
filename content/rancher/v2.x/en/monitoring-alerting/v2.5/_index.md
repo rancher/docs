@@ -105,6 +105,8 @@ Rancher allows any users who are authenticated by Kubernetes and have access the
 
 However, users can choose to log in to Grafana as an [Admin](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#admin-role) if necessary. The default Admin username and password for the Grafana instance will be `admin`/`prom-operator`, but alternative credentials can also be supplied on deploying or upgrading the chart.
 
+> **Persistent Dashboards:** To allow the Grafana dashboard to persist after it restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control. For details, refer to [this section.](./persist-grafana)
+
 To see the Grafana UI, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Grafana.
 
 <figcaption>Cluster Compute Resources Dashboard in Grafana</figcaption>
@@ -112,8 +114,6 @@ To see the Grafana UI, install `rancher-monitoring`. Then go to the **Cluster Ex
 
 <figcaption>Default Dashboards in Grafana</figcaption>
 ![Default Dashboards in Grafana]({{<baseurl>}}/img/rancher/grafana-default-dashboard.png)
-
-To allow the Grafana dashboard to persist after it restarts, you will need to add the configuration JSON into a ConfigMap. You can add this configuration to the ConfigMap using the Rancher UI.
 
 ### Prometheus UI
 
