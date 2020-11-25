@@ -22,7 +22,7 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
     kind: ConfigMap
     metadata:
       labels:
-    	  grafana_dashboard: "1"
+        grafana_dashboard: "1"
       name: <dashboard-name>
       namespace: cattle-dashboards
     data:
