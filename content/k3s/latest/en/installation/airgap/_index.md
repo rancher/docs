@@ -33,7 +33,7 @@ sudo mkdir -p /var/lib/rancher/k3s/agent/images/
 sudo cp ./k3s-airgap-images-$ARCH.tar /var/lib/rancher/k3s/agent/images/
 ```
 
-Place the k3s binary at /usr/local/bin/k3s and ensure it is executable.
+Place the k3s binary at `/usr/local/bin/k3s` and ensure it is executable.
 
 Follow the steps in the next section to install K3s.
 
