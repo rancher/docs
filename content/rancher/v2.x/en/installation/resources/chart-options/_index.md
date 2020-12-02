@@ -54,7 +54,7 @@ aliases:
 | `ingress.configurationSnippet` | ""                                                    | `string` - Add additional Nginx configuration. Can be used for proxy configuration. _Note: Available as of v2.0.15, v2.1.10 and v2.2.4_           |
 | `letsEncrypt.ingress.class`    | ""                                                    | `string` - optional ingress class for the cert-manager acmesolver ingress that responds to the Let's Encrypt ACME challenges                      |
 | `proxy`                        | ""                                                    | `string` - HTTP[S] proxy server for Rancher                                                                                                       |
-| `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy                                                                   |
+| `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local" | `string` - comma separated list of hostnames or ip address not to use the proxy                                                                   |
 | `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
 | `rancherImage`                 | "rancher/rancher"                                     | `string` - rancher image source                                                                                                                   |
 | `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
@@ -134,11 +134,11 @@ Example on setting a static proxy header with `ingress.configurationSnippet`. Th
 
 Rancher requires internet access for some functionality (helm charts). Use `proxy` to set your proxy server.
 
-Add your IP exceptions to the `noProxy` list. Make sure you add the Service cluster IP range (default: 10.43.0.1/16) and any worker cluster `controlplane` nodes. Rancher supports CIDR notation ranges in this list.
+Add your IP exceptions to the `noProxy` list. Make sure you add the Pod cluster IP range (default: `10.42.0.0/16`), Service cluster IP range (default: `10.43.0.0/16`), the internal cluster domains (default: `.svc,.cluster.local`) and any worker cluster `controlplane` nodes. Rancher supports CIDR notation ranges in this list.
 
 ```plain
 --set proxy="http://<username>:<password>@<proxy_url>:<proxy_port>/"
---set noProxy="127.0.0.0/8\,10.0.0.0/8\,172.16.0.0/12\,192.168.0.0/16"
+--set noProxy="127.0.0.0/8\,10.0.0.0/8\,172.16.0.0/12\,192.168.0.0/16,.svc,.cluster.local"
 ```
 
 ### Additional Trusted CAs
