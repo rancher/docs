@@ -7,8 +7,8 @@ Rancher v2.5 introduced the capability to deploy Rancher on any Kubernetes clust
 
 Rancher has the following Kubernetes distributions:
 
-- [**RKE,**](https://rancher.com/docs/rke/latest/en/) Rancher Kubernetes Engine, is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. 
-- [**K3s,**]({{<baseurl>}}/k3s/latest/en/) Lightweight Kubernetes, is easy to install, with half the memory of upstream Kubernetes, all in a binary of less than 100 MB.
+- [**RKE,**]({{<baseurl>}}/rke/latest/en/) Rancher Kubernetes Engine, is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. 
+- [**K3s,**]({{<baseurl>}}/k3s/latest/en/) is a fully conformant, lightweight Kubernetes distribution. It is easy to install, with half the memory of upstream Kubernetes, all in a binary of less than 100 MB.
 - [**RKE2**](https://docs.rke2.io/) is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
 To harden a Kubernetes cluster outside of Rancher's distributions, refer to your Kubernetes provider docs.
