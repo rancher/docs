@@ -1,5 +1,5 @@
 ---
-title: 4. Add Deployments and Services with the Istio Sidecar
+title: 3. Add Deployments and Services with the Istio Sidecar
 weight: 4
 aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/setup/deploy-workloads

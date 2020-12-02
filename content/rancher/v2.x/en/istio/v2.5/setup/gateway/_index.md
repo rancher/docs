@@ -1,5 +1,5 @@
 ---
-title: 5. Set up the Istio Gateway
+title: 4. Set up the Istio Gateway
 weight: 5
 aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway

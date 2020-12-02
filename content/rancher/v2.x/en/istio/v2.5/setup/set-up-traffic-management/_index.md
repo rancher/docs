@@ -1,5 +1,5 @@
 ---
-title: 6. Set up Istio's Components for Traffic Management
+title: 5. Set up Istio's Components for Traffic Management
 weight: 6
 aliases:
   - /rancher/v2.x/en/cluster-admin/tools/istio/setup/set-up-traffic-management
