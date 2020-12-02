@@ -75,6 +75,11 @@ of your Kubernetes cluster running Rancher server. You'll use the snapshot as a 
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher
     ```
+    You can fetch the chart for the specific version you are upgrading to by adding in the `--version=` tag.  For example:
+    
+    ```plain
+    helm fetch rancher-<CHART_REPO>/rancher --version=v2.4.11
+    ```
 
 ### C. Upgrade Rancher
 
@@ -109,12 +114,14 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 > **Note:** The above is an example, there may be more values from the previous step that need to be appended.
 
-Alternatively, it's possible to reuse current values and make small changes with the `--reuse-values` flag. For example, to only change the Rancher version:
+Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
 
 ```
+helm get values rancher -n cattle-system -o yaml > values.yaml
+
 helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
-  --reuse-values \
+  -f values.yaml \
   --version=2.4.5
 ```
 

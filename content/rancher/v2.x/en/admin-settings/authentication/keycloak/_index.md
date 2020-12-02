@@ -17,7 +17,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Sign Documents` | `ON` <sup>1</sup>
       `Sign Assertions` | `ON` <sup>1</sup>
       All other `ON/OFF` Settings | `OFF`
-      `Client ID` | `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata`<sup>2</sup>
+      `Client ID` | Either `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` or the value configured in the `Entry ID Field` of the Rancher Keycloak configuration<sup>2</sup>
       `Client Name` | <CLIENT_NAME> (e.g. `rancher`)
       `Client Protocol` | `SAML`
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
@@ -65,15 +65,16 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 1.	Complete the **Configure Keycloak Account** form.
 
 
-    | Field                     | Description                                                                            |
-    | ------------------------- | -------------------------------------------------------------------------------------- |
-    | Display Name Field        | The attribute that contains the display name of users. <br/><br/>Example: `givenName`  |
-    | User Name Field           | The attribute that contains the user name/given name. <br/><br/>Example: `email`       |
-    | UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                  |
-    | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`               |
-    | Rancher API Host          | The URL for your Rancher Server.                                                       |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.          |
-    | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                        |
+    | Field                     | Description                                                                                                                                              |
+    | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | Display Name Field        | The attribute that contains the display name of users. <br/><br/>Example: `givenName`                                                                    |
+    | User Name Field           | The attribute that contains the user name/given name. <br/><br/>Example: `email`                                                                         |
+    | UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                                                                                    |
+    | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`                                                                                 |
+    | Entity ID Field           | The ID that needs to be configured as a client ID in the Keycloak client. <br/><br/>Default: `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` |
+    | Rancher API Host          | The URL for your Rancher Server.                                                                                                                         |
+    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.                                                                            |
+    | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                                                                                          |
 
     >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
     >

@@ -49,7 +49,7 @@ Only those with the the cluster-admin / admin / edit `ClusterRole` should be abl
 Only those with who have some k8s `ClusterRole` should be able to:
 
 - View the configuration of Prometheuses that are deployed within the cluster
-- View the configuraiton of Alertmanagers that are deployed within the cluster
+- View the configuration of Alertmanagers that are deployed within the cluster
 - View the scrape configuration of Prometheus deployments via ServiceMonitor and PodMonitor CRs
 - View the alerting / recording rules of a Prometheus deployment via PrometheusRules CRs
 
@@ -96,5 +96,5 @@ If cluster-admins would like to provide additional admin/edit access to users ou
 
 | k8s Resources | Namespace | Can it cause impact outside of a namespace / project? | Impact |
 |----------------------------| ------| ------| ----------------------------|
-| <ul><li>`secrets`</li><li>`configmaps`</li></ul>| `cattle-monitoring-system` | Yes, Configs and Secrets in this namespace can impact the entire monitoring / alerting pipeline. | User will be able to create or edit Secrets / ConfigMaps such as the Alertmanager Config, Prometheus Adapter Config, TLS secrets, additional Grafana datasoruces, etc. This can have broad impact on all cluster monitoring / alerting. |
+| <ul><li>`secrets`</li><li>`configmaps`</li></ul>| `cattle-monitoring-system` | Yes, Configs and Secrets in this namespace can impact the entire monitoring / alerting pipeline. | User will be able to create or edit Secrets / ConfigMaps such as the Alertmanager Config, Prometheus Adapter Config, TLS secrets, additional Grafana datasources, etc. This can have broad impact on all cluster monitoring / alerting. |
 | <ul><li>`secrets`</li><li>`configmaps`</li></ul>| `cattle-dashboards` | Yes, Configs and Secrets in this namespace can create dashboards that make queries on all metrics collected at a cluster-level. | User will be able to create Secrets / ConfigMaps that persist new Grafana Dashboards only. |

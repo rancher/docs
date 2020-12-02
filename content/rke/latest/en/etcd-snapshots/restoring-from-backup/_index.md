@@ -23,6 +23,10 @@ The following actions will be performed when you run the command:
 
 The snapshot used to restore your etcd cluster can either be stored locally in `/opt/rke/etcd-snapshots` or from a S3 compatible backend.
 
+_Available as of v1.1.4_
+
+If the snapshot contains the cluster state file, it will automatically be extracted and used for the restore. If you want to force the use of the local state file, you can add `--use-local-state` to the command. If the snapshot was created using an RKE version before v1.1.4, or if the snapshot does not contain a state file, make sure the cluster state file (by default available as `cluster.rkestate`) is present before executing the command.
+
 ### Example of Restoring from a Local Snapshot
 
 To restore etcd from a local snapshot, run:
@@ -36,8 +40,6 @@ The snapshot is assumed to be located in `/opt/rke/etcd-snapshots`.
 **Note:** The `pki.bundle.tar.gz` file is not needed because RKE v0.2.0 changed how the [Kubernetes cluster state is stored]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state).
 
 ### Example of Restoring from a Snapshot in S3
-
-> **Prerequisite:** Ensure your `cluster.rkestate` is present before starting the restore, because this contains your certificate data for the cluster.
 
 When restoring etcd from a snapshot located in S3, the command needs the S3 information in order to connect to the S3 backend and retrieve the snapshot.
 
@@ -60,6 +62,7 @@ $ rke etcd snapshot-restore \
 | --- | --- | ---|
 | `--name` value            |  Specify snapshot name | |
 | `--config` value          |  Specify an alternate cluster YAML file (default: `cluster.yml`) [$RKE_CONFIG] | |
+| `--use-local-state`       | Force the use of the local state file instead of looking for a state file in the snapshot _Available as of v1.1.4_ | |
 | `--s3`                    |  Enabled backup to s3 |* |
 | `--s3-endpoint` value     |  Specify s3 endpoint url (default: "s3.amazonaws.com") | * |
 | `--access-key` value      |  Specify s3 accessKey | *|

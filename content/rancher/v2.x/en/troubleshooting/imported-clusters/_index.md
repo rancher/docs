@@ -1,5 +1,5 @@
 ---
-title: Imported clusters
+title: Registered clusters
 weight: 105
 ---
 
@@ -14,6 +14,8 @@ Communication to the cluster (Kubernetes API via cattle-cluster-agent) and commu
 If the cattle-cluster-agent cannot connect to the configured `server-url`, the cluster will remain in **Pending** state, showing `Waiting for full cluster configuration`. 
 
 #### cattle-node-agent
+
+> Note: Starting in Rancher 2.5 cattle-node-agents are only present in clusters created in Rancher with RKE.
 
 Check if the cattle-node-agent pods are present on each node, have status **Running** and don't have a high count of Restarts:
 

@@ -338,8 +338,8 @@ Documented here is a minimum set of permissions necessary to use all functionali
 
 Resource | Description 
 ---------|------------
-Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. Rancher can create the service role with the following [Service Role Permissions](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#service-role-permissions).
-VPC | Provides isolated network resouces utilised by EKS and worker nodes. Rancher can create the VPC resouces with the follwoing [VPC Permissions](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#vpc-permissions).
+Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. Rancher can create the service role with the following [Service Role Permissions]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#service-role-permissions).
+VPC | Provides isolated network resources utilised by EKS and worker nodes. Rancher can create the VPC resources with the following [VPC Permissions]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#vpc-permissions).
 
 
 Resource targeting uses `*` as the ARN of many of the resources created cannot be known prior to creating the EKS cluster in Rancher.

@@ -73,7 +73,7 @@ nodes:
 
 ###  4. Restore etcd on the New Node from the Backup
 
-> **Prerequisite:** Ensure your `cluster.rkestate` is present before starting the restore, because this contains your certificate data for the cluster.
+> **Prerequisite:** If the snapshot was created using RKE v1.1.4 or higher, the cluster state file should be included in the snapshot. The cluster state file will be automatically extracted and used for the restore. If the snapshot was created using RKE v1.1.3 or lower, please ensure your `cluster.rkestate` is present before starting the restore, because this contains your certificate data for the cluster.
 
 After the new node is added to the `cluster.yml`, run the `rke etcd snapshot-restore` to launch `etcd` from the backup:
 

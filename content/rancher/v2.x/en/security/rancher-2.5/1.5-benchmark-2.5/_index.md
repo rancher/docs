@@ -1,21 +1,21 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide - v2.4
+title: CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5
 weight: 204
 ---
 
-### CIS Kubernetes Benchmark v1.5 - Rancher v2.4 with Kubernetes v1.15
+### CIS v1.5 Kubernetes Benchmark - Rancher v2.5 with Kubernetes v1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.4/Rancher_Benchmark_Assessment.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_1.5_Benchmark_Assessment.pdf)
 
 #### Overview
 
-This document is a companion to the Rancher v2.4 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the Rancher v2.5 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
-This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+This guide corresponds to specific versions of the hardening guide, Rancher, CIS Benchmark, and Kubernetes:
 
-Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
----------------------------|----------|---------|-------|-----
-Self Assessment Guide v2.4 | Rancher v2.4 | Hardening Guide v2.4 | Kubernetes v1.15 | Benchmark v1.5
+Hardening Guide Version | Rancher Version | CIS Benchmark Version |  Kubernetes Version
+---------------------------|----------|---------|-------
+Hardening Guide with CIS 1.5 Benchmark | Rancher v2.5 | CIS v1.5| Kubernetes v1.15
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply and will have a result of `Not Applicable`. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
 
@@ -36,7 +36,7 @@ When performing the tests, you will need access to the Docker command line on th
 
 ---
 ## 1 Master Node Security Configuration
-### 1.1 Master Node Configuration Files 
+### 1.1 Master Node Configuration Files
 
 #### 1.1.1 Ensure that the API server pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -152,7 +152,7 @@ Run the below command (based on the etcd data directory found above).
 For example,
 ``` bash
 chown etcd:etcd /var/lib/etcd
-``` 
+```
 
 **Audit Script:** 1.1.12.sh
 
@@ -186,7 +186,7 @@ docker inspect etcd | jq -r '.[].HostConfig.Binds[]' | grep "${test_dir}" | cut 
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes. It’s presented to user where RKE is run.
 We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 
-#### 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored) 
+#### 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored)
 
 **Result:** Not Applicable
 
@@ -246,7 +246,7 @@ stat -c %U:%G /etc/kubernetes/ssl
 'root:root' is present
 ```
 
-#### 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored) 
+#### 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** PASS
 
@@ -729,7 +729,7 @@ on the master node and set the below parameter.
 '0' is equal to '0'
 ```
 
-#### 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored) 
+#### 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored)
 
 **Result:** PASS
 
@@ -950,7 +950,7 @@ to the public key file for service accounts:
 '--service-account-key-file' is present
 ```
 
-#### 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored) 
+#### 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -1308,7 +1308,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored) 
+#### 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored)
 
 **Result:** PASS
 
@@ -1482,7 +1482,7 @@ node and either remove the `--peer-auto-tls` parameter or set it to `false`.
 ## 3 Control Plane Configuration
 ### 3.2 Logging
 
-#### 3.2.1 Ensure that a minimal audit policy is created (Scored) 
+#### 3.2.1 Ensure that a minimal audit policy is created (Scored)
 
 **Result:** PASS
 
@@ -1543,7 +1543,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi'
 ```
 
 **Expected result**:
@@ -1558,7 +1558,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 
 **Remediation:**
 Run the below command (based on the file location on your system) on the each worker node.
-For example, 
+For example,
 
 ``` bash
 chown root:root /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
@@ -1567,7 +1567,7 @@ chown root:root /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi'
 ```
 
 **Expected result**:
@@ -1591,7 +1591,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi'
 ```
 
 **Expected result**:
@@ -1615,7 +1615,7 @@ chown root:root /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi'
 ```
 
 **Expected result**:
@@ -1661,7 +1661,7 @@ chown root:root <filename>
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kube-ca.pem; then stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kube-ca.pem; then stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem; fi'
 ```
 
 **Expected result**:
@@ -1700,7 +1700,7 @@ set the below parameter in `KUBELET_SYSTEM_PODS_ARGS` variable.
 ``` bash
 --anonymous-auth=false
 ```
- 
+
 Based on your system, restart the kubelet service. For example:
 
 ``` bash
@@ -1923,7 +1923,7 @@ systemctl restart kubelet.service
 'true' is equal to 'true'
 ```
 
-#### 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored) 
+#### 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1935,7 +1935,7 @@ remove the `--make-iptables-util-chains` argument from the
 `KUBELET_SYSTEM_PODS_ARGS` variable.
 Based on your system, restart the kubelet service. For example:
 
-```bash 
+```bash
 systemctl daemon-reload
 systemctl restart kubelet.service
 ```
@@ -2088,7 +2088,7 @@ exit 0
 **Audit Execution:**
 
 ```
-./5.1.5.sh 
+./5.1.5.sh
 ```
 
 **Expected result**:
@@ -2215,7 +2215,7 @@ echo "pass"
 **Audit Execution:**
 
 ```
-./5.3.2.sh 
+./5.3.2.sh
 ```
 
 **Expected result**:
@@ -2255,7 +2255,7 @@ echo "--count=${default_resources}"
 **Audit Execution:**
 
 ```
-./5.6.4.sh 
+./5.6.4.sh
 ```
 
 **Expected result**:
@@ -2263,4 +2263,3 @@ echo "--count=${default_resources}"
 ```
 '0' is equal to '0'
 ```
-

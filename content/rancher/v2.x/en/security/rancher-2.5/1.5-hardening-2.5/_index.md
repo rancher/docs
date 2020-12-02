@@ -1,26 +1,25 @@
 ---
-title: Hardening Guide v2.4
+title: Hardening Guide with CIS 1.5 Benchmark
 weight: 99
 ---
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.4. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 > This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
 
-This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
 
-Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
-------------------------|----------------|-----------------------|------------------
-Hardening Guide v2.4 | Rancher v2.4 | Benchmark v1.5 | Kubernetes 1.15
+ Rancher Version | CIS Benchmark Version | Kubernetes Version
+----------------|-----------------------|------------------
+ Rancher v2.5 | Benchmark v1.5 | Kubernetes 1.15
 
-
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.4/Rancher_Hardening_Guide.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.5.pdf)
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.4 with Kubernetes v1.15. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.5 with Kubernetes v1.15 or provisioning a RKE cluster with Kubernetes 1.15 to be used within Rancher v2.5. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.4]({{< baseurl >}}/rancher/v2.x/en/security/benchmark-2.4/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5]({{< baseurl >}}/rancher/v2.x/en/security/rancher-2.5/1.5-benchmark-2.5/).
 
 #### Known Issues
 
@@ -84,7 +83,7 @@ automountServiceAccountToken: false
 
 Create a bash script file called `account_update.sh`. Be sure to `chmod +x account_update.sh` so the script has execute permissions.
 
-``` 
+```
 #!/bin/bash -e
 
 for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
@@ -147,6 +146,7 @@ done
 Execute this script to apply the `default-allow-all.yaml` the **permissive** `NetworkPolicy` to all namespaces.
 
 ### Reference Hardened RKE `cluster.yml` configuration
+
 The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened install
 of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
 provided with additional details about the configuration items. This reference `cluster.yml` does not include the required **nodes** directive which will vary depending on your environment. Documentation for node configuration can be found here: https://rancher.com/docs/rke/latest/en/config-options/nodes
@@ -359,7 +359,7 @@ addons: |
   - kind: ServiceAccount
     name: tiller
     namespace: kube-system
-  
+
 addons_include: []
 system_images:
   etcd: ""
@@ -430,24 +430,24 @@ restore:
 dns: null
 ```
 
-### Reference Hardened RKE Template configuration 
+### Reference Hardened RKE Template configuration
 
 The reference RKE Template provides the configuration needed to achieve a hardened install of Kubenetes.
 RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
 [documentaion](https://rancher.com/docs/rancher/v2.x/en/installation) for additional installation and RKE Template details.
 
 ``` yaml
-# 
+#
 # Cluster Config
-# 
+#
 default_pod_security_policy_template_id: restricted
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
 enable_cluster_monitoring: false
 enable_network_policy: true
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config:
   addon_job_timeout: 30
   addons: |-
@@ -602,32 +602,32 @@ rancher_kubernetes_engine_config:
       namespace: kube-system
   ignore_docker_version: true
   kubernetes_version: v1.15.9-rancher1-1
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     mtu: 0
     plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -637,7 +637,7 @@ rancher_kubernetes_engine_config:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:

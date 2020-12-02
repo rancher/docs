@@ -17,17 +17,14 @@ If all your nodes have the same hostname, use the `--with-node-id` option to app
 
 ## Operating Systems
 
-K3s should run on just about any flavor of Linux.
+K3s is expected to work on most modern Linux systems.
 
-K3s is officially supported and tested on the following operating systems and their subsequent non-major releases:
+Some OSs have specific requirements:
 
-*    Ubuntu 16.04 (amd64)
-*    Ubuntu 18.04 (amd64)
-*    Raspbian Buster*
+- If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
+- If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
-\* If you are using **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
-
-If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+For more information on which OSs were tested with Rancher managed K3s clusters, refer to the [Rancher support and maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 ## Hardware
 
@@ -35,6 +32,8 @@ Hardware requirements scale based on the size of your deployments. Minimum recom
 
 *    RAM: 512MB Minimum (we recommend at least 1GB)
 *    CPU: 1 Minimum
+
+[This section](./resource-profiling) captures the results of tests to determine minimum resource requirements for the K3s agent, the K3s server with a workload, and the K3s server with one agent. It also contains analysis about what has the biggest impact on K3s server and agent utilization, and how the cluster datastore can be protected from interference from agents and workloads.
 
 #### Disks
 

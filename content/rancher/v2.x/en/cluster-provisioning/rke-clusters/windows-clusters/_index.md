@@ -68,6 +68,9 @@ For **Host Gateway (L2bridge)** networking, it's best to use the same Layer 2 ne
 
 For **VXLAN (Overlay)** networking, the [KB4489899](https://support.microsoft.com/en-us/help/4489899) hotfix must be installed. Most cloud-hosted VMs already have this hotfix.
 
+If you are configuring DHCP options sets for an AWS virtual private cloud, note that in the `domain-name` option field, only one domain name can be specified. According to the DHCP options [documentation:](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
+
+> Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
 ### Architecture Requirements
 
 The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run on Linux nodes.

@@ -53,16 +53,16 @@ In order to upgrade cert-manager, follow these instructions:
     helm uninstall cert-manager
     ```
 
-    Delete the CustomResourceDefinition using the link to the version vX.Y you installed
+    Delete the CustomResourceDefinition using the link to the version vX.Y.Z you installed
 
     ```plain
-    kubectl delete -f https://raw.githubusercontent.com/jetstack/cert-manager/release-X.Y/deploy/manifests/00-crds.yaml
+    kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
     ```
 
 1. Install the CustomResourceDefinition resources separately
 
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
     ```
 
     > **Note:**
