@@ -18,13 +18,13 @@ Wait a few minutes for the workload to upgrade to have the istio sidecar. Click 
 
 There are a few ways to add new **Deployments** in your namespace
 
-1. From the **Cluster Explorer** click on Workload > Overview
-1. Click **Create**
-1. Select **Deployment** from the various workload options
-1. Fill out the form, or **Edit as Yaml**
-1. Click **Create** 
+1. From the **Cluster Explorer** click on **Workload > Overview.**
+1. Click **Create.**
+1. Select **Deployment** from the various workload options.
+1. Fill out the form, or **Edit as Yaml.**
+1. Click **Create.** 
 
-Alternatively, you can select the specific workload you want to deploy from worklod > specific workload and create from there.
+Alternatively, you can select the specific workload you want to deploy from the **Workload** section of the left navigation bar and create it from there.
 
 To add a **Service** to your namespace
 
