@@ -52,6 +52,17 @@ ingress:
       enable-ssl-passthrough: ""
 ```
 
+### Disabling NGINX Ingress Default Backend
+
+As of v0.20.0, you can disable the [default backend service](https://kubernetes.github.io/ingress-nginx/user-guide/default-backend/) for the ingress controller. This is possible because `ingress-nginx` will fall back to a local 404 page, and does not require a backend service. The service can be enabled, disabled, re-enabled, and re-disabled with a boolean value.
+
+```yaml
+ingress:
+    default_backend: false
+```
+
+> **What happens if the field is omitted?** The value of `default_backend` will default to `true`. This maintains behavior with older versions of `rke`.
+
 ## Configuring an NGINX Default Certificate
 
 When configuring an ingress object with TLS termination, you must provide it with a certificate used for encryption/decryption. Instead of explicitly defining a certificate each time you configure an ingress, you can set up a custom certificate that's used by default.
