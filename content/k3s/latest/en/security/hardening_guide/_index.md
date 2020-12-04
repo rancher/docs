@@ -12,7 +12,7 @@ K3s has a number of security mitigations applied and turned on by default and wi
 1. K3s will not modify the host operating system. Therefore, you, the operator, must make a few Host-level modifications.
 2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configuring these.
 
-The first section of the CIS Bencmark, 1.1, concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
+The first section of the CIS Benchmark (1.1), concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
 
 ## Host-level Requirements
 
