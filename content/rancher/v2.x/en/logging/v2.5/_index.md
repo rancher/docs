@@ -11,18 +11,16 @@ weight: 1
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
-
 # Changes in Rancher v2.5
 
 The following changes were introduced to logging in Rancher v2.5:
 
-- The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging in place of the former, in-house logging solution.
-- [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs. [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the outputs. Previously, only Fluentd was used.
-- Logging can be configured with a Kubernetes manifest, because now the logging uses a Kubernetes operator with Custom Resource Definitions.
+- The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
+- [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs, and [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the outputs. Previously, only Fluentd was used.
+- Logging can be configured with a Kubernetes manifest, because logging now uses a Kubernetes operator with Custom Resource Definitions.
 - We now support filtering logs.
 - We now support writing logs to multiple outputs.
 - We now always collect Control Plane and etcd logs.
-
 
 The following figure from the [Banzai documentation](https://banzaicloud.com/docs/one-eye/logging-operator/#architecture) shows the new logging architecture:
 
@@ -34,20 +32,20 @@ The following figure from the [Banzai documentation](https://banzaicloud.com/doc
 
 You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
 
-1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer.**
-1. Click **Apps.**
+1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer**.
+1. Click **Apps**.
 1. Click the `rancher-logging` app.
-1. Scroll to the bottom of the Helm chart README and click **Install.**
+1. Scroll to the bottom of the Helm chart README and click **Install**.
 
 **Result:** The logging app is deployed in the `cattle-logging-system` namespace.
 
 # Uninstall Logging
 
-1. From the **Cluster Explorer,** click **Apps & Marketplace.**
-1. Click **Installed Apps.**
+1. From the **Cluster Explorer**, click **Apps & Marketplace**.
+1. Click **Installed Apps**.
 1. Go to the `cattle-logging-system` namespace and check the boxes for `rancher-logging` and `rancher-logging-crd`.
-1. Click **Delete.**
-1. Confirm **Delete.**
+1. Click **Delete**.
+1. Confirm **Delete**.
 
 **Result** `rancher-logging` is uninstalled.
 
@@ -55,21 +53,23 @@ You can enable the logging for a Rancher managed cluster by going to the Apps pa
 
 Rancher logging has two roles, `logging-admin` and `logging-view`.
 
-`logging-admin` allows users full access to namespaced flows and outputs. 
+- `logging-admin` gives users full access to namespaced flows and outputs
+- `logging-view` allows users to *view* namespaced flows and outputs, and cluster flows and outputs
 
-The `logging-view` role allows users to view namespaced flows and outputs, and cluster flows and outputs. 
+> **Why choose one role over the other?** Edit access to cluster flow and cluster output resources is powerful. Any user with it has edit access for all logs in the cluster. 
 
-Edit access to the cluster flow and cluster output resources is powerful as it allows any user with edit access control of all logs in the cluster. 
+In Rancher, the cluster administrator role is the only role with full access to all `rancher-logging` resources. Cluster members are not able to edit or read any logging resources. Project owners and members have the following privileges:
 
-In Rancher, the cluster administrator role is the only role with full access to all rancher-logging resources. 
+Project Owners | Project Members
+--- | ---
+able to create namespaced flows and outputs in their projects' namespaces | only able to view the flows and outputs in projects' namespaces
+can collect logs from anything in their projects' namespaces | cannot collect any logs in their projects' namespaces
 
-Cluster members are not able to edit or read any logging resources. 
-
-Project owners are able to create namespaced flows and outputs in the namespaces under their projects.  This means that project owners can collect logs from anything in their project namespaces.  Project members are able to view the flows and outputs in the namespaces under their projects. Project owners and project members require at least 1 namespace in their project to use logging.  If they do not have at least one namespace in their project they may not see the logging button in the top nav dropdown. 
+Both project owners and project members require at least *one* namespace in their project to use logging. If they do not, then they may not see the logging button in the top nav dropdown.
 
 # Configuring the Logging Application
 
-To configure the logging application, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging.**
+To configure the logging application, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging**.
 
 ### Overview of Logging Custom Resources
 
@@ -84,9 +84,8 @@ According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-
 
 ### Examples
 
-Let's say you wanted to send all logs in your cluster to an elasticsearch cluster.
+**Cluster Output to ElasticSearch:** Let's say you wanted to send all logs in your cluster to an `elasticsearch` cluster. First, we create a cluster output.
 
-First lets create our cluster output: 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
 kind: ClusterOutput
@@ -100,9 +99,9 @@ spec:
       scheme: http
 ```
 
-We have created a cluster output, without elasticsearch configuration, in the same namespace as our operator `cattle-logging-system.`. Any time we create a cluster flow or cluster output we have to put it in the `cattle-logging-system` namespace.
+We have created this cluster output, without elasticsearch configuration, in the same namespace as our operator: `cattle-logging-system.`. Any time we create a cluster flow or cluster output, we have to put it in the `cattle-logging-system` namespace.
 
-Now we have configured where we want the logs to go, lets configure all logs to go to that output.
+Now that we have configured where we want the logs to go, let's configure all logs to go to that output.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -117,9 +116,9 @@ spec:
 
 We should now see our configured index with logs in it.
 
-What if we have an application team who only wants logs from a specific namespaces sent to a splunk server? For this case can use namespaced outputs and flows. 
+**Output to Splunk:** What if we have an application team who only wants logs from a specific namespaces sent to a `splunk` server? For this case, we can use namespaced outputs and flows. 
 
-Before we start lets set up a scenario.
+Before we start, let's set up that team's application: `coolapp`.
 
 ```yaml
 apiVersion: v1
@@ -149,7 +148,7 @@ spec:
           image: paynejacob/loggenerator:latest
 ``` 
 
-like before we start with an output, unlike cluster outputs we create our output in our application's namespace:
+With `coolapp` running, we will follow a similar path as when we created a cluster output. However, unlike cluster outputs, we create our output in our application's namespace.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -164,7 +163,7 @@ spec:
         protocol: http
 ```
 
-Once again, lets give our output some logs:
+Once again, let's feed our output some logs.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -177,7 +176,7 @@ spec:
     - "devteam-splunk"
 ```
 
-For the final example we create an output to write logs to a destination that is not supported out of the box (e.g. syslog):
+**Unsupported Ouput:** For the final example, we create an output to write logs to a destination that is not supported out of the box (e.g. syslog):
 
 ```yaml
 apiVersion: v1
@@ -265,29 +264,31 @@ spec:
     ignore_network_errors_at_startup: false
 ```
 
-if we break down what is happening, first we create a deployment of a container that has the additional syslog plugin and accepts logs forwarded from another fluentd.  Next we create an output configured as a forwarder to our deployment. The deployment fluentd will then forward all logs to the configured syslog destination.  
+Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an output configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.
+
+> **Note on syslog** The example provides an overview on using unsupported plugins, but `syslog` support is coming in a future Rancher v2.x release.
 
 # Working with Taints and Tolerations
 
 "Tainting" a Kubernetes node causes pods to repel running on that node.
-Unless the pods have a ```toleration``` for that node's taint, they will run on other nodes in the cluster.
-[Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) can work in conjunction with the ```nodeSelector``` [field](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) within the ```PodSpec```, which enables the *opposite* effect of a taint.
-Using ```nodeSelector``` gives pods an affinity towards certain nodes.
+Unless the pods have a `toleration` for that node's taint, they will run on other nodes in the cluster.
+[Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) can work in conjunction with the `nodeSelector` [field](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) within the `PodSpec`, which enables the *opposite* effect of a taint.
+Using `nodeSelector` gives pods an affinity towards certain nodes.
 Both provide choice for the what node(s) the pod will run on.
 
 ### Default Implementation in Rancher's Logging Stack
 
-By default, Rancher taints all Linux nodes with ```cattle.io/os=linux```, and does not taint Windows nodes.
-The logging stack pods have ```tolerations``` for this taint, which enables them to run on Linux nodes.
-Moreover, we can populate the ```nodeSelector``` to ensure that our pods *only* run on Linux nodes.
+By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
+The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
+Moreover, we can populate the `nodeSelector` to ensure that our pods *only* run on Linux nodes.
 Let's look at an example pod YAML file with these settings...
 
 ```yaml
 apiVersion: v1
 kind: Pod
-# metadata:
+# metadata...
 spec:
-  # containers:
+  # containers...
   tolerations:
     - key: cattle.io/os
       operator: "Equal"
@@ -297,33 +298,31 @@ spec:
     kubernetes.io/os: linux
 ```
 
-In the above example, we ensure that our pod only runs on Linux nodes, and we add a ```toleration``` for the taint we have on all of our Linux nodes.
+In the above example, we ensure that our pod only runs on Linux nodes, and we add a `toleration` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
 
 ### Windows Support
 
-Clusters with Windows worker support logging with some small caveats:
-
-1. Windows node logs are currently unable to be exported.
-2. ```fluentd-configcheck``` pod(s) will fail due to an [upstream issue](https://github.com/banzaicloud/logging-operator/issues/592), where ```tolerations``` and ```nodeSelector``` settings are not inherited from the ```logging-operator```.
+Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.
+Only Linux node logs are able to be exported.
 
 ### Adding NodeSelector Settings and Tolerations for Custom Taints
 
-If you would like to add your own ```nodeSelector``` settings, or if you would like to add ```tolerations``` for additional taints, you can pass the following to the chart's values.
+If you would like to add your own `nodeSelector` settings, or if you would like to add `tolerations` for additional taints, you can pass the following to the chart's values.
 
 ```yaml
 tolerations:
-  # insert tolerations list
+  # insert tolerations...
 nodeSelector:
-  # insert nodeSelector settings
+  # insert nodeSelector...
 ```
 
-These values will add both settings to the ```fluentd```, ```fluentbit```, and ```logging-operator``` containers.
+These values will add both settings to the `fluentd`, `fluentbit`, and `logging-operator` containers.
 Essentially, these are global settings for all pods in the logging stack.
 
-However, if you would like to add tolerations for *only* the ```fluentbit``` container, you can add the following to the chart's values.
+However, if you would like to add tolerations for *only* the `fluentbit` container, you can add the following to the chart's values.
 
 ```yaml
 fluentbit_tolerations:
-  # insert tolerations list for fluentbit containers only
+  # insert tolerations list for fluentbit containers only...
 ```
