@@ -35,9 +35,16 @@ Instructions on when to select these repos are available below in [Switching to 
 
 ### Helm Chart Versions
 
-Rancher Helm chart versions match the Rancher version (i.e `appVersion`).
+Rancher Helm chart versions match the Rancher version (i.e `appVersion`).  Once you've added the repo you can search it to show available versions with the following command:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`helm search repo --versions`
 
-For the Rancher v2.1.x versions, there were some Helm charts, that were using a version that was a build number, i.e. `yyyy.mm.<build-number>`. These charts have been replaced with the equivalent Rancher version and are no longer available.
+If you have several repos you can specify the repo name, ie. `helm search repo rancher-stable/rancher --versions` <br/>
+For more information, see https://helm.sh/docs/helm/helm_search_repo/
+
+To fetch a specific version of your chosen repo, define the `--version` parameter like in the following example:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;`helm fetch rancher-stable/rancher --version=2.4.8`
+
+For the Rancher v2.1.x versions, there were some Helm charts where the version was a build number, i.e. `yyyy.mm.<build-number>`. These charts have been replaced with the equivalent Rancher version and are no longer available.
 
 ### Switching to a Different Helm Chart Repository
 
