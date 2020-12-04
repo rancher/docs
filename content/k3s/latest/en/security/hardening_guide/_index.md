@@ -37,7 +37,7 @@ kernel.panic_on_oops=1
 
 ## Kubernetes Runtime Requirements
 
-The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSP's)and network policies. These are outlined in this section. K3s doesn't apply any default PSP's or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSP's, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
+The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs)and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
 
 ### PodSecurityPolicies
 
