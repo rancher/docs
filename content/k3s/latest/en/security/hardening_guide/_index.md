@@ -354,12 +354,11 @@ kubelet
     --tls-private-key-file=/var/lib/rancher/k3s/agent/serving-kubelet.key                            # 4.2.10
 ```
 
-An example command to be run that would providle the additional configuration and settings necessary to comply with CIS 1.5 can be referenced below. This code snippet is what would then be viewed on a running k3s system when issuing a `ps -ef | grep k3s` which would be used to validate that the current running state of the K3s node is CIS 1.5 compliant.
+The command below is an example of how the outlined remediations can be applied.
 
 ```bash
 k3s server \
     --protect-kernel-defaults=true \
-    --kube-apiserver-arg='kubelet-https=true' \
     --kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit-log' \
     --kube-apiserver-arg='audit-log-maxage=30' \
     --kube-apiserver-arg='audit-log-maxbackup=10' \
