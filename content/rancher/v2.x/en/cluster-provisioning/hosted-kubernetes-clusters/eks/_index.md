@@ -135,6 +135,12 @@ Optional: To encrypt secrets, select or enter a key created in [AWS Key Manageme
 
 Configuring Public/Private API access is an advanced use case. For details, refer to the EKS cluster endpoint access control [documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
+### Private-only API Endpoints
+
+If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for Rancher to connect to the cluster successfully. In this case, a pop-up will be displayed with instructions on how to complete the setup. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
+
+Note: you can avoid this extra step by enabling both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and Rancher will continue to communicate with the EKS cluster.
+
 ### Public Access Endpoints
 
 <a id="public-access-endpoints-2-5"></a>
@@ -564,7 +570,7 @@ UpstreamSpec represents the cluster as it is in EKS and is refreshed on an inter
 
 The effective desired state can be thought of as the UpstreamSpec + all non-nil fields in the EKSConfig. This is what is displayed in the UI.
 
-If Rancher and another source attempt to update an EKS cluster at the same time or within the 5 minute refresh window of an update finishing, then it is likely any “managed” fields can be caught in a race condition. For example, a cluster may have PrivateAccess as a managed field. If PrivateAccess is false and then enabled in EKS console, then finishes at 11:01, and then tags are updated from Rancher before 11:05 the value will likely be overwritten. This would also occur if tags were updated while the cluster was processing the update. If the cluster was registered and the PrivateAccess fields was nil then this issue should not occur in the aforementioend case.
+If Rancher and another source attempt to update an EKS cluster at the same time or within the 5 minute refresh window of an update finishing, then it is likely any “managed” fields can be caught in a race condition. For example, a cluster may have PrivateAccess as a managed field. If PrivateAccess is false and then enabled in EKS console, then finishes at 11:01, and then tags are updated from Rancher before 11:05 the value will likely be overwritten. This would also occur if tags were updated while the cluster was processing the update. If the cluster was registered and the PrivateAccess fields was nil then this issue should not occur in the aforementioned case.
 
 ### Configuring the Refresh Interval
 
