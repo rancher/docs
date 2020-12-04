@@ -35,20 +35,6 @@ kernel.panic=10
 kernel.panic_on_oops=1
 ```
 
-### Ensure etcd is started properly
-
-The CIS Benchmark requires that the etcd data directory be owned by the `etcd` user and group.
-
-1. Check that the `etcd` user and group exists on the host. Run `id etcd` to see if the etcd user and group exists.
-2. Check etcd's data directory to see if it's owned by `etcd` and set to the correct permissions. Run `stat -c %U:%G /var/lib/rancher/k3s/server/db/etcd` to check the etcd data-dir owner and group, and run `stat -c %a /var/lib/rancher/k3s/server/db/etcd` to verify it has the correct permissions.
-3. Ensure the etcd process is ran as the `etcd` user and group by setting the etcd static pod's SecurityContext approopriately.
-
-If the user and group don't exist, the command below can be run to create them.
-
-```bash
-useradd -r -c "etcd user" -s /sbin/nologin -M etcd
-```
-
 ## Kubernetes Runtime Requirements
 
 The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSP's)and network policies. These are outlined in this section. K3s doesn't apply any default PSP's or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSP's, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
@@ -217,7 +203,7 @@ Ensure that encryption providers are appropriately configured.
 <summary>Rationale</summary>
 `etcd` is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any disclosures.
 
-This can be remeditated by passing a valid configuration to the `k3s` outlined above.
+This can be remediated by passing a valid configuration to `k3s` as outlined above.
 </details>
 
 ### Control 1.3.1
