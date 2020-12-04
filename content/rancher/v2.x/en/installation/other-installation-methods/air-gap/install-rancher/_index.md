@@ -40,9 +40,14 @@ From a system that has access to the internet, fetch the latest Helm chart and c
     ```
 
 3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
-```plain
-helm fetch rancher-<CHART_REPO>/rancher
-```
+    ```plain
+    helm fetch rancher-<CHART_REPO>/rancher
+    ```
+
+    If you require a specific version of Rancher, you can fetch this with the Helm `--version` parameter like in the following example:
+    ```plain
+    helm fetch rancher-stable/rancher --version=v2.4.8
+    ```
 
 ### B. Choose your SSL Configuration
 
