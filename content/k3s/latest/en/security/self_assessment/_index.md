@@ -1056,7 +1056,7 @@ kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .meta
 Verify that the `--encryption-provider-config` argument is set to a EncryptionConfigfile. Additionally, ensure that the `EncryptionConfigfile` has all the desired resources covered especially any secrets.
 
 **Remediation:**
-K3s server needs to be ran with the follow, `--kube-apiserver-arg='encryption-provider-config=/path/to/encryption_config'`
+K3s server needs to be ran with the follow, `--kube-apiserver-arg='encryption-provider-config=/path/to/encryption_config'`. This can be done by running k3s with the `--secrets-encryptiuon` argument which will configure the encryption provider.
 
 
 #### 1.2.34
