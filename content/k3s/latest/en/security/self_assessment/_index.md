@@ -26,6 +26,8 @@ These are the possible results for each control:
 - **Not Applicable** - The control is not applicable to K3s because of how it is designed to operate. The remediation section will explain why this is so.
 - **Not Scored - Operator Dependent** - The control is not scored in the CIS benchmark and it depends on the cluster's use case or some other factor that must be determined by the cluster operator. These controls have been evaluated to ensure K3s does not prevent their implementation, but no further configuration or auditing of the cluster under test has been performed.
 
+This guide makes the assumption that K3s is running as a Systemd unit. Your installation may vary and will require you to adjust the "audit" commands to fit your scenario.
+
 ### Controls
 
 ---
@@ -335,7 +337,7 @@ If you are using RBAC authorization, it is generally considered reasonable to al
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "anonymous-auth"
 ```
 
 Verify that `--anonymous-auth=false` is present.
@@ -356,7 +358,7 @@ Basic authentication uses plaintext credentials for authentication. Currently, t
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "basic-auth-file"
 ```
 
 Verify that the `--basic-auth-file` argument does not exist.
@@ -379,7 +381,7 @@ The token-based authentication utilizes static tokens to authenticate requests t
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "token-auth-file"
 ```
 
 Verify that the `--token-auth-file` argument does not exist.
@@ -401,7 +403,7 @@ Connections from apiserver to kubelets could potentially carry sensitive data su
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "kubelet-https"
 ```
 
 Verify that the `--kubelet-https` argument does not exist.
@@ -423,7 +425,7 @@ The apiserver, by default, does not authenticate itself to the kubelet's HTTPS e
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep -E 'kubelet-client-certificate|kubelet-client-key'
 ```
 
 Verify that the `--kubelet-client-certificate` and `--kubelet-client-key` arguments exist and they are set as appropriate.
@@ -445,7 +447,7 @@ The connections from the apiserver to the kubelet are used for fetching logs for
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "kubelet-certificate-authority"
 ```
 
 Verify that the `--kubelet-certificate-authority` argument exists and is set as appropriate.
@@ -467,7 +469,7 @@ The API Server, can be configured to allow all requests. This mode should not be
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "authorization-mode"
 ```
 
 Verify that the argument value doesn't contain `AlwaysAllow`.
@@ -489,7 +491,7 @@ The Node authorization mode only allows kubelets to read Secret, ConfigMap, Pers
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "authorization-mode"
 ```
 
 Verify `Node` exists as a parameter to the argument.
@@ -511,7 +513,7 @@ Role Based Access Control (RBAC) allows fine-grained control over the operations
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "authorization-mode"
 ```
 
 Verify `RBAC` exists as a parameter to the argument.
@@ -535,7 +537,7 @@ Note: This is an Alpha feature in the Kubernetes 1.15 release.
 Run the below command on the master node.
 
 ```bash
-/bin/ps -ef | grep kube-apiserver | grep -v grep
+kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes EventRateLimit.
@@ -560,7 +562,7 @@ The AlwaysAdmit admission controller was deprecated in Kubernetes v1.13. Its beh
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
 ```
 
 Verify that if the `--enable-admission-plugins` argument is set, its value does not include `AlwaysAdmit`.
@@ -605,7 +607,7 @@ SecurityContextDeny can be used to provide a layer of security for clusters whic
 Run the below command on the master node.
 
 ```bash
-/bin/ps -ef | grep kube-apiserver | grep -v grep
+kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `SecurityContextDeny`, if `PodSecurityPolicy` is not included.
@@ -627,7 +629,7 @@ When you create a pod, if you do not specify a service account, it is automatica
 Run the below command on the master node.
 
 ```bash
-NEEDS_COMMAND
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "ServiceAccount"
 ```
 
 Verify that the `--disable-admission-plugins` argument is set to a value that does not includes `ServiceAccount`.
@@ -649,7 +651,7 @@ Setting admission control policy to `NamespaceLifecycle` ensures that objects ca
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "disable-admission-plugins"
 ```
 
 Verify that the `--disable-admission-plugins` argument is set to a value that does not include `NamespaceLifecycle`.
@@ -696,7 +698,7 @@ Using the `NodeRestriction` plug-in ensures that the kubelet is restricted to th
 Run the below command on the master node.
 
 ```bash
-NEED COMMAND
+kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `NodeRestriction`.
@@ -718,7 +720,7 @@ If you bind the apiserver to an insecure address, basically anyone who could con
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "insecure-bind-address"
 ```
 
 Verify that the `--insecure-bind-address` argument does not exist.
@@ -740,7 +742,7 @@ Setting up the apiserver to serve on an insecure port would allow unauthenticate
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "insecure-port"
 ```
 
 Verify that the `--insecure-port` argument is set to `0`.
@@ -762,7 +764,7 @@ The secure port is used to serve https with authentication and authorization. If
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "secure-port"
 ```
 
 Verify that the `--secure-port` argument is either not set or is set to an integer value between 1 and 65535.
@@ -784,7 +786,7 @@ Profiling allows for the identification of specific performance bottlenecks. It 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "profiling"
 ```
 
 Verify that the `--profiling` argument is set to false.
@@ -938,7 +940,7 @@ By default, if no `--service-account-key-file` is specified to the apiserver, it
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "service-account-key-file"
 ```
 
 Verify that the `--service-account-key-file` argument exists and is set as appropriate.
@@ -960,7 +962,7 @@ etcd is a highly-available key value store used by Kubernetes deployments for pe
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep -E 'etcd-certfile|etcd-keyfile'
 ```
 
 Verify that the `--etcd-certfile` and `--etcd-keyfile` arguments exist and they are set as appropriate.
@@ -982,7 +984,7 @@ API server communication contains sensitive parameters that should remain encryp
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep -E 'tls-cert-file|tls-private-key-file'
 ```
 
 Verify that the `--tls-cert-file` and `--tls-private-key-file` arguments exist and they are set as appropriate.
@@ -1004,7 +1006,7 @@ API server communication contains sensitive parameters that should remain encryp
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "client-ca-file"
 ```
 
 Verify that the `--client-ca-file` argument exists and it is set as appropriate.
@@ -1026,7 +1028,7 @@ etcd is a highly-available key value store used by Kubernetes deployments for pe
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "etcd-cafile"
 ```
 
 Verify that the `--etcd-cafile` argument exists and it is set as appropriate.
@@ -1145,7 +1147,7 @@ Profiling allows for the identification of specific performance bottlenecks. It 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "profiling"
 ```
 
 Verify that the `--profiling` argument is set to false.
@@ -1189,7 +1191,7 @@ To ensure that keys for service account tokens can be rotated as needed, a separ
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "service-account-private-key-file"
 ```
 
 Verify that the `--service-account-private-key-file` argument is set as appropriate.
@@ -1213,7 +1215,7 @@ Providing the root certificate for the API server's serving certificate to the c
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "root-ca-file"
 ```
 
 Verify that the `--root-ca-file` argument exists and is set to a certificate bundle file containing the root certificate for the API server's serving certificate
@@ -1237,7 +1239,7 @@ Note: This recommendation only applies if you let kubelets get their certificate
 Run the below command on the master node.
 
 ```bash
-/bin/ps -ef | grep kube-controller-manager | grep -v grep
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "RotateKubeletServerCertificate"
 ```
 
 Verify that RotateKubeletServerCertificateargument exists and is set to true.
@@ -1259,7 +1261,7 @@ The Controller Manager API service which runs on port 10252/TCP by default is us
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "bind-address"
 ```
 
 Verify that the `--bind-address` argument is set to 127.0.0.1.
@@ -1285,7 +1287,7 @@ Profiling allows for the identification of specific performance bottlenecks. It 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "profiling"
 ```
 
 Verify that the `--profiling` argument is set to false.
@@ -1308,7 +1310,7 @@ The Scheduler API service which runs on port 10251/TCP by default is used for he
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "bind-address"
 ```
 
 Verify that the `--bind-address` argument is set to 127.0.0.1.
@@ -1452,7 +1454,7 @@ Run the below command on the master node.
 # To find the ca file used by etcd:
 grep 'trusted-ca-file' /var/lib/rancher/k3s/server/db/etcd/config
 # To find the kube-apiserver process:
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1
 ```
 
 Verify that the file referenced by the `client-ca-file` flag in the apiserver process is different from the file referenced by the `trusted-ca-file` parameter in the etcd configuration file.
@@ -1499,7 +1501,7 @@ Logging is an important detective control for all systems, to detect potential u
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-policy-file"
 ```
 
 Verify that the `--audit-policy-file` is set. Review the contents of the file specified and ensure that it contains avalid audit policy.
@@ -1728,7 +1730,7 @@ When enabled, requests that are not rejected by other configured authentication 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "anonymous-auth"
 ```
 
 Verify that the value for `--anonymous-auth` is false.
@@ -1749,7 +1751,7 @@ Kubelets, by default, allow all authenticated requests (even anonymous ones) wit
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "authorization-mode"
 ```
 
 Verify that `AlwaysAllow` is not present.
@@ -1771,7 +1773,7 @@ The connections from the apiserver to the kubelet are used for fetching logs for
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "client-ca-file"
 ```
 
 Verify that the `--client-ca-file` argument has a ca file associated.
@@ -1793,7 +1795,7 @@ The Kubelet process provides a read-only API in addition to the main Kubelet API
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kubelet" | tail -n1 | grep "read-only-port"
 ```
 Verify that the `--read-only-port` argument is set to 0.
 
@@ -1905,7 +1907,7 @@ Kubelet communication contains sensitive parameters that should remain encrypted
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kubelet" | tail -n1 | grep -E 'tls-cert-file|tls-private-key-file'
 ```
 
 Verify the `--tls-cert-file` and `--tls-private-key-file` arguments are present and set appropriately.
