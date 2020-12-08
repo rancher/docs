@@ -16,6 +16,7 @@ For information on which ports need to be opened for K3s, refer to the [Installa
   - [Usage](#usage)
   - [Excluding the Service LB from Nodes](#excluding-the-service-lb-from-nodes)
   - [Disabling the Service LB](#disabling-the-service-lb)
+- [Nodes Without a Hostname](#nodes-without-a-hostname)
 
 # CoreDNS
 
