@@ -53,7 +53,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 - [Webhook](#webhook)
 - [WeChat](#wechat)
 - [DingTalk](#dingtalk)
-- [MicrosoftTeams](#microsoftteams)
+- [Microsoft Teams](#microsoft-teams)
 
 ### Slack
 
