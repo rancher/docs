@@ -18,7 +18,7 @@ Rancher integrates with a variety of popular IT services, including:
 - **PagerDuty**: Route notifications to staff by phone, SMS, or personal email.
 - **WebHooks**: Update a webpage with alert notifications.
 - **WeChat**: (Available as of v2.2.0) Send alert notifications to your Enterprise WeChat contacts.
-- **DingTalk**: (Available as of v2.4.6) Send alert notifications to DingChat using a webhook.
+- **DingTalk**: (Available as of v2.4.6) Send alert notifications to DingTalk using a webhook.
 - **Microsoft Teams**: (Available as of v2.4.6) Send alert notifications to Teams using a webhook.
 
 This section covers the following topics:
