@@ -28,7 +28,7 @@ You can choose to not have any operator-level storage location configured. If yo
 
 | Parameter | Description |
 | -------------- | -------------- |
-| Credential Secret | Choose the credentials for S3 from your secrets in Rancher. |
+| Credential Secret | Choose the credentials for S3 from your secrets in Rancher. [Example]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/examples/#example-credential-secret-for-storing-backups-in-s3). |
 | Bucket Name | Enter the name of the [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) where the backups will be stored. Default: `rancherbackups`. |
 | Region | The [AWS region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. |
 | Folder | The [folder in the S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html) where the backups will be stored. |
