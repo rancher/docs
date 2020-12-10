@@ -6,7 +6,7 @@
           <th>etcd Plane Nodes</th>
           <th>Control Plane Nodes</th>
           <th>Worker Plane Nodes</th>
-          <th>External Load Balancer</th>
+          <th>External Rancher Load Balancer</th>
           <th>Internet</th>
         </tr>
     </thead>
@@ -46,7 +46,7 @@
           <td></td>
         </tr>
         <tr>
-          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(6)</sup></td>
           <td></td>
         </tr>
         <tr>
@@ -81,7 +81,7 @@
           <td></td>
         </tr>
         <tr>
-          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(6)</sup></td>
           <td></td>
         </tr>
         <tr>
@@ -114,7 +114,7 @@
           <td></td>
         </tr>
         <tr>
-          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(7)</sup></td>
+          <td colspan="3" style="background-color: #3497DA; color:#ffffff;">4789 UDP <sup>(6)</sup></td>
           <td></td>
         </tr>
         <tr>
@@ -130,41 +130,16 @@
           <td></td>
         </tr>
         <tr>
-          <td rowspan="2">External Load Balancer <sup>(5)</sup></td>
-          <td style="background-color: #3497DA; color:#ffffff;">80 TCP</td>
+          <td>Kubernetes API Clients</td>
           <td></td>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(6)</sup></td>
-          <td></td>
-          <td></td>
+          <td style="background-color: #3497DA; color:#ffffff;">6443 TCP <sup>(5)</sup></td>
           <td></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <td rowspan="2">API / UI Clients</td>
-          <td style="background-color: #3497DA; color:#ffffff;">80 TCP <sup>(3)</sup></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td style="background-color: #3497DA; color:#ffffff;">80 TCP<br></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td style="background-color: #3497DA; color:#ffffff;">443 TCP <sup>(3)</sup></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td style="background-color: #3497DA; color:#ffffff;">443 TCP</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td rowspan="3">Workload Clients</td>
+          <td rowspan="3">Workload Clients or Load Balancer</td>
           <td></td>
           <td></td>
           <td></td>
@@ -175,19 +150,19 @@
         <tr>
           <td></td>
           <td></td>
-          <td colspan="2" style="background-color: #3497DA; color:#ffffff;">80 TCP (Ingress)</td>
           <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td colspan="2" style="background-color: #3497DA; color:#ffffff;">443 TCP (Ingress)</td>
-          <td></td>
+          <td style="background-color: #3497DA; color:#ffffff;">80 TCP (Ingress)</td>
           <td></td>
         </tr>
         <tr>
-          <td colspan="7">Notes:<br><br>1. Nodes running standalone server or Rancher HA deployment.<br>2. Required to fetch Rancher chart library.<br>3. Only without external load balancer.<br>4. Local traffic to the node itself (not across nodes).<br>5. Load balancer / proxy that handles tragging to the Rancher UI / API.<br>6. Only if SSL is not terminated at external load balancer.<br>7. Only if using Overlay mode on Windows cluster.</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style="background-color: #3497DA; color:#ffffff;">443 TCP (Ingress)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="7">Notes:<br><br>1. Nodes running standalone server or Rancher HA deployment.<br>2. Required to fetch Rancher chart library.<br>3. Only without external load balancer in front of Rancher.<br>4. Local traffic to the node itself (not across nodes).<br>5. Only if Authorized Cluster Endpoints are activated.<br>6. Only if using Overlay mode on Windows cluster.</td>
         </tr>
     </tbody>
 </table>

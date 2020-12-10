@@ -23,24 +23,57 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 > **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
 
+The following tables break down the port requirements for inbound and outbound traffic:
+
 <figcaption>Inbound Rules for Rancher Server Nodes</figcaption>
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
+| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
+| TCP      | 443  | <ul><li>server nodes</li><li>agent nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
 | TCP | 6443 | K3s server nodes | Kubernetes API
 | UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN.
 | TCP | 10250 | K3s server and agent nodes | kubelet
 
-Typically all outbound traffic is allowed.
+<figcaption>Outbound Rules for Rancher Nodes</figcaption>
+
+| Protocol | Port | Destination                                              | Description                                   |
+| -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
+| TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
+| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
+| TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
+| TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
 {{% /tab %}}
 {{% tab "RKE" %}}
+
+Typically Rancher is installed on three RKE nodes that all have the etcd, control plane and worker roles.
+
+The following tables break down the port requirements for traffic between the Rancher nodes:
+
+<figcaption>Rules for traffic between Rancher nodes</figcaption>
+
+| Protocol | Port | Description |
+|-----|-----|----------------|
+| TCP | 443 | Rancher agents |
+| TCP | 2379 | etcd client requests |
+| TCP | 2380 | etcd peer communication |
+| TCP | 6443 | Kubernetes apiserver |
+| UDP | 8472 | Canal/Flannel VXLAN overlay networking |
+| TCP | 9099 | Canal/Flannel livenessProbe/readinessProbe |
+| TCP | 10250 | kubelet |
+| TCP | 10254 | Ingress controller livenessProbe/readinessProbe |
+
+The following tables break down the port requirements for inbound and outbound traffic:
+
 <figcaption>Inbound Rules for Rancher Nodes</figcaption>
 
 | Protocol | Port | Source | Description |
 |-----|-----|----------------|---|
+| TCP | 22 | RKE CLI | SSH provisioning of node by RKE |
 | TCP | 80 | Load Balancer/Reverse Proxy | HTTP traffic to Rancher UI/API |
 | TCP | 443 | <ul><li>Load Balancer/Reverse Proxy</li><li>IPs of all cluster nodes and other API/UI clients</li></ul> | HTTPS traffic to Rancher UI/API |
+| TCP | 6443 | Kubernetes API clients | HTTPS traffic to Kubernetes API |
 
 <figcaption>Outbound Rules for Rancher Nodes</figcaption>
 
@@ -49,10 +82,13 @@ Typically all outbound traffic is allowed.
 | TCP | 443 | `35.160.43.145`,`35.167.242.46`,`52.33.59.17` | Rancher catalog (git.rancher.io) |
 | TCP | 22 | Any node created using a node driver | SSH provisioning of node by node driver |
 | TCP | 2376 | Any node created using a node driver | Docker daemon TLS port used by node driver |
+| TCP | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 | TCP | Provider dependent | Port of the Kubernetes API endpoint in hosted cluster | Kubernetes API |
 
 {{% /tab %}}
 {{% tab "Docker" %}}
+
+The following tables break down the port requirements for Rancher nodes, for inbound and outbound traffic:
 
 <figcaption>Inbound Rules for Rancher Node</figcaption>
 
@@ -84,6 +120,12 @@ Typically all outbound traffic is allowed.
 Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.
 
 The port requirements differ depending on how the downstream cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster types]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
+
+The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
+
+<figcaption>Port Requirements for the Rancher Management Plane</figcaption>
+
+![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
 
 >**Tip:**
 >
@@ -135,21 +177,7 @@ The following table depicts the port requirements for [imported clusters]({{<bas
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-| Protocol 	|       Port       	| Description                                     	|
-|:--------:	|:----------------:	|-------------------------------------------------	|
-|    TCP   	|        22        	| Node driver SSH provisioning                    	|
-|    TCP   	|       2376       	| Node driver Docker daemon TLS port              	|
-|    TCP   	|       2379       	| etcd client requests                           	|
-|    TCP   	|       2380       	| etcd peer communication                         	|
-|    UDP   	|       8472       	| Canal/Flannel VXLAN overlay networking          	|
-|    UDP   	|       4789       	| Flannel VXLAN overlay networking on Windows cluster |
-|    TCP   	|       9099       	| Canal/Flannel livenessProbe/readinessProbe      	|
-|    TCP    |       9796        | Default port required by Monitoring to scrape metrics |
-|    TCP   	|       6783       	| Weave Port      	|
-|    UDP   	|       6783-6784   | Weave UDP Ports      	|
-|    TCP   	|       10250      	| kubelet API                                     	|
-|    TCP   	|       10254      	| Ingress controller livenessProbe/readinessProbe 	|
-| TCP/UDP  	| 30000-</br>32767 	| NodePort port range                             	|
+{{% include file="/rancher/v2.x/en/installation/requirements/ports/common-ports-table" %}}
 
 ----
 
@@ -181,6 +209,28 @@ When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provi
 | Custom UDP Rule |    UDP   | 8472        | sg-xxx (rancher-nodes) | Inbound   |
 | Custom TCP Rule |    TCP   | 10250-10252 | sg-xxx (rancher-nodes) | Inbound   |
 | Custom TCP Rule |    TCP   | 10256       | sg-xxx (rancher-nodes) | Inbound   |
-| Custom TCP Rule |    TCP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
-| Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0            | Inbound   |
+| Custom TCP Rule |    TCP   | 30000-32767 | 0.0.0.0/0              | Inbound   |
+| Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0              | Inbound   |
 | All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
+
+### Opening Ports with firewalld
+
+[Opening Ports with firewalld]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) describes how to use firewalld to apply the above rules.
+
+### Opening SUSE Linux Ports
+
+SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
+
+1. SSH into the instance.
+1. Edit /`etc/sysconfig/SuSEfirewall2` and open the required ports. In this example, ports 9796 and 10250 are also opened for monitoring:
+  ```
+  FW_SERVICES_EXT_TCP="22 80 443 2376 2379 2380 6443 9099 9796 10250 10254 30000:32767"
+  FW_SERVICES_EXT_UDP="8472 30000:32767"
+  FW_ROUTE=yes
+  ```
+1. Restart the firewall with the new ports:
+  ```
+  SuSEfirewall2
+  ```
+
+**Result:** The node has the open ports required to be added to a custom cluster.
