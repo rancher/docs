@@ -1,22 +1,24 @@
 ---
 title: Rollbacks
-weight: 1010
+weight: 3
 aliases:
   - /rancher/v2.x/en/upgrades/rollbacks
+  - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks
+  - /rancher/v2.x/en/upgrades/ha-server-rollbacks
+  - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks
+  - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks
 ---
 
-This section contains information about how to roll back your Rancher server to a previous version.
+To roll back to Rancher v2.5+, use the `rancher-backup` application and restore Rancher from backup according to [this section.]({{<baseurl>}}/rancher/v2.x/en/backups/restoring-rancher/)
 
-If you upgrade Rancher and the upgrade does not complete successfully, you may need to [restore Rancher from backup.](../../backups/restores)
+To roll back to Rancher prior to v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/restorations/ha-restoration) Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 
-Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
+For information on how to roll back Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
 
->**Note:** Managed clusters are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
+> Managed clusters are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
 
-- [Rolling back Rancher installed with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
-- [Rolling back Rancher installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks/)
-
-### Special Scenarios regarding Rollbacks
+### Rolling back to v2.0.0-v2.1.5
 
 If you are rolling back to versions in either of these scenarios, you must follow some extra instructions in order to get your clusters working.
 
@@ -26,7 +28,6 @@ If you are rolling back to versions in either of these scenarios, you must follo
 Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20321), special steps are necessary if the user wants to roll back to a previous version of Rancher where this vulnerability exists. The steps are as follows:
 
 1. Record the `serviceAccountToken` for each cluster.  To do this, save the following script on a machine with `kubectl` access to the Rancher management plane and execute it.  You will need to run these commands on the machine where the rancher container is running. Ensure JQ is installed before running the command. The commands will vary depending on how you installed Rancher.
-
 
     **Rancher Installed with Docker**
     ```

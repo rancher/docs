@@ -1,6 +1,6 @@
 ---
-title: Upgrades and Rollbacks
-weight:
+title: Upgrades
+weight: 2
 ---
 
 When RancherD is upgraded, the Rancher Helm controller and the Fleet pods are upgraded.
@@ -37,8 +37,6 @@ To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow t
 
 If necessary, restore Rancher from backup by following [these steps.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/restoring-rancher/)
 
-To roll back Rancher to a previous version, uninstall the Helm chart and reinstall the Helm chart for the previous version.
-
 ### Upgrading Both Rancher and the Underlying Cluster
 
 Upgrade both RancherD and the underlying Kubernetes cluster by re-running the RancherD installation script.
@@ -67,4 +65,4 @@ systemctl start rancherd-server
 
 The upgrade can also be performed by manually installing the binary of the desired version.
 
-To roll back Rancher to a previous version, re-run the installation script with the previous version specified in the `INSTALL_RANCHERD_VERSION` environment variable.
+

@@ -3,6 +3,7 @@ title: Upgrading Cert-Manager with Helm 2
 weight: 2040
 aliases:
   - /rancher/v2.x/en/installation/options/upgrading-cert-manager/helm-2-instructions
+  - /rancher/v2.x/en/installation/resources/choosing-version/encryption/upgrading-cert-manager/helm-2-instructions
 ---
 
 Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:

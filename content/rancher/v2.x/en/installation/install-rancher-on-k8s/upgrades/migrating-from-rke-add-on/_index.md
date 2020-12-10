@@ -5,6 +5,8 @@ aliases:
   - /rancher/v2.x/en/upgrades/ha-server-upgrade/
   - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade/
   - /rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on
+  - /rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/migrating-from-rke-add-on
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/migrating-from-rke-add-on
 ---
 
 > **Important: RKE add-on install is only supported up to Rancher v2.0.8**

@@ -12,17 +12,27 @@ aliases:
 
 After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
 
-## Before You Start
+### How to Read Placeholders
 
 During the creation of your backup, you'll enter a series of commands, replacing placeholders with data from your environment. These placeholders are denoted with angled brackets and all capital letters (`<EXAMPLE>`). Here's an example of a command with a placeholder:
 
 ```
-docker run  --volumes-from rancher-data-<DATE> -v $PWD:/backup busybox tar pzcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+docker run  \
+  --volumes-from rancher-data-<DATE> \
+  -v $PWD:/backup busybox tar pzcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
 ```
 
 In this command, `<DATE>` is a placeholder for the date that the data container and backup were created. `9-27-18` for example.
 
-Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the [procedure below](#creating-a-backup).
+### Obtaining Placeholder Data
+
+Get the placeholder data by running:
+
+```
+docker ps
+```
+
+Write down or copy this information before starting the [procedure below](#creating-a-backup).
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
 ![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref.png)
@@ -37,7 +47,7 @@ Cross reference the image and reference table below to learn how to obtain this 
 
 You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped with `docker ps -a`. Use these commands for help anytime while creating backups.
 
-## Creating a Backup
+### Creating a Backup
 
 This procedure creates a backup that you can restore if Rancher encounters a disaster scenario.
 

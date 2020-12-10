@@ -1,11 +1,18 @@
 ---
 title: Helm Chart Options
-weight: 2
+weight: 1
 aliases:
   - /rancher/v2.x/en/installation/options/
   - /rancher/v2.x/en/installation/options/chart-options/
   - /rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/
+  - /rancher/v2.x/en/installation/resources/chart-options
 ---
+
+This page is a configuration reference for the Rancher Helm chart.
+
+For help choosing a Helm chart version, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/choosing-version/)
+
+For information on enabling experimental features, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/feature-flags/)
 
 - [Common Options](#common-options)
 - [Advanced Options](#advanced-options)

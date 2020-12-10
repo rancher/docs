@@ -4,19 +4,20 @@ weight: 3
 aliases:
   - /rancher/v2.x/en/installation/options/tls-settings/ 
   - /rancher/v2.x/en/admin-settings/tls-settings
+  - /rancher/v2.x/en/installation/resources/encryption/tls-settings
 ---
 
 In Rancher v2.1.7, the default TLS configuration changed to only accept TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.
 
-## Configuring TLS settings
+# Configuring TLS settings
 
 The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
 
-- [Installing Rancher on a single node with Docker]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#tls-settings)
+- [TLS settings in Docker options]({{<baseurl>}}/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#tls-settings)
 
-- [Installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#tls-settings)
+- [TLS settings in Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#tls-settings)
 
-## TLS settings
+# TLS Environment Variables
 
 | Parameter | Description | Default | Available options |
 |-----|-----|-----|-----|
@@ -24,7 +25,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 | `CATTLE_TLS_CIPHERS` | Allowed TLS cipher suites | `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,`<br/>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305` | See [Golang tls constants](https://golang.org/pkg/crypto/tls/#pkg-constants) |
 
 
-## Legacy configuration
+# Legacy configuration
 
 If you need to configure TLS the same way as it was before Rancher v2.1.7, please use the following settings:
 

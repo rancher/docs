@@ -34,6 +34,8 @@ Prepare by creating 3 new nodes to be the target for the restored Rancher instan
 
 Alternatively you can re-use the existing nodes after clearing Kubernetes and Rancher configurations. This will destroy the data on these nodes. See [Node Cleanup]({{<baseurl>}}/rancher/v2.x/en/faq/cleaning-cluster-nodes/) for the procedure.
 
+You must restore each of your etcd nodes to the same snapshot. Copy the snapshot you're using from one of your nodes to the others before running the `etcd snapshot-restore` command.
+
 > **IMPORTANT:** Before starting the restore make sure all the Kubernetes services on the old cluster nodes are stopped. We recommend powering off the nodes to be sure.
 
 ### 2. Place Snapshot

@@ -3,6 +3,8 @@ title: Upgrading to v2.0.7+ — Namespace Migration
 weight: 1040
 aliases:
   - /rancher/v2.x/en/upgrades/upgrades/namespace-migration
+  - /rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/namespace-migration
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/namespace-migration
 ---
 >This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
