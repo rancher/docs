@@ -1,13 +1,11 @@
 ---
-title: Node Requirements for User Clusters
+title: Node Requirements for Rancher Managed Clusters
 weight: 1
 ---
 
-This page describes the requirements for the nodes where your apps and services will be installed.
+This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the cluster (or single node) running Rancher.
 
-In this section, "user cluster" refers to a cluster running your apps, which should be separate from the cluster (or single node) running Rancher.
-
-> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and user clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
+> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and downstream clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/)
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
@@ -28,17 +26,49 @@ If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/r
 
 For information on how to install Docker, refer to the official [Docker documentation.](https://docs.docker.com/)
 
+### Oracle Linux and RHEL Derived Linux Nodes
+
 Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.
 
-SUSE Linux may have a firewall that blocks all ports by default. In that situation, follow [these steps](#opening-suse-linux-ports) to open the ports needed for adding a host to a custom cluster.
+### SUSE Linux Nodes
 
-### Requirements for Windows Nodes
+SUSE Linux may have a firewall that blocks all ports by default. In that situation, follow [these steps]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#opening-suse-linux-ports) to open the ports needed for adding a host to a custom cluster.
+
+### Windows Nodes
 
 _Windows worker nodes can be used as of Rancher v2.3.0_
 
 Nodes with Windows Server must run Docker Enterprise Edition.
 
 Windows nodes can be used for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
+
+### Flatcar Linux Nodes
+
+To deploy an RKE Kubernetes cluster using Flatcar Linux (flatcar-linux-stable-2605.6.0) nodes, we recommend the following configuration in the `rancher-cluster.yml`:
+
+{{% accordion label="click to expand" %}}
+```yaml
+nodes:
+  - address:
+    internal_address: 
+    user: core
+    role: [etcd, controlplane, worker]   
+    ssh_key_path:  
+
+network:
+  plugin: calico
+  options:
+    calico_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+    flannel_backend_type: vxlan
+
+services:
+  kube-controller:
+    extra_args:
+      flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
+```
+{{% /accordion %}}
+
+
 
 # Hardware Requirements
 

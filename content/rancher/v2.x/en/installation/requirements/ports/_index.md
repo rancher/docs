@@ -213,10 +213,6 @@ When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provi
 | Custom UDP Rule |    UDP   | 30000-32767 | 0.0.0.0/0              | Inbound   |
 | All traffic     |    All   | All         | 0.0.0.0/0              | Outbound  |
 
-### Opening Ports with firewalld
-
-[Opening Ports with firewalld]({{<baseurl>}}/rancher/v2.x/en/installation/options/firewall) describes how to use firewalld to apply the above rules.
-
 ### Opening SUSE Linux Ports
 
 SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
