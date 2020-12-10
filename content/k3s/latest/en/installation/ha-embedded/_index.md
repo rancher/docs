@@ -1,17 +1,14 @@
 ---
-title: "High Availability with Embedded DB (Experimental)"
+title: "High Availability with Embedded DB"
 weight: 40
 ---
 
-K3s is previewing support for running a highly available control plane without the need for an external database. This means there is no need to manage an external etcd or SQL datastore.
-
+K3s has added support for embedded etcd as of release v1.19.5+k3s1. Versions v1.19.1 thru v1.19.4 provide only experimental support for embedded etcd.
 In K3s 1.0.0, Dqlite was used as the experimental embedded database. In K3s v1.19.1+, embedded etcd is used.
 
 Please note that upgrades from experimental Dqlite to experimental embedded etcd are not supported. If you attempt an upgrade it will not succeed and data will be lost.
 
-### Embedded etcd (Experimental)
-
-_Available as of K3s v1.19.1_
+### Embedded etcd
 
 To run K3s in this mode, you must have an odd number of server nodes. We recommend starting with three nodes.
 
@@ -29,7 +26,7 @@ Now you have a highly available control plane. Joining additional worker nodes t
 
 ### Embedded Dqlite (Deprecated)
 
-> **Warning:** Experimental etcd replaced experimental Dqlite in the K3s v1.19.1 release. This is a breaking change. Please note that upgrades from experimental Dqlite to experimental embedded etcd are not supported. If you attempt an upgrade it will not succeed and data will be lost.
+> **Warning:** Embedded etcd replaced experimental Dqlite in the K3s v1.19.1 release. Embedded etcd was experimental in the v1.19.1 release and is now considered stable in the 1.19.5 release and newer. This is a breaking change. Please note that upgrades from experimental Dqlite to embedded etcd are not supported. If you attempt an upgrade it will not succeed and data will be lost.
 
 As of v1.0.0, K3s previewed support for running a highly available control plane without the need for an external database.
 
