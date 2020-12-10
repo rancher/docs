@@ -75,6 +75,7 @@ Rancher v2.5.4 introduced the capability to configure reducers by filling out fo
 | Labels |  Labels to add or overwrite for each alert.      |
 | Severity |   When enabled, labels are attached to the alert or record that identify it by the severity level.  |
 | Severity Label Value | Critical, warning, or none |
+| Annotations |  Annotations are a set of informational labels that can be used to store longer additional information, such as alert descriptions or runbook links. A [runbook](https://docs.gitlab.com/ee/user/project/clusters/runbooks/) is a set of documentation about how to handle alerts. The annotation values can be [templated.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/#templating)  |
 
 ### Recording Rules
 
