@@ -34,6 +34,54 @@ Some distributions of Linux derived from RHEL, including Oracle Linux, may have 
 
 SUSE Linux may have a firewall that blocks all ports by default. In that situation, follow [these steps]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#opening-suse-linux-ports) to open the ports needed for adding a host to a custom cluster.
 
+### Flatcar Container Linux Nodes
+
+When [Launching Kubernetes with Rancher]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#cluster-config-file)
+
+{{% tabs %}}
+{{% tab "Canal"%}}
+
+```yaml
+rancher_kubernetes_engine_config:
+  network:
+    plugin: canal
+    options:
+      canal_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+      flannel_backend_type: vxlan
+
+  services:
+    kube-controller:
+      extra_args:
+        flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
+```
+{{% /tab %}}
+
+{{% tab "Calico"%}}
+
+```yaml
+rancher_kubernetes_engine_config:
+  network:
+    plugin: calico
+    options:
+      calico_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+      flannel_backend_type: vxlan
+
+  services:
+    kube-controller:
+      extra_args:
+        flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
+```
+{{% /tab %}}
+{{% /tabs %}}
+
+It is also required to enable the Docker service, you can enable the Docker service using the following command:
+
+```
+systemctl enable docker.service
+```
+
+The Docker service is enabled automatically when using [Node Drivers]({{<baseurl>}}/rancher/v2.x/en/admin-settings/drivers/#node-drivers).
+
 ### Windows Nodes
 
 _Windows worker nodes can be used as of Rancher v2.3.0_
@@ -41,34 +89,6 @@ _Windows worker nodes can be used as of Rancher v2.3.0_
 Nodes with Windows Server must run Docker Enterprise Edition.
 
 Windows nodes can be used for worker nodes only. See [Configuring Custom Clusters for Windows]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/)
-
-### Flatcar Linux Nodes
-
-To deploy an RKE Kubernetes cluster using Flatcar Linux (flatcar-linux-stable-2605.6.0) nodes, we recommend the following configuration in the `rancher-cluster.yml`:
-
-{{% accordion label="click to expand" %}}
-```yaml
-nodes:
-  - address:
-    internal_address: 
-    user: core
-    role: [etcd, controlplane, worker]   
-    ssh_key_path:  
-
-network:
-  plugin: calico
-  options:
-    calico_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
-    flannel_backend_type: vxlan
-
-services:
-  kube-controller:
-    extra_args:
-      flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
-```
-{{% /accordion %}}
-
-
 
 # Hardware Requirements
 

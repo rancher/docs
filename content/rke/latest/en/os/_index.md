@@ -16,6 +16,7 @@ weight: 5
 
         - [OpenSSH version](#openssh-version)
         - [Creating a Docker Group](#creating-a-docker-group)
+    - [Flatcar Container Linux](#flatcar-container-linux)
 - [Software](#software)
 - [Ports](#ports)
 
@@ -160,6 +161,52 @@ By default, Atomic hosts do not come with a Docker group. You can update the own
 
 ```
 # chown <user> /var/run/docker.sock
+```
+
+### Flatcar Container Linux
+
+When using Flatcar Container Linux nodes, it is required to use the following configuration in the cluster configuration file:
+
+{{% tabs %}}
+{{% tab "Canal"%}}
+
+```yaml
+rancher_kubernetes_engine_config:
+  network:
+    plugin: canal
+    options:
+      canal_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+      flannel_backend_type: vxlan
+
+  services:
+    kube-controller:
+      extra_args:
+        flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
+``` 
+{{% /tab %}}
+
+{{% tab "Calico"%}}
+
+```yaml
+rancher_kubernetes_engine_config:
+  network:
+    plugin: calico
+    options:
+      calico_flex_volume_plugin_dir: /opt/kubernetes/kubelet-plugins/volume/exec/nodeagent~uds
+      flannel_backend_type: vxlan
+
+  services:
+    kube-controller:
+      extra_args:
+        flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
+```
+{{% /tab %}}
+{{% /tabs %}}
+
+It is also required to enable the Docker service, you can enable the Docker service using the following command:
+
+```
+systemctl enable docker.service
 ```
 
 ## Software
