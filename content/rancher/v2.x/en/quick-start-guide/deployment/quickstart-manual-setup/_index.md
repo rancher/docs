@@ -4,7 +4,7 @@ weight: 300
 ---
 Howdy Partner! This tutorial walks you through:
 
-- Installation of {{< product >}} 2.x
+- Installation of Rancher 2.x
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
@@ -30,7 +30,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
  Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
 - A cloud-host virtual machine (VM)
-- An on-premise VM
+- An on-prem VM
 - A bare-metal server
 
   >**Note:**
@@ -49,8 +49,8 @@ To install Rancher on your host, connect to it and then use a shell to install.
 2.  From your shell, enter the following command:
 
 	```
-sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
-	```
+  sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
+  ```
 
 **Result:** Rancher is installed.
 
@@ -72,7 +72,7 @@ Log in to Rancher to begin using the application. After you log in, you'll make 
 
 Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
-In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-premise VM, or bare-metal) to be used in a cluster.
+In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -96,9 +96,17 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 11. When you finish running the command on your Linux host, click **Done**.
 
-{{< result_create-cluster >}}
-<br/>
-<br/>
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
 #### Finished
 
 Congratulations! You have created your first cluster.

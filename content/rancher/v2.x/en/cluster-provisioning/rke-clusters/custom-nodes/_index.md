@@ -8,7 +8,7 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/custom-clusters/
 ---
 
-When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-premise bare-metal servers, on-premise virtual machines, or in any node hosted by an infrastructure provider.
+When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-prem bare-metal servers, on-prem virtual machines, or in any node hosted by an infrastructure provider.
 
 To use this option you'll need access to servers you intend to use in your Kubernetes cluster. Provision each server according to the [requirements]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements), which includes some hardware specifications and Docker. After you install Docker on each server, run the command provided in the Rancher UI to turn each server into a Kubernetes node.
 
@@ -33,7 +33,7 @@ This section describes how to set up a custom cluster.
 Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
 
 - A cloud-host virtual machine (VM)
-- An on-premise VM
+- An on-prem VM
 - A bare-metal server
 
 If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.x/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
@@ -48,9 +48,9 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 3. Enter a **Cluster Name**.
 
-4. {{< step_create-cluster_member-roles >}}
+4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
-5. {{< step_create-cluster_cluster-options >}}
+5. Use **Cluster Options** to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.**
 
     >**Using Windows nodes as Kubernetes workers?**
     >
@@ -75,7 +75,17 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 11. When you finish running the command(s) on your Linux host(s), click **Done**.
 
-{{< result_create-cluster >}}
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
 
 ### 3. Amazon Only: Tag Resources
 

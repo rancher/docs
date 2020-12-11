@@ -5,37 +5,81 @@ weight: 2215
 aliases:
   - /rancher/v2.x/en/tasks/clusters/creating-a-cluster/create-cluster-digital-ocean/
 ---
-Use {{< product >}} to create a Kubernetes cluster using DigitalOcean.
+In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in DigitalOcean.
+
+First, you will set up your DigitalOcean cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in DigitalOcean. 
+
+Then you will create a DigitalOcean cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+
+{{% tabs %}}
+{{% tab "Rancher v2.2.0+" %}}
+1. [Create your cloud credentials](#1-create-your-cloud-credentials)
+2. [Create a node template with your cloud credentials](#2-create-a-node-template-with-your-cloud-credentials)
+3. [Create a cluster with node pools using the node template](#3-create-a-cluster-with-node-pools-using-the-node-template)
+
+### 1. Create your cloud credentials
+
+1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
+1. Click **Add Cloud Credential.**
+1. Enter a name for the cloud credential.
+1. In the **Cloud Credential Type** field, select **DigitalOcean**.
+1. Enter your Digital Ocean credentials.
+1. Click **Create.**
+
+**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
+
+### 2. Create a node template with your cloud credentials
+
+Creating a [node template]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) for DigitalOcean will allow Rancher to provision new nodes in DigitalOcean. Node templates can be reused for other clusters.
+
+1. In the Rancher UI, click the user profile button in the upper right corner, and click **Node Templates.**
+1. Click **Add Template.**
+1. Fill out a node template for DigitalOcean. For help filling out the form, refer to [DigitalOcean Node Template Configuration.](./do-node-template-config)
+
+### 3. Create a cluster with node pools using the node template
 
 1. From the **Clusters** page, click **Add Cluster**.
+1. Choose **DigitalOcean**.
+1. Enter a **Cluster Name**.
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.** For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)
+1. Add one or more node pools to your cluster. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices for assigning Kubernetes roles to them, see [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) 
+1. Review your options to confirm they're correct. Then click **Create**.
 
-2. Choose **DigitalOcean**.
+**Result:** 
 
-3. Enter a **Cluster Name**.
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
-4. {{< step_create-cluster_member-roles >}}
+You can access your cluster after its state is updated to **Active.**
 
-5. {{< step_create-cluster_cluster-options >}}
+**Active** clusters are assigned two Projects: 
 
-6. {{< step_create-cluster_node-pools >}}
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-	1.	Click **Add Node Template**. Note: As of v2.2.0, account access information is stored as a cloud credentials. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one. To create a new cloud credential, enter **Name** and **Account Access** data, then click **Create.**
+{{% /tab %}}
+{{% tab "Rancher prior to v2.2.0" %}}
 
-	2.  Complete the **Digital Ocean Options** form.
+1. From the **Clusters** page, click **Add Cluster**.
+1. Choose **DigitalOcean**.
+1. Enter a **Cluster Name**.
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.** For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options)
+1.  Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. To create a node template, click **Add Node Template** and complete the **Digital Ocean Options** form. For help filling out the form, refer to the [Digital Ocean node template configuration reference.](./do-node-template-config) For more information about node pools, including best practices for assigning Kubernetes roles to them, see [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools) 
+1. Review your options to confirm they're correct. Then click **Create**.
 
-		- **Access Token** stores your DigitalOcean Personal Access Token. Refer to [DigitalOcean Instructions: How To Generate a Personal Access Token](https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2#how-to-generate-a-personal-access-token).
+**Result:** 
 
-		- **Droplet Options** provision your cluster's geographical region and specifications.
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
-	4. {{< step_rancher-template >}}
+You can access your cluster after its state is updated to **Active.**
 
-	5. Click **Create**.
+**Active** clusters are assigned two Projects: 
 
-	6. **Optional:** Add additional node pools.
-<br/>
-7. Review your options to confirm they're correct. Then click **Create**.
-
-{{< result_create-cluster >}}
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+{{% /tab %}}
+{{% /tabs %}}
 
 # Optional Next Steps
 

@@ -1,9 +1,0 @@
-<p>Add one or more <strong>node pools</strong> to your cluster.<br/><br/>A <strong>node pool</strong> is a collection of nodes based on a node template. A node template defines the configuration of a node, like what operating system to use, number of CPUs and amount of memory. Each node pool must have one or more nodes roles assigned.</p>
-
-<blockquote>
-	<p><strong>Notes:</strong></p>
-	<ul>
-		<li>Each node role (i.e. <code>etcd</code>, <code>Control Plane</code>, and <code>Worker</code>) should be assigned to a distinct node pool. Although it is possible to assign multiple node roles to a node pool, this should not be done for production clusters. </li>
-		<li>The recommended setup is to have a node pool with the <code>etcd</code> node role and a count of three, a node pool with the <code>Control Plane</code> node role and a count of at least two, and a node pool with the <code>Worker</code> node role and a count of at least two. Regarding the <code>etcd</code> node role, refer to the <a href="https://coreos.com/etcd/docs/latest/v2/admin_guide.html#optimal-cluster-size" target="_blank">etcd Admin Guide</a>.</li>
-	</ul>
-</blockquote>

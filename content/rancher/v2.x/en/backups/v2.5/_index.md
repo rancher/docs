@@ -19,6 +19,7 @@ The Rancher version must be v2.5.0 and up to use this approach of backing up and
 - [Installing the rancher-backup Operator](#installing-the-rancher-backup-operator)
   - [Installing rancher-backup with the Rancher UI](#installing-rancher-backup-with-the-rancher-ui)
   - [Installing rancher-backup with the Helm CLI](#installing-rancher-backup-with-the-helm-cli)
+  - [RBAC](#rbac)
 - [Backing up Rancher](#backing-up-rancher)
 - [Restoring Rancher](#restoring-rancher)
 - [Migrating Rancher to a New Cluster](#migrating-rancher-to-a-new-cluster)
@@ -95,11 +96,12 @@ helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-sy
 
 ### RBAC
 
-Only the rancher admins, and local cluster’s cluster-owner can:
+Only the rancher admins and the local cluster’s cluster-owner can:
 
 * Install the Chart
 * See the navigation links for Backup and Restore CRDs
-* Perform a backup or restore by creating a Backup CR and Restore CR respectively, list backups/restores performed so far
+* Perform a backup or restore by creating a Backup CR and Restore CR respectively
+* List backups/restores performed so far
 
 # Backing up Rancher
 

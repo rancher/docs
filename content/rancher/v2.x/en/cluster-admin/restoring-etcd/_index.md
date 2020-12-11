@@ -30,14 +30,14 @@ The list of all available snapshots for the cluster is available.
 
 If your Kubernetes cluster is broken, you can restore the cluster from a snapshot.
 
-Restorations changed in Rancher v2.4.0.
+Restores changed in Rancher v2.4.0.
 
 {{% tabs %}}
 {{% tab "Rancher v2.4.0+" %}}
 
 Snapshots are composed of the cluster data in etcd, the Kubernetes version, and the cluster configuration in the `cluster.yml.` These components allow you to select from the following options when restoring a cluster from a snapshot:
 
-- **Restore just the etcd contents:** This restoration is similar to restoring to snapshots in Rancher prior to v2.4.0.
+- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher prior to v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
@@ -51,7 +51,7 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 3. Select the snapshot that you want to use for restoring your cluster from the dropdown of available snapshots.
 
-4. In the **Restoration Type** field, choose one of the restoration options described above.
+4. In the **Restoration Type** field, choose one of the restore options described above.
 
 5. Click **Save**.
 

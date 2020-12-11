@@ -160,6 +160,7 @@ If you watch the pods, you will see the following pods installed:
 - a `rancher` pod and `rancher-webhook` pod in the `cattle-system` namespace
 - a `fleet-agent`, `fleet-controller`, and `gitjob` pod in the `fleet-system` namespace
 - a `rancher-operator` pod in the `rancher-operator-system` namespace
+
 ### 5. Set the initial Rancher password
 
 Once the `rancher` pod is up and running, run the following:

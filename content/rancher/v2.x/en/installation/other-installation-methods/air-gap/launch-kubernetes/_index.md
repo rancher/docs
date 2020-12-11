@@ -1,5 +1,5 @@
 ---
-title: '3. Install Kubernetes (RKE and K3s installs only)'
+title: '3. Install Kubernetes (Skip for Docker Installs)'
 weight: 300
 aliases:
   - /rancher/v2.x/en/installation/air-gap-high-availability/install-kube

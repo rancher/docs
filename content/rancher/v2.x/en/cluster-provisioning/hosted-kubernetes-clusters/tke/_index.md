@@ -29,7 +29,7 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 3. Enter a **Cluster Name**.
 
-4. {{< step_create-cluster_member-roles >}}
+4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
 5. Configure **Account Access** for the TKE cluster. Complete each drop-down and field using the information obtained in [Prerequisites](#prerequisites).
 
@@ -74,4 +74,13 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 9. Click **Create**.
 
-{{< result_create-cluster >}}
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

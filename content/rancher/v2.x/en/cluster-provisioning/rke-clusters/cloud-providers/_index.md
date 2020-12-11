@@ -18,6 +18,7 @@ The following cloud providers can be enabled:
 * Amazon
 * Azure
 * GCE (Google Compute Engine)
+* vSphere
 
 ### Setting up the Amazon Cloud Provider
 
@@ -30,6 +31,10 @@ For details on enabling the Azure cloud provider, refer to [this page.]({{<baseu
 ### Setting up the GCE Cloud Provider
 
 For details on enabling the Google Compute Engine cloud provider, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/gce)
+
+### Setting up the vSphere Cloud Provider
+
+For details on enabling the vSphere cloud provider, refer to [this page.](./vsphere)
 
 ### Setting up a Custom Cloud Provider
 

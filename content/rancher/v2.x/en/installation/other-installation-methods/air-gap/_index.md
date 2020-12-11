@@ -24,4 +24,8 @@ Throughout the installation instructions, there will be _tabs_ for each installa
 3. [Set up a Kubernetes cluster (Skip this step for Docker installations)]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 4. [Install Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/)
 
+# Upgrades
+
+To upgrade Rancher with Helm CLI in an air gap environment, follow [this procedure.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/)
+
 ### [Next: Prepare your Node(s)]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/)
