@@ -133,6 +133,7 @@ After creating your cluster, you can access it through the Rancher UI. As a best
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
+                "ec2:ModifyInstanceMetadataOptions",
                 "ec2:AuthorizeSecurityGroupIngress",
                 "ec2:Describe*",
                 "ec2:ImportKeyPair",
@@ -185,6 +186,7 @@ After creating your cluster, you can access it through the Rancher UI. As a best
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
+                "ec2:ModifyInstanceMetadataOptions",
                 "ec2:AuthorizeSecurityGroupIngress",
                 "ec2:Describe*",
                 "ec2:ImportKeyPair",
