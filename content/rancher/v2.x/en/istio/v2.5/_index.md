@@ -18,13 +18,10 @@ This core service mesh provides features that include but are not limited to the
 
 After [setting up istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup) you can leverage Istio's control plane functionality through the Cluster Explorer, `kubectl`, or `istioctl`.
 
-Rancher's Istio integration comes with a comprehensive visualization aid:
-
-- **Get the full picture of your microservice architecture with Kiali.** [Kiali](https://www.kiali.io/) provides a diagram that shows the services within a service mesh and how they are connected, including the traffic rates and latencies between them. You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
-
 Istio needs to be set up by a `cluster-admin` before it can be used in a project.
 
 - [What's New in Rancher v2.5](#what-s-new-in-rancher-v2-5)
+- [Tools Bundled with Istio](#tools-bundled-with-istio)
 - [Prerequisites](#prerequisites)
 - [Setup Guide](#setup-guide)
 - [Remove Istio](#remove-istio)
@@ -43,6 +40,26 @@ A Prometheus integration will still be available through an installation of [Ran
 Istio has migrated away from Helm as a way to install Istio and now provides installation through the istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, Rancher's Istio will maintain a Helm chart that utilizes the istioctl binary to manage your Istio installation.
 
 This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it can be used in the project.
+
+# Tools Bundled with Istio
+
+Our [Istio](https://istio.io/) installer wraps the istioctl binary commands in a handy Helm chart, including an overlay file option to allow complex customization. 
+
+It also includes the following:
+
+### Kiali
+
+Kiali is a comprehensive visualization aid used for graphing traffic flow throughout the service mesh. It allows you to see how they are connected, including the traffic rates and latencies between them. 
+
+You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
+
+### Jaeger
+
+_Bundled as of v2.5.4_
+
+Our Istio installer includes a quick-start, all-in-one installation of [Jaeger,](https://www.jaegertracing.io/) a tool used for tracing distributed systems.
+
+Note that this is not a production-qualified deployment of Jaeger. This deployment uses an in-memory storage component, while a persistent storage component is recommended for production. For more information on which deployment strategy you may need, refer to the [Jaeger documentation.](https://www.jaegertracing.io/docs/latest/operator/#production-strategy)
 
 # Prerequisites
 
