@@ -52,11 +52,6 @@ apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: cis1.5-compliant-psp
-  annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName: 'runtime/default'
 spec:
   privileged: false                # CIS - 5.2.1
   allowPrivilegeEscalation: false  # CIS - 5.2.5
