@@ -115,7 +115,7 @@ spec:
 > **Note:** Operators must manage network policies as normal for additional namespaces that are created.
 
 ## Known Issues
-The following are controls that K3s currently does not pass, by default. Each gap will be explained and whether it can be passed through manual operator intervention or if it will be addressed in a future release.
+The following are controls that K3s currently does not pass by default. Each gap will be explained, along with a note clarifying whether it can be passed through manual operator intervention, or if it will be addressed in a future release of K3s.
 
 
 ### Control 1.2.15
