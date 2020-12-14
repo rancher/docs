@@ -9,10 +9,10 @@ This document provides prescriptive guidance for hardening a production installa
 
 K3s has a number of security mitigations applied and turned on by default and will pass a number of the Kubernetes CIS controls without modification. There are some notable exceptions to this that require manual intervention to fully comply with the CIS Benchmark:
 
-1. K3s will not modify the host operating system. Therefore, you, the operator, must make a few Host-level modifications.
-2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configuring these.
+1. K3s will not modify the host operating system. Any host-level modifications will need to be done manually.
+2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options to your command-line flags or configuration file.
 
-The first section of the CIS Benchmark (1.1), concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
+The first section (1.1) of the CIS Benchmark concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
 
 ## Host-level Requirements
 
