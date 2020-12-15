@@ -13,6 +13,7 @@ The following table lists the permissions required for the vSphere user account:
 | Network               | Assign |
 | Resource              | AssignVMToPool |
 | Virtual Machine       | Config (All) </br> GuestOperations (All) </br> Interact (All) </br> Inventory (All) </br> Provisioning (All) |
+| VApp                  | VApp application configuration </br> VApp instance configuration  |
 
 The following steps create a role with the required privileges and then assign it to a new user in the vSphere console:
 
