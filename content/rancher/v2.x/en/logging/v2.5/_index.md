@@ -82,9 +82,13 @@ According to the [Banzai Cloud documentation,](https://banzaicloud.com/docs/one-
 
 > You can define `outputs` (destinations where you want to send your log messages, for example, Elasticsearch, or and Amazon S3 bucket), and `flows` that use filters and selectors to route log messages to the appropriate outputs. You can also define cluster-wide outputs and flows, for example, to use a centralized output that namespaced users cannot modify.
 
-### Examples
+# Examples
 
-**Cluster Output to ElasticSearch:** Let's say you wanted to send all logs in your cluster to an `elasticsearch` cluster. First, we create a cluster output.
+Once logging is installed, you can use these examples to help craft your own logging pipeline.
+
+### Cluster Output to ElasticSearch
+
+Let's say you wanted to send all logs in your cluster to an `elasticsearch` cluster. First, we create a cluster output.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -116,7 +120,9 @@ spec:
 
 We should now see our configured index with logs in it.
 
-**Output to Splunk:** What if we have an application team who only wants logs from a specific namespaces sent to a `splunk` server? For this case, we can use namespaced outputs and flows. 
+### Output to Splunk
+
+What if we have an application team who only wants logs from a specific namespaces sent to a `splunk` server? For this case, we can use namespaced outputs and flows.
 
 Before we start, let's set up that team's application: `coolapp`.
 
@@ -176,7 +182,9 @@ spec:
     - "devteam-splunk"
 ```
 
-**Unsupported Ouput:** For the final example, we create an output to write logs to a destination that is not supported out of the box (e.g. syslog):
+### Unsupported Output
+
+For the final example, we create an output to write logs to a destination that is not supported out of the box (e.g. syslog):
 
 ```yaml
 apiVersion: v1
@@ -266,7 +274,7 @@ spec:
 
 Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an output configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.
 
-> **Note on syslog** The example provides an overview on using unsupported plugins, but `syslog` support is coming in a future Rancher v2.x release.
+> **Note on syslog** Official `syslog` support is coming in Rancher v2.5.4. However, this example still provides an overview on using unsupported plugins.
 
 # Working with Taints and Tolerations
 
