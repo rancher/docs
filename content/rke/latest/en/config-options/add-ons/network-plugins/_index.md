@@ -17,7 +17,7 @@ By default, the network plug-in is `canal`. If you want to use another network p
 ```yaml
 # Setting the flannel network plug-in
 network:
-    plugin: flannel
+  plugin: flannel
 ```
 
 The images used for network plug-ins are under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with each network plug-in, but these can be overridden by changing the image tag in `system_images`.
@@ -28,7 +28,7 @@ You can disable deploying a network plug-in by specifying `none` to the network 
 
 ```yaml
 network:
-    plugin: none
+  plugin: none
 ```
 
 # Network Plug-in Options
@@ -39,10 +39,10 @@ Besides the different images that could be used to deploy network plug-ins, cert
 
 ```yaml
 network:
-    plugin: canal
-    options:
-        canal_iface: eth1
-        canal_flannel_backend_type: vxlan
+  plugin: canal
+  options:
+    canal_iface: eth1
+    canal_flannel_backend_type: vxlan
 ```
 
 #### Canal Interface
@@ -50,14 +50,40 @@ network:
 By setting the `canal_iface`, you can configure the interface to use for inter-host communication.
 The `canal_flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
+## Canal Network Plug-in Tolerations
+
+_Available as of v1.2.4_
+
+The configured tolerations apply to the `calico-kube-controllers` Deployment.
+
+```
+network:
+  plugin: canal
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+```
+
+To check for applied tolerations on the `calico-kube-controllers` Deployment, use the following command:
+
+```
+kubectl -n kube-system get deploy calico-kube-controllers -o jsonpath='{.spec.template.spec.tolerations}'
+```
+
 ## Flannel Network Plug-in Options
 
 ```yaml
 network:
-    plugin: flannel
-    options:
-        flannel_iface: eth1
-        flannel_backend_type: vxlan
+  plugin: flannel
+  options:
+    flannel_iface: eth1
+    flannel_backend_type: vxlan
 ```
 
 #### Flannel Interface
@@ -69,9 +95,9 @@ The `flannel_backend_type` option allows you to specify the type of [flannel bac
 
 ```yaml
 network:
-    plugin: calico
-    options:
-        calico_cloud_provider: aws
+  plugin: calico
+  options:
+    calico_cloud_provider: aws
 ```
 #### Calico Cloud Provider
 
@@ -82,19 +108,44 @@ Calico currently only supports 2 cloud providers, AWS or GCE, which can be set u
 - `aws`
 - `gce`
 
+## Calico Network Plug-in Tolerations
+
+_Available as of v1.2.4_
+
+The configured tolerations apply to the `calico-kube-controllers` Deployment.
+
+```
+network:
+  plugin: calico
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+```
+
+To check for applied tolerations on the `calico-kube-controllers` Deployment, use the following command:
+
+```
+kubectl -n kube-system get deploy calico-kube-controllers -o jsonpath='{.spec.template.spec.tolerations}'
+```
+
 ## Weave Network Plug-in Options
 
 ```yaml
 network:
-    plugin: weave
-    weave_network_provider:
-        password: "Q]SZOQ5wp@n$oijz"
+  plugin: weave
+  weave_network_provider:
+    password: "Q]SZOQ5wp@n$oijz"
 ```
 
 #### Weave encryption
 
 Weave encryption can be enabled by passing a string password to the network provider config.
-
 
 ## Custom Network Plug-ins
 

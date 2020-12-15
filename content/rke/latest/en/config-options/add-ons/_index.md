@@ -49,3 +49,9 @@ _Applies to v0.2.3 and higher_
 | kube-dns           | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none  | - `NoSchedule:Exists`<br/>- `NoExecute:Exists`<br/>- `CriticalAddonsOnly:Exists` |
 | nginx-ingress      | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
 | metrics-server     | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
+
+## Tolerations
+
+_Available as of v1.2.4_
+
+Tolerations can be configured per add-on and apply to Deployment resources. The configured tolerations will replace the existing tolerations so make sure you configure all the tolerations you need. See the specific add-on doc pages for more information.
