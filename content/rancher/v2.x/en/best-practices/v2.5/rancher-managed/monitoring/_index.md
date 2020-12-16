@@ -79,7 +79,7 @@ To get your own custom application metrics into Prometheus, you have to collect 
 
 ### ServiceMonitors and PodMonitors
 
-Once all your workloads expose metrics in a Prometheus format, you have to configure Prometheus to scrape it. Under the hood Rancher is using the [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator). This makes it easy to add additional scraping targets with ServiceMonitors and PodMonitors. A lot of helm charts already include an option to create these monitors directly. You can also find more information in the [Rancher Documentation](TODO).
+Once all your workloads expose metrics in a Prometheus format, you have to configure Prometheus to scrape it. Under the hood Rancher is using the [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator). This makes it easy to add additional scraping targets with ServiceMonitors and PodMonitors. A lot of helm charts already include an option to create these monitors directly. You can also find more information in the Rancher documentation.
 
 ### Prometheus Push Gateway
 

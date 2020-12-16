@@ -10,8 +10,6 @@ One of the key features that Rancher adds to Kubernetes is centralized user auth
 
 This centralized user authentication is accomplished using the Rancher authentication proxy, which is installed along with the rest of Rancher. This proxy authenticates your users and forwards their requests to your Kubernetes clusters using a service account.
 
-<!-- todomark add diagram -->
-
 ## External vs. Local Authentication
 
 The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted.

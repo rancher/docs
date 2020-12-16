@@ -97,7 +97,3 @@ Results:
 ### Rancher CVEs and Resolutions
 
 Rancher is committed to informing the community of security issues in our products. For the list of CVEs (Common Vulnerabilities and Exposures) for issues we have resolved, refer to [this page.](./cve)
-
-### Security Tips and Best Practices
-
-Our [best practices guide]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-security) includes basic tips for increasing security in Rancher.
