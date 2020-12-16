@@ -6,6 +6,7 @@ weight: 1
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
 - [Overview](#overview)
+  - [Connecting Routes and PrometheusRules](#connecting-routes-and-prometheusrules)
 - [Creating Receivers in the Rancher UI](#creating-receivers-in-the-rancher-ui)
 - [Receiver Configuration](#receiver-configuration)
   - [Slack](#slack)
@@ -38,10 +39,17 @@ The full spec for the Alertmanager configuration file and what it takes in can b
 
 For more information, refer to the [official Prometheus documentation about configuring routes.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
 
+### Connecting Routes and PrometheusRules
+
+When you define a Rule within a RuleGroup of a PrometheusRule, the spec of the Rule itself contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+
 # Creating Receivers in the Rancher UI
 _Available as of v2.5.4_
 
-> **Prerequisite:** The monitoring application needs to be installed.
+> **Prerequisites:**
+>
+>- The monitoring application needs to be installed.
+>- If you configured monitoring with an existing Alertmanager Secret, it must have a format that is supported by Rancher's UI. Otherwise you will only be able to make changes based on modifying the Alertmanager Secret directly. Note: We are continuing to make enhancements to what kinds of Alertmanager Configurations we can support using the Routes and Receivers UI, so please [file an issue](https://github.com/rancher/rancher/issues/new) if you have a request for a feature enhancement.
 
 To create notification receivers in the Rancher UI,
 
@@ -56,7 +64,7 @@ To create notification receivers in the Rancher UI,
 
 The notification integrations are configured with the `receiver`, which is explained in the [Prometheus documentation.](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
 
-Rancher v2.5.4 introduced the capability to configure reducers by filling out forms in the Rancher UI.
+Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
 {{% tabs %}}
 {{% tab "Rancher v2.5.4+" %}}
@@ -77,23 +85,23 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Field | Type | Description |
 |------|--------------|------|
 | URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
-| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>` | 
+| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
 | Proxy URL   |    String    |  Proxy for the webhook notifications.  |
-| Enable send resolved alerts |   Bool    |  When true, you will receive alerts through the notifier even if the alert condition is no longer true. For example, if an alert is triggered because your CPU is too high, you will still receive the alert after CPU goes back to normal levels. |
+| Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
 ### Email
 
 | Field | Type | Description |
 |------|--------------|------|
 | Default Recipient Address |   String    |   The email address that will receive notifications.    |
-| Enable send resolved alerts |  Bool    |   When true, you will receive alerts through the notifier even if the alert condition is no longer true. For example, if an alert is triggered because your CPU is too high, you will still receive the alert after CPU goes back to normal levels. | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
 
 SMTP options:
 
 | Field | Type | Description |
 |------|--------------|------|
 | Sender |   String       |  Enter an email address available on your SMTP mail server that you want to send the notification from.   |
-| Host |   String         | Enter the IP address or hostname for your SMTP server. Example: `smtp.email.com` |
+| Host |   String         | Enter the IP address or hostname for your SMTP server. Example: `smtp.email.com`. |
 | Use TLS |   Bool     | Use TLS for encryption. |
 | Username |   String   | Enter a username to authenticate with the SMTP server. |
 | Password |   String    | Enter a password to authenticate with the SMTP server. |
@@ -102,10 +110,10 @@ SMTP options:
 
 | Field | Type | Description |
 |------|------|-------|
-| Integration Type | String | Events API v2 or Prometheus. |
+| Integration Type | String | `Events API v2` or `Prometheus`. |
 | Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
 | Proxy URL | String |  Proxy for the PagerDuty notifications.  |
-| Enable send resolved alerts |  Bool    |   When true, you will receive alerts through the notifier even if the alert condition is no longer true. For example, if an alert is triggered because your CPU is too high, you will still receive the alert after CPU goes back to normal levels. | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
 
 ### Opsgenie
 
@@ -113,7 +121,7 @@ SMTP options:
 |------|-------------|
 | API Key |   For instructions to get an API key, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/api-key-management)             |
 | Proxy URL |   Proxy for the Opsgenie notifications.        |
-| Enable send resolved alerts | When true, you will receive alerts through the notifier even if the alert condition is no longer true. For example, if an alert is triggered because your CPU is too high, you will still receive the alert after CPU goes back to normal levels.    |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).  |
 
 Opsgenie Responders:
 
@@ -127,8 +135,8 @@ Opsgenie Responders:
 | Field |    Description |
 |-------|--------------|
 | URL | Webhook URL for the app of your choice. |
-| Proxy URL | Proxy for the webhook notification |
-| Enable send resolved alerts | When true, you will receive alerts through the notifier even if the alert condition is no longer true. For example, if an alert is triggered because your CPU is too high, you will still receive the alert after CPU goes back to normal levels.    |
+| Proxy URL | Proxy for the webhook notification. |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
 
 ### Custom
 
@@ -153,21 +161,21 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 
 | Field |    Default | Description |
 |-------|--------------|---------|
-| Group By |  N/a | The labels by which incoming alerts are grouped together. For example, `[ group_by: '[' <labelname>, ... ']' ]` Multiple alerts coming in for labels such as `cluster=A` and `alertname=LatencyHigh` can be batched into a single group. To aggregate by all possible labels, use the special value `'...'` as the sole label name, for example: `group_by: ['...']`  Grouping by `...` effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
+| Group By |  N/a | The labels by which incoming alerts are grouped together. For example, `[ group_by: '[' <labelname>, ... ']' ]` Multiple alerts coming in for labels such as `cluster=A` and `alertname=LatencyHigh` can be batched into a single group. To aggregate by all possible labels, use the special value `'...'` as the sole label name, for example: `group_by: ['...']`  Grouping by `...` effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. |
 | Group Wait | 30s | How long to wait to buffer alerts of the same group before sending initially. |
 | Group Interval | 5m | How long to wait before sending an alert that has been added to a group of alerts for which an initial notification has already been sent. |
 | Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
 
 ### Matching
 
-The **Match** field refers to a set of equality matchers an alert has to fulfill to match the node. When you add key-value pairs to the Rancher UI, they correspond to the YAML in this format:
+The **Match** field refers to a set of equality matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs to the Rancher UI, they correspond to the YAML in this format:
 
 ```yaml
 match:
   [ <labelname>: <labelvalue>, ... ]
 ```
 
-The **Match Regex** field refers to a set of regex-matchers an alert has to fulfill to match the node. When you add key-value pairs in the Rancher UI, they correspond to the YAML in this format:
+The **Match Regex** field refers to a set of regex-matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs in the Rancher UI, they correspond to the YAML in this format:
 
 ```yaml
 match_re:

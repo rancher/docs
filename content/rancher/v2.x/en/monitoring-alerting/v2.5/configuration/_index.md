@@ -85,7 +85,9 @@ An example PodMonitor can be found [here.](https://github.com/prometheus-operato
 
 ### PrometheusRule
 
-Prometheus rule files are held in PrometheusRule custom resources. Use the label selector field ruleSelector in the Prometheus object to define the rule files that you want to be mounted into Prometheus. An example PrometheusRule is on [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
+Prometheus rule files are held in PrometheusRule custom resources. For users who are familiar with Prometheus, a PrometheusRule contains the alerting and recording rules that you would normally place in a [Prometheus rule file](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/).
+
+Use the label selector field ruleSelector in the Prometheus object to define the rule files that you want to be mounted into Prometheus. An example PrometheusRule is on [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
 
 ### Alertmanager Config
 
