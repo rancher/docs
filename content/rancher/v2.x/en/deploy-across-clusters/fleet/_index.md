@@ -17,7 +17,7 @@ deploy everything in the cluster. This give a high degree of control, consistenc
 
 ### Accessing Fleet in the Rancher UI
 
-Fleet comes preinstalled in Rancher v2.5. To access it, go to the **Cluster Explorer** in the Rancher UI. In the top left dropdown menu, click **Cluster Explorer > Fleet.** On this page, you can edit Kubernetes resources and cluster groups managed by Fleet.
+Fleet comes preinstalled in Rancher v2.5. To access it, go to the **Cluster Explorer** in the Rancher UI. In the top left dropdown menu, click **Cluster Explorer > Continuous Delivery.** On this page, you can edit Kubernetes resources and cluster groups managed by Fleet.
 
 ### GitHub Repository
 
