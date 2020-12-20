@@ -11,6 +11,7 @@ This section describes the permissions required to use the rancher-cis-benchmark
 The rancher-cis-benchmark is a cluster-admin only feature by default.
 
 However, the `rancher-cis-benchmark` chart installs these two default `ClusterRoles`:
+
 - cis-admin
 - cis-view
 
