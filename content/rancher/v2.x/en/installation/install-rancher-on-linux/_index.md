@@ -38,6 +38,7 @@ RancherD must be launched on a Linux OS. At this time, only OSes that leverage s
 
 The Linux node needs to fulfill the [installation requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) for hardware and networking.
 
+To install RancherD on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, some [additional steps]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/#rancherd-on-selinux-enforcing-centos-8-nodes) are required.
 ### Root Access
 
 Before running the installation commands, you will need to log in as root:
