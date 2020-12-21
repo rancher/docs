@@ -152,7 +152,7 @@ You also have the ability to customize a profile by saving a set of tests to ski
 
 All profiles will have a set of not applicable tests that will be skipped during the CIS scan. These tests are not applicable based on how a RKE cluster manages Kubernetes.
 
-There are 2 types of RKE cluster scan profiles:
+There are two types of RKE cluster scan profiles:
 
 - **Permissive:** This profile has a set of tests that have been will be skipped as these tests will fail on a default RKE Kubernetes cluster. Besides the list of skipped tests, the profile will also not run the not applicable tests.
 - **Hardened:** This profile will not skip any tests, except for the non-applicable tests.
@@ -287,9 +287,9 @@ Alerts can be configured to be sent out for a scan that runs on a schedule.
 
 > **Prerequisite:** 
 >
-> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. Please check [this section.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/)
+> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/)
 >
-> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`.
+> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
 
 While installing or upgrading the `rancher-cis-benchmark` application, set the following flag to `true` in the `values.yaml`:
 
@@ -312,11 +312,11 @@ The `rancher-cis-benchmark` application supports two types of alerts:
 - Alert on scan completion: This alert is sent out when the scan run finishes. The alert includes details including the ClusterScan's name and the ClusterScanProfile name.
 - Alert on scan failure: This alert is sent out if there are some test failures in the scan run or if the scan is in a `Fail` state.
 
-> **Prerequisites:**
-> 
-> Please ensure that Rancher's Monitoring and Alerting app is installed and the Receivers and Routes are configured to send out alerts. Please check [this section.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/)
+> **Prerequisite:** 
 >
-> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`.
+> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/)
+>
+> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
 
 To configure alerts for a scan that runs on a schedule,
 

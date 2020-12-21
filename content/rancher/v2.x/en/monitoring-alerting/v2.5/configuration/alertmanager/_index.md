@@ -20,6 +20,7 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Grouping](#grouping)
   - [Matching](#matching)
 - [Example Alertmanager YAML](#example-alertmanager-yaml)
+- [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
 
 # Overview
 
@@ -208,3 +209,27 @@ receivers:
 templates:
 - /etc/alertmanager/config/*.tmpl
 ```
+
+# Example Route Config for CIS Scan Alerts
+
+While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`.
+
+For example, the following example route configuration could be used with a Slack receiver named `test-cis`:
+
+```yaml
+spec:
+  receiver: test-cis
+  group_by:
+#    - string
+  group_wait: 30s
+  group_interval: 30s
+  repeat_interval: 30s
+  match:
+    job: rancher-cis-scan
+#    key: string
+  match_re:
+    {}
+#    key: string
+```
+
+For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.5/#enabling-alerting-for-rancher-cis-benchmark)
