@@ -31,7 +31,7 @@ Rancher should work with any modern Linux distribution.
 
 At this time, only Linux OSes that leverage systemd are supported.
 
-To install RancherD on SELinux Enforcing CentOS 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-nodes) are required.
+To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 
 ### Requirements for Installing Rancher on an RKE Kubernetes Cluster
 
@@ -151,9 +151,9 @@ Each node used should have a static IP configured, regardless of whether you are
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
 
-# RancherD on SELinux Enforcing CentOS 8 Nodes
+# RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes
 
-Before installing Rancher on SELinux Enforcing CentOS 8 nodes, you must install `container-selinux` and `iptables`: 
+Before installing Rancher on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, you must install `container-selinux` and `iptables`: 
 
 ```
 sudo yum install iptables
