@@ -8,6 +8,8 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/import-cluster/
 ---
 
+_Available as of v2.0.x-v2.4.x_
+
 When managing an imported cluster, Rancher connects to a Kubernetes cluster that has already been set up. Therefore, Rancher does not provision Kubernetes, but only sets up the Rancher agents to communicate with the cluster.
 
 Rancher features, including management of cluster, role-based access control, policy, and workloads, are available for imported clusters. Note that Rancher does not automate the provisioning or scaling of imported clusters.
@@ -15,8 +17,6 @@ Rancher features, including management of cluster, role-based access control, po
 For all imported Kubernetes clusters except for K3s clusters, the configuration of an imported cluster still has to be edited outside of Rancher. Some examples of editing the cluster include adding and removing nodes, upgrading the Kubernetes version, and changing Kubernetes component parameters.
 
 Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well as the ability to upgrade Kubernetes by editing the cluster in the Rancher UI.
-
-> Rancher v2.5 added the ability to [register clusters.](#changes-in-rancher-v2-5) This page will be updated to reflect the new functionality.
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Features](#features)
@@ -30,11 +30,11 @@ Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well 
 
 # Changes in Rancher v2.5
 
-In Rancher v2.5, the cluster registration feature replaced the feature to import clusters. Rancher has more capabilities to manage registered clusters compared to imported clusters, and registering a cluster allows Rancher to treat it as though it were created in Rancher.
+In Rancher v2.5, the cluster registration feature replaced the feature to import clusters.
 
-Amazon EKS clusters can now be registered in Rancher. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
+Registering EKS clusters now provides additional benefits. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
 
-When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
+When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 # Features
 
@@ -78,7 +78,12 @@ By default, GKE users are not given this privilege, so you will need to run the 
 7. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in {{< product >}}.
 8. If you are using self signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in {{< product >}} to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
 9. When you finish running the command(s) on your node, click **Done**.
-   {{< result_import-cluster >}}
+
+**Result:**
+
+- Your cluster is registered and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
+- You can access your cluster after its state is updated to **Active.**
+- **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
 > **Note:**
 > You can not re-import a cluster that is currently active in a Rancher setup.
@@ -148,7 +153,7 @@ If the cluster becomes stuck in upgrading, restart the `system-upgrade-controlle
 
 To prevent issues when upgrading, the [Kubernetes upgrade best practices](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/) should be followed.
 
-### Annotating Imported Clusters
+# Annotating Imported Clusters
 
 For all types of imported Kubernetes clusters except for K3s Kubernetes clusters, Rancher doesn't have any information about how the cluster is provisioned or configured.
 
@@ -160,14 +165,19 @@ By annotating an imported cluster, it is possible to indicate to Rancher that a 
 
 This example annotation indicates that a pod security policy is enabled:
 
-```json
+```
 "capabilities.cattle.io/pspEnabled": "true"
 ```
 
 The following annotation indicates Ingress capabilities. Note that that the values of non-primitive objects need to be JSON encoded, with quotations escaped.
 
-```json
-"capabilities.cattle.io/ingressCapabilities": "[{"customDefaultBackend":true,"ingressProvider":"asdf"}]"
+```
+"capabilities.cattle.io/ingressCapabilities": "[  
+  {
+    "customDefaultBackend":true,
+    "ingressProvider":"asdf"
+  }
+]"
 ```
 
 These capabilities can be annotated for the cluster:
