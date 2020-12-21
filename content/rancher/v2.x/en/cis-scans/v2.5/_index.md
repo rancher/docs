@@ -51,7 +51,7 @@ In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
 {{% /tab %}}
-{{% tab "Profiles in v2.5.0" %}}
+{{% tab "Profiles in v2.5.0-v2.5.3" %}}
 - Generic CIS 1.5
 - RKE permissive
 - RKE hardened
@@ -66,19 +66,23 @@ The default profile and the supported CIS benchmark version depends on the type 
 
 {{% tabs %}}
 {{% tab "v2.5.4" %}}
+
+The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
+
 - For RKE Kubernetes clusters, the RKE Permissive 1.6 profile is the default.
 - EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
 - For RKE2 Kubernetes clusters, the RKE2 Permissive 1.5 profile is the default.
 - For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
-The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 {{% /tab %}}
-{{% tab "v2.5.0" %}}
+{{% tab "v2.5.0-v2.5.3" %}}
+
+The `rancher-cis-benchmark` supports the CIS 1.5 Benchmark version.
+
 - For RKE Kubernetes clusters, the RKE permissive profile is the default.
 - EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
 - For cluster types other than RKE, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
-The `rancher-cis-benchmark` supports the CIS 1.5 Benchmark version.
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -97,7 +101,9 @@ The official Benchmark documents are available through the CIS website. The sign
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
-In Rancher v2.5, the scan will use the CIS Benchmark v1.5. The Benchmark version is included in the generated report.
+From Rancher v2.5.4, the scan uses the CIS Benchmark v1.6 by default. In Rancher v2.5.0-2.5.3, the CIS Benchmark v1.5. is used.
+
+The Benchmark version is included in the generated report.
 
 The Benchmark provides recommendations of two types: Scored and Not Scored. Recommendations marked as Not Scored in the Benchmark are not included in the generated report.
 
@@ -139,7 +145,7 @@ The following profiles are available:
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
 {{% /tab %}}
-{{% tab "Profiles in v2.5.0" %}}
+{{% tab "Profiles in v2.5.0-v2.5.3" %}}
 - Generic CIS 1.5
 - RKE permissive
 - RKE hardened
@@ -229,7 +235,7 @@ To run a ClusterScan on a schedule,
 1. In the **Scans** section, click **Create.**
 1. Choose a cluster scan profile. The profile determines which CIS Benchmark version will be used and which tests will be performed. If you choose the Default profile, then the CIS Operator will choose a profile applicable to the type of Kubernetes cluster it is installed on.
 1. Choose the option **Run scan on a schedule.**
-1. Enter a valid [cron schedule expression](https://en.wikipedia.org/wiki/Cron#CRON_expression) in the field **Schedule.**
+1. Enter a valid <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression" target="_blank">cron schedule expression</a> in the field **Schedule.**
 1. Choose a **Retention** count, which indicates the number of reports maintained for this recurring scan. By default this count is 3. When this retention limit is reached, older reports will get purged.
 1. Click **Create.**
 
