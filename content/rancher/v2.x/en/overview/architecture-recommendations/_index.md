@@ -110,9 +110,9 @@ With that said, it is safe to use all three roles on three nodes when setting up
 
 Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of downstream clusters.
 
-For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/management/#tips-for-scaling-and-reliability)
+For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/v2.5/)
 
-# Architecture for an Authorized Cluster Endpoint
+# Architecture for an Authorized Cluster Endpoint 
 
 If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
 

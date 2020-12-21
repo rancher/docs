@@ -24,10 +24,10 @@ Choose from the following options:
 
 	In this section, you can find errors related to SSH tunneling when you run the `rke` command to setup your nodes.
 
-- [Failed to get job complete status](job-complete-status/)
+- [Failed to get job complete status](./job-complete-status/)
 
 	In this section, you can find errors related to deploying addons.
 
-- [404 - default backend](404-default-backend/)
+- [404 - default backend](./404-default-backend/)
 
 	In this section, you can find errors related to the `404 - default backend` page that is shown when trying to access Rancher.
