@@ -10,7 +10,7 @@ This document provides prescriptive guidance for hardening a production installa
 K3s has a number of security mitigations applied and turned on by default and will pass a number of the Kubernetes CIS controls without modification. There are some notable exceptions to this that require manual intervention to fully comply with the CIS Benchmark:
 
 1. K3s will not modify the host operating system. Any host-level modifications will need to be done manually.
-2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options to your command-line flags or configuration file.
+2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options (enabliong of admission plugins) to your command-line flags or configuration file as well as manually applying appropriate policies. Further detail in the sections below.
 
 The first section (1.1) of the CIS Benchmark concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
 
@@ -37,13 +37,11 @@ kernel.panic_on_oops=1
 
 ## Kubernetes Runtime Requirements
 
-The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs)and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
+The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs) and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
 
 ### PodSecurityPolicies
 
-K3s always runs with the PodSecurityPolicy admission controller turned on. However, when it is **not** started with the cis-1.5 profile, K3s will put an unrestricted policy in place that allows Kubernetes to run as though the PodSecurityPolicy admission controller was not enabled.
-
-When ran with the cis-1.5 profile, K3s will put a much more restrictive set of policies in place. These policies meet the requirements outlined in section 5.2 of the CIS Benchmark.
+When PSPs are enabled, a policy can be applied to mitigate the necessary controls described in section 5.2 of the CIS Benchmark.
 
 Here's an example of a compliant PSP.
 
