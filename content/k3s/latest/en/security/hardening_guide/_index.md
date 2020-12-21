@@ -82,7 +82,7 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
-> **Note:** The Kubernetes control plane components and critical additions such as CNI, DNS, and Ingress are ran as pods in the `kube-system` namespace. Therefore, this namespace will have a policy that is less restrictive so that these components can run properly.
+> **Note:** The Kubernetes critical additions such as CNI, DNS, and Ingress are ran as pods in the `kube-system` namespace. Therefore, this namespace will have a policy that is less restrictive so that these components can run properly.
 
 ### NetworkPolicies
 
@@ -243,8 +243,6 @@ The remediation for this is to update the `automountServiceAccountToken` field t
 
 For `default` service accounts in the built-in namespaces (`kube-system`, `kube-public`, `kube-node-lease`, and `default`), K3s does not automatically do this. You can manually update this field on these service accounts to passs the control.
 
-[Control 5.1.5](https://github.com/rancher/rke2/issues/549) Issue tracker.
-
 ## Control Plane Execution and Arguments
 
 Listed below are the K3s control plane components and the arguments they're given at start, by default. Commented to their right is the CIS 1.5 control that they satisfy.
@@ -333,7 +331,7 @@ kubelet
     --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% 
     --fail-swap-on=false 
     --healthz-bind-address=127.0.0.1 
-    --hostname-override=rke201 
+    --hostname-override=hostname01 
     --kubeconfig=/var/lib/rancher/k3s/agent/kubelet.kubeconfig 
     --kubelet-cgroups=/systemd/system.slice 
     --node-labels= 
