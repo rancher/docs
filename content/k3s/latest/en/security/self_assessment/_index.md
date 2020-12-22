@@ -16,7 +16,7 @@ For more detail about each control, including more detailed descriptions and rem
 
 #### Testing controls methodology
 
-Each control in the CIS Kubernetes Benchmark was evaluated against an K3s cluster that was configured according to the accompanying hardening guide.
+Each control in the CIS Kubernetes Benchmark was evaluated against a K3s cluster that was configured according to the accompanying hardening guide.
 
 Where control audits differ from the original CIS benchmark, the audit commands specific to K3s are provided for testing.
 

@@ -213,9 +213,9 @@ Ensure that a minimal audit policy is created (Scored)
 <details>
 <summary>Rationale</summary>
 Logging is an important detective control for all systems, to detect potential unauthorised access.
-</details>
 
 This can be remediated by passing controls 1.2.22 - 1.2.25 and verifying their efficacy.
+</details>
 
 
 ### Control 4.2.7
