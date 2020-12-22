@@ -17,7 +17,7 @@ A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
 
 Prometheus rule files are held in PrometheusRule custom resources.
 
-A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of alerting or recording rules with the following fields:
+A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of Rule objects that can each represent either an alerting or a recording rule with the following fields:
 
 - The name of the new alert or record
 - A PromQL (Prometheus query language) expression for the new alert or record
@@ -34,7 +34,7 @@ For examples, refer to the Prometheus documentation on [recording rules](https:/
 
 ### Connecting Routes and PrometheusRules
 
-When you define a Rule within a RuleGroup of a PrometheusRule, the spec of the Rule itself contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
 
 ### Creating PrometheusRules in the Rancher UI
 
@@ -75,7 +75,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 |-------|----------------|
 | Alert Name |  The name of the alert. Must be a valid label value.   |
 | Wait To Fire For |   Duration in seconds. Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. |
-| PromQL Expression |   The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and all resultant time series become pending/firing alerts.  For more information, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression) |
+| PromQL Expression |   The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and all resultant time series will become pending/firing alerts. For more information, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression) |
 | Labels |  Labels to add or overwrite for each alert.      |
 | Severity |   When enabled, labels are attached to the alert or record that identify it by the severity level.  |
 | Severity Label Value | Critical, warning, or none |
@@ -88,7 +88,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 | Field | Description |
 |-------|----------------|
 | Time Series Name |   The name of the time series to output to. Must be a valid metric name.  |
-| PromQL Expression |  The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and the result recorded as a new set of time series with the metric name as given by 'record'.  For more information about expressions, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression)  |
+| PromQL Expression |  The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and the result will be recorded as a new set of time series with the metric name as given by 'record'.  For more information about expressions, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression)  |
 | Labels |   Labels to add or overwrite before storing the result.     |
 
 {{% /tab %}}

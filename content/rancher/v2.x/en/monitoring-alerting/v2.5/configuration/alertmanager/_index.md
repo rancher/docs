@@ -42,7 +42,7 @@ For more information, refer to the [official Prometheus documentation about conf
 
 ### Connecting Routes and PrometheusRules
 
-When you define a Rule within a RuleGroup of a PrometheusRule, the spec of the Rule itself contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
 
 # Creating Receivers in the Rancher UI
 _Available as of v2.5.4_
