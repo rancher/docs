@@ -43,6 +43,7 @@ network:
     options:
         canal_iface: eth1
         canal_flannel_backend_type: vxlan
+        canal_flannel_backend_port: "8472"
 ```
 
 #### Canal Interface
@@ -58,6 +59,7 @@ network:
     options:
         flannel_iface: eth1
         flannel_backend_type: vxlan
+        flannel_backend_port: "8472"
 ```
 
 #### Flannel Interface
