@@ -19,6 +19,8 @@ If you have not yet set up a private Docker registry, refer to the official docu
 
 Create and configure the `registry.yaml` file by following [this guide.]({{< baseurl >}}/k3s/latest/en/installation/private-registry)
 
+The `k3s-images.txt` file, included in the assets of each [K3s release,](https://github.com/k3s-io/k3s/releases) contains the images that will be used by K3s and should be pushed to the private registry.
+
 Once you have completed this, go to the [Install K3s](#install-k3s) section.
 
 ### Option B: Manually Deploy Images
