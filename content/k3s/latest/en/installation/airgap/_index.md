@@ -5,14 +5,6 @@ weight: 60
 
 You can install K3s in an air-gapped environment using two different methods. You can either deploy a private registry and mirror docker.io or you can manually deploy images such as for small clusters.
 
-1. Provide the required images for K3s
-  - [Option A: Use a private Docker registry](#option-a-use-a-private-docker-registry)
-  - [Option B: Manually deploy images](#option-b-manually-deploy-images)
-2. Set environment variables and install K3s
-  - [Air gap installation for a single server node]
-  - [Air gap installation for agent nodes]
-  - [Air gap configuration for a high availability cluster]
-
 This document assumes you have already created your nodes in your air-gap environment and have a Docker private registry on your bastion host.
 
 If you have not yet set up a private Docker registry, refer to the official documentation [here](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry).
