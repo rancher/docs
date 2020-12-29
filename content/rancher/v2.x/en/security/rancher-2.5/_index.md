@@ -22,6 +22,7 @@ These guides have been tested along with the Rancher v2.5 release. Each self ass
 Kubernetes Version | CIS Benchmark Version | Self Assessment Guide | Hardening Guides
 ---|---|---|---
 Kubernetes v1.15+ | CIS v1.5 | [Link](./1.5-benchmark-2.5) | [Link](./1.5-hardening-2.5)
+Kubernetes v1.18+ | CIS v1.6 | [Link](./1.6-benchmark-2.5) | [Link](./1.6-hardening-2.5)
 
 ### RKE2 Guides
 
