@@ -76,7 +76,7 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Custom**.
+2. Choose **Existing Nodes**.
 
 3. Enter a **Cluster Name**.
 
