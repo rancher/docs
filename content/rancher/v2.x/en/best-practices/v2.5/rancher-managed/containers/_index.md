@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/best-practices/containers
 ---
 
-Running well built containers can greatly impact the overall performance and security of your environment.
+Running well-built containers can greatly impact the overall performance and security of your environment.
 
 Below are a few tips for setting up your containers.
 

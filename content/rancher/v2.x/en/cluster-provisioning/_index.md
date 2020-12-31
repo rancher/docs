@@ -41,7 +41,7 @@ For more information, refer to the section on [hosted Kubernetes clusters.]({{<b
 
 # Launching Kubernetes with Rancher
 
-Rancher uses the [Rancher Kubernetes Engine (RKE)]({{<baseurl>}}/rke/latest/en/)as a library when provisioning Kubernetes on your own nodes. RKE is Rancher’s own lightweight Kubernetes installer.
+Rancher uses the [Rancher Kubernetes Engine (RKE)]({{<baseurl>}}/rke/latest/en/) as a library when provisioning Kubernetes on your own nodes. RKE is Rancher’s own lightweight Kubernetes installer.
 
 In RKE clusters, Rancher manages the deployment of Kubernetes. These clusters can be deployed on any bare metal server, cloud provider, or virtualization platform.
 
@@ -89,7 +89,7 @@ For more information, refer to the section on [importing existing clusters.]({{<
 
 _Available as of Rancher v2.4.0_
 
-[K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. K3s Kubernetes clusters can now be imported into Rancher.
+[K3s]({{<baseurl>}}/k3s/latest/en/) is a lightweight, fully compliant Kubernetes distribution. K3s Kubernetes clusters can now be imported into Rancher.
 
 When a K3s cluster is imported, Rancher will recognize it as K3s, and the Rancher UI will expose the following features in addition to the functionality for other imported clusters:
 
@@ -100,9 +100,9 @@ For more information, refer to the section on [imported K3s clusters.]({{<baseur
 
 # Registering Existing Clusters
 
-_Available of of v2.5_
+_Available as of v2.5_
 
-The cluster registration feature replaced the feature to import clusters.
+The cluster registration feature replaces the feature to import clusters.
 
 Registering EKS clusters now provides additional benefits. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
 

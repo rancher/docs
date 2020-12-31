@@ -14,7 +14,7 @@ Configuring sensible monitoring and alerting rules is vital for running any prod
 
 ### Tips for Setting Up Containers
 
-Running well built containers can greatly impact the overall performance and security of your environment. Refer to this [guide](./containers) for tips.
+Running well-built containers can greatly impact the overall performance and security of your environment. Refer to this [guide](./containers) for tips.
 
 ### Best Practices for Rancher Managed vSphere Clusters
 
