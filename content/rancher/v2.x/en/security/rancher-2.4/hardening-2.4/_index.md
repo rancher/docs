@@ -89,7 +89,7 @@ Create a bash script file called `account_update.sh`. Be sure to `chmod +x accou
 ``` 
 #!/bin/bash -e
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces -o custom-columns=NAME:.metadata.name --no-headers); do
   kubectl patch serviceaccount default -n ${namespace} -p "$(cat account_update.yaml)"
 done
 ```
