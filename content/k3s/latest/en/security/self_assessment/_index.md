@@ -12,7 +12,7 @@ This document is a companion to the K3s security hardening guide. The hardening 
 
 This guide is specific to the **v1.17**, **v1.18**, and **v1.19** release line of K3s and the **v1.5.1** release of the CIS Kubernetes Benchmark.
 
-For more detail about each control, including more detailed descriptions and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.5. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
+For more detail about each control, including more detailed descriptions and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.5. You can download the benchmark after logging in to [CISecurity.org](https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
@@ -179,7 +179,7 @@ By default, K3s creates the directory and files with the expected permissions of
 
 
 #### 1.1.14
-Ensure that the admin.conf file ownership is set to `root:root` (Scored)
+Ensure that the `admin.conf` file ownership is set to `root:root` (Scored)
 <details>
 <summary>Rationale</summary>
 The admin.conf file contains the admin credentials for the cluster. You should set its file ownership to maintain the integrity of the file. The file should be owned by root:root.
