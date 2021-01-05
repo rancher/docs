@@ -33,6 +33,8 @@ At this time, only Linux OSes that leverage systemd are supported.
 
 To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 
+Docker is not required for RancherD installs.
+
 ### Requirements for Installing Rancher on an RKE Kubernetes Cluster
 
 For the container runtime, RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
@@ -65,8 +67,9 @@ If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<b
 
 ### Installing Docker
 
-Docker can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
+Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
 
+Docker is not required for RancherD installs.
 # Hardware Requirements
 
 This section describes the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
