@@ -36,7 +36,7 @@ Part II explains how to convert the single-node Rancher installation into a high
 
 RancherD must be launched on a Linux OS. At this time, only OSes that leverage systemd are supported.
 
-The Linux node needs to fulfill the [installation requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) for hardware and networking.
+The Linux node needs to fulfill the [installation requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) for hardware and networking. Docker is not required for RancherD installs.
 
 To install RancherD on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, some [additional steps]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 ### Root Access
@@ -66,11 +66,15 @@ This endpoint can be set up using any number of approaches, such as:
 * Round-robin DNS
 * Virtual or elastic IP addresses
 
-Note that the RancherD server process listens on port 9345 for new nodes to register. The Kubernetes API is served on port 6443, as normal. Configure your load balancer accordingly.
+The following should be taken into consideration when configuring the load balancer or other endpoint:
+
+- The RancherD server process listens on port 9345 for new nodes to register.
+- The Kubernetes API is served on port 6443, as normal.
+- In RancherD installs, the Rancher UI is served on port 8443 by default. (This is different from Helm chart installs, where port 443 is used by default.)
 
 # Part I: Installing Rancher
 
-### 1. Set up the config.yaml
+### 1. Set up Configurations
 
 To avoid certificate errors with the fixed registration address, you should launch the server with the `tls-san` parameter set. This parameter should refer to your fixed registration address.
 
@@ -87,9 +91,13 @@ tls-san:
 
 The first server node establishes the secret token that other nodes would register with if they are added to the cluster.
 
-If you do not specify a pre-shared secret, RancherD will generate one and place it at `/var/lib/rancher/rancherd/server/node-token`.
+If you do not specify a pre-shared secret, RancherD will generate one and place it at `/var/lib/rancher/rke2/server/node-token`.
 
 To specify your own pre-shared secret as the token, set the `token` argument on startup.
+
+Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-linux/rancherd-configuration/#certificates-for-the-rancher-server)
+
+For information on customizing the RancherD Helm chart values.yaml, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-linux/rancherd-configuration/#customizing-the-rancherd-helm-chart)
 
 ### 2. Launch the first server node
 
@@ -97,6 +105,12 @@ Run the RancherD installer:
 
 ```
 curl -sfL https://get.rancher.io | sh -
+```
+
+The RancherD version can be specified using the `INSTALL_RANCHERD_VERSION` environment variable:
+
+```
+curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.4-rc6 sh -
 ```
 
 Once installed, the `rancherd` binary will be on your PATH. You can check out its help text like this:
@@ -138,6 +152,12 @@ kubectl get daemonset rancher -n cattle-system
 kubectl get pod -n cattle-system
 ```
 
+If you watch the pods, you will see the following pods installed:
+
+- `helm-operation` pods in the `cattle-system` namespace
+- a `rancher` pod and `rancher-webhook` pod in the `cattle-system` namespace
+- a `fleet-agent`, `fleet-controller`, and `gitjob` pod in the `fleet-system` namespace
+- a `rancher-operator` pod in the `rancher-operator-system` namespace
 ### 5. Set the initial Rancher password
 
 Once the `rancher` pod is up and running, run the following:
