@@ -3,9 +3,9 @@ title: Install Rancher on a Linux OS
 weight: 2
 ---
 
-_Available as of Rancher v2.5_
+_Experimental as of Rancher v2.5.4_
 
-As part of Rancher 2.5, we are excited to introduce a new, simpler way to install Rancher called RancherD.
+We are excited to introduce a new, simpler way to install Rancher called RancherD.
 
 RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
 
@@ -22,7 +22,7 @@ RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then
 
 When RancherD is launched on a host, it first installs an RKE2 Kubernetes cluster, then deploys Rancher on the cluster as a Kubernetes daemonset.
 
-In both the RancherD install and the Helm CLI install, Rancher is installed as a Helm chart on a Kubernetes cluster. A highly available RancherD installation is equally suitable for production compared to a highly available installation using the Helm CLI.
+In both the RancherD install and the Helm CLI install, Rancher is installed as a Helm chart on a Kubernetes cluster.
 
 Configuration and upgrading are also simplified with RancherD. When you upgrade the RancherD binary, both the Kubernetes cluster and the Rancher Helm chart are upgraded.
 
