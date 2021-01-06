@@ -90,7 +90,7 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 # Imported K3s Clusters
 
-You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the K3s cluster in the Rancher UI.
+You can now import a K3s Kubernetes cluster into Rancher. [K3s]({{<baseurl>}}/k3s/latest/en/) is a lightweight, fully compliant Kubernetes distribution. You can also upgrade Kubernetes by editing the K3s cluster in the Rancher UI.
 
 ### Additional Features for Imported K3s Clusters
 

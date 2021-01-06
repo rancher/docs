@@ -39,7 +39,7 @@ Rancher leverages [kube-bench](https://github.com/aquasecurity/kube-bench) to ru
 
 The CIS Kubernetes Benchmark is a reference document that can be used to establish a secure configuration baseline for Kubernetes.
 
-The Center for Internet Security (CIS) is a 501(c)(3) nonprofit organization, formed in October 2000, with a mission is to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace."
+The Center for Internet Security (CIS) is a 501(c\)(3) non-profit organization, formed in October 2000, with a mission to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace."
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
@@ -51,7 +51,7 @@ For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.
 
 ### Rancher Hardening Guide
 
-The Rancher Hardening Guide is based off of controls and best practices found in the <a href="https://www.cisecurity.org/benchmark/kubernetes/" target="_blank">CIS Kubernetes Benchmark</a> from the Center for Internet Security.
+The Rancher Hardening Guide is based on controls and best practices found in the <a href="https://www.cisecurity.org/benchmark/kubernetes/" target="_blank">CIS Kubernetes Benchmark</a> from the Center for Internet Security.
 
 The hardening guide provides prescriptive guidance for hardening a production installation of Rancher v2.1.x, v2.2.x and v.2.3.x. See Rancher's [Self Assessment of the CIS Kubernetes Benchmark](#cis-benchmark-rancher-self-assessment) for the full list of security controls.
 
@@ -74,7 +74,7 @@ The benchmark self-assessment is a companion to the Rancher security hardening g
 
 Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters. The original benchmark documents can be downloaded from the [CIS website](https://www.cisecurity.org/benchmark/kubernetes/).
 
-Each version of Rancher's self assessment guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+Each version of Rancher's self-assessment guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
 
 Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
 ---------------------------|----------|---------|-------|-----
