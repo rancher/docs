@@ -16,7 +16,7 @@ In this section,
 - **RKE (Rancher Kubernetes Engine)** is a certified Kubernetes distribution and CLI/library which creates and manages a Kubernetes cluster.
 - **K3s (Lightweight Kubernetes)** is also a fully compliant Kubernetes distribution. It is newer than RKE, easier to use, and more lightweight, with a binary size of less than 100 MB. As of Rancher v2.4, Rancher can be installed on a K3s cluster.
 - **RKE2** is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
-- **RancherD** is a new tool for installing Rancher, which is experimental as of Rancher v2.5.4. RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
+- **RancherD** is a new tool for installing Rancher, which is available as of Rancher v2.5.4. It is an experimental feature. RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
 
 # Changes to Installation in Rancher v2.5
 
@@ -36,7 +36,9 @@ We recommend using Helm, a Kubernetes package manager, to install Rancher on mul
 
 ### High-availability Kubernetes Install with RancherD
 
-_Experimental as of v2.5.4_
+_Available as of v2.5.4_
+
+> This is an experimental feature.
 
 RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
 

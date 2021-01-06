@@ -3,7 +3,9 @@ title: Install Rancher on a Linux OS
 weight: 2
 ---
 
-_Experimental as of Rancher v2.5.4_
+_Available as of Rancher v2.5.4_
+
+> This is an experimental feature.
 
 We are excited to introduce a new, simpler way to install Rancher called RancherD.
 
