@@ -15,7 +15,7 @@ To harden a Kubernetes cluster outside of Rancher's distributions, refer to your
 
 # Guides
 
-These guides have been tested along with the Rancher v2.5 release. Each self assessment guide is accompanied with a hardening guide and tested on a specific Kubernetes version and CIS benchmark version. If a CIS benchmark has not been validated for your Kubernetes version, you can choose to use the existing guides until a newer version is added.
+These guides have been tested along with the Rancher v2.5 release. Each self-assessment guide is accompanied with a hardening guide and tested on a specific Kubernetes version and CIS benchmark version. If a CIS benchmark has not been validated for your Kubernetes version, you can choose to use the existing guides until a newer version is added.
 
 ### RKE Guides
 

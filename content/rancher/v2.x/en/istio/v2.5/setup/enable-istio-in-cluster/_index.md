@@ -30,7 +30,7 @@ Automatic sidecar injection is disabled by default. To enable this, set the `sid
  - The Project Network Isolation option is enabled.
  - You install the Istio Ingress module
 
-The Istio Ingress Gateway pod won't be able to redirect ingress traffic to the workloads by default. This is because all the namespaces will be innacessible from the namespace where Istio is installed. You have two options.
+The Istio Ingress Gateway pod won't be able to redirect ingress traffic to the workloads by default. This is because all the namespaces will be inaccessible from the namespace where Istio is installed. You have two options.
 
 
 The first option is to add a new Network Policy in each of the namespaces where you intend to have ingress controlled by Istio. Your policy should include the following lines:
@@ -42,7 +42,7 @@ The first option is to add a new Network Policy in each of the namespaces where 
 ``` 
 The second option is to move the `istio-system` namespace to the `system` project, which by default is excluded from the network isolation
 
-## Additonal Config Options
+## Additional Config Options
 
 ### Overlay File
 
@@ -58,7 +58,7 @@ The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=fals
 
 If you would like to limit prometheus to specific namespaces, set `prometheus.prometheusSpec.ignoreNamespaceSelectors=true`. Once you do this, you will need to add additional configuration to continue to monitor your resources. 
 
-**Set ingnoreNamspaceSelectors to True** 
+**Set ignoreNamespaceSelectors to True** 
 
 This limits monitoring to specific namespaces. 
 
@@ -82,7 +82,7 @@ This option allows you to define which specific services or pods you would like 
 
  >Usability tradeoff is that you have to create the service monitor / pod monitor per namespace since you cannot monitor across namespaces. 
 
- **Pre Requisite:** define a ServiceMonitor or PodMonitor for `<your namespace>`. Example ServiceMonitor is provided below. 
+ **Prerequisite:** define a ServiceMonitor or PodMonitor for `<your namespace>`. An example ServiceMonitor is provided below. 
 
 1. From the **Cluster Explorer**, open the kubectl shell
 1. Run `kubectl create -f <name of service/pod monitor file>.yaml` if the file is stored locally in your cluster. 
@@ -90,7 +90,7 @@ This option allows you to define which specific services or pods you would like 
 1. If starting a new install, **Click** the **rancher-monitoring** chart and scroll down to **Preview Yaml**. 
 1. Run `kubectl label namespace <your namespace> istio-injection=enabled` to enable the envoy sidecar injection
 
-**Result:**  `<your namspace>` can be scraped by prometheus. 
+**Result:**  `<your namespace>` can be scraped by prometheus. 
 
 **Example Service Monitor for Istio Proxies**
 
@@ -129,11 +129,11 @@ spec:
 
 
 
-**Option 3: Set ingnoreNamspaceSelectors to False** 
+**Option 3: Set ignoreNamespaceSelectors to False** 
 
-This enables monitoring accross namespaces by giving prometheus additional scrape configurations. 
+This enables monitoring across namespaces by giving prometheus additional scrape configurations. 
 
- >Usability tradeoff is that  all of prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
+ >The usability tradeoff is that  all of prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
 
 1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
 1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 

@@ -25,7 +25,7 @@ When installing the integrated monitoring stack, Rancher allows to configure sev
 
 ### Storage and Data Retention
 
-The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is, that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention. 
+The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention. 
 
 One way to calculate the necessary storage is to look at the average size of a storage chunk in Prometheus with this query
 
@@ -67,7 +67,7 @@ In order to store some, or all metrics for a long time, you can leverage Prometh
 
 While the integrated Rancher Monitoring already scrapes system metrics from a cluster's nodes and system components, the custom workloads that you deploy on Kubernetes should also be scraped for data. For that you can configure Prometheus to do an HTTP request to an endpoint of your applications in a certain interval. These endpoints should then return their metrics in a Prometheus format.
 
-In general, you want to scrape data from all the workloads running in your cluster so that you can use them for alerts or debugging issues. Oftentimes, you recognize, that you need some data only when you actually need the metrics during an incident. It is good, if it is already scraped and stored. Since Prometheus is only meant to be a short-term metrics storage, scraping and keeping lots of data is usually not that expensive. If you are using a long-term storage solution with Prometheus, you can then still decide which data you are actually persisting and keeping there.
+In general, you want to scrape data from all the workloads running in your cluster so that you can use them for alerts or debugging issues. Often, you recognize that you need some data only when you actually need the metrics during an incident. It is good, if it is already scraped and stored. Since Prometheus is only meant to be a short-term metrics storage, scraping and keeping lots of data is usually not that expensive. If you are using a long-term storage solution with Prometheus, you can then still decide which data you are actually persisting and keeping there.
 
 ### About Prometheus Exporters
 
@@ -75,7 +75,7 @@ A lot of 3rd party workloads like databases, queues or web-servers either alread
 
 ### Prometheus support in Programming Languages and Frameworks
 
-To get your own custom application metrics into Prometheus, you have to collect and expose these metrics directly from your applications code. Fortunately, there are already libraries and integrations available to help with this for most popular programming languages and frameworks. One example for this is the Prometheus support in the [Spring Framework](https://docs.spring.io/spring-metrics/docs/current/public/prometheus).
+To get your own custom application metrics into Prometheus, you have to collect and expose these metrics directly from your application's code. Fortunately, there are already libraries and integrations available to help with this for most popular programming languages and frameworks. One example for this is the Prometheus support in the [Spring Framework](https://docs.spring.io/spring-metrics/docs/current/public/prometheus).
 
 ### ServiceMonitors and PodMonitors
 
