@@ -29,15 +29,17 @@ Rancher should work with any modern Linux distribution.
 
 ### Requirements for Installing Rancher with RancherD
 
+_RancherD installs are experimental as of v2.5.4_
+
 At this time, only Linux OSes that leverage systemd are supported.
 
 To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 
 Docker is not required for RancherD installs.
 
-### Requirements for Installing Rancher on an RKE Kubernetes Cluster
+### Requirements for Installing Rancher on an RKE Kubernetes Cluster with the Helm CLI
 
-For the container runtime, RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
+RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
 
 Rancher and RKE have been tested and are supported on Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
 

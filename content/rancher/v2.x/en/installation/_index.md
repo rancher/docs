@@ -15,6 +15,8 @@ In this section,
 - **The Rancher server** manages and provisions Kubernetes clusters. You can interact with downstream Kubernetes clusters through the Rancher server's user interface.
 - **RKE (Rancher Kubernetes Engine)** is a certified Kubernetes distribution and CLI/library which creates and manages a Kubernetes cluster.
 - **K3s (Lightweight Kubernetes)** is also a fully compliant Kubernetes distribution. It is newer than RKE, easier to use, and more lightweight, with a binary size of less than 100 MB. As of Rancher v2.4, Rancher can be installed on a K3s cluster.
+- **RKE2** is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+- **RancherD** is a new tool for installing Rancher, which is experimental as of Rancher v2.5.4. RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
 
 # Changes to Installation in Rancher v2.5
 
@@ -28,13 +30,23 @@ The `restrictedAdmin` Helm chart option was added. When this option is set to tr
 
 Rancher can be installed on these main architectures:
 
-### High-availability Kubernetes Install
+### High-availability Kubernetes Install with the Helm CLI
 
 We recommend using Helm, a Kubernetes package manager, to install Rancher on multiple nodes on a dedicated Kubernetes cluster. For RKE clusters, three nodes are required to achieve a high-availability cluster. For K3s clusters, only two nodes are required.
 
+### High-availability Kubernetes Install with RancherD
+
+_Experimental as of v2.5.4_
+
+RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
+
+In both the RancherD install and the Helm CLI install, Rancher is installed as a Helm chart on a Kubernetes cluster.
+
+Configuration and upgrading are also simplified with RancherD. When you upgrade the RancherD binary, both the Kubernetes cluster and the Rancher Helm chart are upgraded.
+
 ### Single-node Kubernetes Install
 
-Another option is to install Rancher with Helm on a Kubernetes cluster, but to only use a single node in the cluster. In this case, the Rancher server doesn't have high availability, which is important for running Rancher in production.
+Rancher can be installed on a single-node Kubernetes cluster. In this case, the Rancher server doesn't have high availability, which is important for running Rancher in production.
 
 However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 
