@@ -5,6 +5,7 @@ PORT=9001
 IMAGE=rancher/docs
 TAG=dev
 THEME=
+WEBSITE=
 BUILD_BUILD=
 BUILD_DEV=
 SKIP_PULL=
@@ -29,7 +30,8 @@ Usage:
 -d      - Build the dev image instead of pulling from the registry
 -p PORT - Port to listen on
 -s      - Skip pulling build/dev images
--t DIR  - Use DIR to for the theme, to devlop the theme at the same time
+-t DIR  - Use DIR to for the theme, to develop the theme at the same time
+-w DIR - Use DIR to for the website, to set enableRobotsTXT to false locally in order to scan for broken links on local build
 -u      - Upload/push the build image after building
 
 EOF
