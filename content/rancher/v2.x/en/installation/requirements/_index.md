@@ -25,13 +25,15 @@ The Rancher UI works best in Firefox or Chrome.
 
 # Operating Systems and Container Runtime Requirements
 
-Rancher should work with any modern Linux distribution.
+The node requirements depend on how Rancher is installed.
 
 ### Requirements for Installing Rancher on an RKE Kubernetes Cluster with the Helm CLI
 
-RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
+Rancher should work with any modern Linux distribution.
 
-Rancher and RKE have been tested and are supported on Ubuntu, CentOS, Oracle Linux, RancherOS, and RedHat Enterprise Linux.
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+
+RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
 
 ### Requirements for Installing Rancher with RancherD
 
@@ -45,19 +47,15 @@ Docker is not required for RancherD installs.
 
 ### Requirements for Installing Rancher on a K3s Kubernetes Cluster
 
-K3s should run on just about any flavor of Linux. However, K3s is tested on the following operating systems and their subsequent non-major releases:
+K3s should run on just about any flavor of Linux.
 
-- Ubuntu 16.04 (amd64)
-- Ubuntu 18.04 (amd64)
-- Raspbian Buster (armhf)
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
 If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 ### General Linux Requirements
-
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
