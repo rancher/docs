@@ -25,37 +25,11 @@ The Rancher UI works best in Firefox or Chrome.
 
 # Operating Systems and Container Runtime Requirements
 
-The node requirements depend on how Rancher is installed.
-
-### Requirements for Installing Rancher on an RKE Kubernetes Cluster with the Helm CLI
-
 Rancher should work with any modern Linux distribution.
 
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
-
-RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
-
-### Requirements for Installing Rancher with RancherD
-
-_The RancherD install is available as of v2.5.4. It is an experimental feature._
-
-At this time, only Linux OSes that leverage systemd are supported.
-
-To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
-
-Docker is not required for RancherD installs.
-
-### Requirements for Installing Rancher on a K3s Kubernetes Cluster
-
-K3s should run on just about any flavor of Linux.
+Docker is required for nodes that will run K3s or RKE Kubernetes clusters. It is not required for RancherD installs.
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
-
-If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
-
-If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
-
-### General Linux Requirements
 
 All supported operating systems are 64-bit x86.
 
@@ -64,6 +38,28 @@ The `ntp` (Network Time Protocol) package should be installed. This prevents err
 Some distributions of Linux may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
+
+### RKE Specific Requirements
+
+For the container runtime, RKE should work with any modern Docker version.
+
+### K3s Specific Requirements
+
+For the container runtime, K3s should work with any modern version of Docker or containerd.
+
+If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
+
+If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+
+### RancherD Specific Requirements
+
+_The RancherD install is available as of v2.5.4. It is an experimental feature._	
+
+At this time, only Linux OSes that leverage systemd are supported.	
+
+To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.	
+
+Docker is not required for RancherD installs.	
 
 ### Installing Docker
 
