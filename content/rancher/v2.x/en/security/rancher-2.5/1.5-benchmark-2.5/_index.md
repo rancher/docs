@@ -1,6 +1,6 @@
 ---
 title: CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5
-weight: 204
+weight: 201
 ---
 
 ### CIS v1.5 Kubernetes Benchmark - Rancher v2.5 with Kubernetes v1.15
