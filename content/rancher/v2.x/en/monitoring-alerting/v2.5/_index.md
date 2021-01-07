@@ -33,7 +33,7 @@ For more information about upgrading the Monitoring app in Rancher 2.5, please r
   - [Prometheus Operator](#about-prometheus-operator)
   - [Prometheus Adapter](#about-prometheus-adapter)
 - [Enable Monitoring](#enable-monitoring)
-  - [Default Alerts, Targets and Grafana Dashboards](#default-alerts-targets-and-grafana-dashboards)
+  - [Default Alerts, Targets, and Grafana Dashboards](#default-alerts-targets-and-grafana-dashboards)
 - [Using Monitoring](#using-monitoring)
   - [Grafana UI](#grafana-ui)
   - [Prometheus UI](#prometheus-ui)
@@ -81,7 +81,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
-### Default Alerts, Targets and Grafana Dashboards
+### Default Alerts, Targets, and Grafana Dashboards
 
 By default, Rancher Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)) as well as default Prometheus alerts and Grafana dashboards (curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project) onto a cluster.
 
