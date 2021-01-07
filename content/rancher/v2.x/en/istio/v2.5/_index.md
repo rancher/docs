@@ -18,19 +18,17 @@ This core service mesh provides features that include but are not limited to the
 
 After [setting up istio]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/setup) you can leverage Istio's control plane functionality through the Cluster Explorer, `kubectl`, or `istioctl`.
 
-Rancher's Istio integration comes with a comprehensive visualization aid:
-
-- **Get the full picture of your microservice architecture with Kiali.** [Kiali](https://www.kiali.io/) provides a diagram that shows the services within a service mesh and how they are connected, including the traffic rates and latencies between them. You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
-
 Istio needs to be set up by a `cluster-admin` before it can be used in a project.
 
 - [What's New in Rancher v2.5](#what-s-new-in-rancher-v2-5)
+- [Tools Bundled with Istio](#tools-bundled-with-istio)
 - [Prerequisites](#prerequisites)
 - [Setup Guide](#setup-guide)
 - [Remove Istio](#remove-istio)
 - [Migrate from Previous Istio Version](#migrate-from-previous-istio-version)
 - [Accessing Visualizations](#accessing-visualizations)
 - [Architecture](#architecture)
+- [Additional steps for installing Istio on an RKE2 cluster](#additional-steps-for-installing-istio-on-an-rke2-cluster)
 
 # What's New in Rancher v2.5
 
@@ -44,9 +42,31 @@ Istio has migrated away from Helm as a way to install Istio and now provides ins
 
 This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it can be used in the project.
 
+# Tools Bundled with Istio
+
+Our [Istio](https://istio.io/) installer wraps the istioctl binary commands in a handy Helm chart, including an overlay file option to allow complex customization. 
+
+It also includes the following:
+
+### Kiali
+
+Kiali is a comprehensive visualization aid used for graphing traffic flow throughout the service mesh. It allows you to see how they are connected, including the traffic rates and latencies between them. 
+
+You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
+
+### Jaeger
+
+_Bundled as of v2.5.4_
+
+Our Istio installer includes a quick-start, all-in-one installation of [Jaeger,](https://www.jaegertracing.io/) a tool used for tracing distributed systems.
+
+Note that this is not a production-qualified deployment of Jaeger. This deployment uses an in-memory storage component, while a persistent storage component is recommended for production. For more information on which deployment strategy you may need, refer to the [Jaeger documentation.](https://www.jaegertracing.io/docs/latest/operator/#production-strategy)
+
 # Prerequisites
 
 Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/resources) to run all of the components of Istio.
+
+If you are installing Istio on RKE2 cluster, some additional steps are required. For details, see [this section.](#additional-steps-for-installing-istio-on-an-rke2-cluster)
 
 # Setup Guide
 
@@ -99,3 +119,36 @@ By default, each Rancher-provisioned cluster has one NGINX ingress controller al
 ### Egress Support
 
 By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#overlay-file).
+
+# Additional Steps for Installing Istio on an RKE2 Cluster
+
+Through the **Cluster Explorer,** when installing or upgrading Istio through **Apps & Marketplace,**
+
+1. Click **Components.**
+1. Check the box next to **Enabled CNI.**
+1. Add a custom overlay file specifying `cniBinDir` and `cniConfDir`. For more information on these options, refer to the [Istio documentation.](https://istio.io/latest/docs/setup/additional-setup/cni/#helm-chart-parameters) An example is below:
+
+    ```yaml
+    apiVersion: install.istio.io/v1alpha1
+    kind: IstioOperator
+    spec:
+        components:
+        cni:
+            enabled: true
+        values:
+        cni:
+            image: rancher/istio-install-cni:1.7.3
+            excludeNamespaces:
+            - istio-system
+            - kube-system
+            logLevel: info
+            cniBinDir: /opt/cni/bin
+            cniConfDir: /etc/cni/net.d
+    ```
+1. After installing Istio, you'll notice the cni-node pods in the istio-system namespace in a CrashLoopBackoff error. Manually edit the `istio-cni-node` daemonset to include the following on the `install-cni` container:
+    ```yaml
+    securityContext:
+        privileged: true
+    ```
+
+**Result:** Now you should be able to utilize Istio as desired, including sidecar injection and monitoring via Kiali.

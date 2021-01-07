@@ -38,7 +38,7 @@ For more information about upgrading the Monitoring app in Rancher 2.5, please r
   - [Grafana UI](#grafana-ui)
   - [Prometheus UI](#prometheus-ui)
   - [Viewing the Prometheus Targets](#viewing-the-prometheus-targets)
-  - [Viewing the Prometheus Rules](#viewing-the-prometheus-rules)
+  - [Viewing the PrometheusRules](#viewing-the-prometheus-rules)
   - [Viewing Active Alerts in Alertmanager](#viewing-active-alerts-in-alertmanager)
 - [Uninstall Monitoring](#uninstall-monitoring)
 - [Setting Resource Limits and Requests](#setting-resource-limits-and-requests)
@@ -129,12 +129,14 @@ To see the Prometheus Targets, install `rancher-monitoring`. Then go to the **Cl
 <figcaption>Targets in the Prometheus UI</figcaption>
 ![Prometheus Targets UI]({{<baseurl>}}/img/rancher/prometheus-targets-ui.png)
 
-### Viewing the Prometheus Rules
+### Viewing the PrometheusRules
 
-To see the Prometheus Rules, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Prometheus Rules.**
+To see the PrometheusRules, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Prometheus Rules.**
 
 <figcaption>Rules in the Prometheus UI</figcaption>
-![Prometheus Rules UI]({{<baseurl>}}/img/rancher/prometheus-rules-ui.png)
+![PrometheusRules UI]({{<baseurl>}}/img/rancher/prometheus-rules-ui.png)
+
+For more information on PrometheusRules in Rancher, see [this page.](./configuration/prometheusrules)
 
 ### Viewing Active Alerts in Alertmanager
 
@@ -144,9 +146,11 @@ The Alertmanager handles alerts sent by client applications such as the Promethe
 
 In the Alertmanager UI, you can view your alerts and the current Alertmanager configuration.
 
-To see the Prometheus Rules, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Alertmanager.**
+To see the PrometheusRules, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Alertmanager.**
 
 **Result:** The Alertmanager UI opens in a new tab. For help with configuration, refer to the [official Alertmanager documentation.](https://prometheus.io/docs/alerting/latest/alertmanager/)
+
+For more information on configuring Alertmanager in Rancher, see [this page.](./configuration/alertmanager)
 
 <figcaption>The Alertmanager UI</figcaption>
 ![Alertmanager UI]({{<baseurl>}}/img/rancher/alertmanager-ui.png)

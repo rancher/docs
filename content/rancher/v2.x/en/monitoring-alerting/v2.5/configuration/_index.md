@@ -13,8 +13,8 @@ For information on configuring custom scrape targets and rules for Prometheus, p
 - [Configuring Targets with ServiceMonitors and PodMonitors](#configuring-targets-with-servicemonitors-and-podmonitors)
   - [ServiceMonitors](#servicemonitors)
   - [PodMonitors](#podmonitors)
-  - [PrometheusRules](#prometheusrules)
-  - [Alertmanager Config](#alertmanager-config)
+- [PrometheusRules](#prometheusrules)
+- [Alertmanager Config](#alertmanager-config)
 - [Trusted CA for Notifiers](#trusted-ca-for-notifiers)
 - [Additional Scrape Configurations](#additional-scrape-configurations)
 - [Examples](#examples)
@@ -45,40 +45,15 @@ For more information about how ServiceMonitors work, refer to the [Prometheus Op
 
 This CRD declaratively specifies how group of pods should be monitored. Any Pods in your cluster that match the labels located within the PodMonitor `selector` field will be monitored based on the `podMetricsEndpoints` specified on the PodMonitor. For more information on what fields can be specified, please look at the [spec](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#podmonitorspec) provided by Prometheus Operator.
 
-### PrometheusRules
+# PrometheusRules
 
 This CRD defines a group of Prometheus alerting and/or recording rules.
 
-To add a group of alerting / recording rules, you should create a PrometheusRule CR the defines a RuleGroup with your desired rules, each specifying:
+For information on configuring PrometheusRules, refer to [this page.](./prometheusrules)
 
-- The name of the new alert / record
-- A PromQL expression for the new alert / record
-- Labels that should be attached to the alert / record that identify it (e.g. cluster name or severity)
-- Annotations that encode any additional important pieces of information that need to be displayed on the notification for an alert (e.g. summary, description, message, runbook URL, etc.). This field is not required for recording rules.
+# Alertmanager Config
 
-For more information on what fields can be specified, please look at the [Prometheus Operator spec.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusrulespec)
-
-### Alertmanager Config
-
-The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
-
-By default, Rancher Monitoring deploys a single Alertmanager onto a cluster that uses a default Alertmanager Config Secret. As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster that can all be managed using the same underlying Alertmanager Config Secret.
- 
-This Secret should be updated or modified any time you want to:
- 
-- Add in new notifiers or receivers
-- Change the alerts that should be sent to specific notifiers or receivers
-- Change the group of alerts that are sent out
-
-> By default, you can either choose to supply an existing Alertmanager Config Secret (i.e. any Secret in the `cattle-monitoring-system` namespace) or allow Rancher Monitoring to deploy a default Alertmanager Config Secret onto your cluster. By default, the Alertmanager Config Secret created by Rancher will never be modified / deleted on an upgrade / uninstall of the `rancher-monitoring` chart to prevent users from losing or overwriting their alerting configuration when executing operations on the chart.
- 
-For more information on what fields can be specified in this secret, please look at the [Prometheus Alertmanager docs](https://prometheus.io/docs/alerting/latest/alertmanager/)
-
-The full spec for the Alertmanager configuration file and what it takes in can be found [here.](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)
-
-The notification integrations are configured with the `receiver`, which is documented [here.](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
-
-For more information, refer to the [official Prometheus documentation about configuring routes.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
+For information on configuring the Alertmanager, refer to [this page.](./alertmanager)
 
 # Trusted CA for Notifiers
 
@@ -110,25 +85,12 @@ An example PodMonitor can be found [here.](https://github.com/prometheus-operato
 
 ### PrometheusRule
 
-Prometheus rule files are held in PrometheusRule custom resources. Use the label selector field ruleSelector in the Prometheus object to define the rule files that you want to be mounted into Prometheus. An example PrometheusRule is on [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
+For users who are familiar with Prometheus, a PrometheusRule contains the alerting and recording rules that you would normally place in a [Prometheus rule file](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/).
+
+For a more fine-grained application of PrometheusRules within your cluster, the ruleSelector field on a Prometheus resource allows you to select which PrometheusRules should be loaded onto Prometheus based on the labels attached to the PrometheusRules resources.
+
+An example PrometheusRule is on [this page.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/alerting.md)
 
 ### Alertmanager Config
 
-To set up notifications via Slack, the following Alertmanager Config YAML should be placed into the `alertmanager.yaml` key of the Alertmanager Config Secret, where the `api_url` should be updated to use your Webhook URL from Slack:
-
-```yaml
-route:  
-  group_by: ['job']
-  group_wait: 30s
-  group_interval: 5m
-  repeat_interval: 3h 
-  receiver: 'slack-notifications'
-receivers:
-- name: 'slack-notifications'
-  slack_configs:
-  - send_resolved: true
-    text: '{{ template "slack.rancher.text" . }}'
-    api_url: <user-provided slack webhook url here>
-templates:
-- /etc/alertmanager/config/*.tmpl
-```
+For an example configuration, refer to [this section.](./alertmanager/#example-alertmanager-config)

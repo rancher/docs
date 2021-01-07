@@ -13,16 +13,24 @@ aliases:
 ---
 This section describes how to create backups of your high-availability Rancher install.
 
->**Prerequisites:** {{< requirements_rollback >}}
-
-## RKE Kubernetes Cluster Data
-
 In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
 
-<figcaption>Architecture of an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
+<figcaption>Cluster Data within an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
 ![Architecture of an RKE Kubernetes cluster running the Rancher management server]({{<baseurl>}}/img/rancher/rke-server-storage.svg)
 
-## Backup Outline
+# Requirements
+
+### RKE Version
+
+The commands for taking `etcd` snapshots are only available in RKE v0.1.7 and later.
+
+### RKE Config File
+
+You'll need the RKE config file that you used for Rancher install, `rancher-cluster.yml`. You created this file during your initial install. Place this file in same directory as the RKE binary.
+
+
+# Backup Outline
+
 
 Backing up your high-availability Rancher cluster is process that involves completing multiple tasks.
 
@@ -30,13 +38,12 @@ Backing up your high-availability Rancher cluster is process that involves compl
 
 	Take snapshots of your current `etcd` database using Rancher Kubernetes Engine (RKE).
 
-1.  [Store Snapshot(s) Externally](#2-backup-snapshots-to-a-safe-location)
+1.  [Store Snapshot(s) Externally](#2-back-up-local-snapshots-to-a-safe-location)
 
 	After taking your snapshots, export them to a safe location that won't be affected if your cluster encounters issues.
 
-<br/>
 
-### 1. Take Snapshots of the `etcd` Database
+# 1. Take Snapshots of the `etcd` Database
 
 Take snapshots of your `etcd` database. You can use these snapshots later to recover from a disaster scenario. There are two ways to take snapshots: recurringly, or as a one-off.  Each option is better suited to a specific use case. Read the short description below each link to know when to use each option.
 
@@ -48,7 +55,7 @@ Take snapshots of your `etcd` database. You can use these snapshots later to rec
 
 	We advise taking one-time snapshots before events like upgrades or restoration of another snapshot.
 
-#### Option A: Recurring Snapshots
+### Option A: Recurring Snapshots
 
 For all high-availability Rancher installs, we recommend taking recurring snapshots so that you always have a safe restoration point available.
 
@@ -103,7 +110,7 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
 
 **Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`. If configured, the snapshots are also uploaded to your S3 compatible backend.
 
-#### Option B: One-Time Snapshots
+### Option B: One-Time Snapshots
 
 When you're about to upgrade Rancher or restore it to a previous snapshot, you should snapshot your live image so that you have a backup of `etcd` in its last known state.
 
@@ -114,7 +121,9 @@ When you're about to upgrade Rancher or restore it to a previous snapshot, you s
 2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
 	```
-	rke etcd snapshot-save --name <SNAPSHOT.db> --config rancher-cluster.yml
+	rke etcd snapshot-save \
+    --name <SNAPSHOT.db> \
+    --config rancher-cluster.yml
 	```
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.
@@ -128,15 +137,20 @@ _Available as of RKE v0.2.0_
 2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
     ```shell
-    rke etcd snapshot-save --config rancher-cluster.yml --name snapshot-name  \
-    --s3 --access-key S3_ACCESS_KEY --secret-key S3_SECRET_KEY \
-    --bucket-name s3-bucket-name  --s3-endpoint  s3.amazonaws.com \
-    --folder folder-name # Available as of v2.3.0
+    rke etcd snapshot-save \
+      --config rancher-cluster.yml \
+      --name snapshot-name  \
+      --s3 \
+      --access-key S3_ACCESS_KEY \
+      --secret-key S3_SECRET_KEY \
+      --bucket-name s3-bucket-name  \
+      --s3-endpoint  s3.amazonaws.com \
+      --folder folder-name # Available as of v2.3.0
     ```
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`. It is also uploaded to the S3 compatible backend.
 
-### 2. Backup Local Snapshots to a Safe Location
+# 2. Back up Local Snapshots to a Safe Location
 
 > **Note:** If you are using RKE v0.2.0, you can enable saving the backups to a S3 compatible backend directly and skip this step.
 

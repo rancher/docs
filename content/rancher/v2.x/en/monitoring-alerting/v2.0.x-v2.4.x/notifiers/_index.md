@@ -63,7 +63,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 | URL |    From Slack, create a webhook. For instructions, see the [Slack Documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack). Then enter the Slack webhook URL.  |
 | Default Channel |    Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. Both public and private channels are supported.    |
 | Proxy URL |   Proxy for the Slack webhook.     |
-| Send Resolved Alerts |  _Available as of v2.3.0_ When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.     |
+| Send Resolved Alerts |  _Available as of v2.3.0_ Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)     |
 
 **Validation:** Click **Test**. If the test is successful, the Slack channel you're configuring for the notifier outputs **Slack setting validated.**
 
@@ -73,7 +73,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 |----------|----------------------|
 | Name | Enter a **Name** for the notifier.   |
 | Default Recipient Address |  Enter the email address that you want to receive the notification.   |
-| Send Resolved Alerts |  _Available as of v2.3.0_ When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  _Available as of v2.3.0_ Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)   |
 
 SMTP Server Configuration:
 
@@ -95,7 +95,7 @@ SMTP Server Configuration:
 | Name |  Enter a **Name** for the notifier. |
 | Default Integration Key | From PagerDuty, create a Prometheus integration. For instructions, see the [PagerDuty Documentation](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/). Then enter the integration key.
 | Service Key | The same as the integration key. For instructions on creating a Prometheus integration, see the [PagerDuty Documentation](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/). Then enter the integration key. |
-| Send Resolved Alerts |  _Available as of v2.3.0_ When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  _Available as of v2.3.0_ Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)   |
 
 **Validation:** Click **Test**. If the test is successful, your PagerDuty endpoint outputs **PagerDuty setting validated.**
 
@@ -106,7 +106,7 @@ SMTP Server Configuration:
 | Name |  Enter a **Name** for the notifier. |
 | URL |  Using the app of your choice, create a webhook URL. |
 | Proxy URL | Proxy for the webhook. |
-| Send Resolved Alerts |  _Available as of v2.3.0_ When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  _Available as of v2.3.0_ Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)   |
 
 **Validation:** Click **Test**. If the test is successful, the URL you're configuring as a notifier outputs **Webhook setting validated.**
 
@@ -123,7 +123,7 @@ _Available as of v2.2.0_
 | Recipient Type |  Party, tag, or user.   |
 | Default Recipient |  The default recipient ID should correspond to the recipient type. It should be the party ID, tag ID or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).  |
 | Proxy URL |  If you are using a proxy, enter the proxy URL.   |
-| Send Resolved Alerts |  _Available as of v2.3.0_ When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  _Available as of v2.3.0_ Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)  |
 
 **Validation:** Click **Test.** If the test is successful, you should receive an alert message.
 
@@ -137,7 +137,7 @@ _Available as of v2.4.6_
 | Webhook URL |   Enter the DingTalk webhook URL. For help setting up the webhook, refer to the [DingTalk documentation.](https://www.alibabacloud.com/help/doc-detail/52872.htm)    |
 | Secret |   Optional: Enter a secret for the DingTalk webhook.   |
 | Proxy URL |    Optional: Enter a proxy for the DingTalk webhook.  |
-| Send Resolved Alerts |  When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)   |
 
 **Validation:** Click **Test.** If the test is successful, the DingTalk notifier output is **DingTalk setting validated.**
 
@@ -150,7 +150,7 @@ _Available as of v2.4.6_
 | Name |  Enter a **Name** for the notifier. |
 | Webhook URL |   Enter the Microsoft Teams webhook URL. For help setting up the webhook, refer to the [Teams Documentation.](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook)    |
 | Proxy URL | Optional: Enter a proxy for the Teams webhook. |
-| Send Resolved Alerts |  When enabled, you will receive resolved alerts, such as an alert about high CPU usage after the CPU has returned to normal levels.   |
+| Send Resolved Alerts |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage)   |
 
 **Validation:** Click **Test.** If the test is successful, the Teams notifier output is **MicrosoftTeams setting validated.**
 

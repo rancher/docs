@@ -38,6 +38,7 @@ By default, only [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-set
 1. From the **Global View**, select **Tools > Global DNS Providers**.
 1. To add a provider, choose from the available provider options and configure the Global DNS Provider with necessary credentials and an optional domain.
 1. (Optional) Add additional users so they could  use the provider when creating Global DNS entries as well as manage the Global DNS provider.
+1. (Optional) Pass any custom values in the Additional Options section.
 
 {{% accordion id="route53" label="Route53" %}}
 1. Enter a **Name** for the provider.
@@ -96,6 +97,7 @@ The [global administrators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/gl
 - Root Domain
 - Access Key & Secret Key
 - Members
+- Custom values
 
 1. From the **Global View**, select **Tools > Global DNS Providers**.
 

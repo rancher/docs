@@ -18,16 +18,41 @@ If you only wanted ingress controllers to be deployed on specific nodes, you can
 
 ```yaml
 nodes:
-    - address: 1.1.1.1
-      role: [controlplane,worker,etcd]
-      user: root
-      labels:
-        app: ingress
+- address: 1.1.1.1
+  role: [controlplane,worker,etcd]
+  user: root
+  labels:
+    app: ingress
 
 ingress:
-    provider: nginx
-    node_selector:
-      app: ingress
+  provider: nginx
+  node_selector:
+    app: ingress
+```
+
+## Tolerations
+
+_Available as of v1.2.4_
+
+The configured tolerations apply to the `default-http-backend` Deployment.
+
+```
+ingress:
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+```
+
+To check for applied tolerations `default-http-backend` Deployment, use the following commands:
+
+```
+kubectl -n ingress-nginx get deploy default-http-backend -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
 ## Disabling the Default Ingress Controller
@@ -44,13 +69,24 @@ For the configuration of NGINX, there are configuration options available in Kub
 
 ```yaml
 ingress:
-    provider: nginx
-    options:
-      map-hash-bucket-size: "128"
-      ssl-protocols: SSLv2
-    extra_args:
-      enable-ssl-passthrough: ""
+  provider: nginx
+  options:
+    map-hash-bucket-size: "128"
+    ssl-protocols: SSLv2
+  extra_args:
+    enable-ssl-passthrough: ""
 ```
+
+### Disabling NGINX Ingress Default Backend
+
+As of v0.20.0, you can disable the [default backend service](https://kubernetes.github.io/ingress-nginx/user-guide/default-backend/) for the ingress controller. This is possible because `ingress-nginx` will fall back to a local 404 page, and does not require a backend service. The service can be enabled/disabled with a boolean value.
+
+```yaml
+ingress:
+  default_backend: false
+```
+
+> **What happens if the field is omitted?** The value of `default_backend` will default to `true`. This maintains behavior with older versions of `rke`. However, a future version of `rke` will change the default value to `false`.
 
 ## Configuring an NGINX Default Certificate
 

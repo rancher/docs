@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 4
+weight: 5
 aliases:
 - /rancher/v2.x/en/installation/options
 ---

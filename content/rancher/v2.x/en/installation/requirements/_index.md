@@ -27,13 +27,9 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution.
 
+Docker is required for nodes that will run K3s or RKE Kubernetes clusters. It is not required for RancherD installs.
+
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
-
-For the container runtime, RKE should work with any modern Docker version, while K3s should work with any modern version of Docker or containerd.
-
-If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
-
-If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 All supported operating systems are 64-bit x86.
 
@@ -43,10 +39,33 @@ Some distributions of Linux may have default firewall rules that block communica
 
 If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.x/en/installation/options/arm64-platform/)
 
+### RKE Specific Requirements
+
+For the container runtime, RKE should work with any modern Docker version.
+
+### K3s Specific Requirements
+
+For the container runtime, K3s should work with any modern version of Docker or containerd.
+
+If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
+
+If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+
+### RancherD Specific Requirements
+
+_The RancherD install is available as of v2.5.4. It is an experimental feature._	
+
+At this time, only Linux OSes that leverage systemd are supported.	
+
+To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.	
+
+Docker is not required for RancherD installs.	
+
 ### Installing Docker
 
-Docker can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
+Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
 
+Docker is not required for RancherD installs.
 # Hardware Requirements
 
 This section describes the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
@@ -129,176 +148,13 @@ Each node used should have a static IP configured, regardless of whether you are
 
 ### Port Requirements
 
-This section describes the port requirements for nodes running the `rancher/rancher` container.
+To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
 
-The port requirements are different depending on whether you are installing Rancher on a K3s cluster, on an RKE cluster, or in a single Docker container.
+# RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes
 
-{{% tabs %}}
-{{% tab "K3s" %}}
-### Ports for Communication with Downstream Clusters
+Before installing Rancher on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, you must install `container-selinux` and `iptables`: 
 
-To communicate with downstream clusters, Rancher requires different ports to be open depending on the infrastructure you are using.
-
-For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH.
-
-The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
-
-<figcaption>Port Requirements for the Rancher Management Plane</figcaption>
-
-![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
-
-The following tables break down the port requirements for inbound and outbound traffic:
-
-<figcaption>Inbound Rules for Rancher Nodes</figcaption>
-
-| Protocol | Port | Source                                                                                                                                                                                | Description                                          |
-| -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
-| TCP      | 443  | <ul><li>server nodes</li><li>agent nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
-
-<figcaption>Outbound Rules for Rancher Nodes</figcaption>
-
-| Protocol | Port | Destination                                              | Description                                   |
-| -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
-| TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
-| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
-| TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
-| TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
-
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
-
-### Additional Port Requirements for Nodes in a K3s Kubernetes Cluster
-
-You will need to open additional ports to launch the Kubernetes cluster that is required for a high-availability installation of Rancher.
-
-The K3s server needs port 6443 to be accessible by the nodes.
-
-The nodes need to be able to reach other nodes over UDP port 8472 when Flannel VXLAN is used. The node should not listen on any other port. K3s uses reverse tunneling such that the nodes make outbound connections to the server and all kubelet traffic runs through that tunnel. However, if you do not use Flannel and provide your own custom CNI, then port 8472 is not needed by K3s.
-
-If you wish to utilize the metrics server, you will need to open port 10250 on each node.
-
-> **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
-
-<figcaption>Inbound Rules for Rancher Server Nodes</figcaption>
-
-| Protocol | Port | Source | Description
-|-----|-----|----------------|---|
-| TCP | 6443 | K3s server nodes | Kubernetes API
-| UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN
-| TCP | 10250 | K3s server and agent nodes | kubelet
-
-Typically all outbound traffic is allowed.
-{{% /tab %}}
-{{% tab "RKE" %}}
-### Ports for Communication with Downstream Clusters
-
-To communicate with downstream clusters, Rancher requires different ports to be open depending on the infrastructure you are using.
-
-For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH.
-
-The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
-
-<figcaption>Port Requirements for the Rancher Management Plane</figcaption>
-
-![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
-
-The following tables break down the port requirements for inbound and outbound traffic:
-
-<figcaption>Inbound Rules for Rancher Nodes</figcaption>
-
-| Protocol | Port | Source                                                                                                                                                                                | Description                                          |
-| -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
-| TCP      | 443  | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
-
-<figcaption>Outbound Rules for Rancher Nodes</figcaption>
-
-| Protocol | Port | Destination                                              | Description                                   |
-| -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
-| TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
-| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
-| TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
-| TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
-
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
-
-### Additional Port Requirements for Nodes in an RKE Kubernetes Cluster
-
-You will need to open additional ports to launch the Kubernetes cluster that is required for a high-availability installation of Rancher.
-
-If you follow the Rancher installation documentation for setting up a Kubernetes cluster using RKE, you will set up a cluster in which all three nodes have all three roles: etcd, controlplane, and worker. In that case, you can refer to this list of requirements for each node with all three roles.
-
-If you installed Rancher on a Kubernetes cluster that doesn't have all three roles on each node, refer to the [port requirements for the Rancher Kubernetes Engine (RKE).]({{<baseurl>}}/rke/latest/en/os/#ports) The RKE docs show a breakdown of the port requirements for each role.
-
-<figcaption>Inbound Rules for Nodes with All Three Roles: etcd, Controlplane, and Worker</figcaption>
-
-Protocol | Port | Source | Description
------------|------|----------|--------------
-TCP | 22 | Linux worker nodes only, and any network that you want to be able to remotely access this node from. | Remote access over SSH
-TCP | 80 | Any source that consumes Ingress services | Ingress controller (HTTP)
-TCP | 443 | Any source that consumes Ingress services | Ingress controller (HTTPS)
-TCP | 2376 | Rancher nodes | Docker daemon TLS port used by Docker Machine (only needed when using Node Driver/Templates)
-TCP | 2379 | etcd nodes and controlplane nodes | etcd client requests
-TCP | 2380 | etcd nodes and controlplane nodes | etcd peer communication
-TCP | 3389 | Windows worker nodes only, and any network that you want to be able to remotely access this node from. | Remote access over RDP
-TCP | 6443 | etcd nodes, controlplane nodes, and worker nodes | Kubernetes apiserver
-UDP | 8472 | etcd nodes, controlplane nodes, and worker nodes | Canal/Flannel VXLAN overlay networking
-TCP | 9099 | the node itself (local traffic, not across nodes) | Canal/Flannel livenessProbe/readinessProbe
-TCP | 10250 | controlplane nodes | kubelet
-TCP | 10254 | the node itself (local traffic, not across nodes) | Ingress controller livenessProbe/readinessProbe
-TCP/UDP | 30000-32767 | Any source that consumes NodePort services | NodePort port range
-
-<figcaption>Outbound Rules for Nodes with All Three Roles: etcd, Controlplane, and Worker</figcaption>
-
-Protocol | Port | Source | Destination | Description
------------|------|----------|---------------|--------------
-TCP | 22 | RKE node | Any node configured in Cluster Configuration File | SSH provisioning of node by RKE
-TCP | 443 | Rancher nodes | Rancher agent |
-TCP | 2379 | etcd nodes | etcd client requests |
-TCP | 2380 | etcd nodes | etcd peer communication |
-TCP | 6443 | RKE node | controlplane nodes | Kubernetes API server
-TCP | 6443 | controlplane nodes | Kubernetes API server |
-UDP | 8472 | etcd nodes, controlplane nodes, and worker nodes | Canal/Flannel VXLAN overlay networking |
-TCP | 9099 | the node itself (local traffic, not across nodes) | Canal/Flannel livenessProbe/readinessProbe |
-TCP | 10250 | etcd nodes, controlplane nodes, and worker nodes | kubelet |
-TCP | 10254 | the node itself (local traffic, not across nodes) | Ingress controller livenessProbe/readinessProbe
-
-{{% /tab %}}
-{{% tab "Docker" %}}
-### Ports for Communication with Downstream Clusters
-
-For a Docker installation, you only need to open the ports required to enable Rancher to communicate with downstream user clusters.
-
-The port requirements depend on the infrastructure you are using. For example, if you are deploying Rancher on nodes hosted by an infrastructure provider, port `22` must be open for SSH.
-
-The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
-
-<figcaption>Port Requirements for the Rancher Management Plane</figcaption>
-
-![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
-
-The following tables break down the port requirements for Rancher nodes, for inbound and outbound traffic:
-
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
-
-
-<figcaption>Inbound Rules</figcaption>
-
-| Protocol | Port | Source                                                                                                                                                                                | Description                                          |
-| -------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
-| TCP      | 443  | <ul><li>etcd nodes</li><li>controlplane nodes</li><li>worker nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
-
-
-<figcaption>Outbound Rules</figcaption>
-
-| Protocol | Port | Source                                                   | Description                                   |
-| -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
-| TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
-| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
-| TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
-| TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
-
-**Note** Rancher nodes may also require additional outbound access for any external [authentication provider]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/) which is configured (LDAP for example).
-{{% /tab %}}
-{{% /tabs %}}
+```
+sudo yum install iptables
+sudo yum install container-selinux
+```

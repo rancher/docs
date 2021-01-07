@@ -34,16 +34,16 @@ If you only want the CoreDNS pod to be deployed on specific nodes, you can set a
 
 ```yaml
 nodes:
-    - address: 1.1.1.1
-      role: [controlplane,worker,etcd]
-      user: root
-      labels:
-        app: dns
+- address: 1.1.1.1
+  role: [controlplane,worker,etcd]
+  user: root
+  labels:
+    app: dns
 
 dns:
-    provider: coredns
-    node_selector:
-      app: dns
+  provider: coredns
+  node_selector:
+    app: dns
 ```
 
 ## Configuring CoreDNS
@@ -56,10 +56,37 @@ When you set `upstreamnameservers`, the `provider` also needs to be set.
 
 ```yaml
 dns:
-    provider: coredns
-    upstreamnameservers:
-    - 1.1.1.1
-    - 8.8.4.4
+  provider: coredns
+  upstreamnameservers:
+  - 1.1.1.1
+  - 8.8.4.4
+```
+
+### Tolerations
+
+_Available as of v1.2.4_
+
+The configured tolerations apply to the `coredns` and the `coredns-autoscaler` Deployment.
+
+```
+dns:
+  provider: coredns
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+```
+
+To check for applied tolerations on the `coredns` and `coredns-autoscaler` Deployment, use the following commands:
+
+```
+kubectl -n kube-system get deploy coredns -o jsonpath='{.spec.template.spec.tolerations}'
+kubectl -n kube-system get deploy coredns-autoscaler -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
 # kube-dns
@@ -76,16 +103,16 @@ If you only want the kube-dns pod to be deployed on specific nodes, you can set 
 
 ```yaml
 nodes:
-    - address: 1.1.1.1
-      role: [controlplane,worker,etcd]
-      user: root
-      labels:
-        app: dns
+- address: 1.1.1.1
+  role: [controlplane,worker,etcd]
+  user: root
+  labels:
+    app: dns
 
 dns:
-    provider: kube-dns
-    node_selector:
-      app: dns
+  provider: kube-dns
+  node_selector:
+    app: dns
 ```
 
 ## Configuring kube-dns
@@ -100,10 +127,38 @@ When you set `upstreamnameservers`, the `provider` also needs to be set.
 
 ```yaml
 dns:
-    provider: kube-dns
-    upstreamnameservers:
-    - 1.1.1.1  
-    - 8.8.4.4
+  provider: kube-dns
+  upstreamnameservers:
+  - 1.1.1.1
+  - 8.8.4.4
+```
+
+### Tolerations
+
+_Available as of v1.2.4_
+
+The configured tolerations apply to the `kube-dns` and the `kube-dns-autoscaler` Deployment.
+
+```
+dns:
+  provider: kube-dns
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+
+```
+
+To check for applied tolerations on the `coredns` and `coredns-autoscaler` Deployment, use the following commands:
+
+```
+kubectl get deploy kube-dns -n kube-system -o jsonpath='{.spec.template.spec.tolerations}'
+kubectl get deploy kube-dns-autoscaler -n kube-system -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
 # Disabling deployment of a DNS provider
@@ -114,7 +169,7 @@ You can disable the default DNS provider by specifying `none` to  the dns `provi
 
 ```yaml
 dns:
-    provider: none
+  provider: none
 ```
 
 # NodeLocal DNS
@@ -137,9 +192,9 @@ The `ip_address` parameter is used to configure what link-local IP address will 
 
 ```yaml
 dns:
-    provider: coredns
-    nodelocal:
-        ip_address: "169.254.20.10"
+  provider: coredns
+  nodelocal:
+    ip_address: "169.254.20.10"
 ```
 
 > **Note:** When enabling NodeLocal DNS on an existing cluster, pods that are currently running will not be modified, the updated `/etc/resolv.conf` configuration will take effect only for pods started after enabling NodeLocal DNS.
