@@ -49,7 +49,7 @@ To begin provisioning a custom cluster with Windows support, prepare your host s
 - VMs from virtualization clusters
 - Bare-metal servers
 
-The table below lists the Kubernetes node roles you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
+The table below lists the [Kubernetes roles]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------

@@ -59,15 +59,15 @@ The following commands are available for use in Rancher CLI.
 
 | Command  | Result  |
 |---|---|
-| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or Rancher charts.  |
+| `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or [Rancher charts]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/adding-catalogs/#chart-directory-structure).  |
 | `catalog`  | Performs operations on [catalogs]({{<baseurl>}}/rancher/v2.x/en/catalog/).  |
 | `clusters, [cluster]`  | Performs operations on your [clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).  |
 | `context`  | Switches between Rancher [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).  |
 | `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`  | Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/) and [workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/)). Specify resources by name or ID.  |
 | `kubectl`  |Runs [kubectl commands](https://kubernetes.io/docs/reference/kubectl/overview/#operations).   |
 | `login, [l]`  | Logs into a Rancher Server. For an example, see [CLI Authentication](#cli-authentication).  |
-| `namespaces, [namespace]`  |Performs operations on namespaces.   |
-| `nodes, [node]`  |Performs operations on nodes.   |
+| `namespaces, [namespace]`  |Performs operations on [namespaces]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces).   |
+| `nodes, [node]`  |Performs operations on [nodes]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#kubernetes).   |
 | `projects, [project]`  | Performs operations on [projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/).  |
 | `ps`  | Displays [workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads) in a project.  |
 | `settings, [setting]`  | Shows the current settings for your Rancher Server.  |
