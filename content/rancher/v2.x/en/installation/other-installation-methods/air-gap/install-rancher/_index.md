@@ -21,13 +21,13 @@ Rancher recommends installing Rancher on a Kubernetes cluster. A highly availabl
 
 This section describes installing Rancher in five parts:
 
-- [A. Add the Helm Chart Repository](#a-add-the-helm-chart-repository)
-- [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration)
-- [C. Render the Rancher Helm Template](#c-render-the-rancher-helm-template)
-- [D. Install Rancher](#d-install-rancher)
-- [E. For Rancher versions prior to v2.3.0, Configure System Charts](#e-for-rancher-versions-prior-to-v2-3-0-configure-system-charts)
+- [1. Add the Helm Chart Repository](#1-add-the-helm-chart-repository)
+- [2. Choose your SSL Configuration](#2-choose-your-ssl-configuration)
+- [3. Render the Rancher Helm Template](#3-render-the-rancher-helm-template)
+- [4. Install Rancher](#4-install-rancher)
+- [5. For Rancher versions prior to v2.3.0, Configure System Charts](#5-for-rancher-versions-prior-to-v2-3-0-configure-system-charts)
 
-### A. Add the Helm Chart Repository
+# 1. Add the Helm Chart Repository
 
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
@@ -49,7 +49,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
     helm fetch rancher-stable/rancher --version=v2.4.8
     ```
 
-### B. Choose your SSL Configuration
+# 2. Choose your SSL Configuration
 
 Rancher Server is designed to be secure by default and requires SSL/TLS configuration.
 
@@ -62,7 +62,7 @@ When Rancher is installed on an air gapped Kubernetes cluster, there are two rec
 | Rancher Generated Self-Signed Certificates | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br> This is the **default** and does not need to be added when rendering the Helm template. | yes                   |
 | Certificates from Files                    | `ingress.tls.source=secret`  | Use your own certificate files by creating Kubernetes Secret(s). <br> This option must be passed when rendering the Rancher Helm template.                  | no                    |
 
-### C. Render the Rancher Helm Template
+# 3. Render the Rancher Helm Template
 
 When setting up the Rancher Helm template, there are several options in the Helm chart that are designed specifically for air gap installations.
 
@@ -74,7 +74,9 @@ When setting up the Rancher Helm template, there are several options in the Helm
 
 Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), complete one of the procedures below.
 
-{{% accordion id="self-signed" label="Option A-Default Self-Signed Certificate" %}}
+### Option A: Default Self-Signed Certificate
+
+{{% accordion id="k8s-1" label="Click to expand" %}}
 
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
@@ -89,9 +91,9 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
 
-   ```plain
-   helm fetch jetstack/cert-manager --version v1.0.4
-   ```
+    ```plain
+    helm fetch jetstack/cert-manager --version v1.0.4
+    ```
 
 1. Render the cert manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
    ```plain
@@ -131,7 +133,9 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 {{% /accordion %}}
 
-{{% accordion id="secret" label="Option B: Certificates From Files using Kubernetes Secrets" %}}
+### Option B: Certificates From Files using Kubernetes Secrets
+
+{{% accordion id="k8s-2" label="Click to expand" %}}
 
 Create Kubernetes secrets from your own certificates for Rancher to use. The common name for the cert will need to match the `hostname` option in the command below, or the ingress controller will fail to provision the site for Rancher.
 
@@ -172,15 +176,17 @@ Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.x/en/installation/re
 
 {{% /accordion %}}
 
-### D. Install Rancher
+# 4. Install Rancher
 
 Copy the rendered manifest directories to a system that has access to the Rancher server cluster to complete installation.
 
 Use `kubectl` to create namespaces and apply the rendered manifests.
 
-If you chose to use self-signed certificates in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), install cert-manager.
+If you choose to use self-signed certificates in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), install cert-manager.
 
-{{% accordion id="install-cert-manager" label="Self-Signed Certificate Installs - Install Cert-manager" %}}
+### For Self-Signed Certificate Installs, Install Cert-manager
+
+{{% accordion id="install-cert-manager" label="Click to expand" %}}
 
 If you are using self-signed certificates, install cert-manager:
 
@@ -204,7 +210,7 @@ kubectl apply -R -f ./cert-manager
 
 {{% /accordion %}}
 
-Install Rancher:
+### Install Rancher with kubectl
 
 ```plain
 kubectl create namespace cattle-system
@@ -214,11 +220,11 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 > **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
 
-### E. For Rancher versions prior to v2.3.0, Configure System Charts
+# 5. For Rancher versions prior to v2.3.0, Configure System Charts
 
 If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
 
-### Additional Resources
+# Additional Resources
 
 These resources could be helpful when installing Rancher:
 
@@ -229,7 +235,13 @@ These resources could be helpful when installing Rancher:
 {{% /tab %}}
 {{% tab "Docker Install" %}}
 
-The Docker installation is for Rancher users that are wanting to **test** out Rancher. Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. **Important: If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker installation to a Kubernetes Installation.** Instead of running the single node installation, you have the option to follow the Kubernetes Install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a Kubernetes Installation.
+The Docker installation is for Rancher users who want to test out Rancher. 
+
+Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. 
+
+> **Important:** For Rancher v2.0-v2.4, there is no upgrade path to transition your Docker installation to a Kubernetes Installation.** Instead of running the single node installation, you have the option to follow the Kubernetes Install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a Kubernetes Installation.
+
+For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/migrating-rancher/)
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -247,7 +259,9 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-{{% accordion id="option-a" label="Option A-Default Self-Signed Certificate" %}}
+### Option A: Default Self-Signed Certificate
+
+{{% accordion id="option-a" label="Click to expand" %}}
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
@@ -270,7 +284,10 @@ docker run -d --restart=unless-stopped \
 ```
 
 {{% /accordion %}}
-{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Self-Signed" %}}
+
+### Option B: Bring Your Own Certificate: Self-Signed
+
+{{% accordion id="option-b" label="Click to expand" %}}
 
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
@@ -306,7 +323,10 @@ docker run -d --restart=unless-stopped \
 ```
 
 {{% /accordion %}}
-{{% accordion id="option-c" label="Option C-Bring Your Own Certificate: Signed by Recognized CA" %}}
+
+### Option C: Bring Your Own Certificate: Signed by Recognized CA
+
+{{% accordion id="option-c" label="Click to expand" %}}
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 

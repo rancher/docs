@@ -1,0 +1,8 @@
+rancher_version    = "v2.5.4"
+kubernetes_version = "v1.18"
+cis_version        = "1.6"
+test_node          = "cis-aio-0"
+test_helper_path   = "/home/myuser/repos/rancher-security-scan/package/helper_scripts"
+results_file       = "/home/myuser/tmp/tf_mk/csr.json"
+index_weight       = 101
+output_file        = "/home/myuser/repos/rancher-docs/content/rancher/v2.x/en/security/rancher-2.5/1.6-benchmark-2.5/_index.md"

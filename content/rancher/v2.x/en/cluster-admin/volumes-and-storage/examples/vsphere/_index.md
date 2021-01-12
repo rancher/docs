@@ -7,11 +7,19 @@ aliases:
 
 To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume [storage class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes). This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
 
+In order to dynamically provision storage in vSphere, the vSphere provider must be [enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
+
+- [Prerequisites](#prerequisites)
+- [Creating a StorageClass](#creating-a-storageclass)
+- [Creating a Workload with a vSphere Volume](#creating-a-workload-with-a-vsphere-volume)
+- [Verifying Persistence of the Volume](#verifying-persistence-of-the-volume)
+- [Why to Use StatefulSets Instead of Deployments](#why-to-use-statefulsets-instead-of-deployments)
+
 ### Prerequisites
 
 In order to provision vSphere volumes in a cluster created with the [Rancher Kubernetes Engine (RKE)]({{< baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the [vSphere cloud provider]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere) must be explicitly enabled in the [cluster options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/).
 
-### Creating A Storage Class
+### Creating a StorageClass
 
 > **Note:**
 >
@@ -56,7 +64,7 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 
     ![workload-persistent-data]({{<baseurl>}}/img/rancher/workload-persistent-data.png)
 
-## Why to Use StatefulSets Instead of Deployments
+### Why to Use StatefulSets Instead of Deployments
 
 You should always use [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) for workloads consuming vSphere storage, as this resource type is designed to address a VMDK block storage caveat.
 
@@ -64,7 +72,7 @@ Since vSphere volumes are backed by VMDK block storage, they only support an [ac
 
 Even using a deployment resource with just a single replica may result in a deadlock situation while updating the deployment. If the updated pod is scheduled to a node different from where the existing pod lives, it will fail to start because the VMDK is still attached to the other node.
 
-## Related Links
+### Related Links
 
 - [vSphere Storage for Kubernetes](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/)
 - [Kubernetes Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)

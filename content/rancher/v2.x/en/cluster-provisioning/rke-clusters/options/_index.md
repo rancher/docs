@@ -1,16 +1,18 @@
 ---
-title: Cluster Configuration Reference
+title: RKE Cluster Configuration Reference
 weight: 2250
 ---
 
-As you configure a new cluster that's [provisioned using RKE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), you can choose custom Kubernetes options.
+When Rancher installs Kubernetes, it uses [RKE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) as the Kubernetes distribution.
 
-You can configure Kubernetes options one of two ways:
+This section covers the configuration options that are available in Rancher for a new or existing RKE Kubernetes cluster.
+
+You can configure the Kubernetes options one of two ways:
 
 - [Rancher UI](#rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
 - [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the options available in an RKE installation, except for system_images configuration, by specifying them in YAML.
 
-In Rancher v2.0.0-v2.2.x, the config file is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the section about the [cluster config file.](#cluster-config-file)
+In Rancher v2.0.0-v2.2.x, the RKE cluster config file in Rancher is identical to the  [cluster config file for the Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the section about the [cluster config file.](#cluster-config-file)
 
 This section is a cluster configuration reference, covering the following topics:
 
@@ -20,6 +22,7 @@ This section is a cluster configuration reference, covering the following topics
   - [Kubernetes cloud providers](#kubernetes-cloud-providers)
   - [Private registries](#private-registries)
   - [Authorized cluster endpoint](#authorized-cluster-endpoint)
+  - [Node pools](#node-pools)
 - [Advanced Options](#advanced-options)
   - [NGINX Ingress](#nginx-ingress)
   - [Node port range](#node-port-range)
@@ -112,6 +115,10 @@ This is enabled by default in Rancher-launched Kubernetes clusters, using the IP
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#4-authorized-cluster-endpoint)
 
 We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
+
+### Node Pools
+
+For information on using the Rancher UI to set up node pools in an RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools)
 
 # Advanced Options
 

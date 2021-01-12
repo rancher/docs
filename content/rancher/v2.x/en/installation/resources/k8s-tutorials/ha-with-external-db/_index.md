@@ -19,6 +19,7 @@ For systems without direct internet access, refer to the air gap installation in
 
 These instructions assume you have set up two nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/)
 
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 # Installing Kubernetes
 
 ### 1. Install Kubernetes and Set up the K3s Server
@@ -31,6 +32,11 @@ When running the command to start the K3s Kubernetes API server, you will pass i
   curl -sfL https://get.k3s.io | sh -s - server \
     --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"
   ```
+  To specify the K3s version, use the INSTALL_K3S_VERSION environment variable:
+  ```sh
+  curl -sfL https://get.k3s.io |  INSTALL_K3S_VERSION=vX.Y.Z sh -s - server \
+    --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"
+    ```
   Note: The datastore endpoint can also be passed in using the environment variable `$K3S_DATASTORE_ENDPOINT`.
 
 1. Repeat the same command on your second K3s server node.

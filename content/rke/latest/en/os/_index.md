@@ -30,7 +30,7 @@ weight: 5
 
 ### General Linux Requirements
 
-RKE runs on almost any Linux OS with Docker installed. Most of the development and testing of RKE occurred on Ubuntu 16.04. However, some OS's have restrictions and specific requirements.
+RKE runs on almost any Linux OS with Docker installed. For details on which OS and Docker versions were tested with each version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/).
 
 - [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) - The SSH user used for node access must be a member of the `docker` group on the node:
 

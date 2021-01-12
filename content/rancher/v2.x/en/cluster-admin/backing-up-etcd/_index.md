@@ -42,7 +42,7 @@ Because the Kubernetes version is now included in the snapshot, it is possible t
 
 The multiple components of the snapshot allow you to select from the following options if you need to restore a cluster from a snapshot:
 
-- **Restore just the etcd contents:** This restoration is similar to restoring to snapshots in Rancher prior to v2.4.0.
+- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher prior to v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 

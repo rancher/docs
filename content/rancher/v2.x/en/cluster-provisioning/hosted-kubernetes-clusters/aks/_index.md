@@ -120,14 +120,14 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 1. Enter a **Cluster Name**.
 
-1. {{< step_create-cluster_member-roles >}} 
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
 1. Use your subscription ID, tenant ID, app ID, and client secret to give your cluster access to AKS. If you don't have all of that information, you can retrieve it using these instructions:
   - **App ID and tenant ID:** To get the app ID and tenant ID, you can go to the Azure Portal, then click **Azure Active Directory**, then click **App registrations,** then click the name of the service principal. The app ID and tenant ID are both on the app registration detail page. 
   - **Client secret:** If you didn't copy the client secret when creating the service principal, you can get a new one if you go to the app registration detail page, then click **Certificates & secrets**, then click **New client secret.** 
   - **Subscription ID:** You can get the subscription ID is available in the portal from **All services > Subscriptions.**
 
-1. {{< step_create-cluster_cluster-options >}}
+1. Use **Cluster Options** to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.**
 
 1. Complete the **Account Access** form using the output from your Service Principal. This information is used to authenticate with Azure.
 
@@ -139,4 +139,13 @@ Use Rancher to set up and configure your Kubernetes cluster.
 <br/>
 1. Review your options to confirm they're correct. Then click **Create**.
 
-{{< result_create-cluster >}}
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

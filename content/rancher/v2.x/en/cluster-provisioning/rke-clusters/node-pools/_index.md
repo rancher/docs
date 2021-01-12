@@ -58,9 +58,23 @@ To access all node templates, an administrator will need to do the following:
 
 # Node Pools
 
-Using Rancher, you can create pools of nodes based on a [node template](#node-templates). The benefit of using a node pool is that if a node is destroyed or deleted, you can increase the number of live nodes to compensate for the node that was lost. The node pool helps you ensure that the count of the node pool is as expected.
+Using Rancher, you can create pools of nodes based on a [node template](#node-templates). 
+
+A node template defines the configuration of a node, like what operating system to use, number of CPUs and amount of memory.
+
+The benefit of using a node pool is that if a node is destroyed or deleted, you can increase the number of live nodes to compensate for the node that was lost. The node pool helps you ensure that the count of the node pool is as expected.
 
 Each node pool is assigned with a [node component]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) to specify how these nodes should be configured for the Kubernetes cluster.
+
+Each node pool must have one or more nodes roles assigned. 
+
+Each node role (i.e. etcd, control plane, and worker) should be assigned to a distinct node pool. Although it is possible to assign multiple node roles to a node pool, this should not be done for production clusters.
+
+The recommended setup is to have:
+
+- a node pool with the etcd node role and a count of three
+- a node pool with the control plane node role and a count of at least two
+- a node pool with the worker node role and a count of at least two
 
 ### Node Pool Taints
 
@@ -78,11 +92,9 @@ _Available as of Rancher v2.3.0_
 
 If a node is in a node pool, Rancher can automatically replace unreachable nodes. Rancher will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
 
-> **Important:** Self-healing node pools are designed to help you replace worker nodes for **stateless** applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
+> **Important:** Self-healing node pools are designed to help you replace worker nodes for <b>stateless</b> applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
 
-{{% accordion id="how-does-node-auto-replace-work" label="How does Node Auto-replace Work?" %}}
-   Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.
-{{% /accordion %}}
+Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.
 
 ### Enabling Node Auto-replace
 

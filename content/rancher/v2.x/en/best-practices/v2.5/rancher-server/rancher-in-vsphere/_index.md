@@ -14,7 +14,7 @@ This guide outlines a reference architecture for installing Rancher on an RKE Ku
 
 <figcaption>Solution Overview</figcaption>
 
-![Solution Overview](/img/rancher/rancher-on-prem-vsphere.svg)
+![Solution Overview](/docs/img/rancher/rancher-on-prem-vsphere.svg)
 
 # 1. Load Balancer Considerations
 

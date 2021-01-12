@@ -29,7 +29,7 @@ To address these changes, this guide will do two things:
 
 > For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/ha/#c-upgrade-rancher) under the upgrade Rancher section. 
 
-## Upgrade Cert-Manager
+# Upgrade Cert-Manager
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
@@ -37,7 +37,9 @@ The namespace used in these instructions depends on the namespace cert-manager i
 
 In order to upgrade cert-manager, follow these instructions:
 
-{{% accordion id="normal" label="Upgrading cert-manager with Internet access" %}}
+### Option A: Upgrade cert-manager with Internet Access
+
+{{% accordion id="normal" label="Click to expand" %}}
 1. [Back up existing resources](https://cert-manager.io/docs/tutorials/backup/) as a precaution
 
     ```plain
@@ -104,7 +106,10 @@ In order to upgrade cert-manager, follow these instructions:
 
 {{% /accordion %}}
 
-{{% accordion id="airgap" label="Upgrading cert-manager in an airgapped environment" %}}
+### Option B: Upgrade cert-manager in an Air Gap Environment
+
+{{% accordion id="airgap" label="Click to expand" %}}
+
 ### Prerequisites
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
@@ -208,6 +213,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 
 {{% /accordion %}}
 
+### Verify the Deployment 
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the kube-system namespace for running pods:
 

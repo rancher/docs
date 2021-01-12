@@ -66,13 +66,23 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 1. Enter a **Cluster Name.**
 
-1. {{< step_create-cluster_member-roles >}}
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
 1. Fill out the rest of the form. For help, refer to the [configuration reference.](#eks-cluster-configuration-reference) 
 
 1. Click **Create**.
 
-{{< result_create-cluster >}}
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
 
 # EKS Cluster Configuration Reference
 

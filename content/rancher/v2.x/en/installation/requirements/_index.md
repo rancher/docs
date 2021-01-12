@@ -47,6 +47,8 @@ For the container runtime, RKE should work with any modern Docker version.
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
 If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
@@ -75,7 +77,7 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
 {{% tabs %}}
-{{% tab "RKE Install Requirements" %}}
+{{% tab "RKE" %}}
 
 These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/)
 
@@ -92,7 +94,7 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher prior t
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
 {{% /tab %}}
 
-{{% tab "K3s Install Requirements" %}}
+{{% tab "K3s" %}}
 
 These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/)
 
@@ -108,7 +110,20 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 
 {{% /tab %}}
 
-{{% tab "Docker Install Requirements" %}}
+{{% tab "RancherD" %}}
+
+_RancherD is available as of v2.5.4. It is an experimental feature._
+
+The following requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
+
+| Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
+| --------------- | -------- | --------- | ----- | ---- |
+| Small           | Up to 5  | Up to 50  | 2     | 5 GB |
+| Medium          | Up to 15 | Up to 200 | 3     | 9 GB |
+
+{{% /tab %}}
+
+{{% tab "Docker" %}}
 
 These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 

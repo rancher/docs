@@ -69,7 +69,7 @@ When setting up this type of cluster, Rancher installs Kubernetes on existing [c
 
 You can bring any nodes you want to Rancher and use them to create a cluster.
 
-These nodes include on-premise bare metal servers, cloud-hosted virtual machines, or on-premise virtual machines.
+These nodes include on-prem bare metal servers, cloud-hosted virtual machines, or on-prem virtual machines.
 
 # Importing Existing Clusters
 
