@@ -9,7 +9,7 @@ aliases:
 
 _Available as of v2.2.0_
 
-While configuring monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/), there are multiple options that can be configured.
+While configuring monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#enabling-project-monitoring), there are multiple options that can be configured.
 
 - [Basic Configuration](#basic-configuration)
 - [Advanced Options](#advanced-options)

@@ -65,4 +65,4 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 You can always override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
 
-For more information, see how to [edit namespace resource quotas]({{<baseurl>}}/rancher/v2.x/en/project-admin//resource-quotas/override-namespace-default/).
+For more information, see how to [edit namespace resource quotas]({{<baseurl>}}/rancher/v2.x/en/project-admin//resource-quotas/override-namespace-default/#editing-namespace-resource-quotas).

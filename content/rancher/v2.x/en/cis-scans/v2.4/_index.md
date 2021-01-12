@@ -153,7 +153,7 @@ For more information about alerts, refer to [this page.]({{<baseurl>}}/rancher/v
 1. From the cluster view in Rancher, click **Tools > CIS Scans.**
 1. Go to the report that you want to download. Click **&#8942; > Download.**
 
-**Result:** The report is downloaded in CSV format.
+**Result:** The report is downloaded in CSV format. For more information on each columns, refer to the [section about the generated report.](#about-the-generated-report)
 
 # List of Skipped and Not Applicable Tests
 

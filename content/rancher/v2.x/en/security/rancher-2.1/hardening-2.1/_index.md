@@ -872,7 +872,7 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.x/en/installation/resources/chart-options/>
+- <https://rancher.com/docs/rancher/v2.x/en/installation/resources/chart-options/#advanced-options>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 

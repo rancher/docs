@@ -47,7 +47,7 @@ Kubernetes events are objects that provide insight into what is happening inside
 
 
 # Alerts for Nodes
-Alerts can be triggered based on node metrics. Each computing resource in a Kubernetes cluster is called a node. Nodes can be either bare-metal servers or virtual machines.
+Alerts can be triggered based on node metrics. Each computing resource in a Kubernetes cluster is called a node. [Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/#kubernetes-cluster-node-components) can be either bare-metal servers or virtual machines.
 
 | Alert | Explanation |
 |-------|-------------|
@@ -56,4 +56,4 @@ Alerts can be triggered based on node metrics. Each computing resource in a Kube
 | Node disk is running full within 24 hours | A critical alert is triggered if the disk space on the node is expected to run out in the next 24 hours based on the disk growth over the last 6 hours. |
 
 # Project-level Alerts
-When you enable monitoring for the project, some project-level alerts are provided. For details, refer to the [section on project-level alerts.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/)
+When you enable monitoring for the project, some project-level alerts are provided. For details, refer to the [section on project-level alerts.]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/alerts/#default-project-level-alerts)

@@ -210,7 +210,7 @@ Input or select an **Expression**. The dropdown shows the original metrics from 
 
 - [**Container**](https://github.com/google/cadvisor)
 - [**Kubernetes Resources**](https://github.com/kubernetes/kube-state-metrics)
-- **Customize**
+- [**Customize**]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#project-metrics)
 - [**Project Level Grafana**](http://docs.grafana.org/administration/metrics/)
 - **Project Level Prometheus**
 

@@ -83,16 +83,16 @@ The documents in this section explain the details of RKE template management:
 
 - [Getting permission to create templates]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creator-permissions/)
 - [Creating and revising templates]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/creating-and-revising/)
-- [Enforcing template settings](./enforcement/#requiring-new-clusters-to-use-an-rke-template) 
+- [Enforcing template settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-a-cluster-template)
 - [Overriding template settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/overrides/)
-- [Sharing templates with cluster creators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users-or-groups)
+- [Sharing templates with cluster creators]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users)
 - [Sharing ownership of a template]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-ownership-of-templates)
 
 An [example YAML configuration file for a template]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/example-yaml) is provided for reference.
 
 # Applying Templates
 
-You can [create a cluster from a template]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#creating-a-cluster-from-an-rke-template) that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing)
+You can [create a cluster from a template]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#creating-a-cluster-from-a-cluster-template) that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing)
 
 If the RKE template owner creates a new revision of the template, you can [upgrade your cluster to that revision.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/applying-templates/#updating-a-cluster-created-with-an-rke-template)
 

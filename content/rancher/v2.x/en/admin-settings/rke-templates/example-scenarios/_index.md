@@ -31,7 +31,7 @@ In this way, the administrators enforce the Kubernetes version across the organi
 
 Let's say an organization has both basic and advanced users. Administrators want the basic users to be required to use a template, while the advanced users and administrators create their clusters however they want.
 
-1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-an-rke-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
+1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-a-cluster-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
 1. The administrator then creates two templates:
 
   - One template for basic users, with almost every option specified except for access keys
