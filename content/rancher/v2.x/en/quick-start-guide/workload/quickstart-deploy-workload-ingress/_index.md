@@ -9,7 +9,7 @@ You have a running cluster with at least 1 node.
 
 ### 1. Deploying a Workload
 
-You're ready to create your first _workload_. A workload is an object that includes pods along with other files and info needed to deploy your application.
+You're ready to create your first Kubernetes [workload](https://kubernetes.io/docs/concepts/workloads/). A workload is an object that includes pods along with other files and info needed to deploy your application.
 
 For this workload, you'll be deploying the application Rancher Hello-World.
 

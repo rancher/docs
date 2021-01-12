@@ -174,7 +174,7 @@ Copy the rendered manifest directories to a system that has access to the Ranche
 
 Use `kubectl` to create namespaces and apply the rendered manifests.
 
-If you chose to use self-signed certificates in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), install cert-manager.
+If you choose to use self-signed certificates in [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration), install cert-manager.
 
 {{% accordion id="install-cert-manager" label="Self-Signed Certificate Installs - Install Cert-manager" %}}
 

@@ -11,6 +11,8 @@ For a high-availability installation of Rancher, which is recommended for produc
 
 For Docker installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image.**
 
+The Helm chart version also applies to RancherD installs because RancherD installs the Rancher Helm chart on a Kubernetes cluster.
+
 {{% tabs %}}
 {{% tab "Helm Charts" %}}
 

@@ -11,6 +11,8 @@ An air gapped environment is an environment where the Rancher server is installe
 
 The infrastructure depends on whether you are installing Rancher on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container. For more information on each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/)
 
+As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. The RKE and K3s Kubernetes infrastructure tutorials below are still included for convenience.
+
 {{% tabs %}}
 {{% tab "K3s" %}}
 We recommend setting up the following infrastructure for a high-availability installation:

@@ -24,7 +24,7 @@ The service account requires the following roles:
 
 ## Create the GKE Cluster
 
-Use {{< product >}} to set up and configure your Kubernetes cluster.
+Use Rancher to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -32,7 +32,7 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 
 3. Enter a **Cluster Name**.
 
-4. {{< step_create-cluster_member-roles >}}
+4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
 5. Either paste your service account private key in the **Service Account** text box or **Read from a file**. Then click **Next: Configure Nodes**.
 
@@ -44,4 +44,13 @@ Use {{< product >}} to set up and configure your Kubernetes cluster.
 8. Select your **Security Options**
 9. Review your options to confirm they're correct. Then click **Create**.
 
-{{< result_create-cluster >}}
+**Result:** 
+
+Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active.**
+
+**Active** clusters are assigned two Projects: 
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

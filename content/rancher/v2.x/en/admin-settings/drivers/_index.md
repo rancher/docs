@@ -14,7 +14,7 @@ There are two types of drivers within Rancher:
 * [Cluster Drivers](#cluster-drivers)
 * [Node Drivers](#node-drivers)
 
-## Cluster Drivers   
+### Cluster Drivers   
 
 _Available as of v2.2.0_
 
@@ -32,7 +32,7 @@ There are several other hosted Kubernetes cloud providers that are disabled by d
 * [Huawei CCE]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/cce/)
 * [Tencent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/tke/)
 
-## Node Drivers
+### Node Drivers
 
 Node drivers are used to provision hosts, which Rancher uses to launch and manage Kubernetes clusters. A node driver is the same as a [Docker Machine driver](https://docs.docker.com/machine/drivers/). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, Rancher is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to Rancher.
 

@@ -1,5 +1,5 @@
 ---
-title: Helm Chart Options
+title: Rancher Helm Chart Options
 weight: 1
 aliases:
   - /rancher/v2.x/en/installation/options/
@@ -45,7 +45,6 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `additionalTrustedCAs`         | false                                                 | `bool` - See [Additional Trusted CAs](#additional-trusted-cas)                                                                                    |
 | `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster. For more information, see [Import local Cluster.](#import-local-cluster)  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._ |
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
-| `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
 | `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{<baseurl>}}/rancher/v2.x/en/installation/api-auditing) level. 0 is off. [0-3]                                   |
@@ -53,25 +52,26 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `auditLog.maxBackups`          | 1                                                     | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`)                               |
 | `auditLog.maxSize`             | 100                                                   | `int` - maximum size in megabytes of the audit log file before it gets rotated (only applies when `auditLog.destination` is set to `hostPath`)    |
 | `busyboxImage`                 | "busybox"                                             | `string` - Image location for busybox image used to collect audit logs _Note: Available as of v2.2.0_                                             |
-| `debug`                        | false                                                 | `bool` - set debug flag on rancher server                                                                                                         |
 | `certmanager.version`          | ""                                                    | `string` - set cert-manager compatibility                                                                                                         |
+| `debug`                        | false                                                 | `bool` - set debug flag on rancher server                                                                                                         |
 | `extraEnv`                     | []                                                    | `list` - set additional environment variables for Rancher _Note: Available as of v2.2.0_                                                          |
 | `imagePullSecrets`             | []                                                    | `list` - list of names of Secret resource containing private registry credentials                                                                 |
-| `ingress.extraAnnotations`     | {}                                                    | `map` - additional annotations to customize the ingress                                                                                           |
 | `ingress.configurationSnippet` | ""                                                    | `string` - Add additional Nginx configuration. Can be used for proxy configuration. _Note: Available as of v2.0.15, v2.1.10 and v2.2.4_           |
+| `ingress.extraAnnotations`     | {}                                                    | `map` - additional annotations to customize the ingress                                                                                           |
 | `letsEncrypt.ingress.class`    | ""                                                    | `string` - optional ingress class for the cert-manager acmesolver ingress that responds to the Let's Encrypt ACME challenges                      |
-| `proxy`                        | ""                                                    | `string` - HTTP[S] proxy server for Rancher                                                                                                       |
 | `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local" | `string` - comma separated list of hostnames or ip address not to use the proxy                                                                   |
-| `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
+| `proxy`                        | ""                                                    | `string` - HTTP[S] proxy server for Rancher                                                                                                       |
 | `rancherImage`                 | "rancher/rancher"                                     | `string` - rancher image source                                                                                                                   |
-| `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
 | `rancherImagePullPolicy`       | "IfNotPresent"                                        | `string` - Override imagePullPolicy for rancher server images - "Always", "Never", "IfNotPresent"                                                 |
-| `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
-| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
-| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
+| `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
+| `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
+| `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
 | `restrictedAdmin` | `false` | _Available in Rancher v2.5_ `bool` - When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#restricted-admin) |
+| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
+| `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
+| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
 
-<br/>
+
 
 ### API Audit Log
 
@@ -169,7 +169,7 @@ For details on installing Rancher with a private registry, see:
 - [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-single-node/)
 - [Air Gap: Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/air-gap-high-availability/)
 
-### External TLS Termination
+# External TLS Termination
 
 We recommend configuring your load balancer as a Layer 4 balancer, forwarding plain 80/tcp and 443/tcp to the Rancher Management cluster nodes. The Ingress Controller on the cluster will redirect http traffic on port 80 to https on port 443.
 
@@ -179,7 +179,7 @@ You may terminate the SSL/TLS on a L7 load balancer external to the Rancher clus
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 
-#### Configuring Ingress for External TLS when Using NGINX v0.25
+### Configuring Ingress for External TLS when Using NGINX v0.25
 
 In NGINX v0.25, the behavior of NGINX has [changed](https://github.com/kubernetes/ingress-nginx/blob/master/Changelog.md#0220) regarding forwarding headers and external TLS termination. Therefore, in the scenario that you are using external TLS termination configuration with NGINX v0.25, you must edit the `cluster.yml` to enable the `use-forwarded-headers` option for ingress:
 
@@ -190,24 +190,24 @@ ingress:
     use-forwarded-headers: 'true'
 ```
 
-#### Required Headers
+### Required Headers
 
 - `Host`
 - `X-Forwarded-Proto`
 - `X-Forwarded-Port`
 - `X-Forwarded-For`
 
-#### Recommended Timeouts
+### Recommended Timeouts
 
 - Read Timeout: `1800 seconds`
 - Write Timeout: `1800 seconds`
 - Connect Timeout: `30 seconds`
 
-#### Health Checks
+### Health Checks
 
 Rancher will respond `200` to health checks on the `/healthz` endpoint.
 
-#### Example NGINX config
+### Example NGINX config
 
 This NGINX configuration is tested on NGINX 1.14.
 

@@ -46,6 +46,11 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
+- [Option A: Default Rancher-generated Self-signed Certificate](#option-a-default-rancher-generated-self-signed-certificate)
+- [Option B: Bring Your Own Certificate, Self-signed](#option-b-bring-your-own-certificate-self-signed)
+- [Option C: Bring Your Own Certificate, Signed by a Recognized CA](#option-c-bring-your-own-certificate-signed-by-a-recognized-ca)
+- [Option D: Let's Encrypt Certificate](#option-d-let-s-encrypt-certificate)
+
 ### Option A: Default Rancher-generated Self-signed Certificate
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
@@ -170,5 +175,5 @@ Refer to [this page](./troubleshooting) for frequently asked questions and troub
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restoration]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review [Single Node Backup and Restore]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).

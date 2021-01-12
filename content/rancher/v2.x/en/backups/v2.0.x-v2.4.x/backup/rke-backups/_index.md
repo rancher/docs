@@ -49,25 +49,27 @@ Take snapshots of your `etcd` database. You can use these snapshots later to rec
 
 - [Option A: Recurring Snapshots](#option-a-recurring-snapshots)
 
-	After you stand up a high-availability Rancher install, we recommend configuring RKE to automatically take recurring snapshots so that you always have a safe restoration point available.
+	After you stand up a high-availability Rancher install, we recommend configuring RKE to automatically take recurring snapshots so that you always have a safe restore point available.
 
 - [Option B: One-Time Snapshots](#option-b-one-time-snapshots)
 
-	We advise taking one-time snapshots before events like upgrades or restoration of another snapshot.
+	We advise taking one-time snapshots before events like upgrades or restore of another snapshot.
 
 ### Option A: Recurring Snapshots
 
-For all high-availability Rancher installs, we recommend taking recurring snapshots so that you always have a safe restoration point available.
+For all high-availability Rancher installs, we recommend taking recurring snapshots so that you always have a safe restore point available.
 
 To take recurring snapshots, enable the `etcd-snapshot` service, which is a service that's included with RKE. This service runs in a service container alongside the `etcd` container. You can enable this service by adding some code to `rancher-cluster.yml`.
 
 **To Enable Recurring Snapshots:**
 
+The steps to enable recurring snapshots differ based on the version of RKE.
+
+{{% tabs %}}
+{{% tab "RKE v0.2.0+" %}}
+
 1. Open `rancher-cluster.yml` with your favorite text editor.
-
-2. Edit the code for the `etcd` service to enable recurring snapshots. As of RKE v0.2.0, snapshots can be saved in a S3 compatible backend.  
-
-    _Using RKE v0.2.0+_
+2. Edit the code for the `etcd` service to enable recurring snapshots. Snapshots can be saved in a S3 compatible backend.  
 
     ```
     services:
@@ -89,8 +91,19 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
               $CERTIFICATE
               -----END CERTIFICATE-----
     ```
+4. Save and close `rancher-cluster.yml`.
+5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
+6. Run the following command:
+	```
+	rke up --config rancher-cluster.yml
+	```
 
-    _Using RKE v0.1.x_
+**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`. If configured, the snapshots are also uploaded to your S3 compatible backend.
+{{% /tab %}}
+{{% tab "RKE v0.1.x" %}}
+
+1. Open `rancher-cluster.yml` with your favorite text editor.
+2. Edit the code for the `etcd` service to enable recurring snapshots.
 
     ```
     services:
@@ -99,16 +112,17 @@ To take recurring snapshots, enable the `etcd-snapshot` service, which is a serv
         creation: 6h0s # time increment between snapshots
         retention: 24h # time increment before snapshot purge
     ```
-
 4. Save and close `rancher-cluster.yml`.
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 6. Run the following command:
-
 	```
 	rke up --config rancher-cluster.yml
 	```
 
-**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`. If configured, the snapshots are also uploaded to your S3 compatible backend.
+**Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`.
+{{% /tab %}}
+{{% /tabs %}}
+
 
 ### Option B: One-Time Snapshots
 

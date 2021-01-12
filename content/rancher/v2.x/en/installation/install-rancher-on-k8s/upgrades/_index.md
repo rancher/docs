@@ -12,6 +12,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/upgrades/ha-server-upgrade-helm/
   - /rancher/v2.x/en/installation/upgrades-rollbacks/upgrades/ha
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha
 ---
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 

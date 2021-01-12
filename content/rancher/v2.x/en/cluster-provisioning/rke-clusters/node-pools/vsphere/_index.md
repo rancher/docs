@@ -14,7 +14,12 @@ Rancher can provision nodes in vSphere and install Kubernetes on them. When crea
 
 A vSphere cluster may consist of multiple groups of VMs with distinct properties, such as the amount of memory or the number of vCPUs. This grouping allows for fine-grained control over the sizing of nodes for each Kubernetes role.
 
-# vSphere Enhancements  
+- [vSphere Enhancements in Rancher v2.3](#vsphere-enhancements-in-rancher-v2-3)
+- [Creating a vSphere Cluster](#creating-a-vsphere-cluster)
+- [Provisioning Storage](#provisioning-storage)
+- [Enabling the vSphere Cloud Provider](#enabling-the-vsphere-cloud-provider)
+
+# vSphere Enhancements in Rancher v2.3
 
 The vSphere node templates have been updated, allowing you to bring cloud operations on-premises with the following enhancements:
 
@@ -40,8 +45,22 @@ In Rancher v2.3.3+, you can provision VMs with any operating system that support
 
 In Rancher prior to v2.3.3, the vSphere node driver included in Rancher only supported the provisioning of VMs with [RancherOS]({{<baseurl>}}/os/v1.x/en/) as the guest operating system.
 
-# Video Walkthrough of v2.3.3 Node Template Features
+### Video Walkthrough of v2.3.3 Node Template Features
 
 In this YouTube video, we demonstrate how to set up a node template with the new features designed to help you bring cloud operations to on-premises clusters.
 
 {{< youtube id="dPIwg6x1AlU">}}
+
+# Creating a vSphere Cluster
+
+In [this section,](./provisioning-vsphere-clusters) you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in vSphere.
+
+# Provisioning Storage
+
+For an example of how to provision storage in vSphere using Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/vsphere) In order to dynamically provision storage in vSphere, the vSphere provider must be [enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
+
+# Enabling the vSphere Cloud Provider
+
+When a cloud provider is set up in Rancher, the Rancher server can automatically provision new infrastructure for the cluster, including new nodes or persistent storage devices.
+
+For details, refer to the section on [enabling the vSphere cloud provider.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)

@@ -1,5 +1,5 @@
 ---
-title: 1 — Configuring Microsoft AD FS for Rancher
+title: 1. Configuring Microsoft AD FS for Rancher
 weight: 1205
 ---
 
@@ -25,12 +25,12 @@ Before configuring Rancher to support AD FS users, you must add Rancher as a [re
   
 1. Leave the **optional token encryption certificate** empty, as Rancher AD FS will not be using one.
   
-  {{< img "/img/rancher/adfs/adfs-add-rpt-5.png" "">}}
+    {{< img "/img/rancher/adfs/adfs-add-rpt-5.png" "">}}
   
 1. Select **Enable support for the SAML 2.0 WebSSO protocol**
   and enter `https://<rancher-server>/v1-saml/adfs/saml/acs` for the service URL.
   
-  {{< img "/img/rancher/adfs/adfs-add-rpt-6.png" "">}}
+    {{< img "/img/rancher/adfs/adfs-add-rpt-6.png" "">}}
   
 1. Add `https://<rancher-server>/v1-saml/adfs/saml/metadata` as the **Relying party trust identifier**.
   

@@ -44,7 +44,7 @@ Follow the steps to upgrade Rancher server:
 ### A. Back up Your Kubernetes Cluster that is Running Rancher Server
 
 [Take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
-of your Kubernetes cluster running Rancher server. You'll use the snapshot as a restoration point if something goes wrong during upgrade.
+of your Kubernetes cluster running Rancher server. You'll use the snapshot as a restore point if something goes wrong during upgrade.
 
 ### B. Update the Helm chart repository
 

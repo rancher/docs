@@ -33,7 +33,7 @@ Make sure that your node fulfills the general [installation requirements.]({{<ba
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) to launch your {{< product >}} Server.
+Provision a single Linux host according to our [Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements) to launch your Rancher Server.
 
 ## 2. Choose an SSL Option and Install Rancher
 
@@ -166,7 +166,7 @@ http {
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restoration]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review [Single Node Backup and Restore]({{<baseurl>}}/rancher/v2.x/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).
 
 <br/>

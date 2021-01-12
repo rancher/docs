@@ -3,7 +3,7 @@ title: Installing Docker
 weight: 1
 ---
 
-Docker is required to be installed on any node that runs the Rancher server.
+For Helm CLI installs, Docker is required to be installed on any node that runs the Rancher server.
 
 There are a couple of options for installing Docker. One option is to refer to the [official Docker documentation](https://docs.docker.com/install/) about how to install Docker on Linux. The steps will vary based on the Linux distribution.
 

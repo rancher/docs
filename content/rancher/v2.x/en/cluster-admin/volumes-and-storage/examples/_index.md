@@ -10,5 +10,6 @@ Rancher supports persistent storage with a variety of volume plugins. However, b
 
 For your convenience, Rancher offers documentation on how to configure some of the popular storage methods:
 
-- [NFS]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/nfs/)
-- [vSphere]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/examples/vsphere/)
+- [NFS](./nfs)
+- [vSphere](./vsphere)
+- [EBS](./ebs)

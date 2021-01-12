@@ -7,6 +7,14 @@ aliases:
 
 Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.
 
+- [Tips for Preventing and Handling Problems](#tips-for-preventing-and-handling-problems)
+- [Network Topology](#network-topology)
+- [Tips for Scaling and Reliability](#tips-for-scaling-and-reliability)
+- [Tips for Security](#tips-for-security)
+- [Tips for Multi-Tenant Clusters](#tips-for-multi-tenant-clusters)
+- [Class of Service and Kubernetes Clusters](#class-of-service-and-kubernetes-clusters)
+- [Network Security](#network-security)
+
 # Tips for Preventing and Handling Problems
 
 These tips can help you solve problems before they happen.
