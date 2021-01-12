@@ -24,9 +24,9 @@ Using Prometheus, you can monitor Rancher at both the [cluster level]({{<baseurl
 
 - [Cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) allows you to view the health of your Kubernetes cluster. Prometheus collects metrics from the cluster components below, which you can view in graphs and charts.
 
-    - [Kubernetes control plane]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#kubernetes-components-metrics)
-    - [etcd database]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#etcd-metrics)
-    - [All nodes (including workers)]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#cluster-metrics)
+    - Kubernetes control plane
+    - etcd database
+    - All nodes (including workers)
 
 - Project monitoring allows you to view the state of pods running in a given project. Prometheus collects metrics from the project's deployed HTTP and TCP/UDP workloads.
 
@@ -59,7 +59,6 @@ Grafana | 100m | 100Mi | 200m | 200Mi | No
 > The default username and password for the Grafana instance will be `admin/admin`. However, Grafana dashboards are served via the Rancher authentication proxy, so only users who are currently authenticated into the Rancher server have access to the Grafana dashboard.
 
 ### Project Metrics
-
 [Workload metrics]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#workload-metrics) are available for the project if monitoring is enabled at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and at the [project level.](#enabling-project-monitoring)
 
 You can monitor custom metrics from any [exporters.](https://prometheus.io/docs/instrumenting/exporters/) You can also expose some custom endpoints on deployments without needing to configure Prometheus for your project.
