@@ -101,9 +101,9 @@ For more architecture recommendations, refer to [this page.]({{<baseurl>}}/ranch
 
 Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#api-audit-log)
-- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination)
-- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#customizing-your-ingress)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#api-audit-log)
+- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination)
+- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#customizing-your-ingress)
 
 In the Rancher installation instructions, we recommend using K3s or RKE to set up a Kubernetes cluster before installing Rancher on the cluster. Both K3s and RKE have many configuration options for customizing the Kubernetes cluster to suit your specific environment. For the full list of their capabilities, refer to their documentation:
 

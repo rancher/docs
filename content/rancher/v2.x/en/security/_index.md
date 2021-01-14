@@ -29,7 +29,6 @@ On this page, we provide security-related documentation along with resources to 
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
 - [Rancher CVEs and resolutions](#rancher-cves-and-resolutions)
-- [Security Tips and Best Practices](#security-tips-and-best-practices)
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 

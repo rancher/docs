@@ -224,9 +224,9 @@ Choose from the following options:
 >**Prerequisites:**
 >Create a self-signed certificate.
 >
->- The certificate files must be in [PEM format](#pem).
+>- The certificate files must be in PEM format.
 >- The certificate files must be encoded in [base64](#base64).
->- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [Intermediate Certificates](#cert-order).
+>- In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates.
 
 1. In `kind: Secret` with `name: cattle-keys-ingress`:
 
@@ -277,7 +277,7 @@ Choose from the following options:
 >**Note:**
 > If you are using Self Signed Certificate, [click here](#option-a-bring-your-own-certificate-self-signed) to proceed.
 
-If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the [intermediate certificates](#cert-order) in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
+If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the intermediate certificates in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
 
 In the `kind: Secret` with `name: cattle-keys-ingress`:
 

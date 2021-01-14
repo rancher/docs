@@ -62,7 +62,7 @@ Put this manifest on your host in `/var/lib/rancher/rke2/server/manifests` befor
 
 | Parameter         | Default Value             | Description          |
 | ------------------------------ | ----------------------------------------------------- | -------------------------------------------- |
-| `addLocal`                     | "auto"                                                | ***string*** - Have Rancher detect and import the “local” Rancher server cluster [Import "local Cluster"](https://rancher.com/docs/rancher/v2.x/en/installation/options/chart-options/#import-local-cluster) |
+| `addLocal`                     | "auto"                                                | ***string*** - Have Rancher detect and import the local Rancher server cluster |
 | `auditLog.destination`         | "sidecar"                                             | ***string*** - Stream to sidecar container console or hostPath volume - *"sidecar, hostPath"*                                                                                                                |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | ***string*** - log file destination on host (only applies when **auditLog.destination** is set to **hostPath**)                                                                                              |
 | `auditLog.level`               | 0                                                     | ***int*** - set the [API Audit Log level](https://rancher.com/docs/rancher/v2.x/en/installation/api-auditing). 0 is off. [0-3]                                                                               |

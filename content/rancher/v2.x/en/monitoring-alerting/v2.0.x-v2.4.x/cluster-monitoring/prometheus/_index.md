@@ -79,11 +79,11 @@ When configuring Prometheus and enabling the node exporter, enter a host port in
 
 # Persistent Storage
 
->**Prerequisite:** Configure one or more [storage class]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) to use as [persistent storage]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) for your Prometheus or Grafana pod.
+>**Prerequisite:** Configure one or more StorageClasses to use as [persistent storage]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/) for your Prometheus or Grafana pod.
 
 By default, when you enable Prometheus for either a cluster or project, all monitoring data that Prometheus collects is stored on its own pod. With local storage, if the Prometheus or Grafana pods fail, all the data is lost. Rancher recommends configuring an external persistent storage to the cluster. With the external persistent storage, if the Prometheus or Grafana pods fail, the new pods can recover using data from the persistent storage.
 
-When enabling persistent storage for Prometheus or Grafana, specify the size of the persistent volume and select the [storage class]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#storage-classes).
+When enabling persistent storage for Prometheus or Grafana, specify the size of the persistent volume and select the StorageClass.
 
 # Remote Storage
 

@@ -11,7 +11,7 @@ This section covers the following topics:
 - [Why HA is Better for Rancher in Production](#why-ha-is-better-for-rancher-in-production)
 - [Recommended Load Balancer Configuration for Kubernetes Installations](#recommended-load-balancer-configuration-for-ha-installations)
 - [Environment for Kubernetes Installations](#environment-for-ha-installations)
-- [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-ha-installations)
+- [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-kubernetes-installations)
 - [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
 
 # Separation of Rancher and User Clusters

@@ -54,7 +54,7 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 > **Prerequisites:**
 > Create a self-signed certificate.
 >
-> - The certificate files must be in [PEM format](#pem).
+> - The certificate files must be in PEM format.
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -73,7 +73,7 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 
 > **Prerequisites:**
 >
-> - The certificate files must be in [PEM format](#pem).
+> - The certificate files must be in PEM format.
 
 **To Install Rancher Using a Cert Signed by a Recognized CA:**
 
@@ -173,7 +173,7 @@ http {
 
 ## FAQ and Troubleshooting
 
-{{< ssl_faq_single >}}
+For help troubleshooting certificates, see [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/troubleshooting)
 
 ## Advanced Options
 

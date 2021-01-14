@@ -14,9 +14,9 @@ Make sure the nodes for the Rancher server fulfill the following requirements:
 - [Networking Requirements](#networking-requirements)
 - [Optional: Security Considerations](#optional-security-considerations)
 
-# Operating Systems and Docker Requirements
+# Operating Systems and Container Runtime Requirements
 
-Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#requirements-for-windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in Rancher v2.3.0.
+Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in Rancher v2.3.0.
 
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
@@ -104,7 +104,7 @@ For hardware recommendations for etcd clusters in production, refer to the offic
 
 For a production cluster, we recommend that you restrict traffic by opening only the ports defined in the port requirements below.
 
-The ports required to be open are different depending on how the user cluster is launched. Each of the sections below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
+The ports required to be open are different depending on how the user cluster is launched. Each of the sections below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).
 
 For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 

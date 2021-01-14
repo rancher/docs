@@ -55,7 +55,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -222,7 +222,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 # 5. For Rancher versions prior to v2.3.0, Configure System Charts
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
+If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/).
 
 # Additional Resources
 
@@ -255,7 +255,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.x/en/installation/options/custom-ca-root-certificate/).
 > - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log).
 
-- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0)
+- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/)
 
 Choose from the following options:
 
@@ -294,8 +294,8 @@ In development or testing environments where your team will access your Rancher 
 > **Prerequisites:**
 > From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
 >
-> - The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#pem).
-> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [SSL FAQ / Troubleshooting]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#cert-order).
+> - The certificate files must be in PEM format.
+> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [Certificate Troubleshooting.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/troubleshooting)
 
 After creating your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
@@ -330,7 +330,7 @@ docker run -d --restart=unless-stopped \
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
-> **Prerequisite:** The certificate files must be in [PEM format]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#pem).
+> **Prerequisite:** The certificate files must be in PEM format.
 
 After obtaining your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
 
@@ -364,7 +364,7 @@ If you are installing Rancher v2.3.0+, the installation is complete.
 
 > **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.x/en/faq/telemetry/) during the initial login.
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/#setting-up-system-charts-for-rancher-prior-to-v2-3-0).
+If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/).
 
 {{% /tab %}}
 {{% /tabs %}}

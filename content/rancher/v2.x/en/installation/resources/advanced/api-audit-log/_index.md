@@ -16,7 +16,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 
 - [Docker Install]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
 
-- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#api-audit-log)
+- [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#api-audit-log)
 
 ## API Audit Log Options
 

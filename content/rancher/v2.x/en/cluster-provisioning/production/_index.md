@@ -17,7 +17,7 @@ For a full list of all the best practices that we recommend, refer to the [best 
 
 ### Back up etcd
 
-* Enable etcd snapshots. Verify that snapshots are being created, and run a disaster recovery scenario to verify the snapshots are valid. etcd is the location where the state of your cluster is stored, and losing etcd data means losing your cluster. Make sure you configure [etcd Recurring Snapshots]({{<baseurl>}}/rancher/v2.x/en/backups/backups/ha-backups/#option-a-recurring-snapshots) for your cluster(s), and make sure the snapshots are stored externally (off the node) as well.
+* Enable etcd snapshots. Verify that snapshots are being created, and run a disaster recovery scenario to verify the snapshots are valid. etcd is the location where the state of your cluster is stored, and losing etcd data means losing your cluster. Make sure you configure [etcd Recurring Snapshots]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/rke-backups/#option-a-recurring-snapshots) for your cluster(s), and make sure the snapshots are stored externally (off the node) as well.
 
 ### Cluster Architecture
 

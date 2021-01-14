@@ -11,9 +11,9 @@ If you have restrictive Pod Security Policies enabled, then Istio may not be abl
 
 The Istio CNI plugin removes the need for each application pod to have a privileged `NET_ADMIN` container. For further information, see the [Istio CNI Plugin docs](https://istio.io/docs/setup/additional-setup/cni). Please note that the [Istio CNI Plugin is in alpha](https://istio.io/about/feature-stages/).
 
-- 1. [Configure the System Project Policy to allow Istio install.](#2-configure-the-system-project-policy-to-allow-istio-install)
-- 2. [Install the CNI plugin in the System project.](#3-install-the-cni-plugin-in-the-system-project)
-- 3. [Install Istio.](#4-install-istio)
+- 1. [Configure the System Project Policy to allow Istio install.](#1-configure-the-system-project-policy-to-allow-istio-install)
+- 2. [Install the CNI plugin in the System project.](#2-install-the-cni-plugin-in-the-system-project)
+- 3. [Install Istio.](#3-install-istio)
 
 ### 1. Configure the System Project Policy to allow Istio install
 

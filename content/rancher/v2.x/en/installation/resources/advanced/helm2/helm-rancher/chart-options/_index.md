@@ -22,7 +22,7 @@ aliases:
 | Option | Default Value | Description |
 | --- | --- | --- |
 | `additionalTrustedCAs` | false | `bool` - See [Additional Trusted CAs](#additional-trusted-cas) |
-| `addLocal` | "auto" | `string` - Have Rancher detect and import the "local" Rancher server cluster [Import "local Cluster](#import-local-cluster) |
+| `addLocal` | "auto" | `string` - Have Rancher detect and import the local Rancher server cluster |
 | `antiAffinity` | "preferred" | `string` - AntiAffinity rule for Rancher pods - "preferred, required" |
 | `auditLog.destination` | "sidecar" | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath" |
 | `auditLog.hostPath` | "/var/log/rancher/audit" | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`) |
