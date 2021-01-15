@@ -19,7 +19,6 @@ For information on enabling experimental features, refer to [this page.]({{<base
 - [API Audit Log](#api-audit-log)
 - [Setting Extra Environment Variables](#setting-extra-environment-variables)
 - [TLS Settings](#tls-settings)
-- [Import local Cluster](#import-local-cluster)
 - [Customizing your Ingress](#customizing-your-ingress)
 - [HTTP Proxy](#http-proxy)
 - [Additional Trusted CAs](#additional-trusted-cas)
@@ -43,7 +42,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | Option                         | Default Value                                         | Description                                                                                                                                       |
 | ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `additionalTrustedCAs`         | false                                                 | `bool` - See [Additional Trusted CAs](#additional-trusted-cas)                                                                                    |
-| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster. For more information, see [Import local Cluster.](#import-local-cluster)  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._ |
+| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster.  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._ |
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
@@ -175,7 +174,7 @@ We recommend configuring your load balancer as a Layer 4 balancer, forwarding pl
 
 You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{<baseurl>}}/rancher/v2.x/en/installation/resources/encryption/tls-secrets/#using-a-private-ca-signed-certificate) to add the CA cert for Rancher.
+> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{<baseurl>}}/rancher/v2.x/en/installation/resources/encryption/tls-secrets/) to add the CA cert for Rancher.
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 

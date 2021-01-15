@@ -28,7 +28,7 @@ This section covers the following topics:
 
 # Node Options Available for Each Cluster Creation Option
 
-The following table lists which node options are available for each [type of cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options) in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+The following table lists which node options are available for each type of cluster in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
 | Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
@@ -51,7 +51,7 @@ Node pools are available when you provision Rancher-launched Kubernetes clusters
 
 Clusters provisioned using [one of the node pool options]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) can be scaled up or down if the node pool is edited.
 
-A node pool can also automatically maintain the node scale that's set during the initial cluster provisioning if [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-auto-replace) This scale determines the number of active nodes that Rancher maintains for the cluster.
+A node pool can also automatically maintain the node scale that's set during the initial cluster provisioning if [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#about-node-auto-replace) This scale determines the number of active nodes that Rancher maintains for the cluster.
 
 Rancher uses [node templates]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) to replace nodes in the node pool. Each node template uses cloud provider credentials to allow Rancher to set up the node in the infrastructure provider.
 
@@ -82,7 +82,7 @@ Select this option to view the node's [API endpoints]({{< baseurl >}}/rancher/v2
 
 Use **Delete** to remove defective nodes from the cloud provider.
 
-When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-auto-replace)
+When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#about-node-auto-replace)
 
 >**Tip:** If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
 

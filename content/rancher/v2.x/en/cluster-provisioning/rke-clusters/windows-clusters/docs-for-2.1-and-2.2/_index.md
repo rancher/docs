@@ -53,9 +53,9 @@ The table below lists the Kubernetes node roles you'll assign to each host, alth
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------
-Node 1  | Linux (Ubuntu Server 16.04 recommended)           | [Control Plane]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#control-plane-nodes), [etcd]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#etcd), [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
-Node 2  | Linux (Ubuntu Server 16.04 recommended)           | [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes) (This node is used for Ingress support)
-Node 3  | Windows (Windows Server core version 1809 or above)          | [Worker]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#worker-nodes)
+Node 1  | Linux (Ubuntu Server 16.04 recommended)           | Control plane, etcd, worker
+Node 2  | Linux (Ubuntu Server 16.04 recommended)           | Worker (This node is used for Ingress support)
+Node 3  | Windows (Windows Server core version 1809 or above)          | Worker
 
 ### Requirements
 
@@ -79,14 +79,14 @@ Azure VM | [Enable or Disable IP Forwarding](https://docs.microsoft.com/en-us/az
 
 ## 3. Create the Custom Cluster
 
-To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster), starting from [2. Create the Custom Cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster). While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed in the subheadings below.
+To create a custom cluster that supports Windows nodes, follow the instructions in [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/), starting from 2. Create the Custom Cluster. While completing the linked instructions, look for steps that requires special actions for Windows nodes, which are flagged with a note. These notes will link back here, to the special Windows instructions listed in the subheadings below.
 
 
 ### Enable the Windows Support Option
 
 While choosing **Cluster Options**, set **Windows Support (Experimental)** to **Enabled**.
 
-After you select this option, resume [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 6]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-6).
+After you select this option, resume [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) from [step 6]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-6).
 
 ### Networking Option
 
@@ -103,7 +103,7 @@ Option | Setting
 Node Operating System | Linux
 Node Roles | etcd <br/> Control Plane <br/> Worker
 
-When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#create-the-custom-cluster) from [step 8]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
+When you're done with these configurations, resume [Creating a Cluster with Custom Nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) from [step 8]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#step-8).
 
 
 
@@ -111,7 +111,7 @@ When you're done with these configurations, resume [Creating a Cluster with Cust
 
 After the initial provisioning of your custom cluster, your cluster only has a single Linux host. Add another Linux host, which will be used to support Ingress for your cluster.
 
-1. Using the content menu, open the custom cluster your created in [2. Create the Custom Cluster](#2-create-the-custom-cluster).
+1. Using the content menu, open the custom cluster your created in [2. Create the Custom Cluster](#3-create-the-custom-cluster).
 
 1. From the main menu, select **Nodes**.
 

@@ -59,7 +59,7 @@ For more information on private Git/Helm catalogs, refer to the [custom catalog 
  1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
  2. Click **Add Catalog**.
  3. Complete the form. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to [this section.](
-{{<baseurl>}}/rancher/v2.x/en/catalog/#catalog-helm-deployment-versions)
+{{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions)
 4. Click **Create**.
 
  **Result**: Your custom global catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying [multi-cluster apps]({{<baseurl>}}/rancher/v2.x/en/catalog/multi-cluster-apps/) or [applications in any project]({{<baseurl>}}/rancher/v2.x/en/catalog/launching-apps/) from this catalog.
@@ -78,7 +78,7 @@ _Available as of v2.2.0_
 2. Choose the **Tools > Catalogs** in the navigation bar.
 2. Click **Add Catalog**.
 3. Complete the form. By default, the form will provide the ability to select `Scope` of the catalog. When you have added a catalog from the **Cluster** scope, it is defaulted to `Cluster`. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to [this section.](
-{{<baseurl>}}/rancher/v2.x/en/catalog/#catalog-helm-deployment-versions)
+{{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions)
 5. Click **Create**.
 
 **Result**: Your custom cluster catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying  [applications in any project in that cluster]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) from this catalog.
@@ -98,7 +98,7 @@ _Available as of v2.2.0_
 2. Choose the **Tools > Catalogs** in the navigation bar.
 2. Click **Add Catalog**.
 3. Complete the form. By default, the form will provide the ability to select `Scope` of the catalog. When you have added a catalog from the **Project** scope, it is defaulted to `Cluster`. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to [this section.](
-{{<baseurl>}}/rancher/v2.x/en/catalog/#catalog-helm-deployment-versions)
+{{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions)
 5. Click **Create**.
 
 **Result**: Your custom project catalog is added to Rancher. Once it is in `Active` state, it has completed synchronization and you will be able to start deploying  [applications in that project]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) from this catalog.

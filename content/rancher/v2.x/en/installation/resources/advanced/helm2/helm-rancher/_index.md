@@ -15,7 +15,7 @@ Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installat
 
 ### Add the Helm Chart Repository
 
-Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/resources/choosing-version).
 
 {{< release-channel >}}
 
@@ -203,8 +203,8 @@ It should show the same count for `DESIRED` and `AVAILABLE`.
 
 The Rancher chart configuration has many options for customizing the install to suit your specific environment. Here are some common advanced scenarios.
 
-* [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/#http-proxy)
-* [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/#private-registry-and-air-gap-installs)
+* [HTTP Proxy]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/)
+* [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#private-registry-and-air-gap-installs)
 * [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/#external-tls-termination)
 
 See the [Chart Options]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/helm-rancher/chart-options/) for the full list of options.

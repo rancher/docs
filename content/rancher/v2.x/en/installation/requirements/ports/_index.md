@@ -172,7 +172,7 @@ The following tables break down the port requirements for Rancher nodes, for inb
 
 Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.
 
-The port requirements differ depending on how the downstream cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster types]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-options).
+The port requirements differ depending on how the downstream cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster types]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/).
 
 The following diagram depicts the ports that are opened for each [cluster type]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning).
 

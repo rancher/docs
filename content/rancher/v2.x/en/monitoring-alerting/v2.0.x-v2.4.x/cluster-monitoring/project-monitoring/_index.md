@@ -54,12 +54,12 @@ Prometheus|750m| 750Mi | 1000m | 1000Mi | Yes
 Grafana | 100m | 100Mi | 200m | 200Mi | No
 
 
-**Result:** A single application,`project-monitoring`, is added as an [application]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) to the project. After the application is `active`, you can start viewing [project metrics](#project-metrics) through the [Rancher dashboard]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#rancher-dashboard) or directly from [Grafana]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#grafana).
+**Result:** A single application,`project-monitoring`, is added as an [application]({{<baseurl>}}/rancher/v2.x/en/catalog/apps/) to the project. After the application is `active`, you can start viewing project metrics through the [Rancher dashboard]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) or directly from Grafana.
 
 > The default username and password for the Grafana instance will be `admin/admin`. However, Grafana dashboards are served via the Rancher authentication proxy, so only users who are currently authenticated into the Rancher server have access to the Grafana dashboard.
 
 ### Project Metrics
-[Workload metrics]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#workload-metrics) are available for the project if monitoring is enabled at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and at the [project level.](#enabling-project-monitoring)
+[Workload metrics]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/expression/#workload-metrics) are available for the project if monitoring is enabled at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and at the [project level.](#enabling-project-monitoring)
 
 You can monitor custom metrics from any [exporters.](https://prometheus.io/docs/instrumenting/exporters/) You can also expose some custom endpoints on deployments without needing to configure Prometheus for your project.
 

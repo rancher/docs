@@ -18,7 +18,7 @@ This section covers the following topics:
 
 <!-- TOC -->
 
-- [Setting up clusters in a hosted Kubernetes provider](#setting-up-clusters-in-a-hosted-kubernetes-cluster)
+- [Setting up clusters in a hosted Kubernetes provider](#setting-up-clusters-in-a-hosted-kubernetes-provider)
 - [Launching Kubernetes with Rancher](#launching-kubernetes-with-rancher)
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
@@ -96,7 +96,7 @@ When a K3s cluster is imported, Rancher will recognize it as K3s, and the Ranche
 - The ability to upgrade the K3s version
 - The ability to see a read-only version of the K3s cluster's configuration arguments and environment variables used to launch each node in the cluster.
 
-For more information, refer to the section on [imported K3s clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/#additional-features-of-imported-k3s-clusters)
+For more information, refer to the section on [imported K3s clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)
 
 # Registering Existing Clusters
 

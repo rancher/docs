@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/tasks/clusters/adding-storage/provisioning-storage/vsphere/
 ---
 
-To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume [storage class]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/#storage-classes). This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
+To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
 
 In order to dynamically provision storage in vSphere, the vSphere provider must be [enabled.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
 

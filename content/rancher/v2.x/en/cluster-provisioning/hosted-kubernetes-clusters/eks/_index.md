@@ -115,12 +115,12 @@ Due to the way that the cluster data is synced with EKS, if the cluster is modif
 
 <a id="account-access-2-5"></a>
 
-Complete each drop-down and field using the information obtained for your [IAM policy.](#iam-policy)
+Complete each drop-down and field using the information obtained for your IAM policy.
 
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your [IAM policy.](#iam-policy) For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
 
 ### Service Role
 
@@ -225,13 +225,13 @@ Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/u
 
 <a id="account-access-2-4"></a>
 
-Complete each drop-down and field using the information obtained for your [IAM policy.](#iam-policy)
+Complete each drop-down and field using the information obtained for your IAM policy.
 
 | Setting    | Description                                                                                                          |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Access Key | Enter the access key that you created for your [IAM policy.](#iam-policy) |
-| Secret Key | Enter the secret key that you created for your [IAM policy.](#iam-policy) |
+| Access Key | Enter the access key that you created for your IAM policy. |
+| Secret Key | Enter the secret key that you created for your IAM policy. |
 
 ### Service Role
 

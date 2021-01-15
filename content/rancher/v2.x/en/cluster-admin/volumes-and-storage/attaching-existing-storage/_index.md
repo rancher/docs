@@ -12,7 +12,7 @@ To set up storage, follow these steps:
 1. [Set up persistent storage.](#1-set-up-persistent-storage)
 2. [Add a persistent volume that refers to the persistent storage.](#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
 3. [Add a persistent volume claim that refers to the persistent volume.](#3-add-a-persistent-volume-claim-that-refers-to-the-persistent-volume)
-4. [Mount the persistent volume claim as a volume in your workload.](#4-mount-the-persistent-storage-claim-as-a-volume-in-your-workload)
+4. [Mount the persistent volume claim as a volume in your workload.](#4-mount-the-persistent-volume-claim-as-a-volume-in-your-workload)
 
 ### Prerequisites
 
