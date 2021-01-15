@@ -122,4 +122,4 @@ By default the Egress gateway is disabled, but can be enabled on install or upgr
 
 # Additional Steps for Installing Istio on an RKE2 Cluster
 
-To install Istio on an RKE2 cluster, follow the steps in [this section.](./setup/enable-istio-in-cluster/rke2)
+To install Istio on an RKE2 cluster, follow the steps in [this section.]({{<baseurl>}}/rancher/v2.x/en/istio/v2.5/configuration-reference/rke2/)
