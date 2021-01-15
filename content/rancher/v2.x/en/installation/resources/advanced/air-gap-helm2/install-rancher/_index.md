@@ -34,7 +34,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
     helm init -c
     ```
 
-2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/options/server-tags/#helm-chart-repositories).
+2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/resources/choosing-version/).
   {{< release-channel >}}
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
@@ -45,7 +45,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
 helm fetch rancher-<CHART_REPO>/rancher
 ```
 
-> Want additional options? Need help troubleshooting? See [Kubernetes Install: Advanced Options]({{<baseurl>}}/rancher/v2.x/en/installation/k8s-install/helm-rancher/#advanced-configurations).
+> Want additional options? See the Rancher [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options).
 
 ### B. Choose your SSL Configuration
 

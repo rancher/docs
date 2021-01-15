@@ -117,7 +117,7 @@ To set up a cluster with support for Windows nodes and containers, you will need
 1. [Provision Hosts](#1-provision-hosts)
 1. [Create the Cluster on Existing Nodes](#2-create-the-cluster-on-existing-nodes)
 1. [Add Nodes to the Cluster](#3-add-nodes-to-the-cluster)
-1. [Optional: Configuration for Azure Files](#5-optional-configuration-for-azure-files)
+1. [Optional: Configuration for Azure Files](#4-optional-configuration-for-azure-files)
    <!-- /TOC -->
 
 # 1. Provision Hosts
@@ -144,9 +144,9 @@ You will provision three nodes:
 
 If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers)
 
-# 2. Create the Custom Cluster
+# 2. Create the Cluster on Existing Nodes
 
-The instructions for creating a Windows cluster on existing nodes are very similar to the general [instructions for creating a custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/#2-create-the-custom-cluster) with some Windows-specific requirements.
+The instructions for creating a Windows cluster on existing nodes are very similar to the general [instructions for creating a custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/) with some Windows-specific requirements.
 
 1. From the **Global** view, click on the **Clusters** tab and click **Add Cluster**.
 1. Click **From existing nodes (Custom)**.

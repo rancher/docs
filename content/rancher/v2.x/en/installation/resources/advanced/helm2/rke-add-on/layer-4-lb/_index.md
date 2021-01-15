@@ -7,7 +7,7 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
+>Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the Helm chart.
 
@@ -274,8 +274,6 @@ Choose from the following options:
 {{% /accordion %}}
 
 {{% accordion id="option-b" label="Option B—Bring Your Own Certificate: Signed by Recognized CA" %}}
->**Note:**
-> If you are using Self Signed Certificate, [click here](#option-a-bring-your-own-certificate-self-signed) to proceed.
 
 If you are using a Certificate Signed By A Recognized Certificate Authority, you will need to generate a base64 encoded string for the Certificate file and the Certificate Key file. Make sure that your certificate file includes all the intermediate certificates in the chain, the order of certificates in this case is first your own certificate, followed by the intermediates. Please refer to the documentation of your CSP (Certificate Service Provider) to see what intermediate certificate(s) need to be included.
 

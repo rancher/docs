@@ -58,7 +58,7 @@ Because projects are a concept introduced by Rancher, kubectl does not have the 
 
 This means that when standard users with project-scoped permissions create a namespaces with `kubectl`, it may be unusable because `kubectl` doesn't require the new namespace to be scoped within a certain project.
 
-If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-namespaces) to ensure that you will have permission to access the namespace.
+If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/) to ensure that you will have permission to access the namespace.
 
 If a standard user is a project owner, the user will be able to create namespaces within that project. The Rancher UI will prevent that user from creating namespaces outside the scope of the projects they have access to. 
 

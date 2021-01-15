@@ -33,7 +33,7 @@ From a system that has access to the internet, fetch the latest Helm chart and c
 
 1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
 
-2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories).
+2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
   {{< release-channel >}}
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>

@@ -45,7 +45,7 @@ Review the [known upgrade issues](#known-upgrade-issues) in the Rancher document
 
 A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 
-Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories/) aren't supported.
+Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories/) aren't supported.
 
 ### Helm Version
 
@@ -63,7 +63,7 @@ If you are upgrading to Rancher v2.5 from a Rancher server that was started with
 
 ### For upgrades from v2.0-v2.2 with external TLS termination
 
-If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
+If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
 
 ### For upgrades with cert-manager older than 0.8.0
 
@@ -82,7 +82,7 @@ Follow the steps to upgrade Rancher server:
 
 For Rancher v2.5+, use the [backup application]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/back-up-rancher) to back up Rancher.
 
-For Rancher v2.0-v2.4, [take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/backups/ha-backups/#option-b-one-time-snapshots)
+For Rancher v2.0-v2.4, [take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x/v2.4.x/backup/rke-backups/#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server.
 
 You'll use the backup as a restoration point if something goes wrong during upgrade.
@@ -97,7 +97,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
 
 1. Get the repository name that you used to install Rancher.
 
-    For information about the repos and their differences, see [Helm Chart Repositories]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories).
+    For information about the repos and their differences, see [Helm Chart Repositories]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
 
     {{< release-channel >}}
 
@@ -109,7 +109,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
     rancher-<CHART_REPO>	 https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.x/en/installation/resources/choosing-version/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
 
 1. Fetch the latest chart to install Rancher from the Helm chart repository.
@@ -278,12 +278,12 @@ Upgrading to v2.4.6 or v2.4.7 | These Rancher versions had an issue where the `k
 Upgrading to v2.3.0+ | Any user provisioned cluster will be automatically updated upon any edit as tolerations were added to the images used for Kubernetes provisioning.
 Upgrading to v2.2.0-v2.2.x | Rancher introduced the [system charts](https://github.com/rancher/system-charts) repository which contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository locally and configure Rancher to use that repository. Please follow the instructions to [configure Rancher system charts]({{<baseurl>}}/rancher/v2.x/en/installation/resources/local-system-charts/).
 Upgrading from v2.0.13 or earlier  | If your cluster's certificates have expired, you will need to perform [additional steps]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/certificate-rotation/#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
-Upgrading from v2.0.7 or earlier | Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#preventing-cluster-networking-issues).
+Upgrading from v2.0.7 or earlier | Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/namespace-migration)
 
 # RKE Add-on Installs
 
 **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 
-Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/#installation-outline).
+Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/).
 
 If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.

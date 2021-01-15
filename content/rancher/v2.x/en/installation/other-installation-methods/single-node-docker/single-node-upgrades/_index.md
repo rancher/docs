@@ -13,7 +13,7 @@ The following instructions will guide you through upgrading a Rancher server tha
 
 # Prerequisites
 
-- **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/#known-upgrade-issues) in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12) Note that upgrades to or from any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#helm-chart-repositories/) aren’t supported.
+- **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/#known-upgrade-issues) in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12) Note that upgrades to or from any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories/) aren’t supported.
 - **For [air gap installs only,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 # Placeholder Review
@@ -152,7 +152,7 @@ docker run -d --volumes-from rancher-data \
   rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -183,7 +183,7 @@ docker run -d --volumes-from rancher-data \
   rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -213,7 +213,7 @@ docker run -d --volumes-from rancher-data \
   --no-cacerts
 ```
 
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option D: Let's Encrypt Certificate
@@ -243,7 +243,7 @@ docker run -d --volumes-from rancher-data \
   --acme-domain <YOUR.DNS.NAME>
 ```
 
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -277,7 +277,7 @@ Placeholder | Description
       <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option B: Bring Your Own Certificate: Self-Signed
@@ -308,7 +308,7 @@ docker run -d --restart=unless-stopped \
     --privileged \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
@@ -341,7 +341,7 @@ docker run -d --volumes-from rancher-data \
      --privileged
      <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
-As of Rancher v2.5, privileged access is [required.](../#privileged-access-for-rancher-v2-5)
+As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 {{% /tab %}}
 {{% /tabs %}}
@@ -354,7 +354,7 @@ Log into Rancher. Confirm that the upgrade succeeded by checking the version dis
 
 >**Having network issues in your user clusters following upgrade?**
 >
-> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/namespace-migration/#restoring-cluster-networking).
 
 
 # 6. Clean up Your Old Rancher Server Container

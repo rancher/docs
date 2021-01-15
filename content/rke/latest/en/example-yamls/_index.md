@@ -7,7 +7,7 @@ aliases:
 
 There are lots of different [configuration options]({{<baseurl>}}/rke/latest/en/config-options/) that can be set in the cluster configuration file for RKE. Here are some examples of files:
 
-> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_api` and `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
+> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_api` and `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
 
 ## Minimal `cluster.yml` example
 

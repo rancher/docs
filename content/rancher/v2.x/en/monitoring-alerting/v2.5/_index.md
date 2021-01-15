@@ -30,7 +30,7 @@ For more information about upgrading the Monitoring app in Rancher 2.5, please r
   - [Grafana UI](#grafana-ui)
   - [Prometheus UI](#prometheus-ui)
   - [Viewing the Prometheus Targets](#viewing-the-prometheus-targets)
-  - [Viewing the PrometheusRules](#viewing-the-prometheus-rules)
+  - [Viewing the PrometheusRules](#viewing-the-prometheusrules)
   - [Viewing Active Alerts in Alertmanager](#viewing-active-alerts-in-alertmanager)
 - [Uninstall Monitoring](#uninstall-monitoring)
 - [Setting Resource Limits and Requests](#setting-resource-limits-and-requests)
@@ -53,7 +53,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 > **Requirements:**
 > 
 > - Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
-> - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#resource-requirements)
+> - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#setting-resource-limits-and-requests)
 
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
@@ -68,7 +68,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 
 By default, Rancher Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)) as well as default Prometheus alerts and Grafana dashboards (curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project) onto a cluster.
 
-To see the default alerts, go to the [Alertmanager UI](#alertmanager-ui) and click **Expand all groups.**
+To see the default alerts, go to the [Alertmanager UI](#viewing-active-alerts-in-alertmanager) and click **Expand all groups.**
 
 To see what services you are monitoring, you will need to see your targets. To view the default targets, refer to [Viewing the Prometheus Targets.](#viewing-the-prometheus-targets)
 
