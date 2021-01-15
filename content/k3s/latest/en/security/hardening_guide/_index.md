@@ -86,6 +86,8 @@ spec:
 
 ### NetworkPolicies
 
+> NOTE: K3s's deploys kube-router for network policy enforcement. Support for this in K3s is currently experimental.
+
 CIS requires that all namespaces have a network policy applied that reasonably limits traffic into namespaces and pods.
 
 Here's an example of a compliant network policy. 
