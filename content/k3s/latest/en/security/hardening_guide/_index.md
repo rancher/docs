@@ -41,7 +41,7 @@ The runtime requirements to comply with the CIS Benchmark are centered around po
 
 ### PodSecurityPolicies
 
-When PSPs are enabled, a policy can be applied to mitigate the necessary controls described in section 5.2 of the CIS Benchmark.
+When PSPs are enabled, a policy can be applied to satisfy the necessary controls described in section 5.2 of the CIS Benchmark.
 
 Here's an example of a compliant PSP.
 
