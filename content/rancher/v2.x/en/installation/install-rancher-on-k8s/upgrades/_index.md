@@ -82,7 +82,7 @@ Follow the steps to upgrade Rancher server:
 
 For Rancher v2.5+, use the [backup application]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/back-up-rancher) to back up Rancher.
 
-For Rancher v2.0-v2.4, [take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x/v2.4.x/backup/rke-backups/#option-b-one-time-snapshots)
+For Rancher v2.0-v2.4, [take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/rke-backups/#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server.
 
 You'll use the backup as a restoration point if something goes wrong during upgrade.

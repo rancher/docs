@@ -28,6 +28,6 @@ Choose from the following options:
 
 	In this section, you can find errors related to deploying addons.
 
-- [404 - default backend](./404-default-backend/)
+- [404 - default backend]({{<baseurl>}}/rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/404-default-backend/)
 
 	In this section, you can find errors related to the `404 - default backend` page that is shown when trying to access Rancher.
