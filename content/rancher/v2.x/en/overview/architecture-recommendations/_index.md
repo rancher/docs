@@ -3,7 +3,7 @@ title: Architecture Recommendations
 weight: 3
 ---
 
-Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
+Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the cluster running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
 
 This section covers the following topics:
 
@@ -30,7 +30,9 @@ We recommend installing the Rancher server on a high-availability Kubernetes clu
 
 We don't recommend installing Rancher in a single Docker container, because if the node goes down, there is no copy of the cluster data available on other nodes and you could lose the data on your Rancher server.
 
-Rancher needs to be installed on either a high-availability [RKE (Rancher Kubernetes Engine)]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster, or a high-availability [K3s (Lightweight Kubernetes)]({{<baseurl>}}/k3s/latest/en/) Kubernetes cluster. Both RKE and K3s are fully certified Kubernetes distributions.
+As of v2.4, Rancher needs to be installed on either a high-availability [RKE (Rancher Kubernetes Engine)]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster, or a high-availability [K3s (Lightweight Kubernetes)]({{<baseurl>}}/k3s/latest/en/) Kubernetes cluster. Both RKE and K3s are fully certified Kubernetes distributions.
+
+Rancher versions prior to v2.4 need to be installed on an RKE cluster.
 
 ### K3s Kubernetes Cluster Installations
 
@@ -110,7 +112,7 @@ With that said, it is safe to use all three roles on three nodes when setting up
 
 Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of downstream clusters.
 
-For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/v2.5/)
+For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.x/en/best-practices/)
 
 # Architecture for an Authorized Cluster Endpoint 
 

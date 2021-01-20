@@ -16,8 +16,6 @@ aliases:
 ---
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 
-For the instructions to upgrade Rancher installed on Kubernetes with RancherD, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-linux/upgrades)
-
 For the instructions to upgrade Rancher installed with Docker, refer to [ths page.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-upgrades)
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
@@ -57,10 +55,6 @@ For migration of installs started with Helm 2, refer to the official [Helm 2 to 
 
 -For [air gap installs only,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
-### For upgrades from a Rancher server with a hidden local cluster
-
-If you are upgrading to Rancher v2.5 from a Rancher server that was started with the Helm chart option `--add-local=false`, you will need to drop that flag when upgrading. Otherwise, the Rancher server will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster. For more information, see [this section.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#upgrading-from-rancher-with-a-hidden-local-cluster)
-
 ### For upgrades from v2.0-v2.2 with external TLS termination
 
 If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
@@ -80,9 +74,8 @@ Follow the steps to upgrade Rancher server:
 
 # 1. Back up Your Kubernetes Cluster that is Running Rancher Server
 
-For Rancher v2.5+, use the [backup application]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/back-up-rancher) to back up Rancher.
 
-For Rancher v2.0-v2.4, [take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/rke-backups/#option-b-one-time-snapshots)
+[Take a one-time snapshot]({{<baseurl>}}/rancher/v2.x/en/backups/backup/rke-backups/#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server.
 
 You'll use the backup as a restoration point if something goes wrong during upgrade.

@@ -7,6 +7,4 @@ This section contains information on how to install a Kubernetes cluster that th
 
 In Rancher prior to v2.4, the Rancher server needed to run on an RKE Kubernetes cluster.
 
-In Rancher v2.4.x, Rancher need to run on either an RKE Kubernetes cluster or a K3s Kubernetes cluster.
-
-In Rancher v2.5, Rancher can run on any Kubernetes cluster.
+In Rancher v2.4.x, Rancher needs to run on either an RKE Kubernetes cluster or a K3s Kubernetes cluster.

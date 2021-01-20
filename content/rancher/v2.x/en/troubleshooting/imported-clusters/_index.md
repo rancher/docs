@@ -1,5 +1,5 @@
 ---
-title: Registered clusters
+title: Imported clusters
 weight: 105
 ---
 

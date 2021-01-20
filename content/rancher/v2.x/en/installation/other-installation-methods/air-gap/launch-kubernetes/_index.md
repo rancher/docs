@@ -13,8 +13,6 @@ For Rancher prior to v2.4, Rancher should be installed on an [RKE]({{<baseurl>}}
 
 In Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. The Rancher management server can only be run on a Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time. 
 
-As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
-
 The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
 
 {{% tabs %}}

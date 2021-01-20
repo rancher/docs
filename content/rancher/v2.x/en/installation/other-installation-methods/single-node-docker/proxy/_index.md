@@ -37,8 +37,5 @@ docker run -d --restart=unless-stopped \
   -e HTTP_PROXY="http://192.168.10.1:3128" \
   -e HTTPS_PROXY="http://192.168.10.1:3128" \
   -e NO_PROXY="localhost,127.0.0.1,0.0.0.0,10.0.0.0/8,192.168.10.0/24,.svc,.cluster.local,example.com" \
-  --privileged \
   rancher/rancher:latest
 ```
-
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)

@@ -11,8 +11,6 @@ An air gapped environment is an environment where the Rancher server is installe
 
 The infrastructure depends on whether you are installing Rancher on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container. For more information on each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/)
 
-As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. The RKE and K3s Kubernetes infrastructure tutorials below are still included for convenience.
-
 {{% tabs %}}
 {{% tab "K3s" %}}
 We recommend setting up the following infrastructure for a high-availability installation:
@@ -153,8 +151,6 @@ If you need help with creating a private registry, please refer to the [official
 > The Docker installation is for Rancher users that are wanting to test out Rancher. Since there is only one node and a single Docker container, if the node goes down, you will lose all the data of your Rancher server.
 >
 > For Rancher v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
-
-> For Rancher v2.5+, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/migrating-rancher/)
 
 ### 1. Set up a Linux Node
 

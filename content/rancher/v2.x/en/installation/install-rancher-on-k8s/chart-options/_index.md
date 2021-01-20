@@ -42,7 +42,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | Option                         | Default Value                                         | Description                                                                                                                                       |
 | ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `additionalTrustedCAs`         | false                                                 | `bool` - See [Additional Trusted CAs](#additional-trusted-cas)                                                                                    |
-| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster.  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._ |
+| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" Rancher server cluster.  _Note: This option is no longer available in v2.5.0. In v2.5.0, the `restrictedAdmin` option is used to prevent users from modifying the local cluster._ |
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
@@ -65,7 +65,6 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
 | `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
 | `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
-| `restrictedAdmin` | `false` | _Available in Rancher v2.5_ `bool` - When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#restricted-admin) |
 | `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
 | `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
@@ -110,7 +109,7 @@ See [TLS settings]({{<baseurl>}}/rancher/v2.x/en/admin-settings/tls-settings) fo
 
 By default Rancher server will detect and import the `local` cluster it's running on. User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
 
-> **Important:**  If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner. 
+> **Important if you are considering upgrading to Rancher v2.5:**  If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner. In Rancher v2.5, the restrictedAdmin option is used to prevent users from modifying the local cluster.
 
 If this is a concern in your environment you can set this option to "false" on your initial install.
 

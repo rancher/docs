@@ -22,7 +22,6 @@ This section covers the following topics:
 - [Launching Kubernetes with Rancher](#launching-kubernetes-with-rancher)
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
-- [Registering Existing Clusters](#registering-existing-clusters)
 - [Importing Existing Clusters](#importing-existing-clusters)
 
   <!-- /TOC -->
@@ -97,15 +96,3 @@ When a K3s cluster is imported, Rancher will recognize it as K3s, and the Ranche
 - The ability to see a read-only version of the K3s cluster's configuration arguments and environment variables used to launch each node in the cluster.
 
 For more information, refer to the section on [imported K3s clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/)
-
-# Registering Existing Clusters
-
-_Available as of v2.5_
-
-The cluster registration feature replaces the feature to import clusters.
-
-Registering EKS clusters now provides additional benefits. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
-
-When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
-
-For more information, see [this page.](./registered-clusters)

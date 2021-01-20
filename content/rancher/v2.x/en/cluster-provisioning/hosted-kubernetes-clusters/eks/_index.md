@@ -86,141 +86,6 @@ You can access your cluster after its state is updated to **Active.**
 
 # EKS Cluster Configuration Reference
 
-### Changes in Rancher v2.5
-
-More EKS options can be configured when you create an EKS cluster in Rancher, including the following:
-
-- Managed node groups
-- Desired size, minimum size, maximum size (requires the Cluster Autoscaler to be installed)
-- Control plane logging
-- Secrets encryption with KMS
-
-The following capabilities have been added for configuring EKS clusters in Rancher:
-
-- GPU support
-- Exclusively use managed nodegroups that come with the most up-to-date AMIs
-- Add new nodes
-- Upgrade nodes
-- Add and remove node groups
-- Disable and enable private access
-- Add restrictions to public access
-- Use your cloud credentials to create the EKS cluster instead of passing in your access key and secret key
-
-Due to the way that the cluster data is synced with EKS, if the cluster is modified from another source, such as in the EKS console, and in Rancher within five minutes, it could cause some changes to be overwritten. For information about how the sync works and how to configure it, refer to [this section](#syncing).
-
-{{% tabs %}}
-{{% tab "Rancher v2.5+" %}}
-
-### Account Access
-
-<a id="account-access-2-5"></a>
-
-Complete each drop-down and field using the information obtained for your IAM policy.
-
-| Setting    | Description       |
-| ---------- | -------------------------------------------------------------------------------------------------------------------- |
-| Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
-
-### Service Role
-
-<a id="service-role-2-5"></a>
-
-Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html).
-
-Service Role | Description
--------------|---------------------------
-Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
-Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
-
-### Secrets Encryption
-
-<a id="secrets-encryption-2-5"></a>
-
-Optional: To encrypt secrets, select or enter a key created in [AWS Key Management Service (KMS)](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html)
-
-### API Server Endpoint Access
-
-<a id="api-server-endpoint-access-2-5"></a>
-
-Configuring Public/Private API access is an advanced use case. For details, refer to the EKS cluster endpoint access control [documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-
-### Private-only API Endpoints
-
-If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for Rancher to connect to the cluster successfully. In this case, a pop-up will be displayed with a command that you will run on the cluster to register it with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
-
-There are two ways to avoid this extra manual step:
-* You can create the cluster with both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and Rancher will continue to communicate with the EKS cluster.
-* You can ensure that Rancher shares a subnet with the EKS cluster. Then security groups can be used to enable Rancher to communicate with the cluster's API endpoint. In this case, the command to register the cluster is not needed, and Rancher will be able to communicate with your cluster. For more information on configuring security groups, refer to the [security groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
-
-### Public Access Endpoints
-
-<a id="public-access-endpoints-2-5"></a>
-
-Optionally limit access to the public endpoint via explicit CIDR blocks.
-
-If you limit access to specific CIDR blocks, then it is recommended that you also enable the private access to avoid losing network communication to the cluster.
-
-One of the following is required to enable private access:
-- Rancher's IP must be part of an allowed CIDR block
-- Private access should be enabled, and Rancher must share a subnet with the cluster and have network access to the cluster, which can be configured with a security group
-
-For more information about public and private access to the cluster endpoint, refer to the [Amazon EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-
-### Subnet
-
-<a id="subnet-2-5"></a>
-
-| Option | Description |
-| ------- | ------------ |
-| Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC with 3 public subnets. |
-| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your Control Plane and nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
-
- For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
-
-- [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
-- [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
-
-### Security Group
-
-<a id="security-group-2-5"></a>
-
-Amazon Documentation:
-
-- [Cluster Security Group Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
-- [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
-- [Create a Security Group](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html#getting-started-create-security-group)
-
-### Logging
-
-<a id="logging-2-5"></a>
-
-Configure control plane logs to send to Amazon CloudWatch. You are charged the standard CloudWatch Logs data ingestion and storage costs for any logs sent to CloudWatch Logs from your clusters.
-
-Each log type corresponds to a component of the Kubernetes control plane. To learn more about these components, see [Kubernetes Components](https://kubernetes.io/docs/concepts/overview/components/) in the Kubernetes documentation.
-
-For more information on EKS control plane logging, refer to the official [documentation.](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-
-### Managed Node Groups
-
-<a id="managed-node-groups-2-5"></a>
-
-Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters. 
-
-For more information about how node groups work and how they are configured, refer to the [EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
-
-Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the Kubernetes version. You can configure whether the AMI has GPU enabled.
-
-| Option | Description |
-| ------- | ------------ |
-| Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-types/) for the instance you're provisioning. |
-| Maximum ASG Size | The maximum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
-| Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
-
-{{% /tab %}}
-{{% tab "Rancher prior to v2.5" %}}
-
-
 ### Account Access
 
 <a id="account-access-2-4"></a>
@@ -324,15 +189,11 @@ Custom AMI Override | If you want to use a custom [Amazon Machine Image](https:/
 Desired ASG Size | The number of instances that your cluster will provision.
 User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
 
-{{% /tab %}}
-{{% /tabs %}}
-
-
 # Troubleshooting
 
 If your changes were overwritten, it could be due to the way the cluster data is synced with EKS. Changes shouldn't be made to the cluster from another source, such as in the EKS console, and in Rancher within a five-minute span. For information on how this works and how to configure the refresh interval, refer to [Syncing.](#syncing)
 
-If an unauthorized error is returned while attempting to modify or register the cluster and the cluster was not created with the role or user that your credentials belong to, refer to [Security and Compliance.](#security-and-compliance)
+If an unauthorized error is returned while attempting to modify or import the cluster and the cluster was not created with the role or user that your credentials belong to, refer to [Security and Compliance.](#security-and-compliance)
 
 For any issues or troubleshooting details for your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting.html).
 
@@ -342,7 +203,7 @@ To find information on any AWS Service events, please see [this page](https://st
 
 # Security and Compliance
 
-By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In Rancher, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not register in Rancher unless the credentials used to register the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
+By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In Rancher, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not be imported in Rancher unless the credentials used to import the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
 
 For more information on security and compliance with your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/shared-responsibilty.html).
 
@@ -559,31 +420,3 @@ Permissions required for Rancher to create VPC and associated resources.
   "Resource": "*"
 }
 ```
-
-
-# Syncing
-
-Syncing is the feature that causes Rancher to update its EKS clusters' values so they are up to date with their corresponding cluster object in the EKS console. This enables Rancher to not be the sole owner of an EKS cluster’s state. Its largest limitation is that processing an update from Rancher and another source at the same time or within 5 minutes of one finishing may cause the state from one source to completely overwrite the other.
-
-### How it works
-
-There are two fields on the Rancher Cluster object that must be understood to understand how syncing works:
-
-1. EKSConfig which is located on the Spec of the Cluster.
-2. UpstreamSpec which is located on the EKSStatus field on the Status of the Cluster.
-
-Both of which are defined by the struct EKSClusterConfigSpec found in the eks-operator project: https://github.com/rancher/eks-operator/blob/master/pkg/apis/eks.cattle.io/v1/types.go
-
-All fields with the exception of DisplayName, AmazonCredentialSecret, Region, and Imported are nillable on the EKSClusterConfigSpec.
-
-The EKSConfig represents desired state for its non-nil values. Fields that are non-nil in the EKSConfig can be thought of as “managed".When a cluster is created in Rancher, all fields are non-nil and therefore “managed”. When a pre-existing cluster is registered in rancher all nillable fields are nil and are not “managed”. Those fields become managed once their value has been changed by Rancher.
-
-UpstreamSpec represents the cluster as it is in EKS and is refreshed on an interval of 5 minutes. After the UpstreamSpec has been refreshed rancher checks if the EKS cluster has an update in progress. If it is updating, nothing further is done. If it is not currently updating, any “managed” fields on EKSConfig are overwritten with their corresponding value from the recently updated UpstreamSpec.
-
-The effective desired state can be thought of as the UpstreamSpec + all non-nil fields in the EKSConfig. This is what is displayed in the UI.
-
-If Rancher and another source attempt to update an EKS cluster at the same time or within the 5 minute refresh window of an update finishing, then it is likely any “managed” fields can be caught in a race condition. For example, a cluster may have PrivateAccess as a managed field. If PrivateAccess is false and then enabled in EKS console, then finishes at 11:01, and then tags are updated from Rancher before 11:05 the value will likely be overwritten. This would also occur if tags were updated while the cluster was processing the update. If the cluster was registered and the PrivateAccess fields was nil then this issue should not occur in the aforementioned case.
-
-### Configuring the Refresh Interval
-
-It is possible to change the refresh interval through the setting “eks-refresh-cron". This setting accepts values in the Cron format. The default is `*/5 * * * *`. The shorter the refresh window is the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.

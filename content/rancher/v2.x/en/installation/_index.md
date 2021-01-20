@@ -15,16 +15,6 @@ In this section,
 - **The Rancher server** manages and provisions Kubernetes clusters. You can interact with downstream Kubernetes clusters through the Rancher server's user interface.
 - **RKE (Rancher Kubernetes Engine)** is a certified Kubernetes distribution and CLI/library which creates and manages a Kubernetes cluster.
 - **K3s (Lightweight Kubernetes)** is also a fully compliant Kubernetes distribution. It is newer than RKE, easier to use, and more lightweight, with a binary size of less than 100 MB. As of Rancher v2.4, Rancher can be installed on a K3s cluster.
-- **RKE2** is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
-- **RancherD** is a new tool for installing Rancher, which is available as of Rancher v2.5.4. It is an experimental feature. RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
-
-# Changes to Installation in Rancher v2.5
-
-In Rancher v2.5, the Rancher management server can be installed on any Kubernetes cluster, including hosted clusters, such as Amazon EKS clusters.
-
-For Docker installations, a local Kubernetes cluster is installed in the single Docker container, and Rancher is installed on the local cluster.
-
-The `restrictedAdmin` Helm chart option was added. When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#restricted-admin)
 
 # Overview of Installation Options
 
@@ -33,18 +23,6 @@ Rancher can be installed on these main architectures:
 ### High-availability Kubernetes Install with the Helm CLI
 
 We recommend using Helm, a Kubernetes package manager, to install Rancher on multiple nodes on a dedicated Kubernetes cluster. For RKE clusters, three nodes are required to achieve a high-availability cluster. For K3s clusters, only two nodes are required.
-
-### High-availability Kubernetes Install with RancherD
-
-_Available as of v2.5.4_
-
-> This is an experimental feature.
-
-RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
-
-In both the RancherD install and the Helm CLI install, Rancher is installed as a Helm chart on a Kubernetes cluster.
-
-Configuration and upgrading are also simplified with RancherD. When you upgrade the RancherD binary, both the Kubernetes cluster and the Rancher Helm chart are upgraded.
 
 ### Single-node Kubernetes Install
 
@@ -57,8 +35,6 @@ However, this option is useful if you want to save resources by using a single n
 For test and demonstration purposes, Rancher can be installed with Docker on a single node.
 
 For Rancher v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
-
-For Rancher v2.5+, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/migrating-rancher/)
 
 ### Other Options
 
@@ -75,8 +51,7 @@ We recommend installing Rancher on a Kubernetes cluster, because in a multi-node
 For that reason, we recommend that for a production-grade architecture, you should set up a high-availability Kubernetes cluster, then install Rancher on it. After Rancher is installed, you can use Rancher to deploy and manage Kubernetes clusters.
 
 > The type of cluster that Rancher needs to be installed on depends on the Rancher version. 
-> 
-> For Rancher v2.5, any Kubernetes cluster can be used.
+>
 > For Rancher v2.4.x, either an RKE Kubernetes cluster or K3s Kubernetes cluster can be used. 
 > For Rancher prior to v2.4, an RKE cluster must be used.
 

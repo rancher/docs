@@ -205,11 +205,8 @@ You can bind mount a host volume to this location to preserve data on the host i
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /opt/rancher:/var/lib/rancher \
-  --privileged \
   rancher/rancher:latest
 ```
-
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 

@@ -27,8 +27,6 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution.
 
-Docker is required for nodes that will run K3s or RKE Kubernetes clusters. It is not required for RancherD installs.
-
 For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
@@ -53,21 +51,10 @@ If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow 
 
 If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
-### RancherD Specific Requirements
-
-_The RancherD install is available as of v2.5.4. It is an experimental feature._	
-
-At this time, only Linux OSes that leverage systemd are supported.	
-
-To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.	
-
-Docker is not required for RancherD installs.	
 
 ### Installing Docker
 
 Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
-
-Docker is not required for RancherD installs.
 # Hardware Requirements
 
 This section describes the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
@@ -107,19 +94,6 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
-
-{{% /tab %}}
-
-{{% tab "RancherD" %}}
-
-_RancherD is available as of v2.5.4. It is an experimental feature._
-
-The following requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
-
-| Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
-| --------------- | -------- | --------- | ----- | ---- |
-| Small           | Up to 5  | Up to 50  | 2     | 5 GB |
-| Medium          | Up to 15 | Up to 200 | 3     | 9 GB |
 
 {{% /tab %}}
 
@@ -164,12 +138,3 @@ Each node used should have a static IP configured, regardless of whether you are
 ### Port Requirements
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
-
-# RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes
-
-Before installing Rancher on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, you must install `container-selinux` and `iptables`: 
-
-```
-sudo yum install iptables
-sudo yum install container-selinux
-```

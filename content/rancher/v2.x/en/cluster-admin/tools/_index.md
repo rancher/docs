@@ -1,5 +1,5 @@
 ---
-title: Tools for Logging, Monitoring, and Visibility
+title: Tools for Logging, Monitoring, and More
 weight: 2033
 aliases:
   - /rancher/v2.x/en/tools/notifiers-and-alerts/
@@ -10,7 +10,9 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 <!-- TOC -->
 
 - [Logging](#logging)
-- [Monitoring and Alerts](#monitoring-and-alerts)
+- [Monitoring](#monitoring)
+- [Alerts](#alerts)
+- [Notifiers](#notifiers)
 - [Istio](#istio)
 - [OPA Gatekeeper](#opa-gatekeeper)
 - [CIS Scans](#cis-scans)
@@ -30,44 +32,40 @@ Logging is helpful because it allows you to:
 
 Rancher can integrate with Elasticsearch, splunk, kafka, syslog, and fluentd.
 
-Logging was improved in Rancher v2.5. 
+Refer to the logging documentation [here.](./cluster-logging)
 
-- If you are using Rancher v2.5, refer to the logging documentation [here.]({{<baseurl>}}/rancher/v2.x/en/logging/v2.5)
-- If you are using Rancher v2.0.x-v2.4.x, refer to the logging documentation [here.]({{<baseurl>}}/rancher/v2.x/en/logging/v2.0.x-v2.4.x)
-
-# Monitoring and Alerts
+# Monitoring
 
 Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution.
 
+For details, refer to [Monitoring.](./cluster-monitoring)
+# Alerts
+
 After monitoring is enabled, you can set up alerts and notifiers that provide the mechanism to receive them.
+
+Alerts are rules that trigger notifications. Before you can receive alerts, you must configure one or more notifier in Rancher. The scope for alerts can be set at either the cluster or project level.
+
+For details, refer to [Alerts.](./cluster-alerts)
+# Notifiers
 
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action. Notifications can be sent with Slack, email, PagerDuty, WeChat, and webhooks.
 
-Alerts are rules that trigger those notifications. Before you can receive alerts, you must configure one or more notifier in Rancher. The scope for alerts can be set at either the cluster or project level.
-
-- If you are using Rancher v2.5, refer to the monitoring documentation [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5)
-- If you are using Rancher v2.0.x-v2.4.x, refer to the monitoring documentation [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x)
-
+For details, refer to [Notifiers.](./notifiers)
 # Istio
 
 _Available as of v2.3_
 
 [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, control, troubleshoot, and secure the traffic within a complex network of microservices.
 
-Rancher's integration with Istio was improved in Rancher v2.5.
-
-- If you are using Rancher v2.5, refer to the Istio documentation [here.]({{<baseurl>}}/rancher/v2.x/en/istio/v2.5)
-- If you are using Rancher v2.3.x-v2.4.x, refer to the Istio documentation [here.]({{<baseurl>}}/rancher/v2.x/en/istio/v2.3.x-v2.4.x)
+Refer to the Istio documentation [here.](./istio)
 
 # OPA Gatekeeper
 
-[OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.]({{<baseurl>}}/rancher/v2.x/en/opa-gatekeper)
+[OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper) is an open-source project that provides integration between OPA and Kubernetes to provide policy control via admission controller webhooks. For details on how to enable Gatekeeper in Rancher, refer to the [OPA Gatekeeper section.](./opa-gatekeeper)
 
 
 # CIS Scans
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
-If you are using Rancher v2.5, refer to the CIS scan documentation [here.]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.5)
-
-If you are using Rancher v2.4, refer to the CIS scan documentation [here.]({{<baseurl>}}/rancher/v2.x/en/cis-scans/v2.4)
+Refer to the CIS scan documentation [here.](./cis-scans)

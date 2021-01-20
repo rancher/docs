@@ -17,7 +17,6 @@ You cannot update or delete the built-in Global Permissions.
 
 This section covers the following topics:
 
-- [Restricted Admin](#restricted-admin)
 - [Global permission assignment](#global-permission-assignment)
   - [Global permissions for new local users](#global-permissions-for-new-local-users)
   - [Global permissions for users with external authentication](#global-permissions-for-users-with-external-authentication)
@@ -28,21 +27,6 @@ This section covers the following topics:
   - [Configuring global permissions for groups](#configuring-global-permissions-for-groups)
   - [Refreshing group memberships](#refreshing-group-memberships)
 
-# Restricted Admin
-
-_Available as of Rancher v2.5_
-
-A new `restricted-admin` role was created in Rancher v2.5 in order to prevent privilege escalation from the local Rancher server Kubernetes cluster. This role has full administrator access to all downstream clusters managed by Rancher, but it does not have permission to alter the local Kubernetes cluster.
-
-The `restricted-admin` can create other `restricted-admin` users with an equal level of access.
-
-A new setting was added to Rancher to set the initial bootstrapped administrator to have the `restricted-admin` role. This applies to the first user created when the Rancher server is started for the first time. If the environment variable is set, then no global administrator would be created, and it would be impossible to create the global administrator through Rancher.
-
-To bootstrap Rancher with the `restricted-admin` as the initial user, the Rancher server should be started with the following environment variable:
-
-```
-CATTLE_RESTRICTED_DEFAULT_ADMIN=true
-```
 ### List of `restricted-admin` Permissions
 
 The `restricted-admin` permissions are as follows:
@@ -53,15 +37,6 @@ The `restricted-admin` permissions are as follows:
 - Can create other restricted admins.
 - Cannot grant any permissions in the local cluster they don't currently have. (This is how Kubernetes normally operates)
 
-### Upgrading from Rancher with a Hidden Local Cluster
-
-Prior to Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
-
-```
---add-local=false
-```
-
-You will need to drop this flag when upgrading to Rancher v2.5. Otherwise, Rancher will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster.
 
 ### Changing Global Administrators to Restricted Admins
 

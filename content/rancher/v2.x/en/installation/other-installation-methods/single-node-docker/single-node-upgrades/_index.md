@@ -148,11 +148,8 @@ Placeholder | Description
 docker run -d --volumes-from rancher-data \
   --restart=unless-stopped \
   -p 80:80 -p 443:443 \
-  --privileged \
   rancher/rancher:<RANCHER_VERSION_TAG>
 ```
-
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -179,11 +176,9 @@ docker run -d --volumes-from rancher-data \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
   -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-  --privileged \
   rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -208,12 +203,10 @@ docker run -d --volumes-from rancher-data \
   -p 80:80 -p 443:443 \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-  --privileged \
   rancher/rancher:<RANCHER_VERSION_TAG> \
   --no-cacerts
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option D: Let's Encrypt Certificate
@@ -238,12 +231,9 @@ Placeholder | Description
 docker run -d --volumes-from rancher-data \
   --restart=unless-stopped \
   -p 80:80 -p 443:443 \
-  --privileged \
   rancher/rancher:<RANCHER_VERSION_TAG> \
   --acme-domain <YOUR.DNS.NAME>
 ```
-
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 
 {{% /accordion %}}
 
@@ -273,11 +263,9 @@ Placeholder | Description
       -p 80:80 -p 443:443 \
       -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
       -e CATTLE_SYSTEM_CATALOG=bundled \ #Available as of v2.3.0, use the packaged Rancher system charts
-      --privileged \
       <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option B: Bring Your Own Certificate: Self-Signed
@@ -305,10 +293,8 @@ docker run -d --restart=unless-stopped \
     -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
     -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
     -e CATTLE_SYSTEM_CATALOG=bundled \ #Available as of v2.3.0, use the packaged Rancher system charts
-    --privileged \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
 
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
@@ -338,10 +324,9 @@ docker run -d --volumes-from rancher-data \
      -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
      -e CATTLE_SYSTEM_DEFAULT_REGISTRY=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
      -e CATTLE_SYSTEM_CATALOG=bundled \ #Available as of v2.3.0, use the packaged Rancher system charts
-     --privileged
      <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+
 {{% /accordion %}}
 {{% /tab %}}
 {{% /tabs %}}

@@ -15,15 +15,9 @@ In this installation scenario, you'll install Docker on a single Linux host, and
 > **Want to use an external load balancer?**
 > See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.x/en/installation/options/single-node-install-external-lb) instead.
 
-A Docker installation of Rancher is recommended only for development and testing purposes. The ability to migrate Rancher to a high-availability cluster depends on the Rancher version:
+A Docker installation of Rancher is recommended only for development and testing purposes.
 
-- For Rancher v2.0-v2.4, there was no migration path from a Docker installation to a high-availability installation. Therefore, if you are using Rancher prior to v2.5, you may want to use a Kubernetes installation from the start.
-
-- For Rancher v2.5+, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/migrating-rancher/)
-
-### Privileged Access for Rancher v2.5+
-
-When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
+For Rancher v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
 
 # Requirements for OS, Docker, Hardware, and Networking
 
@@ -57,12 +51,10 @@ If you are installing Rancher in a development or testing environment where iden
 
 Log into your Linux host, and then run the minimum installation command below.
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
 
 ```bash
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
-  --privileged \
   rancher/rancher:latest
 ```
 
@@ -84,15 +76,12 @@ After creating your certificate, run the Docker command below to install Rancher
 | `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.            |
 | `<CA_CERTS.pem>`        | The path to the certificate authority's certificate.         |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
-
 ```bash
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
   -v /<CERT_DIRECTORY>/<CA_CERTS.pem>:/etc/rancher/ssl/cacerts.pem \
-  --privileged \
   rancher/rancher:latest
 ```
 
@@ -116,14 +105,12 @@ After obtaining your certificate, run the Docker command below.
 | `<FULL_CHAIN.pem>`  | The path to your full certificate chain.                     |
 | `<PRIVATE_KEY.pem>` | The path to the private key for your certificate. |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
 
 ```bash
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
-  --privileged \
   rancher/rancher:latest \
   --no-cacerts
 ```
@@ -146,12 +133,9 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 | ----------------- | ------------------- |
 | `<YOUR.DNS.NAME>` | Your domain address |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
-
 ```
 docker run -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
-  --privileged \
   rancher/rancher:latest \
   --acme-domain <YOUR.DNS.NAME>
 ```

@@ -250,13 +250,11 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 ### 3. Save the images to your workstation
 
 1. Make `rancher-save-images.sh` an executable:
-
    ```
    chmod +x rancher-save-images.sh
    ```
 
 1. Run `rancher-save-images.sh` with the `rancher-images.txt` image list to create a tarball of all the required images:
-
    ```plain
    ./rancher-save-images.sh --image-list ./rancher-images.txt
    ```

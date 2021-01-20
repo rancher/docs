@@ -7,8 +7,6 @@ aliases:
   - /rancher/v2.x/en/concepts/resources/  
 ---
 
-> The <b>Cluster Explorer</b> is a new feature in Rancher v2.5 that allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI. This section will be updated to reflect the way that Kubernetes resources are handled in Rancher v2.5.
-
 ## Workloads
 
 Deploy applications to your cluster nodes using [workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/), which are objects that contain pods that run your apps, along with metadata that set rules for the deployment's behavior. Workloads can be deployed within the scope of the entire clusters or within a namespace.

@@ -18,7 +18,6 @@ For all imported Kubernetes clusters except for K3s clusters, the configuration 
 
 Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well as the ability to upgrade Kubernetes by editing the cluster in the Rancher UI.
 
-- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Importing a cluster](#importing-a-cluster)
@@ -27,14 +26,6 @@ Rancher v2.4 added the capability to import a K3s cluster into Rancher, as well 
   - [Configuring a K3s Cluster to Enable Importation to Rancher](#configuring-a-k3s-cluster-to-enable-importation-to-rancher)
   - [Debug Logging and Troubleshooting for Imported K3s clusters](#debug-logging-and-troubleshooting-for-imported-k3s-clusters)
 - [Annotating imported clusters](#annotating-imported-clusters)
-
-# Changes in Rancher v2.5
-
-In Rancher v2.5, the cluster registration feature replaced the feature to import clusters.
-
-Registering EKS clusters now provides additional benefits. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
-
-When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 # Features
 
@@ -81,7 +72,7 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 **Result:**
 
-- Your cluster is registered and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
+- Your cluster is imported and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
 - You can access your cluster after its state is updated to **Active.**
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
