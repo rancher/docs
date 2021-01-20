@@ -1569,7 +1569,7 @@ It is possible to run `kube-proxy` with the kubeconfig parameters configured as 
 Run the below command on the worker node.
 
 ```bash
-stat -c %a /var/lib/rancher/k3s/server/manifests/k3s-kube-proxy.yaml
+stat -c %a /var/lib/rancher/k3s/agent/kubeproxy.kubeconfig
 644
 ```
 
@@ -1592,7 +1592,7 @@ The kubeconfig file for `kube-proxy` controls various parameters for the `kube-p
 Run the below command on the master node.
 
 ```bash
-stat -c %U:%G /var/lib/rancher/k3s/server/manifests/k3s-kube-proxy.yaml
+stat -c %U:%G /var/lib/rancher/k3s/agent/kubeproxy.kubeconfig
 root:root
 ```
 
@@ -1818,7 +1818,7 @@ Setting idle timeouts ensures that you are protected against Denial-of-Service a
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kubelet" | tail -n1 | grep "streaming-connection-idle-timeout"
 ```
 
 Verify that there's nothing returned.
@@ -1840,7 +1840,7 @@ Kernel parameters are usually tuned and hardened by the system administrators be
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kubelet" | tail -n1 | grep "protect-kernel-defaults"
 ```
 
 **Remediation:**
@@ -1860,7 +1860,7 @@ Kubelets can automatically manage the required changes to iptables based on how 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kubelet" | tail -n1 | grep "make-iptables-util-chains"
 ```
 
 Verify there are no results returned.
@@ -2491,7 +2491,7 @@ Run the below command on the master node.
 kubectl get all -n default
 ```
 
-Verify that there are no resources applied to the default namespace.
+The only entries there should be system managed resources such as the kubernetes service.
 
 **Remediation:**
 By default, K3s does not utilize the default namespace.

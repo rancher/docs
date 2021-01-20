@@ -82,22 +82,9 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
-Before the above PSP to be effective, we need to create a couple ClusterRoles, ClusterRole, and RoleBinding. These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory.
+Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory.
 
 ```yaml
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: psp:privileged
-  labels:
-    addonmanager.kubernetes.io/mode: EnsureExists
-rules:
-  - apiGroups: ['extensions']
-    resources: ['podsecuritypolicies']
-    verbs:     ['use']
-    resourceNames:
-    - privileged
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -110,7 +97,7 @@ rules:
     resources: ['podsecuritypolicies']
     verbs:     ['use']
     resourceNames:
-    - restricted
+      - cis1.5-compliant-psp
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -125,28 +112,6 @@ roleRef:
 subjects:
   - kind: Group
     name: system:authenticated
-    apiGroup: rbac.authorization.k8s.io
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: default:privileged
-  namespace: kube-system
-  labels:
-    addonmanager.kubernetes.io/mode: EnsureExists
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: psp:privileged
-subjects:
-  - kind: Group
-    name: system:masters
-    apiGroup: rbac.authorization.k8s.io
-  - kind: Group
-    name: system:nodes
-    apiGroup: rbac.authorization.k8s.io
-  - kind: Group
-    name: system:serviceaccounts:kube-system
     apiGroup: rbac.authorization.k8s.io
 ```
 
