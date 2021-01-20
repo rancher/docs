@@ -537,7 +537,7 @@ Note: This is an Alpha feature in the Kubernetes 1.15 release.
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes EventRateLimit.
@@ -562,7 +562,7 @@ The AlwaysAdmit admission controller was deprecated in Kubernetes v1.13. Its beh
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that if the `--enable-admission-plugins` argument is set, its value does not include `AlwaysAdmit`.
@@ -585,7 +585,7 @@ Setting admission control policy to `AlwaysPullImages` forces every new pod to p
 Run the below command on the master node.
 
 ```bash
-/bin/ps -ef | grep kube-apiserver | grep -v grep
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `AlwaysPullImages`.
@@ -607,7 +607,7 @@ SecurityContextDeny can be used to provide a layer of security for clusters whic
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `SecurityContextDeny`, if `PodSecurityPolicy` is not included.
@@ -675,7 +675,7 @@ A Pod Security Policy is a cluster-level resource that controls the actions that
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `PodSecurityPolicy`.
@@ -698,7 +698,7 @@ Using the `NodeRestriction` plug-in ensures that the kubelet is restricted to th
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "enable-admission-plugins"
 ```
 
 Verify that the `--enable-admission-plugins` argument is set to a value that includes `NodeRestriction`.
@@ -770,7 +770,7 @@ journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "secure-port
 Verify that the `--secure-port` argument is either not set or is set to an integer value between 1 and 65535.
 
 **Remediation:**
-By default, K3s sets the parameter of 6443 for the `--secure-port` argument. No manual remediation is needed.
+By default, K3s sets the parameter of 6444 for the `--secure-port` argument. No manual remediation is needed.
 
 
 #### 1.2.21
@@ -808,7 +808,7 @@ Auditing the Kubernetes API Server provides a security-relevant chronological se
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-log-path"
 ```
 
 Verify that the `--audit-log-path` argument is set as appropriate.
@@ -830,7 +830,7 @@ Retaining logs for at least 30 days ensures that you can go back in time and inv
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-log-maxage"
 ```
 
 Verify that the `--audit-log-maxage` argument is set to `30` or as appropriate.
@@ -852,7 +852,7 @@ Kubernetes automatically rotates the log files. Retaining old log files ensures 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-log-maxbackup"
 ```
 
 Verify that the `--audit-log-maxbackup` argument is set to `10` or as appropriate.
@@ -874,7 +874,7 @@ Kubernetes automatically rotates the log files. Retaining old log files ensures 
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-log-maxsize"
 ```
 
 Verify that the `--audit-log-maxsize` argument is set to `100` or as appropriate.
@@ -896,7 +896,7 @@ Setting global request timeout allows extending the API server request timeout l
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "request-timeout"
 ```
 
 Verify that the `--request-timeout` argument is either not set or set to an appropriate value.
@@ -918,7 +918,7 @@ If `--service-account-lookup` is not enabled, the apiserver only verifies that t
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "service-account-lookup"
 ```
 
 Verify that if the `--service-account-lookup` argument exists it is set to `true`.
@@ -1050,7 +1050,7 @@ etcd is a highly available key-value store used by Kubernetes deployments for pe
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "encryption-provider-config"
 ```
 
 Verify that the `--encryption-provider-config` argument is set to a EncryptionConfigfile. Additionally, ensure that the `EncryptionConfigfile` has all the desired resources covered especially any secrets.
@@ -1084,7 +1084,7 @@ Run the below command on the master node.
 Verify that aescbc is set as the encryption provider for all the desired resources.
 
 **Remediation**
-K3s server needs to be run with the following, `--kube-apiserver-arg='encryption-provider-config=/var/lib/rancher/k3s/server/encryption_config'`, and verify that one of the allowed encryption providers is present.
+K3s server needs to be run with the following, `--secrets-encryption=true`, and verify that one of the allowed encryption providers is present.
 
 
 #### 1.2.35
@@ -1101,7 +1101,7 @@ TLS ciphers have had a number of known vulnerabilities and weaknesses, which can
 Run the below command on the master node.
 
 ```bash
-/bin/ps -ef | grep kube-apiserver | grep -v grep
+journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "tls-cipher-suites"
 ```
 
 Verify that the `--tls-cipher-suites` argument is set as outlined in the remediation procedure below.
@@ -1125,13 +1125,13 @@ Garbage collection is important to ensure sufficient resource availability and a
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "terminated-pod-gc-threshold
 ```
 
 Verify that the `--terminated-pod-gc-threshold` argument is set as appropriate.
 
 **Remediation:**
-K3s server needs to be run with the following, `--kube-apiserver-arg='terminated-pod-gc-threshold=10`.
+K3s server needs to be run with the following, `--kube-controller-manager-arg='terminated-pod-gc-threshold=10`.
 
 
 #### 1.3.2
@@ -1169,7 +1169,7 @@ The controller manager creates a service account per controller in the `kube-sys
 Run the below command on the master node.
 
 ```bash
-kubectl get nodes -o 'template={{range .items}}{{.metadata.name}}: {{index .metadata.annotations "k3s.io/node-args"}}{{"\n"}}{{end}}'
+journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "use-service-account-credentials"
 ```
 
 Verify that the `--use-service-account-credentials` argument is set to true.
@@ -1287,7 +1287,7 @@ Profiling allows for the identification of specific performance bottlenecks. It 
 Run the below command on the master node.
 
 ```bash
-journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "profiling"
+journalctl -u k3s | grep "Running kube-scheduler" | tail -n1 | grep "profiling"
 ```
 
 Verify that the `--profiling` argument is set to false.
@@ -1310,7 +1310,7 @@ The Scheduler API service which runs on port 10251/TCP by default is used for he
 Run the below command on the master node.
 
 ```bash
-journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "bind-address"
+journalctl -u k3s | grep "Running kube-scheduler" | tail -n1 | grep "bind-address"
 ```
 
 Verify that the `--bind-address` argument is set to 127.0.0.1.

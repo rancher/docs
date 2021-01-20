@@ -82,6 +82,74 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
+Before the above PSP to be effective, we need to create a couple ClusterRoles, ClusterRole, and RoleBinding. These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory.
+
+```yaml
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: psp:privileged
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+rules:
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs:     ['use']
+    resourceNames:
+    - privileged
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: psp:restricted
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+rules:
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs:     ['use']
+    resourceNames:
+    - restricted
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: default:restricted
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp:restricted
+subjects:
+  - kind: Group
+    name: system:authenticated
+    apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default:privileged
+  namespace: kube-system
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp:privileged
+subjects:
+  - kind: Group
+    name: system:masters
+    apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: system:nodes
+    apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: system:serviceaccounts:kube-system
+    apiGroup: rbac.authorization.k8s.io
+```
+
 > **Note:** The Kubernetes critical additions such as CNI, DNS, and Ingress are ran as pods in the `kube-system` namespace. Therefore, this namespace will have a policy that is less restrictive so that these components can run properly.
 
 ### NetworkPolicies
@@ -99,10 +167,10 @@ metadata:
   name: intra-namespace
   namespace: kube-system
 spec:
-  podSelector:
+  podSelector: {}
   ingress:
     - from:
-      - NamespaceSelector:
+      - namespaceSelector:
           matchLabels:
             name: kube-system
 ```
@@ -352,6 +420,7 @@ The command below is an example of how the outlined remediations can be applied.
 ```bash
 k3s server \
     --protect-kernel-defaults=true \
+    --secrets-encryption=true \
     --kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit-log' \
     --kube-apiserver-arg='audit-log-maxage=30' \
     --kube-apiserver-arg='audit-log-maxbackup=10' \
@@ -359,7 +428,6 @@ k3s server \
     --kube-apiserver-arg='request-timeout=300s' \
     --kube-apiserver-arg='service-account-lookup=true' \
     --kube-apiserver-arg='enable-admission-plugins=NodeRestriction,PodSecurityPolicy,NamespaceLifecycle,ServiceAccount' \
-    --kube-apiserver-arg='encryption-provider-config=/var/lib/rancher/k3s/server/encryption_config' \
     --kube-controller-manager-arg='terminated-pod-gc-threshold=10' \
     --kube-controller-manager-arg='use-service-account-credentials=true' \
     --kubelet-arg='streaming-connection-idle-timeout=5m' \
