@@ -1507,7 +1507,7 @@ journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-polic
 Verify that the `--audit-policy-file` is set. Review the contents of the file specified and ensure that it contains avalid audit policy.
 
 **Remediation:**
-Create an audit policy file for your cluster.
+Create an audit policy file for your cluster and pass it to k3s. e.g. `--kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit-log'`
 
 
 #### 3.2.2
