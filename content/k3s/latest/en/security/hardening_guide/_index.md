@@ -163,6 +163,32 @@ spec:
           matchLabels:
             name: kube-system
 ---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: default
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: default
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: kube-public
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: kube-public
+---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
@@ -254,19 +280,6 @@ spec:
       - namespaceSelector:
           matchLabels:
             name: kube-system
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: default
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: default
 ```
 
 > **Note:** Operators must manage network policies as normal for additional namespaces that are created.
