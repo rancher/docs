@@ -82,7 +82,7 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
-Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. We also need to include "system unrestricted policy" which is needed for system level pods that require additional privileges.
+Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. We also need to include a "system unrestricted policy" which is needed for system level pods that require additional privileges.
 
 These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory. Below is an example of a `policy.yaml` file. 
 
@@ -162,32 +162,6 @@ spec:
       - namespaceSelector:
           matchLabels:
             name: kube-system
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: default
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: default
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: kube-public
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: kube-public
 ---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -280,6 +254,19 @@ spec:
       - namespaceSelector:
           matchLabels:
             name: kube-system
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: default
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: default
 ```
 
 > **Note:** Operators must manage network policies as normal for additional namespaces that are created.
