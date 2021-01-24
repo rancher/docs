@@ -86,6 +86,8 @@ By default enabling Audit Logging will create a sidecar container in the Rancher
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
+> In an air-gapped environment, supply the `--set busyboxImage` value during helm install or upgrades to reference the private registry location of the busybox container image, this image is used for the sidecar container.
+
 ### Setting Extra Environment Variables
 
 You can set extra environment variables for Rancher server using `extraEnv`. This list uses the same `name` and `value` keys as the container manifest definitions. Remember to quote the values.
