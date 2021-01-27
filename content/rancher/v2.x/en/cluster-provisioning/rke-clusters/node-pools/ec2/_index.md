@@ -128,7 +128,8 @@ After creating your cluster, you can access it through the Rancher UI. As a best
                 "ec2:CreateKeyPair",
                 "ec2:CreateSecurityGroup",
                 "ec2:CreateTags",
-                "ec2:DeleteKeyPair"
+                "ec2:DeleteKeyPair",
+                "ec2:ModifyInstanceMetadataOptions"
             ],
             "Resource": "*"
         },
@@ -180,7 +181,8 @@ After creating your cluster, you can access it through the Rancher UI. As a best
                 "ec2:CreateKeyPair",
                 "ec2:CreateSecurityGroup",
                 "ec2:CreateTags",
-                "ec2:DeleteKeyPair"
+                "ec2:DeleteKeyPair",
+                "ec2:ModifyInstanceMetadataOptions"
             ],
             "Resource": "*"
         },
