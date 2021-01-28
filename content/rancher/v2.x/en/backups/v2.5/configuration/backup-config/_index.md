@@ -139,8 +139,8 @@ data:
   secretKey: <Enter your secret key>
 ```
 
-Make sure to encode the keys in base64 in YAML file.
-Run the following command to encode the keys in base64.
+Make sure to encode the keys to base64 in YAML file.
+Run the following command to encode the keys.
 ```
 echo -n "your_key" |base64  
 ```
