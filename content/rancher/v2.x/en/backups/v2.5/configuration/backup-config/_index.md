@@ -139,6 +139,12 @@ data:
   secretKey: <Enter your secret key>
 ```
 
+Make sure to encode the keys in base64 in YAML file.
+Run the following command to encode the keys in base64.
+```
+echo -n "your_key" |base64  
+```
+
 ### IAM Permissions for EC2 Nodes to Access S3
 
 There are two ways to set up the `rancher-backup` operator to use S3 as the backup storage location.
