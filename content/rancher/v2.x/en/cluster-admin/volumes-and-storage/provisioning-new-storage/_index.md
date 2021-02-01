@@ -94,7 +94,7 @@ To attach the PVC to a new workload,
 
 1. Create a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
 1. For **Workload Type**, select **Stateful set of 1 pod**.
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
+1. Expand the **Volumes** section and click **Add Volume > Use an Existing Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Launch.**
@@ -105,7 +105,7 @@ To attach the PVC to an existing workload,
 
 1. Go to the project that has the workload that will have the PVC attached.
 1. Go to the workload that will have persistent storage and click **&#8942; > Edit.**
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
+1. Expand the **Volumes** section and click **Add Volume > Use an Existing Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Save.**
