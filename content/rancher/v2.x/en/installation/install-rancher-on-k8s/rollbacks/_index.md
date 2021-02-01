@@ -10,7 +10,7 @@ aliases:
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks
 ---
 
-To roll back to Rancher v2.5+, use the `rancher-backup` application and restore Rancher from backup according to [this section.]({{<baseurl>}}/rancher/v2.x/en/backups/restoring-rancher/)
+To roll back to Rancher v2.5.0+, use the `rancher-backup` application and restore Rancher from backup according to [this section.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/restoring-rancher/) Rancher has to be started with the lower/previous version after a rollback using the Rancher backup operator.
 
 To roll back to Rancher prior to v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/restorations/ha-restoration) Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 

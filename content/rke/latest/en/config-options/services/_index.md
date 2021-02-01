@@ -29,7 +29,7 @@ By default, RKE will deploy a new etcd service, but you can also run Kubernetes 
 
 ## Kubernetes API Server
 
-> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
+> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_api`. This only applies to Rancher v2.0.5 and v2.0.6.
 
 The [Kubernetes API](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) REST service, which handles requests and data for all Kubernetes objects and provide shared state for all the other Kubernetes components.
 
@@ -61,7 +61,7 @@ RKE supports the following options for the `kube-api` service :
 - **Secrets Encryption Config** (`secrets_encryption_config`) - Manage Kubernetes at-rest data encryption. Documented [here]({{<baseurl>}}//rke/latest/en/config-options/secrets-encryption)
 ## Kubernetes Controller Manager
 
-> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
+> **Note for Rancher 2 users** If you are configuring Cluster Options using a [Config File]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) when creating [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/), the names of services should contain underscores only: `kube_controller`. This only applies to Rancher v2.0.5 and v2.0.6.
 
 The [Kubernetes Controller Manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) service is the component responsible for running Kubernetes main control loops. The controller manager monitors the cluster desired state through the Kubernetes API server and makes the necessary changes to the current state to reach the desired state.
 

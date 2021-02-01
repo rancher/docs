@@ -24,7 +24,7 @@ If there is a [resource quota]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/proj
 
 1. Edit the Resource Quota **Limits**.  These limits determine the resources available to the namespace. The limits must be set within the configured project limits.
 
-    For more information about each **Resource Type**, see [Resource Quota Types]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/#resource-quota-types).
+    For more information about each **Resource Type**, see [Resource Quotas]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/).
 
     >**Note:**
     >

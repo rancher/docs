@@ -80,7 +80,7 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 ## Recovering etcd without a Snapshot
 
-If the group of etcd nodes loses quorum, the Kubernetes cluster will report a failure because no operations, e.g. deploying workloads, can be executed in the Kubernetes cluster. Please review the best practices for the what the [number of etcd nodes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/production/#count-of-etcd-nodes) should be in a Kubernetes cluster. If you want to recover your set of etcd nodes, follow these instructions:
+If the group of etcd nodes loses quorum, the Kubernetes cluster will report a failure because no operations, e.g. deploying workloads, can be executed in the Kubernetes cluster. The cluster should have three etcd nodes to prevent a loss of quorum. If you want to recover your set of etcd nodes, follow these instructions:
 
 1. Keep only one etcd node in the cluster by removing all other etcd nodes.
 

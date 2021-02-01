@@ -8,7 +8,7 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install - Installation Outline]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/#installation-outline).
+>Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ]({{<baseurl>}}/rancher/v2.x/en/installation/options/helm2/).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
 
@@ -16,7 +16,7 @@ Below are steps that you can follow to determine what is wrong in your cluster.
 
 ### Double check if all the required ports are opened in your (host) firewall
 
-Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) are opened in your (host) firewall.
+Double check if all the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements) are opened in your (host) firewall.
 
 ### All nodes should be present and in **Ready** state
 
@@ -144,7 +144,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
     => End
     ```
 
-If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements/) for overlay networking are not opened between the hosts indicated.
+If you see error in the output, that means that the [required ports]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#networking-requirements) for overlay networking are not opened between the hosts indicated.
 
 Example error output of a situation where NODE1 had the UDP ports blocked.
 

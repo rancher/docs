@@ -86,7 +86,7 @@ Another option is to manually uninstall istio resources one at a time, but leave
 
 # Accessing Visualizations
 
-> By default, only cluster-admins have access to Kiali. For instructions on how to allow admin, edit or views roles to access them, refer to [Access to Visualizations.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/rbac/#access-to-visualizations)
+> By default, only cluster-admins have access to Kiali. For instructions on how to allow admin, edit or views roles to access them, see [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/rbac/)
 
 After Istio is set up in a cluster, Grafana, Prometheus,and Kiali are available in the Rancher UI. 
 
@@ -94,7 +94,7 @@ To access the Grafana and Prometheus visualizations, from the **Cluster Explorer
 
 To access the Kiali visualization, from the **Cluster Explorer** navigate to the **Istio** app overview page, and click on **Kiali**. From here you can access the **Traffic Graph** tab or the **Traffic Metrics** tab to see network visualizations and metrics. 
 
-By default, all namespace will picked up by prometheus and make data available for Kiali graphs. Refer to [selector/scrape config setup]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#selectors-scrape-configs) if you would like to use a different configuration for prometheus data scraping. 
+By default, all namespace will picked up by prometheus and make data available for Kiali graphs. Refer to [selector/scrape config setup](./configuration-reference/selectors-and-scrape) if you would like to use a different configuration for prometheus data scraping. 
 
 Your access to the visualizations depend on your role. Grafana and Prometheus are only available for `cluster-admin` roles. The Kiali UI is available only to `cluster-admin` by default, but `cluster-admin` can allow other roles to access them by editing the Istio values.yaml.
 
@@ -122,4 +122,4 @@ By default the Egress gateway is disabled, but can be enabled on install or upgr
 
 # Additional Steps for Installing Istio on an RKE2 Cluster
 
-To install Istio on an RKE2 cluster, follow the steps in [this section.](./setup/enable-istio-in-cluster/rke2)
+To install Istio on an RKE2 cluster, follow the steps in [this section.]({{<baseurl>}}/rancher/v2.x/en/istio/v2.5/configuration-reference/rke2/)

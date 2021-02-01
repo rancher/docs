@@ -31,7 +31,7 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
-5. Configure **Account Access** for the TKE cluster. Complete each drop-down and field using the information obtained in [Prerequisites](#prerequisites).
+5. Configure **Account Access** for the TKE cluster. Complete each drop-down and field using the information obtained in [Prerequisites](#prerequisites-in-tencent).
 
     | Option    | Description                                                                                                          |
     | ---------- | -------------------------------------------------------------------------------------------------------------------- |

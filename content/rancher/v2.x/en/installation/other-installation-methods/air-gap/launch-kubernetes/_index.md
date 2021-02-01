@@ -67,7 +67,12 @@ For more information on private registries configuration file for K3s, refer to 
 
 ### 3. Install K3s
 
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+
+To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+
 Obtain the K3s binary from the [releases](https://github.com/rancher/k3s/releases) page, matching the same version used to get the airgap images tar.
+
 Also obtain the K3s install script at https://get.k3s.io
 
 Place the binary in `/usr/local/bin` on each node.

@@ -24,7 +24,7 @@ A number of things can cause the ingress-controller not to forward traffic to yo
 
 Things to check
 
-- [Is Rancher Running](#is-rancher-running)
+- [Is Rancher Running](#check-if-rancher-is-running)
 - [Cert CN is "Kubernetes Ingress Controller Fake Certificate"](#cert-cn-is-kubernetes-ingress-controller-fake-certificate)
 
 ### Check if Rancher is Running

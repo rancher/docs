@@ -5,7 +5,7 @@ weight: 4
 
 In clusters where:
 
-- The [Canal network plug-in]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#canal) is in use.
+- The Canal network plug-in is in use.
 - The Project Network Isolation option is enabled.
 - You install the Istio Ingress module
 

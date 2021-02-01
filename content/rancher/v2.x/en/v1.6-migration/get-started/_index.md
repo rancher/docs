@@ -82,13 +82,13 @@ When you create a cluster, two projects are automatically created:
 - The `System` project, which includes system namespaces where important Kubernetes resources are running (like ingress controllers and cluster dns services)
 - The `Default` project.
 
-However, for production environments, we recommend [creating your own project]({{<baseurl>}}/rancher/v2.x/en/project-admin/namespaces/#creating-projects) and giving it a descriptive name.
+However, for production environments, we recommend [creating your own project]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/projects-and-namespaces/#creating-projects) and giving it a descriptive name.
 
 After provisioning a new cluster and project, you can authorize your users to access and use project resources. Similarly to Rancher v1.6 environments, Rancher v2.x allows you to [assign users to projects]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/editing-projects/). By assigning users to projects, you can limit what applications and resources a user can access.
 
 ## D. Create Stacks
 
-In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#creating-namespaces), which are the v2.x equivalent of stacks, for the same purpose.
+In Rancher v1.6, _stacks_ were used to group together the services that belong to your application. In v2.x, you need to [create namespaces]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/), which are the v2.x equivalent of stacks, for the same purpose.
 
 In Rancher v2.x, namespaces are child objects to projects. When you create a project, a `default` namespace is added to the project, but you can create your own to parallel your stacks from v1.6.
 
