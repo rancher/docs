@@ -3,11 +3,11 @@ title: Configuration for Storage Classes in Azure
 weight: 3
 ---
 
-If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a [storage class]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/#adding-storage-classes) for the cluster.
+If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a StorageClass for the cluster.
 
 In order to have the Azure platform create the required storage resources, follow these steps:
 
-1.  [Configure the Azure cloud provider.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/cloud-providers/#azure)
+1.  [Configure the Azure cloud provider.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/azure)
 1.  Configure `kubectl` to connect to your cluster.
 1.  Copy the `ClusterRole` and `ClusterRoleBinding` manifest for the service account:
 

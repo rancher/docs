@@ -26,7 +26,7 @@ After creating a multi-cluster application, you can program a [Global DNS entry]
   - [Members](#members)
   - [Overriding application configuration options for specific projects](#overriding-application-configuration-options-for-specific-projects)
 - [Upgrading multi-cluster app roles and projects](#upgrading-multi-cluster-app-roles-and-projects)
-- [Multi-cluster application management](#multi-cluster-application-managements)
+- [Multi-cluster application management](#multi-cluster-application-management)
 - [Deleting a multi-cluster application](#deleting-a-multi-cluster-application)
 
 # Prerequisites

@@ -9,7 +9,7 @@ If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to
 
 ### Monitoring Prior to Rancher v2.5
 
-As of v2.2.0, Rancher's Cluster Manager allowed users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. For more information on how to configure Monitoring & Alerting V1, see the [docs about monitoring prior to Rancher v2.5](/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x).
+As of v2.2.0, Rancher's Cluster Manager allowed users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. For more information on how to configure Monitoring & Alerting V1, see the [docs about monitoring prior to Rancher v2.5]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x).
 
 When Monitoring is enabled, Monitoring V1 deploys [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/docs/grafana/latest/getting-started/what-is-grafana/) onto a cluster to monitor the state of processes of your cluster nodes, Kubernetes components, and software deployments and create custom dashboards to make it easy to visualize collected metrics.
 

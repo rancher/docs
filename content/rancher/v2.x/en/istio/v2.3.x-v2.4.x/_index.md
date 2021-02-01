@@ -53,7 +53,7 @@ To remove Istio components from a cluster, namespace, or workload, refer to the 
 
 # Accessing Visualizations
 
-> By default, only cluster owners have access to Jaeger and Kiali. For instructions on how to allow project members to access them, refer to [Access to Visualizations.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/rbac/#access-to-visualizations)
+> By default, only cluster owners have access to Jaeger and Kiali. For instructions on how to allow project members to access them, see [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/istio/rbac/)
 
 After Istio is set up in a cluster, Grafana, Prometheus, Jaeger, and Kiali are available in the Rancher UI.
 

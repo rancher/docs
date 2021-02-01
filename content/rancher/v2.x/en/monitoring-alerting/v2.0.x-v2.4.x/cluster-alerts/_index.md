@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/legacy/alerts/cluster-alerts
 ---
 
-> In Rancher 2.5, the monitoring application was improved. There are now two ways to enable monitoring and alerting. The older way is documented in this section, and the new application for monitoring and alerting is documented [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting)
+> In Rancher 2.5, the monitoring application was improved. There are now two ways to enable monitoring and alerting. The older way is documented in this section, and the new application for monitoring and alerting is documented [here.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.5/)
 
 To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.
 

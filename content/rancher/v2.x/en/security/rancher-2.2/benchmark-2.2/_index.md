@@ -14,7 +14,7 @@ Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kube
 Self Assessment Guide v2.2 | Rancher v2.2.x | Hardening Guide v2.2 | Kubernetes 1.13 | Benchmark v1.4.0 and v1.4.1
 
 ### CIS Kubernetes Benchmark 1.4.0 - Rancher 2.2.x with Kubernetes 1.13
-There is no material difference in control verification checks between CIS Kubernetes Benchmark 1.4.0 and [1.4.1](https://rancher.com/docs/rancher/v2.x/en/security/benchmark-2.2/#cis-kubernetes-benchmark-1-4-1-rancher-2-2-x-with-kubernetes-1-13)
+There is no material difference in control verification checks between CIS Kubernetes Benchmark 1.4.0 and 1.4.1.
 
 ### CIS Kubernetes Benchmark 1.4.1 - Rancher 2.2.x with Kubernetes 1.13
 

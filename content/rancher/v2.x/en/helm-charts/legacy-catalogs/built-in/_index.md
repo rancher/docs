@@ -19,7 +19,7 @@ Within Rancher, there are default catalogs packaged as part of Rancher. These ca
 
 2. Toggle the default catalogs that you want to be enabled or disabled:
 
-    - **Library:**	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/catalog/creating-apps/#rancher-charts) over native Helm charts.
+    - **Library:**	The Library Catalog includes charts curated by Rancher. Rancher stores charts in a Git repository to expedite the fetch and update of charts. This catalog features Rancher Charts, which include some [notable advantages]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/creating-apps/#rancher-charts) over native Helm charts.
     - **Helm Stable:** This catalog, which is maintained by the Kubernetes community, includes native [Helm charts](https://helm.sh/docs/chart_template_guide/). This catalog features the largest pool of apps.
     - **Helm Incubator:** Similar in user experience to Helm Stable, but this catalog is filled with applications in **beta**.
 

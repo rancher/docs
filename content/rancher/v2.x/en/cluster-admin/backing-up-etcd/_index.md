@@ -143,10 +143,10 @@ In the **Advanced Cluster Options** section, there are several options available
 
 | Option | Description | Default Value|
 | --- | ---| --- |
-|[etcd Snapshot Backup Target](#snapshot-backup-targets)| Select where you want the snapshots to be saved. Options are either local or in S3 | local|
+| etcd Snapshot Backup Target | Select where you want the snapshots to be saved. Options are either local or in S3 | local|
 |Recurring etcd Snapshot Enabled| Enable/Disable recurring snapshots | Yes|
-|[Recurring etcd Snapshot Creation Period](#snapshot-creation-period-and-retention-count) | Time in hours between recurring snapshots| 12 hours |
-|[Recurring etcd Snapshot Retention Count](#snapshot-creation-period-and-retention-count)| Number of snapshots to retain| 6 |
+| Recurring etcd Snapshot Creation Period | Time in hours between recurring snapshots| 12 hours |
+| Recurring etcd Snapshot Retention Count | Number of snapshots to retain| 6 |
 
 # One-Time Snapshots
 

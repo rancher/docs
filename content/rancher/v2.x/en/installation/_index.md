@@ -67,7 +67,7 @@ There are also separate instructions for installing Rancher in an air gap enviro
 | Level of Internet Access           | Kubernetes Installation - Strongly Recommended                | Docker Installation                             |
 | ---------------------------------- | ------------------------------ | ---------- |
 | With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
-| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
+| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
 
 We recommend installing Rancher on a Kubernetes cluster, because in a multi-node cluster, the Rancher management server becomes highly available. This high-availability configuration helps maintain consistent access to the downstream Kubernetes clusters that Rancher will manage.
@@ -101,9 +101,9 @@ For more architecture recommendations, refer to [this page.]({{<baseurl>}}/ranch
 
 Refer to the [Helm chart options]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
 
-- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#api-audit-log)
-- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#external-tls-termination)
-- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/resources/chart-options/#customizing-your-ingress)
+- With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#api-audit-log)
+- With [TLS termination on a load balancer]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination)
+- With a [custom Ingress]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#customizing-your-ingress)
 
 In the Rancher installation instructions, we recommend using K3s or RKE to set up a Kubernetes cluster before installing Rancher on the cluster. Both K3s and RKE have many configuration options for customizing the Kubernetes cluster to suit your specific environment. For the full list of their capabilities, refer to their documentation:
 

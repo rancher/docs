@@ -18,7 +18,7 @@ Registering EKS clusters now provides additional benefits.
   - [Additional Features for Registered K3s Clusters](#additional-features-for-registered-k3s-clusters)
   - [Additional Features for Registered EKS Clusters](#additional-features-for-registered-eks-clusters)
 - [Configuring K3s Cluster Upgrades](#configuring-k3s-cluster-upgrades)
-- [Debug Logging and Troubleshooting for Registered K3s Clusters](#debug-logging-and-troubleshooting=for-registered-k3s-clusters)
+- [Debug Logging and Troubleshooting for Registered K3s Clusters](#debug-logging-and-troubleshooting-for-registered-k3s-clusters)
 - [Annotating Registered Clusters](#annotating-registered-clusters)
 
 # Prerequisites

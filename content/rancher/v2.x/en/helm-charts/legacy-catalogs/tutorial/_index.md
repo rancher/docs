@@ -41,7 +41,7 @@ You can fill your custom catalogs with either Helm Charts or Rancher Charts, alt
     The example below creates a form that prompts users for persistent volume size and a storage class.
     <br/>
     <br/>
-    For a list of variables you can use when creating a `questions.yml` file, see [Question Variable Reference]({{<baseurl>}}/rancher/v2.x/en/catalog/creating-apps/#question-variable-reference).
+    For a list of variables you can use when creating a `questions.yml` file, see [Question Variable Reference]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/creating-apps/#question-variable-reference).
 
     ```yaml
         categories:

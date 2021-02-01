@@ -36,7 +36,7 @@ Choose an availability zone and network settings for your cluster.
 
 Choose the default security group or configure a security group.
 
-Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#security-group-for-nodes-on-aws-ec2) to see what rules are created in the `rancher-nodes` Security Group.
+Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#rancher-aws-ec2-security-group) to see what rules are created in the `rancher-nodes` Security Group.
 
 ### Instance Options
 
@@ -73,7 +73,7 @@ See our three example JSON policies:
 
 ### Security Groups
 	
-**Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/node-requirements/#security-group-for-nodes-on-aws-ec2) to see what rules are created in the `rancher-nodes` Security Group.
+**Security Groups** creates or configures the Security Groups applied to your nodes. Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/ports/#rancher-aws-ec2-security-group) to see what rules are created in the `rancher-nodes` Security Group.
 
 ### Instance
 
