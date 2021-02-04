@@ -44,7 +44,7 @@ To use a storage provisioner that is not on the above list, you will need to use
 
 These steps describe how to set up a storage class at the cluster level.
 
-1. Go to the cluster for which you want to dynamically provision persistent storage volumes.
+1. Go to the **Cluster Explorer** of the cluster for which you want to dynamically provision persistent storage volumes.
 
 1. From the cluster view, select `Storage > Storage Classes`. Click `Add Class`.
 
@@ -64,7 +64,7 @@ For full information about the storage class parameters, refer to the official [
 
 These steps describe how to set up a PVC in the namespace where your stateful workload will be deployed.
 
-1. Go to the project containing a workload that you want to add a PVC to.
+1. Go to the **Cluster Manager** to the project containing a workload that you want to add a PVC to.
 
 1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Then select the **Volumes** tab. Click **Add Volume**.
 
