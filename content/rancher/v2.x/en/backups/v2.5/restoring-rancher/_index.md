@@ -13,9 +13,7 @@ A restore is performed by creating a Restore custom resource.
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.](../migrating-rancher)  
 > * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
 
-First, create the Restore custom resource. Then restart Rancher using the previous Rancher version.
-
-### 1. Create the Restore Custom Resource
+### Create the Restore Custom Resource
 
 1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
 1. Click **Restore.**
@@ -44,7 +42,7 @@ First, create the Restore custom resource. Then restart Rancher using the previo
 
 1. Click **Create.**
 
-The rancher-operator scales down the rancher deployment during restore, and scales it back up once the restore completes. The resources are restored in this order:
+**Result:** The rancher-operator scales down the rancher deployment during restore, and scales it back up once the restore completes. The resources are restored in this order:
 
 1. Custom Resource Definitions (CRDs)
 2. Cluster-scoped resources
@@ -55,33 +53,4 @@ To check how the restore is progressing, you can check the logs of the operator.
 ```yaml
 kubectl get pods -n cattle-resources-system
 kubectl logs <pod name from above command> -n cattle-resources-system -f
-```
-
-2. Restart Rancher
-
-Rancher has to be started with the lower/previous version after a rollback using the Rancher backup operator. It should be started with the same Helm chart values as the previous install.
-
-Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed:
-
-```
-helm get values rancher -n cattle-system
-
-hostname: rancher.my.org
-```
-
-> **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
-
-Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
-
-```
-helm get values rancher -n cattle-system -o yaml > values.yaml
-```
-
-Then upgrade the Helm chart to the previous Rancher version, using the previous values. In this example, the values are taken from the file:
-
-```
-helm upgrade rancher rancher-<CHART_REPO>/rancher \
-  --namespace cattle-system \
-  -f values.yaml \
-  --version=X.Y.Z
 ```
