@@ -16,7 +16,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [RKE and Hosted Kubernetes](#rke-and-hosted-kubernetes)
   - [K3s Kubernetes](#k3s-kubernetes)
   - [RancherD](#rancherd)
-  - [Rancher prior to v2.4.0](#rancher-prior-to-v2-4-0)
+  - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
 - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -133,7 +133,7 @@ These CPU and memory requirements apply to a host with a [single-node]({{<baseur
 | Small           | Up to 5  | Up to 50  | 1     | 4 GB |
 | Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
 
-### Rancher prior to v2.4.0
+### CPU and Memory for Rancher prior to v2.4.0
 
 {{% accordion label="Click to expand" %}}
 These CPU and memory requirements apply to installing Rancher on an RKE Kubernetes cluster prior to Rancher v2.4.0:
