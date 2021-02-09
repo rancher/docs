@@ -12,8 +12,12 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
 
 - [Operating Systems and Container Runtime Requirements](#operating-systems-and-container-runtime-requirements)
 - [Hardware Requirements](#hardware-requirements)
-  - [CPU and Memory](#cpu-and-memory)
-  - [Disks](#disks)
+- [CPU and Memory](#cpu-and-memory)
+  - [RKE and Hosted Kubernetes](#rke-and-hosted-kubernetes)
+  - [K3s Kubernetes](#k3s-kubernetes)
+  - [RancherD](#rancherd)
+  - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
+- [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
   - [Port Requirements](#port-requirements)
@@ -28,7 +32,9 @@ Rancher should work with any modern Linux distribution.
 
 Docker is required for nodes that will run K3s or RKE Kubernetes clusters. It is not required for RancherD installs.
 
-For details on which OS, Docker, and Kubernetes versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
@@ -69,16 +75,17 @@ Docker is required for Helm chart installs, and it can be installed by following
 Docker is not required for RancherD installs.
 # Hardware Requirements
 
-This section describes the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
+The following sections describe the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
 
-### CPU and Memory
+# CPU and Memory
 
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
-{{% tabs %}}
-{{% tab "RKE" %}}
+### RKE and Hosted Kubernetes
 
-These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/)
+These CPU and memory requirements apply to each host in the Kubernetes cluster where the Rancher server is installed.
+
+These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubernetes clusters such as EKS.
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM     |
 | --------------- | ---------- | ------------ | -------| ------- |
@@ -89,11 +96,10 @@ These requirements apply to each host in an [RKE Kubernetes cluster where the Ra
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
-{{% /tab %}}
 
-{{% tab "K3s" %}}
+### K3s Kubernetes
 
-These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/)
+These CPU and memory requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size             |
 | --------------- | ---------- | ------------ | -------| ---------| ------------------------- |
@@ -105,34 +111,27 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 
 [Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
 
-{{% /tab %}}
-
-{{% tab "RancherD" %}}
+### RancherD
 
 _RancherD is available as of v2.5.4. It is an experimental feature._
 
-The following requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
+These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
 | Small           | Up to 5  | Up to 50  | 2     | 5 GB |
 | Medium          | Up to 15 | Up to 200 | 3     | 9 GB |
 
-{{% /tab %}}
+### Docker
 
-{{% tab "Docker" %}}
-
-These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
+These CPU and memory requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
 | Small           | Up to 5  | Up to 50  | 1     | 4 GB |
 | Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
 
-{{% /tab %}}
-{{% /tabs %}}
-
-### Disks
+# Disks
 
 Rancher performance depends on etcd in the cluster performance. To ensure optimal speed, we recommend always using SSD disks to back your Rancher management Kubernetes cluster. On cloud providers, you will also want to use the minimum size that allows the maximum IOPS. In larger clusters, consider using dedicated storage devices for etcd data and wal directories.
 
