@@ -11,10 +11,9 @@ This page describes the software, hardware, and networking requirements for the 
 Make sure the node(s) for the Rancher server fulfill the following requirements:
 
 - [Operating Systems and Container Runtime Requirements](#operating-systems-and-container-runtime-requirements)
-- [Hardware Requirements](#hardware-requirements)
-  - [CPU and Memory](#cpu-and-memory)
+- [CPU and Memory Requirements](#cpu-and-memory-requirements)
   - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
-  - [Disks](#disks)
+- [Disk Requirements](#disk-requirements)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
   - [Port Requirements](#port-requirements)
@@ -70,16 +69,13 @@ Docker is not required for RancherD installs.
 Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.x/en/installation/requirements/installing-docker) to install Docker with one command.
 
 Docker is not required for RancherD installs.
-# Hardware Requirements
 
-This section describes the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
-
-### CPU and Memory
+# CPU and Memory
 
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
 {{% tabs %}}
-{{% tab "RKE" %}}
+{{% tab "Hosted K8s and RKE" %}}
 
 These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/)
 

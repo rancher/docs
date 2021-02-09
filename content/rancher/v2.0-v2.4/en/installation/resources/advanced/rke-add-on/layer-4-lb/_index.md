@@ -181,7 +181,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 1. Update the `nodes` section with the information of your [Linux hosts](#1-provision-linux-hosts).
 
-    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docket socket, you can test this by logging in with the specified user and run `docker ps`.
+    For each node in your cluster, update the following placeholders: `IP_ADDRESS_X` and `USER`. The specified user should be able to access the Docker socket, you can test this by logging in with the specified user and run `docker ps`.
 
     >**Note:**
     > When using RHEL/CentOS, the SSH user can't be root due to https://bugzilla.redhat.com/show_bug.cgi?id=1527565. See [Operating System Requirements]({{<baseurl>}}/rke/latest/en/installation/os#redhat-enterprise-linux-rhel-centos) >for RHEL/CentOS specific requirements.
