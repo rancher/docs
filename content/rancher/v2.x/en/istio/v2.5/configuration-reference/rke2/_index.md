@@ -17,7 +17,7 @@ Through the **Cluster Explorer,** when installing or upgrading Istio through **A
         cni:
             enabled: true
         values:
-        cni:
+          cni:
             image: rancher/istio-install-cni:1.7.3
             excludeNamespaces:
             - istio-system
