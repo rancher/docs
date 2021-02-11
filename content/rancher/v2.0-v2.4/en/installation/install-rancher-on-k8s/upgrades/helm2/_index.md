@@ -118,8 +118,9 @@ If you are currently running the cert-manger whose version is older than v0.11, 
 1. Uninstall Rancher
 
     ```
-    helm delete rancher -n cattle-system
+    helm delete rancher
     ```
+    In case this results in an error that the release "rancher" was not found, make sure you are using the correct deployment name. Use `helm list` to list the helm-deployed releases.
 
 2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/upgrading-cert-manager/helm-2-instructions) page.
 
