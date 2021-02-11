@@ -36,6 +36,10 @@ Traefik can be configured by editing the `traefik.yaml` file. To prevent k3s fro
 
 To disable it, start each server with the `--disable traefik` option.
 
+If Traefik is not disabled K3s versions 1.20 and earlier will install Traefik v1, while K3s versions 1.21 and later will install Traefik v2 if v1 is not already present.
+
+To migrate from an older Traefik v1 instance please refer to the [Traefik documentation](https://doc.traefik.io/traefik/migration/v1-to-v2/) and [migration tool](https://github.com/traefik/traefik-migration-tool).
+
 # Service Load Balancer
 
 Any service load balancer (LB) can be leveraged in your Kubernetes cluster. K3s provides a load balancer known as [Klipper Load Balancer](https://github.com/rancher/klipper-lb) that uses available host ports.
