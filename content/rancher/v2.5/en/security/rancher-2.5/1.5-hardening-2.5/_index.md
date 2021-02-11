@@ -13,7 +13,7 @@ This hardening guide is intended to be used for RKE clusters and associated with
 ----------------|-----------------------|------------------
  Rancher v2.5 | Benchmark v1.5 | Kubernetes 1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.5.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.6.pdf)
 
 ### Overview
 
