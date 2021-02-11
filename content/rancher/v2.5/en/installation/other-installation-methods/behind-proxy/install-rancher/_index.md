@@ -65,6 +65,7 @@ helm upgrade --install rancher rancher-latest/rancher \
    --namespace cattle-system \
    --set hostname=rancher.example.com \
    --set proxy=http://${proxy_host}
+   --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
 ```
 
 After waiting for the deployment to finish:
