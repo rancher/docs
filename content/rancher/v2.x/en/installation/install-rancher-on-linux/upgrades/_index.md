@@ -3,6 +3,8 @@ title: Upgrades
 weight: 2
 ---
 
+> RancherD is an experimental feature.
+
 When RancherD is upgraded, the Rancher Helm controller and the Fleet pods are upgraded.
 
 During a RancherD upgrade, there is very little downtime, but it is possible that RKE2 may be down for a minute, during which you could lose access to Rancher.

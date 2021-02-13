@@ -3,6 +3,8 @@ title: RancherD Configuration Reference
 weight: 1
 ---
 
+> RancherD is an experimental feature.
+
 In RancherD, a server node is defined as a machine (bare-metal or virtual) running the `rancherd server` command. The server runs the Kubernetes API as well as Kubernetes workloads.
 
 An agent node is defined as a machine running the `rancherd agent` command. They don't run the Kubernetes API. To add nodes designated to run your apps and services, join agent nodes to your cluster.
