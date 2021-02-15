@@ -116,7 +116,7 @@ chmod 700 /var/lib/etcd
 
 **Audit Script:** 1.1.11.sh
 
-```
+```bash
 #!/bin/bash -e
 
 etcd_bin=${1}
@@ -158,7 +158,7 @@ chown etcd:etcd /var/lib/etcd
 
 **Audit Script:** 1.1.12.sh
 
-```
+```bash
 #!/bin/bash -e
 
 etcd_bin=${1}
@@ -352,7 +352,7 @@ chmod -R 600 /etc/kubernetes/ssl/certs/serverca
 
 **Audit Script:** 1.1.21.sh
 
-```
+```bash
 #!/bin/bash -e
 check_dir=${1:-/etc/kubernetes/ssl}
 
@@ -1089,7 +1089,7 @@ In this file, choose **aescbc**, **kms** or **secretbox** as the encryption prov
 
 **Audit Script:** 1.2.34.sh
 
-```
+```bash
 #!/bin/bash -e
 
 check_file=${1}
@@ -1493,7 +1493,7 @@ Create an audit policy file for your cluster.
 
 **Audit Script:** 3.2.1.sh
 
-```
+```bash
 #!/bin/bash -e
 
 api_server_bin=${1}
@@ -2058,7 +2058,7 @@ automountServiceAccountToken: false
 
 **Audit Script:** 5.1.5.sh
 
-```
+```bash
 #!/bin/bash
 
 export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}
@@ -2192,7 +2192,7 @@ Follow the documentation and create `NetworkPolicy` objects as you need them.
 
 **Audit Script:** 5.3.2.sh
 
-```
+```bash
 #!/bin/bash -e
 
 export KUBECONFIG=${KUBECONFIG:-"/root/.kube/config"}
@@ -2203,7 +2203,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces --no-headers --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'); do
   policy_count=$(kubectl get networkpolicy -n ${namespace} -o json | jq '.items | length')
   if [ ${policy_count} -eq 0 ]; then
     echo "fail: ${namespace}"
@@ -2238,7 +2238,7 @@ resources and that all new resources are created in a specific namespace.
 
 **Audit Script:** 5.6.4.sh
 
-```
+```bash
 #!/bin/bash -e
 
 export KUBECONFIG=${KUBECONFIG:-/root/.kube/config}

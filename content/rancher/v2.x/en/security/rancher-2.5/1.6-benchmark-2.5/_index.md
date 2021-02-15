@@ -3132,7 +3132,7 @@ handle_error() {
 
 trap 'handle_error' ERR
 
-for namespace in $(kubectl get namespaces --all-namespaces -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces --no-headers --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'); do
   policy_count=$(kubectl get networkpolicy -n ${namespace} -o json | jq '.items | length')
   if [[ ${policy_count} -eq 0 ]]; then
     echo "false"
