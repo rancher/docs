@@ -60,3 +60,44 @@ These options can be passed in with the command line, or in the [configuration f
 | `--etcd-snapshot-dir` value  | Directory to save db snapshots. (Default location: `${data-dir}/db/snapshots`) |
 | `--cluster-reset`  | Forget all peers and become sole member of a new cluster. This can also be set with the environment variable `[$K3S_CLUSTER_RESET]`.
 | `--cluster-reset-restore-path` value | Path to snapshot file to be restored
+
+### S3 Compatible API Support
+
+K3s supports creating and restoring Etcd Snapshots with S3 compatible APIs. For S3 support, a few more flags have been added.
+
+If the appropriate S3 arguments are supplied to `k3s server`, automated snapshots will be stored in S3.
+
+| Options | Description |
+| ----------- | --------------- |
+| `--etcd-s3` | Enable backup to S3 |
+| `--etcd-s3-endpoint` | S3 endpoint url |
+| `--etcd-s3-endpoint-ca` | S3 custom CA cert to connect to S3 endpoint |
+| `--etcd-s3-skip-ssl-verify` | Disables S3 SSL certificate validation |
+| `--etcd-s3-access-key` |  S3 access key |
+| `--etcd-s3-secret-key` | S3 secret key" |
+| `--etcd-s3-bucket` | S3 bucket name |
+| `--etcd-s3-region` | S3 region / bucket location (optional) |
+| `--etcd-s3-folder` | S3 folder |
+
+To perform an Etcd snapshot and save it to S3:
+
+```
+k3s etcd-snapshot \
+  --s3 \
+  --s3-bucket=<S3-BUCKET-NAME> \
+  --s3-access-key=<S3-ACCESS-KEY> \
+  --s3-secret-key=<S3-SECRET-KEY>
+```
+
+To perform an Etcd snapshot restore from S3:
+
+```
+k3s server \
+  --cluster-init \
+  --cluster-reset \
+  --etcd-s3 \
+  --cluster-reset-restore-path=<SNAPSHOT-NAME> \
+  --etcd-s3-bucket=<S3-BUCKET-NAME> \
+  --etcd-s3-access-key=<S3-ACCESS-KEY> \
+  --etcd-s3-secret-key=<S3-SECRET-KEY>
+```
