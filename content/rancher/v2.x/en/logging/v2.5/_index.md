@@ -278,6 +278,8 @@ Let's break down what is happening here. First, we create a deployment of a cont
 
 # Working with a Custom Docker Root Directory
 
+_Applies to v2.5.6+_
+
 If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
 This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
 
