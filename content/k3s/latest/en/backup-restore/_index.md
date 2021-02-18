@@ -67,6 +67,8 @@ K3s supports creating and restoring Etcd Snapshots with S3 compatible APIs. For 
 
 If the appropriate S3 arguments are supplied to `k3s server`, automated snapshots will be stored in S3.
 
+The arguments below have been added to the `server` subcommand. These flags exist for the `etcd-snapshot` subcommand as well however the `--etcd-s3` portion is removed to avoid redundancy.
+
 | Options | Description |
 | ----------- | --------------- |
 | `--etcd-s3` | Enable backup to S3 |
@@ -76,7 +78,7 @@ If the appropriate S3 arguments are supplied to `k3s server`, automated snapshot
 | `--etcd-s3-access-key` |  S3 access key |
 | `--etcd-s3-secret-key` | S3 secret key" |
 | `--etcd-s3-bucket` | S3 bucket name |
-| `--etcd-s3-region` | S3 region / bucket location (optional) |
+| `--etcd-s3-region` | S3 region / bucket location (optional). defaults to us-east-1 |
 | `--etcd-s3-folder` | S3 folder |
 
 To perform an Etcd snapshot and save it to S3:
