@@ -46,7 +46,7 @@ This file is created in the same directory that has the cluster configuration fi
 
 It is required to keep the `cluster.rkestate` file to perform any operation on the cluster through RKE, or when upgrading a cluster last managed via RKE v0.2.0 or later.
 {{% /tab %}}
-{{% tab "RKE prior to v0.2.0" %}}
+{{% tab "RKE before v0.2.0" %}}
 Ensure that the `kube_config_cluster.yml` file is present in the working directory.
 
 RKE saves the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates or changes the state, and saves a new secret. The `kube_config_cluster.yml` file is required for upgrading a cluster last managed via RKE v0.1.x.
@@ -103,7 +103,7 @@ In addition, if neither `kubernetes_version` nor `system_images` are configured 
 
 As of v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions, then RKE will error out.
 
-Prior to v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
+Before v0.2.0, if a version is defined in `kubernetes_version` and is not found in the specific list of supported Kubernetes versions,  the default version from the supported list is used.
 
 If you want to use a different version from the supported list, please use the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) option.
 
@@ -113,7 +113,7 @@ In RKE, `kubernetes_version` is used to map the version of Kubernetes to the def
 
 For RKE v0.3.0+, the service defaults are located [here](https://github.com/rancher/kontainer-driver-metadata/blob/master/rke/k8s_service_options.go).
 
-For RKE prior to v0.3.0, the service defaults are located [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go). Note: The version in the path of the service defaults file corresponds to a Rancher version. Therefore, for Rancher v2.1.x, [this file](https://github.com/rancher/types/blob/release/v2.1/apis/management.cattle.io/v3/k8s_defaults.go) should be used.
+For RKE before v0.3.0, the service defaults are located [here](https://github.com/rancher/types/blob/release/v2.2/apis/management.cattle.io/v3/k8s_defaults.go). Note: The version in the path of the service defaults file corresponds to a Rancher version. Therefore, for Rancher v2.1.x, [this file](https://github.com/rancher/types/blob/release/v2.1/apis/management.cattle.io/v3/k8s_defaults.go) should be used.
 
 ### Service Upgrades
 

@@ -80,7 +80,7 @@ Rancher can be rolled back using the Rancher UI.
 
 # Rolling Back to Rancher v2.2-v2.4+
 
-To roll back to Rancher prior to v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/) Restoring a snapshot of the Rancher server cluster will revert Rancher to the version and state at the time of the snapshot.
+To roll back to Rancher before v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/) Restoring a snapshot of the Rancher server cluster will revert Rancher to the version and state at the time of the snapshot.
 
 For information on how to roll back Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
 

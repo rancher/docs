@@ -263,7 +263,7 @@ Use the following Rancher CLI commands to deploy your application using Rancher 
 {{% /tab %}}
 {{% /tabs %}}
 
-Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Resources > Workloads** and on the tab at **Resources > Workloads > Service Discovery.** (In Rancher v2.x prior to v2.3.0, these are on the **Workloads** and **Service Discovery** tabs in the top navigation bar.)
+Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Resources > Workloads** and on the tab at **Resources > Workloads > Service Discovery.** (In Rancher v2.x before v2.3.0, these are on the **Workloads** and **Service Discovery** tabs in the top navigation bar.)
 
 <figcaption>Imported Services</figcaption>
 

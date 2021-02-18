@@ -6,7 +6,7 @@ weight: 262
 
 By default, RKE deploys the NGINX ingress controller on all schedulable nodes.
 
-> **Note:** As of v0.1.8, only workers are considered schedulable nodes, but prior to v0.1.8, worker and controlplane nodes were considered schedulable nodes.  
+> **Note:** As of v0.1.8, only workers are considered schedulable nodes, but before v0.1.8, worker and controlplane nodes were considered schedulable nodes.  
 
 RKE will deploy the ingress controller as a DaemonSet with `hostnetwork: true`, so ports `80`, and `443` will be opened on each node where the controller is deployed.
 

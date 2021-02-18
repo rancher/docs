@@ -12,7 +12,7 @@ Follow these steps while creating the vSphere cluster in Rancher:
     {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
 
 1. Click on **Edit as YAML**
-1. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 
+1. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions before v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 
 
     ```yaml
     rancher_kubernetes_engine_config: # Required as of Rancher v2.3+

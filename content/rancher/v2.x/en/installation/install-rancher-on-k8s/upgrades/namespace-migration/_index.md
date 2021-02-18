@@ -35,7 +35,7 @@ During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces a
 
 You can prevent cluster networking issues from occurring during your upgrade to v2.0.7+ by unassigning system namespaces from all of your Rancher projects. Complete this task if you've assigned any of a cluster's system namespaces into a Rancher project.
 
-1. Log into the Rancher UI prior to upgrade.
+1. Log into the Rancher UI before upgrade.
 
 1. From the context menu, open the **local** cluster (or any of your other clusters).
 
