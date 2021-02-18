@@ -20,14 +20,33 @@ The table below shows a summary of the minimum recommended resource requests and
 
 In Kubernetes, the resource request indicates that the workload will not deployed on a node unless the node has at least the specified amount of memory and CPU available. If the workload surpasses the limit for CPU or memory, it can be terminated or evicted from the node. For more information on managing resource limits for containers, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
 
-Workload | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configurable
+{{% tabs %}}
+{{% tab "v2.5.6+" %}}
+
+| Workload   | CPU - Request  | Memory - Request  |  CPU - Limit  |  Memory - Limit |
+|----------------------|---------------|------------|-----------------|-------------------|
+| ingress gateway |  100m | 128mi  | 2000m          |  1024mi |
+| egress gateway  |  100m |  128mi   |   2000m        |  1024mi |
+| istiod          |  500m      | 2048mi        |           |                 |
+| proxy          |  10m         | 10mi            | 2000m        | 1024mi   |
+| **Totals:** | **710m** | **2314Mi** | **6000m** | **3072Mi** |
+
+{{% /tab %}}
+{{% tab "v2.5.0-v2.5.5" %}}
+
+Workload | CPU - Request | Memory - Request | CPU - Limit | Mem - Limit | Configurable
 ---------:|---------------:|---------------:|-------------:|-------------:|-------------:
-Istiod | 610m | 2186Mi | 4000m | 2048Mi | Y | Y
-Istio-policy | 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y      
-Istio-telemetry | 1000m         | 10214Mi        | 4800m       | 4096Mi      | Y        
-Istio-ingressgateway | 2000m | 1024Mi  | 10m |  40Mi | Y                   
-Others          | 500m          | 500Mi         | -         | -         | Y           
-**Total**       | **4500m**         | **5620Mi**        | **>12300m**         | **>14848Mi**         | **-**   
+Istiod | 610m | 2186Mi | 4000m | 2048Mi | Y |
+Istio-policy | 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y      |
+Istio-telemetry | 1000m         | 10214Mi        | 4800m       | 4096Mi      | Y   |
+Istio-ingressgateway | 2000m | 1024Mi  | 10m |  40Mi | Y   |
+Others          | 500m          | 500Mi         | -         | -         | Y    |
+**Totals:**       | **4500m**         | **5620Mi**        | **>12300m**         | **>14848Mi**   | **-**   
+
+{{% /tab %}}
+{{% /tabs %}}
+
+
 
 
 # Configuring Resource Allocations
