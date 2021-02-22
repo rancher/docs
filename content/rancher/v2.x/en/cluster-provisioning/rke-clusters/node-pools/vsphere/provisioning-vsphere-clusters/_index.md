@@ -106,7 +106,7 @@ You can access your cluster after its state is updated to **Active.**
 
 Use Rancher to create a Kubernetes cluster in vSphere.
 
-For Rancher versions before v2.0.4, when you create the cluster, you will also need to follow the steps in [this section](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere-node-template-config/before-2.0.4/#disk-uuids) to enable disk UUIDs.
+For Rancher versions before v2.0.4, when you create the cluster, you will also need to follow the steps in [this section](http://localhost:9001/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere-node-template-config/prior-to-2.0.4/#disk-uuids) to enable disk UUIDs.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **vSphere**.
@@ -116,7 +116,7 @@ For Rancher versions before v2.0.4, when you create the cluster, you will also n
 1. If you want to dynamically provision persistent storage or other infrastructure later, you will need to enable the vSphere cloud provider by modifying the cluster YAML file. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
 1. Add one or more [node pools]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) to your cluster. Each node pool uses a node template to provision new nodes. To create a node template, click **Add Node Template** and complete the **vSphere Options** form. For help filling out the form, refer to the vSphere node template configuration reference. Refer to the newest version of the configuration reference that is less than or equal to your Rancher version:
     - [v2.0.4]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/v2.0.4)
-    - [before v2.0.4]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/before-2.0.4) 
+    - [before v2.0.4]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4)
 1. Review your options to confirm they're correct. Then click **Create** to start provisioning the VMs and Kubernetes services.
 
 **Result:** 
