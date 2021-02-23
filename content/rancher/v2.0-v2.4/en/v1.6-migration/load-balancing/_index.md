@@ -74,14 +74,14 @@ Although Rancher v2.x supports HTTP and HTTPS hostname and path-based load balan
 
 ## Deploying Ingress
 
-You can launch a new load balancer to replace your load balancer from v1.6. Using the Rancher v2.x UI, browse to the applicable project and choose **Resources > Workloads > Load Balancing.** (In versions prior to v2.3.0, click **Workloads > Load Balancing.**) Then click **Deploy**. During deployment, you can choose a target project or namespace.
+You can launch a new load balancer to replace your load balancer from v1.6. Using the Rancher v2.x UI, browse to the applicable project and choose **Resources > Workloads > Load Balancing.** (In versions before v2.3.0, click **Workloads > Load Balancing.**) Then click **Deploy**. During deployment, you can choose a target project or namespace.
 
 >**Prerequisite:** Before deploying Ingress, you must have a workload deployed that's running a scale of two or more pods.
 >
 
 ![Workload Scale]({{<baseurl>}}/img/rancher/workload-scale.png)
 
-For balancing between these two pods, you must create a Kubernetes Ingress rule. To create this rule, navigate to your cluster and project, and click **Resources > Workloads > Load Balancing.** (In versions prior to v2.3.0, click **Workloads > Load Balancing.**) Then click **Add Ingress**. This GIF below depicts how to add Ingress to one of your projects.
+For balancing between these two pods, you must create a Kubernetes Ingress rule. To create this rule, navigate to your cluster and project, and click **Resources > Workloads > Load Balancing.** (In versions before v2.3.0, click **Workloads > Load Balancing.**) Then click **Add Ingress**. This GIF below depicts how to add Ingress to one of your projects.
 
 <figcaption>Browsing to Load Balancer Tab and Adding Ingress</figcaption>
 

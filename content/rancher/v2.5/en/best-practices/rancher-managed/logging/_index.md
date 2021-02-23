@@ -13,7 +13,7 @@ In this guide, we recommend best practices for cluster-level logging and applica
 
 # Changes in Logging in Rancher v2.5
 
-Prior to Rancher v2.5, logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
+Before Rancher v2.5, logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
 
 Logging in 2.5 has been completely overhauled to provide a more flexible experience for log aggregation. With the new logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options. 
 

@@ -54,7 +54,7 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 The restore operation will work on a cluster that is not in a healthy or active state.
 {{% /tab %}}
-{{% tab "Rancher prior to v2.4" %}}
+{{% tab "Rancher before v2.4" %}}
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.

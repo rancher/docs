@@ -219,7 +219,7 @@ The following table depicts the port requirements for [hosted clusters]({{<baseu
 
 ### Ports for Registered Clusters
 
-Note: Registered clusters were called imported clusters prior to Rancher v2.5.
+Note: Registered clusters were called imported clusters before Rancher v2.5.
 
 {{% accordion label="Click to expand" %}}
 

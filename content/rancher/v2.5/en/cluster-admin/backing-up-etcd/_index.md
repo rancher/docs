@@ -37,7 +37,7 @@ Because the Kubernetes version is now included in the snapshot, it is possible t
 
 The multiple components of the snapshot allow you to select from the following options if you need to restore a cluster from a snapshot:
 
-- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher prior to v2.4.0.
+- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher before v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
@@ -163,4 +163,4 @@ This option is not available directly in the UI, and is only available through t
 
 # Enabling Snapshot Features for Clusters Created Before Rancher v2.2.0
 
-If you have any Rancher launched Kubernetes clusters that were created prior to v2.2.0, after upgrading Rancher, you must [edit the cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots prior to v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/).
+If you have any Rancher launched Kubernetes clusters that were created before v2.2.0, after upgrading Rancher, you must [edit the cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots before v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/).

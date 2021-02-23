@@ -43,7 +43,7 @@ Private catalog repositories can be added using credentials like Username and Pa
 
 For more information on private Git/Helm catalogs, refer to the [custom catalog configuration reference.]({{<baseurl>}}/rancher/v2.x/en/catalog/catalog-config)
 
- 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
+ 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions before v2.2.0, you can select **Catalogs** directly in the navigation bar.
  2. Click **Add Catalog**.
  3. Complete the form and click **Create**.
 
@@ -56,7 +56,7 @@ For more information on private Git/Helm catalogs, refer to the [custom catalog 
 >- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/)
 >- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Catalogs]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/#global-permissions-reference) role assigned.
 
- 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions prior to v2.2.0, you can select **Catalogs** directly in the navigation bar.
+ 1. From the **Global** view, choose **Tools > Catalogs** in the navigation bar. In versions before v2.2.0, you can select **Catalogs** directly in the navigation bar.
  2. Click **Add Catalog**.
  3. Complete the form. Select the Helm version that will be used to launch all of the apps in the catalog. For more information about the Helm version, refer to [this section.](
 {{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions)

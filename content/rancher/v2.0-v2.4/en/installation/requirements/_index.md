@@ -13,7 +13,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
 - [Operating Systems and Container Runtime Requirements](#operating-systems-and-container-runtime-requirements)
 - [Hardware Requirements](#hardware-requirements)
   - [CPU and Memory](#cpu-and-memory)
-  - [CPU and Memory for Rancher prior to v2.4.0](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
+  - [CPU and Memory for Rancher before v2.4.0](#cpu-and-memory-for-rancher-before-v2-4-0)
   - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -68,7 +68,7 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
 
 These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/)
 
-Performance increased in Rancher v2.4.0. For the requirements of Rancher prior to v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-prior-to-v2-4-0)
+Performance increased in Rancher v2.4.0. For the requirements of Rancher before v2.4.0, refer to [this section.](#cpu-and-memory-for-rancher-before-v2-4-0)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM     |
 | --------------- | ---------- | ------------ | -------| ------- |
@@ -109,10 +109,10 @@ These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2
 {{% /tab %}}
 {{% /tabs %}}
 
-### CPU and Memory for Rancher prior to v2.4.0
+### CPU and Memory for Rancher before v2.4.0
 
 {{% accordion label="Click to expand" %}}
-These requirements apply to installing Rancher on an RKE Kubernetes cluster prior to Rancher v2.4.0:
+These requirements apply to installing Rancher on an RKE Kubernetes cluster before Rancher v2.4.0:
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
 | --------------- | --------- | ---------- | ----------------------------------------------- | ----------------------------------------------- |

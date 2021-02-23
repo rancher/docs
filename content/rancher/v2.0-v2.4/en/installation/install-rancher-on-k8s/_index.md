@@ -17,7 +17,7 @@ Set up the Rancher server's local Kubernetes cluster.
 The cluster requirements depend on the Rancher version:
 
 - **In Rancher v2.4.x,** Rancher needs to be installed on a K3s Kubernetes cluster or an RKE Kubernetes cluster.
-- **In Rancher prior to v2.4,** Rancher needs to be installed on an RKE Kubernetes cluster.
+- **In Rancher before v2.4,** Rancher needs to be installed on an RKE Kubernetes cluster.
 
 For the tutorial to install an RKE Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-rke/) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha)
 

@@ -78,7 +78,7 @@ For that reason, we recommend that for a production-grade architecture, you shou
 > 
 > For Rancher v2.5, any Kubernetes cluster can be used.
 > For Rancher v2.4.x, either an RKE Kubernetes cluster or K3s Kubernetes cluster can be used. 
-> For Rancher prior to v2.4, an RKE cluster must be used.
+> For Rancher before v2.4, an RKE cluster must be used.
 
 For testing or demonstration purposes, you can install Rancher in single Docker container. In this Docker install, you can use Rancher to set up Kubernetes clusters out-of-the-box. The Docker install allows you to explore the Rancher server functionality, but it is intended to be used for development and testing purposes only.
 

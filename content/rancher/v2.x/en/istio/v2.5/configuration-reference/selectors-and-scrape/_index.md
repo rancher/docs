@@ -88,7 +88,7 @@ spec:
 
 This enables monitoring across namespaces by giving Prometheus additional scrape configurations. 
 
-The usability tradeoff is that  all of Prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs prior to installing Istio. 
+The usability tradeoff is that  all of Prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs before installing Istio. 
 
 1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
 1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 

@@ -144,7 +144,7 @@ There are two drain modes: aggressive and safe.
 
     If a node has standalone pods or ephemeral data it will be cordoned but not drained.
 {{% /tab %}}
-{{% tab "Rancher prior to v2.2.x" %}}
+{{% tab "Rancher before v2.2.x" %}}
 
 The following list describes each drain option:
 
@@ -170,7 +170,7 @@ The timeout given to each pod for cleaning things up, so they will have chance t
 
 The amount of time drain should continue to wait before giving up.
 
->**Kubernetes Known Issue:** The [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) was not enforced while draining a node prior to Kubernetes 1.12.
+>**Kubernetes Known Issue:** The [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) was not enforced while draining a node before Kubernetes 1.12.
 
 ### Drained and Cordoned State
 

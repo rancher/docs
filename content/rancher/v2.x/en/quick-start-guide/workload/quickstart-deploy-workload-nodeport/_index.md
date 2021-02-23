@@ -19,7 +19,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 
 3.  Open the **Project: Default** project.
 
-4.  Click **Resources > Workloads.** In versions prior to v2.3.0, click **Workloads > Workloads.**
+4.  Click **Resources > Workloads.** In versions before v2.3.0, click **Workloads > Workloads.**
 
 5.  Click **Deploy**.
 

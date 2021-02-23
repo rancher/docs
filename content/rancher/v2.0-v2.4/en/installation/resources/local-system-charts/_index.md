@@ -9,7 +9,7 @@ aliases:
 
 The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.
 
-In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in Rancher v2.3.0, and using a Git mirror for Rancher versions prior to v2.3.0.
+In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in Rancher v2.3.0, and using a Git mirror for Rancher versions before v2.3.0.
 
 # Using Local System Charts in Rancher v2.3.0
 
@@ -17,7 +17,7 @@ In Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `r
 
 Example commands for a Rancher installation with a bundled `system-charts` are included in the [air gap Docker installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/air-gap-single-node/install-rancher) instructions and the [air gap Kubernetes installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-rancher/) instructions.
 
-# Setting Up System Charts for Rancher Prior to v2.3.0
+# Setting Up System Charts for Rancher Before v2.3.0
 
 ### A. Prepare System Charts
 

@@ -24,7 +24,7 @@ Currently, deployments pull the private registry credentials automatically only 
 
 1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
 
-1. From the main menu, click **Resources > Secrets > Registry Credentials.** (For Rancher prior to v2.3, click **Resources > Registries.)**
+1. From the main menu, click **Resources > Secrets > Registry Credentials.** (For Rancher before v2.3, click **Resources > Registries.)**
 
 1. Click **Add Registry.**
 
@@ -53,7 +53,7 @@ You can deploy a workload with an image from a private registry through the Ranc
 To deploy a workload with an image from your private registry,
 
 1. Go to the project view,
-1. Click **Resources > Workloads.** In versions prior to v2.3.0, go to the **Workloads** tab.
+1. Click **Resources > Workloads.** In versions before v2.3.0, go to the **Workloads** tab.
 1. Click **Deploy.**
 1. Enter a unique name for the workload and choose a namespace.
 1. In the **Docker Image** field, enter the URL of the path to the Docker image in your private registry. For example, if your private registry is on Quay.io, you could use `quay.io/<Quay profile name>/<Image name>`.

@@ -21,7 +21,7 @@ This section describes installing Rancher in five parts:
 - [2. Choose your SSL Configuration](#2-choose-your-ssl-configuration)
 - [3. Render the Rancher Helm Template](#3-render-the-rancher-helm-template)
 - [4. Install Rancher](#4-install-rancher)
-- [5. For Rancher versions prior to v2.3.0, Configure System Charts](#5-for-rancher-versions-prior-to-v2-3-0-configure-system-charts)
+- [5. For Rancher versions before v2.3.0, Configure System Charts](#5-for-rancher-versions-before-v2-3-0-configure-system-charts)
 
 # 1. Add the Helm Chart Repository
 
@@ -216,9 +216,9 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 > **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
 
-# 5. For Rancher versions prior to v2.3.0, Configure System Charts
+# 5. For Rancher versions before v2.3.0, Configure System Charts
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/).
+If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/).
 
 # Additional Resources
 
@@ -249,7 +249,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/custom-ca-root-certificate/).
 > - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log).
 
-- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/)
+- For Rancher before v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher before v2.3.0.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/)
 
 Choose from the following options:
 
@@ -351,7 +351,7 @@ If you are installing Rancher v2.3.0+, the installation is complete.
 
 > **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/telemetry/) during the initial login.
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/).
+If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/).
 
 {{% /tab %}}
 {{% /tabs %}}

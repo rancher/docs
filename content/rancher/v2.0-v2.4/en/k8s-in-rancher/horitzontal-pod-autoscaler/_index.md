@@ -22,12 +22,12 @@ The way that you manage HPAs is different based on your version of the Kubernete
 HPAs are also managed differently based on your version of Rancher:
 
 - **For Rancher v2.3.0+**: You can create, manage, and delete HPAs using the Rancher UI. From the Rancher UI you can configure the HPA to scale based on CPU and memory utilization. For more information, refer to [Managing HPAs with the Rancher UI]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui). To scale the HPA based on custom metrics, you still need to use `kubectl`. For more information, refer to [Configuring HPA to Scale Using Custom Metrics with Prometheus]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
-- **For Rancher Prior to v2.3.0:** To manage and configure HPAs, you need to use `kubectl`. For instructions on how to create, manage, and scale HPAs, refer to [Managing HPAs with kubectl]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl).
+- **For Rancher Before v2.3.0:** To manage and configure HPAs, you need to use `kubectl`. For instructions on how to create, manage, and scale HPAs, refer to [Managing HPAs with kubectl]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl).
 
 You might have additional HPA installation steps if you are using an older version of Rancher:
 
 - **For Rancher v2.0.7+:** Clusters created in Rancher v2.0.7 and higher automatically have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use HPA.
-- **For Rancher Prior to v2.0.7:** Clusters created in Rancher prior to v2.0.7 don't automatically have the requirements needed to use HPA. For instructions on installing HPA for these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
+- **For Rancher Before v2.0.7:** Clusters created in Rancher before v2.0.7 don't automatically have the requirements needed to use HPA. For instructions on installing HPA for these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
 
 ## Testing HPAs with a Service Deployment
 

@@ -73,7 +73,7 @@ To access a project-level Grafana instance,
 
 1. Go to a project that has monitoring enabled.
 
-1. From the project view, click **Apps.** In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar.
+1. From the project view, click **Apps.** In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar.
 
 1. Go to the `project-monitoring` application.
 

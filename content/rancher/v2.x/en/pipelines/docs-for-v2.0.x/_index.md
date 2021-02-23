@@ -37,7 +37,7 @@ You can set up your pipeline to run a series of stages and steps to test your co
 
 1. Go to the project you want this pipeline to run in.
 
-2. Click **Resources > Pipelines.** In versions prior to v2.3.0,click **Workloads > Pipelines.**
+2. Click **Resources > Pipelines.** In versions before v2.3.0,click **Workloads > Pipelines.**
 
 4. Click Add pipeline button.
 

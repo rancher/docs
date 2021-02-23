@@ -19,9 +19,9 @@ Rancher's dashboards are available at multiple locations:
 
 - **Cluster Dashboard**: From the **Global** view, navigate to the cluster.
 - **Node Metrics**: From the **Global** view, navigate to the cluster. Select **Nodes**. Find the individual node and click on its name. Click **Node Metrics.**
-- **Workload Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Click **Workload Metrics.**
+- **Workload Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Click **Workload Metrics.**
 - **Pod Metrics**: From the **Global** view, navigate to the project. Select **Workloads > Workloads**. Find the individual workload and click on its name. Find the individual pod and click on its name. Click **Pod Metrics.**
-- **Container Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Find the individual pod and click on its name. Find the individual container and click on its name. Click **Container Metrics.**
+- **Container Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Find the individual pod and click on its name. Find the individual container and click on its name. Click **Container Metrics.**
 
 Prometheus metrics are displayed and are denoted with the Grafana icon. If you click on the icon, the metrics will open a new tab in Grafana.
 
@@ -53,7 +53,7 @@ When you go to the Grafana instance, you will be logged in with the username `ad
 
 1. Go to the **System** project view. This project is where the cluster-level Grafana instance runs.
 
-1. Click **Apps.** In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar.
+1. Click **Apps.** In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar.
 
 1. Go to the `cluster-monitoring` application.
 
