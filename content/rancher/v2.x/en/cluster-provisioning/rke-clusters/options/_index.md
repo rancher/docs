@@ -267,7 +267,7 @@ windows_prefered_cluster: false
 
 An example cluster config file is included below.
 
-{{% accordion id="prior-to-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.0.0-v2.2.x" %}}
+{{% accordion id="before-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.0.0-v2.2.x" %}}
 ```yaml
 addon_job_timeout: 30
 authentication:

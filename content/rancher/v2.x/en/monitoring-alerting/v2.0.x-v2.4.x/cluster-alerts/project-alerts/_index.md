@@ -53,7 +53,7 @@ For information on other default alerts, refer to the section on [cluster-level 
 
 >**Prerequisite:** Before you can receive project alerts, you must add a notifier.
 
-1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**.
+1. From the **Global** view, navigate to the project that you want to configure project alerts for. Select **Tools > Alerts**. In versions before v2.2.0, you can choose **Resources > Alerts**.
 
 1. Click **Add Alert Group**.
 
@@ -75,7 +75,7 @@ For information on other default alerts, refer to the section on [cluster-level 
 
 # Managing Project Alerts
 
-To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. In versions prior to v2.2.0, you can choose **Resources > Alerts**. You can:
+To manage project alerts, browse to the project that alerts you want to manage. Then select **Tools > Alerts**. In versions before v2.2.0, you can choose **Resources > Alerts**. You can:
 
 - Deactivate/Reactive alerts
 - Edit alert settings

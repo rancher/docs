@@ -35,5 +35,5 @@ By default, all system images are being pulled from DockerHub. If you are on a s
 
 As of v0.1.10, you have to configure your private registry credentials, but you can specify this registry as a default registry so that all [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) are pulled from the designated private registry. You can use the command `rke config --system-images` to get the list of default system images to populate your private registry. 
 
-Prior to v0.1.10, you had to configure your private registry credentials **and** update the names of all the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) in the `cluster.yml` so that the image names would have the private registry URL appended before each image name. 
+Before v0.1.10, you had to configure your private registry credentials **and** update the names of all the [system images]({{<baseurl>}}/rke/latest/en/config-options/system-images/) in the `cluster.yml` so that the image names would have the private registry URL appended before each image name. 
 

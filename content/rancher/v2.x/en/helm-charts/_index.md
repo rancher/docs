@@ -9,4 +9,4 @@ In Rancher v2.5, the [apps and marketplace feature](./apps-marketplace) is used 
 
 ### Catalogs
 
-In Rancher prior to v2.5, the [catalog system](./legacy-catalogs) was used to manage Helm charts.
+In Rancher before v2.5, the [catalog system](./legacy-catalogs) was used to manage Helm charts.

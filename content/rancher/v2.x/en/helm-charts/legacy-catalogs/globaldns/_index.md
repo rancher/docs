@@ -26,7 +26,7 @@ Rancher's Global DNS feature provides a way to program an external DNS provider 
 
 # Global DNS Providers
 
-Prior to adding in Global DNS entries, you will need to configure access to an external provider.
+Before adding in Global DNS entries, you will need to configure access to an external provider.
 
 The following table lists the first version of Rancher each provider debuted.
 

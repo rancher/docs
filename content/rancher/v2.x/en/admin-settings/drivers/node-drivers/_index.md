@@ -21,7 +21,7 @@ If there are specific node drivers that you don't want to show to your users, yo
 
 By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, DigitalOcean and vSphere. If you want to show or hide any node driver, you can change its status.
 
-1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version prior to v2.2.0, you can select **Node Drivers** directly in the navigation bar.
+1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version before v2.2.0, you can select **Node Drivers** directly in the navigation bar.
 
 2.	Select the driver that you wish to **Activate** or **Deactivate** and select the appropriate icon.
 
@@ -29,7 +29,7 @@ By default, Rancher only activates drivers for the most popular cloud providers,
 
 If you want to use a node driver that Rancher doesn't support out-of-the-box, you can add that provider's driver in order to start using them to create node templates and eventually node pools for your Kubernetes cluster.
 
-1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version prior to v2.2.0, you can select **Node Drivers** directly in the navigation bar.  
+1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version before v2.2.0, you can select **Node Drivers** directly in the navigation bar.  
 
 2.	Click **Add Node Driver**.
 

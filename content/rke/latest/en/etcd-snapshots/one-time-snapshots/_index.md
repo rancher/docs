@@ -94,7 +94,7 @@ Below is an [example IAM policy](https://docs.aws.amazon.com/IAM/latest/UserGuid
 For details on giving an application access to S3, refer to the AWS documentation on [Using an IAM Role to Grant Permissions to Applications Running on Amazon EC2 Instances.](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)
 
 {{% /tab %}}
-{{% tab "RKE prior to v0.2.0" %}}
+{{% tab "RKE before v0.2.0" %}}
 
 To save a snapshot of etcd from each etcd node in the cluster config file, run the `rke etcd snapshot-save` command.
 

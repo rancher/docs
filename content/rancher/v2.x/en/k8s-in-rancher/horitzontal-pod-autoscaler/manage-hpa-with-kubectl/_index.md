@@ -17,7 +17,7 @@ This section describes HPA management with `kubectl`. This document has instruct
 
 In Rancher v2.3.x, you can create, view, and delete HPAs from the Rancher UI. You can also configure them to scale based on CPU or memory usage from the Rancher UI. For more information, refer to [Managing HPAs with the Rancher UI]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui). For scaling HPAs based on other metrics than CPU or memory, you still need `kubectl`.
 
-### Note For Rancher Prior to v2.0.7
+### Note For Rancher Before v2.0.7
 
 Clusters created with older versions of Rancher don't automatically have all the requirements to create an HPA. To install an HPA on these clusters, refer to [Manual HPA Installation for Clusters Created Before Rancher v2.0.7]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7).
 

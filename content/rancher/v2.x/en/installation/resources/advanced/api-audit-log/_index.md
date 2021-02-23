@@ -64,7 +64,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 #### Rancher Web GUI
 
 1. From the context menu, select **Cluster: local > System**.
-1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
+1. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
 1. Pick one of the `rancher` pods and select **&#8942; > View Logs**.
 1. From the **Logs** drop-down, select `rancher-audit-log`.
 

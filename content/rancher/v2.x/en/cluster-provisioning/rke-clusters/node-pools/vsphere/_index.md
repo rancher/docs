@@ -43,7 +43,7 @@ For the fields to be populated, your setup needs to fulfill the [prerequisites.]
 
 In Rancher v2.3.3+, you can provision VMs with any operating system that supports `cloud-init`. Only YAML format is supported for the [cloud config.](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
 
-In Rancher prior to v2.3.3, the vSphere node driver included in Rancher only supported the provisioning of VMs with [RancherOS]({{<baseurl>}}/os/v1.x/en/) as the guest operating system.
+In Rancher before v2.3.3, the vSphere node driver included in Rancher only supported the provisioning of VMs with [RancherOS]({{<baseurl>}}/os/v1.x/en/) as the guest operating system.
 
 ### Video Walkthrough of v2.3.3 Node Template Features
 

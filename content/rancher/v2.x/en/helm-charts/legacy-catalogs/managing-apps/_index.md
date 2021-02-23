@@ -22,7 +22,7 @@ After an application is deployed, you can easily upgrade to a different template
 
 1. From the **Global** view, navigate to the project that contains the catalog application that you want to upgrade.
 
-1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
+1. From the main navigation bar, choose **Apps**. In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
 3. Find the application that you want to upgrade, and then click the &#8942; to find **Upgrade**.
 
@@ -39,7 +39,7 @@ After an application is deployed, you can easily upgrade to a different template
 **Result**: Your application is updated. You can view the application status from the project's:
 
 - **Workloads** view
-- **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
+- **Apps** view. In versions before v2.2.0, this is the **Catalog Apps** view.
 
 
 ### Rolling Back Catalog Applications
@@ -48,7 +48,7 @@ After an application has been upgraded, you can easily rollback to a different t
 
 1. From the **Global** view, navigate to the project that contains the catalog application that you want to upgrade.
 
-1. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
+1. From the main navigation bar, choose **Apps**. In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
 3. Find the application that you want to rollback, and then click the &#8942; to find **Rollback**.
 
@@ -63,7 +63,7 @@ After an application has been upgraded, you can easily rollback to a different t
 **Result**: Your application is updated. You can view the application status from the project's:
 
 - **Workloads** view
-- **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
+- **Apps** view. In versions before v2.2.0, this is the **Catalog Apps** view.
 
 ### Deleting Catalog Application Deployments
 

@@ -74,7 +74,7 @@ $ rke etcd snapshot-restore \
 | `--ignore-docker-version`  | [Disable Docker version check]({{<baseurl>}}/rke/latest/en/config-options/#supported-docker-versions) |
 
 {{% /tab %}}
-{{% tab "RKE prior to v0.2.0"%}}
+{{% tab "RKE before v0.2.0"%}}
 
 If there is a disaster with your Kubernetes cluster, you can use `rke etcd snapshot-restore` to recover your etcd. This command reverts etcd to a specific snapshot and should be run on an etcd node of the the specific cluster that has suffered the disaster. 
 

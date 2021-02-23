@@ -356,7 +356,7 @@ The `--disable-selinux` option should not be used. It is deprecated and will be 
 Using a custom `--data-dir` under SELinux is not supported. To customize it, you would most likely need to write your own custom policy. For guidance, you could refer to the [containers/container-selinux](https://github.com/containers/container-selinux) repository, which contains the SELinux policy files for Container Runtimes, and the [rancher/k3s-selinux](https://github.com/rancher/k3s-selinux) repository, which contains the SELinux policy for K3s .
 
 {{%/tab%}}
-{{% tab "K3s prior to v1.19.1+k3s1" %}}
+{{% tab "K3s before v1.19.1+k3s1" %}}
 
 SELinux is automatically enabled for the built-in containerd.
 

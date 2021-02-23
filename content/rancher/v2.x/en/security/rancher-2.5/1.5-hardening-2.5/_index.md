@@ -41,7 +41,7 @@ kernel.keys.root_maxbytes=25000000
 Run `sysctl -p /etc/sysctl.d/90-kubelet.conf` to enable the settings.
 
 ### Configure `etcd` user and group
-A user account and group for the **etcd** service is required to be setup prior to installing RKE. The **uid** and **gid** for the **etcd** user will be used in the RKE **config.yml** to set the proper permissions for files and directories during installation time.
+A user account and group for the **etcd** service is required to be setup before installing RKE. The **uid** and **gid** for the **etcd** user will be used in the RKE **config.yml** to set the proper permissions for files and directories during installation time.
 
 #### create `etcd` user and group
 To create the **etcd** group run the following console commands.
