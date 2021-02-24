@@ -98,6 +98,78 @@ xt_tcpudp |
 ```
 net.bridge.bridge-nf-call-iptables=1
 ```
+### SUSE Linux Enterprise Server (SLES) / openSUSE
+If you are using SUSE Linux Enterprise Server or openSUSE follow the instructions below.  
+
+#### Using upstream Docker
+If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
+
+```
+rpm -q docker-ce
+```
+
+When using the upstream Docker packages, please follow [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+#### Using SUSE/openSUSE packaged Docker
+If you are using the Docker package supplied by SUSE/openSUSE, the package name is `docker`. You can check the installed package by executing:
+
+```
+rpm -q docker
+```
+
+#### Adding the Software repository for docker 
+In SUSE Linux Enterprise Server 15 SP2 docker is found in the Containers module.  
+This module will need to be added before istalling docker.  
+
+To list available modules you can run SUSEConnect to list the extensions and the activation command  
+```
+node:~ # SUSEConnect --list-extensions
+AVAILABLE EXTENSIONS AND MODULES
+
+    Basesystem Module 15 SP2 x86_64 (Activated)
+    Deactivate with: SUSEConnect -d -p sle-module-basesystem/15.2/x86_64
+
+        Containers Module 15 SP2 x86_64
+        Activate with: SUSEConnect -p sle-module-containers/15.2/x86_64
+```
+Run this SUSEConnect command to activate the Containers module.
+```
+node:~ # SUSEConnect -p sle-module-containers/15.2/x86_64
+Registering system to registration proxy https://rmt.seader.us
+
+Updating system details on https://rmt.seader.us ...
+
+Activating sle-module-containers 15.2 x86_64 ...
+-> Adding service to system ...
+-> Installing release package ...
+
+Successfully registered system
+```
+In order to run docker cli commands with your user then you need to add this user to the `docker` group.
+It is preferred not to use the root user for this.
+
+```
+usermod -aG docker <user_name>
+```
+
+To verify that the user is correctly configured, log out of the node and login using SSH or your preferred method, and execute `docker ps`:
+
+```
+ssh user@node
+user@node:~> docker ps
+CONTAINER ID        IMAGE       COMMAND             CREATED             STATUS              PORTS               NAMES
+user@node:~>
+```
+### openSUSE MicroOS/Kubic (Atomic)  
+Consult the project pages for openSUSE MicroOS and Kubic for installation  
+#### openSUSE MicroOS  
+Designed to host container workloads with automated administration & patching. Installing openSUSE MicroOS you get a quick, small environment for deploying Containers, or any other workload that benefits from Transactional Updates. As rolling release distribution the software is always up-to-date.  
+https://microos.opensuse.org  
+#### openSUSE Kubic
+Based on MicroOS, but not a rolling release distribution. Designed with the same things in mind but also a Certified Kubernetes Distribution.   
+https://kubic.opensuse.org  
+Installation instructions:  
+https://kubic.opensuse.org/blog/2021-02-08-MicroOS-Kubic-Rancher-RKE/  
 
 ### Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS
 
