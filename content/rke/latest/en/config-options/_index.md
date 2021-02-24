@@ -29,6 +29,7 @@ There are several options that can be configured in cluster configuration option
 * [Rate Limiting]({{<baseurl>}}/rke/latest/en/config-options/rate-limiting/)
 * [Cloud Providers]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/)
 * [Audit Log]({{<baseurl>}}/rke/latest/en/config-options/audit-log)
+* [Windows Specific Configuration]({{<baseurl>}}/rke/latest/en/config-options/windows)
 * [Add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/)
   * [Network Plug-ins]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/)
   * [DNS providers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/dns/)
