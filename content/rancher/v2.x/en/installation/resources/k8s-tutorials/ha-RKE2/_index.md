@@ -8,13 +8,6 @@ This section describes how to install a Kubernetes cluster according to the [bes
 
 For systems without direct internet access, refer to the air gap installation instructions.
 
-> **Single-node Installation Tip:**
-> In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
->
-> To set up a single-node RKE2 cluster, run the Rancher server installation command on just one node instead of two nodes.
->
-> In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
-
 # Prerequisites
 
 These instructions assume you have set up three nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/)
@@ -42,7 +35,7 @@ tls-san:
   - my-kubernetes-domain.com
   - another-kubernetes-domain.com
 ```
-After that you need to run installer command and enable and start rke2:
+After that you need to run the install command and enable and start rke2:
 ```
 curl -sfL https://get.rke2.io | sh -
 systemctl enable rke2-server.service
@@ -165,7 +158,7 @@ kube-system   rke2-metrics-server-5f9b5757dc-k5sgh                 1/1     Runni
 
 ### 4. Configure nginx to be a daemonset
 
-Currently RKE2 deploys nginx-ingress as a deployment and thats can impact the rancher deployment where you can not use all servers to proxy reqeust to rancher pods, to rectify that you should drop the following file to /var/lib/rancher/rke2/server/manifests on any of the server nodes
+Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the rancher deployment where you can not use all servers to proxy request to rancher pods, to rectify that you should drop the following file to /var/lib/rancher/rke2/server/manifests on any of the server nodes
 
 ```
 apiVersion: helm.cattle.io/v1

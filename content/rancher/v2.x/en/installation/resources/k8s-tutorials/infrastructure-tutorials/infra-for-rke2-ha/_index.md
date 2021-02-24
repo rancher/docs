@@ -25,9 +25,9 @@ For an example of one way to set up Linux nodes, refer to this [tutorial]({{<bas
 
 ### 2. Set up the Load Balancer
 
-You will also need to set up a load balancer to direct traffic to the Rancher replica on both nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
+You will also need to set up a load balancer to direct traffic to the Rancher replica on all nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
 
-When Kubernetes gets set up in a later step, the RKE2 tool will deploy a Nginx Ingress controller. This controller will listen on ports 80 and 443 of the worker nodes, answering traffic destined for specific hostnames.
+When Kubernetes gets set up in a later step, the RKE2 tool will deploy an Nginx Ingress controller. This controller will listen on ports 80 and 443 of the worker nodes, answering traffic destined for specific hostnames.
 
 When Rancher is installed (also in a later step), the Rancher system creates an Ingress resource. That Ingress tells the Nginx Ingress controller to listen for traffic destined for the Rancher hostname. The Nginx Ingress controller, when receiving traffic destined for the Rancher hostname, will forward that traffic to the running Rancher pods in the cluster.
 
