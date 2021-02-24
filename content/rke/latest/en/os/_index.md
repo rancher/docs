@@ -5,23 +5,31 @@ weight: 5
 **In this section:** 
 
 <!-- TOC -->
-
 - [Operating System](#operating-system)
-    - [General Linux Requirements](#general-linux-requirements)
-    - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-enterprise-linux-ol-centos)
-
-        - [Using upstream Docker](#using-upstream-docker)
-        - [Using RHEL/CentOS packaged Docker](#using-rhel-centos-packaged-docker)
-    - [Notes about Atomic Nodes](#red-hat-atomic)
-
-        - [OpenSSH version](#openssh-version)
-        - [Creating a Docker Group](#creating-a-docker-group)
-    - [Flatcar Container Linux](#flatcar-container-linux)
+  - [General Linux Requirements](#general-linux-requirements)
+  - [SUSE Linux Enterprise Server (SLES) / openSUSE](#suse-linux-enterprise-server-sles--opensuse)
+    - [Using upstream Docker](#using-upstream-docker)
+    - [Using SUSE/openSUSE packaged docker](#using-suseopensuse-packaged-docker)
+    - [Adding the Software repository for docker](#adding-the-software-repository-for-docker)
+  - [openSUSE MicroOS/Kubic (Atomic)](#opensuse-microoskubic-atomic)
+    - [openSUSE MicroOS](#opensuse-microos)
+    - [openSUSE Kubic](#opensuse-kubic)
+  - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel--oracle-linux-ol--centos)
+    - [Using upstream Docker](#using-upstream-docker-1)
+    - [Using RHEL/CentOS packaged Docker](#using-rhelcentos-packaged-docker)
+  - [Red Hat Atomic](#red-hat-atomic)
+    - [OpenSSH version](#openssh-version)
+    - [Creating a Docker Group](#creating-a-docker-group)
+  - [Flatcar Container Linux](#flatcar-container-linux)
 - [Software](#software)
+  - [OpenSSH](#openssh)
+  - [Kubernetes](#kubernetes)
+  - [Docker](#docker)
+  - [Installing Docker](#installing-docker)
+  - [Checking the Installed Docker Version](#checking-the-installed-docker-version)
 - [Ports](#ports)
-
-    - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
-    - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp-6443-using-firewalld)
+  - [Opening port TCP/6443 using `iptables`](#opening-port-tcp6443-using-iptables)
+  - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp6443-using-firewalld)
 - [SSH Server Configuration](#ssh-server-configuration)
 
 <!-- /TOC -->
@@ -98,10 +106,12 @@ xt_tcpudp |
 ```
 net.bridge.bridge-nf-call-iptables=1
 ```
+
 ### SUSE Linux Enterprise Server (SLES) / openSUSE
+
 If you are using SUSE Linux Enterprise Server or openSUSE follow the instructions below.  
 
-#### Using upstream Docker
+#### Using upstream Docker  
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
 
 ```
@@ -110,7 +120,7 @@ rpm -q docker-ce
 
 When using the upstream Docker packages, please follow [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-#### Using SUSE/openSUSE packaged Docker
+#### Using SUSE/openSUSE packaged docker 
 If you are using the Docker package supplied by SUSE/openSUSE, the package name is `docker`. You can check the installed package by executing:
 
 ```
