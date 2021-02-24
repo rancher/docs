@@ -3,20 +3,18 @@ title: "CIS Hardening Guide"
 weight: 80
 ---
 
-# CIS Hardening Guide
-
 This document provides prescriptive guidance for hardening a production installation of K3s. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 K3s has a number of security mitigations applied and turned on by default and will pass a number of the Kubernetes CIS controls without modification. There are some notable exceptions to this that require manual intervention to fully comply with the CIS Benchmark:
 
 1. K3s will not modify the host operating system. Any host-level modifications will need to be done manually.
-2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options (enabliong of admission plugins) to your command-line flags or configuration file as well as manually applying appropriate policies. Further detail in the sections below.
+2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options (enabling of admission plugins) to your command-line flags or configuration file as well as manually applying appropriate policies. Further detail in the sections below.
 
 The first section (1.1) of the CIS Benchmark concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
 
 ## Host-level Requirements
 
-There are two areas of of host-level requirements: kernel parameters and etcd process/directory configuration. These are outlined in this section.
+There are two areas of host-level requirements: kernel parameters and etcd process/directory configuration. These are outlined in this section.
 
 ### Ensure `protect-kernel-defaults` is set
 
@@ -26,7 +24,7 @@ This is a kubelet flag that will cause the kubelet to exit if the required kerne
 
 #### Set kernel parameters
 
-Create a file called `/etc/sysctl.d/90-kubelet.conf` and add the snippet below. Then run `sysctl -p /etc/sysctl.d/90-kubelet.conf` to 
+Create a file called `/etc/sysctl.d/90-kubelet.conf` and add the snippet below. Then run `sysctl -p /etc/sysctl.d/90-kubelet.conf`.
 
 ```bash
 vm.panic_on_oom=0
@@ -82,7 +80,7 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
-Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. We also need to include a "system unrestricted policy" which is needed for system level pods that require additional privileges.
+Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. We also need to include a "system unrestricted policy" which is needed for system-level pods that require additional privileges.
 
 These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory. Below is an example of a `policy.yaml` file. 
 
@@ -261,7 +259,7 @@ subjects:
 
 ### NetworkPolicies
 
-> NOTE: K3s's deploys kube-router for network policy enforcement. Support for this in K3s is currently experimental.
+> NOTE: K3s deploys kube-router for network policy enforcement. Support for this in K3s is currently experimental.
 
 CIS requires that all namespaces have a network policy applied that reasonably limits traffic into namespaces and pods.
 
@@ -294,7 +292,7 @@ Ensure that the admission control plugin `NamespaceLifecycle` is set.
 <summary>Rationale</summary>
 Setting admission control policy to NamespaceLifecycle ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects. This is recommended to enforce the integrity of the namespace termination process and also for the availability of the newer objects.
 
-This can be remeditated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.16 (mentioned above)
@@ -303,7 +301,7 @@ Ensure that the admission control plugin `PodSecurityPolicy` is set.
 <summary>Rationale</summary>
 A Pod Security Policy is a cluster-level resource that controls the actions that a pod can perform and what it has the ability to access. The PodSecurityPolicy objects define a set of conditions that a pod must run with in order to be accepted into the system. Pod Security Policies are comprised of settings and strategies that control the security features a pod has access to and hence this must be used to control pod access permissions.
 
-This can be remeditated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.22
@@ -312,7 +310,7 @@ Ensure that the `--audit-log-path` argument is set.
 <summary>Rationale</summary>
 Auditing the Kubernetes API Server provides a security-relevant chronological set of records documenting the sequence of activities that have affected system by individual users, administrators or other components of the system. Even though currently, Kubernetes provides only basic audit capabilities, it should be enabled. You can enable it by setting an appropriate audit log path.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.23
@@ -321,7 +319,7 @@ Ensure that the `--audit-log-maxage` argument is set to 30 or as appropriate.
 <summary>Rationale</summary>
 Retaining logs for at least 30 days ensures that you can go back in time and investigate or correlate any events. Set your audit log retention period to 30 days or as per your business requirements.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.24
@@ -330,7 +328,7 @@ Ensure that the `--audit-log-maxbackup` argument is set to 10 or as appropriate.
 <summary>Rationale</summary>
 Kubernetes automatically rotates the log files. Retaining old log files ensures that you would have sufficient log data available for carrying out any investigation or correlation. For example, if you have set file size of 100 MB and the number of old log files to keep as 10, you would approximate have 1 GB of log data that you could potentially use for your analysis.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.25
@@ -339,7 +337,7 @@ Ensure that the `--audit-log-maxsize` argument is set to 100 or as appropriate.
 <summary>Rationale</summary>
 Kubernetes automatically rotates the log files. Retaining old log files ensures that you would have sufficient log data available for carrying out any investigation or correlation. If you have set file size of 100 MB and the number of old log files to keep as 10, you would approximate have 1 GB of log data that you could potentially use for your analysis.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.26
@@ -348,7 +346,7 @@ Ensure that the `--request-timeout` argument is set as appropriate.
 <summary>Rationale</summary>
 Setting global request timeout allows extending the API server request timeout limit to a duration appropriate to the user's connection speed. By default, it is set to 60 seconds which might be problematic on slower connections making cluster resources inaccessible once the data volume for requests exceeds what can be transmitted in 60 seconds. But, setting this timeout limit to be too large can exhaust the API server resources making it prone to Denial-of-Service attack. Hence, it is recommended to set this limit as appropriate and change the default limit of 60 seconds only if needed.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.27
@@ -357,7 +355,7 @@ Ensure that the `--service-account-lookup` argument is set to true.
 <summary>Rationale</summary>
 If `--service-account-lookup` is not enabled, the apiserver only verifies that the authentication token is valid, and does not validate that the service account token mentioned in the request is actually present in etcd. This allows using a service account token even after the corresponding service account is deleted. This is an example of time of check to time of use security issue.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 1.2.33
@@ -382,14 +380,14 @@ Ensure that the `--terminated-pod-gc-threshold` argument is set as appropriate.
 <summary>Rationale</summary>
 Garbage collection is important to ensure sufficient resource availability and avoiding degraded performance and availability. In the worst case, the system might crash or just be unusable for a long period of time. The current setting for garbage collection is 12,500 terminated pods which might be too high for your system to sustain. Based on your system resources and tests, choose an appropriate threshold value to activate garbage collection.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 3.2.1
 Ensure that a minimal audit policy is created (Scored)
 <details>
 <summary>Rationale</summary>
-Logging is an important detective control for all systems, to detect potential unauthorised access.
+Logging is an important detective control for all systems, to detect potential unauthorized access.
 
 This can be remediated by passing controls 1.2.22 - 1.2.25 and verifying their efficacy.
 </details>
@@ -401,7 +399,7 @@ Ensure that the `--make-iptables-util-chains` argument is set to true.
 <summary>Rationale</summary>
 Kubelets can automatically manage the required changes to iptables based on how you choose your networking options for the pods. It is recommended to let kubelets manage the changes to iptables. This ensures that the iptables configuration remains in sync with pods networking configuration. Manually configuring iptables with dynamic pod network configuration changes might hamper the communication between pods/containers and to the outside world. You might have iptables rules too restrictive or too open.
 
-This can be remeditated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
+This can be remediated by passing this argument as a value to the `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
 ### Control 5.1.5
@@ -418,7 +416,7 @@ The default service account should be configured such that it does not provide a
 
 The remediation for this is to update the `automountServiceAccountToken` field to `false` for the `default` service account in each namespace.
 
-For `default` service accounts in the built-in namespaces (`kube-system`, `kube-public`, `kube-node-lease`, and `default`), K3s does not automatically do this. You can manually update this field on these service accounts to passs the control.
+For `default` service accounts in the built-in namespaces (`kube-system`, `kube-public`, `kube-node-lease`, and `default`), K3s does not automatically do this. You can manually update this field on these service accounts to pass the control.
 
 ## Control Plane Execution and Arguments
 
@@ -543,4 +541,4 @@ k3s server \
 
 ## Conclusion
 
-If you have followed this guide, your K3s cluster will be configured to comply with the CIS Kubernetes Benchmark. You can review the [CIS Benchmark Self-Assessment Guide](../self_assessment/_index.md) to understand the expectations of each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your K3s cluster will be configured to comply with the CIS Kubernetes Benchmark. You can review the [CIS Benchmark Self-Assessment Guide](../self_assessment/) to understand the expectations of each of the benchmarks and how you can do the same on your cluster.
