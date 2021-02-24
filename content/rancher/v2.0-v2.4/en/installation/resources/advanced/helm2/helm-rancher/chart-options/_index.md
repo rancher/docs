@@ -37,7 +37,7 @@ aliases:
 | `ingress.extraAnnotations` | {} | `map` - additional annotations to customize the ingress |
 | `ingress.configurationSnippet` | "" | `string` - Add additional Nginx configuration. Can be used for proxy configuration. _Note: Available as of v2.0.15, v2.1.10 and v2.2.4_ |
 | `proxy` | "" | `string` -  HTTP[S] proxy server for Rancher |
-| `noProxy` | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
+| `noProxy` | "127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16" | `string` - comma separated list of hostnames or ip address not to use the proxy |
 | `resources` | {} | `map` - rancher pod resource requests & limits |
 | `rancherImage` | "rancher/rancher" | `string` - rancher image source |
 | `rancherImageTag` | same as chart version | `string` - rancher/rancher image tag |

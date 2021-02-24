@@ -34,7 +34,7 @@ helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager --version v0.15.2 \
   --set http_proxy=http://${proxy_host} \
   --set https_proxy=http://${proxy_host} \
-  --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+  --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
 ```
 
 Now you should wait until cert-manager is finished starting up:
@@ -65,7 +65,7 @@ helm upgrade --install rancher rancher-latest/rancher \
    --namespace cattle-system \
    --set hostname=rancher.example.com \
    --set proxy=http://${proxy_host}
-   --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+   --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
 ```
 
 After waiting for the deployment to finish:
