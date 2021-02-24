@@ -2410,7 +2410,7 @@ Follow the Kubernetes documentation and setup image provenance.
 
 
 ### 5.6 Omitted
-The v1.5.1 guide skips 5.6 and goes from 5.5 to 5.7. We are including it here merely for explanation.
+The v1.5.1 Benchmark skips 5.6 and goes from 5.5 to 5.7. We are including it here merely for explanation.
 
 
 ### 5.7 General Policies
