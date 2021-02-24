@@ -426,22 +426,22 @@ Listed below are the K3s control plane components and the arguments they're give
 kube-apiserver 
     --advertise-port=6443 
     --allow-privileged=true 
-    --anonymous-auth=false                                                                           # 1.2.1
+    --anonymous-auth=false                                                            # 1.2.1
     --api-audiences=unknown 
     --authorization-mode=Node,RBAC 
     --bind-address=127.0.0.1 
     --cert-dir=/var/lib/rancher/k3s/server/tls/temporary-certs
-    --client-ca-file=/var/lib/rancher/k3s/server/tls/client-ca.crt                                   # 1.2.31
-    --enable-admission-plugins=NodeRestriction,PodSecurityPolicy                                     # 1.2.17
-    --etcd-cafile=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt                                 # 1.2.32
-    --etcd-certfile=/var/lib/rancher/k3s/server/tls/etcd/client.crt                                  # 1.2.29
-    --etcd-keyfile=/var/lib/rancher/k3s/server/tls/etcd/client.key                                   # 1.2.29
+    --client-ca-file=/var/lib/rancher/k3s/server/tls/client-ca.crt                    # 1.2.31
+    --enable-admission-plugins=NodeRestriction,PodSecurityPolicy                      # 1.2.17
+    --etcd-cafile=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt                  # 1.2.32
+    --etcd-certfile=/var/lib/rancher/k3s/server/tls/etcd/client.crt                   # 1.2.29
+    --etcd-keyfile=/var/lib/rancher/k3s/server/tls/etcd/client.key                    # 1.2.29
     --etcd-servers=https://127.0.0.1:2379 
-    --insecure-port=0                                                                                # 1.2.19
+    --insecure-port=0                                                                 # 1.2.19
     --kubelet-certificate-authority=/var/lib/rancher/k3s/server/tls/server-ca.crt 
     --kubelet-client-certificate=/var/lib/rancher/k3s/server/tls/client-kube-apiserver.crt 
     --kubelet-client-key=/var/lib/rancher/k3s/server/tls/client-kube-apiserver.key 
-    --profiling=false                                                                                # 1.2.21
+    --profiling=false                                                                 # 1.2.21
     --proxy-client-cert-file=/var/lib/rancher/k3s/server/tls/client-auth-proxy.crt 
     --proxy-client-key-file=/var/lib/rancher/k3s/server/tls/client-auth-proxy.key 
     --requestheader-allowed-names=system:auth-proxy 
@@ -449,51 +449,51 @@ kube-apiserver
     --requestheader-extra-headers-prefix=X-Remote-Extra- 
     --requestheader-group-headers=X-Remote-Group 
     --requestheader-username-headers=X-Remote-User 
-    --secure-port=6444                                                                               # 1.2.20
+    --secure-port=6444                                                                # 1.2.20
     --service-account-issuer=k3s 
-    --service-account-key-file=/var/lib/rancher/k3s/server/tls/service.key                           # 1.2.28
+    --service-account-key-file=/var/lib/rancher/k3s/server/tls/service.key            # 1.2.28
     --service-account-signing-key-file=/var/lib/rancher/k3s/server/tls/service.key 
     --service-cluster-ip-range=10.43.0.0/16 
     --storage-backend=etcd3 
-    --tls-cert-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.crt                       # 1.2.30
-    --tls-private-key-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.key                # 1.2.30
+    --tls-cert-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.crt        # 1.2.30
+    --tls-private-key-file=/var/lib/rancher/k3s/server/tls/serving-kube-apiserver.key # 1.2.30
 ```
 
 ```bash
 kube-controller-manager 
     --address=127.0.0.1 
     --allocate-node-cidrs=true 
-    --bind-address=127.0.0.1                                                                         # 1.3.7
+    --bind-address=127.0.0.1                                                       # 1.3.7
     --cluster-cidr=10.42.0.0/16 
     --cluster-signing-cert-file=/var/lib/rancher/k3s/server/tls/client-ca.crt 
     --cluster-signing-key-file=/var/lib/rancher/k3s/server/tls/client-ca.key 
     --kubeconfig=/var/lib/rancher/k3s/server/cred/controller.kubeconfig 
     --port=10252 
-    --profiling=false                                                                                # 1.3.2
-    --root-ca-file=/var/lib/rancher/k3s/server/tls/server-ca.crt                                     # 1.3.5
+    --profiling=false                                                              # 1.3.2
+    --root-ca-file=/var/lib/rancher/k3s/server/tls/server-ca.crt                   # 1.3.5
     --secure-port=0 
-    --service-account-private-key-file=/var/lib/rancher/k3s/server/tls/service.key                   # 1.3.4 
-    --use-service-account-credentials=true                                                           # 1.3.3
+    --service-account-private-key-file=/var/lib/rancher/k3s/server/tls/service.key # 1.3.4 
+    --use-service-account-credentials=true                                         # 1.3.3
 ```
 
 ```bash
 kube-scheduler 
     --address=127.0.0.1 
-    --bind-address=127.0.0.1                                                                         # 1.4.2
+    --bind-address=127.0.0.1                                              # 1.4.2
     --kubeconfig=/var/lib/rancher/k3s/server/cred/scheduler.kubeconfig 
     --port=10251 
-    --profiling=false                                                                                # 1.4.1
+    --profiling=false                                                     # 1.4.1
     --secure-port=0
 ```
 
 ```bash
 kubelet 
     --address=0.0.0.0 
-    --anonymous-auth=false                                                                           # 4.2.1
+    --anonymous-auth=false                                                # 4.2.1
     --authentication-token-webhook=true 
-    --authorization-mode=Webhook                                                                     # 4.2.2
+    --authorization-mode=Webhook                                          # 4.2.2
     --cgroup-driver=cgroupfs 
-    --client-ca-file=/var/lib/rancher/k3s/agent/client-ca.crt                                        # 4.2.3
+    --client-ca-file=/var/lib/rancher/k3s/agent/client-ca.crt             # 4.2.3
     --cloud-provider=external 
     --cluster-dns=10.43.0.10 
     --cluster-domain=cluster.local 
@@ -511,13 +511,13 @@ kubelet
     --kubelet-cgroups=/systemd/system.slice 
     --node-labels= 
     --pod-manifest-path=/var/lib/rancher/k3s/agent/pod-manifests 
-    --protect-kernel-defaults=true                                                                   # 4.2.6
-    --read-only-port=0                                                                               # 4.2.4
+    --protect-kernel-defaults=true                                        # 4.2.6
+    --read-only-port=0                                                    # 4.2.4
     --resolv-conf=/run/systemd/resolve/resolv.conf 
     --runtime-cgroups=/systemd/system.slice 
     --serialize-image-pulls=false 
-    --tls-cert-file=/var/lib/rancher/k3s/agent/serving-kubelet.crt                                   # 4.2.10
-    --tls-private-key-file=/var/lib/rancher/k3s/agent/serving-kubelet.key                            # 4.2.10
+    --tls-cert-file=/var/lib/rancher/k3s/agent/serving-kubelet.crt        # 4.2.10
+    --tls-private-key-file=/var/lib/rancher/k3s/agent/serving-kubelet.key # 4.2.10
 ```
 
 The command below is an example of how the outlined remediations can be applied.
