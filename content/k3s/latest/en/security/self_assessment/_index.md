@@ -8,7 +8,7 @@ weight: 90
 
 #### Overview
 
-This document is a companion to the K3s security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of K3s, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the CIS Kubernetes benchmark. It is to be used by K3s operators, security teams, auditors, and decision makers.
+This document is a companion to the K3s security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of K3s, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the CIS Kubernetes benchmark. It is to be used by K3s operators, security teams, auditors, and decision-makers.
 
 This guide is specific to the **v1.17**, **v1.18**, and **v1.19** release line of K3s and the **v1.5.1** release of the CIS Kubernetes Benchmark.
 
@@ -416,7 +416,7 @@ Ensure that the `--kubelet-client-certificate` and `--kubelet-client-key` argume
 
 <details>
 <summary>Rationale</summary>
-The apiserver, by default, does not authenticate itself to the kubelet's HTTPS endpoints. The requests from the apiserver are treated anonymously. You should set up certificate- based kubelet authentication to ensure that the apiserver authenticates itself to kubelets when submitting requests.
+The apiserver, by default, does not authenticate itself to the kubelet's HTTPS endpoints. The requests from the apiserver are treated anonymously. You should set up certificate-based kubelet authentication to ensure that the apiserver authenticates itself to kubelets when submitting requests.
 </details>
 
 **Result:** Pass
@@ -953,7 +953,7 @@ By default, K3s sets the `--service-account-key-file` explicitly. No manual reme
 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a client certificate and key.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a client certificate and key.
 </details>
 
 **Result:** Pass
@@ -1019,7 +1019,7 @@ By default, K3s sets the `--client-ca-file` argument explicitly. No manual remed
 Ensure that the `--etcd-cafile` argument is set as appropriate (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a SSL Certificate Authority file.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be protected by client authentication. This requires the API server to identify itself to the etcd server using a SSL Certificate Authority file.
 </details>
 
 **Result:** Pass
@@ -1092,7 +1092,7 @@ Ensure that the API Server only makes use of Strong Cryptographic Ciphers (Not S
 
 <details>
 <summary>Rationale</summary>
-TLS ciphers have had a number of known vulnerabilities and weaknesses, which can reduce the protection provided by them. By default Kubernetes supports a number of TLS ciphersuites including some that have security concerns, weakening the protection provided.
+TLS ciphers have had a number of known vulnerabilities and weaknesses, which can reduce the protection provided by them. By default Kubernetes supports a number of TLS cipher suites including some that have security concerns, weakening the protection provided.
 </details>
 
 **Result:** **Not Scored - Operator Dependent**
@@ -1228,7 +1228,7 @@ By default, K3s sets the `--root-ca-file` argument with the root ca file. No man
 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-`RotateKubeletServerCertificate` causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.
+`RotateKubeletServerCertificate` causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.
 
 Note: This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to take care of rotation yourself.
 </details>
@@ -1245,7 +1245,7 @@ journalctl -u k3s | grep "Running kube-controller-manager" | tail -n1 | grep "Ro
 Verify that RotateKubeletServerCertificateargument exists and is set to true.
 
 **Remediation:**
-By default, K3s implements it's own logic for certificate generation and rotation.
+By default, K3s implements its own logic for certificate generation and rotation.
 
 
 #### 1.3.7
@@ -1326,7 +1326,7 @@ This section covers recommendations for etcd configuration.
 Ensure that the `cert-file` and `key-file` fields are set as appropriate (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit.
 </details>
 
 **Result:** Pass
@@ -1348,7 +1348,7 @@ By default, K3s uses a config file for etcd that can be found at `/var/lib/ranch
 Ensure that the `client-cert-auth` field is set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients. You should enable the client authentication via valid certificates to secure the access to the etcd service.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients. You should enable the client authentication via valid certificates to secure the access to the etcd service.
 </details>
 
 **Result:** Pass
@@ -1370,7 +1370,7 @@ By default, K3s uses a config file for etcd that can be found at `/var/lib/ranch
 Ensure that the `auto-tls` field is not set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients. You should enable the client authentication via valid certificates to secure the access to the etcd service.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should not be available to unauthenticated clients. You should enable the client authentication via valid certificates to secure the access to the etcd service.
 </details>
 
 **Result:** Pass
@@ -1383,7 +1383,7 @@ By default, K3s starts Etcd without this flag. It is set to `false` by default.
 Ensure that the `peer-cert-file` and `peer-key-file` fields are set as appropriate (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters.
 </details>
 
 **Result:** Pass
@@ -1396,7 +1396,7 @@ By default, K3s starts Etcd with a config file found here, `/var/lib/rancher/k3s
 Ensure that the `client-cert-auth` field is set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster.
 </details>
 
 **Result:** Pass
@@ -1418,7 +1418,7 @@ By default, K3s uses a config file for etcd that can be found at `/var/lib/ranch
 Ensure that the `peer-auto-tls` field is not set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster. Hence, do not use self- signed certificates for authentication.
+etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster. Hence, do not use self- signed certificates for authentication.
 </details>
 
 **Result:** Pass
@@ -1492,7 +1492,7 @@ Alternative mechanisms provided by Kubernetes such as the use of OIDC should be 
 Ensure that a minimal audit policy is created (Scored)
 <details>
 <summary>Rationale</summary>
-Logging is an important detective control for all systems, to detect potential unauthorised access.
+Logging is an important detective control for all systems, to detect potential unauthorized access.
 </details>
 
 **Result:** Does not pass. See the [Hardening Guide](../hardening_guide/_index.md) for details.
@@ -1504,7 +1504,7 @@ Run the below command on the master node.
 journalctl -u k3s | grep "Running kube-apiserver" | tail -n1 | grep "audit-policy-file"
 ```
 
-Verify that the `--audit-policy-file` is set. Review the contents of the file specified and ensure that it contains avalid audit policy.
+Verify that the `--audit-policy-file` is set. Review the contents of the file specified and ensure that it contains a valid audit policy.
 
 **Remediation:**
 Create an audit policy file for your cluster and pass it to k3s. e.g. `--kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit-log'`
@@ -1620,7 +1620,7 @@ stat -c %a /var/lib/rancher/k3s/agent/kubelet.kubeconfig
 ```
 
 **Remediation:**
-By derfault, K3s creates `kubelet.kubeconfig` with `644` permissions. No manual remediation needed.
+By default, K3s creates `kubelet.kubeconfig` with `644` permissions. No manual remediation needed.
 
 #### 4.1.6
 Ensure that the kubelet.conf file ownership is set to `root:root` (Scored)
@@ -1925,7 +1925,7 @@ The `--rotate-certificates` setting causes the kubelet to rotate its client cert
 
 **Note:** This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to take care of rotation yourself.
 
-**Note:**This feature also require the `RotateKubeletClientCertificate` feature gate to be enabled (which is the default since Kubernetes v1.7)
+**Note:**This feature also requires the `RotateKubeletClientCertificate` feature gate to be enabled (which is the default since Kubernetes v1.7)
 </details>
 
 **Result:** Not Applicable
@@ -1959,7 +1959,7 @@ TLS ciphers have had a number of known vulnerabilities and weaknesses, which can
 **Result:** Not Scored - Operator Dependent
 
 **Remediation:**
-Configuration of the parameter is dependent on your use case. Please see the CIS Kubernetes Benchmark for suggestions on configuring this for your usecase.
+Configuration of the parameter is dependent on your use case. Please see the CIS Kubernetes Benchmark for suggestions on configuring this for your use-case.
 
 
 ## 5 Kubernetes Policies
@@ -2095,7 +2095,7 @@ kubectl describe psp <psp_name> | grep MustRunAsNonRoot
 Verify that the result is `Rule:  MustRunAsNonRoot`.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guilde/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guilde/).
 
 
 #### 5.2.2
@@ -2148,7 +2148,7 @@ kubectl get psp -o json | jq .items[] | jq -r 'select((.spec.hostIPC == null) or
 Verify that the returned count is 1.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `HostIPC` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `HostIPC` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.4
@@ -2207,7 +2207,7 @@ An operator should apply a PodSecurityPolicy that sets the `allowPrivilegeEscala
 Minimize the admission of root containers (Not Scored)
 <details>
 <summary>Rationale</summary>
-Containers may run as any Linux user. Containers which run as the root user, whilst constrained by Container Runtime security features still have a escalated likelihood of container breakout.
+Containers may run as any Linux user. Containers which run as the root user, whilst constrained by Container Runtime security features still have an escalated likelihood of container breakout.
 
 Ideally, all containers should run as a defined non-UID 0 user.
 
@@ -2291,7 +2291,7 @@ Minimize the admission of containers with capabilities assigned (Not Scored)
 <summary>Rationale</summary>
 Containers run with a default set of capabilities as assigned by the Container Runtime. Capabilities are parts of the rights generally granted on a Linux system to the root user.
 
-In many cases applications running in containers do not require any capabilities to operate, so from the perspective of the principal of least privilege use of capabilities should be minimized.
+In many cases applications running in containers do not require any capabilities to operate, so from the perspective of the principle of least privilege use of capabilities should be minimized.
 </details>
 
 **Result:** Not Scored
@@ -2378,7 +2378,7 @@ If possible, rewrite application code to read secrets from mounted secret files,
 Consider external secret storage (Not Scored)
 <details>
 <summary>Rationale</summary>
-Kubernetes supports secrets as first-class objects, but care needs to be taken to ensure that access to secrets is carefully limited. Using an external secrets provider can ease the management of access to secrets, especially where secrests are used across both Kubernetes and non-Kubernetes environments.
+Kubernetes supports secrets as first-class objects, but care needs to be taken to ensure that access to secrets is carefully limited. Using an external secrets provider can ease the management of access to secrets, especially where secrets are used across both Kubernetes and non-Kubernetes environments.
 </details>
 
 **Result:** Not Scored
@@ -2463,7 +2463,7 @@ Review the Kubernetes documentation and if needed, apply a relevant PodSecurityP
 Apply Security Context to Your Pods and Containers (Not Scored)
 <details>
 <summary>Rationale</summary>
-A security context defines the operating system security settings (uid, gid, capabilities, SELinux role, etc..) applied to a container. When designing your containers and pods, make sure that you configure the security context for your pods, containers, and volumes. A security context is a property defined in the deployment yaml. It controls the security parameters that will be assigned to the pod/container/volume. There are two levels of security context: pod level security context, and container level security context.
+A security context defines the operating system security settings (uid, gid, capabilities, SELinux role, etc..) applied to a container. When designing your containers and pods, make sure that you configure the security context for your pods, containers, and volumes. A security context is a property defined in the deployment yaml. It controls the security parameters that will be assigned to the pod/container/volume. There are two levels of security context: pod level security context, and container-level security context.
 </details>
 
 **Result:** Not Scored
@@ -2491,7 +2491,7 @@ Run the below command on the master node.
 kubectl get all -n default
 ```
 
-The only entries there should be system managed resources such as the kubernetes service.
+The only entries there should be system-managed resources such as the kubernetes service.
 
 **Remediation:**
 By default, K3s does not utilize the default namespace.
