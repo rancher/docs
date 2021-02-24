@@ -115,7 +115,7 @@ metadata:
     namespace: "cattle-logging-system"
 spec:
   globalOutputRefs:
-    - "example-es
+    - "example-es"
 ``` 
 
 We should now see our configured index with logs in it.
