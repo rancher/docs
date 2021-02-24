@@ -2121,7 +2121,7 @@ kubectl get psp -o json | jq .items[] | jq -r 'select((.spec.hostPID == null) or
 Verify that the returned count is 1.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `hostPID` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `hostPID` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.3
