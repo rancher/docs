@@ -25,7 +25,7 @@ Workload | CPU - Request | Mem - Request | CPU - Limit | Mem - Limit | Configura
 ---------:|---------------:|---------------:|-------------:|-------------:|-------------:
 Istiod | 610m | 2186Mi | 4000m | 2048Mi | Y | Y
 Istio-policy | 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y      
-Istio-telemetry | 1000m         | 10214Mi        | 4800m       | 4096Mi      | Y        
+Istio-telemetry | 1000m         | 1024Mi        | 4800m       | 4096Mi      | Y        
 Istio-ingressgateway | 2000m | 1024Mi  | 10m |  40Mi | Y                   
 Others          | 500m          | 500Mi         | -         | -         | Y           
 **Total**       | **4500m**         | **5620Mi**        | **>12300m**         | **>14848Mi**         | **-**   
