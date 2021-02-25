@@ -156,7 +156,7 @@ kube-system   rke2-metrics-server-5f9b5757dc-k5sgh                 1/1     Runni
 
 **Result:** You have confirmed that you can access the cluster with `kubectl` and the RKE2 cluster is running successfully. Now the Rancher management server can be installed on the cluster.
 
-### 4. Configure nginx to be a daemonset
+### 5. Configure nginx to be a daemonset
 
 Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the rancher deployment where you can not use all servers to proxy request to rancher pods, to rectify that you should drop the following file to /var/lib/rancher/rke2/server/manifests on any of the server nodes
 
