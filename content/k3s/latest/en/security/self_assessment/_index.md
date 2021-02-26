@@ -1495,7 +1495,7 @@ Ensure that a minimal audit policy is created (Scored)
 Logging is an important detective control for all systems, to detect potential unauthorized access.
 </details>
 
-**Result:** Does not pass. See the [Hardening Guide](../hardening_guide/_index.md) for details.
+**Result:** Does not pass. See the [Hardening Guide](../hardening_guide/) for details.
 
 **Audit:**
 Run the below command on the master node.
@@ -2040,7 +2040,7 @@ Where access to the Kubernetes API from a pod is required, a specific service ac
 The default service account should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 </details>
 
-**Result:** Fail. Currently requires operator intervention See the [Harending Guide](../hardening_guide/_index.md_) for details.
+**Result:** Fail. Currently requires operator intervention See the [Harending Guide](../hardening_guide/_) for details.
 
 **Audit:**
 For	each namespace in the cluster, review the rights assigned to the default service account and ensure that it has no roles or cluster roles bound to it apart from the defaults. Additionally ensure that the automountServiceAccountToken: false setting is in place for each default service account.
@@ -2174,7 +2174,7 @@ kubectl get psp -o json | jq .items[] | jq -r 'select((.spec.hostNetwork == null
 Verify that the returned count is 1.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `HostNetwork` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `HostNetwork` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.5
@@ -2200,7 +2200,7 @@ kubectl get psp -o json | jq .items[] | jq -r 'select((.spec.allowPrivilegeEscal
 Verify that the returned count is 1.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `allowPrivilegeEscalation` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `allowPrivilegeEscalation` value to false explicitly for the PSP it creates. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.6
@@ -2228,7 +2228,7 @@ kubectl get psp -o json | jq .items[] | jq -r 'select((.spec.allowPrivilegeEscal
 Verify that the returned count is 1.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `runAsUser.Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets the `runAsUser.Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.7
@@ -2256,7 +2256,7 @@ kubectl get psp <psp_name> -o json | jq .spec.requiredDropCapabilities[]
 Verify the value is `"ALL"`.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets `.spec.requiredDropCapabilities[]` to a value of `All`. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets `.spec.requiredDropCapabilities[]` to a value of `All`. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.8
@@ -2282,7 +2282,7 @@ kubectl get psp
 Verify that there are no PSPs present which have `allowedCapabilities` set to anything other than an empty array.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets `allowedCapabilities` to anything other than an empty array. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets `allowedCapabilities` to anything other than an empty array. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.9
@@ -2304,7 +2304,7 @@ kubectl get psp
 ```
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets `requiredDropCapabilities` to `ALL`. An example of this can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply a PodSecurityPolicy that sets `requiredDropCapabilities` to `ALL`. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 ### 5.3 Network Policies and CNI
@@ -2349,7 +2349,7 @@ done
 Verify that there are network policies applied to each of the namespaces.
 
 **Remediation:**
-An operator should apply NetworkPolcyies that prevent unneeded traffic from traversing networks unnecessarily. An example of applying a NetworkPolcy can be found in the [Hardening Guide](../hardening_guide/_index.md).
+An operator should apply NetworkPolcyies that prevent unneeded traffic from traversing networks unnecessarily. An example of applying a NetworkPolcy can be found in the [Hardening Guide](../hardening_guide/).
 
 ### 5.4 Secrets Management
 
@@ -2403,7 +2403,7 @@ Kubernetes supports plugging in provenance rules to accept or reject the images 
 **Result:** Not Scored
 
 **Audit:**
-Review the pod definitions in your cluster and verify that image provenance is configured as appropriate.
+Review the pod definitions in your cluster and verify that image _provenance_ is configured as appropriate.
 
 **Remediation:**
 Follow the Kubernetes documentation and setup image provenance.
