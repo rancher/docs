@@ -2095,7 +2095,7 @@ kubectl describe psp <psp_name> | grep MustRunAsNonRoot
 Verify that the result is `Rule:  MustRunAsNonRoot`.
 
 **Remediation:**
-An operator should apply a PodSecurityPolicy that sets the `Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guilde/).
+An operator should apply a PodSecurityPolicy that sets the `Rule` value to `MustRunAsNonRoot`. An example of this can be found in the [Hardening Guide](../hardening_guide/).
 
 
 #### 5.2.2
