@@ -5,7 +5,7 @@ weight: 100
 
 After RKE has deployed Kubernetes, you can upgrade the versions of the components in your Kubernetes cluster, the [definition of the Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or the [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/).
 
-The default Kubernetes version for each RKE version can be found in [the RKE release notes](https://github.com/rancher/rke/releases/). RKE v1.x should be used.
+The default Kubernetes version for each RKE version can be found in the release notes accompanying [the RKE download](https://github.com/rancher/rke/releases/). RKE v1.x should be used.
 
 You can also select a newer version of Kubernetes to install for your cluster.
 
