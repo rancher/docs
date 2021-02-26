@@ -1921,7 +1921,7 @@ Ensure that the `--rotate-certificates` argument is not set to `false` (Scored)
 <details>
 <summary>Rationale</summary>
 
-The `--rotate-certificates` setting causes the kubelet to rotate its client certificates by creating new CSRs as its existing credentials expire. This automated periodic rotation ensures that the there is no downtime due to expired certificates and thus addressing availability in the CIA security triad.
+The `--rotate-certificates` setting causes the kubelet to rotate its client certificates by creating new CSRs as its existing credentials expire. This automated periodic rotation ensures that there is no downtime due to expired certificates and thus addressing availability in the CIA security triad.
 
 **Note:** This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to take care of rotation yourself.
 
@@ -1931,14 +1931,14 @@ The `--rotate-certificates` setting causes the kubelet to rotate its client cert
 **Result:** Not Applicable
 
 **Remediation:**
-By default, K3s implements it's own logic for certificate generation and rotation.
+By default, K3s implements its own logic for certificate generation and rotation.
 
 
 #### 4.2.12
 Ensure that the `RotateKubeletServerCertificate` argument is set to `true` (Scored)
 <details>
 <summary>Rationale</summary>
-`RotateKubeletServerCertificate` causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.
+`RotateKubeletServerCertificate` causes the kubelet to both request a serving certificate after bootstrapping its client credentials and rotate the certificate as its existing credentials expire. This automated periodic rotation ensures that there are no downtimes due to expired certificates and thus addressing availability in the CIA security triad.
 
 Note: This recommendation only applies if you let kubelets get their certificates from the API server. In case your kubelet certificates come from an outside authority/tool (e.g. Vault) then you need to take care of rotation yourself.
 </details>
@@ -1946,7 +1946,7 @@ Note: This recommendation only applies if you let kubelets get their certificate
 **Result:** Not Applicable
 
 **Remediation:**
-By default, K3s implements it's own logic for certificate generation and rotation.
+By default, K3s implements its own logic for certificate generation and rotation.
 
 
 #### 4.2.13
