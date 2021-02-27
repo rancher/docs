@@ -6,13 +6,11 @@ weight: 2
 
 This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
 
-For systems without direct internet access, refer to the air gap installation instructions.
-
 # Prerequisites
 
-These instructions assume you have set up three nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/)
+These instructions assume you have set up three nodes, a load balancer, a DNS record, [this section.](({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
 
-Note that in order for rke2 to work correctly with the load balancer you need to set up two listeners one for the supervisor port on 9345 and one for kubernetes API port 6443.
+Note that in order for RKE2 to work correctly with the load balancer, you need to set up two listeners: one for the supervisor on port 9345, and one for the Kubernetes API on port 6443.
 
 Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the RKE2 version, use the INSTALL_RKE2_VERSION environment variable when running the RKE2 installation script.
 # Installing Kubernetes
@@ -21,7 +19,7 @@ Rancher needs to be installed on a supported Kubernetes version. To find out whi
 
 RKE2 server runs with embedded etcd so you will not need to set up an external datastore to run in HA mode.
 
-1. On the first node, you should set up the configuration file with your own pre-shared secret as the token, set the token argument on startup.
+1. On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
 
 If you do not specify a pre-shared secret, RKE2 will generate one and place it at /var/lib/rancher/rke2/server/node-token.
 
@@ -41,7 +39,7 @@ curl -sfL https://get.rke2.io | sh -
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
-1. To join the rest of the nodes you need to configure them with the same shared token or the one generated automatically, here is an example of the configuration:
+1. To join the rest of the nodes, you need to configure each additional node with the same shared token or the one generated automatically. Here is an example of the configuration file:
 ```
 token: my-shared-secret
 server: https://<DNS-DOMAIN>:9345
@@ -111,10 +109,10 @@ users:
 **Result:** You can now use `kubectl` to manage your RKE2 cluster. If you have more than one kubeconfig file, you can specify which one you want to use by passing in the path to the file when using `kubectl`:
 
 ```
-kubectl --kubeconfig ~/.kube/config/krke23s.yaml get pods --all-namespaces
+kubectl --kubeconfig ~/.kube/config/rke2.yaml get pods --all-namespaces
 ```
 
-For more information about the `kubeconfig` file, refer to the [K3S documentation]({{<baseurl>}}/k3s/latest/en/cluster-access/) or the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) about organizing cluster access using `kubeconfig` files.
+For more information about the `kubeconfig` file, refer to the [RKE2 documentation](https://docs.rke2.io/cluster_access/) or the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) about organizing cluster access using `kubeconfig` files.
 
 ### 4. Check the Health of Your Cluster Pods
 
@@ -158,7 +156,9 @@ kube-system   rke2-metrics-server-5f9b5757dc-k5sgh                 1/1     Runni
 
 ### 5. Configure nginx to be a daemonset
 
-Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the rancher deployment where you can not use all servers to proxy request to rancher pods, to rectify that you should drop the following file to /var/lib/rancher/rke2/server/manifests on any of the server nodes
+Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the Rancher deployment so that you cannot use all servers to proxy requests to the Rancher pods.
+
+To rectify that, place the following file in /var/lib/rancher/rke2/server/manifests on any of the server nodes:
 
 ```
 apiVersion: helm.cattle.io/v1

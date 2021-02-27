@@ -7,8 +7,6 @@ This tutorial is intended to help you provision the underlying infrastructure fo
 
 The recommended infrastructure for the Rancher-only Kubernetes cluster differs depending on whether Rancher will be installed on a RKE2 Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
 
-For more information about each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/installation)
-
 > **Note:** These nodes must be in the same region. You may place these servers in separate availability zones (datacenter).
 
 To install the Rancher management server on a high-availability RKE2 cluster, we recommend setting up the following infrastructure:
