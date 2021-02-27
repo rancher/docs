@@ -87,7 +87,7 @@ Create the RancherD config file at `/etc/rancher/rke2/config.yaml`:
 ```yaml
 token: my-shared-secret
 tls-san:
-  - https://my-fixed-registration-address.com
+  - my-fixed-registration-address.com
   - another-kubernetes-domain.com
 ```
 
