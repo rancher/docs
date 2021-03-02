@@ -39,7 +39,7 @@ The following table lists which node options are available for each type of clus
 | [Edit](#managing-and-editing-individual-nodes)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Enter a custom name, description, label, or taints for a node. |
 | [View API](#viewing-a-node-in-the-rancher-api)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                   | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     |                    | Deletes defective nodes from the cluster.                          |
-| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key for in order to SSH into the node.                     |
+| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     |                    | Scale the number of nodes in the node pool up or down.               |
 
 [1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
@@ -57,7 +57,7 @@ The following table lists which node options are available for each type of clus
 | [Edit](#managing-and-editing-individual-nodes)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
 | [View API](#viewing-a-node-in-the-rancher-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
 | [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
-| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
+| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
 
 [1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
