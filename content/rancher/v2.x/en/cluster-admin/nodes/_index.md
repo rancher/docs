@@ -30,6 +30,26 @@ This section covers the following topics:
 
 The following table lists which node options are available for each type of cluster in Rancher. Click the links in the **Option** column for more detailed information about each feature.
 
+{{% tabs %}}                                                                    
+{{% tab "Rancher v2.5" %}}
+| Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Registered EKS Nodes][4] | [All Other Registered Nodes][5] | Description                                                        |
+| ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | -------------------| ------------------------------------------------------------------ |
+| [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Marks the node as unschedulable.                                   |
+| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Marks the node as unschedulable _and_ evicts all pods.             |
+| [Edit](#managing-and-editing-individual-nodes)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Enter a custom name, description, label, or taints for a node. |
+| [View API](#viewing-a-node-in-the-rancher-api)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                   | View API data.                                                     |
+| [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     |                    | Deletes defective nodes from the cluster.                          |
+| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key for in order to SSH into the node.                     |
+| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     |                    | Scale the number of nodes in the node pool up or down.               |
+
+[1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
+[5]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
+
+{{% /tab %}}                                                                    
+{{% tab "Rancher v2.0-v2.4" %}}
 | Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Imported Nodes][4] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
