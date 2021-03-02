@@ -63,9 +63,7 @@ These options can be passed in with the command line, or in the [configuration f
 
 ### S3 Compatible API Support
 
-K3s supports creating and restoring Etcd Snapshots with S3 compatible APIs. For S3 support, a few more flags have been added.
-
-If the appropriate S3 arguments are supplied to `k3s server`, automated snapshots will be stored in S3.
+K3s supports writing etcd snapshots to and restoring etcd snapshots from systems with S3-compatible APIs. S3 support is available for both on-demand and scheduled snapshots.
 
 The arguments below have been added to the `server` subcommand. These flags exist for the `etcd-snapshot` subcommand as well however the `--etcd-s3` portion is removed to avoid redundancy.
 
@@ -81,7 +79,7 @@ The arguments below have been added to the `server` subcommand. These flags exis
 | `--etcd-s3-region` | S3 region / bucket location (optional). defaults to us-east-1 |
 | `--etcd-s3-folder` | S3 folder |
 
-To perform an Etcd snapshot and save it to S3:
+To perform an on-demand etcd snapshot and save it to S3:
 
 ```
 k3s etcd-snapshot \
@@ -91,7 +89,7 @@ k3s etcd-snapshot \
   --s3-secret-key=<S3-SECRET-KEY>
 ```
 
-To perform an Etcd snapshot restore from S3:
+To perform an on-demand etcd snapshot restore from S3:
 
 ```
 k3s server \
