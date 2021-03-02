@@ -42,7 +42,7 @@ In the section titled `1. Configure an SambaBox server`,   complete the fields w
 >
 > If you are unsure about the correct values to enter in the  user/group Search Base field, please refer to [Identify Search Base and Schema using ldapsearch](#annex-identify-search-base-and-schema-using-ldapsearch).
 
-**Table 1: AD Server parameters**
+**Table 1: SambaBox Server parameters**
 
 | Parameter | Description |
 |:--|:--|
