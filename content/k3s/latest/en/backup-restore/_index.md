@@ -89,7 +89,7 @@ k3s etcd-snapshot \
   --s3-secret-key=<S3-SECRET-KEY>
 ```
 
-To perform an on-demand etcd snapshot restore from S3:
+To perform an on-demand etcd snapshot restore from S3, first make sure that K3s isn't running. Then run the following commands:
 
 ```
 k3s server \
