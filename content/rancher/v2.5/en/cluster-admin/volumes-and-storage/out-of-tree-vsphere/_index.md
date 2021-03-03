@@ -16,15 +16,16 @@ The vSphere version must be 6.7U3 or higher.
 
 The Cloud Provider Interface (CPI) should be installed first before installing the Cloud Storage Interface (CSI).
 
-### 1. Create a vSphere custer
+### 1. Create a vSphere cluster
 
 1. On the Clusters page, click on **Add Cluster** and select the **vSphere** option.
 1. Under **Cluster Options > In-Tree Cloud Provider** select **External**.
 1. Click **Create**.
 
 ### 2. Install the CPI plugin
-
-1. Within a project, go to **Apps > Launch** and select the **vsphere-cpi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
+ 
+ 1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
+1. Select the **vsphere-cpi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
 1. vSphere CPI initializes all nodes with ProviderID which is needed by the vSphere CSI driver. Check if all nodes are initialized with the ProviderID before installing CSI driver with the following command:
 
 	```
@@ -33,7 +34,8 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 
 ### 3. Installing the CSI plugin
 
-1. Within a project, go to **Apps > Launch** and select the **vsphere-csi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
+ 1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
+1. Select the **vsphere-csi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
 2. Set **Enable CSI Migration** to **false**.
 3. This chart creates a StorageClass with the `csi.vsphere.vmware.com` as the provisioner. Fill out the details for the StorageClass and launch the chart.
 
