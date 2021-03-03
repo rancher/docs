@@ -321,6 +321,13 @@ spec:
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a `toleration` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
 
+# Working with a Custom Docker Root Directory
+
+_Applies to v2.5.6+_
+
+If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
+This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
+
 ### Windows Support
 
 Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.

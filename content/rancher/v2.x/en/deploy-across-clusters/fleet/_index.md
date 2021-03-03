@@ -22,6 +22,7 @@ Fleet comes preinstalled in Rancher v2.5. To access it, go to the **Cluster Expl
 ### Windows Support
 
 Before Rancher v2.5.6, the `agent` did not have native Windows manifests on downstream clusters with Windows nodes.
+
 This would result in a failing `agent` pod for the cluster.
 If you are upgrading from an older version of Rancher to v2.5.6+, you can deploy a working `agent` with the following workflow *in the downstream cluster*:
 
