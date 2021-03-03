@@ -1,6 +1,6 @@
 ---
-title: Enable Out-of-tree vSphere CPI and CSI on a New Cluster
-weight: 4
+title: vSphere Out-of-tree Cloud Provider
+weight: 10
 ---
 _Available as of v2.5.6_
 
