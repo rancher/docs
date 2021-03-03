@@ -13,4 +13,4 @@ The vSphere node templates in Rancher were updated in the following Rancher vers
 - [v2.2.0](./v2.2.0)
 - [v2.0.4](./v2.0.4)
 
-For Rancher versions prior to v2.0.4, refer to [this version.](./prior-to-2.0.4)
+For Rancher versions before v2.0.4, refer to [this version.](./prior-to-2.0.4)

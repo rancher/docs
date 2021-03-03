@@ -5,9 +5,9 @@ aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/migrating
 ---
 
-If you previously enabled Monitoring, Alerting, or Notifiers in Rancher prior to v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.
+If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.
 
-### Monitoring Prior to Rancher v2.5
+### Monitoring Before Rancher v2.5
 
 As of v2.2.0, Rancher's Cluster Manager allowed users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. 
 

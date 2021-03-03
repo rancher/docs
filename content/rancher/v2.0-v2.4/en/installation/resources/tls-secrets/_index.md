@@ -1,9 +1,6 @@
 ---
 title: Adding TLS Secrets
 weight: 2
-aliases:
-  - /rancher/v2.0-v2.4/en/installation/options/tls-secrets/
-  - /rancher/v2.0-v2.4/en/installation/resources/encryption/tls-secrets
 ---
 
 Kubernetes will create all the objects and services for Rancher, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.
@@ -23,7 +20,7 @@ kubectl -n cattle-system create secret tls tls-rancher-ingress \
 
 > **Note:** If you want to replace the certificate, you can delete the `tls-rancher-ingress` secret using `kubectl -n cattle-system delete secret tls-rancher-ingress` and add a new one using the command shown above. If you are using a private CA signed certificate, replacing the certificate is only possible if the new certificate is signed by the same CA as the certificate currently in use.
 
-### Using a Private CA Signed Certificate
+# Using a Private CA Signed Certificate
 
 If you are using a private CA, Rancher requires a copy of the CA certificate which is used by the Rancher Agent to validate the connection to the server.
 
@@ -35,3 +32,7 @@ kubectl -n cattle-system create secret generic tls-ca \
 ```
 
 > **Note:** The configured `tls-ca` secret is retrieved when Rancher starts. On a running Rancher installation the updated CA will take effect after new Rancher pods are started.
+
+# Updating a Private CA Certificate
+
+Follow the steps on [this page]({{<baseurl>}}/rancher/v2.x/en/installation/resources/update-ca-cert) to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.

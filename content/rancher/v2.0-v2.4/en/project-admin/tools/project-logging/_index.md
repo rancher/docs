@@ -60,7 +60,7 @@ Logs that are sent to your logging service are from the following locations:
 
 1. From the **Global** view, navigate to the project that you want to configure project logging.
 
-1. Select **Tools > Logging** in the navigation bar. In versions prior to v2.2.0, you can choose **Resources > Logging**.
+1. Select **Tools > Logging** in the navigation bar. In versions before v2.2.0, you can choose **Resources > Logging**.
 
 1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports the following services:
 

@@ -58,7 +58,7 @@ You can access your cluster after its state is updated to **Active.**
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
 {{% /tab %}}
-{{% tab "Rancher prior to v2.2.0" %}}
+{{% tab "Rancher before v2.2.0" %}}
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **DigitalOcean**.

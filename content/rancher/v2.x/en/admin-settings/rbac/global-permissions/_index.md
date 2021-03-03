@@ -55,7 +55,7 @@ The `restricted-admin` permissions are as follows:
 
 ### Upgrading from Rancher with a Hidden Local Cluster
 
-Prior to Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
+Before Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
 
 ```
 --add-local=false

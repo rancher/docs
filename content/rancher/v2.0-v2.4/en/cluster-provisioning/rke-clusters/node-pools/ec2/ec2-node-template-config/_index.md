@@ -49,7 +49,7 @@ If you need to pass an **IAM Instance Profile Name** (not ARN), for example, whe
 In the **Engine Options** section of the node template, you can configure the Docker daemon. You may want to specify the docker version or a Docker registry mirror.
 
 {{% /tab %}}
-{{% tab "Rancher prior to v2.2.0" %}}
+{{% tab "Rancher before v2.2.0" %}}
 
 ### Account Access
 

@@ -3,7 +3,7 @@ title: Registering Existing Clusters
 weight: 6
 ---
 
-_Available of of v2.5_
+_Available as of v2.5_
 
 The cluster registration feature replaced the feature to import clusters.
 

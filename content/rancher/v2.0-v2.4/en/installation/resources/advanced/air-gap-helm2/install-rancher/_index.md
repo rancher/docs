@@ -23,7 +23,7 @@ This section describes installing Rancher in five parts:
 - [B. Choose your SSL Configuration](#b-choose-your-ssl-configuration)
 - [C. Render the Rancher Helm Template](#c-render-the-rancher-helm-template)
 - [D. Install Rancher](#d-install-rancher)
-- [E. For Rancher versions prior to v2.3.0, Configure System Charts](#e-for-rancher-versions-prior-to-v2-3-0-configure-system-charts)
+- [E. For Rancher versions before v2.3.0, Configure System Charts](#e-for-rancher-versions-before-v2-3-0-configure-system-charts)
 
 ### A. Add the Helm Chart Repository
 
@@ -209,9 +209,9 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 **Step Result:** If you are installing Rancher v2.3.0+, the installation is complete.
 
-### E. For Rancher versions prior to v2.3.0, Configure System Charts
+### E. For Rancher versions before v2.3.0, Configure System Charts
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/).
+If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/).
 
 ### Additional Resources
 
@@ -238,7 +238,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/chart-options/#additional-trusted-cas).
 > - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log).
 
-- For Rancher prior to v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher prior to v2.3.0.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/)
+- For Rancher before v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher before v2.3.0.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/)
 
 Choose from the following options:
 
@@ -328,7 +328,7 @@ docker run -d --restart=unless-stopped \
 
 If you are installing Rancher v2.3.0+, the installation is complete.
 
-If you are installing Rancher versions prior to v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/).
+If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/local-system-charts/).
 
 {{% /tab %}}
 {{% /tabs %}}

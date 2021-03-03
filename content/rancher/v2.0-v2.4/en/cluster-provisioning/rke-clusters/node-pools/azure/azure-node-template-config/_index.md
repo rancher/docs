@@ -22,7 +22,7 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
 
 {{% /tab %}}
-{{% tab "Rancher prior to v2.2.0" %}}
+{{% tab "Rancher before v2.2.0" %}}
 
 - **Account Access** stores your account information for authenticating with Azure. 
 - **Placement** sets the geographical region where your cluster is hosted and other location metadata.

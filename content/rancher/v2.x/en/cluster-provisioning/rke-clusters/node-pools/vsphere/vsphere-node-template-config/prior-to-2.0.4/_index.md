@@ -1,6 +1,6 @@
 ---
-title: vSphere Node Template Configuration in Rancher prior to v2.0.4
-shortTitle: Prior to v2.0.4
+title: vSphere Node Template Configuration in Rancher before v2.0.4
+shortTitle: Before v2.0.4
 weight: 5
 ---
 

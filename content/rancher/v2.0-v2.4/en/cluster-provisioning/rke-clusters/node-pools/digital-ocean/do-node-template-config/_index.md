@@ -21,7 +21,7 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
 {{% /tab %}}
-{{% tab "Rancher prior to v2.2.0" %}}
+{{% tab "Rancher before v2.2.0" %}}
 
 ### Access Token
 

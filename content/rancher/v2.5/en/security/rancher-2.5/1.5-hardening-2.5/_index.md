@@ -13,7 +13,7 @@ This hardening guide is intended to be used for RKE clusters and associated with
 ----------------|-----------------------|------------------
  Rancher v2.5 | Benchmark v1.5 | Kubernetes 1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.5.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.6.pdf)
 
 ### Overview
 
@@ -41,7 +41,7 @@ kernel.keys.root_maxbytes=25000000
 Run `sysctl -p /etc/sysctl.d/90-kubelet.conf` to enable the settings.
 
 ### Configure `etcd` user and group
-A user account and group for the **etcd** service is required to be setup prior to installing RKE. The **uid** and **gid** for the **etcd** user will be used in the RKE **config.yml** to set the proper permissions for files and directories during installation time.
+A user account and group for the **etcd** service is required to be setup before installing RKE. The **uid** and **gid** for the **etcd** user will be used in the RKE **config.yml** to set the proper permissions for files and directories during installation time.
 
 #### create `etcd` user and group
 To create the **etcd** group run the following console commands.

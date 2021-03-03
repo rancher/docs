@@ -366,7 +366,7 @@ Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/u
 | Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 
 {{% /tab %}}
-{{% tab "Rancher prior to v2.5" %}}
+{{% tab "Rancher before v2.5" %}}
 
 
 ### Account Access
@@ -508,7 +508,7 @@ Service Role | The service role provides Kubernetes the permissions it requires 
 VPC | Provides isolated network resources utilised by EKS and worker nodes. Rancher can create the VPC resources with the following [VPC Permissions]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/eks/#vpc-permissions).
 
 
-Resource targeting uses `*` as the ARN of many of the resources created cannot be known prior to creating the EKS cluster in Rancher.
+Resource targeting uses `*` as the ARN of many of the resources created cannot be known before creating the EKS cluster in Rancher.
 
 ```json
 {

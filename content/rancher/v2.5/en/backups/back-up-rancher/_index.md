@@ -19,7 +19,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 
 1. In the Rancher UI, go to the **Cluster Explorer.**
 1. Click **Apps.**
-1. Click `rancher-backup`.
+1. Click **Rancher Backups.**
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
 
 ### 2. Perform a Backup

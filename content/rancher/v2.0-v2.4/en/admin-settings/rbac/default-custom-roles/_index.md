@@ -61,7 +61,7 @@ The steps to add custom roles differ depending on the version of Rancher.
 1.  Click **Create**.
 
 {{% /tab %}}
-{{% tab "Rancher prior to v2.0.7" %}}
+{{% tab "Rancher before v2.0.7" %}}
 
 1.  From the **Global** view, select **Security > Roles** from the main menu.
 

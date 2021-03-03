@@ -25,7 +25,7 @@ All the tests that are skipped and not applicable on this page will be counted a
 | 1.2.16 | Ensure that the admission control plugin PodSecurityPolicy is set (Scored) |  Enabling Pod Security Policy can cause applications to unexpectedly fail.     |
 | 1.2.33 | Ensure that the --encryption-provider-config argument is set as appropriate (Not Scored)  |  Enabling encryption changes how data can be recovered as data is encrypted.     |
 | 1.2.34 | Ensure that encryption providers are appropriately configured (Not Scored) |  Enabling encryption changes how data can be recovered as data is encrypted.     |
-| 4.2.6 | Ensure that the --protect-kernel-defaults argument is set to true (Scored) |  System level configurations are required prior to provisioning the cluster in order for this argument to be set to true.     |
+| 4.2.6 | Ensure that the --protect-kernel-defaults argument is set to true (Scored) |  System level configurations are required before provisioning the cluster in order for this argument to be set to true.     |
 | 4.2.10 |  Ensure that the--tls-cert-file and --tls-private-key-file arguments are set as appropriate (Scored) |  When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.     |
 | 5.1.5 |  Ensure that default service accounts are not actively used. (Scored)  |  Kubernetes provides default service accounts to be used.     |
 | 5.2.2 | Minimize the admission of containers wishing to share the host process ID namespace (Scored) |  Enabling Pod Security Policy can cause applications to unexpectedly fail.     |
@@ -81,7 +81,7 @@ Number | Description | Reason for Skipping
 1.7.3 | "Do not admit containers wishing to share the host IPC namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
 1.7.4 | "Do not admit containers wishing to share the host network namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
 1.7.5 | " Do not admit containers with allowPrivilegeEscalation (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
-2.1.6 | "Ensure that the --protect-kernel-defaults argument is set to true (Scored)" | System level configurations are required prior to provisioning the cluster in order for this argument to be set to true.
+2.1.6 | "Ensure that the --protect-kernel-defaults argument is set to true (Scored)" | System level configurations are required before provisioning the cluster in order for this argument to be set to true.
 2.1.10 | "Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Scored)" | When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.
 
 ### CIS Benchmark v1.4 Not Applicable Tests

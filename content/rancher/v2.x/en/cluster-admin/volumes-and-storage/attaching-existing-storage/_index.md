@@ -57,7 +57,7 @@ These steps describe how to set up a PVC in the namespace where your stateful wo
 
 1. Go to the project containing a workload that you want to add a persistent volume claim to.
 
-1. Then click the **Volumes** tab and click **Add Volume**. (In versions prior to v2.3.0, click **Workloads** on the main navigation bar, then **Volumes.**) 
+1. Then click the **Volumes** tab and click **Add Volume**. (In versions before v2.3.0, click **Workloads** on the main navigation bar, then **Volumes.**) 
 
 1. Enter a **Name** for the volume claim.
 

@@ -67,7 +67,7 @@ There are also separate instructions for installing Rancher in an air gap enviro
 | Level of Internet Access           | Kubernetes Installation - Strongly Recommended                | Docker Installation                             |
 | ---------------------------------- | ------------------------------ | ---------- |
 | With direct access to the Internet | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker)                                                                                     |
-| Behind an HTTP proxy                | These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/#http-proxy) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
+| Behind an HTTP proxy                | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/behind-proxy/) |  These [docs,]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) plus this [configuration]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/) |
 | In an air gap environment          | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                                                               | [Docs]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/air-gap)                                                                                         |
 
 We recommend installing Rancher on a Kubernetes cluster, because in a multi-node cluster, the Rancher management server becomes highly available. This high-availability configuration helps maintain consistent access to the downstream Kubernetes clusters that Rancher will manage.
@@ -78,7 +78,7 @@ For that reason, we recommend that for a production-grade architecture, you shou
 > 
 > For Rancher v2.5, any Kubernetes cluster can be used.
 > For Rancher v2.4.x, either an RKE Kubernetes cluster or K3s Kubernetes cluster can be used. 
-> For Rancher prior to v2.4, an RKE cluster must be used.
+> For Rancher before v2.4, an RKE cluster must be used.
 
 For testing or demonstration purposes, you can install Rancher in single Docker container. In this Docker install, you can use Rancher to set up Kubernetes clusters out-of-the-box. The Docker install allows you to explore the Rancher server functionality, but it is intended to be used for development and testing purposes only.
 

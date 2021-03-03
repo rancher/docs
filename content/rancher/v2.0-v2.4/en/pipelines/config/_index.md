@@ -393,7 +393,7 @@ This section covers the following topics:
 
 1. From the **Global** view, navigate to the project that you want to configure a pipeline trigger rule.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
@@ -411,7 +411,7 @@ This section covers the following topics:
 
 1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
@@ -436,7 +436,7 @@ This section covers the following topics:
 
 1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
 
@@ -491,7 +491,7 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
 
@@ -534,7 +534,7 @@ Create a secret in the same project as your pipeline, or explicitly in the names
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
 
@@ -584,7 +584,7 @@ Variable Name           | Description
 
 # Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. These settings can be edited by selecting **Tools > Pipelines** in the navigation bar. In versions prior to v2.2.0, you can select **Resources > Pipelines**.
+After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. These settings can be edited by selecting **Tools > Pipelines** in the navigation bar. In versions before v2.2.0, you can select **Resources > Pipelines**.
 
 - [Executor Quota](#executor-quota)
 - [Resource Quota for Executors](#resource-quota-for-executors)

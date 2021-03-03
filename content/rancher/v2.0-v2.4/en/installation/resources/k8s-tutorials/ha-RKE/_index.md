@@ -9,7 +9,7 @@ aliases:
 
 This section describes how to install a Kubernetes cluster. This cluster should be dedicated to run only the Rancher server.
 
-For Rancher prior to v2.4, Rancher should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+For Rancher before v2.4, Rancher should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 
 As of Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
 

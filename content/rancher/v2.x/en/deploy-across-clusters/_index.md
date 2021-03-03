@@ -15,4 +15,4 @@ Fleet is GitOps at scale. For more information, refer to the [Fleet section.](./
 
 ### Multi-cluster Apps
 
-In Rancher prior to v2.5, the multi-cluster apps feature was used to deploy applications across clusters. Refer to the documentation [here.](./multi-cluster-apps)
+In Rancher before v2.5, the multi-cluster apps feature was used to deploy applications across clusters. Refer to the documentation [here.](./multi-cluster-apps)

@@ -34,7 +34,7 @@ Persistent volume claims (PVCs) are objects that request storage resources from 
 
 To access persistent storage, a pod must have a PVC mounted as a volume. This PVC lets your deployment application store its data in an external location, so that if a pod fails, it can be replaced with a new pod and continue accessing its data stored externally, as though an outage never occurred.
 
-Each Rancher project contains a list of PVCs that you've created, available from **Resources > Workloads > Volumes.** (In versions prior to v2.3.0, the PVCs are in the **Volumes** tab.) You can reuse these PVCs when creating deployments in the future.
+Each Rancher project contains a list of PVCs that you've created, available from **Resources > Workloads > Volumes.** (In versions before v2.3.0, the PVCs are in the **Volumes** tab.) You can reuse these PVCs when creating deployments in the future.
 
 ### PVCs are Required for Both New and Existing Persistent Storage
 

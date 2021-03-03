@@ -11,7 +11,7 @@ When you create a [custom cluster]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-pr
 
 You can provision a custom Windows cluster using Rancher by using a mix of Linux and Windows hosts as your cluster nodes.
 
->**Important:** In versions of Rancher prior to v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher prior to v2.3.
+>**Important:** In versions of Rancher before v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher before v2.3.
 
 This guide walks you through create of a custom cluster that includes three nodes:
 

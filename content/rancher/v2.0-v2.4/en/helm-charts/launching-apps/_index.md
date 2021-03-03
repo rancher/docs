@@ -29,7 +29,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
 1. From the **Global** view, open the project that you want to deploy an app to.
 
-2. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
+2. From the main navigation bar, choose **Apps**. In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
 3. Find the app that you want to launch, and then click **View Now**.
 
@@ -48,7 +48,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
 7. Review the files in **Preview**. When you're satisfied, click **Launch**.
 
-**Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's **Workloads** view or **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
+**Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's **Workloads** view or **Apps** view. In versions before v2.2.0, this is the **Catalog Apps** view.
 
 # Configuration Options
 
