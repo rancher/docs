@@ -65,7 +65,7 @@ For more information on configuring the number of replicas for each addon, refer
 For an example showing how to configure the addons, refer to the [example cluster.yml.]({{<baseurl>}}/rke/latest/en/upgrades/configuring-strategy/#example-cluster-yml)
 
 {{% /tab %}}
-{{% tab "RKE prior to v1.1.0" %}}
+{{% tab "RKE before v1.1.0" %}}
 
 When a cluster is upgraded with `rke up`, using the default options, the following process is used:
 

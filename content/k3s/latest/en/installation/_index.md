@@ -9,7 +9,7 @@ This section contains instructions for installing K3s in various environments. P
 
 [High Availability with an External DB]({{<baseurl>}}/k3s/latest/en/installation/ha/) details how to set up an HA K3s cluster backed by an external datastore such as MySQL, PostgreSQL, or etcd.
 
-[High Availability with Embedded DB (Experimental)]({{<baseurl>}}/k3s/latest/en/installation/ha-embedded/) details how to set up an HA K3s cluster that leverages a built-in distributed database.
+[High Availability with Embedded DB]({{<baseurl>}}/k3s/latest/en/installation/ha-embedded/) details how to set up an HA K3s cluster that leverages a built-in distributed database.
 
 [Air-Gap Installation]({{<baseurl>}}/k3s/latest/en/installation/airgap/) details how to set up K3s in environments that do not have direct access to the Internet.
 

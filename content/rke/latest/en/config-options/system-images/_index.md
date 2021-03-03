@@ -63,7 +63,7 @@ system_images:
   metrics_server: rancher/metrics-server-amd64:v0.3.1
 ```
 
-Prior to `v0.1.6`, instead of using the `rancher/rke-tools` image, we used the following images:
+Before `v0.1.6`, instead of using the `rancher/rke-tools` image, we used the following images:
 
 ```yaml
 system_images:

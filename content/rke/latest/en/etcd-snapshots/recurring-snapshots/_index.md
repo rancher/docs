@@ -30,8 +30,8 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 
 |Option|Description| S3 Specific |
 |---|---| --- |
-|**interval_hours**| The duration in hours between recurring backups.  This supercedes the `creation` option (which was used in RKE prior to v0.2.0) and will override it if both are specified.| |
-|**retention**| The number of snapshots to retain before rotation. If the retention is configured in both `etcd.retention` (time period to keep snapshots in hours), which was required in RKE prior to v0.2.0, and at `etcd.backup_config.retention` (number of snapshots), the latter will be used. | |
+|**interval_hours**| The duration in hours between recurring backups.  This supercedes the `creation` option (which was used in RKE before v0.2.0) and will override it if both are specified.| |
+|**retention**| The number of snapshots to retain before rotation. If the retention is configured in both `etcd.retention` (time period to keep snapshots in hours), which was required in RKE before v0.2.0, and at `etcd.backup_config.retention` (number of snapshots), the latter will be used. | |
 |**bucket_name**| S3 bucket name where backups will be stored| * |
 |**folder**| Folder inside S3 bucket where backups will be stored. This is optional. _Available as of v0.3.0_ | * |
 |**access_key**| S3 access key with permission to access the backup bucket.| * |
@@ -96,11 +96,11 @@ services:
 ```
 
 {{% /tab %}}
-{{% tab "RKE prior to v0.2.0"%}}
+{{% tab "RKE before v0.2.0"%}}
 
 To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service with [extra configuration options](#options-for-the-local-etcd-snapshot-service). `etcd-snapshot` runs in a service container alongside the `etcd` container. By default, the `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`.
 
-RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and pki bundle file are required for the restore process in versions prior to v0.2.0.
+RKE saves a backup of the certificates, i.e. a file named `pki.bundle.tar.gz`, in the same location. The snapshot and pki bundle file are required for the restore process in versions before v0.2.0.
 
 ### Snapshot Service Logging
 

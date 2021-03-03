@@ -44,7 +44,7 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
 
 1. Using a remote Terminal connection, log into the node running your Rancher Server.
 
-1. Pull the version of Rancher that you were running before upgrade. Replace the `<PRIOR_RANCHER_VERSION>` with [that version](#before-you-start).
+1. Pull the version of Rancher that you were running before upgrade. Replace the `<PRIOR_RANCHER_VERSION>` with that version.
 
     For example, if you were running Rancher v2.0.5 before upgrade, pull v2.0.5.
 
