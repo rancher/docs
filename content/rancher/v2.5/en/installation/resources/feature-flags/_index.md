@@ -37,7 +37,7 @@ The below table shows the availability and default value for feature flags in Ra
 | Feature Flag Name             | Default Value | Status       | Available as of | Rancher Restart Required? |
 | ----------------------------- | ------------- | ------------ | --------------- |---|
 | `dashboard` | `true` | Experimental | v2.4.0 | x |
-| `dashboard` | `true` | GA* | v2.5.0 | x |
+| `dashboard` | `true` | GA* and no longer a feature flag | v2.5.0 | x |
 | `istio-virtual-service-ui`    | `false`       | Experimental | v2.3.0          | |
 | `istio-virtual-service-ui`    | `true`        | GA*           | v2.3.2          | |
 | `proxy` | `false` | Experimental | v2.4.0 | |
