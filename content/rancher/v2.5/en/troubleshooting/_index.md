@@ -32,10 +32,6 @@ This section contains information to help you troubleshoot issues when using Ran
 
     If you experience issues with your [Rancher server installed on Kubernetes]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/)
 
-- [Registered clusters]({{<baseurl>}}/rancher/v2.5/en/troubleshooting/registered-clusters/)
-
-    If you experience issues when [Registering Kubernetes Clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/)
-
 - [Logging]({{<baseurl>}}/rancher/v2.5/en/troubleshooting/logging/)
 
     Read more about what log levels can be configured and how to configure a log level.

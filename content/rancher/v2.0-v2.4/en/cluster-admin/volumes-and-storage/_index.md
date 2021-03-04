@@ -5,6 +5,7 @@ weight: 2031
 aliases:
   - /rancher/v2.0-v2.4/en/tasks/clusters/adding-storage/
   - /rancher/v2.0-v2.4/en/cluster-admin/volumes-and-storage/persistent-volume-claims/
+  - /rancher/v2.0-v2.4/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/
 ---
 When deploying an application that needs to retain data, you'll need to create persistent storage. Persistent storage allows you to store application data external from the pod running your application. This storage practice allows you to maintain application data, even if the application's pod fails.
 

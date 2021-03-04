@@ -154,7 +154,7 @@ stages:
 
 # Step Type: Publish Catalog Template
 
-The **Publish Catalog Template** step publishes a version of a catalog app template (i.e. Helm chart) to a [git hosted chart repository]({{<baseurl>}}/rancher/v2.5/en/catalog/custom/). It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. Any variables in the [pipeline variable substitution reference](#pipeline-variable-substitution-reference) is supported for any file in the chart folder.
+The **Publish Catalog Template** step publishes a version of a catalog app template (i.e. Helm chart) to a git hosted chart repository. It generates a git commit and pushes it to your chart repository. This process requires a chart folder in your source code's repository and a pre-configured secret in the dedicated pipeline namespace to complete successfully. Any variables in the [pipeline variable substitution reference](#pipeline-variable-substitution-reference) is supported for any file in the chart folder.
 
 ### Configuring Publishing a Catalog Template by UI
 
