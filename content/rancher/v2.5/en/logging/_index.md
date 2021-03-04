@@ -7,6 +7,7 @@ weight: 15
 aliases:
   - /rancher/v2.5/en/dashboard/logging
   - /rancher/v2.5/en/logging/v2.5
+  - /rancher/v2.5/en/cluster-admin/tools/logging 
 ---
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)

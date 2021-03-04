@@ -3,6 +3,7 @@ title: Selectors and Scrape Configs
 weight: 2
 aliases:
   - /rancher/v2.5/en/istio/v2.5/configuration-reference/selectors-and-scrape
+  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/node-selectors
 ---
 
 The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=false`, which enables monitoring across all namespaces by default.

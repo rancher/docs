@@ -4,6 +4,7 @@ weight: 30
 aliases:
 - /rancher/v2.x/en/installation/troubleshooting-ha/404-default-backend/
 - /rancher/v2.x/en/installation/options/helm2/rke-add-on/troubleshooting/404-default-backend
+- /rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/404-default-backend/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

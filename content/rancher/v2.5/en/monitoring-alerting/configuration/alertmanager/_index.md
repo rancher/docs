@@ -3,6 +3,9 @@ title: Alertmanager
 weight: 1
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager
+  - rancher/v2.5/en/monitoring-alerting/legacy/notifiers/
+  - /rancher/v2.5/en/cluster-admin/tools/notifiers
+  - /rancher/v2.5/en/cluster-admin/tools/alerts
 ---
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.

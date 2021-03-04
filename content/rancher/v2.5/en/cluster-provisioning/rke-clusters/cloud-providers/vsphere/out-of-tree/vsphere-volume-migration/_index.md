@@ -1,6 +1,8 @@
 ---
 title: Migrating vSphere In-tree Volumes to CSI
 weight: 5
+aliases:
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/migrating-rancher
 ---
 _Available as of v2.5+_
 

@@ -3,6 +3,7 @@ title: Project Administration
 weight: 9
 aliases:
   - /rancher/v2.0-v2.4/en/project-admin/editing-projects/
+  - /rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/editing-projects/
 ---
 
 _Projects_ are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.

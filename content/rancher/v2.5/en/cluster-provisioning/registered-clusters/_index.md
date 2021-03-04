@@ -1,6 +1,8 @@
 ---
 title: Registering Existing Clusters
 weight: 6
+aliases:
+  - /rancher/v2.5/en/cluster-provisioning/imported-clusters
 ---
 
 _Available as of v2.5_
