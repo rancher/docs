@@ -4,9 +4,9 @@ shortTitle: In-tree Cloud Provider
 weight: 10
 ---
 
-To set up the out-of-tree vSphere cloud provider, follow these steps while creating the vSphere cluster in Rancher:
+To set up the in-tree vSphere cloud provider, follow these steps while creating the vSphere cluster in Rancher:
 
-1. Set **Cloud Provider** option to `Custom`.
+1. Set **Cloud Provider** option to `Custom` or `Custom (In-Tree)`.
 
     {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
 
