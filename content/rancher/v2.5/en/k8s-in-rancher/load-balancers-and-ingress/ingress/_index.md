@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress/ingress  
 ---
 
-Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing. When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.5/en/catalog/globaldns/).
+Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing. When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry.
 
 1. From the **Global** view, open the project that you want to add ingress to.
 1. Click **Resources** in the main navigation bar. Click the **Load Balancing** tab. Then click **Add Ingress**.
