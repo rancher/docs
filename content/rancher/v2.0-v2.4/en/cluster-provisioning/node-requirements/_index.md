@@ -108,7 +108,7 @@ The ports required to be open are different depending on how the user cluster is
 
 For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)
 
-Details on which ports are used in each situation are found under [Downstream Cluster Port Requirements](({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/requirements/ports#downstream-kubernetes-cluster-nodes)).
+Details on which ports are used in each situation are found under [Downstream Cluster Port Requirements]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/requirements/ports#downstream-kubernetes-cluster-nodes).
 
 # Optional: Security Considerations
 
