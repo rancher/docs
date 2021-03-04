@@ -1,5 +1,6 @@
 ---
-title: vSphere Out-of-tree Cloud Provider
+title: How to Configure Out-of-tree vSphere
+shortTitle: Out-of-tree Cloud Provider
 weight: 10
 ---
 _Available as of v2.5.6_
@@ -10,7 +11,11 @@ This page covers how to install the CPI and CSI plugins after bringing up a clus
 
 # Prerequisites
 
-The vSphere version must be 6.7U3 or higher. 
+The vSphere version must be 7.0u1 or higher. 
+
+The Kubernetes version must be 1.19 or higher.
+
+Using the vSphere out-of-tree cloud provider requires Linux nodes and is not supported on Windows.
 
 # Installation
 
@@ -25,7 +30,7 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 ### 2. Install the CPI plugin
  
  1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
-1. Select the **vsphere-cpi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
+1. Select the **vsphere-cpi** chart. Fill out the required vCenter details.
 1. vSphere CPI initializes all nodes with ProviderID which is needed by the vSphere CSI driver. Check if all nodes are initialized with the ProviderID before installing CSI driver with the following command:
 
 	```
@@ -35,7 +40,7 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 ### 3. Installing the CSI plugin
 
  1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
-1. Select the **vsphere-csi** chart from the **helm3-library** catalog. Fill out the required vCenter details.
+1. Select the **vsphere-csi** chart. Fill out the required vCenter details.
 2. Set **Enable CSI Migration** to **false**.
 3. This chart creates a StorageClass with the `csi.vsphere.vmware.com` as the provisioner. Fill out the details for the StorageClass and launch the chart.
 
