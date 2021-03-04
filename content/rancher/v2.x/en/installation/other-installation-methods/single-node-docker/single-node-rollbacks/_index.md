@@ -63,7 +63,7 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
 
     If you followed the naming convention we suggested in [Docker Upgrade]({{<baseurl>}}/rancher/v2.x/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
 
-1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the placeholder. Don't forget to close the quotes.
+1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the [placeholder](#before-you-start). Don't forget to close the quotes.
 
     ```
     docker run  --volumes-from rancher-data \
@@ -71,7 +71,7 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     && tar zxvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz"
     ```
 
-1. Start a new Rancher Server container with the `<PRIOR_RANCHER_VERSION>` tag placeholder pointing to the data container.
+1. Start a new Rancher Server container with the `<PRIOR_RANCHER_VERSION>` tag [placeholder](#before-you-start) pointing to the data container.
     ```
     docker run -d --volumes-from rancher-data \
     --restart=unless-stopped \

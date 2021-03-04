@@ -104,8 +104,8 @@ The default roles, Administrator and Standard User, each come with multiple glob
 Administrators can enforce custom global permissions in multiple ways:
 
 - [Changing the default permissions for new users](#configuring-default-global-permissions)
-- [Configuring global permissions for individual users](#configuring-global-permissions-for-individual-users)
-- [Configuring global permissions for groups](#configuring-global-permissions-for-groups)
+- [Editing the permissions of an existing user](#configuring-global-permissions-for-individual-users)
+- [Assigning a custom global permission to a group](#assigning-a-custom-global-permission-to-a-group)
 
 ### Custom Global Permissions Reference
 
@@ -156,7 +156,7 @@ To change the default global permissions that are assigned to external users upo
 
 **Result:** The default global permissions are configured based on your changes. Permissions assigned to new users display a check in the **New User Default** column.
 
-### Configuring Global Permissions for Individual Users
+### Configuring Global Permissions for Existing Individual Users
 
 To configure permission for a user,
 

@@ -40,7 +40,7 @@ You can choose to not have any operator-level storage location configured. If yo
 
 Installing the `rancher-backup` chart by selecting the StorageClass option will create a Persistent Volume Claim (PVC), and Kubernetes will in turn dynamically provision a Persistent Volume (PV) where all the backups will be saved by default.
 
-For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/provisioning-new-storage/)
+For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/provisioning-new-storage/#1-add-a-storage-class-and-configure-it-to-use-your-storage-provider)
 
 > **Important**
 It is highly recommended to use a StorageClass with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  

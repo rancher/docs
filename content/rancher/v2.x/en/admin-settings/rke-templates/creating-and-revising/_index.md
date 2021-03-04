@@ -37,7 +37,7 @@ You can revise, share, and delete a template if you are an owner of the template
 1. From the **Global** view, click **Tools > RKE Templates.**
 1. Click **Add Template.**
 1. Provide a name for the template. An auto-generated name is already provided for the template' first version, which is created along with this template.
-1. Optional: Share the template with other users or groups by [adding them as members.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users-or-groups) You can also make the template public to share with everyone in the Rancher setup.
+1. Optional: Share the template with other users or groups by [adding them as members.]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-templates-with-specific-users) You can also make the template public to share with everyone in the Rancher setup.
 1. Then follow the form on screen to save the cluster configuration parameters as part of the template's revision. The revision can be marked as default for this template.
 
 **Result:** An RKE template with one revision is configured. You can use this RKE template revision later when you [provision a Rancher-launched cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters). After a cluster is managed by an RKE template, it cannot be disconnected and the option to uncheck **Use an existing RKE Template and Revision** will be unavailable.

@@ -113,7 +113,7 @@ I1002 12:55:32.925630       1 heapster.go:101] Starting Heapster API server...
 I1002 12:55:32.928597       1 serve.go:85] Serving securely on 0.0.0.0:443
 ```
 
-If you have created your cluster in Rancher v2.0.6 or before, please refer to the manual installation.
+If you have created your cluster in Rancher v2.0.6 or before, please refer to [Manual installation](#manual-installation)
 
 ##### Configuring HPA to Scale Using Custom Metrics with Prometheus
 

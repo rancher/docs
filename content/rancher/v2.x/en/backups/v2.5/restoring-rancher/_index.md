@@ -48,9 +48,15 @@ A restore is performed by creating a Restore custom resource.
 2. Cluster-scoped resources
 3. Namespaced resources
 
+### Logs
+
 To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
 
 ```yaml
 kubectl get pods -n cattle-resources-system
 kubectl logs <pod name from above command> -n cattle-resources-system -f
 ```
+
+### Cleanup
+
+If you created the restore resource with kubectl, remove the resource to prevent a naming conflict with future restores.

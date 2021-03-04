@@ -7,8 +7,8 @@ aliases:
 
 There are two recommended deployment strategies. Each one has its own pros and cons. Read more about which one would fit best for your use case:
 
-* [Hub and Spoke](#hub-and-spoke-strategy)
-* [Regional](#regional-strategy)
+* [Hub and Spoke](#hub-and-spoke)
+* [Regional](#regional)
 
 # Hub & Spoke Strategy
 ---

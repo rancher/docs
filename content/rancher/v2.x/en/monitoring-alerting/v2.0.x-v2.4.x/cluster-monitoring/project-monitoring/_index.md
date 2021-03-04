@@ -24,9 +24,9 @@ Using Prometheus, you can monitor Rancher at both the [cluster level]({{<baseurl
 
 - [Cluster monitoring]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) allows you to view the health of your Kubernetes cluster. Prometheus collects metrics from the cluster components below, which you can view in graphs and charts.
 
-    - Kubernetes control plane
-    - etcd database
-    - All nodes (including workers)
+    - [Kubernetes control plane]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#kubernetes-components-metrics)
+    - [etcd database]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#etcd-metrics)
+    - [All nodes (including workers)]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics/#cluster-metrics)
 
 - Project monitoring allows you to view the state of pods running in a given project. Prometheus collects metrics from the project's deployed HTTP and TCP/UDP workloads.
 

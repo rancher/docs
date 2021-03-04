@@ -53,7 +53,7 @@ For details on how each cluster role can access Kubernetes resources, you can go
 
 ### Giving a Custom Cluster Role to a Cluster Member
 
-After an administrator [sets up a custom cluster role,]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/) cluster owners and admins can then assign those roles to cluster members.
+After an administrator [sets up a custom cluster role,]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/default-custom-roles/#adding-a-custom-role) cluster owners and admins can then assign those roles to cluster members.
 
 To assign a custom role to a new cluster member, you can use the Rancher UI. To modify the permissions of an existing member, you will need to use the Rancher API view.
 

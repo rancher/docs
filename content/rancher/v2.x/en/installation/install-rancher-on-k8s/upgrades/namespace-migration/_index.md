@@ -173,7 +173,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 {{% /tab %}}
 {{% tab "Rancher Launched Kubernetes" %}}
 <br/>
-If you can access Rancher, but one or more of the clusters that you launched using Rancher has no networking, you can repair them by moving them:
+If you can access Rancher, but one or more of the clusters that you launched using Rancher has no networking, you can repair them by moving the
 
 - Using the cluster's [embedded kubectl shell]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/kubectl/).
 - By [downloading the cluster kubeconfig file and running it]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/cluster-access/kubectl) from your workstation.

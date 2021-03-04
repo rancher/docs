@@ -309,7 +309,7 @@ timeout: 30
 
 # Notifications
 
-You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/) so it will be easy to add recipients immediately.
+You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers/) based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/#adding-notifiers) so it will be easy to add recipients immediately.
 
 ### Configuring Notifications by UI
 
@@ -319,7 +319,7 @@ _Available as of v2.2.0_
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
 
-1. If you don't have any existing [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
+1. If you don't have any existing [notifiers]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/#adding-notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
     > **Note:** Notifiers are configured at a cluster level and require a different level of permissions.
 

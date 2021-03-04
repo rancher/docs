@@ -26,11 +26,10 @@ Configuring Rancher to allow your users to authenticate with their Azure AD acco
 <!-- TOC -->
 
 - [1. Register Rancher with Azure](#1-register-rancher-with-azure)
-- [2. Create a new client secret](#2-create-a-new-client-secret)
+- [2. Create an Azure API Key](#2-create-an-azure-api-key)
 - [3. Set Required Permissions for Rancher](#3-set-required-permissions-for-rancher)
-- [4. Add a Reply URL](#4-add-a-reply-url)
-- [5. Copy Azure Application Data](#5-copy-azure-application-data)
-- [6. Configure Azure AD in Rancher](#6-configure-azure-ad-in-rancher)
+- [4. Copy Azure Application Data](#4-copy-azure-application-data)
+- [5. Configure Azure AD in Rancher](#5-configure-azure-ad-in-rancher)
 
 <!-- /TOC -->
 
@@ -176,7 +175,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
         
 >**Note:** Copy the v1 version of the endpoints
 
-### 6. Configure Azure AD in Rancher
+### 5. Configure Azure AD in Rancher
 
 From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
 

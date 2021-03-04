@@ -41,7 +41,7 @@ Select this option if you are restoring from a backup file that exists in the de
 
 ### An S3-compatible object store
 
-Select this option if no default storage location is configured at the operator-level, OR if the backup file exists in a different S3 bucket than the one configured as the default storage location. Provide the exact filename in the **Backup Filename** field. Refer to [this section](#getting-the-backup-filename-from-s3) for exact steps on getting the backup filename from s3. Fill in all the details for the S3 compatible object store. Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the [Backup custom resource.](../../configuration/backup-config/#storage-location)
+Select this option if no default storage location is configured at the operator-level, OR if the backup file exists in a different S3 bucket than the one configured as the default storage location. Provide the exact filename in the **Backup Filename** field. Refer to [this section](#getting-the-backup-filename-from-s3) for exact steps on getting the backup filename from s3. Fill in all the details for the S3 compatible object store. Its fields are exactly same as ones for the `backup.StorageLocation` configuration in the [Backup custom resource.](../../configuration/backup-config/#storagelocation)
 
 {{< img "/img/rancher/backup_restore/restore/s3store.png" "">}} 
 

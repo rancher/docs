@@ -3,7 +3,7 @@ title: RancherD Configuration Reference
 weight: 1
 ---
 
-> This is an experimental feature.
+> RancherD is an experimental feature.
 
 In RancherD, a server node is defined as a machine (bare-metal or virtual) running the `rancherd server` command. The server runs the Kubernetes API as well as Kubernetes workloads.
 
@@ -75,7 +75,7 @@ Put this manifest on your host in `/var/lib/rancher/rke2/server/manifests` befor
 | `extraEnv`                     | []                                                    | ***list*** - set additional environment variables for Rancher Note: *Available as of v2.2.0*                                                                                                                 |
 | `imagePullSecrets`             | []                                                    | ***list*** - list of names of Secret resource containing private registry credentials                                                                                                                        |
 | `proxy`                        | " "                                                   | ***string** - HTTP[S] proxy server for Rancher                                                                                                                                                               |
-| `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" | ***string*** - comma separated list of hostnames or ip address not to use the proxy                                                                                                                          |
+| `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16" | ***string*** - comma separated list of hostnames or ip address not to use the proxy                                                                                                                          |
 | `resources`                    | {}                                                    | ***map*** - rancher pod resource requests & limits                                                                                                                                                           |
 | `rancherImage`                 | "rancher/rancher"                                     | ***string*** - rancher image source                                                                                                                                                                          |
 | `rancherImageTag`              | same as chart version                                 | ***string*** - rancher/rancher image tag                                                                                                                                                                     |
