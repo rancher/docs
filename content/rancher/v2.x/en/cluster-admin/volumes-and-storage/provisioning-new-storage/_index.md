@@ -44,7 +44,7 @@ To use a storage provisioner that is not on the above list, you will need to use
 
 These steps describe how to set up a storage class at the cluster level.
 
-1. Go to the cluster for which you want to dynamically provision persistent storage volumes.
+1. Go to the **Cluster Explorer** of the cluster for which you want to dynamically provision persistent storage volumes.
 
 1. From the cluster view, select `Storage > Storage Classes`. Click `Add Class`.
 
@@ -64,7 +64,7 @@ For full information about the storage class parameters, refer to the official [
 
 These steps describe how to set up a PVC in the namespace where your stateful workload will be deployed.
 
-1. Go to the project containing a workload that you want to add a PVC to.
+1. Go to the **Cluster Manager** to the project containing a workload that you want to add a PVC to.
 
 1. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Then select the **Volumes** tab. Click **Add Volume**.
 
@@ -94,7 +94,7 @@ To attach the PVC to a new workload,
 
 1. Create a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/deploy-workloads/).
 1. For **Workload Type**, select **Stateful set of 1 pod**.
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
+1. Expand the **Volumes** section and click **Add Volume > Use an Existing Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Launch.**
@@ -105,7 +105,7 @@ To attach the PVC to an existing workload,
 
 1. Go to the project that has the workload that will have the PVC attached.
 1. Go to the workload that will have persistent storage and click **&#8942; > Edit.**
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
+1. Expand the **Volumes** section and click **Add Volume > Use an Existing Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Save.**

@@ -16,7 +16,7 @@ There are a few things worth noting:
 
 * In addition to these pluggable add-ons, you can specify an add-on that you want deployed after the cluster deployment is complete.
 * As of v0.1.8, RKE will update an add-on if it is the same name.
-* Prior to v0.1.8, update any add-ons by using `kubectl edit`.
+* Before v0.1.8, update any add-ons by using `kubectl edit`.
 
 ## Critical and Non-Critical Add-ons
 

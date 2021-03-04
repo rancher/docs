@@ -168,6 +168,14 @@ The following tables break down the port requirements for Rancher nodes, for inb
 
 {{% /accordion %}}
 
+### Ports for Rancher Server in GCP GKE
+
+When deploying Rancher into a Google Kubernetes Engine [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters), the nodes where Rancher runs must be accessible from the control plane:
+
+| Protocol | Port | Source | Description |
+|-----|-----|----------------|---|
+| TCP | 9443 | The GKE master `/28` range | Rancher webhooks |
+
 # Downstream Kubernetes Cluster Nodes
 
 Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.

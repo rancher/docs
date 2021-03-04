@@ -15,7 +15,7 @@ For convenience export the IP address and port of your proxy into an environment
 export proxy_host="10.0.0.5:8888"
 export HTTP_PROXY=http://${proxy_host}
 export HTTPS_PROXY=http://${proxy_host}
-export NO_PROXY=127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16
+export NO_PROXY=127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,cattle-system.svc
 ```
 
 Next configure apt to use this proxy when installing packages. If you are not using Ubuntu, you have to adapt this step accordingly:
