@@ -31,6 +31,7 @@ This section is a cluster configuration reference, covering the following topics
   - [Docker version on nodes](#docker-version-on-nodes)
   - [Docker root directory](#docker-root-directory)
   - [Recurring etcd snapshots](#recurring-etcd-snapshots)
+  - [Agent Environment Variables](#agent-environment-variables)
 - [Cluster config file](#cluster-config-file)
   - [Config file structure in Rancher v2.3.0+](#config-file-structure-in-rancher-v2-3-0)
   - [Default DNS provider](#default-dns-provider)
@@ -136,6 +137,13 @@ If the nodes you are adding to the cluster have Docker configured with a non-def
 ### Recurring etcd Snapshots
 
 Option to enable or disable [recurring etcd snapshots]({{<baseurl>}}/rke/latest/en/etcd-snapshots/#etcd-recurring-snapshots).
+
+### Agent Environment Variables
+
+_Available as of v2.5.6_
+
+Option to set environment variables for [rancher agents]({{<baseurl>}}rancher/v2.x/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+
 
 # Cluster Config File
 
