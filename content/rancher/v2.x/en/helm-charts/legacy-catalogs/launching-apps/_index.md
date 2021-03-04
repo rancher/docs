@@ -7,7 +7,7 @@ aliases:
 
 Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-scopes).
 
-If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
+If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/).
 
 - [Prerequisites](#prerequisites)
 - [Launching a catalog app](#launching-a-catalog-app)

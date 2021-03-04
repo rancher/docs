@@ -46,8 +46,6 @@ For more information, see [Ingress]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher
 
 When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry.
 
-For more information, see [Global DNS]({{<baseurl>}}/rancher/v2.5/en/catalog/globaldns/).
-
 ## Service Discovery
 
 After you expose your cluster to external requests using a load balancer and/or ingress, it's only available by IP address. To create a resolveable hostname, you must create a service record, which is a record that maps an IP address, external hostname, DNS record alias, workload(s), or labelled pods to a specific hostname.
