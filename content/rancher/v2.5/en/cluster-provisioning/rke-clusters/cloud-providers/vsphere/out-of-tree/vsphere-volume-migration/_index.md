@@ -2,7 +2,7 @@
 title: Migrating vSphere In-tree Volumes to CSI
 weight: 5
 ---
-_Available as of v2.5.6_
+_Available as of v2.5+_
 
 Kubernetes is moving away from maintaining cloud providers in-tree. vSphere has an out-of-tree cloud provider that can be used by installing the vSphere cloud provider and cloud storage plugins.
 
@@ -59,8 +59,8 @@ chmod +x taints.sh
 
 Once all nodes are tainted by the running the script, launch the Helm vSphere CPI chart. 
 
-1. Within a project, select **Apps > Launch.**
-2. Select the **vsphere-cpi** chart from the **helm3-library** catalog.
+1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
+2. Select the **vSphere CPI** chart.
 3. Fill out the required vCenter details and click **Launch**.
 
 vSphere CPI initializes all nodes with ProviderID, which is needed by the vSphere CSI driver.
@@ -73,7 +73,8 @@ kubectl describe nodes | grep "ProviderID"
 
 ### 2. Install the CSI driver
 
-1. Within a project, select **Apps > Launch** and select the **vsphere-csi** chart from the **helm3-library** catalog. 
+1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
+1. Select the **vSphere CSI** chart. 
 1. Fill out the required vCenter details and click **Launch**.
 1. Set **Enable CSI Migration** to **true**.
 1. This chart creates a StorageClass with the `csi.vsphere.vmware.com` as the provisioner. You can provide the URL of the datastore to be used for CSI volume provisioning while creating this StorageClass. The datastore URL can be found in the vSphere client by selecting the datastore and going to the Summary tab. Fill out the details for the StorageClass and click **Launch**.
