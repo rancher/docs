@@ -1,5 +1,5 @@
 ---
-title: How to Configure In-tree vSphere
+title: How to Configure In-tree vSphere Cloud Provider
 shortTitle: In-tree Cloud Provider
 weight: 10
 ---
