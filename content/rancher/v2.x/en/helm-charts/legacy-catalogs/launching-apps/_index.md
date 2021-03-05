@@ -7,7 +7,7 @@ aliases:
 
 Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/#catalog-scopes).
 
-If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
+If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/).
 
 - [Prerequisites](#prerequisites)
 - [Launching a catalog app](#launching-a-catalog-app)
@@ -28,7 +28,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
 1. From the **Global** view, open the project that you want to deploy an app to.
 
-2. From the main navigation bar, choose **Apps**. In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
+2. From the main navigation bar, choose **Apps**. In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar. Click **Launch**.
 
 3. Find the app that you want to launch, and then click **View Now**.
 
@@ -47,7 +47,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
 7. Review the files in **Preview**. When you're satisfied, click **Launch**.
 
-**Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's **Workloads** view or **Apps** view. In versions prior to v2.2.0, this is the **Catalog Apps** view.
+**Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's **Workloads** view or **Apps** view. In versions before v2.2.0, this is the **Catalog Apps** view.
 
 # Configuration Options
 

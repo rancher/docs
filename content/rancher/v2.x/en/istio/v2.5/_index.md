@@ -114,11 +114,11 @@ By default, each Rancher-provisioned cluster has one NGINX ingress controller al
 
 ![In an Istio-enabled cluster, you can have two ingresses: the default Nginx ingress, and the default Istio controller.]({{<baseurl>}}/img/rancher/istio-ingress.svg)
  
- Additional Istio Ingress gateways can be enabled via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/v2.5/configuration-reference/#overlay-file).
+ Additional Istio Ingress gateways can be enabled via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#overlay-file).
 
 ### Egress Support
 
-By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/v2.5/configuration-reference/#overlay-file).
+By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#overlay-file).
 
 # Additional Steps for Installing Istio on an RKE2 Cluster
 

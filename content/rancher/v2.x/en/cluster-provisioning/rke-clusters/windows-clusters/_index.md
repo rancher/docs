@@ -37,8 +37,8 @@ The general node requirements for networking, operating systems, and Docker are 
 
 In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
 
-- Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03.
-- Nodes with Windows Server core version 1903 should use Docker EE-basic 19.03.
+- Nodes with Windows Server Core version 1809 should use Basic Docker EE 18.09 or Basic Docker EE 19.03+.
+- Nodes with Windows Server Core version 1903+ should use Basic Docker EE 19.03+.
 
 > **Notes:**
 >
@@ -48,6 +48,12 @@ In order to add Windows worker nodes to a cluster, the node must be running one 
 ### Kubernetes Version
 
 Kubernetes v1.15+ is required.
+The [Kubernetes docs for Windows nodes](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#windows-os-version-support) provide a compatability matrix that can be used to assess which versions of Windows Server are supported based on your Kubernetes cluster version.
+
+> **More Information on Windows Server Versions:**
+>
+> - [Release Information](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
+> - [Servicing Channels: LTSC and SAC](https://docs.microsoft.com/en-us/windows-server/get-started-19/servicing-channels-19)
 
 ### Node Requirements
 
@@ -239,4 +245,4 @@ After creating your cluster, you can access it through the Rancher UI. As a best
 
 # Configuration for Storage Classes in Azure
 
-If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a StorageClass for the cluster. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/azure-storageclass)
+If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as an available StorageClass for your cluster. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/azure-storageclass)

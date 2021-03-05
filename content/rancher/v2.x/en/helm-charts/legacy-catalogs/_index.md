@@ -52,7 +52,7 @@ When you create a custom catalog, you will have to configure the catalog to use 
 
 When you launch a new app from a catalog, the app will be managed by the catalog's Helm version. A Helm 2 catalog will use Helm 2 to manage all of the apps, and a Helm 3 catalog will use Helm 3 to manage all apps.
 
-By default, catalogs are assumed to be deployed using Helm 2. If you run an app in Rancher prior to v2.4.0, then upgrade to Rancher v2.4.0+, the app will still be managed by Helm 2. If the app was already using a Helm 3 Chart (API version 2) it will no longer work in v2.4.0+. You must either downgrade the chart's API version or recreate the catalog to use Helm 3.
+By default, catalogs are assumed to be deployed using Helm 2. If you run an app in Rancher before v2.4.0, then upgrade to Rancher v2.4.0+, the app will still be managed by Helm 2. If the app was already using a Helm 3 Chart (API version 2) it will no longer work in v2.4.0+. You must either downgrade the chart's API version or recreate the catalog to use Helm 3.
 
 Charts that are specific to Helm 2 should only be added to a Helm 2 catalog, and Helm 3 specific charts should only be added to a Helm 3 catalog.
 
@@ -105,4 +105,4 @@ _Available as v2.2.0_
 
 When creating applications that span multiple Kubernetes clusters, a Global DNS entry can be created to route traffic to the endpoints in all of the different clusters. An external DNS server will need be programmed to assign a fully qualified domain name (a.k.a FQDN) to your application. Rancher will use the FQDN you provide and the IP addresses where your application is running to program the DNS. Rancher will gather endpoints from all the Kubernetes clusters running your application and program the DNS.
 
-For more information on how to use this feature, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
+For more information on how to use this feature, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/).

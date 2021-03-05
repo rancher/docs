@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/k8s-in-rancher/pipelines/storage
 ---
 
-The pipelines' internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
+The internal [Docker registry](#how-pipelines-work) and the [Minio](#how-pipelines-work) workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
 This section assumes that you understand how persistent storage works in Kubernetes. For more information, refer to the section on [how storage works.]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/volumes-and-storage/how-storage-works/)
 
@@ -15,7 +15,7 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 ### A. Configuring Persistent Data for Docker Registry
 
-1. From the project that you're configuring a pipeline for, and click **Resources > Workloads.** In versions prior to v2.3.0, select the **Workloads** tab.
+1. From the project that you're configuring a pipeline for, and click **Resources > Workloads.** In versions before v2.3.0, select the **Workloads** tab.
 
 1. Find the `docker-registry` workload and select **&#8942; > Edit**.
 
@@ -61,7 +61,7 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 ### B. Configuring Persistent Data for Minio
 
-1. From the project view, click **Resources > Workloads.** (In versions prior to v2.3.0, click the **Workloads** tab.) Find the `minio` workload and select **&#8942; > Edit**.
+1. From the project view, click **Resources > Workloads.** (In versions before v2.3.0, click the **Workloads** tab.) Find the `minio` workload and select **&#8942; > Edit**.
 
 1. Scroll to the **Volumes** section and expand it. Make one of the following selections from the **Add Volume** menu, which is near the bottom of the section:
 

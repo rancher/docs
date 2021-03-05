@@ -11,13 +11,14 @@ The Backup Create page lets you configure a schedule, enable encryption and spec
 {{< img "/img/rancher/backup_restore/backup/backup.png" "">}}
 
 - [Schedule](#schedule)
-- [Encryption](#encryption)
-- [Storage Location](#storage-location)
+- [Encryption](#encryptionconfigname)
+- [Storage Location](#storagelocation)
   - [S3](#s3)
   - [Example S3 Storage Configuration](#example-s3-storage-configuration)
   - [Example MinIO Configuration](#example-minio-configuration)
   - [Example credentialSecret](#example-credentialsecret)
   - [IAM Permissions for EC2 Nodes to Access S3](#iam-permissions-for-ec2-nodes-to-access-s3)
+- [RetentionCount](#retentioncount)
 - [Examples](#examples)
 
 
@@ -90,7 +91,7 @@ The S3 storage location contains the following configuration fields:
 1. **Region** (optional): The AWS [region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. This field isn't needed for configuring MinIO.
 1. **Folder** (optional): The name of the folder in the S3 bucket where backup files will be stored.
 1. **Endpoint**: The [endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html)  that is used to access S3 in the region of your bucket.
-1. **Endpoint CA** (optional): This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-storage-configuration)
+1. **Endpoint CA** (optional): This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-compatible-storage-configuration)
 1. **Skip TLS Verifications** (optional): Set to true if you are not using TLS.
 
 
@@ -102,7 +103,7 @@ The S3 storage location contains the following configuration fields:
 | `folder` | The name of the folder in the S3 bucket where backup files will be stored. | |
 | `region` | The AWS [region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. | ✓ |
 | `endpoint` |  The [endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html)  that is used to access S3 in the region of your bucket.  | ✓ |
-| `endpointCA` | This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-storage-configuration) |  |
+| `endpointCA` | This should be the Base64 encoded CA cert. For an example, refer to the [example S3 compatible configuration.](#example-s3-compatible-storage-configuration) |  |
 | `insecureTLSSkipVerify` | Set to true if you are not using TLS. | |
 
 ### Example S3 Storage Configuration

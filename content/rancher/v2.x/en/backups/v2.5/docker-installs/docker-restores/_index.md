@@ -42,7 +42,7 @@ Using a [backup]({{<baseurl>}}/rancher/v2.x/en/backups/backups/single-node-backu
 
 1. Using a remote Terminal connection, log into the node running your Rancher Server.
 
-1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container:
+1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the [name of your Rancher container](#before-you-start).
 
     ```
     docker stop <RANCHER_CONTAINER_NAME>
@@ -51,7 +51,7 @@ Using a [backup]({{<baseurl>}}/rancher/v2.x/en/backups/backups/single-node-backu
 
     If you followed the naming convention we suggested in [Creating Backups—Docker Installs]({{<baseurl>}}/rancher/v2.x/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
 
-1. Enter the following command to delete your current state data and replace it with your backup data, replacing the placeholders. Don't forget to close the quotes.
+1. Enter the following command to delete your current state data and replace it with your backup data, replacing the [placeholders](#before-you-start). Don't forget to close the quotes.
 
     >**Warning!** This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 
@@ -63,7 +63,7 @@ Using a [backup]({{<baseurl>}}/rancher/v2.x/en/backups/backups/single-node-backu
 
     **Step Result:** A series of commands should run.
 
-1. Restart your Rancher Server container, replacing the placeholder. It will restart using your backup data.
+1. Restart your Rancher Server container, replacing the [placeholder](#before-you-start). It will restart using your backup data.
 
     ```
     docker start <RANCHER_CONTAINER_NAME>

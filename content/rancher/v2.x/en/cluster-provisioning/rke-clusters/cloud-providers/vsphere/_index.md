@@ -2,24 +2,14 @@
 title: Setting up the vSphere Cloud Provider
 weight: 4
 ---
+In this section, you'll learn how to set up a vSphere cloud provider for a Rancher managed RKE Kubernetes cluster in vSphere.
 
-In this section, you'll learn how to set up the vSphere cloud provider for a Rancher managed RKE Kubernetes cluster in vSphere.
+# In-tree Cloud Provider
 
-Follow these steps while creating the vSphere cluster in Rancher:
+To use the in-tree vSphere cloud provider, you will need to use an RKE configuration option. For details, refer to [this page.](./in-tree)
 
-1. Set **Cloud Provider** option to `Custom`.
+# Out-of-tree Cloud Provider
 
-    {{< img "/img/rancher/vsphere-node-driver-cloudprovider.png" "vsphere-node-driver-cloudprovider">}}
+_Available as of v2.5+_
 
-1. Click on **Edit as YAML**
-1. Insert the following structure to the pre-populated cluster YAML. As of Rancher v2.3+, this structure must be placed under `rancher_kubernetes_engine_config`. In versions prior to v2.3, it has to be defined as a top-level field. Note that the `name` *must* be set to `vsphere`. 
-
-    ```yaml
-    rancher_kubernetes_engine_config: # Required as of Rancher v2.3+
-      cloud_provider:
-          name: vsphere
-          vsphereCloudProvider:
-              [Insert provider configuration]
-    ```
-
-Rancher uses RKE (the Rancher Kubernetes Engine) to provision Kubernetes clusters. Refer to the [vSphere configuration reference in the RKE documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/) for details about the properties of the `vsphereCloudProvider` directive.
+To set up the out-of-tree vSphere cloud provider, you will need to install Helm charts from the Rancher marketplace. For details, refer to [this page.](./out-of-tree)

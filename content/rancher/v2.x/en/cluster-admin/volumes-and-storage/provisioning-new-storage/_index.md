@@ -66,11 +66,11 @@ These steps describe how to set up a PVC in the namespace where your stateful wo
 
 1. Go to the **Cluster Manager** to the project containing a workload that you want to add a PVC to.
 
-1. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Then select the **Volumes** tab. Click **Add Volume**.
+1. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Then select the **Volumes** tab. Click **Add Volume**.
 
 1. Enter a **Name** for the volume claim.
 
-1. Select the namespace of the volume claim.
+1. Select the [Namespace]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces) of the volume claim.
 
 1. In the **Source** field, click **Use a Storage Class to provision a new persistent volume.**
 

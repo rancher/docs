@@ -11,7 +11,7 @@ When you create a [custom cluster]({{<baseurl>}}/rancher/v2.x/en/cluster-provisi
 
 You can provision a custom Windows cluster using Rancher by using a mix of Linux and Windows hosts as your cluster nodes.
 
->**Important:** In versions of Rancher prior to v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher prior to v2.3.
+>**Important:** In versions of Rancher before v2.3, support for Windows nodes is experimental. Therefore, it is not recommended to use Windows nodes for production environments if you are using Rancher before v2.3.
 
 This guide walks you through create of a custom cluster that includes three nodes:
 
@@ -49,7 +49,7 @@ To begin provisioning a custom cluster with Windows support, prepare your host s
 - VMs from virtualization clusters
 - Bare-metal servers
 
-The table below lists the Kubernetes node roles you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
+The table below lists the [Kubernetes roles]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) you'll assign to each host, although you won't enable these roles until further along in the configuration process—we're just informing you of each node's purpose. The first node, a Linux host, is primarily responsible for managing the Kubernetes control plane, although, in this use case, we're installing all three roles on this node. Node 2 is also a Linux worker, which is responsible for Ingress support. Finally, the third node is your Windows worker, which will run your Windows applications.
 
 Node    | Operating System | Future Cluster Role(s)
 --------|------------------|------

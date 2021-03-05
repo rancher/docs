@@ -3,7 +3,7 @@ title: Registering Existing Clusters
 weight: 6
 ---
 
-_Available of of v2.5_
+_Available as of v2.5_
 
 The cluster registration feature replaced the feature to import clusters.
 
@@ -45,11 +45,12 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 2. Choose **Register**.
 3. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-5. Click **Create**.
-6. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
-7. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
-8. If you are using self signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in Rancher to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
-9. When you finish running the command(s) on your node, click **Done**.
+5. Use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+6. Click **Create**.
+7. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
+8. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
+9. If you are using self signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in Rancher to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
+10. When you finish running the command(s) on your node, click **Done**.
 
 **Result:**
 

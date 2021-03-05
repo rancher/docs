@@ -31,7 +31,7 @@ The majority of Rancher 2.x software runs on the Rancher Server. Rancher Server 
 
 The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two downstream Kubernetes clusters: one created by RKE and another created by Amazon EKS (Elastic Kubernetes Service).
 
-For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) for running your workloads.
+For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 The diagram below shows how users can manipulate both [Rancher-launched Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) clusters and [hosted Kubernetes]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/) clusters through Rancher's authentication proxy:
 
@@ -45,7 +45,7 @@ A high-availability Kubernetes installation is recommended for production.
 
 A Docker installation of Rancher is recommended only for development and testing purposes. The ability to migrate Rancher to a high-availability cluster depends on the Rancher version:
 
-- For Rancher v2.0-v2.4, there was no migration path from a Docker installation to a high-availability installation. Therefore, if you are using Rancher prior to v2.5, you may want to use a Kubernetes installation from the start.
+- For Rancher v2.0-v2.4, there was no migration path from a Docker installation to a high-availability installation. Therefore, if you are using Rancher before v2.5, you may want to use a Kubernetes installation from the start.
 
 - For Rancher v2.5+, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.x/en/backups/v2.5/migrating-rancher/)
 

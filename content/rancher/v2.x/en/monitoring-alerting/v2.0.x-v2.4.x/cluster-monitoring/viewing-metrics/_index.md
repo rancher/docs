@@ -9,19 +9,19 @@ aliases:
 
 _Available as of v2.2.0_
 
-After you've enabled monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/), you will want to be start viewing the data being collected. There are multiple ways to view this data.
+After you've enabled monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#enabling-project-monitoring), you will want to be start viewing the data being collected. There are multiple ways to view this data.
 
 ## Rancher Dashboard
 
->**Note:** This is only available if you've enabled monitoring at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/). Project specific analytics must be viewed using the project's Grafana instance.
+>**Note:** This is only available if you've enabled monitoring at the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring). Project specific analytics must be viewed using the project's Grafana instance.
 
 Rancher's dashboards are available at multiple locations:
 
 - **Cluster Dashboard**: From the **Global** view, navigate to the cluster.
 - **Node Metrics**: From the **Global** view, navigate to the cluster. Select **Nodes**. Find the individual node and click on its name. Click **Node Metrics.**
-- **Workload Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Click **Workload Metrics.**
+- **Workload Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Click **Workload Metrics.**
 - **Pod Metrics**: From the **Global** view, navigate to the project. Select **Workloads > Workloads**. Find the individual workload and click on its name. Find the individual pod and click on its name. Click **Pod Metrics.**
-- **Container Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions prior to v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Find the individual pod and click on its name. Find the individual container and click on its name. Click **Container Metrics.**
+- **Container Metrics**: From the **Global** view, navigate to the project. From the main navigation bar, choose **Resources > Workloads.** (In versions before v2.3.0, choose **Workloads** on the main navigation bar.) Find the individual workload and click on its name. Find the individual pod and click on its name. Find the individual container and click on its name. Click **Container Metrics.**
 
 Prometheus metrics are displayed and are denoted with the Grafana icon. If you click on the icon, the metrics will open a new tab in Grafana.
 
@@ -37,7 +37,7 @@ When analyzing these metrics, don't be concerned about any single standalone met
 
 ## Grafana
 
-If you've enabled monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/), Rancher automatically creates a link to Grafana instance. Use this link to view monitoring data.
+If you've enabled monitoring at either the [cluster level]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/#enabling-cluster-monitoring) or [project level]({{<baseurl>}}/rancher/v2.x/en/project-admin/tools/monitoring/#enabling-project-monitoring), Rancher automatically creates a link to Grafana instance. Use this link to view monitoring data.
 
 Grafana allows you to query, visualize, alert, and ultimately, understand your cluster and workload data. For more information on Grafana and its capabilities, visit the [Grafana website](https://grafana.com/grafana).
 
@@ -53,7 +53,7 @@ When you go to the Grafana instance, you will be logged in with the username `ad
 
 1. Go to the **System** project view. This project is where the cluster-level Grafana instance runs.
 
-1. Click **Apps.** In versions prior to v2.2.0, choose **Catalog Apps** on the main navigation bar.
+1. Click **Apps.** In versions before v2.2.0, choose **Catalog Apps** on the main navigation bar.
 
 1. Go to the `cluster-monitoring` application.
 

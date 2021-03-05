@@ -7,7 +7,7 @@ The ability to run Kubernetes using a datastore other than etcd sets K3s apart f
 
 * If your team doesn't have expertise in operating etcd, you can choose an enterprise-grade SQL database like MySQL or PostgreSQL
 * If you need to run a simple, short-lived cluster in your CI/CD environment, you can use the embedded SQLite database
-* If you wish to deploy Kubernetes on the edge and require a highly available solution but can't afford the operational overhead of managing a database at the edge, you can use K3s's embedded HA datastore built on top of embedded etcd (currently experimental)
+* If you wish to deploy Kubernetes on the edge and require a highly available solution but can't afford the operational overhead of managing a database at the edge, you can use K3s's embedded HA datastore built on top of embedded etcd.
 
 K3s supports the following datastore options:
 
@@ -16,7 +16,7 @@ K3s supports the following datastore options:
 * [MySQL](https://www.mysql.com/) (certified against version 5.7)
 * [MariaDB](https://mariadb.org/) (certified against version 10.3.20)
 * [etcd](https://etcd.io/) (certified against version 3.3.15)
-* Embedded etcd for High Availability (experimental)
+* Embedded etcd for High Availability
 
 ### External Datastore Configuration Parameters
 If you wish to use an external datastore such as PostgreSQL, MySQL, or etcd you must set the `datastore-endpoint` parameter so that K3s knows how to connect to it. You may also specify parameters to configure the authentication and encryption of the connection. The below table summarizes these parameters, which can be passed as either CLI flags or environment variables.
@@ -94,6 +94,6 @@ K3S_DATASTORE_KEYFILE='/path/to/client.key' \
 k3s server
 ```
 
-### Embedded etcd for HA (Experimental)
+### Embedded etcd for HA
 
-Please see [High Availability with Embedded DB (Experimental)]({{<baseurl>}}/k3s/latest/en/installation/ha-embedded/) for instructions on how to run with this option.
+Please see [High Availability with Embedded DB]({{<baseurl>}}/k3s/latest/en/installation/ha-embedded/) for instructions on how to run with this option.

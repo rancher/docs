@@ -54,7 +54,7 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 The restore operation will work on a cluster that is not in a healthy or active state.
 {{% /tab %}}
-{{% tab "Rancher prior to v2.4" %}}
+{{% tab "Rancher before v2.4" %}}
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
@@ -69,7 +69,7 @@ The cluster cannot be downgraded to a previous Kubernetes version.
 
 > **Prerequisites:**
 >
-> - The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) and [imported K3s Kubernetes clusters.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/imported-clusters/#additional-features-for-imported-k3s-clusters)
+> - The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/) and imported K3s Kubernetes clusters.
 > - Before upgrading Kubernetes, [back up your cluster.]({{<baseurl>}}/rancher/v2.x/en/backups)
 
 1. From the **Global** view, find the cluster for which you want to upgrade Kubernetes. Select **&#8942; > Edit**.

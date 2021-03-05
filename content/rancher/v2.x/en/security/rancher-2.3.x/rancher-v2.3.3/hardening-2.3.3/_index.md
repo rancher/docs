@@ -151,7 +151,7 @@ Verify that the permissions are `700` or more restrictive.
 
 **Remediation**
 
-Follow the steps as documented in [1.4.12](#1-4-12-ensure-that-the-etcd-data-directory-ownership-is-set-to-etcd-etcd) remediation.
+Follow the steps as documented in [1.4.12]({{<baseurl>}}/rancher/v2.x/en/security/hardening-2.3.3/#1-4-12-ensure-that-the-etcd-data-directory-ownership-is-set-to-etcd-etcd) remediation.
 
 ### 1.4.12 - Ensure that the etcd data directory ownership is set to `etcd:etcd`
 
@@ -763,7 +763,7 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.x/en/installation/resources/chart-options/>
+- <https://rancher.com/docs/rancher/v2.x/en/installation/resources/chart-options/#advanced-options>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 

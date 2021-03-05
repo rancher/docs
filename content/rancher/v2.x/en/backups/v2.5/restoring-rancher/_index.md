@@ -17,7 +17,7 @@ A restore is performed by creating a Restore custom resource.
 
 1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
 1. Click **Restore.**
-1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the [configuration reference](../configuration/restore-config) and to the [examples.](../examples/#restore)
+1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the [ [configuration reference]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/examples/)
 1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Restore YAML.
 
     ```yaml
@@ -38,7 +38,7 @@ A restore is performed by creating a Restore custom resource.
 	      endpoint: s3.us-west-2.amazonaws.com
       ```
 
-      For help configuring the Restore, refer to the [configuration reference](../configuration/restore-config) and to the [examples.](../examples/#restore)
+      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/examples/)
 
 1. Click **Create.**
 
@@ -48,9 +48,15 @@ A restore is performed by creating a Restore custom resource.
 2. Cluster-scoped resources
 3. Namespaced resources
 
+### Logs
+
 To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
 
 ```yaml
 kubectl get pods -n cattle-resources-system
 kubectl logs <pod name from above command> -n cattle-resources-system -f
 ```
+
+### Cleanup
+
+If you created the restore resource with kubectl, remove the resource to prevent a naming conflict with future restores.

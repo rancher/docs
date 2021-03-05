@@ -2,6 +2,8 @@
 title: Port Requirements
 description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes
 weight: 300
+aliases:
+  - /rancher/v2.5/en/installation/references
 ---
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes.
@@ -168,6 +170,14 @@ The following tables break down the port requirements for Rancher nodes, for inb
 
 {{% /accordion %}}
 
+### Ports for Rancher Server in GCP GKE
+
+When deploying Rancher into a Google Kubernetes Engine [private cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters), the nodes where Rancher runs must be accessible from the control plane:
+
+| Protocol | Port | Source | Description |
+|-----|-----|----------------|---|
+| TCP | 9443 | The GKE master `/28` range | Rancher webhooks |
+
 # Downstream Kubernetes Cluster Nodes
 
 Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.
@@ -219,7 +229,7 @@ The following table depicts the port requirements for [hosted clusters]({{<baseu
 
 ### Ports for Registered Clusters
 
-Note: Registered clusters were called imported clusters prior to Rancher v2.5.
+Note: Registered clusters were called imported clusters before Rancher v2.5.
 
 {{% accordion label="Click to expand" %}}
 

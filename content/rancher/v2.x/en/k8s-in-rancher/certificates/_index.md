@@ -15,7 +15,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From the **Global** view, select the project where you want to deploy your ingress.
 
-1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For Rancher prior to v2.3, click **Resources > Certificates.**)
+1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For Rancher before v2.3, click **Resources > Certificates.**)
 
 1. Enter a **Name** for the certificate.
 
@@ -25,7 +25,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
     - **Available to all namespaces in this project:** The certificate is available for any deployment in any namespaces in the project.
 
-    - **Available to a single namespace:** The certificate is only available for the deployments in one namespace. If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
+    - **Available to a single namespace:** The certificate is only available for the deployments in one [namespace]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/#namespaces). If you choose this option, select a **Namespace** from the drop-down list or click **Add to a new namespace** to add the certificate to a namespace you create on the fly.
 
 1. From **Private Key**, either copy and paste your certificate's private key into the text box (include the header and footer), or click **Read from a file** to browse to the private key on your file system. If possible, we recommend using **Read from a file** to reduce likelihood of error.
 
@@ -39,7 +39,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 - If you added an SSL certificate to the project, the certificate is available for deployments created in any project namespace.
 - If you added an SSL certificate to a namespace, the certificate is available only for deployments in that namespace.
-- Your certificate is added to the **Resources > Secrets > Certificates** view. (For Rancher prior to v2.3, it is added to **Resources > Certificates.**)
+- Your certificate is added to the **Resources > Secrets > Certificates** view. (For Rancher before v2.3, it is added to **Resources > Certificates.**)
 
 ## What's Next?
 

@@ -32,4 +32,4 @@ $ govc vm.change -vm <vm-path> -e disk.enableUUID=TRUE
 
 In Rancher v2.0.4+, disk UUIDs are enabled in vSphere node templates by default.
 
-If you are using Rancher prior to v2.0.4, refer to the [vSphere node template documentation.]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4/#disk-uuids) for details on how to enable a UUID with a Rancher node template.
+If you are using Rancher before v2.0.4, refer to the [vSphere node template documentation.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4//) for details on how to enable a UUID with a Rancher node template.

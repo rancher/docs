@@ -26,7 +26,7 @@ By default, the example pipeline repositories are disabled. Enable one (or more)
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. Click **Configure Repositories**.
 
@@ -52,7 +52,7 @@ After enabling an example repository, review the pipeline to see how it is set u
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the example repository, select the vertical **&#8942;**. There are two ways to view the pipeline:
   * **Rancher UI**: Click on **Edit Config** to view the stages and steps of the pipeline.
@@ -64,7 +64,7 @@ After enabling an example repository, run the pipeline to see how it works.
 
 1. From the **Global** view, navigate to the project that you want to test out pipelines.
 
-1. Click **Resources > Pipelines.** In versions prior to v2.3.0, click **Workloads > Pipelines.**
+1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the example repository, select the vertical **&#8942; > Run**.
 
@@ -74,4 +74,4 @@ After enabling an example repository, run the pipeline to see how it works.
 
 ### What's Next?
 
-For detailed information about setting up your own pipeline for your repository, [configure a version control provider]({{<baseurl>}}/rancher/v2.x/en/project-admin/pipelines), enable a repository and finally configure your pipeline.
+For detailed information about setting up your own pipeline for your repository, [configure a version control provider]({{<baseurl>}}/rancher/v2.x/en/project-admin/pipelines), [enable a repository](#configure-repositories) and finally [configure your pipeline]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/pipelines/#pipeline-configuration-reference).

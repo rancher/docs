@@ -13,7 +13,7 @@ weight: 3
 
 ### Egress Support
 
-By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file](#overlay-file).
+By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.x/en/istio/setup/enable-istio-in-cluster/#overlay-file).
 
 ### Enabling Automatic Sidecar Injection
 

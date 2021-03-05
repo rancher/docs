@@ -196,7 +196,7 @@ services:
 
 > **Note:** As the `kubelet` is running inside a container, the path for files located in `/etc` and `/usr` are in `/host/etc` and `/host/usr` inside the `kubelet` container.
 
-See [Editing Cluster as YAML]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/editing-clusters/#editing-cluster-as-yaml) how to apply this change. When the provisioning of the cluster has finished, you have to remove the kube-dns pod to activate the new setting in the pod:
+See [Editing Cluster as YAML]({{<baseurl>}}/rancher/v2.x/en/cluster-admin/editing-clusters/#editing-clusters-with-yaml) how to apply this change. When the provisioning of the cluster has finished, you have to remove the kube-dns pod to activate the new setting in the pod:
 
 ```
 kubectl delete pods -n kube-system -l k8s-app=kube-dns

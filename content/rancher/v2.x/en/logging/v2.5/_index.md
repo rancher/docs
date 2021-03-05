@@ -115,7 +115,7 @@ metadata:
     namespace: "cattle-logging-system"
 spec:
   globalOutputRefs:
-    - "example-es
+    - "example-es"
 ``` 
 
 We should now see our configured index with logs in it.
@@ -275,6 +275,13 @@ spec:
 Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an output configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.
 
 > **Note on syslog** Official `syslog` support is coming in Rancher v2.5.4. However, this example still provides an overview on using unsupported plugins.
+
+# Working with a Custom Docker Root Directory
+
+_Applies to v2.5.6+_
+
+If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
+This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
 
 # Working with Taints and Tolerations
 

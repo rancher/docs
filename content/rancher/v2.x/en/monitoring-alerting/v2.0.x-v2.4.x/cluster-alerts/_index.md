@@ -41,8 +41,8 @@ For details about what triggers the predefined alerts, refer to the [documentati
 
 Some examples of alert events are:
 
-- A Kubernetes master component entering an unhealthy state.
-- A node or workload error occurring.
+- A Kubernetes [master component]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#kubernetes-cluster-node-components) entering an unhealthy state.
+- A node or [workload]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher/workloads/) error occurring.
 - A scheduled deployment taking place as planned.
 - A node's hardware resources becoming overstressed.
 
@@ -50,7 +50,7 @@ Some examples of alert events are:
 
 When you edit an alert rule, you will have the opportunity to configure the alert to be triggered based on a Prometheus expression. For examples of expressions, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/expression/)
 
-Monitoring must be [enabled]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/) before you can trigger alerts with custom Prometheus queries or expressions.
+Monitoring must be [enabled]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/#enabling-cluster-monitoring) before you can trigger alerts with custom Prometheus queries or expressions.
 
 ### Urgency Levels
 
@@ -81,7 +81,7 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 
 As a [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to send you alerts for cluster events.
 
->**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/).
+>**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier]({{<baseurl>}}/rancher/v2.x/en/monitoring-alerting/legacy/notifiers/#adding-notifiers).
 
 1. From the **Global** view, navigate to the cluster that you want to configure cluster alerts for. Select **Tools > Alerts**. Then click **Add Alert Group**.
 1. Enter a **Name** for the alert that describes its purpose, you could group alert rules for the different purpose.

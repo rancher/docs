@@ -43,7 +43,7 @@ The option to install Rancher on a K3s cluster is a feature introduced in Ranche
 
 ### RKE Kubernetes Cluster Installations
 
-If you are installing Rancher prior to v2.4, you will need to install Rancher on an RKE cluster, in which the cluster data is stored on each node with the etcd role. As of Rancher v2.4, there is no migration path to transition the Rancher server from an RKE cluster to a K3s cluster. All versions of the Rancher server, including v2.4+, can be installed on an RKE cluster.
+If you are installing Rancher before v2.4, you will need to install Rancher on an RKE cluster, in which the cluster data is stored on each node with the etcd role. As of Rancher v2.4, there is no migration path to transition the Rancher server from an RKE cluster to a K3s cluster. All versions of the Rancher server, including v2.4+, can be installed on an RKE cluster.
 
 In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
 
@@ -66,7 +66,7 @@ We recommend the following configurations for the load balancer and Ingress cont
 
 It is strongly recommended to install Rancher on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
 
-For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/) for running your workloads.
+For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/#cluster-creation-in-rancher) for running your workloads.
 
 It is not recommended to install Rancher on top of a managed Kubernetes service such as Amazon’s EKS or Google Kubernetes Engine. These hosted Kubernetes solutions do not expose etcd to a degree that is manageable for Rancher, and their customizations can interfere with Rancher operations.
 

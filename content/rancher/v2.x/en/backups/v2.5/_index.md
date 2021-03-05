@@ -14,7 +14,7 @@ The Rancher version must be v2.5.0 and up to use this approach of backing up and
 
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
   - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
-  - [Backup and Restore for Rancher installed on a Kubernetes Cluster Prior to v2.5](#backup-and-restore-for-rancher-installed-on-a-kubernetes-cluster-prior-to-v2-5)
+  - [Backup and Restore for Rancher installed on a Kubernetes Cluster Before v2.5](#backup-and-restore-for-rancher-installed-on-a-kubernetes-cluster-before-v2-5)
 - [How Backups and Restores Work](#how-backups-and-restores-work)
 - [Installing the rancher-backup Operator](#installing-the-rancher-backup-operator)
   - [Installing rancher-backup with the Rancher UI](#installing-rancher-backup-with-the-rancher-ui)
@@ -40,9 +40,9 @@ In Rancher v2.5, it is now supported to install Rancher hosted Kubernetes cluste
 
 For Rancher installed with Docker, refer to the same steps used up till 2.5 for [backups](./docker-installs/docker-backups) and [restores.](./docker-installs/docker-backups)
 
-### Backup and Restore for Rancher installed on a Kubernetes Cluster Prior to v2.5
+### Backup and Restore for Rancher installed on a Kubernetes Cluster Before v2.5
 
-For Rancher prior to v2.5, the way that Rancher is backed up and restored differs based on the way that Rancher was installed. Our legacy backup and restore documentation is here:
+For Rancher before v2.5, the way that Rancher is backed up and restored differs based on the way that Rancher was installed. Our legacy backup and restore documentation is here:
 
 - For Rancher installed on an RKE Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/ha-backups) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/rke-restore) documentation.
 - For Rancher installed on a K3s Kubernetes cluster, refer to the legacy [backup]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/backup/k3s-backups) and [restore]({{<baseurl>}}/rancher/v2.x/en/backups/legacy/restore/k3s-restore) documentation.

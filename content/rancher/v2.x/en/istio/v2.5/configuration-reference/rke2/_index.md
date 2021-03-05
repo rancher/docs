@@ -14,7 +14,7 @@ Through the **Cluster Explorer,** when installing or upgrading Istio through **A
     kind: IstioOperator
     spec:
         components:
-        cni:
+          cni:
             enabled: true
         values:
         cni:
