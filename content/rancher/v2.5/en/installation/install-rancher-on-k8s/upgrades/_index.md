@@ -24,8 +24,6 @@ For the instructions to upgrade Rancher installed with Docker, refer to [ths pag
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
-If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade]({{<baseurl>}}/rancher/v2.5/en/upgrades/upgrades/migrating-from-rke-add-on).
-
 - [Prerequisites](#prerequisites)
 - [Upgrade Outline](#upgrade-outline)
 - [Known Upgrade Issues](#known-upgrade-issues)
@@ -51,7 +49,7 @@ Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository]({{
 
 The upgrade instructions assume you are using Helm 3.
 
-For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) The [Helm 2 upgrade page here]({{<baseurl>}}/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha/helm2)provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) The [Helm 2 upgrade page here]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/helm2)provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 ### For air gap installs: Populate private registry
 
@@ -258,7 +256,7 @@ Log into Rancher to confirm that the upgrade succeeded.
 
 >**Having network issues following upgrade?**
 >
-> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
 
 # Known Upgrade Issues
 

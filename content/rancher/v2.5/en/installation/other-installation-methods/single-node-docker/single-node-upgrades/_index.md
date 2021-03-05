@@ -352,7 +352,7 @@ Log into Rancher. Confirm that the upgrade succeeded by checking the version dis
 
 >**Having network issues in your user clusters following upgrade?**
 >
-> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/namespace-migration/#restoring-cluster-networking).
+> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
 
 
 # 6. Clean up Your Old Rancher Server Container

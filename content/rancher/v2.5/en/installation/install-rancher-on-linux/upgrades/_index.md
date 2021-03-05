@@ -37,7 +37,7 @@ To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow t
 
 **Result:** Rancher is upgraded to the new version.
 
-If necessary, restore Rancher from backup by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/restoring-rancher/)
+If necessary, restore Rancher from backup by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/restoring-rancher/)
 
 ### Upgrading Both Rancher and the Underlying Cluster
 

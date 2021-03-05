@@ -151,7 +151,7 @@ From a system that can access ports 22/TCP and 6443/TCP on the Linux host node(s
 
 This file is an RKE configuration file, which is a configuration for the cluster you're deploying Rancher to.
 
-Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-high-availability/provision-hosts) you created.
+Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the three nodes you created.
 
 > **Tip:** For more details on the options available, see the RKE [Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
 

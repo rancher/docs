@@ -1,6 +1,8 @@
 ---
 title: Cluster Configuration
 weight: 2025
+aliases:
+  - /rancher/v2.5/en/k8s-in-rancher/editing-clusters
 ---
 
 After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster.
@@ -36,7 +38,7 @@ Option | Description |
  Nginx Ingress | If you want to publish your applications in a high-availability configuration, and you're hosting your nodes with a cloud-provider that doesn't have a native load-balancing feature, enable this option to use Nginx ingress within the cluster. |
  Metrics Server Monitoring | Each cloud provider capable of launching a cluster using RKE can collect metrics and monitor for your cluster nodes. Enable this option to view your node metrics from your cloud provider's portal. |
  Pod Security Policy Support | Enables [pod security policies]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/) for the cluster. After enabling this option, choose a policy using the **Default Pod Security Policy** drop-down. |
- Docker version on nodes | Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support. If you choose to require a [supported Docker version]({{<baseurl>}}/rancher/v2.5/en/installation/options/rke-add-on/layer-7-lb/), Rancher will stop pods from running on nodes that don't have a supported Docker version installed. |
+ Docker version on nodes | Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support. If you choose to require a supported Docker version, Rancher will stop pods from running on nodes that don't have a supported Docker version installed. |
  Docker Root Directory | The directory on your cluster nodes where you've installed Docker. If you install Docker on your nodes to a non-default directory, update this path. |
  Default Pod Security Policy | If you enable **Pod Security Policy Support**, use this drop-down to choose the pod security policy that's applied to the cluster. |
  Cloud Provider | If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.  |

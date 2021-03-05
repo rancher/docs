@@ -6,6 +6,8 @@ aliases:
   - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
   - /rancher/v2.5/en/installation/air-gap-single-node/install-rancher
   - /rancher/v2.5/en/installation/air-gap/install-rancher
+  - /rancher/v2.5/en/installation/air-gap-installation/install-rancher/
+  - /rancher/v2.5/en/installation/air-gap-high-availability/install-rancher/
 ---
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
@@ -234,7 +236,7 @@ The Docker installation is for Rancher users who want to test out Rancher.
 
 Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. 
 
-For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/migrating-rancher/)
+For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 

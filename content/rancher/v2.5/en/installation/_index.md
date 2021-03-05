@@ -56,7 +56,7 @@ However, this option is useful if you want to save resources by using a single n
 
 For test and demonstration purposes, Rancher can be installed with Docker on a single node.
 
-The Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/migrating-rancher/)
+The Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
 
 ### Other Options
 

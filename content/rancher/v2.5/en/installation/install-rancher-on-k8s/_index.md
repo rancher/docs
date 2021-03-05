@@ -22,7 +22,7 @@ For the tutorial to install an RKE Kubernetes cluster, refer to [this page.]({{<
 
 For the tutorial to install a K3s Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-with-external-db) For help setting up the infrastructure for a high-availability K3s cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db)
 
-For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-RKE2) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
+For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
 
 # Install the Rancher Helm Chart
 
