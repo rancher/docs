@@ -30,7 +30,7 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution.
 
-Docker is required for nodes that will run K3s or RKE Kubernetes clusters. It is not required for RancherD installs.
+Docker is required for nodes that will run RKE Kubernetes clusters. It is not required for RancherD installs.
 
 Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
