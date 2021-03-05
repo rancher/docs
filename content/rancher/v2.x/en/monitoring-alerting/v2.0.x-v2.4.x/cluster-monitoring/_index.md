@@ -54,7 +54,8 @@ Using Prometheus, you can monitor Rancher at both the cluster level and [project
 
 As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 
-> **Prerequisite:** The following TCP ports need to be opened for metrics scraping
+> **Prerequisite:** The following TCP ports need to be opened for metrics scraping:
+>
 > | Port | Node type | Component |
 > | --- | --- | --- |
 > | 9796 | Worker | Node exporter |
