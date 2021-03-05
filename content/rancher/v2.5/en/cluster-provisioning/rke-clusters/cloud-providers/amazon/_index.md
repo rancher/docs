@@ -8,7 +8,7 @@ When using the `Amazon` cloud provider, you can leverage the following capabilit
 - **Load Balancers:** Launches an AWS Elastic Load Balancer (ELB) when choosing `Layer-4 Load Balancer` in **Port Mapping** or when launching a `Service` with `type: LoadBalancer`.
 - **Persistent Volumes**: Allows you to use AWS Elastic Block Stores (EBS) for persistent volumes.
 
-See [cloud-provider-aws README](https://github.com/kubernetes/cloud-provider-aws/blob/master/README.md) for all information regarding the Amazon cloud provider.
+See [cloud-provider-aws README](https://kubernetes.github.io/cloud-provider-aws/) for all information regarding the Amazon cloud provider.
 
 To set up the Amazon cloud provider,
 
