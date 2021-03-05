@@ -27,6 +27,7 @@ The Rancher authentication proxy integrates with the following external authenti
 | [Okta]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/okta/)                      | 
 | [Google OAuth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/google/)            | 
 | [Shibboleth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/shibboleth)           |
+| [SambaBox]({{<baseurl>}}/rancher/v2.x/en/admin-settings/authentication/sambabox/)              |
 
 <br/>
 However, Rancher also provides [local authentication]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/local/).
