@@ -54,7 +54,15 @@ Using Prometheus, you can monitor Rancher at both the cluster level and [project
 
 As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 
-> **Prerequisite:** Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
+> **Prerequisite:** The following TCP ports need to be opened for metrics scraping
+> | Port | Node type | Component |
+> | --- | --- | --- |
+> | 9796 | Worker | Node exporter |
+> | 10254 | Worker | Nginx Ingress Controller |
+> | 10250 | Worker/Controlplane | Kubelet |
+> | 10251 | Controlplane | Kube scheduler |
+> | 10252 | Controlplane | Kube controller manager |
+> | 2379 | Etcd | Etcd server |
 
 1. From the **Global** view, navigate to the cluster that you want to configure cluster monitoring.
 
