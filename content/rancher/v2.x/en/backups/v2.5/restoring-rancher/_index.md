@@ -50,11 +50,10 @@ A restore is performed by creating a Restore custom resource.
 
 ### Logs
 
-To check how the restore is progressing, you can check the logs of the operator. Follow these steps to get the logs:
+To check how the restore is progressing, you can check the logs of the operator. Run this command to follow the logs:
 
-```yaml
-kubectl get pods -n cattle-resources-system
-kubectl logs <pod name from above command> -n cattle-resources-system -f
+```
+kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup -f
 ```
 
 ### Cleanup
