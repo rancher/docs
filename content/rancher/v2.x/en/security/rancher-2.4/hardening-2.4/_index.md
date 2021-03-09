@@ -86,10 +86,10 @@ automountServiceAccountToken: false
 
 Create a bash script file called `account_update.sh`. Be sure to `chmod +x account_update.sh` so the script has execute permissions.
 
-``` 
+```bash
 #!/bin/bash -e
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces --no-headers --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'); do
   kubectl patch serviceaccount default -n ${namespace} -p "$(cat account_update.yaml)"
 done
 ```
@@ -139,10 +139,10 @@ spec:
 Create a bash script file called `apply_networkPolicy_to_all_ns.sh`. Be sure to
 `chmod +x apply_networkPolicy_to_all_ns.sh` so the script has execute permissions.
 
-```
+```bash
 #!/bin/bash -e
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces --no-headers --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'); do
   kubectl apply -f default-allow-all.yaml -n ${namespace}
 done
 ```

@@ -2192,7 +2192,7 @@ Follow the documentation and create `NetworkPolicy` objects as you need them.
 
 **Audit Script:** 5.3.2.sh
 
-```
+```bash
 #!/bin/bash -e
 
 export KUBECONFIG=${KUBECONFIG:-"/root/.kube/config"}
@@ -2203,7 +2203,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces --no-headers --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'); do
   policy_count=$(kubectl get networkpolicy -n ${namespace} -o json | jq '.items | length')
   if [ ${policy_count} -eq 0 ]; then
     echo "fail: ${namespace}"
