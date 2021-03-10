@@ -19,7 +19,7 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Receiver](#receiver)
   - [Grouping](#grouping)
   - [Matching](#matching)
-- [Example Alertmanager YAML](#example-alertmanager-yaml)
+- [Example Alertmanager config](#example-alertmanager-config)
 - [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
 
 # Overview
