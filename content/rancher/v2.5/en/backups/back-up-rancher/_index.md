@@ -7,6 +7,8 @@ aliases:
 
 In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups)
 
+The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+
 ### Prerequisites
 
 Rancher version must be v2.5.0 and up
@@ -17,7 +19,7 @@ The backup storage location is an operator-level setting, so it needs to be conf
 
 Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, or they can be stored in a persistent volume.
 
-1. In the Rancher UI, go to the **Cluster Explorer.**
+1. In the Rancher UI, go to the **Cluster Explorer** view for the local cluster.
 1. Click **Apps.**
 1. Click **Rancher Backups.**
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
