@@ -5,6 +5,9 @@ description: RancherOS is a simplified Linux distribution built from containers,
 weight: 1
 ---
 
+**RancherOS 1.x is currently in a maintain-only-as-essential mode.**
+That is to say, it is no longer being actively maintained at a code level other than addressing critical or security fixes.
+
 RancherOS is the smallest, easiest way to run Docker in production.  Every process in RancherOS is a container managed by Docker. This includes system services such as `udev` and `syslog`.  Because it only includes the services necessary to run Docker, RancherOS is significantly smaller than most traditional operating systems. By removing unnecessary libraries and services, requirements for security patches and other maintenance are also reduced. This is possible because, with Docker, users typically package all necessary libraries into their containers.
 
 Another way in which RancherOS is designed specifically for running Docker is that it always runs the latest version of Docker. This allows users to take advantage of the latest Docker capabilities and bug fixes.
