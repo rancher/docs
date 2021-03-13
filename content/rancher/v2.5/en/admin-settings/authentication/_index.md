@@ -17,6 +17,7 @@ The Rancher authentication proxy integrates with the following external authenti
 | Auth Service                                                                                     |
 | ------------------------------------------------------------------------------------------------ |
 | [Microsoft Active Directory]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/ad/)  |
+| [SambaBox]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/sambabox)               |
 | [GitHub]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/github/)                  |
 | [Microsoft Azure AD]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/azure-ad/)    |
 | [FreeIPA]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/freeipa/)                |
@@ -27,6 +28,7 @@ The Rancher authentication proxy integrates with the following external authenti
 | [Okta]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/okta/)                      | 
 | [Google OAuth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/google/)            | 
 | [Shibboleth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/shibboleth)           |
+
 
 <br/>
 However, Rancher also provides [local authentication]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/local/).
