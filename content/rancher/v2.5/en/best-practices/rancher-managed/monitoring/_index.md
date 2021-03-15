@@ -7,7 +7,7 @@ aliases:
 
 Configuring sensible monitoring and alerting rules is vital for running any production workloads securely and reliably. This is not different when using Kubernetes and Rancher. Fortunately the integrated monitoring and alerting functionality makes this whole process a lot easier.
 
-The [Rancher Documentation]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/) describes in detail, how you can set up a complete Prometheus and Grafana stack. Out of the box this will scrape monitoring data from all system and Kubernetes components in your cluster and provide sensible dashboards and alerts for them to get started. But for a reliable setup, you also need to monitor your own workloads and adapt Prometheus and Grafana to your own specific use cases and cluster sizes. This document aims to give you best practices for this.
+The [Rancher monitoring documentation]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/) describes how you can set up a complete Prometheus and Grafana stack. Out of the box this will scrape monitoring data from all system and Kubernetes components in your cluster and provide sensible dashboards and alerts for them to get started. But for a reliable setup, you also need to monitor your own workloads and adapt Prometheus and Grafana to your own specific use cases and cluster sizes. This document aims to give you best practices for this.
 
 - [What to Monitor](#what-to-monitor)
 - [Configuring Prometheus Resource Usage](#configuring-prometheus-resource-usage)
