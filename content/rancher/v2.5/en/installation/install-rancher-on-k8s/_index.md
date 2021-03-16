@@ -14,7 +14,7 @@ In this section, you'll learn how to deploy Rancher on a Kubernetes cluster usin
 
 - [Prerequisites](#prerequisites)
   - [A Kubernetes Cluster](#a-kubernetes-cluster)
-  - [Required CLI Tools](#required-cli-tools)
+  - [CLI Tools](#cli-tools)
   - [Ingress Controller (Only for Hosted Kubernetes)](ingress-controller-only-for-hosted-kubernetes)
 - [Install the Rancher Helm Chart](#install-the-rancher-helm-chart)
 
@@ -33,7 +33,7 @@ For help setting up a Kubernetes cluster, we provide these tutorials:
 - **RKE2:** For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
 - **Amazon EKS:** To install Rancher on Amazon EKS, including how to install an ingress so that the Rancher server can be accessed, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks)
 
-### Required CLI Tools
+### CLI Tools
 
 The following CLI tools are required for setting up the Kubernetes cluster. Please make sure these tools are installed and available in your `$PATH`.
 
@@ -46,7 +46,7 @@ Refer to the [instructions provided by the Helm project](https://helm.sh/docs/in
 
 To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/#4-choose-your-ssl-configuration)
 
-For more information about deploying Rancher on EKS, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks)
+For an example of how to deploy an ingress on EKS, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
 # Install the Rancher Helm Chart
 
