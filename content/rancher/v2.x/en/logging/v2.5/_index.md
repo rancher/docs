@@ -103,7 +103,7 @@ spec:
       scheme: http
 ```
 
-We have created this cluster output, without elasticsearch configuration, in the same namespace as our operator: `cattle-logging-system.`. Any time we create a cluster flow or cluster output, we have to put it in the `cattle-logging-system` namespace.
+We have created this cluster output, without elasticsearch configuration, in the same namespace as our operator: `cattle-logging-system`. Any time we create a cluster flow or cluster output, we have to put it in the `cattle-logging-system` namespace.
 
 Now that we have configured where we want the logs to go, let's configure all logs to go to that output.
 

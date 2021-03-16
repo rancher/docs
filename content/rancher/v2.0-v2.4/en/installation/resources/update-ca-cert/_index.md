@@ -76,7 +76,7 @@ $ helm ls -A
 
 Upgrade the Helm application instance using the original configuration values and making sure to specify `ingress.tls.source=secret` as well as the current chart version to prevent an application upgrade.    
 
-If the certificate was signed by a private CA, add the `set privateCA=true` argument as well. Also make sure to read the documentation describing the initial installation using [custom certificates]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-Kubernetes/#6-install-rancher-with-helm-and-your-chosen-certificate-option).
+If the certificate was signed by a private CA, add the `set privateCA=true` argument as well. Also make sure to read the documentation describing the initial installation using custom certificates.
 
 ```
 helm upgrade rancher rancher-stable/rancher \

@@ -46,7 +46,7 @@ For more information, see [Ingress]({{<baseurl>}}/rancher/v2.x/en/k8s-in-rancher
 
 When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry.
 
-For more information, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/catalog/globaldns/).
+For more information, see [Global DNS]({{<baseurl>}}/rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/).
 
 ## Service Discovery
 

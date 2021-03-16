@@ -9,7 +9,7 @@ Typically, most applications are deployed on a single Kubernetes cluster, but th
 
 Any Helm charts from a global catalog can be used to deploy and manage multi-cluster applications.
 
-After creating a multi-cluster application, you can program a [Global DNS entry]({{<baseurl>}}/rancher/v2.5/en/catalog/globaldns/) to make it easier to access the application.
+After creating a multi-cluster application, you can program a global DNS entry to make it easier to access the application.
 
 - [Prerequisites](#prerequisites)
 - [Launching a multi-cluster app](#launching-a-multi-cluster-app)
@@ -99,7 +99,7 @@ If the Helm chart that you are deploying contains a `questions.yml` file, Ranche
 
 ### Key Value Pairs for Native Helm Charts
 
-For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.5/en/catalog/custom/), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
+For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a custom Helm chart repository, answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
 
 ### Members
 

@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.5/en/tasks/clusters/adding-managing-cluster-members/
   - /rancher/v2.5/en/k8s-in-rancher/cluster-members/
   - /rancher/v2.5/en/cluster-admin/cluster-members
+  - /rancher/v2.5/en/cluster-provisioning/cluster-members/
 ---
 
 If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.

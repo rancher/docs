@@ -66,6 +66,13 @@ In [Rancher Launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.x/en/cluster-
 ### hostPath Volumes
 Before you create a hostPath volume, you need to set up an [extra_bind]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/#extra-binds/) in your cluster configuration. This will mount the path as a volume in your kubelets, which can then be used for hostPath volumes in your workloads.
 
+### Migrating vSphere Cloud Provider from In-tree to Out-of-tree
+
+Kubernetes is moving away from maintaining cloud providers in-tree. vSphere has an out-of-tree cloud provider that can be used by installing the vSphere cloud provider and cloud storage plugins.
+
+For instructions on how to migrate from the in-tree vSphere cloud provider to out-of-tree, and manage the existing VMs post migration, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree)
+
+
 ### Related Links
 
 - [Kubernetes Documentation: Storage](https://kubernetes.io/docs/concepts/storage/)

@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/air-gap-single-node/prepare-private-registry/
   - /rancher/v2.5/en/installation/air-gap-single-node/config-rancher-for-private-reg/
   - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
+  - /rancher/v2.5/en/installation/air-gap-installation/prepare-private-reg/
 ---
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.

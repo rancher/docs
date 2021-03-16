@@ -1,6 +1,8 @@
 ---
 title: Registering Existing Clusters
 weight: 6
+aliases:
+  - /rancher/v2.5/en/cluster-provisioning/imported-clusters
 ---
 
 _Available as of v2.5_
@@ -45,7 +47,7 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 2. Choose **Register**.
 3. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-5. For Rancher v2.5.6+, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}rancher/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+5. For Rancher v2.5.6+, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 6. Click **Create**.
 7. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
 8. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.

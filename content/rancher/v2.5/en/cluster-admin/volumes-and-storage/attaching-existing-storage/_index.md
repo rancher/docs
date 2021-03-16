@@ -1,6 +1,8 @@
 ---
 title: Setting up Existing Storage
 weight: 1
+aliases:
+  - /rancher/v2.5/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/
 ---
 
 This section describes how to set up existing persistent storage for workloads in Rancher.

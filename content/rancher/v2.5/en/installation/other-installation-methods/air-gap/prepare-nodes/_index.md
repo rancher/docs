@@ -152,7 +152,7 @@ If you need help with creating a private registry, please refer to the [official
 {{% tab "Docker" %}}
 > The Docker installation is for Rancher users that are wanting to test out Rancher. Since there is only one node and a single Docker container, if the node goes down, you will lose all the data of your Rancher server.
 >
-> As of Rancher v2.5, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/migrating-rancher/)
+> As of Rancher v2.5, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
 
 ### 1. Set up a Linux Node
 

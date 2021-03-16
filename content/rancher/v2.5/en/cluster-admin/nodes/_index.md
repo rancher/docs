@@ -12,7 +12,7 @@ This section covers the following topics:
 - [Node options available for each cluster creation option](#node-options-available-for-each-cluster-creation-option)
   - [Nodes hosted by an infrastructure provider](#nodes-hosted-by-an-infrastructure-provider)
   - [Nodes provisioned by hosted Kubernetes providers](#nodes-provisioned-by-hosted-kubernetes-providers)
-  - [Imported nodes](#imported-nodes)
+  - [Registered nodes](#registered-nodes)
 - [Managing and editing individual nodes](#managing-and-editing-individual-nodes)
 - [Viewing a node in the Rancher API](#viewing-a-node-in-the-rancher-api)
 - [Deleting a node](#deleting-a-node)
@@ -29,21 +29,24 @@ This section covers the following topics:
 # Node Options Available for Each Cluster Creation Option
 
 The following table lists which node options are available for each type of cluster in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+| Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Registered EKS Nodes][4] | [All Other Registered Nodes][5] | Description                                                        |
+| ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | -------------------| ------------------------------------------------------------------ |
+| [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Marks the node as unschedulable.                                   |
+| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Marks the node as unschedulable _and_ evicts all pods.             |
+| [Edit](#managing-and-editing-individual-nodes)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Enter a custom name, description, label, or taints for a node. |
+| [View API](#viewing-a-node-in-the-rancher-api)   | ✓                                                | ✓                | ✓                   | ✓                   | ✓                   | View API data.                                                     |
+| [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     | *                   | *                  | Deletes defective nodes from the cluster.                          |
+| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key in order to SSH into the node.                     |
+| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     | ✓                   |                    | Scale the number of nodes in the node pool up or down.               |
 
-| Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Registered Nodes][4] | Description                                                        |
-| ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | ------------------------------------------------------------------ |
-| [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable.                                   |
-| [Drain](#draining-a-node)                        | ✓                                                | ✓                | ✓                   |                     | Marks the node as unschedulable _and_ evicts all pods.             |
-| [Edit](#managing-and-editing-individual-nodes)                          | ✓                                                | ✓                | ✓                   |                     | Enter a custom name, description, label, or taints for a node. |
-| [View API](#viewing-a-node-in-the-rancher-api)                  | ✓                                                | ✓                | ✓                   |                     | View API data.                                                     |
-| [Delete](#deleting-a-node)                       | ✓                                                | ✓                |                     |                     | Deletes defective nodes from the cluster.                          |
-| [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                                                |                  |                     |                     | Download SSH key for in order to SSH into the node.                     |
-| [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     |                     | Scale the number of nodes in the node pool up or down.               |
+[1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
+[5]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
 
-[1]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/
-[2]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes/
-[3]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/
-[4]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/
+\* Delete option accessible via View API
+
 
 ### Nodes Hosted by an Infrastructure Provider
 
@@ -59,9 +62,9 @@ Rancher uses [node templates]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning
 
 Options for managing nodes [hosted by a Kubernetes provider]({{<baseurl >}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
 
-### Imported Nodes
+### Registered Nodes
 
-Although you can deploy workloads to an [imported cluster]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
+Although you can deploy workloads to a [registered cluster]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
 
 # Managing and Editing Individual Nodes
 

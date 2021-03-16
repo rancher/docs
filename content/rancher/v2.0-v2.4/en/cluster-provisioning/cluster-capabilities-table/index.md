@@ -19,4 +19,4 @@ headless: true
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/pod-security-policy/) | ✓ |  | |
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.0-v2.4/en/security/security-scan/) | ✓ |  | |
 
-\* Cluster configuration options can't be edited for imported clusters, except for [K3s clusters.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/imported-clusters/#additional-features-for-imported-k3s-clusters)
+\* Cluster configuration options can't be edited for imported clusters, except for K3s clusters.
