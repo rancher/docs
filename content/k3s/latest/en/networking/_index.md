@@ -32,7 +32,7 @@ Traefik is deployed by default when starting the server. For more information se
 
 The Traefik ingress controller will use ports 80, 443, and 8080 on the host (i.e. these will not be usable for HostPort or NodePort).
 
-Traefik can be configured by editing the `traefik.yaml` file. To prevent k3s from using or overwriting the modified version, deploy k3s with `--no-deploy traefik` and store the modified copy in the `k3s/server/manifests` directory. For more information, refer to the official [Traefik for Helm Configuration Parameters.](https://github.com/helm/charts/tree/master/stable/traefik#configuration)
+To configure Traefik, see [Customizing Helm Chart Components with `HelmChartConfig`]({{<baseurl>}}/k3s/latest/en/helm/#customizing-packaged-components-with-helmchartconfig). [For more information, refer to the official [Traefik for Helm Configuration Parameters.](https://github.com/helm/charts/tree/master/stable/traefik#configuration)
 
 To disable it, start each server with the `--disable traefik` option.
 
