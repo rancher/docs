@@ -60,7 +60,7 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  docker.io:
+  mycustomreg.com:
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
@@ -79,7 +79,7 @@ configs:
 
 ```
 mirrors:
-  docker.io:
+  mycustomreg.com:
     endpoint:
       - "https://mycustomreg.com:5000"
 configs:
@@ -102,7 +102,7 @@ Below are examples showing how you may configure `/etc/rancher/k3s/registries.ya
 
 ```
 mirrors:
-  docker.io:
+  mycustomreg.com:
     endpoint:
       - "http://mycustomreg.com:5000"
 configs:
@@ -117,7 +117,7 @@ configs:
 
 ```
 mirrors:
-  docker.io:
+  mycustomreg.com:
     endpoint:
       - "http://mycustomreg.com:5000"
 ```
