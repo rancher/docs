@@ -9,7 +9,7 @@ This section describes how to install a Kubernetes cluster according to the [bes
 
 # Prerequisites
 
-These instructions assume you have set up three nodes, a load balancer, a DNS record, [this section.](({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
+These instructions assume you have set up three nodes, a load balancer, a DNS record, [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
 
 Note that in order for RKE2 to work correctly with the load balancer, you need to set up two listeners: one for the supervisor on port 9345, and one for the Kubernetes API on port 6443.
 
