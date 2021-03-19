@@ -54,6 +54,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.x/en/admin-settings/rbac/global-p
 > 
 > - Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
 > - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#setting-resource-limits-and-requests)
+> - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
