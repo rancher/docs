@@ -39,7 +39,6 @@ Suggestions include:
     - `azure_location` - Microsoft Azure region, choose the closest instead of the default
     - `prefix` - Prefix for all created resources
     - `instance_type` - Compute instance size used, minimum is `Standard_DS2_v2` but `Standard_DS2_v3` or `Standard_DS3_v2` could be used if within budget
-    - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
 1. Run `terraform init`.
 
@@ -56,7 +55,7 @@ Suggestions include:
     ```
 
 1. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-
+2. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/azure`.
 #### Result
 
 Two Kubernetes clusters are deployed into your Azure account, one running Rancher Server and the other ready for experimentation deployments.
