@@ -231,6 +231,7 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
             "Sid": "EC2Permisssions",
             "Effect": "Allow",
             "Action": [
+                "ec2:RunInstances",
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RevokeSecurityGroupEgress",
                 "ec2:DescribeVpcs",
@@ -238,6 +239,8 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
                 "ec2:DescribeSubnets",
                 "ec2:DescribeSecurityGroups",
                 "ec2:DescribeRouteTables",
+                "ec2:DescribeLaunchTemplateVersions",
+                "ec2:DescribeLaunchTemplates",
                 "ec2:DescribeKeyPairs",
                 "ec2:DescribeInternetGateways",
                 "ec2:DescribeImages",
@@ -248,6 +251,8 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
                 "ec2:DeleteKeyPair",
                 "ec2:CreateTags",
                 "ec2:CreateSecurityGroup",
+                "ec2:CreateLaunchTemplateVersion",
+                "ec2:CreateLaunchTemplate",
                 "ec2:CreateKeyPair",
                 "ec2:AuthorizeSecurityGroupIngress",
                 "ec2:AuthorizeSecurityGroupEgress"
