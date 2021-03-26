@@ -200,8 +200,7 @@ Placeholder | Description
 ### Option A: Default Self-signed Certificate
 
  ```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
- --name rancher \
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
  --namespace cattle-system \
  --set hostname=<RANCHER.YOURDOMAIN.COM> \
  --set certmanager.version=<CERTMANAGER_VERSION> \
@@ -213,8 +212,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 ### Option B: Certificates from Files using Kubernetes Secrets
 
 ```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 --namespace cattle-system \
 --set hostname=<RANCHER.YOURDOMAIN.COM> \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
@@ -226,8 +224,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
 
 ```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 --namespace cattle-system \
 --set hostname=<RANCHER.YOURDOMAIN.COM> \
 --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
