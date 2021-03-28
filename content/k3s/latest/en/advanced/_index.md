@@ -21,6 +21,7 @@ This section contains advanced information describing the different ways you can
 - [Enabling legacy iptables on Raspbian Buster](#enabling-legacy-iptables-on-raspbian-buster)
 - [Enabling cgroups for Raspbian Buster](#enabling-cgroups-for-raspbian-buster)
 - [SELinux Support](#selinux-support)
+- [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-el)
 
 # Certificate Rotation
 
@@ -366,3 +367,10 @@ Using a custom `--data-dir` under SELinux is not supported. To customize it, you
 
 {{%/tab%}}
 {{% /tabs %}}
+
+# Additional preparation for (Red Hat/CentOS) Enterprise Linux
+
+It is recommended to turn off firewalld:
+```
+systemctl disable firewalld --now
+```
