@@ -13,14 +13,15 @@ aliases:
 In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
 
 - [Prerequisites](#prerequisites)
-  - [A Kubernetes Cluster](#a-kubernetes-cluster)
-  - [CLI Tools](#cli-tools)
-  - [Ingress Controller (Only for Hosted Kubernetes)](ingress-controller-only-for-hosted-kubernetes)
 - [Install the Rancher Helm Chart](#install-the-rancher-helm-chart)
 
 # Prerequisites
 
-### A Kubernetes Cluster
+- [A Kubernetes Cluster](#kubernetes-cluster)
+- [CLI Tools](#cli-tools)
+- [Ingress Controller (Only for Hosted Kubernetes)](#ingress-controller-for-hosted-kubernetes)
+
+### Kubernetes Cluster
 
 Set up the Rancher server's local Kubernetes cluster. 
 
@@ -44,7 +45,7 @@ Refer to the [instructions provided by the Helm project](https://helm.sh/docs/in
 
 ### Ingress Controller (for Hosted Kubernetes)
 
-To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/#4-choose-your-ssl-configuration)
+To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.](#3-choose-your-ssl-configuration)
 
 For an example of how to deploy an ingress on EKS, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
