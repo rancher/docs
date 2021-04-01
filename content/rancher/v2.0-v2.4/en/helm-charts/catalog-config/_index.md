@@ -49,8 +49,7 @@ When [adding your catalog]({{<baseurl>}}/rancher/v2.0-v2.4/en/catalog/custom/add
 | Username (Optional) | Username or OAuth Token |
 | Password (Optional) | If you are authenticating using a username, enter the associated password. If you are using an OAuth token, use `x-oauth-basic`. |
 | 	Branch              | For a Git repository, the branch name. Default: `master`. For a Helm Chart repository, this field is ignored.  |
-| Helm version | The Helm version that will be used to deploy all of the charts in the catalog. This field cannot be changed later. For more information, refer to the [section on Helm versions.](
-{{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions) |
+| Helm version | The Helm version that will be used to deploy all of the charts in the catalog. This field cannot be changed later. For more information, refer to the [section on Helm versions.]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/#catalog-helm-deployment-versions) |
 
 # Private Repositories
 
