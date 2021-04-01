@@ -10,19 +10,44 @@ aliases:
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/install
 ---
 
-# Prerequisite
+In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
+
+- [Prerequisites](#prerequisites)
+- [Install the Rancher Helm Chart](#install-the-rancher-helm-chart)
+
+# Prerequisites
+
+- [Kubernetes Cluster](#kubernetes-cluster)
+- [CLI Tools](#cli-tools)
+- [Ingress Controller (Only for Hosted Kubernetes)](#ingress-controller-for-hosted-kubernetes)
+
+### Kubernetes Cluster
 
 Set up the Rancher server's local Kubernetes cluster. 
 
 Rancher can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of Rancher's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
 
-> **Note:** To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#4-choose-your-ssl-configuration).
+For help setting up a Kubernetes cluster, we provide these tutorials:
 
-For the tutorial to install an RKE Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke/) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha)
+- **RKE:** For the tutorial to install an RKE Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke/) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha)
+- **K3s:** For the tutorial to install a K3s Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-with-external-db) For help setting up the infrastructure for a high-availability K3s cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db)
+- **RKE2:** For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
+- **Amazon EKS:** To install Rancher on Amazon EKS, including how to install an ingress so that the Rancher server can be accessed, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks)
 
-For the tutorial to install a K3s Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-with-external-db) For help setting up the infrastructure for a high-availability K3s cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db)
+### CLI Tools
 
-For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
+The following CLI tools are required for setting up the Kubernetes cluster. Please make sure these tools are installed and available in your `$PATH`.
+
+Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
+- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.5/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
+
+### Ingress Controller (For Hosted Kubernetes)
+
+To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.](#3-choose-your-ssl-configuration)
+
+For an example of how to deploy an ingress on EKS, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
 # Install the Rancher Helm Chart
 
