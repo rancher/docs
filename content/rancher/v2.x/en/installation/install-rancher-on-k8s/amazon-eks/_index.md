@@ -4,7 +4,7 @@ shortTitle: Amazon EKS
 weight: 4
 ---
 
-This page covers two ways to install Rancher on EKS.
+This page covers two ways to install Rancher v2.5+ on EKS. Older Rancher versions should not be installed on hosted Kubernetes clusters.
 
 The first is a guide for deploying the Rancher server on an EKS cluster using CloudFormation. This guide was created in collaboration with Amazon Web Services to show how to deploy Rancher following best practices.
 
@@ -45,11 +45,12 @@ Deploying this Quick Start for a new virtual private cloud (VPC) and new Amazon 
 
 In this section, you'll install an EKS cluster with an ingress by using command line tools. This guide may be useful if you want to use fewer resources while trying out Rancher on EKS.
 
-> **Prerequisites:**
+> **Requirements:**
 >
 > - You should already have an AWS account.
 > - It is recommended to use an IAM user instead of the root AWS account. You will need the IAM user's access key and secret key to configure the AWS command line interface.
 > - The IAM user needs the minimum IAM policies described in the official [eksctl documentation.](https://eksctl.io/usage/minimum-iam-policies/)
+> - Only Rancher v2.5+ can be installed on hosted Kubernetes clusters.
 
 ### 1. Prepare your Workstation
 
@@ -110,7 +111,7 @@ eksctl get cluster
 2021-03-18 15:09:35 [ℹ]  eksctl version 0.40.0
 2021-03-18 15:09:35 [ℹ]  using region us-west-2
 NAME		REGION		EKSCTL CREATED
-rancher-server-cluster		us-west-2	True
+iztest2		us-west-2	True
 ```
 
 ### 5. Install an Ingress
