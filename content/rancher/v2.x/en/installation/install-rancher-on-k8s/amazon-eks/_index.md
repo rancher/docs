@@ -160,6 +160,6 @@ There are many valid ways to set up the DNS. For help, refer to the AWS document
 
 ### 8. Install the Rancher Helm Chart
 
-Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
+Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
 
 Use that DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
