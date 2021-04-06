@@ -9,6 +9,7 @@ weight: 1
 - [Uninstall Logging](#uninstall-logging)
 - [Role-based Access Control](#role-based-access-control)
 - [Configuring the Logging Application](#configuring-the-logging-application)
+- [Working with a Custom Docker Root Directory](#working-with-a-custom-docker-root-directory)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
 # Changes in Rancher v2.5

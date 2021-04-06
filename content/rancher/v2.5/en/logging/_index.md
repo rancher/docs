@@ -15,6 +15,7 @@ aliases:
 - [Uninstall Logging](#uninstall-logging)
 - [Role-based Access Control](#role-based-access-control)
 - [Configuring the Logging Application](#configuring-the-logging-application)
+- [Working with a Custom Docker Root Directory](#working-with-a-custom-docker-root-directory)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
 # Changes in Rancher v2.5
@@ -281,6 +282,13 @@ spec:
 Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an output configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.
 
 > **Note on syslog** Official `syslog` support is coming in Rancher v2.5.4. However, this example still provides an overview on using unsupported plugins.
+
+# Working with a Custom Docker Root Directory
+
+_Applies to v2.5.6+_
+
+If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
+This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
 
 # Working with Taints and Tolerations
 
