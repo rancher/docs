@@ -15,6 +15,7 @@ aliases:
 - [Uninstall Logging](#uninstall-logging)
 - [Role-based Access Control](#role-based-access-control)
 - [Configuring the Logging Application](#configuring-the-logging-application)
+- [Working with a Custom Docker Root Directory](#working-with-a-custom-docker-root-directory)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
 
 # Changes in Rancher v2.5
@@ -62,7 +63,7 @@ Rancher logging has two roles, `logging-admin` and `logging-view`.
 - `logging-admin` gives users full access to namespaced flows and outputs
 - `logging-view` allows users to *view* namespaced flows and outputs, and cluster flows and outputs
 
-> **Why choose one role over the other?** Edit access to cluster flow and cluster output resources is powerful. Any user with it has edit access for all logs in the cluster. 
+> **Why choose one role over the other?** Edit access to cluster flow and cluster output resources is powerful. Any user with it has edit access for all logs in the cluster.
 
 In Rancher, the cluster administrator role is the only role with full access to all `rancher-logging` resources. Cluster members are not able to edit or read any logging resources. Project owners and members have the following privileges:
 
@@ -122,7 +123,7 @@ metadata:
 spec:
   globalOutputRefs:
     - "example-es"
-``` 
+```
 
 We should now see our configured index with logs in it.
 
@@ -158,7 +159,7 @@ spec:
       containers:
         - name: generator
           image: paynejacob/loggenerator:latest
-``` 
+```
 
 With `coolapp` running, we will follow a similar path as when we created a cluster output. However, unlike cluster outputs, we create our output in our application's namespace.
 
@@ -314,20 +315,13 @@ spec:
     - key: cattle.io/os
       operator: "Equal"
       value: "linux"
-      effect: NoSchedule 
+      effect: NoSchedule
   nodeSelector:
     kubernetes.io/os: linux
 ```
 
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a `toleration` for the taint we have on all of our Linux nodes.
 You can do the same with Rancher's existing taints, or with your own custom ones.
-
-# Working with a Custom Docker Root Directory
-
-_Applies to v2.5.6+_
-
-If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
-This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
 
 ### Windows Support
 
@@ -353,4 +347,34 @@ However, if you would like to add tolerations for *only* the `fluentbit` contain
 ```yaml
 fluentbit_tolerations:
   # insert tolerations list for fluentbit containers only...
+```
+
+# Troubleshooting
+
+### The `cattle-logging` Namespace Being Recreated
+
+If your cluster previously deployed logging from the Cluster Manager UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
+
+The solution is to delete all `clusterloggings.management.cattle.io` and `projectloggings.management.cattle.io` custom resources from the cluster specific namespace in the management cluster.
+The existence of these custom resources causes Rancher to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
+
+The cluster namespace matches the cluster ID, so we need to find the cluster ID for each cluster.
+
+1. In your web browser, navigate to your cluster(s) in either the Cluster Manager UI or the Cluster Explorer UI.
+2. Copy the `<cluster-id>` portion from one of the URLs below. The `<cluster-id>` portion is the cluster namespace name.
+
+```bash
+# Cluster Management UI
+https://<your-url>/c/<cluster-id>/
+
+# Cluster Explorer UI (Dashboard)
+https://<your-url>/dashboard/c/<cluster-id>/
+```
+
+Now that we have the `<cluster-id>` namespace, we can delete the CRs that cause `cattle-logging` to be continually recreated.
+*Warning:* ensure that logging, the version installed from the Cluster Manager UI, is not currently in use.
+
+```bash
+kubectl delete clusterloggings.management.cattle.io -n <cluster-id>
+kubectl delete projectloggings.management.cattle.io -n <cluster-id>
 ```
