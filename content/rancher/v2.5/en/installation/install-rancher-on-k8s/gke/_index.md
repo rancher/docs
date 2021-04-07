@@ -6,7 +6,7 @@ weight: 5
 
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
 
-If you already have an EKS Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
+If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
 
 # Prerequisites
 
@@ -22,7 +22,6 @@ Take the following steps to enable the Kubernetes Engine API:
 1. Create or select a project.
 1. Open the project and enable the Kubernetes Engine API for the project. Wait for the API and related services to be enabled. This can take several minutes.
 1. Make sure that billing is enabled for your Cloud project. For information on how to enable billing for your project, refer to the [Google Cloud documentation.](https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project)
-1. In the [Cloud Console](https://console.cloud.google.com/iam-admin/quotas?_ga=2.140309301.767329331.1617810440-856599067.1617343886)
 
 # 2. Open the Cloud Shell
 
@@ -32,24 +31,27 @@ The following sections describe how to launch the cloud shell from the Google Cl
 
 ### Cloud Shell
 
-To launch the shell from the Google Cloud Console, go to the upper-right corner of the console and click the **Activate Cloud Shell** button.
+To launch the shell from the [Google Cloud Console,](https://console.cloud.google.com) go to the upper-right corner of the console and click the terminal button. When hovering over the button, it is labeled **Activate Cloud Shell.**
 
 ### Local Shell
 
-To install gcloud and kubectl, perform the following steps:
+To install `gcloud` and `kubectl`, perform the following steps:
 
 1. Install the Cloud SDK by following [these steps.](https://cloud.google.com/sdk/docs/install) The Cloud SDK includes the `gcloud` command-line tool. The steps vary based on your OS.
 1. After installing Cloud SDK, install the `kubectl` command-line tool by running the following command:
+
     ```
     gcloud components install kubectl
     ```
     In a later step, `kubectl` will be configured to use the new GKE cluster.
 1. [Install Helm 3](https://helm.sh/docs/intro/install/) if it is not already installed.
 1. Enable Helm experimental [support for OCI images](https://github.com/helm/community/blob/master/hips/hip-0006.md) with the `HELM_EXPERIMENTAL_OCI` variable. Add the following line to `~/.bashrc` (or `~/.bash_profile` in macOS, or wherever your shell stores environment variables):
+
     ```
     export HELM_EXPERIMENTAL_OCI=1
     ```
 1. Run the following command to load your updated `.bashrc` file:
+
     ```
     source ~/.bashrc
     ```
@@ -71,10 +73,12 @@ To install gcloud and kubectl, perform the following steps:
 {{% tab "Using gloud init" %}}
 
 1. Run gcloud init and follow the directions:
+
     ```
     gcloud init
     ```
     If you are using SSH on a remote server, use the --console-only flag to prevent the command from launching a browser:
+
     ```
     gcloud init --console-only
     ```
@@ -94,6 +98,7 @@ gcloud config list
 ```
 
 The output should resemble the following:
+
 ```
 [compute]
 region = us-west1 # Your chosen region
@@ -173,8 +178,3 @@ There are many valid ways to set up the DNS. For help, refer to the Google Cloud
 Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
 
 Use the DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
-
-
-helm install rancher rancher-stable/rancher \
-  --namespace cattle-system \
-  --set hostname=35.233.206.34
