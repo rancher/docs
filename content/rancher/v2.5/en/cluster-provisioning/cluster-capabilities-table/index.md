@@ -11,12 +11,12 @@ headless: true
 | [Managing Projects, Namespaces and Workloads]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/projects-and-namespaces/) | ✓ | ✓ | ✓ |
 | [Using App Catalogs]({{<baseurl>}}/rancher/v2.5/en/catalog/) | ✓ | ✓ | ✓ |
 | [Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio)]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/) | ✓ | ✓ | ✓ |
+| [Running Security Scans]({{<baseurl>}}/rancher/v2.5/en/security/security-scan/) | ✓ | ✓ | ✓ |
 | [Cloning Clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cloning-clusters/)| ✓ | ✓ | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ |  | |
 | [Ability to back up your Kubernetes Clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) | ✓ | | |
 | [Ability to recover and restore etcd]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) | ✓ | | |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ |  | |
-| [Running Security Scans]({{<baseurl>}}/rancher/v2.5/en/security/security-scan/) | ✓ |  | |
 
-\* Cluster configuration options can't be edited for imported clusters, except for [K3s clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/)
+\* Cluster configuration options can't be edited for imported clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/)
