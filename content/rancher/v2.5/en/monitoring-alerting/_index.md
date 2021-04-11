@@ -31,6 +31,7 @@ For more information about upgrading the Monitoring app in Rancher 2.5, please r
 - [About Prometheus](#about-prometheus)
 - [Enable Monitoring](#enable-monitoring)
   - [Default Alerts, Targets, and Grafana Dashboards](#default-alerts-targets-and-grafana-dashboards)
+- [Windows Cluster Support](#windows-cluster-support)
 - [Using Monitoring](#using-monitoring)
   - [Grafana UI](#grafana-ui)
   - [Prometheus UI](#prometheus-ui)
@@ -83,6 +84,16 @@ To see the default dashboards, go to the [Grafana UI.](#grafana-ui) In the left 
 ### Next Steps
 
 To configure Prometheus resources from the Rancher UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
+
+# Windows Cluster Support
+
+_Available as of v2.5.8_
+
+Monitoring v2 can now be deployed on Windows nodes.
+
+To be able to fully deploy Monitoring V2 for Windows, all of your Windows hosts must have a minimum wins version of v0.1.0.
+
+For more details on how to upgrade wins on existing Windows hosts, refer to the section on [Windows cluster support for Monitoring v2.](./windows-clusters)
 
 # Using Monitoring
 
