@@ -19,6 +19,7 @@ This section is a cluster configuration reference, covering the following topics
 - [Rancher UI Options](#rancher-ui-options)
   - [Kubernetes version](#kubernetes-version)
   - [Network provider](#network-provider)
+  - [Project network isolation](#project-network-isolation)
   - [Kubernetes cloud providers](#kubernetes-cloud-providers)
   - [Private registries](#private-registries)
   - [Authorized cluster endpoint](#authorized-cluster-endpoint)
@@ -58,14 +59,27 @@ Out of the box, Rancher is compatible with the following network providers:
 - [Calico](https://docs.projectcalico.org/v3.11/introduction/)
 - [Weave](https://github.com/weaveworks/weave)
 
-**Notes on Canal:**
-  
-If you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/).
-
 
 **Notes on Weave:**
 
 When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+
+### Project Network Isolation
+
+Project network isolation is used to enable or disable communication between pods in different projects.
+
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+To enable project network isolation as a cluster option, you will need to use any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
+
+{{% /tab %}}
+{{% tab "Rancher before v2.5.8" %}}
+
+To enable project network isolation as a cluster option, you will need to use Canal as the CNI.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Kubernetes Cloud Providers
 
