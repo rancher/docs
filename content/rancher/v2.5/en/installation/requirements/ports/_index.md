@@ -65,7 +65,7 @@ The following tables break down the port requirements for inbound and outbound t
 | Protocol | Port | Destination                                              | Description                                   |
 | -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
 | TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
-| TCP      | 443  | `35.160.43.145/32`, `35.167.242.46/32`, `52.33.59.17/32` | git.rancher.io (catalogs)                     |
+| TCP      | 443  | git.rancher.io |  Rancher catalog                     |
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
@@ -162,7 +162,7 @@ The following tables break down the port requirements for Rancher nodes, for inb
 | Protocol | Port | Source | Description |
 |-----|-----|----------------|---|
 | TCP | 22 | Any node IP from a node created using Node Driver | SSH provisioning of nodes using Node Driver |
-| TCP | 443 | `35.160.43.145/32`,`35.167.242.46/32`,`52.33.59.17/32` | git.rancher.io (catalogs) |
+| TCP | 443 | git.rancher.io |  Rancher catalog |
 | TCP | 2376 | Any node IP from a node created using a node driver | Docker daemon TLS port used by Docker Machine |
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
