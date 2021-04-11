@@ -7,6 +7,17 @@ aliases:
 ---
 This section describes the expectations for RBAC for Rancher Monitoring.
 
+- [Cluster Admins](#cluster-admins)
+- [Users with Kubernetes ClusterRole-based Permissions](#users-with-kubernetes-clusterrole-based-permissions)
+  - [Users with Kubernetes Admin/Edit Permissions](#users-with-kubernetes-admin-edit-permissions)
+  - [Users with Kubernetes View Permissions](#users-with-kubernetes-view-permissions)
+  - [Additional Monitoring Roles](#additional-monitoring-roles)
+  - [Additional Monitoring ClusterRoles](#additional-monitoring-clusterroles)
+- [Additional Monitoring Roles](#additional-monitoring-roles)
+- [Users with Rancher Cluster Manager Based Permissions](#users-with-rancher-cluster-manager-based-permissions)
+  - [Differences in 2.5.x](#differences-in-2-5-x)
+  - [Assigning Additional Access](#assigning-additional-access)
+
 # Cluster Admins
 
 By default, only those with the cluster-admin `ClusterRole` should be able to:
@@ -18,7 +29,7 @@ By default, only those with the cluster-admin `ClusterRole` should be able to:
 - Persist new Grafana dashboards or datasources via creating ConfigMaps in the appropriate namespace
 - Expose certain Prometheus metrics to the k8s Custom Metrics API for HPA via a Secret in the `cattle-monitoring-system` namespace
 
-# Users with k8s ClusterRole-based Permissions
+# Users with Kubernetes ClusterRole-based Permissions
 
 The `rancher-monitoring` chart installs the following three `ClusterRoles`. By default, they aggregate into the corresponding k8s `ClusterRoles`:
 
@@ -53,9 +64,11 @@ Only those with who have some Kubernetes `ClusterRole` should be able to:
 - View the scrape configuration of Prometheus deployments via ServiceMonitor and PodMonitor CRs
 - View the alerting/recording rules of a Prometheus deployment via PrometheusRules CRs
 
-# Additional Monitoring Roles
+### Additional Monitoring Roles
 
-Monitoring also creates six additional `Roles` that are not assigned to users by default but are created within the cluster. Admins should use these roles to provide more fine-grained access to users:
+Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a RoleBinding that references it.
+
+Admins should use these roles to provide more fine-grained access to users:
 
 | Role | Purpose  |
 | ------------------------------| ---------------------------|
@@ -66,9 +79,19 @@ Monitoring also creates six additional `Roles` that are not assigned to users by
 | monitoring-dashboard-edit | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-view | Allow admins to assign roles to users to be able to view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 
-## Users with Rancher Cluster Manager Based Permissions
+### Additional Monitoring ClusterRoles
+
+Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it.
+
+| Role | Purpose  |
+| ------------------------------| ---------------------------|
+| monitoring-ui-view | <a id="monitoring-ui-view"></a>_Available as of Monitoring v2 9.4.204+_ Provides read-only access to external Monitoring UIs by giving a user permission to list the Prometheus, Alertmanager, and Grafana endpoints and make GET requests to Prometheus, Grafana, and Alertmanager UIs through the Rancher proxy. |
+
+# Users with Rancher Cluster Manager Based Permissions
 
 The relationship between the default roles deployed by Rancher Cluster Manager (i.e. cluster-owner, cluster-member, project-owner, project-member), the default k8s roles, and the roles deployed by the rancher-monitoring chart are detailed in the table below:
+
+<figcaption>Default Rancher Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
 
 | Cluster Manager Role | k8s Role | Monitoring ClusterRole / Role | ClusterRoleBinding or RoleBinding? |
 | --------- | --------- | --------- | --------- |
@@ -76,6 +99,16 @@ The relationship between the default roles deployed by Rancher Cluster Manager (
 | cluster-member | admin | monitoring-admin | ClusterRoleBinding |
 | project-owner | edit | monitoring-admin | RoleBinding within Project namespace |
 | project-member | view | monitoring-edit | RoleBinding within Project namespace |
+
+In addition to these default Roles, the following additional Rancher project roles can be applied to members of your Cluster to provide additional access to Monitoring. These Rancher Roles will be tied to ClusterRoles deployed by the Monitoring chart:
+
+<figcaption>Non-default Rancher Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
+
+| Cluster Manager Role  |  Kubernetes ClusterRole | Available In Rancher From | Available in Monitoring v2 From |
+|--------------------------|-------------------------------|-------|------|
+| View Monitoring* | [monitoring-ui-view](#monitoring-ui-view)    |    2.4.8+    |  9.4.204+ |
+
+\* A User bound to the **View Monitoring** Rancher Role only has permissions to access external Monitoring UIs if provided links to those UIs. In order to access the Monitoring Pane on Cluster Explorer to get those links, the User must be a Project Member of at least one Project.
 
 ### Differences in 2.5.x
 
