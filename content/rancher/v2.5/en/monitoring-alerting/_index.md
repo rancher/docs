@@ -169,6 +169,8 @@ For more information on configuring Alertmanager in Rancher, see [this page.](./
 
 **Result:** `rancher-monitoring` is uninstalled.
 
+> **Note on Persistent Grafana Dashboards:** For users who are using Monitoring V2 v9.4.203 or below, uninstalling the Monitoring chart will delete the cattle-dashboards namespace, which will delete all persisted dashboards, unless the namespace is marked with the annotation `helm.sh/resource-policy: "keep"`. This annotation is added by default in Rancher v2.5.8+.
+
 # Setting Resource Limits and Requests
 
 The resource requests and limits can be configured when installing `rancher-monitoring`.

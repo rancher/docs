@@ -7,7 +7,7 @@ aliases:
 ---
 This section describes the expectations for RBAC for Rancher Monitoring.
 
-## Cluster Admins
+# Cluster Admins
 
 By default, only those with the cluster-admin `ClusterRole` should be able to:
 
@@ -18,7 +18,7 @@ By default, only those with the cluster-admin `ClusterRole` should be able to:
 - Persist new Grafana dashboards or datasources via creating ConfigMaps in the appropriate namespace
 - Expose certain Prometheus metrics to the k8s Custom Metrics API for HPA via a Secret in the `cattle-monitoring-system` namespace
 
-## Users with k8s ClusterRole-based Permissions
+# Users with k8s ClusterRole-based Permissions
 
 The `rancher-monitoring` chart installs the following three `ClusterRoles`. By default, they aggregate into the corresponding k8s `ClusterRoles`:
 
@@ -37,23 +37,23 @@ These `ClusterRoles` provide different levels of access to the Monitoring CRDs b
 
 On a high level, the following permissions are assigned by default as a result.
 
-### Users with k8s Admin / Edit Permissions
+### Users with Kubernetes Admin/Edit Permissions
 
-Only those with the the cluster-admin / admin / edit `ClusterRole` should be able to:
+Only those with the the cluster-admin, admin or edit `ClusterRole` should be able to:
 
 - Modify the scrape configuration of Prometheus deployments via ServiceMonitor and PodMonitor CRs
 - Modify the alerting / recording rules of a Prometheus deployment via PrometheusRules CRs
 
-### Users with k8s View Permissions
+### Users with Kubernetes View Permissions
 
-Only those with who have some k8s `ClusterRole` should be able to:
+Only those with who have some Kubernetes `ClusterRole` should be able to:
 
 - View the configuration of Prometheuses that are deployed within the cluster
 - View the configuration of Alertmanagers that are deployed within the cluster
 - View the scrape configuration of Prometheus deployments via ServiceMonitor and PodMonitor CRs
-- View the alerting / recording rules of a Prometheus deployment via PrometheusRules CRs
+- View the alerting/recording rules of a Prometheus deployment via PrometheusRules CRs
 
-## Additional Monitoring Roles
+# Additional Monitoring Roles
 
 Monitoring also creates six additional `Roles` that are not assigned to users by default but are created within the cluster. Admins should use these roles to provide more fine-grained access to users:
 
