@@ -55,3 +55,5 @@ For automation purposes, you can't have a specific IP address in a command as it
 | `gceexternal` | `--address gceexternal` | Value retrieved from `http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip` will be used |
 | `packetlocal` | `--address packetlocal` | Value retrieved from `https://metadata.packet.net/2009-04-04/meta-data/local-ipv4` will be used |
 | `packetpublic` | `--address packetlocal` | Value retrieved from `https://metadata.packet.net/2009-04-04/meta-data/public-ipv4` will be used |
+| `scwprivate` | `--address scwprivate` | Value retrieved from `http://169.254.42.42/conf` with key `PRIVATE_IP` will be used |
+| `scwpublic` | `--address scwpublic` | Value retrieved from `http://169.254.42.42/conf` with key `PUBLIC_IP_ADDRESS` will be used |
