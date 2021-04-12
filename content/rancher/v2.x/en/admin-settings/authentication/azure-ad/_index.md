@@ -169,11 +169,11 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
     
-        - **Microsoft Graph API endpoint** (Graph Endpoint)
+        - **Microsoft Graph API endpoint** (Graph Endpoint) 
         - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
         - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
         
->**Note:** Copy the v1 version of the endpoints
+>**Note:** Copy the v1 version of the endpoints.  Also it seems that new graph api endpoint offered is not working.  Try then https://graph.windows.net/.
 
 ### 5. Configure Azure AD in Rancher
 
