@@ -88,14 +88,14 @@ Rancher v2.5.4 introduced the capability to configure receivers by filling out f
 
 The following types of receivers can be configured in the Rancher UI:
 
-- <a href="#slack">Slack</Slack>
-- <a href="#email">Email</Slack>
-- <a href="#pagerduty">PagerDuty</Slack>
-- <a href="#opsgenie">Opsgenie</Slack>
-- <a href="#webhook">Webhook</Slack>
-- <a href="#custom">Custom</Slack>
-- <a href="#teams">Teams</Slack>
-- <a href="#sms">SMS</Slack>
+- <a href="#slack">Slack</a>
+- <a href="#email">Email</a>
+- <a href="#pagerduty">PagerDuty</a>
+- <a href="#opsgenie">Opsgenie</a>
+- <a href="#webhook">Webhook</a>
+- <a href="#custom">Custom</a>
+- <a href="#teams">Teams</a>
+- <a href="#sms">SMS</a>
 
 The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
@@ -157,6 +157,8 @@ Opsgenie Responders:
 | Proxy URL | Proxy for the webhook notification. |
 | Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
 
+<!-- TODO add info on webhook for teams and sms and link to them -->
+
 ### Custom
 
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
@@ -173,12 +175,12 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 The following types of receivers can be configured in the Rancher UI:
 
-- <a href="#slack">Slack</Slack>
-- <a href="#email">Email</Slack>
-- <a href="#pagerduty">PagerDuty</Slack>
-- <a href="#opsgenie">Opsgenie</Slack>
-- <a href="#webhook">Webhook</Slack>
-- <a href="#custom">Custom</Slack>
+- <a href="#slack">Slack</a>
+- <a href="#email">Email</a>
+- <a href="#pagerduty">PagerDuty</a>
+- <a href="#opsgenie">Opsgenie</a>
+- <a href="#webhook">Webhook</a>
+- <a href="#custom">Custom</a>
 
 The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
