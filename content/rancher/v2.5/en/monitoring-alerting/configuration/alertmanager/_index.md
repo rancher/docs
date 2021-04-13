@@ -175,16 +175,16 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 The following types of receivers can be configured in the Rancher UI:
 
-- <a href="#slack">Slack</a>
-- <a href="#email">Email</a>
-- <a href="#pagerduty">PagerDuty</a>
-- <a href="#opsgenie">Opsgenie</a>
-- <a href="#webhook">Webhook</a>
-- <a href="#custom">Custom</a>
+- <a href="#slack-254-257">Slack</a>
+- <a href="#email-254-257">Email</a>
+- <a href="#pagerduty-254-257">PagerDuty</a>
+- <a href="#opsgenie-254-257">Opsgenie</a>
+- <a href="#webhook-254-257">Webhook</a>
+- <a href="#custom-254-257">Custom</a>
 
 The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
-### Slack
+### Slack {#slack-254-257}
 
 | Field | Type | Description |
 |------|--------------|------|
@@ -193,7 +193,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Proxy URL   |    String    |  Proxy for the webhook notifications.  |
 | Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
-### Email
+### Email {#email-254-257}
 
 | Field | Type | Description |
 |------|--------------|------|
@@ -210,7 +210,7 @@ SMTP options:
 | Username |   String   | Enter a username to authenticate with the SMTP server. |
 | Password |   String    | Enter a password to authenticate with the SMTP server. |
 
-### PagerDuty
+### PagerDuty {#pagerduty-254-257}
 
 | Field | Type | Description |
 |------|------|-------|
@@ -219,7 +219,7 @@ SMTP options:
 | Proxy URL | String |  Proxy for the PagerDuty notifications.  |
 | Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
 
-### Opsgenie
+### Opsgenie {#opsgenie-254-257}
 
 | Field | Description |
 |------|-------------|
@@ -234,7 +234,7 @@ Opsgenie Responders:
 | Type | String | Schedule, Team, User, or Escalation. For more information on alert responders, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/alert-recipients-and-teams) |
 | Send To | String | Id, Name, or Username of the Opsgenie recipient. |
 
-### Webhook
+### Webhook {#webhook-1}
 
 | Field |    Description |
 |-------|--------------|
@@ -242,7 +242,7 @@ Opsgenie Responders:
 | Proxy URL | Proxy for the webhook notification. |
 | Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
 
-### Custom
+### Custom {#custom-254-257}
 
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
 
