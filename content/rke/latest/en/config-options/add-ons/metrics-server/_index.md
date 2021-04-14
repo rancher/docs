@@ -9,13 +9,17 @@ RKE will deploy Metrics Server as a Deployment.
 
 The image used for Metrics Server is under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there is a default image associated with the Metrics Server, but these can be overridden by changing the image tag in `system_images`.
 
-## Tolerations
+- [Tolerations](#tolerations)
+- [Priority Class Name](#metrics-server-priority-class-name)
+- [Disabling the Metrics Server](#disabling-the-metrics-server)
+
+### Tolerations
 
 _Available as of v1.2.4_
 
 The configured tolerations apply to the `metrics-server` Deployment.
 
-```
+```yaml
 monitoring:
   tolerations:
   - key: "node.kubernetes.io/unreachable"
@@ -34,7 +38,19 @@ To check for applied tolerations on the `metrics-server` Deployment, use the fol
 kubectl -n kube-system get deploy metrics-server -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
-## Disabling the Metrics Server
+### Metrics Server Priority Class Name
+
+_Available as of RKE v1.2.6+_
+
+The [pod priority](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#pod-priority) is set by configuring a priority class name:
+
+```yaml
+monitoring:
+  provider: metrics-server
+  metrics_server_priority_class_name: system-cluster-critical
+```
+
+### Disabling the Metrics Server
 
 _Available as of v0.2.0_
 
