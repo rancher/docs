@@ -165,9 +165,76 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 ### Teams
 
+#### Enabling the Teams Receiver for Rancher Managed Clusters
+
+The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
+
+1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. Click **Apps**.
+1. Click the `rancher-alerting-drivers` app.
+1. Click the _NAME_ tab
+1. Select the **Teams** option and click **Install**.
+1. Take note of the namespace used as it will be required in a later step.
+
+#### Configure the Teams Receiver
+
+The Teams receiver can be configured by updating its ConfigMap. For example, the following is a minimal Teams receiver configuration.
+
+```yaml
+[Microsoft Teams]
+teams-instance-1: https://your-teams-webhook-url
+```
+
+When configuration is complete, add the receiver using the steps in [this section](#creating-receivers-in-the-rancher-ui).
+
+Use the example below as the URL where:
+
+- `ns-1` is replaced with the namespace where the `rancher-alerting-drivers` app is installed
+
+```yaml
+url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-1
+```
+
+<!-- https://github.com/idealista/prom2teams -->
 
 ### SMS
 
+#### Enabling the SMS Receiver for Rancher Managed Clusters
+
+The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
+
+1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. Click **Apps**.
+1. Click the `rancher-alerting-drivers` app.
+1. Click the _NAME_ tab
+1. Select the **SMS** option and click **Install**.
+1. Take note of the namespace used as it will be required in a later step.
+
+#### Configure the SMS Receiver
+
+The SMS receiver can be configured by updating its ConfigMap. For example, the following is a minimal SMS receiver configuration.
+
+```yaml
+receivers:
+- name: 'telegram-receiver-1'
+  provider: 'telegram'
+  to:
+    - '123456789'
+```
+
+When configuration is complete, add the receiver using the steps in [this section](#creating-receivers-in-the-rancher-ui).
+
+Use the example below as the name and URL, where:
+
+- the name assigned to the receiver, e.g. `telegram-receiver-1`, must match the name in the `receivers.name` field in the ConfigMap, e.g. `telegram-receiver-1`
+- `ns-1` in the URL is replaced with the namespace where the `rancher-alerting-drivers` app is installed
+
+```yaml
+name: telegram-receiver-1
+url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
+```
+
+<!-- https://github.com/messagebird/sachet -->
 
 {{% /tab %}}
 
