@@ -89,11 +89,11 @@ To configure Prometheus resources from the Rancher UI, click **Apps & Marketplac
 
 _Available as of v2.5.8_
 
-Monitoring v2 can now be deployed on Windows nodes.
+When deployed onto an RKE1 Windows cluster, Monitoring V2 will now automatically deploy a [windows-exporter](https://github.com/prometheus-community/windows_exporter) DaemonSet and set up a ServiceMonitor to collect metrics from each of the deployed Pods. This will populate Prometheus with `windows_` metrics that are akin to the `node_` metrics exported by [node_exporter](https://github.com/prometheus/node_exporter) for Linux hosts.
 
-To be able to fully deploy Monitoring V2 for Windows, all of your Windows hosts must have a minimum wins version of v0.1.0.
+To be able to fully deploy Monitoring V2 for Windows, all of your Windows hosts must have a minimum [wins](https://github.com/rancher/wins) version of v0.1.0.
 
-For more details on how to upgrade wins on existing Windows hosts, refer to the section on [Windows cluster support for Monitoring v2.](./windows-clusters)
+For more details on how to upgrade wins on existing Windows hosts, refer to the section on [Windows cluster support for Monitoring V2.](./windows-clusters)
 
 # Using Monitoring
 
