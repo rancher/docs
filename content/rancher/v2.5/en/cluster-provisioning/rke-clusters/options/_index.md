@@ -292,6 +292,10 @@ Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/m
 
 Option to enable or disable Project Network Isolation.
 
+Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
+
+In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
+
 ### local_cluster_auth_endpoint
 
 See [Authorized Cluster Endpoint](#authorized-cluster-endpoint).
