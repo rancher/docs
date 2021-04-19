@@ -171,8 +171,8 @@ The Teams receiver is not a native receiver and must be enabled before it can be
 
 1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
-1. Click the `rancher-alerting-drivers` app.
-1. Click the _NAME_ tab
+1. Click the **Alerting Drivers** app.
+1. Click the **Helm Deploy Options** tab
 1. Select the **Teams** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
@@ -205,8 +205,8 @@ The SMS receiver is not a native receiver and must be enabled before it can be u
 
 1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
-1. Click the `rancher-alerting-drivers` app.
-1. Click the _NAME_ tab
+1. Click the **Alerting Drivers** app.
+1. Click the **Helm Deploy Options** tab
 1. Select the **SMS** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
