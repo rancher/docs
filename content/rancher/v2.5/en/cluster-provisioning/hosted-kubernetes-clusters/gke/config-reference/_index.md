@@ -35,46 +35,80 @@ weight: 1
 # Cluster Options
 
 ### Kubernetes Version
+
 For more information on GKE Kubernetes versions, refer to [these docs.](https://cloud.google.com/kubernetes-engine/versioning)
 
 ### Container Address Range
 
+The IP address range for pods in the cluster. Must be a valid CIDR range, e.g. 10.42.0.0/16. If not specified, a random range is automatically chosen from 10.0.0.0/8 and will exclude ranges already allocated to VMs, other clusters, or routes. Automatically chosen ranges may conflict with reserved IP addresses, dynamic routes, or routes within VPCs peering with the cluster.
+
 ### Network
+
+The Compute Engine Network that the cluster connects to. Routes and firewalls will be created using this network. For more information, refer to [this page](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets). 
 
 ### Node Subnet
 
+The Compute Engine subnetwork that the cluster connects to. This subnetwork must belong to the network specified in the **Network** field. For more information, refer to [this page.](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets)
+
 ### Ip Aliases
+
+Enable [alias IPs](https://cloud.google.com/vpc/docs/alias-ip) for Pod IPs. When enabled, at least two secondary ranges in the subnetwork are required. One for the [cluster pod IPs](#cluster-pod-address-range) and another for [services.](#service-address-range)
 
 ### Network Policy
 
+Enable network policy enforcement on the cluster. If enabling on an existing cluster, the **Network Policy Config** addon must be enabled first. A network policy defines the level of communication that can occur between pods and services in the cluster. For more information, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy)
+
 ### Subnetwork Name (required)
+
+Automatically create a subnetwork with the provided name. For more information on subnetworks, refer to [this page.](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets)
 
 ### Cluster Pod Address Range
 
+The IP address range assigned to pods in the cluster. Must be a valid CIDR range, e.g. 10.96.0.0/11. For more information on how to determine the IP address range for your pods, refer to [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing_secondary_range_pods)
+
 ### Node Ipv4 CIDR Block
+
+The IP address range of the instance IPs in this cluster. Must be a valid CIDR range, e.g. 10.96.0.0/14. For more information on how to determine the IP address range, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing)
 
 ### Service Address Range
 
+The address range assigned to the services in the cluster. Must be a valid CIDR range, e.g. 10.94.0.0/18. For more information on how to determine the IP address range for your servicess, refer to [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing_secondary_range_svcs)
 
 # Additional Options
 
 ### Cluster Addons
 
-- Horizontal Pod Autoscaling
-- HTTP (L7) Load Balancing
-- Network Policy Config (master only
+Additional Kubernetes cluster components. For more information, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.AddonsConfig)
+
+#### Horizontal Pod Autoscaling
+
+The Horizontal Pod Autoscaler changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods in response to the workload's CPU or memory consumption, or in response to custom metrics reported from within Kubernetes or external metrics from sources outside of your cluster. For more information, see [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler)
+
+#### HTTP (L7) Load Balancing
+
+HTTP (L7) Load Balancing distributes HTTP and HTTPS traffic to backends hosted on GKE. For more information, refer to [this page](https://cloud.google.com/load-balancing/docs/l7-internal) on Internal HTTP Load Balancing and [this page](https://cloud.google.com/load-balancing/docs/https) on External HTTP Load Balancing.
+
+#### Network Policy Config (master only)
+
+Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the master, it does not track whether network policy is enabled for the nodes.
 
 ### Cluster Features (Alpha Features)
 
+Turns on all Kubernetes alpha API groups and features for the cluster. When enabled, the cluster cannot be upgraded and will be deleted automatically after 30 days. Alpha clusters are not recommended for production use as they are not covered by the GKE SLA. For more information, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters)
+
 ### Logging Service
+
+The logging service the cluster uses to write logs. Use either [Cloud Logging](https://cloud.google.com/logging) or no logging service in which case no logs are exported from the cluster.
 
 
 ### Monitoring Service
 
+The monitoring service the cluster uses to write metrics. Use either [Cloud Monitoring](https://cloud.google.com/monitoring) or monitoring service in which case no metrics are exported from the cluster.
+
 
 ### Maintenance Window
 
-
+Set the start time for a 4 hour maintenance window. The time is specified in the UTC time zone using the HH:MM format.
 
 # Node Pools
 
@@ -180,6 +214,7 @@ Link to list of GKE kubernetes versions
 
 ### Alpha Features
 
+Turns on all Kubernetes alpha API groups and features for the cluster. When enabled, the cluster cannot be upgraded and will be deleted automatically after 30 days. Alpha clusters are not recommended for production use as they are not covered by the GKE SLA. For more information, refer to [this page](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters).
 
 ### Legacy Authorization
 
