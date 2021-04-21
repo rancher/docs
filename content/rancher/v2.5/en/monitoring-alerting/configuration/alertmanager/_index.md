@@ -167,7 +167,7 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 #### Enabling the Teams Receiver for Rancher Managed Clusters
 
-The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
+The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the Alerting Drivers app with the Teams option selected.
 
 1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
@@ -201,12 +201,12 @@ url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-
 
 #### Enabling the SMS Receiver for Rancher Managed Clusters
 
-The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
+The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the Alerting Drivers app with the SMS option selected.
 
 1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
 1. Click the **Alerting Drivers** app.
-1. Click the **Helm Deploy Options** tab
+1. Click the **General** tab
 1. Select the **SMS** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
