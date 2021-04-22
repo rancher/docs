@@ -245,62 +245,55 @@ Link to list of GKE kubernetes versions
 
 ### Container Address Range
 
+The IP address range for pods in the cluster. Must be a valid CIDR range, e.g. 10.42.0.0/16. If not specified, a random range is automatically chosen from 10.0.0.0/8 and will exclude ranges already allocated to VMs, other clusters, or routes. Automatically chosen ranges may conflict with reserved IP addresses, dynamic routes, or routes within VPCs peering with the cluster.
+
 ### Alpha Features
 
 Turns on all Kubernetes alpha API groups and features for the cluster. When enabled, the cluster cannot be upgraded and will be deleted automatically after 30 days. Alpha clusters are not recommended for production use as they are not covered by the GKE SLA. For more information, refer to [this page](https://cloud.google.com/kubernetes-engine/docs/concepts/alpha-clusters).
 
 ### Legacy Authorization
 
-
+This option is deprecated and it is recommended to leave it disabled. For more information, see [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#leave_abac_disabled)
 ### Stackdriver Logging
 
-
+Enable logging with Google Cloud's Operations Suite, formerly called Stackdriver. For details, see the [documentation.](https://cloud.google.com/logging/docs/basic-concepts)
 ### Stackdriver Monitoring
 
-
+Enable monitoring with Google Cloud's Operations Suite, formerly called Stackdriver. For details, see the [documentation.](https://cloud.google.com/monitoring/docs/monitoring-overview)
 ### Kubernetes Dashboard
 
-
+Enable the [Kubernetes dashboard add-on.](https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards#kubernetes_dashboard) Starting with GKE v1.15, you will no longer be able to enable the Kubernetes Dashboard by using the add-on API.
 ### Http Load Balancing
 
-
+Set up [HTTP(S) load balancing.](https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer) To use Ingress, you must have the HTTP(S) Load Balancing add-on enabled.
 ### Horizontal Pod Autoscaling
 
-
+The Horizontal Pod Autoscaler changes the shape of your Kubernetes workload by automatically increasing or decreasing the number of Pods in response to the workload's CPU or memory consumption, or in response to custom metrics reported from within Kubernetes or external metrics from sources outside of your cluster. For more information, see the [documentation.](https://cloud.google.com/kubernetes-engine/docs/concepts/horizontalpodautoscaler)
 ### Maintenance Window
 
+Set the start time for a 4 hour maintenance window. The time is specified in the UTC time zone using the HH:MM format. For more information, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 
 ### Network
 
+The Compute Engine Network that the cluster connects to. Routes and firewalls will be created using this network. If using [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc), the VPC networks that are shared to your project will appear here. will be available to select in this field. For more information, refer to [this page](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets).
 
-### Node Subnet
+### Node Subnet / Subnet
 
-
+The Compute Engine subnetwork that the cluster connects to. This subnetwork must belong to the network specified in the **Network** field. Select an existing subnetwork, or select "Auto Create Subnetwork" to have one automatically created. If not using an existing network, **Subnetwork Name** is required to generate one. If using [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc), the VPC subnets that are shared to your project will appear here. If using a Shared VPC network, you cannot select "Auto Create Subnetwork". For more information, refer to [this page.](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets)
 ### Ip Aliases
 
+Enable [alias IPs](https://cloud.google.com/vpc/docs/alias-ip). This enables VPC-native traffic routing. Required if using [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc).
 
-### Cluster Secondary Range Name
-This option is available after the cluster is created.
-
-### Services Secondary Range Name
-This option is available after the cluster is created.
 ### Pod address range
 
+When you create a VPC-native cluster, you specify a subnet in a VPC network. The cluster uses three unique subnet IP address ranges for nodes, pods, and services. For more information on IP address ranges, see [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing)
 
 ### Service address range
 
-
+When you create a VPC-native cluster, you specify a subnet in a VPC network. The cluster uses three unique subnet IP address ranges for nodes, pods, and services. For more information on IP address ranges, see [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing)
 ### Cluster Labels
 
 A [cluster label](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels) is a key-value pair that helps you organize your Google Cloud clusters. You can attach a label to each resource, then filter the resources based on their labels. Information about labels is forwarded to the billing system, so you can break down your billing charges by label.
-## Advanced Cluster Options
-
-### Private Cluster
-
-
-### Master Authorized Network
-
-
 
 ## Node Options
 
@@ -310,12 +303,12 @@ Integer for the starting number of nodes in the node pool.
 ### Machine Type
 For more information on Google Cloud machine types, refer to [this page.](https://cloud.google.com/compute/docs/machine-types#machine_types)
 
-### Image Types
+### Image Type
 Ubuntu or Container-Optimized OS images are available.
 
 For more information about GKE node image options, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#available_node_images)
 
-### Root disk type
+### Root Disk Type
 
 Standard persistent disks are backed by standard hard disk drives (HDD), while SSD persistent disks are backed by solid state drives (SSD). For more information, refer to [this section.](https://cloud.google.com/compute/docs/disks)
 
@@ -328,6 +321,7 @@ Configure each node's local SSD disk storage in GB.
 Local SSDs are physically attached to the server that hosts your VM instance. Local SSDs have higher throughput and lower latency than standard persistent disks or SSD persistent disks. The data that you store on a local SSD persists only until the instance is stopped or deleted. For more information, see [this section.](https://cloud.google.com/compute/docs/disks#localssds)
 
 ### Preemptible nodes (beta)
+
 Preemptible nodes, also called preemptible VMs, are Compute Engine VM instances that last a maximum of 24 hours in general, and provide no availability guarantees. For more information, see [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/preemptible-vms)
 
 ### Auto Upgrade
@@ -337,6 +331,7 @@ Preemptible nodes, also called preemptible VMs, are Compute Engine VM instances 
 When enabled, the auto-upgrade feature keeps the nodes in your cluster up-to-date with the cluster control plane (master) version when your control plane is [updated on your behalf.](https://cloud.google.com/kubernetes-engine/upgrades#automatic_cp_upgrades) For more information about auto-upgrading nodes, see [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades)
 
 ### Auto Repair
+
 GKE's node auto-repair feature helps you keep the nodes in your cluster in a healthy, running state. When enabled, GKE makes periodic checks on the health state of each node in your cluster. If a node fails consecutive health checks over an extended time period, GKE initiates a repair process for that node. For more information, see the section on [auto-repairing nodes.](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair)
 
 ### Node Pool Autoscaling
@@ -351,7 +346,6 @@ You can apply labels to the node pool, which applies the labels to all nodes in 
 ## Security Options
 
 ### Service Account
-
 
 Create a [Service Account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts) with a JSON private key and provide the JSON here. See [Google Cloud docs](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances) for more info about creating a service account. These IAM roles are required: Compute Viewer (`roles/compute.viewer`), (Project) Viewer (`roles/viewer`), Kubernetes Engine Admin (`roles/container.admin`), Service Account User (`roles/iam.serviceAccountUser`). More info on roles can be found [here.](https://cloud.google.com/kubernetes-engine/docs/how-to/iam-integration)
 
