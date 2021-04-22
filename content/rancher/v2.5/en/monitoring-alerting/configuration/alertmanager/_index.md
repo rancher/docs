@@ -20,6 +20,8 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Opsgenie](#opsgenie)
   - [Webhook](#webhook)
   - [Custom](#custom)
+  - [Teams](#teams)
+  - [SMS](#sms)
 - [Route Configuration](#route-configuration)
   - [Receiver](#receiver)
   - [Grouping](#grouping)
@@ -70,19 +72,30 @@ To create notification receivers in the Rancher UI,
 
 The notification integrations are configured with the `receiver`, which is explained in the [Prometheus documentation.](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
 
+### Native vs. Non-native Receivers
+
+
+### Changes in Rancher v2.5.8
+
+Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Rancher UI.
+
+### Changes in Rancher v2.5.4
+
 Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.4+" %}}
+{{% tab "Rancher v2.5.8" %}}
 
 The following types of receivers can be configured in the Rancher UI:
 
-- <a href="#slack">Slack</Slack>
-- <a href="#email">Email</Slack>
-- <a href="#pagerduty">PagerDuty</Slack>
-- <a href="#opsgenie">Opsgenie</Slack>
-- <a href="#webhook">Webhook</Slack>
-- <a href="#custom">Custom</Slack>
+- <a href="#slack">Slack</a>
+- <a href="#email">Email</a>
+- <a href="#pagerduty">PagerDuty</a>
+- <a href="#opsgenie">Opsgenie</a>
+- <a href="#webhook">Webhook</a>
+- <a href="#custom">Custom</a>
+- <a href="#teams">Teams</a>
+- <a href="#sms">SMS</a>
 
 The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
@@ -144,7 +157,159 @@ Opsgenie Responders:
 | Proxy URL | Proxy for the webhook notification. |
 | Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
 
+<!-- TODO add info on webhook for teams and sms and link to them -->
+
 ### Custom
+
+The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
+
+### Teams
+
+#### Enabling the Teams Receiver for Rancher Managed Clusters
+
+The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
+
+1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. Click **Apps**.
+1. Click the **Alerting Drivers** app.
+1. Click the **Helm Deploy Options** tab
+1. Select the **Teams** option and click **Install**.
+1. Take note of the namespace used as it will be required in a later step.
+
+#### Configure the Teams Receiver
+
+The Teams receiver can be configured by updating its ConfigMap. For example, the following is a minimal Teams receiver configuration.
+
+```yaml
+[Microsoft Teams]
+teams-instance-1: https://your-teams-webhook-url
+```
+
+When configuration is complete, add the receiver using the steps in [this section](#creating-receivers-in-the-rancher-ui).
+
+Use the example below as the URL where:
+
+- `ns-1` is replaced with the namespace where the `rancher-alerting-drivers` app is installed
+
+```yaml
+url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-1
+```
+
+<!-- https://github.com/idealista/prom2teams -->
+
+### SMS
+
+#### Enabling the SMS Receiver for Rancher Managed Clusters
+
+The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
+
+1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. Click **Apps**.
+1. Click the **Alerting Drivers** app.
+1. Click the **Helm Deploy Options** tab
+1. Select the **SMS** option and click **Install**.
+1. Take note of the namespace used as it will be required in a later step.
+
+#### Configure the SMS Receiver
+
+The SMS receiver can be configured by updating its ConfigMap. For example, the following is a minimal SMS receiver configuration.
+
+```yaml
+receivers:
+- name: 'telegram-receiver-1'
+  provider: 'telegram'
+  to:
+    - '123456789'
+```
+
+When configuration is complete, add the receiver using the steps in [this section](#creating-receivers-in-the-rancher-ui).
+
+Use the example below as the name and URL, where:
+
+- the name assigned to the receiver, e.g. `telegram-receiver-1`, must match the name in the `receivers.name` field in the ConfigMap, e.g. `telegram-receiver-1`
+- `ns-1` in the URL is replaced with the namespace where the `rancher-alerting-drivers` app is installed
+
+```yaml
+name: telegram-receiver-1
+url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
+```
+
+<!-- https://github.com/messagebird/sachet -->
+
+{{% /tab %}}
+
+{{% tab "Rancher v2.5.4-2.5.7" %}}
+
+The following types of receivers can be configured in the Rancher UI:
+
+- <a href="#slack-254-257">Slack</a>
+- <a href="#email-254-257">Email</a>
+- <a href="#pagerduty-254-257">PagerDuty</a>
+- <a href="#opsgenie-254-257">Opsgenie</a>
+- <a href="#webhook-254-257">Webhook</a>
+- <a href="#custom-254-257">Custom</a>
+
+The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
+
+### Slack {#slack-254-257}
+
+| Field | Type | Description |
+|------|--------------|------|
+| URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
+| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
+| Proxy URL   |    String    |  Proxy for the webhook notifications.  |
+| Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
+
+### Email {#email-254-257}
+
+| Field | Type | Description |
+|------|--------------|------|
+| Default Recipient Address |   String    |   The email address that will receive notifications.    |
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+
+SMTP options:
+
+| Field | Type | Description |
+|------|--------------|------|
+| Sender |   String       |  Enter an email address available on your SMTP mail server that you want to send the notification from.   |
+| Host |   String         | Enter the IP address or hostname for your SMTP server. Example: `smtp.email.com`. |
+| Use TLS |   Bool     | Use TLS for encryption. |
+| Username |   String   | Enter a username to authenticate with the SMTP server. |
+| Password |   String    | Enter a password to authenticate with the SMTP server. |
+
+### PagerDuty {#pagerduty-254-257}
+
+| Field | Type | Description |
+|------|------|-------|
+| Integration Type | String | `Events API v2` or `Prometheus`. |
+| Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
+| Proxy URL | String |  Proxy for the PagerDuty notifications.  |
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+
+### Opsgenie {#opsgenie-254-257}
+
+| Field | Description |
+|------|-------------|
+| API Key |   For instructions to get an API key, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/api-key-management)             |
+| Proxy URL |   Proxy for the Opsgenie notifications.        |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).  |
+
+Opsgenie Responders:
+
+| Field |    Type | Description |
+|-------|------|--------|
+| Type | String | Schedule, Team, User, or Escalation. For more information on alert responders, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/alert-recipients-and-teams) |
+| Send To | String | Id, Name, or Username of the Opsgenie recipient. |
+
+### Webhook {#webhook-1}
+
+| Field |    Description |
+|-------|--------------|
+| URL | Webhook URL for the app of your choice. |
+| Proxy URL | Proxy for the webhook notification. |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
+
+### Custom {#custom-254-257}
 
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
 
