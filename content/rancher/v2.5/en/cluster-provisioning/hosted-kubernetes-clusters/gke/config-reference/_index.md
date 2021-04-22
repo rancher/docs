@@ -201,8 +201,6 @@ GKE's node auto-repair feature helps you keep the nodes in your cluster in a hea
 
 ### Auto Upgrade
 
-> Note: Enabling the Auto Upgrade feature for Nodes is not recommended.
-
 When enabled, the auto-upgrade feature keeps the nodes in your cluster up-to-date with the cluster control plane (master) version when your control plane is [updated on your behalf.](https://cloud.google.com/kubernetes-engine/upgrades#automatic_cp_upgrades) For more information about auto-upgrading nodes, see [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades)
 
 ### Access Scopes
