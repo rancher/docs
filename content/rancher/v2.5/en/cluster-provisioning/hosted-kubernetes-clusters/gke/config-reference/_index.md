@@ -8,20 +8,17 @@ weight: 1
 
 ### Changes in v2.5.8
 
-- We now support private GKE clusters.
-- Shared VPCs are now supported.  You can use an organization level VPC as well as a project level VPC.
-- We now support more configuration options for Rancher managed GKE clusters:
-	- Project ID
-	- Service address range
-	- Node Ipv4 CIDR block
-	- Cluster pod address range
-	- Subnetwork name
-	- Network policy
-	- Network policy config
-	- Node groups and node configuration options:
-		- More image types are available for the nodes
-		- The max pods per node can be configured
-- When provisioning a GKE cluster, you can now use reusable cloud credentials instead of using a service account token directly to create the cluster.
+-   We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](https://staging.rancher.com/docs/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters)
+-   [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc) are now supported.
+-   We now support more configuration options for Rancher managed GKE clusters:
+    -   Project
+    -   Network policy
+    -   Network policy config
+    -   Node pools and node configuration options:
+        -   More image types are available for the nodes
+        -   The maximum number of pods per node can be configured
+	-   Node pools can be added while configuring the GKE cluster
+-   When provisioning a GKE cluster, you can now use reusable cloud credentials instead of using a service account token directly to create the cluster.
 
 # Cluster Location
 
