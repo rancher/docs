@@ -16,7 +16,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [RKE and Hosted Kubernetes](#rke-and-hosted-kubernetes)
   - [K3s Kubernetes](#k3s-kubernetes)
   - [RancherD](#rancherd)
-  - [RKE2](#rke2)
+  - [RKE2 Kubernetes](#rke2-kubernetes)
   - [CPU and Memory for Rancher before v2.4.0](#cpu-and-memory-for-rancher-before-v2-4-0)
 - [Ingress](#ingress)
 - [Disks](#disks)
