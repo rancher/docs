@@ -741,7 +741,7 @@ If Rancher and another source attempt to update an EKS cluster at the same time 
 {{% tabs %}}
 {{% tab "Rancher v2.5.8+" %}}
 
-The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer in seconds.
+The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer representing seconds.
 
 The default value is 300 seconds.
 
@@ -760,5 +760,4 @@ The shorter the refresh window, the less likely any race conditions will occur, 
 
 {{% /tab %}}
 {{% /tabs %}}
-
 
