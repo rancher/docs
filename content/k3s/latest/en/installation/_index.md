@@ -13,6 +13,8 @@ This section contains instructions for installing K3s in various environments. P
 
 [Air-Gap Installation]({{<baseurl>}}/k3s/latest/en/installation/airgap/) details how to set up K3s in environments that do not have direct access to the Internet.
 
+[Disable Components Flags]({{<baseurl>}}/k3s/latest/en/installation/disable-flags/) details how to set up K3s with etcd only nodes and controlplane only nodes
+
 ### Uninstalling
 
 If you installed K3s with the help of the `install.sh` script, an uninstall script is generated during installation. The script is created on your node at `/usr/local/bin/k3s-uninstall.sh` (or as `k3s-agent-uninstall.sh`).

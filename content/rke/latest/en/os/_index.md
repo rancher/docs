@@ -176,7 +176,7 @@ Consult the project pages for openSUSE MicroOS and Kubic for installation
 Designed to host container workloads with automated administration & patching. Installing openSUSE MicroOS you get a quick, small environment for deploying Containers, or any other workload that benefits from Transactional Updates. As rolling release distribution the software is always up-to-date.  
 https://microos.opensuse.org  
 #### openSUSE Kubic
-Based on MicroOS, but not a rolling release distribution. Designed with the same things in mind but also a Certified Kubernetes Distribution.   
+Based on openSUSE MicroOS, designed with the same things in mind but is focused on being a Certified Kubernetes Distribution.   
 https://kubic.opensuse.org  
 Installation instructions:  
 https://kubic.opensuse.org/blog/2021-02-08-MicroOS-Kubic-Rancher-RKE/  

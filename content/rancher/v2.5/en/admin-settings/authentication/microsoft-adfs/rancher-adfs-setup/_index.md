@@ -51,5 +51,5 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/ranch
 **Tip:** You can generate a certificate using an openssl command. For example:
 
 ```
-openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
+openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=https://myservice.example.com"
 ```
