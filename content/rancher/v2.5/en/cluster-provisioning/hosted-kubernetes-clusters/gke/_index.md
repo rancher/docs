@@ -120,6 +120,20 @@ The Kubernetes version of a cluster can be upgraded to any version available in 
 >**Note**
 >GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in Rancher when an upgrade to 1.19+ is attempted. You can follow the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password). After this, the Kubernetes version can be updated to 1.19+ via Rancher.
 
+# Syncing
+
+The GKE provisioner can synchronize the state of an GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../syncing)
+
+### Configuring the Refresh Interval
+
+The refresh interval can be configured through the setting "gke-refresh", which is an integer representing seconds.
+
+The default value is 300 seconds.
+
+The syncing interval can be changed by running `kubectl edit setting gke-refresh`.
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
+
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}
 
