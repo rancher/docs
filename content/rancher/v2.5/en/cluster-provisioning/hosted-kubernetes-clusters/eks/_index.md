@@ -738,4 +738,26 @@ If Rancher and another source attempt to update an EKS cluster at the same time 
 
 ### Configuring the Refresh Interval
 
-It is possible to change the refresh interval through the setting “eks-refresh-cron". This setting accepts values in the Cron format. The default is `*/5 * * * *`. The shorter the refresh window is the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer representing seconds.
+
+The default value is 300 seconds.
+
+The syncing interval can be changed by running `kubectl edit setting eks-refresh`.
+
+If the `eks-refresh-cron` setting was previously set, the migration will happen automatically.
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+
+{{% /tab %}}
+{{% tab "Before v2.5.8" %}}
+
+It is possible to change the refresh interval through the setting `eks-refresh-cron`. This setting accepts values in the Cron format. The default is `*/5 * * * *`. 
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+
+{{% /tab %}}
+{{% /tabs %}}
+
