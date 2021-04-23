@@ -18,6 +18,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [RancherD](#rancherd)
   - [RKE2](#rke2)
   - [CPU and Memory for Rancher before v2.4.0](#cpu-and-memory-for-rancher-before-v2-4-0)
+- [Ingress](#ingress)
 - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -73,9 +74,11 @@ Docker is not required for RancherD installs.
 
 _The RKE2 install is available as of v2.5.6._
 
-For details on which OS versions were tested with RKE2, refer to the [RKE documentation.](https://docs.rke2.io/install/requirements/#operating-systems)
+For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 Docker is not required for RKE2 installs.
+
+The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
 
 ### Installing Docker
 
@@ -164,6 +167,23 @@ These CPU and memory requirements apply to installing Rancher on an RKE Kubernet
 | X-Large         | Up to 100 | Up to 1000 | 32                                              | 128 GB                                          |
 | XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
 {{% /accordion %}}
+
+# Ingress
+
+Each node in the Kubernetes cluster that Rancher is installed on should run an Ingress.
+
+The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
+
+For RKE, K3s and RancherD installations, you don't have to install the Ingress manually because is is installed by default.
+
+For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
+
+### Ingress for RKE2
+
+Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
+
+### Ingress for EKS
+For an example of how to deploy an nginx-ingress-controller with a LoadBalancer service, refer to [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
 # Disks
 
