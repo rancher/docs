@@ -113,6 +113,13 @@ If the Rancher server is run on the same VPC as the cluster's control plane, it 
 
 You can also use services from Google such as [Cloud VPN](https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview) or [Cloud Interconnect VLAN](https://cloud.google.com/network-connectivity/docs/interconnect) to facilitate connectivity between your organization's network and your Google VPC.
 
+## Updating Kubernetes version
+
+The Kubernetes version of a cluster can be upgraded to any version available in the region or zone fo the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
+
+>**Note**
+>GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in Rancher when an upgrade to 1.19+ is attempted. You can follow the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password). After this, the Kubernetes version can be updated to 1.19+ via Rancher.
+
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}
 
