@@ -1,9 +1,9 @@
 ---
-title: Openstack Cloud Provider
+title: OpenStack Cloud Provider
 weight: 253
 ---
 
-To enable the Openstack cloud provider, besides setting the name as `openstack`, there are specific configuration options that must be set. The Openstack configuration options are grouped into different sections.
+To enable the OpenStack cloud provider, besides setting the name as `openstack`, there are specific configuration options that must be set. The Openstack configuration options are grouped into different sections.
 
 ```yaml
 cloud_provider:
@@ -27,11 +27,11 @@ cloud_provider:
 
 ## Overriding the hostname
 
-The OpenStack cloud provider uses the instance name (as determined from OpenStack metadata) as the name of the Kubernetes Node object, you must override the Kubernetes name on the node by setting the `hostname_override` for each node. If you do not set the `hostname_override`, the Kubernetes node name will be set as the `address`, which will cause the Openstack cloud provider to fail.
+The OpenStack cloud provider uses the instance name (as determined from OpenStack metadata) as the name of the Kubernetes Node object, you must override the Kubernetes name on the node by setting the `hostname_override` for each node. If you do not set the `hostname_override`, the Kubernetes node name will be set as the `address`, which will cause the OpenStack cloud provider to fail.
 
-## Openstack Configuration Options
+## OpenStack Configuration Options
 
-The Openstack configuration options are divided into 5 groups.
+The OpenStack configuration options are divided into 5 groups.
 
 * Global
 * Load Balancer
@@ -103,4 +103,4 @@ These are the options that are available under the `metadata` directive.
 |     search-order     	| string 	|      |
 |    request-timeout   	|   int  	|      |
 
-For more information of Openstack configurations options please refer to the official Kubernetes [documentation](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#openstack).
+For more information of OpenStack configurations options please refer to the official Kubernetes [documentation](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#openstack).
