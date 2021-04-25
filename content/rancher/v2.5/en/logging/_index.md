@@ -17,6 +17,8 @@ aliases:
 - [Configuring the Logging Application](#configuring-the-logging-application)
 - [Working with a Custom Docker Root Directory](#working-with-a-custom-docker-root-directory)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
+- [Logging v2 with SELinux](#logging-v2-with-selinux)
+- [Troubleshooting](#troubleshooting)
 
 # Changes in Rancher v2.5
 
@@ -348,6 +350,18 @@ However, if you would like to add tolerations for *only* the `fluentbit` contain
 fluentbit_tolerations:
   # insert tolerations list for fluentbit containers only...
 ```
+
+# Logging v2 with SELinux
+
+_Available as of v2.5.8_
+
+> **Requirements:** Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+
+[Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
+
+To use Logging v2 with SELinux, we recommend installing the `rancher-selinux` RPM according to the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux/#installing-the-rancher-selinux-rpm)
+
+Then you will need to configure the logging application to work with SELinux as shown in [this section.]({{<baseurl>}}/rancher/v2.5/en/security/selinux/#configuring-the-logging-application-to-work-with-selinux)
 
 # Troubleshooting
 

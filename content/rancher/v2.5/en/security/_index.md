@@ -25,6 +25,7 @@ Security is at the heart of all Rancher features. From integrating with all the 
 On this page, we provide security-related documentation along with resources to help you secure your Rancher installation and your downstream Kubernetes clusters:
 
 - [Running a CIS security scan on a Kubernetes cluster](#running-a-cis-security-scan-on-a-kubernetes-cluster)
+- [SELinux RPM](#selinux-rpm)
 - [Guide to hardening Rancher installations](#rancher-hardening-guide)
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
@@ -45,6 +46,12 @@ The Benchmark provides recommendations of two types: Scored and Not Scored. We r
 When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 
 For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.5/en/cis-scans)
+
+### SELinux RPM
+
+[Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
+
+We provide two RPMs (Red Hat package managers) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`. For details, see [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux)
 
 ### Rancher Hardening Guide
 
