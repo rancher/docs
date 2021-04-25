@@ -17,7 +17,8 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 > **Prerequisites:**
 > 
 > - The monitoring application needs to be installed.
-> - You must have at least the **Manage Config Maps** Rancher RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
+> - To create the persistent dashboard, you must have at least the **Manage Config Maps** Rancher RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
+> - To see the links to the external monitoring UIs, including Grafana dashboards, you will need at least a [project-member role.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/rbac/#users-with-rancher-cluster-manager-based-permissions)
 
 1. Open the Grafana dashboard. From the **Cluster Explorer,** click **Cluster Explorer > Monitoring.**
 1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. (Regardless of who has the password, the **Manage Config Maps** permission in Rancher is still required to access the Grafana instance.) Alternative credentials can also be supplied on deploying or upgrading the chart.
