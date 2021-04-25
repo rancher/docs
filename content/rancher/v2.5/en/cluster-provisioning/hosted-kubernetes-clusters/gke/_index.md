@@ -1,5 +1,5 @@
 ---
-title: Creating a GKE Cluster
+title: Managing GKE Clusters
 shortTitle: Google Kubernetes Engine
 weight: 2105
 aliases:
@@ -8,6 +8,13 @@ aliases:
 
 {{% tabs %}}
 {{% tab "Rancher v2.5.8+" %}}
+
+- [Prerequisites](#prerequisites)
+- [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
+- [Private Clusters](#private-clusters)
+- [Configuration Reference](./config-reference)
+- [Updating Kubernetes Version](#updating-kubernetes-version)
+- [Syncing](#syncing)
 
 # Prerequisites
 
@@ -36,10 +43,12 @@ To create a new project, refer to the Google cloud documentation [here.](https:/
 
 To get the project ID of an existing project, refer to the Google cloud documentation [here.](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
 
+# Provisioning a GKE Cluster
+
 >**Note**
 >Deploying to GKE will incur charges.
 
-# 1. Create a Cloud Credential
+### 1. Create a Cloud Credential
 
 1. In the upper right corner, click the user profile dropdown menu and click **Cloud Credentials.**
 1. Click **Add Cloud Credential.**
@@ -50,7 +59,7 @@ To get the project ID of an existing project, refer to the Google cloud document
 
 **Result:** You have created credentials that Rancher will use to provision the new GKE cluster.
 
-# 2. Create the GKE Cluster
+### 2. Create the GKE Cluster
 Use Rancher to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
@@ -73,47 +82,14 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-## Private Clusters
+# Private Clusters
 
-In GKE, [private clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept) are clusters whose nodes are isolated from inbound and outbound traffic by assigning them internal IP addresses only. Private clusters in GKE have the option of exposing the control plane endpoint as a publicly accessible address or as a private address. This is different from other Kubernetes providers, which may refer to clusters with private control plane endpoints as "private clusters" but still allow traffic to and from nodes. You may want to create a cluster with private nodes, with or without a public control plane endpoint, depending on your organization's networking and security requirements. A GKE cluster hosted in Rancher can use isolated nodes by selecting "Private Cluster" in the Cluster Options (under "Show advanced options"). The control plane endpoint can optionally be made private by selecting "Enable Private Endpoint".
+We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
 
-### Private Nodes
+# Configuration Reference
 
-Because the nodes in a private cluster only have internal IP addresses, they will not be able to install the cluster agent and Rancher will not be able to fully manage the cluster. This can be overcome in a few ways.
-
-#### Cloud NAT
-
->**Note**
->Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
-
-If restricting outgoing internet access is not a concern for your organization, use Google's [Cloud NAT](https://cloud.google.com/nat/docs/using-nat) service to allow nodes in the private network to access the internet, allowing them to download the required images from Dockerhub. This is the simplest solution.
-
-#### Private registry
-
->**Note**
->This scenario is not officially supported, but is described for cases in which using the Cloud NAT service is not sufficient.
-
-If restricting both incoming and outgoing traffic to nodes is a requirement, follow the air-gapped installation instructions to set up a private container image [registry](https://rancher.com/docs/rancher/v2.x/en/installation/other-installation-methods/air-gap/) on the VPC where the cluster is going to be, allowing the cluster nodes to access and download the images they need to run the cluster agent.
-
-### Private Control Plane Endpoint
-
-If the cluster has a public endpoint exposed, Rancher will be able to reach the cluster, and no additional steps need to be taken. However, if the cluster has no public endpoint, then considerations must be made to ensure Rancher can access the cluster.
-
-#### Cloud NAT
-
->**Note**
->Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
-
-As above, if restricting outgoing internet access to the nodes is not a concern, then Google's [Cloud NAT](https://cloud.google.com/nat/docs/using-nat) service can be used to allow the nodes to access the internet. While the cluster is provisioning, Rancher will provide a registration command to run on the cluster. Download the [kubeconfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for the new cluster and run the provided kubectl command on the cluster. Gaining access
-to the cluster in order to run this command can be done by creating a temporary node or using an existing node in the VPC, or by logging on to or creating an SSH tunnel through one of the cluster nodes.
-
-#### Direct access
-
-If the Rancher server is run on the same VPC as the cluster's control plane, it will have direct access to the control plane's private endpoint. The cluster nodes will need to have access to a private registry to download images as described above.
-
-You can also use services from Google such as [Cloud VPN](https://cloud.google.com/network-connectivity/docs/vpn/concepts/overview) or [Cloud Interconnect VLAN](https://cloud.google.com/network-connectivity/docs/interconnect) to facilitate connectivity between your organization's network and your Google VPC.
-
-## Updating Kubernetes version
+More configuration options are available for v2.5.8. For details on configuring GKE clusters in Rancher, see [this page.](./config-reference)
+# Updating Kubernetes Version
 
 The Kubernetes version of a cluster can be upgraded to any version available in the region or zone fo the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
 
