@@ -23,7 +23,7 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 
 To create a persistent dashboard, you will need to get the JSON model of the dashboard you want to persist. You can use a premade dashboard or build your own.
 
-To use a premade dashboard, go to [https://grafana.com/grafana/dashboards,](https://grafana.com/grafana/dashboards) open up its detail page, and click on the **Download JSON** button to get the JSON model for the next step.
+To use a premade dashboard, go to [https://grafana.com/grafana/dashboards](https://grafana.com/grafana/dashboards), open up its detail page, and click on the **Download JSON** button to get the JSON model for the next step.
 
 To use your own dashboard:
 
