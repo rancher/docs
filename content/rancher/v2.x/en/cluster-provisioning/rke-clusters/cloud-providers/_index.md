@@ -43,4 +43,4 @@ The `Custom` cloud provider is available if you want to configure any [Kubernete
 For the custom cloud provider option, you can refer to the [RKE docs]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
 
 * [vSphere]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/)
-* [Openstack]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/openstack/)
+* [OpenStack]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/openstack/)
