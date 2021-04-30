@@ -215,6 +215,10 @@ The SMS receiver is not a native receiver and must be enabled before it can be u
 The SMS receiver can be configured by updating its ConfigMap. For example, the following is a minimal SMS receiver configuration.
 
 ```yaml
+providers:
+  telegram:
+    token: 'your-token-from-telegram'
+
 receivers:
 - name: 'telegram-receiver-1'
   provider: 'telegram'
