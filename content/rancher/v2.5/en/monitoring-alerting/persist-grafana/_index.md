@@ -58,10 +58,10 @@ To specify that you would like Grafana to watch for ConfigMaps across all namesp
 To create the ConfigMap in the Rancher UI,
 
 1. Go to the Cluster Explorer.
-1. Click **Core > ConfigMaps.**
-1. Click **Create.**
+1. Click **Core > ConfigMaps**.
+1. Click **Create**.
 1. Set up the key-value pairs similar to the example above. When entering the value for `<dashboard-name>.json`, click **Read from File** to upload the JSON data model as the value.
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** After the ConfigMap is created, it should show up on the Grafana UI and be persisted even if the Grafana pod is restarted.
 
