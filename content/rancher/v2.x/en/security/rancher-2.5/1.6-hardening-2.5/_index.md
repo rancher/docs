@@ -482,6 +482,9 @@ rancher_kubernetes_engine_config:
         feature-gates: RotateKubeletServerCertificate=true
     kubelet:
       extra_args:
+        profiling: "false"
+        address: "127.0.0.1"
+        terminated-pod-gc-threshold: "1000"
         feature-gates: RotateKubeletServerCertificate=true
         protect-kernel-defaults: 'true'
         tls-cipher-suites: >-
