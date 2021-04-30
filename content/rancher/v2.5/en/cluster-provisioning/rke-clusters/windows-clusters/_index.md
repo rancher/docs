@@ -25,6 +25,7 @@ This guide covers the following topics:
 - [Requirements](#requirements-for-windows-clusters)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
+- [Windows Specific RKE cluster.yaml Configuration](#windows-specific-rke-cluster-yaml-configuration)
   <!-- /TOC -->
 
 # Requirements for Windows Clusters
@@ -238,3 +239,11 @@ After creating your cluster, you can access it through the Rancher UI. As a best
 # Configuration for Storage Classes in Azure
 
 If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a StorageClass for the cluster. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/azure-storageclass)
+
+# Windows Specific RKE cluster.yaml Configuration
+
+RKE provides Windows specific configuration options for the RKE `cluster.yaml`.
+
+These options are intended to solve a problem in which Linux and Windows nodes may need different configuration options. When building a hybrid cluster with Windows nodes, there is only a single set of overrides you can use per service. This limits configuring the node as service args, and the `prefix_path` sometimes needs to be specific for each OS. 
+
+Four `win_` prefixed parameters are available. For details, refer to the [RKE documentation about Windows specific configuration.]({{<baseurl>}}/rke/latest/en/config-options/windows)
