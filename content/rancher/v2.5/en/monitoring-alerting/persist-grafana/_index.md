@@ -28,7 +28,7 @@ To use a premade dashboard, go to [https://grafana.com/grafana/dashboards](https
 To use your own dashboard:
 
 1. Click on the link to open Grafana. From the **Cluster Explorer,** click **Cluster Explorer > Monitoring.**
-1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. (Regardless of who has the password, in order to access the Grafana instance, you still need at least the **Manage Services** or **View Monitoring** permissions in the Project containing the namespace that contains Grafana.) Alternative credentials can also be supplied on deploying or upgrading the chart.
+1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. (Regardless of who has the password, in order to access the Grafana instance, you still need at least the **Manage Services** or **View Monitoring** permissions in the Project that Rancher Monitoring is deployed into Alternative credentials can also be supplied on deploying or upgrading the chart.)
 1. Create a dashboard using Grafana's UI. Once complete, go to the dashboard's settings by clicking on the gear icon in the top navigation menu. In the left navigation menu, click **JSON Model.**
 1. Copy the JSON data structure that appears.
 
