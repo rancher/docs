@@ -69,7 +69,7 @@ As of Rancher v2.5.8, logging support for Windows clusters has been added and lo
 ### Enabling and Disabling Windows Node Logging
 
 You can enable or disable Windows node logging by setting `global.cattle.windows.enabled` to either `true` or `false` in the `values.yaml`.
-By default, Windows node logging will be enabled if the logging application is installed on a Windows cluster.
+By default, Windows node logging will be enabled if the Cluster Explorer UI is used to install the logging application on a Windows cluster.
 In this scenario, setting `global.cattle.windows.enabled` to `false` will disable Windows node logging on the cluster.
 When disabled, logs will still be collected from Linux nodes within the Windows cluster.
 
@@ -80,6 +80,7 @@ When disabled, logs will still be collected from Linux nodes within the Windows 
 Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.
 Only Linux node logs are able to be exported.
 
+To allow the logging pods to be scheduled on Linux nodes, tolerations must be added to the pods. Refer to the [Working with Taints and Tolerations](#working-with-taints-and-tolerations) section for details and an example.
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -355,7 +356,7 @@ _Applies to v2.5.6+_
 
 If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
 This will ensure that the Logging CRs created will use your specified path rather than the default Docker `data-root` location.
-Note that this is only affects Linux nodes.
+Note that this only affects Linux nodes.
 If there are any Windows nodes in the cluster, the change will not be applicable to those nodes.
 
 # Working with Taints and Tolerations
@@ -366,11 +367,23 @@ Unless the pods have a `toleration` for that node's taint, they will run on othe
 Using `nodeSelector` gives pods an affinity towards certain nodes.
 Both provide choice for the what node(s) the pod will run on.
 
+
 ### Default Implementation in Rancher's Logging Stack
 
+{{% tabs %}}
+{{% tab "Rancher v2.5.8" %}}
 By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
 The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
-Moreover, the logging stack pods have a `nodeSelector` added to ensure that they *only* run on Linux nodes.
+Moreover, most logging stack pods run on Linux only and have a `nodeSelector` added to ensure they run on Linux nodes.
+
+{{% /tab %}}
+{{% tab "Rancher v2.5.0-2.5.7" %}}
+By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
+The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
+Moreover, we can populate the `nodeSelector` to ensure that our pods *only* run on Linux nodes.
+
+{{% /tab %}}
+{{% /tabs %}}
 Let's look at an example pod YAML file with these settings...
 
 ```yaml
@@ -414,9 +427,10 @@ fluentbit_tolerations:
 
 # Additional Logging Sources
 
-Logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) can be collected from different sources.
+By default, Rancher collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
+In some cases, Rancher may be able to collect additional logs.
 
-The following table summarizes the supported logging sources for each node type and the path to the logs:
+The following table summarizes the sources where additional logs may be collected for each node types:
 
 | Logging Source | Linux Nodes (including in Windows cluster) | Windows Nodes |
 | --- | --- | ---|
@@ -427,8 +441,8 @@ The following table summarizes the supported logging sources for each node type 
 | EKS | ✓ | |
 | GKE | ✓ | |
 
-To enable hosted Kubernetes providers as additional logging sources, go to **Cluster Exploere > Logging > Chart Options** and select the **Enable enhanced cloud provider logging** option.
-When enabled, Rancher collects all node and control plane logs the provider has made available, which may vary between providers.
+To enable hosted Kubernetes providers as additional logging sources, go to **Cluster Explorer > Logging > Chart Options** and select the **Enable enhanced cloud provider logging** option.
+When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers.
 If you're already using a cloud provider's own logging solution such as AWS CloudWatch or Google Cloud operations suite (formerly Stackdriver), it is not necessary to enable this option as the native solution will have unrestricted access to all logs.
 
 # Troubleshooting
