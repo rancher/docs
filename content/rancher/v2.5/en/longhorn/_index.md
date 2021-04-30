@@ -32,6 +32,7 @@ These instructions assume you are using Rancher v2.5, but Longhorn can be instal
 
 ### Installing Longhorn with Rancher
 
+1. Fulfill all [Installation Requirements.](https://longhorn.io/docs/1.1.0/deploy/install/#installation-requirements)
 1. Go to the **Cluster Explorer** in the Rancher UI.
 1. Click **Apps.**
 1. Click `longhorn`.
@@ -43,7 +44,7 @@ These instructions assume you are using Rancher v2.5, but Longhorn can be instal
 ### Accessing Longhorn from the Rancher UI
 
 1. From the **Cluster Explorer," go to the top left dropdown menu and click **Cluster Explorer > Longhorn.**
-1. On this page, you can edit Kubernetes resources managed by Longhorn. To view the Longhorn UI, click the **Longhorn** button in the **Overview**section.
+1. On this page, you can edit Kubernetes resources managed by Longhorn. To view the Longhorn UI, click the **Longhorn** button in the **Overview** section.
 
 **Result:** You will be taken to the Longhorn UI, where you can manage your Longhorn volumes and their replicas in the Kubernetes cluster, as well as secondary backups of your Longhorn storage that may exist in another Kubernetes cluster or in S3.
 

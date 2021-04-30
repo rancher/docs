@@ -712,30 +712,31 @@ Permissions required for Rancher to create VPC and associated resources.
 }
 ```
 
-
 # Syncing
 
-Syncing is the feature that causes Rancher to update its EKS clusters' values so they are up to date with their corresponding cluster object in the EKS console. This enables Rancher to not be the sole owner of an EKS cluster’s state. Its largest limitation is that processing an update from Rancher and another source at the same time or within 5 minutes of one finishing may cause the state from one source to completely overwrite the other.
-
-### How it works
-
-There are two fields on the Rancher Cluster object that must be understood to understand how syncing works:
-
-1. EKSConfig which is located on the Spec of the Cluster.
-2. UpstreamSpec which is located on the EKSStatus field on the Status of the Cluster.
-
-Both of which are defined by the struct EKSClusterConfigSpec found in the eks-operator project: https://github.com/rancher/eks-operator/blob/master/pkg/apis/eks.cattle.io/v1/types.go
-
-All fields with the exception of DisplayName, AmazonCredentialSecret, Region, and Imported are nillable on the EKSClusterConfigSpec.
-
-The EKSConfig represents desired state for its non-nil values. Fields that are non-nil in the EKSConfig can be thought of as “managed".When a cluster is created in Rancher, all fields are non-nil and therefore “managed”. When a pre-existing cluster is registered in rancher all nillable fields are nil and are not “managed”. Those fields become managed once their value has been changed by Rancher.
-
-UpstreamSpec represents the cluster as it is in EKS and is refreshed on an interval of 5 minutes. After the UpstreamSpec has been refreshed rancher checks if the EKS cluster has an update in progress. If it is updating, nothing further is done. If it is not currently updating, any “managed” fields on EKSConfig are overwritten with their corresponding value from the recently updated UpstreamSpec.
-
-The effective desired state can be thought of as the UpstreamSpec + all non-nil fields in the EKSConfig. This is what is displayed in the UI.
-
-If Rancher and another source attempt to update an EKS cluster at the same time or within the 5 minute refresh window of an update finishing, then it is likely any “managed” fields can be caught in a race condition. For example, a cluster may have PrivateAccess as a managed field. If PrivateAccess is false and then enabled in EKS console, then finishes at 11:01, and then tags are updated from Rancher before 11:05 the value will likely be overwritten. This would also occur if tags were updated while the cluster was processing the update. If the cluster was registered and the PrivateAccess fields was nil then this issue should not occur in the aforementioned case.
+The EKS provisioner can synchronize the state of an EKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../syncing)
 
 ### Configuring the Refresh Interval
 
-It is possible to change the refresh interval through the setting “eks-refresh-cron". This setting accepts values in the Cron format. The default is `*/5 * * * *`. The shorter the refresh window is the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer representing seconds.
+
+The default value is 300 seconds.
+
+The syncing interval can be changed by running `kubectl edit setting eks-refresh`.
+
+If the `eks-refresh-cron` setting was previously set, the migration will happen automatically.
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+
+{{% /tab %}}
+{{% tab "Before v2.5.8" %}}
+
+It is possible to change the refresh interval through the setting `eks-refresh-cron`. This setting accepts values in the Cron format. The default is `*/5 * * * *`. 
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
+
+{{% /tab %}}
+{{% /tabs %}}

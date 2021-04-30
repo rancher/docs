@@ -36,12 +36,13 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 	```
 	kubectl describe nodes | grep "ProviderID"
 	```
+
 ### 3. Installing the CSI plugin
 
- 1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
-1. Select the **vSphere CSI** chart. Fill out the required vCenter details.
-2. Set **Enable CSI Migration** to **false**.
-3. This chart creates a StorageClass with the `csi.vsphere.vmware.com` as the provisioner. Fill out the details for the StorageClass and launch the chart.
+1. From the **Cluster Explorer** view, go to the top left dropdown menu and click **Apps & Marketplace.**
+2. Select the **vSphere CSI** chart. Fill out the required vCenter details.
+3. Set **Enable CSI Migration** to **false**.
+4. This chart creates a StorageClass with the `csi.vsphere.vmware.com` as the provisioner. Fill out the details for the StorageClass and launch the chart.
 
 # Using the CSI driver for provisioning volumes
 The CSI chart by default creates a storageClass.

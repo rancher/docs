@@ -10,7 +10,27 @@ RKE provides the following network plug-ins that are deployed as add-ons:
 - Canal
 - Weave
 
-> **Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn’t allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you tear down the entire cluster and all its applications.
+> After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn’t allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you tear down the entire cluster and all its applications.
+
+- [Changing the Default Network Plug-in](#changing-the-default-network-plug-in)
+- [Disabling Deployment of a Network Plug-in](#disabling-deployment-of-a-network-plug-in)
+- [Network Plug-in Options](#network-plug-in-options)
+- [Canal](#canal)
+  - [Canal Network Plug-in Options](#canal-network-plug-in-options)
+  - [Canal Interface](#canal-interface)
+  - [Canal Network Plug-in Tolerations](#canal-network-plug-in-tolerations)
+- [Flannel](#flannel)
+  - [Flannel Network Plug-in Options](#flannel-network-plug-in-options)
+  - [Flannel Interface](#flannel-interface)
+- [Calico](#calico)
+  - [Calico Network Plug-in Options](#calico-network-plug-in-options)
+  - [Calico Cloud Provider](#calico-cloud-provider)
+  - [Calico Network Plug-in Tolerations](#calico-network-plug-in-tolerations)
+- [Weave](#weave)
+  - [Weave Network Plug-in Options](#weave-network-plug-in-options)
+- [Custom Network Plug-ins](#custom-network-plug-ins)
+
+# Changing the Default Network Plug-in
 
 By default, the network plug-in is `canal`. If you want to use another network plug-in, you need to specify which network plug-in to enable at the cluster level in the `cluster.yml`.
 
@@ -35,7 +55,14 @@ network:
 
 Besides the different images that could be used to deploy network plug-ins, certain network plug-ins support additional options that can be used to customize the network plug-in.
 
-## Canal Network Plug-in Options
+- [Canal](#canal)
+- [Flannel](#flannel)
+- [Calico](#calico)
+- [Weave](#weave)
+
+# Canal
+
+### Canal Network Plug-in Options
 
 ```yaml
 network:
@@ -43,20 +70,23 @@ network:
   options:
     canal_iface: eth1
     canal_flannel_backend_type: vxlan
+    canal_autoscaler_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    canal_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
 ```
 
-#### Canal Interface
+### Canal Interface
 
 By setting the `canal_iface`, you can configure the interface to use for inter-host communication.
+
 The `canal_flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
-## Canal Network Plug-in Tolerations
+### Canal Network Plug-in Tolerations
 
 _Available as of v1.2.4_
 
 The configured tolerations apply to the `calico-kube-controllers` Deployment.
 
-```
+```yaml
 network:
   plugin: canal
   tolerations:
@@ -76,7 +106,8 @@ To check for applied tolerations on the `calico-kube-controllers` Deployment, us
 kubectl -n kube-system get deploy calico-kube-controllers -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
-## Flannel Network Plug-in Options
+# Flannel
+### Flannel Network Plug-in Options
 
 ```yaml
 network:
@@ -84,22 +115,29 @@ network:
   options:
     flannel_iface: eth1
     flannel_backend_type: vxlan
+    flannel_autoscaler_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    flannel_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
 ```
 
-#### Flannel Interface
+### Flannel Interface
 
 By setting the `flannel_iface`, you can configure the interface to use for inter-host communication.
 The `flannel_backend_type` option allows you to specify the type of [flannel backend](https://github.com/coreos/flannel/blob/master/Documentation/backends.md) to use. By default the `vxlan` backend is used.
 
-## Calico Network Plug-in Options
+
+# Calico
+
+### Calico Network Plug-in Options
 
 ```yaml
 network:
   plugin: calico
   options:
     calico_cloud_provider: aws
+    calico_autoscaler_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    calico_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
 ```
-#### Calico Cloud Provider
+### Calico Cloud Provider
 
 Calico currently only supports 2 cloud providers, AWS or GCE, which can be set using `calico_cloud_provider`.
 
@@ -108,13 +146,13 @@ Calico currently only supports 2 cloud providers, AWS or GCE, which can be set u
 - `aws`
 - `gce`
 
-## Calico Network Plug-in Tolerations
+### Calico Network Plug-in Tolerations
 
 _Available as of v1.2.4_
 
 The configured tolerations apply to the `calico-kube-controllers` Deployment.
 
-```
+```yaml
 network:
   plugin: calico
   tolerations:
@@ -134,19 +172,23 @@ To check for applied tolerations on the `calico-kube-controllers` Deployment, us
 kubectl -n kube-system get deploy calico-kube-controllers -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
-## Weave Network Plug-in Options
+# Weave
+### Weave Network Plug-in Options
 
 ```yaml
 network:
   plugin: weave
+  options:
+    weave_autoscaler_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
+    weave_priority_class_name: system-cluster-critical # Available as of RKE v1.2.6+
   weave_network_provider:
     password: "Q]SZOQ5wp@n$oijz"
 ```
 
-#### Weave encryption
+### Weave Encryption
 
 Weave encryption can be enabled by passing a string password to the network provider config.
 
-## Custom Network Plug-ins
+# Custom Network Plug-ins
 
 It is possible to add a custom network plug-in by using the [user-defined add-on functionality]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) of RKE. In the `addons` field, you can add the add-on manifest of a cluster that has the network plugin-that you want, as shown in [this example.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/custom-network-plugin-example)

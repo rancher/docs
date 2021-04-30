@@ -29,6 +29,7 @@ This section covers the following topics:
 # Node Options Available for Each Cluster Creation Option
 
 The following table lists which node options are available for each type of cluster in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+
 | Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Registered EKS Nodes][4] | [All Other Registered Nodes][5] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | -------------------| ------------------------------------------------------------------ |
 | [Cordon](#cordoning-a-node)                      | ✓                                                | ✓                | ✓                   | ✓                   | ✓                  | Marks the node as unschedulable.                                   |

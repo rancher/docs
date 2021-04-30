@@ -96,7 +96,7 @@ If you have configured your cluster to use Amazon as **Cloud Provider**, tag you
 >**Note:** You can use Amazon EC2 instances without configuring a cloud provider in Kubernetes. You only have to configure the cloud provider if you want to use specific Kubernetes cloud provider functionality. For more information, see [Kubernetes Cloud Providers](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
 
 
-The following resources need to tagged with a `ClusterID`:
+The following resources need to be tagged with a `ClusterID`:
 
 - **Nodes**: All hosts added in Rancher.
 - **Subnet**: The subnet used for your cluster

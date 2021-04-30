@@ -48,13 +48,13 @@ If the Rancher server is installed in a single Docker container, you only need o
 ```
 sudo ssh -i [path-to-private-key] ubuntu@[public-DNS-of-instance]
 ```
-1. When you are connected to the instance, run the following command on the instance to create a user:
-```
-sudo usermod -aG docker ubuntu
-```
 1. Run the following command on the instance to install Docker with one of Rancher's installation scripts:
 ```
 curl https://releases.rancher.com/install-docker/18.09.sh | sh
+```
+1. When you are connected to the instance, run the following command on the instance to create a user:
+```
+sudo usermod -aG docker ubuntu
 ```
 1. Repeat these steps so that Docker is installed on each node that will eventually run the Rancher management server.
 

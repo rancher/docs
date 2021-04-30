@@ -1,5 +1,5 @@
 ---
-title: Creating a GKE Cluster
+title: Managing GKE Clusters
 shortTitle: Google Kubernetes Engine
 weight: 2105
 aliases:
@@ -8,6 +8,13 @@ aliases:
 
 {{% tabs %}}
 {{% tab "Rancher v2.5.8+" %}}
+
+- [Prerequisites](#prerequisites)
+- [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
+- [Private Clusters](#private-clusters)
+- [Configuration Reference](./config-reference)
+- [Updating Kubernetes Version](#updating-kubernetes-version)
+- [Syncing](#syncing)
 
 # Prerequisites
 
@@ -36,10 +43,12 @@ To create a new project, refer to the Google cloud documentation [here.](https:/
 
 To get the project ID of an existing project, refer to the Google cloud documentation [here.](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
 
+# Provisioning a GKE Cluster
+
 >**Note**
 >Deploying to GKE will incur charges.
 
-# 1. Create a Cloud Credential
+### 1. Create a Cloud Credential
 
 1. In the upper right corner, click the user profile dropdown menu and click **Cloud Credentials.**
 1. Click **Add Cloud Credential.**
@@ -50,7 +59,7 @@ To get the project ID of an existing project, refer to the Google cloud document
 
 **Result:** You have created credentials that Rancher will use to provision the new GKE cluster.
 
-# 2. Create the GKE Cluster
+### 2. Create the GKE Cluster
 Use Rancher to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
@@ -72,6 +81,34 @@ You can access your cluster after its state is updated to **Active.**
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
+# Private Clusters
+
+We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
+
+# Configuration Reference
+
+More configuration options are available for v2.5.8. For details on configuring GKE clusters in Rancher, see [this page.](./config-reference)
+# Updating Kubernetes Version
+
+The Kubernetes version of a cluster can be upgraded to any version available in the region or zone fo the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
+
+>**Note**
+>GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in Rancher when an upgrade to 1.19+ is attempted. You can follow the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password). After this, the Kubernetes version can be updated to 1.19+ via Rancher.
+
+# Syncing
+
+The GKE provisioner can synchronize the state of an GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../syncing)
+
+### Configuring the Refresh Interval
+
+The refresh interval can be configured through the setting "gke-refresh", which is an integer representing seconds.
+
+The default value is 300 seconds.
+
+The syncing interval can be changed by running `kubectl edit setting gke-refresh`.
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
 
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}
