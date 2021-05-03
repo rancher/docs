@@ -41,7 +41,7 @@ OPA Gatekeeper can be installed from the new **Cluster Explorer** view in Ranche
 
 1. Go to the cluster view in the Rancher UI. Click **Cluster Explorer.**
 1. Click **Apps** in the top navigation bar.
-1. Click **rancher-gatekeeper.**
+1. Click **OPA Gatekeeper.**
 1. Click **Install.**
 
 **Result:** OPA Gatekeeper is deployed in your Kubernetes cluster.
