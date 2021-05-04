@@ -1,6 +1,6 @@
 ---
-title: "Rancher 2.x"
-shortTitle: "Rancher 2.x (Archive)"
+title: "Rancher 2.0-2.5.6 (Formerly 2.x)"
+shortTitle: "Rancher 2.5.6 (Archive)"
 description: "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
 metaTitle: "Rancher 2.x Docs: What is New?"
 metaDescription: "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
