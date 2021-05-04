@@ -9,7 +9,9 @@ weight: 1
 ctaBanner: 0
 ---
 
-> We are transitioning to versioned documentation. The Rancher v2.5 docs are [here.]({{<baseurl>}}/rancher/v2.5/en/) The Rancher v2.0-v2.4 docs are [here.]({{<baseurl>}}/rancher/v2.0-v2.4/en/) The 2.x section contains information for versions v2.0-2.5.6. The v2.x section is still on the Rancher website so that search results won't return 404 errors, but  it will no longer be maintained after v2.5.6.
+> We are transitioning to versioned documentation. The Rancher v2.5 docs are [here.]({{<baseurl>}}/rancher/v2.5/en/) The Rancher v2.0-v2.4 docs are [here.]({{<baseurl>}}/rancher/v2.0-v2.4/en/) We recommend using the versioned docs because they are easier to read and navigate.
+>
+> This section, formerly called 2.x, contains information for versions v2.0-2.5.6. This section is still on the Rancher website so that search results won't return 404 errors, but it will no longer be maintained after v2.5.6.
 
 Rancher was originally built to work with multiple orchestrators, and it included its own orchestrator called Cattle. With the rise of Kubernetes in the marketplace, Rancher 2.x exclusively deploys and manages Kubernetes clusters running anywhere, on any provider.
 
