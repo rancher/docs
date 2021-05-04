@@ -11,7 +11,7 @@ Developed by Red Hat, it is an implementation of mandatory access controls (MAC)
 
 After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
 
-We provide two RPMs (Red Hat package managers) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`.
+We provide two RPMs (Red Hat packages) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`.
 
 - [rancher-selinux](#rancher-selinux)
 - [rke2-selinux](#rke2-selinux)
