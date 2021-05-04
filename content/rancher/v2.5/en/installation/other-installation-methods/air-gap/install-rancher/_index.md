@@ -191,7 +191,7 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 
 ```plain
    helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-     --no-hooks \ # prevent files for Helm hooks from being generated
+    --no-hooks \ # prevent files for Helm hooks from being generated
     --namespace cattle-system \
     --set hostname=<RANCHER.YOURDOMAIN.COM> \
     --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \

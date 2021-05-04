@@ -64,29 +64,29 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 
 ```plain
 helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
---no-hooks \ # prevent files for Helm hooks from being generated
---namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
---set ingress.tls.source=secret \
---set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
---set useBundledSystemChart=true # Use the packaged Rancher system charts
+	--name rancher \
+	--no-hooks \ # prevent files for Helm hooks from being generated
+	--namespace cattle-system \
+	--set hostname=<RANCHER.YOURDOMAIN.COM> \
+	--set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+	--set ingress.tls.source=secret \
+	--set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+	--set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
 If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
 
 ```plain
 helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
---no-hooks \ # prevent files for Helm hooks from being generated
---namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
---set ingress.tls.source=secret \
---set privateCA=true \
---set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
---set useBundledSystemChart=true # Use the packaged Rancher system charts
+	--name rancher \
+	--no-hooks \ # prevent files for Helm hooks from being generated
+	--namespace cattle-system \
+	--set hostname=<RANCHER.YOURDOMAIN.COM> \
+	--set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+	--set ingress.tls.source=secret \
+	--set privateCA=true \
+	--set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+	--set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
 {{% /tab %}}
