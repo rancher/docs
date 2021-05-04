@@ -22,7 +22,7 @@ We provide two RPMs (Red Hat packages) that enable Rancher products to function 
 
 To allow Rancher to work with SELinux, some functionality has to be manually enabled for the SELinux nodes. To help with that, Rancher provides a SELinux RPM. 
 
-This RPM only contains policies for the [rancher-logging application,](https://github.com/rancher/charts/tree/dev-v2.5/charts/rancher-logging) but this is where additional policies for more Rancher feature applications will be added in the future. The logging application was tested
+As of v2.5.8, the `rancher-selinux` RPM only contains policies for the [rancher-logging application.](https://github.com/rancher/charts/tree/dev-v2.5/charts/rancher-logging)
 
 The `rancher-selinux` GitHub repository is [here.](https://github.com/rancher/rancher-selinux)
 
@@ -42,35 +42,31 @@ For more information about installing RKE2 on SELinux-enabled hosts, see the [RK
 
 Set up the yum repo to install `rancher-selinux` directly on all hosts in the cluster.
 
-For CentOS 7, use this URL for the `baseurl`: https://rpm.rancher.io/rancher/production/centos/7/noarch
-
-For CentOS 8, use this URL for the `baseurl`: https://rpm.rancher.io/rancher/production/centos/8/noarch
+In order to use the RPM repository, on a CentOS 7 or RHEL 7 system, run the following bash snippet:
 
 ```
-# source /etc/os-release
 # cat << EOF > /etc/yum.repos.d/rancher.repo 
 [rancher] 
 name=Rancher 
-baseurl=https://rpm.rancher.io/rancher/production/centos/8/noarch # Change if using CentOS 7
+baseurl=https://rpm.rancher.io/rancher/production/centos/7/noarch
 enabled=1 
 gpgcheck=1 
 gpgkey=https://rpm.rancher.io/public.key 
 EOF
 ```
 
-If you are testing out an unreleased change, you can use the testing channel:
+In order to use the RPM repository, on a CentOS 8 or RHEL 8 system, run the following bash snippet:
 
 ```
-# cat << EOF > /etc/yum.repos.d/rancher-testing.repo
-[rancher]
-name=Rancher Testing
-baseurl=https://rpm-testing.rancher.io/rancher/testing/centos/8/$VERSION_ID/noarch # Change if using CentOS 7
-enabled=1
-gpgcheck=1
-gpgkey=https://rpm-testing.rancher.io/public.key
+# cat << EOF > /etc/yum.repos.d/rancher.repo 
+[rancher] 
+name=Rancher 
+baseurl=https://rpm.rancher.io/rancher/production/centos/8/noarch
+enabled=1 
+gpgcheck=1 
+gpgkey=https://rpm.rancher.io/public.key 
 EOF
 ```
-
 ### 2. Installing the RPM
 
 Install the RPM:
@@ -85,8 +81,4 @@ yum -y install rancher-selinux
 
 Applications do not automatically work once the `rancher-selinux` RPM is installed on the host. They need to be configured to run in an allowed SELinux container domain provided by the RPM. 
 
-The rancher-logging chart, for example, needs to be configured to be SELinux aware:
-
-```
-helm install logging rancher/rancher-logging --set global.seLinux.enabled=true
-```
+To configure the `rancher-logging` chart to be SELinux aware, change `global.seLinux.enabled` to true in the `values.yaml` when installing the chart.
