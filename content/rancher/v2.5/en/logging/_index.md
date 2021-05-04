@@ -19,6 +19,7 @@ aliases:
 - [Examples](#examples)
 - [Working with a Custom Docker Root Directory](#working-with-a-custom-docker-root-directory)
 - [Working with Taints and Tolerations](#working-with-taints-and-tolerations)
+- [Logging v2 with SELinux](#logging-v2-with-selinux)
 - [Additional Logging Sources](#additional-logging-sources)
 - [Troubleshooting](#troubleshooting)
 
@@ -425,6 +426,19 @@ fluentbit_tolerations:
   # insert tolerations list for fluentbit containers only...
 ```
 
+
+# Logging v2 with SELinux
+
+_Available as of v2.5.8_
+
+> **Requirements:** Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+
+[Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
+
+To use Logging v2 with SELinux, we recommend installing the `rancher-selinux` RPM according to the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux/#installing-the-rancher-selinux-rpm)
+
+Then you will need to configure the logging application to work with SELinux as shown in [this section.]({{<baseurl>}}/rancher/v2.5/en/security/selinux/#configuring-the-logging-application-to-work-with-selinux)
+
 # Additional Logging Sources
 
 By default, Rancher collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
@@ -444,6 +458,7 @@ The following table summarizes the sources where additional logs may be collecte
 To enable hosted Kubernetes providers as additional logging sources, go to **Cluster Explorer > Logging > Chart Options** and select the **Enable enhanced cloud provider logging** option.
 When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers.
 If you're already using a cloud provider's own logging solution such as AWS CloudWatch or Google Cloud operations suite (formerly Stackdriver), it is not necessary to enable this option as the native solution will have unrestricted access to all logs.
+
 
 # Troubleshooting
 
