@@ -16,7 +16,9 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [RKE and Hosted Kubernetes](#rke-and-hosted-kubernetes)
   - [K3s Kubernetes](#k3s-kubernetes)
   - [RancherD](#rancherd)
+  - [RKE2](#rke2-kubernetes)
   - [CPU and Memory for Rancher before v2.4.0](#cpu-and-memory-for-rancher-before-v2-4-0)
+- [Ingress](#ingress)
 - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -30,7 +32,7 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution.
 
-Docker is required for nodes that will run RKE Kubernetes clusters. It is not required for RancherD installs.
+Docker is required for nodes that will run RKE Kubernetes clusters. It is not required for RancherD or RKE2 Kubernetes installs.
 
 Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
@@ -52,7 +54,7 @@ For the container runtime, RKE should work with any modern Docker version.
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script. 
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -66,7 +68,17 @@ At this time, only Linux OSes that leverage systemd are supported.
 
 To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.	
 
-Docker is not required for RancherD installs.	
+Docker is not required for RancherD installs.
+
+### RKE2 Specific Requirements
+
+_The RKE2 install is available as of v2.5.6._
+
+For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+
+Docker is not required for RKE2 installs.
+
+The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
 
 ### Installing Docker
 
@@ -86,6 +98,8 @@ Hardware requirements scale based on the size of your Rancher deployment. Provis
 These CPU and memory requirements apply to each host in the Kubernetes cluster where the Rancher server is installed.
 
 These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubernetes clusters such as EKS.
+
+
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM     |
 | --------------- | ---------- | ------------ | -------| ------- |
@@ -122,14 +136,40 @@ These CPU and memory requirements apply to each instance with RancherD installed
 | Small           | Up to 5  | Up to 50  | 2     | 5 GB |
 | Medium          | Up to 15 | Up to 200 | 3     | 9 GB |
 
+### RKE2 Kubernetes
+
+These CPU and memory requirements apply to each instance with RKE2 installed. Minimum recommendations are outlined here.
+
+| Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
+| --------------- | -------- | --------- | ----- | ---- |
+| Small           | Up to 5  | Up to 50  | 2     | 5 GB |
+| Medium          | Up to 15 | Up to 200 | 3     | 9 GB |
+
 ### Docker
 
-These CPU and memory requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.x/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
+These CPU and memory requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
 | Small           | Up to 5  | Up to 50  | 1     | 4 GB |
 | Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
+
+# Ingress
+
+Each node in the Kubernetes cluster that Rancher is installed on should run an Ingress.
+
+The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
+
+For RKE, K3s and RancherD installations, you don't have to install the Ingress manually because is is installed by default.
+
+For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
+
+### Ingress for RKE2
+
+Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
+
+### Ingress for EKS
+For an example of how to deploy an nginx-ingress-controller with a LoadBalancer service, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
 # Disks
 

@@ -84,7 +84,7 @@ You can access your cluster after its state is updated to **Active.**
 
 # Private Clusters
 
-We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
+Private GKE clusters are supported. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
 
 # Configuration Reference
 

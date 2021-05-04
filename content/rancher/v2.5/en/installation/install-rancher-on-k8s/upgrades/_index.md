@@ -53,7 +53,7 @@ For migration of installs started with Helm 2, refer to the official [Helm 2 to 
 
 ### For air gap installs: Populate private registry
 
--For [air gap installs only,]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+For [air gap installs only,]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 ### For upgrades from a Rancher server with a hidden local cluster
 
@@ -120,8 +120,8 @@ You'll use the backup as a restoration point if something goes wrong during upgr
 
 This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
 
-{{% tabs %}}
-{{% tab "Kubernetes Upgrade" %}}
+> **Air Gap Instructions:** If you are installing Rancher in an air gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](./air-gap-upgrade)
+
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
 
@@ -181,74 +181,6 @@ If you are currently running the cert-manger whose version is older than v0.11, 
     --namespace cattle-system \
     --set hostname=rancher.my.org
     ```
-
-{{% /tab %}}
-{{% tab "Kubernetes Air Gap Upgrade" %}}
-
-Render the Rancher template using the same chosen options that were used when installing Rancher. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
-
-Based on the choice you made during installation, complete one of the procedures below.
-
-Placeholder | Description
-------------|-------------
-`<VERSION>` | The version number of the output tarball.
-`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-`<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
-
-
-### Option A: Default Self-signed Certificate
-
- ```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
- --name rancher \
- --namespace cattle-system \
- --set hostname=<RANCHER.YOURDOMAIN.COM> \
- --set certmanager.version=<CERTMANAGER_VERSION> \
- --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
- --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
- --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-### Option B: Certificates from Files using Kubernetes Secrets
-
-```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
---namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
---set ingress.tls.source=secret \
---set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
---set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
-
-```plain
-helm template ./rancher-<VERSION>.tgz --output-dir . \
---name rancher \
---namespace cattle-system \
---set hostname=<RANCHER.YOURDOMAIN.COM> \
---set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
---set ingress.tls.source=secret \
---set privateCA=true \
---set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
---set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-### Apply the Rendered Templates
-
-Copy the rendered manifest directories to a system with access to the Rancher server cluster and apply the rendered templates.
-
-Use `kubectl` to apply the rendered manifests.
-
-```plain
-kubectl -n cattle-system apply -R -f ./rancher
-```
-
-{{% /tab %}}
-{{% /tabs %}}
 
 # 4. Verify the Upgrade
 

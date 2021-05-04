@@ -11,7 +11,7 @@ aliases:
 >- Only a user with the `cluster-admin` [Kubernetes default role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster.
 >- If you have pod security policies, you will need to install Istio with the CNI enabled. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/enable-istio-with-psp)
 >- To install Istio on an RKE2 cluster, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/rke2/)
->- To install Istio in a cluster where the Canal network plug-in is in use and the Project Network isolation option is enabled, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/canal-and-project-network)
+>- To install Istio in a cluster where project network isolation is enabled, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/canal-and-project-network)
 
 1. From the **Cluster Explorer**, navigate to available **Charts** in **Apps & Marketplace** 
 1. Select the Istio chart from the rancher provided charts

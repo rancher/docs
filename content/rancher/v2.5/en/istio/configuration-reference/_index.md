@@ -11,7 +11,7 @@ aliases:
 - [Selectors and Scrape Configs](#selectors-and-scrape-configs)
 - [Enable Istio with Pod Security Policies](#enable-istio-with-pod-security-policies)
 - [Additional Steps for Installing Istio on an RKE2 Cluster](#additional-steps-for-installing-istio-on-an-rke2-cluster)
-- [Additional Steps for Canal Network Plug-in with Project Network Isolation](#additional-steps-for-canal-network-plug-in-with-project-network-isolation)
+- [Additional Steps for Project Network Isolation](#additional-steps-for-project-network-isolation)
 
 ### Egress Support
 
@@ -45,6 +45,6 @@ Refer to [this section.](./enable-istio-with-psp)
 
 Refer to [this section.](./rke2)
 
-### Additional Steps for Canal Network Plug-in with Project Network Isolation
+### Additional Steps for Project Network Isolation
 
 Refer to [this section.](./canal-and-project-network)

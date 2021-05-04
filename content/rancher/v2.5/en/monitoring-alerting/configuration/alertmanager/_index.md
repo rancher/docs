@@ -74,6 +74,13 @@ The notification integrations are configured with the `receiver`, which is expla
 
 ### Native vs. Non-native Receivers
 
+By default, AlertManager provides native integration with some receivers, which are listed in [this section.](https://prometheus.io/docs/alerting/latest/configuration/#receiver) All natively supported receivers are configurable through the Rancher UI.
+
+For notification mechanisms not natively supported by AlertManager, integration is achieved using the [webhook receiver.](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config) A list of third-party drivers providing such integrations can be found [here.](https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver) Access to these drivers, and their associated integrations, is provided through the Alerting Drivers app. Once enabled, configuring non-native receivers can also be done through the Rancher UI.
+
+Currently the Rancher Alerting Drivers app provides access to the following integrations:
+- Microsoft Teams, based on the [prom2teams](https://github.com/idealista/prom2teams) driver
+- SMS, based on the [Sachet](https://github.com/messagebird/sachet) driver
 
 ### Changes in Rancher v2.5.8
 
@@ -99,7 +106,7 @@ The following types of receivers can be configured in the Rancher UI:
 
 The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
-### Slack
+# Slack
 
 | Field | Type | Description |
 |------|--------------|------|
@@ -108,7 +115,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Proxy URL   |    String    |  Proxy for the webhook notifications.  |
 | Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
-### Email
+# Email
 
 | Field | Type | Description |
 |------|--------------|------|
@@ -125,7 +132,7 @@ SMTP options:
 | Username |   String   | Enter a username to authenticate with the SMTP server. |
 | Password |   String    | Enter a password to authenticate with the SMTP server. |
 
-### PagerDuty
+# PagerDuty
 
 | Field | Type | Description |
 |------|------|-------|
@@ -134,7 +141,7 @@ SMTP options:
 | Proxy URL | String |  Proxy for the PagerDuty notifications.  |
 | Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
 
-### Opsgenie
+# Opsgenie
 
 | Field | Description |
 |------|-------------|
@@ -149,7 +156,7 @@ Opsgenie Responders:
 | Type | String | Schedule, Team, User, or Escalation. For more information on alert responders, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/alert-recipients-and-teams) |
 | Send To | String | Id, Name, or Username of the Opsgenie recipient. |
 
-### Webhook
+# Webhook
 
 | Field |    Description |
 |-------|--------------|
@@ -159,13 +166,13 @@ Opsgenie Responders:
 
 <!-- TODO add info on webhook for teams and sms and link to them -->
 
-### Custom
+# Custom
 
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
 
-### Teams
+# Teams
 
-#### Enabling the Teams Receiver for Rancher Managed Clusters
+### Enabling the Teams Receiver for Rancher Managed Clusters
 
 The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
 
@@ -176,7 +183,7 @@ The Teams receiver is not a native receiver and must be enabled before it can be
 1. Select the **Teams** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
-#### Configure the Teams Receiver
+### Configure the Teams Receiver
 
 The Teams receiver can be configured by updating its ConfigMap. For example, the following is a minimal Teams receiver configuration.
 
@@ -197,9 +204,9 @@ url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-
 
 <!-- https://github.com/idealista/prom2teams -->
 
-### SMS
+# SMS
 
-#### Enabling the SMS Receiver for Rancher Managed Clusters
+### Enabling the SMS Receiver for Rancher Managed Clusters
 
 The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
 
@@ -210,11 +217,15 @@ The SMS receiver is not a native receiver and must be enabled before it can be u
 1. Select the **SMS** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
-#### Configure the SMS Receiver
+### Configure the SMS Receiver
 
 The SMS receiver can be configured by updating its ConfigMap. For example, the following is a minimal SMS receiver configuration.
 
 ```yaml
+providers:
+  telegram:
+    token: 'your-token-from-telegram'
+
 receivers:
 - name: 'telegram-receiver-1'
   provider: 'telegram'

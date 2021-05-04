@@ -58,7 +58,7 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
     >- The only Network Provider available for clusters with Windows support is Flannel.
 6.	<a id="step-6"></a>Click **Next**.
 
-7.	From **Node Role**, choose the roles that you want filled by a cluster node.
+7.	From **Node Role**, choose the roles that you want filled by a cluster node. You must provision at least one node for each role: `etcd`, `worker`, and `control plane`. All three roles are required for a custom cluster to finish provisioning. For more information on roles, see [this section.]({{<baseurl>}}/rancher/v2.5/en/overview/concepts/#roles-for-nodes-in-kubernetes-clusters)
 
 	>**Notes:**
 	>

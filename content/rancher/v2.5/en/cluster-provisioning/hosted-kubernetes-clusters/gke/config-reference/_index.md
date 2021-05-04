@@ -77,11 +77,11 @@ The name of an existing secondary range for service IP addresses. If selected, *
 
 ### Service Address Range
 
-The address range assigned to the services in the cluster. Must be a valid CIDR range, e.g. 10.94.0.0/18. If not provided, will be created automatically. Must be provided if using a Shared VPC network. For more information on how to determine the IP address range for your servicess, refer to [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing_secondary_range_svcs)
+The address range assigned to the services in the cluster. Must be a valid CIDR range, e.g. 10.94.0.0/18. If not provided, will be created automatically. Must be provided if using a Shared VPC network. For more information on how to determine the IP address range for your services, refer to [this section.](https://cloud.google.com/kubernetes-engine/docs/concepts/alias-ips#cluster_sizing_secondary_range_svcs)
 
 ### Private Cluster
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters).
+> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/private-clusters/).
 
 Assign nodes only internal IP addresses. Private cluster nodes cannot access the public internet unless additional networking steps are taken in GCP.
 
