@@ -51,7 +51,7 @@ For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.
 
 [Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
 
-We provide two RPMs (Red Hat package managers) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`. For details, see [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux)
+We provide two RPMs (Red Hat packages) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`. For details, see [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux)
 
 ### Rancher Hardening Guide
 
