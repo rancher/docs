@@ -42,7 +42,10 @@ Kubernetes v1.18 | CIS v1.5 | [Link](https://docs.rke2.io/security/cis_self_asse
 
 ### K3s Guides
 
-The K3s security guides will be added soon.
+Kubernetes Version | CIS Benchmark Version | Self Assessment Guide | Hardening Guide
+---|---|---|---
+Kubernetes v1.17, v1.18, & v1.19 | CIS v1.5 | [Link]({{<baseurl>}}/k3s/latest/en/security/self_assessment/) | [Link]({{<baseurl>}}/k3s/latest/en/security/hardening_guide/)
+
 
 # Rancher with SELinux
 
