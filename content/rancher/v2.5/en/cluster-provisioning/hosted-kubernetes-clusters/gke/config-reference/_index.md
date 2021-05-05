@@ -8,7 +8,7 @@ weight: 1
 
 ### Changes in v2.5.8
 
--   We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](https://staging.rancher.com/docs/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters)
+-   We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters)
 -   [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc) are now supported.
 -   We now support more configuration options for Rancher managed GKE clusters:
     -   Project
