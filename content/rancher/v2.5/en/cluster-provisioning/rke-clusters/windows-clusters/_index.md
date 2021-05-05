@@ -36,9 +36,9 @@ The general node requirements for networking, operating systems, and Docker are 
 {{% tabs %}}
 {{% tab "Rancher v2.5.8+" %}}
 
-Our support for Windows servers matches the Microsoft official lifecycle for LTSC (Long-Term Servicing Channel) and SAC (Semi-Annual Channel) servers.
+Our support for Windows Server and Windows containers match the Microsoft official lifecycle for LTSC (Long-Term Servicing Channel) and SAC (Semi-Annual Channel).
 
-For the support end dates for each Windows server, see the [Microsoft Documentation.](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
+For the support lifecycle dates for Windows Server, see the [Microsoft Documentation.](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}
 In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
