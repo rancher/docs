@@ -33,6 +33,14 @@ The general node requirements for networking, operating systems, and Docker are 
 
 ### OS and Docker Requirements
 
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+Our support for Windows servers matches the Microsoft official lifecycle for LTSC (Long-Term Servicing Channel) and SAC (Semi-Annual Channel) servers.
+
+For the support end dates for each Windows server, see the [Microsoft Documentation.](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
+{{% /tab %}}
+{{% tab "Rancher before v2.5.8" %}}
 In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
 
 - Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03.
@@ -42,6 +50,8 @@ In order to add Windows worker nodes to a cluster, the node must be running one 
 >
 > - If you are using AWS, Rancher recommends _Microsoft Windows Server 2019 Base with Containers_ as the Amazon Machine Image (AMI).
 > - If you are using GCE, Rancher recommends _Windows Server 2019 Datacenter for Containers_ as the OS image.
+{{% /tab %}}
+{{% /tabs %}}
 
 ### Kubernetes Version
 
