@@ -18,7 +18,12 @@ There are a few things worth noting:
 * As of v0.1.8, RKE will update an add-on if it is the same name.
 * Before v0.1.8, update any add-ons by using `kubectl edit`.
 
-## Critical and Non-Critical Add-ons
+- [Critical and Non-Critical Add-ons](#critical-and-non-critical-add-ons)
+- [Add-on Deployment Jobs](#add-on-deployment-jobs)
+- [Add-on Placement](#add-on-placement)
+- [Tolerations](#tolerations)
+
+# Critical and Non-Critical Add-ons
 
 As of version v0.1.7, add-ons are split into two categories:
 
@@ -27,7 +32,7 @@ As of version v0.1.7, add-ons are split into two categories:
 
 Currently, only the [network plug-in]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/) is considered critical. KubeDNS, [ingress controllers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/) and [user-defined add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) are considered non-critical.
 
-## Add-on deployment jobs
+# Add-on Deployment Jobs
 
 RKE uses Kubernetes jobs to deploy add-ons. In some cases, add-ons deployment takes longer than expected. As of with version v0.1.7, RKE provides an option to control the job check timeout in seconds. This timeout is set at the cluster level.
 
@@ -35,7 +40,7 @@ RKE uses Kubernetes jobs to deploy add-ons. In some cases, add-ons deployment ta
 addon_job_timeout: 30
 ```
 
-## Add-on placement
+# Add-on Placement
 
 _Applies to v0.2.3 and higher_
 
@@ -50,7 +55,7 @@ _Applies to v0.2.3 and higher_
 | nginx-ingress      | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
 | metrics-server     | - `beta.kubernetes.io/os:NotIn:windows`<br/>- `node-role.kubernetes.io/worker` `Exists` | none | - `NoSchedule:Exists`<br/>- `NoExecute:Exists` |
 
-## Tolerations
+# Tolerations
 
 _Available as of v1.2.4_
 

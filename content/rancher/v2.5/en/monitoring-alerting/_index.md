@@ -31,6 +31,7 @@ For more information about upgrading the Monitoring app in Rancher 2.5, please r
 - [About Prometheus](#about-prometheus)
 - [Enable Monitoring](#enable-monitoring)
   - [Default Alerts, Targets, and Grafana Dashboards](#default-alerts-targets-and-grafana-dashboards)
+- [Windows Cluster Support](#windows-cluster-support)
 - [Using Monitoring](#using-monitoring)
   - [Grafana UI](#grafana-ui)
   - [Prometheus UI](#prometheus-ui)
@@ -61,6 +62,10 @@ As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-p
 > - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#setting-resource-limits-and-requests)
 > - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 
+{{% tabs %}}
+{{% tab "Rancher v2.5.8" %}}
+
+### Enable Monitoring for use without SSL
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
@@ -69,6 +74,46 @@ As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-p
 1. Scroll to the bottom of the Helm chart README and click **Install.**
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
+
+### Enable Monitoring for use with SSL
+
+1. Follow the steps on [this page]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/secrets/) to create a secret in order for SSL to be used for alerts.
+ - The secret should be created in the `cattle-monitoring-system` namespace. If it doesn't exist, create it first.
+ - Add the `ca`, `cert`, and `key` files to the secret.
+1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
+1. Click **Apps.**
+1. Click the `rancher-monitoring` app.
+1. Click **Alerting**.
+1. Click **Additional Secrets** and add the secrets created earlier.
+ 
+**Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
+
+When [creating a receiver,]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
+
+For example, if you created a secret with these key-value pairs:
+
+```yaml
+ca.crt=`base64-content`
+cert.pem=`base64-content`
+key.pfx=`base64-content`
+```
+
+Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
+
+{{% /tab %}}
+{{% tab "Rancher v2.5.0-2.5.7" %}}
+
+1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
+1. Click **Apps.**
+1. Click the `rancher-monitoring` app.
+1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
+1. Scroll to the bottom of the Helm chart README and click **Install.**
+
+**Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
+
+{{% /tab %}}
+
+{{% /tabs %}}
 
 ### Default Alerts, Targets, and Grafana Dashboards
 
@@ -83,6 +128,16 @@ To see the default dashboards, go to the [Grafana UI.](#grafana-ui) In the left 
 ### Next Steps
 
 To configure Prometheus resources from the Rancher UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
+
+# Windows Cluster Support
+
+_Available as of v2.5.8_
+
+When deployed onto an RKE1 Windows cluster, Monitoring V2 will now automatically deploy a [windows-exporter](https://github.com/prometheus-community/windows_exporter) DaemonSet and set up a ServiceMonitor to collect metrics from each of the deployed Pods. This will populate Prometheus with `windows_` metrics that are akin to the `node_` metrics exported by [node_exporter](https://github.com/prometheus/node_exporter) for Linux hosts.
+
+To be able to fully deploy Monitoring V2 for Windows, all of your Windows hosts must have a minimum [wins](https://github.com/rancher/wins) version of v0.1.0.
+
+For more details on how to upgrade wins on existing Windows hosts, refer to the section on [Windows cluster support for Monitoring V2.](./windows-clusters)
 
 # Using Monitoring
 
@@ -157,6 +212,8 @@ For more information on configuring Alertmanager in Rancher, see [this page.](./
 1. Confirm **Delete.**
 
 **Result:** `rancher-monitoring` is uninstalled.
+
+> **Note on Persistent Grafana Dashboards:** For users who are using Monitoring V2 v9.4.203 or below, uninstalling the Monitoring chart will delete the cattle-dashboards namespace, which will delete all persisted dashboards, unless the namespace is marked with the annotation `helm.sh/resource-policy: "keep"`. This annotation is added by default in Monitoring V2 v14.5.100+ but can be manually applied on the cattle-dashboards namespace before an uninstall if an older version of the Monitoring chart is currently installed onto your cluster.
 
 # Setting Resource Limits and Requests
 

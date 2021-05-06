@@ -106,12 +106,7 @@ The `system` project:
 - Allows you to add more namespaces or move its namespaces to other projects.
 - Cannot be deleted because it's required for cluster operations.
 
->**Note:** In clusters where both:
->
-> - The Canal network plug-in is in use.
-> - The Project Network Isolation option is enabled.
->
->The `system` project overrides the Project Network Isolation option so that it can communicate with other projects, collect logs, and check health.
+>**Note:** In RKE clusters where the project network isolation option is enabled, the `system` project overrides the project network isolation option so that it can communicate with other projects, collect logs, and check health.
 
 # Project Authorization
 
