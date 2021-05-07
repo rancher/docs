@@ -5,7 +5,7 @@ weight: 3
 
 Windows clusters do not share the same feature support as Linux clusters.
 
-The following chart describes the feature parity between Windows and Linux on Rancher as of May 7, 2021.
+The following chart describes the feature parity between Windows and Linux on Rancher as of Rancher v2.5.8:
 
 **Component** | **Linux** | **Windows**
 --- | --- | ---
