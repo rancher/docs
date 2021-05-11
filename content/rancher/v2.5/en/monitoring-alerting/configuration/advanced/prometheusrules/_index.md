@@ -1,42 +1,12 @@
 ---
-title: PrometheusRules
-weight: 2
-aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/prometheusrules
+title: Configuring PrometheusRules
+weight: 3
 ---
 
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
 
-- [About PrometheusRule Custom Resources](#about-prometheusrule-custom-resources)
-- [Connecting Routes and PrometheusRules](#connecting-routes-and-prometheusrules)
-- [Creating PrometheusRules in the Rancher UI](#creating-prometheusrules-in-the-rancher-ui)
-- [Configuration](#configuration)
-  - [Rule Group](#rule-group)
-  - [Alerting Rules](#alerting-rules)
-  - [Recording Rules](#recording-rules)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
 
-### About PrometheusRule Custom Resources
-
-Prometheus rule files are held in PrometheusRule custom resources.
-
-A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of Rule objects that can each represent either an alerting or a recording rule with the following fields:
-
-- The name of the new alert or record
-- A PromQL (Prometheus query language) expression for the new alert or record
-- Labels that should be attached to the alert or record that identify it (e.g. cluster name or severity)
-- Annotations that encode any additional important pieces of information that need to be displayed on the notification for an alert (e.g. summary, description, message, runbook URL, etc.). This field is not required for recording rules.
-
-Alerting rules define alert conditions based on PromQL queries. Recording rules precompute frequently needed or computationally expensive queries at defined intervals.
-
-For more information on what fields can be specified, please look at the [Prometheus Operator spec.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusrulespec)
-
-Use the label selector field `ruleSelector` in the Prometheus object to define the rule files that you want to be mounted into Prometheus.
-
-For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
-
-### Connecting Routes and PrometheusRules
-
-When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
 
 ### Creating PrometheusRules in the Rancher UI
 
@@ -53,6 +23,23 @@ To create rule groups in the Rancher UI,
 1. Click **Create.**
 
 **Result:** Alerts can be configured to send notifications to the receiver(s).
+
+### About the PrometheusRule Custom Resource
+
+When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Alertmanager to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+
+Prometheus rule files are held in PrometheusRule custom resources. A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of Rule objects that can each represent either an alerting or a recording rule with the following fields:
+
+- The name of the new alert or record
+- A PromQL expression for the new alert or record
+- Labels that should be attached to the alert or record that identify it (e.g. cluster name or severity)
+- Annotations that encode any additional important pieces of information that need to be displayed on the notification for an alert (e.g. summary, description, message, runbook URL, etc.). This field is not required for recording rules.
+
+For more information on what fields can be specified, please look at the [Prometheus Operator spec.](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#prometheusrulespec)
+
+Use the label selector field `ruleSelector` in the Prometheus object to define the rule files that you want to be mounted into Prometheus.
+
+For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
 # Configuration
 

@@ -1,17 +1,19 @@
 ---
-title: Alertmanager
+title: Receiver Configuration
+shortTitle: Receivers
 weight: 1
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager
   - rancher/v2.5/en/monitoring-alerting/legacy/notifiers/
   - /rancher/v2.5/en/cluster-admin/tools/notifiers
   - /rancher/v2.5/en/cluster-admin/tools/alerts
+  - /rancher/v2.5/en/monitoring-alerting/configuration/alertmanager
 ---
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
-- [Overview](#overview)
-  - [Connecting Routes and PrometheusRules](#connecting-routes-and-prometheusrules)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+
 - [Creating Receivers in the Rancher UI](#creating-receivers-in-the-rancher-ui)
 - [Receiver Configuration](#receiver-configuration)
   - [Slack](#slack)
@@ -26,30 +28,10 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Receiver](#receiver)
   - [Grouping](#grouping)
   - [Matching](#matching)
-- [Example Alertmanager Configs](#example-alertmanager-configs)
+- [Configuring Multiple Receivers](#configuring-multiple-receivers)
+- [Example Alertmanager Config](../examples/#example-alertmanager-config)
 - [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
-
-# Overview
-
-By default, Rancher Monitoring deploys a single Alertmanager onto a cluster that uses a default Alertmanager Config Secret. As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster that can all be managed using the same underlying Alertmanager Config Secret.
- 
-This Secret should be updated or modified any time you want to:
- 
-- Add in new notifiers or receivers
-- Change the alerts that should be sent to specific notifiers or receivers
-- Change the group of alerts that are sent out
-
-> By default, you can either choose to supply an existing Alertmanager Config Secret (i.e. any Secret in the `cattle-monitoring-system` namespace) or allow Rancher Monitoring to deploy a default Alertmanager Config Secret onto your cluster. By default, the Alertmanager Config Secret created by Rancher will never be modified / deleted on an upgrade / uninstall of the `rancher-monitoring` chart to prevent users from losing or overwriting their alerting configuration when executing operations on the chart.
- 
-For more information on what fields can be specified in this secret, please look at the [Prometheus Alertmanager docs.](https://prometheus.io/docs/alerting/latest/alertmanager/)
-
-The full spec for the Alertmanager configuration file and what it takes in can be found [here.](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)
-
-For more information, refer to the [official Prometheus documentation about configuring routes.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
-
-### Connecting Routes and PrometheusRules
-
-When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+- [Trusted CA for Notifiers](#trusted-ca-for-notifiers)
 
 # Creating Receivers in the Rancher UI
 _Available as of v2.5.4_
@@ -248,7 +230,6 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 <!-- https://github.com/messagebird/sachet -->
 
 {{% /tab %}}
-
 {{% tab "Rancher v2.5.4-2.5.7" %}}
 
 The following types of receivers can be configured in the Rancher UI:
@@ -330,45 +311,14 @@ The Alertmanager must be configured in YAML, as shown in these [examples.](#exam
 {{% /tab %}}
 {{% /tabs %}}
 
+# Configuring Multiple Receivers
 
-# Route Configuration
+By editing the forms in the Rancher UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.4+" %}}
+It is also possible to send alerts to multiple notification systems. One way is to configure the Receiver using custom YAML, in which case you can add the configuration for multiple notification systems, as long as you are sure that both systems should receive the same messages.
 
-### Receiver
-The route needs to refer to a [receiver](#receiver-configuration) that has already been configured.
+You can also set up multiple receivers by using the `continue` option for a route, so that the alerts sent to a receiver continue being evaluated in the next level of the routing tree, which could contain another receiver.
 
-### Grouping
-
-| Field |    Default | Description |
-|-------|--------------|---------|
-| Group By |  N/a | The labels by which incoming alerts are grouped together. For example, `[ group_by: '[' <labelname>, ... ']' ]` Multiple alerts coming in for labels such as `cluster=A` and `alertname=LatencyHigh` can be batched into a single group. To aggregate by all possible labels, use the special value `'...'` as the sole label name, for example: `group_by: ['...']`  Grouping by `...` effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. |
-| Group Wait | 30s | How long to wait to buffer alerts of the same group before sending initially. |
-| Group Interval | 5m | How long to wait before sending an alert that has been added to a group of alerts for which an initial notification has already been sent. |
-| Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
-
-### Matching
-
-The **Match** field refers to a set of equality matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs to the Rancher UI, they correspond to the YAML in this format:
-
-```yaml
-match:
-  [ <labelname>: <labelvalue>, ... ]
-```
-
-The **Match Regex** field refers to a set of regex-matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs in the Rancher UI, they correspond to the YAML in this format:
-
-```yaml
-match_re:
-  [ <labelname>: <regex>, ... ]
-```
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
-{{% /tab %}}
-{{% /tabs %}}
 
 # Example Alertmanager Configs
 
@@ -440,3 +390,8 @@ spec:
 ```
 
 For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cis-scans/v2.5/#enabling-alerting-for-rancher-cis-benchmark)
+
+
+# Trusted CA for Notifiers
+
+If you need to add a trusted CA to your notifier, follow the steps in [this section.](../helm-chart-options/#trusted-ca-for-notifiers)

@@ -4,6 +4,7 @@ weight: 3
 aliases:
   - /rancher/v2.5/en/cluster-admin/tools/monitoring/rbac
   - /rancher/v2.5/en/monitoring-alerting/v2.5/rbac
+  - /rancher/v2.5/en/monitoring-alerting/grafana
 ---
 This section describes the expectations for RBAC for Rancher Monitoring.
 
@@ -17,6 +18,7 @@ This section describes the expectations for RBAC for Rancher Monitoring.
 - [Users with Rancher Cluster Manager Based Permissions](#users-with-rancher-cluster-manager-based-permissions)
   - [Differences in 2.5.x](#differences-in-2-5-x)
   - [Assigning Additional Access](#assigning-additional-access)
+- [Role-based Access Control for Grafana](#role-based-access-control-for-grafana)
 
 # Cluster Admins
 
@@ -131,3 +133,19 @@ If cluster-admins would like to provide additional admin/edit access to users ou
 |----------------------------| ------| ------| ----------------------------|
 | <ul><li>`secrets`</li><li>`configmaps`</li></ul>| `cattle-monitoring-system` | Yes, Configs and Secrets in this namespace can impact the entire monitoring / alerting pipeline. | User will be able to create or edit Secrets / ConfigMaps such as the Alertmanager Config, Prometheus Adapter Config, TLS secrets, additional Grafana datasources, etc. This can have broad impact on all cluster monitoring / alerting. |
 | <ul><li>`secrets`</li><li>`configmaps`</li></ul>| `cattle-dashboards` | Yes, Configs and Secrets in this namespace can create dashboards that make queries on all metrics collected at a cluster-level. | User will be able to create Secrets / ConfigMaps that persist new Grafana Dashboards only. |
+
+
+
+# Role-based Access Control for Grafana
+
+Rancher allows any users who are authenticated by Kubernetes and have access the Grafana service deployed by the Rancher Monitoring chart to access Grafana via the Rancher Dashboard UI. By default, all users who are able to access Grafana are given the [Viewer](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role) role, which allows them to view any of the default dashboards deployed by Rancher.
+
+However, users can choose to log in to Grafana as an [Admin](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#admin-role) if necessary. The default Admin username and password for the Grafana instance will be `admin`/`prom-operator`, but alternative credentials can also be supplied on deploying or upgrading the chart.
+
+To see the Grafana UI, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Grafana.
+
+<figcaption>Cluster Compute Resources Dashboard in Grafana</figcaption>
+![Cluster Compute Resources Dashboard in Grafana]({{<baseurl>}}/img/rancher/cluster-compute-resources-dashboard.png)
+
+<figcaption>Default Dashboards in Grafana</figcaption>
+![Default Dashboards in Grafana]({{<baseurl>}}/img/rancher/grafana-default-dashboard.png)
