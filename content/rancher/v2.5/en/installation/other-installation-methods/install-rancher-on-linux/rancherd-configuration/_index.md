@@ -1,6 +1,8 @@
 ---
 title: RancherD Configuration Reference
 weight: 1
+aliases:
+  - /rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration
 ---
 
 > RancherD is an experimental feature.
