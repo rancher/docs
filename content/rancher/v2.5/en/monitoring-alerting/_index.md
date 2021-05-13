@@ -144,9 +144,6 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 
 For more information about upgrading the Monitoring app in Rancher 2.5, please refer to the [migration docs](./migrating). 
 
-If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no upgrade path for switching to the new monitoring/ alerting solution. You will need to disable monitoring/ alerting/notifiers in Cluster Manager before deploying the new monitoring solution via Cluster Explorer.
-
-
 # Known Issues
 
 There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend to setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.

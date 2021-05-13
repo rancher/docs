@@ -33,22 +33,22 @@ Project owners and members no longer get access to Grafana or Prometheus by defa
 
 For more information about role-based access control in `rancher-monitoring`, refer to [this page.](../rbac)
 
-### Migrating from Monitoring V1 to Monitoring V2
+# Migrating from Monitoring V1 to Monitoring V2
 
 While there is no automatic migration available, it is possible to manually migrate custom Grafana dashboards and alerts that were created in Monitoring V1 to Monitoring V2.
 
 Before you can install Monitoring V2, Monitoring V1 needs to be uninstalled completely. In order to uninstall Monitoring V1:
 
-* Remove all cluster and project specific alerts and alerts groups
-* Remove all notifiers
-* Disable all project monitoring installations under Cluster -> Project -> Tools -> Monitoring
+* Remove all cluster and project specific alerts and alerts groups.
+* Remove all notifiers.
+* Disable all project monitoring installations under Cluster -> Project -> Tools -> Monitoring.
 * Ensure that all project-monitoring apps in all projects have been removed and are not recreated after a few minutes
-* Disable the cluster monitoring installation under Cluster -> Tools -> Monitoring
-* Ensure that the cluster-monitoring app and the monitoring-operator app in the System project have been removed and are not recreated after a few minutes
+* Disable the cluster monitoring installation under Cluster -> Tools -> Monitoring.
+* Ensure that the cluster-monitoring app and the monitoring-operator app in the System project have been removed and are not recreated after a few minutes.
 
 #### RKE Template Clusters
 
-To prevent v1 monitoring from being re-enabled, disable monitoring and in future RKE template revisions via modification of the RKE template yaml:
+To prevent V1 monitoring from being re-enabled, disable monitoring and in future RKE template revisions via modification of the RKE template yaml:
 
 ```yaml
 enable_cluster_alerting: false
@@ -86,7 +86,7 @@ data:
 
 Once this ConfigMap is created, the dashboard will automatically be added to Grafana.
 
-#### Migrating Alerts
+### Migrating Alerts
 
 It is only possible to directly migrate expression-based alerts to Monitoring V2. Fortunately, the event-based alerts that could be set up to alert on system component, node or workload events, are already covered out-of-the-box by the alerts that are part of Monitoring V2. So it is not necessary to migrate them.
 
