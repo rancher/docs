@@ -185,6 +185,9 @@ services:
       cluster_dns_server: 10.43.0.10
       # Fail if swap is on
       fail_swap_on: false
+      # Generate a certificate signed by the kube-ca Certificate Authority
+      # for the kubelet to use as a server certificate
+      generate_serving_certificate: true
       # Set max pods to 250 instead of default 110
       extra_args:
         max-pods: 250
