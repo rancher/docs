@@ -7,7 +7,7 @@ aliases:
 
 If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.
 
-### Monitoring Before Rancher v2.5
+# Monitoring Before Rancher v2.5
 
 As of v2.2.0, Rancher's Cluster Manager allowed users to enable Monitoring & Alerting V1 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) independently within a cluster. 
 
@@ -17,7 +17,7 @@ Monitoring V1 could be configured on both a cluster-level and on a project-level
 
 When Alerts or Notifiers are enabled, Alerting V1 deploys [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) and a set of Rancher controllers onto a cluster that allows users to define alerts and configure alert-based notifications via Email, Slack, PagerDuty, etc. Users can choose to create different types of alerts depending on what needs to be monitored (e.g. System Services, Resources, CIS Scans, etc.); however, PromQL Expression-based alerts can only be created if Monitoring V1 is enabled.
 
-### Monitoring/Alerting via Cluster Explorer in Rancher 2.5
+# Monitoring/Alerting via Cluster Explorer in Rancher 2.5
 
 As of v2.5.0, Rancher's Cluster Explorer now allows users to enable Monitoring & Alerting V2 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) together within a cluster. 
 
@@ -27,7 +27,7 @@ Monitoring V2 can only be configured on the cluster level. Project-level monitor
 
 For more information on how to configure Monitoring & Alerting V2, see [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration)
 
-### Changes to Role-based Access Control
+# Changes to Role-based Access Control
 
 Project owners and members no longer get access to Grafana or Prometheus by default. If view-only users had access to Grafana, they would be able to see data from any namespace. For Kiali, any user can edit things they don’t own in any namespace.
 
@@ -121,6 +121,6 @@ or add the Prometheus Rule through the Cluster Explorer
 
 For more details on how to configure PrometheusRules in Monitoring V2 see [Monitoring Configuration]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#prometheusrules).
 
-#### Migrating notifiers
+### Migrating notifiers
 
 There is no direct equivalent for how notifiers work in Monitoring V1. Instead you have to replicate the desired setup with [Routes and Receivers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#alertmanager-config) in Monitoring V2.
