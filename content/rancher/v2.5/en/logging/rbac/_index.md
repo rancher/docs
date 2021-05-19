@@ -1,6 +1,6 @@
 ---
-title: Role-based Access Control
-shortTitle: Role-based Access Control for Logging
+shortTitle: Role-based Access Control
+title: Role-based Access Control for Logging
 weight: 3
 ---
 
