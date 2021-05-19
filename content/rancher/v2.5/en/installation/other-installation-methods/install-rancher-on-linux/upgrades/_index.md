@@ -1,6 +1,8 @@
 ---
 title: Upgrades
 weight: 2
+aliases:
+  - /rancher/v2.5/en/installation/install-rancher-on-linux/upgrades
 ---
 
 > RancherD is an experimental feature.
