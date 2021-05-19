@@ -1,6 +1,8 @@
 ---
-title: Install/Upgrade Rancher on a Linux OS
+title: Install/Upgrade Rancher with RancherD
 weight: 3
+aliases:
+  - /rancher/v2.5/en/installation/install-rancher-on-linux
 ---
 
 _Available as of Rancher v2.5.4_

@@ -111,8 +111,7 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 The Helm 2 command is as follows:
 
 ```
-helm template ./rancher-<VERSION>.tgz --output-dir . \
-  --name rancher \
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --namespace cattle-system \
   --set hostname=<RANCHER.YOURDOMAIN.COM> \
   --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \

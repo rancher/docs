@@ -73,7 +73,7 @@ We recommend adding PSPs during cluster and project creation instead of adding i
 
 2. Name the policy.
 
-3. Complete each section of the form. Refer to the [Kubernetes documentation]((https://kubernetes.io/docs/concepts/policy/pod-security-policy/)) for more information on what each policy does.
+3. Complete each section of the form. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) for more information on what each policy does.
 
 
 # Configuration

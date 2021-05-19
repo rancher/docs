@@ -110,10 +110,10 @@ Method 3 can be used as a fallback if method 1 and 2 are unfeasible.
 
 ### Method 1: Kubectl command
 
-For each cluster under Rancher management (including `local`) run the following command using the Kubeconfig file of the Rancher management cluster (RKE or K3S).
+For each cluster under Rancher management (except the `local` Rancher management cluster) run the following command using the Kubeconfig file of the Rancher management cluster (RKE or K3S).
 
 ```
-kubectl patch clusters <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
+kubectl patch clusters.management.cattle.io <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
 ```
 
 This command will cause all Agent Kubernetes resources to be reconfigured with the checksum of the new certificate.

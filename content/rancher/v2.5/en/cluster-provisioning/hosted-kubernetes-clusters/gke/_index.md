@@ -4,6 +4,7 @@ shortTitle: Google Kubernetes Engine
 weight: 2105
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
+  - /rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke
 ---
 
 {{% tabs %}}
@@ -12,7 +13,7 @@ aliases:
 - [Prerequisites](#prerequisites)
 - [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
 - [Private Clusters](#private-clusters)
-- [Configuration Reference](./config-reference)
+- [Configuration Reference](#configuration-reference)
 - [Updating Kubernetes Version](#updating-kubernetes-version)
 - [Syncing](#syncing)
 
@@ -84,11 +85,11 @@ You can access your cluster after its state is updated to **Active.**
 
 # Private Clusters
 
-Private GKE clusters are supported. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
+Private GKE clusters are supported. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/)
 
 # Configuration Reference
 
-More configuration options are available for v2.5.8. For details on configuring GKE clusters in Rancher, see [this page.](./config-reference)
+For details on configuring GKE clusters in Rancher, see [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference)
 # Updating Kubernetes Version
 
 The Kubernetes version of a cluster can be upgraded to any version available in the region or zone fo the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
@@ -98,17 +99,10 @@ The Kubernetes version of a cluster can be upgraded to any version available in 
 
 # Syncing
 
-The GKE provisioner can synchronize the state of an GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../syncing)
+The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/syncing)
 
-### Configuring the Refresh Interval
+For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
 
-The refresh interval can be configured through the setting "gke-refresh", which is an integer representing seconds.
-
-The default value is 300 seconds.
-
-The syncing interval can be changed by running `kubectl edit setting gke-refresh`.
-
-The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
 
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}

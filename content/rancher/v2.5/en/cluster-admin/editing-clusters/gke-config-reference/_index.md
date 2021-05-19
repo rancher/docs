@@ -1,14 +1,15 @@
 ---
 title: GKE Cluster Configuration Reference
-weight: 1
+shortTitle: GKE Cluster Configuration
+weight: 3
 ---
 
 {{% tabs %}}
 {{% tab "v2.5.8" %}}
 
-### Changes in v2.5.8
+# Changes in v2.5.8
 
--   We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters)
+-   We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](./private-clusters)
 -   [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc) are now supported.
 -   We now support more configuration options for Rancher managed GKE clusters:
     -   Project
@@ -288,6 +289,17 @@ Access scopes are the legacy method of specifying permissions for your nodes.
 - **Set access for each API:** Alternatively, you can choose to set specific scopes that permit access to the particular API methods that the service will call.
 
 For more information, see the [section about enabling service accounts for a VM.](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
+
+
+### Configuring the Refresh Interval
+
+The refresh interval can be configured through the setting "gke-refresh", which is an integer representing seconds.
+
+The default value is 300 seconds.
+
+The syncing interval can be changed by running `kubectl edit setting gke-refresh`.
+
+The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
 
 {{% /tab %}}
 {{% tab "Rancher before v2.5.8" %}}
