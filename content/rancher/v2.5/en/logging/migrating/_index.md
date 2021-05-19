@@ -1,6 +1,6 @@
 ---
 title: Migrating to Rancher v2.5 Logging
-weight: 5
+weight: 2
 aliases:
   - /rancher/v2.5/en/logging/v2.5/migrating
 ---
@@ -8,13 +8,26 @@ Starting in v2.5, the logging feature available within Rancher has been complete
 
 Among the many features and changes in the new logging functionality is the removal of project-specific logging configurations. Instead, one now configures logging at the namespace level. Cluster-level logging remains available, but configuration options differ. 
 
-> Note: The pre-v2.5 user interface is now referred to as the _Cluster Manager_. The v2.5+ dashboard is referred to as the _Cluster Explorer_. 
+> Note: The pre-v2.5 user interface is now referred to as the _Cluster Manager_. The v2.5+ dashboard is referred to as the _Cluster Explorer_.
 
-## Installation
+- [Installation](#installation)
+  - [Terminology](#terminology)
+- [Cluster Logging](#cluster-logging)
+- [Project Logging](#project-logging)
+- [Output Configuration](#output-configuration)
+  - [Elasticsearch](#elasticsearch)
+  - [Splunk](#splunk)
+  - [Kafka](#kafka)
+  - [Fluentd](#fluentd)
+  - [Syslog](#syslog)
+- [Custom Log Fields](#custom-log-fields)
+- [System Logging](#system-logging)
 
-To install logging in Rancher v2.5+, refer to [installation instructions]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/#enabling-logging-for-rancher-managed-clusters).
+# Installation
 
-## Terminology & Familiarity
+To install logging in Rancher v2.5+, refer to the [installation instructions]({{<baseurl>}}/rancher/v2.5/en/logging/#enabling-logging).
+
+### Terminology
 
 In v2.5, logging configuration is centralized under a _Logging_ menu option available in the _Cluster Explorer_. It is from this menu option that logging for both cluster and namespace is configured. 
 
@@ -74,7 +87,7 @@ This will result in logs from all sources in the namespace (pods) being collecte
 In legacy logging, there are five logging destinations to choose from: Elasticsearch, Splunk, Kafka, Fluentd, and Syslog. With the exception of Syslog, all of these destinations are available in logging v2.5+. 
 
 
-## Elasticsearch
+### Elasticsearch
 
 | Legacy Logging                                | v2.5+ Logging                     | Notes                                                     |
 |-----------------------------------------------|-----------------------------------|-----------------------------------------------------------|
@@ -101,7 +114,7 @@ spec:
 
 Replace `<desired prefix>` with the prefix for the indices that will be created. In legacy logging, this defaulted to the name of the cluster.
 
-## Splunk
+### Splunk
 
 | Legacy Logging                           | v2.5+ Logging                          | Notes                                                                                  |
 |------------------------------------------|----------------------------------------|----------------------------------------------------------------------------------------|
@@ -118,7 +131,7 @@ _(1) `client_key` and `client_cert` values must be paths to the key and cert fil
 
 _(2) Users can configure either `ca_file` (a path to a PEM-encoded CA certificate) or `ca_path` (a path to a directory containing CA certificates in PEM format). These files must be mounted into the `rancher-logging-fluentd` pod in order to be used._
 
-## Kafka
+### Kafka
 
 | Legacy Logging                          | v2.5+ Logging              | Notes                                                |
 |-----------------------------------------|----------------------------|------------------------------------------------------|
@@ -132,7 +145,7 @@ _(2) Users can configure either `ca_file` (a path to a PEM-encoded CA certificat
 | SASL Configuration -> Password          | Access -> Password         | Password must be stored in a secret                  |
 | SASL Configuration -> Scram Mechanism   | Access -> Scram Mechanism  | Input mechanism as string, e.g. "sha256" or "sha512" |
 
-## Fluentd
+### Fluentd
 
 As of v2.5.2, it is only possible to add a single Fluentd server using the "Edit as Form" option. To add multiple servers, edit the output as YAML and input multiple servers.
 
@@ -154,11 +167,11 @@ As of v2.5.2, it is only possible to add a single Fluentd server using the "Edit
 
 _(1) These values are to be specified as paths to files. Those files must be mounted into the `rancher-logging-fluentd` pod in order to be used._
 
-## Syslog
+### Syslog
 
 As of v2.5.2, syslog is not currently supported as an output using v2.5+ logging. 
 
-## Custom Log Fields
+# Custom Log Fields
 
 In order to add custom log fields, you will need to add the following YAML to your flow configuration:
 
