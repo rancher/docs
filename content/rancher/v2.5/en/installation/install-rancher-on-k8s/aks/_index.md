@@ -47,7 +47,7 @@ az group create --name rancher-rg --location eastus
 To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options.
 
 ```
-az aks create create \
+az aks create \
   --resource-group rancher-rg
   --name rancher-server \
   --kubernetes-version 1.18.14 \
@@ -69,7 +69,7 @@ This command merges your cluster's credentials into the existing kubeconfig and 
 
 # 5. Install an Ingress
 
-The cluster needs an Ingress so that Rancher can be accessed from outside the cluster.
+The cluster needs an Ingress so that Rancher can be accessed from outside the cluster. Installing an Ingress requires allocating a public IP address. Ensure you have sufficient quota, otherwise it will fail to assign the IP address. Limits for public IP addresses are applicable at a regional level per subscription.
 
 The following command installs an `nginx-ingress-controller` with a Kubernetes load balancer service.
 
