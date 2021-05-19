@@ -36,7 +36,7 @@ kind: Secret
 metadata:
   name: s3-creds
 type: Opaque
-data:
+stringData:
   accessKey: <Enter your access key>
   secretKey: <Enter your secret key>
 ```
