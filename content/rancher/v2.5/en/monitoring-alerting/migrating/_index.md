@@ -46,7 +46,14 @@ Before you can install Monitoring V2, Monitoring V1 needs to be uninstalled comp
 * Disable the cluster monitoring installation under Cluster -> Tools -> Monitoring
 * Ensure that the cluster-monitoring app and the monitoring-operator app in the System project have been removed and are not recreated after a few minutes
 
-If the cluster is managed using an RKE template: To prevent legacy monitoring from being re-enabled, disable Monitoring in future RKE template revisions.
+#### RKE Template Clusters
+
+To prevent v1 monitoring from being re-enabled, disable monitoring and in future RKE template revisions via modification of the RKE template yaml:
+
+```yaml
+enable_cluster_alerting: true
+enable_cluster_monitoring: true
+```
 
 #### Migrating Grafana Dashboards
 
