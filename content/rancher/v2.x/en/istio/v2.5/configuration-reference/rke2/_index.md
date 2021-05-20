@@ -13,18 +13,18 @@ Through the **Cluster Explorer,** when installing or upgrading Istio through **A
     apiVersion: install.istio.io/v1alpha1
     kind: IstioOperator
     spec:
-        components:
-          cni:
-            enabled: true
-        values:
+      components:
         cni:
-            image: rancher/istio-install-cni:1.7.3
-            excludeNamespaces:
+          enabled: true
+      values:
+        cni:
+          image: rancher/istio-install-cni:1.7.3
+          excludeNamespaces:
             - istio-system
             - kube-system
-            logLevel: info
-            cniBinDir: /opt/cni/bin
-            cniConfDir: /etc/cni/net.d
+          logLevel: info
+          cniBinDir: /opt/cni/bin
+          cniConfDir: /etc/cni/net.d
     ```
 1. After installing Istio, you'll notice the cni-node pods in the istio-system namespace in a CrashLoopBackoff error. Manually edit the `istio-cni-node` daemonset to include the following on the `install-cni` container:
     ```yaml
