@@ -50,9 +50,15 @@ Out-of-the-box, Rancher provides the following CNI network providers for Kuberne
 
 ![Antrea Logo]({{<baseurl>}}/img/rancher/antrea-logo.png)
 
-Antrea is a Kubernetes-native project that implements the Container Network Interface (CNI) and Kubernetes NetworkPolicy thereby providing network connectivity and security for pod workloads. Antrea extends the benefit of programmable networks from Open vSwitch (OVS) to Kubernetes.
+Antrea is a Kubernetes-native project that implements the Container Network Interface (CNI) and Kubernetes NetworkPolicy thereby providing network connectivity and security for pod workloads. Antrea extends the benefit of programmable networks from Open vSwitch (OVS) to Kubernetes. Along with standard K8s NetworkPolicies, Antrea also supports Antrea NetworkPolicy and Antrea ClusterNetworkPolicy. 
 
-For more information, see the [Antrea GitHub Page.](https://github.com/antrea-io/antrea)
+{{< img "/img/rancher/antrea-overview.png" "Antrea Overview">}}
+
+Besides the default Encap mode, Antrea also supports NoEncap and Hybrid traffic modes. Antrea also supports encrypting tunnel traffic across Nodes with IPsec ESP.
+
+For more information, see:
+- [Antrea GitHub Page.](https://github.com/antrea-io/antrea)
+- [Project Antrea Official Site](https://www.antrea.io/)
 
 #### Canal
 
@@ -120,6 +126,7 @@ The following table summarizes the different features available for each CNI net
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Antrea | Encapsulated (Geneve, VXLAN, GRE, STT) or NoEncap or Hybrid | No | Yes | Yes | K8S API | Yes | Yes |
 | Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
 | Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8S API | No | Yes |
@@ -145,6 +152,7 @@ The following table summarizes different GitHub metrics to give you an idea of e
 
 | Provider | Project | Stars | Forks | Contributors |
 | ---- | ---- | ---- | ---- | ---- |
+| Antrea | https://github.com/antrea-io/antrea | 1032 | 193 | 65 |
 | Canal | https://github.com/projectcalico/canal | 614 | 89 | 19 |
 | flannel | https://github.com/coreos/flannel | 4977 | 1.4k | 140 |
 | Calico | https://github.com/projectcalico/calico | 1534 | 429 | 135 |
