@@ -44,7 +44,15 @@ CNI network providers using this network model include Calico and Romana.
 
 ### What CNI Providers are Provided by Rancher?
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0). You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Antrea, Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0). You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+
+#### Antrea
+
+![Antrea Logo]({{<baseurl>}}/img/rancher/antrea-logo.png)
+
+Antrea is a Kubernetes-native project that implements the Container Network Interface (CNI) and Kubernetes NetworkPolicy thereby providing network connectivity and security for pod workloads. Antrea extends the benefit of programmable networks from Open vSwitch (OVS) to Kubernetes.
+
+For more information, see the [Antrea GitHub Page.](https://github.com/antrea-io/antrea)
 
 #### Canal
 
