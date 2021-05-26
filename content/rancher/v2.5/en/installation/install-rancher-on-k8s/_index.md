@@ -172,18 +172,20 @@ The exact command to install Rancher differs depending on the certificate config
 {{% tab "Rancher-generated Certificates" %}}
 
 
-The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
+The default is for Rancher to generate a self-signed CA, and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
 
 Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
-- Set the `hostname` to the DNS name you pointed at your load balancer.
+- Set `hostname` to the DNS record that resolves to your load balancer.
+- Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
+- To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
-- To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.my.org
+  --set hostname=rancher.my.org \
+  --set replicas=3
 ```
 
 Wait for Rancher to be rolled out:
@@ -201,15 +203,18 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 
 In the following command,
 
-- `hostname` is set to the public DNS record,
-- `ingress.tls.source` is set to `letsEncrypt`
-- `letsEncrypt.email` is set to the email address used for communication about your certificate (for example, expiry notices)
+- Set `hostname` to the public DNS record that resolves to your load balancer.
+- Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
+- Set `ingress.tls.source` to `letsEncrypt`.
+- Set `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices).
+- To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
+  --set replicas=3 \
   --set ingress.tls.source=letsEncrypt \
   --set letsEncrypt.email=me@example.org
 ```
@@ -226,20 +231,23 @@ deployment "rancher" successfully rolled out
 {{% tab "Certificates from Files" %}}
 In this option, Kubernetes secrets are created from your own certificates for Rancher to use.
 
-When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate or the Ingress controller will fail to configure correctly.
+When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate, or the Ingress controller will fail to configure correctly.
 
 Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers and applications.
 
 > If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.5/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
 
-- Set the `hostname`.
+- Set `hostname` as appropriate for your certificate, as described above.
+- Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
 - Set `ingress.tls.source` to `secret`.
+- To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
+  --set replicas=3 \
   --set ingress.tls.source=secret
 ```
 
@@ -263,7 +271,7 @@ The Rancher chart configuration has many options for customizing the installatio
 - [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#private-registry-and-air-gap-installs)
 - [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination)
 
-See the [Chart Options]({{<baseurl>}}/rancher/v2.5/en/installation/resources/chart-options/) for the full list of options.
+See the [Chart Options]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/) for the full list of options.
 
 
 ### 6. Verify that the Rancher Server is Successfully Deployed
