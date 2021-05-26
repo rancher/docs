@@ -3,7 +3,7 @@ title: Outputs and ClusterOutputs
 weight: 2
 ---
 
-For the full details on configuring Outputs and ClusterOutputs, see the [Banzai Cloud Logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/output/)
+For the full details on configuring `Outputs` and `ClusterOutputs`, see the [Banzai Cloud Logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/output/)
 
 - [Configuration](#configuration)
 - [YAML Examples](#yaml-examples)
@@ -17,28 +17,26 @@ For the full details on configuring Outputs and ClusterOutputs, see the [Banzai 
 {{% tabs %}}
 {{% tab "v2.5.8+" %}}
 
-
-
 - [Outputs](#outputs-2-5-8)
 - [ClusterOutputs](#clusteroutputs-2-5-8)
 
 # Changes in v2.5.8
 
-The Outputs and ClusterOutputs can now be configured by filling out forms in the Rancher UI.
+The `Outputs` and `ClusterOutputs` can now be configured by filling out forms in the Rancher UI.
 
 
 <a id="outputs-2-5-8"></a>
 # Outputs
 
-The Output resource defines an output where your Flows can send the log messages. Outputs are the final stage for a logging flow.
+The `Output` resource defines where your `Flows` can send the log messages. `Outputs` are the final stage for a logging `Flow`.
 
-The output is a namespaced resource, which means only a Flow within the same namespace can access it. 
+The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it.
 
 You can use secrets in these definitions, but they must also be in the same namespace. 
 
-For the details of Output custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
+For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
 
-The Rancher UI provides forms for configuring the following Output types:
+The Rancher UI provides forms for configuring the following `Output` types:
 
 - Amazon ElasticSearch
 - Azure Storage
@@ -58,7 +56,7 @@ The Rancher UI provides forms for configuring the following Output types:
 - SumoLogic
 - Syslog
 
-The Rancher UI provides forms for configuring the Output type, target, and access credentials if applicable.
+The Rancher UI provides forms for configuring the `Output` type, target, and access credentials if applicable.
 
 For example configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
 
@@ -66,9 +64,9 @@ For example configuration for each logging plugin supported by the logging opera
 
 # ClusterOutputs
 
-ClusterOutput defines an Output without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
+`ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
 
-For the details of the ClusterOutput custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
+For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
 
 {{% /tab %}}
 {{% tab "v2.5.0-v2.5.7" %}}
@@ -81,13 +79,13 @@ For the details of the ClusterOutput custom resource, see [ClusterOutput.](https
 <a id="outputs-2-5-0"></a>
 # Outputs
 
-The Output resource defines an output where your Flows can send the log messages. Outputs are the final stage for a logging flow.
+The `Output` resource defines where your `Flows` can send the log messages. `Outputs` are the final stage for a logging `Flow`.
 
-The output is a namespaced resource, which means only a Flow within the same namespace can access it. 
+The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it. 
 
 You can use secrets in these definitions, but they must also be in the same namespace. 
 
-Outputs are configured in YAML. For the details of Output custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
+`Outputs` are configured in YAML. For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
 
 For examples of configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
 
@@ -95,11 +93,11 @@ For examples of configuration for each logging plugin supported by the logging o
 
 # ClusterOutputs
 
-ClusterOutput defines an Output without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
+`ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
 
-The Rancher UI provides forms for configuring the ClusterOutput type, target, and access credentials if applicable.
+The Rancher UI provides forms for configuring the `ClusterOutput` type, target, and access credentials if applicable.
 
-ClusterOutputs are configured in YAML. For the details of ClusterOutput custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
+`ClusterOutputs` are configured in YAML. For the details of `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
 
 For example configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
 
@@ -118,7 +116,7 @@ Once logging is installed, you can use these examples to help craft your own log
 
 ### Cluster Output to ElasticSearch
 
-Let's say you wanted to send all logs in your cluster to an `elasticsearch` cluster. First, we create a cluster output.
+Let's say you wanted to send all logs in your cluster to an `elasticsearch` cluster. First, we create a cluster `Output`.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -133,9 +131,9 @@ spec:
       scheme: http
 ```
 
-We have created this cluster output, without elasticsearch configuration, in the same namespace as our operator: `cattle-logging-system.`. Any time we create a cluster flow or cluster output, we have to put it in the `cattle-logging-system` namespace.
+We have created this `ClusterOutput`, without elasticsearch configuration, in the same namespace as our operator: `cattle-logging-system.`. Any time we create a `ClusterFlow` or `ClusterOutput`, we have to put it in the `cattle-logging-system` namespace.
 
-Now that we have configured where we want the logs to go, let's configure all logs to go to that output.
+Now that we have configured where we want the logs to go, let's configure all logs to go to that `ClusterOutput`.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -153,7 +151,7 @@ We should now see our configured index with logs in it.
 
 ### Output to Splunk
 
-What if we have an application team who only wants logs from a specific namespaces sent to a `splunk` server? For this case, we can use namespaced outputs and flows.
+What if we have an application team who only wants logs from a specific namespaces sent to a `splunk` server? For this case, we can use namespaced `Outputs` and `Flows`.
 
 Before we start, let's set up that team's application: `coolapp`.
 
@@ -185,7 +183,7 @@ spec:
           image: paynejacob/loggenerator:latest
 ```
 
-With `coolapp` running, we will follow a similar path as when we created a cluster output. However, unlike cluster outputs, we create our output in our application's namespace.
+With `coolapp` running, we will follow a similar path as when we created a `ClusterOutput`. However, unlike `ClusterOutputs`, we create our `Output` in our application's namespace.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -200,7 +198,7 @@ spec:
         protocol: http
 ```
 
-Once again, let's feed our output some logs.
+Once again, let's feed our `Output` some logs:
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -216,7 +214,7 @@ spec:
 
 ### Output to Syslog
 
-Let's say you wanted to send all logs in your cluster to an `syslog` server. First, we create a cluster output.
+Let's say you wanted to send all logs in your cluster to an `syslog` server. First, we create a `ClusterOutput`:
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -240,7 +238,7 @@ apiVersion: logging.banzaicloud.io/v1beta1
         transport: tcp
 ```
 
-Now that we have configured where we want the logs to go, let's configure all logs to go to that output.
+Now that we have configured where we want the logs to go, let's configure all logs to go to that `Output`.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
@@ -255,9 +253,9 @@ apiVersion: logging.banzaicloud.io/v1beta1
 
 ### Unsupported Outputs
 
-For the final example, we create an output to write logs to a destination that is not supported out of the box:
+For the final example, we create an `Output` to write logs to a destination that is not supported out of the box:
 
-> **Note on syslog** As of Rancher v2.5.4, `syslog` is a supported output. However, this example still provides an overview on using unsupported plugins.
+> **Note on syslog** As of Rancher v2.5.4, `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
 
 ```yaml
 apiVersion: v1
@@ -345,4 +343,4 @@ spec:
     ignore_network_errors_at_startup: false
 ```
 
-Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an output configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.
+Let's break down what is happening here. First, we create a deployment of a container that has the additional `syslog` plugin and accepts logs forwarded from another `fluentd`. Next we create an `Output` configured as a forwarder to our deployment. The deployment `fluentd` will then forward all logs to the configured `syslog` destination.

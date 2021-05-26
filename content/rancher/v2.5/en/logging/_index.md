@@ -62,15 +62,15 @@ Rancher logging has two roles, `logging-admin` and `logging-view`. For more info
 
 # Configuring Logging Custom Resources
 
-To manage Flows, ClusterFlows, Outputs, and ClusterOutputs, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging**.
+To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging**.
 
 ### Flows and ClusterFlows
 
-For help with configuring Flows and ClusterFlows, see [this page.](./custom-resource-config/flows)
+For help with configuring `Flows` and `ClusterFlows`, see [this page.](./custom-resource-config/flows)
 
 ### Outputs and ClusterOutputs
 
-For help with configuring Outputs and ClusterOutputs, see [this page.](./custom-resource-config/outputs)
+For help with configuring `Outputs` and `ClusterOutputs`, see [this page.](./custom-resource-config/outputs)
 
 # Configuring the Logging Helm Chart
 
