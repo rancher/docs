@@ -181,7 +181,7 @@ services:
     path: ""
     uid: 52034
     gid: 52034
-    snapshot: true
+    snapshot: false
     retention: ""
     creation: ""
     backup_config: null
