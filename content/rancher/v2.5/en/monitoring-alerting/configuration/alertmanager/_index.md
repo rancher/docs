@@ -26,7 +26,7 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Receiver](#receiver)
   - [Grouping](#grouping)
   - [Matching](#matching)
-- [Example Alertmanager Config](#example-alertmanager-config)
+- [Example Alertmanager Configs](#example-alertmanager-configs)
 - [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
 
 # Overview
@@ -326,7 +326,7 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 {{% /tab %}}
 {{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in this [example.](#example-alertmanager-config)
+The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -366,12 +366,13 @@ match_re:
 
 {{% /tab %}}
 {{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in this [example.](#example-alertmanager-config)
+The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
 {{% /tab %}}
 {{% /tabs %}}
 
-# Example Alertmanager Config
+# Example Alertmanager Configs
 
+### Slack
 To set up notifications via Slack, the following Alertmanager Config YAML can be placed into the `alertmanager.yaml` key of the Alertmanager Config Secret, where the `api_url` should be updated to use your Webhook URL from Slack:
 
 ```yaml
@@ -389,6 +390,31 @@ receivers:
     api_url: <user-provided slack webhook url here>
 templates:
 - /etc/alertmanager/config/*.tmpl
+```
+
+### PagerDuty
+To set up notifications via PagerDuty, use the example below from the [PagerDuty documentation](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/) as a guideline. This example sets up a route that captures alerts for a database service and sends them to a receiver linked to a service that will directly notify the DBAs in PagerDuty, while all other alerts will be directed to a default receiver with a different PagerDuty integration key.
+
+The following Alertmanager Config YAML can be placed into the `alertmanager.yaml` key of the Alertmanager Config Secret. The `service_key` should be updated to use your PagerDuty integration key and can be found as per the "Integrating with Global Event Routing" section of the PagerDuty documentation. For the full list of configuration options, refer to the [Prometheus documentation](https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config).
+
+```yaml
+route:
+ group_by: [cluster]
+ receiver: 'pagerduty-notifications'
+ group_interval: 5m
+ routes:
+  - match:
+      service: database
+    receiver: 'database-notifcations'
+
+receivers:
+- name: 'pagerduty-notifications'
+  pagerduty_configs:
+  - service_key: 'primary-integration-key'
+
+- name: 'database-notifcations'
+  pagerduty_configs:
+  - service_key: 'database-integration-key'
 ```
 
 # Example Route Config for CIS Scan Alerts

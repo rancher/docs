@@ -276,6 +276,27 @@ When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.5/en/cluster-provi
 
 SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
 
+{{% tabs %}}
+{{% tab "SLES 15 / openSUSE Leap 15" %}}
+1. SSH into the instance.
+1. Start YaST in text mode:
+```
+sudo yast2
+```
+
+1. Navigate to **Security and Users** > **Firewall** > **Zones:public** > **Ports**. To navigate within the interface, follow the instructions [here](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha-yast-text.html#sec-yast-cli-navigate).
+1. To open the required ports, enter them into the **TCP Ports** and **UDP Ports** fields. In this example, ports 9796 and 10250 are also opened for monitoring. The resulting fields should look similar to the following:
+```yaml
+TCP Ports
+22, 80, 443, 2376, 2379, 2380, 6443, 9099, 9796, 10250, 10254, 30000-32767
+UDP Ports
+8472, 30000-32767
+```
+
+1. When all required ports are enter, select **Accept**.
+
+{{% /tab %}}
+{{% tab "SLES 12 / openSUSE Leap 42" %}}
 1. SSH into the instance.
 1. Edit /`etc/sysconfig/SuSEfirewall2` and open the required ports. In this example, ports 9796 and 10250 are also opened for monitoring:
   ```
@@ -287,5 +308,7 @@ SUSE Linux may have a firewall that blocks all ports by default. To open the por
   ```
   SuSEfirewall2
   ```
+{{% /tab %}}
+{{% /tabs %}}
 
 **Result:** The node has the open ports required to be added to a custom cluster.

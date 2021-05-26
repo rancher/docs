@@ -85,7 +85,7 @@ Selecting the first option stores this backup in the storage location configured
 
 The S3 storage location contains the following configuration fields:
 
-1. **Credential Secret** (optional): If you need to use the AWS Access keys Secret keys to access s3 bucket, create a secret with your credentials with keys and the directives `accessKey` and `secretKey`. It can be in any namespace. An example secret is [here.](#example-credentialsecret) This directive is unnecessary if the nodes running your operator are in EC2 and set up with IAM permissions that allow them to access S3, as described in [this section.](#iam-permissions-for-ec2-nodes-to-access-s3)
+1. **Credential Secret** (optional): If you need to use the AWS Access keys Secret keys to access s3 bucket, create a secret with your credentials with keys and the directives `accessKey` and `secretKey`. It can be in any namespace. An example secret is [here.](#example-credentialsecret) This directive is unnecessary if the nodes running your operator are in EC2 and set up with IAM permissions that allow them to access S3, as described in [this section.](#iam-permissions-for-ec2-nodes-to-access-s3) The Credential Secret dropdown lists the secrets in all namespaces.
 1. **Bucket Name**: The name of the S3 bucket where backup files will be stored.
 1. **Region** (optional): The AWS [region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. This field isn't needed for configuring MinIO.
 1. **Folder** (optional): The name of the folder in the S3 bucket where backup files will be stored.

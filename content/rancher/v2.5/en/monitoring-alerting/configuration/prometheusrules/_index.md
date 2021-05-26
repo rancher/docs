@@ -71,7 +71,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 
 ### Alerting Rules
 
-[Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) allow you to define alert conditions based on PromQL (Prometheus expression language) expressions and to send notifications about firing alerts to an external service.
+[Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) allow you to define alert conditions based on PromQL (Prometheus Query Language) expressions and to send notifications about firing alerts to an external service.
 
 | Field | Description |
 |-------|----------------|
@@ -85,7 +85,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 
 ### Recording Rules
 
-[Recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) allow you to precompute frequently needed or computationally expensive PromQL (Prometheus expression language) expressions and save their result as a new set of time series. 
+[Recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) allow you to precompute frequently needed or computationally expensive PromQL (Prometheus Query Language) expressions and save their result as a new set of time series. 
 
 | Field | Description |
 |-------|----------------|
