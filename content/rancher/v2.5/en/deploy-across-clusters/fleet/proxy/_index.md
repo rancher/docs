@@ -5,7 +5,7 @@ weight: 3
 
 _Available as of v2.5.8_
 
-In this sections, you'll learn how to enable Fleet in a setup that has a Rancher server with a public IP and a registered K3s cluster that has no public IP, but is configured to use a proxy.
+In this section, you'll learn how to enable Fleet in a setup that has a Rancher server with a public IP and a registered K3s cluster that has no public IP, but is configured to use a proxy.
 
 Rancher does not establish connections with registered downstream clusters. The Rancher agent deployed on the downstream cluster must be able to establish the connection with Rancher.
 
@@ -29,5 +29,5 @@ When adding Fleet agent environment variables for the proxy, replace <PROXY_IP> 
 | Variable Name | Value |
 |------------------|--------|
 | `HTTP_PROXY` | http://<PROXY_IP>:8888 |
-| `HTTPS_PROXY | http://<PROXY_IP>:8888
+| `HTTPS_PROXY` | http://<PROXY_IP>:8888
 | `NO_PROXY`     | 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local |
