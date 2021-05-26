@@ -38,7 +38,8 @@ Kubernetes v1.18+ | CIS v1.6 | [Link](./1.6-benchmark-2.5) | [Link](./1.6-harden
 
 Kubernetes Version | CIS Benchmark Version | Self Assessment Guide | Hardening Guides
 ---|---|---|---
-Kubernetes v1.18 | CIS v1.5 | [Link](https://docs.rke2.io/security/cis_self_assessment/) | [Link](https://docs.rke2.io/security/hardening_guide/)
+Kubernetes v1.18 | CIS v1.5 | [Link](https://docs.rke2.io/security/cis_self_assessment15/) | [Link](https://docs.rke2.io/security/hardening_guide/)
+Kubernetes v1.20 | CIS v1.6 | [Link](https://docs.rke2.io/security/cis_self_assessment16/) | [Link](https://docs.rke2.io/security/hardening_guide/)
 
 ### K3s Guides
 
