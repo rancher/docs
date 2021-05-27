@@ -51,8 +51,8 @@ Before you can install Monitoring V2, Monitoring V1 needs to be uninstalled comp
 To prevent v1 monitoring from being re-enabled, disable monitoring and in future RKE template revisions via modification of the RKE template yaml:
 
 ```yaml
-enable_cluster_alerting: true
-enable_cluster_monitoring: true
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
 ```
 
 #### Migrating Grafana Dashboards
