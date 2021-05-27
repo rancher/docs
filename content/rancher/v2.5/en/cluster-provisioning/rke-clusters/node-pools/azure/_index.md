@@ -66,6 +66,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 
 Use Rancher to create a Kubernetes cluster in Azure.
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Azure**.
 1. Enter a **Cluster Name**.

@@ -37,6 +37,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 
 ### 3. Create a cluster with node pools using the node template
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **DigitalOcean**.
 1. Enter a **Cluster Name**.

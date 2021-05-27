@@ -42,6 +42,8 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 ### 2. Create the Custom Cluster
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 1. From the **Clusters** page, click **Add Cluster**.
 
 2. Choose **Custom**.
