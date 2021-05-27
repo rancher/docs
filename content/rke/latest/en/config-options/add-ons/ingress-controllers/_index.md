@@ -99,6 +99,28 @@ ingress:
   extra_args:
     enable-ssl-passthrough: ""
 ```
+#### Configuring NGINX Ingress Controller Network Mode
+Three options are possible
+* `network_mode: hostNetwork`: Default mode used when nothing is specified. This will continue to deploy nginx ds as it is deployed currently.
+* `network_mode: hostPort`: Allows users to deploy nginx ds as a hostPort, on non default port using the new http_port and https_port fields in the ingress spec. This can be combined with http-port and https-port extra-args to control the container and host port mapping for the nginx ds.
+
+```yaml
+ingress:
+  provider: nginx
+  network_mode: hostPort
+  http_port: 8080
+  https_port: 8443
+```
+* `network_mode: none`: Allows users to deploy nginx ds on the cluster without exposing the same to the host. This is useful for cases where users wish to use the nginx ds with a loadbalancer service, allowing access to nginx via an external LB. Use can control the port the ingress controller listens on using the extra_args for http-port and https-port.
+
+```yaml
+ingress:
+  provider: nginx
+  network_mode: none
+  extra_args:
+     http-port: 8080
+     https-port: 8443
+```
 
 ### Disabling NGINX Ingress Default Backend
 
