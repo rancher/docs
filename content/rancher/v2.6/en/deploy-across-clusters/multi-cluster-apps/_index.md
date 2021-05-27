@@ -3,7 +3,7 @@ title: Multi-cluster Apps
 weight: 2
 ---
 
-> As of Rancher v2.5, we now recommend using [Fleet]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) for deploying apps across clusters.
+> As of Rancher v2.5, we now recommend using [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) for deploying apps across clusters.
 
 Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
 
@@ -30,8 +30,8 @@ After creating a multi-cluster application, you can program a global DNS entry t
 
 To create a multi-cluster app in Rancher, you must have at least one of the following permissions:
 
-- A [project-member role]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster(s), which gives you the ability to create, read, update, and delete the workloads
-- A [cluster owner role]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the clusters(s) that include the target project(s)
+- A [project-member role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster(s), which gives you the ability to create, read, update, and delete the workloads
+- A [cluster owner role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the clusters(s) that include the target project(s)
 
 # Launching a Multi-Cluster App
 
@@ -73,15 +73,15 @@ In the **Upgrades** section, select the upgrade strategy to use, when you decide
 
 ### Roles
 
-In the **Roles** section, you define the role of the multi-cluster application. Typically, when a user [launches catalog applications]({{<baseurl>}}/rancher/v2.5/en/catalog/launching-apps), that specific user's permissions are used for creation of all workloads/resources that is required by the app.
+In the **Roles** section, you define the role of the multi-cluster application. Typically, when a user [launches catalog applications]({{<baseurl>}}/rancher/v2.6/en/catalog/launching-apps), that specific user's permissions are used for creation of all workloads/resources that is required by the app.
 
 For multi-cluster applications, the application is deployed by a _system user_ and is assigned as the creator of all underlying resources. A _system user_ is used instead of the actual user due to the fact that the actual user could be removed from one of the target projects. If the actual user was removed from one of the projects, then that user would no longer be able to manage the application for the other projects.
 
 Rancher will let you select from two options for Roles, **Project** and **Cluster**. Rancher will allow creation using any of these roles based on the user's permissions.
 
-- **Project** - This is the equivalent of a [project member]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/), a [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or a [project owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles), then the user is considered to have the appropriate level of permissions.
+- **Project** - This is the equivalent of a [project member]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/), a [cluster owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or a [project owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles), then the user is considered to have the appropriate level of permissions.
 
-- **Cluster** - This is the equivalent of a [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _cluster owner_ role, if the user is an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/), then the user is considered to have the appropriate level of permissions.
+- **Cluster** - This is the equivalent of a [cluster owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [cluster owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles) role. While the user might not be explicitly granted the _cluster owner_ role, if the user is an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/), then the user is considered to have the appropriate level of permissions.
 
 When launching the application, Rancher will confirm if you have these permissions in the target projects before launching the application.
 

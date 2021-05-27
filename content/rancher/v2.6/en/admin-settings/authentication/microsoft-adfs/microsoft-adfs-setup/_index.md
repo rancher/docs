@@ -79,4 +79,4 @@ https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml
 
 **Result:** You've added Rancher as a relying trust party. Now you can configure Rancher to leverage AD.
 
-### [Next: Configuring Rancher for Microsoft AD FS]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/microsoft-adfs/rancher-adfs-setup/)
+### [Next: Configuring Rancher for Microsoft AD FS]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/microsoft-adfs/rancher-adfs-setup/)

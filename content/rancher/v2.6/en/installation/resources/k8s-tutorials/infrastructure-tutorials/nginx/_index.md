@@ -2,7 +2,7 @@
 title: Setting up an NGINX Load Balancer
 weight: 4
 aliases:
-  - /rancher/v2.5/en/installation/options/nginx
+  - /rancher/v2.6/en/installation/options/nginx
 ---
 
 NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.

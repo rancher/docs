@@ -2,14 +2,14 @@
 title: UI for Istio Virtual Services and Destination Rules
 weight: 2
 aliases:
-  - /rancher/v2.5/en/installation/options/feature-flags/istio-virtual-service-ui
+  - /rancher/v2.6/en/installation/options/feature-flags/istio-virtual-service-ui
 ---
 
 This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.
 
-> **Prerequisite:** Turning on this feature does not enable Istio. A cluster administrator needs to [enable Istio for the cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/setup) in order to use the feature.
+> **Prerequisite:** Turning on this feature does not enable Istio. A cluster administrator needs to [enable Istio for the cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup) in order to use the feature.
 
-To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/)
+To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/)
 
 Environment Variable Key | Default Value | Status | Available as of
 ---|---|---|---

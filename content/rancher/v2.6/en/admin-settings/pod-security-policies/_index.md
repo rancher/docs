@@ -2,9 +2,9 @@
 title: Pod Security Policies
 weight: 1135
 aliases:
-    - /rancher/v2.5/en/concepts/global-configuration/pod-security-policies/
-    - /rancher/v2.5/en/tasks/global-configuration/pod-security-policies/
-    - /rancher/v2.5/en/tasks/clusters/adding-a-pod-security-policy/
+    - /rancher/v2.6/en/concepts/global-configuration/pod-security-policies/
+    - /rancher/v2.6/en/tasks/global-configuration/pod-security-policies/
+    - /rancher/v2.6/en/tasks/clusters/adding-a-pod-security-policy/
 ---
 
 _Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges).
@@ -55,9 +55,9 @@ Using Rancher, you can create a Pod Security Policy using our GUI rather than cr
 
 ### Requirements
 
-Rancher can only assign PSPs for clusters that are [launched using RKE.]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/)
+Rancher can only assign PSPs for clusters that are [launched using RKE.]({{< baseurl >}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/)
 
-You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/)
+You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/)
 
 It is a best practice to set PSP at the cluster level.
 

@@ -9,7 +9,7 @@ There are three roles that can be assigned to nodes: `etcd`, `controlplane` and 
 
 When designing your cluster(s), you have two options:
 
-* Use dedicated nodes for each role. This ensures resource availability for the components needed for the specified role. It also strictly isolates network traffic between each of the roles according to the [port requirements]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/node-requirements/#networking-requirements). 
+* Use dedicated nodes for each role. This ensures resource availability for the components needed for the specified role. It also strictly isolates network traffic between each of the roles according to the [port requirements]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements). 
 * Assign the `etcd` and `controlplane` roles to the same nodes. These nodes must meet the hardware requirements for both roles.
 
 In either case, the `worker` role should not be used or added to nodes with the `etcd` or `controlplane` role.
@@ -29,7 +29,7 @@ The cluster should have:
 - At least two nodes with the role `controlplane` for master component high availability.
 - At least two nodes with the role `worker` for workload rescheduling upon node failure.
 
-For more information on what each role is used for, refer to the [section on roles for nodes in Kubernetes.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production/nodes-and-roles)
+For more information on what each role is used for, refer to the [section on roles for nodes in Kubernetes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/nodes-and-roles)
 
 
 ### Number of Controlplane Nodes
@@ -63,7 +63,7 @@ Adding more than one node with the `worker` role will make sure your workloads c
 
 ### Why Production Requirements are Different for the Rancher Cluster and the Clusters Running Your Applications
 
-You may have noticed that our [Kubernetes Install]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) instructions do not meet our definition of a production-ready cluster, as there are no dedicated nodes for the `worker` role. However, for your Rancher installation, this three node cluster is valid, because:
+You may have noticed that our [Kubernetes Install]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) instructions do not meet our definition of a production-ready cluster, as there are no dedicated nodes for the `worker` role. However, for your Rancher installation, this three node cluster is valid, because:
 
 * It allows one `etcd` node failure.
 * It maintains multiple instances of the master components by having multiple `controlplane` nodes.

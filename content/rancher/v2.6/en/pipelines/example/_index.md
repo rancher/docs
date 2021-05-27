@@ -2,13 +2,13 @@
 title: Example YAML File
 weight: 501
 aliases:
-  - /rancher/v2.5/en/tools/pipelines/reference/
-  - /rancher/v2.5/en/k8s-in-rancher/pipelines/example
+  - /rancher/v2.6/en/tools/pipelines/reference/
+  - /rancher/v2.6/en/k8s-in-rancher/pipelines/example
 ---
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
 
-In the [pipeline configuration reference]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/config), we provide examples of how to configure each feature using the Rancher UI or using YAML configuration.
+In the [pipeline configuration reference]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/config), we provide examples of how to configure each feature using the Rancher UI or using YAML configuration.
 
 Below is a full example `rancher-pipeline.yml` for those who want to jump right in.
 

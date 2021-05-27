@@ -2,16 +2,16 @@
 title: Configuring Active Directory (AD)
 weight: 1112
 aliases:
-    - /rancher/v2.5/en/tasks/global-configuration/authentication/active-directory/
+    - /rancher/v2.6/en/tasks/global-configuration/authentication/active-directory/
 ---
 
 If your organization uses Microsoft Active Directory as central user repository, you can configure Rancher to communicate with an Active Directory server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the Rancher UI.
 
-Rancher uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/openldap) integration.
+Rancher uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/openldap) integration.
 
 > **Note:**
 >
-> Before you start, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
+> Before you start, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 ## Prerequisites
 
@@ -196,4 +196,4 @@ In the same way, we can observe that the value in the **memberOf** attribute in 
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Active Directory server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.5/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Active Directory server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.6/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.

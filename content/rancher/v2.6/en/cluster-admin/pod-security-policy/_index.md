@@ -3,9 +3,9 @@ title: Adding a Pod Security Policy
 weight: 80
 ---
 
-> **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) 
+> **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) 
 
-When your cluster is running pods with security-sensitive configurations, assign it a [pod security policy]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/), which is a set of rules that monitors the conditions and settings in your pods. If a pod doesn't meet the rules specified in your policy, the policy stops it from running.
+When your cluster is running pods with security-sensitive configurations, assign it a [pod security policy]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/), which is a set of rules that monitors the conditions and settings in your pods. If a pod doesn't meet the rules specified in your policy, the policy stops it from running.
 
 You can assign a pod security policy when you provision a cluster. However, if you need to relax or restrict security for your pods later, you can update the policy while editing your cluster.
 
@@ -15,11 +15,11 @@ You can assign a pod security policy when you provision a cluster. However, if y
 
 3. From **Pod Security Policy Support**, select **Enabled**.
 
-    >**Note:** This option is only available for clusters [provisioned by RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/).
+    >**Note:** This option is only available for clusters [provisioned by RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/).
 
 4. From the **Default Pod Security Policy** drop-down, select the policy you want to apply to the cluster.
 
-	Rancher ships with [policies]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/#default-pod-security-policies) of `restricted` and `unrestricted`, although you can [create custom policies]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/#default-pod-security-policies) as well.
+	Rancher ships with [policies]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/#default-pod-security-policies) of `restricted` and `unrestricted`, although you can [create custom policies]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/#default-pod-security-policies) as well.
 
 5. Click **Save**.
 

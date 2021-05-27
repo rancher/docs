@@ -24,7 +24,7 @@ Run `kubectl cluster-info` or `kubectl get pods` successfully.
 
 _Requirements_
 
-If admins have [enforced TTL on kubeconfig tokens]({{<baseurl>}}/rancher/v2.5/en/api/api-tokens/#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires the [Rancher cli](../cli) to be present in your PATH when you run `kubectl`. Otherwise, you’ll see error like: 
+If admins have [enforced TTL on kubeconfig tokens]({{<baseurl>}}/rancher/v2.6/en/api/api-tokens/#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires the [Rancher cli](../cli) to be present in your PATH when you run `kubectl`. Otherwise, you’ll see error like: 
 `Unable to connect to the server: getting credentials: exec: exec: "rancher": executable file not found in $PATH`. 
 
 This feature enables kubectl to authenticate with the Rancher server and get a new kubeconfig token when required. The following auth providers are currently supported: 

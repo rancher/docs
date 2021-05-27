@@ -2,7 +2,7 @@
 title: Managing HPAs with kubectl
 weight: 3029
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl
+  - /rancher/v2.6/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl
 ---
 
 This section describes HPA management with `kubectl`. This document has instructions for how to:
@@ -14,7 +14,7 @@ This section describes HPA management with `kubectl`. This document has instruct
 - Configure your HPAs to scale using custom metrics, if you use a third-party tool such as Prometheus for metrics
 
 
-You can create, view, and delete HPAs from the Rancher UI. You can also configure them to scale based on CPU or memory usage from the Rancher UI. For more information, refer to [Managing HPAs with the Rancher UI]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui). For scaling HPAs based on other metrics than CPU or memory, you still need `kubectl`.
+You can create, view, and delete HPAs from the Rancher UI. You can also configure them to scale based on CPU or memory usage from the Rancher UI. For more information, refer to [Managing HPAs with the Rancher UI]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui). For scaling HPAs based on other metrics than CPU or memory, you still need `kubectl`.
 
 ##### Basic kubectl Command for Managing HPAs
 

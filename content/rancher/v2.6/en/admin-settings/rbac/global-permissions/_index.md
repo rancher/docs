@@ -110,7 +110,7 @@ You can [assign a role to everyone in the group at the same time](#configuring-g
 
 Using custom permissions is convenient for providing users with narrow or specialized access to Rancher.
 
-When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
+When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
 
 However, in some organizations, these permissions may extend too much access. Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a more restrictive set of custom global permissions.
 
@@ -201,8 +201,8 @@ If a user is removed from the external authentication provider group, they would
 
 > **Prerequisites:** You can only assign a global role to a group if:
 >
-> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/#external-vs-local-authentication)
-> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/user-groups/)
+> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-vs-local-authentication)
+> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
 > * You have already set up at least one user group with the authentication provider
 
 To assign a custom global role to a group, follow these steps:

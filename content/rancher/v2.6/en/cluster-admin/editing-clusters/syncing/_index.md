@@ -2,7 +2,7 @@
 title: Syncing
 weight: 10
 aliases:
-  - /rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/syncing
+  - /rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/syncing
 ---
 
 Syncing is the feature for EKS and GKE clusters that causes Rancher to update the clusters' values so they are up to date with their corresponding cluster object in the hosted Kubernetes provider. This enables Rancher to not be the sole owner of a hosted cluster’s state. Its largest limitation is that processing an update from Rancher and another source at the same time or within 5 minutes of one finishing may cause the state from one source to completely overwrite the other.

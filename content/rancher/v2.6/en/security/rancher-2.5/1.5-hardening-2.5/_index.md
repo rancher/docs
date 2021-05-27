@@ -19,7 +19,7 @@ This hardening guide is intended to be used for RKE clusters and associated with
 
 This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.5 with Kubernetes v1.15 or provisioning a RKE cluster with Kubernetes 1.15 to be used within Rancher v2.5. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5]({{< baseurl >}}/rancher/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5]({{< baseurl >}}/rancher/v2.6/en/security/rancher-2.5/1.5-benchmark-2.5/).
 
 #### Known Issues
 
@@ -434,7 +434,7 @@ dns: null
 
 The reference RKE Template provides the configuration needed to achieve a hardened install of Kubenetes.
 RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
-[documentaion](https://rancher.com/docs/rancher/v2.5/en/installation) for additional installation and RKE Template details.
+[documentaion](https://rancher.com/docs/rancher/v2.6/en/installation) for additional installation and RKE Template details.
 
 ``` yaml
 #

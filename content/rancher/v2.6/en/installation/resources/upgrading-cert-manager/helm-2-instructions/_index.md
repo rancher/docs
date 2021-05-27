@@ -2,8 +2,8 @@
 title: Upgrading Cert-Manager with Helm 2
 weight: 2040
 aliases:
-  - /rancher/v2.5/en/installation/options/upgrading-cert-manager/helm-2-instructions
-  - /rancher/v2.5/en/installation/resources/choosing-version/encryption/upgrading-cert-manager/helm-2-instructions
+  - /rancher/v2.6/en/installation/options/upgrading-cert-manager/helm-2-instructions
+  - /rancher/v2.6/en/installation/resources/choosing-version/encryption/upgrading-cert-manager/helm-2-instructions
 ---
 
 Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:
@@ -26,7 +26,7 @@ To address these changes, this guide will do two things:
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section. 
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.6/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section. 
 
 ## Upgrade Cert-Manager Only 
 
@@ -80,7 +80,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
-1. Follow the guide to [Prepare your Private Registry]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
+1. Follow the guide to [Prepare your Private Registry]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
 
 1. From a system connected to the internet, add the cert-manager repo to Helm
 

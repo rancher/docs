@@ -2,7 +2,7 @@
 title: Creating Credentials in the vSphere Console
 weight: 3
 aliases:
-  - /rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/creating-credentials
+  - /rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/creating-credentials
 ---
 
 This section describes how to create a vSphere username and password. You will need to provide these vSphere credentials to Rancher, which allows Rancher to provision resources in vSphere.

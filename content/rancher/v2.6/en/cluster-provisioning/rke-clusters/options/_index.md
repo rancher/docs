@@ -3,7 +3,7 @@ title: RKE Cluster Configuration Reference
 weight: 2250
 ---
 
-When Rancher installs Kubernetes, it uses [RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) as the Kubernetes distribution.
+When Rancher installs Kubernetes, it uses [RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) as the Kubernetes distribution.
 
 This section covers the configuration options that are available in Rancher for a new or existing RKE Kubernetes cluster.
 
@@ -40,7 +40,7 @@ This section is a cluster configuration reference, covering the following topics
 
 # Rancher UI Options
 
-When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters), you can configure basic Kubernetes options using the **Cluster Options** section.
+When creating a cluster using one of the options described in [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters), you can configure basic Kubernetes options using the **Cluster Options** section.
 
 ### Kubernetes Version
 
@@ -48,7 +48,7 @@ The version of Kubernetes installed on your cluster nodes. Rancher packages its 
 
 ### Network Provider
 
-The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [Networking FAQ]({{<baseurl>}}/rancher/v2.5/en/faq/networking/cni-providers/).
+The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses. For more details on the different networking providers, please view our [Networking FAQ]({{<baseurl>}}/rancher/v2.6/en/faq/networking/cni-providers/).
 
 >**Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you  tear down the entire cluster and all its applications.
 
@@ -62,7 +62,7 @@ Out of the box, Rancher is compatible with the following network providers:
 
 **Notes on Weave:**
 
-When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
 
 ### Project Network Isolation
 
@@ -83,7 +83,7 @@ To enable project network isolation as a cluster option, you will need to use Ca
 
 ### Kubernetes Cloud Providers
 
-You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
 >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#cluster-config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
@@ -93,7 +93,7 @@ If you want to see all the configuration options for a cluster, please click **S
 
 The cluster-level private registry configuration is only used for provisioning clusters.
 
-There are two main ways to set up private registries in Rancher: by setting up the [global default registry]({{<baseurl>}}/rancher/v2.5/en/admin-settings/config-private-registry) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
+There are two main ways to set up private registries in Rancher: by setting up the [global default registry]({{<baseurl>}}/rancher/v2.6/en/admin-settings/config-private-registry) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
 
 If your private registry requires credentials, you need to pass the credentials to Rancher by editing the cluster options for each cluster that needs to pull images from the registry.
 
@@ -108,17 +108,17 @@ See the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/co
 
 Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters) to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters) to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
 
 This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
-For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#4-authorized-cluster-endpoint)
+For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint)
 
-We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.5/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
+We recommend using a load balancer with the authorized cluster endpoint. For details, refer to the [recommended architecture section.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations/#architecture-for-an-authorized-cluster-endpoint)
 
 ### Node Pools
 
-For information on using the Rancher UI to set up node pools in an RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools)
+For information on using the Rancher UI to set up node pools in an RKE cluster, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools)
 
 # Advanced Options
 
@@ -138,11 +138,11 @@ Option to enable or disable [Metrics Server]({{<baseurl>}}/rke/latest/en/config-
 
 ### Pod Security Policy Support
 
-Option to enable and select a default [Pod Security Policy]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies). You must have an existing Pod Security Policy configured before you can use this option.
+Option to enable and select a default [Pod Security Policy]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies). You must have an existing Pod Security Policy configured before you can use this option.
 
 ### Docker Version on Nodes
 
-Option to require [a supported Docker version]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/) installed on the cluster nodes that are added to the cluster, or to allow unsupported Docker versions installed on the cluster nodes.
+Option to require [a supported Docker version]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/) installed on the cluster nodes that are added to the cluster, or to allow unsupported Docker versions installed on the cluster nodes.
 
 ### Docker Root Directory
 
@@ -286,7 +286,7 @@ See [Docker Root Directory](#docker-root-directory).
 
 ### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/).
+Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/).
 
 ### enable_network_policy
 

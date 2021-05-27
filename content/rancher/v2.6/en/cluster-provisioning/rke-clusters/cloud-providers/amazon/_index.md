@@ -22,9 +22,9 @@ All nodes added to the cluster must be able to interact with EC2 so that they ca
 * The first policy is for the nodes with the `controlplane` role. These nodes have to be able to create/remove EC2 resources. The following IAM policy is an example, please remove any unneeded permissions for your use case.
 * The second policy is for the nodes with the `etcd` or `worker` role. These nodes only have to be able to retrieve information from EC2.
 
-While creating an [Amazon EC2 cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/ec2/), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
+While creating an [Amazon EC2 cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/ec2/), you must fill in the **IAM Instance Profile Name** (not ARN) of the created IAM role when creating the **Node Template**.
 
-While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes), you must manually attach the IAM role to the instance(s).
+While creating a [Custom cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes), you must manually attach the IAM role to the instance(s).
 
 IAM Policy for nodes with the `controlplane` role:
 
@@ -133,7 +133,7 @@ The following resources need to tagged with a `ClusterID`:
 
 >**Note:** Do not tag multiple security groups. Tagging multiple groups generates an error when creating an Elastic Load Balancer (ELB).
 
-When you create an [Amazon EC2 Cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/ec2/), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
+When you create an [Amazon EC2 Cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/ec2/), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
 
 Use the following tag:
 

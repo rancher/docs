@@ -3,7 +3,7 @@ title: Updating a Private CA Certificate
 weight: 10
 ---
 
-Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.
+Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.
 
 A summary of the steps is as follows:
 
@@ -104,7 +104,7 @@ When Rancher is configured with a certificate signed by a private CA, the CA cer
 
 Method 1 is the easiest one but requires all clusters to be connected to Rancher after the certificates have been rotated. This is usually the case if the process is performed right after updating the Rancher deployment (Step 3).
 
-If the clusters have lost connection to Rancher but you have [Authorized Cluster Endpoints](https://rancher.com/docs/rancher/v2.5/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
+If the clusters have lost connection to Rancher but you have [Authorized Cluster Endpoints](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
 
 Method 3 can be used as a fallback if method 1 and 2 are unfeasible.
 

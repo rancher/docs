@@ -30,21 +30,21 @@ The Rancher API server is built on top of an embedded Kubernetes API server and 
 
 ### Authorization and Role-Based Access Control
 
--  **User management:** The Rancher API server [manages user identities]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/) that correspond to external authentication providers like Active Directory or GitHub, in addition to local users.
--	**Authorization:** The Rancher API server manages [access control]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/) and [security]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/) policies.
+-  **User management:** The Rancher API server [manages user identities]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/) that correspond to external authentication providers like Active Directory or GitHub, in addition to local users.
+-	**Authorization:** The Rancher API server manages [access control]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/) and [security]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/) policies.
 
 ### Working with Kubernetes
 
-- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) on existing nodes, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/upgrading-kubernetes)
-- **Catalog management:** Rancher provides the ability to use a [catalog of Helm charts]({{<baseurl>}}/rancher/v2.5/en/catalog/) that make it easy to repeatedly deploy applications.
-- **Managing projects:** A project is a group of multiple namespaces and access control policies within a cluster. A project is a Rancher concept, not a Kubernetes concept, which allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.5/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/)
-- **Pipelines:** Setting up a [pipeline]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/) can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
-- **Istio:** Our [integration with Istio]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/) is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
+- **Provisioning Kubernetes clusters:** The Rancher API server can [provision Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) on existing nodes, or perform [Kubernetes upgrades.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/upgrading-kubernetes)
+- **Catalog management:** Rancher provides the ability to use a [catalog of Helm charts]({{<baseurl>}}/rancher/v2.6/en/catalog/) that make it easy to repeatedly deploy applications.
+- **Managing projects:** A project is a group of multiple namespaces and access control policies within a cluster. A project is a Rancher concept, not a Kubernetes concept, which allows you manage multiple namespaces as a group and perform Kubernetes operations in them. The Rancher UI provides features for [project administration]({{<baseurl>}}/rancher/v2.6/en/project-admin/) and for [managing applications within projects.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/)
+- **Pipelines:** Setting up a [pipeline]({{<baseurl>}}/rancher/v2.6/en/project-admin/pipelines/) can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects.
+- **Istio:** Our [integration with Istio]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/) is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 
 ### Working with Cloud Infrastructure
 
--  **Tracking nodes:** The Rancher API server tracks identities of all the [nodes]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/nodes/) in all clusters.
-- **Setting up infrastructure:**  When configured to use a cloud provider, Rancher can dynamically provision [new nodes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/) and [persistent storage]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/) in the cloud.
+-  **Tracking nodes:** The Rancher API server tracks identities of all the [nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/nodes/) in all clusters.
+- **Setting up infrastructure:**  When configured to use a cloud provider, Rancher can dynamically provision [new nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/) and [persistent storage]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) in the cloud.
 
 ### Cluster Visibility
 
@@ -54,10 +54,10 @@ The Rancher API server is built on top of an embedded Kubernetes API server and 
 
 # Editing Downstream Clusters with Rancher
 
-The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
+The options and settings available for an existing cluster change based on the method that you used to provision it. For example, only clusters [provisioned by RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) have **Cluster Options** available for editing.
 
-After a cluster is created with Rancher, a cluster administrator can manage cluster membership, enable pod security policies, and manage node pools, among [other options.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/)
+After a cluster is created with Rancher, a cluster administrator can manage cluster membership, enable pod security policies, and manage node pools, among [other options.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/)
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% include file="/rancher/v2.5/en/cluster-provisioning/cluster-capabilities-table" %}}
+{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table" %}}

@@ -3,7 +3,7 @@ title: Kubernetes resources
 weight: 101
 ---
 
-The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) clusters.
+The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) clusters.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
@@ -266,6 +266,6 @@ kubectl get pods --all-namespaces -o go-template='{{range .items}}{{if eq .statu
 
 ### Job does not complete
 
-If you have enabled Istio, and you are having issues with a Job you deployed not completing, you will need to add an annotation to your pod using [these steps.]({{<baseurl>}}/rancher/v2.5/en/istio/setup/enable-istio-in-namespace)
+If you have enabled Istio, and you are having issues with a Job you deployed not completing, you will need to add an annotation to your pod using [these steps.]({{<baseurl>}}/rancher/v2.6/en/istio/setup/enable-istio-in-namespace)
 
 Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed. This is a temporary workaround and will disable Istio for any traffic to/from the annotated Pod. Keep in mind this may not allow you to continue to use a Job for integration testing, as the Job will not have access to the service mesh.

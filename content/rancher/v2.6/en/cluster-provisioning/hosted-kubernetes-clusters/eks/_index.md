@@ -3,7 +3,7 @@ title: Creating an EKS Cluster
 shortTitle: Amazon EKS
 weight: 2110
 aliases:
-  - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-eks/
+  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-eks/
 ---
 Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
 
@@ -74,7 +74,7 @@ You can access your cluster after its state is updated to **Active.**
 
 # EKS Cluster Configuration Reference
 
-For the full list of EKS cluster configuration options, see [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/eks-config-reference)
+For the full list of EKS cluster configuration options, see [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/eks-config-reference)
 
 # Architecture
 
@@ -104,9 +104,9 @@ See [this page](./permissions) for the minimum set of permissions necessary to u
 
 # Syncing
 
-The EKS provisioner can synchronize the state of an EKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/syncing/)
+The EKS provisioner can synchronize the state of an EKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/syncing/)
 
-For information on configuring the refresh interval, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/eks-config-reference/#configuring-the-refresh-interval)
+For information on configuring the refresh interval, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/eks-config-reference/#configuring-the-refresh-interval)
 
 # Troubleshooting
 

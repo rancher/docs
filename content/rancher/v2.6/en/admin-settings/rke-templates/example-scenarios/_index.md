@@ -22,7 +22,7 @@ Let's say there is an organization in which the administrators decide that all n
 **Results:**
 
 - All Rancher users in the organization have access to the template.
-- All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) with this template will use Kubernetes 1.14 and they are unable to use a different Kubernetes version. By default, standard users don't have permission to create templates, so this template will be the only template they can use unless more templates are shared with them.
+- All new clusters created by [standard users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) with this template will use Kubernetes 1.14 and they are unable to use a different Kubernetes version. By default, standard users don't have permission to create templates, so this template will be the only template they can use unless more templates are shared with them.
 - All standard users must use a cluster template to create a new cluster. They cannot create a cluster without using a template.
 
 In this way, the administrators enforce the Kubernetes version across the organization, while still allowing end users to configure everything else.
@@ -31,7 +31,7 @@ In this way, the administrators enforce the Kubernetes version across the organi
 
 Let's say an organization has both basic and advanced users. Administrators want the basic users to be required to use a template, while the advanced users and administrators create their clusters however they want.
 
-1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-an-rke-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
+1. First, an administrator turns on [RKE template enforcement.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/enforcement/#requiring-new-clusters-to-use-an-rke-template) This means that every [standard user]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) in Rancher will need to use an RKE template when they create a cluster.
 1. The administrator then creates two templates:
 
   - One template for basic users, with almost every option specified except for access keys
@@ -60,12 +60,12 @@ Let's say Alice is a Rancher administrator. She owns an RKE template that reflec
 
 Bob is an advanced user who can make informed decisions about cluster configuration. Alice trusts Bob to create new revisions of her template as the best practices get updated over time. Therefore, she decides to make Bob an owner of the template.
 
-To share ownership of the template with Bob, Alice [adds Bob as an owner of her template.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-ownership-of-templates)
+To share ownership of the template with Bob, Alice [adds Bob as an owner of her template.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/template-access-and-sharing/#sharing-ownership-of-templates)
 
 The result is that as a template owner, Bob is in charge of version control for that template. Bob can now do all of the following:
 
-- [Revise the template]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template) when the best practices change
-- [Disable outdated revisions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#disabling-a-template-revision) of the template so that no new clusters can be created with it
-- [Delete the whole template]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#deleting-a-template) if the organization wants to go in a different direction
-- [Set a certain revision as default]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#setting-a-template-revision-as-default) when users create a cluster with it. End users of the template will still be able to choose which revision they want to create the cluster with.
-- [Share the template]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/template-access-and-sharing) with specific users, make the template available to all Rancher users, or share ownership of the template with another user.
+- [Revise the template]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template) when the best practices change
+- [Disable outdated revisions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#disabling-a-template-revision) of the template so that no new clusters can be created with it
+- [Delete the whole template]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#deleting-a-template) if the organization wants to go in a different direction
+- [Set a certain revision as default]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#setting-a-template-revision-as-default) when users create a cluster with it. End users of the template will still be able to choose which revision they want to create the cluster with.
+- [Share the template]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/template-access-and-sharing) with specific users, make the template available to all Rancher users, or share ownership of the template with another user.

@@ -2,7 +2,7 @@
 title: How Persistent Storage Works
 weight: 1
 aliases:
-  - /rancher/v2.5/en/tasks/workloads/add-persistent-volume-claim
+  - /rancher/v2.6/en/tasks/workloads/add-persistent-volume-claim
 ---
 
 A persistent volume (PV) is a piece of storage in the Kubernetes cluster, while a persistent volume claim (PVC) is a request for storage.

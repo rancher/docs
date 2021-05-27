@@ -94,9 +94,9 @@ Rancher must be configured with a LDAP bind account (aka service account) to sea
 
 ### Configure OpenLDAP in Rancher
 
-Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/openldap/openldap-config) Note that nested group membership is not available for Shibboleth.
+Configure the settings for the OpenLDAP server, groups and users. For help filling out each field, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/openldap/openldap-config) Note that nested group membership is not available for Shibboleth.
 
-> Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
+> Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 1. Log into the Rancher UI using the initial local `admin` account.
 2. From the **Global** view, navigate to **Security** > **Authentication**
@@ -104,4 +104,4 @@ Configure the settings for the OpenLDAP server, groups and users. For help filli
 
 # Troubleshooting
 
-If you are experiencing issues while testing the connection to the OpenLDAP server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.5/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the OpenLDAP server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.6/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.

@@ -2,12 +2,12 @@
 title: Allow Unsupported Storage Drivers
 weight: 1
 aliases:
-  - /rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers/
+  - /rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers/
 ---
 
 This feature allows you to use types for storage providers and provisioners that are not enabled by default.
 
-To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/)
+To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/)
 
 Environment Variable Key | Default Value | Description
 ---|---|---

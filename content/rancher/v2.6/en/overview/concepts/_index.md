@@ -61,7 +61,7 @@ Each [worker node](https://kubernetes.io/docs/concepts/architecture/nodes/) runs
 - **Kubelets:** An agent that monitors the state of the node, ensuring your containers are healthy.
 - **Workloads:** The containers and pods that hold your apps, as well as other types of deployments.
 
-Worker nodes also run storage and networking drivers, and ingress controllers when required. You create as many worker nodes as necessary to run your  [workloads]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/workloads/).
+Worker nodes also run storage and networking drivers, and ingress controllers when required. You create as many worker nodes as necessary to run your  [workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/).
 
 # About Helm
 

@@ -10,7 +10,7 @@ There are two main ways to set up private registries in Rancher: by setting up t
 
 This section is about configuring the global default private registry, and focuses on how to configure the registry from the Rancher UI after Rancher is installed.
 
-For instructions on setting up a private registry with command line options during the installation of Rancher, refer to the [air gapped Docker installation]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-single-node) or [air gapped Kubernetes installation]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-high-availability) instructions.
+For instructions on setting up a private registry with command line options during the installation of Rancher, refer to the [air gapped Docker installation]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-single-node) or [air gapped Kubernetes installation]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-high-availability) instructions.
 
 If your private registry requires credentials, it cannot be used as the default registry. There is no global way to set up a private registry with authorization for every Rancher-provisioned cluster. Therefore, if you want a Rancher-provisioned cluster to pull images from a private registry with credentials, you will have to [pass in the registry credentials through the advanced cluster options](#setting-a-private-registry-with-credentials-when-deploying-a-cluster) every time you create a new cluster.
 

@@ -2,7 +2,7 @@
 title: Backups and Disaster Recovery
 weight: 5
 aliases:
-  - /rancher/v2.5/en/backups/v2.5
+  - /rancher/v2.6/en/backups/v2.5
 ---
 
 In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
@@ -104,7 +104,7 @@ A restore is performed by creating a Restore custom resource. For a tutorial, re
 
 # Migrating Rancher to a New Cluster
 
-A migration is performed by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
+A migration is performed by following [these steps.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 
 # Default Storage Location Configuration
 

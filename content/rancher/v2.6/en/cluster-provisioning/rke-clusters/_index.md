@@ -15,20 +15,20 @@ RKE clusters include clusters that Rancher launched on Windows nodes or other ex
 
 ### Requirements
 
-If you use RKE to set up a cluster, your nodes must meet the [requirements]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/node-requirements) for nodes in downstream user clusters.
+If you use RKE to set up a cluster, your nodes must meet the [requirements]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements) for nodes in downstream user clusters.
 
 ### Launching Kubernetes on New Nodes in an Infrastructure Provider
 
-Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers.
+Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your cloud providers.
 
 One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-For more information, refer to the section on [launching Kubernetes on new nodes.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/)
+For more information, refer to the section on [launching Kubernetes on new nodes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/)
 
 ### Launching Kubernetes on Existing Custom Nodes
 
 In this scenario, you want to install Kubernetes on bare-metal servers, on-prem virtual machines, or virtual machines that already exist in a cloud provider. With this option, you will run a Rancher agent Docker container on the machine.
 
-If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.5/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
-For more information, refer to the section on [custom nodes.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes/)
+For more information, refer to the section on [custom nodes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/)

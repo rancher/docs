@@ -2,7 +2,7 @@
 title: RancherD Configuration Reference
 weight: 1
 aliases:
-  - /rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration
+  - /rancher/v2.6/en/installation/install-rancher-on-linux/rancherd-configuration
 ---
 
 > RancherD is an experimental feature.
@@ -69,7 +69,7 @@ Put this manifest on your host in `/var/lib/rancher/rke2/server/manifests` befor
 | `addLocal`                     | "auto"                                                | ***string*** - Have Rancher detect and import the local Rancher server cluster |
 | `auditLog.destination`         | "sidecar"                                             | ***string*** - Stream to sidecar container console or hostPath volume - *"sidecar, hostPath"*                                                                                                                |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | ***string*** - log file destination on host (only applies when **auditLog.destination** is set to **hostPath**)                                                                                              |
-| `auditLog.level`               | 0                                                     | ***int*** - set the [API Audit Log level](https://rancher.com/docs/rancher/v2.5/en/installation/api-auditing). 0 is off. [0-3]                                                                               |
+| `auditLog.level`               | 0                                                     | ***int*** - set the [API Audit Log level](https://rancher.com/docs/rancher/v2.6/en/installation/api-auditing). 0 is off. [0-3]                                                                               |
 | `auditLog.maxAge`              | 1                                                     | ***int*** - maximum number of days to retain old audit log files (only applies when **auditLog.destination** is set to **hostPath**)                                                                         |
 | `auditLog.maxBackups`          | 1                                                     | int - maximum number of audit log files to retain (only applies when **auditLog.destination** is set to **hostPath**)                                                                                        |
 | `auditLog.maxSize`             | 100                                                   | ***int*** - maximum size in megabytes of the audit log file before it gets rotated (only applies when **auditLog.destination** is set to **hostPath**)                                                       |
