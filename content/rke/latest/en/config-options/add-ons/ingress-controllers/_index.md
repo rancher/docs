@@ -19,7 +19,9 @@ By default, RKE deploys the NGINX ingress controller on all schedulable nodes.
 
 > **Note:** As of v0.1.8, only workers are considered schedulable nodes, but before v0.1.8, worker and controlplane nodes were considered schedulable nodes.  
 
-RKE will deploy the ingress controller as a DaemonSet with `hostnetwork: true`, so ports `80`, and `443` will be opened on each node where the controller is deployed.
+RKE will deploy the ingress controller as a DaemonSet with `hostNetwork: true`, so ports `80`, and `443` will be opened on each node where the controller is deployed.
+
+> **Note:** As of v1.1.11, the network options of the ingress controller are configurable. See [Configuring network options](#configuring-network-options).
 
 The images used for ingress controller is under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with the ingress controller, but these can be overridden by changing the image tag in `system_images`.
 
@@ -110,6 +112,36 @@ ingress:
 ```
 
 > **What happens if the field is omitted?** The value of `default_backend` will default to `true`. This maintains behavior with older versions of `rke`. However, a future version of `rke` will change the default value to `false`.
+
+### Configuring network options
+
+_Available as of v1.1.11_
+
+By default, the nginx ingress controller is configured using `hostNetwork: true` on the default ports `80` and `443`. If you want to change the mode and/or the ports, see the options below.
+
+Configure the nginx ingress controller using `hostPort` and override the default ports:
+
+```yaml
+ingress:
+  provider: nginx
+  network_mode: hostPort
+  http_port: 9090
+  https_port: 9443
+  extra_args:
+    http-port: 8080
+    https-port: 8443
+```
+
+Configure the nginx ingress controller with no network mode which will make it run on the overlay network (for example, if you want to expose the nginx ingress controller using a `LoadBalancer`) and override the default ports:
+
+```yaml
+ingress:
+  provider: nginx
+  network_mode: none
+  extra_args:
+    http-port: 8080
+    https-port: 8443
+```
 
 ### Configuring an NGINX Default Certificate
 
