@@ -63,8 +63,8 @@ For more information about `values.yaml` files and configuring Helm charts durin
 
 ```yaml
 image:
-  repository: rancher/rancher-backup
-  tag: v0.0.1-rc10
+  repository: rancher/backup-restore-operator
+  tag: v1.0.3
 
 ## Default s3 bucket for storing all backup files created by the rancher-backup operator
 s3:
