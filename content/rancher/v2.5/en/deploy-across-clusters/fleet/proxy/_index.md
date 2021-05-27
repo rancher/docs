@@ -9,7 +9,7 @@ In this section, you'll learn how to enable Fleet in a setup that has a Rancher 
 
 Rancher does not establish connections with registered downstream clusters. The Rancher agent deployed on the downstream cluster must be able to establish the connection with Rancher.
 
-To set up Fleet to work behind a proxy, you will need to set the **Agent Environment Variables* * for the downstream cluster. These are cluster-level configuration options.
+To set up Fleet to work behind a proxy, you will need to set the **Agent Environment Variables** for the downstream cluster. These are cluster-level configuration options.
 
 Through the Rancher UI, you can configure these environment variables for any cluster type, including registered and custom clusters. The variables can be added while editing an existing cluster or while provisioning a new cluster.
 
@@ -19,12 +19,12 @@ For private nodes or private clusters, the environment variables need to be set 
 
 # Required Environment Variables
 
-When adding Fleet agent environment variables for the proxy, replace <PROXY_IP> with your private proxy IP.
+When adding Fleet agent environment variables for the proxy, replace PROXY_IP with your private proxy IP.
 
 | Variable Name | Value |
 |------------------|--------|
-| `HTTP_PROXY` | http://<PROXY_IP>:8888 |
-| `HTTPS_PROXY` | http://<PROXY_IP>:8888
+| `HTTP_PROXY` | http://PROXY_IP:8888 |
+| `HTTPS_PROXY` | http://PROXY_IP:8888
 | `NO_PROXY`     | 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local |
 
 # Setting Environment Variables in the Rancher UI
