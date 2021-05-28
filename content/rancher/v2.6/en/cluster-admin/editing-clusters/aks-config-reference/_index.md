@@ -10,6 +10,7 @@ weight: 4
 - Enabled autoscaling node pools
 - The AKS permissions are now configured in cloud credentials
 - For networking, a new field was added in the UI: Support Private Kubernetes Service
+- Windows support was removed
 
 ### HTTP Application
 
@@ -92,5 +93,5 @@ There are two choices: Standard and Basic. Some are specific to regions and AZs.
 
 There are questions about whether private nodes are in fact public.
 
-
+# Advanced Options
 
