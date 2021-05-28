@@ -3,7 +3,7 @@ title: RKE Cluster Configuration
 weight: 1
 ---
 
-In [clusters launched by RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/), you can edit any of the remaining options that follow.
+In [clusters launched by RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/), you can edit any of the remaining options that follow.
 
 - [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui)
 - [Editing Clusters with YAML](#editing-clusters-with-yaml)
@@ -17,7 +17,7 @@ Some advanced configuration options are not exposed in the Rancher UI forms, but
 
 ### Kubernetes Version 
 
-The version of Kubernetes installed on each cluster node. For more detail, see [Upgrading Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/upgrading-kubernetes).
+The version of Kubernetes installed on each cluster node. For more detail, see [Upgrading Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/upgrading-kubernetes).
 
 ### Network Provider
 
@@ -41,7 +41,7 @@ Each cloud provider capable of launching a cluster using RKE can collect metrics
 
 ### Pod Security Policy Support
 
-Enables [pod security policies]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/) for the cluster. After enabling this option, choose a policy using the **Default Pod Security Policy** drop-down.
+Enables [pod security policies]({{<baseurl>}}/rancher/v2.5/en/admin-settings/pod-security-policies/) for the cluster. After enabling this option, choose a policy using the **Default Pod Security Policy** drop-down.
 
 ### Docker version on nodes
 
@@ -57,7 +57,7 @@ If you enable **Pod Security Policy Support**, use this drop-down to choose the 
 
 ### Cloud Provider
 
-If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.
+If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.
 
 # Editing Clusters with YAML
 

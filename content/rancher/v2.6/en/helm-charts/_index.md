@@ -3,9 +3,9 @@ title: Helm Charts in Rancher
 weight: 11
 aliases:
   - /rancher/v2.x/en/helm-charts/apps-marketplace
-  - /rancher/v2.6/en/catalog/
-  - /rancher/v2.6/en/catalog/apps
-  - /rancher/v2.6/en/catalog/launching-apps
+  - /rancher/v2.5/en/catalog/
+  - /rancher/v2.5/en/catalog/apps
+  - /rancher/v2.5/en/catalog/launching-apps
 ---
 
 In this section, you'll learn how to manage Helm chart repositories and applications in Rancher.

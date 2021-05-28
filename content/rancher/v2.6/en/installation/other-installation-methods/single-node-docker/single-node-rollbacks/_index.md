@@ -2,11 +2,11 @@
 title: Rolling Back Rancher Installed with Docker
 weight: 1015
 aliases:
-  - /rancher/v2.6/en/upgrades/single-node-rollbacks
-  - /rancher/v2.6/en/upgrades/rollbacks/single-node-rollbacks
+  - /rancher/v2.5/en/upgrades/single-node-rollbacks
+  - /rancher/v2.5/en/upgrades/rollbacks/single-node-rollbacks
 ---
 
-If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before [Docker Upgrade]({{<baseurl>}}/rancher/v2.6/en/upgrades/upgrades/single-node-upgrade). Rolling back restores:
+If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before [Docker Upgrade]({{<baseurl>}}/rancher/v2.5/en/upgrades/upgrades/single-node-upgrade). Rolling back restores:
 
 - Your previous version of Rancher.
 - Your data backup created before upgrade.
@@ -59,9 +59,9 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     ```
     You can obtain the name for your Rancher container by entering `docker ps`.
 
-1. Move the backup tarball that you created during completion of [Docker Upgrade]({{<baseurl>}}/rancher/v2.6/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
+1. Move the backup tarball that you created during completion of [Docker Upgrade]({{<baseurl>}}/rancher/v2.5/en/upgrades/upgrades/single-node-upgrade/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    If you followed the naming convention we suggested in [Docker Upgrade]({{<baseurl>}}/rancher/v2.6/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
+    If you followed the naming convention we suggested in [Docker Upgrade]({{<baseurl>}}/rancher/v2.5/en/upgrades/upgrades/single-node-upgrade/), it will have a name similar to  (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
 
 1. Run the following command to replace the data in the `rancher-data` container with the data in the backup tarball, replacing the placeholder. Don't forget to close the quotes.
 
@@ -79,7 +79,7 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     --privileged \
     rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
-    As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+    As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
     
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 

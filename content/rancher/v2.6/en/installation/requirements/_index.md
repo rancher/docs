@@ -6,7 +6,7 @@ weight: 1
 
 This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
 
-> It is important to note that if you install Rancher on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/) which will run your apps and services.
+> It is important to note that if you install Rancher on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/node-requirements/) which will run your apps and services.
 
 Make sure the node(s) for the Rancher server fulfill the following requirements:
 
@@ -24,7 +24,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [Node IP Addresses](#node-ip-addresses)
   - [Port Requirements](#port-requirements)
 
-For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/deployment-types/)
+For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.5/en/best-practices/deployment-types/)
 
 The Rancher UI works best in Firefox or Chrome.
 
@@ -44,7 +44,7 @@ The `ntp` (Network Time Protocol) package should be installed. This prevents err
 
 Some distributions of Linux may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.6/en/installation/options/arm64-platform/)
+If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.5/en/installation/options/arm64-platform/)
 
 ### RKE Specific Requirements
 
@@ -78,11 +78,11 @@ For details on which OS versions were tested with RKE2, refer to the [support ma
 
 Docker is not required for RKE2 installs.
 
-The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
+The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
 
 ### Installing Docker
 
-Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/installing-docker) to install Docker with one command.
+Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/installing-docker) to install Docker with one command.
 
 Docker is not required for RancherD installs.
 # Hardware Requirements
@@ -113,7 +113,7 @@ These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubern
 
 ### K3s Kubernetes
 
-These CPU and memory requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/)
+These CPU and memory requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size             |
 | --------------- | ---------- | ------------ | -------| ---------| ------------------------- |
@@ -147,7 +147,7 @@ These CPU and memory requirements apply to each instance with RKE2 installed. Mi
 
 ### Docker
 
-These CPU and memory requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
+These CPU and memory requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
@@ -166,10 +166,10 @@ For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations
 
 ### Ingress for RKE2
 
-Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
+Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
 
 ### Ingress for EKS
-For an example of how to deploy an nginx-ingress-controller with a LoadBalancer service, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
+For an example of how to deploy an nginx-ingress-controller with a LoadBalancer service, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 
 # Disks
 
@@ -185,7 +185,7 @@ Each node used should have a static IP configured, regardless of whether you are
 
 ### Port Requirements
 
-To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
+To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
 
 # RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes
 

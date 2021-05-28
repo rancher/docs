@@ -7,7 +7,7 @@ The Docker installation is for Rancher users who want to test out Rancher.
 
 Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. 
 
-For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
+For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -18,8 +18,8 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.6/en/installation/options/custom-ca-root-certificate/).
-> - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log).
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.5/en/installation/options/custom-ca-root-certificate/).
+> - Record all transactions with the Rancher API? See [API Auditing]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log).
 
 Choose from the following options:
 
@@ -34,7 +34,7 @@ Log into your Linux host, and then run the installation command below. When ente
 | Placeholder                      | Description                                                                                                                   |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.5/en/installation/resources/chart-options/) that you want to install. |
 
 As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
 
@@ -59,7 +59,7 @@ In development or testing environments where your team will access your Rancher 
 > From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
 >
 > - The certificate files must be in PEM format.
-> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [Certificate Troubleshooting.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/troubleshooting)
+> - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [Certificate Troubleshooting.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/troubleshooting)
 
 After creating your certificate, log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
@@ -70,7 +70,7 @@ After creating your certificate, log into your Linux host, and then run the inst
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<CA_CERTS.pem>`                     | The path to the certificate authority's certificate.                                                                          |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.5/en/installation/resources/chart-options/) that you want to install. |
 
 As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
 
@@ -104,7 +104,7 @@ After obtaining your certificate, log into your Linux host, and then run the ins
 | `<FULL_CHAIN.pem>`               | The path to your full certificate chain.                                                                                      |
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version]({{<baseurl>}}/rancher/v2.5/en/installation/resources/chart-options/) that you want to install. |
 
 > **Note:** Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
 
@@ -126,5 +126,5 @@ docker run -d --restart=unless-stopped \
 
 
 
-> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.6/en/faq/telemetry/) during the initial login.
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.5/en/faq/telemetry/) during the initial login.
 

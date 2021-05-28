@@ -4,9 +4,9 @@ shortTitle: Monitoring/Alerting
 description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 weight: 13
 aliases:
-  - /rancher/v2.6/en/dashboard/monitoring-alerting
-  - /rancher/v2.6/en/dashboard/notifiers
-  - /rancher/v2.6/en/cluster-admin/tools/monitoring/
+  - /rancher/v2.5/en/dashboard/monitoring-alerting
+  - /rancher/v2.5/en/dashboard/notifiers
+  - /rancher/v2.5/en/cluster-admin/tools/monitoring/
 ---
 
 Using Rancher, you can quickly deploy leading open-source monitoring alerting solutions onto your cluster.
@@ -54,7 +54,7 @@ By viewing data that Prometheus scrapes from your cluster control plane, nodes, 
 
 # Enable Monitoring
 
-As an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
+As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 
 > **Requirements:**
 > 
@@ -77,7 +77,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-p
 
 ### Enable Monitoring for use with SSL
 
-1. Follow the steps on [this page]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/) to create a secret in order for SSL to be used for alerts.
+1. Follow the steps on [this page]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/secrets/) to create a secret in order for SSL to be used for alerts.
  - The secret should be created in the `cattle-monitoring-system` namespace. If it doesn't exist, create it first.
  - Add the `ca`, `cert`, and `key` files to the secret.
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
@@ -88,7 +88,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-p
  
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
-When [creating a receiver,]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
+When [creating a receiver,]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
 
 For example, if you created a secret with these key-value pairs:
 

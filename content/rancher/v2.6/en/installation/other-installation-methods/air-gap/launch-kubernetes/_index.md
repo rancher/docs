@@ -2,12 +2,12 @@
 title: '3. Install Kubernetes (Skip for Docker Installs)'
 weight: 300
 aliases:
-  - /rancher/v2.6/en/installation/air-gap-high-availability/install-kube
+  - /rancher/v2.5/en/installation/air-gap-high-availability/install-kube
 ---
 
 > Skip this section if you are installing Rancher on a single node with Docker.
 
-This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
+This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.5/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
 As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
 
@@ -217,6 +217,6 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.5/en/installation/options/troubleshooting/) page.
 
 ### [Next: Install Rancher](../install-rancher)

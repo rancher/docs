@@ -2,7 +2,7 @@
 title: Install/Upgrade Rancher with RancherD
 weight: 3
 aliases:
-  - /rancher/v2.6/en/installation/install-rancher-on-linux
+  - /rancher/v2.5/en/installation/install-rancher-on-linux
 ---
 
 _Available as of Rancher v2.5.4_
@@ -32,7 +32,7 @@ Configuration and upgrading are also simplified with RancherD. When you upgrade 
 
 In Part I of these instructions, you'll learn how to launch RancherD on a single node. The result of following the steps in Part I is a single-node [RKE2](https://docs.rke2.io/) Kubernetes cluster with the Rancher server installed. This cluster can easily become high availability later. If Rancher only needs to manage the local Kubernetes cluster, the installation is complete.
 
-Part II explains how to convert the single-node Rancher installation into a high-availability installation. If the Rancher server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available Rancher deployments can be found in our [Best Practices Guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/v2.6/rancher-server)
+Part II explains how to convert the single-node Rancher installation into a high-availability installation. If the Rancher server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available Rancher deployments can be found in our [Best Practices Guide.]({{<baseurl>}}/rancher/v2.5/en/best-practices/v2.5/rancher-server)
 
 # Prerequisites
 
@@ -40,9 +40,9 @@ Part II explains how to convert the single-node Rancher installation into a high
 
 RancherD must be launched on a Linux OS. At this time, only OSes that leverage systemd are supported.
 
-The Linux node needs to fulfill the [installation requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements) for hardware and networking. Docker is not required for RancherD installs.
+The Linux node needs to fulfill the [installation requirements]({{<baseurl>}}/rancher/v2.5/en/installation/requirements) for hardware and networking. Docker is not required for RancherD installs.
 
-To install RancherD on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, some [additional steps]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
+To install RancherD on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, some [additional steps]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 ### Root Access
 
 Before running the installation commands, you will need to log in as root:
@@ -99,9 +99,9 @@ If you do not specify a pre-shared secret, RancherD will generate one and place 
 
 To specify your own pre-shared secret as the token, set the `token` argument on startup.
 
-Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-linux/rancherd-configuration/#certificates-for-the-rancher-server)
+Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration/#certificates-for-the-rancher-server)
 
-For information on customizing the RancherD Helm chart values.yaml, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-linux/rancherd-configuration/#customizing-the-rancherd-helm-chart)
+For information on customizing the RancherD Helm chart values.yaml, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration/#customizing-the-rancherd-helm-chart)
 
 ### 2. Launch the first server node
 

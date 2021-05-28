@@ -2,10 +2,10 @@
 title: Enabling Experimental Features
 weight: 17
 aliases:
-  - /rancher/v2.6/en/installation/options/feature-flags/
-  - /rancher/v2.6/en/admin-settings/feature-flags/
+  - /rancher/v2.5/en/installation/options/feature-flags/
+  - /rancher/v2.5/en/admin-settings/feature-flags/
 ---
-Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
+Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in three ways:
 
@@ -28,9 +28,9 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-- `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+.
-- `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
-- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
+- `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) preinstalled in v2.5+.
+- `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
+- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
 
 The below table shows the availability and default value for feature flags in Rancher:
 
@@ -70,7 +70,7 @@ Note: If you are installing an alpha version, Helm requires adding the `--devel`
 
 ### Rendering the Helm Chart for Air Gap Installations
 
-For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/install-rancher)
+For an air gap installation of Rancher, you need to add a Helm chart repository and render a Helm template before installing Rancher with Helm. For details, refer to the [air gap installation documentation.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap/install-rancher)
 
 Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list.
 
