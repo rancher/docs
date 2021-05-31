@@ -108,3 +108,16 @@ INFO[0001] [certificates] Generating etcd-zzzzz certificate and key
 INFO[0001] Successfully Deployed state file at [./cluster.rkestate]
 INFO[0001] Rebuilding Kubernetes cluster with rotated certificates
 ```
+
+### Optional settings 
+
+Use [extra_args]({{<baseurl>}}rke/latest/en/config-options/services/services-extras/#extra-args) to enable optional settings of each [services]({{<baseurl>}}/rke/latest/en/config-options/services/) that needs certificates and keys.
+
+For example, to enable [Certificate Management](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/), add `cluster-signing-cert-file` & `cluster-signing-key-file` to kube-controller in `cluster.yml` file.
+```
+services:
+  kube-controller: 
+    extra_args: 
+      cluster-signing-cert-file: "/etc/kubernetes/ssl/kube-ca.pem"
+      cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"
+```
