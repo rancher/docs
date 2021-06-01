@@ -84,7 +84,7 @@ kubectl apply -f migrationResource.yaml
 
 ### 3. Install cert-manager
 
-Follow the steps to [install cert-manager]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#5-install-cert-manager) in the documentation about installing cert-manager on Kubernetes.
+Follow the steps to [install cert-manager]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#5-install-cert-manager) in the documentation about installing cert-manager on Kubernetes.
 
 ### 4. Bring up Rancher with Helm
 

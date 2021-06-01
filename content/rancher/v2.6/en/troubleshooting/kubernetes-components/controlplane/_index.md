@@ -29,7 +29,7 @@ bdf3898b8063        rancher/hyperkube:v1.11.5-rancher1   "/opt/rke-tools/en..." 
 
 # Controlplane Container Logging
 
-> **Note:** If you added multiple nodes with the `controlplane` role, both `kube-controller-manager` and `kube-scheduler` use a leader election process to determine the leader. Only the current leader will log the performed actions. See [Kubernetes leader election]({{<baseurl>}}/rancher/v2.5/en/troubleshooting/kubernetes-resources/#kubernetes-leader-election) how to retrieve the current leader.
+> **Note:** If you added multiple nodes with the `controlplane` role, both `kube-controller-manager` and `kube-scheduler` use a leader election process to determine the leader. Only the current leader will log the performed actions. See [Kubernetes leader election]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/kubernetes-resources/#kubernetes-leader-election) how to retrieve the current leader.
 
 The logging of the containers can contain information on what the problem could be.
 

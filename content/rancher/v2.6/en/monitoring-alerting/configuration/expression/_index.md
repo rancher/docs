@@ -2,10 +2,10 @@
 title: Prometheus Expressions
 weight: 4
 aliases:
-  - /rancher/v2.5/en/project-admin/tools/monitoring/expression
-  - /rancher/v2.5/en/cluster-admin/tools/monitoring/expression
-  - /rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/expression
+  - /rancher/v2.6/en/project-admin/tools/monitoring/expression
+  - /rancher/v2.6/en/cluster-admin/tools/monitoring/expression
+  - /rancher/v2.6/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression
+  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration/expression
 ---
 
 The PromQL expressions in this doc can be used to configure alerts.

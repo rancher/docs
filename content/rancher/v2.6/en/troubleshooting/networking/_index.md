@@ -9,7 +9,7 @@ Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG
 
 ### Double check if all the required ports are opened in your (host) firewall
 
-Double check if all the [required ports]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/node-requirements/#networking-requirements) are opened in your (host) firewall. The overlay network uses UDP in comparison to all other required ports which are TCP.
+Double check if all the [required ports]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) are opened in your (host) firewall. The overlay network uses UDP in comparison to all other required ports which are TCP.
 ### Check if overlay network is functioning correctly
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
@@ -84,7 +84,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
     wk1 can reach wk1
     => End network overlay test
     ```
-    If you see error in the output, there is some issue with the route between the pods on the two hosts.  In the above output the node `wk2` has no connectivity over the overlay network. This could be because the [required ports]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/node-requirements/#networking-requirements) for overlay networking are not opened for `wk2`.
+    If you see error in the output, there is some issue with the route between the pods on the two hosts.  In the above output the node `wk2` has no connectivity over the overlay network. This could be because the [required ports]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for overlay networking are not opened for `wk2`.
 6. You can now clean up the DaemonSet by running `kubectl delete ds/overlaytest`.
 
 

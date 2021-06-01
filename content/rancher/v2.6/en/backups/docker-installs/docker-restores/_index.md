@@ -3,9 +3,9 @@ title: Restoring Backups—Docker Installs
 shortTitle: Restores
 weight: 3
 aliases:
-  - /rancher/v2.5/en/installation/after-installation/single-node-backup-and-restoration/
-  - /rancher/v2.5/en/backups/restorations/single-node-restoration
-  - /rancher/v2.5/en/backups/v2.5/docker-installs/docker-restores
+  - /rancher/v2.6/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.6/en/backups/restorations/single-node-restoration
+  - /rancher/v2.6/en/backups/v2.5/docker-installs/docker-restores
 ---
 
 If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.
@@ -39,7 +39,7 @@ You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 ## Restoring Backups
 
-Using a [backup]({{<baseurl>}}/rancher/v2.5/en/backups/backups/single-node-backups/) that you created earlier, restore Rancher to its last known healthy state.
+Using a [backup]({{<baseurl>}}/rancher/v2.6/en/backups/backups/single-node-backups/) that you created earlier, restore Rancher to its last known healthy state.
 
 1. Using a remote Terminal connection, log into the node running your Rancher Server.
 
@@ -48,9 +48,9 @@ Using a [backup]({{<baseurl>}}/rancher/v2.5/en/backups/backups/single-node-backu
     ```
     docker stop <RANCHER_CONTAINER_NAME>
     ```
-1. Move the backup tarball that you created during completion of [Creating Backups—Docker Installs]({{<baseurl>}}/rancher/v2.5/en/backups/backups/single-node-backups/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
+1. Move the backup tarball that you created during completion of [Creating Backups—Docker Installs]({{<baseurl>}}/rancher/v2.6/en/backups/backups/single-node-backups/) onto your Rancher Server. Change to the directory that you moved it to. Enter `dir` to confirm that it's there.
 
-    If you followed the naming convention we suggested in [Creating Backups—Docker Installs]({{<baseurl>}}/rancher/v2.5/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
+    If you followed the naming convention we suggested in [Creating Backups—Docker Installs]({{<baseurl>}}/rancher/v2.6/en/backups/backups/single-node-backups/), it will have a name similar to  `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
 
 1. Enter the following command to delete your current state data and replace it with your backup data, replacing the placeholders. Don't forget to close the quotes.
 

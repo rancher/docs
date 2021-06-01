@@ -2,10 +2,10 @@
 title: Setting up Nodes in Amazon EC2
 weight: 3
 aliases:
-  - /rancher/v2.5/en/installation/options/ec2-node
+  - /rancher/v2.6/en/installation/options/ec2-node
 ---
 
-In this tutorial, you will learn one way to set up Linux nodes for the Rancher management server. These nodes will fulfill the node requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/)
+In this tutorial, you will learn one way to set up Linux nodes for the Rancher management server. These nodes will fulfill the node requirements for [OS, Docker, hardware, and networking.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
 
 If the Rancher server will be installed on an RKE Kubernetes cluster, you should provision three instances.
 
@@ -15,8 +15,8 @@ If the Rancher server is installed in a single Docker container, you only need o
 
 ### 1. Optional Preparation
 
-- **Create IAM role:** To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this [page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
-- **Create security group:** We also recommend setting up a security group for the Rancher nodes that complies with the [port requirements for Rancher nodes.]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/#port-requirements)
+- **Create IAM role:** To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this [page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+- **Create security group:** We also recommend setting up a security group for the Rancher nodes that complies with the [port requirements for Rancher nodes.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/#port-requirements)
 
 ### 2. Provision Instances
 
@@ -29,7 +29,7 @@ If the Rancher server is installed in a single Docker container, you only need o
 1. In the **Number of instances** field, enter the number of instances. A high-availability K3s cluster requires only two instances, while a high-availability RKE cluster requires three instances.
 1. Optional: If you created an IAM role for Rancher to manipulate AWS resources, select the new IAM role in the **IAM role** field.
 1. Click **Next: Add Storage,** **Next: Add Tags,** and **Next: Configure Security Group.**
-1. In **Step 6: Configure Security Group,** select a security group that complies with the [port requirements]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/#port-requirements) for Rancher nodes.
+1. In **Step 6: Configure Security Group,** select a security group that complies with the [port requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/#port-requirements) for Rancher nodes.
 1. Click **Review and Launch.**
 1. Click **Launch.**
 1. Choose a new or existing key pair that you will use to connect to your instance later. If you are using an existing key pair, make sure you already have access to the private key.

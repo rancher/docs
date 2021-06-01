@@ -2,8 +2,8 @@
 title: Skipped and Not Applicable Tests
 weight: 3
 aliases:
-  - /rancher/v2.5/en/cis-scans/skipped-tests
-  - /rancher/v2.5/en/cis-scans/v2.5/skipped-tests
+  - /rancher/v2.6/en/cis-scans/skipped-tests
+  - /rancher/v2.6/en/cis-scans/v2.5/skipped-tests
 ---
 
 This section lists the tests that are skipped in the permissive test profile for RKE.

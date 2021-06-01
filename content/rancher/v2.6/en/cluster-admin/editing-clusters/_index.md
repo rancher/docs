@@ -2,12 +2,12 @@
 title: Cluster Configuration
 weight: 2025
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/editing-clusters
+  - /rancher/v2.6/en/k8s-in-rancher/editing-clusters
 ---
 
 After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster.
 
-For information on editing cluster membership, go to [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cluster-access/cluster-members)
+For information on editing cluster membership, go to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/cluster-members)
 
 ### Cluster Configuration References
 
@@ -23,5 +23,5 @@ The options and settings available for an existing cluster change based on the m
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% include file="/rancher/v2.5/en/cluster-provisioning/cluster-capabilities-table" %}}
+{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table" %}}
 

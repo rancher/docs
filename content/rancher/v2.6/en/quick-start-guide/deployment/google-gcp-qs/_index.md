@@ -58,7 +58,7 @@ Two Kubernetes clusters are deployed into your GCP account, one running Rancher 
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.5/en/quick-start-guide/workload).
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{< baseurl >}}/rancher/v2.6/en/quick-start-guide/workload).
 
 ## Destroying the Environment
 

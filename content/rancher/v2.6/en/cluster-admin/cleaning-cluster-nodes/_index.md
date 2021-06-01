@@ -3,7 +3,7 @@ title: Removing Kubernetes Components from Nodes
 description: Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually
 weight: 2055
 aliases:
-  - /rancher/v2.5/en/faq/cleaning-cluster-nodes/
+  - /rancher/v2.6/en/faq/cleaning-cluster-nodes/
 ---
 
 This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.
@@ -26,10 +26,10 @@ When cleaning nodes provisioned using Rancher, the following components are dele
 | All resources create under the `management.cattle.io` API Group                | ✓               | ✓                 | ✓                   |                     |
 | All CRDs created by Rancher v2.x                                               | ✓               | ✓                 | ✓                   |                     |
 
-[1]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/
-[2]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes/
-[3]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/
-[4]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/
+[1]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/
 
 ## Removing a Node from a Cluster by Rancher UI
 

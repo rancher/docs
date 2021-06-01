@@ -2,7 +2,7 @@
 title: Rancher Deployment Strategy
 weight: 100
 aliases:
-  - /rancher/v2.5/en/best-practices/v2.5/rancher-server/deployment-strategies
+  - /rancher/v2.6/en/best-practices/v2.5/rancher-server/deployment-strategies
 ---
 
 There are two recommended deployment strategies for a Rancher server that manages downstream Kubernetes clusters. Each one has its own pros and cons. Read more about which one would fit best for your use case:

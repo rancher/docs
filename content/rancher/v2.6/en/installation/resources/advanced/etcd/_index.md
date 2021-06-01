@@ -2,7 +2,7 @@
 title: Tuning etcd for Large Installations
 weight: 2
 aliases:
-  - /rancher/v2.5/en/installation/options/etcd
+  - /rancher/v2.6/en/installation/options/etcd
 ---
 
 When running larger Rancher installations with 15 or more clusters it is recommended to increase the default keyspace for etcd from the default 2GB. The maximum setting is 8GB and the host should have enough RAM to keep the entire dataset in memory. When increasing this value you should also increase the size of the host. The keyspace size can also be adjusted in smaller installations if you anticipate a high rate of change of pods during the garbage collection interval.

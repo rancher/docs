@@ -2,10 +2,10 @@
 title: Pipelines
 weight: 10
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/pipelines  
+  - /rancher/v2.6/en/k8s-in-rancher/pipelines  
 ---
 
-> As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) available in Cluster Explorer.
+> As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) available in Cluster Explorer.
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
@@ -37,7 +37,7 @@ This section covers the following topics:
 
 # Concepts
 
-For an explanation of concepts and terminology used in this section, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/concepts)
+For an explanation of concepts and terminology used in this section, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/concepts)
 
 # How Pipelines Work
 
@@ -45,7 +45,7 @@ After enabling the ability to use pipelines in a project, you can configure mult
 
 A pipeline is configured off of a group of files that are checked into source code repositories. Users can configure their pipelines either through the Rancher UI or by adding a `.rancher-pipeline.yml` into the repository.
 
-Before pipelines can be configured, you will need to configure authentication to your version control provider, e.g. GitHub, GitLab, Bitbucket. If you haven't configured a version control provider, you can always use [Rancher's example repositories]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/example-repos/) to view some common pipeline deployments.
+Before pipelines can be configured, you will need to configure authentication to your version control provider, e.g. GitHub, GitLab, Bitbucket. If you haven't configured a version control provider, you can always use [Rancher's example repositories]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/example-repos/) to view some common pipeline deployments.
 
 When you configure a pipeline in one of your projects, a namespace specifically for the pipeline is automatically created. The following components are deployed to it:
 
@@ -63,13 +63,13 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
     Minio storage is used to store the logs for pipeline executions.
 
-  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/storage).
+  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/storage).
 
 # Roles-based Access Control for Pipelines
 
 If you can access a project, you can enable repositories to start building pipelines.
 
-Only [administrators]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles) can configure version control providers and manage global pipeline execution settings.
+Only [administrators]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/), [cluster owners or members]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), or [project owners]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles) can configure version control providers and manage global pipeline execution settings.
 
 Project members can only configure repositories and pipelines.
 
@@ -192,7 +192,7 @@ Now that repositories are added to your project, you can start configuring the p
 
 1. Find the repository that you want to set up a pipeline for.
 
-1. Configure the pipeline through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`. Pipeline configuration is split into stages and steps. Stages must fully complete before moving onto the next stage, but steps in a stage run concurrently. For each stage, you can add different step types. Note: As you build out each step, there are different advanced options based on the step type. Advanced options include trigger rules, environment variables, and secrets. For more information on configuring the pipeline through the UI or the YAML file, refer to the [pipeline configuration reference.]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/config)
+1. Configure the pipeline through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`. Pipeline configuration is split into stages and steps. Stages must fully complete before moving onto the next stage, but steps in a stage run concurrently. For each stage, you can add different step types. Note: As you build out each step, there are different advanced options based on the step type. Advanced options include trigger rules, environment variables, and secrets. For more information on configuring the pipeline through the UI or the YAML file, refer to the [pipeline configuration reference.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/config)
 
    * If you are going to use the UI, select the vertical **&#8942; > Edit Config** to configure the pipeline using the UI. After the pipeline is configured, you must view the YAML file and push it to the repository.
    * If you are going to use the YAML file, select the vertical **&#8942; > View/Edit YAML** to configure the pipeline. If you choose to use a YAML file, you need to push it to the repository after any changes in order for it to be updated in the repository. When editing the pipeline configuration, it takes a few moments for Rancher to check for an existing pipeline configuration.
@@ -212,7 +212,7 @@ Now that repositories are added to your project, you can start configuring the p
 
 # Pipeline Configuration Reference
 
-Refer to [this page]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/config) for details on how to configure a pipeline to:
+Refer to [this page]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/config) for details on how to configure a pipeline to:
 
 - Run a script
 - Build and publish images
@@ -251,7 +251,7 @@ Available Events:
 * **Pull Request**: Whenever a pull request is made to the repository, the pipeline is triggered.
 * **Tag**: When a tag is created in the repository, the pipeline is triggered.
 
-> **Note:** This option doesn't exist for Rancher's [example repositories]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/example-repos/).
+> **Note:** This option doesn't exist for Rancher's [example repositories]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/example-repos/).
 
 ### Modifying the Event Triggers for the Repository
 

@@ -5,13 +5,13 @@ weight: 1
 
 This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.
 
-For information on the different ways that Rancher can be installed, refer to the [overview of installation options.]({{<baseurl>}}/rancher/v2.5/en/installation/#overview-of-installation-options)
+For information on the different ways that Rancher can be installed, refer to the [overview of installation options.]({{<baseurl>}}/rancher/v2.6/en/installation/#overview-of-installation-options)
 
-For a list of main features of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.5/en/overview/#features-of-the-rancher-api-server)
+For a list of main features of the Rancher API server, refer to the [overview section.]({{<baseurl>}}/rancher/v2.6/en/overview/#features-of-the-rancher-api-server)
 
-For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.5/en/overview/architecture-recommendations)
+For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations)
 
-> This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.5/en/overview/concepts) page.
+> This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.6/en/overview/concepts) page.
 
 This section covers the following topics:
 
@@ -31,9 +31,9 @@ The majority of Rancher 2.x software runs on the Rancher Server. Rancher Server 
 
 The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two downstream Kubernetes clusters: one created by RKE and another created by Amazon EKS (Elastic Kubernetes Service).
 
-For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) for running your workloads.
+For the best performance and security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) for running your workloads.
 
-The diagram below shows how users can manipulate both [Rancher-launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) clusters and [hosted Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/) clusters through Rancher's authentication proxy:
+The diagram below shows how users can manipulate both [Rancher-launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) clusters and [hosted Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/) clusters through Rancher's authentication proxy:
 
 <figcaption>Managing Kubernetes Clusters through Rancher's Authentication Proxy</figcaption>
 
@@ -45,7 +45,7 @@ A high-availability Kubernetes installation is recommended for production.
 
 A Docker installation of Rancher is recommended only for development and testing purposes. The ability to migrate Rancher to a high-availability cluster depends on the Rancher version:
 
-The Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
+The Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 
 The Rancher server, regardless of the installation method, should always run on nodes that are separate from the downstream user clusters that it manages. If Rancher is installed on a high-availability Kubernetes cluster, it should run on a separate cluster from the cluster(s) it manages.
 
@@ -75,7 +75,7 @@ The authentication proxy forwards all Kubernetes API calls to downstream cluster
 
 Rancher communicates with Kubernetes clusters using a [service account,](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) which provides an identity for processes that run in a pod.
 
-By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cluster-access/kubectl/) that contains credentials for proxying through the Rancher server to connect to the Kubernetes API server on a downstream user cluster. The kubeconfig file (`kube_config_rancher-cluster.yml`) contains full access to the cluster.
+By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) that contains credentials for proxying through the Rancher server to connect to the Kubernetes API server on a downstream user cluster. The kubeconfig file (`kube_config_rancher-cluster.yml`) contains full access to the cluster.
 
 ### 2. Cluster Controllers and Cluster Agents
 
@@ -107,7 +107,7 @@ The `cattle-node-agent` is deployed using a [DaemonSet](https://kubernetes.io/do
 
 An authorized cluster endpoint allows users to connect to the Kubernetes API server of a downstream cluster without having to route their requests through the Rancher authentication proxy.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters) to provision the cluster. It is not available for registered clusters, or for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. It is not available for registered clusters, or for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
 
 There are two main reasons why a user might need the authorized cluster endpoint:
 
@@ -122,7 +122,7 @@ Like the authorized cluster endpoint, the `kube-api-auth` authentication service
 
 With this endpoint enabled for the downstream cluster, Rancher generates an extra Kubernetes context in the kubeconfig file in order to connect directly to the cluster. This file has the credentials for `kubectl` and `helm`. 
 
-You will need to use a context defined in this kubeconfig file to access the cluster if Rancher goes down. Therefore, we recommend exporting the kubeconfig file so that if Rancher goes down, you can still use the credentials in the file to access your cluster. For more information, refer to the section on accessing your cluster with [kubectl and the kubeconfig file.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cluster-access/kubectl)
+You will need to use a context defined in this kubeconfig file to access the cluster if Rancher goes down. Therefore, we recommend exporting the kubeconfig file so that if Rancher goes down, you can still use the credentials in the file to access your cluster. For more information, refer to the section on accessing your cluster with [kubectl and the kubeconfig file.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl)
 
 # Important Files
 
@@ -134,7 +134,7 @@ The files mentioned below are needed to maintain, troubleshoot and upgrade your 
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
 
-For more information on connecting to a cluster without the Rancher authentication proxy and other configuration options, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cluster-access/kubectl/) documentation.
+For more information on connecting to a cluster without the Rancher authentication proxy and other configuration options, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) documentation.
 
 # Tools for Provisioning Kubernetes Clusters
 
@@ -178,4 +178,4 @@ The GitHub repositories for Rancher can be found at the following links:
 - [Rancher CLI](https://github.com/rancher/cli)
 - [Catalog applications](https://github.com/rancher/helm)
 
-This is a partial list of the most important Rancher repositories. For more details about Rancher source code, refer to the section on [contributing to Rancher.]({{<baseurl>}}/rancher/v2.5/en/contributing/#repositories) To see all libraries and projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
+This is a partial list of the most important Rancher repositories. For more details about Rancher source code, refer to the section on [contributing to Rancher.]({{<baseurl>}}/rancher/v2.6/en/contributing/#repositories) To see all libraries and projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.

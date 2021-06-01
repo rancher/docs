@@ -2,7 +2,7 @@
 title: PrometheusRules
 weight: 2
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/prometheusrules
+  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration/prometheusrules
 ---
 
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.

@@ -6,13 +6,13 @@ weight: 5
 
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
 
-If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
+If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
 
 # Prerequisites
 
 - You will need a Google account.
 - You will need a Google Cloud billing account. You can manage your Cloud Billing accounts using the Google Cloud Console. For more information about the Cloud Console, visit [General guide to the console.](https://support.google.com/cloud/answer/3465889?hl=en&ref_topic=3340599)
-- You will need a cloud quota for at least one in-use IP address and at least 2 CPUs. For more details about hardware requirements for the Rancher server, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/#rke-and-hosted-kubernetes)
+- You will need a cloud quota for at least one in-use IP address and at least 2 CPUs. For more details about hardware requirements for the Rancher server, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/#rke-and-hosted-kubernetes)
 
 # 1. Enable the Kubernetes Engine API
 
@@ -175,6 +175,6 @@ There are many valid ways to set up the DNS. For help, refer to the Google Cloud
 
 # 10. Install the Rancher Helm chart
 
-Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
+Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
 
 Use the DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.

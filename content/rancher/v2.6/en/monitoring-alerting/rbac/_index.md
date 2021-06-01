@@ -2,8 +2,8 @@
 title: RBAC
 weight: 3
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/monitoring/rbac
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/rbac
+  - /rancher/v2.6/en/cluster-admin/tools/monitoring/rbac
+  - /rancher/v2.6/en/monitoring-alerting/v2.5/rbac
 ---
 This section describes the expectations for RBAC for Rancher Monitoring.
 

@@ -11,7 +11,7 @@ If you want to standardize the hardware in your clusters, use RKE templates conj
 
 ### Node Templates
 
-[Node templates]({{<baseurl>}}/rancher/v2.5/en/user-settings/node-templates) are responsible for node configuration and node provisioning in Rancher. From your user profile, you can set up node templates to define which templates are used in each of your node pools. With node pools enabled, you can make sure you have the required number of nodes in each node pool, and ensure that all nodes in the pool are the same.
+[Node templates]({{<baseurl>}}/rancher/v2.6/en/user-settings/node-templates) are responsible for node configuration and node provisioning in Rancher. From your user profile, you can set up node templates to define which templates are used in each of your node pools. With node pools enabled, you can make sure you have the required number of nodes in each node pool, and ensure that all nodes in the pool are the same.
 
 ### Terraform
 
@@ -55,7 +55,7 @@ When you need to make changes to your infrastructure, instead of manually updati
 
 This section describes one way that you can make security and compliance-related config files standard in your clusters.
 
-When you create a [CIS benchmark compliant cluster,]({{<baseurl>}}/rancher/v2.5/en/security/) you have an encryption config file and an audit log config file.
+When you create a [CIS benchmark compliant cluster,]({{<baseurl>}}/rancher/v2.6/en/security/) you have an encryption config file and an audit log config file.
 
 Your infrastructure provisioning system can write those files to disk. Then in your RKE template, you would specify where those files will be, then add your encryption config file and audit log config file as extra mounts to the `kube-api-server`.
 

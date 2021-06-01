@@ -2,7 +2,7 @@
 title: Disabling Istio
 weight: 4
 aliases:
-  - /rancher/v2.5/en/istio/v2.5/disabling-istio
+  - /rancher/v2.6/en/istio/v2.5/disabling-istio
 ---
 
 This section describes how to uninstall Istio in a cluster or disable a namespace, or workload.

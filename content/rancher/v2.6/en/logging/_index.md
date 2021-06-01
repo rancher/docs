@@ -5,14 +5,14 @@ description: Rancher integrates with popular logging services. Learn the require
 metaDescription: "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster."
 weight: 15
 aliases:
-  - /rancher/v2.5/en/dashboard/logging
-  - /rancher/v2.5/en/logging/v2.5
-  - /rancher/v2.5/en/cluster-admin/tools/logging 
+  - /rancher/v2.6/en/dashboard/logging
+  - /rancher/v2.6/en/logging/v2.5
+  - /rancher/v2.6/en/cluster-admin/tools/logging 
 ---
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
 
-For an overview of the changes in v2.5, see [this section.](/{{<baseurl>}}/rancher/v2.5/en/logging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](./migrating)
+For an overview of the changes in v2.5, see [this section.](/{{<baseurl>}}/rancher/v2.6/en/logging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](./migrating)
 
 - [Enabling Logging](#enabling-logging)
 - [Uninstall Logging](#uninstall-logging)

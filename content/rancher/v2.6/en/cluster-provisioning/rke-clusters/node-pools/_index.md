@@ -2,14 +2,14 @@
 title: Launching Kubernetes on New Nodes in an Infrastructure Provider
 weight: 2205
 aliases:
-  - /rancher/v2.5/en/concepts/global-configuration/node-templates/
+  - /rancher/v2.6/en/concepts/global-configuration/node-templates/
 ---
 
-Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
+Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
 
 One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
-The available cloud providers to create a node template are decided based on active [node drivers]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers).
+The available cloud providers to create a node template are decided based on active [node drivers]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-drivers).
 
 This section covers the following topics:
 
@@ -126,8 +126,8 @@ Node templates can use cloud credentials to store credentials for launching node
 
 - Multiple node templates can share the same cloud credential to create node pools. If your key is compromised or expired, the cloud credential can be updated in a single place, which allows all node templates that are using it to be updated at once.
 
-After cloud credentials are created, the user can start [managing the cloud credentials that they created]({{<baseurl>}}/rancher/v2.5/en/user-settings/cloud-credentials/).
+After cloud credentials are created, the user can start [managing the cloud credentials that they created]({{<baseurl>}}/rancher/v2.6/en/user-settings/cloud-credentials/).
 
 # Node Drivers
 
-If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it]({{<baseurl>}}/rancher/v2.5/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers), or you can [add your own custom node driver]({{<baseurl>}}/rancher/v2.5/en/admin-settings/drivers/node-drivers/#adding-custom-node-drivers).
+If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers), or you can [add your own custom node driver]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#adding-custom-node-drivers).

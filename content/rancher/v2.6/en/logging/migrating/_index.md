@@ -2,7 +2,7 @@
 title: Migrating to Rancher v2.5 Logging
 weight: 2
 aliases:
-  - /rancher/v2.5/en/logging/v2.5/migrating
+  - /rancher/v2.6/en/logging/v2.5/migrating
 ---
 Starting in v2.5, the logging feature available within Rancher has been completely overhauled. The [logging operator](https://github.com/banzaicloud/logging-operator) from Banzai Cloud has been adopted; Rancher configures this tooling for use when deploying logging.
 
@@ -25,7 +25,7 @@ Among the many features and changes in the new logging functionality is the remo
 
 # Installation
 
-To install logging in Rancher v2.5+, refer to the [installation instructions]({{<baseurl>}}/rancher/v2.5/en/logging/#enabling-logging).
+To install logging in Rancher v2.5+, refer to the [installation instructions]({{<baseurl>}}/rancher/v2.6/en/logging/#enabling-logging).
 
 ### Terminology
 

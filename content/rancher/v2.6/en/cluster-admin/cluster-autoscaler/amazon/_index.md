@@ -149,7 +149,7 @@ On AWS EC2, we should create a few objects to configure our system. We've define
       ```
 
     * IAM role: `K8sMasterRole: [K8sMasterProfile,K8sAutoscalerProfile]`
-    * Security group: `K8sMasterSg` More info at[RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
+    * Security group: `K8sMasterSg` More info at[RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
     * Tags:
       `kubernetes.io/cluster/<clusterID>: owned`
     * User data: `K8sMasterUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add etcd+controlplane node to the k8s cluster
@@ -206,7 +206,7 @@ On AWS EC2, we should create a few objects to configure our system. We've define
       ```
 
   * IAM role: `K8sWorkerRole: [K8sWorkerProfile]`
-  * Security group: `K8sWorkerSg` More info at [RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
+  * Security group: `K8sWorkerSg` More info at [RKE ports (custom nodes tab)]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports/#downstream-kubernetes-cluster-nodes)
   * Tags:
     * `kubernetes.io/cluster/<clusterID>: owned`
     * `k8s.io/cluster-autoscaler/<clusterName>: true`
@@ -237,13 +237,13 @@ On AWS EC2, we should create a few objects to configure our system. We've define
       sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:<RANCHER_VERSION> --server https://<RANCHER_URL> --token <RANCHER_TOKEN> --ca-checksum <RANCHER_CA_CHECKCSUM> --address ${PUBLIC_IP} --internal-address ${PRIVATE_IP} ${K8S_ROLES}
       ```
 
-More info is at [RKE clusters on AWS]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/) and [Cluster Autoscaler on AWS.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
+More info is at [RKE clusters on AWS]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/) and [Cluster Autoscaler on AWS.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md)
 
 ### 3. Deploy Nodes
 
 Once we've configured AWS, let's create VMs to bootstrap our cluster:
 
-* master (etcd+controlplane): Depending your needs, deploy three master instances with proper size. More info is at [the recommendations for production-ready clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production/)
+* master (etcd+controlplane): Depending your needs, deploy three master instances with proper size. More info is at [the recommendations for production-ready clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/)
   * IAM role: `K8sMasterRole`
   * Security group: `K8sMasterSg`
   * Tags: 

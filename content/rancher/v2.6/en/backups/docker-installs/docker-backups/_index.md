@@ -3,11 +3,11 @@ title: Backing up Rancher Installed with Docker
 shortTitle: Backups
 weight: 3
 aliases:
-  - /rancher/v2.5/en/installation/after-installation/single-node-backup-and-restoration/
-  - /rancher/v2.5/en/installation/after-installation/single-node-backup-and-restoration/
-  - /rancher/v2.5/en/backups/backups/single-node-backups/
-  - /rancher/v2.5/en/backups/legacy/backup/single-node-backups/
-  - /rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups/
+  - /rancher/v2.6/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.6/en/installation/after-installation/single-node-backup-and-restoration/
+  - /rancher/v2.6/en/backups/backups/single-node-backups/
+  - /rancher/v2.6/en/backups/legacy/backup/single-node-backups/
+  - /rancher/v2.6/en/backups/v2.5/docker-installs/docker-backups/
 ---
 
 
@@ -74,4 +74,4 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{<baseurl>}}/rancher/v2.5/en/backups/restorations/single-node-restoration) if you need to restore backup data.
+**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{<baseurl>}}/rancher/v2.6/en/backups/restorations/single-node-restoration) if you need to restore backup data.

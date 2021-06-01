@@ -2,8 +2,8 @@
 title: 2. Enable Istio in a Namespace
 weight: 2
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/enable-istio-in-namespace
-  - /rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-namespace
+  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/enable-istio-in-namespace
+  - /rancher/v2.6/en/istio/v2.5/setup/enable-istio-in-namespace
 ---
 
 You will need to manually enable Istio in each namespace that you want to be tracked or controlled by Istio. When Istio is enabled in a namespace, the Envoy sidecar proxy will be automatically injected into all new workloads that are deployed in the namespace.
@@ -41,4 +41,4 @@ To add the annotation to a workload,
 > **NOTE:** If you are having issues with a Job you deployed not completing, you will need to add this annotation to your pod using the provided steps. Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed. 
 
 
-### [Next: Select the Nodes ]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/setup/node-selectors)
+### [Next: Select the Nodes ]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup/node-selectors)

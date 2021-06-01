@@ -2,7 +2,7 @@
 title: Configuration
 weight: 3
 aliases:
-  - /rancher/v2.5/en/cis-scans/v2.5/configuration
+  - /rancher/v2.6/en/cis-scans/v2.5/configuration
 ---
 
 This configuration reference is intended to help you manage the custom resources created by the `rancher-cis-benchmark` application. These resources are used for performing CIS scans on a cluster, skipping tests, setting the test profile that will be used during a scan, and other customization.

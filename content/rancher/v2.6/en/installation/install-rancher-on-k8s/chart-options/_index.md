@@ -2,17 +2,17 @@
 title: Rancher Helm Chart Options
 weight: 1
 aliases:
-  - /rancher/v2.5/en/installation/options/
-  - /rancher/v2.5/en/installation/options/chart-options/
-  - /rancher/v2.5/en/installation/options/helm2/helm-rancher/chart-options/
-  - /rancher/v2.5/en/installation/resources/chart-options
+  - /rancher/v2.6/en/installation/options/
+  - /rancher/v2.6/en/installation/options/chart-options/
+  - /rancher/v2.6/en/installation/options/helm2/helm-rancher/chart-options/
+  - /rancher/v2.6/en/installation/resources/chart-options
 ---
 
 This page is a configuration reference for the Rancher Helm chart.
 
-For help choosing a Helm chart version, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/choosing-version/)
+For help choosing a Helm chart version, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/choosing-version/)
 
-For information on enabling experimental features, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/feature-flags/)
+For information on enabling experimental features, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/)
 
 - [Common Options](#common-options)
 - [Advanced Options](#advanced-options)
@@ -46,7 +46,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
-| `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{<baseurl>}}/rancher/v2.5/en/installation/api-auditing) level. 0 is off. [0-3]                                   |
+| `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{<baseurl>}}/rancher/v2.6/en/installation/api-auditing) level. 0 is off. [0-3]                                   |
 | `auditLog.maxAge`              | 1                                                     | `int` - maximum number of days to retain old audit log files (only applies when `auditLog.destination` is set to `hostPath`)                      |
 | `auditLog.maxBackup`           | 1                                                     | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`)                               |
 | `auditLog.maxSize`             | 100                                                   | `int` - maximum size in megabytes of the audit log file before it gets rotated (only applies when `auditLog.destination` is set to `hostPath`)    |
@@ -66,7 +66,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `rancherImageTag`              | same as chart version                                 | `string` - rancher/rancher image tag                                                                                                              |
 | `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
 | `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
-| `restrictedAdmin` | `false` | _Available in Rancher v2.5_ `bool` - When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/#restricted-admin) |
+| `restrictedAdmin` | `false` | _Available in Rancher v2.5_ `bool` - When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#restricted-admin) |
 | `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
 | `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
@@ -75,15 +75,15 @@ For information on enabling experimental features, refer to [this page.]({{<base
 
 ### API Audit Log
 
-Enabling the [API Audit Log]({{<baseurl>}}/rancher/v2.5/en/installation/api-auditing/).
+Enabling the [API Audit Log]({{<baseurl>}}/rancher/v2.6/en/installation/api-auditing/).
 
-You can collect this log as you would any container log. Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging) for the `System` Project on the Rancher server cluster.
+You can collect this log as you would any container log. Enable [logging]({{<baseurl>}}/rancher/v2.6/en/logging) for the `System` Project on the Rancher server cluster.
 
 ```plain
 --set auditLog.level=1
 ```
 
-By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging) for the Rancher server cluster or System Project.
+By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable [logging]({{<baseurl>}}/rancher/v2.6/en/logging) for the Rancher server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
@@ -105,7 +105,7 @@ To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` a
 --set 'extraEnv[0].value=1.0'
 ```
 
-See [TLS settings]({{<baseurl>}}/rancher/v2.5/en/admin-settings/tls-settings) for more information and options.
+See [TLS settings]({{<baseurl>}}/rancher/v2.6/en/admin-settings/tls-settings) for more information and options.
 
 ### Import `local` Cluster
 
@@ -166,8 +166,8 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 For details on installing Rancher with a private registry, see:
 
-- [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-single-node/)
-- [Air Gap: Kubernetes Install]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-high-availability/)
+- [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-single-node/)
+- [Air Gap: Kubernetes Install]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-high-availability/)
 
 # External TLS Termination
 
@@ -175,7 +175,7 @@ We recommend configuring your load balancer as a Layer 4 balancer, forwarding pl
 
 You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
-> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to add the CA cert for Rancher.
+> **Note:** If you are using a Private CA signed certificate, add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/) to add the CA cert for Rancher.
 
 Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
 

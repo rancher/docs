@@ -22,4 +22,4 @@ Cluster Autoscaler provides support to distinct cloud providers. For more inform
 
 ### Setting up Cluster Autoscaler on Amazon Cloud Provider
 
-For details on running the cluster autoscaler  on Amazon cloud provider, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cluster-autoscaler/amazon)
+For details on running the cluster autoscaler  on Amazon cloud provider, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-autoscaler/amazon)

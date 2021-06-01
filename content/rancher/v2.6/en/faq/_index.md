@@ -2,12 +2,12 @@
 title: FAQ
 weight: 25
 aliases:
-  - /rancher/v2.5/en/about/
+  - /rancher/v2.6/en/about/
 ---
 
 This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.
 
-See [Technical FAQ]({{<baseurl>}}/rancher/v2.5/en/faq/technical/), for frequently asked technical questions.
+See [Technical FAQ]({{<baseurl>}}/rancher/v2.6/en/faq/technical/), for frequently asked technical questions.
 
 <br>
 
@@ -25,13 +25,13 @@ Yes.
 
 **Does Rancher support Windows?**
 
-As of Rancher 2.3.0, we support Windows Server 1809 containers. For details on how to set up a cluster with Windows worker nodes, refer to the section on [configuring custom clusters for Windows.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/)
+As of Rancher 2.3.0, we support Windows Server 1809 containers. For details on how to set up a cluster with Windows worker nodes, refer to the section on [configuring custom clusters for Windows.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/)
 
 <br>
 
 **Does Rancher support Istio?**
 
-As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/)
+As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/)
 
 Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Rancher 2.x along with any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/)
 

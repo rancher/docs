@@ -9,7 +9,7 @@ This section assumes that you understand the Kubernetes concepts of storage clas
 
 New storage is often provisioned by a cloud provider such as Amazon EBS. However, new storage doesn't have to be in the cloud.
 
-If you have a pool of block storage, and you don't want to use a cloud provider, Longhorn could help you provide persistent storage to your Kubernetes cluster. For more information, see [this page.]({{<baseurl>}}/rancher/v2.5/en/longhorn)
+If you have a pool of block storage, and you don't want to use a cloud provider, Longhorn could help you provide persistent storage to your Kubernetes cluster. For more information, see [this page.]({{<baseurl>}}/rancher/v2.6/en/longhorn)
 
 To provision new storage for your workloads, follow these steps:
 
@@ -19,9 +19,9 @@ To provision new storage for your workloads, follow these steps:
 
 ### Prerequisites
 
-- To set up persistent storage, the `Manage Volumes` [role]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-role-reference) is required.
+- To set up persistent storage, the `Manage Volumes` [role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-role-reference) is required.
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
-- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
 - Make sure your storage provisioner is available to be enabled.
 
 The following storage provisioners are enabled by default:
@@ -38,7 +38,7 @@ Local | `local`
 Network File System | `nfs`
 hostPath | `host-path`
 
-To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers/)
+To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers/)
 
 ### 1. Add a storage class and configure it to use your storage
 
@@ -92,7 +92,7 @@ You can mount PVCs during the deployment of a workload, or following workload cr
 
 To attach the PVC to a new workload,
 
-1. Create a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/workloads/deploy-workloads/).
+1. Create a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/).
 1. For **Workload Type**, select **Stateful set of 1 pod**.
 1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
 1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.

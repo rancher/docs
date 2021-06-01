@@ -2,7 +2,7 @@
 title: Additional Steps for Project Network Isolation
 weight: 4
 aliases:
-  - /rancher/v2.5/en/istio/v2.5/configuration-reference/canal-and-project-network
+  - /rancher/v2.6/en/istio/v2.5/configuration-reference/canal-and-project-network
 ---
 
 In clusters where:

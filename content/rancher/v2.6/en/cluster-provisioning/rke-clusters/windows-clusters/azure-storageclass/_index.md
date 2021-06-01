@@ -7,7 +7,7 @@ If you are using Azure VMs for your nodes, you can use [Azure files](https://doc
 
 In order to have the Azure platform create the required storage resources, follow these steps:
 
-1.  [Configure the Azure cloud provider.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure)
+1.  [Configure the Azure cloud provider.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/azure)
 1.  Configure `kubectl` to connect to your cluster.
 1.  Copy the `ClusterRole` and `ClusterRoleBinding` manifest for the service account:
 

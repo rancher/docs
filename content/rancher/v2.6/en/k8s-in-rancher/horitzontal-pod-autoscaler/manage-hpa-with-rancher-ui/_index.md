@@ -2,12 +2,12 @@
 title: Managing HPAs with the Rancher UI
 weight: 3028
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui
+  - /rancher/v2.6/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui
 ---
 
 The Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
 
-If you want to create HPAs that scale based on other metrics than CPU and memory, refer to [Configuring HPA to Scale Using Custom Metrics with Prometheus]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
+If you want to create HPAs that scale based on other metrics than CPU and memory, refer to [Configuring HPA to Scale Using Custom Metrics with Prometheus]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
 
 ## Creating an HPA
 
@@ -25,7 +25,7 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. Specify the **Minimum Scale** and **Maximum Scale** for the HPA.
 
-1. Configure the metrics for the HPA. You can choose memory or CPU usage as the metric that will cause the HPA to scale the service up or down. In the **Quantity** field, enter the percentage of the workload's memory or CPU usage that will cause the HPA to scale the service. To configure other HPA metrics, including metrics available from Prometheus, you need to [manage HPAs using kubectl]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
+1. Configure the metrics for the HPA. You can choose memory or CPU usage as the metric that will cause the HPA to scale the service up or down. In the **Quantity** field, enter the percentage of the workload's memory or CPU usage that will cause the HPA to scale the service. To configure other HPA metrics, including metrics available from Prometheus, you need to [manage HPAs using kubectl]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
 
 1. Click **Create** to create the HPA.
 

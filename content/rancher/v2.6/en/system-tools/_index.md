@@ -3,7 +3,7 @@ title: System Tools
 weight: 22
 ---
 
-System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) clusters or [installations of Rancher on an RKE cluster.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) The tasks include:
+System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) clusters or [installations of Rancher on an RKE cluster.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) The tasks include:
 
 * Collect logging and system metrics from nodes.
 * Remove Kubernetes resources created by Rancher.
@@ -41,7 +41,7 @@ After you download the tools, complete the following actions:
 
 # Logs
 
-The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/). See [Troubleshooting]({{<baseurl>}}//rancher/v2.5/en/troubleshooting/) for a list of core Kubernetes cluster components.
+The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/). See [Troubleshooting]({{<baseurl>}}//rancher/v2.6/en/troubleshooting/) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
 
@@ -61,7 +61,7 @@ The following are the options for the logs command:
 
 # Stats
 
-The stats subcommand will display system metrics from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) or nodes in an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/).
+The stats subcommand will display system metrics from nodes in [Rancher-launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) or nodes in an [RKE Kubernetes cluster that Rancher is installed on.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/).
 
 System Tools will deploy a DaemonSet, and run a predefined command based on `sar` (System Activity Report) to show system metrics.
 
@@ -81,7 +81,7 @@ The following are the options for the stats command:
 
 # Remove
 
->**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/backups) before executing the command.
+>**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.6/en/backups/backups) before executing the command.
 
 When you install Rancher on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove Rancher from your cluster, you can use the `remove` subcommand to remove the Kubernetes resources. When you use the `remove` subcommand, the following resources will be removed:
 
@@ -101,7 +101,7 @@ When you install Rancher on a Kubernetes cluster, it will create Kubernetes reso
 
 When you run the command below, all the resources listed [above](#remove) will be removed from the cluster.
 
->**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/backups) before executing the command.
+>**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.6/en/backups/backups) before executing the command.
 
 ```
 ./system-tools remove --kubeconfig <KUBECONFIG> --namespace <NAMESPACE>

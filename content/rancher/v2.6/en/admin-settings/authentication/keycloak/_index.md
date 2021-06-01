@@ -92,7 +92,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.5/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.6/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
 
 ### You are not redirected to Keycloak
 

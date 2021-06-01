@@ -3,9 +3,9 @@ title: Restoring a Cluster from Backup
 weight: 2050
 ---
 
-etcd backup and recovery for [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
+etcd backup and recovery for [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
-Rancher recommends enabling the [ability to set up recurring snapshots of etcd]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots), but [one-time snapshots]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](#restoring-a-cluster-from-a-snapshot) or if you don't have any snapshots, you can still [restore etcd](#recovering-etcd-without-a-snapshot).
+Rancher recommends enabling the [ability to set up recurring snapshots of etcd]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots), but [one-time snapshots]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](#restoring-a-cluster-from-a-snapshot) or if you don't have any snapshots, you can still [restore etcd](#recovering-etcd-without-a-snapshot).
 
 Clusters can also be restored to a prior Kubernetes version and cluster configuration.
 
@@ -34,9 +34,9 @@ Snapshots are composed of the cluster data in etcd, the Kubernetes version, and 
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
-When rolling back to a prior Kubernetes version, the [upgrade strategy options]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/upgrading-kubernetes/#configuring-the-upgrade-strategy) are ignored. Worker nodes are not cordoned or drained before being reverted to the older Kubernetes version, so that an unhealthy cluster can be more quickly restored to a healthy state.
+When rolling back to a prior Kubernetes version, the [upgrade strategy options]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/upgrading-kubernetes/#configuring-the-upgrade-strategy) are ignored. Worker nodes are not cordoned or drained before being reverted to the older Kubernetes version, so that an unhealthy cluster can be more quickly restored to a healthy state.
 
-> **Prerequisite:** To restore snapshots from S3, the cluster needs to be configured to [take recurring snapshots on S3.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots)
+> **Prerequisite:** To restore snapshots from S3, the cluster needs to be configured to [take recurring snapshots on S3.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots)
 
 1. In the **Global** view, navigate to the cluster that you want to restore from a snapshots.
 
@@ -78,8 +78,8 @@ If the group of etcd nodes loses quorum, the Kubernetes cluster will report a fa
 
 5. Run the revised command.
 
-6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes) and you want to reuse an old node, you are required to [clean up the nodes]({{<baseurl>}}/rancher/v2.5/en/faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  
+6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes) and you want to reuse an old node, you are required to [clean up the nodes]({{<baseurl>}}/rancher/v2.6/en/faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  
 
 # Enabling Snapshot Features for Clusters Created Before Rancher v2.2.0
 
-If you have any Rancher launched Kubernetes clusters that were created before v2.2.0, after upgrading Rancher, you must [edit the cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots before v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/).
+If you have any Rancher launched Kubernetes clusters that were created before v2.2.0, after upgrading Rancher, you must [edit the cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots before v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/restoring-etcd/).
