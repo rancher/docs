@@ -78,19 +78,10 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
-
-- [Changes in v2.5.8](#changes-in-v2-5-8)
 - [Features for All Registered Clusters](#2-5-8-features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#2-5-8-additional-features-for-registered-k3s-clusters)
 - [Additional Features for Registered EKS and GKE Clusters](#additional-features-for-registered-eks-and-gke-clusters)
 
-### Changes in v2.5.8
-
-Greater management capabilities are now available for [registered GKE clusters.](#additional-features-for-registered-eks-and-gke-clusters) The same configuration options are available for registered GKE clusters as for the GKE clusters created through the Rancher UI.
-
-<a id="2-5-8-features-for-all-registered-clusters"></a>
 ### Features for All Registered Clusters
 
 After registering a cluster, the cluster owner can:
@@ -102,7 +93,6 @@ After registering a cluster, the cluster owner can:
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
 - Manage projects and workloads
 
-<a id="2-5-8-additional-features-for-registered-k3s-clusters"></a>
 ### Additional Features for Registered K3s Clusters
 
 [K3s]({{<baseurl>}}/k3s/latest/en/) is a lightweight, fully compliant Kubernetes distribution.
@@ -122,51 +112,6 @@ Amazon EKS clusters and GKE clusters can now be registered in Rancher. For the m
 When you delete an EKS cluster or GKE cluster that was created in Rancher, the cluster is destroyed. When you delete a cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 The capabilities for registered clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
-
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.8" %}}
-
-- [Features for All Registered Clusters](#before-2-5-8-features-for-all-registered-clusters)
-- [Additional Features for Registered K3s Clusters](#before-2-5-8-additional-features-for-registered-k3s-clusters)
-- [Additional Features for Registered EKS Clusters](#additional-features-for-registered-eks-clusters)
-
-<a id="before-2-5-8-features-for-all-registered-clusters"></a>
-### Features for All Registered Clusters
-
-After registering a cluster, the cluster owner can:
-
-- [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/)
-- Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
-- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
-- Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
-- Manage projects and workloads
-
-<a id="before-2-5-8-additional-features-for-registered-k3s-clusters"></a>
-### Additional Features for Registered K3s Clusters
-
-[K3s]({{<baseurl>}}/k3s/latest/en/) is a lightweight, fully compliant Kubernetes distribution.
-
-When a K3s cluster is registered in Rancher, Rancher will recognize it as K3s. The Rancher UI will expose the features for [all registered clusters,](#features-for-all-registered-clusters) in addition to the following features for editing and upgrading the cluster:
-
-- The ability to [upgrade the K3s version]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/upgrading-kubernetes/)
-- The ability to configure the maximum number of nodes that will be upgraded concurrently
-- The ability to see a read-only version of the K3s cluster's configuration arguments and environment variables used to launch each node in the cluster
-
-### Additional Features for Registered EKS Clusters
-
-Registering an Amazon EKS cluster allows Rancher to treat it as though it were created in Rancher.
-
-Amazon EKS clusters can now be registered in Rancher. For the most part, registered EKS clusters and EKS clusters created in Rancher are treated the same way in the Rancher UI, except for deletion.
-
-When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
-
-The capabilities for registered EKS clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
-{{% /tab %}}
-{{% /tabs %}}
-
-
 
 # Configuring K3s Cluster Upgrades
 

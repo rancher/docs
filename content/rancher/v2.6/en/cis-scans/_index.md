@@ -2,7 +2,7 @@
 title: CIS Scans
 weight: 17
 aliases:
-  - /rancher/v2.5/en/cis-scans/v2.5
+  - /rancher/v2.6/en/cis-scans/v2.6
 ---
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
@@ -39,8 +39,6 @@ Support for alerting for the cluster scan results is now also available from Ran
 
 In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5.0 and in v2.5.4, more profiles were included.
 
-{{% tabs %}}
-{{% tab "Profiles in v2.5.4" %}}
 - Generic CIS 1.5
 - Generic CIS 1.6
 - RKE permissive 1.5
@@ -51,22 +49,10 @@ In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5
 - GKE
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
-{{% /tab %}}
-{{% tab "Profiles in v2.5.0-v2.5.3" %}}
-- Generic CIS 1.5
-- RKE permissive
-- RKE hardened
-- EKS
-- GKE
-{{% /tab %}}
-{{% /tabs %}}
 <br/>
 
 
-The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned and the Rancher version:
-
-{{% tabs %}}
-{{% tab "v2.5.4" %}}
+The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned:
 
 The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 
@@ -74,18 +60,6 @@ The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 - EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
 - For RKE2 Kubernetes clusters, the RKE2 Permissive 1.5 profile is the default.
 - For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
-
-{{% /tab %}}
-{{% tab "v2.5.0-v2.5.3" %}}
-
-The `rancher-cis-benchmark` supports the CIS 1.5 Benchmark version.
-
-- For RKE Kubernetes clusters, the RKE permissive profile is the default.
-- EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
-- For cluster types other than RKE, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
-
-{{% /tab %}}
-{{% /tabs %}}
 
 > **Note:** CIS v1 cannot run on a cluster when CIS v2 is deployed. In other words, after `rancher-cis-benchmark` is installed, you can't run scans by going to the Cluster Manager view in the Rancher UI and clicking <b>Tools > CIS Scans.</b>
 
@@ -133,8 +107,6 @@ Refer to <a href="{{<baseurl>}}/rancher/v2.5/en/security/" target="_blank">the t
 
 The following profiles are available:
 
-{{% tabs %}}
-{{% tab "Profiles in v2.5.4" %}}
 - Generic CIS 1.5
 - Generic CIS 1.6
 - RKE permissive 1.5
@@ -145,15 +117,6 @@ The following profiles are available:
 - GKE
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
-{{% /tab %}}
-{{% tab "Profiles in v2.5.0-v2.5.3" %}}
-- Generic CIS 1.5
-- RKE permissive
-- RKE hardened
-- EKS
-- GKE
-{{% /tab %}}
-{{% /tabs %}}
 
 You also have the ability to customize a profile by saving a set of tests to skip.
 

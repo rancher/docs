@@ -62,9 +62,6 @@ As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-p
 > - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](#setting-resource-limits-and-requests)
 > - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
-
 ### Enable Monitoring for use without SSL
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
@@ -99,21 +96,6 @@ key.pfx=`base64-content`
 ```
 
 Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
-
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
-1. Click **Apps.**
-1. Click the `rancher-monitoring` app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
-1. Scroll to the bottom of the Helm chart README and click **Install.**
-
-**Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
-
-{{% /tab %}}
-
-{{% /tabs %}}
 
 ### Default Alerts, Targets, and Grafana Dashboards
 

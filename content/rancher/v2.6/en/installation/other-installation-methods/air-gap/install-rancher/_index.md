@@ -136,8 +136,6 @@ Placeholder | Description
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
 `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
 ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
@@ -150,24 +148,6 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 ```
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.8`
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-```plain
-helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set certmanager.version=<CERTMANAGER_VERSION> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.6`
-{{% /tab %}}
-{{% /tabs %}}
-
-
 
 # Option B: Certificates From Files using Kubernetes Secrets
 
@@ -186,9 +166,6 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 | `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
-
 ```plain
    helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
@@ -217,40 +194,6 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
 Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-
-```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
-
-```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set privateCA=true \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
-
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
-{{% /tab %}}
-{{% /tabs %}}
-
-
 
 # 4. Install Rancher
 

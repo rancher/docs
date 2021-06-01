@@ -68,18 +68,7 @@ When Weave is selected as network provider, Rancher will automatically enable en
 
 Project network isolation is used to enable or disable communication between pods in different projects.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
-
 To enable project network isolation as a cluster option, you will need to use any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
-
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-To enable project network isolation as a cluster option, you will need to use Canal as the CNI.
-
-{{% /tab %}}
-{{% /tabs %}}
 
 ### Kubernetes Cloud Providers
 

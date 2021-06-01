@@ -76,9 +76,6 @@ Here is an example of a command for passing in the feature flag names when rende
 
 The Helm 3 command is as follows:
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
-
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --no-hooks \ # prevent files for Helm hooks from being generated
@@ -91,22 +88,6 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-```
-helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-  --namespace cattle-system \
-  --set hostname=<RANCHER.YOURDOMAIN.COM> \
-  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-  --set ingress.tls.source=secret \
-  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-  --set useBundledSystemChart=true # Use the packaged Rancher system charts
-  --set 'extraEnv[0].name=CATTLE_FEATURES'
-  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
-```
-{{% /tab %}}
-{{% /tabs %}}
 
 The Helm 2 command is as follows:
 

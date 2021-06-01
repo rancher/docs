@@ -43,40 +43,11 @@ CATTLE_RESTRICTED_DEFAULT_ADMIN=true
 ```
 ### List of `restricted-admin` Permissions
 
-The permissions for the `restricted-admin` role differ based on the Rancher version.
-
-{{% tabs %}}
-{{% tab "v2.5.6" %}}
-
 The `restricted-admin` permissions are as follows:
 
 - Has full admin access to all downstream clusters managed by Rancher.
 - Can add other users and assign them to clusters outside of the local cluster.
 - Can create other restricted admins.
-
-{{% /tab %}}
-{{% tab "v2.5.0-v2.5.5" %}}
-
-The `restricted-admin` permissions are as follows:
-
-- Has full admin access to all downstream clusters managed by Rancher.
-- Has very limited access to the local Kubernetes cluster. Can access Rancher custom resource definitions, but has no access to any Kubernetes native types.
-- Can add other users and assign them to clusters outside of the local cluster.
-- Can create other restricted admins.
-- Cannot grant any permissions in the local cluster they don't currently have. (This is how Kubernetes normally operates)
-
-{{% /tab %}}
-{{% /tabs %}}
-
-### Upgrading from Rancher with a Hidden Local Cluster
-
-Before Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
-
-```
---add-local=false
-```
-
-You will need to drop this flag when upgrading to Rancher v2.5. Otherwise, Rancher will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster.
 
 ### Changing Global Administrators to Restricted Admins
 
