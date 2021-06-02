@@ -3,7 +3,7 @@ title: Backup Storage Location Configuration
 shortTitle: Storage
 weight: 3
 aliases:
-  - /rancher/v2.5/en/backups/v2.5/configuration/storage-config
+  - /rancher/v2.6/en/backups/v2.5/configuration/storage-config
 ---
 
 Configure a storage location where all backups are saved by default. You will have the option to override this with each backup, but will be limited to using an S3-compatible object store.
@@ -28,7 +28,7 @@ You can choose to not have any operator-level storage location configured. If yo
 
 | Parameter | Description |
 | -------------- | -------------- |
-| Credential Secret | Choose the credentials for S3 from your secrets in Rancher. [Example]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/examples/#example-credential-secret-for-storing-backups-in-s3). |
+| Credential Secret | Choose the credentials for S3 from your secrets in Rancher. [Example]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/examples/#example-credential-secret-for-storing-backups-in-s3). |
 | Bucket Name | Enter the name of the [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) where the backups will be stored. Default: `rancherbackups`. |
 | Region | The [AWS region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. |
 | Folder | The [folder in the S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html) where the backups will be stored. |
@@ -40,7 +40,7 @@ You can choose to not have any operator-level storage location configured. If yo
 
 Installing the `rancher-backup` chart by selecting the StorageClass option will create a Persistent Volume Claim (PVC), and Kubernetes will in turn dynamically provision a Persistent Volume (PV) where all the backups will be saved by default.
 
-For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/)
+For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/provisioning-new-storage/)
 
 > **Important**
 It is highly recommended to use a StorageClass with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  
@@ -48,7 +48,7 @@ If no such StorageClass is available, after the PV is provisioned, make sure to 
 
 ### Existing Persistent Volume
 
-Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/attaching-existing-storage/#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
+Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/attaching-existing-storage/#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
 
 > **Important**
 It is highly recommended to use a Persistent Volume with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  

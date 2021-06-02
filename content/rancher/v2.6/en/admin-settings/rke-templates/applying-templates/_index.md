@@ -3,7 +3,7 @@ title: Applying Templates
 weight: 50
 ---
 
-You can create a cluster from an RKE template that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/template-access-and-sharing)
+You can create a cluster from an RKE template that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/template-access-and-sharing)
 
 RKE templates can be applied to new clusters.
 
@@ -19,7 +19,7 @@ This section covers the following topics:
 
 ### Creating a Cluster from an RKE Template
 
-To add a cluster [hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters) using an RKE template, use these steps:
+To add a cluster [hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) using an RKE template, use these steps:
 
 1. From the **Global** view, go to the **Clusters** tab.
 1. Click **Add Cluster** and choose the infrastructure provider.
@@ -33,7 +33,7 @@ To add a cluster [hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2
 
 When the template owner creates a template, each setting has a switch in the Rancher UI that indicates if users can override the setting.
 
-- If the setting allows a user override, you can update these settings in the cluster by [editing the cluster.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/)
+- If the setting allows a user override, you can update these settings in the cluster by [editing the cluster.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/)
 - If the switch is turned off, you cannot change these settings unless the cluster owner creates a template revision that lets you override them. If there are settings that you want to change, but don't have the option to, you will need to contact the template owner to get a new revision of the template.
 
 If a cluster was created from an RKE template, you can edit the cluster to update the cluster to a new revision of the template.
@@ -46,7 +46,7 @@ An existing cluster's settings can be [saved as an RKE template.](#converting-an
 
 This section describes how to create an RKE template from an existing cluster.
 
-RKE templates cannot be applied to existing clusters, except if you save an existing cluster's settings as an RKE template. This exports the cluster's settings as a new RKE template, and also binds the cluster to that template. The result is that the cluster can only be changed if the [template is updated,]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template) and the cluster is upgraded to [use a newer version of the template.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising/#upgrading-a-cluster-to-use-a-new-template-revision)
+RKE templates cannot be applied to existing clusters, except if you save an existing cluster's settings as an RKE template. This exports the cluster's settings as a new RKE template, and also binds the cluster to that template. The result is that the cluster can only be changed if the [template is updated,]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#updating-a-template) and the cluster is upgraded to [use a newer version of the template.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising/#upgrading-a-cluster-to-use-a-new-template-revision)
 
 To convert an existing cluster to use an RKE template,
 
@@ -58,4 +58,4 @@ To convert an existing cluster to use an RKE template,
 
 - A new RKE template is created.
 - The cluster is converted to use the new template.
-- New clusters can be [created from the new template.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/applying-templates/#creating-a-cluster-from-an-rke-template)
+- New clusters can be [created from the new template.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/applying-templates/#creating-a-cluster-from-an-rke-template)

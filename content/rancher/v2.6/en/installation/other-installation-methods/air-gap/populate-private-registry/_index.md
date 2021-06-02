@@ -2,20 +2,20 @@
 title: '2. Collect and Publish Images to your Private Registry'
 weight: 200
 aliases:
-  - /rancher/v2.5/en/installation/air-gap-high-availability/prepare-private-registry/
-  - /rancher/v2.5/en/installation/air-gap-single-node/prepare-private-registry/
-  - /rancher/v2.5/en/installation/air-gap-single-node/config-rancher-for-private-reg/
-  - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
-  - /rancher/v2.5/en/installation/air-gap-installation/prepare-private-reg/
+  - /rancher/v2.6/en/installation/air-gap-high-availability/prepare-private-registry/
+  - /rancher/v2.6/en/installation/air-gap-single-node/prepare-private-registry/
+  - /rancher/v2.6/en/installation/air-gap-single-node/config-rancher-for-private-reg/
+  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
+  - /rancher/v2.6/en/installation/air-gap-installation/prepare-private-reg/
 ---
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
-By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
 Populating the private registry with images is the same process for installing Rancher with Docker and for installing Rancher on a Kubernetes cluster.
 
-The steps in this section differ depending on whether or not you are planning to use Rancher to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed.
+The steps in this section differ depending on whether or not you are planning to use Rancher to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed.
 
 > **Prerequisites:**
 >
@@ -59,7 +59,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.5/en/installation/options/upgrading-cert-manager/).
+    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -231,7 +231,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 **For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
 1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
-   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.5/en/installation/options/upgrading-cert-manager/).
+   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
    ```plain
    helm repo add jetstack https://charts.jetstack.io
    helm repo update
@@ -290,6 +290,6 @@ The image list, `rancher-images.txt` or `rancher-windows-images.txt`, is expecte
 {{% /tab %}}
 {{% /tabs %}}
 
-### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
+### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 
-### [Next step for Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/)
+### [Next step for Docker Installs - Install Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/install-rancher/)

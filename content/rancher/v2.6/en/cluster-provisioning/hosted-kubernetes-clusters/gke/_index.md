@@ -3,12 +3,9 @@ title: Managing GKE Clusters
 shortTitle: Google Kubernetes Engine
 weight: 2105
 aliases:
-  - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
-  - /rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke
+  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
+  - /rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/gke
 ---
-
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
 
 - [Prerequisites](#prerequisites)
 - [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
@@ -85,11 +82,11 @@ You can access your cluster after its state is updated to **Active.**
 
 # Private Clusters
 
-Private GKE clusters are supported. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/)
+Private GKE clusters are supported. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/)
 
 # Configuration Reference
 
-For details on configuring GKE clusters in Rancher, see [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference)
+For details on configuring GKE clusters in Rancher, see [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference)
 # Updating Kubernetes Version
 
 The Kubernetes version of a cluster can be upgraded to any version available in the region or zone fo the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
@@ -99,64 +96,7 @@ The Kubernetes version of a cluster can be upgraded to any version available in 
 
 # Syncing
 
-The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/syncing)
+The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/syncing)
 
-For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
+For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
 
-
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-# Prerequisites
-
-Some setup in Google Kubernetes Engine is required.
-
-### Service Account Token
-
-Create a service account using [Google Kubernetes Engine](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts). GKE uses this account to operate your cluster. Creating this account also generates a private key used for authentication.
-
-The service account requires the following roles:
-
-- **Compute Viewer:** `roles/compute.viewer`
-- **Project Viewer:** `roles/viewer`
-- **Kubernetes Engine Admin:** `roles/container.admin` 
-- **Service Account User:** `roles/iam.serviceAccountUser`
-
-[Google Documentation: Creating and Enabling Service Accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
-
-
->**Note**
->Deploying to GKE will incur charges.
-
-# Create the GKE Cluster
-
-Use Rancher to set up and configure your Kubernetes cluster.
-
-1. From the **Clusters** page, click **Add Cluster**.
-
-2. Choose **Google Kubernetes Engine**.
-
-3. Enter a **Cluster Name**.
-
-4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-
-5. Either paste your service account private key in the **Service Account** text box or **Read from a file**. Then click **Next: Configure Nodes**.
-
-	>**Note:** After submitting your private key, you may have to enable the Google Kubernetes Engine API. If prompted, browse to the URL displayed in the Rancher UI to enable the API.
-
-6. Select your cluster options, node options and security options. For help, refer to the [GKE Cluster Configuration Reference.](#gke-before-v2-5-8) 
-9. Review your options to confirm they're correct. Then click **Create**.
-
-**Result:** You have successfully deployed a GKE cluster.
-
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
-
-You can access your cluster after its state is updated to **Active.**
-
-**Active** clusters are assigned two Projects: 
-
-- `Default`, containing the `default` namespace
-- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
-
-{{% /tab %}}
-{{% /tabs %}}

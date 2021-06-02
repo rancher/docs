@@ -2,7 +2,7 @@
 title: Rollbacks
 weight: 3
 aliases:
-  - /rancher/v2.5/en/installation/install-rancher-on-linux/rollbacks
+  - /rancher/v2.6/en/installation/install-rancher-on-linux/rollbacks
 ---
 
 > RancherD is an experimental feature.

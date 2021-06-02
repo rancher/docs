@@ -2,7 +2,7 @@
 title: PrometheusRules
 weight: 2
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/prometheusrules
+  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration/prometheusrules
 ---
 
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
@@ -56,8 +56,6 @@ To create rule groups in the Rancher UI,
 
 # Configuration
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.4" %}}
 Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling out forms in the Rancher UI.
 
 
@@ -93,8 +91,3 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 | PromQL Expression |  The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and the result will be recorded as a new set of time series with the metric name as given by 'record'.  For more information about expressions, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression)  |
 | Labels |   Labels to add or overwrite before storing the result.     |
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.3" %}}
-For Rancher v2.5.0-v2.5.3, PrometheusRules must be configured in YAML. For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
-{{% /tab %}}
-{{% /tabs %}}

@@ -2,12 +2,12 @@
 title: 4. Install Rancher
 weight: 400
 aliases:
-  - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-system-charts/
-  - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
-  - /rancher/v2.5/en/installation/air-gap-single-node/install-rancher
-  - /rancher/v2.5/en/installation/air-gap/install-rancher
-  - /rancher/v2.5/en/installation/air-gap-installation/install-rancher/
-  - /rancher/v2.5/en/installation/air-gap-high-availability/install-rancher/
+  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-system-charts/
+  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
+  - /rancher/v2.6/en/installation/air-gap-single-node/install-rancher
+  - /rancher/v2.6/en/installation/air-gap/install-rancher
+  - /rancher/v2.6/en/installation/air-gap-installation/install-rancher/
+  - /rancher/v2.6/en/installation/air-gap-high-availability/install-rancher/
 ---
 
 This section is about how to deploy Rancher for your air gapped environment in a high-availability Kubernetes installation. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
@@ -35,9 +35,9 @@ This section describes installing Rancher:
 
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.5/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
+1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
 
-2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
+2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
   {{< release-channel >}}
     ```
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
@@ -59,7 +59,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -86,7 +86,7 @@ Based on the choice your made in [2. Choose your SSL Configuration](#2-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.5/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
 
 ### 1. Add the cert-manager repo
 
@@ -136,8 +136,6 @@ Placeholder | Description
 `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
 `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
 ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
@@ -150,24 +148,6 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 ```
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.8`
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-```plain
-helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set certmanager.version=<CERTMANAGER_VERSION> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.6`
-{{% /tab %}}
-{{% /tabs %}}
-
-
 
 # Option B: Certificates From Files using Kubernetes Secrets
 
@@ -186,9 +166,6 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 | `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
-
 ```plain
    helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
@@ -216,41 +193,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
-
-
-```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
-
-```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
-    --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set ingress.tls.source=secret \
-    --set privateCA=true \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-    --set useBundledSystemChart=true # Use the packaged Rancher system charts
-```
-
-**Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
-
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
-{{% /tab %}}
-{{% /tabs %}}
-
-
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 # 4. Install Rancher
 
@@ -294,12 +237,12 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 The installation is complete.
 
-> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.5/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
+> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.6/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
 
 # Additional Resources
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.5/en/installation/resources/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/)
-- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.5/en/installation/options/troubleshooting/)
+- [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/)
+- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/)

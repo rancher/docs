@@ -43,40 +43,11 @@ CATTLE_RESTRICTED_DEFAULT_ADMIN=true
 ```
 ### List of `restricted-admin` Permissions
 
-The permissions for the `restricted-admin` role differ based on the Rancher version.
-
-{{% tabs %}}
-{{% tab "v2.5.6" %}}
-
 The `restricted-admin` permissions are as follows:
 
 - Has full admin access to all downstream clusters managed by Rancher.
 - Can add other users and assign them to clusters outside of the local cluster.
 - Can create other restricted admins.
-
-{{% /tab %}}
-{{% tab "v2.5.0-v2.5.5" %}}
-
-The `restricted-admin` permissions are as follows:
-
-- Has full admin access to all downstream clusters managed by Rancher.
-- Has very limited access to the local Kubernetes cluster. Can access Rancher custom resource definitions, but has no access to any Kubernetes native types.
-- Can add other users and assign them to clusters outside of the local cluster.
-- Can create other restricted admins.
-- Cannot grant any permissions in the local cluster they don't currently have. (This is how Kubernetes normally operates)
-
-{{% /tab %}}
-{{% /tabs %}}
-
-### Upgrading from Rancher with a Hidden Local Cluster
-
-Before Rancher v2.5, it was possible to run the Rancher server using this flag to hide the local cluster:
-
-```
---add-local=false
-```
-
-You will need to drop this flag when upgrading to Rancher v2.5. Otherwise, Rancher will not start. The `restricted-admin` role can be used to continue restricting access to the local cluster.
 
 ### Changing Global Administrators to Restricted Admins
 
@@ -110,7 +81,7 @@ You can [assign a role to everyone in the group at the same time](#configuring-g
 
 Using custom permissions is convenient for providing users with narrow or specialized access to Rancher.
 
-When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
+When a user from an [external authentication source]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
 
 However, in some organizations, these permissions may extend too much access. Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a more restrictive set of custom global permissions.
 
@@ -201,8 +172,8 @@ If a user is removed from the external authentication provider group, they would
 
 > **Prerequisites:** You can only assign a global role to a group if:
 >
-> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/#external-vs-local-authentication)
-> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/user-groups/)
+> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-vs-local-authentication)
+> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
 > * You have already set up at least one user group with the authentication provider
 
 To assign a custom global role to a group, follow these steps:

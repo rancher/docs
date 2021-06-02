@@ -2,7 +2,7 @@
 title: Pipeline Configuration Reference
 weight: 1
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/pipelines/config
+  - /rancher/v2.6/en/k8s-in-rancher/pipelines/config
 ---
 
 In this section, you'll learn how to configure pipelines.
@@ -303,7 +303,7 @@ timeout: 30
 
 # Notifications
 
-You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/notifiers/) based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/legacy/notifiers/) so it will be easy to add recipients immediately.
+You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/notifiers/) based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/legacy/notifiers/) so it will be easy to add recipients immediately.
 
 ### Configuring Notifications by UI
 
@@ -311,7 +311,7 @@ You can enable notifications to any [notifiers]({{<baseurl>}}/rancher/v2.5/en/cl
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
 
-1. If you don't have any existing [notifiers]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/legacy/notifiers/) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
+1. If you don't have any existing [notifiers]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/notifiers), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/legacy/notifiers/) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
     > **Note:** Notifiers are configured at a cluster level and require a different level of permissions.
 
@@ -513,7 +513,7 @@ stages:
 
 # Secrets
 
-If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using Kubernetes [secrets]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/secrets/).
+If you need to use security-sensitive information in your pipeline scripts (like a password), you can pass them in using Kubernetes [secrets]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/).
 
 ### Prerequisite
 Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
@@ -640,8 +640,8 @@ If you want to use a version control provider with a certificate from a custom/i
 
 The internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
-For details on setting up persistent storage for pipelines, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/storage)
+For details on setting up persistent storage for pipelines, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/storage)
 
 # Example rancher-pipeline.yml
 
-An example pipeline configuration file is on [this page.]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/pipelines/example)
+An example pipeline configuration file is on [this page.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/pipelines/example)

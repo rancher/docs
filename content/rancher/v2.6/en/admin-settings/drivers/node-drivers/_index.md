@@ -2,8 +2,8 @@
 title: Node Drivers
 weight: 2
 aliases:
-  - /rancher/v2.5/en/concepts/global-configuration/node-drivers/
-  - /rancher/v2.5/en/tasks/global-configuration/node-drivers/
+  - /rancher/v2.6/en/concepts/global-configuration/node-drivers/
+  - /rancher/v2.6/en/tasks/global-configuration/node-drivers/
 ---
 
 Node drivers are used to provision hosts, which Rancher uses to launch and manage Kubernetes clusters. A node driver is the same as a [Docker Machine driver](https://docs.docker.com/machine/drivers/). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, Rancher is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to Rancher.
@@ -14,8 +14,8 @@ If there are specific node drivers that you don't want to show to your users, yo
 
 >**Prerequisites:** To create, edit, or delete drivers, you need _one_ of the following permissions:
 >
->- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/)
->- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Node Drivers]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) role assigned.
+>- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/)
+>- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Node Drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
 
 ## Activating/Deactivating Node Drivers
 

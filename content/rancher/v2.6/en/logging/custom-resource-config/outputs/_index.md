@@ -14,9 +14,6 @@ For the full details on configuring `Outputs` and `ClusterOutputs`, see the [Ban
 
 # Configuration
 
-{{% tabs %}}
-{{% tab "v2.5.8+" %}}
-
 - [Outputs](#outputs-2-5-8)
 - [ClusterOutputs](#clusteroutputs-2-5-8)
 
@@ -67,43 +64,6 @@ For example configuration for each logging plugin supported by the logging opera
 `ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
 
 For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
-
-{{% /tab %}}
-{{% tab "v2.5.0-v2.5.7" %}}
-
-
-- [Outputs](#outputs-2-5-0)
-- [ClusterOutputs](#clusteroutputs-2-5-0)
-
-
-<a id="outputs-2-5-0"></a>
-# Outputs
-
-The `Output` resource defines where your `Flows` can send the log messages. `Outputs` are the final stage for a logging `Flow`.
-
-The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it. 
-
-You can use secrets in these definitions, but they must also be in the same namespace. 
-
-`Outputs` are configured in YAML. For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
-
-For examples of configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
-
-<a id="clusteroutputs-2-5-0"></a>
-
-# ClusterOutputs
-
-`ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
-
-The Rancher UI provides forms for configuring the `ClusterOutput` type, target, and access credentials if applicable.
-
-`ClusterOutputs` are configured in YAML. For the details of `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
-
-For example configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
-
-{{% /tab %}}
-{{% /tabs %}}
-
 
 # YAML Examples
 

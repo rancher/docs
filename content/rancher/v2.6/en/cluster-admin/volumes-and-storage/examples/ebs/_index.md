@@ -13,4 +13,4 @@ This section describes how to set up Amazon's Elastic Block Store in EC2.
 
 **Result:** Persistent storage has been created.
 
-For details on how to set up the newly created storage in Rancher, refer to the section on [setting up existing storage.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/attaching-existing-storage/)
+For details on how to set up the newly created storage in Rancher, refer to the section on [setting up existing storage.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/attaching-existing-storage/)

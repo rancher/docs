@@ -2,8 +2,8 @@
 title: Authentication
 weight: 1115
 aliases:
-    - /rancher/v2.5/en/concepts/global-configuration/authentication/
-    - /rancher/v2.5/en/tasks/global-configuration/authentication/
+    - /rancher/v2.6/en/concepts/global-configuration/authentication/
+    - /rancher/v2.6/en/tasks/global-configuration/authentication/
 ---
 
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
@@ -16,30 +16,30 @@ The Rancher authentication proxy integrates with the following external authenti
 
 | Auth Service                                                                                     |
 | ------------------------------------------------------------------------------------------------ |
-| [Microsoft Active Directory]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/ad/)  |
-| [GitHub]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/github/)                  |
-| [Microsoft Azure AD]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/azure-ad/)    |
-| [FreeIPA]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/freeipa/)                |
-| [OpenLDAP]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/openldap/)              |
-| [Microsoft AD FS]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/microsoft-adfs/) |
-| [PingIdentity]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/ping-federate/)     |
-| [Keycloak]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/keycloak/)              |
-| [Okta]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/okta/)                      | 
-| [Google OAuth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/google/)            | 
-| [Shibboleth]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/shibboleth)           |
+| [Microsoft Active Directory]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/ad/)  |
+| [GitHub]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/github/)                  |
+| [Microsoft Azure AD]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/azure-ad/)    |
+| [FreeIPA]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/freeipa/)                |
+| [OpenLDAP]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/openldap/)              |
+| [Microsoft AD FS]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/microsoft-adfs/) |
+| [PingIdentity]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/ping-federate/)     |
+| [Keycloak]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/keycloak/)              |
+| [Okta]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/okta/)                      | 
+| [Google OAuth]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/google/)            | 
+| [Shibboleth]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/shibboleth)           |
 
 <br/>
-However, Rancher also provides [local authentication]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/local/).
+However, Rancher also provides [local authentication]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/local/).
 
 In most cases, you should use an external authentication service over local authentication, as external authentication allows user management from a central location. However, you may want a few local authentication users for managing Rancher under rare circumstances, such as if your external authentication provider is unavailable or undergoing maintenance.
 
 ## Users and Groups
 
-Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, multi-cluster apps, and global DNS providers and entries. When you give access to a group, all users who are a member of that group in the authentication provider will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see [Role Based Access Control]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/).
+Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When authenticating with an external provider, groups are provided from the external provider based on the user. These users and groups are given specific roles to resources like clusters, projects, multi-cluster apps, and global DNS providers and entries. When you give access to a group, all users who are a member of that group in the authentication provider will be able to access the resource with the permissions that you've specified. For more information on roles and permissions, see [Role Based Access Control]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/).
 
 > **Note:** Local authentication does not support creating or managing groups.
 
-For more information, see [Users and Groups]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/user-groups/)
+For more information, see [Users and Groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
 
 ## Scope of Rancher Authorization
 

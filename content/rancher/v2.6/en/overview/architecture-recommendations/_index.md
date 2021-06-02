@@ -60,7 +60,7 @@ We recommend the following configurations for the load balancer and Ingress cont
 
 It is strongly recommended to install Rancher on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
 
-For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) for running your workloads.
+For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) for running your workloads.
 
 # Recommended Node Roles for Kubernetes Installations
 
@@ -102,10 +102,10 @@ With that said, it is safe to use all three roles on three nodes when setting up
 
 Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of downstream clusters.
 
-For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.5/en/best-practices/v2.5/)
+For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/v2.5/)
 
 # Architecture for an Authorized Cluster Endpoint 
 
-If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
+If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
 
-If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/kubeconfig/) and [API keys]({{<baseurl>}}/rancher/v2.5/en/user-settings/api-keys/#creating-an-api-key) for more information.
+If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/kubeconfig/) and [API keys]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) for more information.

@@ -2,16 +2,16 @@
 title: Configuring Persistent Data for Pipeline Components
 weight: 600
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/pipelines/storage
+  - /rancher/v2.6/en/k8s-in-rancher/pipelines/storage
 ---
 
 The pipelines' internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
-This section assumes that you understand how persistent storage works in Kubernetes. For more information, refer to the section on [how storage works.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/how-storage-works/)
+This section assumes that you understand how persistent storage works in Kubernetes. For more information, refer to the section on [how storage works.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/how-storage-works/)
 
 >**Prerequisites (for both parts A and B):**
 >
->[Persistent volumes]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/) must be available for the cluster.
+>[Persistent volumes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) must be available for the cluster.
 
 ### A. Configuring Persistent Data for Docker Registry
 

@@ -24,14 +24,14 @@ A restore is performed by creating a Restore custom resource.
 
 > **Important**
 >
-> * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
+> * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 > * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
 
 ### Create the Restore Custom Resource
 
 1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
 1. Click **Restore.**
-1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the  [configuration reference]({{<baseurl>}}/rancher/v2.5/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.5/en/backups/examples)
+1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the  [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples)
 1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Restore YAML.
 
     ```yaml
@@ -52,7 +52,7 @@ A restore is performed by creating a Restore custom resource.
 	      endpoint: s3.us-west-2.amazonaws.com
       ```
 
-      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/examples/)
+      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/examples/)
 
 1. Click **Create.**
 
@@ -82,7 +82,7 @@ Rancher can be rolled back using the Rancher UI.
 
 To roll back to Rancher before v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs]({{<baseurl>}}/rancher/v2.0-v2.4/en/backups/restore/rke-restore/) Restoring a snapshot of the Rancher server cluster will revert Rancher to the version and state at the time of the snapshot.
 
-For information on how to roll back Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
+For information on how to roll back Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks)
 
 > Managed clusters are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
 

@@ -5,7 +5,7 @@ weight: 10
 
 Administrators have the permission to create RKE templates, and only administrators can give that permission to other users.
 
-For more information on administrator permissions, refer to the [documentation on global permissions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/).
+For more information on administrator permissions, refer to the [documentation on global permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/).
 
 # Giving Users Permission to Create Templates
 
@@ -13,7 +13,7 @@ Templates can only be created by users who have the global permission **Create R
 
 Administrators have the global permission to create templates, and only administrators can give that permission to other users.
 
-For information on allowing users to modify existing templates, refer to [Sharing Templates.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/template-access-and-sharing)
+For information on allowing users to modify existing templates, refer to [Sharing Templates.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/template-access-and-sharing)
 
 Administrators can give users permission to create RKE templates in two ways:
 

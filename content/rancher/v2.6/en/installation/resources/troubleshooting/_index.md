@@ -2,10 +2,10 @@
 title: Troubleshooting the Rancher Server Kubernetes Cluster
 weight: 276
 aliases:
-  - /rancher/v2.5/en/installation/k8s-install/helm-rancher/troubleshooting
-  - /rancher/v2.5/en/installation/ha/kubernetes-rke/troubleshooting
-  - /rancher/v2.5/en/installation/k8s-install/kubernetes-rke/troubleshooting
-  - /rancher/v2.5/en/installation/options/troubleshooting
+  - /rancher/v2.6/en/installation/k8s-install/helm-rancher/troubleshooting
+  - /rancher/v2.6/en/installation/ha/kubernetes-rke/troubleshooting
+  - /rancher/v2.6/en/installation/k8s-install/kubernetes-rke/troubleshooting
+  - /rancher/v2.6/en/installation/options/troubleshooting
 ---
 
 This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.

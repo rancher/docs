@@ -19,20 +19,9 @@ Both provide choice for the what node(s) the pod will run on.
 
 ### Default Implementation in Rancher's Logging Stack
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
 By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
 The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
 Moreover, most logging stack pods run on Linux only and have a `nodeSelector` added to ensure they run on Linux nodes.
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
-By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
-The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
-Moreover, we can populate the `nodeSelector` to ensure that our pods *only* run on Linux nodes.
-
-{{% /tab %}}
-{{% /tabs %}}
 
 This example Pod YAML file shows a nodeSelector being used with a toleration:
 

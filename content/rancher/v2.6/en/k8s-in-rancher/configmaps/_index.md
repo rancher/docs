@@ -2,8 +2,8 @@
 title: ConfigMaps
 weight: 3061
 aliases:
-  - /rancher/v2.5/en/tasks/projects/add-configmaps
-  - /rancher/v2.5/en/k8s-in-rancher/configmaps  
+  - /rancher/v2.6/en/tasks/projects/add-configmaps
+  - /rancher/v2.6/en/k8s-in-rancher/configmaps  
 ---
 
 While most types of Kubernetes secrets store sensitive information, [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) store general configuration information, such as a group of config files. Because ConfigMaps don't store sensitive information, they can be updated automatically, and therefore don't require their containers to be restarted following update (unlike most secret types, which require manual updates and a container restart to take effect).
@@ -26,7 +26,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 
 1. Click **Save**.
 
-	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/secrets/).
+	>**Note:** Don't use ConfigMaps to store sensitive data [use a secret]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/).
 	>
 	>**Tip:** You can add multiple key value pairs to the ConfigMap by copying and pasting.
 	>
@@ -41,4 +41,4 @@ Now that you have a ConfigMap added to a namespace, you can add it to a workload
 - Application environment variables.
 - Specifying parameters for a Volume mounted to the workload.
 
-For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/workloads/deploy-workloads/).
+For more information on adding ConfigMaps to a workload, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/).

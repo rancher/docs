@@ -14,7 +14,7 @@ When you share a template, each user can have one of two access levels:
 
 If you create a template, you automatically become an owner of that template. 
 
-If you want to delegate responsibility for updating the template, you can share ownership of the template. For details on how owners can modify templates, refer to the [documentation about revising templates.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/creating-and-revising)
+If you want to delegate responsibility for updating the template, you can share ownership of the template. For details on how owners can modify templates, refer to the [documentation about revising templates.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/creating-and-revising)
 
 There are several ways to share templates:
 

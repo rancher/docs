@@ -6,7 +6,7 @@ If your organization uses G Suite for user authentication, you can configure Ran
 
 Only admins of the G Suite domain have access to the Admin SDK. Therefore, only G Suite admins can configure Google OAuth for Rancher.
 
-Within Rancher, only administrators or users with the **Manage Authentication** [global role]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) can configure authentication.
+Within Rancher, only administrators or users with the **Manage Authentication** [global role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) can configure authentication.
 
 # Prerequisites
 - You must have a [G Suite admin account](https://admin.google.com) configured.
@@ -90,7 +90,7 @@ Using the Unique ID of the service account key, register it as an Oauth Client u
 **Result:** The service account is registered as an OAuth client in your G Suite account.
 
 # Configuring Google OAuth in Rancher
-1. Sign into Rancher using a local user assigned the [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions) role. This user is also called the local principal.
+1. Sign into Rancher using a local user assigned the [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions) role. This user is also called the local principal.
 1.	From the **Global** view, click **Security > Authentication** from the main menu.
 1. Click **Google.** The instructions in the UI cover the steps to set up authentication with Google OAuth.
 	1. Admin Email: Provide the email of an administrator account from your GSuite setup. In order to perform user and group lookups, google apis require an administrator's email in conjunction with the service account key.

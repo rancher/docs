@@ -3,7 +3,7 @@ title: Installing Rancher in a vSphere Environment
 shortTitle: On-Premises Rancher in vSphere
 weight: 3
 aliases:
-  - /rancher/v2.5/en/best-practices/v2.5/rancher-server/rancher-in-vsphere
+  - /rancher/v2.6/en/best-practices/v2.5/rancher-server/rancher-in-vsphere
 ---
 
 This guide outlines a reference architecture for installing Rancher on an RKE Kubernetes cluster in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
@@ -48,7 +48,7 @@ Configure appropriate Firewall / ACL rules to only expose access to Rancher
 
 ### Size the VM's According to Rancher Documentation
 
-https://rancher.com/docs/rancher/v2.5/en/installation/requirements/
+https://rancher.com/docs/rancher/v2.6/en/installation/requirements/
 
 ### Leverage VM Templates to Construct the Environment
 

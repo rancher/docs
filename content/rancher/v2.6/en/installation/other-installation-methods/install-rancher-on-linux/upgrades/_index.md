@@ -2,7 +2,7 @@
 title: Upgrades
 weight: 2
 aliases:
-  - /rancher/v2.5/en/installation/install-rancher-on-linux/upgrades
+  - /rancher/v2.6/en/installation/install-rancher-on-linux/upgrades
 ---
 
 > RancherD is an experimental feature.
@@ -19,7 +19,7 @@ To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow t
 
 > Before upgrading, we recommend that you should:
 > 
-> - Create a backup of the Rancher server using the [backup application.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/back-up-rancher/)
+> - Create a backup of the Rancher server using the [backup application.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/back-up-rancher/)
 > - Review the known issues for the Rancher version you are upgrading to. The known issues are listed in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 
 1. Uninstall the chart with Helm:
@@ -39,7 +39,7 @@ To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow t
 
 **Result:** Rancher is upgraded to the new version.
 
-If necessary, restore Rancher from backup by following [these steps.]({{<baseurl>}}/rancher/v2.5/en/backups/restoring-rancher/)
+If necessary, restore Rancher from backup by following [these steps.]({{<baseurl>}}/rancher/v2.6/en/backups/restoring-rancher/)
 
 ### Upgrading Both Rancher and the Underlying Cluster
 
@@ -47,7 +47,7 @@ Upgrade both RancherD and the underlying Kubernetes cluster by re-running the Ra
 
 > Before upgrading, we recommend that you should:
 > 
-> - Create a backup of the Rancher server using the [backup application.]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/back-up-rancher/)
+> - Create a backup of the Rancher server using the [backup application.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/back-up-rancher/)
 > - Review the known issues for the Rancher version you are upgrading to. The known issues are listed in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 
 ```

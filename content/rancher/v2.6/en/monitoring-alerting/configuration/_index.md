@@ -2,7 +2,7 @@
 title: Configuration
 weight: 3
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration
+  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration
 ---
 
 This page captures some of the most important options for configuring the custom resources for monitoring.
@@ -71,7 +71,7 @@ If the scrape configuration you want cannot be specified via a ServiceMonitor or
 
 A [scrape_config section](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) specifies a set of targets and parameters describing how to scrape them. In the general case, one scrape configuration specifies a single job.
 
-An example of where this might be used is with Istio. For more information, see [this section.](https://rancher.com/docs/rancher/v2.5/en/istio/v2.5/configuration-reference/selectors-and-scrape)
+An example of where this might be used is with Istio. For more information, see [this section.](https://rancher.com/docs/rancher/v2.6/en/istio/v2.5/configuration-reference/selectors-and-scrape)
 
 # Examples
 

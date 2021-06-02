@@ -2,7 +2,7 @@
 title: Local Authentication
 weight: 1111
 aliases:
-    - /rancher/v2.5/en/tasks/global-configuration/authentication/local-authentication/
+    - /rancher/v2.6/en/tasks/global-configuration/authentication/local-authentication/
 ---
 
 Local authentication is the default until you configure an external authentication provider. Local authentication is where Rancher stores the user information, i.e. names and passwords, of who can log in to Rancher. By default, the `admin` user that logs in to Rancher for the first time is a local user.

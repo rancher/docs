@@ -2,8 +2,8 @@
 title: API Keys
 weight: 7005
 aliases:
-  - /rancher/v2.5/en/concepts/api-keys/
-  - /rancher/v2.5/en/tasks/user-settings/api-keys/
+  - /rancher/v2.6/en/concepts/api-keys/
+  - /rancher/v2.6/en/tasks/user-settings/api-keys/
 ---
 
 ## API Keys and User Authentication
@@ -31,7 +31,7 @@ API Keys are composed of four components:
 
     Expiration period will be bound by `v3/settings/auth-token-max-ttl-minutes`. If it exceeds the max-ttl, API key will be created with max-ttl as the expiration period.
     
-    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#4-authorized-cluster-endpoint) for more information.
+    A scope will limit the API key so that it will only work against the Kubernetes API of the specified cluster. If the cluster is configured with an Authorized Cluster Endpoint, you will be able to use a scoped token directly against the cluster's API without proxying through the Rancher server. See [Authorized Cluster Endpoints]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) for more information.
 
 4. Click **Create**.
 
@@ -45,7 +45,7 @@ API Keys are composed of four components:
 
 - Enter your API key information into the application that will send requests to the Rancher API.
 - Learn more about the Rancher endpoints and parameters by selecting **View in API** for an object in the Rancher UI.
-- API keys are used for API calls and [Rancher CLI]({{<baseurl>}}/rancher/v2.5/en/cli).
+- API keys are used for API calls and [Rancher CLI]({{<baseurl>}}/rancher/v2.6/en/cli).
 
 ## Deleting API Keys
 

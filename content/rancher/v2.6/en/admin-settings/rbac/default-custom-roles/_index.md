@@ -2,7 +2,7 @@
 title: Custom Roles
 weight: 1128
 aliases:
-  - /rancher/v2.5/en/tasks/global-configuration/roles/
+  - /rancher/v2.6/en/tasks/global-configuration/roles/
 ---
 
 Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
@@ -21,8 +21,8 @@ This section covers the following topics:
 
 To complete the tasks on this page, one of the following permissions are required:
 
- - [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/).
- - [Custom Global Permissions]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) role assigned.
+ - [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/).
+ - [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Roles]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
 
 ## Creating A Custom Role for a Cluster or Project
 
@@ -115,8 +115,8 @@ If a user is removed from the external authentication provider group, they would
 
 > **Prerequisites:** You can only assign a global role to a group if:
 >
-> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/#external-vs-local-authentication)
-> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/user-groups/)
+> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-vs-local-authentication)
+> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
 > * You have already set up at least one user group with the authentication provider
 
 To assign a custom global role to a group, follow these steps:
