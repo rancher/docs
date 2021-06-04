@@ -209,10 +209,7 @@ See also https://rootlesscontaine.rs/ to learn about Rootless mode.
 > **Note:** Don't try to run `k3s server --rootless` on a terminal, as it doesn't enable cgroup v2 delegation.
 > If you really need to try it on a terminal, prepend `systemd-run --user -p Delegate=yes --tty` to create a systemd scope.
 >
-> i.e.,
-> ```console
-> $ systemd-run --user -p Delegate=yes --tty k3s server --rootless
-> ```
+> i.e., `systemd-run --user -p Delegate=yes --tty k3s server --rootless`
 
 ### Troubleshooting
 
