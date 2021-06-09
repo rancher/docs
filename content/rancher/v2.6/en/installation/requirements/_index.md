@@ -62,7 +62,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RancherD Specific Requirements
 
-_The RancherD install is available as of v2.5.4. It is an experimental feature._	
+_The RancherD install is an experimental feature._	
 
 At this time, only Linux OSes that leverage systemd are supported.	
 
@@ -71,8 +71,6 @@ To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additio
 Docker is not required for RancherD installs.
 
 ### RKE2 Specific Requirements
-
-_The RKE2 install is available as of v2.5.6._
 
 For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
@@ -127,7 +125,7 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 
 ### RancherD
 
-_RancherD is available as of v2.5.4. It is an experimental feature._
+_RancherD is an experimental feature._
 
 These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 

@@ -5,7 +5,7 @@ weight: 3
 
 Windows clusters do not share the same feature support as Linux clusters.
 
-The following chart describes the feature parity between Windows and Linux on Rancher as of Rancher v2.5.8:
+The following chart describes the feature parity between Windows and Linux on Rancher:
 
 **Component** | **Linux** | **Windows**
 --- | --- | ---
@@ -26,8 +26,8 @@ GKE Operator | Not Supported | Not Supported
 Alerting v1 | Supported | Supported
 Monitoring v1 | Supported | Supported
 Logging v1 | Supported | Supported
-Monitoring/Alerting v2 | Supported | Supported In 2.5.8+
-Logging v2 | Supported | Supported In 2.5.8+
+Monitoring/Alerting v2 | Supported | Supported
+Logging v2 | Supported | Supported
 Istio | Supported | Not Supported
 Catalog v1 | Supported | Not Supported
 Catalog v2 | Supported | Not Supported

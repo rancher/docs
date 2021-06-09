@@ -40,8 +40,6 @@ When you define a Rule (which is declared within a RuleGroup in a PrometheusRule
 
 ### Creating PrometheusRules in the Rancher UI
 
-_Available as of v2.5.4_
-
 > **Prerequisite:** The monitoring application needs to be installed.
 
 To create rule groups in the Rancher UI,

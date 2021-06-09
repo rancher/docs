@@ -5,11 +5,10 @@ aliases:
   - /rancher/v2.6/en/cis-scans/v2.6
 ---
 
-Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
+Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark. The CIS scans can run on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE.
 
 The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> for report aggregation.
 
-- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
 - [About the CIS Benchmark](#about-the-cis-benchmark)
 - [About the Generated Report](#about-the-generated-report)
 - [Test Profiles](#test-profiles)
@@ -27,41 +26,6 @@ The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecuri
   - [Configuring Alerts for a Periodic Scan on a Schedule](#configuring-alerts-for-a-periodic-scan-on-a-schedule)
   - [Creating a Custom Benchmark Version for Running a Cluster Scan](#creating-a-custom-benchmark-version-for-running-a-cluster-scan)
 
-# Changes in Rancher v2.5
-
-We now support running CIS scans on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE. Previously it was only supported to run CIS scans on RKE Kubernetes clusters.
-
-In Rancher v2.4, the CIS scan tool was available from the **cluster manager** in the Rancher UI. Now it is available in the **Cluster Explorer** and it can be enabled and deployed using a Helm chart. It can be installed from the Rancher UI, but it can also be installed independently of Rancher. It  deploys a CIS scan operator for the cluster, and deploys Kubernetes custom resources for cluster scans. The custom resources can be managed directly from the **Cluster Explorer.**
-
-In v1 of the CIS scan tool, which was available in Rancher v2.4 through the cluster manager, recurring scans could be scheduled. The ability to schedule recurring scans is now also available for CIS v2 from Rancher v2.5.4.
-
-Support for alerting for the cluster scan results is now also available from Rancher v2.5.4.
-
-In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5.0 and in v2.5.4, more profiles were included.
-
-- Generic CIS 1.5
-- Generic CIS 1.6
-- RKE permissive 1.5
-- RKE hardened 1.5
-- RKE permissive 1.6
-- RKE hardened 1.6
-- EKS
-- GKE
-- RKE2 permissive 1.5
-- RKE2 permissive 1.5
-<br/>
-
-
-The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned:
-
-The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
-
-- For RKE Kubernetes clusters, the RKE Permissive 1.6 profile is the default.
-- EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
-- For RKE2 Kubernetes clusters, the RKE2 Permissive 1.5 profile is the default.
-- For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
-
-> **Note:** CIS v1 cannot run on a cluster when CIS v2 is deployed. In other words, after `rancher-cis-benchmark` is installed, you can't run scans by going to the Cluster Manager view in the Rancher UI and clicking <b>Tools > CIS Scans.</b>
 
 # About the CIS Benchmark
 
@@ -76,7 +40,7 @@ The official Benchmark documents are available through the CIS website. The sign
 
 Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
 
-From Rancher v2.5.4, the scan uses the CIS Benchmark v1.6 by default. In Rancher v2.5.0-2.5.3, the CIS Benchmark v1.5. is used.
+By default, the CIS Benchmark v1.6 is used.
 
 The Benchmark version is included in the generated report.
 
@@ -130,6 +94,15 @@ There are two types of RKE cluster scan profiles:
 The EKS and GKE cluster scan profiles are based on CIS Benchmark versions that are specific to those types of clusters.
 
 In order to pass the "Hardened" profile, you will need to follow the steps on the <a href="{{<baseurl>}}/rancher/v2.6/en/security/#rancher-hardening-guide" target="_blank">hardening guide</a> and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
+
+The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned:
+
+The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
+
+- For RKE Kubernetes clusters, the RKE Permissive 1.6 profile is the default.
+- EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
+- For RKE2 Kubernetes clusters, the RKE2 Permissive 1.5 profile is the default.
+- For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
 # About Skipped and Not Applicable Tests
 
@@ -191,7 +164,6 @@ To run a scan,
 
 **Result:** A report is generated with the scan results. To see the results, click the name of the scan that appears.
 ### Running a Scan Periodically on a Schedule
-_Available as of v2.5.4_
 
 To run a ClusterScan on a schedule,
 
@@ -251,7 +223,6 @@ To view the generated CIS scan reports,
 One can download the report from the Scans list or from the scan detail page.
 
 ### Enabling Alerting for rancher-cis-benchmark
-_Available as of v2.5.4_
 
 Alerts can be configured to be sent out for a scan that runs on a schedule.
 
@@ -269,9 +240,8 @@ alerts:
 ```
 
 ### Configuring Alerts for a Periodic Scan on a Schedule
-_Available as of v2.5.4_
 
-From Rancher v2.5.4, it is possible to run a ClusterScan on a schedule.
+It is possible to run a ClusterScan on a schedule.
 
 A scheduled scan can also specify if you should receive alerts when the scan completes.
 
@@ -305,7 +275,6 @@ To configure alerts for a scan that runs on a schedule,
 A report is generated with the scan results every time the scan runs. To see the latest results, click the name of the scan that appears.
 
 ### Creating a Custom Benchmark Version for Running a Cluster Scan 
-_Available as of v2.5.4_
  
 There could be some Kubernetes cluster setups that require custom configurations of the Benchmark tests. For example, the path to the Kubernetes config files or certs might be different than the standard location where the upstream CIS Benchmarks look for them.
 

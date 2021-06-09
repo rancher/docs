@@ -13,8 +13,6 @@ weight: 4
 
 ### Enable/Disable Windows Node Logging
 
-_Available as of v2.5.8_
-
 You can enable or disable Windows node logging by setting `global.cattle.windows.enabled` to either `true` or `false` in the `values.yaml`.
 
 By default, Windows node logging will be enabled if the Cluster Explorer UI is used to install the logging application on a Windows cluster.
@@ -25,8 +23,6 @@ When disabled, logs will still be collected from Linux nodes within the Windows 
 > Note: Currently an [issue](https://github.com/rancher/rancher/issues/32325) exists where Windows nodeAgents are not deleted when performing a `helm upgrade` after disabling Windows logging in a Windows cluster. In this scenario, users may need to manually remove the Windows nodeAgents if they are already installed.
 
 ### Working with a Custom Docker Root Directory
-
-_Applies to v2.5.6+_
 
 If using a custom Docker root directory, you can set `global.dockerRootDirectory` in `values.yaml`.
 
@@ -41,8 +37,6 @@ If there are any Windows nodes in the cluster, the change will not be applicable
 You can add your own `nodeSelector` settings and add `tolerations` for additional taints by editing the logging Helm chart values. For details, see [this page.](../taints-tolerations)
 
 ### Enabling the Logging Application to Work with SELinux
-
-_Available as of v2.5.8_
 
 > **Requirements:** Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
 

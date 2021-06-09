@@ -143,8 +143,6 @@ Option to enable or disable [recurring etcd snapshots]({{<baseurl>}}/rke/latest/
 
 ### Agent Environment Variables
 
-_Available as of v2.5.6_
-
 Option to set environment variables for [rancher agents]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 
 
@@ -157,7 +155,7 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 ![image]({{<baseurl>}}/img/rancher/cluster-options-yaml.png)
 
-### Config File Structure in Rancher v2.3.0+
+### Config File Structure in Rancher
 
 RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,]({{<baseurl>}}/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
 
@@ -281,9 +279,7 @@ Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.6/en/m
 
 Option to enable or disable Project Network Isolation.
 
-Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
-
-In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
+Project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
 ### local_cluster_auth_endpoint
 

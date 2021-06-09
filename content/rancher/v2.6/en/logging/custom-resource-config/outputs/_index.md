@@ -14,15 +14,9 @@ For the full details on configuring `Outputs` and `ClusterOutputs`, see the [Ban
 
 # Configuration
 
-- [Outputs](#outputs-2-5-8)
-- [ClusterOutputs](#clusteroutputs-2-5-8)
+- [Outputs](#outputs)
+- [ClusterOutputs](#clusteroutputs)
 
-# Changes in v2.5.8
-
-The `Outputs` and `ClusterOutputs` can now be configured by filling out forms in the Rancher UI.
-
-
-<a id="outputs-2-5-8"></a>
 # Outputs
 
 The `Output` resource defines where your `Flows` can send the log messages. `Outputs` are the final stage for a logging `Flow`.
@@ -30,6 +24,8 @@ The `Output` resource defines where your `Flows` can send the log messages. `Out
 The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it.
 
 You can use secrets in these definitions, but they must also be in the same namespace. 
+
+`Outputs` can be configured by filling out forms in the Rancher UI.
 
 For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
 
@@ -57,11 +53,11 @@ The Rancher UI provides forms for configuring the `Output` type, target, and acc
 
 For example configuration for each logging plugin supported by the logging operator, see the [logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/plugins/outputs/)
 
-<a id="clusteroutputs-2-5-8"></a>
-
 # ClusterOutputs
 
 `ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
+
+`ClusterOutputs` can be configured by filling out forms in the Rancher UI.
 
 For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
 
@@ -215,7 +211,7 @@ apiVersion: logging.banzaicloud.io/v1beta1
 
 For the final example, we create an `Output` to write logs to a destination that is not supported out of the box:
 
-> **Note on syslog** As of Rancher v2.5.4, `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
+> **Note on syslog** `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
 
 ```yaml
 apiVersion: v1

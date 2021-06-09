@@ -50,8 +50,6 @@ Kubernetes v1.17, v1.18, & v1.19 | CIS v1.5 | [Link]({{<baseurl>}}/k3s/latest/en
 
 # Rancher with SELinux
 
-_Available as of v2.5.8_
-
 [Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
 
 To use Rancher with SELinux, we recommend installing the `rancher-selinux` RPM according to the instructions on [this page.]({{<baseurl>}}/rancher/v2.6/en/security/selinux/#installing-the-rancher-selinux-rpm)

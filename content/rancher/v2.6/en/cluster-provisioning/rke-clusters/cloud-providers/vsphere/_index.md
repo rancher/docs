@@ -11,6 +11,4 @@ To use the in-tree vSphere cloud provider, you will need to use an RKE configura
 
 # Out-of-tree Cloud Provider
 
-_Available as of v2.5+_
-
 To set up the out-of-tree vSphere cloud provider, you will need to install Helm charts from the Rancher marketplace. For details, refer to [this page.](./out-of-tree)

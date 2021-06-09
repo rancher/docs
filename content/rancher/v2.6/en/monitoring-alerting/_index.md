@@ -11,7 +11,7 @@ aliases:
 
 Using Rancher, you can quickly deploy leading open-source monitoring alerting solutions onto your cluster.
 
-The `rancher-monitoring` operator, introduced in Rancher v2.5, is powered by [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/grafana/),  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), the [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), and the [Prometheus adapter.](https://github.com/DirectXMan12/k8s-prometheus-adapter) This page describes how to enable monitoring and alerting within a cluster using the new monitoring application.
+The `rancher-monitoring` operator is powered by [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/grafana/),  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), the [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), and the [Prometheus adapter.](https://github.com/DirectXMan12/k8s-prometheus-adapter) This page describes how to enable monitoring and alerting within a cluster using the new monitoring application.
 
 Rancher's solution allows users to:
 
@@ -19,8 +19,8 @@ Rancher's solution allows users to:
 - Define alerts based on metrics collected via Prometheus
 - Create custom dashboards to make it easy to visualize collected metrics via Grafana
 - Configure alert-based notifications via Email, Slack, PagerDuty, etc. using Prometheus Alertmanager
-- Defines precomputed, frequently needed or computationally expensive expressions as new time series based on metrics collected via Prometheus (only available in 2.5)
-- Expose collected metrics from Prometheus to the Kubernetes Custom Metrics API via Prometheus Adapter for use in HPA (only available in 2.5)
+- Defines precomputed, frequently needed or computationally expensive expressions as new time series based on metrics collected via Prometheus
+- Expose collected metrics from Prometheus to the Kubernetes Custom Metrics API via Prometheus Adapter for use in HPA
 
 More information about the resources that get deployed onto your cluster to support this solution can be found in the [`rancher-monitoring`](https://github.com/rancher/charts/tree/main/charts/rancher-monitoring) Helm chart, which closely tracks the upstream [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) Helm chart maintained by the Prometheus community with certain changes tracked in the [CHANGELOG.md](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/CHANGELOG.md).
 
@@ -112,8 +112,6 @@ To see the default dashboards, go to the [Grafana UI.](#grafana-ui) In the left 
 To configure Prometheus resources from the Rancher UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
 
 # Windows Cluster Support
-
-_Available as of v2.5.8_
 
 When deployed onto an RKE1 Windows cluster, Monitoring V2 will now automatically deploy a [windows-exporter](https://github.com/prometheus-community/windows_exporter) DaemonSet and set up a ServiceMonitor to collect metrics from each of the deployed Pods. This will populate Prometheus with `windows_` metrics that are akin to the `node_` metrics exported by [node_exporter](https://github.com/prometheus/node_exporter) for Linux hosts.
 

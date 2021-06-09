@@ -19,7 +19,7 @@ A Docker installation of Rancher is recommended only for development and testing
 
 The Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 
-### Privileged Access for Rancher v2.5+
+### Privileged Access for Rancher
 
 When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
@@ -55,7 +55,7 @@ If you are installing Rancher in a development or testing environment where iden
 
 Log into your Linux host, and then run the minimum installation command below.
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
+Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
 docker run -d --restart=unless-stopped \
@@ -82,7 +82,7 @@ After creating your certificate, run the Docker command below to install Rancher
 | `<PRIVATE_KEY.pem>` | The path to the private key for your certificate.            |
 | `<CA_CERTS.pem>`        | The path to the certificate authority's certificate.         |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
+Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
 docker run -d --restart=unless-stopped \
@@ -114,7 +114,7 @@ After obtaining your certificate, run the Docker command below.
 | `<FULL_CHAIN.pem>`  | The path to your full certificate chain.                     |
 | `<PRIVATE_KEY.pem>` | The path to the private key for your certificate. |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
+Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
 docker run -d --restart=unless-stopped \
@@ -144,7 +144,7 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 | ----------------- | ------------------- |
 | `<YOUR.DNS.NAME>` | Your domain address |
 
-As of Rancher v2.5, privileged access is [required.](#privileged-access-for-rancher-v2-5)
+Privileged access is [required.](#privileged-access-for-rancher)
 
 ```
 docker run -d --restart=unless-stopped \
