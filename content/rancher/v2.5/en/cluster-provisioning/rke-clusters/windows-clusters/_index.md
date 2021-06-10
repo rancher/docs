@@ -89,6 +89,8 @@ The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run 
 
 The `worker` nodes, which is where your workloads will be deployed on, will typically be Windows nodes, but there must be at least one `worker` node that is run on Linux in order to run the Rancher cluster agent, DNS, metrics server, and Ingress related containers.
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 We recommend the minimum three-node architecture listed in the table below, but you can always add additional Linux and Windows workers to scale up your cluster for redundancy:
 
 <a id="guide-architecture"></a>

@@ -51,6 +51,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 
 Add one or more node pools to your cluster. For more information about node pools, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools)
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.
 1. Enter a **Cluster Name**.
