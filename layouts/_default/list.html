@@ -30,6 +30,26 @@
           <strong>We are transitioning to versioned documentation.</strong> The v2.x docs will no longer be maintained. For Rancher v2.5 docs, go <a href="https://rancher.com/docs/rancher/v2.5/en/">here.</a> For Rancher v2.0-v2.4 docs, go <a href="https://rancher.com/docs/rancher/v2.0-v2.4/en/">here.</a>
       </div>
       {{end}}
+      {{ if in .Dir "/rancher/v2.5/en/pipelines/" }}
+      <div class="alert alert-notice">
+          <strong>As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by <a href="https://rancher.com/docs/rancher/v2.5/en/fleet">Fleet</a>, available in Cluster Explorer.</strong>
+      </div>
+      {{end}}
+      {{ if in .Dir "/rancher/v2.x/en/pipelines/" }}
+      <div class="alert alert-notice">
+          <strong>As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by <a href="https://rancher.com/docs/rancher/v2.5/en/fleet">Fleet</a>, available in Cluster Explorer.</strong>
+      </div>
+      {{end}}
+      {{ if in .Dir "/rancher/v2.5/en/deploy-across-clusters/multi-cluster-apps/" }}
+      <div class="alert alert-notice">
+          <strong>As of Rancher v2.5, we now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/fleet">Fleet</a> for deploying apps across clusters.</a>
+      </div>
+      {{end}}
+      {{ if in .Dir "/rancher/v2.x/en/deploy-across-clusters/multi-cluster-apps/" }}
+      <div class="alert alert-notice">
+          <strong>As of Rancher v2.5, we now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/fleet">Fleet</a> for deploying apps across clusters.</a>
+      </div>
+      {{end}}
       
       <div class="
         col-xl-3
