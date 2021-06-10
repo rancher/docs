@@ -77,6 +77,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 
 Use Rancher to create a Kubernetes cluster in vSphere.
 
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
+
 1. Navigate to **Clusters** in the **Global** view.
 1. Click **Add Cluster** and select the **vSphere** infrastructure provider.
 1. Enter a **Cluster Name.**

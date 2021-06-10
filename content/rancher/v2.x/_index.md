@@ -1,5 +1,5 @@
 ---
 title: v2.x
-weight: 4
+weight: 2
 showBreadcrumb: false
 ---
