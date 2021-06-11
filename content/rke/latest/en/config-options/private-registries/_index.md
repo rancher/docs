@@ -15,7 +15,18 @@ private_registries:
       password: mypassword
 ```
 
-> **Note:** If you are using a Docker Hub registry, you can omit the `url` or set it to `docker.io`.
+If you are using a Docker Hub registry, you can omit the `url` or set it to `docker.io`.
+
+> **Note:** Although the directive is named `url`, there is no need to prefix the host or IP address with `https://`.
+
+Valid `url` examples include:
+
+```yaml
+url: registry.com
+url: registry.com:5555
+url: 1.1.1.1
+url: 1.1.1.1:5555/artifactory
+```
 
 ### Default Registry
 
