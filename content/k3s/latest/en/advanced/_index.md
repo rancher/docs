@@ -388,3 +388,9 @@ It is recommended to turn off firewalld:
 ```
 systemctl disable firewalld --now
 ```
+
+If enabled, it is required to disable nm-cloud-setup and reboot the node:
+```
+systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
+reboot
+```
