@@ -22,6 +22,7 @@ This section contains advanced information describing the different ways you can
 - [Enabling cgroups for Raspbian Buster](#enabling-cgroups-for-raspbian-buster)
 - [SELinux Support](#selinux-support)
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
+- [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 
 # Certificate Rotation
 
@@ -387,4 +388,58 @@ Using a custom `--data-dir` under SELinux is not supported. To customize it, you
 It is recommended to turn off firewalld:
 ```
 systemctl disable firewalld --now
+```
+
+# Enabling Lazy Pulling of eStargz (Experimental)
+
+## What's lazy pulling and eStargz?
+
+Throughout the container lifecycle, pulling images is known as one of the time-consuming steps in the container lifecycle.
+According to [Harter, et al.](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter),
+
+> pulling packages accounts for 76% of container start time, but only 6.4% of that data is read
+
+For solving this issue, k3s experimentally supports *lazy pulling* as a method of pulling images.
+This allows k3s to start a container without waiting for the completion of pulling the entire image.
+Instead, the necessary chunks of contents (e.g. individual files) are fetched on-demand. 
+Especially for large images, this technique can shorten the container startup latency.
+
+For enabling lazy pulling, the target image needs to be formatted as [*eStargz*](https://github.com/containerd/stargz-snapshotter/blob/v0.6.4/docs/stargz-estargz.md).
+This is an OCI-alternative but 100% OCI-compatible image format for lazy pulling.
+Because of the compatibility, eStargz can be pushed to standard container registries (e.g. ghcr.io) as well as this is *still runnable* even on eStargz-agnostic runtimes.
+
+eStargz is developed based on [stargz format proposed by Google CRFS project](https://github.com/google/crfs) but comes with practical features including content verification and performance optimization.
+For more details about lazy pulling and eStargz, please refer to [Stargz Snapshotter project repository](https://github.com/containerd/stargz-snapshotter).
+
+## Configure k3s for lazy pulling of eStargz
+
+As shown in the following, `--snapshotter=stargz` option is needed for k3s server and agent.
+
+```
+k3s server --snapshotter=stargz
+```
+
+With this configuration, you can perform lazy pulling for eStagz-formatted images.
+The following Pod manifest uses eStargz-formatted `node:13.13.0` image (`ghcr.io/stargz-containers/node:13.13.0-esgz`).
+k3s performs lazy pulling for this image.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodejs
+spec:
+  containers:
+  - name: nodejs-estargz
+    image: ghcr.io/stargz-containers/node:13.13.0-esgz
+    command: ["node"]
+    args:
+    - -e
+    - var http = require('http');
+      http.createServer(function(req, res) {
+        res.writeHead(200);
+        res.end('Hello World!\n');
+      }).listen(80);
+    ports:
+    - containerPort: 80
 ```
