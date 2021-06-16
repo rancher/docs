@@ -2,20 +2,17 @@
 title: Logging Best Practices
 weight: 1
 aliases:
-  - /rancher/v2.6/en/best-practices/v2.5/rancher-managed/logging
+  - /rancher/v2.6/en/best-practices/v2.6/rancher-managed/logging
 ---
 In this guide, we recommend best practices for cluster-level logging and application logging.
 
-- [Changes in Logging in Rancher v2.5](#changes-in-logging-in-rancher-v2-5)
 - [Cluster-level Logging](#cluster-level-logging)
 - [Application Logging](#application-logging)
 - [General Best Practices](#general-best-practices)
 
-# Changes in Logging in Rancher v2.5
-
 Before Rancher v2.5, logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
 
-Logging in 2.5 has been completely overhauled to provide a more flexible experience for log aggregation. With the new logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options. 
+Rancher provides a flexible experience for log aggregation. With the logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options. 
 
 "Under the hood", Rancher logging uses the Banzai Cloud logging operator. We provide manageability of this operator (and its resources), and tie that experience in with managing your Rancher clusters. 
 
@@ -33,7 +30,7 @@ Once you have created these _ClusterOutput_ objects, create a _ClusterFlow_ to c
 
 _ClusterFlows_ have the ability to collect logs from all containers on all hosts in the Kubernetes cluster. This works well in cases where those containers are part of a Kubernetes pod; however, RKE containers exist outside of the scope of Kubernetes.
 
-Currently (as of v2.5.1) the logs from RKE containers are collected, but are not able to easily be filtered. This is because those logs do not contain information as to the source container (e.g. `etcd` or `kube-apiserver`). 
+Currently the logs from RKE containers are collected, but are not able to easily be filtered. This is because those logs do not contain information as to the source container (e.g. `etcd` or `kube-apiserver`). 
 
 A future release of Rancher will include the source container name which will enable filtering of these component logs. Once that change is made, you will be able to customize a _ClusterFlow_ to retrieve **only** the Kubernetes component logs, and direct them to an appropriate output.
 

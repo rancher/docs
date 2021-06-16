@@ -9,7 +9,7 @@ aliases:
 
 This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
-As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
+Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
 
 The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
 

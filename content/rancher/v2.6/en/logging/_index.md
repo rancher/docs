@@ -78,7 +78,7 @@ For a list of options that can be configured when the logging application is ins
 
 ### Windows Support
 
-As of Rancher v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
+Logging support for Windows clusters is available and logs can be collected from Windows nodes.
 
 For details on how to enable or disable Windows node logging, see [this section.](./helm-chart-options/#enable-disable-windows-node-logging)
 
@@ -93,8 +93,6 @@ For information on how to use taints and tolerations with the logging applicatio
 
 
 ### Logging V2 with SELinux
-
-_Available as of v2.5.8_
 
 For information on enabling the logging application for SELinux-enabled nodes, see [this section.](./helm-chart-options/#enabling-the-logging-application-to-work-with-selinux)
 

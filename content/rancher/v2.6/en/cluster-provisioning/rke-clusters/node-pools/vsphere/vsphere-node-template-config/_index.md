@@ -6,8 +6,6 @@ aliases:
   - /rancher/v2.6/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids
 ---
 
-The following node template configuration reference applies to Rancher v2.3.3+.
-
 - [Account Access](#account-access)
 - [Scheduling](#scheduling)
 - [Instance Options](#instance-options)

@@ -2,17 +2,16 @@
 title: Backups and Disaster Recovery
 weight: 5
 aliases:
-  - /rancher/v2.6/en/backups/v2.5
+  - /rancher/v2.6/en/backups/v2.6
 ---
 
 In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
 
-As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore Rancher. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/main/charts/rancher-backup)
+The `rancher-backup` operator is used to backup and restore Rancher on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps & Marketplace** page, or by using the Helm CLI. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/main/charts/rancher-backup)
 
 The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
-- [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
-  - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
+- [Backup and Restore for Rancher installed with Docker](#backup-and-restore-for-rancher-installed-with-docker)
 - [How Backups and Restores Work](#how-backups-and-restores-work)
 - [Installing the rancher-backup Operator](#installing-the-rancher-backup-operator)
   - [Installing rancher-backup with the Rancher UI](#installing-rancher-backup-with-the-rancher-ui)
@@ -24,19 +23,9 @@ The backup-restore operator needs to be installed in the local cluster, and only
 - [Default Storage Location Configuration](#default-storage-location-configuration)
   - [Example values.yaml for the rancher-backup Helm Chart](#example-values-yaml-for-the-rancher-backup-helm-chart)
 
-# Changes in Rancher v2.5
+# Backup and Restore for Rancher installed with Docker
 
-The new `rancher-backup` operator allows Rancher to be backed up and restored on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps & Marketplace** page, or by using the Helm CLI.
-
-Previously, the way that cluster data was backed up depended on the type of Kubernetes cluster that was used. 
-
-In Rancher v2.4, it was only supported to install Rancher on two types of Kubernetes clusters: an RKE cluster, or a K3s cluster with an external database. If Rancher was installed on an RKE cluster, RKE would be used to take a snapshot of the etcd database and restore the cluster. If Rancher was installed on a K3s cluster with an external database, the database would need to be backed up and restored using the upstream documentation for the database.
-
-In Rancher v2.5, it is now supported to install Rancher hosted Kubernetes clusters, such as Amazon EKS clusters, which do not expose etcd to a degree that would allow snapshots to be created by an external tool. etcd doesn't need to be exposed for `rancher-backup` to work, because the operator gathers resources by making calls to `kube-apiserver`.
-
-### Backup and Restore for Rancher v2.5 installed with Docker
-
-For Rancher installed with Docker, refer to the same steps used up till 2.5 for [backups](./docker-installs/docker-backups) and [restores.](./docker-installs/docker-restores)
+For Rancher installed with Docker, refer to [this page](./docker-installs/docker-backups) to perform backups and [this page](./docker-installs/docker-restores) to perform restores.
 
 # How Backups and Restores Work
 

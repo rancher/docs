@@ -5,8 +5,6 @@ aliases:
   - /rancher/v2.6/en/cis-scans/v2.5/custom-benchmark
 ---
 
-_Available as of v2.5.4_
-
 Each Benchmark Version defines a set of test configuration files that define the CIS tests to be run by the <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench</a> tool.
 The `rancher-cis-benchmark` application installs a few default Benchmark Versions which are listed under CIS Benchmark application menu.
  

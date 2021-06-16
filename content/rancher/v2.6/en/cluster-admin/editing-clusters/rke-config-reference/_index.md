@@ -27,9 +27,7 @@ The \container networking interface (CNI) that powers networking for your cluste
 
 If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication. 
 
-Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
-
-In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
+Project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
 ### Nginx Ingress
 

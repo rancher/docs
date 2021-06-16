@@ -52,7 +52,6 @@ For more information, refer to the [official Prometheus documentation about conf
 When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
 
 # Creating Receivers in the Rancher UI
-_Available as of v2.5.4_
 
 > **Prerequisites:**
 >
@@ -81,14 +80,6 @@ For notification mechanisms not natively supported by AlertManager, integration 
 Currently the Rancher Alerting Drivers app provides access to the following integrations:
 - Microsoft Teams, based on the [prom2teams](https://github.com/idealista/prom2teams) driver
 - SMS, based on the [Sachet](https://github.com/messagebird/sachet) driver
-
-### Changes in Rancher v2.5.8
-
-Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Rancher UI.
-
-### Changes in Rancher v2.5.4
-
-Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
 The following types of receivers can be configured in the Rancher UI:
 

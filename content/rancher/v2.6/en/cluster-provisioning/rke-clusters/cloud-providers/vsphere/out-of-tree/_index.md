@@ -3,7 +3,6 @@ title: How to Configure Out-of-tree vSphere Cloud Provider
 shortTitle: Out-of-tree Cloud Provider
 weight: 10
 ---
-_Available as of v2.5+_
 
 Kubernetes is moving away from maintaining cloud providers in-tree. vSphere has an out-of-tree cloud provider that can be used by installing the vSphere cloud provider and cloud storage plugins.
 

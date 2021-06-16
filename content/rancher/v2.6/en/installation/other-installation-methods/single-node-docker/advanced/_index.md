@@ -25,7 +25,7 @@ Use the command example to start a Rancher container with your private CA certif
 
 The example below is based on having the CA root certificates in the `/host/certs` directory on the host and mounting this directory on `/container/certs` inside the Rancher container.
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
 
 ```
 docker run -d --restart=unless-stopped \
@@ -44,7 +44,7 @@ The API Audit Log writes to `/var/log/auditlog` inside the rancher container by 
 
 See [API Audit Log]({{<baseurl>}}/rancher/v2.6/en/installation/api-auditing) for more information and options.
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
 
 ```
 docker run -d --restart=unless-stopped \
@@ -67,7 +67,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
 
 See [TLS settings]({{<baseurl>}}/rancher/v2.6/en/admin-settings/tls-settings) for more information and options.
 
@@ -93,7 +93,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
 
 ### Running `rancher/rancher` and `rancher/rancher-agent` on the Same Node
 
@@ -112,4 +112,4 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
+Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)

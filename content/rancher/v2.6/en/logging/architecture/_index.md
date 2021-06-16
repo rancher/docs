@@ -7,17 +7,6 @@ This section summarizes the architecture of the Rancher logging application.
 
 For more details about how the Banzai Cloud Logging operator works, see the [official documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/#architecture)
 
-### Changes in Rancher v2.5
-
-The following changes were introduced to logging in Rancher v2.5:
-
-- The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
-- [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs, and [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the `Outputs`. Previously, only Fluentd was used.
-- Logging can be configured with a Kubernetes manifest, because logging now uses a Kubernetes operator with Custom Resource Definitions.
-- We now support filtering logs.
-- We now support writing logs to multiple `Outputs`.
-- We now always collect Control Plane and etcd logs.
-
 ### How the Banzai Cloud Logging Operator Works
 
 The Logging operator automates the deployment and configuration of a Kubernetes logging pipeline. It deploys and configures a Fluent Bit DaemonSet on every node to collect container and application logs from the node file system. 

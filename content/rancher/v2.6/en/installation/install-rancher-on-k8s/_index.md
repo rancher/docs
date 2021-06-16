@@ -44,7 +44,7 @@ The following CLI tools are required for setting up the Kubernetes cluster. Plea
 
 ### Ingress Controller (For Hosted Kubernetes)
 
-To deploy Rancher v2.5 on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.](#3-choose-your-ssl-configuration)
+To deploy Rancher on a hosted Kubernetes cluster such as EKS, GKE, or AKS, you should deploy a compatible Ingress controller first to configure [SSL termination on Rancher.](#3-choose-your-ssl-configuration)
 
 For an example of how to deploy an ingress on EKS, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
 

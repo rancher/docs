@@ -4,9 +4,7 @@ shortTitle: Windows Clusters
 weight: 5
 ---
 
-_Available as of v2.5.8_
-
-Starting at Monitoring V2 14.5.100 (used by default in Rancher 2.5.8), Monitoring V2 can now be deployed on a Windows cluster and will scrape metrics from Windows nodes using [prometheus-community/windows_exporter](https://github.com/prometheus-community/windows_exporter) (previously named `wmi_exporter`).
+Monitoring V2 can be deployed on a Windows cluster and will scrape metrics from Windows nodes using [prometheus-community/windows_exporter](https://github.com/prometheus-community/windows_exporter) (previously named `wmi_exporter`).
 
 - [Comparison to Monitoring V1](#comparison-to-monitoring-v1)
 - [Cluster Requirements](#cluster-requirements)
@@ -22,7 +20,7 @@ In addition, Monitoring V2 for Windows will no longer require users to keep port
 
 Monitoring V2 for Windows can only scrape metrics from Windows hosts that have a minimum `wins` version of v0.1.0.  To be able to fully deploy Monitoring V2 for Windows, all of your hosts must meet this requirement.
 
-If you provision a fresh RKE1 cluster in Rancher 2.5.8, your cluster should already meet this requirement.
+If you provision a fresh RKE1 cluster in Rancher, your cluster should already meet this requirement.
 
 ### Upgrading Existing Clusters to wins v0.1.0
 

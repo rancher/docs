@@ -28,7 +28,7 @@ The following table lists the ports that need to be open to and from nodes that 
 
 The port requirements differ based on the Rancher server architecture.
 
-As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. For Rancher installs on a K3s, RKE, or RKE2 Kubernetes cluster, refer to the tabs below. For other Kubernetes distributions, refer to the distribution's documentation for the port requirements for cluster nodes.
+Rancher can be installed on any Kubernetes cluster. For Rancher installs on a K3s, RKE, or RKE2 Kubernetes cluster, refer to the tabs below. For other Kubernetes distributions, refer to the distribution's documentation for the port requirements for cluster nodes.
 
 > **Notes:**
 >

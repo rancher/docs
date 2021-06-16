@@ -10,18 +10,11 @@ For the full details on configuring `Flows` and `ClusterFlows`, see the [Banzai 
 
 # Configuration
 
-- [Flows](#flows-2-5-8)
-  - [Matches](#matches-2-5-8)
-  - [Filters](#filters-2-5-8)
-  - [Outputs](#outputs-2-5-8)
-- [ClusterFlows](#clusterflows-2-5-8)
-
-# Changes in v2.5.8
-
-The `Flows` and `ClusterFlows` can now be configured by filling out forms in the Rancher UI.
-
-
-<a id="flows-2-5-8"></a>
+- [Flows](#flows)
+  - [Matches](#matches)
+  - [Filters](#filters)
+  - [Outputs](#outputs)
+- [ClusterFlows](#clusterflows)
 
 # Flows
 
@@ -29,10 +22,9 @@ A `Flow` defines which logs to collect and filter and which output to send the l
 
 The `Flow` is a namespaced resource, which means logs will only be collected from the namespace that the `Flow` is deployed in.
 
+`Flows` can be configured by filling out forms in the Rancher UI. 
+
 For more details about the `Flow` custom resource, see [FlowSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/flow_types/)
-
-
-<a id="matches-2-5-8"></a>
 
 ### Matches
 
@@ -44,8 +36,6 @@ Matches can be configured by filling out the `Flow` or `ClusterFlow` forms in th
 
 For detailed examples on using the match statement, see the [official documentation on log routing.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/log-routing/)
 
-<a id="filters-2-5-8"></a>
-
 ### Filters
 
 You can define one or more filters within a `Flow`. Filters can perform various actions on the logs, for example, add additional data, transform the logs, or parse values from the records. The filters in the `Flow` are applied in the order in the definition.
@@ -54,19 +44,17 @@ For a list of filters supported by the Banzai Cloud Logging operator, see [this 
 
 Filters need to be configured in YAML.
 
-<a id="outputs-2-5-8"></a>
-
 ### Outputs
 
 This `Output` will receive logs from the `Flow`. Because the `Flow` is a namespaced resource, the `Output` must reside in same namespace as the `Flow`.
 
 `Outputs` can be referenced when filling out the `Flow` or `ClusterFlow` forms in the Rancher UI.
 
-<a id="clusterflows-2-5-8"></a>
-
 # ClusterFlows
 
 Matches, filters and `Outputs` are configured for `ClusterFlows` in the same way that they are configured for `Flows`. The key difference is that the `ClusterFlow` is scoped at the cluster level and can configure log collection across all namespaces.
+
+`ClusterFlows` can be configured by filling out forms in the Rancher UI.
 
 After `ClusterFlow` selects logs from all namespaces in the cluster, logs from the cluster will be collected and logged to the selected `ClusterOutput`.
 
