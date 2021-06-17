@@ -24,7 +24,7 @@ The following steps will quickly deploy a Rancher Server on AWS with a single no
 1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
 1. Edit `terraform.tfvars` and customize the following variables:
-    - `aws_access_key` - Amazon AWS Access Key 
+    - `aws_access_key` - Amazon AWS Access Key
     - `aws_secret_key` - Amazon AWS Secret Key
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
@@ -45,7 +45,7 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    rancher_server_url = https://rancher.xx.xx.xx.xx.nip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 

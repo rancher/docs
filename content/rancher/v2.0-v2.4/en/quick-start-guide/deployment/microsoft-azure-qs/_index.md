@@ -27,7 +27,7 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
 1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
 1. Edit `terraform.tfvars` and customize the following variables:
-    - `azure_subscription_id` - Microsoft Azure Subscription ID 
+    - `azure_subscription_id` - Microsoft Azure Subscription ID
     - `azure_client_id` - Microsoft Azure Client ID
     - `azure_client_secret` - Microsoft Azure Client Secret
     - `azure_tenant_id` - Microsoft Azure Tenant ID
@@ -51,7 +51,7 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    rancher_server_url = https://rancher.xx.xx.xx.xx.nip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 

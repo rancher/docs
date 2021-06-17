@@ -4,7 +4,7 @@ description: Ingresses can be added for workloads to provide load balancing, SSL
 weight: 3042
 aliases:
   - /rancher/v2.0-v2.4/en/tasks/workloads/add-ingress/
-  - /rancher/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/ingress  
+  - /rancher/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/ingress
 ---
 
 Ingress can be added for workloads to provide load balancing, SSL termination and host/path based routing. When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/globaldns/).
@@ -14,24 +14,24 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 1. Enter a **Name** for the ingress.
 1. Select an existing **Namespace** from the drop-down list. Alternatively, you can create a new namespace on the fly by clicking **Add to a new namespace**.
 1. Create ingress forwarding **Rules**. For help configuring the rules, refer to [this section.](#ingress-rule-configuration) If any of your ingress rules handle requests for encrypted ports, add a certificate to encrypt/decrypt communications.
-1. **Optional:** click **Add Rule** to create additional ingress rules. For example, after you create ingress rules to direct requests for your hostname, you'll likely want to create a default backend to handle 404s. 
+1. **Optional:** click **Add Rule** to create additional ingress rules. For example, after you create ingress rules to direct requests for your hostname, you'll likely want to create a default backend to handle 404s.
 
 **Result:** Your ingress is added to the project. The ingress begins enforcing your ingress rules.
 
 
 # Ingress Rule Configuration
 
-- [Automatically generate a xip.io hostname](#automatically-generate-a-xip-io-hostname)
+- [Automatically generate a nip.io hostname](#automatically-generate-a-nip-io-hostname)
 - [Specify a hostname to use](#specify-a-hostname-to-use)
 - [Use as the default backend](#use-as-the-default-backend)
 - [Certificates](#certificates)
 - [Labels and Annotations](#labels-and-annotations)
 
-### Automatically generate a xip.io hostname
+### Automatically generate a nip.io hostname
 
-If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses [xip.io](http://xip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
+If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses [nip.io](http://nip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
 
->**Note:** To use this option, you must be able to resolve to `xip.io` addresses.
+>**Note:** To use this option, you must be able to resolve to `nip.io` addresses.
 
 1. Add a **Target Backend**. By default, a workload is added to the ingress, but you can add more targets by clicking either **Service** or **Workload**.
 1. **Optional:** If you want specify a workload or service when a request is sent to a particular hostname path, add a **Path** for the target. For example, if you want requests for `www.mysite.com/contact-us` to be sent to a different service than `www.mysite.com`, enter `/contact-us` in the **Path** field. Typically, the first rule that you create does not include a path.
