@@ -21,17 +21,17 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 # Ingress Rule Configuration
 
-- [Automatically generate a nip.io hostname](#automatically-generate-a-nip-io-hostname)
+- [Automatically generate a sslip.io hostname](#automatically-generate-a-sslip-io-hostname)
 - [Specify a hostname to use](#specify-a-hostname-to-use)
 - [Use as the default backend](#use-as-the-default-backend)
 - [Certificates](#certificates)
 - [Labels and Annotations](#labels-and-annotations)
 
-### Automatically generate a nip.io hostname
+### Automatically generate a sslip.io hostname
 
-If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses [nip.io](http://nip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
+If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses [sslip.io](http://sslip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
 
->**Note:** To use this option, you must be able to resolve to `nip.io` addresses.
+>**Note:** To use this option, you must be able to resolve to `sslip.io` addresses.
 
 1. Add a **Target Backend**. By default, a workload is added to the ingress, but you can add more targets by clicking either **Service** or **Workload**.
 1. **Optional:** If you want specify a workload or service when a request is sent to a particular hostname path, add a **Path** for the target. For example, if you want requests for `www.mysite.com/contact-us` to be sent to a different service than `www.mysite.com`, enter `/contact-us` in the **Path** field. Typically, the first rule that you create does not include a path.

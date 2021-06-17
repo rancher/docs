@@ -61,11 +61,11 @@ Now that the application is up and running it needs to be exposed so that other 
 
 9.  Leave everything else as default and click **Save**.
 
-**Result:**  The application is assigned a `nip.io` address and exposed. It may take a minute or two to populate.
+**Result:**  The application is assigned a `sslip.io` address and exposed. It may take a minute or two to populate.
 
 ### View Your Application
 
-From the **Load Balancing** page, click the target link, which will look something like `hello.default.xxx.xxx.xxx.xxx.nip.io > hello-world`.
+From the **Load Balancing** page, click the target link, which will look something like `hello.default.xxx.xxx.xxx.xxx.sslip.io > hello-world`.
 
 Your application will open in a separate window.
 
