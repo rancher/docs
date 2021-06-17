@@ -30,7 +30,7 @@ If you don't install CoreDNS, you will need to install a cluster DNS provider yo
 
 Traefik is deployed by default when starting the server. For more information see [Auto Deploying Manifests]({{<baseurl>}}/k3s/latest/en/advanced/#auto-deploying-manifests). The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml` and any changes made to this file will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
 
-The Traefik ingress controller will use ports 80, 443, and 8080 on the host (i.e. these will not be usable for HostPort or NodePort).
+The Traefik ingress controller will use ports 80 and 443 on the host (i.e. these will not be usable for HostPort or NodePort).
 
 Traefik can be configured by editing the `traefik.yaml` file. To prevent k3s from using or overwriting the modified version, deploy k3s with `--no-deploy traefik` and store the modified copy in the `k3s/server/manifests` directory. For more information, refer to the official [Traefik for Helm Configuration Parameters.](https://github.com/helm/charts/tree/master/stable/traefik#configuration)
 
