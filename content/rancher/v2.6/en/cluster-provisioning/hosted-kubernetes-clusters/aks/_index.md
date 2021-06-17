@@ -15,6 +15,7 @@ You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Ser
 - [2. Create the AKS Cluster](#2-create-the-aks-cluster)
 - [Role-based Access Control](#role-based-access-control)
 - [AKS Cluster Configuration Reference](#aks-cluster-configuration-reference)
+- [Private Clusters](#private-clusters)
 - [Minimum AKS Permissions](#minimum-aks-permissions)
 - [Syncing](#syncing)
 
@@ -27,11 +28,10 @@ To interact with Azure APIs, an AKS cluster requires an Azure Active Directory (
 
 Before creating the service principal, you need to obtain the following information from the [Microsoft Azure Portal](https://portal.azure.com):
 
-- Your subscription ID
-- Your tenant ID
-- An app ID (also called a client ID)
+- Subscription ID
+- Tenant ID
+- Client ID
 - Client secret
-- A resource group
 
 The below sections describe how to set up these prerequisites using either the Azure command line tool or the Azure portal.
 
@@ -106,39 +106,44 @@ To give role-based access to your service principal,
 
 # 1. Create the AKS Cloud Credentials
 
-1. From the **Cluster Management** global app, click **Cloud Credentials.**
+1. In the Rancher UI, click **☰ > Cluster Management.**
+1. Click **Cloud Credentials.**
 1. Click **Create.**
-1. Click **Azure AKS.**
-1. Fill out the form. For help with filling out the form, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference)
+1. Click **Azure.**
+1. Fill out the form. For help with filling out the form, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference/#cloud-credentials)
 
 # 2. Create the AKS Cluster
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. From the **Cluster Management** global app, click **Clusters.**
-1. Click **Create.**
-1. Choose **Azure AKS**.
-1. Enter a **Cluster Name**.
-1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. In the Rancher UI, click **☰ > Cluster Management.**
+1. In the **Clusters** section, click **Create.**
+1. Click **Azure AKS.**
 1. Fill out the form. For help with filling out the form, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference)
 
 **Result:** Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
-
-- `Default`, containing the `default` namespace
-- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
-
 # Role-based Access Control
-Upon registering or importing a cluster won't work without RBAC enabled.
+When provisioning an AKS cluster in the Rancher UI, RBAC is not configurable because it is required to be enabled.
+
+RBAC is required for AKS clusters that are registered or imported into Rancher.
 
 # AKS Cluster Configuration Reference
 
 For more information about how to configure AKS clusters from the Rancher UI, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference)
 
+# Private Clusters
 
+Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private, with some exceptions. In a private cluster, the control plane does not have a public endpoint.
+
+In order to a to be able to connect with the AKS Kubernetes API server,
+
+- The Rancher agent needs to be deployed from a node that has access to the AKS cluster's Azure Virtual Network (VNet).
+- Rancher needs to be running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+
+For more information about connecting to an AKS private cluster, see the [AKS documentation.](https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster)
 
 # Syncing
 

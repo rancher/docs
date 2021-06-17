@@ -16,6 +16,7 @@ The cluster configuration options depend on the type of Kubernetes cluster:
 - [RKE Cluster Configuration](./rke-config-reference)
 - [EKS Cluster Configuration](./eks-config-reference)
 - [GKE Cluster Configuration](./gke-config-reference)
+- [AKS Cluster Configuration](./aks-config-reference)
 
 ### Cluster Management Capabilities by Cluster Type
 
