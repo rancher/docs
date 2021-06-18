@@ -28,7 +28,7 @@ The resource quota includes two limits, which you set while creating or editing 
 In the following diagram, a Rancher administrator wants to apply a resource quota that sets the same CPU and memory limit for every namespace in their project (`Namespace 1-4`). However, in Rancher, the administrator can set a resource quota for the project (`Project Resource Quota`) rather than individual namespaces. This quota includes resource limits for both the entire project (`Project Limit`) and individual namespaces (`Namespace Default Limit`). Rancher then propagates the `Namespace Default Limit` quotas to each namespace (`Namespace Resource Quota`) when created.
 
 <sup>Rancher: Resource Quotas Propagating to Each Namespace</sup>
-![Rancher Resource Quota Implementation]({{<baseurl>}}/img/rancher/rancher-resource-quota.svg)
+![Rancher Resource Quota Implementation]({{<baseurl>}}/img/rancher/rancher-resource-quota.png)
 
 Let's highlight some more nuanced functionality. If a quota is deleted at the project level, it will also be removed from all namespaces contained within that project, despite any overrides that may exist. Further, updating an existing namespace default limit for a quota at the project level will not result in that value being propagated to existing namespaces in the project; the updated value will only be applied to newly created namespaces in that project. To update a namespace default limit for existing namespaces you can delete and subsequently recreate the quota at the project level with the new default value. This will result in the new default value being applied to all existing namespaces in the project.
 
