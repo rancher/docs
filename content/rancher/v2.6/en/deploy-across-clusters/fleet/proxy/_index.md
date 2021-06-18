@@ -17,12 +17,12 @@ For private nodes or private clusters, the environment variables need to be set 
 
 # Required Environment Variables
 
-When adding Fleet agent environment variables for the proxy, replace PROXY_IP with your private proxy IP.
+When adding Fleet agent environment variables for the proxy, replace <PROXY_IP> with your private proxy IP.
 
 | Variable Name | Value |
 |------------------|--------|
-| `HTTP_PROXY` | http://PROXY_IP:8888 |
-| `HTTPS_PROXY` | http://PROXY_IP:8888
+| `HTTP_PROXY` | http://<PROXY_IP>:8888 |
+| `HTTPS_PROXY` | http://<PROXY_IP>:8888
 | `NO_PROXY`     | 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local |
 
 # Setting Environment Variables in the Rancher UI
