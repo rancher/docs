@@ -11,7 +11,7 @@ weight: 3
 
 [Grafana](https://grafana.com/grafana/) allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data driven culture.
 
-To see the default dashboards for time series data visualization, go to the Grafana UI. In the left navigation bar, click the icon with four boxes and click **Manage.**
+To see the default dashboards for time series data visualization, go to the Grafana UI.
 
 ### Customizing Grafana
 
@@ -35,6 +35,8 @@ When `rancher-monitoring` is installed, the Prometheus Alertmanager UI is deploy
 
 ### Accessing the Alertmanager UI
 
+The Alertmanager UI lets you see the most recently fired alerts.
+
 > **Prerequisite:** The `rancher-monitoring` application must be installed.
 
 To see the Alertmanager UI, go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Alertmanager.**
@@ -49,10 +51,12 @@ For more information on configuring Alertmanager in Rancher, see [this page.](./
 
 ### Viewing Default Alerts
 
-To see the default alerts, go to the [Alertmanager UI](./alertmanager-ui) and click **Expand all groups.**
+To see alerts that are fired by default, go to the [Alertmanager UI](./alertmanager-ui) and click **Expand all groups.**
 
 
 # Prometheus UI
+
+By default, the [kube-state-metrics service](https://github.com/kubernetes/kube-state-metrics) provides a wealth of information about CPU and memory utilization to the monitoring application. These metrics cover Kubernetes resources across namespaces. This means that in order to see resource metrics for a service, you don't need to create a new ServiceMonitor for it. Because the data is already in the time series database, you can go to the Prometheus UI and run a PromQL query to get the information. The same query can be used to configure a Grafana dashboard to show a graph of those metrics over time.
 
 To see the Prometheus UI, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Prometheus Graph.**
 
@@ -61,7 +65,7 @@ To see the Prometheus UI, install `rancher-monitoring`. Then go to the **Cluster
 
 ### Viewing the Prometheus Targets
 
-To see what services you are monitoring, you will need to see your targets. 
+To see what services you are monitoring, you will need to see your targets. Targets are set up by ServiceMonitors and PodMonitors as sources to scrape metrics from. You won't need to directly edit targets, but the Prometheus UI can be useful for giving you an overview of all of the sources of metrics that are being scraped.
 
 To see the Prometheus Targets, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Prometheus Targets.**
 
@@ -70,9 +74,13 @@ To see the Prometheus Targets, install `rancher-monitoring`. Then go to the **Cl
 
 ### Viewing the PrometheusRules
 
+When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Alertmanager to figure out which Route should receive a certain Alert.
+
 To see the PrometheusRules, install `rancher-monitoring`. Then go to the **Cluster Explorer.** In the top left corner, click **Cluster Explorer > Monitoring.** Then click **Prometheus Rules.**
+
+You can also see the rules in the Prometheus UI:
 
 <figcaption>Rules in the Prometheus UI</figcaption>
 ![PrometheusRules UI]({{<baseurl>}}/img/rancher/prometheus-rules-ui.png)
 
-For more information on PrometheusRules in Rancher, see [this page.](./configuration/prometheusrules)
+For more information on configuring PrometheusRules in Rancher, see [this page.](./configuration/prometheusrules)
