@@ -45,18 +45,20 @@ Advantages of Rancher charts include:
 
 # Chart Directory Structure
 
-The following table demonstrates the directory structure for a chart, which can be found in a chart directory: `charts/<APPLICATION>/<APP_VERSION>/`. This information is helpful when customizing charts for a custom catalog. Files denoted with **Rancher Specific** are specific to Rancher charts, but are optional for chart customization.
+The following table demonstrates the directory structure for a Rancher Chart. The "charts" directory is the top level directory under the repository base. Adding the repository to Rancher will expose all charts contained within it. This information is helpful when customizing charts for a custom catalog. The questions.yaml, README.md, and requirements.yml files are Rancher Specific are specific to Rancher charts, but are optional for chart customization.
 
 ```
-charts/<APPLICATION>/<APP_VERSION>/
-|--charts/           # Directory containing dependency charts.
-|--templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML.
-|--app-readme.md     # Text displayed in the charts header within the Rancher UI.*
-|--Chart.yml         # Required Helm chart information file.
-|--questions.yml     # Form questions displayed within the Rancher UI. Questions display in Configuration Options.*
-|--README.md         # Optional: Helm Readme file displayed within Rancher UI. This text displays in Detailed Descriptions.
-|--requirements.yml  # Optional: YAML file listing dependencies for the chart.
-|--values.yml        # Default configuration values for the chart.
+<Repository-Base>/
+ │
+ ├── charts/
+ │   ├── <Application Name>/	  # This directory name will be surfaced in the Rancher UI as the chart name
+ │   │   ├── <App Version>/	  # Each directory at this level provides different app versions that will be selectable within the chart in the Rancher UI
+ │   │   │   ├── Chart.yaml	  # Required Helm chart information file.
+ │   │   │   ├── questions.yaml	  # Form questions displayed within the Rancher UI. Questions display in Configuration Options.*
+ │   │   │   ├── README.md         # Optional: Helm Readme file displayed within Rancher UI. This text displays in Detailed Descriptions.
+ │   │   │   ├── requirements.yml  # Optional: YAML file listing dependencies for the chart.
+ │   │   │   ├── values.yml        # Default configuration values for the chart.
+ │   │   │   ├── templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML. 
 ```
 
 # Additional Files for Rancher Charts
@@ -126,4 +128,4 @@ This reference contains variables that you can use in `questions.yml` nested und
 
 # Tutorial: Example Custom Chart Creation
 
-For a tutorial on adding a custom Helm chart to a custom catalog, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/catalog/tutorial)
+For a tutorial on adding a custom Helm chart to a custom catalog, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/catalog/tutorial)
