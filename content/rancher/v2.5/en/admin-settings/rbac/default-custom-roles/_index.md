@@ -9,6 +9,8 @@ Within Rancher, _roles_ determine what actions a user can make within a cluster 
 
 Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
 
+> It is possible for a custom role to enable privilege escalation. For details, see [this section.](#privilege-escalation)
+
 This section covers the following topics:
 
 - [Prerequisites](#prerequisites)
@@ -16,6 +18,7 @@ This section covers the following topics:
 - [Creating a custom global role](#creating-a-custom-global-role)
 - [Deleting a custom global role](#deleting-a-custom-global-role)
 - [Assigning a custom global role to a group](#assigning-a-custom-global-role-to-a-group)
+- [Privilege escalation](#privilege-escalation)
 
 # Prerequisites
 
@@ -129,3 +132,9 @@ To assign a custom global role to a group, follow these steps:
 1. Click **Create.**
 
 **Result:** The custom global role will take effect when the users in the group log into Rancher.
+
+# Privilege Escalation
+
+The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to Rancher provisioned clusters.
+
+For example, a standard user with the `Configure Catalogs` permission could fork the Rancher [system-charts repository](https://github.com/rancher/system-charts) and add a new version to `rancher-eks-operator` with a ClusterRoleBinding that assigns admin privileges to themselves. After editing the `system-library` catalog in Rancher to the forked version, the standard user would gain administrator access to new EKS clusters.
