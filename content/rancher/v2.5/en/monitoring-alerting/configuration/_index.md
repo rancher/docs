@@ -1,6 +1,6 @@
 ---
 title: Configuration
-weight: 3
+weight: 5
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration
 ---

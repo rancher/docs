@@ -1,6 +1,6 @@
 ---
 title: Enable Monitoring
-weight: 14
+weight: 1
 ---
 
 As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.

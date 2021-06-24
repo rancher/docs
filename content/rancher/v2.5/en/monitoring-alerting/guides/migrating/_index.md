@@ -1,11 +1,20 @@
 ---
 title: Migrating to Rancher v2.5 Monitoring
-weight: 5
+weight: 9
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/migrating
 ---
 
 If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.
+
+- [Monitoring Before Rancher v2.5](#monitoring-before-rancher-v2-5)
+- [Monitoring and Alerting via Cluster Explorer in Rancher v2.5](#monitoring-and-alerting-via-cluster-explorer-in-rancher-v2-5)
+- [Changes to Role-based Access Control](#changes-to-role-based-access-control)
+- [Migrating from Monitoring V1 to Monitoring V2](#migrating-from-monitoring-v1-to-monitoring-v2)
+  - [Migrating Grafana Dashboards](#migrating-grafana-dashboards)
+  - [Migrating Alerts](#migrating-alerts)
+  - [Migrating Notifiers](#migrating-notifiers)
+  - [Migrating for RKE Template Users](#migrating-for-rke-template-users)
 
 # Monitoring Before Rancher v2.5
 
@@ -17,7 +26,7 @@ Monitoring V1 could be configured on both a cluster-level and on a project-level
 
 When Alerts or Notifiers are enabled, Alerting V1 deploys [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) and a set of Rancher controllers onto a cluster that allows users to define alerts and configure alert-based notifications via Email, Slack, PagerDuty, etc. Users can choose to create different types of alerts depending on what needs to be monitored (e.g. System Services, Resources, CIS Scans, etc.); however, PromQL Expression-based alerts can only be created if Monitoring V1 is enabled.
 
-# Monitoring/Alerting via Cluster Explorer in Rancher 2.5
+# Monitoring and Alerting via Cluster Explorer in Rancher 2.5
 
 As of v2.5.0, Rancher's Cluster Explorer now allows users to enable Monitoring & Alerting V2 (both powered by [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator)) together within a cluster. 
 
@@ -121,6 +130,11 @@ or add the Prometheus Rule through the Cluster Explorer
 
 For more details on how to configure PrometheusRules in Monitoring V2 see [Monitoring Configuration]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#prometheusrules).
 
-### Migrating notifiers
+### Migrating Notifiers
 
 There is no direct equivalent for how notifiers work in Monitoring V1. Instead you have to replicate the desired setup with [Routes and Receivers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#alertmanager-config) in Monitoring V2.
+
+
+### Migrating for RKE Template Users
+
+If the cluster is managed using an RKE template, you will need to disable monitoring in future RKE template revisions to prevent legacy monitoring from being re-enabled.

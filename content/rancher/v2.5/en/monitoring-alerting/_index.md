@@ -13,17 +13,13 @@ Using the `rancher-monitoring` application, you can quickly deploy leading open-
 
 - [Features](#features)
 - [How Monitoring Works](#how-monitoring-works)
-- [Enable Monitoring](#enable-monitoring)
-- [Default Alerts, Targets, and Grafana Dashboards](#default-alerts-targets-and-grafana-dashboards)
-- [Uninstall Monitoring](#uninstall-monitoring)
-- [Monitoring Workloads](#monitoring-workloads)
-- [Windows Cluster Support](#windows-cluster-support)
-- [Setting up Metrics for HPA](#setting-up-metrics-for-hpa)
+- [Default Components and Deployments](#default-components-and-deployments)
 - [Role-based Access Control](#role-based-access-control)
-- [Upgrading from Monitoring V1 to V2](#upgrading-from-monitoring-v1-to-v2)
+- [Guides](#guides)
+- [Windows Cluster Support](#windows-cluster-support)
 - [Known Issues](#known-issues)
 
-# Features
+### Features
 
 Prometheus lets you view metrics from your Rancher and Kubernetes objects. Using timestamps, Prometheus lets you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or Grafana, which is an analytics viewing platform deployed along with Prometheus.
 
@@ -44,40 +40,48 @@ The monitoring application allows you to:
 
 For an explanation of how the monitoring components work together, see [this page.](./how-monitoring-works)
 
-# Enable Monitoring
+# Default Components and Deployments
 
-To enable monitoring, follow the steps on [this page.](./enable-monitoring)
+### Built-in Dashboards
 
-# Default Alerts, Targets, and Grafana Dashboards
+By default, the monitoring application deploys Grafana dashboards (curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project) onto a cluster.
 
-By default, Rancher Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)) as well as default Prometheus alerts and Grafana dashboards (curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project) onto a cluster.
+It also deploys an Alertmanager UI and a Prometheus UI. For more information about these tools, see [Built-in Dashboards.](./dashboards)
+### Default Metrics Exporters
 
-### Grafana UI
+By default, Rancher Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)).
 
-[Grafana](https://grafana.com/grafana/) allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data driven culture.
+These default exporters automatically scrape metrics for CPU and memory from all components of your Kubernetes cluster, including your workloads.
 
-To see the default dashboards for time series data visualization, go to the Grafana UI. In the left navigation bar, click the icon with four boxes and click **Manage.**
+### Default Alerts
 
-To view and customize the PromQL queries powering the Grafana dashboard, see [this page.](./customize-grafana)
+The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboard/accessing-the-alertmanager-ui) and click **Expand all groups.**
 
-To create a persistent Grafana dashboard, see [this page.](./persist-grafana)
+### Components Exposed in the Rancher UI
 
-For information about role-based access control for Grafana, see [this section.](./rbac/#role-based-access-control-for-grafana)
+For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see [this section.](./how-monitoring-works/#components-exposed-in-the-rancher-ui)
 
-### Alertmanager UI
+# Role-based Access Control
 
-To see the default alerts, go to the [Alertmanager UI](./alertmanager-ui) and click **Expand all groups.**
+For information on configuring access to monitoring, see [this page.](./rbac)
 
-### Prometheus UI
+# Guides
 
-To see what services you are monitoring, you will need to see your targets. To view the default targets, refer to [Viewing the Prometheus Targets.](./prometheus-ui/#viewing-the-prometheus-targets)
-
+- [Enable monitoring](./guides/enable-monitoring)
+- [Uninstall monitoring](./guides/uninstall)
+- [Monitoring Rancher apps](./guides/monitoring-rancher-apps)
+- [Monitoring workloads](./guides/monitoring-workloads)
+- [Customizing Grafana dashboards](./guides/customize-grafana)
+- [Persistent Grafana dashboards](./guides/persist-grafana)
+- [Setting up metrics for horizontal pod autoscaling](./guides/hpa)
+- [Debugging high memory usage](./guides/memory-usage)
+- [Migrating from Monitoring V1 to V2](./guides/migrating)
 
 # Configuration
 
-> The configuration reference assumes familiarity with how monitoring components work together. For more information, see [How Monitoring Works.](./how-monitoring-works)
-
 ### Configuring Monitoring Resources in Rancher
+
+> The configuration reference assumes familiarity with how monitoring components work together. For more information, see [How Monitoring Works.](./how-monitoring-works)
 
 - [ServiceMonitor and PodMonitor](./configuration/servicemonitor-podmonitor)
 - [Receiver](./configuration/receiver)
@@ -90,28 +94,6 @@ To see what services you are monitoring, you will need to see your targets. To v
 
 For more information on `rancher-monitoring` chart options, including options to set resource limits and requests, see [this page.](./configuration/helm-chart-options)
 
-# Uninstall Monitoring
-
-1. From the **Cluster Explorer,** click Apps & Marketplace.
-1. Click **Installed Apps.**
-1. Go to the `cattle-monitoring-system` namespace and check the boxes for `rancher-monitoring-crd` and `rancher-monitoring`.
-1. Click **Delete.**
-1. Confirm **Delete.**
-
-**Result:** `rancher-monitoring` is uninstalled.
-
-> **Note on Persistent Grafana Dashboards:** For users who are using Monitoring V2 v9.4.203 or below, uninstalling the Monitoring chart will delete the cattle-dashboards namespace, which will delete all persisted dashboards, unless the namespace is marked with the annotation `helm.sh/resource-policy: "keep"`. This annotation is added by default in Monitoring V2 v14.5.100+ but can be manually applied on the cattle-dashboards namespace before an uninstall if an older version of the Monitoring chart is currently installed onto your cluster.
-
-# Monitoring Workloads
-
-The steps for setting up monitoring for workloads depends on whether you want basic metrics such as CPU and memory for the workload, or whether you want to scrape custom metrics from the workload.
-
-If you only need CPU and memory time series for the workload, you don't need to deploy a ServiceMonitor or PodMonitor because the monitoring application already collects metrics data on resource usage by default. The resource usage time series data is in Prometheus's local time series database. Grafana shows the data in aggregate, but you can see the data for the individual workload by using a PromQL query that extracts the data for that workload. Once you have the PromQL query, you can execute the query individually in the Prometheus UI and see the time series visualized there, or you can use the query to customize a Grafana dashboard to display the workload metrics. For examples of PromQL queries for workload metrics, see [this section.](https://rancher.com/docs/rancher/v2.5/en/monitoring-alerting/configuration/expression/#workload-metrics)
-
-To set up custom metrics for your workload, you will need to set up an exporter and create a new ServiceMonitor custom resource to configure Prometheus to scrape metrics from your exporter.
-
-For more information, see [this section.](./monitoring-workloads)
-
 # Windows Cluster Support
 
 _Available as of v2.5.8_
@@ -122,27 +104,7 @@ To be able to fully deploy Monitoring V2 for Windows, all of your Windows hosts 
 
 For more details on how to upgrade wins on existing Windows hosts, refer to the section on [Windows cluster support for Monitoring V2.](./windows-clusters)
 
-# Setting up Metrics for HPA
 
-The monitoring app installs a Prometheus adapter that can be used for making the metrics from monitoring available from the Kubernetes API. This is useful for horizontal pod autoscaling based on custom metrics.
-
-For details, see [this section.](./hpa)
-
-# Monitoring Rancher Apps
-
-A common pattern for Rancher apps is to package a ServiceMonitor in the Helm chart for the application. The ServiceMonitor contains a preconfigured Prometheus target for monitoring.
-
-When the ServiceMonitor is enabled and monitoring is also enabled, Prometheus will be able to scrape metrics from the Rancher application.
-
-For details, see [this page.](./monitoring-rancher-apps)
-
-# Role-based Access Control
-
-For information on configuring access to monitoring, see [this page.](./rbac)
-
-# Upgrading from Monitoring V1 to V2
-
-For more information about upgrading the Monitoring app in Rancher 2.5, please refer to the [migration docs](./migrating). 
 
 # Known Issues
 

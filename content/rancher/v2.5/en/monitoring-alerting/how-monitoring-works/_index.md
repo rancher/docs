@@ -3,7 +3,7 @@ title: How Monitoring Works
 weight: 1
 ---
 
-- [1. How Monitoring Components Work Together](#1-how-monitoring-components-work-together)
+- [1. How Data Flows through the Monitoring Application](#1-how-data-flows-through-the-monitoring-application)
 - [2. How Prometheus Works](#2-how-prometheus-works)
   - [2.1. Defining what Metrics are Scraped](#2-1-defining-what-metrics-are-scraped)
   - [2.2. Scraping Metrics from Exporters](#2-2-scraping-metrics-from-exporters)
@@ -20,13 +20,12 @@ weight: 1
   - [4.3. Default Exporters](#4-3-default-exporters)
 - [5. Components Exposed in the Rancher UI](#5-components-exposed-in-the-rancher-ui)
 
-# 1. How Monitoring Components Work Together
+# 1. How Data Flows through the Monitoring Application
 
 The below diagram shows the linear flow of data through the monitoring application in chronological order:
 
-<figcaption>Monitoring Components</figcaption>
 
-![Rancher Components]({{<baseurl>}}/img/rancher/monitoring-components.svg)
+![Data Flow Through Monitoring Components]({{<baseurl>}}/img/rancher/monitoring-components.svg)
 
 # 2. How Prometheus Works
 
@@ -61,7 +60,7 @@ The database can then be queried using PromQL, the query language for Prometheus
 
 The PromQL query language is the primary tool to query Prometheus for time series data.
 
-In Grafana, you can right-click a CPU utilization and click Inspect. This opens a panel that shows the [raw query results.](https://grafana.com/docs/grafana/latest/panels/inspect-panel/)The raw results demonstrate how each dashboard is powered by PromQL queries.
+In Grafana, you can right-click a CPU utilization and click Inspect. This opens a panel that shows the [raw query results.](https://grafana.com/docs/grafana/latest/panels/inspect-panel/#inspect-raw-query-results)The raw results demonstrate how each dashboard is powered by PromQL queries.
 
 ### 2.5. Defining Rules for when Alerts Should be Fired
 
@@ -136,13 +135,15 @@ There are also certain special types of ConfigMaps and Secrets such as those cor
 
 PushProx enhances the security of the monitoring application, allowing it to be installed on hardened Kubernetes clusters.
 
-To expose Kubernetes metrics, PushProxes use a client proxy model to expose specific ports within default Kubernetes components. The proxy allows `rancher-monitoring` to scrape metrics from processes on the hostNetwork, such as the `kube-api-server`, without opening up node ports to inbound connections.
+To expose Kubernetes metrics, PushProxes use a client proxy model to expose specific ports within default Kubernetes components. Node exporters  expose metrics to PushProx through an outbound connection.
+
+The proxy allows `rancher-monitoring` to scrape metrics from processes on the hostNetwork, such as the `kube-api-server`, without opening up node ports to inbound connections.
 
 PushProx is a DaemonSet that listens for clients that seek to register. Once registered, it proxies scrape requests through the established connection. Then the client executes the request to etcd.
 
 All of the default ServiceMonitors, such as `rancher-monitoring-kube-controller-manager`, are configured to hit the metrics endpoint of the client using this proxy.
 
-### Default Exporters
+### 4.3. Default Exporters
 
 `rancher-monitoring` deploys two exporters to expose metrics to prometheus: `node-exporter` and `windows-exporter`. Both are deployed as DaemonSets.
 
@@ -152,16 +153,16 @@ For more information on `node-exporter`, refer to the [upstream documentation.](
 
 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) is also useful because it exports metrics for Kubernetes components.
 
-# Components Exposed in the Rancher UI
+# 5. Components Exposed in the Rancher UI
 
 When the monitoring application is installed, you will be able to edit the following components in the Rancher UI:
 
-| Component | Type of Component | Common Use Case for Editing |
+| Component | Type of Component | Purpose and Common Use Cases for Editing |
 |--------------|------------------------|---------------------------|
 | ServiceMonitor | Custom resource | Set up targets to scrape custom metrics from. Automatically updates the scrape configuration in the Prometheus custom resource. |
 | PodMonitor | Custom resource | Set up targets to scrape custom metrics from. Automatically updates the scrape configuration in the Prometheus custom resource. |
-| Receiver | Configuration block | Set up a notification system to receive alerts. Automatically updates the Alertmanager custom resource. |
-| Route | Configuration block | Add identifying information to make alerts more meaningful and direct them to individual teams. Automatically updates the Alertmanager custom resource. |
+| Receiver | Configuration block (part of Alertmanager) | Set up a notification system to receive alerts. Automatically updates the Alertmanager custom resource. |
+| Route | Configuration block (part of Alertmanager) | Add identifying information to make alerts more meaningful and direct them to individual teams. Automatically updates the Alertmanager custom resource. |
 | PrometheusRule | Custom resource | For more advanced use cases, you may want to define what Prometheus metrics or time series database queries should result in alerts being fired.  Automatically updates the Prometheus custom resource. |
 | Alertmanager | Custom resource | Edit this custom resource only if you need more advanced configuration options beyond what the Rancher UI exposes in the Routes and Receivers sections. For example, you might want to edit this resource to add a routing tree with more than two levels. |
 | Prometheus | Custom resource | Edit this custom resource only if you need more advanced configuration beyond what can be configured using  ServiceMonitors, PodMonitors, or [Rancher monitoring Helm chart options.](./configuration/helm-chart-options) |

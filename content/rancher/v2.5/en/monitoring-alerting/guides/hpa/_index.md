@@ -1,4 +1,10 @@
-# Setting up Metrics for HPA
+---
+title: Setting up Metrics for HPA
+weight: 7
+---
+
+The monitoring app installs a Prometheus adapter that can be used for making the metrics from monitoring available from the Kubernetes API. This is useful for horizontal pod autoscaling based on custom metrics.
+
 
 - kube-state-metrics: monitors internal K8s components
 - 

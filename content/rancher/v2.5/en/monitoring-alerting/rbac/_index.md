@@ -1,6 +1,7 @@
 ---
-title: RBAC
-weight: 3
+title: Role-based Access Control
+shortTitle: RBAC
+weight: 2
 aliases:
   - /rancher/v2.5/en/cluster-admin/tools/monitoring/rbac
   - /rancher/v2.5/en/monitoring-alerting/v2.5/rbac

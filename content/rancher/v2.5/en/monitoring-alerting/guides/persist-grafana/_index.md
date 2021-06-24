@@ -1,6 +1,6 @@
 ---
 title: Persistent Grafana Dashboards
-weight: 4
+weight: 6
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/persist-grafana
 ---
