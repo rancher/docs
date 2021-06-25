@@ -61,24 +61,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 1.	Select **Keycloak**.
 
-1.	Complete the **Configure Keycloak Account** form.
-
-
-    | Field                     | Description                                                                                                                                              |
-    | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Display Name Field        | The attribute that contains the display name of users. <br/><br/>Example: `givenName`                                                                    |
-    | User Name Field           | The attribute that contains the user name/given name. <br/><br/>Example: `email`                                                                         |
-    | UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                                                                                    |
-    | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`                                                                                 |
-    | Entity ID Field           | The ID that needs to be configured as a client ID in the Keycloak client. <br/><br/>Default: `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` |
-    | Rancher API Host          | The URL for your Rancher Server.                                                                                                                         |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.                                                                            |
-    | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                                                                                          |
-
-    >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
-    >
-    >        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
-
+1.	Complete the **Configure Keycloak Account** form. For help with filling the form, see the [configuration reference](#configuration-reference).
 
 1. After you complete the **Configure Keycloak Account** form, click **Authenticate with Keycloak**, which is at the bottom of the page.
 
@@ -90,13 +73,32 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 {{< saml_caveats >}}
 
+## Configuration Reference
+
+
+| Field                     | Description                                                                                                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Display Name Field        | The attribute that contains the display name of users. <br/><br/>Example: `givenName`                                                                    |
+| User Name Field           | The attribute that contains the user name/given name. <br/><br/>Example: `email`                                                                         |
+| UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                                                                                    |
+| Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`                                                                                 |
+| Entity ID Field           | The ID that needs to be configured as a client ID in the Keycloak client. <br/><br/>Default: `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` |
+| Rancher API Host          | The URL for your Rancher Server.                                                                                                                         |
+| Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.                                                                            |
+| IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                                                                                          |
+
+>**Tip:** You can generate a key/certificate pair using an openssl command. For example:
+>
+>        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
+
+
 ## Annex: Troubleshooting
 
 If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging]({{<baseurl>}}/rancher/v2.5/en/faq/technical/#how-can-i-enable-debug-logging) in this documentation.
 
 ### You are not redirected to Keycloak
 
-When you click on **Authenticate with Keycloak**, your are not redirected to your IdP.
+When you click on **Authenticate with Keycloak**, you are not redirected to your IdP.
 
   * Verify your Keycloak client configuration.
   * Make sure `Force Post Binding` set to `OFF`.

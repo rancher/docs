@@ -23,7 +23,7 @@ If you have an existing configuration using the SAML protocol and want to switch
      `Access Type` | `confidential`
      `Valid Redirect URI` | `https://yourRancherHostURL/verify-auth`
  
-- In the new OIDC client, create [Mappers](https://www.keycloak.org/docs/latest/server_admin/#_protocol-mappers) to expose the users fields
+- In the new OIDC client, create [Mappers](https://www.keycloak.org/docs/latest/server_admin/#_protocol-mappers) to expose the users fields.
   - Create a new "Groups Mapper" with the settings below.
 
     Setting | Value
@@ -43,21 +43,7 @@ If you have an existing configuration using the SAML protocol and want to switch
 
 1. Select **Keycloak (OIDC)**.
 
-1. Complete the **Configure a Keycloak OIDC account** form.
-
-
-    | Field                     | Description                                                                                                                                              |
-    | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Client ID                 | The `Client ID` of your Keycloak client.                                                                                                                 |
-    | Client Secret             | The generated `Secret` of your Keycloak client. In the Keycloak console, select **Clients**, select the client you created, select the **Credentials** tab and copy the value of the `Secret` field. |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. Required if HTTPS/SSL is enabled on your Keycloak server.                  |
-    | Endpoints                 | Choose whether to use the generated values for the `Rancher URL`, `Issue`, and `Auth Endpoint` fields or to provide manual overrides if incorrect.       |
-    | Keycloak URL              | The URL for your Keycloak server.                                                                                                                        |
-    | Keycloak Realm            | The name of the realm in which the Keycloak client was created in.                                                                                       |
-    | Rancher URL               | The URL for your Rancher Server.                                                                                                                         |
-    | Issuer                    | The URL of your IdP.
-    | Auth Endpoint             | The URL where users are redirected to authenticate.
-
+1. Complete the **Configure a Keycloak OIDC account** form. For help with filling the form, see the [configuration reference](#configuration-reference).
 
 1. After you complete the **Configure a Keycloak OIDC account** form, click **Enable**.
 
@@ -67,11 +53,25 @@ If you have an existing configuration using the SAML protocol and want to switch
 
 **Result:** Rancher is configured to work with Keycloak using the OIDC protocol. Your users can now sign into Rancher using their Keycloak logins.
 
+## Configuration Reference
+
+| Field                     | Description                                                                                                                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Client ID                 | The `Client ID` of your Keycloak client.                                                                                                                 |
+| Client Secret             | The generated `Secret` of your Keycloak client. In the Keycloak console, select **Clients**, select the client you created, select the **Credentials** tab and copy the value of the `Secret` field. |
+| Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. Required if HTTPS/SSL is enabled on your Keycloak server.                  |
+| Endpoints                 | Choose whether to use the generated values for the `Rancher URL`, `Issue`, and `Auth Endpoint` fields or to provide manual overrides if incorrect.       |
+| Keycloak URL              | The URL for your Keycloak server.                                                                                                                        |
+| Keycloak Realm            | The name of the realm in which the Keycloak client was created in.                                                                                       |
+| Rancher URL               | The URL for your Rancher Server.                                                                                                                         |
+| Issuer                    | The URL of your IdP. |
+| Auth Endpoint             | The URL where users are redirected to authenticate. |
+
 ## Migrating from SAML to OIDC
 
 This section describes the process to transition from using Rancher with Keycloak (SAML) to Keycloak (OIDC).
 
-### Changes to Keycloak
+### Reconfigure Keycloak
 
 1. Change the existing client to use the OIDC protocol. In the Keycloak console, select **Clients**, select the SAML client to migrate, select the **Settings** tab, change `Client Protocol` from `saml` to `openid-connect`, and click **Save**
 
@@ -88,7 +88,7 @@ This section describes the process to transition from using Rancher with Keycloa
     `Add to access token` | `ON`
     `Add to user info` | `ON`
 
-### Changes to Rancher
+### Reconfigure Rancher
 
 Before configuring Rancher to use Keycloak (OIDC), Keycloak (SAML) must be first disabled. 
 
@@ -110,7 +110,7 @@ All Keycloak related log entries will be prepended with either `[generic oidc]` 
 
 ### You are not redirected to Keycloak
 
-When you fill the **Configure a Keycloak OIDC account** form and click on **Enable**, your are not redirected to your IdP.
+When you fill the **Configure a Keycloak OIDC account** form and click on **Enable**, you are not redirected to your IdP.
 
   * Verify your Keycloak client configuration.
 
