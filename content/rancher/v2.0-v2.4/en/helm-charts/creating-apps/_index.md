@@ -45,7 +45,7 @@ Advantages of Rancher charts include:
 
 # Chart Directory Structure
 
-The following table demonstrates the directory structure for a Rancher Chart. The "charts" directory is the top level directory under the repository base. Adding the repository to Rancher will expose all charts contained within it. This information is helpful when customizing charts for a custom catalog. The questions.yaml, README.md, and requirements.yml files are Rancher Specific are specific to Rancher charts, but are optional for chart customization.
+The following table demonstrates the directory structure for a Rancher Chart. The `charts` directory is the top level directory under the repository base. Adding the repository to Rancher will expose all charts contained within it. This information is helpful when customizing charts for a custom catalog. The `questions.yaml`, `README.md`, and `requirements.yml` files are specific to Rancher charts, but are optional for chart customization.
 
 ```
 <Repository-Base>/
@@ -58,7 +58,7 @@ The following table demonstrates the directory structure for a Rancher Chart. Th
  │   │   │   ├── README.md         # Optional: Helm Readme file displayed within Rancher UI. This text displays in Detailed Descriptions.
  │   │   │   ├── requirements.yml  # Optional: YAML file listing dependencies for the chart.
  │   │   │   ├── values.yml        # Default configuration values for the chart.
- │   │   │   ├── templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML. 
+ │   │   │   ├── templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML.
 ```
 
 # Additional Files for Rancher Charts
