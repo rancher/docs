@@ -1,5 +1,5 @@
 ---
-title: Prometheus Expression Reference
+title: PromQL Expression Reference
 weight: 6
 aliases:
   - /rancher/v2.5/en/project-admin/tools/monitoring/expression
@@ -11,7 +11,7 @@ aliases:
 
 The PromQL expressions in this doc can be used to configure alerts.
 
-For more information about querying Prometheus, refer to the official [Prometheus documentation.](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+For more information about querying the Prometheus time series database, refer to the official [Prometheus documentation.](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 
 <!-- TOC -->
 
