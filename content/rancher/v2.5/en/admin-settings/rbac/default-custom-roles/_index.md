@@ -135,6 +135,4 @@ To assign a custom global role to a group, follow these steps:
 
 # Privilege Escalation
 
-The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to Rancher provisioned clusters.
-
-For example, a standard user with the `Configure Catalogs` permission could fork the Rancher [system-charts repository](https://github.com/rancher/system-charts) and add a new version to `rancher-eks-operator` with a ClusterRoleBinding that assigns admin privileges to themselves. After editing the `system-library` catalog in Rancher to the forked version, the standard user would gain administrator access to new EKS clusters.
+The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to Rancher provisioned clusters. Anyone with this permission should be considered equivalent to an admin.
