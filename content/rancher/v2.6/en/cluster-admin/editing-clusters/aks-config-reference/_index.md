@@ -10,14 +10,12 @@ weight: 4
 - Support for private clusters
 - Enabled autoscaling node pools
 - The AKS permissions are now configured in cloud credentials
-- For networking, a new field was added in the UI: Support Private Kubernetes Service
-- Windows support was removed
 
 # Role-based Access Control
 
-When provisioning an AKS cluster in the Rancher UI, RBAC is not configurable because it is required to be enabled.
+When provisioning an AKS cluster in the Rancher UI, RBAC cannot be disabled. If role-based access control is disabled for the cluster in AKS, the cluster cannot be registered or imported into Rancher.
 
-RBAC is required for AKS clusters that are registered or imported into Rancher.
+Rancher can configure member roles for AKS clusters in the same way as any other cluster. For more information, see the section on [role-based access control.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac)
 
 # Cloud Credentials
 
@@ -65,8 +63,6 @@ Configure the cluster and node location. For more information on availability zo
 The high availability locations include multiple availability zones.
 
 # Cluster Options
-
-Create an SSH connection to the cluster nodes using these configuration options.
 
 ### Kubernetes Version
 
@@ -164,12 +160,13 @@ For more information about Azure Monitor Logs, see the [Azure documentation.](ht
 
 ### Support Private Kubernetes Service
 
-Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private, with some exceptions. In a private cluster, the control plane does not have a public endpoint.
+Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private. In a private cluster, the control plane does not have a public endpoint.
 
-In order to a to be able to connect with the AKS Kubernetes API server,
+Rancher can connect to a private AKS cluster in one of two ways.
 
-- The Rancher agent needs to be deployed from a node that has access to the AKS cluster's Azure Virtual Network (VNet).
-- Rancher needs to be running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+The first way to ensure that Rancher is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+
+The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
 
 For more information about connecting to an AKS private cluster, see the [AKS documentation.](https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster)
 
