@@ -180,7 +180,7 @@ The Azure interface allows users to specify whether a Primary Node Pool relies o
 
 For Primary Node Pools, you can specify Mode, OS, Count and Size.
 
-System node pools that always require running nodes, so they cannot be scaled below one node. At least one system node pool is required.
+System node pools always require running nodes, so they cannot be scaled below one node. At least one system node pool is required.
 
 For subsequent node pools, the Rancher UI forces the default of User. User node pools allow you to scale to zero nodes. User node pools don't run any part of the Kubernetes controlplane.
 
