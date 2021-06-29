@@ -176,7 +176,7 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 # Node Pools
 
 ### Mode
-The Azure interface allows users to specify whether a Primary Node Pool relies on either `system` (normally used for control planes) and `user` (what is most typically needed for Rancher).
+The Azure interface allows users to specify whether a Primary Node Pool relies on either `system` (normally used for control planes) or `user` (what is most typically needed for Rancher).
 
 For Primary Node Pools, you can specify Mode, OS, Count and Size.
 
