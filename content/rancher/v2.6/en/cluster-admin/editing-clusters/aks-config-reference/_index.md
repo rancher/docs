@@ -6,7 +6,7 @@ weight: 4
 
 # Changes in v2.6
 
-- Support for node pools
+- Support for adding more than one node pool
 - Support for private clusters
 - Enabled autoscaling node pools
 - The AKS permissions are now configured in cloud credentials
