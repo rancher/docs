@@ -20,7 +20,7 @@ A user cluster is a downstream Kubernetes cluster that runs your apps and servic
 
 If you have a Docker installation of Rancher, the node running the Rancher server should be separate from your downstream clusters.
 
-In Kubernetes installations of Rancher, the Rancher server cluster should also be separate from the user clusters.
+Whilst technically possible, running other workloads or microservices in the same Kubernetes cluster that Rancher is installed on invalidates the Rancher Support SLA. Due to that, the Rancher server cluster must be separate from the user / downstream clusters to fulfill the Rancher SLA.
 
 ![Separation of Rancher Server from User Clusters]({{<baseurl>}}/img/rancher/rancher-architecture-separation-of-rancher-server.svg)
 
