@@ -136,12 +136,13 @@ For more information about how to configure AKS clusters from the Rancher UI, se
 
 # Private Clusters
 
-Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private, with some exceptions. In a private cluster, the control plane does not have a public endpoint.
+Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private. In a private cluster, the control plane does not have a public endpoint.
 
-In order to a to be able to connect with the AKS Kubernetes API server,
+Rancher can connect to a private AKS cluster in one of two ways.
 
-- The Rancher agent needs to be deployed from a node that has access to the AKS cluster's Azure Virtual Network (VNet).
-- Rancher needs to be running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+The first way to ensure that Rancher is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+
+The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
 
 For more information about connecting to an AKS private cluster, see the [AKS documentation.](https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster)
 
