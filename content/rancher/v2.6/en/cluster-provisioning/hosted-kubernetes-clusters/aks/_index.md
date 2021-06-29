@@ -147,6 +147,6 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 
 # Syncing
 
-The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/syncing)
+The AKS provisioner can synchronize the state of an AKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/syncing)
 
 For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
