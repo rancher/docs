@@ -35,7 +35,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
           tolerations:
           - operator: Exists
           containers:
-          - image: rancher/swiss-army-knife
+          - image: rancherlabs/swiss-army-knife
             imagePullPolicy: Always
             name: overlaytest
             command: ["sh", "-c", "tail -f /dev/null"]

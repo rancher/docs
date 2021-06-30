@@ -22,7 +22,7 @@ Rancher needs to be installed on a supported Kubernetes version. To find out whi
 
 RKE2 server runs with embedded etcd so you will not need to set up an external datastore to run in HA mode.
 
-1. On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
+On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
 
 If you do not specify a pre-shared secret, RKE2 will generate one and place it at /var/lib/rancher/rke2/server/node-token.
 
@@ -37,8 +37,9 @@ tls-san:
   - another-kubernetes-domain.com
 ```
 After that you need to run the install command and enable and start rke2:
+
 ```
-curl -sfL https://get.rke2.io | sh -
+curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.20 sh -
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
