@@ -101,3 +101,41 @@ k3s server \
   --etcd-s3-access-key=<S3-ACCESS-KEY> \
   --etcd-s3-secret-key=<S3-SECRET-KEY>
 ```
+
+### Etcd Snapshot and Restore Subcommands
+
+k3s supports a set of subcommands for working with your etcd snapshots.
+
+| Subcommand | Description |
+| ----------- | --------------- |
+| delete      |  Delete given snapshot(s) |
+| ls, list, l |  List snapshots |
+| prune       |  Remove snapshots that exceed the configured retention count |
+| save        |  Trigger an immediate etcd snapshot |
+
+*note* The `save` subcommand is the same as `k3s etcd-snapshot`. The latter will eventually be deprecated in favor of the former.
+
+These command will perform as expected whether the etcd snapshots are stored locally or in an S3 compatible object store.
+
+For additional information on the etcd snapshot subcommands, run `k3s etcd-snapshot
+
+Delete a snapshot from S3.
+
+```
+k3s etcd-snapshot delete          \
+  --s3                            \
+  --s3-bucket=<S3-BUCKET-NAME>    \
+  --s3-access-key=<S3-ACCESS-KEY> \
+  --s3-secret-key=<S3-SECRET-KEY> \
+  <SNAPSHOT-NAME>
+```
+
+Prune local snapshots with the default retention policy (5). The `prune` subcommand takes an additional flag `--snapshot-retention` that allows for overriding the default retention policy.
+
+```
+k3s etcd-snapshot prune
+```
+
+```
+k3s etcd-snapshot prune --snapshot-retention 10
+```
