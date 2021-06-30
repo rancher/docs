@@ -115,9 +115,9 @@ k3s supports a set of subcommands for working with your etcd snapshots.
 
 *note* The `save` subcommand is the same as `k3s etcd-snapshot`. The latter will eventually be deprecated in favor of the former.
 
-These command will perform as expected whether the etcd snapshots are stored locally or in an S3 compatible object store.
+These commands will perform as expected whether the etcd snapshots are stored locally or in an S3 compatible object store.
 
-For additional information on the etcd snapshot subcommands, run `k3s etcd-snapshot
+For additional information on the etcd snapshot subcommands, run `k3s etcd-snapshot`.
 
 Delete a snapshot from S3.
 
