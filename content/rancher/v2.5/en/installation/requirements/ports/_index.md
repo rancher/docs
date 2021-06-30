@@ -89,7 +89,7 @@ The following tables break down the port requirements for traffic between the Ra
 | TCP | 6443 | Kubernetes apiserver |
 | UDP | 8472 | Canal/Flannel VXLAN overlay networking |
 | TCP | 9099 | Canal/Flannel livenessProbe/readinessProbe |
-| TCP | 10250 | kubelet |
+| TCP | 10250 | Metrics server communication with all nodes |
 | TCP | 10254 | Ingress controller livenessProbe/readinessProbe |
 
 The following tables break down the port requirements for inbound and outbound traffic:

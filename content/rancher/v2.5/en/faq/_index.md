@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.5/en/about/
 ---
 
-This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.
+This FAQ is a work in progress designed to answer the questions our users most frequently ask about Rancher v2.x.
 
 See [Technical FAQ]({{<baseurl>}}/rancher/v2.5/en/faq/technical/), for frequently asked technical questions.
 

@@ -17,6 +17,6 @@ headless: true
 |    TCP    |       9796        | Default port required by Monitoring to scrape metrics from Windows node-exporters |
 |    TCP   	|       6783       	| Weave Port      	                                                                |
 |    UDP   	|       6783-6784   | Weave UDP Ports      	                                                            |
-|    TCP   	|       10250      	| kubelet API                                     	                                |
+|    TCP   	|       10250      	| Metrics server communication with all nodes API                                     	                                |
 |    TCP   	|       10254      	| Ingress controller livenessProbe/readinessProbe 	                                |
 | TCP/UDP	| 30000-</br>32767 	| NodePort port range                             	                                |
