@@ -12,6 +12,8 @@ The backup-restore operator needs to be installed in the local cluster, and only
 
 The Rancher version must be v2.5.0 and up to use this approach of backing up and restoring Rancher. 
 
+> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made.
+
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
   - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
   - [Backup and Restore for Rancher installed on a Kubernetes Cluster Before v2.5](#backup-and-restore-for-rancher-installed-on-a-kubernetes-cluster-before-v2-5)

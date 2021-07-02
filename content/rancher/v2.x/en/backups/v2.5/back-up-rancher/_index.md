@@ -9,6 +9,8 @@ In this section, you'll learn how to back up Rancher running on any Kubernetes c
 
 The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
+> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made.
+
 ### Prerequisites
 
 Rancher version must be v2.5.0 and up
