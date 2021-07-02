@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.6/en/k8s-in-rancher/pipelines  
 ---
 
-> As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) available in Cluster Explorer. Pipelines will receive limited to no security updates, and should be used only if migrating to Fleet is not feasible.
+> As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) available in Cluster Explorer. Pipelines will receive only critical CVE fixes. They should be used only if migrating to Fleet is not feasible.
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
