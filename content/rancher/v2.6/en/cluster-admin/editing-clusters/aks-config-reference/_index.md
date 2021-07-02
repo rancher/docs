@@ -142,6 +142,7 @@ The Kubernetes API server exposes the Kubernetes API. This component provides th
 To secure access to the otherwise publicly accessible AKS control plane and API server, you can enable and use authorized IP ranges. These authorized IP ranges only allow defined IP address ranges to communicate with the API server.
 
 However, even if you use authorized IP address ranges, you should still use Kubernetes RBAC or Azure RBAC to authorize users and the actions they request.
+
 ### Container Monitoring
 
 Container monitoring gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers that are available in Kubernetes through the Metrics API. Container logs are also collected. After you enable monitoring, metrics and logs are automatically collected for you through a containerized version of the Log Analytics agent for Linux. Metrics are written to the metrics store and log data is written to the logs store associated with your [Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview) workspace.
@@ -173,6 +174,7 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 # Node Pools
 
 ### Mode
+
 The Azure interface allows users to specify whether a Primary Node Pool relies on either `system` (normally used for control planes) or `user` (what is most typically needed for Rancher).
 
 For Primary Node Pools, you can specify Mode, OS, Count and Size.
