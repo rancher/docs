@@ -136,3 +136,5 @@ To assign a custom global role to a group, follow these steps:
 # Privilege Escalation
 
 The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to Rancher provisioned clusters. Anyone with this permission should be considered equivalent to an admin.
+
+The `Manager Users` role grants the ability to create, update, and delete _any_ user. This presents the risk of privilege escalation as even non-admin users with this role will be able to create, update, and delete admin users. Admins should take caution when assigning this role.
