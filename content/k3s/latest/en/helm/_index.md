@@ -70,6 +70,8 @@ Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymou
 
 To allow overriding values for packaged components that are deployed as HelmCharts (such as Traefik), K3s versions starting with v1.19.0+k3s1 support customizing deployments via a HelmChartConfig resources. The HelmChartConfig resource must match the name and namespace of its corresponding HelmChart, and supports providing additional `valuesContent`, which is passed to the `helm` command as an additional value file.
 
+The reason to create a `HelmChartConfig` instead of simply modifying the existing `HelmChart` CRD is to cause the `helmchart-controller` to redeploy the chart with the new values. If you simply modify the `HelmChart` the changes will not be propagated if the chart has already been deployed.
+
 > **Note:** HelmChart `spec.set` values override HelmChart and HelmChartConfig `spec.valuesContent` settings.
 
 For example, to customize the packaged Traefik ingress configuration, you can create a file named `/var/lib/rancher/k3s/server/manifests/traefik-config.yaml` and populate it with the following content:
