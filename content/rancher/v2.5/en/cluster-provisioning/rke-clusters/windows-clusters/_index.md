@@ -94,7 +94,7 @@ Description=Disable vmxnet3 hardware offloading feature
 [Service]
 Type=oneshot
 ExecStart=ethtool -K <VM network interface> tx-udp_tnl-segmentation off
-ExecStart=ethtool -K <VM network interface> tx-udp_tnl-segmentation off
+ExecStart=ethtool -K <VM network interface> tx-udp_tnl-csum-segmentation off
 StandardOutput=journal
 
 [Install]
