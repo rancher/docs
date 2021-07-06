@@ -83,6 +83,32 @@ If you are configuring DHCP options sets for an AWS virtual private cloud, note 
 
 > Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
 
+#### Rancher on vSphere with ESXi 6.7u2 and above
+
+If you are using Rancher on VMware vSphere with ESXi 6.7u2 or later with Red Hat Enterprise Linux 8.3, CentOS 8.3, or SUSE Enterprise Linux 15 SP2 or later, it is necessary to disable the `vmxnet3` virtual network adapter hardware offloading feature. Failure to do so will result in all network connections between pods on different cluster nodes to fail with timeout errors. All connections from Windows pods to critical services running on Linux nodes, such as CoreDNS, will fail as well. It is also possible that external connections may fail. This issue is the result of Linux distributions enabling the hardware offloading feature in `vmxnet3` and a bug in the `vmxnet3` hardware offloading feature that results in the discarding of packets for guest overlay traffic. To address this issue, it is necessary disable the `vmxnet3` hardware offloading feature. This setting does not survive reboot, so it is necessary to disable on every boot. The recommended course of action is to create a systemd unit file at `/etc/systemd/system/disable_hw_offloading.service`, which disables the `vmxnet3` hardware offloading feature on boot. A sample systemd unit file which disables the `vmxnet3` hardware offloading feature is as follows. Note that `<VM network interface>` must be customized to the host `vmxnet3` network interface, e.g., `ens192`:
+
+```
+[Unit]
+Description=Disable vmxnet3 hardware offloading feature
+
+[Service]
+Type=oneshot
+ExecStart=ethtool -K <VM network interface> tx-udp_tnl-segmentation off
+ExecStart=ethtool -K <VM network interface> tx-udp_tnl-segmentation off
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+Then set the appropriate permissions on the systemd unit file:
+```
+chmod 0644 /etc/systemd/system/disable_hw_offloading.service
+```
+Finally, enable the systemd service:
+```
+systemctl enable disable_hw_offloading.service
+```
+
 ### Architecture Requirements
 
 The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run on Linux nodes.
