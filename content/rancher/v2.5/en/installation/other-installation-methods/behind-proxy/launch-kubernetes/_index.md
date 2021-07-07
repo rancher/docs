@@ -43,7 +43,7 @@ And configure the Docker daemon to use the proxy to pull images:
 
 ```
 sudo mkdir -p /etc/systemd/system/docker.service.d
-cat <<'EOF' | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
+cat <<EOF | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
 [Service]
 Environment="HTTP_PROXY=http://${proxy_host}"
 Environment="HTTPS_PROXY=http://${proxy_host}"
