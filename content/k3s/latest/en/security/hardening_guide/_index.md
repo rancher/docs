@@ -302,7 +302,7 @@ spec:
   - Ingress
 ```
 
-If you are using the default traefik ingress controller with k3s, it will also be blocked by default, so the following network policies must be added to allow traffic to both traefik pods and svclb pods in the traefik namespace:
+If you are using the default traefik ingress controller with k3s, it will also be blocked by default, so the following network policy must be added to allow traffic to both traefik pods and svclb pods in the kube-system namespace:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
