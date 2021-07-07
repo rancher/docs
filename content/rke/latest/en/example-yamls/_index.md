@@ -61,6 +61,14 @@ nodes:
 # are found
 ignore_docker_version: false
 
+# Enable running cri-dockerd
+# Up to Kubernetes 1.23, kubelet contained code called dockershim 
+# to support Docker runtime. The replacement is called cri-dockerd 
+# and should be enabled if you want to keep using Docker as your
+# container runtime
+# Only available to enable in Kubernetes 1.21 and higher
+enable_cri_dockerd: true
+
 # Cluster level SSH private key
 # Used if no ssh information is set for the node
 ssh_key_path: ~/.ssh/test
