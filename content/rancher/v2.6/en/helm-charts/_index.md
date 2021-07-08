@@ -46,4 +46,4 @@ After installing a chart, you can find it in the _"Installed Apps"_ tab. In this
 
 Most Rancher tools have additional pages located in the toolbar below the _"Apps & Marketplace"_ section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
 
-> If you are upgrading your chart using _"Customize Helm options before upgrade"_ , please be aware the using the _"--force"_ option may result in errors if your chart has immutable fields. This is because some objects in kubernetes cannot be changed once they are created.
+> If you are upgrading your chart using _"Customize Helm options before upgrade"_ , please be aware that using the _"--force"_ option may result in errors if your chart has immutable fields. This is because some objects in Kubernetes cannot be changed once they are created.
