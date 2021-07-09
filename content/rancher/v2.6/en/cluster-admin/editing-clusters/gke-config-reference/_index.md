@@ -220,6 +220,7 @@ _Mutable: no_
 
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
+Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 # Group Details
 
