@@ -7,6 +7,20 @@ aliases:
 
 [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.
 
+> If you are still using Istio v1, installed with the legacy Cluster Manager, we recommend migrating to Istio v2 by following [these steps.](./migrating/#migrating-istio) Istio v1 (1.5.920) will receive limited security updates should no longer be used. The images for Istio 1.5.920 should not be downloaded unless upgrading Istio is not feasible.
+
+- [Overview](#overview)
+- [Tools Bundled with Istio](#tools-bundled-with-istio)
+- [Prerequisites](#prerequisites)
+- [Setup Guide](#setup-guide)
+- [Remove Istio](#remove-istio)
+- [Migrate from Previous Istio Version](#migrate-from-previous-istio-version)
+- [Accessing Visualizations](#accessing-visualizations)
+- [Architecture](#architecture)
+- [Additional steps for installing Istio on an RKE2 cluster](#additional-steps-for-installing-istio-on-an-rke2-cluster)
+
+# Overview
+
 As a network of microservices changes and grows, the interactions between them can become increasingly difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
 
 Our integration of Istio is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to a team of developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
@@ -20,28 +34,6 @@ This core service mesh provides features that include but are not limited to the
 After [setting up istio]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup) you can leverage Istio's control plane functionality through the Cluster Explorer, `kubectl`, or `istioctl`.
 
 Istio needs to be set up by a `cluster-admin` before it can be used in a project.
-
-- [What's New in Rancher v2.5](#what-s-new-in-rancher-v2-5)
-- [Tools Bundled with Istio](#tools-bundled-with-istio)
-- [Prerequisites](#prerequisites)
-- [Setup Guide](#setup-guide)
-- [Remove Istio](#remove-istio)
-- [Migrate from Previous Istio Version](#migrate-from-previous-istio-version)
-- [Accessing Visualizations](#accessing-visualizations)
-- [Architecture](#architecture)
-- [Additional steps for installing Istio on an RKE2 cluster](#additional-steps-for-installing-istio-on-an-rke2-cluster)
-
-# What's New in Rancher v2.5
-
-The overall architecture of Istio has been simplified. A single component, Istiod, has been created by combining Pilot, Citadel, Galley and the sidecar injector. Node Agent functionality has also been merged into istio-agent.
-
-Addons that were previously installed by Istio (cert-manager, Grafana, Jaeger, Kiali, Prometheus, Zipkin) will now need to be installed separately. Istio will support installation of integrations that are from the Istio Project and will maintain compatibility with those that are not.
-
-A Prometheus integration will still be available through an installation of [Rancher Monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/), or by installing your own Prometheus operator. Rancher's Istio chart will also install Kiali by default to ensure you can get a full picture of your microservices out of the box.
-
-Istio has migrated away from Helm as a way to install Istio and now provides installation through the istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, Rancher's Istio will maintain a Helm chart that utilizes the istioctl binary to manage your Istio installation.
-
-This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it can be used in the project.
 
 # Tools Bundled with Istio
 
@@ -77,11 +69,7 @@ To remove Istio components from a cluster, namespace, or workload, refer to the 
 
 # Migrate From Previous Istio Version
 
-There is no upgrade path for Istio versions less than 1.7.x. To successfully install Istio in the **Cluster Explorer**, you will need to disable your existing Istio in the **Cluster Manager**.
-
-If you have a significant amount of additional Istio CRDs you might consider manually migrating CRDs that are supported in both versions of Istio. You can do this by running `kubectl get <resource> -n istio-system -o yaml`, save the output yaml and re-apply in the new version. 
-
-Another option is to manually uninstall istio resources one at a time, but leave the resources that are supported in both versions of Istio and that will not be installed by the newest version. This method is more likely to result in issues installing the new version, but could be a good option depending on your situation.
+For details on migrating from Istio v1 installed with the legacy Cluster Manager, see [this page.](./migrating)
 
 # Accessing Visualizations
 
