@@ -100,7 +100,9 @@ You can [save the configuration of an existing cluster as an RKE template.]({{<b
 
 # Standardizing Hardware
 
-RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, you use RKE templates [in conjunction with other tools]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/rke-templates-and-hardware).
+RKE templates are designed to standardize Kubernetes and Rancher settings. If you want to standardize your infrastructure as well, one option is to use RKE templates [in conjunction with other tools]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/rke-templates-and-hardware).
+
+Another option is to use [cluster templates,](../../cluster-templates) which include node pool configuration options, but don't provide configuration enforcement. For details on the differences between cluster templates and RKE templates, see [this page.](../../cluster-templates/template-differences)
 
 # YAML Customization
 
