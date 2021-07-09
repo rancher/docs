@@ -82,4 +82,4 @@ You can access your cluster after its state is updated to **Active.**
 | EIP Charge Mode | This option will only be shown when `Create EIP` is selected. The options are pay by `BandWidth` and pay by `Traffic`. |
 | EIP Bandwidth Size | This option will only be shown when `Create EIP` is selected. The BandWidth of the EIPs. |
 | Authentication Mode | It means enabling `RBAC` or also enabling `Authenticating Proxy`. If you select `Authenticating Proxy`, the certificate which is used for authenticating proxy will be also required. |
-| Node Label | The labels for the cluster node(s). |
+| Node Label | The labels for the cluster node(s). Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) |
