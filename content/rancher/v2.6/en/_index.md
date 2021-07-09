@@ -16,6 +16,6 @@ One Rancher server installation can manage thousands of Kubernetes clusters and 
 
 Rancher adds significant value on top of Kubernetes, first by centralizing authentication and role-based access control (RBAC) for all of the clusters, giving global admins the ability to control cluster access from one location.
 
-It then enables detailed monitoring and alerting for clusters and their resources, ships logs to external providers, and integrates directly with Helm via the Application Catalog. If you have an external CI/CD system, you can plug it into Rancher, but if you don't, Rancher even includes a pipeline engine to help you automatically deploy and upgrade workloads.
+It then enables detailed monitoring and alerting for clusters and their resources, ships logs to external providers, and integrates directly with Helm via the Application Catalog. If you have an external CI/CD system, you can plug it into Rancher, but if you don't, Rancher even includes Fleet to help you automatically deploy and upgrade workloads.
 
 Rancher is a _complete_ container management platform for Kubernetes, giving you the tools to successfully run Kubernetes anywhere.

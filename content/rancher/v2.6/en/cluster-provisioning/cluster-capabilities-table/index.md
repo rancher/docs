@@ -2,7 +2,8 @@
 headless: true
 ---
 
-| Action | Rancher Launched Kubernetes Clusters |  EKS and GKE Clusters* | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |
+
+| Action | Rancher Launched Kubernetes Clusters |  EKS, GKE and AKS Clusters* | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |
 | --- | --- | ---| ---|----|
 | [Using kubectl and a kubeconfig file to Access a Cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) | ✓ | ✓ | ✓ | ✓ |
 | [Managing Cluster Members]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/cluster-members/) | ✓ | ✓ | ✓ | ✓ |
@@ -20,9 +21,8 @@ headless: true
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/pod-security-policy/) | ✓ | ✓ |  ||
 
-\* Registered GKE and EKS clusters have the same options available as GKE and EKS clusters created from the Rancher UI. The  difference is that when a registered cluster is deleted from the Rancher UI, [it is not destroyed.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-eks-and-gke-clusters)
+\* Registered GKE, EKS and AKS clusters have the same options available as GKE, EKS and AKS clusters created from the Rancher UI. The key difference is that when a registered cluster is deleted from the Rancher UI, [it is not destroyed.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-eks-and-gke-clusters)
 
 \* \* Cluster configuration options can't be edited for imported clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/imported-clusters/)
 
 \* \* \* For registered cluster nodes, the Rancher UI exposes the ability to cordon drain, and edit the node.
-
