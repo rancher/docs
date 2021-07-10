@@ -19,6 +19,7 @@ The following guides use automation tools to deploy the Rancher server on a virt
 - [Azure](./microsoft-azure-qs) (uses Terraform)
 - [GCP](./google-gcp-qs) (uses Terraform)
 - [Vagrant](./quickstart-vagrant)
+- [Bare metal](./quickstart-baremetal)
 
 If you prefer, the following guide will take you through the same process in individual steps. Use this if you want to run Rancher in a different provider, on prem, or if you would just like to see how easy it is.
 
