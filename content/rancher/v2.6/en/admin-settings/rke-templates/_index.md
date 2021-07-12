@@ -1,6 +1,6 @@
 ---
 title: RKE Templates
-weight: 7010
+weight: 80
 ---
 
 RKE templates are designed to allow DevOps and security teams to standardize and simplify the creation of Kubernetes clusters.

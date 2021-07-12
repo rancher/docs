@@ -1,6 +1,6 @@
 ---
 title: Configuring a Global Default Private Registry
-weight: 400
+weight: 40
 aliases:
 ---
 

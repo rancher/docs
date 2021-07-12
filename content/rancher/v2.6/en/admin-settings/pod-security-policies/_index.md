@@ -1,6 +1,6 @@
 ---
 title: Pod Security Policies
-weight: 1135
+weight: 60
 aliases:
     - /rancher/v2.6/en/concepts/global-configuration/pod-security-policies/
     - /rancher/v2.6/en/tasks/global-configuration/pod-security-policies/

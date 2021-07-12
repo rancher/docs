@@ -1,6 +1,6 @@
 ---
 title: Authentication
-weight: 1115
+weight: 10
 aliases:
     - /rancher/v2.6/en/concepts/global-configuration/authentication/
     - /rancher/v2.6/en/tasks/global-configuration/authentication/
