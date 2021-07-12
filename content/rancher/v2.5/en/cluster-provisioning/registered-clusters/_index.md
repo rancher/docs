@@ -125,7 +125,7 @@ The capabilities for registered clusters are listed in the table on [this page.]
 
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.8" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 - [Features for All Registered Clusters](#before-2-5-8-features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#before-2-5-8-additional-features-for-registered-k3s-clusters)
