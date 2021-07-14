@@ -137,7 +137,7 @@ Placeholder | Description
 `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated

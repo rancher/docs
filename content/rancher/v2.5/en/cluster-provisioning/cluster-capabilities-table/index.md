@@ -3,7 +3,7 @@ headless: true
 ---
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 | Action | Rancher Launched Kubernetes Clusters |  EKS and GKE Clusters* | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |
 | --- | --- | ---| ---|----|
@@ -30,7 +30,7 @@ headless: true
 \* \* \* For registered cluster nodes, the Rancher UI exposes the ability to cordon drain, and edit the node.
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.7" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 | Action | Rancher Launched Kubernetes Clusters | Hosted Kubernetes Clusters | Registered EKS Clusters | All Other Registered Clusters |
 | --- | --- | ---| ---|----|

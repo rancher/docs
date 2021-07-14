@@ -5,7 +5,7 @@ weight: 3
 ---
 
 {{% tabs %}}
-{{% tab "v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 # Changes in v2.5.8
 

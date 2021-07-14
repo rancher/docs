@@ -74,7 +74,7 @@ Matches, filters and `Outputs` are configured for `ClusterFlows` in the same way
 After `ClusterFlow` selects logs from all namespaces in the cluster, logs from the cluster will be collected and logged to the selected `ClusterOutput`.
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.7" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 - [Flows](#flows-2-5-0)
   - [Matches](#matches-2-5-0)
