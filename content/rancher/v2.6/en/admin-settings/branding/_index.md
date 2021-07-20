@@ -10,6 +10,8 @@ Rancher v2.6 introduced the ability to customize Rancher’s branding and naviga
 
 # Changing Brand Settings
 
+> **Prerequisite:** You will need to have at least cluster member permissions.
+
 To configure the brand settings, 
 
 1. Click **≡ > Global settings**.
@@ -48,6 +50,8 @@ The custom links don't affect who has access to each service.
 Links can be created at the top level and multiple links can be grouped together.
 
 ### Adding a Custom Navigation Link
+
+> **Prerequisite:** You will need to have at least cluster member or project member permissions.
 
 1. In Rancher, go to the Cluster Explorer view where you would like to add custom navigation links.
 2. In the top navigation menu, click **🔍 (Resource Search)**.
