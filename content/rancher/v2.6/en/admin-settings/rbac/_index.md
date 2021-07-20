@@ -1,6 +1,6 @@
 ---
 title: Role-Based Access Control (RBAC)
-weight: 1120
+weight: 20
 aliases:
     - /rancher/v2.6/en/concepts/global-configuration/users-permissions-roles/
 ---
