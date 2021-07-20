@@ -55,11 +55,9 @@ Links can be created at the top level and multiple links can be grouped together
 4. Click **Create from YAML.**
 5. Create a new navigation link with these fields:
 
-        ```
         Name: linkname
         group: GroupName
         toURL: https://example.com
-        ```
 6. Click **Create.**
 
 ### Example
