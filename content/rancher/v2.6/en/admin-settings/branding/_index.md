@@ -6,7 +6,10 @@ weight: 90
 Rancher v2.6 introduced the ability to customize Rancher’s branding and navigation links.
 
 - [Changing Brand Settings](#changing-brand-settings)
+- [Brand Configuration](#brand-configuration)
 - [Custom Navigation Links in Cluster Explorer](#custom-navigation-links-in-cluster-explorer)
+- [Link Configuration](#link-configuration)
+- [Link Example](#example)
 
 # Changing Brand Settings
 
@@ -59,12 +62,58 @@ Links can be created at the top level and multiple links can be grouped together
 4. Click **Create from YAML.**
 5. Create a new navigation link with these fields:
 
-        Name: linkname
+        name: linkname
         group: GroupName
         toURL: https://example.com
 6. Click **Create.**
 
-### Example
+# Link Configuration
+
+### `name` 
+
+Display name for the link. Required.
+
+### `group`
+
+Name of a group of links that expands when clicked.
+
+### `iconSrc`
+
+URL pointing to the icon representing the link.
+
+### `label` 
+
+A Kubernetes label for the NavLink custom resource
+
+### `sideLabel`
+
+Label that appears in the left navigation bar
+
+### `target`
+
+Sets the target property of the link, which (depending on browsers) determines if it opens in a new window or in an existing tab.
+
+### `toService`
+
+Has five fields that are constructed to create a URL like the following: `https://<RANCHER_SERVER_URL>/k8s/clusters/<CLUSTER>/k8s/namespace/<NAMESPACE>/service/<SCHEME>:<NAME>:<PORT>/proxy/<PATH>
+
+For example, a link to a monitoring service can be set up as follows:
+
+- name: `rancher-monitoring-grafana`
+- namespace: `cattle-monitoring-system`
+- path: `proxy/?orgId=1`
+- port: `"80"`
+- scheme: `http`
+
+It is required to provide either the `toService` directive or the `toURL` directive.
+
+### `toUrl`
+
+Can be any link, even to links outside of the cluster.
+
+It is required to provide either the `toService` directive or the `toURL` directive.
+
+# Link Example
 
 This example NavLink YAML shows an example of configuring a NavLink to a Grafana dashboard:
 
