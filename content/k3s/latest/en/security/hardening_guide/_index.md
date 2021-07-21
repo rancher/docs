@@ -302,24 +302,50 @@ spec:
   - Ingress
 ```
 
-If you are using the default traefik ingress controller with k3s, it will also be blocked by default, so the following network policy must be added to allow traffic to both traefik pods and svclb pods in the kube-system namespace:
+If you are using the default traefik ingress controller with k3s, it will also be blocked by default, so the following network policies must be added to allow traffic to both traefik pods and svclb pods in the kube-system namespace. For version 1.20 and below there is a different label used than in 1.21 and above, so remove the one that is not associated with your kubernetes version.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: default-network-traefik-policy
+  name: allow-all-svclbtraefik-ingress
   namespace: kube-system
 spec:
+  podSelector: 
+    matchLabels:
+      app: svclb-traefik
   ingress:
-  - ports:
-    - port: 80
-      protocol: TCP
-    - port: 443
-      protocol: TCP
+  - {}
+  policyTypes:
+  - Ingress
+---
+# 1.20
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-traefik-v120-ingress
+  namespace: kube-system
+spec:
   podSelector:
-    matchExpressions:
-    - {key: app, operator: In, values: [traefik,svclb-traefik]}
+    matchLabels:
+      app: traefik
+  ingress:
+  - {}
+  policyTypes:
+  - Ingress
+---
+# 1.21
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-traefik-v121-ingress
+  namespace: kube-system
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
+  ingress:
+  - {}
   policyTypes:
   - Ingress
 ```
