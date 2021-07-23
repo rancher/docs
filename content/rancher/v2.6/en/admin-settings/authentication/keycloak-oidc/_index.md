@@ -31,8 +31,27 @@ If you have an existing configuration using the SAML protocol and want to switch
     `Name` | `Groups Mapper`
     `Mapper Type` | `Group Membership`
     `Token Claim Name` | `groups`
-    `Add to ID token` | `ON`
+    `Add to ID token` | `OFF`
+    `Add to access token` | `OFF`
+    `Add to user info` | `ON`
+
+  - Create a new "Client Audience" with the settings below.
+
+    Setting | Value
+    ------------|------------
+    `Name` | `Client Audience`
+    `Mapper Type` | `Audience`
+    `Included Client Audience` | &lt;CLIENT_NAME>
     `Add to access token` | `ON`
+
+  - Create a new "Groups Path" with the settings below.
+
+    Setting | Value
+    ------------|------------
+    `Name` | `Group Path`
+    `Mapper Type` | `Group Membership`
+    `Token Claim Name` | `full_group_path`
+    `Full group path` | `ON`
     `Add to user info` | `ON`
 
   - Add other "Builtin Protocol Mappers" as needed.
