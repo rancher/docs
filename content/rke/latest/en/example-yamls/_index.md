@@ -250,6 +250,10 @@ services:
         v: 4
         # Enable RotateKubeletServerCertificate feature gate
         feature-gates: RotateKubeletServerCertificate=true
+        # Enable TLS Certificates management
+        # https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
+        cluster-signing-cert-file: "/etc/kubernetes/ssl/kube-ca.pem"
+        cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"
     kubelet:
       # Base domain for the cluster
       cluster_domain: cluster.local
