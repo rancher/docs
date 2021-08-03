@@ -28,11 +28,11 @@ If you don't install CoreDNS, you will need to install a cluster DNS provider yo
 
 [Traefik](https://traefik.io/) is a modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It simplifies networking complexity while designing, deploying, and running applications.
 
-Traefik is deployed by default when starting the server. For more information see [Auto Deploying Manifests]({{<baseurl>}}/k3s/latest/en/advanced/#auto-deploying-manifests). The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml` and any changes made to this file will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
+Traefik is deployed by default when starting the server. For more information see [Auto Deploying Manifests]({{<baseurl>}}/k3s/latest/en/advanced/#auto-deploying-manifests). The default config file is found in `/var/lib/rancher/k3s/server/manifests/traefik.yaml`.
 
 The Traefik ingress controller will use ports 80 and 443 on the host (i.e. these will not be usable for HostPort or NodePort).
 
-Traefik can be configured by editing the `traefik.yaml` file. To prevent k3s from using or overwriting the modified version, deploy k3s with `--no-deploy traefik` and store the modified copy in the `k3s/server/manifests` directory. For more information, refer to the official [Traefik for Helm Configuration Parameters.](https://github.com/helm/charts/tree/master/stable/traefik#configuration)
+The `traefik.yaml` file should not be edited manually, because k3s would overwrite it again once it is restarted. Instead you can customize Traefik by creating an additional `HelmChartConfig` manifest in `/var/lib/rancher/k3s/server/manifests`. For more details and an example see [Customizing Packaged Components with HelmChartConfig]({{<baseurl>}}/k3s/latest/en/helm/#customizing-packaged-components-with-helmchartconfig). For more information on the possible configuration values, refer to the official [Traefik Helm Configuration Parameters.](https://github.com/traefik/traefik-helm-chart/tree/master/traefik).
 
 To disable it, start each server with the `--disable traefik` option.
 
