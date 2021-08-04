@@ -23,7 +23,8 @@ The Rancher authentication proxy integrates with the following external authenti
 | [OpenLDAP]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/openldap/)              |
 | [Microsoft AD FS]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/microsoft-adfs/) |
 | [PingIdentity]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/ping-federate/)     |
-| [Keycloak]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/keycloak/)              |
+| [Keycloak (OIDC)]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/keycloak-oidc/)  |
+| [Keycloak (SAML)]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/keycloak-saml/)  |
 | [Okta]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/okta/)                      | 
 | [Google OAuth]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/google/)            | 
 | [Shibboleth]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/shibboleth)           |
