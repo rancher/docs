@@ -28,6 +28,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
   - [Port Requirements](#port-requirements)
+- [Dockershim Support](#dockershim-support)
 
 For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/deployment-types/)
 
@@ -47,7 +48,7 @@ All supported operating systems are 64-bit x86.
 
 The `ntp` (Network Time Protocol) package should be installed. This prevents errors with certificate validation that can occur when the time is not synchronized between the client and server.
 
-Some distributions of Linux may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes 1.19 and 1.20, firewalld must be turned off.
+Some distributions of Linux may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes v1.19, v1.20 and v1.21, firewalld must be turned off.
 
 If you don't feel comfortable doing so you might check suggestions in the [respective issue](https://github.com/rancher/rancher/issues/28840). Some users were successful [creating a separate firewalld zone with a policy of ACCEPT for the Pod CIDR](https://github.com/rancher/rancher/issues/28840#issuecomment-787404822).
 
@@ -170,3 +171,15 @@ Each node used should have a static IP configured, regardless of whether you are
 ### Port Requirements
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
+
+# Dockershim Support
+
+In Kubernetes v1.20, the dockershim became deprecated, and Docker became deprecated as a container runtime for Kubernetes. Dockershim was built into Kubernetes as a type of adapter that allowed Kubernetes to manage Docker containers. It was necessary because the Docker Daemon was not compliant with the CRI (Container Runtime Interface) that was created for Kubernetes. The dockershim is still included in the kubelet in Kubernetes v1.20. 
+
+Rancher plans to implement the [upstream open source community Dockershim announced by Mirantis and Docker](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/) to ensure RKE clusters can continue to leverage Docker as their container runtime. Users of RKE will be able to continue upgrading and building new RKE clusters leveraging Docker as the runtime and install method.
+
+For users looking to use another container runtime, Rancher has the edge-focused K3s and datacenter-focused RKE2 Kubernetes distributions that use containerd as the default runtime. Imported RKE2 and K3s Kubernetes clusters can then be upgraded and managed through Rancher going forward.
+
+For more information on the deprecation of Docker as a container runtime for Kubernetes, see the [official Kubernetes blog post](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/) and the [official blog post from Mirantis.](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/)
+
+The dockershim deprecation schedule is tracked by the upstream Kubernetes community in [Kubernetes Enhancement Proposal (KEP) 1985.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1985-remove-dockershim) 
