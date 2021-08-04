@@ -59,6 +59,8 @@ Before enabling Istio, we recommend that you confirm that your Rancher worker no
 
 If you are installing Istio on RKE2 cluster, some additional steps are required. For details, see [this section.](#additional-steps-for-installing-istio-on-an-rke2-cluster)
 
+Note that Istio v2 (upstream Istio v1.7+) cannot be upgraded in an air gapped environment.
+
 # Setup Guide
 
 Refer to the [setup guide]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup) for instructions on how to set up Istio and use it in a project.
