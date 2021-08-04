@@ -9,7 +9,7 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 - [Rancher Nodes](#rancher-nodes)
   - [Ports for Rancher Server Nodes on K3s](#ports-for-rancher-server-nodes-on-k3s)
   - [Ports for Rancher Server Nodes on RKE](#ports-for-rancher-server-nodes-on-rke)
-  - [Ports for Rancher Server Nodes on RancherD or RKE2](#ports-for-rancher-server-nodes-on-rancherd-or-rke2)
+  - [Ports for Rancher Server Nodes on RKE2](#ports-for-rancher-server-nodes-on-rke2)
   - [Ports for Rancher Server in Docker](#ports-for-rancher-server-in-docker)
 - [Downstream Kubernetes Cluster Nodes](#downstream-kubernetes-cluster-nodes)
   - [Ports for Rancher Launched Kubernetes Clusters using Node Pools](#ports-for-rancher-launched-kubernetes-clusters-using-node-pools)
@@ -115,11 +115,11 @@ The following tables break down the port requirements for inbound and outbound t
 
 {{% /accordion %}}
 
-### Ports for Rancher Server Nodes on RancherD or RKE2
+### Ports for Rancher Server Nodes on RKE2
 
 {{% accordion label="Click to expand" %}}
 
-The RancherD (or RKE2) server needs port 6443 and 9345 to be accessible by other nodes in the cluster.
+The RKE2 server needs port 6443 and 9345 to be accessible by other nodes in the cluster.
 
 All nodes need to be able to reach other nodes over UDP port 8472 when Flannel VXLAN is used.
 
@@ -127,17 +127,17 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
 
-<figcaption>Inbound Rules for RancherD or RKE2 Server Nodes</figcaption>
+<figcaption>Inbound Rules for RKE2 Server Nodes</figcaption>
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
-| TCP | 9345 | RancherD/RKE2 agent nodes | Kubernetes API
-| TCP | 6443 | RancherD/RKE2 agent nodes | Kubernetes API
-| UDP | 8472 | RancherD/RKE2 server and agent nodes | Required only for Flannel VXLAN
-| TCP | 10250 | RancherD/RKE2 server and agent nodes | kubelet
-| TCP | 2379 | RancherD/RKE2 server nodes | etcd client port
-| TCP | 2380 | RancherD/RKE2 server nodes | etcd peer port
-| TCP | 30000-32767 | RancherD/RKE2 server and agent nodes | NodePort port range
+| TCP | 9345 | RKE2 agent nodes | Kubernetes API
+| TCP | 6443 | RKE2 agent nodes | Kubernetes API
+| UDP | 8472 | RKE2 server and agent nodes | Required only for Flannel VXLAN
+| TCP | 10250 | RKE2 server and agent nodes | kubelet
+| TCP | 2379 | RKE2 server nodes | etcd client port
+| TCP | 2380 | RKE2 server nodes | etcd peer port
+| TCP | 30000-32767 | RKE2 server and agent nodes | NodePort port range
 | HTTP | 8080 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used |
 | HTTPS | 8443 | <ul><li>hosted/registered Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl. Not needed if you have LB doing TLS termination. |
 

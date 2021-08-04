@@ -18,8 +18,6 @@ aliases:
 ---
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 
-For the instructions to upgrade Rancher installed on Kubernetes with RancherD, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-linux/upgrades)
-
 For the instructions to upgrade Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/single-node-upgrades)
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
