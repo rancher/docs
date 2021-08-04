@@ -4,7 +4,7 @@ title: AKS Cluster Configuration Reference
 weight: 4
 ---
 
-# Changes in v2.6
+# Changes in Rancher v2.6
 
 - Support for adding more than one node pool
 - Support for private clusters
