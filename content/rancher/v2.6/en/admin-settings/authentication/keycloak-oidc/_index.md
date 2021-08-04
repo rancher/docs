@@ -54,8 +54,6 @@ If you have an existing configuration using the SAML protocol and want to switch
     `Full group path` | `ON`
     `Add to user info` | `ON`
 
-  - Add other "Builtin Protocol Mappers" as needed.
-  
 ## Configuring Keycloak in Rancher
 
 1. In the Rancher UI, click **☰ > Users & Authentication > Auth Provider**.
