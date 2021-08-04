@@ -18,7 +18,7 @@ headless: true
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.5/en/security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cloning-clusters/)| ✓ | ✓ |✓ | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ | ✓  |  | |
-| Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | | ✓ | ✓<sup>4</sup> |
+| Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ | | ✓<sup>4</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ | ✓ |  ||
 
@@ -46,7 +46,7 @@ headless: true
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.5/en/security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cloning-clusters/)| ✓ | ✓ |✓ | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ |  | ✓ | |
-| Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | | ✓ | ✓<sup>3</sup> |
+| Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ | | ✓<sup>3</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ |  | ✓ ||
 
