@@ -39,7 +39,7 @@ Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Ranche
 
 **Will Rancher v2.x support Hashicorp's Vault for storing secrets?**
 
-Secrets management is on our roadmap but we haven't assigned it to a specific release yet. 
+There is no built-in integration of Rancher and Hashicorp's Vault. Rancher manages Kubernetes and integrates with secrets via the Kubernetes API. Thus in any downstream (managed) cluster, you can use a secret vault of your choice provided it integrates with Kubernetes, including [Vault](https://www.vaultproject.io/docs/platform/k8s). 
 
 <br>
 
