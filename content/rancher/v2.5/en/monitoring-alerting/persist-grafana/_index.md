@@ -84,7 +84,7 @@ grafana.sidecar.dashboards.searchNamespace=ALL
 Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboards are still restricted to giving permissions for users to add dashboards in the namespace defined in `grafana.dashboards.namespace`, which defaults to `cattle-dashboards`.
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.8" %}}
+{{% tab "Rancher before v2.5.8" %}}
 > **Prerequisites:**
 > 
 > - The monitoring application needs to be installed.

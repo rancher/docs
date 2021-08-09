@@ -23,7 +23,12 @@ Windows
 ./scripts/dev-windows.ps1
 ```
 
-and then navigate to http://localhost:9001/.  You can customize the port by passing it as an argument:
+and then navigate to http://localhost:9001/. Click the link on the card associated with a given Rancher version to
+access the documentation. For example, clicking on the link of the Rancher v2.5 card will redirect to
+http://localhost:9001/rancher/v2.5/en/. Note that due to the way the Rancher website is built, links in the top
+navigation panel will not work.
+
+You can customize the port by passing it as an argument:
 
 Linux
 ```bash

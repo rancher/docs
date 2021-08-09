@@ -63,7 +63,7 @@ As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-p
 > - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 ### Enable Monitoring for use without SSL
 
@@ -101,7 +101,7 @@ key.pfx=`base64-content`
 Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
