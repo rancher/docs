@@ -30,7 +30,6 @@ On this page, we provide security-related documentation along with resources to 
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
 - [Rancher CVEs and resolutions](#rancher-cves-and-resolutions)
-- [Rancher image vulnerability scanning](#rancher-image-vulnerability-scanning)
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
@@ -84,7 +83,3 @@ Results:
 ### Rancher CVEs and Resolutions
 
 Rancher is committed to informing the community of security issues in our products. For the list of CVEs (Common Vulnerabilities and Exposures) for issues we have resolved, refer to [this page.](./cve)
-
-### Rancher Image Vulnerability Scanning
-
-Rancher shares security scan results for the images in a Rancher release. This information includes CVE (Common Vulnerabilities and Exposures) IDs, status, notes or remediation plans where available. For more information, see [this page.](./cve-scans)
