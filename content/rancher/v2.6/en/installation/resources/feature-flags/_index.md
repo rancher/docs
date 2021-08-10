@@ -28,7 +28,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-- `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+. In Rancher v2.6, Fleet can no longer be disabled. If Fleet was disabled in Rancher v2.5.x, it will become enabled if Rancher is upgraded to v2.6.x.
+- `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+. Rancher v2.6's new provisioning system leverages Fleet's bundle deployment capabilities in order to manage clusters at scale. Therefore, in Rancher v2.6, Fleet can no longer be disabled. If Fleet was disabled in Rancher v2.5.x, it will become enabled if Rancher is upgraded to v2.6.x.
 - `continuous-delivery`: In Rancher v2.5.x, Fleet came with a GitOps feature that could not be disabled separately from Fleet. In Rancher v2.6, the `continuous-delivery` feature flag was introduced to allow the GitOps feature of Fleet to be disabled. For more information, see [this page.](./continuous-delivery)
 - `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
 - `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
