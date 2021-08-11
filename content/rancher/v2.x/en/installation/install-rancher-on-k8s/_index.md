@@ -180,13 +180,15 @@ The default is for Rancher to generate a CA and uses `cert-manager` to issue the
 Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
+- Set the `bootstrapPassword` to something unique for the `admin` user.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
-  --set hostname=rancher.my.org
+  --set hostname=rancher.my.org \
+  --set bootstrapPassword=admin
 ```
 
 Wait for Rancher to be rolled out:
@@ -205,6 +207,7 @@ This option uses `cert-manager` to automatically request and renew [Let's Encryp
 In the following command,
 
 - `hostname` is set to the public DNS record,
+- Set the `bootstrapPassword` to something unique for the `admin` user.
 - `ingress.tls.source` is set to `letsEncrypt`
 - `letsEncrypt.email` is set to the email address used for communication about your certificate (for example, expiry notices)
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
@@ -213,6 +216,7 @@ In the following command,
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
+  --set bootstrapPassword=admin \
   --set ingress.tls.source=letsEncrypt \
   --set letsEncrypt.email=me@example.org
 ```
@@ -236,6 +240,7 @@ Although an entry in the `Subject Alternative Names` is technically required, ha
 > If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.x/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
 
 - Set the `hostname`.
+- Set the `bootstrapPassword` to something unique for the `admin` user.
 - Set `ingress.tls.source` to `secret`.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
@@ -243,6 +248,7 @@ Although an entry in the `Subject Alternative Names` is technically required, ha
 helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
+  --set bootstrapPassword=admin \
   --set ingress.tls.source=secret
 ```
 
@@ -252,6 +258,7 @@ If you are using a Private CA signed certificate , add `--set privateCA=true` to
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
+  --set bootstrapPassword=admin \
   --set ingress.tls.source=secret \
   --set privateCA=true
 ```
