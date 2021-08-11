@@ -45,5 +45,15 @@ Admins can set a global TTL on Kubeconfig tokens. Once the token expires the kub
 4. Edit the setting and set the value to desired duration in minutes.
 _**Note:**_ This value cannot exceed max-ttl of API tokens.(`https://<Rancher-Server-IP/v3/settings/auth-token-max-ttl-minutes`). `auth-token-max-ttl-minutes` is set to 1440 (24 hours) by default.  `auth-token-max-ttl-minutes would default to 0 allowing tokens to never expire`.
 
+### Token Hashing
 
+Users can enable token hashing, where tokens will undergo a one-way hash using the SHA256 algorithm. This is a non-reversible process, once enabled, this feature cannot be disabled. It is advisable to take backups prior to enabling and/or evaluated in a test environment first.
+
+To enable token hashing, refer to [this section]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags).
+
+This feature will affect all tokens which include, but are not limited to, the following:
+
+- Kubeconfig tokens
+- Bearer tokens API keys/calls
+- Tokens used by internal operations
  
