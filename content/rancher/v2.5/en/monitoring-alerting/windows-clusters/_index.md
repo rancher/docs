@@ -1,6 +1,6 @@
 ---
 title: Windows Cluster Support for Monitoring V2
-shortTitle: Windows Clusters
+shortTitle: Windows Support
 weight: 5
 ---
 
