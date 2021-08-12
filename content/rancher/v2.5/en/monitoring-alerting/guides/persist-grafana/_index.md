@@ -1,6 +1,6 @@
 ---
 title: Persistent Grafana Dashboards
-weight: 4
+weight: 6
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/v2.5/persist-grafana
 ---
@@ -75,7 +75,7 @@ If you attempt to delete the dashboard in the Grafana UI, you will see the error
 
 ### Configuring Namespaces for the Grafana Dashboard ConfigMap
 
-To specify that you would like Grafana to watch for ConfigMaps across all namespaces, set:
+To specify that you would like Grafana to watch for ConfigMaps across all namespaces, set this value in the `rancher-monitoring` Helm chart:
 
 ```
 grafana.sidecar.dashboards.searchNamespace=ALL
