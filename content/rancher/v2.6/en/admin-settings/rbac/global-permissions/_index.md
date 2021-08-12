@@ -67,7 +67,7 @@ The following table lists the permissions and actions that a `restricted-admin` 
 | PSP's | Manage PSP templates | Yes | No (Can list) | No | |
 | Tools | | | | | |
 | | Manage RKE Templates | Yes | No | Yes | |
-| | Manage Global Catalogs | Yes | No | Yes | Cannot edit/delete built-in system catalog. Cn manage Helm library |
+| | Manage Global Catalogs | Yes | No | Yes | Cannot edit/delete built-in system catalog. Can manage Helm library |
 | | Cluster Drivers | Yes | No | Yes | |
 | | Node Drivers | Yes | No | Yes | |
 | | GlobalDNS Providers | Yes | Yes (Self) | Yes | |
