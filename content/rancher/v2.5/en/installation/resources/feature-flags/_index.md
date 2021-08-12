@@ -77,7 +77,7 @@ Here is an example of a command for passing in the feature flag names when rende
 The Helm 3 command is as follows:
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \

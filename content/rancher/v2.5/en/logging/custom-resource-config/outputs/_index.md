@@ -69,7 +69,7 @@ For example configuration for each logging plugin supported by the logging opera
 For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
 
 {{% /tab %}}
-{{% tab "v2.5.0-v2.5.7" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 
 - [Outputs](#outputs-2-5-0)

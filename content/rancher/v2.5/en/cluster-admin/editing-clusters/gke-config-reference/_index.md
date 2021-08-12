@@ -5,7 +5,7 @@ weight: 3
 ---
 
 {{% tabs %}}
-{{% tab "v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 # Changes in v2.5.8
 
@@ -237,6 +237,7 @@ _Mutable: no_
 
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
+Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 # Group Details
 
@@ -308,6 +309,8 @@ The shorter the refresh window, the less likely any race conditions will occur, 
 # Labels & Annotations
 
 Add Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to the cluster.
+
+Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 # Kubernetes Options
 
@@ -428,6 +431,8 @@ Enable node pool autoscaling based on cluster load. For more information, see th
 When you apply a taint to a node, only Pods that tolerate the taint are allowed to run on the node. In a GKE cluster, you can apply a taint to a node pool, which applies the taint to all nodes in the pool.
 ### Node Labels
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
+
+Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ## Security Options
 

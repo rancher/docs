@@ -91,7 +91,7 @@ Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Ra
 Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 The following types of receivers can be configured in the Rancher UI:
 

@@ -79,13 +79,13 @@ For a list of options that can be configured when the logging application is ins
 ### Windows Support
 
 {{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+{{% tab "Rancher v2.5.8+" %}}
 As of Rancher v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
 
 For details on how to enable or disable Windows node logging, see [this section.](./helm-chart-options/#enable-disable-windows-node-logging)
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
+{{% tab "Rancher before v2.5.8" %}}
 Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.
 Only Linux node logs are able to be exported.
 

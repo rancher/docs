@@ -11,6 +11,8 @@ As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore 
 
 The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
+> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made.
+
 - [Changes in Rancher v2.5](#changes-in-rancher-v2-5)
   - [Backup and Restore for Rancher v2.5 installed with Docker](#backup-and-restore-for-rancher-v2-5-installed-with-docker)
 - [How Backups and Restores Work](#how-backups-and-restores-work)

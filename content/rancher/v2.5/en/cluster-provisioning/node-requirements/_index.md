@@ -102,6 +102,8 @@ For hardware recommendations for etcd clusters in production, refer to the offic
 
 For a production cluster, we recommend that you restrict traffic by opening only the ports defined in the port requirements below.
 
+IPv6 should be disabled at the OS level. Unless you specifically intend to utilize IPv6, you should disable it on your nodes.  IPv6 is not yet fully supported and often times it is not enough to disable IPv6 on the NICs to avoid complications.
+
 The ports required to be open are different depending on how the user cluster is launched. Each of the sections below list the ports that need to be opened for different [cluster creation options]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/).
 
 For a breakdown of the port requirements for etcd nodes, controlplane nodes, and worker nodes in a Kubernetes cluster, refer to the [port requirements for the Rancher Kubernetes Engine.]({{<baseurl>}}/rke/latest/en/os/#ports)

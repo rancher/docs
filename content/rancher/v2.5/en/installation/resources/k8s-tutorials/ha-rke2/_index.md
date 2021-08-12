@@ -44,19 +44,18 @@ systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
 1. To join the rest of the nodes, you need to configure each additional node with the same shared token or the one generated automatically. Here is an example of the configuration file:
-```
-token: my-shared-secret
-server: https://<DNS-DOMAIN>:9345
-tls-san:
-  - my-kubernetes-domain.com
-  - another-kubernetes-domain.com
-```
+
+        token: my-shared-secret
+        server: https://<DNS-DOMAIN>:9345
+        tls-san:
+          - my-kubernetes-domain.com
+          - another-kubernetes-domain.com
 After that you need to run the installer and enable then start rke2
-```
-curl -sfL https://get.rke2.io | sh -
-systemctl enable rke2-server.service
-systemctl start rke2-server.service
-```
+
+        curl -sfL https://get.rke2.io | sh -
+        systemctl enable rke2-server.service
+        systemctl start rke2-server.service
+
 
 1. Repeat the same command on your third RKE2 server node.
 
@@ -82,7 +81,7 @@ Then test the health of the cluster pods:
 
 When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
-To use this `kubeconfig` file, 
+To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/rke2/rke2.yaml` and save it to the directory `~/.kube/config` on your local machine.
