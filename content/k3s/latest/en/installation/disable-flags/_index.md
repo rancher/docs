@@ -9,10 +9,10 @@ When starting K3s server with --cluster-init it will run all control plane compo
 
 This document assumes you run K3s server with embedded etcd by passing `--cluster-init` flag to the server process.
 
-To run a K3s server with only etcd components you can pass `--disable-api-server --disable-controller-manager --disable-scheduler` flags to k3s, this will result in running a server node with only etcd, for example to run K3s server with those flags:
+To run a K3s server with only etcd components you can pass `--disable-apiserver --disable-controller-manager --disable-scheduler` flags to k3s, this will result in running a server node with only etcd, for example to run K3s server with those flags:
 
 ```
-curl -fL https://get.k3s.io | sh -s - server --cluster-init --disable-api-server --disable-controller-manager --disable-scheduler
+curl -fL https://get.k3s.io | sh -s - server --cluster-init --disable-apiserver --disable-controller-manager --disable-scheduler
 ```
 
 You can join other nodes to the cluster normally after that.
@@ -39,7 +39,7 @@ Note that you can run `kubectl` commands only on the k3s server that has the api
 
 ### Re-enabling control components
 
-In both cases you can re-enable any component that you already disabled simply by removing the corresponding flag that disables them, so for example if you want to revert the etcd only node back to a full k3s server with all components you can just remove the following 3 flags `--disable-api-server --disable-controller-manager --disable-scheduler`, so in our example to revert back node `ip-172-31-13-32` to a full k3s server you can just re-run the curl command without the disable flags:
+In both cases you can re-enable any component that you already disabled simply by removing the corresponding flag that disables them, so for example if you want to revert the etcd only node back to a full k3s server with all components you can just remove the following 3 flags `--disable-apiserver --disable-controller-manager --disable-scheduler`, so in our example to revert back node `ip-172-31-13-32` to a full k3s server you can just re-run the curl command without the disable flags:
 ```
 curl -fL https://get.k3s.io | sh -s - server --cluster-init
 ``` 
@@ -61,7 +61,7 @@ In any of the previous situations you can use the config file instead of running
 
 ```
 ---
-disable-api-server: true
+disable-apiserver: true
 disable-controller-manager: true
 disable-scheduler: true
 cluster-init: true
