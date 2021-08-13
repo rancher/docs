@@ -46,7 +46,7 @@ When using this method to install K3s, the following environment variables can b
 | `INSTALL_K3S_CHANNEL_URL` | Channel URL for fetching K3s download URL. Defaults to https://update.k3s.io/v1-release/channels. |
 | `INSTALL_K3S_CHANNEL` | Channel to use for fetching K3s download URL. Defaults to "stable". Options include: `stable`, `latest`, `testing`. |
 
-This example shows where to place aformentioned environment variables as options (after the pipe):
+This example shows where to place aforementioned environment variables as options (after the pipe):
 
 ```
 curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -
