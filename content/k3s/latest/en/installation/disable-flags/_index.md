@@ -3,7 +3,7 @@ title: "Disable Components Flags"
 weight: 60
 ---
 
-When starting K3s server with --cluster-init it will run all control plane components that includes (api server, controller manager, scheduler, and etcd). However you can run server nodes with certain components and execlude others, the following sectiohs will explain how to do that.
+When starting K3s server with --cluster-init it will run all control plane components that includes (api server, controller manager, scheduler, and etcd). However you can run server nodes with certain components and execlude others, the following sections will explain how to do that.
 
 # ETCD Only Nodes
 
@@ -34,7 +34,7 @@ ip-172-31-13-32   Ready    etcd                        5h39m   v1.20.4+k3s1
 ip-172-31-14-69   Ready    control-plane,master        5h39m   v1.20.4+k3s1
 ```
 
-Note that you can run `kubectl` commands only on the k3s server that has the api running, and you cant run `kubectl` commands on etcd only nodes.
+Note that you can run `kubectl` commands only on the k3s server that has the api running, and you can't run `kubectl` commands on etcd only nodes.
 
 
 ### Re-enabling control components
@@ -57,7 +57,7 @@ Notice that role labels has been re-added to the node `ip-172-31-13-32` with the
 
 # Add disable flags using the config file
 
-In any of the previous situation you can use the config file instead of running the curl commands with the associated flags, for example to run an etcd only node you can add the following options to the `/etc/rancher/k3s/config.yaml` file:
+In any of the previous situations you can use the config file instead of running the curl commands with the associated flags, for example to run an etcd only node you can add the following options to the `/etc/rancher/k3s/config.yaml` file:
 
 ```
 ---
@@ -70,4 +70,19 @@ and then start K3s using the curl command without any arguents:
 
 ```
 curl -fL https://get.k3s.io | sh -
+```
+# Disable components using .skip files
+
+For any yaml file under `/var/lib/rancher/k3s/server/manifests` (coredns, traefik, local-storeage, etc.) you can add a `.skip` file which will cause K3s to not apply the associated yaml file.
+For example, adding `traefik.yaml.skip` in the manifests directory will cause K3s to skip `traefik.yaml`.
+```
+ls /var/lib/rancher/k3s/server/manifests
+ccm.yaml      local-storage.yaml  rolebindings.yaml  traefik.yaml.skip
+coredns.yaml  traefik.yaml
+
+kubectl get pods -A
+NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
+kube-system   local-path-provisioner-64ffb68fd-xx98j   1/1     Running   0          74s
+kube-system   metrics-server-5489f84d5d-7zwkt          1/1     Running   0          74s
+kube-system   coredns-85cb69466-vcq7j                  1/1     Running   0          74s
 ```
