@@ -49,7 +49,8 @@ headless: true
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ |  | ✓ | |
 | Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ | | ✓<sup>3</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
-| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ |  | ✓ ||
+| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ | | ✓ | |
+| [Authorized Cluster Endpoint]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) | ✓ | | |
 
 1. Cluster configuration options can't be edited for registered clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/)
 
