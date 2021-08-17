@@ -5,9 +5,11 @@ weight: 1126
 
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
-Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are three default global permissions: `Administrator`, `Standard User` and `User-base`.
+Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are four default global permissions: `Administrator`, `Restricted Admin`,`Standard User` and `User-base`.
 
 - **Administrator:** These users have full control over the entire Rancher system and all clusters within it.
+
+- **Restricted Admin:** These users have full control over downstream clusters, but cannot alter the local Kubernetes cluster.
 
 - <a id="user"></a>**Standard User:** These users can create new clusters and use them. Standard users can also assign other users permissions to their clusters.
 
@@ -43,11 +45,56 @@ CATTLE_RESTRICTED_DEFAULT_ADMIN=true
 ```
 ### List of `restricted-admin` Permissions
 
-The `restricted-admin` permissions are as follows:
+The following table lists the permissions and actions that a `restricted-admin` should have in comparison with the `Administrator` and `Standard User` roles:
 
-- Has full admin access to all downstream clusters managed by Rancher.
-- Can add other users and assign them to clusters outside of the local cluster.
-- Can create other restricted admins.
+| Category | Action | Global Admin | Standard User | Restricted Admin | Notes for Restricted Admin role |
+| -------- | ------ | ------------ | ------------- | ---------------- | ------------------------------- | 
+| Local Cluster functions | Manage Local Cluster (List, Edit, Import Host) | Yes | No | No | | 
+| | Create Projects/namespaces | Yes | No | No | |
+| | Add cluster/project members | Yes | No | No | |
+| | Deploy MulticlusterApp in local cluster | Yes | No | No | |
+| | Global DNS | Yes | No | No | |
+| | Access to management cluster for CRDs and CRs | Yes | No | Yes | |
+| | Save as RKE Template | Yes | No | No | |
+| Security | | | | | |
+| Enable auth | Configure Authentication | Yes | No | Yes | |
+| Roles	| Create/Assign GlobalRoles | Yes | No (Can list) | Yes | Auth webhook allows creating globalrole for perms already present |
+| | Create/Assign ClusterRoles | Yes | No (Can list) | Yes | Not in local cluster |
+| | Create/Assign ProjectRoles | Yes | No (Can list) | Yes | Not in local cluster |
+| Users	| Add User/Edit/Delete/Deactivate User | Yes | No | Yes | |
+| Groups | Assign Global role to groups | Yes | No | Yes | As allowed by the webhook |
+| | Refresh Groups | Yes | No | Yes | |
+| PSP's | Manage PSP templates | Yes | No (Can list) | No | |
+| Tools | | | | | |
+| | Manage RKE Templates | Yes | No | Yes | |
+| | Manage Global Catalogs | Yes | No | Yes | Cannot edit/delete built-in system catalog. Can manage Helm library |
+| | Cluster Drivers | Yes | No | Yes | |
+| | Node Drivers | Yes | No | Yes | |
+| | GlobalDNS Providers | Yes | Yes (Self) | Yes | |
+| | GlobalDNS Entries | Yes | Yes (Self) | Yes | |
+| Settings | | | | | |
+| | Manage Settings | Yes | No (Can list) | No (Can list) | |
+| Apps | | | | | |
+| | Launch Multicluster Apps | Yes | Yes | Yes | Not in local cluster |
+| User | | | | | |
+| | Manage API Keys | Yes (Manage all) | Yes (Manage self) | Yes (Manage self) | |
+| | Manage Node Templates | Yes | Yes (Manage self) | Yes | |
+| | Manage Cloud Credentials | Yes | Yes (Manage self) | Yes | |
+| Downstream Cluster | Create Cluster | Yes | Yes | Yes | |
+| | Edit Cluster | Yes | Yes | Yes | |
+| | Rotate Certificates	| Yes | | Yes | |
+| | Snapshot Now | Yes | | Yes | |
+| | Restore Snapshot | Yes | | Yes | |
+| | Save as RKE Template | Yes | No | Yes | |
+| | Run CIS Scan | Yes | Yes | Yes | |
+| | Add Members	| Yes | Yes | Yes | |
+| | Create Projects | Yes | Yes | Yes | |
+| Feature Charts since v2.5 | | | | | |
+| | Install Fleet | Yes | | Yes | Should not be able to run Fleet in local cluster |
+| | Deploy EKS cluster | Yes | Yes | Yes | |
+| | Deploy GKE cluster | Yes | Yes | Yes | |
+| | Deploy AKS cluster | Yes | Yes | Yes | |
+
 
 ### Changing Global Administrators to Restricted Admins
 
