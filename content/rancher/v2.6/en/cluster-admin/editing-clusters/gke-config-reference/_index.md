@@ -4,6 +4,12 @@ shortTitle: GKE Cluster Configuration
 weight: 3
 ---
 
+# Changes in Rancher v2.6
+
+- Support for additional configuration options:
+  - Project network isolation
+  - Network tags
+
 # Cluster Location
 
 | Value | Description |
