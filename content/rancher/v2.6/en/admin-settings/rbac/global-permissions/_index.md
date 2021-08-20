@@ -64,7 +64,7 @@ The following table lists the permissions and actions that a `restricted-admin` 
 | Users	| Add User/Edit/Delete/Deactivate User | Yes | No | Yes | |
 | Groups | Assign Global role to groups | Yes | No | Yes | As allowed by the webhook |
 | | Refresh Groups | Yes | No | Yes | |
-| PSP's | Manage PSP templates | Yes | No (Can list) | No | |
+| PSP's | Manage PSP templates | Yes | No (Can list) | Yes | Same privileges as Global Admin for PSPs |
 | Tools | | | | | |
 | | Manage RKE Templates | Yes | No | Yes | |
 | | Manage Global Catalogs | Yes | No | Yes | Cannot edit/delete built-in system catalog. Can manage Helm library |
@@ -78,8 +78,8 @@ The following table lists the permissions and actions that a `restricted-admin` 
 | | Launch Multicluster Apps | Yes | Yes | Yes | Not in local cluster |
 | User | | | | | |
 | | Manage API Keys | Yes (Manage all) | Yes (Manage self) | Yes (Manage self) | |
-| | Manage Node Templates | Yes | Yes (Manage self) | Yes | |
-| | Manage Cloud Credentials | Yes | Yes (Manage self) | Yes | |
+| | Manage Node Templates | Yes | Yes (Manage self) | Yes (Manage self) | Can only manage their own node templates and not those created by other users |
+| | Manage Cloud Credentials | Yes | Yes (Manage self) | Yes (Manage self) | Can only manage their own cloud credentials and not those created by other users |
 | Downstream Cluster | Create Cluster | Yes | Yes | Yes | |
 | | Edit Cluster | Yes | Yes | Yes | |
 | | Rotate Certificates	| Yes | | Yes | |
