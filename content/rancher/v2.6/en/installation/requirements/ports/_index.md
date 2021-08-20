@@ -138,6 +138,7 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 | TCP | 2379 | RKE2 server nodes | etcd client port
 | TCP | 2380 | RKE2 server nodes | etcd peer port
 | TCP | 30000-32767 | RKE2 server and agent nodes | NodePort port range
+| TCP | 5473 | Calico-node pod connecting to typha pod | Required when deploying with Calico. When a cluster is deployed with Calico with more than three nodes, the calico-node pod can't connect to a typha pod
 | HTTP | 8080 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used |
 | HTTPS | 8443 | <ul><li>hosted/registered Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl. Not needed if you have LB doing TLS termination. |
 
