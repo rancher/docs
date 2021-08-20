@@ -40,6 +40,8 @@ If you want to reuse a node from a previous custom cluster, [clean the node]({{<
 
 Provision the host according to the [installation requirements]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements) and the [checklist for production-ready clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production)
 
+If you're using Amazon EC2 as your host and want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) when provisioning the host.
+
 ### 2. Create the Custom Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
@@ -56,6 +58,9 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
     >
     >- See [Enable the Windows Support Option]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/).
     >- The only Network Provider available for clusters with Windows support is Flannel.
+    >
+    >**Dual-stack on Amazon EC2:** If you're using Amazon EC2 as your host and want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) when configuring RKE.
+
 6.	<a id="step-6"></a>Click **Next**.
 
 7.	From **Node Role**, choose the roles that you want filled by a cluster node. You must provision at least one node for each role: `etcd`, `worker`, and `control plane`. All three roles are required for a custom cluster to finish provisioning. For more information on roles, see [this section.]({{<baseurl>}}/rancher/v2.6/en/overview/concepts/#roles-for-nodes-in-kubernetes-clusters)
