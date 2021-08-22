@@ -3,81 +3,69 @@ title: How Monitoring Works
 weight: 1
 ---
 
-- [1. How Data Flows through the Monitoring Application](#1-how-data-flows-through-the-monitoring-application)
-- [2. How Prometheus Works](#2-how-prometheus-works)
-  - [2.1. Defining what Metrics are Scraped](#2-1-defining-what-metrics-are-scraped)
-  - [2.2. Scraping Metrics from Exporters](#2-2-scraping-metrics-from-exporters)
-  - [2.3. Storing Time Series Data](#2-3-storing-time-series-data)
-  - [2.4. Querying the Time Series Database](#2-4-querying-the-time-series-database)
-  - [2.5. Defining Rules for when Alerts Should be Fired](#2-5-defining-rules-for-when-alerts-should-be)
-  - [2.6. Firing Alerts](#2-6-firing-alerts)
-- [3. How Alertmanager Works](#3-how-alertmanager-works)
-  - [3.1. Routing Alerts to Receivers](#3-1-routing-alerts-to-receivers)
-  - [3.2. Configuring Multiple Receivers](#3-2-configuring-multiple-receivers)
-- [4. How the Monitoring Application Works](#4-how-the-monitoring-application-works)
-  - [4.1. Resources Deployed by Default](#4-1-resources-deployed-by-default)
-  - [4.2. PushProx](#4-2-pushprox)
-  - [4.3. Default Exporters](#4-3-default-exporters)
-- [5. Components Exposed in the Rancher UI](#5-components-exposed-in-the-rancher-ui)
+1. [Architecture Overview](#1-architecture-overview)
+2. [How Prometheus Works](#2-how-prometheus-works)
+3. [How Alertmanager Works](#3-how-alertmanager-works)
+4. [Monitoring V2 Specific Components](#4-monitoring-v2-specific-components)
+5. [Scraping and Exposing Metrics](#5-scraping-and-exposing-metrics)
 
-# 1. How Data Flows through the Monitoring Application
+# 1. Architecture Overview
 
-The below diagram shows the linear flow of data through the monitoring application in chronological order:
+This diagram shows how data flows through the Monitoring V2 application:
+
+{{% row %}}
+{{% column %}}
+
+![How data flows through the monitoring application]({{<baseurl>}}/img/rancher/monitoring-v2-architecture-overview.svg)
+
+{{% /column %}}
+{{% column %}}
 
 
-![Data Flow Through Monitoring Components]({{<baseurl>}}/img/rancher/monitoring-components.svg)
+1. Rules define what Prometheus metrics or time series database queries should result in alerts being fired.
+2. ServiceMonitors and PodMonitors declaratively specify how services and pods should be monitored. They use labels to scrape metrics from pods.
+3. Prometheus Operator observes ServiceMonitors, PodMonitors and PrometheusRules being created.
+4. When the Prometheus configuration resources are created, Prometheus Operator calls the Prometheus API to sync the new configuration.
+5. Recording Rules are not directly used for alerting. They create new time series of precomputed queries. These new time series data can then be queried to generate alerts.
+6. Prometheus scrapes all targets in the scrape configuration on a recurring schedule based on the scrape interval, storing the results in its time series database.Depending on the Kubernetes master component and Kubernetes distribution, the metrics from a certain Kubernetes component could be directly exposed to Prometheus, proxied through PushProx, or not available. For details, see Scraping and Exposing Metrics.
+7. Prometheus evaluates the alerting rules against the time series database. It fires alerts to Alertmanager whenever an alerting rule evaluates to a positive number.
+8. Alertmanager uses routes to group, label and filter the fired alerts to translate them into useful notifications.
+9. Alertmanager uses the  Receiver configuration to send notifications to Slack, PagerDuty, SMS, or other types of receivers.
+
+{{% /column %}}
+{{% /row %}}
+
+
+
 
 # 2. How Prometheus Works
 
-### 2.1. Defining what Metrics are Scraped
-
-ServiceMonitors define targets that are intended for Prometheus to scrape.
-
-The [Prometheus custom resource tells](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/design.md#prometheus) Prometheus which ServiceMonitors it should use to find out where to scrape metrics from.
-
-The Prometheus Operator observes the ServiceMonitors, continuously using them to auto-generate the scrape configuration in the Prometheus custom resource and keeping it in sync. This scrape configuration tells Prometheus which endpoints to scrape metrics from and how it will label the metrics from those endpoints.
-
-Prometheus scrapes all of the metrics defined in its scrape configuration at every `scrape_interval`, which is one minute by default.
-
-The scrape configuration can be viewed as part of the Prometheus custom resource that is exposed in the Rancher UI.
-
-### 2.2. Scraping Metrics from Exporters
-
-Prometheus scrapes metrics from deployments known as [exporters,](https://prometheus.io/docs/instrumenting/exporters/) which export the time series data in a format that Prometheus can ingest. 
-
-In Prometheus, time series consist of streams of timestamped values belonging to the same metric and the same set of labeled dimensions.
-
-To allow monitoring to be installed on hardened Kubernetes clusters, `rancher-monitoring` application proxies the communication between Prometheus and the exporter through PushProx. For more information about PushProx, see [this section.](#pushprox)
-
-
-### 2.3. Storing Time Series Data
+### 2.1. Storing Time Series Data
 
 After collecting metrics from exporters, Prometheus stores the time series in a local on-disk time series database. Prometheus optionally integrates with remote systems, but `rancher-monitoring` uses local storage for the time series database.
 
 The database can then be queried using PromQL, the query language for Prometheus. Grafana dashboards use PromQL queries to generate data visualizations.
 
-### 2.4. Querying the Time Series Database
+### 2.2. Querying the Time Series Database
 
 The PromQL query language is the primary tool to query Prometheus for time series data.
 
 In Grafana, you can right-click a CPU utilization and click Inspect. This opens a panel that shows the [raw query results.](https://grafana.com/docs/grafana/latest/panels/inspect-panel/#inspect-raw-query-results)The raw results demonstrate how each dashboard is powered by PromQL queries.
 
-### 2.5. Defining Rules for when Alerts Should be Fired
+### 2.3. Defining Rules for when Alerts Should be Fired
 
-Rules define the conditions for Prometheus to fire alerts.
+Rules define the conditions for Prometheus to fire alerts. When PrometheusRule custom resources are created or updated, the Prometheus Operator observes the change and calls the Prometheus API to synchronize the rule configuration with the Alerting Rules and Recording Rules in Prometheus.
 
-When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Alertmanager to figure out which Route should receive this Alert.
+When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Alertmanager to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
 
-For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
-
-Prometheus rule files are held in PrometheusRule custom resources. A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of Rule objects that can each represent either an alerting or a recording rule with the following fields:
+A PrometheusRule allows you to define one or more RuleGroups. Each RuleGroup consists of a set of Rule objects that can each represent either an alerting or a recording rule with the following fields:
 
 - The name of the new alert or record
 - A PromQL expression for the new alert or record
 - Labels that should be attached to the alert or record that identify it (e.g. cluster name or severity)
 - Annotations that encode any additional important pieces of information that need to be displayed on the notification for an alert (e.g. summary, description, message, runbook URL, etc.). This field is not required for recording rules.
 
-### 2.6. Firing Alerts
+### 2.4. Firing Alerts
 
 Prometheus doesn't maintain the state of whether alerts are active. It fires alerts repetitively at every evaluation interval, relying on Alertmanager to group and filter the alerts into meaningful notifications.
 
@@ -105,9 +93,7 @@ The Alertmanager handles alerts sent by client applications such as the Promethe
     
 ### 3.1. Routing Alerts to Receivers
 
-Alertmanager coordinates where alerts are sent. It allows you to group alerts based on labels and fire them based on whether certain labels are matched. One top-level route accepts all alerts. 
-
-From there, Alertmanager continues routing alerts to receivers based on whether they match the conditions of the next route.
+Alertmanager coordinates where alerts are sent. It allows you to group alerts based on labels and fire them based on whether certain labels are matched. One top-level route accepts all alerts. From there, Alertmanager continues routing alerts to receivers based on whether they match the conditions of the next route.
 
 While the Rancher UI forms only allow editing a routing tree that is two levels deep, you can configure more deeply nested routing structures by editing the Alertmanager custom resource YAML.
 
@@ -117,7 +103,7 @@ By editing the forms in the Rancher UI, you can set up a Receiver resource with 
 
 By editing custom YAML in the Alertmanager or Receiver configuration, you can also send alerts to multiple notification systems. For more information, see the section on configuring [Receivers.](./configuration/receiver/#configuring-multiple-receivers)
 
-# 4. How the Monitoring Application Works
+# 4. Monitoring V2 Specific Components
 
 Prometheus Operator introduces a set of [Custom Resource Definitions](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) that allow users to deploy and manage Prometheus and Alertmanager instances by creating and modifying those custom resources on a cluster.
 
@@ -135,13 +121,16 @@ There are also certain special types of ConfigMaps and Secrets such as those cor
 
 PushProx enhances the security of the monitoring application, allowing it to be installed on hardened Kubernetes clusters.
 
-To expose Kubernetes metrics, PushProxes use a client proxy model to expose specific ports within default Kubernetes components. Node exporters  expose metrics to PushProx through an outbound connection.
+To expose Kubernetes metrics, PushProxes use a client proxy model to expose specific ports within default Kubernetes components. Node exporters expose metrics to PushProx through an outbound connection.
 
 The proxy allows `rancher-monitoring` to scrape metrics from processes on the hostNetwork, such as the `kube-api-server`, without opening up node ports to inbound connections.
 
 PushProx is a DaemonSet that listens for clients that seek to register. Once registered, it proxies scrape requests through the established connection. Then the client executes the request to etcd.
 
 All of the default ServiceMonitors, such as `rancher-monitoring-kube-controller-manager`, are configured to hit the metrics endpoint of the client using this proxy.
+
+For more details about how PushProx works, refer to 5.3.2. Scraping Metrics with PushProx.
+
 
 ### 4.3. Default Exporters
 
@@ -153,7 +142,7 @@ For more information on `node-exporter`, refer to the [upstream documentation.](
 
 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) is also useful because it exports metrics for Kubernetes components.
 
-# 5. Components Exposed in the Rancher UI
+# 4.4. Components Exposed in the Rancher UI
 
 When the monitoring application is installed, you will be able to edit the following components in the Rancher UI:
 
@@ -166,3 +155,59 @@ When the monitoring application is installed, you will be able to edit the follo
 | PrometheusRule | Custom resource | For more advanced use cases, you may want to define what Prometheus metrics or time series database queries should result in alerts being fired.  Automatically updates the Prometheus custom resource. |
 | Alertmanager | Custom resource | Edit this custom resource only if you need more advanced configuration options beyond what the Rancher UI exposes in the Routes and Receivers sections. For example, you might want to edit this resource to add a routing tree with more than two levels. |
 | Prometheus | Custom resource | Edit this custom resource only if you need more advanced configuration beyond what can be configured using  ServiceMonitors, PodMonitors, or [Rancher monitoring Helm chart options.](./configuration/helm-chart-options) |
+
+# 5. Scraping and Exposing Metrics
+
+### 5.1. Defining what Metrics are Scraped
+
+ServiceMonitors define targets that are intended for Prometheus to scrape. The [Prometheus custom resource tells](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/design.md#prometheus) Prometheus which ServiceMonitors it should use to find out where to scrape metrics from.
+
+The Prometheus Operator observes the ServiceMonitors. When it observes that ServiceMonitors are created or updated, it calls the Prometheus API to update the scrape configuration in the Prometheus custom resource and keep it in sync with the scrape configuration in the ServiceMonitors. This scrape configuration tells Prometheus which endpoints to scrape metrics from and how it will label the metrics from those endpoints.
+
+Prometheus scrapes all of the metrics defined in its scrape configuration at every `scrape_interval`, which is one minute by default.
+
+The scrape configuration can be viewed as part of the Prometheus custom resource that is exposed in the Rancher UI.
+
+### 5.2. How the Prometheus Operator Sets up Metrics Scraping
+
+The Prometheus Deployment or StatefulSet scrapes metrics, and the configuration of Prometheus is controlled by the Prometheus custom resources. The Prometheus Operator watches for Prometheus and Alertmanager resources, and when they are created, the Prometheus Operator creates a Deployment or StatefulSet for Prometheus or Alertmanager with the user-defined configuration.
+
+When the Prometheus Operator observes ServiceMonitors, PodMonitors and PrometheusRules being created, it knows that the scrape configuration needs to be updated in Prometheus. It updates Prometheus by first updating the configuration and rules files in the volumes of Prometheus's Deployment or StatefulSet. Then it calls the Prometheus API to sync the new configuration, resulting in the Prometheus Deployment or StatefulSet to be modified in place.
+
+### 5.3. How Kubernetes Component Metrics are Exposed
+
+Prometheus scrapes metrics from deployments known as [exporters,](https://prometheus.io/docs/instrumenting/exporters/) which export the time series data in a format that Prometheus can ingest. In Prometheus, time series consist of streams of timestamped values belonging to the same metric and the same set of labeled dimensions.
+
+To allow monitoring to be installed on hardened Kubernetes clusters, `rancher-monitoring` application proxies the communication between Prometheus and the exporter through PushProx for some Kubernetes master components.
+
+### 5.4. Scraping Metrics without PushProx
+
+The Kubernetes components that directly expose metrics to Prometheus are the following:
+
+- kubelet
+- ingress-nginx*
+- coreDns/kubeDns
+- kube-api-server
+
+\* For RKE and RKE2 clusters, ingress-nginx is deployed by default and treated as an internal Kubernetes component.
+
+### 5.5. Scraping Metrics with PushProx
+
+The purpose of this architecture is to allow us to scrape internal Kubernetes components without exposing those ports to inbound requests. As a result, Prometheus can scrape metrics across a network boundary.
+
+The Kubernetes components that expose metrics to Prometheus through PushProx are the following:
+
+- kube-controller-manager
+- kube-scheduler
+- etcd
+- kube-proxy
+
+For each PushProx exporter, we deploy one PushProx client onto all target nodes. For example, a PushProx client is deployed onto all controlplane nodes for kube-controller-manager, all etcd nodes for kube-etcd, and all nodes for kubelet. We deploy exactly one PushProx proxy per exporter.
+
+The process for exporting metrics is as follows:
+
+1. The PushProx Client establishes an outbound connection with the PushProx Proxy.
+2. The client then polls the proxy for scrape requests that have come into the proxy.
+3. When the proxy receives a scrape request from Prometheus, the client sees it as a result of the poll.
+4. The client scrapes the internal component.
+5. The internal component responds by pushing metrics back to the proxy.
