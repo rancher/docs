@@ -129,7 +129,7 @@ PushProx is a DaemonSet that listens for clients that seek to register. Once reg
 
 All of the default ServiceMonitors, such as `rancher-monitoring-kube-controller-manager`, are configured to hit the metrics endpoint of the client using this proxy.
 
-For more details about how PushProx works, refer to 5.3.2. Scraping Metrics with PushProx.
+For more details about how PushProx works, refer to [Scraping Metrics with PushProx.](#5-5-scraping-metrics-with-pushprox)
 
 
 ### 4.3. Default Exporters
@@ -172,7 +172,13 @@ The scrape configuration can be viewed as part of the Prometheus custom resource
 
 The Prometheus Deployment or StatefulSet scrapes metrics, and the configuration of Prometheus is controlled by the Prometheus custom resources. The Prometheus Operator watches for Prometheus and Alertmanager resources, and when they are created, the Prometheus Operator creates a Deployment or StatefulSet for Prometheus or Alertmanager with the user-defined configuration.
 
+<figcaption>How the Prometheus Operator Sets up Metrics Scraping</figcaption>
+
+![How the Prometheus Operator sets up metrics scraping]({{<baseurl>}}/img/rancher/set-up-scraping.svg)
+
 When the Prometheus Operator observes ServiceMonitors, PodMonitors and PrometheusRules being created, it knows that the scrape configuration needs to be updated in Prometheus. It updates Prometheus by first updating the configuration and rules files in the volumes of Prometheus's Deployment or StatefulSet. Then it calls the Prometheus API to sync the new configuration, resulting in the Prometheus Deployment or StatefulSet to be modified in place.
+
+![How the Prometheus Operator Updates Scrape Configuration]({{<baseurl>}}/img/rancher/update-scrape-config.svg)
 
 ### 5.3. How Kubernetes Component Metrics are Exposed
 
@@ -211,3 +217,35 @@ The process for exporting metrics is as follows:
 3. When the proxy receives a scrape request from Prometheus, the client sees it as a result of the poll.
 4. The client scrapes the internal component.
 5. The internal component responds by pushing metrics back to the proxy.
+
+<figcaption>Process for Exporting Metrics with PushProx</figcaption>
+
+![Process for Exporting Metrics with PushProx]({{<baseurl>}}/img/rancher/pushprox-process.svg)
+
+Metrics are scraped differently based on the Kubernetes distribution. For help with terminology, see Terminology(#terminology). For details, see the table below:
+
+<figcaption>How Metrics are Exposed to Prometheus</figcaption>
+
+| Kubernetes Component | RKE | RKE2 | KubeADM | K3s |
+|-----|-----|-----|-----|-----|
+| kube-controller-manager	| rkeControllerManager.enabled	|rke2ControllerManager.enabled |	kubeAdmControllerManager.enabled |	k3sServer.enabled |
+| kube-scheduler	| rkeScheduler.enabled |	rke2Scheduler.enabled	|kubeAdmScheduler.enabled	| k3sServer.enabled |
+| etcd	| rkeEtcd.enabled	| rke2Etcd.enabled	| kubeAdmEtcd.enabled |	Not available |
+| kube-proxy	| rkeProxy.enabled	| rke2Proxy.enabled	| kubeAdmProxy.enabled |	k3sServer.enabled |
+| kubelet	| Collects metrics directly exposed by kubelet	| Collects metrics directly exposed by kubelet	| Collects metrics directly exposed by kubelet	| Collects metrics directly exposed by kubelet |
+| ingress-nginx*	| Collects metrics directly exposed by kubelet, exposed by rkeIngressNginx.enabled	| Collects metrics directly exposed by kubelet, Exposed by rke2IngressNginx.enabled	| Not available	| Not available |
+| coreDns/kubeDns	| Collects metrics directly exposed by coreDns/kubeDns	| Collects metrics directly exposed by coreDns/kubeDns	| Collects metrics directly exposed by coreDns/kubeDns	| Collects metrics directly exposed by coreDns/kubeDns |
+| kube-api-server	| Collects metrics directly exposed by kube-api-server	|Collects metrics directly exposed by kube-api-server	| Collects metrics directly exposed by kube-appi-server	| Collects metrics directly exposed by kube-api-server |
+
+\* For RKE and RKE2 clusters, ingress-nginx is deployed by default and treated as an internal Kubernetes component.
+
+### 5.6. Terminology
+
+- **kube-scheduler:** The internal Kubernetes component that uses information in the pod spec to decide on which node to run a pod.
+- **kube-controller-manager:** The internal Kubernetes component that is responsible for node management (detecting if a node fails), pod replication and endpoint creation.
+- **etcd:** The internal Kubernetes component that is the distributed key/value store which Kubernetes uses for persistent storage of all cluster information.
+- **kube-proxy:** The internal Kubernetes component that watches the API server for pods/services changes in order to maintain the network up to date.
+- **kubelet:** The internal Kubernetes component that watches the API server for pods on a node and makes sure they are running.
+- **ingress-nginx:** An Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
+- **coreDns/kubeDns:** The internal Kubernetes component responsible for DNS.
+- **kube-api-server:** The main internal Kubernetes component that is responsible for exposing APIs for the other master components.
