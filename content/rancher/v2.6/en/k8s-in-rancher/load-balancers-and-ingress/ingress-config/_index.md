@@ -4,14 +4,14 @@ description: Ingress configuration
 weight: 9999
 ---
 
-- [NGINX Ingress controller changes in v1.21](#nginx-ingress-controller-changes-in-v1-21)
+- [NGINX Ingress controller changes in Kubernetes v1.21](#nginx-ingress-controller-changes-in-Kubernetes-v1-21)
 - [Automatically generate a xip.io hostname](#automatically-generate-a-xip-io-hostname)
 - [Specify a hostname to use](#specify-a-hostname-to-use)
 - [Use as the default backend](#use-as-the-default-backend)
 - [Certificates](#certificates)
 - [Labels and Annotations](#labels-and-annotations)
 
-### NGINX Ingress controller changes in v1.21
+### NGINX Ingress controller changes in Kubernetes v1.21
 
 For Kubernetes v1.21 and up, the NGINX Ingress controller no longer runs in hostNetwork but uses hostPorts for port 80 and port 443. This was done so the admission webhook can be configured to be accessed using ClusterIP so it can only be reached inside the cluster.
 
