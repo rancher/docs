@@ -142,7 +142,7 @@ For more information on `node-exporter`, refer to the [upstream documentation.](
 
 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) is also useful because it exports metrics for Kubernetes components.
 
-# 4.4. Components Exposed in the Rancher UI
+### 4.4. Components Exposed in the Rancher UI
 
 When the monitoring application is installed, you will be able to edit the following components in the Rancher UI:
 
