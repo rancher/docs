@@ -122,9 +122,6 @@ This step is only required to use certificates issued by Rancher's generated CA 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
 ```
-# Install the CustomResourceDefinition resources separately
-kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
-
 # **Important:**
 # If you are running Kubernetes v1.15 or below, you
 # will need to add the `--validate=false` flag to your
