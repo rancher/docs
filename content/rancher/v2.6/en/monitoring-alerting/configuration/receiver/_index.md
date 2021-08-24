@@ -1,17 +1,19 @@
 ---
-title: Alertmanager
+title: Receiver Configuration
+shortTitle: Receivers
 weight: 1
 aliases:
-  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration/alertmanager
-  - rancher/v2.6/en/monitoring-alerting/legacy/notifiers/
-  - /rancher/v2.6/en/cluster-admin/tools/notifiers
-  - /rancher/v2.6/en/cluster-admin/tools/alerts
+  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager
+  - rancher/v2.5/en/monitoring-alerting/legacy/notifiers/
+  - /rancher/v2.5/en/cluster-admin/tools/notifiers
+  - /rancher/v2.5/en/cluster-admin/tools/alerts
+  - /rancher/v2.5/en/monitoring-alerting/configuration/alertmanager
 ---
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
-- [Overview](#overview)
-  - [Connecting Routes and PrometheusRules](#connecting-routes-and-prometheusrules)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+
 - [Creating Receivers in the Rancher UI](#creating-receivers-in-the-rancher-ui)
 - [Receiver Configuration](#receiver-configuration)
   - [Slack](#slack)
@@ -26,32 +28,13 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Receiver](#receiver)
   - [Grouping](#grouping)
   - [Matching](#matching)
-- [Example Alertmanager Configs](#example-alertmanager-configs)
+- [Configuring Multiple Receivers](#configuring-multiple-receivers)
+- [Example Alertmanager Config](../examples/#example-alertmanager-config)
 - [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
-
-# Overview
-
-By default, Rancher Monitoring deploys a single Alertmanager onto a cluster that uses a default Alertmanager Config Secret. As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster that can all be managed using the same underlying Alertmanager Config Secret.
- 
-This Secret should be updated or modified any time you want to:
- 
-- Add in new notifiers or receivers
-- Change the alerts that should be sent to specific notifiers or receivers
-- Change the group of alerts that are sent out
-
-> By default, you can either choose to supply an existing Alertmanager Config Secret (i.e. any Secret in the `cattle-monitoring-system` namespace) or allow Rancher Monitoring to deploy a default Alertmanager Config Secret onto your cluster. By default, the Alertmanager Config Secret created by Rancher will never be modified / deleted on an upgrade / uninstall of the `rancher-monitoring` chart to prevent users from losing or overwriting their alerting configuration when executing operations on the chart.
- 
-For more information on what fields can be specified in this secret, please look at the [Prometheus Alertmanager docs.](https://prometheus.io/docs/alerting/latest/alertmanager/)
-
-The full spec for the Alertmanager configuration file and what it takes in can be found [here.](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)
-
-For more information, refer to the [official Prometheus documentation about configuring routes.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
-
-### Connecting Routes and PrometheusRules
-
-When you define a Rule (which is declared within a RuleGroup in a PrometheusRule resource), the [spec of the Rule itself](https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule) contains labels that are used by Prometheus to figure out which Route should receive this Alert. For example, an Alert with the label `team: front-end` will be sent to all Routes that match on that label.
+- [Trusted CA for Notifiers](#trusted-ca-for-notifiers)
 
 # Creating Receivers in the Rancher UI
+_Available as of v2.5.4_
 
 > **Prerequisites:**
 >
@@ -80,6 +63,17 @@ For notification mechanisms not natively supported by AlertManager, integration 
 Currently the Rancher Alerting Drivers app provides access to the following integrations:
 - Microsoft Teams, based on the [prom2teams](https://github.com/idealista/prom2teams) driver
 - SMS, based on the [Sachet](https://github.com/messagebird/sachet) driver
+
+### Changes in Rancher v2.5.8
+
+Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Rancher UI.
+
+### Changes in Rancher v2.5.4
+
+Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
+
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -233,35 +227,98 @@ name: telegram-receiver-1
 url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 ```
 
-# Route Configuration
+<!-- https://github.com/messagebird/sachet -->
 
-### Receiver
-The route needs to refer to a [receiver](#receiver-configuration) that has already been configured.
+{{% /tab %}}
+{{% tab "Rancher v2.5.4-2.5.7" %}}
 
-### Grouping
+The following types of receivers can be configured in the Rancher UI:
 
-| Field |    Default | Description |
-|-------|--------------|---------|
-| Group By |  N/a | The labels by which incoming alerts are grouped together. For example, `[ group_by: '[' <labelname>, ... ']' ]` Multiple alerts coming in for labels such as `cluster=A` and `alertname=LatencyHigh` can be batched into a single group. To aggregate by all possible labels, use the special value `'...'` as the sole label name, for example: `group_by: ['...']`  Grouping by `...` effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping. |
-| Group Wait | 30s | How long to wait to buffer alerts of the same group before sending initially. |
-| Group Interval | 5m | How long to wait before sending an alert that has been added to a group of alerts for which an initial notification has already been sent. |
-| Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
+- <a href="#slack-254-257">Slack</a>
+- <a href="#email-254-257">Email</a>
+- <a href="#pagerduty-254-257">PagerDuty</a>
+- <a href="#opsgenie-254-257">Opsgenie</a>
+- <a href="#webhook-254-257">Webhook</a>
+- <a href="#custom-254-257">Custom</a>
 
-### Matching
+The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
 
-The **Match** field refers to a set of equality matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs to the Rancher UI, they correspond to the YAML in this format:
+### Slack {#slack-254-257}
 
-```yaml
-match:
-  [ <labelname>: <labelvalue>, ... ]
-```
+| Field | Type | Description |
+|------|--------------|------|
+| URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
+| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
+| Proxy URL   |    String    |  Proxy for the webhook notifications.  |
+| Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
-The **Match Regex** field refers to a set of regex-matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs in the Rancher UI, they correspond to the YAML in this format:
+### Email {#email-254-257}
 
-```yaml
-match_re:
-  [ <labelname>: <regex>, ... ]
-```
+| Field | Type | Description |
+|------|--------------|------|
+| Default Recipient Address |   String    |   The email address that will receive notifications.    |
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+
+SMTP options:
+
+| Field | Type | Description |
+|------|--------------|------|
+| Sender |   String       |  Enter an email address available on your SMTP mail server that you want to send the notification from.   |
+| Host |   String         | Enter the IP address or hostname for your SMTP server. Example: `smtp.email.com`. |
+| Use TLS |   Bool     | Use TLS for encryption. |
+| Username |   String   | Enter a username to authenticate with the SMTP server. |
+| Password |   String    | Enter a password to authenticate with the SMTP server. |
+
+### PagerDuty {#pagerduty-254-257}
+
+| Field | Type | Description |
+|------|------|-------|
+| Integration Type | String | `Events API v2` or `Prometheus`. |
+| Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
+| Proxy URL | String |  Proxy for the PagerDuty notifications.  |
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+
+### Opsgenie {#opsgenie-254-257}
+
+| Field | Description |
+|------|-------------|
+| API Key |   For instructions to get an API key, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/api-key-management)             |
+| Proxy URL |   Proxy for the Opsgenie notifications.        |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).  |
+
+Opsgenie Responders:
+
+| Field |    Type | Description |
+|-------|------|--------|
+| Type | String | Schedule, Team, User, or Escalation. For more information on alert responders, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/alert-recipients-and-teams) |
+| Send To | String | Id, Name, or Username of the Opsgenie recipient. |
+
+### Webhook {#webhook-1}
+
+| Field |    Description |
+|-------|--------------|
+| URL | Webhook URL for the app of your choice. |
+| Proxy URL | Proxy for the webhook notification. |
+| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
+
+### Custom {#custom-254-257}
+
+The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
+
+{{% /tab %}}
+{{% tab "Rancher v2.5.0-2.5.3" %}}
+The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
+{{% /tab %}}
+{{% /tabs %}}
+
+# Configuring Multiple Receivers
+
+By editing the forms in the Rancher UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
+
+It is also possible to send alerts to multiple notification systems. One way is to configure the Receiver using custom YAML, in which case you can add the configuration for multiple notification systems, as long as you are sure that both systems should receive the same messages.
+
+You can also set up multiple receivers by using the `continue` option for a route, so that the alerts sent to a receiver continue being evaluated in the next level of the routing tree, which could contain another receiver.
+
 
 # Example Alertmanager Configs
 
@@ -332,4 +389,9 @@ spec:
 #    key: string
 ```
 
-For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cis-scans/v2.5/#enabling-alerting-for-rancher-cis-benchmark)
+For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cis-scans/v2.5/#enabling-alerting-for-rancher-cis-benchmark)
+
+
+# Trusted CA for Notifiers
+
+If you need to add a trusted CA to your notifier, follow the steps in [this section.](../helm-chart-options/#trusted-ca-for-notifiers)

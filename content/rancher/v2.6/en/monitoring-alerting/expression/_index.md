@@ -1,16 +1,17 @@
 ---
-title: Prometheus Expressions
-weight: 4
+title: PromQL Expression Reference
+weight: 6
 aliases:
-  - /rancher/v2.6/en/project-admin/tools/monitoring/expression
-  - /rancher/v2.6/en/cluster-admin/tools/monitoring/expression
-  - /rancher/v2.6/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression
-  - /rancher/v2.6/en/monitoring-alerting/v2.5/configuration/expression
+  - /rancher/v2.5/en/project-admin/tools/monitoring/expression
+  - /rancher/v2.5/en/cluster-admin/tools/monitoring/expression
+  - /rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression
+  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/expression
+  - /rancher/v2.5/en/monitoring/alerting/configuration/expression
 ---
 
 The PromQL expressions in this doc can be used to configure alerts.
 
-For more information about querying Prometheus, refer to the official [Prometheus documentation.](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+For more information about querying the Prometheus time series database, refer to the official [Prometheus documentation.](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 
 <!-- TOC -->
 
