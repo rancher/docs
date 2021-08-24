@@ -135,9 +135,6 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 # This is a benign error and occurs due to the way kubectl
 # performs resource validation.
 
-# Create the namespace for cert-manager
-kubectl create namespace cert-manager
-
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
 
@@ -145,10 +142,11 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager jetstack/cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.5.1
+  --create-namespace \
+  --version v1.5.1 \
+  --set installCRDs=true
 ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:
