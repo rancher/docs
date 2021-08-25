@@ -122,16 +122,6 @@ This step is only required to use certificates issued by Rancher's generated CA 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
 ```
-# **Important:**
-# If you are running Kubernetes v1.15 or below, you
-# will need to add the `--validate=false` flag to your
-# kubectl apply command, or else you will receive a
-# validation error relating to the
-# x-kubernetes-preserve-unknown-fields field in
-# cert-manager’s CustomResourceDefinition resources.
-# This is a benign error and occurs due to the way kubectl
-# performs resource validation.
-
 # Add the Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
 
