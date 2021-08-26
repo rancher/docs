@@ -122,7 +122,7 @@ This step is only required to use certificates issued by Rancher's generated CA 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
 ```
-If you have installed the CRDs manually instead of with the --set installCRDs=true option added to your Helm install command, you should upgrade your CRD resources before upgrading the Helm chart:
+# If you have installed the CRDs manually instead of with the `--set installCRDs=true` option added to your Helm install command, you should upgrade your CRD resources before upgrading the Helm chart:
 kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/<version>/cert-manager.crds.yaml
 
 # Add the Jetstack Helm repository
