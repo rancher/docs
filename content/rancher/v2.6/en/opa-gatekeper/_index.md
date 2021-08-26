@@ -1,9 +1,6 @@
 ---
 title: OPA Gatekeeper
 weight: 16
-aliases:
- - /rancher/v2.6/en/cluster-admin/tools/opa-gatekeeper
- - /rancher/v2.6/en/opa-gatekeeper/Open%20Policy%20Agent
 ---
 
 To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. [OPA (Open Policy Agent)](https://www.openpolicyagent.org/) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates. 
@@ -31,25 +28,17 @@ OPA Gatekeeper is made available via Rancher's Helm system chart, and it is inst
 
 > **Prerequisite:** Only administrators and cluster owners can enable OPA Gatekeeper.
 
-OPA Gatekeeper can be installed from the new **Cluster Explorer** view in Rancher v2.5, or from the cluster manager view.
+The OPA Gatekeeper Helm chart can be installed from **Apps & Marketplace**.
 
-### Enabling OPA Gatekeeper from Cluster Explorer
+### Enabling OPA Gatekeeper
 
-1. Go to the cluster view in the Rancher UI. Click **Cluster Explorer.**
-1. Click **Apps** in the top navigation bar.
-1. Click **rancher-gatekeeper.**
-1. Click **Install.**
-
-**Result:** OPA Gatekeeper is deployed in your Kubernetes cluster.
-
-### Enabling OPA Gatekeeper from the Cluster Manager View
-
-1. Go to the cluster view in the Rancher UI.
-1. Click **Tools > OPA Gatekeeper.**
-1. Click **Install.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the **Clusters** page, go to the cluster where you want to enable OPA Gatekeeper and click **Explore**.
+1. In the left navigation bar, click **Apps & Marketplace**.
+1. Click **Charts** and click **OPA Gatekeeper**.
+1. Click **Install**.
 
 **Result:** OPA Gatekeeper is deployed in your Kubernetes cluster.
-
 
 # Constraint Templates
 
@@ -57,7 +46,7 @@ OPA Gatekeeper can be installed from the new **Cluster Explorer** view in Ranche
 
 When OPA Gatekeeper is enabled, Rancher installs some templates by default.
 
-To list the constraint templates installed in the cluster, go to the left side menu under OPA Gatekeeper and click on **Templates.**
+To list the constraint templates installed in the cluster, go to the left side menu under OPA Gatekeeper and click on **Templates**.
 
 Rancher also provides the ability to create your own constraint templates by importing YAML definitions.
    
@@ -67,7 +56,7 @@ Rancher also provides the ability to create your own constraint templates by imp
 
 > **Prerequisites:** OPA Gatekeeper must be enabled in the cluster.
 
-To list the constraints installed, go to the left side menu under OPA Gatekeeper, and click on **Constraints.**
+To list the constraints installed, go to the left side menu under OPA Gatekeeper, and click on **Constraints**.
 
 New constraints can be created from a constraint template.
 
@@ -85,11 +74,11 @@ Also, the constraint may interfere with other Rancher functionality and deny sys
    
 # Enforcing Constraints in your Cluster
 
-When the **Enforcement Action** is **Deny,** the constraint is immediately enabled and will deny any requests that violate the policy defined. By default, the enforcement value is **Deny.**
+When the **Enforcement Action** is **Deny,** the constraint is immediately enabled and will deny any requests that violate the policy defined. By default, the enforcement value is **Deny**.
 
 When the **Enforcement Action** is **Dryrun,** then any resources that violate the policy are only recorded under the constraint's status field.
 
-To enforce constraints, create a constraint using the form. In the **Enforcement Action** field, choose **Deny.** 
+To enforce constraints, create a constraint using the form. In the **Enforcement Action** field, choose **Deny**. 
 
 # Audit and Violations in your Cluster
 
@@ -104,8 +93,8 @@ The detail view of each constraint lists information about the resource that vio
 # Disabling Gatekeeper
 
 1. Navigate to the cluster's Dashboard view
-1. On the left side menu, expand the cluster menu and click on **OPA Gatekeeper.**
-1. Click the **&#8942; > Disable**.
+1. On the left side menu, expand the cluster menu and click on **OPA Gatekeeper**.
+1. Click the **⋮ > Disable**.
 
 **Result:** Upon disabling OPA Gatekeeper, all constraint templates and constraints will also be deleted.
 

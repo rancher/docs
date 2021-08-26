@@ -3,7 +3,12 @@ title: Cluster and Project Roles
 weight: 1127
 ---
 
-Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page.
+Cluster and project roles define user authorization inside a cluster or project.
+
+To manage these roles, 
+
+1. Click **☰ > Users & Authentication**.
+1. In the left navigation bar, click **Roles** and go to the **Cluster** or **Project/Namespaces** tab.
 
 ### Membership and Role Assignment
 
@@ -58,7 +63,12 @@ The following table lists the permissions available for the `Manage Nodes` role 
 ***In RKE2, you must have permission to edit a cluster to be able to scale clusters up and down.**  
 <br />          
 
-For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
+For details on how each cluster role can access Kubernetes resources, you can look them up in the Rancher UI:
+
+1. In the upper left corner, click **☰ > Users & Authentication**.
+1. In the left navigation bar, click **Roles**.
+1. Click the **Cluster** tab.
+1. Click the name of an individual role. The table shows all of the operations and resources that are permitted by the role.
 
 > **Note:**
 >When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
@@ -71,16 +81,21 @@ To assign a custom role to a new cluster member, you can use the Rancher UI. To 
 
 To assign the role to a new cluster member,
 
-1. Go to the **Cluster** view, then go to the **Members** tab.
-1. Click **Add Member.** Then in the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
-1. Click **Create.**
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster where you want to assign a role to a member and click **Explore**.
+1. Click **RBAC > Cluster Members**.
+1. Click **Add**.
+1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
+1. Click **Create**.
 
 **Result:** The member has the assigned role.
 
 To assign any custom role to an existing cluster member,
 
-1. Go to the member you want to give the role to. Click the **&#8942; > View in API.**
-1. In the **roleTemplateId** field, go to the drop-down menu and choose the role you want to assign to the member. Click **Show Request** and **Send Request.**
+1. Click **☰ > Users & Authentication**.
+1. Go to the member you want to give the role to. Click the **⋮ > Edit Config**.
+1. If you have added custom roles, they will show in the **Custom** section. Choose the role you want to assign to the member.
+1. Click **Save**.
 
 **Result:** The member has the assigned role.
 
@@ -167,23 +182,16 @@ There are two methods for changing default cluster/project roles:
 
 You can change the cluster or project role(s) that are automatically assigned to the creating user.
 
-1. From the **Global** view, select **Security > Roles** from the main menu. Select either the **Cluster** or **Project** tab.
-
-1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **&#8942; > Edit**.
-
-1. Enable the role as default.
-{{% accordion id="cluster" label="For Clusters" %}}
-1. From **Cluster Creator Default**, choose **Yes: Default role for new cluster creation**.
+1. In the upper left corner, click **☰ > Users & Authentication**.
+1. In the left navigation bar, click **Roles**.
+1. Click the **Cluster** or **Project/Namespaces** tab.
+1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **⋮ > Edit Config**.
+1. In the **Cluster Creator Default** or **Project Creator Default** section, enable the role as the default.
 1. Click **Save**.
-{{% /accordion %}}
-{{% accordion id="project" label="For Projects" %}}
-1. From **Project Creator Default**, choose **Yes: Default role for new project creation**.
-1. Click **Save**.
-{{% /accordion %}}
-
-1. If you want to remove a default role, edit the permission and select **No** from the default roles option.
 
 **Result:** The default roles are configured based on your changes. Roles assigned to cluster/project creators display a check in the **Cluster/Project Creator Default** column.
+
+If you want to remove a default role, edit the permission and select **No** from the default roles option.
 
 ### Cluster Membership Revocation Behavior
 

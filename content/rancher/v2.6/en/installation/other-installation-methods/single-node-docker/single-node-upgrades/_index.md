@@ -1,12 +1,6 @@
 ---
 title: Upgrading Rancher Installed with Docker
 weight: 1010
-aliases:
-  - /rancher/v2.6/en/upgrades/single-node-upgrade/
-  - /rancher/v2.6/en/upgrades/upgrades/single-node-air-gap-upgrade
-  - /rancher/v2.6/en/upgrades/upgrades/single-node
-  - /rancher/v2.6/en/upgrades/upgrades/single-node-upgrade/
-  - /rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/
 ---
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
@@ -14,7 +8,7 @@ The following instructions will guide you through upgrading a Rancher server tha
 # Prerequisites
 
 - **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/#known-upgrade-issues) in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12) Note that upgrades to or from any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories/) aren’t supported.
-- **For [air gap installs only,]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+- **For [air gap installs only,]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version**. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 # Placeholder Review
 

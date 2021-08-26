@@ -2,13 +2,9 @@
 title: Backup Configuration
 shortTitle: Backup
 weight: 1
-aliases:
-  - /rancher/v2.6/en/backups/v2.5/configuration/backup-config
 ---
 
 The Backup Create page lets you configure a schedule, enable encryption and specify the storage location for your backups.
-
-{{< img "/img/rancher/backup_restore/backup/backup.png" "">}}
 
 - [Schedule](#schedule)
 - [Encryption](#encryption)
@@ -20,7 +16,6 @@ The Backup Create page lets you configure a schedule, enable encryption and spec
   - [IAM Permissions for EC2 Nodes to Access S3](#iam-permissions-for-ec2-nodes-to-access-s3)
 - [Examples](#examples)
 
-
 # Schedule
 
 Select the first option to perform a one-time backup, or select the second option to schedule recurring backups. Selecting **Recurring Backups** lets you configure following two fields:
@@ -29,8 +24,6 @@ Select the first option to perform a one-time backup, or select the second optio
   - Standard [cron expressions](https://en.wikipedia.org/wiki/Cron), such as `"0 * * * *"`
   - Descriptors, such as `"@midnight"` or `"@every 1h30m"`
 -  **Retention Count**: This value specifies how many backup files must be retained. If files exceed the given retentionCount,  the oldest files will be deleted. The default value is 10.
-
-{{< img "/img/rancher/backup_restore/backup/schedule.png" "">}}
 
 | YAML Directive Name | Description |
 | ---------------- | ---------------- |
@@ -74,8 +67,6 @@ In the example command above, the name `encryptionconfig` can be changed to anyt
 | `encryptionConfigSecretName` |  Provide the name of the Secret from `cattle-resources-system` namespace, that contains the encryption config file.  |
 
 # Storage Location
-
-{{< img "/img/rancher/backup_restore/backup/storageLocation.png" "">}}
 
 If the StorageLocation is specified in the Backup, the operator will retrieve the backup location from that particular S3 bucket. If not specified, the operator will try to find this file in the default operator-level S3 store, and in the operator-level PVC store. The default storage location is configured during the deployment of the `rancher-backup` operator.
 

@@ -1,9 +1,6 @@
 ---
 title: Setting up Cloud Providers
 weight: 2300
-aliases:
-  - /rancher/v2.6/en/concepts/clusters/cloud-providers/
-  - /rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers
 ---
 A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes. For more information, refer to the [official Kubernetes documentation on cloud providers.](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
 

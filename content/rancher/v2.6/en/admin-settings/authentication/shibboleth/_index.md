@@ -33,12 +33,12 @@ Assertion Consumer Service (ACS) URL: `https://<rancher-server>/v1-saml/shibbole
 >- Export a `metadata.xml` file from your IdP Server. For more information, see the [Shibboleth documentation.](https://wiki.shibboleth.net/confluence/display/SP3/Home)
 
 ### Configure Shibboleth in Rancher
+
 If your organization uses Shibboleth for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 
-1.	From the **Global** view, select **Security > Authentication** from the main menu.
-
-1.	Select **Shibboleth**.
-
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **Shibboleth**.
 1.	Complete the **Configure Shibboleth Account** form. Shibboleth IdP lets you specify what data store you want to use. You can either add a database or use an existing ldap server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
 
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
@@ -61,7 +61,7 @@ If your organization uses Shibboleth for user authentication, you can configure 
     1. **IDP-metadata**: The `metadata.xml` file that you exported from your IdP server.
 
 
-1. After you complete the **Configure Shibboleth Account** form, click **Authenticate with Shibboleth**, which is at the bottom of the page.
+1. After you complete the **Configure Shibboleth Account** form, click **Enable**.
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Shibboleth IdP to validate your Rancher Shibboleth configuration.
 
@@ -99,8 +99,9 @@ Configure the settings for the OpenLDAP server, groups and users. For help filli
 > Before you proceed with the configuration, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 1. Log into the Rancher UI using the initial local `admin` account.
-2. From the **Global** view, navigate to **Security** > **Authentication**
-3. Select **OpenLDAP**. The **Configure an OpenLDAP server** form will be displayed.
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **OpenLDAP**. The **Configure an OpenLDAP server** form will be displayed.
 
 # Troubleshooting
 

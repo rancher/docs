@@ -3,7 +3,7 @@ title: Locked Roles
 weight: 1129
 ---
 
-You can set roles to a status of `locked`. Locking roles prevent them from being assigned users in the future.
+You can set roles to a status of `locked`. Locking roles prevent them from being assigned to users in the future.
 
 Locked roles:
 
@@ -30,8 +30,10 @@ You can lock roles in two contexts:
 - When you're [adding a custom role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/default-custom-roles/).
 - When you editing an existing role (see below).
 
-1. From the **Global** view, select **Security** > **Roles**.
+Cluster roles and project/namespace roles can be locked, but global roles cannot.
 
-2. From the role that you want to lock (or unlock), select **&#8942;** > **Edit**.
-
-3. From the **Locked** option, choose the **Yes** or **No** radio button. Then click **Save**.
+1. In the upper left corner, click **☰ > Users & Authentication**.
+1. In the left navigation bar, click **Roles**.
+1. Go to the **Cluster** tab or the **Project/Namespaces** tab.
+1. From the role that you want to lock (or unlock), select **⋮ > Edit Config**.
+1. From the **Locked** option, choose the **Yes** or **No** radio button. Then click **Save**.

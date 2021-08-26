@@ -1,8 +1,6 @@
 ---
 title: Logging Best Practices
 weight: 1
-aliases:
-  - /rancher/v2.6/en/best-practices/v2.6/rancher-managed/logging
 ---
 In this guide, we recommend best practices for cluster-level logging and application logging.
 

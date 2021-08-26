@@ -1,8 +1,6 @@
 ---
 title: Disabling Istio
 weight: 4
-aliases:
-  - /rancher/v2.6/en/istio/v2.5/disabling-istio
 ---
 
 This section describes how to uninstall Istio in a cluster or disable a namespace, or workload.
@@ -11,9 +9,11 @@ This section describes how to uninstall Istio in a cluster or disable a namespac
 
 To uninstall Istio,
 
-1. From the **Cluster Explorer,** navigate to **Installed Apps** in **Apps & Marketplace** and locate the `rancher-istio` installation.
-1. Select `rancher-istio` in the `istio-system namespace and click **Delete**
-1. After `rancher-istio` is deleted, you can then select all the remaining apps in the `istio-system` namespace and click **Delete**
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Apps & Marketplace > Installed Apps**.
+1. In the `istio-system` namespace, go to `rancher-istio` and click **⋮ > Delete**.
+1. After `rancher-istio` is deleted, you can then select all the remaining apps in the `istio-system` namespace and click **Delete**.
 
 **Result:** The `rancher-istio` app in the cluster gets removed. The Istio sidecar cannot be deployed on any workloads in the cluster. 
 
@@ -27,10 +27,10 @@ This could mean a few things. You either selected all the apps in the `istio-sys
 
 # Disable Istio in a Namespace
 
-1. From the **Cluster Explorer** view, use the side-nav to select **Namespaces** page 
-1. On the **Namespace** page, you will see a list of namespaces. Go to the namespace where you want to disable and click the select **Edit as Form** or **Edit as Yaml**
-1. Remove the `istio-injection=enabled` label from the namespace
-1. Click **Save**
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Go to the namespace where you want to enable Istio and click **⋮  > Enable Istio Auto Injection**. Alternately, click the namespace, and then on the namespace detail page, click **⋮  > Enable Istio Auto Injection**.
 
 **Result:** When workloads are deployed in this namespace, they will not have the Istio sidecar.
 

@@ -1,10 +1,6 @@
 ---
 title: Pod Security Policies
 weight: 60
-aliases:
-    - /rancher/v2.6/en/concepts/global-configuration/pod-security-policies/
-    - /rancher/v2.6/en/tasks/global-configuration/pod-security-policies/
-    - /rancher/v2.6/en/tasks/clusters/adding-a-pod-security-policy/
 ---
 
 _Pod Security Policies_ (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges).
@@ -65,14 +61,12 @@ We recommend adding PSPs during cluster and project creation instead of adding i
 
 ### Creating PSPs in the Rancher UI
 
-1.	From the **Global** view, select **Security** > **Pod Security Policies** from the main menu. Then click **Add Policy**.
-
-	**Step Result:** The **Add Policy** form opens.
-
-2. Name the policy.
-
-3. Complete each section of the form. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) for more information on what each policy does.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the left navigation bar, click **Pod Security Policies**.
+1. Click **Add policy**.
+1. Name the policy.
+1. Complete each section of the form. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) for more information on what each policy does.
+1. Click **Create**.
 
 # Configuration
 

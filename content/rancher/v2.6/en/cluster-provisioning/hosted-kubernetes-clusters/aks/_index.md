@@ -2,8 +2,6 @@
 title: Creating an AKS Cluster
 shortTitle: Azure Kubernetes Service
 weight: 2115
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-azure-container-service/
 ---
 
 You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
@@ -79,51 +77,53 @@ You can also follow these instructions to set up a service principal and give it
 
 1. Go to the Microsoft Azure Portal [home page](https://portal.azure.com).
 
-1. Click **Azure Active Directory.**
-1. Click **App registrations.**
-1. Click **New registration.**
+1. Click **Azure Active Directory**.
+1. Click **App registrations**.
+1. Click **New registration**.
 1. Enter a name. This will be the name of your service principal.
 1. Optional: Choose which accounts can use the service principal.
-1. Click **Register.**
-1. You should now see the name of your service principal under **Azure Active Directory > App registrations.** 
-1. Click the name of your service principal. Take note of the tenant ID and application ID (also called app ID or client ID) so that you can use it when provisioning your AKS cluster. Then click **Certificates & secrets.**
-1. Click **New client secret.**
-1. Enter a short description, pick an expiration time, and click **Add.** Take note of the client secret so that you can use it when provisioning the AKS cluster.
+1. Click **Register**.
+1. You should now see the name of your service principal under **Azure Active Directory > App registrations**. 
+1. Click the name of your service principal. Take note of the tenant ID and application ID (also called app ID or client ID) so that you can use it when provisioning your AKS cluster. Then click **Certificates & secrets**.
+1. Click **New client secret**.
+1. Enter a short description, pick an expiration time, and click **Add**. Take note of the client secret so that you can use it when provisioning the AKS cluster.
 
-**Result:** You have created a service principal and you should be able to see it listed in the **Azure Active Directory** section under **App registrations.** You still need to give the service principal access to AKS. 
+**Result:** You have created a service principal and you should be able to see it listed in the **Azure Active Directory** section under **App registrations**. You still need to give the service principal access to AKS. 
 
 To give role-based access to your service principal,
 
-1. Click **All Services** in the left navigation bar. Then click **Subscriptions.**
+1. Click **All Services** in the left navigation bar. Then click **Subscriptions**.
 1. Click the name of the subscription that you want to associate with your Kubernetes cluster. Take note of the subscription ID so that you can use it when provisioning your AKS cluster.
-1. Click **Access Control (IAM).**
-1. In the **Add role assignment** section, click **Add.**
+1. Click **Access Control (IAM)**.
+1. In the **Add role assignment** section, click **Add**.
 1. In the **Role** field, select a role that will have access to AKS. For example, you can use the **Contributor** role, which has permission to manage everything except for giving access to other users.
-1. In the **Assign access to** field, select **Azure AD user, group, or service principal.**
-1. In the **Select** field, select the name of your service principal and click **Save.**
+1. In the **Assign access to** field, select **Azure AD user, group, or service principal**.
+1. In the **Select** field, select the name of your service principal and click **Save**.
 
 **Result:** Your service principal now has access to AKS.
 
 # 1. Create the AKS Cloud Credentials
 
-1. In the Rancher UI, click **☰ > Cluster Management.**
-1. Click **Cloud Credentials.**
-1. Click **Create.**
-1. Click **Azure.**
+1. In the Rancher UI, click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click **Azure**.
 1. Fill out the form. For help with filling out the form, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference/#cloud-credentials)
+1. Click **Create**.
 
 # 2. Create the AKS Cluster
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. In the Rancher UI, click **☰ > Cluster Management.**
-1. In the **Clusters** section, click **Create.**
-1. Click **Azure AKS.**
+1. Click **☰ > Cluster Management**.
+1. In the **Clusters** section, click **Create**.
+1. Click **Azure AKS**.
 1. Fill out the form. For help with filling out the form, see the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/aks-config-reference)
+1. Click **Create**.
 
-**Result:** Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+**Result:** Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 # Role-based Access Control
 When provisioning an AKS cluster in the Rancher UI, RBAC is not configurable because it is required to be enabled.

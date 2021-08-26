@@ -1,11 +1,6 @@
 ---
 title: Rancher is No Longer Needed
 weight: 8010
-aliases:
-  - /rancher/v2.6/en/installation/removing-rancher/cleaning-cluster-nodes/
-  - /rancher/v2.6/en/installation/removing-rancher/
-  - /rancher/v2.6/en/admin-settings/removing-rancher/
-  - /rancher/v2.6/en/admin-settings/removing-rancher/rancher-cluster-nodes/
 ---
 
 This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.
@@ -51,9 +46,9 @@ If a registered cluster is deleted from the Rancher UI, the cluster is detached 
 
 To detach the cluster,
 
-1. From the **Global** view in Rancher, go to the **Clusters** tab.
-2. Go to the registered cluster that should be detached from Rancher and click **&#8942; > Delete.**
-3. Click **Delete.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+2. Go to the registered cluster that should be detached from Rancher and click **⋮ > Delete**.
+3. Click **Delete**.
 
 **Result:** The registered cluster is detached from Rancher and functions normally outside of Rancher.
 

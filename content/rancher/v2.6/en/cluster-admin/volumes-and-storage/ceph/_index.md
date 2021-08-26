@@ -380,7 +380,7 @@ curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE="agent" sh -
 systemctl enable --now rke2-agent.service
 ```
 
-The cluster can be imported into Rancher from the Rancher UI by clicking **Global/Add Cluster > Other Cluster.** Then run the provided kubectl command on the server/master node.
+To import the cluster into Rancher, click **☰ > Cluster Management**. Then on the **Clusters** page, click **Import Existing**. Then run the provided kubectl command on the server/master node.
 
 # Tested Versions
 

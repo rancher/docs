@@ -67,7 +67,7 @@ Some of the example scenarios include the following:
 
 # Template Management
 
-When you create an RKE template, it is available in the Rancher UI from the **Global** view under **Tools > RKE Templates.** When you create a template, you become the template owner, which gives you permission to revise and share the template. You can share the RKE templates with specific users or groups, and you can also make it public.
+When you create an RKE template, it is available in the Rancher UI from the **Cluster Management** view under **RKE Templates**. When you create a template, you become the template owner, which gives you permission to revise and share the template. You can share the RKE templates with specific users or groups, and you can also make it public.
 
 Administrators can turn on template enforcement to require users to always use RKE templates when creating a cluster. This allows administrators to guarantee that Rancher always provisions clusters with specific settings.
 
@@ -122,4 +122,4 @@ Some things you could do with add-ons include:
 - Install plugins on nodes that are deployed with a Kubernetes daemonset
 - Automatically set up namespaces, service accounts, or role binding
 
-The RKE template configuration must be nested within the `rancher_kubernetes_engine_config` directive. To set add-ons, when creating the template, you will click **Edit as YAML.** Then use the `addons` directive to add a manifest, or the `addons_include` directive to set which YAML files are used for the add-ons. For more information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)
+The RKE template configuration must be nested within the `rancher_kubernetes_engine_config` directive. To set add-ons, when creating the template, you will click **Edit as YAML**. Then use the `addons` directive to add a manifest, or the `addons_include` directive to set which YAML files are used for the add-ons. For more information on custom add-ons, refer to the [user-defined add-ons documentation.]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/)

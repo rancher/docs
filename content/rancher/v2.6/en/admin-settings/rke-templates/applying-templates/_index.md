@@ -21,13 +21,13 @@ This section covers the following topics:
 
 To add a cluster [hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) using an RKE template, use these steps:
 
-1. From the **Global** view, go to the **Clusters** tab.
-1. Click **Add Cluster** and choose the infrastructure provider.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create** and choose the infrastructure provider.
 1. Provide the cluster name and node template details as usual.
-1. To use an RKE template, under the **Cluster Options**, check the box for **Use an existing RKE template and revision.**
-1. Choose an existing template and revision from the dropdown menu.
+1. To use an RKE template, under the **Cluster Options**, check the box for **Use an existing RKE template and revision**.
+1. Choose an RKE template and revision from the dropdown menu.
 1. Optional: You can edit any settings that the RKE template owner marked as **Allow User Override** when the template was created. If there are settings that you want to change, but don't have the option to, you will need to contact the template owner to get a new revision of the template. Then you will need to edit the cluster to upgrade it to the new revision.
-1. Click **Save** to launch the cluster.
+1. Click **Create** to launch the cluster.
 
 ### Updating a Cluster Created with an RKE Template
 
@@ -50,9 +50,9 @@ RKE templates cannot be applied to existing clusters, except if you save an exis
 
 To convert an existing cluster to use an RKE template,
 
-1. From the **Global** view in Rancher, click the **Clusters** tab.
-1. Go to the cluster that will be converted to use an RKE template. Click **&#8942;** > **Save as RKE Template.**
-1. Enter a name for the template in the form that appears, and click **Create.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster that will be converted to use an RKE template. Click **⋮  > Save as RKE Template**.
+1. Enter a name for the template in the form that appears, and click **Create**.
 
 **Results:**
 

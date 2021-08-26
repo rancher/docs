@@ -1,8 +1,6 @@
 ---
 title: Project Administration
 weight: 9
-aliases:
-  - /rancher/v2.6/en/project-admin/editing-projects/
 ---
 
 _Projects_ are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.
@@ -36,8 +34,6 @@ Whoever creates the project automatically becomes a [project owner]({{<baseurl>}
 
 To switch between projects, use the drop-down available in the navigation bar. Alternatively, you can switch between projects directly in the navigation bar.
 
-1. From the **Global** view, navigate to the project that you want to configure.
-
-1. Select **Projects/Namespaces** from the navigation bar.
-
-1. Select the link for the project that you want to open.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to switch projects and click **Explore**.
+1. In the top navigation bar, select the project that you want to open.

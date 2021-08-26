@@ -1,8 +1,6 @@
 ---
 title: Registering Existing Clusters
 weight: 6
-aliases:
-  - /rancher/v2.6/en/cluster-provisioning/imported-clusters
 ---
 
 The cluster registration feature replaced the feature to import clusters.
@@ -36,11 +34,12 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 
 # Registering a Cluster
 
-1. From the **Clusters** page, click **Add Cluster**.
-2. Choose **Register**.
-3. Enter a **Cluster Name**.
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, **Import Existing**.
+1. Enter a **Cluster Name**.
+1. Choose the type of cluster.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-5. Use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+5. If it is a generic custom cluster, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 6. Click **Create**.
 7. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
 8. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
@@ -50,8 +49,8 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 
 **Result:**
 
-- Your cluster is registered and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
-- You can access your cluster after its state is updated to **Active.**
+- Your cluster is registered and assigned a state of **Pending**. Rancher is deploying resources to manage your cluster.</li>
+- You can access your cluster after its state is updated to **Active**.
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
 
@@ -191,11 +190,12 @@ All the capabilities and their type definitions can be viewed in the Rancher API
 
 To annotate a registered cluster,
 
-1. Go to the cluster view in Rancher and select **&#8942; > Edit.**
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the custom cluster you want to annotate and click **⋮ > Edit Config**.
 1. Expand the **Labels & Annotations** section.
-1. Click **Add Annotation.**
+1. Click **Add Annotation**.
 1. Add an annotation to the cluster with the format `capabilities/<capability>: <value>` where `value` is the cluster capability that will be overridden by the annotation. In this scenario, Rancher is not aware of any capabilities of the cluster until you add the annotation.
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The annotation does not give the capabilities to the cluster, but it does indicate to Rancher that the cluster has those capabilities.
 

@@ -1,9 +1,6 @@
 ---
 title: 4. Set up the Istio Gateway
 weight: 5
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/gateway
-  - /rancher/v2.6/en/istio/v2.5/setup/gateway
 ---
 
 The gateway to each cluster can have its own port or load balancer, which is unrelated to a service mesh. By default, each Rancher-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster. 
@@ -24,20 +21,22 @@ For more information on the Istio gateway, refer to the [Istio documentation.](h
 
 The ingress gateway is a Kubernetes service that will be deployed in your cluster. The Istio Gateway allows for more extensive customization and flexibility.  
 
-1. From the **Cluster Explorer**, select **Istio** from the nav dropdown. 
-1. Click **Gateways** in the side nav bar.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Istio > Gateways**.
 1. Click **Create from Yaml**.
 1. Paste your Istio Gateway yaml, or **Read from File**.
 1. Click **Create**.
 
-**Result:** The gateway is deployed, and will now route traffic with applied rules
+**Result:** The gateway is deployed, and will now route traffic with applied rules.
 
 # Example Istio Gateway
 
 We add the BookInfo app deployments in services when going through the Workloads example. Next we add an Istio Gateway so that the app is accessible from outside your cluster.
 
-1. From the **Cluster Explorer**, select **Istio** from the nav dropdown. 
-1. Click **Gateways** in the side nav bar.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Istio > Gateways**.
 1. Click **Create from Yaml**.
 1. Copy and paste the Gateway yaml provided below.
 1. Click **Create**.
@@ -60,10 +59,11 @@ spec:
 ---
 ```
 
-Then to deploy the VirtualService that provides the traffic routing for the Gateway
+Then to deploy the VirtualService that provides the traffic routing for the Gateway:
 
-1. Click **VirtualService** in the side nav bar.
-1. Click **Create from Yaml**.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Istio > VirtualServices**.
 1. Copy and paste the VirtualService yaml provided below.
 1. Click **Create**.
 
@@ -117,7 +117,9 @@ To test and see if the BookInfo app deployed correctly, the app can be viewed a 
 
 To get the ingress gateway URL and port,
 
-1. From the **Cluster Explorer**, Click on **Workloads > Overview**. 
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Workload**.
 1. Scroll down to the `istio-system` namespace. 
 1. Within `istio-system`, there is a workload named `istio-ingressgateway`. Under the name of this workload, you should see links, such as `80/tcp`.
 1. Click one of those links. This should show you the URL of the ingress gateway in your web browser. Append `/productpage` to the URL.
@@ -136,7 +138,9 @@ You can try the steps in this section to make sure the Kubernetes gateway is con
 
 In the gateway resource, the selector refers to Istio's default ingress controller by its label, in which the key of the label is `istio` and the value is `ingressgateway`.  To make sure the label is appropriate for the gateway, do the following:
 
-1. From the **Cluster Explorer**, Click on **Workloads > Overview**. 
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Workload**.
 1. Scroll down to the `istio-system` namespace. 
 1. Within `istio-system`, there is a workload named `istio-ingressgateway`. Click the name of this workload and go to the **Labels and Annotations** section. You should see that it has the key `istio` and the value `ingressgateway`. This confirms that the selector in the Gateway resource matches Istio's default ingress controller.
 

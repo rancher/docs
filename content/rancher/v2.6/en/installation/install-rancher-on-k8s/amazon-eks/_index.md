@@ -21,9 +21,9 @@ Rancher and Amazon Web Services collaborated on a quick start guide for deployin
 
 The quick start guide provides three options for deploying Rancher on EKS:
 
-- **Deploy Rancher into a new VPC and new Amazon EKS cluster.** This option builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, bastion hosts, Amazon EKS cluster, and other infrastructure components. It then deploys Rancher into this new EKS cluster.
-- **Deploy Rancher into an existing VPC and a new Amazon EKS cluster.** This option provisions Rancher in your existing AWS infrastructure.
-- **Deploy Rancher into an existing VPC and existing Amazon EKS cluster.** This option provisions Rancher in your existing AWS infrastructure.
+- **Deploy Rancher into a new VPC and new Amazon EKS cluster**. This option builds a new AWS environment consisting of the VPC, subnets, NAT gateways, security groups, bastion hosts, Amazon EKS cluster, and other infrastructure components. It then deploys Rancher into this new EKS cluster.
+- **Deploy Rancher into an existing VPC and a new Amazon EKS cluster**. This option provisions Rancher in your existing AWS infrastructure.
+- **Deploy Rancher into an existing VPC and existing Amazon EKS cluster**. This option provisions Rancher in your existing AWS infrastructure.
 
 Deploying this Quick Start for a new virtual private cloud (VPC) and new Amazon EKS cluster using default parameters builds the following Rancher environment in the AWS Cloud:
 

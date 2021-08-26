@@ -1,10 +1,6 @@
 ---
 title: Setting up Amazon ELB Network Load Balancer
 weight: 5
-aliases:
-  - /rancher/v2.6/en/installation/ha/create-nodes-lb/nlb
-  - /rancher/v2.6/en/installation/k8s-install/create-nodes-lb/nlb
-  - /rancher/v2.6/en/installation/options/nlb
 ---
 
 This how-to guide describes how to set up a Network Load Balancer (NLB) in Amazon's EC2 service that will direct traffic to multiple instances on EC2.
@@ -165,7 +161,7 @@ After AWS creates the NLB, click **Close**.
 
 3. Use `TCP`:`80` as **Protocol** : **Port**
 
-4. Click **Add action** and choose **Forward to...**
+4. Click **Add action** and choose **Forward to..**.
 
 5. From the **Forward to** drop-down, choose `rancher-tcp-80`.
 

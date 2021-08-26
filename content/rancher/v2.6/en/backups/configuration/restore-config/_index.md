@@ -2,8 +2,6 @@
 title: Restore Configuration
 shortTitle: Restore
 weight: 2
-aliases:
-  - /rancher/v2.6/en/backups/v2.5/configuration/restore-config
 ---
 
 The Restore Create page lets you provide details of the backup to restore from

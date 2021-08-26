@@ -1,11 +1,6 @@
 ---
 title: Docker Install with TLS Termination at Layer-7 NGINX Load Balancer
 weight: 252
-aliases:
-  - /rancher/v2.6/en/installation/single-node/single-node-install-external-lb/
-  - /rancher/v2.6/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb
-  - /rancher/v2.6/en/installation/options/single-node-install-external-lb
-  - /rancher/v2.6/en/installation/single-node-install-external-lb
 ---
 
 For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.
@@ -39,7 +34,7 @@ Provision a single Linux host according to our [Requirements]({{<baseurl>}}/ranc
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
-> **Do you want to...**
+> **Do you want to..**.
 >
 > - Complete an Air Gap Installation?
 > - Record all transactions with the Rancher API?

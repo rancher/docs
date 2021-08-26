@@ -1,8 +1,6 @@
 ---
 title: Configuring Persistent Data for Pipeline Components
 weight: 600
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/pipelines/storage
 ---
 
 The pipelines' internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
@@ -15,9 +13,11 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 ### A. Configuring Persistent Data for Docker Registry
 
-1. From the project that you're configuring a pipeline for, and click **Resources > Workloads.**
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. Click **Workload**.
 
-1. Find the `docker-registry` workload and select **&#8942; > Edit**.
+1. Find the `docker-registry` workload and select **⋮ > Edit**.
 
 1. Scroll to the **Volumes** section and expand it. Make one of the following selections from the **Add Volume** menu, which is near the bottom of the section:
 
@@ -45,7 +45,7 @@ This section assumes that you understand how persistent storage works in Kuberne
 <br/>
 1. Enter a **Name** for the volume claim.
 
-1. Choose a **Persistent Volume Claim** from the drop-down.
+1. Choose a **Persistent Volume Claim** from the dropdown.
 
 1. From the **Customize** section, choose the read/write access for the volume.
 
@@ -61,7 +61,10 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 ### B. Configuring Persistent Data for Minio
 
-1. From the project view, click **Resources > Workloads.** Find the `minio` workload and select **&#8942; > Edit**.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. Click **Workload**.
+1. Go to the `minio` workload and select **⋮ > Edit**.
 
 1. Scroll to the **Volumes** section and expand it. Make one of the following selections from the **Add Volume** menu, which is near the bottom of the section:
 

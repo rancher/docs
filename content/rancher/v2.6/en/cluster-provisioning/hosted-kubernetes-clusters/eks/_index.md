@@ -2,8 +2,6 @@
 title: Creating an EKS Cluster
 shortTitle: Amazon EKS
 weight: 2110
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-eks/
 ---
 Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
 
@@ -49,23 +47,19 @@ For more detailed information on IAM policies for EKS, refer to the official [do
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. From the **Clusters** page, click **Add Cluster**.
-
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
 1. Choose **Amazon EKS**.
-
-1. Enter a **Cluster Name.**
-
+1. Enter a **Cluster Name**.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-
 1. Fill out the rest of the form. For help, refer to the [configuration reference.](#eks-cluster-configuration-reference) 
-
 1. Click **Create**.
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

@@ -1,14 +1,12 @@
 ---
 title: Additional Steps for Installing Istio on an RKE2 Cluster
 weight: 3
-aliases:
-  - /rancher/v2.6/en/istio/v2.5/configuration-reference/rke2
 ---
 
-Through the **Cluster Explorer,** when installing or upgrading Istio through **Apps & Marketplace,**
+When installing or upgrading the Istio Helm chart through **Apps & Marketplace,**
 
-1. Click **Components.**
-1. Check the box next to **Enabled CNI.**
+1. If you are installing the chart, click **Customize Helm options before install** and click **Next**.
+1. You will see options for configuring the Istio Helm chart. On the **Components** tab, check the box next to **Enabled CNI**.
 1. Add a custom overlay file specifying `cniBinDir` and `cniConfDir`. For more information on these options, refer to the [Istio documentation.](https://istio.io/latest/docs/setup/additional-setup/cni/#helm-chart-parameters) An example is below:
 
     ```yaml
@@ -28,7 +26,7 @@ Through the **Cluster Explorer,** when installing or upgrading Istio through **A
           cniBinDir: /opt/cni/bin
           cniConfDir: /etc/cni/net.d
     ```
-1. After installing Istio, you'll notice the cni-node pods in the istio-system namespace in a CrashLoopBackoff error. Manually edit the `istio-cni-node` daemonset to include the following on the `install-cni` container:
+1. After installing or upgrading Istio, you'll notice the cni-node pods in the istio-system namespace in a CrashLoopBackoff error. Manually edit the `istio-cni-node` daemonset to include the following on the `install-cni` container:
     ```yaml
     securityContext:
         privileged: true

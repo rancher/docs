@@ -74,9 +74,9 @@ Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
-1. From the **Clusters** page, click **Add Cluster**.
-
-2. Choose **Existing Nodes**.
+1.  Click **☰ > Cluster Management**.
+1. From the **Clusters** page, click **Create**.
+2. Choose **Custom**.
 
 3. Enter a **Cluster Name**.
 
@@ -98,9 +98,9 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

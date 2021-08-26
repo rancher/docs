@@ -1,9 +1,6 @@
 ---
 title: Setup Guide
 weight: 2
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup
-  - /rancher/v2.6/en/istio/v2.5/setup/
 ---
 
 This section describes how to enable Istio and start using it in your projects.

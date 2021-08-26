@@ -1,10 +1,6 @@
 ---
 title: Prometheus Configuration
 weight: 1
-aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/prometheusrules
-  - /rancher/v2.5/en/monitoring-alerting/configuration/prometheusrules
-  - /rancher/v2.5/en/monitoring-alerting/configuration/advanced/prometheusrules
 ---
 
 It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.

@@ -2,8 +2,6 @@
 title: Installing Rancher in a vSphere Environment
 shortTitle: On-Premises Rancher in vSphere
 weight: 3
-aliases:
-  - /rancher/v2.6/en/best-practices/v2.5/rancher-server/rancher-in-vsphere
 ---
 
 This guide outlines a reference architecture for installing Rancher on an RKE Kubernetes cluster in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.

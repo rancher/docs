@@ -1,8 +1,6 @@
 ---
 title: Configuration Options
 weight: 3
-aliases:
-  - /rancher/v2.6/en/istio/v2.5/configuration-reference
 ---
 
 - [Egress Support](#egress-support)
