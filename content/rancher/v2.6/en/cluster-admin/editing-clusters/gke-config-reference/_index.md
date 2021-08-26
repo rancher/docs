@@ -4,6 +4,12 @@ shortTitle: GKE Cluster Configuration
 weight: 3
 ---
 
+# Changes in Rancher v2.6
+
+- Support for additional configuration options:
+  - Project network isolation
+  - Network tags
+
 # Cluster Location
 
 | Value | Description |
@@ -56,6 +62,12 @@ Enable [alias IPs](https://cloud.google.com/vpc/docs/alias-ip). This enables VPC
 _Mutable: yes_
 
 Enable network policy enforcement on the cluster. A network policy defines the level of communication that can occur between pods and services in the cluster. For more information, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy)
+
+### Project Network Isolation
+
+_Mutable: yes_
+
+choose whether to enable or disable inter-project communication. Note that enabling Project Network Isolation will automatically enable Network Policy and Network Policy Config, but not vice versa.
 
 ### Node Ipv4 CIDR Block
 
@@ -221,6 +233,14 @@ _Mutable: no_
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
 Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+
+### Network Tags
+
+_Mutable: no_
+
+You can add network tags to the node pool to make firewall rules and routes between subnets. Tags will apply to all nodes in the pool.
+
+For details on tag syntax and requirements, see the [Kubernetes documentation](https://cloud.google.com/vpc/docs/add-remove-network-tags).
 
 # Group Details
 
