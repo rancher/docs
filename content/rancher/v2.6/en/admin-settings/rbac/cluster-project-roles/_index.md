@@ -55,7 +55,7 @@ The following table lists the permissions available for the `Manage Nodes` role 
 | SSH Access                  | ✓       | ✓       |
 | Delete Nodes                | ✓       | ✓       |
 | Scale Clusters Up and Down  | ✓       | *       |
-***For RKE2, you must have Edit Cluster permission to be able to scale clusters up and down.**  
+***In RKE2, you must have permission to edit a cluster to be able to scale clusters up and down.**  
 <br />          
 
 For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
