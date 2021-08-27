@@ -27,6 +27,8 @@ Make sure that your nodes fulfill the general installation requirements for [OS,
 
 For an example of one way to set up Linux nodes, refer to this [tutorial]({{<baseurl>}}/rancher/v2.x/en/installation/options/ec2-node/) for setting up nodes as instances in Amazon EC2.
 
+* Install docker engine on each of the 3 Linux nodes.
+
 ### 2. Set up the Load Balancer
 
 You will also need to set up a load balancer to direct traffic to the Rancher replica on any of the three nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
