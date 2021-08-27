@@ -39,7 +39,7 @@ The following table lists each built-in custom cluster role available and whethe
 | Manage Cluster Backups             | ✓             |                                   |
 | Manage Cluster Catalogs            | ✓             |                                   |
 | Manage Cluster Members             | ✓             |                                   |
-| Manage Nodes (see table below)     | ✓             |                                   |
+| Manage Nodes [(see table below)](#Manage-Nodes-Permissions)| ✓          |                |
 | Manage Storage                     | ✓             |                                   |
 | View All Projects                  | ✓             |                                   |
 | View Cluster Catalogs              | ✓             | ✓                                 |
@@ -48,14 +48,14 @@ The following table lists each built-in custom cluster role available and whethe
 
 #### Manage Nodes Permissions
 
-The following table lists the permissions available for the Manage Nodes role in `RKE` and `RKE2`.
+The following table lists the permissions available for the `Manage Nodes` role in RKE and RKE2.
 
-| Manage Nodes Permissions                   | RKE     | RKE2     |
-|--------------------------------------------|-------- |--------- |
-| SSH Access                                 | ✓       | ✓       |
-| Delete Nodes                               | ✓       | ✓       |
-| Scale Clusters Up and Down                 | ✓       |         |
-| Scale Up/Down with Edit Cluster Permission |         | ✓       |  
+| Manage Nodes Permissions    | RKE     | RKE2     |
+|-----------------------------|-------- |--------- |
+| SSH Access                  | ✓       | ✓       |
+| Delete Nodes                | ✓       | ✓       |
+| Scale Clusters Up and Down  | ✓       | *       |
+***For RKE2, you must have Edit Cluster permission to be able to scale clusters up and down.**  
 <br />          
 
 For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
