@@ -109,7 +109,7 @@ _Available as of v2.2.0_
 
 Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters) to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+> The authorized cluster endpoint is available only in clusters that Rancher has provisioned [using RKE]({{<baseurl>}}/rancher/v2.x/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters). It is not available for clusters in hosted Kubernetes providers, such as Amazon's EKS. Additionally, the authorized cluster endpoint cannot be enabled for RKE clusters that are imported into Rancher; it is available only on Rancher-launched Kubernetes clusters.
 
 This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 

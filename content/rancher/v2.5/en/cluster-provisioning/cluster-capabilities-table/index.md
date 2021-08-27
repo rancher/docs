@@ -17,10 +17,11 @@ headless: true
 | [Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio)]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/) | ✓ | ✓ | ✓ | ✓ |
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.5/en/security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cloning-clusters/)| ✓ | ✓ |✓ | |
-| [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ | ✓  |  | |
+| [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ | ✓  | | |
 | Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ | | ✓<sup>4</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
-| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ | ✓ |  ||
+| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ | ✓ | | |
+| [Authorized Cluster Endpoint]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) | ✓ | | | |
 
 1. Registered GKE and EKS clusters have the same options available as GKE and EKS clusters created from the Rancher UI. The  difference is that when a registered cluster is deleted from the Rancher UI, [it is not destroyed.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-eks-and-gke-clusters)
 
@@ -48,7 +49,8 @@ headless: true
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/certificate-rotation/) | ✓ |  | ✓ | |
 | Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ | | ✓<sup>3</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
-| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ |  | ✓ ||
+| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/pod-security-policy/) | ✓ | | ✓ | |
+| [Authorized Cluster Endpoint]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) | ✓ | | |
 
 1. Cluster configuration options can't be edited for registered clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/)
 
