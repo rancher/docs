@@ -37,6 +37,8 @@ If you want to reuse a node from a previous custom cluster, [clean the node]({{<
 
 Provision the host according to the [installation requirements]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements) and the [checklist for production-ready clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production)
 
+If you're using Amazon EC2 as your host and want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) when provisioning the host.
+
 ### 2. Create the Custom Cluster
 
 1. Click **☰ > Cluster Management**.
@@ -49,6 +51,9 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
     >
     >- See [Enable the Windows Support Option]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/).
     >- The only Network Provider available for clusters with Windows support is Flannel.
+    >
+    >**Dual-stack on Amazon EC2:** If you're using Amazon EC2 as your host and want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) when configuring RKE.
+
 6.	<a id="step-6"></a>Click **Next**.
 
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
