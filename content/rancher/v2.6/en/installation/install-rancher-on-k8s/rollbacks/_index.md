@@ -60,7 +60,7 @@ A restore is performed by creating a Restore custom resource.
 
 1. Click **Create**.
 
-**Result:** The rancher-operator scales the rancher deployment back up once the restore completes. The resources are restored in this order:
+**Result:** The backup file is created and updated to the target storage location. The resources are restored in this order:
 
 1. Custom Resource Definitions (CRDs)
 2. Cluster-scoped resources
