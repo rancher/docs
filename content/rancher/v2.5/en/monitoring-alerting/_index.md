@@ -219,7 +219,7 @@ For more information on configuring Alertmanager in Rancher, see [this page.](./
 
 The resource requests and limits can be configured when installing `rancher-monitoring`.
 
-The default values are in the [values.yaml](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/values.yaml) in the `rancher-monitoring` Helm chart.
+The default values are in the [values.yaml](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/values.yaml) in the `rancher-monitoring` Helm chart. As every environment is different, it is recommended that you set limits higher than the recommended and then tune them down to accomodate what your environment uses after observing it in operation for a week or two.  As you scale your clusters, you will need to also scale your requests and limits to accomodate the larger amount of data collected from them.  
 
 The default values in the table below are the minimum required resource limits and requests.
 
@@ -237,4 +237,6 @@ At least 50Gi storage is recommended.
 
 # Known Issues
 
-There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend to setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
+There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
+
+It is common that as the amount of metrics and deployments being monitors grows, Prometheus's memory and CPU needs outgrow the limits initially placed on them.  If you see Prometheus commonly crashing, try increasing the allocated memory and setting alerts for when resource usage of Monitoring pods approaches limits placed on them.
