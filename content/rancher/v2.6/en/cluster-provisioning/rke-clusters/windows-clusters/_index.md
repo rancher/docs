@@ -22,10 +22,26 @@ This guide covers the following topics:
 
 <!-- TOC -->
 
+- [Changes in Rancher v2.6](#changes-in-rancher-v2-6)
 - [Requirements](#requirements-for-windows-clusters)
 - [Tutorial: How to Create a Cluster with Windows Support](#tutorial-how-to-create-a-cluster-with-windows-support)
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
   <!-- /TOC -->
+
+  # Changes in Rancher v2.6
+
+_Tech Preview_
+
+Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+
+The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
+
+- Windows Containers with RKE2 powered by containerd
+- Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
+- Calico CNI for Windows RKE2 custom clusters
+- SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
+
+Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
 # Requirements for Windows Clusters
 
