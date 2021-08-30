@@ -77,12 +77,15 @@ K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of
 
 **Steps for Systemd Configuration:**
 
- Run  `cat /etc/systemd/journald.conf | grep -E ^\#?Storage | cut -d"=" -f2` on one of your nodes.
-
+* Run  `cat /etc/systemd/journald.conf | grep -E ^\#?Storage | cut -d"=" -f2` on one of your nodes.
 * If `persistent` is returned, your `systemdLogPath` should be `/var/log/journal`.
 * If `volatile` is returned, your `systemdLogPath` should be `/run/log/journal`. 
 * If `auto` is returned, check if `/var/log/journal` exists. 
   * If `/var/log/journal` exists, then use `/var/log/journal`. 
   * If `/var/log/journal` does not exist, then use `/run/log/journal`. 
 
-* If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, set `Storage=volatile` in  journald.conf, reboot your machine, and set `systemdLogPath` to `/run/log/journal`.
+> **Note:** If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
+
+> * Set `Storage=volatile` in  journald.conf.
+> * Reboot your machine.
+> * Set `systemdLogPath` to `/run/log/journal`. 
