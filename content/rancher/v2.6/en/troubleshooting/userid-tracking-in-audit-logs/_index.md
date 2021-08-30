@@ -20,4 +20,4 @@ A Rancher Admin should now be able to view Rancher audit logs and follow through
 ### Feature Description
 
 - When Kubernetes Audit logs are enabled on the downstream cluster, in each event that is logged, the external Identity Provider's username is now logged for each request, at the "metadata" level.
-- When Rancher API Audit logs are enabled on the rancher installation, the external Identity Provider's username is also logged now at the "auditLog.level=1" for each request that hits the Rancher API server, including the login requests.
+- When Rancher API Audit logs are enabled on the Rancher installation, the external Identity Provider's username is also logged now at the `auditLog.level=1` for each request that hits the Rancher API server, including the login requests.
