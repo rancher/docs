@@ -17,7 +17,7 @@ The charts page contains all Rancher, Partner, and Custom Charts.
 
 All three types are deployed and managed in the same way.
 
-> Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) should continue to be managed only by the Cluster Manager, and apps managed with **Apps & Marketplace** in the new UI must be managed only by **Apps & Marketplace**.
+> Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) should continue to be managed only by the Cluster Manager, and apps managed with <b>Apps & Marketplace</b> in the new UI must be managed only by <b>Apps & Marketplace</b>.
 
 ### Repositories
 

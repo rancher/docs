@@ -65,11 +65,9 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 
 - [Enable monitoring](./guides/enable-monitoring)
 - [Uninstall monitoring](./guides/uninstall)
-- [Monitoring Rancher apps](./guides/monitoring-rancher-apps)
 - [Monitoring workloads](./guides/monitoring-workloads)
 - [Customizing Grafana dashboards](./guides/customize-grafana)
 - [Persistent Grafana dashboards](./guides/persist-grafana)
-- [Setting up metrics for horizontal pod autoscaling](./guides/hpa)
 - [Debugging high memory usage](./guides/memory-usage)
 - [Migrating from Monitoring V1 to V2](./guides/migrating)
 

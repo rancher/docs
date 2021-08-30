@@ -5,13 +5,12 @@ weight: 1
 
 It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
-
-
-
+> This section assumes familiarity with how monitoring components work together. For more information, see [this section.](../../../how-monitoring-works/)
 
 # About the Prometheus Custom Resource
-- when the Prometheus operator observes it, it creates prometheus-rancher-monitoring-prometheus, which is the prometheus deployment that is created based on the configuration in the Prometheus CR.
-- This is where we configure details like what Alertmanagers are connected to Prometheus, what are the external URLs, and other details that prometheus needs. Rancher builds this CR for you. It has fields for pod monitor and service monitor selectors - technically you can filter that to include only the ones in a certain namespace.
-- monitoring v2 only supports one prometheus per cluster because we haven’t supported project level monitoring. But you might want to edit prometheus Cr if you want to limit the namespaces.
-- prometheus also has the rules and routes in it.
+
+The Prometheus CR defines a desired Prometheus deployment. The Prometheus Operator observes the Prometheus CR. When the CR changes, the Prometheus Operator creates `prometheus-rancher-monitoring-prometheus`, a Prometheus deployment based on the CR configuration.
+
+The Prometheus CR specifies details such as rules and what Alertmanagers are connected to Prometheus. Rancher builds this CR for you.
+
+Monitoring V2 only supports one Prometheus per cluster. However, you might want to edit the Prometheus CR if you want to limit monitoring to certain namespaces.

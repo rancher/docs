@@ -12,7 +12,7 @@ aliases:
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/#3-how-alertmanager-works)
 
 - [Creating Receivers in the Rancher UI](#creating-receivers-in-the-rancher-ui)
 - [Receiver Configuration](#receiver-configuration)

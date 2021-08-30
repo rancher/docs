@@ -3,7 +3,7 @@ title: Pipelines
 weight: 10
 ---
 
-> As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by [Fleet.](https://fleet.rancher.io/) To get to Fleet in Rancher, click **☰ > Continuous Delivery**. Note that pipelines in Kubernetes 1.21+ are no longer supported.
+> As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by [Fleet.](https://fleet.rancher.io/) To get to Fleet in Rancher, click <b>☰ > Continuous Delivery</b>. Note that pipelines in Kubernetes 1.21+ are no longer supported.
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
@@ -17,7 +17,7 @@ After configuring Rancher and GitHub, you can deploy containers running Jenkins 
 - Run unit tests.  
 - Run regression tests.
 
->**Note: Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
+>**Note:** Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
 
 This section covers the following topics:
 

@@ -6,7 +6,7 @@ weight: 1
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/#3-how-alertmanager-works)
 
 - [Creating Receivers in the Rancher UI](#creating-receivers-in-the-rancher-ui)
 - [Receiver Configuration](#receiver-configuration)
@@ -18,10 +18,6 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
   - [Custom](#custom)
   - [Teams](#teams)
   - [SMS](#sms)
-- [Route Configuration](#route-configuration)
-  - [Receiver](#receiver)
-  - [Grouping](#grouping)
-  - [Matching](#matching)
 - [Configuring Multiple Receivers](#configuring-multiple-receivers)
 - [Example Alertmanager Config](../examples/#example-alertmanager-config)
 - [Example Route Config for CIS Scan Alerts](#example-route-config-for-cis-scan-alerts)
@@ -57,17 +53,6 @@ For notification mechanisms not natively supported by AlertManager, integration 
 Currently the Rancher Alerting Drivers app provides access to the following integrations:
 - Microsoft Teams, based on the [prom2teams](https://github.com/idealista/prom2teams) driver
 - SMS, based on the [Sachet](https://github.com/messagebird/sachet) driver
-
-### Changes in Rancher v2.5.8
-
-Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Rancher UI.
-
-### Changes in Rancher v2.5.4
-
-Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
-
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -223,87 +208,6 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 
 <!-- https://github.com/messagebird/sachet -->
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.4-2.5.7" %}}
-
-The following types of receivers can be configured in the Rancher UI:
-
-- <a href="#slack-254-257">Slack</a>
-- <a href="#email-254-257">Email</a>
-- <a href="#pagerduty-254-257">PagerDuty</a>
-- <a href="#opsgenie-254-257">Opsgenie</a>
-- <a href="#webhook-254-257">Webhook</a>
-- <a href="#custom-254-257">Custom</a>
-
-The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
-
-### Slack {#slack-254-257}
-
-| Field | Type | Description |
-|------|--------------|------|
-| URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
-| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
-| Proxy URL   |    String    |  Proxy for the webhook notifications.  |
-| Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
-
-### Email {#email-254-257}
-
-| Field | Type | Description |
-|------|--------------|------|
-| Default Recipient Address |   String    |   The email address that will receive notifications.    |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
-
-SMTP options:
-
-| Field | Type | Description |
-|------|--------------|------|
-| Sender |   String       |  Enter an email address available on your SMTP mail server that you want to send the notification from.   |
-| Host |   String         | Enter the IP address or hostname for your SMTP server. Example: `smtp.email.com`. |
-| Use TLS |   Bool     | Use TLS for encryption. |
-| Username |   String   | Enter a username to authenticate with the SMTP server. |
-| Password |   String    | Enter a password to authenticate with the SMTP server. |
-
-### PagerDuty {#pagerduty-254-257}
-
-| Field | Type | Description |
-|------|------|-------|
-| Integration Type | String | `Events API v2` or `Prometheus`. |
-| Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
-| Proxy URL | String |  Proxy for the PagerDuty notifications.  |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
-
-### Opsgenie {#opsgenie-254-257}
-
-| Field | Description |
-|------|-------------|
-| API Key |   For instructions to get an API key, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/api-key-management)             |
-| Proxy URL |   Proxy for the Opsgenie notifications.        |
-| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).  |
-
-Opsgenie Responders:
-
-| Field |    Type | Description |
-|-------|------|--------|
-| Type | String | Schedule, Team, User, or Escalation. For more information on alert responders, refer to the [Opsgenie documentation.](https://docs.opsgenie.com/docs/alert-recipients-and-teams) |
-| Send To | String | Id, Name, or Username of the Opsgenie recipient. |
-
-### Webhook {#webhook-1}
-
-| Field |    Description |
-|-------|--------------|
-| URL | Webhook URL for the app of your choice. |
-| Proxy URL | Proxy for the webhook notification. |
-| Enable Send Resolved Alerts | Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage).    |
-
-### Custom {#custom-254-257}
-
-The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
-{{% /tab %}}
-{{% /tabs %}}
 
 # Configuring Multiple Receivers
 
