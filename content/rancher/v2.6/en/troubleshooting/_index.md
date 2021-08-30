@@ -36,3 +36,6 @@ This section contains information to help you troubleshoot issues when using Ran
 
     Read more about what log levels can be configured and how to configure a log level.
 
+- [User ID Tracking in Audit Logs]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/userid-tracking-in-audit-logs/)
+
+    Read more about how a Rancher Admin can trace an event from the Rancher audit logs and into the Kubernetes audit logs using the external Identity Provider username.
