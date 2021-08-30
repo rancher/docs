@@ -9,7 +9,7 @@ weight: 4
 - [Adding NodeSelector Settings and Tolerations for Custom Taints](#adding-nodeselector-settings-and-tolerations-for-custom-taints)
 - [Enabling the Logging Application to Work with SELinux](#enabling-the-logging-application-to-work-with-selinux)
 - [Additional Logging Sources](#additional-logging-sources)
-
+- [Systemd Configuration](#systemd-configuration)
 
 ### Enable/Disable Windows Node Logging
 
@@ -68,3 +68,24 @@ To enable hosted Kubernetes providers as additional logging sources, enable **En
 When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers
 
 If you're already using a cloud provider's own logging solution such as AWS CloudWatch or Google Cloud operations suite (formerly Stackdriver), it is not necessary to enable this option as the native solution will have unrestricted access to all logs.
+
+### Systemd Configuration
+
+In Rancher logging, `SystemdLogPath` must be configured for K3s and RKE2 Kubernetes distributions. 
+
+K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of systemd that is used for logging. In order to collect these logs, the `systemdLogPath` needs to be defined. While the `run/log/journal` directory is used by default, some Linux distributions do not default to this path. For example, Ubuntu defaults to `var/log/journal`. To determine your `systemdLogPath` configuration, see steps below.
+
+**Steps for Systemd Configuration:**
+
+* Run  `cat /etc/systemd/journald.conf | grep -E ^\#?Storage | cut -d"=" -f2` on one of your nodes.
+* If `persistent` is returned, your `systemdLogPath` should be `/var/log/journal`.
+* If `volatile` is returned, your `systemdLogPath` should be `/run/log/journal`. 
+* If `auto` is returned, check if `/var/log/journal` exists. 
+  * If `/var/log/journal` exists, then use `/var/log/journal`. 
+  * If `/var/log/journal` does not exist, then use `/run/log/journal`. 
+
+> **Note:** If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
+
+> * Set `Storage=volatile` in  journald.conf.
+> * Reboot your machine.
+> * Set `systemdLogPath` to `/run/log/journal`. 
