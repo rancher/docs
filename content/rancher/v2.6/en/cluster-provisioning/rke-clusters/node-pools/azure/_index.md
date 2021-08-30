@@ -2,8 +2,6 @@
 title: Creating an Azure Cluster
 shortTitle: Azure
 weight: 2220
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-azure/
 ---
 
 In this section, you'll learn how to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Azure through Rancher.
@@ -45,12 +43,12 @@ The creation of this service principal returns three pieces of identification in
  
 ### 1. Create your cloud credentials
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
-1. Click **Add Cloud Credential.**
-1. Enter a name for the cloud credential.
-1. In the **Cloud Credential Type** field, select **Azure**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click **Azure**.
 1. Enter your Azure credentials.
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
 
@@ -58,27 +56,30 @@ The creation of this service principal returns three pieces of identification in
 
 Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) for Azure will allow Rancher to provision new nodes in Azure. Node templates can be reused for other clusters.
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Node Templates.**
-1. Click **Add Template.**
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
+1. Click **Add Template**.
+1. Click **Azure**.
 1. Fill out a node template for Azure. For help filling out the form, refer to [Azure Node Template Configuration.](./azure-node-template-config)
 
 ### 3. Create a cluster with node pools using the node template
 
 Use Rancher to create a Kubernetes cluster in Azure.
 
-1. From the **Clusters** page, click **Add Cluster**.
-1. Choose **Azure**.
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **Azure**.
 1. Enter a **Cluster Name**.
-1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.** For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
 1. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools)
-1. Review your options to confirm they're correct. Then click **Create**.
+1. In the **Cluster Configuration** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options**. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Click **Create**.
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

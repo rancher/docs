@@ -2,22 +2,19 @@
 title: Deploying Workloads
 description: Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.
 weight: 3026
-aliases:
-  - /rancher/v2.6/en/tasks/workloads/deploy-workloads/
-  - /rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads
 ---
 
 Deploy a workload to run an application in one or more containers.
 
-1. From the **Global** view, open the project that you want to deploy a workload to.
-
-1. 1. Click **Resources > Workloads.** From the **Workloads** view, click **Deploy**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to upgrade a workload and click **Explore**.
+1. In the left navigation bar, click **Workload**.
+1. Click **Create**.
+1. Choose the type of workload.
+1. Select the namespace where the workload will be deployed.
 1. Enter a **Name** for the workload.
 
-1. Select a [workload type]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/). The workload defaults to a scalable deployment, by can change the workload type by clicking **More options.**
-
-1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy to the project, optionally prefacing it with the registry host (e.g. `quay.io`, `registry.gitlab.com`, etc.). During deployment, Rancher pulls this image from the specified public or private registry. If no registry host is provided, Rancher will pull the image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears in the registry server, including any required path, and optionally including the desired tag (e.g. `registry.gitlab.com/user/path/image:tag`). If no tag is provided, the `latest` tag will be automatically used.
+1. From the **Container Image** field, enter the name of the Docker image that you want to deploy to the project, optionally prefacing it with the registry host (e.g. `quay.io`, `registry.gitlab.com`, etc.). During deployment, Rancher pulls this image from the specified public or private registry. If no registry host is provided, Rancher will pull the image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears in the registry server, including any required path, and optionally including the desired tag (e.g. `registry.gitlab.com/user/path/image:tag`). If no tag is provided, the `latest` tag will be automatically used.
 
 1. Either select an existing namespace, or click **Add to a new namespace** and enter a new namespace.
 

@@ -1,9 +1,6 @@
 ---
 title: Adding Users to Projects
 weight: 2505
-aliases:
-  - /rancher/v2.6/en/tasks/projects/add-project-members/
-  - /rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/project-members/
 ---
 
 If you want to provide a user with access and permissions to _specific_ projects and resources within a cluster, assign the user a project membership.
@@ -20,11 +17,12 @@ You can add members to a project as you create it (recommended if possible). For
 
 Following project creation, you can add users as project members so that they can access its resources.
 
-1. From the **Global** view, open the project that you want to add members to.
-
-2. From the main menu, select **Members**. Then click **Add Member**.
-
-3. Search for the user or group that you want to add to the project.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to add members to a project and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Go to the project where you want to add members and click **⋮ > Edit Config**.
+1. In the **Members** tab, click **Add**.
+1. Search for the user or group that you want to add to the project.
 
  	If external authentication is configured:
 

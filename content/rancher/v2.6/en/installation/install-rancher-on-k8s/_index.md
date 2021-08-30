@@ -2,12 +2,6 @@
 title: Install/Upgrade Rancher on a Kubernetes Cluster
 description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
 weight: 2
-aliases:
-  - /rancher/v2.6/en/installation/k8s-install/
-  - /rancher/v2.6/en/installation/k8s-install/helm-rancher
-  - /rancher/v2.6/en/installation/k8s-install/kubernetes-rke
-  - /rancher/v2.6/en/installation/ha-server-install 
-  - /rancher/v2.6/en/installation/install-rancher-on-k8s/install
 ---
 
 In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
@@ -50,9 +44,7 @@ For an example of how to deploy an ingress on EKS, refer to [this section.]({{<b
 
 # Install the Rancher Helm Chart
 
-Rancher is installed using the Helm package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents.
-
-With Helm, we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at https://helm.sh/.
+Rancher is installed using the [Helm](https://helm.sh/) package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm, we can create configurable deployments instead of just using static files.
 
 For systems without direct internet access, see [Air Gap: Kubernetes install]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-installation/install-rancher/).
 
@@ -255,7 +247,7 @@ Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.
 The Rancher chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
 
 - [HTTP Proxy]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#http-proxy)
-- [Private Docker Image Registry]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#private-registry-and-air-gap-installs)
+- [Private container image Registry]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#private-registry-and-air-gap-installs)
 - [TLS Termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination)
 
 See the [Chart Options]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/) for the full list of options.
@@ -292,8 +284,3 @@ That's it. You should have a functional Rancher server.
 In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
 
 Doesn't work? Take a look at the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/) Page
-
-
-### Optional Next Steps
-
-Enable the Enterprise Cluster Manager.

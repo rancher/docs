@@ -8,6 +8,7 @@ weight: 1
 3. [How Alertmanager Works](#3-how-alertmanager-works)
 4. [Monitoring V2 Specific Components](#4-monitoring-v2-specific-components)
 5. [Scraping and Exposing Metrics](#5-scraping-and-exposing-metrics)
+6. [Monitoring on RKE2 Clusters](#6-monitoring-on-rke2-clusters)
 
 # 1. Architecture Overview
 
@@ -249,3 +250,13 @@ Metrics are scraped differently based on the Kubernetes distribution. For help w
 - **ingress-nginx:** An Ingress controller for Kubernetes using NGINX as a reverse proxy and load balancer.
 - **coreDns/kubeDns:** The internal Kubernetes component responsible for DNS.
 - **kube-api-server:** The main internal Kubernetes component that is responsible for exposing APIs for the other master components.
+
+# 6. Monitoring on RKE2 Clusters
+
+Rancher v2.6 introduced the ability to provision new Kubernetes clusters with [RKE2,](https://docs.rke2.io/) which is Rancher's fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector. To allow Monitoring V2 to be installed on RKE2 Kubernetes clusters, the `rkeIngressNginx` and `rke2IngressNginx` sub-charts were introduced to scrape metrics from the `ingress-nginx` Deployment/DaemonSet in RKE and RKE2 clusters respectively.
+
+The PushProx pod needs to run on the same nodes as the `ingress-nginx` pod.
+
+When the RKE2 cluster's Kubernetes version is <= 1.20,  the workload type of `ingress-nginx` is a Deployment. The `pushprox-ingress-nginx-client` is deployed as a Deployment, and the Rancher UI sets the Helm chart value `rke2IngressNginx.deployment.enabled=true`.
+
+For Kubernetes >= 1.21, the workload type of `ingress-nginx` is a DaemonSet. The `pushprox-ingress-nginx-client` is deployed as a DaemonSet, which is the default behavior.

@@ -140,12 +140,13 @@ If your nodes are hosted by a **Cloud Provider** and you want automation support
 
 The instructions for creating a Windows cluster on existing nodes are very similar to the general [instructions for creating a custom cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/) with some Windows-specific requirements.
 
-1. From the **Global** view, click on the **Clusters** tab and click **Add Cluster**.
-1. Click **From existing nodes (Custom)**.
-1. Enter a name for your cluster in the **Cluster Name** text box.
-1. In the **Kubernetes Version** dropdown menu, select v1.15 or above.
-1. In the **Network Provider** field, select **Flannel.**
-1. In the **Windows Support** section, click **Enable.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **Custom**.
+1. Enter a name for your cluster in the **Cluster Name** field.
+1. In the **Kubernetes Version** dropdown menu, select v1.19 or above.
+1. In the **Network Provider** field, select **Flannel**.
+1. In the **Windows Support** section, click **Enabled**.
 1. Optional: After you enable Windows support, you will be able to choose the Flannel backend. There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
 1. Click **Next**.
 
@@ -170,9 +171,9 @@ The first node in your cluster should be a Linux host has both the **Control Pla
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 
@@ -188,8 +189,8 @@ In this section, we run a command to register the Linux worker node to the clust
 
 After the initial provisioning of your cluster, your cluster only has a single Linux host. Next, we add another Linux `worker` host, which will be used to support _Rancher cluster agent_, _Metrics server_, _DNS_ and _Ingress_ for your cluster.
 
-1. From the **Global** view, click **Clusters.**
-1. Go to the cluster that you created and click **&#8942; > Edit.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **⋮ > Edit Config**.
 1. Scroll down to **Node Operating System**. Choose **Linux**.
 1. In the **Customize Node Run Command** section, go to the **Node Options** and select the **Worker** role.
 1. Copy the command displayed on screen to your clipboard.
@@ -212,8 +213,8 @@ In this section, we run a command to register the Windows worker node to the clu
 
 You can add Windows hosts to the cluster by editing the cluster and choosing the **Windows** option.
 
-1. From the **Global** view, click **Clusters.**
-1. Go to the cluster that you created and click **&#8942; > Edit.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **⋮ > Edit Config**.
 1. Scroll down to **Node Operating System**. Choose **Windows**. Note: You will see that the **worker** role is the only available role.
 1. Copy the command displayed on screen to your clipboard.
 1. Log in to your Windows host using your preferred tool, such as [Microsoft Remote Desktop](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients). Run the command copied to your clipboard in the **Command Prompt (CMD)**.

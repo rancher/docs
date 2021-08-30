@@ -1,8 +1,7 @@
 ---
 title: Examples
-weight: 5
+weight: 400
 ---
-
 
 ### ServiceMonitor
 

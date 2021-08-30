@@ -1,9 +1,6 @@
 ---
 title: Authentication
 weight: 10
-aliases:
-    - /rancher/v2.6/en/concepts/global-configuration/authentication/
-    - /rancher/v2.6/en/tasks/global-configuration/authentication/
 ---
 
 One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.
@@ -12,7 +9,7 @@ This centralized user authentication is accomplished using the Rancher authentic
 
 ## External vs. Local Authentication
 
-The Rancher authentication proxy integrates with the following external authentication services. The following table lists the first version of Rancher each service debuted.
+The Rancher authentication proxy integrates with the following external authentication services.
 
 | Auth Service                                                                                     |
 | ------------------------------------------------------------------------------------------------ |
@@ -54,13 +51,11 @@ After you configure Rancher to allow sign on using an external authentication se
 
 To set the Rancher access level for users in the authorization service, follow these steps:
 
-1. From the **Global** view, click **Security > Authentication.**
-
-1. Use the **Site Access** options to configure the scope of user authorization. The table above explains the access level for each option.
-
+1. In the upper left corner, click **☰ > Users & Authentication**.
+1. In the left navigation bar, click **Auth Provider**.
+1. After setting up the configuration details for an auth provider, use the **Site Access** options to configure the scope of user authorization. The table above explains the access level for each option.
 1. Optional: If you choose an option other than **Allow any valid Users,** you can add users to the list of authorized users and organizations by searching for them in the text field that appears.
-
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The Rancher access configuration settings are applied.
 

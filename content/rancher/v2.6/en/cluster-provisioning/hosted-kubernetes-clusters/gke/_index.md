@@ -2,9 +2,6 @@
 title: Managing GKE Clusters
 shortTitle: Google Kubernetes Engine
 weight: 2105
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
-  - /rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/gke
 ---
 
 - [Prerequisites](#prerequisites)
@@ -48,32 +45,33 @@ To get the project ID of an existing project, refer to the Google cloud document
 
 ### 1. Create a Cloud Credential
 
-1. In the upper right corner, click the user profile dropdown menu and click **Cloud Credentials.**
-1. Click **Add Cloud Credential.**
+1. Click **☰ > Cluster Management**.
+1. In the left navigation bar, click **Cloud Credentials**.
+1. Click **Create**.
 1. Enter a name for your Google cloud credentials.
-1. In the **Cloud Credential Type** field, select **Google.**
 1. In the **Service Account** text box, paste your service account private key JSON, or upload the JSON file.
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** You have created credentials that Rancher will use to provision the new GKE cluster.
 
 ### 2. Create the GKE Cluster
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. From the **Clusters** page, click **Add Cluster**.
-1. Under **With a hosted Kubernetes provider,** click **Google GKE**.
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **Google GKE**.
 1. Enter a **Cluster Name**.
 1. Optional: Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Optional: Add Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to the cluster.
 1. Enter your Google project ID and your Google cloud credentials.
 1. Fill out the rest of the form. For help, refer to the [GKE cluster configuration reference.](./config-reference)
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** You have successfully deployed a GKE cluster.
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

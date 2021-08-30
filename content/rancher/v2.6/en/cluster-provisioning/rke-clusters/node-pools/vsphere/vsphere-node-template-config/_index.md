@@ -1,9 +1,6 @@
 ---
 title: VSphere Node Template Configuration
 weight: 2
-aliases:
-  - /rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference
-  - /rancher/v2.6/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids
 ---
 
 - [Account Access](#account-access)
@@ -65,7 +62,7 @@ The existing VM or template may use any modern Linux operating system that is co
 Choose the way that the VM will be created:
 
 - **Deploy from template: Data Center:** Choose a VM template that exists in the data center that you selected.
-- **Deploy from template: Content Library:** First, select the [Content Library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html) that contains your template, then select the template from the populated list **Library templates.**
+- **Deploy from template: Content Library:** First, select the [Content Library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html) that contains your template, then select the template from the populated list **Library templates**.
 - **Clone an existing virtual machine:** In the **Virtual machine** field, choose an existing VM that the new VM will be cloned from.
 - **Install from boot2docker ISO:** Ensure that the **OS ISO URL** field contains the URL of a VMware ISO release for RancherOS (`rancheros-vmware.iso`). Note that this URL must be accessible from the nodes running your Rancher server installation.
 

@@ -1,8 +1,6 @@
 ---
 title: Examples
 weight: 5
-aliases:
-  - /rancher/v2.6/en/backups/v2.5/examples
 ---
 
 This section contains examples of Backup and Restore custom resources.

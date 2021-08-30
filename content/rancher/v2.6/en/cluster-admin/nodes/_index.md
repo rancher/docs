@@ -76,7 +76,7 @@ Editing a node lets you:
 * Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 * Add/Remove [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
 
-To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **&#8942;** icon (**...**).
+To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **⋮** icon (**..**.).
 
 # Viewing a Node in the Rancher API
 
@@ -96,18 +96,13 @@ For nodes hosted by an infrastructure provider, you can scale the number of node
 
 # SSH into a Node Hosted by an Infrastructure Provider
 
-For [nodes hosted by an infrastructure provider]({{< baseurl >}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
+For [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/), you have the option of downloading its SSH key so that you can connect to it remotely from your desktop.
 
-1. From the cluster hosted by an infrastructure provider, select **Nodes** from the main menu.
-
-1. Find the node that you want to remote into. Select **&#8942; > Download Keys**.
-
-    **Step Result:** A ZIP file containing files used for SSH is downloaded.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to SSH into a node and click the name of the cluster.
+1. On the **Machine Pools** tab, find the node that you want to remote into and click  **⋮ > Download SSH Key**. A ZIP file containing files used for SSH will be downloaded.
 1. Extract the ZIP file to any location.
-
 1. Open Terminal. Change your location to the extracted ZIP file.
-
 1. Enter the following command:
 
     ```
@@ -132,7 +127,7 @@ However, you can override the conditions draining when you initiate the drain. Y
 
 ### Aggressive and Safe Draining Options
 
-There are two drain modes: aggressive and safe.
+When you configure the upgrade strategy for the cluster, you will be able to enable node draining. If node draining is enabled, you will be able to configure how pods are deleted and rescheduled.
 
 - **Aggressive Mode**
 
@@ -175,18 +170,6 @@ You can label nodes to be ignored by using a setting in the Rancher UI, or by us
 
 > **Note:** There is an [open issue](https://github.com/rancher/rancher/issues/24172) in which nodes labeled to be ignored can get stuck in an updating state.
 
-### Labeling Nodes to be Ignored with the Rancher UI
-
-To add a node that is ignored by Rancher,
-
-1. From the **Global** view, click the **Settings** tab.
-1. Go to the `ignore-node-name` setting and click **&#8942; > Edit.**
-1. Enter a name that Rancher will use to ignore nodes. All nodes with this name will be ignored.
-1. Click **Save.**
-
-**Result:** Rancher will not wait to register nodes with this name. In the UI, the node will displayed with a grayed-out status. The node is still part of the cluster and can be listed with `kubectl`.
-
-If the setting is changed afterward, the ignored nodes will continue to be hidden.
 
 ### Labeling Nodes to be Ignored with kubectl
 
@@ -202,4 +185,4 @@ If the label is added before the node is added to the cluster, the node will not
 
 If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
 
-If you delete the node from the Rancher server using the Rancher UI or API, the node will not be removed from the cluster if the `nodeName` is listed in the Rancher settings under `ignore-node-name`.
+If you delete the node from the Rancher server using the Rancher UI or API, the node will not be removed from the cluster if the `nodeName` is listed in the Rancher settings in the Rancher API under `v3/settings/ignore-node-name`.

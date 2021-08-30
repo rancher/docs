@@ -1,10 +1,6 @@
 ---
 title: 6. Generate and View Traffic
 weight: 7
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/view-traffic
-  - /rancher/v2.6/en/istio/setup/view-traffic
-  - /rancher/v2.6/en/istio/v2.5/setup/view-traffic
 ---
 
 This section describes how to view the traffic that is being managed by Istio.
@@ -17,8 +13,8 @@ The Istio overview page provides a link to the Kiali dashboard. From the Kiali d
 
 To see the traffic graph,
 
-1. From the **Cluster Explorer**, select **Istio** from the nav dropdown.
-1. Click the **Kiali** link on the Istio **Overview** page.
+1. In the cluster where Istio is installed, click **Istio** in the left navigation bar.
+1. Click the **Kiali** link.
 1. Click on **Graph** in the side nav.
 1. Change the namespace in the **Namespace** dropdown to view the traffic for each namespace. 
 

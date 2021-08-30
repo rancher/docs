@@ -3,10 +3,6 @@ title: Monitoring and Alerting
 shortTitle: Monitoring/Alerting
 description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 weight: 13
-aliases:
-  - /rancher/v2.5/en/dashboard/monitoring-alerting
-  - /rancher/v2.5/en/dashboard/notifiers
-  - /rancher/v2.5/en/cluster-admin/tools/monitoring/
 ---
 
 Using the `rancher-monitoring` application, you can quickly deploy leading open-source monitoring and alerting solutions onto your cluster.
@@ -55,7 +51,7 @@ These default exporters automatically scrape metrics for CPU and memory from all
 
 ### Default Alerts
 
-The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboard/accessing-the-alertmanager-ui) and click **Expand all groups.**
+The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboard/accessing-the-alertmanager-ui) and click **Expand all groups**.
 
 ### Components Exposed in the Rancher UI
 
@@ -69,11 +65,9 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 
 - [Enable monitoring](./guides/enable-monitoring)
 - [Uninstall monitoring](./guides/uninstall)
-- [Monitoring Rancher apps](./guides/monitoring-rancher-apps)
 - [Monitoring workloads](./guides/monitoring-workloads)
 - [Customizing Grafana dashboards](./guides/customize-grafana)
 - [Persistent Grafana dashboards](./guides/persist-grafana)
-- [Setting up metrics for horizontal pod autoscaling](./guides/hpa)
 - [Debugging high memory usage](./guides/memory-usage)
 - [Migrating from Monitoring V1 to V2](./guides/migrating)
 

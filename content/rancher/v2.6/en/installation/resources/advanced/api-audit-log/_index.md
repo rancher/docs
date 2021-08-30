@@ -1,9 +1,6 @@
 ---
 title: Enabling the API Audit Log to Record System Events
 weight: 4
-aliases:
-  - /rancher/v2.6/en/installation/options/api-audit-log/
-  - /rancher/v2.6/en/installation/api-auditing
 ---
 
 You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.
@@ -60,13 +57,6 @@ The `rancher-audit-log` container is part of the `rancher` pod in the `cattle-sy
 ```bash
 kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 ```
-
-#### Rancher Web GUI
-
-1. From the context menu, select **Cluster: local > System**.
-1. From the main navigation bar, choose **Resources > Workloads.** Find the `cattle-system` namespace. Open the `rancher` workload by clicking its link.
-1. Pick one of the `rancher` pods and select **&#8942; > View Logs**.
-1. From the **Logs** drop-down, select `rancher-audit-log`.
 
 #### Shipping the Audit Log
 

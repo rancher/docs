@@ -32,12 +32,12 @@
       {{end}}
       {{ if in .Dir "/pipelines" }}
       <div class="alert alert-notice">
-          <strong>As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a>, available in Cluster Explorer.</strong>
+          <strong>As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a>, available in the Rancher UI by clicking <b>☰ > Continuous Delivery</b>.</strong>
       </div>
       {{end}}
       {{ if in .Dir "/multi-cluster-apps" }}
       <div class="alert alert-notice">
-          <strong>As of Rancher v2.5, multi-cluster apps are deprecated.</strong> We now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a> for deploying apps across clusters. It is available in Cluster Explorer.
+          <strong>As of Rancher v2.5, multi-cluster apps are deprecated.</strong> We now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a> for deploying apps across clusters. It is available in the Rancher UI by clicking <b>☰ > Continuous Delivery</b>.
       </div>
       {{end}}
       {{ if in .Dir "os/v1.x" }}

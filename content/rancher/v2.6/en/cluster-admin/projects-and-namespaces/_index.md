@@ -2,11 +2,6 @@
 title: Projects and Kubernetes Namespaces with Rancher
 description: Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces
 weight: 2032
-aliases:
-  - /rancher/v2.6/en/concepts/projects/
-  - /rancher/v2.6/en/tasks/projects/
-  - /rancher/v2.6/en/tasks/projects/create-project/
-  - /rancher/v2.6/en/tasks/projects/create-project/  
 ---
 
 A namespace is a Kubernetes concept that allows a virtual cluster within a cluster, which is useful for dividing the cluster into separate "virtual clusters" that each have their own access control and resource quotas.
@@ -97,7 +92,7 @@ If you require another level of organization beyond the **Default** project, you
 
 When troubleshooting, you can view the `system` project to check if important namespaces in the Kubernetes system are working properly. This easily accessible project saves you from troubleshooting individual system namespace containers.
 
-To open it, open the **Global** menu, and then select the `system` project for your cluster.
+To open it, open the cluster view and click **Cluster > Projects/Namespaces**. This view shows all of the namespaces in the `system` project.
 
 The `system` project:
 
@@ -130,10 +125,10 @@ This section describes how to create a new project with a name and with optional
 
 ### 1. Name a New Project
 
-1. From the **Global** view, choose **Clusters** from the main menu. From the **Clusters** page, open the cluster from which you want to create a project.
-
-1. From the main menu, choose **Projects/Namespaces**. Then click **Add Project**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster you want to project in and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Click **Create Project**.
 1. Enter a **Project Name**.
 
 ### 2. Optional: Select a Pod Security Policy
@@ -159,9 +154,9 @@ By default, your user is added as the project `Owner`.
 
 To add members:
 
-1. Click **Add Member**.
-1. From the **Name** combo box, search for a user or group that you want to assign project access. Note: You can only search for groups if external authentication is enabled.
-1. From the **Role** drop-down, choose a role. For more information, refer to the [documentation on project roles.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/)
+1. In the **Members** tab, click **Add**.
+1. From the **Select Member** field, search for a user or group that you want to assign project access. Note: You can only search for groups if external authentication is enabled.
+1. In the **Project Permissions** section, choose a role. For more information, refer to the [documentation on project roles.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/)
 
 ### 4. Optional: Add Resource Quotas
 
@@ -169,8 +164,8 @@ Resource quotas limit the resources that a project (and its namespaces) can cons
 
 To add a resource quota,
 
-1. Click **Add Quota**.
-1. Select a Resource Type. For more information, see [Resource Quotas.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/).
+1. In the **Resource Quotas** tab, click **Add Resource**.
+1. Select a **Resource Type**. For more information, see [Resource Quotas.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/).
 1. Enter values for the **Project Limit** and the **Namespace Default Limit**.
 1. **Optional:** Specify **Container Default Resource Limit**, which will be applied to every container started in the project. The parameter is recommended if you have CPU or Memory limits set by the Resource Quota. It can be overridden on per an individual namespace or a container level. For more information, see [Container Default Resource Limit]({{<baseurl>}}/rancher/v2.6/en/project-admin/resource-quotas/)
 1. Click **Create**.
@@ -181,14 +176,3 @@ To add a resource quota,
 | ----------------------- | -------------------------------------------------------------------------------------------------------- |
 | Project Limit           | The overall resource limit for the project.                                                              |
 | Namespace Default Limit | The default resource limit available for each namespace. This limit is propagated to each namespace in the project when created. The combined limit of all project namespaces shouldn't exceed the project limit.  |
-
-# Switching between Clusters and Projects
-
-To switch between clusters and projects, use the **Global** drop-down available in the main menu.
-
-![Global Menu]({{<baseurl>}}/img/rancher/global-menu.png)
-
-Alternatively, you can switch between projects and clusters using the main menu.
-
-- To switch between clusters, open the **Global** view and select **Clusters** from the main menu. Then open a cluster.
-- To switch between projects, open a cluster, and then select **Projects/Namespaces** from the main menu. Select the link for the project that you want to open.

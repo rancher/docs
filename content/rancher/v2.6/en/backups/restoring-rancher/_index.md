@@ -1,9 +1,6 @@
 ---
 title: Restoring Rancher
 weight: 2
-aliases:
-  - /rancher/v2.x/en/installation/backups/restores
-  - /rancher/v2.x/en/backups/restoring-rancher
 ---
 
 A restore is performed by creating a Restore custom resource. 
@@ -25,10 +22,12 @@ A restore is performed by creating a Restore custom resource.
 
 ### Create the Restore Custom Resource
 
-1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
-1. Click **Restore.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the Rancher server.
+1. In the left navigation bar, click **Rancher Backups > Restores**.
+1. Click **Create**.
 1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples)
-1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Restore YAML.
+1. For using the YAML editor, we can click **Create > Create from YAML**. Enter the Restore YAML.
 
     ```yaml
     apiVersion: resources.cattle.io/v1
@@ -50,7 +49,7 @@ A restore is performed by creating a Restore custom resource.
 
       For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples)
 
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** The rancher-operator scales the rancher deployment back up once the restore completes. The resources are restored in this order:
 

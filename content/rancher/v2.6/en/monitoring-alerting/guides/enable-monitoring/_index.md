@@ -25,16 +25,15 @@ For more information about the default limits, see [this page.](./configuration/
 
 # Install the Monitoring Application
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
-
 ### Enable Monitoring for use without SSL
 
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
-1. Click **Apps.**
-1. Click the `rancher-monitoring` app.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. Click **Apps & Marketplace**.
+1. Click **Charts**.
+1. Click the **Monitoring** app.
 1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
-1. Scroll to the bottom of the Helm chart README and click **Install.**
+1. Scroll to the bottom of the Helm chart README and click **Install**.
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
@@ -43,11 +42,14 @@ For more information about the default limits, see [this page.](./configuration/
 1. Follow the steps on [this page]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/secrets/) to create a secret in order for SSL to be used for alerts.
  - The secret should be created in the `cattle-monitoring-system` namespace. If it doesn't exist, create it first.
  - Add the `ca`, `cert`, and `key` files to the secret.
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
-1. Click **Apps.**
-1. Click the `rancher-monitoring` app.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to enable monitoring for use with SSL and click **Explore**.
+1. Click **Apps & Marketplace > Charts**.
+1. Click **Monitoring**.
+1. Click **Install** or **Update**, depending on whether you have already installed Monitoring.
+1. Check the box for **Customize Helm options before install** and click **Next**.
 1. Click **Alerting**.
-1. Click **Additional Secrets** and add the secrets created earlier.
+1. In the **Additional Secrets** field, add the secrets created earlier.
  
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
@@ -62,18 +64,3 @@ key.pfx=`base64-content`
 ```
 
 Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
-
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
-1. Click **Apps.**
-1. Click the `rancher-monitoring` app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
-1. Scroll to the bottom of the Helm chart README and click **Install.**
-
-**Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
-
-{{% /tab %}}
-
-{{% /tabs %}}

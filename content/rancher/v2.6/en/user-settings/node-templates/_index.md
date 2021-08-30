@@ -10,9 +10,10 @@ When you provision a cluster [hosted by an infrastructure provider]({{<baseurl>}
 
 When you create a node template, it is bound to your user profile. Node templates cannot be shared among users. You can delete stale node templates that you no longer user from your user settings.
 
-## Creating a Node Template from User Settings
+## Creating a Node Template
 
-1. From your user settings, select **User Avatar > Node Templates**.
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
 1. Click **Add Template**.
 1. Select one of the cloud providers available. Then follow the instructions on screen to configure the template.
 
@@ -20,8 +21,9 @@ When you create a node template, it is bound to your user profile. Node template
 
 ## Updating a Node Template
 
-1. From your user settings, select **User Avatar > Node Templates**.
-1. Choose the node template that you want to edit and click the **&#8942; > Edit**.
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
+1. Choose the node template that you want to edit and click the **⋮ > Edit**.
 
 	   > **Note:** The default `active` [node drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use [cloud credentials]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials).
 
@@ -33,8 +35,9 @@ When you create a node template, it is bound to your user profile. Node template
 
 When creating new node templates from your user settings, you can clone an existing template and quickly update its settings rather than creating a new one from scratch. Cloning templates saves you the hassle of re-entering access keys for the cloud provider.
 
-1. From your user settings, select **User Avatar > Node Templates**.
-1. Find the template you want to clone. Then select **&#8942; > Clone**.
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
+1. Find the template you want to clone. Then select **⋮ > Clone**.
 1. Complete the rest of the form.
 
 **Result:** The template is cloned and configured. You can use the template later when you [provision a node pool cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools).
@@ -43,5 +46,6 @@ When creating new node templates from your user settings, you can clone an exist
 
 When you no longer use a node template, you can delete it from your user settings.
 
-1. From your user settings, select **User Avatar > Node Templates**.
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
 1. Select one or more template from the list. Then click **Delete**. Confirm the delete when prompted.

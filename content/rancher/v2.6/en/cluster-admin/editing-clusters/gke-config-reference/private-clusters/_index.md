@@ -1,8 +1,6 @@
 ---
 title: Private Clusters
 weight: 2
-aliases:
-  - /rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/gke/private-clusters
 ---
 
 In GKE, [private clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept) are clusters whose nodes are isolated from inbound and outbound traffic by assigning them internal IP addresses only. Private clusters in GKE have the option of exposing the control plane endpoint as a publicly accessible address or as a private address. This is different from other Kubernetes providers, which may refer to clusters with private control plane endpoints as "private clusters" but still allow traffic to and from nodes. You may want to create a cluster with private nodes, with or without a public control plane endpoint, depending on your organization's networking and security requirements. A GKE cluster provisioned from Rancher can use isolated nodes by selecting "Private Cluster" in the Cluster Options (under "Show advanced options"). The control plane endpoint can optionally be made private by selecting "Enable Private Endpoint".

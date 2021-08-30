@@ -56,12 +56,12 @@ The a vSphere cluster is created in Rancher depends on the Rancher version.
 
 ### 1. Create your cloud credentials
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
-1. Click **Add Cloud Credential.**
-1. Enter a name for the cloud credential.
-1. In the **Cloud Credential Type** field, select **vSphere**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click **VMware vSphere**.
 1. Enter your vSphere credentials. For help, refer to **Account Access** in the [node template configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/)
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
 
@@ -69,28 +69,33 @@ The a vSphere cluster is created in Rancher depends on the Rancher version.
 
 Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) for vSphere will allow Rancher to provision new nodes in vSphere. Node templates can be reused for other clusters.
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Node Templates.**
-1. Click **Add Template.**
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
+1. Click **Create**.
+1. Click **Add Template**.
+1. Click **vSphere**.
 1. Fill out a node template for vSphere. For help filling out the form, refer to the vSphere node template [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/).
+1. Click **Create**.
 
 ### 3. Create a cluster with node pools using the node template
 
 Use Rancher to create a Kubernetes cluster in vSphere.
 
-1. Navigate to **Clusters** in the **Global** view.
-1. Click **Add Cluster** and select the **vSphere** infrastructure provider.
-1. Enter a **Cluster Name.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **VMware vSphere**.
+1. Enter a **Cluster Name** and use your vSphere cloud credentials. Click **Continue**.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.** For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
+1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options**. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
 1. If you want to dynamically provision persistent storage or other infrastructure later, you will need to enable the vSphere cloud provider by modifying the cluster YAML file. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
 1. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices for assigning Kubernetes roles to the nodes, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-pools)
 1. Review your options to confirm they're correct. Then click **Create**.
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

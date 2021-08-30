@@ -1,8 +1,6 @@
 ---
 title: Persistent Grafana Dashboards
 weight: 6
-aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/persist-grafana
 ---
 
 To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.
@@ -29,11 +27,11 @@ To use a premade dashboard, go to [https://grafana.com/grafana/dashboards](https
 
 To use your own dashboard:
 
-1. Click on the link to open Grafana. From the **Cluster Explorer,** click **Cluster Explorer > Monitoring.**
+1. Click on the link to open Grafana. On the cluster detail page, click **Monitoring**.
 1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     > **Note:** Regardless of who has the password, in order to access the Grafana instance, you still need at least the <b>Manage Services</b> or <b>View Monitoring</b> permissions in the project that Rancher Monitoring is deployed into. Alternative credentials can also be supplied on deploying or upgrading the chart.
-1. Create a dashboard using Grafana's UI. Once complete, go to the dashboard's settings by clicking on the gear icon in the top navigation menu. In the left navigation menu, click **JSON Model.**
+1. Create a dashboard using Grafana's UI. Once complete, go to the dashboard's settings by clicking on the gear icon in the top navigation menu. In the left navigation menu, click **JSON Model**.
 1. Copy the JSON data structure that appears.
 
 ### 2. Create a ConfigMap using the Grafana JSON model
@@ -61,8 +59,9 @@ To specify that you would like Grafana to watch for ConfigMaps across all namesp
 
 To create the ConfigMap in the Rancher UI,
 
-1. Go to the Cluster Explorer.
-1. Click **Core > ConfigMaps**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to see the visualizations and click **Explore**.
+1. Click **More Resources > Core > ConfigMaps**.
 1. Click **Create**.
 1. Set up the key-value pairs similar to the example above. When entering the value for `<dashboard-name>.json`, click **Read from File** to upload the JSON data model as the value.
 1. Click **Create**.
@@ -90,12 +89,15 @@ Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboar
 > - The monitoring application needs to be installed.
 > - You must have the cluster-admin ClusterRole permission.
 
-1. Open the Grafana dashboard. From the **Cluster Explorer,** click **Cluster Explorer > Monitoring.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to configure the Grafana namespace and click **Explore**.
+1. In the left navigation bar, click **Monitoring**.
+1. Click **Grafana**.
 1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     > **Note:** Regardless of who has the password, cluster administrator permission in Rancher is still required to access the Grafana instance.
 1. Go to the dashboard that you want to persist. In the top navigation menu, go to the dashboard settings by clicking the gear icon.
-1. In the left navigation menu, click **JSON Model.**
+1. In the left navigation menu, click **JSON Model**.
 1. Copy the JSON data structure that appears.
 1. Create a ConfigMap in the `cattle-dashboards` namespace. The ConfigMap needs to have the label `grafana_dashboard: "1"`. Paste the JSON into the ConfigMap in the format shown in the example below:
 

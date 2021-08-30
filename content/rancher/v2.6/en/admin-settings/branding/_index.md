@@ -7,7 +7,7 @@ Rancher v2.6 introduced the ability to customize Rancher’s branding and naviga
 
 - [Changing Brand Settings](#changing-brand-settings)
 - [Brand Configuration](#brand-configuration)
-- [Custom Navigation Links in Cluster Explorer](#custom-navigation-links-in-cluster-explorer)
+- [Custom Navigation Links](#custom-navigation-links)
 - [Link Configuration](#link-configuration)
 - [Link Examples](#link-examples)
 
@@ -17,7 +17,7 @@ Rancher v2.6 introduced the ability to customize Rancher’s branding and naviga
 
 To configure the brand settings, 
 
-1. Click **≡ > Global settings**.
+1. Click **☰ > Global settings**.
 2. Click **Branding**.
 
 # Brand Configuration
@@ -42,9 +42,12 @@ You can override the primary color used throughout the UI with a custom color of
 
 Display a custom fixed banner in the header, footer, or both.
 
-# Custom Navigation Links in Cluster Explorer
+# Custom Navigation Links
 
-The links in the left navigation menu in Cluster Explorer can be customized.
+In this section, you'll learn how to configure the links in the left navigation bar of the **Cluster Dashboard**. To get to the cluster dashboard, 
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want custom navigation links and click **Explore**.
 
 It can be useful to add a link for quick access to services installed on a cluster. For example, you could add a link to the Kiali UI for clusters with Istio installed, or you could add a link to the Grafana UI for clusters with Rancher monitoring installed.
 
@@ -56,17 +59,18 @@ Links can be created at the top level and multiple links can be grouped together
 
 > **Prerequisite:** You will need to have at least cluster member or project member permissions.
 
-1. In Rancher, go to the Cluster Explorer view where you would like to add custom navigation links.
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you would like to add custom navigation links and click **Explore**.
 2. In the top navigation menu, click **🔍 (Resource Search)**.
 3. Type **Nav** and click **Nav Links**.
-4. Click **Create from YAML.**
+4. Click **Create from YAML**.
 5. The simplest way to create a navigation link is to add these fields:
 
         name: linkname
         toURL: https://example.com
 
     For more details on setting up links, including optional fields, see [Link Configuration.](#link-configuration)
-6. Click **Create.**
+6. Click **Create**.
 
 # Link Configuration
 

@@ -1,9 +1,6 @@
 ---
 title: 1. Enable Istio in the Cluster
 weight: 1
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster
-  - /rancher/v2.6/en/istio/v2.5/setup/enable-istio-in-cluster
 ---
 
 >**Prerequisites:**
@@ -13,8 +10,11 @@ aliases:
 >- To install Istio on an RKE2 cluster, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/rke2/)
 >- To install Istio in a cluster where project network isolation is enabled, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/canal-and-project-network)
 
-1. From the **Cluster Explorer**, navigate to available **Charts** in **Apps & Marketplace** 
-1. Select the Istio chart from the rancher provided charts
+1.  Click **☰ > Cluster Management**.
+1. Go to the where you want to enable Istio and click **Explore**.
+1. Click **Apps & Marketplace**.
+1. Click **Charts**.
+1. Click **Istio**.
 1. If you have not already installed your own monitoring app, you will be prompted to install the rancher-monitoring app. Optional: Set your Selector or Scrape config options on rancher-monitoring app install. 
 1. Optional: Configure member access and [resource limits]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/resources/) for the Istio components. Ensure you have enough resources on your worker nodes to enable Istio.
 1. Optional: Make additional configuration changes to values.yaml if needed.

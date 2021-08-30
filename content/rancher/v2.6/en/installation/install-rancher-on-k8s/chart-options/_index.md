@@ -1,11 +1,6 @@
 ---
 title: Rancher Helm Chart Options
 weight: 1
-aliases:
-  - /rancher/v2.6/en/installation/options/
-  - /rancher/v2.6/en/installation/options/chart-options/
-  - /rancher/v2.6/en/installation/options/helm2/helm-rancher/chart-options/
-  - /rancher/v2.6/en/installation/resources/chart-options
 ---
 
 This page is a configuration reference for the Rancher Helm chart.
@@ -67,7 +62,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `replicas`                     | 3                                                     | `int` - Number of replicas of Rancher pods                                                                                                        |
 | `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
 | `restrictedAdmin` | `false` | `bool` - When this option is set to true, the initial Rancher user has restricted access to the local Kubernetes cluster to prevent privilege escalation. For more information, see the section about the [restricted-admin role.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#restricted-admin) |
-| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system Docker images, e.g., http://registry.example.com/                   |
+| `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system container images, e.g., http://registry.example.com/                   |
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
 | `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.  |
 

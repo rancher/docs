@@ -5,22 +5,20 @@ weight: 3
 
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+> This section assumes familiarity with how monitoring components work together. For more information, see [this section.](../../../how-monitoring-works)
 
 
 ### Creating PrometheusRules in the Rancher UI
-
-_Available as of v2.5.4_
 
 > **Prerequisite:** The monitoring application needs to be installed.
 
 To create rule groups in the Rancher UI,
 
-1. Click **Cluster Explorer > Monitoring** and click **Prometheus Rules.** 
-1. Click **Create.**
-1. Enter a **Group Name.**
+1. Go to the cluster where you want to create rule groups. Click **Monitoring** and click **Prometheus Rules**. 
+1. Click **Create**.
+1. Enter a **Group Name**.
 1. Configure the rules. In Rancher's UI, we expect a rule group to contain either alert rules or recording rules, but not both. For help filling out the forms, refer to the configuration options below.
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** Alerts can be configured to send notifications to the receiver(s).
 
@@ -42,11 +40,6 @@ Use the label selector field `ruleSelector` in the Prometheus object to define t
 For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
 # Configuration
-
-{{% tabs %}}
-{{% tab "Rancher v2.5.4" %}}
-Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling out forms in the Rancher UI.
-
 
 ### Rule Group
 
@@ -79,9 +72,3 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 | Time Series Name |   The name of the time series to output to. Must be a valid metric name.  |
 | PromQL Expression |  The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and the result will be recorded as a new set of time series with the metric name as given by 'record'.  For more information about expressions, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression)  |
 | Labels |   Labels to add or overwrite before storing the result.     |
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.3" %}}
-For Rancher v2.5.0-v2.5.3, PrometheusRules must be configured in YAML. For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
-{{% /tab %}}
-{{% /tabs %}}

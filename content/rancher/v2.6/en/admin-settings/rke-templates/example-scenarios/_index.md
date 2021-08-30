@@ -52,7 +52,7 @@ The template owner has several options for allowing the cluster creators to upgr
 
 - **Specify Kubernetes v1.15 on the template:** The template owner can create a new template revision that specifies Kubernetes v1.15. Then the owner of each cluster that uses that template can upgrade their cluster to a new revision of the template. This template upgrade allows the cluster creator to upgrade Kubernetes to v1.15 on their cluster.
 - **Allow any Kubernetes version on the template:** When creating a template revision, the template owner can also mark the the Kubernetes version as **Allow User Override** using the switch near that setting on the Rancher UI. This will allow clusters that upgrade to this template revision to use any version of Kubernetes.
-- **Allow the latest minor Kubernetes version on the template:** The template owner can also create a template revision in which the Kubernetes version is defined as **Latest v1.14 (Allows patch version upgrades).** This means clusters that use that revision will be able to get patch version upgrades, but major version upgrades will not be allowed.
+- **Allow the latest minor Kubernetes version on the template:** The template owner can also create a template revision in which the Kubernetes version is defined as **Latest v1.14 (Allows patch version upgrades)**. This means clusters that use that revision will be able to get patch version upgrades, but major version upgrades will not be allowed.
 
 # Allowing Other Users to Control and Share a Template
 

@@ -1,14 +1,9 @@
 ---
 title: Helm Charts in Rancher
 weight: 11
-aliases:
-  - /rancher/v2.x/en/helm-charts/apps-marketplace
-  - /rancher/v2.6/en/catalog/
-  - /rancher/v2.6/en/catalog/apps
-  - /rancher/v2.6/en/catalog/launching-apps
 ---
 
-In this section, you'll learn how to manage Helm chart repositories and applications in Rancher. Helm chart repositories are managed using the "Apps & Marketplace" feature found in the Cluster Explorer. It contains a simple catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Helm applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
+In this section, you'll learn how to manage Helm chart repositories and applications in Rancher. Helm chart repositories are managed using **Apps & Marketplace**. It uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Helm applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
 
 ### Charts
 
@@ -22,7 +17,7 @@ The charts page contains all Rancher, Partner, and Custom Charts.
 
 All three types are deployed and managed in the same way.
 
-> Apps managed by the Cluster Manager should continue to be managed only by the Cluster Manager, and apps managed with the Cluster Explorer must be managed only by the Cluster Explorer.
+> Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) should continue to be managed only by the Cluster Manager, and apps managed with <b>Apps & Marketplace</b> in the new UI must be managed only by <b>Apps & Marketplace</b>.
 
 ### Repositories
 
@@ -33,7 +28,7 @@ These items represent helm repositories, and can be either traditional helm endp
 
 ### Helm Compatibility
 
-The Cluster Explorer only supports Helm 3 compatible charts.
+Only Helm 3 compatible charts are supported.
 
 
 ### Deployment and Upgrades

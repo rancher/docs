@@ -4,10 +4,6 @@ shortTitle: Logging
 description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
 metaDescription: "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster."
 weight: 15
-aliases:
-  - /rancher/v2.6/en/dashboard/logging
-  - /rancher/v2.6/en/logging/v2.5
-  - /rancher/v2.6/en/cluster-admin/tools/logging 
 ---
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
@@ -33,16 +29,15 @@ For an overview of the changes in v2.5, see [this section.](/{{<baseurl>}}/ranch
 
 You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
 
-1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer**.
-1. Click **Apps**.
-1. Click the `rancher-logging` app.
+1. Go to the cluster where you want to install logging and click **Apps & Marketplace**.
+1. Click the **Logging** app.
 1. Scroll to the bottom of the Helm chart README and click **Install**.
 
 **Result:** The logging app is deployed in the `cattle-logging-system` namespace.
 
 # Uninstall Logging
 
-1. From the **Cluster Explorer**, click **Apps & Marketplace**.
+1. Go to the cluster where you want to install logging and click **Apps & Marketplace**.
 1. Click **Installed Apps**.
 1. Go to the `cattle-logging-system` namespace and check the boxes for `rancher-logging` and `rancher-logging-crd`.
 1. Click **Delete**.
@@ -62,7 +57,11 @@ Rancher logging has two roles, `logging-admin` and `logging-view`. For more info
 
 # Configuring Logging Custom Resources
 
-To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging**.
+To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, 
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to configure logging custom resources and click **Explore**.
+1. In the left navigation bar, click **Logging**.
 
 ### Flows and ClusterFlows
 
@@ -105,26 +104,27 @@ By default, Rancher collects logs for control plane components and node componen
 
 ### The `cattle-logging` Namespace Being Recreated
 
-If your cluster previously deployed logging from the Cluster Manager UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
+If your cluster previously deployed logging from the global view in the legacy Rancher UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
 
 The solution is to delete all `clusterloggings.management.cattle.io` and `projectloggings.management.cattle.io` custom resources from the cluster specific namespace in the management cluster.
 The existence of these custom resources causes Rancher to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
 
 The cluster namespace matches the cluster ID, so we need to find the cluster ID for each cluster.
 
-1. In your web browser, navigate to your cluster(s) in either the Cluster Manager UI or the Cluster Explorer UI.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster you want to get the ID of and click **Explore**.
 2. Copy the `<cluster-id>` portion from one of the URLs below. The `<cluster-id>` portion is the cluster namespace name.
 
 ```bash
 # Cluster Management UI
 https://<your-url>/c/<cluster-id>/
 
-# Cluster Explorer UI (Dashboard)
+# Cluster Dashboard
 https://<your-url>/dashboard/c/<cluster-id>/
 ```
 
 Now that we have the `<cluster-id>` namespace, we can delete the CRs that cause `cattle-logging` to be continually recreated.
-*Warning:* ensure that logging, the version installed from the Cluster Manager UI, is not currently in use.
+*Warning:* ensure that logging, the version installed from the global view in the legacy Rancher UI, is not currently in use.
 
 ```bash
 kubectl delete clusterloggings.management.cattle.io -n <cluster-id>

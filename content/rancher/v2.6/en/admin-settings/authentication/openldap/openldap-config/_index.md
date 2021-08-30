@@ -17,9 +17,9 @@ For further details on configuring OpenLDAP, refer to the [official documentatio
 
 ## Background: OpenLDAP Authentication Flow 
  
-1. When a user attempts to login with his LDAP credentials, Rancher creates an initial bind to the LDAP server using a service account with permissions to search the directory and read user/group attributes. 
-2. Rancher then searches the directory for the user by using a search filter based on the provided username and configured attribute mappings. 
-3. Once the user has been found, he is authenticated with another LDAP bind request using the user's DN and provided password. 
+1. When a user attempts to login with LDAP credentials, Rancher creates an initial bind to the LDAP server using a service account with permissions to search the directory and read user/group attributes. 
+2. Rancher then searches the directory for the user by using a search filter based on the provided username and configured attribute mappings.
+3. Once the user has been found, they are authenticated with another LDAP bind request using the user's DN and provided password. 
 4. Once authentication succeeded, Rancher then resolves the group memberships both from the membership attribute in the user's object and by performing a group search based on the configured user mapping attribute.
 
 # OpenLDAP Server Configuration

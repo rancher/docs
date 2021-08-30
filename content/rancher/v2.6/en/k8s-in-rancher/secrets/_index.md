@@ -1,9 +1,6 @@
 ---
 title: Secrets
 weight: 3062
-aliases:
-  - /rancher/v2.6/en/tasks/projects/add-a-secret
-  - /rancher/v2.6/en/k8s-in-rancher/secrets   
 ---
 
 [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/#overview-of-secrets) store sensitive data like passwords, tokens, or keys. They may contain one or more key value pairs.
@@ -16,19 +13,17 @@ Mounted secrets will be updated automatically unless they are mounted as subpath
 
 # Creating Secrets
 
-When creating a secret, you can make it available for any deployment within a project, or you can limit it to a single namespace.
-
-1. From the **Global** view, select the project containing the namespace(s) where you want to add a secret.
-
-2. From the main menu, select **Resources > Secrets**. Click **Add Secret**.
-
-3. Enter a **Name** for the secret.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to add a secret and click **Explore**.
+1. Click **More Resources > Core > Secrets**.
+1. Click **Create**.
+1. Select the type of secret you want to create.
+1. Select a **Namespace** for the secret.
+1. Enter a **Name** for the secret.
 
     >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your secret must have a unique name among all secrets within your workspace.
 
-4. Select a **Scope** for the secret. You can either make the registry available for the entire project or a single namespace.
-
-5. From **Secret Values**, click **Add Secret Value** to add a key value pair. Add as many values as you need.
+1. From **Data**, click **Add** to add a key-value pair. Add as many values as you need.
 
     >**Tip:** You can add multiple key value pairs to the secret by copying and pasting.
     >

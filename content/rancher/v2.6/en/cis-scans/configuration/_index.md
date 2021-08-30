@@ -1,13 +1,15 @@
 ---
 title: Configuration
 weight: 3
-aliases:
-  - /rancher/v2.6/en/cis-scans/v2.5/configuration
 ---
 
 This configuration reference is intended to help you manage the custom resources created by the `rancher-cis-benchmark` application. These resources are used for performing CIS scans on a cluster, skipping tests, setting the test profile that will be used during a scan, and other customization.
 
-To configure the custom resources, go to the **Cluster Explorer** in the Rancher UI. In dropdown menu in the top left corner, click **Cluster Explorer > CIS Benchmark.**
+To configure the custom resources, go to the **Cluster Dashboard** To configure the CIS scans,
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to configure CIS scans and click **Explore**.
+1. In the left navigation bar, click **CIS Benchmark**.
 
 ### Scans
 

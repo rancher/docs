@@ -1,8 +1,6 @@
 ---
 title: Cluster Configuration
 weight: 2025
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/editing-clusters
 ---
 
 After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster.

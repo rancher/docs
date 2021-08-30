@@ -3,9 +3,6 @@ title: Launching Kubernetes on Existing Custom Nodes
 description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements 
 metaDescription: "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements"
 weight: 2225
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
-  - /rancher/v2.6/en/cluster-provisioning/custom-clusters/
 ---
 
 When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-prem bare-metal servers, on-prem virtual machines, or in any node hosted by an infrastructure provider.
@@ -42,21 +39,19 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 ### 2. Create the Custom Cluster
 
-1. From the **Clusters** page, click **Add Cluster**.
-
-2. Choose **Custom**.
-
-3. Enter a **Cluster Name**.
-
-4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-
-5. Use **Cluster Options** to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.**
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **Custom**.
+1. Enter a **Cluster Name**.
+1. Use **Cluster Configuration** section to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options**.
 
     >**Using Windows nodes as Kubernetes workers?**
     >
     >- See [Enable the Windows Support Option]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/).
     >- The only Network Provider available for clusters with Windows support is Flannel.
 6.	<a id="step-6"></a>Click **Next**.
+
+4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
 7.	From **Node Role**, choose the roles that you want filled by a cluster node. You must provision at least one node for each role: `etcd`, `worker`, and `control plane`. All three roles are required for a custom cluster to finish provisioning. For more information on roles, see [this section.]({{<baseurl>}}/rancher/v2.6/en/overview/concepts/#roles-for-nodes-in-kubernetes-clusters)
 
@@ -77,9 +72,9 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

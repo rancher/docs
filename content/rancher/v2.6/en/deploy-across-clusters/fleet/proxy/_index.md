@@ -29,12 +29,12 @@ When adding Fleet agent environment variables for the proxy, replace <PROXY_IP> 
 
 To add the environment variable to an existing cluster,
 
-1. In the Rancher UI, go to the cluster view for Kubernetes cluster that needs to use a proxy.
-1. Click **&#8942; > Edit**.
-1. Click **Advanced Options.**
-1. Click **Add Environment Variable.**
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster where you want to add environment variables and click **⋮ > Edit Config**.
+1. Click **Advanced Options**.
+1. Click **Add Environment Variable**.
 1. Enter the [required environment variables](#required-environment-variables)
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The Fleet agent works behind a proxy.
 

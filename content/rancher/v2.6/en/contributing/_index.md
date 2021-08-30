@@ -1,8 +1,6 @@
 ---
 title: Contributing to Rancher
 weight: 27
-aliases:
-  - /rancher/v2.6/en/faq/contributing/
 ---
 
 This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.

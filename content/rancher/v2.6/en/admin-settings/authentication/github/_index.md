@@ -1,8 +1,6 @@
 ---
 title: Configuring GitHub
 weight: 1116
-aliases:
-    - /rancher/v2.6/en/tasks/global-configuration/authentication/github/
 ---
 
 In environments using GitHub, you can configure Rancher to allow sign on using GitHub credentials.
@@ -10,12 +8,10 @@ In environments using GitHub, you can configure Rancher to allow sign on using G
 >**Prerequisites:** Read [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
 1.  Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
-
-2.	From the **Global** view, select **Security > Authentication** from the main menu.
-
-3.	Select **GitHub**.
-
-4.	Follow the directions displayed to **Setup a GitHub Application**. Rancher redirects you to GitHub to complete registration.
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **GitHub**.
+1.	Follow the directions displayed to set up a GitHub Application. Rancher redirects you to GitHub to complete registration.
 
 	>**What's an Authorization Callback URL?**
 	>
@@ -23,15 +19,15 @@ In environments using GitHub, you can configure Rancher to allow sign on using G
 
 	>When you use external authentication, authentication does not actually take place in your application. Instead, authentication takes place externally (in this case, GitHub). After this external authentication completes successfully, the Authorization Callback URL is the location where the user re-enters your application.
 
-5. From GitHub, copy the **Client ID** and **Client Secret**. Paste them into Rancher.
+1. From GitHub, copy the **Client ID** and **Client Secret**. Paste them into Rancher.
 
 	>**Where do I find the Client ID and Client Secret?**
 	>
 	>From GitHub, select Settings > Developer Settings > OAuth Apps. The Client ID and Client Secret are displayed prominently.
 
-6.	Click **Authenticate with GitHub**.
+1.	Click **Authenticate with GitHub**.
 
-7.	Use the **Site Access** options to configure the scope of user authorization.
+1.	Use the **Site Access** options to configure the scope of user authorization.
 
 	-	**Allow any valid Users**
 
@@ -45,7 +41,7 @@ In environments using GitHub, you can configure Rancher to allow sign on using G
 
 		Only GitHub users or groups added to the Authorized Users and Organizations can log in to Rancher.
 		<br/>
-8.	Click **Save**.
+1.	Click **Enable**.
 
 **Result:**
 

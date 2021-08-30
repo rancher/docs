@@ -13,12 +13,6 @@ This page covers the following topics:
 
 > This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.6/en/overview/concepts) page.
 
-## Switching between Clusters
-
-To switch between clusters, use the drop-down available in the navigation bar.
-
-Alternatively, you can switch between projects and clusters directly in the navigation bar. Open the **Global** view and select **Clusters** from the main menu. Then select the name of the cluster you want to open.
-
 ## Managing Clusters in Rancher
 
 After clusters have been [provisioned into Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/), [cluster owners]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster. 

@@ -6,7 +6,7 @@ weight: 2120
 
 You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/cluster-drivers/) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
 
-## Prerequisites
+# Prerequisites Outside of Rancher
 
 >**Note**
 >Deploying to ACK will incur charges.
@@ -23,31 +23,34 @@ You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK)
 
 4. In Alibaba Cloud, create an [SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.html). This key is used to access nodes in the Kubernetes cluster.
 
-## Create an ACK Cluster
+# Prerequisite in Rancher
 
-1. From the **Clusters** page, click **Add Cluster**.
+You will need to enable the Alibaba ACK cluster driver:
 
+1. Click **☰ > Cluster Management**.
+1. Click **Drivers**.
+1. In the **Cluster Drivers** tab, go to the **Alibaba ACK** cluster driver and click **⋮ > Activate**.
+
+When the cluster driver is finished downloading, you will be able to create Alibaba ACK clusters in Rancher.
+
+# Create an ACK Cluster
+
+1. Click **☰ > Cluster Management**.
+1. From the **Clusters** page, click **Create**.
 1. Choose **Alibaba ACK**.
-
 1. Enter a **Cluster Name**.
-
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-
 1. Configure **Account Access** for the ACK cluster. Choose the geographical region in which to build your cluster, and input the access key that was created as part of the prerequisite steps.
-
 1. Click **Next: Configure Cluster**, then choose cluster type, the version of Kubernetes and the availability zone.
-
 1. If you choose **Kubernetes** as the cluster type, Click **Next: Configure Master Nodes**, then complete the **Master Nodes** form.
-
 1. Click **Next: Configure Worker Nodes**, then complete the **Worker Nodes** form.
-
 1. Review your options to confirm they're correct. Then click **Create**.
 
 **Result:** 
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
-You can access your cluster after its state is updated to **Active.**
+You can access your cluster after its state is updated to **Active**.
 
 **Active** clusters are assigned two Projects: 
 

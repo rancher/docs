@@ -1,8 +1,6 @@
 ---
 title: Best Practices Guide
 weight: 4
-aliases:
-  - /rancher/v2.6/en/best-practices/v2.5
 ---
 
 The purpose of this section is to consolidate best practices for Rancher implementations. This also includes recommendations for related technologies, such as Kubernetes, Docker, containers, and more. The objective is to improve the outcome of a Rancher implementation using the operational experience of Rancher and its customers.

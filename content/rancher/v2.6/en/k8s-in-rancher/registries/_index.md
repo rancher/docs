@@ -2,10 +2,6 @@
 title: Kubernetes Registry and Docker Registry
 description: Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the Rancher UI
 weight: 3063
-aliases:
-  - /rancher/v2.6/en/tasks/projects/add-registries/
-  - /rancher/v2.6/en/k8s-in-rancher/registries
-  - /rancher/v2.6/en/k8s-resources/k8s-in-rancher/registries  
 ---
 Registries are Kubernetes secrets containing credentials used to authenticate with [private Docker registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). 
 
@@ -22,17 +18,16 @@ Currently, deployments pull the private registry credentials automatically only 
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
-1. From the **Global** view, select the project containing the namespace(s) where you want to add a registry.
-
-1. From the main menu, click **Resources > Secrets > Registry Credentials.** 
-
-1. Click **Add Registry.**
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to add a registry and click **Explore**.
+1. In the left navigation lick **More Resources > Core > Secrets**.
+1. Click **Create**.
+1. Click **Registry**.
 1. Enter a **Name** for the registry.
 
     >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
 
-1. Select a **Scope** for the registry. You can either make the registry available for the entire project or a single namespace.
+1. Select a namespace for the registry.
 
 1. Select the website that hosts your private registry. Then enter credentials that authenticate with the registry. For example, if you use DockerHub, provide your DockerHub username and password.
 
@@ -52,12 +47,14 @@ You can deploy a workload with an image from a private registry through the Ranc
 
 To deploy a workload with an image from your private registry,
 
-1. Go to the project view,
-1. Click **Resources > Workloads.**
-1. Click **Deploy.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to deploy a workload and click **Explore**.
+1. Click **Workload**.
+1. Click **Create**.
+1. Select the type of workload you want to create.
 1. Enter a unique name for the workload and choose a namespace.
-1. In the **Docker Image** field, enter the URL of the path to the Docker image in your private registry. For example, if your private registry is on Quay.io, you could use `quay.io/<Quay profile name>/<Image name>`.
-1. Click **Launch.**
+1. In the **Container Image** field, enter the URL of the path to the image in your private registry. For example, if your private registry is on Quay.io, you could use `quay.io/<Quay profile name>/<Image name>`.
+1. Click **Create**.
 
 **Result:** Your deployment should launch, authenticate using the private registry credentials you added in the Rancher UI, and pull the Docker image that you specified.
 

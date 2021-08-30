@@ -1,13 +1,6 @@
 ---
 title: Rollbacks
 weight: 3
-aliases:
-  - /rancher/v2.x/en/upgrades/rollbacks
-  - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks
-  - /rancher/v2.x/en/upgrades/ha-server-rollbacks
-  - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks
-  - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks
-  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks
 ---
 
 - [Rolling Back to Rancher v2.5.0+](#rolling-back-to-rancher-v2-5-0)
@@ -16,7 +9,7 @@ aliases:
 
 # Rolling Back to Rancher v2.5.0+
 
-To roll back to Rancher v2.5.0+, use the `rancher-backup` application and restore Rancher from backup.
+To roll back to Rancher v2.5.0+, use the **Rancher Backups** application and restore Rancher from backup.
 
 Rancher has to be started with the lower/previous version after a rollback.
 
@@ -29,7 +22,7 @@ A restore is performed by creating a Restore custom resource.
 
 ### Scale the Rancher Deployment to 0
 
-1. In the upper left corner, click **≡ > local**.
+1. In the upper left corner, click **☰ > local**.
 1. From the menu on the left, click **Workload**.
 1. Under **Workload**, click on **Deployments**.
 1. At the top, click on the dropdown to adjust the filter. Select **cattle-system** as the filter.
@@ -39,10 +32,11 @@ A restore is performed by creating a Restore custom resource.
 
 ### Create the Restore Custom Resource
 
-1. In the **Cluster Explorer,** go to the dropdown menu in the upper left corner and click **Rancher Backups.**
-1. Click **Restore.**
-1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the  [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples)
-1. For using the YAML editor, we can click **Create > Create from YAML.** Enter the Restore YAML.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Rancher Backups > Restore**.
+1. Click **Create**.
+1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the  [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples) The following is an example Restore custom resource:
 
     ```yaml
     apiVersion: resources.cattle.io/v1
@@ -64,7 +58,7 @@ A restore is performed by creating a Restore custom resource.
 
       For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/examples/)
 
-1. Click **Create.**
+1. Click **Create**.
 
 **Result:** The rancher-operator scales the rancher deployment back up once the restore completes. The resources are restored in this order:
 

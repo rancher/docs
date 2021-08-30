@@ -10,7 +10,7 @@ When a Route is changed, the Prometheus Operator regenerates the Alertmanager cu
 
 For more information about configuring routes, refer to the [official Alertmanager documentation.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/#3-how-alertmanager-works)
 
 - [Route Restrictions](#route-restrictions)
 - [Route Configuration](#route-configuration)
@@ -20,13 +20,13 @@ For more information about configuring routes, refer to the [official Alertmanag
 
 # Route Restrictions
 
-	- Alertmanager proxies alerts for Prometheus based on a configuration. It has receivers and a routing tree.
-		- Receivers: One or more notification providers (Slack, PagerDuty, etc.) to send alerts to.
-		- Routing tree: A set of routes that filter alerts to certain receivers based on labels.
-		- Alerting drivers proxy alerts for Alertmanager to non-native receivers, such as Microsoft Teams and SMS.
-		- can configure a routing tree to send and then continue. We only support routing trees with one root and then a depth of one more, for a depth two tree. But technically a ‘continue’ route lets you make the tree deeper.
-		- the receiver is for one or more notification providers. So if you know every alert for slack should also go to pager duty, you can put both configs in the same receiver.
-		- we now support broad SMS, not just Aliyun. 
+Alertmanager proxies alerts for Prometheus based on its receivers and a routing tree that filters alerts to certain receivers based on labels.
+
+Alerting drivers proxy alerts for Alertmanager to non-native receivers, such as Microsoft Teams and SMS.
+
+In the Rancher UI for configuring routes and receivers, you can configure routing trees with one root and then a depth of one more level, for a tree with a depth of two. But if you use a `continue` route when configuring Alertmanager directly, you can make the tree deeper.
+
+Each receiver is for one or more notification providers. So if you know that every alert for Slack should also go to PagerDuty, you can configure both in the same receiver.
 
 # Route Configuration
 
@@ -36,8 +36,6 @@ Labels should be used for identifying information that can affect the routing of
 
 Annotations should be used for information that does not affect who receives the alert, such as a runbook url or error message.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.4+" %}}
 
 ### Receiver
 The route needs to refer to a [receiver](#receiver-configuration) that has already been configured.
@@ -66,9 +64,3 @@ The **Match Regex** field refers to a set of regex-matchers used to identify whi
 match_re:
   [ <labelname>: <regex>, ... ]
 ```
-
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in this [example.](./examples/#alertmanager-config)
-{{% /tab %}}
-{{% /tabs %}}

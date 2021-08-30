@@ -27,7 +27,7 @@ To get the tenant ID, go to the Azure Portal, then click **Azure Active Director
 
 ### Subscription ID
 
-To get the subscription ID, click **All Services** in the left navigation bar. Then click **Subscriptions.** Go to the name of the subscription that you want to associate with your Kubernetes cluster and copy the **Subscription ID.**
+To get the subscription ID, click **All Services** in the left navigation bar. Then click **Subscriptions**. Go to the name of the subscription that you want to associate with your Kubernetes cluster and copy the **Subscription ID**.
 
 ### Client ID
 
@@ -39,7 +39,7 @@ You can't retrieve the client secret value after it is created, so if you don't 
 
 To get a new client secret, go to the Azure Portal, then click **Azure Active Directory**, then click **App registrations,** then click the name of the service principal.
 
-Then click **Certificates & secrets** and click **New client secret.** Click **Add.** Then copy the **Value** of the new client secret.
+Then click **Certificates & secrets** and click **New client secret**. Click **Add**. Then copy the **Value** of the new client secret.
 
 ### Environment
 

@@ -44,38 +44,40 @@ Provision the host according to the [installation requirements]({{<baseurl>}}/ra
 
 Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
-1. From the **Clusters** page, click **Add Cluster**.
+1. In the upper left corner, click **≡ > Cluster Management.**
 
-2. Choose **Custom**.
+1. From the **Clusters** page, click **Create.**
 
-3. Enter a **Cluster Name**.
+1. Click **Custom.**
 
-4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Enter a **Cluster Name**.
 
-5. Use **Cluster Options** to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.**
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+
+1. Use **Cluster Options** to choose the version of Kubernetes, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options.**
 
     >**Using Windows nodes as Kubernetes workers?**
     >
     >- See [Enable the Windows Support Option]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/).
     >- The only Network Provider available for clusters with Windows support is Flannel.
-6.	<a id="step-6"></a>Click **Next**.
+1.	<a id="step-6"></a>Click **Next**.
 
-7.	From **Node Role**, choose the roles that you want filled by a cluster node. You must provision at least one node for each role: `etcd`, `worker`, and `control plane`. All three roles are required for a custom cluster to finish provisioning. For more information on roles, see [this section.]({{<baseurl>}}/rancher/v2.5/en/overview/concepts/#roles-for-nodes-in-kubernetes-clusters)
+1.	From **Node Role**, choose the roles that you want filled by a cluster node. You must provision at least one node for each role: `etcd`, `worker`, and `control plane`. All three roles are required for a custom cluster to finish provisioning. For more information on roles, see [this section.]({{<baseurl>}}/rancher/v2.5/en/overview/concepts/#roles-for-nodes-in-kubernetes-clusters)
 
 	>**Notes:**
 	>
     >- Using Windows nodes as Kubernetes workers? See [this section]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/).
 	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{<baseurl>}}/rancher/v2.5/en/admin-settings/agent-options/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
+1.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{<baseurl>}}/rancher/v2.5/en/admin-settings/agent-options/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
 
-9. Copy the command displayed on screen to your clipboard.
+1. Copy the command displayed on screen to your clipboard.
 
-10. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+1. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
 
 	>**Note:** Repeat steps 7-10 if you want to dedicate specific hosts to specific node roles. Repeat the steps as many times as needed.
 
-11. When you finish running the command(s) on your Linux host(s), click **Done**.
+1. When you finish running the command(s) on your Linux host(s), click **Done**.
 
 **Result:** 
 

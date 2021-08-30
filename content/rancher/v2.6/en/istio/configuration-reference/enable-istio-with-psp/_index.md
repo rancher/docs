@@ -1,11 +1,6 @@
 ---
 title: Enable Istio with Pod Security Policies
 weight: 1
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp
-  - /rancher/v2.6/en/istio/legacy/setup/enable-istio-in-cluster/enable-istio-with-psp
-  - /rancher/v2.6/en/istio/v2.5/setup/enable-istio-in-cluster/enable-istio-with-psp
-  - /rancher/v2.6/en/istio/v2.5/configuration-reference/enable-istio-with-psp
 ---
 
 If you have restrictive Pod Security Policies enabled, then Istio may not be able to function correctly, because it needs certain permissions in order to install itself and manage pod infrastructure. In this section, we will configure a cluster with PSPs enabled for an Istio install, and also set up the Istio CNI plugin. 
@@ -29,16 +24,18 @@ An unrestricted PSP allows Istio to be installed.
 
 Set the PSP to `unrestricted` in the project where is Istio is installed, or the project where you plan to install Istio.
 
-1. From the cluster view of the **Cluster Manager,** select **Projects/Namespaces.**
-1. Find the **Project: System** and select the **&#8942; > Edit**.
-1. Change the Pod Security Policy option to be unrestricted, then click **Save.**
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Find the **Project: System** and select the **⋮ > Edit Config**.
+1. Change the Pod Security Policy option to be unrestricted, then click **Save**.
 
 ### 2. Enable the CNI
 
 When installing or upgrading Istio through **Apps & Marketplace,**
 
-1. Click **Components.**
-2. Check the box next to **Enabled CNI.**
+1. Click **Components**.
+2. Check the box next to **Enabled CNI**.
 3. Finish installing or upgrading Istio.
 
 The CNI can also be enabled by editing the `values.yaml`:

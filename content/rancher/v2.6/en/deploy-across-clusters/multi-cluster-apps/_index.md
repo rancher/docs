@@ -3,7 +3,7 @@ title: Multi-cluster Apps
 weight: 2
 ---
 
-> As of Rancher v2.5, we now recommend using [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) for deploying apps across clusters.
+> As of Rancher v2.5, multi-cluster apps are deprecated. We now recommend using [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) for deploying apps across clusters.
 
 Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
 
@@ -28,30 +28,33 @@ After creating a multi-cluster application, you can program a global DNS entry t
 
 # Prerequisites
 
+### Permissions
+
 To create a multi-cluster app in Rancher, you must have at least one of the following permissions:
 
 - A [project-member role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-roles) in the target cluster(s), which gives you the ability to create, read, update, and delete the workloads
 - A [cluster owner role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) for the clusters(s) that include the target project(s)
 
+### Enable Legacy Features
+
+Because multi-cluster apps were deprecated and replaced with Fleet in Rancher v2.5, you will need to enable multi-cluster apps with a feature flag.
+
+1. In the upper left corner, click **☰ > Global Settings**.
+1. Click **Feature Flags**.
+1. Go to the `legacy` feature flag and click **Activate**.
+
 # Launching a Multi-Cluster App
 
-1. From the **Global** view, choose **Apps** in the navigation bar. Click **Launch**.
-
-2. Find the application that you want to launch, and then click **View Details**.
-
-3.  (Optional) Review the detailed descriptions, which are derived from the Helm chart's `README`.
-
-4. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is named as `<MULTI-CLUSTER_APPLICATION_NAME>-<PROJECT_ID>`.
-
-5. Select a **Template Version**.
-
-6. Complete the [multi-cluster applications specific configuration options](#multi-cluster-app-configuration-options) as well as the [application configuration options](#application-configuration-options).
-
-7. Select the **Members** who can [interact with the multi-cluster application](#members).
-
-8. Add any [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects) that would change the configuration for specific project(s) from the default application configuration answers.
-
-7. Review the files in the **Preview** section. When you're satisfied, click **Launch**.
+1. In the upper left corner, click **☰ > Multi-cluster Apps**.
+1. Click **Launch**.
+1. Find the application that you want to launch.
+1.  (Optional) Review the detailed descriptions, which are derived from the Helm chart's `README`.
+1. Under **Configuration Options** enter a **Name** for the multi-cluster application. By default, this name is also used to create a Kubernetes namespace in each [target project](#targets) for the multi-cluster application. The namespace is named as `<MULTI-CLUSTER_APPLICATION_NAME>-<PROJECT_ID>`.
+1. Select a **Template Version**.
+1. Complete the [multi-cluster applications specific configuration options](#multi-cluster-app-configuration-options) as well as the [application configuration options](#application-configuration-options).
+1. Select the **Members** who can [interact with the multi-cluster application](#members).
+1. Add any [custom application configuration answers](#overriding-application-configuration-options-for-specific-projects) that would change the configuration for specific project(s) from the default application configuration answers.
+1. Review the files in the **Preview** section. When you're satisfied, click **Launch**.
 
 **Result**: Your application is deployed to your chosen namespace. You can view the application status from the project's:
 
@@ -145,9 +148,11 @@ The creator and any users added with the access-type "owner" to a multi-cluster 
 
 One of the benefits of using a multi-cluster application as opposed to multiple individual applications of the same type, is the ease of management. Multi-cluster applications can be cloned, upgraded or rolled back.
 
-1. From the **Global** view, choose **Apps** in the navigation bar.
+> **Prerequisite:** The `legacy` feature flag needs to be enabled.
 
-2. Choose the multi-cluster application you want to take one of these actions on and click the **&#8942;**. Select one of the following options:
+1. In the upper left corner, click **☰ > Multi-cluster Apps**.
+
+2. Choose the multi-cluster application you want to take one of these actions on and click the **⋮**. Select one of the following options:
 
    * **Clone**: Creates another multi-cluster application with the same configuration. By using this option, you can easily duplicate a multi-cluster application.
    * **Upgrade**: Upgrade your multi-cluster application to change some part of the configuration. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrades) can be modified if you have the correct [access type](#members).
@@ -155,8 +160,10 @@ One of the benefits of using a multi-cluster application as opposed to multiple 
 
 # Deleting a Multi-Cluster Application
 
-1. From the **Global** view, choose **Apps** in the navigation bar.
+> **Prerequisite:** The `legacy` feature flag needs to be enabled.
 
-2. Choose the multi-cluster application you want to delete and click the **&#8942; > Delete**. When deleting the multi-cluster application, all applications and namespaces are deleted in all of the target projects.
+1. In the upper left corner, click **☰ > Multi-cluster Apps**.
+
+2. Choose the multi-cluster application you want to delete and click the **⋮ > Delete**. When deleting the multi-cluster application, all applications and namespaces are deleted in all of the target projects.
 
    > **Note:** The applications in the target projects, that are created for a multi-cluster application, cannot be deleted individually. The applications can only be deleted when the multi-cluster application is deleted.
