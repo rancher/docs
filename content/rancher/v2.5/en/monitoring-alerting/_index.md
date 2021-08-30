@@ -106,6 +106,8 @@ For more details on how to upgrade wins on existing Windows hosts, refer to the 
 
 # Known Issues
 
-There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend to setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
+There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
 
 For tips on debugging high memory usage, see [this page.](./memory-usage)
+
+It is common that as the amount of metrics and deployments being monitors grows, Prometheus's memory and CPU needs outgrow the limits initially placed on them.  If you see Prometheus commonly crashing, try increasing the allocated memory and setting alerts for when resource usage of Monitoring pods approaches limits placed on them.
