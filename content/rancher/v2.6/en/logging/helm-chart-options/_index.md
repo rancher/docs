@@ -73,7 +73,7 @@ If you're already using a cloud provider's own logging solution such as AWS Clou
 
 In Rancher logging, `SystemdLogPath` must be configured for K3s and RKE2 Kubernetes distributions. 
 
-K3s and RKE Kubernetes distributions log to journald, which is the subsystem of systemd that is used for logging. In order to collect these logs, the `systemdLogPath` needs to be defined. While the `run/log/journal` directory is used by default, some Linux distributions do not default to this path. For example, Ubuntu defaults to `var/log/journal`. To determine your `systemdLogPath` configuration, see [steps below](#Steps-for-Systemd-Configuration).
+K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of systemd that is used for logging. In order to collect these logs, the `systemdLogPath` needs to be defined. While the `run/log/journal` directory is used by default, some Linux distributions do not default to this path. For example, Ubuntu defaults to `var/log/journal`. To determine your `systemdLogPath` configuration, see [steps below](#Steps-for-Systemd-Configuration).
 
 **Steps for Systemd Configuration:** <br />
 
