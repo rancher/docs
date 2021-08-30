@@ -27,20 +27,23 @@ There are several ways to share templates:
 
 To allow users or groups to create clusters using your template, you can give them the basic **User** access level for the template.
 
-1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the template that you want to share and click the **&#8942; > Edit.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Under **RKE1 configuration**, click **RKE Templates**.
+1. Go to the template that you want to share and click the **⋮ > Edit**.
 1. In the **Share Template** section, click on **Add Member**.
 1. Search in the **Name** field for the user or group you want to share the template with.
 1. Choose the **User** access type.
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The user or group can create clusters using the template.
 
 ### Sharing Templates with All Users
 
-1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the template that you want to share and click the **&#8942; > Edit.**
-1. Under **Share Template,** click **Make Public (read-only).** Then click **Save.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the left navigation menu, click **RKE1 Configuration > RKE Templates**.
+1. Go to the template that you want to share and click the **⋮ > Edit**.
+1. Under **Share Template,** check the box for **Make Public (read-only)**.
+1. Click **Save**.
 
 **Result:** All users in the Rancher setup can create clusters using the template.
 
@@ -52,10 +55,11 @@ In that case, you can give users the Owner access type, which allows another use
 
 To give Owner access to a user or group,
 
-1. From the **Global** view, click **Tools > RKE Templates.**
-1. Go to the RKE template that you want to share and click the **&#8942; > Edit.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Under **RKE1 configuration**, click **RKE Templates**.
+1. Go to the RKE template that you want to share and click the **⋮ > Edit**.
 1. Under **Share Template**, click on **Add Member** and search in the **Name** field for the user or group you want to share the template with.
-1. In the **Access Type** field, click **Owner.**
-1. Click **Save.**
+1. In the **Access Type** field, click **Owner**.
+1. Click **Save**.
 
 **Result:** The user or group has the Owner access type, and can modify, share, or delete the template.

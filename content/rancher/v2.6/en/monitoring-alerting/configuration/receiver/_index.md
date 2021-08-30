@@ -2,12 +2,6 @@
 title: Receiver Configuration
 shortTitle: Receivers
 weight: 1
-aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager
-  - rancher/v2.5/en/monitoring-alerting/legacy/notifiers/
-  - /rancher/v2.5/en/cluster-admin/tools/notifiers
-  - /rancher/v2.5/en/cluster-admin/tools/alerts
-  - /rancher/v2.5/en/monitoring-alerting/configuration/alertmanager
 ---
 
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
@@ -43,10 +37,10 @@ _Available as of v2.5.4_
 
 To create notification receivers in the Rancher UI,
 
-1. Click **Cluster Explorer > Monitoring** and click **Receiver.** 
+1. Go to the cluster where you want to create receivers. Click **Monitoring** and click **Receiver**. 
 2. Enter a name for the receiver.
 3. Configure one or more providers for the receiver. For help filling out the forms, refer to the configuration options below.
-4. Click **Create.**
+4. Click **Create**.
 
 **Result:** Alerts can be configured to send notifications to the receiver(s).
 
@@ -158,10 +152,9 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
 
-1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
-1. Click **Apps**.
+1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Apps & Marketplace**.
 1. Click the **Alerting Drivers** app.
-1. Click the **Helm Deploy Options** tab
+1. Click the **Helm Deploy Options** tab.
 1. Select the **Teams** option and click **Install**.
 1. Take note of the namespace used as it will be required in a later step.
 
@@ -192,8 +185,9 @@ url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-
 
 The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
 
-1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
-1. Click **Apps**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to install `rancher-alerting-drivers` and click **Explore**.
+1. In the left navigation bar, click 
 1. Click the **Alerting Drivers** app.
 1. Click the **Helm Deploy Options** tab
 1. Select the **SMS** option and click **Install**.

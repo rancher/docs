@@ -1,9 +1,6 @@
 ---
 title: Enabling Experimental Features
 weight: 17
-aliases:
-  - /rancher/v2.6/en/installation/options/feature-flags/
-  - /rancher/v2.6/en/admin-settings/feature-flags/
 ---
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
@@ -122,17 +119,17 @@ docker run -d -p 80:80 -p 443:443 \
 
 # Enabling Features with the Rancher UI
 
-1. Go to the **Global** view and click **Settings.**
-1. Click the **Feature Flags** tab. You will see a list of experimental features.
-1. To enable a feature, go to the disabled feature you want to enable and click **&#8942; > Activate.**
+1. In the upper left corner, click **☰ > Global Settings**.
+1. Click **Feature Flags**.
+1. To enable a feature, go to the disabled feature you want to enable and click **⋮ > Activate**.
 
 **Result:** The feature is enabled.
 
 ### Disabling Features with the Rancher UI
 
-1. Go to the **Global** view and click **Settings.**
-1. Click the **Feature Flags** tab. You will see a list of experimental features.
-1. To disable a feature, go to the enabled feature you want to disable and click **&#8942; > Deactivate.**
+1. In the upper left corner, click **☰ > Global Settings**.
+1. Click **Feature Flags**. You will see a list of experimental features.
+1. To disable a feature, go to the enabled feature you want to disable and click **⋮ > Deactivate**.
 
 **Result:** The feature is disabled.
 
@@ -140,11 +137,11 @@ docker run -d -p 80:80 -p 443:443 \
 
 1. Go to `<RANCHER-SERVER-URL>/v3/features`.
 1. In the `data` section, you will see an array containing all of the features that can be turned on with feature flags. The name of the feature is in the `id` field. Click the name of the feature you want to enable.
-1. In the upper left corner of the screen, under **Operations,** click **Edit.**
-1. In the **Value** drop-down menu, click **True.**
-1. Click **Show Request.**
-1. Click **Send Request.**
-1. Click **Close.**
+1. In the upper left corner of the screen, under **Operations,** click **Edit**.
+1. In the **Value** drop-down menu, click **True**.
+1. Click **Show Request**.
+1. Click **Send Request**.
+1. Click **Close**.
 
 **Result:** The feature is enabled.
 
@@ -152,10 +149,10 @@ docker run -d -p 80:80 -p 443:443 \
 
 1. Go to `<RANCHER-SERVER-URL>/v3/features`.
 1. In the `data` section, you will see an array containing all of the features that can be turned on with feature flags. The name of the feature is in the `id` field. Click the name of the feature you want to enable.
-1. In the upper left corner of the screen, under **Operations,** click **Edit.**
-1. In the **Value** drop-down menu, click **False.**
-1. Click **Show Request.**
-1. Click **Send Request.**
-1. Click **Close.**
+1. In the upper left corner of the screen, under **Operations,** click **Edit**.
+1. In the **Value** drop-down menu, click **False**.
+1. Click **Show Request**.
+1. Click **Send Request**.
+1. Click **Close**.
 
 **Result:** The feature is disabled.

@@ -1,9 +1,6 @@
 ---
 title: Selectors and Scrape Configs
 weight: 2
-aliases:
-  - /rancher/v2.6/en/istio/v2.5/configuration-reference/selectors-and-scrape
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/node-selectors
 ---
 
 The Monitoring app sets `prometheus.prometheusSpec.ignoreNamespaceSelectors=false`, which enables monitoring across all namespaces by default.
@@ -19,13 +16,10 @@ If you would like to limit Prometheus to specific namespaces, set `prometheus.pr
 
 ### Limiting Monitoring to Specific Namespaces by Setting ignoreNamespaceSelectors to True
 
-This limits monitoring to specific namespaces. 
+To limit monitoring to specific namespaces, you will edit the `ignoreNamespaceSelectors` Helm chart option. You will configure this option when installing or upgrading the Monitoring Helm chart:
 
-1. From the **Cluster Explorer**, navigate to **Installed Apps** if Monitoring is already installed, or **Charts** in **Apps & Marketplace** 
-1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
-1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
-1. Set`prometheus.prometheusSpec.ignoreNamespaceSelectors=true`
-1. Complete install or upgrade
+1. When installing or upgrading the Monitoring Helm chart, edit the values.yml and set`prometheus.prometheusSpec.ignoreNamespaceSelectors=true`.
+1. Complete the install or upgrade.
 
 **Result:** Prometheus will be limited to specific namespaces  which means one of the following configurations will need to be set up to continue to view data in various dashboards
 
@@ -44,11 +38,12 @@ The usability tradeoff is that you have to create the service monitor or pod mon
 
 > **Prerequisite:** Define a ServiceMonitor or PodMonitor for `<your namespace>`. An example ServiceMonitor is provided below. 
 
-1. From the **Cluster Explorer**, open the kubectl shell
-1. Run `kubectl create -f <name of service/pod monitor file>.yaml` if the file is stored locally in your cluster. 
-1. Or run `cat<< EOF | kubectl apply -f -`, paste the file contents into the terminal, then run `EOF` to complete the command. 
-1. If starting a new install, **Click** the **rancher-monitoring** chart and scroll down to **Preview Yaml**. 
-1. Run `kubectl label namespace <your namespace> istio-injection=enabled` to enable the envoy sidecar injection
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the top navigation bar, open the kubectl shell.
+1. If the ServiceMonitor or PodMonitor file is stored locally in your cluster, in `kubectl create -f <name of service/pod monitor file>.yaml`.
+1. If the ServiceMonitor or PodMonitor is not stored locally, run `cat<< EOF | kubectl apply -f -`, paste the file contents into the terminal, then run `EOF` to complete the command. 
+1. Run `kubectl label namespace <your namespace> istio-injection=enabled` to enable the envoy sidecar injection.
 
 **Result:**  `<your namespace>` can be scraped by prometheus. 
 
@@ -93,11 +88,8 @@ This enables monitoring across namespaces by giving Prometheus additional scrape
 
 The usability tradeoff is that  all of Prometheus' `additionalScrapeConfigs` are maintained in a single Secret. This could make upgrading difficult if monitoring is already deployed with additionalScrapeConfigs before installing Istio. 
 
-1. If starting a new install, **Click** the **rancher-monitoring** chart, then in **Chart Options** click **Edit as Yaml**. 
-1. If updating an existing installation, click on **Upgrade**, then in **Chart Options** click **Edit as Yaml**. 
-1. If updating an existing installation, click on **Upgrade** and then **Preview Yaml**.
-1. Set`prometheus.prometheusSpec.additionalScrapeConfigs` array to the **Additional Scrape Config** provided below. 
-1. Complete install or upgrade
+1. When installing or upgrading the Monitoring Helm chart, edit the values.yml and set the `prometheus.prometheusSpec.additionalScrapeConfigs` array to the **Additional Scrape Config** provided below. 
+1. Complete the install or upgrade.
 
 **Result:** All namespaces with the `istio-injection=enabled` label will be scraped by prometheus.
 

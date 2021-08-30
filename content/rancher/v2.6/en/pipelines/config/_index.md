@@ -1,8 +1,6 @@
 ---
 title: Pipeline Configuration Reference
 weight: 1
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/pipelines/config
 ---
 
 In this section, you'll learn how to configure pipelines.
@@ -382,34 +380,29 @@ This section covers the following topics:
 
 ### Configuring Pipeline Triggers
 
-1. From the **Global** view, navigate to the project that you want to configure a pipeline trigger rule.
-
-1. Click **Resources > Pipelines.**
-
-1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
+1. From the repository for which you want to manage trigger rules, select the vertical **⋮ > Edit Config**.
 1. Click on **Show Advanced Options**.
-
 1. In the **Trigger Rules** section, configure rules to run or skip the pipeline.
 
     1.  Click **Add Rule**. In the **Value** field, enter the name of the branch that triggers the pipeline.
 
     1. **Optional:** Add more branches that trigger a build.
 
-1. Click **Done.**
+1. Click **Done**.
 
 ### Configuring Stage Triggers
 
-1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
-
-1. Click **Resources > Pipelines.**
-
-1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
+1. From the repository for which you want to manage trigger rules, select the vertical **⋮ > Edit Config**.
 1. Find the **stage** that you want to manage trigger rules, click the **Edit** icon for that stage.
-
 1. Click **Show advanced options**.
-
 1. In the **Trigger Rules** section, configure rules to run or skip the stage.
 
     1.  Click **Add Rule**.
@@ -425,16 +418,13 @@ This section covers the following topics:
 
 ### Configuring Step Triggers
 
-1. From the **Global** view, navigate to the project that you want to configure a stage trigger rule.
-
-1. Click **Resources > Pipelines.**
-
-1. From the repository for which you want to manage trigger rules, select the vertical **&#8942; > Edit Config**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
+1. From the repository for which you want to manage trigger rules, select the vertical **⋮ > Edit Config**.
 1. Find the **step** that you want to manage trigger rules, click the **Edit** icon for that step.
-
 1. Click **Show advanced options**.
-
 1. In the **Trigger Rules** section, configure rules to run or skip the step.
 
     1.  Click **Add Rule**.
@@ -480,20 +470,15 @@ When configuring a pipeline, certain [step types](#step-types) allow you to use 
 
 ### Configuring Environment Variables by UI
 
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
-
-1. Click **Resources > Pipelines.**
-
-1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
+1. From the pipeline for which you want to edit build triggers, select **⋮ > Edit Config**.
 1. Within one of the stages, find the **step** that you want to add an environment variable for, click the **Edit** icon.
-
 1. Click **Show advanced options**.
-
 1. Click **Add Variable**, and then enter a key and value in the fields that appear. Add more variables if needed.
-
 1. Add your environment variable(s) into either the script or file.
-
 1. Click **Save**.
 
 ### Configuring Environment Variables by YAML
@@ -523,18 +508,14 @@ Create a secret in the same project as your pipeline, or explicitly in the names
 
 ### Configuring Secrets by UI
 
-1. From the **Global** view, navigate to the project that you want to configure pipelines.
-
-1. Click **Resources > Pipelines.**
-
-1. From the pipeline for which you want to edit build triggers, select **&#8942; > Edit Config**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
+1. From the pipeline for which you want to edit build triggers, select **⋮ > Edit Config**.
 1. Within one of the stages, find the **step** that you want to use a secret for, click the **Edit** icon.
-
 1. Click **Show advanced options**.
-
 1. Click **Add From Secret**. Select the secret file that you want to use. Then choose a key. Optionally, you can enter an alias for the key.
-
 1. Click **Save**.
 
 ### Configuring Secrets by YAML
@@ -575,7 +556,22 @@ Variable Name           | Description
 
 # Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. These settings can be edited by selecting **Tools > Pipelines** in the navigation bar.
+After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. 
+
+### Changing Pipeline Settings
+
+> **Prerequisite:** Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
+>
+> 1. In the upper left corner, click **☰ > Global Settings**.
+> 1. Click **Feature Flags**.
+> 1. Go to the `legacy` feature flag and click **⋮ > Activate**.
+
+To edit these settings:
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster where you want to configure pipelines and click **Explore**.
+1. In the dropdown menu in the top navigation bar, select the project where you want to configure pipelines.
+1. In the left navigation bar, click **Legacy > Project > Pipelines**.
 
 - [Executor Quota](#executor-quota)
 - [Resource Quota for Executors](#resource-quota-for-executors)

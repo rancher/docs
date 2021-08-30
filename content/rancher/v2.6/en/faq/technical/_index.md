@@ -65,7 +65,7 @@ We follow the validated Docker versions for upstream Kubernetes releases. The va
 
 ### How can I access nodes created by Rancher?
 
-SSH keys to access the nodes created by Rancher can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical &#8942; button at the end of the row, and choose **Download Keys** as shown in the picture below.
+SSH keys to access the nodes created by Rancher can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical ⋮ button at the end of the row, and choose **Download Keys** as shown in the picture below.
 
 ![Download Keys]({{<baseurl>}}/img/rancher/downloadsshkeys.png)
 

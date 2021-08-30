@@ -1,20 +1,6 @@
 ---
 title: Upgrades
 weight: 2
-aliases:
-  - /rancher/v2.6/en/upgrades/upgrades
-  - /rancher/v2.6/en/installation/upgrades-rollbacks/upgrades
-  - /rancher/v2.6/en/upgrades/upgrades/ha-server-upgrade-helm-airgap
-  - /rancher/v2.6/en/upgrades/air-gap-upgrade/
-  - /rancher/v2.6/en/upgrades/upgrades/ha
-  - /rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/upgrades/ha
-  - /rancher/v2.6/en/installation/upgrades-rollbacks/upgrades/
-  - /rancher/v2.6/en/upgrades/upgrades/ha-server-upgrade-helm/
-  - /rancher/v2.6/en/installation/upgrades-rollbacks/upgrades/ha
-  - /rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades
-  - /rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha
-  - /rancher/v2.6/en/installation/upgrades-rollbacks/
-  - /rancher/v2.6/en/upgrades/
 ---
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 
@@ -74,7 +60,7 @@ Follow the steps to upgrade Rancher server:
 
 Use the [backup application]({{<baseurl>}}/rancher/v2.6/en/backups/back-up-rancher) to back up Rancher.
 
-You'll use the backup as a restoration point if something goes wrong during upgrade.
+You'll use the backup as a restore point if something goes wrong during upgrade.
 
 # 2. Update the Helm chart repository
 

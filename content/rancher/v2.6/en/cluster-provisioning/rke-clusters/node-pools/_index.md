@@ -1,8 +1,6 @@
 ---
 title: Launching Kubernetes on New Nodes in an Infrastructure Provider
 weight: 2205
-aliases:
-  - /rancher/v2.6/en/concepts/global-configuration/node-templates/
 ---
 
 Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
@@ -49,10 +47,10 @@ Administrators can control all node templates. Admins can now maintain all the n
 
 To access all node templates, an administrator will need to do the following:
 
-1. In the Rancher UI, click the user profile icon in the upper right corner.
-1. Click **Node Templates.**
+1. Click **☰ > Cluster Management**.
+1. Click **RKE1 Configuration > Node Templates**.
 
-**Result:** All node templates are listed and grouped by owner. The templates can be edited or cloned by clicking the **&#8942;.**
+**Result:** All node templates are listed. The templates can be edited or cloned by clicking the **⋮**.
 
 # Node Pools
 
@@ -92,18 +90,9 @@ Node auto-replace works on top of the Kubernetes node controller. The node contr
 
 When you create the node pool, you can specify the amount of time in minutes that Rancher will wait to replace an unresponsive node.
 
-1. In the form for creating a cluster, go to the **Node Pools** section.
+1. In the form for creating or editing a cluster, go to the **Node Pools** section.
 1. Go to the node pool where you want to enable node auto-replace. In the **Recreate Unreachable After** field, enter the number of minutes that Rancher should wait for a node to respond before replacing the node.
-1. Fill out the rest of the form for creating a cluster.
-
-**Result:** Node auto-replace is enabled for the node pool.
-
-You can also enable node auto-replace after the cluster is created with the following steps:
-
-1. From the Global view, click the Clusters tab.
-1. Go to the cluster where you want to enable node auto-replace, click the vertical &#8942; **(…)**, and click **Edit.**
-1. In the **Node Pools** section, go to the node pool where you want to enable node auto-replace. In the **Recreate Unreachable After** field, enter the number of minutes that Rancher should wait for a node to respond before replacing the node.
-1. Click **Save.**
+1. Fill out the rest of the form for creating or editing the cluster.
 
 **Result:** Node auto-replace is enabled for the node pool.
 
@@ -111,10 +100,10 @@ You can also enable node auto-replace after the cluster is created with the foll
 
 You can disable node auto-replace from the Rancher UI with the following steps:
 
-1. From the Global view, click the Clusters tab.
-1. Go to the cluster where you want to enable node auto-replace, click the vertical &#8942; **(…)**, and click **Edit.**
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to disable node auto-replace and click **⋮ > Edit Config**.
 1. In the **Node Pools** section, go to the node pool where you want to enable node auto-replace. In the **Recreate Unreachable After** field, enter 0.
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** Node auto-replace is disabled for the node pool.
 

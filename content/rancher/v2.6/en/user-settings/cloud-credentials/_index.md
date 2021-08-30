@@ -18,10 +18,11 @@ All cloud credentials are bound to the user profile of who created it. They **ca
 
 ## Creating a Cloud Credential from User Settings
 
-1. From your user settings, select **User Avatar > Cloud Credentials**.
-1. Click **Add Cloud Credential**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click a cloud credential type. The values of this dropdown is based on the `active` [node drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/) in Rancher.
 1. Enter a name for the cloud credential.
-1. Select a **Cloud Credential Type** from the drop down. The values of this dropdown is based on the `active` [node drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/) in Rancher.
 1. Based on the selected cloud credential type, enter the required values to authenticate with the infrastructure provider.
 1. Click **Create**.
 
@@ -31,8 +32,9 @@ All cloud credentials are bound to the user profile of who created it. They **ca
 
 When access credentials are changed or compromised, updating a cloud credential allows you to rotate those credentials while keeping the same node template.  
 
-1. From your user settings, select **User Avatar > Cloud Credentials**.
-1. Choose the cloud credential you want to edit and click the **&#8942; > Edit**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Choose the cloud credential you want to edit and click the **⋮ > Edit Config**.
 1. Update the credential information and click **Save**.
 
 **Result:** The cloud credential is updated with the new access credentials. All existing node templates using this cloud credential will automatically use the updated information whenever [new nodes are added]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/).
@@ -41,9 +43,10 @@ When access credentials are changed or compromised, updating a cloud credential 
 
 In order to delete cloud credentials, there must not be any node template associated with it. If you are unable to delete the cloud credential, [delete any node templates]({{<baseurl>}}/rancher/v2.6/en/user-settings/node-templates/#deleting-a-node-template) that are still associated to that cloud credential.
 
-1. From your user settings, select **User Avatar > Cloud Credentials**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
 1. You can either individually delete a cloud credential or bulk delete.
 
-	- To individually delete one, choose the cloud credential you want to edit and click the **&#8942; > Delete**.
+	- To individually delete one, choose the cloud credential you want to edit and click the **⋮ > Delete**.
 	- To bulk delete cloud credentials, select one or more cloud credentials from the list. Click **Delete**.
 1. Confirm that you want to delete these cloud credentials.

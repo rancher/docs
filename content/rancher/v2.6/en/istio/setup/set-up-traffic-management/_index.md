@@ -1,9 +1,6 @@
 ---
 title: 5. Set up Istio's Components for Traffic Management
 weight: 6
-aliases:
-  - /rancher/v2.6/en/cluster-admin/tools/istio/setup/set-up-traffic-management
-  - /rancher/v2.6/en/istio/v2.5/setup/set-up-traffic-management
 ---
 
 A central advantage of traffic management in Istio is that it allows dynamic request routing. Some common applications for dynamic request routing include canary deployments and blue/green deployments. The two key resources in Istio traffic management are *virtual services* and *destination rules*.
@@ -18,33 +15,35 @@ In this example, we take the traffic to the `reviews` service and intercept it s
 After this virtual service is deployed, we will generate traffic and see from the Kiali visualization that traffic is being routed evenly between the two versions of the service.
 
 To deploy the virtual service and destination rules for the `reviews` service,
-
-1. From the **Cluster Explorer**, select **Istio** from the nav dropdown. 
-1. Click **DestinationRule** in the side nav bar.
-1. Click **Create from Yaml**.
+1.  Click **☰ > Cluster Management**.
+1. Go to the cluster where Istio is installed and click **Explore**.
+1. In the cluster where Istio is installed, click **Istio > DestinationRules** in the left navigation bar.
+1. Click **Create**.
 1. Copy and paste the DestinationRule yaml provided below.
 1. Click **Create**.
+1. Click **Edit as YAML** and use this configuration:
 
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: reviews
-spec:
-  host: reviews
-  subsets:
-  - name: v1
-    labels:
-      version: v1
-  - name: v2
-    labels:
-      version: v2
-  - name: v3
-    labels:
-      version: v3
-```
+    ```yaml
+    apiVersion: networking.istio.io/v1alpha3
+    kind: DestinationRule
+    metadata:
+      name: reviews
+    spec:
+      host: reviews
+      subsets:
+      - name: v1
+        labels:
+          version: v1
+      - name: v2
+        labels:
+          version: v2
+      - name: v3
+        labels:
+          version: v3
+    ```
+1. Click **Create**.
 
-Then to deploy the VirtualService that provides the traffic routing that utilizes the DestinationRule
+Then to deploy the VirtualService that provides the traffic routing that utilizes the DestinationRule:
 
 1. Click **VirtualService** in the side nav bar.
 1. Click **Create from Yaml**.

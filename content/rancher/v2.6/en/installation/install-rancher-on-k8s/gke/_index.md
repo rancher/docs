@@ -31,7 +31,7 @@ The following sections describe how to launch the cloud shell from the Google Cl
 
 ### Cloud Shell
 
-To launch the shell from the [Google Cloud Console,](https://console.cloud.google.com) go to the upper-right corner of the console and click the terminal button. When hovering over the button, it is labeled **Activate Cloud Shell.**
+To launch the shell from the [Google Cloud Console,](https://console.cloud.google.com) go to the upper-right corner of the console and click the terminal button. When hovering over the button, it is labeled **Activate Cloud Shell**.
 
 ### Local Shell
 

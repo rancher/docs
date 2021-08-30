@@ -1,13 +1,9 @@
 ---
 title: Kubernetes Resources
 weight: 18
-aliases:
-  - /rancher/v2.6/en/concepts/
-  - /rancher/v2.6/en/tasks/
-  - /rancher/v2.6/en/concepts/resources/  
 ---
 
-> The <b>Cluster Explorer</b> is a new feature in Rancher v2.5 that allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI. This section will be updated to reflect the way that Kubernetes resources are handled in Rancher v2.5.
+You can view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
 
 ## Workloads
 

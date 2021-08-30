@@ -1,11 +1,6 @@
 ---
 title: Adding Users to Clusters
 weight: 2020
-aliases:
-  - /rancher/v2.6/en/tasks/clusters/adding-managing-cluster-members/
-  - /rancher/v2.6/en/k8s-in-rancher/cluster-members/
-  - /rancher/v2.6/en/cluster-admin/cluster-members
-  - /rancher/v2.6/en/cluster-provisioning/cluster-members/
 ---
 
 If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.
@@ -26,11 +21,10 @@ There are two contexts where you can add cluster members:
 
 Cluster administrators can edit the membership for a cluster, controlling which Rancher users can access the cluster and what features they can use.
 
-1. From the **Global** view, open the cluster that you want to add members to.
-
-2. From the main menu, select **Members**. Then click **Add Member**.
-
-3. Search for the user or group that you want to add to the cluster.
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster you want to add members to and click **⋮ > Edit Config**.
+1. In the **Member Roles** tab, click **Add Member**.
+1. Search for the user or group that you want to add to the cluster.
 
  	If external authentication is configured:
 
@@ -43,7 +37,7 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 
 		>**Note:** If you are logged in as a local user, external users do not display in your search results. For more information, see [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
 
-4. Assign the user or group **Cluster** roles.  
+1. Assign the user or group **Cluster** roles.  
 
 	[What are Cluster Roles?]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/)
 

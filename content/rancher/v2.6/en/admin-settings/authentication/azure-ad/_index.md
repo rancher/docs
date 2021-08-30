@@ -1,8 +1,6 @@
 ---
 title: Configuring Azure AD
 weight: 1115
-aliases:
-    - /rancher/v2.6/en/tasks/global-configuration/authentication/azure-ad/
 ---
 
 If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
@@ -180,10 +178,10 @@ From the Rancher UI, enter information about your AD instance hosted in Azure to
 
 Enter the values that you copied to your [text file](#tip).
 
-1. Log into Rancher. From the **Global** view, select **Security > Authentication**.
-
-1. Select **Azure AD**.
-
+1. Log into Rancher.
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **AzureAD**.
 1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#5-copy-azure-application-data).
 
     >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
@@ -202,6 +200,6 @@ Enter the values that you copied to your [text file](#tip).
     | Token Endpoint     | OAuth 2.0 Token Endpoint              |
     | Auth Endpoint      | OAuth 2.0 Authorization Endpoint      |
 
-1. Click **Authenticate with Azure**.
+1. Click **Enable**.
 
 **Result:** Azure Active Directory authentication is configured.

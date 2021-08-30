@@ -2,10 +2,6 @@
 title: Installing Rancher on a Single Node Using Docker
 description: For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
 weight: 2
-aliases:
-  - /rancher/v2.6/en/installation/single-node-install/
-  - /rancher/v2.6/en/installation/single-node
-  - /rancher/v2.6/en/installation/other-installation-methods/single-node
 ---
 
 Rancher can be installed by running a single Docker container.
@@ -35,7 +31,7 @@ Provision a single Linux host according to our [Requirements]({{<baseurl>}}/ranc
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
-> **Do you want to...**
+> **Do you want to..**.
 >
 > - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/proxy/)
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#custom-ca-certificate/)

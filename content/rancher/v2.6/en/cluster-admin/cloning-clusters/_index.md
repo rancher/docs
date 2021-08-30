@@ -1,8 +1,6 @@
 ---
 title: Cloning Clusters
 weight: 2035
-aliases:
-  - /rancher/v2.6/en/cluster-provisioning/cloning-clusters/
 ---
 
 If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.
@@ -98,4 +96,4 @@ Move `cluster-template.yml` into the same directory as the Rancher CLI binary. T
 
     ./rancher up --file cluster-template.yml
 
-**Result:** Your cloned cluster begins provisioning. Enter `./rancher cluster ls` to confirm. You can also log into the Rancher UI and open the **Global** view to watch your provisioning cluster's progress.
+**Result:** Your cloned cluster begins provisioning. Enter `./rancher cluster ls` to confirm.

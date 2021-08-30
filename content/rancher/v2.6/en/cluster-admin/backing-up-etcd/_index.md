@@ -100,9 +100,9 @@ In the **Advanced Cluster Options** section, there are several options available
 
 In addition to recurring snapshots, you may want to take a "one-time" snapshot. For example, before upgrading the Kubernetes version of a cluster it's best to backup the state of the cluster to protect against upgrade failure.
 
-1. In the **Global** view, navigate to the cluster that you want to take a one-time snapshot.
-
-2. Click the **&#8942; > Snapshot Now**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, navigate to the cluster where you want to take a one-time snapshot.
+1. Click **⋮ > Take Snapshot**.
 
 **Result:** Based on your [snapshot backup target](#snapshot-backup-targets), a one-time snapshot will be taken and saved in the selected backup target.
 
@@ -149,9 +149,9 @@ The `S3` backup target supports using IAM authentication to AWS API in addition 
 
 The list of all available snapshots for the cluster is available in the Rancher UI.
 
-1. In the **Global** view, navigate to the cluster that you want to view snapshots.
-
-2. Click **Tools > Snapshots** from the navigation bar to view the list of saved snapshots. These snapshots include a timestamp of when they were created.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the **Clusters** page, go to the cluster where you want to view the snapshots and click its name.
+1. Click the **Snapshots** tab to view the list of saved snapshots. These snapshots include a timestamp of when they were created.
 
 # Safe Timestamps
 

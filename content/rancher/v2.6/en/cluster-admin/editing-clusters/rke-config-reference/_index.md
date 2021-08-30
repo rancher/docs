@@ -56,11 +56,9 @@ The forms in the Rancher UI don't include all advanced options for configuring R
 
 # Editing Clusters with a Form in the Rancher UI
 
-To edit your cluster with a form in the Rancher UI, open the **Global** view, make sure the **Clusters** tab is selected, and then select **&#8942; > Edit** for the cluster that you want to edit.
-
 To edit your cluster,
 
-1. In the upper left corner, click **≡ > Cluster Management**.
+1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster you want to configure and click **⋮ > Edit Config**.
 
 
@@ -72,17 +70,10 @@ RKE clusters (also called RKE1 clusters) are edited differently than RKE2 and K3
 
 To edit an RKE config file directly from the Rancher UI,
 
-1. Click **≡ > Cluster Management.**
+1. Click **☰ > Cluster Management**.
 1. Go to the RKE cluster you want to configure. Click and click **⋮ > Edit Config**. This take you to the RKE configuration form. Note: Because cluster provisioning changed in Rancher 2.6, the **⋮ > Edit as YAML** can be used for configuring RKE2 clusters, but it can't be used for editing RKE1 configuration.
-1. Scroll down and click **Edit as YAML.**
+1. In the configuration form, scroll down and click **Edit as YAML**.
 1. Edit the RKE options under the `rancher_kubernetes_engine_config` directive.
-
-To read from an existing RKE file,
-
-1. Click **≡ > Cluster Management.**
-1. Go to the RKE cluster you want to configure. Click and click **⋮ > Edit Config**. 
-1. Click **Edit as YAML.**
-1. Click **Read from File**.
 
 # Configuration Options in the Rancher UI
 

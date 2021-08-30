@@ -1,14 +1,10 @@
 ---
 title: Migrating to Rancher v2.5 Logging
 weight: 2
-aliases:
-  - /rancher/v2.6/en/logging/v2.5/migrating
 ---
 Starting in v2.5, the logging feature available within Rancher has been completely overhauled. The [logging operator](https://github.com/banzaicloud/logging-operator) from Banzai Cloud has been adopted; Rancher configures this tooling for use when deploying logging.
 
 Among the many features and changes in the new logging functionality is the removal of project-specific logging configurations. Instead, one now configures logging at the namespace level. Cluster-level logging remains available, but configuration options differ. 
-
-> Note: The pre-v2.5 user interface is now referred to as the _Cluster Manager_. The v2.5+ dashboard is referred to as the _Cluster Explorer_.
 
 - [Installation](#installation)
   - [Terminology](#terminology)
@@ -29,7 +25,7 @@ To install logging in Rancher v2.5+, refer to the [installation instructions]({{
 
 ### Terminology
 
-In v2.5, logging configuration is centralized under a _Logging_ menu option available in the _Cluster Explorer_. It is from this menu option that logging for both cluster and namespace is configured. 
+In v2.5+, logging configuration in the **Cluster Dashboard**. To configure logging custom resources after the Logging application is installed, go to the left navigation bar and click **Logging**. It is from this menu option that logging for both cluster and namespace is configured. 
 
 > Note: Logging is installed on a per-cluster basis. You will need to navigate between clusters to configure logging for each cluster. 
 

@@ -1,12 +1,6 @@
 ---
 title: '2. Collect and Publish Images to your Private Registry'
 weight: 200
-aliases:
-  - /rancher/v2.6/en/installation/air-gap-high-availability/prepare-private-registry/
-  - /rancher/v2.6/en/installation/air-gap-single-node/prepare-private-registry/
-  - /rancher/v2.6/en/installation/air-gap-single-node/config-rancher-for-private-reg/
-  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
-  - /rancher/v2.6/en/installation/air-gap-installation/prepare-private-reg/
 ---
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
@@ -41,7 +35,7 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 ### 1. Find the required assets for your Rancher version
 
-1. Go to our [releases page,](https://github.com/rancher/rancher/releases) find the Rancher v2.x.x release that you want to install, and click **Assets.** Note: Don't use releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Go to our [releases page,](https://github.com/rancher/rancher/releases) find the Rancher v2.x.x release that you want to install, and click **Assets**. Note: Don't use releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
 2. From the release's **Assets** section, download the following files, which are required to install Rancher in an air gap environment:
 
@@ -213,7 +207,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### 1. Find the required assets for your Rancher version
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets.**
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets**.
 
 2. From the release's **Assets** section, download the following files:
 

@@ -2,8 +2,6 @@
 title: Setting up a High-availability RKE2 Kubernetes Cluster for Rancher
 shortTitle: Set up RKE2 for Rancher
 weight: 2
-aliases:
-  - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-RKE2
 ---
 _Tested on v2.5.6_
 

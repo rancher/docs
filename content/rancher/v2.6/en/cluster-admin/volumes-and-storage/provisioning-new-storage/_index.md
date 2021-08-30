@@ -14,8 +14,7 @@ If you have a pool of block storage, and you don't want to use a cloud provider,
 To provision new storage for your workloads, follow these steps:
 
 1. [Add a storage class and configure it to use your storage.](#1-add-a-storage-class-and-configure-it-to-use-your-storage)
-2. [Add a persistent volume claim that refers to the storage class.](#2-add-a-persistent-volume-claim-that-refers-to-the-storage-class)
-3. [Mount the persistent volume claim as a volume for your workload.](#3-mount-the-persistent-volume-claim-as-a-volume-for-your-workload)
+2. [Use the Storage Class for Pods Deployed with a StatefulSet.](#2-use-the-storage-class-for-pods-deployed-with-a-statefulset)
 
 ### Prerequisites
 
@@ -44,70 +43,46 @@ To use a storage provisioner that is not on the above list, you will need to use
 
 These steps describe how to set up a storage class at the cluster level.
 
-1. Go to the **Cluster Explorer** of the cluster for which you want to dynamically provision persistent storage volumes.
-
-1. From the cluster view, select `Storage > Storage Classes`. Click `Add Class`.
-
-1. Enter a `Name` for your storage class.
-
-1. From the `Provisioner` drop-down, select the service that you want to use to dynamically provision storage volumes. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it, use the `Amazon EBS Disk` provisioner.
-
-1. From the `Parameters` section, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
-
-1. Click `Save`.
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster where you want to dynamically provision persistent storage volumes and click **Explore**.
+1. Click **Storage > Storage Classes**.
+1. Click **Create**.
+1. Enter a name for your storage class.
+1. From the **Provisioner** drop-down, select the service that you want to use to dynamically provision storage volumes. For example, if you have a Amazon EC2 cluster and you want to use cloud storage for it, use the `Amazon EBS Disk` provisioner.
+1. In the **Parameters** tab, fill out the information required for the service to dynamically provision storage volumes. Each provisioner requires different information to dynamically provision storage volumes. Consult the service's documentation for help on how to obtain this information.
+1. Click **Create**.
 
 **Result:** The storage class is available to be consumed by a PVC.
 
 For full information about the storage class parameters, refer to the official [Kubernetes documentation.](https://kubernetes.io/docs/concepts/storage/storage-classes/#parameters).
 
-### 2. Add a persistent volume claim that refers to the storage class
+### 2. Use the Storage Class for Pods Deployed with a StatefulSet
 
-These steps describe how to set up a PVC in the namespace where your stateful workload will be deployed.
+StatefulSets manage the deployment and scaling of Pods while maintaining a sticky identity for each Pod. In this StatefulSet, we will configure a VolumeClaimTemplate. Each Pod managed by the StatefulSet will be deployed with a PersistentVolumeClaim based on this VolumeClaimTemplate. The PersistentVolumeClaim will refer to the StorageClass that we created. Therefore, when each Pod managed by the StatefulSet is deployed, it will be bound to dynamically provisioned storage using the StorageClass defined in its PersistentVolumeClaim.
 
-1. Go to the **Cluster Manager** to the project containing a workload that you want to add a PVC to.
-
-1. From the main navigation bar, choose **Resources > Workloads.** Then select the **Volumes** tab. Click **Add Volume**.
-
-1. Enter a **Name** for the volume claim.
-
-1. Select the namespace of the volume claim.
-
-1. In the **Source** field, click **Use a Storage Class to provision a new persistent volume.**
-
-1. Go to the **Storage Class** drop-down and select the storage class that you created.
-
-1. Enter a volume **Capacity**.
-
-1. Optional: Expand the **Customize** section and select the [Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) that you want to use.
-
-1. Click **Create.**
-
-**Result:** Your PVC is created. You can now attach it to any workload in the project.
-
-### 3. Mount the persistent volume claim as a volume for your workload
-
-Mount PVCs to workloads so that your applications can store their data.
-
-You can mount PVCs during the deployment of a workload, or following workload creation.
-
-To attach the PVC to a new workload,
-
-1. Create a workload as you would in [Deploying Workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/).
-1. For **Workload Type**, select **Stateful set of 1 pod**.
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
-1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster where you want to add use the StorageClass for a workload and click **Explore**.
+1. In the left navigation bar, click **Workload**.
+1. Click **Create**.
+1. Click **StatefulSet**.
+1. In the **Volume Claim Templates** tab, click **Add Claim Template**.
+1. Enter a name for the persistent volume.
+1. In the **StorageClass* field, select the StorageClass that will dynamically provision storage for pods managed by this StatefulSet.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
-1. Click **Launch.**
+1. Click **Launch**.
 
-**Result:** When the workload is deployed, it will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC.
+**Result:** When each Pod managed by the StatefulSet is deployed, it will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to Pod with a compatible PVC.
 
 To attach the PVC to an existing workload,
 
-1. Go to the project that has the workload that will have the PVC attached.
-1. Go to the workload that will have persistent storage and click **&#8942; > Edit.**
-1. Expand the **Volumes** section and click **Add Volume > Add a New Persistent Volume (Claim).**
-1. In the **Persistent Volume Claim** section, select the newly created persistent volume claim that is attached to the storage class.
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster where you want to add use the StorageClass for a workload and click **Explore**.
+1. In the left navigation bar, click **Workload**.
+1. Go to the workload that will use storage provisioned with the StorageClass that you cared at click **⋮ > Edit Config**.
+1. In the **Volume Claim Templates** section, click **Add Claim Template**.
+1. Enter a persistent volume name.
+1. In the **StorageClass* field, select the StorageClass that will dynamically provision storage for pods managed by this StatefulSet.
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The workload will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC. If not, Rancher will provision new persistent storage.

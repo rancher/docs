@@ -1,8 +1,6 @@
 ---
 title: API Tokens
 weight: 1
-aliases:
-  - /rancher/v2.6/en/cluster-admin/api/api-tokens/
 ---
 
 By default, some cluster-level API tokens are generated with infinite time-to-live (`ttl=0`). In other words, API tokens with `ttl=0` never expire unless you invalidate them. Tokens are not invalidated by changing a password.
@@ -16,7 +14,7 @@ To delete a token,
 
 1. Access the token you want to delete by its ID. For example, `https://<Rancher-Server-IP>/v3/tokens/kubectl-shell-user-vqkqt`
 
-1. Click **Delete.**
+1. Click **Delete**.
 
 Here is the complete list of tokens that are generated with `ttl=0`:
 

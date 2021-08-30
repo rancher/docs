@@ -1,9 +1,6 @@
 ---
 title: HTTP Proxy Configuration
 weight: 251
-aliases:
-  - /rancher/v2.6/en/installation/proxy-configuration/
-  - /rancher/v2.6/en/installation/single-node/proxy
 ---
 
 If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.

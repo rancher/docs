@@ -1,8 +1,6 @@
 ---
 title: Backups and Disaster Recovery
 weight: 5
-aliases:
-  - /rancher/v2.6/en/backups/v2.6
 ---
 
 In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
@@ -51,28 +49,19 @@ The `rancher-backup` operator can be installed from the Rancher UI, or with the 
 
 ### Installing rancher-backup with the Rancher UI
 
-1. In the Rancher UI's Cluster Manager, choose the cluster named **local**
-1. On the upper-right click on the **Cluster Explorer.**
-1. Click **Apps.**
-1. Click the `rancher-backup` operator.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the `local` cluster and click **Explore**.
+1. In the left navigation bar, **Apps & Marketplace > Charts**.
+1. Click **Rancher Backups**.
+1. Click **Install**.
 1. Optional: Configure the default storage location. For help, refer to the [configuration section.](./configuration/storage-config)
+1. Click **Install**.
 
 **Result:** The `rancher-backup` operator is installed.
 
-From the **Cluster Explorer,** you can see the `rancher-backup` operator listed under **Deployments.**
+From the **Cluster Dashboard,** you can see the `rancher-backup` operator listed under **Deployments**.
 
-To configure the backup app in Rancher, click **Cluster Explorer** in the upper left corner and click **Rancher Backups.**
-
-### Installing rancher-backup with the Helm CLI
-
-Install the backup app as a Helm chart:
-
-```
-helm repo add rancher-charts https://charts.rancher.io
-helm repo update
-helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace
-helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system
-```
+To configure the backup app in Rancher, go to the left navigation menu and click **Rancher Backups**.
 
 ### RBAC
 

@@ -15,7 +15,7 @@ weight: 4
 
 You can enable or disable Windows node logging by setting `global.cattle.windows.enabled` to either `true` or `false` in the `values.yaml`.
 
-By default, Windows node logging will be enabled if the Cluster Explorer UI is used to install the logging application on a Windows cluster.
+By default, Windows node logging will be enabled if the Cluster Dashboard UI is used to install the logging application on a Windows cluster.
 
 In this scenario, setting `global.cattle.windows.enabled` to `false` will disable Windows node logging on the cluster.
 When disabled, logs will still be collected from Linux nodes within the Windows cluster.
@@ -63,7 +63,7 @@ The following table summarizes the sources where additional logs may be collecte
 | EKS | ✓ | |
 | GKE | ✓ | |
 
-To enable hosted Kubernetes providers as additional logging sources, go to **Cluster Explorer > Logging > Chart Options** and select the **Enable enhanced cloud provider logging** option.
+To enable hosted Kubernetes providers as additional logging sources, enable **Enable enhanced cloud provider logging** option when installing or upgrading the Logging Helm chart.
 
 When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers
 

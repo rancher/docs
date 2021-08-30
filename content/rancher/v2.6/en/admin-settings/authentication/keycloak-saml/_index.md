@@ -57,13 +57,11 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 ## Configuring Keycloak in Rancher
 
 
-1.	From the **Global** view, select **Security > Authentication** from the main menu.
-
-1.	Select **Keycloak**.
-
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **Keycloak SAML**.
 1.	Complete the **Configure Keycloak Account** form. For help with filling the form, see the [configuration reference](#configuration-reference).
-
-1. After you complete the **Configure Keycloak Account** form, click **Authenticate with Keycloak**, which is at the bottom of the page.
+1. After you complete the **Configure a Keycloak Account** form, click **Enable**.
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your Rancher Keycloak configuration.
 

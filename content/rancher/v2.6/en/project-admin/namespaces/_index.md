@@ -29,11 +29,10 @@ Create a new namespace to isolate apps and resources in a project.
 
 >**Tip:** When working with project resources that you can assign to a namespace (i.e., [workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/), [certificates]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/certificates/), [ConfigMaps]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/configmaps), etc.) you can create a namespace on the fly.
 
-1. From the **Global** view, open the project where you want to create a namespace.
-
-    >**Tip:** As a best practice, we recommend creating namespaces from the project level. However, cluster owners and members can create them from the cluster level as well.
-
-1. From the main menu, select **Namespace**. The click **Add Namespace**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to create a namespace and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Go to the project where you want to add a namespace and click **Create Namespace**. Alternately, go to **Not in a Project** to create a namespace not associated with a project.
 
 1. **Optional:** If your project has [Resource Quotas]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
 
@@ -45,9 +44,10 @@ Create a new namespace to isolate apps and resources in a project.
 
 Cluster admins and members may occasionally need to move a namespace to another project, such as when you want a different team to start using the application.
 
-1. From the **Global** view, open the cluster that contains the namespace you want to move.
-
-1. From the main menu, select **Projects/Namespaces**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to move a namespace and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Go to the namespace you want to move and click **⋮ > Move**.
 
 1. Select the namespace(s) that you want to move to a different project. Then click **Move**. You can move multiple namespaces at one.
 

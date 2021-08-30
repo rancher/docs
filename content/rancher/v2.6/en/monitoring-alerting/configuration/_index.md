@@ -1,8 +1,6 @@
 ---
 title: Configuration
 weight: 5
-aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration
 ---
 
 This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.

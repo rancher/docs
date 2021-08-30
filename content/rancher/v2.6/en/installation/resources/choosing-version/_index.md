@@ -1,15 +1,13 @@
 ---
 title: Choosing a Rancher Version
 weight: 1
-aliases:
-  - /rancher/v2.6/en/installation/options/server-tags
 ---
 
 This section describes how to choose a Rancher version.
 
 For a high-availability installation of Rancher, which is recommended for production, the Rancher server is installed using a **Helm chart** on a Kubernetes cluster. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
 
-For Docker installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image.**
+For Docker installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image**.
 
 {{% tabs %}}
 {{% tab "Helm Charts" %}}

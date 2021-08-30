@@ -1,8 +1,6 @@
 ---
 title: Project Resource Quotas
 weight: 2515
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas 
 ---
 
 In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a Rancher feature that limits the resources available to a project or namespace.
@@ -20,13 +18,12 @@ Edit [resource quotas]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and
 - You want to limit the resources that a project and its namespaces can use.
 - You want to scale the resources available to a project up or down when a research quota is already in effect.
 
-1. From the **Global** view, open the cluster containing the project to which you want to apply a resource quota.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to apply a resource quota and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Find the project that you want to add a resource quota to. From that project, select **⋮ > Edit Config**.
 
-1. From the main menu, select **Projects/Namespaces**.
-
-1. Find the project that you want to add a resource quota to. From that project, select **&#8942; > Edit**.
-
-1. Expand **Resource Quotas** and click **Add Quota**. Alternatively, you can edit existing quotas.
+1. Expand **Resource Quotas** and click **Add Resource**. Alternatively, you can edit existing quotas.
 
 1. Select a Resource Type. For more information on types, see the [quota type reference.](./quota-type-reference)
 

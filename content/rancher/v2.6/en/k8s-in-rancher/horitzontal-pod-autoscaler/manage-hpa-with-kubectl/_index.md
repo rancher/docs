@@ -1,8 +1,6 @@
 ---
 title: Managing HPAs with kubectl
 weight: 3029
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl
 ---
 
 This section describes HPA management with `kubectl`. This document has instructions for how to:

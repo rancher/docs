@@ -1,13 +1,6 @@
 ---
 title: 4. Install Rancher
 weight: 400
-aliases:
-  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-system-charts/
-  - /rancher/v2.6/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
-  - /rancher/v2.6/en/installation/air-gap-single-node/install-rancher
-  - /rancher/v2.6/en/installation/air-gap/install-rancher
-  - /rancher/v2.6/en/installation/air-gap-installation/install-rancher/
-  - /rancher/v2.6/en/installation/air-gap-high-availability/install-rancher/
 ---
 
 This section is about how to deploy Rancher for your air gapped environment in a high-availability Kubernetes installation. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.

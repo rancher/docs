@@ -7,7 +7,7 @@ Before configuring Rancher to support AD FS users, you must add Rancher as a [re
 
 1. Log into your AD server as an administrative user.
 
-1. Open the **AD FS Management** console. Select **Add Relying Party Trust...** from the **Actions** menu and click **Start**.
+1. Open the **AD FS Management** console. Select **Add Relying Party Trust..**. from the **Actions** menu and click **Start**.
   
     {{< img "/img/rancher/adfs/adfs-overview.png" "">}}
 
@@ -49,11 +49,11 @@ Before configuring Rancher to support AD FS users, you must add Rancher as a [re
     {{< img "/img/rancher/adfs/adfs-add-rpt-10.png" "">}}
 
   
-1. Select **Open the Edit Claim Rules...** and click **Close**.
+1. Select **Open the Edit Claim Rules..**. and click **Close**.
   
     {{< img "/img/rancher/adfs/adfs-add-rpt-11.png" "">}}
   
-1. On the **Issuance Transform Rules** tab, click **Add Rule...**.
+1. On the **Issuance Transform Rules** tab, click **Add Rule..**..
   
     {{< img "/img/rancher/adfs/adfs-edit-cr.png" "">}}
   

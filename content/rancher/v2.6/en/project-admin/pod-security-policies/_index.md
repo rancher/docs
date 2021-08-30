@@ -14,9 +14,10 @@ You can always assign a pod security policy (PSP) to an existing project if you 
 
 ### Applying a Pod Security Policy
 
-1. From the **Global** view, find the cluster containing the project you want to apply a PSP to.
-1. From the main menu, select **Projects/Namespaces**.
-1. Find the project that you want to add a PSP to. From that project, select **&#8942; > Edit**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster where you want to move a namespace and click **Explore**.
+1. Click **Cluster > Projects/Namespaces**.
+1. Find the project that you want to add a PSP to. From that project, select **⋮ > Edit Config**.
 1. From the **Pod Security Policy** drop-down, select the PSP you want to apply to the project.
   Assigning a PSP to a project will:
 

@@ -38,7 +38,7 @@ If you need to add a trusted CA to your notifier, follow these steps:
 
 1. Create the `cattle-monitoring-system` namespace.
 1. Add your trusted CA secret to the `cattle-monitoring-system` namespace.
-1. Deploy or upgrade the `rancher-monitoring` Helm chart. In the chart options, reference the secret in **Alerting > Additional Secrets.**
+1. Deploy or upgrade the `rancher-monitoring` Helm chart. In the chart options, reference the secret in **Alerting > Additional Secrets**.
 
 **Result:** The default Alertmanager custom resource will have access to your trusted CA.
 

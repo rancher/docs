@@ -2,8 +2,6 @@
 title: The Horizontal Pod Autoscaler
 description: Learn about the horizontal pod autoscaler (HPA). How to manage HPAs and how to test them with a service deployment
 weight: 3026
-aliases:
-  - /rancher/v2.6/en/k8s-in-rancher/horizontal-pod-autoscaler
 ---
 
 The [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) is a Kubernetes feature that allows you to configure your cluster to automatically scale the services it's running up or down.
@@ -24,7 +22,7 @@ You can create, manage, and delete HPAs using the Rancher UI. From the Rancher U
 Clusters created in Rancher v2.0.7 and higher automatically have all the requirements needed (metrics-server and Kubernetes cluster configuration) to use HPA.
 ## Testing HPAs with a Service Deployment
 
-You can see your HPA's current number of replicas by going to your project and clicking **Resources > HPA.** For more information, refer to [Get HPA Metrics and Status]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui/).
+You can see your HPA's current number of replicas by going to your project and clicking **Resources > HPA**. For more information, refer to [Get HPA Metrics and Status]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-rancher-ui/).
 
 You can also use `kubectl` to get the status of HPAs that you test with your load testing tool. For more information, refer to [Testing HPAs with kubectl]
 ({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/horitzontal-pod-autoscaler/testing-hpa/).

@@ -50,12 +50,9 @@ The restore operation will work on a cluster that is not in a healthy or active 
 > - The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) and [Registered K3s Kubernetes clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-k3s-clusters)
 > - Before upgrading Kubernetes, [back up your cluster.]({{<baseurl>}}/rancher/v2.6/en/backups)
 
-1. From the **Global** view, find the cluster for which you want to upgrade Kubernetes. Select **&#8942; > Edit**.
-
-1. Expand **Cluster Options**.
-
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster you want to upgrade and click **⋮ > Edit Config**.
 1. From the **Kubernetes Version** drop-down, choose the version of Kubernetes that you want to use for the cluster.
-
 1. Click **Save**.
 
 **Result:** Kubernetes begins upgrading for the cluster.
@@ -81,10 +78,10 @@ By default, the maximum number of unavailable worker is defined as 10 percent of
 
 To change the default number or percentage of worker nodes,
 
-1. Go to the cluster view in the Rancher UI.
-1. Click **&#8942; > Edit.**
-1. In the **Advanced Options** section, go to the **Maxiumum Worker Nodes Unavailable** field. Enter the percentage of worker nodes that can be upgraded in a batch. Optionally, select **Count** from the drop-down menu and enter the maximum unavailable worker nodes as an integer.
-1. Click **Save.**
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster you want to upgrade and click **⋮ > Edit Config**.
+1. In the **Upgrade Strategy** tab, enter the **Worker Concurrency** as a fixed number or percentage. To get this number, you can take the number of nodes in your cluster and subtract the max unavailable nodes.
+1. Click **Save**.
 
 **Result:** The cluster is updated to use the new upgrade strategy.
 
@@ -94,13 +91,14 @@ By default, RKE [cordons](https://kubernetes.io/docs/concepts/architecture/nodes
 
 To enable draining each node during a cluster upgrade,
 
-1. Go to the cluster view in the Rancher UI.
-1. Click **&#8942; > Edit.**
-1. In the **Advanced Options** section, go to the **Drain nodes** field and click **Yes.**
-1. Choose a safe or aggressive drain option. For more information about each option, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/nodes/#aggressive-and-safe-draining-options)
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. On the **Clusters** page, go to the cluster you want to enable node draining and click **⋮ > Edit Config**.
+1. Click **⋮ > Edit**.
+1. In the **Upgrade Strategy** tab, go to the **Drain nodes** field and click **Yes**. Node draining is configured separately for control plane and worker nodes.
+1. Configure the options for how pods are deleted. For more information about each option, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/nodes/#aggressive-and-safe-draining-options)
 1. Optionally, configure a grace period. The grace period is the timeout given to each pod for cleaning things up, so they will have chance to exit gracefully. Pods might need to finish any outstanding requests, roll back transactions or save state to some external storage. If this value is negative, the default value specified in the pod will be used.
 1. Optionally, configure a timeout, which is the amount of time the drain should continue to wait before giving up.
-1. Click **Save.**
+1. Click **Save**.
 
 **Result:** The cluster is updated to use the new upgrade strategy.
 

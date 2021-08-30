@@ -1,8 +1,6 @@
 ---
 title: Monitoring Best Practices
 weight: 2
-aliases:
-  - /rancher/v2.6/en/best-practices/v2.5/rancher-managed/monitoring
 ---
 
 Configuring sensible monitoring and alerting rules is vital for running any production workloads securely and reliably. This is not different when using Kubernetes and Rancher. Fortunately the integrated monitoring and alerting functionality makes this whole process a lot easier.

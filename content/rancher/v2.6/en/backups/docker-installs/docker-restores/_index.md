@@ -2,10 +2,6 @@
 title: Restoring Backups—Docker Installs
 shortTitle: Restores
 weight: 3
-aliases:
-  - /rancher/v2.6/en/installation/after-installation/single-node-backup-and-restoration/
-  - /rancher/v2.6/en/backups/restorations/single-node-restoration
-  - /rancher/v2.6/en/backups/v2.5/docker-installs/docker-restores
 ---
 
 If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.

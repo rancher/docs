@@ -14,11 +14,10 @@ Assertion Consumer Service (ACS) URL: `https://<rancher-server>/v1-saml/ping/sam
 Note that these URLs will not return valid data until the authentication configuration is saved in Rancher.
 >- Export a `metadata.xml` file from your IdP Server. For more information, see the [PingIdentity documentation](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html).
 
-1.	From the **Global** view, select **Security > Authentication** from the main menu.
-
-1.	Select **PingIdentity**.
-
-1.	Complete the **Configure Ping Account** form. Ping IdP lets you specify what data store you want to use. You can either add a database or use an existing ldap server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
+1.	In the top left corner, click **☰ > Users & Authentication**.
+1. In the left navigation menu, click **Auth Provider**.
+1. Click **Ping Identity**.
+1.	Complete the **Configure a Ping Account** form. Ping IdP lets you specify what data store you want to use. You can either add a database or use an existing ldap server. For example, if you select your Active Directory (AD) server, the examples below describe how you can map AD attributes to fields within Rancher.
 
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
 
@@ -40,7 +39,7 @@ Note that these URLs will not return valid data until the authentication configu
     1. **IDP-metadata**: The `metadata.xml` file that you [exported from your IdP server](https://documentation.pingidentity.com/pingfederate/pf83/index.shtml#concept_exportingMetadata.html).
 
 
-1. After you complete the **Configure Ping Account** form, click **Authenticate with Ping**, which is at the bottom of the page.
+1. After you complete the **Configure Ping Account** form, click **Enable**.
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Ping IdP to validate your Rancher PingIdentity configuration.
 

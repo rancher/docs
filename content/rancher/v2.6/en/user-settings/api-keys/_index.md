@@ -1,9 +1,6 @@
 ---
 title: API Keys
 weight: 7005
-aliases:
-  - /rancher/v2.6/en/concepts/api-keys/
-  - /rancher/v2.6/en/tasks/user-settings/api-keys/
 ---
 
 ## API Keys and User Authentication
@@ -23,9 +20,9 @@ API Keys are composed of four components:
 
 ## Creating an API Key
 
-1. Select **User Avatar** > **API & Keys** from the **User Settings** menu in the upper-right.
+1. Select **User Avatar > Account & API Keys** from upper right corner.
 
-2. Click **Add Key**.
+2. Click **Create API Key**.
 
 3. **Optional:** Enter a description for the API key and select an expiration period or a scope. We recommend setting an expiration date.
 

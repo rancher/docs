@@ -20,9 +20,9 @@ This section covers the following topics:
 
 The list of all available snapshots for the cluster is available.
 
-1. In the **Global** view, navigate to the cluster that you want to view snapshots.
-
-2. Click **Tools > Snapshots** from the navigation bar to view the list of saved snapshots. These snapshots include a timestamp of when they were created.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the **Clusters** page, go to the cluster where you want to view the snapshots and click the name of the cluster.
+1. Click the **Snapshots** tab. The listed snapshots include a timestamp of when they were created.
 
 ## Restoring a Cluster from a Snapshot
 
@@ -38,15 +38,11 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 > **Prerequisite:** To restore snapshots from S3, the cluster needs to be configured to [take recurring snapshots on S3.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots)
 
-1. In the **Global** view, navigate to the cluster that you want to restore from a snapshots.
-
-2. Click the **&#8942; > Restore Snapshot**.
-
-3. Select the snapshot that you want to use for restoring your cluster from the dropdown of available snapshots.
-
-4. In the **Restoration Type** field, choose one of the restore options described above.
-
-5. Click **Save**.
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. In the **Clusters** page, go to the cluster where you want to view the snapshots and click the name of the cluster.
+1. Click the **Snapshots** tab to view the list of saved snapshots. 
+1. Go to the snapshot you want to restore and click **⋮ > Restore Snapshot**.
+1. Click **Restore**.
 
 **Result:** The cluster will go into `updating` state and the process of restoring the `etcd` nodes from the snapshot will start. The cluster is restored when it returns to an `active` state.
 
