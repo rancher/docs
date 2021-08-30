@@ -24,7 +24,7 @@ RKE2 provisioning is built on top of a new provisioning framework that leverages
 - Provision RKE2 clusters on Digital Ocean, AWS EC2, Azure, and vSphere
 - Fully configure RKE2 clusters within Rancher
 - Choose CNI options Calico, Cilium, and Multus in addition to Canal
-- Install custom RKE2 clusters on pre-provisioned VMs or bare metal nodes
+- Install custom RKE2 clusters on pre-provisioned VMs or bare-metal nodes
 
 The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
 
