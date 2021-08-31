@@ -11,6 +11,7 @@ The available cloud providers to create a node template are decided based on act
 
 This section covers the following topics:
 
+- [Changes in Rancher v2.6](#changes-in-rancher-v2-6)
 - [Node templates](#node-templates)
   - [Node labels](#node-labels)
   - [Node taints](#node-taints)
@@ -22,6 +23,18 @@ This section covers the following topics:
   - [Disabling node auto-replace](#disabling-node-auto-replace)
 - [Cloud credentials](#cloud-credentials)
 - [Node drivers](#node-drivers)
+- [Node roles in RKE2](#node-roles-in-rke2)
+
+# Changes in Rancher v2.6
+
+_Tech Preview_
+
+Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+
+When you create an RKE or RKE2 cluster using a node template in Rancher, each resulting node pool is shown in a new **Machine Pools** tab. You can see the machine pools by doing the following:
+
+1. Click  **☰ > Cluster Management**.
+1. Click the name of the RKE or RKE2 cluster.
 
 # Node Templates
 
@@ -122,3 +135,17 @@ After cloud credentials are created, the user can start [managing the cloud cred
 # Node Drivers
 
 If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers), or you can [add your own custom node driver]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#adding-custom-node-drivers).
+
+# Node Roles in RKE2
+
+The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `control-plane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `control-plane` roles can be represented.
+
+The same functionality of using `etcd`, `controlplane` and `worker` nodes is possible in the RKE2 CLI by using flags and node tainting to control where workloads and the Kubernetes master were scheduled. The reason those roles were not implemented as first-class roles in the RKE2 CLI is that RKE2 is conceptualized as a set of raw building blocks that are best leveraged through an orchestration system such as Rancher.
+
+In our [recommended cluster architecture]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/recommended-architecture/), we outline how many nodes of each role clusters should have:
+
+- At least three nodes with the role etcd to survive losing one node
+- At least two nodes with the role controlplane for master component high availability
+- At least two nodes with the role worker for workload rescheduling upon node failure
+
+The implementation of the three node roles in Rancher means that Rancher managed RKE2 clusters are able to easily leverage all of the same architectural best practices that are recommended for RKE clusters.
