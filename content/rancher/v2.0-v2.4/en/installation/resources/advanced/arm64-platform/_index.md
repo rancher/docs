@@ -12,14 +12,29 @@ aliases:
 The following options are available when using an ARM64 platform:
 
 - Running Rancher on ARM64 based node(s)
-  - Only [Docker Install]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker)
+  - For only [Docker Install]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker). Please note how to update the following installation command:
+
+  ```
+  docker run -d --restart=unless-stopped \
+    -p 80:80 -p 443:443 \
+    --privileged \
+    rancher/rancher:vX.Y.Z
+  ```
+In the last line `rancher/rancher:vX.Y.Z`, be certain to replace "X.Y.Z" with a released version in which ARM64 builds only exist. For example, if your matching version is v2.5.8, you would fill in this line with `rancher/rancher:v2.5.8`. 
+
+> **Note:** To check if your specific released version supports an ARM64 platform, you may navigate to your version's release notes in the following two ways:
+
+>  - Manually find your version using https://github.com/rancher/rancher/releases.
+>  - Go directly to your version using the tag and the specific version number. If you plan to use v2.5.8, for example, you may navigate to https://github.com/rancher/rancher/releases/tag/v2.5.8.   
+
 - Create custom cluster and adding ARM64 based node(s)
   - Kubernetes cluster version must be 1.12 or higher
   - CNI Network Provider must be [Flannel]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/networking/cni-providers/#flannel)
+
 - Importing clusters that contain ARM64 based nodes
   - Kubernetes cluster version must be 1.12 or higher
 
-Please see [Cluster Options]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/) how to configure the cluster options.
+Please see [Cluster Options]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/) for information on how to configure the cluster options.
 
 The following features are not tested:
 
