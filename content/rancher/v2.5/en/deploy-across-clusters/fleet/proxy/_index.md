@@ -9,7 +9,7 @@ In this section, you'll learn how to enable Fleet in a setup that has a Rancher 
 
 Rancher does not establish connections with registered downstream clusters. The Rancher agent deployed on the downstream cluster must be able to establish the connection with Rancher.
 
-To set up Fleet to work behind a proxy, you will need to set the **Agent Environment Variables* * for the downstream cluster. These are cluster-level configuration options.
+To set up Fleet to work behind a proxy, you will need to set the **Agent Environment Variables** for the downstream cluster. These are cluster-level configuration options.
 
 Through the Rancher UI, you can configure these environment variables for any cluster type, including registered and custom clusters. The variables can be added while editing an existing cluster or while provisioning a new cluster.
 

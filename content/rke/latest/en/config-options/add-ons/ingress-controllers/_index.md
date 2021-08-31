@@ -115,9 +115,14 @@ ingress:
 
 ### Configuring network options
 
-_Available as of v1.1.11_
-
+{{% tabs %}}
+{{% tab "v1.30" %}}
+For Kubernetes v1.21 and up, the NGINX ingress controller no longer runs in `hostNetwork: true` but uses hostPorts for port `80` and port `443`. This was done so the admission webhook can be configured to be accessed using ClusterIP so it can only be reached inside the cluster. If you want to change the mode and/or the ports, see the options below.
+{{% /tab %}}
+{{% tab "v1.1.11 - v1.2.8" %}}
 By default, the nginx ingress controller is configured using `hostNetwork: true` on the default ports `80` and `443`. If you want to change the mode and/or the ports, see the options below.
+{{% /tab %}}
+{{% /tabs %}}
 
 Configure the nginx ingress controller using `hostPort` and override the default ports:
 
