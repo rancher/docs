@@ -138,7 +138,7 @@ If you don't find the node driver that you want to use, you can see if it is ava
 
 # Node Roles in RKE2
 
-The RKE2 CLI has two roles, `server` and `agent`.  RKE2 CLI was designed not to expose node roles as a first-class concept. With RKE2 integration in Rancher v2.6, RKE2 node pools can use `etcd`, `controlplane` or `worker` roles within Rancher.
+The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `control-plane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `control-plane` roles can be represented.
 
 The same functionality of using `etcd`, `controlplane` and `worker` nodes is possible in the RKE2 CLI by using flags and node tainting to control where workloads and the Kubernetes master were scheduled. The reason those roles were not implemented as first-class roles in the RKE2 CLI is that RKE2 is conceptualized as a set of raw building blocks that are best leveraged through an orchestration system such as Rancher.
 
