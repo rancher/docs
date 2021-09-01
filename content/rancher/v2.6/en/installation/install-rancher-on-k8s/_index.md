@@ -46,7 +46,7 @@ For an example of how to deploy an ingress on EKS, refer to [this section.]({{<b
 
 Rancher is installed using the [Helm](https://helm.sh/) package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm, we can create configurable deployments instead of just using static files.
 
-For systems without direct internet access, see [Air Gap: Kubernetes install]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-installation/install-rancher/).
+For systems without direct internet access, see [Air Gap: Kubernetes install]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/install-rancher/).
 
 To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/choosing-version)
 
@@ -240,7 +240,7 @@ helm install rancher rancher-latest/rancher \
   --set privateCA=true
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
+Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
 {{% /tab %}}
 {{% /tabs %}}
 

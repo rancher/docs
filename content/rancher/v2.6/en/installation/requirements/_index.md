@@ -30,7 +30,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [Port Requirements](#port-requirements)
 - [Dockershim Support](#dockershim-support)
 
-For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/deployment-types/)
+For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/rancher-server/deployment-types/)
 
 The Rancher UI works best in Firefox or Chrome.
 

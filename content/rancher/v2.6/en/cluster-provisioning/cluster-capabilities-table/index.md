@@ -11,12 +11,12 @@ headless: true
 | [Managing Nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/nodes) | ✓ | ✓ | ✓ | ✓<sup>3</sup> |
 | [Managing Persistent Volumes and Storage Classes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) | ✓ | ✓ | ✓ | ✓ |
 | [Managing Projects, Namespaces and Workloads]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/) | ✓ | ✓ | ✓ | ✓ |
-| [Using App Catalogs]({{<baseurl>}}/rancher/v2.6/en/catalog/) | ✓ | ✓ | ✓ | ✓ |
+| [Using App Catalogs]({{<baseurl>}}/rancher/v2.6/en/helm-charts/) | ✓ | ✓ | ✓ | ✓ |
 | Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio) | ✓ | ✓ | ✓ | ✓ |
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.6/en/security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cloning-clusters/)| ✓ | ✓ | ✓ | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/certificate-rotation/) | ✓ | ✓  |  | |
-| [Ability to [backup]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ |  | ✓<sup>4</sup> |
+| [Ability to [backup]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/) and [restore]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/restoring-etcd/) Rancher-launched clusters | ✓ | ✓ |  | ✓<sup>4</sup> |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/pod-security-policy/) | ✓ | ✓ |  ||
 

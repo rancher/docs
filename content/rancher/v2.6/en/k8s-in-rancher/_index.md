@@ -58,8 +58,6 @@ For more information, see [Pipelines]({{<baseurl>}}/rancher/v2.6/en/k8s-in-ranch
 
 Besides launching individual components of an application, you can use the Rancher catalog to start launching applications, which are Helm charts.
 
-For more information, see [Applications in a Project]({{<baseurl>}}/rancher/v2.6/en/catalog/apps/).
-
 ## Kubernetes Resources
 
 Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Rancher, certificates, registries, and secrets are all considered resources. However, Kubernetes classifies resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.

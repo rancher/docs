@@ -186,7 +186,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
-Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 # 4. Install Rancher
 
@@ -237,5 +237,5 @@ The installation is complete.
 These resources could be helpful when installing Rancher:
 
 - [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/)
-- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/)
+- [Adding TLS secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-secrets/)
 - [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.6/en/installation/resources/troubleshooting/)

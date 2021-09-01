@@ -56,7 +56,7 @@ A restore is performed by creating a Restore custom resource.
 	      endpoint: s3.us-west-2.amazonaws.com
       ```
 
-      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/examples/)
+      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples/)
 
 1. Click **Create**.
 

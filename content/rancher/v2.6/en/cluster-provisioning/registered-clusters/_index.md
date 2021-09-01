@@ -86,8 +86,8 @@ The control that Rancher has to manage a registered cluster depends on the type 
 After registering a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/v2.5/)
-- Enable [logging]({{<baseurl>}}/rancher/v2.6/en/logging/v2.5/)
+- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/)
+- Enable [logging]({{<baseurl>}}/rancher/v2.6/en/logging/)
 - Enable [Istio]({{<baseurl>}}/rancher/v2.6/en/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.6/en/project-admin/pipelines/)
 - Manage projects and workloads

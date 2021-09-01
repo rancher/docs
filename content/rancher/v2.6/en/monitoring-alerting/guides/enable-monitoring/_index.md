@@ -3,7 +3,7 @@ title: Enable Monitoring
 weight: 1
 ---
 
-As an [administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
+As an [administrator]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) or [cluster owner]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
 
 This page describes how to enable monitoring and alerting within a cluster using the new monitoring application.
 
@@ -53,7 +53,7 @@ For more information about the default limits, see [this page.]({{<baseurl>}}/ra
  
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
-When [creating a receiver,]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
+When [creating a receiver,]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/advanced/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
 
 For example, if you created a secret with these key-value pairs:
 

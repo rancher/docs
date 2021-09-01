@@ -64,7 +64,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 1. Optional: Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Optional: Add Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to the cluster.
 1. Enter your Google project ID and your Google cloud credentials.
-1. Fill out the rest of the form. For help, refer to the [GKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference)
+1. Fill out the rest of the form. For help, refer to the [GKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference)
 1. Click **Create**.
 
 **Result:** You have successfully deployed a GKE cluster.
