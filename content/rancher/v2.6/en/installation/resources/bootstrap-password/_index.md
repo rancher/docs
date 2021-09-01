@@ -9,8 +9,13 @@ The bootstrap password is randomly generated if it is not set during installatio
 
 ### Specifying the Bootstrap Password in Helm Installs
 
-For a Helm install, users can specify the bootstrap password variable by configuring it in the Helm chart values with `.Values.bootstrapPassword`. The password will be stored in a Kubernetes secret and the UI will show instructions for how to retrieve password on `note.txt` after Rancher is installed.
+For a Helm install, users can specify the bootstrap password variable by configuring it in the Helm chart values with `.Values.bootstrapPassword`.
 
+The password will be stored in a Kubernetes secret. After Rancher is installed, the UI will show instructions for how to retrieve the password using kubectl:
+
+```
+kubectl get secret --namespace cattle-system bootstrap-secret -o go-template='{{ .data.bootstrapPassword|base64decode}}{{ "\n" }}'
+```
 
 ### Specifying the Bootstrap Password in Docker Installs
 
