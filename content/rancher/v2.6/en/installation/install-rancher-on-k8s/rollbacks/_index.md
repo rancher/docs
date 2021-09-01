@@ -18,7 +18,7 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
-> * While restoring rancher on the same setup, the rancher deployment is manually scaled down before the restore starts then the operator will scale it back up once restore completes. So Rancher will be unavailable during the restore.
+> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. So Rancher will be unavailable during the restore.
 
 ### Scale the Rancher Deployment to 0
 
@@ -60,7 +60,7 @@ A restore is performed by creating a Restore custom resource.
 
 1. Click **Create**.
 
-**Result:** The backup file is created and updated to the target storage location. The resources are restored in this order:
+**Result:** The Rancher deployment is manually scaled down before the restore starts then, the operator will scale it back up once the restore completes. The resources are restored in this order:
 
 1. Custom Resource Definitions (CRDs)
 2. Cluster-scoped resources
