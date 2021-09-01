@@ -12,7 +12,7 @@ You can enable monitoring with or without SSL.
 # Requirements
 
 - Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
-- Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.](./configuration/helm-chart-options/#setting-resource-limits-and-requests)
+- Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/helm-chart-options/#configuring-resource-limits-and-requests)
 - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 
 > **Note:** If you want to set up Alertmanager, Grafana or Ingress, it has to be done with the settings on the Helm chart deployment. It's problematic to create Ingress outside the deployment.
@@ -21,7 +21,7 @@ You can enable monitoring with or without SSL.
 
 The resource requests and limits can be configured when installing `rancher-monitoring`.  To configure Prometheus resources from the Rancher UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
 
-For more information about the default limits, see [this page.](./configuration/helm-chart-options/#setting-resource-limits-and-requests)
+For more information about the default limits, see [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/helm-chart-options/#configuring-resource-limits-and-requests)
 
 # Install the Monitoring Application
 
@@ -33,7 +33,7 @@ For more information about the default limits, see [this page.](./configuration/
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
+1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/helm-chart-options/)
 1. Scroll to the bottom of the Helm chart README and click **Install.**
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
@@ -69,7 +69,7 @@ Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](./configuration)
+1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/helm-chart-options/)
 1. Scroll to the bottom of the Helm chart README and click **Install.**
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.

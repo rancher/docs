@@ -38,7 +38,7 @@ To configure the resources allocated to an Istio component,
 1. In the left navigation bar, click **Apps & Marketplace**.
 1. Click **Installed Apps**.
 1. Go to the `istio-system` namespace. In one of the Istio workloads, such as `rancher-istio`, click **⋮ > Edit/Upgrade**.
-1. Click **Upgrade** to edit the base components via changes to the values.yaml or add an [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/#overlay-file). For more information about editing the overlay file, see [this section.](./#editing-the-overlay-file)
+1. Click **Upgrade** to edit the base components via changes to the values.yaml or add an [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/#overlay-file). For more information about editing the overlay file, see [this section.](./#editing-the-overlay-file)
 1. Change the CPU or memory allocations, the nodes where each component will be scheduled to, or the node tolerations.
 1. Click **Upgrade**. to rollout changes
 

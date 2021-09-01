@@ -83,7 +83,7 @@ To enable project network isolation as a cluster option, you will need to use Ca
 
 ### Kubernetes Cloud Providers
 
-You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
 >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#cluster-config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
@@ -286,7 +286,7 @@ See [Docker Root Directory](#docker-root-directory).
 
 ### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/).
+Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/).
 
 ### enable_network_policy
 

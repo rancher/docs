@@ -2,7 +2,7 @@
 title: 5. Set up Istio's Components for Traffic Management
 weight: 6
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/set-up-traffic-management
+  - /rancher/v2.5/en/istio/setup/set-up-traffic-management
   - /rancher/v2.5/en/istio/v2.5/setup/set-up-traffic-management
 ---
 
@@ -74,4 +74,4 @@ spec:
 
 **Result:** When you generate traffic to this service (for example, by refreshing the ingress gateway URL), the Kiali traffic graph will reflect that traffic to the `reviews` service is divided evenly between `v1` and `v3`.
 
-### [Next: Generate and View Traffic]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/setup/view-traffic)
+### [Next: Generate and View Traffic]({{<baseurl>}}/rancher/v2.5/en/istio/setup/view-traffic)

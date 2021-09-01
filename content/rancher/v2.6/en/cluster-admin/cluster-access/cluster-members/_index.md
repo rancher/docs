@@ -5,7 +5,7 @@ weight: 2020
 
 If you want to provide a user with access and permissions to _all_ projects, nodes, and resources within a cluster, assign the user a cluster membership.
 
->**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/project-members/) instead.
+>**Tip:** Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/project-members/) instead.
 
 There are two contexts where you can add cluster members:
 

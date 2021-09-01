@@ -11,7 +11,7 @@ You can add members to a project as it is created, or add them to an existing pr
 
 ### Adding Members to a New Project
 
-You can add members to a project as you create it (recommended if possible). For details on creating a new project, refer to the [cluster administration section.]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/)
+You can add members to a project as you create it (recommended if possible). For details on creating a new project, refer to the [cluster administration section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/)
 
 ### Adding Members to an Existing Project
 

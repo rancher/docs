@@ -81,7 +81,7 @@ The following are the options for the stats command:
 
 # Remove
 
->**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/backups) before executing the command.
+>**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/rancher-backups) before executing the command.
 
 When you install Rancher on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove Rancher from your cluster, you can use the `remove` subcommand to remove the Kubernetes resources. When you use the `remove` subcommand, the following resources will be removed:
 
@@ -101,7 +101,7 @@ When you install Rancher on a Kubernetes cluster, it will create Kubernetes reso
 
 When you run the command below, all the resources listed [above](#remove) will be removed from the cluster.
 
->**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/backups) before executing the command.
+>**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd]({{<baseurl>}}/rancher/v2.5/en/backups/rancher-backups) before executing the command.
 
 ```
 ./system-tools remove --kubeconfig <KUBECONFIG> --namespace <NAMESPACE>

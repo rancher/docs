@@ -12,7 +12,7 @@ headless: true
 | [Managing Persistent Volumes and Storage Classes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) | ✓ | ✓ | ✓ | ✓ |
 | [Managing Projects, Namespaces and Workloads]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/) | ✓ | ✓ | ✓ | ✓ |
 | [Using App Catalogs]({{<baseurl>}}/rancher/v2.6/en/catalog/) | ✓ | ✓ | ✓ | ✓ |
-| [Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio)]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/) | ✓ | ✓ | ✓ | ✓ |
+| Configuring Tools (Alerts, Notifiers, Logging, Monitoring, Istio) | ✓ | ✓ | ✓ | ✓ |
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.6/en/security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cloning-clusters/)| ✓ | ✓ | ✓ | |
 | [Ability to rotate certificates]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/certificate-rotation/) | ✓ | ✓  |  | |
@@ -20,9 +20,9 @@ headless: true
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | | |
 | [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/pod-security-policy/) | ✓ | ✓ |  ||
 
-1. Registered GKE and EKS clusters have the same options available as GKE and EKS clusters created from the Rancher UI. The  difference is that when a registered cluster is deleted from the Rancher UI, [it is not destroyed.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-eks-and-gke-clusters)
+1. Registered GKE and EKS clusters have the same options available as GKE and EKS clusters created from the Rancher UI. The  difference is that when a registered cluster is deleted from the Rancher UI, it is not destroyed.
 
-2. Cluster configuration options can't be edited for registered clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/)
+2. Cluster configuration options can't be edited for registered clusters, except for [K3s and RKE2 clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/)
 
 3. For registered cluster nodes, the Rancher UI exposes the ability to cordon, drain, and edit the node.
 

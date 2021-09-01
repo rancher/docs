@@ -31,7 +31,7 @@ As of Rancher 2.3.0, we support Windows Server 1809 containers. For details on h
 
 **Does Rancher support Istio?**
 
-As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/)
+As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.5/en/istio/)
 
 Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Rancher 2.x along with any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/)
 

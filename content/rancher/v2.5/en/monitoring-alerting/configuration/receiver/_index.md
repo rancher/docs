@@ -3,7 +3,7 @@ title: Receiver Configuration
 shortTitle: Receivers
 weight: 1
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager
+  - /rancher/v2.5/en/monitoring-alerting/configuration/alertmanager
   - rancher/v2.5/en/monitoring-alerting/legacy/notifiers/
   - /rancher/v2.5/en/cluster-admin/tools/notifiers
   - /rancher/v2.5/en/cluster-admin/tools/alerts

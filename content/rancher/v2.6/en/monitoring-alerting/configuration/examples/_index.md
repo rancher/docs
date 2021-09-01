@@ -22,4 +22,4 @@ An example PrometheusRule is on [this page.](https://github.com/prometheus-opera
 
 ### Alertmanager Config
 
-For an example configuration, refer to [this section.](./alertmanager/#example-alertmanager-config)
+For an example configuration, refer to [this section.](../advanced/alertmanager/#example-alertmanager-config)

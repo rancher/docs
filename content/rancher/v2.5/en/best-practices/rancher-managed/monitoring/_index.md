@@ -97,7 +97,7 @@ Sometimes it is useful to monitor workloads from the outside. For this, you can 
 
 If you have a (micro)service architecture where multiple individual workloads within your cluster are communicating with each other, it is really important to have detailed metrics and traces about this traffic to understand how all these workloads are communicating with each other and where a problem or bottleneck may be.
 
-Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.5/en/cluster-admin/tools/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
+Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click]({{<baseurl>}}/rancher/v2.5/en/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
 
 # Real User Monitoring
 
@@ -119,4 +119,4 @@ When setting up alerts, configure them for all the workloads that are critical t
 
 If an alert starts firing, but there is nothing you can do about it at the moment, it's also fine to silence the alert for a certain amount of time, so that you can look at it later.
 
-You can find more information on how to set up alerts and notification channels in the [Rancher Documentation]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5).
+You can find more information on how to set up alerts and notification channels in the [Rancher Documentation]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting).

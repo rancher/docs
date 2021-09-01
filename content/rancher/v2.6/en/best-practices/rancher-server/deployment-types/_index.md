@@ -33,5 +33,5 @@ However, metrics-driven capacity planning analysis should be the ultimate guidan
 
 Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with Prometheus, a leading open-source monitoring solution, and Grafana, which lets you visualize the metrics from Prometheus. 
 
-After you [enable monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) in the cluster, you can set up [a notification channel]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/notifiers/) and [cluster alerts]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/alerts/) to let you know if your cluster is approaching its capacity. You can also use the Prometheus and Grafana monitoring framework to establish a baseline for key metrics as you scale.
+After you [enable monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting) in the cluster, you can set up alerts to let you know if your cluster is approaching its capacity. You can also use the Prometheus and Grafana monitoring framework to establish a baseline for key metrics as you scale.
 

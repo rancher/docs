@@ -15,7 +15,7 @@ This core service mesh provides features that include but are not limited to the
 - **Security** with resources to authenticate and authorize traffic and users, mTLS included.
 - **Observability** of logs, metrics, and distributed traffic flows.
 
-After [setting up istio]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup) you can leverage Istio's control plane functionality through the Rancher UI, `kubectl`, or `istioctl`.
+After [setting up istio]({{<baseurl>}}/rancher/v2.6/en/istio/setup) you can leverage Istio's control plane functionality through the Rancher UI, `kubectl`, or `istioctl`.
 
 Istio needs to be set up by a `cluster-admin` before it can be used in a project.
 
@@ -61,7 +61,7 @@ Note that this is not a production-qualified deployment of Jaeger. This deployme
 
 # Prerequisites
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/resources) to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory]({{<baseurl>}}/rancher/v2.6/en/istio/resources) to run all of the components of Istio.
 
 If you are installing Istio on RKE2 cluster, some additional steps are required. For details, see [this section.](#additional-steps-for-installing-istio-on-an-rke2-cluster)
 
@@ -69,7 +69,7 @@ Note that Istio v2 (upstream Istio v1.7+) cannot be upgraded in an air gapped en
 
 # Setup Guide
 
-Refer to the [setup guide]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup) for instructions on how to set up Istio and use it in a project.
+Refer to the [setup guide]({{<baseurl>}}/rancher/v2.6/en/istio/setup) for instructions on how to set up Istio and use it in a project.
 
 # Remove Istio
 
@@ -85,7 +85,7 @@ Another option is to manually uninstall istio resources one at a time, but leave
 
 # Accessing Visualizations
 
-> By default, only cluster-admins have access to Kiali. For instructions on how to allow admin, edit or views roles to access them, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/rbac/)
+> By default, only cluster-admins have access to Kiali. For instructions on how to allow admin, edit or views roles to access them, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/rbac/)
 
 After Istio is set up in a cluster, Grafana, Prometheus, and Kiali are available in the Rancher UI. 
 
@@ -123,12 +123,12 @@ By default, each Rancher-provisioned cluster has one NGINX ingress controller al
 
 ![In an Istio-enabled cluster, you can have two ingresses: the default Nginx ingress, and the default Istio controller.]({{<baseurl>}}/img/rancher/istio-ingress.svg)
  
- Additional Istio Ingress gateways can be enabled via the [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/#overlay-file).
+ Additional Istio Ingress gateways can be enabled via the [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/#overlay-file).
 
 ### Egress Support
 
-By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/#overlay-file).
+By default the Egress gateway is disabled, but can be enabled on install or upgrade through the values.yaml or via the [overlay file]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/#overlay-file).
 
 # Additional Steps for Installing Istio on an RKE2 Cluster
 
-To install Istio on an RKE2 cluster, follow the steps in [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/v2.5/configuration-reference/rke2/)
+To install Istio on an RKE2 cluster, follow the steps in [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/rke2/)
