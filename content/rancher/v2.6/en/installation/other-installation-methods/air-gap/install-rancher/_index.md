@@ -28,7 +28,7 @@ This section describes installing Rancher:
 
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/options/helm-version) to choose a version of Helm to install Rancher.
+1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/resources/helm-version) to choose a version of Helm to install Rancher.
 
 2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
   {{< release-channel >}}
@@ -79,7 +79,7 @@ Based on the choice your made in [2. Choose your SSL Configuration](#2-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
 
 ### 1. Add the cert-manager repo
 
@@ -238,4 +238,4 @@ These resources could be helpful when installing Rancher:
 
 - [Rancher Helm chart options]({{<baseurl>}}/rancher/v2.6/en/installation/resources/chart-options/)
 - [Adding TLS secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/encryption/tls-secrets/)
-- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/)
+- [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.6/en/installation/resources/troubleshooting/)

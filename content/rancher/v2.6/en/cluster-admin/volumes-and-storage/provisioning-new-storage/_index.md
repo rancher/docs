@@ -37,7 +37,7 @@ Local | `local`
 Network File System | `nfs`
 hostPath | `host-path`
 
-To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/enable-not-default-storage-drivers/)
+To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/enable-not-default-storage-drivers/)
 
 ### 1. Add a storage class and configure it to use your storage
 

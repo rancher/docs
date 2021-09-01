@@ -7,7 +7,7 @@ This feature enables a UI that lets you create, read, update and delete virtual 
 
 > **Prerequisite:** Turning on this feature does not enable Istio. A cluster administrator needs to [enable Istio for the cluster]({{<baseurl>}}/rancher/v2.6/en/istio/setup) in order to use the feature.
 
-To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.6/en/installation/options/feature-flags/)
+To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/)
 
 Environment Variable Key | Default Value | Status | Available as of
 ---|---|---|---

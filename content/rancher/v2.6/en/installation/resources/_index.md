@@ -19,8 +19,8 @@ An air gapped environment could be where Rancher server will be installed offlin
 
 When installing Rancher, there are several advanced options that can be enabled during installation. Within each install guide, these options are presented. Learn more about these options:
 
-- [Custom CA Certificate]({{<baseurl>}}/rancher/v2.6/en/installation/options/custom-ca-root-certificate/)
-- [API Audit Log]({{<baseurl>}}/rancher/v2.6/en/installation/options/api-audit-log/)
-- [TLS Settings]({{<baseurl>}}/rancher/v2.6/en/installation/options/tls-settings/)
-- [etcd configuration]({{<baseurl>}}/rancher/v2.6/en/installation/options/etcd/)
-- [Local System Charts for Air Gap Installations]({{<baseurl>}}/rancher/v2.6/en/installation/options/local-system-charts) | v2.3.0          |
+- [Custom CA Certificate]({{<baseurl>}}/rancher/v2.6/en/installation/resources/custom-ca-root-certificate/)
+- [API Audit Log]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/api-audit-log/)
+- [TLS Settings]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-settings/)
+- [etcd configuration]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/etcd/)
+- [Local System Charts for Air Gap Installations]({{<baseurl>}}/rancher/v2.6/en/installation/resources/local-system-charts) | v2.3.0          |

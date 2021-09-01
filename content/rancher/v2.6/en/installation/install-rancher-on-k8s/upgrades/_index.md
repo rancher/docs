@@ -45,7 +45,7 @@ If you are upgrading to Rancher v2.5 from a Rancher server that was started with
 
 ### For upgrades with cert-manager older than 0.8.0
 
-[Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager)
+[Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager)
 
 # Upgrade Outline
 
@@ -156,7 +156,7 @@ If you are currently running the cert-manger whose version is older than v0.11, 
     helm delete rancher -n cattle-system
     ```
 
-2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager) page.
+2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager) page.
 
 3. Reinstall Rancher to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
 

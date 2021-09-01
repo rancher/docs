@@ -8,7 +8,7 @@ weight: 15
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
 
-For an overview of the changes in v2.5, see [this section.](/{{<baseurl>}}/rancher/v2.6/en/logging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](./migrating)
+For an overview of the changes in v2.5, see [this section.]({{<baseurl>}}/rancher/v2.6/en/logging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](./migrating)
 
 - [Enabling Logging](#enabling-logging)
 - [Uninstall Logging](#uninstall-logging)

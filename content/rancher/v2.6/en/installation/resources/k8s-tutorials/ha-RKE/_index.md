@@ -81,7 +81,7 @@ ingress:
 >
 > Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 > 
-> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide]({{<baseurl>}}/rancher/v2.6/en/installation/options/etcd/).
+> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/etcd/).
 
 ### 2. Run RKE
 
@@ -162,7 +162,7 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/resources/troubleshooting/) page.
 
 
 ### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/k8s-install/helm-rancher/)

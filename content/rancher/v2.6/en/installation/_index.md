@@ -90,5 +90,5 @@ In the Rancher installation instructions, we recommend using K3s or RKE to set u
 Refer to the [docs about options for Docker installs]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker) for details about other configurations including:
 
 - With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
-- With an [external load balancer]({{<baseurl>}}/rancher/v2.6/en/installation/options/single-node-install-external-lb/)
+- With an [external load balancer]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/single-node-install-external-lb/)
 - With a [persistent data store]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#persistent-data)
