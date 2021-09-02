@@ -127,7 +127,9 @@ The private registry configuration option tells Rancher where to pull the [syste
 - **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-To learn how to set up an **ECR private registry** and for more information on the private registry for components applied during the provisioning of the cluster, see the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/). 
+For more information on setting up a private registry for components applied during the provisioning of the cluster, see the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/). 
+
+Rancher v2.6 introduced the ability to configure [ECR registries for RKE clusters]({{<baseurl>}}/rke/latest/en/config-options/private-registries/#amazon-elastic-container-registry-ecr-private-registry-setup).
 
 ### Authorized Cluster Endpoint
 
