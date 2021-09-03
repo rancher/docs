@@ -19,7 +19,7 @@ Rancher can configure member roles for AKS clusters in the same way as any other
 
 # Cloud Credentials
 
-> The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-cluster/aks/#prerequisites-in-microsoft-azure)
+> The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/aks/#prerequisites-in-microsoft-azure)
 
 ### Tenant ID
 
