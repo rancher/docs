@@ -76,7 +76,7 @@ Before v0.1.10, you had to configure your private registry credentials **and** u
         - "AWS_ACCESS_KEY_ID=ACCESSKEY"
         - "AWS_SECRET_ACCESS_KEY=SECRETKEY"
   private_registries:
-       - url: ACCOUNTID.dkr.ecr.region.amazonaws.com
+       - url: ACCOUNTID.dkr.ecr.REGION.amazonaws.com
          is_default: true
          ecrCredentialPlugin: 
           aws_access_key_id: "ACCESSKEY"
