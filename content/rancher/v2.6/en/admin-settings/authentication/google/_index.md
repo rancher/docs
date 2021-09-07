@@ -84,7 +84,7 @@ Using the Unique ID of the service account key, register it as an Oauth Client u
 1. Get the Unique ID of the key you just created. If it's not displayed in the list of keys right next to the one you created, you will have to enable it. To enable it, click **Unique ID** and click **OK**. This will add a **Unique ID** column to the list of service account keys. Save the one listed for the service account you created. NOTE: This is a numeric key, not to be confused with the alphanumeric field **Key ID**.
 
 	![Service account Unique ID]({{<baseurl>}}/img/rancher/Google-Select-UniqueID-column.png)
-1. Go to the [**Manage OAuth Client Access** page.](https://admin.google.com/AdminHome?chromeless=1#OGX:ManageOauthClients)
+1. Go to the [**Domain-wide Delegation** page.](https://admin.google.com/ac/owl/domainwidedelegation)
 1. Add the Unique ID obtained in the previous step in the **Client Name** field.
 1. In the **One or More API Scopes** field, add the following scopes:
 	```
