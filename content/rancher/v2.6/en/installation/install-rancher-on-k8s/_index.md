@@ -97,8 +97,8 @@ There are three recommended options for the source of the certificate used for T
 
 | Configuration                  | Helm Chart Option           | Requires cert-manager                 |
 | ------------------------------ | ----------------------- | ------------------------------------- |
-| Rancher Generated Certificates (Default) | `ingress.tls.source=rancher`  | [yes](#5-install-cert-manager) |
-| Let’s Encrypt                  | `ingress.tls.source=letsEncrypt`  | [yes](#5-install-cert-manager) |
+| Rancher Generated Certificates (Default) | `ingress.tls.source=rancher`  | [yes](#4-install-cert-manager) |
+| Let’s Encrypt                  | `ingress.tls.source=letsEncrypt`  | [yes](#4-install-cert-manager) |
 | Certificates from Files        | `ingress.tls.source=secret`        | no               |
 
 ### 4. Install cert-manager
