@@ -24,11 +24,19 @@ For more details on the design and architecture of the system-upgrade-controller
 - [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller)
 - [k3s-upgrade](https://github.com/rancher/k3s-upgrade)
 
->**Note:** To automate upgrades in this manner, you must [configure plans](#configure-plans). However, you don't need to manually install the system-upgrade-controller. The system-upgrade-controller will automatically deploy into your cluster with all Rancher K3s upgrades. 
+To automate upgrades in this manner, you must do the following:
+
+1. Install the system-upgrade-controller into your cluster
+1. Configure plans
+
+>**Note:** Users can and should use Rancher to upgrade their K3s cluster if Rancher is managing it. 
+>
+> * If you choose to use Rancher to upgrade, the following steps below are taken care of for you.
+> * If you choose not to use Rancher to upgrade, you must use the following steps below to do so.
 
 
 ### Install the system-upgrade-controller
-The system-upgrade-controller is automatically installed as a deployment into your cluster and will manage the plans to perform the change. If you need to manually deploy the system-upgrade-controller for any reason, note that the deployment requires a service-account, clusterRoleBinding, and a configmap. To install these components, run the following command:
+ The system-upgrade-controller can be installed as a deployment into your cluster. The deployment requires a service-account, clusterRoleBinding, and a configmap. To install these components, run the following command:
 ```
 kubectl apply -f https://github.com/rancher/system-upgrade-controller/releases/download/v0.6.2/system-upgrade-controller.yaml
 ```
