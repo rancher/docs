@@ -9,6 +9,8 @@ Cluster templates encompass both Kubernetes configuration and node pool configur
 - [RKE2 Cluster Template](#rke2-cluster-template)
 - [Adding a Cluster Template to Rancher](#adding-a-cluster-template-to-rancher)
 - [Creating a Cluster from a Cluster Template](#creating-a-cluster-from-a-cluster-template)
+- [Updating a Cluster Created from a Cluster Template](#updating-a-cluster-created-from-a-cluster-template)
+- [Deploying Clusters from a Template with Fleet](#deploying-clusters-from-a-template-with-fleet)
 - [Uninstalling Cluster Templates](#uninstalling-cluster-templates)
 - [Configuration Options](#configuration-options)
 
@@ -69,6 +71,10 @@ In this section, you'll learn how to add the cluster template to the `local` clu
 
 **Result:** After Rancher provisions the new cluster, it is managed in the same way as any other Rancher-launched Kubernetes cluster. You can configure any options through the UI if the cluster template has options for the user to choose from.
 
+# Updating a Cluster Created from a Cluster Template
+
+You can update any clusters using a template from the **Apps & Marketplace > Installed Apps** page, given there is a new version of a template being used by those clusters.
+
 # Deploying Clusters from a Template with Fleet
 
 > **Prerequisites:**
@@ -78,15 +84,13 @@ In this section, you'll learn how to add the cluster template to the `local` clu
 > - In order to show in the form for creating new clusters, the cluster template's Helm chart must have the `catalog.cattle.io/type:cluster-template` annotation.
 > - In order to use a template as part of continuous delivery/GitOps, the cluster template needs to be deployed in the `fleet-local` namespace of the `local` cluster.
 > - All values must be set in the `values.yaml` of the template.
+> - Fleet repositories must follow the guidelines on [this page.](http://fleet.rancher.io/gitrepo-structure/) For RKE2 cluster templates, that means a `fleet.yaml` file must be added to the repository.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create.**
 1. Click **Create Cluster from Template.**
 
-**Result:** After Rancher provisions the new cluster, it is managed by Fleet. You can configure any options through the UI if the cluster template has options for the user to choose from.
-
-An admin with access to the `local` cluster can also remove a cluster deployed via cluster templates through the **Apps & Marketplace > Installed Apps** page. This user can also update any clusters using a template from this menu, given there is a new version of a template being used by those clusters.
-
+**Result:** After Rancher provisions the new cluster, it is managed by Fleet.
 
 # Uninstalling Cluster Templates
 
@@ -96,6 +100,8 @@ An admin with access to the `local` cluster can also remove a cluster deployed v
 1. Confirm the deletion.
 
 **Result:** The cluster template is uninstalled. This action does not affect clusters created with the cluster template.
+
+An admin with access to the `local` cluster can also remove a cluster deployed via cluster templates through the **Apps & Marketplace > Installed Apps** page.
 
 # Configuration Options
 
