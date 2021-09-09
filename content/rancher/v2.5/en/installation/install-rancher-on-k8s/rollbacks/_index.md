@@ -33,7 +33,7 @@ A restore is performed by creating a Restore custom resource.
 1. Under **Projects in local**, click on **System**.
 1. From the **cattle-system** namespace section, find the `rancher-hook` deployment.
 1. Select **&#8942; > Edit**.
-1. Change **Scalable deployment of X pods** to `0`.
+1. Change **Scalable deployment of _ pods** to `0`.
 1. Scroll to the bottom and click **Save**.
 
 ### Create the Restore Custom Resource
