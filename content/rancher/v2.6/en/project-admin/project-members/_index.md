@@ -7,7 +7,7 @@ If you want to provide a user with access and permissions to _specific_ projects
 
 You can add members to a project as it is created, or add them to an existing project.
 
->**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/cluster-members/) instead.
+>**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/) instead.
 
 ### Adding Members to a New Project
 

@@ -181,7 +181,7 @@ If you want to record all transactions with the Rancher API, enable the [API Aud
 
 ### Air Gap
 
-If you are visiting this page to complete an [Air Gap Installation]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
+If you are visiting this page to complete an [Air Gap Installation]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
 

@@ -75,7 +75,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
-1. Follow the guide to [Prepare your Private Registry]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
+1. Follow the guide to [Prepare your Private Registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images needed for the upgrade.
 
 1. From a system connected to the internet, add the cert-manager repo to Helm
 

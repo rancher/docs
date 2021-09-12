@@ -20,7 +20,7 @@ To provision new storage for your workloads, follow these steps:
 
 - To set up persistent storage, the `Manage Volumes` [role]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#project-role-reference) is required.
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
-- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/)
 - Make sure your storage provisioner is available to be enabled.
 
 The following storage provisioners are enabled by default:

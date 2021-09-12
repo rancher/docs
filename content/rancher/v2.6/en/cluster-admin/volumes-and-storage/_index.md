@@ -13,7 +13,7 @@ To set up persistent storage, the `Manage Volumes` [role]({{<baseurl>}}/rancher/
 
 If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
-For provisioning new storage with Rancher, the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/)
+For provisioning new storage with Rancher, the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/)
 
 For attaching existing persistent storage to a cluster, the cloud provider does not need to be enabled.
 
