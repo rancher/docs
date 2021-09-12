@@ -33,7 +33,7 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-prem VM
 - A bare-metal server
 
-If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
 Provision the host according to the [installation requirements]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements) and the [checklist for production-ready clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production)
 
@@ -65,7 +65,7 @@ If you're using Amazon EC2 as your host and want to use the [dual-stack](https:/
     >- Using Windows nodes as Kubernetes workers? See [this section]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/).
 	>- Bare-Metal Server Reminder: If you plan on dedicating bare-metal servers to each role, you must provision a bare-metal server for each role (i.e. provision multiple bare-metal servers).
 
-8.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{<baseurl>}}/rancher/v2.6/en/admin-settings/agent-options/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
+8.	<a id="step-8"></a>**Optional**: Click **[Show advanced options]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/)** to specify IP address(es) to use when registering the node, override the hostname of the node, or to add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to the node.
 
 9. Copy the command displayed on screen to your clipboard.
 

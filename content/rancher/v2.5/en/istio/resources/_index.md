@@ -4,7 +4,7 @@ weight: 1
 aliases:
   - /rancher/v2.5/en/project-admin/istio/configuring-resource-allocations/
   - /rancher/v2.5/en/project-admin/istio/config/
-  - /rancher/v2.5/en/cluster-admin/tools/istio/resources
+  - /rancher/v2.5/en/istio/resources
   - /rancher/v2.5/en/istio/v2.5/resources
 ---
 

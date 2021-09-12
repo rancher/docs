@@ -97,7 +97,7 @@ Greater management capabilities are now available for [registered GKE clusters.]
 After registering a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/)
+- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
 - Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
@@ -138,7 +138,7 @@ The capabilities for registered clusters are listed in the table on [this page.]
 After registering a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/)
+- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
 - Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)

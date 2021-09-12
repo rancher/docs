@@ -223,7 +223,7 @@ Note: Registered clusters were called imported clusters before Rancher v2.5.
 
 {{% accordion label="Click to expand" %}}
 
-The following table depicts the port requirements for [registered clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/).
+The following table depicts the port requirements for [registered clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/).
 
 {{< ports-imported-hosted >}}
 

@@ -355,4 +355,4 @@ Remove the previous Rancher server container. If you only stop the previous Ranc
 
 # Rolling Back
 
-If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{<baseurl>}}/rancher/v2.6/en/upgrades/rollbacks/single-node-rollbacks/).
+If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/).

@@ -3,10 +3,6 @@ title: Monitoring and Alerting
 shortTitle: Monitoring/Alerting
 description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 weight: 13
-aliases:
-  - /rancher/v2.5/en/dashboard/monitoring-alerting
-  - /rancher/v2.5/en/dashboard/notifiers
-  - /rancher/v2.5/en/cluster-admin/tools/monitoring/
 ---
 
 Using the `rancher-monitoring` application, you can quickly deploy leading open-source monitoring and alerting solutions onto your cluster.
@@ -55,7 +51,7 @@ These default exporters automatically scrape metrics for CPU and memory from all
 
 ### Default Alerts
 
-The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboard/accessing-the-alertmanager-ui) and click **Expand all groups.**
+The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboards/#alertmanager-ui) and click **Expand all groups.**
 
 ### Components Exposed in the Rancher UI
 
@@ -84,7 +80,7 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 - [ServiceMonitor and PodMonitor](./configuration/servicemonitor-podmonitor)
 - [Receiver](./configuration/receiver)
 - [Route](./configuration/route)
-- [PrometheusRule](./configuration/advanced/prometheusrule)
+- [PrometheusRule](./configuration/advanced/prometheusrules)
 - [Prometheus](./configuration/advanced/prometheus)
 - [Alertmanager](./configuration/advanced/alertmanager)
 
@@ -108,6 +104,4 @@ For more details on how to upgrade wins on existing Windows hosts, refer to the 
 
 There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
 
-For tips on debugging high memory usage, see [this page.](./memory-usage)
-
-It is common that as the amount of metrics and deployments being monitors grows, Prometheus's memory and CPU needs outgrow the limits initially placed on them.  If you see Prometheus commonly crashing, try increasing the allocated memory and setting alerts for when resource usage of Monitoring pods approaches limits placed on them.
+For tips on debugging high memory usage, see [this page.](./guides/memory-usage)

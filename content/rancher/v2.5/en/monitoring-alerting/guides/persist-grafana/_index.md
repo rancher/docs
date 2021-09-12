@@ -2,7 +2,7 @@
 title: Persistent Grafana Dashboards
 weight: 6
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/persist-grafana
+  - /rancher/v2.5/en/monitoring-alerting/persist-grafana
 ---
 
 To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.

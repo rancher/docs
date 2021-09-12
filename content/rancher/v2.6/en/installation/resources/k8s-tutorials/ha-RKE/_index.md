@@ -11,7 +11,7 @@ This section describes how to install a Kubernetes cluster. This cluster should 
 
 The Rancher management server can only be run on Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported.
 
-For systems without direct internet access, refer to [Air Gap: Kubernetes install.]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-high-availability/)
+For systems without direct internet access, refer to [Air Gap: Kubernetes install.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/)
 
 > **Single-node Installation Tip:**
 > In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
@@ -81,7 +81,7 @@ ingress:
 >
 > Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 > 
-> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide]({{<baseurl>}}/rancher/v2.6/en/installation/options/etcd/).
+> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/etcd/).
 
 ### 2. Run RKE
 
@@ -162,8 +162,8 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/options/troubleshooting/) page.
+See the [Troubleshooting]({{<baseurl>}}/rancher/v2.6/en/installation/resources/troubleshooting/) page.
 
 
-### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/k8s-install/helm-rancher/)
+### [Next: Install Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/)
 

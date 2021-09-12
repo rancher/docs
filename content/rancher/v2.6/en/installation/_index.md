@@ -61,7 +61,7 @@ Our [instructions for installing Rancher on Kubernetes]({{<baseurl>}}/rancher/v2
 
 When the nodes in your Kubernetes cluster are running and fulfill the [node requirements,]({{<baseurl>}}/rancher/v2.6/en/installation/requirements) you will use Helm to deploy Rancher onto Kubernetes. Helm uses Rancher's Helm chart to install a replica of Rancher on each node in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster.
 
-For a longer discussion of Rancher architecture, refer to the [architecture overview,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture) [recommendations for production-grade architecture,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations) or our [best practices guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/deployment-types)
+For a longer discussion of Rancher architecture, refer to the [architecture overview,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture) [recommendations for production-grade architecture,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations) or our [best practices guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/rancher-server/deployment-types)
 
 # Prerequisites
 Before installing Rancher, make sure that your nodes fulfill all of the [installation requirements.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
@@ -90,5 +90,5 @@ In the Rancher installation instructions, we recommend using K3s or RKE to set u
 Refer to the [docs about options for Docker installs]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker) for details about other configurations including:
 
 - With [API auditing to record all transactions]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#api-audit-log)
-- With an [external load balancer]({{<baseurl>}}/rancher/v2.6/en/installation/options/single-node-install-external-lb/)
+- With an [external load balancer]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/single-node-install-external-lb/)
 - With a [persistent data store]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#persistent-data)

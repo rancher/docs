@@ -4,8 +4,8 @@ weight: 6
 aliases:
   - /rancher/v2.5/en/project-admin/tools/monitoring/expression
   - /rancher/v2.5/en/cluster-admin/tools/monitoring/expression
-  - /rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/expression
+  - /rancher/v2.5/en/monitoring-alerting/expression
+  - /rancher/v2.5/en/monitoring-alerting/configuration/expression
   - /rancher/v2.5/en/monitoring/alerting/configuration/expression
 ---
 

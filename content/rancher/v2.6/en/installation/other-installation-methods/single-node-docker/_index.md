@@ -9,7 +9,7 @@ Rancher can be installed by running a single Docker container.
 In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
-> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/options/single-node-install-external-lb) instead.
+> See [Docker Install with an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/single-node-install-external-lb) instead.
 
 A Docker installation of Rancher is recommended only for development and testing purposes. The ability to migrate Rancher to a high-availability cluster depends on the Rancher version:
 
@@ -35,7 +35,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 >
 > - Use a proxy? See [HTTP Proxy Configuration]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/proxy/)
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#custom-ca-certificate/)
-> - Complete an Air Gap Installation? See [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.6/en/installation/air-gap-single-node/)
+> - Complete an Air Gap Installation? See [Air Gap: Docker Install]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/)
 > - Record all transactions with the Rancher API? See [API Auditing](./advanced/#api-audit-log)
 
 Choose from the following options:
@@ -169,5 +169,5 @@ Refer to [this page](./troubleshooting) for frequently asked questions and troub
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restore]({{<baseurl>}}/rancher/v2.6/en/installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review [Single Node Backup and Restore]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/).

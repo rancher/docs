@@ -10,7 +10,7 @@ When a Route is changed, the Prometheus Operator regenerates the Alertmanager cu
 
 For more information about configuring routes, refer to the [official Alertmanager documentation.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/#3-how-alertmanager-works)
+> This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/how-monitoring-works)
 
 - [Route Restrictions](#route-restrictions)
 - [Route Configuration](#route-configuration)

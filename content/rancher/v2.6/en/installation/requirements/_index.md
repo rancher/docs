@@ -30,7 +30,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [Port Requirements](#port-requirements)
 - [Dockershim Support](#dockershim-support)
 
-For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/deployment-types/)
+For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.]({{<baseurl>}}/rancher/v2.6/en/best-practices/rancher-server/deployment-types/)
 
 The Rancher UI works best in Firefox or Chrome.
 
@@ -52,7 +52,7 @@ Some distributions of Linux may have default firewall rules that block communica
 
 If you don't feel comfortable doing so you might check suggestions in the [respective issue](https://github.com/rancher/rancher/issues/28840). Some users were successful [creating a separate firewalld zone with a policy of ACCEPT for the Pod CIDR](https://github.com/rancher/rancher/issues/28840#issuecomment-787404822).
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.6/en/installation/options/arm64-platform/)
+If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/arm64-platform/)
 
 ### RKE Specific Requirements
 

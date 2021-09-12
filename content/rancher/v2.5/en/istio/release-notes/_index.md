@@ -1,7 +1,7 @@
 ---
 title: Release Notes
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/release-notes
+  - /rancher/v2.5/en/istio/release-notes
   - /rancher/v2.5/en/istio/v2.5/release-notes
 ---
 

@@ -2,7 +2,7 @@
 title: Prometheus Configuration
 weight: 1
 aliases:
-  - /rancher/v2.5/en/monitoring-alerting/v2.5/configuration/prometheusrules
+  - /rancher/v2.5/en/monitoring-alerting/configuration/prometheusrules
   - /rancher/v2.5/en/monitoring-alerting/configuration/prometheusrules
   - /rancher/v2.5/en/monitoring-alerting/configuration/advanced/prometheusrules
 ---

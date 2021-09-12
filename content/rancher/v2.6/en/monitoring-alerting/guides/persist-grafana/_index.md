@@ -17,7 +17,7 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 > 
 > - The monitoring application needs to be installed.
 > - To create the persistent dashboard, you must have at least the **Manage Config Maps** Rancher RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
-> - To see the links to the external monitoring UIs, including Grafana dashboards, you will need at least a [project-member role.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/rbac/#users-with-rancher-cluster-manager-based-permissions)
+> - To see the links to the external monitoring UIs, including Grafana dashboards, you will need at least a [project-member role.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/rbac/#users-with-rancher-cluster-manager-based-permissions)
 
 ### 1. Get the JSON model of the dashboard that you want to persist
 

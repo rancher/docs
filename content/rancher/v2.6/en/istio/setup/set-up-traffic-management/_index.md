@@ -73,4 +73,4 @@ spec:
 
 **Result:** When you generate traffic to this service (for example, by refreshing the ingress gateway URL), the Kiali traffic graph will reflect that traffic to the `reviews` service is divided evenly between `v1` and `v3`.
 
-### [Next: Generate and View Traffic]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/istio/setup/view-traffic)
+### [Next: Generate and View Traffic]({{<baseurl>}}/rancher/v2.6/en/istio/setup/view-traffic)

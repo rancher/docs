@@ -2,7 +2,7 @@
 title: Enable Istio with Pod Security Policies
 weight: 1
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp
+  - /rancher/v2.5/en/istio/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.5/en/istio/legacy/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.5/en/istio/v2.5/configuration-reference/enable-istio-with-psp
@@ -102,7 +102,7 @@ Verify that the CNI is working by deploying a [sample application](https://istio
 
 ### 3. Install Istio
 
-Follow the [primary instructions]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/), adding a custom answer: `istio_cni.enabled: true`.
+Follow the [primary instructions]({{<baseurl>}}/rancher/v2.5/en/istio/setup/enable-istio-in-cluster/), adding a custom answer: `istio_cni.enabled: true`.
 
 After Istio has finished installing, the Apps page in System Projects should show both istio and `istio-cni` applications deployed successfully. Sidecar injection will now be functional.
 

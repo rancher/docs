@@ -287,7 +287,7 @@ spec:
 #    key: string
 ```
 
-For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cis-scans/v2.5/#enabling-alerting-for-rancher-cis-benchmark)
+For more information on enabling alerting for `rancher-cis-benchmark`, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cis-scans/#enabling-alerting-for-rancher-cis-benchmark)
 
 
 # Trusted CA for Notifiers

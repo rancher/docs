@@ -19,7 +19,7 @@ Rancher can configure member roles for AKS clusters in the same way as any other
 
 # Cloud Credentials
 
-> The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-cluster/aks/#prerequisites-in-microsoft-azure)
+> The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/aks/#prerequisites-in-microsoft-azure)
 
 ### Tenant ID
 
@@ -168,6 +168,8 @@ Rancher can connect to a private AKS cluster in one of two ways.
 The first way to ensure that Rancher is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
 
 The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
+
+> **Note:** Please be aware that when registering an existing AKS cluster, the cluster might take some time, possibly hours, to appear in the `Cluster To register` dropdown list. This outcome will be based on region.
 
 For more information about connecting to an AKS private cluster, see the [AKS documentation.](https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster)
 

@@ -15,7 +15,7 @@ New password for default administrator (user-xxxxx):
 Kubernetes install (Helm):
 ```
 $ KUBECONFIG=./kube_config_rancher-cluster.yml
-$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
+$ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher --no-headers | head -1 | awk '{ print $1 }') -c rancher -- reset-password
 New password for default administrator (user-xxxxx):
 <new_password>
 ```
@@ -52,7 +52,7 @@ Node Templates can be accessed by opening your account menu (top right) and sele
 
 ### Why is my Layer-4 Load Balancer in `Pending` state?
 
-The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers/) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
 ### Where is the state of Rancher stored?
 
@@ -86,7 +86,7 @@ The UI consists of static files, and works based on responses of the API. That m
 
 A node is required to have a static IP configured (or a reserved IP via DHCP). If the IP of a node has changed, you will have to remove it from the cluster and readd it. After it is removed, Rancher will update the cluster to the correct state. If the cluster is no longer in `Provisioning` state, the node is removed from the cluster.
 
-When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{<baseurl>}}/rancher/v2.6/en/faq/cleaning-cluster-nodes/) to clean the node.
+When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) to clean the node.
 
 When the node is removed from the cluster, and the node is cleaned, you can readd the node to the cluster.
 

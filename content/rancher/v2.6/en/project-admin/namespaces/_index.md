@@ -34,7 +34,7 @@ Create a new namespace to isolate apps and resources in a project.
 1. Click **Cluster > Projects/Namespaces**.
 1. Go to the project where you want to add a namespace and click **Create Namespace**. Alternately, go to **Not in a Project** to create a namespace not associated with a project.
 
-1. **Optional:** If your project has [Resource Quotas]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
+1. **Optional:** If your project has [Resource Quotas]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
 
 1. Enter a **Name** and then click **Create**.
 
@@ -54,7 +54,7 @@ Cluster admins and members may occasionally need to move a namespace to another 
     >**Notes:**
     >
     >- Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
-    >- You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/) configured.
+    >- You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/projects-and-namespaces/resource-quotas/) configured.
     >- If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.

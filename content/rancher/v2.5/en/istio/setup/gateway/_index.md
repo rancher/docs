@@ -2,7 +2,7 @@
 title: 4. Set up the Istio Gateway
 weight: 5
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/gateway
+  - /rancher/v2.5/en/istio/setup/gateway
   - /rancher/v2.5/en/istio/v2.5/setup/gateway
 ---
 
@@ -140,4 +140,4 @@ In the gateway resource, the selector refers to Istio's default ingress controll
 1. Scroll down to the `istio-system` namespace. 
 1. Within `istio-system`, there is a workload named `istio-ingressgateway`. Click the name of this workload and go to the **Labels and Annotations** section. You should see that it has the key `istio` and the value `ingressgateway`. This confirms that the selector in the Gateway resource matches Istio's default ingress controller.
 
-### [Next: Set up Istio's Components for Traffic Management]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/setup/set-up-traffic-management)
+### [Next: Set up Istio's Components for Traffic Management]({{<baseurl>}}/rancher/v2.5/en/istio/setup/set-up-traffic-management)

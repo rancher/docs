@@ -5,7 +5,7 @@ weight: 200
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
-By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) or launch any tools in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
 Populating the private registry with images is the same process for installing Rancher with Docker and for installing Rancher on a Kubernetes cluster.
 
@@ -53,7 +53,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
+    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -225,7 +225,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 **For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
 1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
-   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/options/upgrading-cert-manager/).
+   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
    ```plain
    helm repo add jetstack https://charts.jetstack.io
    helm repo update

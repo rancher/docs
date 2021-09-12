@@ -110,7 +110,7 @@ Project network isolation is available if you are using any RKE network plugin t
 
 ### Kubernetes Cloud Providers
 
-You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use dynamically provisioned [volumes and storage]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers). If you want to use dynamically provisioned [volumes and storage]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
 >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#cluster-config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
@@ -127,7 +127,9 @@ The private registry configuration option tells Rancher where to pull the [syste
 - **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-See the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) for more information on the private registry for components applied during the provisioning of the cluster.
+For more information on setting up a private registry for components applied during the provisioning of the cluster, see the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/). 
+
+Rancher v2.6 introduced the ability to configure [ECR registries for RKE clusters]({{<baseurl>}}/rke/latest/en/config-options/private-registries/#amazon-elastic-container-registry-ecr-private-registry-setup).
 
 ### Authorized Cluster Endpoint
 
@@ -321,7 +323,7 @@ See [Docker Root Directory](#docker-root-directory).
 
 ### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/).
+Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/).
 
 ### enable_network_policy
 

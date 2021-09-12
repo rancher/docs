@@ -102,7 +102,7 @@ While the Rancher UI forms only allow editing a routing tree that is two levels 
 
 By editing the forms in the Rancher UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
 
-By editing custom YAML in the Alertmanager or Receiver configuration, you can also send alerts to multiple notification systems. For more information, see the section on configuring [Receivers.](./configuration/receiver/#configuring-multiple-receivers)
+By editing custom YAML in the Alertmanager or Receiver configuration, you can also send alerts to multiple notification systems. For more information, see the section on configuring [Receivers.](../configuration/receiver/#configuring-multiple-receivers)
 
 # 4. Monitoring V2 Specific Components
 
@@ -155,7 +155,7 @@ When the monitoring application is installed, you will be able to edit the follo
 | Route | Configuration block (part of Alertmanager) | Add identifying information to make alerts more meaningful and direct them to individual teams. Automatically updates the Alertmanager custom resource. |
 | PrometheusRule | Custom resource | For more advanced use cases, you may want to define what Prometheus metrics or time series database queries should result in alerts being fired.  Automatically updates the Prometheus custom resource. |
 | Alertmanager | Custom resource | Edit this custom resource only if you need more advanced configuration options beyond what the Rancher UI exposes in the Routes and Receivers sections. For example, you might want to edit this resource to add a routing tree with more than two levels. |
-| Prometheus | Custom resource | Edit this custom resource only if you need more advanced configuration beyond what can be configured using  ServiceMonitors, PodMonitors, or [Rancher monitoring Helm chart options.](./configuration/helm-chart-options) |
+| Prometheus | Custom resource | Edit this custom resource only if you need more advanced configuration beyond what can be configured using  ServiceMonitors, PodMonitors, or [Rancher monitoring Helm chart options.](../configuration/helm-chart-options) |
 
 # 5. Scraping and Exposing Metrics
 

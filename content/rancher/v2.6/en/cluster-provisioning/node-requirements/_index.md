@@ -3,9 +3,9 @@ title: Node Requirements for Rancher Managed Clusters
 weight: 1
 ---
 
-This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the cluster (or single node) running Rancher.
+This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running Rancher.
 
-> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server cluster and downstream clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
+> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server three-node cluster and downstream clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
 
 Make sure the nodes for the Rancher server fulfill the following requirements:
 
@@ -22,7 +22,7 @@ For details on which OS and Docker versions were tested with each Rancher versio
 
 All supported operating systems are 64-bit x86.
 
-If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.6/en/installation/options/arm64-platform/)
+If you plan to use ARM64, see [Running on ARM64 (Experimental).]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/arm64-platform/)
 
 For information on how to install Docker, refer to the official [Docker documentation.](https://docs.docker.com/)
 

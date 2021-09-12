@@ -51,7 +51,7 @@ These default exporters automatically scrape metrics for CPU and memory from all
 
 ### Default Alerts
 
-The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboard/accessing-the-alertmanager-ui) and click **Expand all groups**.
+The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](./dashboards/#alertmanager-ui) and click **Expand all groups.**
 
 ### Components Exposed in the Rancher UI
 
@@ -80,7 +80,7 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 - [ServiceMonitor and PodMonitor](./configuration/servicemonitor-podmonitor)
 - [Receiver](./configuration/receiver)
 - [Route](./configuration/route)
-- [PrometheusRule](./configuration/advanced/prometheusrule)
+- [PrometheusRule](./configuration/advanced/prometheusrules)
 - [Prometheus](./configuration/advanced/prometheus)
 - [Alertmanager](./configuration/advanced/alertmanager)
 
@@ -89,8 +89,6 @@ For information on configuring access to monitoring, see [this page.](./rbac)
 For more information on `rancher-monitoring` chart options, including options to set resource limits and requests, see [this page.](./configuration/helm-chart-options)
 
 # Windows Cluster Support
-
-_Available as of v2.5.8_
 
 When deployed onto an RKE1 Windows cluster, Monitoring V2 will now automatically deploy a [windows-exporter](https://github.com/prometheus-community/windows_exporter) DaemonSet and set up a ServiceMonitor to collect metrics from each of the deployed Pods. This will populate Prometheus with `windows_` metrics that are akin to the `node_` metrics exported by [node_exporter](https://github.com/prometheus/node_exporter) for Linux hosts.
 
@@ -104,4 +102,4 @@ For more details on how to upgrade wins on existing Windows hosts, refer to the 
 
 There is a [known issue](https://github.com/rancher/rancher/issues/28787#issuecomment-693611821) that K3s clusters require more default memory. If you are enabling monitoring on a K3s cluster, we recommend to setting `prometheus.prometheusSpec.resources.memory.limit` to 2500 Mi and `prometheus.prometheusSpec.resources.memory.request` to 1750 Mi.
 
-For tips on debugging high memory usage, see [this page.](./memory-usage)
+For tips on debugging high memory usage, see [this page.](./guides/memory-usage)

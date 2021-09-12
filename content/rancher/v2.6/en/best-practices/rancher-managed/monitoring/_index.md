@@ -95,7 +95,7 @@ Sometimes it is useful to monitor workloads from the outside. For this, you can 
 
 If you have a (micro)service architecture where multiple individual workloads within your cluster are communicating with each other, it is really important to have detailed metrics and traces about this traffic to understand how all these workloads are communicating with each other and where a problem or bottleneck may be.
 
-Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/tools/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
+Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.6/en/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
 
 # Real User Monitoring
 
@@ -103,7 +103,7 @@ Monitoring the availability and performance of all your internal workloads is vi
 
 # Security Monitoring
 
-In addition to monitoring workloads to detect performance, availability or scalability problems, the cluster and the workloads running into it should also be monitored for potential security problems. A good starting point is to frequently run and alert on [CIS Scans]({{<baseurl>}}/rancher/v2.6/en/cis-scans/v2.5/) which check if the cluster is configured according to security best practices.
+In addition to monitoring workloads to detect performance, availability or scalability problems, the cluster and the workloads running into it should also be monitored for potential security problems. A good starting point is to frequently run and alert on [CIS Scans]({{<baseurl>}}/rancher/v2.6/en/cis-scans/) which check if the cluster is configured according to security best practices.
 
 For the workloads, you can have a look at Kubernetes and Container security solutions like [Falko](https://falco.org/), [Aqua Kubernetes Security](https://www.aquasec.com/solutions/kubernetes-container-security/), [SysDig](https://sysdig.com/).
 
@@ -117,4 +117,4 @@ When setting up alerts, configure them for all the workloads that are critical t
 
 If an alert starts firing, but there is nothing you can do about it at the moment, it's also fine to silence the alert for a certain amount of time, so that you can look at it later.
 
-You can find more information on how to set up alerts and notification channels in the [Rancher Documentation]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/v2.5).
+You can find more information on how to set up alerts and notification channels in the [Rancher Documentation]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting).

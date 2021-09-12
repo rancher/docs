@@ -30,4 +30,4 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - Istio Service Mesh
 - OPA Gatekeeper
 
-For more information, see [Tools]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/tools/)
+Tools can be installed through **Apps & Marketplace.**

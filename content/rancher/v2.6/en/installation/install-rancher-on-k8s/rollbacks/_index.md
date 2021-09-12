@@ -18,7 +18,7 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
-> * While restoring rancher on the same setup, the rancher deployment is manually scaled down before the restore starts then the operator will scale it back up once restore completes. So Rancher will be unavailable during the restore.
+> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. So Rancher will be unavailable during the restore.
 
 ### Scale the Rancher Deployment to 0
 
@@ -56,7 +56,7 @@ A restore is performed by creating a Restore custom resource.
 	      endpoint: s3.us-west-2.amazonaws.com
       ```
 
-      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/v2.5/examples/)
+      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples/)
 
 1. Click **Create**.
 

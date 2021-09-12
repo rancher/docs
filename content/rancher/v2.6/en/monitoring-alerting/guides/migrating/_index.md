@@ -32,7 +32,7 @@ Unlike in Monitoring & Alerting V1, both features are packaged in a single Helm 
 
 Monitoring V2 can only be configured on the cluster level. Project-level monitoring and alerting is no longer supported.
 
-For more information on how to configure Monitoring & Alerting V2, see [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration)
+For more information on how to configure Monitoring & Alerting V2, see [this page.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration)
 
 # Changes to Role-based Access Control
 
@@ -126,11 +126,11 @@ or add the Prometheus Rule through the Cluster Explorer
 
 {{< img "/img/rancher/monitoring/migration/alert_2.4_to_2.5_target.png" "">}}
 
-For more details on how to configure PrometheusRules in Monitoring V2 see [Monitoring Configuration]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#prometheusrules).
+For more details on how to configure PrometheusRules in Monitoring V2 see [Monitoring Configuration]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/prometheusrules).
 
 ### Migrating Notifiers
 
-There is no direct equivalent for how notifiers work in Monitoring V1. Instead you have to replicate the desired setup with [Routes and Receivers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration#alertmanager-config) in Monitoring V2.
+There is no direct equivalent for how notifiers work in Monitoring V1. Instead you have to replicate the desired setup with Routes and Receivers in Monitoring V2.
 
 
 ### Migrating for RKE Template Users

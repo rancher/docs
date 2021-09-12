@@ -4,7 +4,6 @@ shortTitle: Backups
 weight: 3
 ---
 
-
 After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
 
 ## Before You Start
@@ -68,4 +67,4 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{<baseurl>}}/rancher/v2.6/en/backups/restorations/single-node-restoration) if you need to restore backup data.
+**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs/docker-restores) if you need to restore backup data.
