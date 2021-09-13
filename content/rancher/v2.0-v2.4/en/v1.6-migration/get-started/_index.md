@@ -1,6 +1,8 @@
 ---
 title: "1. Get Started"
 weight: 25
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/get-started/
 ---
 Get started with your migration to Rancher v2.x by installing Rancher and configuring your new Rancher environment.
 

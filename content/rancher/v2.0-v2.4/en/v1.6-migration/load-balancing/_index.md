@@ -1,6 +1,8 @@
 ---
 title: "7. Load Balancing"
 weight: 700
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/load-balancing/
 ---
 
 If your applications are public-facing and consume significant traffic, you should place a load balancer in front of your cluster so that users can always access their apps without service interruption. Typically, you can fulfill a high volume of service requests by [horizontally scaling](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) your deployment, which spins up additional application containers as traffic ramps up. However, this technique requires routing that distributes traffic across your nodes efficiently. In cases where you need to accommodate public traffic that scales up and down, you'll need a load balancer.

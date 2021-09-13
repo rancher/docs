@@ -1,6 +1,8 @@
 ---
 title:  iSCSI Volumes
 weight: 6000
+aliases:
+  - /rancher/v2.x/en/cluster-admin/volumes-and-storage/iscsi-volumes/
 ---
 
 In [Rancher Launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) that store data on iSCSI volumes, you may experience an issue where kubelets fail to automatically connect with iSCSI volumes. This failure is likely due to an incompatibility issue involving the iSCSI initiator tool. You can resolve this issue by installing the iSCSI initiator tool on each of your cluster nodes.

@@ -3,6 +3,7 @@ title: FAQ
 weight: 25
 aliases:
   - /rancher/v2.5/en/about/
+  - /rancher/v2.x/en/faq/
 ---
 
 This FAQ is a work in progress designed to answer the questions our users most frequently ask about Rancher v2.x.

@@ -1,6 +1,8 @@
 ---
 title: Kubernetes resources
 weight: 101
+aliases:
+  - /rancher/v2.x/en/troubleshooting/kubernetes-resources/
 ---
 
 The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) clusters.

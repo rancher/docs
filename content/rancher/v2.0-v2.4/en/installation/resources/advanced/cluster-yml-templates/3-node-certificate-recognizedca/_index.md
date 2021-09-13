@@ -3,6 +3,7 @@ title: Template for an RKE Cluster with a Certificate Signed by Recognized CA an
 weight: 3
 aliases:	
   - /rancher/v2.0-v2.4/en/installation/options/cluster-yml-templates/3-node-certificate-recognizedca
+  - /rancher/v2.x/en/installation/resources/advanced/cluster-yml-templates/3-node-certificate-recognizedca/
 ---
 
 RKE uses a cluster.yml file to install and configure your Kubernetes cluster.

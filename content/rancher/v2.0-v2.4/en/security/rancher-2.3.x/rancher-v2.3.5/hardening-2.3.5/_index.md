@@ -3,6 +3,7 @@ title: Hardening Guide v2.3.5
 weight: 100
 aliases:
   - /rancher/v2.0-v2.4/en/security/hardening-2.3.5
+  - /rancher/v2.x/en/security/rancher-2.3.x/rancher-v2.3.5/hardening-2.3.5/
 ---
 
 This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).

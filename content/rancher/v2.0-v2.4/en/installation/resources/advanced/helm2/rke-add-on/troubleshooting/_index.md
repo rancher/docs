@@ -2,9 +2,10 @@
 title: Troubleshooting HA RKE Add-On Install
 weight: 370
 aliases:
-- /rancher/v2.0-v2.4/en/installation/troubleshooting-ha/
-- /rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/troubleshooting
-- /rancher/v2.0-v2.4/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/404-default-backend/
+  - /rancher/v2.0-v2.4/en/installation/troubleshooting-ha/
+  - /rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/troubleshooting
+  - /rancher/v2.0-v2.4/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/404-default-backend/
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

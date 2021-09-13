@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/node-selectors
   - /rancher/v2.0-v2.4/en/istio/legacy/setup/node-selectors
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/node-selectors
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/node-selectors/
 ---
 
 > **Prerequisite:** Your cluster needs a worker node that can designated for Istio. The worker node should meet the [resource requirements.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/resources)

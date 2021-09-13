@@ -5,6 +5,7 @@ weight: 3
 aliases:
   - /rancher/v2.5/en/cis-scans/rbac
   - /rancher/v2.5/en/cis-scans/v2.5/rbac
+  - /rancher/v2.x/en/cis-scans/v2.5/rbac/
 ---
 
 This section describes the permissions required to use the rancher-cis-benchmark App.

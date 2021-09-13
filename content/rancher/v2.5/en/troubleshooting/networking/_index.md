@@ -1,6 +1,8 @@
 ---
 title: Networking
 weight: 102
+aliases:
+  - /rancher/v2.x/en/troubleshooting/networking/
 ---
 
 The commands/steps listed on this page can be used to check networking related issues in your cluster.

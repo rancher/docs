@@ -1,6 +1,8 @@
 ---
 title: Fleet - GitOps at Scale
 weight: 1
+aliases:
+  - /rancher/v2.x/en/deploy-across-clusters/fleet/
 ---
 
 _Available as of Rancher v2.5_

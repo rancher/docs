@@ -1,6 +1,8 @@
 ---
 title: Namespaces
 weight: 2520
+aliases:
+  - /rancher/v2.x/en/project-admin/namespaces/
 ---
 
 Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.

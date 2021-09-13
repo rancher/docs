@@ -3,6 +3,7 @@ title: Manual HPA Installation for Clusters Created Before Rancher v2.0.7
 weight: 3050
 aliases:
   - /rancher/v2.0-v2.4/en/k8s-in-rancher/horizontal-pod-autoscaler/hpa-for-rancher-before-2_0_7
+  - /rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7/
 ---
 
 This section describes how to manually install HPAs for clusters created with Rancher before v2.0.7. This section also describes how to configure your HPA to scale up or down, and how to assign roles to your HPA.

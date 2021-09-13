@@ -1,6 +1,8 @@
 ---
 title: Other Installation Methods
 weight: 3
+aliases:
+  - /rancher/v2.x/en/installation/other-installation-methods/
 ---
 
 ### Air Gapped Installations

@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/backups/restorations
   - /rancher/v2.0-v2.4/en/backups/legacy/restore
   - /rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/
 ---
 If you lose the data on your Rancher Server, you can restore it if you have backups stored in a safe location.
 

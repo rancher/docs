@@ -1,6 +1,8 @@
 ---
 title: Group Permissions with Shibboleth and OpenLDAP
 weight: 1
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/shibboleth/about/
 ---
 
 This page provides background information and context for Rancher users who intend to set up the Shibboleth authentication provider in Rancher. 

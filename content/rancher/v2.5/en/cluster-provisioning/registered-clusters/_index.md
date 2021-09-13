@@ -3,6 +3,8 @@ title: Registering Existing Clusters
 weight: 6
 aliases:
   - /rancher/v2.5/en/cluster-provisioning/imported-clusters
+  - /rancher/v2.x/en/cluster-provisioning/imported-clusters/
+  - /rancher/v2.x/en/cluster-provisioning/registered-clusters/
 ---
 
 The cluster registration feature replaced the feature to import clusters.

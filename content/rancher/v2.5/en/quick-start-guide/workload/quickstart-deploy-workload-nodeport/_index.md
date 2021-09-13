@@ -1,6 +1,8 @@
 ---
 title: Workload with NodePort Quick Start
 weight: 200
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/
 ---
 
 ### Prerequisite

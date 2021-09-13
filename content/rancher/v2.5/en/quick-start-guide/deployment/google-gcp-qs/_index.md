@@ -2,6 +2,8 @@
 title: Rancher GCP Quick Start Guide
 description: Read this step by step Rancher GCP guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/deployment/google-gcp-qs/
 ---
 The following steps will quickly deploy a Rancher server on GCP in a single-node RKE Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 

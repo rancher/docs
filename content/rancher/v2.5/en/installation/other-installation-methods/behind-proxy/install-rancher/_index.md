@@ -1,6 +1,8 @@
 ---
 title: 3. Install Rancher
 weight: 300
+aliases:
+  - /rancher/v2.x/en/installation/other-installation-methods/behind-proxy/install-rancher/
 ---
 
 Now that you have a running RKE cluster, you can install Rancher in it. For security reasons all traffic to Rancher must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate. 

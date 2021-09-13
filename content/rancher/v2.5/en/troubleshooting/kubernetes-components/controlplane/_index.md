@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting Controlplane Nodes
 weight: 2
+aliases:
+  - /rancher/v2.x/en/troubleshooting/kubernetes-components/controlplane/
 ---
 
 This section applies to nodes with the `controlplane` role.

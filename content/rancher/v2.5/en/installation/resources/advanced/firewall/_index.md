@@ -1,6 +1,8 @@
 ---
 title: Opening Ports with firewalld
 weight: 1
+aliases:
+  - /rancher/v2.x/en/installation/resources/advanced/firewall/
 ---
 
 > We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.

@@ -1,6 +1,8 @@
 ---
 title: Kubernetes Introduction
 weight: 1
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/kub-intro/
 ---
 
 Rancher v2.x is built on the [Kubernetes](https://kubernetes.io/docs/home/?path=users&persona=app-developer&level=foundational) container orchestrator. This shift in underlying technology for v2.x is a large departure from v1.6, which supported several popular container orchestrators. Since Rancher is now based entirely on Kubernetes, it's helpful to learn the Kubernetes basics.

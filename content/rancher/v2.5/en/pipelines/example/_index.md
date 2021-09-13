@@ -4,6 +4,7 @@ weight: 501
 aliases:
   - /rancher/v2.5/en/tools/pipelines/reference/
   - /rancher/v2.5/en/k8s-in-rancher/pipelines/example
+  - /rancher/v2.x/en/pipelines/example/
 ---
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.

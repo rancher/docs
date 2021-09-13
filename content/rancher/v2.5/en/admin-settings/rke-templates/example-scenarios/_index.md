@@ -1,6 +1,8 @@
 ---
 title: Example Scenarios
 weight: 5
+aliases:
+  - /rancher/v2.x/en/admin-settings/rke-templates/example-scenarios/
 ---
 
 These example scenarios describe how an organization could use templates to standardize cluster creation.

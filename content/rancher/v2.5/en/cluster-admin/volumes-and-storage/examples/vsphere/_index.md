@@ -3,6 +3,7 @@ title: vSphere Storage
 weight: 3055
 aliases:
   - /rancher/v2.5/en/tasks/clusters/adding-storage/provisioning-storage/vsphere/
+  - /rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/vsphere/
 ---
 
 To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a persistent volume claim.

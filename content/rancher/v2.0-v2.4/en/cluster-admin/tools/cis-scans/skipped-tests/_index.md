@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cis-scans/legacy/skipped-tests
   - /rancher/v2.0-v2.4/en/cis-scans/v2.4/skipped-tests
   - /rancher/v2.0-v2.4/en/cis-scans/skipped-tests
+  - /rancher/v2.x/en/cis-scans/v2.4/skipped-tests/
 ---
 
 This section lists the tests that are skipped in the permissive test profile for RKE.

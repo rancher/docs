@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/resources
   - /rancher/v2.0-v2.4/en/istio/legacy/resources
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/resources
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/resources/
 ---
 _Available as of v2.3.0_
 

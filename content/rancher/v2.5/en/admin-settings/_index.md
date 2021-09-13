@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.5/en/concepts/global-configuration/server-url/
   - /rancher/v2.5/en/tasks/global-configuration/server-url/
   - /rancher/v2.5/en/admin-settings/log-in/
+  - /rancher/v2.x/en/admin-settings/
 ---
 
 After installation, the [system administrator]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/global-permissions/) should configure Rancher to configure authentication, authorization, security, default settings, security policies, drivers and global DNS entries.

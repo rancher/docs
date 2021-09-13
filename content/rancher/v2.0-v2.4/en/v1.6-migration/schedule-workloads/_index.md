@@ -1,6 +1,8 @@
 ---
 title: "5. Schedule Your Services"
 weight: 500
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/schedule-workloads/
 ---
 
 In v1.6, objects called _services_ were used to schedule containers to your cluster hosts. Services included the Docker image for an application, along with configuration settings for a desired state.

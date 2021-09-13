@@ -3,6 +3,7 @@ title: Migrating to Rancher v2.5 Monitoring
 weight: 9
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/migrating
+  - /rancher/v2.x/en/monitoring-alerting/v2.5/migrating/
 ---
 
 If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.

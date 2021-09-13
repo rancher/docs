@@ -5,6 +5,7 @@ weight: 3041
 aliases:
   - /rancher/v2.5/en/concepts/load-balancing/
   - /rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers
+  - /rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/
 ---
 Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing.
 

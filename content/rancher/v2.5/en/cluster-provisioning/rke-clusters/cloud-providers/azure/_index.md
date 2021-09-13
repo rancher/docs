@@ -1,6 +1,8 @@
 ---
 title: Setting up the Azure Cloud Provider
 weight: 2
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/azure/
 ---
 
 When using the `Azure` cloud provider, you can leverage the following capabilities:

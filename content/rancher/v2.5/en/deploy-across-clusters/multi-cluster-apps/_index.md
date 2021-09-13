@@ -1,6 +1,8 @@
 ---
 title: Multi-cluster Apps
 weight: 2
+aliases:
+  - /rancher/v2.x/en/deploy-across-clusters/multi-cluster-apps/
 ---
 
 > As of Rancher v2.5, we now recommend using [Fleet]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) for deploying apps across clusters.

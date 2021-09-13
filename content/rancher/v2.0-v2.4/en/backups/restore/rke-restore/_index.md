@@ -9,6 +9,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/backups/legacy/restore/k8s-restore/rke-restore/
   - /rancher/v2.0-v2.4/en/backups/legacy/restore/rke-restore
   - /rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore/rke-restore
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/
 ---
 
 This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. 

@@ -4,6 +4,7 @@ shortTitle: Storage
 weight: 3
 aliases:
   - /rancher/v2.5/en/backups/v2.5/configuration/storage-config
+  - /rancher/v2.x/en/backups/v2.5/configuration/storage-config/
 ---
 
 Configure a storage location where all backups are saved by default. You will have the option to override this with each backup, but will be limited to using an S3-compatible object store.

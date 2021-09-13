@@ -4,6 +4,7 @@ weight: 101
 aliases:
   - /rancher/v2.0-v2.4/en/best-practices/management
   - /rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/management
+  - /rancher/v2.x/en/best-practices/v2.0-v2.4/management/
 ---
 
 Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.

@@ -3,6 +3,7 @@ title: NFS Storage
 weight: 3054
 aliases:
   - /rancher/v2.5/en/tasks/clusters/adding-storage/provisioning-storage/nfs/
+  - /rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/nfs/
 ---
 
 Before you can use the NFS storage volume plug-in with Rancher deployments, you need to provision an NFS server.

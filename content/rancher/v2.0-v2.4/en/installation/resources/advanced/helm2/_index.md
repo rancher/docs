@@ -3,6 +3,7 @@ title: Kubernetes Installation Using Helm 2
 weight: 1
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/
 ---
 
 > After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.

@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.5/en/backups/backups/single-node-backups/
   - /rancher/v2.5/en/backups/legacy/backup/single-node-backups/
   - /rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups/
+  - /rancher/v2.x/en/backups/v2.5/docker-installs/docker-backups/
 ---
 
 

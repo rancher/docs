@@ -1,6 +1,8 @@
 ---
 title: '1. Set up Infrastructure'
 weight: 100
+aliases:
+  - /rancher/v2.x/en/installation/other-installation-methods/behind-proxy/prepare-nodes/
 ---
 
 In this section, you will provision the underlying infrastructure for your Rancher management server with internete access through a HTTP proxy.

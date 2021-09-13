@@ -1,6 +1,8 @@
 ---
 title: Registered clusters
 weight: 105
+aliases:
+  - /rancher/v2.x/en/troubleshooting/imported-clusters/
 ---
 
 The commands/steps listed on this page can be used to check clusters that you are registering or that are registered in Rancher.

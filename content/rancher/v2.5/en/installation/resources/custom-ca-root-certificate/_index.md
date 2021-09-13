@@ -4,6 +4,7 @@ weight: 1
 aliases:
   - /rancher/v2.5/en/installation/options/custom-ca-root-certificate/
   - /rancher/v2.5/en/installation/resources/choosing-version/encryption/custom-ca-root-certificate
+  - /rancher/v2.x/en/installation/resources/custom-ca-root-certificate/
 ---
 
 If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).

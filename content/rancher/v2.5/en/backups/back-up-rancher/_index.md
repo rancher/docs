@@ -3,6 +3,8 @@ title: Backing up Rancher
 weight: 1
 aliases:
   - /rancher/v2.5/en/backups/v2.5/back-up-rancher
+  - /rancher/v2.x/en/backups/
+  - /rancher/v2.x/en/backups/v2.5/back-up-rancher/
 ---
 
 In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups)

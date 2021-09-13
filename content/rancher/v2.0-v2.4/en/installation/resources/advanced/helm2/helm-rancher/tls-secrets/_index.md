@@ -4,6 +4,7 @@ description: Read about how to populate the Kubernetes TLS secret for a Rancher 
 weight: 276
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/helm-rancher/tls-secrets
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/helm-rancher/tls-secrets/
 ---
 
 Kubernetes will create all the objects and services for Rancher, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.

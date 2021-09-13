@@ -4,6 +4,7 @@ shortTitle: Backup
 weight: 1
 aliases:
   - /rancher/v2.5/en/backups/v2.5/configuration/backup-config
+  - /rancher/v2.x/en/backups/v2.5/configuration/backup-config/
 ---
 
 The Backup Create page lets you configure a schedule, enable encryption and specify the storage location for your backups.

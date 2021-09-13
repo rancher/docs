@@ -1,6 +1,8 @@
 ---
 title: Architecture
 weight: 1
+aliases:
+  - /rancher/v2.x/en/overview/architecture/
 ---
 
 This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.

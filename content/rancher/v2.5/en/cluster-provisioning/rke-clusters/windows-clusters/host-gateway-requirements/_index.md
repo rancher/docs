@@ -1,6 +1,8 @@
 ---
 title: Networking Requirements for Host Gateway (L2bridge)
 weight: 1000
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/
 ---
 
 This section describes how to configure custom Windows clusters that are using *Host Gateway (L2bridge)* mode.

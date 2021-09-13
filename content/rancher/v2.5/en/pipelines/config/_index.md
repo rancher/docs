@@ -3,6 +3,7 @@ title: Pipeline Configuration Reference
 weight: 1
 aliases:
   - /rancher/v2.5/en/k8s-in-rancher/pipelines/config
+  - /rancher/v2.x/en/pipelines/config/
 ---
 
 In this section, you'll learn how to configure pipelines.

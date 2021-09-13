@@ -6,6 +6,8 @@ aliases:
   - /rancher/v2.5/en/installation/single-node-install/
   - /rancher/v2.5/en/installation/single-node
   - /rancher/v2.5/en/installation/other-installation-methods/single-node
+  - /rancher/v2.x/en/installation/requirements/installing-docker/
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node-docker/
 ---
 
 Rancher can be installed by running a single Docker container.

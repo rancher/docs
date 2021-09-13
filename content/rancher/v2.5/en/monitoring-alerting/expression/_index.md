@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.5/en/monitoring-alerting/expression
   - /rancher/v2.5/en/monitoring-alerting/configuration/expression
   - /rancher/v2.5/en/monitoring/alerting/configuration/expression
+  - /rancher/v2.x/en/monitoring-alerting/v2.5/configuration/expression/
 ---
 
 The PromQL expressions in this doc can be used to configure alerts.

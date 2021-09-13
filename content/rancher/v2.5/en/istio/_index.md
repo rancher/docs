@@ -3,6 +3,8 @@ title: Istio
 weight: 14
 aliases:
   - /rancher/v2.5/en/dashboard/istio
+  - /rancher/v2.x/en/istio/
+  - /rancher/v2.x/en/istio/v2.5/
 ---
 
 [Istio](https://istio.io/) is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.

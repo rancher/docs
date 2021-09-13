@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting Worker Nodes and Generic Components
 weight: 4
+aliases:
+  - /rancher/v2.x/en/troubleshooting/kubernetes-components/worker-and-generic/
 ---
 
 This section applies to every node as it includes components that run on nodes with any role.

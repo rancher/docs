@@ -1,6 +1,8 @@
 ---
 title: Backing up a Cluster
 weight: 2045
+aliases:
+  - /rancher/v2.x/en/cluster-admin/backing-up-etcd/
 ---
 
 In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) can be easily performed.

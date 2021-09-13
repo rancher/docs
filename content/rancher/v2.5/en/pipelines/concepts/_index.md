@@ -3,6 +3,7 @@ title: Concepts
 weight: 1
 aliases:
   - /rancher/v2.5/en/k8s-in-rancher/pipelines/concepts
+  - /rancher/v2.x/en/pipelines/concepts/
 ---
 
 The purpose of this page is to explain common concepts and terminology related to pipelines.

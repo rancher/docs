@@ -2,6 +2,8 @@
 title: Creating a Tencent TKE Cluster
 shortTitle: Tencent Kubernetes Engine
 weight: 2125
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/tke/
 ---
 
 You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver]({{<baseurl>}}/rancher/v2.5/en/admin-settings/drivers/cluster-drivers/) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver]({{<baseurl>}}/rancher/v2.5/en/admin-settings/drivers/cluster-drivers/#activating-deactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.

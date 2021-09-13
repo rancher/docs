@@ -3,6 +3,7 @@ title: RancherD Configuration Reference
 weight: 1
 aliases:
   - /rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration
+  - /rancher/v2.x/en/installation/install-rancher-on-linux/rancherd-configuration/
 ---
 
 > RancherD is an experimental feature.
