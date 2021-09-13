@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.5/en/installation/k8s-install/kubernetes-rke
   - /rancher/v2.5/en/installation/ha-server-install 
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/install
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/
 ---
 
 In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
@@ -135,8 +136,7 @@ helm repo update
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.5.1 \
-  --set installCRDs=true
+  --version v1.5.1
 ```
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the cert-manager namespace for running pods:

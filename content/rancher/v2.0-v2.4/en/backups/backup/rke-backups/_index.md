@@ -11,6 +11,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/backups/legacy/backups/ha-backups
   - /rancher/v2.0-v2.4/en/backups/legacy/backup/ha-backups
   - /rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/backup/rke-backups
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/rke-backups/
 ---
 This section describes how to create backups of your high-availability Rancher install.
 

@@ -1,6 +1,8 @@
 ---
 title: Rancher v2.3.x
 weight: 3
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.3.x/
 ---
 
 The relevant Hardening Guide and Self Assessment guide depends on your Rancher version:

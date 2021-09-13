@@ -3,6 +3,7 @@ title: Additional Steps for Installing Istio on an RKE2 Cluster
 weight: 3
 aliases:
   - /rancher/v2.5/en/istio/v2.5/configuration-reference/rke2
+  - /rancher/v2.x/en/istio/v2.5/configuration-reference/rke2/
 ---
 
 Through the **Cluster Explorer,** when installing or upgrading Istio through **Apps & Marketplace,**

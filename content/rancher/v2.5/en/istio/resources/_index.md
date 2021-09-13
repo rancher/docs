@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/project-admin/istio/config/
   - /rancher/v2.5/en/istio/resources
   - /rancher/v2.5/en/istio/v2.5/resources
+  - /rancher/v2.x/en/istio/v2.5/resources/
 ---
 
 This section describes the minimum recommended computing resources for the Istio components in a cluster.

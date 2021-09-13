@@ -3,6 +3,9 @@ title: Monitoring and Alerting
 shortTitle: Monitoring/Alerting
 description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 weight: 13
+aliases:
+  - /rancher/v2.x/en/monitoring-alerting/
+  - /rancher/v2.x/en/monitoring-alerting/v2.5/
 ---
 
 Using the `rancher-monitoring` application, you can quickly deploy leading open-source monitoring and alerting solutions onto your cluster.

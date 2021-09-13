@@ -3,6 +3,7 @@ title: '3. Install Kubernetes (Skip for Docker Installs)'
 weight: 300
 aliases:
   - /rancher/v2.5/en/installation/air-gap-high-availability/install-kube
+  - /rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/
 ---
 
 > Skip this section if you are installing Rancher on a single node with Docker.

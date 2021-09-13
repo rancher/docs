@@ -1,6 +1,8 @@
 ---
 title: Access and Sharing
 weight: 31
+aliases:
+  - /rancher/v2.x/en/admin-settings/rke-templates/template-access-and-sharing/
 ---
 
 If you are an RKE template owner, you can share it with users or groups of users, who can then use the template to create clusters.

@@ -4,6 +4,7 @@ weight: 4
 aliases:
   - /rancher/v2.5/en/istio/setup/deploy-workloads
   - /rancher/v2.5/en/istio/v2.5/setup/deploy-workloads
+  - /rancher/v2.x/en/istio/v2.5/setup/deploy-workloads/
 ---
 
 > **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have the Istio app installed.  

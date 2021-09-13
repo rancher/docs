@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/concepts/ci-cd-pipelines/
   - /rancher/v2.5/en/tasks/pipelines/
   - /rancher/v2.5/en/tools/pipelines/configurations/
+  - /rancher/v2.x/en/project-admin/pipelines/
 ---
 Using Rancher, you can integrate with a GitHub repository to setup a continuous integration (CI) pipeline.
 

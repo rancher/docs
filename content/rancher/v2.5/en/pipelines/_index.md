@@ -3,6 +3,7 @@ title: Pipelines
 weight: 10
 aliases:
   - /rancher/v2.5/en/k8s-in-rancher/pipelines  
+  - /rancher/v2.x/en/pipelines/
 ---
 
 > As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) available in Cluster Explorer.

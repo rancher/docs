@@ -1,6 +1,8 @@
 ---
 title: Global Permissions
 weight: 1126
+aliases:
+  - /rancher/v2.x/en/admin-settings/rbac/global-permissions/
 ---
 
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.

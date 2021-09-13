@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/logging/elasticsearch
   - /rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/elasticsearch
   - /rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/elasticsearch
+  - /rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/elasticsearch/
 ---
 
 If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.

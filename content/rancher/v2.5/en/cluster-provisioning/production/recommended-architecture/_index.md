@@ -1,6 +1,8 @@
 ---
 title: Recommended Cluster Architecture
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/production/recommended-architecture/
 ---
 
 There are three roles that can be assigned to nodes: `etcd`, `controlplane` and `worker`. 

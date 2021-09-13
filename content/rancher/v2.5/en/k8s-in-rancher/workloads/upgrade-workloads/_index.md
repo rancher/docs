@@ -4,6 +4,7 @@ weight: 3028
 aliases:
   - /rancher/v2.5/en/tasks/workloads/upgrade-workloads/
   - /rancher/v2.5/en/k8s-in-rancher/workloads/upgrade-workloads
+  - /rancher/v2.x/en/k8s-in-rancher/workloads/upgrade-workloads/
 ---
 When a new version of an application image is released on Docker Hub, you can upgrade any workloads running a previous version of the application to the new one.
 

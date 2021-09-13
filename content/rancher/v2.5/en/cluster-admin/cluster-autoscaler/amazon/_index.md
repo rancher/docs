@@ -1,6 +1,8 @@
 ---
 title: Cluster Autoscaler with AWS EC2 Auto Scaling Groups
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-admin/cluster-autoscaler/amazon/
 ---
 
 This guide will show you how to install and use [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on Rancher custom clusters using AWS EC2 Auto Scaling Groups.

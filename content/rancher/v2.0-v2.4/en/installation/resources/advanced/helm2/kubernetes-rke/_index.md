@@ -3,6 +3,7 @@ title: "2. Install Kubernetes with RKE"
 weight: 190
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/kubernetes-rke
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/kubernetes-rke/
 ---
 
 Use RKE to install Kubernetes with a high availability etcd configuration.

@@ -4,6 +4,7 @@ description: Learn how you can set up load balancers and ingress controllers to 
 weight: 3040
 aliases:
   - /rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress
+  - /rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/
 ---
 
 Within Rancher, you can set up load balancers and ingress controllers to redirect service requests.

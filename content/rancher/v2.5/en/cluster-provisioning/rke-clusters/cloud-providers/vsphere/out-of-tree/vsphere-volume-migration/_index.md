@@ -1,6 +1,8 @@
 ---
 title: Migrating vSphere In-tree Volumes to CSI
 weight: 5
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/
 ---
 _Available as of v2.5+_
 

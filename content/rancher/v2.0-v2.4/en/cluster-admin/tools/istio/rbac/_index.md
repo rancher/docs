@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/rbac
   - /rancher/v2.0-v2.4/en/istio/legacy/rbac
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/rbac
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/rbac/
 ---
 
 This section describes the permissions required to access Istio features and how to configure access to the Kiali and Jaeger visualizations.

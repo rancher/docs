@@ -6,6 +6,8 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/notifiers
   - /rancher/v2.0-v2.4/en/monitoring-alerting/legacy/notifiers
   - /rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/notifiers
+  - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/notifiers/
+  - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/default-alerts/
 ---
 
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.

@@ -1,6 +1,8 @@
 ---
 title: API
 weight: 24
+aliases:
+  - /rancher/v2.x/en/api/
 ---
 
 ## How to use the API

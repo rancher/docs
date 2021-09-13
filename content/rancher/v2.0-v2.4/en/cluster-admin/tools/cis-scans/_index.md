@@ -2,8 +2,9 @@
 title: CIS Scans
 weight: 18
 aliases:
- - /rancher/v2.0-v2.4/en/cis-scans/legacy
- - /rancher/v2.0-v2.4/en/cis-scans
+  - /rancher/v2.0-v2.4/en/cis-scans/legacy
+  - /rancher/v2.0-v2.4/en/cis-scans
+  - /rancher/v2.x/en/cis-scans/v2.4/
 ---
 
 _Available as of v2.4.0_

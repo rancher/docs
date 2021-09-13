@@ -1,6 +1,8 @@
 ---
 title: Deprecated Features in Rancher v2.5
 weight: 100
+aliases:
+  - /rancher/v2.x/en/faq/deprecated-features-25x/
 ---
 
 ### What is Rancher's Deprecation policy?

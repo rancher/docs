@@ -6,6 +6,7 @@ weight: 2225
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-custom/
   - /rancher/v2.5/en/cluster-provisioning/custom-clusters/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
 ---
 
 When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-prem bare-metal servers, on-prem virtual machines, or in any node hosted by an infrastructure provider.

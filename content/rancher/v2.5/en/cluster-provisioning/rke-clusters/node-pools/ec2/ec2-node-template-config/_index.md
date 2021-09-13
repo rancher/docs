@@ -1,6 +1,8 @@
 ---
 title: EC2 Node Template Configuration
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-node-template-config/
 ---
 
 For more details about EC2, nodes, refer to the official documentation for the [EC2 Management Console](https://aws.amazon.com/ec2). 

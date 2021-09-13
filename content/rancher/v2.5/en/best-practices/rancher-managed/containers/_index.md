@@ -4,6 +4,7 @@ weight: 100
 aliases:
   - /rancher/v2.5/en/best-practices/containers
   - /rancher/v2.5/en/best-practices/v2.5/rancher-managed/containers
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-managed/containers/
 ---
 
 Running well-built containers can greatly impact the overall performance and security of your environment.

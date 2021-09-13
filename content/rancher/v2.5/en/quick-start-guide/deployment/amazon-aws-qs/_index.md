@@ -2,6 +2,8 @@
 title: Rancher AWS Quick Start Guide
 description: Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/deployment/amazon-aws-qs/
 ---
 The following steps will quickly deploy a Rancher Server on AWS with a single node cluster attached.
 

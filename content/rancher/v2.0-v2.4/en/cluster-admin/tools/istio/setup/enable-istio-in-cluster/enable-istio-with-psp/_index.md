@@ -4,6 +4,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.0-v2.4/en/istio/legacy/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/enable-istio-in-cluster/enable-istio-with-psp
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/enable-istio-in-cluster/enable-istio-with-psp/
 ---
 
  >**Note:** The following guide is only for RKE provisioned clusters.

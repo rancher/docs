@@ -2,6 +2,8 @@
 title: How to Configure In-tree vSphere Cloud Provider
 shortTitle: In-tree Cloud Provider
 weight: 10
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/
 ---
 
 To set up the in-tree vSphere cloud provider, follow these steps while creating the vSphere cluster in Rancher:

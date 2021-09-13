@@ -6,6 +6,18 @@ aliases:
   - /rancher/v2.5/en/catalog/
   - /rancher/v2.5/en/catalog/apps
   - /rancher/v2.5/en/catalog/launching-apps
+  - /rancher/v2.x/en/helm-charts/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/launching-apps/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/adding-catalogs/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/built-in/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/creating-apps/
+  - /rancher/v2.x/en/helm-charts/apps-marketplace/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/tutorial/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/managing-apps/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/catalog-config/
+  - /rancher/v2.x/en/helm-charts/legacy-catalogs/multi-cluster-apps/
 ---
 
 In this section, you'll learn how to manage Helm chart repositories and applications in Rancher.

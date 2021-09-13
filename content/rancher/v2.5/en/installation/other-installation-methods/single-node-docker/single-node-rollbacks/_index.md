@@ -4,6 +4,7 @@ weight: 1015
 aliases:
   - /rancher/v2.5/en/upgrades/single-node-rollbacks
   - /rancher/v2.5/en/upgrades/rollbacks/single-node-rollbacks
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/
 ---
 
 If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before [Docker Upgrade]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/single-node-upgrades). Rolling back restores:

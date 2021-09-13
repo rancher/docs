@@ -1,6 +1,8 @@
 ---
 title: OpenLDAP Configuration Reference
 weight: 2
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/openldap/openldap-config/
 ---
 
 This section is intended to be used as a reference when setting up an OpenLDAP authentication provider in Rancher.

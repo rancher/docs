@@ -4,6 +4,7 @@ weight: 100
 aliases:
   - /rancher/v2.5/en/best-practices/deployment-types
   - /rancher/v2.5/en/best-practices/v2.5/rancher-server/deployment-types
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-server/deployment-types/
 ---
 
 This guide is geared toward use cases where Rancher is used to manage downstream Kubernetes clusters. The high-availability setup is intended to prevent losing access to downstream clusters if the Rancher server is not available.

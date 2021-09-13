@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/ha/kubernetes-rke/troubleshooting
   - /rancher/v2.5/en/installation/k8s-install/kubernetes-rke/troubleshooting
   - /rancher/v2.5/en/installation/options/troubleshooting
+  - /rancher/v2.x/en/installation/resources/troubleshooting/
 ---
 
 This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.

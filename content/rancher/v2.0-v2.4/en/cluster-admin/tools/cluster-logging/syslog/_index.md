@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/logging/syslog
   - /rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/syslog
   - /rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/syslog
+  - /rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/syslog/
 ---
 
 If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.

@@ -2,7 +2,8 @@
 title: Configuring Active Directory (AD)
 weight: 1112
 aliases:
-    - /rancher/v2.5/en/tasks/global-configuration/authentication/active-directory/
+  - /rancher/v2.5/en/tasks/global-configuration/authentication/active-directory/
+  - /rancher/v2.x/en/admin-settings/authentication/ad/
 ---
 
 If your organization uses Microsoft Active Directory as central user repository, you can configure Rancher to communicate with an Active Directory server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the Rancher UI.

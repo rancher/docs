@@ -1,6 +1,8 @@
 ---
 title: Kubernetes Components
 weight: 100
+aliases:
+  - /rancher/v2.x/en/troubleshooting/kubernetes-components/
 ---
 
 The commands and steps listed in this section apply to the core Kubernetes components on [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) clusters.

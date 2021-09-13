@@ -1,6 +1,8 @@
 ---
 title: "Rolling back to v2.0.0-v2.1.5"
 weight: 1
+aliases:
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/v2.0-v2.1/
 ---
 
 > Rolling back to Rancher v2.0-v2.1 is no longer supported. The instructions for rolling back to these versions are preserved here and are intended to be used only in cases where upgrading to Rancher v2.2+ is not feasible.

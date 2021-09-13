@@ -1,6 +1,8 @@
 ---
 title: v2.1.x and v2.2.x Windows Documentation (Experimental)
 weight: 9100
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/
 ---
 
 _Available from v2.1.0 to v2.1.9 and v2.2.0 to v2.2.3_

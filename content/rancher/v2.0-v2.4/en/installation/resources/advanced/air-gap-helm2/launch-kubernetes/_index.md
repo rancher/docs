@@ -4,6 +4,7 @@ weight: 300
 aliases:
   - /rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-kube
   - /rancher/v2.0-v2.4/en/installation/options/air-gap-helm2/launch-kubernetes
+  - /rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/launch-kubernetes/
 ---
 
 This section is about how to prepare to launch a Kubernetes cluster which is used to deploy Rancher server for your air gapped environment.
